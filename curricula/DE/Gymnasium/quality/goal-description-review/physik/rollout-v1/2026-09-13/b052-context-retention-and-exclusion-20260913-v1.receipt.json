@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "receiptType": "targeted-current-context-exclusion-before-recheck",
+  "date": "2026-09-13",
+  "authority": "informed_ai_retention_only",
+  "humanApproval": false,
+  "grantsProgress": false,
+  "reason": "Exactly four method pages have changed effective scope/applicability; observation also had earlier navigation drift and sources earlier externalReverseRequires ordering drift. Old blind records and resolutions remain intact. Only unchanged resolutions are retained in new subset indexes, with existing result digests unchanged. Four excluded goals are claimed in B052 for independent current-context review; their valid P bodies remain unchanged.",
+  "evidencePath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/source-method-current-binding-audit-20260913-v1.receipt.json",
+  "snapshotDenominatorSource": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json#counts.curricularAtomic",
+  "snapshotDenominator": 478,
+  "denominatorAuthority": "Central live five-gate report only; legacy index count fields are contribution snapshots, not project totals.",
+  "changes": [
+    {
+      "sourcePath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-037-biophysics-methods-pv-mechanics-20-v1/resolution-index.current-carryover-v1.json",
+      "sourceSha256": "929587ee762dc3a2397ed8ccd8880ddce617c14e417db28d52c78ca9c6afd6de",
+      "retainedIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-037-biophysics-methods-pv-mechanics-20-v1/resolution-index.retained-before-b052-context-recheck-20260913-v1.json",
+      "retainedCount": 11,
+      "excludedGoalIds": [
+        "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e"
+      ]
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-036-spectra-models-methods-20-v1/resolution-index.current-carryover-v1.json",
+      "sourceSha256": "ecb8ded94af754e69c728bdb26260460f67248a19257c8bd38cd88b1245afa09",
+      "retainedIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-036-spectra-models-methods-20-v1/resolution-index.retained-before-b052-context-recheck-20260913-v1.json",
+      "retainedCount": 13,
+      "excludedGoalIds": [
+        "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+        "3ed3279e-c524-5230-a277-dda89493df6d"
+      ]
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/checkpoint-current-2026-08-26/resolution-index.retained-after-final-context-v1.paused-context-current-20260908-v1.json",
+      "sourceSha256": "421f9a79f99a5f6c06aa5852ab9a9f671ef6aafc568a37d40b8ca693993a9b34",
+      "retainedIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/checkpoint-current-2026-08-26/resolution-index.retained-before-b052-context-recheck-20260913-v1.json",
+      "retainedCount": 17,
+      "excludedGoalIds": [
+        "5355fee0-0477-5570-a234-561477bf77ba"
+      ]
+    }
+  ]
+}

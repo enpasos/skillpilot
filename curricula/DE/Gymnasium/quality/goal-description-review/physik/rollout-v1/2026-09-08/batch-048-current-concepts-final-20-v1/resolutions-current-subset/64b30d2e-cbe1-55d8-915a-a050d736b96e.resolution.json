@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-current-subset-64b30d2e-cbe1-55d8-915a-a050d736b96e",
+  "goal": {
+    "goalId": "64b30d2e-cbe1-55d8-915a-a050d736b96e",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:85afe660e3df030005a91e0287620b71c0ab0d174b28b8d94fa686a90831e8e8",
+    "pageFingerprint": "sha256:940ed3531313cc80c08b4cba2b3a9e2ff4feb6fe0281f237758de6bad1ef2640",
+    "goalReviewContextFingerprint": "sha256:4abbbd9f308cc582c9dde7b28c0811045de01ac64ea75b8c653440154fc9ab27",
+    "finalText": {
+      "titleDe": "Nuklidkarten und Zerfallsreihen auswerten",
+      "titleEn": "Interpret Nuclide Charts and Decay Chains",
+      "descriptionDe": "Die lernende Person kann digitale Nuklidkarten auswerten, Eigenschaften von Nukliden entnehmen und Zerfallsreihen fachlich rekonstruieren.",
+      "descriptionEn": "The learner can interpret digital nuclide charts, retrieve properties of nuclides, and reconstruct decay chains using correct physical reasoning."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-a",
+      "campaignDigest": "sha256:7954fe9d1229a77e1e784f6897f6f0bdbcf00ba7264a15e5dd6edf1085194fe2",
+      "roundId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:b5aac2cb1e1e838f9b18c4cfbf20698508e148eb24e89573696a26d64e314aba",
+      "goalReviewContextFingerprint": "sha256:4abbbd9f308cc582c9dde7b28c0811045de01ac64ea75b8c653440154fc9ab27",
+      "batchId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:9b9f53a84e3ae210a6c34619110150ff99b921c325c460d856806795f050aeaf",
+      "resultsDigest": "sha256:8bc3e623378b30377fc54f8e2e83f949ea32fa459fd5e294d4a496f9d0b3b210",
+      "recordId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001.008",
+      "recordDigest": "sha256:39b47a73bcf7382abcfcd484a6067291fc7d9a3499caec5cc782a2a01cb04392"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-b",
+      "campaignDigest": "sha256:964cfcbfd946d718ecdb9fbb8e53f7f27807be990b7b3fde635e4c2c3e462673",
+      "roundId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:b5aac2cb1e1e838f9b18c4cfbf20698508e148eb24e89573696a26d64e314aba",
+      "goalReviewContextFingerprint": "sha256:4abbbd9f308cc582c9dde7b28c0811045de01ac64ea75b8c653440154fc9ab27",
+      "batchId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.batch-001",
+      "runId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.run-001",
+      "runManifestDigest": "sha256:347b79153ad426d53cf01068759155642546794ec721d75b57da0a3136e31dc3",
+      "resultsDigest": "sha256:d6f20232635b6ef939fbca535e5144ca47cb0ebf803bde61e7a93e1cb85a667c",
+      "recordId": "physics-b048-b-008",
+      "recordDigest": "sha256:1c9922895f0972e9f1bf98f7a7bb9da24e1628b93c7307602274b2c333036166"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:6b414186b933224d16ebad5b9baad261ddf0236e3c85f0e93356c5f9d4d6b64f"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-explicit-synthesis-64b30d2e-cbe1-55d8-915a-a050d736b96e",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex /root, continuation 2026-09-13; existing independent D048 reviews retained",
+    "synthesizedAt": "2026-09-13T18:15:19.511Z",
+    "rationaleDe": "Beide KEEP-Reviews verbinden das Auslesen einer digitalen Nuklidkarte mit physikalisch begründeter Rekonstruktion derselben Folge. Runde B verlangt ausdrücklich eine unabhängig bereitgestellte Karte und trennt Achsenkonvention, tabellierte Zerfallszweige und A-/Z-Änderungen. Der Achsentausch im Transfer prüft Verständnis statt Kopieren der Bildpfeile. Beide ursprünglichen Bildreviews bestätigen die beschriftete N-/Z-Konvention sowie Alpha- und Beta-minus-Schritte; daraus wird keine empirische Quellenabdeckung abgeleitet. Aktuelle Ziel-, Seiten-, Bild- und Kontextbindungen sind unverändert; vorhandene KI-Reviews werden wahrheitsgemäß abgeschlossen.",
+    "rationaleEn": "Both KEEP reviews connect extracting data from a digital nuclide chart with physically justified reconstruction of the same chain. Round B explicitly requires an independently supplied chart and distinguishes axis conventions, tabulated decay branches and A/Z changes. Swapping axes in transfer tests understanding rather than copying image arrows. Both original image reviews confirm the labelled N/Z convention and alpha and beta-minus steps; this is not treated as empirical source-coverage evidence. Current goal, page, image and context bindings are unchanged; existing AI reviews are truthfully finalized.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Nuklidkarte ordnet Kerne nach ihren Achsenkonventionen und verknüpft Einträge mit Eigenschaften und Zerfallszweigen; ein Kartenpfeil muss mit Änderung von Protonen- und Neutronenzahl sowie dem angegebenen Zerfallsmodus zusammenpassen.",
+      "essentialUnderstandingEn": "A nuclide chart locates nuclei according to its axis conventions and links entries to properties and decay branches; a chart step must match changes in proton and neutron numbers and the specified decay mode.",
+      "observablePerformanceDe": "Die lernende Person entnimmt einer unabhängig bereitgestellten digitalen Karte Halbwertszeit und Zerfallsart und rekonstruiert daraus eine Kette, wobei sie jeden Koordinatenschritt physikalisch begründet.",
+      "observablePerformanceEn": "The learner retrieves half-life and decay type from an independently supplied digital chart and reconstructs a chain, physically justifying each coordinate step.",
+      "transferExpectationDe": "Bei einer frischen Karte mit vertauschten N- und Z-Achsen konstruiert sie denselben angegebenen Zerfallsweg mit geänderten Pfeilrichtungen und erklärt die unveränderte Kernphysik.",
+      "transferExpectationEn": "On a fresh chart with N and Z axes interchanged, the learner constructs the same specified decay pathway with changed arrow directions and explains the unchanged nuclear physics."
+    },
+    "dissent": [
+      {
+        "dissentId": "evidence-selection-64b30d2e-cbe1-55d8-915a-a050d736b96e",
+        "source": "both",
+        "textDe": "Beide unabhängigen Urteile sind KEEP; ihre unterschiedlichen Evidenzformulierungen und Begründungen bleiben unverändert erhalten. Die individuelle Synthese wählt die Evidenz der zweiten Runde.",
+        "textEn": "Both independent decisions are KEEP; their differing evidence formulations and rationales remain unchanged in the original records. The individual synthesis selects the second round evidence.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:50ed76ed6777542cf93b0bcec581c1ad7cea015a97137923a68be52b1bf0938b"
+}

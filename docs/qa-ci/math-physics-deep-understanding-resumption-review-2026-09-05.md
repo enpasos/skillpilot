@@ -1,11 +1,28 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
-Der aktuelle Umsetzungsstand und der verbindliche Wiedereinstieg stehen im
-[pausierten Physik-Zwischenstand vom 8. September](physics-paused-checkpoint-2026-09-08.md).
-Das Goal bleibt auf Nutzerwunsch pausiert; der dortige technische Abschlussstatus
-entscheidet über die Commitfähigkeit, nicht das weiterhin offene 100-Prozent-Ziel.
-Die vorangehenden Abschnitte halten die jeweiligen früheren Entscheidungsstände
-fest; insbesondere sind die ursprüngliche Pause und Freigabeanfrage historisch.
+Der aktuelle Umsetzungsstand steht im
+[Wiederaufnahme-Checkpoint vom 13. September](math-physics-resumed-checkpoint-2026-09-13.md).
+**Aktueller Halteauftrag vom 14. September 2026:** Den vorhandenen Stand als
+commitfähigen Meilenstein abschließen und anschließend pausieren. Danach das
+100-Prozent-Goal nur nach ausdrücklicher Wiederaufnahme fortsetzen, nicht schon
+aufgrund grüner CI. Stand, offene Fälle und Abschlussprüfungen stehen im oben
+verlinkten neuesten Checkpoint.
+Der [pausierte Physik-Zwischenstand vom 8. September](physics-paused-checkpoint-2026-09-08.md)
+und die nachstehenden Abschnitte bleiben historische Fortsetzungsgrundlagen;
+die damalige Pause und Freigabeanfrage sind historisch. Maßgeblich ist jetzt
+der neue Halteauftrag, nicht eine alte Pausen- oder Fortsetzungsnotiz.
+
+**Anweisungsupdate vom 13. September 2026:** Für notwendige neue oder korrigierte
+Bilder gilt die [aktuelle Provider- und Qualitätsregel](../concept/skill-graph/atomic-goal-visualizations.md#provider-priority-and-exception-policy)
+mit ChatGPT/Codex-Bildgenerierung als bevorzugtem ersten Weg und Nano Banana Pro
+als zulässiger Alternative ohne vorgeschaltete Fehlversuche. Gute Bilder und
+gültige Nachweise bleiben erhalten. Alte Providerpflichten in den nachstehenden
+Checkpoint- und Prüfprotokollen sind historisch; ihre Belege bleiben unverändert.
+Bei einer späteren Wiederaufnahme zählen ausschließlich die aktuell offenen
+Registry-/In-flight-Zuständigkeiten, nicht pauschal B033/B033z oder andere frühere
+Paketlisten. Das reine Anweisungsupdate startete noch keine Reviews und
+veränderte weder Fortschrittszähler noch Freigaben oder Sicherheitsgrenzen;
+die anschließende tatsächliche Wiederaufnahme ist im neuesten Checkpoint belegt.
 
 ## Ergebnis und Grenze
 

@@ -110,6 +110,8 @@ These are generated audit views for configured `CQR-302` reviews. The registry l
 
 These documents capture one-off investigations, remediation slices, or dated PoC evidence. They are useful context, not durable process contracts.
 
+- [Mathematik/Physik: Wiederaufnahme, 2026-09-13](math-physics-resumed-checkpoint-2026-09-13.md)
+  Grüne CI als Einstieg, aktuelle Teilmengenabschlüsse und gezielte Nachprüfung offener Bild- und Kontextbindungen.
 - [Physik: pausierter Zwischenstand, 2026-09-08](physics-paused-checkpoint-2026-09-08.md)
   Konsolidiertes Physik-Paket, aktueller strenger Fortschritt und disjunkte Haltepakete ohne neue QS-Läufe.
 - [Physik: pausierter Zwischenstand, 2026-09-07](physics-paused-checkpoint-2026-09-07.md)

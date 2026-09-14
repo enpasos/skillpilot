@@ -1,0 +1,21 @@
+{
+  "provider": "OpenAI",
+  "model": "OpenAI Codex; exact runtime model identifier and snapshot not exposed",
+  "reviewerAgent": "/root/math_b047_blind_a",
+  "mode": "independent blind first-pass review in active Codex conversation",
+  "temperature": null,
+  "reasoningEffort": null,
+  "seed": null,
+  "parameterDisclosure": "The concrete runtime model identifier, model snapshot, temperature, reasoning effort and seed are not technically exposed. Null means unknown, not a configured value. No separate provider API completion was requested.",
+  "independence": "Reviewed round-a supplied inputs, actual assets and PDF goal pages, and the referenced local HMKB original source and extraction. No round-b result, earlier goal decision, synthesis, canonical diff or separate P candidate was read.",
+  "intervalDisclosure": "startedAt marks the recorded start of the final independent assessment and record-authoring interval; initial instruction and input inspection preceded this timestamp.",
+  "sourceDocumentPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+  "sourcePages": [
+    43,
+    44
+  ],
+  "recordConstruction": "Bound current text and fingerprints copied programmatically from round-a inputs; individually authored bilingual evidence and rationale; local files added with apply_patch.",
+  "validation": "Native validateGoalDescriptionReviewCampaignResults.ts validates schema, exact campaign bindings, one record per goal and run output digest.",
+  "evidenceProfileDisclosure": "No current V2 profile was supplied for the three goals. Each create recommendation is an AI candidate recommendation only; this run creates or approves no authoritative evidence profile.",
+  "artifactPlacement": "Stored permanently at round-a/runtime-disclosure.json beside results because the native campaign-results validator permits only the expected .run.json and .records.jsonl files inside results."
+}

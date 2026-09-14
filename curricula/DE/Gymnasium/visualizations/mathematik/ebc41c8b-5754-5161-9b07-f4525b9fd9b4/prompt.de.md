@@ -8,68 +8,22 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `ebc41c8b-5754-5161-9b07-f4525b9fd9b4.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.jpg`
+- Quellbild: `ebc41c8b-5754-5161-9b07-f4525b9fd9b4.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Eigenschaften von Funktionssummen graphisch begründen (LK)
-Beschreibung: Die lernende Person kann Eigenschaften von Funktionssummen wie $f(x)+g(x)$ anhand der Graphen von $f$ und $g$ skizzieren und begründen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-
-Show pointwise graphical addition of two functions without drawing full function curves.
-Use a clean value-column diagram plus a value table.
-
-Use exactly this example:
-- `f(x)=x^2`
-- `g(x)=x`
-- `h(x)=f(x)+g(x)=x^2+x`
-
-Use exactly these two x-values:
-- for `x=1`: `f(1)=1`, `g(1)=1`, `h(1)=2`
-- for `x=2`: `f(2)=4`, `g(2)=2`, `h(2)=6`
-
-Left panel:
-- title `Punktweise Addition`
-- two vertical value columns labelled `x=1` and `x=2`
-- each column starts at a baseline labelled `0`
-- blue lower segment represents `f(x)`
-- green segment is stacked directly above the blue segment and represents `g(x)`
-- red endpoint at the top represents `h(x)`
-- in the `x=1` column, the blue segment has height `1`, the green segment has height `1`, and the red endpoint is at height `2`
-- in the `x=2` column, the blue segment has height `4`, the green segment has height `2`, and the red endpoint is at height `6`
-
-Right panel:
-- a table with columns `x`, `f(x)`, `g(x)`, `h(x)=f(x)+g(x)`
-- rows exactly `1 | 1 | 1 | 2` and `2 | 4 | 2 | 6`
-- a conclusion card: `h-Wert = f-Wert + g-Wert`
-
-Vermeiden:
-
-Do not draw a continuous coordinate graph, parabola, or straight line.
-Do not draw `g(x)` as a curve or a non-straight line.
-Do not draw `h(x)=x^2+x` as a curve.
-Do not draw any arrows whose start and end values are not explicitly labelled.
-Do not draw an arrow for `h(1)=2`; the top point must simply sit at height `2`.
-Do not include any graphing-calculator UI.
-Do not add extra formulas, extra x-values, or unlabelled points.
-Do not write audience or subject labels such as `Gymnasium`, `Mathematik`, `Schule`, or `Klasse`.
+Use case: precise-object-edit
+Asset type: German school mathematics learning illustration
+Input images: Image 1 is the edit target and the style reference.
+Primary request: Make exactly one local correction to this existing illustration. In the pale-blue left panel, remove the dark vertical line midway between the two stacked bars and remove the black numeral "0" beneath that line. Fill their former locations with the same surrounding pale-blue background, continuing any light horizontal guide line that crosses the removed vertical line.
+Reason: The two stacked bars are separate pointwise cases labeled "x=1" and "x=2", not coordinates on opposite sides of a Cartesian origin. The misleading middle origin must disappear.
+Preserve everything else: the complete uncropped wide canvas; exact German title and panel heading; both x labels; the black horizontal bar baseline; the light guide lines; the blue and green bars and all their heights and proportions; all colored annotations and red dots; the entire right-hand table and orange note; existing lettering, palette, line widths and approachable classroom style.
+Mathematical invariants: at x=1, blue height 1 plus green height 1 gives total 2. At x=2, blue height 4 plus green height 2 gives total 6, using the same height unit. Table rows remain exactly (1,1,1,2) and (2,4,2,6), with h(x)=f(x)+g(x).
+Do not add any new axes, curves, formulas, labels, decoration, watermarks or technical IDs. Do not redesign, crop or simplify other parts. Only remove the central vertical line and its zero.
 ```
 
 ## Review-Notiz

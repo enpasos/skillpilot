@@ -14,5 +14,6 @@ This page groups the learner-facing first-run material and comic prompt source f
 
 ## Maintenance
 
+- [Quickstart video production and publication](video-production.md)
 - Keep learner-facing quickstarts short and current.
 - `cd app && npm run check:docs-indexes` fails if a direct Markdown child of `docs/quickstart/` is missing from this index.

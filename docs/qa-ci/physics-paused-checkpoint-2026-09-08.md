@@ -1,10 +1,22 @@
 # Physik: pausierter Zwischenstand vom 8. September 2026
 
+Aktueller Fortsetzungsstand: [Wiederaufnahme vom 13. September 2026](math-physics-resumed-checkpoint-2026-09-13.md).
+Der folgende Pausenstatus beschreibt den historischen Abschluss vom 8. September.
+
 Status: lokal geprüft und commitfähig; Arbeiten abgeschlossen und angehalten.
 Das Goal bleibt auf ausdrücklichen Nutzerwunsch pausiert. Es wurden nur die bereits
 begonnenen Änderungen konsolidiert, keine neuen QS-Pakete gestartet. Ausgangspunkt
 ist `4aaaab6c154dc634948c6c32996b5e4c1379c272`. Kein Commit, Push oder Deployment
 wird durch diesen Zwischenabschluss ausgeführt.
+
+**Anweisungsupdate vom 13. September 2026:** Die QS bleibt pausiert. Für spätere
+Bildarbeit gilt die [aktuelle Provider- und Qualitätsregel](../concept/skill-graph/atomic-goal-visualizations.md#provider-priority-and-exception-policy):
+ChatGPT/Codex-Bildgenerierung bevorzugt bei geprüfter Qualität und Stilpassung,
+Nano Banana Pro als zulässige Alternative ohne vorgeschaltete Fehlversuche.
+Gute Bilder, historische Belege und sämtliche Qualitäts-/Freigabegrenzen bleiben
+erhalten. Vor einer späteren Fortsetzung sind Registry, In-flight-Ledger und
+Prüfbindungen gegen den dann aktuellen Repository-Stand abzugleichen; die
+nachfolgenden Zahlen bleiben Nachweise des Checkpoints vom 8. September.
 
 ## Fortschritt und verbleibende Arbeit
 

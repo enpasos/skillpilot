@@ -1,0 +1,366 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "model-wording-informed-layer-a-alignment-20260913-v1",
+  "authority": "authorized_layer_a_authoring_with_informed_ai_semantic_recheck",
+  "reviewer": "codex-physics-model-wording-informed-layer-a-review",
+  "reviewedAt": "2026-09-13T21:36:18.414Z",
+  "completedAt": "2026-09-13T21:41:42.204Z",
+  "reviewMode": "one_current_goal_informed_recheck",
+  "humanApproval": false,
+  "newBlindReview": false,
+  "newDescriptionReview": false,
+  "newPositiveEvidenceApproval": false,
+  "grantsProgress": false,
+  "scope": {
+    "goalIds": [
+      "e5bc2227-d900-585f-8ac0-9d3f1cb40e27"
+    ],
+    "modifiedDecisionRecords": 3,
+    "modifiedFiles": [
+      "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl",
+      "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.review.jsonl"
+    ],
+    "createdFiles": [
+      "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/model-wording-informed-layer-a-alignment-20260913-v1.receipt.json"
+    ],
+    "canonicalMutationByThisSubtask": false,
+    "canonicalWordingOwnedByRoot": true,
+    "profileMutationByThisSubtask": false,
+    "qaOrImageMutationByThisSubtask": false,
+    "registryMutationByThisSubtask": false,
+    "generatedQualityStatusMutationByThisSubtask": false,
+    "unchangedOtherSemanticKindDecisions": 763,
+    "unchangedOtherAtomicityDecisions": 477,
+    "unchangedOtherMemoryDecisions": 477
+  },
+  "canonicalBinding": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "bytesDigest": "sha256:0b3a2f2e015cdfbdf7240dccc4a1d7318ee4283ab3007199f6e52c8e204f643e",
+    "proposalPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/next-model-wording-impact-audit-20260913-v1.receipt.json",
+    "proposalBytesDigest": "sha256:c9539578bbd88c527a4e9e215456d9379e65e5e41be9ed6b305bcf37107ab417",
+    "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+    "changedFields": [
+      "description",
+      "descriptionEn"
+    ],
+    "before": {
+      "description": "Die lernende Person kann die Funktion physikalischer Modelle an Beispielen wie Strahlenmodell, Teilchenmodell, Atommodell oder Elementarmagnetmodell erläutern.",
+      "descriptionEn": "The learner can explain the function of physical models using examples such as ray, particle, atomic, or elementary magnet models."
+    },
+    "after": {
+      "description": "Die lernende Person kann an Beispielen wie Strahlenmodell, Teilchenmodell, Atommodell oder Elementarmagnetmodell erläutern, wie physikalische Modelle ausgewählte Eigenschaften vereinfacht darstellen und unter ihren Modellannahmen Erklärungen oder Vorhersagen ermöglichen.",
+      "descriptionEn": "The learner can use examples such as ray, particle, atomic, or elementary magnet models to explain how physical models represent selected properties in a simplified way and enable explanations or predictions under their model assumptions."
+    },
+    "currentDescriptionsMatchExactProposal": true,
+    "oldGoalFingerprintReconstruction": "Before native fingerprints were recomputed in memory from the current goal with exactly description and descriptionEn restored from the impact-audit before values. All three match the exact old decision records."
+  },
+  "informedContext": {
+    "instructionsPath": "AGENTS.md",
+    "instructionSections": [
+      "2.3",
+      "7.1",
+      "7.2"
+    ],
+    "goalTitle": "Funktion physikalischer Modelle erläutern",
+    "parent": {
+      "goalId": "f08d171d-ac31-59b6-834e-a6a2493b974e",
+      "title": "Denk- und Arbeitsweisen der Physik (Sek I)"
+    },
+    "prerequisite": {
+      "goalId": "5355fee0-0477-5570-a234-561477bf77ba",
+      "title": "Beobachtung und Erklärung unterscheiden",
+      "relationship": "Distinguishing observations from explanatory models precedes explaining what selective model representation enables."
+    },
+    "currentPBody": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-036-current-counterreviewed-19-v1.paused-checkpoint-20260907-v1.review.jsonl",
+      "bytesDigest": "sha256:3f6342b450ae09d0c9fda00c56384d97540a07c71713b8622b3ef2d1d45cc810",
+      "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+      "profileFingerprint": "sha256:ee6a20e015fdffed7c59ca6b11b26b9e5f7f5cf3d204e4c6d0d689a69fed609e",
+      "profileBodyJsonDigest": "sha256:bc505cb5d525eb1ffec99ffe0705bfe2877e7a205d7634173ae42044400ef3c9",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "expectationIds": [
+        "purpose-and-idealisation",
+        "scope-and-representation"
+      ],
+      "applicationCaseIds": [
+        "ray-shadow",
+        "gas-particle-pressure"
+      ]
+    },
+    "pBodyReadScope": "The complete existing bilingual profile was read: both essential-understanding expectations, coverage demands, variation axes, and both task/expected-performance cases. It serves as informed context only and retains needs_human_review / ai_candidate authority.",
+    "linkedAssessment": {
+      "goalId": "44985d9f-7b49-52e4-86ec-eddc7b70429f",
+      "assessmentPart": "Part 3 asks which questions the ray model answers, what it idealises, and what it omits, followed by a short comparison with a particle model."
+    }
+  },
+  "decisions": {
+    "semanticKind": {
+      "decision": "curricularAtomic",
+      "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic",
+      "reasonDe": "Die aktuelle Beschreibung fordert eine fachlich prüfbare Erklärung der Funktion physikalischer Modelle: ausgewählte Eigenschaften vereinfachend darstellen und unter Annahmen Erkenntnisse ermöglichen. Der Knoten bleibt ein konkretes Inhalts- und Methodenlernziel ohne contains-Kinder, Prüfungsaufgabe, Memorydeck oder Orientierungsabschluss. Die angeführten Modellfamilien sind alternative Gegenstände derselben Erklärung, keine Struktur- oder Sammelzweige.",
+      "reviewedAt": "2026-09-13T21:36:18.414Z",
+      "authorityMeaning": "authoritative is the existing runtime classification status in this ledger. The decision was made by informed AI review within authorized Layer A authoring; it is not a human attestation."
+    },
+    "semanticAtomicity": {
+      "decision": "atomic",
+      "semanticAtomic": true,
+      "reasonDe": "Aktuelle DE/EN-Fassung nach inhaltlicher Einzelprüfung: Eine zusammenhängende Kompetenz erläutert die Funktion physikalischer Modelle als gezielte Vereinfachung, die unter Modellannahmen Erklärungen oder Vorhersagen ermöglicht. Strahlen-, Teilchen-, Atom- und Elementarmagnetmodell sind alternative Beispiele; weder vier unabhängige Modellroutinen noch Modellkonstruktion oder gesonderte Rechnungen werden verlangt. Auswahl, Vereinfachung und Erkenntnisnutzen lassen sich an einem vorgegebenen frischen Modellbeispiel gemeinsam prüfen; das vorhandene P-Profil variiert dieselbe Kompetenz an Strahlen- und Teilchenmodellen. Kein Split erforderlich.",
+      "suggestedSplit": []
+    },
+    "memorySuitability": {
+      "decision": "no_memory_needed",
+      "memoryUseful": false,
+      "reasonDe": "Aktuelle DE/EN-Fassung und vollständiges P-Profil geprüft: Entscheidend ist, an vorgegebenen oder vertrauten Modellbeispielen ausgewählte Eigenschaften, Vereinfachungen, Annahmen und deren Erklärungs- oder Vorhersagenutzen zusammenhängend zu erläutern. Modellnamen sind Beispiele, keine auswendig zu lernende Liste; das Ziel verlangt keine neue Formel, Symbolzuordnung oder isolierte Definition als eigenständigen Abruf. Frische Strahlen- oder Teilchenmodellfälle liefern die passende Verständnisprüfung. Eine eigene Memorycard würde diese Begründungsleistung nicht ersetzen; no_memory_needed bleibt inhaltlich begründet.",
+      "memoryGoalIdsAdded": [],
+      "deckIdsAdded": [],
+      "cardChanges": []
+    }
+  },
+  "nativeFingerprints": {
+    "semanticKind": {
+      "before": "sha256:fddb9eb8cdfa2a2ee8edf3e867c8d9ab8760d264ec254d2308c2ce973f491f57",
+      "after": "sha256:3c2cf7e12ca7e76057fd48a316f2baa8698d524b1bd2fb15c30b4ed24c14e6f0"
+    },
+    "atomicity": {
+      "before": "sha256:d7ebced1cbc82a45d7973c225f66cac35a3d8970fd9c4242b791c8d33440bc21",
+      "after": "sha256:19b20783211f5e470c6677748886d033e7e515ced4fd5160c1672892e893f4b0"
+    },
+    "memory": {
+      "before": "sha256:fe7ef960f0a116ddd0f2a96474bdae8f7312d0c361dad233dcba21a3a43e0fe1",
+      "after": "sha256:4df7864d88631953f4997edaf17434cf2caa718e6b6054146eff2a1d8ae50991"
+    }
+  },
+  "nativeFunctionSources": [
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "exportedFunction": "fingerprintSemanticKindSourceGoal",
+      "sourceBytesDigest": "sha256:5b36dae5a957dd48fa19a3ca974381caefa22bdaec2c1842e63dbe94279a13fa"
+    },
+    {
+      "path": "app/scripts/semanticAtomicityReview.ts",
+      "sourceBytesDigest": "sha256:b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9",
+      "extractionStart": "function normalizeText(",
+      "extractionEnd": "function isLeaf(",
+      "function": "fingerprintGoal",
+      "execution": "Unmodified function block plus its native normalization/stable-JSON helpers extracted from this exact source, transpiled with the existing esbuild dependency and evaluated in memory. No source edit, manual algorithm clone, or bulk --write-fingerprints operation."
+    },
+    {
+      "path": "app/scripts/memoryCardReview.ts",
+      "sourceBytesDigest": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672",
+      "extractionStart": "function normalizeText(",
+      "extractionEnd": "function fingerprintMemoryCard(",
+      "function": "fingerprintGoal",
+      "execution": "Unmodified function block plus its native normalization/stable-JSON helpers extracted from this exact source, transpiled with the existing esbuild dependency and evaluated in memory. No source edit, manual algorithm clone, or bulk --write-fingerprints operation."
+    }
+  ],
+  "preservedRecords": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "beforeBytesDigest": "sha256:43645e2eb6edc07f048f3d29ee85dc5e8aea67edf2634135acc1224491b0154c",
+      "recordCount": 764,
+      "beforeRecord": {
+        "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+        "sourceFingerprint": "sha256:fddb9eb8cdfa2a2ee8edf3e867c8d9ab8760d264ec254d2308c2ce973f491f57",
+        "semanticKind": "curricularAtomic",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+      },
+      "beforeRecordText": "    {\n      \"goalId\": \"e5bc2227-d900-585f-8ac0-9d3f1cb40e27\",\n      \"sourceFingerprint\": \"sha256:fddb9eb8cdfa2a2ee8edf3e867c8d9ab8760d264ec254d2308c2ce973f491f57\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-pilot-curricular-atomic\"\n    }",
+      "allOtherBytesDigest": "sha256:c9b22afc2549ab53ec824f2599688a4f20dbdeaffe223bfc92c9841977c616c6",
+      "afterBytesDigest": "sha256:fb766b0a433f5392ab7cbda5d110424b06c596cbae02ac82926681d614574029",
+      "afterRecord": {
+        "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+        "sourceFingerprint": "sha256:3c2cf7e12ca7e76057fd48a316f2baa8698d524b1bd2fb15c30b4ed24c14e6f0",
+        "semanticKind": "curricularAtomic",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+      },
+      "afterRecordText": "    {\n      \"goalId\": \"e5bc2227-d900-585f-8ac0-9d3f1cb40e27\",\n      \"sourceFingerprint\": \"sha256:3c2cf7e12ca7e76057fd48a316f2baa8698d524b1bd2fb15c30b4ed24c14e6f0\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-semantic-recheck-curricular-atomic\"\n    }",
+      "afterAllOtherBytesDigest": "sha256:c9b22afc2549ab53ec824f2599688a4f20dbdeaffe223bfc92c9841977c616c6",
+      "allOtherBytesUnchanged": true,
+      "changedRecordGoalIds": [
+        "e5bc2227-d900-585f-8ac0-9d3f1cb40e27"
+      ],
+      "otherBytesCheckMethod": "Replace the exact old/current record object text with the same __TARGET_RECORD__ placeholder and compare SHA-256 over the complete remaining file bytes. Equality preserves every other record, order, metadata, separators and formatting."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl",
+      "beforeBytesDigest": "sha256:261b4835f2e1643c7b1b48b7b17b4889918378e91078257d75c46a8e870c6ee2",
+      "recordCount": 478,
+      "beforeRecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-physics-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+        "fingerprint": "sha256:d7ebced1cbc82a45d7973c225f66cac35a3d8970fd9c4242b791c8d33440bc21",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-11",
+        "reviewer": "codex",
+        "reason": "Physik-M5-Review: einzelnes fachlich pruefbares Blattziel; mehrteilige Titel beschreiben eine zusammenhaengende Routine oder Bewertungsaufgabe, keinen unabhaengigen Sammelknoten.",
+        "suggestedSplit": []
+      },
+      "beforeRecordText": "{\"schemaVersion\":1,\"reviewId\":\"canonical-physics-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a\",\"goalId\":\"e5bc2227-d900-585f-8ac0-9d3f1cb40e27\",\"fingerprint\":\"sha256:d7ebced1cbc82a45d7973c225f66cac35a3d8970fd9c4242b791c8d33440bc21\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-11\",\"reviewer\":\"codex\",\"reason\":\"Physik-M5-Review: einzelnes fachlich pruefbares Blattziel; mehrteilige Titel beschreiben eine zusammenhaengende Routine oder Bewertungsaufgabe, keinen unabhaengigen Sammelknoten.\",\"suggestedSplit\":[]}",
+      "allOtherBytesDigest": "sha256:5b7b79470119c113ad2ac72d93d766ca4c4d331ac565191f21fdd5978874ed7e",
+      "afterBytesDigest": "sha256:0a9b066ba2c8cb3eff9838dfeb4bf044792afeafcc538804aa4bd54a4c64635d",
+      "afterRecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-physics-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+        "fingerprint": "sha256:19b20783211f5e470c6677748886d033e7e515ced4fd5160c1672892e893f4b0",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-09-13T21:36:18.414Z",
+        "reviewer": "codex-physics-model-wording-informed-layer-a-review",
+        "reason": "Aktuelle DE/EN-Fassung nach inhaltlicher Einzelprüfung: Eine zusammenhängende Kompetenz erläutert die Funktion physikalischer Modelle als gezielte Vereinfachung, die unter Modellannahmen Erklärungen oder Vorhersagen ermöglicht. Strahlen-, Teilchen-, Atom- und Elementarmagnetmodell sind alternative Beispiele; weder vier unabhängige Modellroutinen noch Modellkonstruktion oder gesonderte Rechnungen werden verlangt. Auswahl, Vereinfachung und Erkenntnisnutzen lassen sich an einem vorgegebenen frischen Modellbeispiel gemeinsam prüfen; das vorhandene P-Profil variiert dieselbe Kompetenz an Strahlen- und Teilchenmodellen. Kein Split erforderlich.",
+        "suggestedSplit": []
+      },
+      "afterRecordText": "{\"schemaVersion\":1,\"reviewId\":\"canonical-physics-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a\",\"goalId\":\"e5bc2227-d900-585f-8ac0-9d3f1cb40e27\",\"fingerprint\":\"sha256:19b20783211f5e470c6677748886d033e7e515ced4fd5160c1672892e893f4b0\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-13T21:36:18.414Z\",\"reviewer\":\"codex-physics-model-wording-informed-layer-a-review\",\"reason\":\"Aktuelle DE/EN-Fassung nach inhaltlicher Einzelprüfung: Eine zusammenhängende Kompetenz erläutert die Funktion physikalischer Modelle als gezielte Vereinfachung, die unter Modellannahmen Erklärungen oder Vorhersagen ermöglicht. Strahlen-, Teilchen-, Atom- und Elementarmagnetmodell sind alternative Beispiele; weder vier unabhängige Modellroutinen noch Modellkonstruktion oder gesonderte Rechnungen werden verlangt. Auswahl, Vereinfachung und Erkenntnisnutzen lassen sich an einem vorgegebenen frischen Modellbeispiel gemeinsam prüfen; das vorhandene P-Profil variiert dieselbe Kompetenz an Strahlen- und Teilchenmodellen. Kein Split erforderlich.\",\"suggestedSplit\":[]}",
+      "afterAllOtherBytesDigest": "sha256:5b7b79470119c113ad2ac72d93d766ca4c4d331ac565191f21fdd5978874ed7e",
+      "allOtherBytesUnchanged": true,
+      "changedRecordGoalIds": [
+        "e5bc2227-d900-585f-8ac0-9d3f1cb40e27"
+      ],
+      "otherBytesCheckMethod": "Replace the exact old/current record object text with the same __TARGET_RECORD__ placeholder and compare SHA-256 over the complete remaining file bytes. Equality preserves every other record, order, metadata, separators and formatting."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.review.jsonl",
+      "beforeBytesDigest": "sha256:e523754244c6639adfcb540bd98ba77c534b0fb14b7a528b1f4bf04fa0df33ff",
+      "recordCount": 478,
+      "beforeRecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-physics-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+        "fingerprint": "sha256:fe7ef960f0a116ddd0f2a96474bdae8f7312d0c361dad233dcba21a3a43e0fe1",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-physics-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Modellverständnis, Experimentieren, Auswertung und Aufgabenpraxis verankert; eine eigene Memorycard ist hier nicht notwendig."
+      },
+      "beforeRecordText": "{\"schemaVersion\":1,\"reviewId\":\"canonical-physics-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a\",\"goalId\":\"e5bc2227-d900-585f-8ac0-9d3f1cb40e27\",\"fingerprint\":\"sha256:fe7ef960f0a116ddd0f2a96474bdae8f7312d0c361dad233dcba21a3a43e0fe1\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-physics-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Modellverständnis, Experimentieren, Auswertung und Aufgabenpraxis verankert; eine eigene Memorycard ist hier nicht notwendig.\"}",
+      "allOtherBytesDigest": "sha256:5b06ef9bb444d6dbf4e49ad9531c41796736b176d3d72038f960b62155dc1eaf",
+      "afterBytesDigest": "sha256:39b0a9ca318acd8af1db0ec50c29020bcdd792d2c1e6437eeedefa99204a4c95",
+      "afterRecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-physics-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+        "fingerprint": "sha256:4df7864d88631953f4997edaf17434cf2caa718e6b6054146eff2a1d8ae50991",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-09-13T21:36:18.414Z",
+        "reviewer": "codex-physics-model-wording-informed-layer-a-review",
+        "reason": "Aktuelle DE/EN-Fassung und vollständiges P-Profil geprüft: Entscheidend ist, an vorgegebenen oder vertrauten Modellbeispielen ausgewählte Eigenschaften, Vereinfachungen, Annahmen und deren Erklärungs- oder Vorhersagenutzen zusammenhängend zu erläutern. Modellnamen sind Beispiele, keine auswendig zu lernende Liste; das Ziel verlangt keine neue Formel, Symbolzuordnung oder isolierte Definition als eigenständigen Abruf. Frische Strahlen- oder Teilchenmodellfälle liefern die passende Verständnisprüfung. Eine eigene Memorycard würde diese Begründungsleistung nicht ersetzen; no_memory_needed bleibt inhaltlich begründet."
+      },
+      "afterRecordText": "{\"schemaVersion\":1,\"reviewId\":\"canonical-physics-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a\",\"goalId\":\"e5bc2227-d900-585f-8ac0-9d3f1cb40e27\",\"fingerprint\":\"sha256:4df7864d88631953f4997edaf17434cf2caa718e6b6054146eff2a1d8ae50991\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-09-13T21:36:18.414Z\",\"reviewer\":\"codex-physics-model-wording-informed-layer-a-review\",\"reason\":\"Aktuelle DE/EN-Fassung und vollständiges P-Profil geprüft: Entscheidend ist, an vorgegebenen oder vertrauten Modellbeispielen ausgewählte Eigenschaften, Vereinfachungen, Annahmen und deren Erklärungs- oder Vorhersagenutzen zusammenhängend zu erläutern. Modellnamen sind Beispiele, keine auswendig zu lernende Liste; das Ziel verlangt keine neue Formel, Symbolzuordnung oder isolierte Definition als eigenständigen Abruf. Frische Strahlen- oder Teilchenmodellfälle liefern die passende Verständnisprüfung. Eine eigene Memorycard würde diese Begründungsleistung nicht ersetzen; no_memory_needed bleibt inhaltlich begründet.\"}",
+      "afterAllOtherBytesDigest": "sha256:5b06ef9bb444d6dbf4e49ad9531c41796736b176d3d72038f960b62155dc1eaf",
+      "allOtherBytesUnchanged": true,
+      "changedRecordGoalIds": [
+        "e5bc2227-d900-585f-8ac0-9d3f1cb40e27"
+      ],
+      "otherBytesCheckMethod": "Replace the exact old/current record object text with the same __TARGET_RECORD__ placeholder and compare SHA-256 over the complete remaining file bytes. Equality preserves every other record, order, metadata, separators and formatting."
+    }
+  ],
+  "nativeValidation": {
+    "semanticAtomicity": {
+      "cwd": "app",
+      "command": "npm run quality:semantic-atomicity:check -- --config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.config.json",
+      "exitCode": 0,
+      "outputSummary": "> skillpilot@0.0.0 quality:semantic-atomicity:check\n> tsx scripts/semanticAtomicityReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.config.json\n\n# Semantic Atomicity Review: canonical-physics-full\nScope: Canonical physics full landscape\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 478\nCurrent reviewed atomic: 478\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0"
+    },
+    "memoryCardReview": {
+      "cwd": "app",
+      "command": "npm run quality:memory-card-review:check -- --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.config.json",
+      "exitCode": 0,
+      "outputSummary": "# Memory Card Review: canonical-physics-full\nScope: Canonical physics full landscape\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 478\nCurrent no-memory decisions: 349\nCurrent memory-required decisions: 129\nCurrent needs developer review: 0\nMemory goals in scope: 5\nTraced memory goals: 5\nKnown deck IDs: 5\nDeck files: 6\nCard rows: 233\nPrimary cards in scope: 146\nKept primary cards: 146\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 2\nMemory-required goals checked in views: 258\nMemory-required goals without visible memory node: 0\n"
+    },
+    "semanticKindAndFullGoalBook": {
+      "cwd": "app",
+      "command": "node --import tsx --input-type=module -e 'import {resolve} from \"node:path\";import {loadGoalBookBuildInputs} from \"./scripts/goalBookModel.ts\";const {model}=await loadGoalBookBuildInputs(resolve(\"scripts/config/goal-books/de-gym-physics-national-atlas.json\"));console.log(JSON.stringify({pageCount:model.pages.length,modelDigest:model.digest,semanticKindLedgerValidated:true,published:false,written:false}));'",
+      "exitCode": 0,
+      "outputSummary": "{\"pageCount\":478,\"modelDigest\":\"sha256:db38f3224586a416c6624d5c95a027b7442c1d665e55c5231933047245e69a60\",\"semanticKindLedgerValidated\":true,\"published\":false,\"written\":false}"
+    },
+    "correctedDuringValidation": {
+      "firstAttemptResult": "The model validator rejected a new free-form decisionBasis value because the closed schema permits only documented enum values.",
+      "correction": "Used reviewed-current-semantic-recheck-curricular-atomic from the unchanged schema and reran the complete native model loader successfully. Specific reasoning and review time remain in this receipt."
+    }
+  },
+  "actualPublishedModelComparison": {
+    "checkedAt": "2026-09-13T21:41:42.204Z",
+    "publishedModelPath": "app/public/lernzielbuch/de-gym-physik-bundesweit.book-model.json",
+    "publishedModelBytesDigest": "sha256:f0ab5fc4d4209c09372b0e6555b865d3f29f77748cd9aac9ec17477161fbdbdb",
+    "publishedModelDigest": "sha256:63b4a8cf1f4ba86f07061ac077c06633d9c10760d2aac375a76eb6ff22e1e5f1",
+    "currentModelDigest": "sha256:db38f3224586a416c6624d5c95a027b7442c1d665e55c5231933047245e69a60",
+    "publishedPageCount": 478,
+    "currentPageCount": 478,
+    "changedPages": [
+      {
+        "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+        "changedKeys": [
+          "description",
+          "goalFingerprint",
+          "pageFingerprint"
+        ],
+        "beforePageFingerprint": "sha256:1d34b9766abb7807a766523b0b6f33360b8b0d967ad27f0fe725d8e87508aa25",
+        "afterPageFingerprint": "sha256:1983865ea1b2034e61ba8ed3577eef54811aa2f9d56c1b141e2d2548d966aeec",
+        "beforeGoalFingerprint": "sha256:52379367a20c1759b50f785fbc0e2b2105fbe2bffd9e2e183b982f5015d29dc8",
+        "afterGoalFingerprint": "sha256:a36524d362add6a43ebf3a5ba7d6104c1c28122e04b8f86849e2a21391153732"
+      }
+    ],
+    "unchangedPageCount": 477,
+    "changedModelKeys": [
+      "source",
+      "pages",
+      "digest"
+    ],
+    "changedModelSourceKeys": [
+      "landscapeDigest",
+      "semanticKindLedgerDigest",
+      "goalVisualizationQaDigest"
+    ],
+    "navigationUnchanged": true,
+    "chaptersUnchanged": true,
+    "reconstructedBeforeCanonicalBytesDigest": "sha256:48b8d42aa52c81f28c34187c85623b61d47b6252404e41007bfa47d715698419",
+    "beforeCanonicalMatchesAuditedSnapshot": true,
+    "currentCanonicalBytesDigest": "sha256:0b3a2f2e015cdfbdf7240dccc4a1d7318ee4283ab3007199f6e52c8e204f643e",
+    "canonicalChangedGoals": [
+      {
+        "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+        "changedKeys": [
+          "description",
+          "descriptionEn"
+        ]
+      }
+    ],
+    "comparedCanonicalContextCount": 764,
+    "comparedBookPageCanonicalContextCount": 478,
+    "changedCanonicalContextGoalIds": [],
+    "canonicalContextSetDigest": "sha256:cd2863e75003118f9bb706e45557d7489f962acc0abffc314de55fe857e819f4",
+    "counterfactualModelDigest": "sha256:40162ab63d6f48196c75d554ac390013a889b7da32442eb665af0844f51261cc",
+    "publishedModelWritten": false,
+    "currentModelWritten": false,
+    "execution": {
+      "nativeModelFunction": "loadGoalBookBuildInputs",
+      "nativeCanonicalContextFunction": "buildGoalDescriptionCanonicalContext",
+      "nativeComparisonSerialization": "stableGoalBookJson",
+      "exitCode": 0,
+      "mode": "read_only_in_memory"
+    },
+    "counterfactualDifferenceReason": "The diagnostic counterfactual retained the old decisionBasis and old QA record. The actual current source now has the documented reviewed-current-semantic-recheck-curricular-atomic decisionBasis and root-authored QA context metadata. These source bindings explain why the full digest is not the earlier hypothetical digest; exactly the same single page fields changed. This is no additional image or P approval."
+  },
+  "limits": [
+    "This informed single-goal Layer A review does not count as a new independent blind D review, human approval, P-v2 approval, image reapproval, curriculum source-coverage promotion, learner mastery, publication or host acceptance.",
+    "The original model P profile and historical review evidence were read but not edited by this subtask. Root owns its separate current binding work.",
+    "The native model was built in memory only. No published goal-book model was overwritten.",
+    "Root must regenerate the curriculum-quality status and check protected maturity floors for the complete authorized change set. These three native checks alone do not certify the full change set."
+  ]
+}

@@ -8,57 +8,18 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image_gen
 - Status: pilot
-- Quellbild: `03685f87-7570-5bb3-b1c7-134124abb317.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/03685f87-7570-5bb3-b1c7-134124abb317/03685f87-7570-5bb3-b1c7-134124abb317.jpg`
+- Quellbild: `03685f87-7570-5bb3-b1c7-134124abb317.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/03685f87-7570-5bb3-b1c7-134124abb317/03685f87-7570-5bb3-b1c7-134124abb317.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Übergangsprozesse mit Zustandsvektoren und Übergangsmatrizen beschreiben
-Beschreibung: Die lernende Person kann Übergangsprozesse, zum Beispiel Populationsentwicklung, Wählerverhalten oder Kundenströme, mit Zustandsvektoren und Übergangsmatrizen beschreiben und die Einträge im Kontext deuten.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Uebergangsprozess mit Zustandsvektor und Uebergangsmatrix beschreiben.
-- Verwende drei Zustaende A, B, C.
-- Zeige den Zustandsvektor als Spaltenvektor:
-  v_0 = (100, 50, 20)^T.
-- Verwende die Uebergangsmatrix M als Tabelle mit Spalten "von" und Zeilen "nach".
-- Matrix/Tabelle:
-  Spalten "von": A, B, C.
-  Zeilen "nach": A, B, C.
-  M =
-    [0.6  0.2  0.1
-     0.3  0.5  0.0
-     0.1  0.3  0.9]
-- Zeige unter jeder Spalte die Summe:
-  A-Spalte: 0.6+0.3+0.1=1.0.
-  B-Spalte: 0.2+0.5+0.3=1.0.
-  C-Spalte: 0.1+0.0+0.9=1.0.
-- Berechnung:
-  v_1 = M * v_0 = (72, 55, 43)^T.
-- Deutung:
-  Der Eintrag 0.3 in Zeile B, Spalte A bedeutet: Von A wechseln 30 Prozent nach B.
-  Der Eintrag 0.0 in Zeile B, Spalte C bedeutet: Von C wechselt niemand nach B.
-
-Vermeiden:
-- Die Matrix nicht als zeilenstochastisch darstellen; entscheidend sind hier die Spaltensummen.
-- "von" und "nach" nicht vertauschen.
-- Die Summe 100+50+20=170 muss auch in v_1 erhalten bleiben: 72+55+43=170.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Use case: precise-object-edit (scientific educational infographic).
+Input image 1 is the edit target, an existing German classroom illustration. Preserve the entire existing composition, friendly hand-drawn style, colors, title, all labels, matrices, arrows and numerical calculations, with only the following precise correction.
+The white speech bubble "Deutung: 30% wechseln von A nach B." currently has its thin white triangular leader tip incorrectly touching 0.6 (row "nach A", column "von A") in the middle table. Re-route that one speech-bubble leader so its tip unambiguously ends immediately beside the number 0.3 in the SECOND data row "nach B", FIRST data column "von A". The point must clearly indicate the 0.3 cell, without obscuring that number or the row label. Do not leave any tip or line reaching the 0.6 cell. Keep the zero-percent bubble pointing at 0.0 in row nach B, column von C unchanged.
+The correct matrix remains [[0.6,0.2,0.1],[0.3,0.5,0.0],[0.1,0.3,0.9]], with columns sources A,B,C and rows destinations A,B,C. Initial column vector (100,50,20) and result (72,55,43) and total170 remain exactly unchanged. All column sums remain1.0. Preserve the full image margins and legible typography. No added content, no technical IDs, no stylistic redesign. Return the complete corrected illustration, not a crop.
 ```
 
 ## Review-Notiz

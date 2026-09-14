@@ -183,27 +183,53 @@ Reference pools of example tasks or image inspirations may be kept locally under
 
 ### Provider priority and exception policy
 
-For new Mathematik and Physik curriculum visualizations, use **Google Gemini /
-Nano Banana Pro as the default production provider**. Its loose, approachable
-illustration style is part of the intended learner experience. An existing,
-fachlich correct Nano Banana Pro asset must not be replaced merely because a
-repository-native SVG would be easier to edit, render deterministically, or
-validate mechanically.
+**Effective 13 September 2026, by Product Owner decision.** This policy replaces
+the former Nano-Banana-first requirement and its retroactive provider-conversion
+rule for Mathematik and Physik. Historical decisions, sealed review receipts and
+earlier rejected attempts remain unchanged; they do not constrain the provider
+for a new attempt. This policy update does not resume a paused QS goal, create
+review approvals, change progress counts or authorize publication.
 
-This priority also applies retroactively to every Mathematik or Physik asset
-newly produced during an ongoing rollout: before such a rollout is finalized,
-review its already-created learner-facing assets against the same provider
-priority and exception evidence. A repository-native draft created earlier in
-the rollout does not become an accepted final asset merely because it predates
-this policy clarification.
+**KEEP is the default.** Retain good existing images regardless of provider.
+Generate only to fill a didactically useful gap or correct a documented weakness.
+A newer generator, easier implementation or more deterministic rendering is not
+by itself a reason to replace an existing asset or repeat a still-current review.
 
-A repository-native SVG or another provider may become the final asset only
-after targeted Nano Banana Pro attempts have failed to achieve the required
-subject-matter correctness or legibility. The corresponding visualization
-review note must record the attempted prompts or reference-image strategy, the
-visible defects in the rejected candidates, and why the fallback is necessary.
-Temporary SVGs remain useful as exact reference inputs for Nano Banana Pro; that
-does not make them the preferred final learner-facing asset.
+For necessary new images and corrections, **prefer ChatGPT/Codex image
+generation**. Acceptance depends on the actual result: subject-matter correctness,
+didactic usefulness, suitable representation, age fit, legibility and continuity
+with the existing visual landscape. Inspect suitable existing images as style
+references; preserve the approachable image language, coherent colors and
+appropriate information density. Choose the representation to suit the content
+rather than forcing every goal into one diagram or illustration template.
+
+**Nano Banana Pro remains an allowed alternative**, including when it is better
+suited to the desired representation or style, or the preferred generator is
+unavailable. No failed attempt with either provider is a prerequisite. Select
+and assess targeted candidates; do not run both providers merely to satisfy an
+obsolete ordering rule.
+
+Programmatically drawn diagrams/SVGs are distinct from ChatGPT/Codex image
+generation. They remain narrow, documented exceptions justified by the actual
+content and required precision, not by convenience alone. They must meet the
+same visual-integration and legibility requirements. Exact temporary diagrams
+may also be used as reference inputs without becoming the final image.
+
+**Generation is not approval.** A separate visual and fachlicher review must
+inspect the actual output against the current learning goal and style references,
+including geometry, calculations, notation, units, labels and misleading visual
+implications. Record the actual provider and model/tool (only as known), actual
+prompt/reference strategy, candidate and active-image hashes, rejected defects
+and the review decision under `goal-visualization-review/`. Do not infer provider
+provenance from helper defaults or filenames. Preserve existing transparency,
+licensing, accessibility and human/AI approval requirements.
+
+After a substantive image change, recheck the affected goal, page, context and
+evidence bindings. A hash refresh alone is not a content review. Unchanged,
+still-current records remain valid; a policy change alone is neither a new review
+nor a reason to invalidate them. Public curriculum content and permitted style
+references may be used in external prompts; private class, learner, session or
+chat data must remain local, and technical IDs must stay out of provider prompts.
 
 When an atomic goal is split, preserve a good existing aggregate image as an
 overview on the retained cluster whenever it still accurately represents the
@@ -212,7 +238,7 @@ the overview asset.
 
 1. Select an atomic goal and record its SkillPilot ID, title, description, phase, and intended learner audience.
 2. Draft a compact image prompt from the goal itself. The prompt may add concrete representations, but must not add extra curriculum content beyond the goal.
-3. Generate several candidates with the chosen image provider.
+3. Generate a targeted candidate with the chosen image provider; make further attempts only to address identified shortcomings.
 4. Review candidates against the quality checklist below.
 5. Store the selected asset and prompt metadata under `curricula/.../visualizations/...`.
 6. Add the optional `resourceLinks` entry to the canonical goal JSON.
@@ -222,7 +248,8 @@ the overview asset.
 
 ## Automated Nano Banana Pro Workflow
 
-Preferred automated workflow:
+When Nano Banana Pro is selected under the policy above, use its existing
+automated workflow:
 
 ```bash
 GEMINI_API_KEY="<key>" npm --prefix app run visualization:generate:nano-banana -- "<goal-id-or-unique-title-fragment>"
@@ -334,11 +361,15 @@ The subject QA ledgers can additionally record an explicit AI review. `aiApprove
 
 ## Low-Friction Manual Provider Workflow
 
-When using a manual image provider such as Nano Banana Pro, do not hand-build filenames, folders, or JSON links.
-Use the helper scripts:
+For ChatGPT/Codex image generation or another manually/tool-generated candidate,
+use the existing helper scripts rather than hand-building filenames, folders or
+JSON links. Explicitly identify the actual provider in **both** preparation and
+import; the helpers retain a Nano Banana compatibility default that is not the
+current provider-selection policy:
 
 ```bash
-npm --prefix app run visualization:prepare -- "<goal-id-or-unique-title-fragment>"
+npm --prefix app run visualization:prepare -- "<goal-id-or-unique-title-fragment>" \
+  --provider="OpenAI / ChatGPT-Codex image generation"
 ```
 
 This writes a prompt package to:
@@ -348,11 +379,25 @@ tmp/goal-visualizations/<skillpilotId>/nano-banana-prompt.de.md
 tmp/goal-visualizations/<skillpilotId>/metadata.json
 ```
 
-Copy the prompt text into the image provider, generate the image, download the selected candidate, then import it:
+The `nano-banana-prompt` filename is historical, not a provider restriction.
+Send only the prompt body, not the package metadata containing technical IDs.
+Inspect and supply appropriate style references, generate the candidate and
+save the **actual final prompt** used, including any targeted corrections. Then
+import the reviewed candidate with explicit provenance:
 
 ```bash
-npm --prefix app run visualization:import -- "<skillpilotId>" "<downloaded-image-path>"
+npm --prefix app run visualization:import -- "<skillpilotId>" "<generated-image-path>" \
+  --provider="OpenAI / ChatGPT-Codex image generation" \
+  --prompt="<actual-generation-prompt.md>"
 ```
+
+Use the actual provider/tool name for other generators and record the model
+version when it is available; do not invent one. The preparation helper's
+printed minimal import hint omits these overrides, so retain them explicitly.
+The helpers default to Mathematics. For Physics, pass
+`--landscape=curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
+and `--subject=physik` to **both** commands. Import and deployment are not review
+approvals; complete the existing hash-bound QA and release gates separately.
 
 The import script:
 
@@ -384,6 +429,7 @@ Use `--dry-run` to inspect the planned paths and JSON URL before writing files.
 - Mathematical notation is correct and not misleading.
 - The image has no copied third-party worksheet, logo, character, or protected layout.
 - The context is plausible and age-appropriate for the goal.
+- The representation suits the content, and its image language, colors and information density fit appropriate existing style references.
 - Text is readable at cockpit card width and does not dominate the image.
 - The image works in the cockpit goal card and in the multilingual OpenAI
   renderer's dedicated active, hash-bound image-only MCP Apps UI resource. Only
@@ -417,13 +463,17 @@ Review decisions should use these labels:
 - `deferred_provider_limitation` - repeated provider attempts stayed fachlich wrong; remove the `resourceLinks` image reference and revisit when the provider improves
 - `needs_external_review` - no obvious blocker, but the image is too subtle or high-risk for self-review only
 
-If repeated, targeted Nano Banana Pro attempts still contain a gross mathematical
-or tool-use error, do not silently substitute another provider. A precise
-repository-native image may be used only as the documented exception described
-above: the review record must bind the rejected provider attempts, their visible
-defects, and the reason the fallback is materially better. If no fallback meets
-the same fachliche and visual-quality bar, remove the active image link and
-published copies and record `deferred_provider_limitation` instead.
+If targeted attempts still contain a gross mathematical or tool-use error,
+reject the candidate and use an allowed alternative under the provider policy
+above. A provider change is permitted, but its provenance and review must be
+explicit. Document any programmatic-diagram exception with its fachliche reason;
+do not invent failed attempts to justify it. If no candidate meets the same
+fachliche and visual-quality bar, retain the rejected attempts as evidence and
+record the appropriate unresolved or `deferred_provider_limitation` decision.
+Remove any demonstrably unsuitable active image link and published copies while
+archiving their evidence. A failed replacement attempt never justifies removing
+a good existing image. A missing technical capability or unavailable generator
+is not itself evidence that an image is fachlich wrong.
 
 Keep `reviewStatus: "pilot"` until the intended release review has passed. Do not infer approval from the existence of a generated file, a public asset, or a `resourceLinks` entry.
 

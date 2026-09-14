@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "informed-ai-profile-body-counterreview",
+  "reviewedAt": "2026-09-13T20:41:57Z",
+  "reviewer": "codex-root-informed-transitions-profile-counterreview-20260913",
+  "authority": "ai_candidate",
+  "humanApproval": false,
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-20260913-transitions-2-v1.candidates.json",
+  "candidateSha256": "4db1b6a1e5f3ea52b28f962b5cd0fd09e7315c49f3f4d77a09d4547e73956bf0",
+  "reviewRecordsSha256": "00b8f80308ffd039bfb1a53e644af1ddcff3fd93f9b65af115c0144b467e2a03",
+  "method": "Root read both complete bilingual profile bodies, current goals, direct relation boundaries, complete D criteria and complete mathematics V2 criteria. Independently checked all matrices, counts, source denominators, coefficient interpretations and model-limit reasoning. These are four concrete fresh assessment cases, not evidence of actual learner performance. This informed counterreview is separate from the two blind D runs.",
+  "goals": [
+    {
+      "goalId": "03685f87-7570-5bb3-b1c7-134124abb317",
+      "decision": "retain_ai_candidate",
+      "reasonDe": "Zustand, Zeit, Einheit und gerichtete Übergangsbedeutung sind in beiden Fällen ausdrücklich erfasst. Die Kundenmatrix [0.60,0.25;0.40,0.75] und v0=(160,40) passen zu den Bezugsgruppen; 200 Personen bleiben in der geschlossenen Gruppe. Die unabhängige Populationsaufgabe wechselt Darstellungsrichtung und Koeffiziententyp: T=[0,0.50;1.50,0.80] mit Ausgangszeilen wird korrekt zu M=[0,1.50;0.50,0.80] mit Ausgangsspalten. 1.50 sind Nachkommen pro Erwachsenem, keine individuelle Wechselwahrscheinlichkeit. Spaltensummen 0.50 und 2.30 sind deshalb zulässig; Überleben und Fortpflanzung erlauben keine pauschale Erhaltungsannahme. Alle Werte sind vorgegeben: keine Parameterschätzung oder zusätzliche Rechenkompetenz wird verlangt.",
+      "reasonEn": "Both cases explicitly cover state, time, units and directed transition meaning. Customer fractions are tied to their correct source groups. Independent transfer changes both representation convention and coefficient meaning: the source-row population table is correctly transposed, and 1.50 offspring per adult is not misclassified as a probability. Non-unit column sums follow from survival and reproduction. All parameters are supplied, preserving representation scope rather than importing model estimation or state evolution."
+    },
+    {
+      "goalId": "6aa593a3-6690-581d-9b7d-37cac78187a1",
+      "decision": "retain_ai_candidate",
+      "reasonDe": "Zustandsraum, Zeitschritt, begründete Wahrscheinlichkeiten und konkrete Modellannahmen bilden eine kohärente AB2-Modellierung. 84/100=0.84, 16/100=0.16, 15/50=0.30 und 35/50=0.70 verwenden richtige Ausgangsnenner; Häufigkeiten beweisen weder Markov-Eignung noch zeitliche Konstanz. Die Reparaturregel führt korrekt zu [0.95,0.40;0.05,0.60]. Der eigenständige Transfer verändert eine Modellbedingung: Zwei heutige R-Zustände mit unterschiedlicher Reparaturvorgeschichte haben ausdrücklich verschiedene Übergangschancen 0.40 und 0.10. R allein genügt damit allgemein nicht; die Begründung genügt ohne Konstruktion einer erweiterten Kette. Keine zukünftigen Zustände, inversen Matrizen oder Fixvektoren werden gefordert.",
+      "reasonEn": "State space, time step, justified probabilities and concrete assumptions form coherent AB2 modeling. Each observed probability uses the correct source denominator; observations do not prove Markov validity or temporal constancy. The repair matrix and both complementary probabilities are correct. Fresh transfer changes a model condition: the same current R state carries distinct next-step probabilities depending on earlier repair status, so R alone is generally insufficient. A reasoned suitability decision is required, not an additional expanded-chain calculation, future-state computation or fixed-vector task."
+    }
+  ],
+  "bindingAndLimits": "Current native records bind the imported PNGs and current alt text. German and English demands and conditions agree. Profiles remain needs_human_review / ai_candidate / E1 / G1; requireApproved remains false under the existing report contract. No human approval, runtime change, canonical wording change or publication is asserted."
+}

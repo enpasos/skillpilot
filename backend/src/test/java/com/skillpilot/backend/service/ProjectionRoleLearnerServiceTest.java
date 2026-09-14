@@ -2,6 +2,7 @@ package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
@@ -27,6 +28,9 @@ import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -52,6 +56,19 @@ class ProjectionRoleLearnerServiceTest {
     private static final String ROOT_CLUSTER_ID = "projection-root";
     private static final String NESTED_CLUSTER_ID = "projection-nested";
     private static final String OUTSIDE_TARGET_ID = "outside-target";
+    private static final String PHYSICS_ORIENTATION_ID = "5c44b9ba-9b05-4774-95d5-073230d3fc4f";
+    private static final String OBSERVATION_ID = "5355fee0-0477-5570-a234-561477bf77ba";
+    private static final String SI_UNITS_ID = "3ed3279e-c524-5230-a277-dda89493df6d";
+    private static final String MODELS_ID = "e5bc2227-d900-585f-8ac0-9d3f1cb40e27";
+    private static final String SOURCE_CRITIQUE_ID = "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e";
+    private static final String SOLAR_SYSTEM_CLASSIFICATION_ID = "982df2f3-e040-5f4b-b668-0fe05d994b29";
+    private static final String OPEN_COSMOLOGICAL_QUESTIONS_ID = "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162";
+    private static final List<String> PHYSICS_METHOD_IDS =
+            List.of(OBSERVATION_ID, SI_UNITS_ID, MODELS_ID, SOURCE_CRITIQUE_ID);
+    private static final List<String> MASTERED_PHYSICS_CONTEXT_IDS = List.of(
+            PHYSICS_ORIENTATION_ID,
+            "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93", // Aufbau des Sonnensystems
+            "c52d55c3-b687-586c-b0f9-8ffcd1069424"); // Urknallmodell
     private static final String GLOBAL_ASSESSMENT_ROOT_ID = "global-assessment-root";
     private static final String GLOBAL_ASSESSMENT_EXAM_ID = "global-assessment-exam";
     private static final String SYNTHETIC_STRUCTURE_ID =
@@ -240,6 +257,42 @@ class ProjectionRoleLearnerServiceTest {
         assertThat(fixture.service().getFilteredAtomicGoalIds(
                         LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false))
                 .doesNotContain(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+    }
+
+    @Test
+    void explicitPhysicsMethodTargetsUnlockAstronomyOnlyAfterEachPrerequisiteIsMastered() throws Exception {
+        Fixture fixture = physicsSourceRouteFixture("target");
+
+        assertPhysicsSourceRouteFrontier(fixture, Set.of(), OBSERVATION_ID, SI_UNITS_ID);
+        assertPhysicsSourceRouteFrontier(fixture, Set.of(OBSERVATION_ID), MODELS_ID, SI_UNITS_ID);
+        assertPhysicsSourceRouteFrontier(fixture, Set.of(OBSERVATION_ID, MODELS_ID), SI_UNITS_ID);
+        assertPhysicsSourceRouteFrontier(
+                fixture, Set.of(OBSERVATION_ID, MODELS_ID, SI_UNITS_ID), SOURCE_CRITIQUE_ID);
+        assertPhysicsSourceRouteFrontier(
+                fixture, Set.copyOf(PHYSICS_METHOD_IDS),
+                SOLAR_SYSTEM_CLASSIFICATION_ID, OPEN_COSMOLOGICAL_QUESTIONS_ID);
+    }
+
+    @Test
+    void omittedOrPrerequisiteOnlyPhysicsMethodsDoNotProvideALearnableAstronomyRoute() throws Exception {
+        for (String methodRole : List.of("omitted", "prerequisiteOnly")) {
+            Fixture fixture = physicsSourceRouteFixture(methodRole);
+
+            assertThat(fixture.service().getFilteredAtomicGoalIds(
+                            LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false))
+                    .containsExactlyInAnyOrder(
+                            SOLAR_SYSTEM_CLASSIFICATION_ID, OPEN_COSMOLOGICAL_QUESTIONS_ID);
+            assertPhysicsSourceRouteFrontier(fixture, Set.of());
+            assertPhysicsSourceRouteFrontier(fixture, Set.of(OBSERVATION_ID, MODELS_ID, SI_UNITS_ID));
+
+            if ("prerequisiteOnly".equals(methodRole)) {
+                assertPhysicsSourceRouteFrontier(
+                        fixture, Set.copyOf(PHYSICS_METHOD_IDS),
+                        SOLAR_SYSTEM_CLASSIFICATION_ID, OPEN_COSMOLOGICAL_QUESTIONS_ID);
+            } else {
+                assertPhysicsSourceRouteFrontier(fixture, Set.copyOf(PHYSICS_METHOD_IDS));
+            }
+        }
     }
 
     @Test
@@ -721,6 +774,70 @@ class ProjectionRoleLearnerServiceTest {
         verify(fixture.plannedGoalRepository()).save(
                 org.mockito.ArgumentMatchers.argThat(goal ->
                         ROOT_CLUSTER_ID.equals(goal.getGoalId())));
+    }
+
+    private Fixture physicsSourceRouteFixture(String methodRole) throws Exception {
+        List<Map<String, Object>> entries = new ArrayList<>();
+        entries.add(goalEntry(SOLAR_SYSTEM_CLASSIFICATION_ID));
+        entries.add(goalEntry(OPEN_COSMOLOGICAL_QUESTIONS_ID));
+        MASTERED_PHYSICS_CONTEXT_IDS.forEach(id -> entries.add(goalEntry(id, "prerequisiteOnly")));
+        if (!"omitted".equals(methodRole)) {
+            PHYSICS_METHOD_IDS.forEach(id -> entries.add(goalEntry(id, methodRole)));
+        }
+        Fixture fixture = fixture(Map.of(
+                "viewId", "projection-role-test",
+                "landscapeId", LANDSCAPE_ID,
+                "rootNodes", entries));
+
+        List<String> routeIds = new ArrayList<>(PHYSICS_METHOD_IDS);
+        routeIds.add(SOLAR_SYSTEM_CLASSIFICATION_ID);
+        routeIds.add(OPEN_COSMOLOGICAL_QUESTIONS_ID);
+        routeIds.addAll(MASTERED_PHYSICS_CONTEXT_IDS);
+        LearningGoal root = clusterGoal(ROOT_CLUSTER_ID, routeIds);
+        root.setTags(List.of("root"));
+        List<LearningGoal> goals = new ArrayList<>(List.of(root));
+        ObjectMapper mapper = new ObjectMapper();
+        // Keep canonical requirements intact in this small runtime fixture. The other
+        // astronomy prerequisites are already mastered; real composition views have separate tests.
+        for (var node : mapper.readTree(Path.of(
+                "../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json")
+                .toFile()).path("goals")) {
+            if (routeIds.contains(node.path("id").asText())) {
+                goals.add(mapper.treeToValue(node, LearningGoal.class));
+            }
+        }
+        assertThat(goals).extracting(LearningGoal::getId)
+                .containsAll(routeIds).hasSize(routeIds.size() + 1);
+        fixture.landscape().setGoals(goals);
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), ROOT_CLUSTER_ID)));
+        return fixture;
+    }
+
+    private void assertPhysicsSourceRouteFrontier(
+            Fixture fixture, Set<String> masteredMethods, String... expectedFrontier) {
+        Map<String, Double> explicitMastery = new LinkedHashMap<>();
+        MASTERED_PHYSICS_CONTEXT_IDS.forEach(id -> explicitMastery.put(id, 1.0));
+        PHYSICS_METHOD_IDS.forEach(id -> explicitMastery.put(id, masteredMethods.contains(id) ? 1.0 : 0.0));
+        explicitMastery.put(SOLAR_SYSTEM_CLASSIFICATION_ID, 0.0);
+        explicitMastery.put(OPEN_COSMOLOGICAL_QUESTIONS_ID, 0.0);
+        List<Mastery> storedMastery = explicitMastery.entrySet().stream()
+                .map(entry -> new Mastery(fixture.learner(), entry.getKey(), entry.getValue()))
+                .toList();
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(storedMastery);
+
+        assertThat(fixture.service().getFrontier(LEARNER_ID))
+                .containsExactlyInAnyOrder(expectedFrontier);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id)
+                .containsExactlyInAnyOrder(expectedFrontier);
+        assertThat(fixture.service().getMastery(LEARNER_ID)).isEqualTo(explicitMastery);
+        assertThat(storedMastery).allSatisfy(mastery ->
+                assertThat(mastery.getValue()).isEqualTo(explicitMastery.get(mastery.getGoalKey())));
+        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+        verify(fixture.masteryRepository(), never()).saveAll(any());
+        verify(fixture.masteryRepository(), never()).saveAndFlush(any(Mastery.class));
     }
 
     private Fixture fixture(Map<String, Object> matchedView) {

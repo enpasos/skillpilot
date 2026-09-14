@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physics-falling-qualitative-informed-review-20260913-a-v2",
+  "reviewedAt": "2026-09-13T19:18:11.851Z",
+  "reviewer": "Codex /root/physics52_round_a; exact model identifier not exposed",
+  "reviewMode": "informed_individual_profile_followup",
+  "priorInvolvement": "Reviewer previously proposed a qualitative scope correction and reviewed v1. The complete root-authored v2 body and both bilingual cases were reread; this is not a blind run.",
+  "goalId": "12260012-cf04-5409-b57d-f5b3a46d9126",
+  "reviewId": "physics-falling-qualitative-current-20260913-v2",
+  "goalFingerprint": "sha256:76c34dd624131915273a0a6f5ba0cf883c50c6492740a1796f41c5c66bfa369a",
+  "reviewInputFingerprint": "sha256:8e19d90c369cfcf97f837164c6daba3a1ea341ba0220d7cc156cb0e7a6a1e9f9",
+  "profileFingerprint": "sha256:c7791a009529dc293380fcfd0f43a6a3065969050294dcdce879dd185c5e4ec4",
+  "decision": "keep",
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewedArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/candidates-v2.json",
+      "digest": "sha256:7adf659280fa1f33b567e0632be92a4d6f06d035317c20c24f1dadf0ff4301f8",
+      "bytes": 10868
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/positive-evidence-v2.config.json",
+      "digest": "sha256:5646faf04cedd39e80577aedd995210489fcaa27c21554e19ab6b708d7fa0010",
+      "bytes": 1187
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/positive-evidence-v2.review.jsonl",
+      "digest": "sha256:1331990e7e8eb342097fb429910b01beb89ca72aae6b3066978fbccdf1695bde",
+      "bytes": 10765
+    }
+  ],
+  "candidateMaterializationBodyMatches": true,
+  "criteria": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/physics-positive-understanding-evidence-profile-criteria-v1.md",
+    "digest": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+    "fullyReadInPrecedingReview": true,
+    "digestUnchanged": true
+  },
+  "image": {
+    "path": "app/public/assets/goal-visualizations/physik/12260012-cf04-5409-b57d-f5b3a46d9126/12260012-cf04-5409-b57d-f5b3a46d9126.png",
+    "digest": "sha256:2b74e2dcdfe46796647dd106e6f7dee816f9afa182c570bcf06d936a7bbbea33",
+    "visuallyInspectedInPrecedingReview": true,
+    "currentBytesMatchInspectedImage": true
+  },
+  "fullProfileReview": {
+    "bilingualParity": "The complete German and English expectations, variation axes and both case briefs express the same qualitative scope.",
+    "scope": "Qualitative force balance, declining acceleration, nonzero terminal speed and a changed-drag case fit the current description. Neither case requires a numerical drag law or calculation of terminal speed.",
+    "case1": "The learner constructs force diagrams and a velocity-time prediction and justifies comparison of proposed trends at equal time intervals. Selecting A alone does not satisfy the stated performance. The unbounded continuation in B is now explicitly a proposal, not purported observation.",
+    "finiteLimit": "The case explicitly specifies continuously increasing drag that would exceed constant weight at a sufficiently high speed. Together with zero drag at rest in still air, this supports an intervening positive force-balance speed and the intended stable approach; mere weak growth alone is not used as proof of a finite limit.",
+    "case2": "The increased drag at a given positive falling speed initially exceeds unchanged weight. Upward resultant force and acceleration with still-downward velocity, followed by a lower force-balance speed, are physically consistent. This changes a material model condition and tests transfer rather than swapping numbers.",
+    "limitsAndSafety": "Still air, constant mass and weight and negligible buoyancy are explicit. The task remains an abstract model and asks for assumptions and the extra-force implication of relevant buoyancy; no hazardous experiment is required.",
+    "coverage": "Both content-specific expectations remain required; two independent demonstrations, fresh variation and independent transfer remain required."
+  },
+  "v1FindingResolution": {
+    "findingId": "equal-time-observation-distinction",
+    "resolved": true,
+    "changedProfileFields": [
+      "profile.applicationCaseBriefs[id=qualitative-release-model].taskDemandDe",
+      "profile.applicationCaseBriefs[id=qualitative-release-model].taskDemandEn",
+      "profile.applicationCaseBriefs[id=qualitative-release-model].understandingFocusDe",
+      "profile.applicationCaseBriefs[id=qualitative-release-model].understandingFocusEn"
+    ],
+    "diffReviewed": true,
+    "remainingSubstantiveFindings": []
+  },
+  "nativeCheck": {
+    "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/positive-evidence-v2.config.json",
+    "exitCode": 0,
+    "configuredGoals": 1,
+    "approved": 0,
+    "needsHumanReview": 1,
+    "rejected": 0,
+    "blockingIssues": 0
+  },
+  "historyPreservation": {
+    "v1Receipt": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/informed-review.receipt.json",
+      "digest": "sha256:36f9e7dea32b86a8128183a55d6f575d64bbcb3405c8515252d3beee45d3f4dd",
+      "bytes": 8188,
+      "retainedDecision": "revise"
+    },
+    "v1ArtifactsMatchDigestsRecordedInV1Receipt": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/candidates.json",
+        "digestMatches": true
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/positive-evidence.config.json",
+        "digestMatches": true
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/positive-evidence.review.jsonl",
+        "digestMatches": true
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/retained-three.config.json",
+        "digestMatches": true
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/retained-three.review.jsonl",
+        "digestMatches": true
+      }
+    ],
+    "writeScope": "Only informed-review-v2.receipt.json was created; no v1 candidate, profile, config, retained record or receipt was modified."
+  },
+  "limits": [
+    "This informed review and native validity do not grant human approval or establish learner mastery, runtime behavior, provider acceptance or deployment.",
+    "No new normative-source or nationwide-projection validation was performed.",
+    "Teaching images and hypothetical proposed trends are context, not evidence of an actual learner performance."
+  ]
+}

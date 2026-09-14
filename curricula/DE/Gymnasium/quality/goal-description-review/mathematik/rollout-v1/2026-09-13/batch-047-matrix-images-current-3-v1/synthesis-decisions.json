@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-b047-current-matrix-images-synthesis-20260913-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root; exact runtime model identifier not exposed",
+  "synthesizedAt": "2026-09-13T20:04:18.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913",
+    "batchManifestDigest": "sha256:f4db6294c5d5502cac4be5462abd5bf5974ad2319495ec11080cdd6590b7fa3d",
+    "configDigest": "sha256:2dff64412d8fb65dada70a82fd0a54b8e7acd5b51b8c9fb1e9f2f0602a0351b7",
+    "bundleFingerprint": "sha256:8171596317dcaccf188e4858d79e92e00f269762670f4a8026768517ecde2247",
+    "bookDigest": "sha256:467419176f0c80d50129d371a7069a2b687319e70a6f5719fb2c10d1349f2e5c",
+    "reviewInputFingerprint": "sha256:d37d7ebfa8527971b920ace071ac757a7d9e35133037c320aca27b57ab2f41c6",
+    "dualSummaryDigest": "sha256:26d9988068fa9ac2154c95ac04cf6a724cbab060f970033575736a131c66262f",
+    "canonicalLandscapeDigest": "sha256:bd0368638a3bb4ee781690891537620f1a746cec599958e8322cbac1e50bb420"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-a",
+      "campaignDigest": "sha256:f19af1ef80c35ccdc29db3e42c07e9651f8bbe02d2af9574f729f7f78dc2955f",
+      "roundId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-independent-a",
+      "reviewInputFingerprint": "sha256:d37d7ebfa8527971b920ace071ac757a7d9e35133037c320aca27b57ab2f41c6",
+      "batchId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:ddf900ae3d315068c5e4c2701421f5f2ef3a95a4b3dcaa516ae1f2ad70657753",
+      "runId": "mathematik-b047-current-3-v1-20260913-independent-a-run-001",
+      "runManifestDigest": "sha256:da56ea9b64787e2698f4d5181da0a1810bf3277c3378214c1d1e502b3ec37b77",
+      "resultsDigest": "sha256:25bdbc4728629cc3de707e6df1297d588734fb912565a784b5b11c416fc54976"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-b",
+      "campaignDigest": "sha256:17a5917fbf0d42128ea446bd21040ca1c4f579d058253416688b9d0e5999c174",
+      "roundId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-independent-b",
+      "reviewInputFingerprint": "sha256:d37d7ebfa8527971b920ace071ac757a7d9e35133037c320aca27b57ab2f41c6",
+      "batchId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:aa500dab14d5ce2a41528a9dbdd103daab4bdf0df05ddd4324a0792ae8183eb5",
+      "runId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001",
+      "runManifestDigest": "sha256:22037b5906d27eef897cfbca85184c93392df20620141ddf87cae3cf2230dd66",
+      "resultsDigest": "sha256:074219e4ed3e3e455e1e53e42728eb317f4273461bbf442b636333a6b5222c78"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-b047-current-matrix-images-synthesis-20260913-v1-decision-001",
+      "goalId": "4fb40e58-58c1-5964-b58e-3347a8022b97",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:99d07fdccb9a9850db3d66cc2410e240daf7e683369fed90d2a90111e3c0769b",
+      "pageFingerprint": "sha256:d368fe9a18f8572e923376d03d1104b6bd01272d6e540425704e601e55e73f6f",
+      "goalReviewContextFingerprint": "sha256:fd27fd8db633d22dfc43c046177b70fa383ea85a786a1f201dfd07eabe447505",
+      "finalText": {
+        "titleDe": "Skalare Multiplikation von Matrizen durchführen",
+        "titleEn": "Perform scalar multiplication of matrices",
+        "descriptionDe": "Die lernende Person kann Matrizen mit einem Skalar multiplizieren und die Wirkung auf alle Einträge korrekt anwenden.",
+        "descriptionEn": "The learner can multiply matrices by a scalar and correctly apply the effect to all entries."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b047-current-3-v1-20260913-independent-a-run-001.goal-1",
+          "recordDigest": "sha256:586726f51ef57c4dcc4ad6d0c0e67380368b3337bfcf7ec426b96a26679a4738"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001.4fb40e58-58c1-5964-b58e-3347a8022b97",
+          "recordDigest": "sha256:2dc8c3980bb7be5f871a29f84660db3319ac03cccc38efdc373a706123a1a807"
+        }
+      },
+      "rationaleDe": "Beide getrennten aktuellen KEEP-Reviews bestätigen dieselbe eng begrenzte skalare Operation in DE/EN. Alle Einträge, unveränderte Positionen und Form, negative Faktoren sowie Nullfälle werden fachlich konkret geprüft, ohne Nachfolger wie Übergangsmodelle zu importieren. Runde B wird wegen des zusätzlichen repräsentationalen Transfers von ausgeschriebenen zu indizierten Einträgen gewählt. Die fachlich falsche bisherige doppelte Vorfaktor-Darstellung wurde gezielt durch ein tatsächlich geprüftes PNG ersetzt; Bildbytes, Herkunft, Alttext und vollständige PDF-Seite sind aktuell gebunden. Gute kanonische Formulierungen bleiben unverändert. Die lokale HMKB-Stelle Q2.4/S.43 und Q2.5/S.44 trägt die skalare Multiplikation; eine neue vollständige 16-Länder-Quellenprüfung wird nicht behauptet. Die unabhängigen create-Empfehlungen sind durch das separat fachlich gegengeprüfte P-v2-Profil erfüllt: vollständiges negatives 2×3-Produkt sowie vollständige Prüfung eines neuen 3×2-Produkts mit Bruchskalar und Nullfall. Dieses Profil bleibt E1/G1-KI-Kandidat. Bildkorrektur, zwei Blindprüfungen und informierte Synthese sind keine menschliche Freigabe.",
+      "rationaleEn": "Both independent current KEEP reviews support the same bounded scalar operation in both languages. Entries, preserved positions and shape, negative factors and zero cases are examined without importing transition models. Round B is selected for its representational transfer from fully written matrices to indexed entries. The previously incorrect duplicate-factor display was replaced by an actually inspected PNG; its bytes, provenance, alt text and complete PDF page are currently bound. Good canonical wording is retained. The cited local HMKB pages support scalar multiplication; no new complete cross-state source audit is claimed. Both create recommendations are met by the separately counter-reviewed P-v2 profile: a complete negative 2×3 product and full verification of a fresh fractional 3×2 product plus zero case. The profile remains an E1/G1 AI candidate. Image correction, blind reviews and synthesis do not constitute human approval."
+    },
+    {
+      "decisionId": "mathematik-b047-current-matrix-images-synthesis-20260913-v1-decision-002",
+      "goalId": "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c3ec721bedc5c0e7d72b69b56dd45e7932f4869d7a725a460cea37a44d726f98",
+      "pageFingerprint": "sha256:df8e9e49653329556b95888fe9d37527eaa0216f84bc20e6db860368dd9944b8",
+      "goalReviewContextFingerprint": "sha256:93b9e97dda897e1e7212940e1532d877c00c2e965ef36ee85a106758bcda9ee1",
+      "finalText": {
+        "titleDe": "Matrizen addieren und subtrahieren",
+        "titleEn": "Add and subtract matrices",
+        "descriptionDe": "Die lernende Person kann gleich große Matrizen addieren bzw. subtrahieren und die Ergebnisse korrekt berechnen.",
+        "descriptionEn": "The learner can add or subtract matrices of the same size and compute results correctly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b047-current-3-v1-20260913-independent-a-run-001.goal-2",
+          "recordDigest": "sha256:079888885bbb209abfa8883855ba932e4f6d95b1201a939d25de68d7139cc7b7"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001.6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+          "recordDigest": "sha256:550f178d1c3ede40d10003a886b3baaf590de68e2ad09de5e2a35e617f9ba77c"
+        }
+      },
+      "rationaleDe": "Beide KEEP-Reviews erhalten die korrekte gemeinsame eintragsweise additive Kompetenz einschließlich Subtraktion und gleicher geordneter Größe. Eine Aufspaltung oder längere kanonische Formulierung wäre ohne belegte Schwäche unnötig. Runde B wird für die konkrete Umkehrung zum fehlenden Summanden mit vollständiger Additionsprobe gewählt. Der Ersatz des Bilds entfernt falsche Positionsverbindungen; beide Ergebnisfelder, Vorzeichen und 0−(−2)=2 sind am aktuellen PNG und der vollständigen PDF-Seite geprüft. HMKB S.43/44 nennt Addition und skalare Multiplikation; Subtraktion wird korrekt als additive Gegenoperation behandelt, nicht als erfundenes separates Quellenzitat. Das aktuelle P-Profil trägt beide Operationen durch gleiche Bestandspositionen, eine frische unbekannte Änderung mit Rückprobe und die begründete Unvereinbarkeit von 1×4 und 2×2 trotz gleicher Eintragszahl. Alle Fälle wurden vollständig gegengerechnet. Historische Bilder/Reviews bleiben als solche erhalten; nur die aktuelle fachlich geprüfte Bindung zählt. Keine Human-, Publikations- oder zusätzliche normative Freigabe.",
+      "rationaleEn": "Both KEEP reviews retain the coherent entrywise additive competence, including subtraction and equal ordered dimensions. No demonstrated defect calls for splitting or expanding the canonical wording. Round B is selected for the changed unknown-addend task with an addition check. The replacement image removes false position connections; both output matrices, signs and subtracting a negative entry were checked in the current PNG and complete PDF page. HMKB pages 43/44 name addition and scalar multiplication; subtraction is its additive counterpart, not an invented separate quotation. The current P profile covers both operations through aligned stock positions, a fresh unknown change with a complete check, and the justified incompatibility of 1×4 and 2×2 despite equal entry counts. All cases were independently recalculated. Historical images and reviews remain historical; only the substantively verified current binding counts. No human, publication or additional normative approval is claimed."
+    },
+    {
+      "decisionId": "mathematik-b047-current-matrix-images-synthesis-20260913-v1-decision-003",
+      "goalId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e1c3b70f62f1a12bdae774b36c600916c2c06c9f18a62bd61ca6cef2826cbc33",
+      "pageFingerprint": "sha256:82a59b995f6a834b3acab23ff7865c3a91887fbb229c9128830357d60d2bdffa",
+      "goalReviewContextFingerprint": "sha256:8a17d8ce30d3fbcb6f9a3b18d09db6c42676c904c8870fbdc0548a5aa31fde72",
+      "finalText": {
+        "titleDe": "Matrizen multiplizieren",
+        "titleEn": "Multiply matrices",
+        "descriptionDe": "Die lernende Person kann Matrizenprodukte berechnen, Dimensionsbedingungen prüfen und typische Fehlerquellen bei der Reihenfolge vermeiden.",
+        "descriptionEn": "The learner can compute matrix products, check dimension conditions, and avoid common order errors."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-b047-current-3-v1-20260913-independent-a-run-001.goal-3",
+          "recordDigest": "sha256:0de2e55a406cbc6c5805e7610b7c551cf50e4052ac3221534eb29c402376e048"
+        },
+        "second": {
+          "recordId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001.304111dd-426b-520b-a275-3fa37da1b0e0",
+          "recordDigest": "sha256:f0a31951ab41790471a0e1162a60060755ed67a010b233549f328778f10b6637"
+        }
+      },
+      "rationaleDe": "Beide KEEP-Reviews bestätigen die aktuelle kohärente Kompetenz aus Produktberechnung, Dimensionsprüfung und Faktorfolge. Runde A wird gewählt, weil der Transfer sowohl die nicht definierte Umkehrung eines 2×3-mal-3×4-Produkts als auch verschiedene quadratische Ergebnisse gleicher Größe ausdrücklich unterscheidet. Im korrigierten Bild sind hingegen beide Reihenfolgen definiert: AB=[2,7;14,10] ist 2×2, BA=[5,5,2;9,3,6;10,10,4] ist 3×3. Alle Werte, Zeile-Spalte-Zuordnung und c12=7 wurden am tatsächlichen Bild und in der vollständigen PDF-Zielseite geprüft; die frühere fehlerhafte Gleichungskette wurde nicht weiterverwendet. Die lokale HMKB-Quelle trägt die elementare Matrizenmultiplikation, nicht zusätzliche Inversen-, Potenz- oder Übergangsmodellkompetenzen. Das separate P-v2-Profil besitzt zwei vollständig gegengerechnete neue Fälle, darunter beide quadratischen Produkte und deren konkrete unterschiedliche Werte. Die create-Empfehlungen bleiben von der informierten P-Autorenschaft getrennt. Aktuelle AI-Kandidaten und separate Bild-QS bedeuten weder Humanfreigabe noch nachgewiesene Lernendenleistung.",
+      "rationaleEn": "Both KEEP reviews support the coherent current competence of computing products, checking dimensions and respecting factor order. Round A is selected because its transfer explicitly distinguishes an undefined reverse 2×3-by-3×4 order from unequal square products of the same size. In the corrected image, both orders are defined: AB is [2,7;14,10] of size 2×2; BA is [5,5,2;9,3,6;10,10,4] of size 3×3. Every entry, row-column correspondence and c12=7 were checked in the actual image and complete PDF page; the old malformed equality chain is not reused. The local HMKB source supports elementary multiplication, not inverse matrices, powers or transition modeling. The separate P-v2 profile contains two fully recalculated fresh cases, including both square products and their differing values. Blind create recommendations remain separate from informed P authorship. Current AI candidates and image QA imply neither human approval nor demonstrated learner performance."
+    }
+  ],
+  "manifestFingerprint": "sha256:463ddbfbe80b7cb00f3659e3018a506a195a8248d9a8c555807808fed75e7f0f"
+}

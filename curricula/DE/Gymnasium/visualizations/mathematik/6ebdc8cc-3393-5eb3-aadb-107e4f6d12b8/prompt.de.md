@@ -8,56 +8,22 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation (image_gen)
 - Status: pilot
-- Quellbild: `6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8/6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8.jpg`
+- Quellbild: `6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8/6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Matrizen addieren und subtrahieren
-Beschreibung: Die lernende Person kann gleich große Matrizen addieren bzw. subtrahieren und die Ergebnisse korrekt berechnen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Matrizen gleicher Groesse addieren und subtrahieren.
-- Verwende exakt:
-  A = [ [2, -1],
-        [0, 4] ].
-  B = [ [3, 5],
-        [-2, 1] ].
-- Zeige beide Rechnungen:
-  A + B = [ [2+3, -1+5],
-            [0+(-2), 4+1] ]
-        = [ [5, 4],
-            [-2, 5] ].
-  A - B = [ [2-3, -1-5],
-            [0-(-2), 4-1] ]
-        = [ [-1, -6],
-            [2, 3] ].
-- Visualisiere:
-  Gleiche Positionen werden miteinander verrechnet, zum Beispiel oben rechts mit oben rechts.
-  Beide Matrizen sind 2x2, daher sind Addition und Subtraktion definiert.
-- Deutung:
-  Matrixaddition und Matrixsubtraktion erfolgen eintragsweise.
-
-Vermeiden:
-- Nicht zeilenweise oder spaltenweise aufsummieren.
-- Das Vorzeichen bei 0-(-2) nicht verlieren; Ergebnis ist 2.
-- Nicht behaupten, dass verschieden grosse Matrizen addiert werden duerfen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Use case: precise-object-edit (scientific-educational)
+Input image 1 is the edit target: German illustration "Matrizen addieren und subtrahieren".
+Correct the misleading correspondence arrows in the addition and subtraction panels. REMOVE all connecting arrow paths between numeric matrix entries and their intermediate/results. Replace these arrows' teaching function with consistent cell-position colors: top-left softly orange, top-right softly pink, bottom-left softly blue, bottom-right softly green, identically in A, B, the intermediate matrix and result. A color always identifies the SAME row and column; do not interchange positions. Keep generous clear spacing, readable entries and full square brackets. Preserve the left definition panel, title, pale-blue background, rounded three-panel layout and friendly hand-drawn style. No new decorative motifs.
+Exact numeric content, unchanged, in both relevant panels:
+A = [2, −1; 0, 4], B = [3, 5; −2, 1].
+Addition: A + B = [2+3, −1+5; 0+(−2), 4+1] = [5, 4; −2, 5].
+Subtraction: A − B = [2−3, −1−5; 0−(−2), 4−1] = [−1, −6; 2, 3].
+Keep the caution −(−2)=+2 and the core same-size/same-position rule. All matrices are exactly 2 by 2. The connecting arrows must be gone, including small stray arrow fragments and detached minus symbols that formerly decorated arrows. Minus signs inside formulas must stay. No extra topics, brands, watermarks or technical IDs. Return one landscape raster image.
 ```
 
 ## Review-Notiz

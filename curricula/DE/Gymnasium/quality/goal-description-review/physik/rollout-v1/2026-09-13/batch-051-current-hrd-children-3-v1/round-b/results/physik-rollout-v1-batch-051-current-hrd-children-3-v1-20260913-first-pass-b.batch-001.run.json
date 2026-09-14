@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-b.batch-001.run-001",
+  "campaignId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-b",
+  "roundId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:b05136fdd0184a2857e7c0f082748c5e7678e1b6f770a47568ade2bc77d01a31",
+  "bundleFingerprint": "sha256:e78ef9a3f73e70c62f1e44152f5be73b91036d858a7de81a5dcd221fd8f1e2ae",
+  "bookDigest": "sha256:ef6db627c6e7927d6d7262424009128c20115c2fa88d28d092e922166becffd5",
+  "provider": "OpenAI",
+  "model": "not_exposed_by_runtime",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:a98ed3d669bb76351fd58a1c1eed577ff2dc7b3c770228556d30510dfa434990",
+  "independenceGroupId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "3a4b2f86-5c59-5429-8fb4-75d9b2589cb5",
+    "946ecf7b-0fcf-5776-9fb6-d397423c2f12",
+    "6a73cacc-e86d-5248-a180-fd3da8454b0f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:b05136fdd0184a2857e7c0f082748c5e7678e1b6f770a47568ade2bc77d01a31"
+    }
+  ],
+  "startedAt": "2026-09-13T18:41:48Z",
+  "completedAt": "2026-09-13T18:44:04Z",
+  "status": "completed",
+  "outputDigest": "sha256:3a899b1b96635dce6cf9a1cffebc96a4d9f226ace0c9900605c6221db15d6bbc",
+  "toolchainVersion": "goal-description-understanding-evidence-v2"
+}

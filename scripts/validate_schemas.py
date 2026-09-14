@@ -14,6 +14,9 @@ NON_LANDSCAPE_GOAL_COLLECTION_ROOTS = (
     ),
     os.path.normpath("curricula/DE/Gymnasium/quality/goal-evidence"),
 )
+GOAL_VISUALIZATION_REVIEW_ROOT = os.path.normpath(
+    "curricula/DE/Gymnasium/quality/goal-visualization-review"
+)
 
 
 def validate_personalization_flow_contract(schema_path, schema):
@@ -492,11 +495,21 @@ def validate_personalization_flow_semantic_contract():
             return False
     return True
 
-def is_known_non_landscape_goal_collection(file_path):
+def is_known_non_landscape_goal_collection(file_path, data):
     normalized_path = os.path.normpath(file_path)
-    return any(
+    if any(
         normalized_path == root or normalized_path.startswith(root + os.sep)
         for root in NON_LANDSCAPE_GOAL_COLLECTION_ROOTS
+    ):
+        return True
+    return (
+        normalized_path.startswith(GOAL_VISUALIZATION_REVIEW_ROOT + os.sep)
+        and normalized_path.endswith(".candidates.json")
+        and data.get("authoringContract")
+        == "positive-understanding-evidence-candidates-v1"
+        and type(data.get("schemaVersion")) is int
+        and data["schemaVersion"] == 1
+        and isinstance(data.get("goals"), list)
     )
 
 
@@ -506,7 +519,7 @@ def looks_like_runtime_landscape(file_path, data):
         return False
     if "landscapeId" in data or "id" in data:
         return True
-    return not is_known_non_landscape_goal_collection(file_path)
+    return not is_known_non_landscape_goal_collection(file_path, data)
 
 
 def validate_landscape_discovery_contract():
@@ -529,6 +542,54 @@ def validate_landscape_discovery_contract():
         ("curricula/view.json", {"landscapeId": "view", "goalEntries": []}, False),
         ("curricula/list.json", [], False),
     ]
+    candidate_paths = [
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/"
+        "math-function-sums-resumed-20260913-v1/"
+        "sum-positive-evidence.candidates.json",
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/"
+        "physics-astro-resumed-20260913-v1/"
+        "stellar-radius.profiles.candidates.json",
+    ]
+    valid_candidate = {
+        "authoringContract": "positive-understanding-evidence-candidates-v1",
+        "schemaVersion": 1,
+        "goals": [],
+    }
+    for candidate_path in candidate_paths:
+        cases.append((candidate_path, valid_candidate, False))
+        for field, invalid_values in (
+            ("authoringContract", (None, "other-contract", [], 1)),
+            ("schemaVersion", (None, 0, 2, "1", True, 1.0)),
+            ("goals", (None, {}, "not-an-array", 1)),
+        ):
+            for invalid_value in invalid_values:
+                invalid_candidate = {**valid_candidate, field: invalid_value}
+                cases.append((candidate_path, invalid_candidate, True))
+        for field in ("authoringContract", "schemaVersion"):
+            invalid_candidate = dict(valid_candidate)
+            del invalid_candidate[field]
+            cases.append((candidate_path, invalid_candidate, True))
+        # A present current/legacy ID always wins, even when its value or
+        # the goals field is malformed and the candidate markers match.
+        for id_field in ("landscapeId", "id"):
+            for id_value in ("runtime", None, "", 0, [], {}):
+                for goals_value in ([], None, {}):
+                    malformed_landscape = {
+                        **valid_candidate,
+                        id_field: id_value,
+                        "goals": goals_value,
+                    }
+                    cases.append((candidate_path, malformed_landscape, True))
+    for other_path in (
+        candidate_paths[0].replace(".candidates.json", ".json"),
+        candidate_paths[0].replace(".candidates.json", ".candidates.backup.json"),
+        candidate_paths[0].replace("goal-visualization-review", "other-review"),
+        candidate_paths[0].replace(
+            "goal-visualization-review", "goal-visualization-review-backup"
+        ),
+        "curricula/example.candidates.json",
+    ):
+        cases.append((other_path, valid_candidate, True))
     for file_path, data, expected in cases:
         if looks_like_runtime_landscape(file_path, data) is not expected:
             print(

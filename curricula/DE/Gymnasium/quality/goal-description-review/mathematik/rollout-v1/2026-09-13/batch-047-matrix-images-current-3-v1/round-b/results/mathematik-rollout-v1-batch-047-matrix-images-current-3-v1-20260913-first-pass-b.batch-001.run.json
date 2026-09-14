@@ -1,0 +1,49 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001",
+  "campaignId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-b",
+  "roundId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:aa500dab14d5ce2a41528a9dbdd103daab4bdf0df05ddd4324a0792ae8183eb5",
+  "bundleFingerprint": "sha256:8171596317dcaccf188e4858d79e92e00f269762670f4a8026768517ecde2247",
+  "bookDigest": "sha256:467419176f0c80d50129d371a7069a2b687319e70a6f5719fb2c10d1349f2e5c",
+  "provider": "OpenAI",
+  "model": "Codex agent runtime; exact model identifier not exposed",
+  "modelVersion": "not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:b2973b4452319a5e3d510d59567f4b6a40b657ee93c5696bc1b635c52cbc454f",
+  "independenceGroupId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "4fb40e58-58c1-5964-b58e-3347a8022b97",
+    "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+    "304111dd-426b-520b-a275-3fa37da1b0e0"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:e89fd5acb2406d5cf49d0c3a110fb157d4aa95564b1f4d57144184fccc1ef70f"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:aa500dab14d5ce2a41528a9dbdd103daab4bdf0df05ddd4324a0792ae8183eb5"
+    }
+  ],
+  "startedAt": "2026-09-13T20:01:06Z",
+  "completedAt": "2026-09-13T20:04:17Z",
+  "status": "completed",
+  "outputDigest": "sha256:074219e4ed3e3e455e1e53e42728eb317f4273461bbf442b636333a6b5222c78",
+  "toolchainVersion": "codex-exec_command-view_image-apply_patch-poppler-tsx"
+}

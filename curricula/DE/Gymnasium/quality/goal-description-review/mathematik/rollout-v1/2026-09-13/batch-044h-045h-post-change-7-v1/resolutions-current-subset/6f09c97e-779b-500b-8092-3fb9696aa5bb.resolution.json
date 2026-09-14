@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-current-subset-6f09c97e-779b-500b-8092-3fb9696aa5bb",
+  "goal": {
+    "goalId": "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:e491ed55bfb0193371355ee995ea8fe7653477d452846ae94334645461a5f4ca",
+    "pageFingerprint": "sha256:310be3fc01f15d1dea39fc1b1caa01c6ba76a7158e6b174e0775649b7027ce8b",
+    "goalReviewContextFingerprint": "sha256:282d4cedf75d7283ea40932b2c287e49ee9b2f14ea3ffb9107b46810cf42a7b4",
+    "finalText": {
+      "titleDe": "Matrix-Vektor-Produkte berechnen",
+      "titleEn": "Calculate matrix-vector products",
+      "descriptionDe": "Die lernende Person kann das Produkt einer Matrix mit einem Vektor bestimmen und das Ergebnis als neuen Zustandsvektor interpretieren.",
+      "descriptionEn": "The learner can compute the product of a matrix with a vector and interpret the result as a new state vector."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-a",
+      "campaignDigest": "sha256:19ce9d56b2dc3a4e610e672386bbe69587b799db918d2e61f4976da793931311",
+      "roundId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-independent-a",
+      "reviewInputFingerprint": "sha256:de85e63128e0293c7b37fd4fdd4f23b64d3a70be220f5f2ce1631accb87369f0",
+      "goalReviewContextFingerprint": "sha256:282d4cedf75d7283ea40932b2c287e49ee9b2f14ea3ffb9107b46810cf42a7b4",
+      "batchId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-a.batch-001",
+      "runId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-a.batch-001.codex",
+      "runManifestDigest": "sha256:991be4bc7498116f431669dc80bc550fd682f0f584d9488521f4287edad499ed",
+      "resultsDigest": "sha256:a091991766ffbde2e877e30d33a919367045d0c99b88435f199b4943dd461039",
+      "recordId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-a.batch-001.codex.goal-6",
+      "recordDigest": "sha256:e5bb92f6ff43d18cc3c77fa214bdd3c95729486f000bb26a359624160e279977"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-b",
+      "campaignDigest": "sha256:c3218afc826c4d038e843b71c318c739175f4a6a719bf4661e6d55f080e826dd",
+      "roundId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-independent-b",
+      "reviewInputFingerprint": "sha256:de85e63128e0293c7b37fd4fdd4f23b64d3a70be220f5f2ce1631accb87369f0",
+      "goalReviewContextFingerprint": "sha256:282d4cedf75d7283ea40932b2c287e49ee9b2f14ea3ffb9107b46810cf42a7b4",
+      "batchId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-b.batch-001",
+      "runId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-b.batch-001.openai-blind-b",
+      "runManifestDigest": "sha256:50f3bceac5f975f31e0ef19bfa8b2ed70097fc0ad2658968f205a48f050d4379",
+      "resultsDigest": "sha256:363d730f8dfb69ee56ed26a883cd301dec6717873fe269486073774eb7fbdcb5",
+      "recordId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-b.batch-001.openai-blind-b.goal-6",
+      "recordDigest": "sha256:5b3be7780da476b4b7f149c3527ffb4ea44233cb52fdca7b247e7397b0162b8e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:8b20934ce839a38b809da2d7053084e89655cc46a25bead19d926a1f35a305c7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-explicit-synthesis-6f09c97e-779b-500b-8092-3fb9696aa5bb",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex /root; current Math7 independent agent reviews A and B, 2026-09-13",
+    "synthesizedAt": "2026-09-13T18:24:21.551Z",
+    "rationaleDe": "Beide KEEP-Reviews bestätigen Berechnung und Zustandsdeutung als gekoppelte AB1-Kompetenz. Runde B macht mit einem frischen 3×2-Fall sichtbar, dass das korrekte quadratische Bildbeispiel den allgemeinen Dimensionsbezug nicht einschränkt. Die Beiträge einer Matrixzeile müssen den beschrifteten Eingangsgrößen zugeordnet und anschließend als Ausgangsgröße erklärt werden. Die neue aktuelle Voraussetzungslage wurde geprüft; eigenständige Übergangsmodellierung, Stochastikprüfung und geometrische Abbildung bleiben Nachfolger. Runde As alternativer Transfer mit nur einer besetzten Eingangskomponente bleibt im Originalrecord erhalten.",
+    "rationaleEn": "Both KEEP reviews confirm calculation and state interpretation as a coupled AB1 competency. Round B uses a fresh 3-by-2 case to show that the correct square image example does not restrict general dimension compatibility. Contributions from a matrix row must be matched to labelled input quantities and explained as an output quantity. The current prerequisite context was reviewed; constructing transition models, stochastic checks and geometric transformations remain successor goals. Round A's alternative transfer with only one occupied input component remains preserved in its original record.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei einem Matrix-Vektor-Produkt müssen die Matrixspalten zu den Komponenten des Eingangsvektors passen. Jede Ausgangskomponente entsteht aus den passend gewichteten Eingangsgrößen einer Matrixzeile; ihre Position bezeichnet die entsprechende Größe des neuen Zustands.",
+      "essentialUnderstandingEn": "For a matrix-vector product, the matrix columns must correspond to the components of the input vector. Each output component combines the appropriately weighted input quantities from one matrix row; its position identifies the corresponding quantity in the new state.",
+      "observablePerformanceDe": "Die lernende Person berechnet selbstständig das Produkt einer passend dimensionierten Matrix mit einem Zustandsvektor, legt die Zuordnung der Komponenten offen und erklärt an mindestens einer Ergebniskomponente die Beiträge der Eingangsgrößen. Sie deutet den Ergebnisvektor in der angegebenen Reihenfolge der Zustandsgrößen.",
+      "observablePerformanceEn": "The learner independently computes the product of a compatibly dimensioned matrix and a state vector, makes the component correspondence explicit and explains the contributions of the input quantities to at least one output component. The learner interprets the result vector in the stated order of the state quantities.",
+      "transferExpectationDe": "In einer neuen Aufgabe beschreibt eine gegebene 3×2-Matrix den Übergang von zwei Eingangsgrößen zu drei Ausgangsgrößen. Die lernende Person bestimmt die drei Komponenten des neuen Zustands und erklärt ihre Zuordnung, ohne die quadratische Form des früheren Beispiels vorauszusetzen.",
+      "transferExpectationEn": "In a new task, a supplied 3×2 matrix describes the transition from two input quantities to three output quantities. The learner determines the three components of the new state and explains their correspondence without assuming the square shape of the earlier example."
+    },
+    "dissent": [
+      {
+        "dissentId": "evidence-selection-6f09c97e-779b-500b-8092-3fb9696aa5bb",
+        "source": "both",
+        "textDe": "Beide unabhängigen Urteile sind KEEP; ihre unterschiedlichen Evidenzformulierungen und Begründungen bleiben unverändert erhalten. Die individuelle Synthese wählt die Evidenz der zweiten Runde.",
+        "textEn": "Both independent decisions are KEEP; their differing evidence formulations and rationales remain unchanged in the original records. The individual synthesis selects the second round evidence.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:d4e43c296ce00fc57c785686c466a87e1f7c28eac43cb21ea17934a96cf5b05b"
+}

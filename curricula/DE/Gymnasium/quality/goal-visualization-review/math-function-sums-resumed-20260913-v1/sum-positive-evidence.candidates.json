@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-function-sums-positive-evidence-20260913-v1",
+  "reviewedAt": "2026-09-13T21:54:29Z",
+  "reviewer": "openai-codex-math-sum-positive-evidence-author-20260913",
+  "goals": [
+    {
+      "goalId": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+      "reason": "DE: Neues P-v2-Kandidatenprofil zum unveränderten Summenziel. Zwei getrennt zu bearbeitende Graphfälle verlangen vorzeichenrichtige Addition an derselben x-Stelle und begründete Aussagen über Nullstellen, Vorzeichen, Verlauf und Symmetrie. Der Transfer verändert Graphstruktur und gemeinsame Definitionsmenge und erzeugt einen konstanten Abschnitt durch gegenläufige Änderungen. EN: New P-v2 candidate profile for the unchanged sum goal. Two separately assessed graph cases require signed addition at the same x-coordinate and justified statements about zeros, signs, graph behaviour and symmetry. Transfer changes graph structure and the common domain and produces a constant section through opposing changes.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "same-input-signed-construction",
+            "essentialUnderstandingDe": "Der Summengraph besteht aus den Punkten (x|f(x)+g(x)) für x in der gemeinsamen Definitionsmenge von f und g. Addiert werden die vorzeichenbehafteten Ordinaten bei unverändertem x; eine negative Ordinate trägt nach unten zur Summe bei.",
+            "essentialUnderstandingEn": "The sum graph consists of the points (x,f(x)+g(x)) for x in the common domain of f and g. The signed ordinates are added while x stays unchanged; a negative ordinate contributes downwards to the sum.",
+            "observablePerformanceDe": "Die lernende Person bestimmt aus zwei gegebenen Graphen den gemeinsamen Definitionsbereich, konstruiert Summenpunkte an passenden gemeinsamen x-Stellen einschließlich Stellen mit verschiedenen Vorzeichen und skizziert den daraus begründbaren Summengraphen.",
+            "observablePerformanceEn": "From two supplied graphs, the learner determines their common domain, constructs sum points at suitable shared x-coordinates including inputs with different signs, and sketches the sum graph justified by those data."
+          },
+          {
+            "id": "justify-cancellation-and-sign",
+            "essentialUnderstandingDe": "Eine Nullstelle der Summe liegt dort, wo die Ordinaten von f und g bei demselben x entgegengesetzt gleich sind. Überwiegt die positive beziehungsweise negative Ordinate, liegt die Summe über beziehungsweise unter der x-Achse. Diese Aussagen beziehen sich auf die gemeinsame Definitionsmenge.",
+            "essentialUnderstandingEn": "A zero of the sum occurs where the ordinates of f and g at the same x are equal and opposite. When the positive or negative ordinate dominates, the sum lies above or below the x-axis respectively. These statements concern the common domain.",
+            "observablePerformanceDe": "Die lernende Person bestimmt und begründet Nullstellen und Vorzeichenbereiche der Summe durch den Vergleich der zugehörigen Ordinaten. Sie erklärt dabei eine Auslöschung auch an einer Stelle, an der keiner der beiden Summanden null ist, und stützt Aussagen über ganze Intervalle auf den dort gegebenen Graphverlauf.",
+            "observablePerformanceEn": "The learner determines and justifies zeros and sign intervals of the sum by comparing corresponding ordinates. This includes explaining cancellation at an input where neither summand is zero and supporting claims about entire intervals with the graph behaviour given there."
+          },
+          {
+            "id": "justify-interval-behaviour-and-symmetry",
+            "essentialUnderstandingDe": "Zwischen zwei gemeinsamen x-Stellen ist die Änderung der Summe die Summe der Änderungen von f und g. Gegenläufige Änderungen können sich ausgleichen oder unterschiedlich stark sein. Sind beide Graphen auf einem Teilintervall geradlinig, ist auch ihr Summengraph dort geradlinig. Gleiche Summenordinaten bei x und −x auf einer symmetrischen Definitionsmenge begründen y-Achsensymmetrie.",
+            "essentialUnderstandingEn": "Between two shared x-coordinates, the change in the sum equals the sum of the changes in f and g. Opposing changes can cancel or differ in magnitude. If both graphs are straight on a subinterval, their sum graph is also straight there. Equal sum ordinates at x and −x throughout a symmetric domain establish y-axis symmetry.",
+            "observablePerformanceDe": "Die lernende Person begründet steigende, fallende oder konstante Abschnitte der Summe aus den Änderungen beider Ausgangsgraphen und verbindet Summenpunkte entsprechend den gegebenen Abschnitten. Sie begründet y-Achsensymmetrie für den ganzen Summengraphen aus den Graphdaten oder widerlegt sie mit einem zulässigen Paar x und −x.",
+            "observablePerformanceEn": "The learner justifies increasing, decreasing or constant sections of the sum from changes in both original graphs and connects sum points according to the supplied sections. They justify y-axis symmetry for the whole sum graph from the graph data or disprove it using an admissible pair x and −x."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "same-input-signed-construction",
+            "justify-cancellation-and-sign",
+            "justify-interval-behaviour-and-symmetry"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "opposing-change-structure",
+            "textDe": "Von zwei symmetrischen Graphen mit derselben Knickstelle zu einem steigenden Geradengraphen und einem abschnittsweise unterschiedlich stark fallenden Graphen wechseln: Der Summengraph muss aus dem Zusammenwirken der Änderungen neu begründet werden.",
+            "textEn": "Change from two symmetric graphs with the same corner to an increasing straight graph and a graph decreasing at different rates on different sections: the sum graph must be justified afresh from the interaction of the changes."
+          },
+          {
+            "id": "unequal-domains-and-cancellation",
+            "textDe": "Gleiche abgeschlossene Definitionsintervalle durch unterschiedlich begrenzte Intervalle ersetzen und von einer Berührung der x-Achse durch Auslöschung zu einer Auslöschung mit Vorzeichenwechsel übergehen.",
+            "textEn": "Replace equal closed domain intervals with differently bounded intervals and change from cancellation that touches the x-axis to cancellation with a sign change."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "symmetric-opposing-polylines",
+            "taskDemandDe": "Erster eigenständig zu beurteilender Fall, ohne vorgegebenen Summengraphen oder Lösungshinweise: In einem Koordinatensystem mit Einerskalierung ist f auf [−2,2] genau der Streckenzug durch (−2|3), (0|−1), (2|3); g ist auf demselben Intervall genau der Streckenzug durch (−2|−1), (0|1), (2|−1). Alle genannten Punkte gehören zum Graphen. Skizziere h=f+g, markiere seine Nullstellen und begründe Vorzeichen, Verlauf auf beiden Seiten von 0 sowie eine mögliche y-Achsensymmetrie unmittelbar aus den Ausgangsgraphen. Erkläre insbesondere, was bei x=0 mit den beiden Ordinaten geschieht.",
+            "taskDemandEn": "First independently assessed case, without a supplied sum graph or solution hints: In a coordinate system with unit scaling, f on [−2,2] is exactly the polyline through (−2,3), (0,−1), (2,3); g on the same interval is exactly the polyline through (−2,−1), (0,1), (2,−1). Every stated point belongs to its graph. Sketch h=f+g, mark its zeros and justify its signs, behaviour on both sides of 0 and possible y-axis symmetry directly from the original graphs. Explain in particular what happens to the two ordinates at x=0.",
+            "expectedPerformanceDe": "Der gemeinsame Definitionsbereich ist [−2,2]. Die Summe verläuft durch (−2|2), (−1|1), (0|0), (1|1), (2|2) und besteht aus den Verbindungsstrecken über [−2,0] und [0,2]. Links fällt f je x-Einheit um 2 und g steigt um 1, sodass h um 1 fällt; rechts steigt f um 2 und g fällt um 1, sodass h um 1 steigt. Das begründet den gesamten V-förmigen Verlauf und das Minimum (0|0). Bei x=0 löschen sich −1 und 1 aus; 0 ist die einzige Nullstelle. Auf [−2,0) und (0,2] liegt h oberhalb der x-Achse. Beide Ausgangsgraphen haben bei x und −x dieselben Ordinaten, daher auch ihre Summe: h ist auf dem ganzen Definitionsbereich y-achsensymmetrisch.",
+            "expectedPerformanceEn": "The common domain is [−2,2]. The sum passes through (−2,2), (−1,1), (0,0), (1,1), (2,2) and consists of the connecting segments over [−2,0] and [0,2]. On the left, f falls by 2 and g rises by 1 per x-unit, so h falls by 1; on the right, f rises by 2 and g falls by 1, so h rises by 1. This establishes the whole V-shaped graph and its minimum (0,0). At x=0, −1 and 1 cancel; 0 is the only zero. On [−2,0) and (0,2], h lies above the x-axis. Each original graph has equal ordinates at x and −x, so their sum does too: h is y-axis symmetric on its entire domain.",
+            "understandingFocusDe": "Punktweise Addition führt von vorzeichenbehafteten Graphhöhen zu einem vollständigen Summengraphen. Die Nullstelle entsteht durch Auslöschung, und Aussagen über Verlauf und Symmetrie werden für ganze Abschnitte begründet.",
+            "understandingFocusEn": "Pointwise addition leads from signed graph heights to a complete sum graph. The zero results from cancellation, and behaviour and symmetry are justified for entire sections."
+          },
+          {
+            "id": "unequal-domains-plateau-and-crossing",
+            "taskDemandDe": "Frischer, getrennt und ohne Lösungsfeedback zum ersten Fall zu bearbeitender Transferfall: In einem Koordinatensystem mit Einerskalierung besteht der Graph von f genau aus der Strecke von (−3|−2) bis (3|4). Der Graph von g besteht genau aus dem Streckenzug durch (−2|3), (0|1), (4|−7). Alle Endpunkte sind eingeschlossen; außerhalb dieser Strecken ist die jeweilige Funktion nicht definiert. Skizziere h=f+g auf seinem ganzen Definitionsbereich. Begründe aus den Graphen, wo h konstant ist und wo es steigt oder fällt, und bestimme seine Nullstellen und Vorzeichenbereiche. Beurteile außerdem seine y-Achsensymmetrie. Erläutere, wie das Zusammenwirken der Änderungen von f und g den Verlauf der Summe festlegt.",
+            "taskDemandEn": "Fresh transfer case to be completed separately and without solution feedback from the first case: In a coordinate system with unit scaling, the graph of f consists exactly of the segment from (−3,−2) to (3,4). The graph of g consists exactly of the polyline through (−2,3), (0,1), (4,−7). All endpoints are included; each function is undefined outside these segments. Sketch h=f+g on its entire domain. Use the graphs to justify where h is constant and where it increases or decreases, and determine its zeros and sign intervals. Also assess its y-axis symmetry. Explain how the interaction of the changes in f and g determines the behaviour of the sum.",
+            "expectedPerformanceDe": "Nur auf [−2,3] besitzen beide Graphen eine Ordinate. Summenpunkte sind (−2|2), (0|2), (1|1), (2|0), (3|−1). Auf [−2,0] steigt f je x-Einheit um 1 und g fällt um 1; die Summe bleibt auf der waagerechten Strecke y=2. Auf [0,3] steigt f weiterhin um 1, während g um 2 fällt; h fällt je x-Einheit um 1 und verläuft geradlinig von (0|2) bis (3|−1). Bei x=2 addieren sich f(2)=3 und g(2)=−3 zu 0. Die Gerade kreuzt dort die x-Achse: h ist auf [−2,2) positiv, nur bei 2 null und auf (2,3] negativ. Der Graph ist nicht y-achsensymmetrisch: Bereits die gemeinsame Definitionsmenge ist unsymmetrisch; außerdem sind h(−1)=2 und h(1)=1 ungleich. Die Graphteile außerhalb [−2,3] liefern keinen weiteren Summengraphen.",
+            "expectedPerformanceEn": "Both graphs have an ordinate only on [−2,3]. Sum points are (−2,2), (0,2), (1,1), (2,0), (3,−1). On [−2,0], f rises by 1 and g falls by 1 per x-unit; the sum stays on the horizontal segment y=2. On [0,3], f still rises by 1 while g falls by 2; h falls by 1 per x-unit and follows a straight segment from (0,2) to (3,−1). At x=2, f(2)=3 and g(2)=−3 add to 0. The line crosses the x-axis there: h is positive on [−2,2), zero only at 2 and negative on (2,3]. The graph is not y-axis symmetric: its common domain is already asymmetric; moreover, h(−1)=2 and h(1)=1 are unequal. The graph sections outside [−2,3] provide no further sum graph.",
+            "understandingFocusDe": "Die veränderten Definitionsbereiche und die abschnittsweise andere Stärke der gegenläufigen Änderungen verlangen unabhängigen Transfer. Konstanz und anschließender Vorzeichenwechsel werden graphisch aus beiden Summanden begründet, ohne einen Summengraphen aus dem Lehrbild zu übernehmen.",
+            "understandingFocusEn": "The changed domains and the section-dependent relative magnitudes of opposing changes require independent transfer. Constancy and the subsequent sign change are justified graphically from both summands without reproducing a sum graph from the teaching image."
+          }
+        ]
+      }
+    }
+  ]
+}

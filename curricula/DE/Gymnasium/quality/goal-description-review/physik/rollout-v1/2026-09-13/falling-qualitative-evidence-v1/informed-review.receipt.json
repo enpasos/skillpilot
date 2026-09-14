@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physics-falling-qualitative-informed-review-20260913-a-v1",
+  "reviewedAt": "2026-09-13T19:16:11.416Z",
+  "reviewer": "Codex /root/physics52_round_a; exact model identifier not exposed",
+  "reviewMode": "informed_individual_profile_review",
+  "priorInvolvement": "Reviewer previously identified the quantitative scope mismatch and proposed a qualitative replacement; this checks the complete root-authored candidate, including its independently added A/B comparison, and is not a blind run.",
+  "goalId": "12260012-cf04-5409-b57d-f5b3a46d9126",
+  "reviewId": "physics-falling-qualitative-current-20260913-v1",
+  "profileFingerprint": "sha256:14ef60500f54594d10f2e38029187aa32e35d9af621f3258fc73212055d6ea50",
+  "decision": "revise",
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewedArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/candidates.json",
+      "digest": "sha256:8e20278ab17fd5cfe39d0d219bea9c024e58be48951ed856a36000fe635e20ef",
+      "bytes": 10220
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/positive-evidence.config.json",
+      "digest": "sha256:3ccf8e5e02584b42bdffda671482345999904d8e4878ed02415885a7df7656f9",
+      "bytes": 1184
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/positive-evidence.review.jsonl",
+      "digest": "sha256:8172c9f03bc1a7465c8afd433143acb2115cabbb8da658b2cb7469e475a68b80",
+      "bytes": 10153
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/retained-three.config.json",
+      "digest": "sha256:1c8ae5b95447f585355bdbad528ea8e0bb2d535b49ea9db7b2e6eb998ef59705",
+      "bytes": 1284
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/retained-three.review.jsonl",
+      "digest": "sha256:c5eb9f1f63232e4262b12633abeae997f7431cedf0cb8c11e6b730833f13e266",
+      "bytes": 21143
+    }
+  ],
+  "candidateMaterializationBodyMatches": true,
+  "currentGoalFingerprint": "sha256:76c34dd624131915273a0a6f5ba0cf883c50c6492740a1796f41c5c66bfa369a",
+  "image": {
+    "path": "app/public/assets/goal-visualizations/physik/12260012-cf04-5409-b57d-f5b3a46d9126/12260012-cf04-5409-b57d-f5b3a46d9126.png",
+    "digest": "sha256:2b74e2dcdfe46796647dd106e6f7dee816f9afa182c570bcf06d936a7bbbea33",
+    "visuallyInspected": true,
+    "consistentWithQualitativeProfile": true
+  },
+  "criteria": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/physics-positive-understanding-evidence-profile-criteria-v1.md",
+    "fingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+    "fullyRead": true
+  },
+  "findings": [
+    {
+      "id": "equal-time-observation-distinction",
+      "decision": "revise",
+      "locations": [
+        "profile.applicationCaseBriefs[id=qualitative-release-model].taskDemandDe",
+        "profile.applicationCaseBriefs[id=qualitative-release-model].taskDemandEn",
+        "profile.applicationCaseBriefs[id=qualitative-release-model].understandingFocusDe",
+        "profile.applicationCaseBriefs[id=qualitative-release-model].understandingFocusEn"
+      ],
+      "reasonDe": "Die A/B-Geschwindigkeitszuwächse erlauben den beabsichtigten Vergleich der Beschleunigung nur bei gleichen Zeitabständen; diese fehlen ausdrücklich. Bs Fortsetzung bis zu beliebig großen Geschwindigkeiten ist keine beobachtbare Messreihe, wird aber als Beobachtungsbeschreibung bezeichnet. Beide Sprachfassungen benötigen dieselbe lokale Präzisierung.",
+      "suggestionDe": "A/B als konkurrierende qualitative Verlaufsvorschläge für gleiche Zeitabstände bezeichnen. Die unbegrenzte Fortsetzung von B ausdrücklich als Vorhersage behandeln; understandingFocus entsprechend auf Abgleich konkurrierender Verlaufsvorschläge beziehen."
+    }
+  ],
+  "confirmed": [
+    "Complete German and English profile and both cases were read; language parity is maintained.",
+    "Both expectations now assess qualitative force balance, velocity versus acceleration and model limits without mandatory numerical terminal-speed calculations.",
+    "Case 1 requires the learner to construct force sketches and a velocity-time curve and justify the comparison; choosing A alone is not the prescribed evidence.",
+    "Case 2 changes the drag regime at unchanged mass and correctly predicts upward acceleration with initially downward motion and approach to a lower terminal speed.",
+    "Constant mass and weight, still air and negligible buoyancy preserve the intended simple-model scope; no hazardous execution is required.",
+    "Two required expectations, two independent demonstrations and a fresh independent transfer remain required."
+  ],
+  "nativeChecks": [
+    {
+      "config": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/positive-evidence.config.json",
+      "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/positive-evidence.config.json",
+      "exitCode": 0,
+      "configuredGoals": 1,
+      "needsHumanReview": 1,
+      "blockingIssues": 0
+    },
+    {
+      "config": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/retained-three.config.json",
+      "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/retained-three.config.json",
+      "exitCode": 0,
+      "configuredGoals": 3,
+      "needsHumanReview": 3,
+      "blockingIssues": 0
+    }
+  ],
+  "retention": {
+    "sourcePath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-local-corrections-v1/positive-evidence.review.jsonl",
+    "sourceDigest": "sha256:9375966bd8b1c30630dfdf9b587b458bf7f7d4ad927be81c9e83bc61c14a9237",
+    "retainedPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/falling-qualitative-evidence-v1/retained-three.review.jsonl",
+    "retainedDigest": "sha256:c5eb9f1f63232e4262b12633abeae997f7431cedf0cb8c11e6b730833f13e266",
+    "comparison": "Exact UTF-8 record-line bytes including line terminator; no parse-and-reserialize comparison.",
+    "allRetainedLinesByteIdentical": true,
+    "records": [
+      {
+        "goalId": "6e7c35e0-7a38-5996-a42e-005038eff0db",
+        "sourceLine": 1,
+        "retainedLine": 1,
+        "lineDigest": "sha256:ff7b60b79c99b9e5103c91688e002914fa3d5ae2921f28a733df737c886b9d09"
+      },
+      {
+        "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+        "sourceLine": 2,
+        "retainedLine": 2,
+        "lineDigest": "sha256:33c623b06a840617f67b22cb7272cd9ce1b9ad6dd02b39fb46d79ea524e6ecac"
+      },
+      {
+        "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+        "sourceLine": 4,
+        "retainedLine": 3,
+        "lineDigest": "sha256:f5064dfa108d3fbfff931e89d85186bf8db98cde754040ed10069f9706e4f69d"
+      }
+    ]
+  },
+  "limits": [
+    "Native validation proves schema, fingerprint and configured-context validity; the local semantic finding remains despite zero blocking issues.",
+    "No actual learner performance, human approval, runtime behavior or provider acceptance is established.",
+    "No new normative source or nationwide projection verification was performed.",
+    "Retained profiles keep reviewedResourceTypes empty; their native check does not newly bind image bytes.",
+    "Only this receipt was written; candidate, materialized profiles, configurations, registry and blind records were not changed."
+  ]
+}

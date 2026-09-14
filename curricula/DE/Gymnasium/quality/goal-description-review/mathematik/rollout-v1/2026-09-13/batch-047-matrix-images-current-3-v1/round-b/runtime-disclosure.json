@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "provider": "OpenAI",
+  "interface": "Codex",
+  "executionMode": "Independent blind subagent in the active Codex session",
+  "modelIdentifier": "not exposed",
+  "modelVersion": "not exposed",
+  "samplingParameters": "not exposed",
+  "separateModelApiCall": false,
+  "toolsUsed": [
+    "functions.exec",
+    "exec_command",
+    "view_image",
+    "apply_patch",
+    "clock.curr_time"
+  ],
+  "pdfInspection": "Complete goal PDF pages 3, 4 and 5 and local original-source pages 43 and 44 rasterized with pdftoppm and visually inspected with view_image; text checked with pdftotext.",
+  "activeImagesInspected": [
+    {
+      "goalId": "4fb40e58-58c1-5964-b58e-3347a8022b97",
+      "sha256": "4b36f820723b40eecff0fc4e2d8d40c3d551eeb43dac1f8c6f58c8adfe20ff08"
+    },
+    {
+      "goalId": "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+      "sha256": "f9f5919b014cfa4de1df6f3453a8f531f0bd1221d49bcc03fa763093757ec211"
+    },
+    {
+      "goalId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+      "sha256": "add0b17d0ea7d252f99de72a54c4abaa879e40f087f365ccaf2c40f7c2a5f14b"
+    }
+  ],
+  "localOriginalSource": {
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+    "pages": [
+      43,
+      44
+    ],
+    "sha256": "d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953"
+  },
+  "blindness": "No round-a result content, historical review or resolution content, other reviewer judgments, or positive-evidence profile candidates were read. No current V2 evidence profile was supplied.",
+  "timeScope": "Run startedAt is the first explicit UTC clock reading at the start of final record authoring, after the blind review materials had been inspected.",
+  "fingerprintContract": "The run generationParametersFingerprint is SHA-256 of the exact UTF-8 bytes of this runtime-disclosure.json file. It binds this disclosure of unavailable model and sampling metadata; it does not claim that hidden generation parameters are known.",
+  "authority": "AI candidates only; no human approval or publication authority."
+}

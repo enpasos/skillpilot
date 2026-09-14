@@ -8,65 +8,18 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image_gen
 - Status: pilot
-- Quellbild: `6aa593a3-6690-581d-9b7d-37cac78187a1.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/6aa593a3-6690-581d-9b7d-37cac78187a1/6aa593a3-6690-581d-9b7d-37cac78187a1.jpg`
+- Quellbild: `6aa593a3-6690-581d-9b7d-37cac78187a1.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/6aa593a3-6690-581d-9b7d-37cac78187a1/6aa593a3-6690-581d-9b7d-37cac78187a1.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Übergangsprozesse mit stochastischen Matrizen modellieren
-Beschreibung: Die lernende Person kann Übergangsprozesse als Markov-Ketten mit stochastischen Matrizen modellieren, Übergangswahrscheinlichkeiten begründet festlegen und die Matrix im Kontext interpretieren.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Markov-Kette mit stochastischer Uebergangsmatrix modellieren.
-- Verwende zwei Zustaende: A und B.
-- Kontext: Kundinnen und Kunden wechseln zwischen Anbieter A und Anbieter B.
-- Uebergangsmatrix als Tabelle mit Spalten "von" und Zeilen "nach":
-  M =
-    [0.8  0.3
-     0.2  0.7]
-  Zeilen "nach": A, B.
-  Spalten "von": A, B.
-- Erklaere die Eintraege:
-  Von A bleiben 80 Prozent bei A und 20 Prozent wechseln zu B.
-  Von B wechseln 30 Prozent zu A und 70 Prozent bleiben bei B.
-- Zeige die Spaltensummen:
-  0.8+0.2=1.0.
-  0.3+0.7=1.0.
-- Anfangszustand:
-  v_0 = (0.9, 0.1)^T.
-- Berechnung:
-  v_1 = M * v_0 = (0.75, 0.25)^T.
-- Deutung:
-  Nach einem Schritt sind 75 Prozent bei A und 25 Prozent bei B.
-- Finale Darstellungsprioritaet:
-  - Verwende eine klare Matrix-Tabelle und eine kleine Rechenbox.
-  - Verzichte auf Gebaeude-, Personen- oder Ladenillustrationen, falls dadurch Zustandslabels doppelt oder falsch erscheinen koennen.
-  - Verzichte auf einen Uebergangsgraphen mit Pfeilen und Schleifen; zeige die Uebergaenge nur in der Matrix-Tabelle und in kurzen Textdeutungen.
-  - Wenn Kontextlabels gezeigt werden, dann genau zwei Labels: "Anbieter A" nur beim Zustand A und "Anbieter B" nur beim Zustand B.
-  - Das Matrixlayout muss sichtbar bleiben: Spalten "von A", "von B"; Zeilen "nach A", "nach B".
-
-Vermeiden:
-- Die Wahrscheinlichkeiten nicht als absolute Anzahlen darstellen.
-- Nicht die Zeilensummen als Pruefkriterium markieren; hier sind die Spalten "von" und muessen sich zu 1 addieren.
-- v_1 nicht als (0.9,0.1)^T oder (0.5,0.5)^T angeben; korrekt ist (0.75,0.25)^T.
-- Kein falsches oder doppeltes Kontextlabel, insbesondere den Zustand B niemals als "Anbieter A" beschriften.
-- Keine Pfeildiagramme oder Schleifen zeichnen; dadurch duerfen keine doppelten Uebergaenge wie zwei B-nach-B-Schleifen entstehen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Use case: precise-object-edit (scientific educational infographic).
+Input image1 is the edit target, an existing German classroom illustration of stochastic transition matrices. Preserve the entire existing composition, friendly hand-drawn style, colors, title, matrix table, arrows, probabilities, source/destination labels and all correct calculations.
+Change ONLY the erroneous leading standalone capital M at the bottom-left of the "Berechnung nach einem Schritt" box, immediately before the expanded 2x2 numeric matrix. Erase that single stray M and restore the white background there. Do not remove the correct M in the heading "Stochastische Übergangsmatrix M" or in the upper formula "v1 = M·v0".
+The bottom line must start directly with the numeric 2x2 matrix [[0.8,0.3],[0.2,0.7]], multiplied by the column vector (0.9,0.1), equaling the column vector (0.72+0.03,0.18+0.07), then (0.75,0.25). There must be NO additional M factor in front of that expanded numeric matrix. Keep all other values and equations unchanged, including column sums0.8+0.2=1.0 and0.3+0.7=1.0, and the75%/25% results. Keep full original margins, clarity and type sizes. No added content, technical IDs or restyling. Return the complete corrected illustration, not a crop.
 ```
 
 ## Review-Notiz

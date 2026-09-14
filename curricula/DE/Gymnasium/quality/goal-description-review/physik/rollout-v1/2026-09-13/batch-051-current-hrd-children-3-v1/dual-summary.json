@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e78ef9a3f73e70c62f1e44152f5be73b91036d858a7de81a5dcd221fd8f1e2ae",
+  "reviewInputFingerprint": "sha256:ed3e9fa8de27514e56b245dd3bcb4942afca2b8336ea4b7343f45d6bbd42bded",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-a",
+      "roundId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-a.batch-001.run-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Exact model identifier not disclosed by runtime::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-b",
+      "roundId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-b.batch-001.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::not_exposed_by_runtime::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "3a4b2f86-5c59-5429-8fb4-75d9b2589cb5",
+      "firstRecordId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-a.batch-001.record-001",
+      "secondRecordId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-b.batch-001.record-001",
+      "firstRunId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-a.batch-001.run-a",
+      "secondRunId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "946ecf7b-0fcf-5776-9fb6-d397423c2f12",
+      "firstRecordId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-a.batch-001.record-002",
+      "secondRecordId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-b.batch-001.record-002",
+      "firstRunId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-a.batch-001.run-a",
+      "secondRunId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+      "firstRecordId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-a.batch-001.record-003",
+      "secondRecordId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-b.batch-001.record-003",
+      "firstRunId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-a.batch-001.run-a",
+      "secondRunId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

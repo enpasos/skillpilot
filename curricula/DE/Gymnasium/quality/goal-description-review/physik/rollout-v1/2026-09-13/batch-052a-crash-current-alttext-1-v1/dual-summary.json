@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:d73fbe3b3ad475d2ba25ac521f3143f1dc40bb68708ab12b6cfe8e06e7c6b8cf",
+  "reviewInputFingerprint": "sha256:a54647bc3b0b19758c112f28d7200c24505afc26fccf690f8890905f7ba3ead5",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-a",
+      "roundId": "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-first-pass-a.batch-001.run-a"
+      ],
+      "providers": [
+        "OpenAI via Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI via Codex::Codex session model; exact provider model identifier not disclosed::Not disclosed. The generation-parameters fingerprint hashes the UTF-8 JSON nondisclosure descriptor, not an observed sampling configuration."
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-b",
+      "roundId": "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-independent-b",
+      "runIds": [
+        "physik-052a-crash-current-alttext-1-v1-20260913-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::not_exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "1232febe-868a-4dac-b4c2-e35789434601",
+      "firstRecordId": "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-first-pass-a.batch-001.run-a.1232febe-868a-4dac-b4c2-e35789434601",
+      "secondRecordId": "physik-052a-crash-current-alttext-1-v1-20260913-b-1232febe",
+      "firstRunId": "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-first-pass-a.batch-001.run-a",
+      "secondRunId": "physik-052a-crash-current-alttext-1-v1-20260913-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-current-subset-3b50255a-6b01-578b-8f5c-4383536a3221",
+  "goal": {
+    "goalId": "3b50255a-6b01-578b-8f5c-4383536a3221",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:8ffe9d76f231ad79cd5c470e50dcd9d407fdccb6800f6aa1ff254c738928c4de",
+    "pageFingerprint": "sha256:de3c7d269315828bd0def8debc460e37de247ffc68242192afeedc7c6c6ceb57",
+    "goalReviewContextFingerprint": "sha256:94d5b9f2e4028198951c1b252f922ed567f73a89a4f02549e846b91fa9876365",
+    "finalText": {
+      "titleDe": "Zerfallsreihen analysieren",
+      "titleEn": "Analyze Decay Chains",
+      "descriptionDe": "Die lernende Person kann in einer vorgegebenen Zerfallsreihe die Änderungen von Massenzahl und Kernladungszahl bei den angegebenen Zerfallsarten prüfen und die Konsistenz der aufeinanderfolgenden Nuklide begründen.",
+      "descriptionEn": "The learner can check changes in mass number and atomic number for the specified decay types in a supplied decay chain and justify the consistency of successive nuclides."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-a",
+      "campaignDigest": "sha256:7954fe9d1229a77e1e784f6897f6f0bdbcf00ba7264a15e5dd6edf1085194fe2",
+      "roundId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:b5aac2cb1e1e838f9b18c4cfbf20698508e148eb24e89573696a26d64e314aba",
+      "goalReviewContextFingerprint": "sha256:94d5b9f2e4028198951c1b252f922ed567f73a89a4f02549e846b91fa9876365",
+      "batchId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:9b9f53a84e3ae210a6c34619110150ff99b921c325c460d856806795f050aeaf",
+      "resultsDigest": "sha256:8bc3e623378b30377fc54f8e2e83f949ea32fa459fd5e294d4a496f9d0b3b210",
+      "recordId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001.005",
+      "recordDigest": "sha256:a8ef7c3b4e00644ab2a60d93c392d5ec4e12f993ed77e097f4e515e90f22ab81"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-b",
+      "campaignDigest": "sha256:964cfcbfd946d718ecdb9fbb8e53f7f27807be990b7b3fde635e4c2c3e462673",
+      "roundId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:b5aac2cb1e1e838f9b18c4cfbf20698508e148eb24e89573696a26d64e314aba",
+      "goalReviewContextFingerprint": "sha256:94d5b9f2e4028198951c1b252f922ed567f73a89a4f02549e846b91fa9876365",
+      "batchId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.batch-001",
+      "runId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.run-001",
+      "runManifestDigest": "sha256:347b79153ad426d53cf01068759155642546794ec721d75b57da0a3136e31dc3",
+      "resultsDigest": "sha256:d6f20232635b6ef939fbca535e5144ca47cb0ebf803bde61e7a93e1cb85a667c",
+      "recordId": "physics-b048-b-005",
+      "recordDigest": "sha256:570b894d88df290099a4a2043e418c756339c19cfc75aeec346c738a2eb427c0"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:6b414186b933224d16ebad5b9baad261ddf0236e3c85f0e93356c5f9d4d6b64f"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-explicit-synthesis-3b50255a-6b01-578b-8f5c-4383536a3221",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex /root, continuation 2026-09-13; existing independent D048 reviews retained",
+    "synthesizedAt": "2026-09-13T18:15:19.511Z",
+    "rationaleDe": "Die zwei KEEP-Reviews beschränken die Kompetenz auf begründete A-/Z-Konsistenzprüfung vorgegebener Zerfallsfolgen. Runde B hält die wichtige Grenze zwischen formal korrekter Bilanz und empirisch existierendem Zerfallsweg ausdrücklich fest; die Transferleistung wechselt begründet von Beta-minus zu Beta-plus. Die digitale Nuklidkartenauswertung bleibt ein eigener Nachfolger. Das unveränderte Thorium-Radium-Actinium-Bild wurde in beiden Runden fachlich geprüft. Aktuelle Inhalts- und Kontextbindungen sind gleich; die Synthese ist KI-basiert und ersetzt keine menschliche Freigabe.",
+    "rationaleEn": "The two KEEP reviews limit the competency to justified A/Z consistency checks of supplied decay chains. Round B explicitly preserves the important distinction between formally correct balance and an empirically existing decay path; transfer requires explaining a change from beta-minus to beta-plus. Digital nuclide-chart interpretation remains a separate successor. Both rounds substantively reviewed the unchanged thorium-radium-actinium image. Current content and context bindings match; this AI synthesis does not replace human approval.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Massenzahl zählt Nukleonen, die Kernladungszahl Protonen; die angegebene Zerfallsart legt deren Änderung fest. Eine formal richtige Bilanz ist von der empirischen Existenz eines Zerfallswegs zu unterscheiden.",
+      "essentialUnderstandingEn": "Mass number counts nucleons and atomic number counts protons; the specified decay type determines their changes. A formally correct balance is distinct from the empirical existence of a decay pathway.",
+      "observablePerformanceDe": "Die lernende Person prüft in einer unbekannten vorgegebenen Kette jeden Übergang anhand von A und Z und lokalisiert mit begründeter Korrektur einen falsch eingetragenen Tochterkern.",
+      "observablePerformanceEn": "The learner checks every transition in an unfamiliar supplied chain using A and Z and identifies and justifiably corrects a wrongly entered daughter nucleus.",
+      "transferExpectationDe": "In einer frischen Kette mit angegebenem Beta-plus- statt Beta-minus-Schritt begründet sie die umgekehrte Änderung von Z bei gleichbleibendem A.",
+      "transferExpectationEn": "In a fresh chain specifying beta-plus rather than beta-minus decay, the learner explains the reversed change in Z while A remains constant."
+    },
+    "dissent": [
+      {
+        "dissentId": "evidence-selection-3b50255a-6b01-578b-8f5c-4383536a3221",
+        "source": "both",
+        "textDe": "Beide unabhängigen Urteile sind KEEP; ihre unterschiedlichen Evidenzformulierungen und Begründungen bleiben unverändert erhalten. Die individuelle Synthese wählt die Evidenz der zweiten Runde.",
+        "textEn": "Both independent decisions are KEEP; their differing evidence formulations and rationales remain unchanged in the original records. The individual synthesis selects the second round evidence.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:fcdc9d0eb3d1eed957f1c41b7d4d84b6a94e0b9cf8fdfe17811828b21f23649c"
+}

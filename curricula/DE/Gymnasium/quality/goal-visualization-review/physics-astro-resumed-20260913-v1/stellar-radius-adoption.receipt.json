@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "recordType": "goal-visualization-ai-pilot-adoption",
+  "goalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+  "adoptedAt": "2026-09-13T18:31:38Z",
+  "actor": "/root/stellar_radius_visual_review",
+  "decision": "accepted_pilot",
+  "authorizationScope": "Root authorized adoption of the independently accepted candidate 02, local Physics V/P updates, and historical-profile retention. No human approval, D closure, registry edit, deployment or commit was authorized to this agent.",
+  "provider": "image_gen",
+  "modelVersion": null,
+  "generationPerformedDuringAdoption": false,
+  "sourceImagePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius-candidate-02.png",
+  "sourceImageSha256": "sha256:19b3c4abeca32042eba2d32309d8669a4a07464acbfa7e05da17d37c8dbe40b9",
+  "imageDimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "imageCopies": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/physik/6a73cacc-e86d-5248-a180-fd3da8454b0f/6a73cacc-e86d-5248-a180-fd3da8454b0f.png",
+      "sha256": "sha256:19b3c4abeca32042eba2d32309d8669a4a07464acbfa7e05da17d37c8dbe40b9",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/physik/6a73cacc-e86d-5248-a180-fd3da8454b0f/6a73cacc-e86d-5248-a180-fd3da8454b0f.png",
+      "sha256": "sha256:19b3c4abeca32042eba2d32309d8669a4a07464acbfa7e05da17d37c8dbe40b9",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/physik/6a73cacc-e86d-5248-a180-fd3da8454b0f/6a73cacc-e86d-5248-a180-fd3da8454b0f.png",
+      "sha256": "sha256:19b3c4abeca32042eba2d32309d8669a4a07464acbfa7e05da17d37c8dbe40b9",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "canonicalLandscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+  "canonicalLink": {
+    "type": "goal-visualization",
+    "resourceType": "image",
+    "role": "primary",
+    "skillpilotId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+    "title": "Visualisierung: Sternradien aus HRD-Daten abschätzen",
+    "url": "/assets/goal-visualizations/physik/6a73cacc-e86d-5248-a180-fd3da8454b0f/6a73cacc-e86d-5248-a180-fd3da8454b0f.png",
+    "provider": "image_gen",
+    "description": "Visualisierung zum Lernziel: Sternradien aus HRD-Daten abschätzen.",
+    "altText": "Schematisches HRD: Zwei Punkte A und B liegen bei derselben Oberflächentemperatur T₀; B hat die vierfache Leuchtkraft. Das thermische Modell L = 4πR²σT⁴ liefert R = √(L / (4πσT⁴)). Rechts zeigt B ungefähr den doppelten Radius von A. Bei gleicher Leuchtkraft führt eine höhere Temperatur zu einem kleineren Modellradius.",
+    "lang": "de",
+    "license": "AI-generated, SkillPilot-curated",
+    "reviewStatus": "pilot"
+  },
+  "promptHistory": {
+    "metadataPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius-candidate-02.prompt-history.de.md",
+    "initialPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.prompt.de.md",
+    "editPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius-correction-02.prompt.de.md",
+    "canonicalPromptPath": "curricula/DE/Gymnasium/visualizations/physik/6a73cacc-e86d-5248-a180-fd3da8454b0f/prompt.de.md",
+    "bothActualPromptTextsPreserved": true,
+    "combinedDocumentWasNotANewGenerationPrompt": true,
+    "initialCallHadImageReferences": false,
+    "editCallReference": "stellar-radius-candidate-01.png"
+  },
+  "import": {
+    "helper": "scripts/import_goal_visualization.mjs",
+    "command": "'node' 'scripts/import_goal_visualization.mjs' '6a73cacc-e86d-5248-a180-fd3da8454b0f' 'curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius-candidate-02.png' '--landscape' 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json' '--subject' 'physik' '--lang' 'de' '--provider' 'image_gen' '--review-status' 'pilot' '--prompt' 'curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius-candidate-02.prompt-history.de.md' '--alt-text' 'Schematisches HRD: Zwei Punkte A und B liegen bei derselben Oberflächentemperatur T₀; B hat die vierfache Leuchtkraft. Das thermische Modell L = 4πR²σT⁴ liefert R = √(L / (4πσT⁴)). Rechts zeigt B ungefähr den doppelten Radius von A. Bei gleicher Leuchtkraft führt eine höhere Temperatur zu einem kleineren Modellradius.'",
+    "dryRunExitCode": 0,
+    "importExitCode": 0
+  },
+  "qa": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+    "previousVisualizationState": "missing",
+    "previousMissingReason": "deferred_provider_limitation",
+    "visualizationState": "available",
+    "aiApproved": "yes",
+    "aiApprovedAssetSha256": "sha256:19b3c4abeca32042eba2d32309d8669a4a07464acbfa7e05da17d37c8dbe40b9",
+    "humanApproved": "no",
+    "otherRecordsUnchanged": true,
+    "otherRecordsSha256": "sha256:fbede910e7a170490e016f05820ba7556d641f68d938ce75841ec08c7d4976a9",
+    "independentReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius-candidate-02.independent-ai-review.json",
+    "datedDispositionPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-2026-09-13-stellar-radius-ai-pilot.md"
+  },
+  "positiveEvidence": {
+    "substantiveReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius-profile-context-review.json",
+    "oldGoalFingerprint": "sha256:4b4ff84b658c2084e673adb740aa4571bb3bc7d79826a14cb0ffcb2c0cbdd318",
+    "newGoalFingerprint": "sha256:4b4ff84b658c2084e673adb740aa4571bb3bc7d79826a14cb0ffcb2c0cbdd318",
+    "oldReviewInputFingerprint": "sha256:2675d736661357833f7de7e181932086a3f4140f47e14a81114280e198ef338b",
+    "newReviewInputFingerprint": "sha256:bedda3fc94a8e6c22f6c74e0d936ac56993b9867861b0bcb16afdec44a98b2a4",
+    "profileFingerprint": "sha256:1f8ec4a5f744f3e4013e9b28c78b3c79e2fca3aa3e274d5a9b799bbc53dfce89",
+    "profileBodyUnchangedAfterSubstantiveReview": true,
+    "retainedReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/profiles.retained-nine.review.jsonl",
+    "retainedRecordCount": 9,
+    "retainedOriginalLinesByteIdentical": true,
+    "newRadiusReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.review.jsonl",
+    "reviewAuthority": "ai_candidate",
+    "status": "needs_human_review",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "registryHandoff": {
+      "old": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-astro-consolidation-v1/profiles.config.json",
+      "new": [
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/profiles.retained-nine.config.json",
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.config.json"
+      ]
+    },
+    "registryEditedByThisAgent": false
+  },
+  "unchangedHistoricalFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-astro-consolidation-v1/profiles.config.json",
+      "sha256": "sha256:195691685c8d33b1b5651b927b1b9d18fd4d063a2109ce0c5ffafb27c61cce87"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-astro-consolidation-v1/profiles.candidates.json",
+      "sha256": "sha256:71ee22a35aa62dfd141136ea4e4f51a09f0bc97a2f9a738ee18ab0f5048daf53"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-astro-consolidation-v1/profiles.review.jsonl",
+      "sha256": "sha256:e299abfa0d75518e6714edf7805bd7290c37aeb7ce1d67f9410c7f221a7256ea"
+    }
+  ],
+  "scopeGuards": {
+    "otherCanonicalGoalsUnchanged": true,
+    "otherCanonicalGoalsSha256": "sha256:bdfcdba71aebdaac2ec2182e0963db29ee4e9f030c28ad55f91777419d3af909",
+    "radiusNonResourceFieldsUnchanged": true,
+    "radiusNonResourceFieldsSha256": "sha256:737102b1e2b38adce12429f43946ebedf31d6c3402e16e4ea29c1fc0b058fdc1",
+    "semanticAtomicityLedgerEdited": false,
+    "memoryReviewLedgerEdited": false,
+    "semanticKindLedgerEdited": false,
+    "descriptionReviewArtifactsEdited": false,
+    "sharedCurriculumQualityStatusEdited": false,
+    "runtimeCodeEdited": false,
+    "securityOrPluginCodeEdited": false
+  },
+  "nativeChecks": [
+    {
+      "id": "physics-vqa-current",
+      "command": "npm --prefix app run check:goal-visualization-qa -- --subject=physik",
+      "exitCode": 0,
+      "output": "> skillpilot@0.0.0 check:goal-visualization-qa\n> tsx scripts/generateGoalVisualizationQaLedgers.ts --check --subject=physik\n\nGoal visualization QA ledgers are up to date (1 subject file(s))."
+    },
+    {
+      "id": "physics-ai-approval-coverage",
+      "command": "npm --prefix app run check:goal-visualization-approval-coverage -- --subject=physik",
+      "exitCode": 0,
+      "output": "> skillpilot@0.0.0 check:goal-visualization-approval-coverage\n> tsx scripts/checkGoalVisualizationQaApprovalCoverage.ts --subject=physik\n\nphysik: approval coverage passed (460 active visualization(s))."
+    },
+    {
+      "id": "radius-positive-candidate-current",
+      "command": "npm --prefix app run quality:positive-goal-evidence-candidates -- --config curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.config.json --candidates curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.candidates.json",
+      "exitCode": 0,
+      "output": "> skillpilot@0.0.0 quality:positive-goal-evidence-candidates\n> tsx scripts/materializePositiveGoalEvidenceCandidates.ts --config curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.config.json --candidates curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.candidates.json\n\nVerified curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.review.jsonl: 1 current AI candidate profile(s)."
+    },
+    {
+      "id": "retained-nine-positive-current",
+      "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/profiles.retained-nine.config.json",
+      "exitCode": 0,
+      "output": "> skillpilot@0.0.0 quality:positive-goal-evidence:check\n> tsx scripts/positiveGoalEvidenceReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/profiles.retained-nine.config.json\n\n# Positive Goal Evidence Review: physics-final-astro-consolidation-informed-10-v1\nScope: Nine unchanged historical informed AI E1/G1 records retained after the separate stellar-radius image adoption; no new content review, no blind review and no human approval.\nConfigured goals: 9\nApproved: 0\nNeeds human review: 9\nRejected: 0\nBlocking issues: 0"
+    },
+    {
+      "id": "native-visualization-assets",
+      "command": "node scripts/check_goal_visualization_assets.mjs",
+      "exitCode": 0,
+      "output": "Goal visualization asset check passed for 1557 link(s) in 21 landscape(s)."
+    },
+    {
+      "id": "physics-rollout-coverage-current",
+      "command": "npm --prefix app run check:goal-visualization-rollout-coverage:physik",
+      "exitCode": 0,
+      "output": "> skillpilot@0.0.0 check:goal-visualization-rollout-coverage:physik\n> tsx scripts/reportGoalVisualizationRolloutStatus.ts --subject=physik --check --require-coverage\n\ncurricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.md and curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.json are up to date."
+    }
+  ],
+  "rootIntegrationScope": [
+    "Replace the old positiveEvidenceConfigPaths entry with exactly the two disjoint new configs.",
+    "Rebuild and check affected GoalBook models, PDFs, render manifests, source sidecars and publication index.",
+    "Regenerate/check central curriculum quality status, protected maturity floors, and D/P/A/M/V report."
+  ],
+  "acceptanceBoundaries": {
+    "humanApproval": false,
+    "descriptionClosure": false,
+    "completeFiveGateAcceptanceClaimed": false,
+    "m6OrM7UpgradeClaimed": false,
+    "realHostAcceptanceClaimed": false,
+    "deploymentPerformed": false,
+    "commitOrPushPerformed": false
+  }
+}

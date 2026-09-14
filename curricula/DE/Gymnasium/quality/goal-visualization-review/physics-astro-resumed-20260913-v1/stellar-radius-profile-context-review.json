@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "recordType": "positive-evidence-image-context-review",
+  "reviewedAt": "2026-09-13T18:24:55Z",
+  "reviewer": "/root/stellar_radius_visual_review",
+  "goalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+  "sourceProfilePath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-astro-consolidation-v1/profiles.review.jsonl",
+  "sourceProfileFingerprint": "sha256:1f8ec4a5f744f3e4013e9b28c78b3c79e2fca3aa3e274d5a9b799bbc53dfce89",
+  "profileBodyDecision": "retain_after_substantive_review",
+  "profileBodyChanged": false,
+  "imagePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius-candidate-02.png",
+  "imageSha256": "sha256:19b3c4abeca32042eba2d32309d8669a4a07464acbfa7e05da17d37c8dbe40b9",
+  "imageReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius-candidate-02.independent-ai-review.json",
+  "findings": [
+    {
+      "expectationId": "radius-from-radiative-state",
+      "finding": "Die Bildgleichung ist das passende thermische Kugelmodell. Die Radien stehen für eine aus Leuchtkraft und Temperatur erschlossene Größe; die Diagrammkoordinaten sind kein räumlicher Ort."
+    },
+    {
+      "caseId": "equal-temperature",
+      "finding": "Der erste Profilfall verlangt 1 und 9 L☉ bei gleicher Temperatur. sqrt(9)=3 ist korrekt; neunfache strahlende Oberfläche bedeutet dreifachen Radius. Diese neue Variation kopiert nicht den Bildfall 1 und 4 L₀."
+    },
+    {
+      "caseId": "equal-luminosity-temperature-uncertainty",
+      "finding": "Bei festem L und doppeltem T folgt R_B/R_A=1/4 aus R proportional T^-2. Ohne T ist R nicht eindeutig; überschätztes T führt zu unterschätztem R. Die untere Bildaussage ist damit vereinbar, zeigt aber weder diesen quantitativen Transfer noch eine beobachtete Lernleistung."
+    },
+    {
+      "expectationId": "radius-inference-limits",
+      "finding": "Modellannahme und Eingangsunsicherheit bleiben angemessene Grenzen der Radiusabschätzung. Die Grafik ist als Modellabschätzung beschriftet; die konkreten fehlenden/unsicheren Eingaben bleiben im begleitenden Profil und werden nicht als bereits durch das Bild geprüft ausgegeben."
+    },
+    {
+      "area": "coverage",
+      "finding": "Zwei unabhängige Demonstrationen, frische Variation und unabhängiger Transfer bleiben erforderlich. Das Bild ist Orientierung, keine normative Quelle und keine Leistungsevidenz."
+    }
+  ],
+  "outputConfigPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.config.json",
+  "outputCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.candidates.json",
+  "outputReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius.profiles.review.jsonl",
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "humanApproval": false,
+  "descriptionClosure": false
+}

@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b85bcfaf055d9f2f573bf8708dc9056804cdfe4e8811df83ae868096d8ce26e6",
+  "reviewInputFingerprint": "sha256:90b205d66dd3fdb3acb16898918823d6ef2045ae9bc1beaf26af2a9d2c90f763",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-a",
+      "roundId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-a.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex runtime; exact model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-b",
+      "roundId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-b.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex runtime; exact model identity not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "5355fee0-0477-5570-a234-561477bf77ba",
+      "firstRecordId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-a.record-001",
+      "secondRecordId": "physik-d-b052-b-001",
+      "firstRunId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3ed3279e-c524-5230-a277-dda89493df6d",
+      "firstRecordId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-a.record-002",
+      "secondRecordId": "physik-d-b052-b-002",
+      "firstRunId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-b.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+      "firstRecordId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-a.record-003",
+      "secondRecordId": "physik-d-b052-b-003",
+      "firstRunId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-b.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+      "firstRecordId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-a.record-004",
+      "secondRecordId": "physik-d-b052-b-004",
+      "firstRunId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

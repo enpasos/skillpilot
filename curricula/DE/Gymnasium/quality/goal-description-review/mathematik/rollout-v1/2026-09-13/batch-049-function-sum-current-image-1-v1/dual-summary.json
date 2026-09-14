@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:ebf58f741261dc844968e3d7b0caa0371a12a213fc8b818d61e93e41c4df7889",
+  "reviewInputFingerprint": "sha256:4846b58ac0cf8740b7c002a0291d0168d9206b243da1830b55b6fa519fb8cff4",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-049-function-sum-current-image-1-v1-20260913-a",
+      "roundId": "mathematik-rollout-v1-batch-049-function-sum-current-image-1-v1-20260913-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-049-function-sum-current-image-1-v1-20260913-independent-a",
+      "runIds": [
+        "mathematik-rollout-v1-batch-049-function-sum-current-image-1-v1-20260913-first-pass-a.batch-001.openai-20260913T221454Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unknown::unknown"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-049-function-sum-current-image-1-v1-20260913-b",
+      "roundId": "mathematik-rollout-v1-batch-049-function-sum-current-image-1-v1-20260913-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-049-function-sum-current-image-1-v1-20260913-independent-b",
+      "runIds": [
+        "mathematik-rollout-v1-batch-049-function-sum-current-image-1-v1-20260913-first-pass-b.batch-001.run-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unknown::unknown"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::unknown::unknown"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+      "firstRecordId": "mathematik-b049-a-ebc41c8b-20260913T221454Z",
+      "secondRecordId": "b049-b-ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+      "firstRunId": "mathematik-rollout-v1-batch-049-function-sum-current-image-1-v1-20260913-first-pass-a.batch-001.openai-20260913T221454Z",
+      "secondRunId": "mathematik-rollout-v1-batch-049-function-sum-current-image-1-v1-20260913-first-pass-b.batch-001.run-b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:d1599d54f184281e8213445708bc342cd37189deebd9a71db627f84694da2e31",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-mathematik-048-transition-images-current-2-v1-20260913",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 2,
+  "goals": [
+    {
+      "goalId": "03685f87-7570-5bb3-b1c7-134124abb317",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:c477eba65547b4af5b70547dec041bb1d0dc3540c3b963809bf55754ee4879c3",
+      "pageFingerprint": "sha256:8472e657c8e4a3624e1a0159eb3f7122b77acf99f9002f9cb165331591831e4d",
+      "evidenceReview": null
+    },
+    {
+      "goalId": "6aa593a3-6690-581d-9b7d-37cac78187a1",
+      "pageNumber": 2,
+      "goalFingerprint": "sha256:4668ee61d5d7cea088973de74d1b61e177702ef2bc6431412e3532ef6e3f80b7",
+      "pageFingerprint": "sha256:71393ce869b7a456ea950e56d5fa84d137828b5d058b23ab0a4711a54111d461",
+      "evidenceReview": null
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:873442e91197071ce41e44146fab3c5efbf74e4b39b9ed339ca574d9a3effd90",
+      "bytes": 532628
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:9dcd9e49c117e0d048291eb9b60b266204f5dd646259f0ae83f7e8af3afb6c20",
+      "bytes": 1356411
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:f357db30a77141d442c77fe71d1cbebd4495385f6ff5f72130901a7af95e50dd",
+      "bytes": 5636
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:0fec431a9668645887ea12b56604ac3899a68590ebedf5b6a54e35b19fc45ef9",
+      "bytes": 28941
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:ae1d3984325e8cadb4bb3aad48c8eb5db8af1fc64a4636483c7a25e980537fa7",
+      "bytes": 5637
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:34d75f4a864ec80f07179e02aa50e77e38225d7977ceda414dcbea7049ffc935",
+      "bytes": 21402
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:e892054484f18bfeb6a5307156538ba9f3a4183b1dadec8761862f9ba0510f5b",
+      "bytes": 12073
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:1c76c837e5c1fc4bc2ee981f3a7438d12235aefd9b8007eac6bf4ef9bf7f342f",
+      "bytes": 4324
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+      "bytes": 4496
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:9e5b4b33fcae8eda37b3cfd0b9387bb842aa69fb9bb03df1c324d204124fae0c"
+}

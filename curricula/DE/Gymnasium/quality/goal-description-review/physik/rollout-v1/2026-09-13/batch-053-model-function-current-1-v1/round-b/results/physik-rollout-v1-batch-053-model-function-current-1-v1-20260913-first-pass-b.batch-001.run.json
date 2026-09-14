@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-first-pass-b.run-001",
+  "campaignId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-b",
+  "roundId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:7ee0eb8dec17529c0f76eb1d64281797b45aa31866db760d2c3b6f3f3d8608d6",
+  "bundleFingerprint": "sha256:cf52ab608f2400a9da60ce732842d41a1893638e796ba31c10ad4caaa0f282d5",
+  "bookDigest": "sha256:2b5fd7b72cac6ceef4d86cbbd280bf7b169266690aec3fa186039ab87a492d00",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelVersion": "unknown",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:ca5708aa9d82d45abf7a7f0719c64c92a388f626b0f74fbc7c6ff13b4c9c9ebe",
+  "independenceGroupId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "e5bc2227-d900-585f-8ac0-9d3f1cb40e27"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:7ee0eb8dec17529c0f76eb1d64281797b45aa31866db760d2c3b6f3f3d8608d6"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:bbeec96d4efc121a37a0168b2cf7f257390e91bcec69d29e633ddac012a47640"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:a04ab78d8af761ceba8b747bbbe149724acc22d4c2248c0512880cf4a756af32"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-13T21:41:20Z",
+  "completedAt": "2026-09-13T21:44:54Z",
+  "status": "completed",
+  "outputDigest": "sha256:06d10ac1cb052804bbe4e1b02919ed96a7fd72ed9f734d05c6a3505ac0abd69c",
+  "toolchainVersion": "node-v20.20.2"
+}

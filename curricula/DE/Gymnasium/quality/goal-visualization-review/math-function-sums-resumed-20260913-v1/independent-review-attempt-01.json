@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "reviewKind": "independent_actual_raster_review",
+  "reviewedAt": "2026-09-13T21:51:24Z",
+  "reviewer": {
+    "type": "AI",
+    "agent": "math_sum_candidate_review",
+    "humanReview": false,
+    "independence": "Read the current canonical goal, policy, intended edit prompt and the two actual raster files. Did not read the root agent's review or any other review output."
+  },
+  "goal": {
+    "id": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "title": "Eigenschaften von Funktionssummen graphisch begründen (LK)",
+    "description": "Die lernende Person kann Eigenschaften von Funktionssummen wie $f(x)+g(x)$ anhand der Graphen von $f$ und $g$ skizzieren und begründen.",
+    "phase": "Q2",
+    "audience": "Gymnasium Sekundarstufe II, Mathematik Leistungskurs",
+    "scope": "Orientation to pointwise addition; not assessment of the entire learning goal."
+  },
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/attempt-01.png",
+    "sha256": "6f11af5794740dcfd9697b42bb035a7e31695c28270e3ddc78e6bfec9a002a83",
+    "format": "PNG",
+    "width": 1678,
+    "height": 937
+  },
+  "original": {
+    "path": "curricula/DE/Gymnasium/visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.jpg",
+    "sha256": "e54d8a82cfbbde46f3782643c81d8a42ddf02b78b5fe51b6e53b7b72e315bbfd",
+    "format": "JPEG",
+    "width": 2752,
+    "height": 1536,
+    "use": "Actual edit target and style reference."
+  },
+  "prompt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/attempt-01.prompt.md",
+    "sha256": "8b9612432b7df2bd0625476c1d0b6e9d3be2fab0a983e1ff9f38944a0a631cf3",
+    "strategy": "Targeted edit of the existing image to remove the dark central vertical line and its zero, retaining the pointwise cases and established design.",
+    "usedAsCorrectnessEvidence": false
+  },
+  "generationProvenance": {
+    "provider": null,
+    "model": null,
+    "status": "Not independently verified in this review; provider/model must be supplied from the actual generation receipt, not inferred from the filename or appearance."
+  },
+  "inspection": {
+    "tool": "view_image",
+    "detail": "original",
+    "inspectedBothActualRasterFiles": true,
+    "metadataTools": ["sha256sum", "file"],
+    "additionalReadOnlyContext": "app/src/components/GoalCard.tsx renders the primary image with w-full, object-contain and max-h-[28rem].",
+    "browserCardRenderingTested": false,
+    "nativeHostRenderingTested": false
+  },
+  "decision": "accepted_pilot",
+  "decisionScope": "Independent AI visual and mathematical review of the candidate raster for controlled orientation use. This is not human approval, M7 release approval, publication, or real-host acceptance.",
+  "observations": [
+    {
+      "criterion": "Arithmetic and notation",
+      "result": "pass",
+      "evidence": "The image visibly shows table rows (1,1,1,2) and (2,4,2,6). The associated bar labels are f(1)=1, g(1)=1, h(1)=2 and f(2)=4, g(2)=2, h(2)=6. Both sums are correct. The table header h(x)=f(x)+g(x) and the orange note h-Wert = f-Wert + g-Wert agree with those cases."
+    },
+    {
+      "criterion": "Scale, proportions and label placement",
+      "result": "pass_with_minor_inherited_imprecision",
+      "evidence": "Both bars start on the same horizontal baseline. At x=1 the blue and green parts are approximately equal; at x=2 the blue part is approximately twice the green part. The right total is approximately three times the left total. Boundary labels 1, 2 and 4 and the red sum markers match the visible stacking. The component f and g labels sit beside their respective colored segments and label segment magnitudes, not their vertical midpoint coordinates.",
+      "limitation": "This is an approximate classroom illustration, not a calibrated plot: by visual inspection the lowest blue unit is slightly shorter than the next green unit, an imprecision already visible in the original. It is not a gross change of scale or a newly introduced contradictory value. Fine ruler subdivisions are too small to rely on at reduced display widths."
+    },
+    {
+      "criterion": "Pointwise cases versus Cartesian coordinates",
+      "result": "pass",
+      "evidence": "The original's dark vertical line between the bars and its zero are absent in the candidate. Pale horizontal guides continue across that area. The x=1 and x=2 labels remain above their separate stacks; the heading Punktweise Addition remains present. There is no middle origin placing x=1 on a negative side of an axis. The common unnumbered baseline now reads as the shared baseline of two value stacks."
+    },
+    {
+      "criterion": "Coverage and age fit",
+      "result": "pass_for_orientation",
+      "evidence": "The two positive-value cases introduce the central idea of adding f(x) and g(x) at the same x. They are suitable as an accessible entry to the current Q2 LK goal. The image introduces no unrelated curriculum topic.",
+      "limitation": "There are no continuous graphs of f, g or h and no treatment of negative values or wider function properties. The image therefore cannot establish achievement of the full graph-sketching and justification goal, and is accepted only as orientation."
+    },
+    {
+      "criterion": "Preservation and style fit",
+      "result": "pass",
+      "evidence": "The candidate retains the complete wide two-panel arrangement, title, pale-blue left panel, pale-yellow right panel, rounded black outlines, blue/green stack colors, red sum markers, table and orange note. The approachable heavy lettering and classroom illustration style closely match the actual original. No cropped label, added curve, new formula, watermark, technical ID or obvious provider artifact is visible.",
+      "limitation": "The candidate is 1678x937 rather than 2752x1536. This is not byte-level preservation of the original; small lettering and line details have been resampled or regenerated. No resulting semantic defect is visible."
+    },
+    {
+      "criterion": "Readability at card width",
+      "result": "pass_with_display_limitations",
+      "evidence": "At original inspection size the title, headings, colored labels, table values and central rule are legible, with sufficient contrast and redundant text labels alongside color. The large rule and two-stack structure remain the strongest elements when the wide image is reduced. The removed central line also reduces visual clutter.",
+      "limitation": "No actual browser card or native host was rendered in this independent review. From the text proportions, detailed labels should remain usable at a roughly 600px-wide image, but can become small at 360-400px mobile widths; this is a layout limitation shared with the original, not a demonstrated mobile acceptance result. The fine ruler ticks are not necessary for the intended orientation."
+    },
+    {
+      "criterion": "New errors introduced by the edit",
+      "result": "none_visible",
+      "evidence": "The intended origin removal is visible. The numbers, signs, table relationships, bar colors, segment order and sum markers remain coherent. No visible replacement artifact creates a new mathematical statement or mislabels either pointwise case."
+    }
+  ],
+  "integrationLimitations": [
+    "Only this independent receipt was written; canonical metadata and public assets were not changed.",
+    "Current canonical alt text is generic and describes the overall goal rather than these specific two stacks. Any import should bind descriptive alt text and the new asset hash to the actual candidate.",
+    "Generation provenance, source/license metadata, affected page/context bindings and rendered host acceptance are outside this independent raster verdict.",
+    "Human approval remains absent and must not be inferred from accepted_pilot."
+  ],
+  "policySources": [
+    "AGENTS.md#73-atomic-goal-visualizations",
+    "docs/concept/skill-graph/atomic-goal-visualizations.md#provider-priority-and-exception-policy",
+    "docs/concept/skill-graph/atomic-goal-visualizations.md#quality-checklist",
+    "docs/concept/skill-graph/atomic-goal-visualizations.md#hard-review-gate"
+  ]
+}

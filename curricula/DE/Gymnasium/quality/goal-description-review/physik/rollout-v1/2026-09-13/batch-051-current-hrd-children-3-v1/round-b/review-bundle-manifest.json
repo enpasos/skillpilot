@@ -1,0 +1,118 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:ef6db627c6e7927d6d7262424009128c20115c2fa88d28d092e922166becffd5",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 3,
+  "goals": [
+    {
+      "goalId": "3a4b2f86-5c59-5429-8fb4-75d9b2589cb5",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:7f668486f88ba67327b3d6a5f13072f04d7796aa345375b4daf1428b16641efe",
+      "pageFingerprint": "sha256:ae5de1bf4d7f1516263a768c7b2908cec642bf05910ee9db77a09ace6637d668",
+      "evidenceReview": null
+    },
+    {
+      "goalId": "946ecf7b-0fcf-5776-9fb6-d397423c2f12",
+      "pageNumber": 2,
+      "goalFingerprint": "sha256:f6ecd973bf8404f1fef6a4470727c91ec8e6e00403e0e0694a9f967b4592c4a8",
+      "pageFingerprint": "sha256:4a82f878255fa9b7b9d740362b3c3f1cd0648fd3c214c52f9e3a9e7617b7ac1f",
+      "evidenceReview": null
+    },
+    {
+      "goalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+      "pageNumber": 3,
+      "goalFingerprint": "sha256:4b4ff84b658c2084e673adb740aa4571bb3bc7d79826a14cb0ffcb2c0cbdd318",
+      "pageFingerprint": "sha256:707b2e1f2f75c57820192e066b50e0d94936312b86fffd0976f1c5ccdb1ad5a3",
+      "evidenceReview": null
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:421fca19d6c16df5b0ed73a161afc619a71a1f88c10a85734d6a8df9adf48295",
+      "bytes": 351550
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:1d9f298fe23dd31cc02bbc45a8ca55bae70c2c0563dfc8c52537d3286f751613",
+      "bytes": 830206
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:db663ab04f166d9a8e2080fbd5e9507fa826f28b05f79edd6dcc7074cb5da153",
+      "bytes": 6272
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:7f6de2ef8849e8aeb9f011aae626748029ea6d5ff8250c942421dcb335f02886",
+      "bytes": 32357
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:163a635d5a3ed5198a3ee71c00a37c4f2feb3c53e2265a9c5773862a7f859585",
+      "bytes": 6273
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:9ebc96002042f6545e978589cad564bb765beda70ea14c49af199fe96bf26706",
+      "bytes": 11909
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:824db32b54b006b821ce0c5336c952dbb565d8ec72b7288bc509e084383dd31c",
+      "bytes": 9037
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:5a56115df8195bcba3c863eb572bca3ebc50e85e884cb0b6a771a05af3c77eff",
+      "bytes": 5105
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+      "bytes": 6989
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:e78ef9a3f73e70c62f1e44152f5be73b91036d858a7de81a5dcd221fd8f1e2ae"
+}

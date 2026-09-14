@@ -1,0 +1,605 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physics-source-method-current-binding-audit-20260913-v1",
+  "date": "2026-09-13",
+  "authority": "read_only_informed_binding_audit",
+  "humanApproval": false,
+  "newBlindReview": false,
+  "grantsProgress": false,
+  "scope": {
+    "goalIds": [
+      "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+      "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+      "3ed3279e-c524-5230-a277-dda89493df6d",
+      "5355fee0-0477-5570-a234-561477bf77ba",
+      "982df2f3-e040-5f4b-b668-0fe05d994b29",
+      "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162"
+    ],
+    "canonicalChanges": false,
+    "registryChanges": false,
+    "claimChanges": false,
+    "viewChanges": false,
+    "historicalProofChanges": false,
+    "descriptionReapproval": false,
+    "positiveEvidenceReapproval": false
+  },
+  "examinedState": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "canonicalBytesDigest": "sha256:48b8d42aa52c81f28c34187c85623b61d47b6252404e41007bfa47d715698419",
+    "sourceManifestPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json",
+    "sourceManifestBytesDigest": "sha256:9c882f83987ce58d7727be35e42670899f528d6c565e65d6d398275891f5e697",
+    "originalViewBytesCommit": "b1237cdbf4c75ed8133cf77da2bc1385b07797c6",
+    "originalViewBytesVerifiedAgainstRepairReceipt": 64,
+    "originalRepairReceipt": "source-method-learnable-projection-repair-20260913-v1.receipt.json",
+    "rpSupportFollowupReceipt": "source-method-rp-seki-support-retention-20260913-v1.receipt.json",
+    "currentPublicationPath": "app/public/lernzielbuch/de-gym-physik-bundesweit.book-model.json",
+    "publicationPageCount": 478,
+    "currentModelDigest": "sha256:63b4a8cf1f4ba86f07061ac077c06633d9c10760d2aac375a76eb6ff22e1e5f1",
+    "beforeCounterfactualModelDigest": "sha256:545ad1feda31f3aa29f4addebfdc4a2a3631c3f28c0453a78720472e4e48b132",
+    "currentPublicationDigest": "sha256:63b4a8cf1f4ba86f07061ac077c06633d9c10760d2aac375a76eb6ff22e1e5f1",
+    "currentPublicationBytesDigest": "sha256:f0ab5fc4d4209c09372b0e6555b865d3f29f77748cd9aac9ec17477161fbdbdb",
+    "publicationIndexPath": "app/public/lernzielbuch/index.json",
+    "publicationIndexModelDigestAndBytesDigestMatch": true,
+    "currentPublicationMatchesNativeLoader": true,
+    "publicationGoalPageDiffs": [],
+    "rejectedBaseline": "tmp/goal-books/de-gym-physik-bundesweit.book-model.json is a stale September7 derivative and was not used."
+  },
+  "methodology": [
+    "Call loadGoalBookBuildInputs for current Mathematics, then current Physics, matching buildGoalBookPublications registry order. This loader is read-only and does not write its configured tmp outputPath. Its current Physics model matches the complete built publication and every one of its478 pages.",
+    "Reconstruct a causal counterfactual through native buildGoalBookModel with current canonical, navigation, taxonomy, visualization resources and config, replacing only all64 manifest view bytes with exact git-show b1237cdbf bytes. Verify each original byte digest against the first repair receipt. This is not an assertion that the entire historic repository was otherwise identical.",
+    "For each original D input batch, rebuild a subset using native buildGoalDescriptionRolloutSubsetModel and its exact original ordered goalIds. Comparing full478-page fingerprints directly against20/16-goal review subsets would incorrectly invalidate unchanged evidence because subset references and ordering are normalized.",
+    "Compare unchanged goal fingerprints and buildGoalDescriptionCanonicalContext against current canonical. Recompute the whole per-goal D review-context fingerprint with native fingerprintGoalDescriptionReviewContext, replacing only the corresponding rebuilt subset page and page fingerprint.",
+    "Run reviewPositiveGoalEvidenceConfig for each of the four configured P groups containing these six IDs. All four return no errors. The P payload binds canonical semantic fields, profile criteria and configured resource inputs, not composition-view applicability or D page fingerprints."
+  ],
+  "conclusion": {
+    "targetedCurrentContextReviewGoalIds": [
+      "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+      "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+      "3ed3279e-c524-5230-a277-dda89493df6d",
+      "5355fee0-0477-5570-a234-561477bf77ba"
+    ],
+    "retainedAstroPageAndContextGoalIds": [
+      "982df2f3-e040-5f4b-b668-0fe05d994b29",
+      "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162"
+    ],
+    "retainedPositiveEvidenceGoalIds": [
+      "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+      "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+      "3ed3279e-c524-5230-a277-dda89493df6d",
+      "5355fee0-0477-5570-a234-561477bf77ba",
+      "982df2f3-e040-5f4b-b668-0fe05d994b29",
+      "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162"
+    ],
+    "unchangedCanonicalDescriptionAndContextGoalCount": 6,
+    "interpretation": "Exactly four of the six examined goals require new current D page/context decisions. None needs a canonical wording change solely because of this view repair. No current-context approval can be obtained merely by changing old fingerprints. Both held Astro goals retain their exact original per-goal D page/context bindings; their route hold needs a separately justified closure decision, not an invented new description review.",
+    "sourceBoundary": "The expanded atlas applicability describes authored learner scope, not new16-state normative curriculum source coverage.",
+    "globalBindingBoundary": "The whole book digest and composition-source digest change. Preserve old bundles, review inputs and historical run bindings as historical artifacts; do not overwrite them or globally rebind unrelated resolutions.",
+    "minimalFollowup": [
+      "Materialize one fresh four-goal method-context batch (proposed B052) for observation5355, units3ed, models e5 and sources d2, in prerequisite-safe order, and perform the two independent current-context D reviews and an explicit synthesis.",
+      "Create separately named retained-subset indices excluding only these four current-context-stale D entries from their three currently configured indices. Keep historical indices and proofs untouched; retain all other valid entries. Resolve the four new claims only after the new batch completes.",
+      "Keep all six existing P fachliche profiles and their current semantic/input/profile fingerprints. They remain needs_human_review, ai_candidate, E1/G1; this audit is not human approval or a new P decision.",
+      "For held D050982 and6ae, retain both original KEEP records and exact current page/context bindings, then perform the explicit route-hold resolution using current authored availability, source rationale, and bounded runtime evidence. Do not claim that page equality alone closes the route hold."
+    ],
+    "preexistingDriftWithinSameFour": {
+      "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e": "The same six external reverse-reference objects were reordered before the view repair; Corti-organ goal09e058e9 moved from third to last. The repair itself changes only applicability.",
+      "5355fee0-0477-5570-a234-561477bf77ba": "The older calibration page predates the current navigation: Physik-only breadcrumb and old atlas chapter ID versus the current supplement/method path, with navigationOrder/treeOrder added by model1.1. The repair itself changes only applicability.",
+      "e5bc2227-d900-585f-8ac0-9d3f1cb40e27": "No preexisting per-page drift in the original D036 subset.",
+      "3ed3279e-c524-5230-a277-dda89493df6d": "No preexisting per-page drift in the original D036 subset."
+    }
+  },
+  "perGoalBindings": [
+    {
+      "goalId": "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-037-biophysics-methods-pv-mechanics-20-v1/round-a/description-review-input.json",
+      "goalFingerprint": "sha256:2363816861390cb79be8b7933efd92a386ffd1b828a998dc0dd5d2344a6188c7",
+      "goalFingerprintUnchanged": true,
+      "canonicalContextChangedKeys": [],
+      "oldPageFingerprint": "sha256:7cb1cd280e13f302e7f5a078b4613781e37022ddcade2ea9b37a90b846a81c24",
+      "beforePageFingerprint": "sha256:4481c192886f00844e42ccb7e255a611dbcc9b890fb4041c0ff3f37e30782638",
+      "currentPageFingerprint": "sha256:37377ce73eff539a4944c93775aaf762fc8232252a3f7d87597bbe813b3a460e",
+      "oldContextFingerprint": "sha256:02c7c21f11b1ce06705b7be6d1543675586ac7c925bd16b0595a64f3773c715f",
+      "beforeContextFingerprint": "sha256:fc5096e7bd440d25a50d100fbdfc371b9309f292a252218575d498103beee9cb",
+      "currentContextFingerprint": "sha256:2ab0e4b6ec4c4d5344bc8036da19f19fb80d276cb0ec297835866e0b34393578",
+      "repairPageChangedKeys": [
+        "applicability",
+        "pageFingerprint"
+      ],
+      "preexistingPageChangedKeys": [
+        "externalReverseRequires",
+        "pageFingerprint"
+      ],
+      "applicabilityJurisdictions": {
+        "old": [
+          "DE-BY"
+        ],
+        "before": [
+          "DE-BY"
+        ],
+        "current": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "preexistingDeltas": {
+        "externalReverseRequires": {
+          "old": [
+            "3631c8f7-ff48-57ff-b7ee-8397ff1d166a",
+            "8eaa4e45-39fc-50e9-b59f-8a1752f6bebe",
+            "09e058e9-f3ed-5046-b0e9-495b694bf2a1",
+            "982df2f3-e040-5f4b-b668-0fe05d994b29",
+            "4e823349-b60c-5d2a-b96f-d3f23ae50e3a",
+            "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162"
+          ],
+          "before": [
+            "3631c8f7-ff48-57ff-b7ee-8397ff1d166a",
+            "8eaa4e45-39fc-50e9-b59f-8a1752f6bebe",
+            "982df2f3-e040-5f4b-b668-0fe05d994b29",
+            "4e823349-b60c-5d2a-b96f-d3f23ae50e3a",
+            "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162",
+            "09e058e9-f3ed-5046-b0e9-495b694bf2a1"
+          ]
+        }
+      }
+    },
+    {
+      "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-036-spectra-models-methods-20-v1/round-a/description-review-input.json",
+      "goalFingerprint": "sha256:52379367a20c1759b50f785fbc0e2b2105fbe2bffd9e2e183b982f5015d29dc8",
+      "goalFingerprintUnchanged": true,
+      "canonicalContextChangedKeys": [],
+      "oldPageFingerprint": "sha256:2d65a507faed0d9e7d68e33cca8c2e55bfd0a0c188936428f571fa24ec7d957f",
+      "beforePageFingerprint": "sha256:2d65a507faed0d9e7d68e33cca8c2e55bfd0a0c188936428f571fa24ec7d957f",
+      "currentPageFingerprint": "sha256:42608addf4b19ea6842872177a418e62c5a69748475e525c2c77ab6dd2ce7c2b",
+      "oldContextFingerprint": "sha256:efb69e934e3f9d6752d83a725253272d47e01b516bf9dca8bf96a8b32ca5d73f",
+      "beforeContextFingerprint": "sha256:efb69e934e3f9d6752d83a725253272d47e01b516bf9dca8bf96a8b32ca5d73f",
+      "currentContextFingerprint": "sha256:92d74e4387ff5da8742a98d5a4022c215c84fad4ac86cc4e67463fa73efaef53",
+      "repairPageChangedKeys": [
+        "applicability",
+        "pageFingerprint"
+      ],
+      "preexistingPageChangedKeys": [],
+      "applicabilityJurisdictions": {
+        "old": [
+          "DE-BW",
+          "DE-BY"
+        ],
+        "before": [
+          "DE-BW",
+          "DE-BY"
+        ],
+        "current": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "preexistingDeltas": {}
+    },
+    {
+      "goalId": "3ed3279e-c524-5230-a277-dda89493df6d",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-036-spectra-models-methods-20-v1/round-a/description-review-input.json",
+      "goalFingerprint": "sha256:028099e53583ff77cba011b3a0732e609d8d75f943b78a3571c6149acb59a1e0",
+      "goalFingerprintUnchanged": true,
+      "canonicalContextChangedKeys": [],
+      "oldPageFingerprint": "sha256:15ba65b04cf5ca6dfe8d82a30999f5ffbbb5ec36784f7c17f319cc7b82cbe306",
+      "beforePageFingerprint": "sha256:15ba65b04cf5ca6dfe8d82a30999f5ffbbb5ec36784f7c17f319cc7b82cbe306",
+      "currentPageFingerprint": "sha256:affca073b765dc788ce1c4977ba9936de244deb271aa0744fbdec3ef9b94eda4",
+      "oldContextFingerprint": "sha256:292272088a48feec008c3a1a3bc060e57fe987618919d2f3c5c0ee1ba33969d0",
+      "beforeContextFingerprint": "sha256:292272088a48feec008c3a1a3bc060e57fe987618919d2f3c5c0ee1ba33969d0",
+      "currentContextFingerprint": "sha256:915e750a9d40f383d7b124fc0a7936d2aa1e012a2a7fa410214fb82301281652",
+      "repairPageChangedKeys": [
+        "applicability",
+        "pageFingerprint"
+      ],
+      "preexistingPageChangedKeys": [],
+      "applicabilityJurisdictions": {
+        "old": [
+          "DE-BW",
+          "DE-BY"
+        ],
+        "before": [
+          "DE-BW",
+          "DE-BY"
+        ],
+        "current": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "preexistingDeltas": {}
+    },
+    {
+      "goalId": "5355fee0-0477-5570-a234-561477bf77ba",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/calibration-v2/2026-08-26/final-20-v6/round-a/description-review-input.json",
+      "goalFingerprint": "sha256:e6e80b9f944d6d0dc5c355d004409a719899f9190b5b0a5593b5b1de9b7710eb",
+      "goalFingerprintUnchanged": true,
+      "canonicalContextChangedKeys": [],
+      "oldPageFingerprint": "sha256:3ebcaad434b407b3da928253ee3dd06d975c32eb042535b7697451ef3aa00790",
+      "beforePageFingerprint": "sha256:61c17319dc64771cd0d61b172937f6fd626c49e62a2a1f812ba7fc6f747cf168",
+      "currentPageFingerprint": "sha256:ec55a3d729797438c5e73b2f013feb3608ebb6730f2d014d3d66c77901ef3c4b",
+      "oldContextFingerprint": "sha256:6e0ec113a257d76a41fb30deca386c0c1b7f02824f6a211b37e93a7d74e2991c",
+      "beforeContextFingerprint": "sha256:46090cb250818c2fd027779c02cf140aa6f13a16e1035fc5c7ccf73f6c9800b6",
+      "currentContextFingerprint": "sha256:043c2290a07a9f64af6fad9400ae951aa351314dc2b6603a2f0f4f2c3984d997",
+      "repairPageChangedKeys": [
+        "applicability",
+        "pageFingerprint"
+      ],
+      "preexistingPageChangedKeys": [
+        "breadcrumbs",
+        "chapterIds",
+        "pageFingerprint",
+        "navigationOrder",
+        "treeOrder"
+      ],
+      "applicabilityJurisdictions": {
+        "old": [
+          "DE-BW",
+          "DE-BY"
+        ],
+        "before": [
+          "DE-BW",
+          "DE-BY"
+        ],
+        "current": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "preexistingDeltas": {
+        "breadcrumbs": {
+          "old": [
+            "Physik"
+          ],
+          "before": [
+            "Physik",
+            "Bundeslandspezifische Ergänzungen",
+            "Stufenübergreifend",
+            "Denk- und Arbeitsweisen"
+          ]
+        },
+        "chapterIds": {
+          "old": [
+            "atlas:3400bf6ce29cb6d09086"
+          ],
+          "before": [
+            "structure:goal-book-physics-root",
+            "structure:goal-book-bundesland-supplements",
+            "structure:goal-book-supplement-crossstage",
+            "structure:goal-book-supplement-CrossStage-Denk--und-Arbeitsweisen"
+          ]
+        },
+        "navigationOrder": {
+          "before": 19
+        },
+        "treeOrder": {
+          "before": 51
+        }
+      }
+    },
+    {
+      "goalId": "982df2f3-e040-5f4b-b668-0fe05d994b29",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-050-current-dependent-contexts-16-v1/round-a/description-review-input.json",
+      "goalFingerprint": "sha256:ea3d73f117b06af3278d9273baaf5c351348bc3e3f960aa003f6dd83df65dea6",
+      "goalFingerprintUnchanged": true,
+      "canonicalContextChangedKeys": [],
+      "oldPageFingerprint": "sha256:e3a8e2df422773524d8042e9c5a58f7985af40d9fa949be5da7ed8ab88b0690a",
+      "beforePageFingerprint": "sha256:e3a8e2df422773524d8042e9c5a58f7985af40d9fa949be5da7ed8ab88b0690a",
+      "currentPageFingerprint": "sha256:e3a8e2df422773524d8042e9c5a58f7985af40d9fa949be5da7ed8ab88b0690a",
+      "oldContextFingerprint": "sha256:c06b8f2100a0dbba0ad03019f47a77f25890416876382bb75cb6e636bc9ae645",
+      "beforeContextFingerprint": "sha256:c06b8f2100a0dbba0ad03019f47a77f25890416876382bb75cb6e636bc9ae645",
+      "currentContextFingerprint": "sha256:c06b8f2100a0dbba0ad03019f47a77f25890416876382bb75cb6e636bc9ae645",
+      "repairPageChangedKeys": [],
+      "preexistingPageChangedKeys": [],
+      "applicabilityJurisdictions": {
+        "old": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ],
+        "before": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ],
+        "current": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "preexistingDeltas": {}
+    },
+    {
+      "goalId": "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-050-current-dependent-contexts-16-v1/round-a/description-review-input.json",
+      "goalFingerprint": "sha256:72d57c60e3bc9c515deaec344db63d989eacaac080a2d595375ed1921d2191b3",
+      "goalFingerprintUnchanged": true,
+      "canonicalContextChangedKeys": [],
+      "oldPageFingerprint": "sha256:4c16439cfa5fcba02fad9c6ccfb3e2a0ac67a7cb555aa17dcb11ca228a7f3a37",
+      "beforePageFingerprint": "sha256:4c16439cfa5fcba02fad9c6ccfb3e2a0ac67a7cb555aa17dcb11ca228a7f3a37",
+      "currentPageFingerprint": "sha256:4c16439cfa5fcba02fad9c6ccfb3e2a0ac67a7cb555aa17dcb11ca228a7f3a37",
+      "oldContextFingerprint": "sha256:258856629b437e34ea1b98d2eb1a83fc4f8afe0b1ebd18a6f39ca417150a1390",
+      "beforeContextFingerprint": "sha256:258856629b437e34ea1b98d2eb1a83fc4f8afe0b1ebd18a6f39ca417150a1390",
+      "currentContextFingerprint": "sha256:258856629b437e34ea1b98d2eb1a83fc4f8afe0b1ebd18a6f39ca417150a1390",
+      "repairPageChangedKeys": [],
+      "preexistingPageChangedKeys": [],
+      "applicabilityJurisdictions": {
+        "old": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ],
+        "before": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ],
+        "current": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "preexistingDeltas": {}
+    }
+  ],
+  "positiveEvidenceValidation": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-050-current-astro-dependent-contexts-11-v1.paused-current-20260908-v1.config.json",
+      "errors": [],
+      "counts": {
+        "approved": 0,
+        "needsHumanReview": 8,
+        "rejected": 0
+      },
+      "records": [
+        {
+          "goalId": "982df2f3-e040-5f4b-b668-0fe05d994b29",
+          "goalFingerprint": "sha256:ea3d73f117b06af3278d9273baaf5c351348bc3e3f960aa003f6dd83df65dea6",
+          "reviewInputFingerprint": "sha256:558caa927cab0cddadc82c4bc4b6633785bee28e860d83e33517f934d47b061d",
+          "profileFingerprint": "sha256:76ec23ed4bf69714c0a39785059f82d0894e2e896206f33f733faacfa9578617",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        },
+        {
+          "goalId": "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162",
+          "goalFingerprint": "sha256:72d57c60e3bc9c515deaec344db63d989eacaac080a2d595375ed1921d2191b3",
+          "reviewInputFingerprint": "sha256:4a895d630bbfe514920f1fb1cde8f69ac858c9293956e01db2785baf1310d5d3",
+          "profileFingerprint": "sha256:9bf39db5218396aef620138b195ad0e0b3f3bd8dd9a1949485c6af03555a02f9",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-036-current-counterreviewed-19-v1.paused-checkpoint-20260907-v1.config.json",
+      "errors": [],
+      "counts": {
+        "approved": 0,
+        "needsHumanReview": 18,
+        "rejected": 0
+      },
+      "records": [
+        {
+          "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+          "goalFingerprint": "sha256:52379367a20c1759b50f785fbc0e2b2105fbe2bffd9e2e183b982f5015d29dc8",
+          "reviewInputFingerprint": "sha256:3964aa53d0d068a4953419f795466f3350e8d5a29c42dd5b1bf8fa92af801fac",
+          "profileFingerprint": "sha256:ee6a20e015fdffed7c59ca6b11b26b9e5f7f5cf3d204e4c6d0d689a69fed609e",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        },
+        {
+          "goalId": "3ed3279e-c524-5230-a277-dda89493df6d",
+          "goalFingerprint": "sha256:028099e53583ff77cba011b3a0732e609d8d75f943b78a3571c6149acb59a1e0",
+          "reviewInputFingerprint": "sha256:b12b4b2066f61e28369219d9bcca99d5ae06ba2fc08fdf2fa22267db527d6a38",
+          "profileFingerprint": "sha256:e98e2b410b100f36892e1466be34223f09da1a8d1fd10b706407e50c09a77f61",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-037a-biophysics-methods-pv-mechanics-19-v1.config.json",
+      "errors": [],
+      "counts": {
+        "approved": 0,
+        "needsHumanReview": 19,
+        "rejected": 0
+      },
+      "records": [
+        {
+          "goalId": "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+          "goalFingerprint": "sha256:2363816861390cb79be8b7933efd92a386ffd1b828a998dc0dd5d2344a6188c7",
+          "reviewInputFingerprint": "sha256:259ceee51207386ae6ce8f917de2325aaaaef939ac939313f97b75772e245f3b",
+          "profileFingerprint": "sha256:5574d9623b4fdf6af87677b026eb3421b43cf7d06d8162ac6a93c00570e74f2e",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-calibration-final20-v3.retained-after-final-context-v1.config.json",
+      "errors": [],
+      "counts": {
+        "approved": 0,
+        "needsHumanReview": 19,
+        "rejected": 0
+      },
+      "records": [
+        {
+          "goalId": "5355fee0-0477-5570-a234-561477bf77ba",
+          "goalFingerprint": "sha256:e6e80b9f944d6d0dc5c355d004409a719899f9190b5b0a5593b5b1de9b7710eb",
+          "reviewInputFingerprint": "sha256:a1c35c59e05383b7ed980bbe397cb90b4a9825b2c3d1363f9caa7d3934a44560",
+          "profileFingerprint": "sha256:496898b45788f8a72a6bdb2e07d45f1d57e08a349f711a593d86d818a9a5eed0",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        }
+      ]
+    }
+  ],
+  "activeDIndexPaths": [
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-037-biophysics-methods-pv-mechanics-20-v1/resolution-index.current-carryover-v1.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-036-spectra-models-methods-20-v1/resolution-index.current-carryover-v1.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/checkpoint-current-2026-08-26/resolution-index.retained-after-final-context-v1.paused-context-current-20260908-v1.json"
+  ],
+  "heldAstroHistoricalDecisions": {
+    "roundA": "keep",
+    "roundB": "keep",
+    "goalIds": [
+      "982df2f3-e040-5f4b-b668-0fe05d994b29",
+      "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162"
+    ],
+    "sourceDirectory": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-050-current-dependent-contexts-16-v1",
+    "decisionRecords": "round-a/results/*records.jsonl and round-b/results/*records.jsonl were read directly; both goals have exactly the page and goal fingerprints listed above."
+  },
+  "nativeValidationBoundary": {
+    "reportDeepUnderstandingRollout": "At app/scripts/reportDeepUnderstandingRollout.ts1094, existing resolution validation receives group.first.input as currentInput plus current canonical. It does not independently rebuild the latest publication page. Consequently a green retained-ledger report is not proof that view-driven page/context changes have been reviewed.",
+    "previousAuthoringAndRuntimeTests": "The original5 authoring checks (now6 with RP stage retention) and the previous27 generic ProjectionRoleLearnerServiceTest cases proved closure, placement, compilation and generic projection semantics, not the actual empty-method-mastery progression for these canonical goals.",
+    "smallestMeaningfulRuntimeFixture": "Use the four real canonical method goals and the two dependent Astro goals in one target focus. Mark only the existing orientation and the two other factual Astro prerequisites mastered. All four methods start unmastered. Check both frontier APIs over successive legitimate mastery states: observation and SI -> models -> sources -> both Astro targets. Add the omitted-source and prerequisiteOnly-source negative cases.",
+    "parallelImplementationStatus": "A separate parent-owned agent implemented two new backend fixtures during this audit. Current test source and JUnit XML show29 tests,0 failures,0 errors; test source uses real canonical goal definitions with a synthetic complete focus. It does not itself compile the56 actual views. Real-view authoring checks and synthetic-focus runtime checks provide complementary evidence, not an end-to-end UI session.",
+    "runtimeProofPath": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.ProjectionRoleLearnerServiceTest.xml",
+    "runtimeProofTimestamp": "2026-09-13T20:54:51.417Z",
+    "focusBoundary": "Regular global orientation is already complete in the positive fixture. Narrow Astro focus does not automatically import that orientation; canonical Astro cluster focus is not identical to the authored synthetic Astro focus. BY Ph11.1-only focus does not include observation/models placed in Ph11.4; broad subject/SekII focus is required for the complete BY method chain.",
+    "noNewRuntimeChangesByThisAudit": true
+  },
+  "status": "audit_complete_four_current_context_reviews_required_all_six_P_bindings_retained_two_held_Astro_page_context_bindings_current",
+  "runningProcessHandles": []
+}

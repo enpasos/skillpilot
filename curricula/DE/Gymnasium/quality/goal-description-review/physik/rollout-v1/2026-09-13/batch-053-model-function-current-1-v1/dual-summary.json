@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:cf52ab608f2400a9da60ce732842d41a1893638e796ba31c10ad4caaa0f282d5",
+  "reviewInputFingerprint": "sha256:5ec88d7271c36e452c1eebe96ac848f11c5906650569b30aa44f54246eacca6e",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-a",
+      "roundId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-first-pass-a.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unknown::unknown"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-b",
+      "roundId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-first-pass-b.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unknown::unknown"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::unknown::unknown"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+      "firstRecordId": "physik-b053-first-pass-a-e5bc2227",
+      "secondRecordId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-first-pass-b.record-001",
+      "firstRunId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-first-pass-a.run-001",
+      "secondRunId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

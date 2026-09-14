@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-first-pass-a.batch-001.run-a",
+  "campaignId": "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-a",
+  "roundId": "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:cde96a44c3b1dba89cfcb5e17091103a536b73770081b787e9f7229ccd5138ca",
+  "bundleFingerprint": "sha256:d73fbe3b3ad475d2ba25ac521f3143f1dc40bb68708ab12b6cfe8e06e7c6b8cf",
+  "bookDigest": "sha256:0aaaaa3c55146b28954b6cdc8652bcdb50e7e99939c005c986852d06b53959ba",
+  "provider": "OpenAI via Codex",
+  "model": "Codex session model; exact provider model identifier not disclosed",
+  "modelVersion": "Not disclosed. The generation-parameters fingerprint hashes the UTF-8 JSON nondisclosure descriptor, not an observed sampling configuration.",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:dc0a36fa07c7f4fa9d47de81d56ff7f71cc7ea761a6efb1f307af4c611238f89",
+  "independenceGroupId": "physik-rollout-v1-batch-052a-crash-current-alttext-1-v1-20260913-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1232febe-868a-4dac-b4c2-e35789434601"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:cde96a44c3b1dba89cfcb5e17091103a536b73770081b787e9f7229ccd5138ca"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-09-13T19:09:45Z",
+  "completedAt": "2026-09-13T19:11:24Z",
+  "status": "completed",
+  "outputDigest": "sha256:3176c198fa3bb75bcc2f5ef64bdbeced7327b83b639293f66fee4bf4ee2a64b8",
+  "toolchainVersion": "codex-native-description-review-v1"
+}

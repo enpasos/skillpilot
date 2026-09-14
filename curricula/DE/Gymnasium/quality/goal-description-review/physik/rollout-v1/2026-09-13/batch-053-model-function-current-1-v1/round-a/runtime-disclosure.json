@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-053-model-function-current-1-v1-20260913-first-pass-a.run-001",
+  "provider": "OpenAI",
+  "interface": "Codex subagent",
+  "runtimeModel": "unknown",
+  "runtimeModelRevision": "unknown",
+  "temperature": "unknown",
+  "seed": "unknown",
+  "topP": "unknown",
+  "reasoningEffort": "unknown",
+  "toolchainVersion": "unknown",
+  "availabilityNote": "The runtime did not expose a verifiable model identifier, revision, sampling seed, temperature, top-p or reasoning setting. Prompt-level model names are not treated as verified runtime metadata.",
+  "independence": {
+    "context": "Separate subagent context assigned solely to round-a first pass.",
+    "blindToOtherRuns": true,
+    "differentModelClaimed": false,
+    "scope": "Only round-a supplied artifacts, sibling prepared bundle and the exact bound original image were used as review evidence. No round-b, historical batches, informed receipts, adjudications, canonical diff or root notes were consulted. Validator code was read only for schema and CLI mechanics."
+  },
+  "timing": {
+    "startedAt": "2026-09-13T21:41:00Z",
+    "startObservation": "First recorded UTC clock sample; initial file discovery and preliminary artifact reads preceded this sample. Full schema/input reread, original-image inspection and decision drafting followed it.",
+    "completionObservation": "completedAt in the run manifest is a UTC clock sample taken after writing the completed review record."
+  },
+  "inspectedMaterials": {
+    "recordSchemaDigest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+    "goalPage": "bundle/book.html goal article and bundle/book.pdf physical page 3 text",
+    "originalImagePath": "app/public/assets/goal-visualizations/physik/e5bc2227-d900-585f-8ac0-9d3f1cb40e27/e5bc2227-d900-585f-8ac0-9d3f1cb40e27.jpg",
+    "originalImageDigest": "sha256:25986f5cdc551e02984369a1c7dfa89dc8c42a019e7341a245ce949a320defa8",
+    "originalImageDimensions": {
+      "width": 2752,
+      "height": 1536
+    },
+    "originalImageInspection": "view_image detail original; source SHA256 matched bound originalDigest",
+    "sourceMappingAndEffectiveProjectionVerification": "not performed; no separate mapping/composition/source matrix was bound"
+  }
+}

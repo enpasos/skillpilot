@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "informed-ai-profile-body-review",
+  "reviewer": "Codex /root",
+  "reviewDate": "2026-09-13",
+  "candidateSetSha256": "bf34c6ed57e546070ae365cab243906bb9cf2c99c18beb6c8f1a9d0699b78fa6",
+  "configSha256": "c85c6a9c96b346c4d53d2c100be0ce800ce7549baf373db901fd3bb54f8a7aec",
+  "allSevenProfileBodiesReadInFull": true,
+  "allFourteenApplicationCasesChecked": true,
+  "findingsResolvedBeforeMaterialization": [
+    {
+      "goalId": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+      "finding": "The first draft combined sides 5,6,7 with an inconsistent area of 12. Root identified the inconsistency; the author also caught it in its own review. The final file uses 5,12,13 with area30 and 7.5,18,19.5 with area67.5. Heron's formula and the 1.5 length / 2.25 area factors were independently checked."
+    },
+    {
+      "goalId": "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+      "finding": "General expectations previously implied a header row and features in columns. The final DE/EN wording permits header/axis labels and the assigned feature in either layout. Concrete row-based tasks remain correct examples, not a mandatory universal arrangement."
+    }
+  ],
+  "individualChecks": [
+    {
+      "goalId": "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+      "result": "accept-ai-candidate",
+      "check": "Cube/cuboid/prism inclusion, right triangular prism faces, translated triangular top (1,0,2), and right/oblique square pyramids with apex feet (0,0,0)/(2,0,0) are consistent. Rotation of the representation does not alter the solid. Existing coordinate prerequisites support the transfer representation."
+    },
+    {
+      "goalId": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+      "result": "accept-ai-candidate-after-correction",
+      "check": "Final triangles have areas30 and67.5. For a similar rectangle, 18 to50 gives k=5/3 and sides10,5; the10-by6 counterexample has different aspect ratio. Matching all corresponding sides, rather than one length, establishes similarity."
+    },
+    {
+      "goalId": "ef1524f1-0b2f-59f7-a001-5ab3e3dececb",
+      "result": "accept-ai-candidate",
+      "check": "The isosceles median proof uses SSS then equal supplementary angles. The midpoint-connection proof uses equal included angle and two proportional sides before inferring parallelism, avoiding circular use of the desired conclusion. BC10 gives MN5. Both are independent of the displayed parallelogram proof."
+    },
+    {
+      "goalId": "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+      "result": "accept-ai-candidate",
+      "check": "Warehouse matrix entries a23=6 and a12=7 are correctly interpreted. After row/column-role exchange the same facts move to t32=6 and t21=7, preserving stock meanings rather than memorizing row roles. No matrix operation is required of the learner."
+    },
+    {
+      "goalId": "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+      "result": "accept-ai-candidate-after-clarification",
+      "check": "B3=4 is Q's x-coordinate; C2=3 is P's y-coordinate. Tuesday wind5m/s moves from C4 to C3 when complete records are sorted by temperature. Headers are not records, tuple associations remain intact, and no copied formula/reference semantics are demanded."
+    },
+    {
+      "goalId": "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+      "result": "accept-ai-candidate",
+      "check": "The two-state product is(58,42). Reordering(C,A,B)=(50,20,30) to(A,B,C)=(20,30,50) gives(21,41,38), with B contributions6+15+20. Both products and total100 were checked; meaning and component order are explicit."
+    },
+    {
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "result": "accept-ai-candidate",
+      "check": "For A=[[3,1],[1,1]], B=1/2[[1,-1],[-1,3]] gives AB=BA=I2. D=diag(2,-4,1/2) has inverse diag(1/2,-1/4,2), with all six off-diagonal product entries zero. A zero diagonal entry yields a zero product row and prevents an inverse. This matches the revised current goal and its explicit existing matrix-multiplication prerequisite; it does not replace the pending post-change D reviews."
+    }
+  ],
+  "authority": "ai_candidate",
+  "humanApproval": false,
+  "blindReviewClaimed": false,
+  "learnerPerformanceObserved": false,
+  "strictCompletionGrantedByThisReceipt": false,
+  "limits": "Informed review of authored P bodies, distinct from the independent D rounds. Native current goal/image bindings and five-gate validation remain required."
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-rollout-v1-batch-048-transition-images-current-2-v1-20260913-first-pass-b.batch-001.run",
+  "campaignId": "mathematik-rollout-v1-batch-048-transition-images-current-2-v1-20260913-b",
+  "roundId": "mathematik-rollout-v1-batch-048-transition-images-current-2-v1-20260913-first-pass-b",
+  "batchId": "mathematik-rollout-v1-batch-048-transition-images-current-2-v1-20260913-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:c42c6a08c63f949ca03ef1c9a88dd802d0b0ac2783c193ac6989b243e8562909",
+  "bundleFingerprint": "sha256:9e5b4b33fcae8eda37b3cfd0b9387bb842aa69fb9bb03df1c324d204124fae0c",
+  "bookDigest": "sha256:d1599d54f184281e8213445708bc342cd37189deebd9a71db627f84694da2e31",
+  "provider": "OpenAI",
+  "model": "Codex (runtime model identifier not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:ff9929cb7ce87177fbbd4433b8846a5b8fd63f242d8475a6e5954890affce02f",
+  "independenceGroupId": "mathematik-rollout-v1-batch-048-transition-images-current-2-v1-20260913-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "03685f87-7570-5bb3-b1c7-134124abb317",
+    "6aa593a3-6690-581d-9b7d-37cac78187a1"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:c42c6a08c63f949ca03ef1c9a88dd802d0b0ac2783c193ac6989b243e8562909"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-13T20:35:51Z",
+  "completedAt": "2026-09-13T20:38:54.815Z",
+  "status": "completed",
+  "outputDigest": "sha256:6c35cbc6afd31005d1795cdf438b22fe427fc2229cc503c267a32df1048303c5",
+  "toolchainVersion": "skillpilot-app-0.0.0-node-20.20.2"
+}

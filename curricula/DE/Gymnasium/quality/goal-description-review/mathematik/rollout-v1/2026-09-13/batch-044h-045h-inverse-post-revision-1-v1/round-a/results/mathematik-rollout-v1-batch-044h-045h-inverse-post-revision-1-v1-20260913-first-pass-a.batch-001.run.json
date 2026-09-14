@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-first-pass-a.batch-001.codex-a",
+  "campaignId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-a",
+  "roundId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-first-pass-a",
+  "batchId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:245a5cb858555197629cea866c35df11eb21b3469f749cfe2601c5029a2d01f1",
+  "bundleFingerprint": "sha256:6b8096d7ac1d186e9699759c0143bf20143bf1436148a0438eab05e3778d3932",
+  "bookDigest": "sha256:5d062cc0359c085b9f3b6a6738d6505a81dd7f4a868a1000d878c493754d3a6b",
+  "provider": "OpenAI",
+  "model": "OpenAI Codex agent; exact model identifier not exposed",
+  "modelVersion": "Exact model version and sampling parameters not exposed. Independence is an isolated blind agent round A, not a different-model claim.",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:16a5998f5afd6949e2ffe94adf2cc78c21819b8f89102b3dfe4cb8dd26251820",
+  "independenceGroupId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "ce198bc9-b014-52ba-814f-25cc3e020668"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:74e31193b3d2f38751bbc5651d131b4f5ce1cd97f00d0b7e3b07d56ea53968c0"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:0b35364fc48c9bfa093115dfa8d84da233e8995c6d84bd2483c2a417c7b4318c"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:d892bb79fbee8ebbd7947e36455ab188ed8e56ecc3c02eba6dcef49bb021e4cf"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:245a5cb858555197629cea866c35df11eb21b3469f749cfe2601c5029a2d01f1"
+    }
+  ],
+  "startedAt": "2026-09-13T18:33:19Z",
+  "completedAt": "2026-09-13T18:35:55Z",
+  "status": "completed",
+  "outputDigest": "sha256:b1d10d51d085b1f2ea64e5a9e1e76d3137e6de316236aed3f9dc5250517c8f4b",
+  "toolchainVersion": "goal-description-review-v2-codex"
+}

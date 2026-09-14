@@ -2,6 +2,20 @@
 
 Stand: 2. September 2026
 
+**Regelaktualisierung vom 13. September 2026:** Für neue Bildarbeit gilt die
+[aktuelle Provider- und Qualitätsregel](../concept/skill-graph/atomic-goal-visualizations.md#provider-priority-and-exception-policy):
+ChatGPT/Codex-Bildgenerierung ist der bevorzugte erste Weg bei fachlicher Qualität
+und passender Darstellungsform/Stilintegration; Nano Banana Pro bleibt ohne
+vorherige Fehlversuche zulässig. Gute Bilder bleiben erhalten. Nachfolgend
+dokumentierte Nano-Banana-first-Beschlüsse sind historische Entscheidungen,
+keine heutige Providerpflicht. Versiegelte Belege und Batch-Skripte bleiben
+unverändert und dürfen nicht blind für neue Arbeit wiederverwendet werden.
+Maßgeblich für eine spätere Fortsetzung sind die aktuelle Registry, das
+In-flight-Ledger und der im [Fortsetzungsbericht](math-physics-deep-understanding-resumption-review-2026-09-05.md)
+verlinkte neueste Checkpoint, nicht die hier genannten alten Paketprioritäten
+oder Zähler. Diese Anweisungsaktualisierung hebt die Nutzerpause nicht auf und
+ändert keine Qualitäts-, Freigabe-, Runtime-, Datenschutz- oder Sicherheitsgrenzen.
+
 ## Ergebnis
 
 Das am 29. August 2026 gesetzte Verfahrens-Gate ist mit den nachfolgenden
@@ -157,6 +171,11 @@ Grenzfälle eskaliert:
 - eine Änderung, die Produkt-, Datenschutz- oder Freeze-Semantik berührt.
 
 ## 8. Visualisierungen
+
+Der folgende Absatz dokumentiert die Entscheidung vom 2. September. Die
+Providerreihenfolge wurde am 13. September durch die oben verlinkte aktuelle
+Regel ersetzt; KEEP und die fachliche Nachprüfung geänderter Bildbindungen
+gelten weiterhin.
 
 Die Beschreibungs- und Evidence-Arbeit ersetzt keine Bilder vorsorglich. Eine
 gebundene Visualisierung wird nur geändert, wenn sie die fachliche Aussage oder

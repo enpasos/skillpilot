@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-13T22:32:51Z",
+  "authority": "informed_ai_source_and_evidence_adjudication",
+  "humanApproval": false,
+  "goalId": "7e719cc2-0866-5267-a252-e7e7ac0d03f1",
+  "priorHoldPath": "docs/qa-ci/physics-paused-checkpoint-2026-09-08.md",
+  "priorAuditPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-050-current-binding-audit-20260913-v1.json",
+  "sourceDocument": {
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+    "sha256": "sha256:46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f",
+    "officialUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-physik.pdf",
+    "inspection": "Local pdftotext -layout output read in the complete relevant sections; printed page numbers retained. No reliance on legacy mappings alone."
+  },
+  "sourceAnchors": [
+    {
+      "printedPage": 24,
+      "section": "3.2, Bewertungskompetenz B3, B5, B6",
+      "meaningDe": "B3 verlangt Kriterienwahl und Abwägen von Handlungsoptionen mit Fachbezug; B5/B6 beziehen die Qualität von Bewertungsprozessen sowie Technologien, Sicherheitsmaßnahmen, Konsequenzen und Risiken ein.",
+      "scope": "General evaluation competencies, not a named reactor-engineering syllabus."
+    },
+    {
+      "printedPage": 26,
+      "section": "3.3, Grundkurs/Leistungskurs-Anforderungsdifferenzierung",
+      "meaningDe": "Das erhöhte Niveau verlangt mehr beziehungsweise komplexere belegte Argumente. Der kurze kanonische Kern und das qualitative Abwägen bereitgestellter Daten sind nicht allein LK vorbehalten.",
+      "scope": "Qualitative structured judgement at basic level; increased depth possible, not imposed on all learners."
+    },
+    {
+      "printedPages": [
+        45,
+        46
+      ],
+      "section": "Q4.3 Kernphysik, grundlegendes Niveau (Grundkurs und Leistungskurs)",
+      "meaningDe": "Die Fachinhalte umfassen Strahlungswirkungen, Anwendungen und Gefahren, Bindungsenergie, Energiefreisetzung sowie Kernspaltung und Kernfusion. Diese tragen die physikalischen Kriterien des Bewertungsziels.",
+      "scope": "Subject-content anchor combined with the general evaluation competencies, not an exact quotation of the canonical goal."
+    },
+    {
+      "printedPage": 44,
+      "section": "Q4, Verbindlichkeit",
+      "meaningDe": "Nur Q4.1 wird hier verbindlich genannt; Q4.3 bleibt ein weiteres Themenfeld. Die Zulässigkeit dieses Kontextziels bedeutet keine allgemeine Pflicht zur Behandlung von Kernenergieoptionen.",
+      "scope": "Optional-topic limitation preserved. No implementation of topic-choice runtime state claimed."
+    }
+  ],
+  "decision": {
+    "heSekIIEligibility": "supported_as_didactic_contextualization",
+    "exactNormativeGoalQuote": false,
+    "universalMandatoryContent": false,
+    "preserveCanonicalTextAndPlacement": true,
+    "reasonDe": "Die aktuelle Formulierung operationalisiert eine zusammenhängende Bewertungskompetenz anhand zulässiger kernphysikalischer Inhalte. Physikalische Kriterien und Unsicherheit sind durch die Kombination der gelesenen Kompetenz- und Inhaltsabschnitte getragen. Die fehlende direkte Extraktions-Zuordnung ist kein Gegenbeweis: Die dokumentierte Extraktionsmethode segmentiert Themenfelder, nicht die allgemeinen B-Kompetenzen. Der Legacy-exact-Eintrag bestätigt ausschließlich die übernommene Zielidentität; er wird nicht als amtliches wörtliches Lernziel ausgegeben. Die vorgegebene qualitative Datengrundlage des P-Profils verlangt keine Reaktorsicherheitsrechnung. Der konkrete HE-Quellenvorbehalt ist damit beantwortet, ohne den bestehenden Zielumfang zu verkleinern oder die allgemeine Themenpflicht zu erweitern.",
+    "reasonEn": "The current wording operationalizes one coherent evaluation competence using permitted nuclear-physics content. The read competence and content sections jointly support physical criteria and uncertainty. Absence of a direct extraction mapping is not disproof: the documented extraction segments topic fields, not the general B competencies. The legacy exact entry concerns inherited goal identity, not a verbatim official outcome. The supplied qualitative data in the P profile require no reactor-safety calculation. This resolves the specific HE source hold without shrinking the target set or expanding mandatory topic coverage."
+  },
+  "profileReview": {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-051-current-nuclear-dependent-contexts-5-v1.retained-three-current-v1.paused-current-20260908-v1.config.json",
+    "errors": [],
+    "goalIds": [
+      "5492f0e0-cbae-574e-a853-182616205ed3",
+      "7e719cc2-0866-5267-a252-e7e7ac0d03f1"
+    ],
+    "profileFingerprint": "sha256:79c980005faf7f972b23bbb68c9571d41d31a8fa1ab499cee472b4c54b438822",
+    "profileBytesDigest": "sha256:2bcfcd7f8a384a40675013fad9bb5c8ba490d0581ff50a3638dc21b1db8d2fc8",
+    "bodyReadCompletely": true,
+    "decision": "retain_current_AI_candidate",
+    "reasonDe": "Fall 1 stellt gleiche Nutzenergie, Systemgrenze und Abfallklasse her: B benötigt im Modell weniger Wärme, A hat weniger Abfallvolumen; fehlende Sicherheitsdaten verhindern ein Gesamturteil. Fall 2 lässt durch Intervallüberlappung die robuste Wärmerangfolge entfallen und trennt diese geänderte Information von Wertprioritäten. Diese Änderung ist strukturell, nicht bloßer Zahlentausch. Alle Angaben sind explizit künstlich; weder reale Reaktor- noch politische Empfehlungen werden erzeugt.",
+    "historicalDissent": "The invalid historical A20 disclosure/run claim remains untouched. The complete independent current D050 A/B records have now been read; those, not A20, are the prospective description-resolution sources. No past run is rehabilitated."
+  },
+  "descriptionReview": {
+    "originalDualSummaryDigest": "sha256:fb58e326d8991b68c3f186839485ae23fa3533f8df77dad96d9acc68af78bd82",
+    "completeRecordsRead": [
+      "D050 first-pass-a .016",
+      "D050 first-pass-b physics-b050-b-016"
+    ],
+    "decisions": [
+      "keep",
+      "keep"
+    ],
+    "selectedEvidence": "second",
+    "complementaryFirst": "Round A adds the useful distinction between modelled energy potential and demonstrated practical availability; it is complementary to round B’s changed-evidence confidence case."
+  },
+  "limits": [
+    "AI informed adjudication, not human source approval or M7 image release.",
+    "No new complete audit of all other jurisdictions, no exact direct normative mapping invented, no claim that optional topics are implemented as selectable runtime options.",
+    "No canonical, source extraction, mapping, composition, image, P-profile, historic record, runtime or security mutation.",
+    "Native exact current-page/context, resolution and central five-gate checks remain required before counting closure."
+  ]
+}

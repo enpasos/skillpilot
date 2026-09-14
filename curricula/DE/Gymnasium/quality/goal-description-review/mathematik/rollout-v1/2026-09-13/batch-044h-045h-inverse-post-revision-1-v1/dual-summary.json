@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:6b8096d7ac1d186e9699759c0143bf20143bf1436148a0438eab05e3778d3932",
+  "reviewInputFingerprint": "sha256:cabee2e47e4053c2ba70555ae65a0d90115a1049614b6ea6c1d0212a6e2f03a6",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-a",
+      "roundId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-independent-a",
+      "runIds": [
+        "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-first-pass-a.batch-001.codex-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::OpenAI Codex agent; exact model identifier not exposed::Exact model version and sampling parameters not exposed. Independence is an isolated blind agent round A, not a different-model claim."
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-b",
+      "roundId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-independent-b",
+      "runIds": [
+        "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-first-pass-b.batch-001.codex-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex agent; exact model identifier and sampling parameters not exposed; isolated blind round B, no different-model claim::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "firstRecordId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-first-pass-a.batch-001.codex-a.record-001",
+      "secondRecordId": "inverse-post-revision-1-round-b-ce198bc9",
+      "firstRunId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-first-pass-a.batch-001.codex-a",
+      "secondRunId": "mathematik-rollout-v1-batch-044h-045h-inverse-post-revision-1-v1-20260913-first-pass-b.batch-001.codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

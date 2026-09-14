@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physics-source-method-rp-seki-support-retention-20260913-v1",
+  "date": "2026-09-13",
+  "authority": "authorized_layer_a_authoring_with_informed_ai_adjudication",
+  "humanApproval": false,
+  "newBlindReview": false,
+  "grantsProgress": false,
+  "supersedesOnly": "The removal of four original RP prerequisiteOnly references recorded in source-method-learnable-projection-repair-20260913-v1.receipt.json; that historical receipt is not edited.",
+  "scope": {
+    "viewCount": 2,
+    "restoredPrerequisiteOnlyReferenceCount": 4,
+    "canonicalChanges": false,
+    "registryChanges": false,
+    "sourceMappingChanges": false,
+    "runtimeChanges": false,
+    "checkerOrMaturityFloorChanges": false,
+    "existingEvidenceChanges": false,
+    "globalTargetMembershipChanges": 0,
+    "globalEffectivePrerequisiteOnlyMembershipChanges": 0,
+    "visibleTreeChanges": 0
+  },
+  "cause": {
+    "rule": "CQR-104 canonical-physics-sek1",
+    "goalId": "44985d9f-7b49-52e4-86ec-eddc7b70429f",
+    "goalTitle": "Prüfungsaufgabe: Brechung und Linsen mit dem Strahlenmodell untersuchen",
+    "explanation": "The first repair removed RP stage-local prerequisiteOnly supports when adding the same stable IDs as target under SekII astronomy. The existing Sek-I assessment remained target; it was not newly introduced or newly made applicable. generateCurriculumQualityStatus.ts filters expected applicabilityFromRequires assessments against stage-local available supports. The removed model support made the unchanged assessment appear unexpected. RP stage authority propagates this defect to the national GK/LK and Sek-I projections for DE-RP.",
+    "affectedReportedProjectionScopes": [
+      "de-rp-gk [DE-RP]",
+      "de-rp-lk [DE-RP]",
+      "de-de-gym-physics-gk [DE-RP]",
+      "de-de-gym-physics-lk [DE-RP]",
+      "de-de-gym-seki-physics [DE-RP]"
+    ]
+  },
+  "didacticAssessment": {
+    "content": "The released 18-point underwater-camera assessment combines qualitative refraction and optical apparent elevation, convex/concave lens ray constructions, and explanation of the function, assumptions and limits of the ray model. Its requires and coveredGoalIds are the same three relevant competencies: refraction, lens images and model function.",
+    "requires": [
+      "6a4c6042-052b-502b-a39a-0ed8941247ac",
+      "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5",
+      "e5bc2227-d900-585f-8ac0-9d3f1cb40e27"
+    ],
+    "decision": "Retain its exact pre-repair Sek-I support, including the observation prerequisite of model function. Keep the newly learnable Sek-II astronomy method targets. This preserves two independently authored stage uses of the same canonical competencies without promoting the Sek-I supports into new stage targets, changing assessment content, or changing route expectations.",
+    "sourceEvidenceBoundary": "No new RP or 16-state curriculum source coverage is claimed; assessment-requires is applicability evidence only.",
+    "learnerBoundary": "The retained Sek-I prerequisiteOnly supports remain global-mastery checks, not a newly authored empty-mastery Sek-I learning route. The Sek-II method sequence remains target and starts after the existing regular orientation. Narrow-focus and orientation boundaries from the first receipt remain in force."
+  },
+  "restoredReferencePlacementsPerView": [
+    {
+      "goalId": "5355fee0-0477-5570-a234-561477bf77ba",
+      "kind": "goalEntry",
+      "projectionRole": "prerequisiteOnly",
+      "parentStructureIds": ["physics-root"],
+      "childIndex": 1,
+      "exactOriginalBytesSource": "b1237cdbf4c75ed8133cf77da2bc1385b07797c6"
+    },
+    {
+      "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+      "kind": "goalEntry",
+      "projectionRole": "prerequisiteOnly",
+      "parentStructureIds": ["physics-root", "physics-seki", "physics-seki-route-prerequisites"],
+      "childIndex": 37,
+      "exactOriginalBytesSource": "b1237cdbf4c75ed8133cf77da2bc1385b07797c6"
+    }
+  ],
+  "viewChanges": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json",
+      "beforeBytesDigest": "sha256:9627486b32bdb2e6cf405829f6b775a35cb45c8762769e6f747839049e156bda",
+      "afterBytesDigest": "sha256:fa35fcb2556e2136bca3b90594db466a5009df858ff24a8698ed27c1d69ed824",
+      "globalTargetsAdded": [],
+      "globalTargetsRemoved": [],
+      "globalEffectivePrerequisiteOnlyAdded": [],
+      "globalEffectivePrerequisiteOnlyRemoved": [],
+      "sekIPrerequisiteOnlySupportRestored": ["5355fee0-0477-5570-a234-561477bf77ba", "e5bc2227-d900-585f-8ac0-9d3f1cb40e27"]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json",
+      "beforeBytesDigest": "sha256:cff7570ff91337ffb4c4d92e9aa2ff7debcec353853cc45c04c180e8fcfd1581",
+      "afterBytesDigest": "sha256:f709aba99d36443ecf9115114cbcd9389b33e30d9d303b84ae1eff677f7ae996",
+      "globalTargetsAdded": [],
+      "globalTargetsRemoved": [],
+      "globalEffectivePrerequisiteOnlyAdded": [],
+      "globalEffectivePrerequisiteOnlyRemoved": [],
+      "sekIPrerequisiteOnlySupportRestored": ["5355fee0-0477-5570-a234-561477bf77ba", "e5bc2227-d900-585f-8ac0-9d3f1cb40e27"]
+    }
+  ],
+  "nativeSemantics": {
+    "roleHelper": "collectCompositionProjectionRoleGoalIds",
+    "equalSpecificityRule": "The explicit target goalEntry wins over the explicit prerequisiteOnly goalEntry globally. When the SekII branch is excluded for Sek-I route validation, the original explicit prerequisiteOnly support remains.",
+    "compiler": "compileCompositionView",
+    "compilerResult": "Both RP CrossStage views compile with the complete current canonical cross-subject universe, zero errors, and exactly one visible occurrence of each restored method ID. prerequisiteOnly entries do not render.",
+    "diagnosticCounterfactual": "Before restoring the entries, the original Git view contained both Sek-I supports but the first-repair view contained neither. In-memory restoration recovered both original supports without changing their global target roles or visible occurrence counts."
+  },
+  "validation": [
+    {
+      "command": "app/node_modules/.bin/tsx --test scripts/check_physics_source_method_routes.test.ts",
+      "result": "PASS",
+      "tests": 6,
+      "passed": 6,
+      "failed": 0,
+      "durationMs": 96685.027921,
+      "includes": "All64 native compiler validation; all60 astronomy-view method availability; four-node canonical sequence;56branch placement; exact RP historical support positions plus existing assessment closure and single visible occurrences; two BY SekII SI placements.",
+      "scriptBeforeBytesDigest": "sha256:0aae99e4d73172ec8690ca38e32c234db800bf8f82dd0b461f9eea61f7f9dfd2",
+      "scriptAfterBytesDigest": "sha256:21ffc220257cd79111be0a0d06e84a92ff5a73c1b80b1c066b3e0a533c6f0811"
+    },
+    {
+      "command": "git diff --check -- curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json scripts/check_physics_source_method_routes.test.ts",
+      "result": "PASS"
+    }
+  ],
+  "remainingValidationOwnedByParent": [
+    "Regenerate curriculum-quality status and enforce the unchanged protected maturity floors.",
+    "Rebuild publications and reconcile only actually changed goal/page/context bindings.",
+    "A meaningful actual authored-view empty-method-mastery LearnerService fixture is still separate from the static authoring checks."
+  ],
+  "testProcessTerminal": true,
+  "status": "local_rp_stage_support_retention_validated_pending_parent_maturity_and_publication_checks"
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:8171596317dcaccf188e4858d79e92e00f269762670f4a8026768517ecde2247",
+  "reviewInputFingerprint": "sha256:d37d7ebfa8527971b920ace071ac757a7d9e35133037c320aca27b57ab2f41c6",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-a",
+      "roundId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-independent-a",
+      "runIds": [
+        "mathematik-b047-current-3-v1-20260913-independent-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::OpenAI Codex; exact runtime model identifier and snapshot not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-b",
+      "roundId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-independent-b",
+      "runIds": [
+        "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex agent runtime; exact model identifier not exposed::not exposed"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "4fb40e58-58c1-5964-b58e-3347a8022b97",
+      "firstRecordId": "mathematik-b047-current-3-v1-20260913-independent-a-run-001.goal-1",
+      "secondRecordId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001.4fb40e58-58c1-5964-b58e-3347a8022b97",
+      "firstRunId": "mathematik-b047-current-3-v1-20260913-independent-a-run-001",
+      "secondRunId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+      "firstRecordId": "mathematik-b047-current-3-v1-20260913-independent-a-run-001.goal-2",
+      "secondRecordId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001.6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+      "firstRunId": "mathematik-b047-current-3-v1-20260913-independent-a-run-001",
+      "secondRunId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+      "firstRecordId": "mathematik-b047-current-3-v1-20260913-independent-a-run-001.goal-3",
+      "secondRecordId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001.304111dd-426b-520b-a275-3fa37da1b0e0",
+      "firstRunId": "mathematik-b047-current-3-v1-20260913-independent-a-run-001",
+      "secondRunId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913-first-pass-b.batch-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

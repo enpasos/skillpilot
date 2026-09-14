@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "informed-b052-wording-profile-image-adjudication-20260913-v1",
+  "date": "2026-09-13",
+  "startedAt": "2026-09-13T21:06:53Z",
+  "completedAt": "2026-09-13T21:13:52Z",
+  "authority": "informed_ai_adjudication_recommendation",
+  "provider": "OpenAI",
+  "model": "Codex runtime; exact model identifier not exposed",
+  "humanApproval": false,
+  "newBlindReview": false,
+  "priorBlindRoundSealed": true,
+  "grantsProgress": false,
+  "status": "completed_recommendations_only",
+  "scope": {
+    "goalIds": [
+      "5355fee0-0477-5570-a234-561477bf77ba",
+      "3ed3279e-c524-5230-a277-dda89493df6d",
+      "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+      "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e"
+    ],
+    "purpose": "Separate informed comparison of sealed B052 rounds with all four actual current P-v2 bodies, current canonical neighbors and the original model-function image.",
+    "descriptionRecommendationCounts": {
+      "keep": 3,
+      "revise": 1,
+      "split_review": 0,
+      "block": 0
+    },
+    "profileBodiesToCreate": 0,
+    "canonicalEdits": 0,
+    "profileEdits": 0,
+    "imageEdits": 0,
+    "ledgerEdits": 0,
+    "historicalResultEdits": 0
+  },
+  "inputCorrection": {
+    "blindReviewInput": "All four B052 reviewContext.evidenceProfile values were null.",
+    "actualRepositoryState": "All four current full P-v2 records exist in the three inspected configured review files.",
+    "consequence": "The sealed first-pass create recommendations describe their supplied null context. They must not trigger creation or replacement of the existing profiles in the informed synthesis.",
+    "historicalIntegrity": "Keep both blind outputs and their run disclosures unchanged. This receipt is a later informed recommendation and cannot be counted as a new independent model vote."
+  },
+  "inspectedEvidence": {
+    "localArtifacts": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/source-method-current-binding-audit-20260913-v1.receipt.json",
+        "bytesDigest": "sha256:ce9b6362d94df1424365e90e104466cccee947aef33ae7fc2fd95feae122e20e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-052-current-source-method-contexts-4-v1/round-a/criteria.md",
+        "bytesDigest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-052-current-source-method-contexts-4-v1/round-a/prompt.md",
+        "bytesDigest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-052-current-source-method-contexts-4-v1/round-a/description-review-input.json",
+        "bytesDigest": "sha256:df7f028ad2af7d30750671900646628dfe108534ce9804485059e58487282f6f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-052-current-source-method-contexts-4-v1/round-a/results/physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-a.batch-001.records.jsonl",
+        "bytesDigest": "sha256:346f64e93c6a439f793516a6a3d2fb7ce48be71e5710ca3624f1e926f17045d4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-052-current-source-method-contexts-4-v1/round-b/results/physik-rollout-v1-batch-052-current-source-method-contexts-4-v1-20260913-first-pass-b.batch-001.records.jsonl",
+        "bytesDigest": "sha256:a9e6ee73fe3d25f2202585db220a5da637a6cd010a246fdfeb2f762cce0dff31"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/physics-positive-understanding-evidence-profile-criteria-v1.md",
+        "bytesDigest": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/positive-understanding-evidence-profile-authoring-v2.md",
+        "bytesDigest": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "bytesDigest": "sha256:48b8d42aa52c81f28c34187c85623b61d47b6252404e41007bfa47d715698419"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-036-current-counterreviewed-19-v1.paused-checkpoint-20260907-v1.config.json",
+        "bytesDigest": "sha256:dd130422963b2f76e2478d3000b274c637676edb1be67821ee82123131d41c56"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-037a-biophysics-methods-pv-mechanics-19-v1.config.json",
+        "bytesDigest": "sha256:92f9aca7e9d528c4d9bd42e99d77f617dc9f6d8a86fcf1a976c1fa7734a52ab2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-calibration-final20-v3.retained-after-final-context-v1.config.json",
+        "bytesDigest": "sha256:6068510cd16b5d535c24ec8f4b6bf3c7f18762a7a252cdcbcaf953ed5599f63d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-036-current-counterreviewed-19-v1.paused-checkpoint-20260907-v1.review.jsonl",
+        "bytesDigest": "sha256:3f6342b450ae09d0c9fda00c56384d97540a07c71713b8622b3ef2d1d45cc810"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-037a-biophysics-methods-pv-mechanics-19-v1.review.jsonl",
+        "bytesDigest": "sha256:0ff93d796686ae5e6ed7f5c5bd4529d5bfdd30fdb882976e1c9bee7124a4559e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-calibration-final20-v3.retained-after-final-context-v1.review.jsonl",
+        "bytesDigest": "sha256:0c7244f6543b2f00f0254561ccb06ee09f0d61e0bfd0752270a5c6d831527d04"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/visualizations/physik/e5bc2227-d900-585f-8ac0-9d3f1cb40e27/e5bc2227-d900-585f-8ac0-9d3f1cb40e27.jpg",
+        "bytesDigest": "sha256:25986f5cdc551e02984369a1c7dfa89dc8c42a019e7341a245ce949a320defa8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/visualizations/physik/e5bc2227-d900-585f-8ac0-9d3f1cb40e27/prompt.de.md",
+        "bytesDigest": "sha256:58cbd6960c2edcf88abf968536e888206c5db4ae102380da18d62738ca0cf9b3"
+      },
+      {
+        "path": "app/public/assets/goal-visualizations/physik/e5bc2227-d900-585f-8ac0-9d3f1cb40e27/e5bc2227-d900-585f-8ac0-9d3f1cb40e27.jpg",
+        "bytesDigest": "sha256:25986f5cdc551e02984369a1c7dfa89dc8c42a019e7341a245ce949a320defa8"
+      },
+      {
+        "path": "app/scripts/positiveGoalEvidenceReview.ts",
+        "bytesDigest": "sha256:179f602f639479b683c5477462c664dd930a0055960eb6320f3eb33c6d8d9ff6"
+      },
+      {
+        "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+        "bytesDigest": "sha256:33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6"
+      }
+    ],
+    "canonicalReadScope": "All four exact current goals including DE/EN descriptions, requires, contains, demand level and resource links; all twenty directly connected prerequisite, successor or containing-neighbor nodes were read with their current bilingual descriptions.",
+    "canonicalNeighborNodes": [
+      {
+        "id": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+        "title": "Warum Physik? – Weltverständnis & Zukunft"
+      },
+      {
+        "id": "44985d9f-7b49-52e4-86ec-eddc7b70429f",
+        "title": "Prüfungsaufgabe: Brechung und Linsen mit dem Strahlenmodell untersuchen"
+      },
+      {
+        "id": "3631c8f7-ff48-57ff-b7ee-8397ff1d166a",
+        "title": "Sek-I-Abschlussaufgaben Physik selbstständig lösen"
+      },
+      {
+        "id": "f08d171d-ac31-59b6-834e-a6a2493b974e",
+        "title": "Denk- und Arbeitsweisen der Physik (Sek I)"
+      },
+      {
+        "id": "da26294f-4316-5bd5-a37a-bd89397b3b8b",
+        "title": "Physikalische Aussagen empirisch überprüfen"
+      },
+      {
+        "id": "7c986fca-1129-5eff-a17e-0a04bb7346ee",
+        "title": "Astronomische Groessenordnungen und Einheiten"
+      },
+      {
+        "id": "d3c153b9-e09b-5668-8386-73105546a7c1",
+        "title": "Experimente planen und Messdaten auswerten"
+      },
+      {
+        "id": "ad62f563-4fee-5399-8d9c-03a214658aa9",
+        "title": "Experimentelle Untersuchungen fachgerecht dokumentieren"
+      },
+      {
+        "id": "6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+        "title": "Physikalische Arbeitsergebnisse fachsprachlich präsentieren"
+      },
+      {
+        "id": "b378c8b3-5e83-5abf-8243-b0f345037bfc",
+        "title": "Physikalische Bewertungen begründet formulieren"
+      },
+      {
+        "id": "8eaa4e45-39fc-50e9-b59f-8a1752f6bebe",
+        "title": "Physik, Gesellschaft und Technik reflektieren"
+      },
+      {
+        "id": "2973da95-2cfc-5817-9c99-3c0c82777369",
+        "title": "Physikalische Erkenntnisse in gesellschaftlich-politischen Kontexten einordnen"
+      },
+      {
+        "id": "d81576e9-0320-5a90-8a1d-cd824981f2f6",
+        "title": "Verantwortung naturwissenschaftlicher Forschung reflektieren"
+      },
+      {
+        "id": "af1c3116-5b55-55f5-86da-8c2cfe2c550c",
+        "title": "Gesundheitsrisiken physikalischer Technologien beurteilen"
+      },
+      {
+        "id": "39ef1e8a-9203-5192-8c76-8e0c3322646f",
+        "title": "Farbsehen und additive Farbmischung deuten"
+      },
+      {
+        "id": "8fe0ebf1-8256-53d2-9b01-fdb945e57a59",
+        "title": "Linsenaugen im Tierreich physikalisch vergleichen"
+      },
+      {
+        "id": "09e058e9-f3ed-5046-b0e9-495b694bf2a1",
+        "title": "Physikalische Prinzipien des Corti-Organs aus Quellen erschließen"
+      },
+      {
+        "id": "982df2f3-e040-5f4b-b668-0fe05d994b29",
+        "title": "Himmelskörper des Sonnensystems physikalisch klassifizieren"
+      },
+      {
+        "id": "4e823349-b60c-5d2a-b96f-d3f23ae50e3a",
+        "title": "Sonnenaktivität und Weltraumwetter fachlich beurteilen"
+      },
+      {
+        "id": "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162",
+        "title": "Offene kosmologische Fragen quellenkritisch einordnen"
+      }
+    ],
+    "profileReadScope": "Complete selected P-v2 records, including both languages of every expectation, coverage, every variation axis, every application case, dissent, status and fingerprints; unrelated records were not substantively reviewed.",
+    "visualInspection": {
+      "path": "curricula/DE/Gymnasium/visualizations/physik/e5bc2227-d900-585f-8ac0-9d3f1cb40e27/e5bc2227-d900-585f-8ac0-9d3f1cb40e27.jpg",
+      "bytesDigest": "sha256:25986f5cdc551e02984369a1c7dfa89dc8c42a019e7341a245ce949a320defa8",
+      "viewedOriginalResolution": true,
+      "width": 2752,
+      "height": 1536,
+      "publicAssetPath": "app/public/assets/goal-visualizations/physik/e5bc2227-d900-585f-8ac0-9d3f1cb40e27/e5bc2227-d900-585f-8ac0-9d3f1cb40e27.jpg",
+      "publicAssetDigest": "sha256:25986f5cdc551e02984369a1c7dfa89dc8c42a019e7341a245ce949a320defa8",
+      "sourceAndPublicBytesMatch": true
+    },
+    "externalPhysicsChecks": [
+      {
+        "title": "David Tong, Cosmology, Section 2.1.2 The Ideal Gas and Pressure and the Equation of State",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/cosmo/cosmohtml/S2.html",
+        "use": "Maxwell-Boltzmann speed distribution, particle-density dependence of wall collisions, P=n k_B T and thermal kinetic energy. Used only for the physics sanity check, not curricular provenance."
+      },
+      {
+        "title": "David Tong, Statistical Physics, Chapter 2 Classical Gases",
+        "url": "https://www.damtp.cam.ac.uk/user/tong/statphys/statmechhtml/S2.html",
+        "use": "Secondary official university check of ideal-gas and kinetic-theory assumptions; not a source-mapping or runtime claim."
+      }
+    ],
+    "unsuccessfulExternalCheck": {
+      "url": "https://archive.nptel.ac.in/content/storage2/courses/112103016/module4/lec1/3.html",
+      "result": "Initial response had no usable formula text; follow-up timed out. Not relied on."
+    }
+  },
+  "perGoal": [
+    {
+      "goalId": "5355fee0-0477-5570-a234-561477bf77ba",
+      "currentCanonical": {
+        "id": "5355fee0-0477-5570-a234-561477bf77ba",
+        "title": "Beobachtung und Erklärung unterscheiden",
+        "titleEn": "Distinguish observations and explanations",
+        "description": "Die lernende Person kann Beobachtungen, die auf Sinneseindrücken oder Messungen beruhen, von physikalischen Erklärungen mithilfe von Gesetzen und Modellen unterscheiden.",
+        "descriptionEn": "The learner can distinguish observations based on sensory impressions or measurements from physical explanations that use laws and models.",
+        "requires": [
+          "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+        ]
+      },
+      "sealedRoundDecisions": {
+        "roundA": "keep",
+        "roundB": "keep"
+      },
+      "descriptionDecision": "keep",
+      "materialDescriptionDefectIdentified": false,
+      "rationaleDe": "Beide Blindrunden behalten die knappe, bilinguale Trennung von Sinneseindruck/Messwert und gesetzes- oder modellgestützter Erklärung bei. Das aktuelle Profil deckt diese Unterscheidung bereits mit epistemic-source-distinction und inference-language-diagnosis sowie zwei unabhängigen Fällen ab. Das zusätzliche Nennen eines stützenden Befundes operationalisiert die Unterscheidung; es ersetzt nicht die vollständige empirische Prüfung im Nachbarziel da26294f-4316-5bd5-a37a-bd89397b3b8b. Keine Beschreibungskorrektur und kein neuer Profilkörper sind sachlich erforderlich.",
+      "profileDecision": "preserve_exact_current_record",
+      "profileRationaleDe": "Das tatsächlich gelesene Profil fordert begründete eigene Zuordnung, Trennung einer getarnten Schlussfolgerung, veränderte Datenquelle und Modellkontext. Zwei unabhängige Demonstrationen und Transfer sind bereits verpflichtend.",
+      "currentProfile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-calibration-final20-v3.retained-after-final-context-v1.review.jsonl",
+        "goalId": "5355fee0-0477-5570-a234-561477bf77ba",
+        "goalFingerprint": "sha256:e6e80b9f944d6d0dc5c355d004409a719899f9190b5b0a5593b5b1de9b7710eb",
+        "reviewInputFingerprint": "sha256:a1c35c59e05383b7ed980bbe397cb90b4a9825b2c3d1363f9caa7d3934a44560",
+        "profileFingerprint": "sha256:496898b45788f8a72a6bdb2e07d45f1d57e08a349f711a593d86d818a9a5eed0",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "archetype": "concept",
+        "expectationIds": [
+          "epistemic-source-distinction",
+          "inference-language-diagnosis"
+        ],
+        "coverage": {
+          "requiredExpectationIds": [
+            "epistemic-source-distinction",
+            "inference-language-diagnosis"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "caseIds": [
+          "cooling-cup-report",
+          "sealed-syringe-claims"
+        ]
+      }
+    },
+    {
+      "goalId": "3ed3279e-c524-5230-a277-dda89493df6d",
+      "currentCanonical": {
+        "id": "3ed3279e-c524-5230-a277-dda89493df6d",
+        "title": "SI-Einheiten in physikalischen Beispielen nutzen",
+        "titleEn": "Use SI units in physical examples",
+        "description": "Die lernende Person kann die Funktion des SI-Einheitensystems erläutern und einfache physikalische Größen mit passenden SI-Einheiten angeben.",
+        "descriptionEn": "The learner can explain the function of the SI system and state simple physical quantities with suitable SI units.",
+        "requires": [
+          "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+        ]
+      },
+      "sealedRoundDecisions": {
+        "roundA": "revise",
+        "roundB": "keep"
+      },
+      "descriptionDecision": "keep",
+      "materialDescriptionDefectIdentified": false,
+      "rationaleDe": "Runde A präzisiert gemeinsame Vergleichbarkeit und Zahlenwert plus Einheit; Runde B behält den Text bei. Nach Einsicht des vollständigen aktuellen Profils ist die A-Änderung eine optionale Ausformulierung. shared-reference nennt Zahlenwert, Einheit und gemeinsame SI-Bezüge ausdrücklich; quantity-unit-match sowie rope-reports und motion-log verlangen begründete eindeutige Angaben, Vergleich und einen Wechsel der Größenarten. Die bestehende Beschreibung verbindet die SI-Funktion bereits mit einer konkreten Anwendung auf einfache Größen. Es ist kein fachlicher Fehler oder materiell unklarer Kompetenzzuschnitt belegt, der unter KEEP als Standard eine Änderung erfordert.",
+      "profileDecision": "preserve_exact_current_record",
+      "profileRationaleDe": "Die beanstandeten Details stehen schon im vollständigen Profil. Die gegebenen Umrechnungsbezüge und bereits bestimmten Geschwindigkeiten verlangen keine neue SI-Definitionsgeschichte, Bewegungsgleichung oder allgemeine Umrechnungsroutine. Blindes create wird in der informierten Entscheidung ausdrücklich nicht umgesetzt.",
+      "currentProfile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-036-current-counterreviewed-19-v1.paused-checkpoint-20260907-v1.review.jsonl",
+        "goalId": "3ed3279e-c524-5230-a277-dda89493df6d",
+        "goalFingerprint": "sha256:028099e53583ff77cba011b3a0732e609d8d75f943b78a3571c6149acb59a1e0",
+        "reviewInputFingerprint": "sha256:b12b4b2066f61e28369219d9bcca99d5ae06ba2fc08fdf2fa22267db527d6a38",
+        "profileFingerprint": "sha256:e98e2b410b100f36892e1466be34223f09da1a8d1fd10b706407e50c09a77f61",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "archetype": "concept",
+        "expectationIds": [
+          "shared-reference",
+          "quantity-unit-match"
+        ],
+        "coverage": {
+          "requiredExpectationIds": [
+            "shared-reference",
+            "quantity-unit-match"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "caseIds": [
+          "rope-reports",
+          "motion-log"
+        ]
+      }
+    },
+    {
+      "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+      "currentCanonical": {
+        "id": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+        "title": "Funktion physikalischer Modelle erläutern",
+        "titleEn": "Explain the function of physical models",
+        "description": "Die lernende Person kann die Funktion physikalischer Modelle an Beispielen wie Strahlenmodell, Teilchenmodell, Atommodell oder Elementarmagnetmodell erläutern.",
+        "descriptionEn": "The learner can explain the function of physical models using examples such as ray, particle, atomic, or elementary magnet models.",
+        "requires": [
+          "5355fee0-0477-5570-a234-561477bf77ba"
+        ]
+      },
+      "sealedRoundDecisions": {
+        "roundA": "revise",
+        "roundB": "revise"
+      },
+      "descriptionDecision": "revise",
+      "materialDescriptionDefectIdentified": true,
+      "rationaleDe": "Beide Blindrunden identifizieren denselben eng begrenzten Beschreibungsbefund: Der Text wiederholt die Funktion als unaufgeschlüsselten Zielgegenstand und nennt Modellnamen, sagt aber nicht, welche Funktion erläutert werden soll. Das vollständige aktuelle Profil ist inhaltlich bereits passend: purpose-and-idealisation und scope-and-representation nennen Auswahl/Vereinfachung, Erklärungs- oder Vorhersagenutzen und bedingte Gültigkeit. Seine Existenz widerlegt einen Profilmangel, beseitigt aber nicht die im knappen Lernertext fehlende Aussage über den Modellzweck. Empfohlen wird ausschließlich die engere Fassung aus Runde B. Sie macht den schon bestehenden Kompetenzkern sichtbar, ohne alle vier Modelle einzeln zu verlangen, die empirische Prüfkette des Nachbarziels zu übernehmen oder eine neue Modellkonstruktions- bzw. Formalisierungsanforderung einzuführen. Die zusätzliche ausdrückliche Grenzfrage aus Runde A kann im bestehenden Profil verbleiben.",
+      "profileDecision": "preserve_profile_body_revalidate_only_if_description_changes",
+      "profileRationaleDe": "Das vorhandene Profil enthält bereits die exakten relevanten Erwartungen, zwei unabhängige Modellfamilien und frischen Transfer. Kein neuer Profilkörper und kein neues create. Falls die Hauptsynthese die vorgeschlagene kanonische Beschreibung tatsächlich übernimmt, werden allein die betroffenen goalFingerprint/reviewInputFingerprint-Bindungen stale; dafür ist eine separat dokumentierte aktuelle Alignment-Prüfung nötig. Der profileFingerprint darf bei byte-/semantikgleichem Profilkörper unverändert bleiben. Der alte Datensatz bleibt Geschichte, kein bloßes Umetikettieren als neue substantielle Freigabe.",
+      "proposedDescriptionDe": "Die lernende Person kann an Beispielen wie Strahlenmodell, Teilchenmodell, Atommodell oder Elementarmagnetmodell erläutern, wie physikalische Modelle ausgewählte Eigenschaften vereinfacht darstellen und unter ihren Modellannahmen Erklärungen oder Vorhersagen ermöglichen.",
+      "proposedDescriptionEn": "The learner can use examples such as ray, particle, atomic, or elementary magnet models to explain how physical models represent selected properties in a simplified way and enable explanations or predictions under their model assumptions.",
+      "currentProfile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-036-current-counterreviewed-19-v1.paused-checkpoint-20260907-v1.review.jsonl",
+        "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+        "goalFingerprint": "sha256:52379367a20c1759b50f785fbc0e2b2105fbe2bffd9e2e183b982f5015d29dc8",
+        "reviewInputFingerprint": "sha256:3964aa53d0d068a4953419f795466f3350e8d5a29c42dd5b1bf8fa92af801fac",
+        "profileFingerprint": "sha256:ee6a20e015fdffed7c59ca6b11b26b9e5f7f5cf3d204e4c6d0d689a69fed609e",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "archetype": "concept",
+        "expectationIds": [
+          "purpose-and-idealisation",
+          "scope-and-representation"
+        ],
+        "coverage": {
+          "requiredExpectationIds": [
+            "purpose-and-idealisation",
+            "scope-and-representation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "caseIds": [
+          "ray-shadow",
+          "gas-particle-pressure"
+        ]
+      }
+    },
+    {
+      "goalId": "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+      "currentCanonical": {
+        "id": "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+        "title": "Physikalische Informationen aus Quellen auswerten",
+        "titleEn": "Evaluate physical information from sources",
+        "description": "Die lernende Person kann Informationen aus vorgegebenen oder selbst recherchierten Quellen entnehmen, nach fachlicher Relevanz ordnen und mit vorhandenen physikalischen Kenntnissen abgleichen.",
+        "descriptionEn": "The learner can extract information from provided or independently researched sources, organize it by subject relevance, and compare it with existing physical knowledge.",
+        "requires": [
+          "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+          "3ed3279e-c524-5230-a277-dda89493df6d"
+        ]
+      },
+      "sealedRoundDecisions": {
+        "roundA": "keep",
+        "roundB": "keep"
+      },
+      "descriptionDecision": "keep",
+      "materialDescriptionDefectIdentified": false,
+      "rationaleDe": "Beide Blindrunden behalten den integrierten Auswertungsprozess bei. Das vollständige aktuelle Profil operationalisiert mit quellenbezug und fachabgleich die Relevanzordnung, Herkunft, Größen/Einheiten/Randbedingungen, begründeten Vergleich und offene Schlussfolgerungen. Die zwei ausdrücklich fiktiven Quellenfälle variieren Leistungsbehauptung und Systemgrenze; sie erfinden keine reale Quellenautorität. Die Bewertung von Nutzen/Risiko und ein eigener Standpunkt bleiben beim direkten Nachbarziel b378c8b3-5e83-5abf-8243-b0f345037bfc. Eine neue Beschreibung oder ein neuer Profilkörper sind nicht nötig.",
+      "profileDecision": "preserve_exact_current_record",
+      "profileRationaleDe": "Das vorhandene data-Profil enthält unabhängige Informationsverarbeitung und einen physikalischen Vergleich mit gewechselter Systemgrenze, einschließlich Grenzen fehlender Daten. Die einfachen Beziehungen der Aufgaben konkretisieren das im Ziel ausdrücklich beanspruchte vorhandene Fachwissen; diese Prüfung belegt keine zusätzliche curriculare Abdeckung.",
+      "currentProfile": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-037a-biophysics-methods-pv-mechanics-19-v1.review.jsonl",
+        "goalId": "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+        "goalFingerprint": "sha256:2363816861390cb79be8b7933efd92a386ffd1b828a998dc0dd5d2344a6188c7",
+        "reviewInputFingerprint": "sha256:259ceee51207386ae6ce8f917de2325aaaaef939ac939313f97b75772e245f3b",
+        "profileFingerprint": "sha256:5574d9623b4fdf6af87677b026eb3421b43cf7d06d8162ac6a93c00570e74f2e",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "archetype": "data",
+        "expectationIds": [
+          "quellenbezug",
+          "fachabgleich"
+        ],
+        "coverage": {
+          "requiredExpectationIds": [
+            "quellenbezug",
+            "fachabgleich"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "caseIds": [
+          "leuchtmittelquellen",
+          "pumpenquellen"
+        ]
+      }
+    }
+  ],
+  "modelFunctionImageAdjudication": {
+    "goalId": "e5bc2227-d900-585f-8ac0-9d3f1cb40e27",
+    "decision": "preserve_current_asset_no_demonstrated_falsity",
+    "substantiatedWeakness": "The visible label mehr Stöße does not identify collision type, reference area/time or gas boundary conditions. The balloon prompt explicitly requested a slightly larger heated balloon but did not define a collision rate. This is a bounded explanatory ambiguity.",
+    "notEstablished": "Missing conditions do not establish that the picture's unspecified statement is false under every reasonable reading. The artwork and generation prompt do not establish an isochoric or isobaric process, a precise scale, or a measured collision count.",
+    "physicsCheck": {
+      "assumptions": "Own derivation for a dilute ideal gas in thermal equilibrium, fixed species, quasi-static comparison with negligible wall speed; illustrative assumptions, not inferred facts about the picture.",
+      "relation": "For collisions at a stationary wall per unit area and time, J=n*sqrt(k_B*T/(2*pi*m)).",
+      "fixedDensity": "With unchanged N and V, n stays fixed and J increases with sqrt(T).",
+      "fixedPressure": "With unchanged pressure, n=P/(k_B*T), so J decreases with 1/sqrt(T).",
+      "totalCountCaution": "Area-normalized flux is not the same as total collisions over an expanding wall. For a spherical idealized constant-pressure balloon with fixed N, A scales with T^(2/3), so total wall collisions per time can increase with T^(1/6).",
+      "interpretation": "These are deductions from the linked university kinetic theory, not measured balloon behavior. They show why an unspecified more-collisions label is underdetermined rather than categorically disproved."
+    },
+    "boundedOptionalCorrection": {
+      "requiredForThisReceipt": false,
+      "target": "Only the collision prediction label if a separate image-quality decision elects to remove its ambiguity.",
+      "candidateLabelDe": "Bei höherer Temperatur: im Mittel schnellere Teilchen",
+      "reason": "For the same gas in thermal equilibrium this refers directly to the temperature-dependent speed distribution and avoids an unstated area/time collision comparison.",
+      "preservation": "Do not regenerate the entire image, switch provider, remove the active asset or rewrite an old QA approval solely on the current ambiguity finding. No replacement image has been created, inspected or approved here."
+    },
+    "safety": "The flame is visible as an illustration. No independent heating experiment is specified by the D text or existing P body; the image alone is not evidence of an executable unsafe instruction.",
+    "approvalBoundary": "No image approval is granted or revoked by this receipt. Any eventual edit requires inspection of the actual new asset and honest affected-binding checks."
+  },
+  "validation": {
+    "nativeProfileChecks": [
+      {
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-036-current-counterreviewed-19-v1.paused-checkpoint-20260907-v1.config.json",
+        "mode": "check",
+        "exitCode": 0,
+        "configuredGoals": 18,
+        "approved": 0,
+        "needsHumanReview": 18,
+        "blockingIssues": 0
+      },
+      {
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-037a-biophysics-methods-pv-mechanics-19-v1.config.json",
+        "mode": "check",
+        "exitCode": 0,
+        "configuredGoals": 19,
+        "approved": 0,
+        "needsHumanReview": 19,
+        "blockingIssues": 0
+      },
+      {
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-calibration-final20-v3.retained-after-final-context-v1.config.json",
+        "mode": "check",
+        "exitCode": 0,
+        "configuredGoals": 19,
+        "approved": 0,
+        "needsHumanReview": 19,
+        "blockingIssues": 0
+      }
+    ],
+    "commandFamily": "npm --prefix app run quality:positive-goal-evidence:check -- --config=<the listed repository-relative config path>",
+    "meaning": "Current schema, semantic goal/input/profile bindings and configured record checks pass. This is not human approval, a new learner assessment, a deployment or an independent source/projection audit.",
+    "fingerprintSemanticsChecked": "positiveGoalEvidenceProfileModel.ts fingerprints profile content separately from canonical goal/review-input bindings."
+  },
+  "preservationAndHoldLimits": [
+    "All four current P bodies remain needs_human_review / ai_candidate / E1 / G1; this receipt creates no stronger claim.",
+    "Retain exact P records for observation, SI and source evaluation. Retain the model-function profile body; do not preemptively alter any binding before a canonical change actually occurs.",
+    "Only main synthesis may choose the one recommended model-description revision. If chosen, independently record alignment against the changed current goal and preserve the old evidence; rerun native affected checks.",
+    "Do not interpret review-context applicability as new normative coverage in all sixteen states. No source manifest, composition-view implementation or live learner runtime was audited here.",
+    "No unrelated holds, including the two Astro route holds mentioned by the binding audit, are closed by this four-goal wording/profile/image recommendation.",
+    "Model-image ambiguity is not a categorical image rejection and does not by itself impose a new D/P hold. Stronger image quality claims remain outside this receipt.",
+    "The only new workspace artifact written by this informed task is this receipt."
+  ]
+}

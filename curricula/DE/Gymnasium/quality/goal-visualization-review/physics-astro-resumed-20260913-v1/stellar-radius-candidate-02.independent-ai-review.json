@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "recordType": "independent-ai-visual-review",
+  "reviewer": {
+    "type": "ai-agent",
+    "agentName": "/root/stellar_radius_visual_review"
+  },
+  "reviewFinalizedAtUtc": "2026-09-13T18:13:38Z",
+  "decision": "accept",
+  "decisionScope": "ai-pilot-candidate-image-review",
+  "image": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/stellar-radius-candidate-02.png",
+    "sha256": "19b3c4abeca32042eba2d32309d8669a4a07464acbfa7e05da17d37c8dbe40b9",
+    "width": 1672,
+    "height": 941,
+    "inspection": "Vollständiges Bild mit view_image in nativer Auflösung visuell geprüft; Hash vor Dokumentation erneut unverändert bestätigt."
+  },
+  "goal": {
+    "id": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+    "title": "Sternradien aus HRD-Daten abschätzen",
+    "sourcePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "descriptionRead": "Die lernende Person kann aus Leuchtkraft und Oberflächentemperatur eines Sterns im Hertzsprung-Russell-Diagramm seinen Radius mit einem thermischen Strahlungsmodell abschätzen und erklären, wie beide Größen die Schätzung bestimmen."
+  },
+  "styleReference": {
+    "path": "curricula/DE/Gymnasium/visualizations/physik/3a4b2f86-5c59-5429-8fb4-75d9b2589cb5/3a4b2f86-5c59-5429-8fb4-75d9b2589cb5.jpg",
+    "width": 2752,
+    "height": 1536,
+    "inspection": "Vollständige Stilreferenz in nativer Auflösung visuell geprüft."
+  },
+  "independence": {
+    "otherReviewResultsRead": false,
+    "earlierCandidatesRead": false,
+    "generationPromptRead": false,
+    "descriptionOnlyReview": false
+  },
+  "findings": [
+    {
+      "area": "hrd-axes-and-points",
+      "result": "pass",
+      "finding": "Leuchtkraft steigt nach oben; Oberflächentemperatur nimmt von heiß links nach kühl rechts ab. A und B liegen auf derselben vertikalen Temperaturmarkierung T_0 und sind korrekt L_0 beziehungsweise 4L_0 zugeordnet. Die ausdrücklich schematische Achse hat weder einen numerischen Nullpunkt noch einen ausgewiesenen linearen Maßstab; die vertikalen Bildabstände müssen deshalb kein Verhältnis 4:1 abbilden."
+    },
+    {
+      "area": "thermal-model-and-radius-inversion",
+      "result": "pass",
+      "finding": "L = 4πR²σT⁴ ist für das thermische Strahlungsmodell korrekt. R = sqrt(L / (4πσT⁴)) ist korrekt umgestellt; im Bild umfasst die Wurzel den gesamten Bruch."
+    },
+    {
+      "area": "physical-dimensions",
+      "result": "pass",
+      "finding": "Bei L in Watt, T in Kelvin und σ in W m^-2 K^-4 ergibt die Wurzel sqrt(W / (W m^-2 K^-4 K^4)) die Dimension Meter. Die Grafik enthält keine widersprechenden Einheitenangaben."
+    },
+    {
+      "area": "drawn-radius-correspondence",
+      "result": "pass-with-schematic-tolerance",
+      "finding": "Die tatsächlich gezeichneten Kreisscheiben haben visuell ungefähr 154 beziehungsweise 320 Pixel Durchmesser, also etwa 2,08:1. Dies ist eine visuelle Näherung, keine präzise Segmentierungsmessung. Beide Radiuspfeile reichen vom eingezeichneten Mittelpunkt zum Kreisrand und zeigen ebenfalls ungefähr die Verdopplung. Die geringe zeichnerische Abweichung ist akzeptable schematische Toleranz; die Darstellung vermittelt doppelten Radius und ungefähr vierfache Fläche und wurde nicht allein anhand ihrer Beschriftungen akzeptiert.",
+      "approximateDiameterRatio": 2.08,
+      "intendedRadiusRatio": 2
+    },
+    {
+      "area": "luminosity-and-temperature-dependence",
+      "result": "pass",
+      "finding": "Die Aussage Vierfache Leuchtkraft → doppelter Radius steht eindeutig unter gleicher Temperatur T_0 und entspricht R proportional sqrt(L). Die untere Aussage Bei gleicher Leuchtkraft: höhere Temperatur → kleinerer Radius stimmt mit R proportional T^-2 überein."
+    },
+    {
+      "area": "typography-and-readability",
+      "result": "pass",
+      "finding": "Formeln, Wurzel, Exponenten, Indizes und deutsche Beschriftungen sind in der geprüften Originalauflösung gut lesbar. Keine sichtbaren Textkollisionen oder abgeschnittenen fachlichen Inhalte festgestellt."
+    },
+    {
+      "area": "goal-scope-and-style",
+      "result": "pass",
+      "finding": "Die Verbindung von HRD-Größen, thermischem Modell und Sternradius entspricht dem gelesenen kanonischen Lernziel. Heller blauer Hintergrund, Handschrift, schwarze Konturen und gelbe Sterne passen zur geprüften Stilreferenz; die drei Felder gliedern die Erklärung nachvollziehbar."
+    }
+  ],
+  "nonBlockingLimitations": [
+    "Die Grafik ist eine erklärende Modellübersicht und enthält keine vollständige numerische Rechenaufgabe.",
+    "Die Definition der Stefan-Boltzmann-Konstanten σ und die Verwendung von Kelvin können im begleitenden Lerntext eingeführt werden."
+  ],
+  "blockingFindings": [],
+  "supportingSources": [
+    {
+      "title": "NASA Space Math, Volume 5",
+      "url": "https://spacemath.gsfc.nasa.gov/SMBooks/SMBook5.pdf",
+      "usedFor": "Abgleich der Stefan-Boltzmann-Beziehung für Leuchtkraft, Radius und Temperatur.",
+      "accessScope": "Offizieller NASA-Dokumentauszug im Websuchergebnis; keine vollständige Dokumentprüfung und kein wörtliches Zitat."
+    }
+  ],
+  "acceptanceBoundaries": {
+    "humanApproval": false,
+    "runtimeAdoptionClaimed": false,
+    "completeFiveGateAcceptanceClaimed": false,
+    "realHostAcceptanceClaimed": false,
+    "statement": "Diese Entscheidung dokumentiert ausschließlich die unabhängige KI-Prüfung dieses unveränderten Bildkandidaten für den AI-Pilot."
+  }
+}

@@ -84,6 +84,12 @@ tasks.test {
         "../contracts/drafts/openai/skillpilot-coach-v1/1.1.0-SNAPSHOT/contract/contract.json"
     )).withPropertyName("openAiCoachV1CandidateContract")
         .withPathSensitivity(PathSensitivity.RELATIVE)
+    // ProjectionRoleLearnerServiceTest loads the current public physics route.
+    // Curriculum-only changes must invalidate the cached test result too.
+    inputs.file(layout.projectDirectory.file(
+        "../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
+    )).withPropertyName("canonicalPhysicsSourceMethodRoute")
+        .withPathSensitivity(PathSensitivity.RELATIVE)
     // The suite runs 22 @SpringBootTest classes whose distinct property sets each pin their own
     // cached Spring context in this one JVM. 1536m stopped being enough when the Claude v1
     // connector added ten of them, and the executor died with "Java heap space" rather than a

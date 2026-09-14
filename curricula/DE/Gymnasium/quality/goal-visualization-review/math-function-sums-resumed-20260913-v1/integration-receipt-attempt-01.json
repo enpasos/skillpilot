@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "operation": "native_import_of_independently_reviewed_candidate",
+  "goalId": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+  "completedAt": "2026-09-13T22:00:33.772Z",
+  "localTimezone": "Europe/Berlin",
+  "integrator": "codex-math_sum_candidate_review",
+  "reviewRoleTransition": "The independent review was completed first and left unchanged. This subsequent integration was informed by the root agent's agreement and explicit bounded integration instruction.",
+  "generation": {
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "tool": "image_gen",
+    "model": null,
+    "modelStatus": "Exact image generation model not exposed in this integration context; not inferred.",
+    "provenanceSource": "Root agent's actual generation context and integration instruction. This integration uses the project-local candidate rather than reconstructing an external generation output path.",
+    "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/attempt-01.png",
+    "candidateSha256": "6f11af5794740dcfd9697b42bb035a7e31695c28270e3ddc78e6bfec9a002a83",
+    "dimensions": {
+      "width": 1678,
+      "height": 937
+    },
+    "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/attempt-01.prompt.md",
+    "promptSha256": "8b9612432b7df2bd0625476c1d0b6e9d3be2fab0a983e1ff9f38944a0a631cf3",
+    "referenceStrategy": "Use the existing source JPG as the image edit target and style reference. Remove only the dark central vertical line and its zero to distinguish two pointwise value cases from Cartesian coordinates.",
+    "referenceOriginalSha256": "e54d8a82cfbbde46f3782643c81d8a42ddf02b78b5fe51b6e53b7b72e315bbfd"
+  },
+  "review": {
+    "decision": "accepted_pilot",
+    "independentReceiptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/independent-review-attempt-01.json",
+    "independentReceiptSha256": "a09f4f15d19d0abb53005a0b9f3f8e2f40909b741469bf4e28cc7f023753bc1c",
+    "independentReceiptUnchanged": true,
+    "rootAgreement": "Root inspected the actual original and candidate and the full independent receipt, and agreed accepted_pilot for orientation, including inherited minor bar-proportion and mobile-display limitations.",
+    "aiApproved": "yes",
+    "aiApprovedAssetSha256": "sha256:6f11af5794740dcfd9697b42bb035a7e31695c28270e3ddc78e6bfec9a002a83",
+    "aiReviewedAt": "2026-09-13T21:59:12Z",
+    "humanApproved": "no",
+    "humanReviewedAt": null,
+    "scope": "Controlled orientation to pointwise addition only; not full goal assessment, human approval, release approval, publication or real-host acceptance."
+  },
+  "nativeOperations": [
+    {
+      "arguments": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "visualization:import",
+        "--",
+        "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/attempt-01.png",
+        "--provider=OpenAI / ChatGPT-Codex image generation",
+        "--prompt=curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/attempt-01.prompt.md",
+        "--review-status=pilot",
+        "--license=AI-generated, SkillPilot-curated",
+        "--alt-text=Zwei getrennte Fälle der punktweisen Addition mit gemeinsamer Höhenbasis: Bei x=1 ergeben der blaue Wert f(1)=1 und der grüne Wert g(1)=1 zusammen h(1)=2. Bei x=2 ergeben f(2)=4 und g(2)=2 zusammen h(2)=6. Die Tabelle enthält dieselben Werte; eine Karte erläutert h-Wert = f-Wert + g-Wert. Die Darstellung zeigt Wertstapel, keine vollständigen Funktionsgraphen."
+      ],
+      "exitCode": 0,
+      "effects": "Native importer copied the exact PNG candidate to canonical, app/public and backend source assets; updated only url/provider/altText on the target resource link; wrote prompt metadata from the exact edit prompt. With no new reconstruction prompt supplied, the importer removed the stale old reconstruction prompt after its verified archive."
+    },
+    {
+      "command": "npm --prefix app run quality:goal-visualization-qa -- --subject=mathematik",
+      "exitCode": 0,
+      "effects": "Native generator rebound only the changed target QA record to the new URL and asset hash, resetting approvals before the new actual-image AI review was applied with apply_patch."
+    }
+  ],
+  "recovery": {
+    "historyDirectory": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/history",
+    "originalImage": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/history/original.jpg",
+      "sha256": "e54d8a82cfbbde46f3782643c81d8a42ddf02b78b5fe51b6e53b7b72e315bbfd",
+      "width": 2752,
+      "height": 1536
+    },
+    "originalGoalPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/history/original-goal.json",
+    "originalQaRecordPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/history/original-qa-record.json",
+    "originalPrompt": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/history/original-prompt.de.md",
+      "sha256": "a86790c41e62dda8c63bd71909fd01439e5a03e5d54cfa8b72eb71cc25902399"
+    },
+    "originalReconstructionPrompt": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/history/original-image-reconstruction-prompt.de.md",
+      "sha256": "0da45d9be88a1315cc3b6d1aeb7afddef2c74d0469e2fd02f04d6dc3b49c6707"
+    },
+    "beforeScopePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/history/before-integration-scope.json",
+    "verifiedBeforeImport": true,
+    "verifiedBeforeJpgRemoval": true,
+    "verifiedAfterIntegration": true,
+    "removedSupersededJpgs": [
+      "curricula/DE/Gymnasium/visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.jpg",
+      "app/public/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.jpg",
+      "backend/src/main/resources/static/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.jpg"
+    ],
+    "recoverability": "All three removed JPG files had the same verified original hash and can be recovered byte-for-byte from history/original.jpg. The overwritten old prompt, removed stale reconstruction prompt, complete prior target goal and prior target QA record remain archived."
+  },
+  "after": {
+    "assets": [
+      {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.png",
+        "sha256": "6f11af5794740dcfd9697b42bb035a7e31695c28270e3ddc78e6bfec9a002a83"
+      },
+      {
+        "path": "app/public/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.png",
+        "sha256": "6f11af5794740dcfd9697b42bb035a7e31695c28270e3ddc78e6bfec9a002a83"
+      },
+      {
+        "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.png",
+        "sha256": "6f11af5794740dcfd9697b42bb035a7e31695c28270e3ddc78e6bfec9a002a83"
+      }
+    ],
+    "canonicalPrompt": {
+      "path": "curricula/DE/Gymnasium/visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/prompt.de.md",
+      "sha256": "4cd048dfbfc51933e4c6eb340e78106d841323a8b26def19fb0fce9cdd6302f6",
+      "actualEditPromptSha256": "8b9612432b7df2bd0625476c1d0b6e9d3be2fab0a983e1ff9f38944a0a631cf3"
+    },
+    "resourceLink": {
+      "type": "goal-visualization",
+      "resourceType": "image",
+      "role": "primary",
+      "skillpilotId": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+      "title": "Visualisierung: Eigenschaften von Funktionssummen graphisch begründen (LK)",
+      "url": "/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.png",
+      "provider": "OpenAI / ChatGPT-Codex image generation",
+      "description": "Visualisierung zum Lernziel: Eigenschaften von Funktionssummen graphisch begründen (LK).",
+      "altText": "Zwei getrennte Fälle der punktweisen Addition mit gemeinsamer Höhenbasis: Bei x=1 ergeben der blaue Wert f(1)=1 und der grüne Wert g(1)=1 zusammen h(1)=2. Bei x=2 ergeben f(2)=4 und g(2)=2 zusammen h(2)=6. Die Tabelle enthält dieselben Werte; eine Karte erläutert h-Wert = f-Wert + g-Wert. Die Darstellung zeigt Wertstapel, keine vollständigen Funktionsgraphen.",
+      "lang": "de",
+      "license": "AI-generated, SkillPilot-curated",
+      "reviewStatus": "pilot"
+    },
+    "sourceReconstructionPromptPresent": false,
+    "reasonForNoCurrentReconstructionPrompt": "The archived reconstruction prompt describes the superseded image including the removed axis and zero. It must not be represented as a reconstruction of the new candidate."
+  },
+  "exactScope": {
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "totalRecordsBefore": 1183,
+      "totalRecordsAfter": 1183,
+      "onlyChangedGoalId": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+      "changedResourceLinkFields": {
+        "url": {
+          "before": "/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.jpg",
+          "after": "/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.png"
+        },
+        "provider": {
+          "before": "Google Gemini / Nano Banana Pro",
+          "after": "OpenAI / ChatGPT-Codex image generation"
+        },
+        "altText": {
+          "before": "Didaktische Visualisierung zum Lernziel \"Eigenschaften von Funktionssummen graphisch begründen (LK)\". Die lernende Person kann Eigenschaften von Funktionssummen wie $f(x)+g(x)$ anhand der Graphen von $f$ und $g$ skizzieren und begründen.",
+          "after": "Zwei getrennte Fälle der punktweisen Addition mit gemeinsamer Höhenbasis: Bei x=1 ergeben der blaue Wert f(1)=1 und der grüne Wert g(1)=1 zusammen h(1)=2. Bei x=2 ergeben f(2)=4 und g(2)=2 zusammen h(2)=6. Die Tabelle enthält dieselben Werte; eine Karte erläutert h-Wert = f-Wert + g-Wert. Die Darstellung zeigt Wertstapel, keine vollständigen Funktionsgraphen."
+        }
+      },
+      "allTargetFieldsExceptResourceLinksPreserved": true,
+      "allOtherCanonicalBytesPreserved": true,
+      "outsideTargetSha256Before": "faa88b8d983ac3595af4af1688b84869d8f8b1910c3cc5d1004b9bf1be3fa670",
+      "outsideTargetSha256After": "faa88b8d983ac3595af4af1688b84869d8f8b1910c3cc5d1004b9bf1be3fa670",
+      "fileSha256Before": "33f7e4b8ef2db51ea029688442475d905eae4f12f190b2aaa73b4a741c5dee54",
+      "fileSha256After": "ec03b87679934c976f02fcd71edb060f366f589d758de2d64e7be4349dff38d9"
+    },
+    "qa": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+      "totalRecordsBefore": 811,
+      "totalRecordsAfter": 811,
+      "onlyChangedGoalId": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+      "changedFields": {
+        "imageUrl": {
+          "before": "/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.jpg",
+          "after": "/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.png"
+        },
+        "publicAssetPath": {
+          "before": "app/public/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.jpg",
+          "after": "app/public/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.png"
+        },
+        "canonicalAssetPath": {
+          "before": "curricula/DE/Gymnasium/visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.jpg",
+          "after": "curricula/DE/Gymnasium/visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.png"
+        },
+        "assetSha256": {
+          "before": "sha256:e54d8a82cfbbde46f3782643c81d8a42ddf02b78b5fe51b6e53b7b72e315bbfd",
+          "after": "sha256:6f11af5794740dcfd9697b42bb035a7e31695c28270e3ddc78e6bfec9a002a83"
+        },
+        "chatGptReviewedAt": {
+          "before": "2026-07-06T13:58:51.035Z",
+          "after": "2026-09-13T21:59:12Z"
+        },
+        "chatGptReviewer": {
+          "before": "codex",
+          "after": "codex-root-and-independent-math-sum-review"
+        },
+        "chatGptNotes": {
+          "before": "Content and umlaut checks approved from accepted review ledger mathematik-batch-144.md (accepted_pilot_after_user_review_correction). Review note: The accepted image avoids unreliable continuous curves and instead uses pointwise value columns for `f(x)=x^2`, `g(x)=x`, and `h(x)=f(x)+g(x)`. For `x=1`, the blue segment has value `1`, the green stacked segment has value `1`, and the red top point is labelled `h(1)=2`; the visible height therefore matches the value. For `x=2`, the blue segment is `f(2)=4`, the green stacked segment is `g(2)=2`, and the red top point is `h(2)=6`. The table rows `1 | 1 | 1 | 2` and `2 | 4 | 2 | 6` are correct. No curve, false straight line, or misleading arrow is present.",
+          "after": "Actual original-detail raster review of curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/attempt-01.png, with the prior JPG as edit target and style reference. Independent reviewer math_sum_candidate_review accepted_pilot; root inspected both rasters and the independent receipt and agrees accepted_pilot for orientation. The central vertical line and zero are absent; rows (1,1,1,2) and (2,4,2,6), f/g segment labels and red h markers agree with pointwise addition. Existing classroom style and full two-panel composition are retained. Minor inherited bar-height imprecision remains; continuous graphs, wider function properties and mobile/native-host acceptance are outside this image's evidence. Independent review: curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/independent-review-attempt-01.json. AI-only approval; no human approval. Historical JPG and prior QA are archived under curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/history/."
+        },
+        "aiApprovedAssetSha256": {
+          "before": "sha256:e54d8a82cfbbde46f3782643c81d8a42ddf02b78b5fe51b6e53b7b72e315bbfd",
+          "after": "sha256:6f11af5794740dcfd9697b42bb035a7e31695c28270e3ddc78e6bfec9a002a83"
+        },
+        "aiReviewedAt": {
+          "before": "2026-07-16T10:57:55.837Z",
+          "after": "2026-09-13T21:59:12Z"
+        },
+        "aiReviewer": {
+          "before": "codex-fresh-vision-2026-07-16",
+          "after": "codex-root-and-independent-math-sum-review"
+        },
+        "aiNotes": {
+          "before": "Fresh full-resolution review: the pointwise sums f(1)=1 plus g(1)=1 give h(1)=2, and f(2)=4 plus g(2)=2 give h(2)=6. The stacked height diagrams and value table consistently visualize the addition rule.",
+          "after": "Actual original-detail raster review of curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/attempt-01.png, with the prior JPG as edit target and style reference. Independent reviewer math_sum_candidate_review accepted_pilot; root inspected both rasters and the independent receipt and agrees accepted_pilot for orientation. The central vertical line and zero are absent; rows (1,1,1,2) and (2,4,2,6), f/g segment labels and red h markers agree with pointwise addition. Existing classroom style and full two-panel composition are retained. Minor inherited bar-height imprecision remains; continuous graphs, wider function properties and mobile/native-host acceptance are outside this image's evidence. Independent review: curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/independent-review-attempt-01.json. AI-only approval; no human approval. Historical JPG and prior QA are archived under curricula/DE/Gymnasium/quality/goal-visualization-review/math-function-sums-resumed-20260913-v1/history/."
+        }
+      },
+      "allOtherQaBytesPreserved": true,
+      "outsideTargetSha256Before": "3689da9c083bc21fb11603309e7b82b9cf04a1f18d161a7bcbcae9c37f486a7c",
+      "outsideTargetSha256After": "3689da9c083bc21fb11603309e7b82b9cf04a1f18d161a7bcbcae9c37f486a7c",
+      "fileSha256Before": "be591dabe852b19c056946e3b9bf719bc4ebdeac154496001c3d74654e0fadd9",
+      "fileSha256After": "77ba8d4bc04778ef5990a9d9b8447e8a50bac96f10955cecc4247a2a79f520c1"
+    },
+    "unchangedChecks": "The exact complete UTF-8 canonical and QA files were hashed with only the target object replaced by TARGET_RECORD. Matching before/after hashes therefore cover other entries and surrounding whitespace. The target's non-resourceLink fields were compared structurally; the only changed resourceLink fields are url, provider and altText.",
+    "outsideAuthorizedMutationScope": "No semantic-atomicity, memory-card, P-record, registry, D-ledger, global book, status or inventory changes were performed by this integration."
+  },
+  "validation": {
+    "verifiedAt": "2026-09-13T22:00:33.772Z",
+    "sourcePublicBackendCandidateSha256Parity": true,
+    "oldJpgsAbsentFromThreeExactActiveLocations": true,
+    "archiveByteParity": true,
+    "canonicalNonTargetByteParity": true,
+    "qaNonTargetByteParity": true,
+    "canonicalSemanticsPreserved": true,
+    "explicitAiApprovalMatchesCurrentAsset": true,
+    "humanApprovalAbsent": true,
+    "actualPromptPreservedInCanonicalMetadata": true,
+    "nativeQaCheck": {
+      "command": "npm --prefix app run check:goal-visualization-qa -- --subject=mathematik",
+      "exitCode": 0,
+      "result": "Goal visualization QA ledgers are up to date (1 subject file(s))."
+    },
+    "browserRenderingTested": false,
+    "nativeHostRenderingTested": false
+  },
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "published": false
+  },
+  "nextOwner": "Root agent owns D-batch registration and required global curriculum checks. This receipt does not claim those checks."
+}

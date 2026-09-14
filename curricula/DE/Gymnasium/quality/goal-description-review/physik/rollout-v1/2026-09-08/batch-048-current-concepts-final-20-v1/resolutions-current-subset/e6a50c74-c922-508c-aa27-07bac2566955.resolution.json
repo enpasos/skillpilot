@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-current-subset-e6a50c74-c922-508c-aa27-07bac2566955",
+  "goal": {
+    "goalId": "e6a50c74-c922-508c-aa27-07bac2566955",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:615b89384cd6d8b0995a873e37353b8afd66e231a347b6a5df235254e12f31bc",
+    "pageFingerprint": "sha256:1914192f82976ffdb886b85fedce6fd1a356d7d212a6f6b45a8206c119eb878e",
+    "goalReviewContextFingerprint": "sha256:228057db92ce813c6500050ecd3fc34bc1cbb4969ab9d3a66077c642ba5a450b",
+    "finalText": {
+      "titleDe": "Strahlendosis und Schutz",
+      "titleEn": "Radiation Dose and Protection",
+      "descriptionDe": "Die lernende Person kann Energiedosis, Äquivalentdosis und effektive Dosis unterscheiden, die zur Fragestellung passende Dosisgröße unter benannten Modellannahmen aus gegebenen Daten bestimmen und die Wirksamkeit einer Abschirmung unter sonst vergleichbaren Expositionsbedingungen anhand der Dosisreduktion beurteilen.",
+      "descriptionEn": "The learner can distinguish absorbed dose, equivalent dose, and effective dose, determine the dose quantity appropriate to the question from given data under stated model assumptions, and assess the effectiveness of shielding by the reduction in dose under otherwise comparable exposure conditions."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-a",
+      "campaignDigest": "sha256:7954fe9d1229a77e1e784f6897f6f0bdbcf00ba7264a15e5dd6edf1085194fe2",
+      "roundId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:b5aac2cb1e1e838f9b18c4cfbf20698508e148eb24e89573696a26d64e314aba",
+      "goalReviewContextFingerprint": "sha256:228057db92ce813c6500050ecd3fc34bc1cbb4969ab9d3a66077c642ba5a450b",
+      "batchId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:9b9f53a84e3ae210a6c34619110150ff99b921c325c460d856806795f050aeaf",
+      "resultsDigest": "sha256:8bc3e623378b30377fc54f8e2e83f949ea32fa459fd5e294d4a496f9d0b3b210",
+      "recordId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001.007",
+      "recordDigest": "sha256:799cd45aa39ca0c10fa97de80f33853903f422c9005bc0126a5e2575b8d89da7"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-b",
+      "campaignDigest": "sha256:964cfcbfd946d718ecdb9fbb8e53f7f27807be990b7b3fde635e4c2c3e462673",
+      "roundId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:b5aac2cb1e1e838f9b18c4cfbf20698508e148eb24e89573696a26d64e314aba",
+      "goalReviewContextFingerprint": "sha256:228057db92ce813c6500050ecd3fc34bc1cbb4969ab9d3a66077c642ba5a450b",
+      "batchId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.batch-001",
+      "runId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.run-001",
+      "runManifestDigest": "sha256:347b79153ad426d53cf01068759155642546794ec721d75b57da0a3136e31dc3",
+      "resultsDigest": "sha256:d6f20232635b6ef939fbca535e5144ca47cb0ebf803bde61e7a93e1cb85a667c",
+      "recordId": "physics-b048-b-007",
+      "recordDigest": "sha256:1f9faa9d458f24a0859accacc513c51b4d62af518e10b72fc559a65c5803c8ec"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:6b414186b933224d16ebad5b9baad261ddf0236e3c85f0e93356c5f9d4d6b64f"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-explicit-synthesis-e6a50c74-c922-508c-aa27-07bac2566955",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex /root, continuation 2026-09-13; existing independent D048 reviews retained",
+    "synthesizedAt": "2026-09-13T18:15:19.511Z",
+    "rationaleDe": "Beide unabhängigen KEEP-Urteile behandeln die Wahl und Bestimmung einer Dosisgröße zur begrenzten Abschirmungsbeurteilung als zusammenhängenden Anwendungsfall. Runde B wird wegen der explizit bereitgestellten Modelldaten und vergleichbaren Quelle, Dauer und Geometrie gewählt. Strahlungs- und Gewebegewichtung sowie Gy/Sv werden unterschieden; die unveränderte Grafik zeigt korrekt 75 Prozent Reduktion von 4 auf 1 Mikrogray. Keine praktische Exposition, medizinische Einzelfallberatung oder Sicherheitsgarantie wird eingeführt. Aktuelle Ziel-, Seiten-, Bild- und Kontextbindungen sind unverändert; keine menschliche Freigabe.",
+    "rationaleEn": "Both independent KEEP decisions treat selecting and determining a dose quantity for a bounded shielding comparison as one coherent application. Round B is selected for its explicit supplied model data and comparable source, duration and geometry. Radiation and tissue weighting and Gy/Sv are distinguished; the unchanged image correctly shows a 75 percent reduction from 4 to 1 microgray. No practical exposure, individual medical advice or safety guarantee is introduced. Current goal, page, image and context bindings are unchanged; no human approval is claimed.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Energiedosis erfasst absorbierte Energie je Masse; Äquivalent- und effektive Dosis ergänzen vorgegebene Strahlungs- beziehungsweise Gewebegewichtungen. Abschirmungswirkung ist nur bei gleicher Bezugsgröße und kontrollierten Expositionsbedingungen vergleichbar.",
+      "essentialUnderstandingEn": "Absorbed dose measures absorbed energy per mass; equivalent and effective dose add specified radiation and tissue weightings respectively. Shielding effects are comparable only with the same dose quantity and controlled exposure conditions.",
+      "observablePerformanceDe": "Aus sicheren bereitgestellten Modelldaten wählt die lernende Person die passende Dosisgröße, erklärt ihre Gewichtungen und begründet eine relative Dosisreduktion bei gleicher Quelle, Dauer und Geometrie.",
+      "observablePerformanceEn": "Using safe supplied model data, the learner selects the appropriate dose quantity, explains its weightings and justifies a relative dose reduction for the same source, duration and geometry.",
+      "transferExpectationDe": "In einem neuen Vergleich mit veränderter Strahlungsart erklärt sie, warum gleiche Energiedosis nicht zwingend gleiche Äquivalentdosis bedeutet und ein bloßer Vergleich der Zahlen ohne Dosisart irreführt.",
+      "transferExpectationEn": "In a fresh comparison involving a changed radiation type, the learner explains why equal absorbed dose need not mean equal equivalent dose and why comparing bare numbers without dose type is misleading."
+    },
+    "dissent": [
+      {
+        "dissentId": "evidence-selection-e6a50c74-c922-508c-aa27-07bac2566955",
+        "source": "both",
+        "textDe": "Beide unabhängigen Urteile sind KEEP; ihre unterschiedlichen Evidenzformulierungen und Begründungen bleiben unverändert erhalten. Die individuelle Synthese wählt die Evidenz der zweiten Runde.",
+        "textEn": "Both independent decisions are KEEP; their differing evidence formulations and rationales remain unchanged in the original records. The individual synthesis selects the second round evidence.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:367719a4d28e053b0beaf76ae6dfd7a8d9e33de4d2fb817af3300041d436b5a0"
+}

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "physics-crash-current-alttext-informed-binding-review-20260913-a-v1",
+  "reviewedAt": "2026-09-13T19:26:29.642Z",
+  "reviewer": "Codex /root/physics52_round_a; exact model identifier not exposed",
+  "reviewMode": "informed_current_binding_review",
+  "priorInvolvement": "Reviewer previously read the complete existing crash profile and both bilingual cases. This follow-up rereads the materialized existing body and checks its current alt-text and image context; it is not new profile authorship or a blind review.",
+  "goalId": "1232febe-868a-4dac-b4c2-e35789434601",
+  "reviewId": "physics-crash-current-alttext-20260913-v1",
+  "goalFingerprint": "sha256:dd77eeac6a4345492886cb79ae9f45899bfa340766b43b4332dc209815a0f08b",
+  "profileFingerprint": "sha256:1ae7b9187d3f57daeb95347ffd7ca9355755401c787402b13adeefe97f52a132",
+  "oldReviewInputFingerprint": "sha256:4001833d47646a3579e0c8ec276782b32133d335035b1ac1f0ebe4d61a921ffe",
+  "currentReviewInputFingerprint": "sha256:8f869ce593b8dda27343ee6b638b2c667a73c4ccd4452e852f975a26cac85a5b",
+  "decision": "keep",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewedArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/crash-current-alttext-evidence-v1/candidates.json",
+      "digest": "sha256:858b4e7d2e9c348bca696508f25f6ab7069c3a22fd5f6f7bd08cb16791899723",
+      "bytes": 8291
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/crash-current-alttext-evidence-v1/positive-evidence.config.json",
+      "digest": "sha256:1e6f415d28163e7da3ec21d5fbb6f4b6fc60c49e3c4df218082e51051d9a9d75",
+      "bytes": 1196
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/crash-current-alttext-evidence-v1/positive-evidence.review.jsonl",
+      "digest": "sha256:c24efed2d409033b99b1068d56fcd17a6437f7c9fa5855713a364bcfb22ae2fb",
+      "bytes": 8185
+    }
+  ],
+  "previousProfile": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-traffic-flow-audit-v1/positive-evidence.review.jsonl",
+    "digest": "sha256:c0937b8197d6f69e79a21a61de6b8366f44933ef0aeb717561fbd1116b2ba966"
+  },
+  "bodyEquality": {
+    "oldAndNewProfileDeepEqual": true,
+    "oldAndNewSerializedProfileEqual": true,
+    "candidateAndMaterializedProfileEqual": true,
+    "comparisonScope": "The complete nested profile body, including every DE/EN expectation, coverage rule, variation and application-case field; not whole-record byte identity because review metadata and input binding changed."
+  },
+  "currentContext": {
+    "descriptionDe": "Die lernende Person kann bei gleicher Impulsänderung mit der verlängerten Stoßdauer erklären, wie eine Knautschzone den Betrag der mittleren Kraft bei einem Verkehrsunfall verringert.",
+    "descriptionEn": "The learner can explain how, for the same momentum change, a crumple zone reduces the magnitude of the average force in a traffic accident by extending the collision duration.",
+    "altText": "Zwei Kraft-Zeit-Diagramme vergleichen denselben Kraftstoß von 5000 N s: eine kurze Stoppzeit von 0,05 s bei 100000 N und eine durch die Knautschzone verlängerte Stoppzeit von 0,20 s bei 25000 N. Bei gleicher Impulsänderung bedeutet die längere Stoßdauer einen kleineren Betrag der mittleren Kraft.",
+    "imagePath": "app/public/assets/goal-visualizations/physik/1232febe-868a-4dac-b4c2-e35789434601/1232febe-868a-4dac-b4c2-e35789434601.jpg",
+    "imageDigest": "sha256:00df3f01c0445d45b17e946502103b98508c57a16c6440d4f3cb57067feadc33",
+    "imageVisuallyInspected": true,
+    "imageBytesMatchPreviouslyReviewedImage": true
+  },
+  "findings": [],
+  "confirmed": [
+    "The corrected alt text describes the two displayed force-time rectangles and removes the unrelated following-distance competence without expanding the profile.",
+    "The displayed products are 100000 N times 0.05 s = 5000 N s and 25000 N times 0.20 s = 5000 N s. The same momentum change with fourfold duration gives one-quarter average force magnitude.",
+    "The unchanged first case yields momentum change -6000 N s and average forces -60000 N and -20000 N, with the initial/final states and considered system made explicit.",
+    "The unchanged transfer case yields areas 600 N s for both rectangle and triangle, average magnitudes 6000 N and 3000 N and identical 6000 N peaks. The 800 N s control pulse correctly fails equal-impulse comparability.",
+    "The full DE/EN body preserves matching scope and does not infer peak force, injury outcome or a following-distance rule from average force.",
+    "The profile retains two independent demonstrations, fresh variation and independent transfer; the current image is teaching context, not learner evidence."
+  ],
+  "nativeCheck": {
+    "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/crash-current-alttext-evidence-v1/positive-evidence.config.json",
+    "exitCode": 0,
+    "configuredGoals": 1,
+    "approved": 0,
+    "needsHumanReview": 1,
+    "rejected": 0,
+    "blockingIssues": 0,
+    "reviewedResourceTypes": [
+      "goal-visualization"
+    ]
+  },
+  "limits": [
+    "The current reviewInputFingerprint is newly materialized for changed resource context; unchanged image bytes alone do not establish an unchanged complete review input.",
+    "No new independent description review, profile authorship, human approval, normative-source verification, learner-performance evidence, runtime change or provider acceptance is claimed.",
+    "Historical dissent is retained in the materialized record; this binding review does not independently substantiate its source-history claims.",
+    "Only informed-current-binding-review.receipt.json was created; existing profile originals, new candidate/profile/config files and registry were not edited."
+  ]
+}

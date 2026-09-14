@@ -1,0 +1,468 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-inverse-matrix-local-adjudication-20260913-v1",
+  "recordedAt": "2026-09-13",
+  "reviewer": "codex-mathematics-inverse-matrix-adjudication-20260913",
+  "reviewAuthority": "ai_adjudication_with_existing_product_owner_implementation_authority",
+  "authorization": {
+    "path": "docs/qa-ci/math-physics-deep-understanding-resumption-review-2026-09-05.md",
+    "section": "Genehmigte Umsetzung: B032v und Kontextnachprüfung B032w",
+    "productOwnerQuote": "Freigabe erteilt - auch für ähnliche Fälle, wenn Du sie für eine wirkliche Verbesserung erachtest",
+    "scope": "Fachlich begründete lokale Präzisierung und einzeln begründete Voraussetzungskante zum bestehenden atomaren Multiplikationsziel. Keine neue menschliche Einzelabnahme behauptet."
+  },
+  "sourceReviewArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-a/results/mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:a091991766ffbde2e877e30d33a919367045d0c99b88435f199b4943dd461039"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-a/results/mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-a.batch-001.run.json",
+      "sha256": "sha256:72db54762df94af1f8091ef7a5161e1b8ea497d3bae59fd05c3582445451d8dc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-b/results/mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:363d730f8dfb69ee56ed26a883cd301dec6717873fe269486073774eb7fbdcb5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-b/results/mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-b.batch-001.run.json",
+      "sha256": "sha256:788e5cc7ba5d3b18d5f1ae24aa4969166d6731bd23f57178f58199fe98a7e30d"
+    }
+  ],
+  "decision": {
+    "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+    "adoptedDescriptionSource": "round-b",
+    "rationaleDe": "Beide unabhängigen aktuellen Reviews verlangen übereinstimmend eine Existenzbedingung und die Einheitsmatrix als Ziel der schon beanspruchten Multiplikationsprobe. Der vollständige bilinguale Vorschlag aus Runde B wird wortgleich übernommen. Berechnung und Probe bilden einen inversen Zusammenhang; weder allgemeine Invertierbarkeitstheorie noch ein bestimmtes Verfahren oder weitere Matrixklassen werden ergänzt.",
+    "rationaleEn": "Both independent current reviews request an existence condition and the identity matrix as the target of the multiplication check already required. The complete bilingual wording from round B is adopted verbatim. Calculation and verification concern one inverse relationship; no general invertibility theory, specific method or further matrix class is added."
+  },
+  "beforeGoal": {
+    "id": "ce198bc9-b014-52ba-814f-25cc3e020668",
+    "title": "Einfache inverse Matrizen bestimmen",
+    "titleEn": "Determine simple inverse matrices",
+    "description": "Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen die Inverse bestimmen und das Ergebnis durch Multiplikation prüfen.",
+    "descriptionEn": "The learner can determine inverses for simple 2x2 matrices or diagonal matrices and verify the result by multiplication.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+      "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+      "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB1",
+      "processCompetencies": [
+        "K2.2",
+        "K3.3"
+      ],
+      "guidingIdeas": [
+        "L1"
+      ],
+      "phase": "Q2"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+    "semanticAtomic": true,
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "title": "Visualisierung: Einfache inverse Matrizen bestimmen",
+        "url": "/assets/goal-visualizations/mathematik/ce198bc9-b014-52ba-814f-25cc3e020668/ce198bc9-b014-52ba-814f-25cc3e020668.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Einfache inverse Matrizen bestimmen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Einfache inverse Matrizen bestimmen\". Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen die Inverse bestimmen und das Ergebnis durch Multiplikation prüfen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "afterGoal": {
+    "id": "ce198bc9-b014-52ba-814f-25cc3e020668",
+    "title": "Einfache inverse Matrizen bestimmen",
+    "titleEn": "Determine simple inverse matrices",
+    "description": "Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen, sofern sie invertierbar sind, die Inverse bestimmen und durch Multiplikation mit der Ausgangsmatrix prüfen, ob die Einheitsmatrix entsteht.",
+    "descriptionEn": "The learner can determine the inverse of simple 2x2 matrices or diagonal matrices, provided they are invertible, and check by multiplication with the original matrix whether the identity matrix is obtained.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+      "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+      "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+      "304111dd-426b-520b-a275-3fa37da1b0e0"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB1",
+      "processCompetencies": [
+        "K2.2",
+        "K3.3"
+      ],
+      "guidingIdeas": [
+        "L1"
+      ],
+      "phase": "Q2"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+    "semanticAtomic": true,
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "title": "Visualisierung: Einfache inverse Matrizen bestimmen",
+        "url": "/assets/goal-visualizations/mathematik/ce198bc9-b014-52ba-814f-25cc3e020668/ce198bc9-b014-52ba-814f-25cc3e020668.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Einfache inverse Matrizen bestimmen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Einfache inverse Matrizen bestimmen\". Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen die Inverse bestimmen und das Ergebnis durch Multiplikation prüfen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "beforeFingerprints": {
+    "atomicity": "sha256:c286f628d82127d16e148a46eeea6aac445f30431a13f777d15329dd70902052",
+    "memory": "sha256:3f9a634ee9a2d1b3cc52754cf10d833ed2a7c0d87aeef0d23042ff5661a4c780",
+    "semanticKind": "sha256:5238404f6999cd2fe4d98b23cc8b273444579ab9d1e30417baf23142e3527d8e",
+    "goal": "sha256:cd90da0a5e7b607ca1aefb3a958602028754cb6d1d358bc7ed3e279c7c02e18c"
+  },
+  "afterFingerprints": {
+    "atomicity": "sha256:927fd90cd6e262ed368817276804ec6e81d142d29bbc93feb67a2916cae555d1",
+    "memory": "sha256:18109546a6586c673abfaa659fb5117fbe65275bfe9f7ca578452941439fffa0",
+    "semanticKind": "sha256:868b4524069153661472d1d85dab011c714a990c78fbcdee335d1b75623d2648",
+    "goal": "sha256:9c1816a3a41f5669b966f9a9c4c34f2796e1ffca46a47b9c78fbfb51ae5e1509"
+  },
+  "prerequisiteAdjudication": {
+    "addedRequiresGoalId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+    "addedRequiresTitle": "Matrizen multiplizieren",
+    "rationaleDe": "Die Probe zur Einheitsmatrix erfordert das Berechnen eines Matrixprodukts. Das vorhandene atomare Multiplikationsziel ist fachlich unmittelbar geeignet. Es liegt bisher weder in den direkten oder transitiven Voraussetzungen noch in einer geerbten contains-Voraussetzung: Alle sechs Vorfahren haben requires: []. Die neue Kante ergänzt genau diese tatsächlich benötigte Teilkompetenz; bestehende Voraussetzungen werden nicht entfernt.",
+    "ancestorGoalIds": [
+      "c9b5958d-6cee-503c-be48-6eb8053ca9b9",
+      "074d755a-d307-4569-baa9-128ad6ea97dd",
+      "d6d8904c-896f-5850-8181-06c223346b80",
+      "4720daf4-cefe-43a9-a0e8-9db55286f558",
+      "98dcf9bd-d119-5eb1-835c-7d719f67b485",
+      "c01b1ce9-a667-4a46-b251-ec33ae602b15"
+    ],
+    "cycleCreated": false,
+    "noNewGoals": true,
+    "unchangedTitlesIdsProjectionSourceAndAssessment": true,
+    "affectedReverseReferenceGoalId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+    "affectedReverseReferenceDisposition": "Already held for a documented image issue. Its future review must use the current reverse-requires context; no old D/P records are rewritten."
+  },
+  "currentReevaluations": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "before": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "fingerprint": "sha256:c286f628d82127d16e148a46eeea6aac445f30431a13f777d15329dd70902052",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-05",
+        "reviewer": "codex",
+        "reason": "Q2-Review: Als eine zusammenhaengende, pruefbare Analysis- oder Lineare-Algebra-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+        "suggestedSplit": []
+      },
+      "after": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "fingerprint": "sha256:927fd90cd6e262ed368817276804ec6e81d142d29bbc93feb67a2916cae555d1",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-09-13",
+        "reviewer": "codex-mathematics-inverse-matrix-adjudication-20260913",
+        "reason": "Die Bestimmung der Inversen einer einfachen invertierbaren 2x2-Matrix oder Diagonalmatrix und die Probe auf die Einheitsmatrix prüfen denselben inversen Zusammenhang. Die Existenzbedingung begrenzt diesen Gegenstand; sie eröffnet weder eine allgemeine Invertierbarkeitstheorie noch eine zweite unabhängige Kompetenz. Die ergänzte Voraussetzung sichert die bereits beanspruchte Matrixmultiplikation ab.",
+        "suggestedSplit": []
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "before": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "fingerprint": "sha256:3f9a634ee9a2d1b3cc52754cf10d833ed2a7c0d87aeef0d23042ff5661a4c780",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "after": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "fingerprint": "sha256:18109546a6586c673abfaa659fb5117fbe65275bfe9f7ca578452941439fffa0",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-09-13",
+        "reviewer": "codex-mathematics-inverse-matrix-adjudication-20260913",
+        "reason": "Die Inverse wird methodenoffen aus dem inversen Zusammenhang bestimmt und durch das Matrixprodukt zur Einheitsmatrix geprüft. Passende Beispiele, Begründung der Existenzbedingung und Aufgabenpraxis tragen diese Kompetenz; die Präzisierung begründet keine eigenständige abrufpflichtige Faktensammlung und kein Memory-Deck."
+      }
+    }
+  ],
+  "semanticKindAdjudication": {
+    "decision": "curricularAtomic",
+    "rationale": "A leaf remains one assessable content competence. Adding the existence qualifier, explicit identity check and the prerequisite does not turn it into orientation, memory, assessment or a cluster. The existing semantic-kind classification is retained with its current source fingerprint."
+  },
+  "visualization": {
+    "assetSha256": "sha256:30578b5de91511cab5c560e857e15aa25b080835e00d2268f0fd0e9dfff4ae75",
+    "actualImageInspected": true,
+    "fitRationale": "The unchanged image explicitly marks det(A)=1 as nonzero, computes the correct inverse of [[2,1],[1,1]], and shows every multiplication entry leading to the identity matrix. The stated swap/negate shortcut is visibly restricted to det(A)=1. The image remains suitable for the clarified goal.",
+    "canonicalAltTextUnchanged": true,
+    "sourceImageAndGenerationPromptsUnchanged": true,
+    "qaDescriptionOnlyUpdated": true,
+    "existingHumanAndAiImageDecisionsUnchanged": true,
+    "newHumanOrAiImageApproval": false
+  },
+  "fileDigests": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "beforeSha256": "sha256:ac84e0eeec7784a69e0c46af3bad48cfdec06ca22a20c7fe88dd2990c6b938e3",
+      "afterSha256": "sha256:c4048d79844d2bcf11e7ea83b5e06869a1581746343601586f7e3deda53f0297"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "beforeSha256": "sha256:7eab7a139d71f3d8386a51c72edda2095cd4d9197e6554161a82452085910b66",
+      "afterSha256": "sha256:a44312e2b71ec764f21d55e324d7ace7944b0805f88271e97f4f81d227983ff3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "beforeSha256": "sha256:ea550e2622601369588d8ab213620b0dded5769564ae2b4bb15170138e840c7a",
+      "afterSha256": "sha256:83979d5580f14279c0d331aacbb3065dce035a0958ab8d9057da1ebd05ba4080"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "beforeSha256": "sha256:a01e28018bc71273f056759d1a32d4e83af6fef03bf51731b60bc1bf05d693eb",
+      "afterSha256": "sha256:089ea94fb109df0181c229350e3d60212ea6d1b009bfe4e99738e73868db2620"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+      "beforeSha256": "sha256:381a34e2f6d9ee9916cd413f315093b559fd865a4261b4a8f5043517346725d8",
+      "afterSha256": "sha256:e85a93ba5af46da64d6f4f6f2120093598f104aec1564c8c8da60f121f1344a5"
+    }
+  ],
+  "preservation": {
+    "unchangedOtherCanonicalGoals": 1182,
+    "otherCanonicalGoalsDigest": "sha256:b26f80d9746562b8ffc2fd944e711114d329873c17cf1470af38708dbcf3f1b3",
+    "preservedHistoricalFiles": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-a/batches/mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-a.batch-001.input.jsonl",
+        "sha256": "sha256:3f11ac79906bd28bc51a10c3600f4e28e3816c454fa5c5f7ff76b8e0b69e6495"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-a/contracts/goal-description-review-record.schema.json",
+        "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-a/criteria.md",
+        "sha256": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-a/description-review-campaign.json",
+        "sha256": "sha256:613aed0b639bc1a801829ec2256fd940986472c8146ec65f4f1f857203845e83"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-a/description-review-input.json",
+        "sha256": "sha256:8103379b35b8c272fadad84505f37fd34577d61cf52ecb9234f761fed80702bf"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-a/prompt.md",
+        "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-a/results/mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-a.batch-001.records.jsonl",
+        "sha256": "sha256:a091991766ffbde2e877e30d33a919367045d0c99b88435f199b4943dd461039"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-a/results/mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-a.batch-001.run.json",
+        "sha256": "sha256:72db54762df94af1f8091ef7a5161e1b8ea497d3bae59fd05c3582445451d8dc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-a/review-bundle-manifest.json",
+        "sha256": "sha256:1cbb6d8500782abc3deacc54bcf14ebe451a7cf0403101c3f775bf8254555b64"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-b/batches/mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-b.batch-001.input.jsonl",
+        "sha256": "sha256:efcc983441449b396393f355b0aab8a5bd43470e5eee5c6375b076e9bd4f1700"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-b/contracts/goal-description-review-record.schema.json",
+        "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-b/criteria.md",
+        "sha256": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-b/description-review-campaign.json",
+        "sha256": "sha256:40ad40a5df79e415fe0c08da7cb511dcc8c70ed7e8d5e79b045af99c8c572750"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-b/description-review-input.json",
+        "sha256": "sha256:8103379b35b8c272fadad84505f37fd34577d61cf52ecb9234f761fed80702bf"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-b/prompt.md",
+        "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-b/results/mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-b.batch-001.records.jsonl",
+        "sha256": "sha256:363d730f8dfb69ee56ed26a883cd301dec6717873fe269486073774eb7fbdcb5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-b/results/mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913-first-pass-b.batch-001.run.json",
+        "sha256": "sha256:788e5cc7ba5d3b18d5f1ae24aa4969166d6731bd23f57178f58199fe98a7e30d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-b/review-bundle-manifest.json",
+        "sha256": "sha256:1cbb6d8500782abc3deacc54bcf14ebe451a7cf0403101c3f775bf8254555b64"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/ce198bc9-b014-52ba-814f-25cc3e020668/ce198bc9-b014-52ba-814f-25cc3e020668.jpg",
+        "sha256": "sha256:30578b5de91511cab5c560e857e15aa25b080835e00d2268f0fd0e9dfff4ae75"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/ce198bc9-b014-52ba-814f-25cc3e020668/image-reconstruction-prompt.de.md",
+        "sha256": "sha256:a38e0d26f4a7301ea5c3eec8f77d7e6915b58b3c9f35d04a12bb6c1f31a1f01d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/visualizations/mathematik/ce198bc9-b014-52ba-814f-25cc3e020668/prompt.de.md",
+        "sha256": "sha256:3d37ab82dc2e032d1a4e1c280ca8d3d5c226e33821d2c599365381ee1bc54656"
+      }
+    ],
+    "allHistoricalFileDigestsVerifiedUnchanged": true,
+    "oldReviewArtifactsOverwritten": false,
+    "oldEvidenceProfilesOverwritten": false,
+    "inverseExistingPositiveEvidenceProfileFound": false,
+    "centralRegistryAndInFlightEdited": false,
+    "globalReportsEdited": false
+  },
+  "verification": [
+    {
+      "command": "npm --prefix app run quality:semantic-atomicity:check -- --config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+      "exitCode": 0,
+      "result": "797 current atomic records; no missing, stale, obsolete or open decisions."
+    },
+    {
+      "command": "npm --prefix app run quality:memory-card-review:check -- --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+      "exitCode": 0,
+      "result": "797 current ordinary atomic records; 64/64 primary cards kept; no missing, stale, obsolete or open decisions; 17 visible memory-required goals supported."
+    },
+    {
+      "command": "npm --prefix app run validate:graph",
+      "exitCode": 0,
+      "result": "593 landscapes passed, including hard routes and cycle validation."
+    },
+    {
+      "command": "npm --prefix app run validate:composition-views",
+      "exitCode": 0,
+      "result": "297 composition views passed; canonical landscape registry size 21."
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-qa -- --subject=mathematik",
+      "exitCode": 0,
+      "result": "One subject QA ledger current."
+    },
+    {
+      "command": "npm --prefix app run quality:goal-description-rollout-batch -- prepare --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-inverse-post-revision-1-v1.config.json",
+      "exitCode": 0,
+      "result": "Fresh one-goal subset prepared; model sha256:5d062cc0359c085b9f3b6a6738d6505a81dd7f4a868a1000d878c493754d3a6b; bundle sha256:6b8096d7ac1d186e9699759c0143bf20143bf1436148a0438eab05e3778d3932."
+    },
+    {
+      "command": "npm --prefix app run quality:goal-description-rollout-batch -- check --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-inverse-post-revision-1-v1.config.json",
+      "exitCode": 0,
+      "result": "Fresh one-goal subset valid."
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "result": "No whitespace errors."
+    },
+    {
+      "command": "node curricula/DE/Gymnasium/quality/goal-description-review/validate-authoring-change-set.mjs",
+      "exitCode": 1,
+      "result": "Existing historical August receipt R04 English-title mismatch; unrelated goal unchanged by this patch and current title already identical in HEAD.",
+      "evidence": {
+        "goalId": "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+        "expectedTitleEn": "Differentiate sine and cosine functions",
+        "currentTitleEn": "Derive differentiation rules for sine and cosine functions",
+        "headTitleEn": "Derive differentiation rules for sine and cosine functions"
+      }
+    }
+  ],
+  "pendingIntegratorChecks": [
+    "Regenerate current curriculum status, check protected maturity floors and deep-understanding rollout, and complete goal-book build/publication checks at the stable checkpoint.",
+    "Run two fresh independent blind reviews on the new one-goal subset before strict description closure; author positive evidence separately."
+  ],
+  "postRevisionConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-inverse-post-revision-1-v1.config.json",
+  "strictDescriptionComplete": false,
+  "newPositiveEvidenceProfileCreated": false,
+  "publicationDeploymentAndRuntimeChanges": false
+}

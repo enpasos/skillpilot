@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-051-current-hrd-children-3-v1.config.json",
+  "configDigest": "sha256:c932ebc460c96ce943768f785ab3081dd98a80eaf6e5434af3950577277c99c0",
+  "goalIds": [
+    "3a4b2f86-5c59-5429-8fb4-75d9b2589cb5",
+    "946ecf7b-0fcf-5776-9fb6-d397423c2f12",
+    "6a73cacc-e86d-5248-a180-fd3da8454b0f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 478,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:0c5f0c71f5bf79e080ff3efeb185469b4bb54b5f95596367470b1bca93763b5e"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:ef6db627c6e7927d6d7262424009128c20115c2fa88d28d092e922166becffd5",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e78ef9a3f73e70c62f1e44152f5be73b91036d858a7de81a5dcd221fd8f1e2ae",
+    "reviewInputFingerprint": "sha256:ed3e9fa8de27514e56b245dd3bcb4942afca2b8336ea4b7343f45d6bbd42bded",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-a",
+        "campaignDigest": "sha256:64272bc25f1146f76882836cd48c30dbed2c6d47c87bcccf1970aef2f9e177b8",
+        "roundId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-independent-a",
+        "batchId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:2c2cf068b377b35cd024730ba2aa0cb201bf87355e3aac925ec034675c2949bf"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-b",
+        "campaignDigest": "sha256:ab8da5b2f01c862d75090f155aee8ae139a8ceab1ac16659da4543f7c7b928c5",
+        "roundId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-independent-b",
+        "batchId": "physik-rollout-v1-batch-051-current-hrd-children-3-v1-20260913-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:b05136fdd0184a2857e7c0f082748c5e7678e1b6f770a47568ade2bc77d01a31"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

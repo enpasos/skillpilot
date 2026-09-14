@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "runId": "mathematik-rollout-v1-batch-049-function-sum-current-image-1-v1-20260913-first-pass-b.batch-001.run-b",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "modelVersion": "unknown",
+  "seed": "unknown",
+  "temperature": "unknown",
+  "topP": "unknown",
+  "tokenUsage": "unknown",
+  "generationMode": "Independent Codex agent review; no separate model API call was made.",
+  "contextIndependence": "Round B was conducted in a separate agent context. No Round A, earlier review decision, source-image history, integration or authoring receipt, central checkpoint, or sibling result was inspected. Context independence does not establish a different model.",
+  "generationParametersStatus": "The serving model identifier/version and inference parameters were not exposed. Values marked unknown are not inferred from task names or provider branding.",
+  "timeBasis": "startedAt is the first clock read at the beginning of substantive goal inspection, after instruction intake. completedAt is a later real clock read after the authored candidate record. UTC calendar date is 2026-09-13; Europe/Berlin local date is 2026-09-14.",
+  "startedAt": "2026-09-13T22:15:02Z",
+  "generationParametersFingerprintDefinition": "The run manifest generationParametersFingerprint is the SHA-256 of the exact UTF-8 bytes of this runtime-disclosure.json file, including its final newline. It binds disclosure of unknown parameters, not an unavailable provider parameter export.",
+  "inspectedVisuals": [
+    {
+      "role": "book_pdf",
+      "path": "bundle/book.pdf",
+      "digest": "sha256:cd2f812253612135003e6248125b6b5f4b159e81d3c1eb8f18bf11ee2002acf2",
+      "physicalPage": 3,
+      "goalPageNumber": 1,
+      "inspection": "Existing PDF rasterized with pdftoppm at 170 dpi into a temporary directory outside the repository; actual page viewed with detail original. No shared book was rebuilt."
+    },
+    {
+      "role": "bound_goal_visualization",
+      "path": "app/public/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.png",
+      "digest": "sha256:6f11af5794740dcfd9697b42bb035a7e31695c28270e3ddc78e6bfec9a002a83",
+      "inspection": "Actual image viewed with detail original; file hash matches the supplied page binding."
+    }
+  ],
+  "inputScope": "The round-b prompt, criteria, record schema, bilingual input, campaign and batch were read. The bundle manifest, run schema and selected BookModel page context were used. Relevant AGENTS.md instructions and native validator implementation were inspected. No external source or mapping was fetched.",
+  "authority": "AI candidate only. No human approval, publication decision, progress increment, canonical edit or evidence-profile mutation was made."
+}

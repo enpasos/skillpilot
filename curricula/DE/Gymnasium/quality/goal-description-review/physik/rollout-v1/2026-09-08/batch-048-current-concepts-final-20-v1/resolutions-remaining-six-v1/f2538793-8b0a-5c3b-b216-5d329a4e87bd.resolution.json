@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-current-subset-f2538793-8b0a-5c3b-b216-5d329a4e87bd",
+  "goal": {
+    "goalId": "f2538793-8b0a-5c3b-b216-5d329a4e87bd",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:71c8fee75c7052030fcec3644a7f24868757d4fcd982dd9ce3f42990228251db",
+    "pageFingerprint": "sha256:ac086a2eda175118b6e2a4f33b58092e5bed0c503a16fa6585129a00df7091b4",
+    "goalReviewContextFingerprint": "sha256:120e81a92b0f241820960b4b3ae3da9840c08aebf1e9037f21df1ca73515d094",
+    "finalText": {
+      "titleDe": "Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen",
+      "titleEn": "Calculate Interval Probabilities in the Infinite Potential Well",
+      "descriptionDe": "Die lernende Person kann für eine gegebene, auf $[0,L]$ normierte Wellenfunktion eines Elektrons im eindimensionalen Potenzialtopf mit unendlich hohen Wänden die Nachweiswahrscheinlichkeit in einem Intervall durch $P(x_1\\le x\\le x_2)=\\int_{x_1}^{x_2}|\\psi(x)|^2\\,dx$ mit $0\\le x_1\\le x_2\\le L$ berechnen und als Fläche unter der Wahrscheinlichkeitsdichte deuten.",
+      "descriptionEn": "The learner can calculate the detection probability in an interval for a given electron wave function normalized on $[0,L]$ in a one-dimensional potential well with infinitely high walls, using $P(x_1\\le x\\le x_2)=\\int_{x_1}^{x_2}|\\psi(x)|^2\\,dx$ with $0\\le x_1\\le x_2\\le L$, and interpret it as the area under the probability density."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-a",
+      "campaignDigest": "sha256:7954fe9d1229a77e1e784f6897f6f0bdbcf00ba7264a15e5dd6edf1085194fe2",
+      "roundId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:b5aac2cb1e1e838f9b18c4cfbf20698508e148eb24e89573696a26d64e314aba",
+      "goalReviewContextFingerprint": "sha256:120e81a92b0f241820960b4b3ae3da9840c08aebf1e9037f21df1ca73515d094",
+      "batchId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:9b9f53a84e3ae210a6c34619110150ff99b921c325c460d856806795f050aeaf",
+      "resultsDigest": "sha256:8bc3e623378b30377fc54f8e2e83f949ea32fa459fd5e294d4a496f9d0b3b210",
+      "recordId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001.019",
+      "recordDigest": "sha256:97b9ae4809d6c7472cdff63c8167ea59e3d650e9da05d2907b20dff7c7368783"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-b",
+      "campaignDigest": "sha256:964cfcbfd946d718ecdb9fbb8e53f7f27807be990b7b3fde635e4c2c3e462673",
+      "roundId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:b5aac2cb1e1e838f9b18c4cfbf20698508e148eb24e89573696a26d64e314aba",
+      "goalReviewContextFingerprint": "sha256:120e81a92b0f241820960b4b3ae3da9840c08aebf1e9037f21df1ca73515d094",
+      "batchId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.batch-001",
+      "runId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.run-001",
+      "runManifestDigest": "sha256:347b79153ad426d53cf01068759155642546794ec721d75b57da0a3136e31dc3",
+      "resultsDigest": "sha256:d6f20232635b6ef939fbca535e5144ca47cb0ebf803bde61e7a93e1cb85a667c",
+      "recordId": "physics-b048-b-019",
+      "recordDigest": "sha256:34150e273c7a5dd484208861b5fd3ec74ea19170d0b73e602cc807340cabdbd2"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:6b414186b933224d16ebad5b9baad261ddf0236e3c85f0e93356c5f9d4d6b64f"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-explicit-synthesis-f2538793-8b0a-5c3b-b216-5d329a4e87bd",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; six individually synthesized retained D048 review pairs; exact model identifier not exposed",
+    "synthesizedAt": "2026-09-13T18:52:46.917Z",
+    "rationaleDe": "Die zwei KEEP-Reviews bestätigen die Nachweiswahrscheinlichkeit als Integral des Betragsquadrats einer vorgegebenen normierten Wellenfunktion. Runde A wird gewählt, weil sie Dichte mit inverser Längeneinheit, dimensionslose Intervallfläche und den Unterschied zwischen hoher Punktdichte und endlicher Wahrscheinlichkeit explizit verbindet. Der Transfer um Knoten versus Maximum prüft eine andere Dichteform statt Gleichverteilung zu unterstellen. Die unveränderte Grafik wurde in beiden alten Runden vollständig geprüft: Maximum 2/L, Gesamtfläche eins und halbe Fläche bis L/2 stimmen. Aktuelle Inhalte, direkte Nachbarn, Bildhashes und die engere HE-LK-Bindung bleiben erhalten; das registrierte P-Profil ist gültig. Keine Konstruktion der Normierung, klassische Bahn oder menschliche Freigabe wird hinzugefügt.",
+    "rationaleEn": "Both KEEP reviews confirm detection probability as the integral of the squared magnitude of a supplied normalized wave function. Round A is selected for explicitly connecting inverse-length density, dimensionless interval area, and the difference between high point density and finite probability. Transfer around a node versus a maximum tests a different density shape rather than assuming uniformity. Both original rounds fully inspected the unchanged image: peak 2/L, unit total area and one-half area up to L/2 are correct. Current content, direct neighbors, image hashes and the narrower HE-LK binding are retained; the registered P profile is valid. No construction of normalization, classical trajectory or human approval is added.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Das Betragsquadrat der normierten Wellenfunktion ist eine Dichte mit inverser Längeneinheit; erst die Fläche über einem Intervall ist eine dimensionslose Nachweiswahrscheinlichkeit einer Messung.",
+      "essentialUnderstandingEn": "The squared magnitude of a normalized wave function is a density with inverse-length units; only its area over an interval is a dimensionless detection probability for a measurement.",
+      "observablePerformanceDe": "Die lernende Person berechnet das Integral für eine gegebene Funktion und Intervallgrenzen, kontrolliert 0≤P≤1 und erklärt den Unterschied zwischen hoher Dichte an einem Punkt und endlicher Intervallwahrscheinlichkeit.",
+      "observablePerformanceEn": "The learner computes the integral for a supplied function and interval, checks 0≤P≤1, and explains the difference between high density at a point and finite interval probability.",
+      "transferExpectationDe": "Bei einer vorgegebenen angeregten Wellenfunktion mit innerem Knoten vergleicht sie gleich breite Intervalle um Knoten und Maximum und begründet unterschiedliche Wahrscheinlichkeiten trotz gleicher Breite.",
+      "transferExpectationEn": "For a supplied excited wave function with an internal node, the learner compares equal-width intervals around a node and a maximum and explains their different probabilities despite equal widths."
+    },
+    "dissent": [
+      {
+        "dissentId": "evidence-selection-f2538793-8b0a-5c3b-b216-5d329a4e87bd",
+        "source": "both",
+        "textDe": "Beide unabhängigen Urteile sind KEEP; ihre unterschiedlichen Evidenzformulierungen und Begründungen bleiben unverändert erhalten. Die individuelle Synthese wählt die Evidenz der ersten Runde.",
+        "textEn": "Both independent decisions are KEEP; their differing evidence formulations and rationales remain unchanged in the original records. The individual synthesis selects the first round evidence.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:93663de3579d5a179219bc82500390e582fad34ec36f21567fb84d4b8068f28d"
+}

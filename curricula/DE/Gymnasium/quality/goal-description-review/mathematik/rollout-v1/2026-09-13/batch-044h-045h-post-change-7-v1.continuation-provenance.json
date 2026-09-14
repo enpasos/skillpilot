@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "bounded-post-change-review-preparation-provenance-v1",
+  "preparedOn": "2026-09-13",
+  "preparer": "/root/math_resume_audit",
+  "scope": "Exactly seven existing B044h/B045h held goals whose prerequisite or image correction was already adopted on 2026-09-07. No new canonical or image changes, review decisions, resolutions or positive evidence profiles are created by this preparation.",
+  "batchConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1.config.json",
+  "configDigest": "sha256:f92097ec99b4064e9d6eee53e010d35dd5c7f87934fedfb146166b963ba83a8f",
+  "baseBookDigest": "sha256:9d75bde71b7b05eea5fcfe25403a9a18b0d65d9a81d2b56d028317b801ef13cb",
+  "subsetBookDigest": "sha256:6581e2e374cde9e102076c7649d591258990a614a326efea6175d08650d73a5a",
+  "bundleFingerprint": "sha256:2734492b0b31d7b4c3d6f3bf477e1d4bfac63579d09fd16b77309549fddcaaa6",
+  "existingClaimOwners": [
+    {
+      "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044h-held-spatial-geometry-vectors-matrix-14-v1.config.json",
+      "selectedGoalIds": [
+        "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+        "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+        "ef1524f1-0b2f-59f7-a001-5ab3e3dececb",
+        "b5062446-332f-4a67-aaf7-3bfa3e5aded9"
+      ]
+    },
+    {
+      "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-045h-current-holds-13-v1.config.json",
+      "selectedGoalIds": [
+        "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+        "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+        "ce198bc9-b014-52ba-814f-25cc3e020668"
+      ]
+    }
+  ],
+  "originReceipts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/independent-technical-delta-receipt-v1.json",
+      "sha256": "8619174113bb18f64a6caf381814a5a7932005d3491c524c080453074c8b33b1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-b044-held-four-repairs-v1/adoption-plan-v1.json",
+      "sha256": "fb6ff09ce04437c7acb60448e96cf2d103bd9c685b34256a3639533d7d1b4259"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/prerequisite-change-plan-v2.json",
+      "sha256": "843522a6528891a8ffbdb734eadc3732f6d9f564b09b92ae4cdfcef7498914cd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-045-q2-function-combinations-and-transition-matrices-20-v1/post-seal-adjudication.current-holds13-v1.json",
+      "sha256": "07fac511276f11d286ee4ef1821428ea5d7f584ef08d6b26bf8ab4d01c88322c"
+    }
+  ],
+  "unchangedAuthoritativeInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+      "sha256": "143f611f9e9bcaadbbbe17d48613138ccbd3e1e56e0c3889e6dba4c63e64a141"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "c438a3eb6fce83f73c80ea4a52ad1a5b2f6b805656167092736531cb3187b1e9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "ac84e0eeec7784a69e0c46af3bad48cfdec06ca22a20c7fe88dd2990c6b938e3"
+    }
+  ],
+  "validation": {
+    "nativePrepareExitCode": 0,
+    "nativeCheckExitCode": 0,
+    "prerequisiteOrderChecker": "buildGoalDescriptionRolloutSubsetModel using current loadGoalBookBuildInputs output",
+    "selectedPrerequisiteEdges": [
+      ["ef1524f1-0b2f-59f7-a001-5ab3e3dececb", "d6b74b15-1cbc-512b-a160-0f40aecafe8c"],
+      ["6f09c97e-779b-500b-8092-3fb9696aa5bb", "b5062446-332f-4a67-aaf7-3bfa3e5aded9"],
+      ["6f09c97e-779b-500b-8092-3fb9696aa5bb", "f378917f-2ca7-4c68-bd66-3f9457095dd5"],
+      ["ce198bc9-b014-52ba-814f-25cc3e020668", "b5062446-332f-4a67-aaf7-3bfa3e5aded9"],
+      ["ce198bc9-b014-52ba-814f-25cc3e020668", "f378917f-2ca7-4c68-bd66-3f9457095dd5"]
+    ],
+    "reviewResultFilesAtHandoff": 0
+  },
+  "blindReviewBoundary": "This historical provenance file is outside both round inputs and is not reviewer evidence. Each independent reviewer receives only its own current round, current shared book context and actual bound visualizations; no prior findings or other-round outputs.",
+  "historicalArtifactsModified": false,
+  "inFlightOwnershipChanged": false,
+  "registryChanged": false,
+  "grantsProgress": false,
+  "grantsHumanApproval": false
+}

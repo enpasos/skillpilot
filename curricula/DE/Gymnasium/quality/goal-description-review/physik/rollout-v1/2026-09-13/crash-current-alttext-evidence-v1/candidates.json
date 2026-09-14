@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "physics-crash-current-alttext-20260913-v1",
+  "reviewedAt": "2026-09-13T19:24:54.935Z",
+  "reviewer": "Codex root; informed individual current-alttext binding review; exact model identifier not exposed",
+  "goals": [
+    {
+      "goalId": "1232febe-868a-4dac-b4c2-e35789434601",
+      "reason": "Das vollständige bestehende bilinguale Profil und beide Fälle wurden erneut einzeln gelesen und nachgerechnet. Bei 1000 kg von +6 m/s auf 0 gilt Δp=−6000 N s; 0,10/0,30 s ergeben −60000/−20000 N. Rechteck und Dreieck haben je 600 N s, mittlere Beträge 6000/3000 N bei gleicher Spitzenkraft; der Kontrollfall hat 800 N s und ist kein Gleichimpulsvergleich. Root hat das unveränderte aktive Bild visuell geprüft: 100000 N mal 0,05 s und 25000 N mal 0,20 s sind je 5000 N s. Der neue Alttext beschreibt genau diese idealisierten Darstellungen und entfernt die obsolete Sicherheitsabstands-Kompetenz. Profilinhalt und Anforderungen bleiben vollständig unverändert; die neue Review-Input-Bindung berücksichtigt den tatsächlich geänderten Alttext. Das alte Profil bleibt als Historie erhalten. Keine neue menschliche, D-, normative Quellen-, Runtime- oder Lernleistungsfreigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Original D048 A and B records remain unchanged; this is an informed authoring candidate after their split findings, not an independent description review or consensus claim.",
+        "The retained HE legacy source explicitly combines crash and distance contexts; the official KC 2024 pp.29–30 supplies the broader mechanics/traffic and impulse/collision basis, not literal crumple-zone or medical-risk wording."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "same-impulse-longer-time",
+            "essentialUnderstandingDe": "Für dieselbe betrachtete Masse mit derselben Geschwindigkeitsänderung bleibt der Kraftstoß gleich. Eine längere Stoßdauer verringert den Betrag der mittleren Kraft; Spitzenkraft und Verletzungsrisiko sind damit nicht bestimmt.",
+            "essentialUnderstandingEn": "For the same considered mass with the same velocity change, impulse is unchanged. Longer collision duration reduces the magnitude of the average force; this does not determine peak force or injury risk.",
+            "observablePerformanceDe": "Die lernende Person legt das abgebremste System und seine Anfangs-/Endgeschwindigkeit fest, vergleicht zwei Stoßverläufe und erklärt die Schutzwirkung einer längeren Verformungszeit aus gleicher Impulsänderung, statt nur einen Zahlenwert einzusetzen.",
+            "observablePerformanceEn": "The learner identifies the decelerated system and its initial/final velocities, compares two impact histories and explains the protective effect of longer deformation time from equal momentum change rather than only substituting numbers."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "same-impulse-longer-time"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation",
+            "textDe": "Wechsel von Anfangs-/Endzuständen und Stoßzeiten zu Kraft-Zeit-Verläufen; Flächenbilanz statt Kopie des Bildes.",
+            "textEn": "Change from initial/final states and collision times to force-time histories; reason from areas rather than copying the image."
+          },
+          {
+            "id": "unequal-impulse-control",
+            "textDe": "Prüfen, ob die gleiche Impulsänderung als Vergleichsbedingung tatsächlich erfüllt ist, und eine voreilige Aussage allein aus längerer Stoßdauer zurückweisen.",
+            "textEn": "Check whether equal momentum change really holds as a comparison condition and reject a premature conclusion based on longer duration alone."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "crumpling-states",
+            "taskDemandDe": "Zwei idealisierte Aufprallmodelle bremsen dieselbe Fahrzeugmasse von 1000 kg von +6 m/s auf 0 ab. A dauert 0,10 s, B wegen längerer Verformung 0,30 s. Vergleiche Kraftstoß und mittlere Kraft und erkläre, was dieses Knautschzonenmodell über die Schutzwirkung aussagt und was nicht.",
+            "taskDemandEn": "Two idealised impact models slow the same 1000 kg vehicle mass from +6 m/s to rest. A lasts 0.10 s; B lasts 0.30 s because deformation takes longer. Compare impulse and average force and explain what this crumple-zone model establishes about protection and what it does not.",
+            "expectedPerformanceDe": "Bestimmt Δp=−6000 Ns in beiden Fällen und mittlere Kräfte −60000 N beziehungsweise −20000 N. Erklärt die gleiche Impulsänderung aus denselben Anfangs-/Endzuständen und das Drittel des Kraftbetrags aus dreifacher Zeit. Begrenzt die Aussage auf die mittlere Kraft am betrachteten System; keine garantierte Verletzungsfreiheit oder bestimmte Spitzenkraft.",
+            "expectedPerformanceEn": "Find Δp=−6000 Ns in both cases and average forces of −60000 N and −20000 N. Explain equal momentum change from identical initial/final states and one-third force magnitude from tripled duration. Limit the conclusion to average force on the considered system; infer neither guaranteed absence of injury nor a particular peak force.",
+            "understandingFocusDe": "Physikalisch begründeter Vergleich bei kontrollierter Impulsänderung und klare Grenze des idealisierten Schutzmodells.",
+            "understandingFocusEn": "Physically justified comparison at controlled momentum change and a clear limit of the idealised protective model."
+          },
+          {
+            "id": "force-time-transfer",
+            "taskDemandDe": "Ein frischer Vergleich verwendet Beträge idealisierter entgegen der Bewegung wirkender Kräfte: A ist ein Rechteckpuls von 6000 N über 0,10 s; B ist ein symmetrischer Dreieckspuls mit Höhe 6000 N und Dauer 0,20 s. Prüfe gleiche Impulsänderung, bestimme die mittleren Kraftbeträge und beurteile die Behauptung, längere Verformung senke deshalb auch zwingend die Spitzenkraft. Ein dritter Rechteckpuls C hat 4000 N über 0,20 s: Ist er derselbe Gleichimpulsvergleich?",
+            "taskDemandEn": "A fresh comparison uses magnitudes of idealised forces opposing motion: A is a rectangular pulse of 6000 N lasting 0.10 s; B is a symmetric triangular pulse with height 6000 N and duration 0.20 s. Check equal momentum change, determine average force magnitudes and assess the claim that longer deformation must therefore also reduce peak force. A third rectangular pulse C has 4000 N over 0.20 s: is this the same equal-impulse comparison?",
+            "expectedPerformanceDe": "Bestimmt für A und B je 600 Ns Flächenbetrag und damit bei gleicher Kraftrichtung gleiche Impulsänderung; mittlere Kraftbeträge 6000 N und 3000 N. Begründet die Halbierung trotz gleicher Spitzenkraft von 6000 N. C hat 800 Ns und erfüllt die Bedingung gleicher Impulsänderung nicht; allein seine längere Dauer rechtfertigt den Gleichimpulsvergleich nicht.",
+            "expectedPerformanceEn": "Find area magnitudes of 600 Ns for both A and B and hence equal momentum change for the same force direction; average force magnitudes are 6000 N and 3000 N. Explain the halving despite identical peak forces of 6000 N. C has 800 Ns and does not satisfy equal momentum change; longer duration alone does not justify an equal-impulse comparison.",
+            "understandingFocusDe": "Eigenständiger Darstellungswechsel mit Gegenbeispiel zur Spitzenkraftbehauptung und Prüfung der entscheidenden Vergleichsbedingung; keine Sicherheitsabstandsrechnung.",
+            "understandingFocusEn": "Independent change of representation with a counterexample to the peak-force claim and a check of the essential comparison condition; no following-distance calculation."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "informed-ai-profile-body-counterreview",
+  "reviewedAt": "2026-09-13T20:00:58.248Z",
+  "reviewer": "codex-root-informed-matrix-profile-counterreview-20260913",
+  "authority": "ai_candidate",
+  "humanApproval": false,
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-20260913-matrices-3-v1.candidates.json",
+  "candidateSha256": "1847e4a2fde5a3ff67a9b89862d714d6e476d1b6cfdaf83602018b4a7863b5a0",
+  "reviewRecordsSha256": "1fc9cc716ee6b7d7c9dcb416047ea33df007c8b660fe2983eccc5aa460d0c018",
+  "method": "Full bilingual candidate bodies and current canonical goals read by root; exact mathematical scope, all coverage expectations, two independent cases and substantive variation checked against the complete mathematics V2 criteria. All numerical entries independently recalculated, then cross-checked using a separate local matrix implementation. Informed P counterreview, not a second blind D review or evidence of learner mastery.",
+  "goals": [
+    {
+      "goalId": "4fb40e58-58c1-5964-b58e-3347a8022b97",
+      "decision": "retain_ai_candidate",
+      "reasonDe": "Skalare Multiplikation bleibt eine einzelne AB1-Operation. Alle sechs Produkte des negativen 2×3-Falls sind korrekt: [-6,8,0;-1,2,-10]. Die frische Aufgabe verändert nicht nur Zahlen: Ein vollständig vorgelegtes 3×2-Ergebnis wird unabhängig geprüft; genau R31 wird von 10 auf 5 korrigiert, der Nullskalar ergibt eine 3×2-Nullmatrix. Alle Einträge und ihre Positionen werden erfasst; kein Nachfolger wie inverse Matrizen oder Matrixprodukte wird vorausgesetzt.",
+      "reasonEn": "Retain the bounded AB1 scalar operation. Both complete signed products are correct, including the fractional and zero entries. Fresh transfer changes execution to full verification of a submitted rectangular product and derives the zero-scalar case without altering dimensions. No inverse or matrix-product competence is imported."
+    },
+    {
+      "goalId": "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+      "decision": "retain_ai_candidate",
+      "reasonDe": "Beide kanonisch genannten Operationen und gleiche Matrixgröße sind vollständig abgedeckt. Bestandskontext trägt die positionsgleichen Größen; Summenmatrix [15,7,8;12,22,5], Differenz [9,3,8;2,-2,3] und gerichtete Deutung -2 sind korrekt. Frischer Fall bestimmt statt des Ergebnisses die unbekannte Änderung [-3,5;-4,0] und prüft alle Einträge durch Addition. 1×4 und 2×2 bleiben trotz gleicher Eintragszahl unvereinbar. Das ist keine zusätzliche Modellierungs- oder Gleichungssystemkompetenz.",
+      "reasonEn": "Both canonical entrywise operations and matching dimensions are covered. Contextual position matching and the directed negative stock difference are correct. The fresh unknown-addend task includes a complete addition check; four entries do not make a 1×4 matrix compatible with a 2×2 matrix. Scope does not expand to modeling or solving systems."
+    },
+    {
+      "goalId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+      "decision": "retain_ai_candidate",
+      "reasonDe": "Zulässigkeit, vollständige Zeile-Spalte-Rechnung und Reihenfolge sind gemeinsam abgedeckt. Für 2×3 mal 3×4 ergibt sich [-1,0,5,6;2,14,2,-2], umgekehrt ist das Produkt wegen 4≠2 nicht definiert. Der frische quadratische Fall ist strukturell anders: Beide Reihenfolgen sind zulässig und gleich groß, UV=[4,2;1,1] und VU=[2,4;1,3] aber verschieden. Alle 16 Werte und ausgewiesenen Eintragssummen stimmen. Numerischer Gegenfall belegt konkrete Reihenfolgeabhängigkeit, keine überzogene allgemeine Ungleichheitsaussage.",
+      "reasonEn": "Dimension admissibility, complete row-column calculations and factor order are all covered. Every one of the 16 calculated entries is correct. Transfer changes one-sided rectangular admissibility to two defined, equally sized square products whose values differ. The example establishes a concrete order-sensitive case without claiming that reversed products always differ."
+    }
+  ],
+  "bindingAndLimits": "Current imported PNG/alt-text bindings retained in native records. German and English conditions and demands agree. All profiles remain needs_human_review / ai_candidate / E1 / G1; requireApproved remains false under the existing report contract. No human approval, runtime behavior change, new canonical wording, or public release is asserted."
+}

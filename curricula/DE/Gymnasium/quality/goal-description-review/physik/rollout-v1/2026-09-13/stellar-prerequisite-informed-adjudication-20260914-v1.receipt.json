@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-13T22:18:10.599Z",
+  "authority": "informed_ai_adjudication",
+  "humanApproval": false,
+  "newBlindReview": false,
+  "goalIds": [
+    "e1b21fe9-ab6f-58c4-a0b6-9895061fbabb",
+    "69280706-5af6-5788-85b7-93287c2ffe74"
+  ],
+  "sourceDigests": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json": "sha256:0b3a2f2e015cdfbdf7240dccc4a1d7318ee4283ab3007199f6e52c8e204f643e",
+    "app/public/lernzielbuch/de-gym-physik-bundesweit.book-model.json": "sha256:96a71a50ee80c1329d6f4c37d29ab43790d790ff0611db6799fb952c980504ce",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-049-current-splits-and-models-final-20-v1/dual-summary.json": "sha256:3a17b9d521abfcc56ba3a91e1edcf4191a214cc672dc77c318e5860941868a2e",
+    "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.review.jsonl": "sha256:9f6a18e299df2f7cf59143c959698743733cf1eb3c1bd0aa78c6dad70f32da0e"
+  },
+  "currentPublicationModelDigest": "sha256:780bdc2f51a8b45346e6641e4e84baf3a157c1e0c8bb97bc96e9c84f162f2570",
+  "priorHold": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-049-current-splits-and-models-final-20-v1/synthesis-current-subset.json",
+    "meaning": "Prospective hold after wording revision of direct prerequisite 6f896466-e0ec-5f8d-82ad-2890433c82ba; not a dissenting decision about these two own descriptions."
+  },
+  "reviewedMaterials": [
+    "Complete four existing D049 records for these two IDs, including all bilingual understanding-evidence fields and rationales.",
+    "Complete two current bilingual P profiles including expectations, coverage, variation, both application cases, reason and dissent.",
+    "Current prerequisite: typical evolutionary paths of Sun-like and massive stars, and their relation to initial mass.",
+    "Current own canonical goals, preserving supplied-text/diagram and supplied-evolution-model constraints."
+  ],
+  "decisions": [
+    {
+      "goalId": "e1b21fe9-ab6f-58c4-a0b6-9895061fbabb",
+      "decision": "retain_current_text_profile_image_and_reuse_valid_pair_subject_to_native_bindings",
+      "reasonDe": "Die präzisierte Voraussetzung liefert eine Orientierung über massenabhängige Sternentwicklung. Das AB3-Ziel verlangt dagegen materialgebundene Prüfung eines konkreten Herkunftsarguments; Prozessinformationen sind ausdrücklich vorgegeben, nicht als bereits beherrschte vollständige Nukleosynthese vorausgesetzt. Beide aktuellen P-Fälle prüfen getrennt Prozessbeleg und Materialweitergabe; der zweite ändert die Evidenzart und nicht nur Zahlen. Der historische Vorbehalt zur Voraussetzung ist damit fachlich beantwortet. Der vorhandene Hinweis auf nur annotierte Wahlzweige bleibt bestehen.",
+      "selectedEvidence": "second",
+      "preservedFirstEvidence": "The first round's transport-only evidence gap complements round B's dust-accumulation counterclaim. No incompatible scientific judgment."
+    },
+    {
+      "goalId": "69280706-5af6-5788-85b7-93287c2ffe74",
+      "decision": "retain_current_text_profile_image_and_reuse_valid_pair_subject_to_native_bindings",
+      "reasonDe": "Die präzisierte Voraussetzung liefert typische Wege und Anfangsmassenabhängigkeit; das eigene Prognoseziel erhält zusätzliche vorgegebene Entwicklungsmodelle. Beide P-Fälle unterscheiden frühe Gesamtmasse von späterer Kern-/Restmasse, verlangen explizite Modellangaben und prüfen fehlende Information beziehungsweise ein grenzüberlappendes Intervall. Anfangsmasse minus früher Hüllenverlust wird nicht als kompakte Restmasse verwendet. Die Voraussetzung wurde nicht so erweitert, dass diese eigene modellgebundene Prognose redundant wäre. Der bisherige Vorbehalt ist damit fachlich beantwortet, ohne Wahlzweig-Implementierung zu behaupten.",
+      "selectedEvidence": "second",
+      "preservedFirstEvidence": "Round A's differing loss/explosion/fallback histories complement round B's missing-core-information case; both are retained and present in current P coverage."
+    }
+  ],
+  "positiveEvidenceValidation": {
+    "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.paused-current-20260908-v1.config.json",
+    "validator": "reviewPositiveGoalEvidenceConfig",
+    "errors": [],
+    "unchangedProfileFingerprints": [
+      "sha256:ab4b6d261a7d4b84ce4774e87cb352a56cb6816bd57e5065d36520fcb14fb725",
+      "sha256:9724922ab872217c1ba8b109b2006ae70a21b08890295379671f9ec1fa11fc48"
+    ],
+    "authority": "needs_human_review / ai_candidate, E1/G1; not human-approved and not observed learner performance"
+  },
+  "externalScientificCrossCheck": [
+    {
+      "url": "https://science.nasa.gov/mission/webb/star-lifecycle/",
+      "scope": "NASA distinguishes dispersal of stellar products into later systems and compact outcomes based on the remnant core. Supports keeping birth mass, transport and remnant separate.",
+      "limit": "Scientific background only, not Bavarian curriculum mapping or a universal numerical stability boundary."
+    },
+    {
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Integral/Radioactive_iron_a_window_to_the_stars",
+      "scope": "The 2007 Integral report distinguishes neutron-capture production within stars from later ejection and detection between stars.",
+      "limit": "Only this production/transport distinction is used. Historical half-life values and numerical abundance ratios are not adopted; not normative curriculum evidence."
+    }
+  ],
+  "unchangedScope": "Both profiles' explicit NTG/astrophysics/optional-track annotation limitation remains unresolved as a runtime feature and is not silently advertised as supported. No scope narrowing, new mapping approval, source-text rewrite, semantic-kind edit or human image approval.",
+  "nextGate": "Native current full publication and 20-goal subset page/context comparison, per-goal native resolution validation, central five-gate report; do not count this receipt alone."
+}
