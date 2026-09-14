@@ -1913,6 +1913,26 @@ assert.equal(
 const navigationView = normalizeCompositionView(readJson(sourceManifest.navigationViewPath))
 assertFinalPhysicsAtlasPublishedTargets(atlasCurricularAtomicGoalIds)
 assertFinalPhysicsAtlasDraftTargets(navigationView.rootNodes)
+// Split-goal additions belong to the existing subject chapters, not alongside
+// the Physics root. Keep the original branch IDs and explicit target roles.
+const physicsRoot = collectCompositionStructures(navigationView.rootNodes, 'goal-book-physics-root')
+assert.equal(physicsRoot.length, 1)
+const expectedPhysicsBranchParents = [
+  ['physics-b034-optical', 'canonical-goal-c1563745-2722-503d-819f-95d336937e2b'],
+  ['physics-b034-transistor', 'canonical-goal-620d4320-6b93-500b-8a62-86d02b1ed1f0'],
+  ['physics-b034-stars', 'canonical-goal-b59cb1ef-05c2-5b09-abb3-8b6903ca0fd6'],
+  ['physics-b034-nuclear', 'canonical-goal-72c2bf5d-c62b-5744-9971-4c117f2a432d'],
+] as const
+for (const [branchId, parentId] of expectedPhysicsBranchParents) {
+  const parents = collectCompositionStructures(physicsRoot[0].children, parentId)
+  assert.equal(parents.length, 1, `missing unique Physics chapter ${parentId}`)
+  assert.equal(collectCompositionStructures(navigationView.rootNodes, branchId).length, 1)
+  assert.equal(
+    parents[0].children.filter((node) => node.kind === 'structure' && node.id === branchId).length,
+    1,
+    `${branchId} must be nested in ${parentId}, not beside Physics`,
+  )
+}
 for (const id of FINAL_SPLIT_CHILD_IDS) {
   const stalePublishedIds = new Set(atlasCurricularAtomicGoalIds)
   stalePublishedIds.delete(id)
@@ -1947,6 +1967,22 @@ assert.deepEqual(
   navigationCompilation.findings.filter(({ severity }) => severity === 'error'),
   [],
   'invalid canonical Physics goal-book navigation view',
+)
+const compiledPhysicsRoot = navigationCompilation.compiledRootNodes
+  .filter((node) => node.runtimeId === 'structure:goal-book-physics-root')
+assert.equal(compiledPhysicsRoot.length, 1)
+// Inspect the compiled tree: two current targets come from authored subtrees,
+// not direct goalEntry references. Compare lists, not sets, to catch duplicates.
+const collectCompiledPhysicsTargets = (nodes: CompiledCompositionPreviewNode[]): string[] => nodes.flatMap((node) => [
+  ...(node.kind === 'goal' && node.sourceGoalId
+    && decisionByGoalId.get(node.sourceGoalId)?.semanticKind === 'curricularAtomic'
+    ? [node.sourceGoalId] : []),
+  ...collectCompiledPhysicsTargets(node.children),
+])
+assert.deepEqual(
+  collectCompiledPhysicsTargets(compiledPhysicsRoot).sort(compareCodePoints),
+  [...atlasCurricularAtomicGoalIds].sort(compareCodePoints),
+  'every current curricularAtomic atlas target must occur exactly once below Physics',
 )
 const navigationGoalIds = new Set([...collectAtomicGoalIds(
   navigationCompilation.compiledRootNodes,
