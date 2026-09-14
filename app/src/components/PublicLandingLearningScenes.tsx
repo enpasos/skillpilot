@@ -57,6 +57,7 @@ export const PublicLandingLearningScenes = ({ copy, imageCaption }: PublicLandin
         <img
           data-testid="public-landing-hero-image"
           className="public-landing-hero-image public-landing-scene-image"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
           data-active={activeScene === 'writing'}
           src="/images/skillpilot-learning-moment.png"
           alt=""
@@ -71,6 +72,7 @@ export const PublicLandingLearningScenes = ({ copy, imageCaption }: PublicLandin
             key={voiceAttempt}
             data-testid="public-landing-voice-image"
             className="public-landing-hero-image public-landing-scene-image public-landing-voice-image"
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
             data-active={activeScene === 'voice'}
             src="/images/skillpilot-voice-moment.png"
             alt=""
