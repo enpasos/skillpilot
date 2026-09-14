@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+  "recordedAt": "2026-09-14T05:22:07Z",
+  "recordType": "pre_import_generation_history",
+  "provider": "image_gen",
+  "tool": "tools.image_gen__imagegen",
+  "model": null,
+  "modelDisclosure": "No exact model identifier was supplied in the handed-off builtin tool evidence; no identifier is inferred.",
+  "generationEvidence": "Producer handoff identifies two actual builtin image edits and their original output paths. Both outputs and both actual prompts were read from disk and SHA-256 verified. Exact invocation envelopes and generation timestamps were not independently reread.",
+  "newGenerationDuringPreparation": false,
+  "historyReadAfterIndependentImageReview": true,
+  "original": {
+    "providerFromHistoricalPrompt": "Google Gemini / Nano Banana Pro",
+    "assetPaths": [
+      "curricula/DE/Gymnasium/visualizations/physik/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2.jpg",
+      "app/public/assets/goal-visualizations/physik/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2.jpg",
+      "backend/src/main/resources/static/assets/goal-visualizations/physik/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2.jpg"
+    ],
+    "sha256": "8cc3e30f2f87c1a18ce8e5a6badb2ae6b2725a5808df911272fec49d32d283ec",
+    "jpgsMoved": false,
+    "promptSourcePath": "curricula/DE/Gymnasium/visualizations/physik/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2/prompt.de.md",
+    "promptArchivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-alpha-mass-resumed-20260914-v1/archived-original/prompt.de.md",
+    "promptSha256": "942aa22d48f6b9675a3217bf7e0cff00d4febfbeabc9190f672efb0c4b6c3bf7",
+    "sourceReconstructionPromptExisted": false
+  },
+  "edits": [
+    {
+      "ordinal": 1,
+      "generationDateFromHandoff": "2026-09-14",
+      "actualPromptSourcePath": "tmp/goal-visualizations/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-openai-alpha-20260914-tr0VIg/actual-edit-prompt.md",
+      "actualPromptArchivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-alpha-mass-resumed-20260914-v1/edit-01.actual-prompt.md",
+      "actualPromptSha256": "4d20b490e44c2098005f833d394ea67a00cf40c01f57ef6a324191dbdee9acfc",
+      "referenceStrategy": "Actual prompt and producer handoff identify the old active JPG as the edit target and style reference.",
+      "referenceSha256": "8cc3e30f2f87c1a18ce8e5a6badb2ae6b2725a5808df911272fec49d32d283ec",
+      "originalToolOutputPath": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-3dfe9e6b-bccf-4c09-bc69-3a094449cbab.png",
+      "workingCopyPath": "tmp/goal-visualizations/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-openai-alpha-20260914-tr0VIg/alpha-rest-mass-sums.png",
+      "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-alpha-mass-resumed-20260914-v1/attempts/edit-01-rest-mass-sums.png",
+      "outputSha256": "79e0e841809c264c7b13655189bc24763b42a7e9011fc1dbf7f0b75fb02647c2",
+      "disposition": "rejected_intermediate_not_imported",
+      "actualImageViewedDuringHistoryPreparation": true,
+      "reason": "Countable-looking large nucleus bead piles do not make the conserved total inventory verifiable. Three small motion arrows, including two at the same alpha particle, create an ambiguous motion model. The second actual prompt specifically corrects these features."
+    },
+    {
+      "ordinal": 2,
+      "generationDateFromHandoff": "2026-09-14",
+      "actualPromptSourcePath": "tmp/goal-visualizations/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-openai-alpha-20260914-tr0VIg/actual-symbolic-correction-prompt.md",
+      "actualPromptArchivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-alpha-mass-resumed-20260914-v1/edit-02.actual-prompt.md",
+      "actualPromptSha256": "9cb97aa19e9a06aa7ed374baaf5f2c539efb8a58b9573185b9618c78945f4762",
+      "referenceStrategy": "Actual correction prompt and producer handoff identify the first generated alpha image as the second edit target; preserve layout and correct nucleus symbols and motion arrows.",
+      "referenceSha256": "79e0e841809c264c7b13655189bc24763b42a7e9011fc1dbf7f0b75fb02647c2",
+      "originalToolOutputPath": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-cc2aa2a5-84cd-4fa5-885d-8189ce858c55.png",
+      "workingCopyPath": "tmp/goal-visualizations/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-openai-alpha-20260914-tr0VIg/alpha-symbolic-nucleon-balance.png",
+      "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-alpha-mass-resumed-20260914-v1/attempts/edit-02-symbolic-nucleon-balance.png",
+      "outputSha256": "f412bfcd05c15149981d33a08fbd2298b68c323618b2a7a9f62e1e670997b580",
+      "disposition": "accepted_pilot_not_yet_imported",
+      "independentReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-alpha-mass-resumed-20260914-v1/alpha-mass.independent-ai-review.json",
+      "rootAcceptance": "Root reports having read the complete independent review and accepted the final PNG as accepted_pilot. This is AI acceptance only."
+    }
+  ],
+  "reconstruction": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-alpha-mass-resumed-20260914-v1/image-reconstruction-prompt.de.md",
+    "derivedFromSha256": "f412bfcd05c15149981d33a08fbd2298b68c323618b2a7a9f62e1e670997b580",
+    "submittedToGenerator": false,
+    "isActualGenerationPrompt": false,
+    "purpose": "New standalone future correction base derived from the inspected final raster; separate from the two actual edit prompts."
+  },
+  "authority": {
+    "humanApproved": false,
+    "deviceApproved": false,
+    "importExecuted": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "profileMaterialized": false,
+    "registryChanged": false,
+    "published": false,
+    "deployed": false
+  }
+}

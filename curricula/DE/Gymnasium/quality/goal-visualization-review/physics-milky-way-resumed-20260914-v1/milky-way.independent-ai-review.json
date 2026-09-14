@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "physics-milky-way-resumed-20260914-v1-independent-ai",
+  "goalId": "826af579-3e51-5ac9-bc2a-208d8a2fc99e",
+  "goalTitleDe": "Teleskope und Spektralbereiche zur Struktur der Milchstraße nutzen",
+  "reviewAuthority": "ai_candidate",
+  "humanApproved": false,
+  "decision": "accepted_pilot",
+  "startedAt": "2026-09-14T04:43:53Z",
+  "completedAt": "2026-09-14T04:46:03.383Z",
+  "reviewer": {
+    "id": "independent-ai-reviewer-a",
+    "model": "not-exposed-by-runtime",
+    "blindToPriorReviews": true
+  },
+  "scope": {
+    "reviewType": "independent-current-image-candidate-versus-current-original",
+    "imageGenerationPerformed": false,
+    "canonicalMutationPerformed": false,
+    "publicationApproval": false,
+    "realHostAcceptance": false,
+    "nativeMobileAcceptance": false,
+    "earlierReviewsOrProfilesRead": false
+  },
+  "inputs": {
+    "candidate": {
+      "path": "tmp/goal-visualizations/826af579-3e51-5ac9-bc2a-208d8a2fc99e/openai-common-analysis-edit-20260914-YC2FIa/milky-way-common-analysis-edit.png",
+      "sha256": "853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794",
+      "width": 1678,
+      "height": 937,
+      "inspection": "Complete raster inspected with view_image(detail=original)."
+    },
+    "keepComparison": {
+      "path": "app/public/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.jpg",
+      "sha256": "6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f",
+      "width": 2752,
+      "height": 1536,
+      "inspection": "Complete original inspected with view_image(detail=original); tool displayed a 2048 by 1143 rendition of the full original."
+    },
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "fileSha256": "c8fd57a6d0443a30f404f73d1c6e50218bf510de269120d4f37281e44d1ff387",
+      "goalDescriptionDe": "Die lernende Person kann Teleskope für verschiedene Spektralbereiche vergleichen, Beobachtungsdaten aus mehreren Bereichen zusammenführen und daraus die Struktur der Milchstraße beschreiben.",
+      "readScope": "Only the current goal object was extracted and read."
+    }
+  },
+  "observations": [
+    {
+      "criterion": "scientific_relationships",
+      "result": "pass_with_scope_note",
+      "observationDe": "Die vier Spektralkarten behalten ihre sinnvollen exemplarischen Beziehungen: 21-cm-Linie zu neutralem Wasserstoff, Infrarot zu Staubregionen, sichtbares Licht zu Sternen mit Staubabschattung und Röntgenstrahlung zu heißen Gasbereichen beziehungsweise kompakten Quellen. Zentrum, Scheibe und Spiralarme bleiben als Strukturelemente erkennbar. Die Grafik zeigt eine schematische Synthese, keine maßstäbliche oder vollständige Stoffkarte.",
+      "scopeNoteDe": "Die erhaltenen Kurzbeschriftungen sind Beispiele, keine Ausschließlichkeitsregeln: Die 21-cm-Linie erfasst auch warmen neutralen Wasserstoff; im nahen Infrarot werden auch Sterne sichtbar. Diese Einschränkungen begründen für den hier geprüften schematischen Ersatz keine Pflichtänderung.",
+      "source": "https://imagine.gsfc.nasa.gov/science/objects/milkyway2.html"
+    },
+    {
+      "criterion": "observation_model_distinction",
+      "result": "pass",
+      "observationDe": "Der Titel im rechten Panel nennt ausdrücklich ein aus Beobachtungsdaten erschlossenes Modell. Das große rechte Panel enthält zwei separate Ansichten derselben Modellstruktur. Damit ist die Außenansicht als Rekonstruktion lesbar; sie wird nicht als direkt von außen aufgenommenes Foto der Milchstraße bezeichnet."
+    },
+    {
+      "criterion": "arrow_semantics",
+      "result": "pass",
+      "observationDe": "Alle vier farbigen Pfeile enden sichtbar am selben schmalen, umrandeten Auswertungsbereich. Der Bereich ist durchgehend und trägt Text plus Zahnräder. Ein einzelner heller Pfeil führt von dort in das gemeinsame Modellpanel. Kein farbiger Eingangspfeil endet an einem einzelnen Spiralarm, am Zentrum oder an der Scheibe. Die beobachtete Linienführung trägt somit tatsächlich die gemeinsame Auswertung und verhindert die frühere naheliegende Eins-zu-eins-Zuordnung einzelner Spektren zu räumlichen Modellteilen."
+    },
+    {
+      "criterion": "view_geometry",
+      "result": "pass",
+      "observationDe": "Die obere Schrägansicht zeigt eine geneigte Spiralstruktur mit hellem Zentrum. Unter der gestrichelten Trennlinie erscheint die flache Seitenansicht mit zentraler Verdickung und Scheibe. Beide Ansichten überlagern sich nicht. Die Bezeichnungen Schrägansicht und Seitenansicht entsprechen der sichtbaren Geometrie; die Korrektur beruht auf räumlicher Trennung und nicht allein auf hinzugefügten Beschriftungen."
+    },
+    {
+      "criterion": "comparison_with_keep_original",
+      "result": "candidate_preferred",
+      "observationDe": "Im aktuellen Original liegen die farbigen Spiralbögen und die horizontal dargestellte Scheibe mit Zentrum in einer überlagerten Figur; die vier Spektralpfeile treffen unterschiedliche Orte dieser Figur. Der Kandidat beseitigt genau diese beiden Mehrdeutigkeiten. Titel, Teleskop- und Detektorsymbole, vier Spektralbereiche, zugehörige Beobachtungsbeispiele sowie Zentrum, Scheibe und Spiralarme bleiben erhalten. Die höhere Auflösung des Originals ersetzt diese semantische Verbesserung nicht."
+    },
+    {
+      "criterion": "existing_visual_language",
+      "result": "pass",
+      "observationDe": "Die Bildsprache bleibt erhalten: heller Hintergrund, schwarze gerundete Konturen, farbcodierte Beobachtungskarten, gleichartige Instrumentensymbole, dunkles Modellfeld und helle Strukturbeschriftungen. Die neue Sammelstelle fügt sich mit derselben Kontur- und Pfeilgestaltung ein. Es wurden keine bildfremden Tafeln oder abweichenden Schriftfamilien sichtbar eingeführt."
+    },
+    {
+      "criterion": "readability",
+      "result": "pass_at_desktop_size_with_small_view_limit",
+      "observationDe": "Im vollständigen Kandidaten sind Titel, Spektralkarten, Modellkennzeichnung, Auswertungsbereich und Strukturbezeichnungen lesbar. In der isolierten 840-px-Vorschau mit tatsächlich verwendetem Atlas-Bild-CSS bleiben auch Gemeinsame Auswertung und die Ansichtsbezeichnungen entzifferbar; die kleinen Untertexte sind kompakt. Bei 360 px bleiben Anordnung, Farben und Pfeilfluss erkennbar, aber die kleinen Untertexte und die zentrale Auswertungsbeschriftung sind ohne Vergrößerung nicht zuverlässig lesbar. Eine uneingeschränkte Lesbarkeitsfreigabe für kleine Mobilansichten wird daher nicht erteilt."
+    }
+  ],
+  "previewChecks": {
+    "method": "Ephemeral Chromium pages via Playwright, candidate embedded as a data URL; screenshots returned in memory and visually inspected. No preview files were written.",
+    "styleSource": "app/src/views/GoalBookView.tsx:524",
+    "styleObserved": "mx-auto max-h-[26rem] w-full object-contain",
+    "cssUsed": "html font-size:16px; img display:block; margin-inline:auto; max-height:26rem; width:100%; object-fit:contain",
+    "deviceScaleFactor": 1,
+    "cases": [
+      {
+        "containerWidth": 840,
+        "imageElementWidth": 840,
+        "imageElementHeight": 416,
+        "visibleRasterApproxWidth": 745,
+        "visibleRasterHeight": 416,
+        "result": "main labels and central reasoning flow readable; supporting text small"
+      },
+      {
+        "containerWidth": 360,
+        "imageElementWidth": 360,
+        "imageElementHeight": 201.015625,
+        "result": "structure visible; small supporting labels not reliably readable"
+      }
+    ],
+    "limitation": "Isolated rendering check only. It does not exercise the actual Atlas route, its complete surrounding layout, native apps, touch gestures or accessibility behavior."
+  },
+  "blockingFindings": [],
+  "requiredRevisions": [],
+  "decisionRationaleDe": "Der Kandidat ist als lokaler Bildpilot geeignet. Die beobachteten Pfeilendpunkte führen alle Datenkanäle zur gemeinsamen Auswertung, und die beiden räumlich getrennten Modellansichten beheben die konkrete Ansichtsvermischung des Originals. Die fachlich sinnvollen Ausgangsinhalte und die vorhandene Bildsprache bleiben erhalten. Verbleibende Vereinfachungen der Spektralbeispiele und die geringe Lesbarkeit kleiner Untertexte bei 360 px werden ausdrücklich dokumentiert; sie sind keine neue fachliche Fehlbeziehung des Kandidaten. Diese KI-Entscheidung erteilt weder eine menschliche Freigabe noch eine Veröffentlichungs- oder Geräteabnahme.",
+  "sources": [
+    {
+      "url": "https://imagine.gsfc.nasa.gov/science/objects/milkyway2.html",
+      "title": "NASA Imagine the Universe: Multiwavelength Milky Way",
+      "use": "Targeted check of the four spectral examples actually present in the image, including the cold/warm neutral-hydrogen and near/far-infrared limitations.",
+      "accessedAt": "2026-09-14"
+    }
+  ]
+}

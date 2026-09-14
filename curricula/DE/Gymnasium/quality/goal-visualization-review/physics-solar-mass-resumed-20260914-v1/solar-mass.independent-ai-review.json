@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "physics-solar-mass-resumed-20260914-v1.independent-ai-review",
+  "reviewType": "independent_ai_visualization_review",
+  "reviewer": "physics_b055_blind_a",
+  "model": "not-exposed-by-runtime",
+  "decision": "accepted_pilot",
+  "humanApproved": false,
+  "publicationApproved": false,
+  "startedAt": "2026-09-14T04:25:01Z",
+  "completedAt": "2026-09-14T04:27:15Z",
+  "independence": {
+    "authoredOrGeneratedImage": false,
+    "readGeneratorSelfReview": false,
+    "readRootJudgment": false,
+    "scope": "Eigenständige Sichtprüfung des neuen Kandidaten gegen den aktuellen kanonischen Zieltext; zwei aktive Bilder ausschließlich als Stilreferenzen."
+  },
+  "candidate": {
+    "path": "tmp/goal-visualizations/5e9cd796-3887-5457-8a1f-26863ca7eb28/openai-opaque-edit-20260914-jheC1o/solar-mass-inference-opaque-edit.png",
+    "sha256": "sha256:2fdb48b86910d17947ec4cca40168a8fe57ffcb5de4f31084460cff2dd416115",
+    "bytes": 1432811,
+    "width": 1774,
+    "height": 887,
+    "format": "PNG",
+    "colorMode": "RGB"
+  },
+  "currentGoal": {
+    "source": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "goalId": "5e9cd796-3887-5457-8a1f-26863ca7eb28",
+    "title": "Sonnenmasse aus Bahndaten abschätzen",
+    "titleEn": "Estimate the Solar Mass from Orbital Data",
+    "description": "Die lernende Person kann aus Bahndaten eines die Sonne umlaufenden Körpers mit einem Newton-Kepler-Modell die Sonnenmasse abschätzen und die dafür verwendeten Modellannahmen benennen.",
+    "descriptionEn": "The learner can estimate the Sun's mass from orbital data for a body orbiting the Sun using a Newton–Kepler model and state the model assumptions used.",
+    "demandLevel": "AB2"
+  },
+  "observations": {
+    "formulaAndDimensions": {
+      "status": "pass",
+      "visibleFormula": "M_sun ≈ 4 π² r³ / (G T²)",
+      "reason": "Die Formel folgt für die angenäherte Kreisbahn aus Newtons Gravitationsgesetz und der Umlaufbewegung. Der genaue Zweikörperzusammenhang enthält M_sun + m; bei gegenüber der Sonnenmasse vernachlässigbarer Planetenmasse ist das sichtbare Näherungszeichen passend.",
+      "units": "r ist sichtbar in Metern und T in Sekunden angegeben; G ist als Gravitationskonstante (SI) beschriftet, M_sun als Masse in Kilogramm. Mit [G] = m³ kg⁻¹ s⁻² hat r³/(G T²) die Dimension kg.",
+      "sensitivity": "Bei festem r folgt M_sun ∝ T⁻², somit stimmt die sichtbare Aussage kürzeres T → größere Sonnenmasse. Sie ist als Vergleich der modellbasierten Schätzung zu verstehen, nicht als zeitliche Änderung der tatsächlichen Sonne."
+    },
+    "modelAssumptions": {
+      "status": "pass",
+      "visible": [
+        "Näherungsweise kreisförmige Planetenbahn um die Sonne",
+        "Planetenmasse vernachlässigbar",
+        "Störungen vernachlässigt"
+      ],
+      "reason": "Der verwendete Bahnradius ist durch den expliziten Kreisbahnfall angemessen. Das Bild verallgemeinert r nicht stillschweigend auf eine beliebige stark elliptische Bahn. Für elliptische Bahnen wäre die große Halbachse relevant; dieser zusätzliche Fall wird im Bild nicht behauptet."
+    },
+    "solarScope": {
+      "status": "pass",
+      "reason": "Titel, Text zur Planetenbahn um die Sonne, Sonnenbild, Sonnenmassensymbol und Ausgangsüberschrift benennen dieselbe Sonne. Der Kandidat zeigt einen passenden Planetenfall innerhalb des allgemeineren Zieltexts über einen die Sonne umlaufenden Körper."
+    },
+    "pedagogicalInference": {
+      "status": "pass",
+      "reason": "Die getrennten Felder Bahndaten → Newton-Kepler-Modell → Erschlossene Sonnenmasse mit verbundenen Eingangskarten für r und T machen die Schlussrichtung sichtbar. Die mittlere Aussage Gravitation erklärt die Umlaufbewegung liefert den physikalischen Bezug; die Masse wird ausdrücklich als erschlossen ausgewiesen. Lineal und Stoppuhr sind verständliche Größensymbole, kein dokumentierter astronomischer Messaufbau.",
+      "assessmentBoundary": "Das Bild enthält eine zentrale Beziehung und eine qualitative Abhängigkeit, aber keine vollständig gelöste numerische Aufgabe, keinen fertigen Datensatz und keinen beanspruchten Kompetenznachweis. Eine eigenständige Abschätzung samt Einheiten, Annahmenwahl und Plausibilitätsprüfung bleibt eine Leistung der lernenden Person. Das bloße Wiederholen des Bildes wäre dafür nicht ausreichend.",
+      "limitation": "Ein tatsächliches Bahnbild und eine Herleitung der Beziehung fehlen. Für diese kompakte Darstellung des Inferenzwegs ist das kein Abnahmehindernis; der Coach muss die Modellbegründung bei Bedarf ergänzen."
+    },
+    "visualCraftAndFit": {
+      "status": "pass",
+      "reason": "Die drei Spalten sind klar getrennt, die zwei Eingangsdaten sichtbar gebündelt und die Schlussrichtung durch große Pfeile geführt. Dunkelblaue Schrift auf hellen blauen und violetten Flächen bietet guten Kontrast; die gelbe Sonne setzt einen passenden Schwerpunkt. Im vollständig betrachteten PNG sind keine abgeschnittenen Texte, verdeckten Exponenten oder problematischen transparenten Überlagerungen erkennbar.",
+      "styleComparison": "Die aktiven Referenzen arbeiten ebenfalls mit großen Überschriften, starken Pfeilen und vereinfachten astronomischen Symbolen. Der Kandidat verwendet eine hellere und stärker handschriftliche Variante als die kräftige gelb-orange Sonnenenergie-Grafik und die dunkle Sternentwicklungs-Grafik. Die gemeinsame didaktische Bildsprache bleibt erkennbar; vollständige typografische oder farbliche Gleichheit wird nicht behauptet."
+    }
+  },
+  "styleReferences": [
+    {
+      "goalId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+      "path": "app/public/assets/goal-visualizations/physik/4c5c7cb1-f238-52c8-b82c-159c6c299c0e/4c5c7cb1-f238-52c8-b82c-159c6c299c0e.jpg",
+      "sha256": "sha256:ed677ac22d3c77114652fb814a81e74cdc83717813d0b2dfd996f815a7421e8a",
+      "activeBindingObservedIn": "app/public/lernzielbuch/de-gym-physik-bundesweit.book-model.json",
+      "use": "Nur visuelle Stilreferenz; keine erneute fachliche Abnahme der Referenz."
+    },
+    {
+      "goalId": "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+      "path": "app/public/assets/goal-visualizations/physik/6f896466-e0ec-5f8d-82ad-2890433c82ba/6f896466-e0ec-5f8d-82ad-2890433c82ba.jpg",
+      "sha256": "sha256:55a12874b0844b160ec2594b430bb7bfa6b966ba044710478a28121d1e868054",
+      "activeBindingObservedIn": "app/public/lernzielbuch/de-gym-physik-bundesweit.book-model.json",
+      "use": "Nur visuelle Stilreferenz; keine erneute fachliche Abnahme der Referenz."
+    }
+  ],
+  "readability": {
+    "nativePngViewedCompletely": true,
+    "browser": "Chromium 147.0.7727.15 via Playwright",
+    "method": "Unveränderte PNG-Bytes als HTML-img auf weißer Bildfläche und heller Seite; width:100%, height:auto, max-height:26rem, object-fit:contain. Die Höhenbegrenzung und Skalierung orientieren sich an app/src/views/GoalBookView.tsx:524. Es wurde ein isoliertes Darstellungsbeispiel geprüft, nicht die laufende Atlasanwendung.",
+    "viewport": {
+      "width": 940,
+      "height": 620,
+      "deviceScaleFactor": 1
+    },
+    "cases": [
+      {
+        "containerWidthCssPx": 840,
+        "imageElementWidthCssPx": 838,
+        "imageElementHeightCssPx": 416,
+        "result": "Titel, Datenfelder, Modelltext, Exponenten, Einheiten und Annahmen sind bei dieser repräsentativen Atlasbreite lesbar. Die G-Erklärung ist der kleinste Text, bleibt aber erkennbar.",
+        "screenshotPath": "/tmp/skillpilot-solar-mass-review-a-98tl6z/atlas-840.png",
+        "screenshotSha256": "sha256:e85756abb76103aecf75743062e8092eaa211a481f459867b250e954552b9a41"
+      },
+      {
+        "containerWidthCssPx": 480,
+        "imageElementWidthCssPx": 478,
+        "imageElementHeightCssPx": 239,
+        "result": "Die Gesamtstruktur und Hauptformel bleiben erkennbar; G-Erklärung, Kreisbahntext und Modellannahmen sind für bequemes zuverlässiges Lesen zu klein. Diese Vorschau benötigt Vergrößerung.",
+        "screenshotPath": "/tmp/skillpilot-solar-mass-review-a-98tl6z/preview-480.png",
+        "screenshotSha256": "sha256:186ee1d6d66e02b2133770e21210d70d65fd217cc7f981986bb8ecdc750f22af"
+      }
+    ],
+    "smallPreviewRequiresEnlargement": true,
+    "actualAtlasRouteTested": false,
+    "nativeMobileAcceptanceTested": false,
+    "screenshotPersistence": "Die Prüfscreenshots sind temporäre lokale Artefakte; die kanonische Entscheidungsdatei enthält ihre Digests und Beobachtungen."
+  },
+  "limits": [
+    "accepted_pilot bezeichnet ausschließlich diese unabhängige KI-Prüfentscheidung für die exakt gebundenen PNG-Bytes; humanApproved bleibt false.",
+    "Keine Generierung, keine Bildänderung und keine Integration oder Publikation durch diesen Gutachter.",
+    "Die physikalische Prüfung beruht auf dem aktuellen Zieltext und Standardbeziehungen des Newton-Kepler-Modells; keine externe Quellen-, Projektions- oder vollständige Curriculumprüfung.",
+    "Die kleine Vorschau genügt nicht als alleinige Leseansicht. Eine erreichbare größere Darstellung sollte beim UI-Einsatz gewährleistet werden; vorhandene Vergrößerungsinteraktion wurde nicht geprüft.",
+    "Kein Nachweis realer Lernerleistung, echter Atlasnavigation oder nativer Handyabnahme."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physics-b048-oblique-current-carryover-20260914-v1",
+  "goal": {
+    "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:eb057cbd36e2324347f60f0c31df17a80b6163948aab8cefb6f0a86b59ca9778",
+    "pageFingerprint": "sha256:c5801110a08f93f881e54e17b2efe1bf047dad0773f2f31c2b4092584736ecaf",
+    "goalReviewContextFingerprint": "sha256:bd4e3c7ec8ae18ae9cbaaa211f3e295ad817a26b5b47529f90512839e97aa559",
+    "finalText": {
+      "titleDe": "Schiefen Wurf beschreiben",
+      "titleEn": "Describe Oblique Projection",
+      "descriptionDe": "Die lernende Person kann den schiefen Wurf ohne Luftwiderstand als Überlagerung einer gleichförmigen horizontalen und einer durch die Schwerkraft gleichmäßig beschleunigten vertikalen Bewegung beschreiben und typische Flugbahnen qualitativ skizzieren.",
+      "descriptionEn": "The learner can describe oblique projectile motion without air resistance as the superposition of uniform horizontal motion and vertical motion with constant gravitational acceleration and qualitatively sketch typical trajectories."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-a",
+      "campaignDigest": "sha256:7954fe9d1229a77e1e784f6897f6f0bdbcf00ba7264a15e5dd6edf1085194fe2",
+      "roundId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-independent-a",
+      "reviewInputFingerprint": "sha256:b5aac2cb1e1e838f9b18c4cfbf20698508e148eb24e89573696a26d64e314aba",
+      "goalReviewContextFingerprint": "sha256:bd4e3c7ec8ae18ae9cbaaa211f3e295ad817a26b5b47529f90512839e97aa559",
+      "batchId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.batch-001",
+      "runId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001",
+      "runManifestDigest": "sha256:9b9f53a84e3ae210a6c34619110150ff99b921c325c460d856806795f050aeaf",
+      "resultsDigest": "sha256:8bc3e623378b30377fc54f8e2e83f949ea32fa459fd5e294d4a496f9d0b3b210",
+      "recordId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001.015",
+      "recordDigest": "sha256:5090d979024965cf755c4b4117537a7cfcd5069ddf0002307e1b5b0badc5e214"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-b",
+      "campaignDigest": "sha256:964cfcbfd946d718ecdb9fbb8e53f7f27807be990b7b3fde635e4c2c3e462673",
+      "roundId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-independent-b",
+      "reviewInputFingerprint": "sha256:b5aac2cb1e1e838f9b18c4cfbf20698508e148eb24e89573696a26d64e314aba",
+      "goalReviewContextFingerprint": "sha256:bd4e3c7ec8ae18ae9cbaaa211f3e295ad817a26b5b47529f90512839e97aa559",
+      "batchId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.batch-001",
+      "runId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.run-001",
+      "runManifestDigest": "sha256:347b79153ad426d53cf01068759155642546794ec721d75b57da0a3136e31dc3",
+      "resultsDigest": "sha256:d6f20232635b6ef939fbca535e5144ca47cb0ebf803bde61e7a93e1cb85a667c",
+      "recordId": "physics-b048-b-015",
+      "recordDigest": "sha256:72076bee9c6d507f0fabfed1624c5098d61d0fd58dd9abd56884b06002e063eb"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:6b414186b933224d16ebad5b9baad261ddf0236e3c85f0e93356c5f9d4d6b64f"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "physics-b048-oblique-informed-synthesis-20260914-v1",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex /root; informed reuse of two independent B048 reviews; exact model not exposed",
+    "synthesizedAt": "2026-09-14T05:28:26.000Z",
+    "rationaleDe": "Root hat beide vollständigen B048-Records, Laufmanifeste, aktuellen Ziel-/Seitenkontext, den vollständigen nativen Wiederverwendungsanhang und das bestehende P-v2-Profil gelesen. Beide Runden bestätigen KEEP für eine kohärente qualitative Komponentenbeschreibung. B wird gewählt, weil sein frischer schräg abwärts gerichteter Start einen echten Vorzeichen-/Anfangsbedingungswechsel verlangt und einen nicht durchlaufenen Scheitel von der tatsächlich durchlaufenen Bahn trennt. As geänderte Landehöhe ist ebenfalls fachlich geeignet und bleibt als ursprünglicher Vorschlag erhalten. Der aktuelle P-Körper deckt beide Variationsachsen bereits ab: die gegebenen Zeit-/Positionsdaten passen zu v_x=3 m/s und g=10 m/s²; der unabhängige Abwärtsstart aus 2 m Höhe verlangt keine Trigonometrie oder Wurfweitenoptimierung. Eigener DE/EN-Text, CanonicalContext, Bild und sämtliche normalisierten fachlichen Seitenfelder sind unverändert. Die echten Seitennummern bleiben historisch gebunden; sie werden nicht umgehasht. Die frühere Zurückstellung wegen 89a wurde individuell geklärt: dessen ergänzte Bedingungen Luftwiderstand vernachlässigbar, konstante Fallbeschleunigung und genaue Bewegungskomponenten waren schon ausdrücklich Bestandteil des fbec-Texts, beider Reviewkörper und des P-Profils. Sie ändern hier keine geforderte Kompetenz oder Transferleistung. Deshalb kein neuer Blindreview und keine eigene Text-/Bild-/Profiländerung. Historischer Profildissens einschließlich des ungültigen früheren A20-Laufs bleibt unverändert; die jetzt verwendeten B048-Runden werden nicht rückwirkend zu P- oder Humanfreigaben. Anbieter-/Modellvielfalt lässt sich aus unterschiedlichen historischen Schreibweisen nicht belegen. Keine neue vollständige Quellen-, Geräte- oder menschliche Abnahme.",
+    "rationaleEn": "Root read both complete B048 records and run manifests, current goal/page context, the complete native reuse annex and existing P-v2 profile. Both rounds confirm KEEP for one coherent qualitative component explanation. B is selected because its fresh downward-oblique launch requires a genuine sign/initial-condition change and distinguishes an untraversed apex from the actual trajectory. A's changed landing height is also sound and remains preserved in its original record. The current profile already covers both variation axes: its supplied time/position data agree with v_x=3 m/s and g=10 m/s²; an independent downward launch from 2 m requires neither trigonometry nor range optimisation. Own bilingual text, canonical context, image and all normalised substantive page fields are unchanged. Actual page numbers remain historically bound, not rehashed. The earlier hold concerning prerequisite 89a was individually resolved: its added negligible-drag, constant-gravity and precise-component conditions were already explicit in the fbec text, both review bodies and profile. They introduce no changed competence or transfer demand here. Therefore no new blind review or text/image/profile change is needed. Historical profile dissent including the invalid earlier A20 run remains unchanged; the reused B048 rounds do not retroactively approve that profile or create human approval. Differing historical provider/model labels do not establish provider/model diversity. No new complete source, device or human acceptance is claimed.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Beim schiefen Wurf bleibt die horizontale Geschwindigkeit im idealisierten Modell konstant, während die vertikale Geschwindigkeit durch konstante Schwerebeschleunigung abnimmt und ihr Vorzeichen wechseln kann.",
+      "essentialUnderstandingEn": "In ideal oblique projectile motion, horizontal velocity stays constant while vertical velocity decreases under constant gravitational acceleration and can change sign.",
+      "observablePerformanceDe": "Die lernende Person zeichnet für einen unabhängig gegebenen Startvektor eine plausible Bahn und erläutert mit Komponentenpfeilen Aufstieg, Scheitel und Abstieg, einschließlich fortbestehender Beschleunigung am Scheitel.",
+      "observablePerformanceEn": "For an independently supplied launch vector, the learner sketches a plausible trajectory and uses component arrows to explain ascent, apex and descent, including the acceleration that remains at the apex.",
+      "transferExpectationDe": "Für einen frisch gegebenen schräg abwärts gerichteten Start skizziert sie den unmittelbar abfallenden Parabelabschnitt und erklärt, warum ein oberhalb liegender Scheitel kein durchlaufener Bahnpunkt sein muss.",
+      "transferExpectationEn": "For a fresh downward oblique launch, the learner sketches the immediately descending parabolic segment and explains why an apex above the launch point need not be traversed."
+    },
+    "dissent": [
+      {
+        "dissentId": "physics-b048-oblique-evidence-selection",
+        "source": "both",
+        "disposition": "accepted_second",
+        "textDe": "Beide unabhängigen Urteile sind KEEP; A verändert die Landehöhe, B den vertikalen Startanteil. Root wählt B. Beide Originalbegründungen bleiben unverändert; die Wahl entfernt keine historische P-Dissensnotiz.",
+        "textEn": "Both independent judgments are KEEP; A changes landing height, B the initial vertical component. Root selects B. Both original rationales remain unchanged and the choice removes no historical profile dissent."
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:f4e8bc18639fb0c59d6dfef943fef9d593a138d65db05ed1d7cedf0eeae550b2"
+}

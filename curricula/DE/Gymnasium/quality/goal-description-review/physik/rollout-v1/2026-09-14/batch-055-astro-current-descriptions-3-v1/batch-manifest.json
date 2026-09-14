@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-055-astro-current-descriptions-3-v1-20260914",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/batch-055-astro-current-descriptions-3-v1.config.json",
+  "configDigest": "sha256:a8a5da6093bef472d404aa3a3dadfe086d972c2e9cc58437512970bedff1b4d4",
+  "goalIds": [
+    "db6b8de4-21e0-58e8-a347-2ae39f538f92",
+    "4c5c7cb1-f238-52c8-b82c-159c6c299c0e",
+    "6f896466-e0ec-5f8d-82ad-2890433c82ba"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 478,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:89e8c918651e8c9748b604e70ed55891b26812f7389b854275e8c6d7aeda90bc"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:02f74b35c60cea8ccc22278d7db411a78bac505d191a0dd2f81ba236d0653693",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:496ab6f5ef8118b07ef8e76eca84b4b254ec238cab06e288ebf4182915d9fd38",
+    "reviewInputFingerprint": "sha256:f7fbdb6ed03ab3abbfbc2e070fbb25bcc3ddbdf837fafc1670625ea00ade515f",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-055-astro-current-descriptions-3-v1-20260914-a",
+        "campaignDigest": "sha256:ac01d1f1f8fc405d09a1c2856e6b91f4a209e8beb407e6f3b94d072556bd0a9b",
+        "roundId": "physik-rollout-v1-batch-055-astro-current-descriptions-3-v1-20260914-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-055-astro-current-descriptions-3-v1-20260914-independent-a",
+        "batchId": "physik-rollout-v1-batch-055-astro-current-descriptions-3-v1-20260914-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:26151ee92c549963722fda3601fc956c002d4fa1514eefd12003cabcf6cf361d"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-055-astro-current-descriptions-3-v1-20260914-b",
+        "campaignDigest": "sha256:8ea3acb5a3a17883d0efc73080316aca0949dc49ff2cc7d4f0da2f99546d47bb",
+        "roundId": "physik-rollout-v1-batch-055-astro-current-descriptions-3-v1-20260914-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-055-astro-current-descriptions-3-v1-20260914-independent-b",
+        "batchId": "physik-rollout-v1-batch-055-astro-current-descriptions-3-v1-20260914-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:6141309fcabb528151b43dda9dd246ffd7efbd8cbfa410710bb9f334c9d890ad"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

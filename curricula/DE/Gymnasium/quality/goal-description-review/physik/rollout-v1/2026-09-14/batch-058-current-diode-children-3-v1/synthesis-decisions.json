@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-058-current-diode-children-synthesis-20260914-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex /root; exact model identifier not exposed",
+  "synthesizedAt": "2026-09-14T05:31:31.429Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914",
+    "batchManifestDigest": "sha256:6e4992f026d64ef05d99f9e0ba8107c8f2a4c0c418303bdbdb3c38311247a3bd",
+    "configDigest": "sha256:2af2bd2fa631c2e102b2cf608b38d2fe57875dfcfd8161e9cde02b3c20e512b1",
+    "bundleFingerprint": "sha256:f947809c7d890a52f6ba4316e0cfb23ac9e78efd32f8418e151bd67d1f115bde",
+    "bookDigest": "sha256:bbc0beccece31adbc49ec9be5ba9d29d8f5461b79cf55d0ef5c5737fe27cc8ce",
+    "reviewInputFingerprint": "sha256:fc94b0a7ea40a74bc3a3cd6aabaf2deeadd80209e899adc90f1eeeccd3a62dbc",
+    "dualSummaryDigest": "sha256:eb9406e71b24cf52f0e4e4b3f724457d4f7494ad05edfb04f129cbb74bb16c38",
+    "canonicalLandscapeDigest": "sha256:5c18a8a5f446e057e6faa0dc150eb6375fe06a38ccaac968307f8f14ab85d982"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-a",
+      "campaignDigest": "sha256:aa74e0a74cdc1d44ba44c772d460a085beccc28d0288f82d0c377ec3b0ba1a62",
+      "roundId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-independent-a",
+      "reviewInputFingerprint": "sha256:fc94b0a7ea40a74bc3a3cd6aabaf2deeadd80209e899adc90f1eeeccd3a62dbc",
+      "batchId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:7f1f4568b5c12ec129b097a8f496f4c32949f4d97346a6c8d98cb55ab3d47ec3",
+      "runId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-a.run-001",
+      "runManifestDigest": "sha256:87c8225ea4d881a8c95c4135b2abcde8e7d6eaeb83b7b4816a68439f59717158",
+      "resultsDigest": "sha256:cf63dacff8845d7b475f701332eaa0f242dc2b9cba1da2c8c11d6c50bee7543c"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-b",
+      "campaignDigest": "sha256:9e47f97fee823d948acff3c92cba875f821b21d7661f49a82190c9a0435f7385",
+      "roundId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-independent-b",
+      "reviewInputFingerprint": "sha256:fc94b0a7ea40a74bc3a3cd6aabaf2deeadd80209e899adc90f1eeeccd3a62dbc",
+      "batchId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:28bb152b3a956200ac8b18cdbf8234380efda92bb2284b71d989a2c4a0ad5218",
+      "runId": "physik-b058-round-b-run-20260914",
+      "runManifestDigest": "sha256:bd19bdc671c02131bc77700c397d80c4f7ff63f3050a41deaa8cf51018d1305e",
+      "resultsDigest": "sha256:1e9684e9d79fddfd83fd0c66224d833f869928cdc6f842ae1cc23a82ac39152e"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-058-current-diode-children-synthesis-20260914-v1-decision-001",
+      "goalId": "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:edd5475b51161db1b42bc550bc5d9f2c74c0a8f7c1d9d8ac2852266567faaba7",
+      "pageFingerprint": "sha256:0bd626bc535b91c14fdf41c90d15fd235ef3377d644305e224a9a3abaef14d15",
+      "goalReviewContextFingerprint": "sha256:424a67af4393400b4924f846833718ca6d2c3783ecd7f65e310ef47a0e518c35",
+      "finalText": {
+        "titleDe": "Sperrschicht und Polung am p-n-Übergang erklären",
+        "titleEn": "Explain Depletion Layer and Bias at a p–n Junction",
+        "descriptionDe": "Die lernende Person kann mit einem einfachen Ladungsträgermodell die Entstehung der Sperrschicht am p-n-Übergang und ihre Veränderung bei Durchlass- und Sperrpolung erklären.",
+        "descriptionEn": "The learner can use a simple charge-carrier model to explain depletion-layer formation at a p–n junction and its change under forward and reverse bias."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-a.run-001.record-001",
+          "recordDigest": "sha256:afdd159d40bfac6b7cf01372ab534474a340c10e30b82bed92c1ad91bfb34f86"
+        },
+        "second": {
+          "recordId": "physik-b058-round-b-2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+          "recordDigest": "sha256:e764568fa10cdf686f592a2d11d3604e09d24b7e742c39e5d0a4bd7cc55cf53f"
+        }
+      },
+      "rationaleDe": "Beide vollständig gelesenen unabhängigen Runden bestätigen den bereits eigenständig formulierten p-n-Modellkern. Entstehung und Polungsvariation derselben Sperrschicht sind eine zusammenhängende Erklärkompetenz; Dotierung bleibt Voraussetzung, Kennlinienversuch, Gleichrichtung und Transistor bleiben getrennte Ziele. Root hat die aktuellen DE/EN-Inputs, Seiten, Kontexte und den vollständigen bestehenden P-v2-Körper samt Bildbindungsbeleg geprüft. A wird gewählt, weil die quasineutralen Außenbereiche ausdrücklich von der Raumladungszone unterschieden werden; beide Runden verlangen die eigene Skizze und einen echten Transfer auf räumlich vertauschte Regionen mit neu zu bestimmender Polung. Die Reviewer haben das unveränderte Raster tatsächlich geöffnet und seinen Hash unabhängig bestätigt. Der bestehende P-Körper deckt die Modellbildung, beide Polungen und einen neuen gespiegelten Anschlussfall ab; er bleibt unverändert und behält E1/G1, ai_candidate und needs_human_review. create aus den profilfreien Blindinputs bedeutet hier keine zweite Profilkopie. Die dokumentierten Landesquellenbegrenzungen, insbesondere unterschiedlich weit gehende Modellansprüche, bleiben erhalten; Sichtbarkeit in einer Projektion wird nicht als vollständige neue Quellenabnahme ausgegeben. Kein Text- oder Bildaustausch und keine menschliche Freigabe.",
+      "rationaleEn": "Both complete independent rounds confirm the already separate p-n model competence. Formation and bias-dependent change of the same depletion region form one explanatory competence; doping remains a prerequisite, while measurement, rectification and transistor behavior remain separate goals. Root examined the current German and English inputs, pages, contexts and complete existing P-v2 body with its image-binding record. Round A is selected for explicitly distinguishing quasi-neutral outer regions from the space-charge region; both rounds require an independently constructed sketch and genuine transfer to spatially exchanged regions with newly determined bias. Both reviewers actually opened the unchanged raster and independently confirmed its hash. The existing profile covers model construction, both bias directions and a fresh mirrored connection case. It remains unchanged at E1/G1, ai_candidate and needs_human_review. The create recommendations in profile-free blind inputs do not call for duplicate profiles. Documented jurisdiction-specific source limits and differing model requirements remain intact; projection visibility is not reported as a new complete source approval. No text or image replacement and no human approval."
+    },
+    {
+      "decisionId": "physics-058-current-diode-children-synthesis-20260914-v1-decision-002",
+      "goalId": "3857891b-d328-585b-9936-85c7aff122ee",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a0fa57a28313a5a4d54aa21686d17f0147f8701f75081196f26081b1319960b0",
+      "pageFingerprint": "sha256:d7e24014cef39f49074e6a85828998bddc8fe04b79155d48b68f6e5aea2db936",
+      "goalReviewContextFingerprint": "sha256:6e00cf5981f7ca2601bd92008b824f8e5bcba3c6ff9832dbfee322c9bf01e840",
+      "finalText": {
+        "titleDe": "Die Strom-Spannungs-Kennlinie einer Diode experimentell bestimmen",
+        "titleEn": "Determine a Diode’s Current–Voltage Characteristic Experimentally",
+        "descriptionDe": "Die lernende Person kann in einem beaufsichtigten, strombegrenzten Kleinspannungsversuch die Strom-Spannungs-Kennlinie einer Diode in Durchlass- und Sperrpolung aufnehmen und aus den Messwerten ihr richtungsabhängiges Leitverhalten begründen.",
+        "descriptionEn": "The learner can record a diode’s current–voltage characteristic under forward and reverse bias in a supervised, current-limited low-voltage experiment and use the measurements to justify its direction-dependent conduction."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-a.run-001.record-002",
+          "recordDigest": "sha256:c1ac2aec378f1b22e6fe908aa3f68eee70463e8e3fc918771c282493e1c52d9e"
+        },
+        "second": {
+          "recordId": "physik-b058-round-b-3857891b-d328-585b-9936-85c7aff122ee",
+          "recordDigest": "sha256:c47fc926bbba08f5e2578726297dec3d5f91d3e74dcc6d1c79fad2675c9a089e"
+        }
+      },
+      "rationaleDe": "KEEP beider vollständig gelesener Runden ist fachlich begründet: eigenes Aufnehmen und datenbasiertes Erklären derselben Diodenkennlinie bilden eine experimentelle Kompetenz. Die bestehende zweisprachige Beschreibung enthält Aufsicht, Strombegrenzung, Kleinspannung und beide Polungen; Strom- und Spannungsmessung sind Voraussetzungen. B wird gewählt, weil sein Transfer mit geänderter Orientierung und Messauflösung eng am bereits vollständig geprüften P-Körper liegt. A ergänzt zulässig die Trennung von Quellenspannung, Diodenspannung und Arbeitspunkt; das macht keinen zusätzlichen Pflichtfall und keine Beschreibungserweiterung erforderlich. Das vorhandene Profil fordert die reale eigene beaufsichtigte Messleistung und einen unabhängigen Auflösungswechsel; Diagrammansicht oder Chatbehauptung ersetzen diesen Versuch nicht. Beide Reviewer haben den Bildhash und das ausdrücklich qualitative Raster bestätigt: keine behaupteten Messpunkte, kein exakt null gesetzter Sperrstrom und keine universelle Schwellspannung. Root erhält Text, Bild und P-Körper unverändert einschließlich vorhandenen Dissents, E1/G1 und fehlender Humanfreigabe. Aus den unterschiedlichen BW-/SN-Quellenansprüchen wird keine bundesweit identische Experimentierpflicht abgeleitet. create betrifft allein das fehlende Profil im Blindinput, nicht einen fehlenden aktiven Profilowner.",
+      "rationaleEn": "Both complete rounds justify KEEP: independently recording and interpreting the same diode characteristic form one experimental competence. The existing bilingual description includes supervision, current limiting, low voltage and both bias directions; current and voltage measurement are prerequisites. Round B is selected because its orientation and resolution transfer closely matches the fully examined existing profile. Round A validly adds the distinction between source voltage, diode voltage and operating point; this does not impose another mandatory case or require a longer description. The existing profile requires actual independently performed supervised measurements and a fresh resolution change; viewing a graph or making a chat claim cannot replace that experiment. Both reviewers confirmed the image hash and explicitly qualitative raster: no claimed measurement points, exactly zero reverse current or universal threshold voltage. Root retains the text, image and full profile unchanged, including existing dissent, E1/G1 and absent human approval. Different BW and SN source requirements are not generalized into an identical nationwide experimental obligation. The create recommendation concerns only the absent profile in the blind input, not a missing active profile owner."
+    },
+    {
+      "decisionId": "physics-058-current-diode-children-synthesis-20260914-v1-decision-003",
+      "goalId": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9b14687ecdda466daab4d902639e60f6b953d92520a35e07b8bde9a8f52e8f95",
+      "pageFingerprint": "sha256:0388ccc12cbf00f475fb2967fc403357f40a3b9d44ce9d3af08da4a07069302a",
+      "goalReviewContextFingerprint": "sha256:0c0212d5b65afa622c27bb2e302365ea968f03b5d6a63f02e2f6132ce1862082",
+      "finalText": {
+        "titleDe": "Die Gleichrichterfunktion einer Diodenschaltung erklären",
+        "titleEn": "Explain the Rectifying Function of a Diode Circuit",
+        "descriptionDe": "Die lernende Person kann an einer vorgegebenen einfachen Gleichrichterschaltung aus der Polung der Dioden die Stromwege und den zeitlichen Verlauf der Spannung am Verbraucher erklären.",
+        "descriptionEn": "The learner can use the diode polarities in a supplied simple rectifier circuit to explain the current paths and the time variation of the voltage across the load."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-a.run-001.record-003",
+          "recordDigest": "sha256:d86ede49e62ffa38c30bbae27d5dd1c742c0322fc52d0952d80ea35a03f609cb"
+        },
+        "second": {
+          "recordId": "physik-b058-round-b-3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+          "recordDigest": "sha256:9bc807b122b1d63274caebf93f089caf240d94cfa3d450ceb47cf7c0ff62505e"
+        }
+      },
+      "rationaleDe": "Root bestätigt nach vollständiger Lektüre beider Runden, aktueller Input-/Seiten-/Kontextbindungen und des bestehenden P-v2-Profils KEEP. Stromweg und zeitlicher Spannungsverlauf sind zwei Darstellungen derselben Gleichrichterfunktion, keine unabhängigen Routinen. A wird für den ausdrücklich vollständig geschlossenen Stromweg über Quelle, Diode und ohmschen Verbraucher sowie die Herleitung der Sperrphase gewählt; B bestätigt denselben Sachverhalt unabhängig. Beide fordern einen neuen Fall mit umgedrehter Diode bei unverändertem Eingang und festgelegter Last-Bezugspolung: die durchgelassene Halbwelle wird negativ, nicht einfach identisch nachgezeichnet. Das unveränderte Bild wurde von beiden tatsächlich geöffnet und am Hash bestätigt; ideale Diode und fehlende Glättung sind ausgewiesen. Der bereits aktuelle P-Körper enthält genau diesen unabhängigen Transfer und bleibt ebenso wie Text, Bild und vorhandene Quellenbegrenzungen unverändert. Der Modellauftrag an einer vorgegebenen einfachen Schaltung wird nicht zu eigenem Netzspannungsaufbau, Bauteilauslegung, Glättung oder vollständiger Topologiesammlung erweitert. HE-/SL-/SN-Bezüge bleiben im dokumentierten Umfang, Demonstration und eigener Aufbau werden nicht gleichgesetzt. Profilstatus E1/G1, ai_candidate und needs_human_review bleiben wahrheitsgemäß; create im profilfreien Reviewinput führt nicht zur Duplizierung.",
+      "rationaleEn": "After reading both complete rounds, current input, page and context bindings, and the existing P-v2 profile, Root confirms KEEP. Current paths and voltage over time are two representations of the same rectifying function rather than independent routines. Round A is selected for explicitly tracing a closed path through source, diode and resistive load and deriving the blocked phase; Round B independently confirms the same principle. Both require a new case with a reversed diode, unchanged input and fixed load-voltage reference: the passed half-cycle becomes negative rather than merely being copied. Both reviewers actually opened the unchanged image and confirmed its hash; ideal diode assumptions and absence of smoothing are explicit. The current existing profile already contains this independent transfer and remains unchanged, together with text, image and documented source limits. Analysis of a supplied simple circuit is not expanded into constructing a mains circuit, component sizing, smoothing or every rectifier topology. HE, SL and SN references retain their documented scope; demonstration and independent construction are not equated. E1/G1, ai_candidate and needs_human_review remain truthful; create in the profile-free review input does not result in duplication."
+    }
+  ],
+  "manifestFingerprint": "sha256:1b490715e58d1e4103c50258cedf3fcc0c0d322c24a5f4ba432331d254efb482"
+}

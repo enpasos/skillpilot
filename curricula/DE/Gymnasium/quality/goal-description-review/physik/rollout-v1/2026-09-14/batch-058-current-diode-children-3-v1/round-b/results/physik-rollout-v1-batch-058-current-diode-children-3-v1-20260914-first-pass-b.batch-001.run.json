@@ -1,0 +1,49 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-b058-round-b-run-20260914",
+  "campaignId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-b",
+  "roundId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:28bb152b3a956200ac8b18cdbf8234380efda92bb2284b71d989a2c4a0ad5218",
+  "bundleFingerprint": "sha256:f947809c7d890a52f6ba4316e0cfb23ac9e78efd32f8418e151bd67d1f115bde",
+  "bookDigest": "sha256:bbc0beccece31adbc49ec9be5ba9d29d8f5461b79cf55d0ef5c5737fe27cc8ce",
+  "provider": "OpenAI",
+  "model": "not-exposed-by-runtime",
+  "modelVersion": "not-exposed-by-runtime",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:e1cb48d3568b958365e8afc7a2c65fc7166bbc82acd3a2277f9ae56632dce8bd",
+  "independenceGroupId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+    "3857891b-d328-585b-9936-85c7aff122ee",
+    "3b586f2a-60e2-5019-aa08-6a47616a1f1f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:28bb152b3a956200ac8b18cdbf8234380efda92bb2284b71d989a2c4a0ad5218"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-14T05:27:36.666Z",
+  "completedAt": "2026-09-14T05:31:30.429Z",
+  "status": "completed",
+  "outputDigest": "sha256:1e9684e9d79fddfd83fd0c66224d833f869928cdc6f842ae1cc23a82ac39152e",
+  "toolchainVersion": "not-exposed-by-runtime"
+}

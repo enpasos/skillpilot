@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "recordType": "goal-visualization-ai-pilot-adoption",
+  "goalId": "5e9cd796-3887-5457-8a1f-26863ca7eb28",
+  "actor": "/root",
+  "decision": "accepted_pilot",
+  "provider": "image_gen",
+  "modelVersion": null,
+  "imageCopies": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/physik/5e9cd796-3887-5457-8a1f-26863ca7eb28/5e9cd796-3887-5457-8a1f-26863ca7eb28.png",
+      "sha256": "sha256:2fdb48b86910d17947ec4cca40168a8fe57ffcb5de4f31084460cff2dd416115",
+      "bytes": 1432811
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/physik/5e9cd796-3887-5457-8a1f-26863ca7eb28/5e9cd796-3887-5457-8a1f-26863ca7eb28.png",
+      "sha256": "sha256:2fdb48b86910d17947ec4cca40168a8fe57ffcb5de4f31084460cff2dd416115",
+      "bytes": 1432811
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/physik/5e9cd796-3887-5457-8a1f-26863ca7eb28/5e9cd796-3887-5457-8a1f-26863ca7eb28.png",
+      "sha256": "sha256:2fdb48b86910d17947ec4cca40168a8fe57ffcb5de4f31084460cff2dd416115",
+      "bytes": 1432811
+    }
+  ],
+  "imageDimensions": {
+    "width": 1774,
+    "height": 887,
+    "colorMode": "RGB"
+  },
+  "canonicalLink": {
+    "type": "goal-visualization",
+    "resourceType": "image",
+    "role": "primary",
+    "skillpilotId": "5e9cd796-3887-5457-8a1f-26863ca7eb28",
+    "title": "Visualisierung: Sonnenmasse aus Bahndaten abschätzen",
+    "url": "/assets/goal-visualizations/physik/5e9cd796-3887-5457-8a1f-26863ca7eb28/5e9cd796-3887-5457-8a1f-26863ca7eb28.png",
+    "provider": "image_gen",
+    "description": "Modellgestützter Rückschluss von Bahndaten auf die Sonnenmasse im näherungsweisen Kreisbahnfall.",
+    "altText": "Bahnradius r in Metern und Umlaufzeit T in Sekunden führen über das Newton-Kepler-Modell zur erschlossenen Sonnenmasse M☉ ≈ 4π²r³/(GT²). Die Grafik nimmt eine annähernd kreisförmige Planetenbahn, vernachlässigbare Planetenmasse und geringe Störungen an. Bei gleichem Bahnradius führt eine kürzere Umlaufzeit im Modell zu einer größeren Massenschätzung.",
+    "lang": "de",
+    "license": "AI-generated, SkillPilot-curated",
+    "reviewStatus": "pilot"
+  },
+  "promptHistory": {
+    "initialPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-solar-mass-resumed-20260914-v1/solar-mass.original-prompt.de.md",
+    "editPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-solar-mass-resumed-20260914-v1/solar-mass.opaque-edit-prompt.de.md",
+    "combinedPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-solar-mass-resumed-20260914-v1/solar-mass.prompt-history.de.md",
+    "combinedDocumentWasNotANewGenerationPrompt": true,
+    "initialImageSha256": "sha256:29952bdf352980f0f48bf114b0fade48284d1d56b7219a51e4936ca11850f2e0",
+    "editReferencedThatImage": true,
+    "builtinMode": true,
+    "programmaticImageEditing": false,
+    "reconstructionPromptPath": "curricula/DE/Gymnasium/visualizations/physik/5e9cd796-3887-5457-8a1f-26863ca7eb28/image-reconstruction-prompt.de.md"
+  },
+  "independentReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-solar-mass-resumed-20260914-v1/solar-mass.independent-ai-review.json",
+  "qa": {
+    "previousState": "missing",
+    "previousMissingReason": "deferred_provider_limitation",
+    "currentState": "available",
+    "aiApproved": "yes",
+    "aiApprovedAssetSha256": "sha256:2fdb48b86910d17947ec4cca40168a8fe57ffcb5de4f31084460cff2dd416115",
+    "humanApproved": "no"
+  },
+  "positiveEvidence": {
+    "substantiveReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-solar-mass-resumed-20260914-v1/solar-mass.profile-context-review.json",
+    "oldReviewInputFingerprint": "sha256:a5e6e912e76df368cfc93270006b223c674df55c8305251eee5862179039ccb5",
+    "newReviewInputFingerprint": "sha256:c156b955ec3369632577bc3cb22015afd43ea5c0ed552b835bfe5bfae5085414",
+    "goalFingerprint": "sha256:3838fa562b8cbdec75f9d97f6658fdacbb07400888b6a8da51aeadd9d5f92eab",
+    "profileFingerprint": "sha256:4bf5c72fa07a8def3d89ff7ed96ca7d898cf7b8cf4365ccd4848c983f3578d87",
+    "profileBodyUnchanged": true,
+    "reviewAuthority": "ai_candidate",
+    "status": "needs_human_review",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "retainedRecordCount": 8,
+    "retainedOriginalLinesByteIdentical": true,
+    "oldReviewSha256": "sha256:e19c351b6d4206f9f560fbd52a2d999414a828bc79fe3e02cbe6dc22e2f9125e",
+    "oldReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/profiles.retained-nine.review.jsonl",
+    "registryHandoff": {
+      "old": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-astro-resumed-20260913-v1/profiles.retained-nine.config.json",
+      "new": [
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-solar-mass-resumed-20260914-v1/profiles.retained-eight.config.json",
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-solar-mass-resumed-20260914-v1/solar-mass.profiles.config.json"
+      ]
+    }
+  },
+  "scopeGuards": {
+    "otherCanonicalGoalsUnchanged": true,
+    "otherCanonicalGoalsSha256": "sha256:c1b8fc26fc2a29085d0bab68ae25f8778e98745a14de5d4ace035f61d6743ffd",
+    "goalNonResourceFieldsUnchanged": true,
+    "otherQaRecordsUnchanged": true,
+    "otherQaRecordsSha256": "sha256:4addbdd9ee9aa0cf449c2db8762351a22b63e1ccafdcf3d958555a9e6be4d850",
+    "historicalNineRecordFileUnchanged": true,
+    "semanticAtomicityLedgerEdited": false,
+    "memoryReviewLedgerEdited": false,
+    "semanticKindLedgerEdited": false,
+    "runtimeCodeEdited": false,
+    "privacySecurityPluginContractsEdited": false
+  },
+  "checks": [
+    {
+      "check": "native image import dry run and import",
+      "exitCode": 0
+    },
+    {
+      "check": "native physics QA ledger check",
+      "exitCode": 0
+    },
+    {
+      "check": "native physics approval coverage (461 active images)",
+      "exitCode": 0
+    },
+    {
+      "check": "solar positive-candidate materializer write and no-write",
+      "exitCode": 0
+    },
+    {
+      "check": "solar and retained-eight positive-evidence checks",
+      "exitCode": 0
+    },
+    {
+      "check": "native all visualization assets (1558 links in 21 landscapes)",
+      "exitCode": 0
+    },
+    {
+      "check": "physics rollout coverage",
+      "exitCode": 0
+    },
+    {
+      "check": "four goal-book publications build and strict verification; only physics rendered",
+      "exitCode": 0
+    },
+    {
+      "check": "curriculum quality regeneration/check and nine protected maturity floors",
+      "exitCode": 0
+    },
+    {
+      "check": "AI transparency inventory; precisely four measured fields refreshed",
+      "exitCode": 0
+    },
+    {
+      "check": "docs links (223), indexes (8), whitespace before this receipt",
+      "exitCode": 0
+    }
+  ],
+  "limits": {
+    "humanApproval": false,
+    "descriptionClosureGrantedByImage": false,
+    "nativeMobileAcceptance": false,
+    "actualAtlasRouteAcceptance": false,
+    "allFiveGatesGrantedByImage": false,
+    "commitPushDeploymentPerformed": false
+  },
+  "readability": "Full original and isolated browser raster views reviewed. 840px readable; 480px preview needs enlargement. No native mobile acceptance.",
+  "recordedAt": "2026-09-14T04:43:13Z",
+  "adoptionTimePrecision": "Adoption occurred during this local run; no fabricated exact import timestamp."
+}

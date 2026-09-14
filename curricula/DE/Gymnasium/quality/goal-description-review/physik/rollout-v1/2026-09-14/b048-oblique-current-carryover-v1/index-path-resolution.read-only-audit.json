@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "auditType": "independent_read_only_index_loader_diagnosis",
+  "checkedAt": "2026-09-14T05:38:20.850Z",
+  "reviewer": "Codex /root/physics_alpha_image_review",
+  "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+  "finding": "confirmed_index_relative_dual_summary_path_mismatch",
+  "implementationChanged": false,
+  "historicalReviewsChanged": false,
+  "validationBoundariesChanged": false,
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/b048-oblique-current-carryover-v1/resolution-index.json",
+      "digest": "sha256:6cb64884c69d90df7bfab3f9b82eee7c1ae735a543077bfd5e79e5c21f196191"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/b048-oblique-current-carryover-v1/materialize.mts",
+      "digest": "sha256:8230a581d3a20209f4d968e35aa8a80763af9ea2b8ec00fa494e36b3de41afcc"
+    },
+    {
+      "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+      "digest": "sha256:f62b6819f77fd4e93d11dcef78a538ffbd58ef53b35d3066297458623ae7b6dc"
+    }
+  ],
+  "cause": {
+    "loaderPath": "app/scripts/reportDeepUnderstandingRollout.ts",
+    "pathResolverLine": 357,
+    "groupDirectoryLine": 1001,
+    "dualSummaryPathLine": 1002,
+    "resolutionPathLine": 1048,
+    "explanation": "resolveIndexPath always resolves against the directory containing the registered index. artifactDirectory supplies groupDirectory only for loading round-a and round-b. It does not change the base directory for dualSummaryPath or resolutionPath.",
+    "currentDualSummaryPath": "dual-summary.json",
+    "actualResolvedPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/b048-oblique-current-carryover-v1/dual-summary.json",
+    "actualResolvedFileExists": false
+  },
+  "minimalProposedFix": {
+    "indexField": "groups[0].dualSummaryPath",
+    "before": "dual-summary.json",
+    "after": "../../2026-09-08/batch-048-current-concepts-final-20-v1/dual-summary.json",
+    "materializerExpression": "relative(out, resolve(root, batch, 'dual-summary.json')).split('\\').join('/')",
+    "filesToChangeByOwner": [
+      "The current new carryover materialize.mts, so it deterministically emits the corrected index-relative path.",
+      "The current new carryover resolution-index.json, changing only groups[0].dualSummaryPath. The materializer refuses to overwrite an existing nonmatching artifact, so --write alone cannot replace the existing erroneous index."
+    ],
+    "mustRemainUnchanged": [
+      "Historical B048 dual-summary.json and both review rounds",
+      "Historical artifactDirectory and campaignGoalCount = 20",
+      "The new resolution.json bytes, its resolution digest and resolution fingerprint",
+      "All existing digest, count, completeness and repository-boundary checks",
+      "The existing schemaVersion = 1 aggregate index contract and its declared one-resolution snapshot counts"
+    ],
+    "notRequired": "The current resolutionPath is redundant but valid: ../../2026-09-14/b048-oblique-current-carryover-v1/resolution.json resolves to the current local resolution.json. Replacing it with resolution.json would improve clarity but is not needed for the minimal fix."
+  },
+  "evidence": {
+    "proposedTargetPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/dual-summary.json",
+    "proposedTargetExists": true,
+    "proposedTargetDigest": "sha256:6b414186b933224d16ebad5b9baad261ddf0236e3c85f0e93356c5f9d4d6b64f",
+    "matchesAlreadyDeclaredDualSummaryDigest": true,
+    "proposedPathRemainsInsideRepository": true,
+    "currentResolutionPathResolvesCorrectly": true,
+    "resolutionDigest": "sha256:1287f3655684341fe1f7f4a60bcc45660f047f6f9c03f1323fff4fedcf825974",
+    "currentNativeLegacySnapshotValidationErrors": [],
+    "proposedNativeLegacySnapshotValidationErrors": [],
+    "validationMethod": "Imported and called validateLegacyResolutionIndexSnapshot on the actual index and on an in-memory copy with only dualSummaryPath changed. Resolved filesystem paths and SHA-256 values were checked independently. No index bytes were changed for this check."
+  },
+  "schemaBoundary": {
+    "currentContract": "schemaVersion 1 AggregateResolutionIndex; accepted by the existing runtime guard and validateLegacyResolutionIndexSnapshot",
+    "closedStandaloneSchemaPath": "contracts/goal-description-review/v1/goal-description-standalone-batch-resolution-index.schema.json",
+    "whyNotSwitchToVersion2": "The closed standalone schema requires schemaVersion 2, artifactDirectory = '.', batch-local paths without '..', and complete batch membership. Native structure validation also requires campaignGoalCount and resolution count to equal batchGoalIds length. A one-goal carryover bound to an intact historical 20-goal dual summary does not satisfy that standalone contract. Changing the schema version would require materially different artifacts or weakened validation, neither of which is needed here."
+  },
+  "recommendedOwnerVerification": [
+    "Apply the single path correction to the new materializer and its new index while preserving resolution and historical bytes.",
+    "Run the carryover materializer without --write to prove all recorded outputs match its deterministic result.",
+    "Run the normal central rollout check after Root's concurrent registrations are consistent; confirm the prior B048 dual-summary ENOENT is absent and normal native resolution validation still succeeds."
+  ],
+  "limits": [
+    "The central full rollout checker was not rerun under a substituted index; no full post-fix integration success is claimed.",
+    "This audit diagnoses index mechanics only. It does not redo the fachliche B048 judgment or authorize changing its review gates.",
+    "Only this new audit file was written. Alpha, Canonical, QA, P, registry, materializer and existing index files were not changed by this task."
+  ]
+}

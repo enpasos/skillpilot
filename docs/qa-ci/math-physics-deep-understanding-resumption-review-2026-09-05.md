@@ -2,19 +2,21 @@
 
 Der aktuelle Umsetzungsstand steht im
 [Physik-Fortsetzungsstand vom 14. September](physics-resumed-checkpoint-2026-09-14.md).
-**Aktueller Auftrag:** Nach dem abgeschlossenen und committeten Meilenstein hat
-der Product Owner das 100-Prozent-Ziel ausdrücklich **nur für Physik** wieder
-aktiviert. Mathematik bleibt pausiert. Vor neuen fachlichen Änderungen ist die
-CI-Voraussetzung zu erfüllen; der neu gefundene Berichtsfehler und sein lokaler
-Fix stehen im neuesten Checkpoint. Ein grüner Zwischenstand ist danach kein
-erneuter Halteauftrag für Physik.
+**Aktueller Auftrag vom 14. September:** Der Product Owner verlangt nach B058
+einen commitfähigen Zwischenstand und anschließend eine Pause der Zielverfolgung
+bis auf weiteres. Physik erreicht lokal 470/478 streng abgeschlossene Ziele;
+die acht offenen Fälle bleiben offen. Die Konsolidierung und ihre dokumentierten
+lokalen Abschlussprüfungen sind beendet. Die Zielverfolgung ist bis zur
+ausdrücklichen Nutzerfreigabe angehalten; keine weiteren QS-Pakete starten.
+Mathematik bleibt ebenfalls pausiert. Die vorherige automatische
+Weiterlaufanweisung ist durch diesen ausdrücklichen Pausenauftrag ausgesetzt.
 Der [Meilenstein mit Nutzerpause vom 13./14. September](math-physics-resumed-checkpoint-2026-09-13.md)
 bleibt als historischer Abschluss- und Prüfbeleg erhalten.
 Der [pausierte Physik-Zwischenstand vom 8. September](physics-paused-checkpoint-2026-09-08.md)
 und die nachstehenden Abschnitte bleiben historische Fortsetzungsgrundlagen;
 die damaligen Pausen und Freigabeanfragen sind historisch. Maßgeblich ist jetzt
-die Physik-Wiederaufnahme mit vorgeschalteter CI-Prüfung, nicht eine alte
-Pausen- oder Fortsetzungsnotiz.
+der neue Pausenauftrag im Checkpoint vom 14. September, nicht eine ältere
+Fortsetzungsanweisung. Der Gesamtauftrag ist nicht als erreicht markiert.
 
 **Anweisungsupdate vom 13. September 2026:** Für notwendige neue oder korrigierte
 Bilder gilt die [aktuelle Provider- und Qualitätsregel](../concept/skill-graph/atomic-goal-visualizations.md#provider-priority-and-exception-policy)

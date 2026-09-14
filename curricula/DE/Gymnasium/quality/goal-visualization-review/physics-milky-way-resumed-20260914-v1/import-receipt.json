@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "goalId": "826af579-3e51-5ac9-bc2a-208d8a2fc99e",
+  "recordedAt": "2026-09-14T04:59:06Z",
+  "operation": "scoped-local-import-and-informed-profile-resource-binding",
+  "status": "local_import_completed_asset_retention_gate_open",
+  "decision": "accepted_pilot",
+  "provider": "image_gen",
+  "humanApproved": false,
+  "deployed": false,
+  "published": false,
+  "import": {
+    "dryRun": {
+      "command": "node scripts/import_goal_visualization.mjs --goal 826af579-3e51-5ac9-bc2a-208d8a2fc99e --image tmp/goal-visualizations/826af579-3e51-5ac9-bc2a-208d8a2fc99e/openai-common-analysis-edit-20260914-YC2FIa/milky-way-common-analysis-edit.png --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json --subject physik --provider image_gen --review-status pilot --prompt curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/edit-02.actual-prompt.de.md --reconstruction-prompt curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/image-reconstruction-prompt.de.md --alt-text 'Vier Beobachtungsbereiche (21-cm-Radio, Infrarot, sichtbares Licht und Röntgenstrahlung) führen gemeinsam zu einer Auswertung und einem aus Beobachtungsdaten erschlossenen Modell der Milchstraße. Getrennte schematische Schräg- und Seitenansichten zeigen Zentrum, Spiralarme und Scheibe; die Außenansichten sind Modellrekonstruktionen.' --dry-run",
+      "exitCode": 0
+    },
+    "execution": {
+      "command": "node scripts/import_goal_visualization.mjs --goal 826af579-3e51-5ac9-bc2a-208d8a2fc99e --image tmp/goal-visualizations/826af579-3e51-5ac9-bc2a-208d8a2fc99e/openai-common-analysis-edit-20260914-YC2FIa/milky-way-common-analysis-edit.png --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json --subject physik --provider image_gen --review-status pilot --prompt curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/edit-02.actual-prompt.de.md --reconstruction-prompt curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/image-reconstruction-prompt.de.md --alt-text 'Vier Beobachtungsbereiche (21-cm-Radio, Infrarot, sichtbares Licht und Röntgenstrahlung) führen gemeinsam zu einer Auswertung und einem aus Beobachtungsdaten erschlossenen Modell der Milchstraße. Getrennte schematische Schräg- und Seitenansichten zeigen Zentrum, Spiralarme und Scheibe; die Außenansichten sind Modellrekonstruktionen.'",
+      "exitCode": 0
+    },
+    "postImportCanonicalCheckedAt": "2026-09-14T04:55:30.639Z",
+    "newAssets": [
+      {
+        "path": "curricula/DE/Gymnasium/visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.png",
+        "digest": "sha256:853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794"
+      },
+      {
+        "path": "app/public/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.png",
+        "digest": "sha256:853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794"
+      },
+      {
+        "path": "backend/src/main/resources/static/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.png",
+        "digest": "sha256:853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794"
+      }
+    ],
+    "originalJpgsRetainedInAllThreePaths": true
+  },
+  "promptHistoryPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/generation-history.json",
+  "independentImageReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.independent-ai-review.json",
+  "profileReview": {
+    "informedContextReview": true,
+    "substantiveBodyReviewedInFull": true,
+    "profileBodyChanged": false,
+    "dissentChanged": false,
+    "profileFingerprint": "sha256:39abd01a8a5573b14ccffcc1e6a7042afda369f612ff0c4fbde49c55a2d01368",
+    "oldReviewInputFingerprint": "sha256:69587583d7b3737fe014d7e3f27fe174fa2caadc02c8914275d0a2385f490495",
+    "newReviewInputFingerprint": "sha256:4774c0d3d92847b8fea00978579c34f352dbb9941d2cd62de7ae866af6fa1f19",
+    "soloConfig": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.config.json",
+    "soloReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.review.jsonl",
+    "soloCandidates": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.candidates.json",
+    "retainedSevenConfig": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/retained-seven.positive-evidence.config.json",
+    "retainedSevenReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/retained-seven.positive-evidence.review.jsonl",
+    "historicalConfigUnchanged": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-050-current-astro-dependent-contexts-11-v1.paused-current-20260908-v1.config.json",
+    "historicalReviewUnchanged": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-050-current-astro-dependent-contexts-11-v1.paused-current-20260908-v1.review.jsonl",
+    "reviewedResourceTypes": [
+      "goal-visualization"
+    ],
+    "claimLevel": "E1/G1",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "noNewBlindDescriptionRound": true,
+    "compatibilityReasonDe": "Das Profil verlangt unabhängig erhobene oder bereitgestellte, räumlich abgestimmte Mehrwellenlängendaten, begründete Instrumentenwahl, Berücksichtigung von Beobachtungsgrenzen und eine begrenzte Modellinferenz. Die zwei frischen Fälle mit Staubverdeckung und zusätzlichem Röntgenband funktionieren unabhängig vom genauen Atlaslayout. Der gemeinsame Datenfluss und die getrennten schematischen Ansichten widersprechen keiner Profilforderung."
+  },
+  "protectedState": {
+    "checkedAt": "2026-09-14T04:58:23.495Z",
+    "allChecksPassed": true,
+    "otherGoalsUnchanged": 763,
+    "otherQaRecordsUnchanged": 508,
+    "changedQaFields": [
+      "imageUrl",
+      "publicAssetPath",
+      "canonicalAssetPath",
+      "assetSha256",
+      "aiApprovedAssetSha256",
+      "aiReviewedAt",
+      "aiReviewer",
+      "aiNotes"
+    ],
+    "legacyQaFieldsUnchanged": true,
+    "humanApproved": "no",
+    "targetNonResourceFieldsUnchanged": true,
+    "protectedFiles": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-050-current-astro-dependent-contexts-11-v1.paused-current-20260908-v1.config.json",
+        "digest": "sha256:538ecd0fe053abc04c7750f1d8082347d37d209a08eaa14278d3ba69a84c588b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-050-current-astro-dependent-contexts-11-v1.paused-current-20260908-v1.review.jsonl",
+        "digest": "sha256:07b5d976cc30e0b547a6c69465b66c9f37989dfe328a3d8ce029301cfe2615f7"
+      },
+      {
+        "path": "tmp/goal-visualizations/826af579-3e51-5ac9-bc2a-208d8a2fc99e/openai-separated-model-edit-20260914-hQhLqQ/actual-edit-prompt.de.md",
+        "digest": "sha256:6c13db70bec18e105356bd1e5d16dc1bff3d5a77d74e347b35a41430be6490a0"
+      },
+      {
+        "path": "tmp/goal-visualizations/826af579-3e51-5ac9-bc2a-208d8a2fc99e/openai-common-analysis-edit-20260914-YC2FIa/actual-edit-prompt.de.md",
+        "digest": "sha256:3256947022e295f857e6d3176f39c834d3b3e908d6180950ceb614ad09d509c7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.jpg",
+        "digest": "sha256:6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f"
+      },
+      {
+        "path": "app/public/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.jpg",
+        "digest": "sha256:6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f"
+      },
+      {
+        "path": "backend/src/main/resources/static/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.jpg",
+        "digest": "sha256:6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f"
+      },
+      {
+        "path": "tmp/goal-visualizations/826af579-3e51-5ac9-bc2a-208d8a2fc99e/openai-separated-model-edit-20260914-hQhLqQ/milky-way-separated-model-edit.png",
+        "digest": "sha256:940b81981a5f5db64c27c356a251e53926318d21b56610bdace1741ebc8043b7"
+      },
+      {
+        "path": "tmp/goal-visualizations/826af579-3e51-5ac9-bc2a-208d8a2fc99e/openai-common-analysis-edit-20260914-YC2FIa/milky-way-common-analysis-edit.png",
+        "digest": "sha256:853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794"
+      }
+    ],
+    "originalPromptArchiveByteIdentical": true,
+    "actualEditPromptsByteIdentical": true,
+    "canonicalPromptMatchesActualSecondEdit": true,
+    "standaloneReconstructionPromptMatchesDeclaredSource": true,
+    "retainedSevenLinesByteIdentical": true,
+    "retainedReviewDigest": "sha256:015bbe32e9735464128695dffb4706d41e087b2c2f7c060252cd5a32413a5d4b",
+    "profileBodyUnchanged": true,
+    "dissentUnchanged": true,
+    "profileFingerprint": "sha256:39abd01a8a5573b14ccffcc1e6a7042afda369f612ff0c4fbde49c55a2d01368",
+    "oldReviewInputFingerprint": "sha256:69587583d7b3737fe014d7e3f27fe174fa2caadc02c8914275d0a2385f490495",
+    "newReviewInputFingerprint": "sha256:4774c0d3d92847b8fea00978579c34f352dbb9941d2cd62de7ae866af6fa1f19",
+    "newGoalFingerprint": "sha256:27b8add1a4ac74c54ea1f39e3543080c42c0d75fb4d89bac012c3f77915c86d5",
+    "newAssets": [
+      {
+        "path": "curricula/DE/Gymnasium/visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.png",
+        "digest": "sha256:853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794"
+      },
+      {
+        "path": "app/public/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.png",
+        "digest": "sha256:853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794"
+      },
+      {
+        "path": "backend/src/main/resources/static/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.png",
+        "digest": "sha256:853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794"
+      }
+    ],
+    "canonicalDigest": "sha256:58d46a8a6594b6b5470d35c8292a5c504ab48456c7d750306931acbb0214aa40",
+    "qaDigest": "sha256:0663165715fb7453a6004d7d22520ec1ee37e7dbda1831ea808b3f329fb454da"
+  },
+  "tests": [
+    {
+      "command": "npm --prefix app run quality:positive-goal-evidence-candidates -- --config curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.config.json --candidates curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.candidates.json",
+      "exitCode": 0,
+      "output": "> skillpilot@0.0.0 quality:positive-goal-evidence-candidates\n> tsx scripts/materializePositiveGoalEvidenceCandidates.ts --config curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.config.json --candidates curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.candidates.json\n\nVerified curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.review.jsonl: 1 current AI candidate profile(s)."
+    },
+    {
+      "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.config.json",
+      "exitCode": 0,
+      "output": "> skillpilot@0.0.0 quality:positive-goal-evidence:check\n> tsx scripts/positiveGoalEvidenceReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.config.json\n\n# Positive Goal Evidence Review: canonical-physics-positive-evidence-milky-way-current-image-20260914-v1\nScope: Ein informiert nach aktuellem Bildkontext geprüftes Milchstraßen-P-Profil; fachlicher Körper und historischer Dissent unverändert, neue Bildbindung; E1/G1 AI-Kandidat ohne Human- oder Blind-D-Freigabe.\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0"
+    },
+    {
+      "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/retained-seven.positive-evidence.config.json",
+      "exitCode": 0,
+      "output": "> skillpilot@0.0.0 quality:positive-goal-evidence:check\n> tsx scripts/positiveGoalEvidenceReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/retained-seven.positive-evidence.config.json\n\n# Positive Goal Evidence Review: canonical-physics-positive-evidence-v1-b050-astro-dependent-11-v1\nScope: Sieben unveränderte P050-AI-Kandidaten aus dem historischen Acht-Ziele-Scope, byteidentisch übernommen; kein neuer fachlicher Review und keine neue Bildbindung.\nConfigured goals: 7\nApproved: 0\nNeeds human review: 7\nRejected: 0\nBlocking issues: 0"
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-assets",
+      "exitCode": 1,
+      "output": "Goal visualization asset check failed with 3 issue(s): retained original JPG files at canonical, public and backend paths are orphan images without canonical primary goal-visualization links."
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-qa -- --subject=physik",
+      "exitCode": 0,
+      "output": "Goal visualization QA ledgers are up to date (1 subject file(s))."
+    },
+    {
+      "command": "npm --prefix app run validate:graph",
+      "exitCode": 0,
+      "output": "593 landscapes passed validation."
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "command": "Explicit before/after hash and structural assertions against baseline.json",
+      "exitCode": 0,
+      "output": "763 other goals; 508 other QA records; target non-resource fields; all legacy QA fields; original JPGs and prompts; historical P artifacts; unchanged P body/dissent; seven byte-identical retained lines; three identical new PNGs."
+    }
+  ],
+  "remainingIntegration": [
+    {
+      "owner": "root",
+      "issue": "Native asset checker rejects the three intentionally preserved original JPGs as unreferenced primary assets.",
+      "severity": "blocks_global_asset_check",
+      "requiredDecision": "Reconcile native historical-asset retention semantics with the explicit original-preservation instruction. No originals were deleted and no secondary active link was fabricated."
+    },
+    {
+      "owner": "root",
+      "issue": "Central registry, in-flight state, rollout status, inventory, book and global quality integration are outside this delegated write scope."
+    }
+  ],
+  "unchangedScope": [
+    "runtime",
+    "security",
+    "plugins",
+    "central registry",
+    "in-flight ledger",
+    "global rollout status",
+    "quality reports",
+    "AI transparency inventory",
+    "books",
+    "description reviews"
+  ]
+}

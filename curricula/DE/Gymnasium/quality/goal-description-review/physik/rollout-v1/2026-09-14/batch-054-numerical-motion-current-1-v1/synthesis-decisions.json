@@ -1,0 +1,84 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-054-numerical-motion-current-synthesis-20260914-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex /root; exact model identifier not exposed",
+  "synthesizedAt": "2026-09-14T03:59:25.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914",
+    "batchManifestDigest": "sha256:d6dff823d06fb37519bec7f4f572d4902e5637a562b2be1de90f69b5854d9c30",
+    "configDigest": "sha256:f723171e55166c6110799ffc9c54d9a7a9acf92f8ef76a67b881bf89cc056e15",
+    "bundleFingerprint": "sha256:7122f1f6a9fb01cca68c955f8f4789b58267650a4ed19fc3297581c7015ba5bc",
+    "bookDigest": "sha256:1d9d5c3d98ec0ba9246531bd5dbdaabb4d240a3aea3ce7c269f39cd35192cedd",
+    "reviewInputFingerprint": "sha256:127f192abfc3770d195510bb77b53777f386ff0c9712954b7ee9daceb602e638",
+    "dualSummaryDigest": "sha256:45edb7547db3c0b902ab5b52486e9b2fc220913c586cd1eb5dd9d8a63eee41c9",
+    "canonicalLandscapeDigest": "sha256:0b3a2f2e015cdfbdf7240dccc4a1d7318ee4283ab3007199f6e52c8e204f643e"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-a",
+      "campaignDigest": "sha256:af92866dd0ea5226e75fa0699325591e0a05998cda19bd6b6075f7b4beca489e",
+      "roundId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-independent-a",
+      "reviewInputFingerprint": "sha256:127f192abfc3770d195510bb77b53777f386ff0c9712954b7ee9daceb602e638",
+      "batchId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:7d7a9f5b276c393a35482ed02f5fba9a2c5ec7fb31d782efe649d390521d1994",
+      "runId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-a.batch-001.run",
+      "runManifestDigest": "sha256:9b825ed865f0317436df0e30d767c48cbc608cb34d7240d7081103ad7f36a5ab",
+      "resultsDigest": "sha256:57da0236a2177f03c8ac53f7b6898fb3e238e8be991ec9b17357611b8e2a3f77"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-b",
+      "campaignDigest": "sha256:1d648b733aadef9ccee95dc3b3a2d6eae4d022d9fa856db99bd255e0578a06a9",
+      "roundId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-independent-b",
+      "reviewInputFingerprint": "sha256:127f192abfc3770d195510bb77b53777f386ff0c9712954b7ee9daceb602e638",
+      "batchId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:312eb0a1aa67c4630b16f2c3d6246d2265ffa8286223c3e3cce6e136c6e358c5",
+      "runId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-b.batch-001.run",
+      "runManifestDigest": "sha256:60641c449f75fe8bb971a572f292d996783e8cdd039b218e1b4b6cedc79ad58d",
+      "resultsDigest": "sha256:ab526c477f357571aa031c9bd1a37d8b4cb84cd73a18dc883a968ea58d021ca1"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-054-numerical-motion-current-synthesis-20260914-v1-decision-001",
+      "goalId": "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3bfc8a52e9b6080aaa9486b7f51a92f404bcb9424593a2b4baebd94cd2b0d43a",
+      "pageFingerprint": "sha256:9ee32ef0b6b43ca98df6bd99f74a94b7aa166c4b5eb3c58e48685243ed34346a",
+      "goalReviewContextFingerprint": "sha256:0527c11a8b44352c7788710514ee02c5184e96da34a822dad3f744b1f7f7ea75",
+      "finalText": {
+        "titleDe": "Numerische Simulation von Bewegungen",
+        "titleEn": "Numerical Simulation of Motions",
+        "descriptionDe": "Die lernende Person kann Bewegungen mit Reibung durch Differenzenquotienten modellieren und mithilfe einer Tabellenkalkulation oder ähnlicher Werkzeuge numerisch simulieren.",
+        "descriptionEn": "The learner can model motions with friction using difference quotients and numerically simulate them using a spreadsheet or similar tools."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-b054-a-761a0879",
+          "recordDigest": "sha256:6da4e0fec4c7ba1811c4347f7e990eb4c7478454129e9d80af599c9ccc2e55f8"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-b.batch-001.761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+          "recordDigest": "sha256:86c08eff1c2e3f7a3737fa7a590fee0eb565b2df4358396241d8d99347ed178a"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann Bewegungen mit Reibung aus einem Kraftmodell mithilfe von Differenzenquotienten für Geschwindigkeit und Beschleunigung schrittweise näherungsweise berechnen und mit einer Tabellenkalkulation oder vergleichbaren Werkzeugen numerisch simulieren.",
+        "proposedDescriptionEn": "The learner can use a force model and difference quotients for velocity and acceleration to calculate successive approximations of motions with friction and simulate them numerically using a spreadsheet or comparable tools.",
+        "rationaleDe": "Die Unterscheidung zwischen Kraftmodell und numerischer Näherung ist fachlich wichtig, aber die aktuelle Kurzbeschreibung behauptet nicht, dass Differenzenquotienten das Reibungsgesetz festlegen. Der erneut gelesene HE-Originaltext, PDF-Seite 31, E.4, verbindet das mathematische Modell ausdrücklich mit Differenzenquotienten und numerischer Berechnung. Das unverändert aktuelle P-v2-Profil konkretisiert die Trennung in force-to-discrete-update und time-step-and-model-check sowie zwei selbstständig zu konstruierenden Simulationen. Damit ist der Einwand im vollständigen Beschreibungs-/Profilvertrag bereits abgedeckt. Die längere Alternative ist vertretbar, beseitigt hier aber keinen belegten Fehler oder fehlenden Kompetenzanteil der kanonischen Formulierung. Sie wird nicht übernommen; der unveränderte REVISE-Record bleibt ausdrücklich als Dissens gebunden.",
+        "rationaleEn": "Distinguishing the force model from the numerical approximation matters scientifically, but the current concise description does not claim that difference quotients determine the friction law. The original Hessian text, reread on PDF page 31, E.4, explicitly connects the mathematical model with difference quotients and numerical calculation. The unchanged current P-v2 profile makes the distinction explicit in force-to-discrete-update and time-step-and-model-check and in two independently constructed simulations. The concern is therefore already covered by the complete description/profile contract. The longer alternative is defensible but does not repair a demonstrated error or missing competence component in the canonical wording here. It is not adopted; the unchanged REVISE record remains explicitly bound as dissent."
+      },
+      "rationaleDe": "Zwei frische blinde B054-Runden prüfen genau den aktuellen Einzielkontext: A entscheidet KEEP, B REVISE. Root hat beide vollständigen Records und Laufmanifeste gelesen und den Formulierungsdissens gegen die aktuelle Seite, HE E.4 und den bestehenden vollständigen bilingualen P-v2-Körper abgewogen; dies ist kein Mehrheitsentscheid und keine menschliche Freigabe. Die geänderte Voraussetzung heißt jetzt Fallbewegung mit Luftwiderstand und Grenzgeschwindigkeit. Der aktuelle Seitenfingerprint 9ee32ef0b6b43ca98df6bd99f74a94b7aa166c4b5eb3c58e48685243ed34346a entspricht dem im vorangegangenen informierten Audit nachgewiesenen Kontext, während eigener Text und Canonical unverändert sind. Als D-Evidenz wird Runde A gewählt: Sie verbindet Kraftmodell, konsistente Updates und Zeitschrittkontrolle mit einem unabhängigen Richtungswechsel-Fall. Die create-Empfehlungen beziehen sich auf das profilfreie Blindpaket; das separat registrierte aktuelle B045-P-v2-Profil wird weder ersetzt noch dupliziert. Sein Fingerprint 411a9f3b22cd46d8d531a43b53ec50f10b30ccd99aaf343011cf0176cc48b9b6 und sein ai_candidate/needs_human_review-Status bleiben erhalten. Das gute Euler-Bild, Quellenzuordnungen, Atomicity, Memory und alle historischen D049-Records bleiben unverändert. Kein neuer Quellenabdeckungs-, Bildfreigabe-, Laufzeit- oder Lernendenleistungsanspruch. Dieser Abschluss stellt die gültige D-Bindung nach einer echten Kontextänderung wieder her; er ist keine neue kanonische Fachkorrektur.",
+      "rationaleEn": "Two fresh blind B054 rounds review exactly the current one-goal context: A returns KEEP and B REVISE. Root read both complete records and run manifests and weighed the wording dissent against the current page, Hessian E.4 and the existing complete bilingual P-v2 body; this is neither majority voting nor human approval. The changed prerequisite is now titled Fallbewegung mit Luftwiderstand und Grenzgeschwindigkeit. The current page fingerprint 9ee32ef0b6b43ca98df6bd99f74a94b7aa166c4b5eb3c58e48685243ed34346a matches the context established by the preceding informed audit, while the goal's own wording and canonical landscape are unchanged. Round A supplies D evidence: it connects the force model, consistent updates and time-step checks with an independent direction-reversal case. Both create recommendations concern the profile-free blind package; the separately registered current B045 P-v2 profile is neither replaced nor duplicated. Its fingerprint 411a9f3b22cd46d8d531a43b53ec50f10b30ccd99aaf343011cf0176cc48b9b6 and ai_candidate/needs_human_review status remain intact. The good Euler image, source mappings, atomicity, memory and all historical D049 records are unchanged. No new source-coverage, image-approval, runtime or learner-performance claim is made. This closure restores a valid D binding after a real context change; it is not a new canonical subject-matter correction."
+    }
+  ],
+  "manifestFingerprint": "sha256:0ed85d9fee324b149acfc3f4bddccdbfd94b1bddd384ca44ac73feaf1a4aef05"
+}

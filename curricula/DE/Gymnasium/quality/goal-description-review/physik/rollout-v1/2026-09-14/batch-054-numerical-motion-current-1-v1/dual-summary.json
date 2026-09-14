@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:7122f1f6a9fb01cca68c955f8f4789b58267650a4ed19fc3297581c7015ba5bc",
+  "reviewInputFingerprint": "sha256:127f192abfc3770d195510bb77b53777f386ff0c9712954b7ee9daceb602e638",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-a",
+      "roundId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-a.batch-001.run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::not-exposed-by-runtime::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-b",
+      "roundId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-b.batch-001.run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::not-exposed-by-runtime::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::not-exposed-by-runtime::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+      "firstRecordId": "physik-b054-a-761a0879",
+      "secondRecordId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-b.batch-001.761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+      "firstRunId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-a.batch-001.run",
+      "secondRunId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-b.batch-001.run",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

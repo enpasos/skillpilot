@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "informed_profile_body_keep_preparation",
+  "recordedAt": "2026-09-14T05:22:07Z",
+  "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+  "reviewer": "Codex /root/physics_alpha_image_review, after completion of independent image review",
+  "decision": "KEEP_existing_profile_body_and_dissent",
+  "newContextBindingMaterialized": false,
+  "humanApproved": false,
+  "blindReviewClaimed": false,
+  "sourceConfig": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-calibration-final20-v3.retained-after-final-context-v1.config.json",
+  "sourceConfigSha256": "6068510cd16b5d535c24ec8f4b6bf3c7f18762a7a252cdcbcaf953ed5599f63d",
+  "sourceReview": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-calibration-final20-v3.retained-after-final-context-v1.review.jsonl",
+  "sourceReviewSha256": "0c7244f6543b2f00f0254561ccb06ee09f0d61e0bfd0752270a5c6d831527d04",
+  "sourceScopeSize": 19,
+  "retainedOtherRows": 18,
+  "oldGoalFingerprint": "sha256:d51d9b4ba8f2a9aa8a69c371c0f8a4f35521aeaea70dbc51edd0be1f021df598",
+  "oldReviewInputFingerprint": "sha256:74c5460b34c0c5a8112a2cb20fe6fffedb66128faa4379dca6fcd9a8953adb87",
+  "profileFingerprintToKeep": "sha256:5d3f9f9cde44ab00fc89cddf9e995c805ff1bfc4919570016435e7be5e6c6df9",
+  "candidateImageSha256": "f412bfcd05c15149981d33a08fbd2298b68c323618b2a7a9f62e1e670997b580",
+  "completeProfileBodyRead": true,
+  "checks": [
+    {
+      "section": "archetype and expectations",
+      "result": "KEEP",
+      "reason": "The concept profile pairs complete initial/final rest-mass accounting with observable learner explanation, identifies product energy carriers while preserving total energy, and requires reasoning about the sign of the mass difference. The final image makes the full alpha product system explicit and removes the suggestion that nucleons disappear. Its positive-Q example does not claim that every nuclear process releases energy."
+    },
+    {
+      "section": "coverageExpectations",
+      "result": "KEEP",
+      "reason": "All three declared expectations remain required; two independent demonstrations, fresh variation and independent transfer remain required. Merely reading or copying the image cannot satisfy these requirements."
+    },
+    {
+      "section": "all three variationAxes",
+      "result": "KEEP",
+      "reason": "Changing from alpha decay to a fully specified simple reaction, reversing the rest-mass-difference sign and considering kinetic energy with or without additional electromagnetic radiation remain meaningful variations. The image explicitly selects the no-additional-radiation example and does not invalidate the broader energy-carrier variation."
+    },
+    {
+      "section": "alpha-decay-mass-table case, all bilingual fields",
+      "result": "KEEP",
+      "reason": "A fresh supplied mass table still demands the learner's own complete sum and qualitative sign argument. The image supplies no numerical table or worked task. Mother versus daughter plus alpha, and kinetic energy of both products, match the independent performance demand."
+    },
+    {
+      "section": "simple-reaction-opposite-sign case, all bilingual fields",
+      "result": "KEEP",
+      "reason": "The unfamiliar case has a larger product rest-mass sum and requires energy input. It tests the same conservation principle with the opposite sign; it is not pre-solved by the positive-Q alpha illustration and remains independent of that illustration's layout."
+    },
+    {
+      "section": "German-English equivalence and dissent",
+      "result": "KEEP",
+      "reason": "The German and English demands express the same system accounting, sign reasoning and energy conservation. The existing empty dissent array remains unchanged; no historical agreement, review run or stronger evidence claim is invented."
+    }
+  ],
+  "bindingPlan": {
+    "newScope": "One alpha profile with reviewedResourceTypes = [goal-visualization] after the native import has made the accepted PNG the active canonical/public asset.",
+    "preserve": "Copy the complete existing profile object and dissent unchanged. Native materialization may renew only the informed-review metadata and current input bindings; verify the profile fingerprint is unchanged.",
+    "claimBounds": "needs_human_review / ai_candidate / E1 / G1, no reviewRunIds",
+    "retention": "Copy the other 18 JSONL rows with their original bytes and line endings into a new retained-eighteen review; retain original reviewId, unchanged fields and reviewedResourceTypes=[] in its new subset config. Do not rewrite the historical 19-goal source config or source review.",
+    "registry": "After Root authorizes integration, replace exactly the old 19-goal registry config entry with the alpha solo config and retained-eighteen config. Root owns registry/global artifacts."
+  },
+  "limits": [
+    "This is an informed image/profile compatibility judgment after the independent image review, not a new independent D round.",
+    "No canonical, QA, profile record, registry or global artifact was changed by this preparation.",
+    "The active goal, source profile and source hashes must be rechecked after Root completes B057 and before import or materialization."
+  ]
+}

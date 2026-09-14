@@ -1,0 +1,45 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-a.run-001",
+  "campaignId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-a",
+  "roundId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:7f1f4568b5c12ec129b097a8f496f4c32949f4d97346a6c8d98cb55ab3d47ec3",
+  "bundleFingerprint": "sha256:f947809c7d890a52f6ba4316e0cfb23ac9e78efd32f8418e151bd67d1f115bde",
+  "bookDigest": "sha256:bbc0beccece31adbc49ec9be5ba9d29d8f5461b79cf55d0ef5c5737fe27cc8ce",
+  "provider": "OpenAI",
+  "model": "not-exposed-by-runtime",
+  "modelVersion": "not-exposed-by-runtime",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:0410d5162478c9422d9066d31e99f7fea96d7ae78f5f99f4019a3f46df5e40c4",
+  "independenceGroupId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+    "3857891b-d328-585b-9936-85c7aff122ee",
+    "3b586f2a-60e2-5019-aa08-6a47616a1f1f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:7f1f4568b5c12ec129b097a8f496f4c32949f4d97346a6c8d98cb55ab3d47ec3"
+    }
+  ],
+  "startedAt": "2026-09-14T05:25:10Z",
+  "completedAt": "2026-09-14T05:28:01Z",
+  "status": "completed",
+  "outputDigest": "sha256:cf63dacff8845d7b475f701332eaa0f242dc2b9cba1da2c8c11d6c50bee7543c",
+  "toolchainVersion": "node-v20.20.2.tsx-4.21.0"
+}

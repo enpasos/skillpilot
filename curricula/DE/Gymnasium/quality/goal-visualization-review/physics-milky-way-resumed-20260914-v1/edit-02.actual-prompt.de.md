@@ -1,0 +1,13 @@
+Use case: precise-object-edit
+Asset type: bestehende deutschsprachige Physik-Unterrichtsgrafik.
+Input images: Image 1 ist das einzige Edit-Ziel.
+
+Ändere genau zwei missverständliche Elemente, alles andere bleibt erhalten:
+1. Ersetze im oberen Ansichtslabel ausschließlich „Draufsicht“ durch „Schrägansicht“. Das ganze Label lautet danach „Schrägansicht (schematisch)“. Die obere Spiralgalaxienzeichnung selbst bleibt unverändert; keine neue Geometrie und keine Draufsichtbehauptung.
+2. Bündele die vier bisherigen farbigen Eingangspfeile zu einem einzigen gemeinsamen Auswertungsschritt, bevor die Daten das Modell erreichen. Alle vier linken Spektralbereichsfelder liefern sichtbar an dieselbe gemeinsame Sammelstelle beziehungsweise dieselbe zusammenhängende vertikale Sammellinie im bisherigen Pfeilkorridor. Von dieser Sammelstelle führt genau EIN gemeinsamer neutraler Pfeil zum gesamten rechten Modellrahmen. Er endet am Rahmen, nicht an einer einzelnen Ansicht oder einer Galaxienstruktur. Es dürfen keine separaten Pfeile mehr von einzelnen Spektralbereichen zur Schrägansicht oder zur Seitenansicht führen. Alle vier Datenquellen werden gemeinsam ausgewertet, nicht je zwei pro Perspektive.
+
+Nutze für die gemeinsame Sammellinie und den einzigen Ausgangspfeil den bestehenden Zwischenraum der bisherigen Pfeile. Die vier Eingänge behalten ihre bisherigen Farben. Falls gut lesbar und ohne Überdeckung möglich, ergänze an der gemeinsamen Sammelstelle „Gemeinsame Auswertung“; diese kurze Zusatzbeschriftung darf entfallen, wenn die eindeutige Vier-zu-eins-Bündelung für sich verständlich ist. Die Zusammenführung darf weder Text überdecken noch als fünfter Spektralbereich erscheinen. Kein Entfall vorhandener Inhalte, um Platz zu gewinnen.
+
+Strenge Invarianten: Die gemeinsame Überschrift „Aus Beobachtungsdaten erschlossenes Modell“ bleibt vollständig erhalten. Beide getrennten Galaxienansichten, Trennlinie, unteres Label „Seitenansicht (schematisch)“ und alle Labels „Zentrum“, „Spiralarme“, „Scheibe“ bleiben bestehen. Die ganze Hauptüberschrift „Milchstraße in Spektralbereichen“, der obere Instrumentenstreifen samt allen Geräten/Symbolen, sämtliche vier linken Beobachtungsfelder mit allen bisherigen Texten und Bildinhalten, ihre Reihenfolge und Farben bleiben vollständig erhalten. Gleicher handgezeichneter Schriftstil, dunkle Konturen, Bildseitenverhältnis, deckender Hintergrund und Farbwelt. Keine neue Fachinformation, keine zusätzlichen Geräte oder Themen, keine Formeln, kein Wasserzeichen.
+
+Dieser Edit korrigiert nur die Perspektivbezeichnung und die Datenfluss-Zuordnung. Die zwei Galaxienbilder müssen nicht neu gezeichnet werden.

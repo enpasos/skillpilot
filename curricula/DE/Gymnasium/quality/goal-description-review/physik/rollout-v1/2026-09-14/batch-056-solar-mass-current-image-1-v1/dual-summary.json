@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:ba8c0f95195cbd7f698da21dcfbfcf462bd997d3a08f294ade660c7ff909e99c",
+  "reviewInputFingerprint": "sha256:06c7e56938496817736dd8465312baaae38236fa0dac05a71fa9ca46a579c2d5",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-056-solar-mass-current-image-1-v1-20260914-a",
+      "roundId": "physik-rollout-v1-batch-056-solar-mass-current-image-1-v1-20260914-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-056-solar-mass-current-image-1-v1-20260914-independent-a",
+      "runIds": [
+        "physik-rollout-v1-batch-056-solar-mass-current-image-1-v1-20260914-first-pass-a.batch-001.blind-a-s1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::not-exposed-by-runtime::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-056-solar-mass-current-image-1-v1-20260914-b",
+      "roundId": "physik-rollout-v1-batch-056-solar-mass-current-image-1-v1-20260914-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-056-solar-mass-current-image-1-v1-20260914-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-056-solar-mass-current-image-1-v1-20260914-first-pass-b.batch-001.run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::not-exposed-by-runtime::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::not-exposed-by-runtime::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "5e9cd796-3887-5457-8a1f-26863ca7eb28",
+      "firstRecordId": "physik-rollout-v1-batch-056-solar-mass-current-image-1-v1-20260914-first-pass-a.batch-001.blind-a-s1.goal-001",
+      "secondRecordId": "physik-rollout-v1-batch-056-solar-mass-current-image-1-v1-20260914-first-pass-b.batch-001.001",
+      "firstRunId": "physik-rollout-v1-batch-056-solar-mass-current-image-1-v1-20260914-first-pass-a.batch-001.blind-a-s1",
+      "secondRunId": "physik-rollout-v1-batch-056-solar-mass-current-image-1-v1-20260914-first-pass-b.batch-001.run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

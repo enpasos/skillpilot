@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/batch-054-numerical-motion-current-1-v1.config.json",
+  "configDigest": "sha256:f723171e55166c6110799ffc9c54d9a7a9acf92f8ef76a67b881bf89cc056e15",
+  "goalIds": [
+    "761a0879-fc15-5d0c-a2b7-2b439efecd5b"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 478,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:89e8c918651e8c9748b604e70ed55891b26812f7389b854275e8c6d7aeda90bc"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:1d9d5c3d98ec0ba9246531bd5dbdaabb4d240a3aea3ce7c269f39cd35192cedd",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:7122f1f6a9fb01cca68c955f8f4789b58267650a4ed19fc3297581c7015ba5bc",
+    "reviewInputFingerprint": "sha256:127f192abfc3770d195510bb77b53777f386ff0c9712954b7ee9daceb602e638",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-a",
+        "campaignDigest": "sha256:af92866dd0ea5226e75fa0699325591e0a05998cda19bd6b6075f7b4beca489e",
+        "roundId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-independent-a",
+        "batchId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:7d7a9f5b276c393a35482ed02f5fba9a2c5ec7fb31d782efe649d390521d1994"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-b",
+        "campaignDigest": "sha256:1d648b733aadef9ccee95dc3b3a2d6eae4d022d9fa856db99bd255e0578a06a9",
+        "roundId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-independent-b",
+        "batchId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:312eb0a1aa67c4630b16f2c3d6246d2265ffa8286223c3e3cce6e136c6e358c5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

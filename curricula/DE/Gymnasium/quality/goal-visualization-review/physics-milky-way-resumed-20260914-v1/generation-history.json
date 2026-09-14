@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "goalId": "826af579-3e51-5ac9-bc2a-208d8a2fc99e",
+  "recordedAt": "2026-09-14T04:59:06Z",
+  "provider": "image_gen",
+  "tool": "tools.image_gen__imagegen",
+  "model": "not-exposed-by-runtime",
+  "generationParameters": "not-exposed-by-runtime",
+  "newGenerationDuringImport": false,
+  "historyEvidenceReadAfterIndependentReview": true,
+  "original": {
+    "assetPaths": [
+      "curricula/DE/Gymnasium/visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.jpg",
+      "app/public/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.jpg",
+      "backend/src/main/resources/static/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.jpg"
+    ],
+    "digest": "sha256:6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f",
+    "providerFromHistoricalPrompt": "Google Gemini / Nano Banana Pro",
+    "promptArchive": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/archived-original/prompt.de.md",
+    "promptDigest": "sha256:b3a7516276ce60ad5729222fabf3b77d3a4363ed479f680fdf4939f8f00f23f8",
+    "sourceReconstructionPromptBeforeImport": {
+      "exists": false,
+      "path": "curricula/DE/Gymnasium/visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/image-reconstruction-prompt.de.md"
+    },
+    "unrelatedTemporaryReconstructionExcluded": {
+      "associatedImageDigest": "sha256:53a7ff1d1faed34df9c0f3ce22d6c67bbd5acf3c361838930f036bc1223d7441",
+      "reason": "Its associated generated JPG does not match the active original JPG; it is not claimed as that original's reconstruction prompt."
+    }
+  },
+  "edits": [
+    {
+      "ordinal": 1,
+      "date": "2026-09-14",
+      "actualPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/edit-01.actual-prompt.de.md",
+      "actualPromptSourcePath": "tmp/goal-visualizations/826af579-3e51-5ac9-bc2a-208d8a2fc99e/openai-separated-model-edit-20260914-hQhLqQ/actual-edit-prompt.de.md",
+      "actualPromptDigest": "sha256:6c13db70bec18e105356bd1e5d16dc1bff3d5a77d74e347b35a41430be6490a0",
+      "referenceStrategy": "one local referenced_image_paths entry; edit the current original",
+      "references": [
+        {
+          "path": "app/public/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.jpg",
+          "digest": "sha256:6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f"
+        }
+      ],
+      "output": {
+        "path": "tmp/goal-visualizations/826af579-3e51-5ac9-bc2a-208d8a2fc99e/openai-separated-model-edit-20260914-hQhLqQ/milky-way-separated-model-edit.png",
+        "digest": "sha256:940b81981a5f5db64c27c356a251e53926318d21b56610bdace1741ebc8043b7"
+      },
+      "disposition": "superseded_intermediate_candidate_not_imported",
+      "recordedReasonSource": "tmp/goal-visualizations/826af579-3e51-5ac9-bc2a-208d8a2fc99e/openai-separated-model-edit-20260914-hQhLqQ/edit-notes.md",
+      "recordedReason": "Creator evidence records residual ambiguity in the top-view label and band-to-view arrow mapping."
+    },
+    {
+      "ordinal": 2,
+      "date": "2026-09-14",
+      "actualPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/edit-02.actual-prompt.de.md",
+      "actualPromptSourcePath": "tmp/goal-visualizations/826af579-3e51-5ac9-bc2a-208d8a2fc99e/openai-common-analysis-edit-20260914-YC2FIa/actual-edit-prompt.de.md",
+      "actualPromptDigest": "sha256:3256947022e295f857e6d3176f39c834d3b3e908d6180950ceb614ad09d509c7",
+      "referenceStrategy": "one local referenced_image_paths entry; edit the preceding separated-view output",
+      "references": [
+        {
+          "path": "tmp/goal-visualizations/826af579-3e51-5ac9-bc2a-208d8a2fc99e/openai-separated-model-edit-20260914-hQhLqQ/milky-way-separated-model-edit.png",
+          "digest": "sha256:940b81981a5f5db64c27c356a251e53926318d21b56610bdace1741ebc8043b7"
+        }
+      ],
+      "output": {
+        "path": "tmp/goal-visualizations/826af579-3e51-5ac9-bc2a-208d8a2fc99e/openai-common-analysis-edit-20260914-YC2FIa/milky-way-common-analysis-edit.png",
+        "digest": "sha256:853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794"
+      },
+      "disposition": "accepted_pilot",
+      "independentReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.independent-ai-review.json"
+    }
+  ],
+  "reconstruction": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/image-reconstruction-prompt.de.md",
+    "derivedFromDigest": "sha256:853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794",
+    "purpose": "New standalone reconstruction base formulated from the inspected final raster.",
+    "submittedToGenerator": false,
+    "isActualGenerationPrompt": false
+  },
+  "authority": {
+    "humanApproved": false,
+    "published": false,
+    "deployed": false,
+    "blindDescriptionReviewPerformed": false
+  }
+}

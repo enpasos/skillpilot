@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-057-current-applicability-contexts-9-v1-20260914-first-pass-a.batch-001-openai-review",
+  "campaignId": "physik-rollout-v1-batch-057-current-applicability-contexts-9-v1-20260914-a",
+  "roundId": "physik-rollout-v1-batch-057-current-applicability-contexts-9-v1-20260914-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-057-current-applicability-contexts-9-v1-20260914-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:06fa23c0840142c23dd450b35b2b22373b049a89b445576cd4e5f9c28331c6f0",
+  "bundleFingerprint": "sha256:15d9d2a81ed59f97ed5bb8e899a443fc9e8b6da4ee25537a06f409fbebcfc4e5",
+  "bookDigest": "sha256:1c6f7bc6cbbcff645acd87b9ce2036738228478230db91dd767d24b00b194f4c",
+  "provider": "OpenAI",
+  "model": "not-exposed-by-runtime",
+  "modelVersion": "not-exposed-by-runtime",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:4b84d1a2f1ea8b695934e20efa9fe2f633a03f06456ccccaa2c840ea04869587",
+  "independenceGroupId": "physik-rollout-v1-batch-057-current-applicability-contexts-9-v1-20260914-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+    "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+    "3d466956-04fb-58d7-9008-ad8090f8706d",
+    "50877233-7abf-54df-b347-6d3224678fc9",
+    "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+    "68034218-8f3e-5f7f-ae4e-ed057dd4e44e",
+    "c52d55c3-b687-586c-b0f9-8ffcd1069424",
+    "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+    "db0394ca-297c-5892-b414-525ec186f928"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:06fa23c0840142c23dd450b35b2b22373b049a89b445576cd4e5f9c28331c6f0"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-14T05:02:38Z",
+  "completedAt": "2026-09-14T05:08:26.308Z",
+  "status": "completed",
+  "outputDigest": "sha256:475d8ae01af5a26997ecaf5a9b79ca4f5907b7853509f1121ec40e51fc5ab9cb",
+  "toolchainVersion": "node-v20.20.2"
+}

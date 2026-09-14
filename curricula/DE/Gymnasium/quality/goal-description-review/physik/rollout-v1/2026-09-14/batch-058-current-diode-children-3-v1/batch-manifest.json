@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/batch-058-current-diode-children-3-v1.config.json",
+  "configDigest": "sha256:2af2bd2fa631c2e102b2cf608b38d2fe57875dfcfd8161e9cde02b3c20e512b1",
+  "goalIds": [
+    "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+    "3857891b-d328-585b-9936-85c7aff122ee",
+    "3b586f2a-60e2-5019-aa08-6a47616a1f1f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 478,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:5bd81c100faf9a03d9d637e435af40564164a0901801e8e770a92d541077e057"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:bbc0beccece31adbc49ec9be5ba9d29d8f5461b79cf55d0ef5c5737fe27cc8ce",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:f947809c7d890a52f6ba4316e0cfb23ac9e78efd32f8418e151bd67d1f115bde",
+    "reviewInputFingerprint": "sha256:fc94b0a7ea40a74bc3a3cd6aabaf2deeadd80209e899adc90f1eeeccd3a62dbc",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-a",
+        "campaignDigest": "sha256:aa74e0a74cdc1d44ba44c772d460a085beccc28d0288f82d0c377ec3b0ba1a62",
+        "roundId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-a",
+        "independenceGroupId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-independent-a",
+        "batchId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:7f1f4568b5c12ec129b097a8f496f4c32949f4d97346a6c8d98cb55ab3d47ec3"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-b",
+        "campaignDigest": "sha256:9e47f97fee823d948acff3c92cba875f821b21d7661f49a82190c9a0435f7385",
+        "roundId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-b",
+        "independenceGroupId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-independent-b",
+        "batchId": "physik-rollout-v1-batch-058-current-diode-children-3-v1-20260914-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:28bb152b3a956200ac8b18cdbf8234380efda92bb2284b71d989a2c4a0ad5218"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

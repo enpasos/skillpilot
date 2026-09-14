@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-a.batch-001.run",
+  "campaignId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-a",
+  "roundId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-a",
+  "batchId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:7d7a9f5b276c393a35482ed02f5fba9a2c5ec7fb31d782efe649d390521d1994",
+  "bundleFingerprint": "sha256:7122f1f6a9fb01cca68c955f8f4789b58267650a4ed19fc3297581c7015ba5bc",
+  "bookDigest": "sha256:1d9d5c3d98ec0ba9246531bd5dbdaabb4d240a3aea3ce7c269f39cd35192cedd",
+  "provider": "OpenAI",
+  "model": "not-exposed-by-runtime",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:4b84d1a2f1ea8b695934e20efa9fe2f633a03f06456ccccaa2c840ea04869587",
+  "independenceGroupId": "physik-rollout-v1-batch-054-numerical-motion-current-1-v1-20260914-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "761a0879-fc15-5d0c-a2b7-2b439efecd5b"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:7d7a9f5b276c393a35482ed02f5fba9a2c5ec7fb31d782efe649d390521d1994"
+    }
+  ],
+  "startedAt": "2026-09-14T03:55:46Z",
+  "completedAt": "2026-09-14T03:58:31Z",
+  "status": "completed",
+  "outputDigest": "sha256:57da0236a2177f03c8ac53f7b6898fb3e238e8be991ec9b17357611b8e2a3f77",
+  "toolchainVersion": "node-v20.20.2-ajv-8.17.1"
+}

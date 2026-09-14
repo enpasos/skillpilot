@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent_ai_image_review",
+  "reviewedAt": "2026-09-14T05:15:14.460Z",
+  "reviewer": "Codex independent AI subagent /root/physics_alpha_image_review",
+  "decision": "accepted_pilot",
+  "humanApproved": false,
+  "deviceApproved": false,
+  "releaseApproved": false,
+  "decisionScope": "Fachlich und gestalterisch geeigneter lokaler Bildkandidat für das qualitative Alpha-Zerfall-Beispiel; keine allgemeine Freigabe für kleine Geräteansichten, kein Ersatz für menschliche Freigabe und keine neue D-Prüfrunde.",
+  "summary": "Der endgültige Kandidat behebt die sichtbaren Bilanzprobleme des alten Bildes: Er zeigt Tochterkern plus Alpha-Teilchen, definiert beide vollständigen Ruhemassensummen und stellt die Nukleonenerhaltung symbolisch dar. Die frei werdende Energie wird den bewegten Produkten zugeordnet. Die fachliche Pilotannahme bezieht sich auf eine hinreichend große Ansicht; bei 360 Pixel Bildbreite sind Formeln und insbesondere die Modellgrenze zu klein für eine uneingeschränkte Lesbarkeitsfreigabe.",
+  "independence": {
+    "readPriorABOrDResults": false,
+    "generatedOrEditedCandidate": false,
+    "changedCanonicalOrQaOrPublicationOrRegistry": false,
+    "basis": "Eigene Sichtprüfung der beiden bezeichneten Originaldateien, des aktuellen kanonischen Zieltexts und der beiden tatsächlichen Editprompts. Zusätzlich wurden ausschließlich Größenansichten des unveränderten Kandidaten im isolierten Browser gerendert und gezielte fachliche Primärquellenpassagen geprüft.",
+    "notReviewed": [
+      "Frühere A/B/D-Bewertungen oder Freigabebegründungen",
+      "Zwischenentwurf alpha-rest-mass-sums.png als Übernahmekandidat",
+      "Reale SkillPilot-Oberfläche oder native Provider-Clients",
+      "Vollständige Curriculumquellen, vollständiges Quellenreview oder Lernwirksamkeit"
+    ]
+  },
+  "goal": {
+    "sourcePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "snapshot": {
+      "id": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+      "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären",
+      "description": "Die lernende Person kann die Energiefreisetzung beim Alpha-Zerfall und bei einfachen Kernreaktionen qualitativ aus der Differenz der Ruhemassensummen vor und nach dem Prozess mithilfe der Masse-Energie-Äquivalenz erklären.",
+      "contains": [],
+      "requires": [
+        "1593d95c-2aac-504c-8527-37cb61877da9"
+      ],
+      "type": "atomic"
+    },
+    "snapshotSha256": "b8b0dfb7dbd782932a83da21a0f21ab66b77375d46add9313ab7179f77919fbb",
+    "snapshotHashMethod": "SHA-256 of UTF-8 JSON.stringify(snapshot), field order as recorded, no trailing newline"
+  },
+  "assets": {
+    "previousActive": {
+      "path": "app/public/assets/goal-visualizations/physik/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2.jpg",
+      "sha256": "8cc3e30f2f87c1a18ce8e5a6badb2ae6b2725a5808df911272fec49d32d283ec",
+      "width": 2752,
+      "height": 1536,
+      "format": "JPEG",
+      "actuallyViewed": true,
+      "viewingNote": "Der Bildbetrachter stellte die Originaldatei intern auf 2048 × 1143 Pixel verkleinert dar."
+    },
+    "candidate": {
+      "path": "tmp/goal-visualizations/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-openai-alpha-20260914-tr0VIg/alpha-symbolic-nucleon-balance.png",
+      "sha256": "f412bfcd05c15149981d33a08fbd2298b68c323618b2a7a9f62e1e670997b580",
+      "width": 1678,
+      "height": 937,
+      "format": "PNG RGB, opaque",
+      "actuallyViewed": true,
+      "generationProviderReported": "OpenAI / ChatGPT-Codex image generation",
+      "generationProvenanceLimit": "Providerangabe aus der Übergabe und dem Kandidatenkontext; die ursprünglichen Toolaufrufe und eine genaue Modellkennung wurden in dieser unabhängigen Prüfung nicht eingesehen."
+    }
+  },
+  "promptEvidence": [
+    {
+      "path": "tmp/goal-visualizations/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-openai-alpha-20260914-tr0VIg/actual-edit-prompt.md",
+      "sha256": "4d20b490e44c2098005f833d394ea67a00cf40c01f57ef6a324191dbdee9acfc",
+      "strategy": "Bestehendes Bild als Edit- und Stilreferenz; vollständige Produkt- und Ruhemassenbilanz, Energie als Produktbewegung, keine separaten Energiepartikel oder unbelegten Massenbalken."
+    },
+    {
+      "path": "tmp/goal-visualizations/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-openai-alpha-20260914-tr0VIg/actual-symbolic-correction-prompt.md",
+      "sha256": "9cb97aa19e9a06aa7ed374baaf5f2c539efb8a58b9573185b9618c78945f4762",
+      "strategy": "Zweiter Edit ersetzt abzählbare Großkern-Kugelhaufen durch A- und A−4-Kernsymbole und entfernt kleine Bewegungspfeile; das vierteilige Alpha-Teilchen bleibt erhalten."
+    }
+  ],
+  "previousActiveFindings": [
+    "Ein großer abzählbar wirkender Kugelhaufen führt zu einem viel kleineren Tochterhaufen, vier Alpha-Kugeln und einer eigenen Energieexplosion. Das legt das Verschwinden zahlreicher Nukleonen in Energie nahe; eine erhaltene Gesamtzahl ist zeichnerisch nicht nachvollziehbar.",
+    "m_nach ist weder als Summe der Tochterkern- und Alpha-Ruhemasse definiert noch eindeutig an beide Produkte gebunden. Die Beschriftung Kern nach verstärkt eine mögliche Deutung als Tochterkernmasse allein.",
+    "Die skalierten Massenbalken suggerieren eine große quantitative Massenabnahme ohne Isotop, Werte oder Modellhinweis. Der getrennte Energieast benennt keinen Energieträger.",
+    "Blauer Hintergrund mit Wolken, weich schattierte Körper, dunkle Schrift und orange Pfeile bilden eine klare vorhandene Stilreferenz."
+  ],
+  "candidateChecks": [
+    {
+      "criterion": "Kern- und Produktbilanz",
+      "result": "pass",
+      "observation": "Mutterkern links; Tochterkern plus separat beschriftetes Alpha-Teilchen rechts. Das sichtbare Pluszeichen und m_nach = m(Tochterkern) + m(Alpha-Teilchen) binden beide Produkte ein. Es gibt keinen dritten materiellen Energieklumpen."
+    },
+    {
+      "criterion": "Nukleonenerhaltung",
+      "result": "pass",
+      "observation": "Die großen Kerne sind glatte, nicht in Einzelteilchen zerlegte Symbole mit A Nukleonen beziehungsweise A − 4 Nukleonen. Das Alpha-Teilchen enthält sichtbar genau zwei rote und zwei blaue Kugeln und trägt die Beschriftung 4 Nukleonen. Damit ist A = (A − 4) + 4 unmittelbar nachvollziehbar.",
+      "limit": "Die Farbzuordnung Proton/Neutron und die Ordnungszahlbilanz Z → Z−2 werden nicht eigens erklärt. Für dieses Energie-Lernziel entsteht daraus kein Widerspruch; eine vollständige Einführung der Nuklidschreibweise ist das Bild nicht."
+    },
+    {
+      "criterion": "Energieträger und Modellgrenze",
+      "result": "pass_with_scope_limit",
+      "observation": "Frei werdende Energie: Bewegungsenergie der Produkte benennt Tochterkern und Alpha-Teilchen gemeinsam. Der verbleibende breite Pfeil zeigt den Prozess; fehlende kleine Bewegungsvektoren verhindern eine unbeabsichtigte Aussage zu Impulsrichtungen oder Energieanteilen. Der Fußtext nennt ausdrücklich Alpha-Zerfall ohne zusätzliche Strahlung.",
+      "limit": "Gemeint ist das qualitative Zweiproduktmodell im Ruhesystem des Mutterkerns beziehungsweise die Zunahme der kinetischen Energie. Das Bild quantifiziert weder Rückstoß noch Energieaufteilung und beansprucht keine Beschreibung sämtlicher Zerfallskanäle."
+    },
+    {
+      "criterion": "Formeln und Vorzeichen",
+      "result": "pass",
+      "observation": "m_vor = m(Mutterkern), m_nach = m(Tochterkern) + m(Alpha-Teilchen), m_vor > m_nach und ΔE = (m_vor − m_nach) · c² sind im bezeichneten Energiefreisetzungsbeispiel konsistent. Der Zusatz m bezeichnet die jeweilige Ruhemasse verhindert die Verwechslung mit Massenzahl. ΔE bezeichnet hier die freigesetzte Energie; Die Gesamtenergie bleibt erhalten schließt eine Abnahme der Gesamtenergie ausdrücklich aus."
+    },
+    {
+      "criterion": "Deutsche Lesbarkeit und fachlicher Sprachgebrauch",
+      "result": "pass_at_large_view",
+      "observation": "Titel, Tochterkern, Mutterkern, Alpha-Teilchen, Nukleonen, Ruhemassensumme, Bewegungsenergie, Gesamtenergie und maßstäblich sind korrekt geschrieben. Kein sichtbarer Buchstabensalat, keine abgeschnittene Formel und keine falsche Hochzahl. Ruhende Einzelmassen werden sauber von der erhaltenen Gesamtenergie unterschieden."
+    },
+    {
+      "criterion": "Stilanschluss und Größenmodell",
+      "result": "pass_with_scope_limit",
+      "observation": "Blauer Wolkenhintergrund, weiche Schattierung, kräftige Konturen, schwarze Schrift und orange Akzente schließen erkennbar an das alte Bild an. Violette glatte Großkerne machen die symbolische Bilanz lesbar und beseitigen irreführende Teilchenzählungen. Die Darstellung ist deckend und frei von störenden Bildartefakten.",
+      "limit": "Der Tochterkreis ist sichtbar kleiner als der Mutterkreis; daraus dürfen weder reale Radiusverhältnisse noch Massendifferenzen abgelesen werden. Die A-Beschriftungen und Schematisch, nicht maßstäblich begrenzen das Modell. Dieser kleingesetzte Hinweis braucht in schmalen Ansichten Vergrößerung."
+    },
+    {
+      "criterion": "Lernzielbezug und didaktische Reichweite",
+      "result": "pass_with_scope_limit",
+      "observation": "Das Bild unterstützt die qualitative Erklärung über vollständige Ruhemassensummen am ausdrücklich bezeichneten Alpha-Beispiel. Der Zusammenhang ist auf einfache energieabgebende Kernreaktionen übertragbar, wenn dort alle Ausgangsteilchen und Produkte bilanziert werden.",
+      "limit": "Andere Kernreaktionen, endotherme Fälle, Bindungsenergievertiefung, Aufgabenbearbeitung und der Nachweis tatsächlichen Verständnisses sind nicht abgebildet. Das Bild ist eine Lernhilfe und kein vollständiger Unterrichts- oder Leistungsnachweis."
+    }
+  ],
+  "smallDisplayCheck": {
+    "method": "Unveränderte PNG-Datei als einziges img in einem isolierten Playwright-Chromium-Dokument; CSS-Breiten 640 und 360 Pixel, Höhe automatisch, deviceScaleFactor 1, Bildausschnitt-Screenshots anschließend tatsächlich in Originalgröße betrachtet.",
+    "browserVersion": "147.0.7727.15",
+    "actualApplicationOrDeviceTest": false,
+    "observations": [
+      {
+        "cssWidth": 640,
+        "screenshotPath": "tmp/goal-visualizations/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-openai-alpha-20260914-tr0VIg/independent-review-640px.png",
+        "sha256": "edd45bdbcd1fdc366180ef04bea182da400148adc69ec5ed2acc6144546c6fb4",
+        "result": "Kernsymbole, Bilanz, Energieaussage und Formeln sind erkennbar und lesbar; die kleinsten Fußtexte sind deutlich schwächer und für komfortables Lesen vergrößerungsbedürftig."
+      },
+      {
+        "cssWidth": 360,
+        "screenshotPath": "tmp/goal-visualizations/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2-openai-alpha-20260914-tr0VIg/independent-review-360px.png",
+        "sha256": "52d02f493d670cd9a382c507d66cba748891000af9f1ffa7a59dd5916e47461b",
+        "result": "Richtung, Produktaufteilung und große Kernsymbole bleiben erkennbar. Formelzeilen und Erklärtexte werden sehr klein; die Strahlungs- und Maßstabsgrenze ist ohne Vergrößerung nicht zuverlässig lesbar. Keine Freigabe als alleinige unvergrößerbare Erklärung bei dieser Breite."
+      }
+    ]
+  },
+  "targetedPrimarySourceChecks": {
+    "fullSourceReview": false,
+    "sources": [
+      {
+        "title": "IAEA: Nuclear Medicine Physics, Kapitel 1, gedruckte Seite 25, Gleichungen 1.30 und 1.31",
+        "url": "https://www-pub.iaea.org/mtcd/publications/pdf/pub1617web-1294055.pdf",
+        "checkedClaim": "Q aus Kernruhemassen von Mutter, Tochter und emittierten Teilchen; kinetische Energie für emittierte Teilchen und Tochter; Alpha-Zerfall vermindert A um vier und Z um zwei.",
+        "access": "Nach Größenlimit des Web-PDF-Readers per HTTPS vollständig übertragen, aber ausschließlich die relevante Passage mit pdftotext und Textfilter gelesen; kein Volltextreview und keine persistierte Volltextkopie."
+      },
+      {
+        "title": "Lawrence Berkeley National Laboratory, Nuclear Science Division: Alpha Please Leave Home",
+        "url": "https://abc.lbl.gov/experiments/Experiment2.html",
+        "checkedClaim": "Alpha als Helium-4-Kern sowie vollständige Massensumme aus Tochterkern und Alpha-Teilchen kleiner als Muttermasse.",
+        "access": "Offizielle HTML-Seite geöffnet, Einleitung geprüft."
+      },
+      {
+        "title": "U.S. NRC Science 101: What Are The Different Types of Radiation?",
+        "url": "https://www.nrc.gov/reading-rm/basic-ref/students/science-101/what-are-different-types-of-radiation",
+        "checkedClaim": "Alpha-Teilchen besteht aus zwei Protonen und zwei Neutronen.",
+        "access": "Offizielle HTML-Seite geöffnet, Alpha-Absatz geprüft."
+      }
+    ]
+  },
+  "remainingLimits": [
+    "accepted_pilot ist eine hashgebundene AI-Bildentscheidung; humanApproved bleibt false.",
+    "Keine menschliche, native Geräte-, Provider- oder produktive Oberflächenabnahme durchgeführt.",
+    "Bei sehr kleiner Einbettung muss die fachliche Erklärung eigenständig zugänglich bleiben; insbesondere die Modellgrenze ist dort nicht zuverlässig im Bild lesbar.",
+    "Keine Prüfung von Lizenz-/Veröffentlichungsrechten oder vollständigen Curriculumquellen vorgenommen.",
+    "Ein späterer Import oder eine Dateikonvertierung muss die tatsächlich aktivierten Bytes und deren Sichtprüfung gesondert dokumentieren; diese Entscheidung bindet ausschließlich den aufgeführten PNG-Kandidaten."
+  ]
+}

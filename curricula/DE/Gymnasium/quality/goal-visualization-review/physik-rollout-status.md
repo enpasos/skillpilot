@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-13T18:31:03.416Z
+Generated: 2026-09-14T05:43:07.473Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -18,14 +18,14 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 764 |
 | Atomare Ziele im Visualisierungs-Scope | 478 |
-| Ziele mit primaerem Visualisierungslink | 429 |
-| Coverage | 89.7% |
+| Ziele mit primaerem Visualisierungslink | 430 |
+| Coverage | 90.0% |
 | Durch Asset oder Provider-Deferred dokumentierte Ziele | 478 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 95 |
-| Offene Provider-Deferred-Ziele | 49 |
+| Review-Ledger-Dateien | 97 |
+| Offene Provider-Deferred-Ziele | 48 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
@@ -36,8 +36,8 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 84 |
-| `pilot` | 345 |
+| `accepted` | 83 |
+| `pilot` | 347 |
 
 ## Ledger Decisions
 
@@ -50,7 +50,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | `accepted_existing_asset_as_cluster_overview` | 8 |
 | `accepted_existing_asset_metadata_rebound` | 15 |
 | `accepted_existing_asset_unchanged_goal` | 2 |
-| `accepted_pilot` | 285 |
+| `accepted_pilot` | 287 |
 | `accepted_pilot_after_fifth_regeneration` | 1 |
 | `accepted_pilot_after_fresh_ai_review` | 281 |
 | `accepted_pilot_after_fresh_ai_review_correction` | 134 |
@@ -76,7 +76,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-2026-09-13-stellar-radius-ai-pilot.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-2026-09-14-solar-mass-ai-pilot.md` |
 | Latest ledger status | - |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |
@@ -86,7 +86,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 49 Provider-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 48 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -115,7 +115,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | 082 | `206a7d3d-9b11-56be-89ff-73898445c4f5` | Galaxienentfernungen bestimmen und Verfahren beurteilen | `deferred_provider_limitation` |
 | 074 | `b1ad9493-acca-5366-9ecd-4b7bf7edaf4a` | Geiger-Müller-Zählrohr funktional erklären | `deferred_provider_limitation` |
 
-Weitere 29 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 28 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Provider Quota
 

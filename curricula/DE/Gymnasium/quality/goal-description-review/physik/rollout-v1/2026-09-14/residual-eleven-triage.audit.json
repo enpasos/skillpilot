@@ -1,0 +1,1405 @@
+{
+  "schemaVersion": 1,
+  "auditId": "physics-residual-eleven-informed-triage-20260914",
+  "reviewMode": "informed-read-only-triage-not-blind-description-review",
+  "authority": "ai-informed-routing-only",
+  "grantsProgress": false,
+  "humanApproval": false,
+  "newDApproval": false,
+  "newSourceApproval": false,
+  "capturedAt": "2026-09-14T05:17:30.665Z",
+  "head": "784fdd244c8e1d7cd4a3576eb8e65550e40cb23e",
+  "compareCommit": "e347b6e5b307f08f16486fe4a31ce9d2a572aa17",
+  "canonicalArtifact": "a41",
+  "registryArtifact": "a42",
+  "claimConfigArtifacts": [
+    "a7",
+    "a23",
+    "a32"
+  ],
+  "repairEvidenceArtifacts": [
+    "a43",
+    "a44",
+    "a45",
+    "a46",
+    "a47",
+    "a48",
+    "a49",
+    "a50",
+    "a51",
+    "a52",
+    "a53",
+    "a54",
+    "a55"
+  ],
+  "goals": [
+    {
+      "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+      "title": "Hertzsprung-Russell-Diagramm (HRD)",
+      "descriptionDe": "Die lernende Person kann Sterne anhand ihrer Leuchtkraft und Oberflächentemperatur im Hertzsprung-Russell-Diagramm einordnen und die Bereiche Hauptreihe, Rote Riesen und Weiße Zwerge im Zusammenhang mit der Sternentwicklung deuten.",
+      "claimConfigArtifact": "a7",
+      "ownTextSha256": "sha256:082a8e44be86b30f420ac4773e42df5616e53c8f15fbf191a71cc853954512e0",
+      "goalFingerprint": "sha256:3bc6b685e1c98a91258200891411cc8711b259a090c3c21ab98ee9b96db294b2",
+      "canonicalContextSha256": "sha256:f6c122e29d2956fe992e0dfd64de2aa1250b959d7db59519ef3d3e150c30d8c4",
+      "sameOwnTextAsComparisonCommit": true,
+      "canonicalObjectChangedFieldsSinceComparisonCommit": [],
+      "historicalD": [
+        {
+          "round": "a",
+          "inputArtifact": "a1",
+          "recordsArtifact": "a2",
+          "recordId": "physik-rollout-v1-batch-050-current-dependent-contexts-16-v1-20260908-first-pass-a.run-001.001",
+          "recordLineSha256": "sha256:c1b06aaaa624f9f9fdd30807f8d3f0cf89150bf3335bdfc9c83875ce2a865d6a",
+          "decision": "keep",
+          "historicalGoalFingerprint": "sha256:3bc6b685e1c98a91258200891411cc8711b259a090c3c21ab98ee9b96db294b2",
+          "historicalPageFingerprint": "sha256:36ef0f5503c01b82dd9ecb51971073040f8ecbb34d439b92dd2a929984489a46"
+        },
+        {
+          "round": "b",
+          "inputArtifact": "a3",
+          "recordsArtifact": "a4",
+          "recordId": "physics-b050-b-001",
+          "recordLineSha256": "sha256:0ab63154fe34108ea284c10c20c356ff648797a3f2cd4605f1694d2957d250c0",
+          "decision": "keep",
+          "historicalGoalFingerprint": "sha256:3bc6b685e1c98a91258200891411cc8711b259a090c3c21ab98ee9b96db294b2",
+          "historicalPageFingerprint": "sha256:36ef0f5503c01b82dd9ecb51971073040f8ecbb34d439b92dd2a929984489a46"
+        }
+      ],
+      "positiveEvidenceOwners": [
+        {
+          "configArtifact": "a5",
+          "recordsArtifact": "a6",
+          "recordLineSha256": "sha256:657fc2e8c0ef39937cd1ca643e55deddc0fecfc48c05cc3e4dd380008abd777d",
+          "goalFingerprint": "sha256:3bc6b685e1c98a91258200891411cc8711b259a090c3c21ab98ee9b96db294b2",
+          "reviewInputFingerprint": "sha256:a75093c062475a10cf05b7e1f698740e9522d7f3f19dab3840be8519e28d941c",
+          "profileFingerprint": "sha256:7f2eff07114af0dcf5ebd32ae0fd54cc0513289a21af5632a00935859365d404",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedResourceTypes": []
+        }
+      ],
+      "activeImages": [
+        {
+          "url": "/assets/goal-visualizations/physik/206fe51d-cc78-5422-b139-32cc97eb1c37/206fe51d-cc78-5422-b139-32cc97eb1c37.jpg",
+          "assetArtifact": "a8",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "comparisonToLatestD": {
+        "ownTextUnchanged": true,
+        "changedCanonicalContextKeys": [],
+        "historicalCanonicalRequires": [
+          "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93"
+        ],
+        "historicalRequires": [
+          {
+            "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "title": "Aufbau des Sonnensystems beschreiben"
+          }
+        ],
+        "currentRequires": [
+          {
+            "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
+            "title": "Aufbau des Sonnensystems beschreiben"
+          }
+        ],
+        "historicalReverseRequires": [
+          {
+            "goalId": "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+            "title": "Sterntypen und Entwicklung"
+          },
+          {
+            "goalId": "4a58df57-f791-502f-8b8d-9ba155e46035",
+            "title": "Q4-Klausuraufgaben Physik selbstständig lösen"
+          },
+          {
+            "goalId": "f67550ac-df22-5a3e-8172-f04642efca64",
+            "title": "HR-Diagramm quantitativ für Sternentwicklung nutzen"
+          }
+        ],
+        "currentReverseRequires": [
+          {
+            "goalId": "6f896466-e0ec-5f8d-82ad-2890433c82ba",
+            "title": "Sterntypen und Entwicklung"
+          },
+          {
+            "goalId": "4a58df57-f791-502f-8b8d-9ba155e46035",
+            "title": "Q4-Klausuraufgaben Physik selbstständig lösen"
+          },
+          {
+            "goalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
+            "title": "Sternradien aus HRD-Daten abschätzen"
+          },
+          {
+            "goalId": "3a4b2f86-5c59-5429-8fb4-75d9b2589cb5",
+            "title": "Sternentfernungen mit dem HRD abschätzen"
+          }
+        ],
+        "historicalImageDigest": "sha256:a1c39b453dad8a0588f37743933e61678ff6d500622039523207f9884d9de009"
+      },
+      "triage": {
+        "route": "current_D_context_binding",
+        "findingDe": "B050 KEEP/KEEP; eigener DE/EN-Text, Semantik und Bild unverändert. Tatsächlich geändert ist reverseRequires: der quantitative HRD-Elternknoten wurde durch getrennte Radius-/Entfernungskinder ersetzt. Aktuelles D muss diesen Kontext binden. Keine belegte neue Owntext- oder Bildreparatur.",
+        "preserveDe": "Bestehenden HRD-P-Körper und Bild erhalten. Historische Einschränkung: schematische ungleichmäßige L-Tickabstände nicht für quantitative Interpolation verwenden.",
+        "repairEvidence": [
+          "a43"
+        ]
+      }
+    },
+    {
+      "goalId": "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+      "title": "Sperrschicht und Polung am p-n-Übergang erklären",
+      "descriptionDe": "Die lernende Person kann mit einem einfachen Ladungsträgermodell die Entstehung der Sperrschicht am p-n-Übergang und ihre Veränderung bei Durchlass- und Sperrpolung erklären.",
+      "claimConfigArtifact": "a7",
+      "ownTextSha256": "sha256:dfee0b94c00b966515fbe427a0cff9670d71704733d0158feb4d540c3773cb9a",
+      "goalFingerprint": "sha256:edd5475b51161db1b42bc550bc5d9f2c74c0a8f7c1d9d8ac2852266567faaba7",
+      "canonicalContextSha256": "sha256:0a7daf64892e227ac8f6c0936df5be55d2ca14357de1d2175a9297402f65e4e0",
+      "sameOwnTextAsComparisonCommit": true,
+      "canonicalObjectChangedFieldsSinceComparisonCommit": [],
+      "historicalD": [],
+      "positiveEvidenceOwners": [
+        {
+          "configArtifact": "a9",
+          "recordsArtifact": "a10",
+          "recordLineSha256": "sha256:dd9a182688dbcf5ae9977de013c7626b8f41ad6cb0b1eaff82e0b2d844c8ce92",
+          "goalFingerprint": "sha256:edd5475b51161db1b42bc550bc5d9f2c74c0a8f7c1d9d8ac2852266567faaba7",
+          "reviewInputFingerprint": "sha256:e4bc137c98575dd1ff8b4e8a4aefe5a8c17605bca6c9bac95ad3c52b249795a8",
+          "profileFingerprint": "sha256:c16e0dc7602fb99db106d7ad0e53dea9ac37ae716eb60667bd7b93d2b6d1816b",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedResourceTypes": [
+            "goal-visualization"
+          ]
+        }
+      ],
+      "activeImages": [
+        {
+          "url": "/assets/goal-visualizations/physik/2084b7d4-300d-5fa0-8b8d-c480c40f853e/2084b7d4-300d-5fa0-8b8d-c480c40f853e.png",
+          "assetArtifact": "a11",
+          "reviewStatus": "accepted"
+        }
+      ],
+      "triage": {
+        "route": "new_child_current_D",
+        "findingDe": "Eigenes nach Diode-Split verfasstes Modellziel; keine eigenen aktuellen unabhängigen D-Runden aus dem Split-Receipt. Ladungsträger/ortsfeste Ionen und Polungswirkung wurden bereits individuell geprüft; aktuelle native P-Bindung besteht. Kein konkreter offener fachlicher Text-/Bildfehler belegt.",
+        "repairEvidence": [
+          "a45",
+          "a44"
+        ]
+      }
+    },
+    {
+      "goalId": "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+      "title": "Strömungsbeispiele mit passenden Modellen erklären",
+      "descriptionDe": "Die lernende Person kann an ausgewählten Strömungsbeispielen die Aussagen und Voraussetzungen der jeweils verwendeten Gesetze oder Kennzahlen qualitativ erläutern, etwa der Kontinuitätsgleichung, der Bernoulli-Gleichung, des Stokes-Gesetzes oder der Reynolds-Zahl.",
+      "claimConfigArtifact": "a7",
+      "ownTextSha256": "sha256:50a61f1495b4def2b642384ffde66985b76f54fb011c27cdb44d44d1b92132e3",
+      "goalFingerprint": "sha256:542d71da79d96b977d5b3b35e38ca9f2cee65c7bf8fab281add25dbc6b8de0e0",
+      "canonicalContextSha256": "sha256:410b24e0acffe03be6c70eedaff479986e5290dba7d7642ffcafefdd89965bd7",
+      "sameOwnTextAsComparisonCommit": true,
+      "canonicalObjectChangedFieldsSinceComparisonCommit": [],
+      "historicalD": [
+        {
+          "round": "a",
+          "inputArtifact": "a12",
+          "recordsArtifact": "a13",
+          "recordId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-a.run-001.005",
+          "recordLineSha256": "sha256:523e3c858688ac18b1cdf90de39ff0ee1c0c6a2a466f287d69efa24c2f2b745c",
+          "decision": "split_review",
+          "historicalGoalFingerprint": "sha256:542d71da79d96b977d5b3b35e38ca9f2cee65c7bf8fab281add25dbc6b8de0e0",
+          "historicalPageFingerprint": "sha256:4227b8ead92aa5c6617f80793790157019284d8053c078bd7f26cb34b1dc6555"
+        },
+        {
+          "round": "b",
+          "inputArtifact": "a14",
+          "recordsArtifact": "a15",
+          "recordId": "physics-b049-b-005",
+          "recordLineSha256": "sha256:0fdbba28ace104a8bdf98f6dc34f98944b61686113b2cde7e6922c191991d1f0",
+          "decision": "keep",
+          "historicalGoalFingerprint": "sha256:542d71da79d96b977d5b3b35e38ca9f2cee65c7bf8fab281add25dbc6b8de0e0",
+          "historicalPageFingerprint": "sha256:4227b8ead92aa5c6617f80793790157019284d8053c078bd7f26cb34b1dc6555"
+        }
+      ],
+      "positiveEvidenceOwners": [
+        {
+          "configArtifact": "a16",
+          "recordsArtifact": "a17",
+          "recordLineSha256": "sha256:012b958f7688f8eff54d4a11e98df662858d86c5fb3f5e4fb8306c2b605eba8e",
+          "goalFingerprint": "sha256:542d71da79d96b977d5b3b35e38ca9f2cee65c7bf8fab281add25dbc6b8de0e0",
+          "reviewInputFingerprint": "sha256:6c0448ed2bafa167258ff9b30c7ca633ea5d6448891cced138fc28a26918b359",
+          "profileFingerprint": "sha256:c6b10988d4298c4ae0f103240175af8c5a09a71c1c515ee10d5eea4860f8eb5a",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedResourceTypes": [
+            "goal-visualization"
+          ]
+        }
+      ],
+      "activeImages": [
+        {
+          "url": "/assets/goal-visualizations/physik/333ca92b-a92c-46a9-86be-dea8ddbd43e0/333ca92b-a92c-46a9-86be-dea8ddbd43e0.jpg",
+          "assetArtifact": "a18",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "comparisonToLatestD": {
+        "ownTextUnchanged": true,
+        "changedCanonicalContextKeys": [],
+        "historicalCanonicalRequires": [
+          "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+        ],
+        "historicalRequires": [
+          {
+            "goalId": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+            "title": "Warum Physik? – Weltverständnis & Zukunft"
+          }
+        ],
+        "currentRequires": [
+          {
+            "goalId": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+            "title": "Warum Physik? – Weltverständnis & Zukunft"
+          }
+        ],
+        "historicalReverseRequires": [
+          {
+            "goalId": "4a58df57-f791-502f-8b8d-9ba155e46035",
+            "title": "Q4-Klausuraufgaben Physik selbstständig lösen"
+          }
+        ],
+        "currentReverseRequires": [
+          {
+            "goalId": "4a58df57-f791-502f-8b8d-9ba155e46035",
+            "title": "Q4-Klausuraufgaben Physik selbstständig lösen"
+          }
+        ],
+        "historicalImageDigest": "sha256:9c38b7ea32a8e2b8639949bec8783ca538c9d17b7978d4d73595eb7fdb45f177"
+      },
+      "triage": {
+        "route": "substantive_D_dissent_adjudication",
+        "findingDe": "D049-A split_review versus B keep bleibt offen: vier unabhängige Modellroutinen/unklare Masteryauswahl versus ein ausgewählter qualitativer Modellfall samt Voraussetzungen. Aktuelle Owntexte sind unverändert. Bestehender P-Körper und Quellenreceipt argumentieren ausdrücklich für ausgewählte Beispiele, nicht für einen obligatorischen Vier-Gesetze-Katalog. Dies begründet eine informierte Klärung, keine automatische Aufhebung des Dissenses.",
+        "historicalOnlyDe": "RP-Seiten-/Auswahlsemantikfehler wurde im B046-Implementation-Receipt bereits repariert. Die bestehende Kontinuitäts-/Bernoulli-Grafik wurde dort und in B049 geprüft; sie muss nicht sämtliche optionalen Gesetze darstellen.",
+        "repairEvidence": [
+          "a49"
+        ]
+      }
+    },
+    {
+      "goalId": "3857891b-d328-585b-9936-85c7aff122ee",
+      "title": "Die Strom-Spannungs-Kennlinie einer Diode experimentell bestimmen",
+      "descriptionDe": "Die lernende Person kann in einem beaufsichtigten, strombegrenzten Kleinspannungsversuch die Strom-Spannungs-Kennlinie einer Diode in Durchlass- und Sperrpolung aufnehmen und aus den Messwerten ihr richtungsabhängiges Leitverhalten begründen.",
+      "claimConfigArtifact": "a7",
+      "ownTextSha256": "sha256:ccdbacb9662738be22adf0efe1ffb42df4271f9affdebda078f1bb9dfebea5e3",
+      "goalFingerprint": "sha256:a0fa57a28313a5a4d54aa21686d17f0147f8701f75081196f26081b1319960b0",
+      "canonicalContextSha256": "sha256:09e61fa00c051d622bd723a37c97ad07ee5864b135e1faa3a7c37ba689b47bda",
+      "sameOwnTextAsComparisonCommit": true,
+      "canonicalObjectChangedFieldsSinceComparisonCommit": [],
+      "historicalD": [],
+      "positiveEvidenceOwners": [
+        {
+          "configArtifact": "a9",
+          "recordsArtifact": "a10",
+          "recordLineSha256": "sha256:3ca89709af049d916ff733b5b7489e09e6e19c53a10d31afc5220bfdff057a8a",
+          "goalFingerprint": "sha256:a0fa57a28313a5a4d54aa21686d17f0147f8701f75081196f26081b1319960b0",
+          "reviewInputFingerprint": "sha256:bd9af5c50b9695d188c35944bdc1c21c1ef8212775775744346037a77b93aae0",
+          "profileFingerprint": "sha256:814e6486ceafa1bfb6daba546a7bf31626ba373deaf559f1e783edf6bd61e70c",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedResourceTypes": [
+            "goal-visualization"
+          ]
+        }
+      ],
+      "activeImages": [
+        {
+          "url": "/assets/goal-visualizations/physik/3857891b-d328-585b-9936-85c7aff122ee/3857891b-d328-585b-9936-85c7aff122ee.png",
+          "assetArtifact": "a19",
+          "reviewStatus": "accepted"
+        }
+      ],
+      "triage": {
+        "route": "new_child_current_D",
+        "findingDe": "Eigenes experimentelles Kennlinienziel nach Split; beaufsichtigte strombegrenzte Kleinspannung ist bereits ausdrücklich festgelegt. Eigenes Experiment/Messwerte bleiben nötig, die qualitative Grafik ersetzt sie nicht. Aktuelles P besteht; eigene D-Runden fehlen. Kein neuer Bild-/Textfehler belegt.",
+        "repairEvidence": [
+          "a45",
+          "a46"
+        ]
+      }
+    },
+    {
+      "goalId": "3b586f2a-60e2-5019-aa08-6a47616a1f1f",
+      "title": "Die Gleichrichterfunktion einer Diodenschaltung erklären",
+      "descriptionDe": "Die lernende Person kann an einer vorgegebenen einfachen Gleichrichterschaltung aus der Polung der Dioden die Stromwege und den zeitlichen Verlauf der Spannung am Verbraucher erklären.",
+      "claimConfigArtifact": "a7",
+      "ownTextSha256": "sha256:a62516014e39f7f91b3feacbfb2a6639a555c3181fc2b176575f3d252c284509",
+      "goalFingerprint": "sha256:9b14687ecdda466daab4d902639e60f6b953d92520a35e07b8bde9a8f52e8f95",
+      "canonicalContextSha256": "sha256:b4df54c6d29562637ac6d33679bf52e29b0313586706dbca9fd5dc64c5ae0ae4",
+      "sameOwnTextAsComparisonCommit": true,
+      "canonicalObjectChangedFieldsSinceComparisonCommit": [],
+      "historicalD": [],
+      "positiveEvidenceOwners": [
+        {
+          "configArtifact": "a9",
+          "recordsArtifact": "a10",
+          "recordLineSha256": "sha256:396ac98a938d4ce5c056358b7f41670f52f9a6413a44f64f91ecb32fd8b7da08",
+          "goalFingerprint": "sha256:9b14687ecdda466daab4d902639e60f6b953d92520a35e07b8bde9a8f52e8f95",
+          "reviewInputFingerprint": "sha256:e505066aa1583ec5861eac2226851296915658f01c22cced31ecb1a49c4d4335",
+          "profileFingerprint": "sha256:a1cfacfcb3f774e30412780c485c81b8ea3e67db5c23ab829060d9e080aed801",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedResourceTypes": [
+            "goal-visualization"
+          ]
+        }
+      ],
+      "activeImages": [
+        {
+          "url": "/assets/goal-visualizations/physik/3b586f2a-60e2-5019-aa08-6a47616a1f1f/3b586f2a-60e2-5019-aa08-6a47616a1f1f.png",
+          "assetArtifact": "a20",
+          "reviewStatus": "accepted"
+        }
+      ],
+      "triage": {
+        "route": "new_child_current_D",
+        "findingDe": "Eigenes Gleichrichter-Funktionsziel nach Split; vorgegebene Schaltung, Stromwege und Lastspannung ohne eigene Netzspannungs-Bauanweisung. Geschlossener idealisierter Serienkreis und Halbwellen wurden bereits geprüft; P aktuell. Eigene D-Runden fehlen, kein konkreter verbleibender Bild-/Textfehler belegt.",
+        "repairEvidence": [
+          "a45"
+        ]
+      }
+    },
+    {
+      "goalId": "49bb609a-bfb7-5391-9120-f5fc737efb9a",
+      "title": "Exoplanetenkandidaten mit der Transitmethode erklären",
+      "descriptionDe": "Die lernende Person kann wiederkehrende Helligkeitsabnahmen eines Sterns mit dem Transit eines möglichen Planeten erklären und begründen, wie die Beobachtungsgeometrie die Nachweismöglichkeit begrenzt.",
+      "claimConfigArtifact": "a7",
+      "ownTextSha256": "sha256:4817ac06b9fd754350681a7978e29d2f5b6c9f45f5267b8d9cbf4d094b4934a9",
+      "goalFingerprint": "sha256:6975a34fc18d41eb96ee4e854a8028d85d1a6e146f6ccfb50533d39c01a63195",
+      "canonicalContextSha256": "sha256:e1e735cffead98bdd3ba9aa2be7698d1c1836e956201bd234efffe08ee21c82e",
+      "sameOwnTextAsComparisonCommit": true,
+      "canonicalObjectChangedFieldsSinceComparisonCommit": [],
+      "historicalD": [],
+      "positiveEvidenceOwners": [
+        {
+          "configArtifact": "a21",
+          "recordsArtifact": "a22",
+          "recordLineSha256": "sha256:7e978567a0b42cb6fcd6724adce1651b13222c239362fbfc86598d29311fa1e1",
+          "goalFingerprint": "sha256:6975a34fc18d41eb96ee4e854a8028d85d1a6e146f6ccfb50533d39c01a63195",
+          "reviewInputFingerprint": "sha256:5609f4e4a4a28444dee5d22030f0582c6d54f4f0fe61c30d49397704ae22ac4d",
+          "profileFingerprint": "sha256:bd5bfa2063c16e814f4d333721e0151e95bf116498473d8f603bb419c9ba0948",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedResourceTypes": []
+        }
+      ],
+      "activeImages": [],
+      "triage": {
+        "route": "new_child_current_D_and_separate_deferred_visual",
+        "findingDe": "Neues qualitatives Transitkind mit aktuellem P: Sternlicht, wiederkehrende Verdeckung, Sichtgeometrie; keine neue Radius-/Massenrechnung. Eigene D-Runden fehlen. Aktiver Bildlink fehlt ausdrücklich wegen deferred_provider_limitation; der geometrisch falsche frühere Entwurf wurde nie importiert.",
+        "historicalOnlyDe": "Der verworfene Nichttransit-Entwurf ist kein aktueller Runtime-Bildfehler. Bildaufgabe bleibt separat offen; fehlendes Bild weder als bestanden noch als pädagogisch entbehrlich ausgeben.",
+        "repairEvidence": [
+          "a47",
+          "a48"
+        ]
+      }
+    },
+    {
+      "goalId": "6dca3b0a-c872-543b-808f-97e855f5fafd",
+      "title": "Exoplanetenkandidaten mit Stern-Radialbewegungen erklären",
+      "descriptionDe": "Die lernende Person kann periodische Dopplerverschiebungen im Spektrum eines Sterns mit seiner Bewegung um den gemeinsamen Schwerpunkt eines möglichen Stern-Planet-Systems erklären und die Aussagekraft dieses indirekten Nachweises begrenzen.",
+      "claimConfigArtifact": "a23",
+      "ownTextSha256": "sha256:8cdc303f5360e81fc1d5553a9e0700855bc343d3c0a98631d90ef51c93334bea",
+      "goalFingerprint": "sha256:fd3143de0e3544c48780ce3576b64e2fabf3f8145502439b623ceb7a85e6e7bf",
+      "canonicalContextSha256": "sha256:1489423cbd1f00dd50d64fd0975b489e0120b4632a5b6d6483b32178ef1348a9",
+      "sameOwnTextAsComparisonCommit": true,
+      "canonicalObjectChangedFieldsSinceComparisonCommit": [],
+      "historicalD": [],
+      "positiveEvidenceOwners": [
+        {
+          "configArtifact": "a21",
+          "recordsArtifact": "a22",
+          "recordLineSha256": "sha256:8d1098060a620ed5d695f43cef8d2236f61b4841ef97f0616c25f9ecdbdc18e0",
+          "goalFingerprint": "sha256:fd3143de0e3544c48780ce3576b64e2fabf3f8145502439b623ceb7a85e6e7bf",
+          "reviewInputFingerprint": "sha256:eb00a8946c34f6b8166ad6c2f8e65734ecb92cbbd5908b4611d4aea39ff493c1",
+          "profileFingerprint": "sha256:db2c75f367bda9746640b0bafedbf99582d7ccf11f8dfb12100ac8903353c659",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedResourceTypes": []
+        }
+      ],
+      "activeImages": [],
+      "triage": {
+        "route": "new_child_current_D_and_separate_deferred_visual",
+        "findingDe": "Neues qualitatives Radialbewegungs-Kind mit aktuellem P: periodische Sternbewegung um gemeinsamen Schwerpunkt und Grenzen indirekter Inferenz. Eigene D-Runden fehlen. Nach dokumentierten Providerfehlern weiterhin kein aktives Bild; kein erfundener aktueller Bilddefekt.",
+        "preserveDe": "P-Körper erhalten; fehlendes Bild bleibt deferred_provider_limitation, keine Ausnahme oder Freigabe.",
+        "repairEvidence": [
+          "a47"
+        ]
+      }
+    },
+    {
+      "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+      "title": "Einen bipolaren Transistor als Schalter funktional untersuchen",
+      "descriptionDe": "Die lernende Person kann an einem vorgegebenen npn- oder pnp-Transistoraufbau die Funktion von Basis, Kollektor und Emitter mithilfe eines einfachen Halbleitermodells erklären und daraus das Ein- und Ausschalten des Laststromkreises begründen; wenn die Anwendung als Schülerexperiment vorgesehen ist, kann sie den Aufbau nach Plan herstellen und die Schaltwirkung selbst untersuchen.",
+      "claimConfigArtifact": "a23",
+      "ownTextSha256": "sha256:cfb2e6eb933d0fde3b5b3d1af32b3b32d4aac2f4b1eeb9133e2b7353bcfbad1f",
+      "goalFingerprint": "sha256:4628d1ba03118f8e6877f5b24c5f90f77aff7505b269259ede83344ce2bc5643",
+      "canonicalContextSha256": "sha256:dc7cbc3e3a51f5f97bce8b996a656833d1edf0a1c0a68ec7a0f807e7b291c4c7",
+      "sameOwnTextAsComparisonCommit": true,
+      "canonicalObjectChangedFieldsSinceComparisonCommit": [],
+      "historicalD": [
+        {
+          "round": "a",
+          "inputArtifact": "a12",
+          "recordsArtifact": "a13",
+          "recordId": "physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-a.run-001.015",
+          "recordLineSha256": "sha256:582ea490e591101c8cac1afd4f30f0b74eb891a2465fa5c7510aa8dacc4793c0",
+          "decision": "keep",
+          "historicalGoalFingerprint": "sha256:4628d1ba03118f8e6877f5b24c5f90f77aff7505b269259ede83344ce2bc5643",
+          "historicalPageFingerprint": "sha256:4c18d4d42961cdcb900a7f21d7828706f245810243c43eb9b1570d57479a647b"
+        },
+        {
+          "round": "b",
+          "inputArtifact": "a14",
+          "recordsArtifact": "a15",
+          "recordId": "physics-b049-b-015",
+          "recordLineSha256": "sha256:a2a1258c2efc4e116fcb3dd9490c2f61f5db6493b2c8024c600268a6648cb8d4",
+          "decision": "keep",
+          "historicalGoalFingerprint": "sha256:4628d1ba03118f8e6877f5b24c5f90f77aff7505b269259ede83344ce2bc5643",
+          "historicalPageFingerprint": "sha256:4c18d4d42961cdcb900a7f21d7828706f245810243c43eb9b1570d57479a647b"
+        }
+      ],
+      "positiveEvidenceOwners": [],
+      "activeImages": [
+        {
+          "url": "/assets/goal-visualizations/physik/7d4d6a39-0c78-5fb0-b7bf-182ed00972f7/7d4d6a39-0c78-5fb0-b7bf-182ed00972f7.jpg",
+          "assetArtifact": "a24",
+          "reviewStatus": "accepted"
+        }
+      ],
+      "comparisonToLatestD": {
+        "ownTextUnchanged": true,
+        "changedCanonicalContextKeys": [
+          "applicability",
+          "requires"
+        ],
+        "historicalCanonicalRequires": [
+          "7f0798cb-5966-5dcb-beb3-84f637ab6139"
+        ],
+        "historicalRequires": [
+          {
+            "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+            "title": "p-n-Übergang und Diode"
+          }
+        ],
+        "currentRequires": [
+          {
+            "goalId": "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+            "title": "Sperrschicht und Polung am p-n-Übergang erklären"
+          }
+        ],
+        "historicalReverseRequires": [
+          {
+            "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+            "title": "Transistorverstärker analysieren"
+          },
+          {
+            "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+            "title": "Eine bistabile Transistor-Flipflop-Schaltung deuten"
+          },
+          {
+            "goalId": "88f27aab-8724-5a4d-8543-e49ebcb54b8e",
+            "title": "Prüfungsaufgabe: Einen Transistor als Schalter deuten"
+          }
+        ],
+        "currentReverseRequires": [
+          {
+            "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+            "title": "Transistorverstärker analysieren"
+          },
+          {
+            "goalId": "88f27aab-8724-5a4d-8543-e49ebcb54b8e",
+            "title": "Prüfungsaufgabe: Einen Transistor als Schalter deuten"
+          },
+          {
+            "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a",
+            "title": "Eine bistabile Transistor-Flipflop-Schaltung deuten"
+          }
+        ],
+        "historicalImageDigest": "sha256:81a177a4e4ee2ecf2befe16093416576c8b5dbe05b9b9e31dba2c42f39304db7"
+      },
+      "triage": {
+        "route": "current_D_context_and_targeted_P_rebinding",
+        "findingDe": "D049 KEEP/KEEP; Owntext und akzeptiertes Funktionsmodell unverändert. requires wechselte vom alten Diode-Gesamtziel 7f0798cb zum p-n-Kind 2084b7d4, daneben Applicability-Kontext geändert. Kein aktiver P-Owner in der aktuellen Registry. Der vollständig gelesene B034-P-Körper existiert, hat unveränderte Semantik/Profilkörper, aber stale reviewInputFingerprint. Gezielte informierte Kontext-/Bildkompatibilität und native aktuelle P-Bindung nötig; kein automatischer Rewrite des Inhalts.",
+        "historicalPositiveConfigArtifact": "a50",
+        "historicalPositiveRecordsArtifact": "a51",
+        "historicalReviewInputFingerprint": "sha256:e5894a9b073d12850de7872accd36d2dffec85dba6859ffb33ede9c7a63861b3",
+        "nativeExpectedReviewInputFingerprint": "sha256:bbe7bb5d8f3096157d8a2ac20b7b4d5add1dbf537958965bd7858eb6078a467c",
+        "profileFingerprint": "sha256:fe49bfd64251c32ffe6139a3ad95d5afa0dcffaa6c7d2222733860b62a2af903",
+        "repairEvidence": [
+          "a44"
+        ]
+      }
+    },
+    {
+      "goalId": "826af579-3e51-5ac9-bc2a-208d8a2fc99e",
+      "title": "Teleskope und Spektralbereiche zur Struktur der Milchstraße nutzen",
+      "descriptionDe": "Die lernende Person kann Teleskope für verschiedene Spektralbereiche vergleichen, Beobachtungsdaten aus mehreren Bereichen zusammenführen und daraus die Struktur der Milchstraße beschreiben.",
+      "claimConfigArtifact": "a23",
+      "ownTextSha256": "sha256:5aa8d6bd64487865855739ff0ae1e7e53ef65fbb9b43a7e5dc4bef9083cd6075",
+      "goalFingerprint": "sha256:27b8add1a4ac74c54ea1f39e3543080c42c0d75fb4d89bac012c3f77915c86d5",
+      "canonicalContextSha256": "sha256:5f4590ce365a52a2eb5b41d4fcac746830def16b8f56c3fe7e9ef9449ea06e06",
+      "sameOwnTextAsComparisonCommit": true,
+      "canonicalObjectChangedFieldsSinceComparisonCommit": [
+        "resourceLinks"
+      ],
+      "historicalD": [
+        {
+          "round": "a",
+          "inputArtifact": "a1",
+          "recordsArtifact": "a2",
+          "recordId": "physik-rollout-v1-batch-050-current-dependent-contexts-16-v1-20260908-first-pass-a.run-001.010",
+          "recordLineSha256": "sha256:b923a665714ff9969c3b3b6b82ce9b9f7be2ddc9749e5fe07d4a726aca576605",
+          "decision": "block",
+          "historicalGoalFingerprint": "sha256:27b8add1a4ac74c54ea1f39e3543080c42c0d75fb4d89bac012c3f77915c86d5",
+          "historicalPageFingerprint": "sha256:7f162139d71d95582b79a002fff24e30c17c2a74baabc2c782125ba7f82bf795"
+        },
+        {
+          "round": "b",
+          "inputArtifact": "a3",
+          "recordsArtifact": "a4",
+          "recordId": "physics-b050-b-010",
+          "recordLineSha256": "sha256:ccb313a94f934f33d2abdc8f9032c1e698eecc1e916c12c7b9c608876f8853ae",
+          "decision": "split_review",
+          "historicalGoalFingerprint": "sha256:27b8add1a4ac74c54ea1f39e3543080c42c0d75fb4d89bac012c3f77915c86d5",
+          "historicalPageFingerprint": "sha256:7f162139d71d95582b79a002fff24e30c17c2a74baabc2c782125ba7f82bf795"
+        }
+      ],
+      "positiveEvidenceOwners": [
+        {
+          "configArtifact": "a25",
+          "recordsArtifact": "a26",
+          "recordLineSha256": "sha256:bbebcf29fa5d3ba9bc53e4703b494b299f35e55ab0bcc2c2773b791c04cad12b",
+          "goalFingerprint": "sha256:27b8add1a4ac74c54ea1f39e3543080c42c0d75fb4d89bac012c3f77915c86d5",
+          "reviewInputFingerprint": "sha256:4774c0d3d92847b8fea00978579c34f352dbb9941d2cd62de7ae866af6fa1f19",
+          "profileFingerprint": "sha256:39abd01a8a5573b14ccffcc1e6a7042afda369f612ff0c4fbde49c55a2d01368",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedResourceTypes": [
+            "goal-visualization"
+          ]
+        }
+      ],
+      "activeImages": [
+        {
+          "url": "/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.png",
+          "assetArtifact": "a27",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "comparisonToLatestD": {
+        "ownTextUnchanged": true,
+        "changedCanonicalContextKeys": [],
+        "historicalCanonicalRequires": [
+          "2b700858-bc2e-5ddf-a791-b14d44160480",
+          "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7"
+        ],
+        "historicalRequires": [
+          {
+            "goalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+            "title": "Kosmische Strukturen einordnen"
+          },
+          {
+            "goalId": "2b700858-bc2e-5ddf-a791-b14d44160480",
+            "title": "Astronomische Beobachtungsmethoden"
+          }
+        ],
+        "currentRequires": [
+          {
+            "goalId": "2b700858-bc2e-5ddf-a791-b14d44160480",
+            "title": "Astronomische Beobachtungsmethoden"
+          },
+          {
+            "goalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
+            "title": "Kosmische Strukturen einordnen"
+          }
+        ],
+        "historicalReverseRequires": [],
+        "currentReverseRequires": [],
+        "historicalImageDigest": "sha256:6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f"
+      },
+      "triage": {
+        "route": "current_D_after_image_repair_with_preserved_split_dissent",
+        "findingDe": "D050-A BLOCK betrifft die alte überlagerte Perspektivgrafik; dieser konkrete Fehler ist durch unabhängig geprüftes/importiertes PNG und aktuelle Bild-P-Bindung repariert. D050-B split_review (Instrumentvergleich versus räumliche Datensynthese) bleibt eine gesonderte fachliche Abwägung. Owntext unverändert; kein Schließen durch bloßen Bildhashwechsel.",
+        "preserveDe": "Neues PNG und inhaltlich unverändertes P-Profil erhalten. Kleine Bildtexte bei 360 px brauchen Vergrößerung; die unabhängige Bildabnahme behauptet keine uneingeschränkte mobile Lesbarkeit. Historische JPGs liegen außerhalb aktiver Roots.",
+        "repairEvidence": [
+          "a52",
+          "a53",
+          "a54"
+        ]
+      }
+    },
+    {
+      "goalId": "e2014db8-c97f-5ce1-82c5-2a42741f4a61",
+      "title": "Exoplanetensuche und Habitabilität quellenkritisch beurteilen",
+      "descriptionDe": "Die lernende Person kann Aussagen zur Habitabilität von Exoplaneten beurteilen, indem sie Nachweismethoden vergleicht, Lebensbedingungen anhand physikalischer Kriterien mit denen der Erde abgleicht und digitale Quellen quellenkritisch auswertet.",
+      "claimConfigArtifact": "a32",
+      "ownTextSha256": "sha256:1884b380e4270df401d7409cb0630260a3edb4828358923727ad5a05c4d40787",
+      "goalFingerprint": "sha256:46c5b55fa6d96711c91f8e5362c7c973742ec9e01ed33956620c9f66e26c22ba",
+      "canonicalContextSha256": "sha256:3282538279908a7869c6cbfcb58f65f01ea8579e50871210dca5144c5022ad2e",
+      "sameOwnTextAsComparisonCommit": true,
+      "canonicalObjectChangedFieldsSinceComparisonCommit": [],
+      "historicalD": [
+        {
+          "round": "a",
+          "inputArtifact": "a28",
+          "recordsArtifact": "a29",
+          "recordId": "physik-b022-round-a-a-018",
+          "recordLineSha256": "sha256:3c092f6d7efec1df69cc49d933f13d1c78ebcaf28083541d3ccfeafe7c859a60",
+          "decision": "keep",
+          "historicalGoalFingerprint": "sha256:46c5b55fa6d96711c91f8e5362c7c973742ec9e01ed33956620c9f66e26c22ba",
+          "historicalPageFingerprint": "sha256:ef4389fc98f19de8fcc19463b64d333f80866b543ea5070e7ef9e4a1cba253b5"
+        },
+        {
+          "round": "b",
+          "inputArtifact": "a30",
+          "recordsArtifact": "a31",
+          "recordId": "physik-b022-b-018",
+          "recordLineSha256": "sha256:b7b2ca288e8e5c0da59bae3ed9a2a201701d0c74c2e707bc70f175d91b9a4c22",
+          "decision": "keep",
+          "historicalGoalFingerprint": "sha256:46c5b55fa6d96711c91f8e5362c7c973742ec9e01ed33956620c9f66e26c22ba",
+          "historicalPageFingerprint": "sha256:ef4389fc98f19de8fcc19463b64d333f80866b543ea5070e7ef9e4a1cba253b5"
+        }
+      ],
+      "positiveEvidenceOwners": [
+        {
+          "configArtifact": "a21",
+          "recordsArtifact": "a22",
+          "recordLineSha256": "sha256:104be7e42b49236fdcff6ee480d1841b19f8dcd8d218dcc6ea3f46fdc7c5929d",
+          "goalFingerprint": "sha256:46c5b55fa6d96711c91f8e5362c7c973742ec9e01ed33956620c9f66e26c22ba",
+          "reviewInputFingerprint": "sha256:36b091c6aecb05a267f52c63423f3d2c8733e2982e2de90c802be440f651bb0f",
+          "profileFingerprint": "sha256:cbd5abbd336cc8216608bd14003ae4957a97b823a1a50d70cc0912d02c374e0a",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedResourceTypes": []
+        }
+      ],
+      "activeImages": [
+        {
+          "url": "/assets/goal-visualizations/physik/e2014db8-c97f-5ce1-82c5-2a42741f4a61/e2014db8-c97f-5ce1-82c5-2a42741f4a61.jpg",
+          "assetArtifact": "a33",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "comparisonToLatestD": {
+        "ownTextUnchanged": true,
+        "changedCanonicalContextKeys": [
+          "requires"
+        ],
+        "historicalCanonicalRequires": [
+          "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+          "e28381b4-50ef-5cac-bfa4-b7c8e03aef82"
+        ],
+        "historicalRequires": [
+          {
+            "goalId": "5b8eaf71-96fe-50eb-b9ea-a8fa392df086",
+            "title": "Exoplaneten-Nachweise erlaeutern"
+          },
+          {
+            "goalId": "e28381b4-50ef-5cac-bfa4-b7c8e03aef82",
+            "title": "Planetenatmosphaeren mit Spektren untersuchen"
+          }
+        ],
+        "currentRequires": [
+          {
+            "goalId": "49bb609a-bfb7-5391-9120-f5fc737efb9a",
+            "title": "Exoplanetenkandidaten mit der Transitmethode erklären"
+          },
+          {
+            "goalId": "6dca3b0a-c872-543b-808f-97e855f5fafd",
+            "title": "Exoplanetenkandidaten mit Stern-Radialbewegungen erklären"
+          },
+          {
+            "goalId": "e28381b4-50ef-5cac-bfa4-b7c8e03aef82",
+            "title": "Planetenatmosphaeren mit Spektren untersuchen"
+          }
+        ],
+        "historicalReverseRequires": [],
+        "currentReverseRequires": [],
+        "historicalImageDigest": "sha256:63b4b3ae5e2b18dba5a4998fe42810bdbe2411eb44925eebd57031e0e2d19a6d"
+      },
+      "triage": {
+        "route": "current_D_prerequisite_context_binding",
+        "findingDe": "Jüngste gefundene eigene D022-Runden KEEP/KEEP; DE/EN-Text und semantischer Fingerprint unverändert. Alter Nachweismethoden-Elternknoten wurde in requires durch zwei eigenständige Transit-/Radialbewegungskinder ersetzt; Atmosphärenziel bleibt. Neues Kontext-D erforderlich. P wurde bereits individuell an diesem Kontext geprüft und ist aktuell.",
+        "preserveDe": "Beobachtungsnachweis, Habitabilitätskriterien, Erdvergleich und Quellenkritik dienen demselben begründeten Urteil. Keine quantitative Planetenmassenpflicht und kein Lebensnachweis aus Habitabilität erfinden.",
+        "repairEvidence": [
+          "a48"
+        ]
+      }
+    },
+    {
+      "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "title": "Schiefen Wurf beschreiben",
+      "descriptionDe": "Die lernende Person kann den schiefen Wurf ohne Luftwiderstand als Überlagerung einer gleichförmigen horizontalen und einer durch die Schwerkraft gleichmäßig beschleunigten vertikalen Bewegung beschreiben und typische Flugbahnen qualitativ skizzieren.",
+      "claimConfigArtifact": "a32",
+      "ownTextSha256": "sha256:a347b04d878bd52a0ccb826ff244b7050ba7fc8650962b0e000619f5c2b9b009",
+      "goalFingerprint": "sha256:eb057cbd36e2324347f60f0c31df17a80b6163948aab8cefb6f0a86b59ca9778",
+      "canonicalContextSha256": "sha256:fe0ab6f2d7a93888772b87e0bb50315323b73804aea04722cdc51e410b71ddb2",
+      "sameOwnTextAsComparisonCommit": true,
+      "canonicalObjectChangedFieldsSinceComparisonCommit": [],
+      "historicalD": [
+        {
+          "round": "a",
+          "inputArtifact": "a34",
+          "recordsArtifact": "a35",
+          "recordId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001.015",
+          "recordLineSha256": "sha256:5090d979024965cf755c4b4117537a7cfcd5069ddf0002307e1b5b0badc5e214",
+          "decision": "keep",
+          "historicalGoalFingerprint": "sha256:eb057cbd36e2324347f60f0c31df17a80b6163948aab8cefb6f0a86b59ca9778",
+          "historicalPageFingerprint": "sha256:c5801110a08f93f881e54e17b2efe1bf047dad0773f2f31c2b4092584736ecaf"
+        },
+        {
+          "round": "b",
+          "inputArtifact": "a36",
+          "recordsArtifact": "a37",
+          "recordId": "physics-b048-b-015",
+          "recordLineSha256": "sha256:72076bee9c6d507f0fabfed1624c5098d61d0fd58dd9abd56884b06002e063eb",
+          "decision": "keep",
+          "historicalGoalFingerprint": "sha256:eb057cbd36e2324347f60f0c31df17a80b6163948aab8cefb6f0a86b59ca9778",
+          "historicalPageFingerprint": "sha256:c5801110a08f93f881e54e17b2efe1bf047dad0773f2f31c2b4092584736ecaf"
+        }
+      ],
+      "positiveEvidenceOwners": [
+        {
+          "configArtifact": "a38",
+          "recordsArtifact": "a39",
+          "recordLineSha256": "sha256:41a20211a75c271556756ff06bdff7548248576762bbaa914c7bd68cac1efe81",
+          "goalFingerprint": "sha256:eb057cbd36e2324347f60f0c31df17a80b6163948aab8cefb6f0a86b59ca9778",
+          "reviewInputFingerprint": "sha256:8c2cfc26ba4fad169008c70622e151068125c0f07fea238ff33e5de65696491f",
+          "profileFingerprint": "sha256:084c984a81c405c617ae91bf5e662816ed9c674a2ea0ed1a56a79fdca02291b4",
+          "status": "needs_human_review",
+          "reviewAuthority": "ai_candidate",
+          "reviewedResourceTypes": []
+        }
+      ],
+      "activeImages": [
+        {
+          "url": "/assets/goal-visualizations/physik/fbecbd60-5db3-51e8-94be-d66b066ffa06/fbecbd60-5db3-51e8-94be-d66b066ffa06.jpg",
+          "assetArtifact": "a40",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "comparisonToLatestD": {
+        "ownTextUnchanged": true,
+        "changedCanonicalContextKeys": [],
+        "historicalCanonicalRequires": [
+          "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+        ],
+        "historicalRequires": [
+          {
+            "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+            "title": "Waagerechter Wurf analysieren"
+          }
+        ],
+        "currentRequires": [
+          {
+            "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+            "title": "Waagerechter Wurf analysieren"
+          }
+        ],
+        "historicalReverseRequires": [
+          {
+            "goalId": "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+            "title": "E-Phase-Klausuraufgaben Physik selbstständig lösen"
+          },
+          {
+            "goalId": "dd99528a-bae5-5b78-89e6-c6092c927f8d",
+            "title": "Mehrschrittige Bewegungsmodelle mit Reibung und Chaos analysieren"
+          }
+        ],
+        "currentReverseRequires": [
+          {
+            "goalId": "dd99528a-bae5-5b78-89e6-c6092c927f8d",
+            "title": "Mehrschrittige Bewegungsmodelle mit Reibung und Chaos analysieren"
+          },
+          {
+            "goalId": "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+            "title": "E-Phase-Klausuraufgaben Physik selbstständig lösen"
+          }
+        ],
+        "historicalImageDigest": "sha256:44fdf8a6f0482ba45bf86eff4b8179b7dd71bc384fa367920d138f06c16890e8"
+      },
+      "triage": {
+        "route": "native_D_reuse_check_before_any_new_round",
+        "findingDe": "D048 KEEP/KEEP; eigener DE/EN-Text, gesamter CanonicalContext, Voraussetzungen-ID/Titel, Nachfolger-ID/Titelmengen und Bilddigest im gezielten Vergleich unverändert. Aktuelles P besteht. Pauschaler historischer Verweis auf geänderten Voraussetzungskontext belegt bei diesen jüngsten Runden keinen neuen fachlichen Fehler.",
+        "limitDe": "Der nativeB048ReuseAnnex bestätigt gültige historische Runden und keine aktuelle Owntext-/CanonicalContext-/normalisierte Seitendrift. Es existiert aber keine fbec-B048-Resolution, und der native Understanding-Dissens verlangt weiterhin informierte Synthese durch Root. Keine D-Freigabe durch diese Triage."
+      }
+    }
+  ],
+  "artifacts": {
+    "a1": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-050-current-dependent-contexts-16-v1/round-a/description-review-input.json",
+      "sha256": "sha256:4da8a0055c5136726e0ac4d1dcd830958fe8b34bb051ca883be884258a34e422"
+    },
+    "a2": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-050-current-dependent-contexts-16-v1/round-a/results/physik-rollout-v1-batch-050-current-dependent-contexts-16-v1-20260908-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:769df4908ed67db6999871e73784c8387a3d518e961695ebc67aa621901c2b47"
+    },
+    "a3": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-050-current-dependent-contexts-16-v1/round-b/description-review-input.json",
+      "sha256": "sha256:4da8a0055c5136726e0ac4d1dcd830958fe8b34bb051ca883be884258a34e422"
+    },
+    "a4": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-050-current-dependent-contexts-16-v1/round-b/results/physik-rollout-v1-batch-050-current-dependent-contexts-16-v1-20260908-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:5a95a32749d8daa04c4f05817f2402442df9fb90620f031af258fdfc0bdd3a35"
+    },
+    "a5": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/retained-seven.positive-evidence.config.json",
+      "sha256": "sha256:a1fa1f6b39262556f3d98deaec401e6a0d737bf4566ba0d75c1156f8c89a0087"
+    },
+    "a6": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/retained-seven.positive-evidence.review.jsonl",
+      "sha256": "sha256:015bbe32e9735464128695dffb4706d41e087b2c2f7c060252cd5a32413a5d4b"
+    },
+    "a7": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/resumed-current-remaining-1-after-b057-claim-v1.config.json",
+      "sha256": "sha256:ddd2121f97e4d37ee20724269d42e9d8a6734ce3daa9884e52e963a7c6d95fd0"
+    },
+    "a8": {
+      "path": "app/public/assets/goal-visualizations/physik/206fe51d-cc78-5422-b139-32cc97eb1c37/206fe51d-cc78-5422-b139-32cc97eb1c37.jpg",
+      "sha256": "sha256:a1c39b453dad8a0588f37743933e61678ff6d500622039523207f9884d9de009"
+    },
+    "a9": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-diode-consolidation-v1/positive-evidence.config.json",
+      "sha256": "sha256:3c45c4ae3c0119b4563d2590291d550236393876a4e158f09fed9467ed42445a"
+    },
+    "a10": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-diode-consolidation-v1/positive-evidence.review.jsonl",
+      "sha256": "sha256:4c9ef1ae39d264cbac58fc0cbf49efb1ef01047c0f080baaca771bb920334fd2"
+    },
+    "a11": {
+      "path": "app/public/assets/goal-visualizations/physik/2084b7d4-300d-5fa0-8b8d-c480c40f853e/2084b7d4-300d-5fa0-8b8d-c480c40f853e.png",
+      "sha256": "sha256:7b1053f77261d29bc2d0c653646a875ede3ebf49f8b14e492ff82a709c609478"
+    },
+    "a12": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-049-current-splits-and-models-final-20-v1/round-a/description-review-input.json",
+      "sha256": "sha256:f0c6e06502ffc8a44fcc62e1204b24ffb17bee9085d41367124ac73870a90e25"
+    },
+    "a13": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-049-current-splits-and-models-final-20-v1/round-a/results/physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:bfe76a42063e7b92be981461f1c3b4779fe5e1d48b357d3f9c5308d790187205"
+    },
+    "a14": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-049-current-splits-and-models-final-20-v1/round-b/description-review-input.json",
+      "sha256": "sha256:f0c6e06502ffc8a44fcc62e1204b24ffb17bee9085d41367124ac73870a90e25"
+    },
+    "a15": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-049-current-splits-and-models-final-20-v1/round-b/results/physik-rollout-v1-batch-049-current-splits-and-models-final-20-v1-20260908-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:ec131a70e62aaf8acc8fd7c3ebf4ae2cc4419ac3ef35b3a201dba0e32e8dabfe"
+    },
+    "a16": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-046-fluid-and-nerve-v1.config.json",
+      "sha256": "sha256:08d1bcad8ed6ac34f33671f92a166f4c94861a099efa7fdf07cd974329f29e64"
+    },
+    "a17": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-046-fluid-and-nerve-v1.review.jsonl",
+      "sha256": "sha256:5f3e0048147428dfd06fac38c531907f93d4c63326cac41a6d3873dd63e984a3"
+    },
+    "a18": {
+      "path": "app/public/assets/goal-visualizations/physik/333ca92b-a92c-46a9-86be-dea8ddbd43e0/333ca92b-a92c-46a9-86be-dea8ddbd43e0.jpg",
+      "sha256": "sha256:9c38b7ea32a8e2b8639949bec8783ca538c9d17b7978d4d73595eb7fdb45f177"
+    },
+    "a19": {
+      "path": "app/public/assets/goal-visualizations/physik/3857891b-d328-585b-9936-85c7aff122ee/3857891b-d328-585b-9936-85c7aff122ee.png",
+      "sha256": "sha256:bfac74412968fe6865a8f6b56bc23edd690e05a30a0ff38acbee9f37c3f3da7e"
+    },
+    "a20": {
+      "path": "app/public/assets/goal-visualizations/physik/3b586f2a-60e2-5019-aa08-6a47616a1f1f/3b586f2a-60e2-5019-aa08-6a47616a1f1f.png",
+      "sha256": "sha256:026c52e440415e75f67b201dab4cf4809751cb26fcfd78f41e9a9941430f4f66"
+    },
+    "a21": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-solar-mass-resumed-20260914-v1/profiles.retained-eight.config.json",
+      "sha256": "sha256:9968b1a9f1d1cebc5eba664a46604e131a140d9c9588f83d6cdbea90fb18c7c8"
+    },
+    "a22": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-solar-mass-resumed-20260914-v1/profiles.retained-eight.review.jsonl",
+      "sha256": "sha256:efd0fe34f1fbe0b662c6aa1294de97a4116cea9d0a670722ebb10819bd912feb"
+    },
+    "a23": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/resumed-current-remaining-2-after-b057-claim-v1.config.json",
+      "sha256": "sha256:6ff042769a0abf5817021e4ba66a1ceeadafc09c1898cf31b4e24214aff629ae"
+    },
+    "a24": {
+      "path": "app/public/assets/goal-visualizations/physik/7d4d6a39-0c78-5fb0-b7bf-182ed00972f7/7d4d6a39-0c78-5fb0-b7bf-182ed00972f7.jpg",
+      "sha256": "sha256:81a177a4e4ee2ecf2befe16093416576c8b5dbe05b9b9e31dba2c42f39304db7"
+    },
+    "a25": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.config.json",
+      "sha256": "sha256:3f3d71fa740dffd71e0d9071d5ba0f9e2e96aeeb41e794e897966c2e4cc1cb67"
+    },
+    "a26": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.review.jsonl",
+      "sha256": "sha256:cc210e19cc743fe165837ad35c7bce228d556567c0a5c9069116e299d94e8373"
+    },
+    "a27": {
+      "path": "app/public/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.png",
+      "sha256": "sha256:853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794"
+    },
+    "a28": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1/round-a/description-review-input.json",
+      "sha256": "sha256:e27f85abce9400a5330225f434aff21937f5d0267564c03e67e592d35311beb8"
+    },
+    "a29": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1/round-a/results/physik-rollout-v1-batch-022-astrophysics-current-20-v1-20260828-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:a5f7241856c10b169790ac203e446566113fc870e11b0119c6f2bb24fcf243da"
+    },
+    "a30": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1/round-b/description-review-input.json",
+      "sha256": "sha256:e27f85abce9400a5330225f434aff21937f5d0267564c03e67e592d35311beb8"
+    },
+    "a31": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-022-astrophysics-current-20-v1/round-b/results/physik-rollout-v1-batch-022-astrophysics-current-20-v1-20260828-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:efc56ac825f5783e539a211e298c0a7463519abce5f608ab199150a684919353"
+    },
+    "a32": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/resumed-current-remaining-3-after-b057-claim-v1.config.json",
+      "sha256": "sha256:9ef2d9c1f78584f2abc027364d93633b2f271e31e9634703bc1f25fff9f5a980"
+    },
+    "a33": {
+      "path": "app/public/assets/goal-visualizations/physik/e2014db8-c97f-5ce1-82c5-2a42741f4a61/e2014db8-c97f-5ce1-82c5-2a42741f4a61.jpg",
+      "sha256": "sha256:63b4b3ae5e2b18dba5a4998fe42810bdbe2411eb44925eebd57031e0e2d19a6d"
+    },
+    "a34": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/round-a/description-review-input.json",
+      "sha256": "sha256:d463c5f4bf17dd8ce210be6363b0bc5c0e785c87de86342f7dd82ee5d9bda193"
+    },
+    "a35": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/round-a/results/physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:8bc3e623378b30377fc54f8e2e83f949ea32fa459fd5e294d4a496f9d0b3b210"
+    },
+    "a36": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/round-b/description-review-input.json",
+      "sha256": "sha256:d463c5f4bf17dd8ce210be6363b0bc5c0e785c87de86342f7dd82ee5d9bda193"
+    },
+    "a37": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/round-b/results/physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:d6f20232635b6ef939fbca535e5144ca47cb0ebf803bde61e7a93e1cb85a667c"
+    },
+    "a38": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-047-current-nuclear-electronics-mechanics-15-v1.retained-after-final-context-v1.paused-current-20260908-v1.config.json",
+      "sha256": "sha256:2e0de980c8204d9f95be46af31d8e3ca64716d3bebedcc08aefd6cd5842d1f4b"
+    },
+    "a39": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-physics-positive-understanding-evidence-rollout-v1-batch-047-current-nuclear-electronics-mechanics-15-v1.retained-after-final-context-v1.paused-current-20260908-v1.review.jsonl",
+      "sha256": "sha256:e3f95ed8c7982e374e6840a4c31d11d6ad31659f53433cfb42d6569a184d560c"
+    },
+    "a40": {
+      "path": "app/public/assets/goal-visualizations/physik/fbecbd60-5db3-51e8-94be-d66b066ffa06/fbecbd60-5db3-51e8-94be-d66b066ffa06.jpg",
+      "sha256": "sha256:44fdf8a6f0482ba45bf86eff4b8179b7dd71bc384fa367920d138f06c16890e8"
+    },
+    "a41": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "sha256:58d46a8a6594b6b5470d35c8292a5c504ab48456c7d750306931acbb0214aa40"
+    },
+    "a42": {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "sha256:d500e58c891c4b8f06d43889a1971704ea97086a9a93eb2cf378900e7ec4f512"
+    },
+    "a43": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-050-current-binding-audit-20260913-v1.json",
+      "sha256": "sha256:423e4981adda57eece6287d744fb78fa213610a2853b437d3837d2d737064aad"
+    },
+    "a44": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-diode-consolidation-v1/authoring-receipt.json",
+      "sha256": "sha256:3bedfaa2bcba07c98b1e31f835ad191b259d5333b5d7812bffffcc4e4124c5d5"
+    },
+    "a45": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-diode-consolidation-v1/positive-panel-binding-receipt.json",
+      "sha256": "sha256:a6a860c11df98d2a530a1a604056a5632574ca1a2bc41e696dd1fd1932c297d4"
+    },
+    "a46": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-diode-consolidation-v1/pause-checkpoint-receipt.json",
+      "sha256": "sha256:4902517e173aef9051081bd0ddd0d24d55a82643204b79359ec9733448af8c97"
+    },
+    "a47": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-astro-consolidation-v1/visual-consolidation-receipt.json",
+      "sha256": "sha256:77de6bdd8fe46b2a7855bffdcf53ad33aea15e361b1eaedba9173b8e2d6eff8d"
+    },
+    "a48": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-final-astro-consolidation-v1/pause-receipt.json",
+      "sha256": "sha256:cf1c05e78429bb9a770ee5ba1839c2a959a94e6cf9809fd7cbe14af4bd42f3c7"
+    },
+    "a49": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-046-fluid-and-nerve-v1/implementation-receipt.json",
+      "sha256": "sha256:dd35e220eda3a363e9dc697251eb4b4eb33805c08032d6ea32242d9bd4d1f26a"
+    },
+    "a50": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.config.json",
+      "sha256": "sha256:0fe3fc162cadf35a772674d8fadc0881d1addb90a6998b13158842a32026d465"
+    },
+    "a51": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/physics100-four-goal-completion-v1/positive-evidence.review.jsonl",
+      "sha256": "sha256:7f366713564b24f5bc0181f19477271e90d669255f87d1de63966475d2181517"
+    },
+    "a52": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.independent-ai-review.json",
+      "sha256": "sha256:d623e40ef8c4d66cd2607f31d47a43014b9b9f9b2e216866039e08bc88ad8b18"
+    },
+    "a53": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/import-receipt.json",
+      "sha256": "sha256:7985bfab4b6fcd375fe457ef3dd30bfc1668d80cc3fd52dde8ca2a5b26edd304"
+    },
+    "a54": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/archive-move-receipt.json",
+      "sha256": "sha256:6ecd8c4d3d2d440947d1623ae9b79a39598d29dcc8f6d2a8bffc9609f7d25510"
+    },
+    "a55": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/README.md",
+      "sha256": "sha256:023cd184f24585ddd7e966e79bbc6c1dab8b525d0cbe23e1f7dfc03e12cfd3fd"
+    }
+  },
+  "hashRules": {
+    "artifact": "SHA-256 of actual file bytes",
+    "recordLine": "SHA-256 of original JSONL line excluding newline",
+    "ownText": "SHA-256 of stableGoalEvidenceJson({title,titleEn,description,descriptionEn})",
+    "canonicalContext": "SHA-256 of stableGoalEvidenceJson(buildGoalDescriptionCanonicalContext(goal))",
+    "goalFingerprint": "native fingerprintGoalForPositiveEvidence(goal, curricularAtomic), goal-evidence-v1"
+  },
+  "actualChecks": {
+    "scope": {
+      "claimConfigs": 3,
+      "uniqueGoals": 11
+    },
+    "currentPositiveEvidence": {
+      "owningConfigs": 6,
+      "ownedGoals": 10,
+      "nativeValidator": "reviewPositiveGoalEvidenceConfig",
+      "errors": 0,
+      "status": "All ten scoped records current needs_human_review / ai_candidate; this is not human approval"
+    },
+    "historicalTransistorP": {
+      "nativeValidator": "reviewPositiveGoalEvidenceConfig; only exact target errors reported",
+      "result": "stale reviewInputFingerprint",
+      "bodyReadFully": true
+    },
+    "sameOwnTextsSinceComparisonCommit": 11,
+    "canonicalObjectDifferencesSinceComparisonCommit": "Only Milky Way resourceLinks changed among these eleven; all other ten complete goal objects unchanged."
+  },
+  "nextPackages": [
+    {
+      "priority": 1,
+      "label": "Diodenkinder: eigenes aktuelles D-Paket",
+      "goalIds": [
+        "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
+        "3857891b-d328-585b-9936-85c7aff122ee",
+        "3b586f2a-60e2-5019-aa08-6a47616a1f1f"
+      ],
+      "reason": "Drei tatsächlich neue eigene Kompetenzen; Text, reparierte Panels und P bereits aktuell. Historische Elternreviews reichen nicht aus."
+    },
+    {
+      "priority": 2,
+      "label": "Gezielte Transistor-P-/D-Kontextbindung",
+      "goalIds": [
+        "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7"
+      ],
+      "reason": "Einziger fehlender aktiver P-Owner; vorhandenen guten B034-Körper nach individueller Kontextprüfung erhalten."
+    },
+    {
+      "priority": 3,
+      "label": "Astronomischer Methoden-/Urteilskontext",
+      "goalIds": [
+        "49bb609a-bfb7-5391-9120-f5fc737efb9a",
+        "6dca3b0a-c872-543b-808f-97e855f5fafd",
+        "e2014db8-c97f-5ce1-82c5-2a42741f4a61",
+        "206fe51d-cc78-5422-b139-32cc97eb1c37"
+      ],
+      "reason": "Zwei neue Methodenatome plus bereits guter abhängiger Urteilskontext; HRD-Nachfolgerbindung kann als kleines separates Paket erfolgen. Zwei fehlende Bilder ausdrücklich getrennt behalten."
+    },
+    {
+      "priority": 4,
+      "label": "Informierte Klärung vorhandener Dissense",
+      "goalIds": [
+        "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+        "826af579-3e51-5ac9-bc2a-208d8a2fc99e"
+      ],
+      "reason": "Unabhängige Leistungen versus eine Modell-/Inferenzkompetenz quellen- und profilbezogen entscheiden. Kein Mehrheitsentscheid, kein Reopening erledigter Bild-/Quellenfehler."
+    },
+    {
+      "priority": 1,
+      "label": "Parallel read-only: B048-Reuse vor neuen Runden",
+      "goalIds": [
+        "fbecbd60-5db3-51e8-94be-d66b066ffa06"
+      ],
+      "reason": "Der gezielte Vergleich belegt bislang keinen aktuellen Feldunterschied; vorhandene D-Runden können gültig wiederverwendbar sein. Native Vollbindung zuerst prüfen."
+    }
+  ],
+  "nativeB048ReuseAnnex": {
+    "annexId": "B048-fbec-native-current-reuse-check",
+    "capturedAt": "2026-09-14T05:22:34.490Z",
+    "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+    "method": "Native materializeGoalDescriptionRolloutBatchDualSummary(config,false), loadGoalBookBuildInputs in memory, native context/page/source fingerprint functions; no renderer or output write",
+    "nativeDualSummary": {
+      "validation": "passed",
+      "goal": {
+        "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+        "firstRecordId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001.015",
+        "secondRecordId": "physics-b048-b-015",
+        "firstRunId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001",
+        "secondRunId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      }
+    },
+    "historicalPageFingerprint": "sha256:c5801110a08f93f881e54e17b2efe1bf047dad0773f2f31c2b4092584736ecaf",
+    "historicalPageFingerprintRecomputed": "sha256:c5801110a08f93f881e54e17b2efe1bf047dad0773f2f31c2b4092584736ecaf",
+    "currentFullAtlasPageFingerprint": "sha256:7bc6471f497d2bac5383675e706fd5c153fad41d644361756f43032985ac993b",
+    "currentFullAtlasPageFingerprintRecomputed": "sha256:7bc6471f497d2bac5383675e706fd5c153fad41d644361756f43032985ac993b",
+    "historicalReviewContextFingerprint": "sha256:bd4e3c7ec8ae18ae9cbaaa211f3e295ad817a26b5b47529f90512839e97aa559",
+    "historicalOwnText": {
+      "titleDe": "Schiefen Wurf beschreiben",
+      "titleEn": "Describe Oblique Projection",
+      "descriptionDe": "Die lernende Person kann den schiefen Wurf ohne Luftwiderstand als Überlagerung einer gleichförmigen horizontalen und einer durch die Schwerkraft gleichmäßig beschleunigten vertikalen Bewegung beschreiben und typische Flugbahnen qualitativ skizzieren.",
+      "descriptionEn": "The learner can describe oblique projectile motion without air resistance as the superposition of uniform horizontal motion and vertical motion with constant gravitational acceleration and qualitatively sketch typical trajectories."
+    },
+    "currentOwnText": {
+      "titleDe": "Schiefen Wurf beschreiben",
+      "titleEn": "Describe Oblique Projection",
+      "descriptionDe": "Die lernende Person kann den schiefen Wurf ohne Luftwiderstand als Überlagerung einer gleichförmigen horizontalen und einer durch die Schwerkraft gleichmäßig beschleunigten vertikalen Bewegung beschreiben und typische Flugbahnen qualitativ skizzieren.",
+      "descriptionEn": "The learner can describe oblique projectile motion without air resistance as the superposition of uniform horizontal motion and vertical motion with constant gravitational acceleration and qualitatively sketch typical trajectories."
+    },
+    "ownDifferences": [],
+    "canonicalContextDifferences": [],
+    "normalizedPageDifferences": [],
+    "normalization": "Only pageNumber/navigationOrder/treeOrder/pageFingerprint excluded; all internal/external references normalized to sorted goalId/title; all remaining page fields compared.",
+    "historicalNormalizedPageSha256": "sha256:68782e5aa076b9630449e177a8ac5c2aa69c38b906cc6ec49b4ee21766a85463",
+    "currentNormalizedPageSha256": "sha256:68782e5aa076b9630449e177a8ac5c2aa69c38b906cc6ec49b4ee21766a85463",
+    "rawPageDifferences": [
+      {
+        "field": "pageNumber",
+        "before": 15,
+        "current": 444
+      },
+      {
+        "field": "navigationOrder",
+        "before": 1,
+        "current": 111
+      },
+      {
+        "field": "treeOrder",
+        "before": 8,
+        "current": 150
+      },
+      {
+        "field": "requires",
+        "before": [
+          {
+            "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+            "title": "Waagerechter Wurf analysieren",
+            "anchor": "goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+            "pageNumber": 10
+          }
+        ],
+        "current": [
+          {
+            "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+            "title": "Waagerechter Wurf analysieren",
+            "anchor": "goal-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+            "pageNumber": 443
+          }
+        ]
+      },
+      {
+        "field": "pageFingerprint",
+        "before": "sha256:c5801110a08f93f881e54e17b2efe1bf047dad0773f2f31c2b4092584736ecaf",
+        "current": "sha256:7bc6471f497d2bac5383675e706fd5c153fad41d644361756f43032985ac993b"
+      }
+    ],
+    "sourceBindings": [
+      {
+        "errors": [],
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-a",
+          "campaignDigest": "sha256:7954fe9d1229a77e1e784f6897f6f0bdbcf00ba7264a15e5dd6edf1085194fe2",
+          "roundId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a",
+          "independenceGroupId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-independent-a",
+          "reviewInputFingerprint": "sha256:b5aac2cb1e1e838f9b18c4cfbf20698508e148eb24e89573696a26d64e314aba",
+          "goalReviewContextFingerprint": "sha256:bd4e3c7ec8ae18ae9cbaaa211f3e295ad817a26b5b47529f90512839e97aa559",
+          "batchId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.batch-001",
+          "runId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001",
+          "runManifestDigest": "sha256:9b9f53a84e3ae210a6c34619110150ff99b921c325c460d856806795f050aeaf",
+          "resultsDigest": "sha256:8bc3e623378b30377fc54f8e2e83f949ea32fa459fd5e294d4a496f9d0b3b210",
+          "recordId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-a.run-001.015",
+          "recordDigest": "sha256:5090d979024965cf755c4b4117537a7cfcd5069ddf0002307e1b5b0badc5e214"
+        },
+        "decision": "keep"
+      },
+      {
+        "errors": [],
+        "binding": {
+          "campaignId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-b",
+          "campaignDigest": "sha256:964cfcbfd946d718ecdb9fbb8e53f7f27807be990b7b3fde635e4c2c3e462673",
+          "roundId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b",
+          "independenceGroupId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-independent-b",
+          "reviewInputFingerprint": "sha256:b5aac2cb1e1e838f9b18c4cfbf20698508e148eb24e89573696a26d64e314aba",
+          "goalReviewContextFingerprint": "sha256:bd4e3c7ec8ae18ae9cbaaa211f3e295ad817a26b5b47529f90512839e97aa559",
+          "batchId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.batch-001",
+          "runId": "physik-rollout-v1-batch-048-current-concepts-final-20-v1-20260908-first-pass-b.run-001",
+          "runManifestDigest": "sha256:347b79153ad426d53cf01068759155642546794ec721d75b57da0a3136e31dc3",
+          "resultsDigest": "sha256:d6f20232635b6ef939fbca535e5144ca47cb0ebf803bde61e7a93e1cb85a667c",
+          "recordId": "physics-b048-b-015",
+          "recordDigest": "sha256:72076bee9c6d507f0fabfed1624c5098d61d0fd58dd9abd56884b06002e063eb"
+        },
+        "decision": "keep"
+      }
+    ],
+    "prerequisite": {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "ownDifferences": [
+        {
+          "field": "descriptionDe",
+          "before": "Die lernende Person kann den waagerechten Wurf experimentell untersuchen, als Überlagerung von horizontaler und vertikaler Bewegung deuten und die Flugbahn im x-y-Diagramm darstellen.",
+          "current": "Die lernende Person kann den waagerechten Wurf experimentell untersuchen, bei vernachlässigbarem Luftwiderstand und konstanter Fallbeschleunigung als Überlagerung gleichförmiger horizontaler und gleichmäßig beschleunigter vertikaler Bewegung deuten und die Flugbahn im x-y-Diagramm darstellen."
+        },
+        {
+          "field": "descriptionEn",
+          "before": "The learner can experimentally investigate horizontal projection, interpret it as a superposition of horizontal and vertical motion, and represent the trajectory in an x-y diagram.",
+          "current": "The learner can experimentally investigate horizontal projectile motion, interpret it under negligible air resistance and constant gravitational acceleration as the superposition of uniform horizontal and uniformly accelerated vertical motion, and represent its trajectory in an x-y diagram."
+        }
+      ],
+      "canonicalContextDifferences": []
+    },
+    "existingResolutionEntries": [],
+    "artifacts": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256": "sha256:58d46a8a6594b6b5470d35c8292a5c504ab48456c7d750306931acbb0214aa40"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1.config.json",
+        "sha256": "sha256:8c0b84f211065db568c57d76a809cf27e68931c1d9e30e4b5d216923a9d06cc9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/batch-manifest.json",
+        "sha256": "sha256:6104d3ec8a9f579ef727095571102930dda725415e0a3ffc6b986eedf6df80d9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/bundle/book-model.json",
+        "sha256": "sha256:6687f12887d5bd513441ea617893db2f442b2f51f344399d90743523b03578b9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/dual-summary.json",
+        "sha256": "sha256:6b414186b933224d16ebad5b9baad261ddf0236e3c85f0e93356c5f9d4d6b64f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/synthesis-current-subset.json",
+        "sha256": "sha256:ffdfb2a5a24fa613a11c92e96a8feca8c997c176d02a2a2529ecb24e0dc35f67"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/synthesis-remaining-six-v1.json",
+        "sha256": "sha256:8cd3c7ac13c5722166fa2e4d6389d8170e91ca68b66a26a2d334bd02448e6cba"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/resolution-index.current-subset-v1.json",
+        "sha256": "sha256:6412c06abb8d0ffc7a8b53739241c36acc0cf42877219090f85c85bf898d3299"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/resolution-index.remaining-six-v1.json",
+        "sha256": "sha256:330e2d25d2c530c4e9499e2aa91a5cafe8a3caa7fd798f51c832b6a02cdeda95"
+      },
+      {
+        "path": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+        "sha256": "sha256:f2ae7c25c2f288ead6796db39aaed38b6c813e6e2c2496024cb5f127bdd73190"
+      },
+      {
+        "path": "app/scripts/goalBookModel.ts",
+        "sha256": "sha256:5b36dae5a957dd48fa19a3ca974381caefa22bdaec2c1842e63dbe94279a13fa"
+      },
+      {
+        "path": "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "sha256": "sha256:8b2d5842c5da84067969e090ecce52181e7d2efe724859fa3a7b43116607ac3b"
+      },
+      {
+        "path": "app/scripts/validateGoalDescriptionDualRoundResolution.ts",
+        "sha256": "sha256:d97c248a17b3eb1be83a58d3f102a47803e5b7fffa61a9af29cd1bc277ec9b4d"
+      },
+      {
+        "path": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+        "sha256": "sha256:59f8f412cbe9be4dc033396581e14960d0b0f12e3b17b5d48c35e5d6fae71e64"
+      }
+    ],
+    "previousExclusions": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/synthesis-current-subset.json",
+        "field": "excluded",
+        "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+        "reason": "Direct prerequisite 89a8cf15 has changed; dependent semantic binding requires targeted checking."
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/synthesis-remaining-six-v1.json",
+        "field": "excluded",
+        "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+        "reason": "Direct prerequisite 89a8cf15 has changed; dependent semantic binding requires targeted checking."
+      }
+    ],
+    "priorOwnReviewBodies": [
+      {
+        "round": "a",
+        "decision": "keep",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Bei konstanter Schwerkraft ohne Luftwiderstand bleibt die horizontale Geschwindigkeit konstant, während die vertikale Geschwindigkeit vom Aufstieg über null zum Abstieg wechselt; die Beschleunigung bleibt auch am Scheitel nach unten gerichtet.",
+          "essentialUnderstandingEn": "With constant gravity and no air resistance, horizontal velocity remains constant while vertical velocity changes from ascent through zero to descent; acceleration remains downward even at the apex.",
+          "observablePerformanceDe": "Die lernende Person skizziert eine plausible Bahn mit Anfangsrichtung und Scheitel, ergänzt qualitative Geschwindigkeitskomponenten und erklärt, warum das Objekt am höchsten Punkt nicht insgesamt stillsteht.",
+          "observablePerformanceEn": "The learner sketches a plausible path with launch direction and apex, adds qualitative velocity components, and explains why the object is not completely at rest at the highest point.",
+          "transferExpectationDe": "Bei Landung unterhalb der Abwurfhöhe zeichnet sie eine entsprechend verlängerte absteigende Bahn und erklärt, weshalb die Zeitspiegelung um den Scheitel nicht mehr gleiche Start- und Landehöhen beschreibt.",
+          "transferExpectationEn": "For landing below launch height, the learner draws an extended descending path and explains why symmetry about the apex no longer describes equal launch and landing heights."
+        },
+        "rationale": "Die Modellbedingungen und qualitative Darstellung sind bereits klar und bilingual gleichwertig. Vollständig gesichtetes Bild verbindet konstantes vx, vertikale Beschleunigung und eine konsistente symmetrische Beispielbahn; die Skalierung dient keiner geforderten quantitativen Messauswertung. Grundlage ist ausschließlich der gebundene Kontext; externe Quellenabdeckung wurde nicht zusätzlich verifiziert.",
+        "recordStatus": "candidate",
+        "reviewAuthority": "ai_candidate"
+      },
+      {
+        "round": "b",
+        "decision": "keep",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Beim schiefen Wurf bleibt die horizontale Geschwindigkeit im idealisierten Modell konstant, während die vertikale Geschwindigkeit durch konstante Schwerebeschleunigung abnimmt und ihr Vorzeichen wechseln kann.",
+          "essentialUnderstandingEn": "In ideal oblique projectile motion, horizontal velocity stays constant while vertical velocity decreases under constant gravitational acceleration and can change sign.",
+          "observablePerformanceDe": "Die lernende Person zeichnet für einen unabhängig gegebenen Startvektor eine plausible Bahn und erläutert mit Komponentenpfeilen Aufstieg, Scheitel und Abstieg, einschließlich fortbestehender Beschleunigung am Scheitel.",
+          "observablePerformanceEn": "For an independently supplied launch vector, the learner sketches a plausible trajectory and uses component arrows to explain ascent, apex and descent, including the acceleration that remains at the apex.",
+          "transferExpectationDe": "Für einen frisch gegebenen schräg abwärts gerichteten Start skizziert sie den unmittelbar abfallenden Parabelabschnitt und erklärt, warum ein oberhalb liegender Scheitel kein durchlaufener Bahnpunkt sein muss.",
+          "transferExpectationEn": "For a fresh downward oblique launch, the learner sketches the immediately descending parabolic segment and explains why an apex above the launch point need not be traversed."
+        },
+        "rationale": "Die Beschreibung benennt die beiden Komponenten und die entscheidende Bedingung ohne Luftwiderstand; die qualitative Skizze zeigt dasselbe Verständnis in einer zweiten Darstellung. DE/EN sind gleichwertig, der waagerechte Wurf ist ein sinnvoller direkter Vorgänger. Das vollständig betrachtete Bild zeigt eine Parabel mit gleichmäßigen horizontalen Zeitschritten, horizontal konstantem vx und passendem vertikalem Modell; quantitative Reichweitenoptimierung ist nicht gefordert. AI-Evidenz E1/G1; keine menschliche Freigabe und keine separat verifizierte vollständige Quellen-/Projektionsmatrix.",
+        "recordStatus": "candidate",
+        "reviewAuthority": "ai_candidate"
+      }
+    ],
+    "interpretation": {
+      "outcome": "historical_rounds_have_no_current_own_or_normalized_page_drift; informed_synthesis_required; no_resolution_approved",
+      "currentPageBindingDe": "Historischer und aktueller nativer Seitenfingerprint sind jeweils korrekt, aber wegen Seiten-/Navigationsnummern nicht gleich. Die explizite Normalisierung dient ausschließlich dem vollständigen inhaltlichen Seitenvergleich; keine alten Artefakte wurden umgehasht.",
+      "prerequisiteChangeDe": "89a wurde tatsächlich in DE/EN präzisiert: vernachlässigbarer Luftwiderstand, konstante Fallbeschleunigung und die beiden idealisierten Bewegungskomponenten sind nun ausdrücklich benannt. Genau diese Bedingungen stehen bereits im unveränderten fbec-Owntext und in beiden B048-Understanding-Bodies. Die Präzisierung kehrt das vorausgesetzte Grundverständnis nicht um. Dies ist eine informierte Triagebegründung für die Wiederverwendungsroute, keine fachliche D-/Quellenfreigabe.",
+      "dissentDe": "KEEP/KEEP ist keine fertige Synthese: Die native Dualsummary nennt disagreement in understandingEvidence und rationale, requiresSynthesis=true, automaticAcceptance=false. A variiert die Landehöhe, B den schräg abwärts gerichteten Start. Root liest beide konkreten Nachweisvorschläge und das aktuelle P-Profil selbst und entscheidet informiert.",
+      "resolutionStatusDe": "In beiden vorhandenen B048-Resolution-Indizes ist kein fbec-Eintrag vorhanden. Es wurde deshalb keine existierende fbec-Resolution als gültig oder ungültig ausgegeben. Bestätigt sind historische Rundenintegrität und aktuelle Feld-/Seitenvergleichbarkeit, nicht strictDescriptionComplete.",
+      "recommendedNextStepDe": "Vorhandene B048-Runden als Kandidaten für eine informierte Synthese und anschließende native aktuelle Resolution verwenden. Kein automatisches Rebinding oder Schließen; keine neuen Blindrunden ohne konkreten Anlass.",
+      "approvalWritten": false,
+      "resolutionConstructed": false,
+      "recordsChanged": false,
+      "globalWrites": false,
+      "rendererOrFullBookPublicationRun": false,
+      "currentNativeModelBuiltInMemory": true
+    }
+  },
+  "limits": [
+    "B057 und seine neun Ziele sind ausgeschlossen; keine B057-Runden gelesen.",
+    "Keine neuen fachlichen D-, P-, Bild-, Human- oder Quellenfreigaben. Keine Fortschrittszählung aus dieser Triage.",
+    "Keine umfassenden Curricula fachlich neu gelesen, keine Renderer-/Publikations-Vollbuilds und keine Targetmengen als fachlich neu geprüft behauptet. Der B048-Anhang berechnet das aktuelle native GoalBook-Modell nur im Speicher für den Einzelseitenvergleich. Applicability-Cache ist keine normative Länderpflicht.",
+    "Bildbefunde werden auf bestehende geprüfte Dateien/Receipts und aktuelle Bytebindungen gestützt; diese Triage behauptet keine erneute vollständige Bildabnahme aller elf.",
+    "Neu gebundene P-Profile können unabhängig von einem noch offenen D-Dissens technisch aktuell sein; native Aktualität löst inhaltlichen Dissens nicht.",
+    "Historische Originalquellen wurden hier nicht neu umfassend auditiert; Quellenreparaturen sind explizit als vorhandene Receipts geroutet.",
+    "Shared worktree: canonical/registry artifact digests bind the captured local snapshot, not a later root mutation or a deployed release."
+  ]
+}

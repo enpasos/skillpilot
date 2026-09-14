@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "goalId": "826af579-3e51-5ac9-bc2a-208d8a2fc99e",
+  "operation": "move_three_verified_superseded_jpg_copies_outside_active_asset_roots",
+  "status": "completed",
+  "preflightAt": "2026-09-14T05:03:39.323Z",
+  "movesVerifiedAt": "2026-09-14T05:04:01.641Z",
+  "completedAt": "2026-09-14T05:05:04Z",
+  "reason": "Resolve the native orphan-asset gate by preserving replaced originals in the existing review archive convention; keep the accepted PNG active.",
+  "conventionEvidence": [
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-20260907-replaced-jpg-archive/move-receipt.json",
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/math-transitions-resumed-20260913-v1/asset-copy-and-retention-receipt.json"
+  ],
+  "preflight": {
+    "allSourcesVerifiedAsRegularNonSymlinkFiles": true,
+    "allSourceRealPathsVerified": true,
+    "allSourceHashesMatchedExpectedOriginal": true,
+    "allThreeExactDestinationsVerifiedAbsent": true,
+    "archiveDirectoryVerifiedReal": true,
+    "expectedOriginalSha256": "6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f"
+  },
+  "moveMechanism": "Three explicit mv --no-clobber --no-target-directory operations; no existing destination overwritten.",
+  "moves": [
+    {
+      "source": "curricula/DE/Gymnasium/visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.jpg",
+      "destination": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/archived-original/canonical.jpg",
+      "sha256": "6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f",
+      "sizeBytes": 2124192,
+      "sourceWasRegularFile": true,
+      "destinationWasAbsent": true,
+      "sourceDevice": 2096,
+      "sourceInode": 34073389,
+      "destinationSha256": "6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f",
+      "sourcePathAbsentAfterMove": true,
+      "destinationRegularFileAfterMove": true,
+      "deviceAndInodePreserved": true
+    },
+    {
+      "source": "app/public/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.jpg",
+      "destination": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/archived-original/public.jpg",
+      "sha256": "6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f",
+      "sizeBytes": 2124192,
+      "sourceWasRegularFile": true,
+      "destinationWasAbsent": true,
+      "sourceDevice": 2096,
+      "sourceInode": 34073391,
+      "destinationSha256": "6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f",
+      "sourcePathAbsentAfterMove": true,
+      "destinationRegularFileAfterMove": true,
+      "deviceAndInodePreserved": true
+    },
+    {
+      "source": "backend/src/main/resources/static/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.jpg",
+      "destination": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/archived-original/backend.jpg",
+      "sha256": "6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f",
+      "sizeBytes": 2124192,
+      "sourceWasRegularFile": true,
+      "destinationWasAbsent": true,
+      "sourceDevice": 2096,
+      "sourceInode": 33560653,
+      "destinationSha256": "6cbf760c81b098f3a3099831d7613fc4c950eb1f7e4e0b8adc26497c9cb1716f",
+      "sourcePathAbsentAfterMove": true,
+      "destinationRegularFileAfterMove": true,
+      "deviceAndInodePreserved": true
+    }
+  ],
+  "postMoveVerification": {
+    "checkedAt": "2026-09-14T05:04:01.641Z",
+    "threeOriginalFilesMoved": true,
+    "destinationHashesMatch": true,
+    "inodesPreserved": true,
+    "sourcePathsAbsent": true,
+    "allProtectedFilesUnchanged": true
+  },
+  "protectedFilesUnchanged": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/import-receipt.json",
+      "sha256": "7985bfab4b6fcd375fe457ef3dd30bfc1668d80cc3fd52dde8ca2a5b26edd304"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/baseline.json",
+      "sha256": "b1a7f640dd97cfb2b3bc5700afeb2b8b5543e769279b4bc1cd6038f136388127"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/generation-history.json",
+      "sha256": "611da3e806e872a7aec407f5fbbb5daaacbca73c7b079624a8b3177cc9ed8302"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.independent-ai-review.json",
+      "sha256": "d623e40ef8c4d66cd2607f31d47a43014b9b9f9b2e216866039e08bc88ad8b18"
+    },
+    {
+      "path": "scripts/check_goal_visualization_assets.mjs",
+      "sha256": "15c0cf3a3c47328387f88368370dee9ce0b25c5f438cfc02ffbd8a68c13bf12c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "58d46a8a6594b6b5470d35c8292a5c504ab48456c7d750306931acbb0214aa40"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+      "sha256": "0663165715fb7453a6004d7d22520ec1ee37e7dbda1831ea808b3f329fb454da"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.review.jsonl",
+      "sha256": "cc210e19cc743fe165837ad35c7bce228d556567c0a5c9069116e299d94e8373"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/retained-seven.positive-evidence.review.jsonl",
+      "sha256": "015bbe32e9735464128695dffb4706d41e087b2c2f7c060252cd5a32413a5d4b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/milky-way.current-image-positive-evidence.config.json",
+      "sha256": "3f3d71fa740dffd71e0d9071d5ba0f9e2e96aeeb41e794e897966c2e4cc1cb67"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/retained-seven.positive-evidence.config.json",
+      "sha256": "a1fa1f6b39262556f3d98deaec401e6a0d737bf4566ba0d75c1156f8c89a0087"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/archived-original/prompt.de.md",
+      "sha256": "b3a7516276ce60ad5729222fabf3b77d3a4363ed479f680fdf4939f8f00f23f8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.png",
+      "sha256": "853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.png",
+      "sha256": "853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794"
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/physik/826af579-3e51-5ac9-bc2a-208d8a2fc99e/826af579-3e51-5ac9-bc2a-208d8a2fc99e.png",
+      "sha256": "853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794"
+    }
+  ],
+  "historicalImportReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-milky-way-resumed-20260914-v1/import-receipt.json",
+    "sha256": "7985bfab4b6fcd375fe457ef3dd30bfc1668d80cc3fd52dde8ca2a5b26edd304",
+    "unchanged": true,
+    "interpretation": "Its original paths and initial failed asset check describe the state before this separately authorized archival move."
+  },
+  "activePngSha256": "853a24fc3356cc8f375735118754d7baf00d2dbc2d8985371ef877e04b853794",
+  "checkerChanged": false,
+  "checkerExceptionAdded": false,
+  "obsoleteImageLinkAdded": false,
+  "canonicalChanged": false,
+  "qaChanged": false,
+  "profilesChanged": false,
+  "imageGenerationPerformed": false,
+  "humanApproved": false,
+  "deployed": false,
+  "published": false,
+  "tests": [
+    {
+      "command": "Post-move regular-file, inode, byte-size, SHA-256 and protected-file assertions",
+      "exitCode": 0,
+      "output": "Three moves verified; all protected files unchanged."
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-assets",
+      "exitCode": 0,
+      "output": "Goal visualization asset check passed for 1558 link(s) in 21 landscape(s)."
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "output": ""
+    }
+  ],
+  "recovery": "Each original copy remains available under its exact destination path. Reversing a move requires first confirming the original source path is free; no image bytes were discarded."
+}
