@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-059-current-image-and-context-4-v1-20260914-first-pass-a.batch-001.run-001",
+  "provider": "OpenAI",
+  "model": "not-exposed-by-runtime",
+  "modelVersion": "not-exposed-by-runtime",
+  "executionContext": "Independent Codex subject-review agent; exact inference model identifier and sampling configuration are not exposed to this agent.",
+  "temperature": "not-exposed-by-runtime",
+  "seed": "not-exposed-by-runtime",
+  "reasoningEffort": "not-exposed-by-runtime",
+  "reviewRole": "subject_reviewer",
+  "blindToOtherRuns": true,
+  "scope": "Four assigned goals, supplied round-a prompt, criteria, schema, campaign, batch and canonical/page context; actual four referenced public images viewed at original resolution. No prior reviews, other rounds, canonical diffs, live profiles or outcomes inspected.",
+  "sourceVerification": "No separately bound official excerpts or complete composition-view/source-manifest matrix supplied; no claim of independent verification of those relationships.",
+  "toolchain": {
+    "node": "v20.20.2",
+    "imageInspection": "tools.view_image, detail original",
+    "authoring": "tools.apply_patch",
+    "validator": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts"
+  },
+  "startedAt": "2026-09-14T06:42:21Z",
+  "timestampBasis": "First recorded UTC clock sample during instruction/schema intake; completion is sampled after authoring.",
+  "authority": "candidate/ai_candidate; no human approval, learner evidence or real-host acceptance is claimed."
+}

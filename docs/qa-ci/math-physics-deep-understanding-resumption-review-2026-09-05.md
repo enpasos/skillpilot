@@ -2,21 +2,27 @@
 
 Der aktuelle Umsetzungsstand steht im
 [Physik-Fortsetzungsstand vom 14. September](physics-resumed-checkpoint-2026-09-14.md).
-**Aktueller Auftrag vom 14. September:** Der Product Owner verlangt nach B058
-einen commitfähigen Zwischenstand und anschließend eine Pause der Zielverfolgung
-bis auf weiteres. Physik erreicht lokal 470/478 streng abgeschlossene Ziele;
-die acht offenen Fälle bleiben offen. Die Konsolidierung und ihre dokumentierten
-lokalen Abschlussprüfungen sind beendet. Die Zielverfolgung ist bis zur
-ausdrücklichen Nutzerfreigabe angehalten; keine weiteren QS-Pakete starten.
-Mathematik bleibt ebenfalls pausiert. Die vorherige automatische
-Weiterlaufanweisung ist durch diesen ausdrücklichen Pausenauftrag ausgesetzt.
+**Neuester Auftrag vom 14. September, nach Wiederaufnahme von B059:**
+„komm zu einem commit-fähigen Zwischenziel und beende vorübergehend die
+Zielverfolgung“. Nur das bereits begonnene Paket wird überprüfbar gesichert;
+anschließend bleibt die Physik-QS bis zur ausdrücklichen Wiederaufnahme
+angehalten. Keine weiteren Bildversuche oder Fachpakete beginnen. Mathematik
+bleibt ebenfalls pausiert. Diese Nutzerpause setzt automatische
+Weiterlaufanweisungen aus; sie erklärt das 100-Prozent-Gesamtziel weder für
+erreicht noch für technisch blockiert. Der genaue Abschlussstand und die
+offenen Zuständigkeiten stehen im neuesten Physik-Checkpoint.
+Die lokalen Abschlussprüfungen bestehen: **Physik 472/478 (98,7 %), netto +2
+wiederhergestellte aktuelle Bild-/Kontextbindungen; sechs offene Fälle.**
+Mathematik bleibt bei 436/797, netto 0. Alle neun geschützten Reifegraduntergrenzen
+sind erhalten. **Die Zielverfolgung ist jetzt angehalten.**
 Der [Meilenstein mit Nutzerpause vom 13./14. September](math-physics-resumed-checkpoint-2026-09-13.md)
 bleibt als historischer Abschluss- und Prüfbeleg erhalten.
 Der [pausierte Physik-Zwischenstand vom 8. September](physics-paused-checkpoint-2026-09-08.md)
 und die nachstehenden Abschnitte bleiben historische Fortsetzungsgrundlagen;
 die damaligen Pausen und Freigabeanfragen sind historisch. Maßgeblich ist jetzt
-der neue Pausenauftrag im Checkpoint vom 14. September, nicht eine ältere
-Fortsetzungsanweisung. Der Gesamtauftrag ist nicht als erreicht markiert.
+die neueste Nutzerpause im Checkpoint vom 14. September. Die CI von
+`dffc22f35` wurde vor Beginn von B059 vollständig erfolgreich verifiziert;
+dieser Nachweis gilt nicht als Remote-CI des noch uncommitteten Zwischenstands.
 
 **Anweisungsupdate vom 13. September 2026:** Für notwendige neue oder korrigierte
 Bilder gilt die [aktuelle Provider- und Qualitätsregel](../concept/skill-graph/atomic-goal-visualizations.md#provider-priority-and-exception-policy)

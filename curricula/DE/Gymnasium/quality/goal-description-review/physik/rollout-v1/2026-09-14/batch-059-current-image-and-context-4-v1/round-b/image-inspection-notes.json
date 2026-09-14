@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent OpenAI AI subject reviewer B",
+  "authority": "non-authoritative AI observations",
+  "inspectionMethod": "Each of the four listed files was opened with view_image at detail original. SHA-256 bytes were checked against the sealed batch before recording these observations.",
+  "scope": "Image-content observations only. No publication, human approval, actual-host rendering, device, accessibility usability, learner performance or copyright clearance is asserted.",
+  "images": [
+    {
+      "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+      "assetPath": "app/public/assets/goal-visualizations/physik/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2/7d78da7f-6af5-440a-9d6b-6cab4bee8dd2.png",
+      "expectedDigest": "sha256:f412bfcd05c15149981d33a08fbd2298b68c323618b2a7a9f62e1e670997b580",
+      "actualDigest": "sha256:f412bfcd05c15149981d33a08fbd2298b68c323618b2a7a9f62e1e670997b580",
+      "decision": "no_material_image_conflict_observed",
+      "observations": [
+        "A = (A − 4) + 4 nucleons is explicitly represented.",
+        "Rest masses compare the mother nucleus with daughter plus alpha; energy sign and ΔE expression agree.",
+        "Kinetic energy, total-energy conservation, no additional radiation and schematic/non-scale depiction are explicitly stated."
+      ],
+      "limits": [
+        "The single alpha-decay example does not demonstrate learner performance on a fresh multi-particle reaction."
+      ]
+    },
+    {
+      "goalId": "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+      "assetPath": "app/public/assets/goal-visualizations/physik/7d4d6a39-0c78-5fb0-b7bf-182ed00972f7/7d4d6a39-0c78-5fb0-b7bf-182ed00972f7.jpg",
+      "expectedDigest": "sha256:81a177a4e4ee2ecf2befe16093416576c8b5dbe05b9b9e31dba2c42f39304db7",
+      "actualDigest": "sha256:81a177a4e4ee2ecf2befe16093416576c8b5dbe05b9b9e31dba2c42f39304db7",
+      "decision": "no_material_image_conflict_observed",
+      "observations": [
+        "The supply is labelled as providing load energy; base drive is labelled as controlling the load current.",
+        "The semiconductor inset labels n emitter, thin p base, n collector consistently with the npn example.",
+        "Off/on statements use absence/suitability of base drive without supplying a misleading universal numerical threshold."
+      ],
+      "limits": [
+        "This is a functional sketch, not a complete electrical circuit or model of carrier motion.",
+        "Only an npn example is depicted; the description permits either npn or pnp.",
+        "A checked circuit plan, safe supply and instruction are still required for a designated student experiment."
+      ]
+    },
+    {
+      "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+      "assetPath": "app/public/assets/goal-visualizations/physik/206fe51d-cc78-5422-b139-32cc97eb1c37/206fe51d-cc78-5422-b139-32cc97eb1c37.jpg",
+      "expectedDigest": "sha256:a1c39b453dad8a0588f37743933e61678ff6d500622039523207f9884d9de009",
+      "actualDigest": "sha256:a1c39b453dad8a0588f37743933e61678ff6d500622039523207f9884d9de009",
+      "decision": "image_revision_recommended",
+      "observations": [
+        "Temperature increases to the left as explicitly labelled; qualitative positions of the main sequence, red giants and white dwarfs are plausible.",
+        "Equally spaced luminosity tick marks read 10^5, 10^2, 1 and 10^-2 solar luminosities, corresponding to unequal logarithmic intervals of three, two and two decades.",
+        "The numeric grid lacks an explicit purely schematic or nonstandard-scale qualification."
+      ],
+      "concern": "The plotted grid suggests quantitative HRD reading although the luminosity spacing is inconsistent with a uniform logarithmic scale.",
+      "recommendedAction": "Use a consistent labelled numerical axis if learners are to read positions quantitatively, or explicitly restrict a genuinely qualitative sketch. Do not use this image as the independently supplied correctly scaled HRD required by the evidence chain.",
+      "descriptionDecisionBoundary": "The current bilingual description remains defensible; its KEEP is not image approval."
+    },
+    {
+      "goalId": "e2014db8-c97f-5ce1-82c5-2a42741f4a61",
+      "assetPath": "app/public/assets/goal-visualizations/physik/e2014db8-c97f-5ce1-82c5-2a42741f4a61/e2014db8-c97f-5ce1-82c5-2a42741f4a61.jpg",
+      "expectedDigest": "sha256:63b4b3ae5e2b18dba5a4998fe42810bdbe2411eb44925eebd57031e0e2d19a6d",
+      "actualDigest": "sha256:63b4b3ae5e2b18dba5a4998fe42810bdbe2411eb44925eebd57031e0e2d19a6d",
+      "decision": "image_revision_recommended",
+      "observations": [
+        "The graphic distinguishes detection methods, habitability conditions and source/data checking.",
+        "The habitable-zone panel explicitly warns that its position does not automatically mean life.",
+        "In the direct-image inset, the label Koronagraphen-Maske points near the right edge and the small blue object rather than unambiguously to the central black occulting disk."
+      ],
+      "concern": "The coronagraph-mask pointer is spatially ambiguous and can assign the mask label to the nearby planet instead of the stellar-light blocker.",
+      "recommendedAction": "Place the label endpoint unambiguously on the central occulting disk; retain the distinction between potential habitability and evidence of life.",
+      "descriptionDecisionBoundary": "This label-pointer issue cannot be repaired by changing the otherwise adequate goal description."
+    }
+  ]
+}

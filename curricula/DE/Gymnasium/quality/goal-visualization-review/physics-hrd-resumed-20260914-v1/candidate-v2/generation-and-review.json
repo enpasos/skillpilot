@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+  "candidateId": "candidate-v2",
+  "provider": "OpenAI",
+  "tool": "image_gen.imagegen",
+  "mode": "builtin",
+  "model": "not-exposed-by-runtime",
+  "modelVersion": "not-exposed-by-runtime",
+  "requestedArguments": {
+    "promptPath": "../prompt-v2.txt",
+    "promptSha256": "523f699bc3d21797dd8771956299cb09e66af99056a1552490e2964e730845df",
+    "referenced_image_paths": [
+      "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-hrd-resumed-20260914-v1/candidate-v1/original-output.png"
+    ]
+  },
+  "startedAt": "2026-09-14T06:54:43Z",
+  "completedAt": "2026-09-14T06:55:32Z",
+  "toolResult": {
+    "returnedKeys": [
+      "image_url",
+      "output_hint"
+    ],
+    "imageUrl": "data:image/png;base64 payload preserved without alteration as original-output.png",
+    "output_hint": "[REDACTED: machine-specific output directory and execution identifiers.] The unchanged built-in PNG is retained as original-output.png beside this record. This normalized record is not the raw tool response."
+  },
+  "savedImage": "original-output.png",
+  "sha256": "caf31115dac752ef0045a13abf0144c45fcc875256756a14ad8f8cea153e0462",
+  "bytes": 1220347,
+  "dimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "review": {
+    "authority": "ai_candidate",
+    "decision": "reject_candidate",
+    "viewedActualImage": true,
+    "method": "Visual inspection of the full returned raster; coordinate positions below are approximate visual estimates, not an automated pixel measurement.",
+    "observations": [
+      "German text is legible, the left-pointing temperature arrow and logarithmic-axis footnote are present, and the original friendly infographic style is recognizable.",
+      "The yellow point now coincides with the labelled 6000-K and luminosity-1 grid intersection.",
+      "The luminosity major levels are visually near y=120,292,465,638,789, giving approximate successive distances 172,173,173,151 pixels. Every major interval is labelled as two decades, so the shortened final interval remains inconsistent.",
+      "Temperature ticks appear near x=164,814,1131,1417,1625, about 0%,44.5%,66.2%,85.8%,100% of the plotted width instead of 0%,47.7%,69.9%,87.5%,100%. The explicit logarithmic-temperature geometry is not met.",
+      "Some red-giant symbols lie below the requested luminosity-100 boundary; because the region is schematic, this is a prompt-placement discrepancy rather than a categorical claim that every such luminosity is astrophysically impossible.",
+      "The numerical geometry still needs correction. Neither this candidate nor candidate-v1 should replace the active image on the strength of this generation pass."
+    ],
+    "limitations": "Two built-in generation attempts do not establish that the provider cannot produce an adequate figure. No CLI fallback or programmatic drawing was used. No import, human approval, QA registry update, source mapping, learner evidence or host acceptance occurred."
+  },
+  "provenanceSerialization": {
+    "format": "repository-normalized-sanitized",
+    "rawToolResponse": false,
+    "note": "Repository input paths are normalized from the absolute paths used at invocation. Machine-specific home/output paths and execution identifiers are omitted. Redacted output hints are not verbatim tool responses. Tool identity, exact prompts, timestamps, image bytes, digests and scientific observations are retained.",
+    "retainedOriginalMeaning": "The repository-local PNG is an unchanged copy of the built-in original output; matching SHA-256 values were verified before removing private runtime-location references."
+  },
+  "retainedOriginalPath": "original-output.png"
+}

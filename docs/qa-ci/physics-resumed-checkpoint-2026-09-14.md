@@ -1,6 +1,122 @@
 # Physik: Wiederaufnahme am 14. September 2026
 
-## Aktueller Pausenpunkt nach B058
+## Neuester Nutzerauftrag: Zwischenstand nach B059 und erneute Pause
+
+Der Product Owner hat während B059 ausdrücklich angewiesen:
+„komm zu einem commit-fähigen Zwischenziel und beende vorübergehend die
+Zielverfolgung“. Nur die bereits begonnene Nachweisarbeit wird bis zu einem
+geprüften Zwischenstand gesichert. Danach ist die Physik-QS bis zur
+ausdrücklichen Wiederaufnahme angehalten; Mathematik bleibt pausiert.
+Keine weiteren Bildversuche, Importe oder Fachpakete beginnen. Die Nutzerpause
+setzt automatische Weiterlaufanweisungen aus. Das Gesamtziel bleibt unerreicht
+und wird weder als `complete` noch als technisch blockiert markiert.
+
+Die Abschlussprüfung ist beendet. **Die Zielverfolgung ist vorübergehend
+angehalten.** Der native Fünf-Gate-Bericht bestätigt:
+
+| Fach | Streng vollständig | D | P | A | M | V |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Physik | **472/478 (98,7 %)** | 472 | 478 | 478 | 478 | 478 |
+| Mathematik, unverändert pausiert | **436/797 (54,7 %)** | 436 | 436 | 797 | 797 | 797 |
+
+Null blockierende Probleme. **Netto +2 Physikziele seit `dffc22f35`, Mathematik
+netto 0.** B059 stellt gültige Bild-/Voraussetzungsbindungen für die vorhandenen,
+unveränderten Ziele Kernreaktionsenergie und Transistor wieder her; es sind keine
+neuen oder umformulierten Lernziele. Der vollständige bisherige Transistor-P-Body
+und sein Dissens sind nach informierter Prüfung mit dem aktuellen Kontext
+verbunden. Alle P-Nachweise behalten ihren wahrheitsgemäßen Status; der neue
+Record ist `ai_candidate` / `needs_human_review`, E1/G1, keine Humanfreigabe.
+
+Das [B059-Paket](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/batch-059-current-image-and-context-4-v1/README.md)
+bewahrt die vollständigen vier Eingangsziele und acht Originalreviews. Der
+native Teilindex enthält ausschließlich die zwei aktuellen KEEP/KEEP-Abschlüsse.
+Beim Transistor wird Evidenz B übernommen: `npn` oder `pnp` bleibt eine Alternative;
+As verpflichtender Wechsel zur komplementären Art wird als Umfangsdissens
+ausdrücklich nicht übernommen. Der getrennte
+[Transistor-P-Audit](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/transistor-current-positive-evidence-b059-v1/README.md)
+hält auch die Grenzen von Quellenunion und RP-Prerequisite-Support fest und
+behauptet keine vollständige Runtime- oder Quellenabnahme.
+
+### Sechs offene Fälle – Fortsetzung nur nach erneuter Freigabe
+
+| Ziel | Erhaltener Befund und nächster Schritt nach Wiederaufnahme |
+| --- | --- |
+| `206fe51d-cc78-5422-b139-32cc97eb1c37` HRD | Numerische Achsenfehler im aktiven Bild; B059 A BLOCK, B KEEP mit Bildwarnung. Beide neuen Korrekturkandidaten sind verworfen. Fachlich korrektes Bild und anschließend gezielte neue Bild-/D-/P-Bindungen erforderlich. |
+| `e2014db8-c97f-5ce1-82c5-2a42741f4a61` Habitabilität | B059 KEEP/KEEP schließt den missverständlichen Maskenzeiger nicht. Ein Korrekturkandidat ist archiviert; unabhängige Integrationsprüfung, gegebenenfalls Import und aktuelle Nachweisbindungen stehen aus. |
+| `333ca92b-a92c-46a9-86be-dea8ddbd43e0` Strömungsmodelle | Bestehenden Atomizitätsdissens anhand der quellengebundenen Auswahlsemantik gezielt klären; keine neue Runde ohne veränderten oder zusätzlich belegten Prüfkontext. |
+| `49bb609a-bfb7-5391-9120-f5fc737efb9a` Transitmethode | Eigene aktuelle D-Nachweise und den dokumentierten Bildfall bearbeiten. |
+| `6dca3b0a-c872-543b-808f-97e855f5fafd` Radialgeschwindigkeitsmethode | Eigene aktuelle D-Nachweise und den dokumentierten Bildfall bearbeiten. |
+| `826af579-3e51-5ac9-bc2a-208d8a2fc99e` Milchstraße | Aktuelles D-Urteil zum bereits korrigierten Bild einschließlich des erhaltenen Atomizitätsdissents. |
+
+Die [HRD-Kandidaten](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/physics-hrd-resumed-20260914-v1/README.md)
+und der [Habitabilitäts-Kandidat](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/physics-habitability-mask-resumed-20260914-v1/README.md)
+sind mit unveränderten Bildoriginalen, exakten Prompts und normalisierter
+Provenienz gesichert. Private Runtimepfade wurden aus den Metadaten entfernt;
+diese sind ausdrücklich keine rohen Toolantworten. Kein Kandidat wurde
+importiert oder freigegeben. Die bestätigte Zahl im V-Gate folgt dem bestehenden
+Validator; sie hebt die ausdrücklich offenen Bildbefunde nicht auf.
+
+Das In-flight-Ledger enthält genau diese sechs Physikziele in zwei disjunkten
+Configs (2 + 4). Die sieben Mathematik-Configs mit 48 bisherigen Zuständigkeiten
+sind unverändert. Diese Einträge konservieren offene Arbeit und belegen keine
+laufenden Agenten. Die lokalen Review-/Bildaufträge sind beendet.
+
+### Lokale Abschlussprüfungen für diesen Zwischenstand
+
+| Prüfung | Ergebnis |
+| --- | --- |
+| B059-Paketprüfung und deterministischer Teil-Materializer ohne `--write` | bestanden; vier unveränderte Eingangsfälle, exakt zwei native D-Abschlüsse, HRD/Habitabilität ausgeschlossen |
+| Transistor-P-Materializer und native P-Prüfung | bestanden; ein aktueller AI-Kandidat, null menschliche Freigaben, null Blocking Issues |
+| Zentraler Fünf-Gate-Check | bestanden; Physik 472/478, Mathematik 436/797, null Blocking Issues |
+| Regressionstests für Fünf-Gate-Bericht, positive Evidenz, Beschreibungsreview-Verträge und Dual-Round-Resolution | bestanden |
+| `quality:curriculum-status:check` einschließlich Maturity-Floors | Status aktuell; alle neun geschützten Curricula bestehen |
+| Native In-flight-Prüfung und Änderungsgrenzen | sechs offene Physikziele; Mathematik-Registry/-Claims unverändert; keine Änderungen an Canonical, Runtime, aktiven Bildern, Tests oder historischen Records |
+| Doku-Links/-Indizes, Terminologie, Generated-Status-Registry und Generated-Doc-Notices | bestanden |
+| Neue JSON/JSONL-Dateien, lokale README-Verweise, Bild-/Promptdigests und `git diff --check` | bestanden |
+
+Commitfähig lokal vorbereitet, **nicht committet, gepusht oder deployed**.
+Die grüne Remote-CI von `dffc22f35` ist nur der geprüfte Ausgangsstand; für diese
+uncommittierten Änderungen wird kein neuer Remote-CI-Lauf behauptet. Neue
+umfangreiche App-/Backend-Builds waren für die ausschließlich lokalen
+QS-/Registry-/Dokumentationsänderungen nicht erforderlich. Alle aktiven Bilder,
+kanonischen Ziele, Runtime-/Sicherheitsverträge und historischen Reviewartefakte
+bleiben unverändert. Weitere Zielverfolgung ausschließlich nach erneuter
+ausdrücklicher Nutzerfreigabe.
+
+## Historische Wiederaufnahme nach dem committeten B058-Meilenstein
+
+Der Product Owner hat am 14. September nach dem Commit ausdrücklich beauftragt:
+„mach bitte weiter“ und „freigabe erteilt“. Die nachstehende Pause ist damit
+für die Physik-QS aufgehoben. Mathematik bleibt pausiert; Runtime-, Datenschutz-,
+Sicherheits- und Plugin-Verträge bleiben außerhalb dieses QS-Auftrags.
+
+Lokaler `HEAD` und Remote-`main` wurden identisch als
+`dffc22f355fe20a8be4ab7c9776299819bb9e608` verifiziert; die Arbeitskopie war
+beim Wiedereinstieg sauber. Der erneut ausgeführte native Fünf-Gate-Check
+bestätigt Physik **470/478**, D470/P477/A478/M478/V478, Mathematik **436/797**
+und null blockierende Probleme. Dieser Wiedereinstieg bringt netto noch keine
+zusätzlichen Abschlüsse.
+
+Die CI-Voraussetzung wird für genau diesen Commit geprüft. Beim ersten
+Live-Abgleich waren die [Push-CI](https://github.com/enpasos/skillpilot/actions/runs/34812105011),
+[Docs Checks](https://github.com/enpasos/skillpilot/actions/runs/34812104988)
+und [Docs-Publikation](https://github.com/enpasos/skillpilot/actions/runs/34812105157)
+noch in Arbeit. Am 14. September um 08:39 Uhr CEST wurde der Endzustand
+für genau diesen Commit erneut live verifiziert: Push-CI vollständig
+`completed` / `success`, einschließlich Frontend, Backend und Curriculum-CI;
+Docs Checks und Docs-Publikation ebenfalls erfolgreich. Die CI-Voraussetzung
+ist damit erfüllt. Bis dahin erfolgten ausschließlich Statusprüfungen und
+eine Read-only-Inventur vorhandener Belege, keine neuen Fachpakete.
+Die Freigabe ist keine zusätzliche Commit-, Push- oder Deployment-Freigabe.
+
+Als nächster gezielter Schritt wird B059 für Alpha-Bild, Transistor,
+HRD und Habitabilität vorbereitet. Die aktuellen Seiten-/Kontextbindungen
+werden in zwei getrennten Blindrunden geprüft; der fehlende aktive
+Transistor-P-Owner wird gesondert informiert geprüft. Es wird noch kein
+zusätzlicher Abschluss behauptet. Historische Pakete und der unterbrochene
+Transistor-Audit bleiben unverändert.
+
+## Historischer Pausenpunkt nach B058
 
 **Ausdrücklicher Nutzerauftrag vom 14. September:** Einen commitfähigen
 Zwischenstand herstellen und die Zielverfolgung anschließend bis auf weiteres

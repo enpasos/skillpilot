@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+  "purpose": "Non-published HRD image correction candidates and actual generation/review evidence",
+  "status": "unresolved_candidate_quality",
+  "reviewAuthority": "ai_candidate",
+  "sourceImage": {
+    "path": "app/public/assets/goal-visualizations/physik/206fe51d-cc78-5422-b139-32cc97eb1c37/206fe51d-cc78-5422-b139-32cc97eb1c37.jpg",
+    "sha256": "a1c39b453dad8a0588f37743933e61678ff6d500622039523207f9884d9de009",
+    "bytes": 2158824
+  },
+  "sourceBytesRemainUnchanged": true,
+  "skill": {
+    "usedMode": "builtin",
+    "influence": "Used image_gen.imagegen for the initial edit and one targeted correction, preserving every original output and prompt. Rejected quality defects instead of importing a candidate.",
+    "name": "imagegen",
+    "entrypoint": "SKILL.md"
+  },
+  "candidates": [
+    {
+      "candidateId": "candidate-v1",
+      "image": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-hrd-resumed-20260914-v1/candidate-v1/original-output.png",
+        "sha256": "6064cf8aa1f1c690f9ffb8d90fec39e0822c9a868e26a9322fd8314aa5b6e9fe",
+        "bytes": 1290242
+      },
+      "prompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-hrd-resumed-20260914-v1/prompt-v1.txt",
+        "sha256": "39bbc513e6c824156d4464a92312466cc18bedb127d255ec32c26de86263410c",
+        "bytes": 2582
+      },
+      "metadataPath": "candidate-v1/generation-and-review.json",
+      "decision": "reject_candidate"
+    },
+    {
+      "candidateId": "candidate-v2",
+      "image": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-hrd-resumed-20260914-v1/candidate-v2/original-output.png",
+        "sha256": "caf31115dac752ef0045a13abf0144c45fcc875256756a14ad8f8cea153e0462",
+        "bytes": 1220347
+      },
+      "prompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-hrd-resumed-20260914-v1/prompt-v2.txt",
+        "sha256": "523f699bc3d21797dd8771956299cb09e66af99056a1552490e2964e730845df",
+        "bytes": 4450
+      },
+      "metadataPath": "candidate-v2/generation-and-review.json",
+      "decision": "reject_candidate"
+    }
+  ],
+  "remainingIssue": "Numerical coordinate consistency: major luminosity intervals must represent equal logarithmic distances and temperature ticks must occupy their stated logarithmic positions. Candidate-v2 fixes the labelled Sun-point intersection but does not fully correct those axes.",
+  "scope": "Only new artifacts in this review directory were authored. Active visualization assets, canonical links, QA registries and description-review records were not changed by this image-generation task.",
+  "acceptance": "No human approval or publication authority is asserted.",
+  "provenanceSerialization": {
+    "format": "repository-normalized-sanitized",
+    "rawToolResponse": false,
+    "note": "Repository input paths are normalized from the absolute paths used at invocation. Machine-specific home/output paths and execution identifiers are omitted. Redacted output hints are not verbatim tool responses. Tool identity, exact prompts, timestamps, image bytes, digests and scientific observations are retained.",
+    "retainedOriginalMeaning": "The repository-local PNG is an unchanged copy of the built-in original output; matching SHA-256 values were verified before removing private runtime-location references."
+  }
+}

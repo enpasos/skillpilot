@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "goalId": "e2014db8-c97f-5ce1-82c5-2a42741f4a61",
+  "status": "image_candidate",
+  "authority": "ai_candidate",
+  "provider": "OpenAI",
+  "tool": "image_gen.imagegen",
+  "executionMode": "built-in",
+  "model": "not-exposed-by-runtime",
+  "modelVersion": "not-exposed-by-runtime",
+  "temperature": "not-exposed-by-runtime",
+  "seed": "not-exposed-by-runtime",
+  "quality": "not-exposed-by-runtime",
+  "generationCalls": 1,
+  "startedAt": "2026-09-14T06:53:10Z",
+  "resultRecordedAt": "2026-09-14T06:54:36Z",
+  "reviewedAt": "2026-09-14T06:56:18Z",
+  "prompt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-habitability-mask-resumed-20260914-v1/prompt-v1.txt",
+    "sha256": "e26892709d8687c71e05f0beff29d95c60d2c43d9081733a627354cecb8a8196",
+    "passedVerbatim": true
+  },
+  "input": {
+    "path": "app/public/assets/goal-visualizations/physik/e2014db8-c97f-5ce1-82c5-2a42741f4a61/e2014db8-c97f-5ce1-82c5-2a42741f4a61.jpg",
+    "sha256": "63b4b3ae5e2b18dba5a4998fe42810bdbe2411eb44925eebd57031e0e2d19a6d",
+    "format": "JPEG",
+    "width": 2752,
+    "height": 1536,
+    "viewedBeforeGeneration": true
+  },
+  "output": {
+    "workspacePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-habitability-mask-resumed-20260914-v1/candidate-v1.png",
+    "sha256": "f17ef468f91c67d57fce6e67a11e58b42c3187819b4694726d8e585245184ed1",
+    "bytes": 1588055,
+    "format": "PNG",
+    "width": 1679,
+    "height": 937,
+    "originalRetained": true,
+    "copyBytesMatchOriginal": true,
+    "postProcessing": "none",
+    "retainedOriginalPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-habitability-mask-resumed-20260914-v1/candidate-v1.png"
+  },
+  "inspection": {
+    "method": "Full generated result viewed; copied local PNG opened with view_image detail original. The latter tool returned an application/octet-stream data URL, so only its media-type header was changed to image/png for inline display; the PNG bytes and file were unchanged.",
+    "decision": "targeted_annotation_correction_observed; candidate_for_independent_integration_review",
+    "observations": [
+      "The callout labelled Koronagraphen-Maske now runs from the existing text box leftwards and terminates visibly inside the black occulting disk.",
+      "The cyan planetary point remains visible to the right of the black disk. The leader passes below that point and does not end on the planet or the bright stellar halo.",
+      "The previous short ambiguous pointer near the right edge of the direct-image inset is absent.",
+      "The three original columns and their order, the transit dip, the radial-velocity spectrum, the direct-image illustration, the habitable-zone diagram, the source-check panel and judgment icon remain present.",
+      "The German headings and labels were visually compared with the input. No omitted, added or altered words were observed; the explicit nicht automatisch Leben warning remains intact.",
+      "No new numerical claims, physical formulas, logos or watermark were observed. Text and illustration elements remain within the frame."
+    ],
+    "limits": [
+      "The output resolution is lower than the input (1679 × 937 instead of 2752 × 1536). Both are approximately 16:9, but neither file is asserted to have an exact 16:9 pixel ratio.",
+      "The built-in edit redrew the raster; visual preservation of content, layout and style is observed, not pixel identity outside the leader.",
+      "Small text remains readable at native candidate resolution in this inspection, but book-page, application, mobile and actual-host rendering have not been tested.",
+      "This is an AI candidate inspection only. It grants no human approval, publication permission, runtime import approval, device acceptance or learner-performance evidence.",
+      "No canonical, runtime, registry, QA ledger or earlier review records were edited."
+    ]
+  },
+  "skill": {
+    "influence": "Required the built-in edit tool, exact-target inspection, preserved visual invariants, non-overwriting workspace copy and post-generation visual review.",
+    "name": "imagegen",
+    "entrypoint": "SKILL.md"
+  },
+  "provenanceSerialization": {
+    "format": "repository-normalized-sanitized",
+    "rawToolResponse": false,
+    "note": "Repository input paths are normalized from the absolute paths used at invocation. Machine-specific home/output paths and execution identifiers are omitted. Redacted output hints are not verbatim tool responses. Tool identity, exact prompts, timestamps, image bytes, digests and scientific observations are retained.",
+    "retainedOriginalMeaning": "The repository-local PNG is an unchanged copy of the built-in original output; matching SHA-256 values were verified before removing private runtime-location references."
+  }
+}

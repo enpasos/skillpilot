@@ -1,0 +1,25 @@
+{
+  "provider": "OpenAI",
+  "model": "not-exposed-by-runtime",
+  "modelVersion": "not-exposed-by-runtime",
+  "temperature": "not-exposed-by-runtime",
+  "seed": "not-exposed-by-runtime",
+  "reviewMode": "independent-blind-first-pass",
+  "role": "subject_reviewer",
+  "scope": "Four assigned goals in the sealed round-b batch only; current bound page and canonical context, prompt, criteria, record schema, campaign, and the four matching current image bytes. No earlier or parallel reviews, canonical diffs, synthesis, live evidence profiles or checkpoint outcomes were inspected.",
+  "evidenceLimits": "No source excerpts, independent source-mapping files, full composition-view/source-manifest matrix, rendered book pages or actual learner data were supplied or inspected. The embedded page applicability is review context, not a claim of independently verified projection or source coverage.",
+  "outputAuthority": "candidate/ai_candidate only; description KEEP does not approve images, sources, learners or publication.",
+  "runtimeStartRecordedAt": "2026-09-14T06:43:56Z",
+  "runtimeStartMeaning": "Timestamp captured after instruction reading and before substantive goal/image review.",
+  "imageInspection": {
+    "tool": "view_image",
+    "detail": "original",
+    "goalIds": [
+      "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+      "7d4d6a39-0c78-5fb0-b7bf-182ed00972f7",
+      "206fe51d-cc78-5422-b139-32cc97eb1c37",
+      "e2014db8-c97f-5ce1-82c5-2a42741f4a61"
+    ],
+    "hashVerification": "SHA-256 of every viewed public asset matched its originalDigest in the sealed input."
+  }
+}

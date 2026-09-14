@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+  "candidateId": "candidate-v1",
+  "provider": "OpenAI",
+  "tool": "image_gen.imagegen",
+  "mode": "builtin",
+  "model": "not-exposed-by-runtime",
+  "modelVersion": "not-exposed-by-runtime",
+  "requestedArguments": {
+    "promptPath": "../prompt-v1.txt",
+    "promptSha256": "39bbc513e6c824156d4464a92312466cc18bedb127d255ec32c26de86263410c",
+    "referenced_image_paths": [
+      "app/public/assets/goal-visualizations/physik/206fe51d-cc78-5422-b139-32cc97eb1c37/206fe51d-cc78-5422-b139-32cc97eb1c37.jpg"
+    ]
+  },
+  "startedAt": "2026-09-14T06:52:16Z",
+  "completedAt": "2026-09-14T06:53:10Z",
+  "toolResult": {
+    "returnedKeys": [
+      "image_url",
+      "output_hint"
+    ],
+    "imageUrl": "data:image/png;base64 payload preserved without alteration as original-output.png",
+    "output_hint": "[REDACTED: machine-specific output directory and execution identifiers.] The unchanged built-in PNG is retained as original-output.png beside this record. This normalized record is not the raw tool response."
+  },
+  "savedImage": "original-output.png",
+  "sha256": "6064cf8aa1f1c690f9ffb8d90fec39e0822c9a868e26a9322fd8314aa5b6e9fe",
+  "dimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "review": {
+    "authority": "ai_candidate",
+    "decision": "reject_candidate",
+    "viewedActualImage": true,
+    "observations": [
+      "Readable German text and original approachable visual style largely preserved.",
+      "The bottom vertical luminosity interval is visibly shorter than the preceding intervals, although every interval represents two decades.",
+      "Horizontal ticks remain approximate rather than consistently logarithmic; the yellow luminosity-1 point lies left of the 6000-K tick near roughly 8000 K.",
+      "The required numerical-coordinate consistency is not met. A targeted built-in edit is being attempted; this original remains retained."
+    ],
+    "limitations": "No import, human approval, QA registry update, source mapping, learner or host acceptance performed."
+  },
+  "provenanceSerialization": {
+    "format": "repository-normalized-sanitized",
+    "rawToolResponse": false,
+    "note": "Repository input paths are normalized from the absolute paths used at invocation. Machine-specific home/output paths and execution identifiers are omitted. Redacted output hints are not verbatim tool responses. Tool identity, exact prompts, timestamps, image bytes, digests and scientific observations are retained.",
+    "retainedOriginalMeaning": "The repository-local PNG is an unchanged copy of the built-in original output; matching SHA-256 values were verified before removing private runtime-location references."
+  },
+  "retainedOriginalPath": "original-output.png"
+}
