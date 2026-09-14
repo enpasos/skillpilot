@@ -297,7 +297,17 @@ public final class OpenAiDeV1McpContractAdapter {
                     + "cannot be interrupted. These intent checks override automatic goal/renderer/mode steps. "
                     + "The fresh full context includes authoritative learningPlanToday. Never call a separate daily-plan "
                     + "read. For a normal learning start, follow its guidance and resume only with no active goal "
-                    + "and resumeAvailable=true; guidance.state=complete requires an explicit request for voluntary extra. "
+                    + "and resumeAvailable=true. Automatic continuation from a successor context requires "
+                    + "guidance.state=resume; complete, blocked or unavailable requires an explicit learning request. "
+                    + "A request to continue, catch up or learn a named subject is sufficient; do not ask for "
+                    + "another confirmation. The backend's resumeAvailable and canContinue capabilities remain "
+                    + "authoritative even when openToday and openOverdue are zero; the quota and calendar never "
+                    + "impose a learning limit. "
+                    + "Learning plans prioritize work and never limit learning within the Personal Curriculum. "
+                    + "For explicit continuation the backend prioritizes due prerequisite-safe plan goals, "
+                    + "then other reachable plan goals including future dates, then eligible personal targets "
+                    + "beyond the plan. A missing or outdated plan must not block published resumeAvailable "
+                    + "or canContinue capabilities; explain unavailable plan counts separately. "
                     + "An explicit available-subject request takes priority over generic "
                     + "resume. Status-only questions and pauses require no new exercise and no state write. "
                     + "Use switch_skillpilot_learning_plan_subject only for a requested, published, non-current "
@@ -308,7 +318,9 @@ public final class OpenAiDeV1McpContractAdapter {
                     + "about unavailablePlanCount>0. completedToday counts today's actual completions of due plan "
                     + "goals, including older overdue goals, capped at each subject's stable dueToday quota; "
                     + "further completions are extraCompletedToday. One subject's extra never fills another's quota. "
-                    + "When every quota is fulfilled, celebrate and offer a stop or voluntary extra; never "
+                    + "When every quota is fulfilled, celebrate. If openOverdue is positive, emphasize the "
+                    + "opportunity to catch up without pressure or guilt; do not foreground a break. Otherwise "
+                    + "offer optional further learning or a break. Never "
                     + "auto-resume or claim the entire plan or backlog is finished. If dueToday=0, say there "
                     + "is no fixed quota today instead of claiming completed work. Continue an already active goal normally. "
                     + "No valid daily status is unavailable, never an invented 0/0 completion. Do not choose "
@@ -729,11 +741,12 @@ public final class OpenAiDeV1McpContractAdapter {
         extended.add(tool(
                 RESUME_LEARNING_PLAN,
                 "Resume today's learning plan",
-                "Idempotently reconciles all valid subject plans and selects the next due, open and "
-                        + "prerequisite-satisfied goal only when fresh context.learningPlanToday returned "
+                "Idempotently selects the next prerequisite-safe unmastered target across current subjects, "
+                        + "including explicit extra beyond the calendar or quota, only when fresh context.learningPlanToday returned "
                         + "resumeAvailable=true and the context had no active goal. Never resume for a "
-                        + "status-only question, pause or a requested specific subject. With guidance.state=complete, "
-                        + "use only after an explicit request for voluntary extra; never auto-resume. Copy "
+                        + "status-only question, pause or a requested specific subject. Automatic continuation "
+                        + "requires guidance.state=resume; complete, blocked or unavailable requires an explicit "
+                        + "learning request. Copy "
                         + "expectedStateVersion from that context and create one clientRequestId for the write. "
                         + "On success, continue context.activeGoal immediately without loading another context.",
                 emptyObjectSchema(),
@@ -1214,7 +1227,7 @@ public final class OpenAiDeV1McpContractAdapter {
         OpenAiDeLearningPlanToday today = projectLearningPlanToday(skillpilotId, before, metadata);
         if (activeGoal(before) != null || !today.resumeAvailable()) {
             throw new ResponseStatusException(HttpStatus.CONFLICT,
-                    "No due learning-plan goal can currently be resumed. Keep the current goal unchanged.");
+                    "No learning-plan target can currently be resumed. Keep the current goal unchanged.");
         }
         LearnerLearningPlanApi.TransitionResponse transition = coachTools.resumeLearningPlan(
                 skillpilotId, communicationLocale(metadata));
@@ -1785,13 +1798,17 @@ public final class OpenAiDeV1McpContractAdapter {
                     localized(metadata,
                             "Die Kartenprüfung ist abgeschlossen. Folge jetzt ausschließlich "
                                     + "context.learningPlanToday.guidance aus diesem Folgezustand. Bei guidance.state=complete "
-                                    + "würdige das erfüllte Tagespensum und biete Pause oder freiwilliges Extra nur "
-                                    + "auf ausdrücklichen Wunsch an; bei dueToday=0 sage stattdessen, dass heute kein "
+                                    + "würdige das erfüllte Tagespensum. Bei openOverdue>0 betone die Chance zum "
+                                    + "Aufholen ohne Druck oder Schuldgefühl; stelle eine Pause nicht in den Vordergrund. "
+                                    + "Sonst biete weiteres Lernen oder eine Pause an. Starte Zusatzarbeit nur auf "
+                                    + "ausdrücklichen Lernwunsch; bei dueToday=0 sage stattdessen, dass heute kein "
                                     + "festes Pensum ansteht. Für andere Zustände führe die aktuelle guidance aus. "
                                     + "Lade keinen neuen Kontext.",
                             "The recall check is complete. Follow only context.learningPlanToday.guidance from "
                                     + "this successor now. For guidance.state=complete, celebrate the fulfilled quota "
-                                    + "and offer a stop or voluntary extra that requires an explicit request. If "
+                                    + "and, when openOverdue>0, emphasize the opportunity to catch up without pressure "
+                                    + "or guilt; do not foreground a break. Otherwise offer optional further learning "
+                                    + "or a break. Start extra learning only on an explicit learning request. If "
                                     + "dueToday=0, say there is no fixed quota today instead. For other states, "
                                     + "execute the current guidance. Do not reload context."),
                     null);

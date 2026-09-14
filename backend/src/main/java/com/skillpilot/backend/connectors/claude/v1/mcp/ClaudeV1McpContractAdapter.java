@@ -254,14 +254,20 @@ public class ClaudeV1McpContractAdapter {
                 workload across all current subject plans. For every newest successful context, first
                 perform any immediate goalVisualization render required by the Goal images rule below.
                 Then follow learningPlanToday.guidance, which owns the current daily next step.
+                Learning plans prioritize work and never limit learning within the Personal Curriculum.
+                For explicit continuation, the backend prioritizes due prerequisite-safe plan goals,
+                then other reachable plan goals including future dates, then eligible personal targets
+                beyond the plan. A missing or outdated plan must not block published learning capabilities.
                 Answer a status-only question or respect a pause without starting a goal or exercise.
                 A clear explicit subject request takes priority over generic resume: select its
                 published subject directly, without first activating another subject. Otherwise,
                 for a normal learning start, if no activeGoal is returned and
                 learningPlanToday.resumeAvailable is true, immediately call
                 resume_skillpilot_learning_plan with the current stateVersion and a fresh UUID before
-                any learner-facing response, except when guidance.state=complete: then resume only
-                after an explicit learner request for voluntary extra. Do not ask for confirmation and do not select a plan,
+                any learner-facing response. Automatic continuation from a successor context is permitted
+                only when guidance.state=resume. With guidance.state=complete, blocked or unavailable,
+                resume only after an explicit learner request to continue learning, catch up or learn a subject.
+                Do not ask for confirmation and do not select a plan,
                 subject, date or goal yourself. Treat the full context returned by that write as the
                 newest context and perform its required goalVisualization render before speaking.
                 Never call the resume tool while an activeGoal is present. Only when no such immediate
@@ -286,13 +292,20 @@ public class ClaudeV1McpContractAdapter {
                 Give the summary at most once per response. Then continue the returned activeGoal. If these counts later change,
                 report the updated counts naturally. Do not repeat unchanged counts on every turn.
 
-                For guidance.state=complete, celebrate that today's quota is fulfilled and offer to
-                stop or do voluntary extra. Do not claim the entire plan or all backlog is finished.
+                For guidance.state=complete, celebrate that today's quota is fulfilled. If openOverdue
+                is positive, emphasize the opportunity to catch up without pressure or guilt; do not
+                foreground a break. Otherwise offer optional further learning or a break.
+                Do not claim the entire plan or all backlog is finished.
                 If dueToday=0, say there is no fixed quota today instead of claiming completed work.
+                A request to continue, catch up or learn a named subject is already an explicit request
+                for voluntary extra; use the available resume or subject switch without another confirmation.
+                The backend's resumeAvailable and canContinue capabilities remain authoritative even
+                when openToday and openOverdue are zero. The quota and calendar never impose a learning limit.
                 Never automatically resume extra work, even when resumeAvailable=true. Continue an
                 already active goal normally. Do not automatically start future goals,
                 widen focus or send the learner to the Web application. For blocked or unavailable,
-                explain the remaining work or missing plan status without claiming completion; any
+                explain the remaining work or missing plan status without claiming completion. Published
+                resumeAvailable or canContinue capabilities still permit explicitly requested learning; any
                 necessary planning correction belongs to the teacher. Never infer completion from
                 resumeAvailable=false alone. Apply the same guidance to full successor contexts after
                 ordinary mastery and confirmed Verified Recall mastery.
@@ -306,11 +319,12 @@ public class ClaudeV1McpContractAdapter {
                 corresponding published Mathematics subject; only the tool argument must use the exact
                 published label. If the request fits more than one subject, ask one short clarification.
                 This explicit switch may park an unfinished active goal without marking
-                it complete; the backend alone selects the first due prerequisite-safe goal in that
+                it complete; the backend alone selects the next prerequisite-safe unmastered target in that
                 subject. Do not ask for a plan, landscape, focus or goal identifier, and never put one
                 into this tool call. Never invent or alter the published subject argument.
-                If a subject has no openToday or openOverdue goals, say its work is done for today;
-                do not try to switch or offer it repeatedly. For an absent or currently unavailable
+                Daily counts do not decide whether a subject can be continued. A published canContinue=true
+                permits explicitly requested extra learning even when openToday and openOverdue are zero.
+                For an absent or currently unavailable
                 subject, explain briefly and offer only entries with canContinue=true. After a conflict,
                 refresh once and apply these same rules. Continue from the full context
                 returned by a successful subject switch, perform any goalVisualization render it
@@ -480,10 +494,11 @@ public class ClaudeV1McpContractAdapter {
         tools.add(tool(
                 ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN,
                 "Resume SkillPilot Learning Plan",
-                "Selects the authoritative next due goal across all current subject plans when no "
+                "Selects the authoritative next prerequisite-safe unmastered target across all current subjects when no "
                         + "learning goal is active. The server chooses the date, plan, subject and goal. "
-                        + "Use for a normal learning start with resumeAvailable=true; an explicit learner "
-                        + "request for voluntary extra is required when guidance.state=complete. A specific subject "
+                        + "Use with resumeAvailable=true; automatic continuation requires guidance.state=resume. "
+                        + "For complete, blocked or unavailable, require an explicit learner request to continue "
+                        + "learning, catch up or learn a subject. A specific subject "
                         + "request takes priority, and status-only or pause requests do not start a goal. "
                         + "Returns a fresh complete coach context and advances learner state.",
                 objectSchema(
@@ -502,7 +517,8 @@ public class ClaudeV1McpContractAdapter {
                         + "from a newest learningPlanToday.subjects entry with canContinue=true and current=false. "
                         + "Everyday names may identify an unambiguous published subject; copy its exact label. "
                         + "An already current subject needs no switch write. The server resolves the "
-                        + "current plan and selects its first due prerequisite-safe goal; this parks an "
+                        + "current subject and selects its next prerequisite-safe unmastered target, including "
+                        + "explicit extra beyond the calendar or quota; this parks an "
                         + "unfinished previous goal without marking it complete. Never pass any plan, "
                         + "landscape, focus or goal identifier. Returns a fresh complete coach context.",
                 objectSchema(
@@ -1370,7 +1386,7 @@ public class ClaudeV1McpContractAdapter {
                     }
                     if (!today.resumeAvailable()) {
                         throw new ToolConflictException(
-                                "No due learning-plan goal can be resumed right now.");
+                                "No learning-plan target can be resumed right now.");
                     }
 
                     LearnerLearningPlanApi.TransitionResponse transition;
@@ -1400,7 +1416,7 @@ public class ClaudeV1McpContractAdapter {
                             || resumedGoal == null
                             || !transition.activeGoalId().equals(resumedGoal.id())) {
                         throw new ToolConflictException(
-                                "No due learning-plan goal can be resumed right now.");
+                                "No learning-plan target can be resumed right now.");
                     }
 
                     long successorStateVersion = ctx.currentStateVersion();

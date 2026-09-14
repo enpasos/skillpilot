@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class ClaudeV1CoachContextProjectorTest {
 
@@ -176,6 +178,65 @@ class ClaudeV1CoachContextProjectorTest {
         assertEquals(true, subject.get("canContinue"));
         assertEquals(4, subject.get("extraCompletedToday"));
         assertEquals(4, ((Map<String, Object>) projected.get("totals")).get("extraCompletedToday"));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"0, 0, true, 0", "1, 0, true, 0", "1, 3, true, 0",
+            "0, 0, false, 0", "1, 3, false, 0", "0, 0, true, 1"})
+    @SuppressWarnings("unchecked")
+    void explicitExtraUsesBackendCapabilityRegardlessOfQuotaOrBacklog(
+            int quota, int overdue, boolean available, int unavailablePlans) {
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                mock(CoachStateProjection.class), mock(CoachToolFacade.class));
+        LearnerPlanTodayStatus status = new LearnerPlanTodayStatus(LocalDate.of(2026, 9, 14),
+                true, available,
+                List.of(new LearnerPlanTodayStatus.SubjectStatus(
+                        "private-math", "Mathematik", quota, quota, 0, overdue, false, available)),
+                null, unavailablePlans);
+
+        Map<String, Object> projected = projector.projectLearningPlanToday(status, false);
+
+        assertEquals(available, projected.get("resumeAvailable"));
+        Map<String, Object> subject = ((List<Map<String, Object>>) projected.get("subjects")).getFirst();
+        assertEquals(available, subject.get("canContinue"));
+        Map<String, Object> guidance = (Map<String, Object>) projected.get("guidance");
+        assertEquals(unavailablePlans == 0 ? "complete" : "unavailable", guidance.get("state"),
+                "Extra capability must not automatically assign work or misrepresent unavailable plans");
+        assertEquals(unavailablePlans, projected.get("unavailablePlanCount"));
+        assertTrue(guidance.get("instruction").toString().contains(
+                "Learning plans prioritize work and never limit learning within the Personal Curriculum"));
+        assertTrue(guidance.get("instruction").toString().contains(unavailablePlans == 0
+                ? "Zero openToday or openOverdue counts never revoke" : "even if a plan is missing or outdated"));
+
+        Map<String, Object> withActiveGoal = projector.projectLearningPlanToday(status, true);
+        assertEquals(false, withActiveGoal.get("resumeAvailable"));
+        assertEquals("continue", ((Map<String, Object>) withActiveGoal.get("guidance")).get("state"));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"false, blocked", "true, resume"})
+    @SuppressWarnings("unchecked")
+    void openQuotaDoesNotAuthorizeAutomaticExtraWhenOnlyPersonalFallbackIsAvailable(
+            boolean automaticResumeAvailable, String expectedGuidance) {
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                mock(CoachStateProjection.class), mock(CoachToolFacade.class));
+        LearnerPlanTodayStatus status = new LearnerPlanTodayStatus(LocalDate.of(2026, 9, 14),
+                true, true,
+                List.of(new LearnerPlanTodayStatus.SubjectStatus(
+                        "private-math", "Mathematik", 1, 0, 1, 3, false, true)),
+                new LearnerPlanTodayStatus.Totals(1, 0, 1, 3), 0, automaticResumeAvailable);
+
+        Map<String, Object> projected = projector.projectLearningPlanToday(status, false);
+
+        assertEquals(true, projected.get("resumeAvailable"), "Explicit personal learning remains available");
+        assertEquals(true, ((List<Map<String, Object>>) projected.get("subjects")).getFirst().get("canContinue"));
+        Map<String, Object> guidance = (Map<String, Object>) projected.get("guidance");
+        assertEquals(expectedGuidance, guidance.get("state"));
+        if (!automaticResumeAvailable) {
+            assertTrue(guidance.get("instruction").toString().contains("An explicit learning request may still use"));
+            assertTrue(guidance.get("instruction").toString().contains("Do not call today complete or automatically resume extra work"));
+        }
+        assertFalse(projected.containsKey("automaticResumeAvailable"));
     }
 
     @Test

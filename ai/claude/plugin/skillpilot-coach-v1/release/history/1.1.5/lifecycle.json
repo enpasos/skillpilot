@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
   "pluginIdentity": "skillpilot-coach-v1",
-  "pluginVersion": "1.1.6",
+  "pluginVersion": "1.1.5",
   "state": "PRE_SUBMISSION",
   "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
   "connectorDirectoryDependency": "none",
@@ -28,12 +28,12 @@
     "subagents"
   ],
   "productOwnerAuthorization": {
-    "approvedAt": "2026-09-14",
+    "approvedAt": "2026-09-12",
     "approvedBy": "product-owner",
-    "scope": "Product Owner explicitly required that plans guide and prioritize but never prevent requested learning, including after daily quota completion, empty backlog, future dates or an exhausted plan. Version 1.1.6 is a local continuation-correction candidate: the backend selects reachable open Personal Curriculum targets, preserves prerequisites and does not turn status requests or automatic daily completion into extra learning. Offer remaining backlog as a pressure-free catch-up opportunity. This record covers local candidate preparation only; it does not authorize deployment, Marketplace publication, Anthropic Console submission, guide activation or inherited acceptance.",
+    "scope": "Product Owner explicitly authorized simplifying the Claude Skill and policy without overlapping instructions, independent regression verification, and complete production and Claude Marketplace deployment after CI passes. Version 1.1.5 is the instruction-consolidation candidate under the existing plugin identity and unchanged tool contract; teaching, assessment, privacy, protected-answer, OAuth, session and backend-owned progression semantics must be preserved. This decision authorizes no inherited real-client acceptance, Anthropic Console submission or general public activation.",
     "excludes": [
       "Connector Directory lifecycle, gates and Team/Enterprise submission access",
-      "Deployment, Marketplace publication, guide activation, credential changes, Anthropic Console submission, general public activation and inherited candidate acceptance"
+      "Credential changes, Anthropic Console submission, general public activation and inherited candidate acceptance"
     ]
   },
   "externalStateEvidence": {
@@ -42,9 +42,9 @@
   },
   "releaseLine": {
     "major": 1,
-    "version": "1.1.6",
+    "version": "1.1.5",
     "status": "pre_submission_candidate",
-    "compatibilityPolicy": "Version 1.1.6 corrects explicit continuation beyond daily plans under the existing plugin identity and preserved 1.1.4 tool input contract. Assessment prose remains forbidden. OAuth, session, tool identity, prerequisites and backend-owned state remain unchanged. The published 1.1.5 package and all earlier artifacts and evidence stay immutable; no prior acceptance transfers."
+    "compatibilityPolicy": "Version 1.1.5 simplifies instructions under the existing identity and preserves the 1.1.4 tool contract. The prior privacy correction still forbids assessment-prose inputs; no compatibility workaround may restore them. OAuth, session, tool identity and state ownership remain unchanged. Every earlier package and evidence record stays immutable; no prior acceptance transfers."
   },
   "stateTransitions": [
     {

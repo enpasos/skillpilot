@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import {
+  cpSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -86,7 +87,7 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
     downloadBasePath: "/api/public/claude/plugins",
     accessModel: "first_party_guided_beta",
   });
-  assert.equal(canonicalLane.candidate.version, "1.1.5");
+  assert.equal(canonicalLane.candidate.version, "1.1.6");
   assert.match(canonicalLane.candidate.sha256, /^[0-9a-f]{64}$/u);
   for (const id of [
     "web-learning-plan-compact-summary", "android-voice-learning-plan-compact-summary",
@@ -419,6 +420,54 @@ test("prepare writes only the closed index and immutable versioned artifact, the
       `${publicationRelativeRoot}/index.json`,
       `${publicationRelativeRoot}/${artifactRelativePath}`,
     ]);
+  });
+});
+
+test("local candidate preparation preserves the served index and verifies candidate bytes separately", () => {
+  withFixture(({ root, publicationRoot }) => {
+    const buildPackage = fixtureBuilder(deterministicBytes);
+    const published = prepareClaudeDirectInstallBetaPublication({ repositoryRoot: root, preparedAt, buildPackage });
+    const servedIndex = readFileSync(published.indexPath);
+    const servedArtifact = readFileSync(published.artifactPath);
+    const staged = prepareClaudeDirectInstallBetaPublication({
+      repositoryRoot: root, preparedAt, buildPackage, candidateOnly: true,
+    });
+    assert.equal(staged.indexPath, resolve(root, "tmp/claude-direct-install-beta/index.json"));
+    assert.notEqual(staged.artifactPath, published.artifactPath);
+    assert.deepEqual(readFileSync(resolve(publicationRoot, "index.json")), servedIndex);
+    assert.deepEqual(readFileSync(published.artifactPath), servedArtifact);
+    assert.equal(verifyClaudeDirectInstallBetaPublication({
+      repositoryRoot: root, buildPackage, candidateOnly: true,
+    }).artifactPath, staged.artifactPath);
+    writeFileSync(staged.artifactPath, "changed candidate");
+    assert.throws(() => verifyClaudeDirectInstallBetaPublication({
+      repositoryRoot: root, buildPackage, candidateOnly: true,
+    }), /byte length|SHA-256/u);
+    assert.deepEqual(readFileSync(published.artifactPath), servedArtifact);
+  });
+});
+
+test("the served previous release uses its exact immutable dossier, never newer source bytes", () => {
+  withHistoricalPublicationFixture(({ root }) => {
+    const result = verifyClaudeDirectInstallBetaPublication({
+      repositoryRoot: root,
+      buildPackage: () => { throw new Error("Do not rebuild a published release from successor source."); },
+    });
+    const published = readJson(resolve(root, publicationRelativeRoot, "index.json")).plugins[0];
+    assert.equal(result.version, published.version);
+    assert.equal(result.sha256, published.sha256);
+    assert.notEqual(result.version, fixtureVersion);
+  });
+});
+
+test("historical publication verification rejects a changed archived approval", () => {
+  withHistoricalPublicationFixture(({ root }) => {
+    const published = readJson(resolve(root, publicationRelativeRoot, "index.json")).plugins[0];
+    const archived = resolve(root, "ai/claude/plugin/skillpilot-coach-v1/release/history",
+      published.version, "marketplace-publication.json");
+    writeFileSync(archived, `${readFileSync(archived, "utf8")}\n`);
+    assert.throws(() => verifyClaudeDirectInstallBetaPublication({ repositoryRoot: root }),
+      /Historical plugin release file changed/u);
   });
 });
 
@@ -1097,6 +1146,26 @@ function withFixture(callback, candidateBytes = deterministicBytes) {
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+}
+
+function withHistoricalPublicationFixture(callback) {
+  withFixture((fixture) => {
+    const historicalRoot = "ai/claude/plugin/skillpilot-coach-v1/release/history";
+    const version = "1.1.5";
+    const lane = readJson(resolve(repositoryRoot, historicalRoot, version, "direct-install-beta.json"));
+    const baseline = readJson(resolve(repositoryRoot, historicalRoot, version, "contract-baseline.json"));
+    for (const path of [historicalRoot, `${publicationRelativeRoot}/skillpilot-coach-v1/${version}`]) {
+      mkdirSync(dirname(resolve(fixture.root, path)), { recursive: true });
+      cpSync(resolve(repositoryRoot, path), resolve(fixture.root, path), { recursive: true });
+    }
+    const index = readJson(resolve(repositoryRoot, publicationRelativeRoot, "index.json"));
+    const filename = `skillpilot-coach-v1-${version}.plugin`;
+    index.plugins[0] = { ...index.plugins[0], version, filename,
+      bytes: baseline.archive.bytes, sha256: lane.candidate.sha256, requirements: lane.requirements,
+      downloadUrl: `/api/public/claude/plugins/skillpilot-coach-v1/${version}/sha256-${lane.candidate.sha256}/${filename}` };
+    writeJson(resolve(fixture.publicationRoot, "index.json"), index);
+    callback(fixture);
+  });
 }
 
 function fixtureBuilder(bytes, calls = []) {

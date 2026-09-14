@@ -3,12 +3,37 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.5 is deployed in
+Anthropic-curated or Anthropic-verified listing. Version 1.1.6 is the local,
+unpublished continuation-correction candidate. Version 1.1.5 is deployed in
 production and published in the public Marketplace, with the exact artifact
 and repository independently verified. Real-client acceptance remains pending;
 repository publication does not establish installation or synchronization in
 every account. Earlier published packages and their evidence remain immutable
 history.
+
+## 1.1.6 explicit continuation candidate, 14 September 2026
+
+The Product Owner required that a plan guide and prioritize but never prevent
+explicitly requested learning. The coach continues an active unmastered goal or
+lets the backend select a reachable open Personal Curriculum target, even with
+zero daily quota, empty backlog, future plan dates or an exhausted plan. Server
+capabilities authorize continuation; counts do not prohibit it. Prerequisites,
+automatic daily stopping and read-only status requests remain enforced. After
+the daily target, remaining backlog is offered as a pressure-free opportunity
+to catch up; a pause stays possible without becoming the primary recommendation.
+
+The seven-file published 1.1.5 release dossier is archived byte-identically under
+`ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.5/` and hash-protected.
+The new candidate's publication, guide and real-client evidence starts pending.
+The served publication index and the 1.1.5 Marketplace guide retain their existing
+bindings while 1.1.6 is developed locally. Candidate preparation does not update
+that index or transfer the historical guide approval to 1.1.6.
+
+Use `prepare-candidate` and `verify-candidate` below for local work. The ordinary
+`verify` command checks the served registry against its exactly referenced,
+hash-protected historical dossier when it still names the previous release.
+It does not rebuild that published artifact from successor source. The separate
+candidate check still rebuilds current source and verifies exact bytes.
 
 ## 1.1.5 instruction consolidation, 12 September 2026
 
@@ -609,7 +634,7 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current candidate version: `1.1.5`
+- Current candidate version: `1.1.6` (local, unpublished)
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only
@@ -688,15 +713,20 @@ node scripts/check_skillpilot_coach_plugin.mjs
 node scripts/check_openai_plugin_versioning.mjs
 ```
 
-For a new candidate version, store the deterministic package additively and
-then verify the resulting publication index. `verify` alone is expected to
-fail before this first `prepare`, because the index still names the preceding
-candidate:
+For a new candidate version, store the deterministic package and its index
+under `tmp/claude-direct-install-beta/`. Keep the served publication index and
+approved guide on their published release throughout local development:
 
 ```bash
-node scripts/claude_direct_install_beta_release.mjs prepare
+node scripts/claude_direct_install_beta_release.mjs prepare-candidate
+node scripts/claude_direct_install_beta_release.mjs verify-candidate
 node scripts/claude_direct_install_beta_release.mjs verify
 ```
+
+Only during an authorized coordinated rollout, run the existing `prepare`
+command to add the exact artifact to runtime resources and advance the served
+index. The new guide requires its own release-bound decision; preparation and
+archived approvals do not authorize a guide switch.
 
 Then run the marketplace checks and create the publication tree:
 

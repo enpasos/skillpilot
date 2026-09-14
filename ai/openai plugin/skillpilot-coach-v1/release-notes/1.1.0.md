@@ -13,7 +13,10 @@ snapshot remains historical evidence, not an active source-code freeze.
 - Count actual recorded completions toward each subject's stable daily quota,
   including older due goals. Celebrate completion before offering voluntary
   extra learning; additional work never replaces another subject's quota.
-- Keep remaining plan work secondary and unavailable-plan guidance explicit.
+- Plans guide learning but never prevent explicit continuation: prioritize due
+  goals, then reachable future or unplanned personal targets. With backlog,
+  invite catching up without pressure or foregrounding a break. Keep missing
+  plan counts explicitly unavailable without revoking learning capabilities.
   Never infer a completion date from a mastery snapshot or legacy update time.
 - Keep orientation, teaching, mastery, memory practice, Verified Recall and
   assessment safeguards. Optional visualizations never replace complete text.

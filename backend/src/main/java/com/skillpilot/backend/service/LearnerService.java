@@ -2682,6 +2682,38 @@ public class LearnerService {
                 Instant.now());
     }
 
+    /** Subjects with targets in the committed personal curriculum, independent of dated plans. */
+    @Transactional(readOnly = true)
+    public List<String> getPersonalCurriculumSubjectIds(String skillpilotId) {
+        Learner learner = getLearner(skillpilotId);
+        if (!hasCompletedPersonalCurriculum(learner)
+                || learner.getSelectedCurriculum() == null || learner.getSelectedCurriculum().isBlank()) {
+            return List.of();
+        }
+        GoalProjection projection = getGoalProjection(
+                learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        return projection.targetGoalIds().stream()
+                .filter(id -> isCountedAtomicGoal(projection.structuralGoals().get(id)))
+                .map(landscapeService::getLandscapeIdForGoal)
+                .filter(Objects::nonNull).distinct().sorted().toList();
+    }
+
+    /**
+     * Explicit further learning may leave a dated plan or its temporary focus,
+     * but only within this subject's personal targets and the real frontier.
+     */
+    @Transactional(readOnly = true)
+    public List<FrontierGoal> getPersonalCurriculumSubjectFrontier(String skillpilotId, String landscapeId) {
+        LearnerPlanningScopeResponse scope = getPlanningScope(skillpilotId, landscapeId);
+        Set<String> openTargets = Set.copyOf(scope.openAtomicGoalIds());
+        if (openTargets.isEmpty()) {
+            return List.of();
+        }
+        return getUncompactedRichFrontierForFocus(skillpilotId, scope.scopeAtomicGoalIds()).stream()
+                .filter(goal -> "atomic".equals(goal.type()) && openTargets.contains(goal.id()))
+                .toList();
+    }
+
     /**
      * Checks current executability, not historical graph identity. Stored v2
      * fingerprints remain capture evidence and are never rewritten by this read.

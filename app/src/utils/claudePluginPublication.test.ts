@@ -269,8 +269,7 @@ const candidateManifest = JSON.parse(readFileSync(resolve(
   '../../../ai/claude/plugin/skillpilot-coach-v1/.claude-plugin/plugin.json',
 ), 'utf8')) as { name: string, version: string }
 assert.equal(productionIndex.plugins[0]?.id, candidateManifest.name)
-assert.equal(productionIndex.plugins[0]?.version, candidateManifest.version,
-  'release preparation still binds the local index to the exact candidate manifest')
+const publishedVersion = productionIndex.plugins[0]!.version
 assert.equal(productionIndex.plugins[0]?.requirements.plan, 'claude-pro')
 assert.deepEqual(productionIndex.plugins[0]?.requirements, CLAUDE_PLUGIN_BETA_REQUIREMENTS)
 assert.equal(productionIndex.plugins[0]?.privacyUrl, CLAUDE_CONNECTOR_PRIVACY_URL)
@@ -289,7 +288,7 @@ interface MarketplaceEvidence {
   verifiedAt?: string | null
   evidenceRef?: string | null
 }
-const marketplaceLane = JSON.parse(readFileSync(marketplaceLanePath, 'utf8')) as {
+type MarketplaceLane = {
   target?: { repositoryUrl?: string }
   plugin?: { version?: string, directInstallSha256?: string }
   activation?: {
@@ -309,17 +308,29 @@ const marketplaceLane = JSON.parse(readFileSync(marketplaceLanePath, 'utf8')) as
     evidence?: MarketplaceEvidence[]
   }
 }
+const candidateMarketplaceLane = JSON.parse(readFileSync(marketplaceLanePath, 'utf8')) as MarketplaceLane
+assert.equal(candidateMarketplaceLane.plugin?.version, candidateManifest.version)
+const marketplaceLane = publishedVersion === candidateManifest.version
+  ? candidateMarketplaceLane
+  : JSON.parse(readFileSync(resolve(dirname(marketplaceLanePath),
+    `history/${publishedVersion}/marketplace-publication.json`), 'utf8')) as MarketplaceLane
+if (publishedVersion !== candidateManifest.version) {
+  assert.equal(candidateMarketplaceLane.activation?.state, 'prepared_not_published')
+  assert.equal(candidateMarketplaceLane.activation?.marketplaceUiSwitchAllowed, false)
+  assert.equal(candidateMarketplaceLane.activation?.firstPartyGuideDecision?.status, 'pending')
+  assert.ok(candidateMarketplaceLane.activation?.evidence?.every(entry => entry.status === 'pending'))
+}
 assert.equal(
   CLAUDE_MARKETPLACE_REPOSITORY_URL,
   marketplaceLane.target?.repositoryUrl,
   'the marketplace guide must use the verified canonical repository URL',
 )
-assert.equal(marketplaceLane.plugin?.version, candidateManifest.version)
+assert.equal(marketplaceLane.plugin?.version, publishedVersion)
 assert.equal(marketplaceLane.plugin?.directInstallSha256, productionIndex.plugins[0]?.sha256)
 assert.equal(
   marketplaceLane.activation?.firstPartyUiRoute,
   'personal_git_marketplace',
-  'the current candidate has its own explicit Marketplace guide decision',
+  'the index-referenced published release has its own explicit Marketplace guide decision',
 )
 assert.equal(
   marketplaceLane.activation?.marketplaceUiSwitchAllowed,
@@ -330,7 +341,7 @@ const guideDecision = marketplaceLane.activation?.firstPartyGuideDecision
 assert.equal(guideDecision?.status, 'approved')
 assert.equal(guideDecision?.approvedBy, 'product-owner')
 assert.equal(new Date(guideDecision?.approvedAt ?? '').toISOString(), guideDecision?.approvedAt)
-assert.equal(guideDecision?.candidateVersion, candidateManifest.version)
+assert.equal(guideDecision?.candidateVersion, publishedVersion)
 assert.equal(guideDecision?.candidateSha256, productionIndex.plugins[0]?.sha256)
 assert.equal(guideDecision?.evidenceRef,
   'docs/quickstart/video-production.md#guide-freigabe-vom-13-september-2026')
@@ -347,7 +358,7 @@ if (repositoryEvidence?.status === 'pending') {
 } else {
   assert.equal(repositoryEvidence?.status, 'pass')
   assert.equal(marketplaceLane.activation?.state, 'published_pending_acceptance')
-  assert.equal(repositoryEvidence?.candidateVersion, candidateManifest.version)
+  assert.equal(repositoryEvidence?.candidateVersion, publishedVersion)
   assert.equal(repositoryEvidence?.candidateSha256, productionIndex.plugins[0]?.sha256)
   assert.match(repositoryEvidence?.revision ?? '', /^[a-f0-9]{40}$/u)
   assert.match(repositoryEvidence?.treeSha256 ?? '', /^[a-f0-9]{64}$/u)

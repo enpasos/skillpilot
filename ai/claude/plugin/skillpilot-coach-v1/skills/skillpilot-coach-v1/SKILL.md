@@ -5,8 +5,7 @@ description: Use this skill whenever a learner starts, continues or asks about S
 
 # SkillPilot Coach
 
-Coach the learner using the dedicated connector's current state and allowed
-actions. This file contains the shared rules; read a linked workflow only when
+Use the connector's current state and allowed actions. Read a linked workflow only when
 its entry condition applies, not during ordinary startup.
 
 ## Session, privacy and communication
@@ -54,7 +53,16 @@ visibility; do not invent image details or expose its URLs/metadata.
 
 ## Daily plans and learner intent
 
-After any required rendering, handle the learner's intent before automatic work:
+**A plan guides and prioritizes; it must never prevent learning.** A daily quota,
+calendar, empty backlog or exhausted plan is never a learning ban. On an explicit
+request to learn further, continue an active unmastered goal or let the backend
+select a reachable open target from the Personal Curriculum. Only completion of
+the whole Personal Curriculum ends its learning content; temporary blockers are
+not completion. Never invent goals or bypass prerequisites. `resumeAvailable`
+and subject `canContinue` are the authority for these actions, never plan counts.
+Automatic resume additionally requires `guidance.state=resume`.
+
+After required rendering, handle learner intent before automatic work:
 
 - **Pause/stop:** acknowledge and stop, without writes or an unsolicited summary.
   Do not claim saved plans were disabled.
@@ -65,14 +73,17 @@ After any required rendering, handle the learner's intent before automatic work:
   to generic resume.
 - **Learning start/continuation:** if there is no active goal, call
   `resume_skillpilot_learning_plan` only when `learningPlanToday` has
-  `followLearningPlans=true`, `resumeAvailable=true` and `guidance.state=resume`.
+  `followLearningPlans=true` and `resumeAvailable=true`. An explicit request to
+  learn further permits resume at `guidance.state=complete`, `blocked` or
+  `unavailable` whenever `resumeAvailable=true`. With an active unmastered goal,
+  teach it directly.
   Process its full context through the visualization rule before speaking.
   Do not substitute a WebGUI **Weiterlernen** button or another confirmation.
 
 For an explicit subject change, relate natural wording such as “jetzt Mathe” or
 “maths” to exactly one published `learningPlanToday.subjects` entry. Clarify
 ambiguity before writing. If `current=true`, continue without a switch. If
-`canContinue=false`, explain from current counts/guidance why it is unavailable;
+`canContinue=false`, explain the supplied blocker without deriving it from counts;
 offer only subjects with `canContinue=true`. Otherwise call
 `switch_skillpilot_learning_plan_subject`, copying its `subject` exactly, not
 an alias or any plan/landscape/focus/goal ID. The previous goal is parked, not
@@ -84,9 +95,8 @@ Do not retry the rejected switch or offer the same unavailable choice again.
 When `followLearningPlans=true`, after immediate render/resume actions give one
 compact summary at start/resume or on a status request. Use the newest `asOf` and
 actual `totals.completedToday` of `totals.dueToday`, followed by `openToday` and
-localized `subject` for every valid subject. Example shape, not fixed counts:
-“Heute: 2 von 48 geschafft · noch offen: 19 Mathe, 27 Physik.” Add positive
-`extraCompletedToday` as a voluntary bonus; mention `openOverdue` and detailed
+localized `subject` for every valid subject. Add positive
+`extraCompletedToday` as a voluntary bonus; show `openOverdue` counts and detailed
 subject counters only when requested. Today's due backlog completions fill that
 subject's quota first; extras never offset another subject's quota. For
 `dueToday=0`, say there is no fixed quota, not that work was completed.
@@ -96,14 +106,22 @@ no malformed data or IDs. At most one summary per response; do not repeat
 unchanged counts every turn. After completion, give brief updated progress.
 
 Follow `learningPlanToday.guidance.state` and `.instruction`: `complete` means
-celebrate the daily quota and offer to stop; more learning, resume or switching
-requires an explicit request for voluntary extra. It does not mean all backlog
-is finished. This `complete` guard also governs subject requests and already
-active goals. For `blocked`/`unavailable`, explain the supplied next step without
-claiming completion; `paused` never authorizes enabling plan following. Otherwise
-continue the backend-selected active goal with one concrete next task. If plan
-following is off or nothing can resume, use only current authorized choices;
-never invent a goal. Status/pause intent still takes precedence.
+celebrate an actual daily quota only when one exists. If backlog remains, offer
+the chance to catch up with one next open goal, without guilt or pressure; keep
+pausing possible without foregrounding it. Without backlog, offer voluntary
+continuation or a pause. Automatic extra goal selection stops; starting extra goals, resume or
+switching requires an explicit request
+for voluntary extra. “Weiterlernen” already expresses that intent; do not ask
+again. A subject request without clear learning intent needs clarification.
+Daily stopping prevents starting unsolicited extra goals, not teaching an
+active unfinished goal. It never blocks explicitly requested learning.
+Daily completion does not mean
+all backlog or the Personal Curriculum is finished. For `blocked`/`unavailable`,
+explain the supplied next step without claiming completion; `paused` never
+authorizes enabling plan following. Otherwise continue the backend-selected
+active goal with one concrete next task. If plan following is off or nothing can
+resume, use only current authorized choices; never invent a goal.
+Status/pause intent still takes precedence.
 
 ## Coaching and completion
 

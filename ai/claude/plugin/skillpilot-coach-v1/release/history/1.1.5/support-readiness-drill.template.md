@@ -12,8 +12,8 @@
 | Field | Value |
 | --- | --- |
 | Drill status | `pending` |
-| Candidate version | `1.1.6` |
-| Candidate SHA-256 | `439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca` |
+| Candidate version | `1.1.5` |
+| Candidate SHA-256 | `8b1713178bbb289bc0b6669afa6e60328f2b362d42651353a78a869fe6aa76c1` |
 | Source commit (40 characters) | `UNASSIGNED - BLOCKING` |
 | Remote marketplace revision (40 characters) | `NOT YET AVAILABLE - PREPUBLICATION`; replace in later activation evidence |
 | Marketplace tree SHA-256 | `UNASSIGNED - BLOCKING` |
@@ -84,19 +84,10 @@ check. The personal-marketplace beta has no proactive per-operation monitor,
 real-time detection promise or SLA. This template neither satisfies nor
 duplicates the separate exact-client acceptance gate.
 
-The 1.1.6 exact-client gate remains `pending` until a fresh Marketplace or
+The 1.1.5 exact-client gate remains `pending` until a fresh Marketplace or
 explicit exact-candidate install on the controlled Web and Android Voice
 clients independently completes the daily-plan, automatic-resume and
 orientation scenarios. No earlier package or evidence satisfies this gate.
-
-For explicit continuation, include zero daily quota and empty backlog, future
-plan targets, an exhausted plan with reachable Personal Curriculum goals, and
-`blocked`/`unavailable` guidance with `resumeAvailable=true`. Verify exact subject
-labels, continued teaching of an active unfinished goal, and no prerequisite
-bypass. A status request must not write; daily completion must not start an
-unsolicited extra goal. When backlog remains, the coach offers a pressure-free
-chance to catch up without foregrounding a pause. These cases remain untested
-in a real host until their exact-candidate evidence is recorded.
 After one tailored motivational response, use the clear continuation phrase
 `Machen wir so, dann fangen wir einfach an.` On each surface prove that the
 orientation completion was persisted without another confirmation loop and

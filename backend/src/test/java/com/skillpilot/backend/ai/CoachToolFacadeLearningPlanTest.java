@@ -4,9 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
@@ -23,6 +26,7 @@ import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InOrder;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -158,6 +162,262 @@ class CoachToolFacadeLearningPlanTest {
                 LEARNER_ID,
                 planId,
                 new LearnerLearningPlanApi.ContinueRequest(9L, asOf));
+        verify(learningPlans, never()).switchPersonalCurriculumSubject(eq(LEARNER_ID), any());
+    }
+
+    @Test
+    void subjectSwitchWithoutAStoredPlanUsesTheExactLocalizedPersonalSubjectWithoutAQuota() {
+        LocalDate asOf = LocalDate.parse("2026-09-04");
+        when(learningPlans.getTodayStatus(LEARNER_ID, "en-GB")).thenReturn(status(
+                true,
+                new LearnerPlanTodayStatus.SubjectStatus(
+                        "math-landscape", "Mathematics", 2, 0, 2, 0),
+                new LearnerPlanTodayStatus.SubjectStatus(
+                        "physics-landscape", "Physics", 0, 0, 0, 0, false, true)));
+        when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
+                .thenThrow(new ResponseStatusException(HttpStatus.NOT_FOUND, "No stored plan"));
+        LearnerLearningPlanApi.TransitionResponse transition = personalCurriculumTransition(
+                true, "physics-goal", stateWithActiveGoal("physics-goal"));
+        when(learningPlans.switchPersonalCurriculumSubject(LEARNER_ID, "physics-landscape"))
+                .thenReturn(transition);
+
+        assertThat(facade.switchLearningPlanSubject(LEARNER_ID, "en-GB", "Physics"))
+                .isSameAs(transition);
+
+        InOrder sequence = inOrder(learnerService, learningPlans);
+        sequence.verify(learnerService).assertWritableLearningSession(LEARNER_ID);
+        sequence.verify(learnerService).acquireLearningPlanMutationLock(LEARNER_ID);
+        sequence.verify(learningPlans).getTodayStatus(LEARNER_ID, "en-GB");
+        sequence.verify(learningPlans).getPlan(LEARNER_ID, "physics-landscape", asOf);
+        sequence.verify(learningPlans).switchPersonalCurriculumSubject(LEARNER_ID, "physics-landscape");
+        verify(learningPlans, never()).switchPlan(eq(LEARNER_ID), any(), any());
+    }
+
+    @Test
+    void subjectSwitchWithAStalePlanUsesPersonalTargetsAfterTheDailyQuotaIsComplete() {
+        LocalDate asOf = LocalDate.parse("2026-09-04");
+        when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status(
+                true,
+                new LearnerPlanTodayStatus.SubjectStatus(
+                        "physics-landscape", "Physik", 2, 2, 0, 0, false, true)));
+        when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
+                .thenReturn(planDetail(UUID.randomUUID(), 9L, "physics-landscape", true));
+        LearnerLearningPlanApi.TransitionResponse transition = personalCurriculumTransition(
+                true, "physics-goal", stateWithActiveGoal("physics-goal"));
+        when(learningPlans.switchPersonalCurriculumSubject(LEARNER_ID, "physics-landscape"))
+                .thenReturn(transition);
+
+        assertThat(facade.switchLearningPlanSubject(LEARNER_ID, "de-DE", "Physik"))
+                .isSameAs(transition);
+
+        verify(learningPlans).switchPersonalCurriculumSubject(LEARNER_ID, "physics-landscape");
+        verify(learningPlans, never()).switchPlan(eq(LEARNER_ID), any(), any());
+    }
+
+    @Test
+    void subjectSwitchWithAnUnavailableStoredPlanUsesThePublishedPersonalContinuationCapability() {
+        LocalDate asOf = LocalDate.parse("2026-09-04");
+        when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(new LearnerPlanTodayStatus(
+                asOf,
+                true,
+                true,
+                List.of(new LearnerPlanTodayStatus.SubjectStatus(
+                        "physics-landscape", "Physik", 0, 0, 0, 0, false, true)),
+                new LearnerPlanTodayStatus.Totals(0, 0, 0, 0),
+                1));
+        when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
+                .thenThrow(new ResponseStatusException(HttpStatus.CONFLICT, "Stored plan is corrupt"));
+        LearnerLearningPlanApi.TransitionResponse transition = personalCurriculumTransition(
+                true, "physics-goal", stateWithActiveGoal("physics-goal"));
+        when(learningPlans.switchPersonalCurriculumSubject(LEARNER_ID, "physics-landscape"))
+                .thenReturn(transition);
+
+        assertThat(facade.switchLearningPlanSubject(LEARNER_ID, "de-DE", "Physik"))
+                .isSameAs(transition);
+
+        InOrder sequence = inOrder(learnerService, learningPlans);
+        sequence.verify(learnerService).assertWritableLearningSession(LEARNER_ID);
+        sequence.verify(learnerService).acquireLearningPlanMutationLock(LEARNER_ID);
+        sequence.verify(learningPlans).getTodayStatus(LEARNER_ID, "de-DE");
+        sequence.verify(learningPlans).getPlan(LEARNER_ID, "physics-landscape", asOf);
+        sequence.verify(learningPlans).switchPersonalCurriculumSubject(LEARNER_ID, "physics-landscape");
+        verify(learningPlans, never()).switchPlan(eq(LEARNER_ID), any(), any());
+    }
+
+    @Test
+    void subjectSwitchDoesNotUseAnUnavailablePlanWithoutAPublishedContinuationCapability() {
+        LocalDate asOf = LocalDate.parse("2026-09-04");
+        when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(new LearnerPlanTodayStatus(
+                asOf,
+                true,
+                false,
+                List.of(new LearnerPlanTodayStatus.SubjectStatus(
+                        "physics-landscape", "Physik", 0, 0, 0, 0, false, false)),
+                new LearnerPlanTodayStatus.Totals(0, 0, 0, 0),
+                1));
+        when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
+                .thenThrow(new ResponseStatusException(HttpStatus.CONFLICT, "Stored plan is corrupt"));
+
+        assertThatThrownBy(() -> facade.switchLearningPlanSubject(LEARNER_ID, "de-DE", "Physik"))
+                .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
+                        assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
+
+        verify(learningPlans, never()).switchPlan(eq(LEARNER_ID), any(), any());
+        verify(learningPlans, never()).switchPersonalCurriculumSubject(eq(LEARNER_ID), any());
+    }
+
+    @Test
+    void subjectSwitchDoesNotTreatANameFromAnotherLocaleAsAPublishedPersonalSubject() {
+        when(learningPlans.getTodayStatus(LEARNER_ID, "en-GB")).thenReturn(status(
+                true,
+                new LearnerPlanTodayStatus.SubjectStatus(
+                        "physics-landscape", "Physics", 0, 0, 0, 0, false, true)));
+
+        assertThatThrownBy(() -> facade.switchLearningPlanSubject(LEARNER_ID, "en-GB", "Physik"))
+                .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
+                        assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
+
+        verify(learningPlans, never()).getPlan(eq(LEARNER_ID), any(), any());
+        verify(learningPlans, never()).switchPlan(eq(LEARNER_ID), any(), any());
+        verify(learningPlans, never()).switchPersonalCurriculumSubject(eq(LEARNER_ID), any());
+    }
+
+    @Test
+    void subjectSwitchNeverFallsBackForMalformedStoredPlansEvenWhenStale() {
+        LocalDate asOf = LocalDate.parse("2026-09-04");
+        when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status(
+                true,
+                new LearnerPlanTodayStatus.SubjectStatus(
+                        "physics-landscape", "Physik", 0, 0, 0, 0, false, true)));
+
+        for (LearnerLearningPlanApi.PlanDetail malformedPlan :
+                new LearnerLearningPlanApi.PlanDetail[] {
+                    null,
+                    planDetail(null, 9L, "physics-landscape", true),
+                    planDetail(UUID.randomUUID(), 9L, "other-landscape", true)
+                }) {
+            when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
+                    .thenReturn(malformedPlan);
+
+            assertThatThrownBy(() -> facade.switchLearningPlanSubject(LEARNER_ID, "de-DE", "Physik"))
+                    .isInstanceOfSatisfying(ResponseStatusException.class, exception -> {
+                        assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
+                        assertThat(exception.getReason()).doesNotContain("physics-landscape", "other-landscape");
+                    });
+        }
+
+        verify(learningPlans, never()).switchPlan(eq(LEARNER_ID), any(), any());
+        verify(learningPlans, never()).switchPersonalCurriculumSubject(eq(LEARNER_ID), any());
+    }
+
+    @Test
+    void subjectSwitchNeverFallsBackForPlanReadAuthorizationValidationOrServerFailures() {
+        LocalDate asOf = LocalDate.parse("2026-09-04");
+
+        for (HttpStatus failureStatus : List.of(
+                HttpStatus.BAD_REQUEST, HttpStatus.UNAUTHORIZED, HttpStatus.FORBIDDEN,
+                HttpStatus.CONFLICT, HttpStatus.INTERNAL_SERVER_ERROR, HttpStatus.SERVICE_UNAVAILABLE)) {
+            when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(new LearnerPlanTodayStatus(
+                    asOf,
+                    true,
+                    true,
+                    List.of(new LearnerPlanTodayStatus.SubjectStatus(
+                            "physics-landscape", "Physik", 0, 0, 0, 0, false, true)),
+                    new LearnerPlanTodayStatus.Totals(0, 0, 0, 0),
+                    failureStatus == HttpStatus.CONFLICT ? 0 : 1));
+            ResponseStatusException failure = new ResponseStatusException(
+                    failureStatus, "Internal plan detail: physics-landscape");
+            doThrow(failure).when(learningPlans)
+                    .getPlan(LEARNER_ID, "physics-landscape", asOf);
+
+            assertThatThrownBy(() -> facade.switchLearningPlanSubject(LEARNER_ID, "de-DE", "Physik"))
+                    .isInstanceOfSatisfying(ResponseStatusException.class, exception -> {
+                        if (failureStatus.is5xxServerError()) {
+                            assertThat(exception).isSameAs(failure);
+                        } else {
+                            assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
+                            assertThat(exception.getReason()).doesNotContain("physics-landscape");
+                        }
+                    });
+        }
+
+        verify(learningPlans, never()).switchPlan(eq(LEARNER_ID), any(), any());
+        verify(learningPlans, never()).switchPersonalCurriculumSubject(eq(LEARNER_ID), any());
+    }
+
+    @Test
+    void subjectSwitchChecksWriteAuthorizationBeforeResolvingPersonalSubjects() {
+        ResponseStatusException forbidden = new ResponseStatusException(HttpStatus.FORBIDDEN);
+        doThrow(forbidden).when(learnerService).assertWritableLearningSession(LEARNER_ID);
+
+        assertThatThrownBy(() -> facade.switchLearningPlanSubject(LEARNER_ID, "de-DE", "Physik"))
+                .isSameAs(forbidden);
+
+        verifyNoInteractions(learningPlans);
+        verify(learnerService, never()).acquireLearningPlanMutationLock(LEARNER_ID);
+    }
+
+    @Test
+    void personalSubjectSwitchRejectsNoopsAndMissingOrInconsistentActiveGoals() {
+        LocalDate asOf = LocalDate.parse("2026-09-04");
+        when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status(
+                true,
+                new LearnerPlanTodayStatus.SubjectStatus(
+                        "physics-landscape", "Physik", 0, 0, 0, 0, false, true)));
+        when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
+                .thenThrow(new ResponseStatusException(HttpStatus.NOT_FOUND));
+        UnifiedLearnerStateResponse activeState = stateWithActiveGoal("physics-goal");
+
+        for (LearnerLearningPlanApi.TransitionResponse invalidTransition :
+                new LearnerLearningPlanApi.TransitionResponse[] {
+                    null,
+                    personalCurriculumTransition(false, "physics-goal", activeState),
+                    personalCurriculumTransition(true, "physics-goal", null),
+                    personalCurriculumTransition(true, null, activeState),
+                    personalCurriculumTransition(true, " ", activeState),
+                    personalCurriculumTransition(true, "physics-goal", mock(UnifiedLearnerStateResponse.class)),
+                    personalCurriculumTransition(true, "different-goal", activeState)
+                }) {
+            when(learningPlans.switchPersonalCurriculumSubject(LEARNER_ID, "physics-landscape"))
+                    .thenReturn(invalidTransition);
+
+            assertThatThrownBy(() -> facade.switchLearningPlanSubject(LEARNER_ID, "de-DE", "Physik"))
+                    .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
+                            assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
+        }
+
+        verify(learningPlans, never()).switchPlan(eq(LEARNER_ID), any(), any());
+    }
+
+    @Test
+    void personalSubjectSwitchPreservesDomainRejectionAndServerFailureHandling() {
+        LocalDate asOf = LocalDate.parse("2026-09-04");
+        when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status(
+                true,
+                new LearnerPlanTodayStatus.SubjectStatus(
+                        "physics-landscape", "Physik", 0, 0, 0, 0, false, true)));
+        when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
+                .thenThrow(new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        for (HttpStatus failureStatus : List.of(HttpStatus.CONFLICT, HttpStatus.FORBIDDEN,
+                HttpStatus.SERVICE_UNAVAILABLE)) {
+            ResponseStatusException failure = new ResponseStatusException(
+                    failureStatus, "Internal subject detail: physics-landscape");
+            doThrow(failure).when(learningPlans)
+                    .switchPersonalCurriculumSubject(LEARNER_ID, "physics-landscape");
+
+            assertThatThrownBy(() -> facade.switchLearningPlanSubject(LEARNER_ID, "de-DE", "Physik"))
+                    .isInstanceOfSatisfying(ResponseStatusException.class, exception -> {
+                        if (failureStatus.is5xxServerError()) {
+                            assertThat(exception).isSameAs(failure);
+                        } else {
+                            assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
+                            assertThat(exception.getReason()).doesNotContain("physics-landscape");
+                        }
+                    });
+        }
+
+        verify(learningPlans, never()).switchPlan(eq(LEARNER_ID), any(), any());
     }
 
     @Test
@@ -188,6 +448,7 @@ class CoachToolFacadeLearningPlanTest {
 
         verify(learningPlans, never()).getPlan(eq(LEARNER_ID), any(), any());
         verify(learningPlans, never()).switchPlan(eq(LEARNER_ID), any(), any());
+        verify(learningPlans, never()).switchPersonalCurriculumSubject(eq(LEARNER_ID), any());
     }
 
     @Test
@@ -280,6 +541,14 @@ class CoachToolFacadeLearningPlanTest {
                 null,
                 false,
                 List.of());
+    }
+
+    private static LearnerLearningPlanApi.TransitionResponse personalCurriculumTransition(
+            boolean changed,
+            String activeGoalId,
+            UnifiedLearnerStateResponse state) {
+        return new LearnerLearningPlanApi.TransitionResponse(
+                null, null, "physics-landscape", "physics-focus", activeGoalId, changed, state);
     }
 
     private static UnifiedLearnerStateResponse stateWithActiveGoal(String goalId) {

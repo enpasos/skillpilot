@@ -884,8 +884,15 @@ fixed set of newly scheduled goal IDs. Actual completion events today, including
 due backlog goals, fill that subject's quota first; additional completions are
 voluntary extra progress. Subjects never offset each other's open quota.
 Automatic plan reconciliation and handoff stop when every daily quota is met;
-remaining plan work requires an explicit learner request. Preserve prerequisites
-and actual mastery. Never infer a completion date from `mastery.updated_at`, an
+further work requires an explicit learner request. **A plan guides and
+prioritizes learning; it must never prevent learning.** On an explicit request,
+prioritize reachable due work, then other reachable targets in the current
+Personal Curriculum, even without a daily quota, backlog, or usable schedule.
+Only completion of all personal targets is the normal end of learning; dates
+and quotas are not access gates. With remaining backlog, acknowledge today's
+success and invite catching up without pressure; do not foreground a pause or
+send a willing learner away until tomorrow. Keep a requested pause possible.
+Preserve prerequisites and actual mastery. Never infer a completion date from `mastery.updated_at`, an
 import, or a current mastery snapshot. Completion events are transactional,
 unique per learner/goal/Berlin day, and not historically backfilled. The exact
 counting, migration, and presentation contract is documented in

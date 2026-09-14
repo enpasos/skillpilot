@@ -107,8 +107,9 @@ public class LearnerLearningPlanService {
      * <p>The date is always derived in Europe/Berlin. Actual completion events
      * from all due goals (including backlog) fill each subject's daily quota
      * first. Additional completions are voluntary extra progress. Stale or
-     * malformed plans fail closed and are represented only by the anonymous
-     * unavailable-plan counter.</p>
+     * malformed plan counts fail closed and increment the anonymous
+     * unavailable-plan counter. Explicit continuation remains independently
+     * available for eligible goals in the current personal curriculum.</p>
      */
     @Transactional(readOnly = true)
     public LearnerPlanTodayStatus getTodayStatus(
@@ -124,11 +125,12 @@ public class LearnerLearningPlanService {
                         < MASTERY_THRESHOLD;
         List<LearnerPlanTodayStatus.SubjectStatus> subjects = new ArrayList<>();
         int unavailablePlanCount = 0;
-        boolean dailyResumeAvailable = false;
-        boolean extraResumeAvailable = false;
+        boolean resumeAvailable = false;
+        Set<String> representedSubjects = new HashSet<>();
 
-        for (LearnerLearningPlan plan : plans
-                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId)) {
+        List<LearnerLearningPlan> subjectPlans = plans
+                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId);
+        for (LearnerLearningPlan plan : subjectPlans) {
             Optional<TodaySubjectEvaluation> evaluation = todayStatus(
                     skillpilotId,
                     plan,
@@ -138,15 +140,32 @@ public class LearnerLearningPlanService {
                     activeGoalInProgress ? activeGoalId : null);
             if (evaluation.isPresent()) {
                 subjects.add(evaluation.get().status());
+                representedSubjects.add(plan.getLandscapeId());
                 if (!activeGoalInProgress && evaluation.get().resumeAvailable()) {
-                    if (evaluation.get().status().openToday() > 0) {
-                        dailyResumeAvailable = true;
-                    } else {
-                        extraResumeAvailable = true;
-                    }
+                    resumeAvailable = true;
                 }
             } else {
                 unavailablePlanCount++;
+            }
+        }
+
+        // A missing or stale schedule cannot revoke access to the current
+        // personal curriculum. Its invalid counts still remain unavailable.
+        if (enabled) {
+            for (String landscapeId : learners.getPersonalCurriculumSubjectIds(skillpilotId)) {
+                if (representedSubjects.contains(landscapeId)) {
+                    continue;
+                }
+                Optional<String> label = localizedSubjectLabel(landscapeId, communicationLocale);
+                if (label.isEmpty()) {
+                    continue;
+                }
+                boolean canContinue = firstPersonalCurriculumGoal(skillpilotId, landscapeId).isPresent();
+                subjects.add(new LearnerPlanTodayStatus.SubjectStatus(
+                        landscapeId, label.get(), 0, 0, 0, 0,
+                        activeGoalInProgress && landscapeId.equals(
+                                landscapeService.getLandscapeIdForGoal(activeGoalId)), canContinue));
+                resumeAvailable |= !activeGoalInProgress && canContinue;
             }
         }
 
@@ -159,10 +178,12 @@ public class LearnerLearningPlanService {
         return new LearnerPlanTodayStatus(
                 asOf,
                 enabled,
-                totals.openToday() > 0 ? dailyResumeAvailable : extraResumeAvailable,
+                resumeAvailable,
                 List.copyOf(subjects),
                 totals,
-                unavailablePlanCount);
+                unavailablePlanCount,
+                enabled && !activeGoalInProgress && firstCandidateAcrossPlans(
+                        skillpilotId, subjectPlans, asOf, learners.getMastery(skillpilotId), false).isPresent());
     }
 
     private Optional<TodaySubjectEvaluation> todayStatus(
@@ -210,7 +231,8 @@ public class LearnerLearningPlanService {
                         metrics.completedDueToday(),
                         metrics.openDueToday(),
                         openOverdue,
-                        activeGoalId != null && atomicIds(evaluation.blocks()).contains(activeGoalId),
+                        activeGoalId != null && (atomicIds(evaluation.blocks()).contains(activeGoalId)
+                                || plan.getLandscapeId().equals(landscapeService.getLandscapeIdForGoal(activeGoalId))),
                         enabled && summary.nextEligibleGoal() != null,
                         metrics.extraCompletedToday()),
                 summary.canContinue()));
@@ -287,13 +309,19 @@ public class LearnerLearningPlanService {
         LearnerLearningPlan plan = plans
                 .findByLearner_SkillpilotIdAndLandscapeId(skillpilotId, normalizedLandscapeId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Learning plan not found"));
-        Evaluation evaluation = summarize(
-                skillpilotId,
-                plan,
-                asOf(requestedAsOf),
-                Boolean.TRUE.equals(learner.getFollowLearningPlans()),
-                learner.getActiveGoalId());
-        return detail(evaluation.summary(), evaluation.blocks());
+        try {
+            Evaluation evaluation = summarize(
+                    skillpilotId,
+                    plan,
+                    asOf(requestedAsOf),
+                    Boolean.TRUE.equals(learner.getFollowLearningPlans()),
+                    learner.getActiveGoalId());
+            return detail(evaluation.summary(), evaluation.blocks());
+        } catch (IllegalStateException | NullPointerException exception) {
+            // Match today's unavailable-plan handling; a corrupt schedule must
+            // not prevent a separately authorized personal-curriculum fallback.
+            throw conflict("Stored learning plan cannot be evaluated");
+        }
     }
 
     @Transactional
@@ -561,8 +589,8 @@ public class LearnerLearningPlanService {
         LearnerLearningPlan plan = requireCurrentPlan(skillpilotId, planId, expectedRevision);
         List<LearnerLearningPlanApi.Block> blocks = requireCurrentBlocks(skillpilotId, plan);
         Map<String, Double> mastery = learners.getMastery(skillpilotId);
-        DueGoal dueGoal = firstEligibleDueGoal(skillpilotId, blocks, asOf, mastery)
-                .orElseThrow(() -> conflict("No open due atomic goal is currently on the learner frontier"));
+        DueGoal dueGoal = firstExplicitContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, asOf, mastery)
+                .orElseThrow(() -> conflict("No open personal-curriculum goal is currently on the learner frontier"));
         PlanGoalCandidate candidate = new PlanGoalCandidate(plan, dueGoal);
 
         LearnerService.LearningPlanTransitionResult transition =
@@ -594,6 +622,29 @@ public class LearnerLearningPlanService {
             String skillpilotId,
             LearnerLearningPlanApi.ReconcileRequest request) {
         return reconcileInternal(skillpilotId, request, true);
+    }
+
+    /** Subject-name resolution has already been authorized by the coach facade. */
+    @Transactional
+    public LearnerLearningPlanApi.TransitionResponse switchPersonalCurriculumSubject(
+            String skillpilotId, String landscapeId) {
+        learners.acquireLearningPlanMutationLock(skillpilotId);
+        if (!Boolean.TRUE.equals(learners.getLearner(skillpilotId).getFollowLearningPlans())
+                || !learners.getPersonalCurriculumSubjectIds(skillpilotId).contains(landscapeId)) {
+            throw conflict("Subject is not in the current personal curriculum");
+        }
+        DueGoal goal = firstPersonalCurriculumGoal(skillpilotId, landscapeId)
+                .orElseThrow(() -> conflict("No open personal-curriculum goal is currently on the learner frontier"));
+        return applyPersonalCurriculumContinuation(skillpilotId, landscapeId, goal,
+                "LEARNING_PLAN_SUBJECT_SWITCH");
+    }
+
+    private LearnerLearningPlanApi.TransitionResponse applyPersonalCurriculumContinuation(
+            String skillpilotId, String landscapeId, DueGoal goal, String changeType) {
+        var result = learners.applyLearningPlanTransition(skillpilotId, false, true,
+                goal.focusGoalId(), goal.atomicGoalId(), true, changeType);
+        return new LearnerLearningPlanApi.TransitionResponse(null, null, landscapeId,
+                goal.focusGoalId(), goal.atomicGoalId(), result.changed(), result.state());
     }
 
     private LearnerLearningPlanApi.TransitionResponse reconcileInternal(
@@ -633,6 +684,15 @@ public class LearnerLearningPlanService {
                 false,
                 allowExtra);
         boolean parkedCompletedPointer = previousActiveGoalId != null && !previousActiveGoalId.isBlank();
+        if (selected.isEmpty() && allowExtra) {
+            for (String landscapeId : learners.getPersonalCurriculumSubjectIds(skillpilotId)) {
+                Optional<DueGoal> goal = firstPersonalCurriculumGoal(skillpilotId, landscapeId);
+                if (goal.isPresent()) {
+                    return applyPersonalCurriculumContinuation(skillpilotId, landscapeId, goal.get(),
+                            "LEARNING_PLAN_RECONCILED");
+                }
+            }
+        }
         if (selected.isEmpty()) {
             LearnerService.LearningPlanTransitionResult transition = parkedCompletedPointer
                     ? learners.applyLearningPlanTransition(
@@ -694,8 +754,8 @@ public class LearnerLearningPlanService {
         List<LearnerLearningPlanApi.Block> blocks = requireCurrentBlocks(skillpilotId, plan);
         LocalDate asOf = requireCurrentMutationDate(request.asOf(), "continue");
         Map<String, Double> mastery = learners.getMastery(skillpilotId);
-        DueGoal selected = firstEligibleDueGoal(skillpilotId, blocks, asOf, mastery)
-                .orElseThrow(() -> conflict("No open due atomic goal is currently on the learner frontier"));
+        DueGoal selected = firstExplicitContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, asOf, mastery)
+                .orElseThrow(() -> conflict("No open personal-curriculum goal is currently on the learner frontier"));
 
         learners.assertLearningPlanMayActivateGoal(skillpilotId, selected.atomicGoalId());
         learners.setPlannedGoalsAndGetState(skillpilotId, Set.of(selected.focusGoalId()));
@@ -874,6 +934,7 @@ public class LearnerLearningPlanService {
             boolean allowExtra) {
         List<PlanGoalCandidate> candidates = new ArrayList<>();
         List<PlanGoalCandidate> extras = new ArrayList<>();
+        List<PlanGoalCandidate> furtherLearning = new ArrayList<>();
         Set<String> completions = learners.getGoalCompletionsOnDate(skillpilotId, asOf).keySet();
         for (LearnerLearningPlan plan : candidatePlans) {
             try {
@@ -882,9 +943,13 @@ public class LearnerLearningPlanService {
                 if (quotaComplete && !allowExtra) {
                     continue;
                 }
-                firstEligibleDueGoal(skillpilotId, blocks, asOf, mastery)
-                        .ifPresent(dueGoal -> (quotaComplete ? extras : candidates)
-                                .add(new PlanGoalCandidate(plan, dueGoal)));
+                Optional<DueGoal> due = firstEligibleDueGoal(skillpilotId, blocks, asOf, mastery);
+                if (due.isPresent()) {
+                    (quotaComplete ? extras : candidates).add(new PlanGoalCandidate(plan, due.get()));
+                } else if (allowExtra) {
+                    firstExplicitContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, asOf, mastery)
+                            .ifPresent(goal -> furtherLearning.add(new PlanGoalCandidate(plan, goal)));
+                }
             } catch (ResponseStatusException exception) {
                 if (failOnInvalidPlan || exception.getStatusCode().is5xxServerError()) {
                     throw exception;
@@ -895,7 +960,7 @@ public class LearnerLearningPlanService {
                 }
             }
         }
-        return (candidates.isEmpty() && allowExtra ? extras : candidates)
+        return (!candidates.isEmpty() ? candidates : !extras.isEmpty() ? extras : furtherLearning)
                 .stream().min(planCandidateComparator());
     }
 
@@ -951,7 +1016,7 @@ public class LearnerLearningPlanService {
         LearnerLearningPlanApi.Metrics metrics = dailyMetrics(blocks, asOf, mastery,
                 learners.getGoalCompletionsOnDate(skillpilotId, asOf).keySet());
         Optional<DueGoal> eligible = !stale
-                ? firstEligibleDueGoal(skillpilotId, blocks, asOf, mastery)
+                ? firstExplicitContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, asOf, mastery)
                 : Optional.empty();
         boolean blockedByActiveGoal = eligible
                 .map(next -> isBlockingActiveGoal(activeGoalId, next.atomicGoalId(), mastery))
@@ -1075,6 +1140,31 @@ public class LearnerLearningPlanService {
                         .filter(goal -> "atomic".equals(goal.type()))
                         .map(FrontierGoal::id)
                         .collect(java.util.stream.Collectors.toSet()));
+    }
+
+    private Optional<DueGoal> firstPersonalCurriculumGoal(String skillpilotId, String landscapeId) {
+        return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
+                .filter(goal -> "atomic".equals(goal.type()))
+                .findFirst().map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
+    }
+
+    /** A schedule orders explicit further learning; dates never deny it. */
+    private Optional<DueGoal> firstExplicitContinuationGoal(
+            String skillpilotId, String landscapeId, List<LearnerLearningPlanApi.Block> blocks,
+            LocalDate asOf, Map<String, Double> mastery) {
+        Optional<DueGoal> due = firstEligibleDueGoal(skillpilotId, blocks, asOf, mastery);
+        if (due.isPresent()) {
+            return due;
+        }
+        // Reuse the exact block-focus frontier with all scheduled slots exposed.
+        // This changes selection only, never dates, quota counts or completion events.
+        LocalDate scheduleEnd = blocks.stream().filter(block -> "learning".equals(block.kind()))
+                .map(LearnerLearningPlanApi.Block::endDate).max(LocalDate::compareTo).orElse(asOf);
+        Optional<DueGoal> planned = firstEligibleDueGoal(skillpilotId, blocks, scheduleEnd, mastery);
+        if (planned.isPresent()) {
+            return planned;
+        }
+        return firstPersonalCurriculumGoal(skillpilotId, landscapeId);
     }
 
     static Optional<DueGoal> firstEligibleDueGoal(
@@ -1685,7 +1775,7 @@ public class LearnerLearningPlanService {
                     plan.getBlocksJson(),
                     BLOCK_LIST_TYPE);
             return blocks == null ? List.of() : List.copyOf(blocks);
-        } catch (JsonProcessingException exception) {
+        } catch (JsonProcessingException | NullPointerException exception) {
             throw conflict("Stored learning-plan blocks are invalid");
         }
     }

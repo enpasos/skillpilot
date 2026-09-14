@@ -18,15 +18,15 @@ test("validates the checked-in Claude plugin package", () => {
   assert.deepEqual(validateClaudePluginPackage(packageRoot), { errors: [], toolCount: 14 });
 });
 
-test("rejects a replacement candidate version other than 1.1.5", () => {
+test("rejects a replacement candidate version other than 1.1.6", () => {
   withPackageCopy((root) => {
     mutate(root, ".claude-plugin/plugin.json", (value) => value.replace(
-      '"version": "1.1.5"',
+      '"version": "1.1.6"',
       '"version": "1.0.4"',
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /replacement candidate must be version 1\.1\.5/u,
+      /replacement candidate must be version 1\.1\.6/u,
     );
   });
 });
@@ -101,6 +101,16 @@ for (const [name, owner, original, unsafeReplacement, invariant] of [
   ["starting an exercise on a status request", "skill", "do not resume, switch,\n  activate a goal or set a task", "resume and start a task", "intent-priority"],
   ["resuming a different subject before an explicit choice", "skill", "without first\n  resuming another subject", "after first resuming another subject", "intent-priority"],
   ["ignoring backend resume availability", "skill", "\x60resumeAvailable=true\x60", "\x60resumeAvailable=false\x60", "guarded-resume"],
+  ["automatically resuming a voluntary-only candidate", "skill", "Automatic resume additionally requires \x60guidance.state=resume\x60", "Automatic resume only requires \x60resumeAvailable=true\x60", "guarded-resume"],
+  ["blocking explicit resume at daily completion", "skill", "permits resume at \x60guidance.state=complete\x60", "forbids resume at \x60guidance.state=complete\x60", "guarded-resume"],
+  ["blocking explicit resume under blocked plan guidance", "skill", "\x60guidance.state=complete\x60, \x60blocked\x60 or\n  \x60unavailable\x60", "\x60guidance.state=complete\x60 only", "guarded-resume"],
+  ["discarding an active unmastered goal", "skill", "With an active unmastered goal,\n  teach it directly", "With an active unmastered goal, deny further learning", "guarded-resume"],
+  ["making plans a learning ban", "skill", "it must never prevent learning", "it may prevent learning", "plan-never-blocks-learning"],
+  ["treating empty backlog or an exhausted plan as a ban", "skill", "calendar, empty backlog or exhausted plan is never a learning ban", "calendar, empty backlog or exhausted plan prevents learning", "plan-never-blocks-learning"],
+  ["treating daily counts as capability authority", "skill", "authority for these actions, never plan counts", "authority only while plan counts remain positive", "plan-never-blocks-learning"],
+  ["allowing arbitrary goals or prerequisite bypass", "skill", "Never invent goals or bypass prerequisites", "Invent goals or bypass prerequisites", "plan-never-blocks-learning"],
+  ["ending content when only the plan is complete", "skill", "Only completion of\nthe whole Personal Curriculum ends its learning content", "Completion of the daily plan ends its learning content", "plan-never-blocks-learning"],
+  ["rejecting a subject from its daily counters", "skill", "without deriving it from counts", "using its daily counts", "subject-choice"],
   ["normalizing the subject argument", "skill", "copying its \x60subject\x60 exactly", "sending a guessed subject alias", "subject-choice"],
   ["asking an unchanged unavailable subject again", "skill", "Do not retry the rejected switch", "Retry the rejected switch", "subject-choice"],
   ["marking a parked goal complete on subject change", "skill", "previous goal is parked, not\ncompleted", "previous goal is automatically completed", "subject-choice"],
@@ -108,11 +118,14 @@ for (const [name, owner, original, unsafeReplacement, invariant] of [
   ["repeating backlog reminders in ordinary turns", "skill", "subject counters only when requested", "subject counters on every teaching turn", "compact-summary"],
   ["counting one subject's extra toward another", "skill", "extras never offset another subject's quota", "extras fill another subject's quota", "quota-accuracy"],
   ["presenting unevaluable plans as zero workload", "skill", "unavailable instead of “0 of 0”", "“0 of 0 done”", "quota-accuracy"],
-  ["automatically assigning extra after the daily quota", "skill", "requires an explicit request for voluntary extra", "happens automatically after quota completion", "daily-guidance"],
-  ["letting a subject request bypass the completed daily quota", "skill", "governs subject requests and already\nactive goals", "governs only already active goals", "daily-complete-precedence"],
-  ["continuing an active goal without voluntary extra after the daily quota", "skill", "governs subject requests and already\nactive goals", "governs only subject requests", "daily-complete-precedence"],
-  ["reversing daily completion precedence over subject and active-goal requests", "skill", "guard also governs subject requests", "guard does not govern subject requests", "daily-complete-precedence"],
-  ["claiming blocked plans complete", "skill", "without\nclaiming completion", "while claiming completion", "daily-guidance"],
+  ["automatically assigning extra after the daily quota", "skill", "requires an explicit request\nfor voluntary extra", "happens automatically after quota completion", "daily-guidance"],
+  ["foregrounding pauses despite a catch-up opportunity", "skill", "keep\npausing possible without foregrounding it", "strongly recommend a pause", "daily-guidance"],
+  ["pressuring the learner to clear backlog", "skill", "without guilt or pressure", "using guilt and pressure", "daily-guidance"],
+  ["treating an ambiguous subject mention as extra-learning consent", "skill", "A subject request without clear learning intent needs clarification", "Any subject mention permits extra learning", "daily-complete-precedence"],
+  ["stopping an unfinished active goal at the daily quota", "skill", "not teaching an\nactive unfinished goal", "and teaching an active unfinished goal", "daily-complete-precedence"],
+  ["blocking explicit learning after the daily quota", "skill", "It never blocks explicitly requested learning", "It blocks explicitly requested learning", "daily-complete-precedence"],
+  ["asking permission again after explicit continuation", "skill", "already expresses that intent; do not ask\nagain", "needs another confirmation", "daily-complete-precedence"],
+  ["claiming blocked plans complete", "skill", "without claiming completion", "while claiming completion", "daily-guidance"],
   ["lowering ordinary evidence to a guided answer", "skill", "two independent checks", "one heavily guided answer", "ordinary-evidence"],
   ["choosing the successor in a completion write", "skill", "backend alone selects its successor", "coach selects its successor", "ordinary-evidence"],
   ["testing subject knowledge in orientation", "skill", "Do not test knowledge or correctness", "Test knowledge and correctness", "orientation-not-assessment"],
@@ -256,15 +269,15 @@ test("rejects loss of same-server coexistence and custom-connector boundaries", 
   });
 });
 
-test("rejects conflation of historical observations with 1.1.5 acceptance", () => {
+test("rejects conflation of historical observations with 1.1.6 acceptance", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
       /Earlier packages were\s+observed in paid Claude Web chat and, after account-level direct installation\s+on Claude Pro, in the native Claude app on Android/u,
-      "The 1.1.5 package already passed every exact-client check",
+      "The 1.1.6 package already passed every exact-client check",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /distinguish historical observations from pending 1\.1\.5 exact-candidate acceptance/u,
+      /distinguish historical observations from pending 1\.1\.6 exact-candidate acceptance/u,
     );
   });
 });

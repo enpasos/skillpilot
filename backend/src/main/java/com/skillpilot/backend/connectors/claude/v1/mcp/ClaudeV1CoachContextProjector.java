@@ -239,7 +239,7 @@ public class ClaudeV1CoachContextProjector {
             subject.put("subject", entry.getKey());
             subject.put("current", hasActiveGoal && value.current());
             subject.put("canContinue", status.followLearningPlans() && value.planCount() == 1
-                    && value.canContinue() && (counts.openToday() > 0 || counts.openOverdue() > 0));
+                    && value.canContinue());
             subject.putAll(dailyCounts(
                     counts.dueToday(),
                     counts.completedToday(),
@@ -264,12 +264,13 @@ public class ClaudeV1CoachContextProjector {
                 "resumeAvailable",
                 status.followLearningPlans() && status.resumeAvailable() && !hasActiveGoal);
         projected.put("unavailablePlanCount", unavailablePlanCount);
-        boolean canResume = Boolean.TRUE.equals(projected.get("resumeAvailable"));
+        boolean canAutomaticallyResume = Boolean.TRUE.equals(projected.get("resumeAvailable"))
+                && status.automaticResumeAvailable();
         String guidanceState = !status.followLearningPlans() ? "paused"
                 : hasActiveGoal ? "continue"
                 : status.asOf() == null || subjects.isEmpty() ? "unavailable"
                 : totals.openToday() == 0 ? unavailablePlanCount > 0 ? "unavailable" : "complete"
-                : canResume ? "resume" : "blocked";
+                : canAutomaticallyResume ? "resume" : "blocked";
         projected.put("guidance", dailyPlanGuidance(guidanceState));
         return Map.copyOf(projected);
     }
@@ -283,21 +284,33 @@ public class ClaudeV1CoachContextProjector {
                     + "for confirmation. A clear subject request takes priority: use its exact published subject "
                     + "with canContinue=true instead of a preliminary generic resume. For a status-only question "
                     + "or pause, report the status without starting a goal.";
-            case "complete" -> "Today's quota is fulfilled in every evaluated subject. Celebrate that progress "
-                    + "and offer to stop or do voluntary extra learning. If dueToday=0, say there is no fixed quota "
+            case "complete" -> "Today's quota is fulfilled in every evaluated subject. Celebrate that progress. "
+                    + "If openOverdue is positive, emphasize the opportunity to catch up without pressure or guilt; "
+                    + "do not foreground a break. Otherwise offer optional further learning or a break. "
+                    + "If dueToday=0, say there is no fixed quota "
                     + "today instead of claiming work was completed. Extra learning requires an explicit request, "
-                    + "even when resumeAvailable=true. Do not automatically resume, select future goals, widen "
+                    + "even when resumeAvailable=true. A request to continue, catch up or learn a named subject "
+                    + "is sufficient; use the published resumeAvailable or canContinue capability without another "
+                    + "confirmation. Zero openToday or openOverdue counts never revoke that capability. "
+                    + "Learning plans prioritize work and never limit learning within the Personal Curriculum. "
+                    + "Do not automatically resume, select future goals, widen "
                     + "focus or redirect to the Web app. Remaining backlog is not required today; neither the "
                     + "entire plan nor all backlog is necessarily finished.";
-            case "blocked" -> "Some due goals remain open, but none can currently be started. Do not call today "
-                    + "complete, invent a goal or offer the same unavailable subject again. Explain this briefly "
-                    + "and suggest that the teacher check the plan; do not make the learner repair it in the Web app.";
+            case "blocked" -> "Some scheduled goals remain open, but no due target can currently be started "
+                    + "automatically. Do not call today complete or automatically resume extra work. "
+                    + "An explicit learning request may still use published resumeAvailable or canContinue "
+                    + "capabilities for eligible personal targets; the plan prioritizes work and never limits learning. "
+                    + "If no learning capability is available, explain the current prerequisite obstacle briefly. "
+                    + "Any plan correction belongs to the teacher; do not make the learner repair it in the Web app.";
             case "paused" -> "Automatic plan guidance is off. Do not automatically resume a plan. "
                     + "For a normal learning request, continue the regular authoritative active goal or frontier. "
                     + "For a status-only question or an explicit pause, do not start a new exercise.";
             default -> "The full daily workload cannot currently be confirmed. Report only the available "
-                    + "subject counts, do not claim today is complete, and suggest that the teacher check the "
-                    + "plan. Do not send the learner through plan configuration.";
+                    + "subject counts and do not claim today is complete. Learning plans prioritize work and "
+                    + "never limit learning within the Personal Curriculum. For an explicit learning request, "
+                    + "use published resumeAvailable or canContinue capabilities even if a plan is missing or "
+                    + "outdated; the backend selects an eligible personal target. Any plan correction can be "
+                    + "handled separately by the teacher. Do not send the learner through plan configuration.";
         };
         return Map.of("state", state, "instruction", instruction);
     }

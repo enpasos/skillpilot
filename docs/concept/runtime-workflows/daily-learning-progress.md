@@ -1,6 +1,6 @@
 # Tagesfortschritt: zuerst das Tagespensum, danach freiwillig mehr
 
-Stand: 11. September 2026. Diese Norm gilt für die persönlichen Fachpläne im
+Stand: 14. September 2026. Diese Norm gilt für die persönlichen Fachpläne im
 Cockpit und ihre sichere Projektion für die SkillPilot-Coaches. Das Backend
 berechnet die Zahlen; Oberfläche und Coach stellen sie dar. Fachliche
 Mastery-Entscheidungen und Voraussetzungen ändern sich dadurch nicht.
@@ -22,10 +22,16 @@ außerhalb dieses Pensums vor. Die bearbeiteten Ziele dürfen ältere Ziele sein
 | 2 | 2 von 2 geschafft | 0 | 3 |
 | 3 | 2 von 2 geschafft | 1 | 2 |
 
+**Ein Plan leitet und priorisiert das Lernen; er darf Lernen niemals sperren.**
 Die erste Priorität ist ein erreichbares Tagesziel. Nach dessen Erfüllung
-würdigt der Coach den Erfolg und bietet eine Pause oder freiwilliges
-Weiterlernen an. Weitere offene Planziele bleiben einsehbar, werden aber nicht
-als zusätzliche Pflicht an jede Fortschrittsmeldung angehängt.
+würdigt der Coach den Erfolg. Besteht noch Rückstand, lädt er vorrangig dazu ein,
+die Motivation zum Aufholen zu nutzen, ohne Druck oder Schuldgefühle zu erzeugen.
+Zum Beispiel: „Dein Tagesziel ist geschafft. Wenn du weiterlernen möchtest,
+können wir jetzt eines der offenen Matheziele nachholen.“ Eine gewünschte Pause
+bleibt möglich, wird bei Rückstand aber nicht in den Vordergrund gestellt.
+Weitere offene Planziele werden nicht als zusätzliche Pflicht an jede
+Fortschrittsmeldung angehängt. Ein ausdrücklicher Lernwunsch wird umgesetzt,
+nicht mit „für heute fertig“ oder „morgen wieder“ abgewiesen.
 
 Ein Tag ohne vorgesehenes Pensum, etwa ein Wochenende, heißt „Heute kein festes
 Pensum“, nicht „Alles geschafft“. Freiwillige Abschlüsse an diesem Tag sind
@@ -73,8 +79,9 @@ Ein Abschluss wird nicht gleichzeitig vom Tagespensum und vom Restbudget
 abgezogen. Erst Zusatzarbeit reduziert dieses verbleibende Budget.
 
 Die Terminverteilung und die Zielreihenfolge bleiben unverändert. Auswahl und
-Wechsel verwenden weiterhin nur gültige Pläne und die normale `requires`-
-Frontier. Ein noch nicht fälliges Ziel oder ein Ziel eines anderen Fachs
+Wechsel verwenden die normale `requires`-Frontier des aktuellen persönlichen
+Curriculums. Ein Plan priorisiert diese Auswahl, beschränkt aber nicht den
+Zugang zu weiteren erreichbaren persönlichen Zielen. Ein noch nicht fälliges Ziel oder ein Ziel eines anderen Fachs
 erfüllt die Quote dieses Plans nicht. Überlappende Blöcke zählen eine Ziel-ID
 nur einmal. Ungültige oder veraltete Pläne liefern keine vermeintlich sicheren
 Zahlen und verhindern eine uneingeschränkte Aussage „alles geschafft“.
@@ -137,11 +144,20 @@ Matheziel allein wegen des Restbudgets. Ist Physik blockiert, wird der Blocker
 nicht durch ungefragte Mathe-Zusatzarbeit verdeckt.
 
 Nach erfüllten Quoten bleibt die automatische Auswahl leer. Die explizite
-Fortsetzungsaktion `resumeExplicitly` und die bewusste Fächerauswahl können
-weitere bereits fällige Frontier-Ziele aktivieren. Die technischen Guards
-für Zustand, Planrevision, Prüfungen, Session und Berechtigung bleiben erhalten.
-Eine ausdrückliche Bitte um Zusatzarbeit berechtigt nicht zu beliebigen
-zukünftigen Zielen oder zu einer Umgehung der Voraussetzungen.
+Fortsetzungsaktion `resumeExplicitly` und die bewusste Fächerauswahl priorisieren
+erreichbare fällige Ziele, danach weitere erreichbare Planziele und schließlich
+die übrige Frontier des aktuellen persönlichen Fachcurriculums. Künftige
+Termine, ein erschöpfter Plan, ein fehlendes Tagespensum oder fehlender
+Rückstand sind keine Sperren. Auch ohne gültigen Terminplan bleiben aktuelle
+persönliche Ziele erreichbar; ungültige Planwerte werden dabei nicht als
+verlässliche Tageszahlen ausgegeben und der alte Plan wird nicht umgeschrieben.
+Nur wenn sämtliche Ziele im persönlichen Curriculum erreicht sind, ist der
+reguläre Lernweg abgeschlossen. Eine leere Frontier allein beweist das nicht:
+fachliche oder technische Hindernisse werden als solche benannt, nicht als
+Tagesende. Die technischen Guards für Zustand, Planrevision (bei vorhandenem
+gültigem Plan), Prüfungen, Session und Berechtigung bleiben erhalten.
+Eine ausdrückliche Bitte um Zusatzarbeit hebt weder Voraussetzungen noch
+die Grenzen des persönlichen Curriculums auf.
 
 Im Chat setzt der Provideradapter die Tagesanweisung bei erfüllter Quote ohne
 aktives Ziel auf `complete`, auch wenn `resumeAvailable=true` als Fähigkeit
@@ -149,6 +165,14 @@ für freiwilliges Weiterlernen vorliegt. Fähigkeit ist keine Aufforderung.
 Ein bereits aktiviertes, unfertiges Ziel bleibt normal bearbeitbar.
 Statusfragen oder eine Pause starten auch weiterhin weder eine Aufgabe noch
 eine Visualisierung oder eine Mutation.
+
+`resumeAvailable` und die fachweise Fähigkeit `canContinue` beschreiben
+ausdrückliches Weiterlernen, unabhängig von Tages- oder Rückstandszahlen.
+Das interne, nicht an den Coach ausgegebene `automaticResumeAvailable` wird
+separat aus tatsächlich erreichbarer fälliger Arbeit bei offenem Tagespensum
+berechnet. Nur diese engere Fähigkeit erlaubt `guidance.state=resume` und
+damit automatische Fortsetzung. Ausweichziele bei blockiertem Tagespensum
+bleiben auf Wunsch erreichbar, starten aber nicht ungefragt.
 
 ## Schnittstelle und Vorschau
 
@@ -183,7 +207,8 @@ Die Regressionen umfassen unter anderem:
   Schwellenübertritt, Retry/Reset, Importe, Zeitzone und Migration;
 - `LearnerLearningPlanServiceIntegrationTest`, `LearnerServiceTest` und
   `CoachToolFacadeLearningPlanTest`: gleicher Tagesstand, automatische
-  Stopps, Fachwechsel, ausdrückliche Zusatzarbeit und Vorschau;
+  Stopps, Fachwechsel, ausdrückliche Zusatzarbeit, künftige Ziele, erschöpfte
+  oder fehlende Pläne, persönliche Grenzen, Voraussetzungen und Vorschau;
 - OpenAI-/Claude-Contracttests: sichere Zahlen und passende Fortsetzung;
 - App-API-, Komponenten- und Browsertests: sichtbare Fortschrittsanzeige,
   Erfolgsmeldung, freiwilliger Klick und ehrliche Historienbeschriftung.

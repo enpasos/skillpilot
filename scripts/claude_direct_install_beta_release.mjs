@@ -15,6 +15,7 @@ import { tmpdir } from "node:os";
 import { dirname, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildClaudePluginPackage } from "../ai/claude/plugin/skillpilot-coach-v1/build-package.mjs";
+import { verifyHistoricalReleaseHistory } from "./check_claude_plugin_v1_release.mjs";
 
 const scriptPath = fileURLToPath(import.meta.url);
 const defaultRepositoryRoot = resolve(dirname(scriptPath), "..");
@@ -1014,8 +1015,9 @@ export function prepareClaudeDirectInstallBetaPublication({
   repositoryRoot = defaultRepositoryRoot,
   preparedAt = new Date().toISOString(),
   buildPackage = buildClaudePluginPackage,
+  candidateOnly = false,
 } = {}) {
-  const paths = releasePaths(repositoryRoot);
+  const paths = releasePaths(repositoryRoot, candidateOnly);
   const lane = loadDirectInstallBetaLane(repositoryRoot);
   assertCandidatePreparationReady(lane);
   const manifest = loadPluginManifest(paths.manifestPath, lane);
@@ -1037,6 +1039,10 @@ export function prepareClaudeDirectInstallBetaPublication({
     validateClaudePluginPublicationIndex(index, lane, manifest);
 
     const versionRoot = resolve(paths.publicationRoot, lane.plugin.id, manifest.version);
+    if (candidateOnly) {
+      assertVersionNotRebound(resolve(releasePaths(repositoryRoot).publicationRoot,
+        lane.plugin.id, manifest.version), built.sha256);
+    }
     assertVersionNotRebound(versionRoot, built.sha256);
     const artifactPath = resolve(
       versionRoot,
@@ -1063,13 +1069,34 @@ export function prepareClaudeDirectInstallBetaPublication({
 export function verifyClaudeDirectInstallBetaPublication({
   repositoryRoot = defaultRepositoryRoot,
   buildPackage = buildClaudePluginPackage,
+  candidateOnly = false,
 } = {}) {
-  const paths = releasePaths(repositoryRoot);
-  const lane = loadDirectInstallBetaLane(repositoryRoot);
+  const paths = releasePaths(repositoryRoot, candidateOnly);
+  let lane = loadDirectInstallBetaLane(repositoryRoot);
   assertCandidatePreparationReady(lane);
-  const manifest = loadPluginManifest(paths.manifestPath, lane);
+  let manifest = loadPluginManifest(paths.manifestPath, lane);
   assertRegularFile(paths.indexPath, "Claude plugin publication index");
   const index = readJson(paths.indexPath, "Claude plugin publication index");
+  const indexedVersion = index.plugins?.[0]?.version;
+  const historical = !candidateOnly && indexedVersion !== manifest.version;
+  if (historical) {
+    // A locally prepared successor must not replace the currently served release.
+    // Historical bytes are verified against their immutable dossier, never rebuilt
+    // from a newer candidate's source or rebound to its approvals.
+    assertSemanticVersion(indexedVersion, "indexed historical version");
+    verifyHistoricalReleaseHistory(repositoryRoot, (condition, message) => {
+      if (!condition) throw new Error(message);
+    });
+    const historyRoot = resolveWithin(repositoryRoot,
+      `${packageRelativeRoot}/release/history/${indexedVersion}`, "historical release");
+    lane = readJson(resolve(historyRoot, "direct-install-beta.json"), "historical direct-install lane");
+    validateDirectInstallBetaLane(lane);
+    const baseline = readJson(resolve(historyRoot, "contract-baseline.json"), "historical contract baseline");
+    assertEqual(baseline.pluginVersion, indexedVersion, "historical baseline version");
+    assertEqual(baseline.archive?.sha256, lane.candidate.sha256, "historical archive SHA-256");
+    assertEqual(baseline.archive?.bytes, index.plugins[0].bytes, "historical archive byte length");
+    manifest = { name: lane.plugin.id, version: indexedVersion };
+  }
   const plugin = validateClaudePluginPublicationIndex(index, lane, manifest);
   const artifactPath = resolve(
     paths.publicationRoot,
@@ -1084,18 +1111,20 @@ export function verifyClaudeDirectInstallBetaPublication({
   assertEqual(storedBytes.length, plugin.bytes, "stored plugin byte length");
   assertEqual(sha256(storedBytes), plugin.sha256, "stored plugin SHA-256");
 
-  const built = buildCurrentPackage({ paths, buildPackage });
-  try {
-    assertEqual(built.bytes.length, plugin.bytes, "rebuilt plugin byte length");
-    assertEqual(built.sha256, plugin.sha256, "rebuilt plugin SHA-256");
-    if (!storedBytes.equals(built.bytes)) {
-      throw new Error(
-        "Rebuilt Claude plugin bytes do not match the published immutable artifact.",
-      );
+  if (!historical) {
+    const built = buildCurrentPackage({ paths, buildPackage });
+    try {
+      assertEqual(built.bytes.length, plugin.bytes, "rebuilt plugin byte length");
+      assertEqual(built.sha256, plugin.sha256, "rebuilt plugin SHA-256");
+      if (!storedBytes.equals(built.bytes)) {
+        throw new Error(
+          "Rebuilt Claude plugin bytes do not match the published immutable artifact.",
+        );
+      }
+      assertEqual(built.sha256, lane.candidate.sha256, "rebuilt candidate SHA-256");
+    } finally {
+      built.cleanup();
     }
-    assertEqual(built.sha256, lane.candidate.sha256, "rebuilt candidate SHA-256");
-  } finally {
-    built.cleanup();
   }
 
   return {
@@ -1234,13 +1263,13 @@ export async function verifyPublicClaudeDirectInstallBetaPublication({
   };
 }
 
-function releasePaths(repositoryRoot) {
+function releasePaths(repositoryRoot, candidateOnly = false) {
   const root = resolve(repositoryRoot);
   const packageRoot = resolveWithin(root, packageRelativeRoot, "Claude plugin root");
   const manifestPath = resolveWithin(root, manifestRelativePath, "Claude plugin manifest");
   const publicationRoot = resolveWithin(
     root,
-    expectedPublicationRoot,
+    candidateOnly ? "tmp/claude-direct-install-beta" : expectedPublicationRoot,
     "Claude plugin publication root",
   );
   return {
@@ -1832,11 +1861,13 @@ async function main() {
   const command = process.argv[2];
   if (
     command !== "prepare" &&
+    command !== "prepare-candidate" &&
     command !== "verify" &&
+    command !== "verify-candidate" &&
     command !== "verify-public"
   ) {
     throw new Error(
-      "Usage: node scripts/claude_direct_install_beta_release.mjs <prepare|verify|verify-public> [base-url]",
+      "Usage: node scripts/claude_direct_install_beta_release.mjs <prepare-candidate|verify-candidate|prepare|verify|verify-public> [base-url]",
     );
   }
   if (command === "verify-public") {
@@ -1852,9 +1883,9 @@ async function main() {
     return;
   }
   const result =
-    command === "prepare"
-      ? prepareClaudeDirectInstallBetaPublication()
-      : verifyClaudeDirectInstallBetaPublication();
+    command.startsWith("prepare")
+      ? prepareClaudeDirectInstallBetaPublication({ candidateOnly: command === "prepare-candidate" })
+      : verifyClaudeDirectInstallBetaPublication({ candidateOnly: command === "verify-candidate" });
   console.log(
     `CHECK claude_direct_install_beta ${command.toUpperCase()} version=${result.version} bytes=${result.bytes} sha256=${result.sha256}`,
   );

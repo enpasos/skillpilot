@@ -986,6 +986,93 @@ public class LearnerServiceTest {
     }
 
     @Test
+    void explicitFurtherLearningStartsFuturePlanAndKeepsPrerequisitesAndScopeIntact() {
+        prepareRepresentationLearningPlan();
+        LocalDate today = learnerLearningPlanService.getTodayStatus(learnerId, "de").asOf();
+        replaceRepresentationLearningPlanSchedule(today.plusDays(1), today.plusDays(7),
+                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID, CANONICAL_CREATE_REPRESENTATION_ID));
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, null, null, true);
+        var plan = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today);
+        var masteryBefore = learnerService.getMastery(learnerId);
+        var personalBefore = learnerRepository.findById(learnerId).orElseThrow().getPersonalCurriculum();
+
+        assertThat(learnerService.getPersonalCurriculumSubjectIds(learnerId))
+                .containsExactly(CANONICAL_MATH_LANDSCAPE_ID);
+        var frontier = learnerService.getPersonalCurriculumSubjectFrontier(learnerId, CANONICAL_MATH_LANDSCAPE_ID);
+        assertThat(frontier).extracting(FrontierGoal::id)
+                .contains(CANONICAL_MATH_SEK_ONE_ORIENTATION_ID)
+                .doesNotContain(CANONICAL_CREATE_REPRESENTATION_ID);
+        // The wider personal scope prioritizes an orientation. The scheduled
+        // block still has an eligible goal and must retain selection priority.
+        assertThat(learnerService.getUncompactedRichFrontierForFocus(
+                learnerId, List.of(CANONICAL_REPRESENTATION_CLUSTER_ID)))
+                .extracting(FrontierGoal::id).contains(CANONICAL_CHOOSE_REPRESENTATION_ID)
+                .doesNotContain(CANONICAL_CREATE_REPRESENTATION_ID);
+        assertThatThrownBy(() -> learnerService.getPersonalCurriculumSubjectFrontier(
+                learnerId, CANONICAL_PHYSICS_LANDSCAPE_ID)).isInstanceOf(ResponseStatusException.class);
+        var status = learnerLearningPlanService.getTodayStatus(learnerId, "de");
+        assertThat(status.totals().dueToday()).isZero();
+        assertThat(status.totals().openOverdue()).isZero();
+        assertThat(status.resumeAvailable()).isTrue();
+        assertThat(status.automaticResumeAvailable()).isFalse();
+        assertThat(learnerLearningPlanService.reconcile(learnerId,
+                new LearnerLearningPlanApi.ReconcileRequest(today)).changed()).isFalse();
+
+        var continued = learnerLearningPlanService.resumeExplicitly(learnerId,
+                new LearnerLearningPlanApi.ReconcileRequest(today));
+
+        assertThat(continued.changed()).isTrue();
+        assertThat(continued.state().activeGoal().id()).isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(learnerService.getMastery(learnerId)).isEqualTo(masteryBefore);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getPersonalCurriculum())
+                .isEqualTo(personalBefore);
+        assertThat(learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today).blocks())
+                .isEqualTo(plan.blocks());
+    }
+
+    @Test
+    void explicitFurtherLearningLeavesCompletedPlanFocusWithoutInventingMastery() {
+        prepareRepresentationLearningPlan();
+        LocalDate today = learnerLearningPlanService.getTodayStatus(learnerId, "de").asOf();
+        replaceRepresentationLearningPlanSchedule(today.minusDays(7), today.minusDays(1),
+                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID));
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0));
+        learnerService.setPlannedGoals(learnerId, Set.of(CANONICAL_CHOOSE_REPRESENTATION_ID));
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, null, null, true);
+        var plan = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today);
+        var frontier = learnerService.getPersonalCurriculumSubjectFrontier(learnerId, CANONICAL_MATH_LANDSCAPE_ID);
+        assertThat(frontier).isNotEmpty();
+        assertThat(frontier).extracting(FrontierGoal::id).doesNotContain(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(learnerLearningPlanService.getTodayStatus(learnerId, "de").resumeAvailable()).isTrue();
+
+        var continued = learnerLearningPlanService.switchPlan(learnerId, plan.planId(),
+                new LearnerLearningPlanApi.ContinueRequest(plan.revision(), today));
+
+        assertThat(continued.changed()).isTrue();
+        assertThat(continued.activeGoalId()).isIn(frontier.stream().map(FrontierGoal::id).toList());
+        assertThat(learnerService.getMastery(learnerId).getOrDefault(continued.activeGoalId(), 0.0)).isZero();
+        assertThat(learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today).revision())
+                .isEqualTo(plan.revision());
+    }
+
+    @Test
+    void storedMasteryAloneDoesNotHideRemainingVerifiedRecallTargets() {
+        selectCompletedCanonicalMathCurriculum();
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        var scope = learnerService.getPlanningScope(learnerId, CANONICAL_MATH_LANDSCAPE_ID);
+        masteryRepository.saveAllAndFlush(scope.scopeAtomicGoalIds().stream()
+                .map(id -> new Mastery(learner, id, 1.0)).toList());
+
+        // Memory targets derive their real completion from Verified Recall;
+        // ordinary stored mastery must not make the personal subject look complete.
+        var open = learnerService.getPlanningScope(learnerId, CANONICAL_MATH_LANDSCAPE_ID).openAtomicGoalIds();
+        assertThat(open).isNotEmpty();
+        assertThat(learnerService.getPersonalCurriculumSubjectFrontier(learnerId, CANONICAL_MATH_LANDSCAPE_ID))
+                .extracting(FrontierGoal::id).containsExactlyInAnyOrderElementsOf(open);
+    }
+
+    @Test
     void completingAnUnrelatedGoalDoesNotStartTheFirstGoalOfAStoredPlan() {
         prepareRepresentationLearningPlan();
         learnerService.setPreferences(learnerId, "SEQUENTIAL", false, null, null, true);

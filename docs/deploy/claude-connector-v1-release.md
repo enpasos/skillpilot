@@ -294,10 +294,13 @@ Before submitting the plugin:
    `node scripts/claude_marketplace_release.mjs check`;
 4. test direct upload/install, OAuth, first-party start, all fourteen tools and both MCP
    Apps in paid Claude Web chat;
-5. verify that the initial context reports due, currently mastered, open-today
-   and overdue counts for every valid subject plan without plan or landscape
-   identifiers, and that automatic resume succeeds only with no active goal and
-   authoritative `resumeAvailable=true`;
+5. verify that the initial context reports today's quota, credited completions,
+   open-today and remaining-backlog counts for every valid subject plan without
+   plan or landscape identifiers. Automatic resume requires no active goal,
+   `guidance.state=resume` and authoritative `resumeAvailable=true`. After a
+   fulfilled or zero quota, an explicit request must still continue eligible
+   personal targets, including future or unplanned targets when needed. With
+   backlog, the coach invites catching up without foregrounding a break;
 6. verify an explicit switch from Mathematics to Physics and back using only
    the exact localized subject names from the current daily-plan context; the
    unfinished goal is parked without mastery, all plans continue to count and

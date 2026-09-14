@@ -200,7 +200,8 @@ public class CoachToolFacade {
      * <p>The caller never supplies a plan, landscape, focus or goal ID. The
      * learner lock is acquired before resolving the current daily-plan
      * projection, and the existing revision-checked subject-switch workflow
-     * remains authoritative for choosing a due frontier goal. Equal localized
+     * remains authoritative for prioritizing due frontier goals. Without a usable
+     * stored plan, the current personal subject frontier is revalidated instead. Equal localized
      * names are deliberately ambiguous and fail closed.</p>
      */
     @Transactional
@@ -246,7 +247,8 @@ public class CoachToolFacade {
                     "Learning-plan subject switching is not currently available");
         }
 
-        final LearnerLearningPlanApi.PlanDetail selectedPlan;
+        LearnerLearningPlanApi.PlanDetail selectedPlan = null;
+        boolean planMissing = false;
         try {
             selectedPlan = plans.getPlan(
                     skillpilotId,
@@ -256,14 +258,17 @@ public class CoachToolFacade {
             if (exception.getStatusCode().is5xxServerError()) {
                 throw exception;
             }
-            throw new ResponseStatusException(
-                    HttpStatus.CONFLICT,
-                    "The requested subject cannot be switched right now");
+            boolean unavailableSchedule = exception.getStatusCode() == HttpStatus.CONFLICT
+                    && status.unavailablePlanCount() > 0 && selectedSubject.canContinue();
+            if (exception.getStatusCode() != HttpStatus.NOT_FOUND && !unavailableSchedule) {
+                throw new ResponseStatusException(
+                        HttpStatus.CONFLICT,
+                        "The requested subject cannot be switched right now");
+            }
+            planMissing = true;
         }
-        if (selectedPlan == null
-                || selectedPlan.planId() == null
-                || selectedPlan.stale()
-                || !Objects.equals(selectedPlan.landscapeId(), selectedSubject.landscapeId())) {
+        if (!planMissing && (selectedPlan == null || selectedPlan.planId() == null
+                || !Objects.equals(selectedPlan.landscapeId(), selectedSubject.landscapeId()))) {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT,
                     "The requested subject cannot be switched right now");
@@ -271,7 +276,9 @@ public class CoachToolFacade {
 
         final LearnerLearningPlanApi.TransitionResponse transition;
         try {
-            transition = plans.switchPlan(
+            transition = selectedPlan == null || selectedPlan.stale()
+                    ? plans.switchPersonalCurriculumSubject(skillpilotId, selectedSubject.landscapeId())
+                    : plans.switchPlan(
                     skillpilotId,
                     selectedPlan.planId(),
                     new LearnerLearningPlanApi.ContinueRequest(

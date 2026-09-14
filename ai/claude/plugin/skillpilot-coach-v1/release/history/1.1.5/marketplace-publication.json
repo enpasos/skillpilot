@@ -24,33 +24,33 @@
   "plugin": {
     "name": "skillpilot-coach-v1",
     "source": "./plugins/skillpilot-coach-v1",
-    "version": "1.1.6",
-    "directInstallSha256": "439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca"
+    "version": "1.1.5",
+    "directInstallSha256": "8b1713178bbb289bc0b6669afa6e60328f2b362d42651353a78a869fe6aa76c1"
   },
   "activation": {
-    "state": "prepared_not_published",
-    "firstPartyUiRoute": "controlled_direct_install_beta",
-    "marketplaceUiSwitchAllowed": false,
+    "state": "published_pending_acceptance",
+    "firstPartyUiRoute": "personal_git_marketplace",
+    "marketplaceUiSwitchAllowed": true,
     "firstPartyGuideDecision": {
-      "status": "pending",
-      "approvedAt": null,
-      "approvedBy": null,
-      "candidateVersion": null,
-      "candidateSha256": null,
-      "repositoryRevision": null,
-      "repositoryTreeSha256": null,
-      "evidenceRef": null
+      "status": "approved",
+      "approvedAt": "2026-09-13T07:47:06.000Z",
+      "approvedBy": "product-owner",
+      "candidateVersion": "1.1.5",
+      "candidateSha256": "8b1713178bbb289bc0b6669afa6e60328f2b362d42651353a78a869fe6aa76c1",
+      "repositoryRevision": "228f6bd59f30fa03e3f0e44fa69ffaa122f98323",
+      "repositoryTreeSha256": "c854f82f337200a75ee9ad1078d1f22b8c219e5e4543e0fa62da38a19b24f4b2",
+      "evidenceRef": "docs/quickstart/video-production.md#guide-freigabe-vom-13-september-2026"
     },
     "evidence": [
       {
         "id": "public-repository-default-branch",
-        "status": "pending",
-        "revision": null,
-        "treeSha256": null,
-        "candidateVersion": null,
-        "candidateSha256": null,
-        "verifiedAt": null,
-        "evidenceRef": null
+        "status": "pass",
+        "revision": "228f6bd59f30fa03e3f0e44fa69ffaa122f98323",
+        "treeSha256": "c854f82f337200a75ee9ad1078d1f22b8c219e5e4543e0fa62da38a19b24f4b2",
+        "candidateVersion": "1.1.5",
+        "candidateSha256": "8b1713178bbb289bc0b6669afa6e60328f2b362d42651353a78a869fe6aa76c1",
+        "verifiedAt": "2026-09-12T15:03:16.000Z",
+        "evidenceRef": "https://github.com/enpasos/skillpilot-claude-marketplace/pull/7"
       },
       {
         "id": "clean-account-marketplace-install",

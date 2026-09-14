@@ -178,10 +178,10 @@ test("published 1.1.3 marketplace does not imply guide approval or real-client a
   }
 });
 
-test("instruction consolidation 1.1.5 cannot inherit repository or client acceptance", () => {
+test("continuation correction 1.1.6 cannot inherit repository or client acceptance", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   validateClaudeMarketplaceLane(lane);
-  assert.equal(lane.plugin.version, "1.1.5");
+  assert.equal(lane.plugin.version, "1.1.6");
   const repositoryEvidence = lane.activation.evidence.find(({ id }) => id === "public-repository-default-branch");
   if (repositoryEvidence.status === "pending") {
     assert.equal(lane.activation.state, "prepared_not_published");
@@ -199,6 +199,8 @@ test("instruction consolidation 1.1.5 cannot inherit repository or client accept
       assert.notEqual(treeSha256, "96675808155fa7d48b5890c617975ba8b25964ec20dcf01c3ab184408d459799");
       assert.notEqual(revision, "91d6646c64ebeda9afa3b729f10a4859c360d69e");
       assert.notEqual(treeSha256, "dd8bf77fa63ac8d1fd3747bf5b7ba3785780742c04945d3e649d77ff558003b7");
+      assert.notEqual(revision, "228f6bd59f30fa03e3f0e44fa69ffaa122f98323");
+      assert.notEqual(treeSha256, "c854f82f337200a75ee9ad1078d1f22b8c219e5e4543e0fa62da38a19b24f4b2");
       continue;
     }
     for (const [key, value] of Object.entries(record)) {
@@ -593,7 +595,7 @@ test("prepare exports exactly the reviewed plugin allowlist and verifies reprodu
       marketplaceRoot: outputRoot,
     });
     assert.equal(prepared.pluginName, "skillpilot-coach-v1");
-    assert.equal(prepared.version, "1.1.5");
+    assert.equal(prepared.version, "1.1.6");
     assert.equal(prepared.files.length, 12);
     assert.deepEqual(prepared.files, verified.files);
     assert.equal(prepared.treeSha256, verified.treeSha256);
@@ -652,7 +654,7 @@ test("local smoke test installs the expected version in an isolated Claude profi
             stdout: JSON.stringify([
               {
                 id: "skillpilot-coach-v1@skillpilot-marketplace",
-                version: "1.1.5",
+                version: "1.1.6",
                 enabled: true,
                 mcpServers: {
                   skillpilot: {

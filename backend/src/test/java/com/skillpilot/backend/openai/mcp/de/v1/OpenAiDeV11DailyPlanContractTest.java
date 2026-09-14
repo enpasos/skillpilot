@@ -513,6 +513,71 @@ class OpenAiDeV11DailyPlanContractTest {
         verify(coachTools, never()).resumeLearningPlan(any(), any());
     }
 
+    @ParameterizedTest
+    @CsvSource({"0, 0, true, 0", "1, 0, true, 0", "1, 3, true, 0",
+            "0, 0, false, 0", "1, 3, false, 0", "0, 0, true, 1"})
+    void explicitExtraToolsUseBackendCapabilityRegardlessOfQuotaOrBacklog(
+            int quota, int overdue, boolean available, int unavailablePlans) {
+        var status = new LearnerPlanTodayStatus(LocalDate.parse("2026-09-14"), true, available,
+                List.of(new LearnerPlanTodayStatus.SubjectStatus(
+                        "private-math", "Mathematik", quota, quota, 0, overdue, false, available)),
+                null, unavailablePlans);
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status);
+
+        var response = call(contract(true), OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
+
+        JsonNode content = objectMapper.valueToTree(response.structuredContent());
+        JsonNode today = content.path("learningPlanToday");
+        assertThat(today.path("resumeAvailable").asBoolean()).isEqualTo(available);
+        assertThat(today.path("subjects").get(0).path("canContinue").asBoolean()).isEqualTo(available);
+        assertThat(today.path("guidance").path("state").asText())
+                .isEqualTo(unavailablePlans == 0 ? "complete" : "unavailable");
+        assertThat(today.path("unavailablePlanCount").asInt()).isEqualTo(unavailablePlans);
+        assertThat(today.path("guidance").path("instruction").asText())
+                .contains("Learning plans prioritize work and never limit learning within the Personal Curriculum",
+                        unavailablePlans == 0 ? "Zero openToday or openOverdue counts never revoke"
+                                : "even if a plan is missing or outdated");
+        assertThat(content.path("nextAllowedTools").toString()
+                .contains(OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN)).isEqualTo(available);
+        assertThat(content.path("nextAllowedTools").toString()
+                .contains(OpenAiDeV1McpContractAdapter.SWITCH_LEARNING_PLAN_SUBJECT)).isEqualTo(available);
+        assertThat(content.path("frontier")).isEmpty();
+        verify(coachTools, never()).resumeLearningPlan(any(), any());
+        verify(coachTools, never()).switchLearningPlanSubject(any(), any(), any());
+
+        var active = OpenAiDeLearningPlanToday.project(status, true, true);
+        assertThat(active.resumeAvailable()).isFalse();
+        assertThat(active.subjects()).singleElement().satisfies(subject -> assertThat(subject.canContinue()).isFalse());
+        assertThat(active.guidance().state()).isEqualTo("continue");
+    }
+
+    @ParameterizedTest
+    @CsvSource({"false, blocked", "true, resume"})
+    void openQuotaDoesNotAuthorizeAutomaticExtraWhenOnlyPersonalFallbackIsAvailable(
+            boolean automaticResumeAvailable, String expectedGuidance) {
+        var status = new LearnerPlanTodayStatus(LocalDate.parse("2026-09-14"), true, true,
+                List.of(new LearnerPlanTodayStatus.SubjectStatus(
+                        "private-math", "Mathematik", 1, 0, 1, 3, false, true)),
+                new LearnerPlanTodayStatus.Totals(1, 0, 1, 3), 0, automaticResumeAvailable);
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status);
+
+        var response = call(contract(true), OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
+
+        JsonNode content = objectMapper.valueToTree(response.structuredContent());
+        JsonNode today = content.path("learningPlanToday");
+        assertThat(today.path("resumeAvailable").asBoolean()).isTrue();
+        assertThat(today.path("subjects").get(0).path("canContinue").asBoolean()).isTrue();
+        assertThat(today.path("guidance").path("state").asText()).isEqualTo(expectedGuidance);
+        assertThat(content.path("requiredAction").asText()).isEqualTo(expectedGuidance);
+        if (!automaticResumeAvailable) {
+            assertThat(today.path("guidance").path("instruction").asText())
+                    .contains("An explicit learning request may still use",
+                            "Do not claim today is complete or automatically resume extra work");
+        }
+        assertThat(today.has("automaticResumeAvailable")).isFalse();
+        verify(coachTools, never()).resumeLearningPlan(any(), any());
+    }
+
     @Test
     void zeroQuotaHasHonestHeadlineAndSubjectBonusNeverReplacesAnotherQuota() {
         var weekend = OpenAiDeLearningPlanToday.project(new LearnerPlanTodayStatus(

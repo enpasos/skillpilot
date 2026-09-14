@@ -122,6 +122,11 @@ class ClaudeV1LearningPlanContractTest {
                         "\"Mathe\" is a display alias only; tool arguments still use the exact published subject",
                         "today's actual completions of due plan goals, including older overdue goals",
                         "One subject's extra never fills another subject's quota",
+                        "A request to continue, catch up or learn a named subject is already an explicit request for voluntary extra",
+                        "resumeAvailable and canContinue capabilities remain authoritative even when openToday and openOverdue are zero",
+                        "emphasize the opportunity to catch up without pressure or guilt",
+                        "Otherwise offer optional further learning or a break",
+                        "Automatic continuation from a successor context is permitted only when guidance.state=resume",
                         "Never automatically resume extra work, even when resumeAvailable=true",
                         "If unavailablePlanCount is greater than zero",
                         "the totals exclude them",
@@ -129,7 +134,9 @@ class ClaudeV1LearningPlanContractTest {
                         "Give the summary at most once per response",
                         "Do not repeat unchanged counts on every turn",
                         "Answer a status-only question or respect a pause without starting a goal or exercise",
-                        "For blocked or unavailable, explain the remaining work or missing plan status without claiming completion")
+                        "For blocked or unavailable, explain the remaining work or missing plan status without claiming completion",
+                        "Learning plans prioritize work and never limit learning within the Personal Curriculum",
+                        "A missing or outdated plan must not block published learning capabilities")
                 .doesNotContain("briefly say for every subject in the newest context how many goals are due today");
 
         assertThat(ClaudeV1McpContractAdapter.PLAN_RESUME_CONTINUATION_INSTRUCTION)

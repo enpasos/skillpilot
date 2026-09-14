@@ -26,8 +26,15 @@ const historicalReleaseRoot = `${releaseRoot}/history`;
 const connectorContractBaselinePath =
   "ai/claude/connector-v1/release/contract-baseline.json";
 const expectedPluginIdentity = "skillpilot-coach-v1";
-const expectedPluginVersion = "1.1.5";
+const expectedPluginVersion = "1.1.6";
 const expectedHistoricalReleaseFiles = new Map([
+  ["1.1.5/contract-baseline.json", "78a62ec38ee108727637a9e2efadf76ac7b1815a740470618db27565689d0b65"],
+  ["1.1.5/direct-install-beta.json", "3d795d089068d47eef40c39ee73c1aa071f3f2c51677335d65db5eed76782148"],
+  ["1.1.5/evidence-manifest.json", "8e270e7060b4b5f8085566f39cebab24daa3e8e7a3c3fa9979f5f5162c3848d2"],
+  ["1.1.5/lifecycle.json", "7c7b1c1219f3a7a6d04e0fa91ff885a76e5f315a9e46d3295cb5cf3451d86294"],
+  ["1.1.5/marketplace-publication.json", "6d756beb6b525f6b9466f4828eba506a153ac46db887d00dd947e00f2953948a"],
+  ["1.1.5/release-gates.json", "c979edd4b1219d6bdf4acde500bfd561cfcd21a033048aa6fd85a6837e911871"],
+  ["1.1.5/support-readiness-drill.template.md", "4ebc69c118b96dbf24a3e9689f4b31a15af4de7fa03107302ca127a120948d07"],
   ["1.1.4/contract-baseline.json", "265f832350b7681deba4322caf77a711d0dd174365323997c6ade53de0490585"],
   ["1.1.4/direct-install-beta.json", "f6046440071fd5a1827d6a121fa9b3564cb7a0165252d9f660294e61bc7fd7d0"],
   ["1.1.4/evidence-manifest.json", "47d2f064caab55699a2034dc1ba3448a38ea29d10050604bc948016926a98236"],
@@ -199,7 +206,7 @@ export function verifyClaudePluginV1Release({
     );
     check(
       document?.pluginVersion === expectedPluginVersion,
-      "Every plugin release document must use Claude plugin version 1.1.5.",
+      "Every plugin release document must use Claude plugin version 1.1.6.",
     );
   }
 
@@ -259,15 +266,16 @@ export function verifyClaudePluginV1Release({
     "Plugin lifecycle must exclude Claude Free, iOS, Android in-app installation, Desktop Chat, Cowork, public Claude Code, hooks and subagent claims.",
   );
   check(
-    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-09-12"
+    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-09-14"
       && lifecycle?.productOwnerAuthorization?.approvedBy === "product-owner"
-      && /Version 1\.1\.5 is the instruction-consolidation candidate/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /production and Claude Marketplace deployment after CI passes/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /unchanged tool contract/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /Version 1\.1\.6 is a local continuation-correction candidate/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /plans guide and prioritize but never prevent requested learning/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /preserves prerequisites/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /covers local candidate preparation only/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && Array.isArray(lifecycle?.productOwnerAuthorization?.excludes)
-      && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Credential changes, Anthropic Console submission, general public activation and inherited candidate acceptance/u.test(entry))
+      && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Deployment, Marketplace publication, guide activation, credential changes, Anthropic Console submission, general public activation and inherited candidate acceptance/u.test(entry))
       && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Connector Directory/u.test(entry)),
-    "Plugin lifecycle must record the CI-gated instruction-consolidation authorization without inheriting Console, credential, public-activation or client-acceptance authority.",
+    "Plugin lifecycle must record local continuation-correction authority without inheriting deployment, publication, guide, credential or client-acceptance authority.",
   );
   check(
     lifecycle?.releaseLine?.major === 1
@@ -767,7 +775,7 @@ function loadConnectorContractBaselineBinding(repositoryRoot) {
   };
 }
 
-function verifyHistoricalReleaseHistory(repositoryRoot, check) {
+export function verifyHistoricalReleaseHistory(repositoryRoot, check) {
   const historyRoot = safeRepositoryPath(repositoryRoot, historicalReleaseRoot);
   const actualFiles = [];
   for (const versionEntry of readdirSync(historyRoot, { withFileTypes: true })) {

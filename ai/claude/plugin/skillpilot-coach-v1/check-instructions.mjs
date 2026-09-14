@@ -119,16 +119,29 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
     /blocked or ambiguous request never falls through to generic resume/iu,
   ]);
   requireRule(plans, "guarded-resume", [
+    /Automatic resume additionally requires guidance\.state=resume/iu,
     /Learning start\/continuation: if there is no active goal/iu,
-    /resume_skillpilot_learning_plan only when learningPlanToday has followLearningPlans=true, resumeAvailable=true and guidance\.state=resume/iu,
+    /resume_skillpilot_learning_plan only when learningPlanToday has followLearningPlans=true and resumeAvailable=true/iu,
+    /explicit request to learn further permits resume at guidance\.state=complete, blocked or unavailable whenever resumeAvailable=true/iu,
+    /With an active unmastered goal, teach it directly/iu,
     /full context through the visualization rule before speaking/iu,
     /Do not substitute a WebGUI Weiterlernen button or another confirmation/iu,
+  ]);
+  requireRule(plans, "plan-never-blocks-learning", [
+    /A plan guides and prioritizes; it must never prevent learning/iu,
+    /daily quota, calendar, empty backlog or exhausted plan is never a learning ban/iu,
+    /explicit request to learn further, continue an active unmastered goal or let the backend select a reachable open target from the Personal Curriculum/iu,
+    /Only completion of the whole Personal Curriculum ends its learning content/iu,
+    /temporary blockers are not completion/iu,
+    /Never invent goals or bypass prerequisites/iu,
+    /resumeAvailable and subject canContinue are the authority for these actions, never plan counts/iu,
   ]);
   requireRule(plans, "subject-choice", [
     /natural wording.+?jetzt Mathe.+?maths.+?exactly one published learningPlanToday\.subjects entry/iu,
     /Clarify ambiguity before writing/iu,
     /current=true, continue without a switch/iu,
     /canContinue=false, explain.+?offer only subjects with canContinue=true/iu,
+    /explain the supplied blocker without deriving it from counts/iu,
     /switch_skillpilot_learning_plan_subject, copying its subject exactly, not an alias or any plan\/landscape\/focus\/goal ID/iu,
     /previous goal is parked, not completed; other subject plans still apply/iu,
     /returned context before confirming and continuing/iu,
@@ -141,7 +154,7 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
     /newest asOf and actual totals\.completedToday of totals\.dueToday/iu,
     /openToday and localized subject for every valid subject/iu,
     /positive extraCompletedToday as a voluntary bonus/iu,
-    /openOverdue and detailed subject counters only when requested/iu,
+    /openOverdue counts and detailed subject counters only when requested/iu,
     /At most one summary per response; do not repeat unchanged counts every turn/iu,
     /After completion, give brief updated progress/iu,
   ]);
@@ -155,9 +168,13 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
   ]);
   requireRule(plans, "daily-guidance", [
     /learningPlanToday\.guidance\.state and \.instruction/iu,
-    /complete means celebrate the daily quota and offer to stop/iu,
-    /more learning, resume or switching requires an explicit request for voluntary extra/iu,
-    /does not mean all backlog is finished/iu,
+    /complete means celebrate an actual daily quota only when one exists/iu,
+    /If backlog remains, offer the chance to catch up with one next open goal, without guilt or pressure/iu,
+    /keep pausing possible without foregrounding it/iu,
+    /Without backlog, offer voluntary continuation or a pause/iu,
+    /Automatic extra goal selection stops/iu,
+    /starting extra goals, resume or switching requires an explicit request for voluntary extra/iu,
+    /Daily completion does not mean all backlog or the Personal Curriculum is finished/iu,
     /blocked\/unavailable,.+?without claiming completion/iu,
     /paused never authorizes enabling plan following/iu,
     /backend-selected active goal with one concrete next task/iu,
@@ -165,8 +182,11 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
     /Status\/pause intent still takes precedence/iu,
   ]);
   requireRule(plans, "daily-complete-precedence", [
-    /more learning, resume or switching requires an explicit request for voluntary extra/iu,
-    /complete guard also governs subject requests and already active goals/iu,
+    /starting extra goals, resume or switching requires an explicit request for voluntary extra/iu,
+    /Weiterlernen.+?already expresses that intent; do not ask again/iu,
+    /subject request without clear learning intent needs clarification/iu,
+    /Daily stopping prevents starting unsolicited extra goals, not teaching an active unfinished goal/iu,
+    /it never blocks explicitly requested learning/iu,
   ]);
   requireRule(coaching, "ordinary-evidence", [
     /ordinary competency,.+?small diagnostic task and adapt to the response/iu,
