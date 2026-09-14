@@ -1,16 +1,20 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
 Der aktuelle Umsetzungsstand steht im
-[Wiederaufnahme-Checkpoint vom 13. September](math-physics-resumed-checkpoint-2026-09-13.md).
-**Aktueller Halteauftrag vom 14. September 2026:** Den vorhandenen Stand als
-commitfähigen Meilenstein abschließen und anschließend pausieren. Danach das
-100-Prozent-Goal nur nach ausdrücklicher Wiederaufnahme fortsetzen, nicht schon
-aufgrund grüner CI. Stand, offene Fälle und Abschlussprüfungen stehen im oben
-verlinkten neuesten Checkpoint.
+[Physik-Fortsetzungsstand vom 14. September](physics-resumed-checkpoint-2026-09-14.md).
+**Aktueller Auftrag:** Nach dem abgeschlossenen und committeten Meilenstein hat
+der Product Owner das 100-Prozent-Ziel ausdrücklich **nur für Physik** wieder
+aktiviert. Mathematik bleibt pausiert. Vor neuen fachlichen Änderungen ist die
+CI-Voraussetzung zu erfüllen; der neu gefundene Berichtsfehler und sein lokaler
+Fix stehen im neuesten Checkpoint. Ein grüner Zwischenstand ist danach kein
+erneuter Halteauftrag für Physik.
+Der [Meilenstein mit Nutzerpause vom 13./14. September](math-physics-resumed-checkpoint-2026-09-13.md)
+bleibt als historischer Abschluss- und Prüfbeleg erhalten.
 Der [pausierte Physik-Zwischenstand vom 8. September](physics-paused-checkpoint-2026-09-08.md)
 und die nachstehenden Abschnitte bleiben historische Fortsetzungsgrundlagen;
-die damalige Pause und Freigabeanfrage sind historisch. Maßgeblich ist jetzt
-der neue Halteauftrag, nicht eine alte Pausen- oder Fortsetzungsnotiz.
+die damaligen Pausen und Freigabeanfragen sind historisch. Maßgeblich ist jetzt
+die Physik-Wiederaufnahme mit vorgeschalteter CI-Prüfung, nicht eine alte
+Pausen- oder Fortsetzungsnotiz.
 
 **Anweisungsupdate vom 13. September 2026:** Für notwendige neue oder korrigierte
 Bilder gilt die [aktuelle Provider- und Qualitätsregel](../concept/skill-graph/atomic-goal-visualizations.md#provider-priority-and-exception-policy)
