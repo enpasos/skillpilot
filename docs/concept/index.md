@@ -8,6 +8,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Precise definitions of the core SkillPilot terms, with German equivalents and the normative source per term.
 - [Levels of Personalization](levels-of-personalization.md)
   Product-level personalization model.
+- [Curriculum-Qualität: QS-Reifegrade und menschliche Erprobung](curriculum-quality-and-human-trial.md)
+  Abgestimmtes Zielkonzept für M7 als Abschluss der vertieften Curriculum-QS, getrennte Champion-Erprobungsstatus und eine einheitliche Grau-Grün-Reifeskala; Umsetzung offen.
 
 ## Platform Strategy
 
