@@ -48,6 +48,39 @@ class UnifiedLearningPlanStatusCalculatorTest {
     }
 
     @Test
+    void anAdditionalValidCompletionNeverWorsensTheBalanceAndInvariantsHold() {
+        for (int s = 0; s <= 8; s++) {
+            for (int p = 0; p <= s; p++) {
+                for (int i = 0; i <= s + 3; i++) {
+                    for (int h = 0; h <= i; h++) {
+                        PlanBalanceResult before = UnifiedLearningPlanStatusCalculator.calculate(
+                                new PlanBalanceInputs(s, p, i, h));
+                        assertInvariants(before, p);
+                        // A goal completed now is currently mastered and completed within the period.
+                        PlanBalanceResult after = UnifiedLearningPlanStatusCalculator.calculate(
+                                new PlanBalanceInputs(s, p, i + 1, h + 1));
+                        assertInvariants(after, p);
+                        String inputs = "S=" + s + ", P=" + p + ", I=" + i + ", H=" + h;
+                        assertThat(after.erfuelltesPeriodenziel()).as("target after completion, " + inputs)
+                                .isGreaterThanOrEqualTo(before.erfuelltesPeriodenziel());
+                        assertThat(after.rueckstand()).as("backlog after completion, " + inputs)
+                                .isLessThanOrEqualTo(before.rueckstand());
+                        assertThat(after.vorsprung()).as("lead after completion, " + inputs)
+                                .isGreaterThanOrEqualTo(before.vorsprung());
+                    }
+                }
+            }
+        }
+    }
+
+    private static void assertInvariants(PlanBalanceResult result, int p) {
+        assertThat(result.erfuelltesPeriodenziel()).isBetween(0, p);
+        assertThat(result.rueckstand()).isNotNegative();
+        assertThat(result.vorsprung()).isNotNegative();
+        assertThat(result.rueckstand() > 0 && result.vorsprung() > 0).isFalse();
+    }
+
+    @Test
     void testInputValidation() {
         assertThatThrownBy(() -> new PlanBalanceInputs(-1, 0, 0, 0))
                 .isInstanceOf(IllegalArgumentException.class);

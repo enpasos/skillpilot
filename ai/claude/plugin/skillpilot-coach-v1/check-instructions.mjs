@@ -152,6 +152,7 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
     /followLearningPlans=true.+?after immediate render\/resume actions report the plan status/iu,
     /at start\/resume or on a status request by quoting learningPlanToday\.text verbatim/iu,
     /That text is the only formulation/iu,
+    /never the active goal/iu,
     /Add no counts, totals or judgement of your own/iu,
     /never recalculate, rephrase or translate it/iu,
     /At most one status per response; do not repeat an unchanged status every turn/iu,
@@ -164,6 +165,11 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
   requireRule(plans, "neutral-active-goal", [
     /A reached period target is not “nothing left”/iu,
     /never contrast the active goal with it \(no “trotzdem”\/“still not completed” quota contrast\)/iu,
+  ]);
+  requireRule(plans, "goal-announcement", [
+    /Start teaching an active goal with learningPlanToday\.activeGoalAnnouncement verbatim, once/iu,
+    /not before every task and not for a status-only question/iu,
+    /After a completion: feedback, changed status, then the successor's announcement/iu,
   ]);
   requireRule(plans, "daily-guidance", [
     /learningPlanToday\.guidance\.state and \.instruction/iu,

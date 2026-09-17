@@ -116,7 +116,11 @@ class ClaudeV1LearningPlanContractTest {
                         "Add no counts, totals, percentages or overall judgement of your own",
                         "do not recalculate or rephrase it",
                         "do not translate it; it already arrives in the session language",
-                        "never contrast an unfinished active goal with a fulfilled period target",
+                        "Never contrast an unfinished active goal with a fulfilled period target",
+                        "it never announces the active goal",
+                        "output learningPlanToday.activeGoalAnnouncement verbatim once as its first line",
+                        "do not repeat the announcement before every task and give none for a status-only question",
+                        "After a completed goal, give feedback first, then any changed status, then the successor's announcement",
                         "\"Mathe\" is a display alias only; tool arguments still use the exact published subject",
                         "A request to continue, catch up or learn a named subject is already an explicit request for voluntary extra",
                         "capabilities remain authoritative even when the period target is already fulfilled",
@@ -133,7 +137,8 @@ class ClaudeV1LearningPlanContractTest {
                         "openToday",
                         "openOverdue",
                         "extraCompletedToday",
-                        "Mention openOverdue only for an explicit plan-detail request");
+                        "Mention openOverdue only for an explicit plan-detail request",
+                        "which that text already announces");
 
         assertThat(ClaudeV1McpContractAdapter.PLAN_RESUME_CONTINUATION_INSTRUCTION)
                 .contains(
@@ -141,7 +146,8 @@ class ClaudeV1LearningPlanContractTest {
                         "adding no counts, totals or overall judgement of your own",
                         "Do not repeat a status already given from this context in the same response",
                         "follow its presentationInstruction before any learner-facing response",
-                        "Continue immediately with the returned active goal")
+                        "Then output learningPlanToday.activeGoalAnnouncement verbatim once",
+                        "continue immediately with that returned active goal")
                 .doesNotContain(
                         "openToday",
                         "openOverdue",

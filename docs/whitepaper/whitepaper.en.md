@@ -209,7 +209,7 @@ Drafts initially remain on the planning device. Only explicit joint confirmation
 
 With plan mode enabled and a valid learning session, SkillPilot handles the organization in the background:
 
-1. **Orient:** The coach quotes the plan status formulated by SkillPilot verbatim: for each subject the daily or weekly target and any backlog or work ahead, followed by the active learning goal. The Cockpit shows the same sentences; the coach does no arithmetic of its own.
+1. **Orient:** The coach quotes the plan status formulated by SkillPilot verbatim: for each subject the daily or weekly target and any backlog or work ahead. The Cockpit shows the same sentences; the coach does no arithmetic of its own. It announces the active learning goal separately, once, when the learning task begins.
 2. **Resume automatically:** A valid ongoing goal is continued; otherwise, a due goal whose prerequisites permit learning is selected, if one is available. Joint activation can already select this first goal. No extra “Continue learning” click or manual goal search is needed.
 3. **Learn and check progress:** The coach explains, sets tasks, and supports the work. Only progress recorded under the applicable evidence rules changes the learning state and thus the plan status. The plan-guided flow then leads to the next permitted step.
 4. **Switch subjects or finish:** A request such as “Physics now” switches within the available subject options; other requirements remain in place. Once the period targets are reached, the coach acknowledges this and does not start another goal on its own. A reached daily target does not mean there is no backlog; in that case the coach invites catching up without pressure. Further learning remains available on request, and future goals do not automatically become extra duties for today. The plan status names unevaluable plans explicitly instead of presenting them as complete.
@@ -227,6 +227,9 @@ SkillPilot balances each subject on its own and formulates the plan status that 
 
 > Mathematics: Daily target 1 of 3 · 2 learning goals behind
 > Physics: Daily target reached · 1 learning goal ahead
+
+When the learning task begins, it follows separately:
+
 > Your active learning goal: Describe power functions with integer exponents
 
 Mathematics is four goals short of the plan. Two of them are still open today; the other two are backlog. In physics, a goal planned for later is already mastered. This lead does **not** offset the mathematics backlog, and there is no cross-subject total. “Ahead” and “on track” describe the amount of progress, **not mastery of everything planned earlier**: open earlier goals remain available for goal selection. On a weekly basis, the same statement reads “Weekly target …” and covers the whole current week.

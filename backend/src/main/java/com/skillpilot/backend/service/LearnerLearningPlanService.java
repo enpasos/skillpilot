@@ -237,9 +237,10 @@ public class LearnerLearningPlanService {
         if (activeGoalInProgress) {
             com.skillpilot.backend.landscape.LearningGoal goal =
                     landscapeService.getGoalDefinition(activeGoalId);
-            String title = goal != null && goal.getTitle() != null && !goal.getTitle().isBlank()
-                    ? goal.getTitle()
-                    : activeGoalId;
+            String title = localizedGoalTitle(goal, effectiveLocale);
+            if (title == null) {
+                title = activeGoalId;
+            }
             activeGoal = new LearnerPlanTodayStatus.ActiveGoal(
                     activeGoalId,
                     title,
@@ -249,7 +250,6 @@ public class LearnerLearningPlanService {
 
         String statusText = UnifiedLearningPlanStatusFormatter.formatCombinedStatusText(
                 subjectLines,
-                activeGoal == null ? null : activeGoal.title(),
                 unavailableSubjectLabels,
                 effectiveLocale);
 
@@ -297,6 +297,19 @@ public class LearnerLearningPlanService {
      * contributes a partial balance to its subject: a subject with an unevaluable part
      * plan must not appear to have a complete one.</p>
      */
+    /** The goal title in the session language, as the localized landscape presents it. */
+    private static String localizedGoalTitle(
+            com.skillpilot.backend.landscape.LearningGoal goal, String locale) {
+        if (goal == null) {
+            return null;
+        }
+        boolean english = locale != null && locale.trim().toLowerCase(Locale.ROOT).startsWith("en");
+        if (english && goal.getTitleEn() != null && !goal.getTitleEn().isBlank()) {
+            return goal.getTitleEn().trim();
+        }
+        return goal.getTitle() != null && !goal.getTitle().isBlank() ? goal.getTitle().trim() : null;
+    }
+
     private Optional<PlanEvaluation> evaluatePlan(
             String skillpilotId,
             LearnerLearningPlan plan,

@@ -91,8 +91,9 @@ selects that planned subject when it has available work, without an additional
 confirmation. “Was fehlt mir heute?” asks only for the current plan status.
 The coach quotes the status text supplied by SkillPilot verbatim, for example
 “Mathematik: Tagesziel 2 von 3 · im Plan” and
-“Physik: Heute kein Tagesziel · 2 Lernziele im Rückstand”, followed by the
-active learning goal. SkillPilot evaluates each subject once across all of its
+“Physik: Heute kein Tagesziel · 2 Lernziele im Rückstand”. When teaching
+begins, it announces the active learning goal once, for example
+“Dein aktives Lernziel: …”. SkillPilot evaluates each subject once across all of its
 plans, on the day or week basis chosen in the Personal Curriculum, and names
 unevaluable plans explicitly. The coach adds no counts or judgement of its own.
 Once all period targets are reached, automatic continuation stops. An explicit

@@ -1015,8 +1015,9 @@ revision before activation:
 5. Confirm that the initial response quotes the backend's
    `learningPlanToday.text` verbatim and identically to the SkillPilot cockpit:
    one line per subject with its daily or weekly target and any backlog or work
-   ahead, followed by the active learning goal, without own counts, totals or
-   judgement. Check both the day and the week basis. Completing an older due
+   ahead, without own counts, totals or judgement. The active learning goal must
+   be announced separately and only once, when teaching begins, and not after a
+   status-only question. Check both the day and the week basis. Completing an older due
    goal must count toward that subject's period target; work ahead in one
    subject must not offset backlog in another. A day without a target must not
    be described as completed required work.

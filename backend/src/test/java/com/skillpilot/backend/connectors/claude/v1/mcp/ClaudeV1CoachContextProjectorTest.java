@@ -97,6 +97,30 @@ class ClaudeV1CoachContextProjectorTest {
     }
 
     @Test
+    void activeGoalAnnouncementTravelsSeparatelyFromTheStatusTextAndOnlyWithAnActiveGoal() {
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                mock(CoachStateProjection.class), mock(CoachToolFacade.class), "https://skillpilot.com");
+        LearnerPlanTodayStatus status = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.of(2026, 9, 4), true, false, 0,
+                LearnerPlanTodayStatusFixtures.activeGoal("atom-a", "Potenzfunktionen beschreiben"),
+                List.of(LearnerPlanTodayStatusFixtures.subject(
+                        "math", "Mathematik", 13, 3, 9, 1, true, true)));
+
+        assertEquals("Mathematik: Tagesziel 1 von 3 · 2 Lernziele im Rückstand", status.statusText(),
+                "The status text holds only subject lines and never announces the active goal");
+
+        Map<String, Object> withActiveGoal = projector.projectLearningPlanToday(status, true);
+        assertEquals(status.statusText(), withActiveGoal.get("text"));
+        assertEquals("Dein aktives Lernziel: Potenzfunktionen beschreiben",
+                withActiveGoal.get("activeGoalAnnouncement"));
+        assertFalse(((Map<?, ?>) withActiveGoal.get("guidance")).get("instruction").toString()
+                .contains("Potenzfunktionen"), "Guidance carries instructions, not the announcement itself");
+
+        Map<String, Object> withoutActiveGoal = projector.projectLearningPlanToday(status, false);
+        assertFalse(withoutActiveGoal.containsKey("activeGoalAnnouncement"));
+    }
+
+    @Test
     @SuppressWarnings("unchecked")
     void finishedDailyPlanEndsTheAssignmentInsteadOfOfferingFutureFrontierGoals() {
         CoachStateProjection stateProjection = mock(CoachStateProjection.class);

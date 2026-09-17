@@ -205,7 +205,7 @@ Entwürfe bleiben zunächst auf dem Planungsgerät. Erst die ausdrückliche geme
 
 Bei aktivem Planmodus und gültiger Lernsession hält SkillPilot die Organisation im Hintergrund:
 
-1. **Orientieren:** Der Coach übernimmt den von SkillPilot formulierten Planstand wörtlich: je Fach das Tages- oder Wochenziel und gegebenenfalls Rückstand oder Vorarbeit, dazu das aktive Lernziel. Dieselben Sätze stehen im Cockpit; der Coach rechnet nicht selbst.
+1. **Orientieren:** Der Coach übernimmt den von SkillPilot formulierten Planstand wörtlich: je Fach das Tages- oder Wochenziel und gegebenenfalls Rückstand oder Vorarbeit. Dieselben Sätze stehen im Cockpit; der Coach rechnet nicht selbst. Das aktive Lernziel kündigt er getrennt davon einmal zu Beginn der Lernaufgabe an.
 2. **Automatisch anknüpfen:** Ein gültiges laufendes Ziel wird fortgesetzt; andernfalls wird ein fälliges, nach den Voraussetzungen lernbares Ziel gewählt, sofern eines verfügbar ist. Die gemeinsame Aktivierung kann dieses erste Ziel bereits auswählen. Es ist kein zusätzlicher Klick auf „Weiterlernen“ oder eine manuelle Zielsuche nötig.
 3. **Lernen und Fortschritt prüfen:** Der Coach erklärt, stellt Aufgaben und begleitet die Bearbeitung. Erst nach den geltenden Evidenzregeln gespeicherter Fortschritt verändert den Lernstand und damit den Planstand. Danach führt der plan-geführte Ablauf zum nächsten zulässigen Schritt.
 4. **Fach wechseln oder abschließen:** Ein Wunsch wie „Jetzt Physik“ wechselt innerhalb der verfügbaren Fachoptionen; die übrigen Anforderungen bleiben bestehen. Sind die Periodenziele erreicht, würdigt der Coach das und startet kein weiteres Ziel von sich aus. Ein erreichtes Tagesziel heißt nicht, dass kein Rückstand mehr besteht: Dann lädt der Coach ohne Druck zum Aufholen ein. Weiterlernen bleibt auf Wunsch jederzeit möglich; künftige Ziele werden nicht automatisch zu zusätzlicher heutiger Pflicht. Nicht auswertbare Pläne nennt der Planstand ausdrücklich, statt sie als erledigt darzustellen.
@@ -223,6 +223,9 @@ SkillPilot bilanziert jedes Fach für sich und formuliert daraus den Planstand, 
 
 > Mathematik: Tagesziel 1 von 3 · 2 Lernziele im Rückstand
 > Physik: Tagesziel erreicht · 1 Lernziel vorgearbeitet
+
+Beim anschließenden Einstieg in die Lernaufgabe folgt separat:
+
 > Dein aktives Lernziel: Potenzfunktionen mit ganzzahligen Exponenten beschreiben
 
 In Mathematik fehlen gegenüber dem Plan vier Ziele. Zwei davon sind heute noch offen, die beiden übrigen sind Rückstand. In Physik ist ein später eingeplantes Ziel bereits beherrscht. Dieser Vorsprung gleicht den Mathematik-Rückstand **nicht** aus; eine fachübergreifende Gesamtsumme gibt es nicht. „Vorgearbeitet“ und „im Plan“ beschreiben den Umfang des Fortschritts, **nicht die Beherrschung aller früher eingeplanten Inhalte**: Offene frühere Ziele bleiben für die Zielauswahl bestehen. Auf Wochenbasis lautet dieselbe Aussage „Wochenziel …“ und bezieht die ganze laufende Woche ein.

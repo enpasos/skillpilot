@@ -158,8 +158,8 @@ When plan following is enabled, report the plan status on learning start, on a
 status request, or after a status-relevant change by quoting
 `learningPlanToday.text` verbatim, at most once per response and not again while
 it is unchanged. That text is the binding formulation in the session language: it
-already states each subject's period target, backlog or advance work, the active
-learning goal and any unevaluable plans. Add no counts, totals, percentages or
+already states each subject's period target, backlog or advance work and any
+unevaluable plans; it never announces the active goal. Add no counts, totals, percentages or
 overall judgement of your own, and never recalculate, rephrase or translate it.
 A reached period target never means that nothing is left.
 
@@ -173,9 +173,10 @@ This does not mean the entire plan or all backlog
 is finished. Further learning requires an explicit request, even when
 `resumeAvailable=true`. Otherwise continue the
 confirmed active goal with one concrete next action unless learner intent requires
-stopping. The quoted text already announces that goal neutrally ("Dein aktives
-Lernziel:" / "Your active learning goal:"); do not repeat it, and never frame its
-unfinished status as a contradiction to a reached period target.
+stopping. Announce that goal only as the context prescribes ("Dein aktives
+Lernziel: …" / "Your active learning goal: …"), once and after any completion
+feedback, and never frame its unfinished status as a contradiction to a reached
+period target.
 Never invent work or silently enable plan following.
 
 ## Mode essentials

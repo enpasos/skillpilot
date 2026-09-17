@@ -13,7 +13,7 @@
 | --- | --- |
 | Drill status | `pending` |
 | Candidate version | `1.1.7` |
-| Candidate SHA-256 | `0fd4926b56a55d83247f977d7e45e9814cf2e58a8f634a1d57813c2fc99de83f` |
+| Candidate SHA-256 | `9cf1463babac3c31f8e32fceef2514d456d7817a7b9986b1be3eefa2e8d17c2b` |
 | Source commit (40 characters) | `UNASSIGNED - BLOCKING` |
 | Remote marketplace revision (40 characters) | `NOT YET AVAILABLE - PREPUBLICATION`; replace in later activation evidence |
 | Marketplace tree SHA-256 | `UNASSIGNED - BLOCKING` |
@@ -113,6 +113,8 @@ rendered card, or a conversational claim alone.
       instruction or private-deliberation narration.
 - [ ] Claude Web quoted `learningPlanToday.text` verbatim, matching the
       SkillPilot cockpit, without own counts, totals, sums or judgement.
+- [ ] Claude Web announced the active goal separately and once, after any
+      completion feedback, and not in reply to a status-only question.
 - [ ] Claude Web named unevaluable plans as in the supplied text without
       exposing plan or landscape identifiers or reporting them as zero.
 - [ ] Claude Web resumed the backend-selected plan goal only when the

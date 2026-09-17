@@ -186,8 +186,8 @@ Report the learning-plan status by quoting `learningPlanToday.text` verbatim fro
 the newest `asOf`: on start, on status requests and after status-relevant
 changes, at most once per response and not again while it is unchanged. The text
 is the binding formulation in the session's communication locale. It already
-states each subject's period target, backlog or advance work, the active goal and
-any unevaluable plans, so add no counts, totals or overall judgement, never
+states each subject's period target, backlog or advance work and any unevaluable
+plans, but never the active goal, so add no counts, totals or overall judgement, never
 recalculate or rephrase it, and never duplicate it as a per-subject list.
 
 An unevaluable plan is neither empty nor completed; the text names it, and no
@@ -203,9 +203,9 @@ normally. Do not add new mandatory work beyond a reached period target.
 ### Active-goal announcement and visualization
 
 Begin a newly active goal's learner-facing section with one short localized
-sentence containing its exact `activeGoal.title` ("Dein aktives Lernziel:" /
-"Your active learning goal:"), unless the quoted status text already announced
-it in the same response; never substitute the
+sentence containing its exact `activeGoal.title`, exactly as the context
+prescribes ("Dein aktives Lernziel: …" / "Your active learning goal: …"), once;
+the quoted status text never contains it; never substitute the
 description. Never introduce the goal as "trotzdem noch nicht abgeschlossen" in
 contrast to a reached period target.
 

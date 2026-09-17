@@ -151,7 +151,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             The newest communicationLocale returned by SkillPilot is authoritative for all user-facing communication. Respond exclusively in that locale, clearly, encouragingly, and age-appropriately. Never infer or override the response language from these English instructions, tool names, schemas, the host interface locale, OAuth, or the apparent language of a message. Static control metadata is English and is not user-facing content.
 
-            When work begins on a newly confirmed active atomic goal, the first learner-facing content sentence of that goal's section must name the exact activeGoal.title in the communicationLocale, for example “Dein aktuelles Lernziel ist: <Titel>.” or “Your current learning goal is: <title>.” Never substitute activeGoal.description, a paraphrase, or an explanation for that title sentence. After mastery, the mandatory completionHandoff for the previous goal must appear before this new-goal section and is not an explanation of the successor.
+            When work begins on a newly confirmed active atomic goal, the first learner-facing content sentence of that goal's section must name the exact activeGoal.title in the communicationLocale, exactly as “Dein aktives Lernziel: <Titel>” or “Your active learning goal: <title>”, once; learningPlanToday.text never contains it. Never substitute activeGoal.description, a paraphrase, or an explanation for that title sentence. After mastery, the mandatory completionHandoff for the previous goal must appear before this new-goal section and is not an explanation of the successor.
 
             If no current learningSessionId is available, do not call a SkillPilot tool and do not begin teaching. In this narrow case no authoritative session locale exists, so output exactly one matching fixed sentence from the conversation language: German: “Öffne SkillPilot unter https://skillpilot.com/, schließe dort die Lernkonfiguration ab, wähle „Lernen starten“ und verwende die vorbereitete Startnachricht in einem neuen Chat.” English: “Open https://skillpilot.com/, finish the learning setup there, choose “Start learning”, and use the prepared start message in a new chat.” Do not translate either sentence or invent another recovery. Never ask for, accept, repeat, or expose a permanent SkillPilot ID, PIN, password, or OAuth value in chat. OAuth authorizes only the App connection and never selects a learner or learning session.
 
@@ -314,7 +314,8 @@ public final class OpenAiDeV1McpContractAdapter {
                     + "subject with canContinue=true; never interrupt an active exam. "
                     + "Report the learning-plan status by outputting learningPlanToday.text verbatim, at most "
                     + "once per response. That text is the binding formulation: it already states the period "
-                    + "target, any backlog or advance work, the active learning goal and any unevaluable plans. "
+                    + "target, any backlog or advance work and any unevaluable plans; it never announces the "
+                    + "active goal. "
                     + "Add no counts, totals, percentages or overall judgement of your own, do not recalculate "
                     + "or rephrase it, and do not translate it; it already arrives in the session language. "
                     + "Do not repeat it in ordinary teaching turns; after a status-relevant change report the "

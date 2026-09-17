@@ -140,7 +140,6 @@ public final class LearnerPlanTodayStatusFixtures {
                         && subjects.stream().allMatch(LearnerPlanTodayStatus.SubjectStatus::evaluable),
                 UnifiedLearningPlanStatusFormatter.formatCombinedStatusText(
                         subjectLines,
-                        activeGoal == null ? null : activeGoal.title(),
                         unavailableLabels,
                         locale),
                 direction,

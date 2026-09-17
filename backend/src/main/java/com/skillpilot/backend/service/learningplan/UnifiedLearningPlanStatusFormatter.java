@@ -121,9 +121,12 @@ public final class UnifiedLearningPlanStatusFormatter {
         return isEnglish(locale) ? "No learning plan set up." : "Kein Lernplan eingerichtet.";
     }
 
+    /**
+     * Joins the subject lines and any evaluation notice into {@code status.text}. The active
+     * goal is deliberately not part of it; its announcement is published separately.
+     */
     public static String formatCombinedStatusText(
             List<String> subjectLines,
-            String activeGoalTitle,
             List<String> unavailableSubjectLabels,
             String locale) {
         StringBuilder sb = new StringBuilder();
@@ -135,15 +138,6 @@ public final class UnifiedLearningPlanStatusFormatter {
                     }
                     sb.append(line.trim());
                 }
-            }
-        }
-        if (activeGoalTitle != null && !activeGoalTitle.isBlank()) {
-            String activeLine = formatActiveGoalAnnouncement(activeGoalTitle, locale);
-            if (!activeLine.isBlank()) {
-                if (sb.length() > 0) {
-                    sb.append("\n");
-                }
-                sb.append(activeLine);
             }
         }
         if (unavailableSubjectLabels != null && !unavailableSubjectLabels.isEmpty()) {

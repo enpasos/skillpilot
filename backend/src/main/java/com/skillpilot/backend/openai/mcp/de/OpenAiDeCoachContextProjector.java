@@ -14,6 +14,7 @@ import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.openai.OpenAiCoachLocale;
+import com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusFormatter;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -1364,17 +1365,19 @@ public final class OpenAiDeCoachContextProjector {
         if (goal == null || blank(goal.title())) {
             return "";
         }
-        String title = compact(goal.title(), 240);
+        // The same backend announcement as in the cockpit; the plan status text never repeats it.
+        String announcement = UnifiedLearningPlanStatusFormatter.formatActiveGoalAnnouncement(
+                compact(goal.title(), 240), english ? "en" : "de");
         if (english) {
-            return "When beginning work on this newly confirmed goal, start the first sentence of the new-goal "
-                    + "section exactly with: “Your current learning goal is: " + title + ".” Use the title, not "
-                    + "the description, and give no explanation before it within that section. A mandatory "
-                    + "completion handoff for the previous goal must still appear before this section. ";
+            return "When beginning work on this newly confirmed goal, start the new-goal section exactly "
+                    + "with the line: “" + announcement + "” Use the title, not the description, and give "
+                    + "no explanation before it within that section. A mandatory completion handoff for the "
+                    + "previous goal must still appear before this section. ";
         }
-        return "Beginne den Abschnitt zu diesem neu bestätigten Ziel genau mit dem Satz: "
-                + "„Dein aktuelles Lernziel ist: " + title + ".“ Verwende den Titel, nicht die Beschreibung, und "
-                + "gib innerhalb dieses Abschnitts davor keine Erklärung. Eine verpflichtende Abschlussrückmeldung "
-                + "zum vorherigen Ziel muss dennoch vor diesem Abschnitt erscheinen. ";
+        return "Beginne den Abschnitt zu diesem neu bestätigten Ziel genau mit der Zeile: „"
+                + announcement + "“ Verwende den Titel, nicht die Beschreibung, und gib innerhalb dieses "
+                + "Abschnitts davor keine Erklärung. Eine verpflichtende Abschlussrückmeldung zum vorherigen "
+                + "Ziel muss dennoch vor diesem Abschnitt erscheinen. ";
     }
 
     private boolean isExamGoal(FrontierGoal goal) {

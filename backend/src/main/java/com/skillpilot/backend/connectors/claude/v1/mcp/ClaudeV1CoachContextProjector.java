@@ -241,6 +241,11 @@ public class ClaudeV1CoachContextProjector {
         if (status.statusText() != null) {
             projected.put("text", status.statusText());
         }
+        if (hasActiveGoal && status.activeGoal() != null
+                && status.activeGoal().announcement() != null
+                && !status.activeGoal().announcement().isBlank()) {
+            projected.put("activeGoalAnnouncement", status.activeGoal().announcement());
+        }
         if (status.statusDirection() != null) {
             projected.put("statusDirection", status.statusDirection().getValue());
         }
@@ -267,7 +272,9 @@ public class ClaudeV1CoachContextProjector {
         String instruction = switch (state) {
             case "continue" -> "Output 'text' verbatim when reporting plan status, at most once per response, "
                     + "and add no numbers, totals or overall judgement of your own; it already states any "
-                    + "remaining backlog. Then continue the current active goal directly. A clear request for "
+                    + "remaining backlog. When teaching of the active goal begins, output 'activeGoalAnnouncement' "
+                    + "verbatim once as its first line, never before every task. Then continue the current active "
+                    + "goal directly. A clear request for "
                     + "a different available subject takes priority. A status-only question or request to pause "
                     + "needs no new exercise or write.";
             case "resume" -> "For a normal learning start, resume the backend-selected due goal without asking "

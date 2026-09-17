@@ -4,8 +4,9 @@
 
 - Quote the plan status formulated by SkillPilot word for word, identical to the
   SkillPilot cockpit: one line per subject with its daily or weekly target and
-  any backlog or work ahead, followed by the active learning goal. The coach
-  adds no counts or totals of its own; unevaluable plans are named explicitly.
+  any backlog or work ahead. The coach adds no counts or totals of its own;
+  unevaluable plans are named explicitly. The active learning goal is announced
+  separately, once, when teaching begins.
 - Requires the matching SkillPilot connector, which publishes this status text
   instead of the former daily counts; both change together.
 - Keep continuation beyond plans, prerequisites, the fourteen tools, OAuth and

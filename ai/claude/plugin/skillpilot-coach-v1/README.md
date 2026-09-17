@@ -65,8 +65,8 @@ Version 1.1.7 keeps the chat plan-first with a compact plan status formulated by
 the backend. Claude quotes `learningPlanToday.text` verbatim and adds no counts
 or judgement of its own, for example:
 “Mathematik: Tagesziel 2 von 3 · im Plan” and
-“Physik: Heute kein Tagesziel · 2 Lernziele im Rückstand”, followed by the
-active learning goal. The backend merges all plans of a subject, evaluates the
+“Physik: Heute kein Tagesziel · 2 Lernziele im Rückstand”. The active learning
+goal is announced separately, once, when teaching begins. The backend merges all plans of a subject, evaluates the
 learner's chosen day or week basis, formulates the text in the session language
 and names unevaluable plans instead of reporting them as zero. The same text
 appears in the SkillPilot cockpit. Automatic continuation stops when the period

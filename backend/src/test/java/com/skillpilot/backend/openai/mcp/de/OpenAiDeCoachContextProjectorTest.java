@@ -321,7 +321,7 @@ class OpenAiDeCoachContextProjectorTest {
                 .containsExactly("Änderungsraten deuten", "Integrale als Bestände verstehen");
         assertThat(context.instruction())
                 .contains(
-                        "Dein aktuelles Lernziel ist: Warum Mathematik? – Denken, Muster & Zukunft.",
+                        "„Dein aktives Lernziel: Warum Mathematik? – Denken, Muster & Zukunft“",
                         "Verwende den Titel, nicht die Beschreibung",
                         "Landkarte",
                         "praktisch nützlich",
@@ -376,7 +376,7 @@ class OpenAiDeCoachContextProjectorTest {
                         "Data, chance and evidence-based decisions");
         assertThat(context.instruction())
                 .contains(
-                        "Your current learning goal is: Why mathematics? – Thinking, patterns & the future.",
+                        "“Your active learning goal: Why mathematics? – Thinking, patterns & the future”",
                         "Use the title, not the description",
                         "only selects a path starts the motivational dialogue",
                         "active personal follow-up",
@@ -520,7 +520,7 @@ class OpenAiDeCoachContextProjectorTest {
                 .doesNotContain(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD);
         assertThat(german.instruction())
                 .contains(
-                        "Dein aktuelles Lernziel ist: Lernkarten – Funktionen und Gleichungen.",
+                        "„Dein aktives Lernziel: Lernkarten – Funktionen und Gleichungen“",
                         "bestätigt das Karteikartenlernen",
                         OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
                         "unmittelbar als nächste Aktion",
@@ -532,7 +532,7 @@ class OpenAiDeCoachContextProjectorTest {
                 .doesNotContain("SRS-Kartendrill");
         assertThat(english.instruction())
                 .contains(
-                        "Your current learning goal is: Lernkarten – Funktionen und Gleichungen.",
+                        "“Your active learning goal: Lernkarten – Funktionen und Gleichungen”",
                         "confirms normal flashcard learning",
                         OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
                         "immediate next action",
@@ -580,7 +580,7 @@ class OpenAiDeCoachContextProjectorTest {
                         OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
         assertThat(context.instruction())
                 .contains(
-                        "Dein aktuelles Lernziel ist: Zwischen Tabelle, Graph und Term wechseln.",
+                        "„Dein aktives Lernziel: Zwischen Tabelle, Graph und Term wechseln“",
                         "unmittelbar",
                         "biete keine anderen Lernziele an",
                         "keine weitere Bestätigung")
@@ -592,7 +592,7 @@ class OpenAiDeCoachContextProjectorTest {
                         OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
         assertThat(english.instruction())
                 .contains(
-                        "Your current learning goal is: Zwischen Tabelle, Graph und Term wechseln.",
+                        "“Your active learning goal: Zwischen Tabelle, Graph und Term wechseln”",
                         "already been selected by SkillPilot",
                         "Begin it immediately",
                         "do not offer other learning goals",

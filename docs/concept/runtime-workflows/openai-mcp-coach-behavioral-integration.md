@@ -366,7 +366,7 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
 
 - **Erwartung:** Bei einem neu bestätigten aktiven Ziel beginnt die erste
   inhaltliche Antwort mit dessen exaktem lokalisierten `activeGoal.title`, zum
-  Beispiel „Dein aktuelles Lernziel ist: <Titel>.“; die Beschreibung ersetzt
+  Beispiel „Dein aktives Lernziel: <Titel>“; die Beschreibung ersetzt
   den Titel nicht. Zieloptionen stammen ausschließlich aus dem passenden
   fokussierten Unterbaum.
 - **Verboten:** Ziele aus früheren Stufen oder aus der gesamten

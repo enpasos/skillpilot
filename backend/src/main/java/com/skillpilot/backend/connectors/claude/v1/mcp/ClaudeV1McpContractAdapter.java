@@ -137,8 +137,8 @@ public class ClaudeV1McpContractAdapter {
                     + "learningPlanToday.text verbatim, once, adding no counts, totals or overall judgement "
                     + "of your own; it already states the period target, any backlog or advance work and any "
                     + "unevaluable plans. Do not repeat a status already given from this context in the same "
-                    + "response. Continue immediately with the returned active goal, which that text already "
-                    + "announces neutrally. Do not ask for another "
+                    + "response. Then output learningPlanToday.activeGoalAnnouncement verbatim once and continue "
+                    + "immediately with that returned active goal. Do not ask for another "
                     + "confirmation and do not expose identifiers, state revisions or plan mechanics.";
     static final String PLAN_SUBJECT_SWITCH_CONTINUATION_INSTRUCTION =
             "Use the returned context as the authoritative canonical backend state; do not reload it. "
@@ -273,15 +273,18 @@ public class ClaudeV1McpContractAdapter {
                 Never call the resume tool while an activeGoal is present. Only when no such immediate
                 tool call remains, report the learning-plan status by outputting learningPlanToday.text
                 verbatim, at most once per response. That text is the binding formulation and already
-                states the period target, any backlog or advance work, the active learning goal and any
-                unevaluable plans. Add no counts, totals, percentages or overall judgement of your own,
+                states the period target, any backlog or advance work and any unevaluable plans; it never
+                announces the active goal. Add no counts, totals, percentages or overall judgement of your own,
                 do not recalculate or rephrase it, and do not translate it; it already arrives in the
                 session language. Do not repeat it in ordinary teaching turns; after a status-relevant
                 change, report the finally valid status once.
                 "Mathe" is a display alias only; tool arguments still use the exact published subject.
                 Never expose plan IDs or internal error details.
-                Then continue the returned activeGoal, which that text already announces neutrally;
-                never contrast an unfinished active goal with a fulfilled period target.
+                When teaching of an active goal begins, output learningPlanToday.activeGoalAnnouncement
+                verbatim once as its first line, then continue the returned activeGoal; do not repeat the
+                announcement before every task and give none for a status-only question. After a completed
+                goal, give feedback first, then any changed status, then the successor's announcement.
+                Never contrast an unfinished active goal with a fulfilled period target.
 
                 For guidance.state=complete, celebrate that the period's workload is covered, then offer
                 optional further learning or a break without pressure or guilt.

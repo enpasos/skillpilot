@@ -23,6 +23,7 @@ import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.events.LearnerStateChangedEvent;
 import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerLearningPlanRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
@@ -41,6 +42,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -1706,6 +1708,70 @@ class LearnerLearningPlanServiceIntegrationTest {
 
         assertThat(service.getTodayStatus(LEARNER_ID, "de").statusText())
                 .isEqualTo("Mathematik: Tagesziel 0 von 1 · im Plan");
+    }
+
+    @Test
+    void statusTextNeverAnnouncesTheActiveGoalWhoseLocalizedAnnouncementStaysSeparate() {
+        learner.setFollowLearningPlans(true);
+        learner.setActiveGoalId("atom-a");
+        learnerRepository.saveAndFlush(learner);
+        LearningGoal goal = new LearningGoal();
+        goal.setId("atom-a");
+        goal.setTitle("Potenzfunktionen beschreiben");
+        goal.setTitleEn("Describe power functions");
+        when(landscapeService.getGoalDefinition("atom-a")).thenReturn(goal);
+        service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Mathe", List.of(learning("today", "2026-09-04", "2026-09-04", "atom-a"))), TODAY);
+
+        LearnerPlanTodayStatus german = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(german.statusText()).isEqualTo("Mathematik: Tagesziel 0 von 1 · im Plan");
+        assertThat(german.activeGoal().announcement())
+                .isEqualTo("Dein aktives Lernziel: Potenzfunktionen beschreiben");
+
+        LearnerPlanTodayStatus english = service.getTodayStatus(LEARNER_ID, "en");
+        assertThat(english.statusText()).isEqualTo("Mathematics: Daily target 0 of 1 · on track");
+        assertThat(english.activeGoal().announcement())
+                .isEqualTo("Your active learning goal: Describe power functions");
+    }
+
+    @Test
+    void goalsMasteredBeforePlanCreationStayOutOfTheWholeBalance() {
+        // atom-c is part of the scope but already mastered when the plan is created, so the
+        // captured plan set G holds only atom-a and atom-b (scope set up in setUp()).
+        learner.setFollowLearningPlans(true);
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-c", 1.0));
+        service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Mathe", List.of(learning("today", "2026-09-04", "2026-09-04", "atom-a", "atom-c"))),
+                TODAY);
+        // A re-sent completion of the previously mastered goal is no progress of this plan.
+        when(learnerService.getGoalCompletionsOnDate(LEARNER_ID, TODAY)).thenReturn(
+                Map.of("atom-c", TODAY.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant()));
+
+        // Counting atom-c would read "Tagesziel 1 von 2": S, P, I and H must all ignore it.
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").statusText())
+                .isEqualTo("Mathematik: Tagesziel 0 von 1 · im Plan");
+
+        // A plan goal mastered after plan creation stays in G and counts as completed work.
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-c", 1.0, "atom-a", 1.0));
+        when(learnerService.getGoalCompletionsOnDate(LEARNER_ID, TODAY)).thenReturn(Map.of(
+                "atom-c", TODAY.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant(),
+                "atom-a", TODAY.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant()));
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").statusText())
+                .isEqualTo("Mathematik: Tagesziel erreicht · im Plan");
+    }
+
+    @Test
+    void unreadableCompletionEventsNeverBecomeAZeroCompletionBalance() {
+        learner.setFollowLearningPlans(true);
+        service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Mathe", List.of(learning("today", "2026-09-04", "2026-09-04", "atom-a"))), TODAY);
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-a", 1.0));
+        when(learnerService.getGoalCompletionsOnDate(LEARNER_ID, TODAY))
+                .thenThrow(new DataAccessResourceFailureException("completion store unavailable"));
+
+        // Without reliable completion events there is no status at all, never "Tagesziel 0 von 1".
+        assertThatThrownBy(() -> service.getTodayStatus(LEARNER_ID, "de"))
+                .isInstanceOf(DataAccessResourceFailureException.class);
     }
 
     @Test
