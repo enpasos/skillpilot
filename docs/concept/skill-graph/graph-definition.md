@@ -8,10 +8,11 @@ This specification covers the skill graph itself. Projection contracts for user-
 
 Layering, migration strategy, and canonical rollout policy are specified separately in [General Goal System and Migration](general-goal-system-and-migration.md) and [Canonical Gymnasium Rollout Policy](canonical-gymnasium-rollout.md).
 
-> Normative vs implementation: this document is the conceptual/normative definition.  
-> The currently enforced CI validator profile (including rollout severities and runtime rule IDs) is documented in `docs/qa-ci/graph-validation-rules.md`.
-> Legacy serialized metadata such as `phase` may still exist in concrete repositories, but such fields are not part of the canonical graph semantics unless explicitly stated below.
-> This specification also does not define cross-landscape `requires` contracts, learner-facing curriculum bundles, or scope-specific composition-view files; those belong to higher-level composition contracts outside the single-landscape skill graph.
+> **Normative definition.** This document defines the skill graph’s semantics and validity requirements.
+>
+> **Implementation checks.** The currently enforced CI validator profile—including rollout severity levels and runtime rule identifiers—is documented in [Graph Validation Rules](../../qa-ci/graph-validation-rules.md). Legacy metadata such as `phase` may still exist in repositories, but it is not part of the canonical graph semantics unless explicitly specified below.
+>
+> **Outside this specification.** Cross-landscape `requires` contracts, learner-facing curriculum bundles, and scope-specific composition-view files belong to higher-level composition contracts outside the single-landscape skill graph.
 
 <!-- BEGIN SKILLPILOT-ILLUSTRATION: review-status -->
 
@@ -439,7 +440,7 @@ For mature landscapes, the actual didactic sequencing SHOULD be authored on atom
 
 Practical guidance:
 
-- Prefer adding `requires` edges between atomic goals instead of between clusters.
+- Prefer adding `requires` edges between atomic goals instead of clusters.
 - Use cluster-level `requires` only temporarily during early modeling, or when the prerequisite claim truly applies to all relevant descendants.
 - When refining a curriculum over time, move broad cluster dependencies downward into the relevant atomic goals and let higher-level dependency views be derived from that atomic layer.
 
