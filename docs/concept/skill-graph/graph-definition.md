@@ -440,7 +440,7 @@ For mature landscapes, the actual didactic sequencing SHOULD be authored on atom
 
 Practical guidance:
 
-- Prefer adding `requires` edges between atomic goals instead of clusters.
+- Prefer adding `requires` edges between atomic goals instead of between clusters.
 - Use cluster-level `requires` only temporarily during early modeling, or when the prerequisite claim truly applies to all relevant descendants.
 - When refining a curriculum over time, move broad cluster dependencies downward into the relevant atomic goals and let higher-level dependency views be derived from that atomic layer.
 
