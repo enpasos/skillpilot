@@ -40,8 +40,7 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 
 - $G$ is a finite set of **goals** (also called skills or nodes).
 - A **binary relation** $X \subseteq G \times G$ is a set of ordered pairs $(a,b)$.
-- For any relation $X$, $X^+$ denotes the **transitive closure** of $X$.  
-  Informally, $(a,b)\in X^+$ means there exists a directed path from $a$ to $b$ following edges in $X$.
+- For any relation $X$, $X^+$ denotes its **transitive closure**. A pair $(a,b)$ belongs to $X^+$ iff there is a directed path from $a$ to $b$ consisting of **one or more edges in $X$**. In particular, $X \subseteq X^+$. Paths of length zero do not count.
 - A directed graph $(G,X)$ is **acyclic** iff there is no $g \in G$ such that $(g,g)\in X^+$.
 
 ---
