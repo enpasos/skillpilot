@@ -16,6 +16,26 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 > Legacy serialized metadata such as `phase` may still exist in concrete repositories, but such fields are not part of the canonical graph semantics unless explicitly stated below.
 > This specification also does not define cross-landscape `requires` contracts, learner-facing curriculum bundles, or scope-specific composition-view files; those belong to higher-level composition contracts outside the single-landscape skill graph.
 
+<!-- BEGIN SKILLPILOT-ILLUSTRATION: review-status -->
+
+> **Illustrations.** Seven non-normative examples accompany this specification. The figures are explanatory complements only; formulas and normative statements remain authoritative.
+>
+> **Reading key:** prerequisite arrows run from prerequisite to dependent goal. Hierarchical grouping, inherited prerequisites, transitive reachability and learner state are different concepts. These examples do not define a new curriculum or change the formal model.
+
+<!-- END SKILLPILOT-ILLUSTRATION: review-status -->
+
+<!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-01 -->
+
+**Figure 1. Skill graph overview — non-normative example.**
+
+![Illustrative Mechanics hierarchy with Kinematics and Dynamics; prerequisite arrows run from Vectors through Velocity and Acceleration, and from Forces and Acceleration to Newton’s Second Law.](assets/graph-definition/01-skill-graph-overview.png)
+
+**How to read it:** A hierarchy answers “Which goals belong together?”; prerequisite arrows answer “What must be learned first?”. Grey connectors show parent-to-child grouping. Blue arrows point from a prerequisite to the goal that depends on it. Goals without contains children are atomic; the other goals are clusters.
+
+**Scope note:** The physics labels are abbreviated examples, not a complete, reviewed curriculum. Node colours in this structural overview distinguish hierarchy levels, not learner achievement. The illustrated tree is only one possible hierarchy; §4.2 also allows multiple parents.
+
+<!-- END SKILLPILOT-ILLUSTRATION: fig-01 -->
+
 ---
 
 ## 1. Notation and conventions
@@ -198,6 +218,18 @@ Interpretation:
 
 Clusters with $Atoms(g)=\varnothing$ are structurally allowed, but they SHOULD NOT participate in prerequisite authoring or learner progression semantics.
 
+<!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-02 -->
+
+**Figure 2. Direct and indirect containment — non-normative example.**
+
+![Contains hierarchy: Mechanics directly contains Kinematics and Dynamics; Kinematics contains Vectors, Velocity and Acceleration; Dynamics contains Forces and Newton’s Second Law. A highlighted path runs from Mechanics through Kinematics to Velocity. An info box lists Ancestors(Velocity) = {Kinematics, Mechanics}, Atoms(Kinematics) = {Vectors, Velocity, Acceleration} and Atoms(Mechanics) = all five atomic goals.](assets/graph-definition/02-contains-relation.png)
+
+**How to read it:** Every solid grey connector is one direct edge in $C$. Mechanics directly contains Kinematics and Dynamics; Kinematics contains Vectors, Velocity and Acceleration; Dynamics contains Forces and Newton’s Second Law. The highlighted path Mechanics → Kinematics → Velocity consists of two $C$ edges, so Mechanics is an ancestor of Velocity although no edge connects the two directly. Such derived relationships need no additional authored contains edges.
+
+**Scope note:** $C^+$ contains every path of one or more $C$ edges, including the direct edges themselves. Goals without contains children are atomic and the others are clusters (§2.4); the atomic basis of a cluster collects its atomic descendants, as the info box shows. The figure uses the same small hierarchy as Figure 1; it is not a complete curriculum subtree.
+
+<!-- END SKILLPILOT-ILLUSTRATION: fig-02 -->
+
 ---
 
 ## 5. Direct Requires relation
@@ -212,6 +244,18 @@ $$
 
 $(u,v)\in R_d$ means **$u$ is a direct prerequisite of $v$**.  
 Equivalently: to learn/attempt $v$, $u$ must be satisfied first.
+
+<!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-03 -->
+
+**Figure 3. Direct prerequisites — non-normative example.**
+
+![Vectors is a prerequisite of Velocity, Velocity of Acceleration; both Acceleration and Forces are prerequisites of Newton’s Second Law.](assets/graph-definition/03-direct-requires.png)
+
+**How to read it:** Read every blue arrow from left/source to right/target: “u must be satisfied before v”. In this toy model, Velocity requires Vectors; Acceleration requires Velocity; and Newton’s Second Law requires both Forces and Acceleration, not either one as an alternative.
+
+**Scope note:** An indirect prerequisite can follow from a chain without being stored as another direct edge. The arrow direction follows the mathematical relation in §5.1; it must not be reversed merely because the field name is requires.
+
+<!-- END SKILLPILOT-ILLUSTRATION: fig-03 -->
 
 ### 5.2 Canonical modeling target (recommended)
 
@@ -273,6 +317,18 @@ $$
 Pre_{eff}(v) = \{\, u\in G \mid (u,v)\in R_{eff} \,\}
 $$
 
+<!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-04 -->
+
+**Figure 4. Prerequisites inherited from a cluster — non-normative example.**
+
+![In a separate compatibility example, Vectors is outside Kinematics. A direct prerequisite from Vectors to Kinematics produces inherited prerequisites from Vectors to Velocity and Acceleration.](assets/graph-definition/04-effective-requires.png)
+
+**How to read it:** Here Vectors is deliberately outside the Kinematics cluster. A direct prerequisite on Kinematics is inherited by both descendants. The solid prerequisite and the two dashed inherited prerequisites all belong to the effective relation; dashed arrows show only the additional inherited edges.
+
+**Scope note:** This is a separate compatibility example, not the identical graph from Figure 1. Placing Vectors inside Kinematics while retaining the cluster prerequisite would create a self-dependency. For mature curricula, §5.2 recommends precise atomic-to-atomic authoring instead of broad cluster prerequisites. Effective inheritance is not the same as transitive prerequisite reachability.
+
+<!-- END SKILLPILOT-ILLUSTRATION: fig-04 -->
+
 ### 6.3 Relation to the canonical atomic model
 
 In the target state where prerequisites are authored canonically on atomic goals, hierarchy inheritance becomes mostly a compatibility mechanism rather than the primary source of learning logic.
@@ -301,6 +357,18 @@ This constraint is stricter than acyclicity of $R_d$ alone because inheritance v
 **Non-normative example (illustrative):**  
 Let $(A,B)\in C$ (i.e., $A$ contains $B$). Suppose $(X,A)\in R_d$ and $(B,X)\in R_d$.  
 Then $B \to X \to A$ exists in $R_d$, but inheritance adds $(X,B)\in R_{eff}$ (since $A$ is an ancestor of $B$), creating a cycle $B \to X \to B$ in $R_{eff}$.
+
+<!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-05 -->
+
+**Figure 5. Why inheritance can create a cycle — non-normative example.**
+
+![Comparison of a valid and an invalid effective prerequisite graph. In the valid case, X directly requires A, A contains B, and inheritance adds X as an effective prerequisite of B without forming a cycle. In the invalid case, B directly requires X while X directly requires A and A contains B, so inheritance adds X to B and yields the cycle B → X → B.](assets/graph-definition/05-validity-and-cycles.png)
+
+**How to read it:** In the left example, an external prerequisite is inherited without producing a loop. On the right, $B$ directly requires $X$, while $X$ directly requires $A$ and $A$ contains $B$. Inheritance then adds $X$ as an effective prerequisite of $B$, which combines with the direct edge $B \to X$ to create the cycle $B \to X \to B$ in $R_{eff}$.
+
+**Scope note:** The right-hand panel is a direct visual rendering of the illustrative cycle pattern in §7.1. “Valid” must always mean compliance with all required conditions, not just the absence of a visible direct cycle.
+
+<!-- END SKILLPILOT-ILLUSTRATION: fig-05 -->
 
 ### 7.2 Local minimality
 
@@ -560,6 +628,18 @@ This keeps learner progression deterministic even while cluster-level `requires`
 In the current compatibility model, availability is evaluated on $R_{eff}$.  
 In a mature atomic-authored landscape, frontier decisions for atomic goals should be driven primarily by the atomic prerequisite layer, with inherited cluster prerequisites serving only as transitional support where they still exist.
 
+<!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-06 -->
+
+**Figure 6. Which goal is available next? — non-normative example.**
+
+![With only Vectors and Forces mastered, Velocity is the only next atomic goal. Acceleration and Newton’s Second Law are blocked. Mechanics, Kinematics and Dynamics are shown as neutral structural clusters rather than as learner-state nodes.](assets/graph-definition/06-available-next-goals.png)
+
+**How to read it:** Assume the mastered atomic set is exactly {Vectors, Forces}. Then Velocity is available next. Acceleration is blocked by the unmastered Velocity goal; Newton’s Second Law is blocked by unmastered Acceleration and its prerequisite chain. No cluster is satisfied yet because each still has unmastered atomic descendants.
+
+**Scope note:** Only atomic goals belong to the learner frontier in §9.1. Cluster navigation is a separately derived view. Once Velocity is mastered, Acceleration becomes the next atomic goal; that update comes from evidence of mastery, not from the graphic.
+
+<!-- END SKILLPILOT-ILLUSTRATION: fig-06 -->
+
 ---
 
 ## 10. Summary of required validity conditions
@@ -775,6 +855,18 @@ a \in A_F \setminus M_A \ \middle|\
 \forall u\in G:\ (u,a)\in R_{eff}^+ \Rightarrow Sat(u,M_A)
 \right\}.
 $$
+
+<!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-07 -->
+
+**Figure 7. Same scope, different prerequisite checks — non-normative example.**
+
+![Comparison of optimistic and pessimistic filtering. In both panels, Vectors is outside the selected scope, Kinematics is an in-scope structural cluster, and Velocity and Acceleration are in-scope atomic goals. Optimistic mode ignores the outside-scope prerequisite and makes Velocity available next, while pessimistic mode enforces the outside-scope prerequisite and keeps both atomic goals blocked.](assets/graph-definition/07-filter-modes.png)
+
+**How to read it:** Use the same graph, the same scope and an empty mastered set in both panels. Kinematics, Velocity and Acceleration are in scope; Vectors is outside. Vectors is a prerequisite of Kinematics, and Velocity is a prerequisite of Acceleration. Through inheritance, Vectors is also an effective prerequisite of Velocity and Acceleration (dashed arrows). Optimistic evaluation ignores the outside-scope prerequisite and makes Velocity available; strict evaluation also checks Vectors, so neither atomic goal is available.
+
+**Scope note:** The two modes do not change the stored mastery set. Effective relationships are derived globally before restriction (§11.2). This example uses a transitional inherited cluster prerequisite; it must not be read as permission to ignore missing direct canonical prerequisites in the reviewed composition-view contract described in §8.5.
+
+<!-- END SKILLPILOT-ILLUSTRATION: fig-07 -->
 
 ### 11.5 Diagnostic: missing prerequisites
 
