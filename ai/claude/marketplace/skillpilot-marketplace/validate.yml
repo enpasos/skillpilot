@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           repository: enpasos/skillpilot
-          ref: d65f8383cc9a99ccc2b6eaa4f01fe88bd7ace9fb
+          ref: 5fd275a3062f1ded3782c33f137d40c32562071c
           path: canonical
           sparse-checkout: ai/claude/plugin/skillpilot-coach-v1
           persist-credentials: false
@@ -33,7 +33,7 @@ jobs:
         run: npm install --global @anthropic-ai/claude-code@2.1.241
       - name: Verify pinned source and immutable package parity
         run: |
-          test "$(git -C ../canonical rev-parse HEAD)" = 'd65f8383cc9a99ccc2b6eaa4f01fe88bd7ace9fb'
+          test "$(git -C ../canonical rev-parse HEAD)" = '5fd275a3062f1ded3782c33f137d40c32562071c'
           canonical="${GITHUB_WORKSPACE}/canonical/ai/claude/plugin/skillpilot-coach-v1"
           artifact="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.7.plugin"
           extracted="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.7"
@@ -50,8 +50,8 @@ jobs:
           const { publicationFiles } = await import(pathToFileURL(resolve(canonicalRoot, "check-package.mjs")));
           const baseline = JSON.parse(readFileSync(resolve(canonicalRoot, "release/contract-baseline.json"), "utf8"));
           assert.equal(baseline.pluginVersion, "1.1.7", "Pinned dossier version");
-          assert.equal(baseline.archive.bytes, 34085, "Pinned dossier archive bytes");
-          assert.equal(baseline.archive.sha256, "0fd4926b56a55d83247f977d7e45e9814cf2e58a8f634a1d57813c2fc99de83f", "Pinned dossier archive digest");
+          assert.equal(baseline.archive.bytes, 34438, "Pinned dossier archive bytes");
+          assert.equal(baseline.archive.sha256, "9cf1463babac3c31f8e32fceef2514d456d7817a7b9986b1be3eefa2e8d17c2b", "Pinned dossier archive digest");
           assert.deepEqual([...publicationFiles].sort(), baseline.archive.entries.map(({ packagePath }) => packagePath).sort(), "Pinned dossier inventory");
 
           const expectedFiles = [
@@ -89,7 +89,7 @@ jobs:
           assert.deepEqual(built.entries, baseline.archive.entries, "Rebuilt archive entries");
           NODE
           printf '%s  %s\n' \
-            '0fd4926b56a55d83247f977d7e45e9814cf2e58a8f634a1d57813c2fc99de83f' \
+            '9cf1463babac3c31f8e32fceef2514d456d7817a7b9986b1be3eefa2e8d17c2b' \
             "${artifact}" | sha256sum --check --strict
           mkdir "${extracted}"
           unzip -q "${artifact}" -d "${extracted}"
