@@ -16,9 +16,9 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 
 <!-- BEGIN SKILLPILOT-ILLUSTRATION: review-status -->
 
-> **Illustrations.** Seven non-normative examples accompany this specification. The figures are explanatory complements only; formulas and normative statements remain authoritative.
+> **Illustrations.** The figures are explanatory examples, not a curriculum or additional requirements. The formal definitions and normative statements remain authoritative.
 >
-> **Reading key:** prerequisite arrows run from prerequisite to dependent goal. Hierarchical grouping, inherited prerequisites, transitive reachability and learner state are different concepts. These examples do not define a new curriculum or change the formal model.
+> **Reading key.** Prerequisite arrows point from prerequisite to dependent goal. Contains connectors show which goals belong together; they do not specify a learning order.
 
 <!-- END SKILLPILOT-ILLUSTRATION: review-status -->
 
@@ -270,7 +270,7 @@ Interpretation:
 - cluster goals remain useful for navigation, filtering, and aggregation,
 - cluster-level `requires` edges are best treated as a transitional authoring aid or as an intentionally strong universal statement.
 
-If a direct prerequisite is authored on a cluster goal, it is stronger than a mere summary: under the semantics in §6 it constrains descendants via inheritance.
+If a direct prerequisite is authored on a cluster, it is stronger than a mere summary: under the semantics in §6 it constrains descendants via inheritance.
 
 ### 5.3 DAG constraint
 
