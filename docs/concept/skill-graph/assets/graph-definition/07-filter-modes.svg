@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1448" height="1086" viewBox="0 0 1448 1086" role="img" aria-labelledby="title desc">
+<title id="title">Optimistic vs. Pessimistic Filtering</title>
+<desc id="desc">Both panels have identical graph positions and no mastered goals. Scope F contains Kinematics, Velocity and Acceleration; Vectors is outside. Kinematics contains Velocity and Acceleration. Direct prerequisites are Vectors to Kinematics and Velocity to Acceleration. Vectors is inherited by both atomic children. Optimistic mode ignores all three outside-source prerequisite edges and makes Velocity available. Strict mode checks them and makes neither goal available. Effective prerequisites are computed on the full graph before restriction.</desc>
+<defs>
+<marker id="arrow-blue" viewBox="0 0 12 12" refX="12" refY="6" markerWidth="17" markerHeight="17" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L12 6 L0 12 Z" fill="#1976E9"/></marker>
+<marker id="arrow-grey" viewBox="0 0 12 12" refX="12" refY="6" markerWidth="17" markerHeight="17" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L12 6 L0 12 Z" fill="#ABB4BE"/></marker>
+</defs>
+<rect width="1448" height="1086" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#132033">
+<text x="724" y="86" font-size="52" font-weight="bold" fill="#132033" text-anchor="middle">Optimistic vs. Pessimistic Filtering</text>
+<text x="724" y="133" font-size="26" font-weight="normal" fill="#526173" text-anchor="middle">same graph, same scope, same learner state – different prerequisite checks</text>
+<rect x="36" y="174" width="676" height="602" rx="12" fill="#FFFFFF" stroke="#D0D7E0" stroke-width="1.5"/>
+<rect x="36" y="174" width="676" height="94" rx="12" fill="#F8FAFC" stroke="#D0D7E0" stroke-width="1.5"/>
+<text x="374.0" y="213" font-size="27" font-weight="bold" fill="#132033" text-anchor="middle">Optimistic mode (§11.3)</text>
+<text x="374.0" y="247" font-size="21" font-weight="normal" fill="#526173" text-anchor="middle">Only prerequisites inside F are checked.</text>
+<rect x="258" y="286" width="434" height="420" rx="12" fill="#FAFCFF" stroke="#9ABBDD" stroke-width="1.7" stroke-dasharray="8 7"/>
+<text x="274" y="312" font-size="22" font-weight="bold" fill="#526173" text-anchor="start">filter scope F</text>
+<g data-edge-source="Kinematics" data-edge-target="Velocity" data-relation="contains" data-panel="optimistic" data-ignored="false">
+<path d="M426 394 V435 H366 V480" fill="none" stroke="#8994A2" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g data-edge-source="Kinematics" data-edge-target="Acceleration" data-relation="contains" data-panel="optimistic" data-ignored="false">
+<path d="M544 394 V435 H591 V480" fill="none" stroke="#8994A2" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g data-edge-source="Vectors" data-edge-target="Kinematics" data-relation="direct" data-panel="optimistic" data-ignored="true">
+<path d="M224 447 H240 V357 H374" fill="none" stroke="#ABB4BE" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-grey)"/>
+</g>
+<g data-edge-source="Vectors" data-edge-target="Velocity" data-relation="inherited" data-panel="optimistic" data-ignored="true">
+<path d="M224 493 H246 V535 H276" fill="none" stroke="#ABB4BE" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="9 7" marker-end="url(#arrow-grey)"/>
+</g>
+<g data-edge-source="Vectors" data-edge-target="Acceleration" data-relation="inherited" data-panel="optimistic" data-ignored="true">
+<path d="M140 534 V674 H478 V576 H496" fill="none" stroke="#ABB4BE" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="9 7" marker-end="url(#arrow-grey)"/>
+</g>
+<g data-edge-source="Velocity" data-edge-target="Acceleration" data-relation="direct" data-panel="optimistic" data-ignored="false">
+<path d="M456 535 H496" fill="none" stroke="#1976E9" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+</g>
+<g data-node="Vectors" data-style="outside" data-panel="optimistic">
+<rect x="56" y="426" width="168" height="108" rx="12" fill="#F4F6F8" stroke="#ABB4BE" stroke-width="2.5" stroke-dasharray="7 6"/>
+<text x="140.0" y="461" font-size="25" font-weight="bold" fill="#526173" text-anchor="middle">Vectors</text>
+<text x="140.0" y="490" font-size="20" font-weight="normal" fill="#526173" text-anchor="middle">outside scope</text>
+<text x="140.0" y="515" font-size="20" font-weight="normal" fill="#526173" text-anchor="middle">not mastered</text>
+</g>
+<g data-node="Kinematics" data-style="structural" data-panel="optimistic">
+<rect x="374" y="320" width="224" height="74" rx="12" fill="#FFFFFF" stroke="#132033" stroke-width="2.5"/>
+<text x="486.0" y="366.52" font-size="28" font-weight="bold" fill="#132033" text-anchor="middle">Kinematics</text>
+</g>
+<g data-node="Velocity" data-style="available" data-panel="optimistic">
+<rect x="276" y="480" width="180" height="110" rx="12" fill="#DCECFF" stroke="#1976E9" stroke-width="2.5"/>
+<g transform="translate(306 532.0) scale(0.86)" aria-hidden="true">
+<circle r="13" fill="none" stroke="#1976E9" stroke-width="3.5"/>
+</g>
+<text x="330" y="535.0" font-size="25" font-weight="bold" fill="#132033" text-anchor="start">Velocity</text>
+<text x="366.0" y="571" font-size="20" font-weight="normal" fill="#1976E9" text-anchor="middle">available next</text>
+</g>
+<g data-node="Acceleration" data-style="blocked" data-panel="optimistic">
+<rect x="496" y="480" width="190" height="110" rx="12" fill="#EDF0F3" stroke="#8994A2" stroke-width="2.5"/>
+<g transform="translate(526 532.0) scale(0.86)" aria-hidden="true">
+<path d="M-7 -2 V-9 A7 7 0 0 1 7 -9 V-2" fill="none" stroke="#526173" stroke-width="3.5"/><rect x="-11" y="-3" width="22" height="19" rx="3" fill="#526173"/><circle cx="0" cy="4" r="2.5" fill="white"/><path d="M0 5 V10" stroke="white" stroke-width="2"/>
+</g>
+<text x="550" y="535.0" font-size="22" font-weight="bold" fill="#132033" text-anchor="start">Acceleration</text>
+<text x="591.0" y="571" font-size="20" font-weight="normal" fill="#526173" text-anchor="middle">blocked</text>
+</g>
+<text x="57" y="341" font-size="20" font-weight="bold" fill="#526173" text-anchor="start">ignored:</text>
+<text x="57" y="367" font-size="19" font-weight="normal" fill="#526173" text-anchor="start">prerequisite facts</text>
+<text x="57" y="392" font-size="19" font-weight="normal" fill="#526173" text-anchor="start">from outside F</text>
+<text x="591" y="625" font-size="21" font-weight="normal" fill="#526173" text-anchor="middle">needs Velocity</text>
+<text x="374" y="750" font-size="29" font-weight="bold" fill="#132033" text-anchor="middle">Available next: Velocity</text>
+<rect x="736" y="174" width="676" height="602" rx="12" fill="#FFFFFF" stroke="#D0D7E0" stroke-width="1.5"/>
+<rect x="736" y="174" width="676" height="94" rx="12" fill="#F8FAFC" stroke="#D0D7E0" stroke-width="1.5"/>
+<text x="1074.0" y="213" font-size="26" font-weight="bold" fill="#132033" text-anchor="middle">Pessimistic / strict mode (§11.4)</text>
+<text x="1074.0" y="247" font-size="21" font-weight="normal" fill="#526173" text-anchor="middle">Prerequisites inside and outside F are checked.</text>
+<rect x="958" y="286" width="434" height="420" rx="12" fill="#FAFCFF" stroke="#9ABBDD" stroke-width="1.7" stroke-dasharray="8 7"/>
+<text x="974" y="312" font-size="22" font-weight="bold" fill="#526173" text-anchor="start">filter scope F</text>
+<g data-edge-source="Kinematics" data-edge-target="Velocity" data-relation="contains" data-panel="strict" data-ignored="false">
+<path d="M1126 394 V435 H1066 V480" fill="none" stroke="#8994A2" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g data-edge-source="Kinematics" data-edge-target="Acceleration" data-relation="contains" data-panel="strict" data-ignored="false">
+<path d="M1244 394 V435 H1291 V480" fill="none" stroke="#8994A2" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g data-edge-source="Vectors" data-edge-target="Kinematics" data-relation="direct" data-panel="strict" data-ignored="false">
+<path d="M924 447 H940 V357 H1074" fill="none" stroke="#1976E9" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+</g>
+<g data-edge-source="Vectors" data-edge-target="Velocity" data-relation="inherited" data-panel="strict" data-ignored="false">
+<path d="M924 493 H946 V535 H976" fill="none" stroke="#1976E9" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="9 7" marker-end="url(#arrow-blue)"/>
+</g>
+<g data-edge-source="Vectors" data-edge-target="Acceleration" data-relation="inherited" data-panel="strict" data-ignored="false">
+<path d="M840 534 V674 H1178 V576 H1196" fill="none" stroke="#1976E9" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="9 7" marker-end="url(#arrow-blue)"/>
+</g>
+<g data-edge-source="Velocity" data-edge-target="Acceleration" data-relation="direct" data-panel="strict" data-ignored="false">
+<path d="M1156 535 H1196" fill="none" stroke="#1976E9" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+</g>
+<g data-node="Vectors" data-style="outside" data-panel="strict">
+<rect x="756" y="426" width="168" height="108" rx="12" fill="#F4F6F8" stroke="#ABB4BE" stroke-width="2.5" stroke-dasharray="7 6"/>
+<text x="840.0" y="461" font-size="25" font-weight="bold" fill="#526173" text-anchor="middle">Vectors</text>
+<text x="840.0" y="490" font-size="20" font-weight="normal" fill="#526173" text-anchor="middle">outside scope</text>
+<text x="840.0" y="515" font-size="20" font-weight="normal" fill="#526173" text-anchor="middle">not mastered</text>
+</g>
+<g data-node="Kinematics" data-style="structural" data-panel="strict">
+<rect x="1074" y="320" width="224" height="74" rx="12" fill="#FFFFFF" stroke="#132033" stroke-width="2.5"/>
+<text x="1186.0" y="366.52" font-size="28" font-weight="bold" fill="#132033" text-anchor="middle">Kinematics</text>
+</g>
+<g data-node="Velocity" data-style="blocked" data-panel="strict">
+<rect x="976" y="480" width="180" height="110" rx="12" fill="#EDF0F3" stroke="#8994A2" stroke-width="2.5"/>
+<g transform="translate(1006 532.0) scale(0.86)" aria-hidden="true">
+<path d="M-7 -2 V-9 A7 7 0 0 1 7 -9 V-2" fill="none" stroke="#526173" stroke-width="3.5"/><rect x="-11" y="-3" width="22" height="19" rx="3" fill="#526173"/><circle cx="0" cy="4" r="2.5" fill="white"/><path d="M0 5 V10" stroke="white" stroke-width="2"/>
+</g>
+<text x="1030" y="535.0" font-size="25" font-weight="bold" fill="#132033" text-anchor="start">Velocity</text>
+<text x="1066.0" y="571" font-size="20" font-weight="normal" fill="#526173" text-anchor="middle">blocked</text>
+</g>
+<g data-node="Acceleration" data-style="blocked" data-panel="strict">
+<rect x="1196" y="480" width="190" height="110" rx="12" fill="#EDF0F3" stroke="#8994A2" stroke-width="2.5"/>
+<g transform="translate(1226 532.0) scale(0.86)" aria-hidden="true">
+<path d="M-7 -2 V-9 A7 7 0 0 1 7 -9 V-2" fill="none" stroke="#526173" stroke-width="3.5"/><rect x="-11" y="-3" width="22" height="19" rx="3" fill="#526173"/><circle cx="0" cy="4" r="2.5" fill="white"/><path d="M0 5 V10" stroke="white" stroke-width="2"/>
+</g>
+<text x="1250" y="535.0" font-size="22" font-weight="bold" fill="#132033" text-anchor="start">Acceleration</text>
+<text x="1291.0" y="571" font-size="20" font-weight="normal" fill="#526173" text-anchor="middle">blocked</text>
+</g>
+<text x="1066" y="623" font-size="20" font-weight="normal" fill="#526173" text-anchor="middle">missing: Vectors</text>
+<text x="1066" y="648" font-size="20" font-weight="normal" fill="#526173" text-anchor="middle">(outside scope)</text>
+<text x="1291" y="623" font-size="20" font-weight="normal" fill="#526173" text-anchor="middle">missing: Velocity,</text>
+<text x="1291" y="648" font-size="20" font-weight="normal" fill="#526173" text-anchor="middle">Vectors</text>
+<text x="1074" y="750" font-size="29" font-weight="bold" fill="#132033" text-anchor="middle">Available next: none</text>
+<text x="724" y="811" font-size="26" font-weight="bold" fill="#132033" text-anchor="middle">Nothing is mastered in either panel.</text>
+<text x="408.41" y="848" font-size="24" font-weight="normal" fill="#526173">R</text>
+<text x="425.73" y="854" font-size="16" font-weight="normal" fill="#526173">eff</text>
+<text x="443.27" y="848" font-size="24" font-weight="normal" fill="#526173"> is computed on the full graph before the filter is applied.</text>
+<rect x="36" y="873" width="1376" height="179" rx="12" fill="#FFFFFF" stroke="#D0D7E0" stroke-width="1.5"/>
+<text x="60" y="905" font-size="24" font-weight="bold" fill="#132033" text-anchor="start">Legend</text>
+<rect x="62" y="910" width="62" height="32" rx="6" fill="#F4F6F8" stroke="#ABB4BE" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="144" y="934" font-size="20" font-weight="normal" fill="#132033" text-anchor="start">outside-scope goal</text>
+<rect x="502" y="910" width="62" height="32" rx="6" fill="#FFFFFF" stroke="#132033" stroke-width="1.8"/>
+<text x="584" y="934" font-size="20" font-weight="normal" fill="#132033" text-anchor="start">structural cluster</text>
+<path d="M952 927 H1014" fill="none" stroke="#1976E9" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+<text x="1034.00" y="934" font-size="20" font-weight="normal" fill="#132033">direct requires (R</text>
+<text x="1187.38" y="939" font-size="16" font-weight="normal" fill="#132033">d</text>
+<text x="1196.28" y="934" font-size="20" font-weight="normal" fill="#132033">)</text>
+<rect x="62" y="959" width="62" height="32" rx="6" fill="#F7FBFF" stroke="#9ABBDD" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="144" y="983" font-size="20" font-weight="normal" fill="#132033" text-anchor="start">filter scope F</text>
+<rect x="502" y="959" width="62" height="32" rx="6" fill="#DCECFF" stroke="#1976E9" stroke-width="1.8"/>
+<g transform="translate(533 975) scale(0.62)" aria-hidden="true">
+<circle r="13" fill="none" stroke="#1976E9" stroke-width="3.5"/>
+</g>
+<text x="584" y="983" font-size="20" font-weight="normal" fill="#132033" text-anchor="start">available next</text>
+<path d="M952 970 H1014" fill="none" stroke="#1976E9" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="9 7" marker-end="url(#arrow-blue)"/>
+<text x="1034" y="977" font-size="20" font-weight="normal" fill="#132033" text-anchor="start">inherited effective requires</text>
+<text x="1034.00" y="1000" font-size="19" font-weight="normal" fill="#526173">R</text>
+<text x="1047.72" y="1005" font-size="16" font-weight="normal" fill="#526173">eff</text>
+<path d="M62 1023 H124" fill="none" stroke="#8994A2" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="144" y="1030" font-size="20" font-weight="normal" fill="#132033" text-anchor="start">contains (C)</text>
+<rect x="502" y="1006" width="62" height="32" rx="6" fill="#EDF0F3" stroke="#8994A2" stroke-width="1.8"/>
+<g transform="translate(533 1022) scale(0.62)" aria-hidden="true">
+<path d="M-7 -2 V-9 A7 7 0 0 1 7 -9 V-2" fill="none" stroke="#526173" stroke-width="3.5"/><rect x="-11" y="-3" width="22" height="19" rx="3" fill="#526173"/><circle cx="0" cy="4" r="2.5" fill="white"/><path d="M0 5 V10" stroke="white" stroke-width="2"/>
+</g>
+<text x="584" y="1030" font-size="20" font-weight="normal" fill="#132033" text-anchor="start">blocked</text>
+<path d="M952 1023 H1014" fill="none" stroke="#ABB4BE" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-grey)"/>
+<text x="1034" y="1030" font-size="20" font-weight="normal" fill="#132033" text-anchor="start">ignored in optimistic mode</text>
+</g>
+</svg>

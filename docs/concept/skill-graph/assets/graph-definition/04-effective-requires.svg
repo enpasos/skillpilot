@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1448" height="1086" viewBox="0 0 1448 1086" role="img" aria-labelledby="title desc">
+<title id="title">Effective Requires</title>
+<desc id="desc">Vectors is a direct prerequisite of Kinematics. Kinematics contains Velocity and Acceleration. Both children inherit Vectors. The direct arrow and both inherited arrows belong to the effective relation. This is a separate compatibility example, not Figure 1’s hierarchy.</desc>
+<defs>
+<marker id="arrow-blue" viewBox="0 0 12 12" refX="12" refY="6" markerWidth="17" markerHeight="17" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L12 6 L0 12 Z" fill="#1976E9"/></marker>
+<marker id="arrow-grey" viewBox="0 0 12 12" refX="12" refY="6" markerWidth="17" markerHeight="17" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L12 6 L0 12 Z" fill="#ABB4BE"/></marker>
+</defs>
+<rect width="1448" height="1086" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#132033">
+<text x="724" y="86" font-size="52" font-weight="bold" fill="#132033" text-anchor="middle">Effective Requires</text>
+<text x="724" y="133" font-size="26" font-weight="normal" fill="#526173" text-anchor="middle">A cluster’s prerequisites also apply to its descendants.</text>
+<g data-edge-source="Kinematics" data-edge-target="Velocity" data-relation="contains" data-panel="main" data-ignored="false">
+<path d="M960 382 V450 H760 V532" fill="none" stroke="#8994A2" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g data-edge-source="Kinematics" data-edge-target="Acceleration" data-relation="contains" data-panel="main" data-ignored="false">
+<path d="M1100 382 V450 H1225 V532" fill="none" stroke="#8994A2" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+</g>
+<g data-edge-source="Vectors" data-edge-target="Kinematics" data-relation="direct" data-panel="main" data-ignored="false">
+<path d="M346 334 H872" fill="none" stroke="#1976E9" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+</g>
+<g data-edge-source="Vectors" data-edge-target="Velocity" data-relation="inherited" data-panel="main" data-ignored="false">
+<path d="M244 382 V580 H632" fill="none" stroke="#1976E9" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="9 7" marker-end="url(#arrow-blue)"/>
+</g>
+<g data-edge-source="Vectors" data-edge-target="Acceleration" data-relation="inherited" data-panel="main" data-ignored="false">
+<path d="M166 382 V716 H1225 V628" fill="none" stroke="#1976E9" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="9 7" marker-end="url(#arrow-blue)"/>
+</g>
+<g data-node="Vectors" data-style="atomic" data-panel="main">
+<rect x="96" y="286" width="250" height="96" rx="12" fill="#FFF0D9" stroke="#C3943F" stroke-width="2.5"/>
+<text x="221.0" y="344.2" font-size="30" font-weight="bold" fill="#132033" text-anchor="middle">Vectors</text>
+</g>
+<g data-node="Kinematics" data-style="cluster" data-panel="main">
+<rect x="872" y="286" width="300" height="96" rx="12" fill="#E4F2DC" stroke="#719B50" stroke-width="2.5"/>
+<text x="1022.0" y="344.2" font-size="30" font-weight="bold" fill="#132033" text-anchor="middle">Kinematics</text>
+</g>
+<g data-node="Velocity" data-style="atomic" data-panel="main">
+<rect x="632" y="532" width="256" height="96" rx="12" fill="#FFF0D9" stroke="#C3943F" stroke-width="2.5"/>
+<text x="760.0" y="590.2" font-size="30" font-weight="bold" fill="#132033" text-anchor="middle">Velocity</text>
+</g>
+<g data-node="Acceleration" data-style="atomic" data-panel="main">
+<rect x="1090" y="532" width="270" height="96" rx="12" fill="#FFF0D9" stroke="#C3943F" stroke-width="2.5"/>
+<text x="1225.0" y="590.2" font-size="30" font-weight="bold" fill="#132033" text-anchor="middle">Acceleration</text>
+</g>
+<text x="605" y="309" font-size="24" font-weight="normal" fill="#1976E9" text-anchor="middle">authored prerequisite</text>
+<text x="420" y="554" font-size="23" font-weight="normal" fill="#1976E9" text-anchor="middle">inherited</text>
+<text x="752" y="697" font-size="23" font-weight="normal" fill="#1976E9" text-anchor="middle">inherited</text>
+<text x="420.02" y="806" font-size="30" font-weight="bold" fill="#132033">All three prerequisite arrows belong to R</text>
+<text x="1000.09" y="812" font-size="16" font-weight="bold" fill="#132033">eff</text>
+<text x="1019.65" y="806" font-size="30" font-weight="bold" fill="#132033">.</text>
+<text x="724" y="850" font-size="25" font-weight="normal" fill="#526173" text-anchor="middle">Solid: authored. Dashed: added by inheritance.</text>
+<rect x="36" y="901" width="1376" height="151" rx="12" fill="#FFFFFF" stroke="#D0D7E0" stroke-width="1.5"/>
+<text x="60" y="933" font-size="24" font-weight="bold" fill="#132033" text-anchor="start">Legend</text>
+<path d="M62 960 H124" fill="none" stroke="#8994A2" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="144" y="967" font-size="21" font-weight="normal" fill="#132033" text-anchor="start">contains (C)</text>
+<path d="M497 960 H559" fill="none" stroke="#1976E9" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+<text x="579.00" y="967" font-size="21" font-weight="normal" fill="#132033">direct requires (R</text>
+<text x="740.03" y="972" font-size="16" font-weight="normal" fill="#132033">d</text>
+<text x="748.94" y="967" font-size="21" font-weight="normal" fill="#132033">)</text>
+<path d="M958 960 H1020" fill="none" stroke="#1976E9" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="9 7" marker-end="url(#arrow-blue)"/>
+<text x="1040" y="967" font-size="21" font-weight="normal" fill="#132033" text-anchor="start">inherited prerequisite</text>
+<text x="1040.00" y="990" font-size="20" font-weight="normal" fill="#526173">added to R</text>
+<text x="1137.88" y="995" font-size="16" font-weight="normal" fill="#526173">eff</text>
+<rect x="62" y="1000" width="62" height="32" rx="6" fill="#E4F2DC" stroke="#719B50" stroke-width="1.8"/>
+<text x="144" y="1024" font-size="21" font-weight="normal" fill="#132033" text-anchor="start">cluster (has children)</text>
+<rect x="497" y="1000" width="62" height="32" rx="6" fill="#FFF0D9" stroke="#C3943F" stroke-width="1.8"/>
+<text x="579" y="1024" font-size="21" font-weight="normal" fill="#132033" text-anchor="start">atomic goal (no children)</text>
+</g>
+</svg>
