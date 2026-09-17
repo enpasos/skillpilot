@@ -84,7 +84,7 @@ Interpretation:
 
 - current repositories may still serialize this metadata under the field name `phase`
 - this metadata is optional and semantically unstable across domains
-- it may support display badges, coarse filtering, and aggregation,
+- it may support display badges, coarse filtering, migration compatibility, or legacy tooling
 - it is not part of the canonical goal-graph semantics
 - it does not participate in the required validity conditions of this specification
 - phase-based validator checks, if a repository still uses them, belong to the validator profile and not to the normative graph definition
