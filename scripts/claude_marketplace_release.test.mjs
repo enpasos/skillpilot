@@ -625,7 +625,7 @@ test("Marketplace CI pins canonical source and credentials without depending on 
   assert.doesNotMatch(marketplaceWorkflow, /curl|api\/public\/claude\/plugins/u);
   for (const replacement of ["main", "a".repeat(40)]) {
     const changed = marketplaceWorkflow.replace(
-      "ref: 114ff08b29bcb259aaebf6be2a90aef659bcd886", `ref: ${replacement}`);
+      "ref: d65f8383cc9a99ccc2b6eaa4f01fe88bd7ace9fb", `ref: ${replacement}`);
     assert.throws(() => validateClaudeMarketplaceWorkflow(changed, lane),
       /pinned checkouts mismatch/u);
   }
@@ -680,9 +680,9 @@ test("actual CI gate rebuilds the PR package with exact dossier bytes and unzip 
     const result = runWorkflowPackageGate(outputRoot, artifactPath);
     assert.equal(result.status, 0, result.stderr);
     const archive = readFileSync(artifactPath);
-    assert.equal(archive.length, 34263);
+    assert.equal(archive.length, 34085);
     assert.equal(createHash("sha256").update(archive).digest("hex"),
-      "439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca");
+      "0fd4926b56a55d83247f977d7e45e9814cf2e58a8f634a1d57813c2fc99de83f");
     const extracted = resolve(root, "extracted");
     const unzip = spawnSync("unzip", ["-q", artifactPath, "-d", extracted], { encoding: "utf8" });
     assert.equal(unzip.status, 0, unzip.stderr);
