@@ -270,7 +270,7 @@ Interpretation:
 - cluster goals remain useful for navigation, filtering, and aggregation,
 - cluster-level `requires` edges are best treated as a transitional authoring aid or as an intentionally strong universal statement.
 
-If a direct prerequisite is authored on a cluster, it is stronger than a mere summary: under the semantics in §6 it constrains descendants via inheritance.
+If a direct prerequisite is authored on a cluster goal, it is stronger than a mere summary: under the semantics in §6 it constrains descendants via inheritance.
 
 ### 5.3 DAG constraint
 
