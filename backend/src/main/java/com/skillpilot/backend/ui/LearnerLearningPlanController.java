@@ -1,6 +1,7 @@
 package com.skillpilot.backend.ui;
 
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
+import com.skillpilot.backend.api.LearnerPlanTodayStatus;
 import com.skillpilot.backend.service.LearningPlanPrerequisiteScheduleConflictException;
 import com.skillpilot.backend.service.LearnerLearningPlanService;
 import com.skillpilot.backend.service.LearnerLifecycleService;
@@ -60,6 +61,22 @@ public class LearnerLearningPlanController {
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
                 .body(learningPlans.getPlans(skillpilotId, asOf));
+    }
+
+    /**
+     * The one shared learning-plan status. Cockpit and the coach channels read the same
+     * calculation and the same wording here; neither side formulates its own.
+     */
+    @GetMapping("/status")
+    public ResponseEntity<LearnerPlanTodayStatus> getStatus(
+            @PathVariable String skillpilotId,
+            @RequestParam(required = false) String language,
+            HttpServletResponse response) {
+        noStore(response);
+        learners.assertActiveLearnerRouteAccess(skillpilotId);
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(learningPlans.getTodayStatus(skillpilotId, language));
     }
 
     @GetMapping("/by-landscape")

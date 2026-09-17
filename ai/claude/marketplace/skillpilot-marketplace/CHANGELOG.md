@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.1.7 - 2026-09-16
+
+- Quote the plan status formulated by SkillPilot word for word, identical to the
+  SkillPilot cockpit: one line per subject with its daily or weekly target and
+  any backlog or work ahead, followed by the active learning goal. The coach
+  adds no counts or totals of its own; unevaluable plans are named explicitly.
+- Requires the matching SkillPilot connector, which publishes this status text
+  instead of the former daily counts; both change together.
+- Keep continuation beyond plans, prerequisites, the fourteen tools, OAuth and
+  learner-session boundaries. Local checks do not replace real-client acceptance.
+- Preserve the published 1.1.6 artifact and release evidence; verify this
+  version's repository publication and client behavior separately.
+
 ## 1.1.6 - 2026-09-14
 
 - Plans guide and prioritize; they never prevent explicitly requested learning.

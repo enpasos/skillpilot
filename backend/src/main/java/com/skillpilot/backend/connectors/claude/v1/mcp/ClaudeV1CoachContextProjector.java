@@ -202,64 +202,51 @@ public class ClaudeV1CoachContextProjector {
         if (status == null) {
             return Map.of(
                     "followLearningPlans", false,
+                    "evaluable", false,
                     "resumeAvailable", false,
                     "subjects", List.of(),
-                    "totals", dailyCounts(0, 0, 0, 0, 0),
                     "unavailablePlanCount", 0,
                     "guidance", dailyPlanGuidance("unavailable"));
         }
 
-        Map<String, DailySubject> bySubject = new java.util.TreeMap<>(
-                String.CASE_INSENSITIVE_ORDER.thenComparing(java.util.Comparator.naturalOrder()));
         int unavailablePlanCount = Math.max(0, status.unavailablePlanCount());
         List<LearnerPlanTodayStatus.SubjectStatus> rawSubjects =
                 status.subjects() == null ? List.of() : status.subjects();
+        List<Map<String, Object>> subjects = new java.util.ArrayList<>();
         for (LearnerPlanTodayStatus.SubjectStatus subject : rawSubjects) {
             String label = subject == null ? null : safeSubjectLabel(subject.subjectLabel());
-            if (label == null || !validDailyCounts(subject)) {
+            if (label == null) {
                 unavailablePlanCount++;
                 continue;
             }
-            DailyCounts counts = new DailyCounts(
-                    subject.dueToday(),
-                    subject.completedToday(),
-                    subject.openToday(),
-                    subject.openOverdue(), subject.extraCompletedToday());
-            bySubject.merge(label,
-                    new DailySubject(counts, subject.current(), subject.canContinue(), 1),
-                    DailySubject::add);
-        }
-
-        List<Map<String, Object>> subjects = new java.util.ArrayList<>();
-        DailyCounts totals = new DailyCounts(0, 0, 0, 0, 0);
-        for (Map.Entry<String, DailySubject> entry : bySubject.entrySet()) {
-            DailySubject value = entry.getValue();
-            DailyCounts counts = value.counts();
-            Map<String, Object> subject = new LinkedHashMap<>();
-            subject.put("subject", entry.getKey());
-            subject.put("current", hasActiveGoal && value.current());
-            subject.put("canContinue", status.followLearningPlans() && value.planCount() == 1
-                    && value.canContinue());
-            subject.putAll(dailyCounts(
-                    counts.dueToday(),
-                    counts.completedToday(),
-                    counts.openToday(),
-                    counts.openOverdue(), counts.extraCompletedToday()));
-            subjects.add(Map.copyOf(subject));
-            totals = totals.add(counts);
+            Map<String, Object> projectedSubject = new LinkedHashMap<>();
+            projectedSubject.put("subject", label);
+            projectedSubject.put("current", hasActiveGoal && subject.current());
+            projectedSubject.put("canContinue", status.followLearningPlans()
+                    && subject.canContinue() && label.equals(subject.subjectLabel()));
+            projectedSubject.put("evaluable", subject.evaluable());
+            if (subject.statusDirection() != null) {
+                projectedSubject.put("statusDirection", subject.statusDirection().getValue());
+            }
+            subjects.add(Map.copyOf(projectedSubject));
         }
 
         Map<String, Object> projected = new LinkedHashMap<>();
         if (status.asOf() != null) {
             projected.put("asOf", status.asOf().toString());
         }
+        if (status.periodBasis() != null) {
+            projected.put("periodBasis", status.periodBasis().name());
+        }
+        if (status.statusText() != null) {
+            projected.put("text", status.statusText());
+        }
+        if (status.statusDirection() != null) {
+            projected.put("statusDirection", status.statusDirection().getValue());
+        }
+        projected.put("evaluable", status.evaluable());
         projected.put("followLearningPlans", status.followLearningPlans());
         projected.put("subjects", List.copyOf(subjects));
-        projected.put("totals", dailyCounts(
-                totals.dueToday(),
-                totals.completedToday(),
-                totals.openToday(),
-                totals.openOverdue(), totals.extraCompletedToday()));
         projected.put(
                 "resumeAvailable",
                 status.followLearningPlans() && status.resumeAvailable() && !hasActiveGoal);
@@ -269,7 +256,8 @@ public class ClaudeV1CoachContextProjector {
         String guidanceState = !status.followLearningPlans() ? "paused"
                 : hasActiveGoal ? "continue"
                 : status.asOf() == null || subjects.isEmpty() ? "unavailable"
-                : totals.openToday() == 0 ? unavailablePlanCount > 0 ? "unavailable" : "complete"
+                : status.periodQuotaFulfilled()
+                        ? (unavailablePlanCount > 0 || !status.evaluable() ? "unavailable" : "complete")
                 : canAutomaticallyResume ? "resume" : "blocked";
         projected.put("guidance", dailyPlanGuidance(guidanceState));
         return Map.copyOf(projected);
@@ -277,68 +265,46 @@ public class ClaudeV1CoachContextProjector {
 
     private Map<String, Object> dailyPlanGuidance(String state) {
         String instruction = switch (state) {
-            case "continue" -> "Continue the current active goal directly. Report changed daily counts briefly; "
-                    + "a clear request for a different available subject takes priority. A status-only question "
-                    + "or request to pause needs no new exercise or write.";
+            case "continue" -> "Output 'text' verbatim when reporting plan status, at most once per response, "
+                    + "and add no numbers, totals or overall judgement of your own; it already states any "
+                    + "remaining backlog. Then continue the current active goal directly. A clear request for "
+                    + "a different available subject takes priority. A status-only question or request to pause "
+                    + "needs no new exercise or write.";
             case "resume" -> "For a normal learning start, resume the backend-selected due goal without asking "
                     + "for confirmation. A clear subject request takes priority: use its exact published subject "
                     + "with canContinue=true instead of a preliminary generic resume. For a status-only question "
-                    + "or pause, report the status without starting a goal.";
-            case "complete" -> "Today's quota is fulfilled in every evaluated subject. Celebrate that progress. "
-                    + "If openOverdue is positive, emphasize the opportunity to catch up without pressure or guilt; "
-                    + "do not foreground a break. Otherwise offer optional further learning or a break. "
-                    + "If dueToday=0, say there is no fixed quota "
-                    + "today instead of claiming work was completed. Extra learning requires an explicit request, "
-                    + "even when resumeAvailable=true. A request to continue, catch up or learn a named subject "
-                    + "is sufficient; use the published resumeAvailable or canContinue capability without another "
-                    + "confirmation. Zero openToday or openOverdue counts never revoke that capability. "
-                    + "Learning plans prioritize work and never limit learning within the Personal Curriculum. "
-                    + "Do not automatically resume, select future goals, widen "
-                    + "focus or redirect to the Web app. Remaining backlog is not required today; neither the "
-                    + "entire plan nor all backlog is necessarily finished.";
+                    + "or pause, output 'text' verbatim without starting a goal.";
+            case "complete" -> "The period's workload is covered in every evaluated subject. Celebrate that "
+                    + "progress. When reporting plan status, output 'text' verbatim and add no numbers, totals "
+                    + "or overall judgement of your own; it already states any remaining backlog and whether the "
+                    + "period had a target at all. Offer optional further learning or a break without pressure "
+                    + "or guilt. Extra learning requires an explicit request, even when resumeAvailable=true. "
+                    + "A request to continue, catch up or learn a named subject is sufficient; use the published "
+                    + "resumeAvailable or canContinue capability without another confirmation. A fulfilled period "
+                    + "target never revokes that capability. Learning plans prioritize work and never limit "
+                    + "learning within the Personal Curriculum. Do not automatically resume, select future goals, "
+                    + "widen focus or redirect to the Web app. Remaining backlog is not required today; neither "
+                    + "the entire plan nor all backlog is necessarily finished.";
             case "blocked" -> "Some scheduled goals remain open, but no due target can currently be started "
-                    + "automatically. Do not call today complete or automatically resume extra work. "
+                    + "automatically. Do not call the period complete or automatically resume extra work. "
+                    + "When reporting plan status, output 'text' verbatim and add no numbers of your own. "
                     + "An explicit learning request may still use published resumeAvailable or canContinue "
                     + "capabilities for eligible personal targets; the plan prioritizes work and never limits learning. "
                     + "If no learning capability is available, explain the current prerequisite obstacle briefly. "
                     + "Any plan correction belongs to the teacher; do not make the learner repair it in the Web app.";
             case "paused" -> "Automatic plan guidance is off. Do not automatically resume a plan. "
                     + "For a normal learning request, continue the regular authoritative active goal or frontier. "
-                    + "For a status-only question or an explicit pause, do not start a new exercise.";
-            default -> "The full daily workload cannot currently be confirmed. Report only the available "
-                    + "subject counts and do not claim today is complete. Learning plans prioritize work and "
+                    + "For a status-only question or an explicit pause, do not start a new exercise. "
+                    + "When reporting plan status, output 'text' verbatim.";
+            default -> "The full workload cannot currently be confirmed. Output 'text' verbatim including its "
+                    + "unavailability notice, never claim the period is complete and never invent a substitute "
+                    + "status. Learning plans prioritize work and "
                     + "never limit learning within the Personal Curriculum. For an explicit learning request, "
                     + "use published resumeAvailable or canContinue capabilities even if a plan is missing or "
                     + "outdated; the backend selects an eligible personal target. Any plan correction can be "
                     + "handled separately by the teacher. Do not send the learner through plan configuration.";
         };
         return Map.of("state", state, "instruction", instruction);
-    }
-
-    private boolean validDailyCounts(LearnerPlanTodayStatus.SubjectStatus subject) {
-        return subject != null
-                && subject.dueToday() >= 0
-                && subject.completedToday() >= 0
-                && subject.openToday() >= 0
-                && subject.openOverdue() >= 0
-                && subject.extraCompletedToday() >= 0
-                && (subject.extraCompletedToday() == 0 || subject.openToday() == 0)
-                && (long) subject.completedToday() + subject.openToday() == subject.dueToday();
-    }
-
-    private Map<String, Object> dailyCounts(
-            int dueToday,
-            int completedToday,
-            int openToday,
-            int openOverdue,
-            int extraCompletedToday) {
-        Map<String, Object> counts = new LinkedHashMap<>();
-        counts.put("dueToday", dueToday);
-        counts.put("completedToday", completedToday);
-        counts.put("openToday", openToday);
-        counts.put("openOverdue", openOverdue);
-        counts.put("extraCompletedToday", extraCompletedToday);
-        return Map.copyOf(counts);
     }
 
     private String safeSubjectLabel(String rawLabel) {
@@ -353,30 +319,6 @@ public class ClaudeV1CoachContextProjector {
             return null;
         }
         return bounded(label, 120);
-    }
-
-    private record DailyCounts(
-            int dueToday,
-            int completedToday,
-            int openToday,
-            int openOverdue,
-            int extraCompletedToday) {
-
-        DailyCounts add(DailyCounts other) {
-            return new DailyCounts(
-                    Math.addExact(dueToday, other.dueToday),
-                    Math.addExact(completedToday, other.completedToday),
-                    Math.addExact(openToday, other.openToday),
-                    Math.addExact(openOverdue, other.openOverdue),
-                    Math.addExact(extraCompletedToday, other.extraCompletedToday));
-        }
-    }
-
-    private record DailySubject(DailyCounts counts, boolean current, boolean canContinue, int planCount) {
-        DailySubject add(DailySubject other) {
-            return new DailySubject(counts.add(other.counts), current || other.current,
-                    canContinue || other.canContinue, Math.addExact(planCount, other.planCount));
-        }
     }
 
     /**

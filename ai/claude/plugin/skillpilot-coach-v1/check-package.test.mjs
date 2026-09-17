@@ -18,15 +18,15 @@ test("validates the checked-in Claude plugin package", () => {
   assert.deepEqual(validateClaudePluginPackage(packageRoot), { errors: [], toolCount: 14 });
 });
 
-test("rejects a replacement candidate version other than 1.1.6", () => {
+test("rejects a replacement candidate version other than 1.1.7", () => {
   withPackageCopy((root) => {
     mutate(root, ".claude-plugin/plugin.json", (value) => value.replace(
-      '"version": "1.1.6"',
+      '"version": "1.1.7"',
       '"version": "1.0.4"',
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /replacement candidate must be version 1\.1\.6/u,
+      /replacement candidate must be version 1\.1\.7/u,
     );
   });
 });
@@ -81,7 +81,7 @@ test("rejects loss of the OAuth and learner-session separation", () => {
 // Instruction regression tests are grouped by their single owning source below.
 
 for (const [name, owner, original, unsafeReplacement, invariant] of [
-  ["loading assessment references for every startup", "skill", "only when\nits entry condition applies", "before every tool invocation", "conditional-workflows"],
+  ["loading assessment references for every startup", "skill", "only when its entry condition applies", "before every tool invocation", "conditional-workflows"],
   ["OAuth selecting a learner", "skill", "neither selects the learner nor renews this session", "selects the learner and renews this session", "session-oauth"],
   ["reusing expired sessions", "skill", "absolute 24-hour lifetime", "renewable 72-hour lifetime", "session-oauth"],
   ["sending chat prose to the backend", "skill", "Never send that prose to SkillPilot", "Send that prose to SkillPilot", "chat-privacy"],
@@ -107,23 +107,27 @@ for (const [name, owner, original, unsafeReplacement, invariant] of [
   ["discarding an active unmastered goal", "skill", "With an active unmastered goal,\n  teach it directly", "With an active unmastered goal, deny further learning", "guarded-resume"],
   ["making plans a learning ban", "skill", "it must never prevent learning", "it may prevent learning", "plan-never-blocks-learning"],
   ["treating empty backlog or an exhausted plan as a ban", "skill", "calendar, empty backlog or exhausted plan is never a learning ban", "calendar, empty backlog or exhausted plan prevents learning", "plan-never-blocks-learning"],
-  ["treating daily counts as capability authority", "skill", "authority for these actions, never plan counts", "authority only while plan counts remain positive", "plan-never-blocks-learning"],
+  ["treating daily counts as capability authority", "skill", "authority for these actions, never the plan status", "authority only while plan counts remain positive", "plan-never-blocks-learning"],
   ["allowing arbitrary goals or prerequisite bypass", "skill", "Never invent goals or bypass prerequisites", "Invent goals or bypass prerequisites", "plan-never-blocks-learning"],
   ["ending content when only the plan is complete", "skill", "Only completion of\nthe whole Personal Curriculum ends its learning content", "Completion of the daily plan ends its learning content", "plan-never-blocks-learning"],
   ["rejecting a subject from its daily counters", "skill", "without deriving it from counts", "using its daily counts", "subject-choice"],
   ["normalizing the subject argument", "skill", "copying its \x60subject\x60 exactly", "sending a guessed subject alias", "subject-choice"],
   ["asking an unchanged unavailable subject again", "skill", "Do not retry the rejected switch", "Retry the rejected switch", "subject-choice"],
   ["marking a parked goal complete on subject change", "skill", "previous goal is parked, not\ncompleted", "previous goal is automatically completed", "subject-choice"],
-  ["omitting a valid subject from today's summary", "skill", "for every valid subject", "for the current subject only", "compact-summary"],
-  ["repeating backlog reminders in ordinary turns", "skill", "subject counters only when requested", "subject counters on every teaching turn", "compact-summary"],
-  ["counting one subject's extra toward another", "skill", "extras never offset another subject's quota", "extras fill another subject's quota", "quota-accuracy"],
-  ["presenting unevaluable plans as zero workload", "skill", "unavailable instead of “0 of 0”", "“0 of 0 done”", "quota-accuracy"],
-  ["automatically assigning extra after the daily quota", "skill", "requires an explicit request\nfor voluntary extra", "happens automatically after quota completion", "daily-guidance"],
+  ["paraphrasing the backend status", "skill", "\x60learningPlanToday.text\x60 verbatim", "a paraphrase of \x60learningPlanToday.text\x60", "verbatim-status"],
+  ["adding own counts to the status", "skill", "Add no counts, totals or judgement of", "Add counts, totals and judgement of", "verbatim-status"],
+  ["recalculating or translating the status", "skill", "never recalculate, rephrase or translate it", "freely recalculate, rephrase or translate it", "verbatim-status"],
+  ["repeating an unchanged status every turn", "skill", "do not repeat an unchanged status every turn", "repeat an unchanged status every turn", "verbatim-status"],
+  ["keeping a stale status after a change", "skill", "quote the new text once", "keep the earlier text", "verbatim-status"],
+  ["presenting unevaluable plans as zero workload", "skill", "never present “0 of 0”", "present “0 of 0”", "status-accuracy"],
+  ["treating a reached target as nothing left", "skill", "A reached period target is not “nothing left”", "A reached period target means “nothing left”", "neutral-active-goal"],
+  ["contrasting the active goal with quota completion", "skill", "(no “trotzdem”/“still not completed” quota contrast)", "(use a “trotzdem”/“still not completed” quota contrast)", "neutral-active-goal"],
+  ["automatically assigning extra after the daily quota", "skill", "requires an explicit request for voluntary extra", "happens automatically after quota completion", "daily-guidance"],
   ["foregrounding pauses despite a catch-up opportunity", "skill", "keep\npausing possible without foregrounding it", "strongly recommend a pause", "daily-guidance"],
   ["pressuring the learner to clear backlog", "skill", "without guilt or pressure", "using guilt and pressure", "daily-guidance"],
   ["treating an ambiguous subject mention as extra-learning consent", "skill", "A subject request without clear learning intent needs clarification", "Any subject mention permits extra learning", "daily-complete-precedence"],
-  ["stopping an unfinished active goal at the daily quota", "skill", "not teaching an\nactive unfinished goal", "and teaching an active unfinished goal", "daily-complete-precedence"],
-  ["blocking explicit learning after the daily quota", "skill", "It never blocks explicitly requested learning", "It blocks explicitly requested learning", "daily-complete-precedence"],
+  ["stopping an unfinished active goal at the daily quota", "skill", "not teaching an active\nunfinished goal", "and teaching an active unfinished goal", "daily-complete-precedence"],
+  ["blocking explicit learning after the daily quota", "skill", "it never blocks explicitly requested learning", "it blocks explicitly requested learning", "daily-complete-precedence"],
   ["asking permission again after explicit continuation", "skill", "already expresses that intent; do not ask\nagain", "needs another confirmation", "daily-complete-precedence"],
   ["claiming blocked plans complete", "skill", "without claiming completion", "while claiming completion", "daily-guidance"],
   ["lowering ordinary evidence to a guided answer", "skill", "two independent checks", "one heavily guided answer", "ordinary-evidence"],
@@ -269,15 +273,15 @@ test("rejects loss of same-server coexistence and custom-connector boundaries", 
   });
 });
 
-test("rejects conflation of historical observations with 1.1.6 acceptance", () => {
+test("rejects conflation of historical observations with 1.1.7 acceptance", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
       /Earlier packages were\s+observed in paid Claude Web chat and, after account-level direct installation\s+on Claude Pro, in the native Claude app on Android/u,
-      "The 1.1.6 package already passed every exact-client check",
+      "The 1.1.7 package already passed every exact-client check",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /distinguish historical observations from pending 1\.1\.6 exact-candidate acceptance/u,
+      /distinguish historical observations from pending 1\.1\.7 exact-candidate acceptance/u,
     );
   });
 });

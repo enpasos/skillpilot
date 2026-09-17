@@ -200,16 +200,20 @@ assert.equal(isLearnerPlanActionAvailable('error'), false)
 assert.equal(isLearnerPlanActionAvailable('ready'), true)
 assert.equal(isLearnerPlanActionAvailable('ready', true), false)
 
+// Plans are ordered by subject, exactly as the backend orders its status lines, so the
+// cockpit and the chat never disagree about the order of subjects. Only unusable plans
+// sort last; no urgency is derived from plan metrics any more.
 const sorted = sortLearnerLearningPlansForToday([
   { ...parsed.plans[0], planId: 'stale', landscapeId: 'z', stale: true, canContinue: false, continueReason: 'personal-curriculum-changed' },
-  { ...parsed.plans[0], planId: 'done', landscapeId: 'a', canContinue: false, continueReason: 'no-open-due-frontier-goal', metrics: { ...parsed.plans[0].metrics, dueToday: 0, completedDueToday: 0, openDueToday: 0, openDueThroughToday: 0, completedDueThroughToday: parsed.plans[0].metrics.dueThroughToday } },
+  { ...parsed.plans[0], planId: 'done', landscapeId: 'a', canContinue: false, continueReason: 'no-open-due-frontier-goal' },
   { ...parsed.plans[0], planId: 'actionable', landscapeId: 'p' },
 ])
-assert.deepEqual(sorted.map(({ planId }) => planId), ['actionable', 'done', 'stale'])
+assert.deepEqual(sorted.map(({ planId }) => planId), ['done', 'actionable', 'stale'])
 assert.deepEqual(sortLearnerLearningPlansForToday([
-  { ...parsedExtra.plans[0], planId: 'voluntary', landscapeId: 'a' },
-  { ...parsed.plans[0], planId: 'daily', landscapeId: 'z' },
-]).map(({ planId }) => planId), ['daily', 'voluntary'], 'unfinished daily targets precede extra work')
+  { ...parsedExtra.plans[0], planId: 'physics', landscapeId: 'z' },
+  { ...parsed.plans[0], planId: 'maths', landscapeId: 'a' },
+], (landscapeId) => (landscapeId === 'a' ? 'Mathematik' : 'Physik'))
+  .map(({ planId }) => planId), ['maths', 'physics'], 'subjects sort by their label')
 
 let capturedUrl = ''
 let capturedInit: RequestInit | undefined

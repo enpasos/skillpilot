@@ -4040,6 +4040,20 @@ public class LearnerService {
     @Transactional
     public void setPreferences(String skillpilotId, String learningStrategy, Boolean autoPilot, Boolean strictMode,
             Boolean showGoalVisualizationsInChat, Boolean followLearningPlans) {
+        setPreferences(
+                skillpilotId,
+                learningStrategy,
+                autoPilot,
+                strictMode,
+                showGoalVisualizationsInChat,
+                followLearningPlans,
+                null);
+    }
+
+    @Transactional
+    public void setPreferences(String skillpilotId, String learningStrategy, Boolean autoPilot, Boolean strictMode,
+            Boolean showGoalVisualizationsInChat, Boolean followLearningPlans,
+            com.skillpilot.backend.service.learningplan.PeriodBasis learningPlanPeriodBasis) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         boolean coachStateChanged = false;
@@ -4066,6 +4080,12 @@ public class LearnerService {
                     learner.getFollowLearningPlans(),
                     followLearningPlans);
             learner.setFollowLearningPlans(followLearningPlans);
+        }
+        if (learningPlanPeriodBasis != null) {
+            coachStateChanged |= !Objects.equals(
+                    learner.getLearningPlanPeriodBasis(),
+                    learningPlanPeriodBasis);
+            learner.setLearningPlanPeriodBasis(learningPlanPeriodBasis);
         }
         if (coachStateChanged) {
             advanceCoachStateRevision(learner);
@@ -11089,6 +11109,28 @@ public class LearnerService {
                 .collect(Collectors.toSet());
         Map<String, Instant> completions = new LinkedHashMap<>();
         for (var completion : goalCompletionService.getCompletionsOnDate(skillpilotId, date)) {
+            if (masteredGoals.contains(completion.getGoalId())) {
+                completions.putIfAbsent(completion.getGoalId(), completion.getOccurredAt());
+            }
+        }
+        return Collections.unmodifiableMap(completions);
+    }
+
+    /** Real threshold crossings in the given Berlin date range, still mastered now. */
+    @Transactional(readOnly = true)
+    public Map<String, Instant> getGoalCompletionsBetween(String skillpilotId, LocalDate startDate, LocalDate endDate) {
+        ensureLearnerExists(skillpilotId);
+        Objects.requireNonNull(startDate, "completion start date");
+        Objects.requireNonNull(endDate, "completion end date");
+        if (goalCompletionService == null) {
+            return Map.of();
+        }
+        Set<String> masteredGoals = masteryRepository.findByLearner_SkillpilotId(skillpilotId).stream()
+                .filter(mastery -> mastery.getValue() >= PLANNING_SCOPE_MASTERY_THRESHOLD)
+                .map(Mastery::getGoalKey)
+                .collect(Collectors.toSet());
+        Map<String, Instant> completions = new LinkedHashMap<>();
+        for (var completion : goalCompletionService.getCompletionsBetween(skillpilotId, startDate, endDate)) {
             if (masteredGoals.contains(completion.getGoalId())) {
                 completions.putIfAbsent(completion.getGoalId(), completion.getOccurredAt());
             }

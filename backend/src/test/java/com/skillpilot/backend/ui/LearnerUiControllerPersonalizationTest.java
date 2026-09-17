@@ -79,13 +79,16 @@ class LearnerUiControllerPersonalizationTest {
                 LEARNER_ID,
                 new PreferencesRequest(null, null, null, false, true));
 
+        // The controller forwards the full preference set, including the period basis, which a
+        // request without an explicit choice leaves null so the stored default stays untouched.
         verify(learnerService).setPreferences(
                 LEARNER_ID,
                 null,
                 null,
                 null,
                 false,
-                true);
+                true,
+                null);
         verifyNoMoreInteractions(learnerService);
     }
 

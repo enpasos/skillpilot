@@ -78,6 +78,55 @@ export interface LearnerLearningPlanSummary {
   canContinue: boolean
 }
 
+export type LearnerPlanStatusDirection = 'on_track' | 'behind' | 'ahead'
+
+/**
+ * One subject, merged across every plan of that subject by the backend.
+ *
+ * An unevaluable subject carries no texts and no direction; `canContinue` stays
+ * independent of it, because being able to keep learning is not the same question
+ * as whether the plan status can be determined.
+ */
+export interface LearnerPlanSubjectStatus {
+  subjectKey: string
+  subjectLabel: string
+  evaluable: boolean
+  periodText: string | null
+  planStatusText: string | null
+  subjectLine: string | null
+  statusDirection: LearnerPlanStatusDirection | null
+  current: boolean
+  canContinue: boolean
+}
+
+export interface LearnerPlanActiveGoal {
+  title: string
+  announcement: string
+}
+
+/**
+ * The single backend-formulated learning-plan status shared by cockpit and chat.
+ *
+ * The cockpit renders these texts and derives no status of its own from plan metrics;
+ * a second local calculation would be exactly the competing status model this replaces.
+ */
+export interface LearnerPlanStatus {
+  asOf: LearnerLearningPlanDate
+  periodBasis: 'DAY' | 'WEEK'
+  periodStart: LearnerLearningPlanDate
+  periodEnd: LearnerLearningPlanDate
+  timeZone: string
+  language: string
+  evaluable: boolean
+  statusText: string
+  statusDirection: LearnerPlanStatusDirection | null
+  activeGoal: LearnerPlanActiveGoal | null
+  followLearningPlans: boolean
+  resumeAvailable: boolean
+  subjects: LearnerPlanSubjectStatus[]
+  unavailablePlanCount: number
+}
+
 export interface LearnerLearningPlansResponse {
   asOf: LearnerLearningPlanDate
   followLearningPlans: boolean

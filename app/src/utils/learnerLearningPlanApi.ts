@@ -12,6 +12,9 @@ import type {
   LearnerLearningPlanSummary,
   LearnerLearningPlanTransitionResponse,
   LearnerLearningPlansResponse,
+  LearnerPlanStatus,
+  LearnerPlanStatusDirection,
+  LearnerPlanSubjectStatus,
   PreviewLearnerLearningPlansResponse,
   ReconcileLearnerLearningPlansRequest,
   SaveLearnerLearningPlanRequest,
@@ -258,6 +261,98 @@ export const parseLearnerLearningPlanSummary = (value: unknown): LearnerLearning
     continueReason,
     canContinue,
   }
+}
+
+const nullableText = (value: unknown): string | null =>
+  typeof value === 'string' && value.trim() ? value.trim() : null
+
+const parseStatusDirection = (value: unknown): LearnerPlanStatusDirection | null =>
+  value === 'on_track' || value === 'behind' || value === 'ahead' ? value : null
+
+const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus => {
+  const source = asRecord(value, 'Invalid learning-plan status response: subject')
+  const evaluable = requiredBoolean(source.evaluable, 'subject.evaluable')
+  const statusDirection = parseStatusDirection(source.statusDirection)
+  const subjectLine = nullableText(source.subjectLine)
+  // Evaluability is its own state: an unevaluable subject must never arrive carrying a
+  // direction or a status line that would read like a valid balance.
+  if (evaluable !== (statusDirection !== null) || evaluable !== (subjectLine !== null)) {
+    throw new Error('Invalid learning-plan status response: subject.evaluability')
+  }
+  return {
+    subjectKey: requiredString(source.subjectKey, 'subject.subjectKey'),
+    subjectLabel: requiredString(source.subjectLabel, 'subject.subjectLabel'),
+    evaluable,
+    periodText: nullableText(source.periodText),
+    planStatusText: nullableText(source.planStatusText),
+    subjectLine,
+    statusDirection,
+    current: requiredBoolean(source.current, 'subject.current'),
+    canContinue: requiredBoolean(source.canContinue, 'subject.canContinue'),
+  }
+}
+
+export const parseLearnerPlanStatus = (value: unknown): LearnerPlanStatus => {
+  const source = asRecord(value, 'Invalid learning-plan status response')
+  const periodBasis = source.periodBasis === 'WEEK'
+    ? 'WEEK'
+    : source.periodBasis === 'DAY' ? 'DAY' : null
+  if (!periodBasis) {
+    throw new Error('Invalid learning-plan status response: periodBasis')
+  }
+  const periodStart = parseDate(source.periodStart, 'periodStart')
+  const periodEnd = parseDate(source.periodEnd, 'periodEnd')
+  const asOf = parseDate(source.asOf, 'asOf')
+  if (periodStart > periodEnd || asOf < periodStart || asOf > periodEnd) {
+    throw new Error('Invalid learning-plan status response: period')
+  }
+  if (!Array.isArray(source.subjects)) {
+    throw new Error('Invalid learning-plan status response: subjects')
+  }
+  const activeGoalSource = source.activeGoal === null || source.activeGoal === undefined
+    ? null
+    : asRecord(source.activeGoal, 'Invalid learning-plan status response: activeGoal')
+  return {
+    asOf,
+    periodBasis,
+    periodStart,
+    periodEnd,
+    timeZone: requiredString(source.timeZone, 'timeZone'),
+    language: requiredString(source.language, 'language'),
+    evaluable: requiredBoolean(source.evaluable, 'evaluable'),
+    statusText: requiredString(source.statusText, 'statusText'),
+    statusDirection: parseStatusDirection(source.statusDirection),
+    activeGoal: activeGoalSource
+      ? {
+          title: requiredString(activeGoalSource.title, 'activeGoal.title'),
+          announcement: requiredString(activeGoalSource.announcement, 'activeGoal.announcement'),
+        }
+      : null,
+    followLearningPlans: requiredBoolean(source.followLearningPlans, 'followLearningPlans'),
+    resumeAvailable: requiredBoolean(source.resumeAvailable, 'resumeAvailable'),
+    subjects: source.subjects.map(parseLearnerPlanSubjectStatus),
+    unavailablePlanCount: requiredInteger(
+      source.unavailablePlanCount,
+      'unavailablePlanCount',
+    ),
+  }
+}
+
+/** Reads the one shared status; the cockpit renders its texts instead of composing its own. */
+export const getLearnerPlanStatus = async (
+  skillpilotId: string,
+  language: string | undefined,
+  options: LearnerLearningPlanRequestOptions = {},
+): Promise<LearnerPlanStatus> => {
+  const endpoint = `${learnerPlansBase(skillpilotId, options.apiBase)}/status${
+    language ? `?language=${encodeURIComponent(language)}` : ''
+  }`
+  const response = await (options.fetchImpl ?? fetch)(endpoint, {
+    credentials: 'include',
+    cache: 'no-store',
+    signal: options.signal,
+  })
+  return parseLearnerPlanStatus(await readJsonResponse(response))
 }
 
 const parsePlanBlock = (value: unknown): LearnerLearningPlanBlock => {

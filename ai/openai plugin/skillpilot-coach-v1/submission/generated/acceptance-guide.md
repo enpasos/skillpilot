@@ -6,11 +6,11 @@ Automatisch aus den aktuellen Einreichungsquellen erzeugt. Nicht hier bearbeiten
 
 Kandidat: `1.1.0` · MCP-Endpunkt: `https://mcp-coach-v1.skillpilot.com/mcp`
 
-Testsuite-SHA-256: `c2ed60388586a915882302c4e1eb562c482e5201421b30c85c3910e09a1a90b9`
+Testsuite-SHA-256: `0630406ea4c382a8b401d56e7c4e8688d5859494d9819748b263981c68ae8fc7`
 
-Vertrags-SHA-256: `12bd4d582a7cc5703735fb73a56025cdcfd42fac4e5e5e1506be758de0ea4f2b`
+Vertrags-SHA-256: `7036180225b191f86dc6302e58ceef2447dc8511d0b97610b39ae65d8bd0eda3`
 
-Paket-Snapshot-SHA-256: `fea1da8a2d1c8133311d6ec58f52c89bbde4ad4c3bb98df6668ba28074f5757a`
+Paket-Snapshot-SHA-256: `674abf1ce065f94b3b97c0703c177d6049cbf0b997f5a9a130878c70e4ec5583`
 
 ## Vorbereitung
 
@@ -436,7 +436,7 @@ Verbotene Werkzeuge: `get_skillpilot_exam_evaluation`, `set_skillpilot_mastery`.
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiSubmissionReviewReplayTest.java` → `n3EarlyExamSolutionRemainsAbsentFromContext` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java` → `examMasteryRequiresEvaluationCapabilityAndAtLeastThePassingScore` (backend-contract)
 
-## D1: Compact truthful cross-subject daily overview
+## D1: Verbatim truthful cross-subject plan status
 
 **Nicht ausgeführt** · Zusätzlicher Plan-/Statustest · Ausgangszustand: `dailyPlan`
 
@@ -458,7 +458,7 @@ Erwarteter Startzustand: Current learningPlanToday with at least two valid subje
 
 ### Erwartetes Ergebnis
 
-One compact localized summary shows actual completions today against stable subject quotas, open counts per subject and voluntary extra. Mention backlog only for requested plan details; disclose partial-plan failures safely.
+The coach quotes the backend's localized plan status verbatim and once: one line per subject with its period target and any backlog or advance work, plus a safe notice for unevaluable plans. It adds no counts or totals of its own and does not repeat an unchanged status during exercises.
 
 Erforderliche Werkzeuge: `get_skillpilot_context`.
 
@@ -466,17 +466,17 @@ Verbotene Werkzeuge: keine zusätzlichen Verbote.
 
 ### Prüfkriterien
 
-- [ ] `daily-counts` — Inhaltlich/visuell prüfen: Compare every visible count with authoritative learningPlanToday: completedToday counts actual completions today of due plan goals, including older overdue goals, capped at each subject's stable dueToday quota; extraCompletedToday is a voluntary bonus that never fills another subject's quota. The 48 quota / 2 completed today / 46 open numbers are a controlled backend example, never a forced live total. Avoid routine backlog reminders. A zero quota means no fixed quota today, not completed work.
+- [ ] `daily-counts` — Inhaltlich/visuell prüfen: Compare the visible plan status with authoritative learningPlanToday.text: it is quoted verbatim, once, in the session language, with no counts, totals, percentages or overall judgement added by the coach. A reached period target is never presented as nothing left, an unevaluable plan is never shown as 0 of 0, and an unchanged status is not repeated during exercises.
 
 - [ ] `safe-warning` — Inhaltlich/visuell prüfen: Unavailable plans get an explicit safe partial-data warning without internal identifiers; never represent missing plans as all-clear.
 
 ### Zugeordnete automatisierte Tests
 
-- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `dailyPlanReadReturnsAdditiveLocalizedCountsWithoutInternalIds` (backend-contract)
-- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `dailyPlanReadSanitizesAndMergesSubjectsAndRecomputesTrustedTotals` (backend-contract)
-- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `compactSummaryUsesTodayQuotaProgressAndWarnsAboutPartialPlans` (backend-contract)
-- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `fulfilledQuotaPublishesVoluntaryExtraAndDoesNotTurnBacklogIntoRequiredWork` (backend-contract)
-- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `zeroQuotaHasHonestHeadlineAndSubjectBonusNeverReplacesAnotherQuota` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `dailyPlanReadReturnsTheLocalizedStatusTextWithoutInternalIdsOrCounts` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `dailyPlanReadSanitizesLabelsAndWithdrawsSwitchingForThem` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `compactSummaryIsTheBackendTextItselfInEveryLanguage` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `coveredPeriodTargetPublishesAdvanceWorkAndDoesNotTurnBacklogIntoRequiredWork` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `zeroPeriodTargetIsStatedHonestlyAndAdvanceWorkNeverCoversAnotherSubject` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `fullContextReadsTodayWithoutAdvancingStateAndSuppressesFutureGoalChoices` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java` → `overdueSuccessFillsTodaysQuotaBeforeReducingResidualBacklog` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java` → `noCrossSubjectOrFutureGoalCreditAndNoCreditForRevokedMastery` (backend-contract)

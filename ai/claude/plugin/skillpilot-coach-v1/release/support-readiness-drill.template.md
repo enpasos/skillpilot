@@ -12,8 +12,8 @@
 | Field | Value |
 | --- | --- |
 | Drill status | `pending` |
-| Candidate version | `1.1.6` |
-| Candidate SHA-256 | `439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca` |
+| Candidate version | `1.1.7` |
+| Candidate SHA-256 | `0fd4926b56a55d83247f977d7e45e9814cf2e58a8f634a1d57813c2fc99de83f` |
 | Source commit (40 characters) | `UNASSIGNED - BLOCKING` |
 | Remote marketplace revision (40 characters) | `NOT YET AVAILABLE - PREPUBLICATION`; replace in later activation evidence |
 | Marketplace tree SHA-256 | `UNASSIGNED - BLOCKING` |
@@ -84,12 +84,14 @@ check. The personal-marketplace beta has no proactive per-operation monitor,
 real-time detection promise or SLA. This template neither satisfies nor
 duplicates the separate exact-client acceptance gate.
 
-The 1.1.6 exact-client gate remains `pending` until a fresh Marketplace or
+The 1.1.7 exact-client gate remains `pending` until a fresh Marketplace or
 explicit exact-candidate install on the controlled Web and Android Voice
 clients independently completes the daily-plan, automatic-resume and
 orientation scenarios. No earlier package or evidence satisfies this gate.
 
-For explicit continuation, include zero daily quota and empty backlog, future
+For the plan status, include day and week basis, two plans of one subject, a
+subject with backlog, one ahead of plan and one unevaluable plan. For explicit
+continuation, include zero daily quota and empty backlog, future
 plan targets, an exhausted plan with reachable Personal Curriculum goals, and
 `blocked`/`unavailable` guidance with `resumeAvailable=true`. Verify exact subject
 labels, continued teaching of an active unfinished goal, and no prerequisite
@@ -109,11 +111,10 @@ rendered card, or a conversational claim alone.
 
 - [ ] Claude Web completed the exact orientation scenario without policy,
       instruction or private-deliberation narration.
-- [ ] Claude Web gave one compact daily summary with total completed out of
-      today's due goals and the open count per subject; overdue work appeared
-      only when positive, without redundant per-subject count lists.
-- [ ] Claude Web warned safely about unavailable plans without exposing plan or
-      landscape identifiers or presenting partial totals as complete.
+- [ ] Claude Web quoted `learningPlanToday.text` verbatim, matching the
+      SkillPilot cockpit, without own counts, totals, sums or judgement.
+- [ ] Claude Web named unevaluable plans as in the supplied text without
+      exposing plan or landscape identifiers or reporting them as zero.
 - [ ] Claude Web resumed the backend-selected plan goal only when the
       authoritative `resumeAvailable` flag was true, without a Web-app button.
 - [ ] Claude Web exposed no lazy-loading, schema, parameter or retry mechanics.

@@ -52,6 +52,8 @@ interface PersonalCurriculumPreferences {
     strategy: 'RANDOM' | 'SEQUENTIAL'
     autoPilot: boolean
     followLearningPlans: boolean
+    /** Day or week basis for the plan status; stored per SkillPilot-ID, never per client. */
+    learningPlanPeriodBasis: 'DAY' | 'WEEK'
     strictMode: boolean
     showGoalVisualizationsInChat: boolean
 }
@@ -80,6 +82,7 @@ interface PersonalCurriculumSetupProps {
     initialStrategy?: 'RANDOM' | 'SEQUENTIAL'
     initialAutoPilot?: boolean
     initialFollowLearningPlans?: boolean
+    initialPeriodBasis?: 'DAY' | 'WEEK'
     initialStrictMode?: boolean
     initialShowGoalVisualizationsInChat?: boolean
     personalizationEditor?: PersonalCurriculumEditorProps
@@ -97,6 +100,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     initialStrategy = 'SEQUENTIAL',
     initialAutoPilot = true,
     initialFollowLearningPlans = false,
+    initialPeriodBasis = 'DAY',
     initialStrictMode = false,
     initialShowGoalVisualizationsInChat = true,
     personalizationEditor,
@@ -176,6 +180,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [strategy, setStrategy] = useState<'RANDOM' | 'SEQUENTIAL'>(initialStrategy)
     const [autoPilot, setAutoPilot] = useState<boolean>(initialAutoPilot)
     const [followLearningPlans, setFollowLearningPlans] = useState<boolean>(initialFollowLearningPlans)
+    const [periodBasis, setPeriodBasis] = useState<'DAY' | 'WEEK'>(initialPeriodBasis)
     const [strictMode, setStrictMode] = useState<boolean>(initialStrictMode)
     const [showGoalVisualizationsInChat, setShowGoalVisualizationsInChat] = useState<boolean>(
         initialShowGoalVisualizationsInChat,
@@ -197,11 +202,13 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         setStrategy(initialStrategy)
         setAutoPilot(initialAutoPilot)
         setFollowLearningPlans(initialFollowLearningPlans)
+        setPeriodBasis(initialPeriodBasis)
         setStrictMode(initialStrictMode)
         setShowGoalVisualizationsInChat(initialShowGoalVisualizationsInChat)
     }, [
         initialAutoPilot,
         initialFollowLearningPlans,
+        initialPeriodBasis,
         initialShowGoalVisualizationsInChat,
         initialStrategy,
         initialStrictMode,
@@ -218,6 +225,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
     const handleFollowLearningPlansChange = (follow: boolean) => {
         setFollowLearningPlans(follow)
+    }
+
+    const handlePeriodBasisChange = (basis: 'DAY' | 'WEEK') => {
+        setPeriodBasis(basis)
     }
 
     const handleStrictModeChange = (newStrictMode: boolean) => {
@@ -444,7 +455,14 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             }
             setIsApplying(true)
             try {
-                await onPreferencesApply({ strategy, autoPilot, followLearningPlans, strictMode, showGoalVisualizationsInChat })
+                await onPreferencesApply({
+                    strategy,
+                    autoPilot,
+                    followLearningPlans,
+                    learningPlanPeriodBasis: periodBasis,
+                    strictMode,
+                    showGoalVisualizationsInChat,
+                })
                 onClose()
             } finally {
                 setIsApplying(false)
@@ -463,6 +481,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 strategy,
                 autoPilot,
                 followLearningPlans,
+                learningPlanPeriodBasis: periodBasis,
                 strictMode,
                 showGoalVisualizationsInChat,
             })
@@ -775,6 +794,29 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                         <p className="text-xs text-text-secondary">{setupCopy.followLearningPlansDescription}</p>
                                     </div>
                                 </label>
+
+                                <fieldset className="ml-6">
+                                    <legend className="text-sm font-medium text-text-primary">
+                                        {setupCopy.periodBasisTitle}
+                                    </legend>
+                                    <p className="text-xs text-text-secondary">{setupCopy.periodBasisDescription}</p>
+                                    <div className="mt-2 flex items-center gap-6">
+                                        {(['DAY', 'WEEK'] as const).map((basis) => (
+                                            <label key={basis} className="flex items-center gap-2 cursor-pointer">
+                                                <input
+                                                    type="radio"
+                                                    name="learningPlanPeriodBasis"
+                                                    checked={periodBasis === basis}
+                                                    onChange={() => handlePeriodBasisChange(basis)}
+                                                    className="w-4 h-4 text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
+                                                />
+                                                <span className="text-sm text-text-primary">
+                                                    {basis === 'DAY' ? setupCopy.periodBasisDay : setupCopy.periodBasisWeek}
+                                                </span>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </fieldset>
 
                                 <label className="flex items-center gap-2 cursor-pointer">
                                         <input

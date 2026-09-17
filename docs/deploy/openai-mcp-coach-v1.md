@@ -939,10 +939,12 @@ bleiben geschützt. Nur bei normaler Lernfortsetzung, ohne aktives Ziel und mit
 autorisiertem `resumeAvailable` darf das Backend das nächste Planziel wählen.
 Beide Writes verwenden die aktuelle Zustandsversion und eine Request-ID.
 
-Die sichtbare Tagesübersicht bleibt eine Zeile: Gesamtergebnis einmal, offene
-Ziele je Fach und nur ein tatsächlich vorhandener Rückstand zusätzlich.
-Nicht auswertbare Pläne sind ausdrücklich unvollständig und niemals `0/0`
-oder erledigt. Die generierten Reviewfälle und die vier Planfälle stehen im
+Den sichtbaren Planstand übernimmt der Coach wörtlich aus
+`learningPlanToday.text`: je Fach eine Zeile mit Tages- oder Wochenziel und
+gegebenenfalls Rückstand oder Vorsprung, genau wie im SkillPilot-Cockpit. Der
+Kontext enthält keine Planzahlen, der Coach rechnet nicht selbst. Nicht
+auswertbare Pläne nennt der Text ausdrücklich; sie sind niemals `0/0` oder
+erledigt. Die generierten Reviewfälle und die vier Planfälle stehen im
 [Einlieferungsdossier](openai-plugin-v1-submission.md); Backend-Replay,
 Komponententests und tatsächliche ChatGPT-Abnahme sind getrennte Prüfschichten.
 

@@ -124,17 +124,17 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
     /resume_skillpilot_learning_plan only when learningPlanToday has followLearningPlans=true and resumeAvailable=true/iu,
     /explicit request to learn further permits resume at guidance\.state=complete, blocked or unavailable whenever resumeAvailable=true/iu,
     /With an active unmastered goal, teach it directly/iu,
-    /full context through the visualization rule before speaking/iu,
+    /visualization rule to its full context before speaking/iu,
     /Do not substitute a WebGUI Weiterlernen button or another confirmation/iu,
   ]);
   requireRule(plans, "plan-never-blocks-learning", [
     /A plan guides and prioritizes; it must never prevent learning/iu,
-    /daily quota, calendar, empty backlog or exhausted plan is never a learning ban/iu,
+    /reached period target, calendar, empty backlog or exhausted plan is never a learning ban/iu,
     /explicit request to learn further, continue an active unmastered goal or let the backend select a reachable open target from the Personal Curriculum/iu,
     /Only completion of the whole Personal Curriculum ends its learning content/iu,
     /temporary blockers are not completion/iu,
     /Never invent goals or bypass prerequisites/iu,
-    /resumeAvailable and subject canContinue are the authority for these actions, never plan counts/iu,
+    /resumeAvailable and subject canContinue are the authority for these actions, never the plan status/iu,
   ]);
   requireRule(plans, "subject-choice", [
     /natural wording.+?jetzt Mathe.+?maths.+?exactly one published learningPlanToday\.subjects entry/iu,
@@ -148,33 +148,32 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
     /absent\/invalid choice or rejected switch, reload once, apply the visualization rule/iu,
     /Do not retry the rejected switch or offer the same unavailable choice again/iu,
   ]);
-  requireRule(plans, "compact-summary", [
-    /followLearningPlans=true.+?after immediate render\/resume actions give one compact summary/iu,
-    /at start\/resume or on a status request/iu,
-    /newest asOf and actual totals\.completedToday of totals\.dueToday/iu,
-    /openToday and localized subject for every valid subject/iu,
-    /positive extraCompletedToday as a voluntary bonus/iu,
-    /openOverdue counts and detailed subject counters only when requested/iu,
-    /At most one summary per response; do not repeat unchanged counts every turn/iu,
-    /After completion, give brief updated progress/iu,
+  requireRule(plans, "verbatim-status", [
+    /followLearningPlans=true.+?after immediate render\/resume actions report the plan status/iu,
+    /at start\/resume or on a status request by quoting learningPlanToday\.text verbatim/iu,
+    /That text is the only formulation/iu,
+    /Add no counts, totals or judgement of your own/iu,
+    /never recalculate, rephrase or translate it/iu,
+    /At most one status per response; do not repeat an unchanged status every turn/iu,
+    /after a status-relevant change quote the new text once/iu,
   ]);
-  requireRule(plans, "quota-accuracy", [
-    /Today's due backlog completions fill that subject's quota first/iu,
-    /extras never offset another subject's quota/iu,
-    /dueToday=0,.+?no fixed quota, not that work was completed/iu,
-    /unavailablePlanCount>0,.+?unevaluable plans are excluded/iu,
-    /if no valid subject remains,.+?unavailable instead of.+?0 of 0/iu,
-    /Expose no malformed data or IDs/iu,
+  requireRule(plans, "status-accuracy", [
+    /never present “0 of 0” when it says a plan is unavailable/iu,
+    /Expose no IDs/iu,
+  ]);
+  requireRule(plans, "neutral-active-goal", [
+    /A reached period target is not “nothing left”/iu,
+    /never contrast the active goal with it \(no “trotzdem”\/“still not completed” quota contrast\)/iu,
   ]);
   requireRule(plans, "daily-guidance", [
     /learningPlanToday\.guidance\.state and \.instruction/iu,
-    /complete means celebrate an actual daily quota only when one exists/iu,
+    /complete means celebrate a reached period target only when one exists/iu,
     /If backlog remains, offer the chance to catch up with one next open goal, without guilt or pressure/iu,
     /keep pausing possible without foregrounding it/iu,
     /Without backlog, offer voluntary continuation or a pause/iu,
     /Automatic extra goal selection stops/iu,
-    /starting extra goals, resume or switching requires an explicit request for voluntary extra/iu,
-    /Daily completion does not mean all backlog or the Personal Curriculum is finished/iu,
+    /starting extra goals, resuming or switching requires an explicit request for voluntary extra/iu,
+    /Only completion of the whole Personal Curriculum ends its learning content/iu,
     /blocked\/unavailable,.+?without claiming completion/iu,
     /paused never authorizes enabling plan following/iu,
     /backend-selected active goal with one concrete next task/iu,
@@ -182,10 +181,10 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
     /Status\/pause intent still takes precedence/iu,
   ]);
   requireRule(plans, "daily-complete-precedence", [
-    /starting extra goals, resume or switching requires an explicit request for voluntary extra/iu,
+    /starting extra goals, resuming or switching requires an explicit request for voluntary extra/iu,
     /Weiterlernen.+?already expresses that intent; do not ask again/iu,
     /subject request without clear learning intent needs clarification/iu,
-    /Daily stopping prevents starting unsolicited extra goals, not teaching an active unfinished goal/iu,
+    /Daily stopping prevents unsolicited extra goals, not teaching an active unfinished goal/iu,
     /it never blocks explicitly requested learning/iu,
   ]);
   requireRule(coaching, "ordinary-evidence", [

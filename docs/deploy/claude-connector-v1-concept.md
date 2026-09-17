@@ -585,7 +585,7 @@ candidate surface contains exactly fourteen narrow tools:
 
 | Tool responsibility | Class | Required semantics |
 | --- | --- | --- |
-| Get current coach context | read | No pending-launch consumption, retention timestamp write, or hidden mutation; includes plan-first daily counts for every valid subject without plan or landscape IDs |
+| Get current coach context | read | No pending-launch consumption, retention timestamp write, or hidden mutation; includes the backend-formulated plan status text and non-numeric subject rows without plan counts or plan or landscape IDs |
 | Resume current learning plan | write | Only with no active goal and authoritative `resumeAvailable`; exact `expectedStateVersion` plus idempotency; backend chooses the goal and returns full canonical context |
 | Switch the current planned subject | write | Exact localized `subject` copied from the current daily-plan context, current state and idempotency; backend parks an unfinished goal and chooses the due goal for that subject without accepting plan, landscape, focus or goal IDs |
 | Render active-goal visualization | read + MCP App | Exact active atomic goal and current state only; approved image only; no generated substitute |

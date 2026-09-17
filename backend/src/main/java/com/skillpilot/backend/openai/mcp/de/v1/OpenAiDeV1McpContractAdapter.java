@@ -301,30 +301,29 @@ public final class OpenAiDeV1McpContractAdapter {
                     + "guidance.state=resume; complete, blocked or unavailable requires an explicit learning request. "
                     + "A request to continue, catch up or learn a named subject is sufficient; do not ask for "
                     + "another confirmation. The backend's resumeAvailable and canContinue capabilities remain "
-                    + "authoritative even when openToday and openOverdue are zero; the quota and calendar never "
-                    + "impose a learning limit. "
+                    + "authoritative even when the period target is already fulfilled; the plan and calendar "
+                    + "never impose a learning limit. "
                     + "Learning plans prioritize work and never limit learning within the Personal Curriculum. "
                     + "For explicit continuation the backend prioritizes due prerequisite-safe plan goals, "
                     + "then other reachable plan goals including future dates, then eligible personal targets "
                     + "beyond the plan. A missing or outdated plan must not block published resumeAvailable "
-                    + "or canContinue capabilities; explain unavailable plan counts separately. "
+                    + "or canContinue capabilities. "
                     + "An explicit available-subject request takes priority over generic "
                     + "resume. Status-only questions and pauses require no new exercise and no state write. "
                     + "Use switch_skillpilot_learning_plan_subject only for a requested, published, non-current "
-                    + "subject with canContinue=true; never interrupt an active exam. Report daily counts once "
-                    + "in one compact line: completedToday/dueToday and each subject's openToday. Include "
-                    + "extraCompletedToday as a positive voluntary bonus when nonzero. Mention openOverdue only "
-                    + "for an explicit plan-detail request, never in every ordinary teaching turn. Always warn "
-                    + "about unavailablePlanCount>0. completedToday counts today's actual completions of due plan "
-                    + "goals, including older overdue goals, capped at each subject's stable dueToday quota; "
-                    + "further completions are extraCompletedToday. One subject's extra never fills another's quota. "
-                    + "When every quota is fulfilled, celebrate. If openOverdue is positive, emphasize the "
-                    + "opportunity to catch up without pressure or guilt; do not foreground a break. Otherwise "
-                    + "offer optional further learning or a break. Never "
-                    + "auto-resume or claim the entire plan or backlog is finished. If dueToday=0, say there "
-                    + "is no fixed quota today instead of claiming completed work. Continue an already active goal normally. "
-                    + "No valid daily status is unavailable, never an invented 0/0 completion. Do not choose "
-                    + "future goals or widen focus automatically when today's plan is complete or blocked. "
+                    + "subject with canContinue=true; never interrupt an active exam. "
+                    + "Report the learning-plan status by outputting learningPlanToday.text verbatim, at most "
+                    + "once per response. That text is the binding formulation: it already states the period "
+                    + "target, any backlog or advance work, the active learning goal and any unevaluable plans. "
+                    + "Add no counts, totals, percentages or overall judgement of your own, do not recalculate "
+                    + "or rephrase it, and do not translate it; it already arrives in the session language. "
+                    + "Do not repeat it in ordinary teaching turns; after a status-relevant change report the "
+                    + "finally valid status once. Never present a fulfilled period target as the whole plan or "
+                    + "all backlog being finished, and never contrast the active goal with it. "
+                    + "If evaluable=false or unavailablePlanCount>0, the text names that limitation; never "
+                    + "substitute an invented status and never claim a completed period instead. "
+                    + "Continue an already active goal normally. Do not choose "
+                    + "future goals or widen focus automatically when the period target is met or blocked. "
                     + "Use fresh mutation successor context and its visualization without reloading context.";
 
     public List<McpStatelessServerFeatures.SyncToolSpecification> toolSpecifications() {
@@ -1797,20 +1796,22 @@ public final class OpenAiDeV1McpContractAdapter {
                     "complete".equals(context.learningPlanToday().guidance().state()),
                     localized(metadata,
                             "Die Kartenprüfung ist abgeschlossen. Folge jetzt ausschließlich "
-                                    + "context.learningPlanToday.guidance aus diesem Folgezustand. Bei guidance.state=complete "
-                                    + "würdige das erfüllte Tagespensum. Bei openOverdue>0 betone die Chance zum "
-                                    + "Aufholen ohne Druck oder Schuldgefühl; stelle eine Pause nicht in den Vordergrund. "
-                                    + "Sonst biete weiteres Lernen oder eine Pause an. Starte Zusatzarbeit nur auf "
-                                    + "ausdrücklichen Lernwunsch; bei dueToday=0 sage stattdessen, dass heute kein "
-                                    + "festes Pensum ansteht. Für andere Zustände führe die aktuelle guidance aus. "
-                                    + "Lade keinen neuen Kontext.",
+                                    + "context.learningPlanToday.guidance aus diesem Folgezustand. Gib den "
+                                    + "Lernplanstatus aus, indem du context.learningPlanToday.text wörtlich "
+                                    + "wiedergibst, höchstens einmal und ohne eigene Zahlen, Summen oder "
+                                    + "Gesamtbewertung; der Text nennt bereits Periodenziel, Rückstand und "
+                                    + "Vorarbeit. Bei guidance.state=complete würdige den gedeckten Periodenbedarf "
+                                    + "und biete weiteres Lernen oder eine Pause an, ohne Druck oder Schuldgefühl. "
+                                    + "Starte Zusatzarbeit nur auf ausdrücklichen Lernwunsch. Für andere Zustände "
+                                    + "führe die aktuelle guidance aus. Lade keinen neuen Kontext.",
                             "The recall check is complete. Follow only context.learningPlanToday.guidance from "
-                                    + "this successor now. For guidance.state=complete, celebrate the fulfilled quota "
-                                    + "and, when openOverdue>0, emphasize the opportunity to catch up without pressure "
-                                    + "or guilt; do not foreground a break. Otherwise offer optional further learning "
-                                    + "or a break. Start extra learning only on an explicit learning request. If "
-                                    + "dueToday=0, say there is no fixed quota today instead. For other states, "
-                                    + "execute the current guidance. Do not reload context."),
+                                    + "this successor now. Report the plan status by outputting "
+                                    + "context.learningPlanToday.text verbatim, at most once and adding no counts, "
+                                    + "totals or overall judgement of your own; it already states the period target, "
+                                    + "any backlog and any advance work. For guidance.state=complete, celebrate the "
+                                    + "covered period workload and offer optional further learning or a break, "
+                                    + "without pressure or guilt. Start extra learning only on an explicit learning "
+                                    + "request. For other states, execute the current guidance. Do not reload context."),
                     null);
         }
         if (context != null && "setScope".equals(context.requiredAction())
@@ -3474,23 +3475,32 @@ public final class OpenAiDeV1McpContractAdapter {
                 List.of("target", "requiredAction", "options", "instruction"));
     }
 
+    /**
+     * The published plan shape: the binding text plus non-numeric control information.
+     *
+     * <p>No count field is declared, so the model has no second data source from which it
+     * could derive a competing status.</p>
+     */
     private static Map<String, Object> dailyPlanSchema() {
         return objectSchema(
                 Map.of(
                         "asOf", nonEmptyStringSchema(),
+                        "periodBasis", enumStringSchema("DAY", "WEEK"),
+                        "text", nonEmptyStringSchema(),
+                        "statusDirection", enumStringSchema("behind", "on_track", "ahead"),
+                        "evaluable", booleanSchema(),
                         "followLearningPlans", booleanSchema(),
                         "resumeAvailable", booleanSchema(),
                         "subjects", objectArraySchema(dailyPlanSubjectSchema()),
-                        "totals", dailyPlanTotalsSchema(),
                         "unavailablePlanCount", integerSchema(0, null),
                         "guidance", objectSchema(Map.of("state", enumStringSchema(
                                 "continue", "resume", "complete", "blocked", "paused", "unavailable"),
                                 "instruction", nonEmptyStringSchema()), List.of("state", "instruction"))),
                 List.of(
+                        "evaluable",
                         "followLearningPlans",
                         "resumeAvailable",
                         "subjects",
-                        "totals",
                         "unavailablePlanCount",
                         "guidance"));
     }
@@ -3501,36 +3511,13 @@ public final class OpenAiDeV1McpContractAdapter {
                         "subject", nonEmptyStringSchema(),
                         "current", booleanSchema(),
                         "canContinue", booleanSchema(),
-                        "dueToday", integerSchema(0, null),
-                        "completedToday", integerSchema(0, null),
-                        "extraCompletedToday", integerSchema(0, null),
-                        "openToday", integerSchema(0, null),
-                        "openOverdue", integerSchema(0, null)),
+                        "evaluable", booleanSchema(),
+                        "statusDirection", enumStringSchema("behind", "on_track", "ahead")),
                 List.of(
                         "subject",
                         "current",
                         "canContinue",
-                        "dueToday",
-                        "completedToday",
-                        "extraCompletedToday",
-                        "openToday",
-                        "openOverdue"));
-    }
-
-    private static Map<String, Object> dailyPlanTotalsSchema() {
-        return objectSchema(
-                Map.of(
-                        "dueToday", integerSchema(0, null),
-                        "completedToday", integerSchema(0, null),
-                        "extraCompletedToday", integerSchema(0, null),
-                        "openToday", integerSchema(0, null),
-                        "openOverdue", integerSchema(0, null)),
-                List.of(
-                        "dueToday",
-                        "completedToday",
-                        "extraCompletedToday",
-                        "openToday",
-                        "openOverdue"));
+                        "evaluable"));
     }
 
     private Map<String, Object> learningPlanResumeSchema() {

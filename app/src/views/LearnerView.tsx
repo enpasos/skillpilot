@@ -59,6 +59,7 @@ import {
 import { getLearnerDataManagementCopy } from '../utils/learnerDataManagementCopy'
 import {
   getLearnerLearningPlans,
+  getLearnerPlanStatus,
   LearnerLearningPlanApiError,
   reconcileLearnerLearningPlans,
   switchLearnerLearningPlan,
@@ -104,7 +105,7 @@ import {
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
-import type { LearnerLearningPlansResponse } from '../learnerLearningPlanTypes'
+import type { LearnerLearningPlansResponse, LearnerPlanStatus } from '../learnerLearningPlanTypes'
 import type { ResourceLink } from '../landscapeTypes'
 
 interface LearnerViewProps {
@@ -139,6 +140,7 @@ type PersonalCurriculumPreferences = {
   strategy: 'RANDOM' | 'SEQUENTIAL'
   autoPilot: boolean
   followLearningPlans: boolean
+  learningPlanPeriodBasis: 'DAY' | 'WEEK'
   strictMode: boolean
   showGoalVisualizationsInChat: boolean
 }
@@ -417,6 +419,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [learnerDeleteBusy, setLearnerDeleteBusy] = useState(false)
   const [learnerDeleteError, setLearnerDeleteError] = useState<'missing' | 'failed' | null>(null)
   const [learningPlans, setLearningPlans] = useState<LearnerLearningPlansResponse | null>(null)
+  /** The one backend-formulated status the cockpit renders instead of computing its own. */
+  const [learningPlanStatus, setLearningPlanStatus] = useState<LearnerPlanStatus | null>(null)
   const [learningPlansDataScopeKey, setLearningPlansDataScopeKey] = useState(learnerStateScopeKey)
   const [learningPlansLoadState, setLearningPlansLoadState] = useState<{
     scopeKey: string
@@ -1666,6 +1670,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (!skillpilotId) {
       learningPlansRefreshInFlightRef.current = false
       setLearningPlans(null)
+      setLearningPlanStatus(null)
       setLearningPlansDataScopeKey(learnerStateScopeKey)
       setLearningPlansLoadState({ scopeKey: learnerStateScopeKey, status: 'ready' })
       return null
@@ -1681,9 +1686,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     learningPlansRefreshInFlightRef.current = true
     setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'loading' })
     try {
-      const response = await getLearnerLearningPlans(skillpilotId, undefined)
+      // Plans and status are read together so the cockpit never combines a fresh
+      // schedule with a stale status statement.
+      const [response, status] = await Promise.all([
+        getLearnerLearningPlans(skillpilotId, undefined),
+        getLearnerPlanStatus(skillpilotId, localizedLanguage).catch(() => null),
+      ])
       if (!isCurrentRequest()) return null
       learningPlansRefreshInFlightRef.current = false
+      setLearningPlanStatus(status)
       setLearningPlans(response)
       setLearningPlansDataScopeKey(requestScopeKey)
       setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'ready' })
@@ -1695,7 +1706,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'error' })
       return null
     }
-  }, [learnerStateScopeKey, skillpilotId])
+    // The status text is formulated in the display language, so a language switch reloads it.
+  }, [learnerStateScopeKey, localizedLanguage, skillpilotId])
 
   useEffect(() => {
     if (!skillpilotId) return
@@ -2199,7 +2211,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       || !response?.followLearningPlans
       || !plan
       || plan.stale
-      || plan.metrics.openDueThroughToday === 0
+      // Whether anything can be started is the backend's answer, not a local count.
       || !plan.nextEligibleGoal
       || !isLearnerPlanActionAvailable(
         learningPlansLoadStatus,
@@ -2656,6 +2668,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       (learnerData?.learningStrategy ?? 'SEQUENTIAL') !== preferences.strategy
       || (learnerData?.autoPilot ?? true) !== preferences.autoPilot
       || (learnerData?.followLearningPlans ?? false) !== preferences.followLearningPlans
+      || (learnerData?.learningPlanPeriodBasis ?? 'DAY') !== preferences.learningPlanPeriodBasis
       || (learnerData?.strictMode ?? false) !== preferences.strictMode
       || (learnerData?.showGoalVisualizationsInChat ?? true) !== preferences.showGoalVisualizationsInChat
 
@@ -2673,6 +2686,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           learningStrategy: preferences.strategy,
           autoPilot: preferences.autoPilot,
           followLearningPlans: preferences.followLearningPlans,
+          learningPlanPeriodBasis: preferences.learningPlanPeriodBasis,
           strictMode: preferences.strictMode,
           showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
         } : prev)
@@ -2708,6 +2722,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             learningStrategy: preferences.strategy,
             autoPilot: preferences.autoPilot,
             followLearningPlans: preferences.followLearningPlans,
+            learningPlanPeriodBasis: preferences.learningPlanPeriodBasis,
             strictMode: preferences.strictMode,
             showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
           })
@@ -2730,6 +2745,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           learningStrategy: preferences.strategy,
           autoPilot: preferences.autoPilot,
           followLearningPlans: preferences.followLearningPlans,
+          learningPlanPeriodBasis: preferences.learningPlanPeriodBasis,
           strictMode: preferences.strictMode,
           showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
         } : prev)
@@ -3419,6 +3435,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               ) : null}
             {scopedLearningPlans && sortedLearningPlans.length > 0 ? (
               <LearnerPlanTodayOverview
+                status={learningPlanStatus}
                 plans={sortedLearningPlans}
                 language={localizedLanguage}
                 planModeEnabled={scopedLearningPlans.followLearningPlans}
@@ -3726,6 +3743,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         initialStrategy={learnerData?.learningStrategy}
         initialAutoPilot={learnerData?.autoPilot}
         initialFollowLearningPlans={learnerData?.followLearningPlans}
+        initialPeriodBasis={learnerData?.learningPlanPeriodBasis}
         initialStrictMode={learnerData?.strictMode}
         initialShowGoalVisualizationsInChat={learnerData?.showGoalVisualizationsInChat}
         personalizationEditor={usesGuidedPersonalCurriculumEditor

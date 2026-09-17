@@ -10,13 +10,15 @@ snapshot remains historical evidence, not an active source-code freeze.
   without a redundant daily-plan read tool.
 - Add guarded plan continuation and subject switching, preserving unfinished
   work and respecting status-only, pause, exam, and learner-consent boundaries.
-- Count actual recorded completions toward each subject's stable daily quota,
-  including older due goals. Celebrate completion before offering voluntary
-  extra learning; additional work never replaces another subject's quota.
+- Report the plan status by quoting the backend-formulated
+  `learningPlanToday.text` verbatim, as shown in the SkillPilot cockpit: one
+  line per subject with its day or week target and any backlog or advance work.
+  The context carries no plan counts or totals; the coach does no arithmetic.
+  Celebrate a reached period target before offering voluntary extra learning.
 - Plans guide learning but never prevent explicit continuation: prioritize due
   goals, then reachable future or unplanned personal targets. With backlog,
-  invite catching up without pressure or foregrounding a break. Keep missing
-  plan counts explicitly unavailable without revoking learning capabilities.
+  invite catching up without pressure or foregrounding a break. Name
+  unevaluable plans explicitly without revoking learning capabilities.
   Never infer a completion date from a mastery snapshot or legacy update time.
 - Keep orientation, teaching, mastery, memory practice, Verified Recall and
   assessment safeguards. Optional visualizations never replace complete text.

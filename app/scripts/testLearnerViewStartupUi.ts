@@ -65,6 +65,36 @@ const subjectPlan = (landscapeId: string, goalId: string) => ({
   pace: { status: 'neutral', reason: 'mastery-history-not-event-backed' },
   nextEligibleGoal: { goalId }, continueReason: null, canContinue: true,
 })
+const planStatusBody = {
+  asOf: '2026-09-09',
+  periodBasis: 'DAY',
+  periodStart: '2026-09-09',
+  periodEnd: '2026-09-09',
+  timeZone: 'Europe/Berlin',
+  language: 'de',
+  evaluable: true,
+  statusText: 'Mathematik: Tagesziel 0 von 1 \u00b7 im Plan\nPhysik: Tagesziel 0 von 1 \u00b7 im Plan',
+  statusDirection: 'on_track',
+  activeGoal: null,
+  followLearningPlans: true,
+  resumeAvailable: true,
+  subjects: [
+    {
+      subjectKey: 'mathematik', subjectLabel: 'Mathematik', evaluable: true,
+      periodText: 'Tagesziel 0 von 1', planStatusText: 'im Plan',
+      subjectLine: 'Mathematik: Tagesziel 0 von 1 \u00b7 im Plan',
+      statusDirection: 'on_track', current: false, canContinue: true,
+    },
+    {
+      subjectKey: 'physik', subjectLabel: 'Physik', evaluable: true,
+      periodText: 'Tagesziel 0 von 1', planStatusText: 'im Plan',
+      subjectLine: 'Physik: Tagesziel 0 von 1 \u00b7 im Plan',
+      statusDirection: 'on_track', current: false, canContinue: true,
+    },
+  ],
+  unavailablePlanCount: 0,
+}
+
 const plans = (): Reply => ({ body: {
   asOf: '2026-09-09', followLearningPlans: true,
   plans: [subjectPlan(mathId, 'math-upper'), subjectPlan(physicsId, 'physics-upper')],
@@ -131,6 +161,10 @@ try {
           rootLandscapeIds: [], landscapes: [], views: [], offerings: [], decks: [], resources: [], sourceEvidence: [],
         } })
       }
+      // The cockpit reads the one shared status; it must be served before the plans route.
+      if (/^\/api\/ui\/learners\/fixture-learner-[ab]\/learning-plans\/status$/u.test(path)) {
+        return json({ body: planStatusBody })
+      }
       const match = /^\/api\/ui\/learners\/(fixture-learner-[ab])(?:\/(state|learning-plans|resume))?$/u.exec(path)
       if (match && (request.method() === 'GET' || (match[2] === 'resume' && request.method() === 'POST'))) {
         if (match[2] === 'resume') return json({ body: {
@@ -164,14 +198,15 @@ try {
   const waitReady = async (page: Page, title: string) => {
     await page.getByTestId('learner-current-goal').getByRole('heading', { name: title }).waitFor({ timeout: 20_000 })
     const overview = page.getByTestId('learner-plan-today-overview')
-    await overview.getByText('Noch 2 Lernziele bis zu deinen heutigen Tageszielen.', { exact: true }).waitFor()
-    for (const subject of ['Mathematik', 'Physik']) {
-      const progress = overview.getByRole('progressbar', { name: `Tagesziel: ${subject}`, exact: true })
-      await progress.waitFor()
-      assert.equal(await progress.getAttribute('value'), '0', `${subject} must not show fabricated daily completions`)
-      assert.equal(await progress.getAttribute('max'), '1', `${subject} must retain its own daily quota`)
-      assert.equal(await progress.getAttribute('aria-valuetext'), '0 von 1 Lernzielen heute geschafft')
+    // The cockpit shows the backend text; it never fabricates completions of its own.
+    for (const [key, subject] of [['mathematik', 'Mathematik'], ['physik', 'Physik']] as const) {
+      const row = overview.getByTestId(`learner-plan-subject-${key}`)
+      await row.getByText('Tagesziel 0 von 1').first().waitFor()
+      await row.getByText('im Plan').first().waitFor()
+      assert.ok(subject.length > 0)
     }
+    assert.equal(await overview.getByRole('progressbar').count(), 0,
+      'no locally derived progress bar may survive in the cockpit')
   }
 
   // Delay the two independent authoritative reads in both possible orders.

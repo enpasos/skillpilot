@@ -86,8 +86,9 @@ geratene IDs ersetzt; der bestehende Erneuerungsvertrag bleibt fail-closed.
 
 Der Nachfolger enthält die bisherigen zwölf Tools plus
 `resume_skillpilot_learning_plan` und
-`switch_skillpilot_learning_plan_subject`. Die Tagesübersicht kommt über
-`learningPlanToday` im vollständigen autoritativen Kontext. Ein separates
+`switch_skillpilot_learning_plan_subject`. Der Planstand kommt als vom Backend
+formulierter Text `learningPlanToday.text` im vollständigen autoritativen
+Kontext. Ein separates
 `get_skillpilot_daily_plan` gehört **nicht** zum Katalog.
 
 Die kompakte Übersicht nennt offene Ziele je Fach und nur bei Bedarf
@@ -147,7 +148,7 @@ oder Fokusoption wird das Fixture frisch validiert, nicht mit alten Zahlen erzwu
 | N1 | synthetische nicht existente Session: `SESSION_REQUIRED`, lokalisierter Neustarthinweis, keine Mutation oder Lehre |
 | N2 | neues Fach/neue Schulstufe nur im WebGUI; kein verdeckter Level-2-Wechsel |
 | N3 | Hinweis oder Formel vor Prüfungsabgabe ablehnen, keine geschützte Evaluation oder Mastery |
-| D1 | fachübergreifend korrekte knappe Tagesübersicht; Teilfehler nicht als vollständige Nullübersicht darstellen |
+| D1 | fachübergreifenden Planstand wörtlich aus dem Backend übernehmen, ohne eigene Zahlen; nicht auswertbare Pläne nicht als vollständige Nullübersicht darstellen |
 | D2 | erlaubte Planfortsetzung mit genau einem versionsgeschützten Write |
 | D3 | Wechsel nur zu bereits gewähltem erlaubtem Planfach, ohne Level-2-/Mastery-Änderung |
 | D4 | fehlender, blockierter oder nicht fortsetzbarer Plan: wahrheitsgemäßer Status, kein unerlaubter Write |
@@ -212,7 +213,7 @@ Das alte Reviewvideo bleibt ausschließlich historische `1.0.0`-Evidenz:
 SHA-256 `20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb`,
 11.104.503 Bytes, H.264/AAC, 1920 × 1080, 329,110 Sekunden. Content-addressierte
 URL und Bytes bleiben unverändert. Es wird nicht automatisch in den neuen
-Draft übernommen. Die aktuelle Demo muss auch Tagesübersicht, Fortsetzung und
+Draft übernommen. Die aktuelle Demo muss auch Planstand, Fortsetzung und
 Fachwechsel auf der zugesagten Oberfläche belegen. Sie enthält keine OAuth-
 oder Review-Zugangsdaten. Freigegebene Demo-URLs sind öffentlich, nicht privat.
 Die aktuelle [Aufnahmevorbereitung und Freigabecheckliste](openai-plugin-v1-demo-video.md)

@@ -70,14 +70,17 @@ final class OpenAiDialogReplayDailyFixtures {
                 "synthetic-focus", fixture.state.activeGoal().id(), true, fixture.state);
     }
 
+    /** Maths: 21 goals due in the period, 2 of them already mastered today. Physics: 27, none yet. */
     private static LearnerPlanTodayStatus status(String current, boolean resume, boolean blocked) {
-        return new LearnerPlanTodayStatus(LocalDate.parse("2026-09-09"), true, resume,
+        return com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-09"), true, resume, blocked ? 1 : 0, null,
                 List.of(
-                        new LearnerPlanTodayStatus.SubjectStatus("synthetic-math", "Mathematik",
-                                21, 2, 19, 0, !resume && !blocked && current.equals("Mathematik"), !blocked, 0),
-                        new LearnerPlanTodayStatus.SubjectStatus("synthetic-physics", "Physik",
-                                27, 0, 27, 0, !resume && !blocked && current.equals("Physik"), !blocked, 0)),
-                new LearnerPlanTodayStatus.Totals(48, 2, 46, 0, 0), blocked ? 1 : 0);
+                        com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                                "synthetic-math", "Mathematik", 21, 21, 2, 2,
+                                !resume && !blocked && current.equals("Mathematik"), !blocked),
+                        com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                                "synthetic-physics", "Physik", 27, 27, 0, 0,
+                                !resume && !blocked && current.equals("Physik"), !blocked)));
     }
 
     private static UnifiedLearnerStateResponse state(String subject, boolean active) {

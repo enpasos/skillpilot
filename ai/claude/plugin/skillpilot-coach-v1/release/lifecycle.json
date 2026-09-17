@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
   "pluginIdentity": "skillpilot-coach-v1",
-  "pluginVersion": "1.1.6",
+  "pluginVersion": "1.1.7",
   "state": "PRE_SUBMISSION",
   "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
   "connectorDirectoryDependency": "none",
@@ -30,7 +30,7 @@
   "productOwnerAuthorization": {
     "approvedAt": "2026-09-14",
     "approvedBy": "product-owner",
-    "scope": "Product Owner explicitly required that plans guide and prioritize but never prevent requested learning, including after daily quota completion, empty backlog, future dates or an exhausted plan. Version 1.1.6 is a local continuation-correction candidate: the backend selects reachable open Personal Curriculum targets, preserves prerequisites and does not turn status requests or automatic daily completion into extra learning. Offer remaining backlog as a pressure-free catch-up opportunity. This record covers local candidate preparation only; it does not authorize deployment, Marketplace publication, Anthropic Console submission, guide activation or inherited acceptance.",
+    "scope": "Product Owner explicitly required that plans guide and prioritize but never prevent requested learning, including after daily quota completion, empty backlog, future dates or an exhausted plan. Version 1.1.7 is a local continuation-correction candidate: the backend selects reachable open Personal Curriculum targets, preserves prerequisites and does not turn status requests or automatic daily completion into extra learning. Offer remaining backlog as a pressure-free catch-up opportunity. This record covers local candidate preparation only; it does not authorize deployment, Marketplace publication, Anthropic Console submission, guide activation or inherited acceptance.",
     "excludes": [
       "Connector Directory lifecycle, gates and Team/Enterprise submission access",
       "Deployment, Marketplace publication, guide activation, credential changes, Anthropic Console submission, general public activation and inherited candidate acceptance"
@@ -42,9 +42,9 @@
   },
   "releaseLine": {
     "major": 1,
-    "version": "1.1.6",
+    "version": "1.1.7",
     "status": "pre_submission_candidate",
-    "compatibilityPolicy": "Version 1.1.6 corrects explicit continuation beyond daily plans under the existing plugin identity and preserved 1.1.4 tool input contract. Assessment prose remains forbidden. OAuth, session, tool identity, prerequisites and backend-owned state remain unchanged. The published 1.1.5 package and all earlier artifacts and evidence stay immutable; no prior acceptance transfers."
+    "compatibilityPolicy": "Version 1.1.7 corrects explicit continuation beyond daily plans under the existing plugin identity and preserved 1.1.4 tool input contract. Assessment prose remains forbidden. OAuth, session, tool identity, prerequisites and backend-owned state remain unchanged. The published 1.1.6 package and all earlier artifacts and evidence stay immutable; no prior acceptance transfers. Version 1.1.7 also adopts the unified backend plan status: the skill quotes learningPlanToday.text verbatim instead of reporting the removed count fields."
   },
   "stateTransitions": [
     {
@@ -63,5 +63,16 @@
       "requires": "An approved public-listing installation and native Android end-to-end verification bound to the same frozen plugin candidate digest and exact candidate revision."
     }
   ],
-  "breakingChangePolicy": "Preserve all released package bytes and evidence. The Product Owner expressly authorized the 12 September 2026 controlled-beta removal of prohibited assessment-prose inputs as correction 1.1.4 under the existing identity, with coordinated backend and catalog rollout. This narrow privacy correction is not a general compatibility exception. Other breaking plugin, identity, OAuth, state or tool-contract changes require a separately approved major-line candidate."
+  "breakingChangePolicy": "Preserve all released package bytes and evidence. The Product Owner expressly authorized the 12 September 2026 controlled-beta removal of prohibited assessment-prose inputs as correction 1.1.4 under the existing identity, with coordinated backend and catalog rollout. This narrow privacy correction is not a general compatibility exception. Other breaking plugin, identity, OAuth, state or tool-contract changes require a separately approved major-line candidate.",
+  "planStatusContractAdoption": {
+    "approvedAt": "2026-09-16",
+    "approvedBy": "product-owner",
+    "issue": "https://github.com/enpasos/skillpilot/issues/48",
+    "scope": "Version 1.1.7 adopts the unified backend learning-plan status. The consumed Claude connector-v1 publishes learningPlanToday.text as the only formulation together with non-numeric control fields (periodBasis, evaluable, statusDirection and per-subject evaluable and statusDirection) and no longer publishes totals or the per-subject counts dueToday, completedToday, openToday, openOverdue and extraCompletedToday. The 1.1.7 skill quotes that text verbatim and performs no plan arithmetic.",
+    "compatibilityImpact": "Plugin packages up to and including 1.1.6 instruct Claude to report the removed count fields, and the production connector before this change does not publish learningPlanToday.text. Anthropic applies remote MCP changes on the next connection, so the connector change and the 1.1.7 package must reach production in one coordinated step.",
+    "excludes": [
+      "Deployment, Marketplace publication, Anthropic Console submission, guide activation and inherited candidate acceptance",
+      "Connector Directory lifecycle, gates and Team/Enterprise submission access"
+    ]
+  }
 }

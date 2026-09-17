@@ -106,50 +106,47 @@ class ClaudeV1LearningPlanContractTest {
     }
 
     @Test
-    void compactDailyPlanPresentationKeepsCurrentCountsAndSafetyWarnings() {
+    void planPresentationMandatesTheVerbatimBackendTextAndNoOwnArithmetic() {
         String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
 
         assertThat(instructions)
                 .contains(
-                        "one line with learningPlanToday.totals.completedToday of totals.dueToday once",
-                        "only openToday and the localized subject for every valid learningPlanToday.subjects entry",
-                        "Heute: 2 von 48 geschafft · noch offen: 19 Mathe, 27 Physik.",
-                        "Today: 2 of 48 done · still open: 19 Maths, 27 Physics.",
-                        "extraCompletedToday when nonzero",
-                        "Mention openOverdue only for an explicit plan-detail request",
-                        "Use detailed per-subject counters only on explicit request",
-                        "no second totals paragraph or bullet list by default",
+                        "report the learning-plan status by outputting learningPlanToday.text verbatim",
+                        "at most once per response",
+                        "Add no counts, totals, percentages or overall judgement of your own",
+                        "do not recalculate or rephrase it",
+                        "do not translate it; it already arrives in the session language",
+                        "never contrast an unfinished active goal with a fulfilled period target",
                         "\"Mathe\" is a display alias only; tool arguments still use the exact published subject",
-                        "today's actual completions of due plan goals, including older overdue goals",
-                        "One subject's extra never fills another subject's quota",
                         "A request to continue, catch up or learn a named subject is already an explicit request for voluntary extra",
-                        "resumeAvailable and canContinue capabilities remain authoritative even when openToday and openOverdue are zero",
-                        "emphasize the opportunity to catch up without pressure or guilt",
-                        "Otherwise offer optional further learning or a break",
+                        "capabilities remain authoritative even when the period target is already fulfilled",
                         "Automatic continuation from a successor context is permitted only when guidance.state=resume",
                         "Never automatically resume extra work, even when resumeAvailable=true",
-                        "If unavailablePlanCount is greater than zero",
-                        "the totals exclude them",
-                        "In that unavailable-plan case, if no valid subject remains, say only that today's plan could not be evaluated",
-                        "Give the summary at most once per response",
-                        "Do not repeat unchanged counts on every turn",
                         "Answer a status-only question or respect a pause without starting a goal or exercise",
                         "For blocked or unavailable, explain the remaining work or missing plan status without claiming completion",
                         "Learning plans prioritize work and never limit learning within the Personal Curriculum",
                         "A missing or outdated plan must not block published learning capabilities")
-                .doesNotContain("briefly say for every subject in the newest context how many goals are due today");
+                // The model is given neither the instruction nor the data to recompute a status.
+                .doesNotContain(
+                        "totals.completedToday",
+                        "totals.dueToday",
+                        "openToday",
+                        "openOverdue",
+                        "extraCompletedToday",
+                        "Mention openOverdue only for an explicit plan-detail request");
 
         assertThat(ClaudeV1McpContractAdapter.PLAN_RESUME_CONTINUATION_INSTRUCTION)
                 .contains(
-                        "compact one-line daily-plan summary",
-                        "totals once, only openToday per valid subject",
-                        "extraCompletedToday as a voluntary bonus when positive",
-                        "Mention backlog only on an explicit plan-detail request",
-                        "Keep unavailable-plan warnings",
-                        "do not repeat a summary already given from this context in the same response",
+                        "outputting learningPlanToday.text verbatim",
+                        "adding no counts, totals or overall judgement of your own",
+                        "Do not repeat a status already given from this context in the same response",
                         "follow its presentationInstruction before any learner-facing response",
                         "Continue immediately with the returned active goal")
-                .doesNotContain("state today's learning-plan counts for every subject");
+                .doesNotContain(
+                        "openToday",
+                        "openOverdue",
+                        "extraCompletedToday",
+                        "Mention backlog only on an explicit plan-detail request");
     }
 
     @Test
@@ -162,8 +159,9 @@ class ClaudeV1LearningPlanContractTest {
         assertThat(payload(result))
                 .containsEntry("stateVersion", 20)
                 .hasEntrySatisfying("learningPlanToday", value -> assertThat(value.toString())
-                        .contains("Mathematik", "Physik", "completedToday", "openOverdue")
-                        .doesNotContain("private-math-landscape", "private-physics-landscape"));
+                        .contains("Mathematik", "Physik", "text=", "statusDirection=")
+                        .doesNotContain("private-math-landscape", "private-physics-landscape",
+                                "completedToday", "openOverdue", "dueToday", "openToday"));
         assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
         verify(coachToolFacade, times(1)).getLearningPlanTodayStatus(learnerId, "de");
         verify(coachToolFacade, never()).resumeLearningPlan(learnerId, "de");
@@ -324,18 +322,15 @@ class ClaudeV1LearningPlanContractTest {
         assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
     }
 
+    /** Maths: three goals due today, one done, one earlier goal still open. Physics: two due. */
     private LearnerPlanTodayStatus todayStatus() {
-        return new LearnerPlanTodayStatus(
-                LocalDate.of(2026, 9, 4),
-                true,
-                true,
+        return com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.status(
+                LocalDate.of(2026, 9, 4), true, true, 0, null,
                 List.of(
-                        new LearnerPlanTodayStatus.SubjectStatus(
-                                "private-math-landscape", "Mathematik", 3, 1, 2, 1),
-                        new LearnerPlanTodayStatus.SubjectStatus(
-                                "private-physics-landscape", "Physik", 2, 0, 2, 0)),
-                new LearnerPlanTodayStatus.Totals(5, 1, 4, 1),
-                0);
+                        com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                                "private-math-landscape", "Mathematik", 4, 3, 1, 1, false, false),
+                        com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                                "private-physics-landscape", "Physik", 2, 2, 0, 0, false, false)));
     }
 
     private Map<String, Object> resumeArguments(String clientRequestId) {

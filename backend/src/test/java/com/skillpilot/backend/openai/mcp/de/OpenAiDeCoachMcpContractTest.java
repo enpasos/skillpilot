@@ -1717,15 +1717,18 @@ class OpenAiDeCoachMcpContractTest {
         verify(coachTools, never()).getUncompactedFrontier(any());
     }
 
+    /**
+     * Maths: today's single goal is done, three earlier ones stay open. Physics: one goal
+     * due today, open or done depending on the case.
+     */
     private static com.skillpilot.backend.api.LearnerPlanTodayStatus planQuotaStatus(boolean anotherSubjectOpen) {
-        return new com.skillpilot.backend.api.LearnerPlanTodayStatus(
-                java.time.LocalDate.parse("2026-09-11"), true, !anotherSubjectOpen,
-                List.of(new com.skillpilot.backend.api.LearnerPlanTodayStatus.SubjectStatus(
-                                "math", "Mathematik", 1, 1, 0, 3, false, true, 0),
-                        new com.skillpilot.backend.api.LearnerPlanTodayStatus.SubjectStatus(
-                                "physics", "Physik", 1, anotherSubjectOpen ? 0 : 1,
-                                anotherSubjectOpen ? 1 : 0, 0, anotherSubjectOpen, anotherSubjectOpen, 0)),
-                null, 0);
+        return com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.status(
+                java.time.LocalDate.parse("2026-09-11"), true, !anotherSubjectOpen, 0, null,
+                List.of(com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                                "math", "Mathematik", 4, 1, 1, 1, false, true),
+                        com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                                "physics", "Physik", 1, 1, anotherSubjectOpen ? 0 : 1,
+                                anotherSubjectOpen ? 0 : 1, anotherSubjectOpen, anotherSubjectOpen)));
     }
 
     @Test
@@ -2550,7 +2553,8 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(receipt.continuation().consentRequired()).isTrue();
         assertThat(receipt.continuation().toolCall()).isNull();
         assertThat(receipt.context().learningPlanToday().guidance().state()).isEqualTo("complete");
-        assertThat(receipt.context().learningPlanToday().totals().openOverdue()).isEqualTo(3);
+        assertThat(receipt.context().learningPlanToday().text())
+                .contains("3 Lernziele im Rückstand");
         assertThat(receipt.context().activeGoal()).isNull();
         assertThat(receipt.context().goalVisualization()).isNull();
         assertThat(receipt.context().options()).isEmpty();

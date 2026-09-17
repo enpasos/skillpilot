@@ -331,17 +331,14 @@ public class CoachToolFacade {
         return normalized.length() <= 120 ? normalized : normalized.substring(0, 120);
     }
 
+    /**
+     * A subject is switchable when its published name is well formed and exactly one plan
+     * landscape backs it. Plan counts never gate this: the ability to keep learning is
+     * independent of whether the plan status can be evaluated.
+     */
     private static boolean isPublishedPlanSubject(
             LearnerPlanTodayStatus.SubjectStatus subject) {
-        return publishedSubjectName(subject.subjectLabel()) != null
-                && subject.dueToday() >= 0
-                && subject.completedToday() >= 0
-                && subject.openToday() >= 0
-                && subject.openOverdue() >= 0
-                && subject.extraCompletedToday() >= 0
-                && (subject.extraCompletedToday() == 0 || subject.openToday() == 0)
-                && (long) subject.completedToday() + subject.openToday()
-                        == subject.dueToday();
+        return publishedSubjectName(subject.subjectLabel()) != null;
     }
 
     private LearnerLearningPlanService requireLearningPlanService() {

@@ -4,7 +4,7 @@
   "developer_name": "enpasos GmbH",
   "plugin_category": "education & research",
   "subtitle": "Your SkillPilot learning coach",
-  "description": "Continues a learning session prepared in the first-party SkillPilot web app, with curriculum-grounded coaching, a compact daily overview across planned subjects, authorized plan continuation and subject switching, learning-goal visualizations, mastery, verified recall, and assessment mode. Create or load your permanent SkillPilot ID, configure the learning context, and choose Start learning in SkillPilot; each start creates a fresh session and opens a new chat. OAuth authorizes the app, while the separate learning session selects the learner and controls the communication locale.",
+  "description": "Continues a learning session prepared in the first-party SkillPilot web app, with curriculum-grounded coaching, a compact plan status for each planned subject, authorized plan continuation and subject switching, learning-goal visualizations, mastery, verified recall, and assessment mode. Create or load your permanent SkillPilot ID, configure the learning context, and choose Start learning in SkillPilot; each start creates a fresh session and opens a new chat. OAuth authorizes the app, while the separate learning session selects the learner and controls the communication locale.",
   "brand_color": "#f59e0b",
   "branding": {
     "website": "https://skillpilot.com",
@@ -218,6 +218,9 @@
                   "minLength": 1,
                   "type": "string"
                 },
+                "evaluable": {
+                  "type": "boolean"
+                },
                 "followLearningPlans": {
                   "type": "boolean"
                 },
@@ -246,8 +249,23 @@
                   ],
                   "type": "object"
                 },
+                "periodBasis": {
+                  "enum": [
+                    "DAY",
+                    "WEEK"
+                  ],
+                  "type": "string"
+                },
                 "resumeAvailable": {
                   "type": "boolean"
+                },
+                "statusDirection": {
+                  "enum": [
+                    "behind",
+                    "on_track",
+                    "ahead"
+                  ],
+                  "type": "string"
                 },
                 "subjects": {
                   "items": {
@@ -256,28 +274,19 @@
                       "canContinue": {
                         "type": "boolean"
                       },
-                      "completedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
                       "current": {
                         "type": "boolean"
                       },
-                      "dueToday": {
-                        "minimum": 0,
-                        "type": "integer"
+                      "evaluable": {
+                        "type": "boolean"
                       },
-                      "extraCompletedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openOverdue": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openToday": {
-                        "minimum": 0,
-                        "type": "integer"
+                      "statusDirection": {
+                        "enum": [
+                          "behind",
+                          "on_track",
+                          "ahead"
+                        ],
+                        "type": "string"
                       },
                       "subject": {
                         "minLength": 1,
@@ -288,48 +297,15 @@
                       "subject",
                       "current",
                       "canContinue",
-                      "dueToday",
-                      "completedToday",
-                      "extraCompletedToday",
-                      "openToday",
-                      "openOverdue"
+                      "evaluable"
                     ],
                     "type": "object"
                   },
                   "type": "array"
                 },
-                "totals": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "completedToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "dueToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "extraCompletedToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "openOverdue": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "openToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    }
-                  },
-                  "required": [
-                    "dueToday",
-                    "completedToday",
-                    "extraCompletedToday",
-                    "openToday",
-                    "openOverdue"
-                  ],
-                  "type": "object"
+                "text": {
+                  "minLength": 1,
+                  "type": "string"
                 },
                 "unavailablePlanCount": {
                   "minimum": 0,
@@ -337,10 +313,10 @@
                 }
               },
               "required": [
+                "evaluable",
                 "followLearningPlans",
                 "resumeAvailable",
                 "subjects",
-                "totals",
                 "unavailablePlanCount",
                 "guidance"
               ],
@@ -1248,6 +1224,9 @@
                       "minLength": 1,
                       "type": "string"
                     },
+                    "evaluable": {
+                      "type": "boolean"
+                    },
                     "followLearningPlans": {
                       "type": "boolean"
                     },
@@ -1276,8 +1255,23 @@
                       ],
                       "type": "object"
                     },
+                    "periodBasis": {
+                      "enum": [
+                        "DAY",
+                        "WEEK"
+                      ],
+                      "type": "string"
+                    },
                     "resumeAvailable": {
                       "type": "boolean"
+                    },
+                    "statusDirection": {
+                      "enum": [
+                        "behind",
+                        "on_track",
+                        "ahead"
+                      ],
+                      "type": "string"
                     },
                     "subjects": {
                       "items": {
@@ -1286,28 +1280,19 @@
                           "canContinue": {
                             "type": "boolean"
                           },
-                          "completedToday": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
                           "current": {
                             "type": "boolean"
                           },
-                          "dueToday": {
-                            "minimum": 0,
-                            "type": "integer"
+                          "evaluable": {
+                            "type": "boolean"
                           },
-                          "extraCompletedToday": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "openOverdue": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "openToday": {
-                            "minimum": 0,
-                            "type": "integer"
+                          "statusDirection": {
+                            "enum": [
+                              "behind",
+                              "on_track",
+                              "ahead"
+                            ],
+                            "type": "string"
                           },
                           "subject": {
                             "minLength": 1,
@@ -1318,48 +1303,15 @@
                           "subject",
                           "current",
                           "canContinue",
-                          "dueToday",
-                          "completedToday",
-                          "extraCompletedToday",
-                          "openToday",
-                          "openOverdue"
+                          "evaluable"
                         ],
                         "type": "object"
                       },
                       "type": "array"
                     },
-                    "totals": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "completedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "dueToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "extraCompletedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openOverdue": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        }
-                      },
-                      "required": [
-                        "dueToday",
-                        "completedToday",
-                        "extraCompletedToday",
-                        "openToday",
-                        "openOverdue"
-                      ],
-                      "type": "object"
+                    "text": {
+                      "minLength": 1,
+                      "type": "string"
                     },
                     "unavailablePlanCount": {
                       "minimum": 0,
@@ -1367,10 +1319,10 @@
                     }
                   },
                   "required": [
+                    "evaluable",
                     "followLearningPlans",
                     "resumeAvailable",
                     "subjects",
-                    "totals",
                     "unavailablePlanCount",
                     "guidance"
                   ],
@@ -2165,6 +2117,9 @@
                       "minLength": 1,
                       "type": "string"
                     },
+                    "evaluable": {
+                      "type": "boolean"
+                    },
                     "followLearningPlans": {
                       "type": "boolean"
                     },
@@ -2193,8 +2148,23 @@
                       ],
                       "type": "object"
                     },
+                    "periodBasis": {
+                      "enum": [
+                        "DAY",
+                        "WEEK"
+                      ],
+                      "type": "string"
+                    },
                     "resumeAvailable": {
                       "type": "boolean"
+                    },
+                    "statusDirection": {
+                      "enum": [
+                        "behind",
+                        "on_track",
+                        "ahead"
+                      ],
+                      "type": "string"
                     },
                     "subjects": {
                       "items": {
@@ -2203,28 +2173,19 @@
                           "canContinue": {
                             "type": "boolean"
                           },
-                          "completedToday": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
                           "current": {
                             "type": "boolean"
                           },
-                          "dueToday": {
-                            "minimum": 0,
-                            "type": "integer"
+                          "evaluable": {
+                            "type": "boolean"
                           },
-                          "extraCompletedToday": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "openOverdue": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "openToday": {
-                            "minimum": 0,
-                            "type": "integer"
+                          "statusDirection": {
+                            "enum": [
+                              "behind",
+                              "on_track",
+                              "ahead"
+                            ],
+                            "type": "string"
                           },
                           "subject": {
                             "minLength": 1,
@@ -2235,48 +2196,15 @@
                           "subject",
                           "current",
                           "canContinue",
-                          "dueToday",
-                          "completedToday",
-                          "extraCompletedToday",
-                          "openToday",
-                          "openOverdue"
+                          "evaluable"
                         ],
                         "type": "object"
                       },
                       "type": "array"
                     },
-                    "totals": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "completedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "dueToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "extraCompletedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openOverdue": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        }
-                      },
-                      "required": [
-                        "dueToday",
-                        "completedToday",
-                        "extraCompletedToday",
-                        "openToday",
-                        "openOverdue"
-                      ],
-                      "type": "object"
+                    "text": {
+                      "minLength": 1,
+                      "type": "string"
                     },
                     "unavailablePlanCount": {
                       "minimum": 0,
@@ -2284,10 +2212,10 @@
                     }
                   },
                   "required": [
+                    "evaluable",
                     "followLearningPlans",
                     "resumeAvailable",
                     "subjects",
-                    "totals",
                     "unavailablePlanCount",
                     "guidance"
                   ],
@@ -2990,6 +2918,9 @@
                   "minLength": 1,
                   "type": "string"
                 },
+                "evaluable": {
+                  "type": "boolean"
+                },
                 "followLearningPlans": {
                   "type": "boolean"
                 },
@@ -3018,8 +2949,23 @@
                   ],
                   "type": "object"
                 },
+                "periodBasis": {
+                  "enum": [
+                    "DAY",
+                    "WEEK"
+                  ],
+                  "type": "string"
+                },
                 "resumeAvailable": {
                   "type": "boolean"
+                },
+                "statusDirection": {
+                  "enum": [
+                    "behind",
+                    "on_track",
+                    "ahead"
+                  ],
+                  "type": "string"
                 },
                 "subjects": {
                   "items": {
@@ -3028,28 +2974,19 @@
                       "canContinue": {
                         "type": "boolean"
                       },
-                      "completedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
                       "current": {
                         "type": "boolean"
                       },
-                      "dueToday": {
-                        "minimum": 0,
-                        "type": "integer"
+                      "evaluable": {
+                        "type": "boolean"
                       },
-                      "extraCompletedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openOverdue": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openToday": {
-                        "minimum": 0,
-                        "type": "integer"
+                      "statusDirection": {
+                        "enum": [
+                          "behind",
+                          "on_track",
+                          "ahead"
+                        ],
+                        "type": "string"
                       },
                       "subject": {
                         "minLength": 1,
@@ -3060,48 +2997,15 @@
                       "subject",
                       "current",
                       "canContinue",
-                      "dueToday",
-                      "completedToday",
-                      "extraCompletedToday",
-                      "openToday",
-                      "openOverdue"
+                      "evaluable"
                     ],
                     "type": "object"
                   },
                   "type": "array"
                 },
-                "totals": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "completedToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "dueToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "extraCompletedToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "openOverdue": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "openToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    }
-                  },
-                  "required": [
-                    "dueToday",
-                    "completedToday",
-                    "extraCompletedToday",
-                    "openToday",
-                    "openOverdue"
-                  ],
-                  "type": "object"
+                "text": {
+                  "minLength": 1,
+                  "type": "string"
                 },
                 "unavailablePlanCount": {
                   "minimum": 0,
@@ -3109,10 +3013,10 @@
                 }
               },
               "required": [
+                "evaluable",
                 "followLearningPlans",
                 "resumeAvailable",
                 "subjects",
-                "totals",
                 "unavailablePlanCount",
                 "guidance"
               ],
@@ -3663,6 +3567,9 @@
                       "minLength": 1,
                       "type": "string"
                     },
+                    "evaluable": {
+                      "type": "boolean"
+                    },
                     "followLearningPlans": {
                       "type": "boolean"
                     },
@@ -3691,8 +3598,23 @@
                       ],
                       "type": "object"
                     },
+                    "periodBasis": {
+                      "enum": [
+                        "DAY",
+                        "WEEK"
+                      ],
+                      "type": "string"
+                    },
                     "resumeAvailable": {
                       "type": "boolean"
+                    },
+                    "statusDirection": {
+                      "enum": [
+                        "behind",
+                        "on_track",
+                        "ahead"
+                      ],
+                      "type": "string"
                     },
                     "subjects": {
                       "items": {
@@ -3701,28 +3623,19 @@
                           "canContinue": {
                             "type": "boolean"
                           },
-                          "completedToday": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
                           "current": {
                             "type": "boolean"
                           },
-                          "dueToday": {
-                            "minimum": 0,
-                            "type": "integer"
+                          "evaluable": {
+                            "type": "boolean"
                           },
-                          "extraCompletedToday": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "openOverdue": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "openToday": {
-                            "minimum": 0,
-                            "type": "integer"
+                          "statusDirection": {
+                            "enum": [
+                              "behind",
+                              "on_track",
+                              "ahead"
+                            ],
+                            "type": "string"
                           },
                           "subject": {
                             "minLength": 1,
@@ -3733,48 +3646,15 @@
                           "subject",
                           "current",
                           "canContinue",
-                          "dueToday",
-                          "completedToday",
-                          "extraCompletedToday",
-                          "openToday",
-                          "openOverdue"
+                          "evaluable"
                         ],
                         "type": "object"
                       },
                       "type": "array"
                     },
-                    "totals": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "completedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "dueToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "extraCompletedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openOverdue": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        }
-                      },
-                      "required": [
-                        "dueToday",
-                        "completedToday",
-                        "extraCompletedToday",
-                        "openToday",
-                        "openOverdue"
-                      ],
-                      "type": "object"
+                    "text": {
+                      "minLength": 1,
+                      "type": "string"
                     },
                     "unavailablePlanCount": {
                       "minimum": 0,
@@ -3782,10 +3662,10 @@
                     }
                   },
                   "required": [
+                    "evaluable",
                     "followLearningPlans",
                     "resumeAvailable",
                     "subjects",
-                    "totals",
                     "unavailablePlanCount",
                     "guidance"
                   ],
@@ -4331,6 +4211,9 @@
                   "minLength": 1,
                   "type": "string"
                 },
+                "evaluable": {
+                  "type": "boolean"
+                },
                 "followLearningPlans": {
                   "type": "boolean"
                 },
@@ -4359,8 +4242,23 @@
                   ],
                   "type": "object"
                 },
+                "periodBasis": {
+                  "enum": [
+                    "DAY",
+                    "WEEK"
+                  ],
+                  "type": "string"
+                },
                 "resumeAvailable": {
                   "type": "boolean"
+                },
+                "statusDirection": {
+                  "enum": [
+                    "behind",
+                    "on_track",
+                    "ahead"
+                  ],
+                  "type": "string"
                 },
                 "subjects": {
                   "items": {
@@ -4369,28 +4267,19 @@
                       "canContinue": {
                         "type": "boolean"
                       },
-                      "completedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
                       "current": {
                         "type": "boolean"
                       },
-                      "dueToday": {
-                        "minimum": 0,
-                        "type": "integer"
+                      "evaluable": {
+                        "type": "boolean"
                       },
-                      "extraCompletedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openOverdue": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openToday": {
-                        "minimum": 0,
-                        "type": "integer"
+                      "statusDirection": {
+                        "enum": [
+                          "behind",
+                          "on_track",
+                          "ahead"
+                        ],
+                        "type": "string"
                       },
                       "subject": {
                         "minLength": 1,
@@ -4401,48 +4290,15 @@
                       "subject",
                       "current",
                       "canContinue",
-                      "dueToday",
-                      "completedToday",
-                      "extraCompletedToday",
-                      "openToday",
-                      "openOverdue"
+                      "evaluable"
                     ],
                     "type": "object"
                   },
                   "type": "array"
                 },
-                "totals": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "completedToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "dueToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "extraCompletedToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "openOverdue": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "openToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    }
-                  },
-                  "required": [
-                    "dueToday",
-                    "completedToday",
-                    "extraCompletedToday",
-                    "openToday",
-                    "openOverdue"
-                  ],
-                  "type": "object"
+                "text": {
+                  "minLength": 1,
+                  "type": "string"
                 },
                 "unavailablePlanCount": {
                   "minimum": 0,
@@ -4450,10 +4306,10 @@
                 }
               },
               "required": [
+                "evaluable",
                 "followLearningPlans",
                 "resumeAvailable",
                 "subjects",
-                "totals",
                 "unavailablePlanCount",
                 "guidance"
               ],
@@ -5227,6 +5083,9 @@
                       "minLength": 1,
                       "type": "string"
                     },
+                    "evaluable": {
+                      "type": "boolean"
+                    },
                     "followLearningPlans": {
                       "type": "boolean"
                     },
@@ -5255,8 +5114,23 @@
                       ],
                       "type": "object"
                     },
+                    "periodBasis": {
+                      "enum": [
+                        "DAY",
+                        "WEEK"
+                      ],
+                      "type": "string"
+                    },
                     "resumeAvailable": {
                       "type": "boolean"
+                    },
+                    "statusDirection": {
+                      "enum": [
+                        "behind",
+                        "on_track",
+                        "ahead"
+                      ],
+                      "type": "string"
                     },
                     "subjects": {
                       "items": {
@@ -5265,28 +5139,19 @@
                           "canContinue": {
                             "type": "boolean"
                           },
-                          "completedToday": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
                           "current": {
                             "type": "boolean"
                           },
-                          "dueToday": {
-                            "minimum": 0,
-                            "type": "integer"
+                          "evaluable": {
+                            "type": "boolean"
                           },
-                          "extraCompletedToday": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "openOverdue": {
-                            "minimum": 0,
-                            "type": "integer"
-                          },
-                          "openToday": {
-                            "minimum": 0,
-                            "type": "integer"
+                          "statusDirection": {
+                            "enum": [
+                              "behind",
+                              "on_track",
+                              "ahead"
+                            ],
+                            "type": "string"
                           },
                           "subject": {
                             "minLength": 1,
@@ -5297,48 +5162,15 @@
                           "subject",
                           "current",
                           "canContinue",
-                          "dueToday",
-                          "completedToday",
-                          "extraCompletedToday",
-                          "openToday",
-                          "openOverdue"
+                          "evaluable"
                         ],
                         "type": "object"
                       },
                       "type": "array"
                     },
-                    "totals": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "completedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "dueToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "extraCompletedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openOverdue": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        }
-                      },
-                      "required": [
-                        "dueToday",
-                        "completedToday",
-                        "extraCompletedToday",
-                        "openToday",
-                        "openOverdue"
-                      ],
-                      "type": "object"
+                    "text": {
+                      "minLength": 1,
+                      "type": "string"
                     },
                     "unavailablePlanCount": {
                       "minimum": 0,
@@ -5346,10 +5178,10 @@
                     }
                   },
                   "required": [
+                    "evaluable",
                     "followLearningPlans",
                     "resumeAvailable",
                     "subjects",
-                    "totals",
                     "unavailablePlanCount",
                     "guidance"
                   ],
@@ -5874,6 +5706,9 @@
                 "minLength": 1,
                 "type": "string"
               },
+              "evaluable": {
+                "type": "boolean"
+              },
               "followLearningPlans": {
                 "type": "boolean"
               },
@@ -5902,8 +5737,23 @@
                 ],
                 "type": "object"
               },
+              "periodBasis": {
+                "enum": [
+                  "DAY",
+                  "WEEK"
+                ],
+                "type": "string"
+              },
               "resumeAvailable": {
                 "type": "boolean"
+              },
+              "statusDirection": {
+                "enum": [
+                  "behind",
+                  "on_track",
+                  "ahead"
+                ],
+                "type": "string"
               },
               "subjects": {
                 "items": {
@@ -5912,28 +5762,19 @@
                     "canContinue": {
                       "type": "boolean"
                     },
-                    "completedToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
                     "current": {
                       "type": "boolean"
                     },
-                    "dueToday": {
-                      "minimum": 0,
-                      "type": "integer"
+                    "evaluable": {
+                      "type": "boolean"
                     },
-                    "extraCompletedToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "openOverdue": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "openToday": {
-                      "minimum": 0,
-                      "type": "integer"
+                    "statusDirection": {
+                      "enum": [
+                        "behind",
+                        "on_track",
+                        "ahead"
+                      ],
+                      "type": "string"
                     },
                     "subject": {
                       "minLength": 1,
@@ -5944,48 +5785,15 @@
                     "subject",
                     "current",
                     "canContinue",
-                    "dueToday",
-                    "completedToday",
-                    "extraCompletedToday",
-                    "openToday",
-                    "openOverdue"
+                    "evaluable"
                   ],
                   "type": "object"
                 },
                 "type": "array"
               },
-              "totals": {
-                "additionalProperties": false,
-                "properties": {
-                  "completedToday": {
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "dueToday": {
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "extraCompletedToday": {
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "openOverdue": {
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "openToday": {
-                    "minimum": 0,
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "dueToday",
-                  "completedToday",
-                  "extraCompletedToday",
-                  "openToday",
-                  "openOverdue"
-                ],
-                "type": "object"
+              "text": {
+                "minLength": 1,
+                "type": "string"
               },
               "unavailablePlanCount": {
                 "minimum": 0,
@@ -5993,10 +5801,10 @@
               }
             },
             "required": [
+              "evaluable",
               "followLearningPlans",
               "resumeAvailable",
               "subjects",
-              "totals",
               "unavailablePlanCount",
               "guidance"
             ],
@@ -6904,6 +6712,9 @@
                     "minLength": 1,
                     "type": "string"
                   },
+                  "evaluable": {
+                    "type": "boolean"
+                  },
                   "followLearningPlans": {
                     "type": "boolean"
                   },
@@ -6932,8 +6743,23 @@
                     ],
                     "type": "object"
                   },
+                  "periodBasis": {
+                    "enum": [
+                      "DAY",
+                      "WEEK"
+                    ],
+                    "type": "string"
+                  },
                   "resumeAvailable": {
                     "type": "boolean"
+                  },
+                  "statusDirection": {
+                    "enum": [
+                      "behind",
+                      "on_track",
+                      "ahead"
+                    ],
+                    "type": "string"
                   },
                   "subjects": {
                     "items": {
@@ -6942,28 +6768,19 @@
                         "canContinue": {
                           "type": "boolean"
                         },
-                        "completedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
                         "current": {
                           "type": "boolean"
                         },
-                        "dueToday": {
-                          "minimum": 0,
-                          "type": "integer"
+                        "evaluable": {
+                          "type": "boolean"
                         },
-                        "extraCompletedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openOverdue": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openToday": {
-                          "minimum": 0,
-                          "type": "integer"
+                        "statusDirection": {
+                          "enum": [
+                            "behind",
+                            "on_track",
+                            "ahead"
+                          ],
+                          "type": "string"
                         },
                         "subject": {
                           "minLength": 1,
@@ -6974,48 +6791,15 @@
                         "subject",
                         "current",
                         "canContinue",
-                        "dueToday",
-                        "completedToday",
-                        "extraCompletedToday",
-                        "openToday",
-                        "openOverdue"
+                        "evaluable"
                       ],
                       "type": "object"
                     },
                     "type": "array"
                   },
-                  "totals": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "completedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "dueToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "extraCompletedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openOverdue": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      }
-                    },
-                    "required": [
-                      "dueToday",
-                      "completedToday",
-                      "extraCompletedToday",
-                      "openToday",
-                      "openOverdue"
-                    ],
-                    "type": "object"
+                  "text": {
+                    "minLength": 1,
+                    "type": "string"
                   },
                   "unavailablePlanCount": {
                     "minimum": 0,
@@ -7023,10 +6807,10 @@
                   }
                 },
                 "required": [
+                  "evaluable",
                   "followLearningPlans",
                   "resumeAvailable",
                   "subjects",
-                  "totals",
                   "unavailablePlanCount",
                   "guidance"
                 ],
@@ -7821,6 +7605,9 @@
                     "minLength": 1,
                     "type": "string"
                   },
+                  "evaluable": {
+                    "type": "boolean"
+                  },
                   "followLearningPlans": {
                     "type": "boolean"
                   },
@@ -7849,8 +7636,23 @@
                     ],
                     "type": "object"
                   },
+                  "periodBasis": {
+                    "enum": [
+                      "DAY",
+                      "WEEK"
+                    ],
+                    "type": "string"
+                  },
                   "resumeAvailable": {
                     "type": "boolean"
+                  },
+                  "statusDirection": {
+                    "enum": [
+                      "behind",
+                      "on_track",
+                      "ahead"
+                    ],
+                    "type": "string"
                   },
                   "subjects": {
                     "items": {
@@ -7859,28 +7661,19 @@
                         "canContinue": {
                           "type": "boolean"
                         },
-                        "completedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
                         "current": {
                           "type": "boolean"
                         },
-                        "dueToday": {
-                          "minimum": 0,
-                          "type": "integer"
+                        "evaluable": {
+                          "type": "boolean"
                         },
-                        "extraCompletedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openOverdue": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openToday": {
-                          "minimum": 0,
-                          "type": "integer"
+                        "statusDirection": {
+                          "enum": [
+                            "behind",
+                            "on_track",
+                            "ahead"
+                          ],
+                          "type": "string"
                         },
                         "subject": {
                           "minLength": 1,
@@ -7891,48 +7684,15 @@
                         "subject",
                         "current",
                         "canContinue",
-                        "dueToday",
-                        "completedToday",
-                        "extraCompletedToday",
-                        "openToday",
-                        "openOverdue"
+                        "evaluable"
                       ],
                       "type": "object"
                     },
                     "type": "array"
                   },
-                  "totals": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "completedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "dueToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "extraCompletedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openOverdue": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      }
-                    },
-                    "required": [
-                      "dueToday",
-                      "completedToday",
-                      "extraCompletedToday",
-                      "openToday",
-                      "openOverdue"
-                    ],
-                    "type": "object"
+                  "text": {
+                    "minLength": 1,
+                    "type": "string"
                   },
                   "unavailablePlanCount": {
                     "minimum": 0,
@@ -7940,10 +7700,10 @@
                   }
                 },
                 "required": [
+                  "evaluable",
                   "followLearningPlans",
                   "resumeAvailable",
                   "subjects",
-                  "totals",
                   "unavailablePlanCount",
                   "guidance"
                 ],
@@ -8646,6 +8406,9 @@
                 "minLength": 1,
                 "type": "string"
               },
+              "evaluable": {
+                "type": "boolean"
+              },
               "followLearningPlans": {
                 "type": "boolean"
               },
@@ -8674,8 +8437,23 @@
                 ],
                 "type": "object"
               },
+              "periodBasis": {
+                "enum": [
+                  "DAY",
+                  "WEEK"
+                ],
+                "type": "string"
+              },
               "resumeAvailable": {
                 "type": "boolean"
+              },
+              "statusDirection": {
+                "enum": [
+                  "behind",
+                  "on_track",
+                  "ahead"
+                ],
+                "type": "string"
               },
               "subjects": {
                 "items": {
@@ -8684,28 +8462,19 @@
                     "canContinue": {
                       "type": "boolean"
                     },
-                    "completedToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
                     "current": {
                       "type": "boolean"
                     },
-                    "dueToday": {
-                      "minimum": 0,
-                      "type": "integer"
+                    "evaluable": {
+                      "type": "boolean"
                     },
-                    "extraCompletedToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "openOverdue": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "openToday": {
-                      "minimum": 0,
-                      "type": "integer"
+                    "statusDirection": {
+                      "enum": [
+                        "behind",
+                        "on_track",
+                        "ahead"
+                      ],
+                      "type": "string"
                     },
                     "subject": {
                       "minLength": 1,
@@ -8716,48 +8485,15 @@
                     "subject",
                     "current",
                     "canContinue",
-                    "dueToday",
-                    "completedToday",
-                    "extraCompletedToday",
-                    "openToday",
-                    "openOverdue"
+                    "evaluable"
                   ],
                   "type": "object"
                 },
                 "type": "array"
               },
-              "totals": {
-                "additionalProperties": false,
-                "properties": {
-                  "completedToday": {
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "dueToday": {
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "extraCompletedToday": {
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "openOverdue": {
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "openToday": {
-                    "minimum": 0,
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "dueToday",
-                  "completedToday",
-                  "extraCompletedToday",
-                  "openToday",
-                  "openOverdue"
-                ],
-                "type": "object"
+              "text": {
+                "minLength": 1,
+                "type": "string"
               },
               "unavailablePlanCount": {
                 "minimum": 0,
@@ -8765,10 +8501,10 @@
               }
             },
             "required": [
+              "evaluable",
               "followLearningPlans",
               "resumeAvailable",
               "subjects",
-              "totals",
               "unavailablePlanCount",
               "guidance"
             ],
@@ -9319,6 +9055,9 @@
                     "minLength": 1,
                     "type": "string"
                   },
+                  "evaluable": {
+                    "type": "boolean"
+                  },
                   "followLearningPlans": {
                     "type": "boolean"
                   },
@@ -9347,8 +9086,23 @@
                     ],
                     "type": "object"
                   },
+                  "periodBasis": {
+                    "enum": [
+                      "DAY",
+                      "WEEK"
+                    ],
+                    "type": "string"
+                  },
                   "resumeAvailable": {
                     "type": "boolean"
+                  },
+                  "statusDirection": {
+                    "enum": [
+                      "behind",
+                      "on_track",
+                      "ahead"
+                    ],
+                    "type": "string"
                   },
                   "subjects": {
                     "items": {
@@ -9357,28 +9111,19 @@
                         "canContinue": {
                           "type": "boolean"
                         },
-                        "completedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
                         "current": {
                           "type": "boolean"
                         },
-                        "dueToday": {
-                          "minimum": 0,
-                          "type": "integer"
+                        "evaluable": {
+                          "type": "boolean"
                         },
-                        "extraCompletedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openOverdue": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openToday": {
-                          "minimum": 0,
-                          "type": "integer"
+                        "statusDirection": {
+                          "enum": [
+                            "behind",
+                            "on_track",
+                            "ahead"
+                          ],
+                          "type": "string"
                         },
                         "subject": {
                           "minLength": 1,
@@ -9389,48 +9134,15 @@
                         "subject",
                         "current",
                         "canContinue",
-                        "dueToday",
-                        "completedToday",
-                        "extraCompletedToday",
-                        "openToday",
-                        "openOverdue"
+                        "evaluable"
                       ],
                       "type": "object"
                     },
                     "type": "array"
                   },
-                  "totals": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "completedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "dueToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "extraCompletedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openOverdue": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      }
-                    },
-                    "required": [
-                      "dueToday",
-                      "completedToday",
-                      "extraCompletedToday",
-                      "openToday",
-                      "openOverdue"
-                    ],
-                    "type": "object"
+                  "text": {
+                    "minLength": 1,
+                    "type": "string"
                   },
                   "unavailablePlanCount": {
                     "minimum": 0,
@@ -9438,10 +9150,10 @@
                   }
                 },
                 "required": [
+                  "evaluable",
                   "followLearningPlans",
                   "resumeAvailable",
                   "subjects",
-                  "totals",
                   "unavailablePlanCount",
                   "guidance"
                 ],
@@ -9987,6 +9699,9 @@
                 "minLength": 1,
                 "type": "string"
               },
+              "evaluable": {
+                "type": "boolean"
+              },
               "followLearningPlans": {
                 "type": "boolean"
               },
@@ -10015,8 +9730,23 @@
                 ],
                 "type": "object"
               },
+              "periodBasis": {
+                "enum": [
+                  "DAY",
+                  "WEEK"
+                ],
+                "type": "string"
+              },
               "resumeAvailable": {
                 "type": "boolean"
+              },
+              "statusDirection": {
+                "enum": [
+                  "behind",
+                  "on_track",
+                  "ahead"
+                ],
+                "type": "string"
               },
               "subjects": {
                 "items": {
@@ -10025,28 +9755,19 @@
                     "canContinue": {
                       "type": "boolean"
                     },
-                    "completedToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
                     "current": {
                       "type": "boolean"
                     },
-                    "dueToday": {
-                      "minimum": 0,
-                      "type": "integer"
+                    "evaluable": {
+                      "type": "boolean"
                     },
-                    "extraCompletedToday": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "openOverdue": {
-                      "minimum": 0,
-                      "type": "integer"
-                    },
-                    "openToday": {
-                      "minimum": 0,
-                      "type": "integer"
+                    "statusDirection": {
+                      "enum": [
+                        "behind",
+                        "on_track",
+                        "ahead"
+                      ],
+                      "type": "string"
                     },
                     "subject": {
                       "minLength": 1,
@@ -10057,48 +9778,15 @@
                     "subject",
                     "current",
                     "canContinue",
-                    "dueToday",
-                    "completedToday",
-                    "extraCompletedToday",
-                    "openToday",
-                    "openOverdue"
+                    "evaluable"
                   ],
                   "type": "object"
                 },
                 "type": "array"
               },
-              "totals": {
-                "additionalProperties": false,
-                "properties": {
-                  "completedToday": {
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "dueToday": {
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "extraCompletedToday": {
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "openOverdue": {
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "openToday": {
-                    "minimum": 0,
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "dueToday",
-                  "completedToday",
-                  "extraCompletedToday",
-                  "openToday",
-                  "openOverdue"
-                ],
-                "type": "object"
+              "text": {
+                "minLength": 1,
+                "type": "string"
               },
               "unavailablePlanCount": {
                 "minimum": 0,
@@ -10106,10 +9794,10 @@
               }
             },
             "required": [
+              "evaluable",
               "followLearningPlans",
               "resumeAvailable",
               "subjects",
-              "totals",
               "unavailablePlanCount",
               "guidance"
             ],
@@ -10883,6 +10571,9 @@
                     "minLength": 1,
                     "type": "string"
                   },
+                  "evaluable": {
+                    "type": "boolean"
+                  },
                   "followLearningPlans": {
                     "type": "boolean"
                   },
@@ -10911,8 +10602,23 @@
                     ],
                     "type": "object"
                   },
+                  "periodBasis": {
+                    "enum": [
+                      "DAY",
+                      "WEEK"
+                    ],
+                    "type": "string"
+                  },
                   "resumeAvailable": {
                     "type": "boolean"
+                  },
+                  "statusDirection": {
+                    "enum": [
+                      "behind",
+                      "on_track",
+                      "ahead"
+                    ],
+                    "type": "string"
                   },
                   "subjects": {
                     "items": {
@@ -10921,28 +10627,19 @@
                         "canContinue": {
                           "type": "boolean"
                         },
-                        "completedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
                         "current": {
                           "type": "boolean"
                         },
-                        "dueToday": {
-                          "minimum": 0,
-                          "type": "integer"
+                        "evaluable": {
+                          "type": "boolean"
                         },
-                        "extraCompletedToday": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openOverdue": {
-                          "minimum": 0,
-                          "type": "integer"
-                        },
-                        "openToday": {
-                          "minimum": 0,
-                          "type": "integer"
+                        "statusDirection": {
+                          "enum": [
+                            "behind",
+                            "on_track",
+                            "ahead"
+                          ],
+                          "type": "string"
                         },
                         "subject": {
                           "minLength": 1,
@@ -10953,48 +10650,15 @@
                         "subject",
                         "current",
                         "canContinue",
-                        "dueToday",
-                        "completedToday",
-                        "extraCompletedToday",
-                        "openToday",
-                        "openOverdue"
+                        "evaluable"
                       ],
                       "type": "object"
                     },
                     "type": "array"
                   },
-                  "totals": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "completedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "dueToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "extraCompletedToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openOverdue": {
-                        "minimum": 0,
-                        "type": "integer"
-                      },
-                      "openToday": {
-                        "minimum": 0,
-                        "type": "integer"
-                      }
-                    },
-                    "required": [
-                      "dueToday",
-                      "completedToday",
-                      "extraCompletedToday",
-                      "openToday",
-                      "openOverdue"
-                    ],
-                    "type": "object"
+                  "text": {
+                    "minLength": 1,
+                    "type": "string"
                   },
                   "unavailablePlanCount": {
                     "minimum": 0,
@@ -11002,10 +10666,10 @@
                   }
                 },
                 "required": [
+                  "evaluable",
                   "followLearningPlans",
                   "resumeAvailable",
                   "subjects",
-                  "totals",
                   "unavailablePlanCount",
                   "guidance"
                 ],

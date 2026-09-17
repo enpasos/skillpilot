@@ -2,18 +2,18 @@
 
 SkillPilot Coach v1 is the public-plugin candidate for curriculum-grounded
 SkillPilot learning coaching. Its product scope is limited to eligible paid
-Claude Chat on the Web and the native Android app. Version 1.1.6 is the sole
+Claude Chat on the Web and the native Android app. Version 1.1.7 is the sole
 current replacement candidate. Local preparation does not establish deployment,
-Marketplace publication or real-client acceptance. The existing 1.1.5 artifact
+Marketplace publication or real-client acceptance. The existing 1.1.6 artifact
 and its publication evidence remain immutable; older packages are not a
 fallback for testing this candidate.
 
 Earlier v1 direct-install packages were demonstrated in paid Claude Web chat.
 The Product Owner also used an earlier account-level direct installation with a
 Claude Pro account in the native Claude app on Android. Those observations do
-not transfer to the 1.1.6 candidate. Exact-candidate direct-install,
+not transfer to the 1.1.7 candidate. Exact-candidate direct-install,
 public-listing installation and the complete Android learning flow remain
-pending until they are verified for 1.1.6. The earlier Android observation also
+pending until they are verified for 1.1.7. The earlier Android observation also
 does not establish that the package can be installed from Android itself or
 that a public listing will reach Android. iOS, Claude Desktop Chat, Cowork and
 public Claude Code remain outside this candidate's claims.
@@ -44,7 +44,7 @@ remote SkillPilot connector. All fourteen MCP tools and both interactive MCP App
 come from that connector; the plugin does not duplicate their schemas,
 resources, or UI bytes.
 
-Version 1.1.6 makes explicit continuation available beyond daily quotas and
+Version 1.1.7 makes explicit continuation available beyond daily quotas and
 plan dates. A plan guides and prioritizes; it must never prevent learning.
 The Skill owns the common coaching flow; conditional references supply the
 Verified Recall and exam procedures only when needed. Local regression checks do not establish
@@ -61,16 +61,19 @@ plugin version. Old cached inputs are rejected; they must not be reintroduced
 to make an old installation work. OAuth, learner-session, tool identity and
 backend-owned progression boundaries remain unchanged.
 
-Version 1.1.6 keeps the chat plan-first with a compact daily summary. For example:
-“Heute: 2 von 48 geschafft · noch offen: 19 Mathe, 27 Physik.” Today's newly
-completed due plan goals count first toward a stable daily quota for their
-subject, including goals from earlier days. The backend owns the completion
-events and all counts. It stops automatic continuation when the daily targets
-are reached; further learning follows an explicit learner request and is
+Version 1.1.7 keeps the chat plan-first with a compact plan status formulated by
+the backend. Claude quotes `learningPlanToday.text` verbatim and adds no counts
+or judgement of its own, for example:
+“Mathematik: Tagesziel 2 von 3 · im Plan” and
+“Physik: Heute kein Tagesziel · 2 Lernziele im Rückstand”, followed by the
+active learning goal. The backend merges all plans of a subject, evaluates the
+learner's chosen day or week basis, formulates the text in the session language
+and names unevaluable plans instead of reporting them as zero. The same text
+appears in the SkillPilot cockpit. Automatic continuation stops when the period
+targets are reached; further learning follows an explicit learner request and is
 celebrated as voluntary extra work. If backlog remains, the coach offers a
 pressure-free chance to catch up with one next open goal, while pausing stays
 possible. Without backlog, it offers voluntary continuation or a pause.
-Backlog counts appear only on request; unavailable-plan warnings remain explicit.
 Zero daily quota, an empty backlog, future plan dates or an exhausted plan never
 block explicitly requested learning. The backend continues an active unmastered
 goal or selects a reachable open target from the Personal Curriculum, preserving
@@ -87,20 +90,20 @@ selects a reachable open goal for the requested subject without exposing plan or
 identifiers.
 
 Within a valid learning session, the learner can simply return to the chat and
-say “weiter” or “now Physics”. Claude names the remaining work briefly and
-starts the next concrete explanation or task. A status question reports the
+say “weiter” or “now Physics”. Claude starts the next concrete explanation or
+task and repeats the plan status only after a status-relevant change. A status question reports the
 plan without changing the current subject. After an ordinary goal or Verified
 Recall finishes, Claude uses the refreshed progress and backend-selected
-successor. When the daily quotas are fulfilled, it celebrates today's target;
+successor. When the period targets are reached, it celebrates them;
 this does not mean that the entire plan or all remaining backlog is complete.
-blocked or unavailable work is not presented as completed.
+Blocked or unavailable work is not presented as completed.
 
 SkillPilot Coach v1 does not claim support for Claude Free, iOS, installation
 from inside the Android app, Claude Desktop Chat, Cowork, hooks, subagents, or
 public Claude Code. Those surfaces require their own acceptance evidence and a
 later reviewed release before SkillPilot can advertise them.
 
-The historical direct-install observations are not evidence for 1.1.6 or public
+The historical direct-install observations are not evidence for 1.1.7 or public
 Directory availability. Submission readiness requires this exact candidate to
 complete the dedicated Web and Android real-client acceptance gates.
 Public-listing reach on Android remains a publication verification, not a

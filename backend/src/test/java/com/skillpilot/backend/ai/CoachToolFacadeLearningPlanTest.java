@@ -14,6 +14,7 @@ import static org.mockito.Mockito.when;
 
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
 import com.skillpilot.backend.api.LearnerPlanTodayStatus;
+import com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
@@ -127,10 +128,8 @@ class CoachToolFacadeLearningPlanTest {
         UUID planId = UUID.randomUUID();
         LearnerPlanTodayStatus today = status(
                 true,
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        "math-landscape", "Mathematik", 3, 1, 2, 0),
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        "physics-landscape", "Physik", 2, 0, 2, 1));
+                subject("math-landscape", "Mathematik", 3, 1, 0, false, false),
+                subject("physics-landscape", "Physik", 2, 0, 1, false, false));
         LearnerLearningPlanApi.PlanDetail physicsPlan = planDetail(
                 planId, 9L, "physics-landscape", false);
         UnifiedLearnerStateResponse switchedState = stateWithActiveGoal("physics-goal");
@@ -170,10 +169,8 @@ class CoachToolFacadeLearningPlanTest {
         LocalDate asOf = LocalDate.parse("2026-09-04");
         when(learningPlans.getTodayStatus(LEARNER_ID, "en-GB")).thenReturn(status(
                 true,
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        "math-landscape", "Mathematics", 2, 0, 2, 0),
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        "physics-landscape", "Physics", 0, 0, 0, 0, false, true)));
+                subject("math-landscape", "Mathematics", 2, 0, 0, false, false),
+                subject("physics-landscape", "Physics", 0, 0, 0, false, true)));
         when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
                 .thenThrow(new ResponseStatusException(HttpStatus.NOT_FOUND, "No stored plan"));
         LearnerLearningPlanApi.TransitionResponse transition = personalCurriculumTransition(
@@ -198,8 +195,7 @@ class CoachToolFacadeLearningPlanTest {
         LocalDate asOf = LocalDate.parse("2026-09-04");
         when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status(
                 true,
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        "physics-landscape", "Physik", 2, 2, 0, 0, false, true)));
+                subject("physics-landscape", "Physik", 2, 2, 0, false, true)));
         when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
                 .thenReturn(planDetail(UUID.randomUUID(), 9L, "physics-landscape", true));
         LearnerLearningPlanApi.TransitionResponse transition = personalCurriculumTransition(
@@ -217,14 +213,10 @@ class CoachToolFacadeLearningPlanTest {
     @Test
     void subjectSwitchWithAnUnavailableStoredPlanUsesThePublishedPersonalContinuationCapability() {
         LocalDate asOf = LocalDate.parse("2026-09-04");
-        when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(new LearnerPlanTodayStatus(
-                asOf,
-                true,
-                true,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus(
-                        "physics-landscape", "Physik", 0, 0, 0, 0, false, true)),
-                new LearnerPlanTodayStatus.Totals(0, 0, 0, 0),
-                1));
+        when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(
+                LearnerPlanTodayStatusFixtures.status(asOf, true, true, 1, null,
+                        List.of(LearnerPlanTodayStatusFixtures.unevaluableSubject(
+                                "physics-landscape", "Physik", false, true))));
         when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
                 .thenThrow(new ResponseStatusException(HttpStatus.CONFLICT, "Stored plan is corrupt"));
         LearnerLearningPlanApi.TransitionResponse transition = personalCurriculumTransition(
@@ -247,14 +239,10 @@ class CoachToolFacadeLearningPlanTest {
     @Test
     void subjectSwitchDoesNotUseAnUnavailablePlanWithoutAPublishedContinuationCapability() {
         LocalDate asOf = LocalDate.parse("2026-09-04");
-        when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(new LearnerPlanTodayStatus(
-                asOf,
-                true,
-                false,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus(
-                        "physics-landscape", "Physik", 0, 0, 0, 0, false, false)),
-                new LearnerPlanTodayStatus.Totals(0, 0, 0, 0),
-                1));
+        when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(
+                LearnerPlanTodayStatusFixtures.status(asOf, true, false, 1, null,
+                        List.of(LearnerPlanTodayStatusFixtures.unevaluableSubject(
+                                "physics-landscape", "Physik", false, false))));
         when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
                 .thenThrow(new ResponseStatusException(HttpStatus.CONFLICT, "Stored plan is corrupt"));
 
@@ -270,8 +258,7 @@ class CoachToolFacadeLearningPlanTest {
     void subjectSwitchDoesNotTreatANameFromAnotherLocaleAsAPublishedPersonalSubject() {
         when(learningPlans.getTodayStatus(LEARNER_ID, "en-GB")).thenReturn(status(
                 true,
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        "physics-landscape", "Physics", 0, 0, 0, 0, false, true)));
+                subject("physics-landscape", "Physics", 0, 0, 0, false, true)));
 
         assertThatThrownBy(() -> facade.switchLearningPlanSubject(LEARNER_ID, "en-GB", "Physik"))
                 .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
@@ -287,8 +274,7 @@ class CoachToolFacadeLearningPlanTest {
         LocalDate asOf = LocalDate.parse("2026-09-04");
         when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status(
                 true,
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        "physics-landscape", "Physik", 0, 0, 0, 0, false, true)));
+                subject("physics-landscape", "Physik", 0, 0, 0, false, true)));
 
         for (LearnerLearningPlanApi.PlanDetail malformedPlan :
                 new LearnerLearningPlanApi.PlanDetail[] {
@@ -317,14 +303,13 @@ class CoachToolFacadeLearningPlanTest {
         for (HttpStatus failureStatus : List.of(
                 HttpStatus.BAD_REQUEST, HttpStatus.UNAUTHORIZED, HttpStatus.FORBIDDEN,
                 HttpStatus.CONFLICT, HttpStatus.INTERNAL_SERVER_ERROR, HttpStatus.SERVICE_UNAVAILABLE)) {
-            when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(new LearnerPlanTodayStatus(
-                    asOf,
-                    true,
-                    true,
-                    List.of(new LearnerPlanTodayStatus.SubjectStatus(
-                            "physics-landscape", "Physik", 0, 0, 0, 0, false, true)),
-                    new LearnerPlanTodayStatus.Totals(0, 0, 0, 0),
-                    failureStatus == HttpStatus.CONFLICT ? 0 : 1));
+            boolean planEvaluable = failureStatus == HttpStatus.CONFLICT;
+            when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(
+                    LearnerPlanTodayStatusFixtures.status(asOf, true, true, planEvaluable ? 0 : 1, null,
+                            List.of(planEvaluable
+                                    ? subject("physics-landscape", "Physik", 0, 0, 0, false, true)
+                                    : LearnerPlanTodayStatusFixtures.unevaluableSubject(
+                                            "physics-landscape", "Physik", false, true))));
             ResponseStatusException failure = new ResponseStatusException(
                     failureStatus, "Internal plan detail: physics-landscape");
             doThrow(failure).when(learningPlans)
@@ -362,8 +347,7 @@ class CoachToolFacadeLearningPlanTest {
         LocalDate asOf = LocalDate.parse("2026-09-04");
         when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status(
                 true,
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        "physics-landscape", "Physik", 0, 0, 0, 0, false, true)));
+                subject("physics-landscape", "Physik", 0, 0, 0, false, true)));
         when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
                 .thenThrow(new ResponseStatusException(HttpStatus.NOT_FOUND));
         UnifiedLearnerStateResponse activeState = stateWithActiveGoal("physics-goal");
@@ -394,8 +378,7 @@ class CoachToolFacadeLearningPlanTest {
         LocalDate asOf = LocalDate.parse("2026-09-04");
         when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status(
                 true,
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        "physics-landscape", "Physik", 0, 0, 0, 0, false, true)));
+                subject("physics-landscape", "Physik", 0, 0, 0, false, true)));
         when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
                 .thenThrow(new ResponseStatusException(HttpStatus.NOT_FOUND));
 
@@ -424,10 +407,8 @@ class CoachToolFacadeLearningPlanTest {
     void subjectSwitchFailsClosedForUnknownOrAmbiguousNamesWithoutSelectingAPlan() {
         LearnerPlanTodayStatus duplicateSubjects = status(
                 true,
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        "physics-one", "Physik", 1, 0, 1, 0),
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        "physics-two", "Physik", 2, 0, 2, 0));
+                subject("physics-one", "Physik", 1, 0, 0, false, false),
+                subject("physics-two", "Physik", 2, 0, 0, false, false));
         when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE"))
                 .thenReturn(duplicateSubjects);
 
@@ -462,8 +443,7 @@ class CoachToolFacadeLearningPlanTest {
         UUID planId = UUID.randomUUID();
         when(learningPlans.getTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status(
                 true,
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        "physics-landscape", "Physik", 1, 0, 1, 0)));
+                subject("physics-landscape", "Physik", 1, 0, 0, false, false)));
         when(learningPlans.getPlan(LEARNER_ID, "physics-landscape", asOf))
                 .thenReturn(planDetail(planId, 4L, "physics-landscape", false));
         when(learningPlans.switchPlan(
@@ -486,38 +466,24 @@ class CoachToolFacadeLearningPlanTest {
     }
 
     private static LearnerPlanTodayStatus status(boolean resumeAvailable) {
-        return new LearnerPlanTodayStatus(
-                LocalDate.parse("2026-09-04"),
-                true,
-                resumeAvailable,
-                List.of(),
-                new LearnerPlanTodayStatus.Totals(0, 0, 0, 0),
-                0);
+        return LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-04"), true, resumeAvailable);
     }
 
     private static LearnerPlanTodayStatus status(
             boolean followLearningPlans,
             LearnerPlanTodayStatus.SubjectStatus... subjects) {
-        int dueToday = java.util.Arrays.stream(subjects)
-                .mapToInt(LearnerPlanTodayStatus.SubjectStatus::dueToday)
-                .sum();
-        int completedToday = java.util.Arrays.stream(subjects)
-                .mapToInt(LearnerPlanTodayStatus.SubjectStatus::completedToday)
-                .sum();
-        int openToday = java.util.Arrays.stream(subjects)
-                .mapToInt(LearnerPlanTodayStatus.SubjectStatus::openToday)
-                .sum();
-        int openOverdue = java.util.Arrays.stream(subjects)
-                .mapToInt(LearnerPlanTodayStatus.SubjectStatus::openOverdue)
-                .sum();
-        return new LearnerPlanTodayStatus(
-                LocalDate.parse("2026-09-04"),
-                followLearningPlans,
-                false,
-                List.of(subjects),
-                new LearnerPlanTodayStatus.Totals(
-                        dueToday, completedToday, openToday, openOverdue),
-                0);
+        return LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-04"), followLearningPlans, false, 0, null,
+                List.of(subjects));
+    }
+
+    /** Mirrors the old count wording: a period target of {@code due} with {@code overdue} backlog. */
+    private static LearnerPlanTodayStatus.SubjectStatus subject(
+            String landscapeId, String label, int due, int completed, int overdue,
+            boolean current, boolean canContinue) {
+        return LearnerPlanTodayStatusFixtures.subject(
+                landscapeId, label, due + overdue, due, completed, completed, current, canContinue);
     }
 
     private static LearnerLearningPlanApi.PlanDetail planDetail(

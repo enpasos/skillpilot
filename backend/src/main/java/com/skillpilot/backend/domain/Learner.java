@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Enumerated;
 import java.time.Instant;
 import java.util.UUID;
+import com.skillpilot.backend.service.learningplan.PeriodBasis;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -68,6 +69,10 @@ public class Learner {
 
     @Column(name = "follow_learning_plans", nullable = false)
     private Boolean followLearningPlans = false;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "learning_plan_period_basis", nullable = false)
+    private PeriodBasis learningPlanPeriodBasis = PeriodBasis.DAY;
 
     /**
      * Monotone revision of the learner state shared by the cockpit and all
@@ -195,6 +200,14 @@ public class Learner {
         this.followLearningPlans = followLearningPlans;
     }
 
+    public PeriodBasis getLearningPlanPeriodBasis() {
+        return learningPlanPeriodBasis != null ? learningPlanPeriodBasis : PeriodBasis.DAY;
+    }
+
+    public void setLearningPlanPeriodBasis(PeriodBasis learningPlanPeriodBasis) {
+        this.learningPlanPeriodBasis = learningPlanPeriodBasis != null ? learningPlanPeriodBasis : PeriodBasis.DAY;
+    }
+
     public long getCoachStateRevision() {
         return coachStateRevision;
     }
@@ -234,6 +247,9 @@ public class Learner {
         }
         if (this.followLearningPlans == null) {
             this.followLearningPlans = false;
+        }
+        if (this.learningPlanPeriodBasis == null) {
+            this.learningPlanPeriodBasis = PeriodBasis.DAY;
         }
     }
 }

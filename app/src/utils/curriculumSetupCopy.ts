@@ -27,6 +27,10 @@ export interface PersonalCurriculumSetupCopy extends SharedCurriculumSetupCopy {
   autoPilotPausedByPlan: string
   followLearningPlansTitle: string
   followLearningPlansDescription: string
+  periodBasisTitle: string
+  periodBasisDescription: string
+  periodBasisDay: string
+  periodBasisWeek: string
   strictModeTitle: string
   strictModeDescription: string
   showGoalVisualizationsInChatTitle: string
@@ -96,6 +100,10 @@ export const getPersonalCurriculumSetupCopy = (
         autoPilotPausedByPlan: 'Im Planmodus pausiert. Deine Autopilot-Einstellung bleibt gespeichert und gilt wieder, sobald du „Nach Plan lernen“ ausschaltest.',
         followLearningPlansTitle: 'Nach Plan lernen',
         followLearningPlansDescription: 'Nutzt deine persönlichen Fachpläne. SkillPilot wählt das erste fällige Ziel automatisch, führt dich danach weiter und lässt dich jederzeit mit einem Klick das Fach wechseln.',
+        periodBasisTitle: 'Zeitraum deiner Ziele',
+        periodBasisDescription: 'Legt fest, ob dein Pensum pro Tag oder pro Woche gilt. Im Wochenmodus kannst du die ganze Woche frei einteilen. Plantermine und Lernstand ändern sich dadurch nicht.',
+        periodBasisDay: '1 Tag',
+        periodBasisWeek: '1 Woche',
         strictModeTitle: 'Strict Mode aktivieren',
         strictModeDescription: 'Prüft alle Voraussetzungen global, auch außerhalb deines aktuellen Fokus.',
         showGoalVisualizationsInChatTitle: 'Lernzielbilder im Chat anzeigen',
@@ -122,6 +130,10 @@ export const getPersonalCurriculumSetupCopy = (
         autoPilotPausedByPlan: 'Paused while plan mode is active. Your autopilot setting stays saved and applies again after you turn off “Learn by plan”.',
         followLearningPlansTitle: 'Learn by plan',
         followLearningPlansDescription: 'Uses your personal subject plans. SkillPilot selects the first due goal automatically, guides you onward, and lets you switch subjects with one click at any time.',
+        periodBasisTitle: 'Period for your targets',
+        periodBasisDescription: 'Sets whether your workload counts per day or per week. In weekly mode you can spread the week freely. Scheduled dates and learning progress stay unchanged.',
+        periodBasisDay: '1 day',
+        periodBasisWeek: '1 week',
         strictModeTitle: 'Enable strict mode',
         strictModeDescription: 'Checks all prerequisites globally, even outside your current focus.',
         showGoalVisualizationsInChatTitle: 'Show learning-goal images in chat',

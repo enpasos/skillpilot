@@ -68,23 +68,25 @@ export const isLearnerPlanActionAvailable = (
   refreshInFlight = false,
 ): boolean => loadStatus === 'ready' && !refreshInFlight
 
-const planUrgencyRank = (plan: LearnerLearningPlanSummary): number => {
-  if (plan.stale) return 4
-  if (plan.metrics.openDueToday > 0) return plan.canContinue ? 0 : 1
-  if (plan.metrics.openDueThroughToday > 0) return 2
-  return 3
-}
-
 const compareStableText = (left: string, right: string): number => (
   left === right ? 0 : left < right ? -1 : 1
 )
 
-/** Unfinished daily targets stay ahead of voluntary extra work and stale plans. */
+/**
+ * Orders plans by subject, exactly as the backend orders its status lines.
+ *
+ * Deriving an urgency rank from plan metrics here would be a second status model and
+ * would also make the cockpit disagree with the chat about the order of subjects.
+ */
 export const sortLearnerLearningPlansForToday = (
   plans: readonly LearnerLearningPlanSummary[],
+  subjectLabel: (landscapeId: string) => string = (landscapeId) => landscapeId,
 ): LearnerLearningPlanSummary[] => [...plans].sort((left, right) => (
-  planUrgencyRank(left) - planUrgencyRank(right)
-  || right.metrics.openDueToday - left.metrics.openDueToday
+  Number(left.stale) - Number(right.stale)
+  || compareStableText(
+    subjectLabel(left.landscapeId).toLowerCase(),
+    subjectLabel(right.landscapeId).toLowerCase(),
+  )
   || compareStableText(left.landscapeId, right.landscapeId)
   || compareStableText(left.planId, right.planId)
 ))

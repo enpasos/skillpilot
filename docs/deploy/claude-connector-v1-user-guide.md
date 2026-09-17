@@ -26,8 +26,11 @@ hooks or subagents and makes no claim of Desktop Chat or Cowork plugin support.
 Additional surfaces require separate acceptance evidence and a later reviewed
 release.
 
-At every normal start or resume, Claude first reports today's due, currently
-mastered, still-open and overdue goal counts for every valid subject plan. If
+At every normal start or resume, Claude first quotes the plan status formulated
+by SkillPilot verbatim, for example “Mathematics: Daily target 2 of 3 · on
+track”. The SkillPilot cockpit shows the same text, based on the day or week
+basis chosen in the Personal Curriculum. Unevaluable plans are named
+explicitly. If
 no goal is active and the backend reports an available candidate, Claude
 resumes that backend-selected goal automatically; no Web **Continue learning**
 button is required. Plan and landscape identifiers are not sent to Claude.

@@ -1011,8 +1011,8 @@ public class LearnerServiceTest {
         assertThatThrownBy(() -> learnerService.getPersonalCurriculumSubjectFrontier(
                 learnerId, CANONICAL_PHYSICS_LANDSCAPE_ID)).isInstanceOf(ResponseStatusException.class);
         var status = learnerLearningPlanService.getTodayStatus(learnerId, "de");
-        assertThat(status.totals().dueToday()).isZero();
-        assertThat(status.totals().openOverdue()).isZero();
+        assertThat(status.periodQuotaFulfilled()).isTrue();
+        assertThat(status.statusText()).doesNotContain("im Rückstand");
         assertThat(status.resumeAvailable()).isTrue();
         assertThat(status.automaticResumeAvailable()).isFalse();
         assertThat(learnerLearningPlanService.reconcile(learnerId,

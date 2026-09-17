@@ -67,8 +67,8 @@ export const TrainerLearningPlanPreviewSummary = ({
       </ul>
       <p className="mt-3 text-sm font-medium">
         {de
-          ? `Bis heute insgesamt noch offen: ${today.totals.openDueThroughToday} Lernziele über alle Fächer.`
-          : `Still open through today: ${today.totals.openDueThroughToday} learning goals across all subjects.`}
+          ? 'Das ist eine Simulation des gespeicherten Entwurfs, kein Lernplanstatus. Den verbindlichen Planstand zeigt das Cockpit des Lernenden.'
+          : 'This is a simulation of the saved draft, not a learning-plan status. The binding plan status is shown in the learner cockpit.'}
       </p>
       {!compact && (
         <>

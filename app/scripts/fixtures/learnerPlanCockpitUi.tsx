@@ -8,7 +8,11 @@ import { LearnerPlanTodayOverview } from '../../src/components/LearnerPlanTodayO
 import { PersonalCurriculumSetup } from '../../src/components/PersonalCurriculumSetup'
 import { ProgressPopover } from '../../src/components/ProgressPopover'
 import { LanguageProvider } from '../../src/contexts/LanguageContext'
-import type { LearnerLearningPlanSummary } from '../../src/learnerLearningPlanTypes'
+import type {
+  LearnerLearningPlanSummary,
+  LearnerPlanStatus,
+  LearnerPlanSubjectStatus,
+} from '../../src/learnerLearningPlanTypes'
 import {
   LearnerLearningPlanApiError,
   reconcileLearnerLearningPlans,
@@ -54,6 +58,59 @@ const plan = (
   continueReason: null,
   canContinue: true,
 })
+
+const subjectStatus = (
+  subjectKey: string,
+  subjectLabel: string,
+  periodText: string,
+  planStatusText: string,
+  statusDirection: 'behind' | 'on_track' | 'ahead',
+  current = false,
+): LearnerPlanSubjectStatus => ({
+  subjectKey,
+  subjectLabel,
+  evaluable: true,
+  periodText,
+  planStatusText,
+  subjectLine: `${subjectLabel}: ${periodText} · ${planStatusText}`,
+  statusDirection,
+  current,
+  canContinue: true,
+})
+
+const planStatus = (subjects: LearnerPlanSubjectStatus[]): LearnerPlanStatus => ({
+  asOf: '2026-09-04',
+  periodBasis: 'DAY',
+  periodStart: '2026-09-04',
+  periodEnd: '2026-09-04',
+  timeZone: 'Europe/Berlin',
+  language: 'de',
+  evaluable: true,
+  statusText: subjects.map((entry) => entry.subjectLine ?? '').filter(Boolean).join('\n'),
+  statusDirection: 'behind',
+  activeGoal: null,
+  followLearningPlans: true,
+  resumeAvailable: true,
+  subjects,
+  unavailablePlanCount: 0,
+})
+
+/**
+ * Mirrors what the backend returns once a goal is active: the subject holding the active
+ * goal is marked current. A static status would show a state the backend never produces.
+ */
+const openStatus = (currentSubjectKey: string | null) => planStatus([
+  subjectStatus('mathematik', 'Mathematik', 'Tagesziel 0 von 2', '2 Lernziele im Rückstand', 'behind',
+    currentSubjectKey === 'mathematik'),
+  subjectStatus('physik', 'Physik', 'Tagesziel 0 von 2', '1 Lernziel im Rückstand', 'behind',
+    currentSubjectKey === 'physik'),
+])
+const MATH_ONLY_STATUS = planStatus([
+  subjectStatus('mathematik', 'Mathematik', 'Tagesziel 0 von 2', '2 Lernziele im Rückstand', 'behind', true),
+])
+const REACHED_STATUS = planStatus([
+  subjectStatus('mathematik', 'Mathematik', 'Tagesziel erreicht', '1 Lernziel vorgearbeitet', 'ahead'),
+])
 
 const PLANS = [
   plan('math-plan', 'math/sek-i', 'Mathematik bis Klasse 10', 2, 'math-goal-1'),
@@ -180,6 +237,9 @@ const Fixture = () => {
       <output data-testid="mastery-snapshot">math-goal-1:0.5;physics-goal-1:0</output>
       <output data-testid="retry-count">{retryCount}</output>
       <LearnerPlanTodayOverview
+        status={openStatus(activeLandscapeId
+          ? (activeLandscapeId.startsWith('math') ? 'mathematik' : 'physik')
+          : null)}
         plans={PLANS}
         language="de"
         planModeEnabled
@@ -235,6 +295,7 @@ const InFlightRefreshFixture = () => {
       <button type="button" onClick={beginRefresh}>Aktualisierung starten</button>
       <button type="button" onClick={() => releaseRef.current?.()}>Aktualisierung abschließen</button>
       <LearnerPlanTodayOverview
+        status={MATH_ONLY_STATUS}
         plans={[PLANS[0]]}
         language="de"
         planModeEnabled
@@ -283,25 +344,14 @@ const DailyProgressFixture = () => {
   const [completed, setCompleted] = useState(0)
   const [extra, setExtra] = useState(0)
   const [continued, setContinued] = useState(0)
-  const base = PLANS[0]
-  const currentPlan = {
-    ...base,
-    metrics: {
-      ...base.metrics,
-      completedDueThroughToday: completed + extra,
-      openDueThroughToday: 6 - completed - extra,
-      completedDueToday: completed,
-      openDueToday: 2 - completed,
-      extraCompletedToday: extra,
-    },
-  }
+  const currentStatus = completed || extra ? REACHED_STATUS : MATH_ONLY_STATUS
   return (
     <section data-testid="daily-progress-fixture" className="mx-auto max-w-3xl p-4">
       <button onClick={() => setCompleted(2)}>Tagespensum abschließen</button>
       <button onClick={() => setExtra(1)}>Zusätzliches Ziel abschließen</button>
       <output data-testid="voluntary-start-count">{continued}</output>
       <LearnerPlanTodayOverview
-        plans={[currentPlan]} language="de" planModeEnabled
+        status={currentStatus} plans={[PLANS[0]]} language="de" planModeEnabled
         subjectLabel={() => 'Mathematik'} goalLabel={() => 'Lineare Gleichungen lösen'}
         onContinue={() => undefined} onSwitch={() => setContinued((count) => count + 1)} onOpenSettings={() => undefined}
       />

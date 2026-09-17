@@ -1,5 +1,13 @@
 # Tagesfortschritt: zuerst das Tagespensum, danach freiwillig mehr
 
+> **Abgelöst.** Maßgeblich für den Lernplanstatus ist seit September 2026 das
+> [Einheitliche Lernplanstatus-Konzept](../didactic/unified-learning-plan-status.md).
+> Dort gilt eine Mengenbilanz je Fach auf Tages- oder Wochenbasis, deren Text das
+> Backend verbindlich formuliert. Die hier beschriebenen Tagespensum-Zählfelder
+> (`dueToday`, `completedToday`, `openToday`, `openOverdue`, `extraCompletedToday`)
+> werden nicht mehr an Oberfläche oder Coach ausgegeben. Dieses Dokument bleibt als
+> Beschreibung der abgelösten Rechenweise erhalten.
+
 Stand: 14. September 2026. Diese Norm gilt für die persönlichen Fachpläne im
 Cockpit und ihre sichere Projektion für die SkillPilot-Coaches. Das Backend
 berechnet die Zahlen; Oberfläche und Coach stellen sie dar. Fachliche

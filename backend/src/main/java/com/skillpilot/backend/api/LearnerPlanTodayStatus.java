@@ -2,82 +2,84 @@ package com.skillpilot.backend.api;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.skillpilot.backend.service.learningplan.PeriodBasis;
+import com.skillpilot.backend.service.learningplan.PlanBalanceResult;
+import com.skillpilot.backend.service.learningplan.StatusDirection;
 import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Provider-neutral, read-only status of the learner's current subject plans.
+ * The single provider-neutral learning-plan status shared by Cockpit, Chat and planning.
  *
- * <p>Daily counts come only from plans bound to the current personal curriculum.
- * Subjects without a usable plan can still expose explicit continuation from
- * the current personal targets, with no invented daily quota. Stale plans contribute to
- * {@link #unavailablePlanCount()} and never to the visible counts.
- * {@link #resumeAvailable()} is true only when the existing authoritative
- * continuation check finds a personal-curriculum frontier goal and no unmastered
- * active goal is already in progress. Due work takes priority, but dates and
- * quotas never deny explicit further learning. This flag is capability,
- * never automatic consent to extra work. The internal
- * {@link #automaticResumeAvailable()} separately requires reachable due work
- * and an open daily quota.</p>
+ * <p>One calculation, one binding formulation, several output channels. The backend owns both
+ * the quantitative evaluation and its wording; no channel recalculates or reinterprets it.
+ * Counts are deliberately absent from this contract: {@link #statusText()} and the per-subject
+ * {@link SubjectStatus#subjectLine()} are the authoritative formulation, and the raw
+ * {@link PlanBalanceResult} stays in-process for tests, diagnosis and control flow only.</p>
+ *
+ * <p>Evaluability is its own state, never a flavour of "on track". A subject whose plan set
+ * cannot be evaluated reliably carries no status direction and no status texts, while
+ * {@link SubjectStatus#canContinue()} may still be true: the ability to keep learning is
+ * independent of whether the plan status can be determined.</p>
  */
 public record LearnerPlanTodayStatus(
         @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate asOf,
+        PeriodBasis periodBasis,
+        @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate periodStart,
+        @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate periodEnd,
+        String timeZone,
+        String language,
+        boolean evaluable,
+        String statusText,
+        StatusDirection statusDirection,
+        @JsonIgnore boolean periodQuotaFulfilled,
+        ActiveGoal activeGoal,
         boolean followLearningPlans,
         boolean resumeAvailable,
         List<SubjectStatus> subjects,
-        Totals totals,
         int unavailablePlanCount,
         @JsonIgnore boolean automaticResumeAvailable) {
 
-    /** Compatibility for callers that only describe the original due-work capability. */
-    public LearnerPlanTodayStatus(LocalDate asOf, boolean followLearningPlans, boolean resumeAvailable,
-            List<SubjectStatus> subjects, Totals totals, int unavailablePlanCount) {
-        this(asOf, followLearningPlans, resumeAvailable, subjects, totals, unavailablePlanCount,
-                resumeAvailable && subjects != null
-                        && subjects.stream().filter(java.util.Objects::nonNull)
-                                .anyMatch(subject -> subject.openToday() > 0));
+    /**
+     * The active learning goal, announced independently of the plan evaluation.
+     *
+     * <p>Never phrased as a contradiction to a fulfilled period target.</p>
+     */
+    public record ActiveGoal(
+            @JsonIgnore String goalId,
+            String title,
+            String announcement) {
     }
 
-    /** Subject capability with valid plan counts, or zero counts without a usable schedule. */
+    /**
+     * One subject, merged across every current plan of that subject.
+     *
+     * <p>The stable {@link #subjectKey()} identifies the subject, not the translated label.
+     * Goals shared by several plans of the same subject count once, and the earliest valid
+     * scheduled date wins.</p>
+     */
     public record SubjectStatus(
-            @JsonIgnore String landscapeId,
+            @JsonIgnore List<String> landscapeIds,
+            String subjectKey,
             String subjectLabel,
-            int dueToday,
-            int completedToday,
-            int openToday,
-            int openOverdue,
+            boolean evaluable,
+            String periodText,
+            String planStatusText,
+            String subjectLine,
+            StatusDirection statusDirection,
             boolean current,
             boolean canContinue,
-            int extraCompletedToday) {
+            @JsonIgnore PlanBalanceResult balance) {
 
-        public SubjectStatus(String landscapeId, String subjectLabel, int dueToday, int completedToday,
-                int openToday, int openOverdue, boolean current, boolean canContinue) {
-            this(landscapeId, subjectLabel, dueToday, completedToday, openToday, openOverdue,
-                    current, canContinue, 0);
-        }
-
-        /** Count-only callers cannot authorize a subject transition. */
-        public SubjectStatus(
-                String landscapeId,
-                String subjectLabel,
-                int dueToday,
-                int completedToday,
-                int openToday,
-                int openOverdue) {
-            this(landscapeId, subjectLabel, dueToday, completedToday, openToday, openOverdue,
-                    false, false);
-        }
-    }
-
-    /** Sum of the daily counts from all entries in {@link #subjects()}. */
-    public record Totals(
-            int dueToday,
-            int completedToday,
-            int openToday,
-            int openOverdue,
-            int extraCompletedToday) {
-        public Totals(int dueToday, int completedToday, int openToday, int openOverdue) {
-            this(dueToday, completedToday, openToday, openOverdue, 0);
+        /**
+         * The one plan landscape backing this subject, or {@code null} when several do.
+         *
+         * <p>An ambiguous subject fails closed: a switch must never guess which plan of a
+         * subject the learner meant.</p>
+         */
+        @JsonIgnore
+        public String landscapeId() {
+            return landscapeIds != null && landscapeIds.size() == 1 ? landscapeIds.get(0) : null;
         }
     }
 }

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "lane": "personal_git_marketplace",
+  "target": {
+    "repository": "enpasos/skillpilot-claude-marketplace",
+    "repositoryUrl": "https://github.com/enpasos/skillpilot-claude-marketplace",
+    "defaultBranch": "main",
+    "marketplaceName": "skillpilot-marketplace"
+  },
+  "source": {
+    "templateRoot": "ai/claude/marketplace/skillpilot-marketplace",
+    "pluginRoot": "ai/claude/plugin/skillpilot-coach-v1",
+    "licenseFile": "LICENSE",
+    "publicationFiles": [
+      ".claude-plugin/plugin.json",
+      ".mcp.json",
+      "README.md",
+      "SETUP.md",
+      "skills/skillpilot-coach-v1/SKILL.md",
+      "skills/skillpilot-coach-v1/references/verified-recall.md",
+      "skills/skillpilot-coach-v1/references/exams.md"
+    ]
+  },
+  "plugin": {
+    "name": "skillpilot-coach-v1",
+    "source": "./plugins/skillpilot-coach-v1",
+    "version": "1.1.6",
+    "directInstallSha256": "439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca"
+  },
+  "activation": {
+    "state": "published_pending_acceptance",
+    "firstPartyUiRoute": "personal_git_marketplace",
+    "marketplaceUiSwitchAllowed": true,
+    "firstPartyGuideDecision": {
+      "status": "approved",
+      "approvedAt": "2026-09-14T18:46:17.000Z",
+      "approvedBy": "product-owner",
+      "candidateVersion": "1.1.6",
+      "candidateSha256": "439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca",
+      "repositoryRevision": "2c009f47630132f6b14492b204c827f43ba21ba0",
+      "repositoryTreeSha256": "e466966eb72f4470730aff5a5fa6e75f2bff5e6593642a18d89cacea201a5599",
+      "evidenceRef": "docs/deploy/claude-personal-marketplace-release.md#guide-approval-and-website-download-promotion-14-september-2026"
+    },
+    "evidence": [
+      {
+        "id": "public-repository-default-branch",
+        "status": "pass",
+        "revision": "2c009f47630132f6b14492b204c827f43ba21ba0",
+        "treeSha256": "e466966eb72f4470730aff5a5fa6e75f2bff5e6593642a18d89cacea201a5599",
+        "candidateVersion": "1.1.6",
+        "candidateSha256": "439ea142c3933333cb01d7a1051646041d61615089504b22a7d002fb637614ca",
+        "verifiedAt": "2026-09-14T18:39:12.000Z",
+        "evidenceRef": "https://github.com/enpasos/skillpilot-claude-marketplace/pull/8"
+      },
+      {
+        "id": "clean-account-marketplace-install",
+        "status": "pending",
+        "revision": null,
+        "treeSha256": null,
+        "candidateVersion": null,
+        "candidateSha256": null,
+        "verifiedAt": null,
+        "evidenceRef": null
+      },
+      {
+        "id": "uploaded-plugin-migration-and-marketplace-refresh",
+        "status": "pending",
+        "revision": null,
+        "treeSha256": null,
+        "candidateVersion": null,
+        "candidateSha256": null,
+        "verifiedAt": null,
+        "evidenceRef": null
+      }
+    ]
+  }
+}

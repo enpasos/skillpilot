@@ -121,5 +121,6 @@ Daily-plan fixtures explicitly verify their preconditions. In particular D2
 needs no active goal and an authoritative resume option, while D4 needs no active
 goal and no resume option. If the ordinary first-party UI cannot establish an
 internal backend fixture's state, that host scenario stays pending. Do not force
-production state or turn a different live state into a pass. D1 uses actual
-authoritative totals; 48/2/46 is only a controlled backend example.
+production state or turn a different live state into a pass. D1 compares the
+chat with the actual backend status text shown in the SkillPilot cockpit; the
+fixture texts are only controlled backend examples.

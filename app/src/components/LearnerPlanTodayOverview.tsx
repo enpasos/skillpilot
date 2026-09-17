@@ -1,17 +1,17 @@
 import {
-  CalendarDays,
-  CheckCircle2,
   ChevronDown,
   CircleAlert,
-  Flag,
-  ListChecks,
   Play,
   Repeat2,
   Settings,
 } from 'lucide-react'
 import * as React from 'react'
 
-import type { LearnerLearningPlanSummary } from '../learnerLearningPlanTypes'
+import type {
+  LearnerLearningPlanSummary,
+  LearnerPlanStatus,
+  LearnerPlanSubjectStatus,
+} from '../learnerLearningPlanTypes'
 import type { LabelLanguage } from '../utils/filterLabels'
 import { getLearnerLearningPlanCopy } from '../utils/learnerLearningPlanCopy'
 import {
@@ -21,6 +21,8 @@ import {
 import { LearnerPlanDailyProgress } from './LearnerPlanDailyProgress'
 
 export interface LearnerPlanTodayOverviewProps {
+  /** The one backend-formulated status; the cockpit renders it and derives nothing from metrics. */
+  status: LearnerPlanStatus | null
   plans: readonly LearnerLearningPlanSummary[]
   language: LabelLanguage
   planModeEnabled: boolean
@@ -40,6 +42,7 @@ export interface LearnerPlanTodayOverviewProps {
   onRetry?: () => void
 }
 
+/** Plan details describe the schedule only; the status itself never comes from here. */
 const LearnerPlanDetails = ({
   plan,
   language,
@@ -50,7 +53,6 @@ const LearnerPlanDetails = ({
   nextGoalLabel?: string
 }) => {
   const copy = getLearnerLearningPlanCopy(language)
-  const backlogOpen = Math.max(0, plan.metrics.openDueThroughToday - plan.metrics.openDueToday)
 
   return (
     <div className="mt-3 grid gap-3 border-t border-border-color pt-3 text-sm text-text-secondary sm:grid-cols-2">
@@ -66,21 +68,12 @@ const LearnerPlanDetails = ({
         </span>
       </p>
       <p>
-        <span className="block text-xs font-medium uppercase tracking-wide">{copy.dueTodayLabel}</span>
+        <span className="block text-xs font-medium uppercase tracking-wide">{copy.currentBlockLabel}</span>
         <span className="mt-1 block text-text-primary">
-          {copy.dailyProgress(plan.metrics.completedDueToday, plan.metrics.dueToday)}
+          {plan.currentBlock
+            ? `${plan.currentBlock.title} · ${formatLearnerLearningPlanPeriod(plan.currentBlock.startDate, plan.currentBlock.endDate, language)}`
+            : copy.noCurrentBlock}
         </span>
-      </p>
-      <p className="sm:col-span-2">{copy.includesBacklog}</p>
-      <p className="sm:col-span-2">
-        {copy.cumulativeProgress(
-          plan.metrics.completedDueThroughToday,
-          plan.metrics.dueThroughToday,
-        )}
-        {' · '}
-        {copy.backlogOpen(backlogOpen)}
-        {' · '}
-        {plan.metrics.totalPlanned} {language === 'de' ? 'Ziele im Plan' : 'goals in plan'}
       </p>
       {plan.nextEligibleGoal ? (
         <p className="sm:col-span-2 rounded-lg bg-sky-50 px-3 py-2 dark:bg-sky-950/20">
@@ -93,41 +86,28 @@ const LearnerPlanDetails = ({
         </p>
       ) : null}
       <p>
-        <span className="flex items-center gap-2 font-medium text-text-primary">
-          <ListChecks size={16} aria-hidden="true" />
-          {copy.currentBlockLabel}
-        </span>
-        <span className="mt-1 block">
-          {plan.currentBlock
-            ? `${plan.currentBlock.title} · ${formatLearnerLearningPlanPeriod(plan.currentBlock.startDate, plan.currentBlock.endDate, language)}`
-            : copy.noCurrentBlock}
-        </span>
-      </p>
-      <p>
-        <span className="flex items-center gap-2 font-medium text-text-primary">
-          <Flag size={16} aria-hidden="true" />
-          {copy.nextMilestoneLabel}
-        </span>
+        <span className="block text-xs font-medium uppercase tracking-wide">{copy.nextMilestoneLabel}</span>
         <span className="mt-1 block">
           {plan.nextMilestone
             ? `${plan.nextMilestone.title} · ${formatLearnerLearningPlanDate(plan.nextMilestone.date, language)}`
             : copy.noNextMilestone}
         </span>
       </p>
-      <p className="sm:col-span-2">
-        <span className="flex items-center gap-2 font-medium text-text-primary">
-          <CalendarDays size={16} aria-hidden="true" />
-          {copy.bufferLabel}
-        </span>
+      <p>
+        <span className="block text-xs font-medium uppercase tracking-wide">{copy.bufferLabel}</span>
         <span className="mt-1 block">
           {copy.bufferValue(plan.buffer.remainingWorkdays, plan.buffer.totalWorkdays)}
         </span>
+      </p>
+      <p className="sm:col-span-2">
+        {plan.metrics.totalPlanned} {language === 'de' ? 'Ziele im Plan' : 'goals in plan'}
       </p>
     </div>
   )
 }
 
 export const LearnerPlanTodayOverview = ({
+  status,
   plans,
   language,
   planModeEnabled,
@@ -149,36 +129,49 @@ export const LearnerPlanTodayOverview = ({
   const copy = getLearnerLearningPlanCopy(language)
   const headingId = React.useId()
   const summaryId = React.useId()
-  const validPlans = plans.filter((plan) => !plan.stale)
-  const openToday = validPlans.reduce(
-    (sum, plan) => sum + plan.metrics.openDueToday,
-    0,
-  )
-  const dailyQuota = validPlans.reduce((sum, plan) => sum + plan.metrics.dueToday, 0)
-  const activePlan = validPlans.find((plan) => plan.landscapeId === activeLandscapeId)
-  const activeIsVoluntary = activePlan?.metrics.openDueToday === 0
+  const weekly = status?.periodBasis === 'WEEK'
   const activeSubject = activeLandscapeId ? subjectLabel(activeLandscapeId) : null
   const activeGoalLabel = activeGoalId ? goalLabel(activeGoalId) : undefined
   const allActionsDisabled = actionsDisabled || Boolean(staleDataMessage)
+
+  /**
+   * Resolves the one plan behind a subject. A subject backed by several plans is deliberately
+   * not switchable — the backend already withdrew that capability, and guessing here would
+   * reintroduce the ambiguity it fails closed on.
+   */
+  const plansForSubject = (subject: LearnerPlanSubjectStatus) => plans.filter(
+    (plan) => !plan.stale && subjectLabel(plan.landscapeId) === subject.subjectLabel,
+  )
 
   return (
     <section
       data-testid="learner-plan-today-overview"
       aria-labelledby={headingId}
-      aria-describedby={summaryId}
+      aria-describedby={status && !status.evaluable ? summaryId : undefined}
       className="rounded-2xl border border-sky-200 bg-sidebar-bg p-4 shadow-sm dark:border-sky-900/60 sm:p-5"
     >
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <h2 id={headingId} className="text-xl font-bold text-text-primary">{copy.todayTitle}</h2>
-            <span className="rounded-full bg-sky-100 px-2 py-1 text-xs font-semibold text-sky-800 dark:bg-sky-950/50 dark:text-sky-200">
-              {copy.todayScope(validPlans.length)}
-            </span>
-          </div>
-          <p id={summaryId} className="mt-1 text-sm font-medium text-text-primary">
-            {openToday > 0 ? copy.todayOpen(openToday) : dailyQuota > 0 ? copy.todayDone : copy.todayNoQuota}
-          </p>
+          <h2 id={headingId} className="text-xl font-bold text-text-primary">
+            {weekly ? (language === 'de' ? 'Diese Woche' : 'This week') : copy.todayTitle}
+          </h2>
+          {/*
+            The per-subject rows below already carry the backend's status line for every
+            subject, split into period text and a coloured plan-status label. Repeating the
+            combined text here would state the same thing twice and make the closed mobile
+            view scroll. Only the unavailability notice, which no row covers, stays here.
+          */}
+          {status && !status.evaluable ? (
+            <p
+              id={summaryId}
+              data-testid="learner-plan-status-notice"
+              className="mt-1 text-sm text-text-secondary"
+            >
+              {language === 'de'
+                ? 'Für mindestens ein Fach lässt sich der Planstand derzeit nicht bestimmen.'
+                : 'For at least one subject the plan status cannot be determined right now.'}
+            </p>
+          ) : null}
         </div>
         <button
           type="button"
@@ -201,9 +194,14 @@ export const LearnerPlanTodayOverview = ({
             <p className="text-xs font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
               {copy.currentGoalLabel} · {activeSubject}
             </p>
-            {activeGoalLabel ? (
-              <p className="mt-1 truncate font-medium text-text-primary" title={activeGoalLabel}>
-                {activeGoalLabel}
+            {/* The backend announces the active goal neutrally; the cockpit does not rephrase it. */}
+            {status?.activeGoal?.announcement ?? activeGoalLabel ? (
+              <p
+                data-testid="learner-plan-active-goal"
+                className="mt-1 truncate font-medium text-text-primary"
+                title={status?.activeGoal?.title ?? activeGoalLabel}
+              >
+                {status?.activeGoal?.announcement ?? activeGoalLabel}
               </p>
             ) : null}
           </div>
@@ -215,7 +213,7 @@ export const LearnerPlanTodayOverview = ({
             className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-sky-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 dark:focus-visible:ring-offset-slate-900"
           >
             <Play size={16} fill="currentColor" aria-hidden="true" />
-            {activeIsVoluntary ? copy.voluntaryContinueAction : copy.continueLearningAction}
+            {copy.continueLearningAction}
           </button>
         </div>
       ) : isReconciling ? (
@@ -257,52 +255,36 @@ export const LearnerPlanTodayOverview = ({
       ) : null}
 
       <ul className="mt-4 divide-y divide-border-color border-y border-border-color">
-        {plans.map((plan) => {
-          const label = subjectLabel(plan.landscapeId)
-          const isActive = Boolean(activeGoalId && plan.landscapeId === activeLandscapeId)
-          const isSwitching = switchingPlanId === plan.planId
-          const hasOpenDueGoal = plan.metrics.openDueThroughToday > 0
-          const dailyTargetOpen = plan.metrics.openDueToday > 0
+        {(status?.subjects ?? []).map((subject) => {
+          const subjectPlans = plansForSubject(subject)
+          const plan = subjectPlans.length === 1 ? subjectPlans[0] : null
+          const isSwitching = plan ? switchingPlanId === plan.planId : false
           const canSwitch = planModeEnabled
-            && !isActive
-            && !plan.stale
-            && hasOpenDueGoal
+            && !subject.current
+            && subject.canContinue
+            && plan !== null
             && Boolean(plan.nextEligibleGoal)
             && navigationAvailable(plan.landscapeId)
 
           return (
             <li
-              key={plan.planId}
-              data-testid={`learner-plan-subject-${plan.landscapeId}`}
+              key={subject.subjectKey}
+              data-testid={`learner-plan-subject-${subject.subjectKey}`}
               className="py-3 first:pt-0 last:pb-0"
             >
               <div className="flex flex-wrap items-center gap-3">
                 <div className="min-w-0 w-full sm:w-auto sm:flex-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="font-semibold text-text-primary">{label}</h3>
-                    {isActive ? (
+                    <h3 className="font-semibold text-text-primary">{subject.subjectLabel}</h3>
+                    {subject.current ? (
                       <span className="rounded-full bg-sky-100 px-2 py-0.5 text-xs font-semibold text-sky-800 dark:bg-sky-950/50 dark:text-sky-200">
                         {copy.currentSubjectBadge}
                       </span>
                     ) : null}
-                    {plan.stale ? (
-                      <span className="rounded-full border border-amber-300 px-2 py-0.5 text-xs font-semibold text-amber-800 dark:border-amber-900 dark:text-amber-200">
-                        {language === 'de' ? 'Plan veraltet' : 'Plan out of date'}
-                      </span>
-                    ) : null}
                   </div>
-                  {plan.stale ? (
-                    <p className="mt-0.5 text-sm text-text-secondary">{copy.stalePlan}</p>
-                  ) : (
-                    <>
-                      <LearnerPlanDailyProgress metrics={plan.metrics} subjectLabel={label} language={language} />
-                      {dailyTargetOpen && !plan.nextEligibleGoal ? (
-                        <p className="mt-1 text-sm text-text-secondary">{copy.subjectBlocked}</p>
-                      ) : null}
-                    </>
-                  )}
+                  <LearnerPlanDailyProgress subject={subject} language={language} />
                 </div>
-                {canSwitch ? (
+                {canSwitch && plan ? (
                   <button
                     type="button"
                     data-testid="learner-plan-switch"
@@ -312,45 +294,32 @@ export const LearnerPlanTodayOverview = ({
                     className="inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-lg border border-sky-300 bg-white px-3 py-2 text-sm font-semibold text-sky-800 transition-colors hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-60 dark:border-sky-800 dark:bg-slate-900 dark:text-sky-200 sm:w-auto dark:hover:bg-sky-950/30"
                   >
                     <Repeat2 size={16} aria-hidden="true" />
-                    {isSwitching ? copy.switchBusy : dailyTargetOpen ? copy.switchSubjectAction(label) : copy.voluntarySubjectAction(label)}
+                    {isSwitching ? copy.switchBusy : copy.switchSubjectAction(subject.subjectLabel)}
                   </button>
                 ) : null}
               </div>
-              <details className="group mt-2 rounded-lg text-sm">
-                <summary
-                  aria-label={`${copy.detailsAction}: ${label}`}
-                  className="inline-flex min-h-9 cursor-pointer list-none items-center gap-1 rounded-md px-2 py-1.5 font-medium text-text-secondary hover:bg-input-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 [&::-webkit-details-marker]:hidden"
-                >
-                  {copy.detailsAction}
-                  <ChevronDown className="transition-transform group-open:rotate-180" size={16} aria-hidden="true" />
-                </summary>
-                <LearnerPlanDetails
-                  plan={plan}
-                  language={language}
-                  nextGoalLabel={plan.nextEligibleGoal
-                    ? goalLabel(plan.nextEligibleGoal.goalId)
-                    : undefined}
-                />
-              </details>
+              {plan ? (
+                <details className="group mt-2 rounded-lg text-sm">
+                  <summary
+                    aria-label={`${copy.detailsAction}: ${subject.subjectLabel}`}
+                    className="inline-flex min-h-9 cursor-pointer list-none items-center gap-1 rounded-md px-2 py-1.5 font-medium text-text-secondary hover:bg-input-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 [&::-webkit-details-marker]:hidden"
+                  >
+                    {copy.detailsAction}
+                    <ChevronDown className="transition-transform group-open:rotate-180" size={16} aria-hidden="true" />
+                  </summary>
+                  <LearnerPlanDetails
+                    plan={plan}
+                    language={language}
+                    nextGoalLabel={plan.nextEligibleGoal
+                      ? goalLabel(plan.nextEligibleGoal.goalId)
+                      : undefined}
+                  />
+                </details>
+              ) : null}
             </li>
           )
         })}
       </ul>
-
-      {planModeEnabled && !isReconciling && !activeGoalId && openToday > 0
-        && !validPlans.some((plan) => plan.metrics.openDueToday > 0 && plan.nextEligibleGoal)
-        && !actionError ? (
-        <p className="mt-4 flex items-start gap-2 text-sm text-text-secondary" role="status">
-          <CircleAlert className="mt-0.5 shrink-0" size={17} aria-hidden="true" />
-          <span>{copy.dueGoalBlocked}</span>
-        </p>
-      ) : null}
-      {planModeEnabled && !isReconciling && !activeGoalId && openToday === 0 && dailyQuota > 0 ? (
-        <p className="mt-4 flex items-center gap-2 text-sm font-medium text-emerald-700 dark:text-emerald-300" role="status">
-          <CheckCircle2 size={18} aria-hidden="true" />
-          {copy.dailyTargetDoneBody}
-        </p>
-      ) : null}
     </section>
   )
 }

@@ -27,9 +27,11 @@ Karteikarten. SkillPilot Coach v1 enthält keine Hooks oder Subagents und sagt
 keine Plugin-Unterstützung für Desktop-Chat oder Cowork zu. Zusätzliche
 Oberflächen benötigen eigene Abnahmebelege und eine später geprüfte Version.
 
-Bei jedem normalen Start oder Fortsetzen nennt Claude zuerst für jeden gültigen
-Fachplan die heute fälligen, aktuell beherrschten, noch offenen und überfälligen
-Lernziele. Ist kein Ziel aktiv und meldet das Backend einen verfügbaren
+Bei jedem normalen Start oder Fortsetzen nennt Claude zuerst den Planstand, den
+SkillPilot formuliert, wörtlich, zum Beispiel „Mathematik: Tagesziel 2 von 3 ·
+im Plan“. Er steht genauso im SkillPilot-Cockpit und bezieht sich auf die Tages-
+oder Wochenbasis, die du im persönlichen Curriculum gewählt hast. Nicht
+auswertbare Pläne werden ausdrücklich genannt. Ist kein Ziel aktiv und meldet das Backend einen verfügbaren
 Kandidaten, setzt Claude automatisch mit dem vom Backend gewählten Ziel fort;
 ein **Weiterlernen**-Knopf in der Webanwendung ist dafür nicht nötig. Plan- und
 Landschaftskennungen werden nicht an Claude übermittelt.

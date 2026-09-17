@@ -22,6 +22,7 @@ export interface Learner {
   learningStrategy?: 'RANDOM' | 'SEQUENTIAL';
   autoPilot?: boolean;
   followLearningPlans?: boolean;
+  learningPlanPeriodBasis?: 'DAY' | 'WEEK';
   strictMode?: boolean;
   showGoalVisualizationsInChat?: boolean;
   copySources: CopySource[];

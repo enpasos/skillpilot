@@ -29,15 +29,18 @@ class OpenAiDialogReplayHarnessTest {
     }
 
     @Test
-    void dailyContextHasActualAdapterTotalsAndDoesNotMutate() {
+    void dailyContextCarriesTheBindingStatusTextAndDoesNotMutate() {
         var fixture = OpenAiDialogReplayDailyFixtures.create("D1");
         var response = fixture.call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
         JsonNode context = content(response);
-        assertThat(context.path("learningPlanToday").path("totals").path("dueToday").asInt()).isEqualTo(48);
-        assertThat(context.path("learningPlanToday").path("totals").path("completedToday").asInt()).isEqualTo(2);
-        assertThat(context.path("learningPlanToday").path("totals").path("openToday").asInt()).isEqualTo(46);
-        assertThat(context.path("learningPlanToday").path("totals").path("extraCompletedToday").asInt()).isZero();
-        assertThat(response.content().toString()).contains("2/48 geschafft").doesNotContain("beherrscht");
+        JsonNode today = context.path("learningPlanToday");
+        // The adapter hands over the finished text and no count the model could re-add.
+        assertThat(today.has("totals")).isFalse();
+        assertThat(today.path("text").asText())
+                .contains("Mathematik: Tagesziel 2 von 21", "Physik: Tagesziel 0 von 27");
+        assertThat(response.content().toString())
+                .contains("Tagesziel 2 von 21")
+                .doesNotContain("beherrscht", "geschafft");
         assertThat(fixture.currentStateVersion()).isZero();
         assertThat(fixture.snapshot().get("confirmedWriteCount")).isEqualTo(0);
         assertThat(context.toString()).doesNotContain(OpenAiDialogReplayFixture.LEARNER_ID);
@@ -46,19 +49,22 @@ class OpenAiDialogReplayHarnessTest {
     @Test
     void weekendReplayReportsNoFixedQuotaAndLeavesVoluntaryExtraUnstarted() {
         var fixture = OpenAiDialogReplayDailyFixtures.create("D2");
-        fixture.planStatus = new LearnerPlanTodayStatus(LocalDate.parse("2026-09-12"), true, true,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus(
-                                "synthetic-math", "Mathematik", 0, 0, 0, 1, false, true, 0),
-                        new LearnerPlanTodayStatus.SubjectStatus(
-                                "synthetic-physics", "Physik", 0, 0, 0, 1, false, true, 0)),
-                new LearnerPlanTodayStatus.Totals(0, 0, 0, 2, 0), 0);
+        // A weekend without a scheduled target, with one earlier goal still open per subject.
+        fixture.planStatus = com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-12"), true, true, 0, null,
+                List.of(com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                                "synthetic-math", "Mathematik", 1, 0, 0, 0, false, true),
+                        com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                                "synthetic-physics", "Physik", 1, 0, 0, 0, false, true)));
         var response = fixture.call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
         JsonNode context = content(response);
         assertThat(context.path("learningPlanToday").path("guidance").path("state").asText())
                 .isEqualTo("complete");
         assertThat(context.path("learningPlanToday").path("resumeAvailable").asBoolean()).isTrue();
-        assertThat(response.content().toString()).contains("Heute kein festes Pensum.")
-                .doesNotContain("Rückstand", "0/0", "geschafft");
+        // The backend text states both facts at once and is quoted, not recomposed.
+        assertThat(response.content().toString())
+                .contains("Heute kein Tagesziel", "1 Lernziel im Rückstand")
+                .doesNotContain("0/0", "geschafft");
         assertThat(fixture.currentStateVersion()).isZero();
         assertThat(fixture.snapshot().get("confirmedWriteCount")).isEqualTo(0);
     }
@@ -83,7 +89,7 @@ class OpenAiDialogReplayHarnessTest {
     }
 
     @Test
-    void subjectSwitchChangesOnlyActiveSubjectAndRetainsDailyTotals() {
+    void subjectSwitchChangesOnlyActiveSubjectAndRetainsThePlanStatus() {
         var fixture = OpenAiDialogReplayDailyFixtures.create("D3");
         var args = writeArguments();
         args.put("subject", "Physik");
@@ -91,7 +97,9 @@ class OpenAiDialogReplayHarnessTest {
         assertThat(result.isError()).isFalse();
         JsonNode context = content(result).path("context");
         assertThat(context.path("activeGoal").path("goalId").asText()).isEqualTo("synthetic-physics-goal");
-        assertThat(context.path("learningPlanToday").path("totals").path("openToday").asInt()).isEqualTo(46);
+        // Switching the subject changes who is current, never the plan balance behind it.
+        assertThat(context.path("learningPlanToday").path("text").asText())
+                .contains("Mathematik: Tagesziel 2 von 21", "Physik: Tagesziel 0 von 27");
         assertThat(fixture.snapshot().get("masteryWrites")).isEqualTo(0L);
         assertThat(fixture.snapshot().get("scopeWrites")).isEqualTo(0L);
         assertThat(fixture.snapshot().get("subjectSwitchWrites")).isEqualTo(1L);

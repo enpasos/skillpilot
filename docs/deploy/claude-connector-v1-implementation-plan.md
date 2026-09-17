@@ -510,7 +510,7 @@ Vorgesehene Namen und Annotationen:
 
 | MCP-Tool | Klasse | Annotation | Fachliche Grenze |
 | --- | --- | --- | --- |
-| `get_skillpilot_coach_context` | read | `readOnlyHint: true` | projizierter aktueller Zustand plus fachbezogene Tageszahlen aller gültigen Pläne, ohne Plan-/Landscape-IDs und ohne versteckte Mutation |
+| `get_skillpilot_coach_context` | read | `readOnlyHint: true` | projizierter aktueller Zustand plus vom Backend formulierter Planstatus und nicht-numerische Fachzeilen, ohne Planzahlen, ohne Plan-/Landscape-IDs und ohne versteckte Mutation |
 | `resume_skillpilot_learning_plan` | write | `destructiveHint: true` | nur ohne aktives Ziel und bei autoritativem `resumeAvailable`; Backend wählt das Ziel und liefert den vollständigen kanonischen Kontext |
 | `switch_skillpilot_learning_plan_subject` | write | `destructiveHint: true` | exakt ein lokalisierter `subject`-Wert aus dem aktuellen Tagesplankontext; Backend parkt ein unfertiges Ziel und wählt das fällige Ziel dieses Fachs, ohne Plan-/Landscape-/Focus-/Goal-ID vom Modell |
 | `render_skillpilot_goal_visualization` | read + App | `readOnlyHint: true` | freigegebenes Bild nur für das exakte aktive Ziel und den aktuellen Zustand |

@@ -2328,21 +2328,22 @@ ID-Besitzgrenzen ohne ein zusätzliches Rollen- oder Einladungsmodell:
   Fingerprint und Voraussetzungen des Zielfachs und aktiviert nur ein dort
   tatsächlich fälliges Frontier-Ziel.
 
-Das Cockpit zeigt alle Fachpläne in einer gemeinsamen kompakten
-**Heute**-Führung. Sie nennt zuerst die Summe **heute noch offen** über alle
-gültigen Pläne; dafür zählt `openDueThroughToday` einschließlich Rückstand.
-Die Fachpläne laufen dabei parallel: Es gibt keine Reihenfolge „erst
-Mathematik, dann Physik“. Die Anforderungen jedes gültigen Fachplans gelten
-für denselben Kalendertag und werden in dieser Summe addiert; die lernende
+Das Cockpit zeigt alle Fächer in einer gemeinsamen kompakten **Heute**- bzw.
+**Diese Woche**-Führung. Den Planstand legt das
+[einheitliche Lernplanstatus-Konzept](unified-learning-plan-status.md) fest:
+Das Backend bilanziert jedes Fach über alle seine gültigen Pläne auf der
+gewählten Tages- oder Wochenbasis und formuliert je Fach Perioden- und
+Planstandtext. Das Cockpit zeigt diese Texte unverändert und rechnet nicht
+selbst. Die Fachpläne laufen parallel: Es gibt keine Reihenfolge „erst
+Mathematik, dann Physik“, aber auch keine fachübergreifende Summe. Die lernende
 Person kann zwischen den Fächern wechseln.
-Darunter stehen kurze Fachzeilen mit aktuellem Fach, offenem Umfang und einer
-direkten Weiterlern- beziehungsweise Wechselaktion. Planbezeichnung, aktueller
-Abschnitt, Zeitraum, Meilenstein, Puffer sowie **heute neu fällig / davon
-beherrscht / heute noch offen** und kumulativ **fällig bis heute / davon bereits
-beherrscht / noch offen** bleiben in aufklappbaren Fachdaten erreichbar. „Davon
-beherrscht“ ist weiterhin eine heutige Bestandsprojektion und darf nicht als
-„heute geschafft“ bezeichnet werden. Fachzeilen mit Handlung stehen stabil vor
-erledigten oder veralteten Plänen. Während einer Aktualisierung bleiben alte
+Die Fachzeilen stehen in stabiler Fachreihenfolge und nennen das aktuelle Fach.
+Sie bieten eine direkte Weiterlern- beziehungsweise Wechselaktion, sofern das
+Fach von genau einem gültigen Plan getragen wird. Planbezeichnung, Planzeitraum,
+aktueller Abschnitt, nächstes Ziel, Meilenstein, Puffer und Planumfang bleiben
+in aufklappbaren Fachdaten erreichbar; sie beschreiben den Zeitplan, nicht den
+Planstand. Nicht auswertbare Pläne werden ausdrücklich als solche genannt.
+Während einer Aktualisierung bleiben alte
 Daten zur Orientierung sichtbar, alle Planaktionen sind jedoch gesperrt; nach
 einem Fehler werden Standdatum und Sperre ausdrücklich angezeigt. Fachpläne
 werden weder in einen fachübergreifenden Tempozeiger noch in eine scheinbar

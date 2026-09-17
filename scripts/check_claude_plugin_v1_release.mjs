@@ -26,8 +26,15 @@ const historicalReleaseRoot = `${releaseRoot}/history`;
 const connectorContractBaselinePath =
   "ai/claude/connector-v1/release/contract-baseline.json";
 const expectedPluginIdentity = "skillpilot-coach-v1";
-const expectedPluginVersion = "1.1.6";
+const expectedPluginVersion = "1.1.7";
 const expectedHistoricalReleaseFiles = new Map([
+  ["1.1.6/contract-baseline.json", "c517cef8995558a642128093178d9b73c7f52e48818df963589065d7289c77d3"],
+  ["1.1.6/direct-install-beta.json", "81cf51c8c8fd081fa4cf150bc30786654155145f2d87cb1e707673ac66fef793"],
+  ["1.1.6/evidence-manifest.json", "49ed0733531216d19c13afce4d3c6a2ee6d4a3babf0e204271920f50b539ae09"],
+  ["1.1.6/lifecycle.json", "b8b3eb0d67f6ade2b9bae7c938817c44135ac75f5915418ff7723c816bcda4f9"],
+  ["1.1.6/marketplace-publication.json", "a9b767b6de35a583be2ddb493943db193cda3f2a14a2f95a1dd1682306487449"],
+  ["1.1.6/release-gates.json", "93210e3df99ea70646fcd0a384bebbfec6b919bed4ef25f1d23b57566ceef14f"],
+  ["1.1.6/support-readiness-drill.template.md", "95aede1286c6ffd3e29dff285cef1e8a69c171d1ae21040714823e635d9d8857"],
   ["1.1.5/contract-baseline.json", "78a62ec38ee108727637a9e2efadf76ac7b1815a740470618db27565689d0b65"],
   ["1.1.5/direct-install-beta.json", "3d795d089068d47eef40c39ee73c1aa071f3f2c51677335d65db5eed76782148"],
   ["1.1.5/evidence-manifest.json", "8e270e7060b4b5f8085566f39cebab24daa3e8e7a3c3fa9979f5f5162c3848d2"],
@@ -206,7 +213,7 @@ export function verifyClaudePluginV1Release({
     );
     check(
       document?.pluginVersion === expectedPluginVersion,
-      "Every plugin release document must use Claude plugin version 1.1.6.",
+      "Every plugin release document must use Claude plugin version 1.1.7.",
     );
   }
 
@@ -268,7 +275,7 @@ export function verifyClaudePluginV1Release({
   check(
     lifecycle?.productOwnerAuthorization?.approvedAt === "2026-09-14"
       && lifecycle?.productOwnerAuthorization?.approvedBy === "product-owner"
-      && /Version 1\.1\.6 is a local continuation-correction candidate/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /Version 1\.1\.7 is a local continuation-correction candidate/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && /plans guide and prioritize but never prevent requested learning/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && /preserves prerequisites/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && /covers local candidate preparation only/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")

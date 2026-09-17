@@ -1058,31 +1058,39 @@ public class LandscapeService {
     }
 
     private Path resolveRegistryRepoPath(Path curriculaDir, String repoRelativePath) {
-        for (String candidatePath : registryPathCandidates(repoRelativePath)) {
-            Path directCandidate = curriculaDir.resolve(candidatePath).normalize();
-            if (Files.exists(directCandidate)) {
-                return directCandidate;
-            }
-            Path repoRoot = curriculaDir.getParent();
-            if (repoRoot != null) {
-                Path repoCandidate = repoRoot.resolve(candidatePath).normalize();
-                if (Files.exists(repoCandidate)) {
-                    return repoCandidate;
+        if (!StringUtils.hasText(repoRelativePath) || repoRelativePath.startsWith("http://")
+                || repoRelativePath.startsWith("https://")) {
+            return curriculaDir.resolve("_unresolved_remote_path_");
+        }
+        try {
+            for (String candidatePath : registryPathCandidates(repoRelativePath)) {
+                Path directCandidate = curriculaDir.resolve(candidatePath).normalize();
+                if (Files.exists(directCandidate)) {
+                    return directCandidate;
+                }
+                Path repoRoot = curriculaDir.getParent();
+                if (repoRoot != null) {
+                    Path repoCandidate = repoRoot.resolve(candidatePath).normalize();
+                    if (Files.exists(repoCandidate)) {
+                        return repoCandidate;
+                    }
+                }
+                if (candidatePath.startsWith("curricula/")) {
+                    Path curriculaRelativeCandidate = curriculaDir.resolve(candidatePath.substring("curricula/".length()))
+                            .normalize();
+                    if (Files.exists(curriculaRelativeCandidate)) {
+                        return curriculaRelativeCandidate;
+                    }
                 }
             }
-            if (candidatePath.startsWith("curricula/")) {
-                Path curriculaRelativeCandidate = curriculaDir.resolve(candidatePath.substring("curricula/".length()))
-                        .normalize();
-                if (Files.exists(curriculaRelativeCandidate)) {
-                    return curriculaRelativeCandidate;
-                }
+            String normalizedRepoRelativePath = normalizeRetainedAssetPath(repoRelativePath);
+            if (normalizedRepoRelativePath.startsWith("curricula/")) {
+                return curriculaDir.resolve(normalizedRepoRelativePath.substring("curricula/".length())).normalize();
             }
+            return curriculaDir.resolve(normalizedRepoRelativePath).normalize();
+        } catch (java.nio.file.InvalidPathException e) {
+            return curriculaDir.resolve("_invalid_path_");
         }
-        String normalizedRepoRelativePath = normalizeRetainedAssetPath(repoRelativePath);
-        if (normalizedRepoRelativePath.startsWith("curricula/")) {
-            return curriculaDir.resolve(normalizedRepoRelativePath.substring("curricula/".length())).normalize();
-        }
-        return curriculaDir.resolve(normalizedRepoRelativePath).normalize();
     }
 
     private List<String> registryPathCandidates(String repoRelativePath) {

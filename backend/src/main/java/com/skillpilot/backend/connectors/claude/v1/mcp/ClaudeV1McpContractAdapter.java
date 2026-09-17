@@ -133,12 +133,12 @@ public class ClaudeV1McpContractAdapter {
     static final String PLAN_RESUME_CONTINUATION_INSTRUCTION =
             "Use the returned context as the authoritative canonical backend state; do not reload it. "
                     + "If that context contains goalVisualization, follow its presentationInstruction before "
-                    + "any learner-facing response. Then give the compact one-line daily-plan summary from "
-                    + "the newest context using the daily learning-plan presentation rule: totals once, only "
-                    + "openToday per valid subject, and extraCompletedToday as a voluntary bonus when positive. "
-                    + "Mention backlog only on an explicit plan-detail request. Keep unavailable-plan "
-                    + "warnings and do not repeat a summary already given from this context in the same response. "
-                    + "Continue immediately with the returned active goal. Do not ask for another "
+                    + "any learner-facing response. Then report the learning-plan status by outputting "
+                    + "learningPlanToday.text verbatim, once, adding no counts, totals or overall judgement "
+                    + "of your own; it already states the period target, any backlog or advance work and any "
+                    + "unevaluable plans. Do not repeat a status already given from this context in the same "
+                    + "response. Continue immediately with the returned active goal, which that text already "
+                    + "announces neutrally. Do not ask for another "
                     + "confirmation and do not expose identifiers, state revisions or plan mechanics.";
     static final String PLAN_SUBJECT_SWITCH_CONTINUATION_INSTRUCTION =
             "Use the returned context as the authoritative canonical backend state; do not reload it. "
@@ -271,36 +271,25 @@ public class ClaudeV1McpContractAdapter {
                 subject, date or goal yourself. Treat the full context returned by that write as the
                 newest context and perform its required goalVisualization render before speaking.
                 Never call the resume tool while an activeGoal is present. Only when no such immediate
-                tool call remains, use the compact daily-plan presentation rule when plan following is
-                active: one line with learningPlanToday.totals.completedToday of totals.dueToday once,
-                then only openToday and the localized subject for every valid learningPlanToday.subjects
-                entry. German example: "Heute: 2 von 48 geschafft · noch offen: 19 Mathe, 27 Physik."
-                English example: "Today: 2 of 48 done · still open: 19 Maths, 27 Physics."
-                Use actual current counts, never the example numbers. Add a positive voluntary bonus
-                from extraCompletedToday when nonzero. Mention openOverdue only for an explicit
-                plan-detail request; do not repeat backlog in ordinary teaching turns or add it to today's quota.
-                Use detailed per-subject
-                counters only on explicit request; no second totals paragraph or bullet list by default.
+                tool call remains, report the learning-plan status by outputting learningPlanToday.text
+                verbatim, at most once per response. That text is the binding formulation and already
+                states the period target, any backlog or advance work, the active learning goal and any
+                unevaluable plans. Add no counts, totals, percentages or overall judgement of your own,
+                do not recalculate or rephrase it, and do not translate it; it already arrives in the
+                session language. Do not repeat it in ordinary teaching turns; after a status-relevant
+                change, report the finally valid status once.
                 "Mathe" is a display alias only; tool arguments still use the exact published subject.
-                completedToday counts today's actual completions of due plan goals, including older
-                overdue goals, capped at each subject's stable dueToday quota. Further completions
-                are extraCompletedToday. One subject's extra never fills another subject's quota.
-                If unavailablePlanCount is greater than zero,
-                briefly warn that one or more plans could not be evaluated and the totals exclude them.
-                In that unavailable-plan case, if no valid subject remains, say only that today's plan
-                could not be evaluated, not "0 of 0 done". Never expose plan IDs or internal error details.
-                Give the summary at most once per response. Then continue the returned activeGoal. If these counts later change,
-                report the updated counts naturally. Do not repeat unchanged counts on every turn.
+                Never expose plan IDs or internal error details.
+                Then continue the returned activeGoal, which that text already announces neutrally;
+                never contrast an unfinished active goal with a fulfilled period target.
 
-                For guidance.state=complete, celebrate that today's quota is fulfilled. If openOverdue
-                is positive, emphasize the opportunity to catch up without pressure or guilt; do not
-                foreground a break. Otherwise offer optional further learning or a break.
-                Do not claim the entire plan or all backlog is finished.
-                If dueToday=0, say there is no fixed quota today instead of claiming completed work.
+                For guidance.state=complete, celebrate that the period's workload is covered, then offer
+                optional further learning or a break without pressure or guilt.
+                Do not claim the entire plan or all backlog is finished; the text says what remains.
                 A request to continue, catch up or learn a named subject is already an explicit request
                 for voluntary extra; use the available resume or subject switch without another confirmation.
                 The backend's resumeAvailable and canContinue capabilities remain authoritative even
-                when openToday and openOverdue are zero. The quota and calendar never impose a learning limit.
+                when the period target is already fulfilled. The plan and calendar never impose a learning limit.
                 Never automatically resume extra work, even when resumeAvailable=true. Continue an
                 already active goal normally. Do not automatically start future goals,
                 widen focus or send the learner to the Web application. For blocked or unavailable,
@@ -322,8 +311,9 @@ public class ClaudeV1McpContractAdapter {
                 it complete; the backend alone selects the next prerequisite-safe unmastered target in that
                 subject. Do not ask for a plan, landscape, focus or goal identifier, and never put one
                 into this tool call. Never invent or alter the published subject argument.
-                Daily counts do not decide whether a subject can be continued. A published canContinue=true
-                permits explicitly requested extra learning even when openToday and openOverdue are zero.
+                The plan status does not decide whether a subject can be continued. A published
+                canContinue=true permits explicitly requested extra learning even when the period
+                target is already fulfilled.
                 For an absent or currently unavailable
                 subject, explain briefly and offer only entries with canContinue=true. After a conflict,
                 refresh once and apply these same rules. Continue from the full context

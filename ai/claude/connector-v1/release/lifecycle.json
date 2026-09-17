@@ -50,5 +50,19 @@
     "toolSurfaceUpdates": "Anthropic currently says remote MCP tool changes are deployed to the live server without resubmission and are picked up on the next connection.",
     "semverDisclaimer": "Anthropic does not define a SemVer or major-upgrade protocol for remote MCP connectors.",
     "slugRule": "The Directory slug is permanent after publication."
-  }
+  },
+  "productOwnerContractChanges": [
+    {
+      "approvedAt": "2026-09-16",
+      "approvedBy": "product-owner",
+      "issue": "https://github.com/enpasos/skillpilot/issues/48",
+      "change": "learningPlanToday carries the backend-formulated text, periodBasis, evaluable and statusDirection; totals and the per-subject count fields dueToday, completedToday, openToday, openOverdue and extraCompletedToday were removed.",
+      "classification": "Pre-submission candidate change. The breaking-change process applies only after final submission freeze or publication, so major line 1 carries this change.",
+      "consumerCoupling": "Claude plugin skillpilot-coach-v1 1.1.7 is the first package whose instructions match this contract; deploy the connector and that package in one coordinated step.",
+      "excludes": [
+        "Deployment and production activation",
+        "Connector Directory submission"
+      ]
+    }
+  ]
 }

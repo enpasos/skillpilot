@@ -154,11 +154,11 @@ try {
 
   const overview = page.getByTestId('cockpit-fixture').getByTestId('learner-plan-today-overview')
   await overview.getByRole('heading', { name: 'Heute' }).waitFor()
-  await overview.getByText('Noch 4 Lernziele bis zu deinen heutigen Tageszielen.').waitFor()
+  await overview.getByTestId('learner-plan-subject-mathematik').getByText('Tagesziel 0 von 2').first().waitFor()
   assert.equal(await overview.getByTestId(/learner-plan-subject-/u).count(), 2)
-  await overview.getByTestId('learner-plan-subject-math/sek-i').getByText('0 von 2 Lernzielen heute geschafft').first().waitFor()
-  const physicsPlanRow = overview.getByTestId('learner-plan-subject-physics/sek-ii')
-  await physicsPlanRow.getByText('0 von 2 Lernzielen heute geschafft').first().waitFor()
+  await overview.getByTestId('learner-plan-subject-mathematik').getByText('Tagesziel 0 von 2').first().waitFor()
+  const physicsPlanRow = overview.getByTestId('learner-plan-subject-physik')
+  await physicsPlanRow.getByText('Tagesziel 0 von 2').first().waitFor()
   assert.equal(await overview.getByText('Tempo der letzten 7 Tage').count(), 0)
   assert.equal(await overview.getByText('Nächstes Planziel starten').count(), 0)
   const overviewHeight = await overview.evaluate((element) => element.getBoundingClientRect().height)
@@ -179,8 +179,9 @@ try {
     `mobile today overview should not overflow horizontally (${mobileLayout.scrollWidth}px > ${mobileLayout.clientWidth}px)`,
   )
   await physicsPlanRow.getByLabel('Plandetails: Physik').click()
-  await physicsPlanRow.getByText('0 von 2 Lernzielen heute geschafft').last().waitFor()
-  await physicsPlanRow.getByText('1 weiteres offenes Planziel').waitFor()
+  await physicsPlanRow.getByText('Tagesziel 0 von 2').last().waitFor()
+  // Plan details describe the schedule only; the extra-work tally is gone from the status.
+  assert.equal(await physicsPlanRow.getByText(/offenes Planziel|offene Planziele/u).count(), 0)
   await physicsPlanRow.getByLabel('Plandetails: Physik').click()
 
   const mathPlanLabel = overview.getByText('Mathematik bis Klasse 10')
@@ -280,28 +281,26 @@ try {
   assert.equal(reconcileRequests, 1, 'later rerenders and retries do not repeat first-start reconcile')
 
   const progressFixture = page.getByTestId('daily-progress-fixture')
-  const progress = progressFixture.getByRole('progressbar', { name: 'Tagesziel: Mathematik' })
-  assert.equal(await progress.getAttribute('value'), '0')
+  await progressFixture.getByText('Tagesziel 0 von 2', { exact: false }).first().waitFor()
+  assert.equal(await progressFixture.getByRole('progressbar').count(), 0,
+    'the cockpit renders the backend status, never a locally derived progress bar')
   await progressFixture.getByRole('button', { name: 'Tagespensum abschließen' }).click()
-  await progressFixture.getByText('Deine Tagesziele sind erreicht. Gut gemacht!').waitFor()
-  assert.equal(await progress.getAttribute('value'), '2')
-  assert.equal(await progress.getAttribute('max'), '2')
-  assert.equal(await progressFixture.getByText('4 weitere offene Planziele').isVisible(), false, 'backlog stays available in closed details')
-  assert.equal(await progressFixture.getByTestId('voluntary-start-count').textContent(), '0', 'reaching the daily target starts no extra work')
-  await progressFixture.getByRole('button', { name: 'Freiwillig weiter in Mathematik' }).click()
+  await progressFixture.getByText('Tagesziel erreicht', { exact: false }).first().waitFor()
+  assert.equal(await progressFixture.getByTestId('voluntary-start-count').textContent(), '0', 'reaching the period target starts no extra work')
+  await progressFixture.getByRole('button', { name: 'Zu Mathematik wechseln' }).click()
   assert.equal(await progressFixture.getByTestId('voluntary-start-count').textContent(), '1', 'extra work requires an explicit click')
   await progressFixture.getByRole('button', { name: 'Zusätzliches Ziel abschließen' }).click()
-  await progressFixture.getByText('Zusätzlich 1 Lernziel geschafft. Stark!').waitFor()
-  assert.equal(await progress.getAttribute('value'), '2', 'extra work does not change the fulfilled target')
-  assert.equal(await progressFixture.getByText('3 weitere offene Planziele').isVisible(), false)
-  const completedLayout = await progressFixture.getByTestId('learner-plan-subject-math/sek-i').evaluate((row) => {
-    const text = row.querySelector('[aria-live] p')!.getBoundingClientRect()
+  await progressFixture.getByText('1 Lernziel vorgearbeitet', { exact: false }).first().waitFor()
+  const completedLayout = await progressFixture.getByTestId('learner-plan-subject-mathematik').evaluate((row) => {
+    // The status line is deliberately split into period text and a coloured label, so the
+    // readable width is the container's, not that of its first span.
+    const text = row.querySelector('[aria-live]')!.getBoundingClientRect()
     const button = row.querySelector('button')!.getBoundingClientRect()
     return { textWidth: text.width, textHeight: text.height, textBottom: text.bottom, buttonTop: button.top }
   })
   assert.ok(completedLayout.textWidth >= 250, `daily progress must keep readable mobile width: ${JSON.stringify(completedLayout)}`)
   assert.ok(completedLayout.textHeight <= 48, 'the daily progress sentence must not collapse into a narrow word column')
-  assert.ok(completedLayout.buttonTop >= completedLayout.textBottom, 'the voluntary action follows the mobile progress text without overlap')
+  assert.ok(completedLayout.buttonTop >= completedLayout.textBottom, 'the switch action follows the mobile status text without overlap')
   await progressFixture.getByTestId('learner-plan-today-overview').screenshot({
     path: fileURLToPath(new URL('../../tmp/learner-plan-daily-quota-mobile.png', import.meta.url)),
   })

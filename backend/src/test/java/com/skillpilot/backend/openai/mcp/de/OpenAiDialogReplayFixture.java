@@ -59,9 +59,8 @@ public final class OpenAiDialogReplayFixture {
     public final Map<String, Object> domainState = new LinkedHashMap<>();
     public UnifiedLearnerStateResponse state;
     public PersonalizationPlan personalization = PersonalizationPlan.complete(List.of());
-    public LearnerPlanTodayStatus planStatus = new LearnerPlanTodayStatus(
-            LocalDate.parse("2026-09-09"), false, false, List.of(),
-            new LearnerPlanTodayStatus.Totals(0, 0, 0, 0), 0);
+    public LearnerPlanTodayStatus planStatus = com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures
+            .status(LocalDate.parse("2026-09-09"), false, false);
     public boolean sessionValid = true;
     public String preparedMessage = "Bitte verwende SkillPilot Coach v1 und lade meinen aktuellen Kontext. "
             + "learningSessionId: " + SESSION_ID;

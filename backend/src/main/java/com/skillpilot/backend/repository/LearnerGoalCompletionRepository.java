@@ -13,5 +13,8 @@ public interface LearnerGoalCompletionRepository extends JpaRepository<LearnerGo
     List<LearnerGoalCompletion> findByLearner_SkillpilotIdAndCompletionDateOrderByOccurredAtAsc(
             String skillpilotId, LocalDate completionDate);
 
+    List<LearnerGoalCompletion> findByLearner_SkillpilotIdAndCompletionDateBetweenOrderByOccurredAtAsc(
+            String skillpilotId, LocalDate startDate, LocalDate endDate);
+
     List<LearnerGoalCompletion> findByLearner_SkillpilotIdOrderByOccurredAtDesc(String skillpilotId);
 }

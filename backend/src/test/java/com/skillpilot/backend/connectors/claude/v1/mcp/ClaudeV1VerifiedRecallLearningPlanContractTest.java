@@ -138,19 +138,15 @@ class ClaudeV1VerifiedRecallLearningPlanContractTest {
         assertThat((List<Map<String, Object>>) today.get("subjects"))
                 .anySatisfy(subject -> assertThat(subject)
                         .containsEntry("subject", "Mathematik")
-                        .containsEntry("dueToday", 1)
-                        .containsEntry("completedToday", 1)
-                        .containsEntry("openToday", 0))
+                        .containsEntry("evaluable", true)
+                        .containsEntry("statusDirection", "on_track"))
                 .anySatisfy(subject -> assertThat(subject)
                         .containsEntry("subject", "Physik")
-                        .containsEntry("dueToday", 2)
-                        .containsEntry("completedToday", 1)
-                        .containsEntry("openToday", 1)
-                        .containsEntry("openOverdue", 3));
-        assertThat((Map<String, Object>) today.get("totals"))
-                .containsEntry("completedToday", 2)
-                .containsEntry("openToday", 1)
-                .containsEntry("openOverdue", 3);
+                        .containsEntry("statusDirection", "behind"));
+        // The successor context states the updated status in one binding text, not as counts.
+        assertThat(today).doesNotContainKey("totals");
+        assertThat(today.get("text").toString())
+                .contains("Physik: Tagesziel 1 von 2 · 3 Lernziele im Rückstand");
         assertThat(context.toString()).doesNotContain("private-math", "private-physics", learnerId);
         assertThat(payload(call(arguments))).isEqualTo(response);
 
@@ -305,14 +301,16 @@ class ClaudeV1VerifiedRecallLearningPlanContractTest {
         verify(coachToolFacade, never()).switchLearningPlanSubject(any(), any(), any());
     }
 
+    /** Maths: one goal due today. Physics: two due, one done, three earlier ones still open. */
     private LearnerPlanTodayStatus dailyStatus(boolean completedMath) {
-        return new LearnerPlanTodayStatus(
-                LocalDate.of(2026, 9, 4), true, false,
+        return com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.status(
+                LocalDate.of(2026, 9, 4), true, false, 0, null,
                 List.of(
-                        new LearnerPlanTodayStatus.SubjectStatus(
-                                "private-math", "Mathematik", 1, completedMath ? 1 : 0, completedMath ? 0 : 1, 0),
-                        new LearnerPlanTodayStatus.SubjectStatus("private-physics", "Physik", 2, 1, 1, 3)),
-                new LearnerPlanTodayStatus.Totals(3, completedMath ? 2 : 1, completedMath ? 1 : 2, 3), 0);
+                        com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                                "private-math", "Mathematik", 1, 1,
+                                completedMath ? 1 : 0, completedMath ? 1 : 0, false, false),
+                        com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                                "private-physics", "Physik", 5, 2, 1, 1, false, false)));
     }
 
     private UnifiedLearnerStateResponse learnerState(FrontierGoal goal) {

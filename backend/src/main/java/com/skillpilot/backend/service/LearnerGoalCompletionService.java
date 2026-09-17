@@ -49,6 +49,11 @@ public class LearnerGoalCompletionService {
     }
 
     @Transactional(readOnly = true)
+    public List<LearnerGoalCompletion> getCompletionsBetween(String skillpilotId, LocalDate startDate, LocalDate endDate) {
+        return repository.findByLearner_SkillpilotIdAndCompletionDateBetweenOrderByOccurredAtAsc(skillpilotId, startDate, endDate);
+    }
+
+    @Transactional(readOnly = true)
     public List<LearnerGoalCompletion> getHistory(String skillpilotId) {
         return repository.findByLearner_SkillpilotIdOrderByOccurredAtDesc(skillpilotId);
     }

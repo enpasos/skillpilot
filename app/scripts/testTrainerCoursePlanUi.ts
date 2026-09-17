@@ -1297,7 +1297,8 @@ try {
   await planLabelInput.fill('2026/27')
   await personalizedPage.getByRole('navigation', { name: 'Planungsbereiche', exact: true }).getByRole('button', { name: 'Schülervorschau', exact: true }).click()
   const learnerPreview = personalizedPage.getByTestId('trainer-learning-plan-preview')
-  await learnerPreview.getByText('Bis heute insgesamt noch offen: 4 Lernziele über alle Fächer.', { exact: true }).waitFor()
+  // The preview is a draft simulation, not a plan status; the binding status lives in the cockpit.
+  await learnerPreview.getByText('Das ist eine Simulation des gespeicherten Entwurfs, kein Lernplanstatus. Den verbindlichen Planstand zeigt das Cockpit des Lernenden.', { exact: true }).waitFor()
   const subjectPreview = learnerPreview.getByRole('list', { name: 'Tagesanforderungen nach Fach', exact: true })
   assert(await subjectPreview.getByRole('heading', { name: 'Mathematik', exact: true }).count() === 1, 'the preview labels its authoritative daily workload by subject')
   const previewCount = (label: string) => subjectPreview.getByText(label, { exact: true }).locator('..').locator('dd').textContent()

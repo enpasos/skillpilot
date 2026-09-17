@@ -52,13 +52,16 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Unterrichtskalender, Clusterblöcken, datierten Meilensteinen, Puffer,
   Ist-/Soll-Tacho, belastbarer Achievement-Historie und einer Ein-Seiten-Sicht
   für Lehrkraftplan, Unterrichts-IST und Klassenlernstand.
+- [Einheitlicher Lernplanstatus](didactic/unified-learning-plan-status.md)
+  Eine Mengenbilanz je Fach auf Tages- oder Wochenbasis, deren Text das Backend
+  verbindlich für Cockpit, Chat und Planung formuliert.
 - [Learning Velocity](didactic/learning-velocity.md)
 
 ## Runtime Workflows
 
 - [Learning Workflow](runtime-workflows/learning-workflow.md)
 - [Tagesfortschritt: zuerst das Tagespensum](runtime-workflows/daily-learning-progress.md)
-  Echte Abschlussereignisse, stabile Fachquoten und freiwillige Zusatzarbeit in Cockpit und Coach.
+  Abgelöst durch den einheitlichen Lernplanstatus; beschreibt die frühere Rechenweise.
 - [Kursplanung nach Curriculum-Updates](runtime-workflows/course-plan-update-continuity.md)
 - [Existing-Learner Teacher View by SkillPilot ID](runtime-workflows/existing-learner-teacher-view.md)
   Functionally read-only local teacher view over the normal learner endpoints,

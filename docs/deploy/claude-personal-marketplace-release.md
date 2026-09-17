@@ -1012,16 +1012,17 @@ revision before activation:
    not add a second custom connector or enter the MCP URL manually.
 4. Return to `https://skillpilot.com/` and start a new learning session through
    the established first-party handoff.
-5. Confirm that the initial response gives one compact daily summary with
-   actual completions today credited toward each subject's fixed daily quota
-   and the remaining count for every subject. Completing an older due goal
-   must count toward that subject's quota; extra work must be acknowledged
-   separately without filling another subject's quota. Show remaining backlog
-   only on an explicit detail request, not as a routine reminder. A zero-quota
-   day must not be described as completed required work.
-   Prove that an unavailable plan produces only the safe partial-data warning
-   and no plan or landscape identifier. Counts must come from backend completion
-   evidence, not an inferred completion date from a mastery snapshot.
+5. Confirm that the initial response quotes the backend's
+   `learningPlanToday.text` verbatim and identically to the SkillPilot cockpit:
+   one line per subject with its daily or weekly target and any backlog or work
+   ahead, followed by the active learning goal, without own counts, totals or
+   judgement. Check both the day and the week basis. Completing an older due
+   goal must count toward that subject's period target; work ahead in one
+   subject must not offset backlog in another. A day without a target must not
+   be described as completed required work.
+   Prove that an unevaluable plan is named in the text and produces no plan or
+   landscape identifier. The status must rest on backend completion evidence,
+   not on an inferred completion date from a mastery snapshot.
 6. With no active goal, prove that Claude calls
    `resume_skillpilot_learning_plan` automatically only when `resumeAvailable`
    is true and guidance is `resume`, uses

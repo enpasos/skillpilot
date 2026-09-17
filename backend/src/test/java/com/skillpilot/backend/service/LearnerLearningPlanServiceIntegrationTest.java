@@ -1141,9 +1141,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.getCoachLearnerState(LEARNER_ID)).thenReturn(state);
 
         var status = service.getTodayStatus(LEARNER_ID, "de");
-        assertThat(status.totals().completedToday()).isEqualTo(1);
-        assertThat(status.totals().openToday()).isZero();
-        assertThat(status.totals().openOverdue()).isEqualTo(1);
+        assertThat(status.statusText()).contains("Tagesziel erreicht", "1 Lernziel im Rückstand");
         assertThat(status.resumeAvailable()).isTrue();
         var automatic = service.reconcile(LEARNER_ID, new LearnerLearningPlanApi.ReconcileRequest(TODAY));
         assertThat(automatic.changed()).isFalse();
@@ -1173,8 +1171,7 @@ class LearnerLearningPlanServiceIntegrationTest {
                 .thenReturn(new LearnerService.LearningPlanTransitionResult(true, state));
 
         var status = service.getTodayStatus(LEARNER_ID, "de");
-        assertThat(status.totals().dueToday()).isZero();
-        assertThat(status.totals().openOverdue()).isZero();
+        assertThat(status.statusText()).contains("Heute kein Tagesziel", "im Plan");
         assertThat(status.resumeAvailable()).isTrue();
         assertThat(status.subjects().getFirst().canContinue()).isTrue();
         assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).canContinue()).isTrue();
@@ -1202,7 +1199,7 @@ class LearnerLearningPlanServiceIntegrationTest {
                 .thenReturn(new LearnerService.LearningPlanTransitionResult(true, state));
 
         var status = service.getTodayStatus(LEARNER_ID, "de");
-        assertThat(status.totals().openOverdue()).isZero();
+        assertThat(status.statusText()).contains("im Plan").doesNotContain("Rückstand");
         assertThat(status.resumeAvailable()).isTrue();
         var switched = service.switchPlan(LEARNER_ID, plan.planId(),
                 new LearnerLearningPlanApi.ContinueRequest(plan.revision(), TODAY));
@@ -1226,7 +1223,7 @@ class LearnerLearningPlanServiceIntegrationTest {
                 .thenReturn(new LearnerService.LearningPlanTransitionResult(true, state));
 
         var status = service.getTodayStatus(LEARNER_ID, "de");
-        assertThat(status.totals().openOverdue()).isEqualTo(1);
+        assertThat(status.statusText()).contains("1 Lernziel im Rückstand");
         assertThat(status.resumeAvailable()).isTrue();
         var resumed = service.resumeExplicitly(LEARNER_ID,
                 new LearnerLearningPlanApi.ReconcileRequest(TODAY));
@@ -1267,7 +1264,7 @@ class LearnerLearningPlanServiceIntegrationTest {
                 .thenReturn(List.of(frontier("atom-a")));
 
         var status = service.getTodayStatus(LEARNER_ID, "de");
-        assertThat(status.totals().openToday()).isEqualTo(1);
+        assertThat(status.statusText()).contains("Tagesziel 0 von 1");
         assertThat(status.resumeAvailable()).isTrue();
         assertThat(status.automaticResumeAvailable()).isFalse();
         assertThat(service.reconcile(LEARNER_ID,
@@ -1296,7 +1293,8 @@ class LearnerLearningPlanServiceIntegrationTest {
 
         var status = service.getTodayStatus(LEARNER_ID, "de");
         assertThat(status.unavailablePlanCount()).isEqualTo(1);
-        assertThat(status.totals().dueToday()).isZero();
+        assertThat(status.evaluable()).isFalse();
+        assertThat(status.statusText()).contains("nicht auswertbar");
         assertThat(status.resumeAvailable()).isTrue();
         assertThat(status.automaticResumeAvailable()).isFalse();
         assertThat(service.switchPersonalCurriculumSubject(LEARNER_ID, LANDSCAPE_ID).activeGoalId())
@@ -1330,7 +1328,9 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(status.resumeAvailable()).isTrue();
         assertThat(status.subjects()).singleElement().satisfies(subject -> {
             assertThat(subject.canContinue()).isTrue();
-            assertThat(subject.openToday()).isZero();
+            // Continuation stays possible even though the plan status is not determinable.
+            assertThat(subject.evaluable()).isFalse();
+            assertThat(subject.statusDirection()).isNull();
         });
         assertThat(status.automaticResumeAvailable()).isFalse();
         assertStatus(() -> service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY), HttpStatus.CONFLICT);
@@ -1433,30 +1433,24 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(status.followLearningPlans()).isTrue();
         assertThat(status.resumeAvailable()).isTrue();
         assertThat(status.unavailablePlanCount()).isZero();
-        assertThat(status.subjects()).containsExactly(
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        LANDSCAPE_ID,
-                        "Mathematics",
-                        1,
-                        1,
-                        0,
-                        2),
-                new LearnerPlanTodayStatus.SubjectStatus(
-                        PHYSICS_LANDSCAPE_ID,
-                        "Physics",
-                        1,
-                        0,
-                        1,
-                        1,
-                        false,
-                        true));
-        assertThat(status.totals()).isEqualTo(
-                new LearnerPlanTodayStatus.Totals(2, 1, 1, 3));
+        // Subjects appear in one stable order, and the combined text is exactly their lines:
+        // there is no second formulation anywhere.
+        assertThat(status.subjects())
+                .extracting(LearnerPlanTodayStatus.SubjectStatus::subjectLabel)
+                .containsExactly("Mathematics", "Physics");
+        assertThat(status.subjects()).allSatisfy(subject -> {
+            assertThat(subject.evaluable()).isTrue();
+            assertThat(subject.statusDirection()).isNotNull();
+            assertThat(subject.subjectLine()).startsWith(subject.subjectLabel() + ": ");
+        });
+        assertThat(status.statusText()).isEqualTo(String.join("\n", status.subjects().stream()
+                .map(LearnerPlanTodayStatus.SubjectStatus::subjectLine)
+                .toList()));
         verify(eventPublisher, never()).publishEvent(any());
     }
 
     @Test
-    void todayStatusExcludesStaleAndMalformedPlansFromSubjectsAndTotals() {
+    void todayStatusNamesStaleAndMalformedPlansAsUnevaluableInsteadOfFakingABalance() {
         LearnerLearningPlanApi.PlanDetail math = service.upsert(
                 LEARNER_ID,
                 LANDSCAPE_ID,
@@ -1491,10 +1485,16 @@ class LearnerLearningPlanServiceIntegrationTest {
 
         LearnerPlanTodayStatus status = service.getTodayStatus(LEARNER_ID, "de-DE");
 
-        assertThat(status.subjects()).isEmpty();
+        // Evaluability is its own state: no direction and no status line are invented,
+        // and the shortfall is named rather than silently dropped.
+        assertThat(status.subjects()).isNotEmpty().allSatisfy(subject -> {
+            assertThat(subject.evaluable()).isFalse();
+            assertThat(subject.statusDirection()).isNull();
+            assertThat(subject.subjectLine()).isNull();
+        });
+        assertThat(status.evaluable()).isFalse();
+        assertThat(status.statusText()).contains("nicht auswertbar");
         assertThat(status.resumeAvailable()).isFalse();
-        assertThat(status.totals()).isEqualTo(
-                new LearnerPlanTodayStatus.Totals(0, 0, 0, 0));
         assertThat(status.unavailablePlanCount()).isEqualTo(2);
     }
 
@@ -1542,7 +1542,7 @@ class LearnerLearningPlanServiceIntegrationTest {
 
         assertThat(status.subjects()).singleElement().satisfies(subject -> {
             assertThat(subject.subjectLabel()).isEqualTo("Mathematik");
-            assertThat(subject.openToday()).isEqualTo(1);
+            assertThat(subject.periodText()).isEqualTo("Tagesziel 0 von 1");
             assertThat(subject.current()).isTrue();
             assertThat(subject.canContinue()).isTrue();
         });
@@ -1580,8 +1580,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         LearnerPlanTodayStatus physicsDone = service.getTodayStatus(LEARNER_ID, "de");
         assertThat(physicsDone.subjects()).filteredOn(subject -> "Physik".equals(subject.subjectLabel()))
                 .singleElement().satisfies(subject -> {
-                    assertThat(subject.openToday()).isZero();
-                    assertThat(subject.completedToday()).isEqualTo(1);
+                    assertThat(subject.periodText()).isEqualTo("Tagesziel erreicht");
                     assertThat(subject.canContinue()).isFalse();
                 });
         assertThat(learner.getActiveGoalId()).isEqualTo("atom-a");
@@ -1604,7 +1603,9 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(service.getPlans(LEARNER_ID, TODAY).plans()).singleElement()
                 .satisfies(summary -> assertThat(summary.stale()).isTrue());
         var today = service.getTodayStatus(LEARNER_ID, "de");
-        assertThat(today.subjects()).isEmpty();
+        // The subject is named as unevaluable rather than disappearing from the status.
+        assertThat(today.subjects()).singleElement()
+                .satisfies(subject -> assertThat(subject.evaluable()).isFalse());
         assertThat(today.unavailablePlanCount()).isEqualTo(1);
         var request = new LearnerLearningPlanApi.ContinueRequest(plan.revision(), TODAY);
         assertStatus(() -> service.continuePlan(LEARNER_ID, plan.planId(), request), HttpStatus.CONFLICT);
@@ -1616,6 +1617,136 @@ class LearnerLearningPlanServiceIntegrationTest {
         verify(learnerService, never()).applyLearningPlanTransition(
                 any(), any(Boolean.class), any(Boolean.class), any(), any(), any(Boolean.class), any());
         verify(eventPublisher, never()).publishEvent(any());
+    }
+
+    @Test
+    void severalPlansOfTheSameSubjectMergeIntoOneBalanceWithoutDoubleCounting() {
+        String secondMathLandscape = "math-advanced";
+        when(learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape))
+                .thenReturn(scopeFor(secondMathLandscape,
+                        List.of("atom-m1", "atom-m2"), List.of("atom-m1", "atom-m2")));
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(secondMathLandscape), any()))
+                .thenAnswer(invocation -> LearnerLearningPlanService.scopeFingerprint(
+                        learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape)));
+        when(landscapeService.getById(secondMathLandscape))
+                .thenReturn(landscape(secondMathLandscape, "Mathematik"));
+        learner.setFollowLearningPlans(true);
+
+        service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Mathe Basis", List.of(learning("a", "2026-09-04", "2026-09-04", "atom-a"))), TODAY);
+        service.upsert(LEARNER_ID, secondMathLandscape, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Mathe Vertiefung", List.of(learning("b", "2026-09-04", "2026-09-04", "atom-m1"))), TODAY);
+
+        LearnerPlanTodayStatus status = service.getTodayStatus(LEARNER_ID, "de");
+
+        // Two plans, one subject, one balance: a merged subject yields a single status line
+        // whose period target is the sum, never two competing lines for the same subject.
+        assertThat(status.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.subjectLabel()).isEqualTo("Mathematik");
+            assertThat(subject.periodText()).isEqualTo("Tagesziel 0 von 2");
+            // Ambiguity fails closed: a subject behind two plans cannot be switched to.
+            assertThat(subject.canContinue()).isFalse();
+        });
+        assertThat(status.statusText()).isEqualTo("Mathematik: Tagesziel 0 von 2 · im Plan");
+    }
+
+    @Test
+    void weekBasisEvaluatesTheWholeCurrentWeekAndSwitchingBackChangesNeitherPlanNorProgress() {
+        learner.setFollowLearningPlans(true);
+        learner.setLearningPlanPeriodBasis(
+                com.skillpilot.backend.service.learningplan.PeriodBasis.WEEK);
+        // TODAY is Friday, so the running week is Mon 2026-08-31 to Sun 2026-09-06. The second
+        // goal sits on Thursday: inside the week, but before today.
+        var plan = service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Mathe", List.of(
+                        learning("earlier-this-week", "2026-09-03", "2026-09-03", "atom-b"),
+                        learning("today", "2026-09-04", "2026-09-04", "atom-a"))), TODAY);
+        // Creating the plan is a state change and rightly publishes. What must stay silent is
+        // everything that follows: the status calculation is a read projection.
+        clearInvocations(eventPublisher);
+
+        LearnerPlanTodayStatus weekly = service.getTodayStatus(LEARNER_ID, "de");
+
+        assertThat(weekly.periodBasis())
+                .isEqualTo(com.skillpilot.backend.service.learningplan.PeriodBasis.WEEK);
+        assertThat(weekly.periodStart().getDayOfWeek()).isEqualTo(java.time.DayOfWeek.MONDAY);
+        assertThat(weekly.periodEnd().getDayOfWeek()).isEqualTo(java.time.DayOfWeek.SUNDAY);
+        assertThat(weekly.periodStart()).isBeforeOrEqualTo(TODAY);
+        assertThat(weekly.periodEnd()).isAfterOrEqualTo(TODAY);
+        // The whole running week is the reference period, not just today.
+        assertThat(weekly.statusText()).isEqualTo("Mathematik: Wochenziel 0 von 2 · im Plan");
+
+        learner.setLearningPlanPeriodBasis(
+                com.skillpilot.backend.service.learningplan.PeriodBasis.DAY);
+        LearnerPlanTodayStatus daily = service.getTodayStatus(LEARNER_ID, "de");
+
+        // The day basis splits the same facts differently: what the week legitimately absorbs
+        // as one period target appears here as today's target plus a visible backlog.
+        assertThat(daily.statusText())
+                .isEqualTo("Mathematik: Tagesziel 0 von 1 · 1 Lernziel im Rückstand");
+        // Changing the basis shifts the frame of reference, never the schedule or the progress.
+        assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).blocks()).isEqualTo(plan.blocks());
+        verify(eventPublisher, never()).publishEvent(any());
+    }
+
+    @Test
+    void withdrawnMasteryStopsCountingAsCompletedWorkInTheSamePeriod() {
+        learner.setFollowLearningPlans(true);
+        service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Mathe", List.of(learning("today", "2026-09-04", "2026-09-04", "atom-a"))), TODAY);
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-a", 1.0));
+        when(learnerService.getGoalCompletionsOnDate(LEARNER_ID, TODAY)).thenReturn(
+                Map.of("atom-a", TODAY.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant()));
+
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").statusText())
+                .isEqualTo("Mathematik: Tagesziel erreicht · im Plan");
+
+        // Taking mastery back must not leave the completion credited to the period.
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of());
+
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").statusText())
+                .isEqualTo("Mathematik: Tagesziel 0 von 1 · im Plan");
+    }
+
+    @Test
+    void weekBoundariesFollowLocalCalendarDatesAcrossBothDaylightSavingTransitions() {
+        learner.setFollowLearningPlans(true);
+        learner.setLearningPlanPeriodBasis(
+                com.skillpilot.backend.service.learningplan.PeriodBasis.WEEK);
+
+        // Spring forward: 01:30 and 03:30 Berlin time on the same Sunday, on either side of the
+        // hour that does not exist locally. Both must read as the same local date and week.
+        for (String instant : List.of("2026-03-29T00:30:00Z", "2026-03-29T01:30:00Z")) {
+            LearnerPlanTodayStatus status = serviceAt(instant).getTodayStatus(LEARNER_ID, "de");
+            assertThat(status.asOf()).isEqualTo(LocalDate.parse("2026-03-29"));
+            assertThat(status.periodStart()).isEqualTo(LocalDate.parse("2026-03-23"));
+            assertThat(status.periodEnd()).isEqualTo(LocalDate.parse("2026-03-29"));
+        }
+
+        // Autumn back: 02:30 Berlin time occurs twice on the same Sunday. The ambiguous hour
+        // must not move the day or the week either.
+        for (String instant : List.of("2026-10-25T00:30:00Z", "2026-10-25T01:30:00Z")) {
+            LearnerPlanTodayStatus status = serviceAt(instant).getTodayStatus(LEARNER_ID, "de");
+            assertThat(status.asOf()).isEqualTo(LocalDate.parse("2026-10-25"));
+            assertThat(status.periodStart()).isEqualTo(LocalDate.parse("2026-10-19"));
+            assertThat(status.periodEnd()).isEqualTo(LocalDate.parse("2026-10-25"));
+        }
+
+        // The boundaries stay Monday to Sunday: a week is a span of local dates, never a
+        // blanket addition of 168 hours.
+        assertThat(LocalDate.parse("2026-03-23").getDayOfWeek()).isEqualTo(java.time.DayOfWeek.MONDAY);
+        assertThat(LocalDate.parse("2026-10-25").getDayOfWeek()).isEqualTo(java.time.DayOfWeek.SUNDAY);
+    }
+
+    /** A service pinned to one absolute instant, deliberately with a non-Berlin clock zone. */
+    private LearnerLearningPlanService serviceAt(String instant) {
+        return new LearnerLearningPlanService(
+                planRepository,
+                learnerService,
+                objectMapper,
+                eventPublisher,
+                landscapeService,
+                Clock.fixed(Instant.parse(instant), ZoneId.of("UTC")));
     }
 
     private static LearnerPlanningScopeResponse scope(List<String> all, List<String> open) {

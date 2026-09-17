@@ -120,6 +120,26 @@ try {
         },
       })
     }
+    if (pathname.endsWith('/learning-plans/status')) {
+      // The one shared status the cockpit renders; checked before the plans route.
+      const subject = (key: string, label: string) => ({
+        subjectKey: key, subjectLabel: label, evaluable: true,
+        periodText: 'Tagesziel 0 von 2', planStatusText: '2 Lernziele im R\u00fcckstand',
+        subjectLine: `${label}: Tagesziel 0 von 2 \u00b7 2 Lernziele im R\u00fcckstand`,
+        statusDirection: 'behind', current: false, canContinue: true,
+      })
+      const subjects = [subject('mathematik', 'Mathematik'), subject('physik', 'Physik')]
+      return json({
+        asOf: '2026-09-04', periodBasis: 'DAY',
+        periodStart: '2026-09-04', periodEnd: '2026-09-04',
+        timeZone: 'Europe/Berlin', language: 'de',
+        evaluable: true,
+        statusText: subjects.map((entry) => entry.subjectLine).join('\n'),
+        statusDirection: 'behind', activeGoal: null,
+        followLearningPlans: true, resumeAvailable: true,
+        subjects, unavailablePlanCount: 0,
+      })
+    }
     if (pathname.endsWith('/learning-plans')) {
       return json({
         asOf: '2026-09-04',
@@ -161,7 +181,7 @@ try {
     const body = await page.locator('body').innerText()
     throw new Error(`LearnerView did not render Today overview. Body:\n${body}\nBrowser errors:\n${browserErrors.join('\n')}`, { cause: error })
   }
-  await overview.getByText('Noch 4 Lernziele bis zu deinen heutigen Tageszielen.').waitFor()
+  await overview.getByTestId('learner-plan-subject-mathematik').getByText('Tagesziel 0 von 2').first().waitFor()
 
   const menuBox = await menuButton.boundingBox()
   const overviewBox = await overview.boundingBox()

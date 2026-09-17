@@ -3,13 +3,15 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
 import { LearnerPlanTodayOverview } from '../src/components/LearnerPlanTodayOverview'
-import { LearnerPlanTodayCard } from '../src/components/LearnerPlanTodayCard'
-import type { LearnerLearningPlanSummary } from '../src/learnerLearningPlanTypes'
+import type {
+  LearnerLearningPlanSummary,
+  LearnerPlanStatus,
+  LearnerPlanSubjectStatus,
+} from '../src/learnerLearningPlanTypes'
 
 const plan = (
   planId: string,
   landscapeId: string,
-  openDueThroughToday: number,
   nextGoalId: string | null,
 ): LearnerLearningPlanSummary => ({
   planId,
@@ -25,18 +27,14 @@ const plan = (
     startDate: '2026-09-01',
     endDate: '2026-09-18',
   },
-  nextMilestone: {
-    blockId: `${planId}-test`,
-    title: 'Klausur',
-    date: '2026-09-25',
-  },
+  nextMilestone: { blockId: `${planId}-test`, title: 'Klausur', date: '2026-09-25' },
   metrics: {
     dueThroughToday: 12,
-    completedDueThroughToday: 12 - openDueThroughToday,
-    openDueThroughToday,
+    completedDueThroughToday: 7,
+    openDueThroughToday: 5,
     dueToday: 3,
-    completedDueToday: Math.max(0, 3 - Math.min(3, openDueThroughToday)),
-    openDueToday: Math.min(3, openDueThroughToday),
+    completedDueToday: 0,
+    openDueToday: 3,
     totalPlanned: 42,
   },
   buffer: { totalWorkdays: 8, remainingWorkdays: 6 },
@@ -46,8 +44,46 @@ const plan = (
   canContinue: Boolean(nextGoalId),
 })
 
-const math = plan('plan-math', 'math', 5, 'analysis-next')
-const physics = plan('plan-physics', 'physics', 3, 'mechanics-next')
+const subject = (
+  subjectKey: string,
+  subjectLabel: string,
+  periodText: string,
+  planStatusText: string,
+  statusDirection: 'behind' | 'on_track' | 'ahead',
+  extra: Partial<LearnerPlanSubjectStatus> = {},
+): LearnerPlanSubjectStatus => ({
+  subjectKey,
+  subjectLabel,
+  evaluable: true,
+  periodText,
+  planStatusText,
+  subjectLine: `${subjectLabel}: ${periodText} · ${planStatusText}`,
+  statusDirection,
+  current: false,
+  canContinue: true,
+  ...extra,
+})
+
+const status = (subjects: LearnerPlanSubjectStatus[], overrides: Partial<LearnerPlanStatus> = {}): LearnerPlanStatus => ({
+  asOf: '2026-09-04',
+  periodBasis: 'DAY',
+  periodStart: '2026-09-04',
+  periodEnd: '2026-09-04',
+  timeZone: 'Europe/Berlin',
+  language: 'de',
+  evaluable: subjects.every((entry) => entry.evaluable),
+  statusText: subjects.map((entry) => entry.subjectLine ?? '').filter(Boolean).join('\n'),
+  statusDirection: 'behind',
+  activeGoal: null,
+  followLearningPlans: true,
+  resumeAvailable: true,
+  subjects,
+  unavailablePlanCount: 0,
+  ...overrides,
+})
+
+const math = plan('plan-math', 'math', 'analysis-next')
+const physics = plan('plan-physics', 'physics', 'mechanics-next')
 const subjectLabels = new Map([['math', 'Mathematik'], ['physics', 'Physik']])
 const goalLabels = new Map([
   ['analysis-current', 'Ableitungsregeln anwenden'],
@@ -55,8 +91,12 @@ const goalLabels = new Map([
   ['mechanics-next', 'Kräfte addieren'],
 ])
 
+const mathsBehind = subject('mathematik', 'Mathematik', 'Tagesziel 0 von 3', '2 Lernziele im Rückstand', 'behind', { current: true })
+const physicsOnTrack = subject('physik', 'Physik', 'Tagesziel 1 von 2', 'im Plan', 'on_track')
+
 const enabledMarkup = renderToStaticMarkup(
   <LearnerPlanTodayOverview
+    status={status([mathsBehind, physicsOnTrack])}
     plans={[math, physics]}
     language="de"
     planModeEnabled
@@ -70,32 +110,71 @@ const enabledMarkup = renderToStaticMarkup(
   />,
 )
 
-assert.match(enabledMarkup, /<section[^>]+data-testid="learner-plan-today-overview"[^>]+aria-labelledby="[^"]+"[^>]+aria-describedby="[^"]+"/u)
+assert.match(enabledMarkup, /<section[^>]+data-testid="learner-plan-today-overview"[^>]+aria-labelledby="[^"]+"/u)
+// The description only exists while there is a notice to describe.
+assert.doesNotMatch(enabledMarkup, /aria-describedby/u)
 assert.match(enabledMarkup, />Heute</u)
-assert.match(enabledMarkup, /Noch 6 Lernziele bis zu deinen heutigen Tageszielen/u)
-assert.match(enabledMarkup, /Auch ein heute abgeschlossenes Ziel aus früheren Tagen zählt für dein Tagesziel/u)
-assert.match(enabledMarkup, /<progress[^>]+aria-label="Tagesziel: Mathematik"[^>]+value="0"[^>]+max="3"/u)
-assert.match(enabledMarkup, /2 gültige Fachpläne/u)
+// Every visible status string comes from the backend verbatim, one line per subject,
+// with the period text and the plan-status label rendered as delivered.
+assert.match(enabledMarkup, /Tagesziel 0 von 3/u)
+assert.match(enabledMarkup, /2 Lernziele im Rückstand/u)
+assert.match(enabledMarkup, /Tagesziel 1 von 2/u)
+assert.match(enabledMarkup, />im Plan</u)
+// The combined text is not repeated on top of the rows.
+assert.doesNotMatch(enabledMarkup, /Mathematik: Tagesziel 0 von 3 · 2 Lernziele im Rückstand/u)
+// The colour comes from the delivered direction only.
+assert.match(enabledMarkup, /data-status-direction="behind"/u)
+assert.match(enabledMarkup, /data-status-direction="on_track"/u)
+// No count, progress bar or locally derived balance survives anywhere in the cockpit.
+assert.doesNotMatch(enabledMarkup, /<progress/u)
+assert.doesNotMatch(enabledMarkup, /Bis heute insgesamt|Zusätzlich|Tempo der letzten 7 Tage|gültige Fachpläne/u)
 assert.match(enabledMarkup, /Du lernst gerade · Mathematik/u)
 assert.match(enabledMarkup, /Ableitungsregeln anwenden/u)
 assert.match(enabledMarkup, /data-testid="learner-plan-continue"/u)
 assert.match(enabledMarkup, />Weiterlernen</u)
-assert.match(enabledMarkup, /Mathematik/u)
-assert.match(enabledMarkup, /Physik/u)
 assert.match(enabledMarkup, /Aktuelles Fach/u)
 assert.match(enabledMarkup, /Zu Physik wechseln/u)
 assert.equal((enabledMarkup.match(/data-testid="learner-plan-switch"/gu) ?? []).length, 1)
-assert.equal((enabledMarkup.match(/<details/gu) ?? []).length, 2)
 assert.match(enabledMarkup, /Plandetails: Mathematik/u)
 assert.match(enabledMarkup, /Analysis/u)
 assert.match(enabledMarkup, /Klausur/u)
 assert.match(enabledMarkup, /6 von 8 Werktagen verbleiben/u)
-assert.doesNotMatch(enabledMarkup, /Tempo der letzten 7 Tage/u)
-assert.doesNotMatch(enabledMarkup, /Nächstes Planziel starten/u)
-assert.doesNotMatch(enabledMarkup, /learner-plan-pace-neutral/u)
+
+// An unevaluable subject keeps its own state: no direction, no invented balance, and
+// continuation stays a separate question.
+const unevaluable: LearnerPlanSubjectStatus = {
+  subjectKey: 'chemie',
+  subjectLabel: 'Chemie',
+  evaluable: false,
+  periodText: null,
+  planStatusText: null,
+  subjectLine: null,
+  statusDirection: null,
+  current: false,
+  canContinue: true,
+}
+const unevaluableMarkup = renderToStaticMarkup(
+  <LearnerPlanTodayOverview
+    status={status([unevaluable], { evaluable: false, statusDirection: null, statusText: '1 Fachplan nicht auswertbar (Chemie).' })}
+    plans={[]}
+    language="de"
+    planModeEnabled
+    subjectLabel={(id) => subjectLabels.get(id) ?? id}
+    goalLabel={() => undefined}
+    onContinue={() => undefined}
+    onSwitch={() => undefined}
+    onOpenSettings={() => undefined}
+  />,
+)
+assert.match(unevaluableMarkup, /data-testid="learner-plan-status-notice"/u)
+assert.match(unevaluableMarkup, /aria-describedby="[^"]+"/u, 'the notice is wired up for screen readers')
+assert.match(unevaluableMarkup, /Weiterlernen bleibt möglich/u)
+assert.doesNotMatch(unevaluableMarkup, /data-status-direction/u)
+assert.doesNotMatch(unevaluableMarkup, /data-testid="learner-plan-switch"/u, 'no plan backs this subject')
 
 const reconcilingMarkup = renderToStaticMarkup(
   <LearnerPlanTodayOverview
+    status={status([mathsBehind, physicsOnTrack])}
     plans={[math, physics]}
     language="de"
     planModeEnabled
@@ -110,12 +189,11 @@ const reconcilingMarkup = renderToStaticMarkup(
 )
 assert.match(reconcilingMarkup, /SkillPilot wählt dein nächstes fälliges Lernziel aus/u)
 assert.doesNotMatch(reconcilingMarkup, /data-testid="learner-plan-continue"/u)
-assert.doesNotMatch(reconcilingMarkup, /Nächstes Planziel starten/u)
 
-const stale = { ...physics, planId: 'stale-physics', stale: true }
 const staleMarkup = renderToStaticMarkup(
   <LearnerPlanTodayOverview
-    plans={[math, stale]}
+    status={status([mathsBehind, { ...physicsOnTrack, current: false }])}
+    plans={[math, { ...physics, planId: 'stale-physics', stale: true }]}
     language="de"
     planModeEnabled
     subjectLabel={(id) => subjectLabels.get(id) ?? id}
@@ -128,15 +206,14 @@ const staleMarkup = renderToStaticMarkup(
     onRetry={() => undefined}
   />,
 )
-assert.match(staleMarkup, /Noch 3 Lernziele bis zu deinen heutigen Tageszielen/u, 'stale plans do not inflate the combined count')
-assert.match(staleMarkup, /Plan veraltet/u)
 assert.match(staleMarkup, /letzte Stand vom 01\.09\.2026/u)
 assert.match(staleMarkup, /konnte nicht automatisch ausgewählt werden/u)
 assert.match(staleMarkup, />Erneut versuchen</u)
-assert.match(staleMarkup, /data-testid="learner-plan-switch" disabled=""/u)
+assert.doesNotMatch(staleMarkup, /data-testid="learner-plan-switch"[^>]*>(?!.*disabled)/u)
 
 const disabledModeMarkup = renderToStaticMarkup(
   <LearnerPlanTodayOverview
+    status={status([mathsBehind, physicsOnTrack])}
     plans={[math, physics]}
     language="de"
     planModeEnabled={false}
@@ -154,107 +231,63 @@ assert.match(disabledModeMarkup, /Einstellungen öffnen/u)
 assert.doesNotMatch(disabledModeMarkup, /data-testid="learner-plan-continue"/u)
 assert.doesNotMatch(disabledModeMarkup, /data-testid="learner-plan-switch"/u)
 
-const blockedPhysics = {
-  ...physics,
-  nextEligibleGoal: null,
-  canContinue: false,
-  continueReason: 'no-open-due-frontier-goal' as const,
-}
-const blockedMarkup = renderToStaticMarkup(
+// A reached period target never revokes the switch capability the backend published.
+const reachedTarget = subject('mathematik', 'Mathematik', 'Tagesziel erreicht', '2 Lernziele vorgearbeitet', 'ahead')
+const reachedMarkup = renderToStaticMarkup(
   <LearnerPlanTodayOverview
-    plans={[blockedPhysics]}
+    status={status([reachedTarget], { statusDirection: 'ahead' })}
+    plans={[math]}
     language="de"
     planModeEnabled
-    subjectLabel={(id) => subjectLabels.get(id) ?? id}
-    goalLabel={(id) => goalLabels.get(id)}
+    subjectLabel={() => 'Mathematik'}
+    goalLabel={() => 'Kurvendiskussion'}
     onContinue={() => undefined}
     onSwitch={() => undefined}
     onOpenSettings={() => undefined}
   />,
 )
-assert.match(blockedMarkup, /Voraussetzungen fehlen noch/u)
-assert.match(blockedMarkup, /Lernvoraussetzungen sind noch nicht erfüllt/u)
-assert.doesNotMatch(blockedMarkup, /data-testid="learner-plan-switch"/u)
+assert.match(reachedMarkup, /Tagesziel erreicht/u)
+assert.match(reachedMarkup, /2 Lernziele vorgearbeitet/u)
+assert.match(reachedMarkup, /data-status-direction="ahead"/u)
+assert.match(reachedMarkup, /data-testid="learner-plan-switch"/u)
+
+const weeklyMarkup = renderToStaticMarkup(
+  <LearnerPlanTodayOverview
+    status={status(
+      [subject('mathematik', 'Mathematik', 'Wochenziel 2 von 5', 'im Plan', 'on_track')],
+      { periodBasis: 'WEEK', periodStart: '2026-08-31', periodEnd: '2026-09-06', statusDirection: 'on_track' },
+    )}
+    plans={[math]}
+    language="de"
+    planModeEnabled
+    subjectLabel={() => 'Mathematik'}
+    goalLabel={() => undefined}
+    onContinue={() => undefined}
+    onSwitch={() => undefined}
+    onOpenSettings={() => undefined}
+  />,
+)
+assert.match(weeklyMarkup, />Diese Woche</u, 'the week basis reaches the heading too')
+assert.match(weeklyMarkup, /Wochenziel 2 von 5/u)
 
 const englishMarkup = renderToStaticMarkup(
   <LearnerPlanTodayOverview
-    plans={[math, physics]}
+    status={status(
+      [subject('mathematik', 'Mathematics', 'Daily target 0 of 3', '2 learning goals behind', 'behind')],
+      { language: 'en' },
+    )}
+    plans={[math]}
     language="en"
     planModeEnabled
-    subjectLabel={(id) => id === 'math' ? 'Mathematics' : 'Physics'}
+    subjectLabel={() => 'Mathematics'}
     goalLabel={(id) => goalLabels.get(id)}
-    activeGoalId="analysis-current"
-    activeLandscapeId="math"
     onContinue={() => undefined}
     onSwitch={() => undefined}
     onOpenSettings={() => undefined}
   />,
 )
-assert.match(englishMarkup, /6 learning goals left to reach your daily targets/u)
-assert.match(englishMarkup, /Switch to Physics/u)
-assert.match(englishMarkup, /Continue learning/u)
+assert.match(englishMarkup, /Daily target 0 of 3/u)
+assert.match(englishMarkup, /2 learning goals behind/u)
 assert.doesNotMatch(englishMarkup, /Pace over the last 7 days/u)
-
-const quotaDoneWithBacklog = {
-  ...math,
-  metrics: { ...math.metrics, completedDueToday: 3, openDueToday: 0, extraCompletedToday: 2 },
-}
-for (const language of ['de', 'en'] as const) {
-  const markup = renderToStaticMarkup(
-    <LearnerPlanTodayOverview
-      plans={[quotaDoneWithBacklog]}
-      language={language}
-      planModeEnabled
-      subjectLabel={() => language === 'de' ? 'Mathematik' : 'Mathematics'}
-      goalLabel={() => 'Next goal'}
-      onContinue={() => undefined}
-      onSwitch={() => undefined}
-      onOpenSettings={() => undefined}
-    />,
-  )
-  assert.match(markup, /value="3" max="3"/u, 'bonus does not inflate the daily progress bar')
-  assert.match(markup, language === 'de' ? /Deine Tagesziele sind erreicht/u : /You have reached your daily targets/u)
-  assert.match(markup, language === 'de' ? /Zusätzlich 2 Lernziele geschafft/u : /2 extra learning goals completed/u)
-  assert.match(markup, language === 'de' ? /Freiwillig weiter in Mathematik/u : /Keep learning voluntarily in Mathematics/u)
-  assert.doesNotMatch(markup, /Lernvoraussetzungen sind noch nicht erfüllt|learning prerequisites are not yet met/u)
-  assert.doesNotMatch(markup, /<details[^>]+open/u, 'backlog starts collapsed')
-}
-
-const standaloneDone = renderToStaticMarkup(
-  <LearnerPlanTodayCard plan={quotaDoneWithBacklog} subjectLabel="Mathematik" language="de" planModeEnabled onContinue={() => undefined} />,
-)
-assert.match(standaloneDone, /Tagesziel erreicht!/u)
-assert.match(standaloneDone, /Freiwillig weiterlernen/u)
-assert.match(standaloneDone, /<details/u)
-assert.doesNotMatch(standaloneDone, /<details[^>]+open/u)
-
-const blockedExtra = renderToStaticMarkup(
-  <LearnerPlanTodayOverview
-    plans={[{ ...quotaDoneWithBacklog, nextEligibleGoal: null, canContinue: false, continueReason: 'no-open-due-frontier-goal' }]}
-    language="de" planModeEnabled subjectLabel={() => 'Mathematik'} goalLabel={() => undefined}
-    onContinue={() => undefined} onSwitch={() => undefined} onOpenSettings={() => undefined}
-  />,
-)
-assert.match(blockedExtra, /Deine Tagesziele sind erreicht/u)
-assert.doesNotMatch(blockedExtra, /Voraussetzungen|data-testid="learner-plan-switch"/u)
-
-const noQuota = renderToStaticMarkup(
-  <LearnerPlanTodayOverview
-    plans={[{ ...quotaDoneWithBacklog, metrics: { ...quotaDoneWithBacklog.metrics, dueToday: 0, completedDueToday: 0, extraCompletedToday: 0 } }]}
-    language="de" planModeEnabled subjectLabel={() => 'Mathematik'} goalLabel={() => undefined}
-    onContinue={() => undefined} onSwitch={() => undefined} onOpenSettings={() => undefined}
-  />,
-)
-assert.match(noQuota, /Heute ist kein Tagespensum geplant/u)
-assert.doesNotMatch(noQuota, /<progress|Tagesziel erreicht/u, 'a free day does not fabricate completed work')
-
-const noNavigation = renderToStaticMarkup(
-  <LearnerPlanTodayOverview
-    plans={[quotaDoneWithBacklog]} navigationAvailable={() => false}
-    language="de" planModeEnabled subjectLabel={() => 'Mathematik'} goalLabel={() => undefined}
-    onContinue={() => undefined} onSwitch={() => undefined} onOpenSettings={() => undefined}
-  />,
-)
-assert.doesNotMatch(noNavigation, /data-testid="learner-plan-switch"/u, 'voluntary work retains the navigation gate')
 
 console.log('Learner plan today overview UI tests passed')

@@ -19,6 +19,8 @@ import com.skillpilot.backend.api.GoalStats;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
 import com.skillpilot.backend.api.LearnerPlanTodayStatus;
+import com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures;
+import com.skillpilot.backend.service.learningplan.PeriodBasis;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
@@ -112,21 +114,24 @@ class OpenAiDeV11DailyPlanContractTest {
                 .endsWith(OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN,
                         OpenAiDeV1McpContractAdapter.SWITCH_LEARNING_PLAN_SUBJECT)
                 .doesNotContain("get_skillpilot_daily_plan");
-        assertThat(enabled.serverInstructions()).contains("learningPlanToday", "Status-only", "completedToday");
+        assertThat(enabled.serverInstructions())
+                .contains("learningPlanToday", "Status-only", "learningPlanToday.text verbatim")
+                .doesNotContain("completedToday", "openOverdue", "extraCompletedToday");
         assertThat(objectMapper.<JsonNode>valueToTree(enabled.resourceSpecifications()))
                 .isEqualTo(objectMapper.valueToTree(disabled.resourceSpecifications()));
         JsonNode currentSchema = objectMapper.valueToTree(spec(enabled,
                 OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().outputSchema());
         assertThat(currentSchema.path("properties").has("learningPlanToday")).isTrue();
         JsonNode dailySchema = currentSchema.path("properties").path("learningPlanToday");
-        for (JsonNode countsSchema : List.of(dailySchema.path("properties").path("totals"),
-                dailySchema.path("properties").path("subjects").path("items"))) {
-            assertThat(countsSchema.path("properties").path("extraCompletedToday").path("type").asText())
-                    .isEqualTo("integer");
-            assertThat(countsSchema.path("properties").path("extraCompletedToday").path("minimum").asInt())
-                    .isZero();
-            assertThat(countsSchema.path("required").toString()).contains("extraCompletedToday");
-        }
+        // The published shape carries the binding text and non-numeric control information only.
+        assertThat(dailySchema.path("properties").path("text").path("type").asText()).isEqualTo("string");
+        assertThat(dailySchema.path("properties").has("totals")).isFalse();
+        JsonNode subjectSchema = dailySchema.path("properties").path("subjects").path("items");
+        assertThat(subjectSchema.path("properties").path("evaluable").path("type").asText())
+                .isEqualTo("boolean");
+        assertThat(subjectSchema.path("properties").toString())
+                .doesNotContain("dueToday", "completedToday", "openToday", "openOverdue",
+                        "extraCompletedToday");
         JsonNode legacySchema = objectMapper.valueToTree(spec(disabled,
                 OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().outputSchema());
         assertThat(legacySchema.path("properties").has("learningPlanToday")).isFalse();
@@ -170,30 +175,16 @@ class OpenAiDeV11DailyPlanContractTest {
     }
 
     @Test
-    void dailyPlanReadReturnsAdditiveLocalizedCountsWithoutInternalIds() {
+    void dailyPlanReadReturnsTheLocalizedStatusTextWithoutInternalIdsOrCounts() {
         OpenAiDeV1McpContractAdapter contract = contract(true);
         when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE"))
-                .thenReturn(new LearnerPlanTodayStatus(
-                        LocalDate.parse("2026-09-04"),
-                        true,
-                        true,
+                .thenReturn(LearnerPlanTodayStatusFixtures.status(
+                        LocalDate.parse("2026-09-04"), true, true, 1, null,
                         List.of(
-                                new LearnerPlanTodayStatus.SubjectStatus(
-                                        "secret-math-landscape",
-                                        "Mathematik",
-                                        3,
-                                        1,
-                                        2,
-                                        4),
-                                new LearnerPlanTodayStatus.SubjectStatus(
-                                        "secret-physics-landscape",
-                                        "Physik",
-                                        2,
-                                        2,
-                                        0,
-                                        1)),
-                        new LearnerPlanTodayStatus.Totals(5, 3, 2, 5),
-                        1));
+                                LearnerPlanTodayStatusFixtures.subject(
+                                        "secret-math-landscape", "Mathematik", 7, 3, 1, 1, false, false),
+                                LearnerPlanTodayStatusFixtures.subject(
+                                        "secret-physics-landscape", "Physik", 3, 2, 2, 2, false, false))));
 
         McpSchema.CallToolResult response = call(
                 contract,
@@ -209,41 +200,37 @@ class OpenAiDeV11DailyPlanContractTest {
                 .isEqualTo("Mathematik");
         assertThat(content.path("subjects").get(1).path("subject").asText())
                 .isEqualTo("Physik");
-        assertThat(content.path("totals").path("dueToday").asInt()).isEqualTo(5);
-        assertThat(content.path("totals").path("completedToday").asInt()).isEqualTo(3);
-        assertThat(content.path("totals").path("openToday").asInt()).isEqualTo(2);
-        assertThat(content.path("totals").path("openOverdue").asInt()).isEqualTo(5);
+        // The binding text travels; no separate count field does.
+        assertThat(content.has("totals")).isFalse();
+        assertThat(content.path("text").asText()).contains("Mathematik: ", "Physik: ");
         assertThat(content.path("unavailablePlanCount").asInt()).isEqualTo(1);
         assertThat(content.toString())
                 .doesNotContain(
                         "secret-math-landscape",
                         "secret-physics-landscape",
                         "landscapeId",
-                        "planId");
+                        "planId",
+                        "dueToday",
+                        "completedToday",
+                        "openToday",
+                        "openOverdue",
+                        "extraCompletedToday");
         verify(coachTools).getLearningPlanTodayStatus(LEARNER_ID, "de-DE");
     }
 
     @Test
-    void dailyPlanReadSanitizesAndMergesSubjectsAndRecomputesTrustedTotals() {
+    void dailyPlanReadSanitizesLabelsAndWithdrawsSwitchingForThem() {
         OpenAiDeV1McpContractAdapter contract = contract(true);
         when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE"))
-                .thenReturn(new LearnerPlanTodayStatus(
-                        LocalDate.parse("2026-09-04"),
-                        true,
-                        true,
+                .thenReturn(LearnerPlanTodayStatusFixtures.status(
+                        LocalDate.parse("2026-09-04"), true, true, 2, null,
                         List.of(
-                                new LearnerPlanTodayStatus.SubjectStatus(
-                                        "secret-math-a", "Mathematik\n", 3, 1, 2, 4),
-                                new LearnerPlanTodayStatus.SubjectStatus(
-                                        "secret-math-b", "Mathematik", 2, 1, 1, 1),
-                                new LearnerPlanTodayStatus.SubjectStatus(
-                                        "secret-physics", "Physik\u0000", 4, 1, 3, 2),
-                                new LearnerPlanTodayStatus.SubjectStatus(
-                                        "secret-control-only", "\u0000\u200B", 1, 0, 1, 0),
-                                new LearnerPlanTodayStatus.SubjectStatus(
-                                        "secret-invalid-counts", "Privat", 1, 1, 1, 0)),
-                        new LearnerPlanTodayStatus.Totals(999, 999, 999, 999),
-                        2));
+                                LearnerPlanTodayStatusFixtures.subject(
+                                        "secret-math", "Mathematik\n", 9, 5, 2, 2, false, true),
+                                LearnerPlanTodayStatusFixtures.subject(
+                                        "secret-physics", "Physik\u0000", 6, 4, 1, 1, false, true),
+                                LearnerPlanTodayStatusFixtures.subject(
+                                        "secret-control-only", "\u0000\u200B", 1, 1, 0, 0, false, true))));
 
         McpSchema.CallToolResult response = call(
                 contract,
@@ -255,38 +242,30 @@ class OpenAiDeV11DailyPlanContractTest {
         assertThat(content.path("subjects")).hasSize(2);
         assertThat(content.path("subjects").get(0).path("subject").asText())
                 .isEqualTo("Mathematik");
-        assertThat(content.path("subjects").get(0).path("dueToday").asInt()).isEqualTo(5);
-        assertThat(content.path("subjects").get(0).path("completedToday").asInt()).isEqualTo(2);
-        assertThat(content.path("subjects").get(0).path("openToday").asInt()).isEqualTo(3);
-        assertThat(content.path("subjects").get(0).path("openOverdue").asInt()).isEqualTo(5);
         assertThat(content.path("subjects").get(1).path("subject").asText())
                 .isEqualTo("Physik");
-        assertThat(content.path("totals").path("dueToday").asInt()).isEqualTo(9);
-        assertThat(content.path("totals").path("completedToday").asInt()).isEqualTo(3);
-        assertThat(content.path("totals").path("openToday").asInt()).isEqualTo(6);
-        assertThat(content.path("totals").path("openOverdue").asInt()).isEqualTo(7);
-        assertThat(content.path("unavailablePlanCount").asInt()).isEqualTo(4);
+        // A label that had to be cleaned can no longer be copied back as a tool argument.
+        assertThat(content.path("subjects").get(0).path("canContinue").asBoolean()).isFalse();
+        assertThat(content.path("subjects").get(1).path("canContinue").asBoolean()).isFalse();
+        // A label consisting only of control characters is unusable and counts as unevaluable.
+        assertThat(content.path("unavailablePlanCount").asInt()).isEqualTo(3);
         assertThat(content.path("resumeAvailable").asBoolean()).isTrue();
-        assertThat(content.toString())
-                .doesNotContain(
-                        "secret-",
-                        "Privat",
-                        "\\u0000",
-                        "\\u200b");
+        // The published subject values stay usable as tool arguments. The binding text itself is
+        // sanitized where the label enters it, in the backend; this fixture bypasses that on purpose
+        // to exercise the projection's own defence.
+        assertThat(content.path("subjects").toString())
+                .doesNotContain("\\u0000", "\\u200b");
+        assertThat(content.toString()).doesNotContain("secret-");
     }
 
     @Test
     void dailyPlanReadSuppressesResumeWhenEverySubjectEntryIsInvalid() {
         OpenAiDeV1McpContractAdapter contract = contract(true);
         when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE"))
-                .thenReturn(new LearnerPlanTodayStatus(
-                        LocalDate.parse("2026-09-04"),
-                        true,
-                        true,
-                        List.of(new LearnerPlanTodayStatus.SubjectStatus(
-                                "secret-invalid", "\u0000", 1, 0, 1, 0)),
-                        new LearnerPlanTodayStatus.Totals(1, 0, 1, 0),
-                        0));
+                .thenReturn(LearnerPlanTodayStatusFixtures.status(
+                        LocalDate.parse("2026-09-04"), true, true, 0, null,
+                        List.of(LearnerPlanTodayStatusFixtures.subject(
+                                "secret-invalid", "\u0000", 1, 1, 0, 0, false, true))));
 
         McpSchema.CallToolResult response = call(
                 contract,
@@ -296,7 +275,6 @@ class OpenAiDeV11DailyPlanContractTest {
         assertThat(response.isError()).isFalse();
         JsonNode content = objectMapper.valueToTree(response.structuredContent()).path("learningPlanToday");
         assertThat(content.path("subjects")).isEmpty();
-        assertThat(content.path("totals").path("dueToday").asInt()).isZero();
         assertThat(content.path("resumeAvailable").asBoolean()).isFalse();
         assertThat(content.path("unavailablePlanCount").asInt()).isEqualTo(1);
     }
@@ -417,10 +395,10 @@ class OpenAiDeV11DailyPlanContractTest {
     @CsvSource({"true,0,0,complete", "true,1,0,blocked", "true,0,1,unavailable", "false,1,0,paused"})
     void noEligiblePlanPublishesAuthoritativeGuidance(boolean follow, int open, int unavailable, String expected) {
         when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE"))
-                .thenReturn(new LearnerPlanTodayStatus(LocalDate.parse("2026-09-09"), follow, false,
-                        List.of(new LearnerPlanTodayStatus.SubjectStatus("private-math", "Mathematik",
-                                2, 2 - open, open, 0)), new LearnerPlanTodayStatus.Totals(2, 2 - open, open, 0),
-                        unavailable));
+                .thenReturn(LearnerPlanTodayStatusFixtures.status(
+                        LocalDate.parse("2026-09-09"), follow, false, unavailable, null,
+                        List.of(LearnerPlanTodayStatusFixtures.subject("private-math", "Mathematik",
+                                2, 2, 2 - open, 2 - open, false, false))));
         JsonNode content = objectMapper.valueToTree(call(contract(true),
                 OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments()).structuredContent());
         assertThat(content.path("learningPlanToday").path("guidance").path("state").asText()).isEqualTo(expected);
@@ -449,8 +427,8 @@ class OpenAiDeV11DailyPlanContractTest {
     @Test
     void learnerWithoutPlansRetainsTheNormalContextSummaryAndFrontier() {
         when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE"))
-                .thenReturn(new LearnerPlanTodayStatus(LocalDate.parse("2026-09-09"), false, false,
-                        List.of(), new LearnerPlanTodayStatus.Totals(0, 0, 0, 0), 0));
+                .thenReturn(LearnerPlanTodayStatusFixtures.status(
+                        LocalDate.parse("2026-09-09"), false, false));
         var response = call(contract(true), OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
         assertThat(response.isError()).isFalse();
         assertThat(response.content().toString()).contains("SkillPilot-Kontext geladen")
@@ -462,54 +440,103 @@ class OpenAiDeV11DailyPlanContractTest {
     }
 
     @Test
-    void sanitizedOrTruncatedLabelsRemainCountOnlyAndNeverAdvertiseAnUnusableSwitch() {
+    void sanitizedOrTruncatedLabelsNeverAdvertiseAnUnusableSwitch() {
         String longLabel = "P".repeat(130);
-        var projection = OpenAiDeLearningPlanToday.project(new LearnerPlanTodayStatus(
-                LocalDate.parse("2026-09-09"), true, false,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus("a", "Physik\n", 1, 0, 1, 0, false, true),
-                        new LearnerPlanTodayStatus.SubjectStatus("b", longLabel, 2, 0, 2, 0, false, true)),
-                null, 0), false, false);
+        var status = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-09"), true, false, 0, null,
+                List.of(LearnerPlanTodayStatusFixtures.subject("a", "Physik\n", 1, 1, 0, 0, false, true),
+                        LearnerPlanTodayStatusFixtures.subject("b", longLabel, 2, 2, 0, 0, false, true)));
+
+        var projection = OpenAiDeLearningPlanToday.project(status, false, false);
+
         assertThat(projection.subjects()).hasSize(2).allSatisfy(subject -> {
             assertThat(subject.canContinue()).isFalse();
             assertThat(subject.subject().length()).isLessThanOrEqualTo(120);
         });
-        assertThat(projection.totals().openToday()).isEqualTo(3);
+        assertThat(projection.text()).isEqualTo(status.statusText());
     }
 
     @Test
-    void compactSummaryUsesTodayQuotaProgressAndWarnsAboutPartialPlans() {
-        var projection = OpenAiDeLearningPlanToday.project(new LearnerPlanTodayStatus(
-                LocalDate.parse("2026-09-09"), true, true,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus("private-math", "Mathematik", 21, 2, 19, 0),
-                        new LearnerPlanTodayStatus.SubjectStatus("private-physics", "Physik", 27, 0, 27, 0)),
-                new LearnerPlanTodayStatus.Totals(999, 999, 999, 999), 1), false, false);
-        assertThat(projection.summary(false)).isEqualTo(
-                "Heute: 2/48 geschafft · Offen: Mathematik 19 · Physik 27 · Nicht auswertbare Pläne: 1");
-        assertThat(projection.summary(true)).isEqualTo(
-                "Today: 2/48 done · Open: Mathematik 19 · Physik 27 · Unavailable plans: 1");
-        assertThat(projection.summary(false)).doesNotContain("Rückstand");
+    void compactSummaryIsTheBackendTextItselfInEveryLanguage() {
+        var status = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-09"), true, true, 1, null,
+                List.of(LearnerPlanTodayStatusFixtures.subject(
+                                "private-math", "Mathematik", 21, 21, 2, 2, false, false),
+                        LearnerPlanTodayStatusFixtures.subject(
+                                "private-physics", "Physik", 27, 27, 0, 0, false, false),
+                        LearnerPlanTodayStatusFixtures.unevaluableSubject(
+                                "private-chemistry", "Chemie", false, false)));
+
+        var projection = OpenAiDeLearningPlanToday.project(status, false, false);
+
+        // One formulation, several channels: the summary is the backend text, not a second
+        // rendering of it, so the language switch cannot produce a diverging statement either.
+        assertThat(projection.summary(false)).isEqualTo(status.statusText());
+        assertThat(projection.summary(true)).isEqualTo(status.statusText());
+        assertThat(projection.summary(false))
+                .contains("Mathematik: Tagesziel 2 von 21", "Physik: Tagesziel 0 von 27")
+                .contains("nicht auswertbar");
+    }
+
+    @ParameterizedTest
+    @CsvSource({"false, complete, true", "true, continue, false"})
+    void fulfilledTargetAndRemainingBacklogStandSideBySideInOneText(
+            boolean hasActiveGoal, String expectedGuidance, boolean expectedResume) {
+        var status = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-14"), true, true, 0, null,
+                List.of(LearnerPlanTodayStatusFixtures.subject(
+                                "private-math", "Mathematik", 4, 1, 1, 1, true, true),
+                        LearnerPlanTodayStatusFixtures.subject(
+                                "private-physics", "Physik", 2, 0, 0, 0, false, true)));
+
+        var projection = OpenAiDeLearningPlanToday.project(status, hasActiveGoal, false);
+
+        assertThat(projection.subjects()).containsExactly(
+                new OpenAiDeLearningPlanToday.Subject("Mathematik", hasActiveGoal, true, true, "behind"),
+                new OpenAiDeLearningPlanToday.Subject("Physik", false, true, true, "behind"));
+        assertThat(projection.guidance().state()).isEqualTo(expectedGuidance);
+        assertThat(projection.resumeAvailable()).isEqualTo(expectedResume);
+        // A reached target never implies that nothing is left; both statements appear together.
+        assertThat(projection.summary(false)).isEqualTo(status.statusText())
+                .contains("Mathematik: Tagesziel erreicht · 3 Lernziele im Rückstand")
+                .contains("Physik: Heute kein Tagesziel · 2 Lernziele im Rückstand");
     }
 
     @Test
-    void fulfilledQuotaPublishesVoluntaryExtraAndDoesNotTurnBacklogIntoRequiredWork() {
+    void zeroTargetStillShowsBacklogWithoutClaimingCompletedWork() {
+        var status = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-14"), true, true, 0, null,
+                List.of(LearnerPlanTodayStatusFixtures.subject("m", "Mathematik", 0, 0, 0, 0, false, false),
+                        LearnerPlanTodayStatusFixtures.subject("p", "Physik", 2, 0, 0, 0, false, true)));
+
+        var projection = OpenAiDeLearningPlanToday.project(status, false, false);
+
+        assertThat(projection.guidance().state()).isEqualTo("complete");
+        assertThat(projection.summary(false)).isEqualTo(status.statusText())
+                .contains("Mathematik: Heute kein Tagesziel · im Plan")
+                .contains("Physik: Heute kein Tagesziel · 2 Lernziele im Rückstand")
+                .doesNotContain("geschafft");
+    }
+
+    @Test
+    void coveredPeriodTargetPublishesAdvanceWorkAndDoesNotTurnBacklogIntoRequiredWork() {
         when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE"))
-                .thenReturn(new LearnerPlanTodayStatus(LocalDate.parse("2026-09-11"), true, true,
-                        List.of(new LearnerPlanTodayStatus.SubjectStatus(
-                                "private-math", "Mathematik", 2, 2, 0, 3, false, true, 4)),
-                        new LearnerPlanTodayStatus.Totals(99, 99, 99, 99, 99), 0));
+                .thenReturn(LearnerPlanTodayStatusFixtures.status(
+                        LocalDate.parse("2026-09-11"), true, true, 0, null,
+                        List.of(LearnerPlanTodayStatusFixtures.subject(
+                                "private-math", "Mathematik", 5, 2, 6, 6, false, true))));
         var response = call(contract(true), OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
         JsonNode content = objectMapper.valueToTree(response.structuredContent());
         JsonNode today = content.path("learningPlanToday");
         assertThat(today.path("guidance").path("state").asText()).isEqualTo("complete");
         assertThat(today.path("guidance").path("instruction").asText())
                 .contains("explicit request", "Remaining backlog is not required today");
-        assertThat(today.path("totals").path("extraCompletedToday").asInt()).isEqualTo(4);
-        assertThat(today.path("subjects").get(0).path("extraCompletedToday").asInt()).isEqualTo(4);
+        assertThat(today.path("subjects").get(0).path("statusDirection").asText()).isEqualTo("ahead");
         assertThat(today.path("subjects").get(0).path("canContinue").asBoolean()).isTrue();
         assertThat(today.path("resumeAvailable").asBoolean()).isTrue();
         assertThat(content.path("requiredAction").asText()).isEqualTo("complete");
         assertThat(content.path("frontier")).isEmpty();
-        assertThat(response.content().toString()).contains("Zusätzlich: +4").doesNotContain("Rückstand");
+        assertThat(response.content().toString()).contains("Tagesziel erreicht", "1 Lernziel vorgearbeitet");
         verify(coachTools, never()).resumeLearningPlan(any(), any());
     }
 
@@ -518,10 +545,11 @@ class OpenAiDeV11DailyPlanContractTest {
             "0, 0, false, 0", "1, 3, false, 0", "0, 0, true, 1"})
     void explicitExtraToolsUseBackendCapabilityRegardlessOfQuotaOrBacklog(
             int quota, int overdue, boolean available, int unavailablePlans) {
-        var status = new LearnerPlanTodayStatus(LocalDate.parse("2026-09-14"), true, available,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus(
-                        "private-math", "Mathematik", quota, quota, 0, overdue, false, available)),
-                null, unavailablePlans);
+        var status = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-14"), true, available, unavailablePlans, null,
+                List.of(LearnerPlanTodayStatusFixtures.subject(
+                        "private-math", "Mathematik", quota + overdue, quota, quota, quota,
+                        false, available)));
         when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status);
 
         var response = call(contract(true), OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
@@ -535,7 +563,7 @@ class OpenAiDeV11DailyPlanContractTest {
         assertThat(today.path("unavailablePlanCount").asInt()).isEqualTo(unavailablePlans);
         assertThat(today.path("guidance").path("instruction").asText())
                 .contains("Learning plans prioritize work and never limit learning within the Personal Curriculum",
-                        unavailablePlans == 0 ? "Zero openToday or openOverdue counts never revoke"
+                        unavailablePlans == 0 ? "A fulfilled period target never revokes that capability"
                                 : "even if a plan is missing or outdated");
         assertThat(content.path("nextAllowedTools").toString()
                 .contains(OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN)).isEqualTo(available);
@@ -555,10 +583,11 @@ class OpenAiDeV11DailyPlanContractTest {
     @CsvSource({"false, blocked", "true, resume"})
     void openQuotaDoesNotAuthorizeAutomaticExtraWhenOnlyPersonalFallbackIsAvailable(
             boolean automaticResumeAvailable, String expectedGuidance) {
-        var status = new LearnerPlanTodayStatus(LocalDate.parse("2026-09-14"), true, true,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus(
-                        "private-math", "Mathematik", 1, 0, 1, 3, false, true)),
-                new LearnerPlanTodayStatus.Totals(1, 0, 1, 3), 0, automaticResumeAvailable);
+        var status = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-14"), PeriodBasis.DAY, "de", true, true,
+                automaticResumeAvailable, 0, null,
+                List.of(LearnerPlanTodayStatusFixtures.subject(
+                        "private-math", "Mathematik", 4, 1, 0, 0, false, true)));
         when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status);
 
         var response = call(contract(true), OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
@@ -572,66 +601,70 @@ class OpenAiDeV11DailyPlanContractTest {
         if (!automaticResumeAvailable) {
             assertThat(today.path("guidance").path("instruction").asText())
                     .contains("An explicit learning request may still use",
-                            "Do not claim today is complete or automatically resume extra work");
+                            "Do not claim the period is complete or automatically resume extra work");
         }
         assertThat(today.has("automaticResumeAvailable")).isFalse();
         verify(coachTools, never()).resumeLearningPlan(any(), any());
     }
 
     @Test
-    void zeroQuotaHasHonestHeadlineAndSubjectBonusNeverReplacesAnotherQuota() {
-        var weekend = OpenAiDeLearningPlanToday.project(new LearnerPlanTodayStatus(
-                LocalDate.parse("2026-09-12"), true, true,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus("m", "Mathematik", 0, 0, 0, 7,
-                        false, true, 2)), null, 0), false, false);
+    void zeroPeriodTargetIsStatedHonestlyAndAdvanceWorkNeverCoversAnotherSubject() {
+        // A weekend without a scheduled target, seven goals planned through it, two mastered.
+        var weekendStatus = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-12"), true, true, 0, null,
+                List.of(LearnerPlanTodayStatusFixtures.subject(
+                        "m", "Mathematik", 7, 0, 2, 2, false, true)));
+        var weekend = OpenAiDeLearningPlanToday.project(weekendStatus, false, false);
         assertThat(weekend.guidance().state()).isEqualTo("complete");
-        assertThat(weekend.summary(false)).isEqualTo("Heute kein festes Pensum. · Zusätzlich: +2");
-        assertThat(weekend.summary(true)).isEqualTo("No fixed quota today. · Extra: +2");
+        assertThat(weekend.summary(false)).isEqualTo(weekendStatus.statusText())
+                .contains("Heute kein Tagesziel", "5 Lernziele im Rückstand")
+                .doesNotContain("geschafft");
 
-        var subjects = OpenAiDeLearningPlanToday.project(new LearnerPlanTodayStatus(
-                LocalDate.parse("2026-09-11"), true, true,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus("m", "Mathematik", 2, 2, 0, 0,
-                                false, false, 4),
-                        new LearnerPlanTodayStatus.SubjectStatus("p", "Physik", 2, 0, 2, 0,
-                                false, true, 0)), null, 0), false, false);
-        assertThat(subjects.totals().completedToday()).isEqualTo(2);
-        assertThat(subjects.totals().openToday()).isEqualTo(2);
-        assertThat(subjects.totals().extraCompletedToday()).isEqualTo(4);
+        var subjectsStatus = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-11"), true, true, 0, null,
+                List.of(LearnerPlanTodayStatusFixtures.subject("m", "Mathematik", 2, 2, 6, 6, false, false),
+                        LearnerPlanTodayStatusFixtures.subject("p", "Physik", 2, 2, 0, 0, false, true)));
+        var subjects = OpenAiDeLearningPlanToday.project(subjectsStatus, false, false);
+        // Maths is four goals ahead, physics still owes its target: no cross-subject netting.
+        assertThat(subjectsStatus.statusText())
+                .contains("Mathematik: Tagesziel erreicht · 4 Lernziele vorgearbeitet")
+                .contains("Physik: Tagesziel 0 von 2 · im Plan");
         assertThat(subjects.guidance().state()).isEqualTo("resume");
     }
 
     @Test
-    void bonusBeforeItsOwnSubjectQuotaIsFilledMakesThatPlanUnavailable() {
-        var projection = OpenAiDeLearningPlanToday.project(new LearnerPlanTodayStatus(
-                LocalDate.parse("2026-09-11"), true, false,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus("m", "Mathematik", 2, 1, 1, 3,
-                        false, false, 1)), null, 0), false, false);
-        assertThat(projection.subjects()).isEmpty();
+    void anUnevaluableSubjectIsNamedInsteadOfBeingSilentlyDroppedOrFaked() {
+        var status = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-11"), true, false, 1, null,
+                List.of(LearnerPlanTodayStatusFixtures.unevaluableSubject(
+                        "m", "Mathematik", false, false)));
+
+        var projection = OpenAiDeLearningPlanToday.project(status, false, false);
+
+        assertThat(projection.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.evaluable()).isFalse();
+            assertThat(subject.statusDirection()).isNull();
+        });
+        assertThat(projection.evaluable()).isFalse();
         assertThat(projection.unavailablePlanCount()).isEqualTo(1);
         assertThat(projection.guidance().state()).isEqualTo("unavailable");
+        assertThat(projection.text()).contains("nicht auswertbar");
     }
 
     @Test
-    void overflowAndAmbiguousSubjectLabelsCannotAuthorizeASubjectSwitch() {
-        var projection = OpenAiDeLearningPlanToday.project(new LearnerPlanTodayStatus(
-                LocalDate.parse("2026-09-09"), true, true,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus("a", "Mathematik", Integer.MAX_VALUE,
-                                0, Integer.MAX_VALUE, 0, false, true),
-                        new LearnerPlanTodayStatus.SubjectStatus("b", "Mathematik", 1, 0, 1, 0, false, true)),
-                null, 0), false, false);
-        assertThat(projection.subjects()).isEmpty();
-        assertThat(projection.resumeAvailable()).isFalse();
-        assertThat(projection.unavailablePlanCount()).isEqualTo(2);
-        assertThat(projection.guidance().state()).isEqualTo("unavailable");
-        var duplicate = OpenAiDeLearningPlanToday.project(new LearnerPlanTodayStatus(
-                LocalDate.parse("2026-09-09"), true, false,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus("a", "Mathematik", 1, 0, 1, 0, false, true),
-                        new LearnerPlanTodayStatus.SubjectStatus("b", "Mathematik", 1, 0, 1, 0, false, true)),
-                null, 0), false, false);
+    void aSubjectBackedBySeveralPlansCannotAuthorizeASubjectSwitch() {
+        // The backend merges both plans into one subject balance; the ambiguity survives
+        // only as a withdrawn switch capability, never as a duplicated subject line.
+        var duplicate = OpenAiDeLearningPlanToday.project(LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-09"), true, false, 0, null,
+                List.of(LearnerPlanTodayStatusFixtures.ambiguousSubject(
+                        List.of("a", "b"), "Mathematik", 2, 2, 0, 0, false))), false, false);
+
         assertThat(duplicate.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.subject()).isEqualTo("Mathematik");
             assertThat(subject.canContinue()).isFalse();
-            assertThat(subject.openToday()).isEqualTo(2);
         });
+        assertThat(duplicate.text()).contains("Mathematik: Tagesziel 0 von 2");
     }
 
     @Test
@@ -779,19 +812,21 @@ class OpenAiDeV11DailyPlanContractTest {
     }
 
     private static LearnerPlanTodayStatus switchableStatus() {
-        return new LearnerPlanTodayStatus(LocalDate.parse("2026-09-09"), true, false,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus("private-math", "Mathematik", 2, 0, 2, 0,
-                                true, true),
-                        new LearnerPlanTodayStatus.SubjectStatus("private-physics", "Physik", 3, 0, 3, 0,
-                                false, true)), new LearnerPlanTodayStatus.Totals(5, 0, 5, 0), 0);
+        return LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-09"), true, false, 0, null,
+                List.of(LearnerPlanTodayStatusFixtures.subject(
+                                "private-math", "Mathematik", 2, 2, 0, 0, true, true),
+                        LearnerPlanTodayStatusFixtures.subject(
+                                "private-physics", "Physik", 3, 3, 0, 0, false, true)));
     }
 
     private static LearnerPlanTodayStatus switchedStatus() {
-        return new LearnerPlanTodayStatus(LocalDate.parse("2026-09-09"), true, false,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus("private-math", "Mathematik", 2, 0, 2, 0,
-                                false, true),
-                        new LearnerPlanTodayStatus.SubjectStatus("private-physics", "Physik", 3, 0, 3, 0,
-                                true, true)), new LearnerPlanTodayStatus.Totals(5, 0, 5, 0), 0);
+        return LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-09"), true, false, 0, null,
+                List.of(LearnerPlanTodayStatusFixtures.subject(
+                                "private-math", "Mathematik", 2, 2, 0, 0, false, true),
+                        LearnerPlanTodayStatusFixtures.subject(
+                                "private-physics", "Physik", 3, 3, 0, 0, true, true)));
     }
 
     private static UnifiedLearnerStateResponse physicsGoalState() {
@@ -867,9 +902,10 @@ class OpenAiDeV11DailyPlanContractTest {
     }
 
     private static LearnerPlanTodayStatus availablePlanStatus() {
-        return new LearnerPlanTodayStatus(LocalDate.parse("2026-09-09"), true, true,
-                List.of(new LearnerPlanTodayStatus.SubjectStatus("private-math", "Mathematik", 2, 0, 2, 0,
-                        false, true)), new LearnerPlanTodayStatus.Totals(2, 0, 2, 0), 0);
+        return LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-09"), true, true, 0, null,
+                List.of(LearnerPlanTodayStatusFixtures.subject(
+                        "private-math", "Mathematik", 2, 2, 0, 0, false, true)));
     }
 
     private static UnifiedLearnerStateResponse noActiveGoalState() {
