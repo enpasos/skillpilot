@@ -1,8 +1,8 @@
 # SkillPilot Skill Graph Specification
 
-This document defines the SkillPilot skill graph as a mathematical structure, including its entities, relations, derived semantics (inheritance), and validity constraints.
+SkillPilot models learning goals and their relationships as a graph. **Contains** describes how goals are grouped into a hierarchy. **Direct Requires** identifies the prerequisites that must be satisfied before a goal can be attempted. Grouping alone does not establish a prerequisite.
 
-The intent is that independent implementations interpret and validate graphs in the same way.
+This specification defines goal attributes, both relations, their derived semantics—including inherited prerequisites—and the conditions for graph validity. It provides a common mathematical foundation so that independent implementations interpret and validate the same graph consistently.
 
 This specification covers the skill graph itself.  
 Projection contracts for user-facing trees that additionally involve `programUnits`, `goalPlacements`, or competency catalogs are specified separately in `docs/concept/skill-graph/view-projection-and-goal-placement.md`.
@@ -84,7 +84,7 @@ Interpretation:
 
 - current repositories may still serialize this metadata under the field name `phase`
 - this metadata is optional and semantically unstable across domains
-- it may support display badges, coarse filtering, migration compatibility, or legacy tooling
+- it may support display badges, coarse filtering, and aggregation,
 - it is not part of the canonical goal-graph semantics
 - it does not participate in the required validity conditions of this specification
 - phase-based validator checks, if a repository still uses them, belong to the validator profile and not to the normative graph definition
