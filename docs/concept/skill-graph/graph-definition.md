@@ -436,7 +436,7 @@ $$
 
 ### 8.4 Prefer atomic prerequisite authoring
 
-For mature landscapes, the actual didactic sequencing logic SHOULD be authored on atomic goals first.
+For mature landscapes, the actual didactic sequencing SHOULD be authored on atomic goals first.
 
 Practical guidance:
 
