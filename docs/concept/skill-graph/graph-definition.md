@@ -321,7 +321,7 @@ $$
 
 **Figure 4. Prerequisites inherited from a cluster — non-normative example.**
 
-![In a separate compatibility example, Vectors is outside Kinematics. A direct prerequisite from Vectors to Kinematics produces inherited prerequisites from Vectors to Velocity and Acceleration.](assets/graph-definition/04-effective-requires.svg)
+![In a separate compatibility example, Vectors is outside Kinematics. A direct prerequisite from Vectors to Kinematics produces inherited prerequisites from Vectors to Velocity and Acceleration.](assets/graph-definition/04-effective-requires.png)
 
 **How to read it:** Here Vectors is deliberately outside the Kinematics cluster. A direct prerequisite on Kinematics is inherited by both descendants. The solid prerequisite and the two dashed inherited prerequisites all belong to the effective relation; dashed arrows show only the additional inherited edges.
 
@@ -362,11 +362,11 @@ Then $B \to X \to A$ exists in $R_d$, but inheritance adds $(X,B)\in R_{eff}$ (s
 
 **Figure 5. Why inheritance can create a cycle — non-normative example.**
 
-![Both panels have A containing B and X as a direct prerequisite of A. Inheritance adds X as a prerequisite of B. The right panel additionally has B as a direct prerequisite of X, creating the effective cycle B → X → B. The direct prerequisite relation is acyclic in both panels.](assets/graph-definition/05-validity-and-cycles.svg)
+![Comparison of a valid and an invalid effective prerequisite graph. In the valid case, X directly requires A, A contains B, and inheritance adds X as an effective prerequisite of B without forming a cycle. In the invalid case, B directly requires X while X directly requires A and A contains B, so inheritance adds X to B and yields the cycle B → X → B.](assets/graph-definition/05-validity-and-cycles.png)
 
-**How to read it:** In the left example, $X$ is a direct prerequisite of $A$, and $A$ contains $B$. Inheritance adds $X$ as a prerequisite of $B$ without producing a loop. The right example additionally makes $B$ a direct prerequisite of $X$. The direct edge $B \to X$ and the inherited edge $X \to B$ then form the cycle $B \to X \to B$ in $R_{eff}$, even though $R_d$ itself is acyclic.
+**How to read it:** In the left example, an external prerequisite is inherited without producing a loop. On the right, $B$ directly requires $X$, while $X$ directly requires $A$ and $A$ contains $B$. Inheritance then adds $X$ as an effective prerequisite of $B$, which combines with the direct edge $B \to X$ to create the cycle $B \to X \to B$ in $R_{eff}$.
 
-**Scope note:** The right-hand panel renders the illustrative cycle pattern in §7.1. The panels compare the acyclicity check only. Full validity also requires the other conditions in §7 and §10; an acyclic drawing alone is not a complete validity proof.
+**Scope note:** The right-hand panel is a direct visual rendering of the illustrative cycle pattern in §7.1. “Valid” must always mean compliance with all required conditions, not just the absence of a visible direct cycle.
 
 <!-- END SKILLPILOT-ILLUSTRATION: fig-05 -->
 
@@ -632,11 +632,11 @@ In a mature atomic-authored landscape, frontier decisions for atomic goals shoul
 
 **Figure 6. Which goal is available next? — non-normative example.**
 
-![Atomic prerequisite graph with Vectors and Forces mastered. Velocity is the only available next goal. Acceleration is missing Velocity; Newton’s Second Law is missing Velocity and Acceleration along its prerequisite chain. The hierarchy is omitted.](assets/graph-definition/06-available-next-goals.svg)
+![With only Vectors and Forces mastered, Velocity is the only next atomic goal. Acceleration and Newton’s Second Law are blocked. Mechanics, Kinematics and Dynamics are shown as neutral structural clusters rather than as learner-state nodes.](assets/graph-definition/06-available-next-goals.png)
 
-**How to read it:** Assume the mastered atomic set is exactly {Vectors, Forces}. Then Velocity is available next. Acceleration is blocked by unmastered Velocity. Newton’s Second Law is blocked by unmastered Acceleration and, through its prerequisite chain, Velocity; mastering Forces alone is not sufficient.
+**How to read it:** Assume the mastered atomic set is exactly {Vectors, Forces}. Then Velocity is available next. Acceleration is blocked by the unmastered Velocity goal; Newton’s Second Law is blocked by unmastered Acceleration and its prerequisite chain. No cluster is satisfied yet because each still has unmastered atomic descendants.
 
-**Scope note:** The five atomic goals and their prerequisites are the same as in Figures 1 and 3. The hierarchy is omitted here because only atomic goals belong to the learner frontier in §9.1; cluster navigation is a separately derived view. Once Velocity is mastered, Acceleration becomes the next atomic goal. That update comes from evidence of mastery, not from the graphic.
+**Scope note:** Only atomic goals belong to the learner frontier in §9.1. Cluster navigation is a separately derived view. Once Velocity is mastered, Acceleration becomes the next atomic goal; that update comes from evidence of mastery, not from the graphic.
 
 <!-- END SKILLPILOT-ILLUSTRATION: fig-06 -->
 
@@ -860,7 +860,7 @@ $$
 
 **Figure 7. Same scope, different prerequisite checks — non-normative example.**
 
-![Comparison of optimistic and pessimistic filtering. In both panels, Vectors is outside the selected scope, Kinematics is an in-scope structural cluster, and Velocity and Acceleration are in-scope atomic goals. Optimistic mode ignores the outside-scope prerequisite and makes Velocity available next, while pessimistic mode enforces the outside-scope prerequisite and keeps both atomic goals blocked.](assets/graph-definition/07-filter-modes.svg)
+![Comparison of optimistic and pessimistic filtering. In both panels, Vectors is outside the selected scope, Kinematics is an in-scope structural cluster, and Velocity and Acceleration are in-scope atomic goals. Optimistic mode ignores the outside-scope prerequisite and makes Velocity available next, while pessimistic mode enforces the outside-scope prerequisite and keeps both atomic goals blocked.](assets/graph-definition/07-filter-modes.png)
 
 **How to read it:** Use the same graph, the same scope and an empty mastered set in both panels. Kinematics, Velocity and Acceleration are in scope; Vectors is outside. Vectors is a prerequisite of Kinematics, and Velocity is a prerequisite of Acceleration. Through inheritance, Vectors is also an effective prerequisite of Velocity and Acceleration (dashed arrows). Optimistic evaluation ignores the outside-scope prerequisite and makes Velocity available; strict evaluation also checks Vectors, so neither atomic goal is available.
 
