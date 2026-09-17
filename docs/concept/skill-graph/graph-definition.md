@@ -28,7 +28,7 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 
 ![Illustrative Mechanics hierarchy with Kinematics and Dynamics; prerequisite arrows run from Vectors through Velocity and Acceleration, and from Forces and Acceleration to Newton’s Second Law.](assets/graph-definition/01-skill-graph-overview.png)
 
-**How to read it:** A hierarchy answers “Which goals belong together?”; prerequisite arrows answer “What must be learned first?”. Grey connectors show parent-to-child grouping. Blue arrows point from a prerequisite to the goal that depends on it. Goals without contains children are atomic; the other goals are clusters.
+**How to read it:** Grey connectors group Vectors, Velocity and Acceleration under Kinematics. The blue arrow Vectors → Velocity means that Vectors is a prerequisite of Velocity. Newton’s Second Law requires **both** Forces and Acceleration; the two incoming arrows do not represent alternatives. Goals without contains children are atomic; the other goals are clusters.
 
 **Scope note:** The physics labels are abbreviated examples, not a complete, reviewed curriculum. Node colours in this structural overview distinguish hierarchy levels, not learner achievement. The illustrated tree is only one possible hierarchy; §4.2 also allows multiple parents.
 
@@ -436,7 +436,7 @@ $$
 
 ### 8.4 Prefer atomic prerequisite authoring
 
-For mature landscapes, the actual didactic sequencing SHOULD be authored on atomic goals first.
+For mature landscapes, the actual didactic sequencing logic SHOULD be authored on atomic goals first.
 
 Practical guidance:
 
