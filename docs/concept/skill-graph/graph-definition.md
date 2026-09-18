@@ -215,7 +215,7 @@ Interpretation:
 - for an atomic goal, its basis is itself,
 - for a cluster goal, its basis is the set of atomic descendants whose mastery witnesses satisfaction of that cluster in set-based progression semantics.
 
-Clusters with $Atoms(g)=\varnothing$ are structurally allowed, but they SHOULD NOT participate in prerequisite authoring or learner progression semantics.
+**Non-empty atomic basis.** For every goal $g\in G$, $Atoms(g)$ is non-empty: an atomic goal has basis $\{g\}$, and every cluster in a finite acyclic contains graph has at least one atomic descendant. A goal without contains children is atomic (§2.4), not an empty cluster.
 
 <!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-02 -->
 
