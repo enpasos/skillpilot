@@ -84,18 +84,21 @@ class PdfTests(unittest.TestCase):
             config_file = root / "mkdocs.yml"
             config_file.write_text("site_name: Test\nsite_url: https://example.org/test/\nplugins: []\n")
             config = load_config(config_file=str(config_file))
+            # Invoke the hook through MkDocs, which supplies generated-file provenance.
+            config.plugins["skill-graph-pdf"] = pdf
             def fake_build(repo, docs, output, site_url):
                 output.parent.mkdir(parents=True, exist_ok=True)
                 output.write_bytes(b"%PDF-fresh-output")
             with patch.object(pdf, "build_pdf", side_effect=fake_build) as build:
                 for _ in range(2):
-                    files = pdf.on_files(Files([]), config=config)
+                    files = config.plugins.on_files(Files([]), config=config)
                     generated = files.get_file_from_path(pdf.DOWNLOAD)
                     self.assertEqual(generated.content_bytes, b"%PDF-fresh-output")
                     self.assertEqual(generated.dest_uri, pdf.DOWNLOAD)
+                    self.assertEqual(generated.generated_by, "skill-graph-pdf")
                 self.assertEqual(build.call_count, 2)
                 with self.assertRaises(RuntimeError):
-                    pdf.on_files(files, config=config)
+                    config.plugins.on_files(files, config=config)
 
 
 class Links(HTMLParser):
