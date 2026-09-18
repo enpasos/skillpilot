@@ -350,7 +350,7 @@ In particular, if $R_d\subseteq A\times A$, contains ancestors are clusters and 
 
 ## 7. Validity constraints
 
-A SkillPilot skill graph is **valid** iff all constraints in this section hold.
+The constraints in this section apply in addition to the goal-attribute, identifier and relation requirements defined in §§1–5. Full-graph validity is summarized in §10.
 
 ### 7.1 Effective Requires must be acyclic
 
@@ -659,8 +659,9 @@ A skill graph $(G,C,R_d)$ is valid iff:
 4. $R_{eff}$ (computed from $C$ and $R_d$) is acyclic
 5. $R_d$ satisfies local minimality
 6. $R_d$ satisfies transitive minimality
+7. Goal attributes satisfy their declared domains. If `ShortKey` or explicit atomic/cluster classification metadata is exposed, it satisfies the applicable requirements in §2.
 
-Everything else in this specification is either derived (definitions) or recommended modeling guidance.
+These requirements define base full-graph validity. Recommended modeling guidance is separate; named validator profiles and scoped views may impose additional requirements.
 
 Important scope note:
 
