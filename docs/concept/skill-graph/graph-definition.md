@@ -1,6 +1,6 @@
 # SkillPilot Skill Graph Specification
 
-SkillPilot models learning goals and their relationships as a graph. **Contains** describes how goals are grouped into a hierarchy. **Direct Requires** identifies the prerequisites that must be satisfied before a goal can be attempted. Grouping alone does not establish a prerequisite.
+SkillPilot models learning goals and their relationships as a graph. **Contains** describes how goals are grouped into a hierarchy. **Requires** identifies the prerequisites that must be satisfied before a goal can be attempted. Grouping alone does not establish a prerequisite.
 
 This specification defines goal attributes, both relations, their derived semantics—including inherited prerequisites—and the conditions for graph validity. It provides a common mathematical foundation so that independent implementations interpret and validate the same graph consistently.
 
@@ -155,10 +155,12 @@ This makes all later references to “atomic” and “cluster” portable acros
 
 ## 3. Relations
 
-The skill graph is defined using two primary relations on $G$:
+The skill graph has two authored relations on $G$:
 
-- a hierarchy relation called **Contains**, directed from parent to child
-- a dependency relation called **Direct Requires**, directed from a goal to its prerequisite
+- **`contains`**: the hierarchy relation, directed from parent to child
+- **`requires`**: the prerequisite relation, directed from a goal to its prerequisite
+
+Both record direct relationships between a goal and its referenced goals. Ancestor/descendant relationships, inherited prerequisites, effective prerequisites and prerequisite reachability are derived from these relations; they are not additional authored relation types.
 
 ---
 
@@ -174,8 +176,7 @@ $$
 
 $(p,c)\in C$ means **parent** $p$ directly contains **child** $c$. A contains arrow points from $p$ to $c$. Containment groups goals; it does not establish a prerequisite or a learning order.
 
-**Note:** $C$ is the *direct* containment relation (“direct contains”).  
-Indirect containment (ancestor/descendant) is derived via the transitive closure $C^+$.
+**Note:** $C$ records the directly authored `contains` pairs. Ancestor/descendant relationships are derived via the transitive closure $C^+$, which includes paths of one or more edges.
 
 Edges in $C$ are interpreted as hierarchical grouping (e.g., topic cluster contains atomic goal).
 
@@ -233,11 +234,11 @@ Interpretation:
 
 ---
 
-## 5. Direct Requires relation
+## 5. Requires relation
 
 ### 5.1 Definition
 
-The **Direct Requires** relation is a binary relation:
+The **Requires** relation is a binary relation:
 
 $$
 R_d \subseteq G \times G
@@ -293,13 +294,13 @@ $$
 
 ---
 
-## 6. Effective Requires semantics
+## 6. Effective prerequisites
 
-A goal’s requirements include its own direct prerequisites and the direct prerequisites declared by its contains ancestors. The **Effective Requires** relation records all these applicable requirements in the direction **goal → prerequisite**.
+A goal’s requirements include its own direct prerequisites and the direct prerequisites declared by its contains ancestors. The **effective prerequisite relation** records all these applicable requirements in the direction **goal → prerequisite**.
 
 **Quality-assurance context.** Contains-based inheritance supports modeling and compatibility where prerequisites are declared on clusters. The [QA route gates](../../qa-ci/curriculum-quality-maturity-and-routes.md) described in §5.2 distinguish effective route coverage (`CQR-101`) from direct atomic route coverage (`CQR-102`) and the absence of direct `requires` on selected clusters (`CQR-103`). In a fully atomic-authored prerequisite graph, $R_{eff}=R_d$ (§6.3): the effective relation remains defined, but inheritance contributes no additional pairs. Longer prerequisite chains still apply through the transitive closure.
 
-### 6.1 Effective Requires relation
+### 6.1 Effective prerequisite relation
 
 Define $R_{eff}\subseteq G\times G$ by:
 
@@ -342,7 +343,7 @@ $$
 
 ### 6.3 Relation to the canonical atomic model
 
-When none of a goal’s contains ancestors declares an outgoing direct requires edge, the goal inherits no additional prerequisites. Its effective prerequisite set equals its directly authored prerequisite set:
+When none of a goal’s contains ancestors declares an outgoing `requires` edge, the goal inherits no additional prerequisites. Its effective prerequisite set equals its directly authored prerequisite set:
 
 $$
 \left(\forall a\in Ancestors(g):\ \neg\exists p\in G:\ (a,p)\in R_d\right)
@@ -350,7 +351,7 @@ $$
 Pre_{eff}(g)=\{\,p\in G\mid(g,p)\in R_d\,\}.
 $$
 
-In particular, if $R_d\subseteq A\times A$, contains ancestors are clusters and cannot be the source of a direct requires edge. In that atomic-authored model, $R_{eff}=R_d$. Longer prerequisite chains are still represented by the transitive closure.
+In particular, if $R_d\subseteq A\times A$, contains ancestors are clusters and cannot be the source of a `requires` edge. In that atomic-authored model, $R_{eff}=R_d$. Longer prerequisite chains are still represented by the transitive closure.
 
 ---
 
@@ -358,7 +359,7 @@ In particular, if $R_d\subseteq A\times A$, contains ancestors are clusters and 
 
 The constraints in this section apply in addition to the goal-attribute, identifier and relation requirements defined in §§1–5. Full-graph validity is summarized in §10.
 
-### 7.1 Effective Requires must be acyclic
+### 7.1 Effective prerequisites must be acyclic
 
 The dependency graph induced by effective prerequisites MUST be acyclic:
 
@@ -370,7 +371,7 @@ This constraint is stricter than acyclicity of $R_d$ alone because inheritance v
 
 **Non-normative example (illustrative):**  
 Let $(A,B)\in C$ (i.e., $A$ contains $B$). Suppose $(A,X)\in R_d$ and $(X,B)\in R_d$: $A$ directly requires $X$, and $X$ directly requires $B$.  
-The direct requires graph contains the acyclic chain $A \to X \to B$. Since $A$ is a contains ancestor of $B$, inheritance adds $(B,X)\in R_{eff}$. This creates the cycle $B \to X \to B$ in $R_{eff}$.
+The authored `requires` graph contains the acyclic chain $A \to X \to B$. Since $A$ is a contains ancestor of $B$, inheritance adds $(B,X)\in R_{eff}$. This creates the cycle $B \to X \to B$ in $R_{eff}$.
 
 <!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-05 -->
 
@@ -628,7 +629,7 @@ g \in A\setminus M_A \ \middle|\
 \right\}
 $$
 
-Interpretation: an unmastered atomic goal is available if every prerequisite reachable by following one or more outgoing effective requires edges is satisfied. This includes longer prerequisite chains. Cluster prerequisites are evaluated through their atomic descendants using $Sat$.
+Interpretation: an unmastered atomic goal is available if every prerequisite reachable by following one or more outgoing edges of the effective prerequisite relation is satisfied. This includes longer prerequisite chains. Cluster prerequisites are evaluated through their atomic descendants using $Sat$.
 
 If a product also exposes **cluster availability** for navigation purposes, it SHOULD derive it from the same satisfaction predicate:
 
@@ -782,7 +783,7 @@ $$
 
 This means:
 
-- effective requires facts are computed on the full graph before restriction,
+- effective prerequisites are computed on the full graph before restriction,
 - a pair $(g,p)$ is retained in $R_{eff}|_F$ only when both the dependent goal $g$ and its prerequisite $p$ belong to $G_F$,
 - a retained pair may have been inherited through a contains ancestor outside $G_F$; its origin does not remove it from the restricted relation.
 
