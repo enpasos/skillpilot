@@ -20,7 +20,7 @@ From the repository root:
 ```bash
 sudo apt-get update
 sudo apt-get install --yes --no-install-recommends \
-  pandoc texlive-xetex texlive-latex-extra \
+  pandoc texlive-xetex texlive-latex-extra texlive-fonts-recommended \
   fonts-linuxlibertine fonts-dejavu-core
 python -m pip install -r requirements-docs.txt
 python -m unittest -v scripts.test_docs_pdf
