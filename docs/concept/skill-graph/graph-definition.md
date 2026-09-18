@@ -838,8 +838,10 @@ and the corresponding scope-relative satisfaction predicate:
 $$
 Sat_F(g,M_A)
 \iff
-\big(Atoms_F(g)\neq\varnothing\big)\ \land\ \big(Atoms_F(g)\subseteq M_A\big)
+Atoms_F(g)\subseteq M_A
 $$
+
+**Scope-relative evaluation only.** A prerequisite with no atomic goals remaining in the selected scope does not block optimistic availability. This does not establish global satisfaction or mark any goal as mastered. For the same learner state and filter, every goal available in strict mode is also available in optimistic mode.
 
 Then the optimistic frontier is:
 
