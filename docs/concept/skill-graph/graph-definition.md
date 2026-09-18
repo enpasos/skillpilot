@@ -277,6 +277,10 @@ Interpretation:
 
 If a direct prerequisite is authored on a cluster goal, it is stronger than a mere summary: under the semantics in §6 it constrains descendants via inheritance.
 
+**Quality-assurance requirements.** In the [curriculum quality model](../../qa-ci/curriculum-quality-maturity-and-routes.md), curriculum maturity **M3 and above** requires `CQR-101`, `CQR-102` and `CQR-103` to pass in every configured QA route scope. `CQR-102` requires direct atomic-to-atomic route coverage; `CQR-103` requires clusters selected by each scope's `clusterSelector` to have no direct `requires`. These scoped maturity gates do not by themselves prohibit every cluster-related edge in the full graph.
+
+[Graph Validation Rules](../../qa-ci/graph-validation-rules.md) defines the additional enforcement profiles. In particular, `GVR-013` prohibits direct local `requires` from selected atomic goals to cluster prerequisites within its configured scope. A maturity level and a validator rule must be interpreted with their applicable scope, not as a repository-wide guarantee that $R_d\subseteq A\times A$.
+
 ### 5.3 DAG constraint
 
 $(G,R_d)$ MUST be acyclic:
@@ -291,7 +295,7 @@ $$
 
 A goal’s requirements include its own direct prerequisites and the direct prerequisites declared by its contains ancestors. The **Effective Requires** relation records all these applicable requirements in the direction **goal → prerequisite**.
 
-Cluster-level prerequisite authoring is permitted by the formal model. For precise didactic sequencing, §5.2 recommends atomic-to-atomic authoring.
+**Quality-assurance context.** Contains-based inheritance supports modeling and compatibility where prerequisites are declared on clusters. The [QA route gates](../../qa-ci/curriculum-quality-maturity-and-routes.md) described in §5.2 distinguish effective route coverage (`CQR-101`) from direct atomic route coverage (`CQR-102`) and the absence of direct `requires` on selected clusters (`CQR-103`). In a fully atomic-authored prerequisite graph, $R_{eff}=R_d$ (§6.3): the effective relation remains defined, but inheritance contributes no additional pairs. Longer prerequisite chains still apply through the transitive closure.
 
 ### 6.1 Effective Requires relation
 
