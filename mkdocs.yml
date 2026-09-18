@@ -3,6 +3,12 @@ site_url: https://enpasos.github.io/skillpilot/
 repo_url: https://github.com/enpasos/skillpilot
 repo_name: enpasos/skillpilot
 
+hooks:
+  - scripts/docs_pdf.py
+watch:
+  - scripts/docs_pdf.py
+  - scripts/docs_pdf.tex
+
 theme:
   name: material
   features:
