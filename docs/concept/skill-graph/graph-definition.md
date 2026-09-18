@@ -881,14 +881,16 @@ $$
 
 ### 11.5 Diagnostic: missing prerequisites
 
-For diagnosis, define the set of missing prerequisites of a goal $g$:
+Diagnostics distinguish **unsatisfied prerequisite goals** from the **unmastered atomic goals needed to satisfy them**. Both diagnostics below use the global effective relation and global atomic bases. The filter classifies the results by location.
+
+**Prerequisite-goal diagnosis.** Define the set of unsatisfied prerequisites of a goal $g$:
 
 $$
 Missing(g,M_A) =
 \{\, p \in G \mid (g,p)\in R_{eff}^+ \land \neg Sat(p,M_A) \,\}.
 $$
 
-To distinguish gaps inside vs. outside the filter:
+Partition these prerequisite goals by membership in the selected scope:
 
 $$
 \begin{aligned}
@@ -897,8 +899,40 @@ Missing_{out}(g,M_A,F) &= Missing(g,M_A)\setminus G_F.
 \end{aligned}
 $$
 
+These sets locate the prerequisite nodes themselves. An in-scope prerequisite cluster may be unsatisfied because of unmastered atomic descendants outside the scope; those descendants need not appear in $Missing_{out}$.
 
-Operationally, one can start with optimistic mode for efficiency and exploration; if a learner struggles with a goal, switch to pessimistic mode (or compute $Missing_{out}$) to identify prerequisite gaps outside the current filter.
+**Atomic-gap diagnosis.** Define:
+
+$$
+MissingAtoms(g,M_A)=
+\left(\bigcup_{p\in Missing(g,M_A)} Atoms(p)\right)\setminus M_A.
+$$
+
+For an atomic prerequisite, its atomic basis is itself. For a cluster prerequisite, its atomic basis consists of its atomic descendants. Taking the union counts each atomic goal once, and subtracting $M_A$ excludes already mastered goals.
+
+Partition the atomic gaps by their own scope membership:
+
+$$
+\begin{aligned}
+MissingAtoms_{in}(g,M_A,F)  &= MissingAtoms(g,M_A)\cap G_F,\\
+MissingAtoms_{out}(g,M_A,F) &= MissingAtoms(g,M_A)\setminus G_F.
+\end{aligned}
+$$
+
+**Non-normative example.** Let $g$ directly require cluster $k$, and let $k$ contain only atomic goal $b$. With $G_F=\{g,k\}$ and $M_A=\varnothing$:
+
+$$
+\begin{aligned}
+Missing(g,M_A)&=\{k\}, & Missing_{out}(g,M_A,F)&=\varnothing,\\
+MissingAtoms(g,M_A)&=\{b\}, & MissingAtoms_{out}(g,M_A,F)&=\{b\}.
+\end{aligned}
+$$
+
+The unsatisfied prerequisite cluster is inside the scope, while its missing atomic requirement is outside. Once $b$ is mastered, both global diagnostic sets become empty.
+
+Use $MissingAtoms_{out}$ to identify unmastered atomic requirements outside the selected scope, including those within an in-scope prerequisite cluster. Use the prerequisite-goal diagnosis to retain the explanation of which required goals are unsatisfied.
+
+**Diagnostic scope.** These sets decompose the global satisfaction requirements; they do not add authored or inherited requires edges, change stored mastery, or list immediately available next goals. The in-scope partitions are not the blockers of optimistic mode: optimistic blocking is determined separately by the restricted relation and scope-relative satisfaction in §11.3.
 
 ### 11.6 Optional: relaxed pessimism via a prerequisite scope
 
