@@ -127,7 +127,7 @@ Interpretation:
 - in repositories that serialize the same logical landscape into multiple locale files sharing one `landscapeId`, this uniqueness requirement applies to the shared logical landscape, not merely to one file serialization
 - repeated `(goalId, ShortKey)` pairs across locale serializations of the same landscape are therefore acceptable; collisions where the same `ShortKey` names different goal IDs are not
 
-### 2.4 Atomic and cluster goals (canonical semantic classification)
+### 2.4 Atomic and cluster goals (structural classification)
 
 Once the direct containment relation $C$ from §4 is fixed, the atomic/cluster split is defined canonically by the graph structure:
 
@@ -142,9 +142,11 @@ $$
 Interpretation:
 
 - $A$: the set of **atomic goals**  
-  Assessable leaf goals with no direct `contains` children.
+  Goals with no direct `contains` children.
 - $K$: the set of **cluster goals**  
   Structural aggregation goals with at least one direct `contains` child.
+
+**Structural classification and quality assurance.** Being atomic in this graph-theoretic sense does not by itself establish that a content goal represents a single assessable competence. That is evaluated separately by the [Semantic Atomicity Review](../../qa-ci/semantic-atomicity-review.md), tracked by `CQR-301` in the [Curriculum Quality Dashboard](../../qa-ci/curriculum-quality-dashboard.md). Orientation, assessment and memory leaves are evaluated under their respective QA rules.
 
 Implementations MAY store explicit atomic/cluster classification metadata, but if they do, it MUST agree with this derived classification.  
 This makes all later references to “atomic” and “cluster” portable across implementations.
