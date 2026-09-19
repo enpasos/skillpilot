@@ -36,9 +36,16 @@ const curriculaPayload = {
     subject: '',
     totalAtomicGoals: 4635,
     totalMastered: 0,
+    qualityStatus: null,
+    humanTrialSubjectCount: 1,
     topLevelTopics: subjectMaturities.map(([subject]) => subject),
     subjectQuality: subjectMaturities.map(([subject, maturity]) => ({
       subject,
+      landscapeId: `fixture-${subject}`,
+      qualityStatus: subject === 'Physik' ? 'human_trial_in_progress' : maturity === 'M6' ? 'machine_qa' : 'experimental',
+      humanTrial: subject === 'Physik' ? {
+        state: 'in_progress', scopeLabel: 'Physik Hessen Sek II', scopeCoverage: 'partial', requiredGoals: 20, practicedGoals: 3,
+      } : null,
       maturity,
       goals: 100,
       atomicGoals: 80,
@@ -46,6 +53,7 @@ const curriculaPayload = {
       failures: 0,
     })),
     champions: [{
+      id: 'fixture-champion',
       curriculumId: CANONICAL_GYMNASIUM_ROOT_ID,
       githubId: 'fixture',
       skillpilotIdMasked: '***',
@@ -64,11 +72,11 @@ const server = await startViteTestServer(
   { plugins: [tailwindcss()] },
 )
 
-const configurePage = async (page: Page) => {
-  await page.addInitScript(() => {
+const configurePage = async (page: Page, theme = 'light') => {
+  await page.addInitScript((theme) => {
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_theme', 'light')
-  })
+    localStorage.setItem('skillpilot_theme', theme)
+  }, theme)
   await page.route('**/api/ui/curricula/champions/me', (route) => route.fulfill({ status: 401, json: {} }))
   await page.route('**/api/ui/curricula/*/topics', (route) => route.fulfill({ json: [] }))
   await page.route('**/api/ui/curricula', (route) => route.fulfill({ json: curriculaPayload }))
@@ -89,15 +97,16 @@ try {
   })
 
   for (const expected of [
-    { width: 320, columns: 1 },
-    { width: 768, columns: 2 },
-    { width: 1024, columns: 3 },
+    { width: 320, columns: 1, theme: 'light' },
+    { width: 768, columns: 2, theme: 'light' },
+    { width: 1024, columns: 3, theme: 'light' },
+    { width: 320, columns: 1, theme: 'dark' },
   ]) {
     const page = await browser.newPage({
       locale: 'de-DE',
       viewport: { width: expected.width, height: 900 },
     })
-    await configurePage(page)
+    await configurePage(page, expected.theme)
     await page.goto(`${server.baseUrl}/scripts/fixtures/curriculaQualityLayoutUi.html`)
 
     const card = page.getByTestId('curriculum-quality-overview-card')
@@ -141,6 +150,11 @@ try {
     const grid = page.getByTestId('curriculum-quality-grid')
     const rows = page.getByTestId('curriculum-quality-row')
     assert(await rows.count() === subjectMaturities.length, 'every subject has one quality row')
+    assert(await rows.filter({ hasText: 'Mathematik' }).getByText('Maschinelle QS', { exact: true }).isVisible(), 'the formerly hardcoded green subject follows server evidence')
+    assert(await rows.filter({ hasText: 'Physik' }).getByText('Menschliche QS läuft', { exact: true }).isVisible(), 'a confirmed active trial has a distinct label')
+    assert(await rows.filter({ hasText: 'Physik' }).getByText('Erprobungsumfang: Physik Hessen Sek II', { exact: true }).isVisible(), 'partial scope stays explicitly qualified')
+    assert(await card.getByText('Menschliche QS in 1 Fächern', { exact: true }).isVisible(), 'collection reports a count rather than inheriting a subject seal')
+    assert(await card.locator('.lucide-badge-check, .lucide-trophy').count() === 0, 'registration and 1/1 mastery alone create no completion seal')
 
     const rowGeometry = await rows.evaluateAll((elements) => elements.map((element) => {
       const row = element.getBoundingClientRect()
@@ -218,4 +232,5 @@ try {
   }
 }
 
-console.log('curricula quality layout UI tests passed')
+await import('./testCurriculumChampionTrialUi')
+console.log('curricula quality layout and champion trial UI tests passed')

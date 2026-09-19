@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 035-add-champion-human-trial
+      author: skillpilot
+      changes:
+        - addColumn:
+            tableName: curriculum_champion
+            columns:
+              - column:
+                  name: assignment_ended_at
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: trial_started_at
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: trial_paused_at
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: trial_scope_json
+                  type: TEXT
+              - column:
+                  name: trial_confirmations_json
+                  type: TEXT
+        - addColumn:
+            tableName: learner_goal_completion
+            columns:
+              - column:
+                  name: practice_evidence_json
+                  type: TEXT
+              - column:
+                  name: observed_transition
+                  type: BOOLEAN
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false

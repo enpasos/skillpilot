@@ -1,229 +1,88 @@
+import assert from 'node:assert/strict'
 import { fileURLToPath } from 'node:url'
-import { chromium, type Browser } from 'playwright'
-import {
-  CANONICAL_GYMNASIUM_MATH_ID,
-  CANONICAL_GYMNASIUM_PHYSICS_ID,
-} from '../src/utils/curriculumQualityTrafficLight'
+import { mkdirSync } from 'node:fs'
+import tailwindcss from '@tailwindcss/vite'
+import { chromium } from 'playwright'
 import { startViteTestServer } from './viteTestServer'
-
-const chemistryCurriculumId = 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'
-const experimentalCurriculumId = 'experimental-school-curriculum'
-const universityPhysicsId = 'university-physics'
-
-function assert(condition: unknown, message: string): asserts condition {
-  if (!condition) throw new Error(message)
-}
+import { curriculumQualityStatuses, getCurriculumQualityCopy, maturityOrder } from '../src/utils/curriculumQualityPresentation'
 
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
-const server = await startViteTestServer(
-  appRoot,
-  'scripts/fixtures/curriculumQualityTrafficLightUi.html',
-)
-
-let browser: Browser | null = null
-
+const server = await startViteTestServer(appRoot, 'scripts/fixtures/curriculumQualityTrafficLightUi.html', { plugins: [tailwindcss()] })
+const browser = await chromium.launch({ headless: true, args: ['--disable-dev-shm-usage', '--no-sandbox'] })
 try {
-  browser = await chromium.launch({
-    headless: true,
-    args: [
-      '--disable-background-networking',
-      '--disable-dev-shm-usage',
-      '--disable-gpu',
-      '--no-first-run',
-      '--no-sandbox',
-    ],
-  })
-  const page = await browser.newPage({ locale: 'de-DE' })
-  const browserErrors: string[] = []
-  page.on('pageerror', (error) => {
-    browserErrors.push(error.message)
-  })
-  page.on('console', (message) => {
-    if (message.type() === 'error') {
-      browserErrors.push(message.text())
+  for (const language of ['de', 'en'] as const) for (const theme of ['light', 'dark'] as const) {
+    const page = await browser.newPage({ viewport: { width: 1000, height: 900 } })
+    const errors: string[] = []
+    page.on('pageerror', (error) => errors.push(error.message))
+    await page.addInitScript(({ language, theme }) => {
+      localStorage.setItem('skillpilot_lang', language); localStorage.setItem('skillpilot_theme', theme)
+    }, { language, theme })
+    await page.goto(`${server.baseUrl}/scripts/fixtures/curriculumQualityTrafficLightUi.html`)
+    const fixture = page.getByTestId('quality-filter-fixture')
+    const copy = getCurriculumQualityCopy(language)
+    await fixture.getByRole('button', { name: copy.filterOptions.all, exact: true }).waitFor()
+    assert.equal(await fixture.getByRole('button', { name: copy.filterOptions.all, exact: true }).getAttribute('aria-pressed'), 'true')
+    const options = () => fixture.locator('select option').evaluateAll((nodes) => nodes.map((n) => (n as HTMLOptionElement).value).filter(Boolean))
+    assert.deepEqual((await options()).sort(), [...curriculumQualityStatuses, 'unknown'].sort())
+    for (const status of curriculumQualityStatuses) {
+      const button = fixture.getByRole('button', { name: copy.filterOptions[status], exact: true })
+      await button.click()
+      assert.equal(await button.getAttribute('aria-pressed'), 'true')
+      assert.deepEqual((await options()).sort(), [status, 'unknown'].sort(), 'only server status matches; current unknown selection remains')
+      assert.equal(await fixture.locator('select').inputValue(), 'unknown')
     }
-  })
-  await page.addInitScript(() => {
-    localStorage.setItem('skillpilot_lang', 'de')
-  })
-  await page.goto(
-    `${server.baseUrl}/scripts/fixtures/curriculumQualityTrafficLightUi.html`,
-  )
-
-  const qualityFixture = page.getByTestId('quality-filter-fixture')
-  const qualityButtons = {
-    green: qualityFixture.getByRole('button', { name: 'Menschliche QS', exact: true }),
-    orange: qualityFixture.getByRole('button', { name: 'Maschinelle QS', exact: true }),
-    red: qualityFixture.getByRole('button', { name: 'Experimentell', exact: true }),
-    all: qualityFixture.getByRole('button', { name: 'Alle', exact: true }),
+    await fixture.getByRole('button', { name: copy.filterOptions.all, exact: true }).click()
+    const legend = page.getByTestId('quality-legend')
+    assert.equal(await legend.locator('[data-maturity]').count(), 8)
+    const styles = await legend.locator('[data-maturity]').evaluateAll((nodes) => nodes.map((node) => ({
+      level: node.getAttribute('data-maturity'), background: getComputedStyle(node).backgroundColor,
+      label: node.getAttribute('aria-label'), color: getComputedStyle(node).color,
+    })))
+    assert.equal(new Set(styles.map((style) => style.background)).size, 8, `${theme}: eight actual rendered shades`)
+    for (const [index, style] of styles.entries()) {
+      assert.equal(style.level, maturityOrder[index]); assert(style.label?.includes(maturityOrder[index]))
+      assert.notEqual(style.background, 'rgba(0, 0, 0, 0)')
+    }
+    for (const status of curriculumQualityStatuses) assert(await page.getByTestId('quality-statuses').getByText(copy.statusLabels[status], { exact: true }).isVisible())
+    assert.equal(await page.getByTestId('single-curriculum-fixture').locator('select').inputValue(), 'experimental')
+    assert.deepEqual(errors, [])
+    if (language === 'de') {
+      mkdirSync('../tmp/issue49', { recursive: true })
+      await page.screenshot({ path: `../tmp/issue49/quality-presentation-${theme}.png`, fullPage: true })
+    }
+    await page.close()
   }
-  await qualityButtons.green.waitFor().catch((error: unknown) => {
-    throw new Error(
-      `${error instanceof Error ? error.message : String(error)}\nBrowser errors:\n${browserErrors.join('\n')}`,
-    )
-  })
 
-  for (const button of Object.values(qualityButtons)) {
-    assert(await button.count() === 1, 'every quality meaning has exactly one visible filter')
-  }
-  assert(
-    await qualityButtons.green.getAttribute('aria-pressed') === 'true',
-    'the quality filter defaults to human-reviewed curricula',
-  )
-  assert(
-    await qualityButtons.orange.getAttribute('aria-pressed') === 'false'
-      && await qualityButtons.red.getAttribute('aria-pressed') === 'false'
-      && await qualityButtons.all.getAttribute('aria-pressed') === 'false',
-    'only the green filter is active initially',
-  )
-
-  const select = qualityFixture.locator('select')
-  const visibleCurriculumIds = async () => select.locator('option').evaluateAll(
-    (options) => options.map((option) => (option as HTMLOptionElement).value),
-  )
-  await page.waitForFunction(
-    ({ physicsId, currentId }) => {
-      const values = [...document.querySelectorAll(
-        '[data-testid="quality-filter-fixture"] select option',
-      )]
-        .map((option) => (option as HTMLOptionElement).value)
-      return values.includes(physicsId) && values.includes(currentId)
+  const page = await browser.newPage()
+  await page.addInitScript(() => localStorage.setItem('skillpilot_lang', 'de'))
+  const rows = [{ landscapeId: 'math', title: 'Mathematik', maturity: 'M6', complete: 472 }, { landscapeId: 'physics', title: 'Physik', maturity: 'M7', complete: 478 }]
+  await page.route('**/__quality-dashboard/status', (route) => route.fulfill({ json: {
+    path: 'fixture.json', status: { schemaVersion: 1, rulesVersion: 'fixture', generatedAt: '2026-09-22T00:00:00Z', generatedBy: 'fixture',
+      ruleCatalog: [{ id: 'CQR-303', label: 'Vertiefte QS', category: 'QA', maturityTarget: 'M7', description: 'Five gates' }],
+      summary: { curricula: 2, maturity: { M6: 1, M7: 1 }, ruleStatus: { pass: 1, warn: 1, fail: 0, not_configured: 0 } },
+      curricula: rows.map((row) => ({ ...row, path: `${row.landscapeId}.json`, goals: 478, atomicGoals: 478, clusterGoals: 0, scopes: [],
+        rules: [{ id: 'CQR-303', status: row.complete === 478 ? 'pass' : 'warn', summary: 'Five gates', metrics: { expectedGoals: 478, strictComplete: row.complete, remaining: 478 - row.complete } }],
+      })),
     },
-    {
-      physicsId: CANONICAL_GYMNASIUM_PHYSICS_ID,
-      currentId: experimentalCurriculumId,
-    },
-  )
-
-  const defaultIds = await visibleCurriculumIds()
-  assert(
-    defaultIds.includes(CANONICAL_GYMNASIUM_PHYSICS_ID)
-      && defaultIds.includes(CANONICAL_GYMNASIUM_MATH_ID),
-    'the default green filter shows human-reviewed mathematics and physics',
-  )
-  assert(
-    !defaultIds.includes(chemistryCurriculumId),
-    'the default green filter hides machine-reviewed curricula',
-  )
-  assert(
-    await qualityFixture.locator('optgroup[label="Empfohlene Curricula"]').count() === 0,
-    'ordinary curricula are listed without a recommended group heading',
-  )
-  assert(
-    defaultIds.includes(experimentalCurriculumId)
-      && await select.inputValue() === experimentalCurriculumId,
-    'the currently selected experimental curriculum remains visible under the green filter',
-  )
-  assert(
-    await qualityFixture.getByTestId('quality-filter-selection-title').textContent()
-      === 'Experimentelles Fach',
-    'the dropdown publishes the localized selected title for compact setup summaries',
-  )
-
-  await qualityButtons.orange.click()
-  await page.waitForFunction(
-    ({ orangeId, currentId }) => {
-      const values = [...document.querySelectorAll(
-        '[data-testid="quality-filter-fixture"] select option',
-      )]
-        .map((option) => (option as HTMLOptionElement).value)
-      return values.includes(orangeId) && values.includes(currentId)
-    },
-    {
-      orangeId: chemistryCurriculumId,
-      currentId: experimentalCurriculumId,
-    },
-  )
-  const orangeIds = await visibleCurriculumIds()
-  assert(
-    orangeIds.includes(chemistryCurriculumId)
-      && !orangeIds.includes(CANONICAL_GYMNASIUM_MATH_ID),
-    'the machine-review filter switches the visible curriculum set',
-  )
-  assert(
-    orangeIds.includes(experimentalCurriculumId)
-      && await select.inputValue() === experimentalCurriculumId,
-    'the current curriculum remains visible after switching quality filters',
-  )
-
-  await qualityButtons.red.click()
-  await page.waitForFunction(
-    (currentId) => {
-      const values = [...document.querySelectorAll(
-        '[data-testid="quality-filter-fixture"] select option',
-      )]
-        .map((option) => (option as HTMLOptionElement).value)
-      return values.includes(currentId)
-    },
-    experimentalCurriculumId,
-  )
-  assert(
-    await qualityButtons.red.getAttribute('aria-pressed') === 'true',
-    'the experimental filter exposes its active state accessibly',
-  )
-  assert(
-    !(await visibleCurriculumIds()).includes(CANONICAL_GYMNASIUM_MATH_ID),
-    'the experimental filter no longer contains human-reviewed mathematics',
-  )
-
-  await qualityButtons.all.click()
-  await page.waitForFunction(
-    ({ greenId, orangeId, redId }) => {
-      const values = [...document.querySelectorAll(
-        '[data-testid="quality-filter-fixture"] select option',
-      )]
-        .map((option) => (option as HTMLOptionElement).value)
-      return values.includes(greenId) && values.includes(orangeId) && values.includes(redId)
-    },
-    {
-      greenId: CANONICAL_GYMNASIUM_PHYSICS_ID,
-      orangeId: chemistryCurriculumId,
-      redId: experimentalCurriculumId,
-    },
-  )
-  assert(
-    await qualityButtons.all.getAttribute('aria-pressed') === 'true',
-    'the all filter exposes its active state accessibly',
-  )
-  await qualityFixture.getByRole('button', {
-    name: 'Universität & Hochschule',
-    exact: true,
-  }).click()
-  await page.waitForFunction(
-    (physicsId) => {
-      const values = [...document.querySelectorAll(
-        '[data-testid="quality-filter-fixture"] select option',
-      )]
-        .map((option) => (option as HTMLOptionElement).value)
-      return values.includes(physicsId)
-    },
-    universityPhysicsId,
-  )
-  assert(
-    await qualityFixture.getByTestId('quality-filter-selection').textContent()
-      === experimentalCurriculumId,
-    'browsing a category with one option does not overwrite an existing selection',
-  )
-
-  const singleCurriculumFixture = page.getByTestId('single-curriculum-fixture')
-  const singleCurriculumSelect = singleCurriculumFixture.locator('select')
-  await page.waitForFunction(
-    (mathId) => (
-      document.querySelector('[data-testid="single-curriculum-selection"]')?.textContent
-      === mathId
-    ),
-    CANONICAL_GYMNASIUM_MATH_ID,
-  )
-  assert(
-    await singleCurriculumSelect.inputValue() === CANONICAL_GYMNASIUM_MATH_ID,
-    'the only available curriculum is selected automatically',
-  )
+  } }))
+  let publicAvailable = true
+  await page.route('**/api/ui/curricula', (route) => publicAvailable ? route.fulfill({ json: { curricula: [{ curriculumId: 'overview', qualityStatus: null, subjectQuality: [
+    { landscapeId: 'math', qualityStatus: 'human_trial_in_progress', humanTrial: { state: 'in_progress', scopeLabel: 'Hessen Sek II', scopeCoverage: 'partial', requiredGoals: 10, practicedGoals: 3 } },
+    { landscapeId: 'physics', qualityStatus: 'machine_qa' },
+  ] }] } }) : route.fulfill({ status: 503, json: {} }))
+  await page.goto(`${server.baseUrl}/scripts/fixtures/curriculumQualityTrafficLightUi.html?dashboard`)
+  const progress = page.getByTestId('curriculum-deep-quality-progress')
+  await progress.waitFor()
+  assert((await progress.textContent())?.includes('472 von 478'))
+  assert(await page.locator('tbody tr').filter({ hasText: 'Mathematik' }).getByText('Menschliche QS läuft', { exact: true }).isVisible())
+  assert(await page.locator('tbody tr').filter({ hasText: 'Physik' }).getByText('Maschinelle QS', { exact: true }).isVisible(), 'M7 does not imply human testing')
+  assert(await page.getByText('Hessen Sek II · Teilumfang', { exact: true }).isVisible())
+  publicAvailable = false
+  await page.getByRole('button', { name: 'Aktualisieren', exact: true }).click()
+  await page.locator('tbody tr').filter({ hasText: 'Physik' }).getByText('Prüfstand nicht verfügbar', { exact: true }).waitFor()
+  assert.equal(await page.getByText('Maschinelle QS', { exact: true }).count(), 0, 'failed refresh withdraws stale trial/QA claims')
+  await page.close()
 } finally {
-  try {
-    await browser?.close()
-  } finally {
-    await server.close()
-  }
+  await browser.close(); await server.close()
 }
-
-console.log('curriculum quality traffic light UI tests passed')
+console.log('curriculum quality filters, themes, labels and dashboard UI tests passed')

@@ -54,6 +54,17 @@ public class ChampionController {
         return curriculaService.registerChampion(secureRequest);
     }
 
+    @PostMapping("/{championId}/trial")
+    public CurriculumChampionProfile trial(
+            @AuthenticationPrincipal OAuth2User principal,
+            @org.springframework.web.bind.annotation.PathVariable String championId,
+            @RequestBody com.skillpilot.backend.api.ChampionTrialRequest request) {
+        if (principal == null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Not authenticated");
+        }
+        return curriculaService.updateChampionTrial(principal.getAttribute("login"), championId, request);
+    }
+
     @PostMapping("/deregister")
     public void deregister(
             @AuthenticationPrincipal OAuth2User principal,

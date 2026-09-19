@@ -21,5 +21,8 @@ public record CurriculumOverview(
                 List<CurriculumQualityOverview> subjectQuality,
                 List<String> topLevelTopics,
                 List<String> topLevelTopicsEn,
-                List<CurriculumChampionProfile> champions) {
+                List<CurriculumChampionProfile> champions,
+                String qualityStatus,
+                HumanTrialSummary humanTrial,
+                int humanTrialSubjectCount) {
 }

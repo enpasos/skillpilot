@@ -15,9 +15,12 @@ import {
 } from 'lucide-react'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
+import { MaturityBadge, QualityLegend, QualityStatusBadge } from '../components/CurriculumQualityBadge'
+import { CurriculumDeepQualityProgress } from '../components/CurriculumDeepQualityProgress'
+import { maturityOrder, maturityCopy, type MaturityLevel, type CurriculumQualityProjection } from '../utils/curriculumQualityPresentation'
+import { getCurriculumQualityStatus } from '../utils/curriculumQualityTrafficLight'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
-type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
 
 interface RuleResult {
   id: string
@@ -213,6 +216,11 @@ interface QualityStatusResponse {
   status: QualityStatusDocument
 }
 
+interface PublicQualityCurriculum extends CurriculumQualityProjection {
+  curriculumId: string
+  subjectQuality?: Array<CurriculumQualityProjection & { landscapeId?: string }>
+}
+
 const COPY = {
   de: {
     title: 'Curriculum Quality',
@@ -224,16 +232,7 @@ const COPY = {
     search: 'Curriculum suchen',
     maturity: 'Reifegrad',
     maturityLegendTitle: 'Reifegrade',
-    maturityLegend: {
-      M0: 'Noch kein belastbarer QA-Stand.',
-      M1: 'Quellen und Bearbeitungspipeline sind sichtbar.',
-      M2: 'Source-Ziele sind extrahiert und rückverfolgbar.',
-      M3: 'Source-Ziele sind fachlich durch SkillPilot-Ziele abgedeckt.',
-      M4: 'Bundesland-Sichten und QA-Scopes sind geprüft.',
-      M5: 'Schulgeeigneter Kern-QS-Stand: CI-fähig, ohne offene Fehler; Voraussetzung für Champions-QS in der Schule.',
-      M6: 'M5 plus geprüfte Memory-Layer: Kartenentscheidungen, Herkunftsspuren und Sichtbarkeit sind aktuell.',
-      M7: 'M6 plus vollständig erstellte und menschlich freigegebene Lernzielbilder.',
-    },
+    maturityLegend: maturityCopy.de.legend,
     all: 'Alle',
     generated: 'Generiert',
     source: 'Statusdatei',
@@ -320,7 +319,7 @@ const COPY = {
     details: 'Details',
     reviewGates: {
       title: 'M5-M7-Review-Gates',
-      hint: 'Diese Gates trennen Kern-QS, Karten-QS und Bild-QS: CQR-301, CQR-401 und CQR-501 tragen M5; CQR-302 ist der zusätzliche M6-Memory-Layer; CQR-303 ist die M7-Freigabe der Lernzielbilder.',
+      hint: 'CQR-301, CQR-401 und CQR-501 tragen die Kern-QS M5; CQR-302 ergänzt den Memory-Layer M6. CQR-303 prüft für M7 den strengen Abschluss aller aktuellen Ziele in den fünf Gates D, P, A, M und V. Menschliche Erprobung ist ein eigener Nachweis.',
       total: 'gesamt',
       configured: 'bewertet',
       passed: 'bestanden',
@@ -360,16 +359,7 @@ const COPY = {
     search: 'Search curriculum',
     maturity: 'Maturity',
     maturityLegendTitle: 'Maturity levels',
-    maturityLegend: {
-      M0: 'No reliable QA baseline yet.',
-      M1: 'Sources and processing pipeline are visible.',
-      M2: 'Source goals are extracted and traceable.',
-      M3: 'Source goals are covered by SkillPilot goals.',
-      M4: 'Jurisdiction views and QA scopes are validated.',
-      M5: 'School-ready core QA level: CI-ready, no open failures; prerequisite for school-facing Champion QA.',
-      M6: 'M5 plus reviewed memory layer: card decisions, origin traces, and visibility are current.',
-      M7: 'M6 plus fully created and human-approved goal visualizations.',
-    },
+    maturityLegend: maturityCopy.en.legend,
     all: 'All',
     generated: 'Generated',
     source: 'Status file',
@@ -456,7 +446,7 @@ const COPY = {
     details: 'Details',
     reviewGates: {
       title: 'M5-M7 review gates',
-      hint: 'These gates separate core QA, card QA, and image QA: CQR-301, CQR-401, and CQR-501 carry M5; CQR-302 is the additional M6 memory layer; CQR-303 is the M7 release gate for goal visualizations.',
+      hint: 'CQR-301, CQR-401 and CQR-501 support core QA M5; CQR-302 adds the M6 memory layer. For M7, CQR-303 checks strict completion of every current goal across gates D, P, A, M and V. Human trial is separate evidence.',
       total: 'total',
       configured: 'evaluated',
       passed: 'passed',
@@ -502,18 +492,6 @@ const statusClass: Record<RuleStatus, string> = {
   not_configured: 'border-slate-200 bg-slate-100 text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300',
 }
 
-const maturityClass: Record<MaturityLevel, string> = {
-  M0: 'border-slate-200 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200',
-  M1: 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
-  M2: 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
-  M3: 'border-amber-300 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
-  M4: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-900/60 dark:bg-orange-950/30 dark:text-orange-300',
-  M5: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-900/60 dark:bg-orange-950/30 dark:text-orange-300',
-  M6: 'border-emerald-300 bg-emerald-50 text-emerald-800 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
-  M7: 'border-sky-300 bg-sky-50 text-sky-800 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-300',
-}
-
-const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7']
 const maturityLevels: Array<'all' | MaturityLevel> = ['all', ...maturityOrder]
 const reviewGateRuleIds = ['CQR-301', 'CQR-401', 'CQR-501', 'CQR-302', 'CQR-303']
 
@@ -678,11 +656,6 @@ const StatusBadge: React.FC<{ status: RuleStatus; label: string }> = ({ status, 
   )
 }
 
-const MaturityBadge: React.FC<{ level: MaturityLevel }> = ({ level }) => (
-  <span className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold ${maturityClass[level]}`}>
-    {level}
-  </span>
-)
 
 type DashboardCopy = (typeof COPY)[keyof typeof COPY]
 
@@ -698,6 +671,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
   const { language } = useLanguage()
   const copy = COPY[language]
   const [payload, setPayload] = useState<QualityStatusResponse | null>(null)
+  const [publicQuality, setPublicQuality] = useState<Map<string, CurriculumQualityProjection>>(new Map())
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [query, setQuery] = useState('')
@@ -707,14 +681,33 @@ export const CurriculumQualityDashboardView: React.FC = () => {
   const loadStatus = async () => {
     setLoading(true)
     setError(null)
+    setPublicQuality(new Map())
     try {
-      const response = await fetch('/__quality-dashboard/status')
+      const [snapshotResult, publicResult] = await Promise.allSettled([
+        fetch('/__quality-dashboard/status'),
+        fetch('/api/ui/curricula').then(async (response) => {
+          if (!response.ok) throw new Error('Public quality status unavailable')
+          return await response.json() as { curricula?: PublicQualityCurriculum[] }
+        }),
+      ])
+      if (snapshotResult.status === 'rejected') throw snapshotResult.reason
+      const response = snapshotResult.value
       if (!response.ok) {
         const body = await response.json().catch(() => ({})) as { error?: string; command?: string }
         throw new Error(body.command ? `${body.error ?? response.statusText} ${body.command}` : body.error ?? response.statusText)
       }
       const nextPayload = await response.json() as QualityStatusResponse
       setPayload(nextPayload)
+      if (publicResult.status === 'fulfilled' && Array.isArray(publicResult.value.curricula)) {
+        const byLandscape = new Map<string, CurriculumQualityProjection>()
+        for (const curriculum of publicResult.value.curricula) {
+          byLandscape.set(curriculum.curriculumId, curriculum)
+          for (const subject of curriculum.subjectQuality ?? []) {
+            if (subject.landscapeId) byLandscape.set(subject.landscapeId, subject)
+          }
+        }
+        setPublicQuality(byLandscape)
+      }
       setSelectedId((current) => current ?? nextPayload.status.curricula[0]?.landscapeId ?? null)
     } catch (nextError) {
       setError(nextError instanceof Error ? nextError.message : String(nextError))
@@ -784,17 +777,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                   <span>{copy.source}: {payload.path}</span>
                 </div>
               ) : null}
-              <div className="mt-4">
-                <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.maturityLegendTitle}</div>
-                <dl className="mt-2 grid gap-x-4 gap-y-1.5 text-xs text-text-secondary sm:grid-cols-2 lg:grid-cols-3">
-                  {maturityOrder.map((level) => (
-                    <div key={level} className="flex min-w-0 items-baseline gap-2">
-                      <dt className="shrink-0 font-semibold text-text-primary">{level}</dt>
-                      <dd className="min-w-0">{copy.maturityLegend[level]}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
+              <div className="mt-4"><QualityLegend language={language} /></div>
             </div>
 
             <div className="flex flex-wrap items-center gap-2 self-start">
@@ -971,13 +954,18 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                           <div className="truncate font-semibold">{curriculum.title}</div>
                           <div className="truncate text-xs text-text-secondary">{curriculum.path}</div>
                         </td>
-                        <td className="py-3 pr-3"><MaturityBadge level={curriculum.maturity} /></td>
+                        <td className="py-3 pr-3">
+                          <div className="flex flex-wrap items-center gap-1.5">
+                            <MaturityBadge level={curriculum.maturity} language={language} />
+                            <QualityStatusBadge status={getCurriculumQualityStatus(publicQuality.get(curriculum.landscapeId))} language={language} />
+                          </div>
+                        </td>
                         <td className="py-3 pr-3">
                           {rowMaturityGate ? (
                             <div className="flex min-w-[185px] flex-col gap-1.5">
                               <div className="flex items-center gap-1.5">
                                 <span className="text-xs font-semibold text-text-secondary">{curriculum.maturity} -&gt;</span>
-                                <MaturityBadge level={rowMaturityGate.nextLevel} />
+                                <MaturityBadge level={rowMaturityGate.nextLevel} language={language} />
                               </div>
                               {blockerIds.length > 0 ? (
                                 <div
@@ -1069,9 +1057,24 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                 <div>
                   <div className="mb-2 flex items-center justify-between gap-3">
                     <h2 className="text-xl font-semibold">{selectedCurriculum.title}</h2>
-                    <MaturityBadge level={selectedCurriculum.maturity} />
+                    <MaturityBadge level={selectedCurriculum.maturity} language={language} />
                   </div>
                   <div className="font-mono text-xs text-text-secondary">{selectedCurriculum.path}</div>
+                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                    <QualityStatusBadge status={getCurriculumQualityStatus(publicQuality.get(selectedCurriculum.landscapeId))} language={language} />
+                    {publicQuality.get(selectedCurriculum.landscapeId)?.humanTrial?.scopeLabel && (
+                      <span className="text-xs text-text-secondary">
+                        {publicQuality.get(selectedCurriculum.landscapeId)?.humanTrial?.scopeLabel}
+                        {publicQuality.get(selectedCurriculum.landscapeId)?.humanTrial?.scopeCoverage === 'partial'
+                          ? language === 'de' ? ' · Teilumfang' : ' · Partial scope' : ''}
+                      </span>
+                    )}
+                  </div>
+                  <div className="mt-2">
+                    <CurriculumDeepQualityProgress
+                      metrics={selectedCurriculum.rules.find((rule) => rule.id === 'CQR-303')?.metrics}
+                      language={language} />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-3 gap-2 text-sm">
@@ -1104,9 +1107,9 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                           <span>{copy.nextMaturityGate}</span>
                         </h3>
                         <div className="mt-2 flex items-center gap-2">
-                          <MaturityBadge level={selectedCurriculum.maturity} />
+                          <MaturityBadge level={selectedCurriculum.maturity} language={language} />
                           <span className="text-xs font-semibold text-current/70">→</span>
-                          <MaturityBadge level={selectedMaturityGate.nextLevel} />
+                          <MaturityBadge level={selectedMaturityGate.nextLevel} language={language} />
                         </div>
                       </div>
                       {selectedMaturityGate.blockers.length > 0 ? (
@@ -1532,7 +1535,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                         <div key={scope.scopeId} className="rounded-xl border border-border-color p-3">
                           <div className="mb-2 flex items-center justify-between gap-2">
                             <div className="font-semibold">{scope.label}</div>
-                            <MaturityBadge level={scope.maturity} />
+                            <MaturityBadge level={scope.maturity} language={language} scope="route" />
                           </div>
                           <div className="space-y-2">
                             {scope.rules.map((rule) => (

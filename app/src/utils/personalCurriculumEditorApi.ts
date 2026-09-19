@@ -1,3 +1,4 @@
+import { getCurriculumQualityStatus, type CurriculumQualityStatus } from './curriculumQualityTrafficLight'
 import { sanitizeSkillpilotId } from './skillpilotId'
 
 export type PersonalizationStage =
@@ -10,6 +11,7 @@ export type PersonalizationStage =
 export type PersonalizationOptionKind = 'VALUE' | 'SCOPE_VALUE' | 'COMPLETE_GROUP'
 
 export interface PersonalizationOption {
+  qualityStatus?: CurriculumQualityStatus | null
   optionId: string
   stageId: string | null
   groupId: string | null
@@ -125,6 +127,7 @@ const parseOption = (value: unknown): PersonalizationOption => {
   }
   return {
     optionId,
+    qualityStatus: getCurriculumQualityStatus(option),
     stageId: optionalString(option.stageId),
     groupId: optionalString(option.groupId),
     groupInstanceId: optionalString(option.groupInstanceId),

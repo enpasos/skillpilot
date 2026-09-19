@@ -41,6 +41,32 @@ public class CurriculumChampion {
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
+    @Column(name = "assignment_ended_at")
+    private Instant assignmentEndedAt;
+
+    @Column(name = "trial_started_at")
+    private Instant trialStartedAt;
+
+    @Column(name = "trial_paused_at")
+    private Instant trialPausedAt;
+
+    @Column(name = "trial_scope_json", columnDefinition = "TEXT")
+    private String trialScopeJson;
+
+    @Column(name = "trial_confirmations_json", columnDefinition = "TEXT")
+    private String trialConfirmationsJson;
+
+    public Instant getAssignmentEndedAt() { return assignmentEndedAt; }
+    public void setAssignmentEndedAt(Instant value) { assignmentEndedAt = value; }
+    public Instant getTrialStartedAt() { return trialStartedAt; }
+    public void setTrialStartedAt(Instant value) { trialStartedAt = value; }
+    public Instant getTrialPausedAt() { return trialPausedAt; }
+    public void setTrialPausedAt(Instant value) { trialPausedAt = value; }
+    public String getTrialScopeJson() { return trialScopeJson; }
+    public void setTrialScopeJson(String value) { trialScopeJson = value; }
+    public String getTrialConfirmationsJson() { return trialConfirmationsJson; }
+    public void setTrialConfirmationsJson(String value) { trialConfirmationsJson = value; }
+
     public String getId() {
         return id;
     }

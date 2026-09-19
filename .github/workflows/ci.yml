@@ -478,6 +478,8 @@ jobs:
         run: npm run test:physics-source-method-routes
       - name: Check Memory-Card Reviews
         run: npm run quality:memory-card-review:check:all
+      - name: Test strict deep curriculum QA and M7 transitions
+        run: npm run test:deep-understanding-rollout
       - name: Verify committed curriculum quality status
         run: |
           npm run quality:memory-card-review:report:all

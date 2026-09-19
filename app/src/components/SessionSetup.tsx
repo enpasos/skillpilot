@@ -102,7 +102,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [persistedLearnerLandscapeId, setPersistedLearnerLandscapeId] = useState('')
   const [curriculumSaving, setCurriculumSaving] = useState(false)
   const [curriculumQualityFilter, setCurriculumQualityFilter] =
-    useState<CurriculumQualityFilter>('green')
+    useState<CurriculumQualityFilter>('all')
   const curriculumSelectionRequestRef = React.useRef(0)
   const learnerCheckRequestRef = React.useRef(0)
   const idAcquisitionRequestRef = React.useRef(0)

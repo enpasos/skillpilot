@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "rulesVersion": "curriculum-quality-v4",
-  "generatedAt": "2026-09-14T04:39:38.951Z",
+  "rulesVersion": "curriculum-quality-v5",
+  "generatedAt": "2026-09-19T21:21:51.262Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -9,6 +9,7 @@
     "semanticAtomicityRoot": "curricula/DE/Gymnasium/quality/semantic-atomicity",
     "memoryCardReviewRoot": "curricula/DE/Gymnasium/quality/memory-card-review",
     "goalVisualizationQaRoot": "curricula/DE/Gymnasium/quality/goal-visualization-qa",
+    "deepUnderstandingReportGenerator": "app/scripts/reportDeepUnderstandingRollout.ts",
     "compositionViewRoot": "curricula/DE/Gymnasium/composition-views",
     "acceptedWarningsPath": "docs/qa-ci/applicability-accepted-warnings.json",
     "sourceLandscapeRegistryPath": "curricula/DE/Gymnasium/provenance/source-landscape-registry.json",
@@ -30,9 +31,9 @@
     },
     "ruleStatus": {
       "pass": 228,
-      "warn": 22,
+      "warn": 21,
       "fail": 5,
-      "not_configured": 67
+      "not_configured": 68
     }
   },
   "ruleCatalog": [
@@ -143,10 +144,10 @@
     },
     {
       "id": "CQR-303",
-      "label": "Goal-visualization approval trace",
-      "category": "visualization",
+      "label": "Deep curriculum QA completion",
+      "category": "review",
       "maturityTarget": "M7",
-      "description": "All ordinary atomic learning goals have current primary goal-visualization assets, the QA ledger hashes match the active assets, and every active image has current human approval with no open human issue."
+      "description": "The central five-gate report proves a nonempty current curricularAtomic scope, complete D/P/A/M/V intersection, successful required validation checks, and no blocking findings. Technical visualization deferrals remain incomplete; AI evidence never becomes human approval."
     },
     {
       "id": "CQR-401",
@@ -171,6 +172,7 @@
       "frameworkId": "canonical-gymnasium-biology",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
       "maturity": "M6",
+      "humanTrialBlockingFindings": 0,
       "goals": 430,
       "atomicGoals": 379,
       "clusterGoals": 51,
@@ -3392,11 +3394,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject biologie.",
-          "metrics": {
-            "expectedGoals": 356,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -3431,6 +3429,7 @@
       "frameworkId": "canonical-gymnasium-chemistry",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
       "maturity": "M6",
+      "humanTrialBlockingFindings": 0,
       "goals": 473,
       "atomicGoals": 405,
       "clusterGoals": 68,
@@ -9184,48 +9183,8 @@
         },
         {
           "id": "CQR-303",
-          "status": "warn",
-          "summary": "Goal-visualization rollout or human approval is still incomplete.",
-          "metrics": {
-            "expectedGoals": 377,
-            "linkedGoals": 353,
-            "missingLinks": 24,
-            "qaRecords": 376,
-            "missingRecords": 0,
-            "staleRecords": 0,
-            "duplicateRecords": 0,
-            "missingAssets": 0,
-            "currentRecords": 353,
-            "chatGptReady": 320,
-            "chatGptOpen": 33,
-            "aiApproved": 350,
-            "aiNotApproved": 3,
-            "humanApproved": 6,
-            "humanNotApproved": 347,
-            "humanIssues": 0
-          },
-          "details": [
-            "missing human approval: Grundlegende Laborarbeitsweisen anwenden [416dfd33-8b43-5c49-903c-9847b95e4208]",
-            "missing human approval: Allgemeine Sicherheitsregeln im Chemielabor anwenden [13d4f336-ab16-54a7-9479-c920b458f385]",
-            "missing human approval: Stoffe und Eigenschaften beschreiben [fcc73fb5-7413-557f-aea3-b9692a66ee75]",
-            "missing human approval: Gefahrstoffsymbole und Kennzeichnungen deuten [9e656697-fc05-5aa9-9aca-871af2e89eb7]",
-            "missing human approval: Umgang und Entsorgung von Chemikalien begründen [7be6f951-a614-52dc-94d3-2ce0d33765ff]",
-            "missing human approval: Gefahrenpotenziale beurteilen und reduzieren [ebaae4f5-cc13-5493-98b1-10e1abeb638f]",
-            "missing human approval: Stoffgemische mit Trennverfahren trennen [5a709938-e0f5-42b7-94f0-cfded08963a2]",
-            "missing human approval: Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen [580b3616-f121-5d82-ac6b-fc24f145fbdc]",
-            "missing human approval: Reinstoffgehalt in Stoffgemischen bestimmen [e313c1ee-a617-54ed-adea-c183da1e03d8]",
-            "missing human approval: Lösungen und Löslichkeit beschreiben [53fd1bfd-facb-54ae-b2dc-f667ed1414fc]",
-            "missing human approval: Eigenschaften von Wasser strukturbezogen erklären [7a36f2a2-a97e-5a0b-a6e1-a80f72137640]",
-            "missing human approval: Lösen von Salzen energetisch erklären [5abc5961-6368-52bb-88b9-6a846c3c37a8]",
-            "missing human approval: pH-Werte in Alltag, Technik und Biologie erörtern [0bf26276-2780-506c-ac34-35dd44a29409]",
-            "missing human approval: Saure und basische Lösungen auf Teilchenebene deuten [fd309753-4d48-5570-a4ec-09dfeb20ff9c]",
-            "missing human approval: Stoffe nach Struktur und Eigenschaften ordnen [02dc29ae-4046-556a-b048-d64a0feb8f16]",
-            "missing human approval: Reaktionstypen mechanismisch einordnen [7a05a1ce-45d3-571e-be51-afcd8dfd33ca]",
-            "missing human approval: Stoffkreisläufe mit Reaktionen und physikalischen Vorgängen beschreiben [c0f1bf09-5a70-5006-b1e9-e91f786a63bf]",
-            "missing human approval: Chemische Sachverhalte fachlich diskutieren [1f354a60-be44-512b-8f8b-f67c8c456035]",
-            "missing human approval: Chemische Fragestellungen hypothesengeleitet untersuchen [91238ba1-5c63-50c7-a4fd-9bbe492c6b61]",
-            "missing human approval: Chemische Daten dokumentieren und deuten [49b13b33-34b7-5e4e-861c-b21082cb9922]"
-          ]
+          "status": "not_configured",
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -9260,6 +9219,7 @@
       "frameworkId": "canonical-gymnasium-chinese",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
       "maturity": "M0",
+      "humanTrialBlockingFindings": 0,
       "goals": 192,
       "atomicGoals": 181,
       "clusterGoals": 11,
@@ -10260,11 +10220,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject chinesisch.",
-          "metrics": {
-            "expectedGoals": 171,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -10300,6 +10256,7 @@
       "frameworkId": "canonical-gymnasium-german",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
       "maturity": "M6",
+      "humanTrialBlockingFindings": 0,
       "goals": 354,
       "atomicGoals": 291,
       "clusterGoals": 63,
@@ -15736,11 +15693,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject deutsch.",
-          "metrics": {
-            "expectedGoals": 269,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -15775,6 +15728,7 @@
       "frameworkId": "canonical-gymnasium-english",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
       "maturity": "M0",
+      "humanTrialBlockingFindings": 0,
       "goals": 130,
       "atomicGoals": 104,
       "clusterGoals": 26,
@@ -16744,11 +16698,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject englisch.",
-          "metrics": {
-            "expectedGoals": 90,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -16784,6 +16734,7 @@
       "frameworkId": "canonical-gymnasium-french",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
       "maturity": "M0",
+      "humanTrialBlockingFindings": 0,
       "goals": 331,
       "atomicGoals": 275,
       "clusterGoals": 56,
@@ -17899,11 +17850,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject franzoesisch.",
-          "metrics": {
-            "expectedGoals": 261,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -17939,6 +17886,7 @@
       "frameworkId": "canonical-gymnasium-history",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
       "maturity": "M6",
+      "humanTrialBlockingFindings": 0,
       "goals": 217,
       "atomicGoals": 177,
       "clusterGoals": 40,
@@ -24029,11 +23977,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject geschichte.",
-          "metrics": {
-            "expectedGoals": 157,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -24068,6 +24012,7 @@
       "frameworkId": "canonical-gymnasium-greek",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
       "maturity": "M0",
+      "humanTrialBlockingFindings": 0,
       "goals": 198,
       "atomicGoals": 185,
       "clusterGoals": 13,
@@ -25068,11 +25013,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject griechisch.",
-          "metrics": {
-            "expectedGoals": 171,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -25108,6 +25049,7 @@
       "frameworkId": "canonical-gymnasium-overview",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
       "maturity": "M0",
+      "humanTrialBlockingFindings": 0,
       "goals": 1,
       "atomicGoals": 0,
       "clusterGoals": 1,
@@ -25768,11 +25710,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject gymnasium-deutschland.",
-          "metrics": {
-            "expectedGoals": 0,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -25808,6 +25746,7 @@
       "frameworkId": "canonical-gymnasium-informatics",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
       "maturity": "M6",
+      "humanTrialBlockingFindings": 0,
       "goals": 282,
       "atomicGoals": 237,
       "clusterGoals": 45,
@@ -30681,11 +30620,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject informatik.",
-          "metrics": {
-            "expectedGoals": 208,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -30720,6 +30655,7 @@
       "frameworkId": "canonical-gymnasium-italian",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
       "maturity": "M0",
+      "humanTrialBlockingFindings": 0,
       "goals": 8,
       "atomicGoals": 7,
       "clusterGoals": 1,
@@ -31457,11 +31393,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject italienisch.",
-          "metrics": {
-            "expectedGoals": 7,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -31497,6 +31429,7 @@
       "frameworkId": "canonical-gymnasium-latin",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
       "maturity": "M6",
+      "humanTrialBlockingFindings": 0,
       "goals": 176,
       "atomicGoals": 136,
       "clusterGoals": 40,
@@ -36359,11 +36292,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject latein.",
-          "metrics": {
-            "expectedGoals": 116,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -36398,6 +36327,7 @@
       "frameworkId": "canonical-gymnasium-math",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
       "maturity": "M6",
+      "humanTrialBlockingFindings": 0,
       "goals": 1183,
       "atomicGoals": 925,
       "clusterGoals": 258,
@@ -42358,46 +42288,23 @@
         {
           "id": "CQR-303",
           "status": "warn",
-          "summary": "Goal-visualization rollout or human approval is still incomplete.",
+          "summary": "Deep curriculum QA is incomplete: 393/797 current curricularAtomic goals strictly complete.",
           "metrics": {
-            "expectedGoals": 799,
-            "linkedGoals": 726,
-            "missingLinks": 73,
-            "qaRecords": 811,
-            "missingRecords": 2,
-            "staleRecords": 0,
-            "duplicateRecords": 0,
-            "missingAssets": 0,
-            "currentRecords": 724,
-            "chatGptReady": 615,
-            "chatGptOpen": 109,
-            "aiApproved": 607,
-            "aiNotApproved": 117,
-            "humanApproved": 137,
-            "humanNotApproved": 587,
-            "humanIssues": 0
+            "expectedGoals": 797,
+            "remaining": 404,
+            "strictComplete": 393,
+            "currentDescriptionResolutions": 436,
+            "currentPositiveEvidenceProfiles": 436,
+            "currentSemanticAtomicityDecisions": 797,
+            "currentMemoryReviewDecisions": 797,
+            "currentVisualizationQaRecords": 724,
+            "deferredVisualizations": 73,
+            "requiredChecksPassed": 6,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 0
           },
           "details": [
-            "missing human approval: Ganze Zahlen addieren [4b67bed9-06da-40b2-a306-24e9e7dfd390]",
-            "missing human approval: Ganze Zahlen ordnen und an der Zahlengeraden darstellen [d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe]",
-            "missing human approval: Ganze Zahlen subtrahieren [3fde4db5-9e92-5f3a-98e1-d386a42b9e01]",
-            "missing human approval: Natürliche Zahlen darstellen und am Zahlenstrahl verorten [cf474eab-1379-4877-907e-58b0892ce734]",
-            "missing human approval: Natürliche Zahlen ordnen und vergleichen [9ef6c4fa-b97a-5d7a-86c1-96690f02d916]",
-            "missing human approval: Vier Grundrechenarten mit natürlichen Zahlen in Sachsituationen auswählen und prüfen [d825f7ce-e19b-594a-8181-eff199c21d93]",
-            "missing human approval: Rechnungen mit Umkehroperationen überprüfen [e82d8d3a-9012-5482-afe6-ab0d727a49bb]",
-            "missing human approval: Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen [25593605-5e13-55cc-9a05-8f3d737e15e9]",
-            "missing human approval: Kreise aus Mittelpunkt und Radius zeichnen und begründen [1dd0266c-41b4-5481-b64b-7b718cfe799b]",
-            "missing visualization link: Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen [121e3fdf-54d2-4d46-bc2d-f6e725f10f41]",
-            "missing human approval: Parallele und senkrechte Lagebeziehungen erkennen und begründen [2231c29b-eb4e-51ae-9cb1-eb033bf16099]",
-            "missing human approval: Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben [3e53a39b-1c75-4034-a647-8de85719e1fb]",
-            "missing human approval: Parallele und senkrechte Geraden konstruieren [c31d3a7a-778b-5ae3-9aa4-7b5674047f83]",
-            "missing visualization link: Mittelsenkrechten konstruieren und begründen [34200b88-c616-58f6-aa03-efb9fd766f88]",
-            "missing visualization link: Winkelhalbierende konstruieren und begründen [f509a549-aee5-5468-af73-5b1efa3f342c]",
-            "missing human approval: Punktmengen zu Abstandsbedingungen darstellen und begründen [31a89d59-7d45-5e60-a8e8-561001b05f2d]",
-            "missing human approval: Winkelzeichnungen und Gradmaße ineinander überführen [2331caf2-ccb2-5492-9fc6-48763b848bae]",
-            "missing human approval: Vierecke anhand ihrer Eigenschaften einordnen und begründen [d98849c7-bd0b-50d4-90aa-6293a3adb211]",
-            "missing human approval: Größen und Einheiten vergleichen und umrechnen [f2e42af5-67a6-477e-82ea-e65b09cc6cb3]",
-            "missing human approval: Multiplikation und ganzzahlige Division als Umkehroperationen nutzen [cafd6520-c4af-4109-9863-cc49ba6fad4d]"
+            "73 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
           ]
         },
         {
@@ -42434,6 +42341,7 @@
       "frameworkId": "canonical-gymnasium-music",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
       "maturity": "M0",
+      "humanTrialBlockingFindings": 0,
       "goals": 76,
       "atomicGoals": 52,
       "clusterGoals": 24,
@@ -43410,11 +43318,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject musik.",
-          "metrics": {
-            "expectedGoals": 39,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -43450,6 +43354,7 @@
       "frameworkId": "canonical-gymnasium-physics",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
       "maturity": "M6",
+      "humanTrialBlockingFindings": 0,
       "goals": 764,
       "atomicGoals": 639,
       "clusterGoals": 125,
@@ -48005,46 +47910,23 @@
         {
           "id": "CQR-303",
           "status": "warn",
-          "summary": "Goal-visualization rollout or human approval is still incomplete.",
+          "summary": "Deep curriculum QA is incomplete: 426/478 current curricularAtomic goals strictly complete.",
           "metrics": {
-            "expectedGoals": 480,
-            "linkedGoals": 432,
-            "missingLinks": 48,
-            "qaRecords": 509,
-            "missingRecords": 2,
-            "staleRecords": 0,
-            "duplicateRecords": 0,
-            "missingAssets": 0,
-            "currentRecords": 430,
-            "chatGptReady": 284,
-            "chatGptOpen": 146,
-            "aiApproved": 430,
-            "aiNotApproved": 0,
-            "humanApproved": 7,
-            "humanNotApproved": 423,
-            "humanIssues": 0
+            "expectedGoals": 478,
+            "remaining": 52,
+            "strictComplete": 426,
+            "currentDescriptionResolutions": 472,
+            "currentPositiveEvidenceProfiles": 478,
+            "currentSemanticAtomicityDecisions": 478,
+            "currentMemoryReviewDecisions": 478,
+            "currentVisualizationQaRecords": 430,
+            "deferredVisualizations": 48,
+            "requiredChecksPassed": 6,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 0
           },
           "details": [
-            "missing human approval: Einfache Stossvorgaenge mit Impuls- und Energieerhaltung analysieren [2eecd0e2-a7ca-4568-9b12-3d47706c65fb]",
-            "missing human approval: Temperatur und Wärme unterscheiden [940978fa-1f2d-4e54-9c28-081a6df9b76f]",
-            "missing human approval: Temperatur mit einem geeigneten Thermometer messen [51de4fd9-6827-5b3d-b2ca-5e27ba961a7f]",
-            "missing human approval: Thermische Ausdehnung fester, flüssiger und gasförmiger Stoffe deuten [b60f63b6-e70b-5557-9f54-86d42fa80325]",
-            "missing human approval: Teilchenmodell für Temperaturänderungen nutzen [9ac4973a-21d5-48a5-90b4-eb90e10391ae]",
-            "missing human approval: Wärmeleitung, Konvektion und Wärmestrahlung unterscheiden [fbe0faae-7fba-482b-888e-341f926770f3]",
-            "missing human approval: Druck in Flüssigkeiten und Gasen qualitativ beschreiben [5308de76-79f0-44f4-8cb7-fc9de4772217]",
-            "missing human approval: Druck-Temperatur-Zusammenhang bei konstantem Volumen qualitativ erklären [310b4f62-e261-46be-bb1b-1f125fc1699a]",
-            "missing human approval: Auftrieb mit dem archimedischen Prinzip erklären [e11b2ee9-e528-4857-9ecd-59bd460fba81]",
-            "missing human approval: Auftrieb an Tragflächen und Luftwiderstand qualitativ einordnen [24b4686a-e8a6-4583-8952-33e6f653c2a3]",
-            "missing human approval: Entstehung und Zerlegung von Farben erklären [a4681378-ade4-4f20-bf77-fb020469510f]",
-            "missing human approval: Additive und subtraktive Farbmischung unterscheiden [cdab9fd1-5054-4a7e-8c9a-4474062ddd23]",
-            "missing human approval: Einfache Farbwahrnehmung beschreiben [1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075]",
-            "missing human approval: Farben in technischen Anwendungen erklären [cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5]",
-            "missing human approval: Schallquellen und Schallempfänger beschreiben [c1006f55-0406-48cc-92d4-0d8345897cf4]",
-            "missing human approval: Schallausbreitung im Teilchenmodell erklären [3c82510a-1f12-4eaa-81c2-8599437a5b85]",
-            "missing human approval: Schallgeschwindigkeiten in verschiedenen Medien vergleichen und begründen [a24c41ce-68c5-56a7-8235-ef9a7dba7042]",
-            "missing human approval: Tonhöhe, Lautstärke und Geräusche unterscheiden [10aad90e-a1db-42b6-8d1e-1d856e14b47d]",
-            "missing human approval: Hörvorgang im Ohr qualitativ erklären [2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c]",
-            "missing human approval: Lärmbelastung des Gehörs beurteilen [da0837c7-95a7-5a6a-81db-f33cb7f42d85]"
+            "48 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
           ]
         },
         {
@@ -48081,6 +47963,7 @@
       "frameworkId": "canonical-gymnasium-politics-economics",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
       "maturity": "M6",
+      "humanTrialBlockingFindings": 0,
       "goals": 512,
       "atomicGoals": 439,
       "clusterGoals": 73,
@@ -53214,11 +53097,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject politik-und-wirtschaft.",
-          "metrics": {
-            "expectedGoals": 414,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -53253,6 +53132,7 @@
       "frameworkId": "canonical-gymnasium-polish",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
       "maturity": "M0",
+      "humanTrialBlockingFindings": 0,
       "goals": 5,
       "atomicGoals": 4,
       "clusterGoals": 1,
@@ -53990,11 +53870,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject polnisch.",
-          "metrics": {
-            "expectedGoals": 4,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -54030,6 +53906,7 @@
       "frameworkId": "canonical-gymnasium-russian",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
       "maturity": "M0",
+      "humanTrialBlockingFindings": 0,
       "goals": 8,
       "atomicGoals": 7,
       "clusterGoals": 1,
@@ -54767,11 +54644,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject russisch.",
-          "metrics": {
-            "expectedGoals": 7,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -54807,6 +54680,7 @@
       "frameworkId": "canonical-gymnasium-spanish",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
       "maturity": "M0",
+      "humanTrialBlockingFindings": 0,
       "goals": 83,
       "atomicGoals": 59,
       "clusterGoals": 24,
@@ -55776,11 +55650,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject spanisch.",
-          "metrics": {
-            "expectedGoals": 45,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -55816,6 +55686,7 @@
       "frameworkId": "canonical-gymnasium-czech",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
       "maturity": "M0",
+      "humanTrialBlockingFindings": 0,
       "goals": 5,
       "atomicGoals": 4,
       "clusterGoals": 1,
@@ -56553,11 +56424,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject tschechisch.",
-          "metrics": {
-            "expectedGoals": 4,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",
@@ -56593,6 +56460,7 @@
       "frameworkId": "canonical-gymnasium-economics",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
       "maturity": "M2",
+      "humanTrialBlockingFindings": 0,
       "goals": 370,
       "atomicGoals": 333,
       "clusterGoals": 37,
@@ -60957,11 +60825,7 @@
         {
           "id": "CQR-303",
           "status": "not_configured",
-          "summary": "No goal-visualization QA ledger is registered for subject wirtschaftswissenschaften.",
-          "metrics": {
-            "expectedGoals": 304,
-            "linkedGoals": 0
-          }
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
         },
         {
           "id": "CQR-401",

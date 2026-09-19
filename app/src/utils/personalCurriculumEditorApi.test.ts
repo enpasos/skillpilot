@@ -109,6 +109,18 @@ const selectionPlan = {
 }
 
 const parsed = parsePersonalizationPlan(selectionPlan)
+assertEqual(parsed.options[0]?.qualityStatus, null, 'missing quality evidence stays unknown')
+for (const qualityStatus of ['experimental', 'machine_qa', 'human_trial_in_progress', 'human_trial_completed'] as const) {
+  const qualityPlan = parsePersonalizationPlan({
+    ...selectionPlan,
+    options: [{ ...option, qualityStatus }],
+  })
+  assertEqual(qualityPlan.options[0]?.qualityStatus, qualityStatus, 'preserves the authoritative quality status')
+}
+assertEqual(parsePersonalizationPlan({
+  ...selectionPlan,
+  options: [{ ...option, qualityStatus: 'green' }],
+}).options[0]?.qualityStatus, null, 'legacy colour labels cannot manufacture human trial evidence')
 assertEqual(parsed.stage, 'SELECTION', 'parses the stage')
 assertEqual(parsed.options[0]?.optionId, 'opaque-option-1', 'preserves the opaque option ID')
 assertEqual(

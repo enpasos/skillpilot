@@ -47,6 +47,17 @@ public final class RepositoryCurriculumQualitySnapshotProvider implements Curric
     }
 
     @Override
+    public String revision() {
+        try {
+            Path path = statusPaths.stream().filter(Files::isRegularFile).findFirst().orElse(null);
+            return path == null ? "missing" : path.toAbsolutePath() + ":"
+                    + Files.getLastModifiedTime(path).toMillis() + ":" + Files.size(path);
+        } catch (Exception exception) {
+            return "unavailable";
+        }
+    }
+
+    @Override
     public CurriculumQualitySnapshot load() {
         Path statusPath = statusPaths.stream()
                 .filter(Files::isRegularFile)
@@ -58,6 +69,9 @@ public final class RepositoryCurriculumQualitySnapshotProvider implements Curric
 
         try {
             JsonNode root = objectMapper.readTree(statusPath.toFile());
+            boolean currentRules = root.path("schemaVersion").isIntegralNumber()
+                    && root.path("schemaVersion").intValue() == 1
+                    && "curriculum-quality-v5".equals(text(root, "rulesVersion"));
             JsonNode curricula = root.path("curricula");
             if (!curricula.isArray()) {
                 return CurriculumQualitySnapshot.empty();
@@ -69,7 +83,9 @@ public final class RepositoryCurriculumQualitySnapshotProvider implements Curric
                 String landscapeId = text(curriculum, "landscapeId");
                 String subject = text(curriculum, "subject");
                 String maturity = text(curriculum, "maturity");
-                if (landscapeId == null || subject == null || maturity == null) {
+                if (landscapeId == null || subject == null || maturity == null
+                        || !java.util.Set.of("M0", "M1", "M2", "M3", "M4", "M5", "M6", "M7").contains(maturity)
+                        || ("M7".equals(maturity) && !currentRules)) {
                     continue;
                 }
 
@@ -80,7 +96,12 @@ public final class RepositoryCurriculumQualitySnapshotProvider implements Curric
                         curriculum.path("goals").asLong(0),
                         curriculum.path("atomicGoals").asLong(0),
                         countRuleStatus(curriculum, "warn"),
-                        countRuleStatus(curriculum, "fail"));
+                        countRuleStatus(curriculum, "fail"),
+                        curriculum.path("humanTrialBlockingFindings").asInt(0),
+                        countTrialBlockingRuleFailures(curriculum),
+                        currentRules && curriculum.path("humanTrialBlockingFindings").isIntegralNumber()
+                                && curriculum.path("humanTrialBlockingFindings").canConvertToInt()
+                                && curriculum.path("humanTrialBlockingFindings").intValue() >= 0);
                 byLandscapeId.put(landscapeId, entry);
 
                 String frameworkId = text(curriculum, "frameworkId");
@@ -98,6 +119,20 @@ public final class RepositoryCurriculumQualitySnapshotProvider implements Curric
             log.warn("Failed to load curriculum quality status from {}", statusPath, e);
             return CurriculumQualitySnapshot.empty();
         }
+    }
+
+    private int countTrialBlockingRuleFailures(JsonNode curriculum) {
+        int result = 0;
+        java.util.List<JsonNode> ruleSets = new java.util.ArrayList<>();
+        ruleSets.add(curriculum.path("rules"));
+        curriculum.path("scopes").forEach(scope -> ruleSets.add(scope.path("rules")));
+        for (JsonNode rules : ruleSets) {
+            for (JsonNode rule : rules) {
+                // Incomplete or stale deep-QA reviews do not make M7 a prerequisite for practical trials.
+                if ("fail".equals(text(rule, "status")) && !"CQR-303".equals(text(rule, "id"))) result++;
+            }
+        }
+        return result;
     }
 
     private int countRuleStatus(JsonNode curriculum, String status) {

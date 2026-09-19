@@ -1,136 +1,47 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import {
-  CurriculumDropdown,
-  type LandscapeSummary,
-} from '../../src/components/CurriculumDropdown'
-import { LanguageProvider } from '../../src/contexts/LanguageContext'
-import {
-  CANONICAL_GYMNASIUM_MATH_ID,
-  CANONICAL_GYMNASIUM_PHYSICS_ID,
-  type CurriculumQualityFilter,
-} from '../../src/utils/curriculumQualityTrafficLight'
+import { MemoryRouter } from 'react-router-dom'
+import '../../src/index.css'
+import { CurriculumDropdown, type LandscapeSummary } from '../../src/components/CurriculumDropdown'
+import { QualityLegend, QualityStatusBadge } from '../../src/components/CurriculumQualityBadge'
+import { CurriculumQualityDashboardView } from '../../src/views/CurriculumQualityDashboardView'
+import { LanguageProvider, useLanguage } from '../../src/contexts/LanguageContext'
+import { ThemeProvider } from '../../src/contexts/ThemeContext'
+import { curriculumQualityStatuses, type CurriculumQualityFilter } from '../../src/utils/curriculumQualityPresentation'
 
-const chemistryCurriculumId = 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'
-const experimentalCurriculumId = 'experimental-school-curriculum'
-
-const landscapes: LandscapeSummary[] = [
-  {
-    curriculumId: CANONICAL_GYMNASIUM_MATH_ID,
-    filename: 'mathematics.json',
-    country: 'DE',
-    region: 'DE',
-    type: 'GYMNASIUM',
-    level: 'Sekundarstufe',
-    subject: 'Mathematik',
-    locale: 'de-DE',
-    title: 'Mathematik',
-    schoolType: 'Gymnasium',
-  },
-  {
-    curriculumId: CANONICAL_GYMNASIUM_PHYSICS_ID,
-    filename: 'physics.json',
-    country: 'DE',
-    region: 'DE',
-    type: 'GYMNASIUM',
-    level: 'Sekundarstufe',
-    subject: 'Physik',
-    locale: 'de-DE',
-    title: 'Physik',
-    schoolType: 'Gymnasium',
-  },
-  {
-    curriculumId: chemistryCurriculumId,
-    filename: 'chemistry.json',
-    country: 'DE',
-    region: 'DE',
-    type: 'GYMNASIUM',
-    level: 'Sekundarstufe',
-    subject: 'Chemie',
-    locale: 'de-DE',
-    title: 'Chemie',
-    schoolType: 'Gymnasium',
-  },
-  {
-    curriculumId: experimentalCurriculumId,
-    filename: 'experimental.json',
-    country: 'DE',
-    region: 'DE',
-    type: 'GYMNASIUM',
-    level: 'Sekundarstufe',
-    subject: 'Experimentelles Fach',
-    locale: 'de-DE',
-    title: 'Experimentelles Fach',
-    schoolType: 'Gymnasium',
-  },
-  {
-    curriculumId: 'university-physics',
-    filename: 'university-physics.json',
-    country: 'DE',
-    region: 'DE',
-    type: 'U',
-    level: 'Hochschule',
-    subject: 'Physik',
-    locale: 'de-DE',
-    title: 'Universitätsphysik',
-    schoolType: 'U',
-  },
-]
+const landscapes: LandscapeSummary[] = [...curriculumQualityStatuses, null].map((qualityStatus) => ({
+  curriculumId: qualityStatus ?? 'unknown', qualityStatus,
+  filename: 'fixture.json', country: 'DE', region: 'DE', type: 'GYMNASIUM',
+  level: 'Sekundarstufe', subject: qualityStatus ?? 'unknown', locale: 'de-DE',
+  title: qualityStatus ?? 'Unknown quality', schoolType: 'Gymnasium',
+}))
+landscapes.push({ ...landscapes[0], curriculumId: 'university', type: 'U', schoolType: 'U', title: 'University' })
 
 const Fixture = () => {
-  const [currentCurriculumId, setCurrentCurriculumId] = useState(
-    experimentalCurriculumId,
-  )
-  const [qualityFilter, setQualityFilter] =
-    useState<CurriculumQualityFilter>('green')
-  const [currentCurriculumTitle, setCurrentCurriculumTitle] = useState('')
+  const [currentCurriculumId, setCurrentCurriculumId] = useState('unknown')
+  const [qualityFilter, setQualityFilter] = useState<CurriculumQualityFilter>('all')
   const [singleCurriculumId, setSingleCurriculumId] = useState('')
-
-  return (
-    <LanguageProvider>
-      <div data-testid="quality-filter-fixture">
-        <CurriculumDropdown
-          currentLandscapeId={currentCurriculumId}
-          landscapes={landscapes}
-          onSelect={setCurrentCurriculumId}
-          onSelectedTitleChange={setCurrentCurriculumTitle}
-          qualityFilter={qualityFilter}
-          onQualityFilterChange={setQualityFilter}
-          showCompatibilityViews={false}
-          showQualityFilter
-        />
-        <output data-testid="quality-filter-selection">
-          {currentCurriculumId}
-        </output>
-        <output data-testid="quality-filter-selection-title">
-          {currentCurriculumTitle}
-        </output>
-      </div>
-      <div data-testid="single-curriculum-fixture">
-        <CurriculumDropdown
-          currentLandscapeId={singleCurriculumId}
-          landscapes={landscapes.slice(0, 1)}
-          onSelect={setSingleCurriculumId}
-          qualityFilter="all"
-          showCompatibilityViews={false}
-          showQualityFilter
-        />
-        <output data-testid="single-curriculum-selection">
-          {singleCurriculumId}
-        </output>
-      </div>
-    </LanguageProvider>
-  )
+  const { language } = useLanguage()
+  if (window.location.search.includes('dashboard')) return <CurriculumQualityDashboardView />
+  return <>
+    <div data-testid="quality-filter-fixture">
+      <CurriculumDropdown currentLandscapeId={currentCurriculumId} landscapes={landscapes}
+        onSelect={setCurrentCurriculumId} qualityFilter={qualityFilter}
+        onQualityFilterChange={setQualityFilter} showCompatibilityViews={false} showQualityFilter />
+      <output data-testid="quality-filter-selection">{currentCurriculumId}</output>
+    </div>
+    <div data-testid="single-curriculum-fixture">
+      <CurriculumDropdown currentLandscapeId={singleCurriculumId} landscapes={landscapes.slice(0, 1)}
+        onSelect={setSingleCurriculumId} qualityFilter="all" showCompatibilityViews={false} showQualityFilter />
+      <output data-testid="single-curriculum-selection">{singleCurriculumId}</output>
+    </div>
+    <div data-testid="quality-legend"><QualityLegend language={language} /></div>
+    <div data-testid="quality-statuses">{curriculumQualityStatuses.map((status) =>
+      <QualityStatusBadge key={status} status={status} language={language} />)}</div>
+  </>
 }
 
 const rootElement = document.getElementById('root')
-if (!rootElement) {
-  throw new Error('missing fixture root')
-}
-
-createRoot(rootElement).render(
-  <StrictMode>
-    <Fixture />
-  </StrictMode>,
-)
+if (!rootElement) throw new Error('missing fixture root')
+createRoot(rootElement).render(<MemoryRouter><LanguageProvider><ThemeProvider><StrictMode><Fixture /></StrictMode></ThemeProvider></LanguageProvider></MemoryRouter>)

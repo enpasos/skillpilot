@@ -228,10 +228,11 @@ Ein einzelner QA-Scope kann maximal `M3` erreichen.
 
 | Scope-Reife | Exakte Bedingung |
 | --- | --- |
-| `M0` | `CQR-101` ist nicht `pass`. Der Scope hat also keine vollstaendige effektive Route von Motivation zu terminaler Autonomie. |
-| `M1` | `CQR-101` ist `pass`, aber `CQR-102` oder `CQR-103` ist noch nicht `pass`. Die Route ist effektiv geschlossen, aber noch nicht sauber atomar modelliert oder nutzt noch Cluster-`requires`. |
-| `M2` | `CQR-101`, `CQR-102` und `CQR-103` sind `pass`, aber `CQR-201` ist noch nicht `pass`. Die Route ist atomar sauber, aber die terminalen Ziele sind noch nicht voll exam-mode-faehig. |
-| `M3` | `CQR-101`, `CQR-102`, `CQR-103` und `CQR-201` sind `pass`. Der Scope ist route- und assessment-seitig reif. |
+| `M0` | `CQR-101` ist nicht `pass`: Die effektive Route von Motivation zu terminaler Autonomie ist offen. |
+| `M1` | `CQR-101` ist `pass`, aber `CQR-102` oder `CQR-103` ist noch nicht `pass`: Atomare Modellierung oder Cluster-`requires` bleiben offen. |
+| `M2` | Die ersten drei Regeln sind `pass`, aber eine vorhandene `CQR-104` oder `CQR-201`/`CQR-202` ist noch offen: Sichtbarkeit oder terminale Assessment-Pruefungen fehlen. |
+| `M3` | Diese Routen- und Assessment-Regeln sind `pass`, aber `CQR-203` ist noch nicht `pass`. |
+| `M4` | Alle erforderlichen Routen- und Assessment-Regeln einschliesslich `CQR-203` sind `pass`. |
 
 ### Curriculum-Reife
 
@@ -243,10 +244,10 @@ Ein Curriculum kann `M0` bis `M7` erreichen.
 | `M1` | Source-Snapshots sind lesbar, mit amtlichen HTTP(S)-Originalquellenlinks belegt, und ihre extrahierten Original-/Source-Ziele sind in Membership/Closure registriert; die Bundesland-View-Abdeckung (`CQR-003`) oder die GK/LK-Mapping-Konsistenz (`CQR-004`) ist aber noch nicht sauber. |
 | `M2` | Source-Ingestion, quellenbelegte Bundeslandabdeckung und GK/LK-Mapping-Konsistenz sind sauber. Routen-Scopes fehlen noch, oder mindestens ein QA-Scope besteht `CQR-101` noch nicht. |
 | `M3` | Bundeslandabdeckung ist sauber und alle QA-Scopes sind route-seitig sauber: `CQR-101`, `CQR-102` und `CQR-103` sind je Scope `pass`; mindestens ein Scope ist aber noch nicht exam-mode-faehig. |
-| `M4` | Graph, Source-Ingestion, Bundeslandabdeckung und alle QA-Scopes sind `M3`, aber mindestens eine Kern-Review-Regel (`CQR-301`, `CQR-401`, `CQR-501`) ist noch nicht `pass`. |
-| `M5` | Alle QA-Scopes sind `M3` und zusaetzlich `CQR-301`, `CQR-401` und `CQR-501` sind `pass`. `M5` ist der schulgeeignete Kern-QS-Stand und wird nicht durch Memory-Card-Konfiguration verwässert. |
+| `M4` | Alle Routen-Scopes erreichen mindestens Scope-`M3`; mindestens ein Scope erreicht noch nicht Scope-`M4`, oder eine Kern-Review-Regel (`CQR-301`, `CQR-401`, `CQR-501`) ist noch offen. |
+| `M5` | Alle Routen-Scopes sind Scope-`M4` und zusaetzlich `CQR-301`, `CQR-401` und `CQR-501` sind `pass`. `M5` ist der schulgeeignete Kern-QS-Stand und wird nicht durch Memory-Card-Konfiguration verwässert. |
 | `M6` | `M5` ist erreicht und zusaetzlich ist `CQR-302` `pass`; fehlende oder offene Memory-Card-Review-Konfiguration zaehlt fuer `CQR-302` als offen und blockiert nur `M6`. |
-| `M7` | `M6` ist erreicht und zusaetzlich ist `CQR-303` `pass`; fehlende Visualisierungslinks, veraltete QA-Hashes oder fehlende Human-Freigaben zaehlen fuer `CQR-303` als offen und blockieren nur `M7`. |
+| `M7` | `M6` ist erreicht und `CQR-303` bestaetigt den vollstaendigen strengen D/P/A/M/V-Abschluss aller aktuellen `curricularAtomic`-Ziele samt erforderlichen Abschlusspruefungen und ohne offene Blocker. |
 
 Wichtige Konsequenz:
 
@@ -257,7 +258,7 @@ Es bedeutet:
 
 `M6` bedeutet darueber hinaus, dass die optionale Memory-Layer fachlich eng begruendet ist: normale atomare Ziele wurden semantisch auf Memory-Notwendigkeit geprueft, aktive Karten sind auf diese Entscheidungen zurueckgefuehrt, und noetige Memory-Knoten sind in den konfigurierten Lernenden-Sichten sichtbar.
 
-`M7` bedeutet darueber hinaus, dass die optionalen Lernzielbilder vollstaendig ausgerollt und QS-gesichert sind: Jedes normale atomare Lernziel im Visualisierungs-Scope hat ein aktuelles primaeres Bild, die QA-Ledger passen zum aktiven Asset-Hash, und jedes Bild ist menschlich freigegeben.
+`M7` bedeutet darueber hinaus, dass die vertiefte Curriculum-QS fuer jedes aktuelle `curricularAtomic`-Ziel abgeschlossen ist: Beschreibungsreviews (D), positive Verstaendnisnachweise (P), Atomizitaet (A), Memory (M) und Visualisierungen (V) sind gleichzeitig aktuell und gueltig. Der zentrale Fuenf-Gate-Bericht ist die einzige Berechnungsquelle. M7 erteilt keine menschliche Freigabe und bestaetigt keine menschliche Erprobung; diese wird getrennt ausgewiesen. Historische Bild-M7-Nachweise behalten ihre damalige Bedeutung und werden nicht als aktueller M7-Stand uebernommen.
 
 `M5` ist damit eine interne Runtime- und Modellierungsreife. Es bedeutet nicht automatisch, dass ein veroeffentlichtes Runtime-ZIP alle Source-Extraction-Evidenz so beilegt, dass ein externer Pruefer jede Mapping-Entscheidung ohne weitere Artefakte inhaltlich nachvollziehen kann. Fuer diese externe Provenienzpruefung gibt es ein getrenntes Provenance-Audit-Artefakt, das Source-Goal-IDs auf konkrete Source-Texte, Locator, offizielle URLs und kanonische Ziel-IDs abbildet.
 
@@ -711,50 +712,46 @@ Interpretation:
 - Ein Memory-Deck ist dann fachlich sauber benannt, wenn es den kanonischen Lernkontext beschreibt. Herkunft aus Hessen oder einem anderen Bundesland gehoert in Provenance und Source-Ledger, nicht in die oeffentliche SRS-ID.
 - Eine initialisierte Review-Queue ohne fachliche Entscheidungen ist kein Pass. Sie macht den offenen Zustand sichtbar (`warn`), damit ein Curriculum nicht durch fehlende Konfiguration unsichtbar an `CQR-302` vorbeilaeuft.
 
-### `CQR-303` - Goal-visualization approval trace
+### `CQR-303` - Deep curriculum QA completion
 
 Ziel:
 
-> Fuer normale atomare Lernziele sind die Lernzielbilder vollstaendig erstellt, technisch aktuell und menschlich freigegeben.
+> Die vertiefte Curriculum-QS ist fuer die vollstaendige aktuelle `curricularAtomic`-Zielmenge eines Fachs abgeschlossen.
+
+Verbindlich ist das [Konzept zu Curriculum-Qualitaet und menschlicher Erprobung](../concept/curriculum-quality-and-human-trial.md). Die Regel projiziert ausschliesslich den zentralen Bericht aus `app/scripts/reportDeepUnderstandingRollout.ts`; sie berechnet die Gates nicht erneut.
 
 Geprueft wird:
 
-- Die Regel wird fuer jedes kanonische Curriculum ausgewiesen.
-- Ohne passendes QA-Ledger unter `curricula/DE/Gymnasium/quality/goal-visualization-qa/` ist der Status `not_configured`; das blockiert `M7`, aber nicht `M6`.
-- Der Visualisierungs-Scope sind normale atomare Ziele: keine Memory-, Exam- oder Tutor-Knoten, keine SRS-Decks und keine Ziele mit `examData`.
-- Jedes Ziel im Scope muss einen primaeren `goal-visualization`-Link mit `resourceType: "image"` haben.
-- Fuer jeden aktiven Link muss ein QA-Datensatz mit passender `goalId` und `imageUrl` existieren.
-- Der `assetSha256` im QA-Datensatz muss zum aktuellen Public Asset passen. Dadurch werden alte Freigaben nach einem Bildwechsel automatisch stale.
-- Eine AI-Freigabe ist explizit und bildgebunden: `aiApproved: "yes"` gilt nur, wenn `aiApprovedAssetSha256` exakt dem aktuellen `assetSha256` entspricht. `aiReviewedAt`, `aiReviewer` und `aiNotes` dokumentieren die Prüfung. Ein Bildwechsel setzt diese Evidenz zurück.
-- Die Human-Freigabe ist das Release-Gate: `humanApproved: "yes"` und kein offenes `humanIssueIdentified: "yes"`.
-- `Approved AI` ist zusätzliche technische und fachliche Prüfevidenz, ersetzt aber niemals die Human-Freigabe als `M7`- oder Release-Gate.
-- Eine aktuelle Human-Freigabe ueberstimmt aeltere ChatGPT-Triagewerte. Die Felder `umlautsCorrectChatGpt` und `contentApprovedChatGpt` bleiben als Triage- und Arbeitsmetriken sichtbar, sind aber nach Human-Freigabe nicht das harte Release-Gate.
+- Die autoritative Semantic-Kind-Liste bestimmt den aktuellen, eindeutigen, nicht leeren Nenner. Ziel-IDs, vollstaendige kanonische Abdeckung und aktuelle Inhaltsbindungen werden validiert.
+- Jedes Ziel muss gleichzeitig die fuenf Gates D/P/A/M/V erfuellen. Die Schnittmenge zaehlt; Gate-Zaehler werden weder addiert noch gemittelt. Gerundete 100 % genuegen nicht.
+- D validiert zwei unabhaengige Beschreibungsreviews und ihre aufgeloeste Synthese. P validiert ein aktuelles `positive-understanding-evidence-v2`-Profil. A und M verwenden ihre produktiven semantischen Pruefungen einschliesslich Karten-/Sichtbarkeitsbindungen.
+- V verlangt eine aktuelle fachliche Bildentscheidung, die gueltige Ziel-/Text- und Public-/Canonical-Asset-Bindungen besitzt. Explizite menschliche Fehlerbefunde haben Vorrang vor positiver AI-Evidenz.
+- Die bereits vorhandenen produktiven Abschlusspruefungen werden pro Fach ausgefuehrt und als sechs erforderliche Validierungschecks ausgewiesen: Semantic-Kind-Scope, Beschreibungen, positive Nachweise, Atomizitaet, Memory sowie Bildaktualitaet und Bildentscheidung. Ein erfolgreicher Validierungscheck allein behauptet keine vollstaendige Abdeckung.
+- `deferred_provider_limitation` ist eine technische Rueckstellung notwendiger Arbeit und erfuellt V nicht. Im aktuellen Bildmodell gibt es keine fachliche Ausnahme, die daraus einen Abschluss macht.
+- Alle aktuellen IDs muessen strikt abgeschlossen sein; saemtliche erforderlichen Checks muessen bestehen und der Fachbericht darf keine offenen blockierenden Fehler enthalten. Fehler eines anderen Fachs verhindern den Abschluss dieses Fachs nicht.
 
 Metriken:
 
-- `expectedGoals`: normale atomare Ziele im Visualisierungs-Scope.
-- `linkedGoals`: Ziele mit primaerem Visualisierungslink.
-- `missingLinks`: Ziele ohne aktiven primaeren Bildlink.
-- `qaRecords`: Datensaetze im Fach-QA-Ledger.
-- `missingRecords`, `staleRecords`, `duplicateRecords`, `missingAssets`: technische Ledger-/Asset-Schulden.
-- `chatGptReady`, `chatGptOpen`: ChatGPT-Triagezustand.
-- `aiApproved`, `aiNotApproved`: explizite, zum aktuellen Asset-Hash passende AI-Freigabe beziehungsweise noch fehlende oder stale AI-Freigabe.
-- `humanApproved`, `humanNotApproved`, `humanIssues`: menschliche Freigabe und offene menschliche Fehlerhinweise.
+- `expectedGoals`: gueltige aktuelle `curricularAtomic`-Zielmenge; bei unbekanntem Nenner fehlt diese Metrik statt eine Null zu erfinden.
+- `strictComplete` und `remaining`: Schnittmenge der fuenf Gates und verbleibende Ziele.
+- `currentDescriptionResolutions`, `currentPositiveEvidenceProfiles`, `currentSemanticAtomicityDecisions`, `currentMemoryReviewDecisions`, `currentVisualizationQaRecords`: getrennte Gate-Abdeckungen.
+- `deferredVisualizations`: aktuelle notwendige Bildarbeiten mit technischer Rueckstellung.
+- `requiredChecksPassed`, `requiredChecksTotal`, `blockingIssues`: Abschlusspruefungen und Fehler des Fachberichts.
 
 Status:
 
-- `pass`, wenn alle Ziele im Scope einen aktuellen Link und einen passenden aktuellen QA-Datensatz haben und jedes aktive Bild menschlich freigegeben ist.
-- `warn`, wenn Links, Assets, QA-Datensaetze oder Human-Freigaben fehlen oder stale sind.
+- `pass`: Der zentrale Bericht bestaetigt den vollstaendigen strengen Abschluss.
+- `warn`: Die Nachweise sind auswertbar, aber noch nicht fuer alle Ziele vollstaendig.
+- `fail`: Zielmenge oder erforderliche Nachweispruefungen sind ungueltig.
+- `not_configured`: Fuer dieses Fach ist noch kein zentraler Fuenf-Gate-Scope konfiguriert.
 
-Reifeziel:
+Reifeziel und Grenzen:
 
-- Teil von `M7`; `not_configured`, `warn` und `fail` blockieren `M7`, aber nicht `M6`.
-
-Interpretation:
-
-- `M7` ist eine Veroeffentlichungs- und Orientierungsasset-Schicht, keine fachliche Voraussetzung fuer die Kern-Lernziellandschaft.
-- Provider-Deferred-Ziele bleiben sichtbar als nicht vollstaendig ausgerollt; sie koennen `M7` erst erreichen, wenn ein fachlich korrektes Bild existiert oder der Scope bewusst anders entschieden wird.
-- Bilder sind keine Source-Evidence, keine Aufgaben und kein Ersatz fuer Erklaerung oder Uebung.
+- `M7` setzt weiterhin saemtliche Anforderungen von `M6` voraus. Offene vertiefte QS blockiert M7, nicht den belegten niedrigeren Reifegrad. Geschuetzte Maturity-Floors bleiben unveraendert.
+- Zulaessige AI-Kandidaten bleiben `needs_human_review` beziehungsweise behalten ihre ausdrueckliche AI-Autoritaet. Es werden keine Human-Felder umgeschrieben und keine verpflichtenden menschlichen Entscheidungen ersetzt.
+- Bestehende menschliche Bildfreigaben und verbindliche Release-Gates bleiben erhalten. M7 ist kein Bild-Release-Gate und kein Nachweis menschlicher Erprobung.
+- `humanTrialBlockingFindings` projiziert getrennt die Anzahl eindeutiger aktueller Ziel-IDs mit ausdruecklichem menschlichem Bildfehlerbefund fuer das exakte Curriculum. Offene Reviews erzeugen keinen menschlichen Fehlerbefund. Lernendenbezogene Befunde werden im geschuetzten Champion-Ablauf zusaetzlich beruecksichtigt.
+- Historische Pruefartefakte werden nicht umgedeutet; neue oder geaenderte Inhalte muessen aktuelle Nachweise besitzen.
 
 ### `CQR-401` - Composition view availability
 

@@ -20,7 +20,7 @@ import {
   defaultMemoryCardReviewConfigDir,
   discoverMemoryCardReviewConfigs,
 } from './memoryCardReviewConfigDiscovery'
-import { isGoalVisualizationAiApproved } from './goalVisualizationQaModel'
+import { generateDeepUnderstandingRollout, type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { hasUnavailableCurricularAtomicAssessmentPrerequisite } from './lib/canonicalMathSek1ReviewedExamRoutes'
 
@@ -611,6 +611,7 @@ interface CurriculumStatus {
   frameworkId?: string
   path: string
   maturity: MaturityLevel
+  humanTrialBlockingFindings: number
   goals: number
   atomicGoals: number
   clusterGoals: number
@@ -622,7 +623,7 @@ interface CurriculumStatus {
 
 interface StatusDocument {
   schemaVersion: 1
-  rulesVersion: 'curriculum-quality-v4'
+  rulesVersion: 'curriculum-quality-v5'
   generatedAt: string
   generatedBy: string
   sources: {
@@ -631,6 +632,7 @@ interface StatusDocument {
     semanticAtomicityRoot: string
     memoryCardReviewRoot: string
     goalVisualizationQaRoot: string
+    deepUnderstandingReportGenerator: string
     compositionViewRoot: string
     acceptedWarningsPath: string
     sourceLandscapeRegistryPath: string
@@ -732,26 +734,12 @@ interface MemoryCardReviewCardRecord {
 
 interface GoalVisualizationQaRecord {
   goalId: string
-  title: string
-  imageUrl: string
-  publicAssetPath: string
-  canonicalAssetPath: string
-  assetSha256: string
-  umlautsCorrectChatGpt: 'yes' | 'no'
-  contentApprovedChatGpt: 'yes' | 'no'
-  aiApproved?: 'yes' | 'no'
-  aiApprovedAssetSha256?: string
-  aiReviewedAt?: string | null
-  aiReviewer?: string
-  aiNotes?: string
-  humanApproved: 'yes' | 'no'
+  landscapeId: string
   humanIssueIdentified: 'yes' | 'no'
-  humanIssueDescription: string
 }
 
 interface GoalVisualizationQaLedger {
   schemaVersion: 1
-  subject: string
   records: GoalVisualizationQaRecord[]
 }
 
@@ -1118,10 +1106,10 @@ const ruleCatalog: QualityRuleDefinition[] = [
   },
   {
     id: 'CQR-303',
-    label: 'Goal-visualization approval trace',
-    category: 'visualization',
+    label: 'Deep curriculum QA completion',
+    category: 'review',
     maturityTarget: 'M7',
-    description: 'All ordinary atomic learning goals have current primary goal-visualization assets, the QA ledger hashes match the active assets, and every active image has current human approval with no open human issue.',
+    description: 'The central five-gate report proves a nonempty current curricularAtomic scope, complete D/P/A/M/V intersection, successful required validation checks, and no blocking findings. Technical visualization deferrals remain incomplete; AI evidence never becomes human approval.',
   },
   {
     id: 'CQR-401',
@@ -1470,24 +1458,8 @@ function collectFiles(root: string, predicate: (fileName: string) => boolean): s
   return result.sort((left, right) => left.localeCompare(right))
 }
 
-function hashFile(path: string): string {
-  if (!existsSync(path)) return ''
-  return `sha256:${createHash('sha256').update(readFileSync(path)).digest('hex')}`
-}
-
 function isAtomicGoal(goal: LearningGoal): boolean {
   return (goal.contains?.length ?? 0) === 0
-}
-
-function isGoalVisualizationRelevantGoal(goal: LearningGoal): boolean {
-  const tags = goal.tags ?? []
-  return isAtomicGoal(goal)
-    && goal.nodeKind !== 'memory'
-    && goal.nodeKind !== 'exam'
-    && goal.nodeKind !== 'tutor'
-    && (goal as { examData?: unknown }).examData === undefined
-    && !tags.includes('memorization')
-    && !tags.some((tag) => tag.startsWith('srs-deck:'))
 }
 
 function isSemanticAtomicityRelevantGoal(goal: LearningGoal): boolean {
@@ -3655,192 +3627,70 @@ function readMemoryCardReviewConfigs(): Map<string, MemoryCardReviewConfig[]> {
   return configsByLandscapeId
 }
 
-function normalizeGoalVisualizationSubject(value: string | undefined): string {
-  return (value ?? '')
-    .trim()
-    .toLocaleLowerCase('de-DE')
-    .replace(/ä/g, 'ae')
-    .replace(/ö/g, 'oe')
-    .replace(/ü/g, 'ue')
-    .replace(/ß/g, 'ss')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-}
-
-function goalVisualizationSubjectFromUrl(url: string | undefined): string {
-  const match = url?.match(/^\/assets\/goal-visualizations\/([^/]+)\//u)
-  return match?.[1] ?? ''
-}
-
-function goalVisualizationPublicAssetPath(url: string | undefined): string {
-  if (!url?.startsWith('/assets/goal-visualizations/')) return ''
-  return resolve(repoRoot, 'app/public', url.replace(/^\/+/u, ''))
-}
-
-function primaryGoalVisualizationLink(goal: LearningGoal) {
-  return (goal.resourceLinks ?? []).find((link) =>
-    link.type === 'goal-visualization'
-    && link.resourceType === 'image'
-    && link.role === 'primary'
-    && typeof link.url === 'string')
-}
-
-function readGoalVisualizationQaLedgers(): Map<string, GoalVisualizationQaLedger> {
-  const ledgersBySubject = new Map<string, GoalVisualizationQaLedger>()
-  collectFiles(goalVisualizationQaRoot, (fileName) => /\.qa\.json$/i.test(fileName)).forEach((file) => {
+function readGoalVisualizationQaLedgers(): GoalVisualizationQaLedger[] {
+  return collectFiles(goalVisualizationQaRoot, (fileName) => /\.qa\.json$/i.test(fileName)).map((file) => {
     const ledger = loadJson<GoalVisualizationQaLedger>(file)
-    const subject = normalizeGoalVisualizationSubject(ledger.subject) || (file.match(/([^/\\]+)\.qa\.json$/i)?.[1] ?? '')
-    if (subject && ledger.schemaVersion === 1 && Array.isArray(ledger.records)) {
-      ledgersBySubject.set(subject, ledger)
+    if (ledger.schemaVersion !== 1 || !Array.isArray(ledger.records)
+      || ledger.records.some((record) => typeof record.goalId !== 'string' || !record.goalId.trim()
+        || typeof record.landscapeId !== 'string' || !record.landscapeId.trim()
+        || !['yes', 'no'].includes(record.humanIssueIdentified))) {
+      throw new Error(`Invalid goal-visualization QA findings ledger: ${toRepoPath(file)}`)
     }
+    return ledger
   })
-  return ledgersBySubject
 }
 
-function evaluateGoalVisualizationQa(
+/** Public explicit findings only; unfinished reviews do not create human findings. */
+export function countHumanTrialBlockingFindings(
   landscape: SkillLandscape,
-  ledgersBySubject: Map<string, GoalVisualizationQaLedger>,
+  ledgers: GoalVisualizationQaLedger[],
+): number {
+  const currentIds = new Set(landscape.goals.map(({ id }) => id))
+  return new Set(ledgers.flatMap(({ records }) => records)
+    .filter((record) => record.landscapeId === landscape.landscapeId
+      && currentIds.has(record.goalId) && record.humanIssueIdentified === 'yes')
+    .map(({ goalId }) => goalId)).size
+}
+
+/** The report owns the five-gate decision; this is only its dashboard projection. */
+export function evaluateDeepUnderstandingQa(
+  landscape: SkillLandscape,
+  landscapePath: string,
+  report: DeepUnderstandingRolloutReport,
 ): RuleResult {
-  const relevantGoals = landscape.goals.filter(isGoalVisualizationRelevantGoal)
-  const linksByGoalId = new Map<string, NonNullable<ReturnType<typeof primaryGoalVisualizationLink>>>()
-  relevantGoals.forEach((goal) => {
-    const link = primaryGoalVisualizationLink(goal)
-    if (link) linksByGoalId.set(goal.id, link)
-  })
-  const subjectSlug = Array.from(linksByGoalId.values())
-    .map((link) => goalVisualizationSubjectFromUrl(link.url))
-    .find(Boolean)
-    ?? normalizeGoalVisualizationSubject(landscape.subject)
-  const ledger = ledgersBySubject.get(subjectSlug)
-  if (!ledger) {
-    return makeRule(
-      'CQR-303',
-      'not_configured',
-      `No goal-visualization QA ledger is registered for subject ${subjectSlug || '(unknown)'}.`,
-      {
-        expectedGoals: relevantGoals.length,
-        linkedGoals: linksByGoalId.size,
-      },
-    )
+  const matches = report.subjects.filter((subject) => subject.landscapeId === landscape.landscapeId
+    || subject.landscapePath === landscapePath)
+  if (matches.length === 0) {
+    return makeRule('CQR-303', 'not_configured', 'No central deep-understanding QA scope is configured for this curriculum.')
   }
-
-  let missingLinks = 0
-  let missingRecords = 0
-  let staleRecords = 0
-  let duplicateRecords = 0
-  let missingAssets = 0
-  let humanApproved = 0
-  let humanNotApproved = 0
-  let humanIssues = 0
-  let chatGptReady = 0
-  let chatGptOpen = 0
-  let aiApproved = 0
-  let aiNotApproved = 0
-  const details: string[] = []
-
-  const recordsByGoalAndUrl = new Map<string, GoalVisualizationQaRecord>()
-  const duplicateKeys = new Set<string>()
-  ledger.records.forEach((record) => {
-    const key = `${record.goalId}\n${record.imageUrl}`
-    if (recordsByGoalAndUrl.has(key)) duplicateKeys.add(key)
-    recordsByGoalAndUrl.set(key, record)
-  })
-  duplicateRecords += duplicateKeys.size
-  duplicateKeys.forEach((key) => {
-    if (details.length < 30) details.push(`duplicate QA record for ${key.replace('\n', ' ')}`)
-  })
-
-  relevantGoals.forEach((goal) => {
-    const link = linksByGoalId.get(goal.id)
-    if (!link) {
-      missingLinks += 1
-      if (details.length < 30) details.push(`missing visualization link: ${formatGoal(goal, goal.id)}`)
-      return
-    }
-
-    const record = recordsByGoalAndUrl.get(`${goal.id}\n${link.url}`)
-    if (!record) {
-      missingRecords += 1
-      if (details.length < 30) details.push(`missing QA record: ${formatGoal(goal, goal.id)} ${link.url}`)
-      return
-    }
-
-    const publicAssetPath = goalVisualizationPublicAssetPath(link.url)
-    const currentHash = hashFile(publicAssetPath)
-    if (!currentHash) {
-      missingAssets += 1
-      if (details.length < 30) details.push(`missing public asset: ${formatGoal(goal, goal.id)} ${link.url}`)
-      return
-    }
-    if (record.assetSha256 !== currentHash) {
-      staleRecords += 1
-      if (details.length < 30) details.push(`stale QA record: ${formatGoal(goal, goal.id)} ledger ${record.assetSha256 || '(empty)'} current ${currentHash}`)
-      return
-    }
-
-    if (record.umlautsCorrectChatGpt === 'yes' && record.contentApprovedChatGpt === 'yes') {
-      chatGptReady += 1
-    } else {
-      chatGptOpen += 1
-    }
-
-    if (isGoalVisualizationAiApproved(record)) {
-      aiApproved += 1
-    } else {
-      aiNotApproved += 1
-    }
-
-    if (record.humanIssueIdentified === 'yes') {
-      humanIssues += 1
-      if (details.length < 30) {
-        const issue = record.humanIssueDescription?.trim() ? `: ${record.humanIssueDescription.trim()}` : ''
-        details.push(`open human issue: ${formatGoal(goal, goal.id)}${issue}`)
-      }
-    }
-
-    if (record.humanApproved === 'yes' && record.humanIssueIdentified !== 'yes') {
-      humanApproved += 1
-    } else {
-      humanNotApproved += 1
-      if (details.length < 30 && record.humanIssueIdentified !== 'yes') {
-        details.push(`missing human approval: ${formatGoal(goal, goal.id)}`)
-      }
-    }
-  })
-
-  const unresolved = missingLinks
-    + missingRecords
-    + staleRecords
-    + duplicateRecords
-    + missingAssets
-    + humanNotApproved
-    + humanIssues
-
+  const subject = matches[0]
+  if (matches.length !== 1 || subject.landscapeId !== landscape.landscapeId || subject.landscapePath !== landscapePath) {
+    return makeRule('CQR-303', 'fail', 'The central deep-understanding report does not unambiguously identify this curriculum.')
+  }
+  const checksPassed = subject.requiredChecks.filter(({ status }) => status === 'pass').length
+  const status: RuleStatus = subject.issues.length > 0 || subject.denominator === null || subject.denominator <= 0
+    ? 'fail'
+    : subject.strictCompletionReady ? 'pass' : 'warn'
   return makeRule(
-    'CQR-303',
-    unresolved === 0 ? 'pass' : 'warn',
-    unresolved === 0
-      ? `Goal visualizations are complete and human-approved for all ${relevantGoals.length} ordinary atomic goals.`
-      : 'Goal-visualization rollout or human approval is still incomplete.',
+    'CQR-303', status,
+    subject.strictCompletionReady
+      ? `Deep curriculum QA is complete for all ${subject.denominator} current curricularAtomic goals.`
+      : `Deep curriculum QA is incomplete: ${subject.strictComplete}/${subject.denominator ?? 'unknown'} current curricularAtomic goals strictly complete.`,
     {
-      expectedGoals: relevantGoals.length,
-      linkedGoals: linksByGoalId.size,
-      missingLinks,
-      qaRecords: ledger.records.length,
-      missingRecords,
-      staleRecords,
-      duplicateRecords,
-      missingAssets,
-      currentRecords: relevantGoals.length - missingLinks - missingRecords - staleRecords - missingAssets,
-      chatGptReady,
-      chatGptOpen,
-      aiApproved,
-      aiNotApproved,
-      humanApproved,
-      humanNotApproved,
-      humanIssues,
+      ...(subject.denominator === null ? {} : { expectedGoals: subject.denominator, remaining: subject.remaining! }),
+      strictComplete: subject.strictComplete,
+      ...subject.gates,
+      deferredVisualizations: subject.deferredVisualizationGoalIds.length,
+      requiredChecksPassed: checksPassed,
+      requiredChecksTotal: subject.requiredChecks.length,
+      blockingIssues: subject.issues.length,
     },
-    details,
+    [
+      ...subject.issues,
+      ...(subject.deferredVisualizationGoalIds.length > 0
+        ? [`${subject.deferredVisualizationGoalIds.length} current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V.`]
+        : []),
+    ],
   )
 }
 
@@ -5837,7 +5687,7 @@ function deriveScopeMaturity(rules: RuleResult[]): MaturityLevel {
   return 'M4'
 }
 
-function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: ScopeStatus[]): MaturityLevel {
+export function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: ScopeStatus[]): MaturityLevel {
   const graphReady = curriculumRules.find((rule) => rule.id === 'CQR-001')?.status === 'pass'
     && curriculumRules.find((rule) => rule.id === 'CQR-002')?.status === 'pass'
   if (!graphReady) return 'M0'
@@ -5963,12 +5813,13 @@ function renderMarkdown(status: StatusDocument): string {
   return `${lines.join('\n')}\n`
 }
 
-function main() {
+async function main() {
   const shouldCheck = process.argv.includes('--check')
   const applicabilityCompilation = buildApplicabilityCompilation()
   const semanticConfigsByLandscapeId = readSemanticConfigs()
   const memoryCardReviewConfigsByLandscapeId = readMemoryCardReviewConfigs()
-  const goalVisualizationQaLedgersBySubject = readGoalVisualizationQaLedgers()
+  const goalVisualizationQaLedgers = readGoalVisualizationQaLedgers()
+  const deepUnderstandingReport = await generateDeepUnderstandingRollout()
   const compositionViewCountsByLandscapeId = readCompositionViewCountsByLandscapeId()
   const applicabilityWarningMetricsByLandscapeId = readApplicabilityWarningMetricsByLandscapeId(applicabilityCompilation)
   const jurisdictionCoverageByLandscapeId = readJurisdictionCoverageByLandscapeId(applicabilityCompilation)
@@ -5998,7 +5849,7 @@ function main() {
       ]
       curriculumRules.push(
         evaluateMemoryCardReview(landscape, memoryCardReviewConfigs),
-        evaluateGoalVisualizationQa(landscape, goalVisualizationQaLedgersBySubject),
+        evaluateDeepUnderstandingQa(landscape, toRepoPath(file), deepUnderstandingReport),
         evaluateCompositionViews(compositionViewCountsByLandscapeId.get(landscape.landscapeId) ?? 0),
         evaluateApplicabilityWarnings(applicabilityWarningMetricsByLandscapeId.get(landscape.landscapeId)),
       )
@@ -6023,6 +5874,7 @@ function main() {
         frameworkId: landscape.frameworkId,
         path: toRepoPath(file),
         maturity: deriveCurriculumMaturity(curriculumRules, scopes),
+        humanTrialBlockingFindings: countHumanTrialBlockingFindings(landscape, goalVisualizationQaLedgers),
         goals: landscape.goals.length,
         atomicGoals,
         clusterGoals: landscape.goals.length - atomicGoals,
@@ -6049,7 +5901,7 @@ function main() {
 
   const statusDraft: StatusDocument = {
     schemaVersion: 1,
-    rulesVersion: 'curriculum-quality-v4',
+    rulesVersion: 'curriculum-quality-v5',
     generatedAt: new Date().toISOString(),
     generatedBy: 'app/scripts/generateCurriculumQualityStatus.ts',
     sources: {
@@ -6058,6 +5910,7 @@ function main() {
       semanticAtomicityRoot: toRepoPath(semanticAtomicityRoot),
       memoryCardReviewRoot: toRepoPath(memoryCardReviewRoot),
       goalVisualizationQaRoot: toRepoPath(goalVisualizationQaRoot),
+      deepUnderstandingReportGenerator: 'app/scripts/reportDeepUnderstandingRollout.ts',
       compositionViewRoot: toRepoPath(compositionViewRoot),
       acceptedWarningsPath: toRepoPath(acceptedWarningsPath),
       sourceLandscapeRegistryPath: toRepoPath(sourceLandscapeRegistryPath),
@@ -6101,4 +5954,9 @@ function main() {
   console.log(`Wrote ${toRepoPath(statusMarkdownPath)}`)
 }
 
-main()
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error))
+    process.exitCode = 1
+  })
+}

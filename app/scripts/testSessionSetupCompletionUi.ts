@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import { chromium, type Browser, type BrowserContext, type Page } from 'playwright'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from '../src/utils/curriculumDisplay'
-import { CANONICAL_GYMNASIUM_MATH_ID } from '../src/utils/curriculumQualityTrafficLight'
+const CANONICAL_GYMNASIUM_MATH_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 import type {
   PersonalizationCompletedDecision,

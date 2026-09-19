@@ -7,6 +7,9 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LearnerGoalCompletionRepository extends JpaRepository<LearnerGoalCompletion, UUID> {
+    java.util.Optional<LearnerGoalCompletion> findByLearner_SkillpilotIdAndGoalIdAndCompletionDate(
+            String skillpilotId, String goalId, LocalDate completionDate);
+
     boolean existsByLearner_SkillpilotIdAndGoalIdAndCompletionDate(
             String skillpilotId, String goalId, LocalDate completionDate);
 

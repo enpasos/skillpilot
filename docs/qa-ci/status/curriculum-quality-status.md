@@ -7,8 +7,8 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-09-14T04:39:38.951Z
-Rules version: curriculum-quality-v4
+Generated: 2026-09-19T21:21:51.262Z
+Rules version: curriculum-quality-v5
 
 ## Summary
 
@@ -29,7 +29,7 @@ Rules version: curriculum-quality-v4
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | M6 | 430 | 379 | 17/17 | 16/16 | 1 | 0 | 0 |
-| Chemie (Gymnasium, DE) | M6 | 473 | 405 | 32/32 | 16/16 | 1 | 1 | 0 |
+| Chemie (Gymnasium, DE) | M6 | 473 | 405 | 32/32 | 16/16 | 1 | 0 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Deutsch (Gymnasium, DE) | M6 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
@@ -402,7 +402,7 @@ Rules version: curriculum-quality-v4
 | CQR-203 | M4 | assessment | Terminal autonomy examData has release status, covered goals, covered strands, and demand-level metadata. |
 | CQR-301 | M5 | review | Configured semantic-atomicity ledgers are complete, current, and free of unresolved review queue entries. |
 | CQR-302 | M6 | review | Configured memory-card ledgers explicitly decide for ordinary atomic goals whether memorization is justified; every kept primary card traces to such a decision, every existing memory deck remains traced, and configured composition views expose referenced memory nodes where memory-required goals are visible. |
-| CQR-303 | M7 | visualization | All ordinary atomic learning goals have current primary goal-visualization assets, the QA ledger hashes match the active assets, and every active image has current human approval with no open human issue. |
+| CQR-303 | M7 | review | The central five-gate report proves a nonempty current curricularAtomic scope, complete D/P/A/M/V intersection, successful required validation checks, and no blocking findings. Technical visualization deferrals remain incomplete; AI evidence never becomes human approval. |
 | CQR-401 | M5 | view | The curriculum has at least one reviewed learner-facing composition view. |
 | CQR-501 | M5 | applicability | Active applicability warnings are resolved and accepted warning records still match current findings. |
 

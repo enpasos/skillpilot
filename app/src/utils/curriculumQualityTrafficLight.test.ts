@@ -1,285 +1,100 @@
+import assert from 'node:assert/strict'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import {
-  CurriculumDropdown,
-  type LandscapeSummary,
-} from '../components/CurriculumDropdown'
+import { MaturityBadge, QualityLegend, QualityStatusBadge } from '../components/CurriculumQualityBadge'
+import { CurriculumDeepQualityProgress } from '../components/CurriculumDeepQualityProgress'
+import { CurriculumDropdown, type LandscapeSummary } from '../components/CurriculumDropdown'
 import { LanguageProvider } from '../contexts/LanguageContext'
-import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
 import {
-  CANONICAL_GYMNASIUM_MATH_ID,
-  CANONICAL_GYMNASIUM_PHYSICS_ID,
-  buildGymnasiumSubjectQualityRows,
-  filterCurriculaByQuality,
-  getCurriculumQualityStatus,
-  getGymnasiumSubjectQualityStatus,
-  matchesCurriculumQualityFilter,
-  type CurriculumQualityStatus,
+  buildGymnasiumSubjectQualityRows, filterCurriculaByQuality, getCurriculumQualityStatus,
+  getGymnasiumSubjectQualityStatus, matchesCurriculumQualityFilter,
 } from './curriculumQualityTrafficLight'
+import * as packageQuality from '../packageConsumer/curriculumQualityTrafficLight'
+import {
+  curriculumQualityStatuses, getCurriculumQualityCopy, maturityClass, maturityCopy, maturityOrder,
+} from './curriculumQualityPresentation'
 
-const storedValues = new Map<string, string>()
-const localStorageStub: Storage = {
-  get length() {
-    return storedValues.size
-  },
-  clear: () => storedValues.clear(),
-  getItem: (key) => storedValues.get(key) ?? null,
-  key: (index) => [...storedValues.keys()][index] ?? null,
-  removeItem: (key) => {
-    storedValues.delete(key)
-  },
-  setItem: (key, value) => {
-    storedValues.set(key, String(value))
-  },
+for (const qualityStatus of curriculumQualityStatuses) {
+  assert.equal(getCurriculumQualityStatus({ qualityStatus }), qualityStatus)
+  assert.equal(packageQuality.getCurriculumQualityStatus({ qualityStatus }), qualityStatus)
 }
+for (const value of [undefined, null, {}, { qualityStatus: 'green' }, { qualityStatus: 'invented' }]) {
+  assert.equal(getCurriculumQualityStatus(value), null, 'missing or invalid evidence stays unknown')
+}
+// Neither a famous subject ID, an M7 milestone nor mastery proves a human trial.
+const formerGreen = { curriculumId: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', qualityMaturity: 'M7', qualityStatus: null }
+assert.equal(getCurriculumQualityStatus(formerGreen), null)
+assert.equal(getGymnasiumSubjectQualityStatus({ qualityStatus: 'machine_qa' }), 'machine_qa')
+assert.equal(matchesCurriculumQualityFilter(null, 'all'), true)
+assert.equal(matchesCurriculumQualityFilter(null, 'experimental'), false)
+const candidates = [formerGreen, { curriculumId: 'machine', qualityStatus: 'machine_qa' as const }]
+assert.deepEqual(filterCurriculaByQuality(candidates, 'all'), candidates)
+assert.deepEqual(filterCurriculaByQuality(candidates, 'machine_qa'), [candidates[1]])
+assert.deepEqual(filterCurriculaByQuality(candidates, 'machine_qa', formerGreen.curriculumId), candidates)
+assert.deepEqual(packageQuality.filterCurriculaByQuality(candidates, 'machine_qa'), [candidates[1]])
+const collection = { curriculumId: 'collection', qualityStatus: null, subjectQuality: [{ qualityStatus: 'machine_qa' as const }] }
+assert.deepEqual(filterCurriculaByQuality([collection], 'machine_qa'), [collection], 'matching subjects keep an unselected collection discoverable')
+assert.deepEqual(filterCurriculaByQuality([collection], 'human_trial_completed'), [])
+assert.equal(getCurriculumQualityStatus(collection), null, 'child matches never upgrade the collection itself')
+const unknownRows = buildGymnasiumSubjectQualityRows(['Mathematik', 'Physik'], undefined, undefined, 'de')
+assert(unknownRows.every((row) => row.quality === null))
+const translated = buildGymnasiumSubjectQualityRows(['Mathematik', 'Chemie'], ['Mathematics', 'Chemistry'],
+  [{ subject: 'Chemie', maturity: 'M7', qualityStatus: 'machine_qa' as const }], 'en')
+assert.equal(translated[0].subject, 'Chemistry')
+assert.equal(getGymnasiumSubjectQualityStatus(translated[0].quality), 'machine_qa')
 
-Object.defineProperty(globalThis, 'localStorage', {
-  configurable: true,
-  value: localStorageStub,
-})
-
-const assertEqual = <T>(actual: T, expected: T, message: string) => {
-  if (actual !== expected) {
-    throw new Error(`${message}: expected ${String(expected)}, got ${String(actual)}`)
+const luminance = (hex: string): number => {
+  const values = hex.match(/[a-f\d]{2}/gi)!.map((part) => parseInt(part, 16) / 255)
+    .map((value) => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4)
+  return 0.2126 * values[0] + 0.7152 * values[1] + 0.0722 * values[2]
+}
+for (const theme of ['', 'dark:']) {
+  const backgrounds = new Set<string>()
+  for (const level of maturityOrder) {
+    const color = (kind: string) => maturityClass[level].split(' ')
+      .find((value) => value.startsWith(`${theme}${kind}-[#`))!.match(/#[a-f\d]{6}/i)![0]
+    const bg = color('bg'); const fg = color('text')
+    backgrounds.add(bg)
+    const lighter = Math.max(luminance(bg), luminance(fg))
+    const darker = Math.min(luminance(bg), luminance(fg))
+    assert((lighter + 0.05) / (darker + 0.05) >= 4.5, `${level} ${theme || 'light'} normal text contrast`)
+  }
+  assert.equal(backgrounds.size, 8, 'all eight steps have distinct fixed styles in each theme')
+}
+for (const language of ['de', 'en'] as const) {
+  const legend = renderToStaticMarkup(createElement(QualityLegend, { language }))
+  for (const level of maturityOrder) {
+    assert(legend.includes(`data-maturity="${level}"`))
+    assert(renderToStaticMarkup(createElement(MaturityBadge, { level, language }))
+      .includes(`aria-label="${maturityCopy[language].label} ${level}:`))
+  }
+  assert(!renderToStaticMarkup(createElement(MaturityBadge, { level: null, language })).includes('M0'))
+  const route = renderToStaticMarkup(createElement(MaturityBadge, { level: 'M1', language, scope: 'route' }))
+  assert(route.includes(maturityCopy[language].routeLabel) && !route.includes(maturityCopy[language].legend.M1), 'route stages do not claim curriculum source maturity')
+  for (const status of curriculumQualityStatuses) {
+    assert(renderToStaticMarkup(createElement(QualityStatusBadge, { status, language }))
+      .includes(getCurriculumQualityCopy(language).statusLabels[status]))
   }
 }
-
-const assertCurriculumStatus = (
-  curriculumId: string,
-  maturity: string | null,
-  expected: CurriculumQualityStatus,
-  message: string,
-) => assertEqual(getCurriculumQualityStatus(curriculumId, maturity), expected, message)
-
-assertCurriculumStatus(
-  CANONICAL_GYMNASIUM_ROOT_ID,
-  null,
-  'green',
-  'the canonical Gymnasium root is always green',
-)
-assertCurriculumStatus(
-  CANONICAL_GYMNASIUM_MATH_ID,
-  'M3',
-  'green',
-  'canonical Gymnasium mathematics retains its explicit human-QA classification',
-)
-assertCurriculumStatus(
-  CANONICAL_GYMNASIUM_PHYSICS_ID,
-  'M7',
-  'green',
-  'canonical Gymnasium physics is always green',
-)
-assertCurriculumStatus(
-  'other-m6-curriculum',
-  'M6',
-  'orange',
-  'other M6 curricula are orange',
-)
-assertCurriculumStatus(
-  'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0',
-  null,
-  'orange',
-  'the current manual list keeps canonical chemistry orange without runtime QA data',
-)
-assertCurriculumStatus(
-  'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0',
-  'M5',
-  'red',
-  'explicit current maturity overrides the manual fallback list',
-)
-assertCurriculumStatus(
-  'other-m7-curriculum',
-  'M7',
-  'red',
-  'other maturity levels remain red despite a higher numerical maturity',
-)
-assertCurriculumStatus(
-  'curriculum-without-quality-data',
-  null,
-  'red',
-  'curricula without an explicit manual classification fallback to red',
-)
-
-assertEqual(
-  getGymnasiumSubjectQualityStatus('Mathematik', 'M3'),
-  'green',
-  'the mathematics subject row retains its explicit human-QA classification',
-)
-assertEqual(
-  getGymnasiumSubjectQualityStatus('Physics', 'M7'),
-  'green',
-  'the English physics subject row is green',
-)
-assertEqual(
-  getGymnasiumSubjectQualityStatus('Chemie', 'M6'),
-  'orange',
-  'other M6 subject rows are orange',
-)
-assertEqual(
-  getGymnasiumSubjectQualityStatus('Chemie', null),
-  'orange',
-  'the manual subject fallback remains available without a repository QA snapshot',
-)
-assertEqual(
-  getGymnasiumSubjectQualityStatus('Chemie', 'M5'),
-  'red',
-  'explicit subject maturity overrides the manual fallback list',
-)
-assertEqual(
-  getGymnasiumSubjectQualityStatus('Geschichte', 'M5'),
-  'red',
-  'other subject rows below M6 are red',
-)
-
-assertEqual(
-  matchesCurriculumQualityFilter('green', 'green'),
-  true,
-  'a status matches its own filter',
-)
-assertEqual(
-  matchesCurriculumQualityFilter('orange', 'green'),
-  false,
-  'a status does not match a different filter',
-)
-assertEqual(
-  matchesCurriculumQualityFilter('red', 'all'),
-  true,
-  'the all filter includes every status',
-)
-
-const curriculumCandidates = [
-  { curriculumId: CANONICAL_GYMNASIUM_ROOT_ID },
-  { curriculumId: 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0' },
-  { curriculumId: 'red-curriculum' },
-]
-assertEqual(
-  filterCurriculaByQuality(curriculumCandidates, 'green')
-    .map((candidate) => candidate.curriculumId)
-    .join(','),
-  CANONICAL_GYMNASIUM_ROOT_ID,
-  'the default green filter keeps only manually green curricula',
-)
-assertEqual(
-  filterCurriculaByQuality(
-    curriculumCandidates,
-    'green',
-    'red-curriculum',
-  ).map((candidate) => candidate.curriculumId).join(','),
-  `${CANONICAL_GYMNASIUM_ROOT_ID},red-curriculum`,
-  'an existing non-green selection remains visible while the green filter is active',
-)
-
-const packageSubjects = [
-  'Mathematik',
-  'Physik',
-  'Chemie',
-  'Biologie',
-  'Informatik',
-  'Geschichte',
-  'Deutsch',
-  'Politik und Wirtschaft',
-  'Englisch',
-  'Französisch',
-  'Latein',
-  'Spanisch',
-  'Italienisch',
-  'Russisch',
-  'Polnisch',
-  'Tschechisch',
-  'Griechisch',
-  'Chinesisch',
-  'Musik',
-  'Wirtschaftswissenschaften',
-]
-const packageRows = buildGymnasiumSubjectQualityRows(
-  packageSubjects,
-  undefined,
-  undefined,
-  'de',
-)
-assertEqual(
-  packageRows.length,
-  20,
-  'package mode keeps every Gymnasium subject row without a quality snapshot',
-)
-const packageStatusCounts = packageRows.reduce<Record<CurriculumQualityStatus, number>>(
-  (counts, row) => {
-    counts[getGymnasiumSubjectQualityStatus(row.subject, row.quality?.maturity)] += 1
-    return counts
-  },
-  { green: 0, orange: 0, red: 0 },
-)
-assertEqual(
-  JSON.stringify(packageStatusCounts),
-  JSON.stringify({ green: 2, orange: 7, red: 11 }),
-  'package mode applies the complete manual green, orange, and red subject projection',
-)
-
-const localizedQualityRows = buildGymnasiumSubjectQualityRows(
-  ['Mathematik', 'Chemie'],
-  ['Mathematics', 'Chemistry'],
-  [{ subject: 'Chemie', maturity: 'M6' }],
-  'en',
-)
-assertEqual(
-  localizedQualityRows[0]?.subject,
-  'Chemistry',
-  'repository quality rows are localized by matching their subject instead of by sparse array position',
-)
-
-const landscape = (
-  curriculumId: string,
-  title: string,
-): LandscapeSummary => ({
-  curriculumId,
-  filename: `${curriculumId}.json`,
-  country: 'DE',
-  region: 'DEU',
-  type: 'Gymnasium',
-  level: 'Sekundarstufe',
-  subject: title,
-  locale: 'de-DE',
-  title,
+const progress = renderToStaticMarkup(createElement(CurriculumDeepQualityProgress, {
+  language: 'de', metrics: { expectedGoals: 478, strictComplete: 472, remaining: 6 },
+}))
+assert(progress.includes('472 von 478'))
+assert(!progress.includes('M7') && !progress.includes('%'), 'partial QA cannot advertise a milestone or rounded completion')
+assert(!renderToStaticMarkup(createElement(CurriculumDeepQualityProgress, {
+  language: 'de', metrics: { expectedGoals: 10, strictComplete: 12, remaining: 0 },
+})).includes('12 von 10'))
+Object.defineProperty(globalThis, 'localStorage', {
+  configurable: true, value: { getItem: () => 'de', setItem: () => undefined },
 })
-
-storedValues.set('skillpilot_lang', 'de')
-const dropdownMarkup = renderToStaticMarkup(
-  createElement(
-    LanguageProvider,
-    null,
-    createElement(CurriculumDropdown, {
-      onSelect: () => undefined,
-      showQualityFilter: true,
-      landscapes: [
-        landscape(CANONICAL_GYMNASIUM_ROOT_ID, 'Gymnasium (DE)'),
-        landscape('c436b994-8f44-5134-b9f8-0c9f5d6a5ba0', 'Chemie'),
-        landscape('red-curriculum', 'Ungeprüftes Fach'),
-      ],
-    }),
-  ),
-)
-assertEqual(
-  dropdownMarkup.includes('aria-pressed="true"')
-    && dropdownMarkup.includes('Menschliche QS')
-    && dropdownMarkup.includes('bg-emerald-700 text-white'),
-  true,
-  'the rendered curriculum dropdown starts with the green traffic-light filter active',
-)
-assertEqual(
-  dropdownMarkup.includes(`value="${CANONICAL_GYMNASIUM_ROOT_ID}"`),
-  true,
-  'the rendered default filter includes a green curriculum',
-)
-assertEqual(
-  dropdownMarkup.includes('value="c436b994-8f44-5134-b9f8-0c9f5d6a5ba0"')
-    || dropdownMarkup.includes('value="red-curriculum"'),
-  false,
-  'the rendered default filter excludes orange and red curricula',
-)
-assertEqual(
-  dropdownMarkup.includes('Empfohlene Curricula'),
-  false,
-  'ordinary curricula render without a recommended group heading',
-)
-
-console.log('curriculum quality traffic light tests passed')
+const landscapes: LandscapeSummary[] = candidates.map((candidate) => ({
+  ...candidate, filename: 'fixture.json', country: 'DE', region: 'DE', type: 'Gymnasium',
+  level: 'Sekundarstufe', subject: candidate.curriculumId, locale: 'de-DE', title: candidate.curriculumId,
+}))
+const markup = renderToStaticMarkup(createElement(LanguageProvider, { children:
+  createElement(CurriculumDropdown, { onSelect: () => undefined, showQualityFilter: true, landscapes }),
+}))
+assert(markup.includes(`value="${formerGreen.curriculumId}"`) && markup.includes('value="machine"'),
+  'default all includes unknown evidence without manufacturing a green rating')
+assert(markup.includes('aria-pressed="true"') && markup.includes('>Alle</button>'))
+console.log('curriculum quality presentation and projection tests passed')

@@ -1,3 +1,4 @@
+import { getCurriculumQualityCopy } from './curriculumQualityPresentation'
 import type { LabelLanguage } from './filterLabels'
 import type {
   CurriculumQualityFilter,
@@ -73,26 +74,9 @@ export const getCurriculaViewCopy = (language: LabelLanguage): CurriculaViewCopy
         deregisterEntriesBadge: (count: number) => `${count} entries`,
         deregisterGoalsBadge: (count: number) => `${count} goals`,
         qualityFilterLabel: 'Quality status',
-        qualityFilterOptions: {
-          green: 'Human QA',
-          orange: 'Automated QA',
-          red: 'Experimental',
-          all: 'All',
-        },
-        qualityStatusLabels: {
-          green: 'Human QA',
-          orange: 'Automated QA',
-          red: 'Experimental',
-        },
-        qualityStatusTitle: (status: CurriculumQualityStatus) => (
-          `Quality status: ${
-            status === 'green'
-              ? 'Human QA'
-              : status === 'orange'
-                ? 'Automated QA'
-                : 'Experimental'
-          }`
-        ),
+        qualityFilterOptions: getCurriculumQualityCopy('en').filterOptions,
+        qualityStatusLabels: getCurriculumQualityCopy('en').statusLabels,
+        qualityStatusTitle: getCurriculumQualityCopy('en').statusTitle,
       }
     : {
         pageTitle: 'Curricula gemeinsam verbessern',
@@ -129,26 +113,9 @@ export const getCurriculaViewCopy = (language: LabelLanguage): CurriculaViewCopy
         loggedInAsGithubUser: 'Als GitHub-Nutzer eingeloggt',
         deregisterEntriesBadge: (count: number) => `${count} Einträge`,
         deregisterGoalsBadge: (count: number) => `${count} Ziele`,
-        qualityFilterLabel: 'Qualitätsampel',
-        qualityFilterOptions: {
-          green: 'Menschliche QS',
-          orange: 'Maschinelle QS',
-          red: 'Experimentell',
-          all: 'Alle',
-        },
-        qualityStatusLabels: {
-          green: 'Menschliche QS',
-          orange: 'Maschinelle QS',
-          red: 'Experimentell',
-        },
-        qualityStatusTitle: (status: CurriculumQualityStatus) => (
-          `Qualitätsstatus: ${
-            status === 'green'
-              ? 'Menschliche QS'
-              : status === 'orange'
-                ? 'Maschinelle QS'
-                : 'Experimentell'
-          }`
-        ),
+        qualityFilterLabel: 'Qualitätsstatus',
+        qualityFilterOptions: getCurriculumQualityCopy('de').filterOptions,
+        qualityStatusLabels: getCurriculumQualityCopy('de').statusLabels,
+        qualityStatusTitle: getCurriculumQualityCopy('de').statusTitle,
       }
 )

@@ -490,7 +490,7 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
       || (
         option.landscapeId != null
         && matchesCurriculumQualityFilter(
-          getCurriculumQualityStatus(option.landscapeId),
+          getCurriculumQualityStatus(option),
           qualityFilter,
         )
       )

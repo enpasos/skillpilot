@@ -96,7 +96,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes = [], rootLan
   const initialRootLandscapeId = initialSession?.rootLandscapeId
     ?? (initialSession ? initialSession.landscapeId : '')
   const [selectedRootLandscapeId, setSelectedRootLandscapeId] = useState(initialRootLandscapeId)
-  const [curriculumQualityFilter, setCurriculumQualityFilter] = useState<CurriculumQualityFilter>('green')
+  const [curriculumQualityFilter, setCurriculumQualityFilter] = useState<CurriculumQualityFilter>('all')
   const {
     landscapeEntries: loadedCourseLandscapes,
     loadingLandscapes: loadingCourseLandscapes,

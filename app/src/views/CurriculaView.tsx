@@ -7,7 +7,11 @@ import { PublicPageHeader } from '../components/PublicPageHeader'
 import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
 import { ConfirmModal } from '../components/ConfirmModal'
-import { BadgeCheck, Trophy } from 'lucide-react'
+import { BadgeCheck } from 'lucide-react'
+import { QualityStatusBadge, MaturityBadge, QualityLegend } from '../components/CurriculumQualityBadge'
+import { CurriculumQualityFilter as QualityFilterControls } from '../components/CurriculumQualityFilter'
+import { CurriculumChampionTrialControls, type ChampionTrial } from '../components/CurriculumChampionTrialControls'
+import { maturityOrder, maturityClass, maturityCopy, type MaturityLevel } from '../utils/curriculumQualityPresentation'
 import { CANONICAL_GYMNASIUM_ROOT_ID, getCurriculumDisplayTitle } from '../utils/curriculumDisplay'
 import { getCurriculaChampionCopy } from '../utils/curriculaChampionCopy'
 import { getCurriculaViewCopy } from '../utils/curriculaViewCopy'
@@ -20,9 +24,12 @@ import {
   matchesCurriculumQualityFilter,
   type CurriculumQualityFilter,
   type CurriculumQualityStatus,
+  type CurriculumHumanTrial,
 } from '../utils/curriculumQualityTrafficLight'
 
 interface ChampionEntry {
+  id?: string
+  trial?: ChampionTrial
   curriculumId: string
   topicId?: string
   topicTitle?: string
@@ -36,9 +43,10 @@ interface ChampionEntry {
   registeredAt?: string
 }
 
-type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
-
 interface CurriculumSubjectQuality {
+  landscapeId: string
+  qualityStatus?: CurriculumQualityStatus | null
+  humanTrial?: CurriculumHumanTrial | null
   subject: string
   maturity: MaturityLevel
   goals: number
@@ -65,6 +73,9 @@ interface CurriculumEntry {
   totalAtomicGoals: number
   totalMastered: number
   qualityMaturity?: MaturityLevel | null
+  qualityStatus?: CurriculumQualityStatus | null
+  humanTrial?: CurriculumHumanTrial | null
+  humanTrialSubjectCount?: number
   qualityGoals?: number
   qualityAtomicGoals?: number
   qualityWarnings?: number
@@ -95,82 +106,6 @@ type ValidationStatus = 'idle' | 'checking' | 'valid' | 'invalid'
 type ChampionFilter = 'with' | 'without' | 'all'
 type CategoryFilter = 'all' | 'school' | 'uni' | 'other'
 
-const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7']
-
-const maturityClass: Record<MaturityLevel, string> = {
-  M0: 'border-slate-200 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200',
-  M1: 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
-  M2: 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
-  M3: 'border-amber-300 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
-  M4: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-900/60 dark:bg-orange-950/30 dark:text-orange-300',
-  M5: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-900/60 dark:bg-orange-950/30 dark:text-orange-300',
-  M6: 'border-emerald-300 bg-emerald-50 text-emerald-800 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
-  M7: 'border-sky-300 bg-sky-50 text-sky-800 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-300',
-}
-
-const qualityStatusBadgeClass: Record<CurriculumQualityStatus, string> = {
-  green: 'border-emerald-300 bg-emerald-50 text-emerald-800 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300',
-  orange: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-800 dark:bg-orange-950/40 dark:text-orange-300',
-  red: 'border-red-300 bg-red-50 text-red-800 dark:border-red-800 dark:bg-red-950/40 dark:text-red-300',
-}
-
-const qualityStatusDotClass: Record<CurriculumQualityStatus, string> = {
-  green: 'bg-emerald-700',
-  orange: 'bg-orange-700',
-  red: 'bg-red-700',
-}
-
-const qualityFilterActiveClass: Record<CurriculumQualityFilter, string> = {
-  green: 'bg-emerald-700 text-white shadow-sm',
-  orange: 'bg-orange-700 text-white shadow-sm',
-  red: 'bg-red-700 text-white shadow-sm',
-  all: 'bg-sky-700 text-white shadow-sm',
-}
-
-const maturityCopy = {
-  de: {
-    label: 'Reifegrad',
-    subjectStatusTitle: 'Qualitätsreife pro Fach',
-    goals: 'Ziele',
-    atomicGoals: 'atomar',
-    warnings: 'Warnungen',
-    failures: 'Fehler',
-    legendTitle: 'Was bedeuten M0-M7?',
-    legend: {
-      M0: 'Noch kein belastbarer QA-Stand.',
-      M1: 'Quellen und Bearbeitungspipeline sind sichtbar.',
-      M2: 'Source-Ziele sind extrahiert und rückverfolgbar.',
-      M3: 'Source-Ziele sind fachlich durch SkillPilot-Ziele abgedeckt.',
-      M4: 'Bundesland-Sichten und QA-Scopes sind geprüft.',
-      M5: 'Schulgeeigneter Kern-QS-Stand: CI-fähig, ohne offene Fehler; Voraussetzung für Champions-QS in der Schule.',
-      M6: 'M5 plus geprüfte Memory-Layer: Kartenentscheidungen, Herkunftsspuren und Sichtbarkeit sind aktuell.',
-      M7: 'M6 plus vollständig erstellte und menschlich freigegebene Lernzielbilder.',
-    },
-  },
-  en: {
-    label: 'Maturity',
-    subjectStatusTitle: 'Quality maturity by subject',
-    goals: 'goals',
-    atomicGoals: 'atomic',
-    warnings: 'warnings',
-    failures: 'failures',
-    legendTitle: 'What do M0-M7 mean?',
-    legend: {
-      M0: 'No reliable QA baseline yet.',
-      M1: 'Sources and processing pipeline are visible.',
-      M2: 'Source goals are extracted and traceable.',
-      M3: 'Source goals are covered by SkillPilot goals.',
-      M4: 'Jurisdiction views and QA scopes are validated.',
-      M5: 'School-ready core QA level: CI-ready, no open failures; prerequisite for school-facing Champion QA.',
-      M6: 'M5 plus reviewed memory layer: card decisions, origin traces, and visibility are current.',
-      M7: 'M6 plus fully created and human-approved goal visualizations.',
-    },
-  },
-} as const
-
-const normalizeSubjectLabel = (value?: string | null): string =>
-  (value ?? '').trim().toLocaleLowerCase('de-DE')
-
 const isMaturityLevel = (value: unknown): value is MaturityLevel =>
   maturityOrder.includes(value as MaturityLevel)
 
@@ -200,7 +135,7 @@ export const CurriculaView: React.FC = () => {
 
   const [championFilter, setChampionFilter] = useState<ChampionFilter>('with')
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('all')
-  const [qualityFilter, setQualityFilter] = useState<CurriculumQualityFilter>('green')
+  const [qualityFilter, setQualityFilter] = useState<CurriculumQualityFilter>('all')
   const [showRegistration, setShowRegistration] = useState(false)
   const [user, setUser] = useState<{ githubId: string; champions: ChampionEntry[] } | null>(null)
   const [showDeregisterModal, setShowDeregisterModal] = useState(false)
@@ -241,22 +176,20 @@ export const CurriculaView: React.FC = () => {
   const curriculumById = useMemo(() => {
     return new Map((data?.curricula ?? []).map((curriculum) => [curriculum.curriculumId, curriculum]))
   }, [data])
-  const isChampionCertified = useCallback((champion: ChampionEntry) => {
-    if (!champion.totalTopicGoals || champion.totalTopicGoals <= 0) return false
-    return champion.masteredCount >= champion.totalTopicGoals
-  }, [])
-  const getSubjectQuality = useCallback((curriculum: CurriculumEntry, subject?: string | null) => {
-    const normalizedSubject = normalizeSubjectLabel(subject)
-    if (!normalizedSubject) return null
-    return (curriculum.subjectQuality ?? []).find(
-      (quality) => normalizeSubjectLabel(quality.subject) === normalizedSubject,
-    ) ?? null
-  }, [])
+  const isChampionCertified = useCallback((champion: ChampionEntry) => (
+    champion.trial?.state === 'completed'
+  ), [])
+  const getSubjectQuality = useCallback((curriculum: CurriculumEntry, landscapeId?: string | null) => (
+    (curriculum.subjectQuality ?? []).find((quality) => quality.landscapeId === landscapeId) ?? null
+  ), [])
   const getCurriculumQuality = useCallback((curriculum: CurriculumEntry): CurriculumSubjectQuality | null => {
     if (!isMaturityLevel(curriculum.qualityMaturity)) {
       return null
     }
     return {
+      landscapeId: curriculum.curriculumId,
+      qualityStatus: curriculum.qualityStatus,
+      humanTrial: curriculum.humanTrial,
       subject: curriculum.subject || getCurriculumTitle(curriculum),
       maturity: curriculum.qualityMaturity,
       goals: curriculum.qualityGoals ?? 0,
@@ -408,6 +341,9 @@ export const CurriculaView: React.FC = () => {
       description: getCurriculumDescription(curriculum),
       title: getCurriculumTitle(curriculum),
       schoolType: '',
+      qualityMaturity: curriculum.qualityMaturity,
+      qualityStatus: curriculum.qualityStatus,
+      subjectQuality: curriculum.subjectQuality,
     }))
   }, [data, getCurriculumDescription, getCurriculumTitle])
 
@@ -476,16 +412,15 @@ export const CurriculaView: React.FC = () => {
       const categoryMatch =
         categoryFilter === 'all' || getCategory(curriculum) === categoryFilter
 
-      const qualityStatus = getCurriculumQualityStatus(
-        curriculum.curriculumId,
-        curriculum.qualityMaturity,
-      )
+      const qualityStatus = getCurriculumQualityStatus(curriculum)
       const qualityMatch = !CURRICULUM_QUALITY_FILTER_AVAILABLE
-        || matchesCurriculumQualityFilter(qualityStatus, qualityFilter)
+        || (isCanonicalGymnasiumOverview(curriculum)
+          ? qualityFilter === 'all' || (curriculum.subjectQuality ?? []).some((quality) => matchesCurriculumQualityFilter(getCurriculumQualityStatus(quality), qualityFilter))
+          : matchesCurriculumQualityFilter(qualityStatus, qualityFilter))
 
       return championMatch && categoryMatch && qualityMatch
     })
-  }, [data, championFilter, categoryFilter, qualityFilter, getCategory])
+  }, [data, championFilter, categoryFilter, qualityFilter, getCategory, isCanonicalGymnasiumOverview])
 
   useEffect(() => {
     if (!selectedCurriculumId) {
@@ -828,6 +763,16 @@ export const CurriculaView: React.FC = () => {
               </div>
             )}
 
+            {user?.champions.map((champion) => champion.id && champion.trial ? (
+              <CurriculumChampionTrialControls
+                key={champion.id}
+                championId={champion.id}
+                trial={champion.trial}
+                language={localizedLanguage}
+                onChanged={async () => { await fetchUser(); loadData() }}
+              />
+            ) : null)}
+
             {showRegistration && (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-4">
@@ -1056,7 +1001,7 @@ export const CurriculaView: React.FC = () => {
                 <span className="text-xs uppercase tracking-wider text-text-secondary">
                   {t.curriculaPage.directory.filters.championsLabel}
                 </span>
-                <div className="flex gap-1 rounded-lg border border-border-color bg-input-bg p-1">
+                <div className="flex flex-wrap gap-1 rounded-lg border border-border-color bg-input-bg p-1">
                   {(['with', 'without', 'all'] as ChampionFilter[]).map((filter) => (
                     <button
                       key={filter}
@@ -1076,7 +1021,7 @@ export const CurriculaView: React.FC = () => {
                 <span className="text-xs uppercase tracking-wider text-text-secondary">
                   {t.curriculaPage.directory.filters.categoryLabel}
                 </span>
-                <div className="flex gap-1 rounded-lg border border-border-color bg-input-bg p-1">
+                <div className="flex flex-wrap gap-1 rounded-lg border border-border-color bg-input-bg p-1">
                   {(['all', 'school', 'uni', 'other'] as CategoryFilter[]).map((filter) => (
                     <button
                       key={filter}
@@ -1097,33 +1042,7 @@ export const CurriculaView: React.FC = () => {
                   <span className="text-xs uppercase tracking-wider text-text-secondary">
                     {curriculaViewCopy.qualityFilterLabel}
                   </span>
-                  <div className="flex gap-1 rounded-lg border border-border-color bg-input-bg p-1">
-                    {(['green', 'orange', 'red', 'all'] as CurriculumQualityFilter[]).map((filter) => (
-                      <button
-                        key={filter}
-                        type="button"
-                        onClick={() => setQualityFilter(filter)}
-                        aria-pressed={qualityFilter === filter}
-                        className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
-                          qualityFilter === filter
-                            ? qualityFilterActiveClass[filter]
-                            : 'text-text-secondary hover:bg-black/5 dark:hover:bg-white/5'
-                        }`}
-                      >
-                        {filter !== 'all' && (
-                          <span
-                            aria-hidden="true"
-                            className={`h-2 w-2 rounded-full ${
-                              qualityFilter === filter
-                                ? 'bg-white'
-                                : qualityStatusDotClass[filter]
-                            }`}
-                          />
-                        )}
-                        {curriculaViewCopy.qualityFilterOptions[filter]}
-                      </button>
-                    ))}
-                  </div>
+                  <QualityFilterControls value={qualityFilter} onChange={setQualityFilter} language={localizedLanguage} />
                 </div>
               )}
             </div>
@@ -1145,17 +1064,11 @@ export const CurriculaView: React.FC = () => {
                     : undefined}
                 >
                   {(() => {
-                    const hasCurriculumCertificate = curriculum.champions.some(
-                      (champion) =>
-                        !champion.topicTitle && isChampionCertified(champion)
-                    )
+                    const hasCurriculumCertificate = !isCanonicalGymnasiumOverview(curriculum) && curriculum.qualityStatus === 'human_trial_completed'
                     const curriculumTitle = getCurriculumTitle(curriculum)
                     const curriculumQuality = getCurriculumQuality(curriculum)
                     const showCurriculumQuality = curriculumQuality && !isCanonicalGymnasiumOverview(curriculum)
-                    const qualityStatus = getCurriculumQualityStatus(
-                      curriculum.curriculumId,
-                      curriculum.qualityMaturity,
-                    )
+                    const qualityStatus = getCurriculumQualityStatus(curriculum)
                     return (
                       <div className="text-lg font-semibold text-text-primary flex flex-wrap items-center gap-2">
                         <span>{curriculumTitle}</span>
@@ -1170,17 +1083,8 @@ export const CurriculaView: React.FC = () => {
                             {curriculumQuality.maturity}
                           </span>
                         )}
-                        {CURRICULUM_QUALITY_FILTER_AVAILABLE && (
-                          <span
-                            className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs font-semibold ${qualityStatusBadgeClass[qualityStatus]}`}
-                            title={curriculaViewCopy.qualityStatusTitle(qualityStatus)}
-                          >
-                            <span
-                              aria-hidden="true"
-                              className={`h-2 w-2 rounded-full ${qualityStatusDotClass[qualityStatus]}`}
-                            />
-                            {curriculaViewCopy.qualityStatusLabels[qualityStatus]}
-                          </span>
+                        {CURRICULUM_QUALITY_FILTER_AVAILABLE && !isCanonicalGymnasiumOverview(curriculum) && (
+                          <QualityStatusBadge status={qualityStatus} language={localizedLanguage} />
                         )}
                       </div>
                     )
@@ -1188,6 +1092,9 @@ export const CurriculaView: React.FC = () => {
                   <div className="text-sm text-text-secondary mt-1">
                     {getCurriculumDescription(curriculum) || t.curriculaPage.directory.noDescription}
                   </div>
+                  {curriculum.humanTrial?.state === 'in_progress' && curriculum.humanTrial.scopeCoverage === 'partial' && (
+                    <p className="mt-1 text-xs text-text-secondary">{localizedLanguage === 'en' ? 'Trial scope: ' : 'Erprobungsumfang: '}{curriculum.humanTrial.scopeLabel}</p>
+                  )}
                   <div className="mt-3 flex flex-wrap gap-3 text-xs text-text-secondary">
                     <div className="mt-2 flex flex-wrap gap-2">
                       <span className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-text-secondary">
@@ -1223,43 +1130,36 @@ export const CurriculaView: React.FC = () => {
                         <div className="text-xs uppercase tracking-wider text-text-secondary">
                           {qualityCopy.subjectStatusTitle}
                         </div>
+                        <p className="mt-1 text-xs text-text-secondary">
+                          {localizedLanguage === 'en'
+                            ? `Human QA in ${curriculum.humanTrialSubjectCount ?? 0} subjects`
+                            : `Menschliche QS in ${curriculum.humanTrialSubjectCount ?? 0} Fächern`}
+                        </p>
                         <div
                           className="mt-3 grid gap-2 [grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr))]"
                           data-testid="curriculum-quality-grid"
                         >
                           {qualityRows.map(({ subject, quality }) => {
-                            const qualityStatus = getGymnasiumSubjectQualityStatus(
-                              subject,
-                              quality?.maturity,
-                            )
-                            const statusTitle = curriculaViewCopy.qualityStatusTitle(qualityStatus)
+                            const qualityStatus = getGymnasiumSubjectQualityStatus(quality)
+                            const statusTitle = qualityStatus ? curriculaViewCopy.qualityStatusTitle(qualityStatus) : (localizedLanguage === 'en' ? 'Quality status unavailable' : 'Prüfstand nicht verfügbar')
                             return (
                               <div
-                                key={quality?.subject ?? subject}
+                                key={quality?.landscapeId ?? subject}
                                 className="grid min-w-0 grid-cols-1 gap-2 rounded-lg border border-border-color bg-white/70 px-3 py-2 text-xs sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center dark:bg-slate-900/40"
                                 data-testid="curriculum-quality-row"
                                 title={quality
                                   ? `${statusTitle} · ${getQualityTooltip(quality, qualityCopy)}`
                                   : statusTitle}
                               >
-                                <span className="min-w-0 truncate font-medium text-text-primary">
+                                <span className="min-w-0 font-medium text-text-primary">
                                   {subject}
+                                  {quality?.humanTrial?.state === 'in_progress' && quality.humanTrial.scopeCoverage === 'partial' && (
+                                    <span className="mt-1 block text-xs font-normal text-text-secondary">{localizedLanguage === 'en' ? 'Trial scope: ' : 'Erprobungsumfang: '}{quality.humanTrial.scopeLabel}</span>
+                                  )}
                                 </span>
                                 <span className="flex max-w-full flex-wrap items-center gap-1.5 sm:justify-end">
-                                  <span
-                                    className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 font-semibold ${qualityStatusBadgeClass[qualityStatus]}`}
-                                  >
-                                    <span
-                                      aria-hidden="true"
-                                      className={`h-2 w-2 rounded-full ${qualityStatusDotClass[qualityStatus]}`}
-                                    />
-                                    {curriculaViewCopy.qualityStatusLabels[qualityStatus]}
-                                  </span>
-                                  {quality && (
-                                    <span className={`whitespace-nowrap rounded-full border px-2 py-0.5 font-semibold ${maturityClass[quality.maturity]}`}>
-                                      {quality.maturity}
-                                    </span>
-                                  )}
+                                  <QualityStatusBadge status={qualityStatus} language={localizedLanguage} />
+                                  <MaturityBadge level={quality?.maturity} language={localizedLanguage} />
                                 </span>
                               </div>
                             )
@@ -1267,19 +1167,7 @@ export const CurriculaView: React.FC = () => {
                         </div>
                         {hasMaturityDetails && (
                           <div className="mt-3 border-t border-border-color pt-3">
-                            <div className="text-xs uppercase tracking-wider text-text-secondary">
-                              {qualityCopy.legendTitle}
-                            </div>
-                            <div className="mt-2 grid gap-2 text-xs text-text-secondary sm:grid-cols-2">
-                              {maturityOrder.map((level) => (
-                                <div key={level} className="flex items-start gap-2">
-                                  <span className={`shrink-0 rounded-full border px-2 py-0.5 font-semibold ${maturityClass[level]}`}>
-                                    {level}
-                                  </span>
-                                  <span>{qualityCopy.legend[level]}</span>
-                                </div>
-                              ))}
-                            </div>
+                            <QualityLegend language={localizedLanguage} />
                           </div>
                         )}
                       </div>
@@ -1299,36 +1187,9 @@ export const CurriculaView: React.FC = () => {
                         : curriculum.topLevelTopics
                       return topics && topics.length > 0 ? (
                       <div className="flex flex-wrap gap-2">
-                        {topics.map((topic, idx) => {
-                          const certified = curriculum.champions.some(
-                            (champion) =>
-                              getChampionTopicTitle(champion) === topic && isChampionCertified(champion),
-                          )
-                          const quality = getSubjectQuality(curriculum, topic)
-                            ?? (isCanonicalGymnasiumOverview(curriculum)
-                              ? curriculum.subjectQuality?.[idx] ?? null
-                              : null)
-                          const pillClass = certified
-                            ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 ring-emerald-700/10 dark:ring-emerald-300/20 font-semibold'
-                            : 'bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 ring-sky-700/10 dark:ring-sky-300/20'
-                          return (
-                            <span
-                              key={idx}
-                              className={`inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs ${pillClass} ring-1 ring-inset`}
-                              title={quality ? getQualityTooltip(quality, qualityCopy) : undefined}
-                            >
-                              {topic}
-                              {quality && (
-                                <span className={`rounded-full border px-1.5 py-0 text-[10px] font-semibold ${maturityClass[quality.maturity]}`}>
-                                  {quality.maturity}
-                                </span>
-                              )}
-                              {certified && (
-                                <BadgeCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-                              )}
-                            </span>
-                          )
-                        })}
+                        {topics.map((topic, idx) => (
+                          <span key={idx} className="rounded-md bg-slate-100 px-2 py-1 text-xs text-text-secondary dark:bg-slate-800">{topic}</span>
+                        ))}
                       </div>
                     ) : (
                       <div className="text-xs text-text-secondary italic">
@@ -1350,8 +1211,8 @@ export const CurriculaView: React.FC = () => {
                       <div className="mt-3 space-y-3">
                         {curriculum.champions.map((champion, index) => {
                           const championTopicTitle = getChampionTopicTitle(champion)
-                          const championQuality = championTopicTitle
-                            ? getSubjectQuality(curriculum, championTopicTitle) ?? getSubjectQuality(curriculum, champion.topicTitle)
+                          const championQuality = champion.topicId
+                            ? getSubjectQuality(curriculum, champion.topicId)
                             : getCurriculumQuality(curriculum)
                           return (
                           <div
@@ -1369,7 +1230,7 @@ export const CurriculaView: React.FC = () => {
                                   @{champion.githubId}
                                 </a>
                                 {isChampionCertified(champion) && (
-                                  <Trophy className="h-4 w-4 text-amber-500" />
+                                  <BadgeCheck className="h-4 w-4 text-emerald-700 dark:text-emerald-300" aria-label={localizedLanguage === 'en' ? 'Human-tested within the displayed scope' : 'Im angezeigten Umfang menschlich erprobt'} />
                                 )}
                               </div>
                               {championTopicTitle && (
@@ -1395,6 +1256,18 @@ export const CurriculaView: React.FC = () => {
                                 {t.curriculaPage.table.skillpilotId}: {champion.skillpilotIdMasked}
                               </div>
                             </div>
+                            {champion.trial && champion.trial.state !== 'not_started' && (
+                              <p className="text-xs text-text-secondary">
+                                {champion.trial.state === 'completed'
+                                  ? (localizedLanguage === 'en' ? 'Human-tested' : 'Menschlich erprobt')
+                                  : champion.trial.state === 'in_progress'
+                                    ? (localizedLanguage === 'en' ? 'Human QA in progress' : 'Menschliche QS läuft')
+                                    : (localizedLanguage === 'en' ? 'Trial paused or needs updating' : 'Erprobung pausiert oder zu aktualisieren')}
+                                {' · '}{champion.trial.scopeLabel}
+                                {champion.trial.scopeCoverage === 'partial' ? (localizedLanguage === 'en' ? ' · limited scope' : ' · begrenzter Umfang') : ''}
+                                {' · '}{champion.trial.practicedGoals} / {champion.trial.requiredGoals}
+                              </p>
+                            )}
                             <div className="flex flex-wrap gap-4 text-xs text-text-secondary">
                               <div className="flex flex-col">
                                 <span className="uppercase tracking-wider" title={championCopy.achievementsTooltip}>

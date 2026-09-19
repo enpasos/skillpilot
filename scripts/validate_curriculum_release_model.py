@@ -3001,7 +3001,7 @@ def build_expected_quality_evidence(
             f"Goal visualization ownership is not one-to-one: {goal_id}",
         )
         visual_resource_owner_ids.add(goal_id)
-        # Package resources outside the ordinary-atomic CQR-303 scope do not
+        # Package resources outside the ordinary-atomic package visualization scope do not
         # acquire a release-quality decision merely by carrying an image.
         if goal_id not in atomic_scope:
             continue

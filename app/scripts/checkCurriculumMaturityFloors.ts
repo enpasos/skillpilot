@@ -55,7 +55,7 @@ const maturityRank = (value: string | undefined, label: string): number => {
 }
 
 const ruleAppliesAtFloor = (rule: MaturityRule, floorRank: number): boolean => {
-  // CQR-303 is the optional M7 visualization layer and is not a reason for an
+  // CQR-303 is the M7 deep curriculum QA layer and is not a reason for an
   // M6-floor failure. Lower-level and unknown rules remain fail-closed.
   if (rule.id === 'CQR-303') return floorRank >= 7
   return true

@@ -151,6 +151,9 @@ public class LearnerService {
     @Autowired
     private LearnerGoalCompletionService goalCompletionService;
 
+    @org.springframework.beans.factory.annotation.Autowired
+    private ChampionPracticeFingerprint championPracticeFingerprint;
+
     private static final Set<String> SRS_FILTER_EXCLUDE = Set.of(
             "structure",
             "root",
@@ -1346,7 +1349,7 @@ public class LearnerService {
         boolean masteryChanged = mastery.getValue() < 1.0;
         mastery.setValue(1.0);
         masteryRepository.save(mastery);
-        recordGoalCompletion(learner, goal.getId(), previousValue, 1.0, verifiedRecallNow());
+        recordGoalCompletion(learner, goal.getId(), goal, previousValue, 1.0, verifiedRecallNow(), "verified_recall");
 
         boolean activeGoalCleared = goal.getId().equals(learner.getActiveGoalId());
         if (activeGoalCleared) {
@@ -2568,7 +2571,7 @@ public class LearnerService {
         double previousValue = mastery.getValue();
         mastery.setValue(masteryValue);
         masteryRepository.save(mastery);
-        recordGoalCompletion(learner, effectiveGoalId, previousValue, masteryValue, learningPlanClock.instant());
+        recordGoalCompletion(learner, effectiveGoalId, def, previousValue, masteryValue, learningPlanClock.instant(), "coach_learning");
 
         // A failed/partial plan attempt remains the current work item. This is
         // intentionally scoped to plan mode so the established default
@@ -7232,7 +7235,8 @@ public class LearnerService {
                     Set<String> currentLandscapeIds = resolveRuntimeLandscapes(
                                     curriculumId,
                                     landscapeService.getById(curriculumId),
-                                    config)
+                                    config,
+                                    json)
                             .stream()
                             .map(SkillLandscape::getLandscapeId)
                             .filter(Objects::nonNull)
@@ -9044,10 +9048,9 @@ public class LearnerService {
 
         Map<String, Object> personalCurriculum =
                 mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());
-        PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
+        PersonalizationPlan plan = rawPersonalizationPlan(
                 curriculumId,
-                landscapeService::getById,
-                this::resolvePersonalizationOfferingScope,
+                learner.getPersonalCurriculum(),
                 parsePersonalCurriculumConfig(
                         writePersonalCurriculumConfig(personalCurriculum)));
         return decoratePersonalizationPlan(
@@ -9280,6 +9283,19 @@ public class LearnerService {
                 || requestedScope.isEmpty()) {
             return null;
         }
+        ProjectionComputationCache cache = transactionProjectionCache();
+        if (cache == null) {
+            return computePersonalizationOfferingScope(landscapeId, requestedScope);
+        }
+        OfferingScopeKey key = new OfferingScopeKey(landscapeId,
+                Collections.unmodifiableMap(new LinkedHashMap<>(requestedScope)));
+        return cache.offeringScopes.computeIfAbsent(key, ignored -> Optional.ofNullable(
+                computePersonalizationOfferingScope(landscapeId, requestedScope))).orElse(null);
+    }
+
+    private Map<String, String> computePersonalizationOfferingScope(
+            String landscapeId,
+            Map<String, String> requestedScope) {
         Map<String, Object> resolvedView =
                 compositionViewService.findLearnerScopeView(
                         landscapeId,
@@ -9338,6 +9354,66 @@ public class LearnerService {
         return getGoalProjection(curriculumId, personalCurriculumJson, ignoreCourseFilters).visibleGoals();
     }
 
+    private record CurriculumConfigurationKey(String curriculumId, String personalCurriculumJson) { }
+
+    private record ProjectionKey(String curriculumId, String personalCurriculumJson, boolean ignoreCourseFilters) { }
+
+    private record OfferingScopeKey(String landscapeId, Map<String, String> requestedScope) { }
+
+    /**
+     * Pure projection work is shared only inside the current transaction. This
+     * synchronization belongs to Spring's transaction lifecycle, including
+     * suspension for REQUIRES_NEW; it stores no learner/mastery/session state.
+     * Configuration changes create another exact key, and completion discards
+     * all results. No request or transaction can reuse a preceding one's cache.
+     */
+    private static final class ProjectionComputationCache implements TransactionSynchronization {
+        private final LearnerService owner;
+        private final Map<ProjectionKey, GoalProjection> projections = new HashMap<>();
+        private final Map<CurriculumConfigurationKey, PersonalizationPlan> personalizationPlans = new HashMap<>();
+        private final Map<OfferingScopeKey, Optional<Map<String, String>>> offeringScopes = new HashMap<>();
+
+        private ProjectionComputationCache(LearnerService owner) {
+            this.owner = owner;
+        }
+
+        @Override
+        public void afterCompletion(int status) {
+            projections.clear();
+            personalizationPlans.clear();
+            offeringScopes.clear();
+        }
+    }
+
+    private ProjectionComputationCache transactionProjectionCache() {
+        if (!TransactionSynchronizationManager.isActualTransactionActive()
+                || !TransactionSynchronizationManager.isSynchronizationActive()) {
+            return null;
+        }
+        for (TransactionSynchronization synchronization : TransactionSynchronizationManager.getSynchronizations()) {
+            if (synchronization instanceof ProjectionComputationCache cache && cache.owner == this) {
+                return cache;
+            }
+        }
+        ProjectionComputationCache cache = new ProjectionComputationCache(this);
+        TransactionSynchronizationManager.registerSynchronization(cache);
+        return cache;
+    }
+
+    private PersonalizationPlan rawPersonalizationPlan(
+            String curriculumId,
+            String personalCurriculumJson,
+            Map<String, Map<String, Object>> config) {
+        ProjectionComputationCache cache = transactionProjectionCache();
+        if (cache == null) {
+            return CurriculumPersonalizationPlanner.plan(curriculumId, landscapeService::getById,
+                    this::resolvePersonalizationOfferingScope, config);
+        }
+        CurriculumConfigurationKey key = new CurriculumConfigurationKey(curriculumId, personalCurriculumJson);
+        return cache.personalizationPlans.computeIfAbsent(key, ignored -> CurriculumPersonalizationPlanner.plan(
+                curriculumId, landscapeService::getById, this::resolvePersonalizationOfferingScope, config));
+    }
+
     private GoalProjection getGoalProjection(String curriculumId, String personalCurriculumJson) {
         return getGoalProjection(curriculumId, personalCurriculumJson, false);
     }
@@ -9346,10 +9422,23 @@ public class LearnerService {
             String curriculumId,
             String personalCurriculumJson,
             boolean ignoreCourseFilters) {
+        ProjectionComputationCache cache = transactionProjectionCache();
+        if (cache == null) {
+            return computeGoalProjection(curriculumId, personalCurriculumJson, ignoreCourseFilters);
+        }
+        ProjectionKey key = new ProjectionKey(curriculumId, personalCurriculumJson, ignoreCourseFilters);
+        return cache.projections.computeIfAbsent(key, ignored ->
+                computeGoalProjection(curriculumId, personalCurriculumJson, ignoreCourseFilters));
+    }
+
+    private GoalProjection computeGoalProjection(
+            String curriculumId,
+            String personalCurriculumJson,
+            boolean ignoreCourseFilters) {
         SkillLandscape root = landscapeService.getById(curriculumId);
         Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(personalCurriculumJson);
         List<SkillLandscape> runtimeLandscapes =
-                resolveRuntimeLandscapes(curriculumId, root, config);
+                resolveRuntimeLandscapes(curriculumId, root, config, personalCurriculumJson);
 
         String rootFilterId = null;
         String rootDurationModel = null;
@@ -9472,7 +9561,8 @@ public class LearnerService {
     private List<SkillLandscape> resolveRuntimeLandscapes(
             String curriculumId,
             SkillLandscape root,
-            Map<String, Map<String, Object>> config) {
+            Map<String, Map<String, Object>> config,
+            String personalCurriculumJson) {
         LinkedHashMap<String, SkillLandscape> resolved = new LinkedHashMap<>();
         List<SkillLandscape> graphClosure = landscapeService.getClosure(curriculumId);
         if (graphClosure != null) {
@@ -9489,10 +9579,9 @@ public class LearnerService {
             return List.copyOf(resolved.values());
         }
 
-        PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
+        PersonalizationPlan plan = rawPersonalizationPlan(
                 curriculumId,
-                landscapeService::getById,
-                this::resolvePersonalizationOfferingScope,
+                personalCurriculumJson,
                 config);
         if (!plan.valid()) {
             return List.copyOf(resolved.values());
@@ -11202,11 +11291,16 @@ public class LearnerService {
     }
 
     private void recordGoalCompletion(
-            Learner learner, String goalId, double previousValue, double nextValue, Instant occurredAt) {
+            Learner learner, String goalId, LearningGoal goal, double previousValue, double nextValue, Instant occurredAt,
+            String practiceSource) {
         // Existing hand-built service fixtures predate the ledger dependency.
         // Spring production construction always injects this required bean.
         if (goalCompletionService != null) {
-            goalCompletionService.recordTransition(learner, goalId, previousValue, nextValue, occurredAt);
+            LearningGoal canonical = landscapeService.getGoalDefinition(goalId);
+            String fingerprint = championPracticeFingerprint == null ? null
+                    : championPracticeFingerprint.forGoal(canonical == null ? goal : canonical);
+            goalCompletionService.recordTransition(
+                    learner, goalId, previousValue, nextValue, occurredAt, practiceSource, fingerprint);
         }
     }
 

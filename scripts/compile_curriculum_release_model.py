@@ -2355,7 +2355,7 @@ def compile_release_quality_evidence(
             raise CompilationError(f"Goal visualization ownership is not one-to-one: {goal_id}")
         visual_resource_owner_ids.add(goal_id)
         # Orientation and memory images remain package resources but are outside
-        # the ordinary-atomic CQR-303 visualization review scope.
+        # the ordinary-atomic package visualization review scope.
         if goal_id not in atomic_scope:
             continue
         visual_resources[goal_id] = resource

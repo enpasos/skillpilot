@@ -15,10 +15,11 @@ import {
     CURRICULUM_QUALITY_FILTER_AVAILABLE,
     filterCurriculaByQuality,
     type CurriculumQualityFilter,
-    type CurriculumQualityStatus,
 } from '../utils/curriculumQualityTrafficLight'
+import type { CurriculumQualityProjection } from '../utils/curriculumQualityPresentation'
+import { CurriculumQualityFilter as QualityFilter } from './CurriculumQualityFilter'
 
-export interface LandscapeSummary {
+export interface LandscapeSummary extends CurriculumQualityProjection {
     curriculumId: string
     filename: string
     country: string
@@ -34,6 +35,7 @@ export interface LandscapeSummary {
     compatibilityOnly?: boolean
     legacyHiddenByDefault?: boolean
     qualityMaturity?: string | null
+    subjectQuality?: readonly CurriculumQualityProjection[] | null
 }
 
 interface CurriculumDropdownProps {
@@ -50,19 +52,6 @@ interface CurriculumDropdownProps {
     landscapes?: LandscapeSummary[]
     showCompatibilityViews?: boolean
     showQualityFilter?: boolean
-}
-
-const qualityStatusDotClass: Record<CurriculumQualityStatus, string> = {
-    green: 'bg-emerald-700',
-    orange: 'bg-orange-700',
-    red: 'bg-red-700',
-}
-
-const qualityFilterActiveClass: Record<CurriculumQualityFilter, string> = {
-    green: 'bg-emerald-700 text-white shadow-sm',
-    orange: 'bg-orange-700 text-white shadow-sm',
-    red: 'bg-red-700 text-white shadow-sm',
-    all: 'bg-sky-700 text-white shadow-sm',
 }
 
 export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
@@ -89,7 +78,7 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
     )
     const [loading, setLoading] = useState(false)
     const [category, setCategory] = useState<Category>('SCHOOL')
-    const [internalQualityFilter, setInternalQualityFilter] = useState<CurriculumQualityFilter>('green')
+    const [internalQualityFilter, setInternalQualityFilter] = useState<CurriculumQualityFilter>('all')
     const qualityFilter = controlledQualityFilter ?? internalQualityFilter
     const autoSelectedLandscapeRef = useRef<string | null>(null)
 
@@ -284,37 +273,11 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                     <div className="mb-1 text-[11px] uppercase tracking-wider text-text-secondary">
                         {dropdownCopy.qualityFilterLabel}
                     </div>
-                    <div className="flex flex-wrap gap-1 rounded-lg border border-border-color bg-input-bg p-1">
-                        {(['green', 'orange', 'red', 'all'] as CurriculumQualityFilter[]).map((filter) => (
-                            <button
-                                key={filter}
-                                type="button"
-                                disabled={disabled}
-                                onClick={() => {
-                                    setInternalQualityFilter(filter)
-                                    onQualityFilterChange?.(filter)
-                                }}
-                                aria-pressed={qualityFilter === filter}
-                                className={`inline-flex min-h-9 flex-1 items-center justify-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${
-                                    qualityFilter === filter
-                                        ? qualityFilterActiveClass[filter]
-                                        : 'text-text-secondary hover:bg-black/5 dark:hover:bg-white/5'
-                                }`}
-                            >
-                                {filter !== 'all' && (
-                                    <span
-                                        aria-hidden="true"
-                                        className={`h-2 w-2 rounded-full ${
-                                            qualityFilter === filter
-                                                ? 'bg-white'
-                                                : qualityStatusDotClass[filter]
-                                        }`}
-                                    />
-                                )}
-                                {dropdownCopy.qualityFilterOptions[filter]}
-                            </button>
-                        ))}
-                    </div>
+                    <QualityFilter value={qualityFilter} language={language} disabled={disabled}
+                        onChange={(filter) => {
+                            setInternalQualityFilter(filter)
+                            onQualityFilterChange?.(filter)
+                        }} />
                 </div>
             )}
 

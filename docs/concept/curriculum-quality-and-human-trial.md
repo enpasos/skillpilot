@@ -1,7 +1,7 @@
 # Curriculum-Qualität: QS-Reifegrade und menschliche Erprobung
 ## Gesamtkonzept für SkillPilot
 
-> **Status:** Abgestimmtes Zielkonzept; Umsetzung offen.
+> **Status:** Verbindliches Referenzkonzept für Issue #49. Die technische Ableitung ist in den [QS-Regeln](../qa-ci/curriculum-quality-maturity-and-routes.md) dokumentiert, der praktische Ablauf im [Champion-Leitfaden](../qa-ci/champion-guide.md).
 
 ## 1. Ziel und Leitprinzipien
 

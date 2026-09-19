@@ -31,30 +31,51 @@ public class LearnerGoalCompletionService {
     @Transactional(propagation = Propagation.MANDATORY)
     public void recordTransition(
             Learner lockedLearner, String goalId, double previousValue, double nextValue, Instant occurredAt) {
-        if (!(previousValue < COMPLETION_THRESHOLD && nextValue >= COMPLETION_THRESHOLD)
-                || !Double.isFinite(previousValue) || !Double.isFinite(nextValue)) {
-            return;
-        }
+        recordTransition(lockedLearner, goalId, previousValue, nextValue, occurredAt, null, null);
+    }
+
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void recordTransition(
+            Learner lockedLearner, String goalId, double previousValue, double nextValue, Instant occurredAt,
+            String practiceSource, String contentFingerprint) {
+        if (!Double.isFinite(previousValue) || !Double.isFinite(nextValue)) return;
+        boolean crossing = previousValue < COMPLETION_THRESHOLD && nextValue >= COMPLETION_THRESHOLD;
+        boolean practice = nextValue >= COMPLETION_THRESHOLD && contentFingerprint != null
+                && ("coach_learning".equals(practiceSource) || "verified_recall".equals(practiceSource));
+        if (!crossing && !practice) return;
         LocalDate date = occurredAt.atZone(DAY_ZONE).toLocalDate();
-        if (repository.existsByLearner_SkillpilotIdAndGoalIdAndCompletionDate(
-                lockedLearner.getSkillpilotId(), goalId, date)) {
-            return;
+        LearnerGoalCompletion completion = repository.findByLearner_SkillpilotIdAndGoalIdAndCompletionDate(
+                lockedLearner.getSkillpilotId(), goalId, date).orElse(null);
+        if (completion == null) {
+            completion = new LearnerGoalCompletion(lockedLearner, goalId, date, occurredAt, nextValue);
+            completion.setObservedTransition(crossing);
+        } else if (crossing) {
+            completion.markObservedTransition(occurredAt, nextValue);
         }
-        repository.save(new LearnerGoalCompletion(lockedLearner, goalId, date, occurredAt, nextValue));
+        if (practice) completion.bindPracticeEvidence(practiceSource, contentFingerprint, occurredAt);
+        repository.save(completion);
     }
 
     @Transactional(readOnly = true)
     public List<LearnerGoalCompletion> getCompletionsOnDate(String skillpilotId, LocalDate date) {
-        return repository.findByLearner_SkillpilotIdAndCompletionDateOrderByOccurredAtAsc(skillpilotId, date);
+        return repository.findByLearner_SkillpilotIdAndCompletionDateOrderByOccurredAtAsc(skillpilotId, date)
+                .stream().filter(LearnerGoalCompletion::isObservedTransition).toList();
     }
 
     @Transactional(readOnly = true)
     public List<LearnerGoalCompletion> getCompletionsBetween(String skillpilotId, LocalDate startDate, LocalDate endDate) {
-        return repository.findByLearner_SkillpilotIdAndCompletionDateBetweenOrderByOccurredAtAsc(skillpilotId, startDate, endDate);
+        return repository.findByLearner_SkillpilotIdAndCompletionDateBetweenOrderByOccurredAtAsc(skillpilotId, startDate, endDate)
+                .stream().filter(LearnerGoalCompletion::isObservedTransition).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<LearnerGoalCompletion> getPracticeHistory(String skillpilotId) {
+        return repository.findByLearner_SkillpilotIdOrderByOccurredAtDesc(skillpilotId);
     }
 
     @Transactional(readOnly = true)
     public List<LearnerGoalCompletion> getHistory(String skillpilotId) {
-        return repository.findByLearner_SkillpilotIdOrderByOccurredAtDesc(skillpilotId);
+        return repository.findByLearner_SkillpilotIdOrderByOccurredAtDesc(skillpilotId)
+                .stream().filter(LearnerGoalCompletion::isObservedTransition).toList();
     }
 }

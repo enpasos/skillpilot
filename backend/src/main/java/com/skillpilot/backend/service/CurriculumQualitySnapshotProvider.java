@@ -8,6 +8,9 @@ public interface CurriculumQualitySnapshotProvider {
 
     CurriculumQualitySnapshot load();
 
+    /** Cheap publication revision used only to invalidate already-derived UI projections. */
+    default String revision() { return "unversioned"; }
+
     record CurriculumQualityEntry(
             String landscapeId,
             String subject,
@@ -15,7 +18,14 @@ public interface CurriculumQualitySnapshotProvider {
             long goals,
             long atomicGoals,
             int warnings,
-            int failures) {
+            int failures,
+            int humanTrialBlockingFindings,
+            int humanTrialBlockingRuleFailures,
+            boolean humanTrialFindingsAvailable) {
+        public CurriculumQualityEntry(String landscapeId, String subject, String maturity, long goals,
+                long atomicGoals, int warnings, int failures) {
+            this(landscapeId, subject, maturity, goals, atomicGoals, warnings, failures, 0, failures, false);
+        }
     }
 
     record CurriculumQualitySnapshot(

@@ -81,6 +81,9 @@ export interface DeepUnderstandingRolloutConfig {
 export interface DeepUnderstandingSubjectReport {
   subject: string
   label: string
+  landscapeId: string
+  landscapePath: string
+  currentGoalIds: string[]
   denominator: number | null
   strictComplete: number
   percentage: string
@@ -93,7 +96,24 @@ export interface DeepUnderstandingSubjectReport {
     currentVisualizationQaRecords: number
   }
   strictCompleteGoalIds: string[]
+  deferredVisualizationGoalIds: string[]
+  requiredChecks: DeepUnderstandingCompletionCheck[]
+  strictCompletionReady: boolean
   issues: string[]
+}
+
+export const deepUnderstandingCompletionCheckIds = [
+  'semantic-kind-scope',
+  'description-review-validation',
+  'positive-evidence-validation',
+  'semantic-atomicity-check',
+  'memory-card-check',
+  'visualization-freshness-and-approval-check',
+] as const
+
+export interface DeepUnderstandingCompletionCheck {
+  id: typeof deepUnderstandingCompletionCheckIds[number]
+  status: 'pass' | 'fail'
 }
 
 export interface DeepUnderstandingRolloutReport {
@@ -544,6 +564,33 @@ export const formatRolloutPercentage = (completed: number, denominator: number |
   denominator && denominator > 0 ? `${((completed / denominator) * 100).toFixed(1)}%` : 'n/a'
 )
 
+/** Coverage is determined by current IDs, never by rounded percentages or past totals. */
+export const hasStrictDeepUnderstandingCompletion = (
+  report: Pick<DeepUnderstandingSubjectReport,
+    'denominator' | 'currentGoalIds' | 'strictCompleteGoalIds' | 'requiredChecks' | 'issues'>,
+): boolean => {
+  if (report.denominator === null || report.denominator <= 0 || report.issues.length > 0) return false
+  const current = new Set(report.currentGoalIds)
+  const complete = new Set(report.strictCompleteGoalIds)
+  return current.size === report.denominator
+    && current.size === report.currentGoalIds.length
+    && complete.size === report.strictCompleteGoalIds.length
+    && complete.size === current.size
+    && [...current].every((goalId) => complete.has(goalId))
+    && report.requiredChecks.length === deepUnderstandingCompletionCheckIds.length
+    && deepUnderstandingCompletionCheckIds.every((id) => (
+      report.requiredChecks.filter((check) => check.id === id).length === 1
+      && report.requiredChecks.find((check) => check.id === id)?.status === 'pass'
+    ))
+}
+
+/** A technical deferral is open work, not an approved pedagogical exception. */
+export const hasCompletedDeepUnderstandingVisualizationReview = (
+  record: Parameters<typeof hasCurrentGoalVisualizationApproval>[0] & { missingReason: string },
+): boolean => record.visualizationState === 'available'
+  && record.missingReason === ''
+  && hasCurrentGoalVisualizationApproval(record)
+
 const addIssue = (issues: string[], scope: string, message: string): void => {
   issues.push(`${scope}: ${message}`)
 }
@@ -798,6 +845,7 @@ const loadVisualizationReadyGoals = (
   config: DeepUnderstandingSubjectConfig,
   scope: AuthoritativeScope,
   issues: string[],
+  deferredGoalIds: Set<string>,
 ): Set<string> => {
   const currentCheck = runTsxCheck('app/scripts/generateGoalVisualizationQaLedgers.ts', [
     '--check',
@@ -849,7 +897,7 @@ const loadVisualizationReadyGoals = (
         && primaryLinks.length === 0
         && !record.imageUrl
         && !record.assetSha256
-      ) ready.add(goalId)
+      ) deferredGoalIds.add(goalId)
       return
     }
     if (
@@ -858,7 +906,7 @@ const loadVisualizationReadyGoals = (
       || primaryLinks.length !== 1
       || primaryLinks[0].url !== record.imageUrl
       || !/^sha256:[0-9a-f]{64}$/u.test(record.assetSha256)
-      || !hasCurrentGoalVisualizationApproval(record)
+      || !hasCompletedDeepUnderstandingVisualizationReview(record)
     ) return
     try {
       const publicAssetPath = resolveRepoPath(record.publicAssetPath)
@@ -1245,14 +1293,19 @@ export const generateDeepUnderstandingRollout = async (
   const subjects: DeepUnderstandingSubjectReport[] = []
   for (const subjectConfig of config.subjects) {
     const scope = loadAuthoritativeScope(subjectConfig)
-    const issues = [...scope.issues]
+    const descriptionIssues: string[] = []
+    const evidenceIssues: string[] = []
+    const atomicityIssues: string[] = []
+    const memoryIssues: string[] = []
+    const visualizationIssues: string[] = []
+    const deferredVisualizationGoalIds = new Set<string>()
     const [descriptionReady, atomicityReady, memoryReady, visualizationReady] = await Promise.all([
-      loadDescriptionReadyGoals(subjectConfig, scope, issues),
-      Promise.resolve(loadAtomicityReadyGoals(subjectConfig, scope, issues)),
-      Promise.resolve(loadMemoryReadyGoals(subjectConfig, scope, issues)),
-      Promise.resolve(loadVisualizationReadyGoals(subjectConfig, scope, issues)),
+      loadDescriptionReadyGoals(subjectConfig, scope, descriptionIssues),
+      Promise.resolve(loadAtomicityReadyGoals(subjectConfig, scope, atomicityIssues)),
+      Promise.resolve(loadMemoryReadyGoals(subjectConfig, scope, memoryIssues)),
+      Promise.resolve(loadVisualizationReadyGoals(subjectConfig, scope, visualizationIssues, deferredVisualizationGoalIds)),
     ])
-    const evidenceReady = loadEvidenceReadyGoals(subjectConfig, scope, issues)
+    const evidenceReady = loadEvidenceReadyGoals(subjectConfig, scope, evidenceIssues)
     const strictCompleteGoalIds = scope.denominator === null
       ? []
       : intersectStrictGoalGates(scope.atomicGoalIds, [
@@ -1262,10 +1315,22 @@ export const generateDeepUnderstandingRollout = async (
         memoryReady,
         visualizationReady,
       ])
-    const uniqueIssues = [...new Set(issues)].sort()
-    subjects.push({
+    const scopeIssues = [...scope.issues]
+    if (scope.denominator === 0) addIssue(scopeIssues, subjectConfig.subject, 'current curricularAtomic scope is empty')
+    const checkIssues = [
+      scopeIssues, descriptionIssues, evidenceIssues, atomicityIssues, memoryIssues, visualizationIssues,
+    ]
+    const uniqueIssues = [...new Set(checkIssues.flat())].sort()
+    const requiredChecks = deepUnderstandingCompletionCheckIds.map((id, index): DeepUnderstandingCompletionCheck => ({
+      id,
+      status: checkIssues[index].length === 0 ? 'pass' : 'fail',
+    }))
+    const subjectReport: DeepUnderstandingSubjectReport = {
       subject: subjectConfig.subject,
       label: subjectConfig.label,
+      landscapeId: scope.landscape.landscapeId ?? '',
+      landscapePath: subjectConfig.landscapePath,
+      currentGoalIds: [...scope.atomicGoalIds].sort(),
       denominator: scope.denominator,
       strictComplete: strictCompleteGoalIds.length,
       percentage: formatRolloutPercentage(strictCompleteGoalIds.length, scope.denominator),
@@ -1278,8 +1343,13 @@ export const generateDeepUnderstandingRollout = async (
         currentVisualizationQaRecords: visualizationReady.size,
       },
       strictCompleteGoalIds,
+      deferredVisualizationGoalIds: [...deferredVisualizationGoalIds].sort(),
+      requiredChecks,
+      strictCompletionReady: false,
       issues: uniqueIssues,
-    })
+    }
+    subjectReport.strictCompletionReady = hasStrictDeepUnderstandingCompletion(subjectReport)
+    subjects.push(subjectReport)
   }
   return {
     schemaVersion: 1,
@@ -1314,6 +1384,7 @@ const renderText = (report: DeepUnderstandingRolloutReport): string => {
       + `memory=${subject.gates.currentMemoryReviewDecisions}, `
       + `visualization=${subject.gates.currentVisualizationQaRecords}`,
     )
+    lines.push(`  Completion checks: ${subject.requiredChecks.filter(({ status }) => status === 'pass').length}/${subject.requiredChecks.length}; strict completion: ${subject.strictCompletionReady ? 'complete' : 'open'}; deferred visualizations: ${subject.deferredVisualizationGoalIds.length}`)
     subject.issues.forEach((issue) => lines.push(`  BLOCKING: ${issue}`))
   })
   lines.push(`Blocking issues: ${report.blockingIssueCount}`)

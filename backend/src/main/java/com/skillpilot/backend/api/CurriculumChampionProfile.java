@@ -13,5 +13,7 @@ public record CurriculumChampionProfile(
         long totalTopicGoals,
         int issuesCount,
         int pullRequestsCount,
-        Instant registeredAt) {
+        Instant registeredAt,
+        String id,
+        ChampionTrialStatus trial) {
 }

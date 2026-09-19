@@ -13,9 +13,10 @@ A curricular-atomic goal counts only when all five gates are current at once:
 3. the semantic-atomicity decision is current and `atomic`;
 4. the memory-card decision is current and resolved; and
 5. the visualization-QA record is current and passes the repository's existing
-   coverage/approval semantics. A current
-   `deferred_provider_limitation` record is accepted by that existing QA lane;
-   an ordinary missing link, stale asset, stale text, or rejection is not.
+   content/asset binding and approval checks. Technical
+   `deferred_provider_limitation` remains unfinished work and never completes
+   gate V. An ordinary missing link, stale asset, stale text, rejection or
+   explicit human error finding also leaves the gate open.
 
 The denominator is never configured manually. It is recomputed from the
 authoritative semantic-kind ledger after checking complete canonical coverage,
@@ -58,3 +59,17 @@ helpers; the report therefore runs both production check CLIs and mirrors their
 published V1 goal-fingerprint payload only to compute the per-goal intersection.
 The targeted test includes live parity assertions so contract drift fails
 closed until those helpers can be exported centrally.
+
+The report is the sole authority for `CQR-303` and the deep-QA part of M7.
+`strictCompletionReady` requires a nonempty current ID set, its exact five-gate
+intersection, all six required validation checks and no subject-level blocking
+issues. It does not replace the separate M6 prerequisite. The dashboard consumes
+this decision without duplicating the calculation, and one subject's incomplete
+work never lowers another subject's milestone.
+
+The required checks validate the semantic-kind scope, independent description
+reviews and resolutions, positive evidence, the production atomicity and memory
+review lanes, and current visualization QA/approval. A passed validation check
+alone does not mean full goal coverage. Deferred image goal IDs remain visible
+separately. Existing AI candidates, human decisions and historical evidence keep
+their original authority; M7 does not grant human approval or human trial status.

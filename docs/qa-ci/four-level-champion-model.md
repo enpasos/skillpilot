@@ -2,6 +2,11 @@
 
 **Status:** Forward-looking QA plan for the continued evolution of the champion program.
 
+The implemented public maturity and human-trial statuses follow the
+[curriculum quality and human-trial concept](../concept/curriculum-quality-and-human-trial.md).
+In particular, registration or mastery totals alone never constitute a human
+certificate; scope-bound practical evidence and a final confirmation are required.
+
 ## Positioning
 
 This model describes a planned four-level QA cascade for SkillPilot curricula. Its purpose is to separate strict formal graph QA, agent-based checks, and human didactic review into clearly distinct stages.

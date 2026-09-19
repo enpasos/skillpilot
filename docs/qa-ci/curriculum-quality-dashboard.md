@@ -68,7 +68,7 @@ The bootstrap mode writes only `needs_developer_review` records for missing ordi
 
 The dashboard reports one conservative maturity level per curriculum and, where available, per configured route scope.
 The top-level M0-M7 cards are aggregate maturity counts. They change only when at least one curriculum changes maturity.
-To make that explicit, the dashboard also shows an `M5-M7 review gates` strip for `CQR-301`, `CQR-401`, `CQR-501`, `CQR-302`, and `CQR-303`; these gate cards show how many rule instances pass and how many are still open. The first three rules carry the core `M5` level. `CQR-302` is the additional `M6` memory layer, so missing memory-card configuration blocks `M6`, not `M5`. `CQR-303` is the additional `M7` goal-visualization layer, so open image rollout or missing human approval blocks `M7`, not `M6`.
+To make that explicit, the dashboard also shows an `M5-M7 review gates` strip for `CQR-301`, `CQR-401`, `CQR-501`, `CQR-302`, and `CQR-303`; these gate cards show how many rule instances pass and how many are still open. The first three rules carry the core `M5` level. `CQR-302` is the additional `M6` memory layer, so missing memory-card configuration blocks `M6`, not `M5`. `CQR-303` projects the central strict D/P/A/M/V report for the additional `M7` deep curriculum QA layer. Missing current coverage or failed required checks block `M7`, not the valid lower maturity level.
 
 | Level | Meaning |
 | --- | --- |
@@ -79,9 +79,9 @@ To make that explicit, the dashboard also shows an `M5-M7 review gates` strip fo
 | `M4` | Terminal autonomy goals in every configured QA scope are exam-mode-capable via `examData` or an explicit reviewed exception convention. |
 | `M5` | Core review/readiness layer is clean: semantic atomicity is current, composition views exist, and no active or obsolete applicability warning debt remains. |
 | `M6` | `M5` plus reviewed memory-card layer: memory-card decision tracing is current or explicitly reviewed, every kept primary card is traced, and configured learner-facing views expose required memory nodes. |
-| `M7` | `M6` plus complete, current, human-approved goal visualizations for all ordinary atomic learning goals in the visualization scope. |
+| `M7` | `M6` plus complete strict D/P/A/M/V coverage of every current `curricularAtomic` goal, successful required validation checks and no relevant blockers. |
 
-`M5` is intentionally strict for the core curriculum layer. `M6` is stricter again and is reserved for curricula whose optional memory-card layer has also been semantically reviewed. `M7` adds a release gate for visual orientation assets; it does not weaken any lower curriculum or memory-layer rule.
+`M5` is intentionally strict for the core curriculum layer. `M6` is stricter again and is reserved for curricula whose optional memory-card layer has also been semantically reviewed. `M7` adds full deep curriculum QA coverage; it does not weaken any lower curriculum or memory-layer rule or grant human approval. Human trial status is a separate statement, as defined in the [quality and human-trial concept](../concept/curriculum-quality-and-human-trial.md).
 
 ## Source References And Local Working Copies
 
@@ -102,7 +102,7 @@ For German Gymnasium quality work, "source scope is green" means the source situ
 
 ## Rule Families
 
-The current rule catalog is versioned as `curriculum-quality-v4`.
+The current rule catalog is versioned as `curriculum-quality-v5`.
 
 | Rule | Target | Meaning |
 | --- | --- | --- |
@@ -117,7 +117,7 @@ The current rule catalog is versioned as `curriculum-quality-v4`.
 | `CQR-201` | `M4` | Terminal autonomy goals have `examData`. |
 | `CQR-301` | `M5` | Semantic atomicity review ledgers for content leaf goals are complete, current, and resolved. |
 | `CQR-302` | `M6` | Memory-card review ledgers explicitly decide whether ordinary atomic goals justify memorization support; every kept primary card must trace to such a goal-level decision, every memory deck must remain traceable, and configured learner-facing views must expose the referenced memory nodes. Missing review configuration blocks `M6`, but not `M5`. |
-| `CQR-303` | `M7` | Goal-visualization QA ledgers under `curricula/DE/Gymnasium/quality/goal-visualization-qa/` match the active asset hashes, every ordinary atomic goal has a primary visualization link, and every active image is human-approved with no open human issue. Hash-bound `Approved AI` evidence is tracked separately and never replaces human approval as the release gate; older ChatGPT fields remain compatibility triage. |
+| `CQR-303` | `M7` | The central report from `app/scripts/reportDeepUnderstandingRollout.ts` proves the exact nonempty current `curricularAtomic` scope and intersection of description reviews, positive evidence, atomicity, memory and visualization gates. All required checks pass and no blocking findings remain. Technical image deferrals never count as completed. AI candidates retain their actual authority; human error findings prevail and mandatory human release gates remain separate. |
 | `CQR-401` | `M5` | At least one learner-facing composition view exists for the curriculum. |
 | `CQR-501` | `M5` | Applicability warnings are split into active, accepted-current, and obsolete-accepted counts. |
 

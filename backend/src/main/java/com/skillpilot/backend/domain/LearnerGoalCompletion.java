@@ -33,11 +33,51 @@ public class LearnerGoalCompletion {
     @Column(name = "completion_date", nullable = false, updatable = false)
     private LocalDate completionDate;
 
-    @Column(name = "occurred_at", nullable = false, updatable = false)
+    @Column(name = "occurred_at", nullable = false)
     private Instant occurredAt;
 
-    @Column(name = "mastery_value", nullable = false, updatable = false)
+    @Column(name = "mastery_value", nullable = false)
     private double masteryValue;
+
+    @Column(name = "observed_transition", nullable = false)
+    private boolean observedTransition = true;
+
+    @jakarta.persistence.Convert(converter = PracticeEvidenceConverter.class)
+    @Column(name = "practice_evidence_json", columnDefinition = "TEXT")
+    private java.util.List<PracticeEvidence> practiceEvidence = new java.util.ArrayList<>();
+
+    public record PracticeEvidence(String source, String fingerprint, Instant recordedAt) {}
+
+    public boolean isObservedTransition() { return observedTransition; }
+    public void setObservedTransition(boolean value) { observedTransition = value; }
+    public java.util.List<PracticeEvidence> getPracticeEvidence() {
+        return practiceEvidence == null ? java.util.List.of() : java.util.List.copyOf(practiceEvidence);
+    }
+    public String getPracticeSource() {
+        return getPracticeEvidence().isEmpty() ? null : getPracticeEvidence().getLast().source();
+    }
+    public String getContentFingerprint() {
+        return getPracticeEvidence().isEmpty() ? null : getPracticeEvidence().getLast().fingerprint();
+    }
+    public Instant getPracticeRecordedAt() {
+        return getPracticeEvidence().isEmpty() ? null : getPracticeEvidence().getLast().recordedAt();
+    }
+
+    /** A late real crossing replaces only the time of a formerly practice-only row. */
+    public void markObservedTransition(Instant at, double value) {
+        if (!observedTransition) {
+            observedTransition = true;
+            occurredAt = at;
+            masteryValue = value;
+        }
+    }
+
+    public void bindPracticeEvidence(String source, String fingerprint, Instant recordedAt) {
+        java.util.List<PracticeEvidence> retained = new java.util.ArrayList<>(getPracticeEvidence());
+        if (retained.stream().anyMatch(e -> e.source().equals(source) && e.fingerprint().equals(fingerprint))) return;
+        retained.add(new PracticeEvidence(source, fingerprint, recordedAt));
+        practiceEvidence = retained;
+    }
 
     protected LearnerGoalCompletion() {
     }

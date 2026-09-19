@@ -1,52 +1,14 @@
+import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import {
-  CANONICAL_GYMNASIUM_MATH_ID,
-  CANONICAL_GYMNASIUM_PHYSICS_ID,
-  MANUAL_ORANGE_CURRICULUM_IDS,
-} from '../src/utils/curriculumQualityTrafficLight'
-
-interface CurriculumQualityStatusEntry {
-  frameworkId?: string
-  landscapeId?: string
-  maturity?: string
+import { isMaturityLevel, maturityCopy } from '../src/utils/curriculumQualityPresentation'
+import { getCurriculumQualityStatus } from '../src/utils/curriculumQualityTrafficLight'
+const artifact = JSON.parse(readFileSync(new URL('../../docs/qa-ci/status/curriculum-quality-status.json', import.meta.url), 'utf8')) as {
+  curricula: Array<{ landscapeId: string; maturity: string; qualityStatus?: unknown }>
 }
-
-interface CurriculumQualityStatusArtifact {
-  curricula?: CurriculumQualityStatusEntry[]
+for (const entry of artifact.curricula) {
+  assert(isMaturityLevel(entry.maturity), `Unknown generated maturity for ${entry.landscapeId}`)
+  assert(maturityCopy.de.legend[entry.maturity] && maturityCopy.en.legend[entry.maturity])
+  if (!('qualityStatus' in entry)) assert.equal(getCurriculumQualityStatus(entry), null,
+    'a static maturity snapshot does not manufacture a human-trial status')
 }
-
-const artifactUrl = new URL(
-  '../../docs/qa-ci/status/curriculum-quality-status.json',
-  import.meta.url,
-)
-const artifact = JSON.parse(
-  readFileSync(artifactUrl, 'utf8'),
-) as CurriculumQualityStatusArtifact
-
-const currentM6Ids = (artifact.curricula ?? [])
-  .filter((entry) => (
-    entry.maturity === 'M6'
-    && entry.frameworkId?.startsWith('canonical-gymnasium-')
-    && entry.frameworkId !== 'canonical-gymnasium-overview'
-    && entry.landscapeId
-  ))
-  .map((entry) => entry.landscapeId as string)
-  .sort()
-
-const manualM6Ids = [
-  CANONICAL_GYMNASIUM_MATH_ID,
-  CANONICAL_GYMNASIUM_PHYSICS_ID,
-  ...MANUAL_ORANGE_CURRICULUM_IDS,
-].sort()
-
-if (JSON.stringify(currentM6Ids) !== JSON.stringify(manualM6Ids)) {
-  throw new Error(
-    [
-      'The manual curriculum traffic-light mapping no longer matches the generated Gymnasium M6 snapshot.',
-      `Snapshot: ${currentM6Ids.join(', ')}`,
-      `Manual: ${manualM6Ids.join(', ')}`,
-    ].join('\n'),
-  )
-}
-
-console.log('curriculum quality traffic-light drift test passed')
+console.log('curriculum quality snapshot presentation contract passed')

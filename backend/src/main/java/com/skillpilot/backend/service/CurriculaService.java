@@ -2,6 +2,9 @@ package com.skillpilot.backend.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.ChampionRegistrationRequest;
+import com.skillpilot.backend.api.ChampionTrialRequest;
+import com.skillpilot.backend.api.ChampionTrialStatus;
+import com.skillpilot.backend.api.HumanTrialSummary;
 import com.skillpilot.backend.api.ChampionRegistrationResponse;
 import com.skillpilot.backend.api.CurriculaSnapshot;
 import com.skillpilot.backend.api.CurriculumChampionProfile;
@@ -56,6 +59,9 @@ public class CurriculaService {
     private static final Pattern WHY_TOPIC_PATTERN = Pattern.compile("^\\s*(warum|why)\\b.*",
             Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
 
+    @org.springframework.beans.factory.annotation.Autowired
+    private ChampionTrialService championTrialService;
+
     private final LandscapeService landscapeService;
     private final MasteryRepository masteryRepository;
     private final LearnerRepository learnerRepository;
@@ -66,6 +72,7 @@ public class CurriculaService {
     private final ObjectMapper objectMapper;
     private final CurriculumQualitySnapshotProvider curriculumQualitySnapshotProvider;
 
+    private final java.util.concurrent.atomic.AtomicLong trialRevision = new java.util.concurrent.atomic.AtomicLong();
     private final AtomicReference<CurriculaMetricsSnapshot> metricsSnapshot = new AtomicReference<>(
             new CurriculaMetricsSnapshot(Collections.emptyMap(), Collections.emptyMap(), null, Instant.now()));
 
@@ -159,6 +166,10 @@ public class CurriculaService {
         }
     }
 
+    public String publicQualityRevision() {
+        return curriculumQualitySnapshotProvider.revision() + ":" + trialRevision.get();
+    }
+
     public CurriculaSnapshot getSnapshot() {
         CurriculaMetricsSnapshot snapshot = metricsSnapshot.get();
         List<LandscapeSummary> baseCurricula = landscapeService.getBaseCurricula();
@@ -181,7 +192,7 @@ public class CurriculaService {
                     .toList();
             SkillLandscape landscape = landscapeService.getById(curriculumId);
             CurriculumQualityEntry qualityEntry = qualitySnapshot.byLandscapeId().get(curriculumId);
-            List<CurriculumQualityOverview> subjectQuality = buildSubjectQuality(curriculumId, topLevelTopics, qualitySnapshot);
+            List<CurriculumQualityOverview> subjectQuality = buildSubjectQuality(curriculumId, topLevelTopics, qualitySnapshot, champions);
             String titleEn = null;
             String descriptionEn = null;
             if (landscape != null) {
@@ -213,7 +224,11 @@ public class CurriculaService {
                     subjectQuality,
                     topLevelTopics,
                     topLevelTopicsEn,
-                    champions));
+                    champions,
+                    CANONICAL_GYMNASIUM_ROOT_ID.equals(curriculumId) ? null : qualityStatus(qualityEntry, champions),
+                    CANONICAL_GYMNASIUM_ROOT_ID.equals(curriculumId) ? null : summarizeTrial(champions),
+                    (int) subjectQuality.stream().filter(q -> q.humanTrial() != null
+                            && !"not_started".equals(q.humanTrial().state())).count()));
         }
 
         result.sort(Comparator.comparing(CurriculumOverview::title, String.CASE_INSENSITIVE_ORDER));
@@ -223,7 +238,8 @@ public class CurriculaService {
     private List<CurriculumQualityOverview> buildSubjectQuality(
             String curriculumId,
             List<String> topLevelTopics,
-            CurriculumQualitySnapshot qualitySnapshot) {
+            CurriculumQualitySnapshot qualitySnapshot,
+            List<CurriculumChampionProfile> champions) {
         if (!CANONICAL_GYMNASIUM_ROOT_ID.equals(curriculumId)) {
             return Collections.emptyList();
         }
@@ -235,20 +251,28 @@ public class CurriculaService {
             if (entry == null || !seenSubjects.add(normalizeSubject(entry.subject()))) {
                 continue;
             }
-            qualities.add(toQualityOverview(entry));
+            List<CurriculumChampionProfile> subjectChampions = champions.stream()
+                    .filter(c -> entry.landscapeId().equals(c.topicId() == null ? c.curriculumId()
+                            : landscapeService.getLandscapeIdForGoal(c.topicId())))
+                    .toList();
+            qualities.add(toQualityOverview(entry, subjectChampions));
         }
 
         return qualities;
     }
 
-    private CurriculumQualityOverview toQualityOverview(CurriculumQualityEntry entry) {
+    private CurriculumQualityOverview toQualityOverview(CurriculumQualityEntry entry,
+            List<CurriculumChampionProfile> champions) {
         return new CurriculumQualityOverview(
+                entry.landscapeId(),
                 entry.subject(),
                 entry.maturity(),
                 entry.goals(),
                 entry.atomicGoals(),
                 entry.warnings(),
-                entry.failures());
+                entry.failures(),
+                qualityStatus(entry, champions),
+                summarizeTrial(champions));
     }
 
     private String normalizeSubject(String value) {
@@ -264,6 +288,7 @@ public class CurriculaService {
         CurriculaMetricsSnapshot snapshot = metricsSnapshot.get();
 
         return championRepository.findByGithubId(normalizedId).stream()
+                .filter(champion -> champion.getAssignmentEndedAt() == null)
                 .map(champion -> toProfile(
                         champion,
                         champion.getCurriculumId(),
@@ -272,6 +297,7 @@ public class CurriculaService {
                 .toList();
     }
 
+    @org.springframework.transaction.annotation.Transactional
     public void deregisterChampions(String githubId, List<String> curriculumIds) {
         if (githubId == null || githubId.isBlank() || curriculumIds == null || curriculumIds.isEmpty()) {
             return;
@@ -282,13 +308,19 @@ public class CurriculaService {
                     curriculumId,
                     normalizedGithubId);
             if (!champions.isEmpty()) {
-                championRepository.deleteAll(champions);
+                for (CurriculumChampion champion : champions) {
+                    champion.setAssignmentEndedAt(Instant.now());
+                    champion.setTrialPausedAt(Instant.now());
+                }
+                championRepository.saveAll(champions);
             }
         }
+        trialRevision.incrementAndGet();
         // Force refresh metrics after modification
         refreshMetrics();
     }
 
+    @org.springframework.transaction.annotation.Transactional
     public ChampionRegistrationResponse registerChampion(ChampionRegistrationRequest request) {
         if (request == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Request body required");
@@ -320,7 +352,16 @@ public class CurriculaService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unknown SkillPilot ID");
         }
 
-        if (championRepository.findByCurriculumIdAndTopicIdAndGithubId(curriculumId, topicId, githubId).isPresent()) {
+        CurriculumChampion former = championRepository.findByCurriculumIdAndTopicIdAndGithubId(
+                curriculumId, topicId, githubId).orElse(null);
+        if (former != null) {
+            if (former.getAssignmentEndedAt() != null && skillpilotId.equals(former.getSkillpilotId())) {
+                former.setAssignmentEndedAt(null);
+                championRepository.save(former);
+                trialRevision.incrementAndGet();
+                return new ChampionRegistrationResponse(toProfile(former, curriculumId,
+                        metricsSnapshot.get().goalToRoots(), new HashMap<>()));
+            }
             throw new ResponseStatusException(HttpStatus.CONFLICT,
                     "GitHub ID already registered for this curriculum/topic");
         }
@@ -331,6 +372,10 @@ public class CurriculaService {
                     "SkillPilot ID already registered for this curriculum/topic");
         }
 
+        if (topicId != null && !collectGoalAndDescendantIds(curriculumId).contains(topicId)
+                && !isReachable(curriculumId, topicId)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Topic is outside the selected curriculum");
+        }
         CurriculumChampion champion = new CurriculumChampion();
         champion.setCurriculumId(curriculumId);
         champion.setTopicId(topicId);
@@ -340,6 +385,7 @@ public class CurriculaService {
         champion.setPullRequestsCount(0);
 
         CurriculumChampion saved = championRepository.save(champion);
+        trialRevision.incrementAndGet();
         CurriculaMetricsSnapshot snapshot = metricsSnapshot.get();
         Map<String, List<Mastery>> masteryCache = new HashMap<>();
         CurriculumChampionProfile profile = toProfile(
@@ -420,7 +466,114 @@ public class CurriculaService {
                 totalTopicGoals,
                 issuesCount,
                 pullRequestsCount,
-                champion.getCreatedAt());
+                champion.getCreatedAt(),
+                champion.getId(),
+                championTrialService == null ? null : championTrialService.status(champion,
+                        resolveTrialScope(champion, learner, goalToRoots)));
+    }
+
+    @org.springframework.transaction.annotation.Transactional
+    public CurriculumChampionProfile updateChampionTrial(String githubId, String championId,
+            ChampionTrialRequest request) {
+        CurriculumChampion champion = championRepository.findByIdForUpdate(championId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Champion assignment not found"));
+        if (githubId == null || !normalizeGithubId(githubId).equals(champion.getGithubId())) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Champion assignment belongs to another account");
+        }
+        Learner learner = learnerRepository.findById(champion.getSkillpilotId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.CONFLICT, "Learner no longer exists"));
+        ChampionTrialService.Scope scope = resolveTrialScope(champion, learner, metricsSnapshot.get().goalToRoots());
+        championTrialService.apply(champion, scope, request);
+        championRepository.save(champion);
+        trialRevision.incrementAndGet();
+        return toProfile(champion, champion.getCurriculumId(), metricsSnapshot.get().goalToRoots(), new HashMap<>());
+    }
+
+    private ChampionTrialService.Scope resolveTrialScope(CurriculumChampion champion, Learner learner,
+            Map<String, Set<String>> goalToRoots) {
+        String personal = learner != null && champion.getCurriculumId().equals(learner.getSelectedCurriculum())
+                ? learner.getPersonalCurriculum() : "{}";
+        if (personal == null || personal.isBlank()) personal = "{}";
+        String context = champion.getTrialScopeJson();
+        try {
+            if (context == null) {
+                Map<String, Object> frozen = new java.util.TreeMap<>();
+                frozen.put("curriculumId", champion.getCurriculumId());
+                frozen.put("topicId", champion.getTopicId());
+                frozen.put("personalCurriculum", objectMapper.readTree(personal));
+                context = objectMapper.writeValueAsString(frozen);
+            } else {
+                var frozen = objectMapper.readTree(context);
+                if (!champion.getCurriculumId().equals(frozen.path("curriculumId").asText())
+                        || !java.util.Objects.equals(champion.getTopicId(),
+                                frozen.path("topicId").isNull() ? null : frozen.path("topicId").asText(null))) {
+                    throw new IllegalStateException("Trial scope binding mismatch");
+                }
+                personal = objectMapper.writeValueAsString(frozen.path("personalCurriculum"));
+            }
+        } catch (Exception exception) {
+            return new ChampionTrialService.Scope("invalid", "Unverfügbarer Prüfumfang", false, Map.of(), false, 1);
+        }
+        Learner scopedLearner = new Learner();
+        scopedLearner.setSelectedCurriculum(champion.getCurriculumId());
+        scopedLearner.setPersonalCurriculum(personal);
+        Set<String> ids = resolveChampionAtomicIds(champion.getCurriculumId(), champion.getTopicId(),
+                champion.getSkillpilotId(), scopedLearner, goalToRoots);
+        Map<String, LearningGoal> goals = new java.util.TreeMap<>();
+        for (String id : ids) {
+            LearningGoal goal = landscapeService.getGoalDefinition(id);
+            if (goal != null && !"technical".equals(goal.getSemanticKind())
+                    && !"structure".equals(goal.getSemanticKind())) goals.put(id, goal);
+        }
+        String landscapeId = champion.getTopicId() == null ? champion.getCurriculumId()
+                : landscapeService.getLandscapeIdForGoal(champion.getTopicId());
+        SkillLandscape landscape = landscapeService.getById(landscapeId);
+        CurriculumQualityEntry quality = curriculumQualitySnapshotProvider.load().byLandscapeId().get(landscapeId);
+        Set<String> allIds = new HashSet<>();
+        if (landscape != null && landscape.getGoals() != null) {
+            landscape.getGoals().stream()
+                    .filter(g -> g.getContains() == null || g.getContains().isEmpty())
+                    .filter(g -> !"technical".equals(g.getSemanticKind()) && !"structure".equals(g.getSemanticKind()))
+                    .forEach(g -> allIds.add(g.getId()));
+        }
+        boolean full = !allIds.isEmpty() && ids.containsAll(allIds);
+        String label = landscape == null ? champion.getCurriculumId() : landscape.getTitle();
+        if (champion.getTopicId() != null) {
+            LearningGoal topic = landscapeService.getGoalDefinition(champion.getTopicId());
+            if (topic != null && !full) label += " / " + topic.getTitle();
+        }
+        if (!full) {
+            Map<String, String> runtimeScope = deriveRuntimeCompositionScope(landscapeId, personal);
+            if (!runtimeScope.isEmpty()) label += " (" + String.join(", ", new java.util.TreeMap<>(runtimeScope).values()) + ")";
+        }
+        boolean findingsAvailable = quality != null && quality.humanTrialFindingsAvailable();
+        int blockers = findingsAvailable ? quality.humanTrialBlockingRuleFailures() + quality.humanTrialBlockingFindings() : 0;
+        return new ChampionTrialService.Scope(context, label, full, goals, coreReady(quality), blockers, findingsAvailable);
+    }
+
+    private static boolean coreReady(CurriculumQualityEntry entry) {
+        return entry != null && Set.of("M5", "M6", "M7").contains(entry.maturity());
+    }
+
+    private static String qualityStatus(CurriculumQualityEntry entry, List<CurriculumChampionProfile> champions) {
+        if (entry == null) return null;
+        if (!coreReady(entry)) return "experimental";
+        HumanTrialSummary trial = summarizeTrial(champions);
+        if ("completed".equals(trial.state()) && "full".equals(trial.scopeCoverage())) return "human_trial_completed";
+        if ("in_progress".equals(trial.state())) return "human_trial_in_progress";
+        return "machine_qa";
+    }
+
+    private static HumanTrialSummary summarizeTrial(List<CurriculumChampionProfile> champions) {
+        ChampionTrialStatus selected = champions.stream().map(CurriculumChampionProfile::trial)
+                .filter(java.util.Objects::nonNull)
+                .filter(t -> "completed".equals(t.state()) || "in_progress".equals(t.state()))
+                .max(Comparator.comparingInt((ChampionTrialStatus t) ->
+                        "completed".equals(t.state()) && "full".equals(t.scopeCoverage()) ? 3
+                        : "in_progress".equals(t.state()) ? 2 : 1)).orElse(null);
+        return selected == null ? new HumanTrialSummary("not_started", "", "partial", 0, 0)
+                : new HumanTrialSummary(selected.state(), selected.scopeLabel(), selected.scopeCoverage(),
+                        selected.requiredGoals(), selected.practicedGoals());
     }
 
     private long countAtomicGoalsForCurriculum(String curriculumId, Map<String, Set<String>> goalToRoots) {

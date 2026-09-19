@@ -5,8 +5,7 @@ import { LanguageProvider } from '../src/contexts/LanguageContext'
 import { orderedFocusCandidatesAfterSelection } from '../src/utils/personalCurriculumEditorFocus'
 import type { PersonalizationPlan } from '../src/utils/personalCurriculumEditorApi'
 import {
-  CANONICAL_GYMNASIUM_MATH_ID,
-  CANONICAL_GYMNASIUM_PHYSICS_ID,
+  type CurriculumQualityStatus,
   type CurriculumQualityFilter,
 } from '../src/utils/curriculumQualityTrafficLight'
 
@@ -220,15 +219,17 @@ const qualitySubject = (
   optionId: string,
   landscapeId: string,
   landscapeLabel: string,
+  qualityStatus: CurriculumQualityStatus = 'machine_qa',
 ) => ({
   ...mathOption,
   optionId,
   landscapeId,
   landscapeLabel,
+  qualityStatus,
 })
 const humanQaOptions = [
-  qualitySubject('math-quality', CANONICAL_GYMNASIUM_MATH_ID, 'Mathematik'),
-  qualitySubject('physics-quality', CANONICAL_GYMNASIUM_PHYSICS_ID, 'Physik'),
+  qualitySubject('math-quality', 'math', 'Mathematik', 'human_trial_completed'),
+  qualitySubject('physics-quality', 'physics', 'Physik', 'human_trial_completed'),
   qualitySubject('chemistry-quality', 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0', 'Chemie'),
   qualitySubject('history-quality', '92406d94-e3c1-58ec-b7c6-12122278d25a', 'Geschichte'),
   qualitySubject('german-quality', '67bd301b-e11a-582d-94ba-4f4b1a4cefff', 'Deutsch'),
@@ -237,7 +238,7 @@ const humanQaSubjectSelection = renderEditor('de', {
   ...historyPlan,
   options: humanQaOptions,
   displayOptions: humanQaOptions,
-}, 'green')
+}, 'human_trial_completed')
 assert(
   humanQaSubjectSelection.includes('2 von 5 Optionen verfügbar')
     && humanQaSubjectSelection.includes('Wähle zwischen 1 und 2 Optionen.'),
@@ -263,7 +264,7 @@ const experimentalSubjectSelection = renderEditor('de', {
   ...historyPlan,
   options: humanQaOptions,
   displayOptions: humanQaOptions,
-}, 'red')
+}, 'experimental')
 assert(
   experimentalSubjectSelection.includes(
     'Für diesen Qualitätsfilter sind derzeit nicht genügend Fächer auswählbar.',

@@ -6,7 +6,7 @@ There is no limit to the number of champions for a single curriculum. Multiple c
 
 ## Responsibilities of a Champion
 -   Do whatever is necessary to make the curriculum practically useful in the champion's relevant context.
--   Step into the learner role and work through the curriculum, aiming to collect as many attainable points as possible.
+-   Step into the learner role and work through the curriculum, including its required learning and assessment stations.
 -   Act as a project owner who improves (or gets improvements made to) the curriculum and SkillPilot so the curriculum works in practice.
     This includes using GitHub issues and pull requests at https://github.com/enpasos/skillpilot
 -   Strive to apply the curriculum for the practical benefit of learners and teachers, and recruit them to use it.
@@ -19,13 +19,41 @@ Aspiring champions register on the **"Curricula"** page (which will replace the 
 -   **GitHub Account Verification:** Users must authenticate via GitHub OAuth to prove ownership of the account.
 -   GitHub ID is shown publicly; SkillPilot ID is displayed masked.
 
+## Practical human trial
+
+Registration does not start or certify a trial. On the Curricula page, a registered
+champion explicitly chooses **Begin trial** for a scope whose core QA has reached
+at least **M5**. The current personal curriculum and topic selection define that
+scope. Later changes to the learner's selection do not silently change the trial.
+
+The page displays the scope, evidenced learning stations, and known blocking
+findings. Importing mastery or manually raising a mastery value is not practical
+trial evidence. Valid learning completions recorded before the start can count
+when their provenance and current content binding are available. Older records
+without those bindings are retained but cannot certify the current content.
+
+**Human QA in progress** requires an explicitly started, active trial. A champion
+may pause and resume it. **Human-tested** requires one champion's complete evidence
+for the advertised scope, no known unresolved blocking findings, and the explicit
+final confirmation. Several people's partial runs are never combined. Merely
+completing a learning goal does not resolve a reported defect. The final
+confirmation also covers blocking findings known to the champion that have not
+yet entered a machine-readable review ledger.
+
+A limited scope stays visibly limited; it does not certify an entire subject.
+Relevant content changes require fresh evidence for affected stations and a new
+confirmation. Unchanged evidence and the previous completion record remain.
+M7 is a separate maturity level based on the five deep-QA gates, not a prerequisite
+for starting human trials and not proof that a human trial happened. See the
+[quality and human-trial concept](../concept/curriculum-quality-and-human-trial.md).
+
 ## Stop Championship Process (Resignation)
 Champions can resign from their role at any time.
 **Process:**
 1.  **Initiate:** User clicks "Stop Championship".
 2.  **Verify Identity:** User must authenticate via **GitHub OAuth** to prove ownership of the GitHub ID associated with the championships.
 3.  **Select Curricula:** The system displays all active championships for the authenticated GitHub user. The user selects one or more to end.
-4.  **Confirm:** User confirms the deregistration. The system then removes the champion assignment.
+4.  **Confirm:** User confirms the deregistration. The assignment ends and an unfinished trial stops being active. Completed evidence and its history remain; resignation alone does not revoke a valid completed trial.
 
 ## The "Curricula" Page
 This page serves as the central hub for curriculum maintenance.

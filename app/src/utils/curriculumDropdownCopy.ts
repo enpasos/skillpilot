@@ -1,3 +1,4 @@
+import { getCurriculumQualityCopy } from './curriculumQualityPresentation'
 import type { LabelLanguage } from './filterLabels'
 import type { CurriculumQualityFilter } from './curriculumQualityTrafficLight'
 
@@ -23,13 +24,8 @@ export const getCurriculumDropdownCopy = (
         },
         compatibilityGroupLabel: 'Kompatibilitätsansichten',
         legacyGroupLabel: 'Legacy-Ansichten',
-        qualityFilterLabel: 'Qualitätsampel',
-        qualityFilterOptions: {
-          green: 'Menschliche QS',
-          orange: 'Maschinelle QS',
-          red: 'Experimentell',
-          all: 'Alle',
-        },
+        qualityFilterLabel: getCurriculumQualityCopy(language).label,
+        qualityFilterOptions: getCurriculumQualityCopy(language).filterOptions,
       }
     : {
         categoryLabels: {
@@ -39,12 +35,7 @@ export const getCurriculumDropdownCopy = (
         },
         compatibilityGroupLabel: 'Compatibility views',
         legacyGroupLabel: 'Legacy views',
-        qualityFilterLabel: 'Quality status',
-        qualityFilterOptions: {
-          green: 'Human QA',
-          orange: 'Automated QA',
-          red: 'Experimental',
-          all: 'All',
-        },
+        qualityFilterLabel: getCurriculumQualityCopy(language).label,
+        qualityFilterOptions: getCurriculumQualityCopy(language).filterOptions,
       }
 )
