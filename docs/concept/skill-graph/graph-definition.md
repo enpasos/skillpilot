@@ -1,6 +1,6 @@
 # SkillPilot Skill Graph Specification
 
-SkillPilot models learning goals and their relationships as a graph. **Contains** describes how goals are grouped into a hierarchy. **Direct Requires** identifies the prerequisites that must be satisfied before a goal can be attempted. Grouping alone does not establish a prerequisite.
+SkillPilot models learning goals and their relationships as a graph. **Contains** describes how goals are grouped into a hierarchy. **Requires** identifies the prerequisites that must be satisfied before a goal can be attempted. Grouping alone does not establish a prerequisite.
 
 This specification defines goal attributes, both relations, their derived semantics—including inherited prerequisites—and the conditions for graph validity. It provides a common mathematical foundation so that independent implementations interpret and validate the same graph consistently.
 
@@ -18,7 +18,7 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 
 > **Illustrations.** The figures are explanatory examples, not a curriculum or additional requirements. The formal definitions and normative statements remain authoritative.
 >
-> **Reading key.** Read each relation arrow as “source — relation → target”. A `contains` arrow points from parent to child; a `requires` arrow points from a goal to its prerequisite. Solid prerequisite arrows are direct; dashed prerequisite arrows are inherited from contains ancestors. Colour distinguishes the relation or its evaluation status, as specified in each figure’s legend. A learning-flow view uses the inverse of `requires` and explicitly labels that inverse direction.
+> **Reading key.** Read each relation arrow as “source — relation → target”. A `contains` arrow points from parent to child; a `requires` arrow points from a goal to its prerequisite. Solid prerequisite arrows are labelled `requires`; dashed prerequisite arrows are labelled `requires (inherited)` and are derived from contains ancestors. Colour distinguishes the relation or its evaluation status, as specified in each figure’s legend. A learning-flow view uses the inverse of `requires` and explicitly labels that inverse direction.
 
 <!-- END SKILLPILOT-ILLUSTRATION: review-status -->
 
@@ -127,7 +127,7 @@ Interpretation:
 - in repositories that serialize the same logical landscape into multiple locale files sharing one `landscapeId`, this uniqueness requirement applies to the shared logical landscape, not merely to one file serialization
 - repeated `(goalId, ShortKey)` pairs across locale serializations of the same landscape are therefore acceptable; collisions where the same `ShortKey` names different goal IDs are not
 
-### 2.4 Atomic and cluster goals (canonical semantic classification)
+### 2.4 Atomic and cluster goals (structural classification)
 
 Once the direct containment relation $C$ from §4 is fixed, the atomic/cluster split is defined canonically by the graph structure:
 
@@ -142,9 +142,11 @@ $$
 Interpretation:
 
 - $A$: the set of **atomic goals**  
-  Assessable leaf goals with no direct `contains` children.
+  Goals with no direct `contains` children.
 - $K$: the set of **cluster goals**  
   Structural aggregation goals with at least one direct `contains` child.
+
+**Structural classification and quality assurance.** Being atomic in this graph-theoretic sense does not by itself establish that a content goal represents a single assessable competence. That is evaluated separately by the [Semantic Atomicity Review](../../qa-ci/semantic-atomicity-review.md), tracked by `CQR-301` in the [Curriculum Quality Dashboard](../../qa-ci/curriculum-quality-dashboard.md). Orientation, assessment and memory leaves are evaluated under their respective QA rules.
 
 Implementations MAY store explicit atomic/cluster classification metadata, but if they do, it MUST agree with this derived classification.  
 This makes all later references to “atomic” and “cluster” portable across implementations.
@@ -153,10 +155,12 @@ This makes all later references to “atomic” and “cluster” portable acros
 
 ## 3. Relations
 
-The skill graph is defined using two primary relations on $G$:
+The skill graph has two authored relations on $G$:
 
-- a hierarchy relation called **Contains**, directed from parent to child
-- a dependency relation called **Direct Requires**, directed from a goal to its prerequisite
+- **`contains`**, written $C$: the hierarchy relation, directed from parent to child
+- **`requires`**, written $R$: the prerequisite relation, directed from a goal to its prerequisite
+
+Both record direct relationships between a goal and its referenced goals. Ancestor/descendant relationships, inherited prerequisites, effective prerequisites and prerequisite reachability are derived from these relations; they are not additional authored relation types.
 
 ---
 
@@ -172,8 +176,7 @@ $$
 
 $(p,c)\in C$ means **parent** $p$ directly contains **child** $c$. A contains arrow points from $p$ to $c$. Containment groups goals; it does not establish a prerequisite or a learning order.
 
-**Note:** $C$ is the *direct* containment relation (“direct contains”).  
-Indirect containment (ancestor/descendant) is derived via the transitive closure $C^+$.
+**Note:** $C$ records the directly authored `contains` pairs. Ancestor/descendant relationships are derived via the transitive closure $C^+$, which includes paths of one or more edges.
 
 Edges in $C$ are interpreted as hierarchical grouping (e.g., topic cluster contains atomic goal).
 
@@ -215,7 +218,7 @@ Interpretation:
 - for an atomic goal, its basis is itself,
 - for a cluster goal, its basis is the set of atomic descendants whose mastery witnesses satisfaction of that cluster in set-based progression semantics.
 
-Clusters with $Atoms(g)=\varnothing$ are structurally allowed, but they SHOULD NOT participate in prerequisite authoring or learner progression semantics.
+**Non-empty atomic basis.** For every goal $g\in G$, $Atoms(g)$ is non-empty: an atomic goal has basis $\{g\}$, and every cluster in a finite acyclic contains graph has at least one atomic descendant. A goal without contains children is atomic (§2.4), not an empty cluster.
 
 <!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-02 -->
 
@@ -231,28 +234,28 @@ Clusters with $Atoms(g)=\varnothing$ are structurally allowed, but they SHOULD N
 
 ---
 
-## 5. Direct Requires relation
+## 5. Requires relation
 
 ### 5.1 Definition
 
-The **Direct Requires** relation is a binary relation:
+The **Requires** relation is a binary relation:
 
 $$
-R_d \subseteq G \times G
+R \subseteq G \times G
 $$
 
-$(g,p)\in R_d$ means **goal $g$ directly requires prerequisite $p$**.
+$(g,p)\in R$ means **goal $g$ directly requires prerequisite $p$**.
 Equivalently, $p$ is a direct prerequisite of $g$. A `requires` arrow points **from $g$ to $p$** and is read “$g$ requires $p$”. In a serialized goal record, `requires` lists the referenced goals that the record’s goal directly requires.
 
 Multiple outgoing requires edges are conjunctive: a goal requires **all** the prerequisites to which it points, not a choice among them. Satisfaction and scoped availability are defined in §9 and §11.
 
-A **learning-flow view** depicts the inverse relation $R_d^{-1}$: an arrow $p\to g$ is read “$p$ is a direct prerequisite for $g$”. Such a view explicitly identifies itself as **inverse of requires** and does not label its arrows simply `requires`. It is derived from the same prerequisite facts, not authored as a separate dependency relation. An individual prerequisite-for arrow does not imply that satisfying its source alone makes the target available.
+A **learning-flow view** depicts the inverse relation $R^{-1}$: an arrow $p\to g$ is read “$p$ is a direct prerequisite for $g$”. Such a view explicitly identifies itself as **inverse of requires** and does not label its arrows simply `requires`. It is derived from the same prerequisite facts, not authored as a separate dependency relation. An individual prerequisite-for arrow does not imply that satisfying its source alone makes the target available.
 
 <!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-03 -->
 
 **Figure 3. Direct prerequisites — non-normative example.**
 
-![Four direct requires arrows: Velocity → Vectors, Acceleration → Velocity, Newton’s Second Law → Acceleration, and Newton’s Second Law → Forces. Each arrow points from the goal to its direct prerequisite.](assets/graph-definition/03-direct-requires.png)
+![Four solid blue requires arrows: Velocity → Vectors, Acceleration → Velocity, Newton’s Second Law → Acceleration, and Newton’s Second Law → Forces. Each arrow points from the goal to its direct prerequisite.](assets/graph-definition/03-direct-requires.png)
 
 **How to read it:** Read each blue arrow from its source to its arrowhead: “this goal requires that prerequisite”. Velocity requires Vectors; Acceleration requires Velocity; Newton’s Second Law requires both Forces and Acceleration. The curved arrow to Acceleration is a direct requirement, just like the straight arrows.
 
@@ -266,7 +269,7 @@ The formal model allows direct prerequisite edges between arbitrary goals in $G$
 However, for high-quality and mature curricula, the **canonical prerequisite layer** SHOULD primarily live between atomic goals:
 
 $$
-R_d \subseteq A \times A
+R \subseteq A \times A
 $$
 
 Interpretation:
@@ -277,58 +280,76 @@ Interpretation:
 
 If a direct prerequisite is authored on a cluster goal, it is stronger than a mere summary: under the semantics in §6 it constrains descendants via inheritance.
 
+**Quality-assurance requirements.** In the [curriculum quality model](../../qa-ci/curriculum-quality-maturity-and-routes.md), curriculum maturity **M3 and above** requires `CQR-101`, `CQR-102` and `CQR-103` to pass in every configured QA route scope. `CQR-102` requires direct atomic-to-atomic route coverage; `CQR-103` requires clusters selected by each scope's `clusterSelector` to have no direct `requires`. These scoped maturity gates do not by themselves prohibit every cluster-related edge in the full graph.
+
+[Graph Validation Rules](../../qa-ci/graph-validation-rules.md) defines the additional enforcement profiles. In particular, `GVR-013` prohibits direct local `requires` from selected atomic goals to cluster prerequisites within its configured scope. A maturity level and a validator rule must be interpreted with their applicable scope, not as a repository-wide guarantee that $R\subseteq A\times A$.
+
 ### 5.3 DAG constraint
 
-$(G,R_d)$ MUST be acyclic:
+$(G,R)$ MUST be acyclic:
 
 $$
-\neg \exists g\in G:\ (g,g)\in R_d^+
+\neg \exists g\in G:\ (g,g)\in R^+
 $$
 
 ---
 
-## 6. Effective Requires semantics
+## 6. Effective prerequisites
 
-A goal’s requirements include its own direct prerequisites and the direct prerequisites declared by its contains ancestors. The **Effective Requires** relation records all these applicable requirements in the direction **goal → prerequisite**.
+A goal’s requirements include its own direct prerequisites and the direct prerequisites declared by its contains ancestors. The **effective prerequisite relation** records all these applicable requirements in the direction **goal → prerequisite**.
 
-Cluster-level prerequisite authoring is permitted by the formal model. For precise didactic sequencing, §5.2 recommends atomic-to-atomic authoring.
+**Quality-assurance context.** Contains-based inheritance supports modeling and compatibility where prerequisites are declared on clusters. The [QA route gates](../../qa-ci/curriculum-quality-maturity-and-routes.md) described in §5.2 distinguish effective route coverage (`CQR-101`) from direct atomic route coverage (`CQR-102`) and the absence of direct `requires` on selected clusters (`CQR-103`). In a fully atomic-authored prerequisite graph, $R_{\mathrm{effective}}=R$ (§6.3): the effective relation remains defined, but inheritance contributes no additional pairs. Longer prerequisite chains still apply through the transitive closure.
 
-### 6.1 Effective Requires relation
+### 6.1 Effective prerequisite relation
 
-Define $R_{eff}\subseteq G\times G$ by:
+Define $R_{\mathrm{effective}}\subseteq G\times G$ by:
 
 $$
-(g,p)\in R_{eff}
+(g,p)\in R_{\mathrm{effective}}
 \iff
-\big((g,p)\in R_d\big)
+\big((g,p)\in R\big)
 \ \lor\
-\big(\exists a\in Ancestors(g): (a,p)\in R_d\big)
+\big(\exists a\in Ancestors(g): (a,p)\in R\big)
 $$
 
 Interpretation:
 
 - $g$ requires $p$ effectively when $g$ declares that prerequisite itself or inherits it from a contains ancestor.
-- Every direct requirement is also effective: $R_d\subseteq R_{eff}$. The same ordered pair occurs only once in a relation, even when there are several inheritance paths.
+- Every direct requirement is also effective: $R\subseteq R_{\mathrm{effective}}$. The same ordered pair occurs only once in a relation, even when there are several inheritance paths.
 - Inheritance follows the contains hierarchy. It copies direct requirements declared by ancestors to their descendants; it does not copy requirements from prerequisite goals.
-- $R_{eff}$ is computed by the inheritance rule, not by taking a transitive closure. Chains of requirements are evaluated using $R_{eff}^+$; this is distinct from contains-based inheritance.
+- $R_{\mathrm{effective}}$ is computed by the inheritance rule, not by taking a transitive closure. Chains of requirements are evaluated using $R_{\mathrm{effective}}^+$; this is distinct from contains-based inheritance.
 
-**Note (with multiple parents):** A goal inherits direct requirements from all its contains ancestors, across every parent path. The additional inherited pairs are $R_{eff}\setminus R_d$; the figures distinguish them with dashed arrows.
+**Inherited prerequisite pairs.** The additional pairs contributed by containment-based inheritance are:
+
+$$
+R_{\mathrm{inherited}}=R_{\mathrm{effective}}\setminus R.
+$$
+
+Consequently:
+
+$$
+R_{\mathrm{effective}}=R\cup R_{\mathrm{inherited}}.
+$$
+
+The effective relation includes authored pairs; the inherited relation contains only additional pairs. Both derived relations use the same direction as `requires`: goal → prerequisite. Solid blue arrows labelled `requires` represent authored pairs; dashed blue arrows labelled `requires (inherited)` represent the additional inherited pairs. A figure may use another colour to indicate evaluation status, as stated in its legend.
+
+**Note (with multiple parents):** A goal inherits requirements from all its contains ancestors, across every parent path. Multiple inheritance paths do not duplicate an ordered pair.
 
 ### 6.2 Effective prerequisite set
 
 For convenience, define the set of effective prerequisites of a node:
 
 $$
-Pre_{eff}(g) = \{\, p\in G \mid (g,p)\in R_{eff} \,\}
+Pre_{\mathrm{effective}}(g) = \{\, p\in G \mid (g,p)\in R_{\mathrm{effective}} \,\}
 $$
 
 <!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-04 -->
 
 **Figure 4. Prerequisites inherited from a cluster — non-normative example.**
 
-![Kinematics contains Velocity and Acceleration. Vectors is outside this cluster. The solid blue requires arrow runs from Kinematics to Vectors. Two dashed blue inherited requires arrows run from Velocity to Vectors and from Acceleration to Vectors.](assets/graph-definition/04-effective-requires.png)
+![Kinematics contains Velocity and Acceleration. Vectors is outside this cluster. The solid blue requires arrow runs from Kinematics to Vectors. Two dashed blue arrows labelled requires (inherited) run from Velocity to Vectors and from Acceleration to Vectors.](assets/graph-definition/04-effective-requires.png)
 
-**How to read it:** Kinematics directly requires Vectors. Because Kinematics contains Velocity and Acceleration, both children inherit that requirement. All three prerequisite arrows point to Vectors. The solid arrow is directly authored; the two dashed arrows are derived from containment. All three pairs belong to $R_{eff}$.
+**How to read it:** Kinematics directly requires Vectors. Because Kinematics contains Velocity and Acceleration, both children inherit that requirement. All three prerequisite arrows point to Vectors. The solid arrow is directly authored; the two dashed arrows are derived from containment. All three pairs belong to $R_{\mathrm{effective}}$.
 
 **Scope note:** This is a separate example from Figure 1: Vectors is not contained in Kinematics here. Adding that contains edge would make Vectors inherit a requirement for itself. For precise atomic-to-atomic authoring, see §5.2. Inherited requirements are distinct from prerequisite chains.
 
@@ -336,41 +357,41 @@ $$
 
 ### 6.3 Relation to the canonical atomic model
 
-When none of a goal’s contains ancestors declares an outgoing direct requires edge, the goal inherits no additional prerequisites. Its effective prerequisite set equals its directly authored prerequisite set:
+When none of a goal’s contains ancestors declares an outgoing `requires` edge, the goal inherits no additional prerequisites. Its effective prerequisite set equals its directly authored prerequisite set:
 
 $$
-\left(\forall a\in Ancestors(g):\ \neg\exists p\in G:\ (a,p)\in R_d\right)
+\left(\forall a\in Ancestors(g):\ \neg\exists p\in G:\ (a,p)\in R\right)
 \Rightarrow
-Pre_{eff}(g)=\{\,p\in G\mid(g,p)\in R_d\,\}.
+Pre_{\mathrm{effective}}(g)=\{\,p\in G\mid(g,p)\in R\,\}.
 $$
 
-In particular, if $R_d\subseteq A\times A$, contains ancestors are clusters and cannot be the source of a direct requires edge. In that atomic-authored model, $R_{eff}=R_d$. Longer prerequisite chains are still represented by the transitive closure.
+In particular, if $R\subseteq A\times A$, contains ancestors are clusters and cannot be the source of a `requires` edge. In that atomic-authored model, $R_{\mathrm{effective}}=R$. Longer prerequisite chains are still represented by the transitive closure.
 
 ---
 
 ## 7. Validity constraints
 
-A SkillPilot skill graph is **valid** iff all constraints in this section hold.
+The constraints in this section apply in addition to the goal-attribute, identifier and relation requirements defined in §§1–5. Full-graph validity is summarized in §10.
 
-### 7.1 Effective Requires must be acyclic
+### 7.1 Effective prerequisites must be acyclic
 
 The dependency graph induced by effective prerequisites MUST be acyclic:
 
 $$
-\neg \exists g\in G:\ (g,g)\in R_{eff}^+
+\neg \exists g\in G:\ (g,g)\in R_{\mathrm{effective}}^+
 $$
 
-This constraint is stricter than acyclicity of $R_d$ alone because inheritance via $C$ can introduce cycles.
+This constraint is stricter than acyclicity of $R$ alone because inheritance via $C$ can introduce cycles.
 
 **Non-normative example (illustrative):**  
-Let $(A,B)\in C$ (i.e., $A$ contains $B$). Suppose $(A,X)\in R_d$ and $(X,B)\in R_d$: $A$ directly requires $X$, and $X$ directly requires $B$.  
-The direct requires graph contains the acyclic chain $A \to X \to B$. Since $A$ is a contains ancestor of $B$, inheritance adds $(B,X)\in R_{eff}$. This creates the cycle $B \to X \to B$ in $R_{eff}$.
+Let $(A,B)\in C$ (i.e., $A$ contains $B$). Suppose $(A,X)\in R$ and $(X,B)\in R$: $A$ directly requires $X$, and $X$ directly requires $B$.  
+The authored `requires` graph contains the acyclic chain $A \to X \to B$. Since $A$ is a contains ancestor of $B$, inheritance adds $(B,X)\in R_{\mathrm{effective}}$. This creates the cycle $B \to X \to B$ in $R_{\mathrm{effective}}$.
 
 <!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-05 -->
 
 **Figure 5. Why inheritance can create a cycle — non-normative example.**
 
-![Two panels with A containing B and A directly requiring X. In the acyclic panel, B inherits the requirement for X and no effective cycle exists. In the cyclic panel, X also directly requires B; together with inherited B → X, this produces B → X → B. Grey arrows are contains, solid blue arrows direct requires, and dashed blue arrows inherited requires.](assets/graph-definition/05-validity-and-cycles.png)
+![Two panels with A containing B and A directly requiring X. In the acyclic panel, B inherits the requirement for X and no effective cycle exists. In the cyclic panel, X also directly requires B; together with inherited B → X, this produces B → X → B. Grey arrows are contains, solid blue arrows requires, and dashed blue arrows requires (inherited).](assets/graph-definition/05-validity-and-cycles.png)
 
 **How to read it:** In both panels, $A$ contains $B$ and directly requires $X$, so $B$ inherits the requirement for $X$. On the left there is no effective cycle. On the right, $X$ additionally requires $B$ directly. The direct edge $X\to B$ and inherited edge $B\to X$ form the cycle. Check for cycles using both direct and inherited prerequisites.
 
@@ -384,31 +405,31 @@ A direct prerequisite MUST NOT be redundantly stated on a node if it is already 
 
 $$
 \forall g,p\in G:
-(g,p)\in R_d \Rightarrow
-\neg \exists a\in Ancestors(g): (a,p)\in R_d
+(g,p)\in R \Rightarrow
+\neg \exists a\in Ancestors(g): (a,p)\in R
 $$
 
 ### 7.3 Transitive minimality
 
 A direct prerequisite edge MUST NOT be present if the prerequisite relationship already follows from other effective prerequisite paths.
 
-Formally, for each $(g,p)\in R_d$, remove that single direct edge and recompute effective requirements; the prerequisite must no longer be implied transitively.
+Formally, for each $(g,p)\in R$, remove that single direct edge and recompute effective requirements; the prerequisite must no longer be implied transitively.
 
 Let:
 
 $$
-R_d' = R_d \setminus \{(g,p)\}
+R' = R \setminus \{(g,p)\}
 $$
 
-and let $R_{eff}'$ be the effective relation computed from $R_d'$ using the definition in §6.1.
+and let $R_{\mathrm{effective}}'$ be the effective relation computed from $R'$ using the definition in §6.1.
 
 Then the constraint is:
 
 $$
-\forall (g,p)\in R_d:\ (g,p)\notin (R_{eff}')^+
+\forall (g,p)\in R:\ (g,p)\notin (R_{\mathrm{effective}}')^+
 $$
 
-Interpretation: every edge in $R_d$ is necessary to preserve prerequisite reachability under the inheritance rules.
+Interpretation: every edge in $R$ is necessary to preserve prerequisite reachability under the inheritance rules.
 
 ---
 
@@ -421,7 +442,7 @@ The following are common modeling rules that typically improve graph quality. Th
 A goal SHOULD NOT require its own descendant:
 
 $$
-(g,p)\in R_d \Rightarrow p \notin Descendants(g)
+(g,p)\in R \Rightarrow p \notin Descendants(g)
 $$
 
 This prevents “inside-out” prerequisite definitions that often indicate a modeling error (e.g., a parent depending on one of its parts).
@@ -430,7 +451,7 @@ This prevents “inside-out” prerequisite definitions that often indicate a mo
 
 Often, prerequisites SHOULD be modeled between peer concepts rather than between ancestors/descendants in the hierarchy. Common guidance:
 
-- For $(g,p)\in R_d$: $p \notin Ancestors(g)$ and $p \notin Descendants(g)$
+- For $(g,p)\in R$: $p \notin Ancestors(g)$ and $p \notin Descendants(g)$
 
 If your product needs exceptions, treat this as a heuristic.
 
@@ -477,15 +498,15 @@ $$
 
 If a profile uses a non-empty $E_{route}$, the identifying predicate MUST be machine-readable and documented by that profile.
 
-A didactic route is read in **learning-flow direction**, from prerequisite to dependent goal, using the inverse relation $R_d^{-1}$. Its arrows express “is a direct prerequisite for”, not `requires`.
+A didactic route is read in **learning-flow direction**, from prerequisite to dependent goal, using the inverse relation $R^{-1}$. Its arrows express “is a direct prerequisite for”, not `requires`.
 
 An atomic goal $a\in A\setminus E_{route}$ is **route-covered** iff:
 
 $$
 \exists m\in M,\ \exists t\in T:
-\big(a=m \lor (m,a)\in (R_d^{-1})^+\big)
+\big(a=m \lor (m,a)\in (R^{-1})^+\big)
 \ \land\
-\big(a=t \lor (a,t)\in (R_d^{-1})^+\big)
+\big(a=t \lor (a,t)\in (R^{-1})^+\big)
 $$
 
 Interpretation: every route-relevant atomic goal should lie on at least one didactic path that starts with motivation and ends in autonomous performance.
@@ -618,28 +639,28 @@ $$
 Frontier(M_A) =
 \left\{
 g \in A\setminus M_A \ \middle|\ 
-\forall p\in G:\ (g,p)\in R_{eff}^+ \Rightarrow Sat(p,M_A)
+\forall p\in G:\ (g,p)\in R_{\mathrm{effective}}^+ \Rightarrow Sat(p,M_A)
 \right\}
 $$
 
-Interpretation: an unmastered atomic goal is available if every prerequisite reachable by following one or more outgoing effective requires edges is satisfied. This includes longer prerequisite chains. Cluster prerequisites are evaluated through their atomic descendants using $Sat$.
+Interpretation: an unmastered atomic goal is available if every prerequisite reachable by following one or more outgoing edges of the effective prerequisite relation is satisfied. This includes longer prerequisite chains. Cluster prerequisites are evaluated through their atomic descendants using $Sat$.
 
 If a product also exposes **cluster availability** for navigation purposes, it SHOULD derive it from the same satisfaction predicate:
 
 $$
 Frontier_K(M_A)=
 \left\{
-k\in K \mid Atoms(k)\neq\varnothing\ \land\ \neg Sat(k,M_A)\ \land\ \forall p\in G:\ (k,p)\in R_{eff}^+ \Rightarrow Sat(p,M_A)
+k\in K \mid Atoms(k)\neq\varnothing\ \land\ \neg Sat(k,M_A)\ \land\ \forall p\in G:\ (k,p)\in R_{\mathrm{effective}}^+ \Rightarrow Sat(p,M_A)
 \right\}
 $$
 
-Availability is evaluated through reachability in $R_{eff}^+$. If prerequisites are authored only between atomic goals, $R_{eff}=R_d$ (§6.3), so this is reachability in $R_d^+$. Where cluster-level requirements are present, inherited requirements participate in the same check.
+Availability is evaluated through reachability in $R_{\mathrm{effective}}^+$. If prerequisites are authored only between atomic goals, $R_{\mathrm{effective}}=R$ (§6.3), so this is reachability in $R^+$. Where cluster-level requirements are present, inherited requirements participate in the same check.
 
 <!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-06 -->
 
 **Figure 6. Which goal is available next? — non-normative example.**
 
-![The Mechanics hierarchy with directed contains arrows and four direct requires arrows pointing to prerequisites. Vectors and Forces are mastered; Velocity is available next. Acceleration and Newton’s Second Law are blocked. Mechanics, Kinematics and Dynamics are neutral structural clusters.](assets/graph-definition/06-available-next-goals.png)
+![The Mechanics hierarchy with directed contains arrows and four solid blue requires arrows pointing to prerequisites. Vectors and Forces are mastered; Velocity is available next. Acceleration and Newton’s Second Law are blocked. Mechanics, Kinematics and Dynamics are neutral structural clusters.](assets/graph-definition/06-available-next-goals.png)
 
 **How to read it:** Let $M_A=\{Vectors,Forces\}$. Velocity directly requires the mastered Vectors goal and is available next. Acceleration requires the unmastered Velocity goal and is blocked. Newton’s Second Law requires both Forces and Acceleration; Acceleration and the prerequisite chain through Velocity are not yet satisfied. Follow the blue arrows from each goal to what it requires. No cluster is satisfied because each has unmastered atomic descendants.
 
@@ -651,16 +672,17 @@ Availability is evaluated through reachability in $R_{eff}^+$. If prerequisites 
 
 ## 10. Summary of required validity conditions
 
-A skill graph $(G,C,R_d)$ is valid iff:
+A skill graph $(G,C,R)$ is valid iff:
 
 1. $Id$ is injective on $G$
 2. $(G,C)$ is acyclic (containment DAG / polyhierarchy; multiple parents allowed)
-3. $(G,R_d)$ is a DAG
-4. $R_{eff}$ (computed from $C$ and $R_d$) is acyclic
-5. $R_d$ satisfies local minimality
-6. $R_d$ satisfies transitive minimality
+3. $(G,R)$ is a DAG
+4. $R_{\mathrm{effective}}$ (computed from $C$ and $R$) is acyclic
+5. $R$ satisfies local minimality
+6. $R$ satisfies transitive minimality
+7. Goal attributes satisfy their declared domains. If `ShortKey` or explicit atomic/cluster classification metadata is exposed, it satisfies the applicable requirements in §2.
 
-Everything else in this specification is either derived (definitions) or recommended modeling guidance.
+These requirements define base full-graph validity. Recommended modeling guidance is separate; named validator profiles and scoped views may impose additional requirements.
 
 Important scope note:
 
@@ -764,19 +786,19 @@ The induced (restricted) relations are:
 $$
 C_F = C \cap (G_F \times G_F),
 \qquad
-R_{d,F} = R_d \cap (G_F \times G_F).
+R_F = R \cap (G_F \times G_F).
 $$
 
 For scoped learner evaluation, the normative filtered effective relation is the **restriction of the global effective relation**:
 
 $$
-R_{eff}|_F = R_{eff} \cap (G_F \times G_F)
+R_{\mathrm{effective}}|_F = R_{\mathrm{effective}} \cap (G_F \times G_F)
 $$
 
 This means:
 
-- effective requires facts are computed on the full graph before restriction,
-- a pair $(g,p)$ is retained in $R_{eff}|_F$ only when both the dependent goal $g$ and its prerequisite $p$ belong to $G_F$,
+- effective prerequisites are computed on the full graph before restriction,
+- a pair $(g,p)$ is retained in $R_{\mathrm{effective}}|_F$ only when both the dependent goal $g$ and its prerequisite $p$ belong to $G_F$,
 - a retained pair may have been inherited through a contains ancestor outside $G_F$; its origin does not remove it from the restricted relation.
 
 Optimistic evaluation uses the restricted relation (§11.3). Strict evaluation uses the full relation (§11.4). Filtering changes the evaluation scope, not the stored mastery set.
@@ -786,7 +808,7 @@ This avoids making scoped availability depend on whether a prerequisite was auth
 For any concrete filter realization, the induced graph
 
 $$
-(G_F, C_F, R_{d,F}, R_{eff}|_F)
+(G_F, C_F, R_F, R_{\mathrm{effective}}|_F)
 $$
 
 is the **projected filtered graph** for that view.
@@ -818,7 +840,7 @@ Such composition-view artifacts remain outside the formal graph object defined i
 
 ### 11.3 Optimistic mode
 
-In **optimistic mode**, first compute $R_{eff}$ on the full graph, then restrict it to $R_{eff}|_F$ (§11.2). Availability uses paths in this restricted relation and scope-relative satisfaction. Prerequisites that lie outside the scope do not block this evaluation; those goals are not thereby marked as mastered.
+In **optimistic mode**, first compute $R_{\mathrm{effective}}$ on the full graph, then restrict it to $R_{\mathrm{effective}}|_F$ (§11.2). Availability uses paths in this restricted relation and scope-relative satisfaction. Prerequisites that lie outside the scope do not block this evaluation; those goals are not thereby marked as mastered.
 
 Define the filtered atomic set:
 
@@ -837,8 +859,10 @@ and the corresponding scope-relative satisfaction predicate:
 $$
 Sat_F(g,M_A)
 \iff
-\big(Atoms_F(g)\neq\varnothing\big)\ \land\ \big(Atoms_F(g)\subseteq M_A\big)
+Atoms_F(g)\subseteq M_A
 $$
+
+**Scope-relative evaluation only.** A prerequisite with no atomic goals remaining in the selected scope does not block optimistic availability. This does not establish global satisfaction or mark any goal as mastered. For the same learner state and filter, every goal available in strict mode is also available in optimistic mode.
 
 Then the optimistic frontier is:
 
@@ -846,7 +870,7 @@ $$
 Frontier_{opt}(M_A,F) =
 \left\{
 g \in A_F \setminus M_A \ \middle|\ 
-\forall p\in G_F:\ (g,p)\in (R_{eff}|_F)^+ \Rightarrow Sat_F(p,M_A)
+\forall p\in G_F:\ (g,p)\in (R_{\mathrm{effective}}|_F)^+ \Rightarrow Sat_F(p,M_A)
 \right\}.
 $$
 
@@ -854,13 +878,13 @@ $$
 
 In **pessimistic mode** or **strict mode**, candidate goals are still restricted to the filtered set, but prerequisites are enforced **globally** (including nodes outside the filter).
 
-Let $R_{eff}$ be computed on the full graph $(G,C,R_d)$. Then:
+Let $R_{\mathrm{effective}}$ be computed on the full graph $(G,C,R)$. Then:
 
 $$
 Frontier_{pess}(M_A,F) =
 \left\{
 g \in A_F \setminus M_A \ \middle|\ 
-\forall p\in G:\ (g,p)\in R_{eff}^+ \Rightarrow Sat(p,M_A)
+\forall p\in G:\ (g,p)\in R_{\mathrm{effective}}^+ \Rightarrow Sat(p,M_A)
 \right\}.
 $$
 
@@ -870,7 +894,7 @@ $$
 
 ![Identical graph, filter scope and empty mastered set in two panels. Kinematics contains Velocity and Acceleration and directly requires the outside-scope Vectors goal. Velocity and Acceleration inherit the requirement for Vectors; Acceleration also directly requires Velocity. Requires arrows point to prerequisites. Orange arrows mark ignored outside-scope requirements in optimistic mode; blue arrows mark checked requirements. Grey arrows denote contains. Velocity alone is available optimistically; neither atomic goal is available in strict mode.](assets/graph-definition/07-filter-modes.png)
 
-**How to read it:** Both panels use $M_A=\varnothing$. Kinematics, Velocity and Acceleration are in scope; Vectors is outside. Kinematics directly requires Vectors, and Acceleration directly requires Velocity. Through containment, Velocity and Acceleration inherit Kinematics’ requirement for Vectors. Every requires arrow points from a goal to what it requires. Solid requires arrows are direct and dashed requires arrows are inherited, regardless of colour. In the optimistic panel, the three orange arrows to Vectors are excluded from the scoped prerequisite check: Velocity is available, but Acceleration still requires Velocity. In the strict panel, these requirements are checked as well: neither atomic goal is available.
+**How to read it:** Both panels use $M_A=\varnothing$. Kinematics, Velocity and Acceleration are in scope; Vectors is outside. Kinematics directly requires Vectors, and Acceleration directly requires Velocity. Through containment, Velocity and Acceleration inherit Kinematics’ requirement for Vectors. Every requires arrow points from a goal to what it requires. Solid arrows labelled requires are authored and dashed arrows labelled requires (inherited) are derived, regardless of colour. In the optimistic panel, the three orange arrows to Vectors are excluded from the scoped prerequisite check: Velocity is available, but Acceleration still requires Velocity. In the strict panel, these requirements are checked as well: neither atomic goal is available.
 
 **Scope note:** Neither mode changes stored mastery. Effective requirements are derived on the full graph before restriction (§11.2). This is an example of the abstract filter modes with a cluster-authored requirement. It does not override the separate reviewed composition-view contract in §8.5, which enforces missing direct canonical prerequisites.
 
@@ -878,14 +902,16 @@ $$
 
 ### 11.5 Diagnostic: missing prerequisites
 
-For diagnosis, define the set of missing prerequisites of a goal $g$:
+Diagnostics distinguish **unsatisfied prerequisite goals** from the **unmastered atomic goals needed to satisfy them**. Both diagnostics below use the global effective relation and global atomic bases. The filter classifies the results by location.
+
+**Prerequisite-goal diagnosis.** Define the set of unsatisfied prerequisites of a goal $g$:
 
 $$
 Missing(g,M_A) =
-\{\, p \in G \mid (g,p)\in R_{eff}^+ \land \neg Sat(p,M_A) \,\}.
+\{\, p \in G \mid (g,p)\in R_{\mathrm{effective}}^+ \land \neg Sat(p,M_A) \,\}.
 $$
 
-To distinguish gaps inside vs. outside the filter:
+Partition these prerequisite goals by membership in the selected scope:
 
 $$
 \begin{aligned}
@@ -894,8 +920,40 @@ Missing_{out}(g,M_A,F) &= Missing(g,M_A)\setminus G_F.
 \end{aligned}
 $$
 
+These sets locate the prerequisite nodes themselves. An in-scope prerequisite cluster may be unsatisfied because of unmastered atomic descendants outside the scope; those descendants need not appear in $Missing_{out}$.
 
-Operationally, one can start with optimistic mode for efficiency and exploration; if a learner struggles with a goal, switch to pessimistic mode (or compute $Missing_{out}$) to identify prerequisite gaps outside the current filter.
+**Atomic-gap diagnosis.** Define:
+
+$$
+MissingAtoms(g,M_A)=
+\left(\bigcup_{p\in Missing(g,M_A)} Atoms(p)\right)\setminus M_A.
+$$
+
+For an atomic prerequisite, its atomic basis is itself. For a cluster prerequisite, its atomic basis consists of its atomic descendants. Taking the union counts each atomic goal once, and subtracting $M_A$ excludes already mastered goals.
+
+Partition the atomic gaps by their own scope membership:
+
+$$
+\begin{aligned}
+MissingAtoms_{in}(g,M_A,F)  &= MissingAtoms(g,M_A)\cap G_F,\\
+MissingAtoms_{out}(g,M_A,F) &= MissingAtoms(g,M_A)\setminus G_F.
+\end{aligned}
+$$
+
+**Non-normative example.** Let $g$ directly require cluster $k$, and let $k$ contain only atomic goal $b$. With $G_F=\{g,k\}$ and $M_A=\varnothing$:
+
+$$
+\begin{aligned}
+Missing(g,M_A)&=\{k\}, & Missing_{out}(g,M_A,F)&=\varnothing,\\
+MissingAtoms(g,M_A)&=\{b\}, & MissingAtoms_{out}(g,M_A,F)&=\{b\}.
+\end{aligned}
+$$
+
+The unsatisfied prerequisite cluster is inside the scope, while its missing atomic requirement is outside. Once $b$ is mastered, both global diagnostic sets become empty.
+
+Use $MissingAtoms_{out}$ to identify unmastered atomic requirements outside the selected scope, including those within an in-scope prerequisite cluster. Use the prerequisite-goal diagnosis to retain the explanation of which required goals are unsatisfied.
+
+**Diagnostic scope.** These sets decompose the global satisfaction requirements; they do not add authored or inherited requires edges, change stored mastery, or list immediately available next goals. The in-scope partitions are not the blockers of optimistic mode: optimistic blocking is determined separately by the restricted relation and scope-relative satisfaction in §11.3.
 
 ### 11.6 Optional: relaxed pessimism via a prerequisite scope
 
@@ -907,7 +965,7 @@ $$
 Frontier_{scope}(M_A,F,S) =
 \left\{
 g \in A_F \setminus M_A \ \middle|\ 
-\forall p\in S:\ (g,p)\in R_{eff}^+ \Rightarrow Sat(p,M_A)
+\forall p\in S:\ (g,p)\in R_{\mathrm{effective}}^+ \Rightarrow Sat(p,M_A)
 \right\}.
 $$
 
