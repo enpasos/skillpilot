@@ -1,45 +1,72 @@
-\documentclass[10pt,a4paper]{article}
-\usepackage[margin=22mm,headheight=16pt,headsep=8mm,footskip=12mm]{geometry}
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=18mm,right=18mm,top=21mm,bottom=20mm,headheight=16pt,headsep=6.6mm,footskip=12mm]{geometry}
 \usepackage{fontspec}
-\setmainfont{Linux Libertine O}
-\setsansfont{DejaVu Sans}
-\setmonofont[Scale=0.85]{DejaVu Sans Mono}
+\setmainfont{Linux Libertine O}[BoldFont={Linux Libertine O Semibold},BoldItalicFont={Linux Libertine O Semibold Italic}]
+\setsansfont{Inter}[BoldFont={Inter SemiBold},BoldItalicFont={Inter SemiBold Italic}]
+\setmonofont[Scale=0.83]{DejaVu Sans Mono}
 \usepackage{amsmath,amssymb}
+\usepackage{unicode-math}
+\setmathfont{LibertinusMath-Regular.otf}
 \usepackage{graphicx,adjustbox,xcolor}
 \usepackage{xurl,lastpage,fancyhdr,titlesec,needspace}
 \usepackage{longtable,booktabs,array,calc}
 \usepackage{enumitem}
 \usepackage{hyperref,bookmark}
-\hypersetup{bookmarksdepth=3,colorlinks=true,linkcolor=black,urlcolor=blue,pdftitle={$title$},pdfauthor={enpasos},pdfsubject={Skill graph specification; revision $revision$}}
+\definecolor{ink}{HTML}{172A3A}
+\definecolor{muted}{HTML}{596B79}
+\definecolor{rulecolour}{HTML}{CDD9E2}
+\hypersetup{bookmarksdepth=3,colorlinks=true,linkcolor=ink,urlcolor=ink,pdftitle={$title$},pdfauthor={enpasos},pdfsubject={Skill graph specification; revision $revision$}}
 \urlstyle{same}
+\linespread{1.06}
 \setlength{\emergencystretch}{3em}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{5pt}
-\setlist{nosep,leftmargin=1.7em,topsep=4pt}
-\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlength{\parskip}{6pt}
+\setlist{itemsep=2pt,parsep=0pt,leftmargin=1.7em,topsep=5pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}}
 \providecommand{\pandocbounded}[1]{#1}
 \setcounter{secnumdepth}{-1}
 \setcounter{tocdepth}{1}
-\titleformat{\section}{\sffamily\bfseries\large}{}{0pt}{}
-\titleformat{\subsection}{\sffamily\bfseries\normalsize}{}{0pt}{}
-\titleformat{\subsubsection}{\sffamily\bfseries\small}{}{0pt}{}
-\titlespacing*{\section}{0pt}{18pt}{8pt}
-\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\titleformat{\section}{\sffamily\bfseries\Large\color{ink}}{}{0pt}{}
+\titleformat{\subsection}{\sffamily\bfseries\large\color{ink}}{}{0pt}{}
+\titleformat{\subsubsection}{\sffamily\bfseries\normalsize\color{ink}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{20pt}{10pt}
+\titlespacing*{\subsection}{0pt}{16pt}{8pt}
+\titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
 \widowpenalty=10000\clubpenalty=10000
-\fancypagestyle{plain}{\fancyhf{}\fancyhead[L]{\sffamily\scriptsize SkillPilot}\fancyhead[R]{\sffamily\scriptsize Skill Graph Specification}\fancyfoot[L]{\sffamily\scriptsize Source revision: $revision$}\fancyfoot[R]{\sffamily\scriptsize\thepage\ / \pageref*{LastPage}}\renewcommand{\headrulewidth}{0.2pt}}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[L]{\sffamily\fontsize{8}{10}\selectfont\color{muted}SkillPilot}%
+  \fancyhead[R]{\sffamily\fontsize{8}{10}\selectfont\color{muted}Skill Graph Specification}%
+  \fancyfoot[L]{\sffamily\fontsize{7.5}{9}\selectfont\color{muted}Source revision $revision$}%
+  \fancyfoot[R]{\sffamily\fontsize{7.5}{9}\selectfont\color{muted}\thepage\ / \pageref*{LastPage}}%
+  \renewcommand{\headrulewidth}{0.3pt}%
+  \renewcommand{\headrule}{\hbox to\headwidth{\color{rulecolour}\leaders\hrule height\headrulewidth\hfill}}%
+}
 \pagestyle{plain}
 \newsavebox{\mathbox}
 \newcommand{\FitMath}[1]{\par\begingroup\centering\sbox{\mathbox}{$$\displaystyle #1$$}%
   \ifdim\wd\mathbox>1.38\linewidth\PackageError{skill-graph-pdf}{Formula needs line breaks; scaling would make it unreadable}{Wrap it in print_math without changing the mathematics.}\fi
   \begin{adjustbox}{max width=\linewidth}\usebox{\mathbox}\end{adjustbox}\par\endgroup}
 \newcommand{\PrintFigure}[1]{\par\Needspace{0.40\textheight}\begin{center}\includegraphics[width=\linewidth,height=0.57\textheight,keepaspectratio]{\detokenize{#1}}\end{center}}
+\makeatletter
+\renewcommand*\l@section[2]{%
+  \ifnum\c@tocdepth>\z@
+    \addpenalty{\@secpenalty}\addvspace{1em \@plus\p@}%
+    \begingroup
+      \parindent\z@\rightskip\@pnumwidth\parfillskip-\@pnumwidth
+      \leavevmode{\bfseries #1}\nobreak\hfil
+      \nobreak\hb@xt@\@pnumwidth{\hss\normalfont #2}\par
+    \endgroup
+  \fi}
+\makeatother
 \begin{document}
 \thispagestyle{empty}
-{\sffamily\small SKILLPILOT}\par\vspace{10mm}
-{\sffamily\bfseries\LARGE Skill Graph\\Specification}\par\vspace{4mm}
-{\sffamily\small Source revision: $revision$}\par
-\href{$source-url$}{Online specification}\par\vspace{5mm}\hrule\vspace{5mm}
-{\small\tableofcontents}
+{\sffamily\bfseries\small\color{muted}SKILLPILOT}\par\vspace{7.9mm}
+{\sffamily\bfseries\fontsize{29}{37.5}\selectfont\color{ink}Skill Graph\\Specification\par}\vspace{4mm}
+{\small\color{muted}Source revision \texttt{$revision$}\quad|\quad $source-date$}\par\vspace{6.67mm}
+{\small\href{$source-url$}{Online specification}$if(versioned-source-url)$\quad\textbullet\quad\href{$versioned-source-url$}{Versioned source}$endif$}\par\vspace{12mm}
+{\color{rulecolour}\hrule height0.5pt}\vspace{8mm}
+{\fontsize{11}{13.22}\selectfont\tableofcontents}
 \clearpage
 $body$
 \end{document}

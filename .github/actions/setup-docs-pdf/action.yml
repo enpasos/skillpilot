@@ -11,5 +11,7 @@ runs:
         sudo apt-get update
         sudo apt-get install --yes --no-install-recommends \
           pandoc texlive-xetex texlive-latex-extra texlive-fonts-recommended \
-          fonts-linuxlibertine fonts-dejavu-core
+          texlive-fonts-extra fonts-linuxlibertine fonts-dejavu-core fonts-inter
         kpsewhich pzdr.tfm
+        kpsewhich LibertinusMath-Regular.otf
+        fc-match 'Inter:style=SemiBold' --format '%{family}\n' | grep -F Inter

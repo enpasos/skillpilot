@@ -19,6 +19,31 @@ except ModuleNotFoundError:
 
 
 class PdfTests(unittest.TestCase):
+    def test_metadata_uses_source_date_and_immutable_link(self):
+        revision = "c9bfed80e9d9277b228db327ec6cc56686fe174b"
+        meta = pdf.document_metadata(revision, 1789804852, pdf.SITE_URL)
+        self.assertEqual(meta["revision"], "c9bfed8")
+        self.assertEqual(meta["source-date"], "19 September 2026")
+        self.assertEqual(meta["versioned-source-url"],
+                         "https://github.com/enpasos/skillpilot/blob/" + revision
+                         + "/docs/" + pdf.SOURCE)
+        self.assertEqual(meta["source-url"], pdf.SITE_URL + pdf.SOURCE[:-3] + "/")
+
+    def test_unversioned_metadata_does_not_invent_source_link(self):
+        meta = pdf.document_metadata("unversioned-source", 0, pdf.SITE_URL)
+        self.assertNotIn("versioned-source-url", meta)
+        self.assertEqual(meta["source-date"], "Undated source")
+        with self.assertRaises(ValueError):
+            pdf.document_metadata("bad{revision}", 0, pdf.SITE_URL)
+
+    def test_print_template_keeps_style_and_overflow_guard(self):
+        template = (Path(pdf.__file__).parent / "docs_pdf.tex").read_text()
+        for required in ("Inter SemiBold", "Linux Libertine O", "LibertinusMath-Regular.otf",
+                         "{172A3A}", "{596B79}", "Versioned source", "$source-date$",
+                         r"\ifdim\wd\mathbox>1.38\linewidth",
+                         r"\PackageError{skill-graph-pdf}"):
+            self.assertIn(required, template)
+
     def test_relative_links_become_online_links(self):
         self.assertEqual(pdf.online_link("../../qa-ci/semantic-atomicity-review.md", pdf.SITE_URL),
                          pdf.SITE_URL + "qa-ci/semantic-atomicity-review/")

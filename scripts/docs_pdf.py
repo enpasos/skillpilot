@@ -7,6 +7,7 @@ source control. Any typesetting error or overflow prevents publication.
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timezone
 import hashlib
 import json
 import logging
@@ -134,10 +135,36 @@ def verify_pdf(path: Path) -> int:
             for block in page.get_text("dict")["blocks"]:
                 if "bbox" in block and not safe.contains(pymupdf.Rect(block["bbox"])):
                     raise RuntimeError(f"PDF page {number}: content outside printable area: {block['bbox']}")
+        # Fontspec must not silently be replaced by a different print style.
+        fonts = {font[3] for page in pdf for font in page.get_fonts()}
+        for family in ("Inter-SemiBold", "LinLibertineO", "LibertinusMath"):
+            if not any(family in name for name in fonts):
+                raise RuntimeError(f"PDF is missing its required font family: {family}")
         toc = pdf.get_toc()
         if not toc or any(page < 2 for _, _, page in toc):
             raise RuntimeError("PDF section bookmarks are missing or point to the cover")
         return len(pdf)
+
+
+def document_metadata(revision: str, epoch: int, site_url: str) -> dict[str, str]:
+    """Use the source revision/date, never the rebuild time or a mutable URL."""
+    if not re.fullmatch(r"[A-Za-z0-9._-]+", revision):
+        raise ValueError("Invalid source revision")
+    date = datetime.fromtimestamp(epoch, tz=timezone.utc)
+    months = ("January", "February", "March", "April", "May", "June",
+              "July", "August", "September", "October", "November", "December")
+    versioned = bool(re.fullmatch(r"[0-9a-fA-F]{40,64}", revision))
+    metadata = {
+        "title": "SkillPilot Skill Graph Specification", "lang": "en",
+        "revision": revision[:7] if versioned else revision[:12],
+        "source-date": f"{date.day} {months[date.month - 1]} {date.year}" if epoch else "Undated source",
+        "source-url": site_url.rstrip("/") + "/" + SOURCE[:-3] + "/",
+    }
+    if versioned:
+        metadata["versioned-source-url"] = (
+            "https://github.com/enpasos/skillpilot/blob/" + revision + "/docs/" + SOURCE
+        )
+    return metadata
 
 
 def build_pdf(repo: Path, docs: Path, output: Path, site_url: str = SITE_URL) -> dict:
@@ -181,8 +208,7 @@ def build_pdf(repo: Path, docs: Path, output: Path, site_url: str = SITE_URL) ->
     with tempfile.TemporaryDirectory(prefix="skill-graph-", dir=output.parent) as temp:
         work = Path(temp)
         # JSON metadata keeps values quoted safely; no ad-hoc YAML escaping.
-        meta = {"title": "SkillPilot Skill Graph Specification", "lang": "en",
-                "revision": revision[:12], "source-url": site_url.rstrip("/") + "/" + SOURCE[:-3] + "/"}
+        meta = document_metadata(revision, int(epoch), site_url)
         metadata = work / "metadata.json"
         metadata.write_text(json.dumps(meta), encoding="utf-8")
         latex = run(["pandoc", "--from=json", "--to=latex", "--standalone",
