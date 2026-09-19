@@ -116,23 +116,37 @@ Written `Atoms(g)`: the goal itself if it is atomic, otherwise its atomic descen
 
 *DE: enthält* — see [Graph Definition §4](skill-graph/graph-definition.md)
 
-The hierarchy relation: `(p, c)` means parent `p` bundles child `c` in **content** terms. `contains` must be acyclic but allows multiple parents (polyhierarchy). Indirect containment is the transitive closure.
+The authored hierarchy relation: `(p, c)` means parent `p` directly contains child `c` in **content** terms. Its arrow points from parent to child. `contains` must be acyclic but allows multiple parents (polyhierarchy).
 
-`contains` is not a prerequisite and not a program placement.
+Ancestor/descendant relationships are derived through paths of one or more `contains` edges. This transitive closure includes direct parent-child pairs. `contains` is not a prerequisite and not a program placement.
 
-### `requires` (direct requires)
+### `requires`
 
 *DE: setzt voraus* — see [Graph Definition §5](skill-graph/graph-definition.md)
 
-The prerequisite relation: `(u, v)` means `u` must be satisfied before `v` is approached. It must be acyclic. In mature skill landscapes it should be authored between **atomic** goals; cluster-level `requires` is a transitional authoring aid or a deliberately universal claim.
+The authored prerequisite relation: `(g, p)` means goal `g` directly requires prerequisite `p`. Its arrow points from the goal to its prerequisite; `p` must be satisfied before `g` is approached. It must be acyclic. In mature skill landscapes it should be authored between **atomic** goals; cluster-level `requires` is a transitional authoring aid or a deliberately universal claim.
 
-### Effective requires
+Both `contains` and `requires` record direct relationships. Derived relationships are qualified by their meaning rather than treated as additional authored relation types.
+
+### Inherited prerequisites
+
+*DE: vererbte Voraussetzungen* — see [Graph Definition §6.1](skill-graph/graph-definition.md)
+
+Additional prerequisites derived from the `requires` of a goal's `contains` ancestors, excluding pairs already authored on the goal itself: $R_{eff}\setminus R_d$. With multiple parents, all ancestor paths contribute. Inheritance through containment is not the same as following a chain of prerequisites.
+
+### Effective prerequisites
 
 *DE: effektive Voraussetzungen* — see [Graph Definition §6](skill-graph/graph-definition.md)
 
-The prerequisite relation the runtime actually evaluates: a goal's own direct `requires` plus everything its `contains` ancestors require. With multiple parents, a goal inherits the union over all ancestor paths.
+The derived prerequisite relation containing a goal's own `requires` together with prerequisites inherited from its `contains` ancestors. It includes authored pairs; it does not mean inherited prerequisites alone and is not itself a transitive closure.
 
-The frontier is computed on effective requires, which is why a coarse cluster prerequisite can block many atomic goals at once.
+The frontier follows paths in this effective prerequisite relation, which is why a coarse cluster prerequisite can block many atomic goals at once. In a fully atomic-authored prerequisite graph, $R_{eff}=R_d$.
+
+### Prerequisite reachability
+
+*DE: Erreichbarkeit von Voraussetzungen* — see [Graph Definition §§1 and 6](skill-graph/graph-definition.md)
+
+Goals connected by one or more edges of the specified prerequisite relation, written $R_d^+$ or $R_{eff}^+$ as appropriate. Reachability includes individual edges and longer chains. It is derived, not another authored relation. A learning-flow view uses the inverse direction and labels it explicitly.
 
 ### Weight
 
@@ -150,7 +164,7 @@ A strictly positive number expressing a goal's share in progress and later gradi
 
 *DE: Graphgültigkeit* — see [Graph Definition §10](skill-graph/graph-definition.md)
 
-A graph is valid iff IDs are unique, `contains` and `requires` are acyclic, effective requires is acyclic, and both minimality rules hold:
+A graph is valid iff IDs are unique, `contains` and `requires` are acyclic, the effective prerequisite relation is acyclic, and both minimality rules hold:
 
 - **Local minimality:** a prerequisite already inherited from an ancestor must not be restated on the node.
 - **Transitive minimality:** an edge must not be present if the same prerequisite already follows from other effective paths.
@@ -628,7 +642,7 @@ A report, status page, or dashboard file produced by a script. It carries a "do 
 | --- | --- |
 | `contains` vs `requires` | Containment bundles content; requires sequences learning. Only requires drives the frontier. |
 | `contains` vs `goalPlacement` | Content composition vs program membership. A placement must never re-parent the content tree. |
-| Direct requires vs effective requires | The runtime evaluates the inherited relation, so a cluster prerequisite silently constrains all descendants. |
+| `requires` vs effective prerequisites | `requires` records authored pairs; effective prerequisites also include inherited pairs. Inheritance is distinct from prerequisite reachability through longer chains. |
 | Atomic goal vs cluster goal | Mastery, frontier, and coverage counts are defined on atomic goals; clusters only aggregate. |
 | Structural atomicity vs semantic atomicity | A leaf node can still bundle several competences. |
 | `applicability` vs projection role | Applicability decides *whether* a goal is visible in a scope; the projection role decides whether it is *selectable* there. |
