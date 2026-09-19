@@ -1,0 +1,30 @@
+name: Isolated Typst PDF quality trial
+on:
+  push:
+    branches: [test/typst-pdf-quality-20260919]
+    paths: [.github/workflows/typst-pdf-quality-preview.yml]
+permissions:
+  contents: read
+jobs:
+  toolchain:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Fetch and verify official Typst release
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 2 --max-time 90 \
+            https://github.com/typst/typst/releases/download/v0.15.1/typst-x86_64-unknown-linux-musl.tar.xz \
+            --output typst.tar.xz
+          echo 'a6d077d0a95eed5a2eba715b2dae06be954f624ccbf85758a03f389ded33118c  typst.tar.xz' | sha256sum --check
+          mkdir toolchain
+          tar -xJf typst.tar.xz --strip-components=1 -C toolchain
+          toolchain/typst --version
+      - name: Make compiler available to the isolated review environment
+        uses: actions/upload-artifact@v4
+        with:
+          name: typst-0.15.1-quality-trial-toolchain
+          path: toolchain/typst
+          retention-days: 1
+          if-no-files-found: error
