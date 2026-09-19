@@ -21,6 +21,6 @@ Normal flashcard practice is a different workflow.
    stop when the continuation is waiting or complete. Do not manufacture a
    separate per-card technical loop.
 6. After confirmed memory-goal completion, use the returned full successor context
-   and its required visualization/daily guidance. Briefly report progress, then
-   teach the backend-selected goal or announce the daily finish. Do not continue
+   and its required visualization/period guidance. Briefly report progress, then
+   teach the backend-selected goal or acknowledge the reached period target. Do not continue
    the old memory goal or record memory mastery separately.

@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useState } from 'react'
+import * as React from 'react'
 import { RefreshCw } from 'lucide-react'
 
 import type { PreviewLearnerLearningPlansResponse } from '../learnerLearningPlanTypes'
 import { previewLearnerLearningPlans } from '../utils/learnerLearningPlanApi'
-import { berlinDateKey, formatLearnerLearningPlanDate, millisecondsUntilNextBerlinDateBoundary } from '../utils/learnerLearningPlanReadModel'
+import { berlinDateKey, formatLearnerLearningPlanDate, formatLearnerLearningPlanPeriod, millisecondsUntilNextBerlinDateBoundary } from '../utils/learnerLearningPlanReadModel'
 import {
   loadTeacherLearningPlanActivation,
   teacherLearningPlanActivationRequest,
@@ -15,7 +15,6 @@ import {
 
 export const TrainerLearningPlanPreviewSummary = ({
   preview,
-  subjects,
   language,
   compact = false,
 }: {
@@ -26,67 +25,40 @@ export const TrainerLearningPlanPreviewSummary = ({
 }) => {
   const de = language === 'de'
   const today = preview.days[0]
-  const labels = new Map(subjects.map((subject) => [subject.landscapeId, subject.label]))
-  const columns = de
-    ? ['Tagespensum', 'Heute geschafft', 'Heute noch offen', 'Weiterer Rückstand']
-    : ['Daily target', 'Completed today', 'Still open today', 'Remaining backlog']
-  const metrics = (value: typeof today.totals) => [
-    value.dueToday, value.completedDueToday, value.openDueToday,
-    value.openDueThroughToday - value.openDueToday,
-  ]
+  const periodKey = (day: typeof today) => `${day.status.periodStart}/${day.status.periodEnd}`
+  const seenPeriods = new Set([periodKey(today)])
+  const upcomingPeriods = preview.days.filter((day) => {
+    const key = periodKey(day)
+    if (seenPeriods.has(key)) return false
+    seenPeriods.add(key)
+    return true
+  })
   return (
     <div data-testid="trainer-learning-plan-preview-summary">
       <p className="text-sm leading-6 text-text-secondary">
         {de
-          ? 'Diese Vorschau zeigt das Tagespensum für den gespeicherten Entwurf. Heute erfasste Abschlüsse fälliger Planziele zählen mit, auch wenn die Ziele aus früheren Tagen stammen. Es wird noch nichts aktiviert.'
-          : 'This preview shows the daily target for the saved draft. Due goals recorded as completed today count toward it, including goals from earlier days. Nothing is activated yet.'}
+          ? 'So wirkt sich der gespeicherte Entwurf auf den Lernplanstatus aus. Die Auswertung verwendet dieselbe Berechnung und den gewählten Tages- oder Wochenzeitraum wie das Cockpit. Der Entwurf wird noch nicht aktiviert.'
+          : 'This is the learning-plan status for the saved draft, using the same calculation and selected daily or weekly period as the cockpit. The draft is not activated yet.'}
       </p>
       <h3 className="mt-4 font-semibold">{de ? 'Heute' : 'Today'} · {formatLearnerLearningPlanDate(preview.asOf, language)}</h3>
-      <div className="mt-3 grid grid-cols-2 gap-2 lg:grid-cols-4">
-        {metrics(today.totals).map((value, index) => (
-          <div key={columns[index]} className="rounded-xl border border-border-color bg-sidebar-bg p-3">
-            <p className="text-2xl font-semibold tabular-nums text-text-primary">{value}</p>
-            <p className="mt-1 text-xs leading-5 text-text-secondary">{columns[index]}</p>
-          </div>
-        ))}
-      </div>
-      <ul className="mt-3 grid gap-2 sm:grid-cols-2" aria-label={de ? 'Tagesanforderungen nach Fach' : 'Daily workload by subject'}>
-        {today.subjects.map((subject) => (
-          <li key={subject.landscapeId} className="rounded-xl border border-border-color p-3">
-            <h4 className="font-semibold">{labels.get(subject.landscapeId)}</h4>
-            <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-2 text-sm">
-              {metrics(subject.metrics).map((value, index) => (
-                <div key={columns[index]}>
-                  <dt className="text-xs text-text-secondary">{columns[index]}</dt>
-                  <dd className="font-semibold tabular-nums">{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </li>
-        ))}
-      </ul>
-      <p className="mt-3 text-sm font-medium">
-        {de
-          ? 'Das ist eine Simulation des gespeicherten Entwurfs, kein Lernplanstatus. Den verbindlichen Planstand zeigt das Cockpit des Lernenden.'
-          : 'This is a simulation of the saved draft, not a learning-plan status. The binding plan status is shown in the learner cockpit.'}
-      </p>
-      {!compact && (
+      <p className="mt-3 whitespace-pre-line text-sm leading-7" data-testid="trainer-learning-plan-status">{today.status.statusText}</p>
+      {!compact && upcomingPeriods.length > 0 && (
         <>
-          <h3 className="mt-6 font-semibold">{de ? 'Die nächsten 7 Tage · Tagespensum' : 'The next 7 days · daily targets'}</h3>
-          <div className="mt-3 overflow-x-auto rounded-xl border border-border-color" tabIndex={0} role="region" aria-label={de ? 'Wochenvorschau' : 'Week preview'}>
+          <h3 className="mt-6 font-semibold">{de ? 'Ausblick für die nächsten 7 Tage' : 'Outlook for the next 7 days'}</h3>
+          <div className="mt-3 overflow-x-auto rounded-xl border border-border-color" tabIndex={0} role="region" aria-label={de ? 'Planvorschau' : 'Plan preview'}>
             <table className="w-full text-left text-sm">
               <thead className="bg-sidebar-bg text-text-secondary">
-                <tr><th scope="col" className="p-3">{de ? 'Tag' : 'Day'}</th>
-                  {today.subjects.map((subject) => <th scope="col" className="p-3" key={subject.landscapeId}>{labels.get(subject.landscapeId)}</th>)}
-                  <th scope="col" className="p-3">{de ? 'Gesamt' : 'Total'}</th>
+                <tr><th scope="col" className="p-3">{de ? 'Zeitraum' : 'Period'}</th>
+                  <th scope="col" className="p-3">{de ? 'Planstatus nach Fach' : 'Plan status by subject'}</th>
                 </tr>
               </thead>
               <tbody>
-                {preview.days.map((day) => (
+                {upcomingPeriods.map((day) => (
                   <tr key={day.date} className="border-t border-border-color">
-                    <th scope="row" className="whitespace-nowrap p-3 font-medium">{formatLearnerLearningPlanDate(day.date, language)}</th>
-                    {today.subjects.map(({ landscapeId }) => <td className="p-3 tabular-nums" key={landscapeId}>{day.subjects.find((subject) => subject.landscapeId === landscapeId)!.metrics.dueToday}</td>)}
-                    <td className="p-3 font-semibold tabular-nums">{day.totals.dueToday}</td>
+                    <th scope="row" className="whitespace-nowrap p-3 font-medium">{day.status.periodBasis === 'WEEK'
+                      ? formatLearnerLearningPlanPeriod(day.status.periodStart, day.status.periodEnd, language)
+                      : formatLearnerLearningPlanDate(day.date, language)}</th>
+                    <td className="whitespace-pre-line p-3 leading-6">{day.status.statusText}</td>
                   </tr>
                 ))}
               </tbody>
@@ -96,8 +68,8 @@ export const TrainerLearningPlanPreviewSummary = ({
       )}
       <p className="mt-3 text-xs leading-5 text-text-secondary">
         {de
-          ? 'Für die kommenden Tage bleibt der aktuelle Lernstand unverändert; künftige Abschlüsse werden nicht angenommen. Ein verbleibender Rückstand kann das Tagespensum füllen, erhöht es aber nicht. Lernminuten werden nicht vorhergesagt.'
-          : 'For future days, the current learning state is held unchanged; no future completions are assumed. Remaining backlog can fill the daily target without increasing it. Learning minutes are not predicted.'}
+          ? 'Für die kommenden Tage bleibt der aktuelle Lernstand unverändert; künftige Abschlüsse werden nicht angenommen. Lernminuten werden nicht vorhergesagt.'
+          : 'For future days, the current learning state is held unchanged; no future completions are assumed. Learning minutes are not predicted.'}
       </p>
     </div>
   )
@@ -113,8 +85,8 @@ export const TrainerLearningPlanPreview = ({
   classSession, learnerId, landscapeEntries, runtimeCatalogState, language,
   refreshToken, hasUnsavedActiveDraft, onSelectSubject,
 }: TrainerLearningPlanPreviewProps) => {
-  const [reloadToken, setReloadToken] = useState(0)
-  const [result, setResult] = useState<{
+  const [reloadToken, setReloadToken] = React.useState(0)
+  const [result, setResult] = React.useState<{
     scope: unknown
     context: TeacherLearningPlanContext
     refreshToken: number
@@ -122,12 +94,12 @@ export const TrainerLearningPlanPreview = ({
     preview: PreviewLearnerLearningPlansResponse
     subjects: TeacherLearningPlanActivationSubject[]
   } | null>(null)
-  const [failure, setFailure] = useState<{ scope: unknown; message: string } | null>(null)
-  const context = useMemo(() => ({ classSession, learnerId, landscapeEntries, runtimeCatalogState, language }),
+  const [failure, setFailure] = React.useState<{ scope: unknown; message: string } | null>(null)
+  const context = React.useMemo(() => ({ classSession, learnerId, landscapeEntries, runtimeCatalogState, language }),
     [classSession, learnerId, landscapeEntries, runtimeCatalogState, language])
-  const requestScope = useMemo(() => ({ context, refreshToken, reloadToken, hasUnsavedActiveDraft }),
+  const requestScope = React.useMemo(() => ({ context, refreshToken, reloadToken, hasUnsavedActiveDraft }),
     [context, refreshToken, reloadToken, hasUnsavedActiveDraft])
-  useEffect(() => {
+  React.useEffect(() => {
     const controller = new AbortController()
     const timer = window.setTimeout(() => setReloadToken((value) => value + 1), millisecondsUntilNextBerlinDateBoundary())
     if (!hasUnsavedActiveDraft) {
@@ -138,7 +110,7 @@ export const TrainerLearningPlanPreview = ({
         const subjects = snapshot.subjects.filter((subject) => subject.copy !== null)
         if (!subjects.length) throw new Error('empty')
         const preview = await previewLearnerLearningPlans(learnerId,
-          teacherLearningPlanActivationRequest(asOf, subjects), { signal: controller.signal })
+          teacherLearningPlanActivationRequest(asOf, subjects), { signal: controller.signal, language })
         if (controller.signal.aborted) return
         if (asOf !== berlinDateKey() || !teacherLearningPlanDraftsMatch(snapshot.subjects)) throw new Error('changed')
         setResult({ scope: requestScope, context, refreshToken, reloadToken, preview, subjects })
@@ -148,7 +120,7 @@ export const TrainerLearningPlanPreview = ({
       })
     }
     return () => { controller.abort(); window.clearTimeout(timer) }
-  }, [context, hasUnsavedActiveDraft, learnerId, refreshToken, reloadToken, requestScope])
+  }, [context, hasUnsavedActiveDraft, language, learnerId, refreshToken, reloadToken, requestScope])
   const current = result?.scope === requestScope && result.context === context && result.refreshToken === refreshToken
     && result.reloadToken === reloadToken && !hasUnsavedActiveDraft && result.preview.asOf === berlinDateKey()
     ? result : null

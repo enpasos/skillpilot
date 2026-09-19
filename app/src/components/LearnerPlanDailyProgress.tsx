@@ -15,21 +15,13 @@ const DIRECTION_CLASSES = {
  * derived solely from the delivered direction. Nothing here recomputes a balance or infers
  * "nothing left" from a reached period target — that would be a second status model.
  */
-export const LearnerPlanDailyProgress = ({ subject, language }: {
+export const LearnerPlanDailyProgress = ({ subject }: {
   subject: LearnerPlanSubjectStatus
   language: LabelLanguage
 }) => {
   const statusId = React.useId()
 
-  if (!subject.evaluable) {
-    return (
-      <p className="mt-1 text-sm text-text-secondary" aria-live="polite">
-        {language === 'de'
-          ? 'Der Planstand für dieses Fach ist derzeit nicht auswertbar. Weiterlernen bleibt möglich.'
-          : 'The plan status for this subject cannot be evaluated right now. Learning remains possible.'}
-      </p>
-    )
-  }
+  if (!subject.evaluable) return null
 
   return (
     <div className="mt-1 flex flex-wrap items-center gap-2" aria-live="polite" aria-atomic="true">

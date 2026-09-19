@@ -1,3 +1,4 @@
+import { learnerPlanStatus } from '../../scripts/fixtures/learnerPlanStatus'
 import assert from 'node:assert/strict'
 
 import type { LearnerLearningPlanDetail } from '../learnerLearningPlanTypes'
@@ -47,17 +48,7 @@ const serverPlan: LearnerLearningPlanDetail = {
   period: { startDate: '2026-09-07', endDate: '2026-09-18' },
   currentBlock: null,
   nextMilestone: null,
-  metrics: {
-    dueThroughToday: 0,
-    completedDueThroughToday: 0,
-    openDueThroughToday: 0,
-    dueToday: 0,
-    completedDueToday: 0,
-    openDueToday: 0,
-    totalPlanned: 2,
-  },
   buffer: { totalWorkdays: 0, remainingWorkdays: 0 },
-  pace: { status: 'neutral', reason: 'descriptive-only' },
   nextEligibleGoal: null,
   continueReason: 'no-open-due-frontier-goal',
   canContinue: false,
@@ -96,7 +87,6 @@ const twoAtomCopy: LearnerLearningPlanCopy = {
 assert.equal(
   learnerPlanCopyMatchesServer(twoAtomCopy, {
     ...serverPlan,
-    metrics: { ...serverPlan.metrics, totalPlanned: 3 },
     blocks: serverPlan.blocks.map((block) => (
       block.id === 'earlier-block-created-later' && block.kind === 'learning'
         ? { ...block, atomicGoalIds: ['dependent', 'prerequisite'] }
@@ -244,7 +234,7 @@ const originalFetch = globalThis.fetch
 let scopeReadCount = 0
 globalThis.fetch = (async () => {
   scopeReadCount += 1
-  return new Response(JSON.stringify({ asOf: '2026-09-04', followLearningPlans: true, plans: [serverPlan] }))
+  return new Response(JSON.stringify({ asOf: '2026-09-04', followLearningPlans: true, plans: [serverPlan], status: learnerPlanStatus('2026-09-04', [serverPlan.landscapeId]) }))
 }) as typeof fetch
 try {
   await assert.rejects(() => loadTeacherLearningPlanActivation({

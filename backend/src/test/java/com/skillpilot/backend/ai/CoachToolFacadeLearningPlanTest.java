@@ -492,21 +492,8 @@ class CoachToolFacadeLearningPlanTest {
             String landscapeId,
             boolean stale) {
         return new LearnerLearningPlanApi.PlanDetail(
-                planId,
-                revision,
-                landscapeId,
-                null,
-                stale,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                false,
-                List.of());
+                planId, revision, landscapeId, null, stale, null, null, null,
+                null, null, null, false, List.of());
     }
 
     private static LearnerLearningPlanApi.TransitionResponse personalCurriculumTransition(

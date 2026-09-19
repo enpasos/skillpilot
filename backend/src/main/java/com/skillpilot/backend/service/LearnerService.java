@@ -15,6 +15,7 @@ import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import com.skillpilot.backend.service.learningplan.PeriodBasis;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerLearningPlanRepository;
@@ -7362,7 +7363,7 @@ public class LearnerService {
 
     /**
      * Hands off only after completing a goal that belongs to a currently valid
-     * plan. A due candidate from a plan containing the completed anchor wins;
+     * plan. A due candidate from the completed anchor's subject wins;
      * otherwise the oldest due candidate is selected deterministically across
      * subjects. Invalid or stale plans are ignored for activation. While
      * plan-following mode is enabled, generic Autopilot stays suppressed
@@ -7382,36 +7383,81 @@ public class LearnerService {
             return;
         }
 
-        LocalDate asOf = LocalDate.now(learningPlanClock);
-        Set<String> completedTodayGoalIds = getGoalCompletionsOnDate(
-                learner.getSkillpilotId(), asOf).keySet();
-        List<LearningPlanHandoffCandidate> candidates = new ArrayList<>();
-        boolean completedAnchorBelongsToValidPlan = false;
+        LocalDate asOf = LocalDate.now(learningPlanClock.withZone(LEARNING_PLAN_ZONE));
+        PeriodBasis basis = learner.getLearningPlanPeriodBasis();
+        LocalDate periodStart = LearnerLearningPlanService.periodStart(basis, asOf);
+        LocalDate periodEnd = LearnerLearningPlanService.periodEnd(basis, asOf);
+        Map<String, Instant> completions = basis == PeriodBasis.WEEK
+                ? getGoalCompletionsBetween(learner.getSkillpilotId(), periodStart, periodEnd)
+                : getGoalCompletionsOnDate(learner.getSkillpilotId(), asOf);
+
+        // Evaluate the whole subject before choosing any candidate. A completed future
+        // goal can cover another plan's quota within the same subject; an invalid part
+        // plan must not turn the remaining part into a supposedly complete balance.
+        Map<LearnerLearningPlan, List<LearnerLearningPlanApi.Block>> validPlans = new LinkedHashMap<>();
+        Map<String, Map<String, LocalDate>> subjectSchedules = new LinkedHashMap<>();
+        Set<String> unavailableSubjects = new HashSet<>();
+        Set<String> anchorSubjects = new HashSet<>();
         for (LearnerLearningPlan plan : plans) {
+            String subject = LearnerLearningPlanService.stableSubjectKey(
+                    landscapeService.getById(plan.getLandscapeId()));
+            if (subject == null) {
+                continue;
+            }
             try {
                 List<LearnerLearningPlanApi.Block> blocks = readPortableLearningPlanBlocks(plan);
                 if (!isLearningPlanCompatible(
                         learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), blocks)) {
+                    unavailableSubjects.add(subject);
                     continue;
                 }
-                boolean containsAnchor = blocks.stream()
-                        .filter(Objects::nonNull)
-                        .filter(block -> "learning".equals(block.kind()))
+                Map<String, LocalDate> schedule = subjectSchedules.computeIfAbsent(
+                        subject, ignored -> new LinkedHashMap<>());
+                LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(blocks)
+                        .forEach((goalId, date) -> schedule.merge(
+                                goalId, date, (left, right) -> left.isBefore(right) ? left : right));
+                validPlans.put(plan, blocks);
+                if (blocks.stream().filter(block -> "learning".equals(block.kind()))
                         .map(LearnerLearningPlanApi.Block::atomicGoalIds)
                         .filter(Objects::nonNull)
-                        .anyMatch(goalIds -> goalIds.contains(completedAnchorGoalId));
-                completedAnchorBelongsToValidPlan |= containsAnchor;
-                // Today's subject quota is a real stopping point. Backlog is
-                // available through an explicit continue/switch, never an
-                // automatic obligation after the daily target is fulfilled.
-                if (LearnerLearningPlanService.dailyMetrics(
-                        blocks, asOf, mastery, completedTodayGoalIds).openDueToday() == 0) {
+                        .anyMatch(goalIds -> goalIds.contains(completedAnchorGoalId))) {
+                    anchorSubjects.add(subject);
+                }
+            } catch (ResponseStatusException exception) {
+                if (exception.getStatusCode().is5xxServerError()) {
+                    throw exception;
+                }
+                unavailableSubjects.add(subject);
+            } catch (IllegalStateException exception) {
+                unavailableSubjects.add(subject);
+            }
+        }
+        Set<String> subjectsWithOpenQuota = new HashSet<>();
+        subjectSchedules.forEach((subject, schedule) -> {
+            if (!unavailableSubjects.contains(subject)
+                    && LearnerLearningPlanService.calculateBalance(
+                            schedule.keySet(), schedule, periodStart, periodEnd, mastery, completions)
+                            .offenesPeriodenpensum() > 0) {
+                subjectsWithOpenQuota.add(subject);
+            }
+        });
+        List<LearningPlanHandoffCandidate> candidates = new ArrayList<>();
+        boolean completedAnchorBelongsToValidPlan = !anchorSubjects.isEmpty();
+        for (var entry : validPlans.entrySet()) {
+            LearnerLearningPlan plan = entry.getKey();
+            List<LearnerLearningPlanApi.Block> blocks = entry.getValue();
+            try {
+                String subject = LearnerLearningPlanService.stableSubjectKey(
+                        landscapeService.getById(plan.getLandscapeId()));
+                // A fulfilled period quota is a stopping point. Explicit further learning
+                // remains possible, but automatic continuation may not create extra work.
+                if (!subjectsWithOpenQuota.contains(subject)) {
                     continue;
                 }
                 Optional<LearnerLearningPlanService.DueGoal> selected =
                         LearnerLearningPlanService.firstEligibleDueGoal(
                                 blocks,
-                                asOf,
+                                periodEnd,
                                 mastery,
                                 focusGoalIds -> getUncompactedRichFrontierForFocus(
                                                 learner.getSkillpilotId(),
@@ -7431,8 +7477,14 @@ public class LearnerService {
                         dueGoal.atomicGoalId(),
                         dueGoal.blockStartDate(),
                         dueGoal.blockEndDate(),
-                        containsAnchor));
-            } catch (ResponseStatusException | IllegalStateException exception) {
+                        anchorSubjects.contains(subject),
+                        dueGoal.scheduledDate()));
+            } catch (ResponseStatusException exception) {
+                if (exception.getStatusCode().is5xxServerError()) {
+                    throw exception;
+                }
+                // An ineligible plan must never mutate Level-3 state automatically.
+            } catch (IllegalStateException exception) {
                 // A stale, malformed, or no-longer-projectable plan must never
                 // mutate Level-3 state automatically.
             }
@@ -7454,11 +7506,14 @@ public class LearnerService {
             return Optional.empty();
         }
         List<LearningPlanHandoffCandidate> anchored = candidates.stream()
-                .filter(LearningPlanHandoffCandidate::containsCompletedAnchor)
+                .filter(LearningPlanHandoffCandidate::sameSubjectAsCompletedAnchor)
                 .toList();
         List<LearningPlanHandoffCandidate> pool = anchored.isEmpty() ? candidates : anchored;
         return pool.stream().min(Comparator
                 .comparing(
+                        LearningPlanHandoffCandidate::scheduledDate,
+                        Comparator.nullsLast(LocalDate::compareTo))
+                .thenComparing(
                         LearningPlanHandoffCandidate::blockEndDate,
                         Comparator.nullsLast(LocalDate::compareTo))
                 .thenComparing(
@@ -7501,7 +7556,15 @@ public class LearnerService {
             String atomicGoalId,
             LocalDate blockStartDate,
             LocalDate blockEndDate,
-            boolean containsCompletedAnchor) { }
+            boolean sameSubjectAsCompletedAnchor,
+            LocalDate scheduledDate) {
+        LearningPlanHandoffCandidate(UUID planId, String landscapeId, String focusGoalId,
+                String atomicGoalId, LocalDate blockStartDate, LocalDate blockEndDate,
+                boolean sameSubjectAsCompletedAnchor) {
+            this(planId, landscapeId, focusGoalId, atomicGoalId, blockStartDate, blockEndDate,
+                    sameSubjectAsCompletedAnchor, blockEndDate);
+        }
+    }
 
     private String maybeAutoActivateFrontierGoal(
             Learner learner,

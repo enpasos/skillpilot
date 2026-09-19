@@ -680,9 +680,9 @@ test("actual CI gate rebuilds the PR package with exact dossier bytes and unzip 
     const result = runWorkflowPackageGate(outputRoot, artifactPath);
     assert.equal(result.status, 0, result.stderr);
     const archive = readFileSync(artifactPath);
-    assert.equal(archive.length, 34438);
+    assert.equal(archive.length, 34586);
     assert.equal(createHash("sha256").update(archive).digest("hex"),
-      "9cf1463babac3c31f8e32fceef2514d456d7817a7b9986b1be3eefa2e8d17c2b");
+      "a7bb73da48087f44aeb1155b848768efc79efa71c55c9a2278c8e0cc4901d26b");
     const extracted = resolve(root, "extracted");
     const unzip = spawnSync("unzip", ["-q", artifactPath, "-d", extracted], { encoding: "utf8" });
     assert.equal(unzip.status, 0, unzip.stderr);

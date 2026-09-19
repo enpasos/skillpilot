@@ -1,3 +1,4 @@
+import { TrainerLearningPlanPreviewSummary } from '../src/components/TrainerLearningPlanPreview'
 import assert from 'node:assert/strict'
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
@@ -28,17 +29,7 @@ const plan = (
     endDate: '2026-09-18',
   },
   nextMilestone: { blockId: `${planId}-test`, title: 'Klausur', date: '2026-09-25' },
-  metrics: {
-    dueThroughToday: 12,
-    completedDueThroughToday: 7,
-    openDueThroughToday: 5,
-    dueToday: 3,
-    completedDueToday: 0,
-    openDueToday: 3,
-    totalPlanned: 42,
-  },
   buffer: { totalWorkdays: 8, remainingWorkdays: 6 },
-  pace: { status: 'neutral', reason: 'mastery-history-not-event-backed' },
   nextEligibleGoal: nextGoalId ? { goalId: nextGoalId } : null,
   continueReason: nextGoalId ? null : 'no-open-due-frontier-goal',
   canContinue: Boolean(nextGoalId),
@@ -53,6 +44,7 @@ const subject = (
   extra: Partial<LearnerPlanSubjectStatus> = {},
 ): LearnerPlanSubjectStatus => ({
   subjectKey,
+  landscapeIds: [subjectKey === 'mathematik' ? 'math' : subjectKey === 'physik' ? 'physics' : subjectKey],
   subjectLabel,
   evaluable: true,
   periodText,
@@ -73,7 +65,7 @@ const status = (subjects: LearnerPlanSubjectStatus[], overrides: Partial<Learner
   language: 'de',
   evaluable: subjects.every((entry) => entry.evaluable),
   statusText: subjects.map((entry) => entry.subjectLine ?? '').filter(Boolean).join('\n'),
-  statusDirection: 'behind',
+  noticeText: null,
   activeGoal: null,
   followLearningPlans: true,
   resumeAvailable: true,
@@ -144,6 +136,7 @@ assert.match(enabledMarkup, /6 von 8 Werktagen verbleiben/u)
 // continuation stays a separate question.
 const unevaluable: LearnerPlanSubjectStatus = {
   subjectKey: 'chemie',
+  landscapeIds: ['chemistry'],
   subjectLabel: 'Chemie',
   evaluable: false,
   periodText: null,
@@ -155,7 +148,7 @@ const unevaluable: LearnerPlanSubjectStatus = {
 }
 const unevaluableMarkup = renderToStaticMarkup(
   <LearnerPlanTodayOverview
-    status={status([unevaluable], { evaluable: false, statusDirection: null, statusText: '1 Fachplan nicht auswertbar (Chemie).' })}
+    status={status([unevaluable], { evaluable: false, noticeText: '1 Fachplan nicht auswertbar (Chemie).', statusText: '1 Fachplan nicht auswertbar (Chemie).' })}
     plans={[]}
     language="de"
     planModeEnabled
@@ -168,7 +161,7 @@ const unevaluableMarkup = renderToStaticMarkup(
 )
 assert.match(unevaluableMarkup, /data-testid="learner-plan-status-notice"/u)
 assert.match(unevaluableMarkup, /aria-describedby="[^"]+"/u, 'the notice is wired up for screen readers')
-assert.match(unevaluableMarkup, /Weiterlernen bleibt möglich/u)
+assert.match(unevaluableMarkup, /1 Fachplan nicht auswertbar \(Chemie\)\./u)
 assert.doesNotMatch(unevaluableMarkup, /data-status-direction/u)
 assert.doesNotMatch(unevaluableMarkup, /data-testid="learner-plan-switch"/u, 'no plan backs this subject')
 
@@ -235,7 +228,7 @@ assert.doesNotMatch(disabledModeMarkup, /data-testid="learner-plan-switch"/u)
 const reachedTarget = subject('mathematik', 'Mathematik', 'Tagesziel erreicht', '2 Lernziele vorgearbeitet', 'ahead')
 const reachedMarkup = renderToStaticMarkup(
   <LearnerPlanTodayOverview
-    status={status([reachedTarget], { statusDirection: 'ahead' })}
+    status={status([reachedTarget], {})}
     plans={[math]}
     language="de"
     planModeEnabled
@@ -255,7 +248,7 @@ const weeklyMarkup = renderToStaticMarkup(
   <LearnerPlanTodayOverview
     status={status(
       [subject('mathematik', 'Mathematik', 'Wochenziel 2 von 5', 'im Plan', 'on_track')],
-      { periodBasis: 'WEEK', periodStart: '2026-08-31', periodEnd: '2026-09-06', statusDirection: 'on_track' },
+      { periodBasis: 'WEEK', periodStart: '2026-08-31', periodEnd: '2026-09-06' },
     )}
     plans={[math]}
     language="de"
@@ -290,4 +283,51 @@ assert.match(englishMarkup, /Daily target 0 of 3/u)
 assert.match(englishMarkup, /2 learning goals behind/u)
 assert.doesNotMatch(englishMarkup, /Pace over the last 7 days/u)
 
-console.log('Learner plan today overview UI tests passed')
+
+// Stable backend identifiers bind actions even when translations collide or differ.
+const renamedMarkup = renderToStaticMarkup(<LearnerPlanTodayOverview
+  status={status([{ ...physicsOnTrack, subjectLabel: 'Naturwissenschaften' }])}
+  plans={[physics]} language="de" planModeEnabled
+  subjectLabel={() => 'Mathematik'} goalLabel={() => undefined}
+  onContinue={() => undefined} onSwitch={() => undefined} onOpenSettings={() => undefined}
+/>)
+assert.match(renamedMarkup, /Zu Naturwissenschaften wechseln/u)
+assert.match(renamedMarkup, /Plandetails: Naturwissenschaften/u)
+
+const weeklyBackendText = 'Mathematik: Wochenziel erreicht · 2 Lernziele im Rückstand\n1 Fachplan nicht auswertbar (Physik).'
+const weeklyPreview = renderToStaticMarkup(<TrainerLearningPlanPreviewSummary
+  preview={{ asOf: '2026-09-04', days: [{ date: '2026-09-04', status: status([mathsBehind], {
+    periodBasis: 'WEEK', periodStart: '2026-08-31', periodEnd: '2026-09-06',
+    statusText: weeklyBackendText,
+  }) }] }} subjects={[]} language="de" compact
+/>)
+assert.ok(weeklyPreview.includes(weeklyBackendText), 'preview preserves the complete weekly backend statement and evaluation notice')
+assert.doesNotMatch(weeklyPreview, /Heute geschafft|Weiterer Rückstand|Tagespensum|Gesamt/u)
+
+
+const groupedWeeklyPreview = renderToStaticMarkup(<TrainerLearningPlanPreviewSummary
+  preview={{ asOf: '2026-09-04', days: Array.from({ length: 7 }, (_, index) => {
+    const nextWeek = index >= 3
+    const date = `2026-09-${String(4 + index).padStart(2, '0')}`
+    return { date, status: status([], {
+      asOf: date, periodBasis: 'WEEK',
+      periodStart: nextWeek ? '2026-09-07' : '2026-08-31',
+      periodEnd: nextWeek ? '2026-09-13' : '2026-09-06',
+      statusText: nextWeek ? 'Mathematik: Wochenziel 0 von 9 · im Plan' : weeklyBackendText,
+    }) }
+  }) }} subjects={[]} language="de"
+/>)
+assert.equal(groupedWeeklyPreview.split(weeklyBackendText).length - 1, 1, 'the current week is displayed once')
+assert.equal(groupedWeeklyPreview.split('Mathematik: Wochenziel 0 von 9 · im Plan').length - 1, 1, 'the next week is displayed once within the seven-day horizon')
+assert.match(groupedWeeklyPreview, /07\.09\.2026 – 13\.09\.2026/u)
+
+const mergedPlansMarkup = renderToStaticMarkup(<LearnerPlanTodayOverview
+  status={status([{ ...mathsBehind, current: false }])}
+  plans={[{ ...math, planLabel: 'Mathematik A' }, { ...math, planId: 'other-math-plan', planLabel: 'Mathematik B' }]}
+  language="de" planModeEnabled subjectLabel={() => 'Mathematik'} goalLabel={() => undefined}
+  onContinue={() => undefined} onSwitch={() => undefined} onOpenSettings={() => undefined}
+/>)
+assert.match(mergedPlansMarkup, /Mathematik A/u)
+assert.match(mergedPlansMarkup, /Mathematik B/u)
+assert.doesNotMatch(mergedPlansMarkup, /data-testid="learner-plan-switch"/u, 'merged plans expose details without guessing a navigation target')
+console.log('Learner plan overview and shared weekly preview UI tests passed')

@@ -67,15 +67,19 @@ Der Draft bindet genau zwei aktive content-addressierte MCP-Apps-Ressourcen:
   Karteikartenressource; die Kartenbewertung bleibt app-only und ungebunden.
 
 Der aktuelle 1.1.0-Kandidat hat 14 Werkzeuge. Vollständige Kontextantworten
-enthalten den fachübergreifenden Tagesplan als `learningPlanToday`;
-`resume_skillpilot_learning_plan` und `switch_skillpilot_learning_plan_subject` ergänzen
-die planorientierte Fortsetzung beziehungsweise den expliziten Fachwechsel.
-Echte Abschlussereignisse füllen zuerst das Tagespensum des jeweiligen Fachs;
-danach zählt Arbeit als freiwilliger Zusatzfortschritt. Nach erfüllten Quoten
-stoppt die automatische Zielauswahl. Der [Tagesfortschrittsvertrag](../concept/runtime-workflows/daily-learning-progress.md)
-beschreibt die Datenbankmigration ohne historischen Backfill und die Bedeutung
-der Zähler. Das zusätzliche Ergebnisfeld `extraCompletedToday` muss im aktuellen
-Export und dessen Schemas enthalten sein.
+enthalten den fertigen Lernplanstatus als `learningPlanToday` für die dauerhaft
+gewählte Tages- oder Wochenbasis; jedes Fach wird unabhängig ausgewertet.
+`resume_skillpilot_learning_plan` und `switch_skillpilot_learning_plan_subject`
+ergänzen die planorientierte Fortsetzung beziehungsweise den expliziten Fachwechsel.
+Der [verbindliche Lernplanstatus](../concept/didactic/unified-learning-plan-status.md)
+legt die gemeinsame Mengenbilanz und Formulierung fest. Der Coach übernimmt
+`learningPlanToday.text` wörtlich und die separate `activeGoalAnnouncement`
+einmal beim Unterrichtseinstieg. Nach erfülltem Periodenpensum stoppt die
+automatische Zielauswahl; zulässige aktive Ziele bleiben erhalten und weiteres
+Lernen ist auf ausdrücklichen Wunsch möglich. Export und tatsächlich gesendete
+Tool-Ergebnisse enthalten keine eigene Gesamtampel, Gesamtsummen oder alten
+Plan-Zählfelder wie `extraCompletedToday`; das gilt auch für vollständige
+Folgeantworten nach Zustandsänderungen.
 Der früher nur lokal entworfene `get_skillpilot_daily_plan`-Aufruf gehört
 nicht zur aktuellen Oberfläche. Für die neue Einreichung müssen genau dieser
 Export, die aktuellen Testfälle und das tatsächliche Verhalten übereinstimmen.

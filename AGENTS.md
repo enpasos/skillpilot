@@ -879,24 +879,25 @@ Implementation-wise:
 - Layer B is **per-learner data** and should be persisted separately (database, files, …).
 - The current React app keeps a single in-memory `mastery` map as a prototype of this layer.
 
-Daily plan progress is a backend-owned **quota per subject**, not mastery of a
-fixed set of newly scheduled goal IDs. Actual completion events today, including
-due backlog goals, fill that subject's quota first; additional completions are
-voluntary extra progress. Subjects never offset each other's open quota.
-Automatic plan reconciliation and handoff stop when every daily quota is met;
-further work requires an explicit learner request. **A plan guides and
-prioritizes learning; it must never prevent learning.** On an explicit request,
-prioritize reachable due work, then other reachable targets in the current
-Personal Curriculum, even without a daily quota, backlog, or usable schedule.
-Only completion of all personal targets is the normal end of learning; dates
-and quotas are not access gates. With remaining backlog, acknowledge today's
-success and invite catching up without pressure; do not foreground a pause or
-send a willing learner away until tomorrow. Keep a requested pause possible.
-Preserve prerequisites and actual mastery. Never infer a completion date from `mastery.updated_at`, an
-import, or a current mastery snapshot. Completion events are transactional,
-unique per learner/goal/Berlin day, and not historically backfilled. The exact
-counting, migration, and presentation contract is documented in
-`docs/concept/runtime-workflows/daily-learning-progress.md`.
+Learning-plan status is backend-owned on the learner's persisted **DAY or WEEK**
+basis (default DAY; Europe/Berlin, Monday through Sunday). Each stable subject is
+balanced independently over the same fixed, deduplicated plan-goal set; prior
+knowledge is excluded and later mastery remains in that set. Current-period
+completion events cover the period quota first, and advance work can cover it
+as well. No cross-subject balance or overall direction is permitted. Cockpit,
+chat and learner planning display the backend's exact localized `status.text`;
+the active-goal announcement is separate and appears once when teaching begins.
+Automatic plan reconciliation and handoff stop when the applicable period quota
+is met; further work requires an explicit learner request. A valid active goal
+remains available. **A plan guides and prioritizes learning; it must never prevent
+learning.** An explicit continuation request prioritizes reachable due work, then
+other reachable targets in the Personal Curriculum, even without a quota,
+backlog or usable schedule. Preserve requested pauses, prerequisites and actual
+mastery. Never infer completion dates from `mastery.updated_at`, imports or current
+mastery snapshots. Unreliable plan or completion data must remain explicitly
+unevaluable. The binding calculation, data and presentation contract is
+`docs/concept/didactic/unified-learning-plan-status.md`; the former daily-quota
+contract is superseded.
 
 ### 10.3 Layer C – LLM-/MCP-Integration
 

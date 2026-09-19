@@ -31,7 +31,7 @@ public record LearnerPlanTodayStatus(
         String language,
         boolean evaluable,
         String statusText,
-        StatusDirection statusDirection,
+        String noticeText,
         @JsonIgnore boolean periodQuotaFulfilled,
         ActiveGoal activeGoal,
         boolean followLearningPlans,
@@ -59,7 +59,7 @@ public record LearnerPlanTodayStatus(
      * scheduled date wins.</p>
      */
     public record SubjectStatus(
-            @JsonIgnore List<String> landscapeIds,
+            List<String> landscapeIds,
             String subjectKey,
             String subjectLabel,
             boolean evaluable,

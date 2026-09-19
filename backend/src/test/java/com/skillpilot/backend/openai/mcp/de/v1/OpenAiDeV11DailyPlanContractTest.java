@@ -1,5 +1,6 @@
 package com.skillpilot.backend.openai.mcp.de.v1;
 
+import static com.skillpilot.backend.api.LearningPlanWireAssertions.assertReducedPlanPayloads;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -61,9 +62,11 @@ class OpenAiDeV11DailyPlanContractTest {
     private OpenAiDeCoachIdentityResolver identityResolver;
     private OpenAiDeV1McpSessionCoordinator sessionCoordinator;
     private OpenAiDeMcpTelemetry telemetry;
+    private String sessionLocale;
 
     @BeforeEach
     void setUp() {
+        sessionLocale = "de-DE";
         coachTools = mock(CoachToolFacade.class);
         identityResolver = mock(OpenAiDeCoachIdentityResolver.class);
         sessionCoordinator = mock(OpenAiDeV1McpSessionCoordinator.class);
@@ -86,6 +89,54 @@ class OpenAiDeV11DailyPlanContractTest {
                         any(),
                         any()))
                 .thenAnswer(invocation -> invoke(invocation.getArgument(5), 8L));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"de-DE,DAY", "de-DE,WEEK", "en-US,DAY", "en-US,WEEK"})
+    void actualContextPayloadPreservesBackendStatusAndSeparateAnnouncement(String locale, PeriodBasis basis) {
+        sessionLocale = locale;
+        boolean english = locale.startsWith("en");
+        String title = english ? "Adding fractions" : "Brüche addieren";
+        String announcement = (english ? "Your active learning goal: " : "Dein aktives Lernziel: ") + title;
+        var status = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-14"), basis, locale, true, false, false, 0,
+                new LearnerPlanTodayStatus.ActiveGoal("goal-1", title, announcement),
+                List.of(LearnerPlanTodayStatusFixtures.subject("private-math",
+                        english ? "Mathematics" : "Mathematik", 13, 3, 9, 1, true, true, basis, locale),
+                        LearnerPlanTodayStatusFixtures.subject("private-physics",
+                                english ? "Physics" : "Physik", 2, 0, 0, 0, false, true, basis, locale)));
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(activeGoalState(title));
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, locale)).thenReturn(status);
+
+        var result = call(contract(true), OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
+
+        JsonNode projection = objectMapper.valueToTree(result.structuredContent()).path("learningPlanToday");
+        assertThat(projection.path("text").asText()).isEqualTo(status.statusText());
+        assertThat(projection.path("periodBasis").asText()).isEqualTo(basis.name());
+        assertThat(projection.path("activeGoalAnnouncement").asText()).isEqualTo(announcement);
+        assertThat(result.content()).singleElement().isInstanceOfSatisfying(McpSchema.TextContent.class,
+                text -> assertThat(text.text()).isEqualTo(status.statusText()).doesNotContain(announcement));
+        verify(coachTools, never()).resumeLearningPlan(any(), any());
+    }
+
+    @Test
+    void noStoredPlanKeepsPublishedPersonalContinuationWithoutInventingSubjects() {
+        var status = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-14"), PeriodBasis.WEEK, "de", true, true,
+                false, 0, null, List.of());
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE")).thenReturn(status);
+
+        var response = call(contract(true), OpenAiDeV1McpContractAdapter.GET_CONTEXT, readArguments());
+
+        JsonNode context = objectMapper.valueToTree(response.structuredContent());
+        JsonNode projection = context.path("learningPlanToday");
+        assertThat(projection.path("subjects")).isEmpty();
+        assertThat(projection.path("resumeAvailable").asBoolean()).isTrue();
+        assertThat(projection.path("guidance").path("state").asText()).isEqualTo("unavailable");
+        assertThat(projection.path("text").asText()).isEqualTo("Kein Lernplan eingerichtet.");
+        assertThat(context.path("nextAllowedTools").toString())
+                .contains(OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN);
+        verify(coachTools, never()).resumeLearningPlan(any(), any());
     }
 
     @Test
@@ -126,6 +177,10 @@ class OpenAiDeV11DailyPlanContractTest {
         // The published shape carries the binding text and non-numeric control information only.
         assertThat(dailySchema.path("properties").path("text").path("type").asText()).isEqualTo("string");
         assertThat(dailySchema.path("properties").has("totals")).isFalse();
+        assertThat(dailySchema.path("properties").has("statusDirection")).isFalse();
+        assertThat(dailySchema.path("properties").has("unavailablePlanCount")).isFalse();
+        assertThat(dailySchema.path("properties").path("activeGoalAnnouncement").path("type").asText())
+                .isEqualTo("string");
         JsonNode subjectSchema = dailySchema.path("properties").path("subjects").path("items");
         assertThat(subjectSchema.path("properties").path("evaluable").path("type").asText())
                 .isEqualTo("boolean");
@@ -203,7 +258,8 @@ class OpenAiDeV11DailyPlanContractTest {
         // The binding text travels; no separate count field does.
         assertThat(content.has("totals")).isFalse();
         assertThat(content.path("text").asText()).contains("Mathematik: ", "Physik: ");
-        assertThat(content.path("unavailablePlanCount").asInt()).isEqualTo(1);
+        assertThat(content.has("unavailablePlanCount")).isFalse();
+        assertThat(content.has("statusDirection")).isFalse();
         assertThat(content.toString())
                 .doesNotContain(
                         "secret-math-landscape",
@@ -248,7 +304,8 @@ class OpenAiDeV11DailyPlanContractTest {
         assertThat(content.path("subjects").get(0).path("canContinue").asBoolean()).isFalse();
         assertThat(content.path("subjects").get(1).path("canContinue").asBoolean()).isFalse();
         // A label consisting only of control characters is unusable and counts as unevaluable.
-        assertThat(content.path("unavailablePlanCount").asInt()).isEqualTo(3);
+        assertThat(content.has("unavailablePlanCount")).isFalse();
+        assertThat(content.has("statusDirection")).isFalse();
         assertThat(content.path("resumeAvailable").asBoolean()).isTrue();
         // The published subject values stay usable as tool arguments. The binding text itself is
         // sanitized where the label enters it, in the backend; this fixture bypasses that on purpose
@@ -259,7 +316,7 @@ class OpenAiDeV11DailyPlanContractTest {
     }
 
     @Test
-    void dailyPlanReadSuppressesResumeWhenEverySubjectEntryIsInvalid() {
+    void unreadableSubjectLabelsDoNotRevokeBackendAuthorizedPersonalContinuation() {
         OpenAiDeV1McpContractAdapter contract = contract(true);
         when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE"))
                 .thenReturn(LearnerPlanTodayStatusFixtures.status(
@@ -275,8 +332,10 @@ class OpenAiDeV11DailyPlanContractTest {
         assertThat(response.isError()).isFalse();
         JsonNode content = objectMapper.valueToTree(response.structuredContent()).path("learningPlanToday");
         assertThat(content.path("subjects")).isEmpty();
-        assertThat(content.path("resumeAvailable").asBoolean()).isFalse();
-        assertThat(content.path("unavailablePlanCount").asInt()).isEqualTo(1);
+        assertThat(content.path("resumeAvailable").asBoolean()).isTrue();
+        assertThat(content.path("guidance").path("state").asText()).isEqualTo("unavailable");
+        assertThat(content.has("unavailablePlanCount")).isFalse();
+        assertThat(content.has("statusDirection")).isFalse();
     }
 
     @Test
@@ -560,7 +619,8 @@ class OpenAiDeV11DailyPlanContractTest {
         assertThat(today.path("subjects").get(0).path("canContinue").asBoolean()).isEqualTo(available);
         assertThat(today.path("guidance").path("state").asText())
                 .isEqualTo(unavailablePlans == 0 ? "complete" : "unavailable");
-        assertThat(today.path("unavailablePlanCount").asInt()).isEqualTo(unavailablePlans);
+        assertThat(today.has("unavailablePlanCount")).isFalse();
+        assertThat(today.has("statusDirection")).isFalse();
         assertThat(today.path("guidance").path("instruction").asText())
                 .contains("Learning plans prioritize work and never limit learning within the Personal Curriculum",
                         unavailablePlans == 0 ? "A fulfilled period target never revokes that capability"
@@ -646,7 +706,7 @@ class OpenAiDeV11DailyPlanContractTest {
             assertThat(subject.statusDirection()).isNull();
         });
         assertThat(projection.evaluable()).isFalse();
-        assertThat(projection.unavailablePlanCount()).isEqualTo(1);
+        assertThat(objectMapper.<JsonNode>valueToTree(projection).has("unavailablePlanCount")).isFalse();
         assertThat(projection.guidance().state()).isEqualTo("unavailable");
         assertThat(projection.text()).contains("nicht auswertbar");
     }
@@ -873,9 +933,9 @@ class OpenAiDeV11DailyPlanContractTest {
             OpenAiDeV1McpContractAdapter contract,
             String toolName,
             Map<String, Object> arguments) {
-        return spec(contract, toolName).callHandler().apply(
+        return assertReducedPlanPayloads(spec(contract, toolName).callHandler().apply(
                 McpTransportContext.EMPTY,
-                new McpSchema.CallToolRequest(toolName, arguments));
+                new McpSchema.CallToolRequest(toolName, arguments)));
     }
 
     private McpStatelessServerFeatures.SyncToolSpecification spec(
@@ -897,7 +957,7 @@ class OpenAiDeV11DailyPlanContractTest {
                 1,
                 OpenAiDeV1ContractMetadata.WORKFLOW_VERSION,
                 "curricula-tree@test",
-                "de-DE",
+                sessionLocale,
                 Map.of()));
     }
 
@@ -916,9 +976,13 @@ class OpenAiDeV11DailyPlanContractTest {
     }
 
     private static UnifiedLearnerStateResponse activeGoalState() {
+        return activeGoalState("Brüche addieren");
+    }
+
+    private static UnifiedLearnerStateResponse activeGoalState(String title) {
         FrontierGoal active = new FrontierGoal(
                 "goal-1",
-                "Brüche addieren",
+                title,
                 "Die lernende Person kann Brüche addieren.",
                 "atomic",
                 "tutor",

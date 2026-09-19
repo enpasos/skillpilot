@@ -21,20 +21,6 @@ export interface LearnerLearningPlanMilestone {
   date: LearnerLearningPlanDate
 }
 
-export interface LearnerLearningPlanMetrics {
-  dueThroughToday: number
-  completedDueThroughToday: number
-  openDueThroughToday: number
-  /** Stable daily quota, capped by available due work. */
-  dueToday: number
-  /** Actual completions credited on this day; forecasts assume zero future completions. */
-  completedDueToday: number
-  openDueToday: number
-  /** Additional due plan goals completed today after the daily target was reached. */
-  extraCompletedToday?: number
-  totalPlanned: number
-}
-
 export interface LearnerLearningPlanNextEligibleGoal {
   goalId: string
 }
@@ -42,16 +28,6 @@ export interface LearnerLearningPlanNextEligibleGoal {
 export interface LearnerLearningPlanBuffer {
   totalWorkdays: number
   remainingWorkdays: number
-}
-
-/**
- * The first plan release deliberately exposes no red/green pace judgement.
- * `reason` explains why the status remains neutral without exposing internal
- * implementation details in the UI.
- */
-export interface LearnerLearningPlanPace {
-  status: 'neutral'
-  reason: string
 }
 
 export type LearnerLearningPlanContinueReason =
@@ -70,9 +46,7 @@ export interface LearnerLearningPlanSummary {
   period: LearnerLearningPlanPeriod
   currentBlock: LearnerLearningPlanCurrentBlock | null
   nextMilestone: LearnerLearningPlanMilestone | null
-  metrics: LearnerLearningPlanMetrics
   buffer: LearnerLearningPlanBuffer
-  pace: LearnerLearningPlanPace
   nextEligibleGoal: LearnerLearningPlanNextEligibleGoal | null
   continueReason: LearnerLearningPlanContinueReason
   canContinue: boolean
@@ -89,6 +63,7 @@ export type LearnerPlanStatusDirection = 'on_track' | 'behind' | 'ahead'
  */
 export interface LearnerPlanSubjectStatus {
   subjectKey: string
+  landscapeIds: string[]
   subjectLabel: string
   evaluable: boolean
   periodText: string | null
@@ -119,7 +94,7 @@ export interface LearnerPlanStatus {
   language: string
   evaluable: boolean
   statusText: string
-  statusDirection: LearnerPlanStatusDirection | null
+  noticeText: string | null
   activeGoal: LearnerPlanActiveGoal | null
   followLearningPlans: boolean
   resumeAvailable: boolean
@@ -131,6 +106,7 @@ export interface LearnerLearningPlansResponse {
   asOf: LearnerLearningPlanDate
   followLearningPlans: boolean
   plans: LearnerLearningPlanSummary[]
+  status: LearnerPlanStatus
 }
 
 export interface LearnerLearningPlanLearningBlock {
@@ -272,12 +248,11 @@ export interface ActivateLearnerLearningPlansResponse {
   state: Record<string, unknown>
 }
 
-/** Read-only daily-quota projection; future days retain current mastery without assuming future completions. */
+/** Same status calculation as the cockpit; future dates assume no future completions. */
 export interface PreviewLearnerLearningPlansResponse {
   asOf: LearnerLearningPlanDate
   days: Array<{
     date: LearnerLearningPlanDate
-    subjects: Array<{ landscapeId: string; metrics: LearnerLearningPlanMetrics }>
-    totals: LearnerLearningPlanMetrics
+    status: LearnerPlanStatus
   }>
 }

@@ -1,5 +1,6 @@
 package com.skillpilot.backend.connectors.claude.v1.mcp;
 
+import static com.skillpilot.backend.api.LearningPlanWireAssertions.assertReducedPlanPayloads;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -290,6 +291,7 @@ class ClaudeV1VerifiedRecallLearningPlanContractTest {
     }
 
     private Map<String, Object> payload(McpSchema.CallToolResult result) throws Exception {
+        assertReducedPlanPayloads(result);
         return objectMapper.readValue(((McpSchema.TextContent) result.content().getFirst()).text(),
                 new TypeReference<>() {});
     }

@@ -1,12 +1,25 @@
 package com.skillpilot.backend.service.learningplan;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class UnifiedLearningPlanStatusFormatterTest {
+
+    @Test
+    void missingOrInvalidBalanceCannotBecomeANormalStatusLine() {
+        assertThatThrownBy(() -> UnifiedLearningPlanStatusFormatter.formatSubjectLine(
+                "Mathematik", PeriodBasis.DAY, null, "de")).isInstanceOf(NullPointerException.class);
+        assertThatThrownBy(() -> UnifiedLearningPlanStatusFormatter.formatPeriodText(
+                PeriodBasis.DAY, -1, 0, "de")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> UnifiedLearningPlanStatusFormatter.formatPlanStatusText(1, 1, "de"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(UnifiedLearningPlanStatusFormatter.formatUnavailableStatusNotice("en"))
+                .isEqualTo("Learning plan status currently unavailable.");
+    }
 
     @Test
     @DisplayName("German formatting matches Section 4.4 and 5")

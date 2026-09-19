@@ -34,13 +34,17 @@ import org.springframework.web.server.ResponseStatusException;
 class LearnerLearningPlanServiceTest {
 
     @Test
-    void previewUsesBerlinTodayAndOnlyUnlockedRepositoryReads() {
+    void previewUsesBerlinTodayAndDoesNotMutateState() {
         LearnerLearningPlanRepository plans = mock(LearnerLearningPlanRepository.class);
         LearnerService learners = mock(LearnerService.class);
         ApplicationEventPublisher events = mock(ApplicationEventPublisher.class);
+        LandscapeService landscapes = mock(LandscapeService.class);
+        var math = new com.skillpilot.backend.landscape.SkillLandscape();
+        math.setSubject("Mathematik");
+        when(landscapes.getById("math")).thenReturn(math);
         LearnerLearningPlanService service = new LearnerLearningPlanService(
                 plans, learners, new ObjectMapper().findAndRegisterModules(), events,
-                mock(LandscapeService.class),
+                landscapes,
                 Clock.fixed(Instant.parse("2026-09-03T23:30:00Z"), ZoneId.of("UTC")));
         Learner learner = new Learner();
         learner.setSkillpilotId("preview-learner");
@@ -52,6 +56,8 @@ class LearnerLearningPlanServiceTest {
                 .thenAnswer(invocation -> invocation.getArgument(1));
         when(learners.learningPlanFingerprint(eq("preview-learner"), eq("math"), any())).thenReturn("current");
         when(learners.getMastery("preview-learner")).thenReturn(Map.of());
+        when(learners.isLearningPlanCompatible(eq("preview-learner"), any(), eq("math"), any()))
+                .thenReturn(true);
         var plan = new LearnerLearningPlanApi.ActivationPlan("math", 0L, "Draft",
                 List.of(learningBlock("block", "2026-09-04", "2026-09-04", List.of("atom-a"))));
 
@@ -60,7 +66,8 @@ class LearnerLearningPlanServiceTest {
 
         assertThat(preview.asOf()).isEqualTo(LocalDate.parse("2026-09-04"));
         assertThat(preview.days()).hasSize(7);
-        assertThat(preview.days().get(0).totals().dueToday()).isEqualTo(1);
+        assertThat(preview.days().get(0).status().statusText())
+                .isEqualTo("Mathematik: Tagesziel 0 von 1 · im Plan");
         assertThatThrownBy(() -> service.previewPlans("preview-learner",
                 new LearnerLearningPlanApi.ActivateRequest(LocalDate.parse("2026-09-03"), List.of(plan))))
                 .isInstanceOfSatisfying(ResponseStatusException.class,
@@ -68,9 +75,24 @@ class LearnerLearningPlanServiceTest {
         verify(plans).findByLearner_SkillpilotIdOrderByLandscapeIdAsc("preview-learner");
         verify(plans).findByLearner_SkillpilotIdAndLandscapeId("preview-learner", "math");
         verifyNoMoreInteractions(plans);
-        verify(learners, never()).acquireLearningPlanMutationLock(any());
-        verify(learners).getMastery("preview-learner");
+        verify(learners, org.mockito.Mockito.atLeastOnce()).acquireLearningPlanMutationLock("preview-learner");
+        verify(learners, org.mockito.Mockito.atLeastOnce()).getMastery("preview-learner");
         verifyNoInteractions(events);
+    }
+
+    @Test
+    void anEarlierOpenGoalPrecedesACurrentGoalEvenWhenItsBlockEndsLater() {
+        var blocks = List.of(
+                learningBlock("long", "2026-09-01", "2026-09-14", List.of("old", "later-1", "later-2")),
+                learningBlock("short", "2026-09-10", "2026-09-10", List.of("current")));
+        var dates = LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(blocks);
+        assertThat(dates.get("old")).isBefore(dates.get("current"));
+        var next = LearnerLearningPlanService.firstEligibleDueGoal(blocks, LocalDate.parse("2026-09-10"),
+                Map.of(), focus -> java.util.Set.of("old", "current"));
+        assertThat(next).get().satisfies(goal -> {
+            assertThat(goal.atomicGoalId()).isEqualTo("old");
+            assertThat(goal.scheduledDate()).isEqualTo(dates.get("old"));
+        });
     }
 
     @Test

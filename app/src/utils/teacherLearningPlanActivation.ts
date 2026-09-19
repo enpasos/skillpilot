@@ -73,7 +73,7 @@ export const loadTeacherLearningPlanActivation = async (
   const subjectIds = getExistingLearnerSubjectIds(
     classSession.personalConfig ?? {}, landscapeEntries, classSession.rootLandscapeId,
   )
-  const collection = await getLearnerLearningPlans(learnerId, asOf, { signal })
+  const collection = await getLearnerLearningPlans(learnerId, asOf, { signal, language })
   if (collection.asOf !== asOf) throw new Error('learning-plan-date-mismatch')
   if (collection.plans.some((plan) => !plan.stale && !subjectIds.includes(plan.landscapeId))) {
     throw new Error('learning-plan-subject-scope-changed')

@@ -1,5 +1,6 @@
 package com.skillpilot.backend.connectors.claude.v1.mcp;
 
+import static com.skillpilot.backend.api.LearningPlanWireAssertions.assertReducedPlanPayloads;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
@@ -34,6 +35,10 @@ import java.util.concurrent.atomic.AtomicReference;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import com.skillpilot.backend.service.learningplan.PeriodBasis;
+import com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
@@ -71,6 +76,9 @@ class ClaudeV1LearningPlanContractTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private org.springframework.jdbc.core.JdbcTemplate jdbc;
+
     @MockitoBean
     private CoachToolFacade coachToolFacade;
 
@@ -105,6 +113,39 @@ class ClaudeV1LearningPlanContractTest {
         SecurityContextHolder.clearContext();
     }
 
+    @ParameterizedTest
+    @CsvSource({"de,DAY", "de,WEEK", "en,DAY", "en,WEEK"})
+    void serializedContextPreservesBackendStatusAndSeparateAnnouncement(String locale, PeriodBasis basis)
+            throws Exception {
+        // The Web-started session owns communication language. The optional legacy tool
+        // argument cannot replace it; prepare the real persisted session accordingly.
+        assertThat(jdbc.update("UPDATE claude_v1_learning_session SET communication_locale = ? WHERE learner_id = ?",
+                locale, learnerId)).isEqualTo(1);
+        FrontierGoal goal = goal(RESUMED_GOAL_ID);
+        activeGoal.set(goal);
+        String announcement = (locale.equals("en") ? "Your active learning goal: " : "Dein aktives Lernziel: ")
+                + goal.title();
+        var status = LearnerPlanTodayStatusFixtures.status(
+                LocalDate.parse("2026-09-14"), basis, locale, true, false, false, 0,
+                new LearnerPlanTodayStatus.ActiveGoal(goal.id(), goal.title(), announcement),
+                List.of(LearnerPlanTodayStatusFixtures.subject("private-math",
+                        locale.equals("en") ? "Mathematics" : "Mathematik",
+                        13, 3, 9, 1, true, true, basis, locale)));
+        when(coachToolFacade.getLearningPlanTodayStatus(learnerId, locale)).thenReturn(status);
+
+        var result = call(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT,
+                Map.of("learningSessionId", connectionId, "language", locale));
+
+        assertThat(result.isError()).isFalse();
+        Map<?, ?> projection = (Map<?, ?>) payload(result).get("learningPlanToday");
+        assertThat(projection.get("text")).isEqualTo(status.statusText());
+        assertThat(projection.get("periodBasis")).isEqualTo(basis.name());
+        assertThat(projection.get("activeGoalAnnouncement")).isEqualTo(announcement);
+        assertThat(projection.get("text").toString()).doesNotContain(announcement);
+        verify(coachToolFacade).getLearningPlanTodayStatus(learnerId, locale);
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
+    }
+
     @Test
     void planPresentationMandatesTheVerbatimBackendTextAndNoOwnArithmetic() {
         String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
@@ -127,6 +168,9 @@ class ClaudeV1LearningPlanContractTest {
                         "Automatic continuation from a successor context is permitted only when guidance.state=resume",
                         "Never automatically resume extra work, even when resumeAvailable=true",
                         "Answer a status-only question or respect a pause without starting a goal or exercise",
+                        "Goal images: status-only questions and pauses permit no render",
+                        "Resolve a requested subject before rendering the old goal",
+                        "Only when teaching is authorized",
                         "For blocked or unavailable, explain the remaining work or missing plan status without claiming completion",
                         "Learning plans prioritize work and never limit learning within the Personal Curriculum",
                         "A missing or outdated plan must not block published learning capabilities")
@@ -402,9 +446,9 @@ class ClaudeV1LearningPlanContractTest {
                         .filter(candidate -> toolName.equals(candidate.tool().name()))
                         .findFirst()
                         .orElseThrow();
-        return specification.callHandler().apply(
+        return assertReducedPlanPayloads(specification.callHandler().apply(
                 McpTransportContext.EMPTY,
-                new McpSchema.CallToolRequest(toolName, arguments));
+                new McpSchema.CallToolRequest(toolName, arguments)));
     }
 
     private Map<String, Object> payload(McpSchema.CallToolResult result) throws Exception {

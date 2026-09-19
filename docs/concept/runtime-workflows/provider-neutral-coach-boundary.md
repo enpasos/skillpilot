@@ -406,7 +406,7 @@ einem Testlauf zufällig korrekt ausführt:
 | Werkzeugbedingung | genau eine Toolbeschreibung und ihr Schema |
 | Aktuelle Entscheidung | genau ein frisches Toolergebnis |
 | Fachliche oder Sicherheitsgarantie | Backendguard, Transaktion und Test |
-| Tagespensum, echte Abschlussereignisse und freiwillige Zusatzarbeit | [Tagesfortschritt](daily-learning-progress.md) |
+| Tages-/Wochenpensum, gemeinsame Statusformulierung und autorisierte Fortsetzung | [Einheitlicher Lernplanstatus](../didactic/unified-learning-plan-status.md) |
 | Betrieb und Release | Runbooks unter `docs/deploy/` |
 
 Gemeinsame Regeln stehen einmal in der Hauptanleitung. Eine Workflow-Referenz

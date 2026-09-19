@@ -8,7 +8,6 @@ import type {
   LearnerLearningPlanCurrentBlock,
   LearnerLearningPlanDetail,
   LearnerLearningPlanMilestone,
-  LearnerLearningPlanMetrics,
   LearnerLearningPlanSummary,
   LearnerLearningPlanTransitionResponse,
   LearnerLearningPlansResponse,
@@ -26,6 +25,7 @@ export interface LearnerLearningPlanRequestOptions {
   apiBase?: string
   fetchImpl?: typeof fetch
   signal?: AbortSignal
+  language?: string
 }
 
 export const LEARNING_PLAN_PREREQUISITE_SCHEDULE_CONFLICT =
@@ -157,47 +157,11 @@ const parseMilestone = (value: unknown): LearnerLearningPlanMilestone | null => 
 export const parseLearnerLearningPlanSummary = (value: unknown): LearnerLearningPlanSummary => {
   const source = asRecord(value, 'Invalid learning-plan response: plan')
   const period = asRecord(source.period, 'Invalid learning-plan response: period')
-  const metrics = asRecord(source.metrics, 'Invalid learning-plan response: metrics')
   const buffer = asRecord(source.buffer, 'Invalid learning-plan response: buffer')
-  const pace = asRecord(source.pace, 'Invalid learning-plan response: pace')
   const startDate = parseDate(period.startDate, 'period.startDate')
   const endDate = parseDate(period.endDate, 'period.endDate')
   if (startDate > endDate) throw new Error('Invalid learning-plan response: period')
 
-  const dueThroughToday = requiredInteger(metrics.dueThroughToday, 'metrics.dueThroughToday')
-  const completedDueThroughToday = requiredInteger(
-    metrics.completedDueThroughToday,
-    'metrics.completedDueThroughToday',
-  )
-  const openDueThroughToday = requiredInteger(
-    metrics.openDueThroughToday,
-    'metrics.openDueThroughToday',
-  )
-  const dueToday = requiredInteger(metrics.dueToday, 'metrics.dueToday')
-  const completedDueToday = requiredInteger(metrics.completedDueToday, 'metrics.completedDueToday')
-  const openDueToday = requiredInteger(metrics.openDueToday, 'metrics.openDueToday')
-  const extraCompletedToday = metrics.extraCompletedToday === undefined
-    ? undefined
-    : requiredInteger(metrics.extraCompletedToday, 'metrics.extraCompletedToday')
-  const totalPlanned = requiredInteger(metrics.totalPlanned, 'metrics.totalPlanned')
-  if (
-    completedDueThroughToday > dueThroughToday
-    || openDueThroughToday !== dueThroughToday - completedDueThroughToday
-    || dueThroughToday > totalPlanned
-    || completedDueToday > dueToday
-    || openDueToday !== dueToday - completedDueToday
-    || dueToday > dueThroughToday
-    || completedDueToday > completedDueThroughToday
-    || openDueToday > openDueThroughToday
-    || (extraCompletedToday ?? 0) > completedDueThroughToday - completedDueToday
-    || ((extraCompletedToday ?? 0) > 0 && openDueToday > 0)
-  ) {
-    throw new Error('Invalid learning-plan response: metrics.cardinality')
-  }
-
-  if (pace.status !== 'neutral') {
-    throw new Error('Invalid learning-plan response: pace.status')
-  }
   const totalBufferWorkdays = requiredInteger(buffer.totalWorkdays, 'buffer.totalWorkdays')
   const remainingBufferWorkdays = requiredInteger(
     buffer.remainingWorkdays,
@@ -237,23 +201,9 @@ export const parseLearnerLearningPlanSummary = (value: unknown): LearnerLearning
     period: { startDate, endDate },
     currentBlock: parseCurrentBlock(source.currentBlock),
     nextMilestone: parseMilestone(source.nextMilestone),
-    metrics: {
-      dueThroughToday,
-      completedDueThroughToday,
-      openDueThroughToday,
-      dueToday,
-      completedDueToday,
-      openDueToday,
-      ...(extraCompletedToday === undefined ? {} : { extraCompletedToday }),
-      totalPlanned,
-    },
     buffer: {
       totalWorkdays: totalBufferWorkdays,
       remainingWorkdays: remainingBufferWorkdays,
-    },
-    pace: {
-      status: 'neutral',
-      reason: requiredString(pace.reason, 'pace.reason'),
     },
     nextEligibleGoal: nextEligibleGoalSource
       ? { goalId: requiredString(nextEligibleGoalSource.goalId, 'nextEligibleGoal.goalId') }
@@ -276,11 +226,14 @@ const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus
   const subjectLine = nullableText(source.subjectLine)
   // Evaluability is its own state: an unevaluable subject must never arrive carrying a
   // direction or a status line that would read like a valid balance.
-  if (evaluable !== (statusDirection !== null) || evaluable !== (subjectLine !== null)) {
+  if (evaluable !== (statusDirection !== null) || evaluable !== (subjectLine !== null)
+    || evaluable !== (nullableText(source.periodText) !== null)
+    || evaluable !== (nullableText(source.planStatusText) !== null)) {
     throw new Error('Invalid learning-plan status response: subject.evaluability')
   }
   return {
     subjectKey: requiredString(source.subjectKey, 'subject.subjectKey'),
+    landscapeIds: parseStringList(source.landscapeIds, 'subject.landscapeIds'),
     subjectLabel: requiredString(source.subjectLabel, 'subject.subjectLabel'),
     evaluable,
     periodText: nullableText(source.periodText),
@@ -321,7 +274,7 @@ export const parseLearnerPlanStatus = (value: unknown): LearnerPlanStatus => {
     language: requiredString(source.language, 'language'),
     evaluable: requiredBoolean(source.evaluable, 'evaluable'),
     statusText: requiredString(source.statusText, 'statusText'),
-    statusDirection: parseStatusDirection(source.statusDirection),
+    noticeText: nullableText(source.noticeText),
     activeGoal: activeGoalSource
       ? {
           title: requiredString(activeGoalSource.title, 'activeGoal.title'),
@@ -418,11 +371,13 @@ export const parseLearnerLearningPlansResponse = (value: unknown): LearnerLearni
   if (new Set(plans.map(({ planId }) => planId)).size !== plans.length) {
     throw new Error('Invalid learning-plan response: duplicate plan')
   }
-  return {
-    asOf: parseDate(source.asOf, 'asOf'),
-    followLearningPlans: requiredBoolean(source.followLearningPlans, 'followLearningPlans'),
-    plans,
+  const asOf = parseDate(source.asOf, 'asOf')
+  const followLearningPlans = requiredBoolean(source.followLearningPlans, 'followLearningPlans')
+  const status = parseLearnerPlanStatus(source.status)
+  if (status.asOf !== asOf || status.followLearningPlans !== followLearningPlans) {
+    throw new Error('Invalid learning-plan response: status.snapshot')
   }
+  return { asOf, followLearningPlans, plans, status }
 }
 
 const requiredSegment = (value: string, message: string) => {
@@ -442,9 +397,13 @@ export const buildLearnerLearningPlansEndpoint = (
   skillpilotId: string,
   asOf?: string,
   apiBase?: string,
+  language?: string,
 ) => {
   const base = learnerPlansBase(skillpilotId, apiBase)
-  return asOf ? `${base}?asOf=${encodeURIComponent(parseDate(asOf, 'asOf'))}` : base
+  const query = new URLSearchParams()
+  if (asOf) query.set('asOf', parseDate(asOf, 'asOf'))
+  if (language) query.set('language', language)
+  return query.size ? `${base}?${query}` : base
 }
 
 export const buildLearnerLearningPlanEndpoint = (
@@ -517,7 +476,7 @@ export const getLearnerLearningPlans = async (
   options: LearnerLearningPlanRequestOptions = {},
 ): Promise<LearnerLearningPlansResponse> => {
   const response = await (options.fetchImpl ?? fetch)(
-    buildLearnerLearningPlansEndpoint(skillpilotId, asOf, options.apiBase),
+    buildLearnerLearningPlansEndpoint(skillpilotId, asOf, options.apiBase, options.language),
     {
       credentials: 'include',
       cache: 'no-store',
@@ -744,35 +703,6 @@ export const activateLearnerLearningPlans = async (
   return parseActivateResponse(await readJsonResponse(response))
 }
 
-const parsePreviewMetrics = (value: unknown, aggregate = false): LearnerLearningPlanMetrics => {
-  const source = asRecord(value, 'Invalid learning-plan preview: metrics')
-  const metrics: LearnerLearningPlanMetrics = {
-    dueThroughToday: requiredInteger(source.dueThroughToday, 'metrics.dueThroughToday'),
-    completedDueThroughToday: requiredInteger(source.completedDueThroughToday, 'metrics.completedDueThroughToday'),
-    openDueThroughToday: requiredInteger(source.openDueThroughToday, 'metrics.openDueThroughToday'),
-    dueToday: requiredInteger(source.dueToday, 'metrics.dueToday'),
-    completedDueToday: requiredInteger(source.completedDueToday, 'metrics.completedDueToday'),
-    openDueToday: requiredInteger(source.openDueToday, 'metrics.openDueToday'),
-    ...(source.extraCompletedToday === undefined ? {} : {
-      extraCompletedToday: requiredInteger(source.extraCompletedToday, 'metrics.extraCompletedToday'),
-    }),
-    totalPlanned: requiredInteger(source.totalPlanned, 'metrics.totalPlanned'),
-  }
-  if (
-    metrics.completedDueThroughToday > metrics.dueThroughToday
-    || metrics.openDueThroughToday !== metrics.dueThroughToday - metrics.completedDueThroughToday
-    || metrics.dueThroughToday > metrics.totalPlanned
-    || metrics.completedDueToday > metrics.dueToday
-    || metrics.openDueToday !== metrics.dueToday - metrics.completedDueToday
-    || metrics.dueToday > metrics.dueThroughToday
-    || metrics.completedDueToday > metrics.completedDueThroughToday
-    || metrics.openDueToday > metrics.openDueThroughToday
-    || (metrics.extraCompletedToday ?? 0) > metrics.completedDueThroughToday - metrics.completedDueToday
-    || (!aggregate && (metrics.extraCompletedToday ?? 0) > 0 && metrics.openDueToday > 0)
-  ) throw new Error('Invalid learning-plan preview: metrics.cardinality')
-  return metrics
-}
-
 export const parsePreviewLearnerLearningPlansResponse = (
   value: unknown,
   request: ActivateLearnerLearningPlansRequest,
@@ -791,33 +721,17 @@ export const parsePreviewLearnerLearningPlansResponse = (
     const date = parseDate(day.date, 'day.date')
     const expectedDate = new Date(`${asOf}T00:00:00Z`)
     expectedDate.setUTCDate(expectedDate.getUTCDate() + index)
-    if (date !== expectedDate.toISOString().slice(0, 10) || !Array.isArray(day.subjects)) {
+    if (date !== expectedDate.toISOString().slice(0, 10)) {
       throw new Error('Invalid learning-plan preview: day order')
     }
-    const subjects = day.subjects.map((value) => {
-      const subject = asRecord(value, 'Invalid learning-plan preview: subject')
-      return {
-        landscapeId: requiredString(subject.landscapeId, 'subject.landscapeId'),
-        metrics: parsePreviewMetrics(subject.metrics),
-      }
-    })
-    if (
-      subjects.length !== expectedSubjects.size
-      || new Set(subjects.map((subject) => subject.landscapeId)).size !== subjects.length
-      || subjects.some((subject) => !expectedSubjects.has(subject.landscapeId))
-    ) throw new Error('Invalid learning-plan preview: subjects')
-    const totals = parsePreviewMetrics(day.totals, true)
-    const metricKeys = new Set([
-      ...Object.keys(totals),
-      ...subjects.flatMap((subject) => Object.keys(subject.metrics)),
-    ] as Array<keyof LearnerLearningPlanMetrics>)
-    for (const key of metricKeys) {
-      const sum = subjects.reduce((total, subject) => total + (subject.metrics[key] ?? 0), 0)
-      if (!Number.isSafeInteger(sum) || (totals[key] ?? 0) !== sum) {
-        throw new Error('Invalid learning-plan preview: totals')
-      }
+    const status = parseLearnerPlanStatus(day.status)
+    const landscapeIds = status.subjects.flatMap((subject) => subject.landscapeIds)
+    if (status.asOf !== date || landscapeIds.length !== expectedSubjects.size
+      || new Set(landscapeIds).size !== landscapeIds.length
+      || landscapeIds.some((id) => !expectedSubjects.has(id))) {
+      throw new Error('Invalid learning-plan preview: status subjects or date')
     }
-    return { date, subjects, totals }
+    return { date, status }
   })
   return { asOf, days }
 }
@@ -829,7 +743,7 @@ export const previewLearnerLearningPlans = async (
 ): Promise<PreviewLearnerLearningPlansResponse> => {
   const normalizedRequest = { ...request, asOf: parseDate(request.asOf, 'asOf') }
   const response = await (options.fetchImpl ?? fetch)(
-    `${learnerPlansBase(skillpilotId, options.apiBase)}/preview`,
+    `${learnerPlansBase(skillpilotId, options.apiBase)}/preview${options.language ? `?language=${encodeURIComponent(options.language)}` : ''}`,
     {
       method: 'POST',
       credentials: 'include',

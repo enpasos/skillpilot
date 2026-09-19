@@ -26,7 +26,6 @@ const plan = (
   planId: string,
   landscapeId: string,
   label: string,
-  openDueThroughToday: number,
   nextGoalId: string,
 ): LearnerLearningPlanSummary => ({
   planId,
@@ -43,17 +42,7 @@ const plan = (
     endDate: '2026-09-30',
   },
   nextMilestone: null,
-  metrics: {
-    dueThroughToday: 6,
-    completedDueThroughToday: 6 - openDueThroughToday,
-    openDueThroughToday,
-    dueToday: Math.min(2, openDueThroughToday),
-    completedDueToday: 0,
-    openDueToday: Math.min(2, openDueThroughToday),
-    totalPlanned: 24,
-  },
   buffer: { totalWorkdays: 5, remainingWorkdays: 5 },
-  pace: { status: 'neutral', reason: 'mastery-history-not-event-backed' },
   nextEligibleGoal: { goalId: nextGoalId },
   continueReason: null,
   canContinue: true,
@@ -68,6 +57,7 @@ const subjectStatus = (
   current = false,
 ): LearnerPlanSubjectStatus => ({
   subjectKey,
+  landscapeIds: [subjectKey === 'mathematik' ? 'math/sek-i' : subjectKey === 'physik' ? 'physics/sek-ii' : subjectKey],
   subjectLabel,
   evaluable: true,
   periodText,
@@ -87,7 +77,7 @@ const planStatus = (subjects: LearnerPlanSubjectStatus[]): LearnerPlanStatus => 
   language: 'de',
   evaluable: true,
   statusText: subjects.map((entry) => entry.subjectLine ?? '').filter(Boolean).join('\n'),
-  statusDirection: 'behind',
+  noticeText: null,
   activeGoal: null,
   followLearningPlans: true,
   resumeAvailable: true,
@@ -113,8 +103,8 @@ const REACHED_STATUS = planStatus([
 ])
 
 const PLANS = [
-  plan('math-plan', 'math/sek-i', 'Mathematik bis Klasse 10', 2, 'math-goal-1'),
-  plan('physics-plan', 'physics/sek-ii', 'Physik Oberstufe', 3, 'physics-goal-1'),
+  plan('math-plan', 'math/sek-i', 'Mathematik bis Klasse 10', 'math-goal-1'),
+  plan('physics-plan', 'physics/sek-ii', 'Physik Oberstufe', 'physics-goal-1'),
 ]
 
 const Fixture = () => {

@@ -3,7 +3,6 @@ package com.skillpilot.backend.api;
 import com.skillpilot.backend.service.learningplan.PeriodBasis;
 import com.skillpilot.backend.service.learningplan.PlanBalanceInputs;
 import com.skillpilot.backend.service.learningplan.PlanBalanceResult;
-import com.skillpilot.backend.service.learningplan.StatusDirection;
 import com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusCalculator;
 import com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusFormatter;
 import java.time.DayOfWeek;
@@ -122,13 +121,12 @@ public final class LearnerPlanTodayStatusFixtures {
         List<LearnerPlanTodayStatus.SubjectStatus> evaluated = subjects.stream()
                 .filter(LearnerPlanTodayStatus.SubjectStatus::evaluable)
                 .toList();
-        StatusDirection direction = evaluated.isEmpty()
-                ? null
-                : evaluated.stream().anyMatch(s -> s.statusDirection() == StatusDirection.BEHIND)
-                        ? StatusDirection.BEHIND
-                        : evaluated.stream().anyMatch(s -> s.statusDirection() == StatusDirection.AHEAD)
-                                ? StatusDirection.AHEAD
-                                : StatusDirection.ON_TRACK;
+        String notice = UnifiedLearningPlanStatusFormatter.formatUnavailableNotice(unavailableLabels, locale);
+        String text = UnifiedLearningPlanStatusFormatter.formatCombinedStatusText(subjectLines, unavailableLabels, locale);
+        if (unavailablePlanCount > 0 && unavailableLabels.isEmpty()) {
+            notice = UnifiedLearningPlanStatusFormatter.formatUnavailableStatusNotice(locale);
+            text = subjectLines.isEmpty() ? notice : text + "\n" + notice;
+        }
         return new LearnerPlanTodayStatus(
                 asOf,
                 basis,
@@ -136,13 +134,10 @@ public final class LearnerPlanTodayStatusFixtures {
                 periodEnd(asOf, basis),
                 "Europe/Berlin",
                 locale,
-                !subjects.isEmpty()
+                unavailablePlanCount == 0 && !subjects.isEmpty()
                         && subjects.stream().allMatch(LearnerPlanTodayStatus.SubjectStatus::evaluable),
-                UnifiedLearningPlanStatusFormatter.formatCombinedStatusText(
-                        subjectLines,
-                        unavailableLabels,
-                        locale),
-                direction,
+                text,
+                notice,
                 evaluated.stream().allMatch(s -> s.balance().offenesPeriodenpensum() == 0),
                 activeGoal,
                 followLearningPlans,

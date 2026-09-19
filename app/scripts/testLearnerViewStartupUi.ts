@@ -57,12 +57,7 @@ const subjectPlan = (landscapeId: string, goalId: string) => ({
     startDate: '2026-09-01', endDate: '2026-09-30',
   },
   nextMilestone: null,
-  metrics: {
-    dueThroughToday: 1, completedDueThroughToday: 0, openDueThroughToday: 1,
-    dueToday: 1, completedDueToday: 0, openDueToday: 1, totalPlanned: 1,
-  },
   buffer: { totalWorkdays: 1, remainingWorkdays: 1 },
-  pace: { status: 'neutral', reason: 'mastery-history-not-event-backed' },
   nextEligibleGoal: { goalId }, continueReason: null, canContinue: true,
 })
 const planStatusBody = {
@@ -74,19 +69,19 @@ const planStatusBody = {
   language: 'de',
   evaluable: true,
   statusText: 'Mathematik: Tagesziel 0 von 1 \u00b7 im Plan\nPhysik: Tagesziel 0 von 1 \u00b7 im Plan',
-  statusDirection: 'on_track',
+  noticeText: null,
   activeGoal: null,
   followLearningPlans: true,
   resumeAvailable: true,
   subjects: [
     {
-      subjectKey: 'mathematik', subjectLabel: 'Mathematik', evaluable: true,
+      subjectKey: 'mathematik', landscapeIds: [mathId], subjectLabel: 'Mathematik', evaluable: true,
       periodText: 'Tagesziel 0 von 1', planStatusText: 'im Plan',
       subjectLine: 'Mathematik: Tagesziel 0 von 1 \u00b7 im Plan',
       statusDirection: 'on_track', current: false, canContinue: true,
     },
     {
-      subjectKey: 'physik', subjectLabel: 'Physik', evaluable: true,
+      subjectKey: 'physik', landscapeIds: [physicsId], subjectLabel: 'Physik', evaluable: true,
       periodText: 'Tagesziel 0 von 1', planStatusText: 'im Plan',
       subjectLine: 'Physik: Tagesziel 0 von 1 \u00b7 im Plan',
       statusDirection: 'on_track', current: false, canContinue: true,
@@ -97,6 +92,7 @@ const planStatusBody = {
 
 const plans = (): Reply => ({ body: {
   asOf: '2026-09-09', followLearningPlans: true,
+  status: planStatusBody,
   plans: [subjectPlan(mathId, 'math-upper'), subjectPlan(physicsId, 'physics-upper')],
 } })
 
@@ -160,10 +156,6 @@ try {
           catalogApiVersion: '1.2', generationSha256: '0'.repeat(64), packages: [],
           rootLandscapeIds: [], landscapes: [], views: [], offerings: [], decks: [], resources: [], sourceEvidence: [],
         } })
-      }
-      // The cockpit reads the one shared status; it must be served before the plans route.
-      if (/^\/api\/ui\/learners\/fixture-learner-[ab]\/learning-plans\/status$/u.test(path)) {
-        return json({ body: planStatusBody })
       }
       const match = /^\/api\/ui\/learners\/(fixture-learner-[ab])(?:\/(state|learning-plans|resume))?$/u.exec(path)
       if (match && (request.method() === 'GET' || (match[2] === 'resume' && request.method() === 'POST'))) {

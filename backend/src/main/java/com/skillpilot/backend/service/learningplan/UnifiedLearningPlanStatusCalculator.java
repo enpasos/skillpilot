@@ -3,7 +3,7 @@ package com.skillpilot.backend.service.learningplan;
 /**
  * Deterministic calculation engine for the unified learning plan status.
  *
- * <p>Implements the authoritative calculation rules from section 4 of the concept:</p>
+ * <p>Implements the authoritative calculation rules from section 5 of the concept:</p>
  * <pre>{@code
  * Rohsaldo               = I - S
  * Noch zu deckendes Soll = max(0, -Rohsaldo)

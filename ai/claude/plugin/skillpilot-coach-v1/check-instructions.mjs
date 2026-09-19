@@ -100,7 +100,8 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
     /focus\/active-goal writes require the instructed reload/iu,
   ]);
   requireRule(state, "visualization-pair", [
-    /Whenever a fresh full context contains goalVisualization/iu,
+    /Status\/pause permits no render; resolve subject requests before rendering the old goal/iu,
+    /If teaching is permitted and a fresh full context contains goalVisualization/iu,
     /goalVisualization\.goalId, top-level stateVersion/iu,
     /each previously unseen pair.+?render_skillpilot_goal_visualization exactly once as the immediate next SkillPilot tool, before any learner-facing response/iu,
     /Copy the pair to goalId and expectedStateVersion/iu,
@@ -114,7 +115,7 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
   requireRule(plans, "intent-priority", [
     /Pause\/stop: acknowledge and stop, without writes or an unsolicited summary/iu,
     /Do not claim saved plans were disabled/iu,
-    /Status only: report the current plan and stop; do not resume, switch, activate a goal or set a task/iu,
+    /Status only: quote learningPlanToday\.text verbatim and stop; do not resume, switch, activate a goal or set a task/iu,
     /Explicit subject:.+?without first resuming another subject/iu,
     /blocked or ambiguous request never falls through to generic resume/iu,
   ]);
@@ -190,7 +191,7 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
     /starting extra goals, resuming or switching requires an explicit request for voluntary extra/iu,
     /Weiterlernen.+?already expresses that intent; do not ask again/iu,
     /subject request without clear learning intent needs clarification/iu,
-    /Daily stopping prevents unsolicited extra goals, not teaching an active unfinished goal/iu,
+    /Stopping at the period target prevents unsolicited extra goals, not teaching an active unfinished goal/iu,
     /it never blocks explicitly requested learning/iu,
   ]);
   requireRule(coaching, "ordinary-evidence", [
@@ -277,8 +278,8 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
     /Follow the server's canonical continuation immediately/iu,
     /stop when the continuation is waiting or complete/iu,
     /Do not manufacture a separate per-card technical loop/iu,
-    /After confirmed memory-goal completion, use the returned full successor context and its required visualization\/daily guidance/iu,
-    /teach the backend-selected goal or announce the daily finish/iu,
+    /After confirmed memory-goal completion, use the returned full successor context and its required visualization\/period guidance/iu,
+    /teach the backend-selected goal or acknowledge the reached period target/iu,
     /Do not continue the old memory goal or record memory mastery separately/iu,
   ]);
   requireRule(examWorkflow, "exam-answer-gate", [

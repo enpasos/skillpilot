@@ -17,7 +17,6 @@ import com.skillpilot.backend.repository.LearnerLearningPlanRepository;
 import com.skillpilot.backend.service.learningplan.PeriodBasis;
 import com.skillpilot.backend.service.learningplan.PlanBalanceInputs;
 import com.skillpilot.backend.service.learningplan.PlanBalanceResult;
-import com.skillpilot.backend.service.learningplan.StatusDirection;
 import com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusCalculator;
 import com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusFormatter;
 import java.nio.charset.StandardCharsets;
@@ -109,33 +108,34 @@ public class LearnerLearningPlanService {
     }
 
     /**
-     * Returns today's additive workload across every valid subject plan.
-     *
-     * <p>The date is always derived in Europe/Berlin. Actual completion events
-     * from all due goals (including backlog) fill each subject's daily quota
-     * first. Additional completions are voluntary extra progress. Stale or
-     * malformed plan counts fail closed and increment the anonymous
-     * unavailable-plan counter. Explicit continuation remains independently
-     * available for eligible goals in the current personal curriculum.</p>
+     * Returns one backend-formulated period balance per subject using its captured
+     * plan goals, current mastery and real completion events. Invalid part plans
+     * make their subject unavailable; authorized continuation remains independent.
      */
-    @Transactional(readOnly = true)
+    @Transactional
     public LearnerPlanTodayStatus getTodayStatus(
             String skillpilotId,
             String communicationLocale) {
-        LocalDate asOf = LocalDate.now(clock.withZone(PLAN_ZONE));
+        // The same learner lock used by mastery, preference and plan writes gives this
+        // read a coherent snapshot. Locking never changes learner state or activity.
+        learners.acquireLearningPlanMutationLock(skillpilotId);
         Learner learner = learners.getLearner(skillpilotId);
+        return calculateStatus(skillpilotId, learner,
+                plans.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId),
+                LocalDate.now(clock.withZone(PLAN_ZONE)), communicationLocale, false);
+    }
+
+    private LearnerPlanTodayStatus calculateStatus(
+            String skillpilotId, Learner learner, List<LearnerLearningPlan> subjectPlans,
+            LocalDate asOf, String communicationLocale, boolean preview) {
         PeriodBasis periodBasis = learner.getLearningPlanPeriodBasis() != null
                 ? learner.getLearningPlanPeriodBasis()
                 : PeriodBasis.DAY;
-        LocalDate periodStart = periodBasis == PeriodBasis.WEEK
-                ? asOf.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
-                : asOf;
-        LocalDate periodEnd = periodBasis == PeriodBasis.WEEK
-                ? asOf.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY))
-                : asOf;
-        String effectiveLocale = communicationLocale != null && !communicationLocale.isBlank()
-                ? communicationLocale
-                : "de";
+        LocalDate periodStart = periodStart(periodBasis, asOf);
+        LocalDate periodEnd = periodEnd(periodBasis, asOf);
+        // Hosts pass the language stored with their learning session; the WebGUI
+        // passes its chosen language. There is no separate learner-language setting.
+        String effectiveLocale = normalizeLocale(communicationLocale);
 
         boolean enabled = Boolean.TRUE.equals(learner.getFollowLearningPlans());
         String activeGoalId = learner.getActiveGoalId();
@@ -144,20 +144,19 @@ public class LearnerLearningPlanService {
                 && !activeGoalId.isBlank()
                 && mastery.getOrDefault(activeGoalId, 0.0) < MASTERY_THRESHOLD;
 
-        List<LearnerLearningPlan> subjectPlans = plans
-                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId);
-
         // One balance per subject: every plan of the same subject is merged before the
         // calculation, so a goal shared by two plans counts once and its earliest valid
         // scheduled date wins. The stable subject key orders the output identically in
         // every channel.
         Map<String, SubjectAggregate> bySubject = new TreeMap<>();
         int unavailablePlanCount = 0;
+        int unidentifiedPlanCount = 0;
         for (LearnerLearningPlan plan : subjectPlans) {
             String subjectKey = stableSubjectKey(plan.getLandscapeId());
             Optional<String> label = localizedSubjectLabel(plan.getLandscapeId(), effectiveLocale);
             if (subjectKey == null || label.isEmpty()) {
                 unavailablePlanCount++;
+                unidentifiedPlanCount++;
                 continue;
             }
             SubjectAggregate aggregate = bySubject.computeIfAbsent(
@@ -180,30 +179,19 @@ public class LearnerLearningPlanService {
             aggregate.merge(evaluation.get());
         }
 
-        // A missing or stale schedule cannot revoke access to the current personal
-        // curriculum. Such a subject stays explicitly unevaluable instead of being
-        // presented as a valid balanced status.
+        // Missing plans do not create invented subject balances. An explicitly requested
+        // personal-curriculum continuation remains independently available.
+        boolean personalContinuationAvailable = false;
         if (enabled) {
             for (String landscapeId : learners.getPersonalCurriculumSubjectIds(skillpilotId)) {
                 String subjectKey = stableSubjectKey(landscapeId);
-                Optional<String> label = localizedSubjectLabel(landscapeId, effectiveLocale);
-                if (subjectKey == null || label.isEmpty()) {
-                    continue;
-                }
-                SubjectAggregate aggregate = bySubject.get(subjectKey);
-                if (aggregate == null) {
-                    aggregate = new SubjectAggregate(subjectKey, label.get());
-                    aggregate.addPlan(landscapeId);
-                    aggregate.markUnevaluable();
-                    bySubject.put(subjectKey, aggregate);
-                } else if (aggregate.evaluable() || aggregate.canContinue()) {
-                    // A usable plan already decides this subject's continuation.
-                    continue;
-                }
+                SubjectAggregate aggregate = subjectKey == null ? null : bySubject.get(subjectKey);
+                if (aggregate != null && (aggregate.evaluable() || aggregate.canContinue())) continue;
                 if (firstPersonalCurriculumGoal(skillpilotId, landscapeId).isPresent()) {
-                    aggregate.allowContinuation();
+                    personalContinuationAvailable = true;
+                    if (aggregate != null) aggregate.allowContinuation();
                 }
-                if (activeGoalInProgress
+                if (aggregate != null && activeGoalInProgress
                         && landscapeId.equals(landscapeService.getLandscapeIdForGoal(activeGoalId))) {
                     aggregate.markCurrent();
                 }
@@ -217,7 +205,7 @@ public class LearnerLearningPlanService {
         List<LearnerPlanTodayStatus.SubjectStatus> subjects = new ArrayList<>();
         List<String> subjectLines = new ArrayList<>();
         List<String> unavailableSubjectLabels = new ArrayList<>();
-        boolean resumeAvailable = false;
+        boolean resumeAvailable = !activeGoalInProgress && personalContinuationAvailable;
         for (SubjectAggregate aggregate : bySubject.values()) {
             LearnerPlanTodayStatus.SubjectStatus subject = aggregate.toSubjectStatus(
                     periodBasis, periodStart, periodEnd, mastery, periodCompletions, effectiveLocale);
@@ -238,37 +226,37 @@ public class LearnerLearningPlanService {
             com.skillpilot.backend.landscape.LearningGoal goal =
                     landscapeService.getGoalDefinition(activeGoalId);
             String title = localizedGoalTitle(goal, effectiveLocale);
-            if (title == null) {
-                title = activeGoalId;
+            if (title != null) {
+                activeGoal = new LearnerPlanTodayStatus.ActiveGoal(
+                        activeGoalId, title,
+                        UnifiedLearningPlanStatusFormatter.formatActiveGoalAnnouncement(title, effectiveLocale));
             }
-            activeGoal = new LearnerPlanTodayStatus.ActiveGoal(
-                    activeGoalId,
-                    title,
-                    UnifiedLearningPlanStatusFormatter.formatActiveGoalAnnouncement(
-                            title, effectiveLocale));
         }
 
-        String statusText = UnifiedLearningPlanStatusFormatter.formatCombinedStatusText(
-                subjectLines,
-                unavailableSubjectLabels,
-                effectiveLocale);
+        String noticeText = UnifiedLearningPlanStatusFormatter.formatUnavailableNotice(
+                unavailableSubjectLabels, effectiveLocale);
+        String unidentifiedNotice = UnifiedLearningPlanStatusFormatter.formatUnidentifiedPlansNotice(
+                unidentifiedPlanCount, effectiveLocale);
+        if (!unidentifiedNotice.isBlank()) {
+            noticeText = noticeText.isBlank() ? unidentifiedNotice : noticeText + "\n" + unidentifiedNotice;
+        }
+        if (subjectPlans.isEmpty()) {
+            noticeText = UnifiedLearningPlanStatusFormatter.formatNoPlansNotice(effectiveLocale);
+        }
+        String statusText = String.join("\n", subjectLines);
+        if (!noticeText.isBlank()) {
+            statusText = statusText.isBlank() ? noticeText : statusText + "\n" + noticeText;
+        }
 
         List<LearnerPlanTodayStatus.SubjectStatus> evaluated = subjects.stream()
                 .filter(LearnerPlanTodayStatus.SubjectStatus::evaluable)
                 .toList();
-        StatusDirection overallDirection = evaluated.isEmpty()
-                ? null
-                : evaluated.stream().anyMatch(s -> s.statusDirection() == StatusDirection.BEHIND)
-                        ? StatusDirection.BEHIND
-                        : evaluated.stream().anyMatch(s -> s.statusDirection() == StatusDirection.AHEAD)
-                                ? StatusDirection.AHEAD
-                                : StatusDirection.ON_TRACK;
-        boolean evaluable = !subjects.isEmpty()
+        boolean evaluable = !subjects.isEmpty() && unavailablePlanCount == 0
                 && subjects.stream().allMatch(LearnerPlanTodayStatus.SubjectStatus::evaluable);
         boolean periodQuotaFulfilled = evaluated.stream()
                 .allMatch(subject -> subject.balance().offenesPeriodenpensum() == 0);
 
-        boolean automaticResume = enabled && !activeGoalInProgress && firstCandidateAcrossPlans(
+        boolean automaticResume = !preview && enabled && !activeGoalInProgress && firstCandidateAcrossPlans(
                 skillpilotId, subjectPlans, asOf, mastery, false).isPresent();
 
         return new LearnerPlanTodayStatus(
@@ -280,7 +268,7 @@ public class LearnerLearningPlanService {
                 effectiveLocale,
                 evaluable,
                 statusText,
-                overallDirection,
+                noticeText,
                 periodQuotaFulfilled,
                 activeGoal,
                 enabled,
@@ -363,9 +351,31 @@ public class LearnerLearningPlanService {
 
     /** Stable subject identity: the landscape's canonical subject, never its translated label. */
     private String stableSubjectKey(String landscapeId) {
-        SkillLandscape landscape = landscapeService.getById(landscapeId);
+        return stableSubjectKey(landscapeService.getById(landscapeId));
+    }
+
+    static String stableSubjectKey(SkillLandscape landscape) {
         String subject = landscape == null ? null : optionalLabel(landscape.getSubject());
         return subject == null ? null : subject.toLowerCase(Locale.ROOT);
+    }
+
+    static LocalDate periodStart(PeriodBasis basis, LocalDate asOf) {
+        return basis == PeriodBasis.WEEK
+                ? asOf.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)) : asOf;
+    }
+
+    static LocalDate periodEnd(PeriodBasis basis, LocalDate asOf) {
+        return basis == PeriodBasis.WEEK
+                ? asOf.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY)) : asOf;
+    }
+
+    private static String normalizeLocale(String locale) {
+        if (locale == null || locale.isBlank()) return "de";
+        String language = Locale.forLanguageTag(locale.trim()).getLanguage();
+        if (!"de".equals(language) && !"en".equals(language)) {
+            throw badRequest("language must be de or en");
+        }
+        return language;
     }
 
     private Optional<String> localizedSubjectLabel(
@@ -418,24 +428,43 @@ public class LearnerLearningPlanService {
         return value == null || value.isBlank() ? null : value.trim();
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public LearnerLearningPlanApi.CollectionResponse getPlans(
-            String skillpilotId,
-            LocalDate requestedAsOf) {
+            String skillpilotId, LocalDate requestedAsOf) {
+        return getPlans(skillpilotId, requestedAsOf, null);
+    }
+
+    @Transactional
+    public LearnerLearningPlanApi.CollectionResponse getPlans(
+            String skillpilotId, LocalDate requestedAsOf, String communicationLocale) {
+        learners.acquireLearningPlanMutationLock(skillpilotId);
         LocalDate asOf = asOf(requestedAsOf);
         Learner learner = learners.getLearner(skillpilotId);
         boolean enabled = Boolean.TRUE.equals(learner.getFollowLearningPlans());
-        List<LearnerLearningPlanApi.PlanSummary> summaries = plans
-                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId)
-                .stream()
-                .map(plan -> summarize(
-                        skillpilotId,
-                        plan,
-                        asOf,
-                        enabled,
-                        learner.getActiveGoalId()).summary())
+        List<LearnerLearningPlan> storedPlans = plans
+                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId);
+        LearnerPlanTodayStatus status = calculateStatus(
+                skillpilotId, learner, storedPlans, asOf, communicationLocale, false);
+        List<LearnerLearningPlanApi.PlanSummary> summaries = storedPlans.stream()
+                .map(plan -> safeSummary(skillpilotId, plan, asOf, enabled, learner.getActiveGoalId()))
+                .filter(Objects::nonNull)
                 .toList();
-        return new LearnerLearningPlanApi.CollectionResponse(asOf, enabled, summaries);
+        return new LearnerLearningPlanApi.CollectionResponse(asOf, enabled, summaries, status);
+    }
+
+    private LearnerLearningPlanApi.PlanSummary safeSummary(
+            String skillpilotId, LearnerLearningPlan plan, LocalDate asOf,
+            boolean enabled, String activeGoalId) {
+        try {
+            return summarize(skillpilotId, plan, asOf, enabled, activeGoalId).summary();
+        } catch (ResponseStatusException exception) {
+            if (exception.getStatusCode().is5xxServerError()) throw exception;
+            return null;
+        } catch (IllegalStateException | NullPointerException exception) {
+            // The status retains this subject's unavailability. Corrupt details are
+            // omitted instead of fabricating schedule dates or buffer values.
+            return null;
+        }
     }
 
     @Transactional(readOnly = true)
@@ -498,19 +527,19 @@ public class LearnerLearningPlanService {
         return detail(evaluation.summary(), evaluation.blocks());
     }
 
-    /**
-     * Evaluates the complete unsaved draft set using activation's normalization
-     * and the runtime's exact due/mastery metrics. No entity is mutated, no row
-     * is write-locked, and the same current mastery snapshot is used for all
-     * seven calendar days; future successes are deliberately not predicted.
-     */
-    @Transactional(readOnly = true)
+    /** Drafts use the live calculation with today's known mastery, never predicted completions. */
+    @Transactional
     public LearnerLearningPlanApi.PreviewResponse previewPlans(
-            String skillpilotId,
-            LearnerLearningPlanApi.ActivateRequest request) {
-        if (request == null) {
-            throw badRequest("request is required");
-        }
+            String skillpilotId, LearnerLearningPlanApi.ActivateRequest request) {
+        return previewPlans(skillpilotId, request, null);
+    }
+
+    @Transactional
+    public LearnerLearningPlanApi.PreviewResponse previewPlans(
+            String skillpilotId, LearnerLearningPlanApi.ActivateRequest request,
+            String communicationLocale) {
+        if (request == null) throw badRequest("request is required");
+        learners.acquireLearningPlanMutationLock(skillpilotId);
         LocalDate asOf = LocalDate.now(clock.withZone(PLAN_ZONE));
         if (request.asOf() != null && !asOf.equals(request.asOf())) {
             throw badRequest("asOf for preview must equal the current server date in Europe/Berlin");
@@ -519,41 +548,36 @@ public class LearnerLearningPlanService {
                 requestedActivationPlans(request);
         Learner learner = learners.getLearner(skillpilotId);
         assertNoCurrentStoredPlanIsHidden(skillpilotId, requestedByLandscape.keySet());
-        List<PreparedPlan> preparedPlans = requestedByLandscape.entrySet().stream()
+        List<LearnerLearningPlan> drafts = requestedByLandscape.entrySet().stream()
                 .sorted(Map.Entry.comparingByKey())
-                .map(entry -> preparePlan(
-                        skillpilotId,
-                        learner,
-                        entry.getKey(),
-                        entry.getValue().expectedRevision(),
-                        entry.getValue().planLabel(),
-                        entry.getValue().blocks(),
-                        false))
+                .map(entry -> preparePlan(skillpilotId, learner, entry.getKey(),
+                        entry.getValue().expectedRevision(), entry.getValue().planLabel(),
+                        entry.getValue().blocks(), false))
+                .map(this::previewPlan)
                 .toList();
-        Map<String, Double> mastery = Map.copyOf(learners.getMastery(skillpilotId));
-        Set<String> completedTodayGoals = learners.getGoalCompletionsOnDate(skillpilotId, asOf).keySet();
         List<LearnerLearningPlanApi.PreviewDay> days = new ArrayList<>();
         for (int offset = 0; offset < PREVIEW_DAYS; offset++) {
             LocalDate date = asOf.plusDays(offset);
-            List<LearnerLearningPlanApi.PreviewSubject> subjects = preparedPlans.stream()
-                    .map(plan -> new LearnerLearningPlanApi.PreviewSubject(
-                            plan.landscapeId(), dailyMetrics(plan.blocks(), date, mastery,
-                                    date.equals(asOf) ? completedTodayGoals : Set.of())))
-                    .toList();
-            LearnerLearningPlanApi.Metrics totals = new LearnerLearningPlanApi.Metrics(0, 0, 0, 0, 0, 0, 0);
-            for (LearnerLearningPlanApi.PreviewSubject subject : subjects) {
-                totals = addMetrics(totals, subject.metrics());
-            }
-            days.add(new LearnerLearningPlanApi.PreviewDay(date, subjects, totals));
+            days.add(new LearnerLearningPlanApi.PreviewDay(date,
+                    calculateStatus(skillpilotId, learner, drafts, date, communicationLocale, true)));
         }
         return new LearnerLearningPlanApi.PreviewResponse(asOf, List.copyOf(days));
     }
 
-    /**
-     * Atomically materializes every submitted subject plan and turns the set
-     * into the learner's active guided plan package. All revisions, scopes,
-     * block foci, and fingerprints are validated before the first row changes.
-     */
+    private LearnerLearningPlan previewPlan(PreparedPlan prepared) {
+        LearnerLearningPlan draft = new LearnerLearningPlan();
+        draft.setId(prepared.existing().map(LearnerLearningPlan::getId).orElse(null));
+        draft.setLearner(prepared.learner());
+        draft.setLandscapeId(prepared.landscapeId());
+        draft.setCurriculumId(prepared.scope().curriculumId());
+        draft.setScopeFingerprint(prepared.fingerprint());
+        draft.setRevision(prepared.existing().map(LearnerLearningPlan::getRevision).orElse(0L));
+        draft.setPlanLabel(prepared.planLabel());
+        draft.setBlocksJson(writeBlocks(prepared.blocks()));
+        draft.setCapturedAt(prepared.scope().capturedAt());
+        return draft;
+    }
+
     @Transactional
     public LearnerLearningPlanApi.ActivateResponse activatePlans(
             String skillpilotId,
@@ -728,7 +752,8 @@ public class LearnerLearningPlanService {
         LearnerLearningPlan plan = requireCurrentPlan(skillpilotId, planId, expectedRevision);
         List<LearnerLearningPlanApi.Block> blocks = requireCurrentBlocks(skillpilotId, plan);
         Map<String, Double> mastery = learners.getMastery(skillpilotId);
-        DueGoal dueGoal = firstExplicitContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, asOf, mastery)
+        DueGoal dueGoal = firstExplicitContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks,
+                periodEnd(learner.getLearningPlanPeriodBasis(), asOf), mastery)
                 .orElseThrow(() -> conflict("No open personal-curriculum goal is currently on the learner frontier"));
         PlanGoalCandidate candidate = new PlanGoalCandidate(plan, dueGoal);
 
@@ -893,7 +918,8 @@ public class LearnerLearningPlanService {
         List<LearnerLearningPlanApi.Block> blocks = requireCurrentBlocks(skillpilotId, plan);
         LocalDate asOf = requireCurrentMutationDate(request.asOf(), "continue");
         Map<String, Double> mastery = learners.getMastery(skillpilotId);
-        DueGoal selected = firstExplicitContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, asOf, mastery)
+        DueGoal selected = firstExplicitContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks,
+                periodEnd(learner.getLearningPlanPeriodBasis(), asOf), mastery)
                 .orElseThrow(() -> conflict("No open personal-curriculum goal is currently on the learner frontier"));
 
         learners.assertLearningPlanMayActivateGoal(skillpilotId, selected.atomicGoalId());
@@ -1072,52 +1098,71 @@ public class LearnerLearningPlanService {
             boolean failOnInvalidPlan,
             boolean allowExtra) {
         List<PlanGoalCandidate> candidates = new ArrayList<>();
-        List<PlanGoalCandidate> extras = new ArrayList<>();
         List<PlanGoalCandidate> furtherLearning = new ArrayList<>();
         Learner learner = learners.getLearner(skillpilotId);
         PeriodBasis periodBasis = learner.getLearningPlanPeriodBasis() != null
                 ? learner.getLearningPlanPeriodBasis()
                 : PeriodBasis.DAY;
-        LocalDate periodStart = periodBasis == PeriodBasis.WEEK
-                ? asOf.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
-                : asOf;
-        LocalDate periodEnd = periodBasis == PeriodBasis.WEEK
-                ? asOf.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY))
-                : asOf;
+        LocalDate periodStart = periodStart(periodBasis, asOf);
+        LocalDate periodEnd = periodEnd(periodBasis, asOf);
+        Map<String, List<LearnerLearningPlanApi.Block>> validBlocks = new LinkedHashMap<>();
+        Map<String, Set<String>> goalsBySubject = new LinkedHashMap<>();
+        Map<String, Map<String, LocalDate>> datesBySubject = new LinkedHashMap<>();
+        Set<String> unavailableSubjects = new HashSet<>();
+        Map<String, Instant> completions = periodBasis == PeriodBasis.WEEK
+                ? learners.getGoalCompletionsBetween(skillpilotId, periodStart, periodEnd)
+                : learners.getGoalCompletionsOnDate(skillpilotId, asOf);
         for (LearnerLearningPlan plan : candidatePlans) {
+            String subjectKey = stableSubjectKey(plan.getLandscapeId());
+            if (subjectKey == null) continue;
             try {
                 List<LearnerLearningPlanApi.Block> blocks = requireCurrentBlocks(skillpilotId, plan);
-                PlanBalanceResult balance = calculatePlanBalance(
-                        skillpilotId, plan, blocks, periodBasis, periodStart, periodEnd, asOf, mastery);
-                boolean quotaComplete = balance.offenesPeriodenpensum() == 0;
-                if (quotaComplete && !allowExtra) {
-                    continue;
-                }
-                Optional<DueGoal> due = firstEligibleDueGoal(skillpilotId, blocks, periodEnd, mastery);
-                if (due.isPresent()) {
-                    (quotaComplete ? extras : candidates).add(new PlanGoalCandidate(plan, due.get()));
-                } else if (allowExtra) {
-                    firstExplicitContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, periodEnd, mastery)
-                            .ifPresent(goal -> furtherLearning.add(new PlanGoalCandidate(plan, goal)));
-                }
+                Map<String, LocalDate> dueDates = scheduledAtomicGoalDueDatesForSchedule(blocks);
+                validBlocks.put(plan.getLandscapeId(), blocks);
+                goalsBySubject.computeIfAbsent(subjectKey, key -> new LinkedHashSet<>()).addAll(atomicIds(blocks));
+                Map<String, LocalDate> merged = datesBySubject.computeIfAbsent(subjectKey, key -> new LinkedHashMap<>());
+                dueDates.forEach((id, date) -> merged.merge(id, date,
+                        (left, right) -> left.isBefore(right) ? left : right));
             } catch (ResponseStatusException exception) {
-                if (failOnInvalidPlan || exception.getStatusCode().is5xxServerError()) {
-                    throw exception;
-                }
-            } catch (IllegalStateException exception) {
-                if (failOnInvalidPlan) {
-                    throw exception;
-                }
+                if (failOnInvalidPlan || exception.getStatusCode().is5xxServerError()) throw exception;
+                unavailableSubjects.add(subjectKey);
+            } catch (IllegalStateException | NullPointerException exception) {
+                if (failOnInvalidPlan) throw exception;
+                unavailableSubjects.add(subjectKey);
             }
         }
-        return (!candidates.isEmpty() ? candidates : !extras.isEmpty() ? extras : furtherLearning)
+        for (LearnerLearningPlan plan : candidatePlans) {
+            List<LearnerLearningPlanApi.Block> blocks = validBlocks.get(plan.getLandscapeId());
+            if (blocks == null) continue;
+            String subjectKey = stableSubjectKey(plan.getLandscapeId());
+            // An invalid part plan must not leave an apparently complete subject quota.
+            // Explicit continuation remains independent of the unavailable balance.
+            if (unavailableSubjects.contains(subjectKey) && !allowExtra) continue;
+            PlanBalanceResult balance = calculateBalance(goalsBySubject.get(subjectKey),
+                    datesBySubject.get(subjectKey), periodStart, periodEnd, mastery, completions);
+            boolean quotaComplete = balance.offenesPeriodenpensum() == 0;
+            if (quotaComplete && !allowExtra) continue;
+            Optional<DueGoal> due = firstEligibleDueGoal(skillpilotId, blocks, periodEnd, mastery);
+            if (due.isPresent()) {
+                // With explicit authorization, an earlier open goal keeps its priority
+                // even when advance work has already covered this subject's quota.
+                candidates.add(new PlanGoalCandidate(plan, due.get()));
+            } else if (allowExtra) {
+                firstExplicitContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, periodEnd, mastery)
+                        .ifPresent(goal -> furtherLearning.add(new PlanGoalCandidate(plan, goal)));
+            }
+        }
+        return (!candidates.isEmpty() ? candidates : furtherLearning)
                 .stream().min(planCandidateComparator());
     }
 
     private static Comparator<PlanGoalCandidate> planCandidateComparator() {
         return Comparator
                 .comparing(
-                        (PlanGoalCandidate candidate) -> candidate.dueGoal().blockEndDate(),
+                        (PlanGoalCandidate candidate) -> candidate.dueGoal().scheduledDate(),
+                        Comparator.nullsLast(LocalDate::compareTo))
+                .thenComparing(
+                        candidate -> candidate.dueGoal().blockEndDate(),
                         Comparator.nullsLast(LocalDate::compareTo))
                 .thenComparing(
                         candidate -> candidate.dueGoal().blockStartDate(),
@@ -1154,12 +1199,8 @@ public class LearnerLearningPlanService {
         PeriodBasis periodBasis = learner.getLearningPlanPeriodBasis() != null
                 ? learner.getLearningPlanPeriodBasis()
                 : PeriodBasis.DAY;
-        LocalDate periodStart = periodBasis == PeriodBasis.WEEK
-                ? asOf.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
-                : asOf;
-        LocalDate periodEnd = periodBasis == PeriodBasis.WEEK
-                ? asOf.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY))
-                : asOf;
+        LocalDate periodStart = periodStart(periodBasis, asOf);
+        LocalDate periodEnd = periodEnd(periodBasis, asOf);
         return summarize(
                 skillpilotId,
                 plan,
@@ -1193,8 +1234,6 @@ public class LearnerLearningPlanService {
         }
 
         Map<String, Double> mastery = learners.getMastery(skillpilotId);
-        LearnerLearningPlanApi.Metrics metrics = dailyMetrics(blocks, asOf, mastery,
-                learners.getGoalCompletionsOnDate(skillpilotId, asOf).keySet());
         LocalDate continuationCutoff = periodBasis == PeriodBasis.WEEK ? periodEnd : asOf;
         Optional<DueGoal> eligible = !stale
                 ? firstExplicitContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, continuationCutoff, mastery)
@@ -1225,87 +1264,13 @@ public class LearnerLearningPlanService {
                 period(blocks),
                 currentBlock(blocks, asOf).orElse(null),
                 nextMilestone(blocks, asOf).orElse(null),
-                metrics,
                 buffer(blocks, asOf),
-                new LearnerLearningPlanApi.Pace(
-                        "neutral",
-                        "mastery-history-not-event-backed"),
                 eligible
                         .map(next -> new LearnerLearningPlanApi.NextEligibleGoal(next.atomicGoalId()))
                         .orElse(null),
                 continueReason,
                 canContinue);
         return new Evaluation(summary, blocks);
-    }
-
-    /** Future draft schedule preview; never invents future completion events. */
-    private LearnerLearningPlanApi.Metrics metrics(
-            List<LearnerLearningPlanApi.Block> blocks,
-            LocalDate asOf,
-            Map<String, Double> mastery) {
-        List<String> due = dueAtomicGoalIds(blocks, asOf);
-        Set<String> dueBeforeToday = Set.copyOf(dueAtomicGoalIds(blocks, asOf.minusDays(1)));
-        List<String> dueToday = due.stream()
-                .filter(goalId -> !dueBeforeToday.contains(goalId))
-                .toList();
-        int completed = (int) due.stream()
-                .filter(goalId -> mastery.getOrDefault(goalId, 0.0) >= MASTERY_THRESHOLD)
-                .count();
-        int completedToday = (int) dueToday.stream()
-                .filter(goalId -> mastery.getOrDefault(goalId, 0.0) >= MASTERY_THRESHOLD)
-                .count();
-        return new LearnerLearningPlanApi.Metrics(
-                due.size(),
-                completed,
-                due.size() - completed,
-                dueToday.size(),
-                completedToday,
-                dueToday.size() - completedToday,
-                atomicIds(blocks).size());
-    }
-
-    /**
-     * A stable subject workload, not an arbitrary fixed set of today's IDs.
-     * Completing an overdue goal first fills today's quota. The cumulative
-     * schedule itself never changes and prerequisites remain authoritative.
-     * openDue + recorded successes is invariant while today's work is completed;
-     * capping the quota by that value avoids demanding already finished work.
-     * Explicit plan edits may change the quota. Old updatedAt rows and imports
-     * are not completion events and must never be passed as today's successes.
-     */
-    static LearnerLearningPlanApi.Metrics dailyMetrics(
-            List<LearnerLearningPlanApi.Block> blocks,
-            LocalDate asOf,
-            Map<String, Double> mastery,
-            Set<String> completedTodayGoalIds) {
-        List<String> due = dueAtomicGoalIdsForSchedule(blocks, asOf);
-        Set<String> before = Set.copyOf(dueAtomicGoalIdsForSchedule(blocks, asOf.minusDays(1)));
-        int scheduledToday = (int) due.stream().filter(id -> !before.contains(id)).count();
-        int completed = (int) due.stream()
-                .filter(id -> mastery.getOrDefault(id, 0.0) >= MASTERY_THRESHOLD).count();
-        int actualToday = (int) due.stream()
-                .filter(completedTodayGoalIds::contains)
-                .filter(id -> mastery.getOrDefault(id, 0.0) >= MASTERY_THRESHOLD).count();
-        int open = due.size() - completed;
-        int quota = Math.min(scheduledToday, open + actualToday);
-        int credited = Math.min(quota, actualToday);
-        return new LearnerLearningPlanApi.Metrics(due.size(), completed, open,
-                quota, credited, quota - credited, atomicIds(blocks).size(),
-                actualToday - credited);
-    }
-
-    private static LearnerLearningPlanApi.Metrics addMetrics(
-            LearnerLearningPlanApi.Metrics left,
-            LearnerLearningPlanApi.Metrics right) {
-        return new LearnerLearningPlanApi.Metrics(
-                Math.addExact(left.dueThroughToday(), right.dueThroughToday()),
-                Math.addExact(left.completedDueThroughToday(), right.completedDueThroughToday()),
-                Math.addExact(left.openDueThroughToday(), right.openDueThroughToday()),
-                Math.addExact(left.dueToday(), right.dueToday()),
-                Math.addExact(left.completedDueToday(), right.completedDueToday()),
-                Math.addExact(left.openDueToday(), right.openDueToday()),
-                Math.addExact(left.totalPlanned(), right.totalPlanned()),
-                Math.addExact(left.extraCompletedToday(), right.extraCompletedToday()));
     }
 
     private Optional<DueGoal> firstEligibleDueGoal(
@@ -1356,47 +1321,33 @@ public class LearnerLearningPlanService {
             LocalDate asOf,
             Map<String, Double> mastery,
             Function<List<String>, Set<String>> frontierIdsForFocus) {
+        Map<String, LocalDate> dueDates = scheduledAtomicGoalDueDatesForSchedule(blocks);
         LinkedHashSet<String> alreadyDue = new LinkedHashSet<>();
+        List<DueGoal> candidates = new ArrayList<>();
         for (DueBlock dueBlock : dueLearningBlocks(blocks, asOf)) {
             LearnerLearningPlanApi.Block block = dueBlock.block();
             List<String> openDueInBlock = dueBlock.atomicGoalIds().stream()
                     .filter(alreadyDue::add)
                     .filter(goalId -> mastery.getOrDefault(goalId, 0.0) < MASTERY_THRESHOLD)
                     .toList();
-            if (openDueInBlock.isEmpty()) {
-                continue;
-            }
-
+            if (openDueInBlock.isEmpty()) continue;
             if (block.goalId() != null && !block.goalId().isBlank()) {
                 Set<String> frontierIds = frontierIdsForFocus.apply(List.of(block.goalId()));
-                Optional<String> selected = openDueInBlock.stream()
-                        .filter(frontierIds::contains)
-                        .findFirst();
-                if (selected.isPresent()) {
-                    return Optional.of(new DueGoal(
-                            selected.get(),
-                            block.goalId(),
-                            block.startDate(),
-                            block.endDate()));
+                for (String goalId : openDueInBlock) {
+                    if (frontierIds.contains(goalId)) candidates.add(new DueGoal(
+                            goalId, block.goalId(), block.startDate(), block.endDate(), dueDates.get(goalId)));
                 }
-                continue;
-            }
-
-            // If a portable block has no authored section focus, the atom is
-            // the narrowest valid focus and therefore needs its own projection.
-            for (String atomicGoalId : openDueInBlock) {
-                boolean eligible = frontierIdsForFocus.apply(List.of(atomicGoalId))
-                        .contains(atomicGoalId);
-                if (eligible) {
-                    return Optional.of(new DueGoal(
-                            atomicGoalId,
-                            atomicGoalId,
-                            block.startDate(),
-                            block.endDate()));
+            } else {
+                for (String goalId : openDueInBlock) {
+                    if (frontierIdsForFocus.apply(List.of(goalId)).contains(goalId)) {
+                        candidates.add(new DueGoal(goalId, goalId, block.startDate(), block.endDate(),
+                                dueDates.get(goalId)));
+                    }
                 }
             }
         }
-        return Optional.empty();
+        return candidates.stream().min(Comparator.comparing(DueGoal::scheduledDate)
+                .thenComparing(DueGoal::blockEndDate).thenComparing(DueGoal::blockStartDate));
     }
 
     static List<LearnerLearningPlanApi.Block> normalizeBlocks(
@@ -1538,12 +1489,6 @@ public class LearnerLearningPlanService {
         return List.copyOf(normalized);
     }
 
-    private List<String> dueAtomicGoalIds(
-            List<LearnerLearningPlanApi.Block> blocks,
-            LocalDate asOf) {
-        return dueAtomicGoalIdsForSchedule(blocks, asOf);
-    }
-
     /**
      * Returns the exact cumulative due assignment used by learner-plan runtime
      * evaluation. Package visibility lets plan-order validation reuse the same
@@ -1557,27 +1502,6 @@ public class LearnerLearningPlanService {
             due.addAll(dueBlock.atomicGoalIds());
         }
         return List.copyOf(due);
-    }
-
-    private List<DueGoal> dueGoals(
-            List<LearnerLearningPlanApi.Block> blocks,
-            LocalDate asOf) {
-        LinkedHashSet<String> due = new LinkedHashSet<>();
-        List<DueGoal> result = new ArrayList<>();
-        for (DueBlock dueBlock : dueLearningBlocks(blocks, asOf)) {
-            LearnerLearningPlanApi.Block block = dueBlock.block();
-            String blockFocus = block.goalId();
-            for (String atomicGoalId : dueBlock.atomicGoalIds()) {
-                if (due.add(atomicGoalId)) {
-                    result.add(new DueGoal(
-                            atomicGoalId,
-                            blockFocus == null || blockFocus.isBlank() ? atomicGoalId : blockFocus,
-                            block.startDate(),
-                            block.endDate()));
-                }
-            }
-        }
-        return List.copyOf(result);
     }
 
     /**
@@ -1617,7 +1541,8 @@ public class LearnerLearningPlanService {
         for (ScheduledDueBlock scheduledBlock : learningDueSchedule(blocks).blocks()) {
             List<String> atomicGoalIds = scheduledBlock.block().atomicGoalIds();
             for (int index = 0; index < atomicGoalIds.size(); index++) {
-                dueDates.put(atomicGoalIds.get(index), scheduledBlock.dueDates().get(index));
+                dueDates.merge(atomicGoalIds.get(index), scheduledBlock.dueDates().get(index),
+                        (left, right) -> left.isBefore(right) ? left : right);
             }
         }
         return Map.copyOf(dueDates);
@@ -1965,11 +1890,11 @@ public class LearnerLearningPlanService {
     }
 
     private LocalDate asOf(LocalDate requested) {
-        return requested == null ? LocalDate.now(clock) : requested;
+        return requested == null ? LocalDate.now(clock.withZone(PLAN_ZONE)) : requested;
     }
 
     private LocalDate requireCurrentMutationDate(LocalDate requested, String action) {
-        LocalDate current = LocalDate.now(clock);
+        LocalDate current = LocalDate.now(clock.withZone(PLAN_ZONE));
         if (requested != null && !current.equals(requested)) {
             throw badRequest("asOf for " + action
                     + " must equal the current server date in Europe/Berlin");
@@ -2053,34 +1978,11 @@ public class LearnerLearningPlanService {
                 summary.period(),
                 summary.currentBlock(),
                 summary.nextMilestone(),
-                summary.metrics(),
                 summary.buffer(),
-                summary.pace(),
                 summary.nextEligibleGoal(),
                 summary.continueReason(),
                 summary.canContinue(),
                 blocks);
-    }
-
-    private PlanBalanceResult calculatePlanBalance(
-            String skillpilotId,
-            LearnerLearningPlan plan,
-            List<LearnerLearningPlanApi.Block> blocks,
-            PeriodBasis periodBasis,
-            LocalDate periodStart,
-            LocalDate periodEnd,
-            LocalDate asOf,
-            Map<String, Double> mastery) {
-        Map<String, Instant> completions = (periodBasis == PeriodBasis.WEEK)
-                ? learners.getGoalCompletionsBetween(skillpilotId, periodStart, periodEnd)
-                : learners.getGoalCompletionsOnDate(skillpilotId, asOf);
-        return calculateBalance(
-                atomicIds(blocks),
-                scheduledAtomicGoalDueDatesForSchedule(blocks),
-                periodStart,
-                periodEnd,
-                mastery,
-                completions);
     }
 
     /**
@@ -2090,17 +1992,25 @@ public class LearnerLearningPlanService {
      * within it, I every currently mastered plan goal regardless of its date, and H the
      * distinct goals actually completed within the period that are still mastered.</p>
      */
-    private static PlanBalanceResult calculateBalance(
+    static PlanBalanceResult calculateBalance(
             Set<String> plannedGoalIds,
             Map<String, LocalDate> dueDates,
             LocalDate periodStart,
             LocalDate periodEnd,
             Map<String, Double> mastery,
             Map<String, Instant> periodCompletions) {
+        Objects.requireNonNull(plannedGoalIds, "plan goal set");
+        Objects.requireNonNull(dueDates, "plan due dates");
+        Objects.requireNonNull(mastery, "mastery snapshot");
+        Objects.requireNonNull(periodCompletions, "completion snapshot");
+        if (periodStart == null || periodEnd == null || periodEnd.isBefore(periodStart)
+                || !plannedGoalIds.equals(dueDates.keySet()) || dueDates.values().stream().anyMatch(Objects::isNull)) {
+            throw new IllegalArgumentException("Plan goals, due dates and period must form one valid basis");
+        }
         int s = 0;
         int p = 0;
         for (LocalDate dueDate : dueDates.values()) {
-            if (dueDate == null || dueDate.isAfter(periodEnd)) {
+            if (dueDate.isAfter(periodEnd)) {
                 continue;
             }
             s++;
@@ -2111,9 +2021,14 @@ public class LearnerLearningPlanService {
         int i = (int) plannedGoalIds.stream()
                 .filter(id -> mastery.getOrDefault(id, 0.0) >= MASTERY_THRESHOLD)
                 .count();
-        int h = (int) periodCompletions.keySet().stream()
-                .filter(plannedGoalIds::contains)
-                .filter(id -> mastery.getOrDefault(id, 0.0) >= MASTERY_THRESHOLD)
+        int h = (int) periodCompletions.entrySet().stream()
+                .filter(entry -> plannedGoalIds.contains(entry.getKey()))
+                .filter(entry -> entry.getValue() != null)
+                .filter(entry -> {
+                    LocalDate completedOn = entry.getValue().atZone(PLAN_ZONE).toLocalDate();
+                    return !completedOn.isBefore(periodStart) && !completedOn.isAfter(periodEnd);
+                })
+                .filter(entry -> mastery.getOrDefault(entry.getKey(), 0.0) >= MASTERY_THRESHOLD)
                 .count();
         return UnifiedLearningPlanStatusCalculator.calculate(new PlanBalanceInputs(s, p, i, h));
     }
@@ -2268,7 +2183,11 @@ public class LearnerLearningPlanService {
             String atomicGoalId,
             String focusGoalId,
             LocalDate blockStartDate,
-            LocalDate blockEndDate) {
+            LocalDate blockEndDate,
+            LocalDate scheduledDate) {
+        DueGoal(String atomicGoalId, String focusGoalId, LocalDate blockStartDate, LocalDate blockEndDate) {
+            this(atomicGoalId, focusGoalId, blockStartDate, blockEndDate, null);
+        }
     }
 
     private record DueBlock(LearnerLearningPlanApi.Block block, List<String> atomicGoalIds) {

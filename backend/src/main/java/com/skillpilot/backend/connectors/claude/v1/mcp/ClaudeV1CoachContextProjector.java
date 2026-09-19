@@ -6,6 +6,7 @@ import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.LearnerPlanTodayStatus;
+import com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusFormatter;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
@@ -115,7 +116,7 @@ public class ClaudeV1CoachContextProjector {
         context.put("stateVersion", stateVersion);
         context.put("language", language);
         Map<String, Object> dailyPlan = projectLearningPlanToday(
-                coachToolFacade.getLearningPlanTodayStatus(skillpilotId, language), activeGoal != null);
+                coachToolFacade.getLearningPlanTodayStatus(skillpilotId, language), activeGoal != null, language);
         context.put("learningPlanToday", dailyPlan);
         boolean guidedPlan = Boolean.TRUE.equals(dailyPlan.get("followLearningPlans"));
         context.put("curriculum", projectCurriculum(projectedState.curriculum()));
@@ -191,32 +192,37 @@ public class ClaudeV1CoachContextProjector {
     }
 
     /**
-     * Reduces the provider-neutral plan status to bounded learner-facing daily counts.
+     * Projects the authoritative backend text and non-numeric learning capabilities.
      *
      * <p>Opaque landscape and plan identifiers never cross the Claude boundary. If multiple
-     * current plans use the same localized subject label, their daily requirements are added.</p>
+     * current plans share a subject, the backend has already deduplicated their plan goals.</p>
      */
     Map<String, Object> projectLearningPlanToday(
             LearnerPlanTodayStatus status,
             boolean hasActiveGoal) {
+        return projectLearningPlanToday(status, hasActiveGoal, status == null ? "de" : status.language());
+    }
+
+    Map<String, Object> projectLearningPlanToday(
+            LearnerPlanTodayStatus status, boolean hasActiveGoal, String locale) {
         if (status == null) {
             return Map.of(
+                    "text", UnifiedLearningPlanStatusFormatter.formatUnavailableStatusNotice(locale),
                     "followLearningPlans", false,
                     "evaluable", false,
                     "resumeAvailable", false,
                     "subjects", List.of(),
-                    "unavailablePlanCount", 0,
                     "guidance", dailyPlanGuidance("unavailable"));
         }
 
-        int unavailablePlanCount = Math.max(0, status.unavailablePlanCount());
+        boolean unavailablePlans = status.unavailablePlanCount() > 0;
         List<LearnerPlanTodayStatus.SubjectStatus> rawSubjects =
                 status.subjects() == null ? List.of() : status.subjects();
         List<Map<String, Object>> subjects = new java.util.ArrayList<>();
         for (LearnerPlanTodayStatus.SubjectStatus subject : rawSubjects) {
             String label = subject == null ? null : safeSubjectLabel(subject.subjectLabel());
             if (label == null) {
-                unavailablePlanCount++;
+                unavailablePlans = true;
                 continue;
             }
             Map<String, Object> projectedSubject = new LinkedHashMap<>();
@@ -246,23 +252,19 @@ public class ClaudeV1CoachContextProjector {
                 && !status.activeGoal().announcement().isBlank()) {
             projected.put("activeGoalAnnouncement", status.activeGoal().announcement());
         }
-        if (status.statusDirection() != null) {
-            projected.put("statusDirection", status.statusDirection().getValue());
-        }
         projected.put("evaluable", status.evaluable());
         projected.put("followLearningPlans", status.followLearningPlans());
         projected.put("subjects", List.copyOf(subjects));
         projected.put(
                 "resumeAvailable",
                 status.followLearningPlans() && status.resumeAvailable() && !hasActiveGoal);
-        projected.put("unavailablePlanCount", unavailablePlanCount);
         boolean canAutomaticallyResume = Boolean.TRUE.equals(projected.get("resumeAvailable"))
                 && status.automaticResumeAvailable();
         String guidanceState = !status.followLearningPlans() ? "paused"
                 : hasActiveGoal ? "continue"
                 : status.asOf() == null || subjects.isEmpty() ? "unavailable"
                 : status.periodQuotaFulfilled()
-                        ? (unavailablePlanCount > 0 || !status.evaluable() ? "unavailable" : "complete")
+                        ? (unavailablePlans || !status.evaluable() ? "unavailable" : "complete")
                 : canAutomaticallyResume ? "resume" : "blocked";
         projected.put("guidance", dailyPlanGuidance(guidanceState));
         return Map.copyOf(projected);
@@ -281,8 +283,8 @@ public class ClaudeV1CoachContextProjector {
                     + "for confirmation. A clear subject request takes priority: use its exact published subject "
                     + "with canContinue=true instead of a preliminary generic resume. For a status-only question "
                     + "or pause, output 'text' verbatim without starting a goal.";
-            case "complete" -> "The period's workload is covered in every evaluated subject. Celebrate that "
-                    + "progress. When reporting plan status, output 'text' verbatim and add no numbers, totals "
+            case "complete" -> "Acknowledge only reached period targets named in the backend text. "
+                    + "When reporting plan status, output 'text' verbatim and add no numbers, totals "
                     + "or overall judgement of your own; it already states any remaining backlog and whether the "
                     + "period had a target at all. Offer optional further learning or a break without pressure "
                     + "or guilt. Extra learning requires an explicit request, even when resumeAvailable=true. "
@@ -292,8 +294,7 @@ public class ClaudeV1CoachContextProjector {
                     + "learning within the Personal Curriculum. Do not automatically resume, select future goals, "
                     + "widen focus or redirect to the Web app. Remaining backlog is not required today; neither "
                     + "the entire plan nor all backlog is necessarily finished.";
-            case "blocked" -> "Some scheduled goals remain open, but no due target can currently be started "
-                    + "automatically. Do not call the period complete or automatically resume extra work. "
+            case "blocked" -> "Do not claim the period is complete or automatically resume extra work. "
                     + "When reporting plan status, output 'text' verbatim and add no numbers of your own. "
                     + "An explicit learning request may still use published resumeAvailable or canContinue "
                     + "capabilities for eligible personal targets; the plan prioritizes work and never limits learning. "
@@ -303,7 +304,7 @@ public class ClaudeV1CoachContextProjector {
                     + "For a normal learning request, continue the regular authoritative active goal or frontier. "
                     + "For a status-only question or an explicit pause, do not start a new exercise. "
                     + "When reporting plan status, output 'text' verbatim.";
-            default -> "The full workload cannot currently be confirmed. Output 'text' verbatim including its "
+            default -> "Output 'text' verbatim including its "
                     + "unavailability notice, never claim the period is complete and never invent a substitute "
                     + "status. Learning plans prioritize work and "
                     + "never limit learning within the Personal Curriculum. For an explicit learning request, "

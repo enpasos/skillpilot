@@ -1385,7 +1385,7 @@ for (const rule of didacticParityRules) {
 assertBehaviorFragments(
   policy,
   [
-    /sentence containing its exact `activeGoal\.title`[\s\S]+never substitute the\s+description/u,
+    /`learningPlanToday\.activeGoalAnnouncement` verbatim once[\s\S]+exact\s+localized `activeGoal\.title`[\s\S]+never substitute the\s+description/u,
     /A bare path choice starts the dialogue; it is not completion/u,
     /Complete orientation only after meaningful engagement[\s\S]+explicit request to continue/u,
     /content-free acknowledgement is\s+insufficient/u,

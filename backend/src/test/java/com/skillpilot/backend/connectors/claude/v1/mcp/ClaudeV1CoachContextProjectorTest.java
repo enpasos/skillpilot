@@ -66,7 +66,8 @@ class ClaudeV1CoachContextProjectorTest {
         assertEquals("2026-09-04", projected.get("asOf"));
         assertEquals(true, projected.get("followLearningPlans"));
         assertEquals(true, projected.get("resumeAvailable"));
-        assertEquals(2, projected.get("unavailablePlanCount"));
+        assertFalse(projected.containsKey("unavailablePlanCount"));
+        assertFalse(projected.containsKey("statusDirection"));
 
         // The binding formulation is handed over verbatim, and nothing numeric accompanies it:
         // without a second data source the model has neither the means nor the task to recalculate.
@@ -140,7 +141,7 @@ class ClaudeV1CoachContextProjectorTest {
         Map<String, Object> guidance = (Map<String, Object>) daily.get("guidance");
         assertEquals("complete", guidance.get("state"));
         assertTrue(guidance.get("instruction").toString()
-                .contains("The period's workload is covered in every evaluated subject"));
+                .contains("Acknowledge only reached period targets named in the backend text"));
         assertFalse(context.toString().contains("tomorrows-goal"));
     }
 
@@ -247,7 +248,8 @@ class ClaudeV1CoachContextProjectorTest {
         Map<String, Object> guidance = (Map<String, Object>) projected.get("guidance");
         assertEquals(unavailablePlans == 0 ? "complete" : "unavailable", guidance.get("state"),
                 "Extra capability must not automatically assign work or misrepresent unavailable plans");
-        assertEquals(unavailablePlans, projected.get("unavailablePlanCount"));
+        assertFalse(projected.containsKey("unavailablePlanCount"));
+        assertFalse(projected.containsKey("statusDirection"));
         assertTrue(guidance.get("instruction").toString().contains(
                 "Learning plans prioritize work and never limit learning within the Personal Curriculum"));
         assertTrue(guidance.get("instruction").toString().contains(unavailablePlans == 0
@@ -281,7 +283,7 @@ class ClaudeV1CoachContextProjectorTest {
         if (!automaticResumeAvailable) {
             assertTrue(guidance.get("instruction").toString().contains("An explicit learning request may still use"));
             assertTrue(guidance.get("instruction").toString().contains(
-                    "Do not call the period complete or automatically resume extra work"));
+                    "Do not claim the period is complete or automatically resume extra work"));
         }
         assertFalse(projected.containsKey("automaticResumeAvailable"));
     }
@@ -296,7 +298,8 @@ class ClaudeV1CoachContextProjectorTest {
                 List.of(LearnerPlanTodayStatusFixtures.unevaluableSubject(
                         "private-math", "Mathematik", false, false)));
         Map<String, Object> projected = projector.projectLearningPlanToday(status, false);
-        assertEquals(1, projected.get("unavailablePlanCount"));
+        assertFalse(projected.containsKey("unavailablePlanCount"));
+        assertFalse(projected.containsKey("statusDirection"));
         assertEquals("unavailable", ((Map<String, Object>) projected.get("guidance")).get("state"));
     }
 

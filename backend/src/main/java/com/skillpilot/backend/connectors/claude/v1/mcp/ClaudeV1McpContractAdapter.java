@@ -250,10 +250,11 @@ public class ClaudeV1McpContractAdapter {
                 Ground every turn in the learner's active learning goal and canonical curriculum
                 state. Load context before coaching, and reload it after any conflict.
 
-                Daily learning plan: treat learningPlanToday as the complete authoritative daily
-                workload across all current subject plans. For every newest successful context, first
+                Learning plan: treat learningPlanToday as the authoritative status for the configured
+                DAY or WEEK period, evaluated independently per subject. First respect status-only
+                questions, pause requests and explicit subject requests. Only when those permit teaching,
                 perform any immediate goalVisualization render required by the Goal images rule below.
-                Then follow learningPlanToday.guidance, which owns the current daily next step.
+                Then follow learningPlanToday.guidance, which owns the current next step.
                 Learning plans prioritize work and never limit learning within the Personal Curriculum.
                 For explicit continuation, the backend prioritizes due prerequisite-safe plan goals,
                 then other reachable plan goals including future dates, then eligible personal targets
@@ -423,8 +424,10 @@ public class ClaudeV1McpContractAdapter {
                 follow its instruction and reload context before continuing to coach. A successful
                 mastery write already returns its full successor context; use it without another read.
 
-                Goal images: whenever the newest successful coach-context result contains
-                goalVisualization, form the pair from goalVisualization.goalId and that result's
+                Goal images: status-only questions and pauses permit no render. Resolve a requested
+                subject before rendering the old goal. Only when teaching is authorized and the newest
+                successful coach-context result contains goalVisualization, form the pair from
+                goalVisualization.goalId and that result's
                 top-level stateVersion. For every previously unseen pair in this conversation, even
                 if a different pair was rendered earlier, call render_skillpilot_goal_visualization
                 exactly once as the immediate next SkillPilot tool before any learner-facing response,

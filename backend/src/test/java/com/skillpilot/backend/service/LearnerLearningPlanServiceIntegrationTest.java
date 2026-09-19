@@ -121,7 +121,185 @@ class LearnerLearningPlanServiceIntegrationTest {
     }
 
     @Test
-    void draftPreviewUsesAdditiveRuntimeMetricsWithoutChangingExistingPlansOrLearnerState() {
+    void explicitPlanEditRetainsPostCreationMasteryInTheCapturedGoalSet() {
+        var created = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Original", List.of(
+                        learning("original", "2026-09-04", "2026-09-04", "atom-a", "atom-b", "atom-c"))), TODAY);
+        assertThat(created.blocks().getFirst().atomicGoalIds()).containsExactly("atom-a", "atom-b");
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-a", 1.0, "atom-c", 1.0));
+        when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
+                .thenReturn(scope(List.of("atom-a", "atom-b", "atom-c"), List.of("atom-b")));
+        var edited = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(created.revision(), "Explicitly rescheduled", List.of(
+                        learning("today", "2026-09-04", "2026-09-04", "atom-a", "atom-c"),
+                        learning("next-week", "2026-09-07", "2026-09-07", "atom-b"))), TODAY);
+
+        assertThat(edited.revision()).isEqualTo(created.revision() + 1);
+        assertThat(edited.blocks().getFirst().atomicGoalIds()).containsExactly("atom-a");
+        assertThat(edited.blocks().get(1).atomicGoalIds()).containsExactly("atom-b");
+        var status = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(status.statusText()).isEqualTo("Mathematik: Tagesziel erreicht · im Plan");
+        assertThat(status.subjects().getFirst().balance().erfuelltesPeriodenziel()).isEqualTo(1);
+        assertThat(learnerService.getMastery(LEARNER_ID)).containsEntry("atom-a", 1.0).containsEntry("atom-c", 1.0);
+        assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).blocks()).isEqualTo(edited.blocks());
+    }
+
+    @Test
+    void overlappingGoalsAcrossSubjectPlansCountOnceAtTheirEarliestScheduledDate() {
+        String extension = "math-extension";
+        when(landscapeService.getById(extension)).thenReturn(landscape(extension, "Mathematik"));
+        when(learnerService.getPlanningScope(LEARNER_ID, extension))
+                .thenReturn(scopeFor(extension, List.of("atom-a", "atom-b"), List.of("atom-a", "atom-b")));
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(extension), any())).thenReturn("extension");
+        service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Earlier", List.of(
+                        learning("earlier", "2026-09-03", "2026-09-03", "atom-a"))), TODAY);
+        service.upsert(LEARNER_ID, extension,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Repeated and new", List.of(
+                        learning("today", "2026-09-04", "2026-09-04", "atom-a", "atom-b"))), TODAY);
+
+        var before = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(before.statusText()).isEqualTo("Mathematik: Tagesziel 0 von 1 · 1 Lernziel im Rückstand");
+        assertThat(before.subjects()).singleElement().satisfies(subject ->
+                assertThat(subject.landscapeIds()).containsExactly(LANDSCAPE_ID, extension));
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-a", 1.0));
+        when(learnerService.getGoalCompletionsOnDate(LEARNER_ID, TODAY))
+                .thenReturn(Map.of("atom-a", TODAY.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant()));
+        var after = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(after.statusText()).isEqualTo("Mathematik: Tagesziel erreicht · 1 Lernziel im Rückstand");
+        assertThat(after.subjects().getFirst().balance().erfuelltesPeriodenziel()).isEqualTo(1);
+    }
+
+    @Test
+    void mondayWeeklyReconcileCanStartFridaysGoalAndBasisChangesKeepThatActiveGoal() {
+        var mondayService = serviceAt("2026-08-31T08:00:00Z");
+        LocalDate monday = LocalDate.parse("2026-08-31");
+        learner.setFollowLearningPlans(true);
+        var plan = mondayService.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Friday", List.of(
+                        learning("friday", "2026-09-04", "2026-09-04", "atom-a", "atom-b"))), monday);
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("block-focus")))
+                .thenReturn(List.of(frontier("atom-a")));
+        var state = mock(UnifiedLearnerStateResponse.class);
+        when(learnerService.getCoachLearnerState(LEARNER_ID)).thenReturn(state);
+        assertThat(mondayService.reconcile(LEARNER_ID, new LearnerLearningPlanApi.ReconcileRequest(monday)).changed())
+                .isFalse();
+        learner.setLearningPlanPeriodBasis(com.skillpilot.backend.service.learningplan.PeriodBasis.WEEK);
+        assertThat(mondayService.getTodayStatus(LEARNER_ID, "de").statusText())
+                .isEqualTo("Mathematik: Wochenziel 0 von 2 · im Plan");
+        when(learnerService.applyLearningPlanTransition(LEARNER_ID, false, true,
+                "block-focus", "atom-a", true, "LEARNING_PLAN_RECONCILED"))
+                .thenAnswer(invocation -> {
+                    learner.setActiveGoalId("atom-a");
+                    return new LearnerService.LearningPlanTransitionResult(true, state);
+                });
+        var started = mondayService.reconcile(LEARNER_ID, new LearnerLearningPlanApi.ReconcileRequest(monday));
+        assertThat(started.activeGoalId()).isEqualTo("atom-a");
+        assertThat(started.changed()).isTrue();
+        for (var basis : List.of(com.skillpilot.backend.service.learningplan.PeriodBasis.DAY,
+                com.skillpilot.backend.service.learningplan.PeriodBasis.WEEK)) {
+            learner.setLearningPlanPeriodBasis(basis);
+            mondayService.getTodayStatus(LEARNER_ID, "de");
+            assertThat(mondayService.reconcile(LEARNER_ID,
+                    new LearnerLearningPlanApi.ReconcileRequest(monday)).changed()).isFalse();
+            assertThat(learner.getActiveGoalId()).isEqualTo("atom-a");
+            assertThat(mondayService.getPlan(LEARNER_ID, LANDSCAPE_ID, monday).blocks()).isEqualTo(plan.blocks());
+            assertThat(learnerService.getMastery(LEARNER_ID)).isEmpty();
+        }
+        verify(learnerService, times(1)).applyLearningPlanTransition(LEARNER_ID, false, true,
+                "block-focus", "atom-a", true, "LEARNING_PLAN_RECONCILED");
+    }
+
+    @Test
+    void weeklyDraftUsesTheSamePeriodAndTextsAsLiveStatusAcrossTheWeekBoundary() {
+        learner.setLearningPlanPeriodBasis(com.skillpilot.backend.service.learningplan.PeriodBasis.WEEK);
+        var plan = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Week", List.of(
+                        learning("this-week", "2026-09-03", "2026-09-03", "atom-a"),
+                        learning("next-week", "2026-09-07", "2026-09-07", "atom-b"))), TODAY);
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-a", 1.0));
+        when(learnerService.getGoalCompletionsBetween(LEARNER_ID,
+                LocalDate.parse("2026-08-31"), LocalDate.parse("2026-09-06")))
+                .thenReturn(Map.of("atom-a", TODAY.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant()));
+        var preview = service.previewPlans(LEARNER_ID, new LearnerLearningPlanApi.ActivateRequest(
+                TODAY, List.of(new LearnerLearningPlanApi.ActivationPlan(LANDSCAPE_ID,
+                        plan.revision(), plan.planLabel(), plan.blocks()))), "en-GB");
+        var live = service.getPlans(LEARNER_ID, TODAY, "en").status();
+        assertThat(live.statusText()).isEqualTo("Mathematics: Weekly target reached · on track");
+        assertThat(preview.days().subList(0, 3)).allSatisfy(day -> {
+            assertThat(day.status().statusText()).isEqualTo(live.statusText());
+            assertThat(day.status().periodEnd()).isEqualTo(LocalDate.parse("2026-09-06"));
+            assertThat(day.status().language()).isEqualTo("en");
+        });
+        assertThat(preview.days().get(3).status().statusText())
+                .isEqualTo("Mathematics: Weekly target 0 of 1 · on track");
+        assertThat(preview.days().get(3).status().periodStart()).isEqualTo(LocalDate.parse("2026-09-07"));
+    }
+
+    @Test
+    void mergedSubjectAdvanceWorkPreventsAutomaticExtraWorkFromAnIncompletePartPlan() {
+        String extension = "math-extension";
+        when(landscapeService.getById(extension)).thenReturn(landscape(extension, "Mathematik"));
+        when(learnerService.getPlanningScope(LEARNER_ID, extension))
+                .thenReturn(scopeFor(extension, List.of("atom-b"), List.of("atom-b")));
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(extension), any()))
+                .thenReturn("extension");
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("block-focus")))
+                .thenReturn(List.of(frontier("atom-a")));
+        service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(0L, "Due",
+                List.of(learning("today", "2026-09-04", "2026-09-04", "atom-a"))), TODAY);
+        service.upsert(LEARNER_ID, extension, new LearnerLearningPlanApi.UpsertRequest(0L, "Ahead",
+                List.of(learning("future", "2026-09-07", "2026-09-07", "atom-b"))), TODAY);
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-b", 1.0));
+        learner.setFollowLearningPlans(true);
+        var status = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(status.statusText()).isEqualTo("Mathematik: Tagesziel erreicht · im Plan");
+        assertThat(status.automaticResumeAvailable()).isFalse();
+        assertThat(status.resumeAvailable()).isTrue();
+        verify(learnerService, never()).applyLearningPlanTransition(any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), any());
+    }
+
+    @Test
+    void noStoredPlanHasAnHonestNoticeAndIndependentVoluntaryContinuation() {
+        learner.setFollowLearningPlans(true);
+        when(learnerService.getPersonalCurriculumSubjectIds(LEARNER_ID)).thenReturn(List.of(LANDSCAPE_ID));
+        when(learnerService.getPersonalCurriculumSubjectFrontier(LEARNER_ID, LANDSCAPE_ID))
+                .thenReturn(List.of(frontier("atom-a")));
+        var status = service.getTodayStatus(LEARNER_ID, null);
+        assertThat(status.subjects()).isEmpty();
+        assertThat(status.statusText()).isEqualTo("Kein Lernplan eingerichtet.");
+        assertThat(status.noticeText()).isEqualTo(status.statusText());
+        assertThat(status.evaluable()).isFalse();
+        assertThat(status.resumeAvailable()).isTrue();
+        assertThat(status.automaticResumeAvailable()).isFalse();
+    }
+
+    @Test
+    void unidentifiablePlanCannotMakeTheRemainingCollectionAppearFullyEvaluable() {
+        service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(0L, "Math",
+                List.of(learning("today", "2026-09-04", "2026-09-04", "atom-a"))), TODAY);
+        service.upsert(LEARNER_ID, PHYSICS_LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(0L, "Physics",
+                List.of(learning("today", "2026-09-04", "2026-09-04", "atom-p"))), TODAY);
+        when(landscapeService.getById(LANDSCAPE_ID)).thenReturn(null);
+        var status = service.getPlans(LEARNER_ID, TODAY, "de").status();
+        assertThat(status.evaluable()).isFalse();
+        assertThat(status.subjects()).singleElement().satisfies(subject -> assertThat(subject.evaluable()).isTrue());
+        assertThat(status.statusText()).isEqualTo("Physik: Tagesziel 0 von 1 · im Plan\n1 Fachplan nicht auswertbar.");
+        assertThat(status.noticeText()).isEqualTo("1 Fachplan nicht auswertbar.");
+
+        when(landscapeService.getById(LANDSCAPE_ID)).thenReturn(landscape(LANDSCAPE_ID, "Mathematik"));
+        var corrupted = planRepository.findByLearner_SkillpilotIdAndLandscapeId(LEARNER_ID, LANDSCAPE_ID).orElseThrow();
+        corrupted.setBlocksJson("{broken");
+        planRepository.saveAndFlush(corrupted);
+        var partial = service.getPlans(LEARNER_ID, TODAY, "de");
+        assertThat(partial.plans()).singleElement()
+                .satisfies(plan -> assertThat(plan.landscapeId()).isEqualTo(PHYSICS_LANDSCAPE_ID));
+        assertThat(partial.status().subjects()).hasSize(2);
+        assertThat(partial.status().noticeText()).isEqualTo("1 Fachplan nicht auswertbar (Mathematik).");
+    }
+
+    @Test
+    void draftPreviewUsesTheSharedStatusWithoutChangingExistingPlansOrLearnerState() {
         when(learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID))
                 .thenReturn(scope(List.of("atom-a", "atom-b", "atom-c", "atom-d"),
                         List.of("atom-a", "atom-b", "atom-c", "atom-d")));
@@ -161,24 +339,19 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(preview.days()).extracting(LearnerLearningPlanApi.PreviewDay::date)
                 .containsExactly(TODAY, TODAY.plusDays(1), TODAY.plusDays(2), TODAY.plusDays(3),
                         TODAY.plusDays(4), TODAY.plusDays(5), TODAY.plusDays(6));
-        assertThat(preview.days().get(0).subjects())
-                .containsExactly(
-                        new LearnerLearningPlanApi.PreviewSubject(LANDSCAPE_ID,
-                                new LearnerLearningPlanApi.Metrics(3, 1, 2, 2, 0, 2, 4)),
-                        new LearnerLearningPlanApi.PreviewSubject(PHYSICS_LANDSCAPE_ID,
-                                new LearnerLearningPlanApi.Metrics(2, 1, 1, 1, 0, 1, 2)));
-        assertThat(preview.days().get(0).totals())
-                .isEqualTo(new LearnerLearningPlanApi.Metrics(5, 2, 3, 3, 0, 3, 6));
-        // Weekends remain visible. Backlog is not mistaken for newly assigned work.
-        assertThat(preview.days().get(1).totals())
-                .isEqualTo(new LearnerLearningPlanApi.Metrics(5, 2, 3, 0, 0, 0, 6));
-        assertThat(preview.days().get(2).totals()).isEqualTo(preview.days().get(1).totals());
-        // Runtime rounds the four-day block's first 0.25 goal down on Monday.
-        assertThat(preview.days().get(3).totals())
-                .isEqualTo(new LearnerLearningPlanApi.Metrics(5, 2, 3, 0, 0, 0, 6));
-        // Tuesday's newly assigned goal adds to today's unresolved backlog; no future success is invented.
-        assertThat(preview.days().get(4).totals())
-                .isEqualTo(new LearnerLearningPlanApi.Metrics(6, 2, 4, 1, 0, 1, 6));
+        assertThat(preview.days().get(0).status().statusText()).isEqualTo(
+                "Mathematik: Tagesziel 0 von 2 · im Plan\nPhysik: Tagesziel 0 von 1 · im Plan");
+        // Weekends remain visible; the same formula moves unfulfilled daily work to backlog.
+        assertThat(preview.days().get(1).status().statusText()).isEqualTo(
+                "Mathematik: Heute kein Tagesziel · 2 Lernziele im Rückstand\n"
+                        + "Physik: Heute kein Tagesziel · 1 Lernziel im Rückstand");
+        assertThat(preview.days().get(2).status().statusText())
+                .isEqualTo(preview.days().get(1).status().statusText());
+        assertThat(preview.days().get(3).status().statusText())
+                .isEqualTo(preview.days().get(1).status().statusText());
+        assertThat(preview.days().get(4).status().statusText()).isEqualTo(
+                "Mathematik: Tagesziel 0 von 1 · 2 Lernziele im Rückstand\n"
+                        + "Physik: Heute kein Tagesziel · 1 Lernziel im Rückstand");
         assertThat(learner.getFollowLearningPlans()).isFalse();
         assertThat(learner.getActiveGoalId()).isEqualTo("already-active");
         assertThat(learner.getLastActivityAt()).isEqualTo(CAPTURED_AT);
@@ -186,7 +359,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).revision()).isEqualTo(math.revision());
         assertThat(service.getPlan(LEARNER_ID, PHYSICS_LANDSCAPE_ID, TODAY).planLabel())
                 .isEqualTo("Physics original");
-        verify(learnerService, never()).acquireLearningPlanMutationLock(any());
+        verify(learnerService, org.mockito.Mockito.atLeastOnce()).acquireLearningPlanMutationLock(LEARNER_ID);
         verify(eventPublisher, never()).publishEvent(any());
 
         when(learnerService.applyLearningPlanTransition(LEARNER_ID, true, true,
@@ -194,9 +367,9 @@ class LearnerLearningPlanServiceIntegrationTest {
                 .thenReturn(new LearnerService.LearningPlanTransitionResult(true,
                         mock(UnifiedLearnerStateResponse.class)));
         LearnerLearningPlanApi.ActivateResponse activated = service.activatePlans(LEARNER_ID, request);
-        assertThat(activated.plans()).extracting(LearnerLearningPlanApi.PlanDetail::metrics)
-                .containsExactlyElementsOf(preview.days().get(0).subjects().stream()
-                        .map(LearnerLearningPlanApi.PreviewSubject::metrics).toList());
+        assertThat(activated.plans()).hasSize(2);
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").statusText())
+                .isEqualTo(preview.days().get(0).status().statusText());
     }
 
     @Test
@@ -210,8 +383,8 @@ class LearnerLearningPlanServiceIntegrationTest {
 
         // Even if Monday's originally assigned ID is already mastered, the quota
         // can be fulfilled with the still-open backlog. No future event is invented.
-        assertThat(preview.days().get(3).totals())
-                .isEqualTo(new LearnerLearningPlanApi.Metrics(2, 1, 1, 1, 0, 1, 2));
+        assertThat(preview.days().get(3).status().statusText())
+                .isEqualTo("Mathematik: Tagesziel 0 von 1 · im Plan");
     }
 
     @Test
@@ -223,12 +396,14 @@ class LearnerLearningPlanServiceIntegrationTest {
                         new LearnerLearningPlanApi.ActivationPlan(PHYSICS_LANDSCAPE_ID, 0L, "Draft",
                                 List.of(learning("today", "2026-09-04", "2026-09-04", "atom-p"))))));
 
-        assertThat(preview.days().get(0).totals().openDueToday()).isEqualTo(2);
+        assertThat(preview.days().get(0).status().subjects()).hasSize(2);
+        assertThat(preview.days().get(0).status().subjects()).allSatisfy(subject ->
+                assertThat(subject.periodText()).isEqualTo("Tagesziel 0 von 1"));
         assertThat(planRepository.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(LEARNER_ID)).isEmpty();
         assertThat(learner.getFollowLearningPlans()).isFalse();
         assertThat(learner.getActiveGoalId()).isNull();
         assertThat(learner.getLastActivityAt()).isEqualTo(CAPTURED_AT);
-        verify(learnerService, never()).acquireLearningPlanMutationLock(any());
+        verify(learnerService, org.mockito.Mockito.atLeastOnce()).acquireLearningPlanMutationLock(LEARNER_ID);
         verify(eventPublisher, never()).publishEvent(any());
     }
 
@@ -252,15 +427,16 @@ class LearnerLearningPlanServiceIntegrationTest {
         var detail = service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY);
         assertThat(detail.stale()).isFalse();
         assertThat(detail.blocks()).isEqualTo(created.blocks());
-        assertThat(detail.metrics().totalPlanned()).isEqualTo(2);
-        assertThat(detail.metrics().completedDueThroughToday()).isEqualTo(1);
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").statusText())
+                .isEqualTo("Mathematik: Heute kein Tagesziel · 1 Lernziel im Rückstand");
         assertThat(service.getPlans(LEARNER_ID, TODAY).plans()).singleElement()
                 .satisfies(summary -> assertThat(summary.stale()).isFalse());
         assertThat(service.getTodayStatus(LEARNER_ID, "de").unavailablePlanCount()).isZero();
         var preview = service.previewPlans(LEARNER_ID, new LearnerLearningPlanApi.ActivateRequest(
                 TODAY, List.of(new LearnerLearningPlanApi.ActivationPlan(
                         LANDSCAPE_ID, created.revision(), created.planLabel(), created.blocks()))));
-        assertThat(preview.days().get(0).totals()).isEqualTo(detail.metrics());
+        assertThat(preview.days().get(0).status().statusText())
+                .isEqualTo(service.getTodayStatus(LEARNER_ID, "de").statusText());
 
         planRepository.flush();
         var afterReads = planRepository.findById(created.planId()).orElseThrow();
@@ -276,7 +452,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(learner.getFollowLearningPlans()).isFalse();
         assertThat(learner.getActiveGoalId()).isNull();
         assertThat(learner.getLastActivityAt()).isEqualTo(CAPTURED_AT);
-        verify(learnerService, never()).acquireLearningPlanMutationLock(any());
+        verify(learnerService, org.mockito.Mockito.atLeastOnce()).acquireLearningPlanMutationLock(LEARNER_ID);
         verify(learnerService, never()).setPlannedGoalsAndGetState(any(), any());
         verify(learnerService, never()).setActiveGoal(any(), any());
         verify(learnerService, never()).applyLearningPlanTransition(
@@ -359,7 +535,7 @@ class LearnerLearningPlanServiceIntegrationTest {
                     assertThat(plan.getRevision()).isEqualTo(1);
                     assertThat(plan.getPlanLabel()).isEqualTo("Original");
                 });
-        verify(learnerService, never()).acquireLearningPlanMutationLock(any());
+        verify(learnerService, org.mockito.Mockito.atLeastOnce()).acquireLearningPlanMutationLock(LEARNER_ID);
         verify(eventPublisher, never()).publishEvent(any());
     }
 
@@ -386,7 +562,7 @@ class LearnerLearningPlanServiceIntegrationTest {
                         new LearnerLearningPlanApi.ActivationPlan(LANDSCAPE_ID, 0L, "Empty", List.of())))),
                 HttpStatus.BAD_REQUEST);
         assertThat(planRepository.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(LEARNER_ID)).isEmpty();
-        verify(learnerService, never()).acquireLearningPlanMutationLock(any());
+        verify(learnerService, org.mockito.Mockito.atLeastOnce()).acquireLearningPlanMutationLock(LEARNER_ID);
         verify(eventPublisher, never()).publishEvent(any());
     }
 
@@ -410,10 +586,8 @@ class LearnerLearningPlanServiceIntegrationTest {
                 .containsExactly("early", "late", "exam");
         assertThat(created.blocks().get(0).atomicGoalIds()).containsExactly("atom-a");
         assertThat(created.blocks().get(1).atomicGoalIds()).containsExactly("atom-b");
-        assertThat(created.metrics().totalPlanned()).isEqualTo(2);
-        assertThat(created.metrics().dueThroughToday()).isEqualTo(1);
-        assertThat(created.pace().status()).isEqualTo("neutral");
-        assertThat(created.pace().reason()).isEqualTo("mastery-history-not-event-backed");
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").statusText())
+                .isEqualTo("Mathematik: Heute kein Tagesziel · 1 Lernziel im Rückstand");
         assertThat(created.continueReason()).isEqualTo("learning-plan-following-disabled");
         assertThat(created.period().startDate()).isEqualTo(LocalDate.parse("2026-09-01"));
         assertThat(created.period().endDate()).isEqualTo(LocalDate.parse("2026-09-14"));
@@ -453,10 +627,8 @@ class LearnerLearningPlanServiceIntegrationTest {
                                 "atom-d"))),
                 TODAY);
 
-        assertThat(created.metrics().dueThroughToday()).isEqualTo(4);
-        assertThat(created.metrics().dueToday()).isEqualTo(1);
-        assertThat(created.metrics().completedDueToday()).isZero();
-        assertThat(created.metrics().openDueToday()).isEqualTo(1);
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").statusText())
+                .isEqualTo("Mathematik: Tagesziel 0 von 1 · 3 Lernziele im Rückstand");
         assertThat(created.nextEligibleGoal()).isEqualTo(
                 new LearnerLearningPlanApi.NextEligibleGoal("atom-d"));
         assertThat(created.canContinue()).isTrue();
@@ -475,8 +647,8 @@ class LearnerLearningPlanServiceIntegrationTest {
                                 learning("second", "2026-09-01", "2026-09-04", "atom-b"))),
                 LocalDate.parse("2026-09-01"));
 
-        assertThat(created.metrics().dueThroughToday()).isEqualTo(1);
-        assertThat(created.metrics().dueToday()).isEqualTo(1);
+        assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                created.blocks(), LocalDate.parse("2026-09-01"))).hasSize(1);
     }
 
     @Test
@@ -512,8 +684,8 @@ class LearnerLearningPlanServiceIntegrationTest {
 
         assertThat(created.blocks()).extracting(LearnerLearningPlanApi.Block::id)
                 .containsExactly("short-authored-second", "long-authored-first");
-        assertThat(created.metrics().dueThroughToday()).isEqualTo(1);
-        assertThat(created.metrics().dueToday()).isEqualTo(1);
+        assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                created.blocks(), LocalDate.parse("2026-09-02"))).containsExactly("atom-c");
         assertThat(created.nextEligibleGoal()).isEqualTo(
                 new LearnerLearningPlanApi.NextEligibleGoal("atom-c"));
     }
@@ -1124,6 +1296,41 @@ class LearnerLearningPlanServiceIntegrationTest {
                 "atom-p",
                 true,
                 "LEARNING_PLAN_RECONCILED");
+    }
+
+    @Test
+    void explicitContinuationPrioritizesOlderOpenGoalsAcrossSubjectsEvenWhenTheirQuotaIsCovered() {
+        service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik", List.of(
+                        learningWithFocus("math-yesterday", "math-focus", "2026-09-03", "2026-09-03", "atom-a"),
+                        learningWithFocus("math-today", "math-focus", "2026-09-04", "2026-09-04", "atom-b"))), TODAY);
+        service.upsert(LEARNER_ID, PHYSICS_LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Physik", List.of(
+                        learningWithFocus("physics-today", "physics-focus", "2026-09-04", "2026-09-04", "atom-p"))), TODAY);
+        learner.setFollowLearningPlans(true);
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-b", 1.0));
+        when(learnerService.getGoalCompletionsOnDate(LEARNER_ID, TODAY))
+                .thenReturn(Map.of("atom-b", TODAY.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant()));
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("math-focus")))
+                .thenReturn(List.of(frontier("atom-a")));
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("physics-focus")))
+                .thenReturn(List.of(frontier("atom-p")));
+        var state = mock(UnifiedLearnerStateResponse.class);
+        when(learnerService.applyLearningPlanTransition(LEARNER_ID, false, true,
+                "math-focus", "atom-a", true, "LEARNING_PLAN_RECONCILED"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true, state));
+        when(learnerService.applyLearningPlanTransition(LEARNER_ID, false, true,
+                "physics-focus", "atom-p", true, "LEARNING_PLAN_RECONCILED"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true, state));
+
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").statusText()).isEqualTo(
+                "Mathematik: Tagesziel erreicht · 1 Lernziel im Rückstand\nPhysik: Tagesziel 0 von 1 · im Plan");
+        // These independent mocked transitions start from the same unchanged learner snapshot.
+        var automatic = service.reconcile(LEARNER_ID, new LearnerLearningPlanApi.ReconcileRequest(TODAY));
+        assertThat(automatic.activeGoalId()).isEqualTo("atom-p");
+        var explicit = service.resumeExplicitly(LEARNER_ID, new LearnerLearningPlanApi.ReconcileRequest(TODAY));
+        assertThat(explicit.activeGoalId()).isEqualTo("atom-a");
+        assertThat(explicit.changed()).isTrue();
     }
 
     @Test

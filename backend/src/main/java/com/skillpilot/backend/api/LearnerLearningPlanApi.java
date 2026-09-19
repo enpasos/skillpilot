@@ -73,30 +73,10 @@ public final class LearnerLearningPlanApi {
             @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate date) {
     }
 
-    public record Metrics(
-            int dueThroughToday,
-            int completedDueThroughToday,
-            int openDueThroughToday,
-            int dueToday,
-            int completedDueToday,
-            int openDueToday,
-            int totalPlanned,
-            int extraCompletedToday) {
-        public Metrics(int dueThroughToday, int completedDueThroughToday, int openDueThroughToday,
-                int dueToday, int completedDueToday, int openDueToday, int totalPlanned) {
-            this(dueThroughToday, completedDueThroughToday, openDueThroughToday,
-                    dueToday, completedDueToday, openDueToday, totalPlanned, 0);
-        }
-    }
-
-    /** Read-only draft projection; mastery is held at today's observed values. */
-    public record PreviewSubject(String landscapeId, Metrics metrics) {
-    }
-
+    /** Read-only draft projection using the same status calculation as the live plan. */
     public record PreviewDay(
             @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate date,
-            List<PreviewSubject> subjects,
-            Metrics totals) {
+            LearnerPlanTodayStatus status) {
     }
 
     public record PreviewResponse(
@@ -111,9 +91,6 @@ public final class LearnerLearningPlanApi {
     public record Buffer(int totalWorkdays, int remainingWorkdays) {
     }
 
-    public record Pace(String status, String reason) {
-    }
-
     public record PlanSummary(
             UUID planId,
             long revision,
@@ -123,9 +100,7 @@ public final class LearnerLearningPlanApi {
             Period period,
             CurrentBlock currentBlock,
             Milestone nextMilestone,
-            Metrics metrics,
             Buffer buffer,
-            Pace pace,
             NextEligibleGoal nextEligibleGoal,
             String continueReason,
             boolean canContinue) {
@@ -140,9 +115,7 @@ public final class LearnerLearningPlanApi {
             Period period,
             CurrentBlock currentBlock,
             Milestone nextMilestone,
-            Metrics metrics,
             Buffer buffer,
-            Pace pace,
             NextEligibleGoal nextEligibleGoal,
             String continueReason,
             boolean canContinue,
@@ -152,7 +125,8 @@ public final class LearnerLearningPlanApi {
     public record CollectionResponse(
             @JsonFormat(shape = JsonFormat.Shape.STRING) LocalDate asOf,
             boolean followLearningPlans,
-            List<PlanSummary> plans) {
+            List<PlanSummary> plans,
+            LearnerPlanTodayStatus status) {
     }
 
     public record ContinueRequest(

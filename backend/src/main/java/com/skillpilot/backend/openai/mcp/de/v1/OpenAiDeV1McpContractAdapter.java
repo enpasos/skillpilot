@@ -151,7 +151,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             The newest communicationLocale returned by SkillPilot is authoritative for all user-facing communication. Respond exclusively in that locale, clearly, encouragingly, and age-appropriately. Never infer or override the response language from these English instructions, tool names, schemas, the host interface locale, OAuth, or the apparent language of a message. Static control metadata is English and is not user-facing content.
 
-            When work begins on a newly confirmed active atomic goal, the first learner-facing content sentence of that goal's section must name the exact activeGoal.title in the communicationLocale, exactly as “Dein aktives Lernziel: <Titel>” or “Your active learning goal: <title>”, once; learningPlanToday.text never contains it. Never substitute activeGoal.description, a paraphrase, or an explanation for that title sentence. After mastery, the mandatory completionHandoff for the previous goal must appear before this new-goal section and is not an explanation of the successor.
+            When work begins on a newly confirmed active atomic goal, output the backend-supplied learningPlanToday.activeGoalAnnouncement verbatim once as the first learner-facing content sentence of that goal's section. It contains the exact activeGoal.title in the communicationLocale, as “Dein aktives Lernziel: <Titel>” or “Your active learning goal: <title>”; learningPlanToday.text never contains it. If no learning-plan projection is available, name the exact activeGoal.title in that same localized form once. Never substitute activeGoal.description, a paraphrase, or an explanation for that title sentence. After mastery, the mandatory completionHandoff for the previous goal must appear before this new-goal section and is not an explanation of the successor.
 
             If no current learningSessionId is available, do not call a SkillPilot tool and do not begin teaching. In this narrow case no authoritative session locale exists, so output exactly one matching fixed sentence from the conversation language: German: “Öffne SkillPilot unter https://skillpilot.com/, schließe dort die Lernkonfiguration ab, wähle „Lernen starten“ und verwende die vorbereitete Startnachricht in einem neuen Chat.” English: “Open https://skillpilot.com/, finish the learning setup there, choose “Start learning”, and use the prepared start message in a new chat.” Do not translate either sentence or invent another recovery. Never ask for, accept, repeat, or expose a permanent SkillPilot ID, PIN, password, or OAuth value in chat. OAuth authorizes only the App connection and never selects a learner or learning session.
 
@@ -321,7 +321,7 @@ public final class OpenAiDeV1McpContractAdapter {
                     + "Do not repeat it in ordinary teaching turns; after a status-relevant change report the "
                     + "finally valid status once. Never present a fulfilled period target as the whole plan or "
                     + "all backlog being finished, and never contrast the active goal with it. "
-                    + "If evaluable=false or unavailablePlanCount>0, the text names that limitation; never "
+                    + "If evaluable=false, the text names that limitation; never "
                     + "substitute an invented status and never claim a completed period instead. "
                     + "Continue an already active goal normally. Do not choose "
                     + "future goals or widen focus automatically when the period target is met or blocked. "
@@ -1274,7 +1274,8 @@ public final class OpenAiDeV1McpContractAdapter {
             String skillpilotId, UnifiedLearnerStateResponse state, OpenAiDeV1SessionMetadata metadata) {
         FrontierGoal active = activeGoal(state);
         return OpenAiDeLearningPlanToday.project(coachTools.getLearningPlanTodayStatus(
-                skillpilotId, communicationLocale(metadata)), active != null, isExamGoal(active));
+                skillpilotId, communicationLocale(metadata)), active != null, isExamGoal(active),
+                communicationLocale(metadata));
     }
 
     private McpSchema.CallToolResult renderGoalVisualization(
@@ -3150,7 +3151,7 @@ public final class OpenAiDeV1McpContractAdapter {
         }
         OpenAiDeLearningPlanToday today = context.learningPlanToday();
         if (today != null && (today.followLearningPlans() || !today.subjects().isEmpty()
-                || today.unavailablePlanCount() > 0 || "unavailable".equals(today.guidance().state()))) {
+                || "unavailable".equals(today.guidance().state()))) {
             return today.summary(english);
         }
         if (context.orientation() != null) {
@@ -3488,12 +3489,11 @@ public final class OpenAiDeV1McpContractAdapter {
                         "asOf", nonEmptyStringSchema(),
                         "periodBasis", enumStringSchema("DAY", "WEEK"),
                         "text", nonEmptyStringSchema(),
-                        "statusDirection", enumStringSchema("behind", "on_track", "ahead"),
+                        "activeGoalAnnouncement", nonEmptyStringSchema(),
                         "evaluable", booleanSchema(),
                         "followLearningPlans", booleanSchema(),
                         "resumeAvailable", booleanSchema(),
                         "subjects", objectArraySchema(dailyPlanSubjectSchema()),
-                        "unavailablePlanCount", integerSchema(0, null),
                         "guidance", objectSchema(Map.of("state", enumStringSchema(
                                 "continue", "resume", "complete", "blocked", "paused", "unavailable"),
                                 "instruction", nonEmptyStringSchema()), List.of("state", "instruction"))),
@@ -3502,7 +3502,6 @@ public final class OpenAiDeV1McpContractAdapter {
                         "followLearningPlans",
                         "resumeAvailable",
                         "subjects",
-                        "unavailablePlanCount",
                         "guidance"));
     }
 

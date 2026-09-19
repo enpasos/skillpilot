@@ -2,6 +2,7 @@ package com.skillpilot.backend.openai.mcp.de;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.skillpilot.backend.api.LearnerPlanTodayStatus;
+import com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +18,11 @@ public record OpenAiDeLearningPlanToday(
         String asOf,
         String periodBasis,
         String text,
-        String statusDirection,
+        String activeGoalAnnouncement,
         boolean evaluable,
         boolean followLearningPlans,
         boolean resumeAvailable,
         List<Subject> subjects,
-        int unavailablePlanCount,
         Guidance guidance) {
 
     /** An unevaluable subject carries no direction at all rather than an empty one. */
@@ -40,17 +40,23 @@ public record OpenAiDeLearningPlanToday(
 
     public static OpenAiDeLearningPlanToday project(
             LearnerPlanTodayStatus source, boolean hasActiveGoal, boolean activeExam) {
+        return project(source, hasActiveGoal, activeExam, source == null ? "de" : source.language());
+    }
+
+    public static OpenAiDeLearningPlanToday project(
+            LearnerPlanTodayStatus source, boolean hasActiveGoal, boolean activeExam, String locale) {
         if (source == null) {
-            return new OpenAiDeLearningPlanToday(null, "DAY", null, null, false, false, false,
-                    List.of(), 0, guidance("unavailable"));
+            return new OpenAiDeLearningPlanToday(null, null,
+                    UnifiedLearningPlanStatusFormatter.formatUnavailableStatusNotice(locale),
+                    null, false, false, false, List.of(), guidance("unavailable"));
         }
-        int unavailable = Math.max(0, source.unavailablePlanCount());
+        boolean unavailable = source.unavailablePlanCount() > 0;
         List<Subject> subjects = new ArrayList<>();
         for (LearnerPlanTodayStatus.SubjectStatus subject :
                 source.subjects() == null ? List.<LearnerPlanTodayStatus.SubjectStatus>of() : source.subjects()) {
             String label = subject == null ? null : safeSubjectLabel(subject.subjectLabel());
             if (label == null) {
-                unavailable = saturatingAdd(unavailable, 1);
+                unavailable = true;
                 continue;
             }
             subjects.add(new Subject(
@@ -62,24 +68,23 @@ public record OpenAiDeLearningPlanToday(
                     subject.statusDirection() == null ? null : subject.statusDirection().getValue()));
         }
         boolean resume = source.asOf() != null && source.followLearningPlans()
-                && source.resumeAvailable() && !hasActiveGoal && !subjects.isEmpty();
+                && source.resumeAvailable() && !hasActiveGoal;
         String state = !source.followLearningPlans() ? "paused"
                 : hasActiveGoal ? "continue"
                 : source.asOf() == null || subjects.isEmpty() ? "unavailable"
                 : source.periodQuotaFulfilled()
-                        ? (unavailable > 0 || !source.evaluable() ? "unavailable" : "complete")
+                        ? (unavailable || !source.evaluable() ? "unavailable" : "complete")
                 : resume && source.automaticResumeAvailable() ? "resume"
                 : "blocked";
         return new OpenAiDeLearningPlanToday(
                 source.asOf() == null ? null : source.asOf().toString(),
                 source.periodBasis() != null ? source.periodBasis().name() : "DAY",
                 source.statusText(),
-                source.statusDirection() != null ? source.statusDirection().getValue() : null,
+                hasActiveGoal && source.activeGoal() != null ? source.activeGoal().announcement() : null,
                 source.evaluable(),
                 source.followLearningPlans(),
                 resume,
                 List.copyOf(subjects),
-                unavailable,
                 guidance(state));
     }
 
@@ -88,7 +93,7 @@ public record OpenAiDeLearningPlanToday(
         if (text != null && !text.isBlank()) {
             return text;
         }
-        return english ? "Daily plan unavailable." : "Tagesplan nicht auswertbar.";
+        return UnifiedLearningPlanStatusFormatter.formatUnavailableStatusNotice(english ? "en" : "de");
     }
 
     private static Guidance guidance(String state) {
@@ -105,8 +110,8 @@ public record OpenAiDeLearningPlanToday(
                     + "status-only questions or a pause do not render, navigate, start a goal or write "
                     + "state. When reporting plan status, output 'text' verbatim and add no numbers of "
                     + "your own.";
-            case "complete" -> "The period's workload is covered in every evaluated subject. Celebrate that "
-                    + "progress. When reporting plan status, output 'text' verbatim and add no numbers, "
+            case "complete" -> "Acknowledge only reached period targets named in the backend text. "
+                    + "When reporting plan status, output 'text' verbatim and add no numbers, "
                     + "totals or overall judgement of your own; it already states any remaining backlog. "
                     + "Offer optional further learning or a break. Remaining backlog is not required today. "
                     + "Extra learning requires an explicit request, even when resumeAvailable=true. A request "
@@ -115,8 +120,7 @@ public record OpenAiDeLearningPlanToday(
                     + "period target never revokes that capability. Learning plans prioritize work and never "
                     + "limit learning within the Personal Curriculum. Do not automatically resume, select "
                     + "future goals, widen focus or redirect to the Web app.";
-            case "blocked" -> "Some scheduled goals remain open, but no due target can currently be started "
-                    + "automatically. Do not claim the period is complete or automatically resume extra work. "
+            case "blocked" -> "Do not claim the period is complete or automatically resume extra work. "
                     + "When reporting plan status, output 'text' verbatim and add no numbers of your own. "
                     + "An explicit learning request may still use published resumeAvailable or canContinue "
                     + "capabilities for eligible personal targets; the plan prioritizes work and never limits "
@@ -127,7 +131,7 @@ public record OpenAiDeLearningPlanToday(
                     + "normal learning request may use the active goal or authoritative frontier. Status-only "
                     + "or pause requests start no exercise and make no write. When reporting plan status, "
                     + "output 'text' verbatim.";
-            default -> "The full workload cannot be confirmed. Output 'text' verbatim including its "
+            default -> "Output 'text' verbatim including its "
                     + "unavailability notice, never claim the period is complete and never invent a "
                     + "substitute status. Learning plans prioritize work and never limit learning within the "
                     + "Personal Curriculum. For an explicit learning request, use published resumeAvailable "
@@ -146,7 +150,4 @@ public record OpenAiDeLearningPlanToday(
         return cleaned.isEmpty() ? null : cleaned.substring(0, Math.min(cleaned.length(), 120));
     }
 
-    private static int saturatingAdd(int left, int right) {
-        return (int) Math.min(Integer.MAX_VALUE, (long) left + right);
-    }
 }

@@ -67,15 +67,15 @@ class LearnerLearningPlanControllerHttpTest {
 
     @Test
     void draftPreviewUsesReadAccessAndDoesNotTouchRetentionOrActivatePlans() throws Exception {
-        LearnerLearningPlanApi.Metrics metrics = new LearnerLearningPlanApi.Metrics(4, 1, 3, 2, 1, 1, 8);
         LearnerLearningPlanApi.PreviewResponse response = new LearnerLearningPlanApi.PreviewResponse(
                 AS_OF, java.util.stream.IntStream.range(0, 7)
                         .mapToObj(offset -> new LearnerLearningPlanApi.PreviewDay(AS_OF.plusDays(offset),
-                                List.of(new LearnerLearningPlanApi.PreviewSubject(LANDSCAPE_ID, metrics)), metrics))
+                                planStatus()))
                         .toList());
-        when(learningPlans.previewPlans(eq(LEARNER_ID), any())).thenReturn(response);
+        when(learningPlans.previewPlans(eq(LEARNER_ID), any(), eq("en"))).thenReturn(response);
 
         mockMvc.perform(post("/api/ui/learners/{id}/learning-plans/preview", LEARNER_ID)
+                        .queryParam("language", "en")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"asOf":"2026-09-04","plans":[{
@@ -88,15 +88,16 @@ class LearnerLearningPlanControllerHttpTest {
                 .andExpect(jsonPath("$.asOf").value(AS_OF.toString()))
                 .andExpect(jsonPath("$.days.length()").value(7))
                 .andExpect(jsonPath("$.days[6].date").value(AS_OF.plusDays(6).toString()))
-                .andExpect(jsonPath("$.days[0].subjects[0].landscapeId").value(LANDSCAPE_ID))
-                .andExpect(jsonPath("$.days[0].subjects[0].metrics.openDueToday").value(1))
-                .andExpect(jsonPath("$.days[0].totals.openDueThroughToday").value(3))
+                .andExpect(jsonPath("$.days[0].status.subjects[0].landscapeIds[0]").value(LANDSCAPE_ID))
+                .andExpect(jsonPath("$.days[0].status.statusText").value(planStatus().statusText()))
+                .andExpect(jsonPath("$.days[0].totals").doesNotExist())
+                .andExpect(jsonPath("$.days[0].subjects").doesNotExist())
                 .andExpect(jsonPath("$.followLearningPlans").doesNotExist())
                 .andExpect(jsonPath("$.activeGoalId").doesNotExist());
 
         InOrder ordered = inOrder(learners, learningPlans);
         ordered.verify(learners).assertActiveLearnerRouteAccess(LEARNER_ID);
-        ordered.verify(learningPlans).previewPlans(eq(LEARNER_ID), any());
+        ordered.verify(learningPlans).previewPlans(eq(LEARNER_ID), any(), eq("en"));
         ordered.verifyNoMoreInteractions();
         verifyNoInteractions(lifecycle);
     }
@@ -117,7 +118,7 @@ class LearnerLearningPlanControllerHttpTest {
 
     @Test
     void draftPreviewReturnsSafePrerequisiteConflictWithoutPlanOrLearnerDetails() throws Exception {
-        when(learningPlans.previewPlans(eq(LEARNER_ID), any()))
+        when(learningPlans.previewPlans(eq(LEARNER_ID), any(), org.mockito.ArgumentMatchers.isNull()))
                 .thenThrow(new LearningPlanPrerequisiteScheduleConflictException());
 
         mockMvc.perform(post("/api/ui/learners/{id}/learning-plans/preview", LEARNER_ID)
@@ -133,23 +134,24 @@ class LearnerLearningPlanControllerHttpTest {
 
     @Test
     void collectionGetIsNoStoreAndDoesNotTouchRetention() throws Exception {
-        when(learningPlans.getPlans(LEARNER_ID, AS_OF)).thenReturn(
-                new LearnerLearningPlanApi.CollectionResponse(AS_OF, false, List.of(summary())));
+        when(learningPlans.getPlans(LEARNER_ID, AS_OF, "en")).thenReturn(
+                new LearnerLearningPlanApi.CollectionResponse(AS_OF, false, List.of(summary()), planStatus()));
 
         mockMvc.perform(get("/api/ui/learners/{id}/learning-plans", LEARNER_ID)
-                        .queryParam("asOf", AS_OF.toString()))
+                        .queryParam("asOf", AS_OF.toString()).queryParam("language", "en"))
                 .andExpect(status().isOk())
                 .andExpect(header().string(HttpHeaders.CACHE_CONTROL, "no-store"))
                 .andExpect(jsonPath("$.asOf").value(AS_OF.toString()))
                 .andExpect(jsonPath("$.followLearningPlans").value(false))
                 .andExpect(jsonPath("$.plans[0].planId").value(PLAN_ID.toString()))
-                .andExpect(jsonPath("$.plans[0].metrics.openDueThroughToday").value(1))
-                .andExpect(jsonPath("$.plans[0].pace.reason")
-                        .value("mastery-history-not-event-backed"));
+                .andExpect(jsonPath("$.status.statusText").value(planStatus().statusText()))
+                .andExpect(jsonPath("$.plans[0].metrics").doesNotExist())
+                .andExpect(jsonPath("$.plans[0].pace").doesNotExist())
+                .andExpect(jsonPath("$.status.statusDirection").doesNotExist());
 
         InOrder ordered = inOrder(learners, learningPlans);
         ordered.verify(learners).assertActiveLearnerRouteAccess(LEARNER_ID);
-        ordered.verify(learningPlans).getPlans(LEARNER_ID, AS_OF);
+        ordered.verify(learningPlans).getPlans(LEARNER_ID, AS_OF, "en");
         verifyNoInteractions(lifecycle);
     }
 
@@ -159,7 +161,7 @@ class LearnerLearningPlanControllerHttpTest {
 
         mockMvc.perform(get("/api/ui/learners/{id}/learning-plans/by-landscape", LEARNER_ID)
                         .queryParam("landscapeId", LANDSCAPE_ID)
-                        .queryParam("asOf", AS_OF.toString()))
+                        .queryParam("asOf", AS_OF.toString()).queryParam("language", "en"))
                 .andExpect(status().isOk())
                 .andExpect(header().string(HttpHeaders.CACHE_CONTROL, "no-store"))
                 .andExpect(jsonPath("$.landscapeId").value(LANDSCAPE_ID));
@@ -335,6 +337,13 @@ class LearnerLearningPlanControllerHttpTest {
                 .andExpect(jsonPath("$.activeGoalId").value("atom-1"));
     }
 
+    private static com.skillpilot.backend.api.LearnerPlanTodayStatus planStatus() {
+        return com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.status(AS_OF, false, false,
+                com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                        LANDSCAPE_ID, "Physics", 4, 2, 1, 1, false, false,
+                        com.skillpilot.backend.service.learningplan.PeriodBasis.DAY, "en"));
+    }
+
     private static LearnerLearningPlanApi.PlanSummary summary() {
         return new LearnerLearningPlanApi.PlanSummary(
                 PLAN_ID,
@@ -347,9 +356,7 @@ class LearnerLearningPlanControllerHttpTest {
                         LocalDate.parse("2026-09-04")),
                 null,
                 null,
-                new LearnerLearningPlanApi.Metrics(1, 0, 1, 1, 0, 1, 1),
                 new LearnerLearningPlanApi.Buffer(0, 0),
-                new LearnerLearningPlanApi.Pace("neutral", "mastery-history-not-event-backed"),
                 new LearnerLearningPlanApi.NextEligibleGoal("atom-1"),
                 "learning-plan-following-disabled",
                 false);
@@ -366,9 +373,7 @@ class LearnerLearningPlanControllerHttpTest {
                 summary.period(),
                 summary.currentBlock(),
                 summary.nextMilestone(),
-                summary.metrics(),
                 summary.buffer(),
-                summary.pace(),
                 summary.nextEligibleGoal(),
                 summary.continueReason(),
                 summary.canContinue(),

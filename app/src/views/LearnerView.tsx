@@ -59,7 +59,6 @@ import {
 import { getLearnerDataManagementCopy } from '../utils/learnerDataManagementCopy'
 import {
   getLearnerLearningPlans,
-  getLearnerPlanStatus,
   LearnerLearningPlanApiError,
   reconcileLearnerLearningPlans,
   switchLearnerLearningPlan,
@@ -105,7 +104,7 @@ import {
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
-import type { LearnerLearningPlansResponse, LearnerPlanStatus } from '../learnerLearningPlanTypes'
+import type { LearnerLearningPlansResponse } from '../learnerLearningPlanTypes'
 import type { ResourceLink } from '../landscapeTypes'
 
 interface LearnerViewProps {
@@ -420,7 +419,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [learnerDeleteError, setLearnerDeleteError] = useState<'missing' | 'failed' | null>(null)
   const [learningPlans, setLearningPlans] = useState<LearnerLearningPlansResponse | null>(null)
   /** The one backend-formulated status the cockpit renders instead of computing its own. */
-  const [learningPlanStatus, setLearningPlanStatus] = useState<LearnerPlanStatus | null>(null)
   const [learningPlansDataScopeKey, setLearningPlansDataScopeKey] = useState(learnerStateScopeKey)
   const [learningPlansLoadState, setLearningPlansLoadState] = useState<{
     scopeKey: string
@@ -1670,7 +1668,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (!skillpilotId) {
       learningPlansRefreshInFlightRef.current = false
       setLearningPlans(null)
-      setLearningPlanStatus(null)
       setLearningPlansDataScopeKey(learnerStateScopeKey)
       setLearningPlansLoadState({ scopeKey: learnerStateScopeKey, status: 'ready' })
       return null
@@ -1686,15 +1683,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     learningPlansRefreshInFlightRef.current = true
     setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'loading' })
     try {
-      // Plans and status are read together so the cockpit never combines a fresh
-      // schedule with a stale status statement.
-      const [response, status] = await Promise.all([
-        getLearnerLearningPlans(skillpilotId, undefined),
-        getLearnerPlanStatus(skillpilotId, localizedLanguage).catch(() => null),
-      ])
+      // One backend snapshot supplies schedule and authoritative status together.
+      const response = await getLearnerLearningPlans(skillpilotId, undefined, { language: localizedLanguage })
       if (!isCurrentRequest()) return null
       learningPlansRefreshInFlightRef.current = false
-      setLearningPlanStatus(status)
       setLearningPlans(response)
       setLearningPlansDataScopeKey(requestScopeKey)
       setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'ready' })
@@ -3396,7 +3388,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         )}
         {!isGuidedPersonalizationRequired && (
           learningPlansLoadStatus !== 'ready'
+          || (scopedLearningPlans?.status.subjects.length ?? 0) > 0
           || (scopedLearningPlans?.plans.length ?? 0) > 0
+          || (scopedLearningPlans?.status.unavailablePlanCount ?? 0) > 0
           || scopedLearningPlans?.followLearningPlans === true
         ) && (
           <section
@@ -3422,20 +3416,21 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               </div>
             ) : null}
             {learningPlansLoadStatus === 'ready'
-              && scopedLearningPlans?.followLearningPlans === true
-              && scopedLearningPlans.plans.length === 0 ? (
+              && scopedLearningPlans
+              && (scopedLearningPlans.followLearningPlans || scopedLearningPlans.status.unavailablePlanCount > 0)
+              && scopedLearningPlans.plans.length === 0
+              && scopedLearningPlans.status.subjects.length === 0 ? (
                 <div
-                  data-testid="learner-plan-empty"
+                  data-testid={scopedLearningPlans.status.unavailablePlanCount > 0 ? 'learner-plan-notice' : 'learner-plan-empty'}
                   className="rounded-xl border border-border-color bg-sidebar-bg p-5 text-sm text-text-secondary shadow-sm"
                   role="status"
                 >
-                  <h2 className="font-semibold text-text-primary">{learnerLearningPlanCopy.noPlansTitle}</h2>
-                  <p className="mt-2 leading-6">{learnerLearningPlanCopy.noPlansBody}</p>
+                  <p className="whitespace-pre-line leading-6">{scopedLearningPlans.status.statusText}</p>
                 </div>
               ) : null}
-            {scopedLearningPlans && sortedLearningPlans.length > 0 ? (
+            {scopedLearningPlans && scopedLearningPlans.status.subjects.length > 0 ? (
               <LearnerPlanTodayOverview
-                status={learningPlanStatus}
+                status={scopedLearningPlans.status}
                 plans={sortedLearningPlans}
                 language={localizedLanguage}
                 planModeEnabled={scopedLearningPlans.followLearningPlans}

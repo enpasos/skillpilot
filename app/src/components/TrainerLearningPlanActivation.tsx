@@ -49,7 +49,7 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
   ? {
       eyebrow: 'Gemeinsame Lernplanung',
       title: 'Alle Fächer gemeinsam',
-      body: 'Die Tagesanforderungen aller aktiven Fächer zählen zusammen. Der Schüler wird im Chat automatisch geführt.',
+      body: 'Die Schülervorschau zeigt Tages- oder Wochenziel und Planstand für jedes Fach. Nach bestätigter Fortsetzung geht es mit einem zulässigen Lernziel weiter.',
       loading: 'Fachpläne werden geprüft …',
       retry: 'Erneut prüfen',
       edit: 'Fachplan bearbeiten',
@@ -65,12 +65,12 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
       unavailable: 'Der Cockpit-Stand konnte nicht zuverlässig geprüft werden. Die gemeinsame Aktivierung bleibt deshalb gesperrt.',
       scopeChanged: 'Beim Schüler gibt es weitere gültige Fachpläne, die in dieser Fächerauswahl fehlen. Prüfe das persönliche Curriculum und aktualisiere die Fächerauswahl, bevor du die gemeinsame Planung übernimmst.',
       confirmTitle: 'Diese Planung für den Schüler übernehmen?',
-      confirmBody: 'Die aufgeführten Fächer werden gemeinsam übernommen. Planbegleitetes Lernen wird eingeschaltet und ein fälliges, zulässiges Lernziel startet automatisch.',
+      confirmBody: 'Die aufgeführten Fachpläne werden übernommen und planbegleitetes Lernen wird eingeschaltet. Ein laufendes zulässiges Lernziel bleibt erhalten; andernfalls wird ein geeignetes fälliges Ziel ausgewählt, sofern eines verfügbar ist.',
       cancel: 'Abbrechen',
       confirm: 'Planung jetzt übernehmen',
       saving: 'Wird wirksam gemacht …',
-      successStarted: (count: number) => `${count} Fachpläne sind gemeinsam wirksam. Das erste fällige Lernziel ist ausgewählt.`,
-      successIdle: (count: number) => `${count} Fachpläne sind gemeinsam wirksam. Heute ist kein startbares Planziel fällig.`,
+      successStarted: (count: number) => `${count} Fachpläne sind gemeinsam wirksam. Ein zulässiges Lernziel ist ausgewählt.`,
+      successIdle: (count: number) => `${count} Fachpläne sind gemeinsam wirksam. Aktuell ist kein startbares Planziel verfügbar.`,
       rejected: 'Die Planung konnte nicht übernommen werden. Es wurde kein Fachplan geändert. Bitte prüfe den aktuellen Stand und versuche es erneut.',
       prerequisiteScheduleConflict: 'Ein Fachplan konnte in den gewählten Zeiträumen nicht automatisch voraussetzungsgerecht verteilt werden. Öffne den Fachplan und passe die überlappenden Lernabschnitte an. Es wurde nichts übernommen.',
       outcomeUnknown: 'Das Ergebnis der gemeinsamen Aktivierung konnte nicht sicher bestätigt werden. Es wird kein Fachplan als neu wirksam dargestellt. Bitte prüfe zuerst den Cockpit-Stand erneut.',
@@ -91,7 +91,7 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
   : {
       eyebrow: 'Shared learning plan',
       title: 'All subjects together',
-      body: 'Daily requirements from every active subject add up. The learner is guided automatically in the chat.',
+      body: 'The learner preview shows the daily or weekly target and plan status for each subject. Confirmed continuation proceeds with an eligible learning goal.',
       loading: 'Checking subject plans …',
       retry: 'Check again',
       edit: 'Edit subject plan',
@@ -107,12 +107,12 @@ const copyFor = (language: 'de' | 'en') => language === 'de'
       unavailable: 'The cockpit state could not be checked reliably, so shared activation remains unavailable.',
       scopeChanged: 'The learner has other valid subject plans missing from this subject selection. Check the personal curriculum and update the subject selection before applying the shared planning.',
       confirmTitle: 'Apply this planning for the learner?',
-      confirmBody: 'The listed subjects will be applied together. Plan-guided learning will be enabled and a due eligible goal will start automatically.',
+      confirmBody: 'The listed subject plans will be applied and plan-guided learning will be enabled. An eligible goal already in progress is preserved; otherwise a suitable due goal is selected when available.',
       cancel: 'Cancel',
       confirm: 'Apply planning now',
       saving: 'Activating …',
-      successStarted: (count: number) => `${count} subject plans are active together. The first due goal is selected.`,
-      successIdle: (count: number) => `${count} subject plans are active together. No eligible plan goal is due today.`,
+      successStarted: (count: number) => `${count} subject plans are active together. An eligible learning goal is selected.`,
+      successIdle: (count: number) => `${count} subject plans are active together. No eligible plan goal is currently available.`,
       rejected: 'The planning could not be applied. No subject plan was changed. Check the current state and try again.',
       prerequisiteScheduleConflict: 'A subject plan could not be distributed prerequisite-safely across the selected periods automatically. Open that subject plan and adjust the overlapping learning sections. Nothing was applied.',
       outcomeUnknown: 'The result of the shared activation could not be confirmed safely. No subject plan is shown as newly active. Check the cockpit state first.',
@@ -312,7 +312,7 @@ export const TrainerLearningPlanActivation = ({
         return
       }
       const preview = await previewLearnerLearningPlans(learnerId,
-        teacherLearningPlanActivationRequest(asOf, latestActivatable), { signal: controller.signal })
+        teacherLearningPlanActivationRequest(asOf, latestActivatable), { signal: controller.signal, language })
       if (controller.signal.aborted || loadRequestTokenRef.current !== token || activeContextRef.current !== context) return
       setLoadState('ready')
       if (hasUnsavedActiveDraftRef.current || !teacherLearningPlanDraftsMatch(latest)) {

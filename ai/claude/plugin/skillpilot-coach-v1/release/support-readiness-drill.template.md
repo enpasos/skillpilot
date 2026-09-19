@@ -13,7 +13,7 @@
 | --- | --- |
 | Drill status | `pending` |
 | Candidate version | `1.1.7` |
-| Candidate SHA-256 | `9cf1463babac3c31f8e32fceef2514d456d7817a7b9986b1be3eefa2e8d17c2b` |
+| Candidate SHA-256 | `a7bb73da48087f44aeb1155b848768efc79efa71c55c9a2278c8e0cc4901d26b` |
 | Source commit (40 characters) | `UNASSIGNED - BLOCKING` |
 | Remote marketplace revision (40 characters) | `NOT YET AVAILABLE - PREPUBLICATION`; replace in later activation evidence |
 | Marketplace tree SHA-256 | `UNASSIGNED - BLOCKING` |

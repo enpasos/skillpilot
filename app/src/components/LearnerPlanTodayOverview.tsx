@@ -22,7 +22,7 @@ import { LearnerPlanDailyProgress } from './LearnerPlanDailyProgress'
 
 export interface LearnerPlanTodayOverviewProps {
   /** The one backend-formulated status; the cockpit renders it and derives nothing from metrics. */
-  status: LearnerPlanStatus | null
+  status: LearnerPlanStatus
   plans: readonly LearnerLearningPlanSummary[]
   language: LabelLanguage
   planModeEnabled: boolean
@@ -99,9 +99,6 @@ const LearnerPlanDetails = ({
           {copy.bufferValue(plan.buffer.remainingWorkdays, plan.buffer.totalWorkdays)}
         </span>
       </p>
-      <p className="sm:col-span-2">
-        {plan.metrics.totalPlanned} {language === 'de' ? 'Ziele im Plan' : 'goals in plan'}
-      </p>
     </div>
   )
 }
@@ -140,14 +137,14 @@ export const LearnerPlanTodayOverview = ({
    * reintroduce the ambiguity it fails closed on.
    */
   const plansForSubject = (subject: LearnerPlanSubjectStatus) => plans.filter(
-    (plan) => !plan.stale && subjectLabel(plan.landscapeId) === subject.subjectLabel,
+    (plan) => !plan.stale && subject.landscapeIds.includes(plan.landscapeId),
   )
 
   return (
     <section
       data-testid="learner-plan-today-overview"
       aria-labelledby={headingId}
-      aria-describedby={status && !status.evaluable ? summaryId : undefined}
+      aria-describedby={status?.noticeText ? summaryId : undefined}
       className="rounded-2xl border border-sky-200 bg-sidebar-bg p-4 shadow-sm dark:border-sky-900/60 sm:p-5"
     >
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -161,15 +158,13 @@ export const LearnerPlanTodayOverview = ({
             combined text here would state the same thing twice and make the closed mobile
             view scroll. Only the unavailability notice, which no row covers, stays here.
           */}
-          {status && !status.evaluable ? (
+          {status?.noticeText ? (
             <p
               id={summaryId}
               data-testid="learner-plan-status-notice"
               className="mt-1 text-sm text-text-secondary"
             >
-              {language === 'de'
-                ? 'Für mindestens ein Fach lässt sich der Planstand derzeit nicht bestimmen.'
-                : 'For at least one subject the plan status cannot be determined right now.'}
+              {status.noticeText}
             </p>
           ) : null}
         </div>
@@ -198,7 +193,7 @@ export const LearnerPlanTodayOverview = ({
             {status?.activeGoal?.announcement ?? activeGoalLabel ? (
               <p
                 data-testid="learner-plan-active-goal"
-                className="mt-1 truncate font-medium text-text-primary"
+                className="mt-1 whitespace-normal break-words font-medium text-text-primary"
                 title={status?.activeGoal?.title ?? activeGoalLabel}
               >
                 {status?.activeGoal?.announcement ?? activeGoalLabel}
@@ -298,7 +293,7 @@ export const LearnerPlanTodayOverview = ({
                   </button>
                 ) : null}
               </div>
-              {plan ? (
+              {subjectPlans.length > 0 ? (
                 <details className="group mt-2 rounded-lg text-sm">
                   <summary
                     aria-label={`${copy.detailsAction}: ${subject.subjectLabel}`}
@@ -307,13 +302,16 @@ export const LearnerPlanTodayOverview = ({
                     {copy.detailsAction}
                     <ChevronDown className="transition-transform group-open:rotate-180" size={16} aria-hidden="true" />
                   </summary>
-                  <LearnerPlanDetails
-                    plan={plan}
-                    language={language}
-                    nextGoalLabel={plan.nextEligibleGoal
-                      ? goalLabel(plan.nextEligibleGoal.goalId)
-                      : undefined}
-                  />
+                  {subjectPlans.map((subjectPlan) => (
+                    <LearnerPlanDetails
+                      key={subjectPlan.planId}
+                      plan={subjectPlan}
+                      language={language}
+                      nextGoalLabel={subjectPlan.nextEligibleGoal
+                        ? goalLabel(subjectPlan.nextEligibleGoal.goalId)
+                        : undefined}
+                    />
+                  ))}
                 </details>
               ) : null}
             </li>

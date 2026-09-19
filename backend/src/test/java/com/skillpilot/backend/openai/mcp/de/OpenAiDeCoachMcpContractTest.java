@@ -975,7 +975,7 @@ class OpenAiDeCoachMcpContractTest {
                 McpSchema.TextContent.class,
                 text -> assertThat(text.text())
                         .contains(contract.toolSpecifications().size() == 14
-                                ? "Tagesplan nicht auswertbar" : "SkillPilot-Kontext geladen")
+                                ? "Lernplanstatus derzeit nicht auswertbar" : "SkillPilot-Kontext geladen")
                         .doesNotContain(LEARNER_ID, CONNECTION_SECRET, "SECRET SOLUTION"));
         assertThat(result.structuredContent()).isInstanceOf(Map.class);
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_CONTEXT, result);
@@ -1196,7 +1196,8 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("permanent SkillPilot IDs")
                 .contains("exact activeGoal.title")
                 .contains("“Dein aktives Lernziel: <Titel>”")
-                .contains("“Your active learning goal: <title>”, once; learningPlanToday.text never contains it")
+                .contains("learningPlanToday.activeGoalAnnouncement verbatim once")
+                .contains("“Your active learning goal: <title>”; learningPlanToday.text never contains it")
                 .contains("Never substitute activeGoal.description")
                 .contains("Do not comment didactically on setup, workflow ordering, or persistence")
                 .contains("learner-facing focus exclusively on learning")

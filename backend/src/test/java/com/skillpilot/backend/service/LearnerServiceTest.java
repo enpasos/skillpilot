@@ -36,6 +36,8 @@ import com.skillpilot.backend.repository.LearnerLearningPlanRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import com.skillpilot.backend.service.CompositionViewService.CompositionStructureResolution;
+import com.skillpilot.backend.service.learningplan.PeriodBasis;
+import com.skillpilot.backend.service.learningplan.PlanBalanceResult;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -62,6 +64,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import org.springframework.test.context.ActiveProfiles;
@@ -174,6 +178,9 @@ public class LearnerServiceTest {
 
     @Autowired
     private CompositionViewService compositionViewService;
+
+    @Autowired
+    private PlatformTransactionManager transactionManager;
 
     private String learnerId;
     private Clock originalPlanClock;
@@ -653,7 +660,8 @@ public class LearnerServiceTest {
         assertThat(created.blocks().get(0).atomicGoalIds()).containsExactly(
                 CANONICAL_CHOOSE_REPRESENTATION_ID,
                 CANONICAL_CREATE_REPRESENTATION_ID);
-        assertThat(created.metrics().dueThroughToday()).isEqualTo(1);
+        assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
+                created.blocks(), LocalDate.parse("2026-09-01"))).hasSize(1);
         assertThat(learnerLearningPlanRepository
                         .findByLearner_SkillpilotIdAndLandscapeId(
                                 learnerId,
@@ -959,8 +967,9 @@ public class LearnerServiceTest {
                 List.of(CANONICAL_CHOOSE_REPRESENTATION_ID,
                         CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_READ_REPRESENTATION_ID));
         var before = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today);
-        assertThat(before.metrics().dueToday()).isEqualTo(1);
-        assertThat(before.metrics().openDueThroughToday()).isEqualTo(3);
+        var beforeBalance = subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID);
+        assertThat(beforeBalance.offenesPeriodenpensum()).isEqualTo(1);
+        assertThat(beforeBalance.rueckstand()).isEqualTo(2);
         assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
                 before.blocks(), today.minusDays(1)))
                 .contains(CANONICAL_CREATE_REPRESENTATION_ID);
@@ -970,10 +979,10 @@ public class LearnerServiceTest {
         var completion = learnerService.setMastery(learnerId, new MasteryUpdateRequest(
                 Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0), CANONICAL_CHOOSE_REPRESENTATION_ID));
 
-        var after = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today);
-        assertThat(after.metrics().completedDueToday()).isEqualTo(1);
-        assertThat(after.metrics().openDueToday()).isZero();
-        assertThat(after.metrics().openDueThroughToday()).isEqualTo(2);
+        var afterBalance = subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID);
+        assertThat(afterBalance.erfuelltesPeriodenziel()).isEqualTo(1);
+        assertThat(afterBalance.offenesPeriodenpensum()).isZero();
+        assertThat(afterBalance.rueckstand()).isEqualTo(2);
         assertThat(completion.activeGoal()).isNull();
         assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
         assertThat(learnerService.getUncompactedRichFrontierForFocus(
@@ -983,6 +992,145 @@ public class LearnerServiceTest {
                 .isZero();
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
                 .extracting(PlannedGoal::getGoalId).containsExactly(CANONICAL_REPRESENTATION_CLUSTER_ID);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "DAY", "WEEK" })
+    void automaticHandoffUsesTheConfiguredPeriodForGoalsScheduledLaterThisWeek(String basisName) {
+        prepareRepresentationLearningPlan();
+        LocalDate today = LocalDate.parse("2026-09-02");
+        LocalDate friday = today.plusDays(2);
+        replaceRepresentationLearningPlanSchedule(friday, friday,
+                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID, CANONICAL_CREATE_REPRESENTATION_ID));
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setLearningPlanPeriodBasis(PeriodBasis.valueOf(basisName));
+        learnerRepository.saveAndFlush(learner);
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", false, null, null, true);
+        // The learner explicitly starts a permissible goal before its scheduled day.
+        learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
+
+        var completion = learnerService.setMastery(learnerId, new MasteryUpdateRequest(
+                Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0), CANONICAL_CHOOSE_REPRESENTATION_ID));
+
+        var balance = subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID);
+        if ("WEEK".equals(basisName)) {
+            assertThat(balance.offenesPeriodenpensum()).isEqualTo(1);
+            assertThat(balance.rueckstand()).isZero();
+            assertThat(completion.activeGoal()).isNotNull();
+            assertThat(completion.activeGoal().id()).isEqualTo(CANONICAL_CREATE_REPRESENTATION_ID);
+        } else {
+            assertThat(balance.offenesPeriodenpensum()).isZero();
+            assertThat(balance.vorsprung()).isEqualTo(1);
+            assertThat(completion.activeGoal()).isNull();
+        }
+        assertThat(learnerService.getMastery(learnerId)
+                .getOrDefault(CANONICAL_CREATE_REPRESENTATION_ID, 0.0)).isZero();
+    }
+
+    @Test
+    void earlierWorkOnFutureGoalsCoversQuotaAndStopsAutomaticExtraWork() {
+        prepareRepresentationLearningPlan();
+        LocalDate today = LocalDate.parse("2026-09-02");
+        replaceRepresentationLearningPlanSchedule(today, today.plusDays(1),
+                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID,
+                        CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_READ_REPRESENTATION_ID));
+        // This mastery was acquired after the plan baseline, with no known completion
+        // timestamp. It contributes to I, never to H, and stays in the fixed plan set.
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_READ_REPRESENTATION_ID, 1.0));
+        assertThat(subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID).offenesPeriodenpensum())
+                .isEqualTo(1);
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, null, null, true);
+        learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
+
+        var completion = learnerService.setMastery(learnerId, new MasteryUpdateRequest(
+                Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0), CANONICAL_CHOOSE_REPRESENTATION_ID));
+
+        var balance = subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID);
+        assertThat(balance.erfuelltesPeriodenziel()).isEqualTo(2);
+        assertThat(balance.offenesPeriodenpensum()).isZero();
+        assertThat(completion.activeGoal()).isNull();
+        assertThat(learnerService.getUncompactedRichFrontierForFocus(
+                learnerId, List.of(CANONICAL_REPRESENTATION_CLUSTER_ID)))
+                .extracting(FrontierGoal::id).contains(CANONICAL_CREATE_REPRESENTATION_ID);
+    }
+
+    @Test
+    void statusWaitsForConcurrentPeriodAndMasteryUpdateThenReadsOneCommittedState() throws Exception {
+        prepareRepresentationLearningPlan();
+        LocalDate today = LocalDate.parse("2026-09-02");
+        subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID); // Pin the status clock as well.
+        CountDownLatch changesWritten = new CountDownLatch(1);
+        CountDownLatch commitAllowed = new CountDownLatch(1);
+        CountDownLatch readerStarted = new CountDownLatch(1);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            Future<?> writer = executor.submit(() -> new TransactionTemplate(transactionManager)
+                    .executeWithoutResult(transaction -> {
+                        learnerService.acquireLearningPlanMutationLock(learnerId);
+                        learnerService.setPreferences(learnerId, null, null, null, null, null, PeriodBasis.WEEK);
+                        learnerService.setMastery(learnerId, new MasteryUpdateRequest(
+                                Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0),
+                                CANONICAL_CHOOSE_REPRESENTATION_ID));
+                        changesWritten.countDown();
+                        try {
+                            assertThat(commitAllowed.await(10, TimeUnit.SECONDS)).isTrue();
+                        } catch (InterruptedException exception) {
+                            Thread.currentThread().interrupt();
+                            throw new IllegalStateException(exception);
+                        }
+                    }));
+            assertThat(changesWritten.await(10, TimeUnit.SECONDS)).isTrue();
+            Future<LearnerLearningPlanApi.CollectionResponse> reader = executor.submit(() -> {
+                readerStarted.countDown();
+                return learnerLearningPlanService.getPlans(learnerId, null, "en");
+            });
+            assertThat(readerStarted.await(10, TimeUnit.SECONDS)).isTrue();
+            assertThatThrownBy(() -> reader.get(200, TimeUnit.MILLISECONDS))
+                    .isInstanceOf(java.util.concurrent.TimeoutException.class);
+            commitAllowed.countDown();
+            writer.get(10, TimeUnit.SECONDS);
+            long revisionAfterWrite = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
+
+            var collection = reader.get(10, TimeUnit.SECONDS);
+            assertThat(collection.asOf()).isEqualTo(today);
+            assertThat(collection.status().periodBasis()).isEqualTo(PeriodBasis.WEEK);
+            assertThat(collection.status().statusText())
+                    .isEqualTo("Mathematics: Weekly target 1 of 2 · on track");
+            assertThat(collection.status().subjects()).singleElement().satisfies(subject -> {
+                assertThat(subject.balance().erfuelltesPeriodenziel()).isEqualTo(1);
+                assertThat(subject.balance().offenesPeriodenpensum()).isEqualTo(1);
+            });
+            assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
+                    .isEqualTo(revisionAfterWrite);
+        } finally {
+            commitAllowed.countDown();
+            executor.shutdownNow();
+            assertThat(executor.awaitTermination(10, TimeUnit.SECONDS)).isTrue();
+        }
+    }
+
+    @Test
+    void periodPreferencePersistsPerLearnerWithoutChangingPlansOrMastery() {
+        prepareRepresentationLearningPlan();
+        Learner other = learnerService.createLearner();
+        var before = learnerLearningPlanRepository.findByLearner_SkillpilotIdAndLandscapeId(
+                learnerId, CANONICAL_MATH_LANDSCAPE_ID).orElseThrow();
+        String blocksBefore = before.getBlocksJson();
+        long planRevisionBefore = before.getRevision();
+        Map<String, Double> masteryBefore = learnerService.getMastery(learnerId);
+
+        learnerService.setPreferences(learnerId, null, null, null, null, null, PeriodBasis.WEEK);
+
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getLearningPlanPeriodBasis())
+                .isEqualTo(PeriodBasis.WEEK);
+        assertThat(learnerRepository.findById(other.getSkillpilotId()).orElseThrow().getLearningPlanPeriodBasis())
+                .isEqualTo(PeriodBasis.DAY);
+        var after = learnerLearningPlanRepository.findByLearner_SkillpilotIdAndLandscapeId(
+                learnerId, CANONICAL_MATH_LANDSCAPE_ID).orElseThrow();
+        assertThat(after.getBlocksJson()).isEqualTo(blocksBefore);
+        assertThat(after.getRevision()).isEqualTo(planRevisionBefore);
+        assertThat(learnerService.getMastery(learnerId)).isEqualTo(masteryBefore);
     }
 
     @Test
@@ -1204,18 +1352,18 @@ public class LearnerServiceTest {
                 .extracting(PlannedGoal::getGoalId)
                 .containsExactly(CANONICAL_PHYSICS_ROOT_SCOPE_ID);
         var math = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, planDate);
-        assertThat(math.metrics().dueToday()).isEqualTo(1);
-        assertThat(math.metrics().completedDueToday()).isEqualTo(1);
-        assertThat(math.metrics().openDueToday()).isZero();
-        assertThat(math.metrics().openDueThroughToday()).isEqualTo(2);
+        var mathBalance = subjectBalance(planDate, CANONICAL_MATH_LANDSCAPE_ID);
+        assertThat(mathBalance.erfuelltesPeriodenziel()).isEqualTo(1);
+        assertThat(mathBalance.offenesPeriodenpensum()).isZero();
+        assertThat(mathBalance.rueckstand()).isEqualTo(2);
         assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(
                 math.blocks(), planDate.minusDays(1)))
                 .contains(CANONICAL_CREATE_REPRESENTATION_ID);
         assertThat(learnerService.getUncompactedRichFrontierForFocus(
                 learnerId, List.of(CANONICAL_REPRESENTATION_CLUSTER_ID)))
                 .extracting(FrontierGoal::id).contains(CANONICAL_CREATE_REPRESENTATION_ID);
-        assertThat(learnerLearningPlanService.getPlan(learnerId, CANONICAL_PHYSICS_LANDSCAPE_ID, planDate)
-                .metrics().openDueToday()).isEqualTo(1);
+        assertThat(subjectBalance(planDate, CANONICAL_PHYSICS_LANDSCAPE_ID)
+                .offenesPeriodenpensum()).isEqualTo(1);
     }
 
     @Test
@@ -1430,9 +1578,10 @@ public class LearnerServiceTest {
 
         assertThat(activation.plans()).hasSize(1);
         var plan = activation.plans().getFirst();
-        assertThat(plan.metrics().dueToday()).isZero();
-        assertThat(plan.metrics().openDueToday()).isZero();
-        assertThat(plan.metrics().openDueThroughToday()).isEqualTo(1);
+        var balance = subjectBalance(asOf, CANONICAL_MATH_LANDSCAPE_ID);
+        assertThat(balance.erfuelltesPeriodenziel()).isZero();
+        assertThat(balance.offenesPeriodenpensum()).isZero();
+        assertThat(balance.rueckstand()).isEqualTo(1);
         Map<String, Double> masteryBefore = new LinkedHashMap<>(learnerService.getMastery(learnerId));
         assertThat(masteryBefore.getOrDefault(CANONICAL_CHOOSE_REPRESENTATION_ID, 0.0)).isZero();
 
@@ -1478,7 +1627,7 @@ public class LearnerServiceTest {
     }
 
     @Test
-    void completedAnchorPlanWinsThenCrossSubjectHandoffUsesOldestDueCandidate() {
+    void completedAnchorSubjectWinsThenCrossSubjectHandoffUsesOldestDueCandidate() {
         var anchor = new LearnerService.LearningPlanHandoffCandidate(
                 java.util.UUID.fromString("00000000-0000-0000-0000-000000000001"),
                 "math",
@@ -1497,9 +1646,9 @@ public class LearnerServiceTest {
                 false);
         var secondAnchor = new LearnerService.LearningPlanHandoffCandidate(
                 java.util.UUID.fromString("00000000-0000-0000-0000-000000000003"),
-                "chemistry",
-                "chemistry-focus",
-                "chemistry-next",
+                "second-math-landscape",
+                "second-math-focus",
+                "second-math-next",
                 LocalDate.parse("2026-09-01"),
                 LocalDate.parse("2026-09-05"),
                 true);
@@ -1524,6 +1673,22 @@ public class LearnerServiceTest {
                 .contains(unrelated);
         assertThat(LearnerService.selectLearningPlanHandoffCandidate(true, List.of(anchor, secondAnchor)))
                 .contains(secondAnchor);
+    }
+
+    @Test
+    void handoffPrioritizesTheGoalDueDateOverTheEndOfItsLongerBlock() {
+        var earlierGoalInLongBlock = new LearnerService.LearningPlanHandoffCandidate(
+                java.util.UUID.randomUUID(), "math", "math-focus", "older-goal",
+                LocalDate.parse("2026-08-24"), LocalDate.parse("2026-09-30"), true,
+                LocalDate.parse("2026-08-25"));
+        var newerGoalInShortBlock = new LearnerService.LearningPlanHandoffCandidate(
+                java.util.UUID.randomUUID(), "math", "math-focus", "newer-goal",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2026-09-02"), true,
+                LocalDate.parse("2026-09-01"));
+
+        assertThat(LearnerService.selectLearningPlanHandoffCandidate(
+                true, List.of(newerGoalInShortBlock, earlierGoalInLongBlock)))
+                .contains(earlierGoalInLongBlock);
     }
 
     @Test
@@ -3199,8 +3364,7 @@ public class LearnerServiceTest {
         assertThat(completion.successor().activeGoal()).isNull();
         assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
         assertVerifiedRecallDailyCredit(today, 1, 0);
-        assertThat(learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today)
-                .metrics().openDueThroughToday()).isEqualTo(1);
+        assertThat(subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID).rueckstand()).isEqualTo(1);
         assertThat(learnerService.getUncompactedRichFrontierForFocus(
                 learnerId, List.of(CANONICAL_REPRESENTATION_CLUSTER_ID)))
                 .extracting(FrontierGoal::id).contains(CANONICAL_CHOOSE_REPRESENTATION_ID);
@@ -3906,11 +4070,20 @@ public class LearnerServiceTest {
         assertThat(learnerService.getGoalCompletionsOnDate(learnerId, day))
                 .containsExactly(Map.entry(SEK1_CORE_FORMULAS_FLASHCARDS_ID,
                         day.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant()));
-        var metrics = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, day).metrics();
-        assertThat(metrics.dueToday()).isEqualTo(expectedQuota);
-        assertThat(metrics.completedDueToday()).isEqualTo(1);
-        assertThat(metrics.openDueToday()).isEqualTo(expectedOpen);
-        assertThat(metrics.extraCompletedToday()).isZero();
+        var balance = subjectBalance(day, CANONICAL_MATH_LANDSCAPE_ID);
+        assertThat(balance.erfuelltesPeriodenziel() + balance.offenesPeriodenpensum())
+                .isEqualTo(expectedQuota);
+        assertThat(balance.erfuelltesPeriodenziel()).isEqualTo(1);
+        assertThat(balance.offenesPeriodenpensum()).isEqualTo(expectedOpen);
+    }
+
+    private PlanBalanceResult subjectBalance(LocalDate day, String landscapeId) {
+        ZoneId berlin = ZoneId.of("Europe/Berlin");
+        ReflectionTestUtils.setField(learnerLearningPlanService, "clock",
+                Clock.fixed(day.atStartOfDay(berlin).toInstant(), berlin));
+        return learnerLearningPlanService.getTodayStatus(learnerId, "de").subjects().stream()
+                .filter(subject -> subject.landscapeIds().contains(landscapeId))
+                .findFirst().orElseThrow().balance();
     }
 
     private void selectCompletedCanonicalMathCurriculum() {

@@ -55,12 +55,13 @@ public class LearnerLearningPlanController {
     public ResponseEntity<LearnerLearningPlanApi.CollectionResponse> getPlans(
             @PathVariable String skillpilotId,
             @RequestParam(required = false) LocalDate asOf,
+            @RequestParam(required = false) String language,
             HttpServletResponse response) {
         noStore(response);
         learners.assertActiveLearnerRouteAccess(skillpilotId);
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
-                .body(learningPlans.getPlans(skillpilotId, asOf));
+                .body(learningPlans.getPlans(skillpilotId, asOf, language));
     }
 
     /**
@@ -113,13 +114,14 @@ public class LearnerLearningPlanController {
     @PostMapping(value = "/preview", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<LearnerLearningPlanApi.PreviewResponse> previewPlans(
             @PathVariable String skillpilotId,
+            @RequestParam(required = false) String language,
             @RequestBody LearnerLearningPlanApi.ActivateRequest request,
             HttpServletResponse response) {
         noStore(response);
         learners.assertActiveLearnerRouteAccess(skillpilotId);
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
-                .body(learningPlans.previewPlans(skillpilotId, request));
+                .body(learningPlans.previewPlans(skillpilotId, request, language));
     }
 
     @PostMapping(value = "/activate", consumes = MediaType.APPLICATION_JSON_VALUE)

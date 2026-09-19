@@ -1,3 +1,4 @@
+import { learnerPlanStatus } from '../../scripts/fixtures/learnerPlanStatus'
 import assert from 'node:assert/strict'
 import type { LearnerLearningPlanDetail } from '../learnerLearningPlanTypes'
 import {
@@ -13,6 +14,7 @@ import {
   getLearnerLearningPlan,
   getLearnerLearningPlans,
   parseLearnerLearningPlansResponse,
+  parseLearnerPlanStatus,
   parsePreviewLearnerLearningPlansResponse,
   previewLearnerLearningPlans,
   reconcileLearnerLearningPlans,
@@ -48,17 +50,7 @@ const planSummary = {
     title: 'Klausur Analysis',
     dueDate: '2026-09-25',
   },
-  metrics: {
-    dueThroughToday: 12,
-    completedDueThroughToday: 7,
-    openDueThroughToday: 5,
-    dueToday: 3,
-    completedDueToday: 1,
-    openDueToday: 2,
-    totalPlanned: 42,
-  },
   buffer: { totalWorkdays: 8, remainingWorkdays: 6 },
-  pace: { status: 'neutral', reason: 'mastery-history-not-event-backed' },
   nextEligibleGoal: { goalId: 'analysis-1' },
   continueReason: null,
   canContinue: true,
@@ -69,6 +61,7 @@ const planDetail: LearnerLearningPlanDetail = {
     asOf: '2026-09-10',
     followLearningPlans: true,
     plans: [planSummary],
+  status: learnerPlanStatus('2026-09-10', [planSummary.landscapeId]),
   }).plans[0],
   blocks: [
     {
@@ -131,51 +124,21 @@ const parsed = parseLearnerLearningPlansResponse({
   asOf: '2026-09-10',
   followLearningPlans: false,
   plans: [planSummary],
+  status: learnerPlanStatus('2026-09-10', [planSummary.landscapeId], { followLearningPlans: false }),
   futureField: 'ignored',
 })
 assert.equal(parsed.followLearningPlans, false)
 assert.equal(parsed.plans[0]?.currentBlock?.blockId, 'block-analysis')
 assert.equal(parsed.plans[0]?.nextMilestone?.date, '2026-09-25')
-assert.equal(parsed.plans[0]?.metrics.openDueThroughToday, 5)
-assert.equal(parsed.plans[0]?.metrics.openDueToday, 2)
 assert.equal(parsed.plans[0]?.nextEligibleGoal?.goalId, 'analysis-1')
-assert.equal(parsed.plans[0]?.metrics.extraCompletedToday, undefined, 'older responses remain compatible')
-
-const completedMetrics = { ...planSummary.metrics, completedDueToday: 3, openDueToday: 0, extraCompletedToday: 2 }
-const parsedExtra = parseLearnerLearningPlansResponse({
-  asOf: '2026-09-10', followLearningPlans: true,
-  plans: [{ ...planSummary, metrics: completedMetrics }],
-})
-assert.equal(parsedExtra.plans[0]?.metrics.extraCompletedToday, 2)
-assert.equal(parsedExtra.plans[0]?.canContinue, true, 'completed quota still permits explicit extra work')
-for (const invalidMetrics of [
-  { ...completedMetrics, extraCompletedToday: -1 },
-  { ...completedMetrics, extraCompletedToday: 0.5 },
-  { ...completedMetrics, extraCompletedToday: Number.NaN },
-  { ...completedMetrics, extraCompletedToday: Number.MAX_SAFE_INTEGER + 1 },
-  { ...completedMetrics, extraCompletedToday: '2' },
-  { ...completedMetrics, extraCompletedToday: null },
-  { ...completedMetrics, extraCompletedToday: 5 },
-  { ...completedMetrics, completedDueToday: 4 },
-  { ...planSummary.metrics, extraCompletedToday: 1 },
-]) {
-  assert.throws(() => parseLearnerLearningPlansResponse({
-    asOf: '2026-09-10', followLearningPlans: true,
-    plans: [{ ...planSummary, metrics: invalidMetrics }],
-  }), /metrics\./u)
-}
-
-assert.throws(
-  () => parseLearnerLearningPlansResponse({
-    asOf: '2026-09-10',
-    followLearningPlans: true,
-    plans: [{
-      ...planSummary,
-      metrics: { ...planSummary.metrics, openDueThroughToday: 6 },
-    }],
-  }),
-  /metrics\.cardinality/u,
-)
+assert.equal('metrics' in parsed.plans[0], false)
+assert.equal('pace' in parsed.plans[0], false)
+assert.equal('statusDirection' in parsed.status, false, 'there is no cross-subject balance')
+assert.throws(() => parseLearnerLearningPlansResponse({ ...parsed, status: null }), /status/u)
+assert.throws(() => parseLearnerLearningPlansResponse({
+  ...parsed, status: { ...parsed.status, asOf: '2026-09-11', periodStart: '2026-09-11', periodEnd: '2026-09-11' },
+}), /status.snapshot/u)
+assert.throws(() => parseLearnerPlanStatus({ ...parsed.status, subjects: [{ ...parsed.status.subjects[0], periodText: null }] }), /evaluability/u)
 
 assert.equal(formatLearnerLearningPlanDate('2026-09-01', 'de'), '01.09.2026')
 assert.equal(formatLearnerLearningPlanDate('2026-09-01', 'en'), '01/09/2026')
@@ -189,6 +152,7 @@ assert.equal(
       asOf: '2026-09-10',
       followLearningPlans: true,
       plans: [planSummary],
+  status: learnerPlanStatus('2026-09-10', [planSummary.landscapeId]),
     }),
     'learner-a:math',
     'learner-b:physics',
@@ -210,7 +174,7 @@ const sorted = sortLearnerLearningPlansForToday([
 ])
 assert.deepEqual(sorted.map(({ planId }) => planId), ['done', 'actionable', 'stale'])
 assert.deepEqual(sortLearnerLearningPlansForToday([
-  { ...parsedExtra.plans[0], planId: 'physics', landscapeId: 'z' },
+  { ...parsed.plans[0], planId: 'physics', landscapeId: 'z' },
   { ...parsed.plans[0], planId: 'maths', landscapeId: 'a' },
 ], (landscapeId) => (landscapeId === 'a' ? 'Mathematik' : 'Physik'))
   .map(({ planId }) => planId), ['maths', 'physics'], 'subjects sort by their label')
@@ -221,6 +185,7 @@ let responseBody: unknown = {
   asOf: '2026-09-10',
   followLearningPlans: true,
   plans: [planSummary],
+  status: learnerPlanStatus('2026-09-10', [planSummary.landscapeId]),
 }
 const fetchImpl: typeof fetch = async (input, init) => {
   capturedUrl = String(input)
@@ -233,11 +198,12 @@ const fetchImpl: typeof fetch = async (input, init) => {
 
 await getLearnerLearningPlans('learner-42', '2026-09-10', {
   apiBase: 'https://api.example.test',
+  language: 'en',
   fetchImpl,
 })
 assert.equal(
   capturedUrl,
-  'https://api.example.test/api/ui/learners/learner-42/learning-plans?asOf=2026-09-10',
+  'https://api.example.test/api/ui/learners/learner-42/learning-plans?asOf=2026-09-10&language=en',
 )
 assert.equal(capturedInit?.method, undefined)
 assert.equal(capturedInit?.credentials, 'include')
@@ -491,69 +457,29 @@ const previewRequest = {
 }
 const previewResponse = {
   asOf: previewRequest.asOf,
-  days: Array.from({ length: 7 }, (_, index) => ({
-    date: `2026-10-${24 + index}`,
-    subjects: [{ landscapeId: planDetail.landscapeId, metrics: planDetail.metrics }],
-    totals: planDetail.metrics,
-  })),
+  days: Array.from({ length: 7 }, (_, index) => {
+    const date = `2026-10-${24 + index}`
+    return { date, status: learnerPlanStatus(date, [planDetail.landscapeId]) }
+  }),
 }
 assert.deepEqual(parsePreviewLearnerLearningPlansResponse(previewResponse, previewRequest), previewResponse)
-const mixedPreviewRequest = {
-  ...previewRequest,
-  plans: [...previewRequest.plans, { landscapeId: 'physics', expectedRevision: 1, blocks: [] }],
-}
-const mixedPreviewResponse = {
-  ...previewResponse,
-  days: previewResponse.days.map((day) => ({
-    ...day,
-    subjects: [
-      { landscapeId: planDetail.landscapeId, metrics: completedMetrics },
-      { landscapeId: 'physics', metrics: planDetail.metrics },
-    ],
-    totals: {
-      dueThroughToday: 24, completedDueThroughToday: 14, openDueThroughToday: 10,
-      dueToday: 6, completedDueToday: 4, openDueToday: 2,
-      extraCompletedToday: 2, totalPlanned: 84,
-    },
-  })),
-}
-assert.equal(parsePreviewLearnerLearningPlansResponse(mixedPreviewResponse, mixedPreviewRequest)
-  .days[0].totals.extraCompletedToday, 2, 'one subject can earn extras while another daily target remains open')
-for (const extraCompletedToday of [-1, 0.5, null, '1']) {
-  assert.throws(() => parsePreviewLearnerLearningPlansResponse({
-    ...previewResponse,
-    days: previewResponse.days.map((day) => ({
-      ...day,
-      totals: { ...day.totals, extraCompletedToday },
-    })),
-  }, previewRequest), /metrics\.extraCompletedToday/u)
-}
-assert.throws(() => parsePreviewLearnerLearningPlansResponse({
-  ...previewResponse,
-  days: previewResponse.days.map((day) => ({
-    ...day,
-    subjects: day.subjects.map((subject) => ({ ...subject, metrics: completedMetrics })),
-    totals: { ...completedMetrics, extraCompletedToday: undefined },
-  })),
-}, previewRequest), /preview: totals/u, 'omitted optional totals cannot hide supplied subject completions')
 for (const invalid of [
   { ...previewResponse, asOf: '2026-10-25' },
   { ...previewResponse, days: previewResponse.days.slice(1) },
   { ...previewResponse, days: previewResponse.days.map((day, index) => index === 1 ? { ...day, date: '2026-10-26' } : day) },
-  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, subjects: [] })) },
-  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, subjects: [...day.subjects, ...day.subjects] })) },
-  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, subjects: [{ ...day.subjects[0], landscapeId: 'unexpected' }] })) },
-  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, totals: { ...day.totals, totalPlanned: day.totals.totalPlanned + 1 } })) },
-  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, totals: { ...day.totals, openDueToday: -1 } })) },
-  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, totals: { ...day.totals, dueToday: 1.5 } })) },
+  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, status: null })) },
+  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, status: { ...day.status, subjects: [] } })) },
+  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, status: { ...day.status, subjects: [...day.status.subjects, ...day.status.subjects] } })) },
+  { ...previewResponse, days: previewResponse.days.map((day) => ({ ...day, status: { ...day.status, subjects: [{ ...day.status.subjects[0], landscapeIds: ['unexpected'] }] } })) },
 ]) assert.throws(() => parsePreviewLearnerLearningPlansResponse(invalid, previewRequest), /Invalid learning-plan/u)
 const previewController = new AbortController()
 let previewRequestCount = 0
 assert.deepEqual(await previewLearnerLearningPlans('learner-42', previewRequest, {
   signal: previewController.signal,
+  language: 'en',
   fetchImpl: (async (url, init) => {
     previewRequestCount += 1
-    assert.equal(url, '/api/ui/learners/learner-42/learning-plans/preview')
+    assert.equal(url, '/api/ui/learners/learner-42/learning-plans/preview?language=en')
     assert.equal(init?.method, 'POST')
     assert.equal(init?.credentials, 'include')
     assert.equal(init?.cache, 'no-store')

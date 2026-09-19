@@ -1,3 +1,4 @@
+import { learnerPlanStatus } from './fixtures/learnerPlanStatus'
 import { fileURLToPath } from 'node:url'
 
 import { chromium, type Browser, type Route } from 'playwright'
@@ -57,17 +58,7 @@ const planDetail = ({
       endDate: asOf,
     },
     nextMilestone: null,
-    metrics: {
-      dueThroughToday: 1,
-      completedDueThroughToday: 0,
-      openDueThroughToday: 1,
-      dueToday: 1,
-      completedDueToday: 0,
-      openDueToday: 1,
-      totalPlanned: 1,
-    },
     buffer: { totalWorkdays: 0, remainingWorkdays: 0 },
-    pace: { status: 'neutral', reason: 'descriptive-only' },
     nextEligibleGoal: active ? null : { goalId },
     continueReason: active ? 'active-goal-in-progress' : null,
     canContinue: !active,
@@ -151,6 +142,7 @@ try {
     if (request.method() === 'GET' && url.pathname === `/api/ui/learners/${learnerId}/learning-plans`) {
       await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
         asOf: berlinDateKey(), followLearningPlans,
+        status: learnerPlanStatus(berlinDateKey(), [...serverPlans.keys()], { followLearningPlans }),
         plans: [...serverPlans.values()].filter(Boolean),
       }) })
       return
@@ -167,12 +159,11 @@ try {
       const days = Array.from({ length: 7 }, (_, index) => {
         const date = new Date(`${body.asOf}T00:00:00Z`)
         date.setUTCDate(date.getUTCDate() + index)
-        const metrics = { dueThroughToday: 1, completedDueThroughToday: 0, openDueThroughToday: 1,
-          dueToday: index === 0 ? 1 : 0, completedDueToday: 0, openDueToday: index === 0 ? 1 : 0, totalPlanned: 1 }
-        return { date: date.toISOString().slice(0, 10),
-          subjects: body.plans.map(({ landscapeId }) => ({ landscapeId, metrics })),
-          totals: Object.fromEntries(Object.entries(metrics).map(([key, value]) => [key, value * body.plans.length])),
-        }
+        const day = date.toISOString().slice(0, 10)
+        return { date: day, status: learnerPlanStatus(day, body.plans.map(({ landscapeId }) => landscapeId), {
+          statusText: 'Mathematik: Tagesziel 0 von 1 · im Plan\nPhysik: Tagesziel 0 von 1 · im Plan',
+        }) }
+
       })
       await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ asOf: body.asOf, days }) })
       return
@@ -279,21 +270,25 @@ try {
   await page.getByRole('button', { name: 'Schülervorschau', exact: true }).click()
   const previewPanel = page.getByTestId('trainer-learning-plan-preview')
   await previewPanel.getByTestId('trainer-learning-plan-preview-summary').waitFor()
-  assert(await previewPanel.getByRole('table').locator('tbody tr').count() === 7, 'the standalone preview shows exactly seven calendar days')
-  await previewPanel.getByRole('heading', { name: 'Die nächsten 7 Tage · Tagespensum', exact: true }).waitFor()
-  assert(await previewPanel.getByText('Heute geschafft', { exact: true }).count() > 0, 'today uses completion credits rather than existing mastery')
+  assert(await previewPanel.getByRole('table').locator('tbody tr').count() === 6, 'today is displayed once, followed by the remaining six days')
+  await previewPanel.getByRole('heading', { name: 'Ausblick für die nächsten 7 Tage', exact: true }).waitFor()
+  assert((await previewPanel.getByTestId('trainer-learning-plan-status').textContent())?.includes('Mathematik: Tagesziel 0 von 1 · im Plan'), 'preview renders the backend statement verbatim')
   await previewPanel.getByText(/Für die kommenden Tage bleibt der aktuelle Lernstand unverändert/u).waitFor()
+  assert(await page.getByText(/Tagesanforderungen aller aktiven Fächer zählen zusammen|im Chat automatisch geführt/u).count() === 0, 'planning neither combines subject balances nor promises unobserved automatic host behaviour')
   assert(await previewPanel.getByText('Offen aus früheren Tagen', { exact: true }).count() === 0, 'residual quota backlog is not presented as a count of past-date goal IDs')
   assert(activationBodies.length === 0, 'the learner preview never activates the draft')
   assert(previewBodies.length === 1, 'the preview uses one read-only backend projection')
+  if (process.env.SKILLPILOT_ISSUE48_SCREENSHOTS) {
+    await page.screenshot({ path: fileURLToPath(new URL('../../tmp/issue48/planning-preview.png', import.meta.url)), fullPage: true })
+  }
   await page.getByRole('button', { name: 'Schülervorschau', exact: true }).click()
   await activateButton.click()
   const confirmation = page.getByTestId('trainer-learning-plan-activation-confirmation')
   await confirmation.waitFor()
   assert(await confirmation.count() === 1, 'one shared confirmation is rendered')
   assert(previewBodies.length === 2, 'confirmation requires a fresh server preview')
-  assert(await confirmation.getByText('Mathematik', { exact: true }).count() === 1, 'confirmation includes Mathematics')
-  assert(await confirmation.getByText('Physik', { exact: true }).count() === 1, 'confirmation includes Physics')
+  assert((await confirmation.getByTestId('trainer-learning-plan-status').textContent())?.includes('Mathematik:'), 'confirmation includes Mathematics')
+  assert((await confirmation.getByTestId('trainer-learning-plan-status').textContent())?.includes('Physik:'), 'confirmation includes Physics')
 
   await page.getByRole('button', { name: 'Entwurf ändern', exact: true }).click()
   await page.getByRole('alert').filter({ hasText: 'Ein Fachplan hat sich während der Bestätigung geändert.' }).waitFor()
@@ -322,7 +317,7 @@ try {
     ;(button as HTMLButtonElement).click()
   })
 
-  await page.getByText('2 Fachpläne sind gemeinsam wirksam. Das erste fällige Lernziel ist ausgewählt.', { exact: true }).waitFor()
+  await page.getByText('2 Fachpläne sind gemeinsam wirksam. Ein zulässiges Lernziel ist ausgewählt.', { exact: true }).waitFor()
   assert(activationBodies.length === 1, `the synchronous guard turns a double click into exactly one activation request; got ${activationBodies.length}`)
   const activationBody = activationBodies[0] as {
     asOf?: string

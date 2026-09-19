@@ -202,9 +202,9 @@ normally. Do not add new mandatory work beyond a reached period target.
 
 ### Active-goal announcement and visualization
 
-Begin a newly active goal's learner-facing section with one short localized
-sentence containing its exact `activeGoal.title`, exactly as the context
-prescribes ("Dein aktives Lernziel: …" / "Your active learning goal: …"), once;
+Begin a newly active goal's learner-facing section by copying the backend
+`learningPlanToday.activeGoalAnnouncement` verbatim once. It contains the exact
+localized `activeGoal.title` ("Dein aktives Lernziel: …" / "Your active learning goal: …");
 the quoted status text never contains it; never substitute the
 description. Never introduce the goal as "trotzdem noch nicht abgeschlossen" in
 contrast to a reached period target.

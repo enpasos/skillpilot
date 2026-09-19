@@ -698,10 +698,7 @@ export const CoursePlanPilotView = ({
         latestContext.learnerId !== confirmation.learnerId
         || latestContext.landscapeId !== confirmation.landscapeId
       ) return
-      const successMessage = copy.publishSuccess(
-        savedPlan.revision,
-        savedPlan.metrics.totalPlanned,
-      )
+      const successMessage = copy.publishSuccess(savedPlan.revision)
       setPublicationConfirmation(null)
       setPublicationMessage(successMessage)
       onNotify?.('success', successMessage)

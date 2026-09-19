@@ -2,11 +2,12 @@ package com.skillpilot.backend.service.learningplan;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 /**
  * Deterministic text generator for the unified learning plan status.
  *
- * <p>Implements the standard localization templates defined in section 5 of the concept.
+ * <p>Implements the standard localization templates defined in section 6 of the concept.
  * Fixed templates for German ("de") and English ("en").</p>
  */
 public final class UnifiedLearningPlanStatusFormatter {
@@ -14,6 +15,10 @@ public final class UnifiedLearningPlanStatusFormatter {
     private UnifiedLearningPlanStatusFormatter() {}
 
     public static String formatPeriodText(PeriodBasis basis, int p, int erfuelltesPeriodenziel, String locale) {
+        Objects.requireNonNull(basis, "period basis");
+        if (p < 0 || erfuelltesPeriodenziel < 0 || erfuelltesPeriodenziel > p) {
+            throw new IllegalArgumentException("Period target must be between zero and its planned quota");
+        }
         boolean english = isEnglish(locale);
         if (p == 0) {
             if (basis == PeriodBasis.WEEK) {
@@ -38,6 +43,9 @@ public final class UnifiedLearningPlanStatusFormatter {
     }
 
     public static String formatPlanStatusText(int rueckstand, int vorsprung, String locale) {
+        if (rueckstand < 0 || vorsprung < 0 || (rueckstand > 0 && vorsprung > 0)) {
+            throw new IllegalArgumentException("Backlog and advance work must form a valid balance");
+        }
         boolean english = isEnglish(locale);
         if (rueckstand > 0) {
             if (english) {
@@ -55,17 +63,13 @@ public final class UnifiedLearningPlanStatusFormatter {
     }
 
     public static String formatPeriodText(PeriodBasis basis, PlanBalanceResult balance, String locale) {
-        if (balance == null) {
-            return formatPeriodText(basis, 0, 0, locale);
-        }
+        Objects.requireNonNull(balance, "plan balance");
         int p = balance.erfuelltesPeriodenziel() + balance.offenesPeriodenpensum();
         return formatPeriodText(basis, p, balance.erfuelltesPeriodenziel(), locale);
     }
 
     public static String formatPlanStatusText(PlanBalanceResult balance, String locale) {
-        if (balance == null) {
-            return formatPlanStatusText(0, 0, locale);
-        }
+        Objects.requireNonNull(balance, "plan balance");
         return formatPlanStatusText(balance.rueckstand(), balance.vorsprung(), locale);
     }
 
@@ -85,9 +89,7 @@ public final class UnifiedLearningPlanStatusFormatter {
             PeriodBasis basis,
             PlanBalanceResult balance,
             String locale) {
-        if (balance == null) {
-            return subjectLabel + ": " + formatPeriodText(basis, 0, 0, locale) + " · " + formatPlanStatusText(0, 0, locale);
-        }
+        Objects.requireNonNull(balance, "plan balance");
         int p = balance.erfuelltesPeriodenziel() + balance.offenesPeriodenpensum();
         return formatSubjectLine(subjectLabel, basis, balance, p, locale);
     }
@@ -119,6 +121,22 @@ public final class UnifiedLearningPlanStatusFormatter {
 
     public static String formatNoPlansNotice(String locale) {
         return isEnglish(locale) ? "No learning plan set up." : "Kein Lernplan eingerichtet.";
+    }
+
+    public static String formatUnavailableStatusNotice(String locale) {
+        return isEnglish(locale)
+                ? "Learning plan status currently unavailable."
+                : "Lernplanstatus derzeit nicht auswertbar.";
+    }
+
+    public static String formatUnidentifiedPlansNotice(int count, String locale) {
+        if (count <= 0) return "";
+        if (isEnglish(locale)) {
+            return count == 1 ? "1 subject plan unavailable."
+                    : count + " subject plans unavailable.";
+        }
+        return count == 1 ? "1 Fachplan nicht auswertbar."
+                : count + " Fachpläne nicht auswertbar.";
     }
 
     /**

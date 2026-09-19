@@ -142,7 +142,7 @@ export interface CoursePlanCopy {
   publishNoOpenGoals: string
   publishConflict: string
   publishFailed: string
-  publishSuccess: (revision: number, totalPlanned: number) => string
+  publishSuccess: (revision: number) => string
   publishGoalCount: (count: number) => string
   importNotIncluded: string
   protectedExtensionTitle: string
@@ -295,7 +295,7 @@ const de: CoursePlanCopy = {
   publishNoOpenGoals: 'Der Plan enthält für dieses Fach keine noch offenen atomaren Lernziele, die im Cockpit bereitgestellt werden könnten.',
   publishConflict: 'Der Fachplan im Cockpit wurde inzwischen geändert. Nichts wurde überschrieben. Bitte prüfe den aktuellen Stand erneut.',
   publishFailed: 'Der Plan konnte nicht im Cockpit bereitgestellt werden.',
-  publishSuccess: (revision, totalPlanned) => `Als unabhängige Kopie im Cockpit bereitgestellt · Revision ${revision} · ${totalPlanned} Lernziel${totalPlanned === 1 ? '' : 'e'} im persönlichen Plan`,
+  publishSuccess: (revision) => `Als unabhängige Kopie im Cockpit bereitgestellt · Revision ${revision}`,
   publishGoalCount: (count) => `${count} kanonische${count === 1 ? 's' : ''} Atomziel${count === 1 ? '' : 'e'} ${count === 1 ? 'wird' : 'werden'} geprüft. Gespeichert werden daraus nur aktuell offene sowie bereits in diesem persönlichen Fachplan erfasste Ziele.`,
   importNotIncluded: 'Ein Import folgt nach dem sicheren Server- und Berechtigungskonzept.',
   protectedExtensionTitle: 'Lernstand und Leitungssicht bleiben geschützt',
@@ -448,7 +448,7 @@ const en: CoursePlanCopy = {
   publishNoOpenGoals: 'The plan contains no remaining open atomic goals for this subject that could be made available in the cockpit.',
   publishConflict: 'The cockpit subject plan has changed in the meantime. Nothing was overwritten. Please check the current version again.',
   publishFailed: 'The plan could not be made available in the cockpit.',
-  publishSuccess: (revision, totalPlanned) => `Independent copy made available in the cockpit · revision ${revision} · ${totalPlanned} learning goal${totalPlanned === 1 ? '' : 's'} in the personal plan`,
+  publishSuccess: (revision) => `Independent copy made available in the cockpit · revision ${revision}`,
   publishGoalCount: (count) => `${count} canonical atomic goal${count === 1 ? '' : 's'} will be checked. Only goals that are currently open or already captured in this personal subject plan will be stored.`,
   importNotIncluded: 'Import follows after the secure server and authorization design.',
   protectedExtensionTitle: 'Learning status and management views remain protected',

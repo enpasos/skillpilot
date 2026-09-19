@@ -1,3 +1,4 @@
+import { learnerPlanStatus } from './fixtures/learnerPlanStatus'
 import { readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 
@@ -938,17 +939,7 @@ try {
       },
       currentBlock: null,
       nextMilestone: null,
-      metrics: {
-        dueThroughToday: 0,
-        completedDueThroughToday: 0,
-        openDueThroughToday: 0,
-        dueToday: 0,
-        completedDueToday: 0,
-        openDueToday: 0,
-        totalPlanned: storedAtomicGoalIds.size,
-      },
       buffer: { totalWorkdays: 0, remainingWorkdays: 0 },
-      pace: { status: 'neutral', reason: 'mastery-history-not-event-backed' },
       nextEligibleGoal: null,
       continueReason: 'no-open-due-frontier-goal',
       canContinue: false,
@@ -1048,6 +1039,7 @@ try {
         body: JSON.stringify({
           asOf: personalizedToday,
           followLearningPlans: true,
+          status: learnerPlanStatus(personalizedToday, [landscapeId]),
           plans: [currentServerPlan ?? learnerPlanDetail({
             revision: existingLearnerPlanRevision,
             planLabel: 'Bestehender Fachplan',
@@ -1074,26 +1066,10 @@ try {
           asOf: body.asOf,
           days: Array.from({ length: 7 }, (_, index) => {
             const date = addDays(body.asOf, index)
-            const isWeekday = (date: string) => {
-              const day = new Date(`${date}T12:00:00.000Z`).getUTCDay()
-              return day > 0 && day < 6
-            }
-            const dueToday = isWeekday(date) ? 6 : 0
-            const dueThroughToday = Array.from({ length: index + 1 }, (_, day) => addDays(body.asOf, day)).filter(isWeekday).length * 6
-            const metrics = {
-              dueThroughToday,
-              completedDueThroughToday: 2,
-              openDueThroughToday: dueThroughToday - 2,
-              dueToday,
-              completedDueToday: index === 0 ? 2 : 0,
-              openDueToday: dueToday - (index === 0 ? 2 : 0),
-              totalPlanned: personalizedOpenAtomicGoalIds.length,
-            }
-            return {
-              date,
-              subjects: [{ landscapeId, metrics }],
-              totals: metrics,
-            }
+            return { date, status: learnerPlanStatus(date, [landscapeId], {
+              statusText: 'Mathematik: Tagesziel 2 von 6 · im Plan',
+            }) }
+
           }),
         }),
       })
@@ -1297,13 +1273,9 @@ try {
   await planLabelInput.fill('2026/27')
   await personalizedPage.getByRole('navigation', { name: 'Planungsbereiche', exact: true }).getByRole('button', { name: 'Schülervorschau', exact: true }).click()
   const learnerPreview = personalizedPage.getByTestId('trainer-learning-plan-preview')
-  // The preview is a draft simulation, not a plan status; the binding status lives in the cockpit.
-  await learnerPreview.getByText('Das ist eine Simulation des gespeicherten Entwurfs, kein Lernplanstatus. Den verbindlichen Planstand zeigt das Cockpit des Lernenden.', { exact: true }).waitFor()
-  const subjectPreview = learnerPreview.getByRole('list', { name: 'Tagesanforderungen nach Fach', exact: true })
-  assert(await subjectPreview.getByRole('heading', { name: 'Mathematik', exact: true }).count() === 1, 'the preview labels its authoritative daily workload by subject')
-  const previewCount = (label: string) => subjectPreview.getByText(label, { exact: true }).locator('..').locator('dd').textContent()
-  assertJsonEqual(await Promise.all(['Tagespensum', 'Heute geschafft', 'Heute noch offen', 'Weiterer Rückstand'].map(previewCount)), ['6', '2', '4', '0'], 'the preview renders daily quota, actual completions, remaining quota and residual backlog separately')
-  assert(await learnerPreview.getByRole('region', { name: 'Wochenvorschau', exact: true }).locator('tbody tr').count() === 7, 'the learner preview shows exactly seven calendar days')
+  assertJsonEqual(await learnerPreview.getByTestId('trainer-learning-plan-status').textContent(),
+    'Mathematik: Tagesziel 2 von 6 · im Plan', 'preview renders the authoritative backend text without local balances')
+  assert(await learnerPreview.getByRole('region', { name: 'Planvorschau', exact: true }).locator('tbody tr').count() === 6, 'today is displayed once, followed by the remaining six days')
   assert(learnerPlanPreviewBodies.length > previewsBeforeUnsavedNavigation, 'restoring the saved draft enables the read-only calculation')
   assert(learnerPlanWrites.length === 0 && unexpectedLearnerWrites.length === 0, 'opening and reading a preview never activates plans, changes focus, or records mastery')
   assertJsonEqual(await personalizedPage.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1')), storedPlanBeforePreview, 'the successful preview does not modify the local teacher plan')
@@ -1346,7 +1318,7 @@ try {
   await personalizedPage.getByTestId('course-plan-publication-confirmation').waitFor()
   await publicationConfirmation.getByRole('button', { name: 'Fachplan ersetzen', exact: true }).click()
   await personalizedPage.getByTestId('trainer-course-plan-view').getByRole('status').filter({
-    hasText: `Als unabhängige Kopie im Cockpit bereitgestellt · Revision ${existingLearnerPlanRevision + 1} · ${personalizedOpenAtomicGoalIds.length} Lernziele im persönlichen Plan`,
+    hasText: `Als unabhängige Kopie im Cockpit bereitgestellt · Revision ${existingLearnerPlanRevision + 1}`,
   }).waitFor()
   assert(learnerPlanWrites.length === 1, 'explicit confirmation performs exactly one learner-plan write')
   const learnerPlanWrite = learnerPlanWrites[0] as {
