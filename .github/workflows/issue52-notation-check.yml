@@ -1,0 +1,203 @@
+name: Verify remaining Issue 52 notation
+on:
+  push:
+    branches: [work/issue52-notation-check-20260919]
+    paths: [.github/workflows/issue52-notation-check.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BASE: 8e8353cfcdea7d1f3f89e8e7c6f3a637443a262a
+      RESULT: work/issue52-notation-result-20260919
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: 8e8353cfcdea7d1f3f89e8e7c6f3a637443a262a
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Apply exact, source-checked documentation edits
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, os, re, subprocess
+          from pathlib import Path
+          expected = {
+              'docs/concept/glossary.md': '7a79a8912921a4fd270f2a00c5f2066ac93cfecf',
+              'docs/qa-ci/curriculum-quality-dashboard.md': '8bdfa56f14bbd858bb417a51ce0d64c4fa037ce3',
+              'docs/qa-ci/curriculum-quality-maturity-and-routes.md': '43f7f9034fd8b092adbb1fab9d57474c579b77f3',
+              'docs/qa-ci/graph-validation-rules.md': 'ab95941d1212f2abd902fe91b934d34a64984793',
+          }
+          def git(*args):
+              return subprocess.check_output(['git', *args], text=True).strip()
+          assert git('rev-parse', 'HEAD') == os.environ['BASE']
+          originals = {}
+          for name, sha in expected.items():
+              assert git('hash-object', name) == sha, f'Changed source: {name}'
+              originals[name] = Path(name).read_text(encoding='utf-8')
+          def once(text, old, new):
+              assert text.count(old) == 1, f'Expected unique context: {old[:100]!r}'
+              return text.replace(old, new, 1)
+          updated = dict(originals)
+          name = 'docs/concept/glossary.md'
+          s = updated[name]
+          s = once(s, 'The authored hierarchy relation:', 'The authored hierarchy relation $C$:')
+          s = once(s, 'The authored prerequisite relation:', 'The authored prerequisite relation $R$:')
+          s = once(s,
+              r'Additional prerequisites derived from the `requires` of a goal\'s `contains` ancestors, excluding pairs already authored on the goal itself: $R_{eff}\setminus R_d$. With multiple parents, all ancestor paths contribute. Inheritance through containment is not the same as following a chain of prerequisites.'.replace("\\'", "'"),
+              r'Additional prerequisites derived from the `requires` of a goal\'s `contains` ancestors, excluding pairs already authored on the goal itself: $R_{\mathrm{inherited}}=R_{\mathrm{effective}}\setminus R$. With multiple parents, all ancestor paths contribute. Figures label these additional pairs `requires (inherited)` and draw them as dashed arrows. Inheritance through containment is not the same as following a chain of prerequisites.'.replace("\\'", "'"))
+          s = once(s, 'The derived prerequisite relation containing', r'The derived prerequisite relation $R_{\mathrm{effective}}=R\cup R_{\mathrm{inherited}}$, containing')
+          s = once(s, r'$R_{eff}=R_d$', r'$R_{\mathrm{effective}}=R$')
+          s = once(s, r'$R_d^+$ or $R_{eff}^+$', r'$R^+$ or $R_{\mathrm{effective}}^+$')
+          updated[name] = s
+          name = 'docs/qa-ci/curriculum-quality-dashboard.md'
+          updated[name] = once(updated[name],
+              '| `CQR-101` | `M3` | Effective full route coverage through `R_eff`: motivation anchor -> selected atomic goals -> terminal autonomy. |',
+              r'| `CQR-101` | `M3` | Effective full route coverage through $R_{\mathrm{effective}}$: motivation anchor -> selected atomic goals -> terminal autonomy. |')
+          name = 'docs/qa-ci/curriculum-quality-maturity-and-routes.md'
+          s = updated[name]
+          start = s.index('### Effektive Route `R_eff`')
+          end = s.index('\n\n### Terminale Autonomie', start)
+          old = s[start:end]
+          assert old.count('`R_eff`') == 3 and old.count('`R_d`') == 3
+          new = r'''### Effektive Route
+
+          Die effektive Voraussetzungsrelation $R_{\mathrm{effective}}$ ist die Grundlage der grosszuegigeren Routenpruefung.
+
+          Sie enthaelt:
+
+          - direkt angegebene `requires` eines Ziels,
+          - zusaetzliche Voraussetzungen, die ein Ziel ueber seine `contains`-Vorfahren erbt.
+
+          Damit werden auch Graphen ausgewertet, in denen ein Cluster eine Voraussetzung fuer alle darunterliegenden Ziele ausdrueckt.
+
+          Die effektive Routenpruefung beantwortet:
+
+          > Ist der Teilbereich didaktisch geschlossen, wenn Voraussetzungen von Clustern an ihre Nachfahren vererbt werden?
+
+          ### Direkte atomare Route
+
+          Die strengere Routenpruefung verwendet $R\cap(A\times A)$, also die auf atomare Endpunkte eingeschraenkte `requires`-Relation.
+
+          Sie enthaelt nur:
+
+          - direkt angegebene `requires`,
+          - deren Quellziel atomar ist,
+          - und deren Ziel ebenfalls atomar ist.
+
+          Cluster-Knoten werden fuer diese Pruefung nicht als Routenbruecken akzeptiert. Die Auswahl des jeweiligen QA-Scope bleibt davon getrennt.
+
+          Die direkte atomare Routenpruefung beantwortet:
+
+          > Ist die kanonische didaktische Route auf atomarer Lernzielebene modelliert?'''
+          s = once(s, old, new)
+          replacements = [
+              ('- Es gibt in `R_eff` einen Pfad vom Ziel zu mindestens einem Motivationsanker.', r'- Es gibt in $R_{\mathrm{effective}}$ einen Pfad vom Ziel zu mindestens einem Motivationsanker.'),
+              ('- Es gibt im umgedrehten `R_eff` einen Pfad vom Ziel zu mindestens einem terminalen Ziel.', r'- Es gibt in $R_{\mathrm{effective}}^{-1}$ einen Pfad vom Ziel zu mindestens einem terminalen Ziel.'),
+              ('`R_eff` akzeptiert dabei auch geerbte Cluster-`requires`.', r'$R_{\mathrm{effective}}$ enthaelt dabei auch die von Clustern geerbten Voraussetzungen.'),
+              ('- Es gibt in `R_d` einen Pfad vom Ziel zu mindestens einem Motivationsanker.', r'- Es gibt in $R\cap(A\times A)$ einen Pfad vom Ziel zu mindestens einem Motivationsanker.'),
+              ('- Es gibt im umgedrehten `R_d` einen Pfad vom Ziel zu mindestens einem terminalen Ziel.', r'- Es gibt in $(R\cap(A\times A))^{-1}$ einen Pfad vom Ziel zu mindestens einem terminalen Ziel.'),
+              ('`R_d` akzeptiert nur direkte atomare `requires`.', r'$R\cap(A\times A)$ enthaelt nur direkt angegebene `requires` zwischen atomaren Zielen.'),
+          ]
+          for old, new in replacements:
+              s = once(s, old, new)
+          updated[name] = s
+          name = 'docs/qa-ci/graph-validation-rules.md'
+          s = updated[name]
+          s = once(s,
+              '- route coverage should be defined primarily on the atomic direct-prerequisite graph (`R_d` on atomic goals), not on inherited `R_eff`',
+              r'- route coverage should be defined primarily on the authored `requires` relation restricted to atomic endpoints ($R\cap(A\times A)$), rather than on the effective prerequisite relation $R_{\mathrm{effective}}$')
+          s = once(s, '- keep `GVR-004` / `GVR-005` as migration-compatible checks on `R_eff`',
+              r'- keep `GVR-004` / `GVR-005` as migration-compatible checks on $R_{\mathrm{effective}}$')
+          s = s.replace('effective-requires graph', 'effective prerequisite graph')
+          s = once(s,
+              'Effective-requires graph means:\n\n- direct `requires`\n- plus inherited `requires` from `contains` ancestors\n- then transitive reachability over these effective edges',
+              r'The effective prerequisite relation $R_{\mathrm{effective}}$ contains authored `requires` pairs and additional prerequisites inherited from `contains` ancestors. Connectivity checks follow paths in that relation, using its transitive closure $R_{\mathrm{effective}}^+$; the effective relation itself is not a transitive closure.')
+          updated[name] = s
+          obsolete = re.compile(r'\b(?:R|Pre)_(?:d\b|eff\b|\{(?:d|eff)\})')
+          for name, s in updated.items():
+              assert s != originals[name]
+              assert not obsolete.search(s), f'Old notation remains: {name}'
+              assert re.findall(r'\b(?:GVR|CQR|APV|CPV)-\d+\b', s) == re.findall(r'\b(?:GVR|CQR|APV|CPV)-\d+\b', originals[name]), f'Rule IDs changed: {name}'
+              Path(name).write_text(s, encoding='utf-8')
+          # Preserve all other tracked content, including the normative spec,
+          # all PNGs, MathJax, runtime code and the removed PDF feature.
+          changed = set(git('diff', '--name-only').splitlines())
+          assert changed == set(expected), changed
+          assert git('hash-object', 'docs/concept/skill-graph/graph-definition.md') == 'a20fa9d9e7db711e18d9a8656b4e25a298b240a2'
+          assert not Path('scripts/docs_pdf.py').exists()
+          assert 'scripts/docs_pdf' not in Path('mkdocs.yml').read_text()
+          # No stale incoming links to the two renamed route headings.
+          retired_anchors = ('#effektive-route-r_eff', '#direkte-atomare-route-r_d')
+          for p in Path('docs').rglob('*.md'):
+              text = p.read_text(encoding='utf-8')
+              assert not any(a in text for a in retired_anchors), f'Stale heading link: {p}'
+          print(json.dumps({'base': os.environ['BASE'], 'changed_files': sorted(changed), 'source_blob_checks': 'pass', 'rule_ids_unchanged': True, 'specification_and_images_unchanged': True, 'pdf_disabled': True}, indent=2))
+          PY
+          git diff --check
+          git diff --stat
+          git diff -- docs/concept/glossary.md docs/qa-ci/curriculum-quality-dashboard.md docs/qa-ci/curriculum-quality-maturity-and-routes.md docs/qa-ci/graph-validation-rules.md
+      - name: Install documentation check dependencies
+        run: |
+          npm --prefix app ci
+          pip install -r requirements-docs.txt
+      - name: Check links, indexes and terminology
+        run: |
+          npm --prefix app run check:generated-doc-notices
+          npm --prefix app run check:generated-status-registry
+          npm --prefix app run check:docs-links
+          npm --prefix app run check:docs-indexes
+          npm --prefix app run check:terminology
+      - name: Build website and verify mathematical markup without PDF
+        run: |
+          mkdocs build > /tmp/issue52-mkdocs.log 2>&1 || { tail -100 /tmp/issue52-mkdocs.log; exit 1; }
+          tail -5 /tmp/issue52-mkdocs.log
+          python - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          pages = ['concept/glossary', 'qa-ci/curriculum-quality-dashboard', 'qa-ci/curriculum-quality-maturity-and-routes', 'qa-ci/graph-validation-rules']
+          class Check(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.math = 0; self.code = 0; self.bad = []
+              def handle_starttag(self, tag, attrs):
+                  if 'arithmatex' in dict(attrs).get('class', '').split(): self.math += 1
+                  if tag == 'code': self.code += 1
+              def handle_endtag(self, tag):
+                  if tag == 'code': self.code -= 1
+              def handle_data(self, data):
+                  if self.code and ('\\mathrm{effective}' in data or 'R_eff' in data or 'R_d' in data): self.bad.append(data)
+          for name in pages:
+              text = Path('site', name, 'index.html').read_text()
+              parser = Check(); parser.feed(text)
+              assert parser.math > 0 and not parser.bad, (name, parser.math, parser.bad)
+              assert r'R_{\mathrm{effective}}' in text
+              print(name, 'math containers:', parser.math, 'OK')
+          main = Path('site/concept/skill-graph/graph-definition/index.html').read_text()
+          assert 'Download this specification as PDF' not in main
+          assert not Path('site/downloads/SkillPilot_Skill_Graph_Specification.pdf').exists()
+          print('Website-only build and formula markup: PASS')
+          PY
+      - name: Create four-file candidate without helper workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          git add -- docs/concept/glossary.md docs/qa-ci/curriculum-quality-dashboard.md docs/qa-ci/curriculum-quality-maturity-and-routes.md docs/qa-ci/graph-validation-rules.md
+          test "$(git diff --cached --name-only | wc -l)" -eq 4
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          TREE=$(git write-tree)
+          COMMIT=$(git commit-tree "$TREE" -p "$BASE" -m 'docs(skill-graph): complete relation notation in glossary and QA references' -m 'Align the four companion pages with the approved contains/requires notation. Distinguish R, additional inherited prerequisites, effective prerequisites and the atomic restriction R intersect (A x A). Render mathematical notation as math rather than inline code and keep inverse route directions explicit. Preserve QA rule IDs, scopes and enforcement semantics. No graph-definition, PNG, MathJax, runtime, curriculum or PDF changes. Refs #52.')
+          git diff-tree --no-commit-id --name-only -r "$COMMIT"
+          git push origin "$COMMIT:refs/heads/$RESULT"
+          echo "CANDIDATE_COMMIT=$COMMIT"
+          echo "Candidate commit: $COMMIT (four documentation files only; main not changed)" >> "$GITHUB_STEP_SUMMARY"
