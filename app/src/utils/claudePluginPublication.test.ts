@@ -420,6 +420,7 @@ assert.equal(guideDecision?.candidateSha256, productionIndex.plugins[0]?.sha256)
 const guideEvidenceRefs: Record<string, string> = {
   '1.1.5': 'docs/quickstart/video-production.md#guide-freigabe-vom-13-september-2026',
   '1.1.6': 'docs/deploy/claude-personal-marketplace-release.md#guide-approval-and-website-download-promotion-14-september-2026',
+  '1.1.7': 'docs/deploy/claude-personal-marketplace-release.md#117-website-version-and-download-alignment',
 }
 assert.ok(guideEvidenceRefs[publishedVersion], 'the indexed release needs its own explicit guide approval reference')
 assert.equal(guideDecision?.evidenceRef,

@@ -4,11 +4,12 @@ Verbindliche Grundlage: [Issue 48](https://github.com/enpasos/skillpilot/issues/
 und das [Gesamtkonzept](../concept/didactic/unified-learning-plan-status.md),
 im Issue gebunden an Commit `2bc9a43e5baff371e4948f3886dc0c1e79185fbb`.
 
-**Status: Lokale Umsetzung und gezielte Abnahme bestanden; Claude-Rollout
-vorbereitet, echte Host-Abnahme steht aus.** Diese Matrix ist kein Abnahmebeleg
-für einen veröffentlichten Stand. Lokale Tests, API-Dialoge und echte
-Host-Abnahme sind getrennte Nachweise. Es wurde durch diese Arbeit nichts
-veröffentlicht oder bereitgestellt.
+**Status: Lokale Umsetzung und CI bestanden; Claude 1.1.7 im Marketplace
+veröffentlicht, echte Host-Abnahme steht aus.** Der Product Owner bestätigte den
+Produktionsdeploy. Die [Marketplace-Veröffentlichung](../deploy/claude-personal-marketplace-release.md#completed-117-marketplace-publication)
+ist anhand des tatsächlichen öffentlichen Repositorys und einer isolierten
+Installation verifiziert. Lokale Tests und diese Repository-Prüfung sind kein
+Nachweis für das Verhalten in einem echten Claude-Lernkonto.
 
 Der Product Owner hat am 19. September 2026 die Reihenfolge konkretisiert:
 Er übernimmt das Produktionsdeployment; Codex veröffentlicht anschließend den
@@ -55,7 +56,7 @@ Vertragsprüfungen ersetzt. Die Tests prüfen die im Konzept unterstützten Fäl
 | L02 | Früher geplante zugängliche Ziele zuerst; Voraussetzungen und Personal Curriculum bleiben gültig | Überlappende Blöcke und Fach-/Fokusgrenzen | Lokal bestanden |
 | L03 | Pause/Stopp, Prüfungsmodus und Fachwechsel bleiben autorisiert | Bestehende Guard-Regressionen plus Statusfrage ohne Mutation | Lokal bestanden; Hostverhalten offen (H01/H02) |
 | V01 | Unabhängige Prüfung und relevante Regressionen bestanden | Reviewbefunde geschlossen; geprüfte lokale Logs mit Befehlen | Lokal bestanden |
-| H01 | Claude übernimmt Status tatsächlich wortgetreu im vollständigen Lernfluss | Reale Host-Dialoge des konkreten Kandidaten mit Toolausgaben | Nach bestätigtem Produktionsdeploy und Marketplace-Veröffentlichung prüfen |
+| H01 | Claude übernimmt Status tatsächlich wortgetreu im vollständigen Lernfluss | Reale Host-Dialoge des konkreten Kandidaten mit Toolausgaben | Produktionsdeploy und Veröffentlichung bestätigt; Nutzer sieht 1.1.7 und bestätigt funktionierenden Sitzungsstart. Status-/Dialogvergleich noch offen |
 | H02 | Fokussierte ChatGPT-Integration nach stabiler Claude-Basis | Eigene Host-Evidenz; Claude-Pass ersetzt diesen Nachweis nicht | Spätere Abnahme nach stabiler Claude-Beta; nicht Teil des aktuellen Rollouts |
 
 ## Bewusste Grenzen
@@ -147,7 +148,8 @@ dauerhafte Host-Evidenz ausgegeben.
   und Plugin melden `STRUCTURAL_PASS`; ihre externen Release-Gates bleiben
   `pending`. Lokale Kandidaten- und Marketplace-Vorbereitung/-Verifikation
   sind bestanden.
-- Unveröffentlichter Claude-Kandidat **1.1.7**: 34.586 Bytes, SHA-256
+- Bei der lokalen Abnahme noch unveröffentlichter Claude-Kandidat **1.1.7**:
+  34.586 Bytes, SHA-256
   `a7bb73da48087f44aeb1155b848768efc79efa71c55c9a2278c8e0cc4901d26b`.
   Paket: `tmp/claude-direct-install-beta/skillpilot-coach-v1/1.1.7/sha256-a7bb73da48087f44aeb1155b848768efc79efa71c55c9a2278c8e0cc4901d26b/skillpilot-coach-v1-1.1.7.plugin`.
   Die vorhandene Veröffentlichung wurde lesend als **1.1.6** verifiziert;
@@ -165,21 +167,23 @@ Gesamtlauf unverändert in 0,718 s. Der Befund wurde als einseitiges Warten auf
 die Lernendenzeile geprüft; ein zyklischer Deadlock wurde nicht nachgewiesen.
 Es wurde keine Timeoutgrenze erhöht und keine Assertion abgeschwächt.
 
-`tmp/issue48/local-candidate-manifest.json` hält den Git-Basiscommit, die
+Das historische `tmp/issue48/local-candidate-manifest.json` hält den damaligen Git-Basiscommit, die
 Hashwerte sämtlicher lokaler Quelländerungen, die gebauten Java-Klassen,
 Frontenddateien und die geprüften Providerpakete fest. Der Git-Basiscommit
-allein bezeichnet diesen noch nicht eingecheckten Kandidaten nicht eindeutig.
+allein bezeichnet den damals noch nicht eingecheckten Kandidaten nicht eindeutig.
 Ein alter JAR-Build unter `backend/build/libs/` stammt vom 27. August und ist
-ausdrücklich kein Artefakt dieser Abnahme. Vor einer tatsächlichen
-Bereitstellung sind ein eindeutig festgelegter Quellstand und die bestehenden
-Deployment-Prüfungen erforderlich. Der Product Owner übernimmt diesen Schritt.
+ausdrücklich kein Artefakt dieser Abnahme. Für das anschließende Deployment
+waren ein eindeutig festgelegter Quellstand und die bestehenden
+Deployment-Prüfungen erforderlich. Der Product Owner hat das
+Produktionsdeployment inzwischen bestätigt.
 
-Vor dem Marketplace-PR muss dessen CI auf den tatsächlichen neuen
-SkillPilot-Quellcommit gebunden werden. Der bisherige Pin `5fd275a3062f1ded3782c33f137d40c32562071c`
-bezeichnet noch ein anderes 1.1.7-Archiv. Deshalb werden nach dem Quellcommit
-der Pin in Vorlage, Exporter und zugehörigem Test aktualisiert und der Export
-erneut erzeugt. Erst nach Deploy-Bestätigung, bestandener Marketplace-CI und
-Prüfung des konkreten PR-Stands wird veröffentlicht.
+Die CI-Folgekorrekturen sind in `80c8f3a3e94e5c7d43c183d18bacb7ce38bb4117`
+enthalten; dessen vollständige CI ist bestanden. Nach der Deploy-Bestätigung
+wurde der Marketplace-Pin in Vorlage, Exporter und Test auf diesen Commit
+aktualisiert und der Export neu erzeugt. Marketplace-PR #9 und die anschließende
+Main-CI sind bestanden. Der verifizierte Veröffentlichungsstand ist
+`c06583c1a94e486ed5afe25cafe41ac8e16677b8`; Paketbytes und SHA-256 entsprechen
+weiterhin exakt dem oben dokumentierten 1.1.7-Kandidaten.
 
 Unabhängige Reviews haben insbesondere die Priorität des tatsächlichen
 Solltermins, die Zusammenführung innerhalb eines Fachs, die Vorrangregeln für
@@ -232,18 +236,33 @@ node scripts/check_openai_plugin_review_freeze.mjs
 die zuvor lokal erzeugten Kandidaten (`prepare-candidate` bzw. `prepare`).
 `STRUCTURAL_PASS` ersetzt die weiterhin offenen Veröffentlichungs-Gates nicht.
 
+## Erste Rückmeldung aus dem echten Claude-Konto
+
+Am 19. September 2026 bestätigte der Product Owner: „ich sehe 1.1.7“ und
+„starten mit dem Plugin funktioniert auch“. Damit liegen eine Nutzerbestätigung
+der tatsächlich sichtbaren Pluginversion und ein erfolgreicher Start im echten
+Claude-Konto vor. Die konkrete Clientoberfläche wurde dabei nicht angegeben.
+
+Der wortgetreue Vergleich der Claude-Antwort mit den Backend-/Cockpit-Fachzeilen
+und die weiteren Lernsteuerungsfälle sind noch offen. Die Rückmeldung ist ein
+Teilnachweis; sie wird nicht als vollständige Clean-Account-Installation,
+Migration oder abgeschlossene Host-Abnahme verbucht.
+
 ## Ablauf der echten Host-Abnahme
 
 Die [Claude-beta-/ChatGPT-Strategie](../deploy/claude-beta-chatgpt-release-strategy.md)
 bleibt maßgeblich. An einem stabilen, identifizierten Kandidaten zunächst in
 Claude und danach fokussiert im ChatGPT-Adapter prüfen:
 
-Voraussetzungen sind ein ausdrücklich freigegebener Testzugang und ein Backend,
-das den geprüften Stand verwendet. Eine bisher veröffentlichte Pluginversion
-mit älterem Backend genügt dafür nicht. Für die Fälle werden Testlernende mit
-Mathematik- und Physikplan sowie bekannten Sollterminen verwendet; regulärer
-Lernfortschritt wird nicht zu Testzwecken verändert. DE und EN werden über die
-explizite First-Party-Sprachwahl in getrennten Sitzungen gestartet.
+Die Abnahme erfolgt im vom Product Owner bestätigten Produktionsbetrieb mit
+Marketplace-Version **1.1.7** und dem deployten SkillPilot-Stand
+`80c8f3a3e94e5c7d43c183d18bacb7ce38bb4117`. Zunächst die tatsächlich installierte
+Pluginversion prüfen und eine frische Sitzung über SkillPilot starten. Ein
+Statusvergleich kann mit bestehenden Fachplänen erfolgen. Für gezielt
+hergestellte Rechen- und Fehlerfälle werden eigene Testlernende mit Mathematik-
+und Physikplan sowie bekannten Sollterminen verwendet; regulärer Lernfortschritt
+wird nicht zu Testzwecken verändert. DE und EN werden über die explizite
+First-Party-Sprachwahl in getrennten Sitzungen gestartet.
 
 1. Sitzung verbinden bzw. fortsetzen; die geladenen Instruktionen und die
    tatsächlich verwendeten Toolantworten festhalten.
@@ -267,8 +286,10 @@ explizite First-Party-Sprachwahl in getrennten Sitzungen gestartet.
 | „Für heute Pause.“ / “Let's stop for today.” | Kein weiterer Unterricht, keine automatische Zielauswahl; vorhandene Pause-/Stopp-Regeln bleiben wirksam |
 | „Ich möchte jetzt Physik lernen.“ / “I'd like to study Physics now.” | Nur der erlaubte Fachwechsel; kein Rendern des alten Mathematikziels vor dem Wechsel; anschließende Sitzung lässt sich fortsetzen |
 
-Im Wochenfall wird der Testzeitpunkt auf einen Montag gelegt und mindestens ein
-zugängliches Ziel ist erst für Freitag geplant. Nach dessen Beginn wird im
+Der Montag/Freitag-Referenzfall ist lokal mit fester Testuhr geprüft. Seine
+Wiederholung im Produktionshost findet an einem tatsächlichen Montag mit einem
+für Freitag geplanten zugänglichen Ziel statt; die Produktionsuhr wird dafür
+nicht verändert. Nach dessen Beginn wird im
 Cockpit die Periodenbasis gewechselt: Plantermine und Lernfortschritt bleiben
 gleich, das weiterhin zulässige aktive Ziel bleibt erhalten. Vor einem nächsten
 Statusvergleich wird ein neuer Toolzustand gelesen.

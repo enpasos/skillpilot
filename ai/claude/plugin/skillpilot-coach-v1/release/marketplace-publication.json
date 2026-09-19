@@ -28,29 +28,29 @@
     "directInstallSha256": "a7bb73da48087f44aeb1155b848768efc79efa71c55c9a2278c8e0cc4901d26b"
   },
   "activation": {
-    "state": "prepared_not_published",
-    "firstPartyUiRoute": "controlled_direct_install_beta",
-    "marketplaceUiSwitchAllowed": false,
+    "state": "published_pending_acceptance",
+    "firstPartyUiRoute": "personal_git_marketplace",
+    "marketplaceUiSwitchAllowed": true,
     "firstPartyGuideDecision": {
-      "status": "pending",
-      "approvedAt": null,
-      "approvedBy": null,
-      "candidateVersion": null,
-      "candidateSha256": null,
-      "repositoryRevision": null,
-      "repositoryTreeSha256": null,
-      "evidenceRef": null
+      "status": "approved",
+      "approvedAt": "2026-09-19T20:56:38.213Z",
+      "approvedBy": "product-owner",
+      "candidateVersion": "1.1.7",
+      "candidateSha256": "a7bb73da48087f44aeb1155b848768efc79efa71c55c9a2278c8e0cc4901d26b",
+      "repositoryRevision": "c06583c1a94e486ed5afe25cafe41ac8e16677b8",
+      "repositoryTreeSha256": "5ea0bbe9ba5776154155cfb2d9b390a1aaac5a672261172855eb382fc58dccca",
+      "evidenceRef": "docs/deploy/claude-personal-marketplace-release.md#117-website-version-and-download-alignment"
     },
     "evidence": [
       {
         "id": "public-repository-default-branch",
-        "status": "pending",
-        "revision": null,
-        "treeSha256": null,
-        "candidateVersion": null,
-        "candidateSha256": null,
-        "verifiedAt": null,
-        "evidenceRef": null
+        "status": "pass",
+        "revision": "c06583c1a94e486ed5afe25cafe41ac8e16677b8",
+        "treeSha256": "5ea0bbe9ba5776154155cfb2d9b390a1aaac5a672261172855eb382fc58dccca",
+        "candidateVersion": "1.1.7",
+        "candidateSha256": "a7bb73da48087f44aeb1155b848768efc79efa71c55c9a2278c8e0cc4901d26b",
+        "verifiedAt": "2026-09-19T20:49:07.938Z",
+        "evidenceRef": "https://github.com/enpasos/skillpilot-claude-marketplace/pull/9"
       },
       {
         "id": "clean-account-marketplace-install",

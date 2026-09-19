@@ -4,8 +4,9 @@
 coaching to Claude. Install it once through this Git marketplace to receive
 future plugin updates through Claude.
 
-Version 1.1.7 is locally prepared and has not been published or accepted in a
-real Claude account. The previous published package remains immutable history.
+Version 1.1.7 uses the matching deployed SkillPilot connector for daily and
+weekly plan status. Acceptance of this version in real Claude accounts remains
+pending; previous published packages remain immutable history.
 
 ### In version 1.1.7
 
@@ -14,7 +15,7 @@ real Claude account. The previous published package remains immutable history.
   target and any backlog or work ahead.
 - Plans guide and prioritize; they never prevent explicitly requested learning.
 - Continue reachable open curriculum goals beyond quotas, plan dates or backlog.
-- After a reached target, use remaining backlog as a pressure-free catch-up option.
+- After reaching the period target, use remaining backlog as a pressure-free catch-up option.
 - Exam and Verified Recall instructions loaded only when needed.
 - Your answers, assessments and feedback stay in the Claude conversation;
   SkillPilot receives only structured learning results.

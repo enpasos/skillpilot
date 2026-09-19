@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.7 - 2026-09-16
+## 1.1.7 - 2026-09-19
 
 - Quote the plan status formulated by SkillPilot word for word, identical to the
   SkillPilot cockpit: one line per subject with its daily or weekly target and

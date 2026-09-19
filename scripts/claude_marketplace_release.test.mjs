@@ -625,7 +625,7 @@ test("Marketplace CI pins canonical source and credentials without depending on 
   assert.doesNotMatch(marketplaceWorkflow, /curl|api\/public\/claude\/plugins/u);
   for (const replacement of ["main", "a".repeat(40)]) {
     const changed = marketplaceWorkflow.replace(
-      "ref: 5fd275a3062f1ded3782c33f137d40c32562071c", `ref: ${replacement}`);
+      "ref: 80c8f3a3e94e5c7d43c183d18bacb7ce38bb4117", `ref: ${replacement}`);
     assert.throws(() => validateClaudeMarketplaceWorkflow(changed, lane),
       /pinned checkouts mismatch/u);
   }

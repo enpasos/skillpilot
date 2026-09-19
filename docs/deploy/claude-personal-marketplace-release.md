@@ -3,15 +3,94 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.6 is published in
-the public Marketplace; its exact source, package and public repository were
-independently verified. The Product Owner has separately approved promoting
-the website download index and its guide to the same 1.1.6 artifact. The local
-index now names 1.1.6; production promotion still requires deployment and live
-verification. Real-client acceptance of 1.1.6 remains pending;
-repository publication does not establish installation or synchronization in
-every account. Earlier published packages and their evidence remain immutable
-history.
+Anthropic-curated or Anthropic-verified listing. Version 1.1.7 is published in
+the public Marketplace and its exact source, package and repository have been
+independently verified. The website index and existing installation guide are
+now locally aligned to 1.1.7; their production deployment is still pending, and
+the public index last verified on 19 September still serves 1.1.6.
+Full real-client acceptance of 1.1.7 remains pending; repository
+publication does not establish installation or synchronization in every account.
+Earlier published packages and their evidence remain immutable history.
+
+## Completed 1.1.7 Marketplace publication
+
+On 19 September 2026, the Product Owner confirmed green CI and production
+deployment, then explicitly requested publication of the current Claude plugin.
+The Marketplace was bound to the green SkillPilot source commit
+`80c8f3a3e94e5c7d43c183d18bacb7ce38bb4117`
+([source CI](https://github.com/enpasos/skillpilot/actions/runs/35465833125)).
+The plugin quotes the shared DAY/WEEK status per subject verbatim and announces
+the active learning goal separately when teaching begins.
+
+[PR #9](https://github.com/enpasos/skillpilot-claude-marketplace/pull/9)
+passed the required [final-head validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/35468419187)
+and was squash-merged with an exact PR-head SHA guard. An independent review
+confirmed the closed file inventory, canonical package parity and honest
+client-acceptance claims. The automatic review recommended approval with two
+wording notes: the Marketplace README was clarified; the packaged README's
+historical wording about daily quotas was retained to preserve the exact tested
+candidate. That documentation wording can be aligned in a later canonical
+source update; the current coaching instructions already use DAY/WEEK periods.
+
+The [main-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/35468537513)
+also passed. `verifyPublishedClaudeMarketplace`, the implementation used by
+`verify-repository`, then cloned the actual public default branch, compared all
+twelve files, ran both strict Claude validations and installed the exact plugin
+from the public HTTPS repository in an isolated Claude profile. The remote HEAD
+remained unchanged throughout verification.
+
+- Published revision: `c06583c1a94e486ed5afe25cafe41ac8e16677b8`.
+- Verified at: `2026-09-19T20:49:07.938Z`.
+- Twelve-file export tree SHA-256:
+  `5ea0bbe9ba5776154155cfb2d9b390a1aaac5a672261172855eb382fc58dccca`.
+- Plugin: **1.1.7**, **34,586 bytes**, SHA-256
+  `a7bb73da48087f44aeb1155b848768efc79efa71c55c9a2278c8e0cc4901d26b`.
+
+Twenty-six scoped Marketplace tests and the local installation smoke passed.
+The credential-free production synthetic passed before and after publication,
+including the separately served 1.1.6 download and the connector's OAuth
+metadata and unauthenticated challenge. No additional backend deployment or
+website download/guide promotion was performed by this publication.
+
+At publication, only `public-repository-default-branch` was recorded as `pass`,
+giving `published_pending_acceptance`; real-account installation/update checks
+and the new candidate's guide decision were pending. The Product Owner later
+confirmed seeing 1.1.7 in Claude and successfully starting with the plugin.
+This is a partial host observation; status fidelity and the complete learning
+flow remain to be checked. The subsequent website correction is recorded below.
+
+## 1.1.7 website version and download alignment
+
+After confirming the installed 1.1.7 plugin and a successful start, the Product
+Owner reported that `skillpilot.com/plugins` still advertised 1.1.6 and supplied
+a screenshot. The public publication index independently confirmed 1.1.6.
+The requested correction aligns the existing installation guide, version badge,
+version comparison and downloadable file with the published Marketplace version.
+
+The existing Marketplace-first guide and file fallback are now bound to exactly
+1.1.7, package SHA-256
+`a7bb73da48087f44aeb1155b848768efc79efa71c55c9a2278c8e0cc4901d26b`,
+repository revision `c06583c1a94e486ed5afe25cafe41ac8e16677b8` and tree SHA-256
+`5ea0bbe9ba5776154155cfb2d9b390a1aaac5a672261172855eb382fc58dccca`.
+The candidate-bound guide decision records this request; previous approvals
+and artifacts remain unchanged. The native `prepare` command adds the exact
+34,586-byte artifact and advances the backend's served index. All visible
+version labels and the download link continue to derive from that index.
+
+Fifty Marketplace/direct-install tests passed. The publication Unit and browser
+tests passed for German/English and mobile/desktop, checking the visible 1.1.7
+badge, version comparison, Marketplace instructions and actual downloaded bytes
+against the prepared index. Focused lint and documentation checks passed; all
+ten earlier plugin archives remain byte-identical. The backend caches its
+validated publication snapshot per process, so this update requires the normal
+backend deployment/restart as well as including the new resource files.
+
+This change is prepared locally for the Product Owner's commit and production
+deployment. It is not yet a claim that the live website serves 1.1.7. After
+deployment, `verify-public` must confirm both the public index and the exact
+immutable download. Full client acceptance remains pending; the observed
+version and successful start do not establish every installation/update path
+or the coach's verbatim status behavior.
 
 ## 1.1.6 explicit continuation candidate, 14 September 2026
 
