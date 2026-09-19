@@ -13,10 +13,6 @@ on:
       - 'AGENTS.md'
       - 'mkdocs.yml'
       - 'requirements-docs.txt'
-      - 'scripts/docs_pdf.py'
-      - 'scripts/docs_pdf.tex'
-      - 'scripts/test_docs_pdf.py'
-      - '.github/actions/setup-docs-pdf/**'
       - '.github/workflows/docs_deploy.yml'
       - 'ai/README.md'
       - 'ai/claude/app/**'
@@ -46,10 +42,6 @@ on:
       - 'AGENTS.md'
       - 'mkdocs.yml'
       - 'requirements-docs.txt'
-      - 'scripts/docs_pdf.py'
-      - 'scripts/docs_pdf.tex'
-      - 'scripts/test_docs_pdf.py'
-      - '.github/actions/setup-docs-pdf/**'
       - '.github/workflows/docs_deploy.yml'
       - 'ai/README.md'
       - 'ai/claude/app/**'
@@ -167,17 +159,11 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.11'
-      - name: Install PDF tools
-        uses: ./.github/actions/setup-docs-pdf
       - name: Install docs dependencies
         run: pip install -r requirements-docs.txt
-      - name: Test documentation PDF builder
-        run: python -m unittest -v scripts.test_docs_pdf
       # Not --strict: many docs link to repo files outside docs/ (contracts/,
       # app/, scripts/, curricula/). Those links resolve on GitHub but not in the
       # built site, and strict mode would reject them. `npm run check:docs-links`
       # is what validates link targets against the filesystem.
-      - name: Build site and PDF
+      - name: Build site
         run: mkdocs build
-      - name: Verify published PDF and download link
-        run: python scripts/test_docs_pdf.py --site site
