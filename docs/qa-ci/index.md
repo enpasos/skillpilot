@@ -110,6 +110,8 @@ These are generated audit views for configured `CQR-302` reviews. The registry l
 
 These documents capture one-off investigations, remediation slices, or dated PoC evidence. They are useful context, not durable process contracts.
 
+- [Issue 48: Einheitlicher Lernplanstatus](issue-48-unified-learning-plan-status.md)
+  Manuell gepflegte Abnahmematrix für Tages-/Wochenstatus, Lernfortsetzung und den abgestimmten Claude-Rollout.
 - [Physik: Wiederaufnahme und CI-Voraussetzung, 2026-09-14](physics-resumed-checkpoint-2026-09-14.md)
   Physik-only-Auftrag nach dem committeten Meilenstein, verbleibende Claims und eng begrenzte Berichtsreparatur; Mathematik bleibt pausiert.
 - [Mathematik/Physik: Wiederaufnahme, 2026-09-13](math-physics-resumed-checkpoint-2026-09-13.md)

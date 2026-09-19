@@ -919,14 +919,6 @@ try {
     planLabel: string
     blocks: unknown[]
   }) => {
-    const submittedAtomicGoalIds = blocks.flatMap((block) => {
-      if (typeof block !== 'object' || block === null) return []
-      const atomicGoalIds = (block as { atomicGoalIds?: unknown }).atomicGoalIds
-      return Array.isArray(atomicGoalIds) ? atomicGoalIds.filter((value): value is string => typeof value === 'string') : []
-    })
-    const storedAtomicGoalIds = new Set(
-      submittedAtomicGoalIds.filter((goalId) => personalizedOpenAtomicGoalIds.includes(goalId)),
-    )
     return {
       planId: landscapeId,
       revision,

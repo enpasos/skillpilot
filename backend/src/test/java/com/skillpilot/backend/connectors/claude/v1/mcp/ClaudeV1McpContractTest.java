@@ -560,7 +560,15 @@ class ClaudeV1McpContractTest {
                 "Do not invent or imply an anchor-memory feature or persistence operation"));
         assertTrue(instructions.contains("follow the returned next continuation immediately"));
         assertTrue(normalizedInstructions.contains(
-                "treat learningPlanToday as the complete authoritative daily workload across all current subject plans"));
+                "treat learningPlanToday as the authoritative status for the configured DAY or WEEK period, "
+                        + "evaluated independently per subject"));
+        assertTrue(normalizedInstructions.contains(
+                "First respect status-only questions, pause requests and explicit subject requests. "
+                        + "Only when those permit teaching, perform any immediate goalVisualization render"));
+        assertTrue(normalizedInstructions.contains(
+                "report the learning-plan status by outputting learningPlanToday.text verbatim, at most once per response"));
+        assertTrue(normalizedInstructions.contains(
+                "output learningPlanToday.activeGoalAnnouncement verbatim once as its first line"));
         assertTrue(normalizedInstructions.contains(
                 "immediately call resume_skillpilot_learning_plan with the current stateVersion and a fresh UUID"));
         assertTrue(normalizedInstructions.contains(

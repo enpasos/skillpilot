@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url'
 import { chromium, type Browser, type Page } from 'playwright'
 
 import { startViteTestServer } from './viteTestServer'
+import { learnerPlanStatus } from './fixtures/learnerPlanStatus'
 import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 
 function assert(condition: unknown, message: string): asserts condition {
@@ -277,7 +278,18 @@ const testPlanningSubjectNavigation = async (browser: Browser, baseUrl: string) 
         capturedAt: new Date().toISOString(),
       })
     } else if (url.pathname === `/api/ui/learners/${learnerId}/learning-plans`) {
-      await json({ asOf: url.searchParams.get('asOf'), followLearningPlans: false, plans: [] })
+      const asOf = url.searchParams.get('asOf')
+      assert(asOf, 'the planning collection requests a dated snapshot')
+      await json({
+        asOf,
+        followLearningPlans: false,
+        plans: [],
+        status: learnerPlanStatus(asOf, [], {
+          followLearningPlans: false,
+          evaluable: false,
+          resumeAvailable: false,
+        }),
+      })
     } else {
       await route.fulfill({ status: 404, body: '' })
     }

@@ -1,7 +1,7 @@
 # Issue 48: Abnahme des einheitlichen Lernplanstatus
 
 Verbindliche Grundlage: [Issue 48](https://github.com/enpasos/skillpilot/issues/48)
-und das [Gesamtkonzept](../../concept/didactic/unified-learning-plan-status.md),
+und das [Gesamtkonzept](../concept/didactic/unified-learning-plan-status.md),
 im Issue gebunden an Commit `2bc9a43e5baff371e4948f3886dc0c1e79185fbb`.
 
 **Status: Lokale Umsetzung und gezielte Abnahme bestanden; Claude-Rollout
@@ -234,7 +234,7 @@ die zuvor lokal erzeugten Kandidaten (`prepare-candidate` bzw. `prepare`).
 
 ## Ablauf der echten Host-Abnahme
 
-Die [Claude-beta-/ChatGPT-Strategie](../../deploy/claude-beta-chatgpt-release-strategy.md)
+Die [Claude-beta-/ChatGPT-Strategie](../deploy/claude-beta-chatgpt-release-strategy.md)
 bleibt maßgeblich. An einem stabilen, identifizierten Kandidaten zunächst in
 Claude und danach fokussiert im ChatGPT-Adapter prüfen:
 

@@ -819,12 +819,22 @@
           },
           {
             "path": "backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java",
-            "selector": "overdueSuccessFillsTodaysQuotaBeforeReducingResidualBacklog",
+            "selector": "overdueSuccessFillsPeriodQuotaBeforeReducingResidualBacklog",
             "layer": "backend-contract"
           },
           {
             "path": "backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java",
-            "selector": "noCrossSubjectOrFutureGoalCreditAndNoCreditForRevokedMastery",
+            "selector": "unrelatedGoalsAndRevokedMasteryReceiveNoCredit",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java",
+            "selector": "masteredFuturePlanGoalsCountAsAdvanceWork",
+            "layer": "backend-contract"
+          },
+          {
+            "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
+            "selector": "unreadableSubjectLabelsDoNotRevokeBackendAuthorizedPersonalContinuation",
             "layer": "backend-contract"
           },
           {
@@ -1035,7 +1045,7 @@
         "automated": [
           {
             "path": "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java",
-            "selector": "dailyPlanReadSuppressesResumeWhenEverySubjectEntryIsInvalid",
+            "selector": "resumeRefusesExistingActiveGoalAndUnavailableDailyPlanBeforeMutation",
             "layer": "backend-contract"
           },
           {

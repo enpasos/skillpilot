@@ -214,6 +214,10 @@
             "learningPlanToday": {
               "additionalProperties": false,
               "properties": {
+                "activeGoalAnnouncement": {
+                  "minLength": 1,
+                  "type": "string"
+                },
                 "asOf": {
                   "minLength": 1,
                   "type": "string"
@@ -259,14 +263,6 @@
                 "resumeAvailable": {
                   "type": "boolean"
                 },
-                "statusDirection": {
-                  "enum": [
-                    "behind",
-                    "on_track",
-                    "ahead"
-                  ],
-                  "type": "string"
-                },
                 "subjects": {
                   "items": {
                     "additionalProperties": false,
@@ -306,10 +302,6 @@
                 "text": {
                   "minLength": 1,
                   "type": "string"
-                },
-                "unavailablePlanCount": {
-                  "minimum": 0,
-                  "type": "integer"
                 }
               },
               "required": [
@@ -317,7 +309,6 @@
                 "followLearningPlans",
                 "resumeAvailable",
                 "subjects",
-                "unavailablePlanCount",
                 "guidance"
               ],
               "type": "object"
@@ -1220,6 +1211,10 @@
                 "learningPlanToday": {
                   "additionalProperties": false,
                   "properties": {
+                    "activeGoalAnnouncement": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
                     "asOf": {
                       "minLength": 1,
                       "type": "string"
@@ -1265,14 +1260,6 @@
                     "resumeAvailable": {
                       "type": "boolean"
                     },
-                    "statusDirection": {
-                      "enum": [
-                        "behind",
-                        "on_track",
-                        "ahead"
-                      ],
-                      "type": "string"
-                    },
                     "subjects": {
                       "items": {
                         "additionalProperties": false,
@@ -1312,10 +1299,6 @@
                     "text": {
                       "minLength": 1,
                       "type": "string"
-                    },
-                    "unavailablePlanCount": {
-                      "minimum": 0,
-                      "type": "integer"
                     }
                   },
                   "required": [
@@ -1323,7 +1306,6 @@
                     "followLearningPlans",
                     "resumeAvailable",
                     "subjects",
-                    "unavailablePlanCount",
                     "guidance"
                   ],
                   "type": "object"
@@ -2113,6 +2095,10 @@
                 "learningPlanToday": {
                   "additionalProperties": false,
                   "properties": {
+                    "activeGoalAnnouncement": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
                     "asOf": {
                       "minLength": 1,
                       "type": "string"
@@ -2158,14 +2144,6 @@
                     "resumeAvailable": {
                       "type": "boolean"
                     },
-                    "statusDirection": {
-                      "enum": [
-                        "behind",
-                        "on_track",
-                        "ahead"
-                      ],
-                      "type": "string"
-                    },
                     "subjects": {
                       "items": {
                         "additionalProperties": false,
@@ -2205,10 +2183,6 @@
                     "text": {
                       "minLength": 1,
                       "type": "string"
-                    },
-                    "unavailablePlanCount": {
-                      "minimum": 0,
-                      "type": "integer"
                     }
                   },
                   "required": [
@@ -2216,7 +2190,6 @@
                     "followLearningPlans",
                     "resumeAvailable",
                     "subjects",
-                    "unavailablePlanCount",
                     "guidance"
                   ],
                   "type": "object"
@@ -2914,6 +2887,10 @@
             "learningPlanToday": {
               "additionalProperties": false,
               "properties": {
+                "activeGoalAnnouncement": {
+                  "minLength": 1,
+                  "type": "string"
+                },
                 "asOf": {
                   "minLength": 1,
                   "type": "string"
@@ -2959,14 +2936,6 @@
                 "resumeAvailable": {
                   "type": "boolean"
                 },
-                "statusDirection": {
-                  "enum": [
-                    "behind",
-                    "on_track",
-                    "ahead"
-                  ],
-                  "type": "string"
-                },
                 "subjects": {
                   "items": {
                     "additionalProperties": false,
@@ -3006,10 +2975,6 @@
                 "text": {
                   "minLength": 1,
                   "type": "string"
-                },
-                "unavailablePlanCount": {
-                  "minimum": 0,
-                  "type": "integer"
                 }
               },
               "required": [
@@ -3017,7 +2982,6 @@
                 "followLearningPlans",
                 "resumeAvailable",
                 "subjects",
-                "unavailablePlanCount",
                 "guidance"
               ],
               "type": "object"
@@ -3563,6 +3527,10 @@
                 "learningPlanToday": {
                   "additionalProperties": false,
                   "properties": {
+                    "activeGoalAnnouncement": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
                     "asOf": {
                       "minLength": 1,
                       "type": "string"
@@ -3608,14 +3576,6 @@
                     "resumeAvailable": {
                       "type": "boolean"
                     },
-                    "statusDirection": {
-                      "enum": [
-                        "behind",
-                        "on_track",
-                        "ahead"
-                      ],
-                      "type": "string"
-                    },
                     "subjects": {
                       "items": {
                         "additionalProperties": false,
@@ -3655,10 +3615,6 @@
                     "text": {
                       "minLength": 1,
                       "type": "string"
-                    },
-                    "unavailablePlanCount": {
-                      "minimum": 0,
-                      "type": "integer"
                     }
                   },
                   "required": [
@@ -3666,7 +3622,6 @@
                     "followLearningPlans",
                     "resumeAvailable",
                     "subjects",
-                    "unavailablePlanCount",
                     "guidance"
                   ],
                   "type": "object"
@@ -4207,6 +4162,10 @@
             "learningPlanToday": {
               "additionalProperties": false,
               "properties": {
+                "activeGoalAnnouncement": {
+                  "minLength": 1,
+                  "type": "string"
+                },
                 "asOf": {
                   "minLength": 1,
                   "type": "string"
@@ -4252,14 +4211,6 @@
                 "resumeAvailable": {
                   "type": "boolean"
                 },
-                "statusDirection": {
-                  "enum": [
-                    "behind",
-                    "on_track",
-                    "ahead"
-                  ],
-                  "type": "string"
-                },
                 "subjects": {
                   "items": {
                     "additionalProperties": false,
@@ -4299,10 +4250,6 @@
                 "text": {
                   "minLength": 1,
                   "type": "string"
-                },
-                "unavailablePlanCount": {
-                  "minimum": 0,
-                  "type": "integer"
                 }
               },
               "required": [
@@ -4310,7 +4257,6 @@
                 "followLearningPlans",
                 "resumeAvailable",
                 "subjects",
-                "unavailablePlanCount",
                 "guidance"
               ],
               "type": "object"
@@ -5079,6 +5025,10 @@
                 "learningPlanToday": {
                   "additionalProperties": false,
                   "properties": {
+                    "activeGoalAnnouncement": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
                     "asOf": {
                       "minLength": 1,
                       "type": "string"
@@ -5124,14 +5074,6 @@
                     "resumeAvailable": {
                       "type": "boolean"
                     },
-                    "statusDirection": {
-                      "enum": [
-                        "behind",
-                        "on_track",
-                        "ahead"
-                      ],
-                      "type": "string"
-                    },
                     "subjects": {
                       "items": {
                         "additionalProperties": false,
@@ -5171,10 +5113,6 @@
                     "text": {
                       "minLength": 1,
                       "type": "string"
-                    },
-                    "unavailablePlanCount": {
-                      "minimum": 0,
-                      "type": "integer"
                     }
                   },
                   "required": [
@@ -5182,7 +5120,6 @@
                     "followLearningPlans",
                     "resumeAvailable",
                     "subjects",
-                    "unavailablePlanCount",
                     "guidance"
                   ],
                   "type": "object"
@@ -5702,6 +5639,10 @@
           "learningPlanToday": {
             "additionalProperties": false,
             "properties": {
+              "activeGoalAnnouncement": {
+                "minLength": 1,
+                "type": "string"
+              },
               "asOf": {
                 "minLength": 1,
                 "type": "string"
@@ -5747,14 +5688,6 @@
               "resumeAvailable": {
                 "type": "boolean"
               },
-              "statusDirection": {
-                "enum": [
-                  "behind",
-                  "on_track",
-                  "ahead"
-                ],
-                "type": "string"
-              },
               "subjects": {
                 "items": {
                   "additionalProperties": false,
@@ -5794,10 +5727,6 @@
               "text": {
                 "minLength": 1,
                 "type": "string"
-              },
-              "unavailablePlanCount": {
-                "minimum": 0,
-                "type": "integer"
               }
             },
             "required": [
@@ -5805,7 +5734,6 @@
               "followLearningPlans",
               "resumeAvailable",
               "subjects",
-              "unavailablePlanCount",
               "guidance"
             ],
             "type": "object"
@@ -6708,6 +6636,10 @@
               "learningPlanToday": {
                 "additionalProperties": false,
                 "properties": {
+                  "activeGoalAnnouncement": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
                   "asOf": {
                     "minLength": 1,
                     "type": "string"
@@ -6753,14 +6685,6 @@
                   "resumeAvailable": {
                     "type": "boolean"
                   },
-                  "statusDirection": {
-                    "enum": [
-                      "behind",
-                      "on_track",
-                      "ahead"
-                    ],
-                    "type": "string"
-                  },
                   "subjects": {
                     "items": {
                       "additionalProperties": false,
@@ -6800,10 +6724,6 @@
                   "text": {
                     "minLength": 1,
                     "type": "string"
-                  },
-                  "unavailablePlanCount": {
-                    "minimum": 0,
-                    "type": "integer"
                   }
                 },
                 "required": [
@@ -6811,7 +6731,6 @@
                   "followLearningPlans",
                   "resumeAvailable",
                   "subjects",
-                  "unavailablePlanCount",
                   "guidance"
                 ],
                 "type": "object"
@@ -7601,6 +7520,10 @@
               "learningPlanToday": {
                 "additionalProperties": false,
                 "properties": {
+                  "activeGoalAnnouncement": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
                   "asOf": {
                     "minLength": 1,
                     "type": "string"
@@ -7646,14 +7569,6 @@
                   "resumeAvailable": {
                     "type": "boolean"
                   },
-                  "statusDirection": {
-                    "enum": [
-                      "behind",
-                      "on_track",
-                      "ahead"
-                    ],
-                    "type": "string"
-                  },
                   "subjects": {
                     "items": {
                       "additionalProperties": false,
@@ -7693,10 +7608,6 @@
                   "text": {
                     "minLength": 1,
                     "type": "string"
-                  },
-                  "unavailablePlanCount": {
-                    "minimum": 0,
-                    "type": "integer"
                   }
                 },
                 "required": [
@@ -7704,7 +7615,6 @@
                   "followLearningPlans",
                   "resumeAvailable",
                   "subjects",
-                  "unavailablePlanCount",
                   "guidance"
                 ],
                 "type": "object"
@@ -8402,6 +8312,10 @@
           "learningPlanToday": {
             "additionalProperties": false,
             "properties": {
+              "activeGoalAnnouncement": {
+                "minLength": 1,
+                "type": "string"
+              },
               "asOf": {
                 "minLength": 1,
                 "type": "string"
@@ -8447,14 +8361,6 @@
               "resumeAvailable": {
                 "type": "boolean"
               },
-              "statusDirection": {
-                "enum": [
-                  "behind",
-                  "on_track",
-                  "ahead"
-                ],
-                "type": "string"
-              },
               "subjects": {
                 "items": {
                   "additionalProperties": false,
@@ -8494,10 +8400,6 @@
               "text": {
                 "minLength": 1,
                 "type": "string"
-              },
-              "unavailablePlanCount": {
-                "minimum": 0,
-                "type": "integer"
               }
             },
             "required": [
@@ -8505,7 +8407,6 @@
               "followLearningPlans",
               "resumeAvailable",
               "subjects",
-              "unavailablePlanCount",
               "guidance"
             ],
             "type": "object"
@@ -9051,6 +8952,10 @@
               "learningPlanToday": {
                 "additionalProperties": false,
                 "properties": {
+                  "activeGoalAnnouncement": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
                   "asOf": {
                     "minLength": 1,
                     "type": "string"
@@ -9096,14 +9001,6 @@
                   "resumeAvailable": {
                     "type": "boolean"
                   },
-                  "statusDirection": {
-                    "enum": [
-                      "behind",
-                      "on_track",
-                      "ahead"
-                    ],
-                    "type": "string"
-                  },
                   "subjects": {
                     "items": {
                       "additionalProperties": false,
@@ -9143,10 +9040,6 @@
                   "text": {
                     "minLength": 1,
                     "type": "string"
-                  },
-                  "unavailablePlanCount": {
-                    "minimum": 0,
-                    "type": "integer"
                   }
                 },
                 "required": [
@@ -9154,7 +9047,6 @@
                   "followLearningPlans",
                   "resumeAvailable",
                   "subjects",
-                  "unavailablePlanCount",
                   "guidance"
                 ],
                 "type": "object"
@@ -9695,6 +9587,10 @@
           "learningPlanToday": {
             "additionalProperties": false,
             "properties": {
+              "activeGoalAnnouncement": {
+                "minLength": 1,
+                "type": "string"
+              },
               "asOf": {
                 "minLength": 1,
                 "type": "string"
@@ -9740,14 +9636,6 @@
               "resumeAvailable": {
                 "type": "boolean"
               },
-              "statusDirection": {
-                "enum": [
-                  "behind",
-                  "on_track",
-                  "ahead"
-                ],
-                "type": "string"
-              },
               "subjects": {
                 "items": {
                   "additionalProperties": false,
@@ -9787,10 +9675,6 @@
               "text": {
                 "minLength": 1,
                 "type": "string"
-              },
-              "unavailablePlanCount": {
-                "minimum": 0,
-                "type": "integer"
               }
             },
             "required": [
@@ -9798,7 +9682,6 @@
               "followLearningPlans",
               "resumeAvailable",
               "subjects",
-              "unavailablePlanCount",
               "guidance"
             ],
             "type": "object"
@@ -10567,6 +10450,10 @@
               "learningPlanToday": {
                 "additionalProperties": false,
                 "properties": {
+                  "activeGoalAnnouncement": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
                   "asOf": {
                     "minLength": 1,
                     "type": "string"
@@ -10612,14 +10499,6 @@
                   "resumeAvailable": {
                     "type": "boolean"
                   },
-                  "statusDirection": {
-                    "enum": [
-                      "behind",
-                      "on_track",
-                      "ahead"
-                    ],
-                    "type": "string"
-                  },
                   "subjects": {
                     "items": {
                       "additionalProperties": false,
@@ -10659,10 +10538,6 @@
                   "text": {
                     "minLength": 1,
                     "type": "string"
-                  },
-                  "unavailablePlanCount": {
-                    "minimum": 0,
-                    "type": "integer"
                   }
                 },
                 "required": [
@@ -10670,7 +10545,6 @@
                   "followLearningPlans",
                   "resumeAvailable",
                   "subjects",
-                  "unavailablePlanCount",
                   "guidance"
                 ],
                 "type": "object"

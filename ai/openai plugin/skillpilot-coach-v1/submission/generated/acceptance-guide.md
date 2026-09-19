@@ -6,11 +6,11 @@ Automatisch aus den aktuellen Einreichungsquellen erzeugt. Nicht hier bearbeiten
 
 Kandidat: `1.1.0` · MCP-Endpunkt: `https://mcp-coach-v1.skillpilot.com/mcp`
 
-Testsuite-SHA-256: `0630406ea4c382a8b401d56e7c4e8688d5859494d9819748b263981c68ae8fc7`
+Testsuite-SHA-256: `cf6781389cebfc0ccf5b4b2d99e3d52fb53ba9bec32508296505ad0e395b84e1`
 
-Vertrags-SHA-256: `6645ac9c6f026c956decd5464537925d14e0c53d3aab325d32401082bc442ea8`
+Vertrags-SHA-256: `d4354e84f60910adb810238ceb66f6d2affce66033fb3c4be74de52837a060a7`
 
-Paket-Snapshot-SHA-256: `d9eb66f48aea684559a31eea75f495f642a8536aeb499d59dc5210478f5dc5bb`
+Paket-Snapshot-SHA-256: `4a5795134844140335d21489eef9d124d62e955956b68f407fb0cc90d029f105`
 
 ## Vorbereitung
 
@@ -478,8 +478,10 @@ Verbotene Werkzeuge: keine zusätzlichen Verbote.
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `coveredPeriodTargetPublishesAdvanceWorkAndDoesNotTurnBacklogIntoRequiredWork` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `zeroPeriodTargetIsStatedHonestlyAndAdvanceWorkNeverCoversAnotherSubject` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `fullContextReadsTodayWithoutAdvancingStateAndSuppressesFutureGoalChoices` (backend-contract)
-- `backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java` → `overdueSuccessFillsTodaysQuotaBeforeReducingResidualBacklog` (backend-contract)
-- `backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java` → `noCrossSubjectOrFutureGoalCreditAndNoCreditForRevokedMastery` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java` → `overdueSuccessFillsPeriodQuotaBeforeReducingResidualBacklog` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java` → `unrelatedGoalsAndRevokedMasteryReceiveNoCredit` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/service/LearningPlanDailyProgressTest.java` → `masteredFuturePlanGoalsCountAsAdvanceWork` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `unreadableSubjectLabelsDoNotRevokeBackendAuthorizedPersonalContinuation` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/service/LearnerGoalCompletionIntegrationTest.java` → `partialWorkCompletionReplayAndResetKeepOneImmutableEvent` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceIntegrationTest.java` → `completedQuotaStopsAutomaticReconcileButExplicitResumeAllowsExtraWork` (backend-contract)
 
@@ -613,7 +615,7 @@ Verbotene Werkzeuge: `resume_skillpilot_learning_plan`, `switch_skillpilot_learn
 
 ### Zugeordnete automatisierte Tests
 
-- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `dailyPlanReadSuppressesResumeWhenEverySubjectEntryIsInvalid` (backend-contract)
+- `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `resumeRefusesExistingActiveGoalAndUnavailableDailyPlanBeforeMutation` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `noEligiblePlanPublishesAuthoritativeGuidance` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `missingStatusIsNotInventedZeroWorkloadAndDoesNotBlockActiveTeaching` (backend-contract)
 - `backend/src/test/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV11DailyPlanContractTest.java` → `learnerWithoutPlansRetainsTheNormalContextSummaryAndFrontier` (backend-contract)

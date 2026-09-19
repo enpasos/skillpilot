@@ -60,7 +60,7 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 ## Runtime Workflows
 
 - [Learning Workflow](runtime-workflows/learning-workflow.md)
-- [Einheitlicher Lernplanstatus: Tages-/Wochenpensum und Fortsetzung](didactic/unified-learning-plan-status.md)
+- [Tagesfortschritt: frühere Rechenweise (abgelöst)](runtime-workflows/daily-learning-progress.md)
   Abgelöst durch den einheitlichen Lernplanstatus; beschreibt die frühere Rechenweise.
 - [Kursplanung nach Curriculum-Updates](runtime-workflows/course-plan-update-continuity.md)
 - [Existing-Learner Teacher View by SkillPilot ID](runtime-workflows/existing-learner-teacher-view.md)
