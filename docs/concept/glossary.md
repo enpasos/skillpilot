@@ -116,7 +116,7 @@ Written `Atoms(g)`: the goal itself if it is atomic, otherwise its atomic descen
 
 *DE: enthält* — see [Graph Definition §4](skill-graph/graph-definition.md)
 
-The authored hierarchy relation: `(p, c)` means parent `p` directly contains child `c` in **content** terms. Its arrow points from parent to child. `contains` must be acyclic but allows multiple parents (polyhierarchy).
+The authored hierarchy relation $C$: `(p, c)` means parent `p` directly contains child `c` in **content** terms. Its arrow points from parent to child. `contains` must be acyclic but allows multiple parents (polyhierarchy).
 
 Ancestor/descendant relationships are derived through paths of one or more `contains` edges. This transitive closure includes direct parent-child pairs. `contains` is not a prerequisite and not a program placement.
 
@@ -124,7 +124,7 @@ Ancestor/descendant relationships are derived through paths of one or more `cont
 
 *DE: setzt voraus* — see [Graph Definition §5](skill-graph/graph-definition.md)
 
-The authored prerequisite relation: `(g, p)` means goal `g` directly requires prerequisite `p`. Its arrow points from the goal to its prerequisite; `p` must be satisfied before `g` is approached. It must be acyclic. In mature skill landscapes it should be authored between **atomic** goals; cluster-level `requires` is a transitional authoring aid or a deliberately universal claim.
+The authored prerequisite relation $R$: `(g, p)` means goal `g` directly requires prerequisite `p`. Its arrow points from the goal to its prerequisite; `p` must be satisfied before `g` is approached. It must be acyclic. In mature skill landscapes it should be authored between **atomic** goals; cluster-level `requires` is a transitional authoring aid or a deliberately universal claim.
 
 Both `contains` and `requires` record direct relationships. Derived relationships are qualified by their meaning rather than treated as additional authored relation types.
 
@@ -132,21 +132,21 @@ Both `contains` and `requires` record direct relationships. Derived relationship
 
 *DE: vererbte Voraussetzungen* — see [Graph Definition §6.1](skill-graph/graph-definition.md)
 
-Additional prerequisites derived from the `requires` of a goal's `contains` ancestors, excluding pairs already authored on the goal itself: $R_{eff}\setminus R_d$. With multiple parents, all ancestor paths contribute. Inheritance through containment is not the same as following a chain of prerequisites.
+Additional prerequisites derived from the `requires` of a goal's `contains` ancestors, excluding pairs already authored on the goal itself: $R_{\mathrm{inherited}}=R_{\mathrm{effective}}\setminus R$. With multiple parents, all ancestor paths contribute. Figures label these additional pairs `requires (inherited)` and draw them as dashed arrows. Inheritance through containment is not the same as following a chain of prerequisites.
 
 ### Effective prerequisites
 
 *DE: effektive Voraussetzungen* — see [Graph Definition §6](skill-graph/graph-definition.md)
 
-The derived prerequisite relation containing a goal's own `requires` together with prerequisites inherited from its `contains` ancestors. It includes authored pairs; it does not mean inherited prerequisites alone and is not itself a transitive closure.
+The derived prerequisite relation $R_{\mathrm{effective}}=R\cup R_{\mathrm{inherited}}$, containing a goal's own `requires` together with prerequisites inherited from its `contains` ancestors. It includes authored pairs; it does not mean inherited prerequisites alone and is not itself a transitive closure.
 
-The frontier follows paths in this effective prerequisite relation, which is why a coarse cluster prerequisite can block many atomic goals at once. In a fully atomic-authored prerequisite graph, $R_{eff}=R_d$.
+The frontier follows paths in this effective prerequisite relation, which is why a coarse cluster prerequisite can block many atomic goals at once. In a fully atomic-authored prerequisite graph, $R_{\mathrm{effective}}=R$.
 
 ### Prerequisite reachability
 
 *DE: Erreichbarkeit von Voraussetzungen* — see [Graph Definition §§1 and 6](skill-graph/graph-definition.md)
 
-Goals connected by one or more edges of the specified prerequisite relation, written $R_d^+$ or $R_{eff}^+$ as appropriate. Reachability includes individual edges and longer chains. It is derived, not another authored relation. A learning-flow view uses the inverse direction and labels it explicitly.
+Goals connected by one or more edges of the specified prerequisite relation, written $R^+$ or $R_{\mathrm{effective}}^+$ as appropriate. Reachability includes individual edges and longer chains. It is derived, not another authored relation. A learning-flow view uses the inverse direction and labels it explicitly.
 
 ### Weight
 

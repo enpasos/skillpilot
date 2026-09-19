@@ -111,7 +111,7 @@ The current rule catalog is versioned as `curriculum-quality-v4`.
 | `CQR-002` | `M0` | Explicit `type` metadata matches structural atomic/cluster classification. |
 | `CQR-003` | `M2` | Bundesland atomic coverage: every declared jurisdiction view has full source-backed coverage for its source-coverage atoms, no unsupported assigned source-coverage atom, and no registered source original goal missing from the view mapping. |
 | `CQR-004` | `M2` | Course-level mapping consistency: source goals marked `GK_LK`, `LK`, or `unspecified` map only to canonical SkillPilot goals with compatible `GK`/`LK` tags; `unspecified` defaults to `GK_LK` unless an LK-only decision is explicitly reviewed. |
-| `CQR-101` | `M3` | Effective full route coverage through `R_eff`: motivation anchor -> selected atomic goals -> terminal autonomy. |
+| `CQR-101` | `M3` | Effective full route coverage through $R_{\mathrm{effective}}$: motivation anchor -> selected atomic goals -> terminal autonomy. |
 | `CQR-102` | `M3` | Direct atomic route coverage through authored atomic `requires`. |
 | `CQR-103` | `M3` | No route-scope cluster-level `requires` remain for ordinary sequencing. |
 | `CQR-201` | `M4` | Terminal autonomy goals have `examData`. |

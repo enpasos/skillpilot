@@ -158,36 +158,36 @@ Technisch wird fuer den Terminalpfad der umgedrehte `requires`-Graph verwendet. 
 Ein terminales Uebungsziel erfordert transitiv das atomare Lernziel.
 ```
 
-### Effektive Route `R_eff`
+### Effektive Route
 
-`R_eff` ist die kompatible, grosszuegigere Routenprojektion.
+Die effektive Voraussetzungsrelation $R_{\mathrm{effective}}$ ist die Grundlage der grosszuegigeren Routenpruefung.
 
 Sie enthaelt:
 
-- direkte `requires` eines Ziels,
-- zusaetzlich `requires`, die ein Ziel ueber seine `contains`-Vorfahren erbt.
+- direkt angegebene `requires` eines Ziels,
+- zusaetzliche Voraussetzungen, die ein Ziel ueber seine `contains`-Vorfahren erbt.
 
-Das ist wichtig fuer alte oder halb migrierte Graphen, in denen ein Cluster noch eine Voraussetzung fuer alle darunterliegenden Ziele ausdrueckt.
+Damit werden auch Graphen ausgewertet, in denen ein Cluster eine Voraussetzung fuer alle darunterliegenden Ziele ausdrueckt.
 
-`R_eff` beantwortet:
+Die effektive Routenpruefung beantwortet:
 
-> Ist der Teilbereich didaktisch geschlossen, wenn wir vorhandene Cluster-`requires` noch als Uebergangsmodell akzeptieren?
+> Ist der Teilbereich didaktisch geschlossen, wenn Voraussetzungen von Clustern an ihre Nachfahren vererbt werden?
 
-### Direkte atomare Route `R_d`
+### Direkte atomare Route
 
-`R_d` ist die strengere Zielmodellierung.
+Die strengere Routenpruefung verwendet $R\cap(A\times A)$, also die auf atomare Endpunkte eingeschraenkte `requires`-Relation.
 
 Sie enthaelt nur:
 
-- direkte `requires`,
+- direkt angegebene `requires`,
 - deren Quellziel atomar ist,
 - und deren Ziel ebenfalls atomar ist.
 
-Cluster-Knoten werden fuer diese Pruefung nicht als Routenbruecken akzeptiert.
+Cluster-Knoten werden fuer diese Pruefung nicht als Routenbruecken akzeptiert. Die Auswahl des jeweiligen QA-Scope bleibt davon getrennt.
 
-`R_d` beantwortet:
+Die direkte atomare Routenpruefung beantwortet:
 
-> Ist die kanonische didaktische Route bereits auf atomarer Lernzielebene modelliert?
+> Ist die kanonische didaktische Route auf atomarer Lernzielebene modelliert?
 
 ### Terminale Autonomie
 
@@ -492,10 +492,10 @@ Ziel:
 
 Geprueft wird fuer jedes durch den Scope-Selektor ausgewaehlte atomare Ziel:
 
-- Es gibt in `R_eff` einen Pfad vom Ziel zu mindestens einem Motivationsanker.
-- Es gibt im umgedrehten `R_eff` einen Pfad vom Ziel zu mindestens einem terminalen Ziel.
+- Es gibt in $R_{\mathrm{effective}}$ einen Pfad vom Ziel zu mindestens einem Motivationsanker.
+- Es gibt in $R_{\mathrm{effective}}^{-1}$ einen Pfad vom Ziel zu mindestens einem terminalen Ziel.
 
-`R_eff` akzeptiert dabei auch geerbte Cluster-`requires`.
+$R_{\mathrm{effective}}$ enthaelt dabei auch die von Clustern geerbten Voraussetzungen.
 
 Metriken:
 
@@ -522,10 +522,10 @@ Ziel:
 
 Geprueft wird fuer jedes ausgewaehlte atomare Ziel:
 
-- Es gibt in `R_d` einen Pfad vom Ziel zu mindestens einem Motivationsanker.
-- Es gibt im umgedrehten `R_d` einen Pfad vom Ziel zu mindestens einem terminalen Ziel.
+- Es gibt in $R\cap(A\times A)$ einen Pfad vom Ziel zu mindestens einem Motivationsanker.
+- Es gibt in $(R\cap(A\times A))^{-1}$ einen Pfad vom Ziel zu mindestens einem terminalen Ziel.
 
-`R_d` akzeptiert nur direkte atomare `requires`.
+$R\cap(A\times A)$ enthaelt nur direkt angegebene `requires` zwischen atomaren Zielen.
 Cluster-`requires` helfen hier nicht.
 
 Metriken:

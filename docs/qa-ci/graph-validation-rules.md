@@ -218,7 +218,7 @@ Rule semantics:
   - one target landscape
   - one or more reviewed motivation anchor goals
   - one scoped goal selector
-- `GVR-011` fails if any selected node except the anchor nodes themselves has no transitive path to at least one configured anchor in the effective-requires graph.
+- `GVR-011` fails if any selected node except the anchor nodes themselves has no transitive path to at least one configured anchor in the effective prerequisite graph.
 
 Current active profiles:
 
@@ -385,13 +385,9 @@ Validation semantics:
   - landscape has no atomic nodes, or
   - first atomic node is not a motivation node
 - `GVR-005` fails if:
-  - any atomic node except the first motivation node has no transitive path to that anchor in the effective-requires graph
+  - any atomic node except the first motivation node has no transitive path to that anchor in the effective prerequisite graph
 
-Effective-requires graph means:
-
-- direct `requires`
-- plus inherited `requires` from `contains` ancestors
-- then transitive reachability over these effective edges
+The effective prerequisite relation $R_{\mathrm{effective}}$ contains authored `requires` pairs and additional prerequisites inherited from `contains` ancestors. Connectivity checks follow paths in that relation, using its transitive closure $R_{\mathrm{effective}}^+$; the effective relation itself is not a transitive closure.
 
 Interpretation of current coverage strength:
 
@@ -405,7 +401,7 @@ The stricter direction is implemented as `GVR-012` for canonical DE Gymnasium ma
 
 Target semantics for mature landscapes:
 
-- route coverage should be defined primarily on the atomic direct-prerequisite graph (`R_d` on atomic goals), not on inherited `R_eff`
+- route coverage should be defined primarily on the authored `requires` relation restricted to atomic endpoints ($R\cap(A\times A)$), rather than on the effective prerequisite relation $R_{\mathrm{effective}}$
 - a landscape or route-group may have one or more motivation anchors; a single global anchor is not required if the content structure suggests otherwise
 - a landscape will often have multiple terminal autonomy goals, typically authentic independent performances such as exam tasks or other capstones
 - every selected `curricularAtomic` goal must lie on at least one didactic path from its stage-specific motivation anchor to a terminal autonomy goal
@@ -413,7 +409,7 @@ Target semantics for mature landscapes:
 
 Rollout strategy:
 
-- keep `GVR-004` / `GVR-005` as migration-compatible checks on `R_eff`
+- keep `GVR-004` / `GVR-005` as migration-compatible checks on $R_{\mathrm{effective}}$
 - use `GVR-012` only after a scope has reviewed semantic kinds, anchors, and terminal sets
 - keep other landscapes on migration-compatible checks until they receive an explicit hard profile
 - never pool stage anchors merely to make a disconnected route pass
