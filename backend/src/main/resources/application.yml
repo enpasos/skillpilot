@@ -43,6 +43,10 @@ spring:
             clientSecret: ${GITHUB_CLIENT_SECRET}
 
 skillpilot:
+  content:
+    enabled: ${SKILLPILOT_CONTENT_ENABLED:false}
+    # Private operator-provisioned learner -> SHA-256 configuration grants; never a public asset.
+    configuration-grants-json: ${SKILLPILOT_CONTENT_CONFIGURATION_GRANTS_JSON:}
   public-base-url: ${SKILLPILOT_PUBLIC_BASE_URL:https://skillpilot.com}
   oauth:
     # Retired migration guard: true now fails startup. Authentication is selected

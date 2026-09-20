@@ -26,6 +26,7 @@
     "test:claude-v1-start": "tsx src/coachVariants/claudeV1/claudeV1Start.test.ts && tsx scripts/testClaudeV1StartUi.tsx",
     "test:claude-plugin-publication": "tsx src/utils/claudePluginPublication.test.ts && tsx scripts/testClaudePluginInstallUi.ts",
     "test:ai-transparency-ui": "tsx scripts/testAiTransparencyUi.tsx",
+    "test:content-materials": "tsx src/utils/contentMaterialsApi.test.ts && tsx scripts/testContentMaterialsUi.ts",
     "build:privacy-notice": "tsx scripts/buildPrivacyNotice.ts",
     "test:legal-terms": "tsx src/utils/legalTermsAcceptance.test.ts && tsx src/utils/legalViewCopy.test.ts && tsx src/utils/privacyViewCopy.test.ts && tsx scripts/buildPrivacyNotice.ts --check",
     "test:ai-transparency-artifact": "node ../scripts/verify_ai_transparency_artifact.test.mjs",

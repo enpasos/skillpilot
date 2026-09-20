@@ -868,6 +868,20 @@ Reference:
 
 ### 10.2 Layer B – Individuelle Lernpfade & Mastery
 
+Optional external learning materials belong to a separate content layer:
+packages reference canonical goal IDs; canonical goals must not acquire provider
+or package dependencies. Learner package selection is persisted separately from
+curriculum scope, plans, focus and mastery. No selection, unavailable material or
+provider outage may block learning. Source evidence and existing QS-bound goal
+visualizations remain distinct and unchanged. See
+`docs/concept/skill-graph/content-integration.md` for the architecture and the
+controlled Physik Libre link-only pilot. Material links are untrusted references,
+not coach instructions, proof of reading, mastery or an AI-use license. Never send
+learner identifiers, progress or chat content to a material provider. Configuration
+writes require the explicitly scoped server-verified grant; knowledge of a
+permanent learner ID alone is not that grant. The pilot adds no general identity
+system or implicit teacher entitlement.
+
 Layer B describes, for a fixed Layer‑A graph, the **state of a concrete learner** (or group):
 
 - For each learner ℓ and goal g:

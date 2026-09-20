@@ -337,6 +337,38 @@ Die Inhalte sind erweiterbar und versioniert; Quellenbezüge sind dokumentiert, 
 
 ---
 
+### 5.3 Optionale Lernmaterialien: Content anbinden, nicht einbauen
+
+SkillPilot trennt drei Verantwortungen: Das **kanonische Curriculum** beschreibt
+Kompetenzen, Voraussetzungen und ihre Quellenbelege. Eine **separate Contentebene**
+ordnet externe Erklärungen, Bücher, Aufgaben oder Werkzeuge vorhandenen Lernzielen
+zu. In der **Personalisierung einer SkillPilot-ID** wählen Lernende, welche dieser
+Angebote berücksichtigt werden; Lehrende benötigen dafür eine ausdrücklich
+erteilte Berechtigung.
+
+Die Verweisrichtung führt vom Material zum Lernziel. Ein Anbieterwechsel oder die
+Deaktivierung eines Pakets verändert weder Curriculum noch erreichten Lernstand.
+Fehlende Zuordnungen und nicht verfügbare Materialien verhindern das Weiterlernen
+nicht. Das Öffnen eines Links ist kein Kompetenznachweis.
+
+Der erste begrenzte Anwendungsfall ist **Physik Libre** für Physik am Gymnasium,
+nach nachgewiesenem M7 für Physik. Die Pilotzuordnungen sind unabhängig erstellte
+Verweise und behaupten weder vollständige Abdeckung noch einen vereinbarten
+Partnerstatus. Curriculum-QS, Materialqualität und Zuordnungsqualität bleiben
+getrennte Aussagen. Eigene geprüfte Lernzielbilder behalten ihren bestehenden
+QS-Vertrag.
+
+Die Aktivierung bedeutet zunächst nur, passende Materialien zu berücksichtigen:
+Sie ist weder eine Zugangsberechtigung noch eine Freigabe zur Inhaltsübernahme
+oder zum KI-Zugriff. SkillPilot übermittelt dadurch keine SkillPilot-ID und keinen
+Lernverlauf an den Anbieter. Ein Link im Coach-Kontext bedeutet nicht, dass der
+Coach die Seite gelesen hat. Ein vollständiger Contentkatalog, Bezahlsystem oder
+neues Austauschformat ist keine Voraussetzung für diesen Pilot.
+
+Der verbindliche [Architekturrahmen zur Contentanbindung](https://enpasos.github.io/skillpilot/concept/skill-graph/content-integration/)
+beschreibt die Grenzen; der [Pilotbericht](https://enpasos.github.io/skillpilot/dev/content-integration-physik-libre-pilot/)
+trennt Implementierung, Tests und noch ausstehende Betriebsabnahme.
+
 ## 6. Governance & Community: Open Source & Einladung
 
 SkillPilot wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentlicht – als Einladung, bestehende Akteure einzubinden statt zu verdrängen:

@@ -54,8 +54,8 @@ public class ChampionPracticeFingerprint {
                     tag.equals("memorization") || tag.equals("orientation") || tag.equals("exam")
                     || tag.startsWith("srs-deck:") || tag.startsWith("select:")).toList());
             List<Object> materials = new ArrayList<>();
-            for (Map<String, Object> link : goal.getResourceLinks() == null
-                    ? List.<Map<String, Object>>of() : goal.getResourceLinks()) {
+            for (Map<String, Object> link : HistoricalContentLinkBindings.forFingerprint(
+                    goal.getId(), goal.getResourceLinks())) {
                 if ("curriculum".equals(link.get("type"))) continue;
                 Map<String, Object> content = new TreeMap<>();
                 for (String key : List.of("type", "resourceType", "role", "url", "lang", "title",

@@ -342,6 +342,35 @@ Beyond the current Gymnasium focus, the model is also transferable to higher edu
 
 ---
 
+### 5.3 Optional Learning Materials: Link Content, Do Not Embed It
+
+SkillPilot separates three responsibilities: the **canonical curriculum** defines
+competencies, prerequisites and their source evidence. A **separate content layer**
+maps external explanations, books, exercises or tools to existing goals.
+**Personalization for a SkillPilot ID** determines which offers a learner selects;
+teachers need explicit authorization to change that selection.
+
+References point from materials to goals. Replacing a provider or disabling a
+package changes neither the curriculum nor achieved learning progress. Missing
+mappings and unavailable materials never block further learning. Opening a link
+is not evidence of competence.
+
+The first limited use case is **Physik Libre** for German Gymnasium Physics,
+after Physics has demonstrably reached M7. Pilot mappings are independently
+created references, not claims of full coverage or a provider partnership.
+Curriculum QA, material quality and mapping quality remain separate statements.
+SkillPilot-owned reviewed goal images retain their existing QA contract.
+
+Activation initially means considering matching materials: it grants neither
+access entitlement nor permission to copy content or let AI access it. It does
+not send a SkillPilot ID or learning history to the provider. A URL in the coach
+context does not mean the coach has read the page. The pilot does not require a
+complete content catalog, payment system or new interchange standard.
+
+The binding [Content Integration Architecture](https://enpasos.github.io/skillpilot/concept/skill-graph/content-integration/)
+defines these boundaries; the [pilot report](https://enpasos.github.io/skillpilot/dev/content-integration-physik-libre-pilot/)
+distinguishes implementation, tests and outstanding operational acceptance.
+
 ## 6. Governance & Community: Open Source & Invitation
 
 SkillPilot is released as **open source** under the **Apache-2.0 license** - an invitation to include established stakeholders rather than displace them:

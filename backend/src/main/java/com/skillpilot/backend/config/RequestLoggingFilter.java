@@ -98,6 +98,9 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                 // contain chat prose under an unknown field, and validation errors
                 // may echo it. Never cache or log either body at these boundaries.
                 || isCoachResultBoundary(requestUri)
+                // Optional material preferences are private learner configuration.
+                // Also protect rejected/unknown body fields; the scoped grant is header-only.
+                || isContentConfigurationBoundary(requestUri)
                 // OAuth token, authorization and revocation requests use form bodies.
                 // Do not pass those credentials through the general JSON body logger.
                 || requestUri.startsWith("/api/claude/oauth")
@@ -160,6 +163,19 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         String path = requestUri.replaceAll(";[^/]*", "");
         return path.matches("/api/ai/[^/]+/(?:learners|sessions)/[^/]+/"
                 + "(?:visible/)?(?:mastery|verified-recall/result)(?:/.*)?");
+    }
+
+    private static boolean isContentConfigurationBoundary(String requestUri) {
+        try {
+            // MVC matches decoded path segments; percent encoding must not turn
+            // rejected private input into a generic request/response body log.
+            String path = org.springframework.web.util.UriUtils.decode(requestUri, StandardCharsets.UTF_8)
+                    .replaceAll(";[^/]*", "");
+            return path.matches("/api/ui/learners/[^/]+/content-(?:selection|materials)(?:/.*)?");
+        } catch (IllegalArgumentException malformedPath) {
+            // Let routing reject it, without retaining a potentially private body.
+            return true;
+        }
     }
 
     private void writeAiTrace(HttpServletRequest request,

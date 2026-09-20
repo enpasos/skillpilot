@@ -12,6 +12,8 @@ import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
 import { LearnerDataManagementDialog } from '../components/LearnerDataManagementDialog'
 import { GoalCard } from '../components/GoalCard'
+import { MaterialSelectionPanel } from '../components/MaterialSelectionPanel'
+import { GoalAdditionalMaterials } from '../components/GoalAdditionalMaterials'
 import { LearnerGoalFeedbackAction } from '../components/LearnerGoalFeedbackAction'
 import { FlashcardDrill } from '../components/srs/FlashcardDrill'
 import { ProgressPopover } from '../components/ProgressPopover'
@@ -383,6 +385,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [expandedGoalIds, setExpandedGoalIds] = useState<Set<string>>(new Set())
   const [learnerData, setLearnerData] = useState<Learner | null>(null)
+  const [materialSelectionRefresh, setMaterialSelectionRefresh] = useState(0)
   const [frontierOptions, setFrontierOptions] = useState<FrontierGoal[]>([])
   const [stateActiveGoalId, setStateActiveGoalId] = useState<string | null>(null)
   const [stateRequiredAction, setStateRequiredAction] = useState<string | null>(null)
@@ -3464,6 +3467,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             ) : null}
           </section>
         )}
+        {!isGuidedPersonalizationRequired && guidedPersonalizationGateReason !== 'scopeLoading' && (
+          <MaterialSelectionPanel
+            skillpilotId={skillpilotId}
+            language={localizedLanguage}
+            onSaved={() => {
+              setMaterialSelectionRefresh((value) => value + 1)
+              dispatchLearnerUiRefresh({ skillpilotId, reason: 'content-selection', targets: ['all'] })
+            }}
+          />
+        )}
         {guidedPersonalizationGateReason === 'scopeLoading' ? (
           <div className="flex min-h-full w-full max-w-xl items-center justify-center" role="status">
             <p className="text-sm text-text-secondary">
@@ -3657,6 +3670,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 />
               )}
 
+            <GoalAdditionalMaterials
+              skillpilotId={skillpilotId}
+              goalId={currentGoal.id}
+              language={localizedLanguage}
+              refreshKey={materialSelectionRefresh}
+            />
             <LearnerGoalFeedbackAction
               key={`${currentGoal.landscapeId ?? 'unknown'}:${currentGoal.id}`}
               goal={currentGoal}

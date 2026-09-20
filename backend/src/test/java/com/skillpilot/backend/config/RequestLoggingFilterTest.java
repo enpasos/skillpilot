@@ -31,7 +31,7 @@ class RequestLoggingFilterTest {
     Path traceDirectory;
 
     @Test
-    void coachResultRoutesNeverCacheBodiesOrWriteDebugOrAiTraceEvenForRejectedProse() throws Exception {
+    void privateCoachAndContentRoutesNeverCacheBodiesOrWriteDebugOrAiTraceEvenForRejectedProse() throws Exception {
         ReflectionTestUtils.setField(filter, "aiTraceEnabled", true);
         ReflectionTestUtils.setField(filter, "aiTracePath", traceDirectory.resolve("ai-trace.jsonl").toString());
         ReflectionTestUtils.setField(filter, "aiTraceMaxBodyChars", 50000);
@@ -49,11 +49,19 @@ class RequestLoggingFilterTest {
                     "/api/ai/en/sessions/sps_test/verified-recall/result/",
                     "/api/ai/de/sessions/sps_test/visible/mastery",
                     "/api/ai/en/sessions/sps_test/visible/verified-recall/result",
-                    "/api/ai/de/sessions/sps_test/verified-recall/result;parameter=ignored"
+                    "/api/ai/de/sessions/sps_test/verified-recall/result;parameter=ignored",
+                    "/api/ui/learners/learner-42/content-selection",
+                    "/api/ui/learners/learner-42/content-materials",
+                    "/api/ui/learners/learner-42/content-selection;parameter=ignored",
+                    "/api/ui/learners/learner-42/%63ontent-selection",
+                    "/api/ui/learners/learner-42/content%2Dmaterials",
+                    "/api/ui/learners/learner-42/content-selection%3Bparameter=ignored",
+                    "/api/ui/learners/learner-42/content-selection%invalid"
             }) {
                 for (int status : new int[] {200, 400, 500}) {
                     MockHttpServletRequest request = new MockHttpServletRequest("POST", path);
                     request.setContentType("application/json");
+                    request.addHeader("X-SkillPilot-Content-Capability", "synthetic-private-header-canary");
                     // The renamed unknown field must be protected without relying
                     // on a list of historical feedback field names.
                     request.setContent("{\"rationale\":\"synthetic-private-input-canary\"}"

@@ -113,6 +113,12 @@ try {
         },
       })
     }
+    if (pathname.endsWith('/content-selection') && request.method() === 'GET') {
+      return json({ revision: 0, selectedPackageIds: [], packages: [] })
+    }
+    if (pathname.endsWith('/content-materials') && request.method() === 'GET') {
+      return json([])
+    }
     if (pathname.endsWith('/preferences') && request.method() === 'PUT') {
       const preferences = request.postDataJSON()
       preferenceWrites.push(preferences)

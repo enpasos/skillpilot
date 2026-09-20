@@ -137,6 +137,7 @@ try {
     const page = await context.newPage()
     const errors: string[] = []
     const unexpected: string[] = []
+    const contentRequests: string[] = []
     const requests: Array<{ learnerId: string; endpoint: Endpoint }> = []
     const replies: Record<string, Record<Endpoint, Reply | Promise<Reply>>> = {
       [learnerA]: { profile: profile(learnerA), state: state(learnerA), plans: plans(), ...initial },
@@ -157,6 +158,11 @@ try {
           rootLandscapeIds: [], landscapes: [], views: [], offerings: [], decks: [], resources: [], sourceEvidence: [],
         } })
       }
+      if (/^\/api\/ui\/learners\/fixture-learner-[ab]\/content-(?:selection|materials)$/u.test(path)
+          && request.method() === 'GET') {
+        contentRequests.push(path)
+        return json({ status: 404, body: { error: 'Optional content pilot disabled' } })
+      }
       const match = /^\/api\/ui\/learners\/(fixture-learner-[ab])(?:\/(state|learning-plans|resume))?$/u.exec(path)
       if (match && (request.method() === 'GET' || (match[2] === 'resume' && request.method() === 'POST'))) {
         if (match[2] === 'resume') return json({ body: {
@@ -171,7 +177,7 @@ try {
       return json({ status: 404, body: { error: 'Unexpected local fixture request' } })
     })
     await page.goto(`${server.baseUrl}/scripts/fixtures/learnerViewStartupUi.html`)
-    return { context, page, replies, errors, unexpected, requests }
+    return { context, page, replies, errors, unexpected, requests, contentRequests }
   }
   const assertNoFalseSetup = async (page: Page) => {
     assert.equal(await page.getByRole('dialog').count(), 0, 'a valid delayed scope must never open setup')
@@ -232,6 +238,8 @@ try {
     assert.equal(await focus.count(), 1, 'full /state planned goals preserve exactly the saved focus')
     assert.match(await focus.locator('..').innerText(), /Ableitungen/u)
     assert.deepEqual(h.unexpected, [], 'initial loading must not request the redundant /planned endpoint')
+    assert.deepEqual(h.contentRequests.map((path) => path.split('/').at(-1)).sort(), ['content-materials', 'content-selection'],
+      'optional material reads remain bounded and never retry a disabled pilot')
 
     if (first === 'profile') {
       const section = h.page.getByRole('region', { name: 'Meine Fachpläne' })

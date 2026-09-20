@@ -19,6 +19,7 @@ import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.content.ContentMaterialResolver;
 import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.service.learningplan.PeriodBasis;
 import com.skillpilot.backend.landscape.LandscapeSummary;
@@ -32,6 +33,39 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class ClaudeV1CoachContextProjectorTest {
+
+    @Test
+    void optionalMaterialsAreActiveGoalOnlyAndDisappearImmediatelyAfterDeactivation() {
+        CoachStateProjection projection = new CoachStateProjection("https://skillpilot.com");
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(projection, facade);
+        FrontierGoal activeGoal = goal("goal-1", List.of());
+        when(facade.getLearnerState("internal-learner")).thenReturn(stateWithActiveGoal(activeGoal));
+        when(facade.getPersonalizationPlan("internal-learner"))
+                .thenReturn(PersonalizationPlan.complete(List.of()));
+        var materials = List.of(new ContentMaterialResolver.ResolvedMaterial(
+                "Ort-Zeit-Diagramme", "https://physikbuch.schule/motion-diagrams.html", "Physik Libre",
+                "article", "de", List.of("Diagramme"), "public-link", "link-only"));
+        when(facade.getAdditionalLearningMaterials("internal-learner", activeGoal, "en"))
+                .thenReturn(materials, List.of());
+
+        Map<String, Object> enabled = projector.projectContext("internal-learner", 1, "en");
+        assertEquals(materials, enabled.get("additionalMaterials"));
+        String instruction = (String) enabled.get("additionalMaterialsInstruction");
+        assertTrue(instruction.contains("continue normal teaching"));
+        assertTrue(instruction.contains("does not mean you have read"));
+        assertTrue(instruction.contains("only in the SkillPilot cockpit"));
+        assertFalse(enabled.toString().contains("internal-learner"));
+        assertFalse(enabled.toString().contains("selectedPackageIds"));
+        assertEquals(projector.formatGoal(activeGoal), enabled.get("activeGoal"));
+
+        Map<String, Object> disabled = projector.projectContext("internal-learner", 2, "en");
+        assertFalse(disabled.containsKey("additionalMaterials"));
+        assertFalse(disabled.containsKey("additionalMaterialsInstruction"));
+        assertEquals(enabled.get("activeGoal"), disabled.get("activeGoal"));
+        assertEquals(enabled.get("frontier"), disabled.get("frontier"));
+        assertEquals(enabled.get("progress"), disabled.get("progress"));
+    }
 
     @Test
     @SuppressWarnings("unchecked")

@@ -67,10 +67,15 @@ A source goal is a learning objective as written in the original curriculum. The
 
 *DE: Herkunftsnachweis vs. Lernressourcen* — see [Source And Resource Links](skill-graph/source-and-resource-links.md)
 
-Two separate goal-level fields with two separate questions:
+`sourceRef`, mappings and provenance answer "Why does this goal exist?" Official
+curriculum references remain evidence, not optional study material.
 
-- `sourceRef` answers "Where does this goal come from?" (provenance, source of truth).
-- `resourceLinks` answers "What would help someone learn or teach this goal?" (ordered helpful resources).
+The [Content Integration Architecture](skill-graph/content-integration.md) puts optional
+external learning materials in separate packages that reference goal IDs; the
+learner selects packages independently of the curriculum. `resourceLinks` remains
+the compatibility field for existing resources and the separately governed
+SkillPilot-owned goal visualizations. Direct external didactic links in canonical
+goals are migration debt, not the target authoring model.
 
 Learning material must never be smuggled in as provenance, and provenance is not a study link.
 

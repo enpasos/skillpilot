@@ -314,6 +314,8 @@ jobs:
         run: npm run check:gpt-system-instruction-lengths
       - name: Test coach variant selection
         run: npm run test:coach-variants
+      - name: Test optional learner content materials
+        run: npm run test:content-materials
       - name: Test contextual AI transparency
         run: npm run test:ai-transparency-ui
       - name: Test Terms of Use and versioned acceptance
@@ -426,6 +428,11 @@ jobs:
           python -B ../scripts/validate_competency_wording.py
           node --test ../scripts/check_curriculum_spelling.test.mjs
           node ../scripts/check_curriculum_spelling.mjs
+      - name: Validate optional content packages and migration evidence
+        run: |
+          node ../scripts/validate_content_packages.mjs
+          node --test ../scripts/validate_content_packages.test.mjs
+          node ../scripts/check_content_link_migration.mjs
       - name: Validate View Filters
         run: npm run validate:view-filters
       - name: Check Source Landscape Registry

@@ -94,6 +94,10 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 ## Platform Notes
 
+- [Contentanbindung: Physik-Libre-PoC und Migrationsinventar](content-integration-physik-libre-pilot.md)
+  Begrenzter Pilot, Quellenprüfung, bestehende Linkbindungen und Abnahmegrenzen zu Issue #50.
+- [Contentanbindung: Betrieb und Abnahme des PoC](content-integration-poc.md)
+  Standardmäßig deaktivierter Betrieb, getrennte Auswahlberechtigung und lokale sowie echte Host-Abnahme.
 - [Auto-Update Mechanism Architecture](auto-update.md)
 - [AIS.chat x SkillPilot Integration Plan](ais-chat-skillpilot-integration-plan.md)
 - [Working with Liquibase in SkillPilot](liquibase.md)

@@ -24,6 +24,7 @@ import com.skillpilot.backend.api.VerifiedRecallBatchResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.domain.CopySource;
+import com.skillpilot.backend.content.ContentMaterialResolver;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.service.ChatSessionService;
@@ -515,6 +516,26 @@ class CoachToolFacadeTest {
 
     private static UnifiedLearnerStateResponse learnerState(String skillpilotId, String requiredAction) {
         return learnerState(skillpilotId, requiredAction, null);
+    }
+
+    @Test
+    void additionalMaterialsUseOnlyAuthorizedOrdinaryActiveGoalsAndNeverWriteLearnerState() {
+        ContentMaterialResolver resolver = mock(ContentMaterialResolver.class);
+        facade.setContentMaterialResolver(resolver);
+        FrontierGoal activeGoal = new FrontierGoal(
+                "active-goal", "Motion", "Understand motion", "atomic", "tutor", "content", null,
+                List.of(), List.of(), null, null, null, null, false);
+        var materials = List.of(new ContentMaterialResolver.ResolvedMaterial(
+                "Motion", "https://provider.example/motion", "Provider", "article", "de",
+                List.of(), "public-link", "link-only"));
+        when(resolver.resolve("learner", "active-goal", "de")).thenReturn(materials);
+        assertThat(facade.getAdditionalLearningMaterials("learner", activeGoal, "de")).isEqualTo(materials);
+        verify(learnerService).assertActiveLearnerRouteAccess("learner");
+        verify(resolver).resolve("learner", "active-goal", "de");
+        assertThat(facade.getAdditionalLearningMaterials("learner", null, "de")).isEmpty();
+        assertThat(facade.getAdditionalLearningMaterials("learner", examGoal("exam", "released"), "de"))
+                .isEmpty();
+        verifyNoMoreInteractions(learnerService, resolver);
     }
 
     private static UnifiedLearnerStateResponse learnerState(

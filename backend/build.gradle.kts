@@ -98,6 +98,10 @@ tasks.test {
 }
 
 tasks.processResources {
+    from("../content") {
+        include("**/*.json")
+        into("content")
+    }
     inputs.property("skillpilotServerBuild", serverBuild)
     filesMatching("application.yml") {
         filter { line ->

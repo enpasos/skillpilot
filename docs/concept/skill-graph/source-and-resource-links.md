@@ -1,156 +1,87 @@
 # Source And Resource Links
 
-This document defines the canonical goal-level link model for SkillPilot.
+This document distinguishes curriculum provenance, SkillPilot-owned visualization
+assets, and optional external learning materials. The binding target is the
+[Content Integration Architecture](content-integration.md), version 1.0:
+**content references the curriculum; the curriculum does not select providers.**
 
-Use this document for provenance and learning-resource links only.  
-Graph semantics, placements, and projected views are specified separately in:
+Graph semantics, placements and views are specified separately in
+[Graph Definition](graph-definition.md) and
+[View Projection and Goal Placement](view-projection-and-goal-placement.md).
 
-- `docs/concept/skill-graph/graph-definition.md`
-- `docs/concept/skill-graph/view-projection-and-goal-placement.md`
+## 1. Classify by purpose
 
-The design goal is simple:
+| Purpose | Authoritative location | Rule |
+| --- | --- | --- |
+| Evidence for a curricular statement | Curriculum source references, mappings, provenance and existing official `curriculum` links | Preserve traceability; this is not an optional material choice. |
+| SkillPilot-owned goal visualization | Existing canonical `goal-visualization` link and its asset/QA records | Preserve the separate [visualization contract](atomic-goal-visualizations.md). |
+| Optional explanation, textbook, video, simulation or tool | Separate content package referencing goal IDs | Resolve only through the learner's authorized material selection. |
 
-- one field for **provenance**
-- one field for **helpful learning resources**
-- one model that works for both **Cockpit** and **AI learning coaches**
+An official domain does not automatically make a link provenance, and a textbook
+can be source evidence only when it actually justifies a curricular statement.
+Do not disguise optional material as `sourceRef` to avoid the content boundary.
 
-## 1. Two concerns, two fields
+## 2. Canonical fields and transition
 
-At goal level, SkillPilot distinguishes:
+`sourceRef`, source registries, mappings and structured provenance answer:
+“Why does this learning goal exist?” Existing official `curriculum` resource
+links continue to carry source references.
 
-- `sourceRef`
-  - the canonical provenance/source-of-truth reference for why the goal exists
-  - examples: curriculum PDF citation, official module page, MIT OCW course page
-- `resourceLinks`
-  - ordered helpful learning resources for learners, teachers, Cockpit, and GPT learning coaches
-  - examples: deep links to notes, videos, simulations, problem sets, exams, book pages
+`resourceLinks` remains the current compatibility field for owned visualization
+references and existing resources. **Do not add new optional external material
+links to canonical goals.** Existing didactic links are inventoried and migrated
+in reviewed increments; an unmigrated entry is transition debt, not a second
+permanent authoring model. The old recommendation to place Physik-Libre, GeoGebra
+or generic OER links directly on goals is superseded.
 
-This separation is intentional:
+Frozen source snapshots, historical published packages and review receipts stay
+unchanged. Live generated artifacts must be rebuilt from their authoring inputs,
+not patched independently. The [pilot and inventory](../../dev/content-integration-physik-libre-pilot.md)
+record the concrete migration boundary.
 
-- provenance answers: "Where does this goal come from?"
-- resource links answer: "What would help someone learn or teach this goal?"
+## 3. Separate content references
 
-## 2. Canonical goal-level link structure
+A content package names an independently maintained collection and maps material
+URLs to existing stable goal IDs. It may include a book overview at package level,
+precise sections at material level, mapping provenance and review limitations.
+Neither the package nor its activation changes goal semantics, dependencies,
+personal curriculum, frontier, mastery or completion criteria.
 
-`resourceLinks` is the canonical structured list for helpful goal-level resources.
+The PoC uses a deliberately provisional JSON format under `content/`; see
+[Content package authoring](https://github.com/enpasos/skillpilot/blob/main/content/README.md). This is not a new
+permanent interchange standard or a commitment to a payment or license platform.
 
-Minimal shape:
+Coverage is allowed to be incomplete. A reviewed mapping means the material
+supports the named goal, not that the material fully covers it, is error-free,
+is provider-endorsed or proves that the learner has mastered it.
 
-```json
-{
-  "type": "concept",
-  "title": "Physik Libre: Ladung und Reibungselektrizitaet",
-  "url": "https://physikbuch.schule/electricity.html#ladung-und-reibungselektrizitaet"
-}
-```
+## 4. Runtime consumers
 
-Recommended optional fields:
+The backend resolves selected packages against the current goal and returns
+bounded material references separately from canonical curriculum data.
 
-- `resourceType`
-- `provider`
-- `sections`
-- `description`
-- `lang`
-- `license`
+- Cockpit and the active coach receive the applicable selected references.
+- No selection, no mapping, a withdrawn material or a failed external page leaves
+  ordinary learning available.
+- Keep URLs as ordinary external links. Do not transmit learner IDs, sessions,
+  progress or chat text to a provider, and do not append tracking parameters.
+- A link-only result is not a content fetch. The coach must not claim to have
+  read a page solely because the backend supplied its URL.
+- Activation is separate from access entitlement and permitted AI use.
+- Current exam/solution-release and privacy boundaries remain authoritative.
 
-Recommended `type` values:
+## 5. Migration evidence
 
-- `overview`
-- `concept`
-- `practice`
-- `assessment`
-- `solution`
-- `reference`
+Review each proposed move by function; preserve useful mapping work and official
+evidence. Verify unchanged goal IDs, titles, descriptions, prerequisites,
+containment, source evidence and visualization assets.
 
-Recommended `resourceType` values:
+A pure relocation must not silently invalidate historical human-practice evidence.
+The existing practice fingerprint includes non-curriculum resources, so any such
+compatibility change needs explicit, narrowly bound migration evidence.
+Do not refresh arbitrary hashes or fabricate prior practice.
 
-- `course-page`
-- `video`
-- `notes`
-- `article`
-- `simulation`
-- `problem-set`
-- `exam`
-- `solution-set`
-- `book`
-- `tool`
-
-The order inside `resourceLinks` is meaningful and should reflect pedagogical priority.
-
-## 3. Authoring guidance
-
-Do not attach all available links everywhere.
-
-- Root or cluster nodes are the right place for:
-  - course homepages
-  - module overviews
-  - book recommendations
-  - broad lecture series
-- Atomic nodes are the right place for:
-  - precise deep links that clearly help with that exact goal
-  - typically 1 concept link
-  - optionally 1 practice link
-  - optionally 1 assessment or solution link
-
-This matters especially for large OER sources such as MIT OpenCourseWare. The model should stay useful, not noisy.
-
-## 4. Runtime behavior
-
-The same canonical model should serve two consumers:
-
-- **Cockpit**
-  - show ordered helpful resources in goal detail views
-- **AI learning coaches / API**
-  - expose the same links as machine-readable `resourceLinks`
-  - prefer full link payload on the active goal
-  - frontier and goal-option responses may stay compact
-
-Runtime may use parent-cluster links as a fallback when an atomic goal has no strong local links, but the data model itself does not define hard link inheritance semantics.
-
-## 5. Storage rules
-
-The supported goal-level resource field is:
-
-- `resourceLinks`
-
-Storage direction:
-
-- new landscapes should write `resourceLinks`
-- committed landscape JSON in this repository should use only this goal-level resource field
-- runtime link rendering and runtime models are aligned to this canonical field
-
-`sourceRef` remains separate and should not be overloaded with long helper-link lists.
-
-## 6. Practical examples
-
-- Hessen physics:
-  - `sourceRef` can point to the KC PDF or citation
-  - `resourceLinks` can point to `physikbuch.schule` deep links
-- MIT OCW:
-  - `sourceRef` can point to the canonical OCW course page
-  - `resourceLinks` can contain lecture videos, notes, problem sets, exams, solutions, and selected book references
-
-## 7. Coverage profiles, not schema forks
-
-The schema is repo-wide and fixed:
-
-- `sourceRef`
-- `resourceLinks`
-
-What may vary by curriculum is only the **coverage profile** on top of that schema.
-
-Examples:
-
-- MIT OCW intensive profile
-  - atomic goals should usually have `concept` + `practice` + `assessment`
-  - see `curricula/US/MIT_OCW/source_linking_atomic.en.md`
-- Hessen physics textbook profile
-  - goals with local `physikbuch.schule` deep links should also carry `sourceRef`
-  - atomic goals should usually have one strong `concept` deep link when a good book section exists
-  - broader overview links belong on root or cluster nodes
-  - the separate profile document was retired together with the Hessen upper-secondary source tree; the three rules above are the profile
-
-Rule:
-
-- curriculum-specific rollout docs may tighten coverage targets
-- they must not introduce alternative goal-level link fields or a different schema
+Regenerate affected publications and quality reports at the agreed migration
+checkpoint. Preserve protected maturity floors and distinguish a technical
+rebinding from a new substantive QA approval. The external-content PoC does not
+change M7 or provide human release approval.

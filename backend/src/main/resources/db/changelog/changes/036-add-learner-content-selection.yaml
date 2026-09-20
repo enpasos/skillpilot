@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 036-add-learner-content-selection
+      author: skillpilot
+      changes:
+        - createTable:
+            tableName: learner_content_selection
+            columns:
+              - column:
+                  name: learner_id
+                  type: VARCHAR(80)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: revision
+                  type: BIGINT
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: package_ids
+                  type: TEXT
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: learner_content_selection
+            baseColumnNames: learner_id
+            referencedTableName: learner
+            referencedColumnNames: skillpilot_id
+            constraintName: fk_content_selection_learner
+            onDelete: CASCADE
+      rollback:
+        - dropTable:
+            tableName: learner_content_selection

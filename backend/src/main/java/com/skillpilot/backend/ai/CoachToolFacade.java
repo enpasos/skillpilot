@@ -27,6 +27,7 @@ import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
+import com.skillpilot.backend.content.ContentMaterialResolver;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerLearningPlanService;
 import com.skillpilot.backend.service.LearnerLifecycleService;
@@ -122,6 +123,7 @@ public class CoachToolFacade {
     private final CoachStateProjection coachStateProjection;
     private final LearnerLifecycleService learnerLifecycle;
     private final LearnerLearningPlanService learnerLearningPlanService;
+    private ContentMaterialResolver contentMaterialResolver;
     private final ThreadLocal<SessionActivityScope> activeSessionActivity = new ThreadLocal<>();
 
     public CoachToolFacade(
@@ -154,6 +156,27 @@ public class CoachToolFacade {
     public UnifiedLearnerStateResponse getLearnerState(String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
         return learnerService.getCoachLearnerState(skillpilotId);
+    }
+
+    @Autowired(required = false)
+    public void setContentMaterialResolver(ContentMaterialResolver contentMaterialResolver) {
+        this.contentMaterialResolver = contentMaterialResolver;
+    }
+
+    /**
+     * Optional links for the active goal already authorized by the caller's canonical state read.
+     * No external tool accepts a material goal selector or changes the learner's content selection.
+     * Exams and memorization workflows do not acquire auxiliary content through this channel.
+     */
+    public List<ContentMaterialResolver.ResolvedMaterial> getAdditionalLearningMaterials(
+            String skillpilotId, FrontierGoal activeGoal, String communicationLocale) {
+        if (contentMaterialResolver == null || activeGoal == null
+                || !"atomic".equals(activeGoal.type()) || activeGoal.examData() != null
+                || "exam".equals(activeGoal.nodeKind()) || "memory".equals(activeGoal.nodeKind())) {
+            return List.of();
+        }
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return contentMaterialResolver.resolve(skillpilotId, activeGoal.id(), communicationLocale);
     }
 
     /** Provider-neutral read model for the additive workload of all valid subject plans. */
