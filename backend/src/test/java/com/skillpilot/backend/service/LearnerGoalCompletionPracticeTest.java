@@ -51,6 +51,26 @@ class LearnerGoalCompletionPracticeTest {
     }
 
     @Test
+    void multipleContentVersionsOnSameDayRemainAppendOnlyAndLateCrossingGetsItsOwnTime() {
+        var repository = mock(LearnerGoalCompletionRepository.class);
+        var service = new LearnerGoalCompletionService(repository);
+        var learner = new Learner(); learner.setSkillpilotId("learner");
+        Instant first = Instant.parse("2026-09-20T10:00:00Z");
+        var receipt = new LearnerGoalCompletion(learner, "goal", LocalDate.of(2026, 9, 20), first, 1);
+        receipt.setObservedTransition(false);
+        receipt.bindPracticeEvidence("coach_learning", "version-one", first);
+        when(repository.findByLearner_SkillpilotIdAndGoalIdAndCompletionDate("learner", "goal", LocalDate.of(2026, 9, 20)))
+                .thenReturn(java.util.Optional.of(receipt));
+        service.recordTransition(learner, "goal", 0, 1, first.plusSeconds(600), "coach_learning", "version-two");
+        service.recordTransition(learner, "goal", 1, 1, first.plusSeconds(900), "coach_learning", "version-two");
+        assertThat(receipt.getPracticeEvidence()).hasSize(2);
+        assertThat(receipt.getPracticeEvidence().getFirst().fingerprint()).isEqualTo("version-one");
+        assertThat(receipt.getPracticeEvidence().getFirst().recordedAt()).isEqualTo(first);
+        assertThat(receipt.getOccurredAt()).isEqualTo(first.plusSeconds(600));
+        assertThat(receipt.isObservedTransition()).isTrue();
+    }
+
+    @Test
     void untrustedManualSourceDoesNotCreatePracticeEvidence() {
         var repository = mock(LearnerGoalCompletionRepository.class);
         var service = new LearnerGoalCompletionService(repository);

@@ -6,7 +6,7 @@ import {
 
 export const CurriculumQualityFilter = ({ value, onChange, language = 'de', disabled = false }: {
   value: Filter; onChange: (value: Filter) => void; language?: 'de' | 'en'; disabled?: boolean
-}) => {
+}): React.ReactElement => {
   const copy = getCurriculumQualityCopy(language)
   return <div role="group" aria-label={copy.label} className="flex flex-wrap gap-1.5">
     {(['all', ...curriculumQualityStatuses] as const).map((filter) => <button

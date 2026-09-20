@@ -5,7 +5,7 @@ import { maturityCopy } from '../utils/curriculumQualityPresentation'
 export const CurriculumDeepQualityProgress = ({ metrics, language }: {
   metrics?: Record<string, number>
   language: 'de' | 'en'
-}) => {
+}): React.ReactElement => {
   const { expectedGoals, strictComplete, remaining } = metrics ?? {}
   if (![expectedGoals, strictComplete, remaining].every((value) => Number.isSafeInteger(value) && value >= 0)
       || expectedGoals <= 0 || strictComplete > expectedGoals || strictComplete + remaining !== expectedGoals) {

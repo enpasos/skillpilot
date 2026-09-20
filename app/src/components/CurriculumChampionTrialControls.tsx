@@ -7,6 +7,7 @@ export interface ChampionTrial {
   requiredGoals: number
   practicedGoals: number
   blockingFindings: number
+  findingsAvailable?: boolean
   canStart: boolean
   canComplete: boolean
 }
@@ -70,7 +71,9 @@ export function CurriculumChampionTrialControls({ championId, trial, language, o
       {trial.state === 'stale' && <p className="mt-2 text-sm text-text-secondary">{en
         ? 'The curriculum or its findings have changed. Current evidence and a new final confirmation are required; unchanged stations retain their evidence.'
         : 'Inhalte oder Befunde haben sich geändert. Aktuelle Nachweise und eine erneute Abschlussbestätigung sind nötig; Nachweise unveränderter Stationen bleiben erhalten.'}</p>}
-      {trial.blockingFindings > 0 && <p className="mt-2 text-sm text-text-secondary">{en ? 'Blocking findings' : 'Blockierende Befunde'}: {trial.blockingFindings}</p>}
+      {trial.findingsAvailable === false
+        ? <p className="mt-2 text-sm text-text-secondary">{en ? 'The current findings are unavailable. Completion cannot be confirmed yet.' : 'Der aktuelle Befundstand ist nicht verfügbar. Der Abschluss kann noch nicht bestätigt werden.'}</p>
+        : trial.blockingFindings > 0 && <p className="mt-2 text-sm text-text-secondary">{en ? 'Blocking findings' : 'Blockierende Befunde'}: {trial.blockingFindings}</p>}
       <div className="mt-3 flex flex-wrap gap-2">
         {trial.canStart && <button type="button" disabled={busy} className={buttonClass} onClick={() => void act('start')}>{en ? 'Begin trial' : 'Erprobung beginnen'}</button>}
         {trial.state === 'in_progress' && <button type="button" disabled={busy} className={buttonClass} onClick={() => void act('pause')}>{en ? 'Pause trial' : 'Erprobung pausieren'}</button>}

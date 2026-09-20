@@ -7,7 +7,7 @@ import {
 
 export const MaturityBadge = ({ level, language = 'de', scope = 'curriculum' }: {
   level: unknown; language?: 'de' | 'en'; scope?: 'curriculum' | 'route'
-}) => {
+}): React.ReactElement => {
   const copy = maturityCopy[language]
   if (!isMaturityLevel(level)) return <span className="text-xs text-text-secondary">{copy.unknown}</span>
   const description = scope === 'route' ? `${copy.routeLabel}: ${level}`
@@ -19,7 +19,7 @@ export const MaturityBadge = ({ level, language = 'de', scope = 'curriculum' }: 
 
 export const QualityStatusBadge = ({ status, language = 'de' }: {
   status: CurriculumQualityStatus | null; language?: 'de' | 'en'
-}) => {
+}): React.ReactElement => {
   const copy = getCurriculumQualityCopy(language)
   if (status == null) return <span className="text-xs text-text-secondary">{copy.unknownLabel}</span>
   const Icon = status === 'human_trial_completed' ? BadgeCheck
@@ -29,7 +29,7 @@ export const QualityStatusBadge = ({ status, language = 'de' }: {
   </span>
 }
 
-export const QualityLegend = ({ language = 'de' }: { language?: 'de' | 'en' }) => (
+export const QualityLegend = ({ language = 'de' }: { language?: 'de' | 'en' }): React.ReactElement => (
   <div>
     <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{maturityCopy[language].legendTitle}</div>
     <dl className="mt-2 grid gap-x-4 gap-y-2 text-xs text-text-secondary sm:grid-cols-2">

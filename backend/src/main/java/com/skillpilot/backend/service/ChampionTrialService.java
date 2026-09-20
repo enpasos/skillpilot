@@ -44,9 +44,15 @@ public class ChampionTrialService {
     }
 
     private Evaluation evaluate(CurriculumChampion champion, Scope scope) {
-        Map<String, String> expected = expected(scope);
+        var history = completions.getPracticeHistory(champion.getSkillpilotId());
+        Set<String> documentedGoals = history.stream().filter(completion -> !completion.getPracticeEvidence().isEmpty())
+                .map(com.skillpilot.backend.domain.LearnerGoalCompletion::getGoalId)
+                .collect(java.util.stream.Collectors.toSet());
+        // Never read every image/deck for mere registration or an unpracticed curriculum.
+        // A goal without any actual receipt cannot contribute to complete coverage anyway.
+        Map<String, String> expected = expected(scope, documentedGoals);
         Set<String> practiced = new java.util.HashSet<>();
-        for (var completion : completions.getPracticeHistory(champion.getSkillpilotId())) {
+        for (var completion : history) {
             if (completion.getPracticeEvidence().stream().anyMatch(evidence ->
                     Set.of("coach_learning", "verified_recall").contains(evidence.source())
                     && evidence.recordedAt() != null && evidence.fingerprint() != null
@@ -112,9 +118,10 @@ public class ChampionTrialService {
         }
     }
 
-    private Map<String, String> expected(Scope scope) {
+    private Map<String, String> expected(Scope scope, Set<String> documentedGoals) {
         Map<String, String> result = new TreeMap<>();
         scope.goals().forEach((id, goal) -> {
+            if (!documentedGoals.contains(id)) return;
             String fingerprint = fingerprints.forGoal(goal);
             if (fingerprint != null) result.put(id, fingerprint);
         });

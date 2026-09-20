@@ -14,7 +14,7 @@ try {
   await page.addInitScript(() => { localStorage.setItem('skillpilot_lang', 'de'); localStorage.setItem('skillpilot_theme', 'light') })
   const trial: ChampionTrial = {
     state: 'not_started', scopeLabel: 'Mathematik: gesamter ausgewiesener Umfang', scopeCoverage: 'full',
-    requiredGoals: 2, practicedGoals: 2, blockingFindings: 0, canStart: true, canComplete: false,
+    requiredGoals: 2, practicedGoals: 2, blockingFindings: 0, findingsAvailable: true, canStart: true, canComplete: false,
   }
   const champion = { id: 'fixture-champion', curriculumId: CANONICAL_GYMNASIUM_ROOT_ID, topicId: 'fixture-math', topicTitle: 'Mathematik',
     githubId: 'fixture', skillpilotIdMasked: '***', masteredCount: 2, totalTopicGoals: 2, issuesCount: 0, pullRequestsCount: 0, trial }
@@ -68,6 +68,20 @@ try {
   await controls.getByText('Menschlich erprobt', { exact: true }).waitFor()
   await subjectRow.getByText('Menschlich erprobt', { exact: true }).waitFor()
   assert.deepEqual(writes, [{ action: 'start' }, { action: 'pause' }, { action: 'resume' }, { action: 'complete', confirmed: true }])
+
+  // Complete practical coverage cannot stand in for an unavailable findings review.
+  trial.state = 'in_progress'
+  trial.findingsAvailable = false
+  trial.canComplete = false
+  qualityStatus = 'human_trial_in_progress'
+  await page.reload()
+  await controls.getByText('Der aktuelle Befundstand ist nicht verfügbar. Der Abschluss kann noch nicht bestätigt werden.', { exact: true }).waitFor()
+  assert(await controls.getByText('Belegt durchlaufene Lernstationen: 2 / 2', { exact: true }).isVisible())
+  assert.equal(await controls.getByRole('button', { name: 'Erprobung abschließen…', exact: true }).count(), 0,
+    'unavailable findings prevent completion even with full practical coverage')
+  assert.equal(await controls.getByText('Blockierende Befunde: 0', { exact: true }).count(), 0,
+    'unavailable findings must not look like an established absence of blockers')
+  assert.equal(writes.length, 4, 'reading unavailable findings never sends a completion write')
   await page.close()
 } finally {
   await browser.close(); await server.close()

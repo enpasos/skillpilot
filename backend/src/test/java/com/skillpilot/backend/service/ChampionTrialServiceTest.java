@@ -135,6 +135,32 @@ class ChampionTrialServiceTest {
     }
 
     @Test
+    void unavailableFindingsPermitTrialButNeverCompletionOrInventedBlockerCounts() {
+        evidence(a, b); start();
+        var unknown = new ChampionTrialService.Scope("named-scope", "Math", true,
+                Map.of("a", a, "b", b), true, 0, false);
+        assertThat(service.status(champion, unknown).state()).isEqualTo("in_progress");
+        assertThat(service.status(champion, unknown).blockingFindings()).isZero();
+        assertThat(service.status(champion, unknown).findingsAvailable()).isFalse();
+        assertThat(service.status(champion, unknown).canComplete()).isFalse();
+    }
+
+    @Test
+    void confirmationBindsExactlyTheEvidenceSnapshotThatPassedValidation() {
+        var changing = mock(ChampionPracticeFingerprint.class);
+        when(changing.forGoal(a)).thenReturn(fingerprints.forGoal(a), "different-content");
+        when(changing.forGoal(b)).thenReturn(fingerprints.forGoal(b));
+        evidence(a, b);
+        champion.setTrialStartedAt(Instant.now());
+        champion.setTrialScopeJson("named-scope");
+        var once = new ChampionTrialService(completions, changing, new ObjectMapper());
+        once.apply(champion, scope(), new ChampionTrialRequest("complete", true));
+        verify(changing, times(1)).forGoal(a);
+        verify(changing, times(1)).forGoal(b);
+        assertThat(service.status(champion, scope()).state()).isEqualTo("completed");
+    }
+
+    @Test
     void incompleteFingerprintsFailClosedAndDoNotCountAsPractice() {
         a.setExtendedData(Map.of("vocabularySource", "missing.json"));
         when(completions.getPracticeHistory("private-learner-a")).thenReturn(List.of(practice(b)));
