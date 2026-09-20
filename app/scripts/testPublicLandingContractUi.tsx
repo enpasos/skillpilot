@@ -819,13 +819,14 @@ const assertSceneSwitcher = async (
       return [bounds.left + window.scrollX, bounds.top + window.scrollY, bounds.width, bounds.height]
     })
   ))
-  const assertStableLayout = async (baseline: number[][]) => {
+  const assertStableLayout = async (baseline: number[][], stage: string) => {
     const current = await layout()
     assert(
       current.every((bounds, index) => bounds.every((value, dimension) => (
         Math.abs(value - baseline[index]![dimension]!) <= 1
       ))),
-      `${label}: changing the illustration never shifts the image frame, headline or primary action`,
+      `${label} (${stage}): changing the illustration never shifts the image frame, headline or primary action; `
+        + `baseline=${JSON.stringify(baseline)}, current=${JSON.stringify(current)}`,
     )
   }
 
@@ -843,7 +844,6 @@ const assertSceneSwitcher = async (
   await assertScene('writing')
   assert.equal(await page.getByTestId('public-landing-voice-image').count(), 0)
   assert.equal(voiceRequests.length, 0, `${label}: the second image is not requested before selection`)
-  await page.clock.install()
   await page.clock.fastForward(60_000)
   await assertScene('writing')
   assert.equal(voiceRequests.length, 0, `${label}: waiting does not rotate or preload another scene`)
@@ -862,7 +862,7 @@ const assertSceneSwitcher = async (
     await request
     await assertScene('writing')
     assert.equal(await voice.getAttribute('aria-busy'), 'true')
-    await assertStableLayout(baseline)
+    await assertStableLayout(baseline, 'loading voice image')
   } finally {
     releaseVoiceResponse()
   }
@@ -905,7 +905,7 @@ const assertSceneSwitcher = async (
   assert.equal(voiceRequests.length, 1, `${label}: first selection loads the second original once`)
   assert.equal(await page.locator('.public-landing-image-caption').count(), 1)
   assert(await page.locator('.public-landing-image-caption').isVisible())
-  await assertStableLayout(baseline)
+  await assertStableLayout(baseline, 'voice image loaded')
 
   await voice.press('ArrowLeft')
   await assertScene('writing')
@@ -944,7 +944,7 @@ const assertSceneSwitcher = async (
   await assertScene('writing')
   await pointer(65, 110, false, false)
   await assertScene('writing')
-  await assertStableLayout(baseline)
+  await assertStableLayout(baseline, 'keyboard and pointer selection')
   assert.equal(voiceRequests.length, 1, `${label}: switching among loaded scenes does not reload the image`)
   await page.unroute(voicePattern)
 }
@@ -1232,6 +1232,9 @@ try {
         localStorage.setItem('skillpilot_theme', theme)
       }, { language, theme: viewport.theme })
       const page = await context.newPage()
+      // Install before React or the page uses timers/performance. Replacing an
+      // already running scheduler's clock leaves real and mocked timers mixed.
+      await page.clock.install()
       const voiceRequests: string[] = []
       page.on('request', (request) => {
         if (request.url().endsWith('/images/skillpilot-voice-moment.png')) voiceRequests.push(request.url())

@@ -579,7 +579,7 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
-    void deregisterChampionsRemovesAllTopicEntriesForCurriculum() {
+    void deregisterChampionsEndsAllTopicRolesAndRetainsTheirRecords() {
         CurriculumChampion first = new CurriculumChampion();
         first.setCurriculumId(HESSEN_GYMNASIUM_UPPER_ROOT_ID);
         first.setTopicId(CANONICAL_MATH_ROOT_ID);
@@ -602,8 +602,20 @@ public class LearnerControllerIntegrationTest {
 
         curriculaService.deregisterChampions("enpasos", List.of(HESSEN_GYMNASIUM_UPPER_ROOT_ID));
 
-        assertThat(curriculumChampionRepository.findByGithubId("enpasos")).isEmpty();
+        assertThat(curriculumChampionRepository.findByGithubId("enpasos"))
+                .hasSize(2)
+                .allSatisfy(champion -> {
+                    assertThat(champion.getAssignmentEndedAt()).isNotNull();
+                    assertThat(champion.getTrialPausedAt()).isNotNull();
+                })
+                .extracting(CurriculumChampion::getTopicId)
+                .containsExactlyInAnyOrder(CANONICAL_MATH_ROOT_ID, CANONICAL_PHYSICS_ROOT_ID);
+        assertThat(curriculaService.getChampionsByGithubId("enpasos")).isEmpty();
         assertThat(curriculumChampionRepository.findByGithubId("other-user"))
+                .allSatisfy(champion -> {
+                    assertThat(champion.getAssignmentEndedAt()).isNull();
+                    assertThat(champion.getTrialPausedAt()).isNull();
+                })
                 .extracting(CurriculumChampion::getCurriculumId)
                 .containsExactly(CANONICAL_GYMNASIUM_ROOT_ID);
     }
