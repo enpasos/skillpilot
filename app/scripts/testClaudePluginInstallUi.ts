@@ -75,7 +75,18 @@ try {
     })
     const page = await context.newPage()
     const errors: string[] = []
+    const startupResourceErrors: string[] = []
+    const startupConsoleErrors: string[] = []
     page.on('pageerror', (error) => errors.push(error.message))
+    page.on('console', (message) => {
+      if (message.type() === 'error') startupConsoleErrors.push(message.text())
+    })
+    page.on('requestfailed', (request) => {
+      startupResourceErrors.push(`${request.method()} ${request.url()}: ${request.failure()?.errorText}`)
+    })
+    page.on('response', (response) => {
+      if (response.status() >= 400) startupResourceErrors.push(`${response.status()} ${response.url()}`)
+    })
     let publicationAvailable = true
     let responseIndex = index
     let publicationRequests = 0
@@ -118,7 +129,19 @@ try {
       assert(!body.includes(language === 'de' ? 'Abnahme der aktuellen SkillPilot-Version' : 'acceptance of the current SkillPilot version'),
         'the guide no longer presents the ongoing beta as an unstarted acceptance candidate')
     }
-    await page.getByTestId('claude-plugin-publication-status').waitFor()
+    try {
+      await page.getByTestId('claude-plugin-publication-status').waitFor()
+    } catch (cause) {
+      throw new Error(`Plugin guide did not show its initial loading state: ${JSON.stringify({
+        language,
+        url: page.url(),
+        publicationRequests,
+        errors,
+        resourceErrors: startupResourceErrors,
+        consoleErrors: startupConsoleErrors,
+        root: await page.locator('#root').innerHTML({ timeout: 1_000 }).catch(() => '<unavailable>'),
+      })}`, { cause })
+    }
     await assertUnavailableVersionSafety()
     if (!CLAUDE_MARKETPLACE_INSTALLATION_ENABLED) {
       assert.equal(await marketplace.count(), 0, 'the unpublished candidate does not inherit the old Marketplace guide approval')

@@ -9,6 +9,9 @@ import { startViteTestServer } from './viteTestServer'
 type Language = 'de' | 'en'
 type LandingRole = 'learner' | 'trainer' | 'explorer'
 
+// A zero duration does not cancel transitions that have already started.
+const staticLayoutStyles = '*, *::before, *::after { transition: none !important; animation: none !important; }'
+
 interface LanguageExpectation {
   accessNotice: string
   accessSummary: string
@@ -1189,6 +1192,30 @@ const assertLandingContract = async (page: Page, language: Language, viewport: s
   await assertPanelLayout(page, language, viewport)
 }
 
+async function assertStaticLayoutStylesCancelRunningTransitions(browser: Browser) {
+  const page = await browser.newPage()
+  try {
+    await page.setContent('<div id="probe" style="width: 300px; transition: width 60s linear"></div>')
+    await page.locator('#probe').evaluate((element) => {
+      const probe = element as HTMLElement
+      probe.getBoundingClientRect()
+      probe.style.width = '200px'
+    })
+    await page.waitForFunction(() => document.getElementById('probe')!.getAnimations().length > 0)
+    await page.addStyleTag({ content: staticLayoutStyles })
+    assert.deepEqual(
+      await page.locator('#probe').evaluate((element) => ({
+        width: element.getBoundingClientRect().width,
+        animations: element.getAnimations().length,
+      })),
+      { width: 200, animations: 0 },
+      'layout measurements must use the final geometry even when a CSS transition is already running',
+    )
+  } finally {
+    await page.close()
+  }
+}
+
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
 const server = await startViteTestServer(
   appRoot,
@@ -1211,6 +1238,8 @@ try {
   })
   const baseUrl = `${server.baseUrl}/scripts/fixtures/sessionSetupCompletionUi.html`
   const viewportFailures: string[] = []
+
+  await assertStaticLayoutStylesCancelRunningTransitions(browser)
 
   for (const language of ['de', 'en'] as const) {
     for (const viewport of [
@@ -1241,10 +1270,8 @@ try {
       })
       page.setDefaultTimeout(10_000)
       await page.goto(baseUrl)
+      await page.addStyleTag({ content: staticLayoutStyles })
       await page.addStyleTag({ url: `${server.baseUrl}/src/index.css` })
-      await page.addStyleTag({
-        content: '*, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }',
-      })
       try {
         assert(
           await page.locator('html').evaluate((element, theme) => element.classList.contains(theme), viewport.theme),
