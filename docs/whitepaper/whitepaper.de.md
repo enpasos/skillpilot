@@ -1,7 +1,6 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.21
-**Datum:** September 2026
+**Version:** 1.0.22
 **Projekt:** SkillPilot
 
 ---
@@ -12,7 +11,7 @@ SkillPilot dockt an **bestehende Curricula** an und nutzt sie als **normative So
 
 Dazu erfasst das System Lernerfolge auf atomaren Skill-Zielen und leitet daraus den **Beherrschungsgrad** für übergeordnete Themen ab. Auf dieser Basis führt der Weg über die **nächsten erreichbaren Skill-Ziele** systematisch hin zu den individuellen Bildungszielen.
 
-**Lernpläne ergänzen diese Navigation um den zeitlichen Rahmen:** Welche Teile des persönlichen Curriculums sollen bis wann erreicht werden? In der lokal implementierten Erweiterung für plan-geführtes Lernen werden die Tagesanforderungen aller geplanten Fächer zusammengeführt. Der Coach zeigt den Stand im Chat und führt zum nächsten lernbaren Ziel, ohne dass Lernende selbst Planabschnitte oder Lernziele verwalten müssen (siehe Abschnitt 3.4).
+**Lernpläne ergänzen diese Navigation um den zeitlichen Rahmen:** Welche Teile des persönlichen Curriculums sollen bis wann erreicht werden? SkillPilot zeigt für alle geplanten Fächer das **Tages- oder Wochenpensum** sowie Rückstand oder Vorarbeit. Jedes Fach wird dabei einzeln ausgewertet. Der Coach zeigt den Stand im Chat und führt zum nächsten lernbaren Ziel, ohne dass Lernende selbst Planabschnitte oder Lernziele verwalten müssen (siehe Abschnitt 3.4).
 
 Die Qualitätssicherung erfolgt offen: über ein **Champion-Programm** aus der Praxis sowie über den **Open-Source-Workflow** (Issues/Pull Requests).
 
@@ -28,11 +27,9 @@ SkillGraph Processing strukturiert Curricula und Kompetenzmodelle zu abhängigke
 
 SkillPilot Lerncoach begleitet Lernende durch diese Landschaften mit frontier-basierten nächsten Schritten, Mastery-Tracking und kontextbezogener Lerncoach-Unterstützung.
 
-**SkillPilot Coach v1** befindet sich derzeit im OpenAI-Veröffentlichungsreview und ist noch nicht öffentlich gelistet. Die unterstützte Coach-Oberfläche ist **ChatGPT im Browser**. Die responsive First-Party-SkillPilot-Weboberfläche kann auch im mobilen Browser genutzt werden, etwa für Spracheingabe und das Hochladen fotografierter Arbeiten. Native ChatGPT-Apps gehören derzeit nicht zum unterstützten SkillPilot-Ablauf.
+Der **SkillPilot-Lerncoach** verbindet den Dialog in einem KI-Chat mit der verbindlichen Lernlogik von SkillPilot. Die Anbindungen an Claude und ChatGPT nutzen denselben fachlichen Kern über eigene Provideradapter. In der responsiven SkillPilot-Weboberfläche konfigurieren Lernende ihr persönliches Curriculum, sehen ihren Fortschritt und starten eine Lernsession.
 
 ![Aktueller SkillPilot-Lerncoach mit Lernzielvisualisierung in ChatGPT im Browser](current-coach.png)
-
-**Lesart dieses Whitepapers:** Wenn nicht anders markiert, beschreibt der Text den aktuellen Stand. Formulierungen wie *geplant*, *vorgesehen* oder *in weiteren Ausbaustufen* kennzeichnen Roadmap-Punkte.
 
 ---
 
@@ -52,13 +49,13 @@ SkillPilot schließt diese **Tool-Lücke**: outcome-orientierte Navigation im Cu
 
 ## 2. Der Umbruch: Möglichkeiten moderner KI-Agenten nutzen
 
-Seit Ende 2022 hat sich die Welt der sprachbasierten KI rasant entwickelt. Ein Gefühl für dieses Tempo vermittelt der Blick auf *Humanity's Last Exam*, den bisher härtesten KI-Benchmark. Dieser wurde Anfang 2025 eingeführt, um KIs mit tausenden extremen Expertenfragen auf echtes logisches Denken statt bloßes Wissen zu prüfen. Während Spitzenmodelle zu Jahresbeginn noch fast völlig versagten (unter 10 % Erfolg), konnten führende KIs diese Leistung bis zum Jahresende auf etwa 50 % verfünffachen.
+Sprachbasierte KI kann Begriffe erklären, Aufgaben formulieren, Lösungswege besprechen und auf Fragen in natürlicher Sprache eingehen. Im Lerndialog macht sie unterschiedliche Zugänge zu einem Thema möglich und passt Erklärungen an die Antworten der lernenden Person an.
 
-Stand **Dezember 2025** sind KIs damit fachlich und sprachlich vielen Themen gewachsen, die an Schulen und Universitäten gelehrt werden. Doch sie haben Grenzen: Sie sind keine ausgebildeten Pädagogen und arbeiten nicht wie algorithmisch exakte Buchhaltungsprogramme, die fehlerfrei rechnen und verwalten.
+Für verlässliche Lernführung braucht es daneben eine eindeutige Grundlage: Welche Ziele gehören zum Curriculum, welche Voraussetzungen sind erfüllt und welcher Fortschritt ist gespeichert? SkillPilot verwaltet diese Informationen und Regeln im Backend.
 
-Um die für **SkillPilot** benötigte algorithmische **Präzision** bei der Navigation auf den Lernzielen zu sichern, kommt uns ein weiterer Trend zugute: Die Kopplung von Sprach-KIs an klassische Software. Es etablieren sich Standards, die es KIs wie ChatGPT ermöglichen, gezielt Schnittstellen (APIs) klassischer Programme aufzurufen.
+Über definierte Werkzeuge greift der Lerncoach auf diese **exakte Backend-Logik** zu. SkillPilot berechnet erreichbare Lernziele und den Planstand, prüft zulässige Zustandsänderungen und speichert bestätigten Fortschritt.
 
-Daraus ergibt sich der Ansatz für **SkillPilot** fast von selbst: Es entsteht als hybride Anwendung. Eine klassische, exakte Software übernimmt im Hintergrund die präzise „Buchführung“ und Navigation der Skill-Ziele. Führende Sprach-KIs werden so instruiert (als SkillPilot Lerncoach), dass sie als einfühlsame Lerncoaches mit den Lernenden sprechen, für den Lernfortschritt aber die exakte Logik der Software im Hintergrund nutzen.
+**SkillPilot ist damit eine hybride Anwendung:** Der KI-Lerncoach übernimmt das sprachliche Verstehen, Erklären und fachliche Feedback. Die klassische Software verantwortet Lernzustand, Berechtigungen, Navigation und Fortschrittsverwaltung.
 
 ---
 
@@ -165,7 +162,6 @@ Hier ein schematisches Beispiel für eine einfache Route aus Motivation/Verstehe
 
 <img src="requires-flow.de.svg" alt="Requires-Flow (DE)" width="600" />
 
-
 Während beim Verstehen sowie beim Bewerten und Erklären von Prüfungsleistungen die Interaktion mit einem Lerncoach hilft, funktioniert reines Auswendiglernen (Vokabeln, Formeln, Fakten) per modernem Karteikasten a la **Spaced Repetition** effizienter.
 
 SkillPilot integriert dafür eine **Flashcard Drill Engine** (SRS):
@@ -179,38 +175,45 @@ SkillPilot nutzt bereits freigegebene Übungs- und Prüfungsknoten für passende
 
 #### Technische Ableitungen: Ziel-Route in Backend, UI und Lerncoach
 
-- **Backend (didaktische Routenlogik):** Die Ziel-Route ist keine freie KI-Berechnung, sondern eine im Curriculum modellierte **Teilroute im größeren Graphen** unter DAG-Constraints. Das bedeutet: Die menschlichen Lehrplan-Autor:innen (Champions) behalten die pädagogische Kontrolle. Das **Persönliche Curriculum (Level 2)** wird ausschließlich in der First-Party-SkillPilot-Weboberfläche konfiguriert. SkillPilot Coach v1 fragt diese Konfiguration nicht ab und verändert sie nicht. Im Chat kann der Lerncoach nur den aktuellen Fokus und das aktive Ziel (**Level 3**) über vom Backend freigegebene Optionen und nach Zustimmung der lernenden Person ändern.
+- **Backend (didaktische Routenlogik):** Die Ziel-Route ist keine freie KI-Berechnung, sondern eine im Curriculum modellierte **Teilroute im größeren Graphen** unter DAG-Constraints. Das bedeutet: Die menschlichen Lehrplan-Autor:innen (Champions) behalten die pädagogische Kontrolle. Das **Persönliche Curriculum (Level 2)** wird ausschließlich in der First-Party-SkillPilot-Weboberfläche konfiguriert. Der Lerncoach verändert diese Konfiguration nicht. Im Chat kann der Lerncoach nur den aktuellen Fokus und das aktive Ziel (**Level 3**) über vom Backend freigegebene Optionen und nach Zustimmung der lernenden Person ändern.
 - **UI/UX (Routen-Visualisierung):** In der First-Party-Weboberfläche konfigurieren Lernende ihr Persönliches Curriculum. Im Cockpit sehen und ändern sie den aktuellen Fokus und das aktive Ziel; die Oberfläche zeigt Fortschritt und nächste erreichbare Ziele innerhalb dieses Kontexts.
 - **KI-Lerncoach (Didaktischer Kontext):** Der Lerncoach arbeitet strikt auf Basis des bestätigten Kontexts, des aktuellen Fokus und der vom Backend erlaubten Übergänge und erklärt transparent, warum der aktuelle Schritt sinnvoll ist.
 
 ### 3.4 Vom Lehrplan zum Lernalltag: Lernplan und geführter Coach
 
-Ein navigierbarer Lehrplan beantwortet noch nicht die Alltagsfrage: **„Was muss ich heute lernen, und wie weit bin ich schon?“** Dafür verbindet SkillPilot das persönliche Curriculum mit einer zeitlichen Lernplanung und der Führung durch den Coach.
+Ein navigierbarer Lehrplan beantwortet noch nicht die Alltagsfrage: **„Was muss ich heute oder diese Woche lernen, und wie weit bin ich schon?“** Dafür verbindet SkillPilot das persönliche Curriculum mit einer zeitlichen Lernplanung und der Führung durch den Coach.
 
-**Umsetzungsstand dieser Erweiterung (4. September 2026):** Fachübergreifende Planung und Schülervorschau sind lokal implementiert; die plan-geführte Chatführung ist im Claude-Coach-1.1.1-Kandidaten vorbereitet. Der lokale OpenAI-1.1-Kandidat bleibt deaktiviert. Dieser Abschnitt erweitert nicht den eingereichten OpenAI-Coach-1.0.0-Reviewvertrag und behauptet weder Produktionsverfügbarkeit noch abgeschlossene Client-Abnahmen.
-
-![Vom persönlichen Curriculum über die gemeinsame Fachplanung zur täglichen Führung im Chat; bestätigter Lernfortschritt fließt in die nächste Berechnung ein. Schematische Darstellung.](learning-plan.de.svg)
+![Vom persönlichen Curriculum über die gemeinsame Fachplanung zur Führung im Chat mit Tages- oder Wochenpensum; bestätigter Lernfortschritt fließt in die nächste Berechnung ein. Schematische Darstellung.](learning-plan.de.svg)
 
 #### Die Lehrkraft plant den Rahmen
 
 Das **Persönliche Curriculum** bestimmt, welche Kompetenzen zum gewählten Bildungskontext gehören. Der **Lernplan** legt fest, welche Themen oder Lernzielgruppen in welchen Zeiträumen bearbeitet werden sollen. Er ergänzt den Skill-Graphen, ersetzt aber weder seine Lernziele noch deren Voraussetzungen. Soll der gesamte Lehrplan durchlaufen werden, muss die Planung dessen vorgesehenen Umfang abdecken; ein abgeschlossener Teilplan ist nicht automatisch ein abgeschlossener Lehrplan.
 
-Unter **„Kurse planen“** werden Lernabschnitte, Zeiträume, Puffer und Termine vorbereitet. Fachpläne, etwa für Mathematik und Physik, gelten **gemeinsam**, werden aber **je Fach** ausgewertet: Jedes Fach hat sein eigenes Tages- oder Wochenziel, und Vorarbeit in einem Fach gleicht keinen Rückstand in einem anderen aus. Der Wechsel des aktuellen Fachs schaltet keinen anderen Fachplan ab und schreibt keine Reihenfolge „erst Mathe vollständig, dann Physik“ vor. Mehrere Pläne desselben Fachs werden zusammengeführt; überschneidende Abschnitte zählen dasselbe Lernziel nicht doppelt. Ob der Planstand pro Tag oder pro Woche ausgewiesen wird, legt der Lernende im persönlichen Curriculum fest.
+Unter **„Kurse planen“** werden Lernabschnitte, Zeiträume, Puffer und Termine vorbereitet. Fachpläne, etwa für Mathematik und Physik, gelten **gemeinsam**, werden aber **je Fach** ausgewertet: Jedes Fach hat sein eigenes Tages- oder Wochenziel, und Vorarbeit in einem Fach gleicht keinen Rückstand in einem anderen aus. Der Wechsel des aktuellen Fachs schaltet keinen anderen Fachplan ab und schreibt keine Reihenfolge „erst Mathe vollständig, dann Physik“ vor. Mehrere Pläne desselben Fachs werden zusammengeführt; überschneidende Abschnitte zählen dasselbe Lernziel nicht doppelt. Die zeitliche Auflösung wählt die lernende Person in der Lernkonfiguration des persönlichen Curriculums im Cockpit.
 
-Die **Schülervorschau** zeigt vor der Übernahme die heutigen Anforderungen und die nächsten sieben Kalendertage. Sie verwendet dieselbe Berechnung wie der Chat. Grundlage ist eine Werktagsplanung von Montag bis Freitag, keine automatische Optimierung nach Stundenplan oder Ferien. Lernzielzahlen sind keine Lernminuten und keine Garantie, einen Termin zu erreichen. Die Lehrkraft prüft Umfang und Belastung und passt bei Bedarf die Planung an.
+Die **Schülervorschau** zeigt vor der Übernahme das Tages- oder Wochenziel je Fach und einen Ausblick auf die nächsten sieben Kalendertage; im Wochenmodus werden die Angaben nach Kalenderwochen zusammengefasst. Sie verwendet dieselbe Berechnung wie Cockpit und Chat. Grundlage der Terminverteilung ist eine Werktagsplanung von Montag bis Freitag. Lernzielzahlen bezeichnen den Umfang des Pensums, keine Lernminuten. Die Lehrkraft prüft Umfang und Belastung und passt bei Bedarf die Planung an.
 
 Entwürfe bleiben zunächst auf dem Planungsgerät. Erst die ausdrückliche gemeinsame Bestätigung macht sie beim Schüler wirksam; spätere Entwurfsänderungen wirken nicht ungeprüft in laufendes Lernen hinein. **Unterrichtsabdeckung ist nicht Schüler-Mastery:** Die Dokumentation „im Unterricht behandelt“ bescheinigt noch keine individuelle Beherrschung.
+
+#### Tages- und Wochenauflösung
+
+Lernende wählen zwischen **1 Tag** und **1 Woche**. Diese Einstellung gilt gemeinsam für Cockpit, Chat, lernendenbezogene Planung und die Auswahl des nächsten Planziels:
+
+- **Tagesauflösung:** Das Pensum bezieht sich auf den aktuellen Kalendertag.
+- **Wochenauflösung:** Das Pensum umfasst die laufende Kalenderwoche von Montag bis Sonntag. Lernende können es zu Wochenbeginn, am Wochenende oder verteilt erfüllen. Vergangene Tage innerhalb derselben Woche erzeugen keinen zusätzlichen Rückstand.
+
+Die Auswahl wird für die SkillPilot-ID gespeichert; ohne eigene Auswahl gilt die Tagesauflösung. Ein Wechsel verändert den zeitlichen Bezug der Auswertung, während Plantermine und erreichter Lernfortschritt erhalten bleiben. **Periodenpensum und Rückstand sind getrennte Aussagen:** Ein Tages- oder Wochenziel kann erreicht sein, obwohl noch Rückstand besteht. Vorarbeit wird innerhalb desselben Fachs berücksichtigt.
 
 #### Der Schüler lernt im Chat
 
 Bei aktivem Planmodus und gültiger Lernsession hält SkillPilot die Organisation im Hintergrund:
 
 1. **Orientieren:** Der Coach übernimmt den von SkillPilot formulierten Planstand wörtlich: je Fach das Tages- oder Wochenziel und gegebenenfalls Rückstand oder Vorarbeit. Dieselben Sätze stehen im Cockpit; der Coach rechnet nicht selbst. Das aktive Lernziel kündigt er getrennt davon einmal zu Beginn der Lernaufgabe an.
-2. **Automatisch anknüpfen:** Ein gültiges laufendes Ziel wird fortgesetzt; andernfalls wird ein fälliges, nach den Voraussetzungen lernbares Ziel gewählt, sofern eines verfügbar ist. Die gemeinsame Aktivierung kann dieses erste Ziel bereits auswählen. Es ist kein zusätzlicher Klick auf „Weiterlernen“ oder eine manuelle Zielsuche nötig.
+2. **Automatisch anknüpfen:** Ein gültiges laufendes Ziel wird fortgesetzt; andernfalls wird bei noch offenem Tages- oder Wochenpensum ein fälliges, nach den Voraussetzungen lernbares Ziel gewählt, sofern eines verfügbar ist. Die gemeinsame Aktivierung kann dieses erste Ziel bereits auswählen. Es ist kein zusätzlicher Klick auf „Weiterlernen“ oder eine manuelle Zielsuche nötig.
 3. **Lernen und Fortschritt prüfen:** Der Coach erklärt, stellt Aufgaben und begleitet die Bearbeitung. Erst nach den geltenden Evidenzregeln gespeicherter Fortschritt verändert den Lernstand und damit den Planstand. Danach führt der plan-geführte Ablauf zum nächsten zulässigen Schritt.
-4. **Fach wechseln oder abschließen:** Ein Wunsch wie „Jetzt Physik“ wechselt innerhalb der verfügbaren Fachoptionen; die übrigen Anforderungen bleiben bestehen. Sind die Periodenziele erreicht, würdigt der Coach das und startet kein weiteres Ziel von sich aus. Ein erreichtes Tagesziel heißt nicht, dass kein Rückstand mehr besteht: Dann lädt der Coach ohne Druck zum Aufholen ein. Weiterlernen bleibt auf Wunsch jederzeit möglich; künftige Ziele werden nicht automatisch zu zusätzlicher heutiger Pflicht. Nicht auswertbare Pläne nennt der Planstand ausdrücklich, statt sie als erledigt darzustellen.
+4. **Fach wechseln oder abschließen:** Ein Wunsch wie „Jetzt Physik“ wechselt innerhalb der verfügbaren Fachoptionen; die übrigen Anforderungen bleiben bestehen. Sind die Periodenziele erreicht, würdigt der Coach das und startet kein weiteres Ziel von sich aus. Ein erreichtes Tages- oder Wochenziel heißt nicht, dass kein Rückstand mehr besteht: Dann lädt der Coach ohne Druck zum Aufholen ein. Weiterlernen bleibt auf Wunsch jederzeit möglich; künftige Ziele werden nicht automatisch zu zusätzlicher Pflicht für die laufende Periode. Nicht auswertbare Pläne nennt der Planstand ausdrücklich, statt sie als erledigt darzustellen.
 
-Eine reine Statusfrage startet keine neue Aufgabe; eine gewünschte Pause bleibt eine Pause. Sind offene Ziele wegen Voraussetzungen oder ungültiger Planung nicht erreichbar, meldet der Coach die Blockade statt einen Tagesabschluss oder eine Ersatzpflicht zu erfinden. Planungskorrekturen bleiben auf der Planungsseite. Nach Ablauf der Lernsession ist weiterhin ein neuer Start über SkillPilot erforderlich; die Chatführung verlängert die Session nicht.
+Eine reine Statusfrage startet keine neue Aufgabe; eine gewünschte Pause bleibt eine Pause. Sind offene Ziele wegen Voraussetzungen oder ungültiger Planung nicht erreichbar, meldet der Coach die Blockade statt ein erfülltes Tages- oder Wochenpensum oder eine Ersatzpflicht zu erfinden. Planungskorrekturen bleiben auf der Planungsseite. Nach Ablauf der Lernsession ist weiterhin ein neuer Start über SkillPilot erforderlich; die Chatführung verlängert die Session nicht.
 
 #### Beispiel: Mathematik und Physik an einem Tag
 
@@ -244,11 +247,11 @@ Ein zentraler Pfeiler von SkillPilot ist **Datentrennung**. Die folgende Archite
 
 #### Pseudonym statt Identität
 
-Lernstände werden unter einer dauerhaften **pseudonymen SkillPilot-ID** geführt. Für die individuelle Nutzung ist keine Registrierung mit Name oder E-Mail-Adresse erforderlich. Die ID bleibt in SkillPilot, sollte als geschützte ID-Datei gesichert werden und wird weder an ChatGPT noch an den Lerncoach übermittelt. Gespeichert werden die für Lernstand, Navigation und Nachvollziehbarkeit benötigten Daten.
+Lernstände werden unter einer dauerhaften **pseudonymen SkillPilot-ID** geführt. Für die individuelle Nutzung ist keine Registrierung mit Name oder E-Mail-Adresse erforderlich. Die ID bleibt in SkillPilot, sollte als geschützte ID-Datei gesichert werden und wird weder an den KI-Anbieter noch an den Lerncoach übermittelt. Gespeichert werden die für Lernstand, Navigation und Nachvollziehbarkeit benötigten Daten.
 
 #### Session-Abschirmung gegenüber dem KI-Frontend
 
-Jeder bewusste Start von **SkillPilot Coach v1** aus der First-Party-Weboberfläche erzeugt eine neue zufällige `learningSessionId` mit einer absoluten Gültigkeit von genau 24 Stunden und öffnet einen neuen vorbereiteten Chat. SkillPilot setzt die Session automatisch in die vorbereitete Startnachricht ein; die lernende Person muss keinen technischen Wert kopieren oder verwalten. Die Gültigkeit wird weder durch Nutzung noch durch eine OAuth-Aktualisierung verlängert. Die Session übernimmt die im bestätigten Kontext festgelegte Kommunikationssprache Deutsch oder Englisch. Eine einzige sprachneutrale V1-App bedient beide Sprachen. OAuth autorisiert die App, wählt aber weder die lernende Person noch ihren Lernkontext aus.
+Beim Start des **SkillPilot-Lerncoachs** aus der SkillPilot-Weboberfläche wird eine neue zufällige `learningSessionId` mit einer absoluten Gültigkeit von 24 Stunden erzeugt. Sie verbindet den vorbereiteten Chat mit dem bestätigten Lernkontext, ohne die dauerhafte SkillPilot-ID offenzulegen. Die lernende Person muss keinen technischen Wert kopieren oder verwalten. Die Gültigkeit wird weder durch Nutzung noch durch eine OAuth-Aktualisierung verlängert. Die Session übernimmt die im bestätigten Kontext festgelegte Kommunikationssprache Deutsch oder Englisch. OAuth autorisiert die jeweilige Anbindung; die Lernsession bestimmt den Lernkontext.
 
 ![Aktueller Übergang von SkillPilot zu einer vorbereiteten Lernsession in ChatGPT im Browser](current-handoff.png)
 
@@ -256,7 +259,7 @@ Die Verbindung zum Backend wird unabhängig davon mehrschichtig abgesichert: Ski
 
 #### Dialoginhalt ist entkoppelt
 
-Das SkillPilot-Backend speichert keinen vollständigen Lerncoach-Chatverlauf. Es verarbeitet nur die zweckgebundenen Angaben, die für Lernstand, Navigation und freigegebene Aktionen benötigt werden. Der vollständige Chatverlauf in ChatGPT unterliegt den Bedingungen von ChatGPT/OpenAI. So bleibt der zentrale SkillPilot-Datenbestand begrenzt.
+Der Lerncoach-Dialog bleibt beim jeweiligen KI-Anbieter. Antworten, Lösungswege und freie Bewertungsbegründungen werden nicht an das SkillPilot-Backend übertragen. Für den Lernfortschritt verarbeitet SkillPilot strukturierte Abschlussentscheidungen und gegebenenfalls autorisierte Prüfungspunktzahlen. Der Chatverlauf unterliegt den Bedingungen des jeweiligen KI-Anbieters. So bleibt der zentrale SkillPilot-Datenbestand auf Lernzustand und freigegebene Aktionen begrenzt.
 
 **Empfehlung für Bildungsinstitutionen:**
 Klare Guidelines, welche Daten im Lerncoach-Chat nicht hineingehören (sensibles Privates) und wie Lernende sicher unterstützt werden.
@@ -267,9 +270,9 @@ Die Zuordnung „Wer ist welches Pseudonym?“ liegt bei der Institution/Lehrkra
 
 #### KI-Frontend / Providergrenze
 
-Der Lerncoach-Dialog von **SkillPilot Coach v1** findet in **ChatGPT im Browser** statt und unterliegt dem Betriebs- und Datenschutzrahmen von ChatGPT/OpenAI. Die First-Party-SkillPilot-Weboberfläche ist responsiv und kann auch im mobilen Browser genutzt werden; native ChatGPT-Apps gehören derzeit nicht zum unterstützten Ablauf. Das darunterliegende Betriebssystem ist nicht Teil des Supportversprechens. Weitere Provider-Integrationen werden getrennt geführt und erst nach einem vollständigen End-to-End-Akzeptanztest sowie einer Prüfung der Datenschutzgrenzen freigegeben.
+SkillPilot trennt den gemeinsamen fachlichen Kern von den Anbindungen an KI-Anbieter. Claude und ChatGPT werden über eigene Adapter mit eigenen Authentisierungs- und Sessiongrenzen angebunden. Curriculum, Lernstand, Voraussetzungen und Planberechnung bleiben im SkillPilot-Backend. Der jeweilige Anbieter verantwortet den Chatbetrieb und die Verarbeitung des Dialogs; die responsive SkillPilot-Weboberfläche stellt die Lernkonfiguration und das Cockpit auch im mobilen Browser bereit.
 
-Für Kontexte mit höheren Souveränitätsanforderungen sind weitere KI-Backends bis hin zu lokalen Modellen vorgesehen. Voraussetzung ist, dass sie Tool-Nutzung, Stabilität, Datenschutzgrenzen, Struktur und Didaktik zuverlässig erfüllen.
+Die Trennung von fachlichem Kern und Provideranbindung hält Lernzustand und Lernregeln unabhängig vom Chat-Anbieter. Jede Anbindung muss die Anforderungen an Tool-Nutzung, Datenschutz, Sessiontrennung und zuverlässige Lernführung erfüllen.
 
 ### 4.2 Nachweiskette (Chain of Custody): Integrität & Nachvollziehbarkeit
 
@@ -306,7 +309,7 @@ Der Ausbau ist je Fach unterschiedlich weit fortgeschritten:
 - **Chemie und Biologie** folgen als nächste Schwerpunkte. Auch für sie bestehen gemeinsame Fachcurricula mit Bundesland-Zuordnungen; ihr Ausbau ist noch weniger breit.
 - **Weitere Gymnasialfächer** sind mit unterschiedlichen Ausbauständen angelegt und werden schrittweise weiterentwickelt.
 
-Diese Einordnung beschreibt den Entwicklungsstand, nicht eine einheitliche Vollständigkeit oder Freigabe für jedes Fach, jede Jahrgangsstufe und jedes Bundesland. Der jeweils aktuelle fachliche Umfang und die Qualitätsnachweise des konkret gewählten Bereichs sind im [Curriculum-Verzeichnis](https://skillpilot.com/curricula) und im generierten Qualitätsstatus ausgewiesen.
+Umfang und Qualität werden je Fach, Jahrgangsstufe und Bundesland ausgewiesen. Der jeweils aktuelle fachliche Umfang und die Qualitätsnachweise des konkret gewählten Bereichs sind im [Curriculum-Verzeichnis](https://skillpilot.com/curricula) und im generierten Qualitätsstatus ausgewiesen.
 
 Die maschinenlesbaren Reifegrade **M0 bis M7** bewerten unter anderem Graphintegrität, Bundesland-Abdeckung, Routendeckung, prüfungsfähige Aufgaben, semantische Atomicity, Memory-Card-Traceability und freigegebene Visualisierungen. Ein Reifegrad gilt immer nur für den exakt benannten Scope. Gleiche Reifegrade können deshalb mit unterschiedlich breitem fachlichem Ausbau einhergehen.
 

@@ -1,7 +1,6 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.21
-**Date:** September 2026
+**Version:** 1.0.22
 **Project:** SkillPilot
 
 ---
@@ -12,7 +11,7 @@ SkillPilot connects to **existing curricula** and uses them as the **normative s
 
 To achieve this, the system records learning achievements on atomic skill goals and derives the **mastery level** for higher-level topics. On this basis, the path via the **next attainable skill goals** leads systematically to individual educational objectives.
 
-**Learning plans add a time frame to this navigation:** Which parts of the Personal Curriculum should be achieved by when? In the locally implemented plan-guided learning extension, daily requirements from all planned subjects are combined. The coach reports progress in chat and guides the learner to the next learnable goal, without requiring learners to manage plan sections or select learning goals themselves (see section 3.4).
+**Learning plans add a time frame to this navigation:** Which parts of the Personal Curriculum should be achieved by when? SkillPilot shows the **daily or weekly workload**, backlog, and work ahead for all planned subjects. Each subject is evaluated independently. The coach reports progress in chat and guides the learner to the next learnable goal, without requiring learners to manage plan sections or select learning goals themselves (see section 3.4).
 
 Quality assurance is anchored in a practice-driven **Champion program** and the **open-source workflow** (Issues/PRs).
 
@@ -30,11 +29,9 @@ SkillGraph Processing structures curricula and competence models into dependency
 
 SkillPilot Learning Coach guides learners through those landscapes with frontier-based next steps, mastery tracking, and contextual learning-coach support.
 
-**SkillPilot Coach v1** is currently undergoing OpenAI publication review and is not yet publicly listed. The supported coaching surface is **ChatGPT in a browser**. The responsive first-party SkillPilot web app can also be used in a mobile browser, for example for speech input and uploading photos of written work. Native ChatGPT apps are not currently part of the supported SkillPilot workflow.
+The **SkillPilot Learning Coach** connects dialogue in an AI chat to SkillPilot’s authoritative learning logic. The Claude and ChatGPT integrations use the same domain core through separate provider adapters. In the responsive SkillPilot web app, learners configure their Personal Curriculum, view their progress, and start a learning session.
 
 ![Current SkillPilot learning coach with a learning-goal visualization in ChatGPT in a browser](current-coach.png)
-
-**How to read this whitepaper:** Unless stated otherwise, the text describes the current state. Phrases such as *planned*, *in the roadmap*, or *in later stages* mark forward-looking items.
 
 ---
 
@@ -54,13 +51,13 @@ SkillPilot closes this **tool gap**: outcome-oriented navigation in the curricul
 
 ## 2. The Shift: Why Hybrid AI Systems Are the Right Approach
 
-Since late 2022, the world of language-based AI has developed rapidly. A sense of this pace is provided by a look at *Humanity's Last Exam*, the toughest AI benchmark to date. Introduced in early 2025 to test AI systems with thousands of extreme expert questions for true logical reasoning rather than mere knowledge, leading models were still failing almost completely at the beginning of the year (under 10% success), but were able to quintuple this performance to about 50% by year-end.
+Language-based AI can explain concepts, formulate tasks, discuss solutions, and respond to questions in natural language. In a learning dialogue, it offers different approaches to a topic and adapts explanations to the learner’s responses.
 
-As of **December 2025**, leading AI systems are thus professionally and linguistically up to many topics taught at schools and universities. But they have limits: They are not trained pedagogues and do not work like algorithmically exact bookkeeping programs that calculate and manage without error.
+Reliable learning guidance also needs an authoritative foundation: which goals belong to the curriculum, which prerequisites are met, and which progress has been recorded? SkillPilot manages these facts and rules in the backend.
 
-To ensure the algorithmic **precision** required for **SkillPilot** in navigating learning goals, another trend benefits us: coupling language models to classical software. Standards are being established that allow systems like ChatGPT to specifically call interfaces (APIs) of classical programs.
+The learning coach accesses this **exact backend logic** through defined tools. SkillPilot calculates reachable learning goals and plan status, validates permitted state changes, and stores confirmed progress.
 
-The approach for **SkillPilot** follows almost automatically: it emerges as a hybrid application. Classical, exact software handles the precise "bookkeeping" and navigation of skill goals in the background. Leading language models are instructed (as the SkillPilot Learning Coach) to speak with learners as empathetic learning coaches, but use the software's exact logic in the background for learning progress.
+**SkillPilot is a hybrid application:** The AI learning coach handles language understanding, explanations, and subject-specific feedback. Conventional software owns learning state, permissions, navigation, and progress tracking.
 
 ---
 
@@ -183,36 +180,43 @@ SkillPilot already uses approved practice and assessment nodes for suitable scop
 
 #### Technical Implications: Target Route in Backend, UI, and learning coach
 
-- **Backend (didactic route logic):** The target route is not a free AI computation. It is a **modeled sub-route inside the larger graph** under DAG constraints. This means human curriculum authors (champions) retain pedagogical control. The **Personal Curriculum (Level 2)** is configured exclusively in the first-party SkillPilot web app. SkillPilot Coach v1 neither asks for nor changes that configuration. In chat, the learning coach can change only the current focus and active goal (**Level 3**), using backend-approved options and with the learner's consent.
+- **Backend (didactic route logic):** The target route is not a free AI computation. It is a **modeled sub-route inside the larger graph** under DAG constraints. This means human curriculum authors (champions) retain pedagogical control. The **Personal Curriculum (Level 2)** is configured exclusively in the first-party SkillPilot web app. The learning coach does not change that configuration. In chat, the learning coach can change only the current focus and active goal (**Level 3**), using backend-approved options and with the learner's consent.
 - **UI/UX (route visualization):** Learners configure their Personal Curriculum in the first-party web app. In the Cockpit, they can see and change the current focus and active goal; the interface shows progress and next reachable goals within that context.
 - **AI learning coach (didactic context):** The learning coach operates strictly on the confirmed context, current focus, and transitions allowed by the backend, and explains transparently why the current step is appropriate.
 
-### 3.4 From Curriculum to Daily Learning: Learning Plans and Coach Guidance
+### 3.4 From Curriculum to Everyday Learning: Learning Plans and Coach Guidance
 
-A navigable curriculum does not yet answer the everyday question: **“What do I need to learn today, and how far have I got?”** SkillPilot addresses this by connecting the Personal Curriculum to a timed learning plan and guidance from the coach.
+A navigable curriculum does not yet answer the everyday question: **“What do I need to learn today or this week, and how far have I got?”** SkillPilot addresses this by connecting the Personal Curriculum to a timed learning plan and guidance from the coach.
 
-**Implementation status of this extension (4 September 2026):** Cross-subject planning and learner preview are implemented locally; plan-guided chat is prepared in the Claude Coach 1.1.1 candidate. The local OpenAI 1.1 candidate remains disabled. This section does not extend the submitted OpenAI Coach 1.0.0 review contract or claim production availability or completed client acceptance tests.
-
-![From the Personal Curriculum through joint subject planning to daily guidance in chat; confirmed learning progress feeds into the next calculation. Schematic illustration.](learning-plan.en.svg)
+![From the Personal Curriculum through joint subject planning to chat guidance with daily or weekly workloads; confirmed learning progress feeds into the next calculation. Schematic illustration.](learning-plan.en.svg)
 
 #### The Teacher Plans the Framework
 
 The **Personal Curriculum** defines which competencies belong to the selected education context. The **learning plan** specifies which topics or groups of learning goals should be addressed within which periods. It complements the skill graph without replacing its goals or prerequisites. To work through an entire curriculum, the plan must cover its intended scope; completing a partial plan does not automatically mean completing the curriculum.
 
-Under **“Course planning”**, teachers prepare learning sections, date ranges, buffer time, and milestones. Subject plans, for example for mathematics and physics, apply **together** but are evaluated **per subject**: each subject has its own daily or weekly target, and work ahead in one subject does not offset backlog in another. Switching the current subject does not deactivate another subject plan or impose an order such as “finish all of mathematics before physics.” Several plans of the same subject are merged; overlapping sections do not count the same goal twice. The learner chooses in the Personal Curriculum whether the plan status is given per day or per week.
+Under **“Course planning”**, teachers prepare learning sections, date ranges, buffer time, and milestones. Subject plans, for example for mathematics and physics, apply **together** but are evaluated **per subject**: each subject has its own daily or weekly target, and work ahead in one subject does not offset backlog in another. Switching the current subject does not deactivate another subject plan or impose an order such as “finish all of mathematics before physics.” Several plans of the same subject are merged; overlapping sections do not count the same goal twice. The learner chooses the time resolution in the Personal Curriculum learning configuration in the Cockpit.
 
-The **learner preview** shows today's requirements and the next seven calendar days before changes are applied. It uses the same calculation as the chat. The baseline schedules weekdays from Monday to Friday; it does not automatically optimize around timetables or holidays. Goal counts are not learning minutes or a guarantee of meeting a deadline. The teacher reviews scope and workload and adjusts the plan when necessary.
+The **learner preview** shows each subject’s daily or weekly target and an outlook over the next seven calendar days before changes are applied; in weekly mode, entries are grouped by calendar week. It uses the same calculation as the Cockpit and chat. Dates are scheduled on weekdays from Monday to Friday. Goal counts describe the workload, not learning minutes. The teacher reviews scope and workload and adjusts the plan when necessary.
 
 Drafts initially remain on the planning device. Only explicit joint confirmation makes them effective for the learner; later draft edits do not silently alter ongoing learning. **Teaching coverage is not learner mastery:** recording “covered in class” does not establish an individual's competence.
+
+#### Daily and Weekly Resolution
+
+Learners choose between **1 day** and **1 week**. This setting applies consistently to the Cockpit, chat, learner-specific planning, and selection of the next planned goal:
+
+- **Daily resolution:** The workload covers the current calendar day.
+- **Weekly resolution:** The workload covers the current calendar week from Monday to Sunday. Learners can complete it at the start of the week, over the weekend, or spread it out. Earlier days within the same week do not create additional backlog.
+
+The choice is saved for the SkillPilot ID; daily resolution is the default. Switching changes the time frame of the evaluation while preserving plan dates and achieved learning progress. **Period workload and backlog are separate statements:** A daily or weekly target can be reached while backlog remains. Work ahead is taken into account within the same subject.
 
 #### The Learner Works in Chat
 
 With plan mode enabled and a valid learning session, SkillPilot handles the organization in the background:
 
 1. **Orient:** The coach quotes the plan status formulated by SkillPilot verbatim: for each subject the daily or weekly target and any backlog or work ahead. The Cockpit shows the same sentences; the coach does no arithmetic of its own. It announces the active learning goal separately, once, when the learning task begins.
-2. **Resume automatically:** A valid ongoing goal is continued; otherwise, a due goal whose prerequisites permit learning is selected, if one is available. Joint activation can already select this first goal. No extra “Continue learning” click or manual goal search is needed.
+2. **Resume automatically:** A valid ongoing goal is continued; otherwise, while the daily or weekly workload remains open, a due goal whose prerequisites permit learning is selected, if one is available. Joint activation can already select this first goal. No extra “Continue learning” click or manual goal search is needed.
 3. **Learn and check progress:** The coach explains, sets tasks, and supports the work. Only progress recorded under the applicable evidence rules changes the learning state and thus the plan status. The plan-guided flow then leads to the next permitted step.
-4. **Switch subjects or finish:** A request such as “Physics now” switches within the available subject options; other requirements remain in place. Once the period targets are reached, the coach acknowledges this and does not start another goal on its own. A reached daily target does not mean there is no backlog; in that case the coach invites catching up without pressure. Further learning remains available on request, and future goals do not automatically become extra duties for today. The plan status names unevaluable plans explicitly instead of presenting them as complete.
+4. **Switch subjects or finish:** A request such as “Physics now” switches within the available subject options; other requirements remain in place. Once the period targets are reached, the coach acknowledges this and does not start another goal on its own. A reached daily or weekly target does not mean there is no backlog; in that case the coach invites catching up without pressure. Further learning remains available on request, and future goals do not automatically become extra duties for the current period. The plan status names unevaluable plans explicitly instead of presenting them as complete.
 
 A status-only question does not start a new task; a requested pause remains a pause. If prerequisites or invalid planning block open goals, the coach reports the blockage instead of inventing completion or a replacement duty. Plan corrections remain on the planning side. An expired learning session still requires a fresh start through SkillPilot; chat guidance does not extend the session.
 
@@ -248,11 +252,11 @@ A central pillar of SkillPilot is **data separation**. The following architectur
 
 #### Pseudonym Instead of Identity
 
-Learning states are managed under a permanent **pseudonymous SkillPilot ID**. Individual use does not require registration with a name or email address. The ID remains in SkillPilot, should be backed up as a protected ID file, and is not sent to ChatGPT or to the learning coach. SkillPilot stores the data needed for learning state, navigation, and traceability.
+Learning states are managed under a permanent **pseudonymous SkillPilot ID**. Individual use does not require registration with a name or email address. The ID remains in SkillPilot, should be backed up as a protected ID file, and is not sent to the AI provider or to the learning coach. SkillPilot stores the data needed for learning state, navigation, and traceability.
 
 #### Session Shielding Toward the AI Frontend
 
-Each deliberate start of **SkillPilot Coach v1** from the first-party web app creates a new random `learningSessionId` with an absolute lifetime of exactly 24 hours and opens a new prepared chat. SkillPilot inserts the session automatically into the prepared start message; the learner does not need to copy or manage any technical value. Its lifetime is not extended by use or by an OAuth refresh. The session carries the German or English communication locale selected in the confirmed context. One language-neutral V1 app serves both languages. OAuth authorizes the app but does not select the learner or learning context.
+Starting the **SkillPilot Learning Coach** from the SkillPilot web app creates a new random `learningSessionId` with an absolute lifetime of 24 hours. It connects the prepared chat to the confirmed learning context without exposing the permanent SkillPilot ID. The learner does not need to copy or manage any technical value. Its lifetime is not extended by use or by an OAuth refresh. The session carries the German or English communication locale selected in the confirmed context. OAuth authorizes the integration; the learning session determines the learning context.
 
 ![Current handoff from SkillPilot to a prepared learning session in ChatGPT in a browser](current-handoff.png)
 
@@ -260,7 +264,7 @@ The backend connection is secured independently through several layers: SkillPil
 
 #### Dialog Content Is Decoupled
 
-The SkillPilot backend does not store the complete learning-coach chat history. It processes only the purpose-bound information needed for learning state, navigation, and authorized actions. The complete chat history in ChatGPT is governed by ChatGPT/OpenAI terms. This keeps SkillPilot's central data store limited.
+The learning-coach dialogue stays with the respective AI provider. Answers, solution steps, and free-text assessment explanations are not sent to the SkillPilot backend. To track progress, SkillPilot processes structured completion decisions and, where applicable, authorized numerical exam scores. Chat history is governed by the AI provider’s terms. This limits SkillPilot’s central data store to learning state and authorized actions.
 
 **Recommendation for educational institutions:**
 Clear guidelines on which data should not be shared in learning-coach chats (sensitive personal data) and how learners are supported safely.
@@ -271,9 +275,9 @@ The mapping "who is which pseudonym?" stays with the institution/teacher and is 
 
 #### AI Frontend / Provider Boundary
 
-The learning-coach dialog for **SkillPilot Coach v1** takes place in **ChatGPT in a browser** and is governed by the operational and privacy framework of ChatGPT/OpenAI. The first-party SkillPilot web app is responsive and can also be used in a mobile browser; native ChatGPT apps are not currently part of the supported workflow. The underlying operating system is not part of the support promise. Further provider integrations are kept separate and released only after a complete end-to-end acceptance test and a review of their privacy boundaries.
+SkillPilot separates its shared domain core from AI provider integrations. Claude and ChatGPT connect through separate adapters with their own authentication and session boundaries. Curriculum, learning state, prerequisites, and plan calculations remain in the SkillPilot backend. Each provider is responsible for operating the chat and processing the dialogue; the responsive SkillPilot web app provides learning configuration and the Cockpit in mobile browsers as well.
 
-For contexts with higher sovereignty requirements, further AI backends up to local models are planned. They must reliably meet the required properties for tool use, stability, privacy boundaries, structure, and didactics.
+Separating the domain core from provider integrations keeps learning state and rules independent of the chat provider. Each integration must meet the requirements for tool use, privacy, session separation, and reliable learning guidance.
 
 ### 4.2 Chain of Custody: Integrity & Traceability
 
@@ -308,7 +312,7 @@ The extent of development varies by subject:
 - **Chemistry and Biology** are the next priorities. They also have shared subject curricula with state-specific mappings, but their development is not yet as broad.
 - **Other Gymnasium subjects** are present at varying stages of development and are being expanded gradually.
 
-This describes development progress, not uniform completeness or approval for every subject, year group, and federal state. The current subject coverage and quality evidence for the specific area selected are reported in the [Curriculum Directory](https://skillpilot.com/curricula) and the generated quality status.
+Coverage and quality are reported by subject, year group, and federal state. The current subject coverage and quality evidence for the specific area selected are reported in the [Curriculum Directory](https://skillpilot.com/curricula) and the generated quality status.
 
 The machine-readable **M0-M7** maturity levels assess, among other things, graph integrity, jurisdiction coverage, route coverage, assessment-ready tasks, semantic atomicity, memory-card traceability, and approved visualizations. A maturity level always applies only to the precisely named scope. Equal maturity levels can therefore coexist with different breadths of subject development.
 
