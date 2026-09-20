@@ -17,9 +17,10 @@ interface Props {
   trial: ChampionTrial
   language: 'de' | 'en'
   onChanged: () => void | Promise<void>
+  onAuthenticationRequired?: () => void | Promise<void>
 }
 
-export function CurriculumChampionTrialControls({ championId, trial, language, onChanged }: Props) {
+export function CurriculumChampionTrialControls({ championId, trial, language, onChanged, onAuthenticationRequired }: Props) {
   const inFlight = useRef(false)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
@@ -43,6 +44,12 @@ export function CurriculumChampionTrialControls({ championId, trial, language, o
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action, ...(action === 'complete' ? { confirmed: true } : {}) }),
       })
+      if (response.status === 401) {
+        await onAuthenticationRequired?.()
+        throw new Error(en
+          ? 'Your session has expired. Please connect with GitHub again.'
+          : 'Deine Sitzung ist abgelaufen. Bitte verbinde dich erneut mit GitHub.')
+      }
       if (!response.ok) {
         throw new Error(en
           ? 'The trial could not be updated. Reload to check the current scope and requirements.'
@@ -63,8 +70,11 @@ export function CurriculumChampionTrialControls({ championId, trial, language, o
       <h3 className="font-semibold text-text-primary">{trial.scopeLabel}</h3>
       <p className="mt-1 text-sm text-text-primary">{states[trial.state]}{trial.scopeCoverage === 'partial' ? (en ? ' · limited scope' : ' · begrenzter Umfang') : ''}</p>
       <p className="mt-2 text-sm text-text-secondary">
-        {en ? 'Evidenced learning stations' : 'Belegt durchlaufene Lernstationen'}: {trial.practicedGoals} / {trial.requiredGoals}
+        {en ? 'Content-bound practice evidence' : 'Inhaltsgebundene Praxisnachweise'}: {trial.practicedGoals} / {trial.requiredGoals}
       </p>
+      <p className="mt-1 text-xs text-text-secondary">{en
+        ? 'These are the current evidence records for confirming completion of the trial. Existing learning progress is displayed separately.'
+        : 'Dies sind die aktuellen Nachweise für den bestätigten Erprobungsabschluss. Dein vorhandener Lernfortschritt wird separat angezeigt.'}</p>
       {trial.state === 'not_started' && <p className="mt-2 text-sm text-text-secondary">{en
         ? 'Starting confirms that you will test this scope in practice. Your current curriculum selection defines the scope; at least M5 is required.'
         : 'Mit dem Beginn bestätigst du die praktische Erprobung dieses Umfangs. Deine aktuelle Curriculum-Auswahl legt den Umfang fest; mindestens M5 ist erforderlich.'}</p>}

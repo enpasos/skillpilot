@@ -729,6 +729,21 @@ Reference:
 
 ---
 
+### 7.5 Champion trial start and completion
+
+Human trial status is independent of machine-only maturity M0–M7. Per the
+Product Owner decision of 20 September 2026, an active Champion role with at
+least one completed goal in its current assigned scope counts as an ongoing
+human trial once M5 is reached, regardless of registration or progress dates.
+An explicit start remains available before any progress exists. Respect pauses,
+ended roles and explicit scope bindings; do not require re-registration or
+manufacture historical start timestamps. This is a start signal only: existing
+mastery never substitutes for current content-bound practical evidence or the
+explicit final confirmation required by **Human-tested**. See the binding
+[quality and human-trial concept](docs/concept/curriculum-quality-and-human-trial.md).
+
+---
+
 ## 8. Ideas for future work (for agents and humans)
 
 These are directions that are **intended**, even if not implemented yet:

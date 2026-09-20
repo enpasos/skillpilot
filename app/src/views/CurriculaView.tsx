@@ -138,6 +138,7 @@ export const CurriculaView: React.FC = () => {
   const [qualityFilter, setQualityFilter] = useState<CurriculumQualityFilter>('all')
   const [showRegistration, setShowRegistration] = useState(false)
   const [user, setUser] = useState<{ githubId: string; champions: ChampionEntry[] } | null>(null)
+  const [championAccess, setChampionAccess] = useState<'loading' | 'ready' | 'signed_out' | 'error'>('loading')
   const [showDeregisterModal, setShowDeregisterModal] = useState(false)
   const [selectedDeregisterIds, setSelectedDeregisterIds] = useState<string[]>([])
   const [formState, setFormState] = useState({
@@ -269,23 +270,21 @@ export const CurriculaView: React.FC = () => {
   }, [curriculaViewCopy])
 
   const fetchUser = useCallback(async () => {
+    setChampionAccess('loading')
     try {
       const res = await fetch('/api/ui/curricula/champions/me')
-      if (res.ok) {
-        const champions: ChampionEntry[] = await res.json()
-        if (champions.length > 0) {
-          setUser({ githubId: champions[0].githubId, champions })
-        } else {
-          // Even if no champions, if call succeeds we are auth'd, but we don't know the ID easily unless we parse it or backend returns it wrapped
-          // For MVP, if list empty, we rely on user adding themselves to see state? 
-          // Actually backend returns list. To get ID we might need a separate /me endpoint or just parse from the list?
-          // If list is empty, we don't know the github ID. 
-          // Let's assume for now valid user might have 0 champions.
-          setUser({ githubId: 'GitHub User', champions: [] })
-        }
+      if (res.status === 401 || res.status === 403) {
+        setUser(null)
+        setChampionAccess('signed_out')
+        return
       }
-    } catch (e) {
-      console.debug('Not authenticated', e)
+      if (!res.ok) throw new Error('Champion roles unavailable')
+      const champions: ChampionEntry[] = await res.json()
+      setUser({ githubId: champions[0]?.githubId ?? 'GitHub User', champions })
+      setChampionAccess('ready')
+    } catch {
+      setUser(null)
+      setChampionAccess('error')
     }
   }, [])
 
@@ -295,7 +294,6 @@ export const CurriculaView: React.FC = () => {
     if (url.searchParams.get('auth_success')) {
       // Clear param
       window.history.replaceState({}, '', '/curricula')
-      fetchUser()
     }
   }, [fetchUser])
 
@@ -685,6 +683,40 @@ export const CurriculaView: React.FC = () => {
           </div>
         </section>
 
+        <section aria-labelledby="champion-trial-title" className="bg-white/40 dark:bg-slate-800/40 backdrop-blur-md rounded-3xl border border-border-color p-6 md:p-8 shadow-xl space-y-4">
+          <h2 id="champion-trial-title" className="text-2xl font-semibold text-text-primary">{championCopy.trialTitle}</h2>
+          {championAccess === 'loading' && <p role="status" className="text-text-secondary">{championCopy.trialLoading}</p>}
+          {championAccess === 'signed_out' && (
+            <div className="space-y-4">
+              <p className="text-text-secondary">{championCopy.trialSignIn}</p>
+              <button type="button" onClick={handleConnect} className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#24292F] text-white hover:bg-[#24292F]/90 transition-colors font-medium">
+                {championCopy.connectWithGithub}
+              </button>
+              <a href="https://github.com/signup" target="_blank" rel="noopener noreferrer" className="block text-sm text-sky-700 dark:text-sky-300 underline underline-offset-4">
+                {t.curriculaPage.registration.createGithub}
+              </a>
+            </div>
+          )}
+          {championAccess === 'error' && (
+            <div className="space-y-3">
+              <p role="alert" className="text-text-secondary">{championCopy.trialLoadError}</p>
+              <button type="button" onClick={() => void fetchUser()} className="rounded-lg border border-border-color px-3 py-2 font-medium">{championCopy.retry}</button>
+            </div>
+          )}
+          {championAccess === 'ready' && user?.champions.length === 0 && <p className="text-text-secondary">{championCopy.noAssignments}</p>}
+          {championAccess === 'ready' && user && user.champions.length > 0 && <p className="text-text-secondary">{championCopy.trialStartHint}</p>}
+          {championAccess === 'ready' && user?.champions.map((champion) => champion.id && champion.trial ? (
+            <CurriculumChampionTrialControls
+              key={champion.id}
+              championId={champion.id}
+              trial={champion.trial}
+              language={localizedLanguage}
+              onAuthenticationRequired={fetchUser}
+              onChanged={async () => { await fetchUser(); loadData() }}
+            />
+          ) : null)}
+        </section>
+
         <section className="bg-white/40 dark:bg-slate-800/40 backdrop-blur-md rounded-3xl border border-border-color p-6 md:p-8 shadow-xl">
           <div className="flex flex-col gap-6">
             <div>
@@ -762,16 +794,6 @@ export const CurriculaView: React.FC = () => {
                 </button>
               </div>
             )}
-
-            {user?.champions.map((champion) => champion.id && champion.trial ? (
-              <CurriculumChampionTrialControls
-                key={champion.id}
-                championId={champion.id}
-                trial={champion.trial}
-                language={localizedLanguage}
-                onChanged={async () => { await fetchUser(); loadData() }}
-              />
-            ) : null)}
 
             {showRegistration && (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -909,28 +931,7 @@ export const CurriculaView: React.FC = () => {
                         </button>
                       </div>
                     </>
-                  ) : (
-                    <div className="flex flex-col items-center justify-center py-6 gap-4">
-                      <p className="text-text-secondary text-sm">
-                        {t.curriculaPage.registration.connectPrompt}
-                      </p>
-                      <button
-                        type="button"
-                        onClick={handleConnect}
-                        className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#24292F] text-white hover:bg-[#24292F]/90 transition-colors font-medium"
-                      >
-                        {championCopy.connectWithGithub}
-                      </button>
-                      <a
-                        href="https://github.com/signup"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-sky-600 dark:text-sky-400 hover:underline"
-                      >
-                        {t.curriculaPage.registration.createGithub}
-                      </a>
-                    </div>
-                  )}
+                  ) : <a href="#champion-trial-title" className="block text-sm text-sky-700 dark:text-sky-300 underline underline-offset-4">{championCopy.connectWithGithub}</a>}
 
                 </div>
               </form>
@@ -1265,7 +1266,7 @@ export const CurriculaView: React.FC = () => {
                                     : (localizedLanguage === 'en' ? 'Trial paused or needs updating' : 'Erprobung pausiert oder zu aktualisieren')}
                                 {' · '}{champion.trial.scopeLabel}
                                 {champion.trial.scopeCoverage === 'partial' ? (localizedLanguage === 'en' ? ' · limited scope' : ' · begrenzter Umfang') : ''}
-                                {' · '}{champion.trial.practicedGoals} / {champion.trial.requiredGoals}
+                                {' · '}{localizedLanguage === 'en' ? 'Content-bound practice evidence' : 'Inhaltsgebundene Praxisnachweise'}: {champion.trial.practicedGoals} / {champion.trial.requiredGoals}
                               </p>
                             )}
                             <div className="flex flex-wrap gap-4 text-xs text-text-secondary">

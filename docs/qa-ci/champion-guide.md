@@ -21,19 +21,36 @@ Aspiring champions register on the **"Curricula"** page (which will replace the 
 
 ## Practical human trial
 
-Registration does not start or certify a trial. On the Curricula page, a registered
-champion explicitly chooses **Begin trial** for a scope whose core QA has reached
-at least **M5**. The current personal curriculum and topic selection define that
-scope. Later changes to the learner's selection do not silently change the trial.
+On the Curricula page, **Your human QA** is the entry point for existing
+Champions. Use **Connect with GitHub** with the account linked to your role;
+this entry is visible even when the registration form is closed. Once signed
+in, the page shows your roles and their trial controls. An expired login requires
+signing in again, not registering the role again. Failed role loading is shown
+with a retry action rather than silently hiding the controls.
 
-The page displays the scope, evidenced learning stations, and known blocking
-findings. Importing mastery or manually raising a mastery value is not practical
-trial evidence. Valid learning completions recorded before the start can count
+Registration alone does not start or certify a trial. Existing learning progress
+in an active Champion role's scope now counts as **Human QA in progress**, once
+core QA has reached at least **M5**. At least one completed goal in that scope is
+enough for this start signal, regardless of when the role was registered or the
+progress was made. Existing Champions need neither to re-register nor to press
+a retrospective start button. With no progress yet, **Begin trial** remains
+available.
+
+The current personal curriculum and topic selection define the inferred scope.
+An explicit trial action binds that scope; subsequent selection changes do not
+silently change this binding. A pause or ended role is never reactivated merely
+because progress still exists.
+
+The page distinguishes learning progress from content-bound practical evidence
+and shows the scope and known blocking findings. Existing mastery is a start
+signal only: imported or manually raised mastery is not practical evidence for
+**Human-tested**. Valid learning completions recorded before the start can count
 when their provenance and current content binding are available. Older records
 without those bindings are retained but cannot certify the current content.
 
-**Human QA in progress** requires an explicitly started, active trial. A champion
-may pause and resume it. **Human-tested** requires one champion's complete evidence
+**Human QA in progress** requires an active role with progress in scope or an
+explicit start. A champion may pause and resume it. **Human-tested** still
+requires one champion's complete evidence
 for the advertised scope, no known unresolved blocking findings, and the explicit
 final confirmation. Several people's partial runs are never combined. Merely
 completing a learning goal does not resolve a reported defect. The final

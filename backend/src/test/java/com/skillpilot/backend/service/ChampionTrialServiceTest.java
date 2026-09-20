@@ -37,12 +37,82 @@ class ChampionTrialServiceTest {
     }
 
     @Test
-    void registrationAndLegacyMasteryNeverStartOrCompleteTrial() {
+    void registrationAndUnboundCompletionRowsAloneNeverStartOrCompleteTrial() {
         when(completions.getPracticeHistory("private-learner-a")).thenReturn(List.of(legacy("a"), legacy("b")));
         assertThat(service.status(champion, scope()).state()).isEqualTo("not_started");
         assertThat(service.status(champion, scope()).practicedGoals()).isZero();
         assertThat(service.status(champion, scope()).canComplete()).isFalse();
         assertThat(service.status(champion, scope()).canStart()).isTrue();
+    }
+
+    @Test
+    void currentLearningProgressStartsOldAndNewAssignmentsWithoutInventingEvidenceOrDates() {
+        var progress = progressScope(1);
+        for (Instant registration : List.of(Instant.parse("2020-01-01T00:00:00Z"), Instant.now())) {
+            champion.setCreatedAt(registration);
+            var status = service.status(champion, progress);
+            assertThat(status.state()).isEqualTo("in_progress");
+            assertThat(status.canStart()).isFalse();
+            assertThat(status.practicedGoals()).isZero();
+            assertThat(status.canComplete()).isFalse();
+            assertThat(champion.getTrialStartedAt()).isNull();
+            assertThat(champion.getTrialScopeJson()).isNull();
+        }
+        assertThat(service.status(champion, progressScope(0)).state()).isEqualTo("not_started");
+    }
+
+    @Test
+    void completeMasteryAloneNeverGrantsHumanCompletion() {
+        var progress = progressScope(2);
+        assertThat(service.status(champion, progress).state()).isEqualTo("in_progress");
+        assertThat(service.status(champion, progress).canComplete()).isFalse();
+        assertThatThrownBy(() -> service.apply(champion, progress, new ChampionTrialRequest("complete", true)))
+                .isInstanceOf(ResponseStatusException.class);
+        assertThat(champion.getTrialConfirmationsJson()).isNull();
+    }
+
+    @Test
+    void inferredTrialCanPauseAndResumeWithPinnedScopeButNoInventedStartTime() {
+        var progress = progressScope(1);
+        service.apply(champion, progress, new ChampionTrialRequest("pause", null));
+        assertThat(service.status(champion, progress).state()).isEqualTo("paused");
+        assertThat(champion.getTrialScopeJson()).isEqualTo("named-scope");
+        assertThat(champion.getTrialStartedAt()).isNull();
+        // A later mastery reset must not erase an explicit pause or prevent resumption.
+        assertThat(service.status(champion, progressScope(0)).state()).isEqualTo("paused");
+        service.apply(champion, progressScope(0), new ChampionTrialRequest("resume", null));
+        assertThat(service.status(champion, progressScope(0)).state()).isEqualTo("in_progress");
+        assertThat(champion.getTrialStartedAt()).isNull();
+    }
+
+    @Test
+    void progressNeverOverridesPausedEndedOrBelowCoreReadyState() {
+        var progress = progressScope(1);
+        champion.setTrialPausedAt(Instant.now());
+        assertThat(service.status(champion, progress).state()).isEqualTo("paused");
+        champion.setTrialPausedAt(null);
+        champion.setAssignmentEndedAt(Instant.now());
+        assertThat(service.status(champion, progress).state()).isEqualTo("paused");
+        assertThat(service.status(champion, progress).canComplete()).isFalse();
+        champion.setAssignmentEndedAt(null);
+        var belowM5 = new ChampionTrialService.Scope("named-scope", "Scope", true,
+                Map.of("a", a, "b", b), false, 0, true, 1);
+        assertThat(service.status(champion, belowM5).state()).isEqualTo("not_started");
+    }
+
+    @Test
+    void inferredTrialCanCompleteOnlyWithCurrentPracticalCoverageAndExplicitConfirmation() {
+        var progress = progressScope(2);
+        evidence(a, b);
+        assertThat(service.status(champion, progress).canComplete()).isTrue();
+        assertThatThrownBy(() -> service.apply(champion, progress, new ChampionTrialRequest("complete", false)))
+                .isInstanceOf(ResponseStatusException.class);
+        service.apply(champion, progress, new ChampionTrialRequest("complete", true));
+        assertThat(service.status(champion, progressScope(0)).state()).isEqualTo("completed");
+        assertThat(champion.getTrialStartedAt()).isNull();
+        assertThat(champion.getTrialScopeJson()).isEqualTo("named-scope");
+        b.setDescription("Changed competence");
+        assertThat(service.status(champion, progress).state()).isEqualTo("stale");
     }
 
     @Test
@@ -171,6 +241,10 @@ class ChampionTrialServiceTest {
     private ChampionTrialService.Scope scope() {
         return new ChampionTrialService.Scope("named-scope", "Mathematik, Hessen, Sek II", true,
                 Map.of("a", a, "b", b), true, 0);
+    }
+    private ChampionTrialService.Scope progressScope(long masteredGoals) {
+        return new ChampionTrialService.Scope("named-scope", "Mathematik, Hessen, Sek II", true,
+                Map.of("a", a, "b", b), true, 0, true, masteredGoals);
     }
     private void start() { service.apply(champion, scope(), new ChampionTrialRequest("start", null)); }
     private void complete() { service.apply(champion, scope(), new ChampionTrialRequest("complete", true)); }

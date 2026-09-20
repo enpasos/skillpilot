@@ -30,10 +30,14 @@ public class ChampionTrialService {
     }
 
     public record Scope(String context, String label, boolean fullCoverage, Map<String, LearningGoal> goals,
-                        boolean coreReady, int blockingFindings, boolean findingsAvailable) {
+                        boolean coreReady, int blockingFindings, boolean findingsAvailable, long masteredGoals) {
         public Scope(String context, String label, boolean fullCoverage, Map<String, LearningGoal> goals,
                 boolean coreReady, int blockingFindings) {
-            this(context, label, fullCoverage, goals, coreReady, blockingFindings, true);
+            this(context, label, fullCoverage, goals, coreReady, blockingFindings, true, 0);
+        }
+        public Scope(String context, String label, boolean fullCoverage, Map<String, LearningGoal> goals,
+                boolean coreReady, int blockingFindings, boolean findingsAvailable) {
+            this(context, label, fullCoverage, goals, coreReady, blockingFindings, findingsAvailable, 0);
         }
     }
 
@@ -66,7 +70,7 @@ public class ChampionTrialService {
                 && scope.blockingFindings() == 0 && completeCoverage;
         String digest = scopeDigest(scope, expected);
         boolean confirmed = confirmations(champion).containsKey(digest);
-        boolean started = champion.getTrialStartedAt() != null;
+        boolean started = hasStarted(champion, scope);
         boolean active = started && champion.getTrialPausedAt() == null && champion.getAssignmentEndedAt() == null;
         String state = started && eligible && confirmed ? "completed"
                 : champion.getTrialConfirmationsJson() != null && !confirmations(champion).isEmpty() ? "stale"
@@ -93,11 +97,13 @@ public class ChampionTrialService {
                 champion.setTrialPausedAt(null);
             }
             case "pause" -> {
-                if (champion.getTrialStartedAt() == null) conflict("Trial has not started");
+                if (!hasStarted(champion, scope)) conflict("Trial has not started");
+                bindScope(champion, scope);
                 champion.setTrialPausedAt(Instant.now());
             }
             case "resume" -> {
-                if (champion.getTrialStartedAt() == null || !scope.coreReady()) conflict("Trial cannot resume");
+                if (!hasStarted(champion, scope) || !scope.coreReady()) conflict("Trial cannot resume");
+                bindScope(champion, scope);
                 champion.setTrialPausedAt(null);
             }
             case "complete" -> {
@@ -107,6 +113,7 @@ public class ChampionTrialService {
                 Map<String, String> confirmations = new LinkedHashMap<>(confirmations(champion));
                 confirmations.put(evaluation.digest(), Instant.now().toString());
                 try {
+                    bindScope(champion, scope);
                     champion.setTrialConfirmationsJson(mapper.writeValueAsString(confirmations));
                     // Further curriculum changes require an explicit resumption, not a permanent running label.
                     champion.setTrialPausedAt(Instant.now());
@@ -116,6 +123,18 @@ public class ChampionTrialService {
             }
             default -> bad("Unknown trial action");
         }
+    }
+
+    private boolean hasStarted(CurriculumChampion champion, Scope scope) {
+        // Existing progress starts an assigned champion's trial regardless of registration
+        // or feature rollout date. It never substitutes for content-bound completion evidence.
+        return champion.getTrialStartedAt() != null || champion.getTrialScopeJson() != null
+                || (scope.coreReady() && !scope.goals().isEmpty() && scope.masteredGoals() > 0);
+    }
+
+    private void bindScope(CurriculumChampion champion, Scope scope) {
+        // An explicit action freezes an inferred trial's scope without inventing its start date.
+        if (champion.getTrialScopeJson() == null) champion.setTrialScopeJson(scope.context());
     }
 
     private Map<String, String> expected(Scope scope, Set<String> documentedGoals) {

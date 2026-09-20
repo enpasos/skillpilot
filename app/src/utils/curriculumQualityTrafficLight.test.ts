@@ -21,7 +21,8 @@ for (const qualityStatus of curriculumQualityStatuses) {
 for (const value of [undefined, null, {}, { qualityStatus: 'green' }, { qualityStatus: 'invented' }]) {
   assert.equal(getCurriculumQualityStatus(value), null, 'missing or invalid evidence stays unknown')
 }
-// Neither a famous subject ID, an M7 milestone nor mastery proves a human trial.
+// Only the server derives trial status from a Champion's scoped progress/start.
+// The frontend must not invent it from a subject ID, M7 or an arbitrary mastery total.
 const formerGreen = { curriculumId: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', qualityMaturity: 'M7', qualityStatus: null }
 assert.equal(getCurriculumQualityStatus(formerGreen), null)
 assert.equal(getGymnasiumSubjectQualityStatus({ qualityStatus: 'machine_qa' }), 'machine_qa')

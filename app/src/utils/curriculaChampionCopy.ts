@@ -7,6 +7,13 @@ export interface CurriculaChampionCopy {
   activeChampionshipsTitle: string
   stopChampionship: string
   connectWithGithub: string
+  trialTitle: string
+  trialSignIn: string
+  trialStartHint: string
+  trialLoading: string
+  trialLoadError: string
+  retry: string
+  noAssignments: string
   deregisterModalTitle: string
   deregisterModalConfirm: string
   deregisterPrompt: string
@@ -23,6 +30,13 @@ export const getCurriculaChampionCopy = (language: LabelLanguage): CurriculaCham
         activeChampionshipsTitle: 'Active Championships',
         stopChampionship: 'Stop Championship',
         connectWithGithub: 'Connect with GitHub',
+        trialTitle: 'Your human QA',
+        trialSignIn: 'Already a Curriculum Champion? Sign in with the GitHub account linked to your role to manage your trial.',
+        trialStartHint: 'From M5 onward, existing learning progress in your scope counts as a trial already begun; pauses remain in effect. With no progress yet, you can choose “Begin trial”. The M0–M7 maturity level stays separate.',
+        trialLoading: 'Loading your Champion roles…',
+        trialLoadError: 'Your Champion roles could not be loaded. Please try again.',
+        retry: 'Retry',
+        noAssignments: 'No active Champion role is linked to this GitHub account. You can register below.',
         deregisterModalTitle: 'Stop Championship',
         deregisterModalConfirm: 'Confirm',
         deregisterPrompt: 'Select the championships you want to end:',
@@ -36,6 +50,13 @@ export const getCurriculaChampionCopy = (language: LabelLanguage): CurriculaCham
         activeChampionshipsTitle: 'Aktive Champion-Rollen',
         stopChampionship: 'Champion-Rolle beenden',
         connectWithGithub: 'Mit GitHub verbinden',
+        trialTitle: 'Deine menschliche QS',
+        trialSignIn: 'Du bist bereits Curriculum-Champion? Melde dich mit dem GitHub-Konto deiner Rolle an, um deine Erprobung zu verwalten.',
+        trialStartHint: 'Ab M5 zählt vorhandener Lernfortschritt in deinem Prüfumfang als begonnene Erprobung; Pausen bleiben wirksam. Ohne bisherigen Fortschritt kannst du „Erprobung beginnen“ wählen. Der Reifegrad M0–M7 bleibt davon getrennt.',
+        trialLoading: 'Deine Champion-Rollen werden geladen…',
+        trialLoadError: 'Deine Champion-Rollen konnten nicht geladen werden. Bitte versuche es erneut.',
+        retry: 'Erneut laden',
+        noAssignments: 'Mit diesem GitHub-Konto ist keine aktive Champion-Rolle verknüpft. Du kannst dich unten registrieren.',
         deregisterModalTitle: 'Champion-Rolle beenden',
         deregisterModalConfirm: 'Bestätigen',
         deregisterPrompt: 'Wähle die Champion-Rollen aus, die du beenden möchtest:',

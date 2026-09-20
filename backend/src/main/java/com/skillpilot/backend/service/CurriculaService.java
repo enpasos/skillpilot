@@ -548,7 +548,10 @@ public class CurriculaService {
         }
         boolean findingsAvailable = quality != null && quality.humanTrialFindingsAvailable();
         int blockers = findingsAvailable ? quality.humanTrialBlockingRuleFailures() + quality.humanTrialBlockingFindings() : 0;
-        return new ChampionTrialService.Scope(context, label, full, goals, coreReady(quality), blockers, findingsAvailable);
+        long masteredGoals = countMasteredAtomicIds(goals.keySet(),
+                learnerService.getMasteryProjectedToGoalIds(champion.getSkillpilotId(), goals.keySet()));
+        return new ChampionTrialService.Scope(context, label, full, goals, coreReady(quality), blockers,
+                findingsAvailable, masteredGoals);
     }
 
     private static boolean coreReady(CurriculumQualityEntry entry) {

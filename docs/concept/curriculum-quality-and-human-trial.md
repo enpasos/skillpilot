@@ -9,7 +9,7 @@ SkillPilot macht die Qualität eines Curriculums anhand zweier getrennt ausgewie
 
 **QS-Reifegrad M0–M7:** Welche verbindlichen Qualitätsprüfungen sind für den aktuellen Inhalt vollständig erfüllt?
 
-**Menschliche Erprobung:** Hat ein Curriculum-Champion die praktische Erprobung begonnen oder den gesamten ausgewiesenen Lernumfang erfolgreich durchlaufen und bestätigt?
+**Menschliche Erprobung:** Zeigt der aktuelle Lernfortschritt eines zugeordneten Champions eine begonnene Erprobung, hat der Champion ihren Beginn ausdrücklich bestätigt oder den gesamten ausgewiesenen Lernumfang erfolgreich durchlaufen und bestätigt?
 
 > **Der Reifegrad beschreibt den erreichten Prüfstand. Der Champion-Status beschreibt die praktische Erprobung.**
 
@@ -132,17 +132,21 @@ Die menschliche Erprobung besitzt drei fachliche Zustände:
 
 | Zustand | Voraussetzung | Sichtbare Bezeichnung |
 |---|---|---|
-| **Nicht begonnen** | Kein bestätigter Erprobungsbeginn für den betrachteten Umfang. | Basisstatus aus dem QS-Reifegrad |
-| **In Erprobung** | Ein zugeordneter Champion hat die praktische Erprobung bestätigt begonnen. | **Menschliche QS läuft** |
+| **Nicht begonnen** | Weder vorhandener Lernfortschritt eines zugeordneten Champions noch ausdrücklich bestätigter Beginn im betrachteten Umfang. | Basisstatus aus dem QS-Reifegrad |
+| **In Erprobung** | Eine aktive Champion-Rolle besitzt vorhandenen Lernfortschritt im betrachteten Umfang oder einen ausdrücklich bestätigten Beginn; die Erprobung ist nicht pausiert. | **Menschliche QS läuft** |
 | **Abgeschlossen** | Ein Champion hat den gesamten ausgewiesenen Umfang erfolgreich durchlaufen und den Abschluss bestätigt. | **Menschlich erprobt** |
 
 ### 5.1 Beginn der Erprobung
 
-Ein zugeordneter Curriculum-Champion bestätigt den Beginn für einen eindeutig bezeichneten Umfang, beispielsweise über **„Erprobung beginnen“**.
+**Product-Owner-Entscheidung vom 20. September 2026:** Vorhandener Lernfortschritt einer aktiven Champion-Rolle zählt als begonnene Erprobung. Maßgeblich ist mindestens ein nach der bestehenden Fortschrittsberechnung abgeschlossenes Ziel im aktuell zugeordneten Prüfumfang. Registrierungsdatum, Alter des Lernfortschritts und Einführungsdatum der Erprobungsfunktion spielen dabei keine Rolle. Bestehende Champions müssen sich weder neu registrieren noch bereits begonnene Arbeit durch einen nachträglichen Startklick aktivieren.
+
+Ohne vorhandenen Lernfortschritt kann ein zugeordneter Champion den Beginn weiterhin ausdrücklich über **„Erprobung beginnen“** bestätigen.
 
 Daraus leitet das System den Status automatisch ab. Eine zusätzliche manuelle Änderung des Qualitätsbadges ist nicht erforderlich.
 
-Eine Registrierung, ein Seitenaufruf oder bereits vorhandene Beherrschungswerte allein belegen keinen Erprobungsbeginn.
+Eine Registrierung oder ein Seitenaufruf allein löst den Status nicht aus. Lernfortschritt außerhalb des zugeordneten Umfangs zählt ebenfalls nicht. Eine ausdrücklich gesetzte Pause oder beendete Champion-Rolle wird durch vorhandenen Fortschritt nicht aufgehoben.
+
+Die automatische Kennzeichnung ist ein **Beginnsignal, kein Erprobungsabschluss**. Vorhandene Beherrschungswerte werden dadurch nicht zu inhaltsgebundenen Praxisnachweisen. Herkunft und Fingerprints fehlender historischer Nachweise werden nicht nachträglich erfunden; die strengeren Abschlussbedingungen aus Abschnitt 5.2 bleiben unverändert. Insbesondere erzeugen auch 100 % Lernfortschritt allein niemals „Menschlich erprobt“.
 
 Die reguläre schulische Champion-Erprobung setzt mindestens den Kern-QS-Stand M5 voraus. Sie muss nicht auf M7 warten. Eine praktische Erprobung und die weitere maschinelle Qualitätssicherung können parallel stattfinden.
 
@@ -186,7 +190,7 @@ Der Status bestätigt nicht, dass jede mögliche Aufgabe, jeder alternative Lern
 
 ### 6.1 Eindeutiger Umfang
 
-Jeder QS- und Erprobungsnachweis besitzt einen eindeutig bezeichneten Umfang.
+Jeder QS- und Erprobungsnachweis besitzt einen eindeutig bezeichneten Umfang. Solange eine Erprobung nur aus vorhandenem Fortschritt abgeleitet wird, gilt der aktuelle Umfang der Champion-Zuordnung und Personalisierung. Eine ausdrückliche Erprobungsaktion bindet den Umfang; spätere Änderungen der Personalisierung schreiben diese Bindung nicht stillschweigend um.
 
 Eine vollständig erprobte Sicht **„Physik, Hessen, Sekundarstufe II“** ist nicht automatisch ein Nachweis für sämtliche Physikinhalte aller Bundesländer und Schulstufen.
 
@@ -264,7 +268,7 @@ Sie überträgt weder den höchsten Meilenstein noch einen einzelnen Champion-Na
 
 ### Eine gemeinsame Ableitung
 
-Der Reifegrad wird aus dem zentralen Qualitätsbericht abgeleitet. Der Erprobungsstatus wird aus der Champion-Zuordnung, dem bestätigten Beginn, den vorhandenen Abschlussnachweisen und der Abschlussbestätigung abgeleitet.
+Der Reifegrad wird aus dem zentralen Qualitätsbericht abgeleitet. Der Erprobungsstatus wird aus der aktiven Champion-Zuordnung, dem aktuellen Lernfortschritt im Prüfumfang beziehungsweise dem ausdrücklich bestätigten Beginn, einer möglichen Pause, den vorhandenen Abschlussnachweisen und der Abschlussbestätigung abgeleitet. Die Ableitung benötigt keinen zeitabhängigen Sonderfall für Altregistrierungen und keine rückwirkend gesetzten Startzeitpunkte.
 
 Fest hinterlegte grüne Fachlisten oder manuell gepflegte Qualitätsabzeichen sind keine fachliche Statusquelle.
 
@@ -297,7 +301,7 @@ Die Tests konzentrieren sich auf die entscheidenden Fälle:
 | **M7-Vergabe** | Nur bei gültigem M6 und vollständigem strengen Abschluss aller aktuellen Ziele. |
 | **Zähler und Gates** | Keine Mittelwerte, Rundungsfreigaben oder Anerkennung lediglich aufgeschobener notwendiger Arbeiten. |
 | **Freigabestatus** | KI-Nachweise werden nicht als menschliche Freigaben ausgegeben; ausdrückliche Fehlerbefunde bleiben wirksam. |
-| **Erprobungsbeginn** | Bestätigter Beginn löst den Status aus; Registrierung oder importierte Beherrschung allein nicht. |
+| **Erprobungsbeginn** | Vorhandener Lernfortschritt einer aktiven Champion-Rolle im passenden Umfang oder ausdrücklich bestätigter Beginn löst den Status aus; das Registrierungsdatum ist irrelevant. Registrierung allein und fachfremder Fortschritt genügen nicht; Pause und Beendigung bleiben wirksam. |
 | **Erprobungsabschluss** | Vollständiger belegter Durchlauf eines Champions, keine bekannten Blocker und einmalige Bestätigung erforderlich. |
 | **Umfang und Änderungen** | Teilnachweise werden nicht ausgeweitet; relevante Änderungen entwerten nur betroffene Nachweise. |
 | **Darstellung** | Gleiche Zustände, Texte und Grau-Grün-Reifeskala in allen Oberflächen. |

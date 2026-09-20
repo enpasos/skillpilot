@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.ChampionTrialRequest;
+import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.domain.CurriculumChampion;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.landscape.LearningGoal;
@@ -124,6 +125,92 @@ class CurriculaChampionTrialIntegrationTest {
         curricula.updateChampionTrial("test-owner", champion.getId(), new ChampionTrialRequest("start", null));
         assertThatThrownBy(() -> curricula.updateChampionTrial("test-owner", champion.getId(), new ChampionTrialRequest("complete", true)))
                 .isInstanceOfSatisfying(ResponseStatusException.class, error -> assertThat(error.getStatusCode().value()).isEqualTo(409));
+    }
+
+    @Test
+    void oldAssignmentWithProgressIsRunningAndPauseResumePersistWithoutHistoricalStartBackfill() {
+        champion.setCreatedAt(Instant.parse("2020-01-01T00:00:00Z"));
+        champions.saveAndFlush(champion);
+        when(learnerService.getMasteryProjectedToGoalIds(eq(learner.getSkillpilotId()), anySet()))
+                .thenReturn(Map.of("a", new MasteryEntryDTO(1, Instant.parse("2021-01-01T00:00:00Z"))));
+        var profile = curricula.getChampionsByGithubId("test-owner").getFirst();
+        assertThat(profile.masteredCount()).isEqualTo(1);
+        assertThat(profile.trial().state()).isEqualTo("in_progress");
+        assertThat(profile.trial().practicedGoals()).isZero();
+        assertThat(profile.trial().canComplete()).isFalse();
+        assertThat(curricula.getSnapshot().curricula().getFirst().qualityStatus()).isEqualTo("human_trial_in_progress");
+        curricula.updateChampionTrial("test-owner", champion.getId(), new ChampionTrialRequest("pause", null));
+        entityManager.flush(); entityManager.clear();
+        CurriculumChampion paused = champions.findById(champion.getId()).orElseThrow();
+        assertThat(paused.getTrialStartedAt()).isNull();
+        assertThat(paused.getTrialPausedAt()).isNotNull();
+        assertThat(paused.getTrialScopeJson()).isNotBlank();
+        assertThat(curricula.getSnapshot().curricula().getFirst().qualityStatus()).isEqualTo("machine_qa");
+        var resumed = curricula.updateChampionTrial("test-owner", champion.getId(), new ChampionTrialRequest("resume", null));
+        assertThat(resumed.trial().state()).isEqualTo("in_progress");
+        entityManager.flush(); entityManager.clear();
+        assertThat(champions.findById(champion.getId()).orElseThrow().getTrialStartedAt()).isNull();
+        assertThat(champions.findById(champion.getId()).orElseThrow().getTrialPausedAt()).isNull();
+    }
+
+    @Test
+    void onlyProgressInsideTheCurrentTrialScopeStartsAnExistingAssignment() {
+        learner.setPersonalCurriculum("{\"scope\":{\"filterId\":\"partial\"}}");
+        learners.saveAndFlush(learner);
+        when(learnerService.getFilteredAtomicGoalIds(eq("test-curriculum"), contains("partial"), isNull(), eq(false)))
+                .thenReturn(Set.of("a"));
+        when(learnerService.getMasteryProjectedToGoalIds(eq(learner.getSkillpilotId()), anySet()))
+                .thenReturn(Map.of("b", new MasteryEntryDTO(1, Instant.now())));
+        assertThat(curricula.getChampionsByGithubId("test-owner").getFirst().trial().state()).isEqualTo("not_started");
+        when(learnerService.getMasteryProjectedToGoalIds(eq(learner.getSkillpilotId()), anySet()))
+                .thenReturn(Map.of("a", new MasteryEntryDTO(1, Instant.now())));
+        assertThat(curricula.getChampionsByGithubId("test-owner").getFirst().trial().state()).isEqualTo("in_progress");
+        curricula.updateChampionTrial("test-owner", champion.getId(), new ChampionTrialRequest("pause", null));
+        learner.setPersonalCurriculum("{}"); learners.saveAndFlush(learner);
+        var resumed = curricula.updateChampionTrial("test-owner", champion.getId(), new ChampionTrialRequest("resume", null));
+        assertThat(resumed.trial().requiredGoals()).isEqualTo(1);
+    }
+
+    @Test
+    void canonicalPhysicsM7KeepsMaturityAndCountsHumanTrialFromExistingProgress() {
+        String rootId = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
+        learner.setSelectedCurriculum(rootId); learners.saveAndFlush(learner);
+        champion.setCurriculumId(rootId); champion.setTopicId("physics"); champions.saveAndFlush(champion);
+        LearningGoal root = goal("root"); root.setContains(List.of("physics"));
+        LearningGoal physics = goal("physics"); physics.setTitle("Physik"); physics.setContains(List.of("a", "b"));
+        SkillLandscape rootLandscape = new SkillLandscape(); rootLandscape.setLandscapeId(rootId);
+        rootLandscape.setGoals(List.of(root)); rootLandscape.setTitle("Gymnasium Deutschland");
+        SkillLandscape physicsLandscape = new SkillLandscape(); physicsLandscape.setLandscapeId("physics-landscape");
+        physicsLandscape.setGoals(List.of(physics, a, b)); physicsLandscape.setTitle("Physik");
+        LandscapeService landscapes = mock(LandscapeService.class);
+        when(landscapes.getById(rootId)).thenReturn(rootLandscape);
+        when(landscapes.getById("physics-landscape")).thenReturn(physicsLandscape);
+        when(landscapes.getGoalDefinition("physics")).thenReturn(physics);
+        when(landscapes.getGoalDefinition("a")).thenReturn(a);
+        when(landscapes.getGoalDefinition("b")).thenReturn(b);
+        when(landscapes.getLandscapeIdForGoal("physics")).thenReturn("physics-landscape");
+        when(landscapes.getBaseCurricula()).thenReturn(List.of(new LandscapeSummary(
+                rootId, "Gymnasium Deutschland", "", "DE", null, "curriculum", "Gymnasium", "de", List.of())));
+        when(learnerService.getFilteredAtomicGoalIds(eq(rootId), anyString(), eq("physics"), eq(false)))
+                .thenReturn(Set.of("a", "b"));
+        when(learnerService.getMasteryProjectedToGoalIds(eq(learner.getSkillpilotId()), anySet()))
+                .thenReturn(Map.of("a", new MasteryEntryDTO(1, Instant.parse("2021-01-01T00:00:00Z"))));
+        var quality = new CurriculumQualitySnapshotProvider.CurriculumQualityEntry(
+                "physics-landscape", "Physik", "M7", 3, 2, 0, 0, 0, 0, true);
+        CurriculumQualitySnapshotProvider qualityProvider = () -> new CurriculumQualitySnapshotProvider.CurriculumQualitySnapshot(
+                Map.of("physics-landscape", quality), Map.of("physik", quality));
+        GitHubStatsService github = mock(GitHubStatsService.class);
+        when(github.getStats(anyString())).thenReturn(new GitHubStatsService.GitHubStats(0, 0));
+        ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
+        var canonical = new CurriculaService(landscapes, mastery, learners, champions, github, learnerService,
+                mock(CompositionViewService.class), mapper, qualityProvider);
+        ReflectionTestUtils.setField(canonical, "championTrialService", new ChampionTrialService(completions, fingerprints, mapper));
+        var publicView = canonical.getSnapshot().curricula().getFirst();
+        var physicsQuality = publicView.subjectQuality().getFirst();
+        assertThat(physicsQuality.maturity()).isEqualTo("M7");
+        assertThat(physicsQuality.qualityStatus()).isEqualTo("human_trial_in_progress");
+        assertThat(physicsQuality.humanTrial().practicedGoals()).isZero();
+        assertThat(publicView.humanTrialSubjectCount()).isEqualTo(1);
     }
 
     private void evidence(LearningGoal goal) {
