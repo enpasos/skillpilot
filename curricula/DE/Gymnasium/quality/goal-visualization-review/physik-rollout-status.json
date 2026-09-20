@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T05:43:07.473Z",
+  "generatedAt": "2026-09-20T09:08:32.942Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "physik",
@@ -12,18 +12,18 @@
   "summary": {
     "totalGoals": 764,
     "atomicGoalsInScope": 478,
-    "goalsWithPrimaryVisualization": 430,
-    "coveragePercent": 90,
+    "goalsWithPrimaryVisualization": 478,
+    "coveragePercent": 100,
     "goalsAccountedForByAssetOrDeferred": 478,
     "accountedCoveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
       "accepted": 83,
-      "pilot": 347
+      "pilot": 395
     },
     "linkedVisualizationReviewStatuses": {
       "accepted": 83,
-      "pilot": 347
+      "pilot": 395
     },
     "reviewLedgerFiles": 97,
     "reviewDecisionCounts": {
@@ -56,12 +56,12 @@
       "rejected_after_user_review_replaced": 8,
       "rejected_regenerated": 227
     },
-    "openProviderDeferredGoals": 48,
+    "openProviderDeferredGoals": 0,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 1,
     "regularUnlinkedGoals": 0,
     "coverageGatePassed": true,
-    "linkedWithoutAcceptedReview": 17,
+    "linkedWithoutAcceptedReview": 65,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
@@ -71,344 +71,7 @@
     "promptAppendDir": "tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2"
   },
   "qualityQueues": {
-    "openProviderDeferred": [
-      {
-        "batch": "079",
-        "goalId": "1593d95c-2aac-504c-8527-37cb61877da9",
-        "title": "Alpha-, Beta- und Gammastrahlung unterscheiden",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein eigenes Bild im eng begrenzten Strukturschritt; spätere Erzeugung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "082",
-        "goalId": "d024aa45-5dbb-51f7-87a6-9ba939858696",
-        "title": "Am Nachthimmel mit Sternkarte oder Software navigieren",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "084",
-        "goalId": "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
-        "title": "Astronomische Einheit und ihre beobachtungsbasierte Bestimmung erklären",
-        "decision": "deferred_provider_limitation",
-        "notes": "The incompatible Nano Banana Pro visualization stays withdrawn. Its three exact image copies and original prompt are preserved under `curricula/DE/Gymnasium/quality/goal-visualization-archive/2026-08-28-physics-b023-astronomical-unit/`; no replacement asset was created."
-      },
-      {
-        "batch": "074",
-        "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
-        "title": "Bahn- und Winkelgeschwindigkeit",
-        "decision": "deferred_provider_limitation",
-        "notes": "Nach drei gezielten Versuchen blieb die zentrale 3-rad-Geometrie inkonsistent: Kein Kandidat verband einen tatsächlich nahezu 172° großen Kreisbogen mit demselben Endpunkt, dem zugehörigen Endradius und einem dort korrekt tangentialen Geschwindigkeitsvektor."
-      },
-      {
-        "batch": "079",
-        "goalId": "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd",
-        "title": "Biologische Wirkungen ionisierender Strahlung einordnen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein eigenes Bild im eng begrenzten Strukturschritt; spätere Erzeugung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "083",
-        "goalId": "1b7e800a-1c0d-5faa-886b-7ef2f3b8348c",
-        "title": "Chirp-Masse aus der Frequenzentwicklung eines Gravitationswellensignals erschließen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Neues Strukturkind ohne Ersatzbild; spätere Visualisierung ausschließlich durch einen gezielten, fachlich geprüften Nano-Banana-Pro-Lauf."
-      },
-      {
-        "batch": "physik-checkpoint-2026-09-07",
-        "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
-        "title": "Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Drei verworfene Nano-Versuche mit widersprüchlichen Energieverläufen; aktive Bildkopien entfernt und Original archiviert. Siehe physics-b038-local-diagram-corrections-v1/physik-b038-local-diagram-disposition-2026-09-06.md sowie independent-candidate-1/2/3-review.md. Der QA-Datensatz führt bereits dieselbe Rückstellung."
-      },
-      {
-        "batch": "082",
-        "goalId": "c53b3f0c-b4fe-5509-8803-a36c2883e5d6",
-        "title": "Dunkle Materie aus Galaxienrotationskurven erschließen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "085",
-        "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
-        "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
-        "decision": "deferred_provider_limitation",
-        "notes": "Das neue atomare Ziel erhält kein Ersatzbild, bis Nano Banana Pro eine separat geprüfte Darstellung der Sekanten- und Tangentensteigung liefert."
-      },
-      {
-        "batch": "083",
-        "goalId": "2014791b-af68-58d0-838b-fc9701202096",
-        "title": "Dynamische Gesamtmasse aus optischen Zweikörperbahndaten erschließen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Neues Strukturkind ohne Ersatzbild; spätere Visualisierung ausschließlich durch einen gezielten, fachlich geprüften Nano-Banana-Pro-Lauf."
-      },
-      {
-        "batch": "074",
-        "goalId": "e19fccd7-6a35-5c9e-86e1-dcca76481e9c",
-        "title": "Elektrische Dipolfelder mit dem EKG verknüpfen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein fachlich vollständiger Kandidat nach drei Originalprüfungen: Versuche 1 und 2 platzierten V1/V2 plausibel, zeigten jedoch Feldpfeile von − nach +; Versuch 3 korrigierte das E-Feld von + nach −, platzierte V2 aber deutlich zu tief und nicht im vierten Interkostalraum links parasternal. Nicht importieren."
-      },
-      {
-        "batch": "074",
-        "goalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
-        "title": "Entropie E05: Einheiten und Bedeutung von S",
-        "decision": "deferred_provider_limitation",
-        "notes": "Die Formel und Zahlen wurden korrigiert, doch alle drei Bildvarianten stellten den als reversibel und isotherm bezeichneten Wärmetransfer mit einer direkten Flamme dar; das ist als reversible Wärmeübertragung fachlich irreführend."
-      },
-      {
-        "batch": "081",
-        "goalId": "09995ab9-86aa-5b02-8a58-62b16a37831d",
-        "title": "Entstehung von Gravitationswellen mit begrenzter Analogie erklären",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "089",
-        "goalId": "bf559969-a05c-58b5-82c5-3d719d96555d",
-        "title": "Erzeugung und Ausbreitung harmonischer mechanischer Wellen erklären",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt. Die vorbereitete Prompt-Lane bleibt ausschließlich auf Google Gemini / Nano Banana Pro gebunden; Import erst nach einem gezielten Lauf und einer separaten fachlichen Prüfung von lokaler Schwingung, Störungs- und Energieausbreitung."
-      },
-      {
-        "batch": "physik-2026-09-08-final-astro-pause",
-        "goalId": "49bb609a-bfb7-5391-9120-f5fc737efb9a",
-        "title": "Exoplanetenkandidaten mit der Transitmethode erklären",
-        "decision": "deferred_provider_limitation",
-        "notes": "Erstes Raster nach Vollsichtung verworfen: die als Nichttransit bezeichnete Bahn kreuzt die scheinbare Sternscheibe. Gezielter korrigierter Retry scheitert mit Provider HTTP 500. Kein Import. Fehlerbild SHA-256 `e00c41aad014396194bb38e02e7c98694db9c626466f7d74c22d51e8d50988cb` archiviert."
-      },
-      {
-        "batch": "physik-2026-09-08-final-astro-pause",
-        "goalId": "6dca3b0a-c872-543b-808f-97e855f5fafd",
-        "title": "Exoplanetenkandidaten mit Stern-Radialbewegungen erklären",
-        "decision": "deferred_provider_limitation",
-        "notes": "Beide gezielten Läufe scheitern mit Provider HTTP 500 wegen hoher Auslastung. Es liegt kein abgeschlossenes Raster vor; daher kein Import und keine Bildfreigabe."
-      },
-      {
-        "batch": "081",
-        "goalId": "f9c025ce-4327-5de7-8288-a3358e14a576",
-        "title": "Fraunhoferlinien in Sternspektren deuten",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "074",
-        "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
-        "title": "Frequenzspektren von Tönen und Klängen analysieren",
-        "decision": "deferred_provider_limitation",
-        "notes": "Nach drei gezielten Versuchen gelang keine zugleich saubere und maßstäbliche Superposition: Die ersten beiden Kandidaten enthielten Schleifen in den Sinuskurven; der dritte war zwar glatt, zeichnete die mit 2A bezeichnete Summenamplitude bei gleicher Achsenskalierung aber deutlich kleiner als das Doppelte der Eingänge."
-      },
-      {
-        "batch": "082",
-        "goalId": "206a7d3d-9b11-56be-89ff-73898445c4f5",
-        "title": "Galaxienentfernungen bestimmen und Verfahren beurteilen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "074",
-        "goalId": "b1ad9493-acca-5366-9ecd-4b7bf7edaf4a",
-        "title": "Geiger-Müller-Zählrohr funktional erklären",
-        "decision": "deferred_provider_limitation",
-        "notes": "Nach drei gezielten Versuchen blieb die Bewegungsrichtung der Elektronen im Zählrohr falsch oder uneindeutig; zuletzt liefen die Elektronenpfeile vom positiven Zentraldraht radial nach außen statt zu ihm hin."
-      },
-      {
-        "batch": "079",
-        "goalId": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
-        "title": "Halbwertszeit radioaktiver Stoffe deuten",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein eigenes Bild im eng begrenzten Strukturschritt; spätere Erzeugung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "074",
-        "goalId": "9dba2826-b179-59f0-8d91-5916079e5abe",
-        "title": "Huygens'sches Prinzip und Elementarwellen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Der Provider erzeugt trotz drei geometrisch gezielter Versuche weiterhin zwei getrennte Quellensätze beziehungsweise Konstruktionen. Die neue Wellenfront ist dadurch nicht die gemeinsame Einhüllende derselben gleichzeitig ausgesandten Elementarwellen."
-      },
-      {
-        "batch": "074",
-        "goalId": "1a037489-3c95-540b-8cae-0acd360358ee",
-        "title": "Induktion durch Änderung des magnetischen Flusses",
-        "decision": "deferred_provider_limitation",
-        "notes": "Nach 3 gezielten, original geprüften Kandidaten blieb ein sichtbarer fachlicher oder sprachlicher Fehler bestehen; kein Ersatzasset wird importiert."
-      },
-      {
-        "batch": "079",
-        "goalId": "25d91cc0-d84c-5522-86b5-fdff73264f08",
-        "title": "Ionisierende Strahlung mit geeigneten Detektoren nachweisen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein eigenes Bild im eng begrenzten Strukturschritt; spätere Erzeugung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "074",
-        "goalId": "50877233-7abf-54df-b347-6d3224678fc9",
-        "title": "Kernspaltung und Kernfusion qualitativ beschreiben",
-        "decision": "deferred_provider_limitation",
-        "notes": "Nach drei fachlichen Korrekturstufen blieb die Fusion visuell falsch: zunächst hatte Helium-4 zu viele Nukleonen, zuletzt suggerierte die Deuterium-Karte mit einem Protonensymbol vor dem Gleichheitszeichen eine falsche Teilchenidentität."
-      },
-      {
-        "batch": "074",
-        "goalId": "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
-        "title": "Ladungsphänomene und Reibungselektrizität",
-        "decision": "deferred_provider_limitation",
-        "notes": "Auch nach drei gezielten Versuchen blieb die vor und nach dem Elektronentransfer gezeichnete Anzahl positiver und negativer Ladungen inkonsistent; damit war Ladungserhaltung nicht zuverlässig visualisiert."
-      },
-      {
-        "batch": "074",
-        "goalId": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
-        "title": "Magnetische Felder und Feldlinienbilder",
-        "decision": "deferred_provider_limitation",
-        "notes": "Nach drei gezielten Versuchen blieben die Pfeile am geraden stromdurchflossenen Leiter geometrisch inkonsistent mit der angegebenen gegen den Uhrzeigersinn laufenden Feldrichtung."
-      },
-      {
-        "batch": "083",
-        "goalId": "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
-        "title": "Massen aus astronomischen Bahnbewegungen abschätzen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Beschreibung beziehungsweise Struktur wurde fachlich geändert; es bleibt beim bereits fehlenden, auf Nano Banana Pro wartenden Visualzustand."
-      },
-      {
-        "batch": "082",
-        "goalId": "e06dd9c7-8c36-5ca4-880b-57b02d837085",
-        "title": "Mit bloßem Auge beobachtbare Himmelsobjekte klassifizieren",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "079",
-        "goalId": "f74c691b-0b76-54e0-8fd6-a22211994e0a",
-        "title": "Nuklidschreibweise deuten und Isotope unterscheiden",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein eigenes Bild im eng begrenzten Strukturschritt; spätere Erzeugung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "081",
-        "goalId": "89124b92-5769-5e13-8a5d-78497936260f",
-        "title": "Oberflächentemperaturen von Sternen aus Strahlungsdaten abschätzen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "074",
-        "goalId": "71b51afd-c71b-506f-8128-d6de36b509d1",
-        "title": "Optische Risiken und Lasersicherheit beurteilen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Nach drei gezielten Versuchen bleibt mindestens ein gezeichneter direkter oder reflektierter Strahl auf der falschen Seite einer Schutzwand sichtbar beziehungsweise unvollständig abgefangen. Eine sicherheitsdidaktisch widerspruchsfreie Fassung wurde vom Provider nicht erzeugt."
-      },
-      {
-        "batch": "082",
-        "goalId": "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
-        "title": "Planetenkonstellationen und ihre Sichtbarkeit modellieren",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "081",
-        "goalId": "ce037050-f94c-5828-883a-76385c84d1f7",
-        "title": "Radialgeschwindigkeiten aus Dopplerverschiebungen bestimmen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "082",
-        "goalId": "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7",
-        "title": "Räumlich-zeitliche Sichtbarkeit astronomischer Objekte begründen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "074",
-        "goalId": "9678afc1-44ca-54fb-b280-29336d45a928",
-        "title": "Richtungshören mit spektralen und binauralen Hinweisen untersuchen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Nach drei gezielten Versuchen blieben die Laufwege beziehungsweise die Ausbreitungsgeometrie missverständlich: zweimal wurde der lange Weg als kurz bezeichnet, im letzten Kandidaten läuft ein zusätzlicher Schallpfeil scheinbar aus dem fernen Ohr heraus."
-      },
-      {
-        "batch": "083",
-        "goalId": "23335a89-f8e6-5c22-8705-d71193aeac96",
-        "title": "Rotationsdauer der Sonne aus Beobachtungsreihen abschätzen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Beschreibung beziehungsweise Struktur wurde fachlich geändert; es bleibt beim bereits fehlenden, auf Nano Banana Pro wartenden Visualzustand."
-      },
-      {
-        "batch": "074",
-        "goalId": "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e",
-        "title": "Ruhepotenzial an einer selektiv permeablen Membran modellieren",
-        "decision": "deferred_provider_limitation",
-        "notes": "Nach drei gezielten Versuchen bleiben trotz fachlich passender Konzentrationsverteilung, Gegenkräfte und −70 mV sichtbare Schreibweisen mit ‚aussen‘ bestehen. Eine orthografisch fehlerfreie Fassung wurde nicht erzeugt."
-      },
-      {
-        "batch": "074",
-        "goalId": "8fbae050-c5c9-52b6-9983-2c366e9c8ade",
-        "title": "Saltatorische Signalleitung aus aktiver Regeneration und Membraneigenschaften erklären",
-        "decision": "deferred_provider_limitation",
-        "notes": "Nach drei gezielten Versuchen blieb mindestens ein Teil der Ionen- oder Leitungsrichtung fachlich irreführend: zunächst liefen die saltatorischen Pfeile rückwärts, im letzten Kandidaten zeigen Na⁺-Pfeile an der unteren Membran trotz der Beschriftung ‚hinein‘ aus dem Axon heraus."
-      },
-      {
-        "batch": "082",
-        "goalId": "44766569-6379-5fbc-8976-cd3fc2fd6ec4",
-        "title": "Schleifenbahnen von Planeten historisch einordnen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "073",
-        "goalId": "0dd1e39c-8557-5a4e-b467-caae964fff67",
-        "title": "Solarmodule in Schaltungen experimentell untersuchen",
-        "decision": "deferred_provider_limitation",
-        "notes": "No image was accepted in this revisit. The provider still did not produce a trustworthy pair of correct series/parallel solar-module circuits with correct meter placement. No active asset or canonical link was created."
-      },
-      {
-        "batch": "082",
-        "goalId": "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
-        "title": "Sonnenleuchtkraft aus Solarkonstante und Entfernung abschätzen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "083",
-        "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
-        "title": "Sonnenradius aus Beobachtungsdaten abschätzen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Beschreibung beziehungsweise Struktur wurde fachlich geändert; es bleibt beim bereits fehlenden, auf Nano Banana Pro wartenden Visualzustand."
-      },
-      {
-        "batch": "074",
-        "goalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
-        "title": "Spektrum elektromagnetischer Wellen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Die dritte fachliche Korrekturstufe beseitigte die falsche Pfeilrichtung, ließ aber sämtliche für das Lernziel nötigen quantitativen Wellenlängen- und Frequenzanker weg."
-      },
-      {
-        "batch": "081",
-        "goalId": "5c5d6698-c056-5850-8ecd-6dd87fb44549",
-        "title": "Sterne anhand ihrer Spektren klassifizieren",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "081",
-        "goalId": "9f85de48-1b3f-5afb-8a34-ce94cf7a1b49",
-        "title": "Sternentfernungen und Tangentialgeschwindigkeiten astrometrisch bestimmen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "082",
-        "goalId": "44f0eefa-2d93-5954-879f-f6c49e5cebc7",
-        "title": "Universumsalter mit der Hubble-Beziehung abschätzen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Kein Ersatzbild erzeugt; eine spätere Visualisierung bleibt einem fachlich geprüften Nano-Banana-Pro-Lauf vorbehalten."
-      },
-      {
-        "batch": "074",
-        "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
-        "title": "Zerfallsgesetze anwenden",
-        "decision": "deferred_provider_limitation",
-        "notes": "Der Provider konnte nach drei Versuchen Zählbild und Zerfallsformel nicht gleichzeitig korrekt liefern: die ersten beiden Kandidaten enthielten 19 statt 16 Kreise je Population, der dritte hatte korrekte 4×4-Gitter, verlor aber das Minuszeichen im Exponenten."
-      }
-    ],
+    "openProviderDeferred": [],
     "openProviderQuota": [],
     "rejectedNotLinked": [],
     "userReviewCorrections": [
@@ -522,11 +185,32 @@
   "consistency": {
     "linkedWithoutAcceptedReview": [
       {
+        "goalId": "1593d95c-2aac-504c-8527-37cb61877da9",
+        "title": "Alpha-, Beta- und Gammastrahlung unterscheiden",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/1593d95c-2aac-504c-8527-37cb61877da9/1593d95c-2aac-504c-8527-37cb61877da9.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "d024aa45-5dbb-51f7-87a6-9ba939858696",
+        "title": "Am Nachthimmel mit Sternkarte oder Software navigieren",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/d024aa45-5dbb-51f7-87a6-9ba939858696/d024aa45-5dbb-51f7-87a6-9ba939858696.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
         "goalId": "e1b21fe9-ab6f-58c4-a0b6-9895061fbabb",
         "title": "Argumentationen zur Entstehung schwerer Elemente beurteilen",
         "reviewStatus": "accepted",
         "url": "/assets/goal-visualizations/physik/e1b21fe9-ab6f-58c4-a0b6-9895061fbabb/e1b21fe9-ab6f-58c4-a0b6-9895061fbabb.jpg",
         "latestDecision": null
+      },
+      {
+        "goalId": "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+        "title": "Astronomische Einheit und ihre beobachtungsbasierte Bestimmung erklären",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/5cf160e5-e0c2-5552-b2cf-0f04871c5e7e/5cf160e5-e0c2-5552-b2cf-0f04871c5e7e.png",
+        "latestDecision": "deferred_provider_limitation"
       },
       {
         "goalId": "af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93",
@@ -536,11 +220,39 @@
         "latestDecision": null
       },
       {
+        "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+        "title": "Bahn- und Winkelgeschwindigkeit",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/ec7a0a68-730b-5c94-ac72-a937508f8303/ec7a0a68-730b-5c94-ac72-a937508f8303.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd",
+        "title": "Biologische Wirkungen ionisierender Strahlung einordnen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd/861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "1b7e800a-1c0d-5faa-886b-7ef2f3b8348c",
+        "title": "Chirp-Masse aus der Frequenzentwicklung eines Gravitationswellensignals erschließen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/1b7e800a-1c0d-5faa-886b-7ef2f3b8348c/1b7e800a-1c0d-5faa-886b-7ef2f3b8348c.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
         "goalId": "68034218-8f3e-5f7f-ae4e-ed057dd4e44e",
         "title": "Die Funktion eines thermischen Kernreaktors erklären",
         "reviewStatus": "accepted",
         "url": "/assets/goal-visualizations/physik/68034218-8f3e-5f7f-ae4e-ed057dd4e44e/68034218-8f3e-5f7f-ae4e-ed057dd4e44e.jpg",
         "latestDecision": null
+      },
+      {
+        "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+        "title": "Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/a7255b83-336c-4d42-ba5c-bc2f6248ea36/a7255b83-336c-4d42-ba5c-bc2f6248ea36.png",
+        "latestDecision": "deferred_provider_limitation"
       },
       {
         "goalId": "d05a146f-7fcd-56ae-b9b9-b54203328579",
@@ -557,11 +269,32 @@
         "latestDecision": null
       },
       {
+        "goalId": "c53b3f0c-b4fe-5509-8803-a36c2883e5d6",
+        "title": "Dunkle Materie aus Galaxienrotationskurven erschließen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/c53b3f0c-b4fe-5509-8803-a36c2883e5d6/c53b3f0c-b4fe-5509-8803-a36c2883e5d6.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
         "goalId": "3d466956-04fb-58d7-9008-ad8090f8706d",
         "title": "Dunkle Materie qualitativ einordnen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/physik/3d466956-04fb-58d7-9008-ad8090f8706d/3d466956-04fb-58d7-9008-ad8090f8706d.jpg",
         "latestDecision": null
+      },
+      {
+        "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+        "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/bf8517a9-142b-5789-826a-767f3b277998/bf8517a9-142b-5789-826a-767f3b277998.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "2014791b-af68-58d0-838b-fc9701202096",
+        "title": "Dynamische Gesamtmasse aus optischen Zweikörperbahndaten erschließen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/2014791b-af68-58d0-838b-fc9701202096/2014791b-af68-58d0-838b-fc9701202096.png",
+        "latestDecision": "deferred_provider_limitation"
       },
       {
         "goalId": "c2af45aa-e3fc-5119-9159-c5a260b4135a",
@@ -592,6 +325,76 @@
         "latestDecision": null
       },
       {
+        "goalId": "e19fccd7-6a35-5c9e-86e1-dcca76481e9c",
+        "title": "Elektrische Dipolfelder mit dem EKG verknüpfen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/e19fccd7-6a35-5c9e-86e1-dcca76481e9c/e19fccd7-6a35-5c9e-86e1-dcca76481e9c.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+        "title": "Entropie E05: Einheiten und Bedeutung von S",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/6e79ef4a-2666-5f7a-885c-b175954506f8/6e79ef4a-2666-5f7a-885c-b175954506f8.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "09995ab9-86aa-5b02-8a58-62b16a37831d",
+        "title": "Entstehung von Gravitationswellen mit begrenzter Analogie erklären",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/09995ab9-86aa-5b02-8a58-62b16a37831d/09995ab9-86aa-5b02-8a58-62b16a37831d.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "bf559969-a05c-58b5-82c5-3d719d96555d",
+        "title": "Erzeugung und Ausbreitung harmonischer mechanischer Wellen erklären",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/bf559969-a05c-58b5-82c5-3d719d96555d/bf559969-a05c-58b5-82c5-3d719d96555d.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "49bb609a-bfb7-5391-9120-f5fc737efb9a",
+        "title": "Exoplanetenkandidaten mit der Transitmethode erklären",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/49bb609a-bfb7-5391-9120-f5fc737efb9a/49bb609a-bfb7-5391-9120-f5fc737efb9a.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "6dca3b0a-c872-543b-808f-97e855f5fafd",
+        "title": "Exoplanetenkandidaten mit Stern-Radialbewegungen erklären",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/6dca3b0a-c872-543b-808f-97e855f5fafd/6dca3b0a-c872-543b-808f-97e855f5fafd.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "f9c025ce-4327-5de7-8288-a3358e14a576",
+        "title": "Fraunhoferlinien in Sternspektren deuten",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/f9c025ce-4327-5de7-8288-a3358e14a576/f9c025ce-4327-5de7-8288-a3358e14a576.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+        "title": "Frequenzspektren von Tönen und Klängen analysieren",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/f06c581a-7157-584e-a692-99bcd613cff9/f06c581a-7157-584e-a692-99bcd613cff9.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "206a7d3d-9b11-56be-89ff-73898445c4f5",
+        "title": "Galaxienentfernungen bestimmen und Verfahren beurteilen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/206a7d3d-9b11-56be-89ff-73898445c4f5/206a7d3d-9b11-56be-89ff-73898445c4f5.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "b1ad9493-acca-5366-9ecd-4b7bf7edaf4a",
+        "title": "Geiger-Müller-Zählrohr funktional erklären",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/b1ad9493-acca-5366-9ecd-4b7bf7edaf4a/b1ad9493-acca-5366-9ecd-4b7bf7edaf4a.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
         "goalId": "37013646-f13a-5faf-954c-940f2fd7502f",
         "title": "Gezeiten qualitativ erklären",
         "reviewStatus": "pilot",
@@ -606,11 +409,46 @@
         "latestDecision": null
       },
       {
+        "goalId": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+        "title": "Halbwertszeit radioaktiver Stoffe deuten",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/16b94a12-ecc5-5b5c-85b6-87b4290bebf8/16b94a12-ecc5-5b5c-85b6-87b4290bebf8.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "9dba2826-b179-59f0-8d91-5916079e5abe",
+        "title": "Huygens'sches Prinzip und Elementarwellen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/9dba2826-b179-59f0-8d91-5916079e5abe/9dba2826-b179-59f0-8d91-5916079e5abe.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "1a037489-3c95-540b-8cae-0acd360358ee",
+        "title": "Induktion durch Änderung des magnetischen Flusses",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/1a037489-3c95-540b-8cae-0acd360358ee/1a037489-3c95-540b-8cae-0acd360358ee.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
         "goalId": "f2538793-8b0a-5c3b-b216-5d329a4e87bd",
         "title": "Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/physik/f2538793-8b0a-5c3b-b216-5d329a4e87bd/f2538793-8b0a-5c3b-b216-5d329a4e87bd.jpg",
         "latestDecision": null
+      },
+      {
+        "goalId": "25d91cc0-d84c-5522-86b5-fdff73264f08",
+        "title": "Ionisierende Strahlung mit geeigneten Detektoren nachweisen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/25d91cc0-d84c-5522-86b5-fdff73264f08/25d91cc0-d84c-5522-86b5-fdff73264f08.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "50877233-7abf-54df-b347-6d3224678fc9",
+        "title": "Kernspaltung und Kernfusion qualitativ beschreiben",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/50877233-7abf-54df-b347-6d3224678fc9/50877233-7abf-54df-b347-6d3224678fc9.png",
+        "latestDecision": "deferred_provider_limitation"
       },
       {
         "goalId": "1b060e79-dc2d-5e4e-abb5-42eca39f9cc7",
@@ -620,11 +458,144 @@
         "latestDecision": null
       },
       {
+        "goalId": "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+        "title": "Ladungsphänomene und Reibungselektrizität",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/a6e48b88-51ed-5942-bdb8-8d2192652e0d/a6e48b88-51ed-5942-bdb8-8d2192652e0d.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+        "title": "Magnetische Felder und Feldlinienbilder",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/0f6b798b-594e-5480-8c5f-95e2486a4d85/0f6b798b-594e-5480-8c5f-95e2486a4d85.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+        "title": "Massen aus astronomischen Bahnbewegungen abschätzen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/f3dbcafa-1849-5ee1-8807-81e8d7fed73d/f3dbcafa-1849-5ee1-8807-81e8d7fed73d.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "e06dd9c7-8c36-5ca4-880b-57b02d837085",
+        "title": "Mit bloßem Auge beobachtbare Himmelsobjekte klassifizieren",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/e06dd9c7-8c36-5ca4-880b-57b02d837085/e06dd9c7-8c36-5ca4-880b-57b02d837085.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
         "goalId": "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
         "title": "Mittleres Beschleunigungsmoment bestimmen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/physik/c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea/c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea.jpg",
         "latestDecision": null
+      },
+      {
+        "goalId": "f74c691b-0b76-54e0-8fd6-a22211994e0a",
+        "title": "Nuklidschreibweise deuten und Isotope unterscheiden",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/f74c691b-0b76-54e0-8fd6-a22211994e0a/f74c691b-0b76-54e0-8fd6-a22211994e0a.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "89124b92-5769-5e13-8a5d-78497936260f",
+        "title": "Oberflächentemperaturen von Sternen aus Strahlungsdaten abschätzen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/89124b92-5769-5e13-8a5d-78497936260f/89124b92-5769-5e13-8a5d-78497936260f.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "71b51afd-c71b-506f-8128-d6de36b509d1",
+        "title": "Optische Risiken und Lasersicherheit beurteilen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/71b51afd-c71b-506f-8128-d6de36b509d1/71b51afd-c71b-506f-8128-d6de36b509d1.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+        "title": "Planetenkonstellationen und ihre Sichtbarkeit modellieren",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/6e1cd027-040b-51d9-8764-3cf3daddb5ec/6e1cd027-040b-51d9-8764-3cf3daddb5ec.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "ce037050-f94c-5828-883a-76385c84d1f7",
+        "title": "Radialgeschwindigkeiten aus Dopplerverschiebungen bestimmen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/ce037050-f94c-5828-883a-76385c84d1f7/ce037050-f94c-5828-883a-76385c84d1f7.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7",
+        "title": "Räumlich-zeitliche Sichtbarkeit astronomischer Objekte begründen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/0b8a4215-e6ed-56c8-88c3-b3a2a99723c7/0b8a4215-e6ed-56c8-88c3-b3a2a99723c7.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "9678afc1-44ca-54fb-b280-29336d45a928",
+        "title": "Richtungshören mit spektralen und binauralen Hinweisen untersuchen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/9678afc1-44ca-54fb-b280-29336d45a928/9678afc1-44ca-54fb-b280-29336d45a928.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "23335a89-f8e6-5c22-8705-d71193aeac96",
+        "title": "Rotationsdauer der Sonne aus Beobachtungsreihen abschätzen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/23335a89-f8e6-5c22-8705-d71193aeac96/23335a89-f8e6-5c22-8705-d71193aeac96.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e",
+        "title": "Ruhepotenzial an einer selektiv permeablen Membran modellieren",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/db47ac91-7bb0-5ba3-b39d-e2d6fc98396e/db47ac91-7bb0-5ba3-b39d-e2d6fc98396e.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "8fbae050-c5c9-52b6-9983-2c366e9c8ade",
+        "title": "Saltatorische Signalleitung aus aktiver Regeneration und Membraneigenschaften erklären",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/8fbae050-c5c9-52b6-9983-2c366e9c8ade/8fbae050-c5c9-52b6-9983-2c366e9c8ade.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "44766569-6379-5fbc-8976-cd3fc2fd6ec4",
+        "title": "Schleifenbahnen von Planeten historisch einordnen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/44766569-6379-5fbc-8976-cd3fc2fd6ec4/44766569-6379-5fbc-8976-cd3fc2fd6ec4.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "0dd1e39c-8557-5a4e-b467-caae964fff67",
+        "title": "Solarmodule in Schaltungen experimentell untersuchen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/0dd1e39c-8557-5a4e-b467-caae964fff67/0dd1e39c-8557-5a4e-b467-caae964fff67.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+        "title": "Sonnenleuchtkraft aus Solarkonstante und Entfernung abschätzen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8/9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+        "title": "Sonnenradius aus Beobachtungsdaten abschätzen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/bebc3738-0be6-52cf-83db-f8b948f7cf7b/bebc3738-0be6-52cf-83db-f8b948f7cf7b.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+        "title": "Spektrum elektromagnetischer Wellen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/4a7cbe83-b694-57d3-85ce-1eeca418daaf/4a7cbe83-b694-57d3-85ce-1eeca418daaf.png",
+        "latestDecision": "deferred_provider_limitation"
       },
       {
         "goalId": "69280706-5af6-5788-85b7-93287c2ffe74",
@@ -634,11 +605,39 @@
         "latestDecision": null
       },
       {
+        "goalId": "5c5d6698-c056-5850-8ecd-6dd87fb44549",
+        "title": "Sterne anhand ihrer Spektren klassifizieren",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/5c5d6698-c056-5850-8ecd-6dd87fb44549/5c5d6698-c056-5850-8ecd-6dd87fb44549.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "9f85de48-1b3f-5afb-8a34-ce94cf7a1b49",
+        "title": "Sternentfernungen und Tangentialgeschwindigkeiten astrometrisch bestimmen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/9f85de48-1b3f-5afb-8a34-ce94cf7a1b49/9f85de48-1b3f-5afb-8a34-ce94cf7a1b49.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
+        "goalId": "44f0eefa-2d93-5954-879f-f6c49e5cebc7",
+        "title": "Universumsalter mit der Hubble-Beziehung abschätzen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/44f0eefa-2d93-5954-879f-f6c49e5cebc7/44f0eefa-2d93-5954-879f-f6c49e5cebc7.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
         "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
         "title": "Urknallmodell anhand kosmologischer Beobachtungen erläutern",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/physik/c52d55c3-b687-586c-b0f9-8ffcd1069424/c52d55c3-b687-586c-b0f9-8ffcd1069424.png",
         "latestDecision": null
+      },
+      {
+        "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+        "title": "Zerfallsgesetze anwenden",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/physik/a12fddce-0215-58d9-bd91-21be8a960d25/a12fddce-0215-58d9-bd91-21be8a960d25.png",
+        "latestDecision": "deferred_provider_limitation"
       }
     ],
     "acceptedReviewWithoutLink": []
@@ -691,6 +690,22 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/14d99a65-8d58-5647-88ab-02137b96d55b/14d99a65-8d58-5647-88ab-02137b96d55b.jpg"
+    },
+    {
+      "goalId": "1593d95c-2aac-504c-8527-37cb61877da9",
+      "title": "Alpha-, Beta- und Gammastrahlung unterscheiden",
+      "phase": "GLOBAL",
+      "area": "Atom- und Kernphysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/1593d95c-2aac-504c-8527-37cb61877da9/1593d95c-2aac-504c-8527-37cb61877da9.png"
+    },
+    {
+      "goalId": "d024aa45-5dbb-51f7-87a6-9ba939858696",
+      "title": "Am Nachthimmel mit Sternkarte oder Software navigieren",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d024aa45-5dbb-51f7-87a6-9ba939858696/d024aa45-5dbb-51f7-87a6-9ba939858696.png"
     },
     {
       "goalId": "67ffd0f0-a5ab-518f-8c45-4c0e7eb18390",
@@ -755,6 +770,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/2b700858-bc2e-5ddf-a791-b14d44160480/2b700858-bc2e-5ddf-a791-b14d44160480.jpg"
+    },
+    {
+      "goalId": "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+      "title": "Astronomische Einheit und ihre beobachtungsbasierte Bestimmung erklären",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/5cf160e5-e0c2-5552-b2cf-0f04871c5e7e/5cf160e5-e0c2-5552-b2cf-0f04871c5e7e.png"
     },
     {
       "goalId": "7c986fca-1129-5eff-a17e-0a04bb7346ee",
@@ -843,6 +866,14 @@
       "area": "Biophysik",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/c2e0fc31-27a2-5727-9025-a824db9150d2/c2e0fc31-27a2-5727-9025-a824db9150d2.jpg"
+    },
+    {
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "title": "Bahn- und Winkelgeschwindigkeit",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/ec7a0a68-730b-5c94-ac72-a937508f8303/ec7a0a68-730b-5c94-ac72-a937508f8303.png"
     },
     {
       "goalId": "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
@@ -957,6 +988,14 @@
       "url": "/assets/goal-visualizations/physik/0b08aed8-3c0f-5b38-844c-1bb363abbf68/0b08aed8-3c0f-5b38-844c-1bb363abbf68.jpg"
     },
     {
+      "goalId": "861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd",
+      "title": "Biologische Wirkungen ionisierender Strahlung einordnen",
+      "phase": "GLOBAL",
+      "area": "Atom- und Kernphysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd/861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd.png"
+    },
+    {
       "goalId": "ce89fa04-bbd8-53b2-be01-812e3b3044ed",
       "title": "Bohr’sche Postulate und Quantisierung",
       "phase": "Q3",
@@ -1003,6 +1042,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/7e9e814c-fe12-42a9-8d80-e09e7fb52964/7e9e814c-fe12-42a9-8d80-e09e7fb52964.jpg"
+    },
+    {
+      "goalId": "1b7e800a-1c0d-5faa-886b-7ef2f3b8348c",
+      "title": "Chirp-Masse aus der Frequenzentwicklung eines Gravitationswellensignals erschließen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/1b7e800a-1c0d-5faa-886b-7ef2f3b8348c/1b7e800a-1c0d-5faa-886b-7ef2f3b8348c.png"
     },
     {
       "goalId": "2aa2ef4b-8204-59b9-ad53-71c994cd6180",
@@ -1091,6 +1138,14 @@
       "area": "Elektronik",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/physik/3857891b-d328-585b-9936-85c7aff122ee/3857891b-d328-585b-9936-85c7aff122ee.png"
+    },
+    {
+      "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+      "title": "Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a7255b83-336c-4d42-ba5c-bc2f6248ea36/a7255b83-336c-4d42-ba5c-bc2f6248ea36.png"
     },
     {
       "goalId": "330808f6-789a-583d-86df-e271a7683d8b",
@@ -1197,12 +1252,36 @@
       "url": "/assets/goal-visualizations/physik/b4772b06-b10c-52dd-841b-a96ffb7c7e28/b4772b06-b10c-52dd-841b-a96ffb7c7e28.jpg"
     },
     {
+      "goalId": "c53b3f0c-b4fe-5509-8803-a36c2883e5d6",
+      "title": "Dunkle Materie aus Galaxienrotationskurven erschließen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/c53b3f0c-b4fe-5509-8803-a36c2883e5d6/c53b3f0c-b4fe-5509-8803-a36c2883e5d6.png"
+    },
+    {
       "goalId": "3d466956-04fb-58d7-9008-ad8090f8706d",
       "title": "Dunkle Materie qualitativ einordnen",
       "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/3d466956-04fb-58d7-9008-ad8090f8706d/3d466956-04fb-58d7-9008-ad8090f8706d.jpg"
+    },
+    {
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "phase": "E",
+      "area": "Mechanik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/bf8517a9-142b-5789-826a-767f3b277998/bf8517a9-142b-5789-826a-767f3b277998.png"
+    },
+    {
+      "goalId": "2014791b-af68-58d0-838b-fc9701202096",
+      "title": "Dynamische Gesamtmasse aus optischen Zweikörperbahndaten erschließen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/2014791b-af68-58d0-838b-fc9701202096/2014791b-af68-58d0-838b-fc9701202096.png"
     },
     {
       "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
@@ -1323,6 +1402,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/d30fd37b-1f05-44e3-a40a-4c5a88fa28c2/d30fd37b-1f05-44e3-a40a-4c5a88fa28c2.jpg"
+    },
+    {
+      "goalId": "e19fccd7-6a35-5c9e-86e1-dcca76481e9c",
+      "title": "Elektrische Dipolfelder mit dem EKG verknüpfen",
+      "phase": "GLOBAL",
+      "area": "Biophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e19fccd7-6a35-5c9e-86e1-dcca76481e9c/e19fccd7-6a35-5c9e-86e1-dcca76481e9c.png"
     },
     {
       "goalId": "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76",
@@ -1573,6 +1660,14 @@
       "url": "/assets/goal-visualizations/physik/e713dc34-beeb-5807-8a90-f872e049aa4e/e713dc34-beeb-5807-8a90-f872e049aa4e.jpg"
     },
     {
+      "goalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+      "title": "Entropie E05: Einheiten und Bedeutung von S",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/6e79ef4a-2666-5f7a-885c-b175954506f8/6e79ef4a-2666-5f7a-885c-b175954506f8.png"
+    },
+    {
       "goalId": "741e7056-69e4-59be-a159-0e2583d748d1",
       "title": "Entropie E06: Standardfälle sicher rechnen",
       "phase": "E",
@@ -1669,6 +1764,14 @@
       "url": "/assets/goal-visualizations/physik/a4681378-ade4-4f20-bf77-fb020469510f/a4681378-ade4-4f20-bf77-fb020469510f.jpg"
     },
     {
+      "goalId": "09995ab9-86aa-5b02-8a58-62b16a37831d",
+      "title": "Entstehung von Gravitationswellen mit begrenzter Analogie erklären",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/09995ab9-86aa-5b02-8a58-62b16a37831d/09995ab9-86aa-5b02-8a58-62b16a37831d.png"
+    },
+    {
       "goalId": "481ffd56-d585-56fe-b525-ed423e30eed3",
       "title": "Entwicklung astronomischer Weltbilder rekonstruieren (LK)",
       "phase": "E",
@@ -1701,6 +1804,14 @@
       "url": "/assets/goal-visualizations/physik/5f17e992-fd07-56ee-80a0-567f45bbd10c/5f17e992-fd07-56ee-80a0-567f45bbd10c.jpg"
     },
     {
+      "goalId": "bf559969-a05c-58b5-82c5-3d719d96555d",
+      "title": "Erzeugung und Ausbreitung harmonischer mechanischer Wellen erklären",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/bf559969-a05c-58b5-82c5-3d719d96555d/bf559969-a05c-58b5-82c5-3d719d96555d.png"
+    },
+    {
       "goalId": "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
       "title": "Erzwungene Schwingungen und Resonanz",
       "phase": "Q2",
@@ -1715,6 +1826,22 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/8d34228c-da38-5c1e-97cc-571f3eafb9f4/8d34228c-da38-5c1e-97cc-571f3eafb9f4.jpg"
+    },
+    {
+      "goalId": "49bb609a-bfb7-5391-9120-f5fc737efb9a",
+      "title": "Exoplanetenkandidaten mit der Transitmethode erklären",
+      "phase": "Q4",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/49bb609a-bfb7-5391-9120-f5fc737efb9a/49bb609a-bfb7-5391-9120-f5fc737efb9a.png"
+    },
+    {
+      "goalId": "6dca3b0a-c872-543b-808f-97e855f5fafd",
+      "title": "Exoplanetenkandidaten mit Stern-Radialbewegungen erklären",
+      "phase": "Q4",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/6dca3b0a-c872-543b-808f-97e855f5fafd/6dca3b0a-c872-543b-808f-97e855f5fafd.png"
     },
     {
       "goalId": "e2014db8-c97f-5ce1-82c5-2a42741f4a61",
@@ -1829,6 +1956,14 @@
       "url": "/assets/goal-visualizations/physik/cf340ce4-8d91-5d22-a1d9-53bf408abdb3/cf340ce4-8d91-5d22-a1d9-53bf408abdb3.jpg"
     },
     {
+      "goalId": "f9c025ce-4327-5de7-8288-a3358e14a576",
+      "title": "Fraunhoferlinien in Sternspektren deuten",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f9c025ce-4327-5de7-8288-a3358e14a576/f9c025ce-4327-5de7-8288-a3358e14a576.png"
+    },
+    {
       "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
       "title": "Freier Fall experimentell untersuchen",
       "phase": "E",
@@ -1845,6 +1980,14 @@
       "url": "/assets/goal-visualizations/physik/e413a352-33c4-53ae-b54a-30e52c3e65ae/e413a352-33c4-53ae-b54a-30e52c3e65ae.jpg"
     },
     {
+      "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+      "title": "Frequenzspektren von Tönen und Klängen analysieren",
+      "phase": "GLOBAL",
+      "area": "Biophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f06c581a-7157-584e-a692-99bcd613cff9/f06c581a-7157-584e-a692-99bcd613cff9.png"
+    },
+    {
       "goalId": "8eb6456b-d915-50ed-a076-2b23c2e5420c",
       "title": "Fundamentale Wechselwirkungen",
       "phase": "Q4",
@@ -1859,6 +2002,14 @@
       "area": "Denk- und Arbeitsweisen",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/physik/e5bc2227-d900-585f-8ac0-9d3f1cb40e27/e5bc2227-d900-585f-8ac0-9d3f1cb40e27.jpg"
+    },
+    {
+      "goalId": "206a7d3d-9b11-56be-89ff-73898445c4f5",
+      "title": "Galaxienentfernungen bestimmen und Verfahren beurteilen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/206a7d3d-9b11-56be-89ff-73898445c4f5/206a7d3d-9b11-56be-89ff-73898445c4f5.png"
     },
     {
       "goalId": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
@@ -1883,6 +2034,14 @@
       "area": "Elektrizität",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/physik/5ddba212-9e0a-5dd4-8274-239ec51ab6a8/5ddba212-9e0a-5dd4-8274-239ec51ab6a8.jpg"
+    },
+    {
+      "goalId": "b1ad9493-acca-5366-9ecd-4b7bf7edaf4a",
+      "title": "Geiger-Müller-Zählrohr funktional erklären",
+      "phase": "GLOBAL",
+      "area": "Kernphysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/b1ad9493-acca-5366-9ecd-4b7bf7edaf4a/b1ad9493-acca-5366-9ecd-4b7bf7edaf4a.png"
     },
     {
       "goalId": "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
@@ -2053,6 +2212,14 @@
       "url": "/assets/goal-visualizations/physik/4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd/4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd.jpg"
     },
     {
+      "goalId": "16b94a12-ecc5-5b5c-85b6-87b4290bebf8",
+      "title": "Halbwertszeit radioaktiver Stoffe deuten",
+      "phase": "GLOBAL",
+      "area": "Atom- und Kernphysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/16b94a12-ecc5-5b5c-85b6-87b4290bebf8/16b94a12-ecc5-5b5c-85b6-87b4290bebf8.png"
+    },
+    {
       "goalId": "b39ae8fb-4358-5866-8adf-3d5365368eeb",
       "title": "Hall-Effekt anwenden",
       "phase": "Q1",
@@ -2098,7 +2265,7 @@
       "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/physik/206fe51d-cc78-5422-b139-32cc97eb1c37/206fe51d-cc78-5422-b139-32cc97eb1c37.jpg"
+      "url": "/assets/goal-visualizations/physik/206fe51d-cc78-5422-b139-32cc97eb1c37/206fe51d-cc78-5422-b139-32cc97eb1c37.png"
     },
     {
       "goalId": "982df2f3-e040-5f4b-b668-0fe05d994b29",
@@ -2125,6 +2292,14 @@
       "url": "/assets/goal-visualizations/physik/2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c/2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c.jpg"
     },
     {
+      "goalId": "9dba2826-b179-59f0-8d91-5916079e5abe",
+      "title": "Huygens'sches Prinzip und Elementarwellen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/9dba2826-b179-59f0-8d91-5916079e5abe/9dba2826-b179-59f0-8d91-5916079e5abe.png"
+    },
+    {
       "goalId": "af1094c1-511a-5aae-9e0a-3e9196a82d9a",
       "title": "Idealen Transformator quantitativ deuten",
       "phase": "GLOBAL",
@@ -2147,6 +2322,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/f524f05c-4456-4fc3-a1f7-f40741fc1f16/f524f05c-4456-4fc3-a1f7-f40741fc1f16.jpg"
+    },
+    {
+      "goalId": "1a037489-3c95-540b-8cae-0acd360358ee",
+      "title": "Induktion durch Änderung des magnetischen Flusses",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/1a037489-3c95-540b-8cae-0acd360358ee/1a037489-3c95-540b-8cae-0acd360358ee.png"
     },
     {
       "goalId": "d18d4190-ddc1-5181-b1b6-e79947b737c2",
@@ -2269,6 +2452,14 @@
       "url": "/assets/goal-visualizations/physik/f2538793-8b0a-5c3b-b216-5d329a4e87bd/f2538793-8b0a-5c3b-b216-5d329a4e87bd.jpg"
     },
     {
+      "goalId": "25d91cc0-d84c-5522-86b5-fdff73264f08",
+      "title": "Ionisierende Strahlung mit geeigneten Detektoren nachweisen",
+      "phase": "GLOBAL",
+      "area": "Atom- und Kernphysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/25d91cc0-d84c-5522-86b5-fdff73264f08/25d91cc0-d84c-5522-86b5-fdff73264f08.png"
+    },
+    {
       "goalId": "fb73c94b-6a23-5351-8fef-db2c2533e361",
       "title": "Isochore, isobare und isotherme Zustandsänderungen berechnen",
       "phase": "E",
@@ -2315,6 +2506,14 @@
       "area": "",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/physik/5492f0e0-cbae-574e-a853-182616205ed3/5492f0e0-cbae-574e-a853-182616205ed3.jpg"
+    },
+    {
+      "goalId": "50877233-7abf-54df-b347-6d3224678fc9",
+      "title": "Kernspaltung und Kernfusion qualitativ beschreiben",
+      "phase": "GLOBAL",
+      "area": "Atom- und Kernphysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/50877233-7abf-54df-b347-6d3224678fc9/50877233-7abf-54df-b347-6d3224678fc9.png"
     },
     {
       "goalId": "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
@@ -2493,6 +2692,14 @@
       "url": "/assets/goal-visualizations/physik/25998fed-ea4d-4c3e-b606-e965b5d7f290/25998fed-ea4d-4c3e-b606-e965b5d7f290.jpg"
     },
     {
+      "goalId": "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+      "title": "Ladungsphänomene und Reibungselektrizität",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a6e48b88-51ed-5942-bdb8-8d2192652e0d/a6e48b88-51ed-5942-bdb8-8d2192652e0d.png"
+    },
+    {
       "goalId": "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
       "title": "Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben",
       "phase": "Q1",
@@ -2653,6 +2860,14 @@
       "url": "/assets/goal-visualizations/physik/106417ed-80db-5490-a1ee-bb4160d3f2b4/106417ed-80db-5490-a1ee-bb4160d3f2b4.jpg"
     },
     {
+      "goalId": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+      "title": "Magnetische Felder und Feldlinienbilder",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/0f6b798b-594e-5480-8c5f-95e2486a4d85/0f6b798b-594e-5480-8c5f-95e2486a4d85.png"
+    },
+    {
       "goalId": "0924162b-46d0-5c56-93bc-33e1f5ac6886",
       "title": "Magnetisierung und Permanentmagnete",
       "phase": "Q1",
@@ -2683,6 +2898,14 @@
       "area": "",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/physik/bfea7a23-1ce1-4a42-badd-1fc9bf30124a/bfea7a23-1ce1-4a42-badd-1fc9bf30124a.jpg"
+    },
+    {
+      "goalId": "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+      "title": "Massen aus astronomischen Bahnbewegungen abschätzen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f3dbcafa-1849-5ee1-8807-81e8d7fed73d/f3dbcafa-1849-5ee1-8807-81e8d7fed73d.png"
     },
     {
       "goalId": "92d8f398-0c9f-523c-88d7-44165b6b4768",
@@ -2821,6 +3044,14 @@
       "url": "/assets/goal-visualizations/physik/6ebb6182-f221-5f4c-b112-4ac72b104321/6ebb6182-f221-5f4c-b112-4ac72b104321.jpg"
     },
     {
+      "goalId": "e06dd9c7-8c36-5ca4-880b-57b02d837085",
+      "title": "Mit bloßem Auge beobachtbare Himmelsobjekte klassifizieren",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e06dd9c7-8c36-5ca4-880b-57b02d837085/e06dd9c7-8c36-5ca4-880b-57b02d837085.png"
+    },
+    {
       "goalId": "f23fdfa9-38b6-5157-8301-ed302476c456",
       "title": "Mittelwert und Streuung aus Messreihen bestimmen",
       "phase": "E",
@@ -2925,12 +3156,28 @@
       "url": "/assets/goal-visualizations/physik/64b30d2e-cbe1-55d8-915a-a050d736b96e/64b30d2e-cbe1-55d8-915a-a050d736b96e.jpg"
     },
     {
+      "goalId": "f74c691b-0b76-54e0-8fd6-a22211994e0a",
+      "title": "Nuklidschreibweise deuten und Isotope unterscheiden",
+      "phase": "GLOBAL",
+      "area": "Atom- und Kernphysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f74c691b-0b76-54e0-8fd6-a22211994e0a/f74c691b-0b76-54e0-8fd6-a22211994e0a.png"
+    },
+    {
       "goalId": "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
       "title": "Numerische Simulation von Bewegungen",
       "phase": "E",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/761a0879-fc15-5d0c-a2b7-2b439efecd5b/761a0879-fc15-5d0c-a2b7-2b439efecd5b.png"
+    },
+    {
+      "goalId": "89124b92-5769-5e13-8a5d-78497936260f",
+      "title": "Oberflächentemperaturen von Sternen aus Strahlungsdaten abschätzen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/89124b92-5769-5e13-8a5d-78497936260f/89124b92-5769-5e13-8a5d-78497936260f.png"
     },
     {
       "goalId": "6ae54ff9-dc3b-563b-b2ee-09a0f0d00162",
@@ -2955,6 +3202,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/e39c83b0-cb4f-5454-a143-b9a159c99cba/e39c83b0-cb4f-5454-a143-b9a159c99cba.jpg"
+    },
+    {
+      "goalId": "71b51afd-c71b-506f-8128-d6de36b509d1",
+      "title": "Optische Risiken und Lasersicherheit beurteilen",
+      "phase": "GLOBAL",
+      "area": "Optik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/71b51afd-c71b-506f-8128-d6de36b509d1/71b51afd-c71b-506f-8128-d6de36b509d1.png"
     },
     {
       "goalId": "b1f00a6d-1a03-496c-b1bd-c1f2259f59a8",
@@ -3117,6 +3372,14 @@
       "url": "/assets/goal-visualizations/physik/60211ac1-cbe1-5182-87ef-673a068c5b0a/60211ac1-cbe1-5182-87ef-673a068c5b0a.jpg"
     },
     {
+      "goalId": "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+      "title": "Planetenkonstellationen und ihre Sichtbarkeit modellieren",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/6e1cd027-040b-51d9-8764-3cf3daddb5ec/6e1cd027-040b-51d9-8764-3cf3daddb5ec.png"
+    },
+    {
       "goalId": "38e0ff49-f132-44c8-b17a-73dada5344db",
       "title": "Plattenkondensatorfeld über Flächenladungsdichte herleiten",
       "phase": "Q1",
@@ -3221,12 +3484,28 @@
       "url": "/assets/goal-visualizations/physik/455c65ca-814a-56ad-918a-013155883c52/455c65ca-814a-56ad-918a-013155883c52.jpg"
     },
     {
+      "goalId": "ce037050-f94c-5828-883a-76385c84d1f7",
+      "title": "Radialgeschwindigkeiten aus Dopplerverschiebungen bestimmen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/ce037050-f94c-5828-883a-76385c84d1f7/ce037050-f94c-5828-883a-76385c84d1f7.png"
+    },
+    {
       "goalId": "98e42cda-9e5d-5910-b2c0-3e631fd20c78",
       "title": "Radialsymmetrische elektrische Felder beschreiben",
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/98e42cda-9e5d-5910-b2c0-3e631fd20c78/98e42cda-9e5d-5910-b2c0-3e631fd20c78.jpg"
+    },
+    {
+      "goalId": "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7",
+      "title": "Räumlich-zeitliche Sichtbarkeit astronomischer Objekte begründen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/0b8a4215-e6ed-56c8-88c3-b3a2a99723c7/0b8a4215-e6ed-56c8-88c3-b3a2a99723c7.png"
     },
     {
       "goalId": "727d0946-7019-50ed-8fc6-85db12508733",
@@ -3309,12 +3588,28 @@
       "url": "/assets/goal-visualizations/physik/2088ccf0-48f4-51d4-be5f-67affd0fb099/2088ccf0-48f4-51d4-be5f-67affd0fb099.jpg"
     },
     {
+      "goalId": "9678afc1-44ca-54fb-b280-29336d45a928",
+      "title": "Richtungshören mit spektralen und binauralen Hinweisen untersuchen",
+      "phase": "GLOBAL",
+      "area": "Biophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/9678afc1-44ca-54fb-b280-29336d45a928/9678afc1-44ca-54fb-b280-29336d45a928.png"
+    },
+    {
       "goalId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
       "title": "Röntgenspektren deuten",
       "phase": "Q3",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/48e77690-17f7-5ebe-a8f7-87b2ee9820da/48e77690-17f7-5ebe-a8f7-87b2ee9820da.jpg"
+    },
+    {
+      "goalId": "23335a89-f8e6-5c22-8705-d71193aeac96",
+      "title": "Rotationsdauer der Sonne aus Beobachtungsreihen abschätzen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/23335a89-f8e6-5c22-8705-d71193aeac96/23335a89-f8e6-5c22-8705-d71193aeac96.png"
     },
     {
       "goalId": "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
@@ -3333,12 +3628,28 @@
       "url": "/assets/goal-visualizations/physik/91f1838c-80fc-55f5-ac30-e7d1498fccee/91f1838c-80fc-55f5-ac30-e7d1498fccee.jpg"
     },
     {
+      "goalId": "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e",
+      "title": "Ruhepotenzial an einer selektiv permeablen Membran modellieren",
+      "phase": "GLOBAL",
+      "area": "Biophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/db47ac91-7bb0-5ba3-b39d-e2d6fc98396e/db47ac91-7bb0-5ba3-b39d-e2d6fc98396e.png"
+    },
+    {
       "goalId": "974a2d1c-2225-519d-965f-7744fe8aafd5",
       "title": "Rydberg-Formel anwenden",
       "phase": "Q3",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/974a2d1c-2225-519d-965f-7744fe8aafd5/974a2d1c-2225-519d-965f-7744fe8aafd5.jpg"
+    },
+    {
+      "goalId": "8fbae050-c5c9-52b6-9983-2c366e9c8ade",
+      "title": "Saltatorische Signalleitung aus aktiver Regeneration und Membraneigenschaften erklären",
+      "phase": "GLOBAL",
+      "area": "Biophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/8fbae050-c5c9-52b6-9983-2c366e9c8ade/8fbae050-c5c9-52b6-9983-2c366e9c8ade.png"
     },
     {
       "goalId": "3c82510a-1f12-4eaa-81c2-8599437a5b85",
@@ -3397,6 +3708,14 @@
       "url": "/assets/goal-visualizations/physik/fbecbd60-5db3-51e8-94be-d66b066ffa06/fbecbd60-5db3-51e8-94be-d66b066ffa06.jpg"
     },
     {
+      "goalId": "44766569-6379-5fbc-8976-cd3fc2fd6ec4",
+      "title": "Schleifenbahnen von Planeten historisch einordnen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/44766569-6379-5fbc-8976-cd3fc2fd6ec4/44766569-6379-5fbc-8976-cd3fc2fd6ec4.png"
+    },
+    {
       "goalId": "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
       "title": "Schwingungsgleichung lösen",
       "phase": "Q2",
@@ -3453,6 +3772,14 @@
       "url": "/assets/goal-visualizations/physik/5f97952e-5ac9-5749-94d0-d1dc50dda358/5f97952e-5ac9-5749-94d0-d1dc50dda358.jpg"
     },
     {
+      "goalId": "0dd1e39c-8557-5a4e-b467-caae964fff67",
+      "title": "Solarmodule in Schaltungen experimentell untersuchen",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/0dd1e39c-8557-5a4e-b467-caae964fff67/0dd1e39c-8557-5a4e-b467-caae964fff67.png"
+    },
+    {
       "goalId": "f0046ae8-cbfc-526b-8414-04e3595b6075",
       "title": "Sonnen- und Mondfinsternisse mit Schattenräumen erklären",
       "phase": "GLOBAL",
@@ -3469,12 +3796,28 @@
       "url": "/assets/goal-visualizations/physik/4e823349-b60c-5d2a-b96f-d3f23ae50e3a/4e823349-b60c-5d2a-b96f-d3f23ae50e3a.jpg"
     },
     {
+      "goalId": "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+      "title": "Sonnenleuchtkraft aus Solarkonstante und Entfernung abschätzen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8/9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8.png"
+    },
+    {
       "goalId": "5e9cd796-3887-5457-8a1f-26863ca7eb28",
       "title": "Sonnenmasse aus Bahndaten abschätzen",
       "phase": "GLOBAL",
       "area": "Astrophysik",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/5e9cd796-3887-5457-8a1f-26863ca7eb28/5e9cd796-3887-5457-8a1f-26863ca7eb28.png"
+    },
+    {
+      "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+      "title": "Sonnenradius aus Beobachtungsdaten abschätzen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/bebc3738-0be6-52cf-83db-f8b948f7cf7b/bebc3738-0be6-52cf-83db-f8b948f7cf7b.png"
     },
     {
       "goalId": "28237994-9c24-5a06-82fe-be1f494768ba",
@@ -3507,6 +3850,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/91683676-01cf-5003-80fa-a04d043b4e61/91683676-01cf-5003-80fa-a04d043b4e61.png"
+    },
+    {
+      "goalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "title": "Spektrum elektromagnetischer Wellen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/4a7cbe83-b694-57d3-85ce-1eeca418daaf/4a7cbe83-b694-57d3-85ce-1eeca418daaf.png"
     },
     {
       "goalId": "2084b7d4-300d-5fa0-8b8d-c480c40f853e",
@@ -3565,12 +3916,28 @@
       "url": "/assets/goal-visualizations/physik/69280706-5af6-5788-85b7-93287c2ffe74/69280706-5af6-5788-85b7-93287c2ffe74.jpg"
     },
     {
+      "goalId": "5c5d6698-c056-5850-8ecd-6dd87fb44549",
+      "title": "Sterne anhand ihrer Spektren klassifizieren",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/5c5d6698-c056-5850-8ecd-6dd87fb44549/5c5d6698-c056-5850-8ecd-6dd87fb44549.png"
+    },
+    {
       "goalId": "3a4b2f86-5c59-5429-8fb4-75d9b2589cb5",
       "title": "Sternentfernungen mit dem HRD abschätzen",
       "phase": "Q4",
       "area": "Astrophysik",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/3a4b2f86-5c59-5429-8fb4-75d9b2589cb5/3a4b2f86-5c59-5429-8fb4-75d9b2589cb5.jpg"
+    },
+    {
+      "goalId": "9f85de48-1b3f-5afb-8a34-ce94cf7a1b49",
+      "title": "Sternentfernungen und Tangentialgeschwindigkeiten astrometrisch bestimmen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/9f85de48-1b3f-5afb-8a34-ce94cf7a1b49/9f85de48-1b3f-5afb-8a34-ce94cf7a1b49.png"
     },
     {
       "goalId": "6a73cacc-e86d-5248-a180-fd3da8454b0f",
@@ -3821,6 +4188,14 @@
       "url": "/assets/goal-visualizations/physik/1232febe-868a-4dac-b4c2-e35789434601/1232febe-868a-4dac-b4c2-e35789434601.jpg"
     },
     {
+      "goalId": "44f0eefa-2d93-5954-879f-f6c49e5cebc7",
+      "title": "Universumsalter mit der Hubble-Beziehung abschätzen",
+      "phase": "GLOBAL",
+      "area": "Astrophysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/44f0eefa-2d93-5954-879f-f6c49e5cebc7/44f0eefa-2d93-5954-879f-f6c49e5cebc7.png"
+    },
+    {
       "goalId": "c52d55c3-b687-586c-b0f9-8ffcd1069424",
       "title": "Urknallmodell anhand kosmologischer Beobachtungen erläutern",
       "phase": "Q4",
@@ -4003,6 +4378,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/e918b31f-6f39-5dee-ade6-3617080fb24f/e918b31f-6f39-5dee-ade6-3617080fb24f.jpg"
+    },
+    {
+      "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+      "title": "Zerfallsgesetze anwenden",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a12fddce-0215-58d9-bd91-21be8a960d25/a12fddce-0215-58d9-bd91-21be8a960d25.png"
     },
     {
       "goalId": "3b50255a-6b01-578b-8f5c-4383536a3221",

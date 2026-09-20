@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-resumed-habitability-context-1-v1-20260914",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/resumed-habitability-context-1-v1.config.json",
+  "configDigest": "sha256:b3a457684bc296e0a5453402ed55f8d7b0065ba422f9a03d43dba357b592d3f0",
+  "goalIds": [
+    "e2014db8-c97f-5ce1-82c5-2a42741f4a61"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 478,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:97e4559d5b2a635af7de4bbe9baf52763db45c75cd5a38bfeff761a364c5fb11"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:592c625c0828b7a49d7710f665da5d116cb9f3f5cfe661b70702db3f39ca05b4",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:0effee68631885273e67a84b4617b36a7bae8b6f8a827ced3eeb953a07390362",
+    "reviewInputFingerprint": "sha256:537632bb82eb6b29cc692897fc5f8757b7dc9e20b08e08a0456062a666e7d69e",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-resumed-habitability-context-1-v1-20260914-a",
+        "campaignDigest": "sha256:df37344a4a86875f0810815152f2408d1770fcd05b4e0a189eac70dda9a5d806",
+        "roundId": "physik-resumed-habitability-context-1-v1-20260914-first-pass-a",
+        "independenceGroupId": "physik-resumed-habitability-context-1-v1-20260914-independent-a",
+        "batchId": "physik-resumed-habitability-context-1-v1-20260914-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:d4fdb800317222b9c0355ca41ab420ffca01d479bfdf4282d4b795a94fe0ce4c"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-resumed-habitability-context-1-v1-20260914-b",
+        "campaignDigest": "sha256:26cad5285b7f2b9e72eefcf031adcb4fbe464c94d9d63fe9cc0fca50dce2a5bc",
+        "roundId": "physik-resumed-habitability-context-1-v1-20260914-first-pass-b",
+        "independenceGroupId": "physik-resumed-habitability-context-1-v1-20260914-independent-b",
+        "batchId": "physik-resumed-habitability-context-1-v1-20260914-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:e24e2a9121b9454debd1d87bbba7b713eea7beaa9546495a6775ec7379f8dab5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

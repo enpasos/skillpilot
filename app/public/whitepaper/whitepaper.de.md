@@ -195,7 +195,7 @@ Ein navigierbarer Lehrplan beantwortet noch nicht die Alltagsfrage: **„Was mus
 
 Das **Persönliche Curriculum** bestimmt, welche Kompetenzen zum gewählten Bildungskontext gehören. Der **Lernplan** legt fest, welche Themen oder Lernzielgruppen in welchen Zeiträumen bearbeitet werden sollen. Er ergänzt den Skill-Graphen, ersetzt aber weder seine Lernziele noch deren Voraussetzungen. Soll der gesamte Lehrplan durchlaufen werden, muss die Planung dessen vorgesehenen Umfang abdecken; ein abgeschlossener Teilplan ist nicht automatisch ein abgeschlossener Lehrplan.
 
-Unter **„Kurse planen“** werden Lernabschnitte, Zeiträume, Puffer und Termine vorbereitet. Fachpläne, etwa für Mathematik und Physik, gelten **gemeinsam**: Die Anforderungen eines Tages addieren sich über alle Fächer. Der Wechsel des aktuellen Fachs schaltet keinen anderen Fachplan ab und schreibt keine Reihenfolge „erst Mathe vollständig, dann Physik“ vor. Überschneidende Abschnitte innerhalb eines Fachplans zählen dasselbe Lernziel nicht doppelt.
+Unter **„Kurse planen“** werden Lernabschnitte, Zeiträume, Puffer und Termine vorbereitet. Fachpläne, etwa für Mathematik und Physik, gelten **gemeinsam**, werden aber **je Fach** ausgewertet: Jedes Fach hat sein eigenes Tages- oder Wochenziel, und Vorarbeit in einem Fach gleicht keinen Rückstand in einem anderen aus. Der Wechsel des aktuellen Fachs schaltet keinen anderen Fachplan ab und schreibt keine Reihenfolge „erst Mathe vollständig, dann Physik“ vor. Mehrere Pläne desselben Fachs werden zusammengeführt; überschneidende Abschnitte zählen dasselbe Lernziel nicht doppelt. Ob der Planstand pro Tag oder pro Woche ausgewiesen wird, legt der Lernende im persönlichen Curriculum fest.
 
 Die **Schülervorschau** zeigt vor der Übernahme die heutigen Anforderungen und die nächsten sieben Kalendertage. Sie verwendet dieselbe Berechnung wie der Chat. Grundlage ist eine Werktagsplanung von Montag bis Freitag, keine automatische Optimierung nach Stundenplan oder Ferien. Lernzielzahlen sind keine Lernminuten und keine Garantie, einen Termin zu erreichen. Die Lehrkraft prüft Umfang und Belastung und passt bei Bedarf die Planung an.
 
@@ -205,24 +205,30 @@ Entwürfe bleiben zunächst auf dem Planungsgerät. Erst die ausdrückliche geme
 
 Bei aktivem Planmodus und gültiger Lernsession hält SkillPilot die Organisation im Hintergrund:
 
-1. **Orientieren:** Der Coach nennt für jedes Fach die heute neu fälligen Ziele, wie viele davon bereits beherrscht sind, wie viele noch offen sind und welche Rückstände hinzukommen.
+1. **Orientieren:** Der Coach übernimmt den von SkillPilot formulierten Planstand wörtlich: je Fach das Tages- oder Wochenziel und gegebenenfalls Rückstand oder Vorarbeit. Dieselben Sätze stehen im Cockpit; der Coach rechnet nicht selbst. Das aktive Lernziel kündigt er getrennt davon einmal zu Beginn der Lernaufgabe an.
 2. **Automatisch anknüpfen:** Ein gültiges laufendes Ziel wird fortgesetzt; andernfalls wird ein fälliges, nach den Voraussetzungen lernbares Ziel gewählt, sofern eines verfügbar ist. Die gemeinsame Aktivierung kann dieses erste Ziel bereits auswählen. Es ist kein zusätzlicher Klick auf „Weiterlernen“ oder eine manuelle Zielsuche nötig.
-3. **Lernen und Fortschritt prüfen:** Der Coach erklärt, stellt Aufgaben und begleitet die Bearbeitung. Erst nach den geltenden Evidenzregeln gespeicherter Fortschritt verändert den Lernstand und damit die Tageszahlen. Danach führt der plan-geführte Ablauf zum nächsten zulässigen Schritt.
-4. **Fach wechseln oder abschließen:** Ein Wunsch wie „Jetzt Physik“ wechselt innerhalb der verfügbaren Fachoptionen; die übrigen Anforderungen bleiben bestehen. Sind alle wirksamen Fachpläne zuverlässig auswertbar und sämtliche bis heute fälligen Ziele einschließlich Rückständen erledigt, meldet der Coach den Tagesabschluss. Künftige Ziele werden nicht automatisch zu zusätzlicher heutiger Pflicht.
+3. **Lernen und Fortschritt prüfen:** Der Coach erklärt, stellt Aufgaben und begleitet die Bearbeitung. Erst nach den geltenden Evidenzregeln gespeicherter Fortschritt verändert den Lernstand und damit den Planstand. Danach führt der plan-geführte Ablauf zum nächsten zulässigen Schritt.
+4. **Fach wechseln oder abschließen:** Ein Wunsch wie „Jetzt Physik“ wechselt innerhalb der verfügbaren Fachoptionen; die übrigen Anforderungen bleiben bestehen. Sind die Periodenziele erreicht, würdigt der Coach das und startet kein weiteres Ziel von sich aus. Ein erreichtes Tagesziel heißt nicht, dass kein Rückstand mehr besteht: Dann lädt der Coach ohne Druck zum Aufholen ein. Weiterlernen bleibt auf Wunsch jederzeit möglich; künftige Ziele werden nicht automatisch zu zusätzlicher heutiger Pflicht. Nicht auswertbare Pläne nennt der Planstand ausdrücklich, statt sie als erledigt darzustellen.
 
 Eine reine Statusfrage startet keine neue Aufgabe; eine gewünschte Pause bleibt eine Pause. Sind offene Ziele wegen Voraussetzungen oder ungültiger Planung nicht erreichbar, meldet der Coach die Blockade statt einen Tagesabschluss oder eine Ersatzpflicht zu erfinden. Planungskorrekturen bleiben auf der Planungsseite. Nach Ablauf der Lernsession ist weiterhin ein neuer Start über SkillPilot erforderlich; die Chatführung verlängert die Session nicht.
 
 #### Beispiel: Mathematik und Physik an einem Tag
 
-Die folgenden Zahlen sind ein **Rechenbeispiel**, keine Live-Daten:
+Die folgenden Zahlen sind ein **Rechenbeispiel** auf Tagesbasis, keine Live-Daten:
 
-- **Mathematik:** 4 heute neu fällige Ziele, davon 2 beherrscht und 2 noch offen; zusätzlich 1 offenes Ziel aus früheren Tagen.
-- **Physik:** 3 heute neu fällige Ziele, davon 1 beherrscht und 2 noch offen; zusätzlich 2 offene Ziele aus früheren Tagen.
-- **Gesamt:** 7 heute neu fällige Ziele, davon 3 beherrscht und 4 noch offen; zusammen mit 3 Rückständen bleiben **7 Ziele zu bearbeiten**.
+- **Mathematik:** Bis heute sind 13 Ziele eingeplant, 3 davon heute neu. 9 der eingeplanten Ziele sind beherrscht, eines davon wurde heute abgeschlossen.
+- **Physik:** Bis heute sind 10 Ziele eingeplant, 2 davon heute neu. 11 der eingeplanten Ziele sind beherrscht, zwei davon wurden heute abgeschlossen.
 
-Der Coach kann daraus kurz sagen: **„Von den heute fälligen Zielen beherrschst du in Mathe 2 von 4 und in Physik 1 von 3. Mit den Rückständen bleiben insgesamt 7 Ziele offen. Wir machen mit deinem aktuellen Matheziel weiter; du kannst auch zu Physik wechseln.“** Dieses Beispiel setzt ein gültiges, noch offenes Matheziel und ein aktuell startbares Physikziel voraus.
+SkillPilot bilanziert jedes Fach für sich und formuliert daraus den Planstand, den Cockpit und Coach gleichlautend zeigen:
 
-„Davon beherrscht“ bezeichnet den aktuellen Lernstand innerhalb der heute fälligen Ziele, **nicht zwingend heute neu erreichte Erfolge**. Die sieben offenen Ziele ergeben sich aus vier offenen neuen Tageszielen plus drei Rückständen. Rückstände bleiben sichtbar, werden aber nicht als täglich neue Lernziele mehrfach zur Wochenlast addiert.
+> Mathematik: Tagesziel 1 von 3 · 2 Lernziele im Rückstand
+> Physik: Tagesziel erreicht · 1 Lernziel vorgearbeitet
+
+Beim anschließenden Einstieg in die Lernaufgabe folgt separat:
+
+> Dein aktives Lernziel: Potenzfunktionen mit ganzzahligen Exponenten beschreiben
+
+In Mathematik fehlen gegenüber dem Plan vier Ziele. Zwei davon sind heute noch offen, die beiden übrigen sind Rückstand. In Physik ist ein später eingeplantes Ziel bereits beherrscht. Dieser Vorsprung gleicht den Mathematik-Rückstand **nicht** aus; eine fachübergreifende Gesamtsumme gibt es nicht. „Vorgearbeitet“ und „im Plan“ beschreiben den Umfang des Fortschritts, **nicht die Beherrschung aller früher eingeplanten Inhalte**: Offene frühere Ziele bleiben für die Zielauswahl bestehen. Auf Wochenbasis lautet dieselbe Aussage „Wochenziel …“ und bezieht die ganze laufende Woche ein.
 
 Damit wird der Lehrplan zu einem begleiteten Lernweg: **Die Lehrkraft verantwortet Umfang und Zeitrahmen, SkillPilot berechnet die nächsten zulässigen Schritte, der Coach führt den Dialog und der Schüler konzentriert sich auf das Lernen.**
 

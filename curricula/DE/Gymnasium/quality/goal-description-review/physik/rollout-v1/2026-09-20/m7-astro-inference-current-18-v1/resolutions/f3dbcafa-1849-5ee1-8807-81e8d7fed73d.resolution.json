@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-m7-astro-inference-current-18-v1-20260920-resolution-f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+  "goal": {
+    "goalId": "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:9a8138278f415cacc4c349a84763d0817dfdc395a85f1254f1d248c4f7e4cc06",
+    "pageFingerprint": "sha256:894c50db1eca224d2d1ae8c55ca78dc8c49734fcd37fd0060c4f0d0d7006c261",
+    "goalReviewContextFingerprint": "sha256:f0671800f745310dbba040c6117e133c9cdb32b64d4a45af03614a913e332501",
+    "finalText": {
+      "titleDe": "Massen aus astronomischen Bahnbewegungen abschätzen",
+      "titleEn": "Estimate Masses from Astronomical Orbital Motion",
+      "descriptionDe": "Die lernende Person kann aus Bahngeschwindigkeiten und Radien mit einem begründeten Gravitationsmodell die innerhalb der jeweiligen Bahn eingeschlossene Masse eines astronomischen Systems abschätzen und erläutern, unter welchen Annahmen daraus etwa die Masse eines zentralen Schwarzen Lochs oder die Massenverteilung einer Galaxie erschlossen werden kann.",
+      "descriptionEn": "The learner can use orbital speeds and radii with a justified gravitational model to estimate the mass enclosed within the relevant orbit of an astronomical system and explain the assumptions under which this can be used to infer, for example, the mass of a central black hole or a galaxy’s mass distribution."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-m7-astro-inference-current-18-v1-20260920-a",
+      "campaignDigest": "sha256:54acfa80660f6c47901fff927ad2d44fe162b7681f7b70307f94588721baf586",
+      "roundId": "physik-m7-astro-inference-current-18-v1-20260920-first-pass-a",
+      "independenceGroupId": "physik-m7-astro-inference-current-18-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:9db47d41282daa6807cc086ba3faf61192b96dcbb78b5521ec5871cad8f24033",
+      "goalReviewContextFingerprint": "sha256:f0671800f745310dbba040c6117e133c9cdb32b64d4a45af03614a913e332501",
+      "batchId": "physik-m7-astro-inference-current-18-v1-20260920-first-pass-a.batch-001",
+      "runId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5",
+      "runManifestDigest": "sha256:e10b9474f209b99438d913513aac807ba9b13425755b262bf8f311f4e66e1555",
+      "resultsDigest": "sha256:1deef03c2b645fbcff7acfea43ad2f02841e0efa45e86a0f034d1fe0ac616351",
+      "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.014",
+      "recordDigest": "sha256:688e3ec346dbf123c94fd51308036355a830f4685558d330616b559cfc748d7e"
+    },
+    "second": {
+      "campaignId": "physik-m7-astro-inference-current-18-v1-20260920-b",
+      "campaignDigest": "sha256:426252ce91fe79ea4274643426803cd31e7413500d2877636d6ffb3fc2b65268",
+      "roundId": "physik-m7-astro-inference-current-18-v1-20260920-first-pass-b",
+      "independenceGroupId": "physik-m7-astro-inference-current-18-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:9db47d41282daa6807cc086ba3faf61192b96dcbb78b5521ec5871cad8f24033",
+      "goalReviewContextFingerprint": "sha256:f0671800f745310dbba040c6117e133c9cdb32b64d4a45af03614a913e332501",
+      "batchId": "physik-m7-astro-inference-current-18-v1-20260920-first-pass-b.batch-001",
+      "runId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native",
+      "runManifestDigest": "sha256:65150b1ed79866a88e11c4a8f5f9432c56088e05e4df641872d846f18acdbb3b",
+      "resultsDigest": "sha256:b4cd9365b291a00ac97acc839efa7d33db1dccdd1746cd2479d69f096bd32091",
+      "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+      "recordDigest": "sha256:d793b3ceaba9b74a785af9a5a76d25f3d90a4eb55d7a59c3c63fcff3db6d576a"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d95ec29a1bdb370dd0a61f18b974a9e0e4991395e77583398ee4908fb8894a68"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1",
+    "manifestDigest": "sha256:d3c1cf4dd019d4378375f9624a3ea7e391b693d5d6c06effaad08f7c4fb6d89a",
+    "manifestFingerprint": "sha256:f8da3cb9ce88a9d6c54ed68cdc258ca44fc442cc2e897d7084480682918a7fdc",
+    "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-014"
+  },
+  "synthesis": {
+    "synthesisId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-014",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; exact model identifier not exposed",
+    "synthesizedAt": "2026-09-20T09:11:33.000Z",
+    "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Eingeschlossene Masse ist nur bei Zentraldominanz die Zentralmasse. B kontrastiert keplerartige und flache Kurven unter expliziter Kreisbahn-/Symmetrieannahme ohne die Dunkle-Materie-Kompetenz vorwegzunehmen. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+    "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Enclosed mass is central mass only under central dominance. B contrasts Kepler-like and flat curves under explicit circular-orbit/symmetry assumptions without importing the dark-matter competence. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht, dass Bahnbewegung im begründeten Gravitationsmodell auf eingeschlossene Masse schließen lässt. Für eine Kreisbahn und kugelsymmetrische Näherung gilt M(<r) = v²r/G; die Gleichsetzung mit der Masse eines zentralen Objekts verlangt dessen Dominanz, während mehrere Radien eine räumliche Massenverteilung erschließen können.",
+      "essentialUnderstandingEn": "The learner understands that orbital motion supports inference of enclosed mass in a justified gravitational model. For a circular orbit and spherical approximation, M(<r) = v²r/G; identifying this with a central object's mass requires that object's dominance, whereas several radii can reveal a spatial mass distribution.",
+      "observablePerformanceDe": "Die lernende Person verknüpft an bereitgestellten Bahndaten die notwendige Zentripetalwirkung mit der Gravitation, schätzt eingeschlossene Massen mit Einheiten ab und begründet die verwendete Geometrie. Sie erklärt, wann das Ergebnis als zentrale Masse und wann nur als innerhalb der Bahn verteilte Gesamtmasse zu deuten ist.",
+      "observablePerformanceEn": "The learner relates the required centripetal effect to gravitation for supplied orbital data, estimates enclosed masses with units, and justifies the assumed geometry. They explain when the result can be interpreted as a central mass and when it is only the total mass distributed within the orbit.",
+      "transferExpectationDe": "In einer frischen Aufgabe werden zwei Geschwindigkeitsverläufe mit Radius gegenübergestellt: ein keplerartig fallender und ein näherungsweise flacher Verlauf. Die lernende Person erklärt im vereinbarten Modell, warum im ersten Fall die eingeschlossene Masse annähernd konstant und im zweiten weiter zunehmend erschlossen wird.",
+      "transferExpectationEn": "In a fresh task, two speed-versus-radius patterns are compared: a Kepler-like declining pattern and an approximately flat one. Within the stated model, the learner explains why inferred enclosed mass is approximately constant in the first case and continues increasing in the second."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-661fc36ab50f1c4d2cf4b72e9c8c326fcc4bc117c2ce5f020b5b7756bab43296",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:7d45b4430951b582c977846e3c682413e758229c03fc7ae8ca79c7676f1f55da"
+}

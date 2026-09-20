@@ -67,7 +67,14 @@ const imageReview = {
 }
 assert.equal(hasCompletedDeepUnderstandingVisualizationReview(imageReview), true)
 assert.equal(imageReview.humanApproved, 'no', 'An accepted AI review must not create human approval.')
-assert.equal(hasCompletedDeepUnderstandingVisualizationReview({ ...imageReview, humanIssueIdentified: 'yes' }), false)
+assert.equal(hasCompletedDeepUnderstandingVisualizationReview({
+  ...imageReview, humanIssueIdentified: 'yes',
+}), true, 'A separate human finding must not change the machine-only M7 gate.')
+assert.equal(hasCompletedDeepUnderstandingVisualizationReview({
+  ...imageReview,
+  aiApproved: 'no',
+  humanApproved: 'yes',
+}), false, 'Human approval alone must not satisfy the machine-only M7 gate.')
 assert.equal(hasCompletedDeepUnderstandingVisualizationReview({ ...imageReview, aiApprovedAssetSha256: 'stale' }), false)
 assert.equal(hasCompletedDeepUnderstandingVisualizationReview({
   ...imageReview, visualizationState: 'missing', missingReason: 'deferred_provider_limitation', humanApproved: 'yes',

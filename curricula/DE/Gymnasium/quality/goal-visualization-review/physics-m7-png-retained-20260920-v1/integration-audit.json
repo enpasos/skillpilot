@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "auditId": "physics-m7-48-image-positive-integration-audit-20260920-v1",
+  "auditedAt": "2026-09-20T09:13:03.440Z",
+  "authority": "read_only_machine_audit",
+  "scope": {
+    "expectedGoalCount": 48,
+    "actualUniqueGoalCount": 48,
+    "batchGoalCounts": {
+      "nuclear": 16,
+      "astro-nav": 16,
+      "astro-inference": 16
+    },
+    "positiveEvidenceConfigCount": 3,
+    "retainedDescriptionMappingCount": 24,
+    "retainedPositiveMappingCount": 23
+  },
+  "sources": {
+    "rootReceipt": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-root-pass2-accepted-20260920-v1.json",
+      "sha256": "c120060e5e3ca7211f810fbfba7b4e2645c6c593a1e925ac9c8861779e909164"
+    },
+    "entropySupersessionReceipt": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-entropy-final-accepted-20260920-v1.json",
+      "sha256": "0642f14dab368da4ebb90f79a509fa4b7134144ee46442bfbb2910bc860981fa"
+    },
+    "manifests": [
+      {
+        "batch": "nuclear",
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-batch-nuclear-20260920-v1/manifest.json",
+        "sha256": "9f6225fec2740900974e339a89baccb1eb7768ede2412ac137ac115858d0455d"
+      },
+      {
+        "batch": "astro-nav",
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-batch-astro-nav-20260920-v1/manifest.json",
+        "sha256": "3f3a4e51f2726d70943af53c59b9b26e198520611cccfc4e5b32aabf72f06cfb"
+      },
+      {
+        "batch": "astro-inference",
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-batch-astro-inference-20260920-v1/manifest.json",
+        "sha256": "f7753e175d207b20e715c582b906333572867311283a56e4ea51c3243b6467f7"
+      }
+    ],
+    "retainedBindingMap": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-m7-png-retained-20260920-v1/binding-map.json",
+      "sha256": "026d3cd64c748826bfceb86398886a4c4eb4f9f99069cf17343634121825b682"
+    }
+  },
+  "checks": [
+    {
+      "name": "exact-48-scope-and-receipt-supersession",
+      "status": "pass",
+      "details": {
+        "goalCount": 48,
+        "uniqueGoalCount": 48,
+        "entropySupersessionGoalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+        "supersedingAssetSha256": "4952109565d8ec0040346d2dd7974c8b6004fd186498c8ecd51d916069a6f3f1"
+      }
+    },
+    {
+      "name": "manifest-candidate-and-three-surface-png-hashes",
+      "status": "pass",
+      "details": {
+        "manifestCount": 3,
+        "candidateCount": 48,
+        "checkedAssetCopies": 144,
+        "surfaces": [
+          "curricula/DE/Gymnasium/visualizations/physik",
+          "app/public/assets/goal-visualizations/physik",
+          "backend/src/main/resources/static/assets/goal-visualizations/physik"
+        ],
+        "canonicalPrimaryBindingsChecked": 48,
+        "pngSignaturesChecked": 144
+      }
+    },
+    {
+      "name": "native-positive-evidence-candidate-verification",
+      "status": "pass",
+      "details": {
+        "command": "npm --prefix app run quality:positive-goal-evidence-candidates -- --config <config> --candidates <candidates>",
+        "batches": [
+          {
+            "batch": "nuclear",
+            "verifiedCurrentAiCandidateProfiles": 16
+          },
+          {
+            "batch": "astro-nav",
+            "verifiedCurrentAiCandidateProfiles": 16
+          },
+          {
+            "batch": "astro-inference",
+            "verifiedCurrentAiCandidateProfiles": 16
+          }
+        ]
+      }
+    },
+    {
+      "name": "native-positive-evidence-check",
+      "status": "pass",
+      "details": {
+        "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=<config>",
+        "batches": [
+          {
+            "batch": "nuclear",
+            "configuredGoals": 16,
+            "approved": 0,
+            "needsHumanReview": 16,
+            "rejected": 0,
+            "blockingIssues": 0
+          },
+          {
+            "batch": "astro-nav",
+            "configuredGoals": 16,
+            "approved": 0,
+            "needsHumanReview": 16,
+            "rejected": 0,
+            "blockingIssues": 0
+          },
+          {
+            "batch": "astro-inference",
+            "configuredGoals": 16,
+            "approved": 0,
+            "needsHumanReview": 16,
+            "rejected": 0,
+            "blockingIssues": 0
+          }
+        ],
+        "interpretation": "The three configs intentionally carry current machine candidate profiles with requireApproved=false; the native checker reports no blocking issue."
+      }
+    },
+    {
+      "name": "retained-description-bindings",
+      "status": "pass",
+      "details": {
+        "mappingCount": 24,
+        "retainedResolutionCount": 160,
+        "oldSourceSha256ValuesUnchanged": true,
+        "retainedResolutionObjectsAndOrderIdentical": true,
+        "overlapWithReplaced48GoalIds": 0
+      }
+    },
+    {
+      "name": "retained-positive-bindings",
+      "status": "pass",
+      "details": {
+        "mappingCount": 23,
+        "retainedReviewLineCount": 195,
+        "oldConfigAndReviewSha256ValuesUnchanged": true,
+        "retainedReviewLinesAndOrderByteIdentical": true,
+        "configChangesLimitedToReviewPathScopeLabelAndFilteredGoalIds": true,
+        "overlapWithReplaced48GoalIds": 0
+      }
+    }
+  ],
+  "errors": [],
+  "result": "pass"
+}

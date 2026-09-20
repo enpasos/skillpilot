@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-hrd-current-image-hold-1-v1-20260920-resolution-206fe51d-cc78-5422-b139-32cc97eb1c37",
+  "goal": {
+    "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:3bc6b685e1c98a91258200891411cc8711b259a090c3c21ab98ee9b96db294b2",
+    "pageFingerprint": "sha256:46770169edbc70513cc29c5c07f55c68632536caaf552bc3937e711f7a17b595",
+    "goalReviewContextFingerprint": "sha256:234edfbbbf87d8b534ce400dedd4c8b9adedec2055ae5e9efa13b4a295dccca0",
+    "finalText": {
+      "titleDe": "Hertzsprung-Russell-Diagramm (HRD)",
+      "titleEn": "Hertzsprung–Russell Diagram (HRD)",
+      "descriptionDe": "Die lernende Person kann Sterne anhand ihrer Leuchtkraft und Oberflächentemperatur im Hertzsprung-Russell-Diagramm einordnen und die Bereiche Hauptreihe, Rote Riesen und Weiße Zwerge im Zusammenhang mit der Sternentwicklung deuten.",
+      "descriptionEn": "The learner can place stars in the Hertzsprung–Russell diagram using their luminosity and surface temperature and interpret the main-sequence, red-giant and white-dwarf regions in relation to stellar evolution."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-hrd-current-image-hold-1-v1-20260920-a",
+      "campaignDigest": "sha256:4585cd0ec3c99d6b681098750755fac8d6401aff75cd7084c4fc2e1c50db42bb",
+      "roundId": "physik-hrd-current-image-hold-1-v1-20260920-first-pass-a",
+      "independenceGroupId": "physik-hrd-current-image-hold-1-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:338ef8f9f7210c9144da8866a95175d94f7a13288feacc112e2634f75f7ed724",
+      "goalReviewContextFingerprint": "sha256:234edfbbbf87d8b534ce400dedd4c8b9adedec2055ae5e9efa13b4a295dccca0",
+      "batchId": "physik-hrd-current-image-hold-1-v1-20260920-first-pass-a.batch-001",
+      "runId": "physik-hrd-current-image-hold-1-v1-20260920-a-run-001",
+      "runManifestDigest": "sha256:71bdad5191f3c366a753395492e941d02376b94c79332669fbd8c779a3f47f5c",
+      "resultsDigest": "sha256:c7adfe542470b75288192be035daf39a8e67401ab5664d683a9c9b480205e0dc",
+      "recordId": "physik-hrd-206fe51d-round-a-20260920",
+      "recordDigest": "sha256:937abb3a58802cf8f466648a9c1941cac73b1daaccfa4508756c166714a900c4"
+    },
+    "second": {
+      "campaignId": "physik-hrd-current-image-hold-1-v1-20260920-b",
+      "campaignDigest": "sha256:23fec875468e93395b2481bec6ece454778a16a65ab0311b657d3c25be6664b1",
+      "roundId": "physik-hrd-current-image-hold-1-v1-20260920-first-pass-b",
+      "independenceGroupId": "physik-hrd-current-image-hold-1-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:338ef8f9f7210c9144da8866a95175d94f7a13288feacc112e2634f75f7ed724",
+      "goalReviewContextFingerprint": "sha256:234edfbbbf87d8b534ce400dedd4c8b9adedec2055ae5e9efa13b4a295dccca0",
+      "batchId": "physik-hrd-current-image-hold-1-v1-20260920-first-pass-b.batch-001",
+      "runId": "physik-hrd-current-image-hold-1-v1-round-b-independent-20260920",
+      "runManifestDigest": "sha256:d0f34ef37b4692c8bd0a0ae9583ac65d51befedd49c4172fe4143dffda71d502",
+      "resultsDigest": "sha256:01ff669f057b17cdf680b977781f6ab5fd9dc203d4694eb120ee161326ff43df",
+      "recordId": "physik-hrd-current-image-hold-1-v1-round-b-206fe51d-review",
+      "recordDigest": "sha256:149b08ed8c4bbd336d43b3662d57a13b061862b2c36046919f767ffe9f1ca127"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f545f9796ede3724598a9ee9566372d0b0a8a7a29a044063e181f3bc11957bb8"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physics-hrd-current-image-synthesis-20260920-v1",
+    "manifestDigest": "sha256:91e9ec3cd1bbd548a4024d6faf02057d79560cd38228229bdd1b59c5d217c3be",
+    "manifestFingerprint": "sha256:94a617ac9abcd89a12a81620f8e12bc148c311cabd973c85a902ca2af5f9c93a",
+    "decisionId": "physics-hrd-current-image-synthesis-20260920-v1-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "physics-hrd-current-image-synthesis-20260920-v1-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; exact model identifier not exposed",
+    "synthesizedAt": "2026-09-20T07:37:25.000Z",
+    "rationaleDe": "Beide unabhängigen Fachreviews bestätigen die aktuelle zweisprachige Beschreibung als eine fachlich korrekte, semantisch zusammenhängende HRD-Kompetenz. Einordnung und Entwicklungsdeutung gehören zu demselben Diagrammverständnis; Radius-, Entfernungs- und vollständige Entwicklungsbahnmodelle bleiben zu Recht außerhalb dieses Ziels. Root hat beide vollständigen Records und das tatsächlich gebundene aktuelle PNG geprüft. Für das neue positive-understanding-evidence-v2-Profil wird Runde B gewählt, weil sie die selbstständige Arbeit an einem zunächst unbeschrifteten Diagramm, die Modellgrenze und den Transfer auf veränderte Achsendarstellungen besonders klar trennt. Das freundliche, abstrakte Bild unterstützt Achsen-, Bereichs- und Sonnenorientierung, ersetzt aber keinen selbstständigen Leistungsnachweis. Damit werden die unterschiedlichen Evidenzformulierungen aufgelöst, ohne menschliche Freigabe, Quellenabdeckung oder Lernendenleistung zu behaupten.",
+    "rationaleEn": "Both independent subject reviews confirm the current bilingual description as a technically correct and semantically coherent HR-diagram competence. Classification and evolutionary interpretation belong to the same diagram understanding, while radius, distance, and complete evolutionary-track models correctly remain outside this goal. Root read both complete records and inspected the actually bound current PNG. Round B is selected for the new positive-understanding-evidence-v2 profile because it most clearly separates independent work on an initially unlabeled diagram, the model boundary, and transfer to altered axis presentations. The friendly abstract image supports axis, region, and solar orientation but does not replace independent learner performance. The differing evidence formulations are therefore resolved without claiming human approval, source coverage, or learner achievement.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht, dass das Hertzsprung-Russell-Diagramm Sterne durch die beiden Größen Oberflächentemperatur und Leuchtkraft auf logarithmischen Achsen ordnet, wobei die Temperatur konventionsgemäß nach rechts abnimmt. Hauptreihe, Rote Riesen und Weiße Zwerge bezeichnen charakteristische Bereiche unterschiedlicher physikalischer und evolutionärer Zustände; das Diagramm zeigt den Zustand eines Sterns, aber keinen für alle Sterne identischen zeitlichen Entwicklungspfad.",
+      "essentialUnderstandingEn": "The learner understands that the Hertzsprung–Russell diagram organizes stars by the two quantities surface temperature and luminosity on logarithmic axes, with temperature conventionally decreasing to the right. The main sequence, red giants, and white dwarfs denote characteristic regions of different physical and evolutionary states; the diagram shows a star's state but not one identical time-evolution path for all stars.",
+      "observablePerformanceDe": "In einem neu vorgelegten, zunächst unbeschrifteten HRD kennzeichnet die lernende Person selbstständig Achsengrößen, Richtungen und logarithmische Skalen, trägt Sterne aus gegebenen Temperatur- und Leuchtkraftdaten ein, ordnet sie Hauptreihe, Roten Riesen oder Weißen Zwergen zu und begründet die Zuordnung sowie ihre evolutionäre Deutung anhand der Lage statt anhand des Aussehens der Abbildung.",
+      "observablePerformanceEn": "In a newly presented, initially unlabeled HR diagram, the learner independently identifies the axis quantities, directions, and logarithmic scales, plots stars from given temperature and luminosity data, assigns them to the main sequence, red giants, or white dwarfs, and justifies both the classification and its evolutionary interpretation from position rather than from the appearance of the diagram.",
+      "transferExpectationDe": "In einem frischen Fall werden Achsenskalierung oder Darstellungsrichtung verändert und zwei Sterne mit ähnlicher Oberflächentemperatur, aber stark unterschiedlicher Leuchtkraft vorgelegt; die lernende Person überträgt die HRD-Beziehungen auf die neue Darstellung, positioniert beide Sterne korrekt und erklärt, warum sie trotz ähnlicher Temperatur verschiedenen Bereichen und evolutionären Zuständen zugeordnet werden.",
+      "transferExpectationEn": "In a fresh case, the axis scaling or display direction is changed and two stars with similar surface temperatures but very different luminosities are provided; the learner transfers the HR-diagram relationships to the new representation, positions both stars correctly, and explains why, despite their similar temperatures, they belong to different regions and evolutionary states."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-925072f67db88ea37fe60e66e6a22828dc6d372a27c8b4af55f6527164a4ac9d",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:0b3cb90712e8228881202d5445232b18ad574741f7dd1d94c8b4423dea328802"
+}

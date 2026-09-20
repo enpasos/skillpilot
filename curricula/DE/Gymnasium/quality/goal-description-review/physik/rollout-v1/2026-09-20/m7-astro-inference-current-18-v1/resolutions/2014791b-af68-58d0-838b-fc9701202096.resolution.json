@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "physik-m7-astro-inference-current-18-v1-20260920-resolution-2014791b-af68-58d0-838b-fc9701202096",
+  "goal": {
+    "goalId": "2014791b-af68-58d0-838b-fc9701202096",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:2b524d9d29c2e0dbdc7700f6f12cc0afa88e1a1194038f66deb24631a6ad3326",
+    "pageFingerprint": "sha256:c1bf162474c7b87fab22198d47fedbd511596adaa887d409d8f8f00828015a59",
+    "goalReviewContextFingerprint": "sha256:0ec35e394017c1543e5dfe25117e86f6df2922496d65d9a3e1b5d5097dfce23e",
+    "finalText": {
+      "titleDe": "Dynamische Gesamtmasse aus optischen Zweikörperbahndaten erschließen",
+      "titleEn": "Infer Dynamical Total Mass from Optical Binary-Orbit Data",
+      "descriptionDe": "Die lernende Person kann aus Bahnperiode und räumlich kalibrierter Bahnskala eines optisch beobachteten Zweikörpersystems mit einem begründeten Zweikörper- und Gravitationsmodell die dynamische Gesamtmasse des Systems abschätzen sowie Annahmen, Unsicherheiten und Grenzen der Inferenz erläutern.",
+      "descriptionEn": "The learner can use the orbital period and spatially calibrated orbital scale of an optically observed two-body system with a justified two-body and gravitational model to estimate the system’s dynamical total mass and explain the assumptions, uncertainties, and limitations of the inference."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-m7-astro-inference-current-18-v1-20260920-a",
+      "campaignDigest": "sha256:54acfa80660f6c47901fff927ad2d44fe162b7681f7b70307f94588721baf586",
+      "roundId": "physik-m7-astro-inference-current-18-v1-20260920-first-pass-a",
+      "independenceGroupId": "physik-m7-astro-inference-current-18-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:9db47d41282daa6807cc086ba3faf61192b96dcbb78b5521ec5871cad8f24033",
+      "goalReviewContextFingerprint": "sha256:0ec35e394017c1543e5dfe25117e86f6df2922496d65d9a3e1b5d5097dfce23e",
+      "batchId": "physik-m7-astro-inference-current-18-v1-20260920-first-pass-a.batch-001",
+      "runId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5",
+      "runManifestDigest": "sha256:e10b9474f209b99438d913513aac807ba9b13425755b262bf8f311f4e66e1555",
+      "resultsDigest": "sha256:1deef03c2b645fbcff7acfea43ad2f02841e0efa45e86a0f034d1fe0ac616351",
+      "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.003",
+      "recordDigest": "sha256:c965c7ab2035cebe4740da1ceed07dd3d7dda6d4c67d40a341de8d882102840f"
+    },
+    "second": {
+      "campaignId": "physik-m7-astro-inference-current-18-v1-20260920-b",
+      "campaignDigest": "sha256:426252ce91fe79ea4274643426803cd31e7413500d2877636d6ffb3fc2b65268",
+      "roundId": "physik-m7-astro-inference-current-18-v1-20260920-first-pass-b",
+      "independenceGroupId": "physik-m7-astro-inference-current-18-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:9db47d41282daa6807cc086ba3faf61192b96dcbb78b5521ec5871cad8f24033",
+      "goalReviewContextFingerprint": "sha256:0ec35e394017c1543e5dfe25117e86f6df2922496d65d9a3e1b5d5097dfce23e",
+      "batchId": "physik-m7-astro-inference-current-18-v1-20260920-first-pass-b.batch-001",
+      "runId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native",
+      "runManifestDigest": "sha256:65150b1ed79866a88e11c4a8f5f9432c56088e05e4df641872d846f18acdbb3b",
+      "resultsDigest": "sha256:b4cd9365b291a00ac97acc839efa7d33db1dccdd1746cd2479d69f096bd32091",
+      "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.2014791b-af68-58d0-838b-fc9701202096",
+      "recordDigest": "sha256:77bf0bc40868717019cb3b844a8a767b0fa6bd2555d5a5afee8dec3a772cbcf1"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d95ec29a1bdb370dd0a61f18b974a9e0e4991395e77583398ee4908fb8894a68"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1",
+    "manifestDigest": "sha256:d3c1cf4dd019d4378375f9624a3ea7e391b693d5d6c06effaad08f7c4fb6d89a",
+    "manifestFingerprint": "sha256:f8da3cb9ce88a9d6c54ed68cdc258ca44fc442cc2e897d7084480682918a7fdc",
+    "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex root; exact model identifier not exposed",
+    "synthesizedAt": "2026-09-20T09:11:33.000Z",
+    "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Kalibrierte Relativbahnskala a1+a2 und Periode tragen die Gesamtmasseninferenz. B trennt Winkelabstand, Projektion und räumliche Halbachse und prüft eine geneigte Bahn als Transfer. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+    "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Calibrated relative-orbit scale a1+a2 and period support total-mass inference. B separates angular separation, projection and physical semimajor axis and tests an inclined orbit as transfer. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die lernende Person versteht, dass Bahnperiode und räumliche große Halbachse der Relativbahn im gravitativen Zweikörpermodell die Gesamtmasse bestimmen: Mgesamt = 4π²a³/(GP²), mit a = a1 + a2. Winkelabstand, projizierter Abstand, momentane Entfernung und räumliche Bahnskala sind unterschiedliche Größen.",
+      "essentialUnderstandingEn": "The learner understands that orbital period and the physical semimajor axis of the relative orbit determine total mass in the gravitational two-body model: Mtotal = 4π²a³/(GP²), with a = a1 + a2. Angular separation, projected separation, instantaneous distance, and physical orbital scale are distinct quantities.",
+      "observablePerformanceDe": "Die lernende Person ordnet bereitgestellte optische Bahndaten den Größen Periode und kalibrierte Relativbahnskala zu, erklärt die gemeinsame Schwerpunktbewegung und berechnet eine plausible Gesamtmasse mit Einheiten. Sie legt offen, welche Distanz- und Projektionskorrekturen bereits in den Daten stecken, und beschreibt deren Einfluss auf die Inferenz.",
+      "observablePerformanceEn": "The learner identifies period and calibrated relative-orbit scale in supplied optical orbital data, explains motion about the common centre of mass, and calculates a plausible total mass with units. They state which distance and projection corrections are already included in the data and describe their effect on the inference.",
+      "transferExpectationDe": "Bei einem neu vorgelegten geneigten statt frontal gesehenen System erkennt die lernende Person, dass der abgelesene Winkelabstand nicht unmittelbar die räumliche große Halbachse ist. Sie begründet, welche Zusatzinformation oder Korrektur nötig ist, bevor die Gesamtmasse belastbar geschätzt werden kann.",
+      "transferExpectationEn": "For a newly supplied inclined rather than face-on system, the learner recognises that the observed angular separation is not directly the physical semimajor axis. They justify what additional information or correction is needed before a reliable total-mass estimate can be made."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-26f9b70cb49dc592680fb7171e145e34e50c8b80eaab1e0abe9cfbbe82f37cf4",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:03123a2245d4c90121601d889e0560f86b2857713e1ece9778fe70a4bdd496cb"
+}

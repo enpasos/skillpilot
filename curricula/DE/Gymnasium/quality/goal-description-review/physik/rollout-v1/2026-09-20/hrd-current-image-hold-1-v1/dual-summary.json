@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:8862a7217838b68d7bf59e65648f3c4913f795fc3832c5e4203ccbcde20853cd",
+  "reviewInputFingerprint": "sha256:338ef8f9f7210c9144da8866a95175d94f7a13288feacc112e2634f75f7ed724",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-hrd-current-image-hold-1-v1-20260920-a",
+      "roundId": "physik-hrd-current-image-hold-1-v1-20260920-first-pass-a",
+      "independenceGroupId": "physik-hrd-current-image-hold-1-v1-20260920-independent-a",
+      "runIds": [
+        "physik-hrd-current-image-hold-1-v1-20260920-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (GPT-5)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-hrd-current-image-hold-1-v1-20260920-b",
+      "roundId": "physik-hrd-current-image-hold-1-v1-20260920-first-pass-b",
+      "independenceGroupId": "physik-hrd-current-image-hold-1-v1-20260920-independent-b",
+      "runIds": [
+        "physik-hrd-current-image-hold-1-v1-round-b-independent-20260920"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+      "firstRecordId": "physik-hrd-206fe51d-round-a-20260920",
+      "secondRecordId": "physik-hrd-current-image-hold-1-v1-round-b-206fe51d-review",
+      "firstRunId": "physik-hrd-current-image-hold-1-v1-20260920-a-run-001",
+      "secondRunId": "physik-hrd-current-image-hold-1-v1-round-b-independent-20260920",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

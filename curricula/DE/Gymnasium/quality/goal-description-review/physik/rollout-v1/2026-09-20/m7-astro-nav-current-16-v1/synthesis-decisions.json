@@ -1,0 +1,496 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root; exact model identifier not exposed",
+  "synthesizedAt": "2026-09-20T09:12:03.115Z",
+  "batch": {
+    "batchId": "physik-m7-astro-nav-current-16-v1-20260920",
+    "batchManifestDigest": "sha256:7daf5805e2706edb048e5c5b8c7a2457f6098b13612845c8a43e2cbb42077c58",
+    "configDigest": "sha256:ce156ce58eacd3b0bd83334bcab0a07a0285c2a8fcc91a0c6de1364078a9f234",
+    "bundleFingerprint": "sha256:3a94b5258025bb86532a764df4c7e150dbd15e20991742d08fa94f5cd1c8c492",
+    "bookDigest": "sha256:6b6480814395623ba3d887b22c5ac31ca664904c82a05bc7989b4c55409ba47e",
+    "reviewInputFingerprint": "sha256:9c8f4a1c7c33efef301e3e8a4e247314f8017c58f9da9230663bb3276e6977f7",
+    "dualSummaryDigest": "sha256:05f19f38f87bd3f3bfe1adfb97611abca57eadadd3f31b0ed3558cee49ed0e40",
+    "canonicalLandscapeDigest": "sha256:f505f46218ce324a940c32b45d3804273acbbc39e4d5782b197c5c3e614baf6a"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-m7-astro-nav-current-16-v1-20260920-a",
+      "campaignDigest": "sha256:5a90f224e8fcc95c3b2c1ab57702553ce9d2c6083218ddad69ea3006c6da8cc9",
+      "roundId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-a",
+      "independenceGroupId": "physik-m7-astro-nav-current-16-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:9c8f4a1c7c33efef301e3e8a4e247314f8017c58f9da9230663bb3276e6977f7",
+      "batchId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:8a908761bc156fb9999eb0f5e502291a6508e216bcd9e0d2748284050e9a0748",
+      "runId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "runManifestDigest": "sha256:9126967464219f6c998d4df9e9fbf70f9c692327e4d10c7897a4f38a25d5d459",
+      "resultsDigest": "sha256:d09945bf664daf297e3a4dc75e22aef754cf6ce598570e4367b0ab2a0d77ff6a"
+    },
+    "second": {
+      "campaignId": "physik-m7-astro-nav-current-16-v1-20260920-b",
+      "campaignDigest": "sha256:0cdbaef19ffecb8d487c1603af8a688d87c318204e8639baa62b0c6bf80ad5bc",
+      "roundId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b",
+      "independenceGroupId": "physik-m7-astro-nav-current-16-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:9c8f4a1c7c33efef301e3e8a4e247314f8017c58f9da9230663bb3276e6977f7",
+      "batchId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:6f869b361e8b70f63f647235f1427bc556f62d0720d564cdaa9deaf9f3979c34",
+      "runId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "runManifestDigest": "sha256:a9df9ea7cc41782ffc9c369e8cecf801ca3f0136737a2aee8c11296bc8b0ba4b",
+      "resultsDigest": "sha256:b9ecbf3f4ef14c7f6697f97a64acd78c6e97e917728e8b670144bde314863a3c"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-001",
+      "goalId": "d024aa45-5dbb-51f7-87a6-9ba939858696",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9abe366b372f12bba5b64627aeef7481637063c2ef580aacdb21edfa193e21e7",
+      "pageFingerprint": "sha256:5b666733d7524d45e8654fde86c4ee6663793356dfd246bc145a8c62b0e4b69f",
+      "goalReviewContextFingerprint": "sha256:bfbc98aebda0d4b034bae21138a179c84b263dbf30727967fca9f60ccff045b6",
+      "finalText": {
+        "titleDe": "Am Nachthimmel mit Sternkarte oder Software navigieren",
+        "titleEn": "Navigate the Night Sky with a Star Chart or Software",
+        "descriptionDe": "Die lernende Person kann für einen vorgegebenen Beobachtungsort und -zeitpunkt eine Sternkarte oder geeignete Software ausrichten und damit markante Sternbilder oder astronomische Objekte am Himmel auffinden.",
+        "descriptionEn": "The learner can orient a star chart or suitable software for a given observing location and time and use it to locate prominent constellations or astronomical objects in the sky."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.001",
+          "recordDigest": "sha256:5feb5b6c061e4d395b07f9fcb0684ef5445bc42fa649a3bb7ed056e2b1133589"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-d024aa45-5dbb-51f7-87a6-9ba939858696",
+          "recordDigest": "sha256:999c874fcbe9d3f9ea3bbe3b0e6ce2321a64d981f403d24540d768547da7cd4b"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Ort, Zeit und Horizontausrichtung verbinden Karte und tatsächlichen Himmel. Neue Orts-/Zeitsituationen verlangen eigenständige Navigation statt Bildwiedergabe. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Location, time and horizon alignment connect chart and actual sky. Changed sites/times require independent navigation rather than image repetition. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-002",
+      "goalId": "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fdb3e3cefb2936fb796a7d5d988d6dec933ceb148568531e0054b39636304f00",
+      "pageFingerprint": "sha256:a6745aa0aaf974de5821af55ed1b0f72fa0d31e89851260fdb7f4e55a3cd0e4b",
+      "goalReviewContextFingerprint": "sha256:246c22bc6a242d174fc0e37589c58b5fa323468621be9eef8adb36bb5ec21033",
+      "finalText": {
+        "titleDe": "Räumlich-zeitliche Sichtbarkeit astronomischer Objekte begründen",
+        "titleEn": "Explain the Spatial and Temporal Visibility of Astronomical Objects",
+        "descriptionDe": "Die lernende Person kann unter Berücksichtigung von Beobachtungsort, Uhrzeit und Jahreszeit grundlegende Aussagen darüber treffen und begründen, wann und wo ein astronomisches Objekt sichtbar ist.",
+        "descriptionEn": "The learner can account for observing location, time of day, and season to make and justify basic statements about when and where an astronomical object is visible."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.002",
+          "recordDigest": "sha256:e17b048bc866d624718a4701e66fbc38fb4cf5332bd646c15f14856f9538d85e"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-0b8a4215-e6ed-56c8-88c3-b3a2a99723c7",
+          "recordDigest": "sha256:f4e3ce3099ceb03a9d402fca36904fc5bf937df0d56789b058703b45f3054ab8"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Rotation, Jahreslauf und Breite erklären gemeinsam Sichtbarkeit. Die Bildübersicht nimmt keine neue orts- und zeitbezogene Vorhersage vorweg. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Rotation, seasonal motion and latitude jointly explain visibility. The overview does not supply a new location/time prediction. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-003",
+      "goalId": "23335a89-f8e6-5c22-8705-d71193aeac96",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5ef34388296a0eeb6a84a66769a580cd4b739b06ba3eff31e79df0a72c2e74b6",
+      "pageFingerprint": "sha256:bc39f94f1cacc5060fc1b02263d680c94071fbd472816d0ca13e0fdb2bafec11",
+      "goalReviewContextFingerprint": "sha256:62626b7236319d3cd52c086d1f68dd84c1089a7e46e703e722194ffe6e7dab89",
+      "finalText": {
+        "titleDe": "Rotationsdauer der Sonne aus Beobachtungsreihen abschätzen",
+        "titleEn": "Estimate the Sun’s Rotation Period from Observation Series",
+        "descriptionDe": "Die lernende Person kann in zeitlich getrennten, sicher gewonnenen oder bereitgestellten Sonnenbildern wiedererkennbare Strukturen verfolgen, daraus eine beobachterbezogene synodische Rotationsdauer abschätzen und erläutern, wie Projektion, Strukturentwicklung und differentielle Rotation die Näherung begrenzen.",
+        "descriptionEn": "The learner can track recurring structures in time-separated, safely obtained or supplied solar images, use them to estimate an observer-dependent synodic rotation period, and explain how projection, feature evolution, and differential rotation limit the approximation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.003",
+          "recordDigest": "sha256:c041d79ab894a524062ba563c119147b84ecc98f7e8522aaca057472c1653699"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-23335a89-f8e6-5c22-8705-d71193aeac96",
+          "recordDigest": "sha256:20815642bb4d1befe8f70d2fb34e492d1f92cdf557fd5a8b5993466fcfbecd9b"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Strukturverfolgung trägt nur eine synodische Näherung. Projektion, Fleckentwicklung und differentielle Rotation bleiben Grenzen; bereitgestellte Daten sichern die Beobachtung. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Feature tracking supports only a synodic approximation. Projection, feature evolution and differential rotation remain limitations; supplied data ensure safe observation. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-004",
+      "goalId": "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1c396a1363e997858a03b52a5321c8f8794474e3b0a34dd838d2ad5c2d8afa7e",
+      "pageFingerprint": "sha256:53e944f4d54cc999283662d1c507bc71c0c278c3cf745124fc6f2f8ea2e43269",
+      "goalReviewContextFingerprint": "sha256:a61d82731e9002994462d8ba8f9408326f8d0436740b0648452378c3928c5ae4",
+      "finalText": {
+        "titleDe": "Planetenkonstellationen und ihre Sichtbarkeit modellieren",
+        "titleEn": "Model Planetary Configurations and Their Visibility",
+        "descriptionDe": "Die lernende Person kann Planetenkonstellationen in Zeichnungen oder Simulationen modellieren und daraus ihre Sichtbarkeit am Nachthimmel erklären.",
+        "descriptionEn": "The learner can model planetary configurations in drawings or simulations and use them to explain their visibility in the night sky."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.004",
+          "recordDigest": "sha256:7828f51603e3b3679a23f2d303d379a2fb5a4d0ae1cced7f40546a2cbf30fd4f"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+          "recordDigest": "sha256:c8a1a4ec21232a8e92a4e8b17c10448665527f7cfebe8e3f04d3ac8fcc43f209"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Geometrie begründet Sichtbarkeit bei inneren und äußeren Planeten. Neue Konfigurationen werden modelliert statt die drei beschrifteten Bildfälle abzulesen. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Geometry explains visibility of inner and outer planets. New configurations must be modelled rather than reading the three labelled examples. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-005",
+      "goalId": "44766569-6379-5fbc-8976-cd3fc2fd6ec4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3eca68903fe787d80265fafa27800a2f5704602fde74f8c439cb62745bef712a",
+      "pageFingerprint": "sha256:08e40f88c90a389545469d8a65825868c3060190432cc43c14a520e83e70d955",
+      "goalReviewContextFingerprint": "sha256:b9d6fa141bd619a6ba877e2931d87f7918db23995c05f72f6ae788b40d51f3d6",
+      "finalText": {
+        "titleDe": "Schleifenbahnen von Planeten historisch einordnen",
+        "titleEn": "Place Planetary Retrograde Loops in Historical Context",
+        "descriptionDe": "Die lernende Person kann scheinbare Schleifenbahnen der Planeten als Folge relativer Bewegung im heliozentrischen Modell erklären und ihre Bedeutung für historische Erweiterungen und Umbrüche von Planetenbahnmodellen sowie deren Auswirkungen auf Weltbilder reflektieren.",
+        "descriptionEn": "The learner can explain apparent planetary retrograde loops as a result of relative motion in the heliocentric model and reflect on their significance for historical extensions and shifts in models of planetary motion and their effects on worldviews."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.005",
+          "recordDigest": "sha256:a4c4d9081a0ad604cdfd285fdb7cf1fcea7e7a314d99b70c0383a1a56352c491"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-44766569-6379-5fbc-8976-cd3fc2fd6ec4",
+          "recordDigest": "sha256:05f7bf194cbb489ef7be17ea6dd1898f99c19464e075f4db3936da3d0a1aeda4"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Relative Bewegung erklärt die Schleife, erzwingt aber allein keinen historischen Weltbildwechsel. Eigenständige Sichtlinien und Modellreflexion gehören zusammen. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Relative motion explains the loop but alone does not compel a historic worldview change. Independent sightlines and model reflection belong together. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-006",
+      "goalId": "49bb609a-bfb7-5391-9120-f5fc737efb9a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6975a34fc18d41eb96ee4e854a8028d85d1a6e146f6ccfb50533d39c01a63195",
+      "pageFingerprint": "sha256:439b0e43f673f1ab511f2e098924422de73bd8ec97412bcf7942583f375b7eec",
+      "goalReviewContextFingerprint": "sha256:9b9f606ff2e9fd822948025102b60338bbb7ae75e0210290ac2de5d09500e0bb",
+      "finalText": {
+        "titleDe": "Exoplanetenkandidaten mit der Transitmethode erklären",
+        "titleEn": "Explain exoplanet candidates using the transit method",
+        "descriptionDe": "Die lernende Person kann wiederkehrende Helligkeitsabnahmen eines Sterns mit dem Transit eines möglichen Planeten erklären und begründen, wie die Beobachtungsgeometrie die Nachweismöglichkeit begrenzt.",
+        "descriptionEn": "The learner can explain recurring decreases in a star's brightness as transits of a possible planet and justify how the viewing geometry limits detection."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.006",
+          "recordDigest": "sha256:30babac4c3683da48d198457603e85e57af91550fe384501cfe4574a0b590443"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-49bb609a-bfb7-5391-9120-f5fc737efb9a",
+          "recordDigest": "sha256:bc62a268fb35129c1e651565b63e14988893a070728eabcbcc29e55c04b29aa8"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Transitperiodizität ist Kandidatenevidenz unter eingeschränkter Geometrie, kein Existenzbeweis. Der erneuerte P-Transfer nutzt Messlücken und streifende Geometrie statt des im PNG gelösten Neigungsfalls. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Transit periodicity is candidate evidence under constrained geometry, not proof of existence. Renewed P transfer uses gaps and grazing geometry rather than the inclination case solved in the PNG. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-007",
+      "goalId": "5c5d6698-c056-5850-8ecd-6dd87fb44549",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d35877d314c37e5cf2a92305e74e8644f423fa15bd7adb624032b6055799953e",
+      "pageFingerprint": "sha256:275d4243effa868aebb5796728a7c6cf1a162349f3e3eb394eb37e553892e3d6",
+      "goalReviewContextFingerprint": "sha256:322f95bfabc35ad5888eb523124474f70598f476b3c862d8f34f5edfeebc3c9f",
+      "finalText": {
+        "titleDe": "Sterne anhand ihrer Spektren klassifizieren",
+        "titleEn": "Classify Stars from Their Spectra",
+        "descriptionDe": "Die lernende Person kann Sternspektren anhand charakteristischer Absorptionslinien einer Spektralklasse zuordnen und die Zuordnung mit Linienmustern und Oberflächentemperatur begründen.",
+        "descriptionEn": "The learner can assign stellar spectra to a spectral class using characteristic absorption lines and justify the classification using line patterns and surface temperature."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.007",
+          "recordDigest": "sha256:b2eb100a267007af8986cd8bb26d1bb1a8c320145159fbda5c74b6707e11e931"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-5c5d6698-c056-5850-8ecd-6dd87fb44549",
+          "recordDigest": "sha256:f29ced20117801e975b79c93c6dc56a4216070c827e2ce15a517d611eb577bc8"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Linienmuster und Temperatur tragen die Klassifikation. Linienintensität ist keine unmittelbare Häufigkeitsskala; schematische Bildklassen ersetzen kein unbekanntes Spektrum. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Line patterns and temperature support classification. Line strength is not a direct abundance scale; schematic classes do not replace an unknown spectrum. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-008",
+      "goalId": "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:40f87bbce02f3ff0bebe22b18d56f003db43506cb10c907424badc363c344c43",
+      "pageFingerprint": "sha256:740db4dd1d52659446c0190ec39a2a450229cfef90ab9034c4485b155f70bca1",
+      "goalReviewContextFingerprint": "sha256:04be7a6d88873842feb72fe0f61e15c8c8e3bf60c69a78fe414a7852a1d9a2a9",
+      "finalText": {
+        "titleDe": "Astronomische Einheit und ihre beobachtungsbasierte Bestimmung erklären",
+        "titleEn": "Explain the Astronomical Unit and Its Observation-Based Determination",
+        "descriptionDe": "Die lernende Person kann die Astronomische Einheit als Entfernungsmaß im Sonnensystem einordnen, dessen Wert in Metern heute exakt definiert ist, und aus Fachtexten sowie Beobachtungsdaten rekonstruieren, wie diese Länge vor der heutigen Definition erschlossen wurde.",
+        "descriptionEn": "The learner can characterize the astronomical unit as a distance measure in the Solar System whose value in metres is now defined exactly and use scientific texts and observational data to reconstruct how that length was inferred before the current definition."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.008",
+          "recordDigest": "sha256:b68c47c0da7f93ab68c17977fef4ce1aa344ab995fcf964739f2c642e94f7547"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+          "recordDigest": "sha256:0399ea6b2dd52602a4b30ec5ea2af62542cbf9980f6fba4eaa24226b81db1a00"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Heutige exakte AE-Definition bleibt von historischer Beobachtungsinferenz getrennt. Transfer rekonstruiert einen neuen Messweg ohne gefährliche Beobachtungsanforderung. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Today's exact AU definition remains separate from historic observational inference. Transfer reconstructs a new measurement route without hazardous observation requirements. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-009",
+      "goalId": "6dca3b0a-c872-543b-808f-97e855f5fafd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fd3143de0e3544c48780ce3576b64e2fabf3f8145502439b623ceb7a85e6e7bf",
+      "pageFingerprint": "sha256:7c4f2c72c35d4cb64db3e37abbf48b738ed407d8ed02a917d42598eebd29efdd",
+      "goalReviewContextFingerprint": "sha256:5093139d1a4f40aa15309efcd2c8d4bda9a8558269a928af9a79f30459aaea5d",
+      "finalText": {
+        "titleDe": "Exoplanetenkandidaten mit Stern-Radialbewegungen erklären",
+        "titleEn": "Explain exoplanet candidates using stellar radial motion",
+        "descriptionDe": "Die lernende Person kann periodische Dopplerverschiebungen im Spektrum eines Sterns mit seiner Bewegung um den gemeinsamen Schwerpunkt eines möglichen Stern-Planet-Systems erklären und die Aussagekraft dieses indirekten Nachweises begrenzen.",
+        "descriptionEn": "The learner can explain periodic Doppler shifts in a star's spectrum through its motion around the shared centre of mass of a possible star–planet system and identify the limits of this indirect evidence."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.009",
+          "recordDigest": "sha256:faec3d769fbb2f267a7a7b4cc3ec37f8cef645fb12d075821fec1efe09d8513e"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-6dca3b0a-c872-543b-808f-97e855f5fafd",
+          "recordDigest": "sha256:3dd7c6162d057dfd1238c9e7d293493602490490be98ffd5a7df93d29ab6e20b"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Periodische Sichtlinienbewegung erklärt Linienverschiebung; Neigung und Alternativmodelle begrenzen den Planetenschluss. Der erneuerte P-Primärfall nutzt frische Phasendaten und eine eigene Schwerpunktskizze. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Periodic line-of-sight motion explains shifts; inclination and alternative models limit planet inference. Renewed primary P uses fresh phase data and an independent barycentre sketch. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-010",
+      "goalId": "89124b92-5769-5e13-8a5d-78497936260f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d268cd922ab23ad397ec160fa47615b2b4b3fb0d0c43693e458a16ec54d9deb6",
+      "pageFingerprint": "sha256:1bba476a36af4da6d71d4f3aae7303fec5a52206dac9f2b1a5baef93133bcd2b",
+      "goalReviewContextFingerprint": "sha256:87c2e63aaaf5db32ae07bec7e27b03f66f8725d923c8c3de5b551eb875ff3b88",
+      "finalText": {
+        "titleDe": "Oberflächentemperaturen von Sternen aus Strahlungsdaten abschätzen",
+        "titleEn": "Estimate Stellar Surface Temperatures from Radiation Data",
+        "descriptionDe": "Die lernende Person kann die Oberflächentemperatur eines Sterns aus dem Spektralmaximum mit dem Wienschen Verschiebungsgesetz oder bei bekannten Größen zu Radius und Strahlungsleistung mit dem Stefan-Boltzmann-Gesetz abschätzen.",
+        "descriptionEn": "The learner can estimate a star’s surface temperature from its spectral maximum using Wien’s displacement law or, when radius and radiated power are known, using the Stefan–Boltzmann law."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.010",
+          "recordDigest": "sha256:39db9df129e23e65f8f68e0d10a9929fe3a638c352b61f87038cb81aa611ec54"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-89124b92-5769-5e13-8a5d-78497936260f",
+          "recordDigest": "sha256:1ea7691a58108794b3544f5f7743770bf1e19f3d3d2ed759c33cd273a8cfc2f8"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Wien und Stefan-Boltzmann sind alternative datenabhängige Wege zu derselben Temperaturkompetenz. Das Wien-PNG darf den zweiten Textweg nicht ausschließen. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Wien and Stefan-Boltzmann are alternative data-dependent routes to the same temperature competence. The Wien PNG does not exclude the second textual route. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-011",
+      "goalId": "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0bfa124718e283157d086ee21552566a4d1c5cbbdf08eb063ae4d1a11bd4801e",
+      "pageFingerprint": "sha256:1e7097e56cd14b9037590b5400b2149b9ace352e906744f0ba8b43f86fce365e",
+      "goalReviewContextFingerprint": "sha256:9083efdddc541f476b5adc771bfb27fdecc8a10e30850ac56fe9919a55534322",
+      "finalText": {
+        "titleDe": "Sonnenleuchtkraft aus Solarkonstante und Entfernung abschätzen",
+        "titleEn": "Estimate Solar Luminosity from the Solar Constant and Distance",
+        "descriptionDe": "Die lernende Person kann aus Solarkonstante und Sonne-Erde-Abstand die Leuchtkraft der Sonne abschätzen und die gemessene Bestrahlungsstärke von der erschlossenen Gesamtleistung unterscheiden.",
+        "descriptionEn": "The learner can estimate the Sun’s luminosity from the solar constant and the Sun–Earth distance and distinguish measured irradiance from inferred total power."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.011",
+          "recordDigest": "sha256:0f96f790cca9009a0c4cc4307c2bb3f9d5719a033baad74afa54165598bc3149"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+          "recordDigest": "sha256:1a0673e7c58483347f2fc6545145bba7428e6d12578c189f93d0e8669b1748d1"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Lokale Bestrahlungsstärke und erschlossene Gesamtleistung bleiben getrennt. Kugelfläche und isotrope Abstrahlung begründen L=4πr²S; Atmosphäreneinfluss ist ein echter Transfer. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Local irradiance and inferred total power remain separate. Spherical area and isotropic emission justify L=4πr²S; atmospheric influence is a genuine transfer. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-012",
+      "goalId": "9f85de48-1b3f-5afb-8a34-ce94cf7a1b49",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:85de97c2ef0fdac45c4f80a63c5c4b6550d6c05d4aba647cccdbadeff71dd447",
+      "pageFingerprint": "sha256:36aa45f941536c9ae7c2d708fe51b7e1ebfe1c7523a7e806421d084855b20ccf",
+      "goalReviewContextFingerprint": "sha256:6b951f0a57521d10e5eb2badc6f61b98f317c73dabe1444a108291894933c212",
+      "finalText": {
+        "titleDe": "Sternentfernungen und Tangentialgeschwindigkeiten astrometrisch bestimmen",
+        "titleEn": "Determine Stellar Distances and Tangential Velocities Astrometrically",
+        "descriptionDe": "Die lernende Person kann aus der trigonometrischen Parallaxe die Entfernung eines Sterns bestimmen und zusammen mit seiner Eigenbewegung dessen Tangentialgeschwindigkeit abschätzen sowie Reichweite und Messunsicherheit der Methode beurteilen.",
+        "descriptionEn": "The learner can determine a star’s distance from its trigonometric parallax and, together with its proper motion, estimate its tangential velocity and assess the method’s range and measurement uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.012",
+          "recordDigest": "sha256:325c7190563db11a407b10bc87d1f22aad905c5bf5155e218a12b2200cc0b9fb"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-9f85de48-1b3f-5afb-8a34-ce94cf7a1b49",
+          "recordDigest": "sha256:b3707ebcf5a2a340b6ce4911246d0fbf828eb56a841bb1f0fbddb555f2ce7d46"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Parallaxe, Entfernung und Eigenbewegung bilden eine verbundene astrometrische Inferenz. Kleine oder mit null vereinbare Parallaxen begrenzen die Inversion; der halbe Gesamtwinkel bleibt ausdrücklich p. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Parallax, distance and proper motion form a connected astrometric inference. Small or zero-compatible parallaxes limit inversion; p explicitly remains half the total angle. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-013",
+      "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ec9c0010af1779d18c61fc76ccd97abb5906d2dc9c423ef10864daf06a43e10a",
+      "pageFingerprint": "sha256:ee08bcce4647094d64475119a597df3f4b3dfd6be3a23a2ac0f07843b6646cfb",
+      "goalReviewContextFingerprint": "sha256:679fb82cce4e7f94c2af9b87d16def6cc1f150bcf04116ac6844456f627ae019",
+      "finalText": {
+        "titleDe": "Sonnenradius aus Beobachtungsdaten abschätzen",
+        "titleEn": "Estimate the Solar Radius from Observational Data",
+        "descriptionDe": "Die lernende Person kann aus einem sicher gewonnenen oder bereitgestellten Winkeldurchmesser der Sonne und ihrer Entfernung mithilfe eines geometrischen Modells den Sonnenradius abschätzen und die Messunsicherheit berücksichtigen.",
+        "descriptionEn": "The learner can use a safely obtained or supplied angular diameter of the Sun and its distance with a geometrical model to estimate the solar radius and account for measurement uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.013",
+          "recordDigest": "sha256:b3a1d383417caa6406176932497bdabe05197e36ae2e0988d50daccb19d965d8"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+          "recordDigest": "sha256:5002fc2bd628700162ede5761cf1d9c4cb8d86c7c8580362e3e6258eb2432cd9"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. B wird fachlich bevorzugt: die sichere Kleinwinkelnäherung R≈dθ/2 ist korrekt. Die zusätzliche pauschale Tangens-Exaktheitsbehauptung in A wird NICHT übernommen: bei einer Kugel und Mittelpunktabstand lautet die Tangentialgeometrie R=d sin(θ/2), während tan zu einer flachen Scheibe gehört. Zieltext und ausgewählte B-Evidenz bleiben bei passender Modellnäherung und Unsicherheit. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. B is substantively preferred: the safe small-angle approximation R≈dθ/2 is correct. A's additional blanket exact-tangent claim is NOT adopted: for a sphere at centre distance the tangent-ray geometry gives R=d sin(θ/2), whereas tan describes a flat disc. Goal text and selected B evidence retain the appropriate approximation and uncertainty. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-014",
+      "goalId": "ce037050-f94c-5828-883a-76385c84d1f7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3d5de976a349a85018f305dbe3a063c4e09f010d41611346460c44a78294af56",
+      "pageFingerprint": "sha256:2af8d9f1f5c25553eca4a1a6f4a717086caa69d8d6b3c0b06b06550ed25a36b5",
+      "goalReviewContextFingerprint": "sha256:ef4d17d14112852add73a7cab9ff70c723d89cb135ee16eaba8ed46718804870",
+      "finalText": {
+        "titleDe": "Radialgeschwindigkeiten aus Dopplerverschiebungen bestimmen",
+        "titleEn": "Determine Radial Velocities from Doppler Shifts",
+        "descriptionDe": "Die lernende Person kann Richtung und Betrag der Radialgeschwindigkeit eines Sterns aus der Verschiebung identifizierter Spektrallinien bestimmen und Vorzeichen, Bezugssystem sowie Messunsicherheit erläutern.",
+        "descriptionEn": "The learner can determine the direction and magnitude of a star’s radial velocity from shifts of identified spectral lines and explain the sign convention, reference frame, and measurement uncertainty."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.014",
+          "recordDigest": "sha256:060d02ba4bfaeda634a4a9c6c83c7932de51242fdd37f2822fda1767dd6e58f1"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-ce037050-f94c-5828-883a-76385c84d1f7",
+          "recordDigest": "sha256:f6a0197f79f669bd69984d0929243f00df84c9ec69cee85ea49ddb4a110d8936"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Identifizierte Linien, Vorzeichen und Bezugssystem tragen die Dopplerinferenz. Kalibrierung und Klein-Geschwindigkeits-Näherung bleiben begrenzende Bedingungen, nicht bloße Zahlenrechnung. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Identified lines, sign and reference frame support Doppler inference. Calibration and the low-speed approximation remain constraints rather than mere arithmetic. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-015",
+      "goalId": "e06dd9c7-8c36-5ca4-880b-57b02d837085",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a1b85c43348ff65c7d2f40e00f04611713402628e1ea112f0775df6ea5b0a6a6",
+      "pageFingerprint": "sha256:ad27b9ec391909d87c2d40f76c041f6e59e0224c6a7141eeda51d2b4f0d32026",
+      "goalReviewContextFingerprint": "sha256:0e60d755252ded268d8f9347d49f75b9d72457612dca837ac9e15a3bcc9c348f",
+      "finalText": {
+        "titleDe": "Mit bloßem Auge beobachtbare Himmelsobjekte klassifizieren",
+        "titleEn": "Classify Celestial Objects Visible to the Naked Eye",
+        "descriptionDe": "Die lernende Person kann mit bloßem Auge beobachtbare astronomische Objekte anhand geeigneter beobachtbarer Merkmale begründet Objektklassen zuordnen.",
+        "descriptionEn": "The learner can assign astronomical objects visible to the naked eye to appropriate object classes using observable features and justify the classification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.015",
+          "recordDigest": "sha256:9045c5d33bac89dc0a98aa7628bf77390c498d01334ce2e5ae54af4473c19cc2"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-e06dd9c7-8c36-5ca4-880b-57b02d837085",
+          "recordDigest": "sha256:67c336e2330d094d06e99b2ab3c34d16aba99cfca5e4d8751caf90fd0e05680b"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Beobachtungsmerkmale begründen eine vorläufige Klasse. Ruhiger Planet und funkelnder Stern sind typische Hinweise, keine ausnahmslosen Identifikationsregeln. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Observational features justify a provisional class. A steady planet and twinkling star are typical clues, not exceptionless identification rules. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-nav-current-16-v1-synthesis-20260920-v1-decision-016",
+      "goalId": "f9c025ce-4327-5de7-8288-a3358e14a576",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:06fdac8625074f621e7e7af432a72be789118af2c7c6e8861b6cecd28ddd927f",
+      "pageFingerprint": "sha256:5513b03a4739935333ca96dabec4562600313650c63937bfff3e48422f25e37a",
+      "goalReviewContextFingerprint": "sha256:5c665dbd320c7fd00a891eff5785e7829d0e0985a3e3962fb5904ad511394397",
+      "finalText": {
+        "titleDe": "Fraunhoferlinien in Sternspektren deuten",
+        "titleEn": "Interpret Fraunhofer Lines in Stellar Spectra",
+        "descriptionDe": "Die lernende Person kann Fraunhoferlinien in Sternspektren als Absorptionslinien deuten und ihre Entstehung durch selektive Absorption in der Sternatmosphäre mithilfe eines Energieniveaumodells erklären.",
+        "descriptionEn": "The learner can interpret Fraunhofer lines in stellar spectra as absorption lines and explain their formation through selective absorption in a stellar atmosphere using an energy-level model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.016",
+          "recordDigest": "sha256:3076509d80df9e4bfb18c5d2408c39f48f7499cbae5c6be921c4dbaa32b40bc8"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-nav-b-f9c025ce-4327-5de7-8288-a3358e14a576",
+          "recordDigest": "sha256:3029e648f07a175cb19fc97182786f60e8a383036d5a8a3631651f123b22ca51"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Selektive Absorption und Energieniveaus erklären Linien. Linienlage, Stärke und Dopplerverschiebung bleiben getrennt; der Modellmechanismus ersetzt keine neue Spektrendeutung. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Selective absorption and energy levels explain lines. Position, strength and Doppler shift remain distinct; the mechanism does not replace interpreting a new spectrum. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    }
+  ],
+  "manifestFingerprint": "sha256:756c13eb8945f2da342ee7dab8b42a712f3d52eb1c5d8836c88f4b07985a50c4"
+}

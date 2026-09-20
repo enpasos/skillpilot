@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
-import { hasCurrentGoalVisualizationApproval } from './checkGoalVisualizationQaApprovalCoverage'
+import { isAiApprovedForCurrentAsset } from '../src/utils/goalVisualizationQaStatus'
 import {
   fingerprintSemanticKindSourceGoal,
 } from './goalBookModel'
@@ -586,10 +586,13 @@ export const hasStrictDeepUnderstandingCompletion = (
 
 /** A technical deferral is open work, not an approved pedagogical exception. */
 export const hasCompletedDeepUnderstandingVisualizationReview = (
-  record: Parameters<typeof hasCurrentGoalVisualizationApproval>[0] & { missingReason: string },
+  record: Parameters<typeof isAiApprovedForCurrentAsset>[0] & {
+    visualizationState: 'available' | 'missing'
+    missingReason: string
+  },
 ): boolean => record.visualizationState === 'available'
   && record.missingReason === ''
-  && hasCurrentGoalVisualizationApproval(record)
+  && isAiApprovedForCurrentAsset(record)
 
 const addIssue = (issues: string[], scope: string, message: string): void => {
   issues.push(`${scope}: ${message}`)
@@ -851,16 +854,10 @@ const loadVisualizationReadyGoals = (
     '--check',
     `--subject=${config.subject}`,
   ])
-  const approvalCheck = runTsxCheck('app/scripts/checkGoalVisualizationQaApprovalCoverage.ts', [
-    `--subject=${config.subject}`,
-  ])
   if (!currentCheck.valid) {
     addIssue(issues, config.subject, `visualization-QA freshness check failed: ${currentCheck.detail}`)
   }
-  if (!approvalCheck.valid) {
-    addIssue(issues, config.subject, `visualization-QA approval check failed: ${approvalCheck.detail}`)
-  }
-  if (!currentCheck.valid || !approvalCheck.valid) return new Set()
+  if (!currentCheck.valid) return new Set()
   let ledger: VisualizationQaLedger
   try {
     ledger = loadJson<VisualizationQaLedger>(config.visualizationQaPath)

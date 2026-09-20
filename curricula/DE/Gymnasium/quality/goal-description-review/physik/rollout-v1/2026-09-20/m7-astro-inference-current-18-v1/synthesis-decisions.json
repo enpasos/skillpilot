@@ -1,0 +1,552 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root; exact model identifier not exposed",
+  "synthesizedAt": "2026-09-20T09:11:33.000Z",
+  "batch": {
+    "batchId": "physik-m7-astro-inference-current-18-v1-20260920",
+    "batchManifestDigest": "sha256:6c2830def5733f52a295838f555e37ad6739fff6859e3a1dc27b525b5fd8368f",
+    "configDigest": "sha256:f9030d489e5fd10fd42c17a3e071591f96594c1af76ef8737e278d94e0015da9",
+    "bundleFingerprint": "sha256:5e342d95462e240891015b51b6b088dbc8fcade2f474978e1aa932440df053ec",
+    "bookDigest": "sha256:71c55b366a5498bfd2f5f980b1f6e0b47cad09829f6a93df1a3803097eb71b69",
+    "reviewInputFingerprint": "sha256:9db47d41282daa6807cc086ba3faf61192b96dcbb78b5521ec5871cad8f24033",
+    "dualSummaryDigest": "sha256:d95ec29a1bdb370dd0a61f18b974a9e0e4991395e77583398ee4908fb8894a68",
+    "canonicalLandscapeDigest": "sha256:f505f46218ce324a940c32b45d3804273acbbc39e4d5782b197c5c3e614baf6a"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-m7-astro-inference-current-18-v1-20260920-a",
+      "campaignDigest": "sha256:54acfa80660f6c47901fff927ad2d44fe162b7681f7b70307f94588721baf586",
+      "roundId": "physik-m7-astro-inference-current-18-v1-20260920-first-pass-a",
+      "independenceGroupId": "physik-m7-astro-inference-current-18-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:9db47d41282daa6807cc086ba3faf61192b96dcbb78b5521ec5871cad8f24033",
+      "batchId": "physik-m7-astro-inference-current-18-v1-20260920-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:b889013fb47d7be8cd81f5f499189d0d6dea143c0d438398858e66024d2be3e9",
+      "runId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5",
+      "runManifestDigest": "sha256:e10b9474f209b99438d913513aac807ba9b13425755b262bf8f311f4e66e1555",
+      "resultsDigest": "sha256:1deef03c2b645fbcff7acfea43ad2f02841e0efa45e86a0f034d1fe0ac616351"
+    },
+    "second": {
+      "campaignId": "physik-m7-astro-inference-current-18-v1-20260920-b",
+      "campaignDigest": "sha256:426252ce91fe79ea4274643426803cd31e7413500d2877636d6ffb3fc2b65268",
+      "roundId": "physik-m7-astro-inference-current-18-v1-20260920-first-pass-b",
+      "independenceGroupId": "physik-m7-astro-inference-current-18-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:9db47d41282daa6807cc086ba3faf61192b96dcbb78b5521ec5871cad8f24033",
+      "batchId": "physik-m7-astro-inference-current-18-v1-20260920-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:79f9be04145085cf7a60a7118e4474738ef1ac9688f0d6f20d063103331414de",
+      "runId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native",
+      "runManifestDigest": "sha256:65150b1ed79866a88e11c4a8f5f9432c56088e05e4df641872d846f18acdbb3b",
+      "resultsDigest": "sha256:b4cd9365b291a00ac97acc839efa7d33db1dccdd1746cd2479d69f096bd32091"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-001",
+      "goalId": "09995ab9-86aa-5b02-8a58-62b16a37831d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f8c8ae3b7b3edc6c96dc941bdb8ba3154e12518178dec54472c191d0f8a9ab27",
+      "pageFingerprint": "sha256:0fdb3c3aba987e055a26cb7ceeb1c7537f7015422110dc5b5cbc59ae56772aad",
+      "goalReviewContextFingerprint": "sha256:7dd60f72a8d43820e4e58e2f521de2ad11ee0b63d486e434c94ea0330c3bd6d1",
+      "finalText": {
+        "titleDe": "Entstehung von Gravitationswellen mit begrenzter Analogie erklären",
+        "titleEn": "Explain Gravitational-Wave Generation Using a Limited Analogy",
+        "descriptionDe": "Die lernende Person kann die Entstehung von Gravitationswellen durch zeitlich veränderliche, nicht kugelsymmetrische Massenverteilungen qualitativ erklären und Gemeinsamkeiten sowie Grenzen der Analogie zu elektromagnetischer Strahlung benennen.",
+        "descriptionEn": "The learner can qualitatively explain gravitational-wave generation by time-varying, non-spherically symmetric mass distributions and identify both similarities and limits of the analogy with electromagnetic radiation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.001",
+          "recordDigest": "sha256:f96246ffd9811ca1d3c073fd6cc5221df7ff1b143ef4cda4c2a0939b26a5b11c"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.09995ab9-86aa-5b02-8a58-62b16a37831d",
+          "recordDigest": "sha256:9ad620c171f2aee2b7709c834ddd6c9edfbcc207df8bbeb4c2ebe4d5f9f8fefd"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Symmetrie und begrenzte Analogie tragen die Entstehungserklärung. B fordert mit kugelsymmetrischem Pulsieren einen wirklichen Gegenfall; das Gitternetz ist kein materieller Träger. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Symmetry and the limited analogy support the generation explanation. B supplies spherical pulsation as a genuine countercase; the grid is not a material medium. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-002",
+      "goalId": "1b7e800a-1c0d-5faa-886b-7ef2f3b8348c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f9dd3bb5f751beee489d52dd51da52b1ead479f552b32d9c6240ad37430c718e",
+      "pageFingerprint": "sha256:e67aebb33d7ba6fcca0ef906e3f0d9d4e280b4afa6f0b86a290b6dfdde3da038",
+      "goalReviewContextFingerprint": "sha256:a169a0b00d0afa8b8f3c57fac9b8f731440debfc85fe846773f12ad919b9f6b1",
+      "finalText": {
+        "titleDe": "Chirp-Masse aus der Frequenzentwicklung eines Gravitationswellensignals erschließen",
+        "titleEn": "Infer Chirp Mass from the Frequency Evolution of a Gravitational-Wave Signal",
+        "descriptionDe": "Die lernende Person kann aus Frequenz und Frequenzänderungsrate eines inspiralartigen Gravitationswellensignals mit einem begründeten Näherungsmodell die Chirp-Masse als bestimmte Kombination der Komponentenmassen abschätzen sowie Annahmen, Unsicherheiten und Grenzen dieser Inferenz erläutern.",
+        "descriptionEn": "The learner can use the frequency and frequency derivative of an inspiral-like gravitational-wave signal with a justified approximation model to estimate the chirp mass as a specific combination of the component masses and explain the assumptions, uncertainties, and limitations of this inference."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.002",
+          "recordDigest": "sha256:ead96c645238652dfe40edc82c1e5115ea6099600b4115bfb4bd358f3d95586e"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.1b7e800a-1c0d-5faa-886b-7ef2f3b8348c",
+          "recordDigest": "sha256:80dc597affaa33a939daa3d3fa284fad5b49e17587b560f2ee65acaf4b5bd4b7"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Die Chirp-Masse folgt gemeinsam aus f und df/dt im Inspiralmodell, nicht aus einem Frequenzanstieg allein. B grenzt Einzelmassen und Verschmelzung aus; qualitative Massenvergleiche brauchen vergleichbare Frequenzen. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Chirp mass follows jointly from f and df/dt in the inspiral model, not frequency increase alone. B excludes individual masses and merger; qualitative mass comparisons require comparable frequencies. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-003",
+      "goalId": "2014791b-af68-58d0-838b-fc9701202096",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2b524d9d29c2e0dbdc7700f6f12cc0afa88e1a1194038f66deb24631a6ad3326",
+      "pageFingerprint": "sha256:c1bf162474c7b87fab22198d47fedbd511596adaa887d409d8f8f00828015a59",
+      "goalReviewContextFingerprint": "sha256:0ec35e394017c1543e5dfe25117e86f6df2922496d65d9a3e1b5d5097dfce23e",
+      "finalText": {
+        "titleDe": "Dynamische Gesamtmasse aus optischen Zweikörperbahndaten erschließen",
+        "titleEn": "Infer Dynamical Total Mass from Optical Binary-Orbit Data",
+        "descriptionDe": "Die lernende Person kann aus Bahnperiode und räumlich kalibrierter Bahnskala eines optisch beobachteten Zweikörpersystems mit einem begründeten Zweikörper- und Gravitationsmodell die dynamische Gesamtmasse des Systems abschätzen sowie Annahmen, Unsicherheiten und Grenzen der Inferenz erläutern.",
+        "descriptionEn": "The learner can use the orbital period and spatially calibrated orbital scale of an optically observed two-body system with a justified two-body and gravitational model to estimate the system’s dynamical total mass and explain the assumptions, uncertainties, and limitations of the inference."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.003",
+          "recordDigest": "sha256:c965c7ab2035cebe4740da1ceed07dd3d7dda6d4c67d40a341de8d882102840f"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.2014791b-af68-58d0-838b-fc9701202096",
+          "recordDigest": "sha256:77bf0bc40868717019cb3b844a8a767b0fa6bd2555d5a5afee8dec3a772cbcf1"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Kalibrierte Relativbahnskala a1+a2 und Periode tragen die Gesamtmasseninferenz. B trennt Winkelabstand, Projektion und räumliche Halbachse und prüft eine geneigte Bahn als Transfer. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Calibrated relative-orbit scale a1+a2 and period support total-mass inference. B separates angular separation, projection and physical semimajor axis and tests an inclined orbit as transfer. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-004",
+      "goalId": "206a7d3d-9b11-56be-89ff-73898445c4f5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ecb93156ffba2e939cdac9cba9e9f38cc9071fe5622c70a4cef28ade31e9addc",
+      "pageFingerprint": "sha256:a67f4225c83300928ba149b81aa6e9f3e7411336f2d4a7cb9352848c1bfa6874",
+      "goalReviewContextFingerprint": "sha256:a0b0fab977c2943dad05e604c2a53cf5570f2d4e58cb261b249910b60805d44b",
+      "finalText": {
+        "titleDe": "Galaxienentfernungen bestimmen und Verfahren beurteilen",
+        "titleEn": "Determine Galaxy Distances and Evaluate the Methods",
+        "descriptionDe": "Die lernende Person kann ein geeignetes Verfahren zur Entfernungsbestimmung von Galaxien anwenden, mit anderen astronomischen Entfernungsverfahren vergleichen und Messunsicherheiten sowie Gültigkeitsgrenzen beurteilen.",
+        "descriptionEn": "The learner can apply a suitable method for determining galaxy distances, compare it with other astronomical distance methods, and assess measurement uncertainties and validity limits."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.004",
+          "recordDigest": "sha256:c646cb3e839131958dd86ab7d1d39e2c2ca3efddcb869415ba1285dab934bf89"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.206a7d3d-9b11-56be-89ff-73898445c4f5",
+          "recordDigest": "sha256:4d7f9e40db6bf4a6a9cf50b0679aac66ec1fb0b9a3d5733aa361921ef0dba375"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Methodenwahl und Unsicherheit sind Bestandteil einer Entfernungsinferenz, keine Pflicht zur Beherrschung aller Leiterstufen. B prüft Eigenbewegung gegenüber Hubble-Fluss; Unsicherheit bleibt fallbezogen. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Method choice and uncertainty form one distance inference, not mandatory mastery of every ladder rung. B tests peculiar motion relative to Hubble flow; uncertainty remains case-specific. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-005",
+      "goalId": "44f0eefa-2d93-5954-879f-f6c49e5cebc7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:06531cc8d072d46371e3ed47eb7f6c1226d3d0ada1e215dc0b438738923d19ac",
+      "pageFingerprint": "sha256:428641f3a3721bdf5a574d6d2d753f17f5d2a4ecae5a005e8390fedd85aa5f06",
+      "goalReviewContextFingerprint": "sha256:3bf938908f195daec323052fdda592f1db9217699a3cbfc4f2530b65ec62cf4e",
+      "finalText": {
+        "titleDe": "Universumsalter mit der Hubble-Beziehung abschätzen",
+        "titleEn": "Estimate the Age of the Universe from the Hubble Relation",
+        "descriptionDe": "Die lernende Person kann aus der Hubble-Beziehung ein Hubble-Alter abschätzen und erläutern, warum es nur unter vereinfachenden Annahmen über die Expansionsgeschichte als Universumsalter gedeutet werden darf.",
+        "descriptionEn": "The learner can estimate a Hubble age from the Hubble relation and explain why it can be interpreted as the age of the universe only under simplifying assumptions about the expansion history."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.005",
+          "recordDigest": "sha256:1f5eb8ca9ab32526c4fea63126d5093b0c9369ac193d4d0fcb43b8be4e53eae7"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.44f0eefa-2d93-5954-879f-f6c49e5cebc7",
+          "recordDigest": "sha256:db9ca0c717aa46ce6b9b1acd59ce81694eb2e0d9cd81bc9d0a4658079d99f987"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. B präzisiert die Modellgrenze gegenüber der mehrdeutigen Kurzform in A: lineare Rückextrapolation bei konstantem da/dt, nicht zeitlich konstantem H. Zwei Verläufe gleicher heutiger Steigung können verschieden alt sein. Das fachlich nachgeprüfte P-Profil wahrt dieselbe Unterscheidung. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. B clarifies the model boundary relative to A's ambiguous shorthand: linear backward extrapolation at constant da/dt, not constant H over time. Two histories with the same present slope can have different ages. The substantively checked P profile retains this distinction. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-006",
+      "goalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0841958dc0d4bd921c45aaa72346bbaaa0941d753ef65a1b7eb7623b422f97e0",
+      "pageFingerprint": "sha256:8cad12baf1307f89c64795ed0a328a60df1e66b9a0db4ba538bfa2c8a95f3389",
+      "goalReviewContextFingerprint": "sha256:3affaa117226ac3dc7026ae4874008dd6cb5e10d3aed83379f4509b3c3762096",
+      "finalText": {
+        "titleDe": "Spektrum elektromagnetischer Wellen",
+        "titleEn": "Spectrum of Electromagnetic Waves",
+        "descriptionDe": "Die lernende Person kann das elektromagnetische Spektrum nach Frequenz und Wellenlänge geordnet darstellen, typische Bereiche einordnen, technische Anwendungen passenden Spektralbereichen zuordnen und die Zuordnung anhand relevanter Welleneigenschaften begründen.",
+        "descriptionEn": "The learner can represent the electromagnetic spectrum ordered by frequency and wavelength, classify typical regions, assign technical applications to appropriate spectral regions, and justify the assignment using relevant wave properties."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.006",
+          "recordDigest": "sha256:cfe79ad01280e38d1e966852ad007f65256f74c47d426d631ee8c5dc9432a031"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+          "recordDigest": "sha256:5378875b48b51b1679b16c42a37b8b7d2eb9b55680766c1aa3c483ef81038e5e"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Spektrumsordnung und eigenschaftsbezogene Anwendung gehören zusammen. B fordert einen neuen Material-Durchlässigkeitsfall, nicht das Ablesen der Bildsymbole oder vorgezogene Photonentheorie. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Spectrum order and property-based application belong together. B requires a new material-transmission case, not reading image symbols or importing photon theory prematurely. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-007",
+      "goalId": "71b51afd-c71b-506f-8128-d6de36b509d1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2506dcf4fe69ff343715120f7dd8c3839d9d5a8d801854a993d30c667c6ae51b",
+      "pageFingerprint": "sha256:2f76db4deb919a55355430136bbb48a5c09107df4f5bc58ce3d0a28834ed51a2",
+      "goalReviewContextFingerprint": "sha256:da4a44ffc7adf05fa474f5b06b81d5807238f0ea6a719af33ce1ce9c2a192e07",
+      "finalText": {
+        "titleDe": "Optische Risiken und Lasersicherheit beurteilen",
+        "titleEn": "Evaluate optical risks and laser safety",
+        "descriptionDe": "Die lernende Person kann Risiken beim Umgang mit Linsen, Lichtquellen und Lasern benennen, Sicherheitshinweise fachlich einordnen und einfache Schutzmaßnahmen begründen.",
+        "descriptionEn": "The learner can identify risks when handling lenses, light sources, and lasers, classify safety instructions in subject terms, and justify simple protective measures."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.007",
+          "recordDigest": "sha256:9e24aa5553d9d5ee823a77a167ef745ab3e7eb3f80ca29ab04e1268fcbfb336e"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.71b51afd-c71b-506f-8128-d6de36b509d1",
+          "recordDigest": "sha256:2720b127f6297d3b295761cb705bad739e0e521dabd9f19dd0110bda8cc05b86"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Strahlweg und Expositionsrisiko begründen Schutzmaßnahmen. B beschränkt Leistungen auf sichere Zeichnungen und vorgegebene Hinweise; eine gezeichnete Schutzbrille gilt nicht universell. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Light path and exposure risk justify protection. B confines performance to safe drawings and supplied instructions; depicted eyewear is not universally suitable. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-008",
+      "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:30568558572118ec6d55497a22a9e67c54e562741376def0677727ade3de8549",
+      "pageFingerprint": "sha256:6e43698456d5ba689ba77800b344492ba626fde2fc1be47130b52b7149172d25",
+      "goalReviewContextFingerprint": "sha256:fecdec9f0a96b04a183f86b5a767d4ec8304c256003e845db00a84de4ce58bfc",
+      "finalText": {
+        "titleDe": "Frequenzspektren von Tönen und Klängen analysieren",
+        "titleEn": "Analyse frequency spectra of tones and complex sounds",
+        "descriptionDe": "Die lernende Person kann Zeitdiagramme und Frequenzspektren von Tönen und Klängen miteinander verknüpfen, Grund- und Obertöne identifizieren und den Einfluss der Spektralanteile auf die Klangfarbe erklären.",
+        "descriptionEn": "The learner can relate time-domain graphs and frequency spectra of tones and complex sounds, identify fundamental and overtone components, and explain how the spectral components affect timbre."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.008",
+          "recordDigest": "sha256:c6c9b84810c35d08536af2439e1d99286f868ce72bb5778c3cc53a89c2e29ad5"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.f06c581a-7157-584e-a692-99bcd613cff9",
+          "recordDigest": "sha256:7873e2e010312738d848f9f908958bce971d11dec4af5aca6e92d77d7e75eb93"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Zeitbild und Spektrum werden über dasselbe Signal verbunden. B trennt relative Obertonänderung durch Filterung von gemeinsamer Amplitudenskalierung; keine Hörphysiologie wird vorweggenommen. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Time graph and spectrum represent the same signal. B distinguishes relative overtone changes by filtering from common amplitude scaling; auditory physiology is not imported. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-009",
+      "goalId": "9678afc1-44ca-54fb-b280-29336d45a928",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:56739330747fc0a10fdcb5e5924b579a48aa0aeae6375f95e5c3faa3be354f74",
+      "pageFingerprint": "sha256:545a7bbb7028ed7a54eb9b7840644030e70fbadca2904cb8f072e794b2506900",
+      "goalReviewContextFingerprint": "sha256:05736dcf08808d37b8e6eb0c9273d4c4de8ce5f9cbfa3359ab01c3d6cc883373",
+      "finalText": {
+        "titleDe": "Richtungshören mit spektralen und binauralen Hinweisen untersuchen",
+        "titleEn": "Investigate sound localisation using spectral and binaural cues",
+        "descriptionDe": "Die lernende Person kann erklären, wie richtungsabhängige Filterung durch Ohrmuschel und Gehörgang sowie interaurale Laufzeit- und Pegeldifferenzen zur Schalllokalisation beitragen, Laufzeitdifferenzen für eine gegebene Richtung abschätzen und frequenzabhängige Grenzen der Hinweise beurteilen.",
+        "descriptionEn": "The learner can explain how direction-dependent filtering by the pinna and ear canal and interaural time and level differences contribute to sound localisation, estimate a time difference for a given direction, and assess frequency-dependent limitations of these cues."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.009",
+          "recordDigest": "sha256:23393c93db0127016c3c0d3d675342dfd13149bf3d972a487c6901322b9a5170"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.9678afc1-44ca-54fb-b280-29336d45a928",
+          "recordDigest": "sha256:a056442fbbf61e54972f4c836edb79dee64290ded79c6232e53ef26fc8918cf2"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Die drei Hinweise dienen einer gemeinsamen Lokalisationskompetenz. B verbindet Laufweg, Abschattung und Filterung und variiert Frequenz oder Bandbreite statt bloß Zahlen einzusetzen. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. The three cues serve one localisation competence. B connects path difference, shadowing and filtering and varies frequency or bandwidth rather than merely substituting numbers. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-010",
+      "goalId": "bf559969-a05c-58b5-82c5-3d719d96555d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8f36c7e821312bc965761e0c6423c230e5e2fd983e1ea9ef19bd6ff175607c9f",
+      "pageFingerprint": "sha256:cf2cb4a00143eadf8a2b1ec680217c856769b8ef40664fb80b2848a79fe4c506",
+      "goalReviewContextFingerprint": "sha256:13894a8d8603dbfe743c3b99004d579011d3b21f05fe99061c64062e6625b838",
+      "finalText": {
+        "titleDe": "Erzeugung und Ausbreitung harmonischer mechanischer Wellen erklären",
+        "titleEn": "Explain the Generation and Propagation of Harmonic Mechanical Waves",
+        "descriptionDe": "Die lernende Person kann erklären, wie eine harmonische Anregung in einem gekoppelten, näherungsweise linearen Medium eine harmonische mechanische Welle erzeugt und wie sich dabei Störung und Energie ausbreiten, obwohl die Medienelemente nur lokal schwingen.",
+        "descriptionEn": "The learner can explain how harmonic excitation in a coupled, approximately linear medium generates a harmonic mechanical wave and how the disturbance and energy propagate even though the medium elements oscillate only locally."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.010",
+          "recordDigest": "sha256:5062dead091c72e6cee4c64d43f5b98acc3cfaec7b3ad7785d7a395eafb7fc35"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.bf559969-a05c-58b5-82c5-3d719d96555d",
+          "recordDigest": "sha256:a951206945a15ba333b0311aeff63201bd76c81c6f2b5100c768eb9d9371b1e3"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Lokale Schwingung ist kein Mitwandern mit der Welle. B macht die Kopplungsrolle durch eine unterbrochene Verbindung prüfbar und wahrt die lineare Modellannahme. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Local oscillation is not travel with the wave. B tests coupling through an interrupted connection and retains the linear model assumption. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-011",
+      "goalId": "9dba2826-b179-59f0-8d91-5916079e5abe",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:255063002dc474deae052ac3d64a6bc27193427941c8edb63eecc56a7eec4d07",
+      "pageFingerprint": "sha256:b956279ede09b80439171f87245d9ae46ea737799468f54d6c40aabb8edad8e1",
+      "goalReviewContextFingerprint": "sha256:46cdf3e1373ee9ea8723e9ce19808da45a5277c28a75e9ec3f3675859757a5db",
+      "finalText": {
+        "titleDe": "Huygens'sches Prinzip und Elementarwellen",
+        "titleEn": "Huygens' Principle and Elementary Waves",
+        "descriptionDe": "Die lernende Person kann die Ausbreitung von ebenen und kreisförmigen Wellenfronten mithilfe des Modells der Elementarwellen (Huygens'sches Prinzip) erklären.",
+        "descriptionEn": "The learner can explain the propagation of plane and circular wave fronts using the elementary-wave model (Huygens' principle)."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.011",
+          "recordDigest": "sha256:afcae44b42b0eda30d33721a551a360be7b75b744dfd3758bfda330f73482146"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.9dba2826-b179-59f0-8d91-5916079e5abe",
+          "recordDigest": "sha256:39c6e05f4a0bfa69af150c093a9ff6bbd0d2dcfcfc150b2df680b94adc0448d6"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Eigene Elementarwellenkonstruktion und Einhüllende sichern das Huygens-Verständnis. B prüft den Wechsel der Frontkrümmung; das eigenständig erneuerte P-Beispiel verhindert Kopieren des neuen PNG. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Independent wavelet construction and envelope establish Huygens understanding. B tests changed front curvature; the separately renewed P example prevents copying the new PNG. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-012",
+      "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7e003c6a9d03116efd62706b78d18b3848b88ee1be7ff1429f8df4cf384ba032",
+      "pageFingerprint": "sha256:3bf8eb3b10688f49073bdfe484d49efe9492e400f8ebcff882e69e41dd4c3850",
+      "goalReviewContextFingerprint": "sha256:c29dce00a27c4caa93069bb0391fd587fdc867e62c1e1951ad0f907b21963b10",
+      "finalText": {
+        "titleDe": "Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen",
+        "titleEn": "Solve the Differential Equation of an Electromagnetic Oscillating Circuit by Ansatz",
+        "descriptionDe": "Die lernende Person kann die Differentialgleichung eines idealisierten elektromagnetischen Schwingkreises mit einem geeigneten Ansatz lösen und die Lösungen im Hinblick auf Periodendauer, Frequenz und Energieumlagerung deuten.",
+        "descriptionEn": "The learner can solve the differential equation of an idealized electromagnetic oscillating circuit using a suitable ansatz and interpret the solutions with respect to period, frequency, and energy transfer."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.012",
+          "recordDigest": "sha256:e13c5ef21bb1acf8361392aeafbb16f7a4fb3e8f208ba75888625ebc537c1aa9"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+          "recordDigest": "sha256:4da4c2efdf660e2e28baf21e9f7de030ca21e6c9684662a2ce1863fe83605ab6"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Ansatzprüfung und LC-Energiedeutung bilden eine Modellkompetenz. B variiert die Anfangsbedingung statt die Schaltung um Widerstand zu erweitern; Energieanteile bleiben nichtnegativ. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Ansatz verification and LC energy interpretation form one modelling competence. B changes the initial condition without adding resistance; energy components remain nonnegative. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-013",
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7e2809ae10f02c415568a67269a4f869f77ade333635eb92329199764bdbf7ed",
+      "pageFingerprint": "sha256:856a7c9401aa84e929bc7517ec9719be479555a5c5760b1b446382d318e9ab5b",
+      "goalReviewContextFingerprint": "sha256:1e3e80a1893a91b6afba5b0550df3ac0732b8d5fde325447475fc31613e4983b",
+      "finalText": {
+        "titleDe": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+        "titleEn": "Distinguish Average and Instantaneous Velocity",
+        "descriptionDe": "Die lernende Person kann Durchschnittsgeschwindigkeit für ein endliches Zeitintervall und Momentangeschwindigkeit für einen Zeitpunkt bestimmen, vergleichen und im t-s-Diagramm als Sekanten- beziehungsweise Tangentensteigung deuten.",
+        "descriptionEn": "The learner can determine and compare average velocity over a finite interval and instantaneous velocity at an instant, interpreting them in a time-position graph as secant and tangent slopes, respectively."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.013",
+          "recordDigest": "sha256:5fd9c689619bed43e82eaee259193dddf5e734512b65fe6a281310711794a92f"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.bf8517a9-142b-5789-826a-767f3b277998",
+          "recordDigest": "sha256:05984ca4755cfad6f5d3ff9d25f436c2e9030a9e48d28e0b5d1b2ea2bafc56df"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Sekante und Tangente unterscheiden Intervall und Zeitpunkt. B prüft eine Umkehrbewegung mit verschwindender mittlerer Ortsänderung und trennt diese von zurückgelegter Strecke. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Secant and tangent distinguish interval and instant. B tests reversed motion with zero mean displacement and distinguishes this from distance travelled. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-014",
+      "goalId": "f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9a8138278f415cacc4c349a84763d0817dfdc395a85f1254f1d248c4f7e4cc06",
+      "pageFingerprint": "sha256:894c50db1eca224d2d1ae8c55ca78dc8c49734fcd37fd0060c4f0d0d7006c261",
+      "goalReviewContextFingerprint": "sha256:f0671800f745310dbba040c6117e133c9cdb32b64d4a45af03614a913e332501",
+      "finalText": {
+        "titleDe": "Massen aus astronomischen Bahnbewegungen abschätzen",
+        "titleEn": "Estimate Masses from Astronomical Orbital Motion",
+        "descriptionDe": "Die lernende Person kann aus Bahngeschwindigkeiten und Radien mit einem begründeten Gravitationsmodell die innerhalb der jeweiligen Bahn eingeschlossene Masse eines astronomischen Systems abschätzen und erläutern, unter welchen Annahmen daraus etwa die Masse eines zentralen Schwarzen Lochs oder die Massenverteilung einer Galaxie erschlossen werden kann.",
+        "descriptionEn": "The learner can use orbital speeds and radii with a justified gravitational model to estimate the mass enclosed within the relevant orbit of an astronomical system and explain the assumptions under which this can be used to infer, for example, the mass of a central black hole or a galaxy’s mass distribution."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.014",
+          "recordDigest": "sha256:688e3ec346dbf123c94fd51308036355a830f4685558d330616b559cfc748d7e"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.f3dbcafa-1849-5ee1-8807-81e8d7fed73d",
+          "recordDigest": "sha256:d793b3ceaba9b74a785af9a5a76d25f3d90a4eb55d7a59c3c63fcff3db6d576a"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Eingeschlossene Masse ist nur bei Zentraldominanz die Zentralmasse. B kontrastiert keplerartige und flache Kurven unter expliziter Kreisbahn-/Symmetrieannahme ohne die Dunkle-Materie-Kompetenz vorwegzunehmen. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Enclosed mass is central mass only under central dominance. B contrasts Kepler-like and flat curves under explicit circular-orbit/symmetry assumptions without importing the dark-matter competence. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-015",
+      "goalId": "c53b3f0c-b4fe-5509-8803-a36c2883e5d6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b9cd2342aa02f2b778dd067625d1e6fc7e9f8c974c117e1509dc4297740b578f",
+      "pageFingerprint": "sha256:a06589802bb96c11f217a03fc32882c98c6ce87f9c90997638e1569c5860dfbe",
+      "goalReviewContextFingerprint": "sha256:a4917f43dfea7f46bcb30054d203b1eb43f4d7c2a653d3cc5a823e1471043bea",
+      "finalText": {
+        "titleDe": "Dunkle Materie aus Galaxienrotationskurven erschließen",
+        "titleEn": "Infer Dark Matter from Galaxy Rotation Curves",
+        "descriptionDe": "Die lernende Person kann eine beobachtete Galaxienrotationskurve mit der aus der sichtbaren Materieverteilung erwarteten Kurve vergleichen, die Abweichung als Hinweis auf zusätzliche nicht leuchtende Materie deuten und Grenzen dieses Schlusses erläutern.",
+        "descriptionEn": "The learner can compare an observed galaxy rotation curve with the curve expected from the visible-matter distribution, interpret the discrepancy as evidence for additional non-luminous matter, and explain limits of that inference."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.015",
+          "recordDigest": "sha256:6efd3462558972786ab40d968363c6426417fc80be768a2ea5353977b7548891"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.c53b3f0c-b4fe-5509-8803-a36c2883e5d6",
+          "recordDigest": "sha256:782de144d64c510f389fe4c10b8e7c46756cf423dd4d59bbbb1ea97da815986d"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Beobachtung, sichtbare Massenverteilung und Modellschluss bleiben getrennt. B prüft Robustheit gegen Neigungs- und Massenunsicherheit; der Halo im Bild ist keine direkte Beobachtung. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Observation, visible mass distribution and model inference remain separate. B tests robustness against inclination and mass uncertainty; the pictured halo is not direct observation. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-016",
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ca0beaf2296704bea98de1d32e02a6c8a2e0a42144884d28f7e7ae384f8c3afe",
+      "pageFingerprint": "sha256:f9ab8aaf0984e7f5323c7186c5638b0cae1d3f135fa6103152dc08b82ff67a89",
+      "goalReviewContextFingerprint": "sha256:9b761b5777e24b2a2b25d5f45d36ac2f83001abb42504d873f5a807b5b0a162f",
+      "finalText": {
+        "titleDe": "Bahn- und Winkelgeschwindigkeit",
+        "titleEn": "Tangential and Angular Speed",
+        "descriptionDe": "Die lernende Person kann bei Kreisbewegungen Bahn- und Winkelgeschwindigkeit definieren, berechnen und ihren Zusammenhang v = ωr erklären.",
+        "descriptionEn": "The learner can define and calculate tangential speed and angular speed in circular motion and explain their relationship v = ωr."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.016",
+          "recordDigest": "sha256:637e53d91f46f22eb0231cdb9140894b5e6d25f12781481858a7e85b631ae943"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.ec7a0a68-730b-5c94-ac72-a937508f8303",
+          "recordDigest": "sha256:cf9cbba5a8a9f47a05a02ba0136427c938f9fc62f9a3d95af0493f428d56b3e9"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. B begründet v=ωr aus Bogenmaß und trennt gemeinsame Winkelgeschwindigkeit einer Scheibe von gleicher Bahngeschwindigkeit unabhängiger Körper. Die zugängliche Sek-I-Deutung bleibt erhalten. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. B derives v=ωr from radians and separates common angular speed on a disc from equal tangential speed of independent bodies. Accessible lower-secondary interpretation is preserved. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-017",
+      "goalId": "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:542d71da79d96b977d5b3b35e38ca9f2cee65c7bf8fab281add25dbc6b8de0e0",
+      "pageFingerprint": "sha256:cbb1b850119fcf50e56a905d8dd382a9f9380c9bfa343821ea372f08d125900c",
+      "goalReviewContextFingerprint": "sha256:3b72d15edb4f64ba2c644239d14e28d8a418cd353e9448df8ef1f7d94924e98c",
+      "finalText": {
+        "titleDe": "Strömungsbeispiele mit passenden Modellen erklären",
+        "titleEn": "Explain flow examples using suitable models",
+        "descriptionDe": "Die lernende Person kann an ausgewählten Strömungsbeispielen die Aussagen und Voraussetzungen der jeweils verwendeten Gesetze oder Kennzahlen qualitativ erläutern, etwa der Kontinuitätsgleichung, der Bernoulli-Gleichung, des Stokes-Gesetzes oder der Reynolds-Zahl.",
+        "descriptionEn": "The learner can use selected flow examples to explain qualitatively the statements and assumptions of the laws or dimensionless quantities used in each case, such as the continuity equation, Bernoulli's equation, Stokes' law, or the Reynolds number."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.017",
+          "recordDigest": "sha256:52cccd9225f2e10089ccd257d8ef9eab9c24a461cc53e2708c523563e1431f51"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.333ca92b-a92c-46a9-86be-dea8ddbd43e0",
+          "recordDigest": "sha256:d8e8c47123e86a2bca72afa62747347dff8d35a2e0d207df5d1162afcc4cf944"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Die historische Split-Forderung ist nach Quellen- und Kontextprüfung nicht bindend: ausgewählte Strömungsfälle, nicht vier Pflichtverfahren. B wahrt diese Auswahl und prüft getrennte Gültigkeit von Kontinuität und verlustfreiem Bernoulli bei Reibung. Siehe historical-dissent-adjudication.md mit geprüften RP-Seiten 45/75; keine neuen Atome oder Quellenbehauptungen. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. Source and context review does not uphold the historic split demand: selected flow cases, not four mandatory procedures. B retains this scope and distinguishes continuity from lossless Bernoulli under friction. See historical-dissent-adjudication.md with inspected RP pages 45/75; no new atoms or source claims. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    },
+    {
+      "decisionId": "physics-m7-astro-inference-current-18-synthesis-20260920-v1-decision-018",
+      "goalId": "826af579-3e51-5ac9-bc2a-208d8a2fc99e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:27b8add1a4ac74c54ea1f39e3543080c42c0d75fb4d89bac012c3f77915c86d5",
+      "pageFingerprint": "sha256:2cc8833ea6046f5c52cdc3e095e690cd877eb4484bce4dee2891a688996bfabe",
+      "goalReviewContextFingerprint": "sha256:33e2c17d0936d99d5b59e4ec0b907dd7710c8a3b036ac5fc55fa8f3af7b3af0b",
+      "finalText": {
+        "titleDe": "Teleskope und Spektralbereiche zur Struktur der Milchstraße nutzen",
+        "titleEn": "Use Telescopes Across Spectral Bands to Study the Milky Way",
+        "descriptionDe": "Die lernende Person kann Teleskope für verschiedene Spektralbereiche vergleichen, Beobachtungsdaten aus mehreren Bereichen zusammenführen und daraus die Struktur der Milchstraße beschreiben.",
+        "descriptionEn": "The learner can compare telescopes for different spectral bands, combine observational data from several bands, and use them to describe the structure of the Milky Way."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-round-a-gpt5.018",
+          "recordDigest": "sha256:47a26114208456f5ca654f33f9d694bc85233c8b77bd6ab5be0925b4f79384af"
+        },
+        "second": {
+          "recordId": "physik-m7-astro-inference-current-18-v1-20260920-b-codex-native.826af579-3e51-5ac9-bc2a-208d8a2fc99e",
+          "recordDigest": "sha256:1f199358ee449203075b5fd23af6868fcc3ad5d5672da94f22142ff8d2a7873f"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden und ihre vollständigen fachlichen Records wurden zusammen mit den tatsächlichen Bildern geprüft. Das historische Perspektivproblem ist am tatsächlichen KEEP-PNG behoben. Instrumentvergleich muss jede Mehrband-Strukturinferenz begründen; ein bloßer Instrumentenkatalog genügt nicht. B wahrt die zusammenhängende Kompetenz und den Unterschied Messung/Rekonstruktion; siehe historical-dissent-adjudication.md. KEEP; B wird als präzisere Evidenzformulierung gewählt. P bleibt separat aktuell gebunden; keine menschliche Freigabe oder tatsächliche Lernendenleistung wird behauptet.",
+      "rationaleEn": "Both independent rounds and their full substantive records were inspected alongside the actual images. The historic perspective problem is resolved in the inspected KEEP PNG. Instrument comparison must justify each multiband structural inference; a mere instrument catalogue is insufficient. B retains the integrated competence and measurement/reconstruction distinction; see historical-dissent-adjudication.md. KEEP; B is selected as the more precise evidence formulation. P remains separately bound to current content; no human approval or actual learner performance is claimed."
+    }
+  ],
+  "manifestFingerprint": "sha256:f8da3cb9ce88a9d6c54ed68cdc258ca44fc442cc2e897d7084480682918a7fdc"
+}

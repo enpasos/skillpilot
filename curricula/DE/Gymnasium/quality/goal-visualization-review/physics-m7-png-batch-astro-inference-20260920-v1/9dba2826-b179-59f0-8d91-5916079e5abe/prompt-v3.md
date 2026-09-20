@@ -1,0 +1,11 @@
+Use case: scientific-educational
+Asset type: SkillPilot Physik-Lernziel-Infografik als PNG, zweite Korrekturversion
+Primary request: Erkläre das Huygenssche Prinzip mit bewusst reduzierter, geometrisch klarer Darstellung.
+Scene/backdrop: Vollständig deckender heller cremeweißer Hintergrund mit dezentem Punktraster, artefaktfrei.
+Subject: Links ein großer ebener Hauptfall: eine vertikale dunkelblaue alte Wellenfront mit genau drei großen blauen Punkten. Jeder Punkt liegt optisch exakt im Mittelpunkt eines gleich großen vollständigen türkisfarbenen Kreises. Die alte blaue Linie läuft durch alle drei Kreismittelpunkte. Eine vertikale orange neue Wellenfront rechts ist gemeinsame Tangente an die drei Kreise. Deutliche Beschriftung: Jeder Punkt ist Mittelpunkt einer Elementarwelle. Rechts ein vereinfachter kreisförmiger Fall: ein dunkelblauer alter Kreis und ein größerer konzentrischer orangefarbener neuer Kreis. Auf dem alten Kreis liegen mehrere blaue Quellpunkte. Nur an einem Quellpunkt wird exemplarisch eine kleine türkisfarbene Elementarwelle gezeigt, deren blauer Quellpunkt exakt im Mittelpunkt liegt; ein Hinweis sagt: ebenso an jedem Punkt. Der orange Außenkreis ist als Einhüllende markiert.
+Style/medium: Freundliche, abstrakte, klare comicartige 2D-Didaktik-Infografik; dunkle gut lesbare Schrift, flächige Farben, modernes Schulbuch.
+Composition/framing: Querformat, ebener Hauptfall links größer, vereinfachter Kreisfall rechts, großzügige Ränder.
+Color palette: Dunkelblau alte Front/Punkte, Türkis Elementarwellen, Orange neue Front, cremeweiß.
+Text (verbatim): "ebene Wellenfront"; "alte Front bei t"; "jeder Punkt ist Mittelpunkt"; "gleich große Elementarwellen"; "neue Front: Einhüllende bei t + Δt"; "kreisförmige Wellenfront"; "ebenso an jedem Punkt"
+Constraints: Links exakt drei Kreise, Punkte sichtbar in deren geometrischen Zentren, alte Linie durch Zentren, orange Linie als gemeinsame rechte Tangente. Rechts nur eine exemplarische kleine Elementarwelle, Punkt exakt in ihrem Zentrum; alte und neue Kreisfront konzentrisch. OPAKER Hintergrund.
+Avoid: Quellpunkte am Rand der Elementarwellen, viele überlappende kleine Kreise rechts, versetzte Zentren, schwarze Artefakte, Photorealismus, Transparenz.

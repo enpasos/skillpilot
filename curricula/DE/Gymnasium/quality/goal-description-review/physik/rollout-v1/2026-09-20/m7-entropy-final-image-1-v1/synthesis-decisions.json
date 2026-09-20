@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-m7-entropy-final-image-1-v1-synthesis-20260920-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root; exact model identifier not exposed",
+  "synthesizedAt": "2026-09-20T09:15:05.000Z",
+  "batch": {
+    "batchId": "physik-m7-entropy-final-image-1-v1-20260920",
+    "batchManifestDigest": "sha256:eae01c714cad566be3be200db2a80fa9b5947ee727aa216fb27fd81471f6f569",
+    "configDigest": "sha256:5143da2c7cff4a550509ae234f1f5bf1a412929135e10976b892b78a280066db",
+    "bundleFingerprint": "sha256:c01d29ce2ed3b4045fe1cee4725a9bb52a3a0718c364e7a0bbc4a93cf18312a2",
+    "bookDigest": "sha256:63533c47704576fbf1e3027060521208042071011da981b3dacdad6b000a312b",
+    "reviewInputFingerprint": "sha256:ef4f52bcef89d3139f6cc2ec2b03a15382977b25f9b2fc2e03d60cc77213deb9",
+    "dualSummaryDigest": "sha256:54c138f6ded0d392dd49bdcd0b2879acfaa7aa7e92782af06c67c8ba05d42b33",
+    "canonicalLandscapeDigest": "sha256:f505f46218ce324a940c32b45d3804273acbbc39e4d5782b197c5c3e614baf6a"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-m7-entropy-final-image-1-v1-20260920-a",
+      "campaignDigest": "sha256:cecde1f823f4bf2201197e5b1e81a231dc6cef4890a38ac7ddb85b42fb3091b9",
+      "roundId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-a",
+      "independenceGroupId": "physik-m7-entropy-final-image-1-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:ef4f52bcef89d3139f6cc2ec2b03a15382977b25f9b2fc2e03d60cc77213deb9",
+      "batchId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:b018032d2f79b60c190c6f5ed0029d8f0111e13823103eb98b55ad3b361b3bb1",
+      "runId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-a-run-001",
+      "runManifestDigest": "sha256:831913920e84b055725507edb8b4ac825d1a336581dc93687263a0b4152b4452",
+      "resultsDigest": "sha256:e8d275bd21b2adcba3dcdccc5381a561d24063201ed0999bd46fbef195851ef6"
+    },
+    "second": {
+      "campaignId": "physik-m7-entropy-final-image-1-v1-20260920-b",
+      "campaignDigest": "sha256:e85e1dcf2657a04f270cfcf72f8d3da3eb30038efbef454b51266d8cf7866404",
+      "roundId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-b",
+      "independenceGroupId": "physik-m7-entropy-final-image-1-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:ef4f52bcef89d3139f6cc2ec2b03a15382977b25f9b2fc2e03d60cc77213deb9",
+      "batchId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:4c7f289c705775a135d6e473b39dcc229503fc2b70e0a0fa318598c4d9c401c1",
+      "runId": "physik-m7-entropy-final-image-1-v1-20260920-b-codex-native",
+      "runManifestDigest": "sha256:c8ad2744d3a51e3ad82f7524ee0d790bf4ba03562b997c21ea5c1f848681e01c",
+      "resultsDigest": "sha256:91d26e284866946dadd9ececd052e149403ea589e2526d1da0ecc319533703c0"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-m7-entropy-final-image-1-v1-synthesis-20260920-v1-decision-001",
+      "goalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d134109eed45f917f14e6f2d7e85b6c4f674e8e0dafe3bd9e722bbc2b4c65b0b",
+      "pageFingerprint": "sha256:f17005be90a0ab67b9f3e99c2896ac26bfd36bd3ead29ba72d165b5aec86cd8c",
+      "goalReviewContextFingerprint": "sha256:2a2fb2c8cd07687d09063614a0db75de6fbff77041cdca345e58c55e7ef32f04",
+      "finalText": {
+        "titleDe": "Entropie E05: Einheiten und Bedeutung von S",
+        "titleEn": "Entropy E05: Units and Meaning of S",
+        "descriptionDe": "Die lernende Person kann die Einheit $\\mathrm{J/K}$ der Entropie anhand von $\\Delta S = Q_{\\mathrm{rev}}/T$ deuten und erklären, warum dieselbe reversibel zugeführte Wärmemenge bei niedrigerer konstanter absoluter Temperatur eine größere Entropiezunahme bewirkt.",
+        "descriptionEn": "The learner can interpret the entropy unit $\\mathrm{J/K}$ using $\\Delta S = Q_{\\mathrm{rev}}/T$ and explain why the same amount of heat supplied reversibly at a lower constant absolute temperature produces a larger entropy increase."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-m7-entropy-final-image-a-6e79ef4a-2666-5f7a-885c-b175954506f8",
+          "recordDigest": "sha256:74c1400d38b70e4ecd4ef9c9ef95c67650737d82d0201cc0a3cc3226ceb52a2f"
+        },
+        "second": {
+          "recordId": "physik-m7-entropy-final-image-1-v1-20260920-b-codex-native.6e79ef4a-2666-5f7a-885c-b175954506f8",
+          "recordDigest": "sha256:f82a6cb5811bd11526e04e816438326189558da2e665ad94f60d461f9cbc4123"
+        }
+      },
+      "rationaleDe": "Root hat beide unabhängigen fachlichen Runden vollständig gelesen und die tatsächlichen Bilder geprüft. Beide aktuellen Runden prüfen ausdrücklich V3 (SHA 4952109565d8ec0040346d2dd7974c8b6004fd186498c8ecd51d916069a6f3f1). Reservoirbeschriftung beseitigt den Widerspruch zur Wärmezufuhr. B trennt Systemänderung, Wärme und Entropie und prüft Wärmeabfuhr mit Vorzeichen; die spätere Provenienz legt Vorkenntnis offen, behauptet also keine historische Blindheit. Frühere V2-Records bleiben als überholte Geschichte erhalten. KEEP mit ausgewählter Evidenz aus B. P wird separat aktuell gebunden; keine menschliche Freigabe oder reale Lernendenleistung wird behauptet.",
+      "rationaleEn": "Root read both independent substantive rounds in full and inspected the actual images. Both current rounds explicitly inspect V3 (SHA 4952109565d8ec0040346d2dd7974c8b6004fd186498c8ecd51d916069a6f3f1). Reservoir labels remove the heat-input contradiction. B distinguishes system change, heat and entropy and tests heat removal with signs; the later provenance discloses prior knowledge rather than claiming historic blindness. Earlier V2 records remain superseded history. KEEP with selected B evidence. P is separately bound to current content; no human approval or actual learner performance is claimed."
+    }
+  ],
+  "manifestFingerprint": "sha256:0743da198cdd374bb1162eb82e313bd000c5c98c9fdc0ee3349bb9d6d0509d79"
+}

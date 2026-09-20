@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v5",
-  "generatedAt": "2026-09-19T21:21:51.262Z",
+  "generatedAt": "2026-09-20T09:24:34.403Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -26,12 +26,12 @@
       "M3": 0,
       "M4": 0,
       "M5": 0,
-      "M6": 9,
-      "M7": 0
+      "M6": 8,
+      "M7": 1
     },
     "ruleStatus": {
-      "pass": 228,
-      "warn": 21,
+      "pass": 229,
+      "warn": 20,
       "fail": 5,
       "not_configured": 68
     }
@@ -42288,16 +42288,16 @@
         {
           "id": "CQR-303",
           "status": "warn",
-          "summary": "Deep curriculum QA is incomplete: 393/797 current curricularAtomic goals strictly complete.",
+          "summary": "Deep curriculum QA is incomplete: 331/797 current curricularAtomic goals strictly complete.",
           "metrics": {
             "expectedGoals": 797,
-            "remaining": 404,
-            "strictComplete": 393,
+            "remaining": 466,
+            "strictComplete": 331,
             "currentDescriptionResolutions": 436,
             "currentPositiveEvidenceProfiles": 436,
             "currentSemanticAtomicityDecisions": 797,
             "currentMemoryReviewDecisions": 797,
-            "currentVisualizationQaRecords": 724,
+            "currentVisualizationQaRecords": 607,
             "deferredVisualizations": 73,
             "requiredChecksPassed": 6,
             "requiredChecksTotal": 6,
@@ -43353,7 +43353,7 @@
       "subject": "Physik",
       "frameworkId": "canonical-gymnasium-physics",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
-      "maturity": "M6",
+      "maturity": "M7",
       "humanTrialBlockingFindings": 0,
       "goals": 764,
       "atomicGoals": 639,
@@ -47909,25 +47909,22 @@
         },
         {
           "id": "CQR-303",
-          "status": "warn",
-          "summary": "Deep curriculum QA is incomplete: 426/478 current curricularAtomic goals strictly complete.",
+          "status": "pass",
+          "summary": "Deep curriculum QA is complete for all 478 current curricularAtomic goals.",
           "metrics": {
             "expectedGoals": 478,
-            "remaining": 52,
-            "strictComplete": 426,
-            "currentDescriptionResolutions": 472,
+            "remaining": 0,
+            "strictComplete": 478,
+            "currentDescriptionResolutions": 478,
             "currentPositiveEvidenceProfiles": 478,
             "currentSemanticAtomicityDecisions": 478,
             "currentMemoryReviewDecisions": 478,
-            "currentVisualizationQaRecords": 430,
-            "deferredVisualizations": 48,
+            "currentVisualizationQaRecords": 478,
+            "deferredVisualizations": 0,
             "requiredChecksPassed": 6,
             "requiredChecksTotal": 6,
             "blockingIssues": 0
-          },
-          "details": [
-            "48 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
-          ]
+          }
         },
         {
           "id": "CQR-401",

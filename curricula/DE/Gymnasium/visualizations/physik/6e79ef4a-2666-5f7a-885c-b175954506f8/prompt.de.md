@@ -4,54 +4,22 @@
 
 - SkillPilot-ID: `6e79ef4a-2666-5f7a-885c-b175954506f8`
 - Titel: Entropie E05: Einheiten und Bedeutung von S
-- Beschreibung: Die lernende Person interpretiert die Einheit $\mathrm{J/K}$ und beschreibt Entropie als Buchhaltungsgröße für Energieverteilung: gleiche Energie bei niedrigerer Temperatur bedeutet größere Entropieänderung.
+- Beschreibung: Die lernende Person kann die Einheit $\mathrm{J/K}$ der Entropie anhand von $\Delta S = Q_{\mathrm{rev}}/T$ deuten und erklären, warum dieselbe reversibel zugeführte Wärmemenge bei niedrigerer konstanter absoluter Temperatur eine größere Entropiezunahme bewirkt.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `6e79ef4a-2666-5f7a-885c-b175954506f8.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/6e79ef4a-2666-5f7a-885c-b175954506f8/6e79ef4a-2666-5f7a-885c-b175954506f8.jpg`
+- Quellbild: `6e79ef4a-2666-5f7a-885c-b175954506f8.png`
+- Public Asset: `/assets/goal-visualizations/physik/6e79ef4a-2666-5f7a-885c-b175954506f8/6e79ef4a-2666-5f7a-885c-b175954506f8.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Entropie E05: Einheiten und Bedeutung von S
-Beschreibung: Die lernende Person interpretiert die Einheit $\mathrm{J/K}$ und beschreibt Entropie als Buchhaltungsgröße für Energieverteilung: gleiche Energie bei niedrigerer Temperatur bedeutet größere Entropieänderung.
-
-Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Einheit und Bedeutung von Entropie`.
-- Show the unit prominently: `S in J/K`.
-- Show formula idea: `Delta S = Q / T`.
-- Compare the same energy transfer at two temperatures:
-  - left: `Q = 100 J`, `T = 300 K`, `Delta S = 0,33 J/K`
-  - right: `Q = 100 J`, `T = 600 K`, `Delta S = 0,17 J/K`
-- Add conclusion: `gleiche Energie bei kleinerem T: groessere Entropieaenderung`.
-- Add meaning text: `Buchhaltung fuer Energieverteilung`.
-- Strict arrow rule: no arrows anywhere in the image. Use tables, numbers, and text only.
-
-Vermeiden:
-
-- Do not write unit `J` only for entropy.
-- Do not use Celsius in the calculation.
-- Do not reverse the comparison; lower temperature must give the larger Delta S.
-- Do not draw misleading heat-flow arrows; use text boxes instead.
-- Do not claim entropy is the same as disorder only.
-- Do not draw comparison arrows, up/down arrows, connector arrows, or `->` text.
+Use case: precise-object-edit
+Asset type: corrected physics infographic PNG
+Primary request: Preserve the entire supplied image exactly: layout, dimensions, colors, vessels, arrows, temperature labels, thermometers, locks, bars, formula, title, all other wording and all spacing. Change ONLY the two identical bottom labels printed on the gray bases of the left and right vessels. Replace each full label “isolierter Wärmebehälter (thermostatisiert)” with the exact two-line label “Wärmereservoir” on the first line and “(konstante Temperatur)” on the second line.
+Constraints: exactly two text replacements, one on each vessel base; the old word “isolierter” must appear nowhere; do not change any other text, symbol, object, layout, color, or size; output PNG; no new elements.
 ```
 
 ## Review-Notiz

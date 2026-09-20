@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-m7-entropy-final-image-1-v1-20260920",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-entropy-final-image-1-v1.config.json",
+  "configDigest": "sha256:5143da2c7cff4a550509ae234f1f5bf1a412929135e10976b892b78a280066db",
+  "goalIds": [
+    "6e79ef4a-2666-5f7a-885c-b175954506f8"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 478,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:b46b9b2dd09bae264e7401aea4fc84546317a8fbee8cf57b3e70a2a390e15dad"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:63533c47704576fbf1e3027060521208042071011da981b3dacdad6b000a312b",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c01d29ce2ed3b4045fe1cee4725a9bb52a3a0718c364e7a0bbc4a93cf18312a2",
+    "reviewInputFingerprint": "sha256:ef4f52bcef89d3139f6cc2ec2b03a15382977b25f9b2fc2e03d60cc77213deb9",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-m7-entropy-final-image-1-v1-20260920-a",
+        "campaignDigest": "sha256:cecde1f823f4bf2201197e5b1e81a231dc6cef4890a38ac7ddb85b42fb3091b9",
+        "roundId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-a",
+        "independenceGroupId": "physik-m7-entropy-final-image-1-v1-20260920-independent-a",
+        "batchId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:b018032d2f79b60c190c6f5ed0029d8f0111e13823103eb98b55ad3b361b3bb1"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-m7-entropy-final-image-1-v1-20260920-b",
+        "campaignDigest": "sha256:e85e1dcf2657a04f270cfcf72f8d3da3eb30038efbef454b51266d8cf7866404",
+        "roundId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-b",
+        "independenceGroupId": "physik-m7-entropy-final-image-1-v1-20260920-independent-b",
+        "batchId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:4c7f289c705775a135d6e473b39dcc229503fc2b70e0a0fa318598c4d9c401c1"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

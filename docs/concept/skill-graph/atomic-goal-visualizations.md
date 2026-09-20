@@ -198,7 +198,10 @@ by itself a reason to replace an existing asset or repeat a still-current review
 For necessary new images and corrections, **prefer ChatGPT/Codex image
 generation**. Acceptance depends on the actual result: subject-matter correctness,
 didactic usefulness, suitable representation, age fit, legibility and continuity
-with the existing visual landscape. Inspect suitable existing images as style
+with the existing visual landscape. For newly generated Mathematik and Physik
+raster illustrations, prefer a friendly, abstract, clear, comic-like image
+language over photorealism or sterile technical-chart aesthetics unless the
+learning goal demonstrably requires another representation. Inspect suitable existing images as style
 references; preserve the approachable image language, coherent colors and
 appropriate information density. Choose the representation to suit the content
 rather than forcing every goal into one diagram or illustration template.
@@ -357,7 +360,7 @@ curricula/DE/Gymnasium/quality/goal-visualization-review/
 
 The review note must record accepted assets, rejected/regenerated assets, visible mathematical issues, and validation checks. Keep `reviewStatus: "pilot"` in canonical JSON until the asset has passed the intended release review.
 
-The subject QA ledgers can additionally record an explicit AI review. `aiApproved: "yes"` is valid only when `aiApprovedAssetSha256` exactly matches the record's current `assetSha256`; replacing the image therefore invalidates the AI approval. `aiReviewedAt`, `aiReviewer`, and `aiNotes` describe that hash-bound review. The older `umlautsCorrectChatGpt` and `contentApprovedChatGpt` fields remain available as triage and compatibility data and are not promoted automatically. AI approval is useful technical and subject-matter review evidence, but it never replaces a mandatory `humanApproved` release gate. Under the [current quality and human-trial concept](../curriculum-quality-and-human-trial.md), M7 now means complete deep curriculum QA, with image QA as one of five gates. An allowed current AI review may satisfy that machine QA gate without becoming human approval; explicit human error findings prevail. Technical provider deferrals remain incomplete. Historical image approvals and release evidence retain their original meaning.
+The subject QA ledgers can additionally record an explicit AI review. `aiApproved: "yes"` is valid only when `aiApprovedAssetSha256` exactly matches the record's current `assetSha256`; replacing the image therefore invalidates the AI approval. `aiReviewedAt`, `aiReviewer`, and `aiNotes` describe that hash-bound review. The older `umlautsCorrectChatGpt` and `contentApprovedChatGpt` fields remain available as triage and compatibility data and are not promoted automatically. AI approval is useful technical and subject-matter review evidence, but it never replaces a mandatory `humanApproved` release gate. Under the [current quality and human-trial concept](../curriculum-quality-and-human-trial.md), M7 now means complete deep curriculum QA, with image QA as one of five gates. Gate V is machine-only: it requires an allowed AI review bound to the exact current asset hash, while `humanApproved` and `humanIssueIdentified` neither satisfy nor veto V or M7. Human release decisions and findings remain separate. Technical provider deferrals remain incomplete. Historical image approvals and release evidence retain their original meaning.
 
 ## Low-Friction Manual Provider Workflow
 

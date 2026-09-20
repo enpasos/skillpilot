@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-m7-entropy-final-image-1-v1-20260920-b-codex-native",
+  "campaignId": "physik-m7-entropy-final-image-1-v1-20260920-b",
+  "roundId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-b",
+  "batchId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:4c7f289c705775a135d6e473b39dcc229503fc2b70e0a0fa318598c4d9c401c1",
+  "bundleFingerprint": "sha256:c01d29ce2ed3b4045fe1cee4725a9bb52a3a0718c364e7a0bbc4a93cf18312a2",
+  "bookDigest": "sha256:63533c47704576fbf1e3027060521208042071011da981b3dacdad6b000a312b",
+  "provider": "OpenAI",
+  "model": "Codex native agent; exact backend model not exposed",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:c283a175e8ed0eb023cec42c9003cf4c5d23483570e365aaa7bd6407c19e6ad3",
+  "independenceGroupId": "physik-m7-entropy-final-image-1-v1-20260920-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "6e79ef4a-2666-5f7a-885c-b175954506f8"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:4c7f289c705775a135d6e473b39dcc229503fc2b70e0a0fa318598c4d9c401c1"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-20T09:12:05Z",
+  "completedAt": "2026-09-20T09:15:04Z",
+  "status": "completed",
+  "outputDigest": "sha256:91d26e284866946dadd9ececd052e149403ea589e2526d1da0ecc319533703c0",
+  "toolchainVersion": "codex-native-description-review-v1"
+}

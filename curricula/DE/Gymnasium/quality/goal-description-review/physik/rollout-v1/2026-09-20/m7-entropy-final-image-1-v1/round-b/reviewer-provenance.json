@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "runId": "physik-m7-entropy-final-image-1-v1-20260920-b-codex-native",
+  "agentTask": "/root/m7_nav_last_three",
+  "reviewKind": "targeted current-image-binding re-review B; not historically blind",
+  "startedAt": "2026-09-20T09:12:05Z",
+  "completedAt": "2026-09-20T09:15:04Z",
+  "modelDisclosure": {
+    "provider": "OpenAI",
+    "exactBackendModelKnown": false,
+    "manifestModel": "Codex native agent; exact backend model not exposed",
+    "generationParameters": {
+      "executionMode": "codex_native_agent",
+      "exactModel": null,
+      "modelVersion": null,
+      "temperature": null,
+      "reasoningEffort": null,
+      "unexposedParameters": "not asserted"
+    }
+  },
+  "independence": {
+    "otherCurrentRoundRecordsRead": false,
+    "otherRoundOrSynthesisFilesRead": false,
+    "canonicalDiffRead": false,
+    "blindToOtherRunsMeaning": "Keine Records, Empfehlungen oder Synthese einer fremden aktuellen D-Runde eingesehen. Keine Behauptung vollständiger historischer oder visueller Bewertungsblindheit.",
+    "knownPriorExperience": "Ich habe dasselbe Ziel zuvor in meiner eigenen nuklear16-B-Runde mit dem damaligen Bild geprüft und die Beschreibung beibehalten. Die widersprüchliche Beschriftung isolierter Wärmebehälter trotz Wärmezufuhr war mir aus dieser eigenen Betrachtung bekannt. Ich bin nicht Autor der Bildkorrektur.",
+    "knownCoordinationContext": "Root teilte vor diesem Nachreview mit, dass eine V3-Labelkorrektur vorhanden und von Root visuell positiv geprüft sei. Dieses Koordinationswissen wird ausdrücklich offengelegt. Die vorliegende Entscheidung beruht auf erneutem Lesen aller eigenen aktuellen B-Inputs und eigener Betrachtung des jetzt gebundenen PNG, nicht auf Übernahme einer fremden D-Entscheidung.",
+    "historicalReviewFilesReopened": false
+  },
+  "scope": {
+    "goalCount": 1,
+    "decision": "keep",
+    "evidenceProfileRecommendation": "create",
+    "canonicalWrites": false,
+    "registryWrites": false,
+    "synthesisWrites": false,
+    "qaWrites": false,
+    "sourceProjectionCaveat": "Nur gebundene kanonische und effektive Seitenkontexte beurteilt; keine vollständige externe Quellenabbildung oder Kompositionsmatrix verifiziert."
+  },
+  "readArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-entropy-final-image-1-v1/round-b/prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-entropy-final-image-1-v1/round-b/criteria.md",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-entropy-final-image-1-v1/round-b/contracts/goal-description-review-record.schema.json",
+      "digest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-entropy-final-image-1-v1/round-b/description-review-input.json",
+      "digest": "sha256:a839f015a56505842da0767a340ca988797021176a60bfd5cb6a666f7c023c8b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-entropy-final-image-1-v1/round-b/description-review-campaign.json",
+      "digest": "sha256:ccb1672e9bdb63e51a1b8ec15c1b5f3419c7b7bfc6ccc422e7f32edb5adeacc4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-entropy-final-image-1-v1/round-b/review-bundle-manifest.json",
+      "digest": "sha256:3e6b89b9f4283f804c3e9286f41127c396aaa6ee44d1f4a6962efd95e082c812"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-entropy-final-image-1-v1/round-b/batches/physik-m7-entropy-final-image-1-v1-20260920-first-pass-b.batch-001.input.jsonl",
+      "digest": "sha256:4c7f289c705775a135d6e473b39dcc229503fc2b70e0a0fa318598c4d9c401c1"
+    }
+  ],
+  "visualInspection": {
+    "goalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+    "path": "app/public/assets/goal-visualizations/physik/6e79ef4a-2666-5f7a-885c-b175954506f8/6e79ef4a-2666-5f7a-885c-b175954506f8.png",
+    "digest": "sha256:4952109565d8ec0040346d2dd7974c8b6004fd186498c8ecd51d916069a6f3f1",
+    "actualFileDigestMatches": true,
+    "actuallyViewed": true,
+    "method": "view_image der vollständigen aktuellen PNG-Datei; unabhängige Sichtprüfung plus sha256sum.",
+    "contentFindings": [
+      "Beide Körper tragen Wärmereservoir (konstante Temperatur), keine Isolationsbeschriftung.",
+      "Zwei gleich bezeichnete Qrev-Pfeile führen Wärme zu; T1 niedriger und konstant, T2 höher und konstant.",
+      "Delta S = Qrev/T und J/K sind sichtbar, Reversibilität und absolute konstante Temperatur ausdrücklich genannt.",
+      "Größerer Entropiezunahme-Balken beim kälteren Reservoir; keine Veränderung der kanonischen Kompetenz erforderlich."
+    ],
+    "teachingSupportOnly": true
+  },
+  "outputs": {
+    "records": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-entropy-final-image-1-v1/round-b/results/physik-m7-entropy-final-image-1-v1-20260920-first-pass-b.batch-001.records.jsonl",
+    "run": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-entropy-final-image-1-v1/round-b/results/physik-m7-entropy-final-image-1-v1-20260920-first-pass-b.batch-001.run.json",
+    "recordsDigest": "sha256:91d26e284866946dadd9ececd052e149403ea589e2526d1da0ecc319533703c0"
+  },
+  "authority": "candidate/ai_candidate; keine menschliche Freigabe oder Publikationsfreigabe"
+}

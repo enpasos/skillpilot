@@ -4,50 +4,27 @@
 
 - SkillPilot-ID: `0f6b798b-594e-5480-8c5f-95e2486a4d85`
 - Titel: Magnetische Felder und Feldlinienbilder
-- Beschreibung: Die lernende Person kann magnetische Felder durch Feldlinienbilder darstellen und typische Felder von Permanentmagneten, geraden Leitern und langen Spulen qualitativ beschreiben.
+- Beschreibung: Die lernende Person kann typische magnetische Felder von Permanentmagneten, geraden stromdurchflossenen Leitern und langen Spulen durch Feldlinienbilder darstellen und diese als Modellbilder deuten, in denen die Tangentenrichtung die Feldrichtung und die Liniendichte innerhalb einer Darstellung die relative Feldstärke codiert.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `0f6b798b-594e-5480-8c5f-95e2486a4d85.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/0f6b798b-594e-5480-8c5f-95e2486a4d85/0f6b798b-594e-5480-8c5f-95e2486a4d85.jpg`
+- Quellbild: `0f6b798b-594e-5480-8c5f-95e2486a4d85.png`
+- Public Asset: `/assets/goal-visualizations/physik/0f6b798b-594e-5480-8c5f-95e2486a4d85/0f6b798b-594e-5480-8c5f-95e2486a4d85.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Magnetische Felder und Feldlinienbilder
-Beschreibung: Die lernende Person kann magnetische Felder durch Feldlinienbilder darstellen und typische Felder von Permanentmagneten, geraden Leitern und langen Spulen qualitativ beschreiben.
-
-Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Magnetische Felder und Feldlinienbilder`.
-- Make it visual-first: show one large bar magnet with the red north pole `N` on the left and the blue south pole `S` on the right.
-- Draw exactly four smooth magnetic field lines outside the magnet. Each field line must start near the `N` pole and end near the `S` pole.
-- Put exactly one arrowhead on each outside field line, and every arrowhead must point from `N` toward `S` outside the magnet.
-- Add a small note `Feldlinien aussen: N -> S`.
-- Visible learner text must be limited to the title, `N`, `S`, `B`, and `Feldlinien aussen: N -> S`.
-
-Vermeiden:
-
-- Do not draw any field-line arrow outside the magnet from `S` to `N`.
-- Do not draw field lines crossing each other.
-- Do not draw extra magnets, current-carrying wires, coils, compass needles, force arrows, electric-field arrows, or decorative arrows.
-- Do not draw closed loops with confusing arrowheads inside the magnet.
-- Do not add explanatory cards, internal instructions, or production guidance.
+Use case: scientific-educational
+Asset type: Physics learning-goal infographic, corrected PNG candidate
+Primary request: Minimal three-panel magnetic field infographic. To avoid inconsistent arrows, bar-magnet and solenoid loops have NO arrowheads; their direction is stated in text. Only the straight-wire circles carry arrowheads.
+Scene/backdrop: fully opaque light cream-white background.
+Subject: Panel 1: bar magnet N left, S right with four smooth closed unarrowed field loops and text „außen N → S, innen S → N“. Panel 2: wire cross section with central dot for current out of page and exactly four concentric circles; every arrowhead is counterclockwise. Panel 3: long solenoid N left, S right with several closed unarrowed loops, parallel and dense inside, sparse outside; text „außen N → S, innen S → N“. Bottom note says tangent gives direction and line density within one drawing indicates relative strength.
+Style: friendly, abstract, clear comic infographic, dark high-contrast lettering.
+Text (verbatim): „Stabmagnet“, „außen N → S, innen S → N“, „gerader Leiter“, „Strom aus der Ebene“, „gegen den Uhrzeigersinn“, „lange Spule“, „Tangente = Feldrichtung“, „dichter = stärker (im selben Bild)“.
+Constraints: only middle circles use arrowheads and all counterclockwise; no crossing/open lines; solenoid inside lines dense and parallel. No technical IDs/logo/watermark.
+Avoid: arrowheads on magnet/solenoid loops, mixed circular directions, excessive lines, dark background.
 ```
 
 ## Review-Notiz

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-habitability-context-b-20260920-run-001",
+  "campaignId": "physik-resumed-habitability-context-1-v1-20260914-b",
+  "roundId": "physik-resumed-habitability-context-1-v1-20260914-first-pass-b",
+  "batchId": "physik-resumed-habitability-context-1-v1-20260914-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:e24e2a9121b9454debd1d87bbba7b713eea7beaa9546495a6775ec7379f8dab5",
+  "bundleFingerprint": "sha256:0effee68631885273e67a84b4617b36a7bae8b6f8a827ced3eeb953a07390362",
+  "bookDigest": "sha256:592c625c0828b7a49d7710f665da5d116cb9f3f5cfe661b70702db3f39ca05b4",
+  "provider": "OpenAI",
+  "model": "gpt-6-astra",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:9f08ef116d35cda16ae84962e61795ded7d98fe888c965a3196e33429d3c7f8a",
+  "independenceGroupId": "physik-resumed-habitability-context-1-v1-20260914-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "e2014db8-c97f-5ce1-82c5-2a42741f4a61"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e24e2a9121b9454debd1d87bbba7b713eea7beaa9546495a6775ec7379f8dab5"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:34271bd945ca07feaef126b7198a6bb744721b3faf887327ba8ff9b26086f238"
+    }
+  ],
+  "startedAt": "2026-09-20T07:08:00Z",
+  "completedAt": "2026-09-20T07:13:03Z",
+  "status": "completed",
+  "outputDigest": "sha256:191989acff3bd21f3ab56d66f37e98f50980db86c4b0a520015122582919f74a",
+  "toolchainVersion": "codex-gpt6-astra-20260920"
+}

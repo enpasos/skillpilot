@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-14T05:43:07.473Z
+Generated: 2026-09-20T09:08:32.942Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -18,18 +18,18 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 764 |
 | Atomare Ziele im Visualisierungs-Scope | 478 |
-| Ziele mit primaerem Visualisierungslink | 430 |
-| Coverage | 90.0% |
+| Ziele mit primaerem Visualisierungslink | 478 |
+| Coverage | 100.0% |
 | Durch Asset oder Provider-Deferred dokumentierte Ziele | 478 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 97 |
-| Offene Provider-Deferred-Ziele | 48 |
+| Offene Provider-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 17 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 65 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -37,7 +37,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `accepted` | 83 |
-| `pilot` | 347 |
+| `pilot` | 395 |
 
 ## Ledger Decisions
 
@@ -86,36 +86,13 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 48 Provider-Deferred-Ziel(e).
+- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.
 
 ## Quality Queues
 
 ### Open Provider Deferred
 
-| Batch | Goal ID | Title | Decision |
-| --- | --- | --- | --- |
-| 079 | `1593d95c-2aac-504c-8527-37cb61877da9` | Alpha-, Beta- und Gammastrahlung unterscheiden | `deferred_provider_limitation` |
-| 082 | `d024aa45-5dbb-51f7-87a6-9ba939858696` | Am Nachthimmel mit Sternkarte oder Software navigieren | `deferred_provider_limitation` |
-| 084 | `5cf160e5-e0c2-5552-b2cf-0f04871c5e7e` | Astronomische Einheit und ihre beobachtungsbasierte Bestimmung erklären | `deferred_provider_limitation` |
-| 074 | `ec7a0a68-730b-5c94-ac72-a937508f8303` | Bahn- und Winkelgeschwindigkeit | `deferred_provider_limitation` |
-| 079 | `861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd` | Biologische Wirkungen ionisierender Strahlung einordnen | `deferred_provider_limitation` |
-| 083 | `1b7e800a-1c0d-5faa-886b-7ef2f3b8348c` | Chirp-Masse aus der Frequenzentwicklung eines Gravitationswellensignals erschließen | `deferred_provider_limitation` |
-| physik-checkpoint-2026-09-07 | `a7255b83-336c-4d42-ba5c-bc2f6248ea36` | Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen | `deferred_provider_limitation` |
-| 082 | `c53b3f0c-b4fe-5509-8803-a36c2883e5d6` | Dunkle Materie aus Galaxienrotationskurven erschließen | `deferred_provider_limitation` |
-| 085 | `bf8517a9-142b-5789-826a-767f3b277998` | Durchschnitts- und Momentangeschwindigkeit unterscheiden | `deferred_provider_limitation` |
-| 083 | `2014791b-af68-58d0-838b-fc9701202096` | Dynamische Gesamtmasse aus optischen Zweikörperbahndaten erschließen | `deferred_provider_limitation` |
-| 074 | `e19fccd7-6a35-5c9e-86e1-dcca76481e9c` | Elektrische Dipolfelder mit dem EKG verknüpfen | `deferred_provider_limitation` |
-| 074 | `6e79ef4a-2666-5f7a-885c-b175954506f8` | Entropie E05: Einheiten und Bedeutung von S | `deferred_provider_limitation` |
-| 081 | `09995ab9-86aa-5b02-8a58-62b16a37831d` | Entstehung von Gravitationswellen mit begrenzter Analogie erklären | `deferred_provider_limitation` |
-| 089 | `bf559969-a05c-58b5-82c5-3d719d96555d` | Erzeugung und Ausbreitung harmonischer mechanischer Wellen erklären | `deferred_provider_limitation` |
-| physik-2026-09-08-final-astro-pause | `49bb609a-bfb7-5391-9120-f5fc737efb9a` | Exoplanetenkandidaten mit der Transitmethode erklären | `deferred_provider_limitation` |
-| physik-2026-09-08-final-astro-pause | `6dca3b0a-c872-543b-808f-97e855f5fafd` | Exoplanetenkandidaten mit Stern-Radialbewegungen erklären | `deferred_provider_limitation` |
-| 081 | `f9c025ce-4327-5de7-8288-a3358e14a576` | Fraunhoferlinien in Sternspektren deuten | `deferred_provider_limitation` |
-| 074 | `f06c581a-7157-584e-a692-99bcd613cff9` | Frequenzspektren von Tönen und Klängen analysieren | `deferred_provider_limitation` |
-| 082 | `206a7d3d-9b11-56be-89ff-73898445c4f5` | Galaxienentfernungen bestimmen und Verfahren beurteilen | `deferred_provider_limitation` |
-| 074 | `b1ad9493-acca-5366-9ecd-4b7bf7edaf4a` | Geiger-Müller-Zählrohr funktional erklären | `deferred_provider_limitation` |
-
-Weitere 28 Eintraege stehen in der JSON-Begleitdatei.
+Keine Eintraege.
 
 ### Open Provider Quota
 
@@ -151,23 +128,38 @@ Keine Eintraege.
 
 | Goal ID | Title | Link status | Latest ledger decision |
 | --- | --- | --- | --- |
+| `1593d95c-2aac-504c-8527-37cb61877da9` | Alpha-, Beta- und Gammastrahlung unterscheiden | `pilot` | `deferred_provider_limitation` |
+| `d024aa45-5dbb-51f7-87a6-9ba939858696` | Am Nachthimmel mit Sternkarte oder Software navigieren | `pilot` | `deferred_provider_limitation` |
 | `e1b21fe9-ab6f-58c4-a0b6-9895061fbabb` | Argumentationen zur Entstehung schwerer Elemente beurteilen | `accepted` | - |
+| `5cf160e5-e0c2-5552-b2cf-0f04871c5e7e` | Astronomische Einheit und ihre beobachtungsbasierte Bestimmung erklären | `pilot` | `deferred_provider_limitation` |
 | `af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93` | Aufbau des Sonnensystems beschreiben | `pilot` | - |
+| `ec7a0a68-730b-5c94-ac72-a937508f8303` | Bahn- und Winkelgeschwindigkeit | `pilot` | `deferred_provider_limitation` |
+| `861ba00a-e89c-5b3d-8c76-8ff0bcb0f1cd` | Biologische Wirkungen ionisierender Strahlung einordnen | `pilot` | `deferred_provider_limitation` |
+| `1b7e800a-1c0d-5faa-886b-7ef2f3b8348c` | Chirp-Masse aus der Frequenzentwicklung eines Gravitationswellensignals erschließen | `pilot` | `deferred_provider_limitation` |
 | `68034218-8f3e-5f7f-ae4e-ed057dd4e44e` | Die Funktion eines thermischen Kernreaktors erklären | `accepted` | - |
+| `a7255b83-336c-4d42-ba5c-bc2f6248ea36` | Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen | `pilot` | `deferred_provider_limitation` |
 | `d05a146f-7fcd-56ae-b9b9-b54203328579` | Diskrete Energien im unendlichen Potenzialtopf berechnen | `pilot` | - |
 | `b4772b06-b10c-52dd-841b-a96ffb7c7e28` | Dunkle Energie qualitativ einordnen | `pilot` | - |
+| `c53b3f0c-b4fe-5509-8803-a36c2883e5d6` | Dunkle Materie aus Galaxienrotationskurven erschließen | `pilot` | `deferred_provider_limitation` |
 | `3d466956-04fb-58d7-9008-ad8090f8706d` | Dunkle Materie qualitativ einordnen | `pilot` | - |
+| `bf8517a9-142b-5789-826a-767f3b277998` | Durchschnitts- und Momentangeschwindigkeit unterscheiden | `pilot` | `deferred_provider_limitation` |
+| `2014791b-af68-58d0-838b-fc9701202096` | Dynamische Gesamtmasse aus optischen Zweikörperbahndaten erschließen | `pilot` | `deferred_provider_limitation` |
 | `c2af45aa-e3fc-5119-9159-c5a260b4135a` | Eine bistabile Transistor-Flipflop-Schaltung deuten | `accepted` | - |
 | `922f32ba-f214-5a82-be5c-1111aca51d4a` | Einen Audio-Licht-Übertragungsversuch funktional umsetzen | `accepted` | - |
 | `7d4d6a39-0c78-5fb0-b7bf-182ed00972f7` | Einen bipolaren Transistor als Schalter funktional untersuchen | `accepted` | - |
 | `f505f039-3f07-5afe-88b8-f02532e9c2f0` | Einen Modellversuch zu optischem Multiplexing entwickeln | `accepted` | - |
-| `37013646-f13a-5faf-954c-940f2fd7502f` | Gezeiten qualitativ erklären | `pilot` | - |
-| `db0394ca-297c-5892-b414-525ec186f928` | Größe und Alter des Universums qualitativ einordnen | `pilot` | - |
-| `f2538793-8b0a-5c3b-b216-5d329a4e87bd` | Intervallwahrscheinlichkeiten im unendlichen Potenzialtopf berechnen | `pilot` | - |
-| `1b060e79-dc2d-5e4e-abb5-42eca39f9cc7` | Kosmische Strukturen einordnen | `pilot` | - |
-| `c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea` | Mittleres Beschleunigungsmoment bestimmen | `pilot` | - |
-| `69280706-5af6-5788-85b7-93287c2ffe74` | Stern-Endstadien aus Anfangsmasse und Massenverlust prognostizieren | `accepted` | - |
-| `c52d55c3-b687-586c-b0f9-8ffcd1069424` | Urknallmodell anhand kosmologischer Beobachtungen erläutern | `pilot` | - |
+| `e19fccd7-6a35-5c9e-86e1-dcca76481e9c` | Elektrische Dipolfelder mit dem EKG verknüpfen | `pilot` | `deferred_provider_limitation` |
+| `6e79ef4a-2666-5f7a-885c-b175954506f8` | Entropie E05: Einheiten und Bedeutung von S | `pilot` | `deferred_provider_limitation` |
+| `09995ab9-86aa-5b02-8a58-62b16a37831d` | Entstehung von Gravitationswellen mit begrenzter Analogie erklären | `pilot` | `deferred_provider_limitation` |
+| `bf559969-a05c-58b5-82c5-3d719d96555d` | Erzeugung und Ausbreitung harmonischer mechanischer Wellen erklären | `pilot` | `deferred_provider_limitation` |
+| `49bb609a-bfb7-5391-9120-f5fc737efb9a` | Exoplanetenkandidaten mit der Transitmethode erklären | `pilot` | `deferred_provider_limitation` |
+| `6dca3b0a-c872-543b-808f-97e855f5fafd` | Exoplanetenkandidaten mit Stern-Radialbewegungen erklären | `pilot` | `deferred_provider_limitation` |
+| `f9c025ce-4327-5de7-8288-a3358e14a576` | Fraunhoferlinien in Sternspektren deuten | `pilot` | `deferred_provider_limitation` |
+| `f06c581a-7157-584e-a692-99bcd613cff9` | Frequenzspektren von Tönen und Klängen analysieren | `pilot` | `deferred_provider_limitation` |
+| `206a7d3d-9b11-56be-89ff-73898445c4f5` | Galaxienentfernungen bestimmen und Verfahren beurteilen | `pilot` | `deferred_provider_limitation` |
+| `b1ad9493-acca-5366-9ecd-4b7bf7edaf4a` | Geiger-Müller-Zählrohr funktional erklären | `pilot` | `deferred_provider_limitation` |
+
+Weitere 35 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Accepted Review Without Link
 
@@ -176,10 +168,10 @@ Keine Eintraege.
 ## Next Command
 
 ```bash
-npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json --output tmp/goal-visualization-physik-next-batch.txt --include-deferred
+npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json --output tmp/goal-visualization-physik-next-batch.txt
 ```
 
-Use this only for an intentional provider-limitation revisit. Generated candidates still require full mathematical review before import; otherwise keep the existing deferred ledger decisions.
+After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
 
 ## Sources
 

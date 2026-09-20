@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:3a94b5258025bb86532a764df4c7e150dbd15e20991742d08fa94f5cd1c8c492",
+  "reviewInputFingerprint": "sha256:9c8f4a1c7c33efef301e3e8a4e247314f8017c58f9da9230663bb3276e6977f7",
+  "goalCount": 16,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-m7-astro-nav-current-16-v1-20260920-a",
+      "roundId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-a",
+      "independenceGroupId": "physik-m7-astro-nav-current-16-v1-20260920-independent-a",
+      "runIds": [
+        "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-m7-astro-nav-current-16-v1-20260920-b",
+      "roundId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b",
+      "independenceGroupId": "physik-m7-astro-nav-current-16-v1-20260920-independent-b",
+      "runIds": [
+        "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::exact-model-not-exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 16,
+    "unavailable": 0,
+    "requiresSynthesis": 16
+  },
+  "goals": [
+    {
+      "goalId": "d024aa45-5dbb-51f7-87a6-9ba939858696",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.001",
+      "secondRecordId": "physik-m7-astro-nav-b-d024aa45-5dbb-51f7-87a6-9ba939858696",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.002",
+      "secondRecordId": "physik-m7-astro-nav-b-0b8a4215-e6ed-56c8-88c3-b3a2a99723c7",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "23335a89-f8e6-5c22-8705-d71193aeac96",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.003",
+      "secondRecordId": "physik-m7-astro-nav-b-23335a89-f8e6-5c22-8705-d71193aeac96",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.004",
+      "secondRecordId": "physik-m7-astro-nav-b-6e1cd027-040b-51d9-8764-3cf3daddb5ec",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "44766569-6379-5fbc-8976-cd3fc2fd6ec4",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.005",
+      "secondRecordId": "physik-m7-astro-nav-b-44766569-6379-5fbc-8976-cd3fc2fd6ec4",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "49bb609a-bfb7-5391-9120-f5fc737efb9a",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.006",
+      "secondRecordId": "physik-m7-astro-nav-b-49bb609a-bfb7-5391-9120-f5fc737efb9a",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5c5d6698-c056-5850-8ecd-6dd87fb44549",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.007",
+      "secondRecordId": "physik-m7-astro-nav-b-5c5d6698-c056-5850-8ecd-6dd87fb44549",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.008",
+      "secondRecordId": "physik-m7-astro-nav-b-5cf160e5-e0c2-5552-b2cf-0f04871c5e7e",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6dca3b0a-c872-543b-808f-97e855f5fafd",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.009",
+      "secondRecordId": "physik-m7-astro-nav-b-6dca3b0a-c872-543b-808f-97e855f5fafd",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "89124b92-5769-5e13-8a5d-78497936260f",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.010",
+      "secondRecordId": "physik-m7-astro-nav-b-89124b92-5769-5e13-8a5d-78497936260f",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.011",
+      "secondRecordId": "physik-m7-astro-nav-b-9851bd02-ca48-5ce4-8e9f-9ec4af1c43b8",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9f85de48-1b3f-5afb-8a34-ce94cf7a1b49",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.012",
+      "secondRecordId": "physik-m7-astro-nav-b-9f85de48-1b3f-5afb-8a34-ce94cf7a1b49",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.013",
+      "secondRecordId": "physik-m7-astro-nav-b-bebc3738-0be6-52cf-83db-f8b948f7cf7b",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ce037050-f94c-5828-883a-76385c84d1f7",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.014",
+      "secondRecordId": "physik-m7-astro-nav-b-ce037050-f94c-5828-883a-76385c84d1f7",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e06dd9c7-8c36-5ca4-880b-57b02d837085",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.015",
+      "secondRecordId": "physik-m7-astro-nav-b-e06dd9c7-8c36-5ca4-880b-57b02d837085",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f9c025ce-4327-5de7-8288-a3358e14a576",
+      "firstRecordId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5.016",
+      "secondRecordId": "physik-m7-astro-nav-b-f9c025ce-4327-5de7-8288-a3358e14a576",
+      "firstRunId": "physik-m7-astro-nav-current-16-v1-20260920-round-a-gpt5",
+      "secondRunId": "physik-m7-astro-nav-current-16-v1-20260920-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

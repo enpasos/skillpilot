@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-hrd-current-image-synthesis-20260920-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root; exact model identifier not exposed",
+  "synthesizedAt": "2026-09-20T07:37:25.000Z",
+  "batch": {
+    "batchId": "physik-hrd-current-image-hold-1-v1-20260920",
+    "batchManifestDigest": "sha256:6153fb1f90abe172c0fec6bc97680392aa4b745c1209c4adee241e7fd2f21694",
+    "configDigest": "sha256:6099305508250a598c239ca79aa02022403fa6e6c1a830b9d1aa5a5ddd13b4c9",
+    "bundleFingerprint": "sha256:8862a7217838b68d7bf59e65648f3c4913f795fc3832c5e4203ccbcde20853cd",
+    "bookDigest": "sha256:78bf89ca480bf1df7e322e456bcb7d1a5810345a76a5a1917bb15c6fd9c11c8b",
+    "reviewInputFingerprint": "sha256:338ef8f9f7210c9144da8866a95175d94f7a13288feacc112e2634f75f7ed724",
+    "dualSummaryDigest": "sha256:f545f9796ede3724598a9ee9566372d0b0a8a7a29a044063e181f3bc11957bb8",
+    "canonicalLandscapeDigest": "sha256:c3e0099caa19944192d95e9212bb7b55efa2803881bb299cf189de23f496ea54"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-hrd-current-image-hold-1-v1-20260920-a",
+      "campaignDigest": "sha256:4585cd0ec3c99d6b681098750755fac8d6401aff75cd7084c4fc2e1c50db42bb",
+      "roundId": "physik-hrd-current-image-hold-1-v1-20260920-first-pass-a",
+      "independenceGroupId": "physik-hrd-current-image-hold-1-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:338ef8f9f7210c9144da8866a95175d94f7a13288feacc112e2634f75f7ed724",
+      "batchId": "physik-hrd-current-image-hold-1-v1-20260920-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:196bbe861c983791252f2f834a64fc9a5dd5fcff264e07a41ae1b3375bea42dd",
+      "runId": "physik-hrd-current-image-hold-1-v1-20260920-a-run-001",
+      "runManifestDigest": "sha256:71bdad5191f3c366a753395492e941d02376b94c79332669fbd8c779a3f47f5c",
+      "resultsDigest": "sha256:c7adfe542470b75288192be035daf39a8e67401ab5664d683a9c9b480205e0dc"
+    },
+    "second": {
+      "campaignId": "physik-hrd-current-image-hold-1-v1-20260920-b",
+      "campaignDigest": "sha256:23fec875468e93395b2481bec6ece454778a16a65ab0311b657d3c25be6664b1",
+      "roundId": "physik-hrd-current-image-hold-1-v1-20260920-first-pass-b",
+      "independenceGroupId": "physik-hrd-current-image-hold-1-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:338ef8f9f7210c9144da8866a95175d94f7a13288feacc112e2634f75f7ed724",
+      "batchId": "physik-hrd-current-image-hold-1-v1-20260920-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:70ab6c23142dac151de4b71b7d52deb5e4ed5bcf5de272c7771e9f2886287db0",
+      "runId": "physik-hrd-current-image-hold-1-v1-round-b-independent-20260920",
+      "runManifestDigest": "sha256:d0f34ef37b4692c8bd0a0ae9583ac65d51befedd49c4172fe4143dffda71d502",
+      "resultsDigest": "sha256:01ff669f057b17cdf680b977781f6ab5fd9dc203d4694eb120ee161326ff43df"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-hrd-current-image-synthesis-20260920-v1-decision-001",
+      "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3bc6b685e1c98a91258200891411cc8711b259a090c3c21ab98ee9b96db294b2",
+      "pageFingerprint": "sha256:46770169edbc70513cc29c5c07f55c68632536caaf552bc3937e711f7a17b595",
+      "goalReviewContextFingerprint": "sha256:234edfbbbf87d8b534ce400dedd4c8b9adedec2055ae5e9efa13b4a295dccca0",
+      "finalText": {
+        "titleDe": "Hertzsprung-Russell-Diagramm (HRD)",
+        "titleEn": "Hertzsprung–Russell Diagram (HRD)",
+        "descriptionDe": "Die lernende Person kann Sterne anhand ihrer Leuchtkraft und Oberflächentemperatur im Hertzsprung-Russell-Diagramm einordnen und die Bereiche Hauptreihe, Rote Riesen und Weiße Zwerge im Zusammenhang mit der Sternentwicklung deuten.",
+        "descriptionEn": "The learner can place stars in the Hertzsprung–Russell diagram using their luminosity and surface temperature and interpret the main-sequence, red-giant and white-dwarf regions in relation to stellar evolution."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-hrd-206fe51d-round-a-20260920",
+          "recordDigest": "sha256:937abb3a58802cf8f466648a9c1941cac73b1daaccfa4508756c166714a900c4"
+        },
+        "second": {
+          "recordId": "physik-hrd-current-image-hold-1-v1-round-b-206fe51d-review",
+          "recordDigest": "sha256:149b08ed8c4bbd336d43b3662d57a13b061862b2c36046919f767ffe9f1ca127"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Fachreviews bestätigen die aktuelle zweisprachige Beschreibung als eine fachlich korrekte, semantisch zusammenhängende HRD-Kompetenz. Einordnung und Entwicklungsdeutung gehören zu demselben Diagrammverständnis; Radius-, Entfernungs- und vollständige Entwicklungsbahnmodelle bleiben zu Recht außerhalb dieses Ziels. Root hat beide vollständigen Records und das tatsächlich gebundene aktuelle PNG geprüft. Für das neue positive-understanding-evidence-v2-Profil wird Runde B gewählt, weil sie die selbstständige Arbeit an einem zunächst unbeschrifteten Diagramm, die Modellgrenze und den Transfer auf veränderte Achsendarstellungen besonders klar trennt. Das freundliche, abstrakte Bild unterstützt Achsen-, Bereichs- und Sonnenorientierung, ersetzt aber keinen selbstständigen Leistungsnachweis. Damit werden die unterschiedlichen Evidenzformulierungen aufgelöst, ohne menschliche Freigabe, Quellenabdeckung oder Lernendenleistung zu behaupten.",
+      "rationaleEn": "Both independent subject reviews confirm the current bilingual description as a technically correct and semantically coherent HR-diagram competence. Classification and evolutionary interpretation belong to the same diagram understanding, while radius, distance, and complete evolutionary-track models correctly remain outside this goal. Root read both complete records and inspected the actually bound current PNG. Round B is selected for the new positive-understanding-evidence-v2 profile because it most clearly separates independent work on an initially unlabeled diagram, the model boundary, and transfer to altered axis presentations. The friendly abstract image supports axis, region, and solar orientation but does not replace independent learner performance. The differing evidence formulations are therefore resolved without claiming human approval, source coverage, or learner achievement."
+    }
+  ],
+  "manifestFingerprint": "sha256:94a617ac9abcd89a12a81620f8e12bc148c311cabd973c85a902ca2af5f9c93a"
+}

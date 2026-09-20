@@ -1,6 +1,31 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
-Der aktuelle Umsetzungsstand steht im
+## Aktueller Abschluss: Physik M7, Mehrpass-Durchgang
+
+Der zentrale Check bestätigt **478/478 aktuelle Physikziele streng abgeschlossen,
+alle fünf Gates vollständig, sechs Abschlussprüfungen bestanden, null Blocker**.
+Der erzeugte Curriculum-Status vom 20.09.2026, 09:24:34 UTC weist **M7** und
+**CQR-303 pass** aus. Netto +50 gegenüber 428/478; zusätzlich zuvor +2
+wiederhergestellte Bindungen. Der lokale Prüf- und Auslieferungsstand ist im
+folgenden Abschlussbericht dokumentiert; dies behauptet keine Remote-CI oder
+Veröffentlichung. Mathematik bleibt pausiert.
+
+Der aktuelle Umsetzungsstand und die Arbeitsaufteilung stehen im
+[Physik-M7-Fortsetzungsstand vom 20. September](physics-m7-resumed-2026-09-20.md).
+Die später ausdrücklich beauftragte Wiederaufnahme bis M7 ersetzt die
+nachstehende historische Pause. M7 ist gemäß korrigiertem Nutzerauftrag
+**maschinelle QS ohne menschliche Freigabe**; menschliche Abnahmen bleiben
+getrennt. Unfertige Bildarbeiten zählen nicht als abgeschlossen. Mathematik
+bleibt pausiert. Neue Bilder bleiben freundliche, abstrakte, klare Comic-PNGs;
+gute vorhandene Bilder bleiben erhalten.
+
+Der Nutzer wünscht zuerst einen zügigen vollständigen Kandidatendurchgang,
+danach eine gezielte Kontrolle und schließlich gebündelte Abschlussprüfungen.
+Kandidaten werden dadurch nicht vor ihrer Prüfung freigegeben.
+
+## Historischer Zwischenstand mit Pause vom 14. September
+
+Der damalige Umsetzungsstand steht im
 [Physik-Fortsetzungsstand vom 14. September](physics-resumed-checkpoint-2026-09-14.md).
 **Neuester Auftrag vom 14. September, nach Wiederaufnahme von B059:**
 „komm zu einem commit-fähigen Zwischenziel und beende vorübergehend die

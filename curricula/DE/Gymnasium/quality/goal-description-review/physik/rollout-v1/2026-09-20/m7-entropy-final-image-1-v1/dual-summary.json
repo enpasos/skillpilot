@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:c01d29ce2ed3b4045fe1cee4725a9bb52a3a0718c364e7a0bbc4a93cf18312a2",
+  "reviewInputFingerprint": "sha256:ef4f52bcef89d3139f6cc2ec2b03a15382977b25f9b2fc2e03d60cc77213deb9",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-m7-entropy-final-image-1-v1-20260920-a",
+      "roundId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-a",
+      "independenceGroupId": "physik-m7-entropy-final-image-1-v1-20260920-independent-a",
+      "runIds": [
+        "physik-m7-entropy-final-image-1-v1-20260920-first-pass-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::exact-model-not-exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-m7-entropy-final-image-1-v1-20260920-b",
+      "roundId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-b",
+      "independenceGroupId": "physik-m7-entropy-final-image-1-v1-20260920-independent-b",
+      "runIds": [
+        "physik-m7-entropy-final-image-1-v1-20260920-b-codex-native"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex native agent; exact backend model not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+      "firstRecordId": "physik-m7-entropy-final-image-a-6e79ef4a-2666-5f7a-885c-b175954506f8",
+      "secondRecordId": "physik-m7-entropy-final-image-1-v1-20260920-b-codex-native.6e79ef4a-2666-5f7a-885c-b175954506f8",
+      "firstRunId": "physik-m7-entropy-final-image-1-v1-20260920-first-pass-a-run-001",
+      "secondRunId": "physik-m7-entropy-final-image-1-v1-20260920-b-codex-native",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

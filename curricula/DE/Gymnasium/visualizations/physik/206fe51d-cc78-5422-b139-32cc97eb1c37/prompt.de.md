@@ -4,34 +4,40 @@
 
 - SkillPilot-ID: `206fe51d-cc78-5422-b139-32cc97eb1c37`
 - Titel: Hertzsprung-Russell-Diagramm (HRD)
-- Beschreibung: Zustandsdiagramm der Sterne (Leuchtkraft vs. Temperatur) zur Einordnung der Sternentwicklung (Hauptreihe, Rote Riesen, Weiße Zwerge).
+- Beschreibung: Die lernende Person kann Sterne anhand ihrer Leuchtkraft und Oberflächentemperatur im Hertzsprung-Russell-Diagramm einordnen und die Bereiche Hauptreihe, Rote Riesen und Weiße Zwerge im Zusammenhang mit der Sternentwicklung deuten.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `206fe51d-cc78-5422-b139-32cc97eb1c37.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/206fe51d-cc78-5422-b139-32cc97eb1c37/206fe51d-cc78-5422-b139-32cc97eb1c37.jpg`
+- Quellbild: `206fe51d-cc78-5422-b139-32cc97eb1c37.png`
+- Public Asset: `/assets/goal-visualizations/physik/206fe51d-cc78-5422-b139-32cc97eb1c37/206fe51d-cc78-5422-b139-32cc97eb1c37.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+# Bildgenerierungsauftrag
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Erzeuge ein hochwertiges deutsches Hertzsprung-Russell-Diagramm als
+vollständiges 16:9-PNG-Rasterbild. Bewahre den freundlichen, abstrakten und
+cartoonartigen Charakter der bestehenden Visualisierung: heller
+Karopapierhintergrund, sympathische rund illustrierte Sterne, weiche
+blau-gelb-rote Hauptreihe, klare schwarze Konturen und gut lesbare Typografie.
 
-Titel: Hertzsprung-Russell-Diagramm (HRD)
-Beschreibung: Zustandsdiagramm der Sterne (Leuchtkraft vs. Temperatur) zur Einordnung der Sternentwicklung (Hauptreihe, Rote Riesen, Weiße Zwerge).
+Fachliche Bindungen:
 
-Zusatzanweisung:
-Create a fresh German educational infographic of a Hertzsprung-Russell diagram. The vertical axis is luminosity increasing upward. The horizontal axis is surface temperature with hot blue stars on the left and cool red stars on the right; make the reversed direction unmistakable by values such as 30 000 K at left and 3 000 K at right or an arrow labelled Temperatur nimmt nach links zu. Place Hauptreihe diagonally from upper left to lower right, Riesen above it and Weiße Zwerge below it. Keep all regions, stars and labels consistent with these axes. Use correct German spelling and no contradictory arrow.
+- Temperatur nimmt von links nach rechts ab: 30 000 K, 10 000 K, 6 000 K,
+  4 000 K, 3 000 K.
+- Leuchtkraft nimmt nach oben zu: 10⁻⁴ L☉, 10⁻² L☉, 1 L☉, 10² L☉,
+  10⁴ L☉.
+- Hauptreihe von links oben nach rechts unten.
+- Rote Riesen rechts oben.
+- Weiße Zwerge links unten.
+- Sonne nahe 5772 K und 1 L☉.
+- Hinweis: beide Achsen logarithmisch.
+
+Keine Logos, Wasserzeichen, dekorativen Planeten, Teleskope, Formeln,
+fotorealistischen Sternenfelder oder abgeschnittenen Beschriftungen.
 ```
 
 ## Review-Notiz

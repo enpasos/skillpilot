@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-physics-positive-evidence-habitability-current-20260920-v1",
+  "reviewedAt": "2026-09-20T07:52:31Z",
+  "reviewer": "Codex root current bilingual content and bound-image review; AI candidate only",
+  "goals": [
+    {
+      "goalId": "e2014db8-c97f-5ce1-82c5-2a42741f4a61",
+      "reason": "Nach zwei unabhängigen KEEP-Reviews und Prüfung des tatsächlich gebundenen korrigierten Bildes fachlich neu gebunden. Das Profil operationalisiert die Trennung von Beobachtung, modellabhängiger Folgerung und weitergehender Habitabilitätsbehauptung in zwei unabhängigen Fällen. Transit, Radialgeschwindigkeit, Direktbild und Spektren werden nur innerhalb ihrer Aussagegrenzen verwendet; eine habitable Zone oder einzelne erdähnliche Bedingungen gelten ausdrücklich weder als sichere Bewohnbarkeit noch als Lebensnachweis. Keine menschliche Freigabe oder beobachtete Lernleistung wird behauptet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die beiden aktuellen KEEP-Reviews unterscheiden sich in der Evidence-Formulierung; die Synthese wählt begründet Runde B und erhält die alternative Formulierung im gebundenen Reviewartefakt."
+      ],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "observation-inference-claim",
+            "essentialUnderstandingDe": "Transit, Radialgeschwindigkeit, Direktbild und Spektren liefern unterschiedliche und begrenzte Beobachtungshinweise; Eigenschaften und Habitabilität werden daraus nur unter Modellannahmen erschlossen.",
+            "essentialUnderstandingEn": "Transits, radial velocity, direct imaging, and spectra provide different and limited observational evidence; properties and habitability are inferred from them only under model assumptions.",
+            "observablePerformanceDe": "Die lernende Person trennt an einem neuen Datensatz Beobachtung, modellgestützte Folgerung und weitergehende Behauptung und begrenzt jede Aussage auf die tatsächlich gestützte Evidenz.",
+            "observablePerformanceEn": "For a new data set, the learner distinguishes observation, model-based inference, and further-reaching claim and limits each statement to the evidence that actually supports it."
+          },
+          {
+            "id": "physical-criteria-and-source-quality",
+            "essentialUnderstandingDe": "Eine Lage in der habitablen Zone oder einzelne erdähnliche Bedingungen belegen weder sichere Bewohnbarkeit noch Leben; die Tragfähigkeit hängt von physikalischen Kriterien, Unsicherheiten, unabhängiger Bestätigung und Quellenqualität ab.",
+            "essentialUnderstandingEn": "A location in the habitable zone or individual Earth-like conditions establishes neither certain habitability nor life; the strength of the claim depends on physical criteria, uncertainties, independent corroboration, and source quality.",
+            "observablePerformanceDe": "Die lernende Person vergleicht relevante Bedingungen mit der Erde, prüft Herkunft und Unsicherheit der Angaben und formuliert ein abgestuftes, quellenkritisch begründetes Urteil.",
+            "observablePerformanceEn": "The learner relates relevant conditions to Earth, checks the provenance and uncertainty of the information, and formulates a qualified, source-critical judgement."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "observation-inference-claim",
+            "physical-criteria-and-source-quality"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "method-combination",
+            "textDe": "Transit und Radialgeschwindigkeit gegenüber Direktbild und Spektroskopie.",
+            "textEn": "Transit and radial velocity versus direct imaging and spectroscopy."
+          },
+          {
+            "id": "source-and-system",
+            "textDe": "Unterschiedliche Sternumgebungen, Datenunsicherheiten und digitale Quellen.",
+            "textEn": "Different stellar environments, data uncertainties, and digital sources."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "transit-rv-qualified-claim",
+            "taskDemandDe": "Prüfe eine digitale Habitabilitätsbehauptung zu einem Exoplaneten anhand bereitgestellter Transit- und Radialgeschwindigkeitsdaten sowie einer Quellenangabe.",
+            "taskDemandEn": "Assess a digital habitability claim about an exoplanet using supplied transit and radial-velocity data and a source statement.",
+            "expectedPerformanceDe": "Die lernende Person kennzeichnet gemessene und modellabhängig erschlossene Größen, berücksichtigt Unsicherheiten und Quellenqualität und begrenzt das Urteil auf die physikalisch gestützten Eigenschaften.",
+            "expectedPerformanceEn": "The learner identifies measured and model-dependent inferred quantities, considers uncertainty and source quality, and limits the judgement to physically supported properties.",
+            "understandingFocusDe": "Der Fall trennt Planetennachweis, Eigenschaftsinferenz und Habitabilitätsurteil.",
+            "understandingFocusEn": "The case separates planet detection, property inference, and habitability judgement."
+          },
+          {
+            "id": "spectrum-conflicting-sources-transfer",
+            "taskDemandDe": "Bewerte einen neuen Fall, bei dem ein Planet in der habitablen Zone liegt, Spektraldaten zur Atmosphäre unsicher sind und zwei digitale Quellen widersprüchliche Schlüsse ziehen.",
+            "taskDemandEn": "Evaluate a new case in which a planet lies in the habitable zone, atmospheric spectral data are uncertain, and two digital sources draw conflicting conclusions.",
+            "expectedPerformanceDe": "Die lernende Person gewichtet Beobachtung, Modellannahmen und Quellenqualität, benennt verbleibende Unsicherheiten und begründet, welche unabhängige Messung das Urteil am stärksten verbessern würde.",
+            "expectedPerformanceEn": "The learner weighs observation, model assumptions, and source quality, identifies remaining uncertainties, and justifies which independent measurement would most improve the judgement.",
+            "understandingFocusDe": "Der Transfer verhindert, dass habitable Zone oder ein einzelnes Atmosphärenmerkmal als Lebensnachweis missverstanden werden.",
+            "understandingFocusEn": "The transfer prevents a habitable-zone location or a single atmospheric feature from being mistaken for evidence of life."
+          }
+        ]
+      }
+    }
+  ]
+}

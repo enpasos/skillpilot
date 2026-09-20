@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-habitability-current-context-synthesis-20260920-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex root; exact model identifier not exposed",
+  "synthesizedAt": "2026-09-20T07:13:04.000Z",
+  "batch": {
+    "batchId": "physik-resumed-habitability-context-1-v1-20260914",
+    "batchManifestDigest": "sha256:9a7c9225bad4b39acd284dd2e9dc297be2edb522b14e88d712efe30f1dd16578",
+    "configDigest": "sha256:b3a457684bc296e0a5453402ed55f8d7b0065ba422f9a03d43dba357b592d3f0",
+    "bundleFingerprint": "sha256:0effee68631885273e67a84b4617b36a7bae8b6f8a827ced3eeb953a07390362",
+    "bookDigest": "sha256:592c625c0828b7a49d7710f665da5d116cb9f3f5cfe661b70702db3f39ca05b4",
+    "reviewInputFingerprint": "sha256:537632bb82eb6b29cc692897fc5f8757b7dc9e20b08e08a0456062a666e7d69e",
+    "dualSummaryDigest": "sha256:0ca1a57e1e3b4f9e9cc1c3aa28a47dfcd3def5e9bf1419d0f391ebe56160dead",
+    "canonicalLandscapeDigest": "sha256:0c03e19d746e1be17acb9f6d459a68a446f4b3d84e1f39c8554c432d7fc0a8e2"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-resumed-habitability-context-1-v1-20260914-a",
+      "campaignDigest": "sha256:df37344a4a86875f0810815152f2408d1770fcd05b4e0a189eac70dda9a5d806",
+      "roundId": "physik-resumed-habitability-context-1-v1-20260914-first-pass-a",
+      "independenceGroupId": "physik-resumed-habitability-context-1-v1-20260914-independent-a",
+      "reviewInputFingerprint": "sha256:537632bb82eb6b29cc692897fc5f8757b7dc9e20b08e08a0456062a666e7d69e",
+      "batchId": "physik-resumed-habitability-context-1-v1-20260914-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:d4fdb800317222b9c0355ca41ab420ffca01d479bfdf4282d4b795a94fe0ce4c",
+      "runId": "physik-resumed-habitability-context-1-v1-20260920-a-run-001",
+      "runManifestDigest": "sha256:80e0e3f09896c2314aa6f899f008911ce84f2242543b9ae26a8a278d623c7847",
+      "resultsDigest": "sha256:cb848e42cfc2f1ea216f6e349f243ddc3923b151bee2ef180d35af185a7cc864"
+    },
+    "second": {
+      "campaignId": "physik-resumed-habitability-context-1-v1-20260914-b",
+      "campaignDigest": "sha256:26cad5285b7f2b9e72eefcf031adcb4fbe464c94d9d63fe9cc0fca50dce2a5bc",
+      "roundId": "physik-resumed-habitability-context-1-v1-20260914-first-pass-b",
+      "independenceGroupId": "physik-resumed-habitability-context-1-v1-20260914-independent-b",
+      "reviewInputFingerprint": "sha256:537632bb82eb6b29cc692897fc5f8757b7dc9e20b08e08a0456062a666e7d69e",
+      "batchId": "physik-resumed-habitability-context-1-v1-20260914-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:e24e2a9121b9454debd1d87bbba7b713eea7beaa9546495a6775ec7379f8dab5",
+      "runId": "physik-habitability-context-b-20260920-run-001",
+      "runManifestDigest": "sha256:7c1eb5ae48aac065c6c92f7b2d9cb516b482f3feae47bd753a5e817ce0b26f48",
+      "resultsDigest": "sha256:191989acff3bd21f3ab56d66f37e98f50980db86c4b0a520015122582919f74a"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-habitability-current-context-synthesis-20260920-v1-decision-001",
+      "goalId": "e2014db8-c97f-5ce1-82c5-2a42741f4a61",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:46c5b55fa6d96711c91f8e5362c7c973742ec9e01ed33956620c9f66e26c22ba",
+      "pageFingerprint": "sha256:5e33f2bc12996833e16d9d67c9287f99d449f3da19e8cfed02170665d1e715c9",
+      "goalReviewContextFingerprint": "sha256:bc989a66b9519a6ae5c8e4808e54406394a5a300cbd62e6d976564db53a0bc0d",
+      "finalText": {
+        "titleDe": "Exoplanetensuche und Habitabilität quellenkritisch beurteilen",
+        "titleEn": "Critically Assess Exoplanet Detection and Habitability Claims",
+        "descriptionDe": "Die lernende Person kann Aussagen zur Habitabilität von Exoplaneten beurteilen, indem sie Nachweismethoden vergleicht, Lebensbedingungen anhand physikalischer Kriterien mit denen der Erde abgleicht und digitale Quellen quellenkritisch auswertet.",
+        "descriptionEn": "The learner can assess claims about exoplanet habitability by comparing detection methods, relating conditions for life to Earth using physical criteria, and critically evaluating digital sources."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-habitability-context-e2014db8-round-a-20260920",
+          "recordDigest": "sha256:fe0283e71a3472aaeeb2f0b391fffe16076ad6079863d10fdaea07f9021828dd"
+        },
+        "second": {
+          "recordId": "physik-habitability-context-b-20260920-e2014db8",
+          "recordDigest": "sha256:26dd704531cbb46c5b5876616003232e31fff7cb75696624c1d05b7612e39351"
+        }
+      },
+      "rationaleDe": "Beide voneinander getrennten Reviews bestätigen die aktuelle zweisprachige Beschreibung als eine zusammenhängende AB3-Bewertungskompetenz. Nachweismethoden, physikalische Habitabilitätskriterien und Quellenkritik sind komplementäre Grundlagen desselben begründeten Urteils und rechtfertigen keine Aufspaltung. Root hat beide vollständigen Records, die Laufzeitoffenlegungen und das tatsächlich gebundene korrigierte Bild gelesen. Für das neue positive-understanding-evidence-v2-Profil wird Runde B gewählt, weil sie Beobachtung, modellgestützte Folgerung und weitergehende Behauptung besonders klar trennt und Transit, Radialgeschwindigkeit, Direktbild sowie Spektren mit ihren Aussagegrenzen zusammenführt. Das Bild unterstützt diese Unterscheidung und markiert, dass eine habitable Zone kein Lebensnachweis ist; es ersetzt keinen selbstständigen Leistungsnachweis. Die unterschiedlichen Evidence-Formulierungen werden damit ausdrücklich aufgelöst, ohne eine menschliche Freigabe, Quellenabdeckung oder Lernendenleistung zu behaupten.",
+      "rationaleEn": "Both independent reviews confirm the current bilingual description as one coherent AB3 evaluation competence. Detection methods, physical habitability criteria, and source criticism are complementary foundations of the same reasoned judgement and do not warrant a split. Root read both complete records, their runtime disclosures, and the actually bound corrected image. Round B is selected for the new positive-understanding-evidence-v2 profile because it most clearly separates observation, model-based inference, and further-reaching claim while combining transit, radial velocity, direct imaging, and spectra with their evidential limits. The image supports this distinction and states that a habitable zone is not evidence of life; it does not replace independent learner performance. The differing evidence formulations are therefore resolved explicitly without claiming human approval, source coverage, or learner achievement."
+    }
+  ],
+  "manifestFingerprint": "sha256:d97d203a29b20271b76281fc3be68e5ad7bf5d07e7cd20ae8775e1869c6b7b95"
+}

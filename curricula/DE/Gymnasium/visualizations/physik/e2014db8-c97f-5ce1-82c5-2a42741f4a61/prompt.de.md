@@ -1,14 +1,14 @@
-# Lernzielvisualisierung: Exoplanetensuche und Habitabilitaet quellenkritisch beurteilen
+# Lernzielvisualisierung: Exoplanetensuche und Habitabilität quellenkritisch beurteilen
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `e2014db8-c97f-5ce1-82c5-2a42741f4a61`
-- Titel: Exoplanetensuche und Habitabilitaet quellenkritisch beurteilen
-- Beschreibung: Die lernende Person kann Methoden der Exoplanetensuche vergleichen, Lebensbedingungen mit der Erde abgleichen und digitale Quellen zu Habitabilitaet quellenkritisch auswerten.
+- Titel: Exoplanetensuche und Habitabilität quellenkritisch beurteilen
+- Beschreibung: Die lernende Person kann Aussagen zur Habitabilität von Exoplaneten beurteilen, indem sie Nachweismethoden vergleicht, Lebensbedingungen anhand physikalischer Kriterien mit denen der Erde abgleicht und digitale Quellen quellenkritisch auswertet.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
 - Quellbild: `e2014db8-c97f-5ce1-82c5-2a42741f4a61.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/e2014db8-c97f-5ce1-82c5-2a42741f4a61/e2014db8-c97f-5ce1-82c5-2a42741f4a61.jpg`
@@ -16,28 +16,10 @@
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Use case: scientific-educational, precise-object-edit.
+Input image 1 is the exact edit target: the existing German educational infographic titled "Exoplaneten kritisch prüfen". Preserve its 16:9 canvas, all words, all three columns, colors, icons, plots, astronomy illustrations, and overall composition. This is one tightly localized scientific annotation correction, not a redesign.
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Exoplanetensuche und Habitabilitaet quellenkritisch beurteilen
-Beschreibung: Die lernende Person kann Methoden der Exoplanetensuche vergleichen, Lebensbedingungen mit der Erde abgleichen und digitale Quellen zu Habitabilitaet quellenkritisch auswerten.
-
-Zusatzanweisung:
-Correct the existing German educational infographic while keeping its useful sections for transit, radial velocity, direct imaging, habitable zone, and source criticism.
-
-In the transit panel, label the horizontal axis `Zeit` and the vertical axis `relative Helligkeit`. Show a single physically plausible shallow dip during the transit.
-
-In the radial-velocity spectrum, wavelength must increase from left to right. Label the short-wavelength side on the LEFT `blau` and the long-wavelength side on the RIGHT `rot`. Show `Blauverschiebung` as a line shift to the left and `Rotverschiebung` as a line shift to the right. Never reverse these labels.
-
-Keep the conclusions cautious: a habitable zone means liquid water may be possible under suitable conditions, not proof of life. Keep all German umlauts correct. Do not include technical identifiers, filenames, brands, platform names, school labels, or watermarks.
+Change ONLY the callout pointer belonging to the text box "Koronagraphen-Maske" in the lower-left "Direktbild" panel. Its arrowhead must clearly terminate INSIDE THE BLACK OCCULTING DISK covering the bright central star. The black disk is the mask. The small separate cyan-blue point to the right of that disk is the planet, NOT the mask: do not point the mask callout at that point or at the surrounding bright stellar halo. Draw a clean, unambiguous leader from the existing text box to the center of the black disk, rerouting it around the cyan planet so it cannot be mistaken for its label. Keep the black mask disk, star halo, and planet exactly where they are. Remove the old ambiguous pointer completely. Do not alter any other arrow or any text. Do not add new labels, content, badges, logos, or watermarks. High sharpness, no clipped elements.
 ```
 
 ## Review-Notiz

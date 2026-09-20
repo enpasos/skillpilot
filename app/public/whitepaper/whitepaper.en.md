@@ -199,7 +199,7 @@ A navigable curriculum does not yet answer the everyday question: **“What do I
 
 The **Personal Curriculum** defines which competencies belong to the selected education context. The **learning plan** specifies which topics or groups of learning goals should be addressed within which periods. It complements the skill graph without replacing its goals or prerequisites. To work through an entire curriculum, the plan must cover its intended scope; completing a partial plan does not automatically mean completing the curriculum.
 
-Under **“Course planning”**, teachers prepare learning sections, date ranges, buffer time, and milestones. Subject plans, for example for mathematics and physics, apply **together**: their daily requirements add up across all subjects. Switching the current subject does not deactivate another subject plan or impose an order such as “finish all of mathematics before physics.” Overlapping sections within a subject plan do not count the same goal twice.
+Under **“Course planning”**, teachers prepare learning sections, date ranges, buffer time, and milestones. Subject plans, for example for mathematics and physics, apply **together** but are evaluated **per subject**: each subject has its own daily or weekly target, and work ahead in one subject does not offset backlog in another. Switching the current subject does not deactivate another subject plan or impose an order such as “finish all of mathematics before physics.” Several plans of the same subject are merged; overlapping sections do not count the same goal twice. The learner chooses in the Personal Curriculum whether the plan status is given per day or per week.
 
 The **learner preview** shows today's requirements and the next seven calendar days before changes are applied. It uses the same calculation as the chat. The baseline schedules weekdays from Monday to Friday; it does not automatically optimize around timetables or holidays. Goal counts are not learning minutes or a guarantee of meeting a deadline. The teacher reviews scope and workload and adjusts the plan when necessary.
 
@@ -209,24 +209,30 @@ Drafts initially remain on the planning device. Only explicit joint confirmation
 
 With plan mode enabled and a valid learning session, SkillPilot handles the organization in the background:
 
-1. **Orient:** For each subject, the coach reports newly due goals for today, how many are already mastered, how many remain open, and any backlog.
+1. **Orient:** The coach quotes the plan status formulated by SkillPilot verbatim: for each subject the daily or weekly target and any backlog or work ahead. The Cockpit shows the same sentences; the coach does no arithmetic of its own. It announces the active learning goal separately, once, when the learning task begins.
 2. **Resume automatically:** A valid ongoing goal is continued; otherwise, a due goal whose prerequisites permit learning is selected, if one is available. Joint activation can already select this first goal. No extra “Continue learning” click or manual goal search is needed.
-3. **Learn and check progress:** The coach explains, sets tasks, and supports the work. Only progress recorded under the applicable evidence rules changes the learning state and daily figures. The plan-guided flow then leads to the next permitted step.
-4. **Switch subjects or finish:** A request such as “Physics now” switches within the available subject options; other requirements remain in place. Once all effective subject plans can be evaluated reliably and all goals due through today including backlog are completed, the coach reports the day's completion. Future goals do not automatically become extra duties for today.
+3. **Learn and check progress:** The coach explains, sets tasks, and supports the work. Only progress recorded under the applicable evidence rules changes the learning state and thus the plan status. The plan-guided flow then leads to the next permitted step.
+4. **Switch subjects or finish:** A request such as “Physics now” switches within the available subject options; other requirements remain in place. Once the period targets are reached, the coach acknowledges this and does not start another goal on its own. A reached daily target does not mean there is no backlog; in that case the coach invites catching up without pressure. Further learning remains available on request, and future goals do not automatically become extra duties for today. The plan status names unevaluable plans explicitly instead of presenting them as complete.
 
 A status-only question does not start a new task; a requested pause remains a pause. If prerequisites or invalid planning block open goals, the coach reports the blockage instead of inventing completion or a replacement duty. Plan corrections remain on the planning side. An expired learning session still requires a fresh start through SkillPilot; chat guidance does not extend the session.
 
 #### Example: Mathematics and Physics on the Same Day
 
-The figures below are an **illustrative calculation**, not live data:
+The figures below are an **illustrative calculation** on a daily basis, not live data:
 
-- **Mathematics:** 4 newly due goals today, of which 2 are mastered and 2 remain open; plus 1 open goal from earlier days.
-- **Physics:** 3 newly due goals today, of which 1 is mastered and 2 remain open; plus 2 open goals from earlier days.
-- **Total:** 7 newly due goals today, of which 3 are mastered and 4 remain open; together with 3 backlog goals, **7 goals remain to be addressed**.
+- **Mathematics:** 13 goals are planned through today, 3 of them newly due today. 9 of the planned goals are mastered, one of them completed today.
+- **Physics:** 10 goals are planned through today, 2 of them newly due today. 11 of the planned goals are mastered, two of them completed today.
 
-The coach can summarize this as: **“Of today's due goals, you have mastered 2 of 4 in mathematics and 1 of 3 in physics. Including backlog, 7 goals remain open in total. We will continue your current mathematics goal; you can also switch to physics.”** This example assumes a valid, unfinished mathematics goal and a physics goal that can currently be started.
+SkillPilot balances each subject on its own and formulates the plan status that the Cockpit and the coach show identically:
 
-“Already mastered” describes the current learning state among today's due goals, **not necessarily achievements newly earned today**. The seven remaining goals are four open newly due goals plus three backlog goals. Backlog stays visible but is not repeatedly added to the weekly workload as newly due goals every day.
+> Mathematics: Daily target 1 of 3 · 2 learning goals behind
+> Physics: Daily target reached · 1 learning goal ahead
+
+When the learning task begins, it follows separately:
+
+> Your active learning goal: Describe power functions with integer exponents
+
+Mathematics is four goals short of the plan. Two of them are still open today; the other two are backlog. In physics, a goal planned for later is already mastered. This lead does **not** offset the mathematics backlog, and there is no cross-subject total. “Ahead” and “on track” describe the amount of progress, **not mastery of everything planned earlier**: open earlier goals remain available for goal selection. On a weekly basis, the same statement reads “Weekly target …” and covers the whole current week.
 
 This turns the curriculum into a guided learning path: **The teacher owns scope and timing, SkillPilot calculates the next permitted steps, the coach leads the dialogue, and the learner concentrates on learning.**
 

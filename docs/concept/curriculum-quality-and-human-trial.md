@@ -91,6 +91,11 @@ Der Meilenstein bleibt bis zur vollständigen Erfüllung M6. Es entstehen keine 
 
 M7 bestätigt den Abschluss des zugelassenen vertieften QS-Verfahrens. Es erzeugt keine menschlichen Freigaben.
 
+Gate V verlangt eine aktuelle fachliche KI-Bildentscheidung am exakten aktiven
+Asset-Hash und gültige Inhaltsbindungen. Weder `humanApproved` noch
+`humanIssueIdentified` erfüllt oder blockiert V und M7. Menschliche Befunde bleiben
+separat sichtbar und werden dadurch weder gelöscht noch fachlich widerlegt.
+
 Ein zulässiger, vollständig geprüfter KI-Kandidat kann ein maschinelles Gate erfüllen, während sein Datensatz weiterhin ausdrücklich `needs_human_review` ausweist. Daraus darf kein menschlich freigegebener Inhalt werden.
 
 Wo eine konkrete menschliche Entscheidung verpflichtend ist, bleibt diese Anforderung bestehen. Eine noch ausstehende zwingende Freigabe darf nicht durch Umbenennung oder mechanische Aktualisierung eines Nachweises erledigt werden.
@@ -109,11 +114,17 @@ Für Bilder gelten folgende Grundsätze:
 | **Fachliches Urteil vor Herkunft** | Entscheidend sind Korrektheit, geeignete Darstellung und Einordnung in das Curriculum. |
 | **Erzeugung ist keine Freigabe** | Ein neues Bild benötigt eine tatsächliche Prüfung und dokumentierte Entscheidung. |
 | **Inhaltsbindung statt Hashkosmetik** | Geänderte Inhalte werden fachlich geprüft; das bloße Nachführen eines Hashes genügt nicht. |
-| **Menschlicher Fehlerbefund hat Vorrang** | Ein ausdrücklich festgestellter Fehler wird nicht durch ein positives KI-Urteil überstimmt. |
+| **Menschliche Befunde separat erhalten** | Eine maschinelle M7-Entscheidung erledigt keinen menschlichen Befund. Dieser wird unabhängig für Release und Erprobung bewertet. |
 
 Die geltenden Bildregeln bestimmen Erzeugungswege und zulässige Ausnahmen. Eine technische Providergrenze oder eine aufgeschobene notwendige Korrektur ist keine fachlich abgeschlossene Ausnahme und blockiert den betreffenden M7-Abschluss.
 
 Bereits vorhandene menschliche Bildfreigaben und historische Reviewartefakte bleiben als Nachweise erhalten. Sie werden nicht rückwirkend umgedeutet.
+
+Der separate CI-Check `checkGoalVisualizationQaApprovalCoverage.ts` ist ein
+Bild-Release-Gate, keine zweite M7-Berechnung: Er akzeptiert eine vorhandene
+menschliche Freigabe oder aktuelle KI-Freigabe, lehnt aber einen offenen
+menschlichen Fehlerbefund weiterhin ab. Ein solcher Release-Blocker kann daher
+auch bei maschinell erreichtem M7 bestehen; er wird nicht durch M7 überstimmt.
 
 ## 5. Menschliche Erprobung durch Curriculum-Champions
 

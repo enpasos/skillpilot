@@ -8,48 +8,23 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `a6e48b88-51ed-5942-bdb8-8d2192652e0d.jpg`
-- Public Asset: `/assets/goal-visualizations/physik/a6e48b88-51ed-5942-bdb8-8d2192652e0d/a6e48b88-51ed-5942-bdb8-8d2192652e0d.jpg`
+- Quellbild: `a6e48b88-51ed-5942-bdb8-8d2192652e0d.png`
+- Public Asset: `/assets/goal-visualizations/physik/a6e48b88-51ed-5942-bdb8-8d2192652e0d/a6e48b88-51ed-5942-bdb8-8d2192652e0d.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Ladungsphänomene und Reibungselektrizität
-Beschreibung: Die lernende Person kann Anziehung und Abstoßung elektrisch geladener Körper sowie Ladungstrennung durch Reibung phänomenologisch untersuchen und die beobachteten Wechselwirkungen mit einem qualitativen Kraftbegriff beschreiben.
-
-Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Ladungsphaenomene und Reibungselektrizitaet`.
-- Use three simple static panels:
-  1. `Reibung trennt Ladungen` with a balloon and cloth, labelled `Elektronenuebergang`
-  2. `gleichnamige Ladungen: Abstossung`
-  3. `ungleichnamige Ladungen: Anziehung`
-- Use clear plus and minus symbols on objects.
-- Add a note: `Gesamtladung bleibt erhalten; Ladung wird getrennt oder uebertragen`.
-- Strict arrow rule: no arrows anywhere in the image. Use positions, labels, and plus/minus signs only.
-
-Vermeiden:
-
-- Do not draw force arrows, electron-flow arrows, rubbing-motion arrows, or lightning bolts.
-- Do not imply that positive charges move through the rubbed objects in the same way as electrons.
-- Do not show same charges attracting or opposite charges repelling.
-- Do not use current, voltage, or circuit symbols here.
-- Do not use decorative sparks that look like current paths.
+Use case: scientific-educational
+Asset type: Physics learning-goal infographic, corrected PNG candidate
+Primary request: Very simple electrostatics infographic with ONLY charge separation by rubbing and attraction/repulsion of charged bodies. Do not include neutral paper or polarization.
+Scene/backdrop: fully opaque light cream-white background.
+Subject: Top: wool cloth rubs plastic rod, one electron icon moves from cloth to rod; final cloth has one symbolic plus badge and rod one minus badge; text says equal opposite charges and total conserved. Bottom left: two negative charged rods with arrows apart. Bottom right: one positive and one negative rod with arrows together.
+Style: friendly, abstract, clear comic infographic, dark high-contrast lettering.
+Text (verbatim): „Reibung trennt Ladungen“, „Elektronen: Tuch → Stab“, „gleich große entgegengesetzte Ladungen“, „Gesamtladung bleibt erhalten“, „gleichnamig: Abstoßung“, „ungleichnamig: Anziehung“.
+Constraints: no neutral objects/paper/polarization; no repeated countable charge signs; correct arrow directions. No technical IDs/logo/watermark.
+Avoid: paper, polarization, numeric counts, proton transfer, dark background.
 ```
 
 ## Review-Notiz
