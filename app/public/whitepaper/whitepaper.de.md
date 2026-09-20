@@ -217,21 +217,25 @@ Eine reine Statusfrage startet keine neue Aufgabe; eine gewünschte Pause bleibt
 
 #### Beispiel: Mathematik und Physik an einem Tag
 
-Die folgenden Zahlen sind ein **Rechenbeispiel** auf Tagesbasis, keine Live-Daten:
+Die folgenden Zahlen sind ein **Rechenbeispiel** auf Tagesbasis, keine Live-Daten. Die Zahl der beherrschten Ziele bezieht sich jeweils auf die **gesamte fortschrittswirksame Planmenge des Fachs**, einschließlich später vorgesehener Ziele. Bei Planerstellung bereits beherrschte Ziele sind in dieser Planmenge nicht enthalten:
 
-- **Mathematik:** Bis heute sind 13 Ziele eingeplant, 3 davon heute neu. 9 der eingeplanten Ziele sind beherrscht, eines davon wurde heute abgeschlossen.
-- **Physik:** Bis heute sind 10 Ziele eingeplant, 2 davon heute neu. 11 der eingeplanten Ziele sind beherrscht, zwei davon wurden heute abgeschlossen.
+- **Mathematik:** Bis einschließlich heute sind 13 Ziele vorgesehen, davon 3 für heute. Insgesamt sind 9 Planziele beherrscht; eines davon wurde heute abgeschlossen.
+- **Physik:** Bis einschließlich heute sind 10 Ziele vorgesehen, davon 2 für heute. Insgesamt sind 11 Planziele beherrscht; zwei davon wurden heute abgeschlossen.
 
 SkillPilot bilanziert jedes Fach für sich und formuliert daraus den Planstand, den Cockpit und Coach gleichlautend zeigen:
 
-> Mathematik: Tagesziel 1 von 3 · 2 Lernziele im Rückstand
+> Mathematik: Tagesziel 1 von 3 · 2 Lernziele im Rückstand  
 > Physik: Tagesziel erreicht · 1 Lernziel vorgearbeitet
 
 Beim anschließenden Einstieg in die Lernaufgabe folgt separat:
 
 > Dein aktives Lernziel: Potenzfunktionen mit ganzzahligen Exponenten beschreiben
 
-In Mathematik fehlen gegenüber dem Plan vier Ziele. Zwei davon sind heute noch offen, die beiden übrigen sind Rückstand. In Physik ist ein später eingeplantes Ziel bereits beherrscht. Dieser Vorsprung gleicht den Mathematik-Rückstand **nicht** aus; eine fachübergreifende Gesamtsumme gibt es nicht. „Vorgearbeitet“ und „im Plan“ beschreiben den Umfang des Fortschritts, **nicht die Beherrschung aller früher eingeplanten Inhalte**: Offene frühere Ziele bleiben für die Zielauswahl bestehen. Auf Wochenbasis lautet dieselbe Aussage „Wochenziel …“ und bezieht die ganze laufende Woche ein.
+In Mathematik beträgt das mengenmäßige Defizit **13 − 9 = 4 Ziele**. Vom heutigen Pensum sind noch **3 − 1 = 2 Ziele** offen; die übrigen **2 Ziele** werden als Rückstand ausgewiesen. In Physik besteht ein mengenmäßiger Vorsprung von **11 − 10 = 1 Ziel**. Dieser Vorsprung gleicht den Mathematik-Rückstand **nicht** aus; eine fachübergreifende Gesamtsumme gibt es nicht.
+
+„Vorgearbeitet“ und „im Plan“ beschreiben den Umfang des Fortschritts, **nicht die Beherrschung aller früher eingeplanten Inhalte**: Offene frühere Ziele bleiben für die Zielauswahl bestehen. Der mengenmäßige Vorsprung sagt deshalb nicht aus, wie viele konkrete spätere Ziele bereits beherrscht werden und wie viele frühere Ziele noch offen sind.
+
+Auf Wochenbasis wird **nach derselben Regel neu gerechnet**: Maßgeblich sind das bis zum Ende der laufenden Woche vorgesehene Soll, das gesamte Wochenpensum und die Abschlüsse innerhalb dieser Woche. Die Anzeige lautet dann „Wochenziel …“; die Zahlen können sich gegenüber der Tagesansicht ändern.
 
 Damit wird der Lehrplan zu einem begleiteten Lernweg: **Die Lehrkraft verantwortet Umfang und Zeitrahmen, SkillPilot berechnet die nächsten zulässigen Schritte, der Coach führt den Dialog und der Schüler konzentriert sich auf das Lernen.**
 
@@ -294,6 +298,7 @@ Beim Import (z.B. Wechsel, Backup) kann die komplette **Herkunftskette** mitgef�
 **Wichtig:** Chain of Custody schützt Integrität und Herkunft – sie ist ein **Transparenzwerkzeug**, kein vollständiger Betrugsschutz.
 
 ---
+
 
 ## 5. Das Ökosystem: Inhalte & Standards
 
