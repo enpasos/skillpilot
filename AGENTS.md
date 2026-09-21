@@ -906,7 +906,24 @@ Navigation support on Layer B should:
 Implementation-wise:
 
 - Layer B is **per-learner data** and should be persisted separately (database, files, …).
-- The current React app keeps a single in-memory `mastery` map as a prototype of this layer.
+- The backend persists learner goal results; a frontend `mastery` map is a
+  projection of those results, not a separate source of truth.
+
+**Persisted learner goal results are the sole source of achieved-goal progress
+throughout the application**, including Cockpit, goal tree and teacher planning.
+The former manual teaching-coverage/attestation model is retired: do not collect
+or present a separate `Unterrichts-IST` as progress, require a teacher to confirm
+already stored results, or use legacy coverage records as an achievement source.
+Existing local records may remain for compatibility; this decision does not
+authorize their deletion or any mastery, learner-plan or backend mutation.
+Read-only learner/subject progress uses current authoritative personalized
+target IDs and stored results. A plan baseline fixes scheduled work, not current
+achievement. Plan-goal set **G** and the complete Personal Curriculum target set
+may differ (for example through prior knowledge or selected scope); name the
+scope and use the same result/atomicity rules, rather than forcing unequal
+scopes to have equal counts. An orientation completion is counted consistently
+where that goal is in scope, without calling it subject-matter mastery. Missing
+or stale result data must be shown as unavailable, never as zero achievements.
 
 Learning-plan status is backend-owned on the learner's persisted **DAY or WEEK**
 basis (default DAY; Europe/Berlin, Monday through Sunday). Each stable subject is

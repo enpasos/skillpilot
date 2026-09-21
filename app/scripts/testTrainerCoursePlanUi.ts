@@ -105,6 +105,7 @@ const personalizedCoursePlanId = getTeacherCoursePlanStorageId(personalizedClass
 interface LearnerRequestGate {
   blocked: boolean
   releases: Array<() => void>
+  progressUnavailable?: boolean
 }
 
 const goal = (id: string, title: string, contains: string[] = []) => ({
@@ -313,6 +314,28 @@ const installApi = async (
         await new Promise<void>((resolve) => learnerRequestGate.releases.push(resolve))
       }
       try {
+        if (pathname === `/api/ui/learners/${studentId}/planning-scope`) {
+          assert(route.request().method() === 'GET', 'learning progress only reads saved learner results')
+          assert(new URL(route.request().url()).searchParams.get('landscapeId') === landscapeId,
+            'learning progress reads the current subject')
+          await route.fulfill(learnerRequestGate.progressUnavailable
+            ? { status: 503, body: '' }
+            : {
+                status: 200,
+                contentType: 'application/json',
+                headers: { 'Cache-Control': 'no-store' },
+                body: JSON.stringify({
+                  curriculumId: landscapeId,
+                  landscapeId,
+                  scopeAtomicGoalIds: [firstGoalId, secondGoalId],
+                  totalAtomicGoalCount: 2,
+                  masteredAtomicGoalCount: 1,
+                  openAtomicGoalIds: [secondGoalId],
+                  capturedAt: fixtureTime.toISOString(),
+                }),
+              })
+          return
+        }
         await route.fulfill({ status: 404, body: '' })
       } catch {
         // The plan workspace intentionally aborts in-flight learner requests.
@@ -564,16 +587,36 @@ try {
   assert(await timelineForm.getByRole('heading').evaluate((heading) => document.activeElement === heading), 'the timeline edit action focuses the existing form heading')
   await timelineForm.getByRole('button', { name: 'Abbrechen', exact: true }).click()
   assert(await mechanicsBlock.getByRole('checkbox').count() === 0, 'compact planning cards do not expose teaching-coverage controls')
-  await page.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
-  assert(await page.getByText('Die Lehrkraft führt', { exact: true }).isVisible(), 'teacher agency remains visible in its dedicated workspace')
-  const mechanicsTeachingBlock = page.getByTestId('course-plan-teaching-block').filter({ has: page.getByRole('heading', { name: 'Mechanik', exact: true }) })
-  await mechanicsTeachingBlock.getByText('Enthaltene Lernziele und Unterrichtsstand', { exact: true }).click()
-  const coverageEffectiveOn = addDays(today, -8)
-  await page.getByLabel(/^Behandelt am/u).fill(coverageEffectiveOn)
-  await mechanicsTeachingBlock.getByRole('checkbox', { name: /Kräfte beschreiben/u }).check()
-  assert(await page.getByText('Mindestens 1 von 2 bestätigt', { exact: true }).count() >= 1, 'unattested coverage is presented as a lower bound')
-  await page.getByRole('button', { name: 'Stand bis heute vollständig nachgetragen', exact: true }).click()
-  assert(await page.getByText('Datenstand für heute bestätigt', { exact: true }).count() >= 1, 'explicit teacher attestation enables the current coverage status')
+  const planBeforeProgress = await page.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1'))
+  await page.getByRole('button', { name: 'Lernfortschritt', exact: true }).click()
+  const progressPanel = page.getByTestId('course-plan-learner-progress')
+  await progressPanel.getByText('1 von 2 Lernzielen abgeschlossen', { exact: true }).waitFor()
+  assert(await progressPanel.getByText(studentName, { exact: true }).isVisible(),
+    'saved learning results are associated with the enrolled learner')
+  assert(await progressPanel.getByRole('checkbox').count() === 0,
+    'saved progress has no manual teaching or mastery confirmation controls')
+  assert(await page.getByRole('button', { name: 'Stand bis heute vollständig nachgetragen', exact: true }).count() === 0,
+    'manual teaching attestation is removed')
+  assert(await page.getByText('Tempo der letzten 7 Tage', { exact: true }).count() === 0,
+    'historical teaching events no longer create a learner-progress pacing gauge')
+  learnerRequestGate.progressUnavailable = true
+  await progressPanel.getByRole('button', { name: 'Aktualisieren', exact: true }).click()
+  await progressPanel.getByText('Lernfortschritt derzeit nicht verfügbar. Bitte erneut aktualisieren.', { exact: true }).waitFor()
+  assert(await progressPanel.getByText(/\d+ von \d+ Lernzielen abgeschlossen/u).count() === 0,
+    'an unavailable learner result is unknown rather than zero or a stale completed count')
+  learnerRequestGate.progressUnavailable = false
+  await progressPanel.getByRole('button', { name: 'Aktualisieren', exact: true }).click()
+  await progressPanel.getByText('1 von 2 Lernzielen abgeschlossen', { exact: true }).waitFor()
+  assertJsonEqual(await page.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1')), planBeforeProgress,
+    'reading and refreshing saved learning results never changes the local plan or historical teaching records')
+  await page.setViewportSize({ width: 390, height: 844 })
+  await progressPanel.scrollIntoViewIfNeeded()
+  const progressFits = await progressPanel.evaluate((element) => element.scrollWidth <= element.clientWidth)
+  assert(progressFits, 'saved learner progress fits on mobile')
+  if (process.env.SKILLPILOT_COURSE_PLAN_PROGRESS_SCREENSHOT) {
+    await progressPanel.screenshot({ path: process.env.SKILLPILOT_COURSE_PLAN_PROGRESS_SCREENSHOT })
+  }
+  await page.setViewportSize({ width: 1440, height: 1000 })
   await page.getByRole('button', { name: 'Plan bearbeiten', exact: true }).click()
 
   await page.setViewportSize({ width: 1280, height: 360 })
@@ -609,8 +652,8 @@ try {
   await editForm.getByLabel('Bis einschließlich', { exact: true }).fill(unsavedBlockEnd)
   const storageBeforeDraftNavigation = await page.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1'))
   const urlBeforeDraftNavigation = page.url()
-  await page.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
-  assert(!(await editFormHeading.isVisible()), 'switching to teaching hides the editor without presenting a second form')
+  await page.getByRole('button', { name: 'Lernfortschritt', exact: true }).click()
+  assert(!(await editFormHeading.isVisible()), 'switching to learner progress hides the editor without presenting a second form')
   await page.getByRole('button', { name: 'Plan bearbeiten', exact: true }).click()
   assert(await editForm.getByLabel('Bis einschließlich', { exact: true }).inputValue() === unsavedBlockEnd, 'switching internal views preserves the unsaved block draft')
   await page.getByTestId('trainer-goals-tab').click()
@@ -637,10 +680,18 @@ try {
   await milestoneForm.getByLabel('Fällig am', { exact: true }).fill(addDays(today, 20))
   await milestoneForm.getByRole('button', { name: 'Abschnitt speichern', exact: true }).click()
   await page.getByRole('heading', { name: 'Mechanik-Aufgaben sicher bearbeiten', exact: true }).waitFor()
+  const milestoneBlock = page.getByTestId('course-plan-block').filter({
+    has: page.getByRole('heading', { name: 'Mechanik-Aufgaben sicher bearbeiten', exact: true }),
+  })
+  await milestoneBlock.getByRole('button', { name: 'Bearbeiten', exact: true }).click()
+  const savedMilestoneForm = page.getByRole('heading', { name: 'Planabschnitt bearbeiten', exact: true }).locator('..').locator('..')
   assert(
-    await page.getByText('Konkretes Ziel: Mechanik', { exact: true }).count() === 1,
-    'a dated milestone can be linked to a concrete curriculum target',
+    await savedMilestoneForm.getByRole('combobox', { name: 'Lernziel oder Cluster' }).inputValue() === clusterGoalId,
+    'a saved milestone retains its concrete curriculum target',
   )
+  assert(await savedMilestoneForm.getByLabel('Fällig am', { exact: true }).inputValue() === addDays(today, 20),
+    'the saved milestone retains its explicit due date')
+  await savedMilestoneForm.getByRole('button', { name: 'Abbrechen', exact: true }).click()
 
   await page.getByRole('button', { name: 'Abschnitt hinzufügen', exact: true }).click()
   const secondFormHeading = page.getByRole('heading', { name: 'Neuen Planabschnitt anlegen', exact: true })
@@ -739,12 +790,11 @@ try {
   )
   assert(persistedPlan?.blocks?.some((block) => block.title === 'Reserve') === false, 'the reverted plan block does not persist')
   assert(persistedPlan?.blocks?.some((block) => block.title === 'Mechanik-Aufgaben sicher bearbeiten') === true, 'the concrete dated target remains after reverting the later buffer change')
-  assert(
-    (persistedPlan as { coverageEvents?: Array<{ effectiveOn?: string }> } | null)?.coverageEvents?.[0]?.effectiveOn === coverageEffectiveOn,
-    'a backfilled coverage event keeps the teacher-selected effective date',
-  )
+  assertJsonEqual((persistedPlan as { coverageEvents?: unknown[] } | null)?.coverageEvents, [],
+    'learning progress never creates manual teaching events')
   assert(await page.getByText(studentName, { exact: true }).count() === 0, 'learner names remain absent after plan edits')
-  assert(learnerRequests.length === 0, `plan workspace requests no learner data; got ${JSON.stringify(learnerRequests)}`)
+  assert(learnerRequests.length > 0 && learnerRequests.every((pathname) => pathname.endsWith('/planning-scope')),
+    `opening learner progress reads only the current subject snapshot; got ${JSON.stringify(learnerRequests)}`)
 
   learnerRequestGate.blocked = true
   const learnerRequestStarted = page.waitForRequest((request) => (
@@ -1169,18 +1219,18 @@ try {
   releasePlanningScope?.()
 
   try {
-    await personalizedPage.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
-    await personalizedPage.getByText('53 offene von 259 atomaren Zielen verplant', { exact: true }).waitFor()
+    await personalizedPage.getByRole('button', { name: 'Lernfortschritt', exact: true }).click()
+    await personalizedPage.getByTestId('course-plan-learner-progress')
+      .getByText('206 von 263 Lernzielen abgeschlossen', { exact: true }).waitFor()
+    assert(await personalizedPage.getByTestId('course-plan-learner-progress').getByRole('checkbox').count() === 0,
+      'individual learner progress is read from saved results without manual confirmation')
   } catch (error) {
     const body = (await personalizedPage.locator('body').textContent() ?? '').replace(/\s+/gu, ' ').trim()
     throw new Error(`${error instanceof Error ? error.message : String(error)}\nBody: ${body.slice(0, 4_000)}`)
   }
-  assert(
-    await personalizedPage.getByText('6 von 53 fällig', { exact: true }).count() >= 1,
-    'the existing Sek-I block schedules only its 53 open atoms and has six due today',
-  )
-
   await personalizedPage.getByRole('button', { name: 'Plan bearbeiten', exact: true }).click()
+  assert(await personalizedPage.getByTestId('course-plan-block').getByText('53 Lernziele', { exact: true }).count() === 1,
+    'reading current progress preserves the captured 53-goal Sek-I planning population')
 
   await personalizedPage.getByRole('button', { name: 'Abschnitt hinzufügen', exact: true }).click()
   const sekTwoForm = personalizedPage
@@ -1191,7 +1241,7 @@ try {
   const sekTwoOption = sekTwoGoalSelect.locator(`option[value="${sekTwoScopeGoalId}"]`)
   assert(await sekTwoOption.count() === 1, 'Sek II remains selectable after the authoritative baseline is loaded')
   assert(
-    (await sekTwoOption.textContent())?.includes('4 offen von 4 atomaren Zielen') === true,
+    (await sekTwoOption.textContent())?.includes('4 von 4 Zielen bei Planerstellung offen') === true,
     'the synthetic Sek-II option retains the cross-phase Q4 target from the authoritative baseline',
   )
   await sekTwoGoalSelect.selectOption(sekTwoScopeGoalId)
@@ -1257,11 +1307,11 @@ try {
   await personalizedPage.getByText('Speichere oder verwirf zuerst die Änderungen im Fachplan. Die Vorschau darf keine ungespeicherten Änderungen übergehen.', { exact: true }).waitFor()
   assert(learnerPlanPreviewBodies.length === previewsBeforeUnsavedNavigation, 'an unsaved draft blocks preview calculation instead of silently previewing a different plan')
   assert(await personalizedPage.getByTestId('trainer-learning-plan-preview-summary').count() === 0, 'an unsaved draft displays no stale daily totals')
-  await personalizedPage.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
+  await personalizedPage.getByRole('button', { name: 'Lernfortschritt', exact: true }).click()
   await personalizedPage.getByRole('button', { name: 'Plan bearbeiten', exact: true }).click()
   await openPlanName(personalizedPage)
   assert(await planLabelInput.inputValue() === 'Noch nicht gespeichert', 'a linked learner plan preserves the unsaved label across both other views')
-  assertJsonEqual(await personalizedPage.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1')), storedPlanBeforePreview, 'preview and teaching navigation do not silently persist a draft')
+  assertJsonEqual(await personalizedPage.evaluate(() => localStorage.getItem('skillpilot_teacher_course_plans_v1')), storedPlanBeforePreview, 'preview and learner-progress navigation do not silently persist a draft')
   await planLabelInput.fill('2026/27')
   await personalizedPage.getByRole('navigation', { name: 'Planungsbereiche', exact: true }).getByRole('button', { name: 'Schülervorschau', exact: true }).click()
   const learnerPreview = personalizedPage.getByTestId('trainer-learning-plan-preview')
@@ -1285,7 +1335,7 @@ try {
     exact: true,
   }).waitFor()
   assert(
-    await publicationConfirmation.getByText(/Spätere Änderungen werden nicht automatisch synchronisiert/u).count() === 1,
+    await publicationConfirmation.getByText(/Spätere Planänderungen werden nicht automatisch synchronisiert/u).count() === 1,
     'the confirmation explains that teacher and learner plans remain independent',
   )
   assert(
@@ -1389,8 +1439,9 @@ try {
     })
   assert(await sharedPlanning.getByText('Prüfung nötig', { exact: true }).count() === 0,
     'an unrelated retired baseline atom does not demand reactivation of a current subject plan')
-  await personalizedPage.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
-  await personalizedPage.getByText('57 offene von 263 atomaren Zielen verplant', { exact: true }).waitFor()
+  await personalizedPage.getByRole('button', { name: 'Lernfortschritt', exact: true }).click()
+  await personalizedPage.getByTestId('course-plan-learner-progress')
+    .getByText('206 von 263 Lernzielen abgeschlossen', { exact: true }).waitFor()
   assert(await personalizedPage.getByText('Planlage nicht berechenbar', { exact: true }).count() === 0,
     'historical atoms outside the current plan do not invalidate its calculation')
   const readPersonalizedPlan = () => personalizedPage.evaluate((coursePlanId) => {
@@ -1411,7 +1462,7 @@ try {
   const reopenedSelect = reopenedForm.getByRole('combobox', { name: 'Lernziel oder Cluster' })
   assert(await reopenedSelect.inputValue() === sekTwoScopeGoalId,
     'editing preserves the existing synthetic Sek-II cluster reference')
-  assert((await reopenedSelect.locator('option:checked').textContent())?.includes('4 offen von 4 atomaren Zielen'),
+  assert((await reopenedSelect.locator('option:checked').textContent())?.includes('4 von 4 Zielen bei Planerstellung offen'),
     'the selected cluster remains visibly plannable after the curriculum update')
   await reopenedForm.getByRole('button', { name: 'Abschnitt speichern', exact: true }).click()
   await reopenedForm.waitFor({ state: 'detached' })

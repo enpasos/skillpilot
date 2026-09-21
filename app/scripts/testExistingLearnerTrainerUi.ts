@@ -404,13 +404,11 @@ try {
   await page.getByRole('button', { name: 'Planung', exact: true }).click()
   await page.getByRole('heading', { name: 'Planabschnitte', exact: true }).waitFor()
   assert.equal(await page.getByRole('button', { name: 'Plan bearbeiten', exact: true }).getAttribute('aria-current'), 'page')
-  await page.getByRole('button', { name: 'Unterricht & Verlauf', exact: true }).click()
-  await page.getByText('53 offene von 259 atomaren Zielen verplant', { exact: true }).waitFor()
-  const roundedDueValues = page.getByText('6 von 53 fällig', { exact: true })
-  await roundedDueValues.first().waitFor()
-  assert.equal(await roundedDueValues.count(), 2)
-  await page.getByText('Wochenkontingent: 29,4 Ziele/Woche', { exact: true }).waitFor()
-  assert.equal(await page.getByText(/29\.444444/u).count(), 0)
+  await page.getByRole('button', { name: 'Lernfortschritt', exact: true }).click()
+  const progressPanel = page.getByTestId('course-plan-learner-progress')
+  await progressPanel.getByText('206 von 259 Lernzielen abgeschlossen', { exact: true }).waitFor()
+  assert.equal(await progressPanel.getByRole('checkbox').count(), 0)
+  assert.equal(await page.getByRole('button', { name: 'Stand bis heute vollständig nachgetragen', exact: true }).count(), 0)
 
   const storedDirectPlan = await page.evaluate((storageId) => {
     const store = JSON.parse(localStorage.getItem('skillpilot_teacher_course_plans_v1') ?? '{}')
@@ -434,6 +432,8 @@ try {
   assert.equal(exportedPlan.includes('openAtomicGoalIds'), false)
   assert.equal(exportedPlan.includes(learnerId), false)
   const parsedExport = JSON.parse(exportedPlan)
+  assert.equal(parsedExport.plan.coverageAttestations[0].id, 'legacy-attestation',
+    'removing manual teaching controls preserves historical attestations in the export')
   assert.equal(parsedExport.semantics.learnerDerivedPlanningBaselineIncluded, false)
   assert.equal(parsedExport.semantics.teacherEnteredFreeTextExportedUnchanged, true)
   assert.equal('learnerDataIncluded' in parsedExport.semantics, false)

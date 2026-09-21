@@ -7,8 +7,8 @@ Produktions-Hotfix zur Gültigkeit bestehender Lernpläne hat Vorrang. Dieses
 Vorhaben startet keinen neuen fachlichen Curriculum-QS-Lauf und ist nicht
 automatisch ein Deployment.
 
-Die fachlichen Grundbegriffe und die Trennung von Planung, Unterricht und
-Mastery folgen dem bestehenden
+Die fachlichen Grundbegriffe und die Trennung von Planung und gespeichertem
+Lernergebnis folgen dem bestehenden
 [Zeitachsenkonzept](../didactic/curriculum-time-axis-and-pacing.md). Dessen
 weitergehende mögliche Backend-Architektur wird hier nicht umgesetzt; für
 Klassen gilt weiterhin die ausdrücklich gewählte lokale Ablage.
@@ -48,14 +48,30 @@ ausdrückliche Übernahme in persönliche Lernpläne werden wiederverwendet.
 
 ## Sicherheits- und Bedeutungsgrenzen
 
-- Klassenbezeichnungen, Mitgliedschaften und Unterrichtsdokumentation bleiben
+- Klassenbezeichnungen, Mitgliedschaften und bestehende lokale Altdokumentation bleiben
   ausschließlich in der bestehenden lokalen Ablage. Öffentliche Buchabrufe
   erhalten keine Klassen- oder Lernendenkennung.
 - Ein Buch-/Curriculum-Update schreibt weder einen Plan noch dessen Termine
   um. Nicht mehr passende Ziele werden als Konflikt kenntlich gemacht.
-- Geplant, im Unterricht behandelt und individuell beherrscht sind drei
-  unterschiedliche Aussagen. Planung und Unterrichtsabdeckung setzen keine
-  Mastery.
+- Die gespeicherten Lernzielergebnisse sind die einzige Quelle für erreichte
+  Ziele. Die frühere manuelle Unterrichtsabdeckung und deren
+  Vollständigkeitsbestätigung sind als Fortschrittsmodell abgelöst; sie werden
+  weder neu erfasst noch als „Unterrichts-IST“ oder Ersatz-Lernstand angezeigt.
+  Bereits vorhandene lokale Datensätze bleiben unverändert erhalten und
+  erzeugen keine Mastery.
+- Der Lernfortschritt wird je Lernendem und Fach rein lesend aus dem aktuellen
+  backendseitigen persönlichen Zielumfang und den gespeicherten Ergebnissen
+  dargestellt. Orientierung zählt bei abgeschlossenem Ziel ebenfalls, ohne
+  einen fachlichen Beherrschungsnachweis zu behaupten. Fehlende oder veraltete
+  Daten werden nicht durch null erreichte Ziele ersetzt.
+- Die feste Planungsbasis ist weder der aktuelle Lernstand noch die Zahl der
+  **aktuell** offenen Ziele: Ein später abgeschlossener Planeintrag bleibt
+  enthalten. Die Planmenge G kann beispielsweise wegen Vorwissen kleiner als
+  der vollständige persönliche Zielumfang sein. Gleiche Zielmengen verwenden
+  dieselben Ergebnisregeln; unterschiedliche Umfänge werden kenntlich gemacht,
+  nicht durch künstlich gleiche Zähler verschleiert. Der persönliche
+  Lernplanstatus folgt weiterhin der gemeinsamen
+  [Backend-Auswertung](../didactic/unified-learning-plan-status.md).
 - Zielzahlen sind keine belastbare Unterrichtsdauer. Es werden keine scheinbar
   präzisen automatischen Stundenbudgets aus der Anzahl atomarer Ziele erzeugt.
 - Eine noch fehlende Planauswertung wird als unbekannt angezeigt, nicht als
@@ -63,10 +79,10 @@ ausdrückliche Übernahme in persönliche Lernpläne werden wiederverwendet.
 - Die erste Stufe enthält keine neue KI-Verbindung, keinen Kalenderdienst und
   keine externe Veröffentlichung. Ein späterer KI-Planvorschlag müsste seine
   Annahmen zu Zeit, Vorwissen, Übung und Puffer offenlegen und editierbar sein.
-- Der OpenAI-Review-Freeze bleibt wirksam. Eine konkrete Implementierung erhält
-  in Abschnitt 6.55 des Review-Freeze-Dokuments eine eigene eng begrenzte,
-  geprüfte Hashfortschreibung;
-  die Freigabe des Plan-Kompatibilitäts-Hotfixes ist dafür kein Ersatz.
+- Der frühere OpenAI-Review-Freeze ist seit dem 9. September 2026 aufgehoben.
+  Historische Review-Artefakte und tatsächlich veröffentlichte Pakete bleiben
+  unverändert; Sicherheits- und Datenschutzgrenzen gelten weiterhin. Eine
+  lokale Änderung ist keine Veröffentlichung oder Host-Abnahme.
 
 Die Darstellung liegt in `CoursePlanLearningBook.tsx` und
 `CoursePlanTimeline.tsx`; `CoursePlanPilotView.tsx` verbindet sie mit dem
@@ -84,6 +100,10 @@ und unverändert.
   keine unbestätigten Eingaben ohne Warnung.
 - Zeitachse, Datumsformular und Zielauswahl funktionieren auf schmalen Displays
   und mit Tastatur; die laufende Planübernahme bleibt getrennt und explizit.
+- Ein gespeicherter Zielabschluss erscheint bei gleichem Lernenden-, Fach- und
+  Zielumfang konsistent in Baum, Cockpit und Planung. Eine bestehende
+  Planungsbasis oder alte Unterrichtsdokumentation darf ihn nicht verdecken.
+  Der reine Fortschrittsabruf verändert weder Plan noch Lernstand.
 - Fokussierte Modell-/UI-Regressionen, TypeScript, Build und Freeze-Prüfungen
   sind grün. Lokale Prüfung wird nicht als Deployment ausgegeben.
 

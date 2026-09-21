@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { CompetenceTree } from '../components/CompetenceTree'
 import { CoursePlanPilotView, type CoursePlanSection } from '../components/CoursePlanPilotView'
+import { CoursePlanLearnerProgress } from '../components/CoursePlanLearnerProgress'
 import { GoalCard } from '../components/GoalCard'
 import { NeighborSection } from '../components/NeighborSection'
 import { ClassSetup } from '../components/ClassSetup'
@@ -2049,6 +2050,13 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             language={localizedLanguage}
             section={coursePlanSection}
             onSectionChange={setCoursePlanSection}
+            learnerProgressPanel={coursePlanSection === 'teaching' ? (
+              <CoursePlanLearnerProgress
+                learners={activeClass.students}
+                landscapeId={activeClass.landscapeId}
+                language={localizedLanguage}
+              />
+            ) : undefined}
             sharedActivationAvailable={activeClassIsExistingLearner}
             sharedActivationPanel={activeClassIsExistingLearner ? (
               <TrainerLearningPlanActivation

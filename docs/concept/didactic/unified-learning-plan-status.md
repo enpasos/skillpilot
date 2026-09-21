@@ -70,6 +70,26 @@ Es gibt keinen fachübergreifenden Gesamtsaldo, keine Gesamtquote und keine dara
 
 ## 3. Verbindliche Datengrundlage
 
+### Gemeinsame Ergebnisquelle in der gesamten Anwendung
+
+Erreichte Ziele werden ausschließlich aus den gespeicherten Lernzielergebnissen
+des jeweiligen Lernenden bestimmt. Cockpit, Lernzielbaum und Lehrkraftplanung
+dürfen dafür keinen abweichenden manuellen Unterrichtsstand führen. Die frühere
+Unterrichtsabdeckung samt Bestätigungs- und Attestierungsablauf ist als
+Fortschrittsmodell abgelöst. Altdaten bleiben erhalten, sind aber keine Quelle
+für Zielerreichung. Planung legt Umfang und Termine fest; sie bestätigt keine
+Ergebnisse und verändert sie nicht.
+
+Die vollständige persönliche Zielmenge und die nachfolgend definierte Planmenge
+**G** sind nicht zwangsläufig identisch. Ein vor Planbeginn abgeschlossenes Ziel
+kann zur persönlichen Zielerreichung zählen, ohne in G enthalten zu sein.
+Gleicher Lernender und gleicher Zielumfang müssen dieselben Ergebnisregeln
+verwenden; bei unterschiedlichen Umfängen benennt die Anzeige ihren Bezug.
+Abgeschlossene Orientierungsziele werden innerhalb ihres jeweiligen Umfangs
+konsistent mitgezählt, ohne sie als fachlichen Beherrschungsnachweis auszugeben.
+Nicht verfügbare oder veraltete Ergebnisdaten werden als solche gezeigt, nicht
+als null erreichte Ziele. Ein Abruf dieser Werte bleibt rein lesend.
+
 ### 3.1 Bereinigte Planmenge
 
 Die bei Planerstellung erfasste Ausgangsbasis hält fest, welche vorgesehenen Ziele für den Lernenden noch offen waren. Diese Ziele bilden die fortschrittswirksame Planmenge **G**.

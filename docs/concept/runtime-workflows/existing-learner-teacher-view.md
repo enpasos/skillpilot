@@ -45,6 +45,20 @@ read-only.
   per-goal mastery values. Plan exports omit the baseline entirely;
   teacher-entered free text remains unchanged and may itself contain personal
   data.
+- Current learner progress is read separately from that immutable planning
+  baseline, using the backend's current personalized subject target set and
+  stored learner goal results. The same scope and goal-result rules must yield
+  the same achieved count as the Cockpit/tree. An orientation completion counts
+  when the goal is in scope, without claiming subject-matter mastery. The fixed
+  plan-goal set and complete personal target set may differ; the display names
+  its scope instead of equating their denominators. Missing or stale reads are
+  unavailable, not zero achievement. This progress read never mutates a plan,
+  mastery or other learner state.
+- Manual teaching coverage and completeness attestations are retired as a
+  progress workflow. There is no second `Unterrichts-IST`, no new manual
+  confirmation requirement for stored results, and no inference of achievement
+  from legacy coverage. Existing browser-local records remain intact for
+  compatibility and do not become learner mastery.
 - Read-only is a UI contract, not a server capability. Possession of the
   SkillPilot ID grants the ordinary learner access associated with that ID.
 - No new teacher/class/learner relationship, capability, authorization record,
@@ -84,7 +98,9 @@ read-only.
    target set for the requested subject landscape, independently of the
    learner's effective Level-3 focus, and uses the same atomic node rule and
    mastery threshold as the Cockpit. It performs no write and never changes the
-   learner's planned goals.
+   learner's planned goals. The current learner/subject progress panel reuses
+   this read boundary independently of baseline capture; the original baseline
+   is never substituted for current goal results.
 6. Editing and saving the class also reloads the current learner profile. The
    cached personalization is replaced only after the refreshed local class was
    saved successfully. A failed refresh leaves the prior local record

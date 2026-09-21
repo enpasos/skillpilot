@@ -53,14 +53,12 @@ export interface CoursePlanCopy {
   planChangedDuringSave: string
   retryPlanningScope: string
   learningGoalCount: (count: number) => string
-  plannedOpenGoalCount: (open: number, total: number) => string
   duplicatedGoalCount: (count: number) => string
   timelineTitle: string
   timelineHint: string
   noBlocks: string
   periodLabel: string
   expectedLabel: string
-  coveredLabel: string
   weeklyQuotaLabel: string
   bufferDaysLabel: string
   nextMilestoneLabel: string
@@ -68,60 +66,15 @@ export interface CoursePlanCopy {
   today: string
   future: string
   complete: string
-  minimumConfirmed: (covered: number, total: number) => string
-  confirmedValue: (covered: number, total: number) => string
   expectedValue: (expected: number, total: number) => string
   goalsDetails: string
-  markCovered: string
-  markOpen: string
-  coverageTitle: string
-  coverageBody: string
-  coverageAttest: string
-  coverageAttested: string
-  coverageOpen: string
-  coverageChanged: string
-  coverageEffectiveDateLabel: string
-  coverageEffectiveDateHint: string
-  coverageEffectiveDateInvalid: string
-  planStatusTitle: string
-  planStatusOnTrack: string
-  planStatusWatch: string
-  planStatusBehind: string
-  planStatusAhead: string
   planStatusUnavailable: string
   calculationUnavailableTitle: string
   calculationUnavailableBody: string
   notCalculable: string
   blockNotCalculable: string
-  decisionTitle: string
-  decisionNone: string
-  decisionAddLearning: string
-  decisionDocument: string
-  decisionReview: string
-  paceTitle: string
-  paceSubtitle: string
-  paceActual: string
-  paceTarget: string
-  paceUnavailableNew: string
-  paceUnavailableAttestation: string
-  paceUnavailableHistory: string
-  paceProvisional: string
-  paceUnit: string
   planningBasis: string
   planningBasisHint: string
-  studentStatusTitle: string
-  classStatusLabel: string
-  learnerStatusLabel: (name: string) => string
-  studentStatusBody: string
-  studentNoGoalsDue: string
-  studentNoLearners: string
-  studentLoading: string
-  studentEvidenceMissing: string
-  studentLoadError: string
-  studentRange: (lower: number, upper: number, total: number) => string
-  studentExact: (value: number, total: number) => string
-  studentClassMedian: (lower: number, upper: number, total: number) => string
-  studentLoadedCount: (loaded: number, total: number) => string
   studentPrivacyHint: string
   exportPlan: string
   exportHint: string
@@ -145,8 +98,6 @@ export interface CoursePlanCopy {
   publishSuccess: (revision: number) => string
   publishGoalCount: (count: number) => string
   importNotIncluded: string
-  protectedExtensionTitle: string
-  protectedExtensionBody: string
 }
 
 const de: CoursePlanCopy = {
@@ -156,10 +107,10 @@ const de: CoursePlanCopy = {
   title: 'Plan & Lage',
   subtitle: 'Jahrgangsstoff terminieren, Puffer schützen und den heutigen Stand nachvollziehbar machen.',
   localPreviewTitle: 'Lokale Vorschau',
-  localPreviewBody: 'Der Plan und der dokumentierte Unterrichtsstand liegen nur in diesem Browser. Die Ansicht ist noch kein revisionsfester Leitungsnachweis.',
+  localPreviewBody: 'Der Kursplan liegt nur in diesem Browser. Der Lernfortschritt wird aus den gespeicherten Lernzielergebnissen geladen.',
   localPreviewBadge: 'nur auf diesem Gerät',
   teacherLeadsTitle: 'Die Lehrkraft führt',
-  teacherLeadsBody: 'SkillPilot ordnet und rechnet. Du setzt Ziele, bestätigst den Unterrichtsstand und entscheidest über jede Planänderung.',
+  teacherLeadsBody: 'Du planst Ziele und Termine. SkillPilot zeigt dazu die gespeicherten Lernzielergebnisse; über Planänderungen entscheidest du.',
   addFirstBlock: 'Ersten Abschnitt planen',
   addBlock: 'Abschnitt hinzufügen',
   emptyTitle: 'Dein erster Planabschnitt',
@@ -206,14 +157,12 @@ const de: CoursePlanCopy = {
   planChangedDuringSave: 'Der Plan wurde während des Ladens geändert. Bitte speichere den Abschnitt erneut.',
   retryPlanningScope: 'Erneut laden',
   learningGoalCount: (count) => `${count} Lernziel${count === 1 ? '' : 'e'}`,
-  plannedOpenGoalCount: (open, total) => `${open} offene von ${total} atomaren Zielen verplant`,
   duplicatedGoalCount: (count) => `${count} Lernziel${count === 1 ? '' : 'e'} bereits in einem früheren Abschnitt eingeplant`,
   timelineTitle: 'Textueller Kursplan',
   timelineHint: 'Chronologisch sortiert. Ein Lernziel zählt beim ersten eingeplanten Auftreten zum Soll.',
   noBlocks: 'Noch keine Abschnitte geplant.',
   periodLabel: 'Zeitraum',
-  expectedLabel: 'Soll heute',
-  coveredLabel: 'Unterrichts-IST',
+  expectedLabel: 'Lernziele bis heute geplant',
   weeklyQuotaLabel: 'Wochenkontingent',
   bufferDaysLabel: 'Puffer',
   nextMilestoneLabel: 'Nächster Termin',
@@ -221,60 +170,15 @@ const de: CoursePlanCopy = {
   today: 'heute',
   future: 'noch nicht fällig',
   complete: 'vollständig fällig',
-  minimumConfirmed: (covered, total) => `Mindestens ${covered} von ${total} bestätigt`,
-  confirmedValue: (covered, total) => `${covered} von ${total} bestätigt`,
   expectedValue: (expected, total) => `${expected} von ${total} fällig`,
-  goalsDetails: 'Enthaltene Lernziele und Unterrichtsstand',
-  markCovered: 'Als im Unterricht behandelt bestätigen',
-  markOpen: 'Bestätigung zurücknehmen',
-  coverageTitle: 'Unterrichtsstand',
-  coverageBody: 'Bestätige nur Ziele, die im Kurs tatsächlich behandelt wurden. Das sagt noch nichts darüber aus, ob jede lernende Person sie beherrscht.',
-  coverageAttest: 'Stand bis heute vollständig nachgetragen',
-  coverageAttested: 'Datenstand für heute bestätigt',
-  coverageOpen: 'Datenstand offen – deshalb keine rote oder grüne Planbewertung',
-  coverageChanged: 'Seit der letzten Bestätigung wurde der Plan oder Unterrichtsstand geändert.',
-  coverageEffectiveDateLabel: 'Behandelt am',
-  coverageEffectiveDateHint: 'Dieses Datum gilt für die folgenden Änderungen am Unterrichtsstand. Nachträge verändern dadurch nicht das Tempo der letzten sieben Tage.',
-  coverageEffectiveDateInvalid: 'Bitte wähle ein gültiges Datum, das nicht in der Zukunft liegt.',
-  planStatusTitle: 'Heutige Planlage',
-  planStatusOnTrack: 'Bestätigte Abdeckung im Sollkorridor',
-  planStatusWatch: 'Abweichung bitte einordnen',
-  planStatusBehind: 'Bestätigte Abdeckung unter dem Sollpfad',
-  planStatusAhead: 'Mehr Abdeckung als bis heute vorgesehen',
+  goalsDetails: 'Enthaltene Lernziele',
   planStatusUnavailable: 'Noch nicht bewertbar',
   calculationUnavailableTitle: 'Planlage nicht berechenbar',
   calculationUnavailableBody: 'Mindestens ein geplanter Lernzielbezug ist im aktuellen Kursumfang nicht mehr verfügbar. Bitte bearbeite oder entferne den betroffenen Abschnitt; SkillPilot setzt dafür keine Nullwerte ein.',
   notCalculable: 'Nicht berechenbar',
   blockNotCalculable: 'Dieser Abschnitt kann mit dem aktuellen Lernzielumfang nicht berechnet werden.',
-  decisionTitle: 'Was braucht heute deine Entscheidung?',
-  decisionNone: 'Aus dem dokumentierten Unterrichtsstand ergibt sich aktuell kein unmittelbarer Entscheidungsbedarf.',
-  decisionAddLearning: 'Puffer und Termine sind angelegt. Ergänze mindestens einen Lernabschnitt, damit Soll und Unterrichts-IST berechnet werden können.',
-  decisionDocument: 'Bitte prüfe und bestätige zuerst, ob der Unterrichtsstand bis heute vollständig nachgetragen ist.',
-  decisionReview: 'Bitte ordne die Abweichung pädagogisch ein. SkillPilot ändert weder Reihenfolge noch Puffer oder Zieltermine automatisch.',
-  paceTitle: 'Tempo der letzten 7 Tage',
-  paceSubtitle: 'Dokumentierte Unterrichtsabdeckung im Vergleich zur gleichmäßig geplanten Sollgeschwindigkeit.',
-  paceActual: 'IST',
-  paceTarget: 'SOLL',
-  paceUnavailableNew: 'Der aktuelle Plan muss dafür mindestens sieben Tage unverändert bestehen.',
-  paceUnavailableAttestation: 'Bitte zuerst den Unterrichtsstand bis heute vollständig nachtragen.',
-  paceUnavailableHistory: 'Für den Sieben-Tage-Vergleich fehlt noch eine ausreichende lokale Verlaufshistorie.',
-  paceProvisional: 'Vorläufiger Rohwert – noch keine grüne oder rote Geschwindigkeitsbewertung.',
-  paceUnit: 'Ziele/Woche',
   planningBasis: 'Planungsgrundlage',
   planningBasisHint: 'Die Vorschau verteilt Lernziele gleichmäßig auf Werktage (Mo–Fr). Ferien, Feiertage, Ausfälle und echte Unterrichtsstunden sind in diesem Pilot noch nicht eingerechnet.',
-  studentStatusTitle: 'Lernstand',
-  classStatusLabel: 'Klasse – statistisch',
-  learnerStatusLabel: (name) => `Einzelsicht · ${name}`,
-  studentStatusBody: 'Der Lernstand bleibt getrennt vom Unterrichtsstand. Es werden nur bereits geladene Werte verwendet; fehlende Werte gelten als unbekannt, nicht als null.',
-  studentNoGoalsDue: 'Heute sind laut Plan noch keine Lernziele fällig.',
-  studentNoLearners: 'Für diesen Kurs sind keine Lernenden hinterlegt.',
-  studentLoading: 'Lernstände werden geladen …',
-  studentEvidenceMissing: 'Für eine eindeutige Aussage fehlen Lernstandswerte.',
-  studentLoadError: 'Der Lernstand konnte nicht vollständig geladen werden.',
-  studentRange: (lower, upper, total) => `${lower}–${upper} von ${total} fälligen Zielen`,
-  studentExact: (value, total) => `${value} von ${total} fälligen Zielen`,
-  studentClassMedian: (lower, upper, total) => `Median: ${lower}–${upper} von ${total} fälligen Zielen`,
-  studentLoadedCount: (loaded, total) => `${loaded} von ${total} Lernständen geladen`,
   studentPrivacyHint: 'Keine Rangliste und kein Export der lernstandsbezogenen Planungsgrundlage. Eigene Freitexte können personenbezogene Angaben enthalten.',
   exportPlan: 'Plan exportieren',
   exportHint: 'Der Export entfernt Klassen-ID und lernstandsbezogene Planungsgrundlage. Eigene Freitexte werden unverändert übernommen – bitte keine personenbezogenen Angaben eintragen.',
@@ -283,7 +187,7 @@ const de: CoursePlanCopy = {
   publishPlanLoading: 'Cockpit-Stand wird geprüft …',
   publishPlanSaving: 'Wird im Cockpit bereitgestellt …',
   publishConfirmTitle: 'Plan als unabhängige Kopie bereitstellen?',
-  publishIndependentCopyBody: 'Der lokale Lehrerplan bleibt unverändert. SkillPilot kopiert nur Bezeichnung, Zeitblöcke und die darin enthaltenen kanonischen Lernziele in den Fachplan des Lernenden. Klassenbezug, Unterrichtsstand, Lernstand, Bestätigungen und Verlauf werden nicht übertragen. Spätere Änderungen werden nicht automatisch synchronisiert.',
+  publishIndependentCopyBody: 'Der lokale Lehrerplan bleibt unverändert. SkillPilot kopiert nur Bezeichnung, Zeitblöcke und die darin enthaltenen kanonischen Lernziele in den Fachplan des Lernenden. Der gespeicherte Lernstand bleibt unverändert. Klassenbezug und lokale Altdokumentation werden nicht übertragen. Spätere Planänderungen werden nicht automatisch synchronisiert.',
   publishNewBody: 'Für dieses Fach besteht im Cockpit noch kein Plan.',
   publishReplaceBody: (revision) => `Im Cockpit besteht bereits ein Fachplan (Revision ${revision}). Beim Bestätigen wird er durch eine neue Revision ersetzt.`,
   publishConfirmNew: 'Unabhängige Kopie bereitstellen',
@@ -298,8 +202,6 @@ const de: CoursePlanCopy = {
   publishSuccess: (revision) => `Als unabhängige Kopie im Cockpit bereitgestellt · Revision ${revision}`,
   publishGoalCount: (count) => `${count} kanonische${count === 1 ? 's' : ''} Atomziel${count === 1 ? '' : 'e'} ${count === 1 ? 'wird' : 'werden'} geprüft. Gespeichert werden daraus nur aktuell offene sowie bereits in diesem persönlichen Fachplan erfasste Ziele.`,
   importNotIncluded: 'Ein Import folgt nach dem sicheren Server- und Berechtigungskonzept.',
-  protectedExtensionTitle: 'Lernstand und Leitungssicht bleiben geschützt',
-  protectedExtensionBody: 'Klassenstatistik, Einzeldrilldown und eine aggregierte Leitungssicht werden erst mit serverseitiger Kurszuordnung, Zweckbindung und geprüften Berechtigungen freigeschaltet. Dieser lokale Pilot liest einmalig den offenen atomaren Zielbestand für die Planbasis, zeigt daraus nur Plan-Summen und entfernt diese Grundlage beim Export.',
 }
 
 const en: CoursePlanCopy = {
@@ -309,10 +211,10 @@ const en: CoursePlanCopy = {
   title: 'Plan & status',
   subtitle: 'Schedule the curriculum, protect buffer time, and make today’s status understandable.',
   localPreviewTitle: 'Local preview',
-  localPreviewBody: 'The plan and documented teaching status are stored only in this browser. This is not yet an audit-proof management report.',
+  localPreviewBody: 'The course plan is stored only in this browser. Learning progress is loaded from stored learning-goal results.',
   localPreviewBadge: 'this device only',
   teacherLeadsTitle: 'The teacher leads',
-  teacherLeadsBody: 'SkillPilot organizes and calculates. You set goals, confirm teaching coverage, and decide on every plan change.',
+  teacherLeadsBody: 'You plan goals and dates. SkillPilot shows the stored learning-goal results; you decide on plan changes.',
   addFirstBlock: 'Plan the first section',
   addBlock: 'Add section',
   emptyTitle: 'Your first plan section',
@@ -359,14 +261,12 @@ const en: CoursePlanCopy = {
   planChangedDuringSave: 'The plan changed while the goals were loading. Please save the section again.',
   retryPlanningScope: 'Try again',
   learningGoalCount: (count) => `${count} learning goal${count === 1 ? '' : 's'}`,
-  plannedOpenGoalCount: (open, total) => `${open} open of ${total} atomic goals scheduled`,
   duplicatedGoalCount: (count) => `${count} goal${count === 1 ? '' : 's'} already scheduled in an earlier section`,
   timelineTitle: 'Text course plan',
   timelineHint: 'Sorted chronologically. A goal counts toward the target when it first appears in the plan.',
   noBlocks: 'No sections planned yet.',
   periodLabel: 'Period',
-  expectedLabel: 'Target today',
-  coveredLabel: 'Teaching actual',
+  expectedLabel: 'Learning goals planned through today',
   weeklyQuotaLabel: 'Weekly quota',
   bufferDaysLabel: 'Buffer',
   nextMilestoneLabel: 'Next milestone',
@@ -374,60 +274,15 @@ const en: CoursePlanCopy = {
   today: 'today',
   future: 'not due yet',
   complete: 'fully due',
-  minimumConfirmed: (covered, total) => `At least ${covered} of ${total} confirmed`,
-  confirmedValue: (covered, total) => `${covered} of ${total} confirmed`,
   expectedValue: (expected, total) => `${expected} of ${total} due`,
-  goalsDetails: 'Included goals and teaching status',
-  markCovered: 'Confirm as covered in class',
-  markOpen: 'Withdraw confirmation',
-  coverageTitle: 'Teaching status',
-  coverageBody: 'Confirm only goals actually covered in class. This does not mean every learner has mastered them.',
-  coverageAttest: 'Documentation is complete through today',
-  coverageAttested: 'Today’s data status confirmed',
-  coverageOpen: 'Data status is open, so no red or green plan rating is shown',
-  coverageChanged: 'The plan or teaching status changed since the last confirmation.',
-  coverageEffectiveDateLabel: 'Covered on',
-  coverageEffectiveDateHint: 'This date applies to the following teaching-status changes. Backfilling therefore does not distort the pace of the last seven days.',
-  coverageEffectiveDateInvalid: 'Choose a valid date that is not in the future.',
-  planStatusTitle: 'Today’s plan status',
-  planStatusOnTrack: 'Confirmed coverage within the target corridor',
-  planStatusWatch: 'Please interpret this deviation',
-  planStatusBehind: 'Confirmed coverage below the target path',
-  planStatusAhead: 'More coverage than planned through today',
+  goalsDetails: 'Included learning goals',
   planStatusUnavailable: 'Not assessable yet',
   calculationUnavailableTitle: 'Plan status cannot be calculated',
   calculationUnavailableBody: 'At least one scheduled learning-goal reference is no longer available in the current course scope. Edit or remove the affected block; SkillPilot will not substitute zero values.',
   notCalculable: 'Cannot be calculated',
   blockNotCalculable: 'This block cannot be calculated with the current learning-goal scope.',
-  decisionTitle: 'What needs your decision today?',
-  decisionNone: 'The documented teaching status currently creates no immediate decision need.',
-  decisionAddLearning: 'Buffers and dates are set. Add at least one learning block before planned and actual teaching coverage can be calculated.',
-  decisionDocument: 'First review and confirm whether teaching coverage is fully documented through today.',
-  decisionReview: 'Please interpret the deviation pedagogically. SkillPilot will not change sequence, buffer, or deadlines automatically.',
-  paceTitle: 'Pace over the last 7 days',
-  paceSubtitle: 'Documented teaching coverage compared with the evenly planned target pace.',
-  paceActual: 'ACTUAL',
-  paceTarget: 'TARGET',
-  paceUnavailableNew: 'The current plan must remain unchanged for at least seven days.',
-  paceUnavailableAttestation: 'First complete the teaching documentation through today.',
-  paceUnavailableHistory: 'There is not yet enough local history for a seven-day comparison.',
-  paceProvisional: 'Preliminary raw value — no green or red pace judgement yet.',
-  paceUnit: 'goals/week',
   planningBasis: 'Planning basis',
   planningBasisHint: 'This preview spreads goals evenly across weekdays (Mon–Fri). Holidays, cancellations, and actual lesson periods are not included in this pilot yet.',
-  studentStatusTitle: 'Learning status',
-  classStatusLabel: 'Class statistics',
-  learnerStatusLabel: (name) => `Individual view · ${name}`,
-  studentStatusBody: 'Learning status remains separate from teaching coverage. Only already-loaded values are used; missing values are unknown, never zero.',
-  studentNoGoalsDue: 'No learning goals are due today according to the plan.',
-  studentNoLearners: 'No learners are assigned to this course.',
-  studentLoading: 'Loading learning status …',
-  studentEvidenceMissing: 'Learning-status values are missing for a definitive statement.',
-  studentLoadError: 'Learning status could not be loaded completely.',
-  studentRange: (lower, upper, total) => `${lower}–${upper} of ${total} due goals`,
-  studentExact: (value, total) => `${value} of ${total} due goals`,
-  studentClassMedian: (lower, upper, total) => `Median: ${lower}–${upper} of ${total} due goals`,
-  studentLoadedCount: (loaded, total) => `${loaded} of ${total} learning records loaded`,
   studentPrivacyHint: 'No ranking and no export of the learner-derived planning basis. Your free text may contain personal data.',
   exportPlan: 'Export plan',
   exportHint: 'The export removes the class ID and learner-derived planning basis. Your free text is kept unchanged—do not enter personal data.',
@@ -436,7 +291,7 @@ const en: CoursePlanCopy = {
   publishPlanLoading: 'Checking the cockpit plan …',
   publishPlanSaving: 'Making available in the cockpit …',
   publishConfirmTitle: 'Make this plan available as an independent copy?',
-  publishIndependentCopyBody: 'The local teacher plan remains unchanged. SkillPilot copies only the label, time blocks, and their canonical learning goals into the learner’s subject plan. Class references, teaching coverage, mastery, attestations, and history are not transferred. Later changes are not synchronized automatically.',
+  publishIndependentCopyBody: 'The local teacher plan remains unchanged. SkillPilot copies only the label, time blocks, and their canonical learning goals into the learner’s subject plan. Stored learning results remain unchanged. Class references and legacy local documentation are not transferred. Later plan changes are not synchronized automatically.',
   publishNewBody: 'There is no cockpit plan for this subject yet.',
   publishReplaceBody: (revision) => `A subject plan already exists in the cockpit (revision ${revision}). Confirming replaces it with a new revision.`,
   publishConfirmNew: 'Make independent copy available',
@@ -451,8 +306,6 @@ const en: CoursePlanCopy = {
   publishSuccess: (revision) => `Independent copy made available in the cockpit · revision ${revision}`,
   publishGoalCount: (count) => `${count} canonical atomic goal${count === 1 ? '' : 's'} will be checked. Only goals that are currently open or already captured in this personal subject plan will be stored.`,
   importNotIncluded: 'Import follows after the secure server and authorization design.',
-  protectedExtensionTitle: 'Learning status and management views remain protected',
-  protectedExtensionBody: 'Class statistics, individual drill-down, and an aggregated management view require server-side course ownership, purpose limitation, and verified permissions. This local pilot reads the open atomic goal set once for its planning basis, shows only plan totals derived from it, and removes that basis from exports.',
 }
 
 export const getCoursePlanCopy = (language: LabelLanguage): CoursePlanCopy => (

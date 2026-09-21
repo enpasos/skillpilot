@@ -2,42 +2,33 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import {
   AlertTriangle,
   CalendarDays,
-  CheckCircle2,
-  Clock3,
   Download,
-  Info,
   MoreHorizontal,
   Pencil,
   Plus,
   RotateCcw,
   Send,
-  ShieldCheck,
-  Target,
   Trash2,
 } from 'lucide-react'
 
 import type { UiGoal } from '../goalTypes'
 import type {
-  LearningBlockMetrics,
   TeacherCoursePlan,
   TeacherCoursePlanBlock,
 } from '../coursePlanTypes'
 import type { ToastKind } from '../hooks/useToast'
 import {
   addCoursePlanDays,
-  appendCourseCoverageAttestation,
   compareCoursePlanDates,
   countCoursePlanWorkdaysInclusive,
   createTeacherCoursePlan,
   evaluateTeacherCoursePlan,
-  isCourseGoalCovered,
   loadTeacherCoursePlan,
   migrateTeacherCoursePlanBaseline,
   parseCoursePlanDate,
   resolveAtomicGoalDescendants,
   reviseTeacherCoursePlan,
   saveTeacherCoursePlan,
-  toggleCourseGoalCoverage,
   undoLastTeacherCoursePlanRevision,
 } from '../utils/localTeacherCoursePlan'
 import { getCoursePlanCopy } from '../utils/coursePlanCopy'
@@ -55,7 +46,6 @@ import {
   berlinDateKey,
   millisecondsUntilNextBerlinDateBoundary,
 } from '../utils/learnerLearningPlanReadModel'
-import { PacingGauge, type PacingGaugeStatus } from './PacingGauge'
 import { ConfirmModal } from './ConfirmModal'
 import { CoursePlanLearningBook } from './CoursePlanLearningBook'
 import { CoursePlanTimeline } from './CoursePlanTimeline'
@@ -74,6 +64,7 @@ interface CoursePlanPilotViewProps {
   sharedActivationPanel?: ReactNode
   sharedActivationAvailable?: boolean
   sharedPreviewPanel?: ReactNode
+  learnerProgressPanel?: ReactNode
   section?: CoursePlanSection
   onSectionChange?: (section: CoursePlanSection) => void
   onLocalPlanChange?: () => void
@@ -134,11 +125,6 @@ const formatDateRange = (
   ? formatDate(block.date, language)
   : `${formatDate(block.startDate, language)} – ${formatDate(block.endDate, language)}`
 
-const formatNumber = (value: number, language: 'de' | 'en') => new Intl.NumberFormat(
-  language === 'de' ? 'de-DE' : 'en-GB',
-  { maximumFractionDigits: 1 },
-).format(value)
-
 const blockSortDate = (block: TeacherCoursePlanBlock) => (
   block.kind === 'milestone' ? block.date : block.startDate
 )
@@ -147,47 +133,6 @@ const sortedBlocks = (blocks: readonly TeacherCoursePlanBlock[]) => [...blocks].
   blockSortDate(left).localeCompare(blockSortDate(right))
   || left.id.localeCompare(right.id)
 ))
-
-const statusPresentation = (
-  status: LearningBlockMetrics['coverageStatus'] | undefined,
-  copy: ReturnType<typeof getCoursePlanCopy>,
-) => {
-  if (status === 'on-track') {
-    return {
-      label: copy.planStatusOnTrack,
-      className: 'border-emerald-300 bg-emerald-50 text-emerald-900 dark:border-emerald-900/70 dark:bg-emerald-950/30 dark:text-emerald-100',
-    }
-  }
-  if (status === 'ahead') {
-    return {
-      label: copy.planStatusAhead,
-      className: 'border-sky-300 bg-sky-50 text-sky-900 dark:border-sky-900/70 dark:bg-sky-950/30 dark:text-sky-100',
-    }
-  }
-  if (status === 'behind') {
-    return {
-      label: copy.planStatusBehind,
-      className: 'border-amber-300 bg-amber-50 text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/30 dark:text-amber-100',
-    }
-  }
-  return {
-    label: copy.planStatusUnavailable,
-    className: 'border-slate-300 bg-slate-100 text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100',
-  }
-}
-
-const pacingUnavailableReason = (
-  reason: ReturnType<typeof evaluateTeacherCoursePlan>['pacingGauge']['reason'],
-  copy: ReturnType<typeof getCoursePlanCopy>,
-) => {
-  if (reason === 'coverage-not-attested') return copy.paceUnavailableAttestation
-  if (reason === 'coverage-history-missing') return copy.paceUnavailableHistory
-  if (reason === 'plan-revision-too-recent') return copy.paceUnavailableNew
-  if (reason === 'no-expected-progress-in-window') {
-    return copy.planningBasisHint
-  }
-  return copy.planStatusUnavailable
-}
 
 const planForClass = (classId: string, asOf: string) => {
   const loaded = loadTeacherCoursePlan(classId)
@@ -215,6 +160,7 @@ export const CoursePlanPilotView = ({
   sharedActivationPanel,
   sharedActivationAvailable = false,
   sharedPreviewPanel,
+  learnerProgressPanel,
   section: controlledSection,
   onSectionChange,
   onLocalPlanChange,
@@ -249,7 +195,6 @@ export const CoursePlanPilotView = ({
   const [publicationConfirmation, setPublicationConfirmation] = useState<PlanPublicationConfirmation | null>(null)
   const [publicationMessage, setPublicationMessage] = useState('')
   const [publicationError, setPublicationError] = useState('')
-  const [coverageEffectiveOn, setCoverageEffectiveOn] = useState(asOf)
   const previousAsOfRef = useRef(asOf)
   const planRef = useRef(plan)
   const blockFormRef = useRef<HTMLElement | null>(null)
@@ -272,7 +217,6 @@ export const CoursePlanPilotView = ({
       const previousAsOf = previousAsOfRef.current
       if (nextAsOf === previousAsOf) return
       previousAsOfRef.current = nextAsOf
-      setCoverageEffectiveOn((current) => current === previousAsOf ? nextAsOf : current)
       setAsOf(nextAsOf)
     }
     const scheduleBoundary = () => {
@@ -359,14 +303,6 @@ export const CoursePlanPilotView = ({
   const assignmentByBlockId = useMemo(() => new Map(
     (evaluation?.assignments ?? []).map((assignment) => [assignment.blockId, assignment]),
   ), [evaluation?.assignments])
-  const metricByBlockId = useMemo(() => new Map(
-    (evaluation?.blocks ?? []).map((metric) => [metric.blockId, metric]),
-  ), [evaluation?.blocks])
-  const coveredGoalIds = useMemo(
-    () => new Set(evaluation?.coverage?.coveredGoalIds ?? []),
-    [evaluation?.coverage?.coveredGoalIds],
-  )
-
   const plannableGoalOptions = useMemo(() => {
     const scopeGoalIds = landscapeBaseline
       ? new Set(landscapeBaseline.scopeAtomicGoalIds)
@@ -948,32 +884,6 @@ export const CoursePlanPilotView = ({
     }
   }, true)
 
-  const toggleCoverage = (goalId: string) => {
-    if (!plan) return
-    if (
-      !parseCoursePlanDate(coverageEffectiveOn)
-      || compareCoursePlanDates(coverageEffectiveOn, asOf) === 1
-    ) {
-      onNotify?.('error', copy.coverageEffectiveDateInvalid)
-      return
-    }
-    persist(toggleCourseGoalCoverage(plan, {
-      id: randomId('course-coverage-event'),
-      goalId,
-      effectiveOn: coverageEffectiveOn,
-      recordedAt: new Date().toISOString(),
-    }))
-  }
-
-  const attestCoverage = () => {
-    if (!plan) return
-    persist(appendCourseCoverageAttestation(plan, {
-      id: randomId('course-coverage-attestation'),
-      throughDate: asOf,
-      recordedAt: new Date().toISOString(),
-    }))
-  }
-
   const exportPlan = () => {
     if (!plan) return
     const redactedPlan = Object.fromEntries(
@@ -994,7 +904,7 @@ export const CoursePlanPilotView = ({
       localPreview: true,
       semantics: {
         plannedProgress: 'local weekday-based draft',
-        confirmedTeachingCoverage: 'teacher-confirmed; never mastery',
+        historicalTeachingCoverage: 'legacy records; not learning progress',
         learnerDerivedPlanningBaselineIncluded: false,
         teacherEnteredFreeTextExportedUnchanged: true,
       },
@@ -1031,14 +941,8 @@ export const CoursePlanPilotView = ({
   const invalidBlockIds = new Set(
     evaluation?.quality.issues.flatMap((issue) => issue.blockId ? [issue.blockId] : []) ?? [],
   )
-  const isAttested = evaluation?.coverage?.isAttestedThroughAsOf === true
-  const planStatus = statusPresentation(calculationUnavailable ? undefined : metrics.coverageStatus, copy)
   const hasPlanBlocks = plan.blocks.length > 0
   const hasLearningGoals = (metrics?.plannedGoalCount ?? 0) > 0
-  const coverageEffectiveDateIsValid = Boolean(
-    parseCoursePlanDate(coverageEffectiveOn)
-    && compareCoursePlanDates(coverageEffectiveOn, asOf) !== 1,
-  )
   const publishDisabledReason = publicationState !== 'idle'
     ? ''
     : hasUnsavedDraft
@@ -1048,24 +952,6 @@ export const CoursePlanPilotView = ({
         : !hasLearningGoals
           ? copy.publishDisabledNoLearningGoals
           : ''
-  const noLearningGoalsLabel = language === 'de'
-    ? 'Noch keine Lernziele verplant'
-    : 'No learning goals scheduled yet'
-  const decisionText = calculationUnavailable
-    ? copy.calculationUnavailableBody
-    : !hasLearningGoals
-      ? copy.decisionAddLearning
-      : !isAttested
-        ? copy.decisionDocument
-        : metrics?.coverageStatus === 'behind'
-          ? copy.decisionReview
-          : copy.decisionNone
-  const decisionClassName = calculationUnavailable
-    || (hasLearningGoals && (!isAttested || metrics?.coverageStatus === 'behind'))
-    ? 'border-amber-300 bg-amber-50 text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/30 dark:text-amber-100'
-    : 'border-sky-300 bg-sky-50 text-sky-950 dark:border-sky-900/70 dark:bg-sky-950/30 dark:text-sky-100'
-  const gauge = evaluation?.pacingGauge
-  const gaugeStatus: PacingGaugeStatus = gauge?.status === 'ready' ? 'provisional' : 'unavailable'
   const sorted = sortedBlocks(plan.blocks)
   const historyLength = plan.revisionHistory.length
 
@@ -1150,8 +1036,8 @@ export const CoursePlanPilotView = ({
                               ? copy.planningScopeOnSave
                               : draft.kind === 'learning' && landscapeBaseline
                                 ? language === 'de'
-                                  ? `${count} offen von ${totalCount} atomaren Zielen`
-                                  : `${count} open of ${totalCount} atomic goals`
+                                  ? `${count} von ${totalCount} Zielen bei Planerstellung offen`
+                                  : `${count} of ${totalCount} goals open when the plan was created`
                               : copy.learningGoalCount(draft.kind === 'milestone' ? totalCount : count)
                           }
                         </option>
@@ -1244,7 +1130,7 @@ export const CoursePlanPilotView = ({
             <h1 className="mt-1 break-words text-2xl font-semibold tracking-tight text-text-primary sm:text-3xl">{language === 'de' ? 'Planung für' : 'Planning for'} {classLabel}</h1>
             <p className="mt-2 text-sm text-text-secondary">{sharedActivationAvailable
               ? language === 'de' ? 'Fächer gemeinsam planen. Der Schüler wird im Chat geführt.' : 'Plan subjects together. The learner is guided in chat.'
-              : language === 'de' ? 'Abschnitte und Termine planen. Unterricht getrennt dokumentieren.' : 'Plan sections and dates. Document teaching separately.'}</p>
+              : language === 'de' ? 'Abschnitte und Termine planen. Gespeicherte Lernfortschritte ansehen.' : 'Plan sections and dates. View saved learning progress.'}</p>
           </div>
           <details ref={moreActionsRef} className="relative shrink-0" onKeyDown={(event) => {
             if (event.key === 'Escape' && moreActionsRef.current) {
@@ -1380,7 +1266,7 @@ export const CoursePlanPilotView = ({
           {([
             ['plan', language === 'de' ? 'Plan bearbeiten' : 'Edit plan'],
             ...(sharedActivationAvailable ? [['preview', language === 'de' ? 'Schülervorschau' : 'Learner preview']] : []),
-            ['teaching', language === 'de' ? 'Unterricht & Verlauf' : 'Teaching & history'],
+            ['teaching', language === 'de' ? 'Lernfortschritt' : 'Learning progress'],
           ] as [CoursePlanSection, string][]).map(([value, label]) => (
             <button key={value} type="button" aria-current={section === value ? 'page' : undefined} aria-controls={`course-plan-section-${value}`} onClick={() => changeSection(value)} className={`min-h-11 border-b-2 px-3 py-3 text-sm font-medium transition-colors ${section === value ? 'border-sky-600 text-sky-700 dark:text-sky-300' : 'border-transparent text-text-secondary hover:text-text-primary'}`}>{label}</button>
           ))}
@@ -1524,341 +1410,16 @@ export const CoursePlanPilotView = ({
         </div>
         <div id="course-plan-section-preview" hidden={section !== 'preview'}>{sharedPreviewPanel}</div>
         <div id="course-plan-section-teaching" hidden={section !== 'teaching'} className="space-y-5">
-          <div><h2 className="text-lg font-semibold text-text-primary">{language === 'de' ? 'Unterricht & Verlauf' : 'Teaching & history'}</h2><p className="mt-1 text-sm text-text-secondary">{language === 'de' ? 'Was wurde im Unterricht behandelt? Diese Dokumentation ist kein Nachweis der Beherrschung durch den Schüler.' : 'What was covered in class? This record does not establish learner mastery.'}</p></div>
-        <section className="grid gap-3 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
-          <div className="rounded-2xl border border-sky-300 bg-sky-50 p-5 text-sky-950 dark:border-sky-900/70 dark:bg-sky-950/30 dark:text-sky-100">
-            <div className="flex items-start gap-3">
-              <ShieldCheck className="mt-0.5 shrink-0" size={22} aria-hidden="true" />
-              <div>
-                <h2 className="font-semibold">{copy.teacherLeadsTitle}</h2>
-                <p className="mt-1 text-sm leading-6">{copy.teacherLeadsBody}</p>
-              </div>
-            </div>
-          </div>
-          <div className="rounded-2xl border border-amber-300 bg-amber-50 p-5 text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/30 dark:text-amber-100">
-            <div className="flex items-start gap-3">
-              <Info className="mt-0.5 shrink-0" size={21} aria-hidden="true" />
-              <div>
-                <h2 className="font-semibold">{copy.localPreviewTitle}</h2>
-                <p className="mt-1 text-sm leading-6">{copy.localPreviewBody}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className={`rounded-2xl border p-5 ${decisionClassName}`} aria-labelledby="course-plan-decision-title">
-          <h2 id="course-plan-decision-title" className="font-semibold">{copy.decisionTitle}</h2>
-          <p className="mt-2 text-sm leading-6">{decisionText}</p>
-        </section>
-
-
-          {hasPlanBlocks && <>
-            <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4" aria-label={copy.planStatusTitle}>
-              <div className="rounded-2xl border border-border-color bg-sidebar-bg p-4">
-                <div className="flex items-center gap-2 text-sm text-text-secondary"><Target size={17} aria-hidden="true" />{copy.expectedLabel}</div>
-                <p className="mt-3 text-2xl font-semibold tabular-nums text-text-primary">
-                  {calculationUnavailable
-                    ? copy.notCalculable
-                    : copy.expectedValue(metrics.dueGoalIds.length, metrics.plannedGoalCount)}
-                </p>
-                <p className="mt-1 text-xs text-text-secondary">
-                  {calculationUnavailable
-                    ? '—'
-                    : plan.planningBaseline
-                      ? copy.plannedOpenGoalCount(metrics.plannedGoalCount, metrics.scopeAtomicGoalCount)
-                      : copy.learningGoalCount(metrics.plannedGoalCount)}
-                </p>
-              </div>
-              <div className="rounded-2xl border border-border-color bg-sidebar-bg p-4">
-                <div className="flex items-center gap-2 text-sm text-text-secondary"><CheckCircle2 size={17} aria-hidden="true" />{copy.coveredLabel}</div>
-                <p className="mt-3 text-2xl font-semibold tabular-nums text-text-primary">
-                  {calculationUnavailable
-                    ? copy.notCalculable
-                    : !hasLearningGoals
-                      ? noLearningGoalsLabel
-                      : isAttested
-                      ? copy.confirmedValue(metrics.coveredGoalCount, metrics.plannedGoalCount)
-                      : copy.minimumConfirmed(metrics.coveredGoalCount, metrics.plannedGoalCount)}
-                </p>
-                <p className="mt-1 text-xs text-text-secondary">{!hasLearningGoals ? copy.decisionAddLearning : isAttested ? copy.coverageAttested : copy.coverageOpen}</p>
-              </div>
-              <div className="rounded-2xl border border-border-color bg-sidebar-bg p-4">
-                <div className="flex items-center gap-2 text-sm text-text-secondary"><Clock3 size={17} aria-hidden="true" />{copy.bufferDaysLabel}</div>
-                <p className="mt-3 text-2xl font-semibold tabular-nums text-text-primary">
-                  {calculationUnavailable
-                    ? copy.notCalculable
-                    : `${metrics.remainingBufferWorkdays} / ${metrics.totalBufferWorkdays} ${language === 'de' ? 'Werktage' : 'weekdays'}`}
-                </p>
-                <p className="mt-1 text-xs text-text-secondary">{language === 'de' ? 'Geschützte Handlungsreserve; wird nicht automatisch verplant.' : 'Protected room for action; never allocated automatically.'}</p>
-              </div>
-              <div className="rounded-2xl border border-border-color bg-sidebar-bg p-4">
-                <div className="flex items-center gap-2 text-sm text-text-secondary"><CalendarDays size={17} aria-hidden="true" />{copy.nextMilestoneLabel}</div>
-                {calculationUnavailable ? (
-                  <p className="mt-3 text-lg font-semibold text-text-primary">{copy.notCalculable}</p>
-                ) : metrics.nextMilestone ? (
-                  <>
-                    <p className="mt-3 truncate text-lg font-semibold text-text-primary" title={metrics.nextMilestone.title}>{metrics.nextMilestone.title}</p>
-                    <p className="mt-1 text-sm tabular-nums text-text-secondary">{formatDate(metrics.nextMilestone.date, language)}</p>
-                    {metrics.nextMilestone.goalId && (
-                      <p className="mt-1 text-xs text-text-secondary">
-                        {language === 'de' ? 'Lernziel' : 'Learning goal'}: {goals.get(metrics.nextMilestone.goalId)?.title ?? metrics.nextMilestone.goalId}
-                      </p>
-                    )}
-                  </>
-                ) : <p className="mt-3 text-lg font-semibold text-text-primary">{copy.noMilestone}</p>}
-              </div>
-            </section>
-
-            <section className="grid gap-4 xl:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.65fr)]">
-              <div className="rounded-2xl border border-border-color bg-sidebar-bg p-5">
-                <div className="flex flex-wrap items-start justify-between gap-3">
-                  <div>
-                    <h2 className="text-lg font-semibold text-text-primary">{copy.planStatusTitle}</h2>
-                    <p className="mt-1 text-sm text-text-secondary">{copy.coverageBody}</p>
-                  </div>
-                  <span className={`rounded-full border px-3 py-1.5 text-xs font-semibold ${planStatus.className}`}>{planStatus.label}</span>
-                </div>
-                <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <div className="flex items-center justify-between gap-3 text-xs text-text-secondary">
-                      <span>{copy.expectedLabel}</span>
-                      <span className="tabular-nums">{calculationUnavailable ? '—' : `${metrics.dueGoalIds.length} / ${metrics.plannedGoalCount}`}</span>
-                    </div>
-                    <div className="mt-2 h-3 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700" aria-hidden="true">
-                      <div className="h-full rounded-full bg-sky-500" style={{ width: `${calculationUnavailable ? 0 : Math.min(100, metrics.plannedGoalCount > 0 ? (metrics.expectedGoalEquivalent / metrics.plannedGoalCount) * 100 : 0)}%` }} />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex items-center justify-between gap-3 text-xs text-text-secondary">
-                      <span>{copy.coveredLabel}</span>
-                      <span className="tabular-nums">{calculationUnavailable ? '—' : `${metrics.coveredGoalCount} / ${metrics.plannedGoalCount}`}</span>
-                    </div>
-                    <div className="mt-2 h-3 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700" aria-hidden="true">
-                      <div className="h-full rounded-full bg-violet-500" style={{ width: `${calculationUnavailable ? 0 : Math.min(100, metrics.plannedGoalCount > 0 ? (metrics.coveredGoalCount / metrics.plannedGoalCount) * 100 : 0)}%` }} />
-                    </div>
-                  </div>
-                </div>
-                <div className={`mt-5 rounded-xl border p-4 text-sm ${isAttested ? 'border-emerald-300 bg-emerald-50 text-emerald-950 dark:border-emerald-900/70 dark:bg-emerald-950/30 dark:text-emerald-100' : 'border-amber-300 bg-amber-50 text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/30 dark:text-amber-100'}`}>
-                  <p>{!hasLearningGoals ? copy.decisionAddLearning : isAttested ? copy.coverageAttested : copy.coverageOpen}</p>
-                  {!calculationUnavailable && !isAttested && hasLearningGoals && (
-                    <button
-                      type="button"
-                      onClick={attestCoverage}
-                      className="mt-3 min-h-11 rounded-lg bg-slate-900 px-4 py-2 font-semibold text-white hover:bg-slate-700 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
-                    >
-                      {copy.coverageAttest}
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              <PacingGauge
-                actual={gauge?.actualGoalsPerWeek ?? undefined}
-                target={gauge?.expectedGoalsPerWeek ?? undefined}
-                status={gaugeStatus}
-                label={copy.paceTitle}
-                statusLabel={gaugeStatus === 'provisional' ? copy.paceProvisional : copy.planStatusUnavailable}
-                valueLabel={gauge?.status === 'ready'
-                  ? `${copy.paceActual}: ${formatNumber(gauge.actualGoalsPerWeek ?? 0, language)} ${copy.paceUnit}`
-                  : copy.planStatusUnavailable}
-                targetLabel={gauge?.status === 'ready'
-                  ? `${copy.paceTarget}: ${formatNumber(gauge.expectedGoalsPerWeek ?? 0, language)} ${copy.paceUnit}`
-                  : undefined}
-                unavailableReason={pacingUnavailableReason(gauge?.reason ?? 'invalid-plan-data', copy)}
-              />
-            </section>
-
-            <section className="rounded-2xl border border-border-color bg-sidebar-bg p-5" aria-labelledby="course-plan-text-title">
-              <h2 id="course-plan-text-title" className="text-lg font-semibold text-text-primary">{copy.timelineTitle}</h2>
-              <p className="mt-1 text-sm text-text-secondary">{copy.timelineHint}</p>
-              <ol className="mt-5 divide-y divide-border-color border-y border-border-color">
-                {sorted.map((block) => {
-                  const assignment = assignmentByBlockId.get(block.id)
-                  const goal = block.kind === 'learning' ? goals.get(block.goalId) : undefined
-                  const milestoneGoal = block.kind === 'milestone' && block.goalId
-                    ? goals.get(block.goalId)
-                    : undefined
-                  const title = block.kind === 'learning' ? block.title || goal?.title || block.goalId : block.title
-                  const detail = block.kind === 'learning'
-                    ? assignment
-                      ? copy.learningGoalCount(assignment.atomicGoalIds.length)
-                      : copy.notCalculable
-                    : block.kind === 'buffer'
-                      ? `${countCoursePlanWorkdaysInclusive(block.startDate, block.endDate) ?? 0} ${language === 'de' ? 'geschützte Werktage' : 'protected weekdays'}`
-                      : milestoneGoal
-                        ? `${copy.kindMilestone} · ${milestoneGoal.title}`
-                        : copy.kindMilestone
-                  return (
-                    <li key={block.id} className="grid gap-1 py-3 text-sm sm:grid-cols-[minmax(180px,0.35fr)_minmax(0,1fr)_auto] sm:items-baseline sm:gap-4">
-                      <span className="tabular-nums text-text-secondary">{formatDateRange(block, language)}</span>
-                      <span className="font-medium text-text-primary">{title}</span>
-                      <span className="text-text-secondary sm:text-right">{detail}</span>
-                    </li>
-                  )
-                })}
-              </ol>
-            </section>
-
-            <section className="space-y-3" aria-labelledby="course-plan-blocks-title">
-              <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-                <div>
-                  <h2 id="course-plan-blocks-title" className="text-xl font-semibold text-text-primary">{language === 'de' ? 'Planblöcke und Unterrichtsabdeckung' : 'Plan blocks and teaching coverage'}</h2>
-                  <p className="mt-1 text-sm text-text-secondary">{copy.coverageBody}</p>
-                </div>
-                <label className="block max-w-md rounded-xl border border-border-color bg-sidebar-bg p-3">
-                  <span className="text-sm font-semibold text-text-primary">{copy.coverageEffectiveDateLabel}</span>
-                  <input
-                    type="date"
-                    value={coverageEffectiveOn}
-                    max={asOf}
-                    onChange={(event) => setCoverageEffectiveOn(event.target.value)}
-                    aria-describedby="course-plan-coverage-date-hint"
-                    aria-invalid={!coverageEffectiveDateIsValid}
-                    className="mt-2 min-h-11 w-full rounded-lg border border-border-color bg-chat-bg px-3 py-2 text-text-primary outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20"
-                  />
-                  <span id="course-plan-coverage-date-hint" className={`mt-2 block text-xs leading-5 ${coverageEffectiveDateIsValid ? 'text-text-secondary' : 'text-rose-700 dark:text-rose-300'}`}>
-                    {coverageEffectiveDateIsValid ? copy.coverageEffectiveDateHint : copy.coverageEffectiveDateInvalid}
-                  </span>
-                </label>
-              </div>
-              {sorted.map((block) => {
-                const assignment = assignmentByBlockId.get(block.id)
-                const metric = metricByBlockId.get(block.id)
-                const learningMetric = metric?.kind === 'learning' ? metric : undefined
-                const goal = block.kind === 'learning' ? goals.get(block.goalId) : undefined
-                const milestoneGoal = block.kind === 'milestone' && block.goalId
-                  ? goals.get(block.goalId)
-                  : undefined
-                const title = block.kind === 'learning' ? block.title || goal?.title || block.goalId : block.title
-                const allBlockGoalIds = assignment
-                  ? [...assignment.atomicGoalIds, ...assignment.duplicateAtomicGoalIds]
-                  : []
-                const workdays = block.kind === 'milestone'
-                  ? 0
-                  : countCoursePlanWorkdaysInclusive(block.startDate, block.endDate) ?? 0
-                const weeklyQuota = block.kind === 'learning' && workdays > 0
-                  ? ((assignment?.atomicGoalIds.length ?? 0) / workdays) * 5
-                  : null
-                const rowStatus = statusPresentation(learningMetric?.coverageStatus, copy)
-                const blockCalculationUnavailable = invalidBlockIds.has(block.id)
-                return (
-                  <article key={block.id} className="rounded-2xl border border-border-color bg-sidebar-bg p-5" data-testid="course-plan-teaching-block">
-                    <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                      <div className="min-w-0">
-                        <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
-                          <span>{block.kind === 'learning' ? copy.kindLearning : block.kind === 'buffer' ? copy.kindBuffer : copy.kindMilestone}</span>
-                          <span aria-hidden="true">·</span>
-                          <span className="tabular-nums">{formatDateRange(block, language)}</span>
-                        </div>
-                        <h3 className="mt-2 text-lg font-semibold text-text-primary">{title}</h3>
-                        {block.kind === 'milestone' && block.goalId && (
-                          <p className="mt-2 text-sm text-text-secondary">
-                            {language === 'de' ? 'Konkretes Ziel' : 'Concrete target'}: {milestoneGoal?.title ?? block.goalId}
-                          </p>
-                        )}
-                        {block.kind === 'learning' && (
-                          <div className="mt-3 flex flex-wrap gap-2 text-xs text-text-secondary">
-                            <span className="rounded-full border border-border-color px-2.5 py-1">{assignment ? copy.learningGoalCount(assignment.atomicGoalIds.length) : copy.notCalculable}</span>
-                            <span className="rounded-full border border-border-color px-2.5 py-1">{copy.weeklyQuotaLabel}: {weeklyQuota === null ? copy.notCalculable : `${formatNumber(weeklyQuota, language)} ${copy.paceUnit}`}</span>
-                            {assignment && assignment.duplicateAtomicGoalIds.length > 0 && (
-                              <span className="rounded-full border border-amber-300 bg-amber-50 px-2.5 py-1 text-amber-900 dark:border-amber-900/70 dark:bg-amber-950/30 dark:text-amber-100">{copy.duplicatedGoalCount(assignment.duplicateAtomicGoalIds.length)}</span>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        {block.kind === 'learning' && <span className={`rounded-full border px-3 py-1.5 text-xs font-semibold ${rowStatus.className}`}>{rowStatus.label}</span>}
-                        <button
-                          type="button"
-                          onClick={() => openEditBlock(block)}
-                          className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm text-text-primary hover:bg-gray-100 dark:hover:bg-slate-800"
-                        >
-                          <Pencil size={15} aria-hidden="true" />{copy.edit}
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => removeBlock(block.id)}
-                          className={`inline-flex min-h-10 items-center gap-2 rounded-lg border px-3 py-2 text-sm ${pendingDeleteId === block.id ? 'border-rose-500 bg-rose-600 text-white' : 'border-border-color text-text-primary hover:border-rose-400 hover:bg-rose-50 hover:text-rose-800 dark:hover:bg-rose-950/30 dark:hover:text-rose-200'}`}
-                        >
-                          <Trash2 size={15} aria-hidden="true" />
-                          {pendingDeleteId === block.id ? copy.removeConfirm : copy.remove}
-                        </button>
-                      </div>
-                    </div>
-
-                    {blockCalculationUnavailable && (
-                      <p className="mt-4 rounded-xl border border-rose-300 bg-rose-50 p-3 text-sm text-rose-950 dark:border-rose-900/70 dark:bg-rose-950/30 dark:text-rose-100" role="alert">
-                        {copy.blockNotCalculable}
-                      </p>
-                    )}
-
-                    {block.kind === 'learning' && learningMetric && (
-                      <div className="mt-5 grid gap-4 sm:grid-cols-3">
-                        <div className="rounded-xl bg-chat-bg p-3">
-                          <p className="text-xs text-text-secondary">{copy.expectedLabel}</p>
-                          <p className="mt-1 font-semibold tabular-nums text-text-primary">{copy.expectedValue(learningMetric.dueGoalIds.length, learningMetric.plannedGoalCount)}</p>
-                        </div>
-                        <div className="rounded-xl bg-chat-bg p-3">
-                          <p className="text-xs text-text-secondary">{copy.coveredLabel}</p>
-                          <p className="mt-1 font-semibold tabular-nums text-text-primary">{isAttested ? copy.confirmedValue(learningMetric.coveredGoalCount, learningMetric.plannedGoalCount) : copy.minimumConfirmed(learningMetric.coveredGoalCount, learningMetric.plannedGoalCount)}</p>
-                        </div>
-                        <div className="rounded-xl bg-chat-bg p-3">
-                          <p className="text-xs text-text-secondary">{language === 'de' ? 'Datenstand' : 'Data status'}</p>
-                          <p className="mt-1 font-semibold text-text-primary">{isAttested ? copy.coverageAttested : copy.coverageOpen}</p>
-                        </div>
-                      </div>
-                    )}
-
-                    {block.kind === 'learning' && allBlockGoalIds.length > 0 && (
-                      <details className="mt-5 rounded-xl border border-border-color bg-chat-bg">
-                        <summary className="cursor-pointer px-4 py-3 text-sm font-semibold text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">{copy.goalsDetails}</summary>
-                        <ul className="border-t border-border-color p-3">
-                          {allBlockGoalIds.map((goalId) => {
-                            const atomicGoal = goals.get(goalId)
-                            const covered = coveredGoalIds.has(goalId)
-                              || isCourseGoalCovered(plan, goalId, asOf) === true
-                            const duplicate = assignment?.duplicateAtomicGoalIds.includes(goalId) === true
-                            return (
-                              <li key={goalId} className="flex items-start gap-3 border-b border-border-color py-3 last:border-b-0">
-                                <input
-                                  type="checkbox"
-                                  checked={covered}
-                                  onChange={() => toggleCoverage(goalId)}
-                                  disabled={!coverageEffectiveDateIsValid}
-                                  className="mt-0.5 h-5 w-5 shrink-0 rounded border-border-color text-violet-600 focus:ring-violet-500"
-                                  aria-label={`${covered ? copy.markOpen : copy.markCovered}: ${atomicGoal?.title ?? goalId}`}
-                                />
-                                <div className="min-w-0">
-                                  <p className="text-sm font-medium text-text-primary">{atomicGoal?.title ?? goalId}</p>
-                                  <p className="mt-1 text-xs text-text-secondary">
-                                    {covered ? copy.markOpen : copy.markCovered}
-                                    {duplicate ? ` · ${copy.duplicatedGoalCount(1)}` : ''}
-                                  </p>
-                                </div>
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </details>
-                    )}
-                  </article>
-                )
-              })}
-            </section>
-
-            <section className="grid gap-4 lg:grid-cols-2">
-              <div className="rounded-2xl border border-border-color bg-sidebar-bg p-5">
-                <h2 className="font-semibold text-text-primary">{copy.planningBasis}</h2>
-                <p className="mt-2 text-sm leading-6 text-text-secondary">{copy.planningBasisHint}</p>
-              </div>
-              <div className="rounded-2xl border border-violet-300 bg-violet-50 p-5 text-violet-950 dark:border-violet-900/70 dark:bg-violet-950/30 dark:text-violet-100">
-                <ShieldCheck size={21} aria-hidden="true" />
-                <h2 className="mt-3 font-semibold">{copy.protectedExtensionTitle}</h2>
-                <p className="mt-2 text-sm leading-6">{copy.protectedExtensionBody}</p>
-              </div>
-            </section>
-
-          </>}
+          <h2 className="text-xl font-semibold text-text-primary">
+            {language === 'de' ? 'Lernfortschritt' : 'Learning progress'}
+          </h2>
+          {learnerProgressPanel ?? (
+            <p className="text-sm text-text-secondary">
+              {language === 'de'
+                ? 'Wähle eine lernende Person, um ihre gespeicherten Lernzielergebnisse anzuzeigen.'
+                : 'Select a learner to view their saved learning-goal results.'}
+            </p>
+          )}
         </div>
       </div>
       <ConfirmModal isOpen={pendingDraftAction !== null} onClose={() => setPendingDraftAction(null)} onConfirm={() => {

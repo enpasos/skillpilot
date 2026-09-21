@@ -957,12 +957,19 @@ const firstEdit = requirePlan(reviseTeacherCoursePlan(initialUndoPlan, {
   changedOn: '2026-08-02',
   recordedAt: '2026-08-02T10:00:00.000Z',
 }))
+const firstEditBeforeNewMasterySnapshot = structuredClone(firstEdit)
 assert.equal(reviseTeacherCoursePlan(firstEdit, {
   blocks: [undoBufferBlock],
   planningBaseline: secondUndoBaseline,
   changedOn: '2026-08-03',
   recordedAt: '2026-08-03T09:30:00.000Z',
 }), null, 'an established learner-derived planning baseline is immutable')
+assert.deepEqual(firstEdit, firstEditBeforeNewMasterySnapshot)
+const fixedBaselineEvaluation = evaluateTeacherCoursePlan(firstEdit, fullGoalIndex, '2026-08-03')
+assert.equal(fixedBaselineEvaluation.metrics?.scopeAtomicGoalCount, 10)
+assert.equal(fixedBaselineEvaluation.metrics?.plannedGoalCount, 8,
+  'a later mastery snapshot must not shrink the captured planning population')
+assert.deepEqual(fixedBaselineEvaluation.assignments[0]?.atomicGoalIds, firstUndoBaseline.openAtomicGoalIds)
 const secondEdit = requirePlan(reviseTeacherCoursePlan(firstEdit, {
   blocks: [undoBufferBlock],
   schoolYearLabel: '',

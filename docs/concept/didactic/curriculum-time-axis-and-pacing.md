@@ -3,6 +3,19 @@
 **Status:** Zielkonzept; lokaler, rein browserbasierter Planungs-Pilot
 implementiert. Die backend-autoritative Zielarchitektur ist noch offen.
 
+**Verbindliche Korrektur vom 21. September 2026:** Gespeicherte
+Lernzielergebnisse sind die einzige Quelle der Zielerreichung in Cockpit,
+Lernzielbaum und Lehrkraftplanung. Der frühere manuelle Unterrichtsstand
+(`CoverageEvent`, `CoverageLedgerAttestation`, Unterrichts-IST samt zugehöriger
+Kurve, Prognose und Bestätigungsablauf) ist **abgelöst**, auch als künftige
+Zielarchitektur. Die betreffenden technischen Entwurfsdetails in den Abschnitten
+4–18 und im historischen Stufenplan bleiben zur Einordnung bestehender
+Datensätze erhalten; sie sind keine aktiven Implementierungs- oder
+Abnahmeanforderungen. Altdaten werden weder gelöscht noch in Mastery umgedeutet.
+Der aktuelle Pilotvertrag steht in Abschnitt 19.1; den persönlichen
+Soll-Ist-Status regelt das
+[einheitliche Lernplanstatus-Konzept](unified-learning-plan-status.md).
+
 **Geltungsbereich:** first-party SkillPilot WebGUI und Backend; keine Änderung
 am eingefrorenen OpenAI-Coach-V1-Vertrag
 
@@ -19,7 +32,7 @@ bereits beherrscht wird, sondern auch:
   abgeschlossen sein sollen,
 - wie schnell seit dem individuellen Lernstart tatsächlich neue Lernziele
   erreicht wurden,
-- ob Unterrichtsabdeckung und individuelle Lernfortschritte zum Plan passen,
+- ob die gespeicherten individuellen Lernfortschritte zum Plan passen,
 - wie eine Lehrkraft Plan und aktuelle Planlage gegenüber Fachbereichs- oder
   Schulleitung auf einer Seite nachvollziehbar darstellen kann,
 - und welche transparente Planänderung bei Abweichungen sinnvoll wäre.
@@ -62,41 +75,33 @@ flowchart LR
     R --> P[Versionierter Curriculum-Zeitplan]
     K[Unterrichtskalender und Kapazität] --> P
     P --> S[Sollkurve]
-    U[Explizite Unterrichtsabdeckung] --> D[Unterrichts-Istkurve]
-    M[Append-only Mastery-Ereignisse] --> A[Individuelle Istkurve]
+    M[Gespeicherte Lernzielergebnisse] --> A[Individuelle Zielerreichung]
     S --> V[Soll-Ist, Prognose und Puffer]
-    D --> V
     A --> V
 ```
 
-## 3. Drei Fortschrittsspuren statt einer vermischten Kennzahl
+## 3. Ein Ergebnisstand, klar benannter Planungsumfang
 
-Lehrkräfte und Lernende brauchen drei getrennte Aussagen:
+Lehrkräfte und Lernende sehen dieselben gespeicherten Ergebnisse je Lernendem:
 
-1. **Planfortschritt:** Was sollte laut Zeitplan bis heute erreicht sein?
-2. **Unterrichtsabdeckung:** Was wurde im Kurs tatsächlich behandelt?
-3. **Individuelle Mastery:** Welche Ziele beherrscht die lernende Person?
+1. **Plan-Soll:** Was sollte laut Zeitplan bis heute erreicht sein?
+2. **Zielerreichung:** Welche Ziele sind nach dem gespeicherten Lernstand erreicht?
 
-Diese Spuren dürfen nicht voneinander abgeleitet werden:
+Ein Plan bestimmt Termine und Umfang, keine Lernergebnisse. Es gibt keine
+zusätzliche manuelle Unterrichtsbestätigung, die einen gespeicherten Abschluss
+sichtbar macht oder verdeckt. Auch ein abgeschlossenes Orientierungsziel zählt
+innerhalb seines Zielumfangs, ohne damit fachliche Beherrschung nachzuweisen.
 
-- „im Unterricht behandelt“ bedeutet nicht „von allen beherrscht“;
-- eine hohe durchschnittliche Mastery beweist nicht, dass die Lehrkraft einen
-  Planblock durchgeführt hat;
-- eine Lehrkraft kann im Plan liegen, während mehrere Lernende fachlich noch
-  Unterstützung benötigen;
-- eine Person kann durch Vorwissen vor dem Unterrichtsplan liegen.
+Der vollständige persönliche Zielumfang kann größer sein als die bei
+Planbeginn festgehaltene Planmenge **G**, beispielsweise durch schon vorher
+erreichte Ziele oder eine engere Planung. Bei gleichem Umfang gelten überall
+dieselben Zählregeln; unterschiedliche Umfänge werden benannt. Eine unveränderte
+Planungsbasis ist kein aktueller Lernstand. Eine Fortschrittsabfrage schreibt
+weder den Plan noch Ergebnisse um.
 
-Gerade diese Trennung macht die Auswertung pädagogisch handlungsfähig.
-
-| Unterrichtsabdeckung | Individuelle Mastery | Mögliche Interpretation |
-| --- | --- | --- |
-| im Plan | im Plan | Plan und Lernen entwickeln sich passend |
-| im Plan | hinter Plan | Diagnose, Vertiefung oder Wiederholung prüfen |
-| hinter Plan | im Plan | Vorwissen oder selbstständiges Lernen; nicht automatisch beschleunigen |
-| hinter Plan | hinter Plan | Kapazität, Ausfälle, Stoffumfang und Puffer gemeinsam prüfen |
-
-Die Tabelle ist eine Gesprächshilfe, keine automatische pädagogische
-Entscheidung.
+Fehlende oder veraltete Ergebnisse bleiben als nicht verfügbar erkennbar, statt
+einen scheinbar verlässlichen Nullstand zu erzeugen. Die bisherige
+Coverage-Dokumentation wird nicht als Ersatzquelle verwendet.
 
 ## 4. Fachliches Domänenmodell
 
@@ -525,7 +530,11 @@ unverändert; ein auditiertes `BaselineAdjustment` erhöht aktuellen Iststand un
 verkleinert Restarbeit, ohne rückwirkend die seit-Start-Geschwindigkeit zu
 erhöhen.
 
-### 4.8 `CoverageEvent` — tatsächliche Unterrichtsabdeckung
+### 4.8 `CoverageEvent` — abgelöster Entwurf zur Unterrichtsabdeckung
+
+Dieser Abschnitt dokumentiert das frühere Modell, nicht den aktuellen
+Fortschrittsvertrag. Maßgeblich sind die Korrektur am Dokumentanfang und
+Abschnitt 3; bestehende Datensätze bleiben unverändert erhalten.
 
 Die Lehrkraft bestätigt separat, wann ein Block oder konkrete Ziele im Kurs
 tatsächlich behandelt wurden. Das Ereignis referenziert zwingend die
@@ -2244,40 +2253,42 @@ Arbeitsbereich `?view=plan` als bewusst begrenzten Stufe-0-Pilot:
 - Das lokale Soll verteilt diese Ziele zunächst gleichmäßig auf Werktage
   Montag bis Freitag. Ferien, Feiertage, Ausfälle und reale Stundenkapazität
   werden deutlich als noch fehlende Planungsgrundlage ausgewiesen.
-- Der Unterrichtsstand ist ein eigener append-only Bestätigungsstrom. Erst
-  eine ausdrückliche Vollständigkeitsbestätigung macht aus der bestätigten
-  Untergrenze eine heutige Kursaussage; Unterrichtsabdeckung wird nie als
-  Mastery ausgegeben. Ein Nachtrag trägt neben dem technischen
-  Erfassungszeitpunkt ein von der Lehrkraft gewähltes, nicht zukünftiges
-  Wirksamkeitsdatum. So verfälscht ein später eingetragener älterer
-  Unterrichtsstand nicht das Sieben-Tage-Fenster. Die Vollständigkeits-
-  bestätigung gilt dagegen weiterhin ausdrücklich nur **bis heute**.
+- Der Lernfortschritt wird je Lernendem und Fach aus dem aktuellen
+  backendseitigen Zielumfang und den gespeicherten Ergebnissen gelesen. Die
+  feste Planungsbasis und alte Coverage-Einträge ersetzen diesen Stand nicht.
+  Die manuelle Unterrichtsdokumentation, Nachträge und
+  Vollständigkeitsbestätigungen sind kein aktiver Fortschrittsablauf mehr.
 - Jede Planänderung erzeugt eine Revision. Rückgängig macht nichts unsichtbar,
   sondern schreibt eine neue Undo-Revision. Auch die Planbezeichnung wird nur
   über einen sichtbaren Speichern-Schritt übernommen. Die Oberfläche zeigt
   gespeicherten und noch nicht gespeicherten Stand ausdrücklich; solange ein
   Entwurf offen ist, kann keine ältere Publikationsbestätigung verwendet
   werden.
-- Der Sieben-Tage-Tacho zeigt im Pilot höchstens einen grauen, vorläufigen
-  Rohvergleich von IST und SOLL. Er aktiviert noch keine grüne oder rote
-  Geschwindigkeitsbewertung.
+- Ein aus manueller Unterrichtsabdeckung berechneter Sieben-Tage-Tacho oder
+  eine entsprechende Ampel wird nicht mehr als Lernfortschritt angezeigt.
 - Bei einem nicht mehr auflösbaren Lernzielbezug zeigt die Oberfläche
   fail-closed „nicht berechenbar“ statt plausibler Nullwerte.
-- Der eigene JSON-Export enthält Plan und Unterrichtsdokumentation, aber keine
+- Der eigene JSON-Export enthält Plan und gegebenenfalls erhaltene
+  Altdokumentation, aber keine
   Klassen-ID, Namen, Lernenden-IDs oder Mastery-Werte.
-- Im Planarbeitsbereich wird keine Schülerliste gerendert. Direkte
-  Lernenden-Abfragen werden nicht gestartet; beim Wechsel aus der
-  Lernzielansicht noch laufende Abfragen werden abgebrochen und dürfen den
-  geleerten Zustand nicht nachträglich wieder befüllen.
-- Für Soll, Nachtrag, Bestätigung und Übergabe gilt derselbe Kalendertag in
+- Ein persönliches Fortschrittspanel liest die aktuellen Ergebnisse im
+  ausdrücklich ausgewählten Lernenden- und Fachkontext über die vorhandenen
+  Lernendenrouten. Kontextwechsel dürfen keine fremden oder veralteten
+  Ergebnisse anzeigen. Klassenbezeichnungen und lokale Mitgliedschaften werden
+  dabei nicht übertragen; der Abruf erzeugt keine neue Klassen- oder
+  Lehrkraftberechtigung. Die ID-Besitzgrenze bleibt die des
+  [bestehenden Lernenden-Workflows](../runtime-workflows/existing-learner-teacher-view.md).
+- Für Soll und Übergabe gilt derselbe Kalendertag in
   `Europe/Berlin`. Ein offen gebliebener Tab aktualisiert diesen Tag an der
   Berliner Datumsgrenze und beim erneuten Sichtbarwerden.
 
 Der Pilot speichert unter `skillpilot_teacher_course_plans_v1` ausschließlich
 im jeweiligen Browser. Er ist ausdrücklich kein geräteübergreifender,
-revisionsfester Leitungsnachweis. Klassenstatistik, Einzeldrilldown und
+revisionsfester Leitungsnachweis. Neue institutionelle Klassenstatistik und
 Leitungssicht bleiben bis zur serverseitigen Kurszuordnung, Zweckbindung und
-Capability-Prüfung gesperrt.
+Capability-Prüfung gesperrt. Die bestehende rein lesende persönliche Ansicht
+unter der bekannten SkillPilot-ID behauptet keine solche institutionelle
+Berechtigung.
 
 ### 19.2 Persönlicher Lernplan-Cockpit-Pilot
 
@@ -2368,6 +2379,12 @@ Grenzen keine konfliktfreie Reihenfolge gefunden, bleibt die Veröffentlichung
 fail-closed.
 
 ## 20. Umsetzung in Stufen
+
+Die folgenden Stufen dokumentieren den ursprünglichen Entwurf. Alle
+Coverage-/Attestierungs- und separaten Unterrichts-IST-Bausteine darin sind
+durch die Entscheidung vom 21. September 2026 abgelöst und dürfen nicht als
+noch zu implementierende Arbeitspakete verwendet werden. Die gespeicherten
+Lernzielergebnisse bleiben die einzige Quelle der Zielerreichung.
 
 Vor jeder Runtime-Stufe steht eine eigene Wirkungs- und Freeze-Prüfung. Schon
 ein zusätzliches Event im gemeinsamen Mastery-Schreibpfad kann Fehler-,
