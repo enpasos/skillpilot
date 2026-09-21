@@ -31,9 +31,14 @@ in Claude gespeichert. Provider erhalten weder ID noch Lernverlauf. Fehlendes
 Paket, leere Zuordnung, deaktiviertes Material oder eine nicht erreichbare Seite
 lassen das gewöhnliche Lernen unverändert verfügbar.
 
-## 2. Enger fachlicher Pilot
+## 2. Ursprünglicher fachlicher Pilot und Erweiterung
 
-Paket: `physik-libre-gymnasium`, vorläufige lokale Version `1.0.0`.
+Paket: `physik-libre-gymnasium`, ursprüngliche, inzwischen ausgerollte Version `1.0.0`.
+Der Katalog verweist jetzt auf den thematisch erweiterten Nachfolger `1.1.0`;
+dessen [Abdeckung und Prüfgrenzen](../../content/physik-libre/1.1.0/README.md)
+sind separat dokumentiert. Die folgenden vier Zuordnungen beschreiben den
+historischen Pilotumfang, nicht die heutige Gesamtzahl. Die gespeicherte
+Paketauswahl bleibt gültig. Diese lokale Erweiterung ist noch kein Rollout.
 Alle vier Materialien sind deutschsprachig. Englische Katalogtexte behaupten
 keine englische Materialausgabe. Die Zuordnungen wurden am 20. September 2026
 KI-gestützt gegen aktuelle Ziele, live gelesene Abschnitte und vorhandene

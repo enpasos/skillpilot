@@ -36,8 +36,12 @@ whole chapters, personal information, learner identifiers or chat text. URL quer
 parameters and credentials are not allowed. No learner-specific data is appended
 to a provider URL. The runtime does not scrape or proxy these pages.
 
-Changes to a published package require a new version. The initial PoC version is
-local/unpublished until the normal deployment and acceptance workflow completes.
+Changes to a published package require a new version. Physik Libre `1.0.0`
+preserves the deployed four-material pilot; the catalog now selects the expanded
+`1.1.0` successor (see its [mapping review](physik-libre/1.1.0/README.md)). Its
+stable package ID keeps existing explicit selections valid after deployment;
+new profiles still start without a selection. A local catalog change is not a
+deployment or live-Claude acceptance claim.
 Changing or disabling a package/material never changes curriculum prerequisites
 or mastery. A withdrawn package can remain in a learner's stored selection but
 must not produce recommendations.

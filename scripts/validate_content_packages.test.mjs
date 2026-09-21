@@ -1,15 +1,47 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import { canonicalInventory, checkPublicLinks, loadPackages, validateCatalog, validatePackage, validatePublicUrl } from './validate_content_packages.mjs'
 
 const packages = loadPackages()
 const goals = canonicalInventory().goalIds
 
-test('pilot maps four existing goals without importing curriculum or learner state', () => {
+test('expanded package retains the deployed selection and the four pilot materials', () => {
+  const pilot = JSON.parse(readFileSync(new URL('../content/physik-libre/1.0.0/package.json', import.meta.url)))
   assert.equal(packages.length, 1)
-  assert.equal(packages[0].materials.length, 4)
-  assert.equal(new Set(packages[0].materials.flatMap((material) => material.goalIds)).size, 4)
-  assert.equal(packages[0].aiUsage, 'link-only')
+  const current = packages[0]
+  assert.equal(current.packageId, pilot.packageId, 'existing stored opt-in must remain valid')
+  assert.notEqual(current.version, pilot.version, 'deployed package bytes must not be replaced in place')
+  assert.ok(current.materials.length > pilot.materials.length)
+  assert.equal(current.aiUsage, 'link-only')
+  for (const old of pilot.materials) {
+    const retained = current.materials.find((material) => material.id === old.id)
+    assert.ok(retained, old.id)
+    assert.equal(retained.url, old.url)
+    assert.ok(old.goalIds.every((id) => retained.goalIds.includes(id)))
+  }
+})
+
+test('expanded mappings stay within physics content goals and the resolver output limit', () => {
+  const ledger = JSON.parse(readFileSync(new URL('../curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json', import.meta.url)))
+  const contentGoals = new Set(ledger.decisions.filter((item) => item.semanticKind === 'curricularAtomic').map((item) => item.goalId))
+  const goalUrls = new Map()
+  for (const material of packages[0].materials) {
+    for (const id of material.goalIds) {
+      assert.ok(contentGoals.has(id), `not a current Physics content goal: ${id}`)
+      const urls = goalUrls.get(id) ?? new Set()
+      assert.ok(!urls.has(material.url), `duplicate material URL for ${id}`)
+      urls.add(material.url)
+      assert.ok(urls.size <= 4, `resolver would truncate materials for ${id}`)
+      goalUrls.set(id, urls)
+    }
+  }
+  for (const id of [
+    '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd', // motion (retained pilot)
+    'a6e48b88-51ed-5942-bdb8-8d2192652e0d', // charge
+    '37b33812-d428-5953-852e-57a53a4347fe', // kinetic gas theory
+    'd05a146f-7fcd-56ae-b9b9-b54203328579', // quantum well
+  ]) assert.ok(goalUrls.has(id), `expanded topic missing: ${id}`)
 })
 
 test('provider and subject do not create runtime schema variants', () => {
@@ -121,7 +153,8 @@ test('runtime-supported empty collections and optional localized labels remain v
 test('optional authoring link check validates HTML anchors and does not fetch per learner', async () => {
   let count = 0
   const pkg = structuredClone(packages[0])
-  pkg.materials = [pkg.materials[0], { ...pkg.materials[0], id: 'second-reference' }]
+  const material = pkg.materials.find((item) => item.id === 'motion-video-analysis')
+  pkg.materials = [material, { ...material, id: 'second-reference' }]
   const fetched = await checkPublicLinks([pkg], async () => {
     count++
     return new Response('<h2 id="motion-analysis">Section</h2>', { headers: { 'content-type': 'text/html' } })

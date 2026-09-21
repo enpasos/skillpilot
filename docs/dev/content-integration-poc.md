@@ -6,7 +6,7 @@ Architecture: [content integration](../concept/skill-graph/content-integration.m
 
 ## Scope
 
-One separately authored public-link package for four related Physics goals;
+One separately authored public-link package for Physics goals across topics;
 explicit per-learner opt-in, Cockpit selection and optional Claude material hints.
 No provider content is downloaded at runtime. Neither a link nor a click proves
 reading, understanding or mastery. No new coach mutation tools, entitlement
@@ -15,9 +15,12 @@ system, provider partnership or general-purpose package standard is claimed.
 The eleven former Physik Libre references have been removed from canonical
 `resourceLinks`. Their exact original and retained arrays live in
 `content/migrations/physik-libre-links-2026-09-20.json` as migration evidence, not
-active teaching content. The four current pilot mappings have separate explicit
-AI review rationales. The remaining old references are not automatically approved
-or offered. GeoGebra is inventoried for a subsequent migration; this PoC is not
+active teaching content. The deployed four-goal pilot remains as version `1.0.0`.
+The catalog selects its expanded `1.1.0` successor with explicit AI mapping reviews
+and documented [coverage and limits](../../content/physik-libre/1.1.0/README.md).
+Existing selections use the same package ID and need not be saved again after
+deployment. Historical references were re-examined, not automatically approved.
+GeoGebra is inventoried for a subsequent migration; this PoC is not
 a claim that all repository materials have been externalized.
 
 `HistoricalContentLinkBindings` preserves historical practice fingerprints only

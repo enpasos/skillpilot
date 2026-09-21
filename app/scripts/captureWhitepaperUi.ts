@@ -7,7 +7,11 @@ import { chromium } from 'playwright'
 
 const baseUrl = process.env.WHITEPAPER_CAPTURE_BASE_URL ?? 'http://localhost:4183'
 assert.ok(['localhost', '127.0.0.1', '[::1]'].includes(new URL(baseUrl).hostname), 'capture must use a local Vite server')
-const packagePath = new URL('../../content/physik-libre/1.0.0/package.json', import.meta.url)
+const contentRoot = new URL('../../content/', import.meta.url)
+const catalog = JSON.parse(await readFile(new URL('catalog.json', contentRoot), 'utf8')) as { packages: string[] }
+const activePath = catalog.packages.find((path) => path.startsWith('physik-libre/'))
+assert.ok(activePath, 'Physik Libre must be present in the current catalog')
+const packagePath = new URL(activePath, contentRoot)
 interface SourceMaterial {
   title: string; url: string; resourceType: string; language: string; status: string
   goalIds: string[]; sections: string[]
@@ -19,8 +23,8 @@ interface SourcePackage {
 }
 const sourcePackage = JSON.parse(await readFile(packagePath, 'utf8')) as SourcePackage
 assert.equal(sourcePackage.status, 'active')
-assert.equal(sourcePackage.materials.length, 4)
-assert.ok(sourcePackage.materials.every((material) => material.status === 'active' && material.goalIds.length === 1))
+assert.ok(sourcePackage.materials.length > 0)
+assert.ok(sourcePackage.materials.every((material) => material.status === 'active' && material.goalIds.length >= 1))
 
 const browser = await chromium.launch({
   headless: true,

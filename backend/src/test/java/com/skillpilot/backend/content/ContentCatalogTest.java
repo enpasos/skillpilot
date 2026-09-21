@@ -28,16 +28,24 @@ class ContentCatalogTest {
     }
 
     @Test
-    void bundledCatalogProvidesOnlyTheCheckedSmallPhysicsPilot() {
+    void bundledCatalogExpandsPhysicsWithoutChangingTheExistingSelectionId() {
         ContentCatalog catalog = new ContentCatalog(new ObjectMapper());
         assertThat(catalog.packages("de")).hasSize(1);
         assertThat(catalog.packages("de").getFirst().packageId()).isEqualTo("physik-libre-gymnasium");
-        assertThat(catalog.packages("de").getFirst().materialCount()).isEqualTo(4);
-        assertThat(catalog.packages("en").getFirst().title()).isEqualTo("Physik Libre – Understanding motion");
+        assertThat(catalog.packages("de").getFirst().materialCount()).isGreaterThan(4);
+        assertThat(catalog.packages("en").getFirst().title()).isEqualTo("Physik Libre – Physics explained");
         assertThat(catalog.materialsForGoal(Set.of("physik-libre-gymnasium"),
                 "d67502e3-5e0a-595b-a24b-65b1c40de36e").getFirst().material().url())
                 .isEqualTo("https://physikbuch.schule/motion-capture.html#motion-analysis");
         assertThat(catalog.materialsForGoal(Set.of(), "d67502e3-5e0a-595b-a24b-65b1c40de36e")).isEmpty();
+        for (String goalId : List.of(
+                "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+                "37b33812-d428-5953-852e-57a53a4347fe",
+                "d05a146f-7fcd-56ae-b9b9-b54203328579")) {
+            assertThat(catalog.materialsForGoal(Set.of("physik-libre-gymnasium"), goalId))
+                    .as("new topic for an already selected package: %s", goalId).isNotEmpty();
+            assertThat(catalog.materialsForGoal(Set.of(), goalId)).isEmpty();
+        }
     }
 
     @Test
