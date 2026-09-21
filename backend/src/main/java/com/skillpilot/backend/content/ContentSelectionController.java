@@ -12,21 +12,21 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-/** First-party configuration only; no provider tool exposes selection or its credential. */
+/** Ordinary first-party Cockpit setting; provider tools only read resolved materials. */
 @RestController
 @RequestMapping(value = "/api/ui/learners/{learnerId}", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ContentSelectionController {
-    private final ContentConfigurationAuthorization authorization;
+    private final ContentAvailability availability;
     private final ContentSelectionService selections;
     private final ContentCatalog catalog;
     private final ContentMaterialResolver materials;
     private final LearnerService learners;
     private final LearnerLifecycleService lifecycle;
 
-    public ContentSelectionController(ContentConfigurationAuthorization authorization,
+    public ContentSelectionController(ContentAvailability availability,
             ContentSelectionService selections, ContentCatalog catalog, ContentMaterialResolver materials,
             LearnerService learners, LearnerLifecycleService lifecycle) {
-        this.authorization = authorization;
+        this.availability = availability;
         this.selections = selections;
         this.catalog = catalog;
         this.materials = materials;
@@ -41,18 +41,17 @@ public class ContentSelectionController {
     public SelectionResponse get(@PathVariable String learnerId,
             @RequestParam(defaultValue = "de") String lang, HttpServletResponse response) {
         response.setHeader("Cache-Control", "no-store");
-        authorization.requireEnabled();
+        availability.requireEnabled();
         learners.assertActiveLearnerRouteAccess(learnerId);
         return describe(selections.selection(learnerId), lang);
     }
 
     @PutMapping(value = "/content-selection", consumes = MediaType.APPLICATION_JSON_VALUE)
     public SelectionResponse put(@PathVariable String learnerId,
-            @RequestHeader(value = ContentConfigurationAuthorization.HEADER, required = false) String capability,
             @RequestParam(defaultValue = "de") String lang,
             @RequestBody JsonNode request, HttpServletResponse response) {
         response.setHeader("Cache-Control", "no-store");
-        authorization.requireWrite(learnerId, capability);
+        availability.requireEnabled();
         if (request == null || !request.isObject() || request.size() != 2
                 || !request.path("expectedRevision").isIntegralNumber()
                 || !request.path("expectedRevision").canConvertToLong()
@@ -66,7 +65,7 @@ public class ContentSelectionController {
         }
         return lifecycle.withActivity(learnerId, () -> {
             learners.assertWritableLearningSession(learnerId);
-            return describe(selections.update(learnerId, capability, request.path("expectedRevision").longValue(), ids), lang);
+            return describe(selections.update(learnerId, request.path("expectedRevision").longValue(), ids), lang);
         });
     }
 
@@ -75,7 +74,7 @@ public class ContentSelectionController {
             @RequestParam String goalId, @RequestParam(defaultValue = "de") String lang,
             HttpServletResponse response) {
         response.setHeader("Cache-Control", "no-store");
-        authorization.requireEnabled();
+        availability.requireEnabled();
         learners.assertActiveLearnerRouteAccess(learnerId);
         var learner = learners.getLearner(learnerId);
         if (learner.getSelectedCurriculum() == null) return List.of();

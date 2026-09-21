@@ -1,6 +1,7 @@
 # External-content PoC: Physik Libre
 
-Status: local implementation candidate; **not deployed and not real-Claude acceptance**.
+Status: updated local implementation candidate, 21 September 2026;
+**this revision is not a deployment or real-Claude acceptance claim**.
 Architecture: [content integration](../concept/skill-graph/content-integration.md).
 
 ## Scope
@@ -27,38 +28,34 @@ substantive change uses the ordinary review process; the snapshot is not a new
 curriculum development freeze. `--verify-relocation` is a one-time check of the
 unchanged semantic fields at the migration checkpoint.
 
-## Authorization and activation
+## Cockpit selection and deployment
 
-Default is **off** (`SKILLPILOT_CONTENT_ENABLED=false`). Backend support being
-installed neither enables the feature nor grants permission to a learner.
+Material selection uses the **ordinary SkillPilot-ID profile access**. The
+Product Owner explicitly confirmed on 21 September 2026 that the system should
+not distinguish the learner from another holder of the same ID. The former
+content-specific credential and manually provisioned grant are removed; there
+is no additional secret, profile allowlist, operator approval or teacher identity
+system. The ID remains private and retains the same authority as elsewhere in
+the Cockpit.
 
-The existing permanent SkillPilot ID is a broad capability and cannot distinguish
-a learner from a teacher holding a copy. The PoC therefore uses a **separate,
-profile-bound material-configuration capability**, provisioned offline by an
-operator after independently confirming the intended recipient. Knowledge of the
-ID alone must never trigger provisioning. This scoped grant is not proof of
-general account ownership and is not a new teacher delegation platform.
+Content support defaults to **on**. The existing global operational switch
+`SKILLPILOT_CONTENT_ENABLED=false` can disable it; it is not a per-profile access
+control. A new profile starts with no selected package, so availability does not
+automatically opt anyone in.
 
-- Generate 32 cryptographically random bytes, encode as unpadded base64url
-  (43 characters); hash that encoded token with SHA-256.
-- Put only the learner-ID-to-lowercase-hash mapping in private deployment
-  configuration `SKILLPILOT_CONTENT_CONFIGURATION_GRANTS_JSON` (JSON object).
-  Both the profile IDs and hash mapping are private; never commit them.
-- Deliver the original capability separately through the confirmed channel.
-  Never put it in a URL, chat, curriculum file, screenshot, issue or public log.
-- Enable `SKILLPILOT_CONTENT_ENABLED=true` only in the intended pilot environment.
-  The optional catalog then appears in the normal learner Cockpit, not Trainer.
-- The user enters the capability in the protected configuration field. It is
-  kept only in component memory, cleared after saving/closing/profile changes,
-  and sent solely as `X-SkillPilot-Content-Capability` on the explicit save.
-- Configure reverse proxies/APM not to record this header (as for Authorization).
-- Remove or replace the hash mapping and reload **all** backend instances to
-  revoke/rotate a grant. There is no browser claim, issuance or reset endpoint.
+Normal use:
 
-This manual provisioning is appropriate for a controlled PoC, not a self-service
-mass rollout. No production credentials or settings were changed by implementation.
-Existing ID-only permissions elsewhere remain unchanged. A copied grant can be
-used by its bearer; the system does not infer a person's identity from it.
+1. Open the intended profile in the Cockpit.
+2. In the material selection, select the desired package and save.
+3. Open a mapped goal to see the optional material. Deselect and save to stop
+   offering it in fresh Cockpit/coach results.
+
+Deployment of this revision still requires the normal release process. An
+existing explicit `SKILLPILOT_CONTENT_ENABLED=false` environment setting overrides
+the new default: remove that override or set it to `true` when enabling the
+feature, and reload the backend instances. Remove obsolete per-profile grant
+configuration from deployment secrets; it is no longer consumed. No production
+configuration or credentials are changed by this local implementation.
 
 ## State and safety
 
@@ -66,9 +63,10 @@ used by its bearer; the system does not infer a person's identity from it.
 revision. It has a cascading foreign key to the learner; ordinary import/export
 does not expose or overwrite the selection. A new profile starts with no package.
 This intentionally means portable learning-data restore does not transfer content
-choices or credentials; opt in again under the target profile's grant.
+choices; select the desired materials again in the target profile's Cockpit.
 
-Writes lock the learner row, check the configuration revision, and increment the
+Writes retain the existing active-profile and writable-session protections,
+lock the learner row, check the configuration revision, and increment the
 shared coach revision only on actual change. Mastery, graph, plans and focus are
 untouched. No automatic retry overwrites a concurrent choice. Disabled, missing,
 unmapped or unavailable content must leave normal learning operational.
@@ -81,8 +79,8 @@ the deployment's connection-acquisition timeout or capacity planning.
 
 UI material reads use the learner's filtered curriculum, never a shared global
 goal mutation. Claude receives only compact active-goal material metadata, no
-selection settings, private IDs or configuration grants. Exams and memory
-workflows do not receive these optional links. External pages are untrusted data,
+selection settings or private IDs. Exams and memory workflows do not receive
+these optional links. External pages are untrusted data,
 not instructions to the coach.
 
 Links have no learner/session parameters and no automatic iframe, prefetch or
@@ -107,15 +105,17 @@ cd backend
 The database integration test follows persisted opt-in through the real coach
 facade and opt-out, and injects an actual optional-table SQL failure while a
 learning transaction commits mastery. Browser tests separately cover selection,
-mobile layout, no pre-click provider requests and credential cleanup. These are
-local automated integration checks, not a recording from the live Claude host.
+mobile layout, no pre-click provider requests, profile-switch isolation and
+selection without a separate credential. These are local automated integration
+checks, not a recording from the live Claude host.
 
 Also run curriculum-quality regeneration/protected floors after the canonical
 link migration, frontend type-checking and affected connector contract tests.
 Live provider-link checking is an explicit authoring check, not a runtime or
 network-dependent CI learning gate.
 
-Verified locally on 20 September 2026:
+Historical verification of the initial PoC on 20 September 2026, before removal
+of its additional configuration credential:
 
 - Package validation and nine authoring tests; four live material anchors on
   three provider pages; eleven exact link-relocation checks.
@@ -137,12 +137,29 @@ Verified locally on 20 September 2026:
   Only mutable candidate bindings were refreshed; external release gates remain
   pending and no earlier acceptance was transferred.
 
-These are dated test results, not fixed future curriculum totals or external
-release approvals.
+These are dated test results, not verification of the 21 September access-model
+change, fixed future curriculum totals or external release approvals. Rerun the
+affected current gates above for that change.
+
+Verified locally on 21 September 2026 for the ordinary Cockpit selection:
+
+- 109 backend tests passed across content availability/catalog/resolution,
+  selection HTTP/persistence, request logging, the coach facade and Claude
+  context projection. Normal ID-based selection, deselection, profile isolation,
+  revision conflicts and unavailable/read-only profiles are covered.
+- Material API/browser regressions passed without any configuration key,
+  including persisted choices, delayed profile-switch responses, conflict reload,
+  mobile DE/EN presentation and no provider request before a link click.
+- App type-check, affected-file lint, frontend bundle build, nine content
+  authoring tests, catalog/migration checks, documentation links/indexes and the
+  historical OpenAI review-integrity check passed. No learner data or production
+  configuration was changed; no full repository CI or live-host acceptance is
+  claimed by these targeted local checks.
 
 Real-host release acceptance remains separate:
 
-1. Provision a confirmed pilot profile in the intended environment and opt in.
+1. Open an existing active profile in the intended environment and select a
+   package through its normal Cockpit settings, with no separate access key.
 2. Open one mapped, reachable goal; verify the same material in Cockpit and a
    real Claude context/tool response without transmitting private credentials.
 3. Continue the actual learning conversation; material is optional, not a task

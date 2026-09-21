@@ -61,7 +61,6 @@ class RequestLoggingFilterTest {
                 for (int status : new int[] {200, 400, 500}) {
                     MockHttpServletRequest request = new MockHttpServletRequest("POST", path);
                     request.setContentType("application/json");
-                    request.addHeader("X-SkillPilot-Content-Capability", "synthetic-private-header-canary");
                     // The renamed unknown field must be protected without relying
                     // on a list of historical feedback field names.
                     request.setContent("{\"rationale\":\"synthetic-private-input-canary\"}"

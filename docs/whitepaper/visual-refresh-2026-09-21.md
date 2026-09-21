@@ -135,6 +135,13 @@ request is permitted for these planning captures.
 
 ## Optional content
 
+The capture described below predates the Product Owner's access-model
+clarification later on 21 September 2026. Its credential-field and default-off
+observations are historical capture evidence, not the current UI contract.
+Material selection now uses the ordinary Cockpit profile access without a
+separate credential; content support defaults to on while package selection
+remains explicit. See the [current PoC runbook](../dev/content-integration-poc.md).
+
 `content-materials-ui.de.png` and `content-materials-ui.en.png` render the production
 `MaterialSelectionPanel` and `GoalAdditionalMaterials`. The fixture reads the real
 public package metadata from `content/physik-libre/1.0.0/package.json`. Its current

@@ -130,10 +130,8 @@ export const saveContentSelection = async (
   language: MaterialLanguage,
   expectedRevision: number,
   selectedPackageIds: string[],
-  capability: string,
   options: RequestOptions = {},
 ): Promise<ContentSelection> => {
-  if (!capability.trim()) throw new ContentMaterialsApiError(403)
   const response = await (options.fetcher ?? fetch)(
     `${endpoint(skillpilotId, 'content-selection', options)}?lang=${language}`,
     {
@@ -141,7 +139,7 @@ export const saveContentSelection = async (
       cache: 'no-store',
       signal: options.signal,
       referrerPolicy: 'no-referrer',
-      headers: { 'Content-Type': 'application/json', 'X-SkillPilot-Content-Capability': capability.trim() },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ expectedRevision, selectedPackageIds }),
     },
   )

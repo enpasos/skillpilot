@@ -20,15 +20,15 @@ public class ContentSelectionService {
     private final JdbcTemplate jdbc;
     private final LearnerRepository learners;
     private final ContentCatalog catalog;
-    private final ContentConfigurationAuthorization authorization;
+    private final ContentAvailability availability;
     private final ObjectMapper mapper;
 
     public ContentSelectionService(JdbcTemplate jdbc, LearnerRepository learners, ContentCatalog catalog,
-            ContentConfigurationAuthorization authorization, ObjectMapper mapper) {
+            ContentAvailability availability, ObjectMapper mapper) {
         this.jdbc = jdbc;
         this.learners = learners;
         this.catalog = catalog;
-        this.authorization = authorization;
+        this.availability = availability;
         this.mapper = mapper;
     }
 
@@ -45,13 +45,13 @@ public class ContentSelectionService {
     // Only this optional lookup is isolated; configuration writes keep the learner lock.
     @Transactional(readOnly = true, propagation = Propagation.REQUIRES_NEW, timeout = 2)
     public Set<String> selectedPackageIds(String learnerId) {
-        if (!authorization.isEnabled()) return Set.of();
+        if (!availability.isEnabled()) return Set.of();
         return selection(learnerId).selectedPackageIds();
     }
 
     @Transactional
-    public Selection update(String learnerId, String capability, long expectedRevision, List<String> packageIds) {
-        authorization.requireWrite(learnerId, capability);
+    public Selection update(String learnerId, long expectedRevision, List<String> packageIds) {
+        availability.requireEnabled();
         if (expectedRevision < 0 || packageIds == null || packageIds.size() > 20
                 || packageIds.stream().anyMatch(id -> id == null || !catalog.hasActivePackage(id))) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unknown or unavailable content package");

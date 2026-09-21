@@ -45,15 +45,15 @@ await getContentSelection('learner/a', 'en', options)
 assert.equal(calls.at(-1)?.input, 'https://skillpilot.example/api/ui/learners/learner%2Fa/content-selection?lang=en')
 assert.equal(calls.at(-1)?.init?.cache, 'no-store')
 assert.equal(calls.at(-1)?.init?.referrerPolicy, 'no-referrer')
-assert.equal(calls.at(-1)?.init?.headers, undefined, 'reads never receive material credentials')
+assert.equal(calls.at(-1)?.init?.headers, undefined, 'reads use the ordinary learner context')
 
-await saveContentSelection('learner/a', 'de', 2, ['physics-pilot'], 'secret-capability', options)
+await saveContentSelection('learner/a', 'de', 2, ['physics-pilot'], options)
 const save = calls.at(-1)!
 assert.equal(save.init?.method, 'PUT')
 assert.deepEqual(JSON.parse(String(save.init?.body)), { expectedRevision: 2, selectedPackageIds: ['physics-pilot'] })
-assert.equal(new Headers(save.init?.headers).get('X-SkillPilot-Content-Capability'), 'secret-capability')
-assert(!save.input.includes('secret-capability'))
-assert(!String(save.init?.body).includes('secret-capability'))
+assert.deepEqual([...new Headers(save.init?.headers)], [['content-type', 'application/json']],
+  'saving is an ordinary Cockpit setting and sends no separate grant or authorization header')
+assert.equal(new Headers(save.init?.headers).get('X-SkillPilot-Content-Capability'), null)
 
 responseBody = [material]
 await getGoalAdditionalMaterials('learner/a', 'public/goal', 'en', options)
@@ -64,6 +64,11 @@ for (status of [403, 404, 409, 503]) {
   await assert.rejects(getContentSelection('learner/a', 'de', options), (error: unknown) => error instanceof ContentMaterialsApiError && error.status === status)
 }
 const count = calls.length
-await assert.rejects(saveContentSelection('learner/a', 'de', 2, [], ' ', options), (error: unknown) => error instanceof ContentMaterialsApiError && error.status === 403)
-assert.equal(calls.length, count, 'missing credentials cause no request')
+await assert.rejects(saveContentSelection(' ', 'de', 2, [], options), /Missing learner context/)
+assert.equal(calls.length, count, 'missing learner context causes no request')
+status = 200
+responseBody = selection
+await saveContentSelection('learner/a', 'de', 2, [], options)
+assert.deepEqual(JSON.parse(String(calls.at(-1)?.init?.body)), { expectedRevision: 2, selectedPackageIds: [] },
+  'the learner can explicitly remove all optional materials without a separate credential')
 console.log('Content material API tests passed')

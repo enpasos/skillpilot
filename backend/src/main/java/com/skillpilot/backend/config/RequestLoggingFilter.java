@@ -99,7 +99,7 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                 // may echo it. Never cache or log either body at these boundaries.
                 || isCoachResultBoundary(requestUri)
                 // Optional material preferences are private learner configuration.
-                // Also protect rejected/unknown body fields; the scoped grant is header-only.
+                // Also protect rejected/unknown body fields.
                 || isContentConfigurationBoundary(requestUri)
                 // OAuth token, authorization and revocation requests use form bodies.
                 // Do not pass those credentials through the general JSON body logger.

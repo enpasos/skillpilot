@@ -1,7 +1,8 @@
 # Contentanbindung: Physik-Libre-PoC und Migrationsinventar
 
-Stand: 20. September 2026. Auftrag: [Issue #50](https://github.com/enpasos/skillpilot/issues/50).
-Verbindlich ist der [Architekturrahmen v1.0](../concept/skill-graph/content-integration.md).
+Stand: 21. September 2026; fachliches Migrationsinventar vom 20. September.
+Auftrag: [Issue #50](https://github.com/enpasos/skillpilot/issues/50).
+Verbindlich ist der [Architekturrahmen v1.1](../concept/skill-graph/content-integration.md).
 Dieses Dokument beschreibt den begrenzten technischen PoC, nicht eine bereits
 veröffentlichte Vollintegration, Anbieterkooperation oder menschliche Freigabe.
 
@@ -14,11 +15,15 @@ Mastery. Quellenbelege, eigene Zielbilder und deren QA-Nachweise bleiben bestehe
 
 Der PoC verwendet eine separate JSON-Contentebene unter `content/`, eine
 backendgespeicherte persönliche Paketauswahl und einen gemeinsamen Resolver für
-Cockpit und Coach. Er ist standardmäßig deaktiviert. Aktivierung, Auswahlrecht,
-Zugangsberechtigung und erlaubter Inhaltszugriff sind verschiedene Dinge.
-Die bloße Kenntnis einer SkillPilot-ID gewährt keine neue Berechtigung, Materialien
-für andere auszuwählen. Eine Lehrendenverwaltung oder neue Anbieteranmeldung wird
-nicht als Abkürzung eingeführt.
+Cockpit und Coach. Die Contentfunktion steht standardmäßig zur Verfügung; die
+Paketauswahl bleibt eine freiwillige, normale Cockpit-Einstellung. Der bestehende
+Profilzugang über die SkillPilot-ID genügt: Es gibt keinen zusätzlichen
+Content-Schlüssel und keine manuelle Freigabe einzelner Profile. SkillPilot
+unterscheidet bewusst nicht zwischen der lernenden Person und anderen Personen
+mit derselben ID. Aktive-Profile- und Schreibschutzprüfungen bleiben bestehen;
+eine Lehrendenverwaltung oder neue Anbieteranmeldung wird nicht eingeführt.
+Die Auswahl eines Pakets ist weiterhin von Zugangsrechten beim Anbieter und
+erlaubtem Inhaltszugriff durch eine KI zu unterscheiden.
 
 Ein Ergebnis enthält nur öffentliche Materialverweise zum aktiven Lernziel,
 keine abgerufenen Inhalte. Die Auswahl wird nicht im kanonischen Goal oder allein
@@ -114,13 +119,16 @@ reichen und darf nicht nur neue JSON-Dateien bereitstellen.
 Die Abnahme umfasst:
 
 1. Zwei getrennte Lernprofile, gleiches Curriculum: aktivierte Zuordnung nur für
-   das berechtigte Profil, unabhängig vom KI-Host.
+   das Profil mit gespeicherter Auswahl, unabhängig vom KI-Host. Auswählen und
+   Speichern funktioniert mit dem normalen Profilzugang ohne Zusatzschlüssel.
 2. Aktivieren, Deaktivieren und Paket-/Materialrücknahme verändern weder
    Mastery noch Frontier, Prerequisites oder aktives Lernziel.
 3. Fehlende Zuordnung, deaktivierter Dienst und nicht verfügbare externe Seite
    lassen normales Lernen funktionieren. Kein synchroner Websiteabruf im Coach.
-4. Unberechtigte Auswahländerung, fremde Profilkennung und veraltete Revision
-   werden abgewiesen; keine Freitexte oder privaten Daten in Contentpaketen.
+4. Fehlende oder nicht aktive Profile, nicht schreibbare Sitzungen, ungültige
+   Paketauswahl und veraltete Revision werden weiterhin abgewiesen. Ein
+   Profilwechsel vermischt keine Auswahlzustände; keine Freitexte oder privaten
+   Daten in Contentpaketen.
 5. Claude erhält nur passende öffentliche Links und behauptet keinen gelesenen
    Volltext. Keine neuen Personalisierungstools im Coach.
 6. Ein synthetischer zweiter Anbieter und ein anderes Fach bestehen dieselben
@@ -140,7 +148,9 @@ Ausgeführt am 20. September 2026:
 Backend-/UI-/Coach-Regressionsnachweise und die konkreten Sicherheits- und
 Betriebsschritte stehen getrennt im [PoC-Betriebs- und Abnahmebericht](content-integration-poc.md).
 Lokale Tests sind keine Produktionsbereitstellung oder Realhost-Abnahme. Vor
-einem aktivierten Betrieb sind Berechtigungsvergabe und ein echter Claude-Ablauf
-mit aktivierter und wieder deaktivierter Anbindung nachzuweisen. Die übrigen
+einer bestätigten Realhost-Abnahme ist ein echter Claude-Ablauf mit ausgewählter
+und wieder abgewählter Anbindung nachzuweisen. Ein früher ausdrücklich gesetztes
+`SKILLPILOT_CONTENT_ENABLED=false` muss bei der Bereitstellung aufgehoben werden,
+damit die normale Cockpit-Auswahl verfügbar ist. Die übrigen
 Bestandszuordnungen, insbesondere GeoGebra, bleiben eine sichtbare Folgeaufgabe;
 der PoC behauptet keine vollständige Bereinigung aller Curricula.

@@ -23,7 +23,7 @@ public final class ContentMaterialResolver {
     public ContentMaterialResolver(
             ContentCatalog catalog,
             ContentSelectionService selections,
-            @Value("${skillpilot.content.enabled:false}") boolean enabled) {
+            @Value("${skillpilot.content.enabled:true}") boolean enabled) {
         this.catalog = catalog;
         this.selections = selections;
         this.enabled = enabled;

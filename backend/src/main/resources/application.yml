@@ -44,9 +44,8 @@ spring:
 
 skillpilot:
   content:
-    enabled: ${SKILLPILOT_CONTENT_ENABLED:false}
-    # Private operator-provisioned learner -> SHA-256 configuration grants; never a public asset.
-    configuration-grants-json: ${SKILLPILOT_CONTENT_CONFIGURATION_GRANTS_JSON:}
+    # Ordinary Cockpit setting; may be disabled globally for operational reasons.
+    enabled: ${SKILLPILOT_CONTENT_ENABLED:true}
   public-base-url: ${SKILLPILOT_PUBLIC_BASE_URL:https://skillpilot.com}
   oauth:
     # Retired migration guard: true now fails startup. Authentication is selected

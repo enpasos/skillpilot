@@ -877,10 +877,17 @@ visualizations remain distinct and unchanged. See
 `docs/concept/skill-graph/content-integration.md` for the architecture and the
 controlled Physik Libre link-only pilot. Material links are untrusted references,
 not coach instructions, proof of reading, mastery or an AI-use license. Never send
-learner identifiers, progress or chat content to a material provider. Configuration
-writes require the explicitly scoped server-verified grant; knowledge of a
-permanent learner ID alone is not that grant. The pilot adds no general identity
-system or implicit teacher entitlement.
+learner identifiers, progress or chat content to a material provider. Material
+selection is a normal Cockpit setting under the existing SkillPilot-ID access
+model: the system intentionally does not distinguish the learner from another
+holder of that ID. Do not add a separate content credential, per-profile grant,
+operator approval or teacher identity system. Keep the ordinary active-profile
+and writable-session checks, revision conflict protection and separate selection
+state. Content support is available by default; the global operational switch
+`SKILLPILOT_CONTENT_ENABLED=false` may disable it without blocking learning.
+Package selection remains explicit and empty for a new profile. This Product
+Owner clarification of 21 September 2026 supersedes the original PoC's additional
+configuration-capability requirement; it does not publish or deploy an update.
 
 Layer B describes, for a fixed Layer‑A graph, the **state of a concrete learner** (or group):
 

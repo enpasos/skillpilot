@@ -1,10 +1,12 @@
 # Contentanbindung: verbindlicher Architekturrahmen
 
 Status: übernommen aus [Issue #50](https://github.com/enpasos/skillpilot/issues/50).
-Die folgende Konzeptgrundlage ist Version 1.0 vom 15. September 2026; ihre
-Aufnahme ins Repository am 20. September 2026 verändert die Architekturentscheidung
-nicht. Die Benennung des Skill-Graphs ist redaktionell an das Repository-Glossar
-angepasst. Konkrete vorläufige PoC-Entscheidungen und der Migrationsstand stehen getrennt
+Die Konzeptgrundlage vom 15. September 2026 wurde am 20. September übernommen.
+Version 1.1 vom 21. September 2026 setzt die ausdrückliche Klarstellung des
+Product Owners um: Die Materialauswahl ist eine normale Cockpit-Einstellung im
+bestehenden SkillPilot-ID-Zugangsmodell, ohne zusätzliche Freigabe oder
+Content-Zugangsschlüssel. Die Benennung des Skill-Graphs ist redaktionell an das
+Repository-Glossar angepasst. Konkrete PoC-Entscheidungen und der Migrationsstand stehen getrennt
 im [Physik-Libre-Pilotbericht](../../dev/content-integration-physik-libre-pilot.md).
 Bestehende eigene Zielvisualisierungen behalten im PoC ihren geprüften
 [Visualisierungsvertrag](atomic-goal-visualizations.md); sie werden nicht
@@ -16,7 +18,7 @@ mit optionalen externen Contentpaketen vermischt.
 
 Anbieterunabhängige Lernmaterialien als optionale Personalisierungsebene
 
-Architekturrahmen  |  Version 1.0  |  15. September 2026
+Architekturrahmen  |  Version 1.1  |  21. September 2026
 
 > **SkillPilot trennt die kanonische Kompetenzstruktur, die Zuordnung externer Lernmaterialien und deren persönliche Auswahl.** Content wird an das Curriculum angebunden, nicht in das Curriculum eingebaut.
 
@@ -32,7 +34,7 @@ Dieser Rahmen legt die logischen Verantwortungsgrenzen und die dauerhaft zu erha
 | --- | --- |
 | Kanonisches Curriculum | Beschreibt Lernziele, fachliche Voraussetzungen, curriculare Zuordnungen und deren Quellenbelege. Enthält keine didaktischen Contentlinks und keine Festlegung auf bestimmte Anbieter oder Lernmaterialien. |
 | Contentebene | Verknüpft externe Materialien mit den curricularen Lernzielen. Contentlink-Pakete bündeln solche Zuordnungen außerhalb des kanonischen Curriculums. Sie verändern weder dessen Ziele noch dessen Abhängigkeiten. |
-| Personalisierung | Legt für eine SkillPilot-ID fest, welche Contentanbindungen berücksichtigt werden. Die Auswahl erfolgt durch Lernende oder entsprechend berechtigte Lehrende. Mehrere Angebote können nebeneinander bestehen. |
+| Personalisierung | Legt für eine SkillPilot-ID fest, welche Contentanbindungen berücksichtigt werden. Die Auswahl erfolgt als normale Cockpit-Einstellung über den bestehenden Profilzugang. Mehrere Angebote können nebeneinander bestehen. |
 
 **Die Verweisrichtung verläuft von der Contentebene zum Curriculum.** Das Curriculum muss einzelne Anbieter oder Pakete nicht kennen. Die Personalisierung wählt aus der Contentebene aus; sie schreibt keine Materialauswahl in die kanonischen Lernziele zurück.
 
@@ -50,7 +52,11 @@ Materialien werden über eindeutige Referenzen den passenden Lernzielen zugeordn
 
 ### 3.3 Auswahl gehört zur SkillPilot-ID
 
-Die wirksame Contentauswahl ist Teil der Personalisierung bei SkillPilot und nicht ausschließlich eine Einstellung eines bestimmten KI-Hosts oder Chats. Sie kann geändert oder aufgehoben werden. Lehrende können im Rahmen ausdrücklich eingeräumter Berechtigungen mitwirken; die bloße Kenntnis einer SkillPilot-ID berechtigt nicht zur Änderung. Gruppenbezogene Vorgaben, Prioritäten und Bedienabläufe werden später ausgestaltet.
+Die wirksame Contentauswahl ist eine normale Cockpit-Einstellung bei SkillPilot und nicht ausschließlich eine Einstellung eines bestimmten KI-Hosts oder Chats. Materialien werden ausgewählt und gespeichert; die Auswahl kann geändert oder aufgehoben werden. Es gibt keinen zusätzlichen Content-Zugangsschlüssel, keine manuelle Freischaltung einzelner Profile und kein besonderes Lehrendenkonto.
+
+Wie im übrigen Cockpit ist die SkillPilot-ID der Profilzugang. Technisch wird absichtlich nicht zwischen der lernenden Person und jemandem mit einer Kopie ihrer ID unterschieden. Wer ein Profil über diese ID verwendet, hat auch dieselbe Möglichkeit zur Materialauswahl. Die ID bleibt deshalb vertraulich; die Materialanbindung schafft weder eine neue Identitätsprüfung noch eine serverseitige Lehrenden- oder Klassenbeziehung. Die bestehenden Prüfungen für aktive Profile, schreibbare Sitzungen und widerspruchsfreie Speicherstände bleiben erhalten.
+
+Die Contentfunktion steht standardmäßig zur Verfügung; eine neue SkillPilot-ID startet dennoch ohne ausgewähltes Paket. Ein globaler Betriebsschalter kann die optionale Anbindung abschalten, ohne das Lernen zu sperren. Gruppenbezogene Vorgaben und Prioritäten sind nicht Voraussetzung der persönlichen Auswahl und können später ausgestaltet werden.
 
 ### 3.4 Lernstand und Kompetenznachweis bleiben unabhängig
 
@@ -77,7 +83,7 @@ Der Architekturrahmen definiert die Grenzen zwischen Kompetenzmodell, Materialzu
 | Format und Bereitstellung | Datenformat, Metadaten, Austauschstandard, Speicherung, Import und Schnittstellen. Auch die technische Form eines Contentlink-Pakets bleibt offen. |
 | Fachliche Verknüpfung | Granularität der Verweise, didaktische Rollen, Abdeckungsangaben sowie Umgang mit unterschiedlichen Materialausgaben und Curriculumständen. |
 | Nutzung im Lernprozess | Darstellung, Reihenfolge und Auswahl passender Materialien; Umfang des Materialkontexts für den Coach; mögliche Einbindung digitaler und gedruckter Angebote. |
-| Auswahl und Verwaltung | Auffindbarkeit und Aktivierung von Paketen, Empfehlungen, Gruppen- oder Kurszuordnungen, Prioritäten und konkrete Berechtigungsabläufe. |
+| Auswahl und Verwaltung | Erweiterte Katalogsuche, Empfehlungen, Gruppen- oder Kurszuordnungen und Prioritäten; die persönliche Cockpit-Auswahl nutzt bereits den bestehenden Profilzugang. |
 | Zugang und Finanzierung | Anbindung vorhandener Nutzungsrechte, Bezahlcontent, gegebenenfalls kostenpflichtige Ankopplung, Lizenzmodelle und Abrechnung. |
 | Qualität und Betrieb | Erstellung, fachliche Prüfung, Kennzeichnung, Veröffentlichung, Pflege und Aktualisierung von Paketen sowie Zuständigkeiten bei fehlerhaften oder veralteten Zuordnungen. |
 
@@ -111,7 +117,7 @@ Die Umsetzung wird an vier architektonischen Kriterien überprüft:
 
 - **Unveränderter Kern:** Ein Paket lässt sich ergänzen, ersetzen oder entfernen, ohne Lernziele, Abhängigkeiten oder erreichte Lernstände zu ändern.
 
-- **Persönliche Auswahl:** Bei unverändertem Curriculum können unterschiedliche SkillPilot-IDs unterschiedliche Materialien nutzen; Änderungen durch Lehrende setzen eine Berechtigung voraus.
+- **Persönliche Auswahl:** Bei unverändertem Curriculum können unterschiedliche SkillPilot-IDs unterschiedliche Materialien nutzen. Die Auswahl wird im jeweiligen Cockpit gespeichert, ohne zusätzliche Content-Zugangsprüfung; ein Wechsel des Profils darf dessen Einstellungen nicht vermischen.
 
 - **Konkrete Funktion:** Der Physik-Pilot führt für den gewählten Ausschnitt nachvollziehbar zu fachlich passenden Materialien von Physik Libre.
 

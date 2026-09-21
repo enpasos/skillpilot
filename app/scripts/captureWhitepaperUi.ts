@@ -112,7 +112,8 @@ try {
         await capture.getByRole('link', { name: /Physik Libre: Ort-Zeit-Diagramme deuten/u }).waitFor()
         assert.equal(await capture.getByRole('link').count(), 1)
         assert.equal(apiRequests.length, 2, 'only synthetic content-selection and material-resolution reads are allowed')
-        assert.equal(await capture.locator('input[type="password"]').inputValue(), '')
+        assert.equal(await capture.locator('input[type="password"]').count(), 0,
+          'material selection is an ordinary Cockpit setting without a separate key')
       }
       await page.evaluate(() => document.fonts.ready)
       await page.addStyleTag({ content: '*, *::before, *::after { animation: none !important; transition: none !important; }' })

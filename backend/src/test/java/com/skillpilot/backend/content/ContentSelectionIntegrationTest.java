@@ -1,12 +1,15 @@
 package com.skillpilot.backend.content;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.repository.LearnerRepository;
-import com.skillpilot.backend.service.ChampionPracticeFingerprint;
 import com.skillpilot.backend.service.LearnerLifecycleService;
 import com.skillpilot.backend.service.LearnerService;
 import java.util.List;
@@ -15,10 +18,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -33,20 +38,14 @@ import org.springframework.transaction.support.TransactionTemplate;
         "spring.security.oauth2.client.registration.github.client-secret=content-test-secret",
         "skillpilot.security.signing-secret=content-test-signing-secret",
         "skillpilot.learner-retention.enabled=false", "skillpilot.claude.enabled=false",
-        "skillpilot.openai.coach.v1.enabled=false", "skillpilot.content.enabled=true"
+        "skillpilot.openai.coach.v1.enabled=false"
 })
 @ActiveProfiles("test")
 class ContentSelectionIntegrationTest {
     private static final String A = "content-test-a";
     private static final String B = "content-test-b";
-    private static final String KEY = "a".repeat(43); // synthetic test capability, never provisioned
     private static final String PACKAGE = "physik-libre-gymnasium";
     private static final String GOAL = "d67502e3-5e0a-595b-a24b-65b1c40de36e";
-
-    @DynamicPropertySource static void grants(DynamicPropertyRegistry properties) {
-        properties.add("skillpilot.content.configuration-grants-json", () ->
-                "{\"" + A + "\":\"" + ChampionPracticeFingerprint.digest(KEY) + "\"}");
-    }
 
     @Autowired ContentSelectionService selections;
     @Autowired ContentMaterialResolver materials;
@@ -57,6 +56,13 @@ class ContentSelectionIntegrationTest {
     @Autowired ObjectMapper mapper;
     @Autowired CoachToolFacade coach;
     @Autowired PlatformTransactionManager transactionManager;
+    @Autowired ContentSelectionController controller;
+    @Autowired ContentAvailability availability;
+
+    private MockMvc http() {
+        return MockMvcBuilders.standaloneSetup(controller)
+                .setMessageConverters(new MappingJackson2HttpMessageConverter(mapper)).build();
+    }
 
     @Test void optInPersistenceIsolationImportConcurrencyAndDeletion() throws Exception {
         Learner a = new Learner(); a.setSkillpilotId(A); a.setActiveGoalId(GOAL);
@@ -68,7 +74,8 @@ class ContentSelectionIntegrationTest {
         var plannedBefore = jdbc.queryForList("SELECT * FROM planned_goal WHERE skillpilot_id = ?", A);
 
         assertThat(materials.resolve(A, GOAL, "de")).isEmpty();
-        var selected = selections.update(A, KEY, 0, List.of(PACKAGE));
+        assertThat(availability.isEnabled()).as("ordinary material settings are available by default").isTrue();
+        var selected = selections.update(A, 0, List.of(PACKAGE));
         assertThat(selected.revision()).isEqualTo(1);
         assertThat(selections.selectedPackageIds(A)).containsExactly(PACKAGE);
         assertThat(materials.resolve(A, GOAL, "de")).hasSize(1);
@@ -76,27 +83,26 @@ class ContentSelectionIntegrationTest {
                 "tutor", "content", null, List.of(), List.of(), null, null, null, null, false);
         assertThat(coach.getAdditionalLearningMaterials(A, activeGoal, "de")).hasSize(1);
         assertThat(mapper.writeValueAsString(coach.getAdditionalLearningMaterials(A, activeGoal, "de")))
-                .doesNotContain(A, B, KEY, "selectedPackageIds");
+                .doesNotContain(A, B, "selectedPackageIds");
         assertThat(materials.resolve(B, GOAL, "de")).isEmpty();
         assertThat(materials.resolve(A, "unmapped", "de")).isEmpty();
         assertThat(learners.findById(A).orElseThrow().getActiveGoalId()).isEqualTo(GOAL);
         assertThat(learners.findById(A).orElseThrow().getCoachStateRevision()).isEqualTo(1);
         assertThat(jdbc.queryForList("SELECT * FROM mastery WHERE skillpilot_id = ?", A)).isEqualTo(masteryBefore);
         assertThat(jdbc.queryForList("SELECT * FROM planned_goal WHERE skillpilot_id = ?", A)).isEqualTo(plannedBefore);
-        assertThat(selections.update(A, KEY, 1, List.of(PACKAGE))).isEqualTo(selected);
+        assertThat(selections.update(A, 1, List.of(PACKAGE))).isEqualTo(selected);
         assertThat(learners.findById(A).orElseThrow().getCoachStateRevision()).isEqualTo(1);
-        assertStatus(() -> selections.update(A, KEY, 0, List.of()), HttpStatus.CONFLICT);
-        assertStatus(() -> selections.update(B, KEY, 0, List.of(PACKAGE)), HttpStatus.FORBIDDEN);
-        assertStatus(() -> selections.update(A, KEY, 1, List.of("unknown")), HttpStatus.BAD_REQUEST);
+        assertStatus(() -> selections.update(A, 0, List.of()), HttpStatus.CONFLICT);
+        assertStatus(() -> selections.update(A, 1, List.of("unknown")), HttpStatus.BAD_REQUEST);
 
         var archive = learnerService.exportLearner(A);
-        assertThat(mapper.writeValueAsString(archive)).doesNotContain(PACKAGE, KEY, "selectedPackageIds");
+        assertThat(mapper.writeValueAsString(archive)).doesNotContain(PACKAGE, "selectedPackageIds");
         learnerService.importLearner(A, archive);
         learnerService.importLearner(B, archive);
         assertThat(selections.selectedPackageIds(A)).containsExactly(PACKAGE);
         assertThat(selections.selectedPackageIds(B)).isEmpty();
 
-        assertThat(selections.update(A, KEY, 1, List.of()).selectedPackageIds()).isEmpty();
+        assertThat(selections.update(A, 1, List.of()).selectedPackageIds()).isEmpty();
         assertThat(materials.resolve(A, GOAL, "de")).isEmpty();
         assertThat(coach.getAdditionalLearningMaterials(A, activeGoal, "de")).isEmpty();
         assertThat(selections.selection(A).revision()).isEqualTo(2);
@@ -104,6 +110,91 @@ class ContentSelectionIntegrationTest {
         lifecycle.deleteConfirmed(A, A);
         assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM learner_content_selection WHERE learner_id = ?", Long.class, A)).isZero();
         assertThat(learners.existsById(B)).isTrue();
+    }
+
+    @Test void ordinaryCockpitHttpSettingIsRevisionSafeAndProfileLocalWithoutAdditionalCredentials() throws Exception {
+        String first = "content-http-first";
+        String second = "content-http-second";
+        for (String id : List.of(first, second)) {
+            Learner learner = new Learner(); learner.setSkillpilotId(id);
+            learners.saveAndFlush(learner);
+        }
+        MockMvc mvc = http();
+        String selectedBody = "{\"expectedRevision\":0,\"selectedPackageIds\":[\"" + PACKAGE + "\"]}";
+        mvc.perform(put("/api/ui/learners/{id}/content-selection", first)
+                        .contentType(MediaType.APPLICATION_JSON).content(selectedBody))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.revision").value(1));
+        mvc.perform(get("/api/ui/learners/{id}/content-selection", first))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.selectedPackageIds[0]").value(PACKAGE));
+        mvc.perform(get("/api/ui/learners/{id}/content-selection", second))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.selectedPackageIds").isEmpty());
+        var firstActivity = learners.findById(first).orElseThrow().getLastActivityAt();
+
+        // Stale tabs and invalid package IDs do not overwrite preferences or record activity.
+        mvc.perform(put("/api/ui/learners/{id}/content-selection", first)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"expectedRevision\":0,\"selectedPackageIds\":[]}"))
+                .andExpect(status().isConflict());
+        mvc.perform(put("/api/ui/learners/{id}/content-selection", first)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"expectedRevision\":1,\"selectedPackageIds\":[\"unknown\"]}"))
+                .andExpect(status().isBadRequest());
+        assertThat(selections.selection(first)).isEqualTo(new ContentSelectionService.Selection(1, Set.of(PACKAGE)));
+        assertThat(learners.findById(first).orElseThrow().getLastActivityAt()).isEqualTo(firstActivity);
+        assertThat(learners.findById(first).orElseThrow().getCoachStateRevision()).isEqualTo(1);
+
+        // A second known SkillPilot ID uses the same normal setting, without provisioning.
+        mvc.perform(put("/api/ui/learners/{id}/content-selection", second)
+                        .contentType(MediaType.APPLICATION_JSON).content(selectedBody))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.revision").value(1));
+        mvc.perform(put("/api/ui/learners/{id}/content-selection", first)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"expectedRevision\":1,\"selectedPackageIds\":[]}"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.revision").value(2))
+                .andExpect(jsonPath("$.selectedPackageIds").isEmpty());
+        assertThat(selections.selectedPackageIds(second)).containsExactly(PACKAGE);
+        lifecycle.deleteConfirmed(first, first);
+        lifecycle.deleteConfirmed(second, second);
+    }
+
+    @Test void ordinaryAccessGuardsRejectMissingDeletedDerivedAndRetiredProfiles() throws Exception {
+        String deleted = "content-http-deleted";
+        Learner learner = new Learner(); learner.setSkillpilotId(deleted);
+        learners.saveAndFlush(learner);
+        selections.update(deleted, 0, List.of(PACKAGE));
+        lifecycle.deleteConfirmed(deleted, deleted);
+        MockMvc mvc = http();
+        for (String id : List.of("content-http-missing", deleted, "sps_" + "a".repeat(43))) {
+            mvc.perform(get("/api/ui/learners/{id}/content-selection", id))
+                    .andExpect(status().isNotFound());
+            mvc.perform(get("/api/ui/learners/{id}/content-materials", id).queryParam("goalId", GOAL))
+                    .andExpect(status().isNotFound());
+            mvc.perform(put("/api/ui/learners/{id}/content-selection", id)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content("{\"expectedRevision\":0,\"selectedPackageIds\":[\"" + PACKAGE + "\"]}"))
+                    .andExpect(status().isNotFound());
+            assertThat(learners.existsById(id)).isFalse();
+            assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM learner_content_selection WHERE learner_id = ?",
+                    Long.class, id)).isZero();
+        }
+
+        String retiredId = "content-http-retired";
+        Learner retired = new Learner(); retired.setSkillpilotId(retiredId);
+        retired.setSelectedCurriculum("c1600692-e543-5cf2-a399-6bd96e6b817f");
+        learners.saveAndFlush(retired);
+        var activityBefore = learners.findById(retiredId).orElseThrow().getLastActivityAt();
+        mvc.perform(get("/api/ui/learners/{id}/content-selection", retiredId))
+                .andExpect(status().isConflict());
+        mvc.perform(get("/api/ui/learners/{id}/content-materials", retiredId).queryParam("goalId", GOAL))
+                .andExpect(status().isConflict());
+        mvc.perform(put("/api/ui/learners/{id}/content-selection", retiredId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"expectedRevision\":0,\"selectedPackageIds\":[\"" + PACKAGE + "\"]}"))
+                .andExpect(status().isConflict());
+        assertThat(selections.selection(retiredId)).isEqualTo(new ContentSelectionService.Selection(0, Set.of()));
+        assertThat(learners.findById(retiredId).orElseThrow().getLastActivityAt()).isEqualTo(activityBefore);
+        assertThat(learners.findById(retiredId).orElseThrow().getCoachStateRevision()).isZero();
+        lifecycle.deleteConfirmed(retiredId, retiredId);
     }
 
     @Test void failedOptionalSqlLookupCannotRollBackTheOuterLearningTransaction() {

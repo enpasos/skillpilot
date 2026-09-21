@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   ContentMaterialsApiError,
   getContentSelection,
@@ -13,18 +13,16 @@ interface Props {
   onSaved: () => void
 }
 
-// Remount on identity/language changes: pending responses and in-memory credentials
-// can never migrate to the next learner. Nothing is written to browser storage.
+// Remount on identity/language changes so pending responses and unsaved choices
+// can never migrate to the next learner. The selection is stored by the backend.
 export const MaterialSelectionPanel = (props: Props) => (
   <ScopedMaterialSelectionPanel key={`${props.skillpilotId}:${props.language}`} {...props} />
 )
 
 const ScopedMaterialSelectionPanel = ({ skillpilotId, language, onSaved }: Props) => {
   const de = language === 'de'
-  const inputId = useId()
   const [selection, setSelection] = useState<ContentSelection | null>(null)
   const [selected, setSelected] = useState<string[]>([])
-  const [capability, setCapability] = useState('')
   const [message, setMessage] = useState('')
   const [busy, setBusy] = useState(false)
   const [unavailable, setUnavailable] = useState(false)
@@ -42,7 +40,7 @@ const ScopedMaterialSelectionPanel = ({ skillpilotId, language, onSaved }: Props
         setSelected(value.selectedPackageIds)
       })
       .catch(() => {
-        // This optional pilot never blocks the learning view, including when disabled.
+        // Optional materials never block the learning view, including when disabled.
       })
     return () => {
       alive.current = false
@@ -53,14 +51,14 @@ const ScopedMaterialSelectionPanel = ({ skillpilotId, language, onSaved }: Props
 
   const save = async (event: React.FormEvent) => {
     event.preventDefault()
-    if (!selection || saving.current || !capability.trim()) return
+    if (!selection || saving.current) return
     saving.current = true
     setBusy(true)
     setMessage('')
     const controller = new AbortController()
     saveController.current = controller
     try {
-      const next = await saveContentSelection(skillpilotId, language, selection.revision, selected, capability, {
+      const next = await saveContentSelection(skillpilotId, language, selection.revision, selected, {
         signal: controller.signal,
       })
       if (!alive.current || controller.signal.aborted) return
@@ -72,8 +70,6 @@ const ScopedMaterialSelectionPanel = ({ skillpilotId, language, onSaved }: Props
       if (!alive.current || controller.signal.aborted) return
       if (error instanceof ContentMaterialsApiError && error.status === 404) {
         setUnavailable(true)
-      } else if (error instanceof ContentMaterialsApiError && error.status === 403) {
-        setMessage(de ? 'Der Freigabeschlüssel passt nicht zu dieser SkillPilot-ID.' : 'The access key does not match this SkillPilot ID.')
       } else if (error instanceof ContentMaterialsApiError && error.status === 409) {
         // A conflict reloads current server data; it never retries the write automatically.
         try {
@@ -92,7 +88,6 @@ const ScopedMaterialSelectionPanel = ({ skillpilotId, language, onSaved }: Props
       saving.current = false
       if (alive.current) {
         setBusy(false)
-        setCapability('')
       }
     }
   }
@@ -102,10 +97,7 @@ const ScopedMaterialSelectionPanel = ({ skillpilotId, language, onSaved }: Props
   const retiredPackageIds = selection.selectedPackageIds.filter((id) => !availablePackageIds.has(id))
 
   return (
-    <details
-      className="mb-6 w-full max-w-3xl rounded-xl border border-border-color bg-sidebar-bg p-4 text-sm"
-      onToggle={(event) => { if (!event.currentTarget.open) setCapability('') }}
-    >
+    <details className="mb-6 w-full max-w-3xl rounded-xl border border-border-color bg-sidebar-bg p-4 text-sm">
       <summary className="min-h-11 cursor-pointer py-3 font-semibold text-text-primary">
         {de ? 'Zusätzliche Lernmaterialien' : 'Additional learning materials'}
         <span className="ml-2 font-normal text-text-secondary">({selection.selectedPackageIds.filter((id) => availablePackageIds.has(id)).length} {de ? 'aktiv' : 'active'})</span>
@@ -173,27 +165,7 @@ const ScopedMaterialSelectionPanel = ({ skillpilotId, language, onSaved }: Props
             ? 'Externe Seiten öffnen sich erst, wenn du einen Materiallink anklickst. Dann gelten die Datenschutz- und Zugangsbedingungen des Anbieters.'
             : 'External pages open only when you click a material link. The provider’s privacy and access terms then apply.'}
         </p>
-        <div>
-          <label htmlFor={inputId} className="mb-1 block font-medium">{de ? 'Freigabeschlüssel für die Materialauswahl' : 'Access key for material selection'}</label>
-          <input
-            id={inputId}
-            type="password"
-            value={capability}
-            onChange={(event) => setCapability(event.target.value)}
-            disabled={busy}
-            autoComplete="off"
-            spellCheck={false}
-            maxLength={256}
-            aria-describedby={`${inputId}-help`}
-            className="min-h-11 w-full rounded-lg border border-border-color bg-chat-bg px-3 py-2"
-          />
-          <p id={`${inputId}-help`} className="mt-2 text-xs text-text-secondary">
-            {de
-              ? 'Für diesen Pilot erhältst du den Schlüssel von SkillPilot. Er bleibt nur während der Eingabe im Arbeitsspeicher und wird nach dem Speichern oder Schließen des Bereichs verworfen.'
-              : 'SkillPilot provides this key for the pilot. It stays in memory only while you enter it and is cleared after saving or closing this section.'}
-          </p>
-        </div>
-        <button type="submit" disabled={busy || !capability.trim()} className="min-h-11 rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50">
+        <button type="submit" disabled={busy} className="min-h-11 rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50">
           {busy ? (de ? 'Speichern …' : 'Saving …') : (de ? 'Materialauswahl speichern' : 'Save material selection')}
         </button>
         {message && <p role="status" className="text-text-secondary">{message}</p>}
