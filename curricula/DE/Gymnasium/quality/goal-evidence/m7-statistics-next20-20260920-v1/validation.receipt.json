@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "artifactSetId": "m7-statistics-next20-20260920-v1",
+  "status": "ai_candidate",
+  "humanApproved": false,
+  "actualCompletedAt": "2026-09-20T20:04:43Z",
+  "counts": {
+    "goals": 20,
+    "profiles": 20,
+    "bilingualCases": 40,
+    "actualRasterInspections": 20,
+    "correction_required": 11,
+    "accept_current_asset": 8,
+    "needs_external_review": 1
+  },
+  "nativeChecks": [
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/materializePositiveGoalEvidenceCandidates.ts --config curricula/DE/Gymnasium/quality/goal-evidence/m7-statistics-next20-20260920-v1/positive-evidence.config.json --candidates curricula/DE/Gymnasium/quality/goal-evidence/m7-statistics-next20-20260920-v1/positive-evidence.candidates.json",
+      "exitCode": 0,
+      "output": "Verified curricula/DE/Gymnasium/quality/goal-evidence/m7-statistics-next20-20260920-v1/positive-evidence.review.jsonl: 20 current AI candidate profile(s).\n"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/m7-statistics-next20-20260920-v1/positive-evidence.config.json --mode=check",
+      "exitCode": 0,
+      "output": "# Positive Goal Evidence Review: canonical-math-positive-evidence-m7-statistics-next20-20260920-v1\nScope: Twenty subsequent statistics goals; independent P authoring candidates only, not approvals\nConfigured goals: 20\nApproved: 0\nNeeds human review: 20\nRejected: 0\nBlocking issues: 0\n"
+    }
+  ],
+  "boundedVerification": {
+    "actualCheckedAt": "2026-09-20T20:04:22.136Z",
+    "verificationScope": "Only these 20 candidates, current canonical/asset bindings, direct registry membership and 40 case-specific arithmetic/logical checks; no full QS, no learner execution or approval.",
+    "unchangedGoalSnapshots": 20,
+    "unchangedRasterAssets": 20,
+    "currentCurricularAtomic": 20,
+    "unregisteredDescriptionGoals": 20,
+    "unregisteredPositiveEvidenceGoals": 20,
+    "soleInFlightReservation": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-statistics-next20-v1.config.json",
+    "checkedCases": 40,
+    "caseChecks": [
+      {
+        "goalId": "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+        "caseId": "coin-rejection",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+        "caseId": "reliability-nonrejection",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+        "caseId": "directed-claims",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+        "caseId": "two-sided-and-recoding",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "eb2cecd6-5dca-5a2e-988b-a29b24c20345",
+        "caseId": "germinating-seeds",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "eb2cecd6-5dca-5a2e-988b-a29b24c20345",
+        "caseId": "complement-count",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "677be619-5f0a-59bf-9730-0071c7d3f150",
+        "caseId": "right-critical",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "677be619-5f0a-59bf-9730-0071c7d3f150",
+        "caseId": "two-sided-critical",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+        "caseId": "right-error",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+        "caseId": "left-error",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "4b58b855-cd26-538c-8e6f-304f4cfd8ad6",
+        "caseId": "protect-standard",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "4b58b855-cd26-538c-8e6f-304f4cfd8ad6",
+        "caseId": "protect-poor-quality",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+        "caseId": "defect-increase",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+        "caseId": "failure-reduction",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+        "caseId": "graph-complements",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+        "caseId": "level-and-size",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "03357e70-2280-532f-b629-5dfa31dc44eb",
+        "caseId": "level-constrained-comparison",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "03357e70-2280-532f-b629-5dfa31dc44eb",
+        "caseId": "cost-sensitive-comparison",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "f85419c4-63ac-5d6d-b73b-fcb12a0ff89f",
+        "caseId": "large-sample-prediction",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "f85419c4-63ac-5d6d-b73b-fcb12a0ff89f",
+        "caseId": "sample-size-and-validity",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+        "caseId": "central-proportion",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+        "caseId": "near-boundary-proportion",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "aa14d9e4-5790-5d94-a245-2ff9a70bf633",
+        "caseId": "repeated-coverage",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "aa14d9e4-5790-5d94-a245-2ff9a70bf633",
+        "caseId": "single-and-selected-interval",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+        "caseId": "sample-size-slices",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+        "caseId": "confidence-and-location",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "410221ed-540c-5daf-8c42-d8dd12e9100a",
+        "caseId": "conservative-planning",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "410221ed-540c-5daf-8c42-d8dd12e9100a",
+        "caseId": "anticipated-versus-safe",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+        "caseId": "waiting-times",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+        "caseId": "category-demand",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "e402f330-8ac6-525f-b3ff-bc4be229d131",
+        "caseId": "equal-mean-different-spread",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "e402f330-8ac6-525f-b3ff-bc4be229d131",
+        "caseId": "shift-and-rescale",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "84069c5e-5526-57c1-9417-a886ccfd3f66",
+        "caseId": "near-binomial-shape",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "84069c5e-5526-57c1-9417-a886ccfd3f66",
+        "caseId": "same-mean-wrong-shape",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "e02976ad-71fc-5929-b764-df7630269c47",
+        "caseId": "twenty-tosses",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "e02976ad-71fc-5929-b764-df7630269c47",
+        "caseId": "paired-draws",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "83a5546e-0ea6-576e-83e2-3387b30872bb",
+        "caseId": "transport-categories",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "83a5546e-0ea6-576e-83e2-3387b30872bb",
+        "caseId": "measurement-classes",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+        "caseId": "dispensing-comparison",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      },
+      {
+        "goalId": "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+        "caseId": "two-toss-frequency-data",
+        "result": "passed",
+        "meaning": "Arithmetic or finite logical consistency only; not learner evidence or independent approval"
+      }
+    ],
+    "currentRegistrySha256": "sha256:3cf04c7fff5172840181095900d53ec0ecb49027b69f78872eeb02d240936c46",
+    "currentInFlightSha256": "sha256:95cfefbbb0b8256c053cd5c0a6784f3262735eeeaad0e3678a91d9f66a9f83d7"
+  },
+  "artifactSha256": {
+    "scope.candidate.json": "sha256:465f1baf624506706abee6e14927af3dcf6701a693857e2b66cc4403dd407279",
+    "positive-evidence.config.json": "sha256:ebc3f7e7621df6219eab4bf8d6abf954201d29495b5d4328cc03664f325c54e8",
+    "positive-evidence.candidates.json": "sha256:6b1248e2bcf658f77de8c71037a36765d524dbd52218b66113208acdb5675b4b",
+    "positive-evidence.review.jsonl": "sha256:4868acabc4a82f2b10c1f439feef7afdb16be08c6607561abbc4476c1a2ade5f",
+    "visualization.candidate-review.json": "sha256:b2e94ab8caee1e5f130edd9b5708223d953fe8a9c542386a1731b3faba744ed5",
+    "verify-author-arithmetic.mjs": "sha256:81e05d51eb4df3893b8481c57fe359d7799aa7cef10daf203662af36fa1e2c18"
+  },
+  "limitations": [
+    "Author-generated E1/G1 profiles are not independent QS, native approval, learner demonstrations or human decisions.",
+    "All raster findings are candidate findings. The theta1/theta2 confidence ellipse needs curricular-source clarification before replacement is specified.",
+    "No canonical curriculum, central QA ledger, description results, registry, in-flight ledger or image asset was edited by this authoring pass.",
+    "No full selector, full curriculum QA, maturity run, image generation or import was performed."
+  ]
+}

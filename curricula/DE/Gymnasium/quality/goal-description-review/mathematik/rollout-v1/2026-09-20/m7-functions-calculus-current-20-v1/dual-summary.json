@@ -1,0 +1,391 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e8d5d6b0f52e81a8d269efd0b20357d87dd01136f3d890991332ac7ca6bc9f73",
+  "reviewInputFingerprint": "sha256:85edb443deb10002b12967208948a1ffefb5e71fa29db22bfbd8ee0c39471fb1",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-functions-calculus-current-20-v1-20260920-a",
+      "roundId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-functions-calculus-current-20-v1-20260920-independent-a",
+      "runIds": [
+        "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-functions-calculus-current-20-v1-20260920-b",
+      "roundId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-functions-calculus-current-20-v1-20260920-independent-b",
+      "runIds": [
+        "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (session-declared; exact runtime identifier unavailable)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "71683f37-24de-4e0f-badd-858b56fa4d64",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-001",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-001",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-002",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-002",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-003",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-003",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-004",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-004",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-005",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-005",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-006",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-006",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "91311908-9209-58e4-8429-99dad9df546d",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-007",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-007",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-008",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-008",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-009",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-009",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5fe4218e-4fb0-5339-8764-c989befa244e",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-010",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-010",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "58fda9b4-4336-5594-99ce-722c4a453372",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-011",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-011",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-012",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-012",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-013",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-013",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-014",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-014",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-015",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-015",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "34604a97-0c64-5b06-81e2-6ac818732d60",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-016",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-016",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-017",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-017",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c0e34fa8-fde5-5a4e-9b84-c5d5db719b58",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-018",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-018",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "972cc7e8-be9c-444c-ba45-98e817b3cf14",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-019",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-019",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "firstRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-020",
+      "secondRecordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-020",
+      "firstRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "secondRunId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

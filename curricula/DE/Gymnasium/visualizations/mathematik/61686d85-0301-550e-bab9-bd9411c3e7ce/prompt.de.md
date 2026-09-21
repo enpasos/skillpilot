@@ -8,54 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `61686d85-0301-550e-bab9-bd9411c3e7ce.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/61686d85-0301-550e-bab9-bd9411c3e7ce/61686d85-0301-550e-bab9-bd9411c3e7ce.jpg`
+- Quellbild: `61686d85-0301-550e-bab9-bd9411c3e7ce.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/61686d85-0301-550e-bab9-bd9411c3e7ce/61686d85-0301-550e-bab9-bd9411c3e7ce.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Einfache gebrochen rationale Funktionen untersuchen
-Beschreibung: Die lernende Person kann grundlegende Eigenschaften einfacher gebrochen rationaler Funktionen der Form $f(x)=\frac{1}{x^n}$ beschreiben, Definitions- und Wertemenge sowie Graphenmerkmale angeben und das Verhalten an Polstellen und im Unendlichen deuten.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Einfache gebrochen rationale Funktionen der Form f(x)=1/x^n untersuchen.
-- Zeige zwei klare Paneele:
-  1. f(x)=1/x.
-  2. g(x)=1/x^2.
-- Fuer f(x)=1/x:
-  Definitionsmenge D=R\\{0}.
-  Wertemenge W=R\\{0}.
-  Asymptoten x=0 und y=0.
-  Zwei Aeste in Quadrant I und III.
-  Punktepaar (1,1) und (-1,-1).
-- Fuer g(x)=1/x^2:
-  Definitionsmenge D=R\\{0}.
-  Wertemenge W=(0,infty).
-  Asymptoten x=0 und y=0.
-  Zwei positive Aeste in Quadrant I und II.
-  Punktepaar (1,1) und (-1,1).
-- Deutung:
-  An der Polstelle x=0 werden die Funktionswerte betragsmaessig sehr gross; fuer |x| -> infinity gehen die Werte gegen 0.
-
-Vermeiden:
-- Nicht einen y-Wert bei x=0 einzeichnen; x=0 ist nicht definiert.
-- Nicht 1/x^2 unterhalb der x-Achse zeichnen.
-- Nicht die Aeste von 1/x in Quadrant II und IV zeichnen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Correct only the right 1/x² graph of the attached friendly blue educational comic. Keep the left 1/x graph, all formulas, texts, colors and composition unchanged. PNG. On the right remove all x-axis number labels and tick marks except the origin, and remove both (±2,0.25) point labels AND their dots. Keep the two correctly located points P(-1,1), P(1,1) and the y-axis label1 exactly at their common height. The negative point is LEFT of the y-axis and the positive point RIGHT at symmetric horizontal distance. Do NOT put a positive1 on the negative x-axis. Keep the blue dashed asymptotes. Draw one symmetric red 1/x² curve through the two marked points and decaying rapidly toward y=0: at twice the distance from the vertical axis its height is1/4 of that of the marked point; at four times distance1/16. Do not label those auxiliary points. No additional markers, graph grids, arrows crossing point labels or extra content.
 ```
 
 ## Review-Notiz

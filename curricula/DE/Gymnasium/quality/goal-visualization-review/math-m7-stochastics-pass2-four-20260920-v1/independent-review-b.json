@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "codex-independent-visual-review-b",
+  "actualReviewedAt": "2026-09-20 19:57:41 UTC",
+  "classification": "ai_review",
+  "humanApproved": false,
+  "inputPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/candidate-manifest.json",
+  "inputSha256": "sha256:fa171a61cb30a7fd916d9f9c7489be1f5e859abe1f6e130671f3946c1ff96853",
+  "scope": "Exactly four corrected raster candidates, current canonical goal descriptions; no authorChecks, previousQa, author rationale or other reviewer decisions read.",
+  "method": {
+    "actualRastersInspectedWith": "view_image",
+    "independentReview": true,
+    "keepStandard": true,
+    "noGeneration": true,
+    "noImports": true,
+    "noQaRegistryChanges": true,
+    "uiRenderingTested": false
+  },
+  "counts": {
+    "inspected": 4,
+    "accept_current_asset": 2,
+    "correction_required": 2
+  },
+  "records": [
+    {
+      "goalId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/3e974075-b2fd-43e6-88d9-5f596ad053ec/candidate-v1.png",
+      "candidateSha256": "sha256:5885a835c6da43fcf99f2c76616bc72ab05a5b9342620c9ecf19dd223750a68b",
+      "actualCandidateSha256": "sha256:5885a835c6da43fcf99f2c76616bc72ab05a5b9342620c9ecf19dd223750a68b",
+      "goal": {
+        "id": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+        "title": "Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen",
+        "titleEn": "Critically examine data-based claims using conditional probabilities",
+        "description": "Die lernende Person kann aus Daten abgeleitete Aussagen kritisch prüfen, indem sie Stichprobenumfang und -zusammensetzung, Veränderungen bedingter Wahrscheinlichkeiten in relevanten Teilmengen, Basisrateneffekte, Art der Datenerhebung und Fragestellung berücksichtigt sowie Korrelation und Kausalität unterscheidet.",
+        "descriptionEn": "The learner can critically examine claims derived from data by considering sample size and composition, changes in conditional probabilities across relevant subsets, base-rate effects, data-collection methods and framing, and by distinguishing correlation from causation."
+      },
+      "assetSha256": "sha256:5885a835c6da43fcf99f2c76616bc72ab05a5b9342620c9ecf19dd223750a68b",
+      "inspected": true,
+      "actualReviewedAt": "2026-09-20 19:57:41 UTC",
+      "humanApproved": false,
+      "aiApproved": "yes",
+      "reviewStatus": "accepted_pilot_after_regeneration",
+      "decision": "accept_current_asset",
+      "checks": [
+        {
+          "check": "Bedingte Wahrscheinlichkeiten",
+          "result": "pass",
+          "evidence": "P(A|B) und P(B|A) nicht verwechseln ist korrekt; es wird keine allgemein falsche strikte Ungleichheit mehr behauptet. Gleichheit in Sonderfällen wird nicht ausgeschlossen."
+        },
+        {
+          "check": "Stichprobe und Erhebungsmethode",
+          "result": "pass",
+          "evidence": "Unterschiedliche Gruppengrößen/-zusammensetzungen und suggestive gegenüber offenen Fragen visualisieren passende Einflussgrößen ohne erfundene Kennzahlen."
+        },
+        {
+          "check": "Korrelation und Kausalität",
+          "result": "pass",
+          "evidence": "Der Text unterscheidet Zusammenhang von Ursache. C mit Pfeilen zu A und B illustriert einen möglichen gemeinsamen Einfluss; das Stoppsymbol warnt vor dem unzulässigen direkten Kausalschluss."
+        },
+        {
+          "check": "Teilmenge und Basisrate",
+          "result": "pass",
+          "evidence": "Der Teilmengenkreis liegt vollständig in der Grundmenge. Ohne bezifferte Kreisflächen wird keine quantitative Wahrscheinlichkeit suggeriert."
+        },
+        {
+          "check": "Ziel- und Darstellungsfit",
+          "result": "pass",
+          "evidence": "Freundliche Prüfszene, lesbare Beschriftung und vier sachliche Prüfperspektiven passen zum aktuellen Ziel. Das Bild muss keine vollständige kritische Datenanalyse als Aufgabe durchführen."
+        }
+      ],
+      "findings": [],
+      "rationale": "Die überarbeiteten Kernaussagen sind korrekt und die illustrative Darstellung führt keine relevante neue Fehlvorstellung ein."
+    },
+    {
+      "goalId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/7d41b805-0fd8-5ac3-980d-79112a27c1b4/candidate-v1.png",
+      "candidateSha256": "sha256:2b136412c7f8a6e6738beae4a4854ee271ac50139a8d68fb881eb0a64b8c58ed",
+      "actualCandidateSha256": "sha256:2b136412c7f8a6e6738beae4a4854ee271ac50139a8d68fb881eb0a64b8c58ed",
+      "goal": {
+        "id": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+        "title": "Kenngrößen binomialverteilter Zufallsgrößen",
+        "titleEn": "Characteristic values of binomially distributed random variables",
+        "description": "Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert, Varianz und Standardabweichung berechnen und diese mit der zugrunde liegenden Bernoulli-Situation in Beziehung setzen.",
+        "descriptionEn": "The learner can calculate expected value, variance, and standard deviation for binomial distributed random variables and relate them to the underlying Bernoulli situation."
+      },
+      "assetSha256": "sha256:2b136412c7f8a6e6738beae4a4854ee271ac50139a8d68fb881eb0a64b8c58ed",
+      "inspected": true,
+      "actualReviewedAt": "2026-09-20 19:57:41 UTC",
+      "humanApproved": false,
+      "aiApproved": "yes",
+      "reviewStatus": "accepted_pilot_after_regeneration",
+      "decision": "accept_current_asset",
+      "checks": [
+        {
+          "check": "Bernoulli-Bindung",
+          "result": "pass",
+          "evidence": "Unabhängige n-fache Wiederholung und konstantes p werden ausdrücklich genannt; Erfolg p=0,25 und Misserfolg 0,75 ergänzen sich zu 1. Der Viertelsektor passt zu p."
+        },
+        {
+          "check": "Zahlen und Formeln",
+          "result": "pass",
+          "evidence": "Die sichtbare Münzenanordnung enthält 4×4=16 Münzen. Für n=16,p=0,25 stimmen μ=4, Var(X)=3, σ=√3≈1,73, μ−σ≈2,27 und μ+σ≈5,73 sowie σ/μ≈0,43."
+        },
+        {
+          "check": "Darstellungsgrenze der Glocke",
+          "result": "pass_with_explicit_limit",
+          "evidence": "Die Grafik ist sichtbar als Streuungsskizze (schematisch), Kein exaktes Binomialdiagramm beschriftet. Sie veranschaulicht nur μ und gleiche σ-Abstände, nicht eine stetige oder symmetrische exakte Binomialverteilung."
+        },
+        {
+          "check": "Ziel- und Darstellungsfit",
+          "result": "pass",
+          "evidence": "Kenngrößen und Bernoulli-Situation sind sichtbar miteinander verbunden. Der illustrative Münzwurf verlangt bei explizit vorgegebenem p=0,25 keine stillschweigende Fairnessannahme."
+        }
+      ],
+      "findings": [],
+      "rationale": "Rechenwerte und Beziehung der Kenngrößen stimmen. Die fachlich relevante Grenze der glatten Kurve ist unmittelbar im Bild offengelegt; kein zusätzlicher vollständiger Verteilungsnachweis ist erforderlich."
+    },
+    {
+      "goalId": "42d300e3-e982-5889-98d7-fc297f10eff1",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/42d300e3-e982-5889-98d7-fc297f10eff1/candidate-v1.png",
+      "candidateSha256": "sha256:352872d6eac2c0f62666b7fd74552cfcab97bada2226c5339b047e6dff4f9456",
+      "actualCandidateSha256": "sha256:352872d6eac2c0f62666b7fd74552cfcab97bada2226c5339b047e6dff4f9456",
+      "goal": {
+        "id": "42d300e3-e982-5889-98d7-fc297f10eff1",
+        "title": "Einfluss von n und p auf Binomialverteilungen analysieren",
+        "titleEn": "Analyze the influence of n and p on binomial distributions",
+        "description": "Die lernende Person kann anhand von Histogrammen untersuchen, wie sich die Parameter n und p auf Lage, Streuung und Symmetrie binomialverteilter Zufallsgrößen auswirken, und entsprechende Vergleiche an Beispielen begründen.",
+        "descriptionEn": "The learner can use histograms to analyze how parameters n and p affect location, spread, and symmetry of binomial distributions and justify comparisons with examples."
+      },
+      "assetSha256": "sha256:352872d6eac2c0f62666b7fd74552cfcab97bada2226c5339b047e6dff4f9456",
+      "inspected": true,
+      "actualReviewedAt": "2026-09-20 19:57:41 UTC",
+      "humanApproved": false,
+      "aiApproved": "no",
+      "reviewStatus": "rejected_regenerate",
+      "decision": "correction_required",
+      "checks": [
+        {
+          "check": "Qualitative Parameteraussagen",
+          "result": "pass",
+          "evidence": "Für n=4 ergeben p=0,25 und p=0,75 die Mittelwerte 1 und 3 sowie dieselbe Varianz 0,75. Spiegelung der Form ist korrekt. Bei p=0,5 und n=4 bzw. 8 sind μ=2 bzw. 4 und σ=1 bzw. √2 richtig; σ/n sinkt."
+        },
+        {
+          "check": "Träger und Symmetrie",
+          "result": "pass",
+          "evidence": "Die dargestellten Träger k=0..4 bzw. 0..8 sowie Symmetriezentren 2 und 4 sind passend."
+        },
+        {
+          "check": "Balkenverhältnisse konkreter Binomialverteilungen",
+          "result": "fail",
+          "evidence": "Im unteren linken n=4,p=0,5-Histogramm sind die Randbalken visuell etwa 30% des Mittelbalkens hoch. Die korrekte Höhenrelation ist 1:4:6:4:1, also Rand/Mitte=1/6≈16,7%. Rechts für n=8,p=0,5 sind die Randbalken ebenfalls merklich überhöht gegenüber der korrekten Relation 1:8:28:56:70:56:28:8:1. Es gibt keine Kennzeichnung als nicht maßstäbliche qualitative Skizzen."
+        },
+        {
+          "check": "Didaktische Passung",
+          "result": "fail",
+          "evidence": "Das Ziel betrifft gerade Lage und Streuung anhand von Histogrammen. Die überhöhten Randmassen lassen eine größere Streuung der angegebenen konkreten Verteilungen erkennen, als deren Parameter rechtfertigen; korrekte Textformeln heben diesen Darstellungsfehler nicht auf."
+        }
+      ],
+      "findings": [
+        {
+          "severity": "substantive",
+          "code": "binomial_bar_ratios_mismatch",
+          "location": "untere beide Histogramme, besonders n=4,p=0,5",
+          "finding": "Die gezeichneten relativen Balkenhöhen stimmen deutlich nicht mit den bezeichneten konkreten Binomialverteilungen überein.",
+          "requiredCorrection": "Balkenhöhen aus den konkreten Binomialwahrscheinlichkeiten ableiten und mit einheitlicher vertikaler Skalierung innerhalb jedes Histogramms zeichnen; insbesondere unten links 1:4:6:4:1 und unten rechts 1:8:28:56:70:56:28:8:1. Die korrekten qualitativen Parameteraussagen können bleiben."
+        }
+      ],
+      "rationale": "Nicht die vollständige Kompetenzabdeckung, sondern die falsche quantitativ gebundene Darstellung ist der Korrekturgrund. Symmetrie und Mittelwerte allein genügen bei diesen als konkrete Histogramme benannten Grafiken nicht."
+    },
+    {
+      "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/455ef29a-7194-5c5a-b832-1c27fcbf2516/candidate-v1.png",
+      "candidateSha256": "sha256:ecc5c3f9a89438e8f8fd31ea0c6ac8cb58f87934c82e03463add33439be1592a",
+      "actualCandidateSha256": "sha256:ecc5c3f9a89438e8f8fd31ea0c6ac8cb58f87934c82e03463add33439be1592a",
+      "goal": {
+        "id": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+        "title": "Weitere stetige Verteilungen exemplarisch nutzen (LK)",
+        "titleEn": "Use further continuous distributions through examples (advanced course)",
+        "description": "Die lernende Person kann eine weitere stetige Verteilung, zum Beispiel die Exponentialverteilung als Modell für Wartezeiten oder Zuverlässigkeitssituationen, exemplarisch verwenden, zugehörige Wahrscheinlichkeiten bestimmen und zentrale Modelleigenschaften im Kontext erläutern.",
+        "descriptionEn": "The learner can use another continuous distribution through an example, such as the exponential distribution as a model for waiting-time or reliability situations, determine associated probabilities, and explain key model properties in context."
+      },
+      "assetSha256": "sha256:ecc5c3f9a89438e8f8fd31ea0c6ac8cb58f87934c82e03463add33439be1592a",
+      "inspected": true,
+      "actualReviewedAt": "2026-09-20 19:57:41 UTC",
+      "humanApproved": false,
+      "aiApproved": "no",
+      "reviewStatus": "rejected_regenerate",
+      "decision": "correction_required",
+      "checks": [
+        {
+          "check": "Dichte und Träger",
+          "result": "pass",
+          "evidence": "f(t)=λe^(−λt) für t≥0, λ>0 ist die korrekte Exponentialdichte; die Kurve fällt gegen null."
+        },
+        {
+          "check": "Wahrscheinlichkeit als Fläche",
+          "result": "pass",
+          "evidence": "Die Schattierung liegt unter der Kurve ausschließlich zwischen den mit 2 und 5 beschrifteten Markierungen. P(2≤T≤5) wird korrekt als Fläche statt als Kurvenhöhe erklärt."
+        },
+        {
+          "check": "Kontext und Modellgrenze",
+          "result": "pass",
+          "evidence": "Buswartezeit wird ausdrücklich als Modellbeispiel ohne festen Fahrplan eingegrenzt; die genannte Unabhängigkeit der Restwartezeit von der bisherigen Wartezeit beschreibt die Gedächtnislosigkeit sachgerecht."
+        },
+        {
+          "check": "Beschriftete Zeitachse",
+          "result": "fail",
+          "evidence": "Die numerische Minutenachse markiert 0,2,5,8. Das Intervall 2→5 ist sichtbar deutlich breiter als 5→8, obwohl beide drei Minuten bedeuten; es gibt weder Skalenbruch noch nichtlineare Achsenkennzeichnung."
+        },
+        {
+          "check": "Ziel- und Darstellungsfit",
+          "result": "pass",
+          "evidence": "Wartekontext, Dichtekurve und schattierte Intervallwahrscheinlichkeit sind für das Beispielziel geeignet; eine vollständige numerische Integralrechnung ist in diesem Orientierungsbild nicht erforderlich."
+        }
+      ],
+      "findings": [
+        {
+          "severity": "substantive",
+          "code": "nonuniform_numeric_time_axis",
+          "location": "Zeitachse: Markierungen 2, 5 und 8 Minuten",
+          "finding": "Gleiche numerische Zeitspannen werden unterschiedlich breit dargestellt und bilden damit keine konsistente lineare Zeitachse.",
+          "requiredCorrection": "Eine gleichmäßige Minutenachse verwenden: 0→2 zwei gleiche Einheiten, 2→5 und 5→8 jeweils drei gleiche Einheiten. Kurve und schattierte Fläche an die korrigierten Grenzen anbinden. Übrige fachlich korrekte Aussagen können unverändert bleiben."
+        }
+      ],
+      "rationale": "Das Modell und die Flächeninterpretation sind richtig. Die verbleibende falsche Zahlen-Skalen-Bindung erfordert dennoch eine begrenzte Bildkorrektur."
+    }
+  ]
+}

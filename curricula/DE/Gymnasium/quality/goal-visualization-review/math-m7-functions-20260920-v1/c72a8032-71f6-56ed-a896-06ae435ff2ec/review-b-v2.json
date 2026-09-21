@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "Candidate-v2 actual pixels inspected independently; reviewer did not create/import the image or read generator/root judgments.",
+  "reviewDate": "2026-09-20",
+  "goalId": "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-functions-20260920-v1/c72a8032-71f6-56ed-a896-06ae435ff2ec/candidate-v2.png",
+  "candidateSha256": "73cbc3e50831248046a16d138acb6311d0849c56abae928bdccb4e8007a923f4",
+  "decision": "reject_candidate",
+  "checks": [
+    "False F-double-prime chain-rule formula replaced by correct verbal rule.",
+    "Specific derivative, signs, domain, symmetry and minimum preserved; miniature false graph removed."
+  ],
+  "defects": [
+    "Endpoints explicitly labelled(±3,ln10)≈2.3 are placed at the y=2 tick height. The visible numeric scale contradicts the labelled value."
+  ],
+  "nextAction": "Targeted replacement of only graph panel with uniform x/y ticks and exact key anchor points; preserve friendly illustration and correct surrounding text.",
+  "humanApproval": false,
+  "scope": "Candidate-only review; no import or gate-completion claim."
+}

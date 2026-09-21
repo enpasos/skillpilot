@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "reviewScope": "First four current statistics correction PNG candidates only",
+  "reviewer": "/root/math_m7_post5_context9_blind_b",
+  "actualReviewedAt": "2026-09-20T20:25:07Z",
+  "reviewAuthority": "ai_candidate",
+  "humanApproved": false,
+  "independence": "Independent inspection of actual candidate rasters and current bilingual canonical goals. Generation metadata and prompts were read as task inputs; no Root or other reviewer decision was read.",
+  "policy": "AGENTS.md section 7.3 and docs/concept/skill-graph/atomic-goal-visualizations.md. KEEP standard; a visualization need not assess the whole competence.",
+  "counts": {
+    "inspected": 4,
+    "accept": 4,
+    "hold": 0
+  },
+  "records": [
+    {
+      "goalId": "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+      "title": "Argumentationsmuster von Hypothesentests erläutern",
+      "descriptionDe": "Die lernende Person kann die Grundidee eines Hypothesentests erläutern: Eine Nullhypothese wird unter Unsicherheit geprüft, ein kritischer Bereich wird festgelegt und die Entscheidung wird mit einer möglichen Irrtumswahrscheinlichkeit verbunden.",
+      "descriptionEn": "The learner can explain the basic idea of a hypothesis test: a null hypothesis is checked under uncertainty, a critical region is defined, and the decision is linked to a possible error probability.",
+      "canonicalGoalSha256": "sha256:0b086889ebfd3025003aba8eaa7fa09a82a091f8553342f628484b1c08996423",
+      "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not a native evidence fingerprint",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/candidate-v1.png",
+      "assetSha256": "sha256:3e7b360bfcb281e3552812d31d3932f01806d89fb3d7c3417fe56aa10e6730ff",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/prompt.md",
+      "promptSha256": "sha256:7427e38f29f779a13f60305f254d964ce306e4c089c70dd274d17f5b7a1ac523",
+      "generationSha256": "sha256:1ee577891c1cbee26f4205114caf2021c3edb39cae0b65aa4162dc0e117650fa",
+      "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+      "generationToolAsRecorded": "image_gen.imagegen",
+      "reviewer": "/root/math_m7_post5_context9_blind_b",
+      "actualReviewedAt": "2026-09-20T20:25:07Z",
+      "inspected": true,
+      "decision": "accept",
+      "humanApproved": false,
+      "checks": [
+        "H0:p≤0,10 und H1:p>0,10 sind komplementär im Parameterraum [0,1]; n=20 und X=Anzahl defekter Teile bilden ein plausibles Anteilstest-Szenario.",
+        "Die vier Panels trennen unsichere Nullhypothese, Planung vor den Daten, Beobachtung und Entscheidung. Die Regel X≥k ist als rechtsseitiger kritischer Bereich gekennzeichnet.",
+        "Beide Ergebnisleisten zeigen blaue Kategorien 0–4 und rote Kategorien 5,6,7,…,20. Die Auslassung ist sichtbar; es wird keine unverzerrte lineare 0-bis-20-Längenskala behauptet.",
+        "Der Beobachtungspfeil trifft die erste rote Kategorie 5, nicht eine Position nahe 10. Zähler und Beobachtung stimmen damit mit der Entscheidung überein.",
+        "Der Ja-Zweig verwirft H0 und bezeichnet die Daten als Unterstützung für H1; der Nein-Zweig lautet H0 nicht verwerfen, nicht H0 bewiesen. α wird als Typ-1-Irrtumswahrscheinlichkeit benannt.",
+        "Die Personen und Förderbandteile sind illustrative Szenen, kein vollständig ausgezähltes 20-Objekte-Datenset. Klare Comicfiguren, konsistente Blau-/Rot-Semantik und gut erkennbare Prozesspfeile passen zum Ziel."
+      ],
+      "findings": [],
+      "limitations": [
+        "Die gestrichelte Linie zwischen 4 und 5 markiert die Entscheidungsgrenze der diskreten Kategorien; aus ihrer geometrischen Lage darf kein zusätzlicher nichtganzzahliger Testwert k abgelesen werden.",
+        "α ist im fachlichen Kontext die Fehlerwahrscheinlichkeit bei wahrer Nullhypothese, keine nachträgliche Wahrscheinlichkeit dafür, dass die verworfene H0 wahr war."
+      ],
+      "rationale": "Die tatsächlichen Kategorien, Pfeile und Entscheidungsformulierungen tragen die grundlegende Argumentation des Hypothesentests korrekt. Die schematische Ereignisdarstellung behauptet keine Balkenwahrscheinlichkeiten."
+    },
+    {
+      "goalId": "eb2cecd6-5dca-5a2e-988b-a29b24c20345",
+      "title": "Testkennzahlen und Testvariablen bestimmen",
+      "descriptionDe": "Die lernende Person kann für Hypothesentests bei Anteilen eine geeignete Zufallsgröße definieren, deren Verteilung unter der Nullhypothese angeben und zu Beobachtungen passende Testkennzahlen bestimmen.",
+      "descriptionEn": "The learner can define a suitable random variable for hypothesis tests on proportions, state its distribution under the null hypothesis, and determine test statistics suitable for observations.",
+      "canonicalGoalSha256": "sha256:a632cf6c81bc36376cac09d7396af04b7ac056e50d3334cbbf3b011ca195b3f1",
+      "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not a native evidence fingerprint",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/eb2cecd6-5dca-5a2e-988b-a29b24c20345/candidate-v1.png",
+      "assetSha256": "sha256:124cdd74a7e5a5cd0648e28b4a7061c0a35b568b11e1288c827c7fece3500164",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/eb2cecd6-5dca-5a2e-988b-a29b24c20345/prompt.md",
+      "promptSha256": "sha256:7c219c0c7215ec4bd8db1b5615b425f38e9c35027fb258a3a7151ff6b30fbaa8",
+      "generationSha256": "sha256:db8c2a8f3cf333df694ec738d697a699d742d18bb43605368c98c3146b0a721f",
+      "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+      "generationToolAsRecorded": "image_gen.imagegen",
+      "reviewer": "/root/math_m7_post5_context9_blind_b",
+      "actualReviewedAt": "2026-09-20T20:25:07Z",
+      "inspected": true,
+      "decision": "accept",
+      "humanApproved": false,
+      "checks": [
+        "X zählt fehlerhafte Teile unter 20 geprüften Teilen; der beobachtete Wert ist ausdrücklich x_beob=5.",
+        "Die Beschriftung 'Am Rand von H0 (p=0,10)' bindet X~B(20;0,10) an den Randpunkt. Es wird nicht länger behauptet, dieselbe Verteilung gelte für jedes p≤0,10.",
+        "Die diskreten Zellen 0,1,2,3,4 sind blau; 5,6,7,…,20 sind rot. Die Grenze liegt explizit zwischen 4 und 5, und der Pfeil zeigt auf die Zelle 5.",
+        "Ablehnungsbereich X≥5 und H0 verwerfen folgen korrekt für die beobachtete 5. Die Ellipse kennzeichnet ausgelassene Kategorien; gleich breite Ereigniszellen sind keine Aussage über gleiche Wahrscheinlichkeiten.",
+        "Die Formeln und die beobachtete Kennzahl sind gut lesbar. Die reduzierte Kästen-/Zellen-Grafik passt zur abstrakten Variablenzuordnung. Gegen das ebenfalls tatsächlich angesehene aktive JPG geprüft: vorhandene Darstellungsform und Farbsemantik bleiben erhalten."
+      ],
+      "findings": [],
+      "limitations": [
+        "Das Bild setzt das übliche Binomialmodell der Anteilstests voraus; es dient der Variablen- und Beobachtungszuordnung und erklärt nicht sämtliche Unabhängigkeitsannahmen."
+      ],
+      "rationale": "Randverteilung, Testvariable und beobachtete Kennzahl sind fachlich sauber getrennt. Das konkrete Entscheidungsbeispiel bleibt konsistent und die bestehende präzise Darstellungsform ist angemessen."
+    },
+    {
+      "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+      "title": "Fehlerwahrscheinlichkeiten berechnen",
+      "descriptionDe": "Die lernende Person kann zu einer gegebenen Entscheidungsregel die Fehlerwahrscheinlichkeiten α und β bestimmen, auch mit digitalen Werkzeugen berechnen und rechnerisch nachvollziehen.",
+      "descriptionEn": "The learner can determine the error probabilities α and β for a given decision rule, compute them also with digital tools, and verify them numerically.",
+      "canonicalGoalSha256": "sha256:215c8a967c09dc78b441957e73d5e490bf4c45673df32388b9b40c4208a99105",
+      "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not a native evidence fingerprint",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/78bfbde4-8e16-529e-bd53-4e29d960b2b2/candidate-v1.png",
+      "assetSha256": "sha256:b045632a4ba8a64e5365f54c3e97844fb83ddd8f62f6c7028d5758bcf906779e",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/78bfbde4-8e16-529e-bd53-4e29d960b2b2/prompt.md",
+      "promptSha256": "sha256:30ad896b86cfc92218f4b6e099e053375c1ef39498ccfd998a39c40451a6daad",
+      "generationSha256": "sha256:760ad86f6625ba22e443eeb8c14dcc3843fc4b3c29462e6a2768564b93c390ec",
+      "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+      "generationToolAsRecorded": "image_gen.imagegen",
+      "reviewer": "/root/math_m7_post5_context9_blind_b",
+      "actualReviewedAt": "2026-09-20T20:25:07Z",
+      "inspected": true,
+      "decision": "accept",
+      "humanApproved": false,
+      "checks": [
+        "Die Hypothesen H0:p≤0,10 und H1:p>0,10, n=20 und der beispielhafte Ablehnungsbereich X≥5 stimmen zusammen.",
+        "Im oberen ausdrücklich auf p=0,10 bezogenen Szenario ist das Fehlerereignis X≥5 rot markiert; 0–4 liegen außerhalb. Die Formel bezeichnet den Fehler erster Art bei wahrer H0.",
+        "Im unteren Szenario mit fest gewähltem p=0,25 ist das Fehlerereignis X<5: genau die Kategorien 0–4 sind violett. Die übrigen Kategorien ab 5 liegen außerhalb des β-Ereignisses.",
+        "Unabhängig aus der Binomialsumme nachgerechnet: P_0,10(X≥5)=0,043174495284463404 und P_0,25(X<5)=0,41484150253018015. Die Bildrundungen α≈0,043 und β≈0,415 sind korrekt.",
+        "Die Kategorienleisten haben keine y-Achse und sind als Fehlerereignis beschriftet. Sie ersetzen kein Histogramm und behaupten keine gleich großen Wahrscheinlichkeiten. Auslassungen zu höheren Ergebnissen sind sichtbar.",
+        "Comicfiguren, Werkzeuge und Qualitätskontrolle verdeutlichen Regel versus Fehlerberechnung; die dekorativen Teile sind kein auszuzählendes Stichprobendiagramm. Farbkontrast und Beschriftung sind verständlich."
+      ],
+      "findings": [],
+      "limitations": [
+        "Für die zusammengesetzten Hypothesen gelten die gezeigten Zahlen nur an den in den Szenarioüberschriften festgelegten Parametern p=0,10 und p=0,25; β ist kein konstanter Wert für alle p>0,10.",
+        "Die kleinen sprachlichen Formen 'Anzahl defekte Teile' und ein zusätzlicher Strich am Hypothesentext ändern keine mathematische Aussage und sind kein fachlicher Hold."
+      ],
+      "rationale": "Beide Fehlerereignisse, ihre Richtung und die numerischen Werte sind im realen Raster korrekt. Die neue Ereignisleiste vermeidet irreführende Histogrammhöhen."
+    },
+    {
+      "goalId": "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+      "title": "Testergebnisse im Kontext interpretieren",
+      "descriptionDe": "Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder nicht verworfen wird, das Ergebnis verständlich im Sachkontext formulieren und erläutern, welche Aussage der Test erlaubt und welche nicht.",
+      "descriptionEn": "The learner can decide whether the null hypothesis is rejected or not rejected, state the result clearly in context, and explain what the test result does and does not support.",
+      "canonicalGoalSha256": "sha256:76f02c73ff47b275421cbf08b14b56a5d96b5d5693ab91f107dd9e5f78d73916",
+      "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not a native evidence fingerprint",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/candidate-v1.png",
+      "assetSha256": "sha256:ac78fd894f5c196ee6eba7f36e8ed9670a05c839af07ca3a4509a20201b61598",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/prompt.md",
+      "promptSha256": "sha256:fc45813b76892bee4bbade6013db4c539b6ec39fb5e79f105a8c63650931468f",
+      "generationSha256": "sha256:0bc480d3a94ce4f4058e72ea8680ee5ec66fcd859468a06625fb57a09346198c",
+      "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+      "generationToolAsRecorded": "image_gen.imagegen",
+      "reviewer": "/root/math_m7_post5_context9_blind_b",
+      "actualReviewedAt": "2026-09-20T20:25:07Z",
+      "inspected": true,
+      "decision": "accept",
+      "humanApproved": false,
+      "checks": [
+        "Das Szenario zählt unter 20 geprüften Teilen die Fehlerhaften. H0:p≤0,10 wird als nicht erhöhte Fehlerquote erklärt; X~B(20;0,10) steht ausdrücklich am Rand p=0,10.",
+        "Auf der diskreten Achse stehen 0–10 in gleichen Schritten; vor 20 ist eine deutliche Achsenunterbrechung mit Auslassungszeichen vorhanden. 20 wird damit nicht als unmittelbar benachbarter Messwert zu 10 ausgegeben.",
+        "Die kritische Linie liegt zwischen 4 und 5. Die orangefarbene Ablehnungsregion umfasst k≥5, und der Beobachtungspfeil x_beob=5 trifft den Balken bei 5.",
+        "Der Verteilungsverlauf ist ausdrücklich schematisch und hat keine numerische y-Skalierung. Sein Modus liegt qualitativ bei 2, mit rechtsschiefer Form; die Balkenhöhen werden nicht als exakt gerechnete B(20;0,10)-Werte akzeptiert.",
+        "Die Folgerung x_beob=5 im Ablehnungsbereich → H0 verwerfen ist korrekt. Die Kontextwolke sagt ausdrücklich, die Daten sprächen für eine erhöhte Fehlerquote, seien aber kein Beweis.",
+        "Abstrakte Fertigungsszene, Lupenmarkierung, Pfeile und farblich getrennte Entscheidung unterstützen die Kontextdeutung. Keine unnötige Zusatzkompetenz muss vollständig im Bild geprüft werden."
+      ],
+      "findings": [],
+      "limitations": [
+        "Acceptance gilt als ausdrücklich schematische Darstellung der Entscheidungsgrenze. Insbesondere die sichtbaren kleinen Balken bis 20 sind nicht zur Ablesung oder Berechnung von Wahrscheinlichkeiten beziehungsweise Fehlerrisiken geeignet; diese Bildfunktion wäre fachlich nicht gedeckt.",
+        "Keine Prüfung im echten Cockpit-Viewport durchgeführt; Lesbarkeit bezieht sich auf das tatsächlich geöffnete Raster."
+      ],
+      "rationale": "Das Bild trifft das Ziel der vorsichtigen Interpretation einer Testentscheidung. Diskrete Positionen und Entscheidungsrichtung sind korrekt; die transparente Schematisierung begrenzt die Aussage der Balkenhöhen."
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "efc-tree-prerequisite-readonly-analysis-20260920-v1",
+  "actualReviewedAt": "2026-09-20T20:26:00.307Z",
+  "reviewer": "/root/math_m7_post5_context9_blind_b",
+  "humanApproved": false,
+  "mode": "read_only_analysis_no_canonical_changes",
+  "snapshot": {
+    "actualCapturedAt": "2026-09-20T20:26:00.307Z",
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "canonicalSha256": "sha256:c3ef809bdb42eac8bd95af30cb2f110bcdc041e1e35df85fa26ffcc4fc3dadc9",
+    "goals": [
+      {
+        "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+        "title": "Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen",
+        "requires": [
+          "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+          "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+          "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
+          "4ac925cf-3862-4810-be2a-d92efff7d735",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "goalObjectSha256": "sha256:ad9e318e4a77abe60151092f3a1f1927a5d1e4369cd7bda3562e5db34654f274"
+      },
+      {
+        "goalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+        "title": "Laplace-Experimente auswerten",
+        "requires": [
+          "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+          "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "goalObjectSha256": "sha256:815da445deb6d19272d1178ed596be831dcfa96fcfb707590320f81a27e5f73e"
+      },
+      {
+        "goalId": "759485a9-51c0-4261-af7d-caa3c0e5d68b",
+        "title": "Verknüpfte Ereignisse mit Mengen- und Vierfelderdarstellungen strukturieren",
+        "requires": [
+          "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "goalObjectSha256": "sha256:5b704755314e123bca42f9fde992b693b32bda143576942d82879dacff6c7c20"
+      },
+      {
+        "goalId": "4ac925cf-3862-4810-be2a-d92efff7d735",
+        "title": "Wahrscheinlichkeiten verknüpfter Ereignisse berechnen",
+        "requires": [
+          "759485a9-51c0-4261-af7d-caa3c0e5d68b",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "goalObjectSha256": "sha256:4d8ad5cf991e38c54fbadf0f0b370c8ea9176b477ac8e68e54a63d6893c847dc"
+      },
+      {
+        "goalId": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+        "title": "Datenverteilungen mithilfe von Kenngrößen und Boxplots vergleichen und deuten",
+        "requires": [
+          "2242c379-ddbb-4f03-8aed-13f49a4674e8",
+          "3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2",
+          "65365dce-f33f-49d8-9516-42f75883aa86",
+          "71d43fcc-d787-4874-ae4a-2336364e9c0a",
+          "72b6bfa5-8e34-4029-8f85-0277207c485e",
+          "91571d3f-3651-4477-ba21-320fc4077453",
+          "acbb7e26-f85f-405b-a3e5-affa6add6711",
+          "15505229-efec-4d01-8e71-acf15f9c2424"
+        ],
+        "goalObjectSha256": "sha256:581c47f2490203f985ba1d23a91a69d30d09e78cf6f4cd29bb9a8988934f6e8e"
+      },
+      {
+        "goalId": "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
+        "title": "Statistische Daten aus Sekundärquellen entnehmen",
+        "requires": [
+          "91571d3f-3651-4477-ba21-320fc4077453"
+        ],
+        "goalObjectSha256": "sha256:88b8a0a3d76f523fa9816e24408ba1cce7362ee2d4a54bc3b59c7a6eb6f08469"
+      },
+      {
+        "goalId": "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+        "title": "Brüche als Zahlen, Anteile und Quotienten deuten",
+        "requires": [
+          "624764d6-becd-5f9b-ada3-0d4f9d143073",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "goalObjectSha256": "sha256:d7e5ce987e8aa38bc156f0b63af99145176475a8b03f890b5a9edea3ebd579a6"
+      }
+    ]
+  },
+  "hashRule": "sha256 over file bytes for canonicalSha256; sha256 over JSON.stringify(goal object) for goalObjectSha256; not native evidence fingerprints",
+  "finding": "The two unrelated statistics prerequisites are reachable directly and through the retained Laplace and event-addition predecessors. Removing only the direct efc edges does not remove those mandatory gates from the learner route.",
+  "currentPathsToEachUnrelatedGoal": [
+    {
+      "goalId": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+      "paths": [
+        [
+          "efc3506a-5f35-4d77-9498-d70a091a470b",
+          "b819973b-4cad-48a4-9f7e-f74b5e75ea6c"
+        ],
+        [
+          "efc3506a-5f35-4d77-9498-d70a091a470b",
+          "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+          "b819973b-4cad-48a4-9f7e-f74b5e75ea6c"
+        ],
+        [
+          "efc3506a-5f35-4d77-9498-d70a091a470b",
+          "4ac925cf-3862-4810-be2a-d92efff7d735",
+          "759485a9-51c0-4261-af7d-caa3c0e5d68b",
+          "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+          "b819973b-4cad-48a4-9f7e-f74b5e75ea6c"
+        ]
+      ]
+    },
+    {
+      "goalId": "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
+      "paths": [
+        [
+          "efc3506a-5f35-4d77-9498-d70a091a470b",
+          "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004"
+        ],
+        [
+          "efc3506a-5f35-4d77-9498-d70a091a470b",
+          "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+          "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004"
+        ],
+        [
+          "efc3506a-5f35-4d77-9498-d70a091a470b",
+          "4ac925cf-3862-4810-be2a-d92efff7d735",
+          "759485a9-51c0-4261-af7d-caa3c0e5d68b",
+          "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+          "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004"
+        ]
+      ]
+    }
+  ],
+  "subjectMatterReasons": [
+    "Boxplot/summary comparisons and extracting statistical data from secondary sources are not necessary for theoretical sample-space reasoning or multiplying and adding path probabilities. A fully specified urn experiment can be solved without either competence.",
+    "The Laplace predecessor itself teaches sample spaces, events, equal likelihood and favourable/possible outcome ratios. Understanding a fraction as a part of a named whole is a suitable preceding competence.",
+    "The retained event-addition predecessor is mathematically related to summing disjoint event paths. No additional change to that existing edge is proposed in this minimal repair."
+  ],
+  "minimalTwoGoalProposalNotApplied": [
+    {
+      "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+      "removeRequires": [
+        "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+        "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004"
+      ],
+      "keepRequires": [
+        "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+        "4ac925cf-3862-4810-be2a-d92efff7d735",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "proposedRequires": [
+        "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+        "4ac925cf-3862-4810-be2a-d92efff7d735",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    {
+      "goalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+      "removeRequires": [
+        "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+        "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004"
+      ],
+      "addRequires": [
+        "6b0075bb-f71c-59f6-ab98-fb894568cc26"
+      ],
+      "keepRequires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "proposedRequires": [
+        "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    }
+  ],
+  "readOnlyCounterfactualChecks": {
+    "onlyDirectEfcRemovalStillReachesBothStatisticsGoals": true,
+    "proposedTwoGoalRepairReachesEitherStatisticsGoal": false,
+    "newFractionEdgeCreatesRequiresCycle": false,
+    "ancestorClustersWithRequires": []
+  },
+  "notPartOfThisMinimalProposal": "Rational multiplication/division (ee48e811-4c9c-5080-9836-8403fc9f0810) and addition/subtraction (4eeab7d5-eeb3-579b-845e-1c52ffe9e89f) are relevant arithmetic foundations. Adding explicit edges to them would be a separate sequencing decision; this analysis does not mutate or fully redesign the prerequisite graph.",
+  "bindingImpact": {
+    "directLaplaceConsumers": [
+      "efc3506a-5f35-4d77-9498-d70a091a470b",
+      "759485a9-51c0-4261-af7d-caa3c0e5d68b",
+      "5a2371fd-74ce-5013-932e-35d3713aeaf7",
+      "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6"
+    ],
+    "warning": "Changing Laplace may alter their bound direct-prerequisite contexts, especially the current Stoch18 goal 5a2371fd. Do not mutate while those prepared packets are being closed.",
+    "implementationGate": "Root requested a later bundled graph delta. Before implementation: archive current bytes, re-read canonical blocks, update only authorized edges, then perform genuine scoped A/M/S and affected D/P context reassessment. Preserve unrelated and still-current evidence."
+  },
+  "descriptionStatus": "efc3506a remains BLOCK in the completed blind D14 Round B. Its substantively valid refreshed P profile does not close D.",
+  "mutationSummary": {
+    "canonical": false,
+    "registry": false,
+    "qa": false,
+    "sourceProfiles": false,
+    "onlyThisReceiptWritten": true
+  }
+}

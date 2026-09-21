@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-held-seven-current-v1-20260920-resolution-69243680-c2c1-5661-80c0-c95a2be1dabf",
+  "goal": {
+    "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:b72b129980c7250072f766b2e30c347b90dfdcc954dc2026a79fd13e975c8e3a",
+    "pageFingerprint": "sha256:732e24ebce9a2d96475b25a244711e7f42b1675d6010556be93ba8352ccc2feb",
+    "goalReviewContextFingerprint": "sha256:aa65134303dd8663a7293b0e82a9f298d61eba793bb23215ecc15637aaa96f31",
+    "finalText": {
+      "titleDe": "Geometrische Abbildungen als linear erkennen",
+      "titleEn": "Recognize geometric mappings as linear",
+      "descriptionDe": "Die lernende Person kann bei einer einfachen geometrischen Abbildung anhand der Verträglichkeit mit Vektoraddition und skalarer Multiplikation prüfen, ob sie linear ist.",
+      "descriptionEn": "The learner can determine whether a simple geometric mapping is linear by checking whether it preserves vector addition and scalar multiplication."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-held-seven-current-v1-20260920-a",
+      "campaignDigest": "sha256:78121e3fed7f91f796d2b4245e921054451376a3025be275396ea4b0105935f2",
+      "roundId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-held-seven-current-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:0da1905e27d565ea41cd6c2e2af697d6846480645fe76c813d4fe43e5e094297",
+      "goalReviewContextFingerprint": "sha256:aa65134303dd8663a7293b0e82a9f298d61eba793bb23215ecc15637aaa96f31",
+      "batchId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-a.batch-001",
+      "runId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1",
+      "runManifestDigest": "sha256:1616844f2d7d5a59324496924bf4cc2b5f2071f1380933f7a0e4d89d854301b6",
+      "resultsDigest": "sha256:b98905ba260c8cef76e906fdf4d1c2e488e4e897529ed399747221e743527b4c",
+      "recordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "recordDigest": "sha256:f7c42de77063797406b49459b4c1204546ff752a06cc07d30a1c42420bc1b3a0"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-held-seven-current-v1-20260920-b",
+      "campaignDigest": "sha256:85b1063ce3a490d72e2c49be7726e0f91b447a72f83241fb534bbcec24945698",
+      "roundId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-held-seven-current-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:0da1905e27d565ea41cd6c2e2af697d6846480645fe76c813d4fe43e5e094297",
+      "goalReviewContextFingerprint": "sha256:aa65134303dd8663a7293b0e82a9f298d61eba793bb23215ecc15637aaa96f31",
+      "batchId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.batch-001",
+      "runId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b",
+      "runManifestDigest": "sha256:b218f1a0cc361dbe2c282f474ede3591586b6b464d9c6be9d33e8a14539ba4bd",
+      "resultsDigest": "sha256:86394bedae509e810bda73ee9349efbf1fb17991d315b6ea2c71de02d2c166bd",
+      "recordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-002",
+      "recordDigest": "sha256:d6cc40b1aad24168076b7a211381f236de07f81af9bca09031ba2005cdd1a8d3"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:df2b5ca216848275292589635af8d4882184a5b76aca49328f03aa1344f04958"
+  },
+  "status": "resolved",
+  "decision": "current_after_revision",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "m7-held-seven-current-v1-20260920-current-synthesis",
+    "manifestDigest": "sha256:307aa86e59dfc46313be4348f012c013353e678bb5786a761c8819bad8dc31e0",
+    "manifestFingerprint": "sha256:a1bb9d56c6d996b10c3b8286fa6ea4b92ae5bf413f5450ae2ff18984847ed830",
+    "decisionId": "m7-held-seven-current-v1-20260920-current-synthesis-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "m7-held-seven-current-v1-20260920-current-synthesis-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex /root (informed AI adjudicator; no human approval)",
+    "synthesizedAt": "2026-09-20T20:09:32.000Z",
+    "rationaleDe": "Beide Runden prüfen Additivität und Homogenität für allgemeine Vektoren und Skalare statt bloßer Ursprungstreue. A wird für die Abgrenzung gegenüber nichtlinearen Gegenbeispielen gewählt. Die zuvor entfernte sachfremde Differentialrechnung bleibt außerhalb des Ziels.",
+    "rationaleEn": "Both rounds check additivity and homogeneity for arbitrary vectors and scalars rather than merely preserving the origin. Select A for its contrast with nonlinear counterexamples. The removed unrelated calculus requirement stays outside the goal.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Linearität bedeutet, dass Addition und skalare Multiplikation unter der Abbildung erhalten bleiben. Beide Beziehungen gelten allgemein; ein passendes Einzelbild oder ein fest bleibender Ursprung reicht als Bestätigung nicht aus, während ein Gegenbeispiel zur Widerlegung genügt.",
+      "essentialUnderstandingEn": "Linearity means that the mapping preserves addition and scalar multiplication. Both relations must hold generally; a matching individual image or a fixed origin is insufficient for confirmation, whereas one counterexample suffices for disproof.",
+      "observablePerformanceDe": "Die Person prüft für eine einfache Koordinatenabbildung beide Verträglichkeitsgleichungen mit allgemeinen Vektorkomponenten oder nennt eine konkrete Verletzung und erklärt deren Bedeutung. Sie trennt rechnerische Einzelkontrolle von der allgemeinen Gültigkeit.",
+      "observablePerformanceEn": "For a simple coordinate mapping, the learner checks both compatibility equations using general vector components or supplies a concrete violation and explains its significance, distinguishing a numerical spot check from general validity.",
+      "transferExpectationDe": "Die Person wechselt unabhängig von der linearen Richtungsstreckung T(x,y)=(2x,y) zu S(x,y)=(x,y²) und begründet trotz S(0)=0 die Nichtlinearität mit S(2·(1,1))=(2,4)≠2S(1,1)=(2,2).",
+      "transferExpectationEn": "The learner independently moves from the linear directional stretch T(x,y)=(2x,y) to S(x,y)=(x,y²), establishing nonlinearity despite S(0)=0 through S(2·(1,1))=(2,4)≠2S(1,1)=(2,2)."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-6c9465d8917a44442d50cb4c6c31c66df91746eb1ebd800c77578e219741d150",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:3a1ab529c44b0eca7d4615b947b6972167b52a3eade4161705da3614467d7c1f"
+}

@@ -8,50 +8,19 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `aeb947a2-2dd4-5017-a429-0d777e22db6a.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.jpg`
+- Quellbild: `aeb947a2-2dd4-5017-a429-0d777e22db6a.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Experimentdaten mit Kenngrößen auswerten
-Beschreibung: Die lernende Person kann Lage- und Streuungsmaße aus Experimentdaten berechnen und die Ergebnisse im Kontext interpretieren.
-
-Zusatzanweisung:
-Required content:
-
-- Show experiment data with simple, correct location and spread measures.
-- Use one small measurement context: five paper-airplane flight distances in meters.
-- Use exactly these data: `4, 5, 5, 6, 10`.
-- Show the sorted data `4, 5, 5, 6, 10`.
-- Compute `Mittelwert = (4+5+5+6+10)/5 = 6`.
-- Show `Median = 5`.
-- Show `Spannweite = 10 - 4 = 6`.
-- Use these exact short German interpretation labels:
-  - `10 zieht den Mittelwert nach oben.`
-  - `Median: Mitte der geordneten Daten.`
-  - `Spannweite: Abstand zwischen Minimum und Maximum.`
-
-Avoid:
-
-- Do not add speech bubbles with long sentences.
-- Do not misspell German words such as `Mitte`, `Mittelwert`, `Median`, `Spannweite`, or `Messwerte`.
-- Do not calculate a wrong mean, median, range, variance, or standard deviation.
-- Do not use a chart whose marked center contradicts the computed values.
-- Do not include technical IDs, filenames, watermarks, platform names, or product names.
+Use case: precise-object-edit
+Asset type: German mathematics learning-goal PNG
+Input image 1 is the exact edit target.
+Primary request: Ersetze ausschließlich die falsche Mittelwert-Waage unten links durch ein präzises Schwerpunktmodell: waagerechte gleichmäßig skalierte Zahlengerade von4bis10, Stützpunkt exakt bei6. FÜNF IDENTISCHE gleich schwere kleine Kugeln als Beobachtungen: eine bei4,zwei übereinander bei5,eine bei6,eine bei10. Alle Kugeln gleich groß, keine verschieden schweren beschrifteten Gewichte. Positionen linear:4 und5 links,6 aufStütze,10rechts. Momente links2+1+1=4, rechts4; beschrifte 'Gleich schwere Beobachtungen: Schwerpunkt bei 6'. Formel(4+5+5+6+10)/5=6m erhalten. Außerdem oberen Flugabschnitt mit 'Flugskizze schematisch' klein kennzeichnen, damit unskalierte Flugzeugpositionen keine Messachse behaupten. Sonstige Panels, Median5,Spannweite6, Papierflieger, freundlicher Wissenschaftler und Comic-Stil erhalten.
+Invariants: freundlich, abstrakt, klar, comicartig, bestehende Bildsprache beibehalten. Keine Photorealistik, keine sterile technische Neugestaltung. Keine IDs, Logos oder Wasserzeichen ergänzen. Nicht betroffene Inhalte erhalten. Genau ein lesbares korrigiertes PNG.
 ```
 
 ## Review-Notiz

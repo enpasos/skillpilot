@@ -1,0 +1,7 @@
+# Umkehrgraph: gezielte Nachkorrektur V5
+
+Provider: OpenAI, integriertes image_gen; kein separater Modellname ausgewiesen.
+Eingang: aktuelle kanonische V3-PNG, vor der Bearbeitung tatsächlich betrachtet.
+Status: Kandidat; Erzeugung ist keine Freigabe.
+
+Use case: precise-object-edit / scientific-educational. Image is edit target. Keep the friendly pale-blue cartoon educational design and German heading 'Zusammenhang von Funktionsgraph und Umkehrgraph'. Replace ONLY the mathematical EXAMPLE throughout with a simpler accurate straight-line example. Central diagram: black x/y axes starting at origin, identical scale, no tick numbers. Blue STRAIGHT line f(x)=2x steep above a grey dashed 45-degree line y=x; red STRAIGHT line f⁻¹(x)=x/2 shallow below y=x, exact mirror slopes. All three straight lines start at the same origin. Absolutely no parabolas, square roots, curved graphs, marked points, Q label, projection grid, or numerical coordinate ticks in the plot. First-quadrant view is sufficient, both functions restricted to x≥0. Left text box says 'Beim Umkehrgraphen werden x- und y-Koordinaten vertauscht.' with a separate TEXT example 'P(1,2) ↔ P′(2,1)' below (not plotted). Right lower text box says 'Der Graph von f⁻¹ entsteht durch Spiegelung des Graphen von f an y = x.' Keep spacious layout, handwritten clean typography, blue and red color coding, existing friendly abstract comic style. This simplification eliminates a misleading curve drawing; exact graph relationship and readable formulas matter more than decoration. PNG raster, not photorealistic.

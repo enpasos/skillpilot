@@ -8,41 +8,22 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `455ef29a-7194-5c5a-b832-1c27fcbf2516.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/455ef29a-7194-5c5a-b832-1c27fcbf2516/455ef29a-7194-5c5a-b832-1c27fcbf2516.jpg`
+- Quellbild: `455ef29a-7194-5c5a-b832-1c27fcbf2516.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/455ef29a-7194-5c5a-b832-1c27fcbf2516/455ef29a-7194-5c5a-b832-1c27fcbf2516.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Weitere stetige Verteilungen exemplarisch nutzen (LK)
-Beschreibung: Die lernende Person kann eine weitere stetige Verteilung, zum Beispiel die Exponentialverteilung als Modell für Wartezeiten oder Zuverlässigkeitssituationen, exemplarisch verwenden, zugehörige Wahrscheinlichkeiten bestimmen und zentrale Modelleigenschaften im Kontext erläutern.
-
-Zusatzanweisung:
-Additional correction for the continuous-distribution visualization:
-
-- Do not include technical IDs in the image.
-- Use exactly one example: exponential distribution for waiting time.
-- Write the formula cleanly: `f(t)=lambda*e^(-lambda*t)` for `t >= 0`, `lambda > 0`.
-- Do not include malformed English/German fragments near the formula.
-- Choose a concrete interval such as `2 <= T <= 5`.
-- Shade exactly the area under the density curve from `t=2` to `t=5`; mark both vertical boundaries at `2` and `5`.
-- The x-axis should show the tick labels `0`, `2`, `5`, and maybe `8`; do not label the right boundary as `4` if the formula says `5`.
-- Emphasize: probability equals area under the curve, not curve height.
-- Keep the context simple: waiting time in minutes.
-- The memoryless property may be named, but do not make it the main point.
+Use case: precise-object-edit; scientific-educational.
+Input image 1 is the edit target. Preserve its friendly waiting-person/bus illustration, the valid exponential-model formulas, the model qualification without a fixed timetable, the probability-as-area explanation and the corrected memoryless-property sentence. Keep the landscape composition and soft friendly comic palette. Correct only the graph construction and reduce repeated heading prose if necessary for clarity.
+Main heading may be shortened to "Exponentialverteilung: Wartezeiten als Beispiel".
+The present numeric time axis is nonuniform. REBUILD it as a precise LINEAR minutes axis, with labeled ticks 0,1,2,3,4,5,6,7,8 at EXACTLY EQUAL horizontal distances. Leave enough length to make all ticks clear. In particular the distance 2→5 MUST equal 5→8, and 0→2 is exactly two thirds of either three-minute span. Axis title "Zeit t (min)". No axis break.
+Draw a smooth decreasing convex exponential density over t≥0, approaching zero from above. Vertical axis "Dichte f(t)". Formula exactly "f(t)=λ·e^(−λt), t≥0, λ>0". The lambda is unspecified, so no fabricated probability numbers or arbitrary vertical probability scale.
+Shade ONLY the region between the vertical boundaries t=2 and t=5, below the exponential curve and above the horizontal axis. There is NO tint under the curve from 0 to 2 or after 5. The boundary at t=5 must stand on the tick 5, not on 4 or 6. Label "P(2≤T≤5)" and "Wahrscheinlichkeit = Fläche, nicht Höhe".
+Under the bus/person keep "Modellbeispiel ohne festen Fahrplan". Bottom caption "Die bisherige Wartezeit ändert die Verteilung der Restwartezeit nicht."
+Never preserve the old uneven tick positions. Do not add unrelated concepts, decorative equations, technical IDs, watermarks or tiny unreadable text. The goal is the same valid illustration with a truly consistent minutes scale and exactly attached shading.
 ```
 
 ## Review-Notiz

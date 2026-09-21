@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "Reviewer did not generate or import the candidate and did not consult the generating agent's verdict. Review uses the actual v3 raster and current canonical goal text.",
+  "reviewDate": "2026-09-20",
+  "goalId": "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+  "title": "Verkettete Exponential- und Logarithmusfunktionen analysieren (LK)",
+  "description": "Die lernende Person kann eine verkettete Funktion mit Exponential- oder Logarithmusanteil untersuchen und ihr Verhalten argumentativ begründen.",
+  "candidateSha256": "776f054c3eda82146f814671e7ecfea805a4e912c5753c525c648a7e341e7e0e",
+  "checks": [
+    "Viewed the actual candidate-v3.png, including the simplified final plot.",
+    "For f(x)=ln(1+x²), the domain R, even symmetry, chain rule f′=2x/(1+x²), signs of f′, and minimum (0,0) are correct.",
+    "The uniform x ticks and labelled endpoints (−3,ln10),(3,ln10) agree with the function; the curve is symmetric and rises away from its minimum.",
+    "The erroneous y=2 tick from v2 is absent. The qualitative y-axis supports the stated analysis without making an incorrect numerical ordinate claim."
+  ],
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-functions-20260920-v1/c72a8032-71f6-56ed-a896-06ae435ff2ec/candidate-v3.png",
+  "decision": "accept_candidate",
+  "defects": [],
+  "humanApproval": false,
+  "scope": "Independent candidate-image review only; no active import, human release or complete goal-QS claim."
+}

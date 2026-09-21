@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 1,
+  "reviewScope": "Last seven V1 statistics correction PNG candidates only; V2 not yet inspected",
+  "reviewer": "/root/math_m7_post5_context9_blind_b",
+  "actualReviewedAt": "2026-09-20T20:31:45Z",
+  "humanApproved": false,
+  "reviewAuthority": "ai_candidate",
+  "independence": "All seven actual V1 rasters inspected and current bilingual canonical goals read. No other reviewers' V1 decisions read before the substantive observations. Root subsequently announced V2 attempts for the same two goals independently found defective; V1 findings were finalized before viewing V2.",
+  "policy": "KEEP standard; images support orientation and need not assess the entire competence. Equations and drawings both require correctness.",
+  "counts": {
+    "inspected": 7,
+    "accept": 5,
+    "hold": 2
+  },
+  "records": [
+    {
+      "goalId": "03357e70-2280-532f-b629-5dfa31dc44eb",
+      "title": "Tests vergleichen und bewerten (LK)",
+      "descriptionDe": "Die lernende Person kann unterschiedliche Testverfahren oder Parametereinstellungen hinsichtlich Fehlerwahrscheinlichkeiten und Teststärke vergleichen und begründete Entscheidungen treffen.",
+      "descriptionEn": "The learner can compare different test procedures or parameter settings regarding error probabilities and test power and make reasoned decisions.",
+      "canonicalGoalSha256": "sha256:109a2eda65accd5915e9b37c9fd836391cefa252acd453a33b0dddf7cbc7b845",
+      "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/03357e70-2280-532f-b629-5dfa31dc44eb/candidate-v1.png",
+      "assetSha256": "sha256:49e07d4e8ead4886503150ccea22660faeeb2d328be10fc40cd1ae502de4122a",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/03357e70-2280-532f-b629-5dfa31dc44eb/prompt.md",
+      "promptSha256": "sha256:fd53d7b10240a1e366565c84098deacfc08ab620b2bcff0f6a11615bf8b71d3e",
+      "generationSha256": "sha256:4f7c144a94638ed5abc9fde7ff52a4f79ba607e0942bfd912d3a3644f4faf7c4",
+      "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+      "generationToolAsRecorded": "image_gen.imagegen",
+      "reviewer": "/root/math_m7_post5_context9_blind_b",
+      "actualReviewedAt": "2026-09-20T20:31:45Z",
+      "inspected": true,
+      "humanApproved": false,
+      "decision": "hold",
+      "checks": [
+        "Der Vergleich kleineres k → größere Verwerfungswahrscheinlichkeit, größeres α und kleinere β bei derselben Alternative ist fachlich richtig; der umgekehrte Trend bei größerem k ist ebenfalls richtig.",
+        "Für die gezeigte rechtsseitige Regel muss α rechts von k unter der blauen H0-Verteilung liegen und β links von k unter der orangefarbenen Alternativverteilung.",
+        "Im rechten Panel zeigen die neu gesetzten α-/β-Pfeile auf die richtigen Seiten. Im linken Panel zeigt α jedoch weiterhin links von k auf Blau und β rechts von k auf Orange.",
+        "Die gemeinsame Regel unten lautet korrekt X≥k: H0 verwerfen; X<k: H0 nicht verwerfen. Die separate Entscheidungsbox in Panel B sagt dagegen bei X≥k H0 nicht verwerfen.",
+        "Freundliche Kurvengesichter, Comicfiguren und Abwägung von Fehlern/Kosten passen zum Ziel. Die ausdrücklich schematischen Kurven rechtfertigen keine Umkehrung der Fehlerereignisse."
+      ],
+      "findings": [
+        {
+          "severity": "blocking",
+          "location": "Panel A, Pfeile α und β an den Verteilungsflächen",
+          "finding": "α ist auf der falschen Seite links von k markiert; β auf der falschen Seite rechts von k. Damit werden Typ-1- und Typ-2-Fehlerereignisse trotz korrekter Trendtexte falsch dargestellt.",
+          "requiredCorrection": "α rechts von k unter Blau und β links von k unter Orange markieren; auch zugehörige Figurenpfeile eindeutig auf diese Flächen beziehen."
+        },
+        {
+          "severity": "blocking",
+          "location": "Panel B, Entscheidungsbox rechts unten",
+          "finding": "'Entscheidung (bei X≥k): H0 nicht verwerfen' widerspricht sowohl der rechtsseitigen Testregel als auch der korrekten gemeinsamen Regel unten.",
+          "requiredCorrection": "Für X≥k ausdrücklich H0 verwerfen, für X<k H0 nicht verwerfen angeben oder die widersprüchliche Einzelbox entfernen."
+        }
+      ],
+      "limitations": [
+        "Schematisierung entbindet nicht von der korrekten Zuordnung der Fehlerflächen."
+      ],
+      "rationale": "Zwei unmittelbar entscheidungsrelevante Fehler bleiben im echten Raster sichtbar; der Kandidat darf so nicht importiert werden."
+    },
+    {
+      "goalId": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+      "title": "Konfidenzintervalle für Wahrscheinlichkeiten berechnen",
+      "descriptionDe": "Die lernende Person kann von einer Stichprobe auf die unbekannte Trefferwahrscheinlichkeit der Grundgesamtheit schließen, Konfidenzintervalle in Sachzusammenhängen aus $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$ bestimmen und die Näherung $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ als symmetrisches Intervall um $h_n$ verwenden.",
+      "descriptionEn": "The learner can infer the unknown population success probability from a sample, determine confidence intervals in context from $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$, and use the approximation $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ as an interval symmetric about $h_n$.",
+      "canonicalGoalSha256": "sha256:7c15d586f73a586602b0e95b527d7ba4540a317eef1f510df1a3b37416b1a719",
+      "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/5f328147-619c-568d-9a0d-e1787ca0c01b/candidate-v1.png",
+      "assetSha256": "sha256:163c1583078450f9fd791f32a35348516b43074e0eb93f5d496c3fa9079c5dfc",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/5f328147-619c-568d-9a0d-e1787ca0c01b/prompt.md",
+      "promptSha256": "sha256:4553f6c8be802b38c9dbf7f22a9947fb5b2eabda974938d649d20861e9ced278",
+      "generationSha256": "sha256:32dd5b5624f213b52f89dc334fa354bbe1d792efa915d62e771233f2ebeeccaf",
+      "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+      "generationToolAsRecorded": "image_gen.imagegen",
+      "reviewer": "/root/math_m7_post5_context9_blind_b",
+      "actualReviewedAt": "2026-09-20T20:31:45Z",
+      "inspected": true,
+      "humanApproved": false,
+      "decision": "accept",
+      "checks": [
+        "Der unbekannte feste Parameter p wird von der beobachteten relativen Häufigkeit h_n getrennt. Die Stichprobe nennt n=400 und h_n=0,52.",
+        "Die Umkehrung verwendet |h_n−p|≤c·sqrt(p(1−p)/n) und die äquivalente quadrierte Ungleichung. Die Grenzgleichung liefert Randwerte; p zwischen den Grenzen beschreibt das Intervall.",
+        "Unabhängig gerechnet: E=1,96·sqrt(0,52·0,48/400)=0,0489607843. Das symmetrische Intervall ist [0,4710392157;0,5689607843], also gerundet [0,47;0,57].",
+        "Die blaue Strecke liegt jetzt symmetrisch um den markierten Wert 0,52; 0,47 und 0,57 haben gleiche gezeichnete Abstände zur Mitte.",
+        "Die Wiederholungsinterpretation bezieht ca.95% auf das Verfahren und hält p fest. Ein konkretes Intervall enthält p oder nicht. Die beschrifteten Näherungsverfahren werden nicht als exakte endliche Binomialabdeckung ausgegeben.",
+        "Die klare blaue Informationsgrafik mit Stichproben-Illustration ist für die Formel-/Intervallbeziehung geeignet; keine neue unabhängige Teilkompetenz wird durch die Bildprüfung verlangt."
+      ],
+      "findings": [],
+      "limitations": [
+        "Die symmetrische Formel ist ausdrücklich eine Näherung, kein allgemeines exaktes Konfidenzintervall.",
+        "Die kleinen Wiederholungsintervalle illustrieren das Verfahren; sie sind keine numerische Behauptung einer exakt 95-prozentigen Trefferzahl in der gezeichneten endlichen Sammlung."
+      ],
+      "rationale": "Ungleichung, Näherungsrechnung und geometrische Symmetrie sind korrekt und treffen das aktuelle bilinguale Ziel."
+    },
+    {
+      "goalId": "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+      "title": "Lageparameter für Datenanalysen auswählen und vergleichen",
+      "descriptionDe": "Die lernende Person kann arithmetisches Mittel, Median und Modalwert hinsichtlich ihrer Aussagekraft und ihrer Empfindlichkeit gegenüber Ausreißern vergleichen, zu einer gegebenen Datenfrage einen passenden Lageparameter auswählen und die Wahl im Sachkontext begründen.",
+      "descriptionEn": "The learner can compare the mean, median, and mode in terms of what they reveal and their sensitivity to outliers, select a suitable measure of central tendency for a given data question, and justify the choice in context.",
+      "canonicalGoalSha256": "sha256:fa2cd1fe1a0ebc657f28faea06685d912565e8261bf4f43ce5023a842db9e2a8",
+      "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/616c72a4-972d-5cc0-b903-e2a24bcb150c/candidate-v1.png",
+      "assetSha256": "sha256:c811f2c904652cae16570209961d3b85a2a76e276d28cb0bbd9116f351a8f5d7",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/616c72a4-972d-5cc0-b903-e2a24bcb150c/prompt.md",
+      "promptSha256": "sha256:578887f4fb845b4bc7d8bbf35707194a886b4293d533260e8917d60c88e25dd8",
+      "generationSha256": "sha256:d3a20094124758618086d298dddd19fcf89323bf5a1b375ba1e3a71aa65d2b26",
+      "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+      "generationToolAsRecorded": "image_gen.imagegen",
+      "reviewer": "/root/math_m7_post5_context9_blind_b",
+      "actualReviewedAt": "2026-09-20T20:31:45Z",
+      "inspected": true,
+      "humanApproved": false,
+      "decision": "accept",
+      "checks": [
+        "Der gemeinsame Datensatz ist durchgehend 2,3,3,4,8. Die Mittelwertgleichung umfasst nun den gesamten Summenzähler: (2+3+3+4+8)/5=20/5=4.",
+        "Der dritte der fünf sortierten Werte ist 3, also Median3. Die Häufigkeiten 2→1,3→2,4→1,8→1 ergeben Modalwert3.",
+        "Auf den gleichmäßig beschrifteten Zahlengeraden liegt der blaue Punkt bei4 und der grüne bei3. Die markierten Zahlkarten stimmen mit diesen Ergebnissen überein.",
+        "Die hohe8 erhöht das Mittel gegenüber den übrigen Werten; der Median bleibt gegenüber dieser Änderung eines hohen Extremwerts robust. Die Entscheidungshilfe unterscheidet Datenfrage, Ausreißereinfluss und kategoriale Häufigkeit.",
+        "Keine universell beste Kennzahl wird behauptet. Die Panels, Farben und lesbaren Comic-Icons unterstützen den Vergleich."
+      ],
+      "findings": [],
+      "limitations": [
+        "Die Bezeichnung Ausreißer ist hier anschaulich für den auffällig hohen Wert verwendet; es wird keine konkrete Quartils- oder formale Ausreißerregel behauptet."
+      ],
+      "rationale": "Alle Zahlen, Häufigkeiten und Positionen sind konsistent; die korrigierte Bruchgleichung beseitigt den fachlichen Rechenfehler."
+    },
+    {
+      "goalId": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+      "title": "Gütefunktion und Teststärke untersuchen (LK)",
+      "descriptionDe": "Die lernende Person kann für einen Hypothesentest die Operationscharakteristik als Wahrscheinlichkeit für das Nichtverwerfen der Nullhypothese und die Gütefunktion als Wahrscheinlichkeit für ihr Verwerfen in Abhängigkeit vom wahren Wert von $p$ unterscheiden, beide grafisch darstellen und den Einfluss von Stichprobenumfang und Signifikanzniveau auf die Teststärke erläutern.",
+      "descriptionEn": "For a hypothesis test, the learner can distinguish the operating-characteristic function as the probability of not rejecting the null hypothesis from the power function as the probability of rejecting it, both as functions of the true value of $p$, graph both functions, and explain how sample size and significance level affect test power.",
+      "canonicalGoalSha256": "sha256:f6d9c93633fb0cc8b2f025a51c589de34b6fe9a2837b516473f2b1e73af624e1",
+      "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/candidate-v1.png",
+      "assetSha256": "sha256:d47be39d262f5316d52dbe2011f7a72f746d6955e3c9e8b5187c4d2b524a2b3c",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/prompt.md",
+      "promptSha256": "sha256:e7876ccda0586b304fd7bdcbab804c8c0fbcc57adc793edb5663da331d6b39ab",
+      "generationSha256": "sha256:07a75c2a448063ea7d8fd67628c30bf9672ceed9cfa0f8ba644e27c67d4da821",
+      "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+      "generationToolAsRecorded": "image_gen.imagegen",
+      "reviewer": "/root/math_m7_post5_context9_blind_b",
+      "actualReviewedAt": "2026-09-20T20:31:45Z",
+      "inspected": true,
+      "humanApproved": false,
+      "decision": "accept",
+      "checks": [
+        "Die Definitionen L(p)=P_p(H0 nicht verwerfen) und G(p)=P_p(H0 verwerfen)=1−L(p) sind korrekt und beziehen sich auf den wahren Parameter p.",
+        "Die blaue Kurve fällt und die orange steigt. Beide verlaufen visuell komplementär zur Linie y=0,5; ihr Schnittpunkt liegt nun genau auf dieser gestrichelten Mittellinie.",
+        "Bei p0 sind L=0,7 und G=0,3 markiert; bei p1 stehen L=β=0,3 und G=1−β=0,7. Beide Zahlenpaare summieren sich zu1 und liegen auf den passenden horizontalen Hilfslinien.",
+        "L(p0)≥1−α beziehungsweise G(p0)≤α sind als Niveaugrenzen korrekt. Die Darstellung legt keinen konkreten üblichen Zahlenwert für α oder ein konkretes n/k fest.",
+        "Die Hinweise zu Stichprobenumfang und Niveau beschreiben die qualitative Richtung der Teststärke; die Beschriftung 'Kurven schematisch' grenzt diese Darstellung von einer exakt berechneten Binomialtestfunktion ab.",
+        "Achsen von0 bis1, p0-/p1-Linien und farblich zugeordnete Definitionen sind lesbar und für den Funktionsvergleich geeignet."
+      ],
+      "findings": [],
+      "limitations": [
+        "Keine numerische Gütefunktion für ein konkretes n/k wurde validiert, weil das Bild keine solchen Parameter vorgibt.",
+        "Bei exakten diskreten Tests können Niveau-/Stichprobeneffekte stufig verlaufen; die Textboxen sind qualitative Orientierung, keine strikte punktweise Monotoniebehauptung über jede Parametrierung."
+      ],
+      "rationale": "Der zentrale Zusammenhang der komplementären Funktionen ist im tatsächlichen Verlauf, Schnittpunkt und den markierten Zahlenpaaren korrekt sichtbar."
+    },
+    {
+      "goalId": "83a5546e-0ea6-576e-83e2-3387b30872bb",
+      "title": "Daten tabellarisch und grafisch aufbereiten",
+      "descriptionDe": "Die lernende Person kann erhobene Daten tabellarisch und grafisch aufbereiten (z. B. Häufigkeitstabellen, Histogramme) und passende Darstellungen auswählen.",
+      "descriptionEn": "The learner can prepare collected data in tables and graphs (e.g., frequency tables, histograms) and choose suitable representations.",
+      "canonicalGoalSha256": "sha256:63fbae333e2d320a0712f41e108386219af8df5ef5ff8fcf420ba2af7248b6ee",
+      "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/83a5546e-0ea6-576e-83e2-3387b30872bb/candidate-v1.png",
+      "assetSha256": "sha256:5769b6b8b93cc6492483965687d117d5a033245c7d45134c8dbae0db85738a27",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/83a5546e-0ea6-576e-83e2-3387b30872bb/prompt.md",
+      "promptSha256": "sha256:7d70d2f16c6eac7a53fe72fe177b7b6dd308c7c1eb64e2ff9aefec71cc6b976d",
+      "generationSha256": "sha256:f622c4831aa1c600ff3b48c5d44034b3c3547e7de3c34ca776c426bd3d098f17",
+      "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+      "generationToolAsRecorded": "image_gen.imagegen",
+      "reviewer": "/root/math_m7_post5_context9_blind_b",
+      "actualReviewedAt": "2026-09-20T20:31:45Z",
+      "inspected": true,
+      "humanApproved": false,
+      "decision": "hold",
+      "checks": [
+        "Der linke Block zeigt tatsächlich sechs Beispielkarten Bus,Fahrrad,zuFuß,Auto,Bus,zuFuß und ist klar als Auszug aus24 Antworten beschriftet. Es wird nicht mehr vorgetäuscht, die sechs Karten seien der vollständige Datensatz.",
+        "Die absoluten Häufigkeiten8,6,7,3 summieren sich zu24. Die Prozente33%,25%,29%,13% sind korrekte Ganzzahlrundungen von33,333…%,25%,29,166…%,12,5%.",
+        "Das Säulendiagramm zeigt auf gleichmäßig skalierter Achse die passenden Höhen8,6,7,3; Kategorien und Farben stimmen mit der Tabelle überein.",
+        "Die ersten drei durchgestrichenen Strichlistenbündel enthalten jedoch jeweils fünf senkrechte Striche plus einen diagonalen Strich. Das sind sechs Zählstriche, keine Fünferbündel.",
+        "Die Rasterbeobachtung wurde durch rein lesenden Pixelcheck bestätigt: In jeder ersten Gruppe liegen senkrechte Striche bei etwa x=731,741,751,761,771, zusätzlich ist der diagonale Strich sichtbar. Dahinter stehen3,1,2 weitere Striche."
+      ],
+      "findings": [
+        {
+          "severity": "blocking",
+          "location": "Häufigkeitstabelle, Strichlisten Bus/Fahrrad/zu Fuß",
+          "finding": "Die vermeintlichen Fünferbündel haben fünf senkrechte plus einen diagonalen Strich. Damit zeigen die Zeilen9 statt8,7 statt6 und8 statt7 Zählstriche. Absolute Zahlen und Säulen sind zwar korrekt, widersprechen aber der Strichliste.",
+          "requiredCorrection": "Jedes Fünferbündel aus genau vier senkrechten und einem diagonalen fünften Strich bilden; anschließend Bus+3, Fahrrad+1, zuFuß+2 belassen. Auto hat korrekt drei Striche."
+        }
+      ],
+      "limitations": [
+        "Eine korrekte Zahlenspalte kann eine falsch gezeichnete Zähldarstellung nicht ersetzen."
+      ],
+      "rationale": "Der Rohdatenauszug ist korrekt repariert, doch die zentrale Übersetzung Strichliste→Häufigkeit bleibt in drei Zeilen falsch."
+    },
+    {
+      "goalId": "aa14d9e4-5790-5d94-a245-2ff9a70bf633",
+      "title": "Konfidenzniveau interpretieren",
+      "descriptionDe": "Die lernende Person kann die Bedeutung des Konfidenzniveaus in Worten erklären, typische Fehlinterpretationen vermeiden und dies an Beispielen begründen.",
+      "descriptionEn": "The learner can explain the meaning of the confidence level in words, avoid common misinterpretations, and justify it with examples.",
+      "canonicalGoalSha256": "sha256:0d1fdba294f79c3a7720ef8c044d0f2335cc001aa6751ebd1ceef2e8bdbd37f8",
+      "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/aa14d9e4-5790-5d94-a245-2ff9a70bf633/candidate-v1.png",
+      "assetSha256": "sha256:4f9ab632304318b101b8f349a1c65e2ae1575e81fb8491dfbcaf29f7e78a0dd2",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/aa14d9e4-5790-5d94-a245-2ff9a70bf633/prompt.md",
+      "promptSha256": "sha256:d1366d1f8df2fc376ef881a63933e3179b494797422dd724584d829eaaa3deac",
+      "generationSha256": "sha256:a6f5045e1e7a537c1128d354fd83314b3d505d86e074c805c388038c0ee6b75f",
+      "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+      "generationToolAsRecorded": "image_gen.imagegen",
+      "reviewer": "/root/math_m7_post5_context9_blind_b",
+      "actualReviewedAt": "2026-09-20T20:31:45Z",
+      "inspected": true,
+      "humanApproved": false,
+      "decision": "accept",
+      "checks": [
+        "Das konkrete Intervall [0,50;0,54] ist um h=0,52 zentriert. Der feste Wert p=0,57 liegt sichtbar rechts außerhalb; das rote X ist dazu fachlich passend.",
+        "Alle grünen Wiederholungsintervalle schneiden die feste vertikale p-Linie. Das rote oberste Intervall endet links davon und ist mit X markiert.",
+        "Die rote rechte Endkappe steht sehr knapp links neben der grauen Referenz. Rein lesender Pixelcheck: rote Endkappe bis x=1324, graue Linie x=1325–1327. Es liegt im tatsächlichen Raster keine Überkreuzung vor.",
+        "Die95%-Aussage betrifft ausdrücklich die langfristige Überdeckungsquote des Verfahrens bei vielen Wiederholungen, nicht eine posteriorische Wahrscheinlichkeit des festen p in diesem berechneten Intervall.",
+        "Die untere Fehlinterpretation wird ausdrücklich als falsch markiert; die Richtigstellung lautet, dass ein konkretes Intervall p enthält oder nicht.",
+        "Rot/Grün, X/Häkchen und textliche Richtigstellung bieten redundante Bedeutungskennzeichen. Die ruhige Darstellung passt zur Interpretation des Konfidenzniveaus."
+      ],
+      "findings": [],
+      "limitations": [
+        "Das rote Wiederholungsintervall hat nur einen sehr kleinen sichtbaren Abstand zur p-Linie. Fachlich ist es im geprüften Raster disjunkt; bei späterer Verkleinerung muss diese Relation lesbar bleiben.",
+        "Die gezeichnete endliche Sammlung ist eine Illustration, keine Behauptung exakt19 Überdeckungen in20 Durchgängen. Die gezeigten Positionen sind nicht als numerisch vermessbare Wahrscheinlichkeitsachse beschriftet."
+      ],
+      "rationale": "Die Überdeckungsrelationen sind im tatsächlichen Raster korrekt. Insbesondere das früher problematische rote Intervall enthält p nicht; die Verfahrensinterpretation und die Abgrenzung zur Einzelintervall-Fehlinterpretation stimmen."
+    },
+    {
+      "goalId": "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+      "title": "Experimentdaten mit Kenngrößen auswerten",
+      "descriptionDe": "Die lernende Person kann Lage- und Streuungsmaße aus Experimentdaten berechnen und die Ergebnisse im Kontext interpretieren.",
+      "descriptionEn": "The learner can compute measures of location and dispersion from experimental data and interpret the results in context.",
+      "canonicalGoalSha256": "sha256:8b6025d296917db9b43ce1932cf03da99ca3a47b1592d0b95bfd860fd84d7bf2",
+      "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/aeb947a2-2dd4-5017-a429-0d777e22db6a/candidate-v1.png",
+      "assetSha256": "sha256:0ed8b296a6719ba12c9a02052aef9c6bb4df47ab462b436e3094fb681f044b80",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/aeb947a2-2dd4-5017-a429-0d777e22db6a/prompt.md",
+      "promptSha256": "sha256:edea928aa2d1c4a01de32f5a58d5931217f6e4d563cfbbfcaa336b54f1fb2491",
+      "generationSha256": "sha256:a627ef1e2d5385b1e409753bd0108cf6bdd6932cd82f0d26479756836b11c19e",
+      "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+      "generationToolAsRecorded": "image_gen.imagegen",
+      "reviewer": "/root/math_m7_post5_context9_blind_b",
+      "actualReviewedAt": "2026-09-20T20:31:45Z",
+      "inspected": true,
+      "humanApproved": false,
+      "decision": "accept",
+      "checks": [
+        "Die Messwerte4,5,5,6,10 erscheinen in Datenkarten und Zahlenangaben konsistent. Summe30 und n=5 ergeben Mittelwert6m.",
+        "Im Schwerpunktbild liegen fünf gleich große Kugeln: eine bei4, zwei übereinander bei5, eine bei6 und eine bei10. Der Stützpunkt liegt bei6.",
+        "Die numerischen Hebelabstände sind links2+1+1=4 und rechts4; die Kugel über der Stütze trägt kein Moment bei. Das Modell zeigt damit korrekt den Mittelwert gleich schwerer Beobachtungen.",
+        "Der Median ist der dritte geordnete Wert5m. Die Spannweite beträgt Maximum10 minus Minimum4 gleich6m; Markierungen und Pfeile zeigen auf die passenden Randwerte.",
+        "Der obere Flugabschnitt ist ausdrücklich schematisch. Die beiden5m-Messungen werden daher nicht fälschlich als zwei verschiedene exakte x-Positionen einer geeichten Flugmessachse gewertet.",
+        "Comicforscher, Papierflieger und Kennwert-Panels verbinden Messkontext, Lage und Streuung. Die Zeichnung erhebt keine unzutreffende Behauptung verschiedener Beobachtungsgewichte."
+      ],
+      "findings": [],
+      "limitations": [
+        "Die handgezeichneten Abstände der Schwerpunktachse sind näherungsweise gleichmäßig; die beschrifteten Werte und Momente sind maßgebend, nicht pixelgenaue Längenmessung.",
+        "Die als ungeordnet bezeichnete Rohdatenliste ist zufällig bereits aufsteigend dargestellt. Das erzeugt keine falsche Kennwertrechnung und ist kein fachlicher Hold."
+      ],
+      "rationale": "Rechnung, gleich schwere Beobachtungen, Schwerpunktlage, Median und Spannweite sind richtig; die Schematisierung des Flugbildes ist transparent."
+    }
+  ]
+}

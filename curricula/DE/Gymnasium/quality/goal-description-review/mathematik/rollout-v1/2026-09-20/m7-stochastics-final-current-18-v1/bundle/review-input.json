@@ -1,0 +1,5550 @@
+{
+  "schemaVersion": 1,
+  "book": {
+    "id": "de-gym-math-m7-stochastics-final-current-18-v1-20260920",
+    "title": "Mathematik M7:18 Stochastik-Grundlagen nach gezielten fachlichen Korrekturen",
+    "locale": "de-DE",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "viewId": "de-gym-math-national-atlas",
+    "scope": {
+      "schoolForm": "Gymnasium"
+    },
+    "pageCount": 18,
+    "projectedAtomicGoalCount": 18,
+    "excludedTargetAtomicGoalCount": 0,
+    "edition": "curricular-atomic-v1",
+    "publicationMode": "review",
+    "atlasBaseUrl": "https://skillpilot.com/lernzielbuch",
+    "oneGoalPerPage": true
+  },
+  "modelDigest": "sha256:70f91b64e4d020dec0069afa736dc7ebba7be825647d24f6e98114a1c619458f",
+  "pages": [
+    {
+      "page": {
+        "pageNumber": 1,
+        "navigationOrder": 0,
+        "treeOrder": 6,
+        "goalId": "dabff49b-d40a-4c81-a584-21408b2d4219",
+        "anchor": "goal-dabff49b-d40a-4c81-a584-21408b2d4219",
+        "title": "Stochastische Unabhängigkeit an Baumdiagrammen und Vierfeldertafeln prüfen",
+        "description": "Die lernende Person kann stochastische Unabhängigkeit bzw. Abhängigkeit an konkreten Beispielen erläutern, in Baumdiagrammen oder Vierfeldertafeln erkennen und rechnerisch überprüfen.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Grundlegende Begriffe und Methoden der Stochastik",
+          "Baumdiagramme, Vierfeldertafeln und bedingte Wahrscheinlichkeiten"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-structure:canonical-selection-dd550132-2a3f-5b4e-a3c6-f940621186ac",
+          "structure:canonical-goal-f1a95baf-b91f-44db-bcb1-70a4d2e3f7d1"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          },
+          {
+            "goalId": "c2831918-26f1-421e-90fb-ce707689594e",
+            "title": "Bedingte und gemeinsame Wahrscheinlichkeiten im Kontext unterscheiden",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-c2831918-26f1-421e-90fb-ce707689594e"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+            "title": "Zufallsexperimente und Modelle vergleichen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-77940875-ad1e-5272-9002-3ca9db810a18"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Stochastische Unabhängigkeit an Baumdiagrammen und Vierfeldertafeln prüfen",
+          "url": "/assets/goal-visualizations/mathematik/dabff49b-d40a-4c81-a584-21408b2d4219/dabff49b-d40a-4c81-a584-21408b2d4219.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Stochastische Unabhängigkeit an Baumdiagrammen und Vierfeldertafeln prüfen\". Die lernende Person kann stochastische Unabhängigkeit bzw. Abhängigkeit an konkreten Beispielen erläutern, in Baumdiagrammen oder Vierfeldertafeln erkennen und rechnerisch überprüfen.",
+          "originalDigest": "sha256:a8fa858d46d9df5181e292d96881761e36dc996b1e6aa71ef5863b0cbbde3ba8",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:e8fac47d14effc5d40f999cac1aba5d33b13b6b3a33e82a7ac3f7b9e0e43eb64",
+        "pageFingerprint": "sha256:2a04ab1353656a75617e61c7461eb7bf78d9f3b70010f540eba97e934c17893f"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 2,
+        "navigationOrder": 1,
+        "treeOrder": 7,
+        "goalId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+        "anchor": "goal-3e974075-b2fd-43e6-88d9-5f596ad053ec",
+        "title": "Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen",
+        "description": "Die lernende Person kann aus Daten abgeleitete Aussagen kritisch prüfen, indem sie Stichprobenumfang und -zusammensetzung, Veränderungen bedingter Wahrscheinlichkeiten in relevanten Teilmengen, Basisrateneffekte, Art der Datenerhebung und Fragestellung berücksichtigt sowie Korrelation und Kausalität unterscheidet.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Grundlegende Begriffe und Methoden der Stochastik"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-structure:canonical-selection-dd550132-2a3f-5b4e-a3c6-f940621186ac"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          },
+          {
+            "goalId": "c2831918-26f1-421e-90fb-ce707689594e",
+            "title": "Bedingte und gemeinsame Wahrscheinlichkeiten im Kontext unterscheiden",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-c2831918-26f1-421e-90fb-ce707689594e"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+            "title": "Zufallsexperimente und Modelle vergleichen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-77940875-ad1e-5272-9002-3ca9db810a18"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen",
+          "url": "/assets/goal-visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.png",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen\". Die lernende Person kann aus Daten abgeleitete Aussagen kritisch prüfen, indem sie Stichprobenumfang und -zusammensetzung, Veränderungen bedingter Wahrscheinlichkeiten in relevanten Teilmengen, Basisrateneffekte, Art der Datenerhebung und Fragestellung berücksichtigt sowie Korrelation und Kausalität unterscheidet.",
+          "originalDigest": "sha256:5885a835c6da43fcf99f2c76616bc72ab05a5b9342620c9ecf19dd223750a68b",
+          "qaStatus": "approved",
+          "approvedForPublication": true
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:caee895fecd5141c308fed1696921a4e33e8d404acff30e22504985a3ca1dd0b",
+        "pageFingerprint": "sha256:af455bc8d9af3e8352d24de6bd1d89c44c74d559bc4869e6daf8a3843270faf8"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 3,
+        "navigationOrder": 2,
+        "treeOrder": 8,
+        "goalId": "122ab909-04ed-572b-a499-754f3bcc8ef0",
+        "anchor": "goal-122ab909-04ed-572b-a499-754f3bcc8ef0",
+        "title": "Grundlegende Zählprinzipien anwenden",
+        "description": "Die lernende Person kann kombinatorische Zählprobleme mit der Produktregel lösen und geordnete Stichproben mit oder ohne Zurücklegen an konkreten Beispielen berechnen.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Grundlegende Begriffe und Methoden der Stochastik"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-structure:canonical-selection-dd550132-2a3f-5b4e-a3c6-f940621186ac"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [],
+        "reverseRequires": [
+          {
+            "goalId": "935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+            "title": "Fakultäten in kombinatorischen Zählproblemen verwenden",
+            "anchor": "goal-935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+            "pageNumber": 4
+          }
+        ],
+        "externalPrerequisites": [
+          {
+            "goalId": "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+            "title": "Bedingte Wahrscheinlichkeiten berechnen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-c3b9c561-dd83-5903-9ec6-49c7f51bafd5"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+            "title": "Gegebenes und Gesuchtes bestimmen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-a288231e-e4bb-5c65-b018-b79a51ca87d8"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Grundlegende Zählprinzipien anwenden",
+          "url": "/assets/goal-visualizations/mathematik/122ab909-04ed-572b-a499-754f3bcc8ef0/122ab909-04ed-572b-a499-754f3bcc8ef0.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Grundlegende Zählprinzipien anwenden\". Die lernende Person kann kombinatorische Zählprobleme mit der Produktregel lösen und geordnete Stichproben mit oder ohne Zurücklegen an konkreten Beispielen berechnen.",
+          "originalDigest": "sha256:5aced1206c687a84bcf3501b7e1221d44c85b491499821d34dbcc9f8c197f480",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:670794e2fe5d773c5414e48d192a60b29f193d2ee67bfae758d283f17964e46e",
+        "pageFingerprint": "sha256:c43e9b18f3f2e2bf9bdeb7a00fe3ab6178327565ed690602dd0e706764ab5b69"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 4,
+        "navigationOrder": 3,
+        "treeOrder": 9,
+        "goalId": "935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+        "anchor": "goal-935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+        "title": "Fakultäten in kombinatorischen Zählproblemen verwenden",
+        "description": "Die lernende Person kann Fakultäten als Zählwerkzeug in kombinatorischen Problemen verwenden, insbesondere bei Permutationen und geordneten Anordnungen ohne Wiederholung.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Grundlegende Begriffe und Methoden der Stochastik"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-structure:canonical-selection-dd550132-2a3f-5b4e-a3c6-f940621186ac"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "122ab909-04ed-572b-a499-754f3bcc8ef0",
+            "title": "Grundlegende Zählprinzipien anwenden",
+            "anchor": "goal-122ab909-04ed-572b-a499-754f3bcc8ef0",
+            "pageNumber": 3
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [],
+        "externalReverseRequires": [
+          {
+            "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
+            "title": "Kombinationen ohne Zurücklegen mit Fakultäten berechnen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-70efdec0-110c-5564-849b-bc05cfff0f6a"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Fakultäten in kombinatorischen Zählproblemen verwenden",
+          "url": "/assets/goal-visualizations/mathematik/935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e/935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Fakultäten in kombinatorischen Zählproblemen verwenden\". Die lernende Person kann Fakultäten als Zählwerkzeug in kombinatorischen Problemen verwenden, insbesondere bei Permutationen und geordneten Anordnungen ohne Wiederholung.",
+          "originalDigest": "sha256:e94bc87e0dd0822abe4a3cf1427e4b72c23beb0c9d84735cb9ba3815241f3ccd",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:5421f44f6c951e5ffe2b3cc9b8ce3943bb9ab5ed32225e24a7e233762dd28516",
+        "pageFingerprint": "sha256:e2862a568692cd215f412912e74885420651dedf9ddc44cd155aedc3f147f236"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 5,
+        "navigationOrder": 4,
+        "treeOrder": 10,
+        "goalId": "1462c189-8679-5f32-bf58-6e81e99e4635",
+        "anchor": "goal-1462c189-8679-5f32-bf58-6e81e99e4635",
+        "title": "Laplace-Wahrscheinlichkeiten ohne Zurücklegen (hypergeometrisch)",
+        "description": "Die lernende Person kann Laplace-Wahrscheinlichkeiten bei Ziehungen ohne Zurücklegen mit Zählverfahren berechnen (z. B. Urnen- oder Lottoprobleme), das hypergeometrische Modell begründen und Ergebnisse an konkreten Beispielen prüfen.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Grundlegende Begriffe und Methoden der Stochastik"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-structure:canonical-selection-dd550132-2a3f-5b4e-a3c6-f940621186ac"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [],
+        "reverseRequires": [
+          {
+            "goalId": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+            "title": "Modelle vergleichen: Ziehen ohne vs. mit Zurücklegen",
+            "anchor": "goal-bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+            "pageNumber": 6
+          }
+        ],
+        "externalPrerequisites": [
+          {
+            "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+            "title": "Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell)",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-0408ac7f-0530-5de5-b248-cf581c9b5a17"
+          }
+        ],
+        "externalReverseRequires": [],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Laplace-Wahrscheinlichkeiten ohne Zurücklegen (hypergeometrisch)",
+          "url": "/assets/goal-visualizations/mathematik/1462c189-8679-5f32-bf58-6e81e99e4635/1462c189-8679-5f32-bf58-6e81e99e4635.png",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Laplace-Wahrscheinlichkeiten ohne Zurücklegen (hypergeometrisch)\". Die lernende Person kann Laplace-Wahrscheinlichkeiten bei Ziehungen ohne Zurücklegen mit Zählverfahren berechnen (z. B. Urnen- oder Lottoprobleme), das hypergeometrische Modell begründen und Ergebnisse an konkreten Beispielen prüfen.",
+          "originalDigest": "sha256:9a9587618b1c67a14f1a6394c6661d0d331e063accf3d0ecd13f80d83a0d35a4",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:f5c6b5ea060dd221ebb65571ae368c24cac4536e6c3cb5cbface8123cb38a576",
+        "pageFingerprint": "sha256:24ae343c9870809907892f6c9c7ae4b45f04973b012dce042103cd1ee30cd758"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 6,
+        "navigationOrder": 5,
+        "treeOrder": 11,
+        "goalId": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+        "anchor": "goal-bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+        "title": "Modelle vergleichen: Ziehen ohne vs. mit Zurücklegen",
+        "description": "Die lernende Person kann begründen, wann das Modell \"mit Zurücklegen\" eine gute Näherung für \"ohne Zurücklegen\" ist, und dies an konkreten Beispielen (z. B. große Urne) rechnerisch vergleichen.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Grundlegende Begriffe und Methoden der Stochastik"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-structure:canonical-selection-dd550132-2a3f-5b4e-a3c6-f940621186ac"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "1462c189-8679-5f32-bf58-6e81e99e4635",
+            "title": "Laplace-Wahrscheinlichkeiten ohne Zurücklegen (hypergeometrisch)",
+            "anchor": "goal-1462c189-8679-5f32-bf58-6e81e99e4635",
+            "pageNumber": 5
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [],
+        "externalReverseRequires": [
+          {
+            "goalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+            "title": "Zufallsexperimente und Modelle vergleichen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-77940875-ad1e-5272-9002-3ca9db810a18"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Modelle vergleichen: Ziehen ohne vs. mit Zurücklegen",
+          "url": "/assets/goal-visualizations/mathematik/bd63c0fc-50ef-55aa-ae6c-25cf73d02636/bd63c0fc-50ef-55aa-ae6c-25cf73d02636.png",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Modelle vergleichen: Ziehen ohne vs. mit Zurücklegen\". Die lernende Person kann begründen, wann das Modell \"mit Zurücklegen\" eine gute Näherung für \"ohne Zurücklegen\" ist, und dies an konkreten Beispielen (z. B. große Urne) rechnerisch vergleichen.",
+          "originalDigest": "sha256:38ee36caa6b28a0ce3c751da7854fa7fe4e0603086e14c4b6b379ee0b9aea4c6",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:3e504f21a28f94c711c0f9a33a39fe1e4e51346645f97d27a7e733594bfdd884",
+        "pageFingerprint": "sha256:44fe48ddf49fe2c7823f89f1df7550380a632ff0d963c0a5d719360009c455cd"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 7,
+        "navigationOrder": 6,
+        "treeOrder": 13,
+        "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+        "anchor": "goal-da95ab35-bac2-54f2-b38f-8b612cde8b54",
+        "title": "Zufallsgrößen und Verteilungen als Modellrahmen einordnen",
+        "description": "Die lernende Person kann zu einfachen stochastischen Situationen eine passende Zufallsgröße und die zugehörige diskrete Wahrscheinlichkeitsverteilung als Modellrahmen beschreiben.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Wahrscheinlichkeitsverteilungen (Überblick)"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-goal-67ef9787-d540-5f30-9995-f1f9c39a1a45"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [],
+        "reverseRequires": [
+          {
+            "goalId": "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+            "title": "Histogramme erstellen und lesen",
+            "anchor": "goal-9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+            "pageNumber": 11
+          },
+          {
+            "goalId": "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+            "title": "Normalverteilungsdichte über μ, σ und Grapheneigenschaften beschreiben (LK)",
+            "anchor": "goal-7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+            "pageNumber": 15
+          },
+          {
+            "goalId": "44dba16e-2e86-56be-974b-a62093ef9211",
+            "title": "Normalverteilung als Approximation binomialer Modelle (LK)",
+            "anchor": "goal-44dba16e-2e86-56be-974b-a62093ef9211",
+            "pageNumber": 16
+          },
+          {
+            "goalId": "1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+            "title": "Herleitung der Poisson-Verteilung als Grenzfall (LK)",
+            "anchor": "goal-1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+            "pageNumber": 17
+          }
+        ],
+        "externalPrerequisites": [
+          {
+            "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          },
+          {
+            "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+            "title": "Funktionsbegriff und Darstellungen verstehen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-09f47964-2cd0-410e-93ee-9632b582fc91"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "55d0474b-b82c-59b6-a62a-b6a0a34d9c4b",
+            "title": "Diskrete und stetige Zufallsgrößen unterscheiden (LK)",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-55d0474b-b82c-59b6-a62a-b6a0a34d9c4b"
+          },
+          {
+            "goalId": "b431148b-526c-4bde-b04b-48d23101d0d3",
+            "title": "Annähernd normalverteilte Zufallsgrößen in Situationen erkennen (LK)",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-b431148b-526c-4bde-b04b-48d23101d0d3"
+          },
+          {
+            "goalId": "fd13605e-21d9-523f-bcf4-6824b6cc09e5",
+            "title": "Dichtefunktion der Normalverteilung angeben und deuten (LK)",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-fd13605e-21d9-523f-bcf4-6824b6cc09e5"
+          },
+          {
+            "goalId": "8c32d941-b51c-5663-951c-a610f8900f76",
+            "title": "Wahrscheinlichkeiten normalverteilter Zufallsgrößen bestimmen (LK)",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-8c32d941-b51c-5663-951c-a610f8900f76"
+          },
+          {
+            "goalId": "18293a33-a5ff-4a0f-9b6a-085f171cbffe",
+            "title": "Statistische Erhebungen exemplarisch planen und dokumentieren",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-18293a33-a5ff-4a0f-9b6a-085f171cbffe"
+          },
+          {
+            "goalId": "c9a897ca-a0a2-5895-bbc4-23b20840c548",
+            "title": "Poisson-Verteilung als Modell seltener Ereignisse nutzen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-c9a897ca-a0a2-5895-bbc4-23b20840c548"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Zufallsgrößen und Verteilungen als Modellrahmen einordnen",
+          "url": "/assets/goal-visualizations/mathematik/da95ab35-bac2-54f2-b38f-8b612cde8b54/da95ab35-bac2-54f2-b38f-8b612cde8b54.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Zufallsgrößen und Verteilungen als Modellrahmen einordnen\". Die lernende Person kann zu einfachen stochastischen Situationen eine passende Zufallsgröße und die zugehörige diskrete Wahrscheinlichkeitsverteilung als Modellrahmen beschreiben.",
+          "originalDigest": "sha256:f5638d813ec26438de6e1a624bd5f9130a86fffea50be554bc35dcfee1ffbf45",
+          "qaStatus": "approved",
+          "approvedForPublication": true
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:df28a8ad39a684f04c81bf62eff468fdac09f3862cdd7b536b8c277e44e6cb1c",
+        "pageFingerprint": "sha256:9905fee1d0a8539258e745f79bdb19e617d12cc8b61eee736d04916c5d96af7c"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 8,
+        "navigationOrder": 10,
+        "treeOrder": 18,
+        "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+        "anchor": "goal-5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+        "title": "Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen",
+        "description": "Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen beschreiben und diskrete Wahrscheinlichkeitsverteilungen in Tabellen oder Diagrammen zur Beschreibung stochastischer Situationen nutzen.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Wahrscheinlichkeitsverteilungen (Überblick)",
+          "Zufallsgrößen und Binomialverteilungen"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-goal-67ef9787-d540-5f30-9995-f1f9c39a1a45",
+          "structure:canonical-goal-187c1bef-57bc-4a93-a26b-04191879626c"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          },
+          {
+            "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+            "title": "Funktionsbegriff und Darstellungen verstehen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-09f47964-2cd0-410e-93ee-9632b582fc91"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+            "title": "Verteilungen in Kontexten nutzen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-9cf020ee-4f6b-554e-97d6-eca3e2aabe99"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen",
+          "url": "/assets/goal-visualizations/mathematik/5927ca6a-91d5-4541-84e9-833bbb2cd7df/5927ca6a-91d5-4541-84e9-833bbb2cd7df.png",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen\". Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen beschreiben und diskrete Wahrscheinlichkeitsverteilungen in Tabellen oder Diagrammen zur Beschreibung stochastischer Situationen nutzen.",
+          "originalDigest": "sha256:02a7f831b6a9211a1ddb964d624e63ed36feeef48786b28014a67144e7bc6c8c",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:0b745e7ec5fbcf6aeeff8c99ef0ac8b99e46396d243194e32837f9d385c3b193",
+        "pageFingerprint": "sha256:261a39a8fb8dedcf13e12dd4a543f01e3aefe9064b655164f27d121ae983f2b1"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 9,
+        "navigationOrder": 7,
+        "treeOrder": 14,
+        "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+        "anchor": "goal-d711bc18-c27c-4739-8289-edac53dc8ba3",
+        "title": "Zufallsgrößen als Zuordnungen einführen und beschreiben",
+        "description": "Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen auf Zahlen einführen und sie in einfachen diskreten Kontexten fachsprachlich beschreiben.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Wahrscheinlichkeitsverteilungen (Überblick)"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-goal-67ef9787-d540-5f30-9995-f1f9c39a1a45"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [],
+        "reverseRequires": [
+          {
+            "goalId": "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+            "title": "Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen",
+            "anchor": "goal-6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+            "pageNumber": 12
+          }
+        ],
+        "externalPrerequisites": [
+          {
+            "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          },
+          {
+            "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+            "title": "Funktionsbegriff und Darstellungen verstehen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-09f47964-2cd0-410e-93ee-9632b582fc91"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+            "title": "Verteilungen in Kontexten nutzen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-9cf020ee-4f6b-554e-97d6-eca3e2aabe99"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Zufallsgrößen als Zuordnungen einführen und beschreiben",
+          "url": "/assets/goal-visualizations/mathematik/d711bc18-c27c-4739-8289-edac53dc8ba3/d711bc18-c27c-4739-8289-edac53dc8ba3.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Zufallsgrößen als Zuordnungen einführen und beschreiben\". Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen auf Zahlen einführen und sie in einfachen diskreten Kontexten fachsprachlich beschreiben.",
+          "originalDigest": "sha256:fc3cbdda02aa50eda9c528fc3606e25b8c3e88dae6b1faf5a9a51b70c1557c2e",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:0f5f1b86ebdad866111ae9d377234618a6f90370584fb7ca71bf522bea4fff98",
+        "pageFingerprint": "sha256:3ce47d0e0a0055b09cf0200623e954d011651828edaede1b6a3ce2185df92db2"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 10,
+        "navigationOrder": 13,
+        "treeOrder": 21,
+        "goalId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+        "anchor": "goal-7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+        "title": "Kenngrößen binomialverteilter Zufallsgrößen",
+        "description": "Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert, Varianz und Standardabweichung berechnen und diese mit der zugrunde liegenden Bernoulli-Situation in Beziehung setzen.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Wahrscheinlichkeitsverteilungen (Überblick)"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-goal-67ef9787-d540-5f30-9995-f1f9c39a1a45"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [],
+        "reverseRequires": [
+          {
+            "goalId": "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+            "title": "Histogramme erstellen und lesen",
+            "anchor": "goal-9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+            "pageNumber": 11
+          },
+          {
+            "goalId": "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+            "title": "Sigma-Regeln für Verteilungen anwenden",
+            "anchor": "goal-8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+            "pageNumber": 18
+          }
+        ],
+        "externalPrerequisites": [
+          {
+            "goalId": "e495fa38-b198-5280-a405-9e41cafd6d17",
+            "title": "Bernoulli-Experimente und -Ketten identifizieren und parametrisieren",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-e495fa38-b198-5280-a405-9e41cafd6d17"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "42d300e3-e982-5889-98d7-fc297f10eff1",
+            "title": "Einfluss von n und p auf Binomialverteilungen analysieren",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-42d300e3-e982-5889-98d7-fc297f10eff1"
+          },
+          {
+            "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+            "title": "Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-5b54f272-f588-5009-8b42-eb15f846d3e2"
+          },
+          {
+            "goalId": "66f432e9-22d3-51a9-8787-35f91db30616",
+            "title": "Binomialverteilungen in Kontexten nutzen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-66f432e9-22d3-51a9-8787-35f91db30616"
+          },
+          {
+            "goalId": "8c32d941-b51c-5663-951c-a610f8900f76",
+            "title": "Wahrscheinlichkeiten normalverteilter Zufallsgrößen bestimmen (LK)",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-8c32d941-b51c-5663-951c-a610f8900f76"
+          },
+          {
+            "goalId": "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+            "title": "Argumentationsmuster von Hypothesentests erläutern",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b"
+          },
+          {
+            "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+            "title": "Null- und Alternativhypothesen formulieren",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-f14e1643-ad8d-5235-a832-97987fa18489"
+          },
+          {
+            "goalId": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+            "title": "Gütefunktion und Teststärke untersuchen (LK)",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-82bce6e8-7dc7-501a-a4f6-df8a3b905e3c"
+          },
+          {
+            "goalId": "f85419c4-63ac-5d6d-b73b-fcb12a0ff89f",
+            "title": "Prognoseintervalle für relative Häufigkeiten bestimmen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f"
+          },
+          {
+            "goalId": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+            "title": "Konfidenzintervalle für Wahrscheinlichkeiten berechnen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-5f328147-619c-568d-9a0d-e1787ca0c01b"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Kenngrößen binomialverteilter Zufallsgrößen",
+          "url": "/assets/goal-visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.png",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Kenngrößen binomialverteilter Zufallsgrößen\". Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert, Varianz und Standardabweichung berechnen und diese mit der zugrunde liegenden Bernoulli-Situation in Beziehung setzen.",
+          "originalDigest": "sha256:2b136412c7f8a6e6738beae4a4854ee271ac50139a8d68fb881eb0a64b8c58ed",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:308e1c79e7447e6452b8f7ea3cac1aaedeab6a49db81e6fce97906bad221cca3",
+        "pageFingerprint": "sha256:a4a79b7f34734a5012cbe2c281e8c4b2c51cb75f0c62977cb7e26db38dc6fc91"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 11,
+        "navigationOrder": 11,
+        "treeOrder": 19,
+        "goalId": "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+        "anchor": "goal-9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+        "title": "Histogramme erstellen und lesen",
+        "description": "Die lernende Person kann Histogramme diskreter Zufallsgrößen erstellen, lesen und mit Kenngrößen (Erwartungswert, Varianz, Standardabweichung) in einfachen Beispielen verknüpfen.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Wahrscheinlichkeitsverteilungen (Überblick)",
+          "Zufallsgrößen und Binomialverteilungen"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-goal-67ef9787-d540-5f30-9995-f1f9c39a1a45",
+          "structure:canonical-goal-187c1bef-57bc-4a93-a26b-04191879626c"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+            "title": "Zufallsgrößen und Verteilungen als Modellrahmen einordnen",
+            "anchor": "goal-da95ab35-bac2-54f2-b38f-8b612cde8b54",
+            "pageNumber": 7
+          },
+          {
+            "goalId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+            "title": "Kenngrößen binomialverteilter Zufallsgrößen",
+            "anchor": "goal-7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+            "pageNumber": 10
+          }
+        ],
+        "reverseRequires": [
+          {
+            "goalId": "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+            "title": "Sigma-Regeln für Verteilungen anwenden",
+            "anchor": "goal-8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+            "pageNumber": 18
+          }
+        ],
+        "externalPrerequisites": [],
+        "externalReverseRequires": [
+          {
+            "goalId": "42d300e3-e982-5889-98d7-fc297f10eff1",
+            "title": "Einfluss von n und p auf Binomialverteilungen analysieren",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-42d300e3-e982-5889-98d7-fc297f10eff1"
+          },
+          {
+            "goalId": "66f432e9-22d3-51a9-8787-35f91db30616",
+            "title": "Binomialverteilungen in Kontexten nutzen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-66f432e9-22d3-51a9-8787-35f91db30616"
+          },
+          {
+            "goalId": "84069c5e-5526-57c1-9417-a886ccfd3f66",
+            "title": "Daten mit Verteilungen vergleichen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-84069c5e-5526-57c1-9417-a886ccfd3f66"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Histogramme erstellen und lesen",
+          "url": "/assets/goal-visualizations/mathematik/9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0/9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Histogramme erstellen und lesen\". Die lernende Person kann Histogramme diskreter Zufallsgrößen erstellen, lesen und mit Kenngrößen (Erwartungswert, Varianz, Standardabweichung) in einfachen Beispielen verknüpfen.",
+          "originalDigest": "sha256:f52ea9609f4f6ab6ac7b3d1c8d549c7792fcc207eef905147c0e82b813f7715b",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:f2c3457e79e9b8e48f5761a0e08289dbd6b6ac4ddba5ab422118842b8baa72e9",
+        "pageFingerprint": "sha256:e1f2243eff1f473364d0fefe0c1989cbcc2633da5fa9d0fc5aa62dafb854b20b"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 12,
+        "navigationOrder": 8,
+        "treeOrder": 15,
+        "goalId": "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+        "anchor": "goal-6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+        "title": "Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen",
+        "description": "Die lernende Person kann für einfache diskrete Zufallsgrößen Erwartungswert, Varianz und Standardabweichung bestimmen, diese im Kontext deuten und damit einfache Glücksspiele untersuchen.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Wahrscheinlichkeitsverteilungen (Überblick)"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-goal-67ef9787-d540-5f30-9995-f1f9c39a1a45"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+            "title": "Zufallsgrößen als Zuordnungen einführen und beschreiben",
+            "anchor": "goal-d711bc18-c27c-4739-8289-edac53dc8ba3",
+            "pageNumber": 9
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [],
+        "externalReverseRequires": [
+          {
+            "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+            "title": "Verteilungen in Kontexten nutzen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-9cf020ee-4f6b-554e-97d6-eca3e2aabe99"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/6053aeda-84f7-4c2c-98d7-1753a7e26dcc.png",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen\". Die lernende Person kann für einfache diskrete Zufallsgrößen Erwartungswert, Varianz und Standardabweichung bestimmen, diese im Kontext deuten und damit einfache Glücksspiele untersuchen.",
+          "originalDigest": "sha256:0d637515d5e66809f489094047a9e522ed24d5f49175196b6674fb87bd640320",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:e05f68014b1802b4291d39b7ff5edb133442c8bfa83ad8b1365cb61a47fd1d84",
+        "pageFingerprint": "sha256:f56467a0417d3c844ba267e5c4edacf3fb5539a9bd5e66ff980dd18388e8fd97"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 13,
+        "navigationOrder": 9,
+        "treeOrder": 16,
+        "goalId": "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+        "anchor": "goal-837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+        "title": "Wahrscheinlichkeiten in Bernoulli-Ketten berechnen",
+        "description": "Die lernende Person kann Bernoulli-Ketten in Sachzusammenhängen modellieren, mit der Binomialformel Wahrscheinlichkeiten berechnen und die Grenzen solcher Modelle reflektieren.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Wahrscheinlichkeitsverteilungen (Überblick)"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-goal-67ef9787-d540-5f30-9995-f1f9c39a1a45"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "e495fa38-b198-5280-a405-9e41cafd6d17",
+            "title": "Bernoulli-Experimente und -Ketten identifizieren und parametrisieren",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-e495fa38-b198-5280-a405-9e41cafd6d17"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+            "title": "Verteilungen in Kontexten nutzen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-9cf020ee-4f6b-554e-97d6-eca3e2aabe99"
+          },
+          {
+            "goalId": "677be619-5f0a-59bf-9730-0071c7d3f150",
+            "title": "Entscheidungsregeln und Verwerfungsbereiche bestimmen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-677be619-5f0a-59bf-9730-0071c7d3f150"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Wahrscheinlichkeiten in Bernoulli-Ketten berechnen",
+          "url": "/assets/goal-visualizations/mathematik/837b015a-c2a2-5f31-831c-ae16ee2ee6ce/837b015a-c2a2-5f31-831c-ae16ee2ee6ce.png",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Wahrscheinlichkeiten in Bernoulli-Ketten berechnen\". Die lernende Person kann Bernoulli-Ketten in Sachzusammenhängen modellieren, mit der Binomialformel Wahrscheinlichkeiten berechnen und die Grenzen solcher Modelle reflektieren.",
+          "originalDigest": "sha256:428c98c539b4ad5193280223532b23ec314dcd67b3a2189776f0d356ffb2570a",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:c1246543dc5c3ce88e42cea2c52d5e3eaaf51fa72c6fedbfa121e1f11f3a9f49",
+        "pageFingerprint": "sha256:e81f10e3866d0153006f0556da17a6965b8100189ddaa881ba8b8dc90368a3a0"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 14,
+        "navigationOrder": 12,
+        "treeOrder": 20,
+        "goalId": "f7879354-1a82-4195-8e3c-a339a820439c",
+        "anchor": "goal-f7879354-1a82-4195-8e3c-a339a820439c",
+        "title": "Erwartungswert und Standardabweichung binomialverteilter Zufallsgrößen bestimmen und deuten",
+        "description": "Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert und Standardabweichung berechnen und beide Kenngrößen mit der zugrunde liegenden Situation in Beziehung setzen.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Wahrscheinlichkeitsverteilungen (Überblick)",
+          "Zufallsgrößen und Binomialverteilungen"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-goal-67ef9787-d540-5f30-9995-f1f9c39a1a45",
+          "structure:canonical-goal-187c1bef-57bc-4a93-a26b-04191879626c"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "e495fa38-b198-5280-a405-9e41cafd6d17",
+            "title": "Bernoulli-Experimente und -Ketten identifizieren und parametrisieren",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-e495fa38-b198-5280-a405-9e41cafd6d17"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+            "title": "Verteilungen in Kontexten nutzen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-9cf020ee-4f6b-554e-97d6-eca3e2aabe99"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Erwartungswert und Standardabweichung binomialverteilter Zufallsgrößen bestimmen und deuten",
+          "url": "/assets/goal-visualizations/mathematik/f7879354-1a82-4195-8e3c-a339a820439c/f7879354-1a82-4195-8e3c-a339a820439c.png",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Erwartungswert und Standardabweichung binomialverteilter Zufallsgrößen bestimmen und deuten\". Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert und Standardabweichung berechnen und beide Kenngrößen mit der zugrunde liegenden Situation in Beziehung setzen.",
+          "originalDigest": "sha256:5ae70c33ccf066c8dbc819795a53e85441afec4f7a8f85f870fbd2356fb8e5cf",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:353574e9137bcd13797e0f8eaeee811cce22ff049fb072039d1bda8a791b18ee",
+        "pageFingerprint": "sha256:6b3dd5c563c8d9ae4f5750cd59d57d151e4dfa510ca9aa8721d1411a27af2844"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 15,
+        "navigationOrder": 14,
+        "treeOrder": 22,
+        "goalId": "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+        "anchor": "goal-7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+        "title": "Normalverteilungsdichte über μ, σ und Grapheneigenschaften beschreiben (LK)",
+        "description": "Die lernende Person kann den Einfluss der Parameter $\\mu$ und $\\sigma$ auf die Normalverteilung und ihre Glockenkurve beschreiben, Erwartungswert und Standardabweichung aus Term oder Graph entnehmen sowie Hochpunkt und Wendepunkte der Dichtefunktion lokalisieren.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Wahrscheinlichkeiten und Verteilungen",
+          "Wahrscheinlichkeitsverteilungen (Überblick)"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-structure:canonical-selection-6fd35cc4-c375-4e58-b6f1-5382d8422906",
+          "structure:canonical-goal-67ef9787-d540-5f30-9995-f1f9c39a1a45"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+            "title": "Zufallsgrößen und Verteilungen als Modellrahmen einordnen",
+            "anchor": "goal-da95ab35-bac2-54f2-b38f-8b612cde8b54",
+            "pageNumber": 7
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [],
+        "externalReverseRequires": [
+          {
+            "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+            "title": "Statistische Daten und Verteilungen abgleichen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Normalverteilungsdichte über μ, σ und Grapheneigenschaften beschreiben (LK)",
+          "url": "/assets/goal-visualizations/mathematik/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Normalverteilungsdichte über μ, σ und Grapheneigenschaften beschreiben (LK)\". Die lernende Person kann den Einfluss der Parameter $\\mu$ und $\\sigma$ auf die Normalverteilung und ihre Glockenkurve beschreiben, Erwartungswert und Standardabweichung aus Term oder Graph entnehmen sowie Hochpunkt und Wendepunkte der Dichtefunktion lokalisieren.",
+          "originalDigest": "sha256:fb2cb6033fe71beb1fd4665a558843014731045b3b672b32f7d161a09cbc9305",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:c878c62b1c20d78e157a5ecf7485f3d7a3c86b5dfbaf1408001d594a10302c10",
+        "pageFingerprint": "sha256:3377e3f943cca90675d123eb163862ce4f9fc25073c4c02edd6bc487229f62bf"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 16,
+        "navigationOrder": 16,
+        "treeOrder": 26,
+        "goalId": "44dba16e-2e86-56be-974b-a62093ef9211",
+        "anchor": "goal-44dba16e-2e86-56be-974b-a62093ef9211",
+        "title": "Normalverteilung als Approximation binomialer Modelle (LK)",
+        "description": "Die lernende Person kann Histogramme binomialverteilter Zufallsgrößen bei hinreichend großer Standardabweichung durch eine Normalverteilung approximieren, die Näherung fachlich begründen und den Bezug zu den Sigma-Regeln deuten.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Statistik und weitere Wahrscheinlichkeitsverteilungen"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-goal-35e14223-54fc-5ec1-ae73-ac9f13b07db2"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+            "title": "Zufallsgrößen und Verteilungen als Modellrahmen einordnen",
+            "anchor": "goal-da95ab35-bac2-54f2-b38f-8b612cde8b54",
+            "pageNumber": 7
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "66f432e9-22d3-51a9-8787-35f91db30616",
+            "title": "Binomialverteilungen in Kontexten nutzen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-66f432e9-22d3-51a9-8787-35f91db30616"
+          },
+          {
+            "goalId": "8c32d941-b51c-5663-951c-a610f8900f76",
+            "title": "Wahrscheinlichkeiten normalverteilter Zufallsgrößen bestimmen (LK)",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-8c32d941-b51c-5663-951c-a610f8900f76"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+            "title": "Weitere stetige Verteilungen exemplarisch nutzen (LK)",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-455ef29a-7194-5c5a-b832-1c27fcbf2516"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Normalverteilung als Approximation binomialer Modelle (LK)",
+          "url": "/assets/goal-visualizations/mathematik/44dba16e-2e86-56be-974b-a62093ef9211/44dba16e-2e86-56be-974b-a62093ef9211.png",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Normalverteilung als Approximation binomialer Modelle (LK)\". Die lernende Person kann Histogramme binomialverteilter Zufallsgrößen bei hinreichend großer Standardabweichung durch eine Normalverteilung approximieren, die Näherung fachlich begründen und den Bezug zu den Sigma-Regeln deuten.",
+          "originalDigest": "sha256:5317c76fe88d5df500cfcfcd288683af3c84de87a7bc40f0b83feece84aecfe7",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:1295abcdc4ad701b8a91b5ec99d588ffdc5a5bde4574dd028d66bb4cec23d82f",
+        "pageFingerprint": "sha256:2198a4b99b599bea7e128a48d2a3f132bf33372d9d0bc710c65a534ae931ca9b"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 17,
+        "navigationOrder": 17,
+        "treeOrder": 27,
+        "goalId": "1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+        "anchor": "goal-1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+        "title": "Herleitung der Poisson-Verteilung als Grenzfall (LK)",
+        "description": "Die lernende Person kann für $n\\to\\infty$, $p_n\\to 0$ und $n p_n\\to\\lambda>0$ den Grenzübergang von der Binomial- zur Poisson-Verteilung herleiten, die Grenzschritte fachlich erklären und daraus ihre Eignung für seltene Ereignisse begründen.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Statistik und weitere Wahrscheinlichkeitsverteilungen"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-goal-35e14223-54fc-5ec1-ae73-ac9f13b07db2"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+            "title": "Zufallsgrößen und Verteilungen als Modellrahmen einordnen",
+            "anchor": "goal-da95ab35-bac2-54f2-b38f-8b612cde8b54",
+            "pageNumber": 7
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "66f432e9-22d3-51a9-8787-35f91db30616",
+            "title": "Binomialverteilungen in Kontexten nutzen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-66f432e9-22d3-51a9-8787-35f91db30616"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+            "title": "Statistische Daten und Verteilungen abgleichen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Herleitung der Poisson-Verteilung als Grenzfall (LK)",
+          "url": "/assets/goal-visualizations/mathematik/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/1cefd1ad-a250-5a03-8de7-04bdaf465ad8.jpg",
+          "altText": "Die lernende Person kann für $n\\to\\infty$, $p_n\\to 0$ und $n p_n\\to\\lambda>0$ den Grenzübergang von der Binomial- zur Poisson-Verteilung herleiten, die Grenzschritte fachlich erklären und daraus ihre Eignung für seltene Ereignisse begründen.",
+          "originalDigest": "sha256:f56cfcf8cefeba64491ce0c32a85fcb7f001e62766a9a2cf1f822adc97d1023e",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:7227416f55126e85cefb4fa63192630893f20f066c541509a9d5e912c716a55b",
+        "pageFingerprint": "sha256:72d0521ee60c4673b7d3770228e9d71eb2471bf10fa5cbbba6b05db6f54d1101"
+      },
+      "evidenceProfile": null
+    },
+    {
+      "page": {
+        "pageNumber": 18,
+        "navigationOrder": 15,
+        "treeOrder": 24,
+        "goalId": "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+        "anchor": "goal-8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+        "title": "Sigma-Regeln für Verteilungen anwenden",
+        "description": "Die lernende Person kann an Histogrammen, Dichtegraphen und Diagrammen annähernd normalverteilter Größen ablesen, welcher Anteil der Werte in $\\sigma$-Umgebungen um den Mittelwert liegt, und die Sigma- beziehungsweise Quantilregeln für $1\\sigma$, $1{,}64\\sigma$, $1{,}96\\sigma$, $2\\sigma$, $2{,}58\\sigma$ und $3\\sigma$ qualitativ erläutern.",
+        "breadcrumbs": [
+          "Mathematik",
+          "Sekundarstufe II (GK und LK)",
+          "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "Prognoseintervalle, Konfidenzintervalle und Stichprobenplanung"
+        ],
+        "chapterIds": [
+          "structure:goal-book-math-root",
+          "structure:goal-book-math-sekii-gk-lk",
+          "structure:canonical-structure:stochastics",
+          "structure:canonical-goal-4af3fe2f-851c-520a-9a1d-b8036ac1dbb1"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+            "title": "Kenngrößen binomialverteilter Zufallsgrößen",
+            "anchor": "goal-7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+            "pageNumber": 10
+          },
+          {
+            "goalId": "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+            "title": "Histogramme erstellen und lesen",
+            "anchor": "goal-9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+            "pageNumber": 11
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [],
+        "externalReverseRequires": [
+          {
+            "goalId": "677be619-5f0a-59bf-9730-0071c7d3f150",
+            "title": "Entscheidungsregeln und Verwerfungsbereiche bestimmen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-677be619-5f0a-59bf-9730-0071c7d3f150"
+          },
+          {
+            "goalId": "f85419c4-63ac-5d6d-b73b-fcb12a0ff89f",
+            "title": "Prognoseintervalle für relative Häufigkeiten bestimmen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f"
+          },
+          {
+            "goalId": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+            "title": "Konfidenzintervalle für Wahrscheinlichkeiten berechnen",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-5f328147-619c-568d-9a0d-e1787ca0c01b"
+          },
+          {
+            "goalId": "5dbf149c-d335-552c-a918-768a12e09201",
+            "title": "Normalverteilung zur Modellierung von Messdaten verwenden (LK)",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-5dbf149c-d335-552c-a918-768a12e09201"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Sigma-Regeln für Verteilungen anwenden",
+          "url": "/assets/goal-visualizations/mathematik/8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d/8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d.png",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Sigma-Regeln für Verteilungen anwenden\". Die lernende Person kann an Histogrammen, Dichtegraphen und Diagrammen annähernd normalverteilter Größen ablesen, welcher Anteil der Werte in $\\sigma$-Umgebungen um den Mittelwert liegt, und die Sigma- beziehungsweise Quantilregeln für $1\\sigma$, $1{,}64\\sigma$, $1{,}96\\sigma$, $2\\sigma$, $2{,}58\\sigma$ und $3\\sigma$ qualitativ erläutern.",
+          "originalDigest": "sha256:8ea783cf9a7caaeeafb5afb49fcc85421780a4a365023177b5a1f439ca51febe",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:b1cb147d0bad4e665754642608f71f66d4f1358f6728fe59acb060dc4130eac1",
+        "pageFingerprint": "sha256:86a6d7aa40fcc41f79348db5c22e727d8b08fccf06812f32ad6ca98191d75f89"
+      },
+      "evidenceProfile": null
+    }
+  ]
+}

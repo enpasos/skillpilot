@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "scope": "Actual PDF derivative readability and size smoke; not a new D/P review or human approval",
+  "reviewer": "Codex root, actual rendered-page inspection",
+  "pdfPath": "app/public/lernzielbuch/de-gym-mathematik-bundesweit.pdf",
+  "pdfSha256": "2176b223713693a67d60b9b2ad39a21ec321519eb9af7d168ee9c2ce82e30c91",
+  "pdfBytes": 83412373,
+  "unchangedMaximumBytes": 94371840,
+  "previousFailedBuildBytes": 119645617,
+  "renderCommand": "pdftoppm -f <physical-page> -l <physical-page> -scale-to 1600 -singlefile -png <pdf> <local-preview>",
+  "pages": [
+    {
+      "goalId": "42d300e3-e982-5889-98d7-fc297f10eff1",
+      "logicalPage": 448,
+      "physicalPage": 458,
+      "previewSha256": "0b13f9d25113648dd916559fd97bfbf237511b2ff1816ed5ddb2455a2ee48652",
+      "result": "All four histograms and labels readable; complete visualization within page; axes, probabilities and parameter comparisons retained."
+    },
+    {
+      "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+      "logicalPage": 474,
+      "physicalPage": 484,
+      "previewSha256": "c27d203f52f598eeaaf2d8467cc94f158d2a41a36c7856d4f909432a423a2a90",
+      "result": "Three panels, parameter axes, interval labels, equation and approximation note readable; no cropped content."
+    }
+  ],
+  "sourceImages": "Original reviewed PNGs unchanged; only bounded PDF print derivatives encoded as JPEG",
+  "humanApprovalChanged": false,
+  "fullGoalCompleted": false
+}

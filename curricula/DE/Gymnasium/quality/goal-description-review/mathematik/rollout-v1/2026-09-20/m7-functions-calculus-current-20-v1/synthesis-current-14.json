@@ -1,0 +1,456 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex /root (AI adjudicator); /root/math_m7_batch20_review_a (technical integration)",
+  "synthesizedAt": "2026-09-20T18:32:35.898Z",
+  "batch": {
+    "batchId": "mathematik-m7-functions-calculus-current-20-v1-20260920",
+    "batchManifestDigest": "sha256:2d0d4db7e570e9854d2d989c46cb96c066f64cdedb8749293636ff3e1c5c5814",
+    "configDigest": "sha256:fb52cb9670c7e0e32dfaa7221c1ed761cbc029649675cdf606290648ecdc88ac",
+    "bundleFingerprint": "sha256:e8d5d6b0f52e81a8d269efd0b20357d87dd01136f3d890991332ac7ca6bc9f73",
+    "bookDigest": "sha256:9ca5c948469253ef6d750876e7049bdaf7d76cca52ccfce1fdf1500dd1d0be53",
+    "reviewInputFingerprint": "sha256:85edb443deb10002b12967208948a1ffefb5e71fa29db22bfbd8ee0c39471fb1",
+    "dualSummaryDigest": "sha256:a8c31ff0c5f7dfacd25273050c558446844341787d27a33f7fac6497ea55d824",
+    "canonicalLandscapeDigest": "sha256:81f9762ad2fadf97a3a1e23161daab778408a6fb4ccf9f86bb0bdf5454dc7b8f"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-functions-calculus-current-20-v1-20260920-a",
+      "campaignDigest": "sha256:df978d74fa0d65d7b587ff7e83bcb8cfda313d5cd7c94aaf75e43d14781f708b",
+      "roundId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-functions-calculus-current-20-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:85edb443deb10002b12967208948a1ffefb5e71fa29db22bfbd8ee0c39471fb1",
+      "batchId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:d5d980c5e2b2b68025ef531f624d96cfd23340b7ed17005219b65ca771a6fadb",
+      "runId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "runManifestDigest": "sha256:9652b7e853e703940f50a7f00609aea0d6948a7b709319a2f1f1cd451b0cbf9a",
+      "resultsDigest": "sha256:176f251b192bacfdb869f4308fd19fa7640054a7fa4949e646a689ea60882bb5"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-functions-calculus-current-20-v1-20260920-b",
+      "campaignDigest": "sha256:053173c20c822fa7b5ab5d6f4740ea9fdade83ada59e162a492e53d835948f02",
+      "roundId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-functions-calculus-current-20-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:85edb443deb10002b12967208948a1ffefb5e71fa29db22bfbd8ee0c39471fb1",
+      "batchId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:4dfdb660d460ee4bb4caf3112e6dbd15b2dee739b8ec6cdd12e04a712fde4c8b",
+      "runId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "runManifestDigest": "sha256:dc9f9056c9ba7cc63f84fb8b418cbc4baf3c11104b2ce7abbb0071f36e5a83de",
+      "resultsDigest": "sha256:df908d46a40ad7a2b2ec5d8db2beb385dc3b55063a92c0dd4237aef2b6abbd12"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-01",
+      "goalId": "71683f37-24de-4e0f-badd-858b56fa4d64",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c11467c81ba05d9115628fc93ecdf2a9fa5b75a9cb902c870defe9a5910910c1",
+      "pageFingerprint": "sha256:1bd318f7f211319ee82d05d8067829d68e4c222eb9354374079535629f834eaa",
+      "goalReviewContextFingerprint": "sha256:00aa601e62a178fdd27d59df9ae5a60728776a32d03ba1035ab0a8096dc2dc5b",
+      "finalText": {
+        "titleDe": "Parameter einer Funktion aus Kontextbedingungen bestimmen",
+        "titleEn": "Determine function parameters from contextual conditions",
+        "descriptionDe": "Die lernende Person kann Parameter einer Funktion mithilfe von Bedingungen bestimmen, die sich aus einer Fragestellung oder einem Sachkontext ergeben.",
+        "descriptionEn": "The learner can determine parameters of a function using conditions that arise from a question or real-world context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-001",
+          "recordDigest": "sha256:e83aeeb3cb2743b18ac8afe887ed5bb04c47ebc9949d92a4780a29a352fb7dcf"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-001",
+          "recordDigest": "sha256:3ec47b459e352cdf97c88ad487793877e6e9a0dd123d547e20502729d1f7d62c"
+        }
+      },
+      "rationaleDe": "Beide Reviews begründen KEEP mit derselben begrenzten Umkehrfrage: Kontextbedingungen werden in mathematische Bedingungen übersetzt und die Parameter daran bestimmt und rückgeprüft. Die qualitative Untersuchung der Parameterwirkung bleibt dem Nachfolger vorbehalten. Evidence aus A wird gewählt, weil sie diese Kette sowie den strukturellen Wechsel von Punkt- zu Achsen- oder Scheitelbedingungen ausdrücklich erhält.",
+      "rationaleEn": "Both reviews support KEEP for the same bounded inverse problem: contextual conditions are translated into mathematical constraints, parameters are determined, and the result is checked against those constraints. Qualitative investigation of parameter effects remains with the successor. Evidence from A is selected because it preserves this chain and an explicit structural change from point conditions to axis or vertex conditions."
+    },
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-02",
+      "goalId": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:340765daa1322edf6a411a2a9328ec0d5dc2788b7eb964e454071047aa8d721f",
+      "pageFingerprint": "sha256:4323eb25c04c441eea3638f3152ec8c49d9cc9f9b586e7e288a04a3cfdea7e5d",
+      "goalReviewContextFingerprint": "sha256:ca19288f37861886f84bd5a9379068c66a62fb807d5244be92710f3e5693e425",
+      "finalText": {
+        "titleDe": "Streckungen und Stauchungen von Funktionsgraphen beschreiben",
+        "titleEn": "Describe stretches and compressions of function graphs",
+        "descriptionDe": "Die lernende Person kann Streckungen und Stauchungen in x- oder y-Richtung über Faktoren im Funktionsterm beschreiben und die Auswirkungen auf den Graphen darstellen.",
+        "descriptionEn": "The learner can describe stretches and compressions in the x or y direction using factors in the function term and represent the effects on the graph."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-002",
+          "recordDigest": "sha256:fd2f633d77d7c02969c838c4394d867ab746331c1352c3c300877d51e1d638f0"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-002",
+          "recordDigest": "sha256:28073e27e831ddb41dc875bf46a53b5aa4b3775f18359c22319df7b8faf6e82f"
+        }
+      },
+      "rationaleDe": "A und B sehen die vorhandene Beschreibung als präzise Verbindung von Termfaktoren und Graphenwirkung; horizontale und vertikale Skalierung sind Varianten derselben Darstellungsübersetzung. A wird als Evidence gewählt, weil die reziproke Wirkung innerer Faktoren und der Transfer auf einen unsymmetrischen, nur grafisch gegebenen Verlauf ausdrücklich vorkommen. Spiegelungen werden nicht zusätzlich eingeführt.",
+      "rationaleEn": "A and B consider the existing description a precise connection between expression factors and graph effects; horizontal and vertical scaling are variants of the same representation translation. A is selected for its explicit reciprocal effect of inner factors and transfer to an asymmetric graph supplied without a formula. Reflections are not added to the scope."
+    },
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-03",
+      "goalId": "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:24350e0f5aed7f0a6fdcf449fdc3dbdc0ea3c6e0bf2c290e96ec8ef72c926f7e",
+      "pageFingerprint": "sha256:59351fcefde9f6a501489568eec4c7771eb48d59007cd6792887e3333295ab3d",
+      "goalReviewContextFingerprint": "sha256:01a88a4a97de8ea2f0f2d1d38a4699d07d9afb3543ac897210342d57d77a4357",
+      "finalText": {
+        "titleDe": "Spiegelungen von Funktionsgraphen beschreiben",
+        "titleEn": "Describe reflections of function graphs",
+        "descriptionDe": "Die lernende Person kann Spiegelungen an der x-Achse, y-Achse oder am Ursprung anhand von Vorzeichenänderungen im Funktionsterm beschreiben und grafisch darstellen.",
+        "descriptionEn": "The learner can describe reflections across the x-axis, y-axis, or the origin using sign changes in the function term and represent them graphically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-003",
+          "recordDigest": "sha256:05a7ff1ccc0a7751a897b0a4527a5ceb4d6d601842fb13720da5d1724e379fcb"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-003",
+          "recordDigest": "sha256:a7632094a5009f8b0ee55131f55c175757c4585c05c16eb68cef815ca78277e9"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die vollständige DE/EN-Zuordnung von Vorzeichenwechseln zu Achsen- und Ursprungsspiegelung. Die drei Fälle gehören zur gemeinsamen Punktabbildung, ohne die allgemeine Symmetriebegründung des Nachfolgers vorzuziehen. A liefert die ausgewählte Evidence mit eigenständiger Punktzuordnung und der rückwärts gerichteten Identifikation einer Spiegelung an einem neuen unsymmetrischen Graphen.",
+      "rationaleEn": "Both reviews confirm the complete bilingual mapping from sign changes to axis and origin reflections. The three cases belong to one point-mapping competence without anticipating the successor goal on general symmetry justification. A provides the selected evidence through independent point matching and inverse identification of a reflection on a fresh asymmetric graph."
+    },
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-04",
+      "goalId": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d6b8e891c709c898f8f7513dd7a41b6ab64657d1781d22054892a354490e7579",
+      "pageFingerprint": "sha256:2e632ef2b0c56123317ec4789cbbb272e7a088932ff451f59feafcd0f83008e2",
+      "goalReviewContextFingerprint": "sha256:858510cb6593f562c3c86c201ab764ea9a1e856499ff1a9a2515a8ec4d09b98c",
+      "finalText": {
+        "titleDe": "Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen",
+        "titleEn": "Justify symmetry properties of shifted function and derivative graphs",
+        "descriptionDe": "Die lernende Person kann Symmetrieeigenschaften eines verschobenen Funktionsgraphen oder des Graphen einer Ableitungsfunktion aus Termstruktur, Transformationen oder Ableitungszusammenhängen begründen.",
+        "descriptionEn": "The learner can justify symmetry properties of a shifted function graph or of a derivative graph from term structure, transformations, or derivative relationships."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-005",
+          "recordDigest": "sha256:404f1dd8a892e2d9165eb09a11db6406d39d0457205fd74f0197ba88a60be7be"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-005",
+          "recordDigest": "sha256:8154bbdb146d42b2940283da9a720ef73f1e5940a9e6eeeb20a01d3118961679"
+        }
+      },
+      "rationaleDe": "A und B begründen KEEP mit der zusammenhängenden Symmetriebeziehung zwischen verschobener Funktion und Ableitung. Allgemeine Identitäten und Transformationsargumente bleiben zulässig; einzelne Bildpunkte werden nicht als Beweis behandelt. Evidence A wird ausgewählt, weil sie den Übergang von Achsen- zu Punktsymmetrie und einen geänderten geraden beziehungsweise ungeraden Grundgraphen konkret verknüpft.",
+      "rationaleEn": "A and B support KEEP through the coherent symmetry relation between a shifted function and its derivative. General identities and transformation arguments remain valid approaches; isolated illustrated points are not treated as proof. Evidence A is selected because it explicitly connects the change from axis to point symmetry with a changed even or odd base graph."
+    },
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-05",
+      "goalId": "0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6f91af50adf8275c0b29434fe8e55d4dc5208481d23f0a434fc7885d5caf79ad",
+      "pageFingerprint": "sha256:873aa2644c3f0c42d6c634d3f7293a2189b0654baf9bec8fa38db06710eac38b",
+      "goalReviewContextFingerprint": "sha256:5138430a1d8905ab261df66b87ed4a3664e78f589da02d96b08989bfda3af4fb",
+      "finalText": {
+        "titleDe": "Eigenschaften von Funktionsprodukten graphisch begründen (LK)",
+        "titleEn": "Justify properties of products of functions graphically (advanced course)",
+        "descriptionDe": "Die lernende Person kann Eigenschaften von Funktionsprodukten wie $f(x)\\cdot g(x)$ anhand der Graphen von $f$ und $g$ skizzieren und begründen.",
+        "descriptionEn": "The learner can sketch and justify properties of products of functions such as $f(x)\\cdot g(x)$ using the graphs of $f$ and $g$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-006",
+          "recordDigest": "sha256:03c554ef7bf883b1919a9949b36adbec17983dbd6c95b9f8020883e82edb8eb8"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-006",
+          "recordDigest": "sha256:00225811f1f3712383a33f3229e7c18b70b4fa7a968d949326b1213e1eefd599"
+        }
+      },
+      "rationaleDe": "Beide Reviews erkennen das punktweise Produkt als klar begrenzten Gegenstand und Skizze plus Begründung als eine Leistung. Eine zusätzliche Kurvendiskussionsliste im Beschreibungstext ist nicht nötig. A wird gewählt, weil gemeinsame Definitionsmenge, Nullstellen, Vorzeichen und die Transferfrage Berühren versus Schneiden eine konkrete Evidence-Kette bilden; Produkt und Verkettung bleiben getrennt.",
+      "rationaleEn": "Both reviews identify the pointwise product as a clearly bounded object and sketching with justification as one performance. No additional curve-analysis checklist is needed in the description. A is selected because common domain, zeros, signs and the transfer from touching to crossing the axis form a concrete evidence chain; product and composition stay separate."
+    },
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-06",
+      "goalId": "91311908-9209-58e4-8429-99dad9df546d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:238b1a78a415faf429e03f193abb1e53596ad8b056d511e9f51740a8feccf875",
+      "pageFingerprint": "sha256:8784ddd13cc760ba297fc5764cca2fc37cea3e32fc194024dc8d0d46012c1c8b",
+      "goalReviewContextFingerprint": "sha256:960ae4c673ef0574bf3ca866a9d40a92e053e8399edd42061de99e209bf4df7e",
+      "finalText": {
+        "titleDe": "Eigenschaften von Funktionsverkettungen graphisch begründen (LK)",
+        "titleEn": "Justify properties of composed functions graphically (advanced course)",
+        "descriptionDe": "Die lernende Person kann Eigenschaften von Funktionsverkettungen wie $f(g(x))$ anhand geeigneter Graphen skizzieren und begründen.",
+        "descriptionEn": "The learner can sketch and justify properties of composed functions such as $f(g(x))$ using suitable graphs."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-007",
+          "recordDigest": "sha256:a8f772c684cbcb526816e60e036331224bd155acf0a0cab492649c6a80a8a67e"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-007",
+          "recordDigest": "sha256:0b9e649cc8effcc3e1648352a8fbc527cda8c8243cb5a51a72fda039f835edc5"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die eigenständige graphische Verkettungskompetenz gegenüber dem Produktziel. Die vorhandene Beschreibung lässt passende Graphen und Begründungswege offen. A wird als Evidence gewählt, weil die Eingabefolge und die Definitionsbedingung g(x) im Bereich von f konkret sind und der Transfer die Reihenfolge oder den äußeren Definitionsbereich verändert.",
+      "rationaleEn": "Both reviews confirm graphical composition as a distinct competence from the product goal. The current description leaves suitable graphs and valid arguments open. A is selected because its evidence specifies the input sequence and the requirement that g(x) lie in the domain of f, with transfer through changed order or outer domain."
+    },
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-07",
+      "goalId": "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cd3a9f405434f6eb08297fe66b021ee0ec5d91aef6eaf11e2bc5067403ef5847",
+      "pageFingerprint": "sha256:602d5ae8c36ecd53a4545ccd28a56d3ea6014170e977b9c0549772e7cd48c96b",
+      "goalReviewContextFingerprint": "sha256:2c9aba8da3b0f2d71513b7138de6cd4927410a067051b3d73ee4474b69b4dd16",
+      "finalText": {
+        "titleDe": "Verkettete Exponential- und Logarithmusfunktionen analysieren (LK)",
+        "titleEn": "Analyze composed exponential and logarithmic functions (advanced course)",
+        "descriptionDe": "Die lernende Person kann eine verkettete Funktion mit Exponential- oder Logarithmusanteil untersuchen und ihr Verhalten argumentativ begründen.",
+        "descriptionEn": "The learner can investigate a composed function with an exponential or logarithmic component and justify its behavior with mathematical arguments."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-009",
+          "recordDigest": "sha256:1f6fe036eb08198bfd8c4f724f3bc4db5a1669474bc51ada7ee680801c17a184"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-009",
+          "recordDigest": "sha256:fe7f263ba0d7717d1348fdd54e0e24df1936cbafa0fcdc1182ea284223eb73bb"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann eine verkettete Funktion mit Exponential- oder Logarithmusanteil untersuchen und ihr Verhalten aus dem Zusammenspiel von innerer und äußerer Funktion argumentativ begründen.",
+        "proposedDescriptionEn": "The learner can investigate a composed function with an exponential or logarithmic component and justify its behavior by reasoning about the interaction of the inner and outer functions.",
+        "rationaleDe": "Root /root entscheidet nach Lektüre beider Reviews KEEP: Das Untersuchen und argumentative Begründen des Verhaltens einer ausdrücklich verketteten Exponential- oder Logarithmusfunktion verlangt bereits eine strukturell tragfähige Begründung. Der von B verlangte Zusatz könnte eine zulässige direkte Ableitungs- oder Monotoniebegründung unnötig auf eine bestimmte Form der Darstellung festlegen. A wird als Evidence ausgewählt; diese benennt Definitionsbereich, innere und äußere Funktion ausdrücklich für das separate P-v2-Profil. Der unveränderte DE/EN-Vorschlag von B bleibt als rejected_keep_current-Dissens gebunden.",
+        "rationaleEn": "Root /root adjudicates KEEP after reading both reviews: investigating and arguing for the behaviour of an explicitly composed exponential or logarithmic function already requires a structurally sound justification. B’s required addition could unnecessarily prescribe how a valid direct derivative or monotonicity argument must be presented. A is selected as evidence and explicitly names domain, inner function and outer function for the separate P-v2 profile. B’s unchanged German and English proposal remains bound as rejected_keep_current dissent."
+      },
+      "rationaleDe": "Root /root entscheidet nach Lektüre beider Reviews KEEP: Das Untersuchen und argumentative Begründen des Verhaltens einer ausdrücklich verketteten Exponential- oder Logarithmusfunktion verlangt bereits eine strukturell tragfähige Begründung. Der von B verlangte Zusatz könnte eine zulässige direkte Ableitungs- oder Monotoniebegründung unnötig auf eine bestimmte Form der Darstellung festlegen. A wird als Evidence ausgewählt; diese benennt Definitionsbereich, innere und äußere Funktion ausdrücklich für das separate P-v2-Profil. Der unveränderte DE/EN-Vorschlag von B bleibt als rejected_keep_current-Dissens gebunden.",
+      "rationaleEn": "Root /root adjudicates KEEP after reading both reviews: investigating and arguing for the behaviour of an explicitly composed exponential or logarithmic function already requires a structurally sound justification. B’s required addition could unnecessarily prescribe how a valid direct derivative or monotonicity argument must be presented. A is selected as evidence and explicitly names domain, inner function and outer function for the separate P-v2 profile. B’s unchanged German and English proposal remains bound as rejected_keep_current dissent."
+    },
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-08",
+      "goalId": "5fe4218e-4fb0-5339-8764-c989befa244e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:77bdd69c293e7e7c976bf52123eaa8e1041c302b690be279670be4b8b330176c",
+      "pageFingerprint": "sha256:4a7da57b430e1425883ffa884bfa7065bbc344ed56e3c274d9e5259656a4f543",
+      "goalReviewContextFingerprint": "sha256:9fa9f003b3bf2acf5943974194413f773e27e630db2c02bd33f20eea3391bed4",
+      "finalText": {
+        "titleDe": "Modelle mit Differenzialgleichungen erster Ordnung bilden",
+        "titleEn": "Form models with first-order differential equations",
+        "descriptionDe": "Die lernende Person kann Wachstums- und Zerfallsprozesse mithilfe von Differenzialgleichungen modellieren, passende Gleichungen aus einer Sachsituation entwickeln und die Bedeutung der Parameter fachlich deuten.",
+        "descriptionEn": "The learner can model growth and decay processes using differential equations, develop suitable equations from a real-world situation, and interpret the meaning of the parameters mathematically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-010",
+          "recordDigest": "sha256:674cb10cd5221102c9f22d6742ecccd4e39996228530eb1da3318135a1b8ffc7"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-010",
+          "recordDigest": "sha256:87275f5d004fcc564c60d5fb14560cd57db8fcdd9e7a7fac2c847de3509cf3cb"
+        }
+      },
+      "rationaleDe": "A und B bestätigen Modellbildung und Parameterdeutung als einen gemeinsamen ersten Modellierungsschritt; Lösen der Gleichung bleibt einem eigenen Nachfolger vorbehalten. Evidence A wird gewählt, weil Größen, Einheiten, Vorzeichen und Änderungsannahme zusammengeführt werden und der Transfer die Proportionalität zum Bestand gegen die zum Grenzabstand austauscht. Der Text benötigt dafür keine zusätzliche Verfahrenspflicht.",
+      "rationaleEn": "A and B confirm model formation and parameter interpretation as one initial modelling step; solving the equation remains a separate successor competence. Evidence A is selected because quantities, units, signs and the rate assumption are connected, while transfer changes proportionality to the quantity into proportionality to the gap from a limit. The description needs no additional mandatory procedure."
+    },
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-09",
+      "goalId": "58fda9b4-4336-5594-99ce-722c4a453372",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a390d75a9897377a64db236d49622548af925a44d2a9d18617cc50c315d48d31",
+      "pageFingerprint": "sha256:34c3f39b48e86c04bd3710fefba46ecae52777d33a7075756ec058e227254c97",
+      "goalReviewContextFingerprint": "sha256:2806b44081f40f0ded8e3c73076c3c6efcf82e107f110515709b5861fc2ad72c",
+      "finalText": {
+        "titleDe": "Differenzialgleichungen zweiter Ordnung untersuchen (LK)",
+        "titleEn": "Investigate second-order differential equations (advanced course)",
+        "descriptionDe": "Die lernende Person kann einfache Differenzialgleichungen zweiter Ordnung, zum Beispiel bei periodischen Prozessen, qualitativ untersuchen und typische Lösungsverläufe beschreiben.",
+        "descriptionEn": "The learner can qualitatively investigate simple second-order differential equations, for example in periodic processes, and describe typical solution behaviours."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-011",
+          "recordDigest": "sha256:e610063617947affa8916deff8bdf33ccdb9d15e333a6b776a92eb5b5907d0c5"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-011",
+          "recordDigest": "sha256:4dc3dc00e7ab3f30288148708586f9f642b56db041f1758316c41444146d1d67"
+        }
+      },
+      "rationaleDe": "Beide Reviews halten die qualitative Begrenzung einfacher DGL zweiter Ordnung in DE und EN für ausreichend und lehnen eine Ausweitung auf allgemeine Lösungsverfahren ab. A wird als Evidence gewählt, weil Vorzeichen der zweiten Ableitung und Lösungsverlauf verknüpft werden und ein Vorzeichenwechsel des Koeffizienten die Reichweite der periodischen Deutung prüft. Die Formel im Bild wird nicht zur zusätzlichen Pflichtkompetenz.",
+      "rationaleEn": "Both reviews find the bilingual limitation to qualitative investigation of simple second-order equations sufficient and do not expand the goal into general solution methods. A is selected because it connects the sign of the second derivative with solution behaviour and uses a coefficient sign change to test the limits of a periodic interpretation. The formula shown in the image does not become an additional required competence."
+    },
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-10",
+      "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4082b102ddcfa43cab38656c25533a8ecf52fc3b7fa4d603d4d018ab082063cc",
+      "pageFingerprint": "sha256:62ddd51525de381c4e75c6cda0ed23078e03b8092e274434c91e31f848781586",
+      "goalReviewContextFingerprint": "sha256:df807524a9938f1e61d083297631c9319444d9846bdd450a5951fc27595e36a9",
+      "finalText": {
+        "titleDe": "Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen",
+        "titleEn": "Investigate invertibility and determine inverse functions",
+        "descriptionDe": "Die lernende Person kann ausgewählte Funktionen auf Umkehrbarkeit untersuchen, einfache Funktionsgleichungen von Umkehrfunktionen aufstellen und dabei Definitions- und Wertemenge von Funktion und Umkehrfunktion berücksichtigen.",
+        "descriptionEn": "The learner can investigate selected functions for invertibility, set up simple equations of inverse functions, and account for the domain and range of the function and its inverse."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-014",
+          "recordDigest": "sha256:9ed96c803f0980ab52e9cabc1131229b3cb17dc8b1c25e55a57caf3d2fb1abef"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-014",
+          "recordDigest": "sha256:4809394e38b6c930ca8e351660e87f281f09d02e2611a515c98ef9810f4843a5"
+        }
+      },
+      "rationaleDe": "A und B bestätigen die kohärente Kette aus Existenzprüfung, einfacher Umkehrgleichung und vertauschten Bereichen. Die eigenständige Suche nach einer geeigneten Einschränkung bleibt beim Nachfolger. Evidence A wird gewählt, weil sie Eindeutigkeit, Rückprüfung und veränderte bereits vorgegebene Bereiche zusammenführt; ein bloßes Vertauschen von Buchstaben genügt nicht.",
+      "rationaleEn": "A and B confirm the coherent chain of checking existence, finding a simple inverse equation and exchanging domains and ranges. Independently selecting a suitable restriction remains with the successor. Evidence A is selected because it combines uniqueness, checking and changed already specified domains; merely swapping variable letters is insufficient."
+    },
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-11",
+      "goalId": "34604a97-0c64-5b06-81e2-6ac818732d60",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7129659b1a9a10468de6e7d4b6fdecb233c1066c22c7618db877711a5adc9730",
+      "pageFingerprint": "sha256:4322fcd7948a2f3541846ddeb6d659a4084adde838fd7733b8a83c35a5617273",
+      "goalReviewContextFingerprint": "sha256:a856e21899f22fdd18c4afce1ad6a7f5f8e32dbcbfb1e3c6dfa98e3c4eef8634",
+      "finalText": {
+        "titleDe": "Integralterme interpretieren und begründen",
+        "titleEn": "Interpret and justify integral terms",
+        "descriptionDe": "Die lernende Person kann Integralterme sprachlich und grafisch deuten, ihre Bedeutung im Kontext erläutern und mit ihnen argumentieren, zum Beispiel beim Vergleichen von Größen oder beim Begründen von Aussagen.",
+        "descriptionEn": "The learner can interpret integral terms linguistically and graphically, explain their meaning in context, and argue with them, for example when comparing quantities or justifying statements."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-016",
+          "recordDigest": "sha256:58b2ea21dcd9e36c2cb57bb9a174bb18da4ce15f1ac3d6b8f4a57cfae91c30de"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-016",
+          "recordDigest": "sha256:402391c4ae27df91436a4bd70375296676c1655f0206b7950a0b4a20e61822a4"
+        }
+      },
+      "rationaleDe": "Beide Reviews sehen sprachliche, graphische und kontextbezogene Deutung als Ausdrucksformen derselben orientierten Integralbedeutung. A wird als Evidence ausgewählt, weil Integrand, Grenzen, Einheit und punktweiser Vergleich verbunden werden und ein Vorzeichenwechsel den Unterschied zwischen Bilanz und Gesamtfläche prüft. Das positive Rechenbeispiel im Bild ersetzt diese neue Leistung nicht.",
+      "rationaleEn": "Both reviews see verbal, graphical and contextual interpretation as expressions of the same signed-integral meaning. A is selected because integrand, limits, units and pointwise comparison are connected, and a sign-changing case tests the difference between net balance and total area. The positive worked example in the image does not replace this fresh performance."
+    },
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-12",
+      "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7a37f8bf3d0e99364d4835921f635c817fc21e3bbc50a748002e58397440bd45",
+      "pageFingerprint": "sha256:179ff18d374bd40fa2b93c5a6f155a21c680efe7af594e55c6629dec8e4c0f7e",
+      "goalReviewContextFingerprint": "sha256:95c28e36e865236ef39fe010b9a3bcd4010f36665909e252224e1501cda16564",
+      "finalText": {
+        "titleDe": "Parameter in Funktionenscharen deuten",
+        "titleEn": "Interpret parameters in function families",
+        "descriptionDe": "Die lernende Person kann den Parameter einer Funktionenschar als veränderliche Größe deuten und seinen Einfluss auf eine ausgewählte Grapheneigenschaft qualitativ erklären.",
+        "descriptionEn": "The learner can interpret the parameter of a family of functions as a variable quantity and qualitatively explain its influence on one selected graph property."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-017",
+          "recordDigest": "sha256:f614b0dff96e387dfaabc304d531423a17fdccab4c527a7ff7441ddcd677d5c2"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-017",
+          "recordDigest": "sha256:50e4611e08b21fd3642c766385eb7cdd91f9dfca82656c4b21f3ebdd416c51d8"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann einen Parameter als innerhalb einer einzelnen Scharfunktion festen, zwischen den Scharfunktionen veränderlichen Wert deuten und seinen Einfluss auf eine ausgewählte Grapheneigenschaft qualitativ erklären.",
+        "proposedDescriptionEn": "The learner can interpret a parameter as a value that is fixed within an individual member of a function family but varies between members, and qualitatively explain its influence on one selected graph property.",
+        "rationaleDe": "Root /root entscheidet nach Lektüre beider Reviews KEEP: Einen Parameter einer Funktionenschar als veränderliche Größe zu deuten ist korrekt; der aktuelle Text setzt ihn nicht mit der Eingabevariablen gleich. Die Festlegung innerhalb eines Scharmitglieds gehört zur essentiellen P-v2-Erwartung und ist in der gewählten Evidence A bereits ausdrücklich enthalten. Zusätzliche Satzlänge behebt keinen nachgewiesenen Bedeutungsfehler. Die Grenze auf genau eine qualitative Grapheneigenschaft bleibt erhalten; Bs ursprünglicher DE/EN-Vorschlag bleibt als rejected_keep_current-Dissens gebunden.",
+        "rationaleEn": "Root /root adjudicates KEEP after reading both reviews: interpreting a family parameter as a variable quantity is correct, and the current text does not equate it with the input variable. Being fixed within an individual member is essential P-v2 evidence and is already explicit in the selected evidence from A. Additional sentence length does not remedy a demonstrated semantic error. The limit to exactly one qualitative graph property is preserved; B’s original German and English proposal remains bound as rejected_keep_current dissent."
+      },
+      "rationaleDe": "Root /root entscheidet nach Lektüre beider Reviews KEEP: Einen Parameter einer Funktionenschar als veränderliche Größe zu deuten ist korrekt; der aktuelle Text setzt ihn nicht mit der Eingabevariablen gleich. Die Festlegung innerhalb eines Scharmitglieds gehört zur essentiellen P-v2-Erwartung und ist in der gewählten Evidence A bereits ausdrücklich enthalten. Zusätzliche Satzlänge behebt keinen nachgewiesenen Bedeutungsfehler. Die Grenze auf genau eine qualitative Grapheneigenschaft bleibt erhalten; Bs ursprünglicher DE/EN-Vorschlag bleibt als rejected_keep_current-Dissens gebunden.",
+      "rationaleEn": "Root /root adjudicates KEEP after reading both reviews: interpreting a family parameter as a variable quantity is correct, and the current text does not equate it with the input variable. Being fixed within an individual member is essential P-v2 evidence and is already explicit in the selected evidence from A. Additional sentence length does not remedy a demonstrated semantic error. The limit to exactly one qualitative graph property is preserved; B’s original German and English proposal remains bound as rejected_keep_current dissent."
+    },
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-13",
+      "goalId": "c0e34fa8-fde5-5a4e-9b84-c5d5db719b58",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bfe6adcf1066ed8fd6440adc88ea8826741cf7dd19fff6cb3478db0e870971e2",
+      "pageFingerprint": "sha256:9b739d1d51a44e2e7ff9a6c5ac1a2b6916488a577b22d54ad8726e311d9f270a",
+      "goalReviewContextFingerprint": "sha256:77a9db1c089556403458130da700ad1b13abb774864b634ac4ddadd48e175aa0",
+      "finalText": {
+        "titleDe": "Mathematische Probleme erkennen und formulieren",
+        "titleEn": "Recognize and formulate mathematical problems",
+        "descriptionDe": "Die lernende Person kann alltagsnahe oder mathematische Fragestellungen in eine präzise mathematische Problemsituation überführen, Annahmen explizit machen und Zielgrößen festlegen.",
+        "descriptionEn": "The learner can transfer everyday or mathematical questions into a precise mathematical problem situation, make assumptions explicit, and define target variables."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-018",
+          "recordDigest": "sha256:90491dd3d1b39a607cbb01a243f32fc1382c0594615baa821796ca1c7f2ab291"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-018",
+          "recordDigest": "sha256:7ad75fefdb1bff5af5ce1257103dd9fe00cd865e72c55a0f2db47e62b54c1f59"
+        }
+      },
+      "rationaleDe": "A und B stimmen überein, dass Größen, Annahmen und Zielgröße gemeinsam die mathematische Problemformulierung bilden und nicht schon deren Lösung verlangen. A wird als Evidence gewählt, weil sie Annahmen von Angaben trennt und den Transfer über geänderte Verteilungsregeln oder Beschränkungen konkretisiert. Die zusätzliche Rechnung im Bild wird nicht in den Beschreibungsscope übernommen.",
+      "rationaleEn": "A and B agree that quantities, assumptions and the target quantity jointly constitute mathematical problem formulation without already requiring a solution. A is selected because it distinguishes assumptions from given information and specifies transfer through changed allocation rules or constraints. The additional calculation in the image is not imported into the description’s scope."
+    },
+    {
+      "decisionId": "mathematik-m7-functions-calculus-current-20-v1-20260920-current-14-decision-14",
+      "goalId": "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ca6db96cf9e3395d10d5fea430652715939a9659743de0265ed781649aad382d",
+      "pageFingerprint": "sha256:a2e68bd1ce743643653539212adc803ee1c3687ce8e337344fd0363620bb7e0b",
+      "goalReviewContextFingerprint": "sha256:901a932368a81f0f1b8fab8a3a6053811fef4e72fb965a6b4cf0a575a548b625",
+      "finalText": {
+        "titleDe": "Parameter von Funktionen und Funktionsscharen im Kontext untersuchen",
+        "titleEn": "Investigate parameters of functions and function families in context",
+        "descriptionDe": "Die lernende Person kann Parameter von Funktionen und Funktionsscharen im Kontext einer Fragestellung interpretieren und ihren Einfluss auf charakteristische Eigenschaften untersuchen.",
+        "descriptionEn": "The learner can interpret parameters of functions and function families in the context of a question and investigate their influence on characteristic properties."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a.record-020",
+          "recordDigest": "sha256:154dbf8254e882827160bf4f7682d6308bc913e06877e3169be387dc4360abe1"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01.record-020",
+          "recordDigest": "sha256:027bcb270b611d962412eae6b8e51c9aba24af142a1293f117663ae9cd6d5533"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die kontextbezogene Untersuchung der Parameterwirkung als eine kohärente AB3-Kompetenz und grenzen sie von der vorausgesetzten Parameterbestimmung ab. Evidence A wird gewählt, weil veränderliche und invariante Eigenschaften mit zulässigem Bereich und Modellgrenzen verknüpft sind. Ihr Transfer ändert Parameterregion oder Definitionsbereich; Aussagen des positiven Brückenbeispiels werden damit nicht ungeprüft verallgemeinert.",
+      "rationaleEn": "Both reviews confirm contextual investigation of parameter effects as a coherent AB3 competence and distinguish it from prerequisite parameter determination. Evidence A is selected because changing and invariant properties are connected with admissible domains and model limits. Its transfer changes the parameter region or domain, preventing unchecked generalisation of statements from the positive bridge example."
+    }
+  ],
+  "manifestFingerprint": "sha256:703621e071ae41d16c9517a07efc98ea28e37de82fe802906e76dc48dd80fdcb"
+}

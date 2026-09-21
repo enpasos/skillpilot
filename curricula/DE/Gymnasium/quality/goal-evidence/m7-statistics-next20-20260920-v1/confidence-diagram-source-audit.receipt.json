@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "m7-statistics-next20-confidence-diagram-source-audit-20260920-v1",
+  "reviewDate": "2026-09-20",
+  "reviewer": "AI / math_m7_current_scope / independent bounded source audit",
+  "status": "ai_candidate",
+  "humanApproval": false,
+  "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+  "scope": "Current DE/EN description, direct prerequisite, HE Q3.4 source extraction and official PDF, HE SekII composition references/course filter, current P candidate and actual current raster. No historical D decisions read; no canonical, QA, registry or existing candidate changes.",
+  "bindings": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "goalRecordJsonStringifySha256": "c77bc8f9bcd201099028e50658bfc6e9291a8562d297c14a2f90ff7aa34a2dbb",
+    "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/m7-statistics-next20-20260920-v1/positive-evidence.candidates.json",
+    "candidateFileSha256": "6b1248e2bcf658f77de8c71037a36765d524dbd52218b66113208acdb5675b4b",
+    "candidateRecordJsonStringifySha256": "a68300ac5538154de5edf7f5d8b03adc83de2e1241a5b351156434566c45d026",
+    "imagePath": "app/public/assets/goal-visualizations/mathematik/77d607e0-0244-55ca-ba0f-214baa94b8de/77d607e0-0244-55ca-ba0f-214baa94b8de.jpg",
+    "imageSha256": "faff9085a96fb8397e1e8a6cdbd0bb28196435302952006572a0c63ffec29dc2",
+    "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+    "sourceExtractionSha256": "f019332e31d21ff83198235b8f446d18e27287a5ebc42bbfeff891a581d2f2b3",
+    "sourceAspectId": "he-math-sekii-q3-4-b03-a01-4732a66a",
+    "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+    "mappingFileSha256": "5564fbd2aba3101aa9c357e7241820691a48e7105fb9dc7900d339d77d67a951",
+    "officialPdfUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+    "officialPdfSha256": "d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953",
+    "officialPrintedPage": 48,
+    "officialZeroBasedPageIndex": 47
+  },
+  "sourceFinding": {
+    "actualPdfPageViewed": true,
+    "viewMethod": "Downloaded the official PDF, rendered physical page 48 with pdftoppm and inspected the resulting PNG with view_image. Web-extracted text was cross-checked against the visible formula.",
+    "directSourceStatement": "Q3.4 first treats prognostic and confidence intervals for one success probability using sigma rules. Its LK extension names Konfidenzdiagramme (Konfidenzellipse). The confidence-interval boundary is |h_n−p| = c sqrt(p(1−p)/n), with n inside the square root.",
+    "interpretation": "The intended school-level ellipse is a p-h confidence diagram relating the one unknown success probability p to an observed relative frequency h. It is not a confidence region for two unknown parameters theta_1 and theta_2.",
+    "epistemicBoundary": "The PDF names the ellipse but does not draw its axes on this page. The p-h interpretation is the mathematically direct inference from the adjacent displayed equation, the single-probability topic and the current explicit prerequisite, not a claimed verbatim axis specification from the source.",
+    "sourceExtractionAndMapping": "The extracted aspect is explicitly LK and maps exactly to this canonical goal. No source evidence in the inspected Q3.4 block introduces covariance, joint parameter estimation or multivariate inference.",
+    "prerequisite": "5f328147-619c-568d-9a0d-e1787ca0c01b explicitly defines confidence intervals for one unknown probability using |h_n−p|≤c sqrt(p(1−p)/n); it is the appropriate prerequisite and should be retained."
+  },
+  "compositionCheck": {
+    "lkView": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+    "lkViewSha256": "46c41b81407427711be50eb6669ddb79566672b1eba53b7bbf9cf74b98e9e83c",
+    "gkView": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+    "gkViewSha256": "b125a7c372d5a690c3f4bd33ffc445e898dfaa1199c5f5174a38f18daf9a865c",
+    "path": ["Q3: Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik", "4af3fe2f-851c-520a-9a1d-b8036ac1dbb1", "77d607e0-0244-55ca-ba0f-214baa94b8de"],
+    "result": "Both authored views reference the shared interval/planning subtree. The target goal has only LK course applicability. Executing native goalMatchesFilters for this actual goal gives true for DE-HE/LK and false for DE-HE/GK. Raw subtree inclusion must not be mistaken for a GK obligation.",
+    "validationBoundary": "Bounded reference traversal and native per-goal course filter only; no whole-view build or global source-coverage check run. No composition change indicated."
+  },
+  "mathematicalCheck": {
+    "diagramRegion": "(h−p)^2 ≤ a p(1−p), where a=c^2/n>0 and p,h∈[0,1]. With u=p−1/2 and v=h−1/2 this is (v−u)^2+a u^2≤a/4: an ellipse centered at (1/2,1/2), restricted to feasible frequencies.",
+    "sliceMeaning": "For p horizontal and h vertical, fixing observed h gives a horizontal slice whose p endpoints are the confidence interval. Fixing p instead gives a vertical slice of predicted relative frequencies. Only p is an unknown population parameter; h is the sample statistic.",
+    "intervalFormula": "p± = (h+a/2 ± sqrt(a*h*(1−h)+a^2/4))/(1+a), a=c^2/n.",
+    "recomputedCases": [
+      {"h": 0.5, "n": 100, "c": 1.96, "lower": 0.40382982859014716, "upper": 0.5961701714098528, "width": 0.1923403428197057, "candidateRoundedEndpointsCorrect": true},
+      {"h": 0.5, "n": 400, "c": 1.96, "lower": 0.4512336165999552, "upper": 0.5487663834000448, "width": 0.0975327668000896, "candidateRoundedEndpointsCorrect": true},
+      {"h": 0.5, "n": 100, "c": 2.58, "lower": 0.3750902756596735, "upper": 0.6249097243403265, "width": 0.24981944868065303, "candidateRoundedEndpointsCorrect": true},
+      {"h": 0.6, "n": 100, "c": 1.96, "lower": 0.5020007846184025, "upper": 0.6906002538863971, "width": 0.18859946926799465, "candidateRoundedEndpointsCorrect": true}
+    ],
+    "rounding": "Candidate widths are calculated from the displayed rounded endpoints and explicitly approximate; they do not assert full-precision widths. The second 95% interval excludes p=0.50 because its actual lower bound exceeds 0.50.",
+    "coverageCaveat": "The confidence percentages are nominal sigma-rule/normal-approximation levels, not exact finite-binomial coverage guarantees. An observed interval does not give the fixed unknown p a frequentist posterior probability."
+  },
+  "laneDecisions": {
+    "visualization": {
+      "decision": "correction_required",
+      "actualRasterViewed": true,
+      "concreteDefects": [
+        "Left panel uses axes Parameter theta_1 and Parameter theta_2 and explicitly teaches two-dimensional uncertainty.",
+        "Middle and right panels compare nested two-parameter ellipses, not horizontal confidence-interval slices in a p-h diagram.",
+        "Bottom statement presents the ellipse as the two-dimensional counterpart of an interval. That is a different statistical concept, not the Q3.4 inversion diagram required here."
+      ],
+      "requiredCorrection": "Replace the theta_1/theta_2 representation with a clearly labelled one-probability p-h diagram and a horizontal slice at observed h. Do not add multivariate prerequisites to legitimize the wrong picture. Existing production raster must not receive KEEP on this audit.",
+      "minimalVisualSpecification": "One central p-horizontal/h-vertical diagram, upward-diagonal ellipse/band centered at (0.5,0.5), clearly identified observed h and horizontal confidence segment projected to the p-axis. Distinguish unknown p from observed h. A different illustrative cut, e.g. h=0.40 at n=100,c=1.96 gives p≈[0.309,0.498], avoids copying either P task. Optional short directional notes: more observations narrow the slice; higher confidence widens it. No theta axes, covariance, misleading vertical reading or claim that p lies inside with 95% probability."
+    },
+    "positiveEvidence": {
+      "decision": "keep_as_ai_candidate",
+      "finding": "Both bilingual cases already use the correct single-probability context and correct interval endpoints. Sample-size comparison followed by confidence-level and location comparison is a genuine change in inferential condition; the compatibility question tests more than recalling one width rule. No new multivariate competence is introduced.",
+      "requiredContentRewrite": false,
+      "smallOptionalClarification": {
+        "de": "Für die näherungsweisen 95%- und 99%-Schnitte werden c=1,96 beziehungsweise c=2,58 verwendet.",
+        "en": "The approximate 95% and 99% slices use c=1.96 and c=2.58, respectively."
+      },
+      "followUp": "Keep the numerical cases and essential understanding. The source uncertainty in dissent is resolved by this receipt; the actual image defect remains open until an independently checked replacement exists. This receipt does not materialize or approve a P profile."
+    },
+    "description": {
+      "decision": "targeted_scope_clarification_recommended",
+      "findingDe": "The existing description is compatible with the intended scalar diagram and contains no explicit mathematical falsehood. However, its generic plural Konfidenzellipsen leaves the crucial one-probability scope unstated; the actual raster demonstrates a material misinterpretation, not merely a stylistic concern.",
+      "findingEn": "The same scope ambiguity remains. The translation assess the significance of sample results additionally invites confusion with statistical significance; interpret the precision of an interval estimate is the intended meaning here.",
+      "necessityBoundary": "Mandatory factual repair is V. Existing P content can stay. A small DE/EN scope clarification is recommended to prevent recurrence and make the source boundary explicit; this audit does not claim the current DE wording alone requires a semantic split or a new competence. Keep titles and prerequisite unchanged.",
+      "proposedDescriptionDe": "Die lernende Person kann Konfidenzdiagramme (Konfidenzellipsen) für eine unbekannte Trefferwahrscheinlichkeit lesen, zu einer beobachteten relativen Häufigkeit das Konfidenzintervall ablesen und den Einfluss von Stichprobenumfang und Konfidenzniveau auf dessen Breite deuten.",
+      "proposedDescriptionEn": "The learner can read confidence diagrams (confidence ellipses) for an unknown success probability, read off the confidence interval for an observed relative frequency, and interpret how sample size and confidence level affect its width.",
+      "guardrail": "If adopted, this is a source-bounded text change with fresh affected evidence bindings, not a silent mechanical reapproval. Detailed formulas and examples remain in P; no additional graph edge, goal split or new assessment concept is needed."
+    }
+  },
+  "completionBoundary": "Source audit complete. Only this new receipt was written. Current image remains a fachlicher hold; no human approval, strict D/P/V completion, registry update, canonical edit or replacement image is claimed."
+}

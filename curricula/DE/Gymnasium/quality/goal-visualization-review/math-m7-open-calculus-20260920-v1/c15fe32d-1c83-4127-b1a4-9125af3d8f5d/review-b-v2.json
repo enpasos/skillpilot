@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "Reviewer did not generate or import these candidates and did not consult the generating agent's acceptance decisions. Current canonical text and actual v2 raster were inspected.",
+  "reviewDate": "2026-09-20",
+  "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+  "title": "Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen",
+  "description": "Die lernende Person kann ausgewählte Funktionen auf Umkehrbarkeit untersuchen, einfache Funktionsgleichungen von Umkehrfunktionen aufstellen und dabei Definitions- und Wertemenge von Funktion und Umkehrfunktion berücksichtigen.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/c15fe32d-1c83-4127-b1a4-9125af3d8f5d/candidate-v2.png",
+  "candidateSha256": "2b09cda8cb426e6dccc11db0a08dc61c051a31759e7d07d42afb7982f5c0cfa3",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/c15fe32d-1c83-4127-b1a4-9125af3d8f5d/prompt-v2.md",
+  "decision": "accept_candidate",
+  "checks": [
+    "Inspected the actual candidate-v2 PNG, including all remaining small graphs.",
+    "The two previously incorrect linear plots have been replaced by correct mapping diagrams: 1 → 2·1+3=5 and 5 → (5−3)/2=1.",
+    "The inverse derivation still correctly yields (x−3)/2. The x² graph demonstrates failure of injectivity on R, and restriction to x≥0 or x≤0 yields sqrt(x) or −sqrt(x), respectively.",
+    "The replacement preserves the current goal's focus on inverse equations and domains; an extra numerical linear graph is not required for this purpose."
+  ],
+  "defects": [],
+  "humanApproval": false,
+  "scope": "Targeted independent v2 candidate review only; no active import, human release or complete goal-QS claim."
+}

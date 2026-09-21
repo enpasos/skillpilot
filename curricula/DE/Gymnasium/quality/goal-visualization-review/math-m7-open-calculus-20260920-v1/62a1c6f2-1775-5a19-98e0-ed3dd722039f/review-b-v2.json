@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "Reviewer did not generate or import these candidates and did not consult the generating agent's acceptance decisions. Current canonical text and actual v2 raster were inspected.",
+  "reviewDate": "2026-09-20",
+  "goalId": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+  "title": "Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen",
+  "description": "Die lernende Person kann Symmetrieeigenschaften eines verschobenen Funktionsgraphen oder des Graphen einer Ableitungsfunktion aus Termstruktur, Transformationen oder Ableitungszusammenhängen begründen.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/62a1c6f2-1775-5a19-98e0-ed3dd722039f/candidate-v2.png",
+  "candidateSha256": "bb207cc9585cfeb563b5ac4b4d5b68b1e636a7e02c7830ac1954102120a41620",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/62a1c6f2-1775-5a19-98e0-ed3dd722039f/prompt-v2.md",
+  "decision": "accept_candidate",
+  "checks": [
+    "Inspected the actual candidate-v2 PNG and both algebraic symmetry identities.",
+    "f=(x−2)²+1 is correctly axis-symmetric about x=2, with f(1)=f(3)=2; f′=2(x−2) is correctly point-symmetric about (2,0), with values −2,0,2 at x=1,2,3.",
+    "The formerly conflicting isolated x=1 tick label is removed and the marked f′(1)=−2 point now has its guide aligned with the remaining tick.",
+    "The friendly schematic spacing/line work is not pixel-perfect, but no competing numbered tick asserts the old wrong coordinate. The symmetry identities and labelled examples carry the intended reasoning correctly."
+  ],
+  "defects": [],
+  "humanApproval": false,
+  "scope": "Targeted independent v2 candidate review only; no active import, human release or complete goal-QS claim."
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-functions-calculus-current-20-v1-20260920",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-functions-calculus-current-20-v1.config.json",
+  "configDigest": "sha256:fb52cb9670c7e0e32dfaa7221c1ed761cbc029649675cdf606290648ecdc88ac",
+  "goalIds": [
+    "71683f37-24de-4e0f-badd-858b56fa4d64",
+    "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+    "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+    "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+    "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+    "0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85",
+    "91311908-9209-58e4-8429-99dad9df546d",
+    "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+    "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+    "5fe4218e-4fb0-5339-8764-c989befa244e",
+    "58fda9b4-4336-5594-99ce-722c4a453372",
+    "61686d85-0301-550e-bab9-bd9411c3e7ce",
+    "6517427b-cf4e-5ebf-9a76-e1035617687c",
+    "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+    "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+    "34604a97-0c64-5b06-81e2-6ac818732d60",
+    "993a14e8-60f0-5764-9340-b2447a5fa84b",
+    "c0e34fa8-fde5-5a4e-9b84-c5d5db719b58",
+    "972cc7e8-be9c-444c-ba45-98e817b3cf14",
+    "91e2f564-3bc8-4924-af85-2a3fa84c1471"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:84fb08409034e930e14fe78f17accd778bc4ab65f327db565b1020367d694137"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:9ca5c948469253ef6d750876e7049bdaf7d76cca52ccfce1fdf1500dd1d0be53",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e8d5d6b0f52e81a8d269efd0b20357d87dd01136f3d890991332ac7ca6bc9f73",
+    "reviewInputFingerprint": "sha256:85edb443deb10002b12967208948a1ffefb5e71fa29db22bfbd8ee0c39471fb1",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-functions-calculus-current-20-v1-20260920-a",
+        "campaignDigest": "sha256:df978d74fa0d65d7b587ff7e83bcb8cfda313d5cd7c94aaf75e43d14781f708b",
+        "roundId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a",
+        "independenceGroupId": "mathematik-m7-functions-calculus-current-20-v1-20260920-independent-a",
+        "batchId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:d5d980c5e2b2b68025ef531f624d96cfd23340b7ed17005219b65ca771a6fadb"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-functions-calculus-current-20-v1-20260920-b",
+        "campaignDigest": "sha256:053173c20c822fa7b5ab5d6f4740ea9fdade83ada59e162a492e53d835948f02",
+        "roundId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b",
+        "independenceGroupId": "mathematik-m7-functions-calculus-current-20-v1-20260920-independent-b",
+        "batchId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:4dfdb660d460ee4bb4caf3112e6dbd15b2dee739b8ec6cdd12e04a712fde4c8b"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

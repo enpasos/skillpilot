@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "Reviewer did not generate candidates, did not inspect root review verdicts or v2 prompts, and opened each actual candidate-v1 PNG individually against current goal and initial prompt.",
+  "reviewDate": "2026-09-20",
+  "goalId": "91311908-9209-58e4-8429-99dad9df546d",
+  "title": "Eigenschaften von Funktionsverkettungen graphisch begründen (LK)",
+  "description": "Die lernende Person kann Eigenschaften von Funktionsverkettungen wie $f(g(x))$ anhand geeigneter Graphen skizzieren und begründen.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-functions-20260920-v1/91311908-9209-58e4-8429-99dad9df546d/candidate-v1.png",
+  "candidateSha256": "a49521af44ecc0c3f97d3b5b2fbf3aa3ce0c8bc21833f5bef0539e6468f275eb",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-functions-20260920-v1/91311908-9209-58e4-8429-99dad9df546d/prompt.md",
+  "decision": "reject_candidate",
+  "checks": [
+    "Function-machine order g then f is correct; all four table rows and left-shift wording correct.",
+    "Red graph concept and its zero at -1 are clear."
+  ],
+  "defects": [
+    "Gray reference labelled f(u)=u² has vertex visibly right of vertical axis and below x-axis, not at(0,0).",
+    "Gray reference near x=2 reaches approximately1.4 rather than4, so it is not y=x² and not a same-width one-unit translation of red."
+  ],
+  "nextAction": "Correct only the gray reference and ensure both curves share one uniform coordinate grid. A correct table does not rescue the contradictory reference graph.",
+  "humanApproval": false,
+  "scope": "Candidate-only visual/factual review; no canonical import, QA-ledger mutation or full goal-completion claim."
+}

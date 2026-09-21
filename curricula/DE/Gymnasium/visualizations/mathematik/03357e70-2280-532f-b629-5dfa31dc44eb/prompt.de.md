@@ -8,40 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `03357e70-2280-532f-b629-5dfa31dc44eb.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.jpg`
+- Quellbild: `03357e70-2280-532f-b629-5dfa31dc44eb.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Tests vergleichen und bewerten (LK)
-Beschreibung: Die lernende Person kann unterschiedliche Testverfahren oder Parametereinstellungen hinsichtlich Fehlerwahrscheinlichkeiten und Teststärke vergleichen und begründete Entscheidungen treffen.
-
-Zusatzanweisung:
-Additional correction for the test-comparison visualization:
-
-- Do not include technical IDs in the image.
-- Focus on comparing tests, not on exact probability calculations.
-- Use one-sided right-tail tests with `X >= k`.
-- Smaller critical value `k` means easier/more aggressive rejection of `H0`; it increases `alpha`, lowers `beta`, and increases power.
-- Larger critical value `k` means more cautious/stricter rejection of `H0`; it lowers `alpha`, raises `beta`, and lowers power.
-- Do not write "stricter rejection" for small `k`.
-- When comparing sample sizes, state that larger `n` can give better separation and higher power at fixed alpha, but costs more data/effort.
-- Criteria to show: type-I-error risk `alpha`, type-II-error risk `beta`, power `1-beta`, sample size/cost, and which error is more serious in context.
-- Use careful decision language: `H0 verwerfen` / `H0 nicht verwerfen`, not "prove".
+Edit the supplied German mathematics learning illustration. Keep the friendly abstract comic style, overall layout, title, blue H0 and orange H1 curves, learners and bottom comparison criteria. Correct remaining factual mistakes ONLY. In left panel Test A, DELETE the current alpha and beta labels/arrows and the misleading shaded areas completely. Re-add alpha pointing only to the BLUE H0 curve's RIGHT tail to the RIGHT of the dashed k line. Re-add beta pointing only to the ORANGE H1 curve's LEFT tail to the LEFT of dashed k. No alpha label or alpha monster may point left of k and no beta label/monster may point right of k. Use an outlined coloured tail region and precise arrow so overlaps remain readable. The right panel has these tails in the correct relative location; keep that. In the small white decision box below BOTH panels write EXACTLY 'X ≥ k: H₀ verwerfen' and 'X < k: H₀ nicht verwerfen'. In particular DELETE the false right-panel claim X≥k:H0 nicht verwerfen. The bottom shared rule is already correct; preserve it. Keep 'Verteilungen schematisch'. No other changes. Produce a readable PNG.
 ```
 
 ## Review-Notiz

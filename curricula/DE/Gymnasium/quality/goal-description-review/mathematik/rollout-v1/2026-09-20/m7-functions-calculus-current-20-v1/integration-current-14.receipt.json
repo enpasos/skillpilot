@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "task": "informed-current-14-subset-integration",
+  "batchId": "mathematik-m7-functions-calculus-current-20-v1-20260920",
+  "authority": "ai_synthesis",
+  "adjudicator": "Codex /root",
+  "technicalIntegrator": "/root/math_m7_batch20_review_a",
+  "actualIntegrationRecordedAt": "2026-09-20T18:38:52Z",
+  "nativeSynthesisTimestamp": "2026-09-20T18:32:35.898Z",
+  "timestampSemantics": "Native deterministic synthesis binding is latest source-run completion plus one second; actualIntegrationRecordedAt records the informed integration separately.",
+  "independentReviewCountAdded": 0,
+  "originalSourceGoalCountPerRound": 20,
+  "scope": "Exactly 12 KEEP/KEEP goals plus two explicitly adjudicated KEEP/REVISE goals; no whole-curriculum or human approval claim.",
+  "evidenceSelection": "Unchanged understandingEvidence from round A for all 14 resolutions.",
+  "nativeValidators": [
+    "validateGoalDescriptionReviewDualRound (complete unchanged 20-goal runs)",
+    "validateGoalDescriptionRolloutSynthesisDecisionManifest (expected.goals is the authorized 14-goal subset)",
+    "validateGoalDescriptionDualRoundResolution (all 14, complete source runs and current canonical landscape)"
+  ],
+  "nativeValidationErrors": [],
+  "validatorsModified": false,
+  "fullChecksRun": false,
+  "sourceBindings": {
+    "first": {
+      "campaignId": "mathematik-m7-functions-calculus-current-20-v1-20260920-a",
+      "campaignDigest": "sha256:df978d74fa0d65d7b587ff7e83bcb8cfda313d5cd7c94aaf75e43d14781f708b",
+      "roundId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-functions-calculus-current-20-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:85edb443deb10002b12967208948a1ffefb5e71fa29db22bfbd8ee0c39471fb1",
+      "batchId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:d5d980c5e2b2b68025ef531f624d96cfd23340b7ed17005219b65ca771a6fadb",
+      "runId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-a.batch-001.run-a",
+      "runManifestDigest": "sha256:9652b7e853e703940f50a7f00609aea0d6948a7b709319a2f1f1cd451b0cbf9a",
+      "resultsDigest": "sha256:176f251b192bacfdb869f4308fd19fa7640054a7fa4949e646a689ea60882bb5"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-functions-calculus-current-20-v1-20260920-b",
+      "campaignDigest": "sha256:053173c20c822fa7b5ab5d6f4740ea9fdade83ada59e162a492e53d835948f02",
+      "roundId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-functions-calculus-current-20-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:85edb443deb10002b12967208948a1ffefb5e71fa29db22bfbd8ee0c39471fb1",
+      "batchId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:4dfdb660d460ee4bb4caf3112e6dbd15b2dee739b8ec6cdd12e04a712fde4c8b",
+      "runId": "mathematik-m7-functions-calculus-current-20-v1-20260920-first-pass-b.batch-001.run-01",
+      "runManifestDigest": "sha256:dc9f9056c9ba7cc63f84fb8b418cbc4baf3c11104b2ce7abbb0071f36e5a83de",
+      "resultsDigest": "sha256:df908d46a40ad7a2b2ec5d8db2beb385dc3b55063a92c0dd4237aef2b6abbd12"
+    }
+  },
+  "canonicalLandscapeDigestAtIntegration": "sha256:81f9762ad2fadf97a3a1e23161daab778408a6fb4ccf9f86bb0bdf5454dc7b8f",
+  "synthesisManifestPath": "synthesis-current-14.json",
+  "synthesisManifestDigest": "sha256:094404b9b0eb0c50737c7d315a073b62a1500c1d2b9fc78c6e0047cbe93f0f09",
+  "synthesisManifestFingerprint": "sha256:703621e071ae41d16c9517a07efc98ea28e37de82fe802906e76dc48dd80fdcb",
+  "explicitRejectedRevisionDissentGoalIds": [
+    "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+    "993a14e8-60f0-5764-9340-b2447a5fa84b"
+  ],
+  "excludedOpenGoals": [
+    {
+      "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "disposition": "excluded_open_no_resolution"
+    },
+    {
+      "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "disposition": "excluded_open_no_resolution"
+    },
+    {
+      "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "disposition": "excluded_open_no_resolution"
+    },
+    {
+      "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "disposition": "excluded_open_no_resolution"
+    },
+    {
+      "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "disposition": "excluded_open_no_resolution"
+    },
+    {
+      "goalId": "972cc7e8-be9c-444c-ba45-98e817b3cf14",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "disposition": "excluded_open_no_resolution"
+    }
+  ],
+  "strictDescriptionCompleteCount": 14,
+  "resolutions": [
+    {
+      "goalId": "71683f37-24de-4e0f-badd-858b56fa4d64",
+      "path": "resolutions/71683f37-24de-4e0f-badd-858b56fa4d64.resolution.json",
+      "digest": "sha256:4aa4568c2cdddf109a3a1700402154e011bd49a537704f95f43d1fc56fb607e1",
+      "strictDescriptionComplete": true
+    },
+    {
+      "goalId": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+      "path": "resolutions/772b11c9-1348-5ab9-bc3f-458c46b312b6.resolution.json",
+      "digest": "sha256:bdbb28c5d8af2912a3d83ac1b13f9511c346ddef516e8350d99b3713ec1f3ed0",
+      "strictDescriptionComplete": true
+    },
+    {
+      "goalId": "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+      "path": "resolutions/4c6369b0-4b58-5ac0-915c-82c348ae1c14.resolution.json",
+      "digest": "sha256:c92959e204ed73cf2371cbbca003dc6cc6b9e022e21c16af455c894388e13c38",
+      "strictDescriptionComplete": true
+    },
+    {
+      "goalId": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+      "path": "resolutions/62a1c6f2-1775-5a19-98e0-ed3dd722039f.resolution.json",
+      "digest": "sha256:45f598d3a0fe023a3470125b81f55d08b92ec388fc8de8100822804222169a8f",
+      "strictDescriptionComplete": true
+    },
+    {
+      "goalId": "0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85",
+      "path": "resolutions/0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85.resolution.json",
+      "digest": "sha256:dfe210ef44aadfd6fe2ba5033c5b6ae7bd009e74d6992b30a36bdd362bc4c307",
+      "strictDescriptionComplete": true
+    },
+    {
+      "goalId": "91311908-9209-58e4-8429-99dad9df546d",
+      "path": "resolutions/91311908-9209-58e4-8429-99dad9df546d.resolution.json",
+      "digest": "sha256:d7551602344fb96ef2abeba04d1752a1434c20e8145dc4a7061cb8518a8f4a93",
+      "strictDescriptionComplete": true
+    },
+    {
+      "goalId": "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+      "path": "resolutions/c72a8032-71f6-56ed-a896-06ae435ff2ec.resolution.json",
+      "digest": "sha256:8da02fd07baa613e233b5216894e43242de073286fa559305306bac3fad0b2d8",
+      "strictDescriptionComplete": true
+    },
+    {
+      "goalId": "5fe4218e-4fb0-5339-8764-c989befa244e",
+      "path": "resolutions/5fe4218e-4fb0-5339-8764-c989befa244e.resolution.json",
+      "digest": "sha256:9f5f08c90bdc865df1818eeb5680d3bb759b66717f67eefcd2572046d85e78a2",
+      "strictDescriptionComplete": true
+    },
+    {
+      "goalId": "58fda9b4-4336-5594-99ce-722c4a453372",
+      "path": "resolutions/58fda9b4-4336-5594-99ce-722c4a453372.resolution.json",
+      "digest": "sha256:60330a9709952ee7de995be3406d7ac35bd78efb621de490b26df9ee456da3ab",
+      "strictDescriptionComplete": true
+    },
+    {
+      "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+      "path": "resolutions/c15fe32d-1c83-4127-b1a4-9125af3d8f5d.resolution.json",
+      "digest": "sha256:9e3b69d6603aa0a7eddce68fab6576613650e7b2bdde4ebf7945d12d54365531",
+      "strictDescriptionComplete": true
+    },
+    {
+      "goalId": "34604a97-0c64-5b06-81e2-6ac818732d60",
+      "path": "resolutions/34604a97-0c64-5b06-81e2-6ac818732d60.resolution.json",
+      "digest": "sha256:024e38303b1a6512c58fc10a7b2aeb47d8ee506a6cdd74a7a0fbd3660759af54",
+      "strictDescriptionComplete": true
+    },
+    {
+      "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
+      "path": "resolutions/993a14e8-60f0-5764-9340-b2447a5fa84b.resolution.json",
+      "digest": "sha256:18dcb677c1653fdea7e2af08aa4406e50805d241101382a62b6183041f875e28",
+      "strictDescriptionComplete": true
+    },
+    {
+      "goalId": "c0e34fa8-fde5-5a4e-9b84-c5d5db719b58",
+      "path": "resolutions/c0e34fa8-fde5-5a4e-9b84-c5d5db719b58.resolution.json",
+      "digest": "sha256:8939f293d7d8b6424b1309a7346f317ff526ad9cdc7c644454f774cc19eac319",
+      "strictDescriptionComplete": true
+    },
+    {
+      "goalId": "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "path": "resolutions/91e2f564-3bc8-4924-af85-2a3fa84c1471.resolution.json",
+      "digest": "sha256:5182e8eb1bcf74634d3fb0572d90b6a22c0c27bee9343324ad0d4f448f5d2350",
+      "strictDescriptionComplete": true
+    }
+  ],
+  "noWritesTo": [
+    "round-a",
+    "round-b",
+    "canonical",
+    "registry",
+    "positive-evidence-profiles",
+    "quality-status",
+    "visualization-QA"
+  ]
+}

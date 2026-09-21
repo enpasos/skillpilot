@@ -8,51 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `c15fe32d-1c83-4127-b1a4-9125af3d8f5d.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/c15fe32d-1c83-4127-b1a4-9125af3d8f5d/c15fe32d-1c83-4127-b1a4-9125af3d8f5d.jpg`
+- Quellbild: `c15fe32d-1c83-4127-b1a4-9125af3d8f5d.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/c15fe32d-1c83-4127-b1a4-9125af3d8f5d/c15fe32d-1c83-4127-b1a4-9125af3d8f5d.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen
-Beschreibung: Die lernende Person kann ausgewählte Funktionen auf Umkehrbarkeit untersuchen, einfache Funktionsgleichungen von Umkehrfunktionen aufstellen und dabei Definitions- und Wertemenge von Funktion und Umkehrfunktion berücksichtigen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen.
-- Teile das Bild in zwei klare Prueffelder.
-- Feld 1: lineare Funktion, eindeutig umkehrbar.
-  f(x)=2x+3.
-  Schrittfolge:
-  y=2x+3,
-  x=2y+3,
-  y=(x-3)/2,
-  also f^(-1)(x)=(x-3)/2.
-  Zeige Punktabbildung: f(1)=5, also f^(-1)(5)=1.
-- Feld 2: Parabel ohne und mit Einschraenkung.
-  f(x)=x^2 ist auf R nicht eindeutig umkehrbar, weil f(2)=4 und f(-2)=4.
-  Mit Definitionsbereich x>=0 ist die Umkehrfunktion f^(-1)(x)=sqrt(x), x>=0.
-- Zeige eine kleine Merkkarte:
-  Umkehrbar bedeutet: Jeder y-Wert gehoert zu hoechstens einem x-Wert.
-
-Vermeiden:
-- Nicht behaupten, x^2 sei auf ganz R umkehrbar.
-- Nicht die Umkehrfunktion von 2x+3 als 2x-3 oder x/2-3 angeben; korrekt ist (x-3)/2.
-- Nicht Definitionsmenge und Wertemenge ignorieren.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Edit the attached friendly pastel educational comic about inverse functions, PNG. Preserve every correct algebraic step and all of the RIGHT orange panel with domain-restricted x² and sqrt. Replace BOTH small LINEAR coordinate plots in the LEFT blue panel because their numerical scales are inconsistent. Do NOT draw replacement coordinate axes. Replace the upper-left little plot with a simple friendly blue input-output arrow: an input card '1' -> a rounded machine box 'f: x ↦ 2x+3' -> output card '5'. The existing bubble f(1)=5 can stay nearby. Replace the lower-right little plot of the blue panel with a reverse input-output arrow: input card '5' -> a rounded machine box 'f⁻¹: x ↦ (x−3)/2' -> output card '1'. Existing bubble f⁻¹(5)=1 stays nearby. All algebra y=2x+3, swapping x/y, x=2y+3, solving y=(x−3)/2, and result f⁻¹(x)=(x−3)/2 remain large and unchanged. The two input-output miniatures illustrate reversibility, not a new operation. No left plot remnants, ticks, axes or graph leaders. Maintain same restrained handdrawn comic style.
 ```
 
 ## Review-Notiz

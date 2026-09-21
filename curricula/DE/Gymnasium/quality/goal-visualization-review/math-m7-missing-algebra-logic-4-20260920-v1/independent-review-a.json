@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent_actual_raster_review",
+  "reviewer": {
+    "id": "codex-independent-reviewer-a",
+    "provider": "OpenAI",
+    "model": "Codex (exact runtime model identifier not exposed)",
+    "reviewAuthority": "ai_candidate"
+  },
+  "actualStartedAt": "2026-09-20T19:35:23.474Z",
+  "actualReviewedAt": "2026-09-20T19:37:06Z",
+  "inputManifestPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/candidate-manifest.json",
+  "inputSha256": "sha256:d5cc373e67125200665b4580ecea27aedd879bcd278dc7cddf05eda56d6798a4",
+  "scope": {
+    "goalCount": 4,
+    "actualRasterCount": 4,
+    "authorChecksRead": false,
+    "otherReviewDecisionsRead": false,
+    "canonicalChanges": false,
+    "imports": false,
+    "qaOrRegistryChanges": false
+  },
+  "status": "completed_ai_review",
+  "humanApproved": false,
+  "method": "Alle vier Kandidaten wurden einzeln über view_image betrachtet. Bewertet wurden ausschließlich aktuelle kanonische Ziele, ausgewählte Manifest-IDs/Pfade/Hashes und tatsächliche Raster; keine Autorenbewertungen. Einzelne Beispiele dienen der Orientierung und müssen nicht die gesamte Kompetenz prüfen.",
+  "goalSnapshotHashMethod": "sha256 of UTF-8 JSON.stringify(current complete goal object), preserving parsed property order",
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "records": [
+    {
+      "goalId": "74dc4b0d-a167-564c-bdc1-5cf510aee280",
+      "goalTitle": "Algebraische Terme ausmultiplizieren",
+      "goalDescription": "Die lernende Person kann Produkte und Klammerausdrücke mithilfe des Distributivgesetzes ausmultiplizieren, gleichartige Terme zusammenfassen und die Umformung überprüfen.",
+      "goalSnapshotSha256": "sha256:655d0d3eaebf6ef0353609159d95b96d8aea85f447a699a35787b406f1d826fe",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/74dc4b0d-a167-564c-bdc1-5cf510aee280/candidate-v1.png",
+      "candidateSha256": "sha256:a03a52c3259669e99836770640c2e19ad1e77a7b15a119f5a167ba10c5c539fd",
+      "actualAssetSha256": "sha256:a03a52c3259669e99836770640c2e19ad1e77a7b15a119f5a167ba10c5c539fd",
+      "inspected": true,
+      "inspectionTool": "view_image",
+      "actualReviewedAt": "2026-09-20T19:37:06Z",
+      "decision": "accepted_pilot",
+      "reviewAuthority": "ai_candidate",
+      "aiApproved": true,
+      "humanApproved": false,
+      "checks": [
+        {
+          "category": "distributive_law",
+          "result": "pass",
+          "evidence": "3(x + 2) − x wird korrekt zu 3x + 6 − x. Die roten Verteilungspfeile gehen vom Faktor 3 zu beiden Klammergliedern; das außerhalb stehende −x bleibt erhalten."
+        },
+        {
+          "category": "like_terms_and_signs",
+          "result": "pass",
+          "evidence": "3x − x = 2x; die Konstante 6 bleibt unverändert. Die resultierende Form 2x + 6 ist korrekt."
+        },
+        {
+          "category": "numerical_check",
+          "result": "pass",
+          "evidence": "Für x = 4 liefern 3·(4 + 2) − 4 und 2·4 + 6 jeweils 14. Beide Rechnungen im rechten Panel stimmen."
+        },
+        {
+          "category": "goal_fit",
+          "result": "pass",
+          "evidence": "Die drei sichtbaren Stationen entsprechen Ausmultiplizieren, Zusammenfassen und Überprüfen der aktuellen Zielbeschreibung. Kein anderer unabhängiger Stoff wird als neue Kompetenz eingeführt."
+        },
+        {
+          "category": "representation_and_readability",
+          "result": "pass",
+          "evidence": "Blaue, gelbe und grüne Panels machen die Reihenfolge erkennbar. Große Terme, klare Klammern und unterschiedliche Farben unterstützen die Umformung; die Comic-Figuren verdecken keine relevanten Zeichen."
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Die Zahlenprobe bei x = 4 ist eine exemplarische Kontrolle, kein allgemeiner Identitätsbeweis. Das Bild bezeichnet sie nur als Prüfen und stützt die Umformung zuvor auf das Distributivgesetz.",
+        "Kein separater Cockpit-/Mobil-Renderingtest; bewertet wurde das tatsächliche Raster in der Bildansicht."
+      ],
+      "rationale": "Geeignete, fachlich korrekte Orientierung für das J8-Ziel. Die sichtbaren Rechenschritte, Vorzeichen und Beispielwerte stimmen; es ist keine Korrektur erforderlich."
+    },
+    {
+      "goalId": "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+      "goalTitle": "Algebraische Terme faktorisieren",
+      "goalDescription": "Die lernende Person kann bei geeigneten algebraischen Termen gemeinsame Faktoren erkennen, ausklammern und durch Rückmultiplikation prüfen.",
+      "goalSnapshotSha256": "sha256:615950377e42d27a334d8992ba2bd7ae163788cfde3920b23179baf325aacb2c",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/96c55cb6-d2c7-5145-8567-b5f570f55a8a/candidate-v1.png",
+      "candidateSha256": "sha256:ad705c2b94b1e59d06d82d6834e4fcef28fb58bcd0750afb75c4a1109e2f920b",
+      "actualAssetSha256": "sha256:ad705c2b94b1e59d06d82d6834e4fcef28fb58bcd0750afb75c4a1109e2f920b",
+      "inspected": true,
+      "inspectionTool": "view_image",
+      "actualReviewedAt": "2026-09-20T19:37:06Z",
+      "decision": "accepted_pilot",
+      "reviewAuthority": "ai_candidate",
+      "aiApproved": true,
+      "humanApproved": false,
+      "checks": [
+        {
+          "category": "common_factor",
+          "result": "pass",
+          "evidence": "6x + 9 = 3·2x + 3·3 zeigt den gemeinsamen Faktor 3 in beiden Summanden korrekt."
+        },
+        {
+          "category": "factorisation",
+          "result": "pass",
+          "evidence": "6x + 9 = 3(2x + 3) ist eine gültige Identität. Gemeinsamer Faktor und verbleibende Summe sind an passenden Stellen bezeichnet."
+        },
+        {
+          "category": "reverse_expansion",
+          "result": "pass",
+          "evidence": "Die Rückmultiplikation 3·2x = 6x und 3·3 = 9 ergibt wieder die Ausgangssumme; die Gesamtgleichung im rechten Panel stimmt."
+        },
+        {
+          "category": "goal_fit",
+          "result": "pass",
+          "evidence": "Erkennen, Ausklammern und Prüfen durch Rückmultiplikation bilden genau die drei Aspekte des aktuellen Ziels. Ein geeigneter einfacher Term genügt als Orientierung."
+        },
+        {
+          "category": "representation_and_readability",
+          "result": "pass",
+          "evidence": "Die wiederholte grüne Hervorhebung verbindet alle Vorkommen des Faktors 3. Die drei klar begrenzten Panels zeigen eine sinnvolle Reihenfolge und die Pfeile sind mit den lokalen Teilprodukten vereinbar."
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Das Beispiel zeigt einen gemeinsamen Zahlenfaktor; eine zusätzliche Variable oder ein negatives Beispiel ist für diese orientierende Darstellung nicht erforderlich.",
+        "Kein separater Cockpit-/Mobil-Renderingtest; bewertet wurde das tatsächliche Raster in der Bildansicht."
+      ],
+      "rationale": "Die algebraische Identität und ihre Rückprüfung sind fehlerfrei, die farbliche Hervorhebung unterstützt das Ausklammern. Der Kandidat passt zum Ziel und zum freundlichen, klaren Darstellungsstil."
+    },
+    {
+      "goalId": "e2bf726a-126c-5c66-9fbb-6e04c129bb0f",
+      "goalTitle": "Äquivalenz durch Begründung oder Gegenbeispiel prüfen",
+      "goalDescription": "Die lernende Person kann prüfen, ob eine mathematische Aussage und ihre Umkehrung beide gelten, und eine behauptete Äquivalenz durch Begründungen bestätigen oder durch ein Gegenbeispiel widerlegen.",
+      "goalSnapshotSha256": "sha256:1ff7675c4fb80a8e454ec2f791981c998503cfe152a122fcc26d91091f86268e",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/e2bf726a-126c-5c66-9fbb-6e04c129bb0f/candidate-v1.png",
+      "candidateSha256": "sha256:8a49fe5712e844c33ec5f3fdb15cf426c43be60d7008b725650f97d748dba8b5",
+      "actualAssetSha256": "sha256:8a49fe5712e844c33ec5f3fdb15cf426c43be60d7008b725650f97d748dba8b5",
+      "inspected": true,
+      "inspectionTool": "view_image",
+      "actualReviewedAt": "2026-09-20T19:37:06Z",
+      "decision": "accepted_pilot",
+      "reviewAuthority": "ai_candidate",
+      "aiApproved": true,
+      "humanApproved": false,
+      "checks": [
+        {
+          "category": "domain_and_forward_implication",
+          "result": "pass",
+          "evidence": "Der Geltungsbereich sind ausdrücklich ganze Zahlen n. Aus n = 4k = 2·(2k), k ganzzahlig, folgt korrekt, dass ein Vielfaches von 4 gerade ist."
+        },
+        {
+          "category": "converse_and_counterexample",
+          "result": "pass",
+          "evidence": "Die Umkehrung 'gerade ⇒ durch 4 teilbar' wird als Frage geprüft. n = 6 ist gerade und nicht durch 4 teilbar und widerlegt daher die Umkehrung."
+        },
+        {
+          "category": "equivalence_conclusion",
+          "result": "pass",
+          "evidence": "Die Schlussfolgerung 'Keine Äquivalenz' ist korrekt, weil eine Richtung gilt und die andere durch ein gültiges Gegenbeispiel scheitert. Die grünen Haken bestätigen jeweils die wahren Einzelaussagen über 6, nicht die falsche Umkehrung."
+        },
+        {
+          "category": "goal_fit",
+          "result": "pass",
+          "evidence": "Der aktuelle Kompetenzkern – Hinrichtung begründen, Umkehrung prüfen und eine behauptete Äquivalenz widerlegen – ist am selben mathematischen Beispiel kohärent sichtbar."
+        },
+        {
+          "category": "representation_and_readability",
+          "result": "pass",
+          "evidence": "Zwei gegensätzliche Panels unterscheiden Begründung und Gegenbeispiel. Große Richtungszeichen, explizite Frageform und die rote Schlusszeile vermeiden eine Verwechslung von Implikation und Äquivalenz; die Comic-Detektive bleiben unterstützend."
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Es wird bewusst eine gescheiterte Äquivalenz gezeigt. Ein zusätzliches positives Äquivalenzbeispiel ist für die Orientierung an diesem Ziel nicht obligatorisch.",
+        "Kein separater Cockpit-/Mobil-Renderingtest; bewertet wurde das tatsächliche Raster in der Bildansicht."
+      ],
+      "rationale": "Fachlich klares Beispiel mit vollständig gültiger Hinbegründung und konkretem Gegenbeispiel zur Umkehrung. Der Definitionsbereich ist vorhanden; keine irreführende logische Relation erkennbar."
+    },
+    {
+      "goalId": "28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+      "goalTitle": "Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden",
+      "goalDescription": "Die lernende Person kann in einer mathematischen Wenn-Dann-Aussage Voraussetzung und Folgerung eindeutig benennen und den Geltungsbereich der Aussage angeben.",
+      "goalSnapshotSha256": "sha256:63b9775203c803f296ed4dd90ce9b92054e642f621643d063aab5dbc44c0ea8c",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/28d098ab-f33f-5baf-8261-f1c0c0f711fa/candidate-v1.png",
+      "candidateSha256": "sha256:4bb539dc0663c2425d02bec3f0b78ee21a1a23fa249dea14fa15e191fbdbf5f7",
+      "actualAssetSha256": "sha256:4bb539dc0663c2425d02bec3f0b78ee21a1a23fa249dea14fa15e191fbdbf5f7",
+      "inspected": true,
+      "inspectionTool": "view_image",
+      "actualReviewedAt": "2026-09-20T19:37:06Z",
+      "decision": "accepted_pilot",
+      "reviewAuthority": "ai_candidate",
+      "aiApproved": true,
+      "humanApproved": false,
+      "checks": [
+        {
+          "category": "premise_and_conclusion",
+          "result": "pass",
+          "evidence": "In der Aussage 'Wenn n durch 4 teilbar ist, dann ist n gerade' ist die Teilbarkeit durch 4 korrekt als Voraussetzung, die Geradheit korrekt als Folgerung benannt."
+        },
+        {
+          "category": "direction_and_scope",
+          "result": "pass",
+          "evidence": "Der Pfeil führt nur von Voraussetzung zu Folgerung. Der Geltungsbereich 'ganze Zahlen n' ist ausdrücklich angegeben; eine Umkehrung oder Äquivalenz wird nicht behauptet."
+        },
+        {
+          "category": "example_arithmetic",
+          "result": "pass",
+          "evidence": "Für n = 12 sind 12 = 4·3 und 12 = 2·6 richtig. Damit sind sowohl die Voraussetzung als auch die Folgerung für das Beispiel erfüllt."
+        },
+        {
+          "category": "general_statement",
+          "result": "pass",
+          "evidence": "Die Schlusszeile beschränkt die Aussage korrekt auf jede ganze Zahl mit der genannten Voraussetzung. Sie behauptet nicht, dass jede ganze Zahl durch 4 teilbar oder gerade sei."
+        },
+        {
+          "category": "goal_fit",
+          "result": "pass",
+          "evidence": "Die Darstellung macht genau das Benennen von Voraussetzung und Folgerung sowie den Geltungsbereich sichtbar. Das einfache Teilbarkeitsbeispiel ermöglicht die Konzentration auf die logische Struktur."
+        },
+        {
+          "category": "representation_and_readability",
+          "result": "pass",
+          "evidence": "Die Wenn-Dann-Aussage steht über zwei deutlich bezeichneten Feldern; der breite gerichtete Pfeil verknüpft diese. Das Zahlenbeispiel ist räumlich getrennt, und die Comic-Elemente beeinträchtigen die Zeichen nicht."
+        }
+      ],
+      "findings": [],
+      "limitations": [
+        "Das einzelne Zahlenbeispiel illustriert die logische Rollenverteilung und ist nicht als vollständiger Beweis aller Fälle ausgewiesen; ein Beweis ist nicht Gegenstand dieses Zielbilds.",
+        "Kein separater Cockpit-/Mobil-Renderingtest; bewertet wurde das tatsächliche Raster in der Bildansicht."
+      ],
+      "rationale": "Die Voraussetzung, die Folgerung und der Geltungsbereich sind eindeutig und richtig getrennt. Beispiel und allgemeiner Satz widersprechen sich nicht; kein konkreter fachlicher oder gestalterischer Korrekturgrund."
+    }
+  ],
+  "summary": {
+    "inspected": 4,
+    "accepted_pilot": 4,
+    "rejected_regenerate": 0,
+    "needs_external_review": 0,
+    "humanApprovals": 0
+  }
+}

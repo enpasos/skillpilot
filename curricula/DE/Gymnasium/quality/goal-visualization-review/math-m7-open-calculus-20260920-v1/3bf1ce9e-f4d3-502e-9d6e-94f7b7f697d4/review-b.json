@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "This reviewer did not generate or import these images and did not consult the generating agent's acceptance decisions. Decisions are based on the actual candidate rasters and the current canonical goal texts.",
+  "reviewDate": "2026-09-20",
+  "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+  "title": "Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)",
+  "description": "Die lernende Person kann die natürliche Logarithmusfunktion als Stammfunktion von `1/x` verwenden und diese Beziehung in einfachen Integralrechnungen und Begründungen sicher nutzen.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4/candidate-v1.png",
+  "candidateSha256": "49dd07e15b0b2a0066e9da6873a5b16d2394b89a6fa74821b95a075d23bbaf02",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4/prompt.de.md",
+  "decision": "reject_candidate",
+  "checks": [
+    "Viewed the actual candidate PNG and checked the integral calculation.",
+    "For x>0, (ln x)'=1/x and ∫₁ᵉ1/x dx=1 are correct. The contrasting integral of 1/x² is correctly −1/x+C.",
+    "The labelled curve endpoints (1,1) and (e,1/e) carry the right numerical values."
+  ],
+  "defects": [
+    "The numerical x-axis is materially nonuniform: the pictured distances 0→1 and e→3 are nearly equal, although their numerical lengths are 1 and approximately 0.282. The interval 1→e is also incompatible with the other unit distances. The graph therefore does not faithfully represent the labelled integration interval on an ordinary linear axis."
+  ],
+  "nextAction": "Keep the algebra and style. Correct the graph to one linear x scale: 0, 1, e≈2.718 and 3, with the shaded interval exactly from 1 to e and corresponding y=1/x points. Verify the y-axis labels on one linear scale as well.",
+  "humanApproval": false,
+  "scope": "Targeted independent candidate-image review only. No active-asset import and no full goal-completion or human-approval claim."
+}

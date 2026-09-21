@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "Reviewer did not generate candidates, did not inspect root review verdicts or v2 prompts, and opened each actual candidate-v1 PNG individually against current goal and initial prompt.",
+  "reviewDate": "2026-09-20",
+  "goalId": "0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85",
+  "title": "Eigenschaften von Funktionsprodukten graphisch begründen (LK)",
+  "description": "Die lernende Person kann Eigenschaften von Funktionsprodukten wie $f(x)\\cdot g(x)$ anhand der Graphen von $f$ und $g$ skizzieren und begründen.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-functions-20260920-v1/0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85/candidate-v1.png",
+  "candidateSha256": "1e8fe01d157b3b9886d2e13fd28e4561bd271f104a53193180a008baac4f9e68",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-functions-20260920-v1/0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85/prompt.md",
+  "decision": "accept_candidate",
+  "checks": [
+    "All five table rows checked by direct multiplication: -3,0,1,0,-3.",
+    "Red product zeros (0,0),(2,0), maximum(1,1) and outer points(-1,-3),(3,-3) bind to the visible points.",
+    "Blue f=x and green g=2-x intersect red at(1,1); signs and concavity support graphical reasoning.",
+    "Readable friendly hand-lettered style and uncluttered table/graph split. Minor hand-drawn scale imprecision does not change the indicated coordinate claims or conceptual interpretation."
+  ],
+  "defects": [],
+  "humanApproval": false,
+  "scope": "Candidate-only visual/factual review; no canonical import, QA-ledger mutation or full goal-completion claim."
+}

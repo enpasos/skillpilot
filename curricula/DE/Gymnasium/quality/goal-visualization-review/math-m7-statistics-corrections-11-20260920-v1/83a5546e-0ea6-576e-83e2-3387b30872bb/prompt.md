@@ -1,0 +1,5 @@
+Use case: precise-object-edit
+Asset type: German mathematics learning-goal PNG
+Input image 1 is the exact edit target.
+Primary request: Zwei begrenzte Reparaturen: Linken Rohdatenblock ausdrücklich 'Rohdaten: Auszug aus 24 Antworten' nennen und die Karten auf sechs Beispielkarten beschränken: Bus,Fahrrad,zu Fuß,Auto,Bus,zu Fuß. Eine klare Klammer/Notiz 'Auszug' zeigt, dass nicht alle24 sichtbar sind. Mittlere Strichliste Bus korrekt als Fünferbündel (vier senkrechte Striche plus diagonaler fünfter) UND genau drei zusätzliche Striche darstellen, also8. Fahrrad5+1=6, Fuß5+2=7, Auto3. Absolute Häufigkeiten8,6,7,3,total24, Balkendiagramm und Prozente unverändert; der Rohdatenauszug darf nicht als vollständige Zählvorlage erscheinen. Stil, Farben, Roboter und Prozesspfeile erhalten.
+Invariants: freundlich, abstrakt, klar, comicartig, bestehende Bildsprache beibehalten. Keine Photorealistik, keine sterile technische Neugestaltung. Keine IDs, Logos oder Wasserzeichen ergänzen. Nicht betroffene Inhalte erhalten. Genau ein lesbares korrigiertes PNG.

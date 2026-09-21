@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "Reviewer did not generate or import these candidates and did not consult the generating agent's acceptance decisions. Current canonical text and actual v2 raster were inspected.",
+  "reviewDate": "2026-09-20",
+  "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+  "title": "Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)",
+  "description": "Die lernende Person kann die natürliche Logarithmusfunktion als Stammfunktion von `1/x` verwenden und diese Beziehung in einfachen Integralrechnungen und Begründungen sicher nutzen.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4/candidate-v2.png",
+  "candidateSha256": "02b1dcde46a3ebe9646240eb65a2d8f6d7b53897a54118e6036fc114b4112493",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4/prompt-v2.md",
+  "decision": "accept_candidate",
+  "checks": [
+    "Inspected the actual candidate-v2 PNG, including boundary guides and integral formulas.",
+    "For x>0 the derivative of ln x is 1/x. The example integral from 1 to e equals ln e−ln1=1, and the warning distinguishes ∫1/x² dx=−1/x+C correctly.",
+    "The diagram now uses only the two integration boundaries 1 and e, with correct endpoint labels (1,1),(e,1/e). Shading is restricted to those boundaries and is labelled area=1.",
+    "The former competing 3 tick and decimal axis labels are absent. This is a schematic area illustration rather than a numerically calibrated plotting exercise; its remaining illustrative proportions do not change the correct antiderivative or area argument."
+  ],
+  "defects": [],
+  "humanApproval": false,
+  "scope": "Targeted independent v2 candidate review only; no active import, human release or complete goal-QS claim."
+}

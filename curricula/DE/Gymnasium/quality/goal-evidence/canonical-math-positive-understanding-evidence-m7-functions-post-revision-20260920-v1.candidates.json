@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-m7-functions-post-revision-20260920-v1",
+  "reviewedAt": "2026-09-20T18:52:44.591Z",
+  "reviewer": "codex-root-informed-post-revision-five-evidence-author",
+  "goals": [
+    {
+      "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+      "reason": "Neue vollständige Transformationsevidenz ohne bekannten f-Term; die zweite Aufgabe verlangt Faktorisierung des inneren Arguments und eine horizontale Spiegelung. V1-Bild mit korrigierter Reihenfolge betrachtet. Nach Präzisierung der Beschreibung wurden beide konkreten Punktabbildungen und die Voraussetzungen a≠0 sowie b≠0 erneut geprüft; Aufgaben bleiben unverändert gültig.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "affine-point-transformation",
+            "essentialUnderstandingDe": "Für g(x)=a f(b(x−c))+d mit a≠0 und b≠0 wird ein Ausgangspunkt (u,v) zu (c+u/b,d+av). Daraus folgen Faktoren, Spiegelungen und eine korrekte Reihenfolge: Skalieren/Spiegeln relativ zum Ursprung, danach die jeweilige Verschiebung.",
+            "essentialUnderstandingEn": "For g(x)=a f(b(x−c))+d with a≠0 and b≠0, an original point (u,v) becomes (c+u/b,d+av). This determines factors, reflections and a correct order: scale/reflect relative to the origin, then apply the respective shift.",
+            "observablePerformanceDe": "Die lernende Person deutet alle Parameter eines konkreten Gesamtterms über Punktabbildungen, erklärt die Abfolge und kontrolliert sie an bekannten Punkten, ohne einen Term für f vorauszusetzen.",
+            "observablePerformanceEn": "The learner interprets all parameters of a concrete combined expression through point mappings, explains their order, and checks it using known points without assuming an expression for f."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "affine-point-transformation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "factored-versus-expanded-argument",
+            "textDe": "Ein bereits faktorisierter innerer Term wird durch einen zunächst expandierten mit negativem Faktor ersetzt.",
+            "textEn": "Replace an already factored inner argument with an initially expanded one having a negative factor."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "combined-transform",
+            "taskDemandDe": "f ist nur als Graph gegeben, mit Punkten (2,1) und (−2,3). Deute g(x)=−3f(2(x+1))+4 vollständig und bestimme beide Bildpunkte. Begründe die Reihenfolge der horizontalen und vertikalen Schritte.",
+            "taskDemandEn": "f is given only as a graph with points (2,1) and (−2,3). Fully interpret g(x)=−3f(2(x+1))+4 and find both image points. Justify the order of horizontal and vertical operations.",
+            "expectedPerformanceDe": "(u,v)→(u/2−1,4−3v). Die Punkte werden (0,1) und (−2,−5). Horizontal: auf 1/2 stauchen, dann 1 nach links. Vertikal: um 3 strecken und an x spiegeln, dann 4 nach oben. Die Reihenfolge stimmt mit der Punktabbildung überein.",
+            "expectedPerformanceEn": "(u,v)→(u/2−1,4−3v). Points become (0,1) and (−2,−5). Horizontally compress to 1/2, then shift 1 left. Vertically stretch by 3 and reflect across x, then shift 4 up. The order agrees with the point mapping.",
+            "understandingFocusDe": "Die allgemeinen Parameter werden in eine kontrollierbare Abbildung umgesetzt, nicht als ungeordnete Merkliste wiederholt.",
+            "understandingFocusEn": "Turn the general parameters into a checkable mapping rather than an unordered memorised list."
+          },
+          {
+            "id": "expanded-negative-argument",
+            "taskDemandDe": "Für einen anderen termfreien Graphen von f ist (1,3) bekannt. Deute h(x)=2f(−x/2+2)−1 durch Überführung in die Form a f(b(x−c))+d. Gib die allgemeine Punktabbildung und den Bildpunkt an.",
+            "taskDemandEn": "For another graph of f without a given expression, point (1,3) is known. Interpret h(x)=2f(−x/2+2)−1 by rewriting it as a f(b(x−c))+d. Give the general point mapping and image point.",
+            "expectedPerformanceDe": "−x/2+2=−(x−4)/2, daher a=2,b=−1/2,c=4,d=−1. (u,v)→(4−2u,2v−1), also (1,3)→(2,5). Horizontal: spiegeln, um 2 strecken, 4 nach rechts; vertikal: um 2 strecken, 1 nach unten.",
+            "expectedPerformanceEn": "−x/2+2=−(x−4)/2, hence a=2,b=−1/2,c=4,d=−1. (u,v)→(4−2u,2v−1), so (1,3)→(2,5). Horizontally reflect, stretch by 2, shift 4 right; vertically stretch by 2, shift 1 down.",
+            "understandingFocusDe": "Der expandierte Summand 2 ist nicht direkt die horizontale Verschiebung; Faktorisierung und negative Orientierung sind entscheidend.",
+            "understandingFocusEn": "The expanded constant 2 is not directly the horizontal shift; factorisation and reversed orientation are decisive."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+      "reason": "Die präzisierte gemeinsame Kompetenz gilt auf x>0. Der bisherige negative Intervallfall bleibt im historischen Kandidaten und wird hier durch eine eigenständige Rückwärtsaufgabe zur positiven oberen Integrationsgrenze ersetzt. Beide Lösungen durch Ableitung, Logarithmengesetz und Vorzeichen geprüft; keine Erweiterung auf ln|x| oder uneigentliche Integrale.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "log-antiderivative-domain",
+            "essentialUnderstandingDe": "Auf x>0 ist ln(x) eine Stammfunktion von 1/x. Die Ableitungsprobe und positive Intervallgrenzen rechtfertigen die Integralrechnung; Logarithmengesetze erlauben auch, aus einem Integralwert eine unbekannte positive Grenze zu bestimmen.",
+            "essentialUnderstandingEn": "On x>0, ln(x) is an antiderivative of 1/x. Differentiation and positive interval endpoints justify integration; logarithm laws also allow an unknown positive endpoint to be determined from an integral value.",
+            "observablePerformanceDe": "Die lernende Person prüft eine logarithmische Stammfunktion auf einem positiven Intervall, wertet ein einfaches bestimmtes Integral aus oder bestimmt daraus eine unbekannte positive Grenze und kontrolliert das Ergebnis anhand des Vorzeichens.",
+            "observablePerformanceEn": "The learner checks a logarithmic antiderivative on a positive interval, evaluates a simple definite integral or determines an unknown positive endpoint, and checks the result using its sign."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "log-antiderivative-domain"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "forward-value-and-inverse-endpoint",
+            "textDe": "Vom Integralwert bei gegebenen positiven Grenzen zur Bestimmung einer unbekannten positiven Grenze aus dem Integralwert.",
+            "textEn": "Move from evaluating an integral with specified positive endpoints to finding an unknown positive endpoint from the integral value."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "positive-log-integral",
+            "taskDemandDe": "Berechne ∫₂⁸3/x dx. Begründe die Stammfunktion durch Ableiten und erkläre das Vorzeichen des Ergebnisses.",
+            "taskDemandEn": "Evaluate ∫₂⁸3/x dx. Justify the antiderivative by differentiation and explain the sign of the result.",
+            "expectedPerformanceDe": "F=3ln x ist für x>0 definiert und F′=3/x. Das Integral ist 3(ln8−ln2)=3ln4>0, passend zum positiven Integranden auf [2,8].",
+            "expectedPerformanceEn": "F=3ln x is defined for x>0 and F′=3/x. The integral is 3(ln8−ln2)=3ln4>0, consistent with the positive integrand on [2,8].",
+            "understandingFocusDe": "Die logarithmische Beziehung wird mit Faktor und Intervallbedingungen begründet genutzt.",
+            "understandingFocusEn": "Use the logarithmic relationship with justified coefficient and interval conditions."
+          },
+          {
+            "id": "positive-unknown-endpoint",
+            "taskDemandDe": "Bestimme b>0 so, dass ∫₂ᵇ1/x dx=ln 3 gilt. Begründe, ob b größer oder kleiner als 2 sein muss, löse die Gleichung und prüfe das Ergebnis im Integral.",
+            "taskDemandEn": "Find b>0 such that ∫₂ᵇ1/x dx=ln 3. Explain whether b must be greater or less than 2, solve the equation and check the result in the integral.",
+            "expectedPerformanceDe": "F(x)=ln x ist auf x>0 definiert und F′=1/x. ln b−ln 2=ln(b/2)=ln 3 liefert b/2=3, also b=6. Wegen ln 3>0 und 1/x>0 muss b>2 gelten. Die Probe ∫₂⁶1/x dx=ln 6−ln 2=ln 3 bestätigt das Ergebnis.",
+            "expectedPerformanceEn": "F(x)=ln x is defined on x>0 and F′=1/x. ln b−ln 2=ln(b/2)=ln 3 gives b/2=3, hence b=6. Since ln 3>0 and 1/x>0, b must exceed 2. Checking ∫₂⁶1/x dx=ln 6−ln 2=ln 3 confirms the result.",
+            "understandingFocusDe": "Die Stammfunktion verbindet einen vorgegebenen Integralwert rückwärts mit einer zulässigen Intervallgrenze; die Orientierung wird eigenständig begründet.",
+            "understandingFocusEn": "Use the antiderivative in reverse to relate a specified integral value to an admissible endpoint, independently justifying the interval orientation."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+      "reason": "Neue Kehrwertpotenzfälle mit n=3/4 und umgekehrter Zuordnung einer vorgegebenen n-Auswahl. V2-Bild betrachtet; gerade/ungerade Potenzen sowie einseitige Grenzwerte werden einzeln fachlich geprüft. Gegen die neue explizite Einschränkung n∈N, n>0 geprüft: sämtliche Fälle und Paritätsargumente bleiben unverändert gültig.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "reciprocal-power-parity",
+            "essentialUnderstandingDe": "Für r_n(x)=1/x^n mit positiver ganzer Zahl n ist 0 ausgeschlossen. Die Parität von n bestimmt Vorzeichen, Symmetrie und Verhalten links der Polstelle; für große Beträge von x gehen alle Werte gegen 0.",
+            "essentialUnderstandingEn": "For r_n(x)=1/x^n with positive integer n, zero is excluded. The parity of n determines signs, symmetry and behaviour left of the pole; values tend to zero for large |x|.",
+            "observablePerformanceDe": "Die lernende Person begründet Definitions- und Wertemenge, geeignete Punkte, Symmetrie und einseitiges Grenzverhalten und verwendet sie zur Skizze oder zur begründeten Zuordnung eines Graphen.",
+            "observablePerformanceEn": "The learner justifies domain and range, suitable points, symmetry and one-sided limiting behaviour, and uses them to sketch or identify a graph."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "reciprocal-power-parity"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "forward-and-reverse-identification",
+            "textDe": "Von der Untersuchung vorgegebener Potenzen zur Auswahl eines passenden Exponenten aus Graphen- und Wertinformationen.",
+            "textEn": "Move from investigating specified powers to selecting an exponent from graph and value information."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "odd-even-comparison",
+            "taskDemandDe": "Vergleiche r₃=1/x³ und r₄=1/x⁴. Gib D/W an, nutze x=±1,±2 für Skizzen und begründe Symmetrie sowie Verhalten bei 0 und im Unendlichen.",
+            "taskDemandEn": "Compare r₃=1/x³ and r₄=1/x⁴. State domains/ranges, use x=±1,±2 for sketches, and justify symmetry and behaviour near 0 and infinity.",
+            "expectedPerformanceDe": "Beide D=R\\{0}. r₃ hat W=R\\{0}, Ursprungssymmetrie und Werte ±1,±1/8 mit passenden Vorzeichen. r₄ hat W=(0,∞), y-Achsensymmetrie und Werte 1,1/16. Bei 0+ beide +∞; bei 0− r₃→−∞, r₄→+∞. Bei |x|→∞ beide→0.",
+            "expectedPerformanceEn": "Both domains are R\\{0}. r₃ has range R\\{0}, origin symmetry and values ±1,±1/8 with matching signs. r₄ has range (0,∞), y-axis symmetry and values 1,1/16. At 0+ both tend to +∞; at 0−, r₃→−∞ and r₄→+∞. Both tend to 0 as |x|→∞.",
+            "understandingFocusDe": "Gemeinsame Asymptoten werden von den durch Parität verschiedenen Zweigen unterschieden.",
+            "understandingFocusEn": "Distinguish common asymptotes from the branches that differ by parity."
+          },
+          {
+            "id": "identify-power",
+            "taskDemandDe": "Ein Graph gehört zu 1/x^n mit n aus {4,5,6}. Die Punkte (−2,−1/32) und (2,1/32) sind gegeben. Wähle n, begründe die Wahl und ergänze die Skizze durch den Wert bei x=1/2 und die beiden Polseiten.",
+            "taskDemandEn": "A graph belongs to 1/x^n with n in {4,5,6}. Points (−2,−1/32) and (2,1/32) are given. Select n, justify your choice, and complete the sketch using x=1/2 and both sides of the pole.",
+            "expectedPerformanceDe": "Der negative Wert bei −2 verlangt ungerades n; aus der Auswahl bleibt n=5, bestätigt durch 2⁵=32. r₅(1/2)=32. Links von 0 geht der Graph gegen −∞, rechts gegen +∞; eine Verbindung durch 0 ist ausgeschlossen.",
+            "expectedPerformanceEn": "The negative value at −2 requires odd n; among the options this is n=5, confirmed by 2⁵=32. r₅(1/2)=32. The graph tends to −∞ left of 0 and +∞ right of it; it cannot be joined through 0.",
+            "understandingFocusDe": "Graph- und Wertinformationen werden rückwärts zu einem zulässigen Funktionstyp verknüpft.",
+            "understandingFocusEn": "Use graph and value information in reverse to identify an admissible function type."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+      "reason": "Neue Ableitungsbelege für Kehrwertpotenzen und Quadratwurzel mit allgemeinem n sowie gesonderter Randprüfung. V1-Bild betrachtet; die richtige Exponentenregel wird nicht mit bloßem Nachschreiben des Bildes verwechselt. Gegen die präzisierte Beschreibung geprüft: n ist positiv ganzzahlig; für die Ableitung der Kehrwertpotenz gilt x≠0 und für √x gilt x>0.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "power-rule-with-domain",
+            "essentialUnderstandingDe": "Kehrwertpotenzen lassen sich als x^(−n), die Quadratwurzel als x^(1/2) schreiben. Die Potenzregel multipliziert mit dem Exponenten und vermindert ihn um 1; der Definitionsbereich der Funktion ist vom Bereich einer endlichen Ableitung zu unterscheiden. Hier ist n positiv ganzzahlig; die Ableitungsformeln gelten bei Kehrwertpotenzen für x≠0 und bei der Quadratwurzel für x>0.",
+            "essentialUnderstandingEn": "Reciprocal powers can be written as x^(−n), and the square root as x^(1/2). The power rule multiplies by the exponent and subtracts 1 from it; a function's domain must be distinguished from where it has a finite derivative. Here n is a positive integer; derivative formulas apply to reciprocal powers for x≠0 and to the square root for x>0.",
+            "observablePerformanceDe": "Die lernende Person leitet beide Funktionsarten mit erklärter Potenzumformung ab, vereinfacht Vorzeichen und Exponenten korrekt und begründet die zulässigen Stellen einschließlich des Wurzelrandes.",
+            "observablePerformanceEn": "The learner differentiates both function types using explained power rewrites, correctly simplifies signs and exponents, and justifies admissible inputs including the square-root endpoint."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "power-rule-with-domain"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "general-exponent-and-endpoint",
+            "textDe": "Eine konkrete negative Potenz wird verallgemeinert; beim Quadratwurzelrand reicht die formale Ableitungsformel nicht aus.",
+            "textEn": "Generalise a concrete negative power; at the square-root endpoint the formal derivative formula alone is insufficient."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-function-types",
+            "taskDemandDe": "Leite r(x)=1/x³ und w(x)=√x ab. Begründe jeden Exponentenschritt, gib die gültigen Bereiche an und berechne w′(4).",
+            "taskDemandEn": "Differentiate r(x)=1/x³ and w(x)=√x. Justify each exponent step, state the valid domains and evaluate w′(4).",
+            "expectedPerformanceDe": "r=x⁻³ ergibt r′=−3x⁻⁴=−3/x⁴ für x≠0. w=x^(1/2) ergibt w′=(1/2)x^(−1/2)=1/(2√x) für x>0; w′(4)=1/4. Vorfaktor und Exponent werden getrennt erklärt.",
+            "expectedPerformanceEn": "r=x⁻³ gives r′=−3x⁻⁴=−3/x⁴ for x≠0. w=x^(1/2) gives w′=(1/2)x^(−1/2)=1/(2√x) for x>0; w′(4)=1/4. Coefficient and exponent are explained separately.",
+            "understandingFocusDe": "Die gemeinsame Regel wird auf negative und gebrochene Exponenten mit unterschiedlichen Bereichen angewendet.",
+            "understandingFocusEn": "Apply the same rule to negative and fractional exponents with different domains."
+          },
+          {
+            "id": "general-rule-and-zero",
+            "taskDemandDe": "Leite r_n(x)=1/x^n für positives ganzzahliges n allgemein ab und kontrolliere für n=2 bei x=−2 das Vorzeichen. Begründe danach mit dem rechtsseitigen Differenzenquotienten, ob √x bei 0 einen endlichen Ableitungswert besitzt.",
+            "taskDemandEn": "Differentiate r_n(x)=1/x^n for positive integer n in general and check the sign for n=2 at x=−2. Then use the right-hand difference quotient to decide whether √x has a finite derivative at 0.",
+            "expectedPerformanceDe": "r_n′=−n x^(−n−1)=−n/x^(n+1), x≠0. Für n=2, x=−2 folgt −2/(−8)=1/4. Bei √x ist der Quotient √h/h=1/√h für h>0 unbeschränkt; trotz w(0)=0 gibt es keinen endlichen Randableitungswert.",
+            "expectedPerformanceEn": "r_n′=−n x^(−n−1)=−n/x^(n+1), x≠0. For n=2 at x=−2 this gives −2/(−8)=1/4. For √x, the quotient √h/h=1/√h for h>0 is unbounded; despite w(0)=0 there is no finite endpoint derivative.",
+            "understandingFocusDe": "Verallgemeinerung und Randargument prüfen Verständnis über den unmittelbar eingesetzten Regelfall hinaus.",
+            "understandingFocusEn": "Generalisation and endpoint reasoning test understanding beyond direct rule substitution."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+      "reason": "Gegen die neue explizite Beschreibung von Koordinatentausch und Spiegelung geprüft. Der frühere Punktmarker-Befund ist dokumentiert; die tatsächlich importierte Fassung candidate-v6.png zeigt allgemeine spiegelbildliche Strahlen f(x)=ax und f⁻¹(x)=x/a für a>1, x≥0, mit P(u,v) und P′(v,u). Root-Sichtprüfung und unabhängige informierte Bildprüfung sind in root-v6-import.json und review-c-v6.json dokumentiert. Die beiden frischen Polygonzug-/Selbstinversionsfälle wurden fachlich erneut geprüft und bleiben gültig. Keine menschliche Prüfung oder Beherrschung wird behauptet.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "inverse-swaps-axes",
+            "essentialUnderstandingDe": "Ein Punkt (u,v) des Graphen einer umkehrbaren Funktion wird zum Punkt (v,u) des Umkehrgraphen. Bei gleichen Achseneinheiten ist dies Spiegelung an y=x; Definitions- und Wertemenge werden vertauscht.",
+            "essentialUnderstandingEn": "A point (u,v) on an invertible function's graph becomes (v,u) on its inverse graph. With equal axis units this is reflection across y=x; domain and range are exchanged.",
+            "observablePerformanceDe": "Die lernende Person konstruiert einen Umkehrgraphen durch koordinatenweise Zuordnung, erklärt die Spiegelgerade und nutzt eine neue Graphenform zur Prüfung, ob beide Graphen verschieden sein müssen.",
+            "observablePerformanceEn": "The learner constructs an inverse graph by coordinate mapping, explains the reflection line, and uses a new graph shape to test whether the two graphs must be different."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "inverse-swaps-axes"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "shape-and-self-inversion",
+            "textDe": "Ein stückweise linearer steigender Graph wird durch eine fallende Gerade ersetzt, die unter der Spiegelung mit sich selbst zusammenfällt.",
+            "textEn": "Replace an increasing piecewise-linear graph with a decreasing line that coincides with itself under reflection."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "polygon-inverse",
+            "taskDemandDe": "Ein streng steigender Graph verbindet (−1,0),(1,2),(4,3) geradlinig und besitzt genau D=[−1,4]. Zeichne den Umkehrgraphen im gleichen Achsenmaßstab und begründe die Zuordnung der Eckpunkte sowie D/W.",
+            "taskDemandEn": "A strictly increasing graph joins (−1,0),(1,2),(4,3) by straight segments and has exactly D=[−1,4]. Draw its inverse using the same axis scale and justify the vertex mappings and domain/range.",
+            "expectedPerformanceDe": "Der Umkehrgraph verbindet (0,−1),(2,1),(3,4). D des Umkehrgraphen ist [0,3], W=[−1,4]. Jedes Punktpaar entsteht durch Koordinatentausch beziehungsweise Spiegelung an y=x; nicht durch Spiegelung an einer Koordinatenachse.",
+            "expectedPerformanceEn": "The inverse graph joins (0,−1),(2,1),(3,4). Its domain is [0,3], range [−1,4]. Each pair is obtained by swapping coordinates or reflecting across y=x, not by reflection across a coordinate axis.",
+            "understandingFocusDe": "Eine vollständige Graphenbeziehung wird aus Punkten und Bereichen erklärt, ohne einen Umkehrterm berechnen zu müssen.",
+            "understandingFocusEn": "Explain a complete graph relationship through points and intervals without having to calculate an inverse expression."
+          },
+          {
+            "id": "decreasing-self-inverse",
+            "taskDemandDe": "Skizziere f(x)=2−x und seinen Umkehrgraphen auf R. Nutze (0,2),(1,1),(2,0) und erkläre, weshalb hier kein zweiter sichtbarer Graph entstehen muss.",
+            "taskDemandEn": "Sketch f(x)=2−x and its inverse on R. Use (0,2),(1,1),(2,0) and explain why there need not be a second visibly distinct graph.",
+            "expectedPerformanceDe": "(0,2) und (2,0) tauschen die Rollen, (1,1) bleibt fest. Die Spiegelung der ganzen Geraden an y=x ergibt dieselbe Gerade; f⁻¹=f. Die beiden Funktionen haben dieselbe Punktmenge, obwohl Eingabe und Ausgabe bei der Umkehrung vertauscht werden.",
+            "expectedPerformanceEn": "(0,2) and (2,0) exchange roles, while (1,1) is fixed. Reflecting the whole line across y=x gives the same line; f⁻¹=f. Both functions have the same point set although input and output are exchanged by inversion.",
+            "understandingFocusDe": "Das Koordinatentauschprinzip wird auf eine fallende, selbstinverse Funktion übertragen, nicht nur auf das bekannte Quadrat-Wurzel-Paar.",
+            "understandingFocusEn": "Transfer coordinate swapping to a decreasing self-inverse function, not merely the familiar square/square-root pair."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    }
+  ]
+}

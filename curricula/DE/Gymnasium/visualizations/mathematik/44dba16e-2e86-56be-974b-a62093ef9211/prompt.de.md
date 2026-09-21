@@ -8,34 +8,26 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `44dba16e-2e86-56be-974b-a62093ef9211.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/44dba16e-2e86-56be-974b-a62093ef9211/44dba16e-2e86-56be-974b-a62093ef9211.jpg`
+- Quellbild: `44dba16e-2e86-56be-974b-a62093ef9211.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/44dba16e-2e86-56be-974b-a62093ef9211/44dba16e-2e86-56be-974b-a62093ef9211.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Normalverteilung als Approximation binomialer Modelle
-Beschreibung: Die lernende Person kann Histogramme binomialverteilter Zufallsgrößen bei hinreichend großer Standardabweichung durch eine Normalverteilung approximieren, die Näherung fachlich begründen und den Bezug zu den Sigma-Regeln deuten.
-
-Zusatzanweisung:
-Pflichtinhalt: Behalte die bestehende Visualisierung zur Normalapproximation einer Binomialverteilung. Verwende ausschließlich deutsche Dezimalkommas. Die Stetigkeitskorrektur muss exakt die Grenzen „44,5“ und „55,5“ zeigen; der Erfolgsparameter muss als „p = 0,5“ erscheinen. Mittelwert, Standardabweichung, schattierter Bereich und Formeln müssen rechnerisch zusammenpassen.
-
-Vermeiden: 44.5, 55.5 oder 0.5, vertauschte Grenzen, fehlende Stetigkeitskorrektur oder eine Schattierung außerhalb des angegebenen Intervalls.
-
-Korrekturhinweis für die letzte Fassung: Schreibe in der Binomialnotation exakt `X ~ B(100; 0,5)` mit Semikolon und deutschem Dezimalkomma. Im gesamten Bild ist die Zeichenfolge `0.5` verboten. Schreibe die Korrekturgrenzen exakt `44,5` und `55,5` und markiere den stetigen Bereich sichtbar nur zwischen diesen beiden Grenzen. Kopiere keine Dezimalpunkte aus der Vorlage.
+Use case: scientific-educational.
+Asset type: German upper-secondary mathematics learning-goal illustration, landscape PNG.
+Style: friendly, abstract, clear comic-like educational illustration; warm very pale background, approachable rounded ink outlines, restrained blue/teal/orange colors, plenty of quiet whitespace. Not photorealistic, not sterile software-chart styling. The existing image is the source reference for topic and accessible educational character, but mathematical correctness is mandatory.
+All visible text German, large and readable. No technical IDs, no watermark, no logos, no provider artifacts. Generate one complete image, not a collage of alternative designs.
+Input image 1: topic/style reference. Redesign the normal approximation explanation with fewer numbers so every distance and label is consistent.
+Title: "Von Balken zur Glockenkurve".
+One central illustrative plot: a broad symmetric pale-blue discrete histogram with many narrow equal-width touching bins. Overlay a smooth orange normal bell curve following the general histogram shape. This is an explicitly SCHEMATIC illustration: no numerical x or y ticks, no named n or p, no invented exact bin probabilities. Label under the plot "Schematische Näherung".
+At the symmetry center draw a vertical guide to the peak, labeled "μ". At the left and right INFLECTION locations of the smooth bell curve draw guides labeled "μ−σ" and "μ+σ"; all three positions equally spaced horizontally. A SINGLE horizontal double-headed arrow from μ to μ+σ is labeled "σ". It must NOT span both sides of μ.
+Two small rounded legend cards beside the plot: blue "Binomial: diskrete Werte"; orange "Normal: stetige Dichte".
+Below use only these two clear equations: "μ = n · p", "σ = √(n · p · (1−p))".
+Bottom note: "Bei ausreichend großer Streuung ist die Glockenkurve oft eine gute Näherung." Second short line: "Sigma-Regeln gelten dann näherungsweise."
+No false numeric σ arrows, no need for a continuity-correction example here, no suggestion every binomial distribution is symmetric. The displayed symmetric histogram is just one suitable example, not a universal shape. Maintain friendly comic softness and quiet whitespace.
 ```
 
 ## Review-Notiz

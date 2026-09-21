@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "This reviewer did not generate or import these images and did not consult the generating agent's acceptance decisions. Decisions are based on the actual candidate rasters and the current canonical goal texts.",
+  "reviewDate": "2026-09-20",
+  "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+  "title": "Einfache gebrochen rationale Funktionen untersuchen",
+  "description": "Die lernende Person kann grundlegende Eigenschaften einfacher gebrochen rationaler Funktionen der Form $f(x)=\\frac{1}{x^n}$ beschreiben, Definitions- und Wertemenge sowie Graphenmerkmale angeben und das Verhalten an Polstellen und im Unendlichen deuten.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/61686d85-0301-550e-bab9-bd9411c3e7ce/candidate-v1.png",
+  "candidateSha256": "f4afefbeb0ee1a2c93b8372c9e71102131eba9bfd558672ef5d2bea48f4f5967",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/61686d85-0301-550e-bab9-bd9411c3e7ce/prompt.de.md",
+  "decision": "reject_candidate",
+  "checks": [
+    "Viewed both actual raster panels.",
+    "The formulas, stated domains/ranges, quadrants and limiting behaviour of 1/x and 1/x² are correct.",
+    "The 1/x plot places (1,1) and (−1,−1) consistently."
+  ],
+  "defects": [
+    "In the 1/x² panel the unit tick immediately left of the vertical axis is labelled positive 1 instead of −1.",
+    "That negative x-axis shows equally spaced ticks labelled −4, −2 and 1, which is not a consistent linear scale. The labelled point (−2,0.25) also sits between the pictured −4 and −2 ticks instead of above −2."
+  ],
+  "nextAction": "Retain the explanatory content and correct the right coordinate plot: a uniform x scale with −2,−1,0,1,2, and points (±1,1),(±2,0.25) aligned with their ticks. Do not change the domains, ranges or asymptote statements.",
+  "humanApproval": false,
+  "scope": "Targeted independent candidate-image review only. No active-asset import and no full goal-completion or human-approval claim."
+}

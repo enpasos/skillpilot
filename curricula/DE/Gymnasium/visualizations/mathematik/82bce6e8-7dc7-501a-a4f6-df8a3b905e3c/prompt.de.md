@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: OpenAI image generation
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
 - Quellbild: `82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png`
 - Public Asset: `/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png`
@@ -16,12 +16,11 @@
 ## Prompt
 
 ```text
-Use case: scientific-educational
-Asset type: SkillPilot learning-goal visualization, landscape 16:9
-Primary request: Create a mathematically exact German infographic titled "Operationscharakteristik und Gütefunktion unterscheiden" for one right-sided binomial test.
-Style/medium: clean modern textbook infographic, white/light blue background, high legibility, no decorative imagery.
-Composition: one shared coordinate system is mandatory (not two separate graphs). Horizontal axis "wahrer Wert p", vertical axis "Wahrscheinlichkeit" from 0 to 1. Draw exactly two pointwise complementary curves: blue decreasing L(p)=P_p(H₀ nicht verwerfen), orange increasing G(p)=P_p(H₀ verwerfen)=1-L(p). At one marked p₁ choose visibly complementary heights, for example L(p₁)=β=0,3 and G(p₁)=1-β=0,7=Teststärke. Show "L(p₁)+G(p₁)=1". At a marked null-hypothesis boundary p₀ show "G(p₀)≤α" and "L(p₀)≥1−α". Add two short separate notes: "Größeres n: steilerer Übergang und höhere Teststärke für relevante Alternativen." and "Größeres α: höhere Verwerfungswahrscheinlichkeit, aber auch größeres Risiko eines Fehlers 1. Art."
-Constraints: The two curves at every p must be visually complementary about probability 0.5. At p₁ the plotted ordinates must visibly be 0.3 and 0.7, not equal. Correct labels β and Teststärke. Correct German umlauts. No logos, watermark, product name, technical IDs, extra plots, or extra topics.
+Use case: precise-object-edit
+Asset type: German mathematics learning-goal PNG
+Input image 1 is the exact edit target.
+Primary request: Repariere gezielt die zwei Kurven so, dass G(p)=1−L(p) an JEDER Stelle gilt: orange Kurve ist die Spiegelung der blauen an der horizontalen Linie y=0,5. Einziger Schnittpunkt exakt auf y=0,5. Erhalte die markierten Punkte bei p0: L=0,7,G=0,3 sowie p1: L=0,3,G=0,7; dazwischen müssen beide komplementär und monoton sein. Erhalte Achsen, Zahlen, Definitionen, Hinweisboxen. Kleine Beschriftung 'Kurven schematisch' ergänzen, keine neue Behauptung konkreter n,k. Keine dekorative Neugestaltung.
+Invariants: freundlich, abstrakt, klar, comicartig, bestehende Bildsprache beibehalten. Keine Photorealistik, keine sterile technische Neugestaltung. Keine IDs, Logos oder Wasserzeichen ergänzen. Nicht betroffene Inhalte erhalten. Genau ein lesbares korrigiertes PNG.
 ```
 
 ## Review-Notiz

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "reviewScope": "Two separate V2 statistics PNG candidates; V1 findings preserved unchanged",
+  "reviewer": "/root/math_m7_post5_context9_blind_b",
+  "actualReviewedAt": "2026-09-20T20:33:34Z",
+  "humanApproved": false,
+  "reviewAuthority": "ai_candidate",
+  "independence": "Both actual V2 rasters inspected after finalizing the independent seven-goal V1 review. Acceptance is based on the drawings and text, not on correction prompts or expected outcomes.",
+  "counts": {
+    "inspected": 2,
+    "accept": 2,
+    "hold": 0
+  },
+  "records": [
+    {
+      "goalId": "03357e70-2280-532f-b629-5dfa31dc44eb",
+      "title": "Tests vergleichen und bewerten (LK)",
+      "descriptionDe": "Die lernende Person kann unterschiedliche Testverfahren oder Parametereinstellungen hinsichtlich Fehlerwahrscheinlichkeiten und Teststärke vergleichen und begründete Entscheidungen treffen.",
+      "descriptionEn": "The learner can compare different test procedures or parameter settings regarding error probabilities and test power and make reasoned decisions.",
+      "canonicalGoalSha256": "sha256:109a2eda65accd5915e9b37c9fd836391cefa252acd453a33b0dddf7cbc7b845",
+      "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/03357e70-2280-532f-b629-5dfa31dc44eb/candidate-v2.png",
+      "assetSha256": "sha256:8048e41de3134f0a1e4e3a94bfc8446df6c6ed7c84e0876d53aec830ba879641",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/03357e70-2280-532f-b629-5dfa31dc44eb/prompt-v2.md",
+      "promptSha256": "sha256:a758be9ed9b6192f0b3ec0a06c104fa730f8904dcfb65a647d6be58026ad91f1",
+      "generationSha256": "sha256:ec30e63954719630692a6a6ada0ca89114e5d38756e06769e7c4918e52daa109",
+      "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+      "generationToolAsRecorded": "image_gen.imagegen",
+      "reviewer": "/root/math_m7_post5_context9_blind_b",
+      "actualReviewedAt": "2026-09-20T20:33:34Z",
+      "inspected": true,
+      "humanApproved": false,
+      "decision": "accept",
+      "findings": [],
+      "checks": [
+        "Die tatsächliche linke β-Markierung zeigt jetzt links von k unter die orange Alternativverteilung. Die linke α-Markierung zeigt rechts von k unter die blaue Nullverteilung. Die vormals falschen Richtungen sind beseitigt.",
+        "Im rechten Panel bleiben β links von k unter Orange und α rechts von k unter Blau korrekt markiert.",
+        "Beide lokalen Entscheidungsboxen lauten jetzt bei X≥k: H0 verwerfen. Die gemeinsame Regel ergänzt korrekt X<k: H0 nicht verwerfen; es gibt keinen widersprüchlichen Nichtverwerfungszweig mehr.",
+        "Das kleinere k in A ergibt im Vergleich höheres α, kleineres β und größere Teststärke1−β. Das größere k in B zeigt den umgekehrten Trade-off. Kurven und Positionen unterstützen diese relative Aussage.",
+        "Kontextabhängige Fehlerschwere, Kosten und Stichprobenumfang bleiben als Vergleichskriterien sichtbar; die freundlichen Figuren, Farben und ausdrücklich schematischen Verteilungen passen zum Ziel."
+      ],
+      "limitations": [
+        "Die Kurven sind ausdrücklich schematisch und erlauben keine numerische Ablesung von α/β.",
+        "Nicht jeder zusätzliche Promptwortlaut wurde identisch in beide lokalen Boxen übernommen; die vorhandene lokale Aussage plus gemeinsame vollständige Regel ist jedoch fachlich korrekt. Keine kosmetische Zusatzforderung."
+      ],
+      "rationale": "Beide konkreten V1-Blocker sind am neuen Raster tatsächlich behoben: Fehlerflächen richtig zugeordnet und keine widersprüchliche Entscheidungsbox."
+    },
+    {
+      "goalId": "83a5546e-0ea6-576e-83e2-3387b30872bb",
+      "title": "Daten tabellarisch und grafisch aufbereiten",
+      "descriptionDe": "Die lernende Person kann erhobene Daten tabellarisch und grafisch aufbereiten (z. B. Häufigkeitstabellen, Histogramme) und passende Darstellungen auswählen.",
+      "descriptionEn": "The learner can prepare collected data in tables and graphs (e.g., frequency tables, histograms) and choose suitable representations.",
+      "canonicalGoalSha256": "sha256:63fbae333e2d320a0712f41e108386219af8df5ef5ff8fcf420ba2af7248b6ee",
+      "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/83a5546e-0ea6-576e-83e2-3387b30872bb/candidate-v2.png",
+      "assetSha256": "sha256:c1561d10529dea7fb6cb56b220748d2b10b52c5cf46b47f9a06d8e32de299d16",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/83a5546e-0ea6-576e-83e2-3387b30872bb/prompt-v2.md",
+      "promptSha256": "sha256:236701e1e6872a6c5d7f3b936de77aeb45ecf105eeabd86bfca458b3f618b537",
+      "generationSha256": "sha256:0c0465b8110a5ba78305cf7377428a8af5e4550f016e0808501bb4c057e4a224",
+      "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+      "generationToolAsRecorded": "image_gen.imagegen",
+      "reviewer": "/root/math_m7_post5_context9_blind_b",
+      "actualReviewedAt": "2026-09-20T20:33:34Z",
+      "inspected": true,
+      "humanApproved": false,
+      "decision": "accept",
+      "findings": [],
+      "checks": [
+        "Die fehlerhafte Strichlistenspalte ist vollständig entfernt; die Tabelle zeigt genau Kategorie, absolute Häufigkeit und relative Häufigkeit. Eine Strichliste ist kein zwingender Bestandteil des aktuellen Ziels.",
+        "Die Zeilen lauten Bus8, Fahrrad6, zuFuß7, Auto3, gesamt24. Zugehörige Prozentwerte ≈33%,≈25%,≈29%,≈13% sind korrekt; ihre gerundete Summe beträgt100%.",
+        "Das Säulendiagramm zeigt auf derselben gleichmäßig skalierten y-Achse die Höhen8,6,7,3; Beschriftungen, Reihenfolge und Farben sind konsistent.",
+        "Links sind sechs Karten als expliziter Auszug aus24 Antworten markiert. Es wird nicht behauptet, aus diesen sechs Karten ließen sich die vollständigen Häufigkeiten abzählen.",
+        "Der Ablauf Rohdaten→Häufigkeitstabelle→Säulendiagramm bleibt sichtbar. Die Auswahlhilfe Kategorien/Säulen gegenüber klassierten Messwerten/Histogramm trifft eine passende grundlegende Unterscheidung. Freundliche Icons und Roboter erhalten den Stil."
+      ],
+      "limitations": [
+        "Die Grafik ist eine Orientierung über Datenaufbereitung, keine vollständig aus dem sichtbaren Rohdatenauszug lösbare Bewertungsaufgabe.",
+        "Die Zeichen≈ bei exakt25% beziehungsweise100% sind unnötig, aber mathematisch nicht falsch und kein Hold."
+      ],
+      "rationale": "Der widersprüchliche Zählstrichinhalt ist entfernt, ohne eine erforderliche Kompetenz wegzulassen. Alle verbleibenden Zahlen und graphischen Relationen sind korrekt."
+    }
+  ]
+}

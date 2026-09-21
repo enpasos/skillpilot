@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "Candidate-v2 actual pixels inspected independently; reviewer did not create/import the image or read generator/root judgments.",
+  "reviewDate": "2026-09-20",
+  "goalId": "91311908-9209-58e4-8429-99dad9df546d",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-functions-20260920-v1/91311908-9209-58e4-8429-99dad9df546d/candidate-v2.png",
+  "candidateSha256": "f5d4903da097d07f6badddd29a395f207750db3afa8b7661d1b5b34dd0a51f6d",
+  "decision": "reject_candidate",
+  "checks": [
+    "Correct machine order, value table and left-shift explanation preserved.",
+    "Incorrect gray reference removed; red vertex at(-1,0), y-intercept(0,1) and right(1,4) anchors conceptually correct."
+  ],
+  "defects": [
+    "The claimed Cartesian x-scale is materially nonuniform: rendered -1→0 interval approximately110px versus0→1 approximately78px; adjacent negative integer intervals approximately75px.",
+    "Left red point at y=4 lies noticeably left of the -3 tick (approximately1075px versus1102px), while right y=4 point is at x=1. Thus graph geometry is not the claimed same-width left translation on a linear coordinate grid."
+  ],
+  "nextAction": "Targeted replacement of only graph panel with uniform x/y ticks and exact key anchor points; preserve friendly illustration and correct surrounding text.",
+  "humanApproval": false,
+  "scope": "Candidate-only review; no import or gate-completion claim."
+}

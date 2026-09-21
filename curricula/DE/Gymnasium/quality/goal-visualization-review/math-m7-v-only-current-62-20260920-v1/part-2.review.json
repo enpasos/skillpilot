@@ -1,0 +1,541 @@
+{
+  "schemaVersion": 1,
+  "kind": "current-goal-visualization-review",
+  "reviewId": "math-m7-v-only-current-62-20260920-v1-part-2",
+  "reviewer": "Codex independent visual reviewer /root/math_m7_post5_context9_blind_b",
+  "reviewAuthority": "ai_candidate",
+  "humanApproved": false,
+  "actualReviewedAt": "2026-09-20T19:11:41Z",
+  "inputPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-2.input.json",
+  "inputSha256": "sha256:5afa21adc78f3097df963f75f5f3a00716351b3e40d03a23a404eb6685ca83c1",
+  "scope": "Independent visual-only review of the 31 actual raster assets in part-2.input.json against their supplied current goal descriptions.",
+  "method": "Every referenced raster was opened with view_image and visually inspected. Per-image checks cover mathematical content, labels, representation, numbers/scales/relations and fit to the goal. KEEP standard: a suitable illustration need not assess or exhaust the entire competency. No previous visualization review results were consulted.",
+  "limitations": [
+    "This is AI-candidate visual evidence, not human approval.",
+    "No description/profile re-review, full QA/build, live UI/client acceptance, canonical changes, asset generation or shared-registry changes were performed.",
+    "Source and license metadata were not independently audited in this visual-only task."
+  ],
+  "summary": {
+    "requested": 31,
+    "inspected": 31,
+    "accept_current_asset": 24,
+    "correction_required": 7
+  },
+  "records": [
+    {
+      "goalId": "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+      "title": "Brüche als Zahlen, Anteile und Quotienten deuten",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/6b0075bb-f71c-59f6-ab98-fb894568cc26/6b0075bb-f71c-59f6-ab98-fb894568cc26.jpg",
+      "assetSha256": "sha256:d28e5a78b3a5a0232de89a351b4f06fa7ff78fd5318368ff5d18bfaca006c584",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "3 Pizzen entsprechen 12 Vierteln; verteilt auf 4 Personen ergeben sie je 3/4 Pizza.",
+        "Ein markierter Apfel unter vier gleichartigen Äpfeln stellt 1/4 der Menge dar.",
+        "Skalierte Zahlengerade mit Beschriftungen −2,−1,0,1,2 auf korrekte Bruchpositionen geprüft."
+      ],
+      "findings": [
+        "Auf der Zahlengeraden steht −1/2 unter der Position −1, 1/4=0,25 im negativen Bereich und 3/4=0,75 unter der Position 1. Diese Zuordnungen sind falsch; nur die markierte 1/2 liegt zwischen 0 und 1 richtig."
+      ],
+      "rationale": "Anteil- und Quotientendarstellung passen, aber der Zahlenaspekt lehrt durch fehlplatzierte Bruchbeschriftungen falsche Positionen. Vor Verwendung die Zahlengerade fachlich korrigieren.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+      "title": "Brüche und Dezimalbrüche ineinander umwandeln",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/ca8b2e67-7d14-5baf-8404-26820fe3d548/ca8b2e67-7d14-5baf-8404-26820fe3d548.jpg",
+      "assetSha256": "sha256:1ad99bf6013bc78941b67bc0de68b3d7e01e3a41370bebb53da46b983d26110e",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Einzelgleichungen 3÷4=0,75; 1÷3=0,(3); 0,2=2/10=1/5 und 0,(6)=6/9=2/3 sind rechnerisch richtig.",
+        "Die visuellen Pfeile wurden als durchgehende Umwandlungswege geprüft."
+      ],
+      "findings": [
+        "Der einzige Maschineneingang 3/4 führt zusätzlich zum als periodisch markierten Ausgang 0,333…; das stellt eine falsche Umwandlung dar.",
+        "Ein durchgehender Pfeil verbindet 0,75 mit 0,2, ein weiterer 0,333… mit 0,666…. Diese Übergänge ändern den Wert und sind nicht als Wechsel zu unabhängigen Beispielen markiert."
+      ],
+      "rationale": "Korrekte Einzeltexte retten die irreführende zentrale Umwandlungsgrafik nicht. Die Beispiele müssen als getrennte wertgleiche Wege dargestellt werden.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "797ee047-b8dd-45cf-880e-98571a56c690",
+      "title": "Bruchgleichungen lösen und als Schnittprobleme deuten",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/797ee047-b8dd-45cf-880e-98571a56c690/797ee047-b8dd-45cf-880e-98571a56c690.jpg",
+      "assetSha256": "sha256:1bf61b645b372ce898c8765745096ebb7ce26b82f64be0d9bb77c835c22c6000",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "1/x=2/(x+1) wird auf D=ℝ\\{0,−1} korrekt zu x+1=2x und x=1 umgeformt.",
+        "Beide Seiten ergeben bei x=1 den Wert 1; der Schnittpunkt S(1|1) ist richtig.",
+        "Blaue und rote Hyperbel besitzen passend zu ihren Nennern die Asymptoten x=0 beziehungsweise x=−1; x-Lösung und Schnittpunkt werden unterschieden."
+      ],
+      "findings": [],
+      "rationale": "Lesbare rechnerische und graphische Darstellung derselben Bruchgleichung; die Einschränkungen bleiben sichtbar und die Graphen passen qualitativ zur Rechnung.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "15512e77-31e3-5222-8a6b-84791618e5ce",
+      "title": "Bruchterme addieren und subtrahieren",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/15512e77-31e3-5222-8a6b-84791618e5ce/15512e77-31e3-5222-8a6b-84791618e5ce.jpg",
+      "assetSha256": "sha256:38c9c6db1a798acba0fe9f4ca6e168dcdc8cdc8fd8c7bf5e3e75bff3e8b4e9d0",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "3/(x+2)−1/x erhält korrekt den gemeinsamen Nenner x(x+2).",
+        "Die Erweiterungsfaktoren x beziehungsweise x+2 und der Zähler 3x−(x+2)=2x−2 sind richtig.",
+        "Definitionsbedingungen x≠0 und x≠−2 sowie Minusklammerregel sind sichtbar und korrekt."
+      ],
+      "findings": [],
+      "rationale": "Das übersichtliche Subtraktionsbeispiel unterstützt das Lernziel durch korrekte Umformungen und gut lesbare Klammerbehandlung. Ein zusätzliches Additionsbeispiel ist nicht Voraussetzung für die Bildannahme.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+      "title": "Bruchterme auf einen gemeinsamen Nenner bringen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/f7a9a0b4-ec64-468f-8da4-59c5055eac1d/f7a9a0b4-ec64-468f-8da4-59c5055eac1d.jpg",
+      "assetSha256": "sha256:0ef9054efef372d20f0b34222f2dd6ff2b0c9f36c687678e433cd5a662964f4a",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Für 1/x+2/(x+1) ist x(x+1) ein korrekter Hauptnenner.",
+        "Erweiterung mit (x+1)/(x+1) beziehungsweise x/x ergibt die richtigen Zähler x+1 und 2x.",
+        "Bedingungen x≠0,−1 und Gesamtergebnis (3x+1)/(x(x+1)) sind richtig."
+      ],
+      "findings": [],
+      "rationale": "Die Farbzuordnung trennt die Nennerfaktoren nachvollziehbar. Die anschließende Addition konkretisiert den Nutzen des gemeinsamen Nenners, ohne dessen Bedeutung zu verzerren.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "76478e47-5ff9-5de1-b601-5e6e436ad855",
+      "title": "Bruchterme multiplizieren und dividieren",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/76478e47-5ff9-5de1-b601-5e6e436ad855/76478e47-5ff9-5de1-b601-5e6e436ad855.jpg",
+      "assetSha256": "sha256:33c18766bb8b3e37d3bcfdeba108d87bdd9cfd0c2aecfc673dedb53229caefe6",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "(x+1)/(2x)·4x/(x+1)=2 gilt unter x≠0,−1.",
+        "(x²−1)/x:(x+1) wird korrekt zum Kehrwertprodukt und zu (x−1)/x gekürzt.",
+        "Die ursprüngliche Divisorbedingung x≠−1 bleibt trotz Kürzung sichtbar; rote Kürzungsstriche betreffen Faktoren."
+      ],
+      "findings": [],
+      "rationale": "Beide Operationsarten, passende Faktorisierung und vollständige Definitionsbedingungen sind korrekt und gut zu unterscheiden. Hochgestellte Ersatzwerte bei der Kürzung sind durch die roten Streichungen als Kürzungsnotation erkennbar.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "c420e0be-1e74-4050-834c-d8da7f41095a",
+      "title": "Bruchterme strukturieren, erweitern und kürzen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/c420e0be-1e74-4050-834c-d8da7f41095a/c420e0be-1e74-4050-834c-d8da7f41095a.jpg",
+      "assetSha256": "sha256:8d4244a5475dd5cdaf7b014e59bf9a1ac075935b260383f0264ba85cc1583c6d",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "2x+6=2(x+3), sodass (2x+6)/(x+3)=2 für x≠−3.",
+        "(x+1)/2+1/3 wird mit dem Hauptnenner 6 korrekt zu (3x+5)/6.",
+        "Das falsche Kürzen über Summen ist deutlich rot als nicht zulässig markiert."
+      ],
+      "findings": [],
+      "rationale": "Faktorstruktur, wertgleiche Erweiterung und die entscheidende Abgrenzung zwischen Summanden und Faktoren sind fachlich richtig dargestellt; die Bedingung x≠−3 ist sichtbar.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "eda3a298-4965-525e-878d-f05b9e2d4503",
+      "title": "Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/eda3a298-4965-525e-878d-f05b9e2d4503/eda3a298-4965-525e-878d-f05b9e2d4503.jpg",
+      "assetSha256": "sha256:b55613d0c9fd95c73c814d608c961cb6722a3255b1052ca454cd0942b0c78616",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Zu 2 sin(x)+1 passen Periode 2π, Amplitude 2, Mittellinie y=1 sowie Extremwerte 3 und −1.",
+        "Maxima bei π/2 und 5π/2 sowie Minimum bei 3π/2 sind horizontal passend beschriftet.",
+        "Die eingezeichneten horizontalen Gitternetzlinien und y-Abstände wurden mit den Zahlenbeschriftungen verglichen."
+      ],
+      "findings": [
+        "Die y-Achse ist bei regelmäßigem Gitternetz uneinheitlich skaliert: Zwischen y=−1 und y=0 liegen ungefähr zwei Rasterabstände, zwischen y=0 und y=1 drei. Für eine lineare Skala müsste y=0 genau mittig zwischen y=−1 und y=1 liegen. Die gleich großen Amplitudenstrecken von der Mittellinie zu den Extrema sind dagegen richtig."
+      ],
+      "rationale": "Die Funktionsparameter und Extremwerte stimmen, aber die falsch platzierte Nulllinie macht das Ablesen der Nullstellen und vertikalen Verschiebung inkonsistent. Die x-Achse beziehungsweise y=0-Linie und die markierten Nullstellen müssen zur linearen y-Skala passen.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "3f4d1340-1fbb-5109-b9c2-08fc61303133",
+      "title": "Darstellung erstellen und beschriften",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/3f4d1340-1fbb-5109-b9c2-08fc61303133/3f4d1340-1fbb-5109-b9c2-08fc61303133.jpg",
+      "assetSha256": "sha256:dea832df9906b7bf95eb9f649065a8cbab880b9378dc61ee8165f2b4d19c7873",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die vorgegebenen Punkte (0|1), (1|3), (2|5) sind an den passenden Koordinaten eingezeichnet.",
+        "Beide Achsen sind gleichmäßig skaliert; unbeschriftete Zwischenstriche sind konsistent.",
+        "Die gezeichnete Gerade hat passend zu den Punkten Steigung 2 und y-Achsenabschnitt 1."
+      ],
+      "findings": [],
+      "rationale": "Die Illustration zeigt korrekt, wie bekannte Wertepaare in einen beschrifteten Graphen übertragen werden. Bei diesem abstrakten Beispiel sind keine Sachsituationseinheiten nötig.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "8dd9f210-2683-5902-acab-e3be22725232",
+      "title": "Darstellungsform auswählen und begründen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/8dd9f210-2683-5902-acab-e3be22725232/8dd9f210-2683-5902-acab-e3be22725232.jpg",
+      "assetSha256": "sha256:c016cda41bb13375f1ec5eec23ca3fdace458322e4bd174ce9b7601e7fca5cd2",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Tabelle mit 0→0, 5→200, 10→400 passt zu Füllstand(t)=40t.",
+        "Die graphische Halbvoll-Markierung zeigt die richtige Rückprojektion auf eine Zeitkoordinate.",
+        "Tabelle, Graph, Term und Skizze sind erkennbar unterschiedliche Darstellungen derselben Füllsituation."
+      ],
+      "findings": [],
+      "rationale": "Als schematische Orientierung zur zweckabhängigen Darstellungswahl passend. Das Fragezeichen markiert den gesuchten Zeitpunkt; ohne numerische Gesamtkapazität wird zu Recht kein Zahlenwert als Lösung behauptet.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "11c88ea2-8502-5008-bec2-3e491c75ace4",
+      "title": "Darstellungsformen gerader Körper verknüpfen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/11c88ea2-8502-5008-bec2-3e491c75ace4/11c88ea2-8502-5008-bec2-3e491c75ace4.jpg",
+      "assetSha256": "sha256:76f082fa9b1f337201c5896c79d4540e74b3d23f3ddb9401123c7fbd24db521c",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Das Netz enthält genau sechs kongruente Quadrate und ist zu einem Würfel faltbar.",
+        "Die orange markierte Fläche kann durch räumliche Orientierung zur oberen Würfelfläche werden.",
+        "Drei Kantenlängen von 2 cm und die verdeckten gestrichelten Kanten passen zum gezeigten Würfel."
+      ],
+      "findings": [],
+      "rationale": "Netz, räumliches Modell und Schrägbild sind sachlich konsistent verbunden. Die exemplarische Beschränkung auf den Würfel genügt als Lehrunterstützung dieses allgemeineren Ziels.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+      "title": "Datenverteilungen mithilfe von Kenngrößen und Boxplots vergleichen und deuten",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/b819973b-4cad-48a4-9f7e-f74b5e75ea6c.jpg",
+      "assetSha256": "sha256:474861a2c5c77fb76f08a834a6cdb7e06a151236a31ca117dc238bcc93db29d2",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "A: Minimum 4, Q1=7, Median 10, Q3=13, Maximum16; B: 2,6,11,17,20 sind auf gemeinsamer Skala passend positioniert.",
+        "Die Sätze B hat höheren Median, B streut stärker und A ist kompakter sind für diese Kennwerte sachlich richtig.",
+        "Die Zeiger der Vergleichsbeschriftungen wurden ihren tatsächlichen Zielstellen zugeordnet."
+      ],
+      "findings": [
+        "Die Sprechblase „B hat höheren Median“ zeigt mit ihrem großen Pfeil auf den Median von Klasse A (10), nicht auf B (11).",
+        "Die mit „A ist kompakter“ verknüpfte Maßpfeilstrecke liegt über dem rechten Whisker von B zwischen Q3=17 und Maximum20, statt die kompaktere Verteilung von A zu kennzeichnen."
+      ],
+      "rationale": "Die Boxplots und Zahlen sind richtig, aber die hervorgehobenen Zuordnungen zweier Vergleichsaussagen zeigen auf falsche graphische Objekte. Beschriftungszeiger korrigieren, ohne die guten Boxplots zu ersetzen.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "a111f535-ff21-5953-90f6-bee81d61b186",
+      "title": "Definitionen und Sätze präzise nutzen (LK)",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/a111f535-ff21-5953-90f6-bee81d61b186/a111f535-ff21-5953-90f6-bee81d61b186.jpg",
+      "assetSha256": "sha256:01f3455297a9426c06064add1812d90d25565ad0bbf2ebcd0a4363abc244e053",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Implikation f'>0 auf einem Intervall ⇒ f dort streng monoton steigend ist korrekt.",
+        "Im Beispiel ist f'=2 positiv; das Intervall [0,4] wird ausdrücklich benannt.",
+        "Die steigende Gerade passt qualitativ zur konstant positiven Ableitung; eine Umkehrung des Satzes wird nicht behauptet."
+      ],
+      "findings": [],
+      "rationale": "Das einfache Beispiel visualisiert genau Voraussetzung, Geltungsbereich und Folgerung eines Satzes. Es beansprucht weder einen formalen Beweis noch eine vollständige Liste von Definitionen.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "502ecaa7-cca6-5c51-a1cc-da09a7b2382c",
+      "title": "Definitionsmenge einer Funktion bestimmen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/502ecaa7-cca6-5c51-a1cc-da09a7b2382c.png",
+      "assetSha256": "sha256:7779288e950bd9c18bf6a4850d3ec2eaf2a3da7d58af6675cb1327d777ea1a15",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Der Ausschluss x=3 bei 1/(x−3)+4 und der Ausschluss x=2 bei (x²−4)/(x−2) sind als Mengenangaben richtig.",
+        "Der rechts beschriftete Funktionsterm wurde algebraisch zu x+2 für x≠2 vereinfacht und mit der Kurvenform verglichen.",
+        "Dekorative Formeln und die Radikandenmarkierung wurden auf fachliche Bedeutung geprüft."
+      ],
+      "findings": [
+        "Zum Term (x²−4)/(x−2) wird rechts eine gekrümmte U-förmige Kurve gezeichnet. Korrekt wäre die Gerade y=x+2 mit Loch bei (2,4).",
+        "Links zeigt „RADIKAND ≥0“ auf die additive 4 des gebrochen-rationalen Terms, nicht auf einen Wurzelausdruck.",
+        "Die zentral hervorgehobene Gedankenwolke enthält die sinnlose Mengenschreibweise „{D=3/4+}“; auch die dekorative Gleichung r²=√x² ist ohne Zusammenhang mathematisch falsch."
+      ],
+      "rationale": "Mehrere sichtbare Fehler betreffen gerade die Übersetzung zwischen Term, Graph und Definitionsmenge. Die korrekten Ausschlussmengen reichen für eine Annahme dieses Bildes nicht aus.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+      "title": "Definitionsmenge einfacher gebrochen-rationaler Funktionen bestimmen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/34ba4714-a0ff-4a48-857f-d2481cbe0441/34ba4714-a0ff-4a48-857f-d2481cbe0441.jpg",
+      "assetSha256": "sha256:dbc97b3bae8cd3194cfc7fd073429a98131e8d37ea527ea4c47305eaca24381c",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Nenner x−2 wird richtig gleich null gesetzt, sodass x=2 ausgeschlossen und D=ℝ\\{2} angegeben wird.",
+        "Die Zahlengerade markiert die ausgeschlossene Stelle 2 korrekt.",
+        "Die zusätzliche grüne Kurve und ihre Beschriftung „Lücke / Asymptote bei x=2“ wurden auf Passung zu 1/(x−2) geprüft."
+      ],
+      "findings": [
+        "Die grüne Kurve läuft von beiden Seiten in einen endlichen offenen Punkt bei x=2, während dieselbe Darstellung eine vertikale Asymptote behauptet. Für 1/(x−2) divergieren die Funktionswerte beidseits mit unterschiedlichem Vorzeichen; eine endliche Lochstelle ist falsch.",
+        "„Lücke / Asymptote“ setzt zwei unterschiedliche Graphenphänomene ohne Erklärung gleich. Eine reine Definitionsmengen-Zahlengerade sollte hier nur den Ausschluss von 2 zeigen."
+      ],
+      "rationale": "Der rechnerische Hauptteil ist gut. Das Zusatzbild erzeugt jedoch eine konkrete Fehlvorstellung über die Polstelle. Eine klar als Definitionsmenge erkennbare Zahlengerade ohne irreführende Graphenkurve genügt als Korrektur.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+      "title": "Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/2f565855-bcd6-4da5-bc80-4b72a2d93d50/2f565855-bcd6-4da5-bc80-4b72a2d93d50.jpg",
+      "assetSha256": "sha256:4295b2d3888b089780fc0b943e85298479968553a5dca24607ee74f2aff1d07e",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Markierung 1,25 liegt etwa ein Viertel des Einheitsabstands rechts von 1.",
+        "Stellenwerttafel 1 Einer, 2 Zehntel, 5 Hundertstel stimmt mit 1+0,2+0,05=1,25 überein.",
+        "1,25=125/100=5/4=1 1/4 ist korrekt."
+      ],
+      "findings": [],
+      "rationale": "Die drei Darstellungen bleiben wertgleich und werden durch eindeutige Beispielzahlen verbunden. Farben und übersichtliche Spalten unterstützen den Darstellungswechsel.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "acbb7e26-f85f-405b-a3e5-affa6add6711",
+      "title": "Diagramme kritisch interpretieren",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/acbb7e26-f85f-405b-a3e5-affa6add6711/acbb7e26-f85f-405b-a3e5-affa6add6711.jpg",
+      "assetSha256": "sha256:2833faea1d853adea91e596847e84dd720cd7b02dd2b5d7dd5fe3f2528a40517",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Beide Diagramme zeigen dieselben Werte 52 % und 56 %.",
+        "Links ist die abgeschnittene Achse durch Bruchmarke und Skalenwerte um 50 % erkennbar, rechts beginnt die Skala bei 0 %.",
+        "Die verkürzte Skala lässt den Unterschied sichtbar größer erscheinen; die kritischen Fragen betreffen Skala, Quelle und Grundgesamtheit."
+      ],
+      "findings": [],
+      "rationale": "Der ausdrücklich problematisierte Vergleich zeigt den Manipulationseffekt korrekt. Das fehlerverdächtige Diagramm wird klar vom als fair markierten Diagramm unterschieden.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+      "title": "Dichtheit der rationalen Zahlen erläutern",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/ec9f2ed4-c9e6-5fb3-a073-75b53127e55d/ec9f2ed4-c9e6-5fb3-a073-75b53127e55d.jpg",
+      "assetSha256": "sha256:90d47d8ee261f63eea687e06ca0c4fd5315043e62f480a558753bd92bffea6e3",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "1/2,9/16,5/8,11/16,3/4 sind in der richtigen Reihenfolge mit gleichen Abständen von 1/16 eingezeichnet.",
+        "(1/2+3/4)/2=5/8; die beiden weiteren Mittelwerte sind 9/16 und 11/16.",
+        "Lupe und Aussage über eine fehlende nächste rationale Zahl unterstützen die wiederholbare Zwischenzahlkonstruktion."
+      ],
+      "findings": [],
+      "rationale": "Die Zahlengerade ist rechnerisch und maßstäblich konsistent. Das Beispiel vermittelt Dichtheit ohne den falschen Eindruck einer letzten feinsten Unterteilung.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+      "title": "Divergenz der harmonischen Reihe begründen (LK)",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/565fcd3f-52cd-5402-a0ac-a1069ed9c598/565fcd3f-52cd-5402-a0ac-a1069ed9c598.jpg",
+      "assetSha256": "sha256:29cf6c433ee17b01258015730906aac62c63d709e97a6f1447e9e94abfd2a95d",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Reihenfolge 1+1/2+1/3+… ist korrekt.",
+        "1/3+1/4>2/4=1/2 und 1/5+…+1/8>4/8=1/2 stimmen.",
+        "Die fortgesetzte Verdopplung der Gruppengröße liefert unendlich viele spätere Gruppen über 1/2 und begründet unbeschränkt wachsende Partialsummen; die anfängliche Gruppe 1/2 ist gesondert ausgewiesen."
+      ],
+      "findings": [],
+      "rationale": "Ein klassisches tragfähiges Divergenzargument ist anschaulich gruppiert. Die farbigen späteren Gruppen werden korrekt nach unten abgeschätzt, ohne Konvergenz der Einzelglieder mit Reihenkonvergenz zu verwechseln.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "093397e0-eec8-45bb-9a5a-a24827876df5",
+      "title": "Dreisatz in proportionalen Sachsituationen anwenden",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/093397e0-eec8-45bb-9a5a-a24827876df5/093397e0-eec8-45bb-9a5a-a24827876df5.jpg",
+      "assetSha256": "sha256:c699716ac7a73742c86fcaefd213932253925c91fd5008405a377f1bf8884c9e",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "3 kg für 6 EUR ergeben durch beidseitige Division durch 3 den Einheitspreis 2 EUR/kg.",
+        "Die anschließende Multiplikation beider Größen mit 5 ergibt 5 kg für 10 EUR.",
+        "Die Voraussetzung gleicher Preis pro kg und die Ergebnisdeutung im Sachkontext sind ausdrücklich benannt."
+      ],
+      "findings": [],
+      "rationale": "Der Dreisatz ist korrekt und die beiden Größen werden mit denselben Faktoren verändert. Die Apfelsäcke dienen als Sachillustrationen, nicht als Zähldarstellung der Masse.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+      "title": "Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/a9fde754-51b4-58d7-85e5-5e36160581e6/a9fde754-51b4-58d7-85e5-5e36160581e6.jpg",
+      "assetSha256": "sha256:91919db3b55f57bfd97a705f2c4b7b5524a2bf123b410f79c21df06e13f10320",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Für g=(1,2,3)+t(2,−1,−1) ergeben x=0, y=0, z=0 korrekt t=−1/2,2,3.",
+        "Die angegebenen Schnittpunkte (0,5/2,7/2), (5,0,1), (7,−1,0) sind rechnerisch richtig.",
+        "Die Lage aller drei markierten Punkte wurde mit derselben gezeichneten Geraden und den Koordinatenebenen verglichen."
+      ],
+      "findings": [
+        "Der rote Punkt Sxy liegt deutlich außerhalb der schwarz gezeichneten Geraden g, obwohl er als ihr Durchstoßpunkt bezeichnet wird.",
+        "Sxy=(7,−1,0) wird zudem im blau markierten Bereich positiver y-Richtung platziert; seine y-Koordinate müsste negativ sein."
+      ],
+      "rationale": "Die algebraischen Ergebnisse sind gut, die räumliche Kernzeichnung widerspricht jedoch den behaupteten Schnittpunkten. Alle drei Spurpunkte müssen auf derselben Geraden und in den richtigen Ebenen/Halbräumen liegen.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+      "title": "Eigenschaften der natürlichen Exponentialfunktion begründen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/628928a6-4f48-54dc-952d-dec0e69dc856/628928a6-4f48-54dc-952d-dec0e69dc856.jpg",
+      "assetSha256": "sha256:4ea9aae846288db456ae21e6131feecc224fa89b55df942361f91bfe2cb6a071",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "e^0=1, e^(−1)≈0,37 und e≈2,72 stimmen.",
+        "(e^x)'=e^x sowie die Tangentensteigung 1 bei x=0 sind richtig.",
+        "Der Graph bleibt positiv, nähert sich nach links der x-Achse und wächst nach rechts zunehmend steil."
+      ],
+      "findings": [],
+      "rationale": "Werte, Ableitung und qualitatives Randverhalten werden korrekt zusammengeführt. Das Bild unterstützt die Eigenschaften, ohne selbst den vollständigen Begründungsgang ersetzen zu müssen.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "5390691d-1b7c-5572-9589-a69c2bba9a27",
+      "title": "Eigenschaften ebener Figuren für Flächenberechnungen nutzen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/5390691d-1b7c-5572-9589-a69c2bba9a27/5390691d-1b7c-5572-9589-a69c2bba9a27.jpg",
+      "assetSha256": "sha256:489b6bec04179b43339e121bfb8a16136970f66dd1838a63bdaf0e04c9e9fde5",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Rechteck und Parallelogramm mit Grundseite 6 cm und senkrechter Höhe 4 cm haben A=24 cm².",
+        "Das Dreieck mit denselben Maßen hat A=12 cm².",
+        "Höhen stehen sichtbar senkrecht auf der Grundseite; die schräge Parallelogrammseite wird korrekt als nicht die Höhe markiert."
+      ],
+      "findings": [],
+      "rationale": "Die Flächenformeln sind an passenden Figuren mit richtigen Einheiten und deutlicher Höhenabgrenzung illustriert. Die schematischen Figuren beanspruchen keine maßstäbliche Konstruktionszeichnung.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "8fa32a68-46eb-414e-8292-a4c4052b2522",
+      "title": "Eigenschaften exponentieller Funktionen der Form $a^x$ beschreiben",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/8fa32a68-46eb-414e-8292-a4c4052b2522/8fa32a68-46eb-414e-8292-a4c4052b2522.jpg",
+      "assetSha256": "sha256:653d62c80994e2192356282a34a3e350031c9db032bc6577da5554e570ceb3ed",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Bedingungen a>0, a≠1 und x∈ℝ sind korrekt für die dargestellten nichtkonstanten Exponentialfunktionen.",
+        "Steigender Verlauf für a>1, fallender Verlauf für 0<a<1, Punkt (0|1), positive Werte und Asymptote y=0 stimmen.",
+        "Die Tabelle für 2^x enthält richtig (−1,0,5), (0,1), (1,2)."
+      ],
+      "findings": [],
+      "rationale": "Term, qualitative Graphen und Tabelle beschreiben dieselbe Funktionsfamilie korrekt. Farben und klar getrennte Bereiche erleichtern die Zuordnung der Eigenschaften.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+      "title": "Einfache Wurzelterme vollständig radizieren und mit Beträgen vereinfachen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5/28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5.jpg",
+      "assetSha256": "sha256:6f74203c59dd37b9375eb0c677536e707b7151cd40bc835e8432b063e88b6392",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Vollständig radizierbare Beispiele √36 = 6 und √49 = 7 sind korrekt.",
+        "Die getrennt als teilweises Radizieren bezeichnete Rechnung √72 = √(36 · 2) = 6√2 ist korrekt.",
+        "√(x²) = |x| sowie die Beispiele x = 5 und x = −5 zeigen zutreffend die nichtnegative Hauptwurzel."
+      ],
+      "findings": [],
+      "rationale": "Die Darstellung unterstützt das Radizieren und macht die erforderliche Betragsbildung verständlich. Der klar getrennte, mathematisch richtige Vergleich zum teilweisen Radizieren verfälscht die Zielkompetenz nicht.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "2ae76eae-799c-463e-9ec9-82327f8209a8",
+      "title": "Einfache Zählprinzipien in Sachsituationen anwenden",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/2ae76eae-799c-463e-9ec9-82327f8209a8/2ae76eae-799c-463e-9ec9-82327f8209a8.jpg",
+      "assetSha256": "sha256:a0ec06b8daf4004534516ba6ec85e87b55249f2a2fba05be67d36f989700c3b0",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Zwei unterscheidbare T-Shirts verzweigen jeweils in drei Hosenmöglichkeiten.",
+        "Die sechs Endkombinationen entsprechen den sechs Blättern des Baumdiagramms ohne erkennbare Doppelzählung.",
+        "Die Produktregel 2 · 3 = 6 stimmt mit Baum und abgebildeten Kombinationen überein."
+      ],
+      "findings": [],
+      "rationale": "Das überschaubare Baumdiagramm zeigt ein vollständig und systematisch gezähltes Beispiel für einfache kombinatorische Fragestellungen.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "f4df008d-fcd4-5ba3-821b-2ee8bd8a1180",
+      "title": "Einheiten- und Dimensionscheck anwenden",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/f4df008d-fcd4-5ba3-821b-2ee8bd8a1180/f4df008d-fcd4-5ba3-821b-2ee8bd8a1180.jpg",
+      "assetSha256": "sha256:3fad3b41260a21ee5e473808397ff35ccdb3656be7606dd4402aef5b924f6d66",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "60 km/h · 2 h = 120 km zeigt die richtige Multiplikation und Kürzung der Zeiteinheit.",
+        "60 km/h + 2 h wird ausdrücklich als falsch markiert; die inkompatiblen Dimensionen werden nicht als gültige Rechnung präsentiert.",
+        "5 m · 3 m = 15 m² verdeutlicht korrekt die Flächeneinheit als Produkt zweier Längeneinheiten."
+      ],
+      "findings": [],
+      "rationale": "Richtiges und absichtlich falsches Beispiel sind eindeutig unterschieden und tragen die Plausibilitätsprüfung über Einheiten.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+      "title": "Elementare Körper erkennen und benennen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/c823b5a2-82e3-5e22-9c27-c0f41cc5eac6/c823b5a2-82e3-5e22-9c27-c0f41cc5eac6.jpg",
+      "assetSha256": "sha256:81f220bd821d16548879a7c4f070196520ee01b451f2df52ab7522d82d9cdd3f",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Würfel, Quader, Prisma, Zylinder, Pyramide, Kegel und Kugel sind unterscheidbar und richtig benannt.",
+        "Beim Prisma sind die parallelen kongruenten Dreiecksflächen, beim Zylinder die parallelen Kreisflächen erkennbar.",
+        "Pyramide und Kegel zeigen jeweils eine Spitze und die passende polygonale beziehungsweise kreisförmige Grundfläche."
+      ],
+      "findings": [],
+      "rationale": "Die beschriftete Übersicht stellt die elementaren Körper fachlich passend und erkennbar dar.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+      "title": "Zuordnungen analysieren",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/2bb4bb91-7929-483a-b735-44275f6b5cdc/2bb4bb91-7929-483a-b735-44275f6b5cdc.jpg",
+      "assetSha256": "sha256:0c501f62a4ec4ac8f42127f7ec31f73ba980af47c110cd2a0e5184bc28b6e953",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Tabelle enthält die Wertepaare (0,2), (1,5), (2,8) und (3,11), sämtlich passend zu y = 3x + 2.",
+        "Die vier beschrifteten Punkte liegen im Graphen an den passenden, gleichmäßig skalierten Koordinaten.",
+        "Der Kostenkontext passt zum positiven Anfangswert und zur konstanten stündlichen Zunahme; Startgebühr und Stundenpreis werden als Deutungsbestandteile benannt."
+      ],
+      "findings": [],
+      "rationale": "Tabelle, Graph und Regel sind konsistent. Das Beispiel erlaubt die zielgerechte Deutung eines einfachen funktionalen Zusammenhangs.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "b04d65dc-1214-5323-89a7-317d6b099e1a",
+      "title": "Zwischen Tabelle, Graph und Term wechseln",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/b04d65dc-1214-5323-89a7-317d6b099e1a/b04d65dc-1214-5323-89a7-317d6b099e1a.jpg",
+      "assetSha256": "sha256:0efb1f390fb20cc2a2ade3cfc9329894b42b14125c43fb7be29609f2e6681e0b",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "f(x) = 2x + 1 liefert korrekt f(0) = 1, f(1) = 3 und f(2) = 5.",
+        "Die beschrifteten Punkte (0|1), (1|3) und (2|5) entsprechen Tabelle und Gerade.",
+        "Die Achsen sind gleichmäßig skaliert; die Gerade zeigt die Steigung 2 und den y-Achsenabschnitt 1."
+      ],
+      "findings": [],
+      "rationale": "Die drei Darstellungen übertragen dieselben Funktionswerte fehlerfrei und machen ihre Konsistenz unmittelbar kontrollierbar.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0",
+      "title": "Zwischen Tabelle, Graph und Term wechseln",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0/f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0.jpg",
+      "assetSha256": "sha256:be89b71ab5c423e09ee2791f952a536cc7f3b0ad20a5605f1ea16e6711479140",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Tabelle zu y = x + 1 enthält korrekt (0,1), (1,2), (2,3) und (3,4).",
+        "Die vier hervorgehobenen Punkte und die Gerade entsprechen den Tabellenwerten bei gleichmäßigen Achsenskalen.",
+        "Die Kontrolle am Punkt (2,3) durch 3 = 2 + 1 ist mathematisch richtig und sinnvoll mit dem Darstellungswechsel verbunden."
+      ],
+      "findings": [],
+      "rationale": "Das Bild zeigt einen korrekten Wechsel zwischen Term, Tabelle und Graph einschließlich eines expliziten Kontrollschritts.",
+      "humanApproved": false
+    }
+  ]
+}

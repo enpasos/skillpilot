@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-20",
+  "reviewer": "OpenAI Codex root",
+  "reviewKind": "informed independent content and integration check",
+  "authoredTasks": false,
+  "readCounterReview": true,
+  "blindReview": false,
+  "humanApproval": false,
+  "decision": "local_machine_acceptance",
+  "counterReview": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/he-q21-scope-repair/review-a.json",
+    "sha256": "afdeb7f11e0141aec65cb177862b0ca3a24b56b4c7335b6a1852fcd4359c8510"
+  },
+  "records": [
+    {
+      "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+      "before": {
+        "goalSha256": "f5e4c671b703b6ae9db3bcf1c69321bc5211bc4f59dfa23ef263047ca190a19a",
+        "kindFingerprint": "sha256:11b2dc3ccae16e6a7caf3311666255d55e1946806dcfc4ecc44a9ad36a6bfddf"
+      },
+      "afterGoalSha256": "96aa5ae0a317db9a412ed6400e46f2de56ed99fc6acb8b15d31e69d14a52625e",
+      "afterKindFingerprint": "sha256:39e9557a3ebc9a904cf95c32b439b985e74fc32d2ee97264b33edc5c8a0fe642",
+      "rootContentCheck": "Root independently recalculated reciprocal-power parity, domains/ranges, one-sided pole limits, derivative -n*x^(-n-1), sqrt derivative and the unbounded right difference quotient at zero. The three covered goals are actually exercised by parts1-3; point sums8+4+6=18, pass9. No logarithmic prerequisite is mathematically needed.",
+      "bodyChanges": false
+    },
+    {
+      "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+      "before": {
+        "goalSha256": "b9ff0da1dfb98d8b7fb2fa6df1ad8069028e5508d8f397bd5034112de9902f9b",
+        "kindFingerprint": "sha256:a7076dd6f70dc020f4acddd9fb29c4d4d285d7b925e8d25c02ca3cf4920df2fc"
+      },
+      "afterGoalSha256": "4e169cdf8757f6789c9083b20d5710d5bfc984eec066c2a80174f49b89b1ceb1",
+      "afterKindFingerprint": "sha256:0c78e2d2bce0b1a9b4ed2ea7e79f3bd001d23618595dafb1f3c581176a26abdb",
+      "rootContentCheck": "Root derived u=-(x-1)/2 => x=1-2u and image ordinate3-2v; P maps to(1,1), Q to(-3,-3). The alternative inner factor-2 gives x=1-u/2. Even f yields h(1+t)=h(1-t), opposite paired tangent slopes and derivative symmetry about(1,0). The supplied example gives h=1-(x-1)^2/4 with all three image points correct. Five actual graph goals are exercised;8+3+7=18, pass9.",
+      "bodyChanges": false
+    },
+    {
+      "goalId": "1429363f-628f-4f42-80e5-8a9a935147cc",
+      "before": {
+        "goalSha256": "0a327ad4a5ffff79edf360d225dd102aaf50e6d0673056de79f9f9667fa30ae3",
+        "kindFingerprint": "sha256:95fc3edf97126f7759e21571e996777878cb83b02ce5e9d87910a0966df7c2d6"
+      },
+      "afterGoalSha256": "5bbbdcae6dfd2968ffd16a9998411930256a9c6a12370a9b223119ad42d4cc17",
+      "afterKindFingerprint": "sha256:2845740d17c277eeff17dce808a762428cc0b94dacde96c97cabd55882bbfd00",
+      "rootContentCheck": "Root checked the non-injectivity counterexample, both half-domain inverse branches, their domains/ranges and coordinate swap(2,4)<->(4,2). Parts3+3+4=10, pass5. The existing equivalent-solutions clause is operative: either a fully explained image collision or a fully explained failed reverse composition suffices in part1; no second proof is required for full credit.",
+      "bodyChanges": false
+    }
+  ],
+  "finalGateChecksPending": true
+}

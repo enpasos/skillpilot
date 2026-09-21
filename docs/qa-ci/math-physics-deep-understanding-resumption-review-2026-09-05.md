@@ -1,6 +1,27 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
-## Aktueller Abschluss: Physik M7, Mehrpass-Durchgang
+## Aktueller Auftrag: Mathematik bis M7, Physik M7 erhalten
+
+Am 20. September wurde ausdrücklich beauftragt, Mathematik nach denselben
+fachlichen und bildlichen Vorgaben wie Physik bis M7 fortzuführen. Die frühere
+Mathematik-Pause ist damit aufgehoben. Maßgeblich sind die aktuellen
+`curricularAtomic`-Ziele und die strenge D/P/A/M/V-Schnittmenge; M7 bleibt rein
+maschinell und behauptet keine menschliche Freigabe.
+
+Der [Mathematik-Fortsetzungsstand vom 20. September](math-m7-resumed-2026-09-20.md)
+dokumentiert die aktuelle Ausgangslage, Zuständigkeiten und Integration.
+**Neuester Stand:** Auf Nutzerwunsch wird nur der begonnene Stand
+commitfähig konsolidiert; die Zielverfolgung ist pausiert. Aktuell sind
+434/797 Mathematikziele streng abgeschlossen, Physik bleibt bei 478/478.
+Offene Reviews bleiben im In-flight-Ledger und werden nicht als fertig gezählt.
+Arbeitsweise: zunächst größere zusammenhängende Kandidatenpakete schließen,
+danach gezielte unabhängige Kontrolle; vollständige QS und aufwendige Builds
+gebündelt am stabilen Zwischenstand. Unveränderte gültige Nachweise und gute
+Bilder bleiben erhalten. Neue Bilder sind freundliche, abstrakte, klare
+Comic-PNGs wie im Physik-Durchgang. Offene Grenzfälle bleiben offen und halten
+unabhängig bearbeitbare Ziele nicht auf.
+
+## Erreichter Abschluss: Physik M7, Mehrpass-Durchgang
 
 Der zentrale Check bestätigt **478/478 aktuelle Physikziele streng abgeschlossen,
 alle fünf Gates vollständig, sechs Abschlussprüfungen bestanden, null Blocker**.
@@ -8,15 +29,16 @@ Der erzeugte Curriculum-Status vom 20.09.2026, 09:24:34 UTC weist **M7** und
 **CQR-303 pass** aus. Netto +50 gegenüber 428/478; zusätzlich zuvor +2
 wiederhergestellte Bindungen. Der lokale Prüf- und Auslieferungsstand ist im
 folgenden Abschlussbericht dokumentiert; dies behauptet keine Remote-CI oder
-Veröffentlichung. Mathematik bleibt pausiert.
+Veröffentlichung. Mathematik war zu diesem Abschlusszeitpunkt pausiert und
+wurde anschließend mit dem oben dokumentierten Auftrag wieder aufgenommen.
 
 Der aktuelle Umsetzungsstand und die Arbeitsaufteilung stehen im
 [Physik-M7-Fortsetzungsstand vom 20. September](physics-m7-resumed-2026-09-20.md).
 Die später ausdrücklich beauftragte Wiederaufnahme bis M7 ersetzt die
 nachstehende historische Pause. M7 ist gemäß korrigiertem Nutzerauftrag
 **maschinelle QS ohne menschliche Freigabe**; menschliche Abnahmen bleiben
-getrennt. Unfertige Bildarbeiten zählen nicht als abgeschlossen. Mathematik
-bleibt pausiert. Neue Bilder bleiben freundliche, abstrakte, klare Comic-PNGs;
+getrennt. Unfertige Bildarbeiten zählen nicht als abgeschlossen. Neue Bilder
+bleiben freundliche, abstrakte, klare Comic-PNGs;
 gute vorhandene Bilder bleiben erhalten.
 
 Der Nutzer wünscht zuerst einen zügigen vollständigen Kandidatendurchgang,

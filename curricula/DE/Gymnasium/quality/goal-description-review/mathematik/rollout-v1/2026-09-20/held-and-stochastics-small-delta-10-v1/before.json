@@ -1,0 +1,1277 @@
+{
+  "schemaVersion": 1,
+  "status": "before-archive-recorded-prior-to-authoring",
+  "capturedAt": "2026-09-20T19:42:40.557Z",
+  "reviewer": "OpenAI Codex math_m7_post5_context9_blind_b",
+  "humanApproval": false,
+  "authority": "Root adjudication of ten enumerated limited corrections; no other canonical fields authorized",
+  "files": [
+    {
+      "role": "canonical",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "sha256:2e0ff5513397a5f3b718f34c58ebecb3e9842ec79603a83244aa305d46e6234d"
+    },
+    {
+      "role": "A",
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "sha256": "sha256:d5bb3a4bf416a5cc69402a6f2318e1d420dc7e4cfe509b82b8560e712040f940"
+    },
+    {
+      "role": "M",
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "sha256": "sha256:6487bf042ef0defe9e7441d8732a2731328f3b39c625ea99eefa726f73cab3ee"
+    },
+    {
+      "role": "S",
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "sha256:c01bc6ca262a6cc13f2e8b5febffea3feba4c72daaf473ef63d6383f6608267a"
+    },
+    {
+      "role": "cards",
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.cards.review.jsonl",
+      "sha256": "sha256:184e422a8cde529963758beadbd671c1b28aa7ec2f705dbe6f8dda65a4866d21"
+    }
+  ],
+  "cardsTouchingScope": [
+    {
+      "schemaVersion": 1,
+      "reviewId": "canonical-math-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "deckId": "de_gymnasium_math_stochastics_core",
+      "cardId": "math_stoch_c04",
+      "fingerprint": "sha256:9650e1e4546c59960bc838372dad73f1b077159e6117dbabfeea73375acb2dcc",
+      "status": "kept",
+      "necessary": true,
+      "originGoalIds": [
+        "5927ca6a-91d5-4541-84e9-833bbb2cd7df"
+      ],
+      "reviewedAt": "2026-05-17",
+      "reviewer": "codex-semantic-memory-pilot",
+      "reason": "Behalten: Erwartungswertformel ist kompakte Formelkenntnis zu Zufallsgrößen."
+    }
+  ],
+  "fingerprintMethod": "Exact production fingerprintGoal function bodies transpiled and evaluated without main() from semanticAtomicityReview.ts and memoryCardReview.ts; exported fingerprintSemanticKindSourceGoal imported directly. No whole-curriculum report invoked.",
+  "records": [
+    {
+      "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+      "before": {
+        "id": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+        "title": "Zufallsgrößen und Verteilungen als Modellrahmen einordnen",
+        "titleEn": "Classify random variables and distributions as a modeling framework",
+        "description": "Die lernende Person kann zu einfachen stochastischen Situationen eine passende Zufallsgröße und die zugehörige diskrete Wahrscheinlichkeitsverteilung als Modellrahmen beschreiben.",
+        "descriptionEn": "The learner can describe a suitable random variable and the associated discrete probability distribution as a modeling framework for simple stochastic situations.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+            "title": "Visualisierung: Zufallsgrößen und Verteilungen als Modellrahmen einordnen",
+            "url": "/assets/goal-visualizations/mathematik/da95ab35-bac2-54f2-b38f-8b612cde8b54/da95ab35-bac2-54f2-b38f-8b612cde8b54.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Zufallsgrößen und Verteilungen als Modellrahmen einordnen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Zufallsgrößen und Verteilungen als Modellrahmen einordnen\". Die lernende Person kann zu einfachen stochastischen Situationen eine passende Zufallsgröße und die zugehörige diskrete Wahrscheinlichkeitsverteilung als Modellrahmen beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "proposedFields": {
+        "requires": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      "beforeRecords": {
+        "A": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+          "fingerprint": "sha256:db15d95a7c864ee797e07510f2c416cfc0c9565e74be6ca82b418ec167e24a6c",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q3-Review: Nach textlicher Schaerfung als genau eine pruefbare Stochastikroutine bewertet.",
+          "suggestedSplit": []
+        },
+        "M": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+          "fingerprint": "sha256:ddd5b723af512a1dcd4eb0e222e425dffb1198fa54b229047c3f26f431565b95",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "S": {
+          "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+          "sourceFingerprint": "sha256:adef7668188c223971edb782ca66d2300d1955f24fa4a1dd3b92de9fadb203c4",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "nativeBeforeFingerprints": {
+        "A": "sha256:db15d95a7c864ee797e07510f2c416cfc0c9565e74be6ca82b418ec167e24a6c",
+        "M": "sha256:ddd5b723af512a1dcd4eb0e222e425dffb1198fa54b229047c3f26f431565b95",
+        "S": "sha256:adef7668188c223971edb782ca66d2300d1955f24fa4a1dd3b92de9fadb203c4"
+      },
+      "nativeAfterFingerprints": {
+        "A": "sha256:db15d95a7c864ee797e07510f2c416cfc0c9565e74be6ca82b418ec167e24a6c",
+        "M": "sha256:ddd5b723af512a1dcd4eb0e222e425dffb1198fa54b229047c3f26f431565b95",
+        "S": "sha256:30a62c24c8376dde0e2d4ed55f543057eb78f9201896916aa668d9cddeddfc48"
+      }
+    },
+    {
+      "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+      "before": {
+        "id": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+        "title": "Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen",
+        "titleEn": "Describe random variables and use probability distributions in tables and diagrams",
+        "description": "Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen beschreiben und diskrete Wahrscheinlichkeitsverteilungen in Tabellen oder Diagrammen zur Beschreibung stochastischer Situationen nutzen.",
+        "descriptionEn": "The learner can describe random variables as assignments of outcomes and use discrete probability distributions in tables or diagrams to describe stochastic situations.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 1",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+            "title": "Visualisierung: Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen",
+            "url": "/assets/goal-visualizations/mathematik/5927ca6a-91d5-4541-84e9-833bbb2cd7df/5927ca6a-91d5-4541-84e9-833bbb2cd7df.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen\". Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen beschreiben und diskrete Wahrscheinlichkeitsverteilungen in Tabellen oder Diagrammen zur Beschreibung stochastischer Situationen nutzen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "proposedFields": {
+        "requires": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      "beforeRecords": {
+        "A": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+          "fingerprint": "sha256:5b96627afe1e478dc206eae8c35d6b114a231138f9c9bd26091bd668b36c4776",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q3-Review: Eine einzelne Verteilungsmodell-Routine; Modellieren, Berechnen und Kontextdeutung sind Ausfuehrungsschritte desselben Stochastikziels.",
+          "suggestedSplit": []
+        },
+        "M": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+          "fingerprint": "sha256:ee2bf9390aea7c2c7157f38a580e00005bbce77f4d08f541671044319bf8d5a0",
+          "status": "memory_required",
+          "memoryUseful": true,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-semantic-memory-pilot",
+          "reason": "Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik.",
+          "memoryGoalIds": [
+            "ffbdd7a9-45c6-54f1-988c-58256ca05eeb"
+          ],
+          "deckIds": [
+            "de_gymnasium_math_stochastics_core"
+          ]
+        },
+        "S": {
+          "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+          "sourceFingerprint": "sha256:d82e8883d1051a8a4ae46990bbab53fcfd8640e2c1c44ccbc3ae170b48573b0f",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "nativeBeforeFingerprints": {
+        "A": "sha256:5b96627afe1e478dc206eae8c35d6b114a231138f9c9bd26091bd668b36c4776",
+        "M": "sha256:ee2bf9390aea7c2c7157f38a580e00005bbce77f4d08f541671044319bf8d5a0",
+        "S": "sha256:d82e8883d1051a8a4ae46990bbab53fcfd8640e2c1c44ccbc3ae170b48573b0f"
+      },
+      "nativeAfterFingerprints": {
+        "A": "sha256:5b96627afe1e478dc206eae8c35d6b114a231138f9c9bd26091bd668b36c4776",
+        "M": "sha256:ee2bf9390aea7c2c7157f38a580e00005bbce77f4d08f541671044319bf8d5a0",
+        "S": "sha256:e7cd9a349aa7223501a8752e5f0f792bcbef7e66b830bb5e668cdc33a5486c8c"
+      }
+    },
+    {
+      "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+      "before": {
+        "id": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+        "title": "Zufallsgrößen als Zuordnungen einführen und beschreiben",
+        "titleEn": "Introduce and Describe Random Variables as Assignments",
+        "description": "Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen auf Zahlen einführen und sie in einfachen diskreten Kontexten fachsprachlich beschreiben.",
+        "descriptionEn": "The learner can introduce random variables as assignments from outcomes to numbers and describe them in simple discrete contexts using appropriate mathematical language.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 1",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+            "title": "Visualisierung: Zufallsgrößen als Zuordnungen einführen und beschreiben",
+            "url": "/assets/goal-visualizations/mathematik/d711bc18-c27c-4739-8289-edac53dc8ba3/d711bc18-c27c-4739-8289-edac53dc8ba3.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Zufallsgrößen als Zuordnungen einführen und beschreiben.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Zufallsgrößen als Zuordnungen einführen und beschreiben\". Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen auf Zahlen einführen und sie in einfachen diskreten Kontexten fachsprachlich beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "proposedFields": {
+        "requires": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      "beforeRecords": {
+        "A": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+          "fingerprint": "sha256:ff112cd9e86ff618a4d16387ee62ac8300a76a3e38bff123811d57c62e002e79",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q3-Review: Eine zusammenhaengende Zufallsgroessen- oder Binomialroutine mit einem klar abgrenzbaren Rechen- und Deutungsziel.",
+          "suggestedSplit": []
+        },
+        "M": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+          "fingerprint": "sha256:dc69dc1fb8a03ff95ebee2dec409b26895501eeb39ce061573d17fbb9294caa1",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "S": {
+          "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+          "sourceFingerprint": "sha256:d99585b764c27017884006a5ebf08d4a57b6a32f573665ed5d9ccf8ceb559764",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "nativeBeforeFingerprints": {
+        "A": "sha256:ff112cd9e86ff618a4d16387ee62ac8300a76a3e38bff123811d57c62e002e79",
+        "M": "sha256:dc69dc1fb8a03ff95ebee2dec409b26895501eeb39ce061573d17fbb9294caa1",
+        "S": "sha256:d99585b764c27017884006a5ebf08d4a57b6a32f573665ed5d9ccf8ceb559764"
+      },
+      "nativeAfterFingerprints": {
+        "A": "sha256:ff112cd9e86ff618a4d16387ee62ac8300a76a3e38bff123811d57c62e002e79",
+        "M": "sha256:dc69dc1fb8a03ff95ebee2dec409b26895501eeb39ce061573d17fbb9294caa1",
+        "S": "sha256:182ae59bc2aab3680b50d0d8ddcb0c6e13a8ad39770f847a4126743ba7b684c2"
+      }
+    },
+    {
+      "goalId": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+      "before": {
+        "id": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+        "title": "Modelle vergleichen: Ziehen ohne vs. mit Zurücklegen",
+        "titleEn": "Compare models: without vs. with replacement",
+        "description": "Die lernende Person kann begründen, wann das Modell \"mit Zurücklegen\" eine gute Näherung für \"ohne Zurücklegen\" ist, und dies an konkreten Beispielen (z. B. große Urne) rechnerisch vergleichen.",
+        "descriptionEn": "The learner can justify when the \"with replacement\" model is a good approximation for \"without replacement\" and compare both models using concrete examples (e.g., a large urn).",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "1462c189-8679-5f32-bf58-6e81e99e4635"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K3.3",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.1, S. 46, Spiegelstrich 7",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+            "title": "Visualisierung: Modelle vergleichen: Ziehen ohne vs. mit Zurücklegen",
+            "url": "/assets/goal-visualizations/mathematik/bd63c0fc-50ef-55aa-ae6c-25cf73d02636/bd63c0fc-50ef-55aa-ae6c-25cf73d02636.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Modelle vergleichen: Ziehen ohne vs. mit Zurücklegen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Modelle vergleichen: Ziehen ohne vs. mit Zurücklegen\". Die lernende Person kann begründen, wann das Modell \"mit Zurücklegen\" eine gute Näherung für \"ohne Zurücklegen\" ist, und dies an konkreten Beispielen (z. B. große Urne) rechnerisch vergleichen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "proposedFields": {
+        "descriptionEn": "The learner can justify when the \"with replacement\" model is a good approximation for \"without replacement\" and compare both models computationally using concrete examples (e.g., a large urn)."
+      },
+      "beforeRecords": {
+        "A": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+          "fingerprint": "sha256:dfe674b4464d74c69add9fe4f64dc92e8967130381db238f7441e77d9d843094",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q3-Review: Als eine zusammenhaengende, pruefbare Stochastikroutine bewertet.",
+          "suggestedSplit": []
+        },
+        "M": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+          "fingerprint": "sha256:62c8438a45a6ce64e9560c1252cc4c5bdad24184342e70d268e9a7b4fdd45b1d",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "S": {
+          "goalId": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+          "sourceFingerprint": "sha256:d8b4f027386fe77247e436c9713d5ed948cefc99f1b8c31af5b7bcafcaa38497",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "nativeBeforeFingerprints": {
+        "A": "sha256:dfe674b4464d74c69add9fe4f64dc92e8967130381db238f7441e77d9d843094",
+        "M": "sha256:62c8438a45a6ce64e9560c1252cc4c5bdad24184342e70d268e9a7b4fdd45b1d",
+        "S": "sha256:d8b4f027386fe77247e436c9713d5ed948cefc99f1b8c31af5b7bcafcaa38497"
+      },
+      "nativeAfterFingerprints": {
+        "A": "sha256:65e74a19e746fb12cca9c6f9d58c7e08e1e4551691c054d533eebbf8baf77833",
+        "M": "sha256:2108bbba80e74ffc934fac7632d3b53917d580d4af92ed854d100080f38ee8af",
+        "S": "sha256:17550c0127b74f7f7606a3f4e2beb6222b049d5f375d84a90941c19a528524d9"
+      }
+    },
+    {
+      "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "before": {
+        "id": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+        "title": "Geometrische Abbildungen als linear erkennen",
+        "titleEn": "Recognize geometric mappings as linear",
+        "description": "Die lernende Person kann bei einer einfachen geometrischen Abbildung anhand der Verträglichkeit mit Vektoraddition und skalarer Multiplikation prüfen, ob sie linear ist.",
+        "descriptionEn": "The learner can determine whether a simple geometric mapping is linear by checking whether it preserves vector addition and scalar multiplication.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+            "title": "Visualisierung: Geometrische Abbildungen als linear erkennen",
+            "url": "/assets/goal-visualizations/mathematik/69243680-c2c1-5661-80c0-c95a2be1dabf/69243680-c2c1-5661-80c0-c95a2be1dabf.png",
+            "provider": "OpenAI image generation",
+            "description": "Visualisierung zum Lernziel: Geometrische Abbildungen als linear erkennen.",
+            "altText": "Die lernende Person kann bei einer einfachen geometrischen Abbildung anhand der Verträglichkeit mit Vektoraddition und skalarer Multiplikation prüfen, ob sie linear ist.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "proposedFields": {
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+        ]
+      },
+      "beforeRecords": {
+        "A": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+          "fingerprint": "sha256:9c1380a0f40a412ff0746e8b018f199014ddd99409292eb02205c96b944e6dc5",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q2-Review: Als eine zusammenhaengende, pruefbare Analysis- oder Lineare-Algebra-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+          "suggestedSplit": []
+        },
+        "M": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+          "fingerprint": "sha256:63bb84db0462db1f3ed9726dad3002065dde46506b7275ef00eea6eecb11ca00",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "S": {
+          "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+          "sourceFingerprint": "sha256:740d81b7a4ef01cf89b19cdd3a406ec277ce2c076088723aa19b8312f032694a",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+        }
+      },
+      "nativeBeforeFingerprints": {
+        "A": "sha256:9c1380a0f40a412ff0746e8b018f199014ddd99409292eb02205c96b944e6dc5",
+        "M": "sha256:63bb84db0462db1f3ed9726dad3002065dde46506b7275ef00eea6eecb11ca00",
+        "S": "sha256:740d81b7a4ef01cf89b19cdd3a406ec277ce2c076088723aa19b8312f032694a"
+      },
+      "nativeAfterFingerprints": {
+        "A": "sha256:9c1380a0f40a412ff0746e8b018f199014ddd99409292eb02205c96b944e6dc5",
+        "M": "sha256:63bb84db0462db1f3ed9726dad3002065dde46506b7275ef00eea6eecb11ca00",
+        "S": "sha256:9fa30920806adc7e0694741a4c645541c554d93b86280dd5bbfec9cbda5534fd"
+      }
+    },
+    {
+      "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "before": {
+        "id": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+        "shortKey": "canonical_math_q2_describe_simple_plane_figures",
+        "title": "Einfache geometrische Figuren beschreiben",
+        "titleEn": "Describe simple plane figures",
+        "description": "Die lernende Person kann einfache geometrische Figuren, insbesondere gleichschenklige, gleichseitige und rechtwinklige Dreiecke sowie Quadrat, Rechteck, Raute, Parallelogramm, Trapez und Drachenviereck, fachsprachlich beschreiben.",
+        "descriptionEn": "The learner can describe simple plane figures, especially isosceles, equilateral, and right triangles as well as squares, rectangles, rhombi, parallelograms, trapezia, and kites, using correct terminology.",
+        "requires": [
+          "aae119f2-925f-5fc1-b795-b52c9e980863",
+          "7680701b-35e3-519e-beaa-09753e733756",
+          "d81d888c-6ffa-5751-8a4b-ce2ff3085071"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K3.1"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.2.DESCRIBE_SIMPLE_PLANE_FIGURES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+            "title": "Visualisierung: Einfache geometrische Figuren beschreiben",
+            "url": "/assets/goal-visualizations/mathematik/4af3dfb9-7e15-5da5-8b86-0aac6c80e266/4af3dfb9-7e15-5da5-8b86-0aac6c80e266.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Einfache geometrische Figuren beschreiben.",
+            "altText": "Übersicht besonderer Dreiecke und Vierecke. Gleiche Seiten und parallele Seitenfamilien sind konsistent markiert; Raute und Drachenviereck erhalten keine falschen Gleichheitsbehauptungen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "proposedFields": {
+        "requires": []
+      },
+      "beforeRecords": {
+        "A": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+          "fingerprint": "sha256:3bef04ad4fd3edc08a806ec96e22a889759016ef3873bb8d5c0869228e4ce98d",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-09",
+          "reviewer": "codex",
+          "reason": "Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.",
+          "suggestedSplit": []
+        },
+        "M": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+          "fingerprint": "sha256:abf2f9ecfc77c73d209fd25ccbd8923d067dc4cb1abbb4f84a4b6e7c1ed35fc5",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "S": {
+          "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+          "sourceFingerprint": "sha256:bc9d21a5965b56578fa0ead3555d83159fe7d66c3c85e7ddd9ba6c642385606d",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "nativeBeforeFingerprints": {
+        "A": "sha256:3bef04ad4fd3edc08a806ec96e22a889759016ef3873bb8d5c0869228e4ce98d",
+        "M": "sha256:abf2f9ecfc77c73d209fd25ccbd8923d067dc4cb1abbb4f84a4b6e7c1ed35fc5",
+        "S": "sha256:bc9d21a5965b56578fa0ead3555d83159fe7d66c3c85e7ddd9ba6c642385606d"
+      },
+      "nativeAfterFingerprints": {
+        "A": "sha256:3bef04ad4fd3edc08a806ec96e22a889759016ef3873bb8d5c0869228e4ce98d",
+        "M": "sha256:abf2f9ecfc77c73d209fd25ccbd8923d067dc4cb1abbb4f84a4b6e7c1ed35fc5",
+        "S": "sha256:6d67d92e048f4d9318080776a6f5e0cc42b7d0d1ef37b5e9af55db1f389ce0b2"
+      }
+    },
+    {
+      "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65",
+      "before": {
+        "id": "168d8879-0412-5524-94c5-c1d8169dbd65",
+        "title": "Eigene Abbildungen modellieren und interpretieren",
+        "titleEn": "Model and interpret own mappings",
+        "description": "Die lernende Person kann zu gegebenen geometrischen Anforderungen (z. B. Spiegelung an einer schrägen Geraden, Streckung in einer beliebigen Richtung) passende Abbildungsmatrizen konstruieren, testen und im Kontext begründen.",
+        "descriptionEn": "The learner can construct, test, and justify appropriate mapping matrices for given geometric requirements (e.g., reflection on an oblique line, stretching in any direction).",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "b72d87d4-763e-54aa-940d-31f195b51700",
+          "ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "168d8879-0412-5524-94c5-c1d8169dbd65",
+            "title": "Visualisierung: Eigene Abbildungen modellieren und interpretieren",
+            "url": "/assets/goal-visualizations/mathematik/168d8879-0412-5524-94c5-c1d8169dbd65/168d8879-0412-5524-94c5-c1d8169dbd65.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Eigene Abbildungen modellieren und interpretieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Eigene Abbildungen modellieren und interpretieren\". Die lernende Person kann zu gegebenen geometrischen Anforderungen (z. B. Spiegelung an einer schrägen Geraden, Streckung in einer beliebigen Richtung) passende Abbildungsmatrizen konstruieren, testen und im Kontext begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "proposedFields": {
+        "description": "Die lernende Person kann zu gegebenen geometrischen Anforderungen (z. B. Spiegelung an einer schrägen Ursprungsgeraden, Streckung in einer beliebigen Richtung) passende Abbildungsmatrizen konstruieren, testen und im Kontext begründen.",
+        "descriptionEn": "The learner can construct, test, and justify appropriate mapping matrices for given geometric requirements (e.g., reflection on an oblique line through the origin, stretching in any direction)."
+      },
+      "beforeRecords": {
+        "A": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65",
+          "fingerprint": "sha256:247fa75b65423ee1c598920dbbd3013abe47652c47fca21368cd10617bdb46f6",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q2-Review: Als eine zusammenhaengende, pruefbare Analysis- oder Lineare-Algebra-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+          "suggestedSplit": []
+        },
+        "M": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65",
+          "fingerprint": "sha256:ab7a638cb346990df15f209ea97d4276e1378c8ec4a787668a22dd8ed48f0540",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "S": {
+          "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65",
+          "sourceFingerprint": "sha256:b6b8e3b225089ae4c5bb28f58b2f1d43afc212910cb507b7ac653e76f20c9eb4",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "nativeBeforeFingerprints": {
+        "A": "sha256:247fa75b65423ee1c598920dbbd3013abe47652c47fca21368cd10617bdb46f6",
+        "M": "sha256:ab7a638cb346990df15f209ea97d4276e1378c8ec4a787668a22dd8ed48f0540",
+        "S": "sha256:b6b8e3b225089ae4c5bb28f58b2f1d43afc212910cb507b7ac653e76f20c9eb4"
+      },
+      "nativeAfterFingerprints": {
+        "A": "sha256:013851198bbd7f052be2dec231b7cd9d174c50fa39a3cc5c3f71277bf64b159c",
+        "M": "sha256:fac932cf7d947d2d82842ca3d98b03a7f31c6c3ceed2f93fcfc6d91782837f72",
+        "S": "sha256:98ce4f8ee5e3e1cd9cc5163dc2b54d9f9a897f95037d3c25ff0d321324e57be7"
+      }
+    },
+    {
+      "goalId": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+      "before": {
+        "id": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+        "title": "Ereignisse darstellen und Baumdiagramme nutzen",
+        "titleEn": "Represent events and use tree diagrams",
+        "description": "Die lernende Person kann mehrstufige Zufallsexperimente in Baumdiagrammen darstellen, Pfadregeln anwenden und Wahrscheinlichkeiten an konkreten Beispielrechnungen berechnen.",
+        "descriptionEn": "The learner can represent multi-stage random experiments with tree diagrams, apply path rules, and compute probabilities using concrete worked examples.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "71d1fd4d-8471-5f25-94a0-4c531a74783c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.1",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.1, S. 46, Spiegelstrich 3",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+            "title": "Visualisierung: Ereignisse darstellen und Baumdiagramme nutzen",
+            "url": "/assets/goal-visualizations/mathematik/2a1158e5-d4ca-51d4-860c-f43bd5a86836/2a1158e5-d4ca-51d4-860c-f43bd5a86836.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Ereignisse darstellen und Baumdiagramme nutzen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Ereignisse darstellen und Baumdiagramme nutzen\". Die lernende Person kann mehrstufige Zufallsexperimente in Baumdiagrammen darstellen, Pfadregeln anwenden und Wahrscheinlichkeiten an konkreten Beispielrechnungen berechnen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "proposedFields": {
+        "descriptionEn": "The learner can represent multi-stage random experiments with tree diagrams, apply path rules, and compute probabilities in concrete examples."
+      },
+      "beforeRecords": {
+        "A": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+          "fingerprint": "sha256:4ebebcda6b43b495ecd69fc9ddfeea3ae0a1c781a51266f01fce1b2bfa635f4c",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q3-Review: Eine zusammenhaengende Ereignis-, Baumdiagramm- oder bedingte-Wahrscheinlichkeit-Routine.",
+          "suggestedSplit": []
+        },
+        "M": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+          "fingerprint": "sha256:5b17ca5e3afa7b87874660799dd750940636bc03d58abb9c88c3a343fd98a0a4",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "S": {
+          "goalId": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+          "sourceFingerprint": "sha256:af63c67fcfdfa181d807b64d17ea7c62faf2ee7425a805041c4e3d7c3ccdc662",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "nativeBeforeFingerprints": {
+        "A": "sha256:4ebebcda6b43b495ecd69fc9ddfeea3ae0a1c781a51266f01fce1b2bfa635f4c",
+        "M": "sha256:5b17ca5e3afa7b87874660799dd750940636bc03d58abb9c88c3a343fd98a0a4",
+        "S": "sha256:af63c67fcfdfa181d807b64d17ea7c62faf2ee7425a805041c4e3d7c3ccdc662"
+      },
+      "nativeAfterFingerprints": {
+        "A": "sha256:0e223e987663447686fc6400aed52785f611d66bae15fd174ad81ffcd64c8d85",
+        "M": "sha256:c85ba6971ac2a689d11bc68f5f1e7a12d0bf9f538f54e6c285159c2e36c65d54",
+        "S": "sha256:463cf609d656378d05f5a5b741ce6eacd335548a644cf4a7436a010285159893"
+      }
+    },
+    {
+      "goalId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+      "before": {
+        "id": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+        "title": "Gesamtbestände und Gesamteffekte aus Änderungsraten oder Randfunktionen ermitteln",
+        "titleEn": "Determine total stocks and total effects from rates or boundary functions",
+        "description": "Die lernende Person kann in Sachsituationen Gesamtbestände oder Gesamteffekte aus Änderungsraten oder Randfunktionen mit bestimmten Integralen bestimmen und die Bedeutung der Ergebnisse fachlich erläutern.",
+        "descriptionEn": "The learner can determine total stocks or total effects in real-world situations from rates of change or boundary functions using definite integrals and explain the meaning of the results mathematically.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+          "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+            "title": "Visualisierung: Gesamtbestände und Gesamteffekte aus Änderungsraten oder Randfunktionen ermitteln",
+            "url": "/assets/goal-visualizations/mathematik/23c8b5f9-ab35-4071-a3d4-b76a669a0995/23c8b5f9-ab35-4071-a3d4-b76a669a0995.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Gesamtbestände und Gesamteffekte aus Änderungsraten oder Randfunktionen ermitteln.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Gesamtbestände und Gesamteffekte aus Änderungsraten oder Randfunktionen ermitteln\". Die lernende Person kann in Sachsituationen Gesamtbestände oder Gesamteffekte aus Änderungsraten oder Randfunktionen mit bestimmten Integralen bestimmen und die Bedeutung der Ergebnisse fachlich erläutern.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "proposedFields": {
+        "description": "Die lernende Person kann in Sachsituationen Gesamteffekte aus Änderungsraten oder Randfunktionen mit bestimmten Integralen bestimmen, bei der Rekonstruktion eines absoluten Gesamtbestands einen gegebenen Anfangsbestand berücksichtigen und die Bedeutung der Ergebnisse fachlich erläutern.",
+        "descriptionEn": "The learner can determine total effects in real-world situations from rates of change or boundary functions using definite integrals, include a given initial quantity when reconstructing an absolute total quantity, and explain the meaning of the results mathematically."
+      },
+      "beforeRecords": {
+        "A": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+          "fingerprint": "sha256:12a9198902469bb1a1e0f9db347ed988e8c82bcd3cf126de399a7d1c7a3f3dba",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q1-Review: Als eine zusammenhaengende, pruefbare Analysisroutine bewertet.",
+          "suggestedSplit": []
+        },
+        "M": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+          "fingerprint": "sha256:43e31b9d6d7c7b322aae61f11cbddd0245c2d2cef19e610659adb4a2d32b9514",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "S": {
+          "goalId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+          "sourceFingerprint": "sha256:7d485a069734f7975af98f5dd6dca49fa4595fbcc28efbba93e6cb7024af3277",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "nativeBeforeFingerprints": {
+        "A": "sha256:12a9198902469bb1a1e0f9db347ed988e8c82bcd3cf126de399a7d1c7a3f3dba",
+        "M": "sha256:43e31b9d6d7c7b322aae61f11cbddd0245c2d2cef19e610659adb4a2d32b9514",
+        "S": "sha256:7d485a069734f7975af98f5dd6dca49fa4595fbcc28efbba93e6cb7024af3277"
+      },
+      "nativeAfterFingerprints": {
+        "A": "sha256:edb28191b636d98ec950c0b874c141423cbfeff164a21bc659a00e721e459830",
+        "M": "sha256:de136f0163ed3d056c171a96902582e6157d93a042af82eebc39417fb5cd330c",
+        "S": "sha256:e1b3a70485dc62275f5c18cc33c5140f51d9a15835e768552a375f77750f49ed"
+      }
+    },
+    {
+      "goalId": "19481f5d-94de-4a74-b765-cbebd1525994",
+      "before": {
+        "id": "19481f5d-94de-4a74-b765-cbebd1525994",
+        "title": "Volumina von Rotationskörpern um die Abszisse ermitteln (LK)",
+        "titleEn": "Determine Volumes of Solids of Revolution Around the x-axis (advanced course)",
+        "description": "Die lernende Person kann Volumina von Körpern berechnen, die durch Rotation von Flächen um die Abszissenachse entstehen, auch wenn Wurzelfunktionen als Randfunktionen auftreten.",
+        "descriptionEn": "The learner can calculate volumes of bodies generated by rotating areas around the x-axis, including cases with square-root functions as boundary functions.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+          "a9ed219d-d497-55e5-a4e0-4d45d2554f6b"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.2, S. 37, Spiegelstrich 4",
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "19481f5d-94de-4a74-b765-cbebd1525994",
+            "title": "Visualisierung: Volumina von Rotationskörpern um die Abszisse ermitteln (LK)",
+            "url": "/assets/goal-visualizations/mathematik/19481f5d-94de-4a74-b765-cbebd1525994/19481f5d-94de-4a74-b765-cbebd1525994.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Volumina von Rotationskörpern um die Abszisse ermitteln (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Volumina von Rotationskörpern um die Abszisse ermitteln (LK)\". Die lernende Person kann Volumina von Körpern berechnen, die durch Rotation von Flächen um die Abszissenachse entstehen, auch wenn Wurzelfunktionen als Randfunktionen auftreten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "proposedFields": {
+        "descriptionEn": "The learner can calculate volumes of bodies generated by rotating areas around the x-axis, including cases with root functions as boundary functions."
+      },
+      "beforeRecords": {
+        "A": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "19481f5d-94de-4a74-b765-cbebd1525994",
+          "fingerprint": "sha256:f78b958dd66d32606071d05252e1f85baba43a09135d87eca44ea75faf449776",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q1-Review: Eine einzelne Rotationskoerperroutine; Integralansatz, Berechnung und fachliche Begruendung sind Teil desselben Volumenziels.",
+          "suggestedSplit": []
+        },
+        "M": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "19481f5d-94de-4a74-b765-cbebd1525994",
+          "fingerprint": "sha256:85e9e429ba0281da626d8cd1f46ecb64efb62e2ded9af6d7ebf471e73724b334",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "S": {
+          "goalId": "19481f5d-94de-4a74-b765-cbebd1525994",
+          "sourceFingerprint": "sha256:8411d502bbfc91144195ce6f5cedee0651a81cb34ff88127c772711bdcb805f0",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "nativeBeforeFingerprints": {
+        "A": "sha256:f78b958dd66d32606071d05252e1f85baba43a09135d87eca44ea75faf449776",
+        "M": "sha256:85e9e429ba0281da626d8cd1f46ecb64efb62e2ded9af6d7ebf471e73724b334",
+        "S": "sha256:8411d502bbfc91144195ce6f5cedee0651a81cb34ff88127c772711bdcb805f0"
+      },
+      "nativeAfterFingerprints": {
+        "A": "sha256:ef867d08f55b49fa95a5d1f1068334994aec3ab6ce786ca4d5d029ba2f5c7215",
+        "M": "sha256:e8af8b71a33a1e5d828a18c8267e85f1bf82ba365a9c253b1df93cd68b3f51b9",
+        "S": "sha256:0bfd2e720091f2c3f10697416a9d1b97c51ebcde9f7e8cf2d7eb80e066b5aa64"
+      }
+    }
+  ]
+}

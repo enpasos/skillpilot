@@ -601,10 +601,12 @@ const optimizeVisualizationOnPage = async (
   sourceDataUrl: string,
   sourceMediaType: 'image/jpeg' | 'image/png' | 'image/webp',
   policy: GoalBookPrintDerivativePolicy,
+  pdfJpegDerivative: boolean,
 ) => optimizerPage.evaluate(async ({
   source,
   sourceType,
   policy,
+  pdfJpegDerivative,
 }) => {
   const image = new Image()
   image.decoding = 'sync'
@@ -624,7 +626,13 @@ const optimizeVisualizationOnPage = async (
     policy.maxWidthPixels / sourceWidth,
     policy.maxHeightPixels / sourceHeight,
   )
-  const outputType = sourceType === 'image/jpeg' ? 'image/jpeg' : 'image/webp'
+  // Chromium expands WebP derivatives into lossless PDF image streams. Their
+  // small input byte count therefore does not bound the actual PDF size.
+  // For the bounded PDF atlas, JPEG survives as a compressed DCT image. Flatten
+  // transparency onto the white print page; never modify the source PNG.
+  const outputType = pdfJpegDerivative || sourceType === 'image/jpeg'
+    ? 'image/jpeg'
+    : 'image/webp'
   let result: OptimizedVisualization | null = null
 
   for (let attempt = 0; attempt < 10; attempt += 1) {
@@ -670,12 +678,14 @@ const optimizeVisualizationOnPage = async (
   source: sourceDataUrl,
   sourceType: sourceMediaType,
   policy,
+  pdfJpegDerivative,
 })
 
 const prepareLocalRenderAssets = async (
   browser: Browser,
   model: GoalBookModel,
   options: GoalBookPdfOptions,
+  format: 'html' | 'pdf' = 'html',
 ) => {
   const printDerivativePolicy = printDerivativePolicyForProfile(
     options.printDerivativeProfile,
@@ -735,6 +745,7 @@ const prepareLocalRenderAssets = async (
         `data:${sourceMediaType};base64,${sourceContent.toString('base64')}`,
         sourceMediaType,
         printDerivativePolicy,
+        format === 'pdf' && options.printDerivativeProfile === 'bounded-atlas',
       )
       const { content: renderedContent, mediaType: renderedMediaType } = embeddedImageBytes(
         optimized.dataUrl,
@@ -3278,7 +3289,7 @@ export const writeGoalBookPdf = async (
   let manifest: GoalBookRenderManifest | null = null
   try {
     browser = await launchGoalBookBrowser(options)
-    assets = await prepareLocalRenderAssets(browser, model, options)
+    assets = await prepareLocalRenderAssets(browser, model, options, 'pdf')
     await renderPdfWithBrowser(browser, model, temporaryOutput, options, assets)
     const chromiumPdfBytes = await readFile(temporaryOutput)
     const pdfBytes = injectGoalBookPdfOutline(chromiumPdfBytes, model)

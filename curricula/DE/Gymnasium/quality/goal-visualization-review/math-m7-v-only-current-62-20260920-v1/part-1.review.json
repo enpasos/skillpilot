@@ -1,0 +1,533 @@
+{
+  "schemaVersion": 1,
+  "kind": "current-image-only-review",
+  "reviewId": "math-m7-v-only-current-62-20260920-v1-part-1",
+  "reviewer": "Codex independent visual reviewer /root/math_m7_post5_context9_blind_a",
+  "reviewerType": "ai",
+  "human": false,
+  "humanApproved": false,
+  "reviewAuthority": "ai_candidate",
+  "actualStartedAt": "2026-09-20T19:03:56.525Z",
+  "actualReviewedAt": "2026-09-20T19:10:47Z",
+  "inputPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-1.input.json",
+  "inputSha256": "sha256:001191915b890412145c717ec9a36b268211be03594e3229b2dc94e6bb1d94ef",
+  "method": "Each of the 31 actual referenced raster assets was inspected with view_image against its supplied goal description. Asset SHA-256 values were checked against the input. No earlier image-review decisions were read or promoted. KEEP standard: an illustrative asset need not assess the entire competence. No canonical text, assets, shared registry or quality status was changed.",
+  "records": [
+    {
+      "goalId": "b1dcc191-d046-50de-984a-ee5c17157628",
+      "title": "Ableitung als Steigung im Punkt deuten",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/b1dcc191-d046-50de-984a-ee5c17157628/b1dcc191-d046-50de-984a-ee5c17157628.jpg",
+      "assetSha256": "sha256:ad9846e769908e0eeb4d4c08a52da5bb20063b225037b77b65da19e218af48d9",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Tangente durch den markierten Punkt und Steigungsdreieck mit Δx und Δy passend angeordnet.",
+        "m=f'(x₀) und v(t₀)=s'(t₀) verbinden geometrische Steigung und momentane Änderungsrate korrekt.",
+        "Weg-Zeit-Achsen, positiver lokaler Anstieg und lesbare Beschriftungen passen zum Ziel."
+      ],
+      "findings": [],
+      "rationale": "Die beiden qualitativen Darstellungen stützen die Punktinterpretation der Ableitung fachlich passend; eine zusätzliche Berechnungsaufgabe ist für dieses Orientierungsbild nicht nötig.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "c3c057a3-caf9-44a5-ae60-639e3119e94a",
+      "title": "Ableitungen von $e^x$ und $a^x$ verwenden",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/c3c057a3-caf9-44a5-ae60-639e3119e94a/c3c057a3-caf9-44a5-ae60-639e3119e94a.jpg",
+      "assetSha256": "sha256:d930d8a0f0a457f67d16a0f1cf74d2cb4022cef4b660aae9af4fafe9d4422467",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "(eˣ)'=eˣ und (aˣ)'=aˣ·ln(a) sind im üblichen reellen Exponentialfunktionsbereich a>0 korrekt.",
+        "Die Umformung aˣ=e^(x·ln(a)) und die innere Ableitung ln(a) sind richtig verbunden.",
+        "Das konkrete Beispiel (2ˣ)'=2ˣ·ln(2) und sämtliche Exponenten sind lesbar und korrekt."
+      ],
+      "findings": [],
+      "rationale": "Die Formelübersicht erklärt den zusätzlichen logarithmischen Faktor durch die Kettenregel und passt zur Anwendung der Exponentialableitungen. Keine falsche Rechnung oder irreführende grafische Behauptung sichtbar.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+      "title": "Ableitungen von Sinus und Kosinus grafisch begründen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2.png",
+      "assetSha256": "sha256:59ad509f870e3c824b3650f00ddc1f276a76a01f2b6c03ff2737bacc4305081a",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Die Wertefolge 1,0,−1,0,1 für cos an 0,π/2,π,3π/2,2π und die oberen Sinustangenten sind fachlich richtig.",
+        "Die beiden unteren Nullstellenmarkierungen auf der horizontalen Achse tragen die Zahl 0 statt der jeweiligen x-Koordinate.",
+        "Die vertikale Zuordnung der Diagramme macht die Verwechslung von Funktionswert und Argument unmittelbar sichtbar."
+      ],
+      "findings": [
+        "Im unteren cos(x)-Diagramm stehen unter den Achsenticks bei x=π/2 und x=3π/2 jeweils '0'. Diese x-Achsenbeschriftungen sind falsch; die korrekten Funktionswerte 0 werden bereits oberhalb mit 'Wert 0' bezeichnet. Die Achsenticks müssen π/2 und 3π/2 heißen oder unbeschriftet bleiben."
+      ],
+      "rationale": "Der Kernzusammenhang sin'=cos ist richtig, aber die falschen Argumentbeschriftungen können die Unterscheidung zwischen Stelle und Ableitungswert verfälschen und müssen korrigiert werden.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+      "title": "Ableitungswerte trigonometrischer Modelle im Kontext interpretieren",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/6acd79f5-9447-5ea1-8127-6dbb72bd057d/6acd79f5-9447-5ea1-8127-6dbb72bd057d.jpg",
+      "assetSha256": "sha256:c62105cc33d84f461d771d9aa7b4a5c8ca7af953b6d18f66036cb637683cc58e",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Ansteigende Tangente am markierten t₀ stimmt mit f'(t₀)=0,4 m/h überein.",
+        "Waagerechte Tangente am Hochpunkt ist korrekt mit lokaler Änderungsrate 0 m/h verbunden.",
+        "Höhe in m und Zeit in h ergeben die Einheit m/h; der periodische Wasserstand ist ein plausibler Modellkontext."
+      ],
+      "findings": [],
+      "rationale": "Das Bild stellt positive und verschwindende momentane Änderungsraten anschaulich und fachlich konsistent gegenüber. Die Formulierung 'momentane Ruhe' ist durch den Zeitpunkt und den Hochpunkt als lokale Aussage eingegrenzt.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "91571d3f-3651-4477-ba21-320fc4077453",
+      "title": "Absolute und relative Häufigkeiten bestimmen und darstellen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/91571d3f-3651-4477-ba21-320fc4077453/91571d3f-3651-4477-ba21-320fc4077453.jpg",
+      "assetSha256": "sha256:d0d08400f0681d49e844367e47a0118e396628ffcf9c9fecabb996b43bd3e3b5",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Absolute Häufigkeiten 8+6+4+2=20 und Prozentwerte 40+30+20+10=100 stimmen.",
+        "8/20=0,40, 6/20=0,30, 4/20=0,20 und 2/20=0,10 sind korrekt.",
+        "Säulenhöhen 8,6,4,2 passen zur beschrifteten Skala; 1/4=0,25=25% ist richtig."
+      ],
+      "findings": [],
+      "rationale": "Tabelle, Säulendiagramm und Darstellungswechsel sind konsistent. Die kleine Klassenszene ist erkennbar eine Illustration und kein abgezähltes Datenbild der gesamten Befragung.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "title": "Achsen, Skalen und Einheiten lesen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/80c232f1-8f72-5829-9dbe-5a610ccab3be/80c232f1-8f72-5829-9dbe-5a610ccab3be.jpg",
+      "assetSha256": "sha256:a95a9d5f60c83438cac7924a390357205ad31ae73efa1007510eaa5e79f62837",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Achsen benennen Zeit in min und Weg in m korrekt.",
+        "Die gleichmäßigen Markierungen 0,5,10,15 sowie 0,100,200,300 bilden lesbare Skalen.",
+        "Der hervorgehobene Punkt und die beiden Hilfslinien zeigen exakt den abgelesenen Zusammenhang 10 min→200 m."
+      ],
+      "findings": [],
+      "rationale": "Der hervorgehobene Ablesevorgang ist fachlich richtig, gut erkennbar und unmittelbar auf das Lernziel ausgerichtet.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+      "title": "Achsenschnittpunkte einfacher gebrochen-rationaler Funktionen bestimmen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43.jpg",
+      "assetSha256": "sha256:8c6ad3e2f741bc2a830e2bc1a630164ec2538150e479760342ace20d5298460c",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Für f(x)=(x+1)/(x−2) sind die Rechnungen f(0)=−0,5 und x=−1 als Nullstelle korrekt.",
+        "Polstelle x=2, waagerechte Asymptote y=1 und die beiden Hyperbelzweige sind qualitativ passend.",
+        "Die gezeichnete vertikale Position des y-Achsenschnittpunkts widerspricht der markierten y-Skalierung."
+      ],
+      "findings": [
+        "Die Strecke vom Ursprung zum eingezeichneten Sᵧ(0|−0,5) ist ungefähr genauso lang wie vom Ursprung zur ausdrücklich mit 1 markierten waagerechten Linie y=1. Auf der ansonsten gleichmäßig getickten y-Achse liegt der Punkt damit bei −1 statt −0,5. Für ein Achsenschnittpunkt-Ablesebild muss Sᵧ auf halber negativer Einheitenhöhe liegen und der Graph entsprechend angepasst werden."
+      ],
+      "rationale": "Die richtige Rechnung gleicht die falsche skalierte Punktlage nicht aus. Gerade das Erkennen von Schnittpunktkoordinaten ist Gegenstand dieses Bildes.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "ffd1ae26-c461-4439-9b18-d835c8f38e1a",
+      "title": "Ähnlichkeit und Strahlensatz anwenden",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/ffd1ae26-c461-4439-9b18-d835c8f38e1a/ffd1ae26-c461-4439-9b18-d835c8f38e1a.jpg",
+      "assetSha256": "sha256:94e4e79c3bc6fdcc3ac49936d2df66ae399b3463215dc56ab3455a591ac9d38b",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "AB und A'B' sind parallel eingezeichnet; beide Strahlen haben den gemeinsamen Anfang S.",
+        "SA/SA'=3/6, SB/SB'=4/8 und AB/A'B'=5/10 ergeben jeweils 1/2.",
+        "Die markierten Strecken sind konsistent den inneren beziehungsweise äußeren Dreiecken zugeordnet; die äußere Figur vergrößert die innere."
+      ],
+      "findings": [],
+      "rationale": "Die geometrische Skizze vermittelt die korrespondierenden Streckenverhältnisse korrekt. Sie ist schematisch und behauptet weder eine Winkelskala noch eine Winkelmessung; die metrischen Zahlen dienen hier dem konsistenten Verhältnisbeispiel.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "title": "Analysis-Modelle in Sachzusammenhängen validieren (LK)",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2.jpg",
+      "assetSha256": "sha256:defdc7c70cfc1d3eb76f91ec4bb6b2a70b516eab38a569a68e483034b1768872",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "N'(t)=300−40t liefert t=7,5; N(7,5)=2125 stimmt mit dem Maximum überein.",
+        "N(15)=1000 und N(20)=−1000 sind korrekt; die positive Nullstelle liegt näherungsweise bei 17,8.",
+        "Zeit in Stunden, Besucherzahl und die Warnung vor negativen Besucherzahlen sind sachlich konsistent."
+      ],
+      "findings": [],
+      "rationale": "Das Beispiel prüft seine Modellgrenzen an konkreten, richtig berechneten Werten und zeigt, warum die Parabel nicht beliebig extrapoliert werden darf.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+      "title": "Anteilssachprobleme mit rationalen Zahlen modellieren",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/b41cb496-dad5-596e-9c23-cdcbdab3ec2e.jpg",
+      "assetSha256": "sha256:5a91646c56dadf21df2701c8fc0a3b219674f4ebd90079cb941bdfd987719002",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Die Rechnung 1−3/4=1/4 und (2/5)·(1/4)=1/10 ist korrekt.",
+        "Das linke Kreisbild zeigt den anfänglichen Viertelrest plausibel.",
+        "Das abschließende Kreisbild verkleinert den ursprünglichen Rasenanteil und zeigt weiterhin einen braunen Viertelsektor neben einem zusätzlichen Blumensektor; die braune Beschriftung ist kein gültiger Zahlenbruch."
+      ],
+      "findings": [
+        "Rechts muss der Rasen weiterhin 3/4 des Ganzen darstellen und der bisherige Viertelrest in 1/10 Blumen und 3/20 verbleibenden Rest geteilt sein. Stattdessen liegt ein brauner Viertelsektor plus zusätzlicher Blumensektor vor; der Rasen ist entsprechend zu klein.",
+        "Im braunen Ergebnisbereich steht sichtbar '1' über einem Bruchstrich mit 'Rest' darunter. Das ist eine fehlerhafte beziehungsweise unvollständige Bruchbeschriftung und darf nicht als Anteil stehen bleiben."
+      ],
+      "rationale": "Die richtige symbolische Lösung wird durch die falsche abschließende Anteilsdarstellung und den beschädigten Bruch unterlaufen. Das betrifft unmittelbar die Modellierung von Anteilen am selben Ganzen.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "67c4d6f8-45fc-53d5-8c95-a4c423e421a6",
+      "title": "Arithmetische und geometrische Folgen beschreiben",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/67c4d6f8-45fc-53d5-8c95-a4c423e421a6/67c4d6f8-45fc-53d5-8c95-a4c423e421a6.jpg",
+      "assetSha256": "sha256:1f949858ab8174a20b2c0d20b8626e5817acd7f244a4ac52dd688200d5afadf4",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Tabellen 5,8,11,14 beziehungsweise 2,4,8,16 entsprechen +3 und ·2.",
+        "aₙ=2+3n mit a₁=5 sowie bₙ=2ⁿ mit b₁=2 und die rekursiven Fassungen sind richtig.",
+        "Die grafischen Darstellungen verwenden diskrete Punkte und korrekt beschriftete Koordinaten statt durchgezogener Kurven."
+      ],
+      "findings": [],
+      "rationale": "Der Kontrast zwischen konstanter Differenz und konstantem Faktor ist rechnerisch korrekt und anschaulich. Die kleinen unbezifferten y-Skizzen sind qualitativ; die expliziten Punktkoordinaten und Formeln sind konsistent.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "15505229-efec-4d01-8e71-acf15f9c2424",
+      "title": "Arithmetisches Mittel bestimmen und deuten",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/15505229-efec-4d01-8e71-acf15f9c2424/15505229-efec-4d01-8e71-acf15f9c2424.jpg",
+      "assetSha256": "sha256:24baa8d7592fe5f305c8e6a698fb752f22707ff1548e85c8f18ebc9e48bdeffc",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "6+8+10+7+9=40, fünf Datenwerte und 40/5=8 sind korrekt.",
+        "Die Ausgleichsdarstellung enthält genau fünf gleiche Anteile von 8 Punkten.",
+        "MITTELWERT(A1:A5) bezieht sich auf die fünf dargestellten Zahlen; die Ausgabe 8 stimmt."
+      ],
+      "findings": [],
+      "rationale": "Rechnung, Ausgleichsdeutung und Tabellenkalkulation bilden dasselbe korrekte Beispiel ab. Die übersichtlichen Teilbilder unterstützen genau die geforderte Bestimmung und Bedeutung des Mittelwerts.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "886caebc-a042-4a94-91f9-6dc184203c42",
+      "title": "Asymptotisches Verhalten von Wachstumsmodellen im Kontext deuten",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/886caebc-a042-4a94-91f9-6dc184203c42/886caebc-a042-4a94-91f9-6dc184203c42.jpg",
+      "assetSha256": "sha256:cba6a767ef8da49baa56c485622c93a8f6f213e72a244dfe4f7a11f87726b364",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "P(0)=1200−1000=200 und limₜ→∞P(t)=1200 sind korrekt.",
+        "Die Kurve steigt mit kleiner werdenden Zunahmen und bleibt unter der waagerechten Asymptote.",
+        "Population, Zeit und die ausdrückliche Unterscheidung zwischen Modellgrenze und tagesgenauer Prognose sind sachlich passend."
+      ],
+      "findings": [],
+      "rationale": "Das Bild verbindet richtiges Grenzwertverhalten und Kontextinterpretation. Die Fischillustrationen stellen den Kontext dar und behaupten keine maßstäbliche Individuenzählung.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "83a6ccb1-576e-59e1-8a97-8a332ec7dda8",
+      "title": "Auf Rückfragen eingehen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/83a6ccb1-576e-59e1-8a97-8a332ec7dda8/83a6ccb1-576e-59e1-8a97-8a332ec7dda8.jpg",
+      "assetSha256": "sha256:38ef4151c96a041b78fba8eed9267efc6b1d119f6269655c820c71abb51abb4b",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Rückfrage wird konkret mit x=3 in f(x)=2x+1 beantwortet.",
+        "2·3+1=7 und der Punkt (3|7) sind korrekt; beide Achsenprojektionen stimmen.",
+        "Die Bildfolge zeigt die Anpassung der Erklärung durch Zwischenschritte und eine zusätzliche Darstellung."
+      ],
+      "findings": [],
+      "rationale": "Der fachlich korrekte Funktionswert dient als überschaubares Beispiel für den Kommunikationsprozess. Die Darstellung passt zum Ziel, Rückfragen gezielt aufzugreifen.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "0272c501-2931-5e52-b62f-af068db63c44",
+      "title": "Aus Term einen Graphen erstellen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/0272c501-2931-5e52-b62f-af068db63c44/0272c501-2931-5e52-b62f-af068db63c44.jpg",
+      "assetSha256": "sha256:ea3d8bb52771fe06148cafb1adadde5e0a4c6b4573e85e2519056bfa1d4a8feb",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Für f(x)=2x+1 liefert die Tabelle zu x=0,1,2 die Werte 1,3,5.",
+        "Die drei eingezeichneten Punkte (0|1), (1|3), (2|5) liegen korrekt im beschrifteten Koordinatensystem.",
+        "Die Gerade stimmt mit diesen Punkten, der Steigung 2 und dem Achsenabschnitt 1 überein."
+      ],
+      "findings": [],
+      "rationale": "Die Übergänge vom Term über die Tabelle zum Graphen sind klar und mathematisch konsistent dargestellt.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+      "title": "Aussagen anhand von Diagrammen prüfen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/fcfbff12-bd03-52ec-b242-a693212b3d2b/fcfbff12-bd03-52ec-b242-a693212b3d2b.jpg",
+      "assetSha256": "sha256:0d8b4f57d364699639c09e9521327b8cacc2e6e64b54bc6a12da5b0442f9642b",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Säulenhöhen für Mo bis Fr sind 10,20,15,30,25 auf einer gleichmäßigen Skala.",
+        "Die grün bestätigte Aussage Do:30 ist richtig.",
+        "Fr:15 wird richtig als falsch markiert und auf Fr:25 korrigiert; die Pfeile weisen auf die jeweiligen Säulen."
+      ],
+      "findings": [],
+      "rationale": "Das Bild bietet ein korrektes, unmittelbar überprüfbares Beispiel für die Prüfung von Diagrammaussagen. Es muss nicht zusätzlich jede mögliche Täuschung durch Achsenabschnitte zeigen.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+      "title": "Aussagen über ganze Zahlen prüfen und mit Gegenbeispielen widerlegen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/8d1bb6ce-2433-4637-94ba-3bdc35fa5b10/8d1bb6ce-2433-4637-94ba-3bdc35fa5b10.jpg",
+      "assetSha256": "sha256:b3c139efa515cf534a957cc7df70beb4a311287d9e21f052e2bf5b7dcfbd7128",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "−2 ist eine ganze Zahl und widerlegt die Aussage, alle ganzen Zahlen seien positiv.",
+        "Die Zahlengerade ordnet negative Zahlen, null und positive Zahlen korrekt an.",
+        "Die Bildfolge trennt einzelne positive Beispiele ausdrücklich von einem Gegenbeispiel zur allgemeinen Behauptung."
+      ],
+      "findings": [],
+      "rationale": "Das einfache Gegenbeispiel ist gültig und altersgerecht; die falsche Aussage wird unmissverständlich als zu prüfende und anschließend widerlegte Aussage markiert.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+      "title": "Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/efc3506a-5f35-4d77-9498-d70a091a470b/efc3506a-5f35-4d77-9498-d70a091a470b.jpg",
+      "assetSha256": "sha256:6c29e031ea17e39bd0cfeffa52315dd28b16184118fcfecd0677205718517cb7",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Das Baumdiagramm enthält die vier korrekten Ergebnisse KK,KZ,ZK,ZZ zweier fairer Würfe.",
+        "P(KZ)=1/2·1/2=1/4 und P(genau einmal K)=P(KZ)+P(ZK)=1/2 sind richtig.",
+        "Die sichtbare Klammer und der Callout zur Summenregel sind ausschließlich am untersten ZZ-Pfad angebracht, nicht an den in der Summe genannten KZ- und ZK-Pfaden."
+      ],
+      "findings": [
+        "Die Klammer unmittelbar unter dem ZZ-Ast und der Pfeil vom Feld 'Summenregel (Ereignis addieren)' zum ZZ-Endknoten ordnen die Summenregel visuell dem falschen Pfad zu. Für das ausgeschriebene Ereignis 'genau einmal K' müssen die beiden vollständigen Pfade KZ und ZK erkennbar zusammengefasst werden; ZZ gehört nicht dazu."
+      ],
+      "rationale": "Die Rechenformel stimmt, aber die Pfadzuordnung der grafischen Summenregel ist irreführend. Da das Lernziel ausdrücklich Baumdiagramme und Pfadregeln verknüpft, ist die falsche Hervorhebung relevant.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "c2831918-26f1-421e-90fb-ce707689594e",
+      "title": "Bedingte und gemeinsame Wahrscheinlichkeiten im Kontext unterscheiden",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/c2831918-26f1-421e-90fb-ce707689594e/c2831918-26f1-421e-90fb-ce707689594e.jpg",
+      "assetSha256": "sha256:27111055e0e5c7583fae7cbb0dc4dd8d2ddbb4caf23773d6ca45ed9bf366bd9a",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "P(A∩B) wird korrekt als gemeinsames Eintreten beider Ereignisse dargestellt.",
+        "P(B|A)=P(A∩B)/P(A) und P(A|B)=P(A∩B)/P(B) haben die richtigen Bezugsereignisse.",
+        "Die beiden Richtungen der Bedingung sind sowohl sprachlich als auch durch die jeweiligen Ausgangsknoten A beziehungsweise B unterscheidbar."
+      ],
+      "findings": [],
+      "rationale": "Die drei Begriffe werden fachlich richtig gegeneinander abgegrenzt. Die farbigen Ereignissymbole sind illustrative Kategorien und keine numerisch behaupteten Wahrscheinlichkeitsflächen.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "508292f2-671b-4fd3-acbf-53d705e44693",
+      "title": "Bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln bestimmen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/508292f2-671b-4fd3-acbf-53d705e44693/508292f2-671b-4fd3-acbf-53d705e44693.jpg",
+      "assetSha256": "sha256:bd4459dce129f1d47962cbf5942001178db05a7112ccbad51f5b918cb5610aa3",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Beide Baumstufen verwenden die richtigen Ereignisse beziehungsweise bedingten Astwahrscheinlichkeiten.",
+        "Vierfeldertafel enthält die vier richtigen Schnittmengen, passende Randsummen und Gesamtsumme 1.",
+        "Für P(B|A) werden P(A∩B) und P(A) richtig hervorgehoben und in der korrekten Quotientenformel verbunden."
+      ],
+      "findings": [],
+      "rationale": "Baum und Vierfeldertafel stellen denselben Zusammenhang konsistent dar. Die generische Darstellung ist als Orientierung zur Bezugsraumwahl geeignet, auch ohne zusätzliches Zahlenbeispiel.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "b37851f1-d64a-47ec-a54a-1e70fa5586a9",
+      "title": "Besondere Linien in Dreiecken beschreiben",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/b37851f1-d64a-47ec-a54a-1e70fa5586a9/b37851f1-d64a-47ec-a54a-1e70fa5586a9.jpg",
+      "assetSha256": "sha256:0946d62dfb8e0690d4a0a0497a481a92835cdc29baf788ec67009a6e056edd1d",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Höhe: Strecke vom gegenüberliegenden Eckpunkt senkrecht auf die Grundseite; rechter Winkel an H stimmt.",
+        "Mittelsenkrechte und Seitenhalbierende: gleiche Teilstrecken kennzeichnen jeweils die Seitenmitte; nur die Mittelsenkrechte ist senkrecht, die Seitenhalbierende beginnt am Eckpunkt.",
+        "Winkelhalbierende: Ausgangspunkt ist der Winkelvertex; gleiche Winkelmarkierungen und die eingezeichnete Richtung passen zur Halbierung."
+      ],
+      "findings": [],
+      "rationale": "Die vier grafisch getrennten Beispiele zeigen die kennzeichnenden Eigenschaften der besonderen Dreieckslinien korrekt und unterstützen deren Erkennen und Zuordnen.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+      "title": "Besonderheit der natürlichen Exponentialfunktion erläutern",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb/3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb.jpg",
+      "assetSha256": "sha256:a9b4d55b6287739bb7cb40dc8837823491b269093fd29568a5e4868c12e0af7a",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Für f(x)=e^x gilt f'(x)=e^x; die dargestellte Identität von Steigung und Funktionswert ist fachlich richtig.",
+        "Der hervorgehobene Punkt (0|1) erfüllt e^0=1; die Tangentensteigung m=1 ist dort korrekt.",
+        "Exponentialkurve und Tangente sind unterscheidbar und berühren sich am bezeichneten Punkt; es wird keine zusätzliche numerische Achsenskalierung behauptet."
+      ],
+      "findings": [],
+      "rationale": "Die Darstellung erklärt die zentrale Besonderheit der natürlichen Exponentialfunktion zutreffend mit einem konkreten Punkt und der allgemeinen Ableitungsidentität.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "44cb7404-114e-5b14-b33a-ddee41952d46",
+      "title": "Betrag einer Zahl angeben",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/44cb7404-114e-5b14-b33a-ddee41952d46/44cb7404-114e-5b14-b33a-ddee41952d46.jpg",
+      "assetSha256": "sha256:0a11b050249ff6e95bd264acc694cae78594ed6ecc5ab440792c246c91389112",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Zahlengerade ordnet −5 bis 5 gleichmäßig und korrekt an.",
+        "Die Abstände von −3 und +3 zur Null sind gleich; |−3|=3 und |3|=3 stimmen.",
+        "Die Erklärung als Abstand und die Aussage 'immer positiv oder null' entsprechen der Nichtnegativität des Betrags."
+      ],
+      "findings": [],
+      "rationale": "Zahlengerade, Abstandsmarkierungen und symbolische Schreibweise transportieren denselben korrekten Betragsbegriff.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "title": "Betrag eines Vektors im Raum bestimmen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/fb7a4fa0-03b5-53b4-bd86-608480b748a1/fb7a4fa0-03b5-53b4-bd86-608480b748a1.jpg",
+      "assetSha256": "sha256:6051d71316742e7083d6328eaac7f043329733b0a0c6705835283b3f25f49436",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Der räumliche Vektor wird durch die Komponenten (3,4,12) und den Endpunkt P(3|4|12) konsistent repräsentiert.",
+        "Die Rechnung √(3²+4²+12²)=√169=13 ist korrekt.",
+        "Die Diagonale veranschaulicht die Verschiebung vom Ursprung zum Endpunkt; die skalare Länge wird ausdrücklich vom Vektor unterschieden. Die Perspektivskizze beansprucht keine maßstäbliche Längentreue."
+      ],
+      "findings": [],
+      "rationale": "Die räumliche Skizze und die korrekte Normberechnung verbinden die Komponenten mit der Länge der Verschiebung.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "81527aac-1abf-588d-acae-b82a86564b06",
+      "title": "Beweis durch Kontraposition",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/81527aac-1abf-588d-acae-b82a86564b06/81527aac-1abf-588d-acae-b82a86564b06.jpg",
+      "assetSha256": "sha256:f970c5a4303e55ad76a1a9d8bde5420541f3636074ba63f3f22c18fa8f2581b0",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Kontraposition von A⇒B lautet korrekt ¬B⇒¬A, nicht die Umkehrung B⇒A.",
+        "Im Beispiel sind A='durch 4 teilbar' und B='gerade'; die Negationen 'nicht durch 4 teilbar' und 'ungerade' sind für ganze Zahlen korrekt.",
+        "Die logische Äquivalenz wird explizit benannt; der Beispielsatz 'ungerade ⇒ nicht durch 4 teilbar' ist wahr."
+      ],
+      "findings": [],
+      "rationale": "Die Gegenüberstellung veranschaulicht die korrekte Umkehrung der Richtung bei gleichzeitiger Negation beider Aussagen und passt zum Beweisverfahren.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "9ea981ed-8b78-502c-b316-01d8cb885814",
+      "title": "Beweis mit Fallunterscheidung",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/9ea981ed-8b78-502c-b316-01d8cb885814/9ea981ed-8b78-502c-b316-01d8cb885814.jpg",
+      "assetSha256": "sha256:566d7382151bb43afdbfc91a88e2283f2fa72d19984caec71071e2e2cba4d6c4",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Fälle 'n gerade' und 'n ungerade' decken alle ganzen Zahlen ab, wie unten ausdrücklich erläutert.",
+        "Im geraden Fall besitzt n(n+1) den geraden Faktor n; im ungeraden Fall ist n+1 gerade. Beide Schlussketten sind korrekt.",
+        "Die konkreten Prüfbeispiele 2(2+1)=6 und 3(3+1)=12 stimmen; beide Ergebnisse sind gerade."
+      ],
+      "findings": [],
+      "rationale": "Das Bild zeigt eine vollständige Fallunterscheidung mit korrekten Teilschlüssen und explizitem Abdeckungshinweis.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+      "title": "Bildungsgesetze zu Folgengliedern aufstellen (LK)",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/f1eee698-04c6-5d60-bcc6-a3c67129eea2/f1eee698-04c6-5d60-bcc6-a3c67129eea2.jpg",
+      "assetSha256": "sha256:9c3f58524a93ee07ebd4c51a2b8c438ec5aef33d11e0e413f03052bac99963b8",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Die Folge 3,7,11,15,19 hat die angegebene konstante Differenz 4.",
+        "Aus a_n=4n+c und a_1=3 folgt c=−1 und damit a_n=4n−1.",
+        "Alle fünf Einsetzungen in der Prüftabelle stimmen mit den gegebenen Folgengliedern überein; die Indexierung beginnt konsistent bei n=1."
+      ],
+      "findings": [],
+      "rationale": "Die drei Panels zeigen einen passenden arithmetischen Ansatz, dessen Bestimmung und dessen Prüfung nachvollziehbar. Das Beispiel muss nicht sämtliche möglichen Folgentypen darstellen.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
+      "title": "Bisektionsverfahren zur Nullstellennäherung anwenden",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/f40fcaf7-c630-589c-9f48-6c9e69da0b9d/f40fcaf7-c630-589c-9f48-6c9e69da0b9d.jpg",
+      "assetSha256": "sha256:c5accd18d6b34b50107572347c1ae639b741da016af96e8bcb313d78a2a9eee5",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "f(x)=x²−2 ist stetig, f(1)=−1 und f(2)=2 begründen den Vorzeichenwechsel im Startintervall.",
+        "Die Mittelpunkte 1,5 und 1,25 sowie f(1,5)=0,25 und f(1,25)=−0,4375 sind korrekt; die behaltenen Intervalle besitzen jeweils einen Vorzeichenwechsel.",
+        "Die Intervallfolge [1;2] → [1;1,5] → [1,25;1,5] und die abschließende Schranke 1,25<√2<1,5 stimmen. Jede Zeile zeigt ihr eigenes beschriftetes Intervall."
+      ],
+      "findings": [],
+      "rationale": "Die vergrößert gezeigten Intervallhalbierungen bilden zwei korrekte Bisektionsschritte einschließlich der Vorzeichenentscheidung ab.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+      "title": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/8d30d241-0247-48ac-83d3-4e0de61584d3/8d30d241-0247-48ac-83d3-4e0de61584d3.jpg",
+      "assetSha256": "sha256:45e510f38167d12056f230b1ad6be199a565970a16d51da01d7ec77916ea2fe7",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Die Beschriftungen 0 rad=0°, π/2 rad=90°, π rad=180° und 3π/2 rad=270° stehen an den richtigen Punkten des Einheitskreises.",
+        "Der Radius r=1, die Beziehung 2π rad=360° und die Umrechnung Gradmaß·π/180 stimmen.",
+        "Die eingezeichnete Umlaufrichtung widerspricht jedoch der positiven Winkelrichtung dieser Beschriftung: Der äußere Pfeil läuft über die obere Kreishälfte nach rechts abwärts, also im Uhrzeigersinn."
+      ],
+      "findings": [
+        "Äußerer Umlaufpfeil um den Einheitskreis, Pfeilspitze rechts oben neben '0 rad = 0°': Die positiven Winkelwerte nehmen gegen den Uhrzeigersinn zu, der einzige Umlaufpfeil zeigt aber im Uhrzeigersinn. Zusammen mit 'eine volle Umdrehung = 2π rad = 360°' entsteht eine widersprüchliche Darstellung der positiven Drehrichtung. Erforderliche Korrektur: Den äußeren Umlaufpfeil gegen den Uhrzeigersinn ausrichten oder entfernen; Winkelpositionen und Umrechnungsformel können unverändert bleiben."
+      ],
+      "rationale": "Die Zahlen und Umrechnungen sind richtig. Die entgegengesetzte Umlaufrichtung betrifft jedoch unmittelbar die Orientierung am Einheitskreis und erfordert eine lokale Bildkorrektur.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+      "title": "Bogenmaß in periodischen Prozessen nutzen",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/cdf49335-cebf-54b4-9f52-50d5badabe2f/cdf49335-cebf-54b4-9f52-50d5badabe2f.jpg",
+      "assetSha256": "sha256:f55231ca319081fd52e340be60caf671565f94e3b44be1032ef4b122866a7610",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Die Bogenlänge s=r·φ und für r=1 die Vereinfachung s=φ sind korrekt; Winkel- und Koordinatenangaben an den Viertelkreispunkten stimmen.",
+        "Der Sinusgraph hat die richtigen Nullstellen 0, π und 2π, das Maximum (π/2,1), das Minimum (3π/2,−1) und die Periode 2π.",
+        "Der Winkelpfeil bei φ und der Bogenpfeil s zeigen korrekt gegen den Uhrzeigersinn; der zusätzliche kleine Umlaufpfeil links oberhalb des Kreises zeigt dagegen im Uhrzeigersinn."
+      ],
+      "findings": [
+        "Zusätzlicher schwarzer gebogener Pfeil links oberhalb des Einheitskreises: Dieser Pfeil läuft am oberen linken Kreisbogen nach rechts oben und damit im Uhrzeigersinn. Er widerspricht sowohl den beiden gegenläufigen Pfeilen für φ und s als auch den positiv zunehmenden Winkelpositionen. Erforderliche Korrektur: Den zusätzlichen äußeren Pfeil entfernen oder gegen den Uhrzeigersinn ausrichten. Der Einheitskreis, die Formeln und der Sinusgraph benötigen deswegen keine inhaltliche Änderung."
+      ],
+      "rationale": "Die Verknüpfung von Bogenmaß und Sinusperiode ist ansonsten fachlich korrekt. Zwei widersprüchliche Drehrichtungen in derselben Einheitskreisdarstellung erzeugen eine konkrete vermeidbare Fehlvorstellung.",
+      "humanApproved": false
+    },
+    {
+      "goalId": "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+      "title": "Bruchdarstellungen verwenden und wechseln",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97/f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97.jpg",
+      "assetSha256": "sha256:84662c0f6dc799709d5ad663644e939fc5c2079b0010624a88d58c6a7ec13225",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Der Kreis ist in vier gleich große Viertel geteilt, davon sind drei gefärbt; das entspricht 3/4.",
+        "Der gleichmäßig unterteilte Zahlenstrahl markiert 3/4 zwischen 1/2 und 1 an der richtigen Stelle.",
+        "'Drei Viertel', der Bruch 3/4 und 0,75 bezeichnen denselben Wert; die Pfeile für Zähler und Nenner zeigen auf die richtigen Bestandteile."
+      ],
+      "findings": [],
+      "rationale": "Alle vier Darstellungen sind lesbar, mathematisch konsistent und ausdrücklich als wertgleiche Darstellungswechsel verbunden.",
+      "humanApproved": false
+    }
+  ],
+  "counts": {
+    "assigned": 31,
+    "inspected": 31,
+    "accept_current_asset": 25,
+    "correction_required": 6,
+    "humanApproved": 0
+  }
+}

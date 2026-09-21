@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "This reviewer did not generate or import these images and did not consult the generating agent's acceptance decisions. Decisions are based on the actual candidate rasters and the current canonical goal texts.",
+  "reviewDate": "2026-09-20",
+  "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+  "title": "Zusammenhang von Funktionsgraph und Umkehrgraph erläutern",
+  "description": "Die lernende Person kann den Zusammenhang zwischen dem Graphen einer Funktion und dem Graphen ihrer Umkehrfunktion erläutern.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/dbc13bb0-963b-49a8-a441-2183f4b64c8e/candidate-v1.png",
+  "candidateSha256": "5fde43304d9ba49242dd82d069d50a97cd192ed8cd39a77c6704d58da76d984a",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/dbc13bb0-963b-49a8-a441-2183f4b64c8e/prompt.de.md",
+  "decision": "reject_candidate",
+  "checks": [
+    "Viewed the actual raster and checked the stated inverse relationship.",
+    "For f=x² on [0,∞), f⁻¹=sqrt(x) on [0,∞); swapping (2,4)↔(4,2) and fixing (0,0),(1,1) is correct algebraically."
+  ],
+  "defects": [
+    "The blue parabola does not pass through the marked common point Q(1,1); at that x it is visibly higher. Both graphs must pass through Q.",
+    "The x-axis has much greater distance from 2 to 4 than twice the distance from 0 to 1, so its numbered ticks are not a uniform linear scale. The picture does not provide the equal-axis scaling needed for the claimed mirror geometry at y=x."
+  ],
+  "nextAction": "Keep the text and style. Correct the single coordinate system using equal linear x/y unit scales; both curves must pass through (0,0) and (1,1), with (2,4) and (4,2) in reflected positions across y=x.",
+  "humanApproval": false,
+  "scope": "Targeted independent candidate-image review only. No active-asset import and no full goal-completion or human-approval claim."
+}

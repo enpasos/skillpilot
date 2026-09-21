@@ -8,46 +8,16 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `5927ca6a-91d5-4541-84e9-833bbb2cd7df.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/5927ca6a-91d5-4541-84e9-833bbb2cd7df/5927ca6a-91d5-4541-84e9-833bbb2cd7df.jpg`
+- Quellbild: `5927ca6a-91d5-4541-84e9-833bbb2cd7df.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/5927ca6a-91d5-4541-84e9-833bbb2cd7df/5927ca6a-91d5-4541-84e9-833bbb2cd7df.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen
-Beschreibung: Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen beschreiben und diskrete Wahrscheinlichkeitsverteilungen in Tabellen oder Diagrammen zur Beschreibung stochastischer Situationen nutzen.
-
-Zusatzanweisung:
-Keep the probability examples mathematically simple and correct.
-Use only small, checkable numbers.
-Allowed example facts:
-- Laplace probability: P(E) = favorable outcomes / all equally likely outcomes.
-- Fair die: P(even number) = 3/6 = 1/2.
-- Urn without replacement: 5 red and 3 blue balls, draw 2 without replacement.
-  P(2 red) = C(5,2) / C(8,2) = 10/28 = 5/14.
-  In a tree, after drawing red first the second red probability is 4/7, not 5/8.
-- Urn with replacement / binomial model: 3 trials, success probability p = 0.4 each time.
-  P(exactly 2 successes) = C(3,2) * 0.4^2 * 0.6 = 0.288.
-  The branch probability p stays the same after each draw.
-- Compare models: without replacement means branch probabilities change; with replacement means branch probabilities stay the same.
-- Random variable table example: X = number of heads in two fair coin tosses.
-  P(X=0)=1/4, P(X=1)=1/2, P(X=2)=1/4; sum = 1.
-If a table or chart is shown, the probabilities must add to 1.
-Do not invent additional numbers or inconsistent sums.
-Avoid dense tiny equations; make labels readable.
+Use case: scientific-educational. Edit the supplied existing learning-goal illustration. Preserve its German text, friendly abstract comic style, clear large labels and landscape format except for the explicit correction below. Output one complete opaque PNG on a very pale warm background. No photorealism, no logo, no watermark, no technical IDs. This is a targeted factual correction, not a style redesign.
+Correct ONLY the right-panel bar chart. Keep all four outcomes, the mapping, the probability table and all surrounding text exactly. The chart represents P(X=0)=1/4, P(X=1)=1/2, P(X=2)=1/4. Use a true linear vertical axis. Draw two fine horizontal grid lines from the y-axis through the plot at the ticks 1/4 and 1/2. The TOP EDGE of each outer bar at k=0 and k=2 must coincide EXACTLY with the 1/4 grid line. The TOP EDGE of the middle bar at k=1 must coincide EXACTLY with the 1/2 grid line, NOT above that line. All bars start at the common y=0 baseline. Middle height must be exactly twice either outer height. The 0,1/4,1/2,3/4,1 y-ticks must be equally spaced. Keep readable probability labels above the bars. Prioritize actual geometric alignment over decoration.
 ```
 
 ## Review-Notiz

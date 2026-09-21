@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-stochastics-foundations-post-images-20-v1-20260920",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-foundations-post-images-20-v1.config.json",
+  "configDigest": "sha256:e865fd045f41d5c7b34a8f4a4b31a39d97dd0cb5924cd063d0aa32e7b2e937c1",
+  "goalIds": [
+    "dabff49b-d40a-4c81-a584-21408b2d4219",
+    "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+    "122ab909-04ed-572b-a499-754f3bcc8ef0",
+    "935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+    "1462c189-8679-5f32-bf58-6e81e99e4635",
+    "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+    "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+    "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+    "d711bc18-c27c-4739-8289-edac53dc8ba3",
+    "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+    "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+    "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+    "42d300e3-e982-5889-98d7-fc297f10eff1",
+    "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+    "f7879354-1a82-4195-8e3c-a339a820439c",
+    "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+    "44dba16e-2e86-56be-974b-a62093ef9211",
+    "1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+    "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+    "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:2264dd085f46c3ef427ce2d28162f7606513ea8e79fcab256d28ed0943945c08"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:2645898046830625ad6acac74811c564caa8c9459b878d53cd69be1e01b31114",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e0b6a6cabe4e6bb6cde62f3c23a0f73ca588562e70cb120adcdf9e26c6b81ceb",
+    "reviewInputFingerprint": "sha256:51c1369d83c2f2c1c96743d34b0c686227c0ecaf0dab612992cb6db63b1c79ef",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-stochastics-foundations-post-images-20-v1-20260920-a",
+        "campaignDigest": "sha256:6df10d6b754de5b0409ab835381854994ed6897067573acc8a2ac1148bd95095",
+        "roundId": "mathematik-m7-stochastics-foundations-post-images-20-v1-20260920-first-pass-a",
+        "independenceGroupId": "mathematik-m7-stochastics-foundations-post-images-20-v1-20260920-independent-a",
+        "batchId": "mathematik-m7-stochastics-foundations-post-images-20-v1-20260920-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:33ef20ad41f0e2610b8cbf63a9e0aeb47d99c4ebca4b53851955ef439b1fae16"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-stochastics-foundations-post-images-20-v1-20260920-b",
+        "campaignDigest": "sha256:81caaa80b8e69c423694784f3475b63a47bdf11536cb5f575ffc18383eac7601",
+        "roundId": "mathematik-m7-stochastics-foundations-post-images-20-v1-20260920-first-pass-b",
+        "independenceGroupId": "mathematik-m7-stochastics-foundations-post-images-20-v1-20260920-independent-b",
+        "batchId": "mathematik-m7-stochastics-foundations-post-images-20-v1-20260920-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:70001942b4aa510d6758161b9860e5cd932c8cc8b1109e188427b8d1f6c20317"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

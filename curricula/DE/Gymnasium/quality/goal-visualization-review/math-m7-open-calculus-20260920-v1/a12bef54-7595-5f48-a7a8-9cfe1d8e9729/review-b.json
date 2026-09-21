@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "This reviewer did not generate or import these images and did not consult the generating agent's acceptance decisions. Decisions are based on the actual candidate rasters and the current canonical goal texts.",
+  "reviewDate": "2026-09-20",
+  "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+  "title": "Allgemeinen Transformationsterm interpretieren",
+  "description": "Die lernende Person kann den Term $g(x)=a\\cdot f(b\\cdot(x-c))+d$ als Kombination von Verschiebung, Streckung beziehungsweise Stauchung und Spiegelung deuten, auch ohne konkret gegebenen Funktionsterm von $f$.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/a12bef54-7595-5f48-a7a8-9cfe1d8e9729/candidate-v1.png",
+  "candidateSha256": "c923346882cde55f1461bdbd6841271610cda847d4229b3a6d87dbdb5ea57d5e",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/a12bef54-7595-5f48-a7a8-9cfe1d8e9729/prompt.de.md",
+  "decision": "accept_candidate",
+  "checks": [
+    "Viewed the complete actual raster, including the parameter cards and ordered example.",
+    "For g(x)=a f(b(x−c))+d, c>0 shifts right, d>0 shifts up, a controls vertical scaling/reflection, and b≠0 controls horizontal factor 1/|b| and reflection. All stated rules are correct.",
+    "The example −2f(0.5(x−3))+1 correctly maps (u,v) to (2u+3,1−2v). Its stated sequence of transformations gives that same mapping.",
+    "The image explains the general term without requiring a concrete function f, matching the current goal."
+  ],
+  "defects": [],
+  "humanApproval": false,
+  "scope": "Targeted independent candidate-image review only. No active-asset import and no full goal-completion or human-approval claim."
+}

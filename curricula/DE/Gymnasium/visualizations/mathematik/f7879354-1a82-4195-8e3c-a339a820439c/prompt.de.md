@@ -8,43 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `f7879354-1a82-4195-8e3c-a339a820439c.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/f7879354-1a82-4195-8e3c-a339a820439c/f7879354-1a82-4195-8e3c-a339a820439c.jpg`
+- Quellbild: `f7879354-1a82-4195-8e3c-a339a820439c.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/f7879354-1a82-4195-8e3c-a339a820439c/f7879354-1a82-4195-8e3c-a339a820439c.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Erwartungswert und Standardabweichung binomialverteilter Zufallsgrößen bestimmen und deuten
-Beschreibung: Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert und Standardabweichung berechnen und beide Kenngrößen mit der zugrunde liegenden Situation in Beziehung setzen.
-
-Zusatzanweisung:
-Erzeuge eine fachlich exakte Lernillustration zur Binomialverteilung neu. Die Verteilung muss diskret sein.
-
-Pflichtinhalt:
-- Titel: „Erwartungswert und Standardabweichung der Binomialverteilung“.
-- Verwende durchgängig dasselbe Beispiel X ~ B(20; 0,3).
-- Zeige μ = n · p = 20 · 0,3 = 6.
-- Zeige σ = √(n · p · (1 − p)) = √(20 · 0,3 · 0,7) ≈ 2,05.
-- Zeichne ein diskretes Säulendiagramm für k = 0 bis 20 mit Maximum ungefähr bei k = 6; keine glatte Kurve.
-- Markiere μ = 6 und den ungefähren Bereich μ − σ bis μ + σ.
-- Verwende ausschließlich deutsche Dezimalkommas.
-
-Vermeiden:
-- Kein anderes p als 0,3, keine symmetrische Glockenkurve, keine kontinuierliche Dichte.
-- Keine falschen Formeln, keine technischen Kennungen, Marken, Logos oder Wasserzeichen.
+Use case: scientific-educational. Make one extremely localized correction to the supplied German comic-style mathematics illustration. Keep the whole image unchanged EXCEPT the two shortest bars at k=0 and k=4. Their height is currently smaller than one unit of the other stacked bars. Raise their TOP EDGES so both tops lie on exactly the same horizontal line as the LOWEST INTERNAL horizontal separator of the bars at k=1, k=2 and k=3. The common bottom baseline stays fixed. In other words: every lowest block, including the standalone blocks at k=0 and k=4, must have identical height. A very thin faint horizontal guide through these five block tops can help ensure exact alignment. The two shortest bars remain one single block each, labeled 1/16; move those two labels slightly upward if needed. Preserve stack counts 1,4,6,4,1, all other bars, the dashed μ=2 center line, [1;3] interval bracket, all formulas and all other text unchanged. Fully opaque pale warm background. No added decoration, no watermark, no logo.
 ```
 
 ## Review-Notiz

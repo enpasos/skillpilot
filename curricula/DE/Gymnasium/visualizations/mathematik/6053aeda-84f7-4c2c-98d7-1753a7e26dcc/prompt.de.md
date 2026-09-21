@@ -8,58 +8,16 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `6053aeda-84f7-4c2c-98d7-1753a7e26dcc.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/6053aeda-84f7-4c2c-98d7-1753a7e26dcc.jpg`
+- Quellbild: `6053aeda-84f7-4c2c-98d7-1753a7e26dcc.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/6053aeda-84f7-4c2c-98d7-1753a7e26dcc.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen
-Beschreibung: Die lernende Person kann für einfache diskrete Zufallsgrößen Erwartungswert, Varianz und Standardabweichung bestimmen, diese im Kontext deuten und damit einfache Glücksspiele untersuchen.
-
-Zusatzanweisung:
-Keep all stochastic examples mathematically simple and correct.
-Use only small, checkable numbers.
-
-Allowed example for random variables:
-- Two fair coin tosses with outcomes ZZ, ZK, KZ, KK where K = Kopf and Z = Zahl.
-- Random variable X = number of heads (Kopf).
-- Mapping: ZZ -> 0, ZK -> 1, KZ -> 1, KK -> 2.
-- Distribution: P(X=0)=1/4, P(X=1)=1/2, P(X=2)=1/4; sum = 1.
-
-Allowed example for expectation, variance, standard deviation:
-- Use the same distribution X = number of heads in two fair coin tosses.
-- E(X) = 0*1/4 + 1*1/2 + 2*1/4 = 1.
-- Var(X) = (0-1)^2*1/4 + (1-1)^2*1/2 + (2-1)^2*1/4 = 1/2.
-- sigma = sqrt(1/2) approx 0.71.
-
-Allowed example for Bernoulli chains:
-- Success / failure, independent trials.
-- n = 4, p = 0.5, q = 0.5.
-- P(exactly 2 successes) = C(4,2) * 0.5^2 * 0.5^2 = 6/16 = 3/8.
-
-Allowed facts about binomial distributions:
-- P(X=k) = C(n,k) * p^k * (1-p)^(n-k).
-- Increasing p shifts the distribution to the right.
-- Increasing n creates more possible k values; the center is near n*p.
-- For n=4, p=0.5, probabilities are 1/16, 4/16, 6/16, 4/16, 1/16.
-
-If a histogram or bar chart is shown, bar heights must match the displayed table.
-All probabilities in a table must add to 1.
-Avoid dense tiny formulas and invented values.
+Use case: scientific-educational. Edit the supplied existing learning-goal illustration. Preserve its German text, friendly abstract comic style, clear large labels and landscape format except for the explicit correction below. Output one complete opaque PNG on a very pale warm background. No photorealism, no logo, no watermark, no technical IDs. This is a targeted factual correction, not a style redesign.
+Correct only the green standard-deviation formula card in the right panel. The fraction under the square-root sign is typographically ambiguous. Replace that formula with exactly "σ = √0,5 ≈ 0,71", with the radical bar clearly covering the ENTIRE decimal number 0,5. There is NO fraction in this card. Preserve the separate "Var(X) = 1/2" card unchanged. Preserve all other text, the 0/1/2 table, the balance beam with pivot at 1 and the weights 1/4,1/2,1/4 unchanged. No other changes.
 ```
 
 ## Review-Notiz

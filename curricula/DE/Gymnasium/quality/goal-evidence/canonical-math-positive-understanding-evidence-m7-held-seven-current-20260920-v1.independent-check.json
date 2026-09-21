@@ -1,0 +1,1213 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "canonical-math-positive-understanding-evidence-m7-held-seven-current-20260920-v1-independent-check",
+  "reviewedAt": "2026-09-20",
+  "reviewer": "math_m7_current_scope",
+  "reviewRole": "independent mathematical counter-review of authored P-v2 candidates",
+  "independence": "Reviewer did not author this seven-profile candidate file. This is an informed candidate-content counter-review, not a claim of a blinded multi-provider run. No other reviewer result or adjudication was used.",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "humanApproved": false,
+  "inputs": {
+    "candidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-held-seven-current-20260920-v1.candidates.json",
+    "candidateSha256": "sha256:b9fc4a35d84a2526eac718618d2d0d42bfccf338fff0d7bcab3f82916b608835",
+    "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-held-seven-current-20260920-v1.config.json",
+    "configSha256": "sha256:32cb046a3d55687ad0d1f1cec80eea31b3ad1542e65d102eb2b8a36c304597e2",
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "criteria": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+        "sha256": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/positive-understanding-evidence-profile-authoring-v2.md",
+        "sha256": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29"
+      }
+    ],
+    "additionalRules": [
+      "AGENTS.md §7.4",
+      "docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.md §§3.2,4.1.1–4.3,9.4.1"
+    ]
+  },
+  "bindingConvention": "File hashes bind exact bytes. candidateRecordSha256 and goalSnapshotSha256 bind UTF-8 JSON.stringify of the parsed record/current full goal with existing property order. These are audit checksums, not replacements for native goalFingerprint/profileFingerprint/reviewInputFingerprint.",
+  "scope": {
+    "profiles": 7,
+    "bilingualCases": 14,
+    "languageVersions": 28,
+    "substantivelyReusedProfiles": 2,
+    "mathErrors": 0,
+    "blockingFindings": 0,
+    "suitableAiCandidates": 7,
+    "authoritativeApprovals": 0,
+    "canonicalOrProfileEdits": 0,
+    "generatedImages": 0,
+    "imports": 0,
+    "fullQualityChecksRun": false
+  },
+  "overallVerdict": "All seven profiles are mathematically suitable AI candidates for current P-v2 processing. All fourteen concrete cases have correct solutions and semantically equivalent DE/EN text; each pair supplies meaningful structural variation inside the current goal. Nonblocking notes preserve practical independence from teaching graphics and two small wording/unit clarifications.",
+  "deliveryConditions": [
+    "Present the two cases independently, without the worked orientation image, expected-performance text or coach-provided solution.",
+    "For graphical tasks provide the specified unsolved input graphs; correct numerical totals alone do not demonstrate the graph construction.",
+    "Require the stated reasoning, geometric justification or interpretation, not just a recalled answer; equivalent valid reasoning remains acceptable."
+  ],
+  "independentArithmeticChecks": {
+    "pointwise": [
+      {
+        "x": -2,
+        "f": 2,
+        "g": 2,
+        "h": 4
+      },
+      {
+        "x": -1,
+        "f": 1,
+        "g": 1,
+        "h": 2
+      },
+      {
+        "x": 0,
+        "f": 0,
+        "g": 0,
+        "h": 0
+      },
+      {
+        "x": 1,
+        "f": 1,
+        "g": -1,
+        "h": 0
+      },
+      {
+        "x": 2,
+        "f": 2,
+        "g": -2,
+        "h": 0
+      }
+    ],
+    "curved": [
+      {
+        "x": -2,
+        "f": 4,
+        "g": -2,
+        "h": 2
+      },
+      {
+        "x": -1,
+        "f": 1,
+        "g": 1,
+        "h": 2
+      },
+      {
+        "x": 0,
+        "f": 0,
+        "g": 2,
+        "h": 2
+      },
+      {
+        "x": 1,
+        "f": 1,
+        "g": 1,
+        "h": 2
+      },
+      {
+        "x": 2,
+        "f": 4,
+        "g": -2,
+        "h": 2
+      }
+    ],
+    "matrices": {
+      "reflectionP": [
+        -1,
+        2
+      ],
+      "reflectionFixed": [
+        3,
+        3
+      ],
+      "reflectionAxis": [
+        1,
+        1
+      ],
+      "reflectionNormal": [
+        -1,
+        1
+      ],
+      "stretchAlong": [
+        3,
+        3
+      ],
+      "stretchAcross": [
+        1,
+        -1
+      ],
+      "stretchP": [
+        4,
+        2
+      ]
+    },
+    "linearityCounterexample": {
+      "S_of_2u": [
+        2,
+        4
+      ],
+      "two_S_of_u": [
+        2,
+        2
+      ]
+    },
+    "coin": {
+      "KK": 0.4444444444444444,
+      "KZ": 0.2222222222222222,
+      "ZK": 0.2222222222222222,
+      "ZZ": 0.1111111111111111,
+      "exactlyOne": 0.4444444444444444
+    },
+    "urn": {
+      "RR": 0.3333333333333333,
+      "RB": 0.3333333333333333,
+      "BR": 0.3333333333333333,
+      "exactlyOneRed": 0.6666666666666666
+    },
+    "triangleAngleSum": 180,
+    "tank": {
+      "net": 8,
+      "inflow": 9,
+      "outflow": -1,
+      "final": 28
+    },
+    "gardenArea": 2,
+    "diskVolumeInPi": 20,
+    "washerVolumeInPi": 12
+  },
+  "records": [
+    {
+      "goalId": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+      "title": "Eigenschaften von Funktionssummen graphisch begründen (LK)",
+      "titleEn": "Justify properties of sums of functions graphically (advanced course)",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewDecision": "suitable_ai_candidate",
+      "humanApproved": false,
+      "blockingFindings": [],
+      "bindings": {
+        "candidateRecordSha256": "sha256:35e3cade1ceaf283ccfb94216e0750bef49d1449efb42881c1aa907a5a728090",
+        "goalSnapshotSha256": "sha256:0e8b3fda154a7eb12a1b4ee2102acecbb1ce0206c426ced27fb14ada6cda0e51",
+        "visualization": {
+          "path": "app/public/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.png",
+          "sha256": "sha256:6f11af5794740dcfd9697b42bb035a7e31695c28270e3ddc78e6bfec9a002a83",
+          "actualViewed": true
+        }
+      },
+      "goalSnapshot": {
+        "id": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+        "shortKey": "canonical_math_q2_graphically_justify_linked_and_composed_function_properties_sum",
+        "title": "Eigenschaften von Funktionssummen graphisch begründen (LK)",
+        "titleEn": "Justify properties of sums of functions graphically (advanced course)",
+        "description": "Die lernende Person kann aus den Graphen von $f$ und $g$ den Graphen der Summenfunktion $h(x)=f(x)+g(x)$ skizzieren und seine Eigenschaften durch die punktweise Addition der Funktionswerte begründen.",
+        "descriptionEn": "The learner can sketch the graph of the sum function $h(x)=f(x)+g(x)$ from the graphs of $f$ and $g$ and justify its properties using pointwise addition of the function values.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.4",
+            "K2.2",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "Q2",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.1.GRAPHICAL_FUNCTION_LINK_COMPOSITION.SUM"
+        },
+        "contains": [],
+        "requires": [
+          "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 41, Spiegelstrich 6",
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+            "title": "Visualisierung: Eigenschaften von Funktionssummen graphisch begründen (LK)",
+            "url": "/assets/goal-visualizations/mathematik/ebc41c8b-5754-5161-9b07-f4525b9fd9b4/ebc41c8b-5754-5161-9b07-f4525b9fd9b4.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Eigenschaften von Funktionssummen graphisch begründen (LK).",
+            "altText": "Zwei getrennte Fälle der punktweisen Addition mit gemeinsamer Höhenbasis: Bei x=1 ergeben der blaue Wert f(1)=1 und der grüne Wert g(1)=1 zusammen h(1)=2. Bei x=2 ergeben f(2)=4 und g(2)=2 zusammen h(2)=6. Die Tabelle enthält dieselben Werte; eine Karte erläutert h-Wert = f-Wert + g-Wert. Die Darstellung zeigt Wertstapel, keine vollständigen Funktionsgraphen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "prerequisiteContext": [
+        {
+          "id": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "title": "Allgemeinen Transformationsterm interpretieren",
+          "description": "Die lernende Person kann den Term $g(x)=a\\cdot f(b\\cdot(x-c))+d$ für $a\\ne0$ und $b\\ne0$ als Kombination von Verschiebung, Streckung beziehungsweise Stauchung und Spiegelung deuten, auch ohne konkret gegebenen Funktionsterm von $f$."
+        },
+        {
+          "id": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+          "title": "Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen",
+          "description": "Die lernende Person kann Symmetrieeigenschaften eines verschobenen Funktionsgraphen oder des Graphen einer Ableitungsfunktion aus Termstruktur, Transformationen oder Ableitungszusammenhängen begründen."
+        }
+      ],
+      "exactScopeCheck": "Die aktuelle LK-Beschreibung verlangt graphische Summenbildung und Begründung durch gleiche Abszissen. Beide Fälle bleiben bei Addition; keine Verkettung, Produktregel, Ableitung oder allgemeine Termanalyse wird als neue Pflicht eingeführt.",
+      "archetypeCheck": {
+        "value": "representation",
+        "decision": "suitable_for_current_competence"
+      },
+      "coverageCheck": {
+        "expectations": 1,
+        "requiredIds": [
+          "pointwise-graph-sum"
+        ],
+        "allDeclaredAndCovered": true,
+        "independentCaseCount": 2,
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "cases": [
+        {
+          "caseId": "piecewise-sum",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "Die verbal eindeutig beschriebenen Graphen sind f(x)=|x| und g(x)=−x. Links ist h=−2x, rechts h=0; am Knick stimmen beide mit h(0)=0 überein. Kontrollwerte (−2,4),(−1,2),(0,0),(1,0),(2,0) bestätigen die Skizze. Die ganzen Teilstücke folgen aus Geradlinigkeit, nicht bloß aus drei Messpunkten.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        },
+        {
+          "caseId": "curved-cancellation",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "x²+(2−x²)=2 auf dem gesamten Intervall [−2,2]. Die Paare (0,2),(1,1),(4,−2) haben jeweils Summe 2. Der Summengraph ist eine horizontale Strecke ohne Nullstelle, obwohl beide Ausgangsgraphen Parabeln sind.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        }
+      ],
+      "variationCheck": "Geradlinige Teilstücke mit partieller Aufhebung wechseln zu gekrümmten Graphen mit globaler Kompensation. Der globale Verlauf muss aus punktweisen Ordinatenpaaren begründet werden.",
+      "orientationCopyCheck": "Das aktuelle Bild zeigt Wertstapel 1+1=2 und 4+2=6, aber keine der verlangten vollständigen Summenkurven. Die Kandidaten verlangen eigene Konstruktion und globale Begründung; die Bildantwort lässt sich nicht übernehmen.",
+      "languageCheck": "Alle DE/EN-Erwartungs-, Leistungs-, Variations-, Aufgaben-, Lösungs- und Fokusfelder gelesen. Mathematische Objekte, Quantoren, Bedingungen, Ereignisse, Formeln und Nachfrageumfang sind äquivalent.",
+      "reuseCheck": {
+        "reusedProfile": false
+      },
+      "nonblockingNotes": [
+        {
+          "id": "graph-delivery",
+          "severity": "implementation_note",
+          "blocking": false,
+          "text": "Bei späterer Aufgabenbereitstellung die im Brief genannten f-/g-Graphen oder die vollständig beschriebene Punkt-/Segmentdarstellung liefern, nicht den fertigen Summengraphen. Die Formeln im gekrümmten Fall sind Kontext, kein Ersatz für die verlangte graphische Begründung."
+        }
+      ],
+      "dissent": [],
+      "releaseClaim": "None: independent AI content review only; no authoritative profile approval, native fingerprint materialization, learner mastery or M7 completion."
+    },
+    {
+      "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "title": "Geometrische Abbildungen als linear erkennen",
+      "titleEn": "Recognize geometric mappings as linear",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewDecision": "suitable_ai_candidate",
+      "humanApproved": false,
+      "blockingFindings": [],
+      "bindings": {
+        "candidateRecordSha256": "sha256:9f7deb26eb430af7683974118a47ff350ebcfc45403eabb2546db7b0e511c919",
+        "goalSnapshotSha256": "sha256:ba8f648bef2124349ed79faf568ac715103b6efe002a11b82acf458ceba8a56c",
+        "visualization": {
+          "path": "app/public/assets/goal-visualizations/mathematik/69243680-c2c1-5661-80c0-c95a2be1dabf/69243680-c2c1-5661-80c0-c95a2be1dabf.png",
+          "sha256": "sha256:f6f6ab870716cf26b837c31321678318b8aab47bab40f36b028bb4559d471639",
+          "actualViewed": true
+        }
+      },
+      "goalSnapshot": {
+        "id": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+        "title": "Geometrische Abbildungen als linear erkennen",
+        "titleEn": "Recognize geometric mappings as linear",
+        "description": "Die lernende Person kann bei einer einfachen geometrischen Abbildung anhand der Verträglichkeit mit Vektoraddition und skalarer Multiplikation prüfen, ob sie linear ist.",
+        "descriptionEn": "The learner can determine whether a simple geometric mapping is linear by checking whether it preserves vector addition and scalar multiplication.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+            "title": "Visualisierung: Geometrische Abbildungen als linear erkennen",
+            "url": "/assets/goal-visualizations/mathematik/69243680-c2c1-5661-80c0-c95a2be1dabf/69243680-c2c1-5661-80c0-c95a2be1dabf.png",
+            "provider": "OpenAI image generation",
+            "description": "Visualisierung zum Lernziel: Geometrische Abbildungen als linear erkennen.",
+            "altText": "Die lernende Person kann bei einer einfachen geometrischen Abbildung anhand der Verträglichkeit mit Vektoraddition und skalarer Multiplikation prüfen, ob sie linear ist.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "prerequisiteContext": [
+        {
+          "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+          "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft."
+        },
+        {
+          "id": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+          "description": "Die lernende Person kann Vektoren im Raum als Verschiebungs-, Orts- oder Richtungsvektoren darstellen, ihre Komponenten in kartesischen Koordinatensystemen angeben und ihre geometrische Bedeutung fachsprachlich deuten."
+        }
+      ],
+      "exactScopeCheck": "Prüfung einfacher Abbildungen auf Verträglichkeit mit Addition und skalarer Multiplikation entspricht genau der aktuellen DE/EN-Beschreibung. Die allgemeinen Koordinatenidentitäten sind elementare Vektoralgebra; weder Calculus noch abstrakte Eigenwerttheorie wird vorausgesetzt.",
+      "archetypeCheck": {
+        "value": "concept",
+        "decision": "suitable_for_current_competence"
+      },
+      "coverageCheck": {
+        "expectations": 1,
+        "requiredIds": [
+          "linear-mapping-laws"
+        ],
+        "allDeclaredAndCovered": true,
+        "independentCaseCount": 2,
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "cases": [
+        {
+          "caseId": "stretch-linear",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "Für u=(a,b),v=(c,d): T(u+v)=(2a+2c,b+d)=T(u)+T(v). Für jeden reellen Skalar s: T(su)=(2sa,sb)=sT(u). Beide universellen Gesetze sind erfüllt; die Schlussfolgerung linear ist richtig.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        },
+        {
+          "caseId": "squared-coordinate",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "S(0,0)=(0,0), aber für u=(1,1) gilt S(2u)=(2,4)≠(2,2)=2S(u). Die konkrete Verletzung der Homogenität reicht zur Widerlegung der Linearität; Additivität muss danach nicht zusätzlich widerlegt werden.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        }
+      ],
+      "variationCheck": "Allgemeiner positiver Nachweis wird durch Widerlegung einer scheinbar plausiblen notwendigen Bedingung ersetzt; die Koordinatenabbildung ist nun quadratisch statt linear.",
+      "orientationCopyCheck": "Das aktuelle Bild nutzt ebenfalls T(x,y)=(2x,y), zeigt jedoch nur konkrete Vektoren und eine Regelkarte. Der P-Fall verlangt den nicht abgedruckten allgemeinen Nachweis für beliebige a,b,c,d,s. Der Gegenbeispielfall S(x,y)=(x,y²) ist neu.",
+      "languageCheck": "Alle DE/EN-Erwartungs-, Leistungs-, Variations-, Aufgaben-, Lösungs- und Fokusfelder gelesen. Mathematische Objekte, Quantoren, Bedingungen, Ereignisse, Formeln und Nachfrageumfang sind äquivalent.",
+      "reuseCheck": {
+        "reusedProfile": false
+      },
+      "nonblockingNotes": [
+        {
+          "id": "orientation-overlap",
+          "severity": "implementation_note",
+          "blocking": false,
+          "text": "T ist bewusst derselbe einfache Gegenstand wie im Lehrbild. Als unabhängige Leistung zählt die eigene allgemeine Rechnung, nicht Wiederholung der sichtbaren Regelkarte oder der Einzelvektoren. Lehrbild bei der Prüfung ausblenden."
+        }
+      ],
+      "dissent": [],
+      "releaseClaim": "None: independent AI content review only; no authoritative profile approval, native fingerprint materialization, learner mastery or M7 completion."
+    },
+    {
+      "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65",
+      "title": "Eigene Abbildungen modellieren und interpretieren",
+      "titleEn": "Model and interpret own mappings",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewDecision": "suitable_ai_candidate",
+      "humanApproved": false,
+      "blockingFindings": [],
+      "bindings": {
+        "candidateRecordSha256": "sha256:54f00fe2dbf5b606a4605b9096df195e5790e6a9f972587243fb5d9a67700d1c",
+        "goalSnapshotSha256": "sha256:5b0709f384cfbd4df88973aef89875962dd6ca9880498f05722dd85460442533",
+        "visualization": {
+          "path": "app/public/assets/goal-visualizations/mathematik/168d8879-0412-5524-94c5-c1d8169dbd65/168d8879-0412-5524-94c5-c1d8169dbd65.jpg",
+          "sha256": "sha256:cd526a3aed0a1753993f61cf8b50cb1df6768c67d110f8376c4ff559ceb10998",
+          "actualViewed": true
+        }
+      },
+      "goalSnapshot": {
+        "id": "168d8879-0412-5524-94c5-c1d8169dbd65",
+        "title": "Eigene Abbildungen modellieren und interpretieren",
+        "titleEn": "Model and interpret own mappings",
+        "description": "Die lernende Person kann zu gegebenen geometrischen Anforderungen (z. B. Spiegelung an einer schrägen Ursprungsgeraden, Streckung in einer beliebigen Richtung) passende Abbildungsmatrizen konstruieren, testen und im Kontext begründen.",
+        "descriptionEn": "The learner can construct, test, and justify appropriate mapping matrices for given geometric requirements (e.g., reflection on an oblique line through the origin, stretching in any direction).",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "b72d87d4-763e-54aa-940d-31f195b51700",
+          "ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "168d8879-0412-5524-94c5-c1d8169dbd65",
+            "title": "Visualisierung: Eigene Abbildungen modellieren und interpretieren",
+            "url": "/assets/goal-visualizations/mathematik/168d8879-0412-5524-94c5-c1d8169dbd65/168d8879-0412-5524-94c5-c1d8169dbd65.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Eigene Abbildungen modellieren und interpretieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Eigene Abbildungen modellieren und interpretieren\". Die lernende Person kann zu gegebenen geometrischen Anforderungen (z. B. Spiegelung an einer schrägen Geraden, Streckung in einer beliebigen Richtung) passende Abbildungsmatrizen konstruieren, testen und im Kontext begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "prerequisiteContext": [
+        {
+          "id": "b72d87d4-763e-54aa-940d-31f195b51700",
+          "title": "Orthogonale Spiegelungen an Koordinatenebenen mit Matrizen darstellen",
+          "description": "Die lernende Person kann Abbildungsmatrizen für orthogonale Spiegelungen an den Koordinatenebenen bestimmen, untersuchen und Bildpunkte berechnen."
+        },
+        {
+          "id": "ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c",
+          "title": "Zusammensetzungen als Matrixprodukt darstellen",
+          "description": "Die lernende Person kann hintereinander ausgeführte lineare Abbildungen als Matrixprodukt in der korrekten Reihenfolge darstellen."
+        }
+      ],
+      "exactScopeCheck": "Spiegelung an der schrägen Ursprungsgeraden y=x und Streckung in einer nichtkoordinatenparallelen Richtung liegen ausdrücklich im aktuellen Ziel. Basiswirkungen sind eine fachliche Begründung, keine zusätzliche Pflicht zu formaler Diagonalisierung oder Eigenwertterminologie.",
+      "archetypeCheck": {
+        "value": "modeling",
+        "decision": "suitable_for_current_competence"
+      },
+      "coverageCheck": {
+        "expectations": 1,
+        "requiredIds": [
+          "construct-mapping-matrix"
+        ],
+        "allDeclaredAndCovered": true,
+        "independentCaseCount": 2,
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "cases": [
+        {
+          "caseId": "reflection-diagonal",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "A=[[0,1],[1,0]] bildet (2,−1) auf (−1,2) und (3,3) auf sich ab. A(1,1)=(1,1), A(1,−1)=−(1,−1). Diese senkrechten Basisrichtungen zeigen für jeden Vektor Achsenerhaltung und Umkehr der Normalenkomponente; das ist die verlangte Spiegelung.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        },
+        {
+          "caseId": "directional-stretch",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "Die Forderungen a+b=3,c+d=3,a−b=1,c−d=−1 ergeben a=d=2,b=c=1. Damit A=[[2,1],[1,2]], A(1,1)=(3,3), A(1,−1)=(1,−1), A(2,0)=(4,2). Die Richtungen sind unabhängig; ihre Bilder bestimmen A eindeutig.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        }
+      ],
+      "variationCheck": "Von Spiegelung mit Faktoren +1/−1 zu richtungsabhängiger Streckung mit Faktoren 3/1; konstruiert werden neue Matrixeinträge aus geometrischen Anforderungen, nicht nur neue Bildpunktzahlen.",
+      "orientationCopyCheck": "Das Lehrbild enthält bereits die Spiegelmatrix an y=x. Die direkte Falllösung verlangt darüber hinaus eigene geometrische Begründung über Achse und Normalenrichtung; der zweite Matrixentwurf ist nicht aus der Grafik ablesbar.",
+      "languageCheck": "Alle DE/EN-Erwartungs-, Leistungs-, Variations-, Aufgaben-, Lösungs- und Fokusfelder gelesen. Mathematische Objekte, Quantoren, Bedingungen, Ereignisse, Formeln und Nachfrageumfang sind äquivalent.",
+      "reuseCheck": {
+        "reusedProfile": false
+      },
+      "nonblockingNotes": [
+        {
+          "id": "orientation-overlap",
+          "severity": "implementation_note",
+          "blocking": false,
+          "text": "Eine bloß aus der Orientierungsgrafik abgeschriebene Spiegelmatrix darf nicht als Demonstration zählen. Ohne eingeblendete Matrix prüfen und die verlangte geometrische Begründung tatsächlich einfordern; äquivalente Konstruktionen ohne Eigenwertsprache zulassen."
+        }
+      ],
+      "dissent": [],
+      "releaseClaim": "None: independent AI content review only; no authoritative profile approval, native fingerprint materialization, learner mastery or M7 completion."
+    },
+    {
+      "goalId": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+      "title": "Ereignisse darstellen und Baumdiagramme nutzen",
+      "titleEn": "Represent events and use tree diagrams",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewDecision": "suitable_ai_candidate",
+      "humanApproved": false,
+      "blockingFindings": [],
+      "bindings": {
+        "candidateRecordSha256": "sha256:8eb8178f2c511e317ddb5c945e1872e48497b65057f96e9da9166041919adcaf",
+        "goalSnapshotSha256": "sha256:d8dfa0aab6c1beded732776017799d279dce6a4991d3e151a1d445ff7032b3bf",
+        "visualization": {
+          "path": "app/public/assets/goal-visualizations/mathematik/2a1158e5-d4ca-51d4-860c-f43bd5a86836/2a1158e5-d4ca-51d4-860c-f43bd5a86836.jpg",
+          "sha256": "sha256:b88f35c2d28df8a7f5db066d2f55a943f00e61fa74f907a279f64699e7be2f68",
+          "actualViewed": true
+        }
+      },
+      "goalSnapshot": {
+        "id": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+        "title": "Ereignisse darstellen und Baumdiagramme nutzen",
+        "titleEn": "Represent events and use tree diagrams",
+        "description": "Die lernende Person kann mehrstufige Zufallsexperimente in Baumdiagrammen darstellen, Pfadregeln anwenden und Wahrscheinlichkeiten an konkreten Beispielrechnungen berechnen.",
+        "descriptionEn": "The learner can represent multi-stage random experiments with tree diagrams, apply path rules, and compute probabilities in concrete examples.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "71d1fd4d-8471-5f25-94a0-4c531a74783c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.1",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.1, S. 46, Spiegelstrich 3",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+            "title": "Visualisierung: Ereignisse darstellen und Baumdiagramme nutzen",
+            "url": "/assets/goal-visualizations/mathematik/2a1158e5-d4ca-51d4-860c-f43bd5a86836/2a1158e5-d4ca-51d4-860c-f43bd5a86836.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Ereignisse darstellen und Baumdiagramme nutzen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Ereignisse darstellen und Baumdiagramme nutzen\". Die lernende Person kann mehrstufige Zufallsexperimente in Baumdiagrammen darstellen, Pfadregeln anwenden und Wahrscheinlichkeiten an konkreten Beispielrechnungen berechnen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "prerequisiteContext": [
+        {
+          "id": "71d1fd4d-8471-5f25-94a0-4c531a74783c",
+          "title": "Ereignisse als Mengen verknüpfen",
+          "description": "Die lernende Person kann Ereignisse als Mengen darstellen, Und-, Oder-, Gegen- und Differenzereignisse sowie exklusives Oder in Mengenschreibweise übersetzen und einfache Regeln wie $A\\setminus B=A\\cap\\overline{B}$ oder $\\overline{A\\cup B}=\\overline{A}\\cap\\overline{B}$ an Beispielen auswerten."
+        }
+      ],
+      "exactScopeCheck": "Eigenständiges Darstellen zweistufiger Experimente, Pfadprodukte und Summen disjunkter Ereignispfade entsprechen exakt dem aktuellen AB1-Ziel. Abhängige Zweigwahrscheinlichkeiten beim Ziehen ohne Zurücklegen bleiben innerhalb mehrstufiger Baumdiagramme; weder Bayes noch Verteilungsapproximation wird hinzugefügt.",
+      "archetypeCheck": {
+        "value": "representation",
+        "decision": "suitable_for_current_competence"
+      },
+      "coverageCheck": {
+        "expectations": 1,
+        "requiredIds": [
+          "tree-path-probabilities"
+        ],
+        "allDeclaredAndCovered": true,
+        "independentCaseCount": 2,
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "cases": [
+        {
+          "caseId": "biased-coin",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "Mit p(K)=2/3,p(Z)=1/3 sind KK=4/9,KZ=2/9,ZK=2/9,ZZ=1/9. Die vier Werte summieren sich zu 1. Genau ein Kopf umfasst die disjunkten Pfade KZ und ZK und hat Wahrscheinlichkeit 4/9.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        },
+        {
+          "caseId": "changing-urn",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "Nach R verbleiben R/B mit je 1/2; nach B bleiben zwei rote Kugeln, also p(R|B)=1. RR,RB,BR haben jeweils 1/3; BB ist unmöglich. Genau ein R ergibt 1/3+1/3=2/3. Die Änderung der zweiten Stufe ist korrekt berücksichtigt.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        }
+      ],
+      "variationCheck": "Konstante unabhängige Zweige wechseln zu zustandsabhängigen Zweigen ohne Zurücklegen, einschließlich eines sicheren Folgeastes und eines unmöglichen Pfades.",
+      "orientationCopyCheck": "Das Bild zeigt faire Münzwürfe und 1/2 als Ereigniswahrscheinlichkeit. Die neue Münze benötigt eigene Berechnung von 4/9; die Urne ändert darüber hinaus Baumstruktur und Abhängigkeit. Das Paar ist nicht bloß eine numerische Umfärbung des Bildes.",
+      "languageCheck": "Alle DE/EN-Erwartungs-, Leistungs-, Variations-, Aufgaben-, Lösungs- und Fokusfelder gelesen. Mathematische Objekte, Quantoren, Bedingungen, Ereignisse, Formeln und Nachfrageumfang sind äquivalent.",
+      "reuseCheck": {
+        "reusedProfile": false
+      },
+      "nonblockingNotes": [],
+      "dissent": [],
+      "releaseClaim": "None: independent AI content review only; no authoritative profile approval, native fingerprint materialization, learner mastery or M7 completion."
+    },
+    {
+      "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "title": "Einfache geometrische Figuren beschreiben",
+      "titleEn": "Describe simple plane figures",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewDecision": "suitable_ai_candidate",
+      "humanApproved": false,
+      "blockingFindings": [],
+      "bindings": {
+        "candidateRecordSha256": "sha256:6ff66d91593e4337196ab4bd0292ac8dd38064ff21b7b8762d7e6833b24c5f56",
+        "goalSnapshotSha256": "sha256:9544258183a02ee39bcc7d175fe4f7ed507c7df270a7f1f9c504c63d9eceaa9f",
+        "visualization": {
+          "path": "app/public/assets/goal-visualizations/mathematik/4af3dfb9-7e15-5da5-8b86-0aac6c80e266/4af3dfb9-7e15-5da5-8b86-0aac6c80e266.jpg",
+          "sha256": "sha256:623431c71b7a84b638f96d723fe6ba1462bfdb2e5d35b77c297135e0505beb02",
+          "actualViewed": true
+        }
+      },
+      "goalSnapshot": {
+        "id": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+        "shortKey": "canonical_math_q2_describe_simple_plane_figures",
+        "title": "Einfache geometrische Figuren beschreiben",
+        "titleEn": "Describe simple plane figures",
+        "description": "Die lernende Person kann einfache geometrische Figuren, insbesondere gleichschenklige, gleichseitige und rechtwinklige Dreiecke sowie Quadrat, Rechteck, Raute, Parallelogramm, Trapez und Drachenviereck, fachsprachlich beschreiben.",
+        "descriptionEn": "The learner can describe simple plane figures, especially isosceles, equilateral, and right triangles as well as squares, rectangles, rhombi, parallelograms, trapezia, and kites, using correct terminology.",
+        "requires": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K3.1"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.2.DESCRIBE_SIMPLE_PLANE_FIGURES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+            "title": "Visualisierung: Einfache geometrische Figuren beschreiben",
+            "url": "/assets/goal-visualizations/mathematik/4af3dfb9-7e15-5da5-8b86-0aac6c80e266/4af3dfb9-7e15-5da5-8b86-0aac6c80e266.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Einfache geometrische Figuren beschreiben.",
+            "altText": "Übersicht besonderer Dreiecke und Vierecke. Gleiche Seiten und parallele Seitenfamilien sind konsistent markiert; Raute und Drachenviereck erhalten keine falschen Gleichheitsbehauptungen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "prerequisiteContext": [],
+      "exactScopeCheck": "Alle benannten Dreiecks-/Vierecksklassen sind im aktuellen kanonischen Ziel enthalten. Klassifikation aus Seiten- und Winkelmerkmalen ist unmittelbare fachsprachliche Beschreibung dieser Figuren, kein neues 3D-, Konstruktions- oder Beweisthema.",
+      "archetypeCheck": {
+        "value": "concept",
+        "decision": "suitable_for_current_competence"
+      },
+      "coverageCheck": {
+        "expectations": 1,
+        "requiredIds": [
+          "plane-figure-properties"
+        ],
+        "allDeclaredAndCovered": true,
+        "independentCaseCount": 2,
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "cases": [
+        {
+          "caseId": "describe-families",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "Die charakteristischen Merkmale sind fachlich richtig: gleichseitig 3 gleich lange Seiten und 60°-Winkel, rechtwinklig ein 90°-Winkel, Quadrat 4 gleiche Seiten und rechte Winkel, Rechteck rechte Winkel, Raute gleiche Seiten, Parallelogramm parallele Gegenseiten, Drachen benachbarte Gleichheitspaare. Die beim Trapez offen benannte inklusive/exklusive Konvention wird nicht verwechselt.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        },
+        {
+          "caseId": "rotate-and-classify",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "Vier gleiche Seiten plus vier rechte Winkel ergeben Quadrat und damit Rechteck, Raute sowie Parallelogramm. Beim 45°/45°/90°-Dreieck ergibt die Winkelsumme 180°; es ist rechtwinklig und gleichschenklig, nicht gleichseitig. Optionale Trapez-/Drachenzuordnungen werden konventionsabhängig behandelt.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        }
+      ],
+      "variationCheck": "Die Denkrichtung wechselt von Name→kennzeichnende Merkmale zu Merkmale→mehrere gleichzeitig richtige Namen; die Drehung allein wäre noch keine ausreichende Variation, die Mehrfachklassifikation ist es.",
+      "orientationCopyCheck": "Der erste Fall berührt die Begriffstafel des aktuellen Bildes unmittelbar und muss ohne diese Tafel bearbeitet werden. Die begründete Mehrfachklassifikation und das kombinierte 45°/45°/90°-Beispiel stehen nicht als fertige Bildantwort dort.",
+      "languageCheck": "Alle DE/EN-Erwartungs-, Leistungs-, Variations-, Aufgaben-, Lösungs- und Fokusfelder gelesen. Mathematische Objekte, Quantoren, Bedingungen, Ereignisse, Formeln und Nachfrageumfang sind äquivalent.",
+      "reuseCheck": {
+        "reusedProfile": false
+      },
+      "nonblockingNotes": [
+        {
+          "id": "equal-base-angles",
+          "severity": "editorial_note",
+          "blocking": false,
+          "text": "Bei Gelegenheit die knappe Lösungsstelle 'entsprechende Basiswinkel' in beiden Sprachen zu 'gleich große Basiswinkel' / 'equal base angles' präzisieren. Gemeint ist die korrekte Basiswinkeleigenschaft; keine falsche Winkelgröße wird behauptet."
+        },
+        {
+          "id": "orientation-overlap",
+          "severity": "implementation_note",
+          "blocking": false,
+          "text": "Die Definitionsübersicht darf während der ersten unabhängigen Demonstration nicht eingeblendet sein; reines Ablesen zählt nicht. Im zweiten Fall die Begründung der Mehrfachnamen verlangen."
+        }
+      ],
+      "dissent": [],
+      "releaseClaim": "None: independent AI content review only; no authoritative profile approval, native fingerprint materialization, learner mastery or M7 completion."
+    },
+    {
+      "goalId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+      "title": "Gesamtbestände und Gesamteffekte aus Änderungsraten oder Randfunktionen ermitteln",
+      "titleEn": "Determine total stocks and total effects from rates or boundary functions",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewDecision": "suitable_ai_candidate",
+      "humanApproved": false,
+      "blockingFindings": [],
+      "bindings": {
+        "candidateRecordSha256": "sha256:5c828aa0eb7e74464bbaee90f4d0626adabf547ab52d02eee72a59c045878a67",
+        "goalSnapshotSha256": "sha256:6852e181dd67ea4264cdb96308e461cd0fd34666438497496079281e946c592c",
+        "visualization": {
+          "path": "app/public/assets/goal-visualizations/mathematik/23c8b5f9-ab35-4071-a3d4-b76a669a0995/23c8b5f9-ab35-4071-a3d4-b76a669a0995.jpg",
+          "sha256": "sha256:3ec64898d8b00aa18311b84279e4459b2c84468c1854707a0182da1c68dfe5c3",
+          "actualViewed": true
+        }
+      },
+      "goalSnapshot": {
+        "id": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+        "title": "Gesamtbestände und Gesamteffekte aus Änderungsraten oder Randfunktionen ermitteln",
+        "titleEn": "Determine total stocks and total effects from rates or boundary functions",
+        "description": "Die lernende Person kann in Sachsituationen Gesamteffekte aus Änderungsraten oder Randfunktionen mit bestimmten Integralen bestimmen, bei der Rekonstruktion eines absoluten Gesamtbestands einen gegebenen Anfangsbestand berücksichtigen und die Bedeutung der Ergebnisse fachlich erläutern.",
+        "descriptionEn": "The learner can determine total effects in real-world situations from rates of change or boundary functions using definite integrals, include a given initial quantity when reconstructing an absolute total quantity, and explain the meaning of the results mathematically.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+          "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+            "title": "Visualisierung: Gesamtbestände und Gesamteffekte aus Änderungsraten oder Randfunktionen ermitteln",
+            "url": "/assets/goal-visualizations/mathematik/23c8b5f9-ab35-4071-a3d4-b76a669a0995/23c8b5f9-ab35-4071-a3d4-b76a669a0995.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Gesamtbestände und Gesamteffekte aus Änderungsraten oder Randfunktionen ermitteln.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Gesamtbestände und Gesamteffekte aus Änderungsraten oder Randfunktionen ermitteln\". Die lernende Person kann in Sachsituationen Gesamtbestände oder Gesamteffekte aus Änderungsraten oder Randfunktionen mit bestimmten Integralen bestimmen und die Bedeutung der Ergebnisse fachlich erläutern.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "prerequisiteContext": [
+        {
+          "id": "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+          "title": "Integral als Bestand und Flächeninhalt verstehen",
+          "description": "Die lernende Person kann ein bestimmtes Integral je nach Situation als orientierten Flächeninhalt oder Bestandsänderung deuten und aus Änderungsrate und Anfangsbestand einen Bestand bestimmen."
+        },
+        {
+          "id": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+          "title": "Hauptsatz der Differential- und Integralrechnung nutzen",
+          "description": "Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, Stammfunktionen bestimmen und das bestimmte Integral über $F(b) - F(a)$ berechnen und geometrisch deuten."
+        }
+      ],
+      "exactScopeCheck": "Zeitliche Bestandsänderung samt Anfangsbestand und räumliche Fläche zwischen Randfunktionen decken genau beide aktuell genannten Deutungen ab. Ein Anfangsbestand wird nur im Bestandsszenario addiert. Diese Präzisierung des Ziels macht das wiederverwendete Profil nicht inhaltlich ungültig.",
+      "archetypeCheck": {
+        "value": "modeling",
+        "decision": "suitable_for_current_competence"
+      },
+      "coverageCheck": {
+        "expectations": 1,
+        "requiredIds": [
+          "contextual-accumulation"
+        ],
+        "allDeclaredAndCovered": true,
+        "independentCaseCount": 2,
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "cases": [
+        {
+          "caseId": "net-stock-from-rate",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "F(t)=6t−t² liefert F(4)−F(0)=8 L, davon F(3)−F(0)=9 L Zufluss und F(4)−F(3)=−1 L Abfluss. Mit den vorhandenen 20 L ergeben sich 28 L. Der Bestand bleibt im betrachteten Intervall nichtnegativ; Integral und Endbestand sind klar getrennt.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        },
+        {
+          "caseId": "spatial-boundary-effect",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "Auf [0,2] ist die obere Grenze 3−x, die untere 1, also Streifenhöhe 2−x≥0. [2x−x²/2]₀²=2 m². Der Integrand ist hier eine Länge, dx eine Länge; es entsteht Fläche statt einer zeitlichen Bestandsdifferenz.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        }
+      ],
+      "variationCheck": "Es ändern sich mathematische Rolle des Integranden, Integrationsvariable, Einheit und Anfangswertbedarf — von vorzeichenwechselnder zeitlicher Rate zur nichtnegativen räumlichen Streifenhöhe.",
+      "orientationCopyCheck": "Die aktive Grafik behandelt positive Grenzkosten 4x+10 auf [0,5] mit Ergebnis 100 Euro. Tank mit Vorzeichenwechsel und geometrisches Beet sind davon eigenständige Aufgaben; keine Bildlösung wird übernommen.",
+      "languageCheck": "Alle DE/EN-Erwartungs-, Leistungs-, Variations-, Aufgaben-, Lösungs- und Fokusfelder gelesen. Mathematische Objekte, Quantoren, Bedingungen, Ereignisse, Formeln und Nachfrageumfang sind äquivalent.",
+      "reuseCheck": {
+        "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-041-integral-applications-8-v1.candidates.json",
+        "sourceSha256": "sha256:ea58e2c34813bad4d725c279956b9ff9cc66de834362a75aa6e03b17e8b5e5db",
+        "sameProfile": true,
+        "differences": [],
+        "decision": "substantive_reuse_valid_after_fresh_scope_and_solution_check"
+      },
+      "nonblockingNotes": [],
+      "dissent": [],
+      "releaseClaim": "None: independent AI content review only; no authoritative profile approval, native fingerprint materialization, learner mastery or M7 completion."
+    },
+    {
+      "goalId": "19481f5d-94de-4a74-b765-cbebd1525994",
+      "title": "Volumina von Rotationskörpern um die Abszisse ermitteln (LK)",
+      "titleEn": "Determine Volumes of Solids of Revolution Around the x-axis (advanced course)",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewDecision": "suitable_ai_candidate",
+      "humanApproved": false,
+      "blockingFindings": [],
+      "bindings": {
+        "candidateRecordSha256": "sha256:6c610b02360707858dc9b6924a3175e31eb3c9f0ec87f2d793ce5cab54bcfa99",
+        "goalSnapshotSha256": "sha256:9ecd6cbaa06a422ce023499504c892efe883cd7cf506534c6e4214f3cdd96572",
+        "visualization": {
+          "path": "app/public/assets/goal-visualizations/mathematik/19481f5d-94de-4a74-b765-cbebd1525994/19481f5d-94de-4a74-b765-cbebd1525994.jpg",
+          "sha256": "sha256:d3877132614bdaef8bebdb2096a0c6d051b7ac95d971b406d7e6c5f20edc3b4e",
+          "actualViewed": true
+        }
+      },
+      "goalSnapshot": {
+        "id": "19481f5d-94de-4a74-b765-cbebd1525994",
+        "title": "Volumina von Rotationskörpern um die Abszisse ermitteln (LK)",
+        "titleEn": "Determine Volumes of Solids of Revolution Around the x-axis (advanced course)",
+        "description": "Die lernende Person kann Volumina von Körpern berechnen, die durch Rotation von Flächen um die Abszissenachse entstehen, auch wenn Wurzelfunktionen als Randfunktionen auftreten.",
+        "descriptionEn": "The learner can calculate volumes of bodies generated by rotating areas around the x-axis, including cases with root functions as boundary functions.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+          "a9ed219d-d497-55e5-a4e0-4d45d2554f6b"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.2, S. 37, Spiegelstrich 4",
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "19481f5d-94de-4a74-b765-cbebd1525994",
+            "title": "Visualisierung: Volumina von Rotationskörpern um die Abszisse ermitteln (LK)",
+            "url": "/assets/goal-visualizations/mathematik/19481f5d-94de-4a74-b765-cbebd1525994/19481f5d-94de-4a74-b765-cbebd1525994.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Volumina von Rotationskörpern um die Abszisse ermitteln (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Volumina von Rotationskörpern um die Abszisse ermitteln (LK)\". Die lernende Person kann Volumina von Körpern berechnen, die durch Rotation von Flächen um die Abszissenachse entstehen, auch wenn Wurzelfunktionen als Randfunktionen auftreten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "prerequisiteContext": [
+        {
+          "id": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+          "title": "Flächen mit Integralen berechnen",
+          "description": "Die lernende Person kann Flächeninhalte berechnen, die von einem oder mehreren Funktionsgraphen und Parallelen zu den Koordinatenachsen begrenzt werden, und dazu passende Integrale aufstellen."
+        },
+        {
+          "id": "a9ed219d-d497-55e5-a4e0-4d45d2554f6b",
+          "title": "Einfache Integrale berechnen",
+          "description": "Die lernende Person kann die Stammfunktionen von $x^n$ für $n\\in\\mathbb{Z}\\setminus\\{-1\\}$ sowie von $e^x$, $\\sin(x)$ und $\\cos(x)$ aus den Ableitungsregeln erschließen und damit mithilfe der Faktor- und Summenregel auf geeigneten Intervallen Stammfunktionen entsprechender Linearkombinationen bestimmen."
+        }
+      ],
+      "exactScopeCheck": "Beide Flächen rotieren um die x-Achse, besitzen zulässige Wurzelrandfunktionen und bleiben im LK-Ziel. Kreisscheibe und Kreisring sind unterschiedliche zulässige Querschnitte desselben Kompetenzkerns; keine andere Rotationsachse oder Mantelflächenrechnung wird gefordert.",
+      "archetypeCheck": {
+        "value": "modeling",
+        "decision": "suitable_for_current_competence"
+      },
+      "coverageCheck": {
+        "expectations": 1,
+        "requiredIds": [
+          "disk-washer-volume"
+        ],
+        "allDeclaredAndCovered": true,
+        "independentCaseCount": 2,
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "cases": [
+        {
+          "caseId": "square-root-disk",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "Auf [0,4] ist R=√(2x+1)>0 und R²=2x+1. V=π[x²+x]₀⁴=20π cm³. Querschnittsfläche, nicht Radius oder Umfang, wird über x integriert.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        },
+        {
+          "caseId": "square-root-washer",
+          "mathematicalVerdict": "correct",
+          "independentSolutionCheck": "Für 0≤x≤3 ist R=√(x+4)≥r=√x≥0. R²−r²=4, deshalb V=π∫₀³4 dx=12π cm³ bei der beabsichtigten Zentimeterskala. (R−r)² ist im Allgemeinen nicht R²−r²; z.B. x=1 ergibt der falsche Ansatz 6−2√5 statt 4. Bei x=0 degeneriert der innere Radius zu 0, ohne das Integralproblem zu ändern.",
+          "deEnParity": "equivalent",
+          "scopeVerdict": "inside_current_goal"
+        }
+      ],
+      "variationCheck": "Der Achsenrand entfällt; aus vollen Querschnittsscheiben werden Kreisringe mit abzuziehender Innenfläche. Das ist eine strukturelle Änderung, nicht nur eine neue Wurzelfunktion.",
+      "orientationCopyCheck": "Die Grafik zeigt √x mit Achsenrand, 0≤x≤4 und Volumen 8π. Der erste Fall ändert den Randterm und verlangt eine eigene Querschnittsbegründung; der zweite führt einen Hohlraum ein. 20π und 12π sind nicht aus dem Bild ablesbar.",
+      "languageCheck": "Alle DE/EN-Erwartungs-, Leistungs-, Variations-, Aufgaben-, Lösungs- und Fokusfelder gelesen. Mathematische Objekte, Quantoren, Bedingungen, Ereignisse, Formeln und Nachfrageumfang sind äquivalent.",
+      "reuseCheck": {
+        "sourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-041-integral-applications-8-v1.candidates.json",
+        "sourceSha256": "sha256:ea58e2c34813bad4d725c279956b9ff9cc66de834362a75aa6e03b17e8b5e5db",
+        "sameProfile": false,
+        "differences": [
+          {
+            "field": "/expectations/0/essentialUnderstandingEn",
+            "prior": "Rotation about the x-axis yields perpendicular cross-sectional area πR(x)² or π(R(x)²−r(x)²), not the square of the radius difference. Spatial integration of these areas gives volume; square-root boundaries are squared in this step.",
+            "current": "Rotation about the x-axis yields perpendicular cross-sectional area πR(x)² or π(R(x)²−r(x)²), not the square of the radius difference. Spatial integration of these areas gives volume; root-function boundaries are squared in this step."
+          }
+        ],
+        "decision": "substantive_reuse_valid_after_fresh_scope_and_solution_check"
+      },
+      "nonblockingNotes": [
+        {
+          "id": "standalone-input-units",
+          "severity": "editorial_note",
+          "blocking": false,
+          "text": "Im unabhängig präsentierten Kreisringfall die Eingabeskala ausdrücklich ergänzen: 'Alle Längen sind in cm.' / 'All lengths are in cm.' Die vorhandene Forderung cm³ macht die beabsichtigte Konvention erkennbar, sollte aber nicht als implizite Übernahme aus Fall 1 benötigt werden."
+        }
+      ],
+      "dissent": [],
+      "releaseClaim": "None: independent AI content review only; no authoritative profile approval, native fingerprint materialization, learner mastery or M7 completion."
+    }
+  ]
+}

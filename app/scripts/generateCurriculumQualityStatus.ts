@@ -914,6 +914,7 @@ const CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS = [
   '28b45b93-11e1-5a96-97a1-4cfee171802b',
   'c25158fc-4860-59b2-8ef0-dca355f3a8b1',
   '14b19ee4-364e-50bd-b6a3-499471356ef3',
+  '967d1863-1b9b-4798-8a35-ae4e9760e322',
   'f24096c6-6ca0-5c15-a2f5-7bdaec789a8d',
   '57f07e66-800c-5f7e-99ab-11dd6e520eb1',
   'd2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1',

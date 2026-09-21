@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "Reviewer did not generate or import these candidates and did not consult the generating agent's acceptance decisions. Current canonical text and actual v2 raster were inspected.",
+  "reviewDate": "2026-09-20",
+  "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+  "title": "Zusammenhang von Funktionsgraph und Umkehrgraph erläutern",
+  "description": "Die lernende Person kann den Zusammenhang zwischen dem Graphen einer Funktion und dem Graphen ihrer Umkehrfunktion erläutern.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/dbc13bb0-963b-49a8-a441-2183f4b64c8e/candidate-v2.png",
+  "candidateSha256": "cd1df04a2c9ef17c10c06a62269265437a7f2f4c7420254f9ec56adc2dacee2a",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/dbc13bb0-963b-49a8-a441-2183f4b64c8e/prompt-v2.md",
+  "decision": "reject_candidate",
+  "checks": [
+    "Inspected the actual candidate-v2 PNG, not just its labels or prompt.",
+    "The formulas x² on x≥0 and sqrt(x), and the algebraic coordinate swap (2,4)↔(4,2), remain correct.",
+    "The new plot intends to use numerical unit ticks on both axes and to display their projection guides."
+  ],
+  "defects": [
+    "The red point explicitly labelled P′(4,2) projects onto the x-axis tick 5, not tick 4. The rendered coordinate and the claimed coordinate contradict each other. This remains a concrete mathematical blocker, independent of small schematic proportions."
+  ],
+  "nextAction": "Keep the equations and narrative. Correct the red point/projection to x=4 on the current scale, or remove the competing dense numerical axes and make a consistent schematic mirror illustration retaining the swapped pair and common point (1,1). Recheck actual raster after the edit.",
+  "humanApproval": false,
+  "scope": "Targeted independent v2 candidate review only; no active import, human release or complete goal-QS claim."
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "math-inverse-graph-dbc13bb0-informed-image-review-c-v6-20260920",
+  "reviewedAt": "2026-09-20",
+  "reviewer": "Codex / math_m7_context_delta",
+  "reviewMode": "informed_actual_raster_review",
+  "blindReviewClaimed": false,
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/dbc13bb0-963b-49a8-a441-2183f4b64c8e/candidate-v6.png",
+  "assetSha256": "sha256:830e721fe7a32e5576371630b9e4531b575332902058bdf54897b35f64a6bcee",
+  "actualRasterInspected": true,
+  "inspectionMethod": "view_image with original detail; the supplied 1677 by 938 pixel raster was inspected directly",
+  "goalBinding": {
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+    "titleDe": "Zusammenhang von Funktionsgraph und Umkehrgraph erläutern",
+    "descriptionDe": "Die lernende Person kann den Zusammenhang zwischen dem Graphen einer Funktion und dem Graphen ihrer Umkehrfunktion erläutern.",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:b4e55984c0114da2d836d2603211ca4b17eab459f1d44e08ee9e1a78901b474f"
+  },
+  "decision": "accept_for_ai_image_review",
+  "approved": true,
+  "approvalScope": "Only this inspected raster as a qualitative goal visualization; informed AI image review, not human acceptance or D/P approval.",
+  "blockingFindings": [],
+  "checks": [
+    {
+      "criterion": "term-graph correspondence",
+      "result": "pass",
+      "findingDe": "f(x)=a·x mit a>1 passt zum steilen blauen Strahl oberhalb von y=x; f^-1(x)=x/a passt zum flacheren roten Strahl unterhalb der Diagonalen. Das Bild behauptet keinen festen numerischen Steigungswert mehr. Die gezeichnete qualitative Beziehung ist mit dem allgemeinen Parameterpaar vereinbar."
+    },
+    {
+      "criterion": "inverse and domain",
+      "result": "pass",
+      "findingDe": "Für a>1 ist f auf [0,∞) eindeutig umkehrbar, bildet [0,∞) auf [0,∞) ab und hat f^-1(x)=x/a. Die Beschriftungen x>=0 und die im ersten Quadranten gezeichneten Strahlen passen dazu."
+    },
+    {
+      "criterion": "coordinate swap",
+      "result": "pass",
+      "findingDe": "P(u,v)↔P'(v,u) zeigt korrekt den Tausch der beiden Koordinaten. Für einen Punkt auf f gilt v=a·u; der gespiegelte Punkt erfüllt u=v/a und liegt damit auf dem Umkehrgraphen. Blau und Rot sind konsistent zugeordnet."
+    },
+    {
+      "criterion": "reflection",
+      "result": "pass",
+      "findingDe": "Die gestrichelte, als y=x bezeichnete Diagonale liegt erkennbar zwischen den beiden ungefähr gespiegelten Strahlen. Der ausgeschriebene Spiegelungssatz ist richtig. Kleine zeichnerische Abweichungen sind in dieser qualitativen Illustration ohne Zahlenachsen kein fachlicher Blocker."
+    },
+    {
+      "criterion": "fit with current goal",
+      "result": "pass",
+      "findingDe": "Das einfache lineare Parameterbeispiel veranschaulicht die allgemein formulierte Beziehung zwischen Funktion und Umkehrfunktion. Koordinatentausch und Spiegelung werden als allgemeine Beziehung erklärt; die Illustration verlangt weder eine spezielle Quadratfunktion noch eine bestimmte numerische Steigung."
+    },
+    {
+      "criterion": "style and readability",
+      "result": "pass",
+      "findingDe": "Heller Hintergrund, klare Konturen, farblich getrennte Strahlen, Comic-Pfeile und übersichtliche Textkästen ergeben eine freundliche abstrakte Darstellung. Formeln, Exponenten, Ungleichungen und Koordinaten sind im geprüften Raster gut lesbar. Keine sichtbaren Beschriftungs- oder Darstellungsartefakte blockieren die Verwendung."
+    }
+  ],
+  "priorFindingDisposition": {
+    "reviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/dbc13bb0-963b-49a8-a441-2183f4b64c8e/review-c-v5.json",
+    "findingId": "V5-C-01",
+    "status": "resolved_in_v6",
+    "reasonDe": "Die tatsächlichen V6-Bildbytes enthalten die allgemeine Parameterbeschriftung a·x und x/a sowie P(u,v)↔P'(v,u). Die in V5 beanstandete Behauptung fest vorgegebener Steigungen 2 und 0,5 entfällt."
+  },
+  "authority": {
+    "aiImageReviewApproval": true,
+    "humanApproval": false,
+    "descriptionReviewApproval": false,
+    "positiveEvidenceApproval": false,
+    "canonicalOrQaMutation": false,
+    "generationImpliesApproval": false
+  }
+}

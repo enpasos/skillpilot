@@ -23,6 +23,8 @@ Use this page by role: start with the overview documents, then jump to a review 
   Field/RDF semantics, canonical content digest, equivalence evidence, and paired release-index gates.
 - [Curriculum Quality Dashboard](curriculum-quality-dashboard.md)
   Persisted status layer used by the local Workbench dashboard.
+- [Mathematik M7: Fortsetzungs- und Zwischenstand vom 20. September](math-m7-resumed-2026-09-20.md)
+  Integrierte Teilpakete, offene Nachweise und lokale Übergabeprüfungen.
 - [Curriculum Mapping Workbench](curriculum-mapping-workbench.md)
   Two-pane audit surface from source snapshots to learner-facing SkillPilot trees.
 - [Documentation Guidelines](../dev/documentation-guidelines.md)

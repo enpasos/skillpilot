@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex /root (independent current-raster check after author pass)",
+  "status": "ai_candidate",
+  "humanApproved": false,
+  "method": "All eight actual current rasters opened with view_image; numerical and qualitative claims checked against the displayed content, no image changes.",
+  "records": [
+    {
+      "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+      "title": "Null- und Alternativhypothesen formulieren",
+      "goalSnapshotSha256": "sha256:1ac901b0920025d9433a8e87e05e706f81ecda87ff5490ca044a486eecbb5a55",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/f14e1643-ad8d-5235-a832-97987fa18489/f14e1643-ad8d-5235-a832-97987fa18489.jpg",
+      "assetSha256": "sha256:3ee6a3d8cf5ad67dceeade83327f6e0efd285d3c7c7d083a141cde423588c753",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "p ist als Merkmalswahrscheinlichkeit benannt.",
+        "H0/H1 und rechts-, links-, zweiseitige Richtungen sind korrekt.",
+        "Die schematischen roten Ränder illustrieren Testseiten ohne berechnete Grenzwerte; glatte Kurven werden hier nicht als exakte B(n,p)-Histogramme bewertet."
+      ],
+      "findings": [],
+      "correction": null,
+      "rootCheck": "Rechts-, links- und zweiseitige Hypothesen haben jeweils die richtige Gegenmenge und passende Randbereiche. Unskalierte Kurven illustrieren nur die Testseite, keine exakten Binomialwerte."
+    },
+    {
+      "goalId": "677be619-5f0a-59bf-9730-0071c7d3f150",
+      "title": "Entscheidungsregeln und Verwerfungsbereiche bestimmen",
+      "goalSnapshotSha256": "sha256:ac942ceefe3e2f1351349ea721e2e6e3dfa66d2e8cbf27c16c2116ed4c19b952",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/677be619-5f0a-59bf-9730-0071c7d3f150/677be619-5f0a-59bf-9730-0071c7d3f150.jpg",
+      "assetSha256": "sha256:d1fb596b85578bf7f7d95e868db3ec97d856019ff8e4391dd7a644438a6faa59",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Kritischer Bereich X≥k und Gegenbereich X<k trennen die Entscheidungsfälle korrekt.",
+        "Gesamtwahrscheinlichkeit ≤α und Sigma-Regeln nur als Orientierung sind zutreffend.",
+        "Unskalierte Balken werden als Schemaskizze gelesen; es werden keine konkreten Grenzen oder Balkenwerte behauptet."
+      ],
+      "findings": [],
+      "correction": null,
+      "rootCheck": "Die Entscheidungsregel X≥k ist konsistent mit rechtem Verwerfungsbereich und komplementärem X<k. Die Binomialfamilie bleibt B(20,p); kein einzelnes p wird aus der zusammengesetzten Nullhypothese erschlichen."
+    },
+    {
+      "goalId": "4b58b855-cd26-538c-8e6f-304f4cfd8ad6",
+      "title": "Fehler 1. und 2. Art deuten",
+      "goalSnapshotSha256": "sha256:6d6e5842c72f0b913a5f3522af7e98f80c66153ab7efab45cf04d49c741a30c1",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/4b58b855-cd26-538c-8e6f-304f4cfd8ad6/4b58b855-cd26-538c-8e6f-304f4cfd8ad6.jpg",
+      "assetSha256": "sha256:55b5a385e21a06276fb28c7e5468ee52bbf57cd80faafdf96cb7bcc8cddfebf1",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Fehler I: wahre H0 verwerfen; Fehler II: falsche H0 nicht verwerfen – beide Zuordnungen korrekt.",
+        "Die Qualitätsbeispiele zeigen gute Charge gesperrt bzw. schlechte Charge ausgeliefert.",
+        "Die Nichtverwerfungsfläche unter H1 liegt links der Grenze; Teststärke ist die komplementäre rechte Fläche."
+      ],
+      "findings": [],
+      "correction": null,
+      "rootCheck": "Wahre H0 verwerfen und falsche H0 nicht verwerfen sind korrekt getrennt; bei der Alternative liegt die Nichtverwerfungsseite links der Grenze, die Teststärke rechts."
+    },
+    {
+      "goalId": "f85419c4-63ac-5d6d-b73b-fcb12a0ff89f",
+      "title": "Prognoseintervalle für relative Häufigkeiten bestimmen",
+      "goalSnapshotSha256": "sha256:43639841df60f26a995e94a14aa9e06d6193409d69365e5445180fa53fee3e6c",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/f85419c4-63ac-5d6d-b73b-fcb12a0ff89f/f85419c4-63ac-5d6d-b73b-fcb12a0ff89f.jpg",
+      "assetSha256": "sha256:7cd4e6daac81cd70dc59012187674a3e55a5b01b8122c024c72ccbf7994931ec",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Intervallformel p±c√(p(1−p)/n) ist korrekt.",
+        "Für p=0,5,n=400,c=1,96 ergibt sich [0,451;0,549], passend auf zwei Dezimalstellen als [0,45;0,55] angenähert.",
+        "Bekanntes p und zukünftiges zufälliges h sowie verbleibende Unsicherheit werden erkennbar unterschieden."
+      ],
+      "findings": [],
+      "correction": null,
+      "rootCheck": "Das Prognoseintervall nutzt bekanntes p und die Streuung sqrt(p(1−p)/n). Bei p=0,5,n=400,c=1,96 ergibt sich [0,451;0,549], korrekt gerundet auf [0,45;0,55]."
+    },
+    {
+      "goalId": "410221ed-540c-5daf-8c42-d8dd12e9100a",
+      "title": "Stichprobenumfang für vorgegebene Konfidenzniveaus planen (LK)",
+      "goalSnapshotSha256": "sha256:1b07ec5462c9451f2f63764f3ca11739c8e60265a90db8f31f8b192f6c0ee679",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/410221ed-540c-5daf-8c42-d8dd12e9100a/410221ed-540c-5daf-8c42-d8dd12e9100a.jpg",
+      "assetSha256": "sha256:9aed038150f5038f5722f6d7d729a1a763b56938c7e812e306e742a9fac6d430",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "n≥z²/(4e²) ist die konservative Bernoulli-Planungsformel für eine Halbbreite e.",
+        "Bei z=1,96 und e=0,05 ergibt sich n≥384,16, ganzzahlig mindestens 385; der Bildwert stimmt.",
+        "Die unskalierte breiter-/schmaler-Skizze vermittelt den zutreffenden Einfluss des Umfangs, ohne exakte graphische Breitenquotienten zu behaupten."
+      ],
+      "findings": [],
+      "correction": null,
+      "rootCheck": "Die konservative Näherungsplanung n≥z²/(4e²) ergibt bei z=1,96,e=0,05 mindestens385. Das obere Bild illustriert qualitativ schmalere Intervalle bei größerem n; ohne gemeinsame Messskala kein exakter Breitenvergleich."
+    },
+    {
+      "goalId": "e402f330-8ac6-525f-b3ff-bc4be229d131",
+      "title": "Streuungsmaße von Daten bestimmen und deuten",
+      "goalSnapshotSha256": "sha256:d5befc1975a39f802d8d6540aefe826731f210907f5dd3a8cb2783593602475a",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/e402f330-8ac6-525f-b3ff-bc4be229d131/e402f330-8ac6-525f-b3ff-bc4be229d131.jpg",
+      "assetSha256": "sha256:b46e236697515f0dc72ac2b463661509e467f16b46bd3db8aab779079007dc1a",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Datensatz A zeigt Abweichungen −1 und +1 von Mittelwert 5; B zeigt −4 und +4. B besitzt damit die größere Streuung.",
+        "Varianz als durchschnittliche quadrierte Abweichung und Standardabweichung als Wurzel/typischer Abstand sind zielgerecht dargestellt.",
+        "Die Histogramme illustrieren enge bzw. breite Konzentration; es werden keine exakten Balkenhäufigkeiten behauptet."
+      ],
+      "findings": [],
+      "correction": null,
+      "rootCheck": "Die Abweichungen −1,+1 und −4,+4 vom Mittel5 sind richtig. Die beiden Histogramme illustrieren qualitativ Konzentration und Streuung, nicht die vollständige Verteilung der jeweils zwei links markierten Beispielpunkte."
+    },
+    {
+      "goalId": "84069c5e-5526-57c1-9417-a886ccfd3f66",
+      "title": "Daten mit Verteilungen vergleichen",
+      "goalSnapshotSha256": "sha256:272e6687f65bfaf47dde1cb35fe2b6a8fe5f7f71485bf76926a01a424f0bf9c2",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/84069c5e-5526-57c1-9417-a886ccfd3f66/84069c5e-5526-57c1-9417-a886ccfd3f66.jpg",
+      "assetSha256": "sha256:866c5646873fced70f650061ab21ee51f475e2c718815d0a18dd38b65a28739a",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Würfelhäufigkeiten 9,10,10,11,9,11 summieren sich zu 60; unter dem Gleichverteilungsmodell werden je 10 erwartet.",
+        "Gewichteter Mittelwert 214/60≈3,57 und theoretischer Mittelwert 3,5 sind korrekt.",
+        "Balken, Erwartungslinie, Tabellenwerte und vorsichtige Eignungsaussage stimmen überein."
+      ],
+      "findings": [],
+      "correction": null,
+      "rootCheck": "Die Häufigkeiten9,10,10,11,9,11 summieren sich zu60, der gewichtete Mittelwert ist214/60≈3,57, theoretisch3,5. Balken und Tabelle stimmen; geringe Abweichung ist plausibel, kein Fairnessbeweis."
+    },
+    {
+      "goalId": "e02976ad-71fc-5929-b764-df7630269c47",
+      "title": "Zufallsexperimente planen und durchführen",
+      "goalSnapshotSha256": "sha256:553664c075cfa55ee3ff38a001c74ba8e0ebb523efc832f8bc7c6b93a2933380",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/e02976ad-71fc-5929-b764-df7630269c47/e02976ad-71fc-5929-b764-df7630269c47.jpg",
+      "assetSha256": "sha256:a3ad70b204116f39e095896600281c626e8f696bf3498a3f651e2cd0ef6e05f7",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Festgelegte Versuchszahl 60, gleiche Bedingungen und nachvollziehbare Protokollierung passen zum Planungs- und Durchführungsziel.",
+        "Die Häufigkeiten 9,10,10,9,11,11 summieren sich zu 60.",
+        "Für die Sechs sind 11/60≈0,18 und theoretisch 1/6≈0,17 korrekt; kein vorgeschriebenes Zufallsergebnis wird behauptet."
+      ],
+      "findings": [],
+      "correction": null,
+      "rootCheck": "Die Tabelle9,10,10,9,11,11 summiert sich zu60. Die Sechserhäufigkeit11/60≈0,18 und Modellwahrscheinlichkeit1/6≈0,17 sind klar getrennt. Planung, gleiche Bedingungen und Dokumentation bleiben nachvollziehbar."
+    }
+  ]
+}

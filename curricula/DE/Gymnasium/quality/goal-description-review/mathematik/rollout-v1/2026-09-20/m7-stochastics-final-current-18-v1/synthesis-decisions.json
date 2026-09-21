@@ -1,0 +1,552 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex informed AI synthesis of the completed current blind rounds A and B; no human attestation",
+  "synthesizedAt": "2026-09-20T20:23:07.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-stochastics-final-current-18-v1-20260920",
+    "batchManifestDigest": "sha256:224cb2a1fbb176c93614ed55368413885ef3e35f5d51f321bd0df883510a2244",
+    "configDigest": "sha256:0d3317f9d662687a370d729ed9ff361f123449b017ae6642bf858dbcda634601",
+    "bundleFingerprint": "sha256:969156a465517aa1f7b830ad9a6a41cbfa65b9e21c567c92f300c9ca5a7a974d",
+    "bookDigest": "sha256:70f91b64e4d020dec0069afa736dc7ebba7be825647d24f6e98114a1c619458f",
+    "reviewInputFingerprint": "sha256:0a8697c154caba7a02ce29a5737aabea4d101040c83f68c2691441a99cbf755e",
+    "dualSummaryDigest": "sha256:8e7a1139ab9a20d8f6f7119bd40300aa5f1da16e758fb40cb3b7132d5c2ce9b9",
+    "canonicalLandscapeDigest": "sha256:c3ef809bdb42eac8bd95af30cb2f110bcdc041e1e35df85fa26ffcc4fc3dadc9"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-stochastics-final-current-18-v1-20260920-a",
+      "campaignDigest": "sha256:456e2f0505816973bacbae122aee6ac445ab09e6271de14b6ca79f75f43735e8",
+      "roundId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-stochastics-final-current-18-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:0a8697c154caba7a02ce29a5737aabea4d101040c83f68c2691441a99cbf755e",
+      "batchId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:b7633abd59df8f16b9fce44d1cf7e3fd1a17c8095dc7f5d909200c03466ae046",
+      "runId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "runManifestDigest": "sha256:7c6c0d39323f383bbf6af1e3f4b0b51177d7beee2c982a30860b52a87819c0e0",
+      "resultsDigest": "sha256:d28f9769107222634fa6640337c2bb4831a9cff4d7d9aa4daf7ed788c3b7d232"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-stochastics-final-current-18-v1-20260920-b",
+      "campaignDigest": "sha256:f6d6960d359bb7efbc9f2e0e11b253cfcfd87c69854f0c43d48b4c5b32a84a6e",
+      "roundId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-stochastics-final-current-18-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:0a8697c154caba7a02ce29a5737aabea4d101040c83f68c2691441a99cbf755e",
+      "batchId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d853da900ca2f4833ce265f33d6450a798cd3d40a41205ced2d511f5fe13e533",
+      "runId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "runManifestDigest": "sha256:e8eb6e631e4d9bd171c9059bfc92b8b70a7bc9cc2e7b83a84e7d96803814f37f",
+      "resultsDigest": "sha256:be5982bd169d80a80b76ba373e065a1fd75f96d35d17662433276d39a9b02f02"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-001",
+      "goalId": "dabff49b-d40a-4c81-a584-21408b2d4219",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e8fac47d14effc5d40f999cac1aba5d33b13b6b3a33e82a7ac3f7b9e0e43eb64",
+      "pageFingerprint": "sha256:2a04ab1353656a75617e61c7461eb7bf78d9f3b70010f540eba97e934c17893f",
+      "goalReviewContextFingerprint": "sha256:b1cb49eab8581bb9002a84de15dd1bce023e0050bd1cadd364e6bca1ded69e80",
+      "finalText": {
+        "titleDe": "Stochastische Unabhängigkeit an Baumdiagrammen und Vierfeldertafeln prüfen",
+        "titleEn": "Check stochastic independence using tree diagrams and contingency tables",
+        "descriptionDe": "Die lernende Person kann stochastische Unabhängigkeit bzw. Abhängigkeit an konkreten Beispielen erläutern, in Baumdiagrammen oder Vierfeldertafeln erkennen und rechnerisch überprüfen.",
+        "descriptionEn": "The learner can explain stochastic independence or dependence in concrete examples, identify it in tree diagrams or contingency tables, and verify it computationally."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.dabff49b-d40a-4c81-a584-21408b2d4219",
+          "recordDigest": "sha256:f5eaa52812bc4da425ba63149bb536d3f66641024f4bddf0810f3cc3e722d176"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.dabff49b-d40a-4c81-a584-21408b2d4219",
+          "recordDigest": "sha256:a75ab8115b60b34f4d4a3c47a13ef9bfba7b526899499ff68caedefe745b8bfd"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Runden bestätigen den gemeinsamen Kern: Unabhängigkeit als unveränderte bedingte Wahrscheinlichkeit, rechnerisch im Baum oder in der Vierfeldertafel prüfbar. A wird gewählt, weil die Evidenz die Voraussetzung P(A)>0 ausdrücklich vom divisionsfreien Produktkriterium trennt und den Darstellungswechsel zu einem abhängigen Baum durchrechnet. Bs Änderung der Zellen bei gleichen Randsummen ist eine ergänzende, vereinbare Transferidee. Kein Umfangs- oder DE/EN-Konflikt begründet eine Textänderung; der aktuelle Wortlaut bleibt.",
+      "rationaleEn": "Both current rounds confirm the same core: independence as unchanged conditional probability, checkable in a tree or contingency table. A is selected because its evidence explicitly separates the condition P(A)>0 from the division-free product criterion and calculates the change to a dependent tree. B's changed cells with fixed margins offer a compatible complementary transfer. No scope or DE/EN conflict warrants changing the current wording."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-002",
+      "goalId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:caee895fecd5141c308fed1696921a4e33e8d404acff30e22504985a3ca1dd0b",
+      "pageFingerprint": "sha256:af455bc8d9af3e8352d24de6bd1d89c44c74d559bc4869e6daf8a3843270faf8",
+      "goalReviewContextFingerprint": "sha256:881780b5fca3eef7a522a95b6d974e6dca3934d6b64e9972854fde302b64391c",
+      "finalText": {
+        "titleDe": "Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen",
+        "titleEn": "Critically examine data-based claims using conditional probabilities",
+        "descriptionDe": "Die lernende Person kann aus Daten abgeleitete Aussagen kritisch prüfen, indem sie Stichprobenumfang und -zusammensetzung, Veränderungen bedingter Wahrscheinlichkeiten in relevanten Teilmengen, Basisrateneffekte, Art der Datenerhebung und Fragestellung berücksichtigt sowie Korrelation und Kausalität unterscheidet.",
+        "descriptionEn": "The learner can critically examine claims derived from data by considering sample size and composition, changes in conditional probabilities across relevant subsets, base-rate effects, data-collection methods and framing, and by distinguishing correlation from causation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.3e974075-b2fd-43e6-88d9-5f596ad053ec",
+          "recordDigest": "sha256:536854e6c49d383c16596a03146320593d01240fc9398820ddc9353251590039"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.3e974075-b2fd-43e6-88d9-5f596ad053ec",
+          "recordDigest": "sha256:43e05e0e2ff16637bd51be82d30e7c33caf2eecb7e2b677e51243a9ae6d33075"
+        }
+      },
+      "rationaleDe": "Beide Runden lesen die Beschreibung als integrierte kritische Prüfung einer Datenaussage mit Bezugsgruppen-, Erhebungs- und Kausalitätsgrenzen. A verbindet die nachgerechnete Basisratenumkehr 18/116 mit einer neuen freiwilligen Kursbefragung und wird wegen dieses Kontextwechsels gewählt. B ergänzt vereinbar den rechnerischen Effekt geänderter Basisraten und die Prüfung relevanter Teilgruppen; diese ausdrücklich kanonischen Aspekte werden durch die Auswahl nicht abgewählt. Es besteht kein Widerspruch zwischen den Evidenzketten und kein Anlass, zusätzliche Testverfahren einzuführen.",
+      "rationaleEn": "Both rounds treat the description as integrated critical examination of a data claim, including reference groups, collection methods and causal limits. A links the verified base-rate reversal 18/116 to a new voluntary course survey and is selected for that contextual transfer. B compatibly adds the numerical effect of changing base rates and consideration of relevant subgroups; selecting A does not remove these explicit canonical aspects. The evidence chains do not conflict or justify introducing additional statistical tests."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-003",
+      "goalId": "122ab909-04ed-572b-a499-754f3bcc8ef0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:670794e2fe5d773c5414e48d192a60b29f193d2ee67bfae758d283f17964e46e",
+      "pageFingerprint": "sha256:c43e9b18f3f2e2bf9bdeb7a00fe3ab6178327565ed690602dd0e706764ab5b69",
+      "goalReviewContextFingerprint": "sha256:78eb082ec50126cac59dc56104ba58228bd8f896934bd6ac36072969bffb18bb",
+      "finalText": {
+        "titleDe": "Grundlegende Zählprinzipien anwenden",
+        "titleEn": "Apply basic counting principles",
+        "descriptionDe": "Die lernende Person kann kombinatorische Zählprobleme mit der Produktregel lösen und geordnete Stichproben mit oder ohne Zurücklegen an konkreten Beispielen berechnen.",
+        "descriptionEn": "The learner can solve combinatorial counting problems using the product rule and compute ordered samples with or without replacement in concrete examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.122ab909-04ed-572b-a499-754f3bcc8ef0",
+          "recordDigest": "sha256:de8987726628aa26602565f0d132a89d3b2330e7710b5804774179ccdc629939"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.122ab909-04ed-572b-a499-754f3bcc8ef0",
+          "recordDigest": "sha256:21e962bf7f5859d968124f5b56fb3645762789867a808748814e34bf854512e6"
+        }
+      },
+      "rationaleDe": "A und B stimmen bei Produktregel, Reihenfolge und sich verändernden Auswahlzahlen ohne Wiederholung überein. Gewählt wird A mit 125 beziehungsweise 60 Codes und dem strukturell geänderten Anfangszeichenfall 24; die Faktoren sind korrekt. Bs Ausschluss einer führenden Null belegt denselben Anpassungsgedanken mit einer anderen zulässigen Einschränkung. Beide bleiben bei geordneten Auswahlen. Die DE/EN-Beschreibung ist weder eine bloße Formelroutine noch um ungeordnete Kombinationen zu erweitern.",
+      "rationaleEn": "A and B agree on the product rule, order and changing choice counts without repetition. A is selected with its correct counts of 125 versus 60 codes and the structurally changed initial-symbol case giving 24. B's exclusion of a leading zero supports the same adaptation using another valid restriction. Both remain within ordered selections. The DE/EN description is neither a mere formula routine nor in need of expansion to unordered combinations."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-004",
+      "goalId": "935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5421f44f6c951e5ffe2b3cc9b8ce3943bb9ab5ed32225e24a7e233762dd28516",
+      "pageFingerprint": "sha256:e2862a568692cd215f412912e74885420651dedf9ddc44cd155aedc3f147f236",
+      "goalReviewContextFingerprint": "sha256:fdcd279897067379c70fd254bc9b53f92bff8fe8395a486bc1cdc904f936ecb1",
+      "finalText": {
+        "titleDe": "Fakultäten in kombinatorischen Zählproblemen verwenden",
+        "titleEn": "Use factorials in combinatorial counting problems",
+        "descriptionDe": "Die lernende Person kann Fakultäten als Zählwerkzeug in kombinatorischen Problemen verwenden, insbesondere bei Permutationen und geordneten Anordnungen ohne Wiederholung.",
+        "descriptionEn": "The learner can use factorials as a counting tool in combinatorial problems, especially for permutations and ordered arrangements without repetition."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+          "recordDigest": "sha256:35a828bd9edfde9f577bc39d11f80c1527d21ca8b939be2898faba0f21086ee8"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+          "recordDigest": "sha256:b43d757e3a553900e8a728f232e8bdc500acb7115294daf8a3a2194c5b17a973"
+        }
+      },
+      "rationaleDe": "Beide Evidenzketten leiten Fakultäten aus abnehmenden Wahlmöglichkeiten ab und wechseln von vollständigen zu verkürzten geordneten Anordnungen. A wird gewählt, weil 6!=720 und 6!/3!=120 in einer durchgehenden, vom Raster unabhängigen Buchsituation mit expliziten Unterscheidbarkeitsbedingungen verknüpft werden. Bs Ämtervergabe und fest besetzter Platz sind kompatible weitere Fälle. Der Vergleich C(5,2) im Bild wird von beiden ausdrücklich nicht zur neuen Pflicht gemacht; die aktuellen DE/EN-Texte bleiben sachgerecht.",
+      "rationaleEn": "Both evidence chains derive factorials from decreasing choices and move from complete to shorter ordered arrangements. A is selected because 6!=720 and 6!/3!=120 form a coherent book-arrangement case independent of the image, with explicit distinguishability conditions. B's allocation of offices and preassigned position are compatible further cases. Neither round turns the image's C(5,2) comparison into an additional requirement; the current DE/EN texts remain appropriate."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-005",
+      "goalId": "1462c189-8679-5f32-bf58-6e81e99e4635",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f5c6b5ea060dd221ebb65571ae368c24cac4536e6c3cb5cbface8123cb38a576",
+      "pageFingerprint": "sha256:24ae343c9870809907892f6c9c7ae4b45f04973b012dce042103cd1ee30cd758",
+      "goalReviewContextFingerprint": "sha256:f034e56d6280c984d83e1850ea2954489e4b65328062aba6ecd9df6749dd26cc",
+      "finalText": {
+        "titleDe": "Laplace-Wahrscheinlichkeiten ohne Zurücklegen (hypergeometrisch)",
+        "titleEn": "Laplace probabilities without replacement (hypergeometric)",
+        "descriptionDe": "Die lernende Person kann Laplace-Wahrscheinlichkeiten bei Ziehungen ohne Zurücklegen mit Zählverfahren berechnen (z. B. Urnen- oder Lottoprobleme), das hypergeometrische Modell begründen und Ergebnisse an konkreten Beispielen prüfen.",
+        "descriptionEn": "The learner can compute Laplace probabilities for draws without replacement using counting methods (e.g., urn or lottery problems), justify the hypergeometric model, and verify results on concrete examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.1462c189-8679-5f32-bf58-6e81e99e4635",
+          "recordDigest": "sha256:095eca12986834d2d0cb4e7c528b92f0503cdc6cb67d3c39a5334a98f0c154a5"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.1462c189-8679-5f32-bf58-6e81e99e4635",
+          "recordDigest": "sha256:d666888b193707c2d87117ff3235c2a3852ce1b92cb01e794d3ac67cc334b957"
+        }
+      },
+      "rationaleDe": "Beide Runden begründen das hypergeometrische Modell über gleichwahrscheinliche Auswahlen ohne Zurücklegen und prüfen einen Wechsel zum Gegenereignis. A wird gewählt, weil sein neues Beispiel mit vier markierten unter zehn Teilen und drei Ziehungen sowohl Treffer- als auch Nichttrefferauswahl sichtbar zählt: 1/2 für genau einen und 5/6 für mindestens einen Treffer. Bs Urnenfall bestätigt zusätzlich den Gleichlauf von Zählquotient und Pfadprodukt. Diese verschiedenen Beispiele sind kein Dissens über Umfang oder Übersetzung; die Beschreibung bleibt unverändert.",
+      "rationaleEn": "Both rounds justify the hypergeometric model through equally likely selections without replacement and test a move to a complement. A is selected because its new case with four marked components among ten and three draws visibly counts successes and non-successes: 1/2 for exactly one and 5/6 for at least one. B's urn case additionally confirms agreement between counting ratios and path products. These different examples do not conflict over scope or translation; the description is retained."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-006",
+      "goalId": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3e504f21a28f94c711c0f9a33a39fe1e4e51346645f97d27a7e733594bfdd884",
+      "pageFingerprint": "sha256:44fe48ddf49fe2c7823f89f1df7550380a632ff0d963c0a5d719360009c455cd",
+      "goalReviewContextFingerprint": "sha256:a77b78b51978039a2fd10dd0f151dc1b44450418ad63ffc7b0715f7c388e9229",
+      "finalText": {
+        "titleDe": "Modelle vergleichen: Ziehen ohne vs. mit Zurücklegen",
+        "titleEn": "Compare models: without vs. with replacement",
+        "descriptionDe": "Die lernende Person kann begründen, wann das Modell \"mit Zurücklegen\" eine gute Näherung für \"ohne Zurücklegen\" ist, und dies an konkreten Beispielen (z. B. große Urne) rechnerisch vergleichen.",
+        "descriptionEn": "The learner can justify when the \"with replacement\" model is a good approximation for \"without replacement\" and compare both models computationally using concrete examples (e.g., a large urn)."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+          "recordDigest": "sha256:c585f22531537e6a49ed316f60cd5833b38d3d3d02d1b59a3f9bc591d9ef14d8"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+          "recordDigest": "sha256:62adf989e80384e01953cf753b7e102772bae589542e9f035bc7086eddf3835b"
+        }
+      },
+      "rationaleDe": "Die Runden teilen die zentrale Bedingung eines kleinen Entnahmeanteils und verlangen den Vergleich desselben Ereignisses statt einer pauschalen große-Urne-Regel. A wird gewählt: Bei gleichem p=1/2 kontrastiert es 49/198 gegenüber 1/4 mit 1/6 gegenüber 1/4 im kleinen Bestand und macht damit die Modellgrenze besonders deutlich. B untersucht ergänzend den umgekehrten Weg zu einem größeren Bestand bei konstantem Rotanteil. Beide Rechenwege sind korrekt und tragen den aktuellen äquivalenten DE/EN-Wortlaut.",
+      "rationaleEn": "The rounds share the central condition of a small sampling fraction and require comparison of the same event rather than a blanket large-urn rule. A is selected: at fixed p=1/2 it contrasts 49/198 versus 1/4 with 1/6 versus 1/4 in the small population, making the model limitation clear. B complementarily examines the reverse change to a larger population with the red proportion fixed. Both calculations support the current equivalent DE/EN wording."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-007",
+      "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:df28a8ad39a684f04c81bf62eff468fdac09f3862cdd7b536b8c277e44e6cb1c",
+      "pageFingerprint": "sha256:9905fee1d0a8539258e745f79bdb19e617d12cc8b61eee736d04916c5d96af7c",
+      "goalReviewContextFingerprint": "sha256:39f1f06afdecf575326548e3e53c6f213c6b3f226e5664f5745c9ecbdeab75d4",
+      "finalText": {
+        "titleDe": "Zufallsgrößen und Verteilungen als Modellrahmen einordnen",
+        "titleEn": "Classify random variables and distributions as a modeling framework",
+        "descriptionDe": "Die lernende Person kann zu einfachen stochastischen Situationen eine passende Zufallsgröße und die zugehörige diskrete Wahrscheinlichkeitsverteilung als Modellrahmen beschreiben.",
+        "descriptionEn": "The learner can describe a suitable random variable and the associated discrete probability distribution as a modeling framework for simple stochastic situations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.da95ab35-bac2-54f2-b38f-8b612cde8b54",
+          "recordDigest": "sha256:c97ff317e7d9398a0d20346eb013094c7a6fdc0eff4981e1535a8b8711dd2651"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.da95ab35-bac2-54f2-b38f-8b612cde8b54",
+          "recordDigest": "sha256:6ca4fa8ea14a50cd4ec24ed16e55720fe5c0241794d9875eee53cdd612587ac0"
+        }
+      },
+      "rationaleDe": "Beide Runden verstehen Modellrahmen als sachgerechte Wahl einer numerischen Zufallsgröße samt zugehöriger diskreter Verteilung, nicht als Überblick über alle Verteilungsfamilien. A wird gewählt, weil die Glücksrad-Auszahlung mit Werten 0,2,5 beim Wechsel zur Indikatorfrage tatsächlich verschiedene Werte zusammenfasst und den Informationsverlust erklärt. Bs Wechsel vom Sechserindikator zur Auszahlung ist ein vereinbares Beispiel einer neuen numerischen Fragestellung. Aus dieser unterschiedlichen Transfertiefe folgt keine notwendige Änderung am klar begrenzten AB1-Ziel.",
+      "rationaleEn": "Both rounds understand the modelling framework as choosing a numerical random variable and its discrete distribution for the question, not surveying all distribution families. A is selected because changing spinner payouts 0,2,5 into an indicator genuinely merges distinct values and explains information loss. B's change from a six indicator to a payout is a compatible example of a new numerical question. This difference in transfer depth does not require changing the clearly bounded introductory goal."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-008",
+      "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0b745e7ec5fbcf6aeeff8c99ef0ac8b99e46396d243194e32837f9d385c3b193",
+      "pageFingerprint": "sha256:261a39a8fb8dedcf13e12dd4a543f01e3aefe9064b655164f27d121ae983f2b1",
+      "goalReviewContextFingerprint": "sha256:44041571dea97484e4afebe6f20f7482a04b8b0118d19abdf6849a1ec331e9d8",
+      "finalText": {
+        "titleDe": "Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen",
+        "titleEn": "Describe random variables and use probability distributions in tables and diagrams",
+        "descriptionDe": "Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen beschreiben und diskrete Wahrscheinlichkeitsverteilungen in Tabellen oder Diagrammen zur Beschreibung stochastischer Situationen nutzen.",
+        "descriptionEn": "The learner can describe random variables as assignments of outcomes and use discrete probability distributions in tables or diagrams to describe stochastic situations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+          "recordDigest": "sha256:c1bff69ef00a221e6720841670be940911eb1379db4df2040ae0ed106511b95d"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+          "recordDigest": "sha256:0ec3b373b3455b899c70eb5b0bec0196a726fe01998a2b6a5fc1e2bffe36f680"
+        }
+      },
+      "rationaleDe": "A und B stimmen über das Zusammenfassen von Ergebniswahrscheinlichkeiten und die konsistente Darstellung in Tabelle und Diagramm überein. A wird gewählt, weil die vom Münzbild unabhängige Würfelauszahlung mit ungleich beabstandeten Werten 0,2,6 die numerische Achse und ungleiche Wahrscheinlichkeiten sichtbar macht. Die Zusammenlegung der Auszahlungen ergibt korrekt 1/2 und 1/2; Bs Kopfzahl-Indikator mit 1/4 und 3/4 ist ein gleichgerichteter Transfer. Keine Runde fordert eine sachlich andere DE/EN-Kompetenz oder einen Split.",
+      "rationaleEn": "A and B agree on aggregating outcome probabilities and representing them consistently in a table and diagram. A is selected because its die-payout case, independent of the coin image, uses unequally spaced values 0,2,6 and makes the numerical axis and unequal probabilities explicit. Merging payouts correctly gives probabilities 1/2 and 1/2; B's head-count indicator with 1/4 and 3/4 is a compatible transfer. Neither round calls for a different DE/EN competence or a split."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-009",
+      "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0f5f1b86ebdad866111ae9d377234618a6f90370584fb7ca71bf522bea4fff98",
+      "pageFingerprint": "sha256:3ce47d0e0a0055b09cf0200623e954d011651828edaede1b6a3ce2185df92db2",
+      "goalReviewContextFingerprint": "sha256:d5f6c9e9659e6f531324d104d73de4132d9e732da15662cebc3e2c6e50fd05fc",
+      "finalText": {
+        "titleDe": "Zufallsgrößen als Zuordnungen einführen und beschreiben",
+        "titleEn": "Introduce and Describe Random Variables as Assignments",
+        "descriptionDe": "Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen auf Zahlen einführen und sie in einfachen diskreten Kontexten fachsprachlich beschreiben.",
+        "descriptionEn": "The learner can introduce random variables as assignments from outcomes to numbers and describe them in simple discrete contexts using appropriate mathematical language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.d711bc18-c27c-4739-8289-edac53dc8ba3",
+          "recordDigest": "sha256:b131e44675035b2dfa6b73fd50d8e92f744b188b48ce3fa51af492f0ddaf376a"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.d711bc18-c27c-4739-8289-edac53dc8ba3",
+          "recordDigest": "sha256:9059dceb3acfe243544854435b9feb06b745fa5042d327bfa62c359b07c3d48d"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen eine eindeutige Zahlenzuordnung mit möglichen gleichen Werten für verschiedene Ergebnisse und halten Verteilungsberechnung außerhalb der Pflicht. A wird gewählt, weil sein neuer Farbfall die Abgrenzung von Ergebnisraum und Wertemenge sowie die Reparatur einer nicht eindeutigen Zuordnung direkt prüft. B bietet mit Y=2X−1 einen vereinbaren Wechsel der Zahlenbedeutung. Die Evidenzunterschiede betreffen Aufgabenwahl, nicht die fachliche Definition; der aktuelle präzise DE/EN-Text bleibt.",
+      "rationaleEn": "Both rounds confirm a single-valued numerical assignment that may give different outcomes the same value, without making distribution calculation mandatory. A is selected because its new colour case directly checks the distinction between outcome space and value set and repairs a non-single-valued rule. B provides a compatible change of numerical meaning through Y=2X−1. The differences concern task selection rather than the mathematical definition; the precise current DE/EN text is retained."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-010",
+      "goalId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:308e1c79e7447e6452b8f7ea3cac1aaedeab6a49db81e6fce97906bad221cca3",
+      "pageFingerprint": "sha256:a4a79b7f34734a5012cbe2c281e8c4b2c51cb75f0c62977cb7e26db38dc6fc91",
+      "goalReviewContextFingerprint": "sha256:53b62d953669616c6ea8c50ea96343fc2556e08c3ad3659cee228c0fa7faaa75",
+      "finalText": {
+        "titleDe": "Kenngrößen binomialverteilter Zufallsgrößen",
+        "titleEn": "Characteristic values of binomially distributed random variables",
+        "descriptionDe": "Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert, Varianz und Standardabweichung berechnen und diese mit der zugrunde liegenden Bernoulli-Situation in Beziehung setzen.",
+        "descriptionEn": "The learner can calculate expected value, variance, and standard deviation for binomial distributed random variables and relate them to the underlying Bernoulli situation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+          "recordDigest": "sha256:23df24256798cc9a0a8ed0ece05dcff705333c3d7a7e4d7f42a17012bbb1456e"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+          "recordDigest": "sha256:3c7fc2e42ed523680892cad209166607a457826e57728e7779220989726e766e"
+        }
+      },
+      "rationaleDe": "Beide Runden verbinden np, np(1−p) und die Wurzel daraus mit langfristigem Trefferumfang, Streuung und Einheiten; beide prüfen den Wechsel zur Misserfolgszahl. A wird gewählt, weil sein von der Abbildung unabhängiger Fall B(25;0,2) die korrekten Werte 5,4,2 und nach Umcodierung 20,4,2 liefert. B setzt denselben Begründungskern am Rasterfall um und warnt zusätzlich vor einem garantierten σ-Bereich. Das ist kompatibel; Variationskoeffizient und neue Sigma-Pflichten bleiben ausgeschlossen.",
+      "rationaleEn": "Both rounds connect np, np(1−p) and its square root to long-run counts, spread and units, and both test a switch to counting failures. A is selected because its image-independent B(25,0.2) case correctly gives 5,4,2 and, after recoding, 20,4,2. B implements the same reasoning in the image case and additionally warns against treating a σ-range as guaranteed. This is compatible; coefficient-of-variation and new sigma-rule requirements remain excluded."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-011",
+      "goalId": "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f2c3457e79e9b8e48f5761a0e08289dbd6b6ac4ddba5ab422118842b8baa72e9",
+      "pageFingerprint": "sha256:e1f2243eff1f473364d0fefe0c1989cbcc2633da5fa9d0fc5aa62dafb854b20b",
+      "goalReviewContextFingerprint": "sha256:ce304275ada6542e2d3995252997795a6b515ce72abd70c1dfb8c5716bd7a6b5",
+      "finalText": {
+        "titleDe": "Histogramme erstellen und lesen",
+        "titleEn": "Create and read histograms",
+        "descriptionDe": "Die lernende Person kann Histogramme diskreter Zufallsgrößen erstellen, lesen und mit Kenngrößen (Erwartungswert, Varianz, Standardabweichung) in einfachen Beispielen verknüpfen.",
+        "descriptionEn": "The learner can create and read histograms of discrete random variables and connect them with characteristic values (expected value, variance, standard deviation) in simple examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+          "recordDigest": "sha256:40f4fc799159dd4f4d06c67d2cf37d91754be2b491cebfcb5eabcad4b81718ba"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+          "recordDigest": "sha256:cce266f88cc080e72717621b0d621cd5eff39ba78754c37536cbd6c0cf38fac5"
+        }
+      },
+      "rationaleDe": "Die Evidenzketten verknüpfen beide die diskrete Darstellung mit Zentrum und Streuung und vergleichen Verteilungen bei gleichem Mittelwert. A wird gewählt, weil es die Balkenbreite 1 ausdrücklich festlegt und am asymmetrischen Beispiel μ=1,25, Varianz=0,6875 und σ≈0,829 nachvollziehbar verbindet. Bs symmetrischer Vergleich zeigt denselben Streuungsgedanken mit anderer Ausgangsverteilung. Die Auswahl klärt Höhe und Masse innerhalb einfacher diskreter Darstellungen; sie erweitert die Beschreibung nicht auf allgemeine Klassenstatistik.",
+      "rationaleEn": "Both evidence chains connect the discrete display with centre and spread and compare distributions sharing a mean. A is selected because it explicitly fixes bar width at 1 and connects the asymmetric example to μ=1.25, variance=0.6875 and σ≈0.829. B's symmetric comparison demonstrates the same spread concept using another starting distribution. The selection clarifies height and mass within simple discrete displays without expanding the description to general grouped-data statistics."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-012",
+      "goalId": "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e05f68014b1802b4291d39b7ff5edb133442c8bfa83ad8b1365cb61a47fd1d84",
+      "pageFingerprint": "sha256:f56467a0417d3c844ba267e5c4edacf3fb5539a9bd5e66ff980dd18388e8fd97",
+      "goalReviewContextFingerprint": "sha256:517567bf41a5527c590a42c4eceb77d3eaa306d55a1c3b664debee349e01ff96",
+      "finalText": {
+        "titleDe": "Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen",
+        "titleEn": "Determine Expected Value, Variance, and Standard Deviation of Simple Discrete Random Variables",
+        "descriptionDe": "Die lernende Person kann für einfache diskrete Zufallsgrößen Erwartungswert, Varianz und Standardabweichung bestimmen, diese im Kontext deuten und damit einfache Glücksspiele untersuchen.",
+        "descriptionEn": "The learner can determine expected value, variance, and standard deviation for simple discrete random variables, interpret them in context, and use them to analyze simple games of chance."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+          "recordDigest": "sha256:fff97204be2b8ce539f059aeee60feaec1d0205cbae5fd3de5c78c2d50e3b45f"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+          "recordDigest": "sha256:d3a344b7621011d6cf484ef115da7f69ed8fec77ca871311cbd81bbfdbf2991f"
+        }
+      },
+      "rationaleDe": "Beide Runden deuten Erwartungswert, Varianz und Standardabweichung in einfachen Spielen und unterscheiden Auszahlung beziehungsweise Nettogewinn. B wird gewählt, weil sein Fall mit Wahrscheinlichkeiten 3/4 und 1/4 die Gewichtung ausdrücklich erfordert: Gewinne −1 und 3 liefern Mittel 0 und Varianz 3; eine feste Gebühr verschiebt nur den Mittelwert. As Vergleich gleich mittlerer Spiele mit verschiedener Streuung bleibt fachlich vereinbar und erhalten. Die Auswahl ändert weder den aktuellen DE/EN-Scope noch den fehlenden menschlichen Freigabestatus.",
+      "rationaleEn": "Both rounds interpret expectation, variance and standard deviation in simple games and distinguish payouts from net gain. B is selected because its probabilities 3/4 and 1/4 explicitly require weighting: gains −1 and 3 give mean 0 and variance 3, while a fixed fee shifts only the mean. A's comparison of games with equal means but different spreads remains compatible and preserved. The choice changes neither the current DE/EN scope nor the absence of human approval."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-013",
+      "goalId": "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c1246543dc5c3ce88e42cea2c52d5e3eaaf51fa72c6fedbfa121e1f11f3a9f49",
+      "pageFingerprint": "sha256:e81f10e3866d0153006f0556da17a6965b8100189ddaa881ba8b8dc90368a3a0",
+      "goalReviewContextFingerprint": "sha256:739189cfea4ed237f527f7065f4e821e2190ce543df575721c6f69fe549026c6",
+      "finalText": {
+        "titleDe": "Wahrscheinlichkeiten in Bernoulli-Ketten berechnen",
+        "titleEn": "Calculate probabilities in Bernoulli chains",
+        "descriptionDe": "Die lernende Person kann Bernoulli-Ketten in Sachzusammenhängen modellieren, mit der Binomialformel Wahrscheinlichkeiten berechnen und die Grenzen solcher Modelle reflektieren.",
+        "descriptionEn": "The learner can model Bernoulli chains in real-world contexts, calculate probabilities with the binomial formula, and reflect on the limits of such models."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+          "recordDigest": "sha256:3d3b4803a9fc0c8c893c17ce545d0e6a32df82e9d8b98c8102e22c1e38af9758"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+          "recordDigest": "sha256:09435a96341b2cf668600ff5258b88468fc84b905e48fbc9924b9ef4b2e64748"
+        }
+      },
+      "rationaleDe": "Die Runden stimmen bei fester Versuchszahl, Unabhängigkeit, konstantem p und dem kombinatorischen Faktor überein. A wird gewählt, weil die nicht symmetrische Kette B(5;0,2) mit 0,4096 für genau einen Treffer den Anordnungsfaktor prüft und der Wechsel zur Wartezeit die Grenze fester Versuchszahlen erklärt. Bs veränderte Trefferchancen durch Ermüdung ergänzen eine andere gültige Modellgrenze. Eine geometrische Verteilungsformel wird ausdrücklich nicht zur Pflicht; der gemeinsame Modellierungs- und Rechenkern rechtfertigt KEEP.",
+      "rationaleEn": "The rounds agree on fixed trial count, independence, constant p and the combinatorial factor. A is selected because the asymmetric B(5,0.2) case, giving 0.4096 for exactly one success, checks the arrangement factor, while changing to waiting time explains the fixed-trial boundary. B's fatigue-dependent success probabilities add another valid model limitation. No geometric-distribution formula becomes mandatory; the shared modelling and calculation core supports KEEP."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-014",
+      "goalId": "f7879354-1a82-4195-8e3c-a339a820439c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:353574e9137bcd13797e0f8eaeee811cce22ff049fb072039d1bda8a791b18ee",
+      "pageFingerprint": "sha256:6b3dd5c563c8d9ae4f5750cd59d57d151e4dfa510ca9aa8721d1411a27af2844",
+      "goalReviewContextFingerprint": "sha256:a44f77961158e3adeca37a6fa3ff1dc69e9b243827e4d0f9e7d3d5b10eea4009",
+      "finalText": {
+        "titleDe": "Erwartungswert und Standardabweichung binomialverteilter Zufallsgrößen bestimmen und deuten",
+        "titleEn": "Determine and interpret expected value and standard deviation of binomial random variables",
+        "descriptionDe": "Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert und Standardabweichung berechnen und beide Kenngrößen mit der zugrunde liegenden Situation in Beziehung setzen.",
+        "descriptionEn": "The learner can calculate expected value and standard deviation for binomial random variables and relate both measures to the underlying situation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.f7879354-1a82-4195-8e3c-a339a820439c",
+          "recordDigest": "sha256:6c727fab37e0b4982b914f8bad3c39c42dcf2ed9fc7e50fe614e8b6f032d61cc"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.f7879354-1a82-4195-8e3c-a339a820439c",
+          "recordDigest": "sha256:4856e065de7e86ce1302c30448a4b5feba2b892830fe37737c53991d4642a504"
+        }
+      },
+      "rationaleDe": "Beide Runden begrenzen das Ziel auf Erwartungswert und Standardabweichung und widerlegen die Gleichsetzung von gleichem Mittelwert und gleicher Streuung. A wird gewählt, weil es zwei vom Raster verschiedene Serien mit jeweils μ=20 und σ=√15 beziehungsweise 2 direkt verknüpft. Bs Vergleich bei μ=10 mit σ=√5 und 3 bestätigt denselben Gedanken. Die Varianz ist hier weiterhin höchstens Rechenzwischenstufe, keine hinzugesetzte eigenständige Pflicht; die DE/EN-Beschreibung bleibt materiell gleich und prüfbar.",
+      "rationaleEn": "Both rounds limit the goal to expectation and standard deviation and reject equating equal means with equal spread. A is selected because it directly connects two series different from the image, each with μ=20 but σ=√15 and 2 respectively. B's comparison at μ=10 with σ=√5 and 3 confirms the same idea. Variance remains at most an intermediate calculation, not an added independent requirement; the DE/EN description remains equivalent and assessable."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-015",
+      "goalId": "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c878c62b1c20d78e157a5ecf7485f3d7a3c86b5dfbaf1408001d594a10302c10",
+      "pageFingerprint": "sha256:3377e3f943cca90675d123eb163862ce4f9fc25073c4c02edd6bc487229f62bf",
+      "goalReviewContextFingerprint": "sha256:43e3a6d7ca41f01d44a1a0561ba47812951fe09a10838424360b45f355f77508",
+      "finalText": {
+        "titleDe": "Normalverteilungsdichte über μ, σ und Grapheneigenschaften beschreiben (LK)",
+        "titleEn": "Describe the normal density via mu, sigma, and graph properties (advanced course)",
+        "descriptionDe": "Die lernende Person kann den Einfluss der Parameter $\\mu$ und $\\sigma$ auf die Normalverteilung und ihre Glockenkurve beschreiben, Erwartungswert und Standardabweichung aus Term oder Graph entnehmen sowie Hochpunkt und Wendepunkte der Dichtefunktion lokalisieren.",
+        "descriptionEn": "The learner can describe the influence of the parameters $\\mu$ and $\\sigma$ on the normal distribution and its bell curve, read expected value and standard deviation from the term or graph, and locate the maximum and inflection points of the density function."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+          "recordDigest": "sha256:725ac4fe4d8e315e468f4bd6f842557a50017b10aa17c2d8be48a24994dd78ea"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+          "recordDigest": "sha256:22d70a84b468959280985625bdcc8fb1452be09a9517f79bc071fa4dbd6799de"
+        }
+      },
+      "rationaleDe": "Beide Runden erklären μ als Lageparameter und σ als positive Breite mit Wendestellen μ±σ. A wird gewählt, weil es aus einem vollständigen Dichteterm korrekt μ=5 und σ=3 liest und anschließend aus einem neuen Graphen Parameter sowie die Folgen verdoppelten σ erschließt. Bs umgekehrtes Lesen der Wendestellen 4 und 10 ergibt konsistent μ=7 und σ=3. Die Beiträge sind komplementär; eine vollständige Ableitungsherleitung wird von keiner Runde gefordert und nicht nachträglich in den Text aufgenommen.",
+      "rationaleEn": "Both rounds explain μ as location and positive σ as width, with inflection locations μ±σ. A is selected because it correctly reads μ=5 and σ=3 from a complete density expression and then infers parameters and the effect of doubling σ from a new graph. B's reverse reading of inflection locations 4 and 10 consistently gives μ=7 and σ=3. The contributions complement each other; neither requires a complete derivative proof, and none is added to the text."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-016",
+      "goalId": "44dba16e-2e86-56be-974b-a62093ef9211",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1295abcdc4ad701b8a91b5ec99d588ffdc5a5bde4574dd028d66bb4cec23d82f",
+      "pageFingerprint": "sha256:2198a4b99b599bea7e128a48d2a3f132bf33372d9d0bc710c65a534ae931ca9b",
+      "goalReviewContextFingerprint": "sha256:bdbedacd5f06b32b6aef4a9e745af159fcb47a4981705df39c727d0b06de6612",
+      "finalText": {
+        "titleDe": "Normalverteilung als Approximation binomialer Modelle (LK)",
+        "titleEn": "Normal Distribution as Approximation of Binomial Models (Advanced Course)",
+        "descriptionDe": "Die lernende Person kann Histogramme binomialverteilter Zufallsgrößen bei hinreichend großer Standardabweichung durch eine Normalverteilung approximieren, die Näherung fachlich begründen und den Bezug zu den Sigma-Regeln deuten.",
+        "descriptionEn": "The learner can approximate histograms of binomial random variables by a normal distribution for suitable parameters and a sufficiently large standard deviation, justify the approximation mathematically, and interpret its relation to sigma rules."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.44dba16e-2e86-56be-974b-a62093ef9211",
+          "recordDigest": "sha256:bda2f2f424da33712b9abac23d30e597f83d2cc4a995490447b2af26ac983f5d"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.44dba16e-2e86-56be-974b-a62093ef9211",
+          "recordDigest": "sha256:369fd70f9547d39f9cf69a7e258dc932c6f1c22783178f91020f211ddc773787"
+        }
+      },
+      "rationaleDe": "Beide Runden verbinden die Normalnäherung mit passenden Momenten, ausreichender Streuung und nur näherungsweisen Sigma-Anteilen; große Versuchszahl allein genügt jeweils ausdrücklich nicht. B wird gewählt, weil der Kontrast B(100;0,5) zu B(100;0,001) genau diese Grenze prüft und beim beschriebenen Histogramm-/Sigma-Kern bleibt. As Stetigkeitskorrektur 179,5 bis 220,5 ist mathematisch richtig und als vertiefender Ereignisvergleich erhalten, wird aber nicht zur zusätzlichen Mindestpflicht dieses Wortlauts. Kein materieller DE/EN-Konflikt bleibt offen.",
+      "rationaleEn": "Both rounds connect normal approximation to matching moments, sufficient spread and approximate sigma proportions; both explicitly reject large trial count alone as sufficient. B is selected because the contrast between B(100,0.5) and B(100,0.001) tests precisely that limit while staying within the stated histogram/sigma core. A's continuity correction from 179.5 to 220.5 is mathematically correct and preserved as a deeper event comparison, but not imposed as an additional minimum requirement of this wording. No substantive DE/EN conflict remains."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-017",
+      "goalId": "1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7227416f55126e85cefb4fa63192630893f20f066c541509a9d5e912c716a55b",
+      "pageFingerprint": "sha256:72d0521ee60c4673b7d3770228e9d71eb2471bf10fa5cbbba6b05db6f54d1101",
+      "goalReviewContextFingerprint": "sha256:bf680e8c9817798686e8560db3942d2020a2d2c4c7102df19ec7a945876cabb5",
+      "finalText": {
+        "titleDe": "Herleitung der Poisson-Verteilung als Grenzfall (LK)",
+        "titleEn": "Derive the Poisson distribution as a limit case",
+        "descriptionDe": "Die lernende Person kann für $n\\to\\infty$, $p_n\\to 0$ und $n p_n\\to\\lambda>0$ den Grenzübergang von der Binomial- zur Poisson-Verteilung herleiten, die Grenzschritte fachlich erklären und daraus ihre Eignung für seltene Ereignisse begründen.",
+        "descriptionEn": "The learner can derive the limiting transition from the binomial to the Poisson distribution for $n\\to\\infty$, $p_n\\to 0$, and $n p_n\\to\\lambda>0$, explain the limiting steps, and use them to justify the Poisson distribution's suitability for rare events."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+          "recordDigest": "sha256:e931511fec06c0274a2d7667f926316e7f15b6c8630c2eb73baf40673b26d45b"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+          "recordDigest": "sha256:20e8fab62fb04364687a2278e873092b381e25900bd522adcba4c079f5d7750d"
+        }
+      },
+      "rationaleDe": "Beide Runden verlangen eine echte Herleitung für festes k und erklären, warum seltene Einzelereignisse allein keinen festen Poisson-Parameter garantieren. B wird gewählt, weil seine Produktzerlegung unmittelbar np_n→λ statt exakt konstantem np_n verwendet und p_n=2/n+1/n² als nicht konstanten, konvergierenden Fall prüft. As konkreter Grenzwert 2e^(−2) und Gegenfall p_n=1/√n sind korrekt und komplementär. Die Rasterdarstellung des konstanten Spezialfalls ersetzt weder diese allgemeine Herleitung noch eine eigene numerische Bildprüfung. Der präzise aktuelle DE/EN-Text bleibt.",
+      "rationaleEn": "Both rounds require a genuine derivation for fixed k and explain why rare individual events alone do not guarantee a fixed Poisson parameter. B is selected because its factorisation directly uses np_n→λ rather than an exactly constant product, and tests p_n=2/n+1/n² as a non-constant convergent case. A's concrete limit 2e^(−2) and counterexample p_n=1/√n are correct and complementary. The image's constant-product special case replaces neither this general derivation nor separate numerical image review. The precise current DE/EN text is retained."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-final-current-18-v1-20260920-synthesis-v1-decision-018",
+      "goalId": "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b1cb147d0bad4e665754642608f71f66d4f1358f6728fe59acb060dc4130eac1",
+      "pageFingerprint": "sha256:86a6d7aa40fcc41f79348db5c22e727d8b08fccf06812f32ad6ca98191d75f89",
+      "goalReviewContextFingerprint": "sha256:c72780fae75db53571df85338a78f9e9a6a710ded32adf5fb1761d959674b218",
+      "finalText": {
+        "titleDe": "Sigma-Regeln für Verteilungen anwenden",
+        "titleEn": "Apply sigma rules for distributions",
+        "descriptionDe": "Die lernende Person kann an Histogrammen, Dichtegraphen und Diagrammen annähernd normalverteilter Größen ablesen, welcher Anteil der Werte in $\\sigma$-Umgebungen um den Mittelwert liegt, und die Sigma- beziehungsweise Quantilregeln für $1\\sigma$, $1{,}64\\sigma$, $1{,}96\\sigma$, $2\\sigma$, $2{,}58\\sigma$ und $3\\sigma$ qualitativ erläutern.",
+        "descriptionEn": "The learner can use histograms, density graphs, and diagrams of approximately normally distributed variables to identify what proportion of values lies within $\\sigma$ neighborhoods around the mean and qualitatively explain the sigma and quantile rules for $1\\sigma$, $1.64\\sigma$, $1.96\\sigma$, $2\\sigma$, $2.58\\sigma$, and $3\\sigma$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-stoch18-current-20260920-round-a-codex.8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+          "recordDigest": "sha256:a1f79ff7b95be81bf71f2d0ad7905798b5920e7f6c687c52fb224b656c18b0b6"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+          "recordDigest": "sha256:b45f9ac0a691138d67a79ca3fd07a774e21acecc4febe89f0cc2591f3d222a00"
+        }
+      },
+      "rationaleDe": "A und B stimmen in allen sechs Sigma-/Quantilfaktoren, den ungefähren zentralen Anteilen und der Normalitätsgrenze überein. A wird gewählt, weil aus einem zentralen 95-%-Intervall konkret zu einer oberen Grenze mit 5 % Überschreitung gewechselt wird; 1,96 und 1,64 werden dadurch sinnvoll unterschieden. Bs Aufteilung in zwei 2,5-%-Ränder ergänzt denselben Flächengedanken. Beide verlangen weder Dichteintegration noch ein Hypothesentestverfahren. Die unterschiedlichen Aufgabenbeispiele begründen keinen Änderungsbedarf der konsistenten DE/EN-Beschreibung.",
+      "rationaleEn": "A and B agree on all six sigma/quantile factors, approximate central proportions and the normality restriction. A is selected because it moves concretely from a central 95% interval to an upper boundary with 5% exceedance, meaningfully distinguishing 1.96 from 1.64. B's split into two 2.5% tails complements the same area interpretation. Neither requires density integration or a hypothesis-testing procedure. The differing examples do not warrant changing the consistent DE/EN description."
+    }
+  ],
+  "manifestFingerprint": "sha256:46fb1e0624bebdcea4e68114c69ce0be423cdbb5092a0157be7b6cc350c4e0ab"
+}

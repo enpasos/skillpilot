@@ -1,0 +1,479 @@
+{
+  "schemaVersion": 1,
+  "integratedAt": "2026-09-20T19:40:39.562Z",
+  "authority": "ai_candidate",
+  "humanApproved": false,
+  "independentReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/independent-review-a.json",
+  "records": [
+    {
+      "goalId": "74dc4b0d-a167-564c-bdc1-5cf510aee280",
+      "sourcePath": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-960a4ae8-80c5-4b49-9238-2c412d8cf47f.png",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/74dc4b0d-a167-564c-bdc1-5cf510aee280/candidate-v1.png",
+      "candidateSha256": "sha256:a03a52c3259669e99836770640c2e19ad1e77a7b15a119f5a167ba10c5c539fd",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/74dc4b0d-a167-564c-bdc1-5cf510aee280/prompt.md",
+      "promptSha256": "sha256:e63b4082f4459e0b3edfca9e026befeae2024194fbff4787302844b37ef9a33e",
+      "generator": "OpenAI builtin imagegen",
+      "actualPromptUsed": true,
+      "authorActuallyViewed": true,
+      "authorChecks": "3(x+2)-x=3x+6-x=2x+6; both evaluations at x=4 equal14. Distributive arrows point to both inner summands.",
+      "status": "candidate_pending_independent_review",
+      "humanApproved": false,
+      "independentChecks": [
+        {
+          "category": "distributive_law",
+          "result": "pass",
+          "evidence": "3(x + 2) − x wird korrekt zu 3x + 6 − x. Die roten Verteilungspfeile gehen vom Faktor 3 zu beiden Klammergliedern; das außerhalb stehende −x bleibt erhalten."
+        },
+        {
+          "category": "like_terms_and_signs",
+          "result": "pass",
+          "evidence": "3x − x = 2x; die Konstante 6 bleibt unverändert. Die resultierende Form 2x + 6 ist korrekt."
+        },
+        {
+          "category": "numerical_check",
+          "result": "pass",
+          "evidence": "Für x = 4 liefern 3·(4 + 2) − 4 und 2·4 + 6 jeweils 14. Beide Rechnungen im rechten Panel stimmen."
+        },
+        {
+          "category": "goal_fit",
+          "result": "pass",
+          "evidence": "Die drei sichtbaren Stationen entsprechen Ausmultiplizieren, Zusammenfassen und Überprüfen der aktuellen Zielbeschreibung. Kein anderer unabhängiger Stoff wird als neue Kompetenz eingeführt."
+        },
+        {
+          "category": "representation_and_readability",
+          "result": "pass",
+          "evidence": "Blaue, gelbe und grüne Panels machen die Reihenfolge erkennbar. Große Terme, klare Klammern und unterschiedliche Farben unterstützen die Umformung; die Comic-Figuren verdecken keine relevanten Zeichen."
+        }
+      ],
+      "previousGoal": {
+        "id": "74dc4b0d-a167-564c-bdc1-5cf510aee280",
+        "shortKey": "canonical_math_sek1_expand_algebraic_expressions",
+        "title": "Algebraische Terme ausmultiplizieren",
+        "titleEn": "Expand algebraic expressions",
+        "description": "Die lernende Person kann Produkte und Klammerausdrücke mithilfe des Distributivgesetzes ausmultiplizieren, gleichartige Terme zusammenfassen und die Umformung überprüfen.",
+        "descriptionEn": "The learner can expand products and bracketed expressions using the distributive law, collect like terms, and verify the transformation.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J8"
+        },
+        "requires": [
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true
+      },
+      "previousQa": {
+        "goalId": "74dc4b0d-a167-564c-bdc1-5cf510aee280",
+        "title": "Algebraische Terme ausmultiplizieren",
+        "description": "Die lernende Person kann Produkte und Klammerausdrücke mithilfe des Distributivgesetzes ausmultiplizieren, gleichartige Terme zusammenfassen und die Umformung überprüfen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "missing",
+        "missingReason": "deferred_provider_limitation",
+        "imageUrl": "",
+        "publicAssetPath": "",
+        "canonicalAssetPath": "",
+        "assetSha256": "",
+        "umlautsCorrectChatGpt": "no",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": null,
+        "chatGptReviewer": "",
+        "chatGptNotes": "",
+        "humanReviewedAt": null,
+        "humanReviewer": ""
+      }
+    },
+    {
+      "goalId": "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+      "sourcePath": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-d9e1b38a-b0e2-4c78-9706-6118d8a9dd8f.png",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/96c55cb6-d2c7-5145-8567-b5f570f55a8a/candidate-v1.png",
+      "candidateSha256": "sha256:ad705c2b94b1e59d06d82d6834e4fcef28fb58bcd0750afb75c4a1109e2f920b",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/96c55cb6-d2c7-5145-8567-b5f570f55a8a/prompt.md",
+      "promptSha256": "sha256:7c68ded5e5ba8baa6a3f981b04bc6d974ac3e1e2a9cf33829586390c5f4ef463",
+      "generator": "OpenAI builtin imagegen",
+      "actualPromptUsed": true,
+      "authorActuallyViewed": true,
+      "authorChecks": "6x+9=3·2x+3·3=3(2x+3); reverse multiplication and the common factor are consistently shown.",
+      "status": "candidate_pending_independent_review",
+      "humanApproved": false,
+      "independentChecks": [
+        {
+          "category": "common_factor",
+          "result": "pass",
+          "evidence": "6x + 9 = 3·2x + 3·3 zeigt den gemeinsamen Faktor 3 in beiden Summanden korrekt."
+        },
+        {
+          "category": "factorisation",
+          "result": "pass",
+          "evidence": "6x + 9 = 3(2x + 3) ist eine gültige Identität. Gemeinsamer Faktor und verbleibende Summe sind an passenden Stellen bezeichnet."
+        },
+        {
+          "category": "reverse_expansion",
+          "result": "pass",
+          "evidence": "Die Rückmultiplikation 3·2x = 6x und 3·3 = 9 ergibt wieder die Ausgangssumme; die Gesamtgleichung im rechten Panel stimmt."
+        },
+        {
+          "category": "goal_fit",
+          "result": "pass",
+          "evidence": "Erkennen, Ausklammern und Prüfen durch Rückmultiplikation bilden genau die drei Aspekte des aktuellen Ziels. Ein geeigneter einfacher Term genügt als Orientierung."
+        },
+        {
+          "category": "representation_and_readability",
+          "result": "pass",
+          "evidence": "Die wiederholte grüne Hervorhebung verbindet alle Vorkommen des Faktors 3. Die drei klar begrenzten Panels zeigen eine sinnvolle Reihenfolge und die Pfeile sind mit den lokalen Teilprodukten vereinbar."
+        }
+      ],
+      "previousGoal": {
+        "id": "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+        "shortKey": "canonical_math_sek1_factor_algebraic_expressions",
+        "title": "Algebraische Terme faktorisieren",
+        "titleEn": "Factor algebraic expressions",
+        "description": "Die lernende Person kann bei geeigneten algebraischen Termen gemeinsame Faktoren erkennen, ausklammern und durch Rückmultiplikation prüfen.",
+        "descriptionEn": "The learner can identify and factor out common factors in suitable algebraic expressions and verify the factorisation by expansion.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "J8"
+        },
+        "requires": [
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true
+      },
+      "previousQa": {
+        "goalId": "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+        "title": "Algebraische Terme faktorisieren",
+        "description": "Die lernende Person kann bei geeigneten algebraischen Termen gemeinsame Faktoren erkennen, ausklammern und durch Rückmultiplikation prüfen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "missing",
+        "missingReason": "deferred_provider_limitation",
+        "imageUrl": "",
+        "publicAssetPath": "",
+        "canonicalAssetPath": "",
+        "assetSha256": "",
+        "umlautsCorrectChatGpt": "no",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": null,
+        "chatGptReviewer": "",
+        "chatGptNotes": "",
+        "humanReviewedAt": null,
+        "humanReviewer": ""
+      }
+    },
+    {
+      "goalId": "e2bf726a-126c-5c66-9fbb-6e04c129bb0f",
+      "sourcePath": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-f2d53792-6cac-458c-b071-8b5ccec7a9a7.png",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/e2bf726a-126c-5c66-9fbb-6e04c129bb0f/candidate-v1.png",
+      "candidateSha256": "sha256:8a49fe5712e844c33ec5f3fdb15cf426c43be60d7008b725650f97d748dba8b5",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/e2bf726a-126c-5c66-9fbb-6e04c129bb0f/prompt.md",
+      "promptSha256": "sha256:5e5c3049f79072059af13032c33f3c6ea45e3c849dbfa5f7489db055bff5eb99",
+      "generator": "OpenAI builtin imagegen",
+      "actualPromptUsed": true,
+      "authorActuallyViewed": true,
+      "authorChecks": "For integers, n=4k=2(2k) proves the forward implication. n=6 is a valid counterexample to the reverse; no equivalence is claimed.",
+      "status": "candidate_pending_independent_review",
+      "humanApproved": false,
+      "independentChecks": [
+        {
+          "category": "domain_and_forward_implication",
+          "result": "pass",
+          "evidence": "Der Geltungsbereich sind ausdrücklich ganze Zahlen n. Aus n = 4k = 2·(2k), k ganzzahlig, folgt korrekt, dass ein Vielfaches von 4 gerade ist."
+        },
+        {
+          "category": "converse_and_counterexample",
+          "result": "pass",
+          "evidence": "Die Umkehrung 'gerade ⇒ durch 4 teilbar' wird als Frage geprüft. n = 6 ist gerade und nicht durch 4 teilbar und widerlegt daher die Umkehrung."
+        },
+        {
+          "category": "equivalence_conclusion",
+          "result": "pass",
+          "evidence": "Die Schlussfolgerung 'Keine Äquivalenz' ist korrekt, weil eine Richtung gilt und die andere durch ein gültiges Gegenbeispiel scheitert. Die grünen Haken bestätigen jeweils die wahren Einzelaussagen über 6, nicht die falsche Umkehrung."
+        },
+        {
+          "category": "goal_fit",
+          "result": "pass",
+          "evidence": "Der aktuelle Kompetenzkern – Hinrichtung begründen, Umkehrung prüfen und eine behauptete Äquivalenz widerlegen – ist am selben mathematischen Beispiel kohärent sichtbar."
+        },
+        {
+          "category": "representation_and_readability",
+          "result": "pass",
+          "evidence": "Zwei gegensätzliche Panels unterscheiden Begründung und Gegenbeispiel. Große Richtungszeichen, explizite Frageform und die rote Schlusszeile vermeiden eine Verwechslung von Implikation und Äquivalenz; die Comic-Detektive bleiben unterstützend."
+        }
+      ],
+      "previousGoal": {
+        "id": "e2bf726a-126c-5c66-9fbb-6e04c129bb0f",
+        "shortKey": "canonical_math_q4_test_equivalence_by_proof_or_counterexample",
+        "title": "Äquivalenz durch Begründung oder Gegenbeispiel prüfen",
+        "titleEn": "Test equivalence by proof or counterexample",
+        "description": "Die lernende Person kann prüfen, ob eine mathematische Aussage und ihre Umkehrung beide gelten, und eine behauptete Äquivalenz durch Begründungen bestätigen oder durch ein Gegenbeispiel widerlegen.",
+        "descriptionEn": "The learner can test whether a mathematical statement and its converse are both true and can confirm a claimed equivalence by justification or refute it with a counterexample.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.2",
+            "K1.3"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q4"
+        },
+        "requires": [
+          "28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+          "3de1d5b0-0a26-5124-b066-92b65a882c5e"
+        ],
+        "contains": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true
+      },
+      "previousQa": {
+        "goalId": "e2bf726a-126c-5c66-9fbb-6e04c129bb0f",
+        "title": "Äquivalenz durch Begründung oder Gegenbeispiel prüfen",
+        "description": "Die lernende Person kann prüfen, ob eine mathematische Aussage und ihre Umkehrung beide gelten, und eine behauptete Äquivalenz durch Begründungen bestätigen oder durch ein Gegenbeispiel widerlegen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "missing",
+        "missingReason": "deferred_provider_limitation",
+        "imageUrl": "",
+        "publicAssetPath": "",
+        "canonicalAssetPath": "",
+        "assetSha256": "",
+        "umlautsCorrectChatGpt": "no",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": null,
+        "chatGptReviewer": "",
+        "chatGptNotes": "",
+        "humanReviewedAt": null,
+        "humanReviewer": ""
+      }
+    },
+    {
+      "goalId": "28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+      "sourcePath": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-33af9abd-a753-4bc1-91dc-1aa56b6da016.png",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/28d098ab-f33f-5baf-8261-f1c0c0f711fa/candidate-v1.png",
+      "candidateSha256": "sha256:4bb539dc0663c2425d02bec3f0b78ee21a1a23fa249dea14fa15e191fbdbf5f7",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-missing-algebra-logic-4-20260920-v1/28d098ab-f33f-5baf-8261-f1c0c0f711fa/prompt.md",
+      "promptSha256": "sha256:f315df4775d0ff4cdd2ab001f7917587250d43d7cf56f619d36f8a5899f8f3d8",
+      "generator": "OpenAI builtin imagegen",
+      "actualPromptUsed": true,
+      "authorActuallyViewed": true,
+      "authorChecks": "Premise and conclusion are distinct, integer domain explicit;12=4·3 and12=2·6 instantiate the true implication without claiming the converse.",
+      "status": "candidate_pending_independent_review",
+      "humanApproved": false,
+      "independentChecks": [
+        {
+          "category": "premise_and_conclusion",
+          "result": "pass",
+          "evidence": "In der Aussage 'Wenn n durch 4 teilbar ist, dann ist n gerade' ist die Teilbarkeit durch 4 korrekt als Voraussetzung, die Geradheit korrekt als Folgerung benannt."
+        },
+        {
+          "category": "direction_and_scope",
+          "result": "pass",
+          "evidence": "Der Pfeil führt nur von Voraussetzung zu Folgerung. Der Geltungsbereich 'ganze Zahlen n' ist ausdrücklich angegeben; eine Umkehrung oder Äquivalenz wird nicht behauptet."
+        },
+        {
+          "category": "example_arithmetic",
+          "result": "pass",
+          "evidence": "Für n = 12 sind 12 = 4·3 und 12 = 2·6 richtig. Damit sind sowohl die Voraussetzung als auch die Folgerung für das Beispiel erfüllt."
+        },
+        {
+          "category": "general_statement",
+          "result": "pass",
+          "evidence": "Die Schlusszeile beschränkt die Aussage korrekt auf jede ganze Zahl mit der genannten Voraussetzung. Sie behauptet nicht, dass jede ganze Zahl durch 4 teilbar oder gerade sei."
+        },
+        {
+          "category": "goal_fit",
+          "result": "pass",
+          "evidence": "Die Darstellung macht genau das Benennen von Voraussetzung und Folgerung sowie den Geltungsbereich sichtbar. Das einfache Teilbarkeitsbeispiel ermöglicht die Konzentration auf die logische Struktur."
+        },
+        {
+          "category": "representation_and_readability",
+          "result": "pass",
+          "evidence": "Die Wenn-Dann-Aussage steht über zwei deutlich bezeichneten Feldern; der breite gerichtete Pfeil verknüpft diese. Das Zahlenbeispiel ist räumlich getrennt, und die Comic-Elemente beeinträchtigen die Zeichen nicht."
+        }
+      ],
+      "previousGoal": {
+        "id": "28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+        "shortKey": "canonical_math_q4_identify_premise_and_conclusion",
+        "title": "Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden",
+        "titleEn": "Distinguish premises and conclusions in if-then statements",
+        "description": "Die lernende Person kann in einer mathematischen Wenn-Dann-Aussage Voraussetzung und Folgerung eindeutig benennen und den Geltungsbereich der Aussage angeben.",
+        "descriptionEn": "The learner can identify the premise and conclusion in a mathematical if-then statement and state the scope in which the statement applies.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.2",
+            "K1.3"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "RLP Berlin Mathematik GO Teil C, Kurs ma-Z2 Logik, 'Aussagen- und Praedikatenlogik' sowie 'Quantoren, Verknuepfungen bei Aussageformen, Mengendiagramme', S. 32.",
+        "requires": [
+          "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "3de1d5b0-0a26-5124-b066-92b65a882c5e"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "semanticAtomic": true
+      },
+      "previousQa": {
+        "goalId": "28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+        "title": "Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden",
+        "description": "Die lernende Person kann in einer mathematischen Wenn-Dann-Aussage Voraussetzung und Folgerung eindeutig benennen und den Geltungsbereich der Aussage angeben.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "missing",
+        "missingReason": "deferred_provider_limitation",
+        "imageUrl": "",
+        "publicAssetPath": "",
+        "canonicalAssetPath": "",
+        "assetSha256": "",
+        "umlautsCorrectChatGpt": "no",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": null,
+        "chatGptReviewer": "",
+        "chatGptNotes": "",
+        "humanReviewedAt": null,
+        "humanReviewer": ""
+      }
+    }
+  ]
+}

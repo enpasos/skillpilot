@@ -8,49 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `b41cb496-dad5-596e-9c23-cdcbdab3ec2e.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/b41cb496-dad5-596e-9c23-cdcbdab3ec2e.jpg`
+- Quellbild: `b41cb496-dad5-596e-9c23-cdcbdab3ec2e.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/b41cb496-dad5-596e-9c23-cdcbdab3ec2e.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Anteilssachprobleme mit rationalen Zahlen modellieren
-Beschreibung: Die lernende Person kann Sachprobleme mit Anteilen oder Anteilen von Anteilen in Terme oder Rechenwege mit rationalen Zahlen übersetzen und Ergebnisse im Kontext deuten.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Ueberarbeite die bestehende dreiteilige Cartoon-Infografik nur minimal und erhalte Komposition, Stil, Gartenbeispiel und korrekte Rechnung.
-- Korrigiere den Text in der kleinen Denk-/Sprechblase links unten: Dort muss klar "2/5 davon Blumen" stehen.
-- In dieser kleinen Denk-/Sprechblase soll genau ein einziger Bruch "2/5" stehen, direkt gefolgt von "davon Blumen"; kein Gleichheitszeichen und keine zweite Wiederholung von "2/5".
-- Das Wort muss exakt "davon" heissen, nicht "sevon" und auch keine andere Variante.
-- Schreibe "2/5" in dieser kleinen Denk-/Sprechblase eindeutig als Bruch mit Bruchstrich: 2 oben, 5 unten, gut lesbarer horizontaler Bruchstrich dazwischen.
-- Die fachliche Rechnung muss unveraendert korrekt bleiben:
-  - Der Garten hat 3/4 Rasen.
-  - Der Rest ist 1/4.
-  - Vom Rest sind 2/5 Blumen.
-  - 2/5 von 1/4 ist 2/20 = 1/10.
-  - Der Blumenanteil betraegt 1/10 des gesamten Gartens.
-- Alle Brueche muessen gut lesbar sein und mit Zaehler, Nenner und Bruchstrich zusammenpassen.
-
-Vermeiden:
-- Kein Wort "sevon" im Bild.
-- Keine Darstellung "2 5" ohne Bruchstrich.
-- Kein Text wie "2/5 = 2/5 davon Blumen"; die kleine Denk-/Sprechblase soll schlicht "2/5 davon Blumen" zeigen.
-- Keine geaenderten Zahlen, keine geaenderten Kreisanteile und keine andere Ergebnisgroesse.
-- Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
+Use case: precise-object-edit, scientific-educational. Input image 1 is the edit target. Make ONE small correction only: remove the tall green brace immediately to the RIGHT of the twenty-cell garden. That brace extends too far down and wrongly includes brown cells. Keep the text "3/4 Rasen" as a plain label; add a thin short leader pointing into the GREEN top three rows if needed. Preserve the grid exactly: FOUR rows by FIVE columns; FIFTEEN green cells in the top three rows; bottom row TWO yellow flower cells and THREE brown rest cells. Preserve both correct bottom braces and labels 1/10 Blumen, 3/20 Rest. Do not move or resize the grid, cells or any other image part. Preserve every formula and all characters. Friendly German comic illustration, pale opaque background, landscape PNG, no new decoration or technical IDs.
 ```
 
 ## Review-Notiz

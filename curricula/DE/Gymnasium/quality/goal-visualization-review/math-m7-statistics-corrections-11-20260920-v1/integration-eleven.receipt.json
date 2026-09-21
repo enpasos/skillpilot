@@ -1,0 +1,1803 @@
+{
+  "schemaVersion": 1,
+  "integratedAt": "2026-09-20T20:56:17.042Z",
+  "authority": "ai_candidate",
+  "humanApproved": false,
+  "records": [
+    {
+      "goalId": "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+      "version": "v1",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/candidate-v1.png",
+      "candidateSha256": "sha256:3e7b360bfcb281e3552812d31d3932f01806d89fb3d7c3417fe56aa10e6730ff",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/prompt.md",
+      "promptSha256": "sha256:7427e38f29f779a13f60305f254d964ce306e4c089c70dd274d17f5b7a1ac523",
+      "rootChecks": "The observed x=5 points at category 5, with 0–4 blue and 5–20 red (explicit ellipsis). H0 is rejected for X≥k and otherwise not rejected; the teaching flow distinguishes uncertain hypothesis, planned rule, observation and decision.",
+      "independentReview": {
+        "goalId": "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+        "title": "Argumentationsmuster von Hypothesentests erläutern",
+        "descriptionDe": "Die lernende Person kann die Grundidee eines Hypothesentests erläutern: Eine Nullhypothese wird unter Unsicherheit geprüft, ein kritischer Bereich wird festgelegt und die Entscheidung wird mit einer möglichen Irrtumswahrscheinlichkeit verbunden.",
+        "descriptionEn": "The learner can explain the basic idea of a hypothesis test: a null hypothesis is checked under uncertainty, a critical region is defined, and the decision is linked to a possible error probability.",
+        "canonicalGoalSha256": "sha256:0b086889ebfd3025003aba8eaa7fa09a82a091f8553342f628484b1c08996423",
+        "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not a native evidence fingerprint",
+        "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/candidate-v1.png",
+        "assetSha256": "sha256:3e7b360bfcb281e3552812d31d3932f01806d89fb3d7c3417fe56aa10e6730ff",
+        "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/prompt.md",
+        "promptSha256": "sha256:7427e38f29f779a13f60305f254d964ce306e4c089c70dd274d17f5b7a1ac523",
+        "generationSha256": "sha256:1ee577891c1cbee26f4205114caf2021c3edb39cae0b65aa4162dc0e117650fa",
+        "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+        "generationToolAsRecorded": "image_gen.imagegen",
+        "reviewer": "/root/math_m7_post5_context9_blind_b",
+        "actualReviewedAt": "2026-09-20T20:25:07Z",
+        "inspected": true,
+        "decision": "accept",
+        "humanApproved": false,
+        "checks": [
+          "H0:p≤0,10 und H1:p>0,10 sind komplementär im Parameterraum [0,1]; n=20 und X=Anzahl defekter Teile bilden ein plausibles Anteilstest-Szenario.",
+          "Die vier Panels trennen unsichere Nullhypothese, Planung vor den Daten, Beobachtung und Entscheidung. Die Regel X≥k ist als rechtsseitiger kritischer Bereich gekennzeichnet.",
+          "Beide Ergebnisleisten zeigen blaue Kategorien 0–4 und rote Kategorien 5,6,7,…,20. Die Auslassung ist sichtbar; es wird keine unverzerrte lineare 0-bis-20-Längenskala behauptet.",
+          "Der Beobachtungspfeil trifft die erste rote Kategorie 5, nicht eine Position nahe 10. Zähler und Beobachtung stimmen damit mit der Entscheidung überein.",
+          "Der Ja-Zweig verwirft H0 und bezeichnet die Daten als Unterstützung für H1; der Nein-Zweig lautet H0 nicht verwerfen, nicht H0 bewiesen. α wird als Typ-1-Irrtumswahrscheinlichkeit benannt.",
+          "Die Personen und Förderbandteile sind illustrative Szenen, kein vollständig ausgezähltes 20-Objekte-Datenset. Klare Comicfiguren, konsistente Blau-/Rot-Semantik und gut erkennbare Prozesspfeile passen zum Ziel."
+        ],
+        "findings": [],
+        "limitations": [
+          "Die gestrichelte Linie zwischen 4 und 5 markiert die Entscheidungsgrenze der diskreten Kategorien; aus ihrer geometrischen Lage darf kein zusätzlicher nichtganzzahliger Testwert k abgelesen werden.",
+          "α ist im fachlichen Kontext die Fehlerwahrscheinlichkeit bei wahrer Nullhypothese, keine nachträgliche Wahrscheinlichkeit dafür, dass die verworfene H0 wahr war."
+        ],
+        "rationale": "Die tatsächlichen Kategorien, Pfeile und Entscheidungsformulierungen tragen die grundlegende Argumentation des Hypothesentests korrekt. Die schematische Ereignisdarstellung behauptet keine Balkenwahrscheinlichkeiten."
+      },
+      "previousGoal": {
+        "id": "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+        "title": "Argumentationsmuster von Hypothesentests erläutern",
+        "titleEn": "Explain the reasoning pattern of hypothesis tests",
+        "description": "Die lernende Person kann die Grundidee eines Hypothesentests erläutern: Eine Nullhypothese wird unter Unsicherheit geprüft, ein kritischer Bereich wird festgelegt und die Entscheidung wird mit einer möglichen Irrtumswahrscheinlichkeit verbunden.",
+        "descriptionEn": "The learner can explain the basic idea of a hypothesis test: a null hypothesis is checked under uncertainty, a critical region is defined, and the decision is linked to a possible error probability.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+        ],
+        "dimensionTags": {
+          "framework": "bw-bp2016",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.5, Kompetenz 1, S. 44; HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.3, S. 47",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+            "title": "Visualisierung: Argumentationsmuster von Hypothesentests erläutern",
+            "url": "/assets/goal-visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Argumentationsmuster von Hypothesentests erläutern.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Argumentationsmuster von Hypothesentests erläutern\". Die lernende Person kann die Grundidee eines Hypothesentests erläutern: Eine Nullhypothese wird unter Unsicherheit geprüft, ein kritischer Bereich wird festgelegt und die Entscheidung wird mit einer möglichen Irrtumswahrscheinlichkeit verbunden.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "previousQa": {
+        "goalId": "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+        "title": "Argumentationsmuster von Hypothesentests erläutern",
+        "description": "Die lernende Person kann die Grundidee eines Hypothesentests erläutern: Eine Nullhypothese wird unter Unsicherheit geprüft, ein kritischer Bereich wird festgelegt und die Entscheidung wird mit einer möglichen Irrtumswahrscheinlichkeit verbunden.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b.jpg",
+        "assetSha256": "sha256:68905ac2a51d65ba4deb60d500314cb790aa3e91b5dc1849a2086cfb1c28888a",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "yes",
+        "humanApproved": "yes",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-07-06T13:58:51.035Z",
+        "chatGptReviewer": "codex",
+        "chatGptNotes": "Content and umlaut checks approved from accepted review ledger mathematik-batch-091.md (accepted_pilot). Review note: The image correctly shows the test argument chain: formulate `H0/H1`, define the test variable before observing data, use the distribution under `H0`, compare the observed value with a critical region, and decide between rejecting and not rejecting `H0`.",
+        "humanReviewedAt": "2026-07-07T05:09:29.215Z",
+        "humanReviewer": "workbench"
+      },
+      "oldFiles": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b.jpg",
+          "sha256": "sha256:68905ac2a51d65ba4deb60d500314cb790aa3e91b5dc1849a2086cfb1c28888a",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/app/public/assets/goal-visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b.jpg",
+          "sha256": "sha256:68905ac2a51d65ba4deb60d500314cb790aa3e91b5dc1849a2086cfb1c28888a",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b.jpg"
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b.jpg",
+          "sha256": "sha256:68905ac2a51d65ba4deb60d500314cb790aa3e91b5dc1849a2086cfb1c28888a",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/prompt.de.md",
+          "sha256": "sha256:d9ecadab9e6fecedfbcaa58faf3e7f8a2365a07b01e6b9d4bb4f70d2c079ecb8",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/prompt.de.md"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/image-reconstruction-prompt.de.md",
+          "sha256": "sha256:5a0090b14bb5dfd6baa32d996de684bf19eaf83c2b5d9d6520e5cec6f8839dd6",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/image-reconstruction-prompt.de.md"
+        }
+      ]
+    },
+    {
+      "goalId": "eb2cecd6-5dca-5a2e-988b-a29b24c20345",
+      "version": "v1",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/eb2cecd6-5dca-5a2e-988b-a29b24c20345/candidate-v1.png",
+      "candidateSha256": "sha256:124cdd74a7e5a5cd0648e28b4a7061c0a35b568b11e1288c827c7fece3500164",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/eb2cecd6-5dca-5a2e-988b-a29b24c20345/prompt.md",
+      "promptSha256": "sha256:7c219c0c7215ec4bd8db1b5615b425f38e9c35027fb258a3a7151ff6b30fbaa8",
+      "rootChecks": "B(20;0.10) is now explicitly the boundary distribution at p=0.10, not the distribution for every composite-null p. x=5 and the first rejecting discrete category coincide.",
+      "independentReview": {
+        "goalId": "eb2cecd6-5dca-5a2e-988b-a29b24c20345",
+        "title": "Testkennzahlen und Testvariablen bestimmen",
+        "descriptionDe": "Die lernende Person kann für Hypothesentests bei Anteilen eine geeignete Zufallsgröße definieren, deren Verteilung unter der Nullhypothese angeben und zu Beobachtungen passende Testkennzahlen bestimmen.",
+        "descriptionEn": "The learner can define a suitable random variable for hypothesis tests on proportions, state its distribution under the null hypothesis, and determine test statistics suitable for observations.",
+        "canonicalGoalSha256": "sha256:a632cf6c81bc36376cac09d7396af04b7ac056e50d3334cbbf3b011ca195b3f1",
+        "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not a native evidence fingerprint",
+        "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/eb2cecd6-5dca-5a2e-988b-a29b24c20345/candidate-v1.png",
+        "assetSha256": "sha256:124cdd74a7e5a5cd0648e28b4a7061c0a35b568b11e1288c827c7fece3500164",
+        "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/eb2cecd6-5dca-5a2e-988b-a29b24c20345/prompt.md",
+        "promptSha256": "sha256:7c219c0c7215ec4bd8db1b5615b425f38e9c35027fb258a3a7151ff6b30fbaa8",
+        "generationSha256": "sha256:db8c2a8f3cf333df694ec738d697a699d742d18bb43605368c98c3146b0a721f",
+        "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+        "generationToolAsRecorded": "image_gen.imagegen",
+        "reviewer": "/root/math_m7_post5_context9_blind_b",
+        "actualReviewedAt": "2026-09-20T20:25:07Z",
+        "inspected": true,
+        "decision": "accept",
+        "humanApproved": false,
+        "checks": [
+          "X zählt fehlerhafte Teile unter 20 geprüften Teilen; der beobachtete Wert ist ausdrücklich x_beob=5.",
+          "Die Beschriftung 'Am Rand von H0 (p=0,10)' bindet X~B(20;0,10) an den Randpunkt. Es wird nicht länger behauptet, dieselbe Verteilung gelte für jedes p≤0,10.",
+          "Die diskreten Zellen 0,1,2,3,4 sind blau; 5,6,7,…,20 sind rot. Die Grenze liegt explizit zwischen 4 und 5, und der Pfeil zeigt auf die Zelle 5.",
+          "Ablehnungsbereich X≥5 und H0 verwerfen folgen korrekt für die beobachtete 5. Die Ellipse kennzeichnet ausgelassene Kategorien; gleich breite Ereigniszellen sind keine Aussage über gleiche Wahrscheinlichkeiten.",
+          "Die Formeln und die beobachtete Kennzahl sind gut lesbar. Die reduzierte Kästen-/Zellen-Grafik passt zur abstrakten Variablenzuordnung. Gegen das ebenfalls tatsächlich angesehene aktive JPG geprüft: vorhandene Darstellungsform und Farbsemantik bleiben erhalten."
+        ],
+        "findings": [],
+        "limitations": [
+          "Das Bild setzt das übliche Binomialmodell der Anteilstests voraus; es dient der Variablen- und Beobachtungszuordnung und erklärt nicht sämtliche Unabhängigkeitsannahmen."
+        ],
+        "rationale": "Randverteilung, Testvariable und beobachtete Kennzahl sind fachlich sauber getrennt. Das konkrete Entscheidungsbeispiel bleibt konsistent und die bestehende präzise Darstellungsform ist angemessen."
+      },
+      "previousGoal": {
+        "id": "eb2cecd6-5dca-5a2e-988b-a29b24c20345",
+        "title": "Testkennzahlen und Testvariablen bestimmen",
+        "titleEn": "Determine test statistics and test variables",
+        "description": "Die lernende Person kann für Hypothesentests bei Anteilen eine geeignete Zufallsgröße definieren, deren Verteilung unter der Nullhypothese angeben und zu Beobachtungen passende Testkennzahlen bestimmen.",
+        "descriptionEn": "The learner can define a suitable random variable for hypothesis tests on proportions, state its distribution under the null hypothesis, and determine test statistics suitable for observations.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "f14e1643-ad8d-5235-a832-97987fa18489",
+          "e495fa38-b198-5280-a405-9e41cafd6d17"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "eb2cecd6-5dca-5a2e-988b-a29b24c20345",
+            "title": "Visualisierung: Testkennzahlen und Testvariablen bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/eb2cecd6-5dca-5a2e-988b-a29b24c20345.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Testkennzahlen und Testvariablen bestimmen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Testkennzahlen und Testvariablen bestimmen\". Die lernende Person kann für Hypothesentests bei Anteilen eine geeignete Zufallsgröße definieren, deren Verteilung unter der Nullhypothese angeben und zu Beobachtungen passende Testkennzahlen bestimmen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "previousQa": {
+        "goalId": "eb2cecd6-5dca-5a2e-988b-a29b24c20345",
+        "title": "Testkennzahlen und Testvariablen bestimmen",
+        "description": "Die lernende Person kann für Hypothesentests bei Anteilen eine geeignete Zufallsgröße definieren, deren Verteilung unter der Nullhypothese angeben und zu Beobachtungen passende Testkennzahlen bestimmen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/eb2cecd6-5dca-5a2e-988b-a29b24c20345.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/eb2cecd6-5dca-5a2e-988b-a29b24c20345.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/eb2cecd6-5dca-5a2e-988b-a29b24c20345.jpg",
+        "assetSha256": "sha256:a406676b7bc7bf79e1e76e31f28198f0f66be9ee5b628d5b91064b59949adebd",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "yes",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-07-06T13:58:51.035Z",
+        "chatGptReviewer": "codex",
+        "chatGptNotes": "Content and umlaut checks approved from accepted review ledger mathematik-batch-091.md (accepted_pilot). Review note: The image correctly frames the test variable as `X = number of defective items` in `n=20` trials, shows the distribution of `X` under `H0`, and separates observed value, critical region, and final decision.",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:a406676b7bc7bf79e1e76e31f28198f0f66be9ee5b628d5b91064b59949adebd",
+        "aiReviewedAt": "2026-07-16T11:56:02.369Z",
+        "aiReviewer": "codex-fresh-vision-2026-07-16",
+        "aiNotes": "The accepted final candidate makes the test variable, null distribution, observed value, critical boundary, rejection set, and decision mutually consistent without a misleading continuous graph. The final text-and-integer-strip version has no continuous distribution symbol, uses X throughout, places the boundary between 4 and 5, and starts the red rejection region at 5."
+      },
+      "oldFiles": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/eb2cecd6-5dca-5a2e-988b-a29b24c20345.jpg",
+          "sha256": "sha256:a406676b7bc7bf79e1e76e31f28198f0f66be9ee5b628d5b91064b59949adebd",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/app/public/assets/goal-visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/eb2cecd6-5dca-5a2e-988b-a29b24c20345.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/eb2cecd6-5dca-5a2e-988b-a29b24c20345.jpg",
+          "sha256": "sha256:a406676b7bc7bf79e1e76e31f28198f0f66be9ee5b628d5b91064b59949adebd",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/eb2cecd6-5dca-5a2e-988b-a29b24c20345.jpg"
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/eb2cecd6-5dca-5a2e-988b-a29b24c20345.jpg",
+          "sha256": "sha256:a406676b7bc7bf79e1e76e31f28198f0f66be9ee5b628d5b91064b59949adebd",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/eb2cecd6-5dca-5a2e-988b-a29b24c20345.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/prompt.de.md",
+          "sha256": "sha256:421dfe65a52fecfa362b640138d6922e09d8208314c8d71cea11091cf522f9c7",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/prompt.de.md"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/image-reconstruction-prompt.de.md",
+          "sha256": "sha256:06a2f54410770dec4c9aa86699389dad2384b70debc7f7629b7d17e27e14ef58",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/image-reconstruction-prompt.de.md"
+        }
+      ]
+    },
+    {
+      "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+      "version": "v1",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/78bfbde4-8e16-529e-bd53-4e29d960b2b2/candidate-v1.png",
+      "candidateSha256": "sha256:b045632a4ba8a64e5365f54c3e97844fb83ddd8f62f6c7028d5758bcf906779e",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/78bfbde4-8e16-529e-bd53-4e29d960b2b2/prompt.md",
+      "promptSha256": "sha256:30ad896b86cfc92218f4b6e099e053375c1ef39498ccfd998a39c40451a6daad",
+      "rootChecks": "For n=20 and rejection X≥5, alpha=P_0.1(X≥5)=0.0431745 and beta=P_0.25(X<5)=0.4148415. The two strips mark exactly these complementary event ranges; no probability-height claim.",
+      "independentReview": {
+        "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+        "title": "Fehlerwahrscheinlichkeiten berechnen",
+        "descriptionDe": "Die lernende Person kann zu einer gegebenen Entscheidungsregel die Fehlerwahrscheinlichkeiten α und β bestimmen, auch mit digitalen Werkzeugen berechnen und rechnerisch nachvollziehen.",
+        "descriptionEn": "The learner can determine the error probabilities α and β for a given decision rule, compute them also with digital tools, and verify them numerically.",
+        "canonicalGoalSha256": "sha256:215c8a967c09dc78b441957e73d5e490bf4c45673df32388b9b40c4208a99105",
+        "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not a native evidence fingerprint",
+        "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/78bfbde4-8e16-529e-bd53-4e29d960b2b2/candidate-v1.png",
+        "assetSha256": "sha256:b045632a4ba8a64e5365f54c3e97844fb83ddd8f62f6c7028d5758bcf906779e",
+        "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/78bfbde4-8e16-529e-bd53-4e29d960b2b2/prompt.md",
+        "promptSha256": "sha256:30ad896b86cfc92218f4b6e099e053375c1ef39498ccfd998a39c40451a6daad",
+        "generationSha256": "sha256:760ad86f6625ba22e443eeb8c14dcc3843fc4b3c29462e6a2768564b93c390ec",
+        "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+        "generationToolAsRecorded": "image_gen.imagegen",
+        "reviewer": "/root/math_m7_post5_context9_blind_b",
+        "actualReviewedAt": "2026-09-20T20:25:07Z",
+        "inspected": true,
+        "decision": "accept",
+        "humanApproved": false,
+        "checks": [
+          "Die Hypothesen H0:p≤0,10 und H1:p>0,10, n=20 und der beispielhafte Ablehnungsbereich X≥5 stimmen zusammen.",
+          "Im oberen ausdrücklich auf p=0,10 bezogenen Szenario ist das Fehlerereignis X≥5 rot markiert; 0–4 liegen außerhalb. Die Formel bezeichnet den Fehler erster Art bei wahrer H0.",
+          "Im unteren Szenario mit fest gewähltem p=0,25 ist das Fehlerereignis X<5: genau die Kategorien 0–4 sind violett. Die übrigen Kategorien ab 5 liegen außerhalb des β-Ereignisses.",
+          "Unabhängig aus der Binomialsumme nachgerechnet: P_0,10(X≥5)=0,043174495284463404 und P_0,25(X<5)=0,41484150253018015. Die Bildrundungen α≈0,043 und β≈0,415 sind korrekt.",
+          "Die Kategorienleisten haben keine y-Achse und sind als Fehlerereignis beschriftet. Sie ersetzen kein Histogramm und behaupten keine gleich großen Wahrscheinlichkeiten. Auslassungen zu höheren Ergebnissen sind sichtbar.",
+          "Comicfiguren, Werkzeuge und Qualitätskontrolle verdeutlichen Regel versus Fehlerberechnung; die dekorativen Teile sind kein auszuzählendes Stichprobendiagramm. Farbkontrast und Beschriftung sind verständlich."
+        ],
+        "findings": [],
+        "limitations": [
+          "Für die zusammengesetzten Hypothesen gelten die gezeigten Zahlen nur an den in den Szenarioüberschriften festgelegten Parametern p=0,10 und p=0,25; β ist kein konstanter Wert für alle p>0,10.",
+          "Die kleinen sprachlichen Formen 'Anzahl defekte Teile' und ein zusätzlicher Strich am Hypothesentext ändern keine mathematische Aussage und sind kein fachlicher Hold."
+        ],
+        "rationale": "Beide Fehlerereignisse, ihre Richtung und die numerischen Werte sind im realen Raster korrekt. Die neue Ereignisleiste vermeidet irreführende Histogrammhöhen."
+      },
+      "previousGoal": {
+        "id": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+        "title": "Fehlerwahrscheinlichkeiten berechnen",
+        "titleEn": "Compute error probabilities",
+        "description": "Die lernende Person kann zu einer gegebenen Entscheidungsregel die Fehlerwahrscheinlichkeiten α und β bestimmen, auch mit digitalen Werkzeugen berechnen und rechnerisch nachvollziehen.",
+        "descriptionEn": "The learner can determine the error probabilities α and β for a given decision rule, compute them also with digital tools, and verify them numerically.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "677be619-5f0a-59bf-9730-0071c7d3f150"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.3, S. 47, Spiegelstrich 1",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+            "title": "Visualisierung: Fehlerwahrscheinlichkeiten berechnen",
+            "url": "/assets/goal-visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Fehlerwahrscheinlichkeiten berechnen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Fehlerwahrscheinlichkeiten berechnen\". Die lernende Person kann zu einer gegebenen Entscheidungsregel die Fehlerwahrscheinlichkeiten α und β bestimmen, auch mit digitalen Werkzeugen berechnen und rechnerisch nachvollziehen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "previousQa": {
+        "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+        "title": "Fehlerwahrscheinlichkeiten berechnen",
+        "description": "Die lernende Person kann zu einer gegebenen Entscheidungsregel die Fehlerwahrscheinlichkeiten α und β bestimmen, auch mit digitalen Werkzeugen berechnen und rechnerisch nachvollziehen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.jpg",
+        "assetSha256": "sha256:c29ff1dc1ffb2dcc450ae5e38a2225a13b22ef4209764b09d3165d8ee73a0851",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "yes",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-07-06T13:58:51.035Z",
+        "chatGptReviewer": "codex",
+        "chatGptNotes": "Content and umlaut checks approved from accepted review ledger mathematik-batch-091.md (accepted_pilot). Review note: The image correctly separates type I error `alpha = P(H0 rejected | H0 true)` from type II error `beta = P(H0 not rejected | H1 true)`. It uses two different true-state scenarios and gives plausible values for the displayed `n=20`, `p=0.10` versus `p=0.25` example.",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:c29ff1dc1ffb2dcc450ae5e38a2225a13b22ef4209764b09d3165d8ee73a0851",
+        "aiReviewedAt": "2026-07-16T10:57:55.837Z",
+        "aiReviewer": "codex-fresh-vision-2026-07-16",
+        "aiNotes": "Fresh full-resolution review: for n=20 and rejection region X>=5, alpha=P(X>=5) under p=0.10 is approximately 0.043 and beta=P(X<5) under p=0.25 is approximately 0.414. The colored binomial regions, hypotheses, and decision rule agree with these calculations."
+      },
+      "oldFiles": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.jpg",
+          "sha256": "sha256:c29ff1dc1ffb2dcc450ae5e38a2225a13b22ef4209764b09d3165d8ee73a0851",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/app/public/assets/goal-visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.jpg",
+          "sha256": "sha256:c29ff1dc1ffb2dcc450ae5e38a2225a13b22ef4209764b09d3165d8ee73a0851",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.jpg"
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.jpg",
+          "sha256": "sha256:c29ff1dc1ffb2dcc450ae5e38a2225a13b22ef4209764b09d3165d8ee73a0851",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/prompt.de.md",
+          "sha256": "sha256:a2354aaef93eca6d2adf201ff2eaea972aa6ce0ddb318f77eb8c56159039d6d0",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/prompt.de.md"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/image-reconstruction-prompt.de.md",
+          "sha256": "sha256:46335621591f9cb9cb2e3ce4874595b544bbb254a911b6bca0a563e0f609855d",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/image-reconstruction-prompt.de.md"
+        }
+      ]
+    },
+    {
+      "goalId": "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+      "version": "v1",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/candidate-v1.png",
+      "candidateSha256": "sha256:ac78fd894f5c196ee6eba7f36e8ed9670a05c839af07ca3a4509a20201b61598",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/prompt.md",
+      "promptSha256": "sha256:fc45813b76892bee4bbade6013db4c539b6ec39fb5e79f105a8c63650931468f",
+      "rootChecks": "Boundary-null wording p=0.10 is explicit, X=5 lies at the first rejection category beyond 4, and the distribution is explicitly schematic rather than a quantitative binomial histogram. The critical-region decision logic is correct.",
+      "independentReview": {
+        "goalId": "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+        "title": "Testergebnisse im Kontext interpretieren",
+        "descriptionDe": "Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder nicht verworfen wird, das Ergebnis verständlich im Sachkontext formulieren und erläutern, welche Aussage der Test erlaubt und welche nicht.",
+        "descriptionEn": "The learner can decide whether the null hypothesis is rejected or not rejected, state the result clearly in context, and explain what the test result does and does not support.",
+        "canonicalGoalSha256": "sha256:76f02c73ff47b275421cbf08b14b56a5d96b5d5693ab91f107dd9e5f78d73916",
+        "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not a native evidence fingerprint",
+        "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/candidate-v1.png",
+        "assetSha256": "sha256:ac78fd894f5c196ee6eba7f36e8ed9670a05c839af07ca3a4509a20201b61598",
+        "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/prompt.md",
+        "promptSha256": "sha256:fc45813b76892bee4bbade6013db4c539b6ec39fb5e79f105a8c63650931468f",
+        "generationSha256": "sha256:0bc480d3a94ce4f4058e72ea8680ee5ec66fcd859468a06625fb57a09346198c",
+        "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+        "generationToolAsRecorded": "image_gen.imagegen",
+        "reviewer": "/root/math_m7_post5_context9_blind_b",
+        "actualReviewedAt": "2026-09-20T20:25:07Z",
+        "inspected": true,
+        "decision": "accept",
+        "humanApproved": false,
+        "checks": [
+          "Das Szenario zählt unter 20 geprüften Teilen die Fehlerhaften. H0:p≤0,10 wird als nicht erhöhte Fehlerquote erklärt; X~B(20;0,10) steht ausdrücklich am Rand p=0,10.",
+          "Auf der diskreten Achse stehen 0–10 in gleichen Schritten; vor 20 ist eine deutliche Achsenunterbrechung mit Auslassungszeichen vorhanden. 20 wird damit nicht als unmittelbar benachbarter Messwert zu 10 ausgegeben.",
+          "Die kritische Linie liegt zwischen 4 und 5. Die orangefarbene Ablehnungsregion umfasst k≥5, und der Beobachtungspfeil x_beob=5 trifft den Balken bei 5.",
+          "Der Verteilungsverlauf ist ausdrücklich schematisch und hat keine numerische y-Skalierung. Sein Modus liegt qualitativ bei 2, mit rechtsschiefer Form; die Balkenhöhen werden nicht als exakt gerechnete B(20;0,10)-Werte akzeptiert.",
+          "Die Folgerung x_beob=5 im Ablehnungsbereich → H0 verwerfen ist korrekt. Die Kontextwolke sagt ausdrücklich, die Daten sprächen für eine erhöhte Fehlerquote, seien aber kein Beweis.",
+          "Abstrakte Fertigungsszene, Lupenmarkierung, Pfeile und farblich getrennte Entscheidung unterstützen die Kontextdeutung. Keine unnötige Zusatzkompetenz muss vollständig im Bild geprüft werden."
+        ],
+        "findings": [],
+        "limitations": [
+          "Acceptance gilt als ausdrücklich schematische Darstellung der Entscheidungsgrenze. Insbesondere die sichtbaren kleinen Balken bis 20 sind nicht zur Ablesung oder Berechnung von Wahrscheinlichkeiten beziehungsweise Fehlerrisiken geeignet; diese Bildfunktion wäre fachlich nicht gedeckt.",
+          "Keine Prüfung im echten Cockpit-Viewport durchgeführt; Lesbarkeit bezieht sich auf das tatsächlich geöffnete Raster."
+        ],
+        "rationale": "Das Bild trifft das Ziel der vorsichtigen Interpretation einer Testentscheidung. Diskrete Positionen und Entscheidungsrichtung sind korrekt; die transparente Schematisierung begrenzt die Aussage der Balkenhöhen."
+      },
+      "previousGoal": {
+        "id": "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+        "title": "Testergebnisse im Kontext interpretieren",
+        "titleEn": "Interpret test results in context",
+        "description": "Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder nicht verworfen wird, das Ergebnis verständlich im Sachkontext formulieren und erläutern, welche Aussage der Test erlaubt und welche nicht.",
+        "descriptionEn": "The learner can decide whether the null hypothesis is rejected or not rejected, state the result clearly in context, and explain what the test result does and does not support.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "4b58b855-cd26-538c-8e6f-304f4cfd8ad6"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+            "title": "Visualisierung: Testergebnisse im Kontext interpretieren",
+            "url": "/assets/goal-visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Testergebnisse im Kontext interpretieren.",
+            "altText": "Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder nicht verworfen wird, das Ergebnis verständlich im Sachkontext formulieren und erläutern, welche Aussage der Test erlaubt und welche nicht.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "previousQa": {
+        "goalId": "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+        "title": "Testergebnisse im Kontext interpretieren",
+        "description": "Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder nicht verworfen wird, das Ergebnis verständlich im Sachkontext formulieren und erläutern, welche Aussage der Test erlaubt und welche nicht.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.jpg",
+        "assetSha256": "sha256:65cfed922d426eb1fb2b0148b222f2bf32ca58ba65036409c20730cba3641532",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "yes",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-08-16T08:27:41.000Z",
+        "chatGptReviewer": "codex-goal-description-image-review-2026-08-16",
+        "chatGptNotes": "R13, class B: accepted reuse after fresh review against revised description. Permanent evidence: mathematik-description-revision-images-2026-08-16.md. The current asset was checked for visible mathematics, notation, labels, target fit, text legibility, umlauts, and visible artifacts.",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:65cfed922d426eb1fb2b0148b222f2bf32ca58ba65036409c20730cba3641532",
+        "aiReviewedAt": "2026-08-16T08:27:41.000Z",
+        "aiReviewer": "codex-fresh-full-resolution-2026-08-16",
+        "aiNotes": "R13, class B: accepted reuse after fresh review against revised description. Permanent evidence: mathematik-description-revision-images-2026-08-16.md. The current asset was checked for visible mathematics, notation, labels, target fit, text legibility, umlauts, and visible artifacts."
+      },
+      "oldFiles": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.jpg",
+          "sha256": "sha256:65cfed922d426eb1fb2b0148b222f2bf32ca58ba65036409c20730cba3641532",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/app/public/assets/goal-visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.jpg",
+          "sha256": "sha256:65cfed922d426eb1fb2b0148b222f2bf32ca58ba65036409c20730cba3641532",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.jpg"
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.jpg",
+          "sha256": "sha256:65cfed922d426eb1fb2b0148b222f2bf32ca58ba65036409c20730cba3641532",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/prompt.de.md",
+          "sha256": "sha256:de627abf251374a5d53fc98323dda1fc42cf4fafaa8c85a58c77fe615594b03b",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/prompt.de.md"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/image-reconstruction-prompt.de.md",
+          "sha256": "sha256:353769493e25e07b1d8d791f651b9041974973be375a8f4e937897a698781679",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/image-reconstruction-prompt.de.md"
+        }
+      ]
+    },
+    {
+      "goalId": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+      "version": "v1",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/candidate-v1.png",
+      "candidateSha256": "sha256:d47be39d262f5316d52dbe2011f7a72f746d6955e3c9e8b5187c4d2b524a2b3c",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/prompt.md",
+      "promptSha256": "sha256:e7876ccda0586b304fd7bdcbab804c8c0fbcc57adc793edb5663da331d6b39ab",
+      "rootChecks": "The complementary curves now intersect on y=0.5. Marked p0 values L=.7/G=.3 and p1 values L=.3/G=.7 agree with G=1−L; opposing monotone shapes and schematic label support the intended relationship.",
+      "independentReview": {
+        "goalId": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+        "title": "Gütefunktion und Teststärke untersuchen (LK)",
+        "descriptionDe": "Die lernende Person kann für einen Hypothesentest die Operationscharakteristik als Wahrscheinlichkeit für das Nichtverwerfen der Nullhypothese und die Gütefunktion als Wahrscheinlichkeit für ihr Verwerfen in Abhängigkeit vom wahren Wert von $p$ unterscheiden, beide grafisch darstellen und den Einfluss von Stichprobenumfang und Signifikanzniveau auf die Teststärke erläutern.",
+        "descriptionEn": "For a hypothesis test, the learner can distinguish the operating-characteristic function as the probability of not rejecting the null hypothesis from the power function as the probability of rejecting it, both as functions of the true value of $p$, graph both functions, and explain how sample size and significance level affect test power.",
+        "canonicalGoalSha256": "sha256:f6d9c93633fb0cc8b2f025a51c589de34b6fe9a2837b516473f2b1e73af624e1",
+        "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+        "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/candidate-v1.png",
+        "assetSha256": "sha256:d47be39d262f5316d52dbe2011f7a72f746d6955e3c9e8b5187c4d2b524a2b3c",
+        "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/prompt.md",
+        "promptSha256": "sha256:e7876ccda0586b304fd7bdcbab804c8c0fbcc57adc793edb5663da331d6b39ab",
+        "generationSha256": "sha256:07a75c2a448063ea7d8fd67628c30bf9672ceed9cfa0f8ba644e27c67d4da821",
+        "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+        "generationToolAsRecorded": "image_gen.imagegen",
+        "reviewer": "/root/math_m7_post5_context9_blind_b",
+        "actualReviewedAt": "2026-09-20T20:31:45Z",
+        "inspected": true,
+        "humanApproved": false,
+        "decision": "accept",
+        "checks": [
+          "Die Definitionen L(p)=P_p(H0 nicht verwerfen) und G(p)=P_p(H0 verwerfen)=1−L(p) sind korrekt und beziehen sich auf den wahren Parameter p.",
+          "Die blaue Kurve fällt und die orange steigt. Beide verlaufen visuell komplementär zur Linie y=0,5; ihr Schnittpunkt liegt nun genau auf dieser gestrichelten Mittellinie.",
+          "Bei p0 sind L=0,7 und G=0,3 markiert; bei p1 stehen L=β=0,3 und G=1−β=0,7. Beide Zahlenpaare summieren sich zu1 und liegen auf den passenden horizontalen Hilfslinien.",
+          "L(p0)≥1−α beziehungsweise G(p0)≤α sind als Niveaugrenzen korrekt. Die Darstellung legt keinen konkreten üblichen Zahlenwert für α oder ein konkretes n/k fest.",
+          "Die Hinweise zu Stichprobenumfang und Niveau beschreiben die qualitative Richtung der Teststärke; die Beschriftung 'Kurven schematisch' grenzt diese Darstellung von einer exakt berechneten Binomialtestfunktion ab.",
+          "Achsen von0 bis1, p0-/p1-Linien und farblich zugeordnete Definitionen sind lesbar und für den Funktionsvergleich geeignet."
+        ],
+        "findings": [],
+        "limitations": [
+          "Keine numerische Gütefunktion für ein konkretes n/k wurde validiert, weil das Bild keine solchen Parameter vorgibt.",
+          "Bei exakten diskreten Tests können Niveau-/Stichprobeneffekte stufig verlaufen; die Textboxen sind qualitative Orientierung, keine strikte punktweise Monotoniebehauptung über jede Parametrierung."
+        ],
+        "rationale": "Der zentrale Zusammenhang der komplementären Funktionen ist im tatsächlichen Verlauf, Schnittpunkt und den markierten Zahlenpaaren korrekt sichtbar."
+      },
+      "previousGoal": {
+        "id": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+        "title": "Gütefunktion und Teststärke untersuchen (LK)",
+        "titleEn": "Investigate power function and test power (advanced course)",
+        "description": "Die lernende Person kann für einen Hypothesentest die Operationscharakteristik als Wahrscheinlichkeit für das Nichtverwerfen der Nullhypothese und die Gütefunktion als Wahrscheinlichkeit für ihr Verwerfen in Abhängigkeit vom wahren Wert von $p$ unterscheiden, beide grafisch darstellen und den Einfluss von Stichprobenumfang und Signifikanzniveau auf die Teststärke erläutern.",
+        "descriptionEn": "For a hypothesis test, the learner can distinguish the operating-characteristic function as the probability of not rejecting the null hypothesis from the power function as the probability of rejecting it, both as functions of the true value of $p$, graph both functions, and explain how sample size and significance level affect test power.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "677be619-5f0a-59bf-9730-0071c7d3f150",
+          "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.3, S. 47, Spiegelstrich 2",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+            "title": "Visualisierung: Gütefunktion und Teststärke untersuchen (LK)",
+            "url": "/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png",
+            "provider": "OpenAI image generation",
+            "description": "Visualisierung zum Lernziel: Gütefunktion und Teststärke untersuchen (LK).",
+            "altText": "Die lernende Person kann für einen Hypothesentest die Operationscharakteristik als Wahrscheinlichkeit für das Nichtverwerfen der Nullhypothese und die Gütefunktion als Wahrscheinlichkeit für ihr Verwerfen in Abhängigkeit vom wahren Wert von $p$ unterscheiden, beide grafisch darstellen und den Einfluss von Stichprobenumfang und Signifikanzniveau auf die Teststärke erläutern.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "previousQa": {
+        "goalId": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+        "title": "Gütefunktion und Teststärke untersuchen (LK)",
+        "description": "Die lernende Person kann für einen Hypothesentest die Operationscharakteristik als Wahrscheinlichkeit für das Nichtverwerfen der Nullhypothese und die Gütefunktion als Wahrscheinlichkeit für ihr Verwerfen in Abhängigkeit vom wahren Wert von $p$ unterscheiden, beide grafisch darstellen und den Einfluss von Stichprobenumfang und Signifikanzniveau auf die Teststärke erläutern.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png",
+        "assetSha256": "sha256:b740e322764055259c7bf051d263666e0e90b64befcc0ef359a54a4c4a2fca76",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "yes",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-08-16T08:27:41.000Z",
+        "chatGptReviewer": "codex-goal-description-image-review-2026-08-16",
+        "chatGptNotes": "R14, class C: accepted corrected replacement after fresh full-resolution review. Permanent evidence: mathematik-description-revision-images-2026-08-16.md. The current asset was checked for visible mathematics, notation, labels, target fit, text legibility, umlauts, and visible artifacts.",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:b740e322764055259c7bf051d263666e0e90b64befcc0ef359a54a4c4a2fca76",
+        "aiReviewedAt": "2026-08-16T08:27:41.000Z",
+        "aiReviewer": "codex-fresh-full-resolution-2026-08-16",
+        "aiNotes": "R14, class C: accepted corrected replacement after fresh full-resolution review. Permanent evidence: mathematik-description-revision-images-2026-08-16.md. The current asset was checked for visible mathematics, notation, labels, target fit, text legibility, umlauts, and visible artifacts."
+      },
+      "oldFiles": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png",
+          "sha256": "sha256:b740e322764055259c7bf051d263666e0e90b64befcc0ef359a54a4c4a2fca76",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/app/public/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png",
+          "sha256": "sha256:b740e322764055259c7bf051d263666e0e90b64befcc0ef359a54a4c4a2fca76",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png"
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png",
+          "sha256": "sha256:b740e322764055259c7bf051d263666e0e90b64befcc0ef359a54a4c4a2fca76",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/prompt.de.md",
+          "sha256": "sha256:7682a967e6ed9a4e617fbc5c50a07b6907ef755f9102a518dbce859b3f765d29",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/prompt.de.md"
+        }
+      ]
+    },
+    {
+      "goalId": "03357e70-2280-532f-b629-5dfa31dc44eb",
+      "version": "v2",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/03357e70-2280-532f-b629-5dfa31dc44eb/candidate-v2.png",
+      "candidateSha256": "sha256:8048e41de3134f0a1e4e3a94bfc8446df6c6ed7c84e0876d53aec830ba879641",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/03357e70-2280-532f-b629-5dfa31dc44eb/prompt-v2.md",
+      "promptSha256": "sha256:a758be9ed9b6192f0b3ec0a06c104fa730f8904dcfb65a647d6be58026ad91f1",
+      "rootChecks": "Root actually viewed v2 output: Test A now puts beta under orange H1 left of k and alpha under blue H0 right of k. Both local boxes reject for X>=k, consistent with the shared full rule. Test B retains correct sides. Moving k right reduces alpha and power and increases beta; schematically depicted tails agree. Decorative monsters do not define the tail geometry.",
+      "independentReview": {
+        "goalId": "03357e70-2280-532f-b629-5dfa31dc44eb",
+        "title": "Tests vergleichen und bewerten (LK)",
+        "descriptionDe": "Die lernende Person kann unterschiedliche Testverfahren oder Parametereinstellungen hinsichtlich Fehlerwahrscheinlichkeiten und Teststärke vergleichen und begründete Entscheidungen treffen.",
+        "descriptionEn": "The learner can compare different test procedures or parameter settings regarding error probabilities and test power and make reasoned decisions.",
+        "canonicalGoalSha256": "sha256:109a2eda65accd5915e9b37c9fd836391cefa252acd453a33b0dddf7cbc7b845",
+        "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+        "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/03357e70-2280-532f-b629-5dfa31dc44eb/candidate-v2.png",
+        "assetSha256": "sha256:8048e41de3134f0a1e4e3a94bfc8446df6c6ed7c84e0876d53aec830ba879641",
+        "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/03357e70-2280-532f-b629-5dfa31dc44eb/prompt-v2.md",
+        "promptSha256": "sha256:a758be9ed9b6192f0b3ec0a06c104fa730f8904dcfb65a647d6be58026ad91f1",
+        "generationSha256": "sha256:ec30e63954719630692a6a6ada0ca89114e5d38756e06769e7c4918e52daa109",
+        "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+        "generationToolAsRecorded": "image_gen.imagegen",
+        "reviewer": "/root/math_m7_post5_context9_blind_b",
+        "actualReviewedAt": "2026-09-20T20:33:34Z",
+        "inspected": true,
+        "humanApproved": false,
+        "decision": "accept",
+        "findings": [],
+        "checks": [
+          "Die tatsächliche linke β-Markierung zeigt jetzt links von k unter die orange Alternativverteilung. Die linke α-Markierung zeigt rechts von k unter die blaue Nullverteilung. Die vormals falschen Richtungen sind beseitigt.",
+          "Im rechten Panel bleiben β links von k unter Orange und α rechts von k unter Blau korrekt markiert.",
+          "Beide lokalen Entscheidungsboxen lauten jetzt bei X≥k: H0 verwerfen. Die gemeinsame Regel ergänzt korrekt X<k: H0 nicht verwerfen; es gibt keinen widersprüchlichen Nichtverwerfungszweig mehr.",
+          "Das kleinere k in A ergibt im Vergleich höheres α, kleineres β und größere Teststärke1−β. Das größere k in B zeigt den umgekehrten Trade-off. Kurven und Positionen unterstützen diese relative Aussage.",
+          "Kontextabhängige Fehlerschwere, Kosten und Stichprobenumfang bleiben als Vergleichskriterien sichtbar; die freundlichen Figuren, Farben und ausdrücklich schematischen Verteilungen passen zum Ziel."
+        ],
+        "limitations": [
+          "Die Kurven sind ausdrücklich schematisch und erlauben keine numerische Ablesung von α/β.",
+          "Nicht jeder zusätzliche Promptwortlaut wurde identisch in beide lokalen Boxen übernommen; die vorhandene lokale Aussage plus gemeinsame vollständige Regel ist jedoch fachlich korrekt. Keine kosmetische Zusatzforderung."
+        ],
+        "rationale": "Beide konkreten V1-Blocker sind am neuen Raster tatsächlich behoben: Fehlerflächen richtig zugeordnet und keine widersprüchliche Entscheidungsbox."
+      },
+      "previousGoal": {
+        "id": "03357e70-2280-532f-b629-5dfa31dc44eb",
+        "title": "Tests vergleichen und bewerten (LK)",
+        "titleEn": "Compare and evaluate tests (advanced course)",
+        "description": "Die lernende Person kann unterschiedliche Testverfahren oder Parametereinstellungen hinsichtlich Fehlerwahrscheinlichkeiten und Teststärke vergleichen und begründete Entscheidungen treffen.",
+        "descriptionEn": "The learner can compare different test procedures or parameter settings regarding error probabilities and test power and make reasoned decisions.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+          "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "03357e70-2280-532f-b629-5dfa31dc44eb",
+            "title": "Visualisierung: Tests vergleichen und bewerten (LK)",
+            "url": "/assets/goal-visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Tests vergleichen und bewerten (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Tests vergleichen und bewerten (LK)\". Die lernende Person kann unterschiedliche Testverfahren oder Parametereinstellungen hinsichtlich Fehlerwahrscheinlichkeiten und Teststärke vergleichen und begründete Entscheidungen treffen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "previousQa": {
+        "goalId": "03357e70-2280-532f-b629-5dfa31dc44eb",
+        "title": "Tests vergleichen und bewerten (LK)",
+        "description": "Die lernende Person kann unterschiedliche Testverfahren oder Parametereinstellungen hinsichtlich Fehlerwahrscheinlichkeiten und Teststärke vergleichen und begründete Entscheidungen treffen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.jpg",
+        "assetSha256": "sha256:beb8dff7ad96966fd7abc186044284da156cb077282dd8181e6a63a87be6fa58",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "yes",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-07-06T13:58:51.035Z",
+        "chatGptReviewer": "codex",
+        "chatGptNotes": "Content and umlaut checks approved from accepted review ledger mathematik-batch-092.md (accepted_pilot_after_regeneration). Review note: The regenerated image correctly distinguishes aggressive small-`k` tests from cautious large-`k` tests and compares them by `alpha`, `beta`, power, sample size/cost, and contextual seriousness of errors.",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:beb8dff7ad96966fd7abc186044284da156cb077282dd8181e6a63a87be6fa58",
+        "aiReviewedAt": "2026-07-16T10:28:07.871Z",
+        "aiReviewer": "codex-fresh-vision-2026-07-16",
+        "aiNotes": "Kleine und große kritische Schwelle zeigen sichtbar korrekt den Zielkonflikt zwischen α- und β-Fehler beziehungsweise Teststärke."
+      },
+      "oldFiles": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.jpg",
+          "sha256": "sha256:beb8dff7ad96966fd7abc186044284da156cb077282dd8181e6a63a87be6fa58",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/app/public/assets/goal-visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.jpg",
+          "sha256": "sha256:beb8dff7ad96966fd7abc186044284da156cb077282dd8181e6a63a87be6fa58",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.jpg"
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.jpg",
+          "sha256": "sha256:beb8dff7ad96966fd7abc186044284da156cb077282dd8181e6a63a87be6fa58",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/prompt.de.md",
+          "sha256": "sha256:9f68e51049930a96d360b1e1748d0bcc3e52f667be6dbe19530f46160865d469",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/prompt.de.md"
+        }
+      ]
+    },
+    {
+      "goalId": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+      "version": "v1",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/5f328147-619c-568d-9a0d-e1787ca0c01b/candidate-v1.png",
+      "candidateSha256": "sha256:163c1583078450f9fd791f32a35348516b43074e0eb93f5d496c3fa9079c5dfc",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/5f328147-619c-568d-9a0d-e1787ca0c01b/prompt.md",
+      "promptSha256": "sha256:4553f6c8be802b38c9dbf7f22a9947fb5b2eabda974938d649d20861e9ced278",
+      "rootChecks": "The approximate interval [.47,.57] now centres .52 with equal endpoint distances. E=1.96 sqrt(.52*.48/400)≈.049. The inverted conditions use ≤ and specify boundary equation and p between roots. Fixed-parameter interpretation remains correct.",
+      "independentReview": {
+        "goalId": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+        "title": "Konfidenzintervalle für Wahrscheinlichkeiten berechnen",
+        "descriptionDe": "Die lernende Person kann von einer Stichprobe auf die unbekannte Trefferwahrscheinlichkeit der Grundgesamtheit schließen, Konfidenzintervalle in Sachzusammenhängen aus $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$ bestimmen und die Näherung $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ als symmetrisches Intervall um $h_n$ verwenden.",
+        "descriptionEn": "The learner can infer the unknown population success probability from a sample, determine confidence intervals in context from $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$, and use the approximation $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ as an interval symmetric about $h_n$.",
+        "canonicalGoalSha256": "sha256:7c15d586f73a586602b0e95b527d7ba4540a317eef1f510df1a3b37416b1a719",
+        "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+        "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/5f328147-619c-568d-9a0d-e1787ca0c01b/candidate-v1.png",
+        "assetSha256": "sha256:163c1583078450f9fd791f32a35348516b43074e0eb93f5d496c3fa9079c5dfc",
+        "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/5f328147-619c-568d-9a0d-e1787ca0c01b/prompt.md",
+        "promptSha256": "sha256:4553f6c8be802b38c9dbf7f22a9947fb5b2eabda974938d649d20861e9ced278",
+        "generationSha256": "sha256:32dd5b5624f213b52f89dc334fa354bbe1d792efa915d62e771233f2ebeeccaf",
+        "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+        "generationToolAsRecorded": "image_gen.imagegen",
+        "reviewer": "/root/math_m7_post5_context9_blind_b",
+        "actualReviewedAt": "2026-09-20T20:31:45Z",
+        "inspected": true,
+        "humanApproved": false,
+        "decision": "accept",
+        "checks": [
+          "Der unbekannte feste Parameter p wird von der beobachteten relativen Häufigkeit h_n getrennt. Die Stichprobe nennt n=400 und h_n=0,52.",
+          "Die Umkehrung verwendet |h_n−p|≤c·sqrt(p(1−p)/n) und die äquivalente quadrierte Ungleichung. Die Grenzgleichung liefert Randwerte; p zwischen den Grenzen beschreibt das Intervall.",
+          "Unabhängig gerechnet: E=1,96·sqrt(0,52·0,48/400)=0,0489607843. Das symmetrische Intervall ist [0,4710392157;0,5689607843], also gerundet [0,47;0,57].",
+          "Die blaue Strecke liegt jetzt symmetrisch um den markierten Wert 0,52; 0,47 und 0,57 haben gleiche gezeichnete Abstände zur Mitte.",
+          "Die Wiederholungsinterpretation bezieht ca.95% auf das Verfahren und hält p fest. Ein konkretes Intervall enthält p oder nicht. Die beschrifteten Näherungsverfahren werden nicht als exakte endliche Binomialabdeckung ausgegeben.",
+          "Die klare blaue Informationsgrafik mit Stichproben-Illustration ist für die Formel-/Intervallbeziehung geeignet; keine neue unabhängige Teilkompetenz wird durch die Bildprüfung verlangt."
+        ],
+        "findings": [],
+        "limitations": [
+          "Die symmetrische Formel ist ausdrücklich eine Näherung, kein allgemeines exaktes Konfidenzintervall.",
+          "Die kleinen Wiederholungsintervalle illustrieren das Verfahren; sie sind keine numerische Behauptung einer exakt 95-prozentigen Trefferzahl in der gezeichneten endlichen Sammlung."
+        ],
+        "rationale": "Ungleichung, Näherungsrechnung und geometrische Symmetrie sind korrekt und treffen das aktuelle bilinguale Ziel."
+      },
+      "previousGoal": {
+        "id": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+        "title": "Konfidenzintervalle für Wahrscheinlichkeiten berechnen",
+        "titleEn": "Compute confidence intervals for probabilities",
+        "description": "Die lernende Person kann von einer Stichprobe auf die unbekannte Trefferwahrscheinlichkeit der Grundgesamtheit schließen, Konfidenzintervalle in Sachzusammenhängen aus $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$ bestimmen und die Näherung $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ als symmetrisches Intervall um $h_n$ verwenden.",
+        "descriptionEn": "The learner can infer the unknown population success probability from a sample, determine confidence intervals in context from $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$, and use the approximation $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ as an interval symmetric about $h_n$.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+          "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.4, S. 48, Spiegelstrich 2",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+            "title": "Visualisierung: Konfidenzintervalle für Wahrscheinlichkeiten berechnen",
+            "url": "/assets/goal-visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/5f328147-619c-568d-9a0d-e1787ca0c01b.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Konfidenzintervalle für Wahrscheinlichkeiten berechnen.",
+            "altText": "Die lernende Person kann von einer Stichprobe auf die unbekannte Trefferwahrscheinlichkeit der Grundgesamtheit schließen, Konfidenzintervalle in Sachzusammenhängen aus $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$ bestimmen und die Näherung $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ als symmetrisches Intervall um $h_n$ verwenden.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "previousQa": {
+        "goalId": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+        "title": "Konfidenzintervalle für Wahrscheinlichkeiten berechnen",
+        "description": "Die lernende Person kann von einer Stichprobe auf die unbekannte Trefferwahrscheinlichkeit der Grundgesamtheit schließen, Konfidenzintervalle in Sachzusammenhängen aus $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$ bestimmen und die Näherung $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ als symmetrisches Intervall um $h_n$ verwenden.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/5f328147-619c-568d-9a0d-e1787ca0c01b.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/5f328147-619c-568d-9a0d-e1787ca0c01b.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/5f328147-619c-568d-9a0d-e1787ca0c01b.jpg",
+        "assetSha256": "sha256:da6872607520295d01b268129476f16146f6412d1ec52ee04c20b1f7b8eb7807",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "yes",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-08-16T08:27:41.000Z",
+        "chatGptReviewer": "codex-goal-description-image-review-2026-08-16",
+        "chatGptNotes": "R16, class B: accepted reuse after fresh review against revised description. Permanent evidence: mathematik-description-revision-images-2026-08-16.md. The current asset was checked for visible mathematics, notation, labels, target fit, text legibility, umlauts, and visible artifacts.",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:da6872607520295d01b268129476f16146f6412d1ec52ee04c20b1f7b8eb7807",
+        "aiReviewedAt": "2026-08-16T08:27:41.000Z",
+        "aiReviewer": "codex-fresh-full-resolution-2026-08-16",
+        "aiNotes": "R16, class B: accepted reuse after fresh review against revised description. Permanent evidence: mathematik-description-revision-images-2026-08-16.md. The current asset was checked for visible mathematics, notation, labels, target fit, text legibility, umlauts, and visible artifacts."
+      },
+      "oldFiles": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/5f328147-619c-568d-9a0d-e1787ca0c01b.jpg",
+          "sha256": "sha256:da6872607520295d01b268129476f16146f6412d1ec52ee04c20b1f7b8eb7807",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/app/public/assets/goal-visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/5f328147-619c-568d-9a0d-e1787ca0c01b.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/5f328147-619c-568d-9a0d-e1787ca0c01b.jpg",
+          "sha256": "sha256:da6872607520295d01b268129476f16146f6412d1ec52ee04c20b1f7b8eb7807",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/5f328147-619c-568d-9a0d-e1787ca0c01b.jpg"
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/5f328147-619c-568d-9a0d-e1787ca0c01b.jpg",
+          "sha256": "sha256:da6872607520295d01b268129476f16146f6412d1ec52ee04c20b1f7b8eb7807",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/5f328147-619c-568d-9a0d-e1787ca0c01b.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/prompt.de.md",
+          "sha256": "sha256:ff2cb7c7cd74ada6afc073c13b0d502c3f61c7f061ed580edc667e9dd0c9f5a9",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/prompt.de.md"
+        }
+      ]
+    },
+    {
+      "goalId": "aa14d9e4-5790-5d94-a245-2ff9a70bf633",
+      "version": "v1",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/aa14d9e4-5790-5d94-a245-2ff9a70bf633/candidate-v1.png",
+      "candidateSha256": "sha256:4f9ab632304318b101b8f349a1c65e2ae1575e81fb8491dfbcaf29f7e78a0dd2",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/aa14d9e4-5790-5d94-a245-2ff9a70bf633/prompt.md",
+      "promptSha256": "sha256:d1366d1f8df2fc376ef881a63933e3179b494797422dd724584d829eaaa3deac",
+      "rootChecks": "The single interval [.50,.54] excludes fixed p≈.57. Repeated-sample green intervals cross the fixed p line; the red missed interval has a visible gap to it. The 95% claim describes long-run coverage, not a posterior probability for fixed p in an observed interval.",
+      "independentReview": {
+        "goalId": "aa14d9e4-5790-5d94-a245-2ff9a70bf633",
+        "title": "Konfidenzniveau interpretieren",
+        "descriptionDe": "Die lernende Person kann die Bedeutung des Konfidenzniveaus in Worten erklären, typische Fehlinterpretationen vermeiden und dies an Beispielen begründen.",
+        "descriptionEn": "The learner can explain the meaning of the confidence level in words, avoid common misinterpretations, and justify it with examples.",
+        "canonicalGoalSha256": "sha256:0d1fdba294f79c3a7720ef8c044d0f2335cc001aa6751ebd1ceef2e8bdbd37f8",
+        "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+        "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/aa14d9e4-5790-5d94-a245-2ff9a70bf633/candidate-v1.png",
+        "assetSha256": "sha256:4f9ab632304318b101b8f349a1c65e2ae1575e81fb8491dfbcaf29f7e78a0dd2",
+        "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/aa14d9e4-5790-5d94-a245-2ff9a70bf633/prompt.md",
+        "promptSha256": "sha256:d1366d1f8df2fc376ef881a63933e3179b494797422dd724584d829eaaa3deac",
+        "generationSha256": "sha256:a6f5045e1e7a537c1128d354fd83314b3d505d86e074c805c388038c0ee6b75f",
+        "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+        "generationToolAsRecorded": "image_gen.imagegen",
+        "reviewer": "/root/math_m7_post5_context9_blind_b",
+        "actualReviewedAt": "2026-09-20T20:31:45Z",
+        "inspected": true,
+        "humanApproved": false,
+        "decision": "accept",
+        "checks": [
+          "Das konkrete Intervall [0,50;0,54] ist um h=0,52 zentriert. Der feste Wert p=0,57 liegt sichtbar rechts außerhalb; das rote X ist dazu fachlich passend.",
+          "Alle grünen Wiederholungsintervalle schneiden die feste vertikale p-Linie. Das rote oberste Intervall endet links davon und ist mit X markiert.",
+          "Die rote rechte Endkappe steht sehr knapp links neben der grauen Referenz. Rein lesender Pixelcheck: rote Endkappe bis x=1324, graue Linie x=1325–1327. Es liegt im tatsächlichen Raster keine Überkreuzung vor.",
+          "Die95%-Aussage betrifft ausdrücklich die langfristige Überdeckungsquote des Verfahrens bei vielen Wiederholungen, nicht eine posteriorische Wahrscheinlichkeit des festen p in diesem berechneten Intervall.",
+          "Die untere Fehlinterpretation wird ausdrücklich als falsch markiert; die Richtigstellung lautet, dass ein konkretes Intervall p enthält oder nicht.",
+          "Rot/Grün, X/Häkchen und textliche Richtigstellung bieten redundante Bedeutungskennzeichen. Die ruhige Darstellung passt zur Interpretation des Konfidenzniveaus."
+        ],
+        "findings": [],
+        "limitations": [
+          "Das rote Wiederholungsintervall hat nur einen sehr kleinen sichtbaren Abstand zur p-Linie. Fachlich ist es im geprüften Raster disjunkt; bei späterer Verkleinerung muss diese Relation lesbar bleiben.",
+          "Die gezeichnete endliche Sammlung ist eine Illustration, keine Behauptung exakt19 Überdeckungen in20 Durchgängen. Die gezeigten Positionen sind nicht als numerisch vermessbare Wahrscheinlichkeitsachse beschriftet."
+        ],
+        "rationale": "Die Überdeckungsrelationen sind im tatsächlichen Raster korrekt. Insbesondere das früher problematische rote Intervall enthält p nicht; die Verfahrensinterpretation und die Abgrenzung zur Einzelintervall-Fehlinterpretation stimmen."
+      },
+      "previousGoal": {
+        "id": "aa14d9e4-5790-5d94-a245-2ff9a70bf633",
+        "title": "Konfidenzniveau interpretieren",
+        "titleEn": "Interpret the confidence level",
+        "description": "Die lernende Person kann die Bedeutung des Konfidenzniveaus in Worten erklären, typische Fehlinterpretationen vermeiden und dies an Beispielen begründen.",
+        "descriptionEn": "The learner can explain the meaning of the confidence level in words, avoid common misinterpretations, and justify it with examples.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "5f328147-619c-568d-9a0d-e1787ca0c01b"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.4, S. 48, Spiegelstrich 2",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "aa14d9e4-5790-5d94-a245-2ff9a70bf633",
+            "title": "Visualisierung: Konfidenzniveau interpretieren",
+            "url": "/assets/goal-visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Konfidenzniveau interpretieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Konfidenzniveau interpretieren\". Die lernende Person kann die Bedeutung des Konfidenzniveaus in Worten erklären, typische Fehlinterpretationen vermeiden und dies an Beispielen begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "previousQa": {
+        "goalId": "aa14d9e4-5790-5d94-a245-2ff9a70bf633",
+        "title": "Konfidenzniveau interpretieren",
+        "description": "Die lernende Person kann die Bedeutung des Konfidenzniveaus in Worten erklären, typische Fehlinterpretationen vermeiden und dies an Beispielen begründen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.jpg",
+        "assetSha256": "sha256:84ef2f1df65e43382527241d15ecf6ec97e900542ab089ccfc242c43fd20a65a",
+        "umlautsCorrectChatGpt": "no",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": null,
+        "chatGptReviewer": "",
+        "chatGptNotes": "",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:84ef2f1df65e43382527241d15ecf6ec97e900542ab089ccfc242c43fd20a65a",
+        "aiReviewedAt": "2026-07-16T15:49:01.434Z",
+        "aiReviewer": "codex-fresh-original-resolution-review-2026-07-16",
+        "aiNotes": "Das Bild unterscheidet korrekt zwischen dem festen wahren p, der 95-%-Trefferquote des Verfahrens bei vielen Wiederholungen und einem bereits berechneten Intervall, das p entweder enthält oder nicht."
+      },
+      "oldFiles": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.jpg",
+          "sha256": "sha256:84ef2f1df65e43382527241d15ecf6ec97e900542ab089ccfc242c43fd20a65a",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/app/public/assets/goal-visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.jpg",
+          "sha256": "sha256:84ef2f1df65e43382527241d15ecf6ec97e900542ab089ccfc242c43fd20a65a",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.jpg"
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.jpg",
+          "sha256": "sha256:84ef2f1df65e43382527241d15ecf6ec97e900542ab089ccfc242c43fd20a65a",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/prompt.de.md",
+          "sha256": "sha256:c87e66db6c2e1f7c697fff6b45ac472afdfb61f9de06823cdb43381ce7dcf2ff",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/prompt.de.md"
+        }
+      ]
+    },
+    {
+      "goalId": "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+      "version": "v1",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/616c72a4-972d-5cc0-b903-e2a24bcb150c/candidate-v1.png",
+      "candidateSha256": "sha256:c811f2c904652cae16570209961d3b85a2a76e276d28cb0bbd9116f351a8f5d7",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/616c72a4-972d-5cc0-b903-e2a24bcb150c/prompt.md",
+      "promptSha256": "sha256:578887f4fb845b4bc7d8bbf35707194a886b4293d533260e8917d60c88e25dd8",
+      "rootChecks": "The entire sum 2+3+3+4+8 is now divided by 5, giving mean4; median3 and mode3 are consistent with the sorted data. No residual 20=4 equality.",
+      "independentReview": {
+        "goalId": "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+        "title": "Lageparameter für Datenanalysen auswählen und vergleichen",
+        "descriptionDe": "Die lernende Person kann arithmetisches Mittel, Median und Modalwert hinsichtlich ihrer Aussagekraft und ihrer Empfindlichkeit gegenüber Ausreißern vergleichen, zu einer gegebenen Datenfrage einen passenden Lageparameter auswählen und die Wahl im Sachkontext begründen.",
+        "descriptionEn": "The learner can compare the mean, median, and mode in terms of what they reveal and their sensitivity to outliers, select a suitable measure of central tendency for a given data question, and justify the choice in context.",
+        "canonicalGoalSha256": "sha256:fa2cd1fe1a0ebc657f28faea06685d912565e8261bf4f43ce5023a842db9e2a8",
+        "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+        "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/616c72a4-972d-5cc0-b903-e2a24bcb150c/candidate-v1.png",
+        "assetSha256": "sha256:c811f2c904652cae16570209961d3b85a2a76e276d28cb0bbd9116f351a8f5d7",
+        "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/616c72a4-972d-5cc0-b903-e2a24bcb150c/prompt.md",
+        "promptSha256": "sha256:578887f4fb845b4bc7d8bbf35707194a886b4293d533260e8917d60c88e25dd8",
+        "generationSha256": "sha256:d3a20094124758618086d298dddd19fcf89323bf5a1b375ba1e3a71aa65d2b26",
+        "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+        "generationToolAsRecorded": "image_gen.imagegen",
+        "reviewer": "/root/math_m7_post5_context9_blind_b",
+        "actualReviewedAt": "2026-09-20T20:31:45Z",
+        "inspected": true,
+        "humanApproved": false,
+        "decision": "accept",
+        "checks": [
+          "Der gemeinsame Datensatz ist durchgehend 2,3,3,4,8. Die Mittelwertgleichung umfasst nun den gesamten Summenzähler: (2+3+3+4+8)/5=20/5=4.",
+          "Der dritte der fünf sortierten Werte ist 3, also Median3. Die Häufigkeiten 2→1,3→2,4→1,8→1 ergeben Modalwert3.",
+          "Auf den gleichmäßig beschrifteten Zahlengeraden liegt der blaue Punkt bei4 und der grüne bei3. Die markierten Zahlkarten stimmen mit diesen Ergebnissen überein.",
+          "Die hohe8 erhöht das Mittel gegenüber den übrigen Werten; der Median bleibt gegenüber dieser Änderung eines hohen Extremwerts robust. Die Entscheidungshilfe unterscheidet Datenfrage, Ausreißereinfluss und kategoriale Häufigkeit.",
+          "Keine universell beste Kennzahl wird behauptet. Die Panels, Farben und lesbaren Comic-Icons unterstützen den Vergleich."
+        ],
+        "findings": [],
+        "limitations": [
+          "Die Bezeichnung Ausreißer ist hier anschaulich für den auffällig hohen Wert verwendet; es wird keine konkrete Quartils- oder formale Ausreißerregel behauptet."
+        ],
+        "rationale": "Alle Zahlen, Häufigkeiten und Positionen sind konsistent; die korrigierte Bruchgleichung beseitigt den fachlichen Rechenfehler."
+      },
+      "previousGoal": {
+        "id": "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+        "title": "Lageparameter für Datenanalysen auswählen und vergleichen",
+        "titleEn": "Select and compare measures of central tendency for data analysis",
+        "description": "Die lernende Person kann arithmetisches Mittel, Median und Modalwert hinsichtlich ihrer Aussagekraft und ihrer Empfindlichkeit gegenüber Ausreißern vergleichen, zu einer gegebenen Datenfrage einen passenden Lageparameter auswählen und die Wahl im Sachkontext begründen.",
+        "descriptionEn": "The learner can compare the mean, median, and mode in terms of what they reveal and their sensitivity to outliers, select a suitable measure of central tendency for a given data question, and justify the choice in context.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "2242c379-ddbb-4f03-8aed-13f49a4674e8",
+          "03703b29-efd8-57e0-acf5-4381b1dc67ec"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "Kerncurriculum Mathematik gymnasiale Oberstufe Niedersachsen 2019, Einführungsphase, S. 37: arithmetisches Mittel, Median und Modalwert hinsichtlich ihrer Aussagekraft unterscheiden",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+            "title": "Visualisierung: Lageparameter für Datenanalysen auswählen und vergleichen",
+            "url": "/assets/goal-visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/616c72a4-972d-5cc0-b903-e2a24bcb150c.png",
+            "provider": "OpenAI image generation",
+            "description": "Visualisierung zum Lernziel: Lageparameter für Datenanalysen auswählen und vergleichen.",
+            "altText": "Infografik zum Datensatz 2, 3, 3, 4, 8: Sie vergleicht das arithmetische Mittel 4, den gegenüber dem Ausreißer robusten Median 3 und den Modalwert 3 und erläutert, dass die Wahl des Lageparameters von Datenfrage und Ausreißern abhängt.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "approved"
+          }
+        ]
+      },
+      "previousQa": {
+        "goalId": "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+        "title": "Lageparameter für Datenanalysen auswählen und vergleichen",
+        "description": "Die lernende Person kann arithmetisches Mittel, Median und Modalwert hinsichtlich ihrer Aussagekraft und ihrer Empfindlichkeit gegenüber Ausreißern vergleichen, zu einer gegebenen Datenfrage einen passenden Lageparameter auswählen und die Wahl im Sachkontext begründen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/616c72a4-972d-5cc0-b903-e2a24bcb150c.png",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/616c72a4-972d-5cc0-b903-e2a24bcb150c.png",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/616c72a4-972d-5cc0-b903-e2a24bcb150c.png",
+        "assetSha256": "sha256:84b007b240e8634afc04a1e746ebb542d11e8647851d18549a018b88b4ba2e17",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "yes",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-08-16T19:30:00.000Z",
+        "chatGptReviewer": "codex-route-assessment-follow-up-2026-08-16",
+        "chatGptNotes": "PASS_BY_ROOT_2026-08-16: data 2,3,3,4,8; sum 20/5=4; median 3; frequencies 1/2/1/1; outlier and selection statements correct; revised title and spelling correct",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:84b007b240e8634afc04a1e746ebb542d11e8647851d18549a018b88b4ba2e17",
+        "aiReviewedAt": "2026-08-16T19:30:00.000Z",
+        "aiReviewer": "codex-full-resolution-mathematics-review-2026-08-16",
+        "aiNotes": "PASS_BY_ROOT_2026-08-16: data 2,3,3,4,8; sum 20/5=4; median 3; frequencies 1/2/1/1; outlier and selection statements correct; revised title and spelling correct"
+      },
+      "oldFiles": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/616c72a4-972d-5cc0-b903-e2a24bcb150c.png",
+          "sha256": "sha256:84b007b240e8634afc04a1e746ebb542d11e8647851d18549a018b88b4ba2e17",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/app/public/assets/goal-visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/616c72a4-972d-5cc0-b903-e2a24bcb150c.png"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/616c72a4-972d-5cc0-b903-e2a24bcb150c.png",
+          "sha256": "sha256:84b007b240e8634afc04a1e746ebb542d11e8647851d18549a018b88b4ba2e17",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/616c72a4-972d-5cc0-b903-e2a24bcb150c.png"
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/616c72a4-972d-5cc0-b903-e2a24bcb150c.png",
+          "sha256": "sha256:84b007b240e8634afc04a1e746ebb542d11e8647851d18549a018b88b4ba2e17",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/616c72a4-972d-5cc0-b903-e2a24bcb150c.png"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/prompt.de.md",
+          "sha256": "sha256:653095f7f0a4928a38ad1c597561e9f9e2a183daca7bea85a146182d03c7c94f",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/prompt.de.md"
+        }
+      ]
+    },
+    {
+      "goalId": "83a5546e-0ea6-576e-83e2-3387b30872bb",
+      "version": "v2",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/83a5546e-0ea6-576e-83e2-3387b30872bb/candidate-v2.png",
+      "candidateSha256": "sha256:c1561d10529dea7fb6cb56b220748d2b10b52c5cf46b47f9a06d8e32de299d16",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/83a5546e-0ea6-576e-83e2-3387b30872bb/prompt-v2.md",
+      "promptSha256": "sha256:236701e1e6872a6c5d7f3b936de77aeb45ecf105eeabd86bfca458b3f618b537",
+      "rootChecks": "Root actually viewed v2 output: erroneous redundant tally column is removed, with three coherent frequency-table columns remaining. Counts8+6+7+3=24 match bars; percentages33/25/29/13 are rounded and sum100. Six cards remain explicitly an excerpt, not the whole sample. Tabular and graphical representation remains fully taught.",
+      "independentReview": {
+        "goalId": "83a5546e-0ea6-576e-83e2-3387b30872bb",
+        "title": "Daten tabellarisch und grafisch aufbereiten",
+        "descriptionDe": "Die lernende Person kann erhobene Daten tabellarisch und grafisch aufbereiten (z. B. Häufigkeitstabellen, Histogramme) und passende Darstellungen auswählen.",
+        "descriptionEn": "The learner can prepare collected data in tables and graphs (e.g., frequency tables, histograms) and choose suitable representations.",
+        "canonicalGoalSha256": "sha256:63fbae333e2d320a0712f41e108386219af8df5ef5ff8fcf420ba2af7248b6ee",
+        "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+        "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/83a5546e-0ea6-576e-83e2-3387b30872bb/candidate-v2.png",
+        "assetSha256": "sha256:c1561d10529dea7fb6cb56b220748d2b10b52c5cf46b47f9a06d8e32de299d16",
+        "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/83a5546e-0ea6-576e-83e2-3387b30872bb/prompt-v2.md",
+        "promptSha256": "sha256:236701e1e6872a6c5d7f3b936de77aeb45ecf105eeabd86bfca458b3f618b537",
+        "generationSha256": "sha256:0c0465b8110a5ba78305cf7377428a8af5e4550f016e0808501bb4c057e4a224",
+        "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+        "generationToolAsRecorded": "image_gen.imagegen",
+        "reviewer": "/root/math_m7_post5_context9_blind_b",
+        "actualReviewedAt": "2026-09-20T20:33:34Z",
+        "inspected": true,
+        "humanApproved": false,
+        "decision": "accept",
+        "findings": [],
+        "checks": [
+          "Die fehlerhafte Strichlistenspalte ist vollständig entfernt; die Tabelle zeigt genau Kategorie, absolute Häufigkeit und relative Häufigkeit. Eine Strichliste ist kein zwingender Bestandteil des aktuellen Ziels.",
+          "Die Zeilen lauten Bus8, Fahrrad6, zuFuß7, Auto3, gesamt24. Zugehörige Prozentwerte ≈33%,≈25%,≈29%,≈13% sind korrekt; ihre gerundete Summe beträgt100%.",
+          "Das Säulendiagramm zeigt auf derselben gleichmäßig skalierten y-Achse die Höhen8,6,7,3; Beschriftungen, Reihenfolge und Farben sind konsistent.",
+          "Links sind sechs Karten als expliziter Auszug aus24 Antworten markiert. Es wird nicht behauptet, aus diesen sechs Karten ließen sich die vollständigen Häufigkeiten abzählen.",
+          "Der Ablauf Rohdaten→Häufigkeitstabelle→Säulendiagramm bleibt sichtbar. Die Auswahlhilfe Kategorien/Säulen gegenüber klassierten Messwerten/Histogramm trifft eine passende grundlegende Unterscheidung. Freundliche Icons und Roboter erhalten den Stil."
+        ],
+        "limitations": [
+          "Die Grafik ist eine Orientierung über Datenaufbereitung, keine vollständig aus dem sichtbaren Rohdatenauszug lösbare Bewertungsaufgabe.",
+          "Die Zeichen≈ bei exakt25% beziehungsweise100% sind unnötig, aber mathematisch nicht falsch und kein Hold."
+        ],
+        "rationale": "Der widersprüchliche Zählstrichinhalt ist entfernt, ohne eine erforderliche Kompetenz wegzulassen. Alle verbleibenden Zahlen und graphischen Relationen sind korrekt."
+      },
+      "previousGoal": {
+        "id": "83a5546e-0ea6-576e-83e2-3387b30872bb",
+        "title": "Daten tabellarisch und grafisch aufbereiten",
+        "titleEn": "Prepare data in tables and graphs",
+        "description": "Die lernende Person kann erhobene Daten tabellarisch und grafisch aufbereiten (z. B. Häufigkeitstabellen, Histogramme) und passende Darstellungen auswählen.",
+        "descriptionEn": "The learner can prepare collected data in tables and graphs (e.g., frequency tables, histograms) and choose suitable representations.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "e02976ad-71fc-5929-b764-df7630269c47"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.5, S. 48, Spiegelstrich 1",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "83a5546e-0ea6-576e-83e2-3387b30872bb",
+            "title": "Visualisierung: Daten tabellarisch und grafisch aufbereiten",
+            "url": "/assets/goal-visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/83a5546e-0ea6-576e-83e2-3387b30872bb.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Daten tabellarisch und grafisch aufbereiten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Daten tabellarisch und grafisch aufbereiten\". Die lernende Person kann erhobene Daten tabellarisch und grafisch aufbereiten (z. B. Häufigkeitstabellen, Histogramme) und passende Darstellungen auswählen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "previousQa": {
+        "goalId": "83a5546e-0ea6-576e-83e2-3387b30872bb",
+        "title": "Daten tabellarisch und grafisch aufbereiten",
+        "description": "Die lernende Person kann erhobene Daten tabellarisch und grafisch aufbereiten (z. B. Häufigkeitstabellen, Histogramme) und passende Darstellungen auswählen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/83a5546e-0ea6-576e-83e2-3387b30872bb.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/83a5546e-0ea6-576e-83e2-3387b30872bb.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/83a5546e-0ea6-576e-83e2-3387b30872bb.jpg",
+        "assetSha256": "sha256:ee99e7e8b3286a593d410819d06d263dae3639dce80aff99c4144cc53657e1c8",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "yes",
+        "humanApproved": "yes",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-07-06T13:58:51.035Z",
+        "chatGptReviewer": "codex",
+        "chatGptNotes": "Content and umlaut checks approved from accepted review ledger mathematik-batch-095.md (accepted_pilot). Review note: The image correctly transforms raw school-transport data into a frequency table and bar chart. Counts `Bus=8`, `Fahrrad=6`, `zu Fuss=7`, `Auto=3` sum to `24`; approximate percentages `33%`, `25%`, `29%`, and `13%` are consistent, and the chart heights match the table.",
+        "humanReviewedAt": "2026-07-07T08:00:57.302Z",
+        "humanReviewer": "workbench"
+      },
+      "oldFiles": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/83a5546e-0ea6-576e-83e2-3387b30872bb.jpg",
+          "sha256": "sha256:ee99e7e8b3286a593d410819d06d263dae3639dce80aff99c4144cc53657e1c8",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/app/public/assets/goal-visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/83a5546e-0ea6-576e-83e2-3387b30872bb.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/83a5546e-0ea6-576e-83e2-3387b30872bb.jpg",
+          "sha256": "sha256:ee99e7e8b3286a593d410819d06d263dae3639dce80aff99c4144cc53657e1c8",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/83a5546e-0ea6-576e-83e2-3387b30872bb.jpg"
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/83a5546e-0ea6-576e-83e2-3387b30872bb.jpg",
+          "sha256": "sha256:ee99e7e8b3286a593d410819d06d263dae3639dce80aff99c4144cc53657e1c8",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/83a5546e-0ea6-576e-83e2-3387b30872bb.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/prompt.de.md",
+          "sha256": "sha256:3dfa0c8e16a80a2828041d1b72f9762a5e76046a2cc6e5851fc0b9f7b3a20b1f",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/prompt.de.md"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/image-reconstruction-prompt.de.md",
+          "sha256": "sha256:47f20f6b313833be9d23a989bac48dcccb849692cf73a132dd87de5e98ed6714",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/image-reconstruction-prompt.de.md"
+        }
+      ]
+    },
+    {
+      "goalId": "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+      "version": "v1",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/aeb947a2-2dd4-5017-a429-0d777e22db6a/candidate-v1.png",
+      "candidateSha256": "sha256:0ed8b296a6719ba12c9a02052aef9c6bb4df47ab462b436e3094fb681f044b80",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/aeb947a2-2dd4-5017-a429-0d777e22db6a/prompt.md",
+      "promptSha256": "sha256:edea928aa2d1c4a01de32f5a58d5931217f6e4d563cfbbfcaa336b54f1fb2491",
+      "rootChecks": "Five equal-weight values4,5,5,6,10 balance at6: distances left2+1+1 equal right4. Mean6, median5 and range6 are correct, and both number line and repeated fifth value are clearly represented.",
+      "independentReview": {
+        "goalId": "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+        "title": "Experimentdaten mit Kenngrößen auswerten",
+        "descriptionDe": "Die lernende Person kann Lage- und Streuungsmaße aus Experimentdaten berechnen und die Ergebnisse im Kontext interpretieren.",
+        "descriptionEn": "The learner can compute measures of location and dispersion from experimental data and interpret the results in context.",
+        "canonicalGoalSha256": "sha256:8b6025d296917db9b43ce1932cf03da99ca3a47b1592d0b95bfd860fd84d7bf2",
+        "canonicalGoalHashRule": "sha256 over JSON.stringify(current canonical goal object), not native evidence fingerprint",
+        "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/aeb947a2-2dd4-5017-a429-0d777e22db6a/candidate-v1.png",
+        "assetSha256": "sha256:0ed8b296a6719ba12c9a02052aef9c6bb4df47ab462b436e3094fb681f044b80",
+        "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/aeb947a2-2dd4-5017-a429-0d777e22db6a/prompt.md",
+        "promptSha256": "sha256:edea928aa2d1c4a01de32f5a58d5931217f6e4d563cfbbfcaa336b54f1fb2491",
+        "generationSha256": "sha256:a627ef1e2d5385b1e409753bd0108cf6bdd6932cd82f0d26479756836b11c19e",
+        "generationProviderAsRecorded": "OpenAI / ChatGPT-Codex image generation",
+        "generationToolAsRecorded": "image_gen.imagegen",
+        "reviewer": "/root/math_m7_post5_context9_blind_b",
+        "actualReviewedAt": "2026-09-20T20:31:45Z",
+        "inspected": true,
+        "humanApproved": false,
+        "decision": "accept",
+        "checks": [
+          "Die Messwerte4,5,5,6,10 erscheinen in Datenkarten und Zahlenangaben konsistent. Summe30 und n=5 ergeben Mittelwert6m.",
+          "Im Schwerpunktbild liegen fünf gleich große Kugeln: eine bei4, zwei übereinander bei5, eine bei6 und eine bei10. Der Stützpunkt liegt bei6.",
+          "Die numerischen Hebelabstände sind links2+1+1=4 und rechts4; die Kugel über der Stütze trägt kein Moment bei. Das Modell zeigt damit korrekt den Mittelwert gleich schwerer Beobachtungen.",
+          "Der Median ist der dritte geordnete Wert5m. Die Spannweite beträgt Maximum10 minus Minimum4 gleich6m; Markierungen und Pfeile zeigen auf die passenden Randwerte.",
+          "Der obere Flugabschnitt ist ausdrücklich schematisch. Die beiden5m-Messungen werden daher nicht fälschlich als zwei verschiedene exakte x-Positionen einer geeichten Flugmessachse gewertet.",
+          "Comicforscher, Papierflieger und Kennwert-Panels verbinden Messkontext, Lage und Streuung. Die Zeichnung erhebt keine unzutreffende Behauptung verschiedener Beobachtungsgewichte."
+        ],
+        "findings": [],
+        "limitations": [
+          "Die handgezeichneten Abstände der Schwerpunktachse sind näherungsweise gleichmäßig; die beschrifteten Werte und Momente sind maßgebend, nicht pixelgenaue Längenmessung.",
+          "Die als ungeordnet bezeichnete Rohdatenliste ist zufällig bereits aufsteigend dargestellt. Das erzeugt keine falsche Kennwertrechnung und ist kein fachlicher Hold."
+        ],
+        "rationale": "Rechnung, gleich schwere Beobachtungen, Schwerpunktlage, Median und Spannweite sind richtig; die Schematisierung des Flugbildes ist transparent."
+      },
+      "previousGoal": {
+        "id": "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+        "title": "Experimentdaten mit Kenngrößen auswerten",
+        "titleEn": "Evaluate experiment data using descriptive measures",
+        "description": "Die lernende Person kann Lage- und Streuungsmaße aus Experimentdaten berechnen und die Ergebnisse im Kontext interpretieren.",
+        "descriptionEn": "The learner can compute measures of location and dispersion from experimental data and interpret the results in context.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "83a5546e-0ea6-576e-83e2-3387b30872bb",
+          "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+          "e402f330-8ac6-525f-b3ff-bc4be229d131"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+            "title": "Visualisierung: Experimentdaten mit Kenngrößen auswerten",
+            "url": "/assets/goal-visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Experimentdaten mit Kenngrößen auswerten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Experimentdaten mit Kenngrößen auswerten\". Die lernende Person kann Lage- und Streuungsmaße aus Experimentdaten berechnen und die Ergebnisse im Kontext interpretieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "previousQa": {
+        "goalId": "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+        "title": "Experimentdaten mit Kenngrößen auswerten",
+        "description": "Die lernende Person kann Lage- und Streuungsmaße aus Experimentdaten berechnen und die Ergebnisse im Kontext interpretieren.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.jpg",
+        "assetSha256": "sha256:f8584b16f28c700cf029fbfe61a26701f3a4d7bdb943b0b7db2174737cb03ca2",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "yes",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-07-06T13:58:51.035Z",
+        "chatGptReviewer": "codex",
+        "chatGptNotes": "Content and umlaut checks approved from accepted review ledger mathematik-batch-095.md (accepted_pilot_after_regeneration). Review note: The accepted regeneration keeps the data `4, 5, 5, 6, 10`, computes mean `30/5=6 m`, marks median `5 m`, and shows range `10-4=6 m`. The interpretation labels correctly state that `10` pulls the mean upward, the median is the middle of ordered data, and range is the distance from minimum to maximum.",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:f8584b16f28c700cf029fbfe61a26701f3a4d7bdb943b0b7db2174737cb03ca2",
+        "aiReviewedAt": "2026-07-16T10:57:55.837Z",
+        "aiReviewer": "codex-fresh-vision-2026-07-16",
+        "aiNotes": "Fresh full-resolution review: for data 4,5,5,6,10, the mean is 30/5=6 m, the median is 5 m, and the range is 10-4=6 m. The ordered-data and balance illustrations consistently support the interpretations of location and spread."
+      },
+      "oldFiles": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.jpg",
+          "sha256": "sha256:f8584b16f28c700cf029fbfe61a26701f3a4d7bdb943b0b7db2174737cb03ca2",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/app/public/assets/goal-visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.jpg",
+          "sha256": "sha256:f8584b16f28c700cf029fbfe61a26701f3a4d7bdb943b0b7db2174737cb03ca2",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.jpg"
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.jpg",
+          "sha256": "sha256:f8584b16f28c700cf029fbfe61a26701f3a4d7bdb943b0b7db2174737cb03ca2",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/prompt.de.md",
+          "sha256": "sha256:6d33a96a93cbcd927c94be9f365e6bf3b1950746f77dd5d278d441c70db288d2",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/prompt.de.md"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/image-reconstruction-prompt.de.md",
+          "sha256": "sha256:c57a33ad3c9385aaeb60107fb2839d3b93e8e2771c90473eace78abd8e849940",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-statistics-corrections-11-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/image-reconstruction-prompt.de.md"
+        }
+      ]
+    }
+  ],
+  "note": "Eleven selected candidate rasters actually inspected by Root and independent reviewer. No D/P completion implied; current-context review follows."
+}

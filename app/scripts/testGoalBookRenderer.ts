@@ -1149,6 +1149,32 @@ const runChromiumSmoke = async (required: boolean) => {
       boundedHtmlManifest.assets[0].renderedBytes <= 100_000,
       'bounded-atlas rendering enforces the per-image derivative budget',
     )
+    assert.equal(boundedHtmlManifest.assets[0].contentType, 'image/webp')
+
+    const boundedPdfPath = join(temporaryDirectory, 'goal-book-bounded-atlas.pdf')
+    const boundedPdfManifest = await writeGoalBookPdf(
+      localAssetModel,
+      boundedPdfPath,
+      { ...localRenderOptions, printDerivativeProfile: 'bounded-atlas' },
+    )
+    assert.equal(
+      boundedPdfManifest.assets[0].contentType,
+      'image/jpeg',
+      'bounded PDF uses a DCT-compatible derivative even for source PNGs',
+    )
+    assert.match(
+      readFileSync(boundedPdfPath).toString('latin1'),
+      /\/DCTDecode/u,
+      'Chromium preserves the compressed derivative in the actual PDF',
+    )
+    assert.equal(boundedPdfManifest.artifactSizeLimitBytes, 90 * 1024 * 1024)
+    assert.ok(boundedPdfManifest.assets[0].renderedBytes <= 100_000)
+    assert.equal(
+      boundedPdfManifest.assets[0].sourceSha256,
+      boundedHtmlManifest.assets[0].sourceSha256,
+      'PDF and HTML bind the same reviewed original image',
+    )
+    assert.deepEqual(readFileSync(sourcePath), IMAGE_BYTES, 'source PNG remains byte-identical')
 
     const pdfPath = join(temporaryDirectory, 'goal-book.pdf')
     const pdfManifest = await writeGoalBookPdf(localAssetModel, pdfPath, localRenderOptions)

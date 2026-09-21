@@ -1,0 +1,1241 @@
+{
+  "schemaVersion": 1,
+  "batchId": "math-m7-v-only-corrections-13-20260920-v1",
+  "reviewDate": "2026-09-20",
+  "author": "math_m7_current_scope",
+  "evidenceType": "AI-only author candidate self-review",
+  "status": "candidates_for_independent_review_with_holds",
+  "generation": {
+    "provider": "OpenAI",
+    "tool": "builtin imagegen",
+    "model": "not_reported",
+    "strategy": "13 source-referenced local edits in one first pass; five concrete V2 retries and one final garden-brace V3; no cosmetic redesign, external backend, shell drawing or Python image manipulation"
+  },
+  "scope": {
+    "goals": 13,
+    "firstPassCandidates": 13,
+    "totalAttempts": 19,
+    "candidatesForIndependentReview": 10,
+    "holds": 3,
+    "imports": 0,
+    "humanApprovals": 0,
+    "canonicalEdits": 0,
+    "qaLedgerEdits": 0,
+    "registryEdits": 0
+  },
+  "authority": "Author self-review only. Candidate selections are not independent acceptance, human approval, current strict-V closure or M7 completion. Root handles independent review and any later import.",
+  "scopeRules": {
+    "skill": "imagegen",
+    "repositoryRules": [
+      "AGENTS.md §7.3",
+      "docs/concept/skill-graph/atomic-goal-visualizations.md"
+    ],
+    "applied": "Sources inspected before editing; builtin raster edits used; final actual geometry checked separately from correct text; rejected attempts retained as inactive history; no active assets or ledgers changed."
+  },
+  "pixelMeasurementConvention": "All pixel positions in findings are approximate visual observations in the corresponding stored raster, origin top-left; they are not automated image measurements.",
+  "scopedValidation": {
+    "sourceHashesStillCurrent": true,
+    "all13PreparationCommandsExitZero": true,
+    "pngsAndPromptsExist": true,
+    "fullChecksRun": false
+  },
+  "independentArithmeticChecks": {
+    "rationalIntercepts": {
+      "f0": -0.5,
+      "zeroAtMinus1": 0,
+      "verticalAsymptote": 2,
+      "horizontalAsymptote": 1
+    },
+    "garden": {
+      "lawn": 0.75,
+      "initialRest": 0.25,
+      "flowers": 0.1,
+      "finalRest": 0.15,
+      "sum": 1
+    },
+    "coinTree": {
+      "KK": 0.25,
+      "KZ": 0.25,
+      "ZK": 0.25,
+      "ZZ": 0.25,
+      "exactlyOneK": 0.5
+    },
+    "fractions": {
+      "negativeHalf": -0.5,
+      "quarter": 0.25,
+      "half": 0.5,
+      "threeQuarters": 0.75,
+      "pizzasPerPerson": 0.75,
+      "threeQuartersDecimal": 0.75,
+      "oneThird": 0.3333333333333333,
+      "oneFifth": 0.2,
+      "twoThirds": 0.6666666666666666
+    },
+    "trig": {
+      "f0": 1,
+      "max": 3,
+      "min": -1,
+      "period": 6.283185307179586,
+      "zeros": [
+        {
+          "x": 3.665191429188092,
+          "y": 5.551115123125783e-16
+        },
+        {
+          "x": 5.759586531581287,
+          "y": -8.881784197001252e-16
+        }
+      ]
+    },
+    "boxplots": {
+      "medianA": 10,
+      "medianB": 11,
+      "iqrA": 6,
+      "iqrB": 11,
+      "rangeA": 12,
+      "rangeB": 18
+    },
+    "domainHole": {
+      "simplification": "(x²−4)/(x−2)=x+2 for x≠2",
+      "hole": [
+        2,
+        4
+      ]
+    },
+    "piercings": [
+      {
+        "t": -0.5,
+        "p": [
+          0,
+          2.5,
+          3.5
+        ]
+      },
+      {
+        "t": 2,
+        "p": [
+          5,
+          0,
+          1
+        ]
+      },
+      {
+        "t": 3,
+        "p": [
+          7,
+          -1,
+          0
+        ]
+      }
+    ]
+  },
+  "records": [
+    {
+      "goalId": "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+      "title": "Ableitungen von Sinus und Kosinus grafisch begründen",
+      "canonicalContext": {
+        "id": "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+        "title": "Ableitungen von Sinus und Kosinus grafisch begründen",
+        "description": "Die lernende Person kann aus dem Verlauf der Sinus- und Kosinusgraphen die Ableitungsfunktionen durch grafisches Differenzieren begründen und die Vorzeichen- und Extremstellenzusammenhänge erklären."
+      },
+      "sourceReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-1.review.json",
+      "sourceAsset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2.png",
+        "sha256": "sha256:59ad509f870e3c824b3650f00ddc1f276a76a01f2b6c03ff2737bacc4305081a",
+        "sha256AtManifest": "sha256:59ad509f870e3c824b3650f00ddc1f276a76a01f2b6c03ff2737bacc4305081a",
+        "stillCurrent": true,
+        "actualViewed": true
+      },
+      "sourceDefects": [
+        "Im unteren cos(x)-Diagramm stehen unter den Achsenticks bei x=π/2 und x=3π/2 jeweils '0'. Diese x-Achsenbeschriftungen sind falsch; die korrekten Funktionswerte 0 werden bereits oberhalb mit 'Wert 0' bezeichnet. Die Achsenticks müssen π/2 und 3π/2 heißen oder unbeschriftet bleiben."
+      ],
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0
+      },
+      "status": "candidate_for_independent_review",
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2/candidate-v1.png",
+      "selectedCandidateSha256": "sha256:19e15c1112334755c5a6a202fd66c85f70ff518b71381d44be7ef9707595ce50",
+      "lastAttemptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2/candidate-v1.png",
+      "attempts": [
+        {
+          "version": 1,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2/candidate-v1.png",
+            "sha256": "sha256:19e15c1112334755c5a6a202fd66c85f70ff518b71381d44be7ef9707595ce50",
+            "bytes": 1329887,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2/prompt.md",
+            "sha256": "sha256:5558b4e81a4ce53557293ab3cea535a447aab9a08a08fdd8776cd5b3b4b6516b",
+            "bytes": 1076
+          },
+          "referencePath": "app/public/assets/goal-visualizations/mathematik/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2.png",
+          "referenceSha256": "sha256:59ad509f870e3c824b3650f00ddc1f276a76a01f2b6c03ff2737bacc4305081a",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-314a5e03-5ba3-453d-939e-4e4ca5f8d73e.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "needs_external_review",
+          "actualViewChecks": [
+            "Im unteren Kosinusdiagramm stehen nun π/2 und 3π/2 unter den richtigen x-Ticks; die davon getrennten Beschriftungen Wert 0 bleiben erhalten.",
+            "Sinustangenten und Kosinuswerte an 0, π/2, π, 3π/2 und 2π ergeben konsistent 1, 0, −1, 0, 1.",
+            "Kurven, Zuordnungspfeile und übrige Beschriftungen sind fachlich erhalten; keine technische ID sichtbar."
+          ],
+          "defects": []
+        }
+      ],
+      "actualViewChecks": [
+        "Im unteren Kosinusdiagramm stehen nun π/2 und 3π/2 unter den richtigen x-Ticks; die davon getrennten Beschriftungen Wert 0 bleiben erhalten.",
+        "Sinustangenten und Kosinuswerte an 0, π/2, π, 3π/2 und 2π ergeben konsistent 1, 0, −1, 0, 1.",
+        "Kurven, Zuordnungspfeile und übrige Beschriftungen sind fachlich erhalten; keine technische ID sichtbar."
+      ],
+      "unresolvedDefects": [],
+      "independentReviewFocus": [],
+      "nextAction": "Root muss das ausgewählte Raster unabhängig ansehen und fachlich abnehmen; erst danach gegebenenfalls in der nativen Pipeline importieren.",
+      "independentReviewStatus": "pending",
+      "humanApproved": false,
+      "imported": false
+    },
+    {
+      "goalId": "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+      "title": "Achsenschnittpunkte einfacher gebrochen-rationaler Funktionen bestimmen",
+      "canonicalContext": {
+        "id": "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "title": "Achsenschnittpunkte einfacher gebrochen-rationaler Funktionen bestimmen",
+        "description": "Die lernende Person kann Achsenschnittpunkte einfacher gebrochen-rationaler Funktionen aus Termen und Graphen bestimmen und ihre Bedeutung im Koordinatensystem erklären.",
+        "core": true
+      },
+      "sourceReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-1.review.json",
+      "sourceAsset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43.jpg",
+        "sha256": "sha256:8c6ad3e2f741bc2a830e2bc1a630164ec2538150e479760342ace20d5298460c",
+        "sha256AtManifest": "sha256:8c6ad3e2f741bc2a830e2bc1a630164ec2538150e479760342ace20d5298460c",
+        "stillCurrent": true,
+        "actualViewed": true
+      },
+      "sourceDefects": [
+        "Die Strecke vom Ursprung zum eingezeichneten Sᵧ(0|−0,5) ist ungefähr genauso lang wie vom Ursprung zur ausdrücklich mit 1 markierten waagerechten Linie y=1. Auf der ansonsten gleichmäßig getickten y-Achse liegt der Punkt damit bei −1 statt −0,5. Für ein Achsenschnittpunkt-Ablesebild muss Sᵧ auf halber negativer Einheitenhöhe liegen und der Graph entsprechend angepasst werden."
+      ],
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0
+      },
+      "status": "hold",
+      "selectedCandidatePath": null,
+      "selectedCandidateSha256": null,
+      "lastAttemptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43/candidate-v2.png",
+      "attempts": [
+        {
+          "version": 1,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43/candidate-v1.png",
+            "sha256": "sha256:eb173f3fd7114bfda3366806cc7522199cf1ceef985cdeaa1df1558d0451b447",
+            "bytes": 1477667,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43/prompt.md",
+            "sha256": "sha256:cb1b9861c9edfd81ea32e84d0cc805d7590c48723814b2ce02b1b50ba00844da",
+            "bytes": 1474
+          },
+          "referencePath": "app/public/assets/goal-visualizations/mathematik/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43.jpg",
+          "referenceSha256": "sha256:8c6ad3e2f741bc2a830e2bc1a630164ec2538150e479760342ace20d5298460c",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-ef13a9ca-a5a5-4764-bf55-3ad08431379f.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "rejected_regenerate",
+          "actualViewChecks": [
+            "f(0)=−0,5, Nullstelle −1 und Asymptoten x=2/y=1 bleiben algebraisch richtig.",
+            "Der y-Schnittpunkt liegt weiterhin annähernd eine negative Einheit unter dem Ursprung statt eine halbe Einheit."
+          ],
+          "defects": [
+            "Die verlangte geometrische Verschiebung von Sᵧ wurde nicht ausreichend umgesetzt; richtige Textkoordinate ersetzt keine richtige Punktlage."
+          ]
+        },
+        {
+          "version": 2,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43/candidate-v2.png",
+            "sha256": "sha256:b2390600cf2d5d517f430dd49f1cf0a20e1ba89eb3177b32be7d5621be3d90a6",
+            "bytes": 1462831,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43/prompt-v2.md",
+            "sha256": "sha256:d9832ef3ea3e8c41bfc8ece1c05d144b2f0eb05d6e1c0752a859d6b5bb9e4d21",
+            "bytes": 1227
+          },
+          "referencePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43/candidate-v1.png",
+          "referenceSha256": "sha256:eb173f3fd7114bfda3366806cc7522199cf1ceef985cdeaa1df1558d0451b447",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-17367f7d-025b-44b6-a99b-11d9f03ebaf8.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "rejected_regenerate",
+          "actualViewChecks": [
+            "Lokales PNG tatsächlich erneut angesehen; die zweite Ausgabe hält Formel, Nullstelle und Asymptoten richtig.",
+            "Bei 1678×937 px liegt der Ursprung ungefähr (1207,570), die y=1-Linie bei y≈505. Sᵧ müsste bei y≈603 liegen, sein Zentrum liegt jedoch bei y≈626."
+          ],
+          "defects": [
+            "Persistierender Positionsfehler: rund 56 px unter y=0 statt der erforderlichen rund 32,5 px. Sᵧ wird weiterhin nicht bei −0,5 ablesbar dargestellt."
+          ]
+        }
+      ],
+      "actualViewChecks": [
+        "Lokales PNG tatsächlich erneut angesehen; die zweite Ausgabe hält Formel, Nullstelle und Asymptoten richtig.",
+        "Bei 1678×937 px liegt der Ursprung ungefähr (1207,570), die y=1-Linie bei y≈505. Sᵧ müsste bei y≈603 liegen, sein Zentrum liegt jedoch bei y≈626."
+      ],
+      "unresolvedDefects": [
+        "Persistierender Positionsfehler: rund 56 px unter y=0 statt der erforderlichen rund 32,5 px. Sᵧ wird weiterhin nicht bei −0,5 ablesbar dargestellt."
+      ],
+      "independentReviewFocus": [],
+      "nextAction": "Hold beibehalten. Später den Graphenausschnitt vereinfacht neu darstellen: gleichmäßige y-Skala und Sᵧ bei exakt halber negativer Einheitenhöhe; bis dahin keine Variante importieren.",
+      "independentReviewStatus": "pending",
+      "humanApproved": false,
+      "imported": false
+    },
+    {
+      "goalId": "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+      "title": "Anteilssachprobleme mit rationalen Zahlen modellieren",
+      "canonicalContext": {
+        "id": "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "title": "Anteilssachprobleme mit rationalen Zahlen modellieren",
+        "description": "Die lernende Person kann Sachprobleme mit Anteilen oder Anteilen von Anteilen in Terme oder Rechenwege mit rationalen Zahlen übersetzen und Ergebnisse im Kontext deuten.",
+        "core": true
+      },
+      "sourceReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-1.review.json",
+      "sourceAsset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/b41cb496-dad5-596e-9c23-cdcbdab3ec2e.jpg",
+        "sha256": "sha256:5a91646c56dadf21df2701c8fc0a3b219674f4ebd90079cb941bdfd987719002",
+        "sha256AtManifest": "sha256:5a91646c56dadf21df2701c8fc0a3b219674f4ebd90079cb941bdfd987719002",
+        "stillCurrent": true,
+        "actualViewed": true
+      },
+      "sourceDefects": [
+        "Rechts muss der Rasen weiterhin 3/4 des Ganzen darstellen und der bisherige Viertelrest in 1/10 Blumen und 3/20 verbleibenden Rest geteilt sein. Stattdessen liegt ein brauner Viertelsektor plus zusätzlicher Blumensektor vor; der Rasen ist entsprechend zu klein.",
+        "Im braunen Ergebnisbereich steht sichtbar '1' über einem Bruchstrich mit 'Rest' darunter. Das ist eine fehlerhafte beziehungsweise unvollständige Bruchbeschriftung und darf nicht als Anteil stehen bleiben."
+      ],
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"b41cb496-dad5-596e-9c23-cdcbdab3ec2e\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0
+      },
+      "status": "candidate_for_independent_review",
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/candidate-v3.png",
+      "selectedCandidateSha256": "sha256:9d254c7de15a39213b84a7f5d60e75bcdd6bd5a5e7b976ab54a3e1e8f0c25859",
+      "lastAttemptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/candidate-v3.png",
+      "attempts": [
+        {
+          "version": 1,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/candidate-v1.png",
+            "sha256": "sha256:d51a75160aabf2f3b700bdc77466435c97887bff92f0b28068ece3ebac5abae1",
+            "bytes": 1557170,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/prompt.md",
+            "sha256": "sha256:17a1a13ca046ea59eba4dd90b3f2aec5fe855714a99d34106b6a4a050f30af41",
+            "bytes": 1482
+          },
+          "referencePath": "app/public/assets/goal-visualizations/mathematik/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/b41cb496-dad5-596e-9c23-cdcbdab3ec2e.jpg",
+          "referenceSha256": "sha256:5a91646c56dadf21df2701c8fc0a3b219674f4ebd90079cb941bdfd987719002",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-64e0d709-3cf1-41f3-ad01-2fd2bc57f07d.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "rejected_regenerate",
+          "actualViewChecks": [
+            "Die Restbeschriftung wurde zu 3/20 korrigiert; die Rechnung 2/5·1/4=1/10 bleibt richtig.",
+            "Der Ergebnis-Kreis enthält weiterhin geometrisch unpassende Sektorgrößen."
+          ],
+          "defects": [
+            "Der Rasenbereich ist zu klein, da ein zusätzlicher Blumensektor aus dem alten Rasen statt aus dem Viertelrest ausgeschnitten erscheint."
+          ]
+        },
+        {
+          "version": 2,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/candidate-v2.png",
+            "sha256": "sha256:5fb1cd98799f8b2e8a667984e813007c9b9af1cbfa3c44018aaca74e4d91ae36",
+            "bytes": 1600902,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/prompt-v2.md",
+            "sha256": "sha256:7fee1f8faefccf9ee36401c93d2c0489c04e501e8208ba84c0d473128b867af4",
+            "bytes": 1306
+          },
+          "referencePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/candidate-v1.png",
+          "referenceSha256": "sha256:d51a75160aabf2f3b700bdc77466435c97887bff92f0b28068ece3ebac5abae1",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-4bc0014c-d19e-42c5-b32d-10d28c69b916.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "rejected_regenerate",
+          "actualViewChecks": [
+            "Ergebnisgrafik hat vier Reihen mit je fünf Zellen: 15 grüne, zwei gelbe und drei braune Zellen.",
+            "Brüche 3/4, 1/10 und 3/20 sind richtig und ergeben zusammen 1."
+          ],
+          "defects": [
+            "Die rechte grüne Klammer reicht bis etwa y=475, obwohl der grüne Anteil bei etwa y=443 endet; sie schließt einen Teil der braunen Restreihe ein."
+          ]
+        },
+        {
+          "version": 3,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/candidate-v3.png",
+            "sha256": "sha256:9d254c7de15a39213b84a7f5d60e75bcdd6bd5a5e7b976ab54a3e1e8f0c25859",
+            "bytes": 1569040,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/prompt-v3.md",
+            "sha256": "sha256:d075be293afd7ee3897dc0e74ee5baa344e4197da2a5374f616956ca212d6f8a",
+            "bytes": 833
+          },
+          "referencePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/candidate-v2.png",
+          "referenceSha256": "sha256:5fb1cd98799f8b2e8a667984e813007c9b9af1cbfa3c44018aaca74e4d91ae36",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-5efd6d6c-5fae-4863-b81a-87ea32162545.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "needs_external_review",
+          "actualViewChecks": [
+            "Lokales finales PNG angesehen: vier Reihen zu fünf Zellen, obere drei Reihen grün (15/20), unten zwei gelbe Blumenfelder (2/20) und drei braune Restfelder (3/20).",
+            "Die zu lange grüne Klammer ist entfernt. Die Beschriftung 3/4 Rasen zeigt nun mit einer kurzen Linie ausschließlich in den grünen Bereich.",
+            "Die unteren Klammern für 1/10 Blumen und 3/20 Rest stimmen mit den jeweiligen Zellgruppen überein.",
+            "Ausgangskontext und Rechnung 1−3/4=1/4, (2/5)·(1/4)=2/20=1/10 sowie Antwortsatz sind erhalten."
+          ],
+          "defects": []
+        }
+      ],
+      "actualViewChecks": [
+        "Lokales finales PNG angesehen: vier Reihen zu fünf Zellen, obere drei Reihen grün (15/20), unten zwei gelbe Blumenfelder (2/20) und drei braune Restfelder (3/20).",
+        "Die zu lange grüne Klammer ist entfernt. Die Beschriftung 3/4 Rasen zeigt nun mit einer kurzen Linie ausschließlich in den grünen Bereich.",
+        "Die unteren Klammern für 1/10 Blumen und 3/20 Rest stimmen mit den jeweiligen Zellgruppen überein.",
+        "Ausgangskontext und Rechnung 1−3/4=1/4, (2/5)·(1/4)=2/20=1/10 sowie Antwortsatz sind erhalten."
+      ],
+      "unresolvedDefects": [],
+      "independentReviewFocus": [],
+      "nextAction": "Root muss das ausgewählte Raster unabhängig ansehen und fachlich abnehmen; erst danach gegebenenfalls in der nativen Pipeline importieren.",
+      "independentReviewStatus": "pending",
+      "humanApproved": false,
+      "imported": false
+    },
+    {
+      "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+      "title": "Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen",
+      "canonicalContext": {
+        "id": "efc3506a-5f35-4d77-9498-d70a091a470b",
+        "title": "Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen",
+        "description": "Die lernende Person kann zusammengesetzte Zufallsexperimente mit Baumdiagrammen strukturieren und Wahrscheinlichkeiten mit Pfadregeln in mehrstufigen Situationen bestimmen.",
+        "core": true
+      },
+      "sourceReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-1.review.json",
+      "sourceAsset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/efc3506a-5f35-4d77-9498-d70a091a470b/efc3506a-5f35-4d77-9498-d70a091a470b.jpg",
+        "sha256": "sha256:6c29e031ea17e39bd0cfeffa52315dd28b16184118fcfecd0677205718517cb7",
+        "sha256AtManifest": "sha256:6c29e031ea17e39bd0cfeffa52315dd28b16184118fcfecd0677205718517cb7",
+        "stillCurrent": true,
+        "actualViewed": true
+      },
+      "sourceDefects": [
+        "Die Klammer unmittelbar unter dem ZZ-Ast und der Pfeil vom Feld 'Summenregel (Ereignis addieren)' zum ZZ-Endknoten ordnen die Summenregel visuell dem falschen Pfad zu. Für das ausgeschriebene Ereignis 'genau einmal K' müssen die beiden vollständigen Pfade KZ und ZK erkennbar zusammengefasst werden; ZZ gehört nicht dazu."
+      ],
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"efc3506a-5f35-4d77-9498-d70a091a470b\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0
+      },
+      "status": "candidate_for_independent_review",
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/efc3506a-5f35-4d77-9498-d70a091a470b/candidate-v1.png",
+      "selectedCandidateSha256": "sha256:3a650a3c3d331d873ca393e0dd2d7bab7ef19a5f85cb2f4feef2e52a50fe080b",
+      "lastAttemptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/efc3506a-5f35-4d77-9498-d70a091a470b/candidate-v1.png",
+      "attempts": [
+        {
+          "version": 1,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/efc3506a-5f35-4d77-9498-d70a091a470b/candidate-v1.png",
+            "sha256": "sha256:3a650a3c3d331d873ca393e0dd2d7bab7ef19a5f85cb2f4feef2e52a50fe080b",
+            "bytes": 1525994,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/efc3506a-5f35-4d77-9498-d70a091a470b/prompt.md",
+            "sha256": "sha256:320c0c4c0e6a7d476a285ccb0f7b4451a395e9a8354c063765d35f6d484bd8d0",
+            "bytes": 1507
+          },
+          "referencePath": "app/public/assets/goal-visualizations/mathematik/efc3506a-5f35-4d77-9498-d70a091a470b/efc3506a-5f35-4d77-9498-d70a091a470b.jpg",
+          "referenceSha256": "sha256:6c29e031ea17e39bd0cfeffa52315dd28b16184118fcfecd0677205718517cb7",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-5893474c-058f-40e9-88b7-36ea60571776.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "needs_external_review",
+          "actualViewChecks": [
+            "Der Summenregel-Callout und die rechte Klammer ordnen nun KZ und ZK zusammen; ZZ ist nicht eingeschlossen.",
+            "Vier Ergebnisse KK, KZ, ZK, ZZ und die bedingten Astwahrscheinlichkeiten 1/2 sind korrekt.",
+            "P(KZ)=1/4 und P(genau einmal K)=1/4+1/4=1/2 sind richtig; die gemeinsame Endpunktmarkierung ist eindeutig."
+          ],
+          "defects": []
+        }
+      ],
+      "actualViewChecks": [
+        "Der Summenregel-Callout und die rechte Klammer ordnen nun KZ und ZK zusammen; ZZ ist nicht eingeschlossen.",
+        "Vier Ergebnisse KK, KZ, ZK, ZZ und die bedingten Astwahrscheinlichkeiten 1/2 sind korrekt.",
+        "P(KZ)=1/4 und P(genau einmal K)=1/4+1/4=1/2 sind richtig; die gemeinsame Endpunktmarkierung ist eindeutig."
+      ],
+      "unresolvedDefects": [],
+      "independentReviewFocus": [],
+      "nextAction": "Root muss das ausgewählte Raster unabhängig ansehen und fachlich abnehmen; erst danach gegebenenfalls in der nativen Pipeline importieren.",
+      "independentReviewStatus": "pending",
+      "humanApproved": false,
+      "imported": false
+    },
+    {
+      "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+      "title": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln",
+      "canonicalContext": {
+        "id": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "title": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln",
+        "description": "Die lernende Person kann das Bogenmass als alternative Beschreibung von Winkelgrößen am Einheitskreis veranschaulichen und sicher zwischen Gradmass und Bogenmass wechseln.",
+        "core": true
+      },
+      "sourceReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-1.review.json",
+      "sourceAsset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/8d30d241-0247-48ac-83d3-4e0de61584d3/8d30d241-0247-48ac-83d3-4e0de61584d3.jpg",
+        "sha256": "sha256:45e510f38167d12056f230b1ad6be199a565970a16d51da01d7ec77916ea2fe7",
+        "sha256AtManifest": "sha256:45e510f38167d12056f230b1ad6be199a565970a16d51da01d7ec77916ea2fe7",
+        "stillCurrent": true,
+        "actualViewed": true
+      },
+      "sourceDefects": [
+        "Äußerer Umlaufpfeil um den Einheitskreis, Pfeilspitze rechts oben neben '0 rad = 0°': Die positiven Winkelwerte nehmen gegen den Uhrzeigersinn zu, der einzige Umlaufpfeil zeigt aber im Uhrzeigersinn. Zusammen mit 'eine volle Umdrehung = 2π rad = 360°' entsteht eine widersprüchliche Darstellung der positiven Drehrichtung. Erforderliche Korrektur: Den äußeren Umlaufpfeil gegen den Uhrzeigersinn ausrichten oder entfernen; Winkelpositionen und Umrechnungsformel können unverändert bleiben."
+      ],
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"8d30d241-0247-48ac-83d3-4e0de61584d3\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0
+      },
+      "status": "candidate_for_independent_review",
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/8d30d241-0247-48ac-83d3-4e0de61584d3/candidate-v1.png",
+      "selectedCandidateSha256": "sha256:cb2028a504e9d4138c220298cba50de2b2a6dd8fee3faa20a7fb7975e79930e6",
+      "lastAttemptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/8d30d241-0247-48ac-83d3-4e0de61584d3/candidate-v1.png",
+      "attempts": [
+        {
+          "version": 1,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/8d30d241-0247-48ac-83d3-4e0de61584d3/candidate-v1.png",
+            "sha256": "sha256:cb2028a504e9d4138c220298cba50de2b2a6dd8fee3faa20a7fb7975e79930e6",
+            "bytes": 1275734,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/8d30d241-0247-48ac-83d3-4e0de61584d3/prompt.md",
+            "sha256": "sha256:9958ef095d5ecf17a42b4b6967d95229be4819d318a5269a24d0dafc47c6b579",
+            "bytes": 1221
+          },
+          "referencePath": "app/public/assets/goal-visualizations/mathematik/8d30d241-0247-48ac-83d3-4e0de61584d3/8d30d241-0247-48ac-83d3-4e0de61584d3.jpg",
+          "referenceSha256": "sha256:45e510f38167d12056f230b1ad6be199a565970a16d51da01d7ec77916ea2fe7",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-1a62f3bf-66db-49cb-a3bd-4b947d4e3702.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "needs_external_review",
+          "actualViewChecks": [
+            "Der widersprüchliche äußere Uhrzeigersinn-Pfeil ist entfernt; der übrige Kreis bleibt erhalten.",
+            "0, π/2, π und 3π/2 liegen weiterhin rechts, oben, links und unten; r=1 und 2π rad=360° stimmen.",
+            "Umrechnung Gradmaß·π/180=Bogenmaß ist fachlich unverändert."
+          ],
+          "defects": []
+        }
+      ],
+      "actualViewChecks": [
+        "Der widersprüchliche äußere Uhrzeigersinn-Pfeil ist entfernt; der übrige Kreis bleibt erhalten.",
+        "0, π/2, π und 3π/2 liegen weiterhin rechts, oben, links und unten; r=1 und 2π rad=360° stimmen.",
+        "Umrechnung Gradmaß·π/180=Bogenmaß ist fachlich unverändert."
+      ],
+      "unresolvedDefects": [],
+      "independentReviewFocus": [],
+      "nextAction": "Root muss das ausgewählte Raster unabhängig ansehen und fachlich abnehmen; erst danach gegebenenfalls in der nativen Pipeline importieren.",
+      "independentReviewStatus": "pending",
+      "humanApproved": false,
+      "imported": false
+    },
+    {
+      "goalId": "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+      "title": "Bogenmaß in periodischen Prozessen nutzen",
+      "canonicalContext": {
+        "id": "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+        "title": "Bogenmaß in periodischen Prozessen nutzen",
+        "description": "Die lernende Person kann das Bogenmaß als Winkelmaß in trigonometrischen Funktionstermen verwenden, zwischen Grad- und Bogenmaß wechseln und Bogenmaßangaben im Verlauf periodischer Prozesse deuten."
+      },
+      "sourceReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-1.review.json",
+      "sourceAsset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/cdf49335-cebf-54b4-9f52-50d5badabe2f/cdf49335-cebf-54b4-9f52-50d5badabe2f.jpg",
+        "sha256": "sha256:f55231ca319081fd52e340be60caf671565f94e3b44be1032ef4b122866a7610",
+        "sha256AtManifest": "sha256:f55231ca319081fd52e340be60caf671565f94e3b44be1032ef4b122866a7610",
+        "stillCurrent": true,
+        "actualViewed": true
+      },
+      "sourceDefects": [
+        "Zusätzlicher schwarzer gebogener Pfeil links oberhalb des Einheitskreises: Dieser Pfeil läuft am oberen linken Kreisbogen nach rechts oben und damit im Uhrzeigersinn. Er widerspricht sowohl den beiden gegenläufigen Pfeilen für φ und s als auch den positiv zunehmenden Winkelpositionen. Erforderliche Korrektur: Den zusätzlichen äußeren Pfeil entfernen oder gegen den Uhrzeigersinn ausrichten. Der Einheitskreis, die Formeln und der Sinusgraph benötigen deswegen keine inhaltliche Änderung."
+      ],
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"cdf49335-cebf-54b4-9f52-50d5badabe2f\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0
+      },
+      "status": "candidate_for_independent_review",
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/cdf49335-cebf-54b4-9f52-50d5badabe2f/candidate-v1.png",
+      "selectedCandidateSha256": "sha256:91c3538360e84f06793d607bdde112bbed873458bbb8b4ca4f880fd9295e7b0d",
+      "lastAttemptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/cdf49335-cebf-54b4-9f52-50d5badabe2f/candidate-v1.png",
+      "attempts": [
+        {
+          "version": 1,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/cdf49335-cebf-54b4-9f52-50d5badabe2f/candidate-v1.png",
+            "sha256": "sha256:91c3538360e84f06793d607bdde112bbed873458bbb8b4ca4f880fd9295e7b0d",
+            "bytes": 1354232,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/cdf49335-cebf-54b4-9f52-50d5badabe2f/prompt.md",
+            "sha256": "sha256:6d4edaa1b6908fafc13bcb7c7b6f558fee2a8f257d01b0ca38ef301bb772bea5",
+            "bytes": 1166
+          },
+          "referencePath": "app/public/assets/goal-visualizations/mathematik/cdf49335-cebf-54b4-9f52-50d5badabe2f/cdf49335-cebf-54b4-9f52-50d5badabe2f.jpg",
+          "referenceSha256": "sha256:f55231ca319081fd52e340be60caf671565f94e3b44be1032ef4b122866a7610",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-1dbd525c-b538-4069-8547-cc2299d0607f.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "needs_external_review",
+          "actualViewChecks": [
+            "Der zusätzliche äußere Uhrzeigersinn-Pfeil links oben ist entfernt.",
+            "Die verbleibenden Pfeile für φ und Bogenlänge s zeigen beide gegen den Uhrzeigersinn; s=r·φ und s=φ bei r=1 stimmen.",
+            "Sinusgraph mit Nullstellen 0, π, 2π, Maximum (π/2,1), Minimum (3π/2,−1) und Periode 2π bleibt korrekt."
+          ],
+          "defects": []
+        }
+      ],
+      "actualViewChecks": [
+        "Der zusätzliche äußere Uhrzeigersinn-Pfeil links oben ist entfernt.",
+        "Die verbleibenden Pfeile für φ und Bogenlänge s zeigen beide gegen den Uhrzeigersinn; s=r·φ und s=φ bei r=1 stimmen.",
+        "Sinusgraph mit Nullstellen 0, π, 2π, Maximum (π/2,1), Minimum (3π/2,−1) und Periode 2π bleibt korrekt."
+      ],
+      "unresolvedDefects": [],
+      "independentReviewFocus": [],
+      "nextAction": "Root muss das ausgewählte Raster unabhängig ansehen und fachlich abnehmen; erst danach gegebenenfalls in der nativen Pipeline importieren.",
+      "independentReviewStatus": "pending",
+      "humanApproved": false,
+      "imported": false
+    },
+    {
+      "goalId": "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+      "title": "Brüche als Zahlen, Anteile und Quotienten deuten",
+      "canonicalContext": {
+        "id": "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+        "title": "Brüche als Zahlen, Anteile und Quotienten deuten",
+        "description": "Die lernende Person kann Brüche situationsbezogen als Anteil, Quotient oder Zahl deuten, dabei das Bezugs-Ganze benennen, eine passende Darstellung auswählen und zugehörige Ganze oder Teilmengen bestimmen.",
+        "core": true
+      },
+      "sourceReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-2.review.json",
+      "sourceAsset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/6b0075bb-f71c-59f6-ab98-fb894568cc26/6b0075bb-f71c-59f6-ab98-fb894568cc26.jpg",
+        "sha256": "sha256:d28e5a78b3a5a0232de89a351b4f06fa7ff78fd5318368ff5d18bfaca006c584",
+        "sha256AtManifest": "sha256:d28e5a78b3a5a0232de89a351b4f06fa7ff78fd5318368ff5d18bfaca006c584",
+        "stillCurrent": true,
+        "actualViewed": true
+      },
+      "sourceDefects": [
+        "Auf der Zahlengeraden steht −1/2 unter der Position −1, 1/4=0,25 im negativen Bereich und 3/4=0,75 unter der Position 1. Diese Zuordnungen sind falsch; nur die markierte 1/2 liegt zwischen 0 und 1 richtig."
+      ],
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"6b0075bb-f71c-59f6-ab98-fb894568cc26\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0
+      },
+      "status": "candidate_for_independent_review",
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/6b0075bb-f71c-59f6-ab98-fb894568cc26/candidate-v2.png",
+      "selectedCandidateSha256": "sha256:fba254c7fcbaf8b4bf764098c83c0bc0093624c006fe4498474a94eb81e65403",
+      "lastAttemptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/6b0075bb-f71c-59f6-ab98-fb894568cc26/candidate-v2.png",
+      "attempts": [
+        {
+          "version": 1,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/6b0075bb-f71c-59f6-ab98-fb894568cc26/candidate-v1.png",
+            "sha256": "sha256:de983f01d5154b6cfd431fe16b7e55b1f76a5550a115d81da9026ec34c1e80c4",
+            "bytes": 1491215,
+            "width": 1679,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/6b0075bb-f71c-59f6-ab98-fb894568cc26/prompt.md",
+            "sha256": "sha256:377c1af501b1c4606fc41b2921e99a3b5c4d3e6dc489ef5898af18198cc6188b",
+            "bytes": 1586
+          },
+          "referencePath": "app/public/assets/goal-visualizations/mathematik/6b0075bb-f71c-59f6-ab98-fb894568cc26/6b0075bb-f71c-59f6-ab98-fb894568cc26.jpg",
+          "referenceSha256": "sha256:d28e5a78b3a5a0232de89a351b4f06fa7ff78fd5318368ff5d18bfaca006c584",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-b60c2e24-7b3a-4c5f-99cf-93fe28715662.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "rejected_regenerate",
+          "actualViewChecks": [
+            "Beschriftungen sind in die richtige Reihenfolge versetzt; 3/4 Pizza je Person und die Anteilsbilder bleiben richtig.",
+            "Die Abstände der negativen und positiven Skalenhälfte wurden miteinander verglichen."
+          ],
+          "defects": [
+            "−1 bis 0 umfasst ungefähr 192 px, 0 bis 1 dagegen ungefähr 239 px; die Zahlengerade ist noch nicht linear skaliert."
+          ]
+        },
+        {
+          "version": 2,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/6b0075bb-f71c-59f6-ab98-fb894568cc26/candidate-v2.png",
+            "sha256": "sha256:fba254c7fcbaf8b4bf764098c83c0bc0093624c006fe4498474a94eb81e65403",
+            "bytes": 1517211,
+            "width": 1679,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/6b0075bb-f71c-59f6-ab98-fb894568cc26/prompt-v2.md",
+            "sha256": "sha256:b534499e20f0754b174e390877750559feb16db83afc274fb5fc44da217de027",
+            "bytes": 1028
+          },
+          "referencePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/6b0075bb-f71c-59f6-ab98-fb894568cc26/candidate-v1.png",
+          "referenceSha256": "sha256:de983f01d5154b6cfd431fe16b7e55b1f76a5550a115d81da9026ec34c1e80c4",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-fd796818-ae0c-4b4d-9afb-67eab139ce9e.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "needs_external_review",
+          "actualViewChecks": [
+            "Lokales V2-PNG angesehen: neun Ticks liegen ungefähr bei x=1167,1220,1273,1327,1381,1435,1489,1544,1599 und bilden gleich große Viertelschritte.",
+            "−1 ist am ersten Tick, −1/2 am dritten, 0 am fünften, 1/4 am sechsten, 1/2 am siebten, 3/4 am achten und 1 am neunten Tick korrekt zugeordnet.",
+            "3 Pizzen ergeben zwölf Viertel, für vier Personen jeweils 3/4 Pizza; 1/4-Mengenbild und Dezimalgleichheiten sind erhalten."
+          ],
+          "defects": []
+        }
+      ],
+      "actualViewChecks": [
+        "Lokales V2-PNG angesehen: neun Ticks liegen ungefähr bei x=1167,1220,1273,1327,1381,1435,1489,1544,1599 und bilden gleich große Viertelschritte.",
+        "−1 ist am ersten Tick, −1/2 am dritten, 0 am fünften, 1/4 am sechsten, 1/2 am siebten, 3/4 am achten und 1 am neunten Tick korrekt zugeordnet.",
+        "3 Pizzen ergeben zwölf Viertel, für vier Personen jeweils 3/4 Pizza; 1/4-Mengenbild und Dezimalgleichheiten sind erhalten."
+      ],
+      "unresolvedDefects": [],
+      "independentReviewFocus": [],
+      "nextAction": "Root muss das ausgewählte Raster unabhängig ansehen und fachlich abnehmen; erst danach gegebenenfalls in der nativen Pipeline importieren.",
+      "independentReviewStatus": "pending",
+      "humanApproved": false,
+      "imported": false
+    },
+    {
+      "goalId": "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+      "title": "Brüche und Dezimalbrüche ineinander umwandeln",
+      "canonicalContext": {
+        "id": "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "title": "Brüche und Dezimalbrüche ineinander umwandeln",
+        "description": "Die lernende Person kann Brüche in endliche oder periodische Dezimalbrüche umwandeln, umgekehrt endliche und einfache periodische Dezimalbrüche als Brüche darstellen und Darstellungswechsel begründet wählen.",
+        "core": true
+      },
+      "sourceReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-2.review.json",
+      "sourceAsset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/ca8b2e67-7d14-5baf-8404-26820fe3d548/ca8b2e67-7d14-5baf-8404-26820fe3d548.jpg",
+        "sha256": "sha256:1ad99bf6013bc78941b67bc0de68b3d7e01e3a41370bebb53da46b983d26110e",
+        "sha256AtManifest": "sha256:1ad99bf6013bc78941b67bc0de68b3d7e01e3a41370bebb53da46b983d26110e",
+        "stillCurrent": true,
+        "actualViewed": true
+      },
+      "sourceDefects": [
+        "Der einzige Maschineneingang 3/4 führt zusätzlich zum als periodisch markierten Ausgang 0,333…; das stellt eine falsche Umwandlung dar.",
+        "Ein durchgehender Pfeil verbindet 0,75 mit 0,2, ein weiterer 0,333… mit 0,666…. Diese Übergänge ändern den Wert und sind nicht als Wechsel zu unabhängigen Beispielen markiert."
+      ],
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"ca8b2e67-7d14-5baf-8404-26820fe3d548\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0
+      },
+      "status": "candidate_for_independent_review",
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/ca8b2e67-7d14-5baf-8404-26820fe3d548/candidate-v1.png",
+      "selectedCandidateSha256": "sha256:451f5bd2ba1fcc84deaba6268469866f018fb7796db87998c935ec1312eb85b1",
+      "lastAttemptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/ca8b2e67-7d14-5baf-8404-26820fe3d548/candidate-v1.png",
+      "attempts": [
+        {
+          "version": 1,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/ca8b2e67-7d14-5baf-8404-26820fe3d548/candidate-v1.png",
+            "sha256": "sha256:451f5bd2ba1fcc84deaba6268469866f018fb7796db87998c935ec1312eb85b1",
+            "bytes": 1666848,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/ca8b2e67-7d14-5baf-8404-26820fe3d548/prompt.md",
+            "sha256": "sha256:859b8666f4d04867f7f701ec76747cbb8c584fba9688b6fb6d0616851788af1e",
+            "bytes": 1431
+          },
+          "referencePath": "app/public/assets/goal-visualizations/mathematik/ca8b2e67-7d14-5baf-8404-26820fe3d548/ca8b2e67-7d14-5baf-8404-26820fe3d548.jpg",
+          "referenceSha256": "sha256:1ad99bf6013bc78941b67bc0de68b3d7e01e3a41370bebb53da46b983d26110e",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-86bcbd1c-5d72-4a43-8267-d7462bb32f1d.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "needs_external_review",
+          "actualViewChecks": [
+            "Der Maschinenweg führt nun ausschließlich von 3/4 zu 0,75.",
+            "1/3=0,333… steht als ausdrücklich weiteres Beispiel getrennt; keine wertändernden Übergangspfeile zu 0,2 oder 0,666… bleiben.",
+            "0,2=2/10=1/5, 0,(6)=6/9=2/3, 1/3+2/3=1 und 0,7>0,68 sind korrekt."
+          ],
+          "defects": []
+        }
+      ],
+      "actualViewChecks": [
+        "Der Maschinenweg führt nun ausschließlich von 3/4 zu 0,75.",
+        "1/3=0,333… steht als ausdrücklich weiteres Beispiel getrennt; keine wertändernden Übergangspfeile zu 0,2 oder 0,666… bleiben.",
+        "0,2=2/10=1/5, 0,(6)=6/9=2/3, 1/3+2/3=1 und 0,7>0,68 sind korrekt."
+      ],
+      "unresolvedDefects": [],
+      "independentReviewFocus": [],
+      "nextAction": "Root muss das ausgewählte Raster unabhängig ansehen und fachlich abnehmen; erst danach gegebenenfalls in der nativen Pipeline importieren.",
+      "independentReviewStatus": "pending",
+      "humanApproved": false,
+      "imported": false
+    },
+    {
+      "goalId": "eda3a298-4965-525e-878d-f05b9e2d4503",
+      "title": "Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen",
+      "canonicalContext": {
+        "id": "eda3a298-4965-525e-878d-f05b9e2d4503",
+        "title": "Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen",
+        "description": "Die lernende Person kann bei Sinus- und Kosinusfunktionen Nullstellen, Extrempunkte und Wendepunkte ohne Differenzialrechnung aus Periodizität, Amplitude, Verschiebungen und Symmetrieargumenten bestimmen."
+      },
+      "sourceReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-2.review.json",
+      "sourceAsset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/eda3a298-4965-525e-878d-f05b9e2d4503/eda3a298-4965-525e-878d-f05b9e2d4503.jpg",
+        "sha256": "sha256:b55613d0c9fd95c73c814d608c961cb6722a3255b1052ca454cd0942b0c78616",
+        "sha256AtManifest": "sha256:b55613d0c9fd95c73c814d608c961cb6722a3255b1052ca454cd0942b0c78616",
+        "stillCurrent": true,
+        "actualViewed": true
+      },
+      "sourceDefects": [
+        "Die y-Achse ist bei regelmäßigem Gitternetz uneinheitlich skaliert: Zwischen y=−1 und y=0 liegen ungefähr zwei Rasterabstände, zwischen y=0 und y=1 drei. Für eine lineare Skala müsste y=0 genau mittig zwischen y=−1 und y=1 liegen. Die gleich großen Amplitudenstrecken von der Mittellinie zu den Extrema sind dagegen richtig."
+      ],
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"eda3a298-4965-525e-878d-f05b9e2d4503\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0
+      },
+      "status": "hold",
+      "selectedCandidatePath": null,
+      "selectedCandidateSha256": null,
+      "lastAttemptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/eda3a298-4965-525e-878d-f05b9e2d4503/candidate-v2.png",
+      "attempts": [
+        {
+          "version": 1,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/eda3a298-4965-525e-878d-f05b9e2d4503/candidate-v1.png",
+            "sha256": "sha256:d2f5a8aaf5419cebf458a337b5a0aa4ad5f0ede724ab1acdab2f5d35daeca676",
+            "bytes": 1295727,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/eda3a298-4965-525e-878d-f05b9e2d4503/prompt.md",
+            "sha256": "sha256:ed0b190fc19e4c2157cd3d95cd9153a6c8d4777201603b4facede58bb773d006",
+            "bytes": 1560
+          },
+          "referencePath": "app/public/assets/goal-visualizations/mathematik/eda3a298-4965-525e-878d-f05b9e2d4503/eda3a298-4965-525e-878d-f05b9e2d4503.jpg",
+          "referenceSha256": "sha256:b55613d0c9fd95c73c814d608c961cb6722a3255b1052ca454cd0942b0c78616",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-ade18628-873a-4131-8fff-cdd4ea14fc36.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "rejected_regenerate",
+          "actualViewChecks": [
+            "Parameter und Extremwerte sind textlich richtig.",
+            "V1-Linien liegen ungefähr bei y=302 (3), 507 (1), 617 (0), 753 (−1); die Abstände sind weiterhin uneinheitlich."
+          ],
+          "defects": [
+            "Nichtlineare y-Skala bleibt bestehen.",
+            "Der neue A=2-Pfeil misst sichtbar ungefähr von y=0 bis y=1 statt von der Mittellinie zu einem Extremum."
+          ]
+        },
+        {
+          "version": 2,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/eda3a298-4965-525e-878d-f05b9e2d4503/candidate-v2.png",
+            "sha256": "sha256:f921822f757f16d1375e0abfd26d76d40d6e379834063118f2cfe061ee6add0b",
+            "bytes": 1304229,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/eda3a298-4965-525e-878d-f05b9e2d4503/prompt-v2.md",
+            "sha256": "sha256:61f18fc6c8cee33c5a41f3cb8c54626143c57bd73e1998a2d75cf40af38c249a",
+            "bytes": 1522
+          },
+          "referencePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/eda3a298-4965-525e-878d-f05b9e2d4503/candidate-v1.png",
+          "referenceSha256": "sha256:d2f5a8aaf5419cebf458a337b5a0aa4ad5f0ede724ab1acdab2f5d35daeca676",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-4b7aec5d-104b-499b-a3b8-9190f5879973.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "rejected_regenerate",
+          "actualViewChecks": [
+            "A=2 wird nun zwischen Mittellinie y=1 und Maximum y=3 gezeigt; Nullstellen 7π/6 und 11π/6 sind rechnerisch richtig.",
+            "Lokales V2-PNG: y=3 bei etwa 302, y=2 bei 410, y=1 bei 518, y=0 bei 626 und y=−1 bei 750; positive Einheiten sind rund 108 px hoch."
+          ],
+          "defects": [
+            "Der Abschnitt y=0 bis y=−1 beträgt rund 124 px statt rund 108 px; Minimum und untere Skala sind weiterhin zu tief. Die lineare Skala und daraus abzulesende Kurvenlage sind nicht konsistent."
+          ]
+        }
+      ],
+      "actualViewChecks": [
+        "A=2 wird nun zwischen Mittellinie y=1 und Maximum y=3 gezeigt; Nullstellen 7π/6 und 11π/6 sind rechnerisch richtig.",
+        "Lokales V2-PNG: y=3 bei etwa 302, y=2 bei 410, y=1 bei 518, y=0 bei 626 und y=−1 bei 750; positive Einheiten sind rund 108 px hoch."
+      ],
+      "unresolvedDefects": [
+        "Der Abschnitt y=0 bis y=−1 beträgt rund 124 px statt rund 108 px; Minimum und untere Skala sind weiterhin zu tief. Die lineare Skala und daraus abzulesende Kurvenlage sind nicht konsistent."
+      ],
+      "independentReviewFocus": [],
+      "nextAction": "Hold beibehalten. Später ein vereinfachtes korrekt skaliertes Koordinatensystem mit f(x)=2sin(x)+1, gleich hohen y-Einheiten und passenden Nullstellen neu darstellen; keine Variante importieren.",
+      "independentReviewStatus": "pending",
+      "humanApproved": false,
+      "imported": false
+    },
+    {
+      "goalId": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+      "title": "Datenverteilungen mithilfe von Kenngrößen und Boxplots vergleichen und deuten",
+      "canonicalContext": {
+        "id": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+        "title": "Datenverteilungen mithilfe von Kenngrößen und Boxplots vergleichen und deuten",
+        "description": "Die lernende Person kann aus bekannten Kenngrößen und aus Boxplots Informationen über zugrunde liegende Datensätze gewinnen, vergleichende Aussagen formulieren und diese fachlich begründet beurteilen.",
+        "core": true
+      },
+      "sourceReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-2.review.json",
+      "sourceAsset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/b819973b-4cad-48a4-9f7e-f74b5e75ea6c.jpg",
+        "sha256": "sha256:474861a2c5c77fb76f08a834a6cdb7e06a151236a31ca117dc238bcc93db29d2",
+        "sha256AtManifest": "sha256:474861a2c5c77fb76f08a834a6cdb7e06a151236a31ca117dc238bcc93db29d2",
+        "stillCurrent": true,
+        "actualViewed": true
+      },
+      "sourceDefects": [
+        "Die Sprechblase „B hat höheren Median“ zeigt mit ihrem großen Pfeil auf den Median von Klasse A (10), nicht auf B (11).",
+        "Die mit „A ist kompakter“ verknüpfte Maßpfeilstrecke liegt über dem rechten Whisker von B zwischen Q3=17 und Maximum20, statt die kompaktere Verteilung von A zu kennzeichnen."
+      ],
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"b819973b-4cad-48a4-9f7e-f74b5e75ea6c\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0
+      },
+      "status": "candidate_for_independent_review",
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/candidate-v1.png",
+      "selectedCandidateSha256": "sha256:173f6e3e885ee50892849d69689585d3a5e785bbfe44b764419b2f6b6a515330",
+      "lastAttemptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/candidate-v1.png",
+      "attempts": [
+        {
+          "version": 1,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/candidate-v1.png",
+            "sha256": "sha256:173f6e3e885ee50892849d69689585d3a5e785bbfe44b764419b2f6b6a515330",
+            "bytes": 1178746,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/prompt.md",
+            "sha256": "sha256:207d7cf0619a6f69d1e45f7f0e5bb0d1f0c3de611219e6cca6bc5adcff483410",
+            "bytes": 1476
+          },
+          "referencePath": "app/public/assets/goal-visualizations/mathematik/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/b819973b-4cad-48a4-9f7e-f74b5e75ea6c.jpg",
+          "referenceSha256": "sha256:474861a2c5c77fb76f08a834a6cdb7e06a151236a31ca117dc238bcc93db29d2",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-f998971b-d02e-4e22-8996-13f22778ee0d.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "needs_external_review",
+          "actualViewChecks": [
+            "Die Sprechblase B hat höheren Median zeigt nun auf den roten Medianstrich von B, nicht auf A.",
+            "Die A-ist-kompakter-Maßstrecke liegt über A zwischen Q1=7 und Q3=13; die B-streut-stärker-Strecke umfasst B zwischen Q1=6 und Q3=17.",
+            "Gemeinsame 0–20-Skala und fünf Kennwerte je Boxplot liegen richtig: A=(4,7,10,13,16), B=(2,6,11,17,20).",
+            "IQR(A)=6 < IQR(B)=11, Spannweite(A)=12 < Spannweite(B)=18 und Median(A)=10 < Median(B)=11."
+          ],
+          "defects": []
+        }
+      ],
+      "actualViewChecks": [
+        "Die Sprechblase B hat höheren Median zeigt nun auf den roten Medianstrich von B, nicht auf A.",
+        "Die A-ist-kompakter-Maßstrecke liegt über A zwischen Q1=7 und Q3=13; die B-streut-stärker-Strecke umfasst B zwischen Q1=6 und Q3=17.",
+        "Gemeinsame 0–20-Skala und fünf Kennwerte je Boxplot liegen richtig: A=(4,7,10,13,16), B=(2,6,11,17,20).",
+        "IQR(A)=6 < IQR(B)=11, Spannweite(A)=12 < Spannweite(B)=18 und Median(A)=10 < Median(B)=11."
+      ],
+      "unresolvedDefects": [],
+      "independentReviewFocus": [
+        "Die neue Median-Sprechblase verdeckt/ersetzt die ausgeschriebene Zahl 11 unter dem B-Median. Der Medianstrich selbst steht auf der gemeinsamen Skala korrekt bei 11; unabhängige Abnahme soll die Lesbarkeit bestätigen. Kein neuer Zahlenfehler festgestellt."
+      ],
+      "nextAction": "Root muss das ausgewählte Raster unabhängig ansehen und fachlich abnehmen; erst danach gegebenenfalls in der nativen Pipeline importieren.",
+      "independentReviewStatus": "pending",
+      "humanApproved": false,
+      "imported": false
+    },
+    {
+      "goalId": "502ecaa7-cca6-5c51-a1cc-da09a7b2382c",
+      "title": "Definitionsmenge einer Funktion bestimmen",
+      "canonicalContext": {
+        "id": "502ecaa7-cca6-5c51-a1cc-da09a7b2382c",
+        "title": "Definitionsmenge einer Funktion bestimmen",
+        "description": "Die lernende Person kann die Definitionsmenge einer reellwertigen Funktion aus Term, Graph oder Sachkontext bestimmen und Einschränkungen fachsprachlich begründen."
+      },
+      "sourceReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-2.review.json",
+      "sourceAsset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/502ecaa7-cca6-5c51-a1cc-da09a7b2382c.png",
+        "sha256": "sha256:7779288e950bd9c18bf6a4850d3ec2eaf2a3da7d58af6675cb1327d777ea1a15",
+        "sha256AtManifest": "sha256:7779288e950bd9c18bf6a4850d3ec2eaf2a3da7d58af6675cb1327d777ea1a15",
+        "stillCurrent": true,
+        "actualViewed": true
+      },
+      "sourceDefects": [
+        "Zum Term (x²−4)/(x−2) wird rechts eine gekrümmte U-förmige Kurve gezeichnet. Korrekt wäre die Gerade y=x+2 mit Loch bei (2,4).",
+        "Links zeigt „RADIKAND ≥0“ auf die additive 4 des gebrochen-rationalen Terms, nicht auf einen Wurzelausdruck.",
+        "Die zentral hervorgehobene Gedankenwolke enthält die sinnlose Mengenschreibweise „{D=3/4+}“; auch die dekorative Gleichung r²=√x² ist ohne Zusammenhang mathematisch falsch."
+      ],
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"502ecaa7-cca6-5c51-a1cc-da09a7b2382c\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0
+      },
+      "status": "hold",
+      "selectedCandidatePath": null,
+      "selectedCandidateSha256": null,
+      "lastAttemptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/candidate-v2.png",
+      "attempts": [
+        {
+          "version": 1,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/candidate-v1.png",
+            "sha256": "sha256:d64c4fd347f6c2762e20de4304716cc280b4559acf395689329a8ecf1cdc0290",
+            "bytes": 1703560,
+            "width": 1698,
+            "height": 926,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/prompt.md",
+            "sha256": "sha256:9c0bd3aa3f1212b7170826048c95351466299da9eacd8d776a9b74eeebdc0e70",
+            "bytes": 2051
+          },
+          "referencePath": "app/public/assets/goal-visualizations/mathematik/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/502ecaa7-cca6-5c51-a1cc-da09a7b2382c.png",
+          "referenceSha256": "sha256:7779288e950bd9c18bf6a4850d3ec2eaf2a3da7d58af6675cb1327d777ea1a15",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-f0846ed9-a3b6-43d0-a813-4dcfa0456924.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "rejected_regenerate",
+          "actualViewChecks": [
+            "U-Kurve durch Gerade ersetzt, Wolke durch D⊆ℝ ersetzt, falsche Radikandenmarkierung und dekorative falsche Gleichung entfernt.",
+            "Linker Ausschluss x=3 bleibt richtig; Sachkontext beginnt nun einschließlich t=0; rechte Definitionslücke x=2 ist textlich korrekt."
+          ],
+          "defects": [
+            "Neue y-Ticks 2,4,5 stehen etwa gleich weit auseinander; die Skala ist falsch und der Zusammenhang von Gerade und Punktlage nicht belastbar."
+          ]
+        },
+        {
+          "version": 2,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/candidate-v2.png",
+            "sha256": "sha256:95aff5c082b9cf246bf5dc39448a38eac9a9cea5e6e7f9f832bedde8cd4701f4",
+            "bytes": 1783030,
+            "width": 1698,
+            "height": 926,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/prompt-v2.md",
+            "sha256": "sha256:027e1ce8dbccfffbff7432a75e88dc607c13c5fc4aea426775949965f55caf6d",
+            "bytes": 1404
+          },
+          "referencePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/candidate-v1.png",
+          "referenceSha256": "sha256:d64c4fd347f6c2762e20de4304716cc280b4559acf395689329a8ecf1cdc0290",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-9b7ee7e4-bcb5-46e5-b087-f6f7fed85034.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "rejected_regenerate",
+          "actualViewChecks": [
+            "Lokales V2-PNG angesehen; vereinfachte Ticks 0,2,4 und x=0,2 sind vorhanden, Formel und Ausschluss x=2 sind richtig.",
+            "Das offene Loch hat ungefähr Zentrum (1380,303); die gezeichnete Gerade läuft bei x≈1380 dagegen ungefähr durch y≈319.",
+            "Die y-Positionen für 0,2,4 liegen ungefähr bei 391,351,303."
+          ],
+          "defects": [
+            "Das Loch liegt rund 16 px neben/oberhalb der Geraden; die Linie verläuft unter dem Loch ununterbrochen weiter. Damit wird keine entfernte Stelle auf y=x+2 gezeigt.",
+            "Die y-Abstände 0→2 und 2→4 sind mit rund 40 bzw. 48 px noch uneinheitlich."
+          ]
+        }
+      ],
+      "actualViewChecks": [
+        "Lokales V2-PNG angesehen; vereinfachte Ticks 0,2,4 und x=0,2 sind vorhanden, Formel und Ausschluss x=2 sind richtig.",
+        "Das offene Loch hat ungefähr Zentrum (1380,303); die gezeichnete Gerade läuft bei x≈1380 dagegen ungefähr durch y≈319.",
+        "Die y-Positionen für 0,2,4 liegen ungefähr bei 391,351,303."
+      ],
+      "unresolvedDefects": [
+        "Das Loch liegt rund 16 px neben/oberhalb der Geraden; die Linie verläuft unter dem Loch ununterbrochen weiter. Damit wird keine entfernte Stelle auf y=x+2 gezeigt.",
+        "Die y-Abstände 0→2 und 2→4 sind mit rund 40 bzw. 48 px noch uneinheitlich."
+      ],
+      "independentReviewFocus": [],
+      "nextAction": "Hold beibehalten. Später das rechte Teilbild auf eine einfache Gerade y=x+2 mit genau darauf ausgespartem Punkt (2,4) und gleichmäßiger Skala reduzieren. Keine Variante importieren.",
+      "independentReviewStatus": "pending",
+      "humanApproved": false,
+      "imported": false
+    },
+    {
+      "goalId": "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+      "title": "Definitionsmenge einfacher gebrochen-rationaler Funktionen bestimmen",
+      "canonicalContext": {
+        "id": "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "title": "Definitionsmenge einfacher gebrochen-rationaler Funktionen bestimmen",
+        "description": "Die lernende Person kann bei einfachen gebrochen-rationalen Funktionen unzulässige Werte erkennen, die Definitionsmenge angeben und sie am Term begründen.",
+        "core": true
+      },
+      "sourceReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-2.review.json",
+      "sourceAsset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/34ba4714-a0ff-4a48-857f-d2481cbe0441/34ba4714-a0ff-4a48-857f-d2481cbe0441.jpg",
+        "sha256": "sha256:dbc97b3bae8cd3194cfc7fd073429a98131e8d37ea527ea4c47305eaca24381c",
+        "sha256AtManifest": "sha256:dbc97b3bae8cd3194cfc7fd073429a98131e8d37ea527ea4c47305eaca24381c",
+        "stillCurrent": true,
+        "actualViewed": true
+      },
+      "sourceDefects": [
+        "Die grüne Kurve läuft von beiden Seiten in einen endlichen offenen Punkt bei x=2, während dieselbe Darstellung eine vertikale Asymptote behauptet. Für 1/(x−2) divergieren die Funktionswerte beidseits mit unterschiedlichem Vorzeichen; eine endliche Lochstelle ist falsch.",
+        "„Lücke / Asymptote“ setzt zwei unterschiedliche Graphenphänomene ohne Erklärung gleich. Eine reine Definitionsmengen-Zahlengerade sollte hier nur den Ausschluss von 2 zeigen."
+      ],
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"34ba4714-a0ff-4a48-857f-d2481cbe0441\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0
+      },
+      "status": "candidate_for_independent_review",
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/34ba4714-a0ff-4a48-857f-d2481cbe0441/candidate-v1.png",
+      "selectedCandidateSha256": "sha256:2d52185a6b8d1c9497e78de0b0df0fc9809eb16586a0e6af3463fec701431c61",
+      "lastAttemptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/34ba4714-a0ff-4a48-857f-d2481cbe0441/candidate-v1.png",
+      "attempts": [
+        {
+          "version": 1,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/34ba4714-a0ff-4a48-857f-d2481cbe0441/candidate-v1.png",
+            "sha256": "sha256:2d52185a6b8d1c9497e78de0b0df0fc9809eb16586a0e6af3463fec701431c61",
+            "bytes": 1453250,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/34ba4714-a0ff-4a48-857f-d2481cbe0441/prompt.md",
+            "sha256": "sha256:dd39f781ad8e5199dd7f61879fe3c6f02e95d5e9723d6d483582b70ef7f3a235",
+            "bytes": 1256
+          },
+          "referencePath": "app/public/assets/goal-visualizations/mathematik/34ba4714-a0ff-4a48-857f-d2481cbe0441/34ba4714-a0ff-4a48-857f-d2481cbe0441.jpg",
+          "referenceSha256": "sha256:dbc97b3bae8cd3194cfc7fd073429a98131e8d37ea527ea4c47305eaca24381c",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-0dae7ff8-14c8-4c2d-8dd8-c7dcd1ca4ccd.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "needs_external_review",
+          "actualViewChecks": [
+            "Die irreführende grüne Graphenkurve und die Gleichsetzung Lücke/Asymptote sind entfernt.",
+            "Rechts bleibt eine gleichmäßig getickte Zahlengerade mit offenem Punkt genau bei 2 und eindeutigem Text x=2 ausgeschlossen.",
+            "Term 1/(x−2), Nennerbedingung x−2≠0 und D=ℝ\\{2} passen zusammen; keine Aussage über eine endliche Graphenlücke bleibt."
+          ],
+          "defects": []
+        }
+      ],
+      "actualViewChecks": [
+        "Die irreführende grüne Graphenkurve und die Gleichsetzung Lücke/Asymptote sind entfernt.",
+        "Rechts bleibt eine gleichmäßig getickte Zahlengerade mit offenem Punkt genau bei 2 und eindeutigem Text x=2 ausgeschlossen.",
+        "Term 1/(x−2), Nennerbedingung x−2≠0 und D=ℝ\\{2} passen zusammen; keine Aussage über eine endliche Graphenlücke bleibt."
+      ],
+      "unresolvedDefects": [],
+      "independentReviewFocus": [],
+      "nextAction": "Root muss das ausgewählte Raster unabhängig ansehen und fachlich abnehmen; erst danach gegebenenfalls in der nativen Pipeline importieren.",
+      "independentReviewStatus": "pending",
+      "humanApproved": false,
+      "imported": false
+    },
+    {
+      "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+      "title": "Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen",
+      "canonicalContext": {
+        "id": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+        "title": "Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen",
+        "description": "Die lernende Person kann Schnittpunkte einer Geraden mit Koordinatenebenen bestimmen, diese als Durchstoßpunkte bzw. Spurpunkte deuten und rechnerisch prüfen."
+      },
+      "sourceReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-current-62-20260920-v1/part-2.review.json",
+      "sourceAsset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/a9fde754-51b4-58d7-85e5-5e36160581e6/a9fde754-51b4-58d7-85e5-5e36160581e6.jpg",
+        "sha256": "sha256:91919db3b55f57bfd97a705f2c4b7b5524a2bf123b410f79c21df06e13f10320",
+        "sha256AtManifest": "sha256:91919db3b55f57bfd97a705f2c4b7b5524a2bf123b410f79c21df06e13f10320",
+        "stillCurrent": true,
+        "actualViewed": true
+      },
+      "sourceDefects": [
+        "Der rote Punkt Sxy liegt deutlich außerhalb der schwarz gezeichneten Geraden g, obwohl er als ihr Durchstoßpunkt bezeichnet wird.",
+        "Sxy=(7,−1,0) wird zudem im blau markierten Bereich positiver y-Richtung platziert; seine y-Koordinate müsste negativ sein."
+      ],
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"a9fde754-51b4-58d7-85e5-5e36160581e6\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0
+      },
+      "status": "candidate_for_independent_review",
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/candidate-v1.png",
+      "selectedCandidateSha256": "sha256:9ddec467dc160513d4472885f2a5930c55e07644029cc450a606a9b3eb713a33",
+      "lastAttemptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/candidate-v1.png",
+      "attempts": [
+        {
+          "version": 1,
+          "candidate": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/candidate-v1.png",
+            "sha256": "sha256:9ddec467dc160513d4472885f2a5930c55e07644029cc450a606a9b3eb713a33",
+            "bytes": 1288791,
+            "width": 1678,
+            "height": 937,
+            "mimeType": "image/png"
+          },
+          "prompt": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-v-only-corrections-13-20260920-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/prompt.md",
+            "sha256": "sha256:7ec46383f592e4a83d66b66ae24ed48bb023d5b879133dc1340eef11de2dbcaf",
+            "bytes": 1876
+          },
+          "referencePath": "app/public/assets/goal-visualizations/mathematik/a9fde754-51b4-58d7-85e5-5e36160581e6/a9fde754-51b4-58d7-85e5-5e36160581e6.jpg",
+          "referenceSha256": "sha256:91919db3b55f57bfd97a705f2c4b7b5524a2bf123b410f79c21df06e13f10320",
+          "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-6dde4c1c-c2fc-4b9f-a6f3-c1a722ed5813.png",
+          "actualViewed": true,
+          "viewMethod": "builtin imagegen rendered output; local PNG viewed with view_image for final selections, all V2/V3 and held candidates",
+          "authorDecision": "needs_external_review",
+          "actualViewChecks": [
+            "Der rote Sxy-Punkt liegt jetzt auf derselben schwarzen Geraden wie der violette Sxz- und der türkisfarbene Syz-Punkt.",
+            "Die blaue xy-Ebene wurde auf die negative y-Seite erweitert; Sxy liegt nun links der positiven x-Richtung und nicht mehr im positiven y-Bereich.",
+            "Alle Ergebnisfelder nachgerechnet: x=0 führt t=−1/2 und (0,5/2,7/2), y=0 führt t=2 und (5,0,1), z=0 führt t=3 und (7,−1,0).",
+            "Alte irreführende rote Projektionshilfen sind entfernt; Formeln und verbleibende Ebenenlabels sind lesbar."
+          ],
+          "defects": []
+        }
+      ],
+      "actualViewChecks": [
+        "Der rote Sxy-Punkt liegt jetzt auf derselben schwarzen Geraden wie der violette Sxz- und der türkisfarbene Syz-Punkt.",
+        "Die blaue xy-Ebene wurde auf die negative y-Seite erweitert; Sxy liegt nun links der positiven x-Richtung und nicht mehr im positiven y-Bereich.",
+        "Alle Ergebnisfelder nachgerechnet: x=0 führt t=−1/2 und (0,5/2,7/2), y=0 führt t=2 und (5,0,1), z=0 führt t=3 und (7,−1,0).",
+        "Alte irreführende rote Projektionshilfen sind entfernt; Formeln und verbleibende Ebenenlabels sind lesbar."
+      ],
+      "unresolvedDefects": [],
+      "independentReviewFocus": [
+        "Die 3D-Zeichnung ist eine qualitative Ebenenskizze ohne numerische Achsenskalierung; geprüft sind gemeinsame Gerade, Ebenenzugehörigkeit und negative y-Seite, nicht maßstäbliche projizierte Abstände."
+      ],
+      "nextAction": "Root muss das ausgewählte Raster unabhängig ansehen und fachlich abnehmen; erst danach gegebenenfalls in der nativen Pipeline importieren.",
+      "independentReviewStatus": "pending",
+      "humanApproved": false,
+      "imported": false
+    }
+  ]
+}

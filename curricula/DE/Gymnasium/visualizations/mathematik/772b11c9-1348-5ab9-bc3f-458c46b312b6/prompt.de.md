@@ -8,44 +8,17 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `772b11c9-1348-5ab9-bc3f-458c46b312b6.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/772b11c9-1348-5ab9-bc3f-458c46b312b6/772b11c9-1348-5ab9-bc3f-458c46b312b6.jpg`
+- Quellbild: `772b11c9-1348-5ab9-bc3f-458c46b312b6.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/772b11c9-1348-5ab9-bc3f-458c46b312b6/772b11c9-1348-5ab9-bc3f-458c46b312b6.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erstelle eine gezielte generative Bildkorrektur der beigefügten Referenz. Behalte ihre freundliche, klare, abstrakte Comic-Bildsprache, Pastellfarben, schwarzen Konturen und gut lesbare deutsche Beschriftung bei. Ausgabe: einzelnes PNG im Querformat, keine technische ID, kein Logo, keine Wasserzeichen. Die mathematisch richtigen Bereiche bleiben so weit wie möglich erhalten. Korrigiere den folgenden konkreten fachlichen Befund; eine richtige Formel darf nicht neben einer widersprüchlichen Zeichnung stehen.
 
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Streckungen und Stauchungen von Funktionsgraphen beschreiben
-Beschreibung: Die lernende Person kann Streckungen und Stauchungen in x- oder y-Richtung über Faktoren im Funktionsterm beschreiben und die Auswirkungen auf den Graphen darstellen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Streckungen und Stauchungen von Funktionsgraphen beschreiben.
-- Verwende als Grundfunktion f(x)=x^2.
-- Zeige drei klar unterscheidbare Kurven mit Legende:
-  1. f(x)=x^2 als Grundgraph.
-  2. g(x)=2*f(x)=2x^2: Streckung in y-Richtung mit Faktor 2, Graph wird schmaler/steiler; Punkt (1,1) wird zu (1,2).
-  3. h(x)=0.5*f(x)=0.5x^2: Stauchung in y-Richtung mit Faktor 0.5, Graph wird breiter/flacher; Punkt (2,4) wird zu (2,2).
-- Optionales kleines Zusatzpanel fuer x-Richtung:
-  k(x)=f(2x)=(2x)^2 ist eine horizontale Stauchung um Faktor 1/2; Punkt (2,4) des Grundgraphen liegt beim neuen Graphen bei (1,4).
-
-Vermeiden:
-- Nicht y-Streckung und x-Streckung verwechseln.
-- Nicht aus g(x)=2x^2 eine Verschiebung machen.
-- Nicht falsche Punktabbildungen anzeigen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Ersetze die fehlerhaften Diagramme durch drei klare kleine nebeneinanderliegende Comic-Diagramme mit linearen x/y-Achsen. Blau ist überall f(x)=x². Erstes Feld: rot g(x)=2f(x)=2x²; markiere auf Blau(1,1), direkt darüber auf Rot(1,2), verbinde sie mit einem senkrechten Pfeil; Kurztext 'y-Werte verdoppeln'. Zweites Feld: grün h(x)=0,5f(x); markiere Blau(2,4) und Grün(2,2), gleicher x-Wert, senkrechter Pfeil nach unten; Kurztext 'y-Werte halbieren'. Drittes Feld: orange k(x)=f(2x)=4x²; markiere Blau(2,4) und Orange(1,4), beide RECHTS der y-Achse, waagrechter Pfeil nach links; Kurztext 'x-Koordinaten halbieren'. Jeder genannte Punkt erscheint nur einmal in seinem Feld und liegt auf seiner Kurve. Zeichne Parabeln mit gemeinsamem Scheitel(0,0). Bewahre den freundlichen hellblauen Stil und den vorhandenen Titel.
 ```
 
 ## Review-Notiz

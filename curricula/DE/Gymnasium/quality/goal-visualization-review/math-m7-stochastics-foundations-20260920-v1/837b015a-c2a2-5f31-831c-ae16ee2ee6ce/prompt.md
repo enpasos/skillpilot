@@ -1,0 +1,8 @@
+Use case: scientific-educational.
+Asset type: German upper-secondary mathematics learning-goal illustration, landscape PNG.
+Style: friendly, abstract, clear comic-like educational illustration; warm very pale background, approachable rounded ink outlines, restrained blue/teal/orange colors, plenty of quiet whitespace. Not photorealistic, not sterile software-chart styling. The existing image is the source reference for topic and accessible educational character, but mathematical correctness is mandatory.
+All visible text German, large and readable. No technical IDs, no watermark, no logos, no provider artifacts. Generate one complete image, not a collage of alternative designs.
+Input image 1: edit target. Keep the existing three-panel friendly lesson image, the formula, the exact correct numerical calculation, and the model-limit reflection. Make the following precise correction.
+The small histogram in the lower-right corner of the CENTRAL calculation panel represents FOUR independent fair coin tosses, B(4;0.5). Redraw these five bars accurately. For k=0,1,2,3,4 their heights must be in ratio 1:4:6:4:1, equivalently probabilities 1/16,4/16,6/16,4/16,1/16. Bars k=0 and4 equal; bars k=1 and3 equal; k=2 tallest. Center highlighted pink bar labeled "3/8".
+Make all five bars same width, evenly spaced on a level baseline, exactly symmetric around k=2. Keep labels k=0,1,2,3,4 under correct bars.
+If the small diagram in the RIGHT reflection panel is retained, label it "Realität" and make it clearly just an illustration of possible deviations; alternatively remove that secondary mini-diagram to keep focus. Preserve n=4,p=0.5 and equation P(X=2)=6·0.25·0.25=6/16=3/8. No added statistics or extra decorative plots.

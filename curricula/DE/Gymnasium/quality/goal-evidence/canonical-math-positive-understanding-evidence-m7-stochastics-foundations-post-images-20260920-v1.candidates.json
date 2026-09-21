@@ -1,0 +1,1135 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-m7-stochastics-foundations-post-images-20260920-v1",
+  "reviewedAt": "2026-09-20T19:19:08.850Z",
+  "reviewer": "Codex Root current-profile mathematical check after candidate-author preparation",
+  "goals": [
+    {
+      "goalId": "dabff49b-d40a-4c81-a584-21408b2d4219",
+      "reason": "Individuelle Unabhängigkeitsevidenz mit Vierfeldertafel und anschließend abhängigem Baum; keine kausale Aussage. Aktuelles Bild betrachtet, KEEP.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "independence-criterion",
+            "essentialUnderstandingDe": "Unabhängigkeit bedeutet P(A∩B)=P(A)P(B). Bei positiver Bedingungswahrscheinlichkeit ist dies gleichbedeutend damit, dass die Information über A die Wahrscheinlichkeit von B nicht ändert.",
+            "essentialUnderstandingEn": "Independence means P(A∩B)=P(A)P(B). When the conditioning event has positive probability, this is equivalent to information about A not changing the probability of B.",
+            "observablePerformanceDe": "Die lernende Person entnimmt gemeinsame und Randwahrscheinlichkeiten einer Tafel oder einem Baum, prüft ein gültiges Kriterium rechnerisch und erklärt die Entscheidung im Beispiel.",
+            "observablePerformanceEn": "The learner obtains joint and marginal probabilities from a table or tree, checks a valid criterion numerically, and explains the decision in the example."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "independence-criterion"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation-and-dependence",
+            "textDe": "Von einer unabhängigen Vierfeldertafel zu einem abhängigen Baum; bedingte und unbedingte Wahrscheinlichkeit werden gezielt verglichen.",
+            "textEn": "Move from an independent contingency table to a dependent tree; deliberately compare conditional and unconditional probabilities."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "table-check",
+            "taskDemandDe": "Eine Zufallsauswahl aus 100 Datensätzen hat Zellen A∩B:12, A∩¬B:18, ¬A∩B:28, ¬A∩¬B:42. Prüfe, ob A und B in diesem Modell unabhängig sind, und erläutere P(B|A).",
+            "taskDemandEn": "A random selection from 100 records has cells A∩B:12, A∩¬B:18, ¬A∩B:28, ¬A∩¬B:42. Check whether A and B are independent in this model and explain P(B|A).",
+            "expectedPerformanceDe": "P(A)=0,3, P(B)=0,4, P(A∩B)=0,12=0,3·0,4. Auch P(B|A)=12/30=0,4; die Information A ändert hier den B-Anteil nicht. Dies ist eine Aussage über das vorliegende Modell, keine Ursache-Wirkung-Aussage.",
+            "expectedPerformanceEn": "P(A)=0.3, P(B)=0.4, P(A∩B)=0.12=0.3·0.4. Also P(B|A)=12/30=0.4; knowing A does not change the B proportion here. This concerns the stated model, not cause and effect.",
+            "understandingFocusDe": "Gemeinsamer Anteil, Randanteile und bedingter Anteil haben verschiedene Bezugsgrößen.",
+            "understandingFocusEn": "Joint, marginal, and conditional proportions have different reference sets."
+          },
+          {
+            "id": "tree-dependence",
+            "taskDemandDe": "Ein Baum hat P(A)=0,4, P(B|A)=0,7 und P(B|¬A)=0,2. Ergänze die Gegenäste, bestimme P(B) und prüfe die Unabhängigkeit. Erkläre, welche Information der erste Ast für B liefert.",
+            "taskDemandEn": "A tree has P(A)=0.4, P(B|A)=0.7, and P(B|¬A)=0.2. Complete complementary branches, find P(B), and test independence. Explain what information the first branch provides about B.",
+            "expectedPerformanceDe": "Gegenäste 0,6; 0,3; 0,8. P(B)=0,4·0,7+0,6·0,2=0,4. P(A∩B)=0,28≠0,16=P(A)P(B), also abhängig. Unter A steigt die B-Wahrscheinlichkeit von insgesamt 0,4 auf 0,7.",
+            "expectedPerformanceEn": "Complementary branches are 0.6, 0.3, 0.8. P(B)=0.4·0.7+0.6·0.2=0.4. P(A∩B)=0.28≠0.16=P(A)P(B), so the events are dependent. Given A, the probability of B rises from 0.4 overall to 0.7.",
+            "understandingFocusDe": "Ein gültiges Kriterium wird in einer anderen Darstellung geprüft; die Astwahrscheinlichkeit ist nicht die Gesamtwahrscheinlichkeit.",
+            "understandingFocusEn": "Apply a valid criterion in another representation; branch probability is not overall probability."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+      "reason": "Individuelle kritische Datenprüfung mit Gruppenmischung und verändertem Basisanteil; Stichprobengröße, Auswahl, Frageformulierung und Kausalitätsgrenze sind konkret eingebunden. Bild als orientierende Checkliste betrachtet, KEEP.",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "conditional-comparisons",
+            "essentialUnderstandingDe": "Gesamtanteile sind durch die Zusammensetzung der Stichprobe gewichtet. Bedingte Anteile benötigen die passende Bezugsgruppe; bei geänderter Basisrate kann sich die Aussage eines Signals stark verändern.",
+            "essentialUnderstandingEn": "Overall proportions are weighted by sample composition. Conditional proportions require the correct reference group; changing a base rate can substantially change the meaning of a signal.",
+            "observablePerformanceDe": "Die lernende Person rechnet Gesamt- und Teilgruppenanteile aus, benennt die jeweiligen Nenner und formuliert eine durch die Daten gedeckte, begrenzte Schlussfolgerung.",
+            "observablePerformanceEn": "The learner computes overall and subgroup proportions, identifies the relevant denominators, and states a limited conclusion supported by the data."
+          },
+          {
+            "id": "data-generation-and-causality",
+            "essentialUnderstandingDe": "Aussagekraft hängt neben den Zahlen von Umfang, Auswahl und Erhebungsfrage ab. Ein beobachteter Zusammenhang allein belegt keine Wirkung einer Maßnahme.",
+            "essentialUnderstandingEn": "Informative value depends not only on the numbers but also on sample size, selection, and the survey question. An observed association alone does not establish an intervention's effect.",
+            "observablePerformanceDe": "Die lernende Person identifiziert eine konkrete Verzerrungs- oder Unsicherheitsquelle, trennt Beschreibung von Kausalbehauptung und nennt eine passende zusätzliche Information oder verbesserte Erhebung.",
+            "observablePerformanceEn": "The learner identifies a concrete source of bias or uncertainty, distinguishes description from causation, and specifies suitable additional information or an improved study."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "conditional-comparisons",
+            "data-generation-and-causality"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "mixture-versus-base-rate",
+            "textDe": "Wechsel von ungleich gemischten freiwilligen Lerngruppen zu einer zufälligen Produktkontrolle mit seltenem Merkmal und geändertem Basisanteil.",
+            "textEn": "Switch from unequally mixed volunteer learning groups to random product inspection with a rare property and a changed base rate."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "group-composition",
+            "taskDemandDe": "Freiwillige berichten Prüfungserfolg nach Kurs A/B. A: leichte Prüfung 9/10 erfolgreich, schwere 27/90; B: leichte 72/90, schwere 2/10. Ein Anbieter fragt: 'Hat unser hilfreicher Kurs zum Erfolg geführt?' und wirbt mit dem höheren Gesamtanteil von B. Prüfe Zahlen und Wirkungsbehauptung; berücksichtige die kleinen Teilgruppen.",
+            "taskDemandEn": "Volunteers report exam success after courses A/B. A: easy exam 9/10 successful, hard exam 27/90; B: easy 72/90, hard 2/10. A provider asks, 'Did our helpful course lead to success?' and advertises B's higher overall rate. Check the figures and causal claim, including the small subgroups.",
+            "expectedPerformanceDe": "Insgesamt A=36/100, B=74/100; innerhalb beider Schwierigkeitsgruppen ist A höher: 90% vs.80%, 30% vs.20%. Die unterschiedliche Mischung kehrt den Vergleich um. Freiwillige Auswahl, suggestive Frage und Teilgruppen mit n=10 begrenzen die Aussage; weder Kurswirkung noch Übertragbarkeit sind belegt. Neutrale Frage, vergleichbare Gruppen und Angaben zu Auswahl/Vorkenntnissen helfen.",
+            "expectedPerformanceEn": "Overall A=36/100 and B=74/100, but A is higher within both difficulty groups: 90% versus 80%, 30% versus 20%. Unequal composition reverses the comparison. Volunteer selection, a leading question, and subgroups of n=10 limit the claim; neither course effects nor generalizability are established. A neutral question, comparable groups, and selection/prior-knowledge data would help.",
+            "understandingFocusDe": "Bezugsmengen und Erhebungsbedingungen erklären einen scheinbar eindeutigen Vergleich, ohne eine unbelegte Gegenkausalität zu behaupten.",
+            "understandingFocusEn": "Reference groups and collection conditions explain an apparently clear comparison without asserting an unsupported opposite causal effect."
+          },
+          {
+            "id": "inspection-base-rate",
+            "taskDemandDe": "In einer zufälligen Kontrolle von 10000 Teilen sind 2% fehlerhaft. Ein Scanner markiert 90% der fehlerhaften und 5% der einwandfreien Teile. Prüfe: '90% der markierten Teile sind fehlerhaft.' Wie ändert sich der Anteil bei 10% Fehlerquote und gleichen Scannerraten? Kann das Markieren als Ursache eines Fehlers gelten?",
+            "taskDemandEn": "In a random inspection of 10000 items, 2% are faulty. A scanner flags 90% of faulty and 5% of sound items. Check: '90% of flagged items are faulty.' How does the proportion change with a 10% fault rate and unchanged scanner rates? Can flagging be considered a cause of a defect?",
+            "expectedPerformanceDe": "Bei 2%: 180 richtig und 490 falsch markiert, daher 180/670=18/67≈26,9% fehlerhaft unter den markierten. Bei 10%: 900/(900+450)=2/3≈66,7%. Die Bezugsgruppe 'markiert' ist nicht 'fehlerhaft'; andere Basisraten ändern die Aussage. Der Scanner beobachtet Fehler, er verursacht sie nicht durch die beobachtete Korrelation; Repräsentativität und Gültigkeit der Raten für neue Chargen sind zu prüfen.",
+            "expectedPerformanceEn": "At 2%: 180 true and 490 false flags, hence 180/670=18/67≈26.9% faulty among flagged items. At 10%: 900/(900+450)=2/3≈66.7%. 'Flagged' is not the reference group 'faulty'; different base rates change the conclusion. The scanner observes faults; the association does not make flagging their cause. Representativeness and validity of the rates for new batches must be checked.",
+            "understandingFocusDe": "Die Umkehrung einer Bedingung benötigt die Grundhäufigkeit und einen neuen Nenner; eine Korrelation bleibt eine beschreibende Beziehung.",
+            "understandingFocusEn": "Reversing a condition requires the base rate and a new denominator; correlation remains a descriptive relationship."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "122ab909-04ed-572b-a499-754f3bcc8ef0",
+      "reason": "Individuelle AB1-Zählfälle mit und ohne Wiederholung sowie stellenabhängigen Auswahlmöglichkeiten. Keine ungeordnete Kombination als neue Pflicht. Aktuelles Bild betrachtet, KEEP.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "ordered-product",
+            "essentialUnderstandingDe": "Bei geordneten Auswahlen zählt jede zulässige Folge einmal. Die Produktregel multipliziert die verfügbaren Möglichkeiten pro Stelle; ohne Wiederholung sinkt diese Anzahl.",
+            "essentialUnderstandingEn": "For ordered selections, each admissible sequence is counted once. The product rule multiplies available choices at each position; without repetition this number decreases.",
+            "observablePerformanceDe": "Die lernende Person benennt die Reihenfolge- und Wiederholungsbedingungen, bestimmt die Faktoren aus den Stellen und begründet die resultierende Anzahl.",
+            "observablePerformanceEn": "The learner identifies order and repetition conditions, determines factors from the positions, and justifies the resulting count."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "ordered-product"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "position-restriction",
+            "textDe": "Eine einheitliche Auswahlmenge wird durch eine besondere Bedingung an der ersten Stelle verändert, ohne die Bedeutung der Reihenfolge zu ändern.",
+            "textEn": "A common choice set is changed by a special restriction on the first position without changing the meaning of order."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-digit-codes",
+            "taskDemandDe": "Dreistellige Codes werden aus {0,1,2,3,4} gebildet; führende Nullen sind erlaubt. Zähle die Codes zuerst mit Wiederholung, dann ohne, und erläutere an 012 und 210 die Rolle der Reihenfolge.",
+            "taskDemandEn": "Three-digit codes use {0,1,2,3,4}; leading zeros are allowed. Count the codes first with repetition, then without, and use 012 and 210 to explain the role of order.",
+            "expectedPerformanceDe": "Mit Wiederholung 5·5·5=125, ohne 5·4·3=60. 012 und 210 sind verschiedene Codes. Jeder Faktor zählt die noch verfügbaren Zeichen der jeweiligen Stelle.",
+            "expectedPerformanceEn": "With repetition there are 5·5·5=125; without repetition, 5·4·3=60. 012 and 210 are different codes. Each factor counts the symbols still available at that position.",
+            "understandingFocusDe": "Wiederholung und Reihenfolge werden als Bedingungen des Experiments und nicht aus einer ungeprüften Formel behandelt.",
+            "understandingFocusEn": "Repetition and order are treated as conditions of the experiment rather than inferred from an unchecked formula."
+          },
+          {
+            "id": "leading-zero-restriction",
+            "taskDemandDe": "Nun werden aus denselben Ziffern dreistellige Zahlen ohne Ziffernwiederholung gebildet; die erste Ziffer darf nicht 0 sein. Bestimme die Anzahl und erläutere, weshalb 0 an der zweiten Stelle erlaubt sein kann.",
+            "taskDemandEn": "Now form three-digit numbers from the same digits without repeating a digit; the first digit cannot be 0. Find the count and explain why 0 can occur in the second position.",
+            "expectedPerformanceDe": "Erste Stelle:4 Möglichkeiten, zweite:4 einschließlich 0, dritte:3. Insgesamt 4·4·3=48. Das Verbot gilt nur vorne; die zweite Stelle verliert genau die bereits benutzte Ziffer.",
+            "expectedPerformanceEn": "First position:4 choices; second:4 including 0; third:3. Total 4·4·3=48. The zero restriction concerns only the first position; the second loses exactly the digit already used.",
+            "understandingFocusDe": "Stellenspezifische Bedingungen verändern einzelne Faktoren der Produktregel.",
+            "understandingFocusEn": "Position-specific restrictions change individual factors of the product rule."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+      "reason": "Individuelle Fakultätsfälle unterscheiden vollständige Permutation und geordnete Teilauswahl. Aktuelles Bild betrachtet, KEEP; dessen Kombinationsvergleich wird nicht als zusätzliche Profilpflicht übernommen.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "factorial-as-count",
+            "essentialUnderstandingDe": "n! zählt vollständige Anordnungen n verschiedener Objekte, weil n,n−1,…,1 Möglichkeiten nacheinander bleiben. Bei k geordneten Plätzen aus n Objekten endet das Produkt nach k Faktoren.",
+            "essentialUnderstandingEn": "n! counts complete arrangements of n distinct objects because n,n−1,…,1 choices remain successively. For k ordered places selected from n objects, the product ends after k factors.",
+            "observablePerformanceDe": "Die lernende Person übersetzt ein Zählproblem in ein passendes Fakultätsprodukt oder einen Quotienten, berechnet es und erklärt, welche Anordnungen gezählt werden.",
+            "observablePerformanceEn": "The learner translates a counting problem into a suitable factorial product or quotient, evaluates it, and explains which arrangements are counted."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "factorial-as-count"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "full-versus-partial",
+            "textDe": "Von einer vollständigen Anordnung zur Besetzung weniger unterschiedlicher Plätze; ungenutzte Objekte werden nicht zusätzlich permutiert.",
+            "textEn": "Move from a complete arrangement to filling fewer distinct places; unused objects are not additionally permuted."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "books-on-shelf",
+            "taskDemandDe": "Fünf verschiedene Bücher sollen in einer Reihe stehen. Wie viele Anordnungen gibt es? Begründe die Faktoren der Fakultät und erkläre, weshalb Vertauschen zweier Bücher eine neue Anordnung ergibt.",
+            "taskDemandEn": "Five distinct books are placed in a row. How many arrangements are there? Explain the factorial's factors and why swapping two books creates a new arrangement.",
+            "expectedPerformanceDe": "5!=5·4·3·2·1=120. Nach jeder besetzten Position bleibt ein Buch weniger; jedes Buch wird genau einmal verwendet und die Positionen sind unterscheidbar.",
+            "expectedPerformanceEn": "5!=5·4·3·2·1=120. Each filled position leaves one fewer book; every book is used exactly once and positions are distinguishable.",
+            "understandingFocusDe": "Die Fakultät entsteht aus dem konkreten sukzessiven Auswahlvorgang.",
+            "understandingFocusEn": "The factorial arises from the concrete successive selection process."
+          },
+          {
+            "id": "three-distinct-roles",
+            "taskDemandDe": "Aus sieben Personen werden Vorsitz, Stellvertretung und Protokollführung besetzt; niemand übernimmt zwei Rollen. Zähle mithilfe von Fakultäten und begründe, warum 7! allein zu viel zählt.",
+            "taskDemandEn": "From seven people, choose a chair, deputy, and recorder; nobody holds two roles. Count using factorials and explain why 7! alone overcounts.",
+            "expectedPerformanceDe": "7!/4!=7·6·5=210. Die drei Rollen sind geordnet/unterscheidbar; die vier nicht gewählten Personen erhalten keine Reihenfolge. 7! würde jede Rollenbesetzung durch deren 4! Anordnungen mehrfach zählen.",
+            "expectedPerformanceEn": "7!/4!=7·6·5=210. The three roles are ordered/distinct; the four unselected people have no assigned order. 7! would count each assignment repeatedly through their 4! arrangements.",
+            "understandingFocusDe": "Der Fakultätsquotient entfernt nur Anordnungen, die im ursprünglichen Problem nicht unterschieden werden.",
+            "understandingFocusEn": "The factorial quotient removes only arrangements that the original problem does not distinguish."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "1462c189-8679-5f32-bf58-6e81e99e4635",
+      "reason": "Individuelle hypergeometrische Zählfälle mit genau zwei Treffern und einem Gegenereignis; Gleichwahrscheinlichkeit der Auswahlen wird begründet. Die konkreten Aufgaben und Erwartungshorizonte wurden unabhängig nachgerechnet; ihre Inhalte bleiben gültig. Das fehlerhafte Altbild bleibt im historischen Kandidaten dokumentiert; die aktuelle PNG-Auswahl wurde unabhängig tatsächlich betrachtet und angenommen: curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/1462c189-8679-5f32-bf58-6e81e99e4635/candidate-v2.png (sha256:9a9587618b1c67a14f1a6394c6661d0d331e063accf3d0ecd13f80d83a0d35a4). Nachweis: math-m7-stochastics-foundations-20260920-v1/root-independent-eight.receipt.json. Keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "hypergeometric-sampling",
+            "essentialUnderstandingDe": "Bei einer zufälligen Auswahl ohne Zurücklegen aus N unterscheidbaren Objekten sind gleich große Teilmengen gleich wahrscheinlich. Die günstigen Auswahlen mit k Treffern kombinieren k aus M Treffern und n−k aus N−M Nichttreffern.",
+            "essentialUnderstandingEn": "For random sampling without replacement from N distinct objects, subsets of equal size are equally likely. Favorable samples with k successes combine k of M successes and n−k of N−M non-successes.",
+            "observablePerformanceDe": "Die lernende Person begründet das Laplace-Modell auf den Auswahlen, zählt günstige und mögliche Fälle mit passenden Bedingungen und prüft das Ergebnis durch einen zweiten einfachen Zugang oder ein Gegenereignis.",
+            "observablePerformanceEn": "The learner justifies the Laplace model over samples, counts favorable and possible cases with appropriate conditions, and checks the result through a second simple approach or a complement."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "hypergeometric-sampling"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "exact-count-versus-complement",
+            "textDe": "Ändere das Ereignis von genau k Treffern zu mindestens einem Treffer; verwende weiter eine gleichwahrscheinliche Auswahl ohne Zurücklegen.",
+            "textEn": "Change the event from exactly k successes to at least one success while retaining equally likely sampling without replacement."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-reds-in-three",
+            "taskDemandDe": "Eine gut gemischte Urne enthält 4 rote und 6 blaue unterscheidbare Kugeln. Drei werden ohne Zurücklegen gezogen. Bestimme P(genau zwei rote), begründe das Modell und kontrolliere über die drei möglichen Farbreihenfolgen.",
+            "taskDemandEn": "A well-mixed urn contains 4 red and 6 blue distinguishable balls. Three are drawn without replacement. Find P(exactly two red), justify the model, and check using the three possible color orders.",
+            "expectedPerformanceDe": "Es gibt C(10,3)=120 gleichwahrscheinliche Auswahlen und C(4,2)C(6,1)=36 günstige, also 3/10. Jede der Folgen RRB,RBR,BRR hat Wahrscheinlichkeit (4·3·6)/(10·9·8)=1/10; ihre Summe bestätigt 3/10. Die Ziehungen sind nicht unabhängig.",
+            "expectedPerformanceEn": "There are C(10,3)=120 equally likely samples and C(4,2)C(6,1)=36 favorable ones, giving 3/10. Each of RRB,RBR,BRR has probability (4·3·6)/(10·9·8)=1/10; their sum confirms 3/10. Draws are not independent.",
+            "understandingFocusDe": "Gleichwahrscheinlichkeit gilt für konkrete Auswahlen, nicht pauschal für jede Trefferzahl.",
+            "understandingFocusEn": "Equal probability applies to specific samples, not automatically to every success count."
+          },
+          {
+            "id": "at-least-one-marked",
+            "taskDemandDe": "Unter 8 gleich aussehenden Losen sind 3 Gewinnlose. Zwei Lose werden gleichzeitig zufällig gewählt. Berechne P(mindestens ein Gewinnlos) und überprüfe durch getrenntes Zählen von einem und zwei Gewinnlosen.",
+            "taskDemandEn": "Among 8 visually identical tickets, 3 win a prize. Two tickets are randomly selected together. Calculate P(at least one winning ticket) and check by separately counting one and two winning tickets.",
+            "expectedPerformanceDe": "Gegenereignis: C(5,2)/C(8,2)=10/28 ohne Gewinn, daher 18/28=9/14. Direkt: [C(3,1)C(5,1)+C(3,2)]/28=(15+3)/28. Gleichzeitige Auswahl verhindert nicht das Modell ohne Zurücklegen.",
+            "expectedPerformanceEn": "Complement: C(5,2)/C(8,2)=10/28 with no win, hence 18/28=9/14. Directly: [C(3,1)C(5,1)+C(3,2)]/28=(15+3)/28. Simultaneous selection still uses sampling without replacement.",
+            "understandingFocusDe": "Ein zusammengesetztes Ereignis wird über disjunkte Trefferzahlen oder sein Gegenereignis erfasst.",
+            "understandingFocusEn": "A composite event is represented through disjoint success counts or its complement."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Bildbefund nach Originalauflösungsprüfung: Die Urne zeigt 5 rote und 4 blaue Kugeln (=9); Text, N=8 und Rechnung setzen 5 rote und 3 blaue voraus. Zusätzlich bezeichnet die mittlere Tabellenzeile (ein roter Treffer) ihren Wert offenbar als P(0)=15/28 statt P(X=1)=15/28. Konkrete Zeichnungs-/Beschriftungskorrektur vor V-Finalisierung erforderlich."
+      ]
+    },
+    {
+      "goalId": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+      "reason": "Individuell gerechneter Näherungsvergleich: kleine Stichprobe aus großer Urne versus großer entnommener Anteil bei gleichem Ausgangsanteil. Die konkreten Aufgaben und Erwartungshorizonte wurden unabhängig nachgerechnet; ihre Inhalte bleiben gültig. Das fehlerhafte Altbild bleibt im historischen Kandidaten dokumentiert; die aktuelle PNG-Auswahl wurde unabhängig tatsächlich betrachtet und angenommen: curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/bd63c0fc-50ef-55aa-ae6c-25cf73d02636/candidate-v2.png (sha256:38ee36caa6b28a0ce3c751da7854fa7fe4e0603086e14c4b6b379ee0b9aea4c6). Nachweis: math-m7-stochastics-foundations-20260920-v1/root-independent-eight.receipt.json. Keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "sampling-fraction-and-error",
+            "essentialUnderstandingDe": "Ohne Zurücklegen ändern Entnahmen die bedingten Anteile. Mit Zurücklegen bleiben sie konstant. Bei kleinem Stichprobenanteil können sich die Modelle annähern; die Güte ist am interessierenden Ereignis und einer angemessenen Fehlertoleranz zu beurteilen.",
+            "essentialUnderstandingEn": "Without replacement, removals change conditional proportions. With replacement, they remain constant. A small sampling fraction can make the models close; quality must be judged for the event of interest and a suitable error tolerance.",
+            "observablePerformanceDe": "Die lernende Person berechnet dieselbe Ereigniswahrscheinlichkeit in beiden Modellen, quantifiziert den Unterschied und erklärt ihn durch die veränderte Zusammensetzung statt nur durch eine große Gesamtzahl.",
+            "observablePerformanceEn": "The learner computes the same event probability in both models, quantifies the difference, and explains it through changing composition rather than merely a large population size."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "sampling-fraction-and-error"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "small-versus-large-fraction",
+            "textDe": "Halte den anfänglichen Trefferanteil 0,4 konstant, ändere aber das Verhältnis Stichprobe/Grundgesamtheit sowie das betrachtete Ereignis.",
+            "textEn": "Keep the initial success proportion at 0.4 while changing the sample-to-population ratio and the event of interest."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "large-population-pair",
+            "taskDemandDe": "Aus 1000 Kugeln, davon 400 rot, werden zwei gezogen. Vergleiche P(zweimal rot) ohne und mit Zurücklegen. Ist die Näherung bei einer erlaubten absoluten Abweichung von 0,001 ausreichend?",
+            "taskDemandEn": "Draw two balls from 1000, of which 400 are red. Compare P(two red) without and with replacement. Is the approximation adequate for an allowed absolute error of 0.001?",
+            "expectedPerformanceDe": "Ohne: (400/1000)(399/999)≈0,15975976; mit: 0,4²=0,16. Differenz ≈0,00024024<0,001. Eine Entnahme verändert den Rotanteil nur wenig; für dieses Ereignis und diese Toleranz ist die Näherung ausreichend.",
+            "expectedPerformanceEn": "Without: (400/1000)(399/999)≈0.15975976; with: 0.4²=0.16. Difference ≈0.00024024<0.001. One removal barely changes the red proportion; the approximation is adequate for this event and tolerance.",
+            "understandingFocusDe": "Die Aussage 'gute Näherung' erhält einen konkreten Fehlermaßstab.",
+            "understandingFocusEn": "The claim 'good approximation' is given a concrete error criterion."
+          },
+          {
+            "id": "half-population-sample",
+            "taskDemandDe": "Nun gibt es nur 10 Kugeln, davon 4 rot; 5 werden gezogen. Vergleiche P(keine rote) ohne und mit Zurücklegen. Beurteile dieselbe Fehlertoleranz und erkläre den Unterschied zum ersten Fall.",
+            "taskDemandEn": "Now there are only 10 balls, including 4 red; draw 5. Compare P(no red) without and with replacement. Evaluate the same error tolerance and explain the difference from the first case.",
+            "expectedPerformanceDe": "Ohne: C(6,5)/C(10,5)=6/252=1/42≈0,02380952. Mit: 0,6⁵=0,07776. Differenz ≈0,05395048>0,001; die Näherung ist ungeeignet. Ohne Zurücklegen nimmt bei jeder blauen Kugel der verbleibende Blauanteil spürbar ab; die Hälfte der Urne wird entnommen.",
+            "expectedPerformanceEn": "Without: C(6,5)/C(10,5)=6/252=1/42≈0.02380952. With: 0.6⁵=0.07776. Difference ≈0.05395048>0.001; the approximation is unsuitable. Each blue removal significantly reduces the remaining blue proportion; half the urn is sampled.",
+            "understandingFocusDe": "Gleicher Anfangsanteil bedeutet nicht gleiche Abhängigkeit oder gleiche Näherungsgüte.",
+            "understandingFocusEn": "The same initial proportion does not imply the same dependence or approximation quality."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Bildbefund: Starturnen zeigen 5 rote und 4 blaue Kugeln (=9), beschriftet ist N=8; zudem zeigen Handpfeile beim Fall ohne Zurücklegen in die Urne und beim Zurücklegen aus ihr heraus. Konkrete Mengendarstellung/Handlungsrichtung vor V-Finalisierung gegenprüfen."
+      ]
+    },
+    {
+      "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+      "reason": "Individuelles AB1-Modellrahmenprofil mit gruppierten Glücksradsektoren und gleichwahrscheinlichen Los-Paaren. Keine spezielle Verteilungsfamilie oder Kenngrößenrechnung zusätzlich verlangt. Aktuelles Bild betrachtet, KEEP.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "variable-and-law",
+            "essentialUnderstandingDe": "Eine Zufallsgröße wählt eine zahlenmäßige Eigenschaft der Ergebnisse aus. Ihre diskrete Verteilung nennt die möglichen Zahlenwerte und summiert die Wahrscheinlichkeiten aller Ergebnisse, die denselben Wert erzeugen.",
+            "essentialUnderstandingEn": "A random variable selects a numerical property of outcomes. Its discrete distribution lists possible values and sums probabilities of all outcomes producing the same value.",
+            "observablePerformanceDe": "Die lernende Person definiert im einfachen Kontext eine passende Zufallsgröße, beschreibt deren Werte und Wahrscheinlichkeiten mit den Modellannahmen und kontrolliert Nichtnegativität und Summe 1.",
+            "observablePerformanceEn": "The learner defines a suitable random variable in a simple context, describes its values and probabilities with the model assumptions, and checks nonnegativity and total probability 1."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "variable-and-law"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "single-outcome-versus-selection",
+            "textDe": "Wechsle von einem einzelnen gleichwahrscheinlichen Sektor zu einer zufälligen Zweierauswahl; gleiche Zahlenwerte können aus mehreren verschiedenen Ergebnissen entstehen.",
+            "textEn": "Move from one equally likely sector to a random pair selection; multiple distinct outcomes can produce the same numerical value."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "spinner-payout",
+            "taskDemandDe": "Ein Glücksrad hat vier gleich große, gleichwahrscheinliche Sektoren mit Auszahlungen 0 €,1 €,1 €,4 €. Beschreibe eine passende Zufallsgröße und ihre Verteilung. Sind ihre drei möglichen Werte gleich wahrscheinlich?",
+            "taskDemandEn": "A spinner has four equally sized, equally likely sectors paying €0,€1,€1,€4. Describe a suitable random variable and its distribution. Are its three possible values equally likely?",
+            "expectedPerformanceDe": "X ist die Auszahlung in Euro pro Dreh. Werte 0,1,4 mit Wahrscheinlichkeiten 1/4,1/2,1/4. Zwei verschiedene Sektoren ergeben 1 €. Die Wahrscheinlichkeiten sind nicht gleich, aber nichtnegativ und summieren sich zu 1.",
+            "expectedPerformanceEn": "X is the payout in euros per spin. Values 0,1,4 have probabilities 1/4,1/2,1/4. Two distinct sectors produce €1. Probabilities are unequal but nonnegative and sum to 1.",
+            "understandingFocusDe": "Ergebnisse werden nach dem gewählten Zahlenmerkmal zusammengefasst.",
+            "understandingFocusEn": "Outcomes are grouped by the selected numerical property."
+          },
+          {
+            "id": "pair-of-coupons",
+            "taskDemandDe": "Drei unterscheidbare Gutscheine A,B,C tragen Werte 0 €,0 €,3 €. Zwei werden zufällig ohne Zurücklegen gewählt; alle drei Paare sind gleich wahrscheinlich. Beschreibe den Gesamtwert als Zufallsgröße und gib die Verteilung an.",
+            "taskDemandEn": "Three distinguishable vouchers A,B,C are worth €0,€0,€3. Two are randomly selected without replacement; all three pairs are equally likely. Describe total value as a random variable and give its distribution.",
+            "expectedPerformanceDe": "Y ordnet AB den Wert 0 und AC,BC jeweils 3 zu. Daher P(Y=0)=1/3, P(Y=3)=2/3. Y beschreibt den Gesamtwert, nicht die Identität des ausgewählten Paares; die Modellwahrscheinlichkeiten summieren sich zu 1.",
+            "expectedPerformanceEn": "Y assigns value 0 to AB and 3 to each of AC,BC. Thus P(Y=0)=1/3, P(Y=3)=2/3. Y describes total value rather than the identity of the selected pair; model probabilities sum to 1.",
+            "understandingFocusDe": "Der Modellrahmen bleibt derselbe, obwohl das Ergebnis nun eine Auswahl statt eines Sektors ist.",
+            "understandingFocusEn": "The modeling framework is unchanged although an outcome is now a selection rather than a sector."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+      "reason": "Individuelle Darstellungsfälle wechseln von Würfelergebnissen zur Verteilungstabelle und von einem Diagramm zurück zu einer Ereignisaussage. Die konkreten Aufgaben und Erwartungshorizonte wurden unabhängig nachgerechnet; ihre Inhalte bleiben gültig. Das fehlerhafte Altbild bleibt im historischen Kandidaten dokumentiert; die aktuelle PNG-Auswahl wurde unabhängig tatsächlich betrachtet und angenommen: curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/5927ca6a-91d5-4541-84e9-833bbb2cd7df/candidate-v2.png (sha256:02a7f831b6a9211a1ddb964d624e63ed36feeef48786b28014a67144e7bc6c8c). Nachweis: math-m7-stochastics-foundations-20260920-v1/root-independent-eight.receipt.json. Keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "distribution-representations",
+            "essentialUnderstandingDe": "Eine Tabelle oder ein Diagramm einer diskreten Zufallsgröße ordnet jedem möglichen Zahlenwert seine Wahrscheinlichkeit zu. Mehrere Ergebnisse können denselben Zahlenwert haben; Ereigniswahrscheinlichkeiten entstehen durch Summieren der passenden Werte.",
+            "essentialUnderstandingEn": "A table or diagram of a discrete random variable assigns each possible numerical value its probability. Multiple outcomes may have the same value; event probabilities are obtained by summing the corresponding values.",
+            "observablePerformanceDe": "Die lernende Person verbindet Ergebniszuordnung, Tabelle und beschriftetes Diagramm und liest daraus eine im Kontext erläuterte Ereigniswahrscheinlichkeit ab.",
+            "observablePerformanceEn": "The learner connects the outcome assignment, table, and labeled diagram and reads off an event probability interpreted in context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "distribution-representations"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "forward-and-reverse-representation",
+            "textDe": "Einmal aus einer Ergebnisregel eine Verteilung aufbauen, einmal aus gegebenen Diagrammhöhen eine Tabelle und eine Ereignisaussage gewinnen.",
+            "textEn": "First construct a distribution from an outcome rule; then recover a table and an event statement from given diagram heights."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "die-payments",
+            "taskDemandDe": "Bei einem fairen Würfel erhält man für ungerade Zahlen 0 €, für 2 oder 4 jeweils 2 € und für 6 genau 5 €. Beschreibe X als Auszahlung, erstelle Tabelle und Säulendiagramm und bestimme P(X≥2).",
+            "taskDemandEn": "With a fair die, odd numbers pay €0, 2 or 4 each pay €2, and 6 pays €5. Describe X as payout, create a table and bar chart, and find P(X≥2).",
+            "expectedPerformanceDe": "X(1)=X(3)=X(5)=0, X(2)=X(4)=2, X(6)=5. Tabelle und beschriftete Säulen zeigen bei 0,2,5 die Wahrscheinlichkeiten 1/2,1/3,1/6. P(X≥2)=1/3+1/6=1/2; die Auszahlungswerte sind nicht gleichwahrscheinlich.",
+            "expectedPerformanceEn": "X(1)=X(3)=X(5)=0, X(2)=X(4)=2, X(6)=5. The table and labeled bars show probabilities 1/2,1/3,1/6 at 0,2,5. P(X≥2)=1/3+1/6=1/2; payout values are not equally likely.",
+            "understandingFocusDe": "Die Höhe kodiert Wahrscheinlichkeit, die horizontale Position den Zahlenwert der Auszahlung.",
+            "understandingFocusEn": "Height encodes probability; horizontal position encodes the numerical payout."
+          },
+          {
+            "id": "diagram-to-event",
+            "taskDemandDe": "Ein Diagramm eines Spielgewinns Y in Euro hat genau drei beschriftete Säulen: bei −1 Höhe 1/4, bei 1 Höhe 1/2, bei 3 Höhe 1/4. Gib die Tabelle an, prüfe die Verteilung und deute P(Y>0) sowie P(Y=2).",
+            "taskDemandEn": "A diagram of a game's net gain Y in euros has exactly three labeled bars: at −1 height 1/4, at 1 height 1/2, at 3 height 1/4. Give the table, check the distribution, and interpret P(Y>0) and P(Y=2).",
+            "expectedPerformanceDe": "Tabelle: −1↦1/4,1↦1/2,3↦1/4; Summe 1. Mit Wahrscheinlichkeit 3/4 ist der Nettogewinn positiv. P(Y=2)=0, weil 2 kein möglicher Gewinnwert ist; zwischen den Säulen werden keine Wahrscheinlichkeiten interpoliert.",
+            "expectedPerformanceEn": "Table: −1↦1/4,1↦1/2,3↦1/4; total 1. Net gain is positive with probability 3/4. P(Y=2)=0 because 2 is not a possible gain; probabilities are not interpolated between bars.",
+            "understandingFocusDe": "Diskrete Werte, ihre Wahrscheinlichkeiten und zusammengesetzte Ereignisse werden aus der Darstellung korrekt unterschieden.",
+            "understandingFocusEn": "Discrete values, their probabilities, and composite events are correctly distinguished using the representation."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Bildbefund: Der mittlere Balken mit Aufschrift 1/2 endet sichtbar oberhalb des 1/2-Achsenstrichs, etwa bei 0,62. Balkenhöhe und Achsenmaßstab widersprechen sich."
+      ]
+    },
+    {
+      "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+      "reason": "Enges AB1-Profil zur Ergebnis-Zahl-Zuordnung ohne zusätzlich geforderte Wahrscheinlichkeitsrechnung. Aktuelles Bild betrachtet, KEEP; die dort ergänzte Verteilung wird nicht zur neuen Pflicht.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "outcome-to-number",
+            "essentialUnderstandingDe": "Eine Zufallsgröße ist eine eindeutige Zuordnung X:Ω→R: Jedes Ergebnis erhält genau einen Zahlenwert, verschiedene Ergebnisse dürfen denselben Wert haben. Die Zuordnungsregel legt fest, welches Merkmal betrachtet wird.",
+            "essentialUnderstandingEn": "A random variable is a single-valued mapping X:Ω→R: every outcome receives exactly one numerical value, and different outcomes may have the same value. The assignment rule determines which property is observed.",
+            "observablePerformanceDe": "Die lernende Person formuliert eine passende Zuordnungsregel, ordnet konkrete Ergebnisse korrekt zu und unterscheidet Ergebnisraum und Wertebereich fachsprachlich.",
+            "observablePerformanceEn": "The learner formulates a suitable assignment rule, maps concrete outcomes correctly, and distinguishes sample space from range using appropriate terminology."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "outcome-to-number"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "count-versus-distance",
+            "textDe": "Vom Zählen eines Merkmals in einer Ergebnisfolge zum Abstand eines schon numerischen Ergebnisses von einem festen Zielwert.",
+            "textEn": "Move from counting a property in an outcome sequence to measuring a numerical outcome's distance from a fixed target."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-item-check",
+            "taskDemandDe": "Zwei Bauteile werden geprüft; G bedeutet gut, D defekt. Ω={GG,GD,DG,DD}. Definiere X als Anzahl defekter Bauteile, gib alle Zuordnungen und den Wertebereich an und erkläre GD versus DG.",
+            "taskDemandEn": "Two components are inspected; G means good and D defective. Ω={GG,GD,DG,DD}. Define X as the number of defective components, give all assignments and the range, and explain GD versus DG.",
+            "expectedPerformanceDe": "X(GG)=0, X(GD)=X(DG)=1, X(DD)=2; Wertebereich {0,1,2}. GD und DG sind verschiedene geordnete Ergebnisse, erhalten aber denselben Wert 1. Es sind keine Wahrscheinlichkeiten nötig, um X zu definieren.",
+            "expectedPerformanceEn": "X(GG)=0, X(GD)=X(DG)=1, X(DD)=2; range {0,1,2}. GD and DG are different ordered outcomes but receive the same value 1. Defining X does not require probabilities.",
+            "understandingFocusDe": "Eindeutigkeit der Zuordnung verlangt nicht verschiedene Werte für verschiedene Ergebnisse.",
+            "understandingFocusEn": "A single-valued mapping does not require different values for different outcomes."
+          },
+          {
+            "id": "distance-from-target",
+            "taskDemandDe": "Beim Würfeln soll Y den Abstand der Augenzahl vom Zielwert 3 beschreiben. Definiere Y auf Ω={1,2,3,4,5,6}, gib alle Werte an und übersetze das Ereignis Y=1 zurück in Würfelergebnisse.",
+            "taskDemandEn": "For a die roll, let Y describe the distance of the result from target value 3. Define Y on Ω={1,2,3,4,5,6}, give all values, and translate event Y=1 back into die outcomes.",
+            "expectedPerformanceDe": "Y(ω)=|ω−3|. Für ω=1,2,3,4,5,6 lauten die Werte 2,1,0,1,2,3; Wertebereich {0,1,2,3}. Y=1 entspricht den Ergebnissen {2,4}. Y ist die Abweichung vom Ziel, nicht einfach die Augenzahl.",
+            "expectedPerformanceEn": "Y(ω)=|ω−3|. For ω=1,2,3,4,5,6 the values are 2,1,0,1,2,3; range {0,1,2,3}. Y=1 corresponds to outcomes {2,4}. Y measures distance from the target rather than simply the die result.",
+            "understandingFocusDe": "Auch numerische Ergebnisse können durch eine andere Zufallsgröße gezielt zusammengefasst werden.",
+            "understandingFocusEn": "Even numerical outcomes can be deliberately grouped by a different random variable."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+      "reason": "Individuelle vollständige Binomial-Kenngrößenevidenz mit gleicher Erwartung bei verschiedener Streuung als Transfer. Aktuelles Bild betrachtet, KEEP als Kenngrößenorientierung; eine exakte Normalform des Binomialmodells wird nicht behauptet.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "binomial-moments",
+            "essentialUnderstandingDe": "Bei n unabhängigen gleichartigen Bernoulli-Versuchen zählt X Erfolge: μ=np, Var(X)=np(1−p), σ=√Var(X). μ beschreibt den langfristigen Durchschnitt der Anzahlen, σ deren Streuungsmaß in der Einheit der Anzahl, Var(X) die quadratische Skala.",
+            "essentialUnderstandingEn": "For n independent identically distributed Bernoulli trials, X counts successes: μ=np, Var(X)=np(1−p), σ=√Var(X). μ is the long-run average of counts, σ measures their spread in count units, and Var(X) uses the squared scale.",
+            "observablePerformanceDe": "Die lernende Person identifiziert n,p und die gezählte Größe, berechnet alle drei Kenngrößen und deutet oder vergleicht sie ohne den Erwartungswert als garantierte Einzelanzahl auszugeben.",
+            "observablePerformanceEn": "The learner identifies n,p and the counted quantity, computes all three measures, and interprets or compares them without presenting the expectation as a guaranteed single count."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "binomial-moments"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "equal-means-different-spreads",
+            "textDe": "Von der Deutung einer einzelnen Serie zum Vergleich zweier Bernoulli-Modelle mit gleichem μ, aber verschiedenem n und p.",
+            "textEn": "Move from interpreting one series to comparing two Bernoulli models with the same μ but different n and p."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "quality-check-series",
+            "taskDemandDe": "In einem Modell sind 50 unabhängig geprüfte Teile jeweils mit Wahrscheinlichkeit 0,2 fehlerhaft. X zählt fehlerhafte Teile. Bestimme μ, Var(X), σ und erläutere, was μ=10 für eine einzelne und für viele solche Serien bedeutet.",
+            "taskDemandEn": "In a model, each of 50 independently inspected items is faulty with probability 0.2. X counts faulty items. Find μ, Var(X), σ and explain what μ=10 means for one series and many such series.",
+            "expectedPerformanceDe": "μ=50·0,2=10, Var(X)=50·0,2·0,8=8, σ=√8≈2,83 Teile. Eine einzelne Serie muss nicht 10 Fehler enthalten; über viele vergleichbare Serien nähert sich die mittlere Fehleranzahl 10. σ charakterisiert Streuung, keine feste Fehlergrenze.",
+            "expectedPerformanceEn": "μ=50·0.2=10, Var(X)=50·0.2·0.8=8, σ=√8≈2.83 items. A single series need not contain 10 defects; across many comparable series the average defect count approaches 10. σ describes spread, not a hard error bound.",
+            "understandingFocusDe": "Formeln werden mit der konkreten Bernoulli-Zählgröße und der Bedeutung wiederholter Serien verbunden.",
+            "understandingFocusEn": "Formulas are connected to the concrete Bernoulli count and the meaning of repeated series."
+          },
+          {
+            "id": "equal-expectation-comparison",
+            "taskDemandDe": "Zwei unabhängige Versuchsanordnungen zählen Treffer: U∼B(20;0,5) und V∼B(100;0,1). Berechne ihre drei Kenngrößen und prüfe die Behauptung, gleicher Erwartungswert bedeute gleich starke Streuung der Trefferanzahlen.",
+            "taskDemandEn": "Two experimental setups count successes: U∼B(20;0.5) and V∼B(100;0.1). Compute their three measures and assess the claim that equal expectations imply equal spread of success counts.",
+            "expectedPerformanceDe": "Beide haben μ=10. Für U: Var=5, σ=√5≈2,24; für V: Var=9, σ=3. V streut absolut stärker um denselben mittleren Trefferwert, weil np(1−p) trotz gleichem np verschieden ist.",
+            "expectedPerformanceEn": "Both have μ=10. For U: Var=5, σ=√5≈2.24; for V: Var=9, σ=3. V has greater absolute spread around the same mean count because np(1−p) differs despite equal np.",
+            "understandingFocusDe": "Mittelwert und Streuung sind unterscheidbare Informationen über dasselbe Zählmodell.",
+            "understandingFocusEn": "Mean and spread provide distinct information about the same counting model."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+      "reason": "Individuelles Histogrammprofil mit selbst erstellten Einheitsbalken und einem Vergleich gleicher Zentren bei unterschiedlicher Streuung. Aktuelles Bild betrachtet, KEEP.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "histogram-and-moments",
+            "essentialUnderstandingDe": "Ein diskretes Wahrscheinlichkeitshistogramm mit Einheitsbreiten zeigt die Wahrscheinlichkeiten als Balkenhöhen und -flächen. Der Erwartungswert beschreibt den gewichteten Schwerpunkt, Varianz und Standardabweichung die Streuung um ihn.",
+            "essentialUnderstandingEn": "A discrete probability histogram with unit widths represents probabilities by bar heights and areas. The expectation is the weighted balance point, while variance and standard deviation describe spread around it.",
+            "observablePerformanceDe": "Die lernende Person erstellt oder liest beschriftete Einheitsbreiten-Histogramme, verbindet Balken mit Ereigniswahrscheinlichkeiten und erklärt einfache Lage-/Streuungsvergleiche mithilfe der Kenngrößen.",
+            "observablePerformanceEn": "The learner constructs or reads labeled unit-width histograms, relates bars to event probabilities, and explains simple location/spread comparisons using the characteristic measures."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "histogram-and-moments"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "construct-versus-compare",
+            "textDe": "Von einer Tabelle zum selbst gezeichneten Histogramm, dann von zwei Histogrammen mit gleichem Schwerpunkt zum Streuungsvergleich.",
+            "textEn": "Move from a table to a self-drawn histogram, then from two histograms with the same balance point to a comparison of spread."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-valued-histogram",
+            "taskDemandDe": "X zählt die Anzahl beschädigter Artikel in einem Zweierpaket und hat P(0)=0,2, P(1)=0,3, P(2)=0,5. Erstelle ein Histogramm mit Balkenbreite 1, lies P(X≥1) ab und verknüpfe es mit μ, Var und σ.",
+            "taskDemandEn": "X counts damaged items in a two-item parcel and has P(0)=0.2, P(1)=0.3, P(2)=0.5. Construct a histogram with bar width 1, read off P(X≥1), and connect it with μ, Var, and σ.",
+            "expectedPerformanceDe": "Balken um 0,1,2 haben Höhen 0,2;0,3;0,5 und Gesamtfläche 1. P(X≥1)=0,8. μ=1,3, Var=0,61, σ=√0,61≈0,78. Der Schwerpunkt liegt zwischen 1 und 2, näher bei 1; er muss selbst kein möglicher X-Wert sein.",
+            "expectedPerformanceEn": "Bars centered on 0,1,2 have heights 0.2,0.3,0.5 and total area 1. P(X≥1)=0.8. μ=1.3, Var=0.61, σ=√0.61≈0.78. The balance point lies between 1 and 2, closer to 1; it need not itself be a possible X value.",
+            "understandingFocusDe": "Histogramm, Gewichtung und Kenngrößen beschreiben dieselbe Verteilung aus verschiedenen Blickwinkeln.",
+            "understandingFocusEn": "Histogram, weighting, and moments describe the same distribution from different perspectives."
+          },
+          {
+            "id": "same-center-different-spread",
+            "taskDemandDe": "Zwei Einheitsbreiten-Histogramme sind gegeben: A hat Balken der Höhe 1/2 bei 0 und 4; B hat nur einen Balken der Höhe 1 bei 2. Vergleiche Lage und Streuung zunächst bildlich, dann anhand von Erwartungswert, Varianz und Standardabweichung.",
+            "taskDemandEn": "Two unit-width histograms are given: A has bars of height 1/2 at 0 and 4; B has only one bar of height 1 at 2. Compare location and spread visually, then using expectation, variance, and standard deviation.",
+            "expectedPerformanceDe": "Beide Schwerpunkte liegen bei 2. Bei A liegen alle Werte im Abstand 2 davon: Var=4, σ=2. Bei B ist der Wert stets 2: Var=σ=0. Gleicher Schwerpunkt macht die Histogramme nicht gleich.",
+            "expectedPerformanceEn": "Both balance points are at 2. In A, all values lie at distance 2 from that center: Var=4, σ=2. In B, the value is always 2: Var=σ=0. The same balance point does not make the histograms identical.",
+            "understandingFocusDe": "Eine grafische Streuungsaussage wird mit den Abständen zum Schwerpunkt bestätigt.",
+            "understandingFocusEn": "A visual claim about spread is confirmed through distances from the balance point."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+      "reason": "Individuelle diskrete Momenten- und Spielevidenz mit Nettoauszahlung und verändertem Einsatz. Die konkreten Aufgaben und Erwartungshorizonte wurden unabhängig nachgerechnet; ihre Inhalte bleiben gültig. Das fehlerhafte Altbild bleibt im historischen Kandidaten dokumentiert; die aktuelle PNG-Auswahl wurde unabhängig tatsächlich betrachtet und angenommen: curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/candidate-v2.png (sha256:0d637515d5e66809f489094047a9e522ed24d5f49175196b6674fb87bd640320). Nachweis: math-m7-stochastics-foundations-20260920-v1/root-independent-eight.receipt.json. Keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "discrete-moments-and-fairness",
+            "essentialUnderstandingDe": "E(X)=ΣxP(X=x) gewichtet die möglichen Werte; Var(X)=Σ(x−μ)²P(X=x) und σ=√Var(X) beschreiben die Streuung. Bei Spielen ist für Fairness der erwartete Nettogewinn einschließlich Einsatz maßgeblich.",
+            "essentialUnderstandingEn": "E(X)=ΣxP(X=x) weights the possible values; Var(X)=Σ(x−μ)²P(X=x) and σ=√Var(X) describe spread. In games, fairness is determined by expected net gain including the stake.",
+            "observablePerformanceDe": "Die lernende Person berechnet die drei Kenngrößen einer einfachen Verteilung, benennt Geld- beziehungsweise Quadrateinheiten und beurteilt damit mittleren Nettogewinn und verbleibendes Spielrisiko.",
+            "observablePerformanceEn": "The learner computes the three measures of a simple distribution, identifies monetary or squared units, and uses them to assess average net gain and remaining game risk."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "discrete-moments-and-fairness"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "net-gain-versus-stake",
+            "textDe": "Von direkt gegebenem Nettogewinn zur Bruttoauszahlung mit veränderbarem Einsatz; eine Verschiebung ändert den Mittelwert, nicht die Streuung.",
+            "textEn": "Move from directly stated net gain to gross payout with an adjustable stake; shifting values changes the mean but not the spread."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "net-gain-lottery",
+            "taskDemandDe": "Ein Spiel hat bereits nach Abzug des Einsatzes Nettogewinne −2 €,1 €,4 € mit Wahrscheinlichkeiten 1/2,1/3,1/6. Bestimme E, Var und σ und beurteile die Fairness sowie das Risiko.",
+            "taskDemandEn": "After deducting the stake, a game has net gains −€2,€1,€4 with probabilities 1/2,1/3,1/6. Find E, Var, and σ and assess fairness and risk.",
+            "expectedPerformanceDe": "E=−2·1/2+1·1/3+4·1/6=0 €. Var=4·1/2+1·1/3+16·1/6=5 €², σ=√5≈2,24 €. Das Spiel ist im Erwartungswert fair, hat aber schwankende Einzelgewinne und Verlustwahrscheinlichkeit 1/2.",
+            "expectedPerformanceEn": "E=−2·1/2+1·1/3+4·1/6=€0. Var=4·1/2+1·1/3+16·1/6=5 euro², σ=√5≈€2.24. The game is fair in expectation but has varying individual gains and loss probability 1/2.",
+            "understandingFocusDe": "Ein fairer Mittelwert ist keine Zusicherung eines verlustfreien Einzelspiels.",
+            "understandingFocusEn": "A fair mean is not a promise of a loss-free individual game."
+          },
+          {
+            "id": "gross-payout-and-stake",
+            "taskDemandDe": "Ein anderes Spiel zahlt brutto 0 € mit Wahrscheinlichkeit 3/4 und 8 € mit Wahrscheinlichkeit 1/4. Bestimme einen fairen Einsatz. Berechne E, Var und σ des Nettogewinns bei Einsatz 3 € und erläutere den Einfluss einer Einsatzsenkung auf 2 €.",
+            "taskDemandEn": "Another game pays a gross €0 with probability 3/4 and €8 with probability 1/4. Find a fair stake. Compute E, Var, and σ of net gain with a €3 stake and explain the effect of reducing it to €2.",
+            "expectedPerformanceDe": "Die mittlere Bruttoauszahlung ist 2 €, also fairer Einsatz 2 €. Bei 3 € sind Nettowerte −3 und 5: μ=−1 €, Var=(-3+1)²·3/4+(5+1)²·1/4=12 €², σ=√12≈3,46 €. Bei 2 € steigen beide Werte um 1: μ=0, Var und σ bleiben gleich.",
+            "expectedPerformanceEn": "Mean gross payout is €2, so the fair stake is €2. With a €3 stake, net values are −3 and 5: μ=−€1, Var=(-3+1)²·3/4+(5+1)²·1/4=12 euro², σ=√12≈€3.46. With €2, both values increase by 1: μ=0 while Var and σ stay unchanged.",
+            "understandingFocusDe": "Einsatz und Auszahlungsverteilung beeinflussen Mittelwert und Streuung unterschiedlich.",
+            "understandingFocusEn": "Stake and payout distribution affect the mean and spread differently."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Bildtextbefund: σ wird als durchschnittliche Abweichung bezeichnet. Für das dargestellte Beispiel beträgt die mittlere absolute Abweichung 1/2, aber σ=√(1/2)≈0,71. Treffend wäre Wurzel der mittleren quadratischen Abweichung oder Streuungsmaß."
+      ]
+    },
+    {
+      "goalId": "42d300e3-e982-5889-98d7-fc297f10eff1",
+      "reason": "Individuelle Histogrammvergleiche unterscheiden p-Spiegelung und n-Vergrößerung. Aktuelles Bild betrachtet, KEEP als qualitative Darstellung; Aufgaben arbeiten mit korrekt skalierten Histogrammen und exakten Kenngrößen.",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "parameter-shape-relations",
+            "essentialUnderstandingDe": "Für B(n,p) bestimmen np und np(1−p) Lage und Streuung. Bei festem n spiegeln sich die Verteilungen zu p und 1−p an n/2; p=1/2 liefert Symmetrie. Bei festem 0<p<1 wächst mit n die absolute Standardabweichung, während σ/n sinkt.",
+            "essentialUnderstandingEn": "For B(n,p), np and np(1−p) determine location and spread. At fixed n, distributions with p and 1−p mirror each other about n/2; p=1/2 gives symmetry. At fixed 0<p<1, absolute standard deviation increases with n while σ/n decreases.",
+            "observablePerformanceDe": "Die lernende Person vergleicht korrekt skalierte Histogramme, benennt die kontrollierte Parameteränderung und begründet Lage, Streuung und Symmetrie mit charakteristischen Werten und zugeordneten Balken.",
+            "observablePerformanceEn": "The learner compares correctly scaled histograms, identifies the controlled parameter change, and explains location, spread, and symmetry using characteristic values and corresponding bars."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "parameter-shape-relations"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "change-p-versus-change-n",
+            "textDe": "Zuerst p bei festem n spiegeln, dann n bei festem p verändern; absolute Anzahl und Anteilsskala werden auseinandergehalten.",
+            "textEn": "First reflect p at fixed n, then change n at fixed p; distinguish count scale from proportion scale."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "complementary-probabilities",
+            "taskDemandDe": "Vergleiche Histogramme von X∼B(4;0,25) und Y∼B(4;0,75). Das erste hat bei k=0,…,4 Höhen (81,108,54,12,1)/256. Ordne die Höhen des zweiten zu und begründe Lage, Streuung und Symmetriebeziehung.",
+            "taskDemandEn": "Compare histograms of X∼B(4;0.25) and Y∼B(4;0.75). The first has heights (81,108,54,12,1)/256 at k=0,…,4. Assign the second one's heights and explain location, spread, and the symmetry relation.",
+            "expectedPerformanceDe": "Y hat die umgekehrte Höhenfolge (1,12,54,108,81)/256. μ verschiebt sich von 1 zu 3; beide Varianzen sind 3/4, beide σ=√3/2. Jede Verteilung ist asymmetrisch, gemeinsam spiegeln sie sich an k=2; gleiche Streuung bedeutet keine gleiche Lage.",
+            "expectedPerformanceEn": "Y has reversed heights (1,12,54,108,81)/256. μ shifts from 1 to 3; both variances are 3/4 and both σ=√3/2. Each distribution is asymmetric, and the pair mirrors about k=2; equal spread does not imply equal location.",
+            "understandingFocusDe": "Komplementäre Trefferwahrscheinlichkeiten vertauschen Treffer- und Misserfolgsanzahlen.",
+            "understandingFocusEn": "Complementary success probabilities interchange success and failure counts."
+          },
+          {
+            "id": "more-trials",
+            "taskDemandDe": "Vergleiche auf gleicher k-Skala bereitgestellte Histogramme von B(4;0,5) und B(16;0,5). Beschreibe Lage und Symmetrie und entscheide, in welchem Sinn die zweite Verteilung breiter beziehungsweise relativ konzentrierter ist.",
+            "taskDemandEn": "Compare supplied histograms of B(4;0.5) and B(16;0.5) on the same k scale. Describe location and symmetry and decide in what sense the second is wider yet relatively more concentrated.",
+            "expectedPerformanceDe": "Symmetriezentren sind μ=2 und μ=8. σ steigt von 1 auf 2, die absolute Streuung ist größer. Auf der Anteilsskala k/n sinkt σ/n von 1/4 auf 1/8. Ein Vergleich verschieden skalierter Bilder allein wäre dafür unzureichend.",
+            "expectedPerformanceEn": "Centers of symmetry are μ=2 and μ=8. σ increases from 1 to 2, so absolute spread is larger. On the proportion scale k/n, σ/n decreases from 1/4 to 1/8. Comparing differently scaled pictures alone would be insufficient.",
+            "understandingFocusDe": "Eine Parameteränderung wird unter Angabe der betrachteten Skala interpretiert.",
+            "understandingFocusEn": "A parameter change is interpreted with explicit reference to the scale being considered."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+      "reason": "Individuelle Bernoulli-Modellierung mit genau-k-Ereignis und unabhängigem höchstens-k-Transfer; Modellgrenzen sind kontextspezifisch. Die konkreten Aufgaben und Erwartungshorizonte wurden unabhängig nachgerechnet; ihre Inhalte bleiben gültig. Das fehlerhafte Altbild bleibt im historischen Kandidaten dokumentiert; die aktuelle PNG-Auswahl wurde unabhängig tatsächlich betrachtet und angenommen: curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/837b015a-c2a2-5f31-831c-ae16ee2ee6ce/candidate-v2.png (sha256:428c98c539b4ad5193280223532b23ec314dcd67b3a2189776f0d356ffb2570a). Nachweis: math-m7-stochastics-foundations-20260920-v1/root-independent-eight.receipt.json. Keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "binomial-event-model",
+            "essentialUnderstandingDe": "Eine Bernoulli-Kette hat festes n, zwei Ergebnisarten je Versuch, gleiches p und unabhängige Versuche. Für genau k Erfolge kombiniert C(n,k)p^k(1−p)^(n−k) die Wahrscheinlichkeit einer Folge mit der Anzahl passender Erfolgspositionen.",
+            "essentialUnderstandingEn": "A Bernoulli chain has fixed n, two outcome classes per trial, common p, and independent trials. For exactly k successes, C(n,k)p^k(1−p)^(n−k) combines one sequence's probability with the number of matching success positions.",
+            "observablePerformanceDe": "Die lernende Person benennt Zählgröße und Modellannahmen im Kontext, berechnet eine Ereigniswahrscheinlichkeit und erklärt eine konkrete Situation, in der die Modellannahmen nicht mehr tragen.",
+            "observablePerformanceEn": "The learner identifies the counted variable and contextual model assumptions, calculates an event probability, and explains a concrete situation in which the assumptions no longer hold."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "binomial-event-model"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "exact-versus-cumulative",
+            "textDe": "Wechsel von genau vier Erfolgen zu höchstens einem Fehler; das Ereignis wird in passende disjunkte Trefferzahlen übersetzt.",
+            "textEn": "Switch from exactly four successes to at most one failure; translate the event into suitable disjoint counts."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "five-shots",
+            "taskDemandDe": "Eine Schützin trifft im Modell bei jedem von fünf unabhängigen Würfen mit konstanter Wahrscheinlichkeit 0,8. Berechne P(genau vier Treffer), erkläre den Binomialfaktor und nenne eine realistische Grenze des Modells.",
+            "taskDemandEn": "In a model, a player scores on each of five independent throws with constant probability 0.8. Calculate P(exactly four scores), explain the binomial coefficient, and name a realistic model limitation.",
+            "expectedPerformanceDe": "X∼B(5;0,8); P(X=4)=C(5,4)·0,8⁴·0,2=0,4096. Die fünf möglichen Positionen des Fehlwurfs liefern den Faktor 5. Ermüdung oder veränderte Wurfbedingungen könnten p verändern; aufeinander reagierende Würfe könnten abhängig sein.",
+            "expectedPerformanceEn": "X∼B(5;0.8); P(X=4)=C(5,4)·0.8⁴·0.2=0.4096. The five possible positions of the missed throw give factor 5. Fatigue or changing conditions could change p; throws responding to earlier ones could be dependent.",
+            "understandingFocusDe": "Binomialformel und Unabhängigkeitsannahme werden am selben Versuch interpretiert.",
+            "understandingFocusEn": "The binomial formula and independence assumption are interpreted for the same experiment."
+          },
+          {
+            "id": "at-most-one-failure",
+            "taskDemandDe": "Acht unabhängig gefertigte Teile sind im Modell jeweils mit Wahrscheinlichkeit 0,1 fehlerhaft. Berechne P(höchstens ein fehlerhaftes Teil). Erkläre, weshalb dieselbe Rechnung bei einem gemeinsamen Chargenfehler nicht ungeprüft übernommen werden darf.",
+            "taskDemandEn": "Eight independently manufactured items are each faulty with probability 0.1 in the model. Calculate P(at most one faulty item). Explain why the same calculation cannot be adopted unchecked if a shared batch fault is possible.",
+            "expectedPerformanceDe": "Y∼B(8;0,1). P(Y≤1)=0,9⁸+8·0,1·0,9⁷=0,81310473. Die Fälle 0 und 1 sind disjunkt. Ein gemeinsamer Chargeneinfluss kann die Fehlerereignisse koppeln; unveränderte Einzelwahrscheinlichkeiten allein sichern keine Binomialverteilung.",
+            "expectedPerformanceEn": "Y∼B(8;0.1). P(Y≤1)=0.9⁸+8·0.1·0.9⁷=0.81310473. Cases 0 and 1 are disjoint. A shared batch influence can couple defect events; unchanged individual probabilities alone do not guarantee a binomial distribution.",
+            "understandingFocusDe": "Ein kumuliertes Ereignis und eine gemeinsame Abhängigkeitsquelle verändern unterschiedliche Teile der Modellierung.",
+            "understandingFocusEn": "A cumulative event and a shared dependence source affect different parts of the modeling."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Bildbefund: Das Minihistogramm für B(4;0,5) ist sichtbar unsymmetrisch: Balken 1/3 und 0/4 sind verschieden hoch. Rechnerisch müssen die Höhen 1,4,6,4,1 geteilt durch 16 lauten."
+      ]
+    },
+    {
+      "goalId": "f7879354-1a82-4195-8e3c-a339a820439c",
+      "reason": "Eigenständiges Profil nur für Erwartungswert und Standardabweichung, ohne Varianz als zusätzliche eigenständige Nachweispflicht. Der Transfer wechselt die gezählte Ergebnisart. Die konkreten Aufgaben und Erwartungshorizonte wurden unabhängig nachgerechnet; ihre Inhalte bleiben gültig. Das fehlerhafte Altbild bleibt im historischen Kandidaten dokumentiert; die aktuelle PNG-Auswahl wurde unabhängig tatsächlich betrachtet und angenommen: curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/f7879354-1a82-4195-8e3c-a339a820439c/candidate-v3.png (sha256:5ae70c33ccf066c8dbc819795a53e85441afec4f7a8f85f870fbd2356fb8e5cf). Nachweis: math-m7-stochastics-foundations-20260920-v1/root-independent-eight.receipt.json. Keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "mean-and-standard-deviation",
+            "essentialUnderstandingDe": "Bei X∼B(n,p) beschreibt μ=np die mittlere Anzahl gezählter Erfolge über viele Serien; σ=√(np(1−p)) ist ein Streuungsmaß der Anzahlen. Welche Ergebnisart als Erfolg zählt, bestimmt das einzusetzende p.",
+            "essentialUnderstandingEn": "For X∼B(n,p), μ=np describes the average counted successes across many series; σ=√(np(1−p)) measures spread of the counts. The outcome class counted as success determines which p to use.",
+            "observablePerformanceDe": "Die lernende Person berechnet μ und σ aus dem passenden Binomialmodell und erläutert die beiden Größen im Sachzusammenhang, einschließlich eines Wechsels der gezählten Ergebnisart.",
+            "observablePerformanceEn": "The learner calculates μ and σ from the appropriate binomial model and explains both in context, including a switch in the outcome class being counted."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "mean-and-standard-deviation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "complementary-count",
+            "textDe": "Von direkt gezählten Treffern zur Anzahl der Gegenereignisse; der Mittelwert ändert sich, die Standardabweichung beider komplementärer Anzahlen stimmt überein.",
+            "textEn": "Move from directly counted successes to the complementary count; its mean changes while the standard deviations of the complementary counts agree."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "repeated-test-count",
+            "taskDemandDe": "In 120 unabhängigen Versuchen tritt ein Signal jeweils mit Wahrscheinlichkeit 0,25 auf. X zählt Signale. Bestimme μ und σ und erkläre, warum weder 30 Signale noch ein Ergebnis innerhalb μ±σ für jede Serie garantiert sind.",
+            "taskDemandEn": "In 120 independent trials, a signal occurs with probability 0.25 each time. X counts signals. Find μ and σ and explain why neither 30 signals nor a result within μ±σ is guaranteed in every series.",
+            "expectedPerformanceDe": "μ=120·0,25=30 Signale; σ=√(120·0,25·0,75)=√22,5≈4,74 Signale. 30 ist der langfristige mittlere Zählwert; σ beschreibt Streuung und keine sichere Schranke für einzelne Serien.",
+            "expectedPerformanceEn": "μ=120·0.25=30 signals; σ=√(120·0.25·0.75)=√22.5≈4.74 signals. 30 is the long-run average count; σ describes spread rather than a certain bound for each series.",
+            "understandingFocusDe": "Kenngrößen beschreiben eine Verteilung, keine vorgeschriebene Einzelrealisierung.",
+            "understandingFocusEn": "Characteristic measures describe a distribution, not a prescribed single realization."
+          },
+          {
+            "id": "accepted-versus-rejected",
+            "taskDemandDe": "80 Teile bestehen jeweils unabhängig eine Prüfung mit Wahrscheinlichkeit 0,9. Y zählt diesmal durchgefallene Teile. Berechne und deute μY,σY und vergleiche mit der Anzahl Z der bestandenen Teile.",
+            "taskDemandEn": "Each of 80 items independently passes inspection with probability 0.9. This time Y counts failed items. Calculate and interpret μY,σY and compare with Z, the number that pass.",
+            "expectedPerformanceDe": "Für Y ist p=0,1: μY=8 und σY=√7,2≈2,68 Teile. Z hat μZ=72 und dieselbe Standardabweichung √7,2; Y=80−Z. Viele Serien haben im Mittel 8 Fehler beziehungsweise 72 bestandene Teile, mit gleich großer absoluter Streuung der komplementären Anzahlen.",
+            "expectedPerformanceEn": "For Y, p=0.1: μY=8 and σY=√7.2≈2.68 items. Z has μZ=72 and the same standard deviation √7.2; Y=80−Z. Across many series, average counts are 8 failures and 72 passes, with equal absolute spread of the complementary counts.",
+            "understandingFocusDe": "Die Definition der Zufallsgröße entscheidet über p, nicht die positiv formulierte Kontextangabe.",
+            "understandingFocusEn": "The random variable's definition determines p, not the context's positively phrased probability."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Bildbefund: Die mit μ=6 bezeichnete Linie liegt zwischen k=6 und k=7; der Pfeil für [3,95;8,05] endet rechts etwa bei k=9. Der beschriftete B(20;0,3)-Graph zeigt zudem massiv zu große rechte Randwahrscheinlichkeiten, etwa k=12 ungefähr 0,03 statt ungefähr 0,00386."
+      ]
+    },
+    {
+      "goalId": "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+      "reason": "Individuelle LK-Dichteanalyse wechselt von gegebenem Term zur Rekonstruktion aus Wendestellen und trennt μ-Verschiebung von σ-Skalierung. Aktuelles Bild betrachtet, KEEP als qualitative μ/σ-Orientierung.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "normal-density-parameters",
+            "essentialUnderstandingDe": "Für die Normaldichte mit μ∈R und σ>0 liegt das Maximum bei x=μ, die Wendestellen bei μ±σ. Die maximale Höhe ist 1/(σ√(2π)); μ verschiebt, größeres σ verbreitert und senkt die Dichte bei Gesamtfläche 1.",
+            "essentialUnderstandingEn": "For a normal density with μ∈R and σ>0, the maximum is at x=μ and inflection locations at μ±σ. Maximum height is 1/(σ√(2π)); μ shifts the density, while increasing σ broadens and lowers it with total area 1.",
+            "observablePerformanceDe": "Die lernende Person entnimmt μ und σ einem Term oder geeigneten Graphen, lokalisiert Hoch- und Wendepunkte und beschreibt eine Parameteränderung anhand von Lage, Breite und Höhe.",
+            "observablePerformanceEn": "The learner reads μ and σ from a formula or suitable graph, locates the maximum and inflection points, and describes a parameter change in location, width, and height."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "normal-density-parameters"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "term-versus-inflection-data",
+            "textDe": "Vom vollständigen Dichteterm zu vorgegebenen Wendestellen; Parameter werden einmal abgelesen, einmal aus der Graphenstruktur rekonstruiert.",
+            "textEn": "Move from a complete density formula to specified inflection locations; parameters are read directly once and reconstructed from graph structure once."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "given-density-term",
+            "taskDemandDe": "Gegeben ist f(x)=1/(3√(2π))·exp(−(x−12)²/18). Entnimm μ,σ, lokalisiere Hoch- und Wendepunkte und beschreibe die Änderung, wenn nur μ auf 15 erhöht wird.",
+            "taskDemandEn": "Given f(x)=1/(3√(2π))·exp(−(x−12)²/18), identify μ,σ, locate its maximum and inflection points, and describe the change when only μ is increased to 15.",
+            "expectedPerformanceDe": "μ=12, σ=3, weil 18=2σ². H=(12,1/(3√(2π))); W liegen bei x=9,15 mit Höhe exp(−1/2)/(3√(2π)). Für μ=15 verschieben sich alle Punkte 3 nach rechts; Breite und Höhen bleiben gleich.",
+            "expectedPerformanceEn": "μ=12, σ=3 because 18=2σ². H=(12,1/(3√(2π))); inflection points lie at x=9,15 with height exp(−1/2)/(3√(2π)). Changing μ to 15 shifts all points 3 to the right while preserving width and heights.",
+            "understandingFocusDe": "Im Exponenten steht 2σ², nicht σ; eine Lageänderung verändert die Form nicht.",
+            "understandingFocusEn": "The exponent's denominator is 2σ², not σ; a location change preserves shape."
+          },
+          {
+            "id": "inflections-to-parameters",
+            "taskDemandDe": "Eine Normaldichte hat Wendestellen bei x=4 und x=10. Bestimme μ,σ und den Hochpunkt. Vergleiche mit einer zweiten Normaldichte mit demselben μ und σ=6; lokalisiere auch deren Wendestellen.",
+            "taskDemandEn": "A normal density has inflection locations at x=4 and x=10. Determine μ,σ and its maximum. Compare it with another normal density having the same μ and σ=6; locate the latter's inflections too.",
+            "expectedPerformanceDe": "μ=(4+10)/2=7, σ=3; H=(7,1/(3√(2π))). Bei σ=6 liegen die Wendestellen bei 1 und 13, das Maximum bei x=7 mit halbierter Höhe 1/(6√(2π)). Die Kurve ist breiter, bleibt symmetrisch zu 7 und hat weiterhin Fläche 1.",
+            "expectedPerformanceEn": "μ=(4+10)/2=7, σ=3; H=(7,1/(3√(2π))). With σ=6, inflections are at 1 and 13; the maximum remains at x=7 with half the height, 1/(6√(2π)). The curve is wider, stays symmetric about 7, and retains area 1.",
+            "understandingFocusDe": "Der Abstand zwischen beiden Wendestellen ist 2σ; die Dichtehöhe reagiert invers auf σ.",
+            "understandingFocusEn": "The distance between the two inflection locations is 2σ; density height varies inversely with σ."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "44dba16e-2e86-56be-974b-a62093ef9211",
+      "reason": "Individuelle LK-Näherungsbegründung mit geeignetem symmetrischem Zählmodell, Stetigkeitskorrektur und strukturell ungeeignetem Seltenheitsmodell. Die konkreten Aufgaben und Erwartungshorizonte wurden unabhängig nachgerechnet; ihre Inhalte bleiben gültig. Das fehlerhafte Altbild bleibt im historischen Kandidaten dokumentiert; die aktuelle PNG-Auswahl wurde unabhängig tatsächlich betrachtet und angenommen: curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/44dba16e-2e86-56be-974b-a62093ef9211/candidate-v1.png (sha256:5317c76fe88d5df500cfcfcd288683af3c84de87a7bc40f0b83feece84aecfe7). Nachweis: math-m7-stochastics-foundations-20260920-v1/root-independent-eight.receipt.json. Keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "normal-approximation-conditions",
+            "essentialUnderstandingDe": "Eine passende Normalnäherung übernimmt μ=np und σ²=np(1−p) der Binomialverteilung. Eine ausreichend große Streuung und keine starke Randkonzentration unterstützen die glockenförmige Näherung; großes n allein genügt nicht. Einheitsbreite Balken werden durch Dichteflächen ersetzt.",
+            "essentialUnderstandingEn": "A suitable normal approximation preserves μ=np and σ²=np(1−p) of the binomial distribution. Sufficient spread and no strong boundary concentration support a bell-shaped approximation; large n alone is insufficient. Unit-width bars are replaced by density areas.",
+            "observablePerformanceDe": "Die lernende Person begründet anhand von Parametern und Histogramm die Eignung oder Grenze einer Normalnäherung, ordnet ganzzahlige Ereignisse passenden Flächen zu und deutet den Bezug zu Sigma-Regeln als Näherung.",
+            "observablePerformanceEn": "The learner uses parameters and the histogram to justify suitability or limitations of a normal approximation, maps integer events to suitable areas, and interprets the link to sigma rules as approximate."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "normal-approximation-conditions"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "symmetric-versus-rare",
+            "textDe": "Vom breit gestreuten symmetrischen Histogramm zu vielen Versuchen mit sehr kleinem p und starker Konzentration nahe null.",
+            "textEn": "Move from a broadly spread symmetric histogram to many trials with very small p and strong concentration near zero."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "wide-symmetric-binomial",
+            "taskDemandDe": "Für X∼B(400;0,5) ist ein korrektes Histogramm gegeben. Begründe eine Normalnäherung und schätze P(190≤X≤210) mit Stetigkeitskorrektur. Verwende Φ(1,05)≈0,85314. Erkläre den Bezug zur 1σ-Regel.",
+            "taskDemandEn": "A correct histogram is given for X∼B(400;0.5). Justify a normal approximation and estimate P(190≤X≤210) with continuity correction. Use Φ(1.05)≈0.85314. Explain its relation to the 1σ rule.",
+            "expectedPerformanceDe": "μ=200, σ=10; das breite symmetrische Histogramm wird durch eine Normaldichte mit Mittelwert 200 und Varianz 100 angenähert. Die Balken 190 bis 210 entsprechen [189,5;210,5], also standardisiert [−1,05;1,05]. Näherung 2·0,85314−1=0,70628. Das unkorrektierte stetige Intervall μ±σ hätte etwa 68,27%; die diskreten Randbalken erklären den Unterschied.",
+            "expectedPerformanceEn": "μ=200, σ=10; the broad symmetric histogram is approximated by a normal density with mean 200 and variance 100. Bars 190 through 210 correspond to [189.5,210.5], standardized to [−1.05,1.05]. Approximation: 2·0.85314−1=0.70628. The uncorrected continuous interval μ±σ would contain about 68.27%; discrete boundary bars explain the difference.",
+            "understandingFocusDe": "Sigma-Anteil der stetigen Kurve und korrigierte Summe diskreter Balken werden nicht gleichgesetzt.",
+            "understandingFocusEn": "The continuous curve's sigma proportion is distinguished from the corrected sum of discrete bars."
+          },
+          {
+            "id": "large-n-insufficient",
+            "taskDemandDe": "Für Z∼B(1000;0,002) wird behauptet: '1000 Versuche sind viel, daher ist das Histogramm normalförmig und die 1σ-Regel gilt zuverlässig.' Prüfe dies mithilfe von μ,σ, den möglichen Werten und der Histogrammform. Ein anderes Näherungsverfahren musst du nicht anwenden.",
+            "taskDemandEn": "For Z∼B(1000;0.002), someone claims: '1000 trials is a lot, so the histogram is bell-shaped and the 1σ rule is reliable.' Check this using μ,σ, possible values, and histogram shape. You need not apply a different approximation method.",
+            "expectedPerformanceDe": "μ=2, σ=√1,996≈1,41. Die Verteilung konzentriert sich auf wenige nichtnegative ganze Zahlen nahe 0 und ist deutlich rechtsschief; eine symmetrische Normaldichte weist auch negativen Werten Masse zu. Das große n allein begründet weder gute Formnäherung noch zuverlässige Sigma-Anteile; hier sollte direkt binomial gerechnet oder eine gesondert begründete Alternative gewählt werden.",
+            "expectedPerformanceEn": "μ=2, σ=√1.996≈1.41. The distribution is concentrated on a few nonnegative integers near 0 and is clearly right-skewed; a symmetric normal density also assigns mass to negative values. Large n alone justifies neither a good shape approximation nor reliable sigma proportions; use direct binomial calculation or a separately justified alternative.",
+            "understandingFocusDe": "Die Modellvoraussetzung wird über Streuung und Randnähe geprüft, nicht über eine isolierte große Zahl.",
+            "understandingFocusEn": "Model suitability is checked through spread and proximity to a boundary, not through one large number."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Bildbefund: Die als σ=5 bezeichneten Doppelpfeile reichen nach dem sichtbaren x-Maßstab nur etwa drei Einheiten vom Zentrum weg. Bei μ=50 und σ=5 müssen sie zwischen 45 und 50 beziehungsweise 50 und 55 liegen."
+      ]
+    },
+    {
+      "goalId": "1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+      "reason": "Individuelles LK-Herleitungsprofil beweist den Grenzübergang für festes k und überträgt ihn von exakt konstantem np auf konvergierendes np_n. Aktuelles Bild betrachtet, KEEP als Spezialfall-Orientierung; die allgemeinere kanonische Bedingung bleibt erhalten.",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "poisson-limit-factors",
+            "essentialUnderstandingDe": "Für festes k≥0 und n→∞ mit p_n→0, np_n→λ>0 zerfällt die Binomialwahrscheinlichkeit in einen endlichen Produktfaktor, (np_n)^k/k!, (1−p_n)^n und (1−p_n)^(−k). Deren Grenzwerte ergeben e^(−λ)λ^k/k!. Die Zahl k wird dabei nicht mit n vergrößert.",
+            "essentialUnderstandingEn": "For fixed k≥0 and n→∞ with p_n→0 and np_n→λ>0, the binomial probability factors into a finite product, (np_n)^k/k!, (1−p_n)^n, and (1−p_n)^(−k). Their limits yield e^(−λ)λ^k/k!. The count k does not grow with n in this argument.",
+            "observablePerformanceDe": "Die lernende Person führt die Faktorzerlegung aus, erklärt die Grenzwerte einschließlich des Exponentialfaktors und begründet, wie viele unabhängige seltene Einzelereignisse einen endlichen mittleren Gesamtwert behalten.",
+            "observablePerformanceEn": "The learner carries out the factorization, explains the limits including the exponential factor, and justifies how many independent rare individual events retain a finite mean total."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "poisson-limit-factors"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "constant-versus-convergent-product",
+            "textDe": "Wechsle von p_n=λ/n zu einer Folge mit nur konvergierendem np_n und prüfe eine Folge, welche die Voraussetzung verletzt.",
+            "textEn": "Move from p_n=λ/n to a sequence with merely convergent np_n and check a sequence that violates the premise."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "constant-product-derivation",
+            "taskDemandDe": "Für X_n∼B(n;λ/n), λ>0 und hinreichend großes n, leite bei festem k die Poisson-Grenzwahrscheinlichkeit her. Erkläre alle Grenzfaktoren und kontrolliere für λ=3,k=2 den resultierenden Ausdruck.",
+            "taskDemandEn": "For X_n∼B(n;λ/n), λ>0 and sufficiently large n, derive the Poisson limit probability for fixed k. Explain all limiting factors and check the resulting expression for λ=3,k=2.",
+            "expectedPerformanceDe": "P(X_n=k)=[∏_{j=0}^{k−1}(1−j/n)]·λ^k/k!·(1−λ/n)^n·(1−λ/n)^(−k). Bei festem k gehen die Faktoren gegen 1, λ^k/k!, e^(−λ),1. Für k=0 ist das Produkt leer und gleich 1. Somit Grenzwert e^(−λ)λ^k/k!; bei λ=3,k=2: (9/2)e^(−3)≈0,22404.",
+            "expectedPerformanceEn": "P(X_n=k)=[∏_{j=0}^{k−1}(1−j/n)]·λ^k/k!·(1−λ/n)^n·(1−λ/n)^(−k). For fixed k the factors tend to 1, λ^k/k!, e^(−λ),1. For k=0 the empty product equals 1. Thus the limit is e^(−λ)λ^k/k!; for λ=3,k=2: (9/2)e^(−3)≈0.22404.",
+            "understandingFocusDe": "Ein endliches Produkt und der Exponentialgrenzwert werden begründet, nicht nur die Zielformel genannt.",
+            "understandingFocusEn": "A finite product and exponential limit are justified rather than merely naming the target formula."
+          },
+          {
+            "id": "nonconstant-product-transfer",
+            "taskDemandDe": "Nun gilt p_n=2/(n+1). Leite den Grenzwert von P(X_n=k) für festes k durch dieselbe Struktur her und erkläre die Seltenheitsdeutung. Beurteile, ob p_n=1/√n ebenfalls eine Poisson-Grenzverteilung mit endlichem Parameter auf diese Weise liefert.",
+            "taskDemandEn": "Now p_n=2/(n+1). Derive the limit of P(X_n=k) for fixed k using the same structure and explain the rare-event interpretation. Assess whether p_n=1/√n likewise yields a Poisson limit with a finite parameter by this argument.",
+            "expectedPerformanceDe": "p_n→0 und np_n=2n/(n+1)→2, ohne exakt konstant zu sein. Der endliche Produktfaktor geht gegen 1, (np_n)^k/k!→2^k/k!, (1−p_n)^(−k)→1. Aus ln(1−p_n)/p_n→−1 folgt n ln(1−p_n)→−2, also Exponentialfaktor e^(−2). Gesamt: e^(−2)2^k/k!. Viele seltene Versuche behalten Erwartung nahe 2. Bei p_n=1/√n wächst np_n=√n unbegrenzt; diese Voraussetzung ist verletzt.",
+            "expectedPerformanceEn": "p_n→0 and np_n=2n/(n+1)→2 without being exactly constant. The finite product tends to 1, (np_n)^k/k!→2^k/k!, and (1−p_n)^(−k)→1. Since ln(1−p_n)/p_n→−1, n ln(1−p_n)→−2, giving exponential factor e^(−2). Overall: e^(−2)2^k/k!. Many rare trials retain mean near 2. For p_n=1/√n, np_n=√n is unbounded, violating the premise.",
+            "understandingFocusDe": "Seltenheit allein reicht nicht; die endliche Grenzerwartung ist der zweite entscheidende Teil des Übergangs.",
+            "understandingFocusEn": "Rarity alone is insufficient; finite limiting expectation is the second essential part of the transition."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    },
+    {
+      "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+      "reason": "Exponentialverteilung als exemplarische weitere stetige Verteilung, nicht als einzig zulässige Modellfamilie: Rate, Dichtefläche und Gedächtnislosigkeit in zwei konkreten Beispielen erneut geprüft. EN-Titel und Beschreibung wurden dem unveränderten DE-Geltungsumfang angeglichen. Dieses Profil illustriert die allgemeine Kompetenz mit dem zulässigen Exponentialbeispiel; es erweitert deren Pflichtumfang nicht. Aktuelles Bild bleibt KEEP; kein menschlicher Nachweis.",
+      "dissent": [
+        "Die deutsche Beschreibung lässt eine weitere stetige Verteilung exemplarisch offen, die englische bindet ausdrücklich Exponentialverteilung und Gedächtnislosigkeit. Dieses Kandidatenprofil wählt den in beiden Fassungen zulässigen Exponentialfall; es adjudiziert den unterschiedlichen Beschreibungsumfang nicht."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "exponential-waiting-time",
+            "essentialUnderstandingDe": "Im Exponentialmodell mit λ>0 hat T≥0 Dichte λe^(−λt) und Überlebenswahrscheinlichkeit P(T>t)=e^(−λt). Wahrscheinlichkeiten sind Flächen; die konstante Rate führt zur Gedächtnislosigkeit P(T>s+t|T>s)=P(T>t), nicht zu einer festen Restwartezeit.",
+            "essentialUnderstandingEn": "In the exponential model with λ>0, T≥0 has density λe^(−λt) and survival probability P(T>t)=e^(−λt). Probabilities are areas; constant rate gives memorylessness P(T>s+t|T>s)=P(T>t), not a fixed remaining wait.",
+            "observablePerformanceDe": "Die lernende Person setzt ein begründetes Exponentialmodell mit passenden Einheiten ein, berechnet Intervall- und Restwartewahrscheinlichkeiten und erläutert die Gedächtnislosigkeit sowie eine konkrete Modellgrenze.",
+            "observablePerformanceEn": "The learner uses a justified exponential model with appropriate units, calculates interval and remaining-wait probabilities, and explains memorylessness and a concrete model limitation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "exponential-waiting-time"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "waiting-versus-lifetime",
+            "textDe": "Von einer gegebenen Wartezeitrate zur aus einer Überlebenswahrscheinlichkeit bestimmten Lebensdauerrate; bedingte Restzeit wird auf einen neuen Kontext übertragen.",
+            "textEn": "Move from a stated waiting-time rate to a lifetime rate inferred from a survival probability; transfer conditional remaining time to a new context."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "service-arrival-wait",
+            "taskDemandDe": "Eine modellierte Wartezeit T bis zum nächsten unabhängig eintreffenden Auftrag ist exponentialverteilt mit λ=0,2 pro Minute. Bestimme P(2≤T≤5) und P(T>8|T>5). Erkläre die zweite Wahrscheinlichkeit und eine Grenze des Modells bei regelmäßig geplanten Aufträgen.",
+            "taskDemandEn": "The modeled waiting time T until the next independently arriving request is exponential with λ=0.2 per minute. Find P(2≤T≤5) and P(T>8|T>5). Explain the second probability and a model limitation for regularly scheduled requests.",
+            "expectedPerformanceDe": "P(2≤T≤5)=e^(−0,4)−e^(−1)≈0,30244. P(T>8|T>5)=e^(−1,6)/e^(−1)=e^(−0,6)≈0,54881: Nach fünf Minuten ohne Auftrag sind weitere drei Minuten Warten genauso wahrscheinlich wie drei Minuten zu Beginn. Ein fester Fahr-/Terminplan widerspricht meist der konstanten gedächtnislosen Ankunftsrate.",
+            "expectedPerformanceEn": "P(2≤T≤5)=e^(−0.4)−e^(−1)≈0.30244. P(T>8|T>5)=e^(−1.6)/e^(−1)=e^(−0.6)≈0.54881: after five minutes with no request, waiting three more minutes is as likely as waiting three minutes initially. A fixed schedule usually conflicts with the constant memoryless arrival rate.",
+            "understandingFocusDe": "Ein Intervall wird als Differenz von Restwahrscheinlichkeiten berechnet; die Bedingung betrifft bereits verstrichene ereignisfreie Zeit.",
+            "understandingFocusEn": "An interval is computed as a difference of survival probabilities; conditioning concerns elapsed event-free time."
+          },
+          {
+            "id": "reliability-rate-from-data",
+            "taskDemandDe": "Für eine Komponente wird eine exponentialverteilte Lebensdauer L in Stunden angenommen; P(L>10)=1/2. Bestimme λ und P(L>25|L>15). Erläutere, welche Aussage dieses Modell über Alterung macht und wann das problematisch wäre.",
+            "taskDemandEn": "A component's lifetime L in hours is assumed exponential; P(L>10)=1/2. Find λ and P(L>25|L>15). Explain what the model says about aging and when this would be problematic.",
+            "expectedPerformanceDe": "e^(−10λ)=1/2 ergibt λ=ln2/10≈0,06931 h⁻¹. Die bedingte Wahrscheinlichkeit weiterer zehn Stunden ist e^(−10λ)=1/2, unabhängig von den bereits überstandenen 15 Stunden. Das Modell hat keine altersabhängig steigende Ausfallrate; erkennbare Verschleißeffekte sprechen dagegen.",
+            "expectedPerformanceEn": "e^(−10λ)=1/2 gives λ=ln2/10≈0.06931 h⁻¹. The conditional probability of another ten hours is e^(−10λ)=1/2, independent of the 15 hours already survived. The model has no age-increasing failure rate; observable wear argues against it.",
+            "understandingFocusDe": "Gedächtnislosigkeit ist eine prüfbare Modellannahme über Restzeiten, keine Aussage über eine garantierte Lebensdauer.",
+            "understandingFocusEn": "Memorylessness is a testable model assumption about remaining lifetimes, not a guaranteed lifespan."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1"
+    },
+    {
+      "goalId": "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+      "reason": "Individuelles AB1-Sigma-Profil deckt alle sechs kanonisch genannten Faktoren ab und trennt zweiseitige Innenanteile von einseitigen Restflächen. Die konkreten Aufgaben und Erwartungshorizonte wurden unabhängig nachgerechnet; ihre Inhalte bleiben gültig. Das fehlerhafte Altbild bleibt im historischen Kandidaten dokumentiert; die aktuelle PNG-Auswahl wurde unabhängig tatsächlich betrachtet und angenommen: curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d/candidate-v1.png (sha256:8ea783cf9a7caaeeafb5afb49fcc85421780a4a365023177b5a1f439ca51febe). Nachweis: math-m7-stochastics-foundations-20260920-v1/root-independent-eight.receipt.json. Keine menschliche Freigabe.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "central-sigma-and-tail-areas",
+            "essentialUnderstandingDe": "Für annähernd normalverteilte Größen beschreiben μ±cσ symmetrische zentrale Bereiche. Die ungefähren Innenanteile für c=1,1,64,1,96,2,2,58,3 sind 68,27%,90%,95%,95,45%,99%,99,73%; die übrige Wahrscheinlichkeit verteilt sich symmetrisch auf beide Randseiten.",
+            "essentialUnderstandingEn": "For approximately normal variables, μ±cσ describes symmetric central ranges. Approximate central proportions for c=1,1.64,1.96,2,2.58,3 are 68.27%,90%,95%,95.45%,99%,99.73%; remaining probability is split symmetrically between the two tails.",
+            "observablePerformanceDe": "Die lernende Person ordnet Bereiche und Anteile in einem geeigneten Histogramm oder Dichtegraphen zu, markiert die richtigen Grenzen und erklärt qualitativ den Unterschied zwischen zentralem Anteil und einer Randseite.",
+            "observablePerformanceEn": "The learner matches ranges and proportions in a suitable histogram or density graph, marks correct boundaries, and qualitatively explains the distinction between central proportion and one tail."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "central-sigma-and-tail-areas"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "forward-range-and-reverse-quantile",
+            "textDe": "Von gegebenem Mittelwert/σ zu 1σ-,2σ-,3σ-Bereichen, dann von vorgegebenen Innenanteilen zu Quantilgrenzen und Randanteilen.",
+            "textEn": "Move from given mean/σ to 1σ,2σ,3σ ranges, then from specified central proportions to quantile boundaries and tail proportions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "one-two-three-sigma",
+            "taskDemandDe": "Ein annähernd normalförmiges Histogramm von Füllmengen hat μ=500 ml, σ=4 ml. Markiere die 1σ-,2σ- und 3σ-Umgebungen, ordne ihre ungefähren Anteile zu und erläutere den Anteil oberhalb μ+2σ. Die Einheiten beider Achsen sind angegeben.",
+            "taskDemandEn": "An approximately bell-shaped histogram of fill volumes has μ=500 ml, σ=4 ml. Mark the 1σ,2σ,3σ neighborhoods, assign their approximate proportions, and explain the proportion above μ+2σ. Both axes' units are provided.",
+            "expectedPerformanceDe": "Bereiche [496;504], [492;508], [488;512] ml mit etwa 68,27%,95,45%,99,73%. Oberhalb 508 ml liegt etwa (100−95,45)/2=2,275%. Die ganze Breite des 1σ-Bereichs beträgt 8 ml=2σ, nichtσ; Normalform ist Voraussetzung der Prozentzuordnung.",
+            "expectedPerformanceEn": "Ranges [496,504], [492,508], [488,512] ml contain about 68.27%,95.45%,99.73%. Above508 ml lies approximately (100−95.45)/2=2.275%. The full width of the 1σ range is 8 ml=2σ, notσ; the normal shape is required for these percentages.",
+            "understandingFocusDe": "Symmetrische zentrale Bereiche und einseitige Restmengen werden mit korrekten Strecken verknüpft.",
+            "understandingFocusEn": "Symmetric central ranges and one-sided remainders are connected with correct distances."
+          },
+          {
+            "id": "central-quantile-ranges",
+            "taskDemandDe": "Eine annähernd normalverteilte Messgröße hat μ=20, σ=2. Markiere im Dichtegraphen die zentralen Bereiche für ungefähr 90%,95%,99% mithilfe von 1,64σ,1,96σ,2,58σ. Nenne jeweils den ungefähren Anteil oberhalb der rechten Grenze und vergleiche1,96σ mit2σ.",
+            "taskDemandEn": "An approximately normal measured quantity has μ=20, σ=2. Mark on its density graph the central ranges for approximately 90%,95%,99% using 1.64σ,1.96σ,2.58σ. State the approximate proportion above each upper boundary and compare1.96σ with2σ.",
+            "expectedPerformanceDe": "90%: [16,72;23,28], rechts etwa 5%; 95%: [16,08;23,92], rechts etwa 2,5%; 99%: [14,84;25,16], rechts etwa 0,5%. Die breiteren Intervalle enthalten mehr Fläche. 1,96σ entspricht ungefähr 95%, 2σ etwas mehr, ungefähr 95,45%; die Faktoren sind keine exakt austauschbaren Zahlen.",
+            "expectedPerformanceEn": "90%: [16.72,23.28], upper tail about 5%; 95%: [16.08,23.92], upper tail about 2.5%; 99%: [14.84,25.16], upper tail about 0.5%. Wider intervals contain more area. 1.96σ corresponds to about 95%, 2σ slightly more, about 95.45%; the factors are not exactly interchangeable.",
+            "understandingFocusDe": "Eine gewünschte zentrale Abdeckung bestimmt zwei Grenzen; der ausgeschlossene Anteil ist nicht derselbe wie eine einzelne Randseite.",
+            "understandingFocusEn": "A desired central coverage determines two boundaries; the excluded total is not the same as one tail."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Bildbefund: Links ist die Strecke von μ−σ bis μ+σ mit Standardabweichung σ bezeichnet, obwohl ihre Länge 2σ ist. Rechts sind Randanteile 5% und 2,5% an derselben zentralen 90%-Umgebung uneindeutig/asymmetrisch zugeordnet; jede volle Randseite außerhalb μ±1,64σ hat etwa 5%."
+      ]
+    }
+  ]
+}

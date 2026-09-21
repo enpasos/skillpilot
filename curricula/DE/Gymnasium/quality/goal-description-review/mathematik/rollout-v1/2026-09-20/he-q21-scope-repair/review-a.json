@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "math-he-q21-three-assessments-review-a-20260920",
+  "reviewDate": "2026-09-20",
+  "reviewer": "math_m7_current_scope",
+  "authorAgent": "math_b049_scope_repair",
+  "reviewKind": "independent_ai_content_review",
+  "evidenceStatus": "ai_candidate",
+  "humanApproval": false,
+  "independence": {
+    "authoredCandidates": false,
+    "readOtherIndependentReviews": false,
+    "blindReview": false,
+    "priorContext": "Der Reviewer kennt den historischen HE-Q2.1-Scope-Vorschlag und hat zuvor bestehende Bilder einiger Inhaltsziele geprüft. Die vorliegenden drei Assessment-Kandidaten wurden nicht von ihm verfasst."
+  },
+  "binding": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "canonicalSnapshotSha256": "35349df926cd546633bcdb5824b7ae50fa3077586a51a9d90cd76cca82232f80",
+    "goalHashMethod": "SHA-256 of UTF-8 JSON.stringify(goal), preserving parsed property order",
+    "artifactPath": "curricula/DE/Gymnasium/assessments/mathematik/he-q21-common-2026-09-20/candidate.md",
+    "artifactSha256": "aad2118d655a31ee8972d6321ac1853326d29e80edbc230423d15f7dc14afc9d"
+  },
+  "sourcesRead": [
+    "AGENTS.md: Assessment-Endpunkte, tatsächliche Aufgabenabdeckung, AI-only-Evidenz und getrennte menschliche QS",
+    "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf: physische/gedruckte Seiten 40–41, lokal mit pdftotext gelesen",
+    "app/src/landscapeTypes.ts: ExamData und expliziter Review-Status",
+    "app/scripts/generateCurriculumQualityStatus.ts: buildEffectiveRequiresEdges, concreteExamReadinessIssues, examReleaseCoverageIssues",
+    "Aktuelle kanonische Aufgaben und Beschreibungen aller zehn coveredGoalIds",
+    "Aktuelles candidate.md einschließlich Lösungen, BE und Hinweis gegen automatische Inhaltsziel-Mastery"
+  ],
+  "overallVerdict": "accept_with_nonblocking_rubric_note",
+  "blockingFindingCount": 0,
+  "summary": "Alle drei Aufgaben sind fachlich korrekt, verständlich und als lokale Endpunkte für die zehn gemeinsamen HE-Q2.1-Inhaltsziele geeignet. Keine ln-Aufgabe und keine allgemeine LK-Verknüpfungs-/Verkettungsaufgabe wird eingeführt. Die kleine Bewertungspräzisierung bei der Umkehrfunktion ist nicht blockierend, weil gleichwertige Gegenbeispiele und Lösungswege bereits ausdrücklich zugelassen sind.",
+  "checks": {
+    "requiresEqualsCoveredGoalIdsForAllThree": true,
+    "uniqueCoveredContentGoalCount": 10,
+    "candidateArtifactContainsExactTaskAndSolutionForAllThree": true,
+    "scoringStepSumsMatchMaxPoints": true,
+    "passingThresholds": "9/18, 9/18, 5/10; jeweils ausdrücklich 50 %, keine automatische Einzelnachweis-Behauptung",
+    "mathMarkup": "Echte Zeilenumbrüche und einfache LaTeX-Backslashes in den aktuellen JSON-Strings; kein doppeltes Escaping festgestellt.",
+    "sourceScope": "PDF S. 40 nennt die drei gemeinsamen Bereiche; ln und allgemeines Verknüpfen/Verketten beginnen erst unter erhöhtem Niveau auf S. 41. Affine Argumenttransformationen ohne konkreten f-Term sind ausdrücklich gemeinsamer Stoff.",
+    "prerequisiteCheck": "Direkte und transitive Voraussetzungen einschließlich requires aller contains-Vorfahren in der aktuellen kanonischen Datei geprüft. Keine zusätzlichen direkten geerbten Voraussetzungen und keine LK-only-, Logarithmus-, Produktregel- oder Kettenregelziele im Abschluss der drei Aufgaben gefunden.",
+    "scopeMetadata": "Alle drei Aufgaben: GK und LK, Q2, Analysis, jurisdiction DE-HE, eigenständig verfasste Übung statt amtliche Prüfung. Keine neue inhaltliche Abdeckung durch bloße Elternvererbung behauptet.",
+    "notPerformed": [
+      "Kein vollständiger Curriculum-Quality-Build, keine Maturity-Floor-Prüfung",
+      "Kein vollständiger Composition-View-/Route-Nachweis für alle Bundesländer oder Profile",
+      "Kein gerenderter UI-/KaTeX-Test und keine menschliche Erprobung"
+    ]
+  },
+  "assessments": [
+    {
+      "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+      "goalSha256": "f5e4c671b703b6ae9db3bcf1c69321bc5211bc4f59dfa23ef263047ca190a19a",
+      "verdict": "accept",
+      "mathChecks": [
+        "D/W, Ursprungssymmetrie von 1/x, y-Achsensymmetrie von 1/x², einseitige Grenzwerte und Asymptoten stimmen.",
+        "Positive ganzzahlige Exponenten: Paritätsfallunterscheidung einschließlich Wertebereich und Polverhalten stimmt.",
+        "r_n'=-n*x^(-n-1) für x≠0 und w'=1/(2*sqrt(x)) für x>0 stimmen.",
+        "Am Rand 0 ist sqrt(h)/h=1/sqrt(h) für h>0 unbeschränkt. Keine endliche Randableitung und keine Polstelle von sqrt(x) werden korrekt unterschieden."
+      ],
+      "coverage": [
+        {"goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce", "evidence": "Teil 1 und 2 prüfen Graphen, D/W, Symmetrien, Pol- und Fernverhalten der Kehrwertpotenzen."},
+        {"goalId": "5dabf0b3-89b1-59a6-ae57-014f92becd3b", "evidence": "Teil 1 prüft D/W, charakteristische Punkte und Skizze der einfachen Quadratwurzel."},
+        {"goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c", "evidence": "Teil 3 prüft beide Ableitungen, Begründung durch Potenzregel und gültige Bereiche."}
+      ],
+      "effectivePrerequisiteCount": 41,
+      "points": {"parts": [8, 4, 6], "total": 18, "passing": 9, "rubricSumsCorrect": true},
+      "findings": []
+    },
+    {
+      "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+      "goalSha256": "b9ff0da1dfb98d8b7fb2fa6df1ad8069028e5508d8f397bd5034112de9902f9b",
+      "verdict": "accept",
+      "mathChecks": [
+        "Aus u=-(x-1)/2 folgt x=1-2u; die Punktabbildung (u,v)→(1-2u,3-2v) und P→(1,1), Q→(-3,-3) stimmen.",
+        "Horizontale und vertikale Spiegelung/Streckung jeweils vor der abschließenden Verschiebung sind korrekt. Die Punktspiegelung betrifft die zwei Achsenspiegelungen und wird nicht mit der gesamten Transformation verwechselt.",
+        "Für k ist x=1-u/2 korrekt; horizontale Streckung um 2 und Stauchung auf 1/2 werden richtig unterschieden.",
+        "Für gerades differenzierbares f gilt h(1+t)=h(1-t), h'(1+t)=-h'(1-t), h'(1)=0. Das Tangentenargument erfordert keine LK-Kettenregelrechnung.",
+        "Skizzenbeispiel f=x²/2+1 liefert h=1-(x-1)²/4; alle angegebenen Ausgangs- und Bildpunkte liegen auf den jeweiligen Graphen. Die allgemeine Symmetrie wird unabhängig vom Beispiel bewiesen."
+      ],
+      "coverage": [
+        {"goalId": "dd6c5e08-0cc6-53c0-b317-ebaba277c776", "evidence": "Teil 1/3: Verschiebung beider Koordinaten, Reihenfolge, Punktdarstellung und ganze Graphenskizze."},
+        {"goalId": "772b11c9-1348-5ab9-bc3f-458c46b312b6", "evidence": "Teil 1/2/3: Faktoren in beiden Richtungen, Gegenfall zur Stauchung, Punkte und Graphenskizze."},
+        {"goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729", "evidence": "Teil 1/2: vollständiger affiner Transformationsterm ohne konkret gegebenes f."},
+        {"goalId": "4c6369b0-4b58-5ac0-915c-82c348ae1c14", "evidence": "Teil 1/3: beide Achsenspiegelungen und ihr Zusammenhang mit Ursprungsspiegelung, grafisch dargestellt."},
+        {"goalId": "62a1c6f2-1775-5a19-98e0-ed3dd722039f", "evidence": "Teil 3: begründete verschobene Achsensymmetrie und entsprechende Ableitungsgraph-Symmetrie."}
+      ],
+      "effectivePrerequisiteCount": 44,
+      "points": {"parts": [8, 3, 7], "total": 18, "passing": 9, "rubricSumsCorrect": true},
+      "findings": []
+    },
+    {
+      "goalId": "1429363f-628f-4f42-80e5-8a9a935147cc",
+      "goalSha256": "0a327ad4a5ffff79edf360d225dd102aaf50e6d0673056de79f9f9667fa30ae3",
+      "verdict": "accept_with_nonblocking_rubric_note",
+      "mathChecks": [
+        "p(2)=p(-2)=4 und sqrt(p(-2))=2≠-2 widerlegen die behauptete Umkehrbarkeit auf R korrekt.",
+        "Auf [0,∞) ist die Umkehrfunktion sqrt(x) mit D=W=[0,∞); strenge Monotonie und Abbildung auf den Wertebereich begründen die Umkehrbarkeit.",
+        "Koordinatentausch (2,4)→(4,2) und Spiegelung an y=x stimmen. Auf (-∞,0] entsteht -sqrt(x) mit D=[0,∞), W=(-∞,0]."
+      ],
+      "coverage": [
+        {"goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d", "evidence": "Alle Teile prüfen Umkehrbarkeit, Einschränkungen, zwei einfache Umkehrterme und D/W."},
+        {"goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e", "evidence": "Teil 3 fordert die Skizzen, zugehörige Punkte und eine Begründung der Spiegelbeziehung."}
+      ],
+      "effectivePrerequisiteCount": 3,
+      "points": {"parts": [3, 3, 4], "total": 10, "passing": 5, "rubricSumsCorrect": true},
+      "findings": [
+        {
+          "id": "A-RUBRIC-01",
+          "severity": "low",
+          "blocking": false,
+          "location": "examData.solutionContent: Bewertung Teil 1",
+          "observation": "Die Aufgabe verlangt ein Gegenbeispiel mit Erklärung. Die Detailrubrik nennt Bildkollision und konkrete Widerlegung der Rückrichtung als getrennte BE; das kann zu eng gelesen werden. Ein einzelner vollständig erklärter Nachweis p(2)=p(-2)=4 genügt, ohne zusätzlich sqrt(p(-2)) auszurechnen; ebenso genügt ein sauber erklärter Rückrichtungs-Gegenbeweis.",
+          "mitigationAlreadyPresent": "Der abschließende Satz lässt fachlich gleichwertige Gegenbeispiele und Lösungswege ausdrücklich zu. Deshalb kein fachlicher Freigabeblocker.",
+          "suggestedMinimalChange": "Teil 1: ein korrekt berechnetes konkretes Gegenbeispiel (Bildkollision ODER gescheiterte Rückrichtung) 1 BE, nachvollziehbare Erklärung des Widerspruchs zur Umkehrbarkeit 1 BE, richtige Schlussfolgerung zur Behauptung 1 BE. Kein zweiter Beweisweg für volle Punkte erforderlich."
+        }
+      ]
+    }
+  ],
+  "releaseConvention": {
+    "observedStatus": "needs_review bei allen drei Kandidaten",
+    "repositoryGate": "Explizite Nicht-released-Status blockieren die konkrete Prüfungsbereitschaft; examReleaseCoverageIssues verlangt ausdrücklich released sowie coveredGoalIds, coveredStrands und demandLevels.",
+    "reviewRecommendation": "Fachliche AI-Annahme empfohlen. Dieser Beleg selbst setzt keinen kanonischen Status und stellt keine menschliche Freigabe dar. Integrationsentscheidung und aktuelle Qualitäts-/Maturity-Floor-Gates bleiben beim koordinierenden Workflow.",
+    "preserveSeparation": "Keine menschliche Erprobung oder Teacher-QS behaupten; ein bestandener Assessment-Endpunkt zertifiziert nicht automatisch jedes einzelne Inhaltsziel."
+  },
+  "changesMade": [
+    "Nur diese neue unabhängige Review-Datei; keine kanonischen Inhalte, Review-Ledger, Register oder History geändert."
+  ]
+}

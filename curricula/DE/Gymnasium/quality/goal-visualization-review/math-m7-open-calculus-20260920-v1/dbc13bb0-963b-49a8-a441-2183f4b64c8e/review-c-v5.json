@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "math-inverse-graph-dbc13bb0-informed-image-review-c-v5-20260920",
+  "reviewedAt": "2026-09-20",
+  "reviewer": "Codex / math_m7_context_delta",
+  "reviewMode": "informed_actual_raster_review",
+  "blindReviewClaimed": false,
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/dbc13bb0-963b-49a8-a441-2183f4b64c8e/candidate-v5.png",
+  "assetSha256": "sha256:12bb461cf174d1937f1687071346d555f491e2adb46f5f7019003d30597623b8",
+  "actualRasterInspected": true,
+  "inspectionMethod": "view_image with original detail; the supplied 1677 by 938 pixel raster was inspected directly",
+  "goalBinding": {
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+    "titleDe": "Zusammenhang von Funktionsgraph und Umkehrgraph erläutern",
+    "descriptionDe": "Die lernende Person kann den Zusammenhang zwischen dem Graphen einer Funktion und dem Graphen ihrer Umkehrfunktion erläutern.",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:b4e55984c0114da2d836d2603211ca4b17eab459f1d44e08ee9e1a78901b474f"
+  },
+  "decision": "needs_revision",
+  "approved": false,
+  "findings": [
+    {
+      "id": "V5-C-01",
+      "severity": "blocking",
+      "field": "term-graph correspondence",
+      "findingDe": "Die gezeichneten Steigungen stimmen nicht mit den angegebenen Termen f(x)=2x und f^-1(x)=x/2 überein. Vom gemeinsamen Ursprung etwa (604,759) zum blauen Strahlende etwa (833,145) ergibt sich eine sichtbare Steigung von etwa 2,68; zum roten Ende etwa (1142,553) etwa 0,38. Die mit y=x bezeichnete Diagonale liegt nahezu bei 45 Grad. Die Abweichung der Funktionsstrahlen ist wesentlich größer als die Strichbreite oder eine kleine zeichnerische Ungenauigkeit.",
+      "measurementQualification": "Approximate coordinates read visually from the original raster, not an instrumented pixel-fit measurement.",
+      "reasonDe": "Die beiden Strahlen sind ungefähr zueinander gespiegelt, doch ihre Termbeschriftungen legen die falschen Steigungen nahe. Fehlende Achsenticks beheben das nicht: Kein gemeinsamer Maßstabsfaktor kann gleichzeitig aus den sichtbaren Steigungen 2,68 und 0,38 die beschrifteten Werte 2 und 0,5 machen.",
+      "requiredCorrectionDe": "Für dieselben beschrifteten Terme die blaue Gerade mit doppelt so großem y-Anstieg wie x-Anstieg und die rote Gerade mit halb so großem y-Anstieg darstellen; die Spiegelachse y=x dabei konsistent halten. Alternativ müssten konkrete Terme entfallen und die Darstellung eindeutig als allgemeines schematisches Paar gekennzeichnet werden. Den geänderten Rasterkandidaten erneut direkt prüfen."
+    }
+  ],
+  "positiveChecks": [
+    "P(1,2) und P'(2,1) zeigen den richtigen Koordinatentausch; beide Punkte passen algebraisch zu den angegebenen Termen.",
+    "f(x)=2x auf x>=0 und f^-1(x)=x/2 auf x>=0 bilden ein korrektes umkehrbares Funktionspaar; beide Graphen beginnen sichtbar im Ursprung und bleiben im ersten Quadranten.",
+    "Der Text über Spiegelung des Funktionsgraphen an y=x ist fachlich richtig.",
+    "Die ungefähre Spiegelbeziehung der beiden Strahlen ist erkennbar; Rot und Blau werden in den Texten und Koordinaten konsistent verwendet.",
+    "Heller Hintergrund, klare Umrisse, freundliche abstrakte Comic-Pfeile, gut lesbare Texte und übersichtliche Anordnung passen zum gewünschten Stil.",
+    "Das lineare Beispiel ist als einfacher Spezialfall für das allgemein formulierte Lernziel geeignet."
+  ],
+  "nonBlockingObservation": "Das Koordinatenpaar wird im Textkasten statt als markiertes Punktpaar auf den Strahlen gezeigt. Das ist kein eigenständiger Ablehnungsgrund, macht die Term-Graph-Abweichung aber auch nicht durch überprüfbare Punkte sichtbar.",
+  "authority": {
+    "humanApproval": false,
+    "descriptionReviewApproval": false,
+    "positiveEvidenceApproval": false,
+    "canonicalOrQaMutation": false,
+    "generationImpliesApproval": false
+  }
+}

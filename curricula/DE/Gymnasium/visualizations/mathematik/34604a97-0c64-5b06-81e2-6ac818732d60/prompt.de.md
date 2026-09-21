@@ -8,45 +8,17 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `34604a97-0c64-5b06-81e2-6ac818732d60.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/34604a97-0c64-5b06-81e2-6ac818732d60/34604a97-0c64-5b06-81e2-6ac818732d60.jpg`
+- Quellbild: `34604a97-0c64-5b06-81e2-6ac818732d60.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/34604a97-0c64-5b06-81e2-6ac818732d60/34604a97-0c64-5b06-81e2-6ac818732d60.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erstelle eine gezielte generative Bildkorrektur der beigefügten Referenz. Behalte ihre freundliche, klare, abstrakte Comic-Bildsprache, Pastellfarben, schwarzen Konturen und gut lesbare deutsche Beschriftung bei. Ausgabe: einzelnes PNG im Querformat, keine technische ID, kein Logo, keine Wasserzeichen. Die mathematisch richtigen Bereiche bleiben so weit wie möglich erhalten. Korrigiere den folgenden konkreten fachlichen Befund; eine richtige Formel darf nicht neben einer widersprüchlichen Zeichnung stehen.
 
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Integralterme interpretieren und begründen
-Beschreibung: Die lernende Person kann Integralterme sprachlich und grafisch deuten, ihre Bedeutung im Kontext erläutern und mit ihnen argumentieren, zum Beispiel beim Vergleichen von Größen oder beim Begründen von Aussagen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Regeneration focus: the shaded area must match the integral interval exactly.
-- Use f(x)=3-x on the interval [0,2].
-- In the main graph, draw a visible vertical boundary at x=2 and shade only the area under f(x)=3-x from x=0 to x=2.
-- The graph may continue to the x-intercept at x=3, but the part from x=2 to x=3 must stay unshaded.
-- Show:
-  integral_0^2 (3-x) dx = [3x - 1/2*x^2]_0^2 = 6 - 2 = 4.
-- Show the interpretation in language: "aufsummierte Hoehe der Funktion zwischen 0 und 2".
-- Show the comparison:
-  0 <= 3-x <= 3 on [0,2], so 0 <= integral_0^2 (3-x) dx <= integral_0^2 3 dx = 6.
-
-Vermeiden:
-- Do not shade the interval from x=2 to x=3.
-- Do not make the big green area equal to the full triangle from 0 to 3.
-- Do not write approximately 4; the value is exactly 4.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Ändere nur die zentrale untere Sprechblase, die bisher 'aufsummierte Höhe der Funktion zwischen0und2' behauptet. Neuer Text:'Orientierte Flächenbeiträge: Höhe × Breite'. Falls zwei Zeilen mehr Platz benötigen, vergrößere die Blase vorsichtig ohne Achsen oder Grenzen zu überdecken. Behalte den Graphen f(x)=3−x, seine gleichmäßigen Achsen, die grüne Fläche von0bis2, den Integralwert4, die Rechnung[3x−x²/2]₀²=4 und die richtige Schranke0≤4≤6. Keine Änderung am Lernzieltitel. Die Bedeutung soll durch die gewichteten Flächenbeiträge klar werden; nicht durch eine bloße Summe von Funktionshöhen.
 ```
 
 ## Review-Notiz

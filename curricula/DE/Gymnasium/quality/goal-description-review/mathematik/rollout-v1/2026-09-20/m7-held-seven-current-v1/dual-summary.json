@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:52993b9e25dd8b6ecde7e989be84edeca5f22906d6f21e9603b775999795ef16",
+  "reviewInputFingerprint": "sha256:0da1905e27d565ea41cd6c2e2af697d6846480645fe76c813d4fe43e5e094297",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-held-seven-current-v1-20260920-a",
+      "roundId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-held-seven-current-v1-20260920-independent-a",
+      "runIds": [
+        "math-held-seven-d-a-20260920-math-m7-current-scope-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact runtime model not reported)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-held-seven-current-v1-20260920-b",
+      "roundId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-held-seven-current-v1-20260920-independent-b",
+      "runIds": [
+        "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex agent; exact runtime model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+      "firstRecordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+      "secondRecordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-001",
+      "firstRunId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1",
+      "secondRunId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "firstRecordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "secondRecordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-002",
+      "firstRunId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1",
+      "secondRunId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65",
+      "firstRecordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.168d8879-0412-5524-94c5-c1d8169dbd65",
+      "secondRecordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-003",
+      "firstRunId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1",
+      "secondRunId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+      "firstRecordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+      "secondRecordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-004",
+      "firstRunId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1",
+      "secondRunId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "firstRecordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "secondRecordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-005",
+      "firstRunId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1",
+      "secondRunId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+      "firstRecordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+      "secondRecordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-006",
+      "firstRunId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1",
+      "secondRunId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "19481f5d-94de-4a74-b765-cbebd1525994",
+      "firstRecordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.19481f5d-94de-4a74-b765-cbebd1525994",
+      "secondRecordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-007",
+      "firstRunId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1",
+      "secondRunId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

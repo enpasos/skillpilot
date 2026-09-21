@@ -8,53 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `91311908-9209-58e4-8429-99dad9df546d.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/91311908-9209-58e4-8429-99dad9df546d/91311908-9209-58e4-8429-99dad9df546d.jpg`
+- Quellbild: `91311908-9209-58e4-8429-99dad9df546d.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/91311908-9209-58e4-8429-99dad9df546d/91311908-9209-58e4-8429-99dad9df546d.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Eigenschaften von Funktionsverkettungen graphisch begründen (LK)
-Beschreibung: Die lernende Person kann Eigenschaften von Funktionsverkettungen wie $f(g(x))$ anhand geeigneter Graphen skizzieren und begründen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Eigenschaften von Funktionsverkettungen graphisch begruenden.
-- Verwende genau dieses Beispiel:
-  innere Funktion g(x) = x + 1.
-  aeussere Funktion f(u) = u^2.
-  h(x) = f(g(x)) = (x+1)^2.
-- Zeige die Verkettung als zweistufige Maschine:
-  x -> g(x)=x+1 -> f(g(x))=(x+1)^2.
-- Nutze eine kleine Wertetabelle:
-  x: -2, -1, 0, 1.
-  g(x): -1, 0, 1, 2.
-  h(x): 1, 0, 1, 4.
-- Zeige im Graphen:
-  f(u)=u^2 als graue Referenzparabel mit Scheitel bei (0|0).
-  h(x)=(x+1)^2 als rote Parabel mit Scheitel bei (-1|0).
-- Merksatz:
-  Bei f(g(x)) wird zuerst g angewendet, danach f.
-
-Vermeiden:
-- Nicht f(g(x)) mit f(x)+g(x) verwechseln.
-- Nicht f(g(x)) mit f(x)*g(x) verwechseln.
-- Nicht h(x)=x^2+1 schreiben; korrekt ist h(x)=(x+1)^2.
-- Nicht den Scheitel der roten Parabel bei (1|0) markieren; korrekt ist (-1|0).
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Edit only the graph panel of the supplied educational comic. Keep all correct function-machine text and the value table unchanged. Output a landscape PNG in the same friendly abstract hand-lettered style. Simplify the graph so it makes no inconsistent scale claims: REMOVE the entire gray grid, ALL axis ticks and axis numbers, and ALL current point markers/coordinate labels except the vertex. Keep clear x and y axes. Draw ONE symmetric red parabola h(x)=(x+1)² with minimum exactly at (-1,0), visibly left of the y-axis. Its two arms must be exact mirror shapes around the vertical through that minimum. It crosses the y-axis above the x-axis. Label ONLY the vertex S(-1,0), attached at the minimum. No other marked points, no gray reference parabola, no grid. Put the equation h(x)=(x+1)² near the curve. The existing value table gives exact numeric examples; the simplified graph explains the left shift. Preserve the machine order g(x)=x+1 then f(u)=u² and the correct table. No other edits.
 ```
 
 ## Review-Notiz

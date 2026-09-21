@@ -1,0 +1,553 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "math-m7-open-spatial-probability-20260920-v1",
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "reviewDate": "2026-09-20",
+  "status": "targeted-candidate-preparation-not-gate-approval",
+  "scope": "Only the 23 currently claimed B044h/B046h goals; all 22 bound current images opened individually through view_image. No canonical, central registry, ledger, historical review or human approval changed.",
+  "summary": {
+    "goalCount": 23,
+    "currentImagesInspected": 22,
+    "keep": 5,
+    "correctImage": 17,
+    "noActiveImage": 1
+  },
+  "rules": [
+    "KEEP corrected/current good assets, including existing JPGs; new corrected candidates must be PNG.",
+    "Friendly, abstract, clear, comic-like style; no photorealistic or sterile-technical redesign.",
+    "Independent current candidate review required before import or gate completion; this visual audit does not itself supply D/P/A/M closure.",
+    "Non-image source holds are explicitly unverified here; current description/prerequisite issues are backed by current canonical fields."
+  ],
+  "historicalFindingSources": [
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-b/review-authoring.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-b/review-authoring.json"
+  ],
+  "records": [
+    {
+      "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+      "batch": "B046h",
+      "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+      "description": "Die lernende Person kann Potenzen von Übergangsmatrizen nutzen, um langfristige Entwicklungen von Übergangsprozessen zu untersuchen und Zwischenergebnisse im Kontext zu deuten.",
+      "descriptionEn": "The learner can use powers of transition matrices to analyze long-term developments of transition processes and interpret intermediate results in context.",
+      "currentImagePath": null,
+      "currentImageSha256": null,
+      "goalSemanticSha256": "14dffccba18dc9ac576990ed641c549574a0ef7f795636bd036b4b3cf569338a",
+      "provider": null,
+      "decision": "NO_ACTIVE_IMAGE",
+      "checks": [
+        "Current resourceLinks bind no goal-visualization image. No image defect or need for a new image is inferred from the source-scope hold."
+      ],
+      "defects": [],
+      "nonImage": [
+        "Historical B046 round B identifies HE-GK visibility contrary to HE-KC p.43 LK scope. Current description still explicitly addresses long-term transition matrix powers (LK). Current applicability and primary source must be checked separately; not verified by this visual audit."
+      ],
+      "action": "Targeted HE applicability/source review; preserve description unless it yields a concrete mismatch.",
+      "imageInspected": false,
+      "promptPath": null
+    },
+    {
+      "goalId": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+      "batch": "B046h",
+      "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+      "description": "Die lernende Person kann Grenzprozesse bei Potenzen von Übergangsmatrizen untersuchen, Grenzmatrizen interpretieren und ihre Bedeutung für stabile Langzeitentwicklungen erläutern.",
+      "descriptionEn": "The learner can analyze limiting processes of powers of transition matrices, interpret limiting matrices, and explain their meaning for stable long-term developments.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/922d89fc-1cbd-56e9-ac5d-5cb59085de6c/922d89fc-1cbd-56e9-ac5d-5cb59085de6c.jpg",
+      "currentImageSha256": "f140304ce51ca9c6968218de142bde5821abfd57faa46c2f0b5dc7a5c593e1ef",
+      "goalSemanticSha256": "0f66b495d8e00ea6bd3890d6a1e8ddc0a4f722632b052a4d17641c31f4823b50",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "M=[[0.8,0.3],[0.2,0.7]] is column-stochastic; stationary vector (0.6,0.4) and limiting matrix with equal columns are arithmetically consistent."
+      ],
+      "defects": [
+        "Stationary vector g is already drawn vertically but also has superscript T, making M·g dimensionally invalid."
+      ],
+      "nonImage": [
+        "Historical HE-GK/LK scope hold (HE-KC p.43) still needs current applicability/source verification."
+      ],
+      "action": "Targeted reference-image edit: remove T only from the already vertical g; retain T on horizontal row notation.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/922d89fc-1cbd-56e9-ac5d-5cb59085de6c.de.md"
+    },
+    {
+      "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "batch": "B046h",
+      "title": "Geometrische Abbildungen als linear erkennen",
+      "description": "Die lernende Person kann bei einer einfachen geometrischen Abbildung anhand der Verträglichkeit mit Vektoraddition und skalarer Multiplikation prüfen, ob sie linear ist.",
+      "descriptionEn": "The learner can determine whether a simple geometric mapping is linear by checking whether it preserves vector addition and scalar multiplication.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/69243680-c2c1-5661-80c0-c95a2be1dabf/69243680-c2c1-5661-80c0-c95a2be1dabf.png",
+      "currentImageSha256": "f6f6ab870716cf26b837c31321678318b8aab47bab40f36b028bb4559d471639",
+      "goalSemanticSha256": "437908e4d5ba0aababfdc280a0a0769fe42109a2ecc3ee88174e5984b13d0e75",
+      "provider": "OpenAI image generation",
+      "decision": "KEEP",
+      "checks": [
+        "Actual current PNG inspected: T(x,y)=(2x,y), additivity example (1,0)+(0,1) and homogeneity with u=(1,1), lambda=2 all correct.",
+        "All-quantifier and warning that T(0)=0 alone is insufficient are explicitly shown. Current plot directions and numerical labels match."
+      ],
+      "defects": [],
+      "nonImage": [
+        "Current direct requires still includes Hauptsatz der Differential- und Integralrechnung and Ableitungen elementarer Funktionen; these are unrelated mandatory prerequisites for this elementary linearity competence."
+      ],
+      "action": "Keep current image bytes; correct the evidenced prerequisite barrier in a separate reviewed graph change.",
+      "imageInspected": true,
+      "promptPath": null
+    },
+    {
+      "goalId": "4c494716-567b-59c2-855c-6ea45635c666",
+      "batch": "B046h",
+      "title": "Geometrische Abbildungen mit Matrizen beschreiben",
+      "description": "Die lernende Person kann geometrische Abbildungen, etwa Schattenwürfe oder Projektionen, mithilfe von Matrizen beschreiben und die Matrixwirkung fachsprachlich deuten.",
+      "descriptionEn": "The learner can describe geometric mappings, such as shadows or projections, using matrices and explain the matrix action precisely.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/4c494716-567b-59c2-855c-6ea45635c666/4c494716-567b-59c2-855c-6ea45635c666.jpg",
+      "currentImageSha256": "c8168a2d4ab659b4a34cbc24deb4981aa0bac5fb3d77f030827e8415bdc4d920",
+      "goalSemanticSha256": "6af11f271410c8605606920bee4406aad36886fa53a42c231847773564e844c2",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "S(x,y)=(x+y,0), S=[[1,1],[0,0]], P=(2,3)→(5,0), Q=(-1,2)→(1,0) correct numerically."
+      ],
+      "defects": [
+        "Q=(-1,2) is drawn on the y-axis.",
+        "P prime=(5,0) appears twice, including an upper point away from the x-axis."
+      ],
+      "nonImage": [],
+      "action": "Rebuild a single unambiguous plot using the same mapping and numbers.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/4c494716-567b-59c2-855c-6ea45635c666.de.md"
+    },
+    {
+      "goalId": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+      "batch": "B046h",
+      "title": "Bildpunkte mit Matrizen berechnen",
+      "description": "Die lernende Person kann zu einer gegebenen Abbildungsmatrix Bildpunkte berechnen, indem sie Vektoren mit der Matrix multipliziert.",
+      "descriptionEn": "The learner can calculate image points for a given mapping matrix by multiplying vectors with the matrix.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/4d331ba0-56d6-5730-a51b-e3d1126b31ba/4d331ba0-56d6-5730-a51b-e3d1126b31ba.jpg",
+      "currentImageSha256": "0e4190c6989ae09e7aa930b4f442c3dddc3f571cce4a4339956aed6faca287df",
+      "goalSemanticSha256": "9e8d6e11556aba2dbbf7fc0ce7ce5253175db1291d34c9894fe7572a4aa7b69f",
+      "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "A=[[1,1],[0,1]] sends P=(2,1), Q=(0,2), R=(-1,1) to (3,1), (2,2), (0,1); all printed products and plotted point coordinates correct."
+      ],
+      "defects": [
+        "Orange correspondence arrow starts next to P but ends at R prime. Green Q correspondence has no identifiable Q origin."
+      ],
+      "nonImage": [],
+      "action": "Targeted edit of correspondence arrows; preserve correct grids, values, formulas and style.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/4d331ba0-56d6-5730-a51b-e3d1126b31ba.de.md"
+    },
+    {
+      "goalId": "b72d87d4-763e-54aa-940d-31f195b51700",
+      "batch": "B046h",
+      "title": "Orthogonale Spiegelungen an Koordinatenebenen mit Matrizen darstellen",
+      "description": "Die lernende Person kann Abbildungsmatrizen für orthogonale Spiegelungen an den Koordinatenebenen bestimmen, untersuchen und Bildpunkte berechnen.",
+      "descriptionEn": "The learner can determine and analyze mapping matrices for orthogonal reflections in coordinate planes and calculate image points.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/b72d87d4-763e-54aa-940d-31f195b51700/b72d87d4-763e-54aa-940d-31f195b51700.jpg",
+      "currentImageSha256": "077129cf10f37fc8a5b6b9f74cd600c87d9239eacbc6f962f893c7a3f0008bb1",
+      "goalSemanticSha256": "723d988263a577162b87d94f8a260a9f84b89e42666275a8c0283875e39c42e6",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "Sxy=diag(1,1,-1), P=(2,1,3)→(2,1,-3) correct; z sign changes while x/y stay fixed."
+      ],
+      "defects": [
+        "Midpoint / foot of the vertical reflection segment lies directly on displayed y-axis although x=2."
+      ],
+      "nonImage": [],
+      "action": "Correct common footpoint in the xy-plane; label F=(2,1,0) and use a consistent oblique projection.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/b72d87d4-763e-54aa-940d-31f195b51700.de.md"
+    },
+    {
+      "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46",
+      "batch": "B046h",
+      "title": "Parallelprojektionen auf Koordinatenebenen mit Matrizen darstellen",
+      "description": "Die lernende Person kann Abbildungsmatrizen für Parallelprojektionen auf die Koordinatenebenen bestimmen, untersuchen und Bildpunkte berechnen.",
+      "descriptionEn": "The learner can determine and analyze mapping matrices for parallel projections onto coordinate planes and calculate image points.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/55039f9c-4ebc-5115-add5-fae95b915e46/55039f9c-4ebc-5115-add5-fae95b915e46.jpg",
+      "currentImageSha256": "74c3a174c9e844ba19c3e4d78c8d9063ad34a39a80bcba8db06d61b468b6945c",
+      "goalSemanticSha256": "85e9e26f1b984cb901ed1260d7ddb15e323c665e4051fdc64ca9374b6ce90861",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "Three diagonal matrices and result triples for P=(2,-1,3) are correct orthogonal special cases of parallel projection."
+      ],
+      "defects": [
+        "Original point has apparent positive-y location despite y=-1.",
+        "yz projection arrow drawn horizontally parallel to y instead of parallel to removed x direction."
+      ],
+      "nonImage": [],
+      "action": "Correct spatial diagrams and explicitly label illustrated cases as projections parallel to coordinate axes; retain broader goal scope.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/55039f9c-4ebc-5115-add5-fae95b915e46.de.md"
+    },
+    {
+      "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56",
+      "batch": "B046h",
+      "title": "Zentrische Streckungen am Koordinatenursprung mit Matrizen darstellen",
+      "description": "Die lernende Person kann Abbildungsmatrizen zentrischer Streckungen am Koordinatenursprung bestimmen, untersuchen und die Wirkung auf Bildpunkte berechnen.",
+      "descriptionEn": "The learner can determine and analyze mapping matrices for central dilations at the coordinate origin and calculate their effect on image points.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/35558905-753d-5fcb-b25e-7f85ffdbff56/35558905-753d-5fcb-b25e-7f85ffdbff56.jpg",
+      "currentImageSha256": "095f5aed4cee2ffa62e3ae3064051647a9f5d7ec6f9175092b8bb55657f3bf1b",
+      "goalSemanticSha256": "e82b17b4a1b89f7ef88f65087563e5eade414f5d4b8b9785aa8a95095f8b2598",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "Z=2I; P=(1,2)→(2,4), Q=(-2,1)→(-4,2), common origin lines, fixed origin all match plotted grid."
+      ],
+      "defects": [
+        "Four displayed column vectors in Z products have extra superscript T; dimensionally invalid matrix-by-row product."
+      ],
+      "nonImage": [],
+      "action": "Minimal reference-image edit: remove only four T superscripts on already vertical vectors.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/35558905-753d-5fcb-b25e-7f85ffdbff56.de.md"
+    },
+    {
+      "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65",
+      "batch": "B046h",
+      "title": "Eigene Abbildungen modellieren und interpretieren",
+      "description": "Die lernende Person kann zu gegebenen geometrischen Anforderungen (z. B. Spiegelung an einer schrägen Geraden, Streckung in einer beliebigen Richtung) passende Abbildungsmatrizen konstruieren, testen und im Kontext begründen.",
+      "descriptionEn": "The learner can construct, test, and justify appropriate mapping matrices for given geometric requirements (e.g., reflection on an oblique line, stretching in any direction).",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/168d8879-0412-5524-94c5-c1d8169dbd65/168d8879-0412-5524-94c5-c1d8169dbd65.jpg",
+      "currentImageSha256": "cd526a3aed0a1753993f61cf8b50cb1df6768c67d110f8376c4ff559ceb10998",
+      "goalSemanticSha256": "e6ad6ee11690ee8e69cadeabdddbc93e447f97f88f2d25ee5807b2fd951d2a68",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "KEEP",
+      "checks": [
+        "Reflection matrix [[0,1],[1,0]], y=x line, P(3,1)→(1,3), Q(-2,4)→(4,-2), fixed R(2,2) all consistent on current image."
+      ],
+      "defects": [],
+      "nonImage": [
+        "Current DE/EN description still permits reflection in an arbitrary oblique line, although ordinary linear matrices require an origin line. Specify linear maps and oblique origin lines, not a new homogeneous-coordinate scope."
+      ],
+      "action": "Keep current image; narrow DE/EN wording to the intended linear scope and review affected context bindings.",
+      "imageInspected": true,
+      "promptPath": null
+    },
+    {
+      "goalId": "7bd8f022-5002-5610-994c-a9cec1890558",
+      "batch": "B046h",
+      "title": "Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)",
+      "description": "Die lernende Person kann Abbildungsmatrizen für Drehungen um die Koordinatenachsen im $\\mathbb{R}^3$ untersuchen und bestimmen sowie Bildpunkte berechnen.",
+      "descriptionEn": "The learner can analyze and determine mapping matrices for rotations around the coordinate axes in $\\mathbb{R}^3$ and calculate image points.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/7bd8f022-5002-5610-994c-a9cec1890558/7bd8f022-5002-5610-994c-a9cec1890558.jpg",
+      "currentImageSha256": "006b882b5c083e3452e7a7667d96e79696326116bbcee0272defa9cc1dec7d4d",
+      "goalSemanticSha256": "e6979c5ee98db1b18cda932bd500bbb96631735e3e8b9a92a9c2413a7f5b825c",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "Rz(90°)=[[0,-1,0],[1,0,0],[0,0,1]], P=(2,1,3)→(-1,2,3) correct."
+      ],
+      "defects": [
+        "Main coordinate picture labels two different axes y.",
+        "Basis picture labels two different red directions as -e_x and downward blue direction as e_z although positive e_z points up."
+      ],
+      "nonImage": [
+        "Historical HE-GK versus LK scope hold (HE-KC p.44) requires current source/applicability verification."
+      ],
+      "action": "Replace flawed coordinate/basis pictures with a clear xy top-view of positive 90° rotation and explicit invariant z.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/7bd8f022-5002-5610-994c-a9cec1890558.de.md"
+    },
+    {
+      "goalId": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+      "batch": "B046h",
+      "title": "Ereignisse darstellen und Baumdiagramme nutzen",
+      "description": "Die lernende Person kann mehrstufige Zufallsexperimente in Baumdiagrammen darstellen, Pfadregeln anwenden und Wahrscheinlichkeiten an konkreten Beispielrechnungen berechnen.",
+      "descriptionEn": "The learner can represent multi-stage random experiments with tree diagrams, apply path rules, and compute probabilities using concrete worked examples.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/2a1158e5-d4ca-51d4-860c-f43bd5a86836/2a1158e5-d4ca-51d4-860c-f43bd5a86836.jpg",
+      "currentImageSha256": "b88f35c2d28df8a7f5db066d2f55a943f00e61fa74f907a279f64699e7be2f68",
+      "goalSemanticSha256": "f024f32f9ff44bcbb49a6d394c4cd5baa37a13c0f58ae8508af1c2556978895f",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "KEEP",
+      "checks": [
+        "Two-stage fair coin tree has four outcomes KK/KZ/ZK/ZZ; all conditional branches 1/2, path product 1/4, exactly one K =1/2.",
+        "Highlighting and arrows group disjoint KZ/ZK correctly; standard contextual notation is readable."
+      ],
+      "defects": [],
+      "nonImage": [
+        "Current EN says 'using concrete worked examples' while competence should mean independent calculation, not dependence on supplied solutions; DE also unnecessarily says 'an konkreten Beispielrechnungen berechnen'."
+      ],
+      "action": "Keep current image; clarify equivalent DE/EN independent path-rule competence.",
+      "imageInspected": true,
+      "promptPath": null
+    },
+    {
+      "goalId": "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+      "batch": "B046h",
+      "title": "Vierfeldertafeln interpretieren",
+      "description": "Die lernende Person kann Vier- bzw. Mehrfeldertafeln aus Sachtexten erstellen, absolute und relative Häufigkeiten eintragen und gemeinsame sowie bedingte Wahrscheinlichkeiten an konkreten Beispielen ablesen.",
+      "descriptionEn": "The learner can build four- or multi-field tables from contextual data, enter absolute and relative frequencies, and read joint as well as conditional probabilities in concrete examples.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f.jpg",
+      "currentImageSha256": "e52e39a3e77b0855ad766559fe179a15c6599b6f549c4468386efd051ac77c84",
+      "goalSemanticSha256": "bea40f6f6765be87bb5191de65ba7ab1d4191dac300f337552c99b7ac72788e0",
+      "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "Count table 30/20/10/40 sums to 100; relative table and three quotient calculations .30,.60,.75 are correct."
+      ],
+      "defects": [
+        "Arrow labelled conditional P(A|B) points to joint cell .30; P(B|A) arrow points only to marginal .40, misleading about what is read directly."
+      ],
+      "nonImage": [],
+      "action": "Retain tables and quotient results; replace ambiguous one-cell conditional arrows with numerator/denominator grouping.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f.de.md"
+    },
+    {
+      "goalId": "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+      "batch": "B046h",
+      "title": "Bedingte Wahrscheinlichkeiten berechnen",
+      "description": "Die lernende Person kann bedingte Wahrscheinlichkeiten in Sachzusammenhängen identifizieren und sie mit Baumdiagrammen sowie Vier- oder Mehrfeldertafeln aus absoluten oder relativen Häufigkeiten berechnen.",
+      "descriptionEn": "The learner can identify conditional probabilities in context and compute them with tree diagrams and four- or multi-field tables from absolute or relative frequencies.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/c3b9c561-dd83-5903-9ec6-49c7f51bafd5/c3b9c561-dd83-5903-9ec6-49c7f51bafd5.jpg",
+      "currentImageSha256": "5d78516976cd24e1c9a78e1558a4798109b1c2c160115a98d85826ba65e0ee10",
+      "goalSemanticSha256": "61cf54c4bb50f9aa514b4f2021381810880b708f2be01f8e2df3538f3987b989",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "KEEP",
+      "checks": [
+        "Current table .30/.20/.10/.40, margins .40/.60 and .50/.50 all consistent.",
+        "P(B|A)=.30/.40=.75 and complement .25; remaining branch labels .33/.67 are conventional two-decimal renderings of 1/3 and 2/3, consistent with terminal .20/.40 to rounding."
+      ],
+      "defects": [],
+      "nonImage": [
+        "No new substantive goal-text issue found in targeted inspection. Existing missing D/P closure is not supplied by this visual KEEP."
+      ],
+      "action": "Preserve asset; resolve historical held binding/round disagreement without new cosmetic generation.",
+      "imageInspected": true,
+      "promptPath": null
+    },
+    {
+      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "batch": "B044h",
+      "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+      "description": "Die lernende Person kann Vektoren im Raum als Verschiebungs-, Orts- oder Richtungsvektoren darstellen, ihre Komponenten in kartesischen Koordinatensystemen angeben und ihre geometrische Bedeutung fachsprachlich deuten.",
+      "descriptionEn": "The learner can represent vectors in space as displacement, position, or direction vectors, state their components in Cartesian coordinate systems, and interpret their geometric meaning using correct terminology.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8.jpg",
+      "currentImageSha256": "beb66e99f74e8fd7ee5f017e6e496c7494ee258537f48796a7936ef1f57d290b",
+      "goalSemanticSha256": "aca525f26250b5c12aca6726fc2448040f76647c822e675241756be4ced8bd92",
+      "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "AB=B-A=(3,1,2) arithmetic correct for A=(1,2,1), B=(4,3,3).",
+        "Distinction between origin position and point-to-point displacement is otherwise appropriate."
+      ],
+      "defects": [
+        "Direction-vector card falsely says direction vector gives length/scaling of a line.",
+        "A/B positions cannot share positive linear x/y axis scales with displayed x down-left, y right, z up: horizontal displacements approximately 150 and 680 imply a negative y scale."
+      ],
+      "nonImage": [],
+      "action": "Correct direction wording and replace spatial example with consistently projected coordinates.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8.de.md"
+    },
+    {
+      "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+      "batch": "B044h",
+      "title": "Räumliche Objekte im Koordinatensystem verorten",
+      "description": "Die lernende Person kann räumliche Objekte im dreidimensionalen Koordinatensystem verorten und geeignete Koordinatenbezüge wählen.",
+      "descriptionEn": "The learner can locate spatial objects in a three-dimensional coordinate system and choose suitable coordinate references.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/aae119f2-925f-5fc1-b795-b52c9e980863/aae119f2-925f-5fc1-b795-b52c9e980863.jpg",
+      "currentImageSha256": "82a38e712f62c5c0e18b476ae2de4123a6420894a4cd5a24659e72ba430c5fe5",
+      "goalSemanticSha256": "08cab592cbd82127f58b105f94a2608767bcba3f0bc33a5599eda4ebbc3ed54f",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "All eight cuboid corner triples describe a valid 4×3×2 cuboid."
+      ],
+      "defects": [
+        "Front horizontal BC edge is labelled x=4 but must be y=3 for the printed corner triples.",
+        "Slanted CD edge labelled y=3 must be x=4. Unexplained dashed mid/top construction adds ambiguity."
+      ],
+      "nonImage": [],
+      "action": "Correct axis-aligned length labels and remove unexplained interior construction; preserve simple friendly cuboid visual.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/aae119f2-925f-5fc1-b795-b52c9e980863.de.md"
+    },
+    {
+      "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "batch": "B044h",
+      "title": "Einfache geometrische Figuren beschreiben",
+      "description": "Die lernende Person kann einfache geometrische Figuren, insbesondere gleichschenklige, gleichseitige und rechtwinklige Dreiecke sowie Quadrat, Rechteck, Raute, Parallelogramm, Trapez und Drachenviereck, fachsprachlich beschreiben.",
+      "descriptionEn": "The learner can describe simple plane figures, especially isosceles, equilateral, and right triangles as well as squares, rectangles, rhombi, parallelograms, trapezia, and kites, using correct terminology.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/4af3dfb9-7e15-5da5-8b86-0aac6c80e266/4af3dfb9-7e15-5da5-8b86-0aac6c80e266.jpg",
+      "currentImageSha256": "623431c71b7a84b638f96d723fe6ba1462bfdb2e5d35b77c297135e0505beb02",
+      "goalSemanticSha256": "be030fbb8a438e224feacf8aeb9587e7bc0bb7f96a5ff3e6a783c32fa4cd783e",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "KEEP",
+      "checks": [
+        "Current rhombus has four equal-side ticks and no false identical-angle markers.",
+        "Current kite has single ticks on its upper adjacent pair and double ticks on its lower pair.",
+        "Square/rectangle right angles, triangle types, opposite parallel families and inclusive trapezoid text consistent. Duplicate isosceles example is harmless, not a reason to regenerate."
+      ],
+      "defects": [],
+      "nonImage": [
+        "Historical round-B cited image defects are absent in the actual current bytes. Targeted current review/binding resolution is needed, not new generation."
+      ],
+      "action": "KEEP current corrected asset, with exact current hash; resolve old hold through independent current check.",
+      "imageInspected": true,
+      "promptPath": null
+    },
+    {
+      "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+      "batch": "B044h",
+      "title": "Geometriesoftware zur Raumorientierung nutzen",
+      "description": "Die lernende Person kann Geometriesoftware nutzen, um räumliche Objekte im dreidimensionalen Koordinatensystem darzustellen, Ansichten zu variieren und Koordinaten- bzw. Lageinformationen zu überprüfen.",
+      "descriptionEn": "The learner can use geometry software to represent spatial objects in a three-dimensional coordinate system, vary views, and check coordinate or positional information.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/eb6bfdd9-3cbe-51b5-9798-a741bdc2782e/eb6bfdd9-3cbe-51b5-9798-a741bdc2782e.jpg",
+      "currentImageSha256": "f6c736d8c7684a0ad0ae946c39b90c830c5caa588dfe69caaa5e3b387255c51a",
+      "goalSemanticSha256": "ca28b1e52f8799fe1ce2538a93aaec2fd99f42e4b089bf1b4c939c34af957c39",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "Top view Pxy(2,1) and height z=3 are correct for P(2,1,3)."
+      ],
+      "defects": [
+        "Main x-axis projection of Pxy(2,1,0) lands at label 1 rather than 2.",
+        "Side-view horizontal axis is unidentified."
+      ],
+      "nonImage": [],
+      "action": "Correct x tick to 2, name side projection yz or xz consistently; preserve software/rotatable-view concept.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/eb6bfdd9-3cbe-51b5-9798-a741bdc2782e.de.md"
+    },
+    {
+      "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "batch": "B044h",
+      "title": "Vektoren im Raum addieren und vervielfachen",
+      "description": "Die lernende Person kann Vektoren im Raum komponentenweise addieren und mit Skalaren vervielfachen sowie die Rechenoperationen als Verkettung und Streckung von Verschiebungen geometrisch deuten.",
+      "descriptionEn": "The learner can add vectors in space component-wise, multiply them by scalars, and interpret the operations geometrically as chained and scaled displacements.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/f37b0a72-9e23-51c7-aad5-438c17a56899/f37b0a72-9e23-51c7-aad5-438c17a56899.jpg",
+      "currentImageSha256": "bf04599a4a2fbb434b92669288cab31a2ef9d6d400939d8a175a6f79deb13cf2",
+      "goalSemanticSha256": "82b9a0146e8b427e1d960b733b8772a6956e5e6fa2ab0f82a98c36db0454dc41",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "Printed a+b=(1,3,4) and 2a=(4,2,2) are numerically correct."
+      ],
+      "defects": [
+        "a and 2a arrows from same origin visibly differ in direction, violating scalar multiplication.",
+        "b=(-1,2,3) points left despite both -x and +y contributing right under displayed axes."
+      ],
+      "nonImage": [],
+      "action": "Generate two clean panels with correct head-to-tail addition and strictly collinear doubling.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/f37b0a72-9e23-51c7-aad5-438c17a56899.de.md"
+    },
+    {
+      "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "batch": "B044h",
+      "title": "Linearkombinationen von Vektoren bilden und deuten",
+      "description": "Die lernende Person kann Vektoren als Linearkombination gegebener Vektoren darstellen, passende Koeffizienten bestimmen und die Darstellung geometrisch deuten.",
+      "descriptionEn": "The learner can represent vectors as linear combinations of given vectors, determine suitable coefficients, and interpret the representation geometrically.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/72dfc164-455d-4b63-85f0-96e803c9a1d5/72dfc164-455d-4b63-85f0-96e803c9a1d5.jpg",
+      "currentImageSha256": "ec0d3e0d6f36e94b24c2ba58f180f370863b7b6179023d92cc77be2a446f00d9",
+      "goalSemanticSha256": "989fcfbcefa1b37b6c9524ae7557aad94fdca328975f06924a4434d588d5a978",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "2(1,0,1)+(0,2,1)=(2,2,3) is correct."
+      ],
+      "defects": [
+        "u=(1,0,1) points right even though positive x points left and z is vertical; y=0 cannot provide a rightward component."
+      ],
+      "nonImage": [],
+      "action": "Correct coordinate projection and consistent plane/head-to-tail example; keep linear-combination scope.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/72dfc164-455d-4b63-85f0-96e803c9a1d5.de.md"
+    },
+    {
+      "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+      "batch": "B044h",
+      "title": "Lineare Abhängigkeit und Unabhängigkeit von Vektoren prüfen",
+      "description": "Die lernende Person kann entscheiden, ob Vektoren linear abhängig oder unabhängig sind, die Entscheidung rechnerisch begründen und die geometrische Bedeutung erläutern.",
+      "descriptionEn": "The learner can decide whether vectors are linearly dependent or independent, justify the decision algebraically, and explain the geometric meaning.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/6fc9246a-9448-4cdb-b627-cf20ea1c65d3/6fc9246a-9448-4cdb-b627-cf20ea1c65d3.jpg",
+      "currentImageSha256": "ad5f2098065421f707e8f42637a4c427d5f7ce5fc136fb488d1195bd9b98507d",
+      "goalSemanticSha256": "35940df9b809ee1e373e1768edaa5ef2ce1acdb911eeb787e1a4f77331616156",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "a=(1,0,0),b=(0,1,0),c=(1,1,0), a+b-c=0 and standard-basis independence correct."
+      ],
+      "defects": [
+        "Dependent-case a points along a rightward direction incompatible with x down-left under the displayed coordinate convention; b and c do not provide a consistent basis sum picture."
+      ],
+      "nonImage": [],
+      "action": "Rebuild dependent and independent geometric examples with one explicitly labelled coordinate convention and common arrow origin.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/6fc9246a-9448-4cdb-b627-cf20ea1c65d3.de.md"
+    },
+    {
+      "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "batch": "B044h",
+      "title": "Kollinearität von Vektoren im Raum prüfen",
+      "description": "Die lernende Person kann prüfen, ob zwei Vektoren im Raum kollinear sind, dazu skalare Vielfache oder Komponentenvergleiche nutzen und die Entscheidung geometrisch begründen.",
+      "descriptionEn": "The learner can check whether two vectors in space are collinear, use scalar multiples or component comparisons, and justify the decision geometrically.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/54cfe5ce-693e-5d4a-ac1b-009570fbbc11/54cfe5ce-693e-5d4a-ac1b-009570fbbc11.jpg",
+      "currentImageSha256": "ed8e50ed05df198b62e66f046f8bf22b791c023cc9c0d795eb790e3187a7a825",
+      "goalSemanticSha256": "a7372258dce7b374a8b4c9eef908a7c1f5f8207f0b9b31edb75bbbdf48cc5196",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "b=2a and ratios 3/2,1,4/3 for noncollinear c are arithmetically correct."
+      ],
+      "defects": [
+        "a=(2,-1,3) and c=(3,-1,4) drawn right though +x and -y both contribute left under shown axes."
+      ],
+      "nonImage": [],
+      "action": "Preserve two-example comparison; fix projection or use clearly labelled axis-free schematic arrows beside exact component tests.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/54cfe5ce-693e-5d4a-ac1b-009570fbbc11.de.md"
+    },
+    {
+      "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+      "batch": "B044h",
+      "title": "Abstand zweier Punkte im Raum berechnen",
+      "description": "Die lernende Person kann aus den Koordinaten zweier Punkte im Raum den Verbindungsvektor bilden, dessen Betrag berechnen und den Abstand geometrisch deuten.",
+      "descriptionEn": "The learner can form the connecting vector from the coordinates of two points in space, calculate its magnitude, and interpret the distance geometrically.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/68d4faef-1a56-5898-9c31-80b7d5d2e430/68d4faef-1a56-5898-9c31-80b7d5d2e430.png",
+      "currentImageSha256": "58cb988e600666f5060134c244c4e6513c0b96ce2303dfb682139cad62fba6bc",
+      "goalSemanticSha256": "99e6672b92cc69a76a21dfc941bd569d16e8a4fc248b4271ef3fd4993ad3d6cd",
+      "provider": "Google Gemini / Nano Banana Pro (user-provided candidate)",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "B-A=(3,4,12), norm=sqrt(169)=13 correct."
+      ],
+      "defects": [
+        "Screen positions of O,A(1,2,0),B(4,6,12) cannot share positive axis scales for displayed x down-left/y right/z up; B horizontal offset exceeds 4×A offset, forcing negative y scale."
+      ],
+      "nonImage": [
+        "Existing human image approval is historical separate evidence; this audit must not erase it or convert it into current machine approval."
+      ],
+      "action": "Use a consistent oblique projection, visible component path, and the existing 3-4-12-13 arithmetic.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/68d4faef-1a56-5898-9c31-80b7d5d2e430.de.md"
+    },
+    {
+      "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af",
+      "batch": "B044h",
+      "title": "Streckenlängen im Raum bestimmen",
+      "description": "Die lernende Person kann Streckenlängen in räumlichen Figuren aus Punktkoordinaten oder geeigneten Verbindungsvektoren bestimmen und in geometrischen Kontexten verwenden.",
+      "descriptionEn": "The learner can determine segment lengths in spatial figures from point coordinates or suitable connecting vectors and use them in geometric contexts.",
+      "currentImagePath": "app/public/assets/goal-visualizations/mathematik/69eda7f9-1898-5220-932d-e7bec839b7af/69eda7f9-1898-5220-932d-e7bec839b7af.jpg",
+      "currentImageSha256": "6bdb7d1a3e8277cc156e747fd7701f859e20cb34c24a12005a42056832e98e90",
+      "goalSemanticSha256": "3f4c4179fd6bf8a4ebef12a90b4b7ff64589920b8b720d0651df535c281b458f",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "decision": "CORRECT_IMAGE",
+      "checks": [
+        "sqrt(6²+4²)=sqrt52 and sqrt(6²+4²+3²)=sqrt61 correct."
+      ],
+      "defects": [
+        "Orange segment is called AC but ends at point labelled B.",
+        "Corner coordinates and displayed positive x/y directions disagree."
+      ],
+      "nonImage": [],
+      "action": "Correct cuboid axis/corner assignment and make orange AC and purple AG end at their labelled corners.",
+      "imageInspected": true,
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-spatial-probability-20260920-v1/prompts/69eda7f9-1898-5220-932d-e7bec839b7af.de.md"
+    }
+  ]
+}

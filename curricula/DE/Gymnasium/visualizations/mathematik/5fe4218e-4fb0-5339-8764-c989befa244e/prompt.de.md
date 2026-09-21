@@ -8,34 +8,17 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `5fe4218e-4fb0-5339-8764-c989befa244e.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/5fe4218e-4fb0-5339-8764-c989befa244e/5fe4218e-4fb0-5339-8764-c989befa244e.jpg`
+- Quellbild: `5fe4218e-4fb0-5339-8764-c989befa244e.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/5fe4218e-4fb0-5339-8764-c989befa244e/5fe4218e-4fb0-5339-8764-c989befa244e.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erstelle eine gezielte generative Bildkorrektur der beigefügten Referenz. Behalte ihre freundliche, klare, abstrakte Comic-Bildsprache, Pastellfarben, schwarzen Konturen und gut lesbare deutsche Beschriftung bei. Ausgabe: einzelnes PNG im Querformat, keine technische ID, kein Logo, keine Wasserzeichen. Die mathematisch richtigen Bereiche bleiben so weit wie möglich erhalten. Korrigiere den folgenden konkreten fachlichen Befund; eine richtige Formel darf nicht neben einer widersprüchlichen Zeichnung stehen.
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Modelle mit Differenzialgleichungen erster Ordnung bilden
-Beschreibung: Die lernende Person kann Wachstums- und Zerfallsprozesse mithilfe von Differenzialgleichungen modellieren, passende Gleichungen aus einer Sachsituation entwickeln und die Bedeutung der Parameter fachlich deuten.
-
-Zusatzanweisung:
-Pflichtinhalt: Behalte die bestehende dreiteilige Darstellung des Abkühlungsmodells bei. Schreibe überall deutsche Dezimalkommas. Die Differentialgleichung muss exakt als „T'(t) = −0,12 · (T(t) − 20)“ erscheinen, die Anfangsbedingung exakt als „T(0) = 80“. Alle übrigen Zahlen und mathematischen Aussagen müssen dazu passen.
-
-Vermeiden: Dezimalpunkte, veränderte Vorzeichen, zusätzliche Terme, unleserliche Formeln oder frei erfundene Messwerte.
-
-Korrekturhinweis: Schreibe die zentrale Formel buchstabengetreu `T'(t) = −0,12 · (T(t) − 20)`. `−0.12` darf nirgends erscheinen.
+Bearbeite ausschließlich den hellen pfirsichfarbenen Pfeil im mittleren Feld: Er führt von 'Anfangsbedingung: T(0)=80' fälschlich zum Wert20 in T'(t)=-0,12·(T(t)-20). Entferne diesen Pfeil vollständig und lasse die Anfangsbedingung als eigenständigen Kasten stehen. Lass den blauen Pfeil 'Umgebungstemperatur' weiterhin korrekt auf20 zeigen. Bewahre Kaffee-Szene, T(0)=80°C, Umgebung20°C, richtige Gleichung sowie den rechten Graphen mit Startpunkt(0,80) und Grenzwert20. Keine neuen numerischen Daten und keine anderen Pfeile ergänzen.
 ```
 
 ## Review-Notiz

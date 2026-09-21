@@ -1,0 +1,712 @@
+{
+  "schemaVersion": 1,
+  "batchId": "math-m7-stochastics-foundations-20260920-v1",
+  "createdAt": "2026-09-20 19:13:15 UTC",
+  "status": "candidates_for_independent_review",
+  "authority": "ai_candidate_author",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen.imagegen",
+  "model": "not_reported_by_builtin_tool",
+  "sourceFindingReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-stochastics-foundations-current-20260920-v1.image-findings.json",
+  "scope": {
+    "requestedGoals": 8,
+    "untouchedKeepGoals": 12,
+    "generatedAttempts": 15,
+    "selectedForIndependentReview": 8,
+    "imported": 0,
+    "strictApprovals": 0,
+    "humanApprovals": 0
+  },
+  "rulesRead": [
+    "AGENTS.md §7.3",
+    "docs/concept/skill-graph/atomic-goal-visualizations.md",
+    "/home/enpasos/.codex/skills/.system/imagegen/SKILL.md",
+    "imagegen references/prompting.md",
+    "imagegen references/sample-prompts.md"
+  ],
+  "process": "Eight existing raster sources viewed and content checked; native preparation run per goal. Builtin image generation only. Saved original V1 and focused retries without raster editing by scripts. All fifteen local candidate files viewed. Canonical data, active assets, QA, registry and P evidence untouched.",
+  "globalHold": "Alle acht Auswahlen bleiben bis zur unabhängigen Bildabnahme gehalten; diese Autorensichtprüfung ist keine V-Freigabe und kein menschlicher Nachweis.",
+  "pixelPrecisionDisclaimer": "Rasterskizzen wurden tatsächlich betrachtet und gegen Zahlen/Zuordnungen geprüft; keine pixelgenaue mechanische Plotzertifizierung. Kleine geometrische Restabweichungen sind für 5927 und f787 offen ausgewiesen.",
+  "ownNumericalChecks": {
+    "method": "Direct independent arithmetic; normal central masses through numerical erf approximation (~1e-7 accuracy).",
+    "values": {
+      "hypergeometricP0": 0.10714285714285714,
+      "hypergeometricP1": 0.5357142857142857,
+      "hypergeometricP2": 0.35714285714285715,
+      "sum": 1,
+      "twoRedWithout": 0.3571428571428571,
+      "twoRedWith": 0.390625,
+      "twoCoinsMean": 1,
+      "twoCoinsVariance": 0.5,
+      "twoCoinsSigma": 0.7071067811865476,
+      "binomialFourHalf": [
+        0.0625,
+        0.25,
+        0.375,
+        0.25,
+        0.0625
+      ],
+      "binomialFourHalfMean": 2,
+      "binomialFourHalfSigma": 1,
+      "oneSigmaInterval": [
+        1,
+        3
+      ],
+      "normalCentralMass": [
+        {
+          "c": 1,
+          "mass": 0.6826894723352726
+        },
+        {
+          "c": 1.64,
+          "mass": 0.8989948579666822
+        },
+        {
+          "c": 1.96,
+          "mass": 0.9500043477835522
+        },
+        {
+          "c": 2,
+          "mass": 0.9544998742254872
+        },
+        {
+          "c": 2.58,
+          "mass": 0.9901199077209285
+        },
+        {
+          "c": 3,
+          "mass": 0.9973000654373705
+        }
+      ]
+    }
+  },
+  "sourceIntegrityCheck": {
+    "checkedAt": "2026-09-20 19:13:15 UTC",
+    "all20CurrentPublicSourceHashesUnchanged": true,
+    "keepSources": [
+      {
+        "goalId": "dabff49b-d40a-4c81-a584-21408b2d4219",
+        "path": "app/public/assets/goal-visualizations/mathematik/dabff49b-d40a-4c81-a584-21408b2d4219/dabff49b-d40a-4c81-a584-21408b2d4219.jpg",
+        "sha256": "sha256:a8fa858d46d9df5181e292d96881761e36dc996b1e6aa71ef5863b0cbbde3ba8"
+      },
+      {
+        "goalId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+        "path": "app/public/assets/goal-visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.jpg",
+        "sha256": "sha256:51516dc711c0b7133ebf5962a969ef275b3d6a7e6eb354c7930086f1abb84220"
+      },
+      {
+        "goalId": "122ab909-04ed-572b-a499-754f3bcc8ef0",
+        "path": "app/public/assets/goal-visualizations/mathematik/122ab909-04ed-572b-a499-754f3bcc8ef0/122ab909-04ed-572b-a499-754f3bcc8ef0.jpg",
+        "sha256": "sha256:5aced1206c687a84bcf3501b7e1221d44c85b491499821d34dbcc9f8c197f480"
+      },
+      {
+        "goalId": "935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+        "path": "app/public/assets/goal-visualizations/mathematik/935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e/935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e.jpg",
+        "sha256": "sha256:e94bc87e0dd0822abe4a3cf1427e4b72c23beb0c9d84735cb9ba3815241f3ccd"
+      },
+      {
+        "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+        "path": "app/public/assets/goal-visualizations/mathematik/da95ab35-bac2-54f2-b38f-8b612cde8b54/da95ab35-bac2-54f2-b38f-8b612cde8b54.jpg",
+        "sha256": "sha256:f5638d813ec26438de6e1a624bd5f9130a86fffea50be554bc35dcfee1ffbf45"
+      },
+      {
+        "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+        "path": "app/public/assets/goal-visualizations/mathematik/d711bc18-c27c-4739-8289-edac53dc8ba3/d711bc18-c27c-4739-8289-edac53dc8ba3.jpg",
+        "sha256": "sha256:fc3cbdda02aa50eda9c528fc3606e25b8c3e88dae6b1faf5a9a51b70c1557c2e"
+      },
+      {
+        "goalId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+        "path": "app/public/assets/goal-visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.jpg",
+        "sha256": "sha256:f35926b9b8df4910b6643499588a70117646e4d96efa1351292a5b89c5670d8d"
+      },
+      {
+        "goalId": "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+        "path": "app/public/assets/goal-visualizations/mathematik/9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0/9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0.jpg",
+        "sha256": "sha256:f52ea9609f4f6ab6ac7b3d1c8d549c7792fcc207eef905147c0e82b813f7715b"
+      },
+      {
+        "goalId": "42d300e3-e982-5889-98d7-fc297f10eff1",
+        "path": "app/public/assets/goal-visualizations/mathematik/42d300e3-e982-5889-98d7-fc297f10eff1/42d300e3-e982-5889-98d7-fc297f10eff1.jpg",
+        "sha256": "sha256:c72432bb91b121f4f38d847d103c7e1d2e32c4603c7f06a0e48c192c42254bc7"
+      },
+      {
+        "goalId": "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+        "path": "app/public/assets/goal-visualizations/mathematik/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140.jpg",
+        "sha256": "sha256:fb2cb6033fe71beb1fd4665a558843014731045b3b672b32f7d161a09cbc9305"
+      },
+      {
+        "goalId": "1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+        "path": "app/public/assets/goal-visualizations/mathematik/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/1cefd1ad-a250-5a03-8de7-04bdaf465ad8.jpg",
+        "sha256": "sha256:f56cfcf8cefeba64491ce0c32a85fcb7f001e62766a9a2cf1f822adc97d1023e"
+      },
+      {
+        "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+        "path": "app/public/assets/goal-visualizations/mathematik/455ef29a-7194-5c5a-b832-1c27fcbf2516/455ef29a-7194-5c5a-b832-1c27fcbf2516.jpg",
+        "sha256": "sha256:e424a0fcf3e2e90b570702d39d23ee0e71f099ee3a038d509ec6d5db7dbe2670"
+      }
+    ]
+  },
+  "goals": [
+    {
+      "goalId": "1462c189-8679-5f32-bf58-6e81e99e4635",
+      "title": "Laplace-Wahrscheinlichkeiten ohne Zurücklegen (hypergeometrisch)",
+      "description": "Die lernende Person kann Laplace-Wahrscheinlichkeiten bei Ziehungen ohne Zurücklegen mit Zählverfahren berechnen (z. B. Urnen- oder Lottoprobleme), das hypergeometrische Modell begründen und Ergebnisse an konkreten Beispielen prüfen.",
+      "source": {
+        "assetPath": "app/public/assets/goal-visualizations/mathematik/1462c189-8679-5f32-bf58-6e81e99e4635/1462c189-8679-5f32-bf58-6e81e99e4635.jpg",
+        "sha256": "sha256:f5765b2082e2616211034260588a67617eea819988d5d41d0efec3eecfdc9a67",
+        "visuallyInspected": true,
+        "finding": "Bildbefund nach Originalauflösungsprüfung: Die Urne zeigt 5 rote und 4 blaue Kugeln (=9); Text, N=8 und Rechnung setzen 5 rote und 3 blaue voraus. Zusätzlich bezeichnet die mittlere Tabellenzeile (ein roter Treffer) ihren Wert offenbar als P(0)=15/28 statt P(X=1)=15/28. Konkrete Zeichnungs-/Beschriftungskorrektur vor V-Finalisierung erforderlich."
+      },
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"1462c189-8679-5f32-bf58-6e81e99e4635\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0,
+        "metadataPath": "tmp/goal-visualizations/1462c189-8679-5f32-bf58-6e81e99e4635/metadata.json"
+      },
+      "attempts": [
+        {
+          "version": 1,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/1462c189-8679-5f32-bf58-6e81e99e4635/prompt.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/1462c189-8679-5f32-bf58-6e81e99e4635/candidate-v1.png",
+          "sha256": "sha256:9b715b994429a24afdd355d5578f7433fbc40c8b77461040f7a615b79970c9e5",
+          "width": 1678,
+          "height": 937,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-b89d8492-4d27-401f-923e-471633c022a0.png",
+          "referencePaths": [
+            "app/public/assets/goal-visualizations/mathematik/1462c189-8679-5f32-bf58-6e81e99e4635/1462c189-8679-5f32-bf58-6e81e99e4635.jpg"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "rejected_regenerate",
+          "findings": [
+            "Urne hatte nur 4 rote und 3 blaue Kugeln. Fünfte rote Kugel fehlte trotz korrekter Modellzahlen; V1 nicht verwenden."
+          ],
+          "selectionNote": "Historische Erst-/Zwischenfassung behalten; nicht importieren."
+        },
+        {
+          "version": 2,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/1462c189-8679-5f32-bf58-6e81e99e4635/prompt-v2.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/1462c189-8679-5f32-bf58-6e81e99e4635/candidate-v2.png",
+          "sha256": "sha256:9a9587618b1c67a14f1a6394c6661d0d331e063accf3d0ecd13f80d83a0d35a4",
+          "width": 1678,
+          "height": 937,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-fd548e5f-9b80-423b-ab1a-72f575ba6fa1.png",
+          "referencePaths": [
+            "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/1462c189-8679-5f32-bf58-6e81e99e4635/candidate-v1.png"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "needs_external_review",
+          "findings": [],
+          "selectionNote": "Autorenseitiger Kandidatenvorschlag, keine unabhängige oder menschliche Freigabe."
+        }
+      ],
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/1462c189-8679-5f32-bf58-6e81e99e4635/candidate-v2.png",
+      "selectedCandidateSha256": "sha256:9a9587618b1c67a14f1a6394c6661d0d331e063accf3d0ecd13f80d83a0d35a4",
+      "ownReview": {
+        "reviewer": "/root/math_m7_current_scope",
+        "authority": "ai_candidate_author",
+        "status": "needs_external_review",
+        "actualChecks": [
+          "V2: Fünf rote R-Kugeln und drei blaue B-Kugeln direkt gezählt; N=8, M=5, n=2 passen zur Zeichnung.",
+          "5/8 · 4/7 = 10/28 = 5/14; Kombinationen C(5,2)/C(8,2)=10/28 kontrolliert.",
+          "Tabelle zeigt eindeutig P(X=0)=3/28, P(X=1)=15/28, P(X=2)=10/28; Summe 1.",
+          "Baum-Ausschnitt nach Rot: 4/7 Rot, 3/7 Blau; Beschriftung und Modell stimmen."
+        ],
+        "knownBlockingFindings": [],
+        "externalReviewFocus": [],
+        "humanReview": "needs_human_review"
+      },
+      "nextAction": "Root prüft die gespeicherte ausgewählte PNG unabhängig; Import und V-Finalisierung nur bei separater fachlicher Annahme."
+    },
+    {
+      "goalId": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+      "title": "Modelle vergleichen: Ziehen ohne vs. mit Zurücklegen",
+      "description": "Die lernende Person kann begründen, wann das Modell \"mit Zurücklegen\" eine gute Näherung für \"ohne Zurücklegen\" ist, und dies an konkreten Beispielen (z. B. große Urne) rechnerisch vergleichen.",
+      "source": {
+        "assetPath": "app/public/assets/goal-visualizations/mathematik/bd63c0fc-50ef-55aa-ae6c-25cf73d02636/bd63c0fc-50ef-55aa-ae6c-25cf73d02636.jpg",
+        "sha256": "sha256:c2eafd28f16a5b366ed75df66091c357181b1e93c44c461b8e8c984822efc0f8",
+        "visuallyInspected": true,
+        "finding": "Bildbefund: Starturnen zeigen 5 rote und 4 blaue Kugeln (=9), beschriftet ist N=8; zudem zeigen Handpfeile beim Fall ohne Zurücklegen in die Urne und beim Zurücklegen aus ihr heraus. Konkrete Mengendarstellung/Handlungsrichtung vor V-Finalisierung gegenprüfen."
+      },
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"bd63c0fc-50ef-55aa-ae6c-25cf73d02636\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0,
+        "metadataPath": "tmp/goal-visualizations/bd63c0fc-50ef-55aa-ae6c-25cf73d02636/metadata.json"
+      },
+      "attempts": [
+        {
+          "version": 1,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/bd63c0fc-50ef-55aa-ae6c-25cf73d02636/prompt.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/bd63c0fc-50ef-55aa-ae6c-25cf73d02636/candidate-v1.png",
+          "sha256": "sha256:93a7618a008ddc1065958884edd8965d3823b78416a832709bd211336a2a9ab9",
+          "width": 1677,
+          "height": 938,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-e6394924-015f-4eae-a364-7c56561297ad.png",
+          "referencePaths": [
+            "app/public/assets/goal-visualizations/mathematik/bd63c0fc-50ef-55aa-ae6c-25cf73d02636/bd63c0fc-50ef-55aa-ae6c-25cf73d02636.jpg"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "rejected_regenerate",
+          "findings": [
+            "Inhaltlich korrekt, aber transparenter Hintergrund außerhalb der Karten; gerenderte Ansicht zeigte schwarze Zwischenräume. Für geforderten hellen Hintergrund ersetzt."
+          ],
+          "selectionNote": "Historische Erst-/Zwischenfassung behalten; nicht importieren."
+        },
+        {
+          "version": 2,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/bd63c0fc-50ef-55aa-ae6c-25cf73d02636/prompt-v2.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/bd63c0fc-50ef-55aa-ae6c-25cf73d02636/candidate-v2.png",
+          "sha256": "sha256:38ee36caa6b28a0ce3c751da7854fa7fe4e0603086e14c4b6b379ee0b9aea4c6",
+          "width": 1677,
+          "height": 938,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-9786b739-43a8-4a59-84d1-4e87d5819d89.png",
+          "referencePaths": [
+            "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/bd63c0fc-50ef-55aa-ae6c-25cf73d02636/candidate-v1.png"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "needs_external_review",
+          "findings": [],
+          "selectionNote": "Autorenseitiger Kandidatenvorschlag, keine unabhängige oder menschliche Freigabe."
+        }
+      ],
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/bd63c0fc-50ef-55aa-ae6c-25cf73d02636/candidate-v2.png",
+      "selectedCandidateSha256": "sha256:38ee36caa6b28a0ce3c751da7854fa7fe4e0603086e14c4b6b379ee0b9aea4c6",
+      "ownReview": {
+        "reviewer": "/root/math_m7_current_scope",
+        "authority": "ai_candidate_author",
+        "status": "needs_external_review",
+        "actualChecks": [
+          "Obere Starturne: 5R+3B; nach erstem Rot links 4R+3B und ein R außerhalb; rechts nach Zurücklegen wieder 5R+3B.",
+          "Bedingte Wahrscheinlichkeiten links 4/7 und rechts 5/8 stimmen mit Zuständen überein.",
+          "Zweimal Rot: ohne Zurücklegen 5/14, mit Zurücklegen 25/64; beide Produkte unabhängig nachgerechnet.",
+          "V2 hat hellen deckenden Hintergrund; keine dunklen/transparenten Zwischenräume mehr sichtbar.",
+          "Große Urne / wenige Ziehungen als Näherungshinweis vorhanden; kleines Gegenüberstellungsbeispiel wird nicht als Identität dargestellt."
+        ],
+        "knownBlockingFindings": [],
+        "externalReviewFocus": [],
+        "humanReview": "needs_human_review"
+      },
+      "nextAction": "Root prüft die gespeicherte ausgewählte PNG unabhängig; Import und V-Finalisierung nur bei separater fachlicher Annahme."
+    },
+    {
+      "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+      "title": "Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen",
+      "description": "Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen beschreiben und diskrete Wahrscheinlichkeitsverteilungen in Tabellen oder Diagrammen zur Beschreibung stochastischer Situationen nutzen.",
+      "source": {
+        "assetPath": "app/public/assets/goal-visualizations/mathematik/5927ca6a-91d5-4541-84e9-833bbb2cd7df/5927ca6a-91d5-4541-84e9-833bbb2cd7df.jpg",
+        "sha256": "sha256:fdba1a27b67961f5509e75b0dd11f6d28d12aecfaad1d9872692531b8dc95c2f",
+        "visuallyInspected": true,
+        "finding": "Bildbefund: Der mittlere Balken mit Aufschrift 1/2 endet sichtbar oberhalb des 1/2-Achsenstrichs, etwa bei 0,62. Balkenhöhe und Achsenmaßstab widersprechen sich."
+      },
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"5927ca6a-91d5-4541-84e9-833bbb2cd7df\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0,
+        "metadataPath": "tmp/goal-visualizations/5927ca6a-91d5-4541-84e9-833bbb2cd7df/metadata.json"
+      },
+      "attempts": [
+        {
+          "version": 1,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/5927ca6a-91d5-4541-84e9-833bbb2cd7df/prompt.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/5927ca6a-91d5-4541-84e9-833bbb2cd7df/candidate-v1.png",
+          "sha256": "sha256:2d65faa255fb8e19cae8e8c75b9386a0a32bb722ec0ced7d34c9001ea1a3283f",
+          "width": 1678,
+          "height": 937,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-2422543e-2c0e-4980-9efb-dfe2dbfc14c5.png",
+          "referencePaths": [
+            "app/public/assets/goal-visualizations/mathematik/5927ca6a-91d5-4541-84e9-833bbb2cd7df/5927ca6a-91d5-4541-84e9-833bbb2cd7df.jpg"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "rejected_regenerate",
+          "findings": [
+            "Mittlerer Balken lag noch sichtbar oberhalb des 1/2-Ticks."
+          ],
+          "selectionNote": "Historische Erst-/Zwischenfassung behalten; nicht importieren."
+        },
+        {
+          "version": 2,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/5927ca6a-91d5-4541-84e9-833bbb2cd7df/prompt-v2.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/5927ca6a-91d5-4541-84e9-833bbb2cd7df/candidate-v2.png",
+          "sha256": "sha256:02a7f831b6a9211a1ddb964d624e63ed36feeef48786b28014a67144e7bc6c8c",
+          "width": 1678,
+          "height": 937,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-cb6cc3d6-db1b-4b63-87f9-421805db4aed.png",
+          "referencePaths": [
+            "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/5927ca6a-91d5-4541-84e9-833bbb2cd7df/candidate-v1.png"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "needs_external_review",
+          "findings": [],
+          "selectionNote": "Autorenseitiger Kandidatenvorschlag, keine unabhängige oder menschliche Freigabe."
+        }
+      ],
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/5927ca6a-91d5-4541-84e9-833bbb2cd7df/candidate-v2.png",
+      "selectedCandidateSha256": "sha256:02a7f831b6a9211a1ddb964d624e63ed36feeef48786b28014a67144e7bc6c8c",
+      "ownReview": {
+        "reviewer": "/root/math_m7_current_scope",
+        "authority": "ai_candidate_author",
+        "status": "needs_external_review",
+        "actualChecks": [
+          "Vier Münzergebnisse ZZ,ZK,KZ,KK und Zuordnung zur Kopfanzahl 0,1,1,2 stimmen.",
+          "Tabelle 0:1/4, 1:1/2, 2:1/4, Summe 1; Diagrammbeschriftungen stimmen damit überein.",
+          "V2: Gemeinsame Nulllinie; äußere Balken gleich hoch und auf 1/4-Hilfslinie, mittlerer auf 1/2-Hilfslinie.",
+          "Deutlich falsche Überhöhung des mittleren Balkens aus dem aktiven Quellbild beseitigt; annähernd lineare handgezeichnete Achse."
+        ],
+        "knownBlockingFindings": [],
+        "externalReviewFocus": [
+          "Die Achse bleibt handgezeichnet, nicht pixelmetrisch exakt. Unabhängig prüfen, ob die kleinen Tick-/Hilfslinienabweichungen akzeptabel sind; keine neue Zahlen- oder Tabellenabweichung gefunden."
+        ],
+        "humanReview": "needs_human_review"
+      },
+      "nextAction": "Root prüft die gespeicherte ausgewählte PNG unabhängig; Import und V-Finalisierung nur bei separater fachlicher Annahme."
+    },
+    {
+      "goalId": "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+      "title": "Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen",
+      "description": "Die lernende Person kann für einfache diskrete Zufallsgrößen Erwartungswert, Varianz und Standardabweichung bestimmen, diese im Kontext deuten und damit einfache Glücksspiele untersuchen.",
+      "source": {
+        "assetPath": "app/public/assets/goal-visualizations/mathematik/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/6053aeda-84f7-4c2c-98d7-1753a7e26dcc.jpg",
+        "sha256": "sha256:d03c915658699802d4044cf316b867fd9a340b24c6be9b51faedc525f962eca3",
+        "visuallyInspected": true,
+        "finding": "Bildtextbefund: σ wird als durchschnittliche Abweichung bezeichnet. Für das dargestellte Beispiel beträgt die mittlere absolute Abweichung 1/2, aber σ=√(1/2)≈0,71. Treffend wäre Wurzel der mittleren quadratischen Abweichung oder Streuungsmaß."
+      },
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"6053aeda-84f7-4c2c-98d7-1753a7e26dcc\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0,
+        "metadataPath": "tmp/goal-visualizations/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/metadata.json"
+      },
+      "attempts": [
+        {
+          "version": 1,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/prompt.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/candidate-v1.png",
+          "sha256": "sha256:eda641af7454b26388b0c2379a78db2723a6c5801b69a19057f4472b8507b989",
+          "width": 1678,
+          "height": 937,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-0b74b6a7-0f5a-4587-aa66-ad3c7f2be486.png",
+          "referencePaths": [
+            "app/public/assets/goal-visualizations/mathematik/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/6053aeda-84f7-4c2c-98d7-1753a7e26dcc.jpg"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "rejected_regenerate",
+          "findings": [
+            "Inhaltlicher Auftrag erfüllt; Bruchdarstellung unter dem Wurzelzeichen typografisch mehrdeutig. Zur Eindeutigkeit gezielt in sqrt(0,5) geändert."
+          ],
+          "selectionNote": "Historische Erst-/Zwischenfassung behalten; nicht importieren."
+        },
+        {
+          "version": 2,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/prompt-v2.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/candidate-v2.png",
+          "sha256": "sha256:0d637515d5e66809f489094047a9e522ed24d5f49175196b6674fb87bd640320",
+          "width": 1679,
+          "height": 937,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-1cb8cff7-be9c-40d1-afbc-dca8038cc66b.png",
+          "referencePaths": [
+            "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/candidate-v1.png"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "needs_external_review",
+          "findings": [],
+          "selectionNote": "Autorenseitiger Kandidatenvorschlag, keine unabhängige oder menschliche Freigabe."
+        }
+      ],
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/candidate-v2.png",
+      "selectedCandidateSha256": "sha256:0d637515d5e66809f489094047a9e522ed24d5f49175196b6674fb87bd640320",
+      "ownReview": {
+        "reviewer": "/root/math_m7_current_scope",
+        "authority": "ai_candidate_author",
+        "status": "needs_external_review",
+        "actualChecks": [
+          "Verteilung der Kopfanzahl bei zwei fairen Münzwürfen: 1/4,1/2,1/4.",
+          "Erwartungswert 1; Varianz 1/2; Standardabweichung sqrt(0,5)=0,707106...≈0,71 unabhängig nachgerechnet.",
+          "Balance zeigt gleich lange Hebelarme 0–1 und 1–2, je 1/4 außen, 1/2 am Schwerpunkt 1.",
+          "V2: Radikal umfasst eindeutig die ganze Dezimalzahl 0,5.",
+          "σ wird als Streuungsmaß bezeichnet, nicht als mittlere absolute Abweichung; Einzelwerte dürfen vom Mittelwert abweichen."
+        ],
+        "knownBlockingFindings": [],
+        "externalReviewFocus": [],
+        "humanReview": "needs_human_review"
+      },
+      "nextAction": "Root prüft die gespeicherte ausgewählte PNG unabhängig; Import und V-Finalisierung nur bei separater fachlicher Annahme."
+    },
+    {
+      "goalId": "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+      "title": "Wahrscheinlichkeiten in Bernoulli-Ketten berechnen",
+      "description": "Die lernende Person kann Bernoulli-Ketten in Sachzusammenhängen modellieren, mit der Binomialformel Wahrscheinlichkeiten berechnen und die Grenzen solcher Modelle reflektieren.",
+      "source": {
+        "assetPath": "app/public/assets/goal-visualizations/mathematik/837b015a-c2a2-5f31-831c-ae16ee2ee6ce/837b015a-c2a2-5f31-831c-ae16ee2ee6ce.jpg",
+        "sha256": "sha256:00eefdf474e22e4b6264b1e0319af4e9e5ce8f2fe3e52f2a277b1a029df998b1",
+        "visuallyInspected": true,
+        "finding": "Bildbefund: Das Minihistogramm für B(4;0,5) ist sichtbar unsymmetrisch: Balken 1/3 und 0/4 sind verschieden hoch. Rechnerisch müssen die Höhen 1,4,6,4,1 geteilt durch 16 lauten."
+      },
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"837b015a-c2a2-5f31-831c-ae16ee2ee6ce\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0,
+        "metadataPath": "tmp/goal-visualizations/837b015a-c2a2-5f31-831c-ae16ee2ee6ce/metadata.json"
+      },
+      "attempts": [
+        {
+          "version": 1,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/837b015a-c2a2-5f31-831c-ae16ee2ee6ce/prompt.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/837b015a-c2a2-5f31-831c-ae16ee2ee6ce/candidate-v1.png",
+          "sha256": "sha256:bba7a6a3ef3347dfd33f02733061521dee8ce85a3c7c4f2c0e939ad21390873a",
+          "width": 1678,
+          "height": 937,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-aae08896-f541-40bb-befc-b0a0e82bc9f4.png",
+          "referencePaths": [
+            "app/public/assets/goal-visualizations/mathematik/837b015a-c2a2-5f31-831c-ae16ee2ee6ce/837b015a-c2a2-5f31-831c-ae16ee2ee6ce.jpg"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "rejected_regenerate",
+          "findings": [
+            "Mittleres Minihistogramm zeigte trotz korrektem Zahlenwert keine passende Höhenrelation 1:4:6:4:1. In V2 gezielt entfernt."
+          ],
+          "selectionNote": "Historische Erst-/Zwischenfassung behalten; nicht importieren."
+        },
+        {
+          "version": 2,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/837b015a-c2a2-5f31-831c-ae16ee2ee6ce/prompt-v2.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/837b015a-c2a2-5f31-831c-ae16ee2ee6ce/candidate-v2.png",
+          "sha256": "sha256:428c98c539b4ad5193280223532b23ec314dcd67b3a2189776f0d356ffb2570a",
+          "width": 1678,
+          "height": 937,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-50a8543d-fecc-4752-b526-79ec45d3def1.png",
+          "referencePaths": [
+            "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/837b015a-c2a2-5f31-831c-ae16ee2ee6ce/candidate-v1.png"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "needs_external_review",
+          "findings": [],
+          "selectionNote": "Autorenseitiger Kandidatenvorschlag, keine unabhängige oder menschliche Freigabe."
+        }
+      ],
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/837b015a-c2a2-5f31-831c-ae16ee2ee6ce/candidate-v2.png",
+      "selectedCandidateSha256": "sha256:428c98c539b4ad5193280223532b23ec314dcd67b3a2189776f0d356ffb2570a",
+      "ownReview": {
+        "reviewer": "/root/math_m7_current_scope",
+        "authority": "ai_candidate_author",
+        "status": "needs_external_review",
+        "actualChecks": [
+          "Bernoulli-Modell zeigt Erfolg/Misserfolg, unabhängige Versuche und konstantes p.",
+          "Allgemeine Formel C(n,k)p^k(1-p)^(n-k) korrekt.",
+          "Beispiel n=4,p=0,5,k=2: C(4,2)*0,5²*0,5² = 6*0,25*0,25 = 6/16 = 3/8.",
+          "V2: Beide für die Zielkompetenz entbehrlichen Minihistogramme entfernt; keine falschen Balken mehr im Bild.",
+          "Unabhängigkeit und konstantes p werden als Modellgrenzen ausdrücklich hinterfragt; keine neuen Aufgabenbehauptungen ergänzt."
+        ],
+        "knownBlockingFindings": [],
+        "externalReviewFocus": [],
+        "humanReview": "needs_human_review"
+      },
+      "nextAction": "Root prüft die gespeicherte ausgewählte PNG unabhängig; Import und V-Finalisierung nur bei separater fachlicher Annahme."
+    },
+    {
+      "goalId": "f7879354-1a82-4195-8e3c-a339a820439c",
+      "title": "Erwartungswert und Standardabweichung binomialverteilter Zufallsgrößen bestimmen und deuten",
+      "description": "Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert und Standardabweichung berechnen und beide Kenngrößen mit der zugrunde liegenden Situation in Beziehung setzen.",
+      "source": {
+        "assetPath": "app/public/assets/goal-visualizations/mathematik/f7879354-1a82-4195-8e3c-a339a820439c/f7879354-1a82-4195-8e3c-a339a820439c.jpg",
+        "sha256": "sha256:1e78ebb092a418675c75e2a40f50bd532099a9c3afc0b8f6582c6e91a918e6f4",
+        "visuallyInspected": true,
+        "finding": "Bildbefund: Die mit μ=6 bezeichnete Linie liegt zwischen k=6 und k=7; der Pfeil für [3,95;8,05] endet rechts etwa bei k=9. Der beschriftete B(20;0,3)-Graph zeigt zudem massiv zu große rechte Randwahrscheinlichkeiten, etwa k=12 ungefähr 0,03 statt ungefähr 0,00386."
+      },
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"f7879354-1a82-4195-8e3c-a339a820439c\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0,
+        "metadataPath": "tmp/goal-visualizations/f7879354-1a82-4195-8e3c-a339a820439c/metadata.json"
+      },
+      "attempts": [
+        {
+          "version": 1,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/f7879354-1a82-4195-8e3c-a339a820439c/prompt.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/f7879354-1a82-4195-8e3c-a339a820439c/candidate-v1.png",
+          "sha256": "sha256:a94b52646c6fe351043a4ee1f04e8db0470721924c8a2af7ab8a16d07ca1ec23",
+          "width": 1678,
+          "height": 937,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-f38cc926-5c62-42dd-b24e-701227e78fa4.png",
+          "referencePaths": [
+            "app/public/assets/goal-visualizations/mathematik/f7879354-1a82-4195-8e3c-a339a820439c/f7879354-1a82-4195-8e3c-a339a820439c.jpg"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "rejected_regenerate",
+          "findings": [
+            "Balkenhöhen der unverteilten fünf Balken passten nicht ausreichend zu 1:4:6:4:1; insbesondere äußere Balken zu kurz."
+          ],
+          "selectionNote": "Historische Erst-/Zwischenfassung behalten; nicht importieren."
+        },
+        {
+          "version": 2,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/f7879354-1a82-4195-8e3c-a339a820439c/prompt-v2.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/f7879354-1a82-4195-8e3c-a339a820439c/candidate-v2.png",
+          "sha256": "sha256:f5579bb985d068376304270da365c659e489326c7a768b0b31120119bbbe133f",
+          "width": 1678,
+          "height": 937,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-c03e4c5d-b46f-481d-b72d-6eb47f9090a4.png",
+          "referencePaths": [
+            "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/f7879354-1a82-4195-8e3c-a339a820439c/candidate-v1.png"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "rejected_regenerate",
+          "findings": [
+            "Blockanzahlen 1,4,6,4,1 korrekt; äußere Einheitsblöcke weiterhin deutlich kürzer als innere Einheiten. Letzte gezielte Korrektur nur dieser zwei Oberkanten."
+          ],
+          "selectionNote": "Historische Erst-/Zwischenfassung behalten; nicht importieren."
+        },
+        {
+          "version": 3,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/f7879354-1a82-4195-8e3c-a339a820439c/prompt-v3.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/f7879354-1a82-4195-8e3c-a339a820439c/candidate-v3.png",
+          "sha256": "sha256:5ae70c33ccf066c8dbc819795a53e85441afec4f7a8f85f870fbd2356fb8e5cf",
+          "width": 1678,
+          "height": 937,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-e411729a-4b29-4fc2-be22-a224c1d4b6c8.png",
+          "referencePaths": [
+            "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/f7879354-1a82-4195-8e3c-a339a820439c/candidate-v2.png"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "needs_external_review",
+          "findings": [],
+          "selectionNote": "Autorenseitiger Kandidatenvorschlag, keine unabhängige oder menschliche Freigabe."
+        }
+      ],
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/f7879354-1a82-4195-8e3c-a339a820439c/candidate-v3.png",
+      "selectedCandidateSha256": "sha256:5ae70c33ccf066c8dbc819795a53e85441afec4f7a8f85f870fbd2356fb8e5cf",
+      "ownReview": {
+        "reviewer": "/root/math_m7_current_scope",
+        "authority": "ai_candidate_author",
+        "status": "needs_external_review",
+        "actualChecks": [
+          "Beispiel absichtlich auf vier unabhängige faire Münzwürfe vereinfacht; X~B(4;0,5), μ=2, σ=1.",
+          "Verteilung exakt nachgerechnet: (1,4,6,4,1)/16; sichtbare Blockanzahlen in V3: 1,4,6,4,1.",
+          "Symmetrie von k=0/4 und k=1/3 sichtbar, korrekte Bruchlabels an allen fünf Balken.",
+          "μ-Leitlinie verläuft bei k=2; Intervallklammer reicht von k=1 bis k=3 und ist [μ−σ;μ+σ]=[1;3] beschriftet.",
+          "V3: Beide äußeren Einheitsbalken angehoben, ungefähr an der ersten inneren Trennlinie ausgerichtet; Langfristmittel und Streuungsdeutung stimmen."
+        ],
+        "knownBlockingFindings": [],
+        "externalReviewFocus": [
+          "V3 hat noch wenige Pixel Versatz der äußeren Oberkanten zur ersten inneren Trennlinie und geringfügig variierende Blockhöhen. Externe Kontrolle muss beurteilen, ob dies im Comicraster tolerierbar ist. Keine pixelgenaue Plotvalidierung behauptet."
+        ],
+        "humanReview": "needs_human_review"
+      },
+      "nextAction": "Root prüft die gespeicherte ausgewählte PNG unabhängig; Import und V-Finalisierung nur bei separater fachlicher Annahme."
+    },
+    {
+      "goalId": "44dba16e-2e86-56be-974b-a62093ef9211",
+      "title": "Normalverteilung als Approximation binomialer Modelle (LK)",
+      "description": "Die lernende Person kann Histogramme binomialverteilter Zufallsgrößen bei hinreichend großer Standardabweichung durch eine Normalverteilung approximieren, die Näherung fachlich begründen und den Bezug zu den Sigma-Regeln deuten.",
+      "source": {
+        "assetPath": "app/public/assets/goal-visualizations/mathematik/44dba16e-2e86-56be-974b-a62093ef9211/44dba16e-2e86-56be-974b-a62093ef9211.jpg",
+        "sha256": "sha256:407d699418805ad8942d7c54a47f6be8744c76c99386708a2e9d61232a381365",
+        "visuallyInspected": true,
+        "finding": "Bildbefund: Die als σ=5 bezeichneten Doppelpfeile reichen nach dem sichtbaren x-Maßstab nur etwa drei Einheiten vom Zentrum weg. Bei μ=50 und σ=5 müssen sie zwischen 45 und 50 beziehungsweise 50 und 55 liegen."
+      },
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"44dba16e-2e86-56be-974b-a62093ef9211\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0,
+        "metadataPath": "tmp/goal-visualizations/44dba16e-2e86-56be-974b-a62093ef9211/metadata.json"
+      },
+      "attempts": [
+        {
+          "version": 1,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/44dba16e-2e86-56be-974b-a62093ef9211/prompt.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/44dba16e-2e86-56be-974b-a62093ef9211/candidate-v1.png",
+          "sha256": "sha256:5317c76fe88d5df500cfcfcd288683af3c84de87a7bc40f0b83feece84aecfe7",
+          "width": 1678,
+          "height": 937,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-69f7b342-a325-4f8d-9e0d-3ad7fe191e3f.png",
+          "referencePaths": [
+            "app/public/assets/goal-visualizations/mathematik/44dba16e-2e86-56be-974b-a62093ef9211/44dba16e-2e86-56be-974b-a62093ef9211.jpg"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "needs_external_review",
+          "findings": [],
+          "selectionNote": "Autorenseitiger Kandidatenvorschlag, keine unabhängige oder menschliche Freigabe."
+        }
+      ],
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/44dba16e-2e86-56be-974b-a62093ef9211/candidate-v1.png",
+      "selectedCandidateSha256": "sha256:5317c76fe88d5df500cfcfcd288683af3c84de87a7bc40f0b83feece84aecfe7",
+      "ownReview": {
+        "reviewer": "/root/math_m7_current_scope",
+        "authority": "ai_candidate_author",
+        "status": "needs_external_review",
+        "actualChecks": [
+          "Diskrete blaue Balken und stetige orange Dichtekurve sind klar unterschieden; Bild explizit als schematische Näherung gekennzeichnet.",
+          "μ liegt in der Mitte am Maximum; μ−σ und μ+σ sind symmetrisch markiert.",
+          "σ-Pfeil misst nur von μ nach μ+σ, nicht die volle Breite 2σ.",
+          "Formeln μ=np und σ=sqrt(np(1−p)) stimmen.",
+          "Näherung wird ausdrücklich auf ausreichend große Streuung eingeschränkt; Sigma-Regeln nur näherungsweise, keine Behauptung universeller Exaktheit."
+        ],
+        "knownBlockingFindings": [],
+        "externalReviewFocus": [
+          "Schematische, nicht numerisch skalierte Histogramm-/Dichteillustration. Nicht als exakter Plot eines angegebenen B(n,p) behandeln."
+        ],
+        "humanReview": "needs_human_review"
+      },
+      "nextAction": "Root prüft die gespeicherte ausgewählte PNG unabhängig; Import und V-Finalisierung nur bei separater fachlicher Annahme."
+    },
+    {
+      "goalId": "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+      "title": "Sigma-Regeln für Verteilungen anwenden",
+      "description": "Die lernende Person kann an Histogrammen, Dichtegraphen und Diagrammen annähernd normalverteilter Größen ablesen, welcher Anteil der Werte in $\\sigma$-Umgebungen um den Mittelwert liegt, und die Sigma- beziehungsweise Quantilregeln für $1\\sigma$, $1{,}64\\sigma$, $1{,}96\\sigma$, $2\\sigma$, $2{,}58\\sigma$ und $3\\sigma$ qualitativ erläutern.",
+      "source": {
+        "assetPath": "app/public/assets/goal-visualizations/mathematik/8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d/8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d.jpg",
+        "sha256": "sha256:06b4bc3b45f15ac0dc0e96b0cd1c332de61a04db873e887f5502f3333ed9008c",
+        "visuallyInspected": true,
+        "finding": "Bildbefund: Links ist die Strecke von μ−σ bis μ+σ mit Standardabweichung σ bezeichnet, obwohl ihre Länge 2σ ist. Rechts sind Randanteile 5% und 2,5% an derselben zentralen 90%-Umgebung uneindeutig/asymmetrisch zugeordnet; jede volle Randseite außerhalb μ±1,64σ hat etwa 5%."
+      },
+      "preparation": {
+        "command": "npm --prefix app run visualization:prepare -- \"8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d\" --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+        "exitCode": 0,
+        "metadataPath": "tmp/goal-visualizations/8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d/metadata.json"
+      },
+      "attempts": [
+        {
+          "version": 1,
+          "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d/prompt.md",
+          "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d/candidate-v1.png",
+          "sha256": "sha256:8ea783cf9a7caaeeafb5afb49fcc85421780a4a365023177b5a1f439ca51febe",
+          "width": 1678,
+          "height": 937,
+          "sourceGeneratedPath": "/home/enpasos/.codex/generated_images/01a0bfe4-e073-71c2-b504-1f2ee1c2a44d/exec-620c71d4-e774-4a47-a05b-dd67eab06990.png",
+          "referencePaths": [
+            "app/public/assets/goal-visualizations/mathematik/8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d/8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d.jpg"
+          ],
+          "actualTool": "image_gen.imagegen",
+          "visuallyInspected": true,
+          "decision": "needs_external_review",
+          "findings": [],
+          "selectionNote": "Autorenseitiger Kandidatenvorschlag, keine unabhängige oder menschliche Freigabe."
+        }
+      ],
+      "selectedCandidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-foundations-20260920-v1/8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d/candidate-v1.png",
+      "selectedCandidateSha256": "sha256:8ea783cf9a7caaeeafb5afb49fcc85421780a4a365023177b5a1f439ca51febe",
+      "ownReview": {
+        "reviewer": "/root/math_m7_current_scope",
+        "authority": "ai_candidate_author",
+        "status": "needs_external_review",
+        "actualChecks": [
+          "Zentrales Intervall [μ−1,64σ; μ+1,64σ] symmetrisch beschriftet; Zentrum ca.90%, beide Randbereiche jeweils ca.5%.",
+          "Pfeil misst nur μ bis μ+1,64σ und ist 1,64σ beschriftet.",
+          "Tabelle vollständig geprüft: c=1→ca.68%,1,64→ca.90%,1,96→ca.95%,2→ca.95,4%,2,58→ca.99%,3→ca.99,7%.",
+          "Normalwahrscheinlichkeiten unabhängig numerisch gegengeprüft; alle Prozentwerte sind passend gerundete Näherungen.",
+          "Gültigkeit ausdrücklich für annähernd normalverteilte Größen eingeschränkt."
+        ],
+        "knownBlockingFindings": [],
+        "externalReviewFocus": [],
+        "humanReview": "needs_human_review"
+      },
+      "nextAction": "Root prüft die gespeicherte ausgewählte PNG unabhängig; Import und V-Finalisierung nur bei separater fachlicher Annahme."
+    }
+  ]
+}

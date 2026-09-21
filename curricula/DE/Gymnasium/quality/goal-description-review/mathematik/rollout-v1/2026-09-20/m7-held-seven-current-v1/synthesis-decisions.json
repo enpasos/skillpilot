@@ -1,0 +1,244 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "m7-held-seven-current-v1-20260920-current-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex /root (informed AI adjudicator; no human approval)",
+  "synthesizedAt": "2026-09-20T20:09:32.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-held-seven-current-v1-20260920",
+    "batchManifestDigest": "sha256:f9146717a1f651203c19e9e5f8fccd488b91bc2caddafff6ef9b88eb1a74176f",
+    "configDigest": "sha256:d563fccfca78ab4475a6c3d2f88dc280bb056d724096f737ae2e49912fb04c0d",
+    "bundleFingerprint": "sha256:52993b9e25dd8b6ecde7e989be84edeca5f22906d6f21e9603b775999795ef16",
+    "bookDigest": "sha256:f59d6b144ea620cffc69460bdbfb13fe8e492accba5063b4a123828ec1b1fd39",
+    "reviewInputFingerprint": "sha256:0da1905e27d565ea41cd6c2e2af697d6846480645fe76c813d4fe43e5e094297",
+    "dualSummaryDigest": "sha256:df2b5ca216848275292589635af8d4882184a5b76aca49328f03aa1344f04958",
+    "canonicalLandscapeDigest": "sha256:c3ef809bdb42eac8bd95af30cb2f110bcdc041e1e35df85fa26ffcc4fc3dadc9"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-held-seven-current-v1-20260920-a",
+      "campaignDigest": "sha256:78121e3fed7f91f796d2b4245e921054451376a3025be275396ea4b0105935f2",
+      "roundId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-held-seven-current-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:0da1905e27d565ea41cd6c2e2af697d6846480645fe76c813d4fe43e5e094297",
+      "batchId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:49ce715e6de9035777b85c9e0c728a105e0f048348dda72c82122531353f655f",
+      "runId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1",
+      "runManifestDigest": "sha256:1616844f2d7d5a59324496924bf4cc2b5f2071f1380933f7a0e4d89d854301b6",
+      "resultsDigest": "sha256:b98905ba260c8cef76e906fdf4d1c2e488e4e897529ed399747221e743527b4c"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-held-seven-current-v1-20260920-b",
+      "campaignDigest": "sha256:85b1063ce3a490d72e2c49be7726e0f91b447a72f83241fb534bbcec24945698",
+      "roundId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-held-seven-current-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:0da1905e27d565ea41cd6c2e2af697d6846480645fe76c813d4fe43e5e094297",
+      "batchId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:b90634167d0b0091ba71c2ca5aa2e8bf58eab61ad9049fc7a9d6e10ece536b9d",
+      "runId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b",
+      "runManifestDigest": "sha256:b218f1a0cc361dbe2c282f474ede3591586b6b464d9c6be9d33e8a14539ba4bd",
+      "resultsDigest": "sha256:86394bedae509e810bda73ee9349efbf1fb17991d315b6ea2c71de02d2c166bd"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "m7-held-seven-current-v1-20260920-current-synthesis-decision-001",
+      "goalId": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0b3110c8c2b7d6826ec6c141c9b7605513a090681407ab16040177ccf09f56d2",
+      "pageFingerprint": "sha256:994ea547c16c54160fbc376d52ba71742fd0358ad5194f54778e202556e6c204",
+      "goalReviewContextFingerprint": "sha256:92f0f64769c0b8ce2385070854803edbc720a3827c65242ea818356542f411ec",
+      "finalText": {
+        "titleDe": "Eigenschaften von Funktionssummen graphisch begründen (LK)",
+        "titleEn": "Justify properties of sums of functions graphically (advanced course)",
+        "descriptionDe": "Die lernende Person kann aus den Graphen von $f$ und $g$ den Graphen der Summenfunktion $h(x)=f(x)+g(x)$ skizzieren und seine Eigenschaften durch die punktweise Addition der Funktionswerte begründen.",
+        "descriptionEn": "The learner can sketch the graph of the sum function $h(x)=f(x)+g(x)$ from the graphs of $f$ and $g$ and justify its properties using pointwise addition of the function values."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+          "recordDigest": "sha256:d97047f94c0b59091cf3fc57839ae28546c06fab52babba9fe23f3c773dd9c90"
+        },
+        "second": {
+          "recordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-001",
+          "recordDigest": "sha256:fea26ab487d1dcf40c9cf2f75255a9bc89c290d28c1e86e5cb67dbb45afd2c0d"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen die punktweise graphische Summe ohne Einführung von Produkt oder Verkettung. Die Wertstapel sind korrekt; A erhält als Evidenz die selbstständige Konstruktion und strukturelle Übertragung auf neue Graphen. Keine Textänderung nötig.",
+      "rationaleEn": "Both independent rounds confirm pointwise graphical addition without importing products or composition. Correct value stacks support the lesson; A supplies independent construction and structural transfer to fresh graphs. Keep the text."
+    },
+    {
+      "decisionId": "m7-held-seven-current-v1-20260920-current-synthesis-decision-002",
+      "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b72b129980c7250072f766b2e30c347b90dfdcc954dc2026a79fd13e975c8e3a",
+      "pageFingerprint": "sha256:732e24ebce9a2d96475b25a244711e7f42b1675d6010556be93ba8352ccc2feb",
+      "goalReviewContextFingerprint": "sha256:aa65134303dd8663a7293b0e82a9f298d61eba793bb23215ecc15637aaa96f31",
+      "finalText": {
+        "titleDe": "Geometrische Abbildungen als linear erkennen",
+        "titleEn": "Recognize geometric mappings as linear",
+        "descriptionDe": "Die lernende Person kann bei einer einfachen geometrischen Abbildung anhand der Verträglichkeit mit Vektoraddition und skalarer Multiplikation prüfen, ob sie linear ist.",
+        "descriptionEn": "The learner can determine whether a simple geometric mapping is linear by checking whether it preserves vector addition and scalar multiplication."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.69243680-c2c1-5661-80c0-c95a2be1dabf",
+          "recordDigest": "sha256:f7c42de77063797406b49459b4c1204546ff752a06cc07d30a1c42420bc1b3a0"
+        },
+        "second": {
+          "recordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-002",
+          "recordDigest": "sha256:d6cc40b1aad24168076b7a211381f236de07f81af9bca09031ba2005cdd1a8d3"
+        }
+      },
+      "rationaleDe": "Beide Runden prüfen Additivität und Homogenität für allgemeine Vektoren und Skalare statt bloßer Ursprungstreue. A wird für die Abgrenzung gegenüber nichtlinearen Gegenbeispielen gewählt. Die zuvor entfernte sachfremde Differentialrechnung bleibt außerhalb des Ziels.",
+      "rationaleEn": "Both rounds check additivity and homogeneity for arbitrary vectors and scalars rather than merely preserving the origin. Select A for its contrast with nonlinear counterexamples. The removed unrelated calculus requirement stays outside the goal."
+    },
+    {
+      "decisionId": "m7-held-seven-current-v1-20260920-current-synthesis-decision-003",
+      "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d4431a1543f0dca56c0837de622e1bf4ed892402fff2dfc8f769bb84e0fa5c09",
+      "pageFingerprint": "sha256:873b6a25bb3df0f8e7a3c7bbc7b6eb57c5942296e0c6fcfa0aed0cfecfb36de7",
+      "goalReviewContextFingerprint": "sha256:0361228c1bdf5a95296ead9c245f12652351d7a07d5b014a41a5e9a8bd67ab95",
+      "finalText": {
+        "titleDe": "Eigene Abbildungen modellieren und interpretieren",
+        "titleEn": "Model and interpret own mappings",
+        "descriptionDe": "Die lernende Person kann zu gegebenen geometrischen Anforderungen (z. B. Spiegelung an einer schrägen Ursprungsgeraden, Streckung in einer beliebigen Richtung) passende Abbildungsmatrizen konstruieren, testen und im Kontext begründen.",
+        "descriptionEn": "The learner can construct, test, and justify appropriate mapping matrices for given geometric requirements (e.g., reflection on an oblique line through the origin, stretching in any direction)."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.168d8879-0412-5524-94c5-c1d8169dbd65",
+          "recordDigest": "sha256:950f83214185e40b202f003aa579928165f5ddc13759d6e4d13fe1df4782932c"
+        },
+        "second": {
+          "recordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-003",
+          "recordDigest": "sha256:62f207ba961bfc656df09a43855745810b5593160275a879e498c93ae342d937"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die ausdrücklich durch den Ursprung laufende Spiegelachse und den zusammenhängenden Matrixentwurf. A erhält die geometrische Begründung und Übertragung auf eine Richtungsstreckung. Die neue Formulierung vermeidet die affine Fehlinterpretation.",
+      "rationaleEn": "Both rounds confirm the explicitly origin-crossing reflection axis and coherent matrix-design task. A supplies geometric justification and transfer to a directional stretch. The revised wording prevents an affine interpretation."
+    },
+    {
+      "decisionId": "m7-held-seven-current-v1-20260920-current-synthesis-decision-004",
+      "goalId": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:13893c24c2c47f546b406f3bf067a8d270307f8a38c21ed656caa885ca5cdc23",
+      "pageFingerprint": "sha256:703e69b8e0561b88b199b9af8896c907ed92df944acaafbe63b379d1aa03ba65",
+      "goalReviewContextFingerprint": "sha256:73a1b203370ef0f07bd47f5cc47f7beb962ebdc3eb6dfe6f47b9e18ce4d87090",
+      "finalText": {
+        "titleDe": "Ereignisse darstellen und Baumdiagramme nutzen",
+        "titleEn": "Represent events and use tree diagrams",
+        "descriptionDe": "Die lernende Person kann mehrstufige Zufallsexperimente in Baumdiagrammen darstellen, Pfadregeln anwenden und Wahrscheinlichkeiten an konkreten Beispielrechnungen berechnen.",
+        "descriptionEn": "The learner can represent multi-stage random experiments with tree diagrams, apply path rules, and compute probabilities in concrete examples."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+          "recordDigest": "sha256:872077f30a58da9a1f7022e1c739c2f7fdd0c2b972e777d5f75d4eee807f9031"
+        },
+        "second": {
+          "recordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-004",
+          "recordDigest": "sha256:8879abab5f28b8c2f4eb2090ec165b18f41a03c0f0059da05d2ad29efa9d758a"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Pfadregeln, disjunkte Pfadauswahl und eigene Berechnung in DE und EN. A erhält den Transfer von der fairen Münze auf einen veränderten Urnenbaum; die Lehrgrafik ist kein frischer Leistungsnachweis.",
+      "rationaleEn": "Both rounds confirm path rules, disjoint outcomes and independent calculation in both languages. A transfers the fair-coin illustration to a changed urn tree; the teaching image is not fresh performance evidence."
+    },
+    {
+      "decisionId": "m7-held-seven-current-v1-20260920-current-synthesis-decision-005",
+      "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8a78bdf4a528cf81ddc7ff8eb7c7eff9b5fd1258db3a1012daf6d3c63fa4caca",
+      "pageFingerprint": "sha256:63df7a71b3564bd03cb9da8c67e35f7be71d941cc224ab0b4dc6ce719a06e361",
+      "goalReviewContextFingerprint": "sha256:e71ec8e799175b48c96368f892f0ba0b793c7dccac01479dc13b959564ada9e0",
+      "finalText": {
+        "titleDe": "Einfache geometrische Figuren beschreiben",
+        "titleEn": "Describe simple plane figures",
+        "descriptionDe": "Die lernende Person kann einfache geometrische Figuren, insbesondere gleichschenklige, gleichseitige und rechtwinklige Dreiecke sowie Quadrat, Rechteck, Raute, Parallelogramm, Trapez und Drachenviereck, fachsprachlich beschreiben.",
+        "descriptionEn": "The learner can describe simple plane figures, especially isosceles, equilateral, and right triangles as well as squares, rectangles, rhombi, parallelograms, trapezia, and kites, using correct terminology."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+          "recordDigest": "sha256:67e4b94242a45ae6eb4b99fee3c9a87221ffa9c499fb4597dc57afc03d57d713"
+        },
+        "second": {
+          "recordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-005",
+          "recordDigest": "sha256:1b3f050bf8356838eb60bd6ad09187cc1eaacd640800a5a8961efa81acf59f13"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen ebene Figuren und korrekte Merkmale einschließlich expliziter Trapezkonvention. A erhält die eigenständige Beschreibung statt bloßem Tafelablesen. Körper, Flächenrechnung und entfernte 3D-Voraussetzungen werden nicht importiert.",
+      "rationaleEn": "Both rounds confirm planar figures and correct defining properties including an explicit trapezoid convention. A supplies independent description rather than reading a chart. Solids, area calculation and removed 3D prerequisites are not imported."
+    },
+    {
+      "decisionId": "m7-held-seven-current-v1-20260920-current-synthesis-decision-006",
+      "goalId": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e47089584658287928cf381b3c1cb7ce0916bfe875f4df7ce76a5ea326e23602",
+      "pageFingerprint": "sha256:4b8187be593159d874bc4c42de915c88d35a5d1412b654bbf664496f9134b1b4",
+      "goalReviewContextFingerprint": "sha256:ba225cd9f5167a3187ec6225239c5ce281b61e8c0d3661261c78d8f0a420fa8f",
+      "finalText": {
+        "titleDe": "Gesamtbestände und Gesamteffekte aus Änderungsraten oder Randfunktionen ermitteln",
+        "titleEn": "Determine total stocks and total effects from rates or boundary functions",
+        "descriptionDe": "Die lernende Person kann in Sachsituationen Gesamteffekte aus Änderungsraten oder Randfunktionen mit bestimmten Integralen bestimmen, bei der Rekonstruktion eines absoluten Gesamtbestands einen gegebenen Anfangsbestand berücksichtigen und die Bedeutung der Ergebnisse fachlich erläutern.",
+        "descriptionEn": "The learner can determine total effects in real-world situations from rates of change or boundary functions using definite integrals, include a given initial quantity when reconstructing an absolute total quantity, and explain the meaning of the results mathematically."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+          "recordDigest": "sha256:4621582d69c417aae5358f9f78595b2f7be014e08c3fcc74fd271b3382af1630"
+        },
+        "second": {
+          "recordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-006",
+          "recordDigest": "sha256:6d3b8ec4b37572b225fad268c9bc8ec3c132527d89473d436b103e754ba29912"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die Trennung von Gesamteffekt und absolutem Endbestand mit Anfangswert. A erhält Modellierung, Vorzeichendeutung und Rückprüfung; die Lehrgrafik illustriert nur Zusatzkosten. Die präzisierte zweisprachige Beschreibung bleibt erhalten.",
+      "rationaleEn": "Both rounds distinguish total change from absolute final stock with an initial value. A preserves modelling, sign interpretation and checking; the teaching image illustrates additional cost only. Retain the clarified bilingual wording."
+    },
+    {
+      "decisionId": "m7-held-seven-current-v1-20260920-current-synthesis-decision-007",
+      "goalId": "19481f5d-94de-4a74-b765-cbebd1525994",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a261350c3bc472ddd9707cee5078e1d37f8fae054b2e896b1a74dbc67f91704e",
+      "pageFingerprint": "sha256:312c8c13eafcd0678bc7834661e26b0586216c831ef81b2fc888c30f545af902",
+      "goalReviewContextFingerprint": "sha256:906849ea5cce1c836fb2204be8194435fca5dcbc1a03599180b7cd1e498d2d08",
+      "finalText": {
+        "titleDe": "Volumina von Rotationskörpern um die Abszisse ermitteln (LK)",
+        "titleEn": "Determine Volumes of Solids of Revolution Around the x-axis (advanced course)",
+        "descriptionDe": "Die lernende Person kann Volumina von Körpern berechnen, die durch Rotation von Flächen um die Abszissenachse entstehen, auch wenn Wurzelfunktionen als Randfunktionen auftreten.",
+        "descriptionEn": "The learner can calculate volumes of bodies generated by rotating areas around the x-axis, including cases with root functions as boundary functions."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-held-seven-d-a-20260920-math-m7-current-scope-v1.19481f5d-94de-4a74-b765-cbebd1525994",
+          "recordDigest": "sha256:492f777f5da8d42623bd65657537629254a6636ac70ca3605b0e3651264b5bb6"
+        },
+        "second": {
+          "recordId": "mathematik-m7-held-seven-current-v1-20260920-first-pass-b.codex-blind-b.record-007",
+          "recordDigest": "sha256:8ee9276fc9de342cb674e04a14327f6f01794f734a5283a27c48604356e868b8"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen Rotation um die x-Achse mit Wurzelfunktionen und korrekter Querschnittsrechnung. A erhält den geometrisch begründeten Transfer; der Hinweis LK-Tags gegenüber HE-GK-Kontext bleibt ausdrücklich eine gesonderte Projektionsfrage, keine bestätigte GK-Freigabe. Die D-Synthese bestätigt nur den aktuellen fachlichen Text und lokalen Lernkontext.",
+      "rationaleEn": "Both rounds confirm x-axis rotation with root functions and correct cross-sectional reasoning. A supplies geometric transfer. The LK-tag versus HE-GK context note remains a separate projection question, not validated GK applicability. This D synthesis confirms only the current subject wording and local learning context."
+    }
+  ],
+  "manifestFingerprint": "sha256:a1bb9d56c6d996b10c3b8286fa6ea4b92ae5bf413f5450ae2ff18984847ed830"
+}

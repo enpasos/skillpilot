@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "This reviewer did not generate or import these images and did not consult the generating agent's acceptance decisions. Decisions are based on the actual candidate rasters and the current canonical goal texts.",
+  "reviewDate": "2026-09-20",
+  "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+  "title": "Einfache gebrochen rationale und Wurzelfunktionen ableiten",
+  "description": "Die lernende Person kann einfache gebrochen rationale Funktionen der Form $f(x)=\\frac{1}{x^n}$ und die einfache Wurzelfunktion $f(x)=\\sqrt{x}$ ableiten und die Ableitungsschritte fachsprachlich begründen.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/6517427b-cf4e-5ebf-9a76-e1035617687c/candidate-v1.png",
+  "candidateSha256": "c27f7298346293e3f844ac7865f8670fade4c5b271a8df429079ec9cf9da7b70",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/6517427b-cf4e-5ebf-9a76-e1035617687c/prompt.de.md",
+  "decision": "accept_candidate",
+  "checks": [
+    "Viewed the actual raster and independently recalculated all three derivative chains.",
+    "1/x=x⁻¹ gives −x⁻²=−1/x²; 1/x²=x⁻² gives −2x⁻³=−2/x³, for x≠0.",
+    "sqrt(x)=x^(1/2) gives (1/2)x^(−1/2)=1/(2sqrt(x)), for x>0. The undefined finite derivative at x=0 is explicitly distinguished.",
+    "The exponent rule, negative sign and missing-factor warnings are correct and support explaining the procedure."
+  ],
+  "defects": [],
+  "humanApproval": false,
+  "scope": "Targeted independent candidate-image review only. No active-asset import and no full goal-completion or human-approval claim."
+}

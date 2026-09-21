@@ -8,70 +8,20 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image, reference-image input)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85/0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85.jpg`
+- Quellbild: `0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85/0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Eigenschaften von Funktionsprodukten graphisch begründen (LK)
-Beschreibung: Die lernende Person kann Eigenschaften von Funktionsprodukten wie $f(x)\cdot g(x)$ anhand der Graphen von $f$ und $g$ skizzieren und begründen.
-
-Zusatzanweisung:
-Korrektur nach fachlichem Review:
-
-Nutze das mitgegebene Referenzbild als geometrisch verbindliche Vorlage fuer Kurvenform, Achsenlage und Produktpunkte. Erzeuge eine saubere didaktische Cartoon-Infografik mit Wertetabelle, aber veraendere die Mathematik nicht.
-
-Beispiel exakt:
-- f(x)=x
-- g(x)=2-x
-- p(x)=f(x)*g(x)=x(2-x)=2x-x^2
-
-Wertetabelle exakt:
-- x: -1, 0, 1, 2, 3
-- f(x): -1, 0, 1, 2, 3
-- g(x): 3, 2, 1, 0, -1
-- p(x): -3, 0, 1, 0, -3
-
-Graphen muessen exakt wie im Referenzbild verlaufen:
-- f(x)=x ist eine blaue Gerade mit Steigung 1.
-- g(x)=2-x ist eine gruene Gerade mit Steigung -1.
-- p(x)=x(2-x) ist eine rote nach unten geoeffnete Parabel.
-- Der rote Produktgraph hat Nullstellen bei x=0 und x=2.
-- Der rote Produktgraph hat den Scheitel bei (1|1).
-- Die roten Produktpunkte (-1|-3), (0|0), (1|1), (2|0), (3|-3) muessen sichtbar auf der roten Parabel liegen.
-- Das Koordinatensystem muss bis mindestens y=-3 reichen.
-
-Beschriftungen:
-- Kurvenlabels direkt an die Kurven: f(x)=x, g(x)=2-x, p(x)=x(2-x).
-- Kurvenfarben muessen konsistent sein: f blau, g gruen, p rot.
-- Falls Produktpunkte beschriftet werden, nur fachlich sichere Labels: p(-1)=-3, p(1)=1, p(3)=-3.
-
-Pfeile:
-- Keine Pfeile zeichnen.
-- Keine Tabellen-zu-Graph-Pfeile.
-- Keine Zuordnungspfeile.
-- Keine Messpfeile.
-
-Vermeiden:
-- Nicht p(1)=2 darstellen; korrekt ist p(1)=1.
-- Nicht p(-1)=-2 darstellen; korrekt ist p(-1)=-3.
-- Nicht die Produktpunkte neben die rote Parabel setzen.
-- Nicht g(x)=2-x als steigende Gerade zeichnen; g ist fallend.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Use case: scientific-educational image correction.
+Input image: existing German math function-product illustration; edit target and style reference.
+Keep the friendly clear hand-drawn/comic lettering and layout, title, correct complete value table, blue f / green g / red p color mapping. Landscape PNG.
+Replace the faulty right coordinate graph with an internally exact drawing of f(x)=x (blue), g(x)=2−x (green), and p(x)=x(2−x) (red). Horizontal x scale from −1 to 3 and vertical y scale from −3 to 3. Use only integer tick labels, equally spaced within each axis; no decimal ticks. Place x=0 exactly at the vertical y-axis and y=0 exactly at the horizontal x-axis. Plot straight factors and the concave-down parabola exactly through the corresponding coordinates. Red product points: (−1,−3), (0,0), (1,1), (2,0), (3,−3). All three graphs meet at (1,1). The parabola vertex is exactly (1,1), zeros at 0 and 2, negative outside them. Factor f passes through (−1,−1),(0,0),(1,1),(2,2),(3,3); g through (−1,3),(0,2),(1,1),(2,0),(3,−1).
+Preserve the left table EXACTLY: columns x, f(x), g(x), p(x)=f(x)·g(x); rows −1/−1/3/−3, 0/0/2/0, 1/1/1/1, 2/2/0/0, 3/3/−1/−3.
+No table-to-graph arrows or leaders. Prioritize a consistent mathematical graph over decorative detail. Friendly pastel accents, not photorealistic. No technical IDs, watermarks, or unnecessary text.
 ```
 
 ## Review-Notiz

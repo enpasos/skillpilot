@@ -1,0 +1,188 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "m7-functions-post-revision-5-v1-20260920-current-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex /root (informed AI adjudicator; no human approval)",
+  "synthesizedAt": "2026-09-20T19:02:06.111Z",
+  "batch": {
+    "batchId": "mathematik-m7-functions-post-revision-5-v1-20260920",
+    "batchManifestDigest": "sha256:8eea40124f7a0bc8c9c5f597ce3960070ef882de8b32310a41aba2874a76a894",
+    "configDigest": "sha256:fce94cbdd7d234e8e09275ec83032c6ec0cd56f1762b1692a96fdaf61a96d196",
+    "bundleFingerprint": "sha256:53feab507a212429e73cc47c3a75230de747c69735668a6c518bd19a2717d217",
+    "bookDigest": "sha256:c83d6443c9674d8e9096e7dbd2cafae9900b75345c8811c6c9ca9c15c5a032cd",
+    "reviewInputFingerprint": "sha256:de2d96861c74cd709e806ba66e18951c164cd1d393b2aa1ea9d0bdda926af154",
+    "dualSummaryDigest": "sha256:144fd8bf17a4feb3fdeb6fdb70cac6ca1ff9c0469290df14eeb6083ee7513219",
+    "canonicalLandscapeDigest": "sha256:306de897336b4aaf3c8e2cfbdde385f2d3b5b4405bdde2566000c3ba97bc2e0e"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-functions-post-revision-5-v1-20260920-a",
+      "campaignDigest": "sha256:8715aeb643fdad0bd68870a18a470a3736d16e22bda949ba3120affa8c4a3ca5",
+      "roundId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-functions-post-revision-5-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:de2d96861c74cd709e806ba66e18951c164cd1d393b2aa1ea9d0bdda926af154",
+      "batchId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:d227de98fda6afc423df3cb45e445c43569d1833d05af52915dd0bcaf3368d0f",
+      "runId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-a.batch-001.codex-native",
+      "runManifestDigest": "sha256:19b2fab31ce0286331f40abed3fe72d8bc1a31907a684e26f7b308232ce2727e",
+      "resultsDigest": "sha256:54fa891ed9bd361f99ac04984c1d413ad639306ff39811d470318f13945f2ed2"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-functions-post-revision-5-v1-20260920-b",
+      "campaignDigest": "sha256:bf6568943395334c46d64248efb68b40b021cf6a082df9cd7e8ae77112977057",
+      "roundId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-functions-post-revision-5-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:de2d96861c74cd709e806ba66e18951c164cd1d393b2aa1ea9d0bdda926af154",
+      "batchId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:0fed89df0956de3d635e9ea01dde34434e0425cc3e55fc1a101c2779050bbfa4",
+      "runId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-b.batch-001.native-review-b",
+      "runManifestDigest": "sha256:6143fc3ece778a9844a09a8a6b03d9422aee5922611478396eae8d91790882a5",
+      "resultsDigest": "sha256:1b4df2454dd5b9d7383dacb1bb553e3cd1bc4918b2551ff2eb5ad2912f839d8b"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "m7-functions-post-revision-5-v1-20260920-current-synthesis-decision-001",
+      "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:98d29e0f9217a374cf5b7dc7cbc520f48a352609348360eb7d5ab8f2d3ba056a",
+      "pageFingerprint": "sha256:90e8ae37f12cb7a431f5ac7d3d196e7db0c84e5da883b353abba84ff83c6273c",
+      "goalReviewContextFingerprint": "sha256:96c09d4e39dd35e6cfef178708f42ff9024eee3182a0e8f58e8a08e326768711",
+      "finalText": {
+        "titleDe": "Allgemeinen Transformationsterm interpretieren",
+        "titleEn": "Interpret the general function transformation term",
+        "descriptionDe": "Die lernende Person kann den Term $g(x)=a\\cdot f(b\\cdot(x-c))+d$ für $a\\ne0$ und $b\\ne0$ als Kombination von Verschiebung, Streckung beziehungsweise Stauchung und Spiegelung deuten, auch ohne konkret gegebenen Funktionsterm von $f$.",
+        "descriptionEn": "The learner can interpret $g(x)=a\\cdot f(b\\cdot(x-c))+d$ for $a\\ne0$ and $b\\ne0$ as a combination of shifts, stretches or compressions, and reflections, even without a concrete function term for $f$."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-a.batch-001.goal-001",
+          "recordDigest": "sha256:212be943392d389e2bc0b961ef062fce891614fc2383c8cb4cd31b19873df759"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-b.batch-001.native-review-b.a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "recordDigest": "sha256:4ecc22095165a18066aaf7a211c1cf5d0cf55f0b53d8e2cd1c539df03a6fc790"
+        }
+      },
+      "rationaleDe": "Beide neuen Blindrunden bestätigen die nichtdegenerierten Parameter a≠0 und b≠0 sowie die kombinierte Punktabbildung ohne vorgegebenen f-Term. Die Vorzeichen- und Reihenfolgeargumente von A tragen den Transfer auf einen unsymmetrischen Graphen. Die präzisierte Beschreibung bleibt unverändert; das aktuelle P-Profil enthält zwei korrekt nachgerechnete eigenständige Transformationen.",
+      "rationaleEn": "Both fresh blind rounds confirm nondegenerate a and b and the combined point mapping without a given expression for f. Round A explains signs and operation order and transfers them to an asymmetric graph. Retain the revised wording; the current P profile contains two independently recalculated transformations."
+    },
+    {
+      "decisionId": "m7-functions-post-revision-5-v1-20260920-current-synthesis-decision-002",
+      "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bc22d1b8e73de3aa2622b366506b33cdb63aca83665b15ff2e7ca4bd0b124f4d",
+      "pageFingerprint": "sha256:b0fbd4528a1a9e28d5f20e9a85ecb83f332173fbe2f2fe5a021b04e96d0e81cc",
+      "goalReviewContextFingerprint": "sha256:85e9ca71d7fe60832cd8178842a5a88f9b0adf0ace5c48159503b2e0b90ab890",
+      "finalText": {
+        "titleDe": "Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)",
+        "titleEn": "Use the Natural Logarithm as an Antiderivative of 1/x (Advanced Course)",
+        "descriptionDe": "Die lernende Person kann für $x>0$ die natürliche Logarithmusfunktion als Stammfunktion von $1/x$ verwenden und diese Beziehung in einfachen Integralrechnungen und Begründungen sicher nutzen.",
+        "descriptionEn": "The learner can use the natural logarithm as an antiderivative of $1/x$ for $x>0$ and apply this relationship reliably in simple integral calculations and justifications."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-a.batch-001.goal-002",
+          "recordDigest": "sha256:a909bd8cf5f87a6301acc1c790a609d4ad1f581e069d1577172fa7b8b52f270c"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-b.batch-001.native-review-b.3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "recordDigest": "sha256:3f028bbbefccef59258cbfea8978e252de8a96d1bcbee54f90e1eefa72d76485"
+        }
+      },
+      "rationaleDe": "A und B bestätigen die ausdrücklich positive Definitionsmenge; ln|x| und uneigentliche Integrale werden nicht importiert. A verbindet Ableitungsprobe, Konstante und Grenzwertdifferenz mit einem frischen Vorzeichenfall. Das separate P-Profil wurde auf positive Intervalle begrenzt und durch eine Rückwärtsaufgabe zur oberen Grenze ergänzt; die alte negative Variante bleibt historisch.",
+      "rationaleEn": "Both rounds confirm the explicitly positive domain without importing ln|x| or improper integrals. A relates derivative checking, constants and endpoint differences to a fresh sign case. The separate P profile now stays on positive intervals and includes an inverse endpoint problem; the negative variant is retained only as history."
+    },
+    {
+      "decisionId": "m7-functions-post-revision-5-v1-20260920-current-synthesis-decision-003",
+      "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4d6fc22dc0c0547db66d81ffbbec7d57eeaa4519e862bb2b24801878443236ef",
+      "pageFingerprint": "sha256:62b81b15ee69a235c77b33f254c61a15f1d28d596da8a0c4c63916d7d7dd5ef9",
+      "goalReviewContextFingerprint": "sha256:c7159cec88dfcd3d025776c5c834a839731e438a1e913068e953e7376a0f506d",
+      "finalText": {
+        "titleDe": "Einfache gebrochen rationale Funktionen untersuchen",
+        "titleEn": "Investigate simple rational functions",
+        "descriptionDe": "Die lernende Person kann für positive ganze Zahlen $n$ grundlegende Eigenschaften der Funktionen $f(x)=\\frac{1}{x^n}$ beschreiben, Definitions- und Wertemenge sowie Graphenmerkmale angeben und das Verhalten an der Polstelle und im Unendlichen deuten.",
+        "descriptionEn": "The learner can describe basic properties of the functions $f(x)=\\frac{1}{x^n}$ for positive integers $n$, state their domain, range and graph features, and interpret their behaviour at the pole and at infinity."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-a.batch-001.goal-003",
+          "recordDigest": "sha256:8cee89d92e7f80bc99f02e9ecfe1108ac482139ac6830dd62e930a508a0b0a70"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-b.batch-001.native-review-b.61686d85-0301-550e-bab9-bd9411c3e7ce",
+          "recordDigest": "sha256:b1ba7b84aa1a4327d67aeb21a747a604b5032ed7cab44ebc4eb0352055ed48d2"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen positive ganzzahlige Exponenten als fachlich ausreichende Eingrenzung. A begründet die zusammengehörigen Bereichs-, Paritäts- und Randmerkmale sowie deren Übertragung auf einen neuen Graphen. Ableitung bleibt ein eigenes Nachfolgeziel; die geprüften Fälle n=3,4,5 passen zur präzisierten Beschreibung.",
+      "rationaleEn": "Both rounds confirm positive integer exponents as sufficient scope. A connects domain, parity and limiting behaviour and transfers these to a new graph. Differentiation remains a separate successor; checked cases n=3,4,5 match the revised description."
+    },
+    {
+      "decisionId": "m7-functions-post-revision-5-v1-20260920-current-synthesis-decision-004",
+      "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:478fb49427ca61dd7542f27e531957037d98074528048aa7bc450ba9980da334",
+      "pageFingerprint": "sha256:dbfbab5380137012df5aada5f8ed5f2e38bbf6d8955837734aebfd51af1b639c",
+      "goalReviewContextFingerprint": "sha256:d68b3d650bc8bffa87492587115d1d2ceff21010fff332de456e5f011f9d41a9",
+      "finalText": {
+        "titleDe": "Einfache gebrochen rationale und Wurzelfunktionen ableiten",
+        "titleEn": "Differentiate simple rational and root functions",
+        "descriptionDe": "Die lernende Person kann Funktionen der Form $f(x)=\\frac{1}{x^n}$ mit positivem ganzzahligem $n$ für $x\\ne0$ sowie $f(x)=\\sqrt{x}$ für $x>0$ ableiten und die Ableitungsschritte fachsprachlich begründen.",
+        "descriptionEn": "The learner can differentiate functions of the form $f(x)=\\frac{1}{x^n}$ with positive integer $n$ for $x\\ne0$, as well as $f(x)=\\sqrt{x}$ for $x>0$, and justify the differentiation steps using correct terminology."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-a.batch-001.goal-004",
+          "recordDigest": "sha256:2ff659a285dff59de2737f6497ccafee17b035d92664108c6408165684bf1136"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-b.batch-001.native-review-b.6517427b-cf4e-5ebf-9a76-e1035617687c",
+          "recordDigest": "sha256:4eaf17f2c4fd12e1ef81611ef42aac3a69eb3e455a18038a374dc79261e893dc"
+        }
+      },
+      "rationaleDe": "KEEP beider Runden: Die gemeinsame Potenzregelkompetenz bleibt atomar und nennt ihre verschiedenen gültigen Bereiche. A prüft äquivalente Darstellungen und negative zulässige Eingaben; die Definition der Quadratwurzel wird nicht mit endlicher Randableitung verwechselt. Das P-Profil wurde fachlich gegen genau diese Präzisierung geprüft.",
+      "rationaleEn": "Both rounds retain the atomic power-rule competence with its distinct valid domains. A checks equivalent forms and admissible negative inputs, without confusing square-root definition with a finite endpoint derivative. The P profile was checked against precisely this revision."
+    },
+    {
+      "decisionId": "m7-functions-post-revision-5-v1-20260920-current-synthesis-decision-005",
+      "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:825f3c48715149202cefc2258e6bc061746c156a1aaf1870b07c76d718f69343",
+      "pageFingerprint": "sha256:ce0ad8ba08327f1e3b42c1c4c1155b0d73487e113cf17f6f5fa3bba072956f41",
+      "goalReviewContextFingerprint": "sha256:70b7c63dc51decd1b4bcb6870011179c7f4903c619213362109ca131a7387713",
+      "finalText": {
+        "titleDe": "Zusammenhang von Funktionsgraph und Umkehrgraph erläutern",
+        "titleEn": "Explain the relation between a function graph and its inverse graph",
+        "descriptionDe": "Die lernende Person kann erläutern, wie durch Vertauschen der x- und y-Koordinaten der Graph einer umkehrbaren Funktion in den Graphen ihrer Umkehrfunktion übergeht und warum dies einer Spiegelung an $y=x$ entspricht.",
+        "descriptionEn": "The learner can explain how swapping x- and y-coordinates transforms the graph of an invertible function into the graph of its inverse and why this corresponds to reflection across $y=x$."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-a.batch-001.goal-005",
+          "recordDigest": "sha256:595473ffeb0d1ed34b4f3bfeefc3216e748e045f78614d866753bd217d0d4e77"
+        },
+        "second": {
+          "recordId": "mathematik-m7-functions-post-revision-5-v1-20260920-first-pass-b.batch-001.native-review-b.dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "recordDigest": "sha256:d627375a46f2d7e39779cedede4789f894c1cb1bf5b149b77e802abddae6db6b"
+        }
+      },
+      "rationaleDe": "Beide Runden haben die finale V6-Grafik betrachtet und bestätigen Koordinatentausch und Spiegelung an y=x. A erläutert die Umkehrbarkeit und überträgt die Punktzuordnung auf einen fallenden nichtlinearen Graphen. Der aktuelle Text bleibt; frühere verworfene Bildfassungen und deren Freigaben werden nicht wiederverwendet.",
+      "rationaleEn": "Both rounds viewed final V6 and confirm coordinate swapping and reflection across y=x. A explains invertibility and transfers point correspondence to a decreasing nonlinear graph. Retain the current text; rejected earlier image versions and approvals are not reused."
+    }
+  ],
+  "manifestFingerprint": "sha256:b22eec1a9c4f4e8dad40c1d1e7a2fefe5c820288d23b6b2598b1f5cfc50c92be"
+}

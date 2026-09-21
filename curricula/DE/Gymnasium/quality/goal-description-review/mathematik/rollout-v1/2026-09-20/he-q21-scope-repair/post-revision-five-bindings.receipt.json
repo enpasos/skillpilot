@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "math-post-revision-five-bindings-20260920",
+  "reviewedAt": "2026-09-20T18:49:36.804Z",
+  "reviewer": "codex-informed-post-revision-five-20260920",
+  "status": "applied-and-native-validated",
+  "verification": {"atomicity":{"command":"app/node_modules/.bin/tsx app/scripts/semanticAtomicityReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json","exitCode":0,"currentAtomic":797,"missing":0,"stale":0,"obsolete":0},"memory":{"command":"app/node_modules/.bin/tsx app/scripts/memoryCardReview.ts --mode=check --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json","exitCode":0,"ordinaryAtomicGoals":797,"noMemoryNeeded":758,"memoryRequired":39,"missing":0,"stale":0,"obsolete":0,"keptPrimaryCards":64,"missingCardRecords":0,"staleCardRecords":0,"untracedMemoryGoals":0,"missingVisibleMemoryNodes":0},"exactRecordScope":{"status":"pass","semanticKindSchemasValidated":5,"nativeSemanticKindFingerprintsCurrent":5,"sourceGoalsUnchangedDuringReview":5,"files":{"atomicity":{"exactlyFiveRecordsChanged":true,"allOtherBytesUnchanged":true,"afterFileSha256":"sha256:03190098093faa487360a2027c16b532e88a33a92e2427e91640fff53d8e4102"},"memory":{"exactlyFiveRecordsChanged":true,"allOtherBytesUnchanged":true,"afterFileSha256":"sha256:a799e1da1abef300d0764b97cef3987d39620149ae477c619a0935c8b456489b"},"kind":{"exactlyFiveRecordsChanged":true,"allOtherBytesUnchanged":true,"afterFileSha256":"sha256:4500dd7e28f3f46ea07c94aeccef6b85073d3a60bc00fe9f9f499b09458fd327"}}},"semanticKindSchemaNote":"Validated the five semanticKindDecision records against the ontology schema definition. Ajv emitted irrelevant URI-format warnings from other schema definitions; the checked record definition contains no URI fields.","scopeBoundary":"No curriculum-status generation, publication build, registry/P/canonical/QA/card-record/deck changes; no new human approval. Only the five individually reviewed records in each of three ledgers changed."},
+  "humanApproval": false,
+  "descriptionOrPositiveEvidenceApproval": false,
+  "paths": {
+    "atomicity": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+    "memory": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+    "kind": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json"
+  },
+  "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "scopeGoalIds": [
+    "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+    "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+    "61686d85-0301-550e-bab9-bd9411c3e7ce",
+    "6517427b-cf4e-5ebf-9a76-e1035617687c",
+    "dbc13bb0-963b-49a8-a441-2183f4b64c8e"
+  ],
+  "beforeFileSha256": {
+    "atomicity": "sha256:056a48ede71b99c617c2869874c49973f399a4ba0bf6e831c8350b6bba16f8ca",
+    "memory": "sha256:755ef7e25907cf9b22d99deffbca1e6b1adfbfaf7b1a1a1b57bda61542c24601",
+    "kind": "sha256:7c4a568d5fc2044bf4b298730439d466a27e6f09862dcdccc93b2d45f4bf3757"
+  },
+  "fingerprintDerivation": {
+    "atomicity": {
+      "source": "app/scripts/semanticAtomicityReview.ts",
+      "sha256": "sha256:b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9",
+      "functions": [
+        "normalizeText",
+        "stableJson",
+        "getSemanticPayload",
+        "fingerprintGoal"
+      ]
+    },
+    "memory": {
+      "source": "app/scripts/memoryCardReview.ts",
+      "sha256": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672",
+      "functions": [
+        "normalizeText",
+        "stableJson",
+        "fingerprintGoal"
+      ]
+    },
+    "method": "Exact private native function declarations extracted through TypeScript AST and evaluated in isolation; no CLI main and no global write-fingerprints invoked.",
+    "semanticKind": "app/scripts/goalBookModel.ts#fingerprintSemanticKindSourceGoal"
+  },
+  "records": [
+    {
+      "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+      "title": "Allgemeinen Transformationsterm interpretieren",
+      "reviewedDescriptionDe": "Die lernende Person kann den Term $g(x)=a\\cdot f(b\\cdot(x-c))+d$ für $a\\ne0$ und $b\\ne0$ als Kombination von Verschiebung, Streckung beziehungsweise Stauchung und Spiegelung deuten, auch ohne konkret gegebenen Funktionsterm von $f$.",
+      "reviewedDescriptionEn": "The learner can interpret $g(x)=a\\cdot f(b\\cdot(x-c))+d$ for $a\\ne0$ and $b\\ne0$ as a combination of shifts, stretches or compressions, and reflections, even without a concrete function term for $f$.",
+      "kindRationale": "Einzelprüfung 2026-09-20 nach Präzisierung a≠0 und b≠0: Eine Kompetenz, den gemeinsamen Transformationsterm g(x)=a·f(b·(x−c))+d als Abbildung von Graphpunkten zu deuten. Verschieben, Skalieren und Spiegeln sind zusammenwirkende Bestandteile dieser einen Transformation; die Nichtnullbedingungen begrenzen denselben Vorgang und fügen kein zweites Lernziel hinzu.",
+      "sourceGoalSha256": "sha256:e52a1a0f124d93d7783674642b7b0667d6fbae5fd146b76bc101f7c2e226d55d",
+      "before": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "fingerprint": "sha256:da4f9e061768edaac59ee5c4b2e715d987436fad0be0793921eee574e36ff834",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-09",
+          "reviewer": "codex",
+          "reason": "Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "fingerprint": "sha256:9f84f6f03540809c9f74f95a19d81e870143adf0ae25805268e48641ca047481",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "kind": {
+          "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "sourceFingerprint": "sha256:928c54ad14454ad52f2ac1661f529670f807d9f52b85a3cdc691e3f5520bd91a",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "after": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "fingerprint": "sha256:d00ef7c54e81900afba7380df5e35b6def4e81d0432488ab87eccce481d266ef",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-20",
+          "reviewer": "codex-informed-post-revision-five-20260920",
+          "reason": "Einzelprüfung 2026-09-20 nach Präzisierung a≠0 und b≠0: Eine Kompetenz, den gemeinsamen Transformationsterm g(x)=a·f(b·(x−c))+d als Abbildung von Graphpunkten zu deuten. Verschieben, Skalieren und Spiegeln sind zusammenwirkende Bestandteile dieser einen Transformation; die Nichtnullbedingungen begrenzen denselben Vorgang und fügen kein zweites Lernziel hinzu.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "fingerprint": "sha256:8a81f4c04b80fd29ad33261394ca50048b7139c8b50538dd5b0a9b8d663b8d5f",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-20",
+          "reviewer": "codex-informed-post-revision-five-20260920",
+          "reason": "Einzelprüfung 2026-09-20: no_memory_needed bleibt passend. Der gegebene Transformationsterm wird über Punktabbildung und Vergleich begründet; auch a≠0 und b≠0 werden in der Anwendung erklärt. Ein eigenes Fakten- oder Formelkartendeck ist für diese Verständnis- und Deutungskompetenz nicht erforderlich."
+        },
+        "kind": {
+          "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "sourceFingerprint": "sha256:c88edca704d4db2948cc93085da6730c130cc70cb65fda837397c7e31a891672",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+        }
+      },
+      "rawBefore": {
+        "atomicity": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"a12bef54-7595-5f48-a7a8-9cfe1d8e9729\",\"fingerprint\":\"sha256:da4f9e061768edaac59ee5c4b2e715d987436fad0be0793921eee574e36ff834\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-09\",\"reviewer\":\"codex\",\"reason\":\"Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.\",\"suggestedSplit\":[]}",
+        "memory": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"a12bef54-7595-5f48-a7a8-9cfe1d8e9729\",\"fingerprint\":\"sha256:9f84f6f03540809c9f74f95a19d81e870143adf0ae25805268e48641ca047481\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+        "kind": "    {\n      \"goalId\": \"a12bef54-7595-5f48-a7a8-9cfe1d8e9729\",\n      \"sourceFingerprint\": \"sha256:928c54ad14454ad52f2ac1661f529670f807d9f52b85a3cdc691e3f5520bd91a\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-pilot-curricular-atomic\"\n    }"
+      },
+      "rawAfter": {
+        "atomicity": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"a12bef54-7595-5f48-a7a8-9cfe1d8e9729\",\"fingerprint\":\"sha256:d00ef7c54e81900afba7380df5e35b6def4e81d0432488ab87eccce481d266ef\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20 nach Präzisierung a≠0 und b≠0: Eine Kompetenz, den gemeinsamen Transformationsterm g(x)=a·f(b·(x−c))+d als Abbildung von Graphpunkten zu deuten. Verschieben, Skalieren und Spiegeln sind zusammenwirkende Bestandteile dieser einen Transformation; die Nichtnullbedingungen begrenzen denselben Vorgang und fügen kein zweites Lernziel hinzu.\",\"suggestedSplit\":[]}",
+        "memory": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"a12bef54-7595-5f48-a7a8-9cfe1d8e9729\",\"fingerprint\":\"sha256:8a81f4c04b80fd29ad33261394ca50048b7139c8b50538dd5b0a9b8d663b8d5f\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20: no_memory_needed bleibt passend. Der gegebene Transformationsterm wird über Punktabbildung und Vergleich begründet; auch a≠0 und b≠0 werden in der Anwendung erklärt. Ein eigenes Fakten- oder Formelkartendeck ist für diese Verständnis- und Deutungskompetenz nicht erforderlich.\"}",
+        "kind": "    {\n      \"goalId\": \"a12bef54-7595-5f48-a7a8-9cfe1d8e9729\",\n      \"sourceFingerprint\": \"sha256:c88edca704d4db2948cc93085da6730c130cc70cb65fda837397c7e31a891672\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-semantic-recheck-curricular-atomic\"\n    }"
+      }
+    },
+    {
+      "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+      "title": "Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)",
+      "reviewedDescriptionDe": "Die lernende Person kann für $x>0$ die natürliche Logarithmusfunktion als Stammfunktion von $1/x$ verwenden und diese Beziehung in einfachen Integralrechnungen und Begründungen sicher nutzen.",
+      "reviewedDescriptionEn": "The learner can use the natural logarithm as an antiderivative of $1/x$ for $x>0$ and apply this relationship reliably in simple integral calculations and justifications.",
+      "kindRationale": "Einzelprüfung 2026-09-20 nach ausdrücklicher Einschränkung auf x>0: Ein Inhalt, ln(x) als Stammfunktion von 1/x zu erkennen und anzuwenden. Einfache Integralrechnung und Begründung durch Ableiten sind Prüfung und Anwendung derselben Beziehung, keine unabhängigen zusätzlichen Integrationsmethoden.",
+      "sourceGoalSha256": "sha256:46cc5cfbeb62c39cfa61a658ae810efaed72d85920312024a8a5b91d6f98c62a",
+      "before": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "fingerprint": "sha256:8bb10ef3758379c353ad7ea407f4e4d61a65fdb03a1306c35c8b9d9f14037816",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q1-Review: Eine zusammenhaengende Integral- oder Stammfunktionsroutine; Berechnen, Deuten und Begruenden sind hier Ausfuehrungsschritte einer pruefbaren Kompetenz.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "fingerprint": "sha256:e7454fc6b8a249152d4bd14bdfade0537df1057e4b640bb142e56f363b2aad43",
+          "status": "memory_required",
+          "memoryUseful": true,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-semantic-memory-pilot",
+          "reason": "Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend.",
+          "memoryGoalIds": [
+            "ca708087-71f8-5fae-91c5-b80721a4208f"
+          ],
+          "deckIds": [
+            "de_gymnasium_math_analysis_core"
+          ]
+        },
+        "kind": {
+          "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "sourceFingerprint": "sha256:c3f9a4a7e162528d5ae1d6da707ee93efbbafd1a166ee1d20c2f05a9f88744d6",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-post-split-curricular-atomic"
+        }
+      },
+      "after": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "fingerprint": "sha256:9bf0717cf4a8fbcd36d5eef1c566857dd6ffd60258286824427680f20ace1957",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-20",
+          "reviewer": "codex-informed-post-revision-five-20260920",
+          "reason": "Einzelprüfung 2026-09-20 nach ausdrücklicher Einschränkung auf x>0: Ein Inhalt, ln(x) als Stammfunktion von 1/x zu erkennen und anzuwenden. Einfache Integralrechnung und Begründung durch Ableiten sind Prüfung und Anwendung derselben Beziehung, keine unabhängigen zusätzlichen Integrationsmethoden.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "fingerprint": "sha256:2f979686b4c5fa1102ffcb6dd2b1c9841bc0db8b3cb9051f9bfdf27c0f1e14f9",
+          "status": "memory_required",
+          "memoryUseful": true,
+          "reviewedAt": "2026-09-20",
+          "reviewer": "codex-informed-post-revision-five-20260920",
+          "reason": "Einzelprüfung 2026-09-20: memory_required bleibt auf den kompakten Zusammenhang (ln x)′=1/x und seine Umkehrung als Stammfunktion begrenzt. Die bestehenden Karten math_analysis_c05 und math_analysis_c14 im Deck de_gymnasium_math_analysis_core bleiben passend: Für x>0 gilt ln|x|=ln x. Die neue positive Definitionsmenge erweitert den Kartenumfang nicht; Verstehen und Integralaufgaben bleiben führend.",
+          "memoryGoalIds": [
+            "ca708087-71f8-5fae-91c5-b80721a4208f"
+          ],
+          "deckIds": [
+            "de_gymnasium_math_analysis_core"
+          ]
+        },
+        "kind": {
+          "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "sourceFingerprint": "sha256:1b179048dbd68d1f4f88d222539564852be3544264dca70d33f9d6cf801f4a9f",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+        }
+      },
+      "rawBefore": {
+        "atomicity": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4\",\"fingerprint\":\"sha256:8bb10ef3758379c353ad7ea407f4e4d61a65fdb03a1306c35c8b9d9f14037816\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-05\",\"reviewer\":\"codex\",\"reason\":\"Q1-Review: Eine zusammenhaengende Integral- oder Stammfunktionsroutine; Berechnen, Deuten und Begruenden sind hier Ausfuehrungsschritte einer pruefbaren Kompetenz.\",\"suggestedSplit\":[]}",
+        "memory": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4\",\"fingerprint\":\"sha256:e7454fc6b8a249152d4bd14bdfade0537df1057e4b640bb142e56f363b2aad43\",\"status\":\"memory_required\",\"memoryUseful\":true,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-semantic-memory-pilot\",\"reason\":\"Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend.\",\"memoryGoalIds\":[\"ca708087-71f8-5fae-91c5-b80721a4208f\"],\"deckIds\":[\"de_gymnasium_math_analysis_core\"]}",
+        "kind": "    {\n      \"goalId\": \"3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4\",\n      \"sourceFingerprint\": \"sha256:c3f9a4a7e162528d5ae1d6da707ee93efbbafd1a166ee1d20c2f05a9f88744d6\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-post-split-curricular-atomic\"\n    }"
+      },
+      "rawAfter": {
+        "atomicity": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4\",\"fingerprint\":\"sha256:9bf0717cf4a8fbcd36d5eef1c566857dd6ffd60258286824427680f20ace1957\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20 nach ausdrücklicher Einschränkung auf x>0: Ein Inhalt, ln(x) als Stammfunktion von 1/x zu erkennen und anzuwenden. Einfache Integralrechnung und Begründung durch Ableiten sind Prüfung und Anwendung derselben Beziehung, keine unabhängigen zusätzlichen Integrationsmethoden.\",\"suggestedSplit\":[]}",
+        "memory": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4\",\"fingerprint\":\"sha256:2f979686b4c5fa1102ffcb6dd2b1c9841bc0db8b3cb9051f9bfdf27c0f1e14f9\",\"status\":\"memory_required\",\"memoryUseful\":true,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20: memory_required bleibt auf den kompakten Zusammenhang (ln x)′=1/x und seine Umkehrung als Stammfunktion begrenzt. Die bestehenden Karten math_analysis_c05 und math_analysis_c14 im Deck de_gymnasium_math_analysis_core bleiben passend: Für x>0 gilt ln|x|=ln x. Die neue positive Definitionsmenge erweitert den Kartenumfang nicht; Verstehen und Integralaufgaben bleiben führend.\",\"memoryGoalIds\":[\"ca708087-71f8-5fae-91c5-b80721a4208f\"],\"deckIds\":[\"de_gymnasium_math_analysis_core\"]}",
+        "kind": "    {\n      \"goalId\": \"3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4\",\n      \"sourceFingerprint\": \"sha256:1b179048dbd68d1f4f88d222539564852be3544264dca70d33f9d6cf801f4a9f\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-semantic-recheck-curricular-atomic\"\n    }"
+      }
+    },
+    {
+      "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+      "title": "Einfache gebrochen rationale Funktionen untersuchen",
+      "reviewedDescriptionDe": "Die lernende Person kann für positive ganze Zahlen $n$ grundlegende Eigenschaften der Funktionen $f(x)=\\frac{1}{x^n}$ beschreiben, Definitions- und Wertemenge sowie Graphenmerkmale angeben und das Verhalten an der Polstelle und im Unendlichen deuten.",
+      "reviewedDescriptionEn": "The learner can describe basic properties of the functions $f(x)=\\frac{1}{x^n}$ for positive integers $n$, state their domain, range and graph features, and interpret their behaviour at the pole and at infinity.",
+      "kindRationale": "Einzelprüfung 2026-09-20: Eine zusammenhängende Kompetenz, das Graphenverhalten der Familie 1/x^n aus positiv-ganzzahligem n zu erklären. Definitions- und Wertemenge, Parität/Symmetrie sowie Pol- und Fernverhalten beschreiben dasselbe eng begrenzte Funktionsmodell und sind in einem Vergleich gerader und ungerader Exponenten gemeinsam prüfbar. Die Präzisierung schließt n=0 und negative oder nichtganzzahlige Exponenten aus; sie ergänzt keine weitere Funktionsklasse.",
+      "sourceGoalSha256": "sha256:5e850f973e4300c39afa6fe41994b14fe06baad0a18cc0ba99969ccaac655fe4",
+      "before": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+          "fingerprint": "sha256:e864d079e8676190b9c2a607bed2dc0dbe2ec8cc1cbae41462fcac017b4c9114",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q2-Review: Als eine zusammenhaengende, pruefbare Analysis- oder Lineare-Algebra-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+          "fingerprint": "sha256:a86ebb9d000e3eed8c724d3f400eba8ddc9d150ac8ad729298c9798b46d40740",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "kind": {
+          "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+          "sourceFingerprint": "sha256:a59ca657fe8f552cf21a73185b8da9a0db8a164754217e8feb969f666eed7cad",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "after": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+          "fingerprint": "sha256:5e2cf94780c0e9cb96d4989f9881f8b213563181fa386bea152c38c1c732ac02",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-20",
+          "reviewer": "codex-informed-post-revision-five-20260920",
+          "reason": "Einzelprüfung 2026-09-20: Eine zusammenhängende Kompetenz, das Graphenverhalten der Familie 1/x^n aus positiv-ganzzahligem n zu erklären. Definitions- und Wertemenge, Parität/Symmetrie sowie Pol- und Fernverhalten beschreiben dasselbe eng begrenzte Funktionsmodell und sind in einem Vergleich gerader und ungerader Exponenten gemeinsam prüfbar. Die Präzisierung schließt n=0 und negative oder nichtganzzahlige Exponenten aus; sie ergänzt keine weitere Funktionsklasse.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+          "fingerprint": "sha256:3d2a737ee6c0936071e71e2a8c3832d91dab9cc7fefd5e870d805bc36f1a4721",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-20",
+          "reviewer": "codex-informed-post-revision-five-20260920",
+          "reason": "Einzelprüfung 2026-09-20: no_memory_needed bleibt passend. Eigenschaften von 1/x^n werden aus Nennernullstelle, Vorzeichen/Parität und Größenvergleich hergeleitet und am Graphen begründet. Die Einschränkung auf positive ganze Exponenten schafft keinen eigenständigen auswendig zu lernenden Faktenbestand und rechtfertigt kein zusätzliches Deck."
+        },
+        "kind": {
+          "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+          "sourceFingerprint": "sha256:7628b78b0312ad88c60ba9f22d60ba37675bb8c58185a7372d8fca4684675be5",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+        }
+      },
+      "rawBefore": {
+        "atomicity": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"61686d85-0301-550e-bab9-bd9411c3e7ce\",\"fingerprint\":\"sha256:e864d079e8676190b9c2a607bed2dc0dbe2ec8cc1cbae41462fcac017b4c9114\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-05\",\"reviewer\":\"codex\",\"reason\":\"Q2-Review: Als eine zusammenhaengende, pruefbare Analysis- oder Lineare-Algebra-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.\",\"suggestedSplit\":[]}",
+        "memory": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"61686d85-0301-550e-bab9-bd9411c3e7ce\",\"fingerprint\":\"sha256:a86ebb9d000e3eed8c724d3f400eba8ddc9d150ac8ad729298c9798b46d40740\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+        "kind": "    {\n      \"goalId\": \"61686d85-0301-550e-bab9-bd9411c3e7ce\",\n      \"sourceFingerprint\": \"sha256:a59ca657fe8f552cf21a73185b8da9a0db8a164754217e8feb969f666eed7cad\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-pilot-curricular-atomic\"\n    }"
+      },
+      "rawAfter": {
+        "atomicity": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"61686d85-0301-550e-bab9-bd9411c3e7ce\",\"fingerprint\":\"sha256:5e2cf94780c0e9cb96d4989f9881f8b213563181fa386bea152c38c1c732ac02\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20: Eine zusammenhängende Kompetenz, das Graphenverhalten der Familie 1/x^n aus positiv-ganzzahligem n zu erklären. Definitions- und Wertemenge, Parität/Symmetrie sowie Pol- und Fernverhalten beschreiben dasselbe eng begrenzte Funktionsmodell und sind in einem Vergleich gerader und ungerader Exponenten gemeinsam prüfbar. Die Präzisierung schließt n=0 und negative oder nichtganzzahlige Exponenten aus; sie ergänzt keine weitere Funktionsklasse.\",\"suggestedSplit\":[]}",
+        "memory": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"61686d85-0301-550e-bab9-bd9411c3e7ce\",\"fingerprint\":\"sha256:3d2a737ee6c0936071e71e2a8c3832d91dab9cc7fefd5e870d805bc36f1a4721\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20: no_memory_needed bleibt passend. Eigenschaften von 1/x^n werden aus Nennernullstelle, Vorzeichen/Parität und Größenvergleich hergeleitet und am Graphen begründet. Die Einschränkung auf positive ganze Exponenten schafft keinen eigenständigen auswendig zu lernenden Faktenbestand und rechtfertigt kein zusätzliches Deck.\"}",
+        "kind": "    {\n      \"goalId\": \"61686d85-0301-550e-bab9-bd9411c3e7ce\",\n      \"sourceFingerprint\": \"sha256:7628b78b0312ad88c60ba9f22d60ba37675bb8c58185a7372d8fca4684675be5\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-semantic-recheck-curricular-atomic\"\n    }"
+      }
+    },
+    {
+      "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+      "title": "Einfache gebrochen rationale und Wurzelfunktionen ableiten",
+      "reviewedDescriptionDe": "Die lernende Person kann Funktionen der Form $f(x)=\\frac{1}{x^n}$ mit positivem ganzzahligem $n$ für $x\\ne0$ sowie $f(x)=\\sqrt{x}$ für $x>0$ ableiten und die Ableitungsschritte fachsprachlich begründen.",
+      "reviewedDescriptionEn": "The learner can differentiate functions of the form $f(x)=\\frac{1}{x^n}$ with positive integer $n$ for $x\\ne0$, as well as $f(x)=\\sqrt{x}$ for $x>0$, and justify the differentiation steps using correct terminology.",
+      "kindRationale": "Einzelprüfung 2026-09-20: Eine Kompetenz, die Potenzregel begründet auf negative ganzzahlige Exponenten und den Exponenten 1/2 anzuwenden. 1/x^n=x^(−n) und √x=x^(1/2) sind zwei Darstellungen desselben Ableitungsverfahrens; die Ableitungsschritte erläutern dieselbe Ausführung. Die Angaben n>0 ganzzahlig, x≠0 beziehungsweise x>0 präzisieren dessen Gültigkeitsbereiche, ohne eine unabhängige zweite Routine einzuführen.",
+      "sourceGoalSha256": "sha256:431b385ce346923cd42622eaf9af7512d137e61fc3b43ade3d9310ca88655ebf",
+      "before": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+          "fingerprint": "sha256:9b9a41ddbf783a55dc75cf782f2460fbc88d0a033159e0226382083b5234fb26",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-09",
+          "reviewer": "codex",
+          "reason": "Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+          "fingerprint": "sha256:6d8a856f937fc5022ae182538354327d0cc2e9616fac811fc905ecf736a23df9",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "kind": {
+          "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+          "sourceFingerprint": "sha256:e8e482958bf07c82104b8b88ee395d1095ce99875c26a49b43ca766da3909433",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "after": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+          "fingerprint": "sha256:b4bae0b6f409b0176feedb5f1429a33fc7b9b06b5703d4756735b23f97890f70",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-20",
+          "reviewer": "codex-informed-post-revision-five-20260920",
+          "reason": "Einzelprüfung 2026-09-20: Eine Kompetenz, die Potenzregel begründet auf negative ganzzahlige Exponenten und den Exponenten 1/2 anzuwenden. 1/x^n=x^(−n) und √x=x^(1/2) sind zwei Darstellungen desselben Ableitungsverfahrens; die Ableitungsschritte erläutern dieselbe Ausführung. Die Angaben n>0 ganzzahlig, x≠0 beziehungsweise x>0 präzisieren dessen Gültigkeitsbereiche, ohne eine unabhängige zweite Routine einzuführen.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+          "fingerprint": "sha256:93ec72aa019ef95000c7f4d664f4925829ead5af355ed506560fb5389b2214ee",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-20",
+          "reviewer": "codex-informed-post-revision-five-20260920",
+          "reason": "Einzelprüfung 2026-09-20: no_memory_needed bleibt passend. Hier werden Kehrwertpotenzen und Quadratwurzel in Potenzschreibweise überführt und mit der bereits vorausgesetzten Ableitungsregel bearbeitet; dafür braucht es kein eigenes Deck mit getrennten Spezialformeln. Die Definitionsbereiche werden am konkreten Term überprüft und begründet."
+        },
+        "kind": {
+          "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+          "sourceFingerprint": "sha256:2476e4f4b139354ef46eef77817f15827ad6f06c32743a588b5b6f31dbfca809",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+        }
+      },
+      "rawBefore": {
+        "atomicity": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"6517427b-cf4e-5ebf-9a76-e1035617687c\",\"fingerprint\":\"sha256:9b9a41ddbf783a55dc75cf782f2460fbc88d0a033159e0226382083b5234fb26\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-09\",\"reviewer\":\"codex\",\"reason\":\"Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.\",\"suggestedSplit\":[]}",
+        "memory": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"6517427b-cf4e-5ebf-9a76-e1035617687c\",\"fingerprint\":\"sha256:6d8a856f937fc5022ae182538354327d0cc2e9616fac811fc905ecf736a23df9\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+        "kind": "    {\n      \"goalId\": \"6517427b-cf4e-5ebf-9a76-e1035617687c\",\n      \"sourceFingerprint\": \"sha256:e8e482958bf07c82104b8b88ee395d1095ce99875c26a49b43ca766da3909433\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-pilot-curricular-atomic\"\n    }"
+      },
+      "rawAfter": {
+        "atomicity": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"6517427b-cf4e-5ebf-9a76-e1035617687c\",\"fingerprint\":\"sha256:b4bae0b6f409b0176feedb5f1429a33fc7b9b06b5703d4756735b23f97890f70\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20: Eine Kompetenz, die Potenzregel begründet auf negative ganzzahlige Exponenten und den Exponenten 1/2 anzuwenden. 1/x^n=x^(−n) und √x=x^(1/2) sind zwei Darstellungen desselben Ableitungsverfahrens; die Ableitungsschritte erläutern dieselbe Ausführung. Die Angaben n>0 ganzzahlig, x≠0 beziehungsweise x>0 präzisieren dessen Gültigkeitsbereiche, ohne eine unabhängige zweite Routine einzuführen.\",\"suggestedSplit\":[]}",
+        "memory": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"6517427b-cf4e-5ebf-9a76-e1035617687c\",\"fingerprint\":\"sha256:93ec72aa019ef95000c7f4d664f4925829ead5af355ed506560fb5389b2214ee\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20: no_memory_needed bleibt passend. Hier werden Kehrwertpotenzen und Quadratwurzel in Potenzschreibweise überführt und mit der bereits vorausgesetzten Ableitungsregel bearbeitet; dafür braucht es kein eigenes Deck mit getrennten Spezialformeln. Die Definitionsbereiche werden am konkreten Term überprüft und begründet.\"}",
+        "kind": "    {\n      \"goalId\": \"6517427b-cf4e-5ebf-9a76-e1035617687c\",\n      \"sourceFingerprint\": \"sha256:2476e4f4b139354ef46eef77817f15827ad6f06c32743a588b5b6f31dbfca809\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-semantic-recheck-curricular-atomic\"\n    }"
+      }
+    },
+    {
+      "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+      "title": "Zusammenhang von Funktionsgraph und Umkehrgraph erläutern",
+      "reviewedDescriptionDe": "Die lernende Person kann erläutern, wie durch Vertauschen der x- und y-Koordinaten der Graph einer umkehrbaren Funktion in den Graphen ihrer Umkehrfunktion übergeht und warum dies einer Spiegelung an $y=x$ entspricht.",
+      "reviewedDescriptionEn": "The learner can explain how swapping x- and y-coordinates transforms the graph of an invertible function into the graph of its inverse and why this corresponds to reflection across $y=x$.",
+      "kindRationale": "Einzelprüfung 2026-09-20: Eine Kompetenz, die Graphenbeziehung einer umkehrbaren Funktion zu ihrer Umkehrfunktion zu erklären. Der Koordinatentausch (x,y)↔(y,x) und die Spiegelung an y=x sind algebraische und geometrische Beschreibung desselben Zusammenhangs. Die neue Formulierung macht den prüfbaren Kern sichtbar und verlangt keine zusätzliche Termbestimmung oder neue Umkehrbarkeitsroutine.",
+      "sourceGoalSha256": "sha256:fb834c613f16b34391f4301ee2f0debbacaea76d71ff7d2b471ba86b21e9715d",
+      "before": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "fingerprint": "sha256:af6837499005d7e6c78c1155127db82de870d960ca5ab63b30eb0ab391caf7e8",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q2-Review: Als eine zusammenhaengende, pruefbare Analysis- oder Lineare-Algebra-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "fingerprint": "sha256:2a4b5a1de24af34f107fd434add002ac492c89edce7bc5246d05897baa337d99",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "kind": {
+          "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "sourceFingerprint": "sha256:33fba0af03d8d2d7fd6d5d17e9accd90a5357e613e4dff5cd5833b0fdbd599b7",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      },
+      "after": {
+        "atomicity": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "fingerprint": "sha256:d5560fcb79a7e2ad14d9c717963de443545a71180b4f27b546c79f12a78b06f3",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-20",
+          "reviewer": "codex-informed-post-revision-five-20260920",
+          "reason": "Einzelprüfung 2026-09-20: Eine Kompetenz, die Graphenbeziehung einer umkehrbaren Funktion zu ihrer Umkehrfunktion zu erklären. Der Koordinatentausch (x,y)↔(y,x) und die Spiegelung an y=x sind algebraische und geometrische Beschreibung desselben Zusammenhangs. Die neue Formulierung macht den prüfbaren Kern sichtbar und verlangt keine zusätzliche Termbestimmung oder neue Umkehrbarkeitsroutine.",
+          "suggestedSplit": []
+        },
+        "memory": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "fingerprint": "sha256:19f8bdbc3a71c4b071705522aedcd28a06a08d893d8a3fd34f9cc7b4f0a7ffd5",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-20",
+          "reviewer": "codex-informed-post-revision-five-20260920",
+          "reason": "Einzelprüfung 2026-09-20: no_memory_needed bleibt passend. Der Zusammenhang wird durch vertauschte Ein- und Ausgaben, Punktpaare und deren Lage zur Diagonalen verstanden und begründet. Ein isolierter Merksatz auf einer Karte würde diese Erklärungskompetenz nicht abdecken; die Präzisierung begründet keinen zusätzlichen Memory-Knoten."
+        },
+        "kind": {
+          "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "sourceFingerprint": "sha256:2cd71ab5b6bd02077a2d2efa981dfbcd26efee934b367c6bb9b19f0b8542fe4b",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+        }
+      },
+      "rawBefore": {
+        "atomicity": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"dbc13bb0-963b-49a8-a441-2183f4b64c8e\",\"fingerprint\":\"sha256:af6837499005d7e6c78c1155127db82de870d960ca5ab63b30eb0ab391caf7e8\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-05\",\"reviewer\":\"codex\",\"reason\":\"Q2-Review: Als eine zusammenhaengende, pruefbare Analysis- oder Lineare-Algebra-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.\",\"suggestedSplit\":[]}",
+        "memory": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"dbc13bb0-963b-49a8-a441-2183f4b64c8e\",\"fingerprint\":\"sha256:2a4b5a1de24af34f107fd434add002ac492c89edce7bc5246d05897baa337d99\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+        "kind": "    {\n      \"goalId\": \"dbc13bb0-963b-49a8-a441-2183f4b64c8e\",\n      \"sourceFingerprint\": \"sha256:33fba0af03d8d2d7fd6d5d17e9accd90a5357e613e4dff5cd5833b0fdbd599b7\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-pilot-curricular-atomic\"\n    }"
+      },
+      "rawAfter": {
+        "atomicity": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"dbc13bb0-963b-49a8-a441-2183f4b64c8e\",\"fingerprint\":\"sha256:d5560fcb79a7e2ad14d9c717963de443545a71180b4f27b546c79f12a78b06f3\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20: Eine Kompetenz, die Graphenbeziehung einer umkehrbaren Funktion zu ihrer Umkehrfunktion zu erklären. Der Koordinatentausch (x,y)↔(y,x) und die Spiegelung an y=x sind algebraische und geometrische Beschreibung desselben Zusammenhangs. Die neue Formulierung macht den prüfbaren Kern sichtbar und verlangt keine zusätzliche Termbestimmung oder neue Umkehrbarkeitsroutine.\",\"suggestedSplit\":[]}",
+        "memory": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"dbc13bb0-963b-49a8-a441-2183f4b64c8e\",\"fingerprint\":\"sha256:19f8bdbc3a71c4b071705522aedcd28a06a08d893d8a3fd34f9cc7b4f0a7ffd5\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20: no_memory_needed bleibt passend. Der Zusammenhang wird durch vertauschte Ein- und Ausgaben, Punktpaare und deren Lage zur Diagonalen verstanden und begründet. Ein isolierter Merksatz auf einer Karte würde diese Erklärungskompetenz nicht abdecken; die Präzisierung begründet keinen zusätzlichen Memory-Knoten.\"}",
+        "kind": "    {\n      \"goalId\": \"dbc13bb0-963b-49a8-a441-2183f4b64c8e\",\n      \"sourceFingerprint\": \"sha256:2cd71ab5b6bd02077a2d2efa981dfbcd26efee934b367c6bb9b19f0b8542fe4b\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-semantic-recheck-curricular-atomic\"\n    }"
+      }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+Use case: precise-object-edit, scientific-educational.
+Asset type: existing German mathematics learning-goal illustration, landscape PNG.
+Input image 1: edit target and exact style/layout reference.
+Primary request: correct only the specified mathematical defect. Keep the existing friendly, abstract comic illustration, pale calm opaque background, colors, readable German lettering, characters and composition. Do not redesign or add decorative content. No technical IDs, no watermark, no logos, no photorealism. Preserve every correct formula, number and label except where explicitly corrected below.
+Remove ONLY the short black curved arrow OUTSIDE the upper-left side of the unit circle (the isolated stroke from around 10 o'clock toward 11 o'clock). Restore the matching pale background there. Keep the circle itself, both existing correct counterclockwise arrows for φ and the arc s on the RIGHT side of the circle, radius r=1, formulas s=r·φ and s=φ, all coordinate/angle labels, conversion cards, the entire sine graph and period bracket unchanged. Do not remove either φ or s arrow; only the isolated contradictory outer upper-left arrow is removed.

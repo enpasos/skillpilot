@@ -8,47 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `4c6369b0-4b58-5ac0-915c-82c348ae1c14.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/4c6369b0-4b58-5ac0-915c-82c348ae1c14/4c6369b0-4b58-5ac0-915c-82c348ae1c14.jpg`
+- Quellbild: `4c6369b0-4b58-5ac0-915c-82c348ae1c14.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/4c6369b0-4b58-5ac0-915c-82c348ae1c14/4c6369b0-4b58-5ac0-915c-82c348ae1c14.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Spiegelungen von Funktionsgraphen beschreiben
-Beschreibung: Die lernende Person kann Spiegelungen an der x-Achse, y-Achse oder am Ursprung anhand von Vorzeichenänderungen im Funktionsterm beschreiben und grafisch darstellen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Spiegelungen von Funktionsgraphen anhand von Vorzeichen im Funktionsterm beschreiben.
-- Verwende eine generische asymmetrische Kurve y=f(x) mit markiertem Punkt P(2,3).
-- Zeige vier kleine Paneele:
-  1. Original: y=f(x), Punkt P(2,3).
-  2. Spiegelung an der x-Achse: y=-f(x), Punkt P_x(2,-3).
-  3. Spiegelung an der y-Achse: y=f(-x), Punkt P_y(-2,3).
-  4. Spiegelung am Ursprung: y=-f(-x), Punkt P_o(-2,-3).
-- Markiere deutlich:
-  Vorzeichen vor f aendert y-Werte.
-  Vorzeichen im Argument aendert x-Werte.
-  Beides zusammen ergibt Ursprungsspiegelung.
-
-Vermeiden:
-- Nicht x-Achsen- und y-Achsen-Spiegelung vertauschen.
-- Nicht y=f(-x) als Verschiebung deuten.
-- Nicht die Punktkoordinaten falsch spiegeln.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Minimal correction of the attached four-panel friendly pastel educational comic, output PNG. Preserve all titles, formulas, point-coordinate labels, speech bubbles and colors. The graph vertices must be the SAME distance above/below the horizontal axis in all4panels. Currently positive vertices are almost touching the x-axis while negative ones are much further below. For each diagram use the existing square grid: one unit is one full grid square. In panel1 move vertexP(1,1) up so it is exactly ONE GRID SQUARE ABOVE the x-axis, and one square RIGHT of the y-axis. Draw f(x)=(x−1)²+1 through that vertex. Panel2 vertex(1,−1) ONE SQUARE BELOW x-axis and oneRIGHT of y-axis; its downward parabola is the exact vertical reflection of panel1. Panel3 vertex(−1,1) ONE SQUARE ABOVE x-axis and oneLEFT of y-axis; shape is exact horizontal reflection ofpanel1. Panel4 vertex(−1,−1) ONE SQUARE BELOW x-axis and oneLEFT ofy-axis; shape is exact origin-reflection ofpanel1. Each vertex lies on the first horizontal grid line above/below x-axis respectively, never in middle ofa gridcell. Mark all four vertices accurately and keep labels attached without hiding curves. Do not change correct formulas or add other examples.
 ```
 
 ## Review-Notiz

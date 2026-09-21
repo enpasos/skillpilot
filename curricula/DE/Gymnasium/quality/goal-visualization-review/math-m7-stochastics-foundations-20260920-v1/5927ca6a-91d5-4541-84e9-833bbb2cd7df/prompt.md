@@ -1,0 +1,7 @@
+Use case: scientific-educational.
+Asset type: German upper-secondary mathematics learning-goal illustration, landscape PNG.
+Style: friendly, abstract, clear comic-like educational illustration; warm very pale background, approachable rounded ink outlines, restrained blue/teal/orange colors, plenty of quiet whitespace. Not photorealistic, not sterile software-chart styling. The existing image is the source reference for topic and accessible educational character, but mathematical correctness is mandatory.
+All visible text German, large and readable. No technical IDs, no watermark, no logos, no provider artifacts. Generate one complete image, not a collage of alternative designs.
+Input image 1: edit target. Preserve its three-panel concept, two-coin outcome mappings, correct probability table, readable German heading and accessible style.
+Correct ONLY the right-hand probability bar chart. It represents X=number of heads in TWO independent FAIR coin tosses. Bars at k=0 and k=2 have equal height exactly 1/4. Bar at k=1 has height exactly 1/2, precisely TWICE each outer bar. Its top must align exactly with the y-axis tick 1/2, not above it.
+Use a consistent linear vertical axis from 0 to 1, with equally spaced ticks 0,1/4,1/2,3/4,1. Horizontal positions 0,1,2 equally spaced. The labels above bars remain 1/4,1/2,1/4. Do not change the correct mapping ZZ→0, ZK/KZ→1, KK→2 or table values. Keep all text legible, no additional formulas or embellishments.

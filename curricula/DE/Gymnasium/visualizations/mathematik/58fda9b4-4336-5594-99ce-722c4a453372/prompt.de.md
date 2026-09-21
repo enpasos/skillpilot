@@ -8,51 +8,17 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `58fda9b4-4336-5594-99ce-722c4a453372.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/58fda9b4-4336-5594-99ce-722c4a453372/58fda9b4-4336-5594-99ce-722c4a453372.jpg`
+- Quellbild: `58fda9b4-4336-5594-99ce-722c4a453372.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/58fda9b4-4336-5594-99ce-722c4a453372/58fda9b4-4336-5594-99ce-722c4a453372.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erstelle eine gezielte generative Bildkorrektur der beigefügten Referenz. Behalte ihre freundliche, klare, abstrakte Comic-Bildsprache, Pastellfarben, schwarzen Konturen und gut lesbare deutsche Beschriftung bei. Ausgabe: einzelnes PNG im Querformat, keine technische ID, kein Logo, keine Wasserzeichen. Die mathematisch richtigen Bereiche bleiben so weit wie möglich erhalten. Korrigiere den folgenden konkreten fachlichen Befund; eine richtige Formel darf nicht neben einer widersprüchlichen Zeichnung stehen.
 
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Differenzialgleichungen zweiter Ordnung untersuchen (LK)
-Beschreibung: Die lernende Person kann einfache Differenzialgleichungen zweiter Ordnung, zum Beispiel bei periodischen Prozessen, qualitativ untersuchen und typische Lösungsverläufe beschreiben.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Einfache Differenzialgleichung zweiter Ordnung bei periodischen Prozessen qualitativ untersuchen.
-- Verwende den harmonischen Oszillator:
-  y''=-4y.
-- Deutung:
-  Die Beschleunigung y'' zeigt immer zur Gleichgewichtslage y=0.
-  Ist y positiv, ist y'' negativ; ist y negativ, ist y'' positiv.
-- Typische Loesungen:
-  y(t)=A*cos(2t)+B*sin(2t).
-- Zeige eine sinusfoermige Loesungskurve um y=0.
-- Markiere:
-  Gleichgewichtslage y=0.
-  Periodisches Verhalten.
-  Frequenzparameter 2, Periode pi.
-- Optionales Phasenportraet:
-  Geschlossene Ellipse um den Ursprung als qualitative Bewegung.
-
-Vermeiden:
-- Nicht eine exponentiell wachsende oder fallende Kurve als Loesung von y''=-4y zeichnen.
-- Nicht y''=-4y mit y'=-4y verwechseln.
-- Nicht die Periode als 2*pi angeben; fuer cos(2t) ist sie pi.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Im linken unteren rechten Auslenkungsbild ist der Körper unter der Gleichgewichtslinie. Ersetze das rechts neben dem Körper stehende falsche 'y'' = 0' durch 'y < 0'. Der aufwärts gerichtete Beschleunigungspfeil und sein richtiges 'y'' > 0' bleiben. Links daneben bleiben y>0 und y''<0 erhalten. Entferne rechts unten das gesamte optionale Phasenporträt samt seinem Beschreibungskasten; fülle den Platz ruhig mit der vorhandenen Hintergrundfarbe. Bewahre y''=-4y, y(t)=A·cos(2t)+B·sin(2t) und den periodischen Graphen mit Periodeπ. Keine neue Phasenellipse zeichnen.
 ```
 
 ## Review-Notiz

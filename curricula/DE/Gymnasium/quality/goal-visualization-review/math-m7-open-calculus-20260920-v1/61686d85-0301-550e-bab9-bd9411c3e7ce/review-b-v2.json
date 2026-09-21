@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "Reviewer did not generate or import these candidates and did not consult the generating agent's acceptance decisions. Current canonical text and actual v2 raster were inspected.",
+  "reviewDate": "2026-09-20",
+  "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+  "title": "Einfache gebrochen rationale Funktionen untersuchen",
+  "description": "Die lernende Person kann grundlegende Eigenschaften einfacher gebrochen rationaler Funktionen der Form $f(x)=\\frac{1}{x^n}$ beschreiben, Definitions- und Wertemenge sowie Graphenmerkmale angeben und das Verhalten an Polstellen und im Unendlichen deuten.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/61686d85-0301-550e-bab9-bd9411c3e7ce/candidate-v2.png",
+  "candidateSha256": "3cc5448c812e07a1e695e34669fb9aa980986510b4539caf761ea7a68e94e801",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/61686d85-0301-550e-bab9-bd9411c3e7ce/prompt-v2.md",
+  "decision": "accept_candidate",
+  "checks": [
+    "Inspected the actual candidate-v2 PNG and its formulas/curve labels.",
+    "The incorrect right-axis tick labels and conflicting (±2,0.25) placements are removed. The remaining right plot clearly shows the positive, y-axis-symmetric branches of 1/x², correctly marked (−1,1) and (1,1), vertical pole and approach to y=0.",
+    "The left 1/x illustration, domains R\\{0}, ranges R\\{0} and (0,∞), quadrants and asymptote statements remain correct.",
+    "The simplified right plot supports the qualitative graph-properties goal without false competing numerical tick assignments."
+  ],
+  "defects": [],
+  "humanApproval": false,
+  "scope": "Targeted independent v2 candidate review only; no active import, human release or complete goal-QS claim."
+}

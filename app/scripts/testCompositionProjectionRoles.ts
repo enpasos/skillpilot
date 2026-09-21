@@ -20,6 +20,7 @@ import {
 import { applyGoalPlacementProjection } from '../src/utils/goalPlacementProjection'
 import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 import './testHessePhysicsTree'
+import './testHessenMathQ21Scope'
 
 const createGoal = (
   id: string,

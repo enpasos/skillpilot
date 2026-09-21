@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "integratedAt": "2026-09-20T19:59:28.801Z",
+  "authority": "ai_candidate",
+  "humanApproved": false,
+  "independentReview": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/independent-review-b.json",
+  "heldGoalIds": [
+    "42d300e3-e982-5889-98d7-fc297f10eff1",
+    "455ef29a-7194-5c5a-b832-1c27fcbf2516"
+  ],
+  "records": [
+    {
+      "goalId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+      "sourcePath": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-07580afc-954e-4443-8dfd-ef4f0b4bbf56.png",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/3e974075-b2fd-43e6-88d9-5f596ad053ec/candidate-v1.png",
+      "candidateSha256": "sha256:5885a835c6da43fcf99f2c76616bc72ab05a5b9342620c9ecf19dd223750a68b",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/3e974075-b2fd-43e6-88d9-5f596ad053ec/prompt.md",
+      "promptSha256": "sha256:429d4af2c4aeb6b10be2f8534e17181a45e66cb7cb1ce112a5ea1e88d0548d3e",
+      "referenceImagePath": "app/public/assets/goal-visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.jpg",
+      "referenceImageSha256": "sha256:51516dc711c0b7133ebf5962a969ef275b3d6a7e6eb354c7930086f1abb84220",
+      "oldFinding": "Unqualified P(A|B)≠P(B|A) is not generally true.",
+      "authorActuallyViewed": true,
+      "authorChecks": "Non-universal warning now says not to confuse the two conditional probabilities; common cause C has distinct A and B effects.",
+      "status": "candidate_pending_independent_review",
+      "humanApproved": false,
+      "previousQa": {
+        "goalId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+        "title": "Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen",
+        "description": "Die lernende Person kann aus Daten abgeleitete Aussagen kritisch prüfen, indem sie Stichprobenumfang und -zusammensetzung, Veränderungen bedingter Wahrscheinlichkeiten in relevanten Teilmengen, Basisrateneffekte, Art der Datenerhebung und Fragestellung berücksichtigt sowie Korrelation und Kausalität unterscheidet.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.jpg",
+        "assetSha256": "sha256:51516dc711c0b7133ebf5962a969ef275b3d6a7e6eb354c7930086f1abb84220",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "yes",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-08-16T08:27:41.000Z",
+        "chatGptReviewer": "codex-goal-description-image-review-2026-08-16",
+        "chatGptNotes": "R10, class A: accepted unchanged; previous human asset approval preserved. Permanent evidence: mathematik-description-revision-images-2026-08-16.md. The current asset was checked for visible mathematics, notation, labels, target fit, text legibility, umlauts, and visible artifacts.",
+        "humanReviewedAt": "2026-07-07T08:00:57.302Z",
+        "humanReviewer": "workbench",
+        "aiApproved": "no",
+        "aiApprovedAssetSha256": "sha256:51516dc711c0b7133ebf5962a969ef275b3d6a7e6eb354c7930086f1abb84220",
+        "aiReviewedAt": "2026-09-20T19:43:40.077Z",
+        "aiReviewer": "Codex Root current exact raster findings after independent control pass",
+        "aiNotes": "Unqualified P(A|B)≠P(B|A) is not generally true. Hold pending independent corrected-image acceptance. Source: curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/candidate-manifest.json. No human decision changed."
+      },
+      "independentChecks": [
+        {
+          "check": "Bedingte Wahrscheinlichkeiten",
+          "result": "pass",
+          "evidence": "P(A|B) und P(B|A) nicht verwechseln ist korrekt; es wird keine allgemein falsche strikte Ungleichheit mehr behauptet. Gleichheit in Sonderfällen wird nicht ausgeschlossen."
+        },
+        {
+          "check": "Stichprobe und Erhebungsmethode",
+          "result": "pass",
+          "evidence": "Unterschiedliche Gruppengrößen/-zusammensetzungen und suggestive gegenüber offenen Fragen visualisieren passende Einflussgrößen ohne erfundene Kennzahlen."
+        },
+        {
+          "check": "Korrelation und Kausalität",
+          "result": "pass",
+          "evidence": "Der Text unterscheidet Zusammenhang von Ursache. C mit Pfeilen zu A und B illustriert einen möglichen gemeinsamen Einfluss; das Stoppsymbol warnt vor dem unzulässigen direkten Kausalschluss."
+        },
+        {
+          "check": "Teilmenge und Basisrate",
+          "result": "pass",
+          "evidence": "Der Teilmengenkreis liegt vollständig in der Grundmenge. Ohne bezifferte Kreisflächen wird keine quantitative Wahrscheinlichkeit suggeriert."
+        },
+        {
+          "check": "Ziel- und Darstellungsfit",
+          "result": "pass",
+          "evidence": "Freundliche Prüfszene, lesbare Beschriftung und vier sachliche Prüfperspektiven passen zum aktuellen Ziel. Das Bild muss keine vollständige kritische Datenanalyse als Aufgabe durchführen."
+        }
+      ],
+      "previousGoal": {
+        "id": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+        "title": "Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen",
+        "titleEn": "Critically examine data-based claims using conditional probabilities",
+        "description": "Die lernende Person kann aus Daten abgeleitete Aussagen kritisch prüfen, indem sie Stichprobenumfang und -zusammensetzung, Veränderungen bedingter Wahrscheinlichkeiten in relevanten Teilmengen, Basisrateneffekte, Art der Datenerhebung und Fragestellung berücksichtigt sowie Korrelation und Kausalität unterscheidet.",
+        "descriptionEn": "The learner can critically examine claims derived from data by considering sample size and composition, changes in conditional probabilities across relevant subsets, base-rate effects, data-collection methods and framing, and by distinguishing correlation from causation.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "c2831918-26f1-421e-90fb-ce707689594e",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K3.3",
+            "K4.2",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+            "title": "Visualisierung: Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen",
+            "url": "/assets/goal-visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen.",
+            "altText": "Die lernende Person kann aus Daten abgeleitete Aussagen kritisch prüfen, indem sie Stichprobenumfang und -zusammensetzung, Veränderungen bedingter Wahrscheinlichkeiten in relevanten Teilmengen, Basisrateneffekte, Art der Datenerhebung und Fragestellung berücksichtigt sowie Korrelation und Kausalität unterscheidet.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "oldFiles": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.jpg",
+          "sha256": "sha256:51516dc711c0b7133ebf5962a969ef275b3d6a7e6eb354c7930086f1abb84220",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/retired-active-assets/app/public/assets/goal-visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.jpg",
+          "sha256": "sha256:51516dc711c0b7133ebf5962a969ef275b3d6a7e6eb354c7930086f1abb84220",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.jpg"
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.jpg",
+          "sha256": "sha256:51516dc711c0b7133ebf5962a969ef275b3d6a7e6eb354c7930086f1abb84220",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/prompt.de.md",
+          "sha256": "sha256:e14360041f943be4fcb8abbe177a93a922af1f414cc41fa9f9ae0d1919847531",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/prompt.de.md"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/image-reconstruction-prompt.de.md",
+          "sha256": "sha256:15dd65418fe7ca65a14c88c58e40c2d894178d48c50de30142514c74132dc854",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/image-reconstruction-prompt.de.md"
+        }
+      ]
+    },
+    {
+      "goalId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+      "sourcePath": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-f6b00dcf-cb9e-45c2-9ca0-7c8863e8210d.png",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/7d41b805-0fd8-5ac3-980d-79112a27c1b4/candidate-v1.png",
+      "candidateSha256": "sha256:2b136412c7f8a6e6738beae4a4854ee271ac50139a8d68fb881eb0a64b8c58ed",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/7d41b805-0fd8-5ac3-980d-79112a27c1b4/prompt.md",
+      "promptSha256": "sha256:7da3aa802dfc01018b1012351ba4926c21e51d7b17dfe4914ef3821ac388c47c",
+      "referenceImagePath": "app/public/assets/goal-visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.jpg",
+      "referenceImageSha256": "sha256:f35926b9b8df4910b6643499588a70117646e4d96efa1351292a5b89c5670d8d",
+      "oldFinding": "Smooth symmetric curve not labelled schematic although example is discrete B(16;0.25).",
+      "authorActuallyViewed": true,
+      "authorChecks": "Curve now explicitly labelled schematic, not exact binomial diagram. n=16,μ=4,Var=3,σ=√3≈1.73 and μ±σ≈2.27,5.73 correct.",
+      "status": "candidate_pending_independent_review",
+      "humanApproved": false,
+      "previousQa": {
+        "goalId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+        "title": "Kenngrößen binomialverteilter Zufallsgrößen",
+        "description": "Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert, Varianz und Standardabweichung berechnen und diese mit der zugrunde liegenden Bernoulli-Situation in Beziehung setzen.",
+        "subject": "mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "visualizationState": "available",
+        "missingReason": "",
+        "imageUrl": "/assets/goal-visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.jpg",
+        "publicAssetPath": "app/public/assets/goal-visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.jpg",
+        "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.jpg",
+        "assetSha256": "sha256:f35926b9b8df4910b6643499588a70117646e4d96efa1351292a5b89c5670d8d",
+        "umlautsCorrectChatGpt": "yes",
+        "contentApprovedChatGpt": "no",
+        "humanApproved": "no",
+        "humanIssueIdentified": "no",
+        "humanIssueDescription": "",
+        "chatGptReviewedAt": "2026-07-06T13:58:51.035Z",
+        "chatGptReviewer": "codex",
+        "chatGptNotes": "Content and umlaut checks approved from accepted review ledger mathematik-batch-089.md (accepted_pilot). Review note: The image correctly presents the Bernoulli-to-binomial setup and the key quantities for `n=16`, `p=0.25`: `mu=4`, `Var(X)=3`, `sigma≈1.73`, and `sigma/mu≈0.43`.",
+        "humanReviewedAt": null,
+        "humanReviewer": "",
+        "aiApproved": "no",
+        "aiApprovedAssetSha256": "sha256:f35926b9b8df4910b6643499588a70117646e4d96efa1351292a5b89c5670d8d",
+        "aiReviewedAt": "2026-09-20T19:43:40.094Z",
+        "aiReviewer": "Codex Root current exact raster findings after independent control pass",
+        "aiNotes": "Smooth symmetric curve not labelled schematic although example is discrete B(16;0.25). Hold pending independent corrected-image acceptance. Source: curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/candidate-manifest.json. No human decision changed."
+      },
+      "independentChecks": [
+        {
+          "check": "Bernoulli-Bindung",
+          "result": "pass",
+          "evidence": "Unabhängige n-fache Wiederholung und konstantes p werden ausdrücklich genannt; Erfolg p=0,25 und Misserfolg 0,75 ergänzen sich zu 1. Der Viertelsektor passt zu p."
+        },
+        {
+          "check": "Zahlen und Formeln",
+          "result": "pass",
+          "evidence": "Die sichtbare Münzenanordnung enthält 4×4=16 Münzen. Für n=16,p=0,25 stimmen μ=4, Var(X)=3, σ=√3≈1,73, μ−σ≈2,27 und μ+σ≈5,73 sowie σ/μ≈0,43."
+        },
+        {
+          "check": "Darstellungsgrenze der Glocke",
+          "result": "pass_with_explicit_limit",
+          "evidence": "Die Grafik ist sichtbar als Streuungsskizze (schematisch), Kein exaktes Binomialdiagramm beschriftet. Sie veranschaulicht nur μ und gleiche σ-Abstände, nicht eine stetige oder symmetrische exakte Binomialverteilung."
+        },
+        {
+          "check": "Ziel- und Darstellungsfit",
+          "result": "pass",
+          "evidence": "Kenngrößen und Bernoulli-Situation sind sichtbar miteinander verbunden. Der illustrative Münzwurf verlangt bei explizit vorgegebenem p=0,25 keine stillschweigende Fairnessannahme."
+        }
+      ],
+      "previousGoal": {
+        "id": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+        "title": "Kenngrößen binomialverteilter Zufallsgrößen",
+        "titleEn": "Characteristic values of binomially distributed random variables",
+        "description": "Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert, Varianz und Standardabweichung berechnen und diese mit der zugrunde liegenden Bernoulli-Situation in Beziehung setzen.",
+        "descriptionEn": "The learner can calculate expected value, variance, and standard deviation for binomial distributed random variables and relate them to the underlying Bernoulli situation.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "e495fa38-b198-5280-a405-9e41cafd6d17"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 3",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+            "title": "Visualisierung: Kenngrößen binomialverteilter Zufallsgrößen",
+            "url": "/assets/goal-visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Kenngrößen binomialverteilter Zufallsgrößen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Kenngrößen binomialverteilter Zufallsgrößen\". Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert, Varianz und Standardabweichung berechnen und diese mit der zugrunde liegenden Bernoulli-Situation in Beziehung setzen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "oldFiles": [
+        {
+          "path": "app/public/assets/goal-visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.jpg",
+          "sha256": "sha256:f35926b9b8df4910b6643499588a70117646e4d96efa1351292a5b89c5670d8d",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/retired-active-assets/app/public/assets/goal-visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.jpg",
+          "sha256": "sha256:f35926b9b8df4910b6643499588a70117646e4d96efa1351292a5b89c5670d8d",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.jpg"
+        },
+        {
+          "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.jpg",
+          "sha256": "sha256:f35926b9b8df4910b6643499588a70117646e4d96efa1351292a5b89c5670d8d",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.jpg"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/prompt.de.md",
+          "sha256": "sha256:4dc338991d79751cc9f6887acef8d93bce18e1208167bcd2ed225d036cf4617b",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/prompt.de.md"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/image-reconstruction-prompt.de.md",
+          "sha256": "sha256:267d7ad00ecc76303410619e1bf3f6b272cd1a3d6eadefae4935c34069726da3",
+          "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-stochastics-pass2-four-20260920-v1/retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/image-reconstruction-prompt.de.md"
+        }
+      ]
+    }
+  ]
+}

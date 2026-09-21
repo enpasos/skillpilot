@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 1,
+  "kind": "bounded-applicability-and-translation-binding-delta",
+  "reviewer": "Codex /root/math_m7_post5_context9_blind_a",
+  "actualRecordedAt": "2026-09-20T19:22:10Z",
+  "humanReview": false,
+  "fullQualityClosureClaimed": false,
+  "scope": {
+    "canonicalGoalIds": [
+      "bbb340ed-1009-4966-ae96-bfea4437505a",
+      "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+      "1429363f-628f-4f42-80e5-8a9a935147cc",
+      "967d1863-1b9b-4798-8a35-ae4e9760e322"
+    ],
+    "additionalAuthorizedTranslationGoalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+    "changedCanonicalFields": [
+      "applicability on exactly four new HE Q2.1 goals",
+      "extendedData.applicabilityFromRequires=true on exactly three assessment leaves"
+    ],
+    "unchangedByThisWork": [
+      "all task/solution/scoring content",
+      "all requires/contains links",
+      "all descriptions and titles",
+      "all composition views",
+      "ApplicabilityCompiler logic",
+      "accepted warning policies",
+      "maturity floors",
+      "D/P/V records",
+      "Physics"
+    ],
+    "note": "The root agent concurrently changed canonical goal 455ef29a English text and imported image assets. Therefore an all-other-canonical-goals hash comparison across this interval is not claimed to pass. This agent's canonical changes used four exact apply_patch hunks only; scoped content hash and Physics bytes remained unchanged."
+  },
+  "rootCause": "The three unmapped original assessment leaves carried applicabilityMappingInheritance=boundary but did not enable applicabilityFromRequires. The native compiler therefore produced empty applicability, also propagating an empty child union to their cluster; all four persisted DE-HE caches differed from that result. sourceRef prose is not compiled provenance evidence.",
+  "fix": "Enable the existing all-of prerequisite-derived assessment applicability for the three leaves, retain mapping-inheritance boundaries, and persist the exact resulting 16-jurisdiction cache only on those leaves and their child-union cluster. Authored HE-GK-only placement remains controlled by the four composition views, not by this eligibility cache.",
+  "before": {
+    "summary": {
+      "goals": 1187,
+      "errors": 0,
+      "warnings": 5,
+      "diagnostics": 9592
+    },
+    "findings": [
+      {
+        "code": "APV-203",
+        "severity": "warning",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "1429363f-628f-4f42-80e5-8a9a935147cc",
+        "title": "Eine Umkehrfunktion durch Einschränkung ermöglichen",
+        "dimension": "jurisdiction",
+        "message": "Compiled applicability differs from the currently committed applicability field."
+      },
+      {
+        "code": "APV-203",
+        "severity": "warning",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+        "title": "Einen unbekannten Graphen gezielt umformen",
+        "dimension": "jurisdiction",
+        "message": "Compiled applicability differs from the currently committed applicability field."
+      },
+      {
+        "code": "APV-203",
+        "severity": "warning",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "967d1863-1b9b-4798-8a35-ae4e9760e322",
+        "title": "Übungen zu grundlegenden Funktionseigenschaften",
+        "dimension": "jurisdiction",
+        "message": "Compiled applicability differs from the currently committed applicability field."
+      },
+      {
+        "code": "APV-203",
+        "severity": "warning",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+        "title": "Kehrwertpotenzen und Quadratwurzel vergleichen",
+        "dimension": "jurisdiction",
+        "message": "Compiled applicability differs from the currently committed applicability field."
+      }
+    ],
+    "otherWarnings": [
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+        "title": "Quaderdarstellungen zeichnen und verknüpfen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW."
+      }
+    ],
+    "goals": [
+      {
+        "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+        "current": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "compiled": {},
+        "evidence": [],
+        "derived": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      {
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+        "current": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "compiled": {},
+        "evidence": [],
+        "derived": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      {
+        "goalId": "1429363f-628f-4f42-80e5-8a9a935147cc",
+        "current": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "compiled": {},
+        "evidence": [],
+        "derived": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      {
+        "goalId": "967d1863-1b9b-4798-8a35-ae4e9760e322",
+        "current": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "compiled": {},
+        "evidence": [],
+        "derived": []
+      }
+    ],
+    "otherCompiledHash": "0613a7f44e514a1fc9c957faa510a87a32dafa193bf7bc85250c96cb639eddd4",
+    "otherFindingHash": "24e9de319d320cf7c0952a8b37bb098a9a1c4adbb0c6e310e61a6cc010256edc"
+  },
+  "after": {
+    "summary": {
+      "goals": 1187,
+      "errors": 0,
+      "warnings": 1,
+      "diagnostics": 9592
+    },
+    "findings": [],
+    "otherWarnings": [
+      {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+        "title": "Quaderdarstellungen zeichnen und verknüpfen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW."
+      }
+    ],
+    "goals": [
+      {
+        "goalId": "967d1863-1b9b-4798-8a35-ae4e9760e322",
+        "compiled": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "evidenceCount": 16,
+        "evidenceKinds": [
+          "child-union"
+        ]
+      },
+      {
+        "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+        "compiled": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "evidenceCount": 48,
+        "evidenceKinds": [
+          "assessment-requires"
+        ]
+      },
+      {
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+        "compiled": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "evidenceCount": 80,
+        "evidenceKinds": [
+          "assessment-requires"
+        ]
+      },
+      {
+        "goalId": "1429363f-628f-4f42-80e5-8a9a935147cc",
+        "compiled": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "evidenceCount": 32,
+        "evidenceKinds": [
+          "assessment-requires"
+        ]
+      }
+    ],
+    "otherFindingHash": "24e9de319d320cf7c0952a8b37bb098a9a1c4adbb0c6e310e61a6cc010256edc"
+  },
+  "nativeDelta": {
+    "errors": [
+      0,
+      0
+    ],
+    "APV203": [
+      4,
+      0
+    ],
+    "totalWarnings": [
+      5,
+      1
+    ],
+    "unchangedOtherFindingsHash": "24e9de319d320cf7c0952a8b37bb098a9a1c4adbb0c6e310e61a6cc010256edc",
+    "unchangedOtherFindings": true,
+    "acceptedWarningPolicyChanged": false,
+    "residualWarning": "The same pre-existing APV-201 override for c34c6132-f85d-59be-8b95-032ddfc0d0de remains; no new exception was added."
+  },
+  "reclassificationReview": {
+    "assessmentLeaves": "All three remain practiceAssessment: original terminal task, solution and scoring content is unchanged, and nodeKind=exam with examData remains present. Applicability derivation is not content learning-goal semantics.",
+    "translatedGoal": {
+      "atomicity": "atomic: using one further continuous distribution through an example, calculating its probabilities and interpreting model properties form one integrated model-application competence.",
+      "memory": "no_memory_needed: the description establishes model use and interpretation, not compulsory recall of a particular distribution formula or memorylessness property; the exponential distribution is explicitly an example.",
+      "semanticKind": "curricularAtomic: ordinary assessable mathematical content, not an assessment node or memorization goal.",
+      "translationScope": "Current English wording faithfully tracks the unchanged German description; no universal or exclusive exponential-distribution requirement is introduced."
+    },
+    "claim": "Bounded AI reassessment and mechanical binding refresh, not new human approval or a D/P/V/full-QA completion."
+  },
+  "archivedBefore": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/he-q21-scope-repair/applicability-and-translation-bindings.before.json",
+  "ledgerDelta": {
+    "semanticKinds": [
+      {
+        "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+        "semanticKind": "practiceAssessment",
+        "before": "sha256:39e9557a3ebc9a904cf95c32b439b985e74fc32d2ee97264b33edc5c8a0fe642",
+        "after": "sha256:13b345e6b06bf84eb07aa20bcec73ae36fbb1fed487f11b5a1eaa646d7bcba79"
+      },
+      {
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+        "semanticKind": "practiceAssessment",
+        "before": "sha256:0c78e2d2bce0b1a9b4ed2ea7e79f3bd001d23618595dafb1f3c581176a26abdb",
+        "after": "sha256:e2f004f1c52e6d7d0bd438f9cbb7d9b0ef1277696a7cbeff7ec31f2c847ccae0"
+      },
+      {
+        "goalId": "1429363f-628f-4f42-80e5-8a9a935147cc",
+        "semanticKind": "practiceAssessment",
+        "before": "sha256:2845740d17c277eeff17dce808a762428cc0b94dacde96c97cabd55882bbfd00",
+        "after": "sha256:48f652f89fe0cd2492a506163cfc5539d5edd92c81a7d4db6bbef9d7fa27e7e9"
+      },
+      {
+        "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+        "semanticKind": "curricularAtomic",
+        "before": "sha256:8ca98df479ea13215abdafc9736bdb0d88fd21250a4e44c84e4d6fa5c9e093fe",
+        "after": "sha256:47429eebd03716afffaf241616e362b2d8a6249a80c234b4721e49fbe2e0b7af"
+      }
+    ],
+    "atomicity": {
+      "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+      "before": "sha256:1f104e80d762fea54017e6bca6d558543a3865a178e41542e69639109ec95dda",
+      "after": "sha256:95c8ace00f84a86b29d7e22b8aa13f4ac770b39157284ac9b41546275d7396a2",
+      "status": "atomic"
+    },
+    "memory": {
+      "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+      "before": "sha256:f3936a31f18b524571bdd4b11dca2ade03cba53e3d40e61a6d9c54c18bc52fbf",
+      "after": "sha256:118ddabdc147e7dd343e7041769002bbb1a76f0d83c51bf8d1a9e5632c6fc026",
+      "status": "no_memory_needed"
+    },
+    "allOtherLedgerBytesIdentical": true,
+    "unaffectedByteHashes": {
+      "semanticKinds": "sha256:202d593066aba40239aff920e47b0fb92c643a99d42300f098ca857bc404779f",
+      "atomicity": "sha256:d65216690d3418808829b75dd235d6b472ab0d7964173b8835ffdec65ed53bae",
+      "memory": "sha256:ee4bc9e0118857629129f8354b313d8071186b49df4a36f85eed4bda00a1cc75"
+    }
+  },
+  "checks": [
+    {
+      "command": "npx tsx scripts/testHessenMathQ21Scope.ts",
+      "stage": "red before fix",
+      "result": "failed at missing applicabilityFromRequires on bbb340ed as expected"
+    },
+    {
+      "command": "npx tsx scripts/testHessenMathQ21Scope.ts",
+      "stage": "after applicability fix, before binding refresh",
+      "result": "native applicability assertions passed; semantic-kind fingerprint guard failed at the changed assessment extendedData as expected"
+    },
+    {
+      "command": "npx tsx scripts/testHessenMathQ21Scope.ts",
+      "stage": "final",
+      "result": "passed: 4 HE-GK views, 10 common goals, 3 assessments, 84 other views exclude endpoints, native all-of/child-union derivation, current caches, memory visibility and prerequisite regression"
+    },
+    {
+      "command": "npx tsx --test scripts/sourceCoverageAndApplicabilityRegression.test.ts",
+      "result": "6 passed, 0 failed; all-of intersection and applicability/source-coverage distinction remain intact"
+    },
+    {
+      "command": "npx tsx scripts/semanticAtomicityReview.ts --config=tmp/he-q21-455ef-scoped-binding-check/atomicity.config.json --mode=check",
+      "result": "passed: exactly 1 atomic goal; 0 missing/stale/obsolete"
+    },
+    {
+      "command": "npx tsx scripts/memoryCardReview.ts --config=tmp/he-q21-455ef-scoped-binding-check/memory.config.json --mode=check",
+      "result": "passed: exactly 1 no-memory decision; 0 missing/stale/obsolete; no cards in scope"
+    },
+    {
+      "check": "Native fingerprint functions plus masked-record byte hashes",
+      "result": "4 semantic-kind, 1 atomicity and 1 memory bindings current; all unrelated ledger bytes identical"
+    },
+    {
+      "check": "Scoped canonical semantics and Physics byte comparison",
+      "result": "Task/content/semantic fields outside applicability and extendedData unchanged for four scoped goals; Physics bytes unchanged"
+    },
+    {
+      "command": "git diff --check -- <five scoped canonical/test/ledger paths>",
+      "result": "passed"
+    }
+  ],
+  "integrationRemaining": "Root owns the combined curriculum-quality status regeneration and protected maturity-floor verification; no complete QA/status run was performed in this bounded task."
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "This reviewer did not generate or import these images and did not consult the generating agent's acceptance decisions. Decisions are based on the actual candidate rasters and the current canonical goal texts.",
+  "reviewDate": "2026-09-20",
+  "goalId": "5fe4218e-4fb0-5339-8764-c989befa244e",
+  "title": "Modelle mit Differenzialgleichungen erster Ordnung bilden",
+  "description": "Die lernende Person kann Wachstums- und Zerfallsprozesse mithilfe von Differenzialgleichungen modellieren, passende Gleichungen aus einer Sachsituation entwickeln und die Bedeutung der Parameter fachlich deuten.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/5fe4218e-4fb0-5339-8764-c989befa244e/candidate-v1.png",
+  "candidateSha256": "440de75e12c6f90e5c95702715276b24250621a8607a0e2906534a5b8bf86488",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/5fe4218e-4fb0-5339-8764-c989befa244e/prompt.de.md",
+  "decision": "accept_candidate",
+  "checks": [
+    "Viewed the actual cooling-model raster and checked the parameter interpretation.",
+    "T′(t)=−0.12(T(t)−20), T(0)=80 has solution T(t)=20+60 exp(−0.12t) when t is in minutes. It decreases toward 20 from above, as drawn.",
+    "Initial temperature, surrounding temperature, inverse-minute cooling constant and sign of the temperature derivative are correctly identified.",
+    "The qualitative curve and concrete modelling example suit the current first-order modelling goal; no exact time reading is asserted by the schematic plot."
+  ],
+  "defects": [],
+  "humanApproval": false,
+  "scope": "Targeted independent candidate-image review only. No active-asset import and no full goal-completion or human-approval claim."
+}

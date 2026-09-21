@@ -8,43 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `77d607e0-0244-55ca-ba0f-214baa94b8de.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/77d607e0-0244-55ca-ba0f-214baa94b8de/77d607e0-0244-55ca-ba0f-214baa94b8de.jpg`
+- Quellbild: `77d607e0-0244-55ca-ba0f-214baa94b8de.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/77d607e0-0244-55ca-ba0f-214baa94b8de/77d607e0-0244-55ca-ba0f-214baa94b8de.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Konfidenzdiagramme deuten
-Beschreibung: Die lernende Person kann Konfidenzdiagramme, insbesondere Konfidenzellipsen, für den Zusammenhang von Stichprobenumfang, Konfidenzniveau und Intervallbreite lesen, interpretieren und zur Beurteilung der Aussagekraft von Stichprobenergebnissen nutzen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Erstelle die Lernillustration fachlich neu als klare, freundliche Cartoon-Infografik mit dem Titel `Konfidenzdiagramme und Konfidenzellipsen deuten`.
-- Bereich 1 heißt `95%-Konfidenzellipse`: Zeige ein zweidimensionales Koordinatensystem mit den Achsen `Parameter θ₁` und `Parameter θ₂`, einen markierten Schätzwert im Zentrum und eine deutlich sichtbare geneigte Ellipse als Bereich plausibler Parameterpaare. Beschrifte sie mit `zweidimensionale Unsicherheit`.
-- Bereich 2 heißt `Stichprobenumfang`: Zeige bei gleichem Zentrum und gleichem Konfidenzniveau zwei Ellipsen. `n = 100` ist sichtbar größer, `n = 400` sichtbar kleiner. Schreibe exakt `größeres n → kleinere Ellipse → präzisere Schätzung`.
-- Bereich 3 heißt `Konfidenzniveau`: Zeige bei gleichem Zentrum und gleichem Stichprobenumfang eine innere `90 %`-Ellipse und eine größere äußere `95 %`-Ellipse. Schreibe exakt `höheres Niveau → größere Ellipse`.
-- Ergänze knapp: `Eine Konfidenzellipse ist das zweidimensionale Gegenstück zum Konfidenzintervall.`
-- Ergänze die frequentistisch korrekte Deutung: `95 % bedeutet: Das Verfahren überdeckt den wahren Parameter langfristig in 95 % gleichartiger Stichproben.`
-- Verwende ausschließlich deutsche Dezimalkommas, falls überhaupt Dezimalzahlen vorkommen. Alle Ellipsen, Legenden, Achsen und Texte müssen groß und eindeutig lesbar sein.
-
-Vermeiden:
-- Eine reine eindimensionale Intervallgrafik ohne sichtbare Konfidenzellipse.
-- Die falsche Aussage, der wahre Parameter liege mit 95 % Wahrscheinlichkeit in dieser konkreten Ellipse.
-- Eine größere Ellipse für `n = 400` als für `n = 100` oder eine kleinere 95%-Ellipse als 90%-Ellipse.
-- Dezimalpunkte, kurs- oder schulformspezifische Titelzusätze, technische IDs, Dateinamen, interne Pfade, Logos, Marken, Wasserzeichen oder Plattformnamen.
+Use the input illustration ONLY as a style/layout reference: friendly, abstract German textbook comic, warm cream background and softly rounded blue, green, orange panels, readable dark sans-serif type. Correct the mathematical subject: this is the ONE-PARAMETER binomial confidence diagram in the German Gymnasium curriculum, NOT a multivariate theta1/theta2 ellipse. Title: 'Konfidenzdiagramme deuten (LK)'. Subtitle: 'Ein Parameter p und die relative Häufigkeit hₙ'. Remove all theta1/theta2 axes, all two-parameter claims and the statement two-dimensional counterpart. Use three panels. Panel1 heading '1. Bei bekanntem p'. Draw a clearly schematic tilted ellipse-shaped BAND running from bottom-left to top-right, with horizontal axis labelled 'p' and vertical axis labelled 'hₙ'. No numeric ticks or implicit numerical scale; annotate 'schematischer Ausschnitt'. A VERTICAL line at a chosen p₀ cuts the upper and lower band boundaries; highlight ONLY this vertical segment, with endpoints labelled 'h unten' and 'h oben'. Underneath: 'Senkrecht: Prognoseintervall für hₙ'. Panel2 heading '2. Bei beobachtetem hₙ'. Draw the SAME kind of diagonal band with axes p horizontal and hₙ vertical. A HORIZONTAL line at the observed hₙ cuts left and right band boundaries. Highlight ONLY the horizontal segment between the two intersection dots, and show dotted vertical guides down to the p axis labelled 'p unten' and 'p oben'. Underneath: 'Waagerecht: Konfidenzintervall für p'. Do NOT depict parameter p as vertical or invert either interval-reading direction. Panel3 heading '3. Breite vergleichen'. At the same observed hₙ, show two short conceptual interval comparisons with clearly labelled long/short intervals: 'größeres n → enger' and 'höheres Konfidenzniveau → breiter'. Include one small friendly abstract calculator mascot, not photorealistic. Bottom formula strip EXACT: '(hₙ − p)² ≤ c² · p(1 − p) / n'. Bottom explanation: 'Die Randgleichung liefert die Grenzen. c gehört zum gewählten Konfidenzniveau.' Small footnote: 'Normalapproximation; Voraussetzungen prüfen. Das Konfidenzniveau beschreibt die langfristige Überdeckung des Verfahrens.' The illustrative band must not claim an exact numerical scale. Clear left-to-right didactic flow and legible equations; no extra parameter, no 3D, no logos, no watermarks. Output one PNG.
 ```
 
 ## Review-Notiz

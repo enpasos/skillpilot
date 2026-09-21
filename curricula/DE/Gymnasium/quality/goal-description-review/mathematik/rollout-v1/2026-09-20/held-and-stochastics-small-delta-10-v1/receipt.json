@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-09-20 19:54:33 UTC",
+  "reviewer": "codex-held-and-stochastics-small-delta-10-v1",
+  "status": "implemented_and_scoped_verified",
+  "humanApproval": false,
+  "fullCurriculumQaRun": false,
+  "canonicalDelta": {
+    "goalCount": 10,
+    "requiresOnlyGoals": 5,
+    "removedEdges": 8,
+    "wordingGoals": 5,
+    "wordingFields": 7,
+    "otherFieldsChanged": false
+  },
+  "reviewDelta": {
+    "atomicity": {
+      "count": 10,
+      "status": "atomic",
+      "statusChanges": 0
+    },
+    "memory": {
+      "count": 11,
+      "statusChanges": [
+        {
+          "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+          "from": "memory_required",
+          "to": "no_memory_needed"
+        },
+        {
+          "goalId": "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+          "from": "no_memory_needed",
+          "to": "memory_required"
+        }
+      ]
+    },
+    "semanticKind": {
+      "count": 10,
+      "status": "curricularAtomic",
+      "statusChanges": 0
+    },
+    "cardOrigins": {
+      "count": 1,
+      "cardId": "math_stoch_c04",
+      "from": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+      "to": "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+      "cardContentsChanged": false
+    }
+  },
+  "viewDelta": {
+    "count": 2,
+    "addedGoalId": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+    "canonicalSubtreeOnly": true,
+    "curricularAtomicSetsUnchanged": true,
+    "other86ViewsUnchanged": true
+  },
+  "evidence": [
+    "before.json",
+    "memory-origin-before.json",
+    "views-before.json",
+    "before-views/de-by-lk.view.json",
+    "before-views/de-by-sekii-lk.view.json",
+    "memory-visibility-before.json",
+    "prewrite.json",
+    "review-decisions.json",
+    "scoped-check.json"
+  ],
+  "reproductionCommand": "node --import ./app/node_modules/tsx/dist/loader.mjs tmp/held-and-stochastics-small-delta-10-v1.scoped-check.mjs",
+  "note": "Receipt binds the exact checked snapshot before Root later imports other image corrections. No D/P acceptance, central rollout registry or full curriculum quality status claimed."
+}

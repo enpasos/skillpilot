@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Full pre-refresh records and exact record text, archived before scoped changes.",
+  "authorization": "Root explicitly authorized three assessment semantic-kind fingerprint refreshes and the current 455ef29a EN-translation A/M/semantic-kind delta, preserving classifications and all unrelated ledger bytes.",
+  "humanApprovalClaimed": false,
+  "baseline": {
+    "kind": {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "fileSha256": "sha256:4500dd7e28f3f46ea07c94aeccef6b85073d3a60bc00fe9f9f499b09458fd327",
+      "unaffectedBytesSha256": "sha256:202d593066aba40239aff920e47b0fb92c643a99d42300f098ca857bc404779f",
+      "records": [
+        {
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "sourceFingerprint": "sha256:39e9557a3ebc9a904cf95c32b439b985e74fc32d2ee97264b33edc5c8a0fe642",
+          "semanticKind": "practiceAssessment",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-practice-assessment"
+        },
+        {
+          "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "sourceFingerprint": "sha256:0c78e2d2bce0b1a9b4ed2ea7e79f3bd001d23618595dafb1f3c581176a26abdb",
+          "semanticKind": "practiceAssessment",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-practice-assessment"
+        },
+        {
+          "goalId": "1429363f-628f-4f42-80e5-8a9a935147cc",
+          "sourceFingerprint": "sha256:2845740d17c277eeff17dce808a762428cc0b94dacde96c97cabd55882bbfd00",
+          "semanticKind": "practiceAssessment",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-practice-assessment"
+        },
+        {
+          "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+          "sourceFingerprint": "sha256:8ca98df479ea13215abdafc9736bdb0d88fd21250a4e44c84e4d6fa5c9e093fe",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        }
+      ],
+      "rawRecords": [
+        "    {\n      \"goalId\": \"bbb340ed-1009-4966-ae96-bfea4437505a\",\n      \"sourceFingerprint\": \"sha256:39e9557a3ebc9a904cf95c32b439b985e74fc32d2ee97264b33edc5c8a0fe642\",\n      \"semanticKind\": \"practiceAssessment\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-pilot-practice-assessment\"\n    }",
+        "    {\n      \"goalId\": \"46bb8422-a822-46e1-8bcc-8b6475994b3a\",\n      \"sourceFingerprint\": \"sha256:0c78e2d2bce0b1a9b4ed2ea7e79f3bd001d23618595dafb1f3c581176a26abdb\",\n      \"semanticKind\": \"practiceAssessment\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-pilot-practice-assessment\"\n    }",
+        "    {\n      \"goalId\": \"1429363f-628f-4f42-80e5-8a9a935147cc\",\n      \"sourceFingerprint\": \"sha256:2845740d17c277eeff17dce808a762428cc0b94dacde96c97cabd55882bbfd00\",\n      \"semanticKind\": \"practiceAssessment\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-pilot-practice-assessment\"\n    }",
+        "    {\n      \"goalId\": \"455ef29a-7194-5c5a-b832-1c27fcbf2516\",\n      \"sourceFingerprint\": \"sha256:8ca98df479ea13215abdafc9736bdb0d88fd21250a4e44c84e4d6fa5c9e093fe\",\n      \"semanticKind\": \"curricularAtomic\",\n      \"decisionStatus\": \"authoritative\",\n      \"decisionBasis\": \"reviewed-current-pilot-curricular-atomic\"\n    }"
+      ],
+      "newFingerprints": [
+        {
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "sourceFingerprint": "sha256:13b345e6b06bf84eb07aa20bcec73ae36fbb1fed487f11b5a1eaa646d7bcba79"
+        },
+        {
+          "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "sourceFingerprint": "sha256:e2f004f1c52e6d7d0bd438f9cbb7d9b0ef1277696a7cbeff7ec31f2c847ccae0"
+        },
+        {
+          "goalId": "1429363f-628f-4f42-80e5-8a9a935147cc",
+          "sourceFingerprint": "sha256:48f652f89fe0cd2492a506163cfc5539d5edd92c81a7d4db6bbef9d7fa27e7e9"
+        },
+        {
+          "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+          "sourceFingerprint": "sha256:47429eebd03716afffaf241616e362b2d8a6249a80c234b4721e49fbe2e0b7af"
+        }
+      ]
+    },
+    "lanes": {
+      "atomicity": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+        "fileSha256": "sha256:03190098093faa487360a2027c16b532e88a33a92e2427e91640fff53d8e4102",
+        "unaffectedBytesSha256": "sha256:d65216690d3418808829b75dd235d6b472ab0d7964173b8835ffdec65ed53bae",
+        "record": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+          "fingerprint": "sha256:1f104e80d762fea54017e6bca6d558543a3865a178e41542e69639109ec95dda",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q3-Review: Nach textlicher Schaerfung als genau eine pruefbare Stochastikroutine bewertet.",
+          "suggestedSplit": []
+        },
+        "rawRecord": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"455ef29a-7194-5c5a-b832-1c27fcbf2516\",\"fingerprint\":\"sha256:1f104e80d762fea54017e6bca6d558543a3865a178e41542e69639109ec95dda\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-05\",\"reviewer\":\"codex\",\"reason\":\"Q3-Review: Nach textlicher Schaerfung als genau eine pruefbare Stochastikroutine bewertet.\",\"suggestedSplit\":[]}",
+        "newFingerprint": "sha256:95c8ace00f84a86b29d7e22b8aa13f4ac770b39157284ac9b41546275d7396a2",
+        "nativeFunctionSource": "app/scripts/semanticAtomicityReview.ts#fingerprintGoal",
+        "nativeFunctionSourceSha256": "sha256:7099e4c3d1daac9c579a9c6e2fb98d5b23f7004208f449e2646ead28c3752032"
+      },
+      "memory": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+        "fileSha256": "sha256:a799e1da1abef300d0764b97cef3987d39620149ae477c619a0935c8b456489b",
+        "unaffectedBytesSha256": "sha256:ee4bc9e0118857629129f8354b313d8071186b49df4a36f85eed4bda00a1cc75",
+        "record": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+          "fingerprint": "sha256:f3936a31f18b524571bdd4b11dca2ade03cba53e3d40e61a6d9c54c18bc52fbf",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "rawRecord": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"455ef29a-7194-5c5a-b832-1c27fcbf2516\",\"fingerprint\":\"sha256:f3936a31f18b524571bdd4b11dca2ade03cba53e3d40e61a6d9c54c18bc52fbf\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+        "newFingerprint": "sha256:118ddabdc147e7dd343e7041769002bbb1a76f0d83c51bf8d1a9e5632c6fc026",
+        "nativeFunctionSource": "app/scripts/memoryCardReview.ts#fingerprintGoal",
+        "nativeFunctionSourceSha256": "sha256:0ef2c9297afc02d109425674e5fdb206536d727659244a8dc4c35ece8996e9ac"
+      }
+    }
+  }
+}

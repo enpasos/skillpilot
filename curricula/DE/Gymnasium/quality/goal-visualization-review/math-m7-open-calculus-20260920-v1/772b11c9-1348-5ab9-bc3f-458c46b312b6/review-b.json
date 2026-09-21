@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "This reviewer did not generate or import these images and did not consult the generating agent's acceptance decisions. Decisions are based on the actual candidate rasters and the current canonical goal texts.",
+  "reviewDate": "2026-09-20",
+  "goalId": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+  "title": "Streckungen und Stauchungen von Funktionsgraphen beschreiben",
+  "description": "Die lernende Person kann Streckungen und Stauchungen in x- oder y-Richtung über Faktoren im Funktionsterm beschreiben und die Auswirkungen auf den Graphen darstellen.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/772b11c9-1348-5ab9-bc3f-458c46b312b6/candidate-v1.png",
+  "candidateSha256": "61f034729fcd9379e77d9f9f646eb5d9f0e5960c7af3a7f23cfa875b402ec1e3",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/772b11c9-1348-5ab9-bc3f-458c46b312b6/prompt.de.md",
+  "decision": "accept_candidate",
+  "checks": [
+    "Viewed all three actual schematic raster plots.",
+    "For f=x², 2f=2x² maps (1,1) to (1,2); 0.5f=0.5x² maps (2,4) to (2,2). The narrower/wider shapes and arrows agree.",
+    "f(2x)=4x² compresses horizontally by 1/2 and maps (2,4) to (1,4). The third panel correctly fixes the y coordinate and changes x.",
+    "Unticked illustrative mini-graphs communicate transformation direction rather than an exact shared pixel scale; no substantive contradiction found."
+  ],
+  "defects": [],
+  "humanApproval": false,
+  "scope": "Targeted independent candidate-image review only. No active-asset import and no full goal-completion or human-approval claim."
+}

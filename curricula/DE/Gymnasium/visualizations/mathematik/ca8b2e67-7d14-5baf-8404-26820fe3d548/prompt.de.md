@@ -8,30 +8,19 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `ca8b2e67-7d14-5baf-8404-26820fe3d548.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/ca8b2e67-7d14-5baf-8404-26820fe3d548/ca8b2e67-7d14-5baf-8404-26820fe3d548.jpg`
+- Quellbild: `ca8b2e67-7d14-5baf-8404-26820fe3d548.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/ca8b2e67-7d14-5baf-8404-26820fe3d548/ca8b2e67-7d14-5baf-8404-26820fe3d548.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Brüche und Dezimalbrüche ineinander umwandeln
-Beschreibung: Die lernende Person kann Brüche in endliche oder periodische Dezimalbrüche umwandeln, umgekehrt endliche und einfache periodische Dezimalbrüche als Brüche darstellen und Darstellungswechsel begründet wählen.
-
-Zusatzanweisung:
-Do not include any technical IDs, filenames, database IDs, project names, watermarks, logos, or QR codes. Keep all visible German text short and correctly spelled. Use only simple, verifiable mathematics. For rectangle area, show equal unit squares and explain area as rows times columns. For fractions, use clear partitioned wholes, number line positions, and quotient interpretation without contradictions. For decimal conversion, use exact examples such as 1/2 = 0,5; 3/4 = 0,75; 1/5 = 0,2. For rational numbers on a number line, keep negative and positive ordering correct. For density of rational numbers, show that between two fractions another fraction can be found, for example between 1/2 and 3/4 lies 5/8. Avoid saying there is a next rational number.
+Use case: precise-object-edit, scientific-educational.
+Asset type: existing German mathematics learning-goal illustration, landscape PNG.
+Input image 1: edit target and exact style/layout reference.
+Primary request: correct only the specified mathematical defect. Keep the existing friendly, abstract comic illustration, pale calm opaque background, colors, readable German lettering, characters and composition. Do not redesign or add decorative content. No technical IDs, no watermark, no logos, no photorealism. Preserve every correct formula, number and label except where explicitly corrected below.
+Fix the misleading value-changing connections without redesigning the three-panel image. In the LEFT panel, keep the machine input 3/4 and its TOP output 0,75 connected; this is one correct conversion. REMOVE the lower orange pipe from that machine to the 0,333… card. The 0,333… card must instead be an independent example, explicitly labeled "Weiteres Beispiel: 1/3 = 0,333…"; no connection from input 3/4 or machine to this card. Remove both arrows crossing from the LEFT panel to the MIDDLE panel: the arrow 0,75→0,2 and the arrow 0,333…→0,666… must disappear completely, leaving a clean panel boundary. Keep all valid middle chains 0,2→2/10→1/5 and 0,666…→6/9→2/3, and the right panel exactly unchanged. The final image must show separate value-preserving examples, never 3/4→1/3 or 0,75→0,2.
 ```
 
 ## Review-Notiz

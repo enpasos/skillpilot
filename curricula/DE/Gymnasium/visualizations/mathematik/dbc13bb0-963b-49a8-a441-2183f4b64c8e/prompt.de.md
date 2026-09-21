@@ -4,50 +4,24 @@
 
 - SkillPilot-ID: `dbc13bb0-963b-49a8-a441-2183f4b64c8e`
 - Titel: Zusammenhang von Funktionsgraph und Umkehrgraph erläutern
-- Beschreibung: Die lernende Person kann den Zusammenhang zwischen dem Graphen einer Funktion und dem Graphen ihrer Umkehrfunktion erläutern.
+- Beschreibung: Die lernende Person kann erläutern, wie durch Vertauschen der x- und y-Koordinaten der Graph einer umkehrbaren Funktion in den Graphen ihrer Umkehrfunktion übergeht und warum dies einer Spiegelung an $y=x$ entspricht.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `dbc13bb0-963b-49a8-a441-2183f4b64c8e.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/dbc13bb0-963b-49a8-a441-2183f4b64c8e/dbc13bb0-963b-49a8-a441-2183f4b64c8e.jpg`
+- Quellbild: `dbc13bb0-963b-49a8-a441-2183f4b64c8e.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/dbc13bb0-963b-49a8-a441-2183f4b64c8e/dbc13bb0-963b-49a8-a441-2183f4b64c8e.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+# Umkehrgraph: generisches Beispiel V6
 
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Provider: OpenAI, integriertes image_gen. Kein separater Modellname ausgewiesen.
+Eingang: betrachtete candidate-v5.png. Noch keine Freigabe.
 
-Titel: Zusammenhang von Funktionsgraph und Umkehrgraph erläutern
-Beschreibung: Die lernende Person kann den Zusammenhang zwischen dem Graphen einer Funktion und dem Graphen ihrer Umkehrfunktion erläutern.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Zusammenhang von Funktionsgraph und Umkehrgraph.
-- Zeige einen monoton steigenden Graphen f und seinen Umkehrgraphen f^(-1) im selben Koordinatensystem.
-- Zeige die Spiegelachse y=x als gestrichelte Diagonale.
-- Markiere mindestens zwei Punktabbildungen:
-  Wenn P(2,5) auf f liegt, dann P'(5,2) auf f^(-1).
-  Wenn Q(1,1) auf f liegt, bleibt Q'(1,1) auf der Spiegelachse.
-- Schreibe klar:
-  Beim Umkehrgraphen werden x- und y-Koordinate vertauscht.
-  Der Graph von f^(-1) entsteht durch Spiegelung des Graphen von f an y=x.
-- Nutze Farben und Pfeile, um die Koordinatenvertauschung sichtbar zu machen.
-
-Vermeiden:
-- Nicht an der x-Achse oder y-Achse spiegeln.
-- Nicht den Punkt (2,5) auf (2,-5), (-2,5) oder (-5,-2) abbilden; korrekt ist (5,2).
-- Nicht eine nicht eindeutige Kurve als Umkehrfunktion darstellen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Precise text-only edit of the supplied German educational PNG. Preserve every line, layout, friendly comic style, pale-blue background, axes and all explanatory German sentences unchanged. The diagram should be an accurately GENERAL algebraic example, not a numerically calibrated measurement. Replace blue label 'f(x) = 2x' by 'f(x) = a·x'; directly below write '(a > 1, x ≥ 0)'. Replace red label 'f⁻¹(x) = x/2' by 'f⁻¹(x) = x/a'; directly below write '(x ≥ 0)'. Replace the example in the left box 'P(1,2) ↔ P′(2,1)' by 'P(u,v) ↔ P′(v,u)'. Do not add any numeric point, mark, tick, coordinate grid or additional example. Keep the blue and red straight rays mirrored about the dashed y=x line, originating at the same origin. This variable-parameter version avoids falsely precise numerical slope labels on a schematic illustration while teaching exactly the coordinate-swap relationship. Only those three labels and the domain line change. PNG.
 ```
 
 ## Review-Notiz

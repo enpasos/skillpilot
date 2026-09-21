@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "This reviewer did not generate or import these images and did not consult the generating agent's acceptance decisions. Decisions are based on the actual candidate rasters and the current canonical goal texts.",
+  "reviewDate": "2026-09-20",
+  "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+  "title": "Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen",
+  "description": "Die lernende Person kann ausgewählte Funktionen auf Umkehrbarkeit untersuchen, einfache Funktionsgleichungen von Umkehrfunktionen aufstellen und dabei Definitions- und Wertemenge von Funktion und Umkehrfunktion berücksichtigen.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/c15fe32d-1c83-4127-b1a4-9125af3d8f5d/candidate-v1.png",
+  "candidateSha256": "cb8a1c91953831f4899f123af37b16f90cc8335253bbcdedc1348d5e3e937bb2",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/c15fe32d-1c83-4127-b1a4-9125af3d8f5d/prompt.de.md",
+  "decision": "reject_candidate",
+  "checks": [
+    "Viewed the actual raster: linear example, parabola restrictions and inverse branches.",
+    "The algebraic inverse of 2x+3 is (x−3)/2. The parabola is not injective on R; restricting to x≥0 yields sqrt(x), and restricting to x≤0 yields −sqrt(x), each with nonnegative input to the inverse.",
+    "The verbal injectivity criterion and the example f(2)=f(−2)=4 are correct."
+  ],
+  "defects": [
+    "The lower linear graph is labelled f⁻¹(x)=(x−3)/2 but crosses the x-axis at approximately the tick 2 instead of 3. Its drawn y intercept also does not match −1.5. These are substantive errors in a graph intended to illustrate the calculated inverse.",
+    "The upper graph f(x)=2x+3 visually crosses near x=−1 rather than the required x=−1.5."
+  ],
+  "nextAction": "Preserve the algebra, domain restrictions and style. Redraw only the linear coordinate graphs consistently: f through (−1.5,0),(0,3),(1,5); inverse through (0,−1.5),(3,0),(5,1), with the respective point projection arrows aligned.",
+  "humanApproval": false,
+  "scope": "Targeted independent candidate-image review only. No active-asset import and no full goal-completion or human-approval claim."
+}

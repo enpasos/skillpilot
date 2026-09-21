@@ -4,48 +4,23 @@
 
 - SkillPilot-ID: `0a7ff229-bf90-523c-a6b4-dad2ecd54ed8`
 - Titel: Testergebnisse im Kontext interpretieren
-- Beschreibung: Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder beibehalten wird, das Ergebnis verständlich formulieren und die Aussagekraft des Tests kommentieren.
+- Beschreibung: Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder nicht verworfen wird, das Ergebnis verständlich im Sachkontext formulieren und erläutern, welche Aussage der Test erlaubt und welche nicht.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.jpg`
+- Quellbild: `0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Testergebnisse im Kontext interpretieren
-Beschreibung: Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder beibehalten wird, das Ergebnis verständlich formulieren und die Aussagekraft des Tests kommentieren.
-
-Zusatzanweisung:
-Pflichtinhalt:
-
-- Erstelle eine übersichtliche Infografik zur Interpretation eines rechtsseitigen Binomialtests in einer Qualitätskontrolle.
-- Verwende exakt: `X = Anzahl fehlerhafter Teile unter 20 geprüften Teilen` und unter der Nullhypothese `X ~ B(20; 0,10)`.
-- Zeichne die Verteilung ausschließlich diskret als einzelne Balken für ganzzahlige Werte; niemals als glatte Kurve.
-- Markiere ausschließlich die Balken ab `X = 5` als Ablehnungsbereich und setze die kritische Grenze sichtbar zwischen `4` und `5`.
-- Markiere den beobachteten Wert `x_beob = 5` eindeutig im Ablehnungsbereich.
-- Zeige als Ergebnis: `H0 verwerfen.`
-- Ergänze die vorsichtige Kontextdeutung: `Die Daten sprechen für eine erhöhte Fehlerquote; sie sind kein Beweis.`
-
-Vermeiden:
-
-- Keine Normalverteilung, keine glatte Dichtekurve und keine kontinuierliche Fläche.
-- Keine widersprüchliche kritische Grenze, keine rot markierten Balken unter 5 und kein zweiter Test.
-- Keine Logos, Wasserzeichen, Zielgruppenhinweise oder dekorativen Schriftfragmente.
+Use case: precise-object-edit
+Asset type: German mathematics learning-goal PNG
+Input image 1: exact edit target, preserve its existing illustration style and layout.
+Primary request: Ändere unten links den Text 'Unter H0 gilt:' zu 'Am Rand von H0 (p=0,10):'. Die Formel 'X~B(20;0,10)' darunter bleibt. Ergänze über dem zentralen Diagramm gut lesbar 'Verteilung schematisch'; dieses dient der Veranschaulichung der Entscheidungsgrenze, nicht exakten Balkenwahrscheinlichkeiten. Alle korrekten diskreten x-Positionen0bis10 und die explizite Achsenunterbrechung vor20 unverändert, die Grenze zwischen4und5 und Beobachtungspfeil auf5 unverändert. H0:p≤0,10, Verwerfen und vorsichtige Kontextdeutung ohne Beweisbehauptung erhalten. Figuren, Palette und Layout nicht neu gestalten.
+Style invariants: freundlich, abstrakt, klar, comicartig; vorhandene Bildsprache erhalten, keine Photorealistik, keine sterile neue technische Grafik. Alle sonstigen Inhalte unverändert. Lesbare deutsche Typografie. Keine technischen IDs, neuen Logos oder Wasserzeichen. Erzeuge genau ein korrigiertes PNG.
 ```
 
 ## Review-Notiz

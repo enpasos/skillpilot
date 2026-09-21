@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:969156a465517aa1f7b830ad9a6a41cbfa65b9e21c567c92f300c9ca5a7a974d",
+  "reviewInputFingerprint": "sha256:0a8697c154caba7a02ce29a5737aabea4d101040c83f68c2691441a99cbf755e",
+  "goalCount": 18,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-stochastics-final-current-18-v1-20260920-a",
+      "roundId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-stochastics-final-current-18-v1-20260920-independent-a",
+      "runIds": [
+        "math-m7-stoch18-current-20260920-round-a-codex"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact runtime model not reported)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-stochastics-final-current-18-v1-20260920-b",
+      "roundId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-stochastics-final-current-18-v1-20260920-independent-b",
+      "runIds": [
+        "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex agent; exact runtime model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 18,
+    "unavailable": 0,
+    "requiresSynthesis": 18
+  },
+  "goals": [
+    {
+      "goalId": "dabff49b-d40a-4c81-a584-21408b2d4219",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.dabff49b-d40a-4c81-a584-21408b2d4219",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.dabff49b-d40a-4c81-a584-21408b2d4219",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.3e974075-b2fd-43e6-88d9-5f596ad053ec",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.3e974075-b2fd-43e6-88d9-5f596ad053ec",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "122ab909-04ed-572b-a499-754f3bcc8ef0",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.122ab909-04ed-572b-a499-754f3bcc8ef0",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.122ab909-04ed-572b-a499-754f3bcc8ef0",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1462c189-8679-5f32-bf58-6e81e99e4635",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.1462c189-8679-5f32-bf58-6e81e99e4635",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.1462c189-8679-5f32-bf58-6e81e99e4635",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.da95ab35-bac2-54f2-b38f-8b612cde8b54",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.da95ab35-bac2-54f2-b38f-8b612cde8b54",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.d711bc18-c27c-4739-8289-edac53dc8ba3",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.d711bc18-c27c-4739-8289-edac53dc8ba3",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f7879354-1a82-4195-8e3c-a339a820439c",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.f7879354-1a82-4195-8e3c-a339a820439c",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.f7879354-1a82-4195-8e3c-a339a820439c",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "44dba16e-2e86-56be-974b-a62093ef9211",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.44dba16e-2e86-56be-974b-a62093ef9211",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.44dba16e-2e86-56be-974b-a62093ef9211",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+      "firstRecordId": "math-m7-stoch18-current-20260920-round-a-codex.8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+      "secondRecordId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+      "firstRunId": "math-m7-stoch18-current-20260920-round-a-codex",
+      "secondRunId": "mathematik-m7-stochastics-final-current-18-v1-20260920-first-pass-b.codex-blind-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-13T22:10:02.602Z
+Generated: 2026-09-20T21:21:04.211Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,20 +16,20 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1183 |
+| Alle Ziele in der Landschaft | 1187 |
 | Atomare Ziele im Visualisierungs-Scope | 797 |
-| Ziele mit primaerem Visualisierungslink | 724 |
-| Coverage | 90.8% |
+| Ziele mit primaerem Visualisierungslink | 728 |
+| Coverage | 91.3% |
 | Durch Asset oder Provider-Deferred dokumentierte Ziele | 797 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 239 |
-| Offene Provider-Deferred-Ziele | 73 |
+| Offene Provider-Deferred-Ziele | 69 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 7 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 11 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -38,8 +38,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | `accepted` | 5 |
 | `ai-reviewed` | 6 |
-| `approved` | 20 |
-| `pilot` | 693 |
+| `approved` | 17 |
+| `pilot` | 700 |
 
 ## Ledger Decisions
 
@@ -106,7 +106,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 73 Provider-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 69 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -114,9 +114,6 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
-| mathematik-structural-split-deferred-2026-08-16 | `74dc4b0d-a167-564c-bdc1-5cf510aee280` | Algebraische Terme ausmultiplizieren | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `96c55cb6-d2c7-5145-8567-b5f570f55a8a` | Algebraische Terme faktorisieren | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `e2bf726a-126c-5c66-9fbb-6e04c129bb0f` | Äquivalenz durch Begründung oder Gegenbeispiel prüfen | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `308f19e2-e202-5300-a2fa-1eaa717f4e73` | Asymptotisches Verhalten exponentieller Funktionen deuten | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `4ae9e316-509f-517d-bd94-a165817af24f` | Begrenzte Wachstums- und Zerfallsprozesse aus Daten modellieren | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `e495fa38-b198-5280-a405-9e41cafd6d17` | Bernoulli-Experimente und -Ketten identifizieren und parametrisieren | `deferred_provider_limitation` |
@@ -134,8 +131,11 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | mathematik-structural-split-deferred-2026-08-16 | `3017e774-8d9f-5129-828f-7684db5afc1e` | Dreiecke aus Kongruenzangaben konstruieren | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `570d5931-f126-5bb4-8b7f-db236d6b727f` | Eine Kreistangente im Berührpunkt konstruieren | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c` | Empirische und theoretische Wahrscheinlichkeit unterscheiden | `deferred_provider_limitation` |
+| 204 | `121e3fdf-54d2-4d46-bc2d-f6e725f10f41` | Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `b71c332f-ef9d-5c27-983b-7103269ff419` | Glockenkurven als Funktionsmodelle untersuchen (LK) | `deferred_provider_limitation` |
+| 221 | `bc6e4c14-d4f7-537e-8e83-9b5c0086e807` | Graphen einfacher Hyperbeln mit Asymptoten zeichnen | `deferred_provider_limitation` |
 
-Weitere 53 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 49 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Provider Quota
 
@@ -184,12 +184,16 @@ Weitere 27 Eintraege stehen in der JSON-Begleitdatei.
 | Goal ID | Title | Link status | Latest ledger decision |
 | --- | --- | --- | --- |
 | `6c26a00a-ad1e-59cc-93e2-a38e1683665c` | Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten | `pilot` | - |
+| `74dc4b0d-a167-564c-bdc1-5cf510aee280` | Algebraische Terme ausmultiplizieren | `pilot` | `deferred_provider_limitation` |
+| `96c55cb6-d2c7-5145-8567-b5f570f55a8a` | Algebraische Terme faktorisieren | `pilot` | `deferred_provider_limitation` |
+| `e2bf726a-126c-5c66-9fbb-6e04c129bb0f` | Äquivalenz durch Begründung oder Gegenbeispiel prüfen | `pilot` | `deferred_provider_limitation` |
 | `630bb145-9a3f-5c88-ab5a-fb69a9bb76e4` | Arithmetische Reihen untersuchen | `pilot` | - |
 | `a1c79897-6ded-57f8-bee1-2d365a5083c9` | Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen | `pilot` | - |
 | `74b5a01b-c086-51d0-bc66-046029c92ef7` | Geometrische Reihen untersuchen | `pilot` | - |
 | `cc60f759-1168-5fc0-8ff5-5f7a2533e61c` | Lösbarkeit und Lösungsvielfalt linearer Gleichungen untersuchen | `pilot` | - |
 | `03703b29-efd8-57e0-acf5-4381b1dc67ec` | Modalwert bestimmen und im Kontext deuten | `approved` | - |
 | `f08d06dc-139d-5fd2-892c-8cc919b1e4fc` | Terme mit Variablen lesen und deuten | `pilot` | - |
+| `28d098ab-f33f-5baf-8261-f1c0c0f711fa` | Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden | `pilot` | `deferred_provider_limitation` |
 
 ### Accepted Review Without Link
 

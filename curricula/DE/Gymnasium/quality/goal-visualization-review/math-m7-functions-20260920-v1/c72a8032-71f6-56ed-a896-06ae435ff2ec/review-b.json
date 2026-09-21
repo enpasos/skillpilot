@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "Reviewer did not generate candidates, did not inspect root review verdicts or v2 prompts, and opened each actual candidate-v1 PNG individually against current goal and initial prompt.",
+  "reviewDate": "2026-09-20",
+  "goalId": "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+  "title": "Verkettete Exponential- und Logarithmusfunktionen analysieren (LK)",
+  "description": "Die lernende Person kann eine verkettete Funktion mit Exponential- oder Logarithmusanteil untersuchen und ihr Verhalten argumentativ begründen.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-functions-20260920-v1/c72a8032-71f6-56ed-a896-06ae435ff2ec/candidate-v1.png",
+  "candidateSha256": "11f41a340d1c8f13b7499c5cfc17359f5db19960f1a7d3b4d10bd18c9bab5ff5",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-functions-20260920-v1/c72a8032-71f6-56ed-a896-06ae435ff2ec/prompt.md",
+  "decision": "reject_candidate",
+  "checks": [
+    "Domain R, even symmetry, specific derivative2x/(x²+1), derivative signs and minimum(0,0) are correct.",
+    "Friendly five-panel layout and mathematical text generally readable."
+  ],
+  "defects": [
+    "General chain-rule bubble reads f′(x)=F″(u(x))·u′(x), with second derivative of F; correct is first derivative F′.",
+    "Main graph near x=1 visibly has y around0.4 rather than ln2≈0.693, and sparse unequal x-tick spacing weakens the claimed exact graph."
+  ],
+  "nextAction": "Fix F″ to F′ and render the even ln(1+x²) curve with a consistent scale and correct inflections at±1.",
+  "humanApproval": false,
+  "scope": "Candidate-only visual/factual review; no canonical import, QA-ledger mutation or full goal-completion claim."
+}

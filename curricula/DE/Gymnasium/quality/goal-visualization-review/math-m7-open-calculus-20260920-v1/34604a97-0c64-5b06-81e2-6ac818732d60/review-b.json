@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "This reviewer did not generate or import these images and did not consult the generating agent's acceptance decisions. Decisions are based on the actual candidate rasters and the current canonical goal texts.",
+  "reviewDate": "2026-09-20",
+  "goalId": "34604a97-0c64-5b06-81e2-6ac818732d60",
+  "title": "Integralterme interpretieren und begründen",
+  "description": "Die lernende Person kann Integralterme sprachlich und grafisch deuten, ihre Bedeutung im Kontext erläutern und mit ihnen argumentieren, zum Beispiel beim Vergleichen von Größen oder beim Begründen von Aussagen.",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/34604a97-0c64-5b06-81e2-6ac818732d60/candidate-v1.png",
+  "candidateSha256": "52316a52202afba98263ba26cfbebb96b8a00401a215d1d7bf12d3cc916140d5",
+  "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-open-calculus-20260920-v1/34604a97-0c64-5b06-81e2-6ac818732d60/prompt.de.md",
+  "decision": "accept_candidate",
+  "checks": [
+    "Viewed the actual candidate PNG, including plot, computation and inequality chain.",
+    "For f(x)=3−x: f(0)=3, f(1)=2, f(2)=1 and f(3)=0 align with the plotted axes. The highlighted area ends at x=2.",
+    "Integral from 0 to 2 is [3x−x²/2]₀²=6−2=4; the bound 0≤4≤6 follows correctly from 0≤3−x≤3 on [0,2].",
+    "The image connects verbal meaning, oriented area and a concrete argument as required by the goal."
+  ],
+  "defects": [],
+  "humanApproval": false,
+  "scope": "Targeted independent candidate-image review only. No active-asset import and no full goal-completion or human-approval claim."
+}

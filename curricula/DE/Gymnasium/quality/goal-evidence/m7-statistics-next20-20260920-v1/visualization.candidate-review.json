@@ -1,0 +1,354 @@
+{
+  "schemaVersion": 1,
+  "status": "ai_candidate",
+  "humanApproved": false,
+  "reviewer": "Codex independent candidate author (exact runtime model identifier not exposed)",
+  "actualReviewedAt": "2026-09-20T20:01:23Z",
+  "inspectionMethod": "All twenty actual referenced raster assets were opened with view_image during this authoring pass. Last two were re-opened at original-detail request. No generated replacement or prior review was used as visual proof.",
+  "scopePath": "curricula/DE/Gymnasium/quality/goal-evidence/m7-statistics-next20-20260920-v1/scope.candidate.json",
+  "counts": {
+    "correction_required": 11,
+    "accept_current_asset": 8,
+    "needs_external_review": 1
+  },
+  "goals": [
+    {
+      "goalId": "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+      "title": "Argumentationsmuster von Hypothesentests erläutern",
+      "goalSnapshotSha256": "sha256:0b086889ebfd3025003aba8eaa7fa09a82a091f8553342f628484b1c08996423",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b/d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b.jpg",
+      "assetSha256": "sha256:68905ac2a51d65ba4deb60d500314cb790aa3e91b5dc1849a2086cfb1c28888a",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "H0:p≤0,10 und H1:p>0,10 sowie Nichtverwerfen statt Annahme sind korrekt.",
+        "Testplanung vor Beobachtung und α als Fehler 1. Art passen zum Ziel."
+      ],
+      "findings": [
+        "Beobachtet wird laut Zähler X=5; der rote Beobachtungspfeil im Histogramm steht aber ungefähr in der Mitte der zwischen 0 und 20 bezeichneten Achse. Auf einer linearen Anzahlachse müsste 5 bei einem Viertel der Strecke liegen. Numerische Beobachtung und gezeichnete Position stimmen nicht überein."
+      ],
+      "correction": "Beobachtungsmarkierung bei X=5 auf einer konsistent skalierten diskreten 0-bis-20-Achse setzen oder die Zahlenbindung der rein schematischen Skizze entfernen."
+    },
+    {
+      "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+      "title": "Null- und Alternativhypothesen formulieren",
+      "goalSnapshotSha256": "sha256:1ac901b0920025d9433a8e87e05e706f81ecda87ff5490ca044a486eecbb5a55",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/f14e1643-ad8d-5235-a832-97987fa18489/f14e1643-ad8d-5235-a832-97987fa18489.jpg",
+      "assetSha256": "sha256:3ee6a3d8cf5ad67dceeade83327f6e0efd285d3c7c7d083a141cde423588c753",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "p ist als Merkmalswahrscheinlichkeit benannt.",
+        "H0/H1 und rechts-, links-, zweiseitige Richtungen sind korrekt.",
+        "Die schematischen roten Ränder illustrieren Testseiten ohne berechnete Grenzwerte; glatte Kurven werden hier nicht als exakte B(n,p)-Histogramme bewertet."
+      ],
+      "findings": [],
+      "correction": null
+    },
+    {
+      "goalId": "eb2cecd6-5dca-5a2e-988b-a29b24c20345",
+      "title": "Testkennzahlen und Testvariablen bestimmen",
+      "goalSnapshotSha256": "sha256:a632cf6c81bc36376cac09d7396af04b7ac056e50d3334cbbf3b011ca195b3f1",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/eb2cecd6-5dca-5a2e-988b-a29b24c20345.jpg",
+      "assetSha256": "sha256:a406676b7bc7bf79e1e76e31f28198f0f66be9ee5b628d5b91064b59949adebd",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "X zählt 20 geprüfte Teile, x_beob=5 und der dargestellte Bereich X≥5 sind konsistent.",
+        "Die diskrete Grenze zwischen 4 und 5 ist klar."
+      ],
+      "findings": [
+        "Auf H0:p≤0,10 folgt unqualifiziert 'Unter H0: X~B(20;0,10)'. Die zusammengesetzte Nullhypothese enthält auch p<0,10; B(20;0,10) ist nur die Randverteilung, nicht die Verteilung für jede wahre H0."
+      ],
+      "correction": "'Am Rand von H0 (p=0,10): X~B(20;0,10)' verwenden oder eine einfache Nullhypothese p=0,10 deklarieren."
+    },
+    {
+      "goalId": "677be619-5f0a-59bf-9730-0071c7d3f150",
+      "title": "Entscheidungsregeln und Verwerfungsbereiche bestimmen",
+      "goalSnapshotSha256": "sha256:ac942ceefe3e2f1351349ea721e2e6e3dfa66d2e8cbf27c16c2116ed4c19b952",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/677be619-5f0a-59bf-9730-0071c7d3f150/677be619-5f0a-59bf-9730-0071c7d3f150.jpg",
+      "assetSha256": "sha256:d1fb596b85578bf7f7d95e868db3ec97d856019ff8e4391dd7a644438a6faa59",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Kritischer Bereich X≥k und Gegenbereich X<k trennen die Entscheidungsfälle korrekt.",
+        "Gesamtwahrscheinlichkeit ≤α und Sigma-Regeln nur als Orientierung sind zutreffend.",
+        "Unskalierte Balken werden als Schemaskizze gelesen; es werden keine konkreten Grenzen oder Balkenwerte behauptet."
+      ],
+      "findings": [],
+      "correction": null
+    },
+    {
+      "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+      "title": "Fehlerwahrscheinlichkeiten berechnen",
+      "goalSnapshotSha256": "sha256:215c8a967c09dc78b441957e73d5e490bf4c45673df32388b9b40c4208a99105",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.jpg",
+      "assetSha256": "sha256:c29ff1dc1ffb2dcc450ae5e38a2225a13b22ef4209764b09d3165d8ee73a0851",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "α=P0(X≥k) und β=P1(X<k) beschreiben die richtige Entscheidungsregel.",
+        "Die Grunddaten n=20, p0=0,10, p1=0,25 und k=5 sind lesbar."
+      ],
+      "findings": [
+        "Im oberen ausdrücklich als B(20;0,10) bezeichneten Histogramm ist der Balken bei 1 höher als bei 2. Tatsächlich ist P(X=2)>P(X=1), der Modus ist 2.",
+        "Für das untere Beispiel ist P0,25(X<5)=0,4148415…, auf drei Nachkommastellen 0,415, nicht der angegebene Wert ≈0,414."
+      ],
+      "correction": "Die bindenden Binomialbalken korrekt zeichnen und β≈0,415 angeben; die Testseiten und Ereignisse können bleiben."
+    },
+    {
+      "goalId": "4b58b855-cd26-538c-8e6f-304f4cfd8ad6",
+      "title": "Fehler 1. und 2. Art deuten",
+      "goalSnapshotSha256": "sha256:6d6e5842c72f0b913a5f3522af7e98f80c66153ab7efab45cf04d49c741a30c1",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/4b58b855-cd26-538c-8e6f-304f4cfd8ad6/4b58b855-cd26-538c-8e6f-304f4cfd8ad6.jpg",
+      "assetSha256": "sha256:55b5a385e21a06276fb28c7e5468ee52bbf57cd80faafdf96cb7bcc8cddfebf1",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Fehler I: wahre H0 verwerfen; Fehler II: falsche H0 nicht verwerfen – beide Zuordnungen korrekt.",
+        "Die Qualitätsbeispiele zeigen gute Charge gesperrt bzw. schlechte Charge ausgeliefert.",
+        "Die Nichtverwerfungsfläche unter H1 liegt links der Grenze; Teststärke ist die komplementäre rechte Fläche."
+      ],
+      "findings": [],
+      "correction": null
+    },
+    {
+      "goalId": "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+      "title": "Testergebnisse im Kontext interpretieren",
+      "goalSnapshotSha256": "sha256:76f02c73ff47b275421cbf08b14b56a5d96b5d5693ab91f107dd9e5f78d73916",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.jpg",
+      "assetSha256": "sha256:65cfed922d426eb1fb2b0148b222f2bf32ca58ba65036409c20730cba3641532",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "x=5 ist konsistent an der diskreten Grenze markiert und führt nach der Regel zur Verwerfung.",
+        "Die Aussage 'Daten sprechen für …; kein Beweis' ist angemessen begrenzt."
+      ],
+      "findings": [
+        "Wie beim Testvariablenbild folgt aus H0:p≤0,10 unqualifiziert 'Unter H0 gilt: X~B(20;0,10)'. Diese Binomialverteilung gilt nur am Rand p=0,10 der zusammengesetzten Nullhypothese."
+      ],
+      "correction": "Die Verteilung ausdrücklich als Randverteilung bei p=0,10 kennzeichnen."
+    },
+    {
+      "goalId": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+      "title": "Gütefunktion und Teststärke untersuchen (LK)",
+      "goalSnapshotSha256": "sha256:f6d9c93633fb0cc8b2f025a51c589de34b6fe9a2837b516473f2b1e73af624e1",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png",
+      "assetSha256": "sha256:b740e322764055259c7bf051d263666e0e90b64befcc0ef359a54a4c4a2fca76",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Die Definitionen L=P(Nichtverwerfen), G=P(Verwerfen)=1−L und die markierten Werte bei p0 bzw. p1 sind textlich richtig.",
+        "Achsen benennen wahren Parameter p und Wahrscheinlichkeit."
+      ],
+      "findings": [
+        "Die tatsächlichen blauen und orangefarbenen Kurven schneiden sich unterhalb der 0,5-Linie bei ungefähr 0,43. Für die ausdrücklich behauptete punktweise Beziehung G=1−L müssen beide Kurven sich bei Höhe 0,5 schneiden. In der Umgebung von p≈0,4 bis 0,5 summieren die gezeichneten Werte sich sichtbar nicht zu 1."
+      ],
+      "correction": "Eine Kurve tatsächlich als Spiegelung der anderen an y=0,5 konstruieren; die gut erklärten markierten Werte können erhalten bleiben."
+    },
+    {
+      "goalId": "03357e70-2280-532f-b629-5dfa31dc44eb",
+      "title": "Tests vergleichen und bewerten (LK)",
+      "goalSnapshotSha256": "sha256:109a2eda65accd5915e9b37c9fd836391cefa252acd453a33b0dddf7cbc7b845",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.jpg",
+      "assetSha256": "sha256:beb8dff7ad96966fd7abc186044284da156cb077282dd8181e6a63a87be6fa58",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Die Textaussagen kleineres k: höheres α und höhere Teststärke, größeres k: geringeres α und geringere Stärke sind für den rechtsseitigen Test korrekt.",
+        "Das Abwägen beider Fehler passt zum Ziel."
+      ],
+      "findings": [
+        "Die mit α beschrifteten roten Fehlersymbole und Pfeile liegen links der kritischen Grenze unter H0; α gehört für Verwerfen bei X≥k zur rechten H0-Randfläche.",
+        "Die mit β bezeichneten blauen Symbole/Pfeile liegen rechts von k unter H1; β gehört bei dieser Regel zur linken H1-Fläche X<k. Korrekte Begleittexte retten diese verkehrte räumliche Zuordnung nicht."
+      ],
+      "correction": "α rechts von k unter der H0-Kurve und β links von k unter der H1-Kurve markieren; möglichst die Flächen selbst statt bloßer Symbole hervorheben."
+    },
+    {
+      "goalId": "f85419c4-63ac-5d6d-b73b-fcb12a0ff89f",
+      "title": "Prognoseintervalle für relative Häufigkeiten bestimmen",
+      "goalSnapshotSha256": "sha256:43639841df60f26a995e94a14aa9e06d6193409d69365e5445180fa53fee3e6c",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/f85419c4-63ac-5d6d-b73b-fcb12a0ff89f/f85419c4-63ac-5d6d-b73b-fcb12a0ff89f.jpg",
+      "assetSha256": "sha256:7cd4e6daac81cd70dc59012187674a3e55a5b01b8122c024c72ccbf7994931ec",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Intervallformel p±c√(p(1−p)/n) ist korrekt.",
+        "Für p=0,5,n=400,c=1,96 ergibt sich [0,451;0,549], passend auf zwei Dezimalstellen als [0,45;0,55] angenähert.",
+        "Bekanntes p und zukünftiges zufälliges h sowie verbleibende Unsicherheit werden erkennbar unterschieden."
+      ],
+      "findings": [],
+      "correction": null
+    },
+    {
+      "goalId": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+      "title": "Konfidenzintervalle für Wahrscheinlichkeiten berechnen",
+      "goalSnapshotSha256": "sha256:7c15d586f73a586602b0e95b527d7ba4540a317eef1f510df1a3b37416b1a719",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/5f328147-619c-568d-9a0d-e1787ca0c01b/5f328147-619c-568d-9a0d-e1787ca0c01b.jpg",
+      "assetSha256": "sha256:da6872607520295d01b268129476f16146f6412d1ec52ee04c20b1f7b8eb7807",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Für h=0,52,n=400,c=1,96 ist E≈0,04896 und [0,47;0,57] als gerundete symmetrische Näherung korrekt.",
+        "Der Text über feste Parameter und wiederholte Intervalle ist sachlich richtig."
+      ],
+      "findings": [
+        "Im rechten Zahlenstrahl steht die Markierung 0,52 am linken Ende des als [0,47…0,57] beschrifteten Intervallbalkens. Sie muss dessen Mittelpunkt sein.",
+        "Im 'genaueren Weg' wird ohne Kennzeichnung der Randgleichung durchgehend eine Gleichung statt der das ganze Intervall bestimmenden Ungleichung gezeigt. Das ist als Grenzberechnung möglich, verlangt aber die Klarstellung, dass die beiden Lösungen die Grenzen liefern."
+      ],
+      "correction": "0,52 in der Intervallmitte markieren; den Rechenweg als Bestimmung der Randpunkte oder mit ≤ und zwischen den Grenzen kenntlich machen."
+    },
+    {
+      "goalId": "aa14d9e4-5790-5d94-a245-2ff9a70bf633",
+      "title": "Konfidenzniveau interpretieren",
+      "goalSnapshotSha256": "sha256:0d1fdba294f79c3a7720ef8c044d0f2335cc001aa6751ebd1ceef2e8bdbd37f8",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.jpg",
+      "assetSha256": "sha256:84ef2f1df65e43382527241d15ecf6ec97e900542ab089ccfc242c43fd20a65a",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Die Textdefinition des Konfidenzniveaus als langfristige Verfahrensüberdeckung ist korrekt.",
+        "Ein konkretes festes Intervall enthält p oder nicht – korrekt."
+      ],
+      "findings": [
+        "Die mit roten Kreuzen als Nichtüberdeckung markierten Intervalle schneiden sichtbar dieselbe senkrechte p-Linie wie die mit Haken markierten. Auch das linke einzelne rote Intervall enthält den dargestellten p-Punkt, ist aber mit einem Kreuz versehen. Die Zeichen widersprechen der gezeichneten Mengenbeziehung."
+      ],
+      "correction": "Nichtüberdeckende Intervalle vollständig links oder rechts von p zeichnen; überdeckende Intervalle mit Haken markieren."
+    },
+    {
+      "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+      "title": "Konfidenzdiagramme deuten (LK)",
+      "goalSnapshotSha256": "sha256:c77bc8f9bcd201099028e50658bfc6e9291a8562d297c14a2f90ff7aa34a2dbb",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/77d607e0-0244-55ca-ba0f-214baa94b8de/77d607e0-0244-55ca-ba0f-214baa94b8de.jpg",
+      "assetSha256": "sha256:faff9085a96fb8397e1e8a6cdbd0bb28196435302952006572a0c63ffec29dc2",
+      "inspected": true,
+      "decision": "needs_external_review",
+      "checks": [
+        "Innerhalb der gezeigten zweidimensionalen Parameterdarstellung sind größeres n→kleinere Region und höheres Niveau→größere Region unter gleichen Bedingungen plausibel.",
+        "Die zwei Parameterachsen θ1 und θ2 sind deutlich benannt."
+      ],
+      "findings": [
+        "Fachliche Scope-Frage: Das Raster führt zwei unbekannte Parameter und eine multivariate Konfidenzregion ein. Die aktuellen Voraussetzungen und benachbarten Intervallziele behandeln dagegen eine Trefferwahrscheinlichkeit p. Eine p-h-Konfidenzellipse dieses Schulkontexts ist nicht dieselbe Darstellung wie eine Region für (θ1,θ2). Der Wortlaut des Zieles allein entscheidet diese Kontextabweichung nicht sicher."
+      ],
+      "correction": "Die genaue Quellbedeutung von 'Konfidenzellipsen' in HMKB Q3.4 abgleichen. Bei Ein-Anteil-Scope ein beschriftetes p-h-Konfidenzdiagramm mit ablesbarer p-Intervallbreite nutzen; keine multivariate Pflichtkompetenz aus dem Raster ableiten."
+    },
+    {
+      "goalId": "410221ed-540c-5daf-8c42-d8dd12e9100a",
+      "title": "Stichprobenumfang für vorgegebene Konfidenzniveaus planen (LK)",
+      "goalSnapshotSha256": "sha256:1b07ec5462c9451f2f63764f3ca11739c8e60265a90db8f31f8b192f6c0ee679",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/410221ed-540c-5daf-8c42-d8dd12e9100a/410221ed-540c-5daf-8c42-d8dd12e9100a.jpg",
+      "assetSha256": "sha256:9aed038150f5038f5722f6d7d729a1a763b56938c7e812e306e742a9fac6d430",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "n≥z²/(4e²) ist die konservative Bernoulli-Planungsformel für eine Halbbreite e.",
+        "Bei z=1,96 und e=0,05 ergibt sich n≥384,16, ganzzahlig mindestens 385; der Bildwert stimmt.",
+        "Die unskalierte breiter-/schmaler-Skizze vermittelt den zutreffenden Einfluss des Umfangs, ohne exakte graphische Breitenquotienten zu behaupten."
+      ],
+      "findings": [],
+      "correction": null
+    },
+    {
+      "goalId": "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+      "title": "Lageparameter für Datenanalysen auswählen und vergleichen",
+      "goalSnapshotSha256": "sha256:fa2cd1fe1a0ebc657f28faea06685d912565e8261bf4f43ce5023a842db9e2a8",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/616c72a4-972d-5cc0-b903-e2a24bcb150c.png",
+      "assetSha256": "sha256:84b007b240e8634afc04a1e746ebb542d11e8647851d18549a018b88b4ba2e17",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Für 2,3,3,4,8 sind Mittelwert 4, Median 3 und Modalwert 3 inhaltlich richtig.",
+        "Median- und Modalwertmarkierungen passen zu den Daten; die Darstellungswahl ist sinnvoll erklärt."
+      ],
+      "findings": [
+        "In der Mittelwertgleichung steht sichtbar '(2+3+3+4+8)=20/5=4'. Links fehlt die Division durch 5; die gezeigte Gleichung setzt damit 20 gleich 4."
+      ],
+      "correction": "Den linken Summenausdruck durch 5 teilen, etwa (2+3+3+4+8)/5=20/5=4. Sonst kann das Bild bleiben."
+    },
+    {
+      "goalId": "e402f330-8ac6-525f-b3ff-bc4be229d131",
+      "title": "Streuungsmaße von Daten bestimmen und deuten",
+      "goalSnapshotSha256": "sha256:d5befc1975a39f802d8d6540aefe826731f210907f5dd3a8cb2783593602475a",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/e402f330-8ac6-525f-b3ff-bc4be229d131/e402f330-8ac6-525f-b3ff-bc4be229d131.jpg",
+      "assetSha256": "sha256:b46e236697515f0dc72ac2b463661509e467f16b46bd3db8aab779079007dc1a",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Datensatz A zeigt Abweichungen −1 und +1 von Mittelwert 5; B zeigt −4 und +4. B besitzt damit die größere Streuung.",
+        "Varianz als durchschnittliche quadrierte Abweichung und Standardabweichung als Wurzel/typischer Abstand sind zielgerecht dargestellt.",
+        "Die Histogramme illustrieren enge bzw. breite Konzentration; es werden keine exakten Balkenhäufigkeiten behauptet."
+      ],
+      "findings": [],
+      "correction": null
+    },
+    {
+      "goalId": "84069c5e-5526-57c1-9417-a886ccfd3f66",
+      "title": "Daten mit Verteilungen vergleichen",
+      "goalSnapshotSha256": "sha256:272e6687f65bfaf47dde1cb35fe2b6a8fe5f7f71485bf76926a01a424f0bf9c2",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/84069c5e-5526-57c1-9417-a886ccfd3f66/84069c5e-5526-57c1-9417-a886ccfd3f66.jpg",
+      "assetSha256": "sha256:866c5646873fced70f650061ab21ee51f475e2c718815d0a18dd38b65a28739a",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Würfelhäufigkeiten 9,10,10,11,9,11 summieren sich zu 60; unter dem Gleichverteilungsmodell werden je 10 erwartet.",
+        "Gewichteter Mittelwert 214/60≈3,57 und theoretischer Mittelwert 3,5 sind korrekt.",
+        "Balken, Erwartungslinie, Tabellenwerte und vorsichtige Eignungsaussage stimmen überein."
+      ],
+      "findings": [],
+      "correction": null
+    },
+    {
+      "goalId": "e02976ad-71fc-5929-b764-df7630269c47",
+      "title": "Zufallsexperimente planen und durchführen",
+      "goalSnapshotSha256": "sha256:553664c075cfa55ee3ff38a001c74ba8e0ebb523efc832f8bc7c6b93a2933380",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/e02976ad-71fc-5929-b764-df7630269c47/e02976ad-71fc-5929-b764-df7630269c47.jpg",
+      "assetSha256": "sha256:a3ad70b204116f39e095896600281c626e8f696bf3498a3f651e2cd0ef6e05f7",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "checks": [
+        "Festgelegte Versuchszahl 60, gleiche Bedingungen und nachvollziehbare Protokollierung passen zum Planungs- und Durchführungsziel.",
+        "Die Häufigkeiten 9,10,10,9,11,11 summieren sich zu 60.",
+        "Für die Sechs sind 11/60≈0,18 und theoretisch 1/6≈0,17 korrekt; kein vorgeschriebenes Zufallsergebnis wird behauptet."
+      ],
+      "findings": [],
+      "correction": null
+    },
+    {
+      "goalId": "83a5546e-0ea6-576e-83e2-3387b30872bb",
+      "title": "Daten tabellarisch und grafisch aufbereiten",
+      "goalSnapshotSha256": "sha256:63fbae333e2d320a0712f41e108386219af8df5ef5ff8fcf420ba2af7248b6ee",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/83a5546e-0ea6-576e-83e2-3387b30872bb/83a5546e-0ea6-576e-83e2-3387b30872bb.jpg",
+      "assetSha256": "sha256:ee99e7e8b3286a593d410819d06d263dae3639dce80aff99c4144cc53657e1c8",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Numerische Tabelle und Diagramm stimmen für Bus 8, Fahrrad 6, zu Fuß 7, Auto 3 überein; Summe 24 und gerundete Prozentwerte sind korrekt.",
+        "Die unter Rohdaten n=24 sichtbaren Karten wurden einzeln gezählt: Bus 5, Fahrrad 3, zu Fuß 6, Auto 4; insgesamt 18.",
+        "Die Bus-Strichliste wurde mit der angegebenen absoluten Häufigkeit 8 verglichen."
+      ],
+      "findings": [
+        "Der als vollständiger Weg von Rohdaten zu Tabelle gestaltete linke Block zeigt 18 Karten mit Häufigkeiten 5,3,6,4 statt n=24 bzw. 8,6,7,3. Er ist nicht als bloßer Auszug gekennzeichnet.",
+        "Die Bus-Strichliste zeigt ein durchgestrichenes Bündel und vier weitere Striche; dies bildet die daneben angegebene 8 nicht korrekt ab."
+      ],
+      "correction": "24 Rohdatenkarten mit exakt 8 Bus, 6 Fahrrad, 7 zu Fuß und 3 Auto darstellen oder den Kartenteil unmissverständlich als unvollständigen Auszug kennzeichnen. Die Bus-Strichliste eindeutig als 5+3 darstellen; korrekte Tabelle und Balkenhöhen bewahren."
+    },
+    {
+      "goalId": "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+      "title": "Experimentdaten mit Kenngrößen auswerten",
+      "goalSnapshotSha256": "sha256:8b6025d296917db9b43ce1932cf03da99ca3a47b1592d0b95bfd860fd84d7bf2",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/aeb947a2-2dd4-5017-a429-0d777e22db6a/aeb947a2-2dd4-5017-a429-0d777e22db6a.jpg",
+      "assetSha256": "sha256:f8584b16f28c700cf029fbfe61a26701f3a4d7bdb943b0b7db2174737cb03ca2",
+      "inspected": true,
+      "decision": "correction_required",
+      "checks": [
+        "Für 4,5,5,6,10 sind Mittelwert 6 m, Median 5 m und Spannweite 6 m korrekt.",
+        "Der Mittelwert wird zusätzlich durch eine waagerechte Balkenwaage mit den beschrifteten Gewichten 4,5,5,6 links und 10 rechts visualisiert.",
+        "Die gezeichnete Waage wurde auf eine mathematisch tragfähige Gleichgewichtsdeutung des Mittelwerts geprüft."
+      ],
+      "findings": [
+        "Die Mittelwertwaage ist kein stimmiges Schwerpunktmodell: Die Zahlen werden als verschieden schwere Gewichte links und rechts angeordnet, nicht als gleich schwere Beobachtungen an den Positionen 4,5,5,6,10. Der waagerechte Balken mit Pivotbeschriftung 6 suggeriert so ein durch die Zeichnung nicht getragenes Gleichgewicht. Die korrekte Rechnung behebt diese falsche Mittelwertdarstellung nicht."
+      ],
+      "correction": "Die Waage durch ein korrektes Schwerpunktbild mit fünf gleich schweren Beobachtungspunkten auf einer Zahlengeraden bei 4,5,5,6,10 und Schwerpunkt 6 ersetzen oder die irreführende Waage entfernen; Rechnung, Median und Spannweite erhalten."
+    }
+  ]
+}

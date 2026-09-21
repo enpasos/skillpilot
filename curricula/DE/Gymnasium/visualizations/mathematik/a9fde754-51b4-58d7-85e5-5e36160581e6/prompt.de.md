@@ -8,55 +8,19 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `a9fde754-51b4-58d7-85e5-5e36160581e6.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/a9fde754-51b4-58d7-85e5-5e36160581e6/a9fde754-51b4-58d7-85e5-5e36160581e6.jpg`
+- Quellbild: `a9fde754-51b4-58d7-85e5-5e36160581e6.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/a9fde754-51b4-58d7-85e5-5e36160581e6/a9fde754-51b4-58d7-85e5-5e36160581e6.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen
-Beschreibung: Die lernende Person kann Schnittpunkte einer Geraden mit Koordinatenebenen bestimmen, diese als Durchstoßpunkte bzw. Spurpunkte deuten und rechnerisch prüfen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-
-Korrigiere die bestehende Infografik nur an der Geradengleichung oben rechts. Erhalte Layout, Titel, Koordinatenebenen, Gerade, Spurpunkte, Farben, Sprechblasen und alle Rechnungen unverändert.
-
-Die Formelzeile oben rechts muss lauten:
-
-Gerade g: (x,y,z) = (1, 2, 3) + t*(2, -1, -1)
-
-Wichtig:
-
-- Ersetze nur das einzelne linke "x" in der Geradengleichung durch "(x,y,z)".
-- Das linke "(x,y,z)" steht fuer den Punkt auf der Geraden und darf nicht wie eine einzelne x-Koordinate wirken.
-- Behalte die Werte (1, 2, 3), t*(2, -1, -1), die drei Ebenenbedingungen und die drei Spurpunkte unveraendert.
-- Die Rechnungen bleiben:
-  - y=0: 2 - t = 0, t = 2, S_xz = (5, 0, 1)
-  - x=0: 1 + 2t = 0, t = -1/2, S_yz = (0, 5/2, 7/2)
-  - z=0: 3 - t = 0, t = 3, S_xy = (7, -1, 0)
-- Sichtbarer deutscher Text muss korrekt geschrieben sein, insbesondere "Durchstoßpunkte", "Koordinatenebenen", "Gerade", "Ebene".
-
-Vermeiden:
-
-- Keine Änderung an den drei Spurpunkt-Rechnungen.
-- Keine Änderung an der Lage der Punkte oder der Gerade.
-- Keine neuen Pfeile, keine neuen Koordinaten, keine neue Formel.
-- Kein einzelnes "x =" als linke Seite der Geradengleichung.
-- Keine technischen IDs, Dateinamen, Plattformnamen, Produktnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
+Use case: precise-object-edit, scientific-educational.
+Asset type: existing German mathematics learning-goal illustration, landscape PNG.
+Input image 1: edit target and exact style/layout reference.
+Primary request: correct only the specified mathematical defect. Keep the existing friendly, abstract comic illustration, pale calm opaque background, colors, readable German lettering, characters and composition. Do not redesign or add decorative content. No technical IDs, no watermark, no logos, no photorealism. Preserve every correct formula, number and label except where explicitly corrected below.
+Correct the spatial diagram while preserving ALL equations and the three result callouts. The black line g must contain ALL THREE colored intersection points. The teal Syz and purple Sxz already lie on g; keep them. Move the red Sxy off its current wrong position to the same black straight line, to the LOWER-LEFT of the purple Sxz (extend the existing black line if needed). Sxy=(7,−1,0) must lie in the horizontal xy-plane z=0 on its NEGATIVE-y side: extend the pale blue xy-plane modestly to the left/negative-y side of the x-axis so it includes this point. It must NOT remain in the current positive-y blue region. Keep the positive x-axis pointing down-left, positive y-axis right, positive z-axis up. Remove the obsolete dashed projection lines for the old red position; any new guides must be parallel to the shown coordinate axes. Redirect the red Sxy callout tail to the corrected red point. All three points must visibly be collinear on g in order Syz (t=−1/2), Sxz (t=2), Sxy (t=3), and in their respective planes. Preserve exact results Syz=(0,5/2,7/2), Sxz=(5,0,1), Sxy=(7,−1,0) and line equation (x,y,z)=(1,2,3)+t(2,−1,−1). Keep the schematic friendly diagram, no new numeric axis scale. Do not merely relabel a point that is still off the line.
 ```
 
 ## Review-Notiz

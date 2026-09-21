@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex agent math_open_image_triage",
+  "independenceStatement": "Reviewer did not generate or import the candidate and did not consult the generating agent's verdict. Review uses the actual v3 raster and current canonical goal text.",
+  "reviewDate": "2026-09-20",
+  "goalId": "91311908-9209-58e4-8429-99dad9df546d",
+  "title": "Eigenschaften von Funktionsverkettungen graphisch begründen (LK)",
+  "description": "Die lernende Person kann Eigenschaften von Funktionsverkettungen wie $f(g(x))$ anhand geeigneter Graphen skizzieren und begründen.",
+  "candidateSha256": "0ed89ca8cd90691c46d0414ddde0aa4ea689d130f98c370b066602d8000e69c8",
+  "checks": [
+    "Viewed the actual candidate-v3.png, not an older candidate or receipt.",
+    "The inner function g(x)=x+1 is applied before f(u)=u², giving h(x)=(x+1)². All four table rows (x=−2,−1,0,1) correctly give h=1,0,1,4.",
+    "The parabola opens upward and has the labelled minimum S(−1,0) left of the y-axis. The graph and text correctly explain the left translation by one.",
+    "Removing the old conflicting reference curve and dense numerical ticks preserves the required graphical reasoning while eliminating the prior misleading coordinates. No exact shared axis scale is asserted by the schematic."
+  ],
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-functions-20260920-v1/91311908-9209-58e4-8429-99dad9df546d/candidate-v3.png",
+  "decision": "accept_candidate",
+  "defects": [],
+  "humanApproval": false,
+  "scope": "Independent candidate-image review only; no active import, human release or complete goal-QS claim."
+}

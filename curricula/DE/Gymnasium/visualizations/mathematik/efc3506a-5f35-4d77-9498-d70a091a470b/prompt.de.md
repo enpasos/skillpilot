@@ -8,30 +8,19 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `efc3506a-5f35-4d77-9498-d70a091a470b.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/efc3506a-5f35-4d77-9498-d70a091a470b/efc3506a-5f35-4d77-9498-d70a091a470b.jpg`
+- Quellbild: `efc3506a-5f35-4d77-9498-d70a091a470b.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/efc3506a-5f35-4d77-9498-d70a091a470b/efc3506a-5f35-4d77-9498-d70a091a470b.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen
-Beschreibung: Die lernende Person kann zusammengesetzte Zufallsexperimente mit Baumdiagrammen strukturieren und Wahrscheinlichkeiten mit Pfadregeln in mehrstufigen Situationen bestimmen.
-
-Zusatzanweisung:
-Do not include any technical identifiers in the image. Create a German educational infographic about tree diagrams and path rules for multi-step probability experiments. Use one simple example: two coin tosses with outcomes K and Z, each branch probability 1/2. Show four paths: KK, KZ, ZK, ZZ. Label the product rule on a path: P(KZ)=1/2*1/2=1/4. Label the sum rule for an event: P(genau einmal K)=1/4+1/4=1/2. Keep the tree mathematically correct, with branch probabilities placed on branches, and avoid impossible probabilities or totals not summing to 1.
+Use case: precise-object-edit, scientific-educational.
+Asset type: existing German mathematics learning-goal illustration, landscape PNG.
+Input image 1: edit target and exact style/layout reference.
+Primary request: correct only the specified mathematical defect. Keep the existing friendly, abstract comic illustration, pale calm opaque background, colors, readable German lettering, characters and composition. Do not redesign or add decorative content. No technical IDs, no watermark, no logos, no photorealism. Preserve every correct formula, number and label except where explicitly corrected below.
+Correct only the graphical assignment of the SUM rule. The event "genau einmal K" contains exactly the two full paths KZ and ZK, NOT ZZ. Remove the horizontal brace directly beneath the bottom ZZ branch and remove the small curved pointer from "Summenregel (Ereignis addieren)" to that ZZ branch. Instead clearly highlight the two complete routes START→K→Z (KZ) and START→Z→K (ZK), including their two endpoint labels; do not highlight KK or ZZ. Place one grouping brace alongside the adjacent middle endpoint boxes KZ and ZK, enclosing ONLY those two endpoints, and connect the Summenregel callout to this grouping. Preserve the tree structure, all four outcomes KK,KZ,ZK,ZZ, all branch probabilities 1/2, the existing correct product P(KZ)=1/4 and the exact bottom formula P(genau einmal K)=P(KZ)+P(ZK)=1/4+1/4=1/2. All endpoints remain readable; do not replace the tree with another layout.
 ```
 
 ## Review-Notiz

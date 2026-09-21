@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:graph"
+      ],
+      "startedAt": "2026-09-20T21:10:47.273Z",
+      "completedAt": "2026-09-20T21:10:54.016Z",
+      "exitCode": 1,
+      "log": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-verified-package-close-v1/commit-check-01.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:composition-views"
+      ],
+      "startedAt": "2026-09-20T21:10:54.016Z",
+      "completedAt": "2026-09-20T21:14:27.484Z",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-verified-package-close-v1/commit-check-02.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:math-duration-composition-views"
+      ],
+      "startedAt": "2026-09-20T21:14:27.484Z",
+      "completedAt": "2026-09-20T21:14:27.959Z",
+      "exitCode": 1,
+      "log": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-verified-package-close-v1/commit-check-03.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:he-math-duration-projection"
+      ],
+      "startedAt": "2026-09-20T21:14:27.959Z",
+      "completedAt": "2026-09-20T21:14:28.476Z",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-verified-package-close-v1/commit-check-04.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:canonical-math-scope-coverage"
+      ],
+      "startedAt": "2026-09-20T21:14:28.477Z",
+      "completedAt": "2026-09-20T21:14:28.953Z",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-verified-package-close-v1/commit-check-05.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:goal-visualization-qa-status"
+      ],
+      "startedAt": "2026-09-20T21:14:28.953Z",
+      "completedAt": "2026-09-20T21:14:29.332Z",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-verified-package-close-v1/commit-check-06.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:goal-visualization-qa-model"
+      ],
+      "startedAt": "2026-09-20T21:14:29.332Z",
+      "completedAt": "2026-09-20T21:14:29.713Z",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-verified-package-close-v1/commit-check-07.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-qa",
+        "--",
+        "--subjects=mathematik,physik,chemie"
+      ],
+      "startedAt": "2026-09-20T21:14:29.713Z",
+      "completedAt": "2026-09-20T21:14:38.238Z",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-verified-package-close-v1/commit-check-08.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-approval-coverage"
+      ],
+      "startedAt": "2026-09-20T21:14:38.238Z",
+      "completedAt": "2026-09-20T21:14:38.626Z",
+      "exitCode": 1,
+      "log": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-verified-package-close-v1/commit-check-09.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-qa-coverage-parity"
+      ],
+      "startedAt": "2026-09-20T21:14:38.626Z",
+      "completedAt": "2026-09-20T21:14:39.068Z",
+      "exitCode": 1,
+      "log": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-verified-package-close-v1/commit-check-10.log"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/check_curriculum_spelling.mjs"
+      ],
+      "startedAt": "2026-09-20T21:14:39.068Z",
+      "completedAt": "2026-09-20T21:14:39.207Z",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-verified-package-close-v1/commit-check-11.log"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "scripts/validate_competency_wording.py"
+      ],
+      "startedAt": "2026-09-20T21:14:39.207Z",
+      "completedAt": "2026-09-20T21:14:45.206Z",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-verified-package-close-v1/commit-check-12.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:memory-card-review:report:all"
+      ],
+      "startedAt": "2026-09-20T21:14:45.206Z",
+      "completedAt": "2026-09-20T21:14:49.828Z",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-verified-package-close-v1/commit-check-13.log"
+    }
+  ],
+  "allPassed": false
+}

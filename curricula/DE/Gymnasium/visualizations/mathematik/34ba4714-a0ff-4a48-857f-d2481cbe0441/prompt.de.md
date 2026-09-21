@@ -8,30 +8,19 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `34ba4714-a0ff-4a48-857f-d2481cbe0441.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/34ba4714-a0ff-4a48-857f-d2481cbe0441/34ba4714-a0ff-4a48-857f-d2481cbe0441.jpg`
+- Quellbild: `34ba4714-a0ff-4a48-857f-d2481cbe0441.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/34ba4714-a0ff-4a48-857f-d2481cbe0441/34ba4714-a0ff-4a48-857f-d2481cbe0441.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Definitionsmenge einfacher gebrochen-rationaler Funktionen bestimmen
-Beschreibung: Die lernende Person kann bei einfachen gebrochen-rationalen Funktionen unzulässige Werte erkennen, die Definitionsmenge angeben und sie am Term begründen.
-
-Zusatzanweisung:
-Verwende kurze, fachlich sichere Beispiele. Nullstelle linear: f(x)=2x-4, setze 2x-4=0, x=2, Punkt N(2|0). Schnittpunkt zweier Geraden: g: y=x+1 und h: y=-x+5; gleichsetzen x+1=-x+5 -> 2x=4 -> x=2, y=3, Schnittpunkt S(2|3), Probe in beiden Geraden. Gleichung/Ungleichung: 2x+3=11 -> x=4; 2x+3<11 -> x<4, Lösungsmenge auf Zahlengerade mit offenem Punkt bei 4 und Pfeil nach links. Definitionsmenge gebrochen-rational: f(x)=1/(x-2), Nenner x-2 darf nicht 0 sein, x≠2, D=R\{2}; markiere senkrechte Lücke/Asymptote x=2. Achsenschnittpunkte gebrochen-rational: f(x)=(x+1)/(x-2), Definitionslücke x=2; x-Achse: Zähler x+1=0 -> x=-1, Punkt (-1|0); y-Achse: x=0 -> f(0)=-1/2, Punkt (0|-1/2). Keine technischen IDs, keine langen Texte, keine falsche Division durch 0.
+Use case: precise-object-edit, scientific-educational.
+Asset type: existing German mathematics learning-goal illustration, landscape PNG.
+Input image 1: edit target and exact style/layout reference.
+Primary request: correct only the specified mathematical defect. Keep the existing friendly, abstract comic illustration, pale calm opaque background, colors, readable German lettering, characters and composition. Do not redesign or add decorative content. No technical IDs, no watermark, no logos, no photorealism. Preserve every correct formula, number and label except where explicitly corrected below.
+Correct ONLY the small auxiliary drawing at the bottom of the RIGHT panel. Preserve the black horizontal number line and its tick positions/labels, including the OPEN circle at x=2. Remove the entire green curve above this line and the vertical red dashed double-ended arrow through x=2. Replace the nearby red text "Lücke / Asymptote bei x=2" by exactly "x = 2 ausgeschlossen". The result is simply a DOMAIN number line ℝ except 2, not a function graph: no green function curve and no vertical asymptote arrow. Preserve all three panel headings, f(x)=1/(x−2), x−2=0⇒x=2, D=ℝ\{2}, characters, explanatory arrows and correct text unchanged.
 ```
 
 ## Review-Notiz
