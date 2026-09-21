@@ -502,14 +502,30 @@ def is_known_non_landscape_goal_collection(file_path, data):
         for root in NON_LANDSCAPE_GOAL_COLLECTION_ROOTS
     ):
         return True
-    return (
+    if not (
         normalized_path.startswith(GOAL_VISUALIZATION_REVIEW_ROOT + os.sep)
-        and normalized_path.endswith(".candidates.json")
-        and data.get("authoringContract")
-        == "positive-understanding-evidence-candidates-v1"
         and type(data.get("schemaVersion")) is int
         and data["schemaVersion"] == 1
         and isinstance(data.get("goals"), list)
+    ):
+        return False
+
+    # Recognize only known review formats, not every goals collection in this
+    # directory. These historical receipts are not runtime landscapes; their
+    # identity markers classify them without changing their recorded evidence.
+    filename = os.path.basename(normalized_path)
+    return (
+        filename.endswith(".candidates.json")
+        and data.get("authoringContract")
+        == "positive-understanding-evidence-candidates-v1"
+    ) or (
+        filename == "preparation-audit.json"
+        and data.get("artifactType") == "math-m7-held-image-preparation-audit-v1"
+    ) or (
+        filename == "review-manifest.json"
+        and data.get("batchId") == os.path.basename(os.path.dirname(normalized_path))
+        and data.get("status") == "candidates_for_independent_review"
+        and data.get("authority") == "ai_candidate_author"
     )
 
 
@@ -590,6 +606,61 @@ def validate_landscape_discovery_contract():
         "curricula/example.candidates.json",
     ):
         cases.append((other_path, valid_candidate, True))
+
+    review_formats = [
+        (
+            "math-m7-open-calculus-20260920-v1/preparation-audit.json",
+            {"artifactType": "math-m7-held-image-preparation-audit-v1"},
+        ),
+        (
+            "math-m7-stochastics-foundations-20260920-v1/review-manifest.json",
+            {
+                "batchId": "math-m7-stochastics-foundations-20260920-v1",
+                "status": "candidates_for_independent_review",
+                "authority": "ai_candidate_author",
+            },
+        ),
+    ]
+    for relative_path, markers in review_formats:
+        review_path = os.path.join(GOAL_VISUALIZATION_REVIEW_ROOT, relative_path)
+        review = {
+            "schemaVersion": 1,
+            **markers,
+            "goals": [{"goalId": "reviewed-goal"}],
+        }
+        cases.append((review_path, review, False))
+        cases.append((review_path, {"goals": []}, True))
+        for field in markers:
+            missing_marker = dict(review)
+            del missing_marker[field]
+            cases.append((review_path, missing_marker, True))
+            for invalid_value in (None, "unknown", [], 1):
+                cases.append((review_path, {**review, field: invalid_value}, True))
+        for field, invalid_values in (
+            ("schemaVersion", (None, 0, 2, "1", True, 1.0)),
+            ("goals", (None, {}, "not-an-array", 1)),
+        ):
+            for invalid_value in invalid_values:
+                cases.append((review_path, {**review, field: invalid_value}, True))
+        missing_version = dict(review)
+        del missing_version["schemaVersion"]
+        cases.append((review_path, missing_version, True))
+        for id_field in ("landscapeId", "id"):
+            for id_value in ("runtime", None, "", 0, [], {}):
+                cases.append((review_path, {**review, id_field: id_value}, True))
+        for other_path in (
+            review_path.replace(".json", ".backup.json"),
+            review_path.replace("goal-visualization-review", "other-review"),
+            review_path.replace(
+                "goal-visualization-review", "goal-visualization-review-backup"
+            ),
+            os.path.join("curricula", os.path.basename(review_path)),
+        ):
+            cases.append((other_path, review, True))
+        if "batchId" in markers:
+            other_batch_path = review_path.replace(markers["batchId"], "other-batch")
+            cases.append((other_batch_path, review, True))
+
     for file_path, data, expected in cases:
         if looks_like_runtime_landscape(file_path, data) is not expected:
             print(
@@ -609,8 +680,8 @@ def validate_file(file_path, schema):
         return False
 
     if not looks_like_runtime_landscape(file_path, data):
-        # Review ledgers may also carry a top-level goals collection. Runtime
-        # landscapes additionally declare a current or legacy landscape ID.
+        # Known review formats can also carry goals. Unknown goals collections
+        # still reach schema validation, including landscapes missing their ID.
         return True
 
     try:
