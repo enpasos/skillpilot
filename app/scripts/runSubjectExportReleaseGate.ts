@@ -320,6 +320,8 @@ const main = () => {
   if (options.enforceCleanSourceTree) {
     enforceCleanSourceTree()
   }
+  steps.push(runStep('typecheck-subject-export-scripts', 'npm', ['run', 'typecheck:subject-export-scripts']))
+  steps.push(runStep('test-subject-export-package-contracts', 'npm', ['run', 'test:subject-export-package-contracts']))
   steps.push(runStep('build-m5-subject-export-packages', 'npm', ['run', 'export:m5-subject-packages', '--', '--version', options.version]))
   steps.push(runStep('validate-subject-export-packages', 'npm', ['run', 'export:subject-packages:validate', '--', '--dir', 'tmp/exports']))
   if (options.auditSourceLinks) {

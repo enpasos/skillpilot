@@ -46,6 +46,9 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_ID = "c01b1ce9-a667-4a46-b251-ec33ae602b15";
+    // HE-GK Q2.1 now excludes the broader parameter/modeling route. Champion totals
+    // count legacy-equivalent atoms, not the three new canonical GK assessments.
+    private static final long HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS = 292;
     private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String CANONICAL_PHYSICS_ROOT_ID = "bf980fff-b62b-4ea4-a20d-31681a7ad785";
     private static final String CANONICAL_CHEMISTRY_ID = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
@@ -448,6 +451,7 @@ public class LearnerControllerIntegrationTest {
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learnerRepository.save(learner);
         completeCanonicalSekTwoPersonalization(CANONICAL_MATH_ID);
+        assertHessenGkQ21Projection(learnerRepository.findById(learnerId).orElseThrow());
 
         masteryRepository.saveAll(List.of(
                 new Mastery(learner, LEGACY_MATH_ASSUMPTIONS_ID, 1.0),
@@ -463,7 +467,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.champion().curriculumId()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(response.champion().topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
         assertThat(response.champion().masteredCount()).isEqualTo(2);
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(295);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS);
 
         var snapshot = curriculaService.getSnapshot();
         var curriculum = snapshot.curricula().stream()
@@ -474,7 +478,7 @@ public class LearnerControllerIntegrationTest {
                 .anySatisfy(champion -> {
                     assertThat(champion.topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
                     assertThat(champion.masteredCount()).isEqualTo(2);
-                    assertThat(champion.totalTopicGoals()).isEqualTo(295);
+                    assertThat(champion.totalTopicGoals()).isEqualTo(HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS);
                 });
     }
 
@@ -1385,9 +1389,11 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
-        // The series split adds one target; HE-G9 also includes the reviewed J10 route entries.
+        // HE-GK Q2.1 removes four broad-route atoms and adds three scoped assessments
+        // (net -1); HE-G9 also includes the reviewed J10 route entries. Keep exact
+        // totals alongside membership checks so compensating projection errors fail.
         String[][] scopes = {
-                { "DE-HE", "GK", "733", "754" },
+                { "DE-HE", "GK", "732", "753" },
                 { "DE-HE", "LK", "859", "880" },
                 { "DE-RP", "GK", "677", "702" },
                 { "DE-RP", "LK", "788", "813" },
@@ -1407,17 +1413,27 @@ public class LearnerControllerIntegrationTest {
                     CANONICAL_MATH_ID, jurisdiction, "G8", courseProfile, true, true));
             learnerRepository.save(learner);
 
-            JsonNode g8State = objectMapper.readTree(getRequest(
-                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            HttpResponse<String> g8Response = getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state");
+            assertThat(g8Response.statusCode()).isEqualTo(HttpStatus.OK.value());
+            JsonNode g8State = objectMapper.readTree(g8Response.body());
             int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
+            if ("DE-HE".equals(jurisdiction) && "GK".equals(courseProfile)) {
+                assertHessenGkQ21Projection(learner);
+            }
 
             learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
                     CANONICAL_MATH_ID, jurisdiction, "G9", courseProfile, true, true));
             learnerRepository.save(learner);
 
-            JsonNode g9State = objectMapper.readTree(getRequest(
-                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            HttpResponse<String> g9Response = getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state");
+            assertThat(g9Response.statusCode()).isEqualTo(HttpStatus.OK.value());
+            JsonNode g9State = objectMapper.readTree(g9Response.body());
             int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
+            if ("DE-HE".equals(jurisdiction) && "GK".equals(courseProfile)) {
+                assertHessenGkQ21Projection(learner);
+            }
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", courseProfile);
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", courseProfile);
@@ -1727,6 +1743,29 @@ public class LearnerControllerIntegrationTest {
         assertThat(plan.stage())
                 .as("fixture must complete Level 2 before setting Level 3: %s", plan)
                 .isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+    }
+
+    private void assertHessenGkQ21Projection(Learner learner) {
+        Set<String> atomicGoalIds = learnerService.getFilteredAtomicGoalIds(
+                CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false);
+        assertThat(atomicGoalIds)
+                .as("HE-GK Q2.1 retains common functions and its three scoped assessments for %s",
+                        learner.getSkillpilotId())
+                .contains(
+                        "61686d85-0301-550e-bab9-bd9411c3e7ce", // reciprocal powers
+                        "5dabf0b3-89b1-59a6-ae57-014f92becd3b", // root functions
+                        "6517427b-cf4e-5ebf-9a76-e1035617687c", // derivatives of simple functions
+                        "c15fe32d-1c83-4127-b1a4-9125af3d8f5d", // invertibility
+                        "dbc13bb0-963b-49a8-a441-2183f4b64c8e", // inverse graphs
+                        "bbb340ed-1009-4966-ae96-bfea4437505a", // reciprocal/root assessment
+                        "46bb8422-a822-46e1-8bcc-8b6475994b3a", // transformation assessment
+                        "1429363f-628f-4f42-80e5-8a9a935147cc") // inverse-function assessment
+                .doesNotContain(
+                        "972cc7e8-be9c-444c-ba45-98e817b3cf14", // general parameter reasoning
+                        "71683f37-24de-4e0f-badd-858b56fa4d64", // parameters from context
+                        "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01", // extended function modeling
+                        "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad", // broad composition assessment
+                        "c72a8032-71f6-56ed-a896-06ae435ff2ec"); // LK exponential/log compositions
     }
 
     private void applyCurrentPersonalizationOption(

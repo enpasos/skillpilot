@@ -551,7 +551,7 @@ Options:
   --help                      Show this help.
 `
 
-const parseArgs = (argv: string[]): CliOptions => {
+const parseArgs = (argv: string[]): CliOptions & { subjectSlug: string } => {
   const options: CliOptions = {
     subject: 'Mathematik',
     outputDir: resolve(repoRoot, 'tmp/exports'),
@@ -636,7 +636,7 @@ const parseArgs = (argv: string[]): CliOptions => {
     options.mappingTokens = [options.subjectSlug]
   }
 
-  return options
+  return { ...options, subjectSlug: options.subjectSlug }
 }
 
 const normalizeToken = (value: string) => value
@@ -772,7 +772,7 @@ const stableSortJson = (value: JsonValue): JsonValue => {
 
 const stableJson = (value: JsonValue) => `${JSON.stringify(stableSortJson(value), null, 2)}\n`
 
-const sha256 = (content: Buffer) => createHash('sha256').update(content).digest('hex')
+const sha256 = (content: Buffer | string) => createHash('sha256').update(content).digest('hex')
 
 const inspectFile = (absolutePath: string) => {
   const hash = createHash('sha256')
@@ -935,7 +935,7 @@ const packageCardPathFromRuntimePath = (value: string) => {
   return match ? `data/cards/${match[1]}` : value
 }
 
-const rewriteRepoLocalString = (value: string) => {
+const rewriteRepoLocalString = (value: string): string => {
   const normalized = value.split('\\').join('/')
 
   if (normalized.startsWith('curricula/DE/Gymnasium/mapping/')) {
@@ -950,7 +950,15 @@ const rewriteRepoLocalString = (value: string) => {
     return basename(normalized)
   }
 
-  return value
+  // Review notes can contain repository paths inside prose, not just as a
+  // whole field. Preserve the note (including its approval limitations), while
+  // applying the same package-path policy to each embedded local reference.
+  // The boundary excludes paths inside HTTP(S) URLs; normalize only the path
+  // token so unrelated backslashes, e.g. in mathematical notation, survive.
+  return value.replace(
+    /(^|[\s`"'([{])((?:curricula[/\\]|app[/\\]public[/\\]data[/\\]|[/\\]home[/\\])[^\s`"'()[\]{}<>]+)/gu,
+    (_match, boundary: string, path: string) => `${boundary}${rewriteRepoLocalString(path)}`,
+  )
 }
 
 const shouldOmitPackageJsonKey = (key: string, category: string) => {
@@ -963,7 +971,7 @@ const shouldOmitPackageJsonKey = (key: string, category: string) => {
   return PACKAGE_SOURCE_EVIDENCE_KEYS.has(key)
 }
 
-const sanitizeJsonForPackage = (
+export const sanitizeJsonForPackage = (
   value: JsonValue,
   category: string,
   parentKey?: string,
@@ -2689,10 +2697,13 @@ const main = () => {
   process.stdout.write(`${stableJson(summary as unknown as JsonValue)}`)
 }
 
-try {
-  main()
-} catch (error) {
-  const message = error instanceof Error ? error.message : String(error)
-  process.stderr.write(`${message}\n`)
-  process.exitCode = 1
+const invokedPath = process.argv[1] ? resolve(process.argv[1]) : null
+if (invokedPath === fileURLToPath(import.meta.url)) {
+  try {
+    main()
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error)
+    process.stderr.write(`${message}\n`)
+    process.exitCode = 1
+  }
 }

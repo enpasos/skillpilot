@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-13T23:01:40.433Z",
+  "generatedAt": "2026-09-21T03:48:41.903Z",
   "generator": "app/scripts/reportGoalSourceRationaleCoverage.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "runtimeIndexPath": "app/public/data/goal-source-rationales-math-public.json"
   },
   "sourceIndex": {
-    "generatedAt": "2026-09-13T23:01:22.512Z",
+    "generatedAt": "2026-09-21T03:47:38.310Z",
     "generator": "app/scripts/generateGoalSourceRationales.ts",
     "summary": {
       "requestedGoals": 741,
@@ -770,13 +770,13 @@
     }
   },
   "summary": {
-    "totalGoals": 1183,
-    "atomicLeaves": 925,
+    "totalGoals": 1187,
+    "atomicLeaves": 928,
     "relevantAtomicLeaves": 797,
-    "memoryOrNonContentLeaves": 128,
-    "clusters": 258,
-    "containsRelations": 1304,
-    "requiresRelations": 2439,
+    "memoryOrNonContentLeaves": 131,
+    "clusters": 259,
+    "containsRelations": 1308,
+    "requiresRelations": 2436,
     "runtimeItems": 741,
     "runtimeItemsInLandscape": 741,
     "runtimeItemsMissingFromLandscape": 0,
@@ -787,7 +787,7 @@
     "relevantLeavesMissingRuntimeSourceRationale": 56,
     "relevantLeavesWithRuntimeClassicGap": 0,
     "clustersWithDirectRuntimeSourceRationale": 0,
-    "clustersWithoutDirectRuntimeSourceRationale": 258,
+    "clustersWithoutDirectRuntimeSourceRationale": 259,
     "containsRelationRationalesImplemented": 0,
     "requiresRelationRationalesImplemented": 0,
     "relevantLeafClassicCoveragePercent": 93,
@@ -16594,6 +16594,23 @@
         "classification": "cluster_aggregate_pending"
       },
       {
+        "id": "967d1863-1b9b-4798-8a35-ae4e9760e322",
+        "shortKey": "canonical_math_q2_common_functions_assessments",
+        "title": "Übungen zu grundlegenden Funktionseigenschaften",
+        "type": "cluster",
+        "phase": "Q2",
+        "area": "Analysis",
+        "topicCode": null,
+        "pathTitles": [
+          "Mathematik",
+          "Übungen zu grundlegenden Funktionseigenschaften"
+        ],
+        "runtimeCovered": false,
+        "classicSourceRoute": false,
+        "memSparqlStatus": null,
+        "classification": "cluster_aggregate_pending"
+      },
+      {
         "id": "3e937f39-1187-58b3-96c3-ec39278c0e3c",
         "shortKey": null,
         "title": "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
@@ -17329,8 +17346,8 @@
       }
     ],
     "relationRationales": {
-      "containsRelationsPending": 1304,
-      "requiresRelationsPending": 2439
+      "containsRelationsPending": 1308,
+      "requiresRelationsPending": 2436
     }
   },
   "rows": [
@@ -37878,6 +37895,77 @@
       "classicSourceRoute": true,
       "memSparqlStatus": "mem_sparql_not_configured",
       "classification": "covered_runtime_classic_mem_pending"
+    },
+    {
+      "id": "967d1863-1b9b-4798-8a35-ae4e9760e322",
+      "shortKey": "canonical_math_q2_common_functions_assessments",
+      "title": "Übungen zu grundlegenden Funktionseigenschaften",
+      "type": "cluster",
+      "phase": "Q2",
+      "area": "Analysis",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Übungen zu grundlegenden Funktionseigenschaften"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "cluster_aggregate_pending"
+    },
+    {
+      "id": "1429363f-628f-4f42-80e5-8a9a935147cc",
+      "shortKey": "canonical_math_q2_inverse_restriction_assessment",
+      "title": "Eine Umkehrfunktion durch Einschränkung ermöglichen",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "Analysis",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Übungen zu grundlegenden Funktionseigenschaften",
+        "Eine Umkehrfunktion durch Einschränkung ermöglichen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+      "shortKey": "canonical_math_q2_graph_transformations_assessment",
+      "title": "Einen unbekannten Graphen gezielt umformen",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "Analysis",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Übungen zu grundlegenden Funktionseigenschaften",
+        "Einen unbekannten Graphen gezielt umformen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "bbb340ed-1009-4966-ae96-bfea4437505a",
+      "shortKey": "canonical_math_q2_reciprocal_root_assessment",
+      "title": "Kehrwertpotenzen und Quadratwurzel vergleichen",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "Analysis",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Übungen zu grundlegenden Funktionseigenschaften",
+        "Kehrwertpotenzen und Quadratwurzel vergleichen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
     },
     {
       "id": "3e937f39-1187-58b3-96c3-ec39278c0e3c",

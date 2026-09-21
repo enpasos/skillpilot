@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-09-13T23:01:40.433Z
+Generated: 2026-09-21T03:48:41.903Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,11 +16,11 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1183 |
-| Atomare Blattleernziele | 925 |
+| Alle Mathematik-Ziele | 1187 |
+| Atomare Blattleernziele | 928 |
 | Davon relevant fuer Quellenbegruendung | 797 |
-| Memory-/Nicht-Content-Blattziele | 128 |
-| Clusterziele | 258 |
+| Memory-/Nicht-Content-Blattziele | 131 |
+| Clusterziele | 259 |
 | Runtime-Quellenbegruendungen | 741 |
 | Runtime-Ziele mit klassischem Quellenweg | 741 |
 | Runtime-Ziele mit MEM/FWU-konsistenter Route | 227 |
@@ -28,10 +28,10 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Relevante Blattziele mit MEM/FWU-konsistenter Route | 227/797 (28.5%) |
 | Relevante Blattziele ohne Runtime-Quellenbegruendung | 56 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
-| Cluster mit direkter Runtime-Quellenbegruendung | 0/258 |
-| Cluster ohne direkte Runtime-Quellenbegruendung | 258 |
-| contains-Relationen mit Begruendungstext | 0/1304 |
-| requires-Relationen mit Begruendungstext | 0/2439 |
+| Cluster mit direkter Runtime-Quellenbegruendung | 0/259 |
+| Cluster ohne direkte Runtime-Quellenbegruendung | 259 |
+| contains-Relationen mit Begruendungstext | 0/1308 |
+| requires-Relationen mit Begruendungstext | 0/2436 |
 
 ## Interpretation
 
@@ -293,11 +293,11 @@ Weitere 434 Eintraege stehen in der JSON-Begleitdatei.
 | Zahlbereichserweiterung zu komplexen Zahlen begründen (LK) (canonical_math_sek2_q4_complex_extension_necessity_by) | Q4 | Algebra | CANONICAL.MATH.SEK2.Q4.COMPLEX_EXTENSION_BY | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Komplexe Zahlen > Zahlbereichserweiterung zu komplexen Zahlen begründen (LK) |
 | Problemlösen und Argumentieren | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren |
 
-Weitere 198 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 199 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/public/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-09-13T23:01:22.512Z
+- Runtime index generated: 2026-09-21T03:47:38.310Z
 

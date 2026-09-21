@@ -870,6 +870,16 @@ const collectGoalIdsFromView = (value: JsonValue): string[] => {
   ]
 }
 
+export const unresolvedCompositionGoalReferences = (
+  view: JsonValue,
+  localGoalIds: ReadonlySet<string>,
+  declaredExternalGoalIds: ReadonlySet<string>,
+): string[] => collectGoalIdsFromView(view)
+  // Legacy subject packages explicitly declare, rather than embed, their
+  // cross-subject dependencies. Views and canonical edges use the same goal
+  // universe. This does not make the package full-standalone-ready.
+  .filter((goalId) => !localGoalIds.has(goalId) && !declaredExternalGoalIds.has(goalId))
+
 const collectCardRuntimePaths = (value: JsonValue): string[] => {
   if (Array.isArray(value)) {
     return value.flatMap(collectCardRuntimePaths)
@@ -935,7 +945,7 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
   const checks: CheckResult[] = []
   const errors: string[] = []
   const counts: Record<string, number> = {}
-  let archiveRoot: string | null = null
+  let reportedArchiveRoot: string | null = null
   const zipSha256 = sha256RegularFile(zipPath)
   const targetReadiness = evaluatePackageTargetReadiness({
     zipPath,
@@ -992,7 +1002,7 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
     return {
       zipPath: repoRelative(zipPath),
       zipSha256,
-      archiveRoot,
+      archiveRoot: reportedArchiveRoot,
       targetReadiness,
       passed: false,
       checks,
@@ -1021,7 +1031,8 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
       entryIntegrity.set(entry, inspected)
       return inspected
     }
-    archiveRoot = archiveRootFrom(entries)
+    const archiveRoot = archiveRootFrom(entries)
+    reportedArchiveRoot = archiveRoot
     counts.files = entries.length
     counts.uniqueFiles = entrySet.size
     counts.maxArchivePathLength = entries.reduce((maxLength, entry) => Math.max(maxLength, entry.length), 0)
@@ -1492,8 +1503,9 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
 
     const goalIdSet = new Set(goalIds)
     const viewEntries = entries.filter((entry) => entry.startsWith(`${archiveRoot}/data/views/`) && entry.endsWith('.json'))
-    const viewUnknownRefs = viewEntries.flatMap((entry) => collectGoalIdsFromView(readZipEntryJson(zipPath, entry))
-      .filter((goalId) => !goalIdSet.has(goalId))
+    const viewUnknownRefs = viewEntries.flatMap((entry) => unresolvedCompositionGoalReferences(
+      readZipEntryJson(zipPath, entry), goalIdSet, declaredExternalGoalIds,
+    )
       .map((goalId) => `${entry}: ${goalId}`))
     counts.compositionViews = viewEntries.length
     check(checks, 'composition-views-present', viewEntries.length > 0, `${viewEntries.length} view file(s)`)
@@ -1598,7 +1610,7 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
   return {
     zipPath: repoRelative(zipPath),
     zipSha256,
-    archiveRoot,
+    archiveRoot: reportedArchiveRoot,
     targetReadiness,
     passed: failedChecks.length === 0 && errors.length === 0,
     checks,
@@ -1689,10 +1701,13 @@ const main = () => {
   }
 }
 
-try {
-  main()
-} catch (error) {
-  const message = error instanceof Error ? error.message : String(error)
-  process.stderr.write(`${message}\n`)
-  process.exitCode = 1
+const invokedPath = process.argv[1] ? resolve(process.argv[1]) : null
+if (invokedPath === fileURLToPath(import.meta.url)) {
+  try {
+    main()
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error)
+    process.stderr.write(`${message}\n`)
+    process.exitCode = 1
+  }
 }

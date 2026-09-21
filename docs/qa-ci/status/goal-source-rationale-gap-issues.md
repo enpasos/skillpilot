@@ -8,7 +8,7 @@
 > Source of truth: `docs/qa-ci/status/goal-source-rationales-math-all-relevant.json`
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 
-Generated: 2026-09-14T02:50:26.310Z
+Generated: 2026-09-21T03:49:18.310Z
 
 Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-Mathematikreport zu bearbeitbaren Issues. Sie ist kein Runtime-Gate; sie priorisiert die naechsten Source-Extraction- und Mapping-Arbeiten.
 
@@ -110,5 +110,5 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - All-relevant report: `docs/qa-ci/status/goal-source-rationales-math-all-relevant.json`
-- All-relevant generated: 2026-09-13T23:01:34.393Z
+- All-relevant generated: 2026-09-21T03:48:00.930Z
 
