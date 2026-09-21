@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
 import tailwindcss from '@tailwindcss/vite'
@@ -23,6 +24,10 @@ interface LanguageExpectation {
   overviewTitle: string
   panelHeadingLabels: string[]
   removedHeroLine: string
+  oer: {
+    logoAlt: string
+    licensingAction: string
+  }
 }
 
 const expectedByLanguage: Record<Language, LanguageExpectation> = {
@@ -50,6 +55,10 @@ const expectedByLanguage: Record<Language, LanguageExpectation> = {
       'Curricula & Lernziele',
     ],
     removedHeroLine: 'So startest du in 5 Minuten',
+    oer: {
+      logoAlt: 'Globales Logo für Open Educational Resources (OER)',
+      licensingAction: 'Logo & Lizenz',
+    },
   },
   en: {
     accessNotice: 'SkillPilot is free. The learning beta runs with the paid Claude Pro plan – in your browser and the Claude app, including voice mode. ChatGPT will follow after stabilization, focused testing and publication.',
@@ -75,6 +84,10 @@ const expectedByLanguage: Record<Language, LanguageExpectation> = {
       'Curricula & learning goals',
     ],
     removedHeroLine: 'Start in 5 minutes',
+    oer: {
+      logoAlt: 'Global Open Educational Resources (OER) logo',
+      licensingAction: 'Logo & license',
+    },
   },
 }
 
@@ -146,6 +159,7 @@ interface PillVisualMetrics {
   lineHeight: string
   paddingBottom: string
   paddingTop: string
+  textLineCount: number
 }
 
 interface PanelVisualState {
@@ -182,6 +196,12 @@ const readPillVisualMetrics = (action: Locator): Promise<PillVisualMetrics> => (
     }
     const actionBounds = element.getBoundingClientRect()
     const iconBounds = icon?.getBoundingClientRect()
+    const label = element.querySelector('span')
+    const labelRange = document.createRange()
+    labelRange.selectNodeContents(label ?? element)
+    const textLineCount = new Set([...labelRange.getClientRects()]
+      .filter((rect) => rect.width > 0 && rect.height > 0)
+      .map((rect) => Math.round(rect.top))).size
     return {
       backgroundColor: srgbValues[0]!,
       borderColor: srgbValues[1]!,
@@ -197,6 +217,7 @@ const readPillVisualMetrics = (action: Locator): Promise<PillVisualMetrics> => (
       lineHeight: actionStyle.lineHeight,
       paddingBottom: actionStyle.paddingBottom,
       paddingTop: actionStyle.paddingTop,
+      textLineCount,
     }
   })
 )
@@ -273,7 +294,7 @@ const assertPanelHeadingIcons = async (
 ) => {
   const expected = expectedByLanguage[language]
   for (const [index, panelTestId] of panelTestIds.entries()) {
-    const heading = page.getByTestId(panelTestId).locator(':scope > h2')
+    const heading = page.getByTestId(panelTestId).locator('h2')
     assert.equal(
       normalizeText(await heading.innerText()),
       expected.panelHeadingLabels[index],
@@ -384,9 +405,16 @@ const assertPillContentAndSizing = async (
       )
       continue
     }
+    const inCurricula = await action.evaluate((element) => Boolean(
+      element.closest('[data-testid="public-landing-panel-curricula"]'),
+    ))
+    const lineCount = inCurricula ? metrics.textLineCount : 1
+    assert(lineCount >= 1 && lineCount <= 2,
+      `${language} ${viewport}: ${testId} stays readable in at most two lines inside the narrower curricula column`)
+    const expectedHeight = referenceMetrics.height + (lineCount - 1) * Number.parseFloat(metrics.lineHeight)
     assert(
-      Math.abs(metrics.height - referenceMetrics.height) <= 2,
-      `${language} ${viewport}: ${testId} height ${metrics.height}px matches the overview pill height ${referenceMetrics.height}px`,
+      Math.abs(metrics.height - expectedHeight) <= 2,
+      `${language} ${viewport}: ${testId} height ${metrics.height}px matches the ${lineCount}-line pill height ${expectedHeight}px without extra padding`,
     )
     assert(
       Math.abs(metrics.iconHeight - referenceMetrics.iconHeight) <= 2
@@ -487,6 +515,12 @@ const assertPillContentAndSizing = async (
     secondaryActionGroups.length,
     `${language} ${viewport}: panel identity remains visible through distinct icon accents`,
   )
+  const [overviewRed, overviewGreen, overviewBlue] = parseRgb(restingIconColors[1]!)
+  const [curriculaRed, , curriculaBlue] = parseRgb(restingIconColors[3]!)
+  assert(overviewGreen > overviewRed + 20 && overviewGreen > overviewBlue + 20,
+    `${language} ${viewport}: overview actions now use the emerald green accent`)
+  assert(curriculaBlue > curriculaRed + 20,
+    `${language} ${viewport}: curricula actions use the blue accent matching the OER logo`)
 
   const hoverPalettes: Array<Pick<PillVisualMetrics, 'backgroundColor' | 'borderColor' | 'color'>> = []
   for (const [index, group] of secondaryActionGroups.entries()) {
@@ -524,6 +558,9 @@ const assertPillContentAndSizing = async (
   const primaryMetrics = await readPillVisualMetrics(
     page.getByTestId('public-landing-action-learning'),
   )
+  const [primaryRed, primaryGreen, primaryBlue] = parseRgb(primaryMetrics.backgroundColor)
+  assert(primaryRed > primaryGreen + 20 && primaryRed > primaryBlue + 20,
+    `${language} ${viewport}: the learning hero's primary action uses the warm amber accent`)
   const learningSecondaryMetrics = await readPillVisualMetrics(
     page.getByTestId('public-landing-action-quickstart'),
   )
@@ -664,7 +701,7 @@ const assertPanelInteractionFeel = async (
       const background = await panel.evaluate((element) => getComputedStyle(element).backgroundColor)
       assert(
         contrastRatio(hover.headingColor, background) >= 3,
-        `${language} ${viewport}: the fresh green hero heading keeps AA large-text contrast`,
+        `${language} ${viewport}: the warm hero heading keeps AA large-text contrast`,
       )
     }
     assert.equal(
@@ -776,6 +813,96 @@ const assertPanelLayout = async (page: Page, language: Language, viewport: strin
     page,
     `${language} ${viewport}: the landing page has no horizontal overflow`,
   )
+}
+
+const assertOerBadge = async (page: Page, language: Language, viewport: string) => {
+  const label = `${language} ${viewport}: OER`
+  const expected = expectedByLanguage[language].oer
+  const badge = page.getByTestId('public-landing-oer')
+  assert.equal(await badge.count(), 1, `${label}: one integrated logo area is present`)
+  assert.equal(await badge.evaluate((element) => element.tagName.toLowerCase()), 'figure')
+  assert.equal(normalizeText(await badge.innerText()), expected.licensingAction,
+    `${label}: the homepage logo has only its short attribution link, not another content section`)
+  assert.equal(await badge.locator('h2, h3, p').count(), 0,
+    `${label}: the logo adds no heading or explanatory paragraph to the landing page`)
+  assert.equal(await badge.locator('button, input, iframe').count(), 0,
+    `${label}: this is information and navigation, not another setup or third-party embed`)
+
+  assert.equal(await badge.locator('a').count(), 1)
+  const attribution = badge.getByTestId('public-landing-oer-licensing')
+  assert.equal(await attribution.evaluate((element) => element.tagName.toLowerCase()), 'a')
+  assert.equal(normalizeText(await attribution.innerText()), expected.licensingAction)
+  assert.equal(await attribution.getAttribute('href'), '/legal#oer-logo',
+    `${label}: attribution is one click away at the specific local legal section`)
+  assert(await attribution.isVisible(), `${label}: the attribution link remains visibly discoverable`)
+
+  await badge.scrollIntoViewIfNeeded()
+  const logo = badge.getByTestId('public-landing-oer-logo')
+  const image = await logo.evaluate(async (element) => {
+    if (!(element instanceof HTMLImageElement)) throw new Error('OER logo must be an image')
+    await element.decode()
+    const bounds = element.getBoundingClientRect()
+    return {
+      alt: element.alt,
+      height: element.naturalHeight,
+      width: element.naturalWidth,
+      source: element.getAttribute('src'),
+      sameOrigin: new URL(element.currentSrc).origin === window.location.origin,
+      renderedRatio: bounds.width / bounds.height,
+      renderedWidth: bounds.width,
+      visible: bounds.width > 0 && bounds.height > 0,
+      filter: getComputedStyle(element).filter,
+    }
+  })
+  assert.deepEqual({ alt: image.alt, height: image.height, width: image.width, source: image.source }, {
+    alt: expected.logoAlt, height: 221, width: 330, source: '/assets/third-party/oer/global-oer-logo.png',
+  }, `${label}: the attributed original logo is hosted locally with its actual dimensions`)
+  assert(image.sameOrigin && image.visible, `${label}: the logo loads locally and visibly`)
+  assert(Math.abs(image.renderedRatio - 330 / 221) < 0.01, `${label}: the complete logo is not distorted`)
+  assert(image.renderedWidth > 100,
+    `${label}: the original logo is prominent enough to read inside the curricula panel`)
+  assert.equal(image.filter, 'none', `${label}: the original logo is not recolored in either theme`)
+
+  const layout = await badge.evaluate((element) => {
+    const rect = element.getBoundingClientRect()
+    const panel = element.closest('[data-testid="public-landing-panel-curricula"]')
+    if (!panel) throw new Error('OER logo must be inside the curricula panel')
+    const panelRect = panel.getBoundingClientRect()
+    const content = panel.querySelector('[data-testid="public-landing-curricula-content"]')!
+    const contentRect = content.getBoundingClientRect()
+    const heading = content.querySelector('h2')!
+    const headingTextRange = document.createRange()
+    headingTextRange.selectNodeContents(heading)
+    const headingTextRect = headingTextRange.getBoundingClientRect()
+    const columnLayout = window.innerWidth >= 480
+    const imageRect = element.querySelector('img')!.getBoundingClientRect()
+    const captionRect = element.querySelector('span')!.getBoundingClientRect()
+    const controlsFit = [...content.querySelectorAll('button, a')].every((control) => {
+      const controlRect = control.getBoundingClientRect()
+      return controlRect.left >= contentRect.left && controlRect.right <= contentRect.right
+        && controlRect.top >= contentRect.top && controlRect.bottom <= contentRect.bottom
+    })
+    return {
+      insidePanel: rect.left >= panelRect.left && rect.right <= panelRect.right
+        && rect.top >= panelRect.top && rect.bottom <= panelRect.bottom,
+      adjacentContent: element.parentElement === content.parentElement,
+      noContentOverlap: columnLayout ? contentRect.right <= rect.left + 1 : contentRect.bottom <= rect.top + 1,
+      fillsPanelEdge: columnLayout
+        ? Math.abs(rect.top - panelRect.top) <= 1 && Math.abs(rect.bottom - panelRect.bottom) <= 1
+          && Math.abs(rect.right - panelRect.right) <= 1
+        : Math.abs(rect.left - panelRect.left) <= 1 && Math.abs(rect.right - panelRect.right) <= 1
+          && rect.height >= 176 && Math.abs(rect.bottom - panelRect.bottom) <= 1,
+      noHeadingTextOverflow: headingTextRect.left >= contentRect.left && headingTextRect.right <= contentRect.right,
+      controlsFit,
+      imageFits: imageRect.left >= rect.left && imageRect.right <= rect.right
+        && imageRect.top >= rect.top && imageRect.bottom <= captionRect.top + 1,
+    }
+  })
+  assert.deepEqual(layout, {
+    insidePanel: true, adjacentContent: true, noContentOverlap: true, fillsPanelEdge: true,
+    noHeadingTextOverflow: true, controlsFit: true, imageFits: true,
+  }, `${label}: the logo fills the panel-height desktop column or the full-width mobile area without content overlap`)
+  await assertNoHorizontalOverflow(page, `${label}: the integrated image area does not introduce horizontal overflow`)
 }
 
 const assertSceneSwitcher = async (
@@ -1059,8 +1186,8 @@ const assertLandingContract = async (page: Page, language: Language, viewport: s
     await landing.locator(':scope > [data-testid]').evaluateAll((elements) => (
       elements.map((element) => element.getAttribute('data-testid'))
     )),
-    panelTestIds,
-    `${language} ${viewport}: the four audience panels keep their semantic order`,
+    [...panelTestIds],
+    `${language} ${viewport}: the four audience panels keep their semantic order without an extra OER strip`,
   )
 
   for (const panelTestId of panelTestIds) {
@@ -1072,7 +1199,7 @@ const assertLandingContract = async (page: Page, language: Language, viewport: s
       `${language}: ${panelTestId} is not one enclosing interaction`,
     )
     assert.equal(
-      await panel.locator(':scope > h2').count(),
+      await panel.locator('h2').count(),
       1,
       `${language}: ${panelTestId} is one level-two section below the page heading`,
     )
@@ -1190,6 +1317,7 @@ const assertLandingContract = async (page: Page, language: Language, viewport: s
   )
 
   await assertPanelLayout(page, language, viewport)
+  await assertOerBadge(page, language, viewport)
 }
 
 async function assertStaticLayoutStylesCancelRunningTransitions(browser: Browser) {
@@ -1217,6 +1345,10 @@ async function assertStaticLayoutStylesCancelRunningTransitions(browser: Browser
 }
 
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
+const oerLogoBytes = readFileSync(new URL('../public/assets/third-party/oer/global-oer-logo.png', import.meta.url))
+assert.deepEqual([...oerLogoBytes.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10], 'the locally hosted logo is an actual PNG')
+assert.equal(oerLogoBytes.readUInt32BE(16), 330)
+assert.equal(oerLogoBytes.readUInt32BE(20), 221)
 const server = await startViteTestServer(
   appRoot,
   'scripts/fixtures/sessionSetupCompletionUi.html',
@@ -1265,8 +1397,12 @@ try {
       // already running scheduler's clock leaves real and mocked timers mixed.
       await page.clock.install()
       const voiceRequests: string[] = []
+      const externalRequests: string[] = []
       page.on('request', (request) => {
         if (request.url().endsWith('/images/skillpilot-voice-moment.png')) voiceRequests.push(request.url())
+        if (/^https?:/u.test(request.url()) && new URL(request.url()).origin !== new URL(server.baseUrl).origin) {
+          externalRequests.push(request.url())
+        }
       })
       page.setDefaultTimeout(10_000)
       await page.goto(baseUrl)
@@ -1278,6 +1414,7 @@ try {
           `${language} ${viewport.label}: the requested color theme is active`,
         )
         await assertLandingContract(page, language, viewport.label, voiceRequests)
+        assert.deepEqual(externalRequests, [], `${language} ${viewport.label}: external source and license links do not cause third-party requests before being clicked`)
       } catch (error) {
         viewportFailures.push(`${language} ${viewport.label}: ${String(error)}`)
       } finally {
@@ -1396,6 +1533,8 @@ try {
       )
       assert.equal(await termsPage.getByTestId('public-landing-voice-image').count(), 0)
       assert.equal(await termsPage.getByTestId('public-landing-scene-controls').count(), 0)
+      assert.equal(await termsPage.getByTestId('public-landing-oer').count(), 0,
+        `${language}: the OER logo also stays out of setup forms`)
       assert.equal(
         await termsCheckbox.count(),
         1,
@@ -1403,6 +1542,34 @@ try {
       )
     }
     await termsContext.close()
+  }
+
+  const packageConsumerServer = await startViteTestServer(
+    appRoot,
+    'scripts/fixtures/sessionSetupCompletionUi.html',
+    { mode: 'package-consumer', plugins: [tailwindcss()] },
+  )
+  try {
+    for (const language of ['de', 'en'] as const) {
+      const context = await browser.newContext({ viewport: { width: 375, height: 900 } })
+      await context.addInitScript((selectedLanguage) => localStorage.setItem('skillpilot_lang', selectedLanguage), language)
+      const page = await context.newPage()
+      try {
+        await page.goto(`${packageConsumerServer.baseUrl}/scripts/fixtures/sessionSetupCompletionUi.html`)
+        await page.getByTestId('public-landing-panels').waitFor()
+        await page.addStyleTag({ content: staticLayoutStyles })
+        await page.addStyleTag({ url: `${packageConsumerServer.baseUrl}/src/index.css` })
+        await assertOerBadge(page, language, 'package-consumer')
+        assert.equal(await page.getByTestId('public-landing-action-goal-book').count(), 0,
+          `${language}: the original learning-goal-book promotion remains gated in package-consumer mode`)
+        assert.equal(await page.getByTestId('public-landing-action-learning').count(), 1,
+          `${language}: package-consumer mode preserves the existing learning entry`)
+      } finally {
+        await context.close()
+      }
+    }
+  } finally {
+    await packageConsumerServer.close()
   }
 
   assert.deepEqual(viewportFailures, [], 'all localized hero layouts must satisfy the landing contract')

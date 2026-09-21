@@ -5,6 +5,26 @@ export interface LegalViewCopy {
   backToApp: string
   title: string
   markdown: string
+  oerLogo: {
+    title: string
+    workTitle: string
+    creator: string
+    sourceLabel: string
+    sourceHref: string
+    licenseLabel: string
+    licenseHref: string
+    useNotice: string
+    scopeNotice: string
+    endorsementNotice: string
+  }
+}
+
+const OER_LOGO_CREDIT = {
+  workTitle: 'Global Open Educational Resources Logo (OER Global Logo)',
+  creator: 'Jonathas Mello',
+  sourceHref: 'https://commons.wikimedia.org/wiki/File:Global_Open_Educational_Resources_Logo.svg',
+  licenseLabel: 'CC BY 3.0',
+  licenseHref: 'https://creativecommons.org/licenses/by/3.0/',
 }
 
 const LEGAL_TEXT_DE = `
@@ -293,10 +313,26 @@ export const getLegalViewCopy = (language: LabelLanguage): LegalViewCopy => (
         backToApp: 'Back to App',
         title: 'Terms of Use & Legal Notices',
         markdown: LEGAL_TEXT_EN,
+        oerLogo: {
+          ...OER_LOGO_CREDIT,
+          title: 'OER logo: source & license',
+          sourceLabel: 'Source: Wikimedia Commons',
+          useNotice: 'The original PNG is hosted locally, unchanged and scaled proportionally.',
+          scopeNotice: 'This third-party logo is licensed under CC BY 3.0, not the CC BY 4.0 license for our own content.',
+          endorsementNotice: 'Its use does not imply endorsement or certification by UNESCO.',
+        },
       }
     : {
         backToApp: 'Zurück zur App',
         title: 'Nutzungsbedingungen & rechtliche Hinweise',
         markdown: LEGAL_TEXT_DE,
+        oerLogo: {
+          ...OER_LOGO_CREDIT,
+          title: 'OER-Logo: Quelle & Lizenz',
+          sourceLabel: 'Quelle: Wikimedia Commons',
+          useNotice: 'Das Original-PNG ist unverändert lokal eingebunden und wird proportional skaliert.',
+          scopeNotice: 'Für dieses fremde Logo gilt CC BY 3.0, nicht die CC-BY-4.0-Lizenz unserer eigenen Inhalte.',
+          endorsementNotice: 'Die Verwendung bedeutet keine Unterstützung oder Zertifizierung durch die UNESCO.',
+        },
       }
 )

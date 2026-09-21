@@ -7,7 +7,7 @@ import { createServer as createViteServer, type Plugin } from 'vite'
 export const startViteTestServer = async (
   root: string,
   fixtureEntry: string,
-  options: { plugins?: Plugin[] } = {},
+  options: { plugins?: Plugin[]; mode?: string } = {},
 ) => {
   const cacheDir = await mkdtemp(join(tmpdir(), 'skillpilot-vite-test-'))
   let vite: Awaited<ReturnType<typeof createViteServer>>
@@ -16,6 +16,7 @@ export const startViteTestServer = async (
       root,
       cacheDir,
       configFile: false,
+      mode: options.mode,
       plugins: options.plugins ?? [],
       appType: 'custom',
       logLevel: 'error',

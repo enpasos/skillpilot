@@ -22,6 +22,20 @@ assert.equal(en.title, 'Terms of Use & Legal Notices')
 assert.doesNotMatch(de.markdown, /^#\s/mu, 'the page header owns the only H1')
 assert.doesNotMatch(en.markdown, /^#\s/mu, 'the page header owns the only H1')
 
+for (const copy of [de, en]) {
+  assert.equal(copy.oerLogo.workTitle, 'Global Open Educational Resources Logo (OER Global Logo)')
+  assert.equal(copy.oerLogo.creator, 'Jonathas Mello')
+  assert.equal(copy.oerLogo.sourceHref, 'https://commons.wikimedia.org/wiki/File:Global_Open_Educational_Resources_Logo.svg')
+  assert.equal(copy.oerLogo.licenseLabel, 'CC BY 3.0')
+  assert.equal(copy.oerLogo.licenseHref, 'https://creativecommons.org/licenses/by/3.0/')
+  assert.match(copy.oerLogo.useNotice, /(?:unverändert lokal|hosted locally, unchanged)/u)
+  assert.match(copy.oerLogo.scopeNotice, /CC BY 3\.0/u)
+  assert.match(copy.oerLogo.scopeNotice, /(?:nicht die CC-BY-4\.0-Lizenz|not the CC BY 4\.0 license)/u)
+  assert.match(copy.oerLogo.endorsementNotice, /(?:keine Unterstützung oder Zertifizierung|does not imply endorsement or certification)/u)
+  assert.match(copy.oerLogo.endorsementNotice, /UNESCO/u)
+  assert.doesNotMatch(copy.markdown, /OER Global Logo|Jonathas Mello/u, 'logo credits stay separate from the accepted terms text')
+}
+
 for (const [language, markdown] of [['de', de.markdown], ['en', en.markdown]] as const) {
   assert.equal(markdown.includes(`Version ${CURRENT_TERMS_VERSION}`), true, `${language} copy identifies the accepted terms version`)
   assert.match(markdown, /(?:13\. September 2026|September 13, 2026)/u)

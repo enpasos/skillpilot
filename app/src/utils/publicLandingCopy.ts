@@ -31,6 +31,10 @@ export interface PublicLandingCopy {
     goalBookAction: string
     championsAction: string
   }
+  oer: {
+    logoAlt: string
+    licensingAction: string
+  }
   footer: {
     statistics: string
     terms: string
@@ -71,6 +75,10 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
       goalBookAction: 'Lernzielbuch',
       championsAction: 'Curriculum-Champion werden',
     },
+    oer: {
+      logoAlt: 'Globales Logo für Open Educational Resources (OER)',
+      licensingAction: 'Logo & Lizenz',
+    },
     footer: {
       statistics: 'Statistiken',
       terms: 'Nutzungsbedingungen',
@@ -108,6 +116,10 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
       explorerAction: 'Explore SkillGraph',
       goalBookAction: 'Learning goal book',
       championsAction: 'Become a Curriculum Champion',
+    },
+    oer: {
+      logoAlt: 'Global Open Educational Resources (OER) logo',
+      licensingAction: 'Logo & license',
     },
     footer: {
       statistics: 'Statistics',
