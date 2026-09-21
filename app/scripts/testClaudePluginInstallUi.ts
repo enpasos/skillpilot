@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict'
+import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { mkdir, readFile } from 'node:fs/promises'
-import { fileURLToPath } from 'node:url'
+import { mkdir, mkdtemp, readFile, rm } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { chromium } from 'playwright'
 import tailwindcss from '@tailwindcss/vite'
 import { startViteTestServer } from './viteTestServer'
@@ -18,10 +21,25 @@ type ClipboardTestWindow = Window & {
 }
 
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
-const artifactRoot = new URL('../../backend/src/main/resources/claude-plugin-publication/', import.meta.url)
-const index = parseClaudePluginPublicationIndex(JSON.parse(await readFile(new URL('index.json', artifactRoot), 'utf8')))
-const plugin = index.plugins[0]!
-const bytes = await readFile(new URL(plugin.downloadUrl.replace('/api/public/claude/plugins/', ''), artifactRoot))
+// Exercise the backend build's actual current output, not the historical source index.
+const publicationFixtureRoot = await mkdtemp(join(tmpdir(), 'skillpilot-plugin-ui-'))
+const loadCurrentPublication = async () => {
+  try {
+    const generatedRoot = join(publicationFixtureRoot, 'claude-plugin-publication')
+    execFileSync(process.execPath, [
+      fileURLToPath(new URL('../../scripts/generate_claude_plugin_publication.mjs', import.meta.url)),
+      generatedRoot,
+    ])
+    const artifactRoot = pathToFileURL(`${generatedRoot}/`)
+    const index = parseClaudePluginPublicationIndex(JSON.parse(await readFile(new URL('index.json', artifactRoot), 'utf8')))
+    const plugin = index.plugins[0]!
+    const bytes = await readFile(new URL(plugin.downloadUrl.replace('/api/public/claude/plugins/', ''), artifactRoot))
+    return { index, plugin, bytes }
+  } finally {
+    await rm(publicationFixtureRoot, { recursive: true, force: true })
+  }
+}
+const { index, plugin, bytes } = await loadCurrentPublication()
 assert.equal(bytes.length, plugin.bytes)
 assert.equal(createHash('sha256').update(bytes).digest('hex'), plugin.sha256)
 // Synthetic future metadata exercises the installed frontend's compatibility;

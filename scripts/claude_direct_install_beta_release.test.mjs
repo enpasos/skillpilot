@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import {
   cpSync,
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -13,6 +14,7 @@ import { tmpdir } from "node:os";
 import { dirname, relative, resolve } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import { generateClaudePluginPublication } from "./generate_claude_plugin_publication.mjs";
 import {
   loadDirectInstallBetaLane,
   prepareClaudeDirectInstallBetaPublication,
@@ -64,6 +66,145 @@ const canonicalPrivacyNotice = readFileSync(
 const fixtureVersion = "1.2.3";
 const preparedAt = "2026-08-25T12:34:56.000Z";
 const deterministicBytes = Buffer.from("deterministic Claude plugin fixture\n");
+
+function fixtureBuildBaseline(root, overrides = {}) {
+  const lane = readJson(resolve(root, laneRelativePath));
+  writeJson(resolve(root, "ai/claude/plugin/skillpilot-coach-v1/release/contract-baseline.json"), {
+    pluginIdentity: lane.plugin.id,
+    pluginVersion: lane.candidate.version,
+    capturedAt: "2026-09-21",
+    archive: { bytes: deterministicBytes.length, sha256: lane.candidate.sha256 },
+    ...overrides,
+  });
+}
+
+test("backend build generates current deterministic publication and preserves checked-in historical bytes", () => {
+  withHistoricalPublicationFixture(({ root, publicationRoot }) => {
+    fixtureBuildBaseline(root);
+    const sourceIndex = readFileSync(resolve(publicationRoot, "index.json"));
+    const historicPlugin = JSON.parse(sourceIndex).plugins[0];
+    const historicPath = `${historicPlugin.id}/${historicPlugin.version}/sha256-${historicPlugin.sha256}/${historicPlugin.filename}`;
+    const output = resolve(root, "backend/build/generated-resources/claude-plugin-publication");
+    const options = { repositoryRoot: root, publicationRoot: output, buildPackage: fixtureBuilder(deterministicBytes) };
+    const result = generateClaudePluginPublication(options);
+    assert.equal(result.version, fixtureVersion);
+    assert.equal(readJson(result.indexPath).preparedAt, "2026-09-21T00:00:00.000Z");
+    assert.deepEqual(readFileSync(result.artifactPath), deterministicBytes);
+    assert.deepEqual(readFileSync(resolve(output, historicPath)), readFileSync(resolve(publicationRoot, historicPath)));
+    assert.deepEqual(readFileSync(resolve(publicationRoot, "index.json")), sourceIndex);
+    const firstIndex = readFileSync(result.indexPath);
+    generateClaudePluginPublication(options);
+    assert.deepEqual(readFileSync(result.indexPath), firstIndex);
+    assert.equal(verifyClaudeDirectInstallBetaPublication(options).version, fixtureVersion);
+  });
+});
+
+test("backend build refuses output in tracked sources and mismatched candidate baseline", () => {
+  withFixture(({ root, publicationRoot }) => {
+    fixtureBuildBaseline(root);
+    const buildPackage = fixtureBuilder(deterministicBytes);
+    assert.throws(() => generateClaudePluginPublication({ repositoryRoot: root, publicationRoot, buildPackage }), /overwrite repository sources/u);
+    const output = resolve(root, "backend/build/generated-resources/claude-plugin-publication");
+    for (const overrides of [
+      { pluginVersion: "9.9.9" },
+      { archive: { bytes: deterministicBytes.length, sha256: "0".repeat(64) } },
+      { capturedAt: "2026-02-31" },
+    ]) {
+      fixtureBuildBaseline(root, overrides);
+      assert.throws(() => generateClaudePluginPublication({ repositoryRoot: root, publicationRoot: output, buildPackage }), /baseline/u);
+    }
+  });
+});
+
+test("backend build rejects changed package bytes without advancing candidate evidence", () => {
+  withFixture(({ root }) => {
+    fixtureBuildBaseline(root);
+    assert.throws(() => generateClaudePluginPublication({
+      repositoryRoot: root,
+      publicationRoot: resolve(root, "backend/build/generated-resources/claude-plugin-publication"),
+      buildPackage: fixtureBuilder(Buffer.from("changed unpublished bytes")),
+    }), /rebuilt candidate SHA-256/u);
+  });
+});
+
+test("backend build preserves same-version rebinding guard in generated resources", () => {
+  withFixture(({ root, lanePath, exactClientEvidencePath, privacyEvidencePath }) => {
+    fixtureBuildBaseline(root);
+    const output = resolve(root, "backend/build/generated-resources/claude-plugin-publication");
+    const result = generateClaudePluginPublication({ repositoryRoot: root, publicationRoot: output, buildPackage: fixtureBuilder(deterministicBytes) });
+    const changedBytes = Buffer.from("changed archive with same version");
+    const lane = readJson(lanePath);
+    lane.candidate.sha256 = sha256(changedBytes);
+    writeJson(lanePath, lane);
+    writeJson(exactClientEvidencePath, fixtureExactClientEvidence(lane));
+    writeJson(privacyEvidencePath, fixturePrivacyEvidence(lane));
+    fixtureBuildBaseline(root, { archive: { bytes: changedBytes.length, sha256: lane.candidate.sha256 } });
+    assert.throws(() => generateClaudePluginPublication({ repositoryRoot: root, publicationRoot: output, buildPackage: fixtureBuilder(changedBytes) }), /rebind an existing/u);
+    assert.deepEqual(readFileSync(result.artifactPath), deterministicBytes);
+  });
+});
+
+test("a clean backend build cannot rebind published Marketplace or archived versions", () => {
+  const changedBytes = Buffer.from("changed archive for an already published version");
+  for (const publishedLane of ["marketplace", "history"]) {
+    withFixture(({ root }) => {
+      fixtureBuildBaseline(root, { archive: { bytes: changedBytes.length, sha256: sha256(changedBytes) } });
+      const releaseRoot = resolve(root, "ai/claude/plugin/skillpilot-coach-v1/release");
+      if (publishedLane === "marketplace") {
+        writeJson(resolve(releaseRoot, "marketplace-publication.json"), {
+          plugin: { version: fixtureVersion, directInstallSha256: sha256(deterministicBytes) },
+          activation: { state: "published_pending_acceptance", evidence: [{
+            status: "pass", candidateVersion: fixtureVersion, candidateSha256: sha256(deterministicBytes),
+          }] },
+        });
+      } else {
+        writeJson(resolve(releaseRoot, "history", fixtureVersion, "contract-baseline.json"), {
+          pluginIdentity: "skillpilot-coach-v1", pluginVersion: fixtureVersion,
+          archive: { sha256: sha256(deterministicBytes) },
+        });
+      }
+      const output = resolve(root, "backend/build/generated-resources/claude-plugin-publication");
+      assert.equal(existsSync(output), false);
+      assert.throws(() => generateClaudePluginPublication({
+        repositoryRoot: root, publicationRoot: output, buildPackage: fixtureBuilder(changedBytes),
+      }), /Refusing to rebind.*version/u);
+      assert.equal(existsSync(output), false);
+    }, changedBytes);
+  }
+});
+
+test("published Marketplace evidence does not prevent building a new candidate version", () => {
+  withFixture(({ root }) => {
+    fixtureBuildBaseline(root);
+    writeJson(resolve(root, "ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json"), {
+      plugin: { version: "1.1.7", directInstallSha256: "f".repeat(64) },
+      activation: { state: "published_verified", evidence: [] },
+    });
+    const result = generateClaudePluginPublication({
+      repositoryRoot: root,
+      publicationRoot: resolve(root, "backend/build/generated-resources/claude-plugin-publication"),
+      buildPackage: fixtureBuilder(deterministicBytes),
+    });
+    assert.equal(result.version, fixtureVersion);
+  });
+});
+
+test("explicit built-publication verification rejects an obsolete source index", () => {
+  withHistoricalPublicationFixture(({ root, publicationRoot }) => {
+    assert.throws(() => verifyClaudeDirectInstallBetaPublication({
+      repositoryRoot: root, publicationRoot, buildPackage: fixtureBuilder(deterministicBytes),
+    }), /version.*mismatch/u);
+  });
+});
+
+test("backend build and deployment consume generated publication instead of the historical source index", () => {
+  const gradle = readFileSync(resolve(repositoryRoot, "backend/build.gradle.kts"), "utf8");
+  const deploy = readFileSync(resolve(repositoryRoot, "scripts/deploy.sh"), "utf8");
+  assert.match(gradle, /dependsOn\(generateClaudePluginPublication\)/u);
+  assert.match(gradle, /resources\.exclude\("claude-plugin-publication\/\*\*"\)/u);
+  assert.match(gradle, /from\(claudePublicationResources\)/u);
+  assert.match(deploy, /verify-public "\$\{SMOKE_BASE_URL\}" \\\n\s+--publication-root "\$\{SKILLPILOT_BACKEND_BUILD_DIR\}\/resources\/main\/claude-plugin-publication"/u);
+});
 
 test("production direct-install lane has the isolated, fail-closed beta semantics", () => {
   validateDirectInstallBetaLane(canonicalLane);
@@ -200,13 +341,24 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
   );
 });
 
-test("public verification checks the SPA route, exact index, immutable headers and artifact bytes", async () => {
+for (const generated of [false, true]) {
+test(`public verification checks the SPA route, exact ${generated ? "built" : "source"} index, immutable headers and artifact bytes`, async () => {
   await withPreparedFixtureAsync(async ({
     root,
     publicationRoot,
     buildPackage,
   }) => {
     const baseUrl = "http://127.0.0.1:43127";
+    let builtPublicationRoot;
+    if (generated) {
+      fixtureBuildBaseline(root);
+      const sourceIndexBytes = readFileSync(resolve(publicationRoot, "index.json"));
+      builtPublicationRoot = resolve(root, "backend/build/resources/main/claude-plugin-publication");
+      generateClaudePluginPublication({ repositoryRoot: root, publicationRoot: builtPublicationRoot, buildPackage });
+      assert.notDeepEqual(readFileSync(resolve(builtPublicationRoot, "index.json")), sourceIndexBytes);
+      assert.deepEqual(readFileSync(resolve(publicationRoot, "index.json")), sourceIndexBytes);
+      publicationRoot = builtPublicationRoot;
+    }
     const indexBytes = readFileSync(resolve(publicationRoot, "index.json"));
     const index = JSON.parse(indexBytes.toString("utf8"));
     assert.equal(Object.hasOwn(index, "accessModel"), false);
@@ -261,6 +413,7 @@ test("public verification checks the SPA route, exact index, immutable headers a
       baseUrl,
       fetchImpl,
       buildPackage,
+      publicationRoot: builtPublicationRoot,
     });
 
     assert.equal(result.pageUrl, `${baseUrl}/plugins`);
@@ -280,6 +433,7 @@ test("public verification checks the SPA route, exact index, immutable headers a
     }
   });
 });
+}
 
 test("public verification rejects remote artifact bytes that differ from the prepared candidate", async () => {
   await withPreparedFixtureAsync(async ({

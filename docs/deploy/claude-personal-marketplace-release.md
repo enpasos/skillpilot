@@ -3,14 +3,91 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.7 is published in
+Anthropic-curated or Anthropic-verified listing. Version 1.1.8 is published in
 the public Marketplace and its exact source, package and repository have been
-independently verified. The website index and existing installation guide are
-now locally aligned to 1.1.7; their production deployment is still pending, and
-the public index last verified on 19 September still serves 1.1.6.
-Full real-client acceptance of 1.1.7 remains pending; repository
+independently verified. The website download still serves 1.1.7 as verified on
+21 September; the automatic backend-build alignment described below requires
+its own normal deployment. Full real-client acceptance of 1.1.8 remains pending; repository
 publication does not establish installation or synchronization in every account.
 Earlier published packages and their evidence remain immutable history.
+
+## 1.1.8 publication and automatic backend download
+
+On 21 September 2026, the Product Owner confirmed green CI and backend deployment
+and explicitly requested Marketplace publication of 1.1.8. The exact canonical
+source is `a8c2869632f5d9be04d64c4eb7f365bc70ad4cae`
+([source CI](https://github.com/enpasos/skillpilot/actions/runs/35616413734)).
+
+[Marketplace PR #10](https://github.com/enpasos/skillpilot-claude-marketplace/pull/10)
+was independently checked against the closed export inventory, passed
+[final-head validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/35622917269)
+and was squash-merged with an exact head-SHA guard. Two low-severity review notes
+were addressed without rebinding the tested package: the public README clarifies
+that the packaged setup text is a pre-publication snapshot, and the existing
+Verified Recall wording was reviewed in context. The protected package bytes
+remain identical to the green canonical source.
+
+[Main-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/35623061325)
+passed. `verify-repository` then cloned the actual public default branch, verified
+all eleven files, ran both strict Claude validations and installed 1.1.8 from the
+public HTTPS Marketplace in an isolated Claude profile. The remote head was
+stable throughout verification.
+
+- Published revision: `be68c85b2ac0f404f26178cc4810c5f8a53feba6`.
+- Verification recorded: `2026-09-21T16:03:34.000Z`.
+- Export tree SHA-256:
+  `1ec4a4a7d5e568319dc0cf545a8891ee56869eb7fc72f5aab2a0c8011aa59dd7`.
+- Plugin: **1.1.8**, **35,909 bytes**, SHA-256
+  `1603c79c06b9fa39f2b57033c65d4b1d5748cb048b01271f72b5708652e7525b`.
+
+Only repository-publication evidence is marked `pass`; exact-client installation
+and update acceptance remain pending. The Product Owner also requested that the
+existing website guide display the actual download version and that each backend
+rollout automatically carry the matching plugin file and index. This approves the
+existing controlled-beta guide for this exact published candidate; it does not
+claim successful updates in all Claude accounts or broader public acceptance.
+The website index and actual downloadable bytes remain one source of truth;
+there is no separate runtime GitHub version lookup.
+
+### Automatic alignment on backend rollout
+
+`processResources` now runs `generateClaudePluginPublication`. It builds the
+current plugin reproducibly and checks its version, SHA-256 and byte length
+against the release dossier before packaging the archive and matching index
+together. The build includes unchanged historical archives, but replaces the
+historical source index with its generated index. Normal builds do not modify
+tracked release files. `/plugins` already reads the served index for every
+version label and the download link; no frontend version bump is needed.
+
+After this automation is committed, passes CI and is deployed once, subsequent
+authorized backend deployments carry the matching plugin automatically. There
+is no separate manual download-index promotion step. Package versioning and
+review remain required when plugin content changes; backend packaging does not
+publish to the Git Marketplace or prove an update in a user's Claude account.
+
+`scripts/deploy.sh` verifies the generated resources before restart and compares
+the public index and archive with that exact build after readiness. For a local
+default build, the equivalent resource check is:
+
+```bash
+cd backend
+./gradlew processResources
+node ../scripts/claude_direct_install_beta_release.mjs verify \
+  --publication-root build/resources/main/claude-plugin-publication
+```
+
+Use the matching configured build directory when `SKILLPILOT_BACKEND_BUILD_DIR`
+is set. The ordinary source-only `verify` still checks historical integrity; it
+does not assert that a newly deployed backend serves that old index.
+
+Local verification passed: deterministic generation and immutable-version
+regressions, generated classpath HTTP/download tests, `processResources` and
+`bootJar`, and German/English desktop/mobile browser checks using the generated
+1.1.8 archive. TypeScript, focused lint, documentation links and independent
+review passed. The read-only production monitor accepts only the exact recorded
+old publication or the exact locally reproduced current build during rollout;
+unknown metadata and modified archives fail. All eight live checks passed before
+deployment of this automation, with the download still at 1.1.7.
 
 ## Completed 1.1.7 Marketplace publication
 
@@ -885,11 +962,12 @@ node scripts/claude_direct_install_beta_release.mjs verify-candidate
 node scripts/claude_direct_install_beta_release.mjs verify
 ```
 
-Only during an authorized download-index rollout, run the existing `prepare`
-command to add the exact artifact to runtime resources and advance the served
-index. This is not a prerequisite for publishing the exact Marketplace package.
-The new guide requires its own release-bound decision; preparation and archived
-approvals do not authorize a guide switch.
+On an authorized backend rollout, the build automatically packages the current
+artifact and index as described above. Do not run `prepare` to manually advance
+tracked runtime resources for an ordinary rollout; that command remains an
+explicit source-registry maintenance operation. Marketplace publication is a
+separate step. A changed guide route still requires its own release-bound
+decision; preparation and archived approvals do not establish client acceptance.
 
 Then run the marketplace checks and create the publication tree:
 

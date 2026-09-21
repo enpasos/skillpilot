@@ -8,7 +8,8 @@
   protected criteria only after a complete submission and use the actual tool
   schema without write-only arguments.
 - Preserve the published 1.1.7 bytes, served download and historical approvals.
-  This replacement is local and unpublished; real-client acceptance is pending.
+  Marketplace publication and real-client acceptance are separate; exact-client
+  installation and update acceptance remain pending.
 
 ## 1.1.7 - 2026-09-19
 

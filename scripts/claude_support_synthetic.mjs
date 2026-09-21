@@ -1,6 +1,9 @@
-import { resolve } from "node:path";
+import { mkdtempSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { verifyPublicClaudeDirectInstallBetaPublication } from "./claude_direct_install_beta_release.mjs";
+import { generateClaudePluginPublication } from "./generate_claude_plugin_publication.mjs";
 
 const scriptPath = fileURLToPath(import.meta.url);
 const mainOrigin = "https://skillpilot.com";
@@ -26,7 +29,7 @@ export const claudeSupportSyntheticTargets = Object.freeze({
 
 export async function verifyClaudeSupportSynthetic({
   fetchImpl = globalThis.fetch,
-  verifyPublication = verifyPublicClaudeDirectInstallBetaPublication,
+  verifyPublication = verifySupportedPluginPublication,
   timeoutMs = 10_000,
   maximumResponseBytes = 65_536,
   clock = () => Date.now(),
@@ -169,6 +172,27 @@ export async function verifyClaudeSupportSynthetic({
     },
     checks,
   };
+}
+
+async function verifySupportedPluginPublication(options) {
+  try {
+    // The immutable checked-in publication remains valid until the next rollout.
+    return await verifyPublicClaudeDirectInstallBetaPublication(options);
+  } catch {
+    // Backend builds publish the current candidate without rewriting that history.
+    // Reproduce its exact index and archive locally; remote metadata is never authority.
+    const temporaryRoot = mkdtempSync(join(tmpdir(), "skillpilot-support-publication-"));
+    try {
+      const publicationRoot = join(temporaryRoot, "claude-plugin-publication");
+      generateClaudePluginPublication({ publicationRoot });
+      return await verifyPublicClaudeDirectInstallBetaPublication({
+        ...options,
+        publicationRoot,
+      });
+    } finally {
+      rmSync(temporaryRoot, { recursive: true, force: true });
+    }
+  }
 }
 
 function createReadOnlyFetch({ fetchImpl, timeoutMs, maximumResponseBytes }) {

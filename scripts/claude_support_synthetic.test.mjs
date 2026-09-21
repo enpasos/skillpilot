@@ -1,14 +1,70 @@
 import assert from "node:assert/strict";
+import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import test from "node:test";
 import {
   claudeSupportSyntheticTargets,
   verifyClaudeSupportSynthetic,
 } from "./claude_support_synthetic.mjs";
+import { generateClaudePluginPublication } from "./generate_claude_plugin_publication.mjs";
 
 const candidate = {
   version: "1.0.2",
   sha256: "9c38746fff5ec51778bd922286bc1c142c6f03488894652ed295ab6ad230a09d",
 };
+
+test("synthetic strictly verifies recorded and generated publications during rollout", async (t) => {
+  const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+  const recordedRoot = resolve(repositoryRoot, "backend/src/main/resources/claude-plugin-publication");
+  const recordedIndex = readFileSync(join(recordedRoot, "index.json"));
+  const temporaryRoot = mkdtempSync(join(tmpdir(), "skillpilot-support-test-"));
+  t.after(() => rmSync(temporaryRoot, { recursive: true, force: true }));
+  const generatedRoot = join(temporaryRoot, "claude-plugin-publication");
+  generateClaudePluginPublication({ repositoryRoot, publicationRoot: generatedRoot });
+
+  for (const [label, publicationRoot] of [["recorded publication before rollout", recordedRoot],
+    ["deterministic build publication after rollout", generatedRoot]]) {
+    await t.test(label, async () => {
+      const fixture = publicationFixture(publicationRoot);
+      const result = await verifyClaudeSupportSynthetic({ fetchImpl: fixture.fetchImpl });
+      assert.equal(result.outcome, "pass");
+      assert.equal(result.candidate.version, fixture.plugin.version);
+      assert.equal(result.candidate.sha256, fixture.plugin.sha256);
+      assert.ok(fixture.requested.some(({ url }) => url.endsWith(fixture.plugin.downloadUrl)));
+      for (const { url } of fixture.requested) {
+        assert.ok(["https://skillpilot.com", "https://mcp-claude-v1.skillpilot.com"].includes(new URL(url).origin));
+      }
+    });
+  }
+
+  await t.test("unrecognized index cannot become trusted through its advertised version or hash", async () => {
+    for (const field of ["version", "sha256"]) {
+      const fixture = publicationFixture(generatedRoot, {
+        mutateIndex(index) {
+          index.plugins[0][field] = field === "version"
+            ? index.plugins[0].version.replace(/\d/gu, "9") : "f".repeat(64);
+        },
+      });
+      await assert.rejects(
+        verifyClaudeSupportSynthetic({ fetchImpl: fixture.fetchImpl }),
+        /public-plugin-publication failed: Public Claude plugin publication index does not match the prepared index/u,
+      );
+      assert.equal(fixture.requested.some(({ url }) => url.endsWith(".plugin")), false);
+    }
+  });
+
+  await t.test("matching build index never excuses modified archive bytes", async () => {
+    const fixture = publicationFixture(generatedRoot, { corruptArchive: true });
+    await assert.rejects(
+      verifyClaudeSupportSynthetic({ fetchImpl: fixture.fetchImpl }),
+      /public-plugin-publication failed: .*artifact SHA-256/u,
+    );
+  });
+
+  assert.deepEqual(readFileSync(join(recordedRoot, "index.json")), recordedIndex);
+});
 
 test("synthetic validates only the fixed public read-only support surface", async () => {
   const requested = [];
@@ -263,6 +319,45 @@ test("synthetic timeout remains active while reading a response body", async () 
     /public-legal-page failed: request failed for approved target https:\/\/skillpilot.com\/legal/u,
   );
 });
+
+function publicationFixture(publicationRoot, { mutateIndex, corruptArchive = false } = {}) {
+  const indexBytes = readFileSync(join(publicationRoot, "index.json"));
+  const index = JSON.parse(indexBytes.toString("utf8"));
+  const plugin = { ...index.plugins[0] };
+  const artifact = readFileSync(join(publicationRoot, plugin.id, plugin.version,
+    `sha256-${plugin.sha256}`, plugin.filename));
+  if (corruptArchive) artifact[0] ^= 1;
+  mutateIndex?.(index);
+  const servedIndex = mutateIndex ? Buffer.from(`${JSON.stringify(index, null, 2)}\n`) : indexBytes;
+  const requested = [];
+  return {
+    plugin,
+    requested,
+    fetchImpl: fixtureFetch({
+      requested,
+      overrides: {
+        "/plugins": new Response('<!doctype html><div id="root"></div>', {
+          headers: { "content-type": "text/html" },
+        }),
+        "/api/public/claude/plugins/index.json": new Response(servedIndex, {
+          headers: {
+            "content-type": "application/json", "cache-control": "no-store",
+            "x-content-type-options": "nosniff", "content-length": String(servedIndex.length),
+          },
+        }),
+        [plugin.downloadUrl]: new Response(artifact, {
+          headers: {
+            "content-type": "application/octet-stream",
+            "content-disposition": `attachment; filename="${plugin.filename}"`,
+            "x-content-type-options": "nosniff", "etag": `"sha256-${plugin.sha256}"`,
+            "cache-control": "public, max-age=31536000, immutable",
+            "content-length": String(artifact.length),
+          },
+        }),
+      },
+    }),
+  };
+}
 
 function fixtureFetch({ requested = [], overrides = {} } = {}) {
   return async (url, options) => {

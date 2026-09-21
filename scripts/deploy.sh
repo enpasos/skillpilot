@@ -364,6 +364,9 @@ mkdir -p "${PROJECT_ROOT}/tmp/deploy"
 export SKILLPILOT_BACKEND_BUILD_DIR="${DEPLOY_BACKEND_BUILD_DIR}"
 echo "Verwende isoliertes Backend-Build-Verzeichnis: ${SKILLPILOT_BACKEND_BUILD_DIR}"
 ./gradlew clean build -x test
+echo "Prüfe die im Backend-Build enthaltene Claude-Direct-Install-Beta..."
+node ../scripts/claude_direct_install_beta_release.mjs verify \
+  --publication-root "${SKILLPILOT_BACKEND_BUILD_DIR}/resources/main/claude-plugin-publication"
 if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
   echo "Prüfe eingebettete OpenAI-Plugin-V1-Build-ID..."
   node ../scripts/validate_openai_v1_runtime_config.mjs \
@@ -400,7 +403,8 @@ wait_for_public_readiness "${SMOKE_BASE_URL}"
 
 echo "Prüfe die öffentlich ausgelieferte Claude-Direct-Install-Beta..."
 node scripts/claude_direct_install_beta_release.mjs \
-  verify-public "${SMOKE_BASE_URL}"
+  verify-public "${SMOKE_BASE_URL}" \
+  --publication-root "${SKILLPILOT_BACKEND_BUILD_DIR}/resources/main/claude-plugin-publication"
 
 echo "Prüfe öffentliches OpenAI-Reviewvideo..."
 node scripts/verify_openai_review_video.mjs \

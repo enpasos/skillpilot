@@ -1,6 +1,7 @@
 package com.skillpilot.backend.connectors.claude.v1.publication;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
@@ -32,6 +33,35 @@ class ClaudeV1PluginPublicationControllerTest {
 
     @TempDir
     Path temporaryDirectory;
+
+    @Test
+    void servesTheCurrentPluginFromGeneratedClasspathResources() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        var manifest = mapper.readTree(Files.readString(Path.of(
+                "../ai/claude/plugin/skillpilot-coach-v1/.claude-plugin/plugin.json")));
+        var baseline = mapper.readTree(Files.readString(Path.of(
+                "../ai/claude/plugin/skillpilot-coach-v1/release/contract-baseline.json")));
+        DefaultResourceLoader loader = new DefaultResourceLoader();
+        byte[] indexBytes = loader.getResource(ClaudeV1PluginPublicationController.DEFAULT_INDEX_LOCATION)
+                .getContentAsByteArray();
+        var plugin = mapper.readTree(indexBytes).path("plugins").get(0);
+        assertEquals(manifest.path("version").asText(), plugin.path("version").asText());
+        assertEquals(baseline.path("archive").path("sha256").asText(), plugin.path("sha256").asText());
+        assertEquals(baseline.path("archive").path("bytes").asInt(), plugin.path("bytes").asInt());
+
+        MockMvc mvc = MockMvcBuilders.standaloneSetup(
+                new ClaudeV1PluginPublicationController(loader, mapper)).build();
+        mvc.perform(get(ClaudeV1PluginPublicationController.PUBLIC_BASE_PATH + "/index.json"))
+                .andExpect(status().isOk())
+                .andExpect(content().bytes(indexBytes))
+                .andExpect(header().string(HttpHeaders.CACHE_CONTROL, containsString("no-store")));
+        byte[] artifactBytes = mvc.perform(get(plugin.path("downloadUrl").asText()))
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CACHE_CONTROL, containsString("immutable")))
+                .andReturn().getResponse().getContentAsByteArray();
+        assertEquals(plugin.path("sha256").asText(), sha256(artifactBytes));
+        assertEquals(plugin.path("bytes").asInt(), artifactBytes.length);
+    }
 
     @Test
     void servesValidatedIndexWithoutCachingOrSniffing() throws Exception {

@@ -352,7 +352,44 @@ function assertSeparateMarketplacePublication(lane: MarketplaceLane) {
     }
   }
 }
-if (publishedVersion !== candidateManifest.version) {
+function assertApprovedCandidateGuide(lane: MarketplaceLane) {
+  const guide = lane.activation?.firstPartyGuideDecision
+  const publication = lane.activation?.evidence?.find(entry => entry.id === 'public-repository-default-branch')
+  assert.equal(lane.activation?.state, 'published_pending_acceptance')
+  assert.equal(lane.activation?.marketplaceUiSwitchAllowed, true)
+  assert.equal(lane.activation?.firstPartyUiRoute, 'personal_git_marketplace')
+  assert.equal(guide?.status, 'approved')
+  assert.equal(guide?.approvedBy, 'product-owner')
+  assert.equal(new Date(guide?.approvedAt ?? '').toISOString(), guide?.approvedAt)
+  assert.equal(guide?.candidateVersion, candidateManifest.version)
+  assert.equal(guide?.candidateSha256, lane.plugin?.directInstallSha256)
+  assert.match(guide?.evidenceRef ?? '', /^docs\/.*\.md#.+$/u)
+  assert.equal(publication?.status, 'pass')
+  assert.equal(publication?.candidateVersion, guide?.candidateVersion)
+  assert.equal(publication?.candidateSha256, guide?.candidateSha256)
+  assert.match(publication?.revision ?? '', /^[a-f0-9]{40}$/u)
+  assert.match(publication?.treeSha256 ?? '', /^[a-f0-9]{64}$/u)
+  assert.equal(guide?.repositoryRevision, publication?.revision)
+  assert.equal(guide?.repositoryTreeSha256, publication?.treeSha256)
+  for (const entry of lane.activation?.evidence ?? []) {
+    if (entry !== publication) assert.equal(entry.status, 'pending', 'guide approval is not client acceptance')
+  }
+}
+if (candidateMarketplaceLane.activation?.firstPartyGuideDecision?.status === 'approved') {
+  // Guide approval can precede deployment of the build-generated download index.
+  assertApprovedCandidateGuide(candidateMarketplaceLane)
+  for (const corrupt of [
+    (lane: MarketplaceLane) => { lane.activation!.firstPartyGuideDecision!.candidateVersion = '0.0.0' },
+    (lane: MarketplaceLane) => { lane.activation!.firstPartyGuideDecision!.candidateSha256 = '0'.repeat(64) },
+    (lane: MarketplaceLane) => { lane.activation!.firstPartyGuideDecision!.repositoryRevision = '0'.repeat(40) },
+    (lane: MarketplaceLane) => { lane.activation!.evidence![0]!.status = 'pending' },
+    (lane: MarketplaceLane) => { lane.activation!.evidence![1]!.status = 'pass' },
+  ]) {
+    const invalid = structuredClone(candidateMarketplaceLane)
+    corrupt(invalid)
+    assert.throws(() => assertApprovedCandidateGuide(invalid))
+  }
+} else if (publishedVersion !== candidateManifest.version) {
   assertSeparateMarketplacePublication(candidateMarketplaceLane)
 }
 {

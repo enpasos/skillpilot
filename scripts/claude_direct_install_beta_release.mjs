@@ -1016,8 +1016,9 @@ export function prepareClaudeDirectInstallBetaPublication({
   preparedAt = new Date().toISOString(),
   buildPackage = buildClaudePluginPackage,
   candidateOnly = false,
+  publicationRoot,
 } = {}) {
-  const paths = releasePaths(repositoryRoot, candidateOnly);
+  const paths = releasePaths(repositoryRoot, candidateOnly, publicationRoot);
   const lane = loadDirectInstallBetaLane(repositoryRoot);
   assertCandidatePreparationReady(lane);
   const manifest = loadPluginManifest(paths.manifestPath, lane);
@@ -1039,7 +1040,7 @@ export function prepareClaudeDirectInstallBetaPublication({
     validateClaudePluginPublicationIndex(index, lane, manifest);
 
     const versionRoot = resolve(paths.publicationRoot, lane.plugin.id, manifest.version);
-    if (candidateOnly) {
+    if (candidateOnly || publicationRoot) {
       assertVersionNotRebound(resolve(releasePaths(repositoryRoot).publicationRoot,
         lane.plugin.id, manifest.version), built.sha256);
     }
@@ -1070,15 +1071,16 @@ export function verifyClaudeDirectInstallBetaPublication({
   repositoryRoot = defaultRepositoryRoot,
   buildPackage = buildClaudePluginPackage,
   candidateOnly = false,
+  publicationRoot,
 } = {}) {
-  const paths = releasePaths(repositoryRoot, candidateOnly);
+  const paths = releasePaths(repositoryRoot, candidateOnly, publicationRoot);
   let lane = loadDirectInstallBetaLane(repositoryRoot);
   assertCandidatePreparationReady(lane);
   let manifest = loadPluginManifest(paths.manifestPath, lane);
   assertRegularFile(paths.indexPath, "Claude plugin publication index");
   const index = readJson(paths.indexPath, "Claude plugin publication index");
   const indexedVersion = index.plugins?.[0]?.version;
-  const historical = !candidateOnly && indexedVersion !== manifest.version;
+  const historical = !candidateOnly && !publicationRoot && indexedVersion !== manifest.version;
   if (historical) {
     // A locally prepared successor must not replace the currently served release.
     // Historical bytes are verified against their immutable dossier, never rebuilt
@@ -1142,6 +1144,7 @@ export async function verifyPublicClaudeDirectInstallBetaPublication({
   baseUrl,
   fetchImpl = globalThis.fetch,
   buildPackage = buildClaudePluginPackage,
+  publicationRoot,
 } = {}) {
   const publicBaseUrl = parsePublicBaseUrl(baseUrl);
   if (typeof fetchImpl !== "function") {
@@ -1151,6 +1154,7 @@ export async function verifyPublicClaudeDirectInstallBetaPublication({
   const local = verifyClaudeDirectInstallBetaPublication({
     repositoryRoot,
     buildPackage,
+    publicationRoot,
   });
   const expectedIndexBytes = readFileSync(local.indexPath);
   const index = JSON.parse(expectedIndexBytes.toString("utf8"));
@@ -1263,11 +1267,14 @@ export async function verifyPublicClaudeDirectInstallBetaPublication({
   };
 }
 
-function releasePaths(repositoryRoot, candidateOnly = false) {
+function releasePaths(repositoryRoot, candidateOnly = false, outputRoot) {
   const root = resolve(repositoryRoot);
   const packageRoot = resolveWithin(root, packageRelativeRoot, "Claude plugin root");
   const manifestPath = resolveWithin(root, manifestRelativePath, "Claude plugin manifest");
-  const publicationRoot = resolveWithin(
+  if (candidateOnly && outputRoot) {
+    throw new Error("Candidate staging and a build publication root cannot be combined.");
+  }
+  const publicationRoot = outputRoot ? resolve(outputRoot) : resolveWithin(
     root,
     candidateOnly ? "tmp/claude-direct-install-beta" : expectedPublicationRoot,
     "Claude plugin publication root",
@@ -1867,12 +1874,13 @@ async function main() {
     command !== "verify-public"
   ) {
     throw new Error(
-      "Usage: node scripts/claude_direct_install_beta_release.mjs <prepare-candidate|verify-candidate|prepare|verify|verify-public> [base-url]",
+      "Usage: node scripts/claude_direct_install_beta_release.mjs <prepare-candidate|verify-candidate|prepare|verify|verify-public> [base-url] [--publication-root directory]",
     );
   }
   if (command === "verify-public") {
     const result = await verifyPublicClaudeDirectInstallBetaPublication({
       baseUrl: process.argv[3],
+      publicationRoot: cliPublicationRoot(),
     });
     console.log(
       `CHECK claude_direct_install_beta VERIFY-PUBLIC version=${result.version} bytes=${result.bytes} sha256=${result.sha256}`,
@@ -1884,13 +1892,25 @@ async function main() {
   }
   const result =
     command.startsWith("prepare")
-      ? prepareClaudeDirectInstallBetaPublication({ candidateOnly: command === "prepare-candidate" })
-      : verifyClaudeDirectInstallBetaPublication({ candidateOnly: command === "verify-candidate" });
+      ? prepareClaudeDirectInstallBetaPublication({
+        candidateOnly: command === "prepare-candidate", publicationRoot: cliPublicationRoot(),
+      })
+      : verifyClaudeDirectInstallBetaPublication({
+        candidateOnly: command === "verify-candidate", publicationRoot: cliPublicationRoot(),
+      });
   console.log(
     `CHECK claude_direct_install_beta ${command.toUpperCase()} version=${result.version} bytes=${result.bytes} sha256=${result.sha256}`,
   );
   console.log(`Index=${relative(defaultRepositoryRoot, result.indexPath)}`);
   console.log(`Artifact=${relative(defaultRepositoryRoot, result.artifactPath)}`);
+}
+
+function cliPublicationRoot() {
+  const index = process.argv.indexOf("--publication-root");
+  if (index < 0) return undefined;
+  const value = process.argv[index + 1];
+  if (!value || value.startsWith("--")) throw new Error("--publication-root requires a directory.");
+  return value;
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === scriptPath) {

@@ -27,29 +27,29 @@
     "directInstallSha256": "1603c79c06b9fa39f2b57033c65d4b1d5748cb048b01271f72b5708652e7525b"
   },
   "activation": {
-    "state": "prepared_not_published",
-    "firstPartyUiRoute": "controlled_direct_install_beta",
-    "marketplaceUiSwitchAllowed": false,
+    "state": "published_pending_acceptance",
+    "firstPartyUiRoute": "personal_git_marketplace",
+    "marketplaceUiSwitchAllowed": true,
     "firstPartyGuideDecision": {
-      "status": "pending",
-      "approvedAt": null,
-      "approvedBy": null,
-      "candidateVersion": null,
-      "candidateSha256": null,
-      "repositoryRevision": null,
-      "repositoryTreeSha256": null,
-      "evidenceRef": null
+      "status": "approved",
+      "approvedAt": "2026-09-21T16:03:34.000Z",
+      "approvedBy": "product-owner",
+      "candidateVersion": "1.1.8",
+      "candidateSha256": "1603c79c06b9fa39f2b57033c65d4b1d5748cb048b01271f72b5708652e7525b",
+      "repositoryRevision": "be68c85b2ac0f404f26178cc4810c5f8a53feba6",
+      "repositoryTreeSha256": "1ec4a4a7d5e568319dc0cf545a8891ee56869eb7fc72f5aab2a0c8011aa59dd7",
+      "evidenceRef": "docs/deploy/claude-personal-marketplace-release.md#118-publication-and-automatic-backend-download"
     },
     "evidence": [
       {
         "id": "public-repository-default-branch",
-        "status": "pending",
-        "revision": null,
-        "treeSha256": null,
-        "candidateVersion": null,
-        "candidateSha256": null,
-        "verifiedAt": null,
-        "evidenceRef": null
+        "status": "pass",
+        "revision": "be68c85b2ac0f404f26178cc4810c5f8a53feba6",
+        "treeSha256": "1ec4a4a7d5e568319dc0cf545a8891ee56869eb7fc72f5aab2a0c8011aa59dd7",
+        "candidateVersion": "1.1.8",
+        "candidateSha256": "1603c79c06b9fa39f2b57033c65d4b1d5748cb048b01271f72b5708652e7525b",
+        "verifiedAt": "2026-09-21T16:03:34.000Z",
+        "evidenceRef": "https://github.com/enpasos/skillpilot-claude-marketplace/pull/10"
       },
       {
         "id": "clean-account-marketplace-install",

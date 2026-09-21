@@ -102,7 +102,31 @@ tasks.test {
     maxHeapSize = "3g"
 }
 
+val claudePublicationResources = layout.buildDirectory.dir("generated-resources/claude-plugin-publication")
+val generateClaudePluginPublication = tasks.register<Exec>("generateClaudePluginPublication") {
+    group = "build"
+    description = "Bundles the current hash-verified Claude plugin and publication index without modifying sources."
+    workingDir(layout.projectDirectory.dir(".."))
+    inputs.dir(layout.projectDirectory.dir("../ai/claude/plugin/skillpilot-coach-v1"))
+    inputs.dir(layout.projectDirectory.dir("src/main/resources/claude-plugin-publication"))
+    inputs.file(layout.projectDirectory.file("src/main/resources/claude-connector-v1/privacy.html"))
+    inputs.files(
+        "../scripts/generate_claude_plugin_publication.mjs",
+        "../scripts/claude_direct_install_beta_release.mjs",
+        "../scripts/check_claude_plugin_v1_release.mjs"
+    )
+    outputs.dir(claudePublicationResources)
+    commandLine("node", "scripts/generate_claude_plugin_publication.mjs", claudePublicationResources.get().asFile.absolutePath)
+}
+
+// The checked-in index is immutable release history, not the version deployed by a new build.
+sourceSets.main.get().resources.exclude("claude-plugin-publication/**")
+
 tasks.processResources {
+    dependsOn(generateClaudePluginPublication)
+    from(claudePublicationResources) {
+        into("claude-plugin-publication")
+    }
     from("../content") {
         include("**/*.json")
         into("content")

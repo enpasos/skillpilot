@@ -41,7 +41,7 @@ const expectedExternalEvidence = [
   "uploaded-plugin-migration-and-marketplace-refresh",
 ];
 const expectedRepositoryName = "skillpilot-claude-marketplace";
-const expectedCanonicalSourceRevision = "80c8f3a3e94e5c7d43c183d18bacb7ce38bb4117";
+const expectedCanonicalSourceRevision = "a8c2869632f5d9be04d64c4eb7f365bc70ad4cae";
 const legacyInstructionVersions = new Set([
   "1.0.2", "1.0.3", "1.0.4", "1.1.0", "1.1.1", "1.1.2", "1.1.3", "1.1.4",
 ]);

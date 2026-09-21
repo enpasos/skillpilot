@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           repository: enpasos/skillpilot
-          ref: 80c8f3a3e94e5c7d43c183d18bacb7ce38bb4117
+          ref: a8c2869632f5d9be04d64c4eb7f365bc70ad4cae
           path: canonical
           sparse-checkout: ai/claude/plugin/skillpilot-coach-v1
           persist-credentials: false
@@ -33,7 +33,7 @@ jobs:
         run: npm install --global @anthropic-ai/claude-code@2.1.241
       - name: Verify pinned source and immutable package parity
         run: |
-          test "$(git -C ../canonical rev-parse HEAD)" = '80c8f3a3e94e5c7d43c183d18bacb7ce38bb4117'
+          test "$(git -C ../canonical rev-parse HEAD)" = 'a8c2869632f5d9be04d64c4eb7f365bc70ad4cae'
           canonical="${GITHUB_WORKSPACE}/canonical/ai/claude/plugin/skillpilot-coach-v1"
           artifact="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.8.plugin"
           extracted="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.8"

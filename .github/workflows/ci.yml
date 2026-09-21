@@ -628,4 +628,6 @@ jobs:
         run: node scripts/openai_plugin_release.mjs verify
       - name: Verify Claude direct-install beta publication
         working-directory: .
-        run: node scripts/claude_direct_install_beta_release.mjs verify
+        run: |
+          node scripts/claude_direct_install_beta_release.mjs verify
+          node scripts/claude_direct_install_beta_release.mjs verify --publication-root backend/build/resources/main/claude-plugin-publication

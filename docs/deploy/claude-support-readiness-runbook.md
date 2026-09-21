@@ -60,6 +60,15 @@ response bodies. It verifies the current immutable plugin publication, public
 legal and privacy pages, application readiness, connector OAuth discovery and
 the unauthenticated MCP challenge.
 
+During a backend rollout, the publication check accepts either the exact
+immutable checked-in publication or the current publication reproduced locally
+with the backend's deterministic build generator. Both paths verify the entire
+index and the archive against locally checked release evidence; an arbitrary
+remote version or hash is never accepted. Temporary build resources are removed
+after the check. The reported candidate identifies the publication actually
+served. This availability check does not replace the deployment gate, which
+requires the exact newly built publication.
+
 Run its unit tests and then the live check:
 
 ```bash
