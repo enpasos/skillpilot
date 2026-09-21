@@ -82,7 +82,21 @@ try {
   let unavailableStatus = false
   let omitStatus = false
   const preferenceWrites: Array<Record<string, unknown>> = []
-  const handleLearnerRequest = (route: Route) => {
+  let preferenceSaveBarrier: Promise<void> | null = null
+  let preferenceSaveStarted = () => {}
+  let materialRevision = 0
+  let selectedPackageIds: string[] = []
+  let materialSelectionReads = 0
+  let materialSaveBarrier: Promise<void> | null = null
+  let materialSaveStarted = () => {}
+  const materialWrites: Array<Record<string, unknown>> = []
+  const materialPackage = {
+    packageId: 'math-pilot', version: '1.0.0', title: 'Mathe-Pilot – Gleichungen verstehen',
+    description: 'Ergänzende Materialien zum Lösen linearer Gleichungen.',
+    providerName: 'Beispielanbieter', providerUrl: 'https://provider.example/',
+    access: 'public-link', aiUsage: 'link-only', materialCount: 1,
+  }
+  const handleLearnerRequest = async (route: Route) => {
     const request = route.request()
     const pathname = new URL(request.url()).pathname
     const json = (body: unknown) => route.fulfill({
@@ -113,16 +127,41 @@ try {
         },
       })
     }
-    if (pathname.endsWith('/content-selection') && request.method() === 'GET') {
-      return json({ revision: 0, selectedPackageIds: [], packages: [] })
+    if (pathname.endsWith('/content-selection')) {
+      assert.equal(request.headers()['x-skillpilot-content-capability'], undefined,
+        'material settings use the ordinary learner context without an extra key')
+      if (request.method() === 'PUT') {
+        const body = request.postDataJSON()
+        materialWrites.push(body)
+        assert.equal(body.expectedRevision, materialRevision)
+        selectedPackageIds = body.selectedPackageIds
+        materialRevision += 1
+        if (materialSaveBarrier) {
+          materialSaveStarted()
+          await materialSaveBarrier
+        }
+      } else {
+        assert.equal(request.method(), 'GET')
+        materialSelectionReads += 1
+      }
+      return json({ revision: materialRevision, selectedPackageIds, packages: [materialPackage] })
     }
     if (pathname.endsWith('/content-materials') && request.method() === 'GET') {
-      return json([])
+      const goalId = new URL(request.url()).searchParams.get('goalId')
+      return json(goalId === 'math-goal-1' && selectedPackageIds.includes('math-pilot') ? [{
+        title: 'Lineare Gleichungen verstehen', url: 'https://provider.example/gleichungen',
+        provider: 'Beispielanbieter', resourceType: 'article', language: 'de',
+        sections: ['Gleichungen'], access: 'public-link', aiUsage: 'link-only',
+      }] : [])
     }
     if (pathname.endsWith('/preferences') && request.method() === 'PUT') {
       const preferences = request.postDataJSON()
       preferenceWrites.push(preferences)
       storedPeriodBasis = preferences.learningPlanPeriodBasis
+      if (preferenceSaveBarrier) {
+        preferenceSaveStarted()
+        await preferenceSaveBarrier
+      }
       return json({ learningPlanPeriodBasis: storedPeriodBasis })
     }
     if (pathname.endsWith('/learning-plans')) {
@@ -199,6 +238,9 @@ try {
     `mobile menu must not overlap Today overview: menu=${JSON.stringify(menuBox)}, overview=${JSON.stringify(overviewBox)}`,
   )
   assert.equal(await overview.getByRole('button', { name: 'Zu Mathematik wechseln', exact: true }).count(), 0)
+  assert.equal(await page.locator('summary').filter({ hasText: 'Zusätzliche Lernmaterialien' }).count(), 0,
+    'material configuration does not occupy the ordinary learning view')
+  assert.equal(materialSelectionReads, 0, 'the selection catalog is loaded only when settings are opened')
   assert.equal(await page.getByText('Dein aktives Lernziel: Lineare Gleichungen lösen', { exact: true }).count(), 1)
   assert.equal(await menuButton.getAttribute('aria-controls'), 'learner-goal-sidebar')
   assert.equal(
@@ -217,15 +259,90 @@ try {
   const closeButton = sidebar.getByRole('button', { name: 'Lernzielmenü schließen' })
   const closeBox = await closeButton.boundingBox()
   assert(closeBox && closeBox.width >= 44 && closeBox.height >= 44, 'mobile close action needs a 44px target')
+
+  // Material selection belongs to the existing gear settings, not the learning area.
+  await sidebar.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
+  const settings = page.getByRole('dialog', { name: 'Mein Lehrplan', exact: true })
+  const materialSummary = settings.locator('summary').filter({ hasText: 'Zusätzliche Lernmaterialien' })
+  await materialSummary.waitFor()
+  await materialSummary.click()
+  const materialChoice = settings.getByRole('checkbox', { name: /Mathe-Pilot – Gleichungen verstehen/u })
+  await materialChoice.waitFor()
+  assert.equal(await materialChoice.isChecked(), false, 'material packages start unselected')
+  assert.equal(await settings.locator('input[type="password"]').count(), 0)
+  await materialChoice.check()
+  assert.deepEqual(selectedPackageIds, [], 'draft selection is not saved until explicitly submitted')
+  let releaseMaterialSave = () => {}
+  materialSaveBarrier = new Promise<void>((resolve) => { releaseMaterialSave = resolve })
+  const materialSaveInFlight = new Promise<void>((resolve) => { materialSaveStarted = resolve })
+  await settings.getByRole('button', { name: 'Materialauswahl speichern', exact: true }).click()
+  await materialSaveInFlight
+  await settings.locator('button[aria-label="Einstellungen schließen"]:disabled').waitFor()
+  assert.equal(await settings.getByRole('button', { name: 'Einstellungen schließen', exact: true }).isDisabled(), true,
+    'closing settings cannot unmount a pending material save before its refresh')
+  assert.equal(await settings.getByRole('button', { name: 'Fertig', exact: true }).isDisabled(), true,
+    'Done also waits for a pending material save')
+  releaseMaterialSave()
+  materialSaveBarrier = null
+  await settings.getByText('Materialauswahl gespeichert.', { exact: true }).waitFor()
+  assert.equal(await settings.getByRole('button', { name: 'Einstellungen schließen', exact: true }).isEnabled(), true)
+  assert.equal(await settings.getByRole('button', { name: 'Fertig', exact: true }).isEnabled(), true)
+  assert.deepEqual(materialWrites, [{ expectedRevision: 0, selectedPackageIds: ['math-pilot'] }])
+  assert.deepEqual(preferenceWrites, [], 'saving materials does not submit curriculum preferences')
+  assert(await settings.evaluate((element) => element.scrollWidth <= element.clientWidth),
+    'material settings fit the mobile dialog without horizontal overflow')
+  if (process.env.SKILLPILOT_MATERIAL_SETTINGS_SCREENSHOT) {
+    await page.screenshot({ path: `${process.env.SKILLPILOT_MATERIAL_SETTINGS_SCREENSHOT}-settings.png`, fullPage: true })
+  }
+  await settings.getByRole('button', { name: 'Einstellungen schließen', exact: true }).click()
+  await settings.waitFor({ state: 'detached' })
   await closeButton.click()
   await menuButton.waitFor()
+  await page.waitForFunction(() => {
+    const element = document.getElementById('learner-goal-sidebar')
+    return Boolean(element && element.getBoundingClientRect().right <= 0)
+  })
+
+  const materialRegion = page.getByRole('region', { name: 'Materialien zu diesem Lernziel', exact: true })
+  const materialLink = materialRegion.getByRole('link', { name: /Lineare Gleichungen verstehen/u })
+  await materialLink.waitFor()
+  assert.equal(await materialRegion.getByRole('heading').count(), 0, 'a material link needs no separate card heading')
+  assert.equal(await materialRegion.locator('p').count(), 0, 'the compact link has no extra explanatory paragraphs')
+  assert.equal(await materialRegion.getByText(/deiner Auswahl/u).count(), 0)
+  assert.equal(await materialLink.locator('svg').count(), 1, 'the link includes an icon for the content type')
+  assert.equal(await materialLink.getAttribute('rel'), 'noopener noreferrer')
+  assert.equal(await materialLink.getAttribute('referrerpolicy'), 'no-referrer')
+  assert.equal(await page.locator('summary').filter({ hasText: 'Zusätzliche Lernmaterialien' }).count(), 0,
+    'closing settings removes configuration from the learning view')
+  assert(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+    'compact material links stay within the mobile viewport')
+  if (process.env.SKILLPILOT_MATERIAL_SETTINGS_SCREENSHOT) {
+    await materialLink.scrollIntoViewIfNeeded()
+    await page.screenshot({ path: `${process.env.SKILLPILOT_MATERIAL_SETTINGS_SCREENSHOT}-goal.png`, fullPage: true })
+  }
 
   // Exercise the real settings-to-preferences-to-status path, including a fresh page load.
   await overview.getByRole('button', { name: 'Einstellungen öffnen' }).click()
+  await materialSummary.waitFor()
+  await materialSummary.click()
+  assert.equal(await materialChoice.isChecked(), true, 'saved materials survive closing and reopening real settings')
+  assert.equal(materialWrites.length, 1, 'reopening settings never resubmits material selection')
   await page.getByRole('radio', { name: '1 Tag', exact: true }).waitFor()
   assert.equal(await page.getByRole('radio', { name: '1 Tag', exact: true }).isChecked(), true)
   await page.getByRole('radio', { name: '1 Woche', exact: true }).check()
+  let releasePreferenceSave = () => {}
+  preferenceSaveBarrier = new Promise<void>((resolve) => { releasePreferenceSave = resolve })
+  const preferenceSaveInFlight = new Promise<void>((resolve) => { preferenceSaveStarted = resolve })
   await page.getByRole('button', { name: 'Fertig', exact: true }).click()
+  await preferenceSaveInFlight
+  await settings.locator('details input[type="checkbox"]:disabled').waitFor()
+  assert.equal(await materialChoice.isDisabled(), true,
+    'a pending preferences save prevents material changes before settings close')
+  assert.equal(await settings.getByRole('button', { name: 'Materialauswahl speichern', exact: true }).isDisabled(), true,
+    'material submission cannot race the preferences save and dialog close')
+  assert.equal(materialWrites.length, 1, 'saving preferences does not write the material selection again')
+  releasePreferenceSave()
+  preferenceSaveBarrier = null
   try {
   await overview.getByRole('heading', { name: 'Diese Woche', exact: true }).waitFor()
   } catch (error) {

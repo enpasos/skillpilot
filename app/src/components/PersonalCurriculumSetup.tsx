@@ -86,6 +86,9 @@ interface PersonalCurriculumSetupProps {
     initialStrictMode?: boolean
     initialShowGoalVisualizationsInChat?: boolean
     personalizationEditor?: PersonalCurriculumEditorProps
+    /** Separate optional settings; saving these must not rewrite the curriculum. */
+    materialSettings?: React.ReactNode
+    materialSettingsBusy?: boolean
 }
 
 export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = ({
@@ -104,7 +107,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     initialStrictMode = false,
     initialShowGoalVisualizationsInChat = true,
     personalizationEditor,
+    materialSettings,
+    materialSettingsBusy = false,
 }) => {
+    const titleId = React.useId()
     const { language } = useLanguage()
     const localizedLanguage = language === 'en' ? 'en' : 'de'
     const setupCopy = getPersonalCurriculumSetupCopy(localizedLanguage)
@@ -447,6 +453,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     )
 
     const handleApply = async () => {
+        if (materialSettingsBusy) return
         if (personalizationEditor) {
             if (guidedCloseBlocked) return
             if (!onPreferencesApply) {
@@ -726,10 +733,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" >
-            <div className="bg-sidebar-bg border border-border-color rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl transition-colors">
+            <div role="dialog" aria-modal="true" aria-labelledby={titleId} className="bg-sidebar-bg border border-border-color rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl transition-colors">
                 <div className="p-6 border-b border-border-color flex items-center justify-between">
                     <div>
-                        <h2 className="text-xl font-bold text-text-primary">
+                        <h2 id={titleId} className="text-xl font-bold text-text-primary">
                             {setupCopy.title}
                         </h2>
                         <p className="text-text-secondary text-sm mt-1">
@@ -737,8 +744,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         </p>
                     </div>
                     <button
+                        type="button"
+                        aria-label={localizedLanguage === 'de' ? 'Einstellungen schließen' : 'Close settings'}
                         onClick={onClose}
-                        disabled={isApplying || guidedCloseBlocked}
+                        disabled={isApplying || guidedCloseBlocked || materialSettingsBusy}
                         className="p-2 hover:bg-input-bg rounded-full transition-colors text-text-secondary hover:text-text-primary"
                     >
                         <X size={24} />
@@ -747,9 +756,15 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
                 <div className="flex-1 overflow-y-auto p-4">
                     {personalizationEditor && (
-                        <div className="mb-6">
+                        <fieldset disabled={materialSettingsBusy || isApplying} className="mb-6 min-w-0">
                             <PersonalCurriculumEditor {...personalizationEditor} />
-                        </div>
+                        </fieldset>
+                    )}
+
+                    {materialSettings && (
+                        <fieldset disabled={isApplying || guidedCloseBlocked} className="min-w-0">
+                            {materialSettings}
+                        </fieldset>
                     )}
 
                     {/* Preferences Section */}
@@ -882,7 +897,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         onClick={() => {
                             void handleApply()
                         }}
-                        disabled={isApplying || guidedCloseBlocked}
+                        disabled={isApplying || guidedCloseBlocked || materialSettingsBusy}
                         className="px-6 py-2.5 bg-sky-600 hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-60 text-white rounded-lg font-medium transition-colors shadow-lg shadow-sky-900/20"
                     >
                         {isApplying ? setupCopy.savePending : setupCopy.doneAction}

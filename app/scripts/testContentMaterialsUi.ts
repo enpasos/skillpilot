@@ -18,6 +18,7 @@ try {
   let featureOff = false
   let failSave = 0
   let providerRequests = 0
+  let resourceType = 'article'
   let saveBarrier: Promise<void> | null = null
   let saveStarted = () => {}
   let readBarrier: Promise<void> | null = null
@@ -51,7 +52,7 @@ try {
   })
   await page.route('**/api/ui/learners/*/content-materials?*', async (route) => {
     const id = new URL(route.request().url()).pathname.split('/')[4]
-    await route.fulfill({ status: featureOff ? 404 : 200, contentType: 'application/json', body: JSON.stringify(selected[id].includes('physics-pilot') ? [{ title: 'Motion analysis', url: 'https://provider.example/motion#analysis', provider: 'Public provider', resourceType: 'article', language: 'en', sections: ['Motion analysis'], access: 'public-link', aiUsage: 'link-only' }] : []) })
+    await route.fulfill({ status: featureOff ? 404 : 200, contentType: 'application/json', body: JSON.stringify(selected[id].includes('physics-pilot') ? [{ title: 'Motion analysis', url: 'https://provider.example/motion#analysis', provider: 'Public provider', resourceType, language: 'en', sections: ['Motion analysis'], access: 'public-link', aiUsage: 'link-only' }] : []) })
   })
   await page.goto(`${server.baseUrl}/scripts/fixtures/contentMaterialsUi.html`)
   const summary = page.locator('summary')
@@ -78,6 +79,14 @@ try {
   assert.equal(await page.getByRole('checkbox').isChecked(), true, 'saved choices survive a Cockpit remount')
   const link = page.getByRole('link', { name: /Motion analysis/ })
   await link.waitFor()
+  const materialRegion = page.getByRole('region', { name: 'Materialien zu diesem Lernziel', exact: true })
+  assert.equal(await materialRegion.getByRole('heading').count(), 0, 'no heading around compact material links')
+  assert.equal(await materialRegion.locator('p').count(), 0, 'no repeated provider metadata or terms below links')
+  assert.equal(await materialRegion.getByText(/Auswahl/).count(), 0, 'links do not mention package selection')
+  assert.equal(await link.locator('svg.lucide-book-open').count(), 1, 'articles use a book icon')
+  assert.equal(await page.getByRole('link', { name: /^Artikel: Motion analysis/ }).count(), 1,
+    'the icon type is also available to assistive technology')
+  assert((await link.boundingBox())!.height >= 44, 'compact links retain mobile touch targets')
   assert.equal(await link.getAttribute('rel'), 'noopener noreferrer')
   assert.equal(await link.getAttribute('referrerpolicy'), 'no-referrer')
   const popupPromise = context.waitForEvent('page')
@@ -88,6 +97,20 @@ try {
   await popup.close()
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'German mobile layout stays within viewport')
   if (process.env.SKILLPILOT_MATERIALS_SCREENSHOT) await page.screenshot({ path: process.env.SKILLPILOT_MATERIALS_SCREENSHOT, fullPage: true })
+
+  for (const [type, icon, label] of [
+    ['simulation', 'sliders-horizontal', 'Simulation'],
+    ['future-resource-type', 'link', 'Lernmaterial'],
+    ['article', 'book-open', 'Artikel'],
+  ]) {
+    resourceType = type
+    await page.getByRole('button', { name: 'Toggle cockpit' }).click()
+    await page.getByRole('button', { name: 'Toggle cockpit' }).click()
+    await link.waitFor()
+    assert.equal(await link.locator(`svg.lucide-${icon}`).count(), 1, `content icon for ${type}`)
+    assert.equal(await link.getAttribute('title'), label)
+  }
+  await openMaterials()
 
   await page.getByRole('checkbox').uncheck()
   await save.click()
@@ -127,6 +150,8 @@ try {
   await saveEnglish.click()
   await page.getByText('Material selection saved.', { exact: true }).waitFor()
   await page.getByRole('link', { name: /Motion analysis/ }).waitFor()
+  assert.equal(await page.getByRole('link', { name: /^Article: Motion analysis/ }).count(), 1,
+    'English material type labels are localized')
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'English mobile layout stays within viewport')
 
   // A late response from the previous learner must never replace the current selection.

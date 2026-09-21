@@ -11,6 +11,7 @@ interface Props {
   skillpilotId: string
   language: MaterialLanguage
   onSaved: () => void
+  onSavingChange?: (saving: boolean) => void
 }
 
 // Remount on identity/language changes so pending responses and unsaved choices
@@ -19,7 +20,7 @@ export const MaterialSelectionPanel = (props: Props) => (
   <ScopedMaterialSelectionPanel key={`${props.skillpilotId}:${props.language}`} {...props} />
 )
 
-const ScopedMaterialSelectionPanel = ({ skillpilotId, language, onSaved }: Props) => {
+const ScopedMaterialSelectionPanel = ({ skillpilotId, language, onSaved, onSavingChange }: Props) => {
   const de = language === 'de'
   const [selection, setSelection] = useState<ContentSelection | null>(null)
   const [selected, setSelected] = useState<string[]>([])
@@ -29,6 +30,8 @@ const ScopedMaterialSelectionPanel = ({ skillpilotId, language, onSaved }: Props
   const alive = useRef(false)
   const saving = useRef(false)
   const saveController = useRef<AbortController | null>(null)
+
+  useEffect(() => () => onSavingChange?.(false), [onSavingChange])
 
   useEffect(() => {
     alive.current = true
@@ -54,6 +57,7 @@ const ScopedMaterialSelectionPanel = ({ skillpilotId, language, onSaved }: Props
     if (!selection || saving.current) return
     saving.current = true
     setBusy(true)
+    onSavingChange?.(true)
     setMessage('')
     const controller = new AbortController()
     saveController.current = controller
@@ -88,6 +92,7 @@ const ScopedMaterialSelectionPanel = ({ skillpilotId, language, onSaved }: Props
       saving.current = false
       if (alive.current) {
         setBusy(false)
+        onSavingChange?.(false)
       }
     }
   }

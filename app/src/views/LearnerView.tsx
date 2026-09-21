@@ -386,6 +386,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [expandedGoalIds, setExpandedGoalIds] = useState<Set<string>>(new Set())
   const [learnerData, setLearnerData] = useState<Learner | null>(null)
   const [materialSelectionRefresh, setMaterialSelectionRefresh] = useState(0)
+  const [materialSelectionSaving, setMaterialSelectionSaving] = useState(false)
   const [frontierOptions, setFrontierOptions] = useState<FrontierGoal[]>([])
   const [stateActiveGoalId, setStateActiveGoalId] = useState<string | null>(null)
   const [stateRequiredAction, setStateRequiredAction] = useState<string | null>(null)
@@ -3280,7 +3281,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           <div className="flex items-center gap-1 shrink-0">
 
             {/* SSE auto-refresh now active - manual refresh button removed */}
-            <button onClick={() => setIsSetupOpen(true)} className="p-1 text-text-secondary hover:text-sky-400"><Settings size={16} /></button>
+            <button aria-label={localizedLanguage === 'de' ? 'Einstellungen öffnen' : 'Open settings'} onClick={() => setIsSetupOpen(true)} className="p-1 text-text-secondary hover:text-sky-400"><Settings size={16} /></button>
             <ThemeToggle />
             {isMobile && (
               <button
@@ -3466,16 +3467,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               />
             ) : null}
           </section>
-        )}
-        {!isGuidedPersonalizationRequired && guidedPersonalizationGateReason !== 'scopeLoading' && (
-          <MaterialSelectionPanel
-            skillpilotId={skillpilotId}
-            language={localizedLanguage}
-            onSaved={() => {
-              setMaterialSelectionRefresh((value) => value + 1)
-              dispatchLearnerUiRefresh({ skillpilotId, reason: 'content-selection', targets: ['all'] })
-            }}
-          />
         )}
         {guidedPersonalizationGateReason === 'scopeLoading' ? (
           <div className="flex min-h-full w-full max-w-xl items-center justify-center" role="status">
@@ -3760,6 +3751,18 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         initialPeriodBasis={learnerData?.learningPlanPeriodBasis}
         initialStrictMode={learnerData?.strictMode}
         initialShowGoalVisualizationsInChat={learnerData?.showGoalVisualizationsInChat}
+        materialSettingsBusy={materialSelectionSaving}
+        materialSettings={!isGuidedPersonalizationRequired && guidedPersonalizationGateReason !== 'scopeLoading' ? (
+          <MaterialSelectionPanel
+            skillpilotId={skillpilotId}
+            language={localizedLanguage}
+            onSavingChange={setMaterialSelectionSaving}
+            onSaved={() => {
+              setMaterialSelectionRefresh((value) => value + 1)
+              dispatchLearnerUiRefresh({ skillpilotId, reason: 'content-selection', targets: ['all'] })
+            }}
+          />
+        ) : undefined}
         personalizationEditor={usesGuidedPersonalCurriculumEditor
           ? {
             ...personalCurriculumEditor,

@@ -238,8 +238,8 @@ try {
     assert.equal(await focus.count(), 1, 'full /state planned goals preserve exactly the saved focus')
     assert.match(await focus.locator('..').innerText(), /Ableitungen/u)
     assert.deepEqual(h.unexpected, [], 'initial loading must not request the redundant /planned endpoint')
-    assert.deepEqual(h.contentRequests.map((path) => path.split('/').at(-1)).sort(), ['content-materials', 'content-selection'],
-      'optional material reads remain bounded and never retry a disabled pilot')
+    assert.deepEqual(h.contentRequests.map((path) => path.split('/').at(-1)).sort(), ['content-materials'],
+      'learning reads only goal links; material configuration loads lazily when settings open')
 
     if (first === 'profile') {
       const section = h.page.getByRole('region', { name: 'Meine Fachpläne' })

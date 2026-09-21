@@ -45,9 +45,14 @@ automatically opt anyone in.
 
 Normal use:
 
-1. Open the intended profile in the Cockpit.
-2. In the material selection, select the desired package and save.
-3. Open a mapped goal to see the optional material. Deselect and save to stop
+1. Open the intended profile in the Cockpit and use the gear to open **Mein
+   Lehrplan / My Curriculum**.
+2. Expand **Zusätzliche Lernmaterialien / Additional learning materials**, select
+   the desired package and save. This configuration is inside the settings dialog,
+   not in the ordinary learning view.
+3. Open a mapped goal to see the compact material links: content-type icon and
+   link title, without a separate card, selection heading or repeated metadata.
+   Provider/access information remains in settings. Deselect and save to stop
    offering it in fresh Cockpit/coach results.
 
 Deployment of this revision still requires the normal release process. An
