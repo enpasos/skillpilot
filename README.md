@@ -6,6 +6,8 @@ Open-source curriculum infrastructure for learning platforms and AI coaches.
 
 [Explore SkillPilot](https://skillpilot.com) · [Documentation](https://enpasos.github.io/skillpilot/) · [Contribute](https://enpasos.github.io/skillpilot/#contribute)
 
+Software: [Apache-2.0](LICENSE) · Own learning content: [CC BY 4.0](LICENSES/CC-BY-4.0.txt) · [Licensing scope](LICENSING.md)
+
 ![A comic showing how SkillPilot helps learners find their next learning step](docs/comic1/SkillPilot_Comic.en.jpg)
 
 ## From published curricula to connected learning goals
