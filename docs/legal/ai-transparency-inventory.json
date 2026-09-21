@@ -272,6 +272,8 @@
         "architecture.en.png",
         "champion.de.png",
         "champion.en.png",
+        "content-materials-ui.de.png",
+        "content-materials-ui.en.png",
         "current-coach.png",
         "current-cockpit.png",
         "current-curriculum.png",
@@ -282,6 +284,12 @@
         "examnode.en.png",
         "graph_example.de.png",
         "graph_example.en.png",
+        "learning-core.png",
+        "learning-house.png",
+        "learning-materials.png",
+        "learning-moment.png",
+        "learning-plan-ui.de.png",
+        "learning-plan-ui.en.png",
         "LearningCoach.en.png",
         "Lerncoach.de.png",
         "mastery.de.png",
@@ -299,8 +307,8 @@
         "velocity.de.png",
         "velocity.en.png"
       ],
-      "sourceDigestSha256": "6d31513b97b53721a494bcdf19a053a1ec5e70e87a490c69dc9ac0c320781bb7",
-      "runtimeDigestSha256": "c4e362b2a84d7a693f531085442a929ec1ab7e46805d2538fc27f64902ad7b96",
+      "sourceDigestSha256": "e55f1815d9565fb18904355ce2582fb7076fdc0e57f7e8b09aa687dee14c4ec4",
+      "runtimeDigestSha256": "9e2af2dd2178b4c6736fc304063b484163e5b970a68afeda719d768ca89ad662",
       "currentScreenshots": {
         "files": [
           "current-coach.png",
@@ -314,7 +322,66 @@
         "sourceVideoSha256": "20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb",
         "privacyReview": "Browser chrome and permanent SkillPilot ID fields were excluded. The short-lived learning-session value may remain visible in the handoff screenshot by explicit product-owner decision."
       },
-      "reviewConclusion": "The current documentary screenshots were derived from the frozen reviewed video and checked for the stated privacy boundary. The remaining legacy raster figures are presented as diagrams or stylized illustrations, not documentary records."
+      "reviewConclusion": "Legacy documentary screenshots retain their original source-video bindings; legacy artwork remains preserved. The 2026-09-21 visual refresh adds explicitly AI-generated, visually reviewed learning-house and narrative illustrations and isolated bilingual UI captures with synthetic data. Neither illustrations nor fixture captures establish learning effectiveness or provider-host acceptance.",
+      "visualRefresh20260921": {
+        "documentation": "docs/whitepaper/visual-refresh-2026-09-21.md",
+        "narrativeIllustration": {
+          "file": "learning-moment.png",
+          "provider": "OpenAI built-in image generation (image_gen)",
+          "provenance": "docs/whitepaper/learning-moment.provenance.json",
+          "sha256": "e20d253b3b61af8127d26aaaccb14f0384e4dc0a15f10fb18288dca09c49cc64",
+          "disclosurePlacement": "Shared italic notice beside Version/Project in the Whitepaper header",
+          "disclosureDe": "Ein Teil der Illustrationen ist KI-generiert.",
+          "disclosureEn": "Some illustrations are AI-generated.",
+          "reviewStatus": "Visually reviewed editorial candidate; not human acceptance or measured learner evidence."
+        },
+        "uiCaptures": {
+          "files": [
+            "learning-plan-ui.de.png",
+            "learning-plan-ui.en.png",
+            "content-materials-ui.de.png",
+            "content-materials-ui.en.png"
+          ],
+          "generator": "app/scripts/captureWhitepaperUi.ts",
+          "classification": "Screenshots of actual application components rendered with synthetic data, not AI-generated UI.",
+          "privacyReview": "Fresh isolated browser contexts, no real learner data or credentials; all private/external requests and API writes blocked.",
+          "acceptanceBoundary": "Illustrative local rendering only; not production rollout, backend integration or Claude host acceptance."
+        },
+        "openingIllustration": {
+          "file": "learning-house.png",
+          "provider": "OpenAI built-in image generation (image_gen)",
+          "provenance": "docs/whitepaper/learning-house.provenance.json",
+          "sha256": "93775544db3be2c94f2b92f66ed3dfabf8af5e749c97c70933ff03427b2b667b",
+          "disclosurePlacement": "Shared italic notice beside Version/Project in the Whitepaper header",
+          "disclosureDe": "Ein Teil der Illustrationen ist KI-generiert.",
+          "disclosureEn": "Some illustrations are AI-generated.",
+          "reviewStatus": "Visually reviewed editorial illustration; depicts guided progress, not automatic mastery or an actual provider UI."
+        },
+        "storyIllustrations": [
+          {
+            "file": "learning-core.png",
+            "provider": "OpenAI built-in image generation (image_gen)",
+            "provenance": "docs/whitepaper/learning-core.provenance.json",
+            "sha256": "5f0fc58db355b4337a84a01ab468c2968e74fcfd203fb29443ee3fd536fd99b6",
+            "disclosurePlacement": "Shared italic notice beside Version/Project in the Whitepaper header",
+            "disclosureDe": "Ein Teil der Illustrationen ist KI-generiert.",
+            "disclosureEn": "Some illustrations are AI-generated.",
+            "reviewStatus": "editorial AI-reviewed candidate; no human approval claimed",
+            "purpose": "Conceptual narrative illustration of coach dialogue versus separate SkillPilot curriculum, progress and plan; not a real UI, privacy certification, or provider acceptance evidence."
+          },
+          {
+            "file": "learning-materials.png",
+            "provider": "OpenAI built-in image generation (image_gen)",
+            "provenance": "docs/whitepaper/learning-materials.provenance.json",
+            "sha256": "3d1347bdeccd78ed09cf4c3fa591d753500da21289f5fa8f1342adb416635bf7",
+            "disclosurePlacement": "Shared italic notice beside Version/Project in the Whitepaper header",
+            "disclosureDe": "Ein Teil der Illustrationen ist KI-generiert.",
+            "disclosureEn": "Some illustrations are AI-generated.",
+            "reviewStatus": "editorial AI-reviewed candidate; no human approval claimed",
+            "purpose": "Conceptual target picture of teacher- and learner-selected materials supporting the same learning goal and plan. Captions distinguish ongoing development, beginning with Physik Libre, from general availability."
+          }
+        ]
+      }
     },
     "podcastAudio": {
       "provenanceStatus": "The files contain generic Google encoder and creation-time tags. Those tags do not establish the exact generation workflow or whether every voice segment is synthetic.",

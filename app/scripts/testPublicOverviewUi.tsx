@@ -156,6 +156,30 @@ const forbiddenNeutralAction: Record<Language, string> = {
   de: 'Überblick öffnen',
   en: 'Open overview',
 }
+const whitepaperTableFixtures: Record<Language, { headers: string[], rows: string[][] }> = {
+  de: {
+    headers: ['Fach', 'Heute geschafft / Pensum', 'Zusätzlicher Planstand'],
+    rows: [
+      ['Mathematik', '1 von 3', '2 Lernziele im Rückstand'],
+      ['Physik', '2 von 2 – Tagesziel erreicht', '1 Lernziel vorgearbeitet'],
+    ],
+  },
+  en: {
+    headers: ['Subject', 'Completed today / Target', 'Additional plan status'],
+    rows: [
+      ['Mathematics', '1 of 3', '2 learning goals behind'],
+      ['Physics', '2 of 2 – Daily target met', '1 learning goal ahead'],
+    ],
+  },
+}
+const storyboardFixture = (language: Language) => [
+  '# Storyboard fixture',
+  '',
+  `Visual story ${language}`,
+  '',
+  ...Array.from({ length: 6 }, (_, index) => `## Scene ${index + 1}\n\nScene content ${language} ${index + 1}\n`),
+  `![Requires flow](requires-flow.${language}.svg)`,
+].join('\n')
 
 const rootFormatHref = (language: Language, formatId: FormatId) => {
   if (formatId === 'audio' || formatId === 'video') {
@@ -782,6 +806,26 @@ try {
       locale: language === 'de' ? 'de-DE' : 'en-US',
       viewport: { width: 375, height: 900 },
     })
+    const tableFixture = whitepaperTableFixtures[language]
+    for (const fixtureLanguage of ['de', 'en'] as const) {
+      const fixtureTable = whitepaperTableFixtures[fixtureLanguage]
+      await context.route(`**/whitepaper/whitepaper.${fixtureLanguage}.md`, (route) => route.fulfill({
+        contentType: 'text/markdown; charset=utf-8',
+        body: [
+          '# Whitepaper fixture',
+          '',
+          `![Requires flow](requires-flow.${fixtureLanguage}.svg)`,
+          '',
+          `| ${fixtureTable.headers.join(' | ')} |`,
+          '|---|---|---|',
+          ...fixtureTable.rows.map((cells) => `| ${cells.join(' | ')} |`),
+        ].join('\n'),
+      }))
+      await context.route(`**/whitepaper/storyboard.${fixtureLanguage}.md`, (route) => route.fulfill({
+        contentType: 'text/markdown; charset=utf-8',
+        body: storyboardFixture(fixtureLanguage),
+      }))
+    }
     await context.addInitScript(({
       testOrigin,
       rootLanguage,
@@ -1323,6 +1367,44 @@ try {
     await page.goto(`${origin}/whitepaper/${language}`)
     await markdownResponse
     await page.locator('#whitepaper .prose').waitFor()
+    const whitepaperTable = page.locator('#whitepaper .prose').getByRole('table')
+    await whitepaperTable.waitFor()
+    assert.equal(await whitepaperTable.count(), 1, `${language}: GFM renders one semantic table`)
+    assert.deepEqual(
+      await whitepaperTable.getByRole('columnheader').allTextContents(),
+      tableFixture.headers,
+      `${language}: GFM preserves all daily-comparison column headers`,
+    )
+    assert.deepEqual(
+      await whitepaperTable.locator('tbody tr').evaluateAll((rows) => rows.map((row) => (
+        [...row.querySelectorAll('td')].map((cell) => cell.textContent)
+      ))),
+      tableFixture.rows,
+      `${language}: GFM preserves the subject rows instead of displaying raw pipes`,
+    )
+    await assertNoHorizontalOverflow(page, `${language}: whitepaper GFM table fits a 375px viewport`)
+    const requiresFlow = page.locator('#whitepaper').getByRole('img', { name: 'Requires flow', exact: true })
+    const originalImageLink = page.getByRole('link', {
+      name: language === 'en'
+        ? 'Open image at original size: Requires flow'
+        : 'Bild in Originalgröße öffnen: Requires flow',
+      exact: true,
+    })
+    assert.equal(await originalImageLink.getAttribute('href'), `requires-flow.${language}.svg`,
+      `${language}: figures can be opened at original size for readable mobile viewing`)
+    assert.equal(await originalImageLink.getAttribute('target'), '_blank')
+    assert.equal(await originalImageLink.getAttribute('rel'), 'noopener noreferrer')
+    assert.equal(
+      await requiresFlow.evaluate((image) => image.style.maxWidth),
+      '600px',
+      `${language}: the Markdown route diagram retains its 600px width limit without a title`,
+    )
+    await page.setViewportSize({ width: 1280, height: 900 })
+    const diagramBounds = await requiresFlow.boundingBox()
+    assert(diagramBounds && Math.abs(diagramBounds.width - 600) <= 1,
+      `${language}: the route diagram renders at 600px on desktop`)
+    await assertNoHorizontalOverflow(page, `${language}: whitepaper GFM table fits a desktop viewport`)
+    await page.setViewportSize({ width: 375, height: 900 })
     await page.waitForFunction((routeLanguage) => document.documentElement.lang === routeLanguage, language)
     assert.equal(
       await page.evaluate(() => localStorage.getItem('skillpilot_lang')),
@@ -1429,6 +1511,103 @@ try {
         await assertDirectPlayCall(page, language, formatId)
       }
     }
+
+    // Reading mode is a shareable URL choice, independent of media playback.
+    await page.goto(`${origin}/whitepaper/${language}?source=preview#whitepaper`)
+    await page.locator('#whitepaper .prose table').waitFor()
+    const fullMode = page.getByTestId('whitepaper-reading-mode-full')
+    const storyMode = page.getByTestId('whitepaper-reading-mode-story')
+    assert.equal(await fullMode.getAttribute('aria-current'), 'page', 'full text remains the default')
+    assert.equal(await storyMode.textContent(), language === 'de' ? 'Die Geschichte in Bildern' : 'The story in pictures')
+    assert.equal(await storyMode.getAttribute('href'), `/whitepaper/${language}?source=preview&view=story#whitepaper`)
+    await assertFocusable(page, '[data-testid="whitepaper-reading-mode-story"]')
+    await storyMode.click()
+    await page.getByText(`Visual story ${language}`, { exact: true }).waitFor()
+    assert.equal(await storyMode.getAttribute('aria-current'), 'page')
+    assert.equal(await fullMode.getAttribute('aria-current'), null)
+    assert.equal(await page.locator('#whitepaper .prose').getByRole('heading', { level: 3 }).count(), 6)
+    assert.equal(await page.locator('#whitepaper .prose table').count(), 0, 'story mode replaces the full document')
+    assert.equal(await page.getByRole('link', {
+      name: language === 'de' ? 'Bild in Originalgröße öffnen: Requires flow' : 'Open image at original size: Requires flow',
+      exact: true,
+    }).getAttribute('href'), `requires-flow.${language}.svg`, 'story mode reuses original-size image access')
+    await assertNoHorizontalOverflow(page, `${language}: story mode and its selector fit mobile`)
+    await assertPlaybackState(page, null)
+
+    // Hold a language response to prove old-language stories disappear at once.
+    let releaseLanguageResponse = () => {}
+    const delayedLanguage = new Promise<void>((resolve) => { releaseLanguageResponse = resolve })
+    const languageStoryRoute = `**/whitepaper/storyboard.${oppositeLanguage}.md`
+    await page.route(languageStoryRoute, async (route) => {
+      await delayedLanguage
+      await route.fulfill({ contentType: 'text/markdown; charset=utf-8', body: storyboardFixture(oppositeLanguage) })
+    })
+    const switchedStoryResponse = page.waitForResponse((response) => response.url().endsWith(`/storyboard.${oppositeLanguage}.md`))
+    const scrollsBeforeLanguageSwitch = (await readBrowserProbe(page)).scrollCalls.length
+    const switchLink = page.getByRole('link', { name: expected.switchLabel, exact: true })
+    assert.equal(await switchLink.getAttribute('href'), `/whitepaper/${oppositeLanguage}?source=preview&view=story#whitepaper`)
+    await switchLink.click()
+    await page.locator('#whitepaper').getByText(getMarkdownDocumentViewCopy(oppositeLanguage, 'whitepaper').loading, { exact: true }).waitFor()
+    assert.equal(await page.locator('#whitepaper .prose').count(), 0, 'old-language story is hidden while the new language loads')
+    await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
+    assert.equal((await readBrowserProbe(page)).scrollCalls.length, scrollsBeforeLanguageSwitch,
+      'document anchor waits for content instead of scrolling a short loading page')
+    releaseLanguageResponse()
+    await switchedStoryResponse
+    await page.getByText(`Visual story ${oppositeLanguage}`, { exact: true }).waitFor()
+    await page.unroute(languageStoryRoute)
+    assert.equal(await page.locator('#audio audio').getAttribute('src'), `/audio/intro-${oppositeLanguage}.m4a`)
+    assert.equal(await page.locator('#video video').getAttribute('src'), `/whitepaper/SkillPilot_Whitepaper_${oppositeLanguage}.mp4`)
+    await page.getByTestId('whitepaper-reading-mode-full').click()
+    await page.locator('#whitepaper .prose table').waitFor()
+    assert.equal(new URL(page.url()).search, '?source=preview', 'leaving story mode preserves unrelated query parameters')
+    assert.equal(new URL(page.url()).hash, '#whitepaper')
+
+    // A late story response must not overwrite a full-text view selected meanwhile.
+    await page.goto(`${origin}/whitepaper/${language}?source=preview#whitepaper`)
+    await page.locator('#whitepaper .prose table').waitFor()
+    let releaseStoryResponse = () => {}
+    const delayedStory = new Promise<void>((resolve) => { releaseStoryResponse = resolve })
+    const currentStoryRoute = `**/whitepaper/storyboard.${language}.md`
+    await page.route(currentStoryRoute, async (route) => {
+      await delayedStory
+      await route.fulfill({ contentType: 'text/markdown; charset=utf-8', body: storyboardFixture(language) })
+    })
+    const storyRequest = page.waitForRequest((request) => request.url().endsWith(`/storyboard.${language}.md`))
+    await page.getByTestId('whitepaper-reading-mode-story').click()
+    await storyRequest
+    await page.locator('#whitepaper').getByText(getMarkdownDocumentViewCopy(language, 'whitepaper').loading, { exact: true }).waitFor()
+    assert.equal(await page.locator('#whitepaper .prose').count(), 0, 'full text is hidden while story mode loads')
+    await page.getByTestId('whitepaper-reading-mode-full').click()
+    await page.locator('#whitepaper .prose table').waitFor()
+    const lateStoryResponse = page.waitForResponse((response) => response.url().endsWith(`/storyboard.${language}.md`))
+    releaseStoryResponse()
+    await (await lateStoryResponse).finished()
+    await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
+    assert.equal(await page.getByText(`Visual story ${language}`, { exact: true }).count(), 0)
+    assert.equal(await page.locator('#whitepaper .prose table').count(), 1)
+    await page.unroute(currentStoryRoute)
+
+    await page.goto(`${origin}/whitepaper/${language}?view=story&source=preview#whitepaper`)
+    await page.getByText(`Visual story ${language}`, { exact: true }).waitFor()
+    for (const formatId of formatIds) {
+      assert.equal(await page.getByTestId(`skillpilot-overview-nav-${formatId}`).getAttribute('href'),
+        `/whitepaper/${language}?view=story&source=preview#${formatId}`, 'format navigation keeps the reading mode')
+    }
+    await installDirectPlaySpy(page, 'audio')
+    await page.getByTestId('skillpilot-overview-nav-audio').click()
+    assert.equal(new URL(page.url()).hash, '#audio')
+    assert.equal(new URL(page.url()).search, '?view=story&source=preview')
+    await assertPlaybackState(page, 'audio')
+
+    await page.goto(`${origin}/whitepaper/${language}?view=story&source=preview&play=video#video`)
+    await page.getByText(`Visual story ${language}`, { exact: true }).waitFor()
+    await page.waitForFunction(() => !new URLSearchParams(location.search).has('play'))
+    assert.equal(new URL(page.url()).search, '?view=story&source=preview', 'consuming media intent keeps story mode and unrelated query')
+    await assertPlaybackState(page, 'video')
+    await page.reload()
+    await page.getByText(`Visual story ${language}`, { exact: true }).waitFor()
+    await assertPlaybackState(page, null)
 
     // Each route has its own narrated Claude tutorial and caption language.
     // This checks the player contract and responsive layout, not media bytes.
