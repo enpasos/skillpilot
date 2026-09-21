@@ -48,9 +48,15 @@ BUILD_INPUTS_PATH = "metadata/build-inputs.json"
 CONFORMANCE_PATH = "metadata/release-model-conformance.json"
 CONTENT_INDEX_PATH = "metadata/semantic-content-index.json"
 ROOT_LICENSE_PATH = "LICENSE"
+PROJECT_LICENSE_POLICY_PATH = "LICENSING.md"
+PROJECT_LICENSE_DECISION_REFERENCE = "LICENSING.md#project-rule"
 TARGET_PROFILE_PATH = "contracts/curriculum-package/v1/profiles/full-standalone-v1.profile.json"
 TARGET_PROFILE_ID = "full-standalone-v1"
 APACHE_LICENSE_ID = "Apache-2.0"
+CONTENT_LICENSE_ID = "CC-BY-4.0"
+CONTENT_LICENSE_PATH = "LICENSES/CC-BY-4.0.txt"
+# Earlier declared own-work licenses remain valid; new own content uses CC-BY-4.0.
+OWN_CONTENT_LICENSE_IDS = frozenset({APACHE_LICENSE_ID, CONTENT_LICENSE_ID})
 ROOT_APACHE_LICENSE_BYTES = 10089
 ROOT_APACHE_LICENSE_SHA256 = (
     "6bbe4ace8a1818f89b96dfdda9f9d4b9a178bc047c3dc2511a3d93d51f86d7ae"
@@ -163,13 +169,42 @@ def ai_assisted_native_claim(provider: str, note: str, resource_id: str) -> bool
     native_note = note in AI_ASSISTED_NATIVE_LICENSE_NOTES
     if provider == AI_ASSISTED_NATIVE_PROVIDER or native_note:
         if provider != AI_ASSISTED_NATIVE_PROVIDER or not (
-            native_note or note == LEGACY_IMAGE_LICENSE_NOTE
+            native_note or note == LEGACY_IMAGE_LICENSE_NOTE or note in OWN_CONTENT_LICENSE_IDS
         ):
             raise ReviewError(
                 f"AI-assisted native provider/provenance pair differs on {resource_id!r}"
             )
         return True
     return False
+
+
+def validate_image_license_input(provider: str, note: str, resource_id: str) -> bool:
+    """Accept the explicit own-contribution grant without treating it as provenance proof."""
+    native = ai_assisted_native_claim(provider, note, resource_id)
+    if native:
+        return True
+    if note in {LEGACY_IMAGE_LICENSE_NOTE, SKILLPILOT_AUTHORED_LICENSE_NOTE}:
+        return False
+    if note in OWN_CONTENT_LICENSE_IDS:
+        # These are existing generator or uploader provenance claims, never rights
+        # clearance. Unknown third-party origins cannot become AI-authored merely
+        # by carrying a project license. The exact deterministic provider still routes
+        # through deterministic_render_evidence below, never around its proof.
+        if (
+            provider == "Google Gemini / Nano Banana Pro"
+            or provider.startswith("Google Gemini / Nano Banana Pro (")
+            or provider.startswith("OpenAI ")
+            or USER_PROVIDED_RE.search(provider) is not None
+            or provider == DETERMINISTIC_RENDER_PROVIDER
+        ):
+            return False
+        raise ReviewError(
+            f"{note} is not provenance evidence for image {resource_id!r}; "
+            "the generator or uploader claim must be recorded independently"
+        )
+    raise ReviewError(
+        f"Unexpected image license/provenance note on {resource_id!r}: {note!r}"
+    )
 
 
 @dataclass(frozen=True, order=True)
@@ -190,6 +225,7 @@ class SourceModel:
     target_profile_sha256: str
     target_non_binary_roles: tuple[str, ...]
     root_license: dict[str, Any]
+    project_license_grant: dict[str, Any]
     asset_bases: tuple[dict[str, Any], ...]
     asset_set_sha256: str
     external_resource_count: int
@@ -504,17 +540,9 @@ def load_source_model(release_root: Path) -> SourceModel:
         if artifact_path in artifact_paths:
             raise ReviewError(f"Duplicate embedded artifactPath {artifact_path!r}")
         artifact_paths.add(artifact_path)
-        ai_assisted_native = ai_assisted_native_claim(
+        ai_assisted_native = validate_image_license_input(
             provider, legacy_license_note, resource_id
         )
-        if not ai_assisted_native and legacy_license_note not in {
-            LEGACY_IMAGE_LICENSE_NOTE,
-            SKILLPILOT_AUTHORED_LICENSE_NOTE,
-        }:
-            raise ReviewError(
-                f"Unexpected legacy image license/provenance note on {resource_id!r}: "
-                f"{legacy_license_note!r}"
-            )
 
         build_item = build_by_id[resource_id]
         expected_build = {
@@ -546,7 +574,10 @@ def load_source_model(release_root: Path) -> SourceModel:
             )
         prompt_sha256 = sha256_file(prompt_path)
         deterministic_evidence: dict[str, Any] | None = None
-        if legacy_license_note == SKILLPILOT_AUTHORED_LICENSE_NOTE:
+        if legacy_license_note == SKILLPILOT_AUTHORED_LICENSE_NOTE or (
+            legacy_license_note in OWN_CONTENT_LICENSE_IDS
+            and provider == DETERMINISTIC_RENDER_PROVIDER
+        ):
             if provider != DETERMINISTIC_RENDER_PROVIDER:
                 raise ReviewError(
                     f"SkillPilot-authored asset {resource_id!r} lacks the closed "
@@ -639,10 +670,38 @@ def load_source_model(release_root: Path) -> SourceModel:
         target_profile_sha256=f"sha256:{sha256_file(target_profile_path)}",
         target_non_binary_roles=target_non_binary_roles,
         root_license=root_license,
+        project_license_grant=load_project_license_grant(),
         asset_bases=tuple(asset_bases),
         asset_set_sha256=asset_set_sha256,
         external_resource_count=external_count,
     )
+
+
+def load_project_license_grant() -> dict[str, Any]:
+    """Bind the owner's license grant, separately from whole-artifact rights clearance."""
+    policy_bytes = (REPO_ROOT / PROJECT_LICENSE_POLICY_PATH).read_bytes()
+    policy_text = policy_bytes.decode("utf-8")
+    if not re.search(r"^## Project rule$", policy_text, re.MULTILINE):
+        raise ReviewError("Project licensing policy is missing the project rule anchor")
+    content_license_bytes = (REPO_ROOT / CONTENT_LICENSE_PATH).read_bytes()
+    return {
+        "softwareLicenseExpression": APACHE_LICENSE_ID,
+        "contentLicenseExpression": CONTENT_LICENSE_ID,
+        "contentLicenseDocument": {
+            "path": CONTENT_LICENSE_PATH,
+            "bytes": len(content_license_bytes),
+            "sha256": f"sha256:{hashlib.sha256(content_license_bytes).hexdigest()}",
+        },
+        "scope": "skillpilot-owned-contributions",
+        "decisionDate": "2026-09-21",
+        "decisionAuthority": "project-owner",
+        "decisionReference": PROJECT_LICENSE_DECISION_REFERENCE,
+        "policyPath": PROJECT_LICENSE_POLICY_PATH,
+        "policySha256": f"sha256:{hashlib.sha256(policy_bytes).hexdigest()}",
+        "policyBytes": len(policy_bytes),
+        "policyText": policy_text,
+        "doesNotClearRedistribution": True,
+    }
 
 
 def pending_decision() -> dict[str, Any]:
@@ -806,6 +865,7 @@ def build_review(source: SourceModel, previous: Any | None = None) -> dict[str, 
             "nonBinaryRoles": list(source.target_non_binary_roles),
         },
         "rootLicenseEvidence": copy.deepcopy(source.root_license),
+        "projectLicenseGrant": copy.deepcopy(source.project_license_grant),
         "classDecisions": class_decisions,
         "pathClassificationOverrides": [
             copy.deepcopy(item) for item in PATH_CLASSIFICATION_OVERRIDES
@@ -1035,6 +1095,14 @@ def validate_review(
                 "ROOT_LICENSE_EVIDENCE_DRIFT",
                 "/rootLicenseEvidence",
                 "Root LICENSE bytes or SHA-256 changed",
+            )
+        )
+    if review.get("projectLicenseGrant") != source.project_license_grant:
+        diagnostics.append(
+            Diagnostic(
+                "PROJECT_LICENSE_GRANT_DRIFT",
+                "/projectLicenseGrant",
+                "Project-owned contributions must carry the exact separate owner license grant and policy",
             )
         )
     if review.get("assetSetSha256") != source.asset_set_sha256:
@@ -1288,7 +1356,7 @@ def run_self_test(
             + "; ".join(f"{item.code} {item.path}" for item in baseline[:10])
         )
 
-    for note in (*AI_ASSISTED_NATIVE_LICENSE_NOTES, LEGACY_IMAGE_LICENSE_NOTE):
+    for note in (*AI_ASSISTED_NATIVE_LICENSE_NOTES, LEGACY_IMAGE_LICENSE_NOTE, *sorted(OWN_CONTENT_LICENSE_IDS)):
         if not ai_assisted_native_claim(AI_ASSISTED_NATIVE_PROVIDER, note, "fixture"):
             raise ReviewError("Self-test rejected an exact AI-assisted native claim")
     for provider in (
@@ -1331,10 +1399,115 @@ def run_self_test(
     if validate_review(fresh_review, source, schema):
         raise ReviewError("Fresh pending AI-assisted native evidence failed validation")
 
+    asset_validator = Draft202012Validator(
+        {"$defs": schema["$defs"], "$ref": "#/$defs/assetDecision"},
+        format_checker=FormatChecker(),
+    )
+    provider_cases = (
+        ("Google Gemini / Nano Banana Pro", False),
+        ("Google Gemini / Nano Banana Pro (gemini-3-pro-image)", False),
+        ("OpenAI / ChatGPT-Codex image generation", False),
+        (AI_ASSISTED_NATIVE_PROVIDER, True),
+        ("user-provided generated image", False),
+    )
+    for provider, expected_native, license_id in (
+        (provider, native, license_id)
+        for license_id in sorted(OWN_CONTENT_LICENSE_IDS)
+        for provider, native in provider_cases
+    ):
+        if validate_image_license_input(provider, license_id, "fixture") != expected_native:
+            raise ReviewError("Explicit project license changed generator provenance")
+        base = copy.deepcopy(source.asset_bases[native_indexes[0]])
+        user_provided = USER_PROVIDED_RE.search(provider) is not None
+        base.update({
+            "provider": provider,
+            "legacyLicenseNote": license_id,
+            "provenanceClass": AI_ASSISTED_NATIVE_PROVENANCE_CLASS if expected_native else (
+                "user-provided-generated-claim" if user_provided else "ai-generated-curated"
+            ),
+            "provenanceSource": "user-provided-generated-claim" if user_provided else "provider-pipeline-claim",
+            "userProvided": user_provided,
+        })
+        del base["provenanceFingerprint"]
+        base["provenanceFingerprint"] = digest(base)
+        decision = preserve_decision(base, None, "provenanceFingerprint", pending_decision())
+        asset_validator.validate(decision)
+        if {key: decision[key] for key in DECISION_FIELDS} != pending_decision():
+            raise ReviewError("An explicit project grant automatically cleared an image")
+        if validate_decision_policy(decision, "/fixture", asset=True, root_license=source.root_license):
+            raise ReviewError("Pending image with explicit project license failed policy validation")
+    deterministic_base = next(
+        copy.deepcopy(base) for base in source.asset_bases
+        if base["provenanceClass"] == DETERMINISTIC_RENDER_PROVENANCE_CLASS
+    )
+    prompt_text = repo_file(deterministic_base["promptPath"]).read_text(encoding="utf-8")
+    evidence_arguments = (
+        deterministic_base["artifactPath"], deterministic_base["bytes"],
+        deterministic_base["assetSha256"].removeprefix("sha256:"),
+    )
+    if deterministic_render_evidence(prompt_text, *evidence_arguments) != deterministic_base["deterministicRenderEvidence"]:
+        raise ReviewError("Explicit-license deterministic render changed the required provenance proof")
+    for invalid_prompt in ("", re.sub(PROMPT_SOURCE_SVG_SHA_RE, "- SVG SHA-256: `" + "0" * 64 + "`", prompt_text)):
+        try:
+            deterministic_render_evidence(invalid_prompt, *evidence_arguments)
+        except ReviewError:
+            pass
+        else:
+            raise ReviewError("Explicit-license deterministic render accepted missing or false proof")
+    for license_id in sorted(OWN_CONTENT_LICENSE_IDS):
+        if validate_image_license_input(DETERMINISTIC_RENDER_PROVIDER, license_id, "fixture"):
+            raise ReviewError("A deterministic render was reclassified as an AI-native claim")
+        deterministic_base["legacyLicenseNote"] = license_id
+        del deterministic_base["provenanceFingerprint"]
+        deterministic_base["provenanceFingerprint"] = digest(deterministic_base)
+        deterministic_decision = preserve_decision(
+            deterministic_base, None, "provenanceFingerprint", pending_decision()
+        )
+        asset_validator.validate(deterministic_decision)
+        if {key: deterministic_decision[key] for key in DECISION_FIELDS} != pending_decision():
+            raise ReviewError("An explicit deterministic-render license bypassed rights review")
+        missing_proof = copy.deepcopy(deterministic_decision)
+        del missing_proof["deterministicRenderEvidence"]
+        if asset_validator.is_valid(missing_proof):
+            raise ReviewError("Explicit-license deterministic render schema accepted missing proof")
+
+    for provider, license_id in (
+        (provider, license_id)
+        for provider in ("unknown provider", "Third-party photo agency")
+        for license_id in sorted(OWN_CONTENT_LICENSE_IDS)
+    ):
+        try:
+            validate_image_license_input(provider, license_id, "fixture")
+        except ReviewError:
+            pass
+        else:
+            raise ReviewError("A license alone created an unsupported provenance claim")
+
     cases: list[tuple[str, str, Any]] = []
 
     def case(name: str, expected_code: str, mutation: Any) -> None:
         cases.append((name, expected_code, mutation))
+
+    preserved_review = build_review(source, review)
+    for field in ("classDecisions", "assetDecisions", "summary"):
+        if preserved_review[field] != review[field]:
+            raise ReviewError("The project license grant must not change redistribution decisions")
+    for field, value in (
+        ("softwareLicenseExpression", CONTENT_LICENSE_ID),
+        ("contentLicenseExpression", APACHE_LICENSE_ID),
+        ("scope", "all-materials"),
+        ("policySha256", f"sha256:{'0' * 64}"),
+        ("policyText", "Unverified blanket permission"),
+        ("doesNotClearRedistribution", False),
+    ):
+        case(
+            f"project-license-grant-{field}-drift", "PROJECT_LICENSE_GRANT_DRIFT",
+            lambda review, field=field, value=value: review["projectLicenseGrant"].update({field: value}),
+        )
+    case(
+        "project-license-grant-missing", "PROJECT_LICENSE_GRANT_DRIFT",
+        lambda review: review.pop("projectLicenseGrant"),
+    )
 
     native_index = native_indexes[0]
     case(

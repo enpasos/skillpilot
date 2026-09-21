@@ -8,7 +8,9 @@ export const DEFAULT_SUBJECT_PATH = 'mathematik'
 export const DEFAULT_LANG = 'de'
 export const DEFAULT_PROVIDER = 'Google Gemini / Nano Banana Pro'
 export const DEFAULT_REVIEW_STATUS = 'pilot'
-export const DEFAULT_LICENSE = 'AI-generated, SkillPilot-curated'
+// Own-work default under the Project Owner's explicit grant in LICENSING.md.
+// Generator/provider provenance does not establish rights in third-party input.
+export const DEFAULT_LICENSE = 'CC-BY-4.0'
 
 export function parseCliArgs(argv = process.argv.slice(2)) {
   const args = { _: [] }

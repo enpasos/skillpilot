@@ -132,6 +132,8 @@ const EXPECTED_DE_STATES = [
 ]
 
 const WINDOWS_SAFE_ARCHIVE_PATH_LIMIT = 180
+export const SKILLPILOT_DATA_LICENSE_CATEGORY = 'skillpilot-data-cc-by-4.0'
+export const SKILLPILOT_LICENSE_SCOPE_PATH = 'licenses/SKILLPILOT-LICENSING.md'
 const GOAL_VISUALIZATION_LICENSE_CATEGORY = 'goal-visualization-ai-generated-curated'
 const GOAL_VISUALIZATION_INDEX_PATH = 'data/resources/goal-visualizations.json'
 const MAX_GOAL_VISUALIZATION_BYTES = 64 * 1024 * 1024
@@ -722,14 +724,14 @@ const packagePathForRepoSource = (sourcePath: string, category: string, subjectS
   return `data/files/${fileName}`
 }
 
-const licenseCategoryForRepoSource = (sourcePath: string, category: string) => {
+export const licenseCategoryForRepoSource = (sourcePath: string, category: string) => {
   if (category === 'canonical-landscape'
     || category === 'composition-view'
     || category === 'mapping'
     || category === 'provenance'
     || category === 'card-deck'
     || category === 'memory-card-review-audit') {
-    return 'skillpilot-data-cc-by-4.0'
+    return SKILLPILOT_DATA_LICENSE_CATEGORY
   }
 
   if (category === 'source-extraction') {
@@ -1714,7 +1716,7 @@ const addMemoryCardReviewAuditEntries = (
 ) => {
   const paths = memoryCardReviewPackagePaths(audit)
   const category = 'memory-card-review-audit'
-  const licenseCategory = 'skillpilot-data-cc-by-4.0'
+  const licenseCategory = SKILLPILOT_DATA_LICENSE_CATEGORY
   addEntry(entriesByPath, generatedEntry(packageRoot, paths.config, {
     schemaVersion: 1,
     reviewId: audit.reviewId,
@@ -1961,6 +1963,7 @@ This package is a reproducible release artifact for the SkillPilot Gymnasium kno
 - \`metadata/provenance-report.md\` summarizes the source-trace invariants and counts for reviewer handoff.
 - \`metadata/SHA256SUMS\` can be used for an integrity check after download.
 - \`LICENSE.md\` and \`NOTICE.md\` describe the package-level license split.
+- \`licenses/APACHE-2.0.txt\` and \`licenses/CC-BY-4.0.txt\` contain the full software and content licenses; \`${SKILLPILOT_LICENSE_SCOPE_PATH}\` states their scopes and third-party exceptions.
 
 Official curriculum documents are referenced by stable URL in the source indexes. Internal repository paths and learner state are not part of the release package.
 
@@ -1989,7 +1992,7 @@ npm run export:subject-package -- --subject ${params.subject} --version ${params
 For byte-stable rebuilds across machines, set \`SOURCE_DATE_EPOCH\` before running the command.
 `
 
-const buildPackageLicense = (params: {
+export const buildPackageLicense = (params: {
   packageId: string
   publicationProfile: PublicationProfile
 }) => `# License
@@ -2000,13 +2003,13 @@ This package uses layered licensing. The per-file category is listed in \`metada
 
 SPDX-License-Identifier: Apache-2.0
 
-The SkillPilot source code and export tooling are licensed under the Apache License 2.0. See \`licenses/APACHE-2.0.txt\` for the repository license text.
+The SkillPilot source code and export tooling are licensed under the Apache License 2.0. See \`licenses/APACHE-2.0.txt\` for the full license and \`${SKILLPILOT_LICENSE_SCOPE_PATH}\` for the explicit project grant and its third-party exceptions.
 
 ## SkillPilot-authored curriculum data
 
 SPDX-License-Identifier: CC-BY-4.0
 
-Files marked \`skillpilot-data-cc-by-4.0\` are SkillPilot-authored data, modelling, mapping, composition, and provenance decisions. They may be shared and adapted under Creative Commons Attribution 4.0 International.
+Files marked \`${SKILLPILOT_DATA_LICENSE_CATEGORY}\` contain SkillPilot-authored data, modelling, mapping, composition, and provenance decisions. Creative Commons Attribution 4.0 International applies to the rights in our own knowledge-landscape content, including our educational text, tasks and images. See \`licenses/CC-BY-4.0.txt\`; retain required attribution, link to the license and indicate changes. Embedded third-party material is not relicensed by this category.
 
 Suggested attribution:
 
@@ -2022,7 +2025,9 @@ The \`${params.publicationProfile}\` package includes source-reference indexes t
 
 ## AI-generated, SkillPilot-curated goal visualizations
 
-Files marked \`goal-visualization-ai-generated-curated\` are AI-generated image assets selected and curated by SkillPilot. This category records provenance and curation status; it is not an SPDX license identifier and does not assert that the images are licensed under CC BY 4.0. The per-asset \`license\` note is preserved in \`data/resources/goal-visualizations.json\`. Downstream distributors must review that note and the applicable provider terms before redistribution.
+Files marked \`goal-visualization-ai-generated-curated\` retain their provenance category. Rights held by SkillPilot in its own educational image contributions are offered under CC-BY-4.0 through the explicit project grant in \`${SKILLPILOT_LICENSE_SCOPE_PATH}\`, not inferred from generator, provider or curation labels. This is not a blanket license for third-party portions or unresolved image origins, and does not approve image quality or whole-artifact redistribution.
+
+The per-asset \`license\` note, provider and \`reviewStatus\` are preserved in \`data/resources/goal-visualizations.json\`. Legacy provenance-only notes do not override the project grant. Third-party terms and unresolved redistribution questions remain separate; no review or approval is advanced by this export.
 `
 
 const buildNotice = (params: {
@@ -2047,7 +2052,7 @@ Represented mapping jurisdictions:
 
 Included card decks: ${params.cardDeckCount}
 
-Included AI-generated, SkillPilot-curated goal visualizations: ${params.goalVisualizationAssetCount}. Their per-asset license notes are preserved in \`data/resources/goal-visualizations.json\`; the manifest category does not itself grant a CC BY license.
+Included AI-generated, SkillPilot-curated goal visualizations: ${params.goalVisualizationAssetCount}. Their per-asset license notes and review states are preserved in \`data/resources/goal-visualizations.json\`. CC-BY-4.0 covers rights in our own educational image contributions under \`${SKILLPILOT_LICENSE_SCOPE_PATH}\`; third-party rights and redistribution reviews remain separate.
 
 Included memory-card review audits: ${params.memoryCardReviewAuditCount}
 
@@ -2058,10 +2063,29 @@ const buildLegal = (publicationProfile: PublicationProfile) => `# Legal and prov
 
 This SkillPilot package contains SkillPilot-authored JSON data, mapping decisions, composition views, card decks, generated schemas, and source-reference metadata.
 
+Our own software is offered under Apache-2.0 and our own knowledge-landscape content under CC-BY-4.0, to the extent that we hold the corresponding rights. See \`${SKILLPILOT_LICENSE_SCOPE_PATH}\`, \`licenses/APACHE-2.0.txt\` and \`licenses/CC-BY-4.0.txt\`. A license to our contribution does not establish clearance of third-party material or approval of image quality.
+
 This ${publicationProfile} package resolves review mapping source IDs through \`data/sources/source-goal-references.json\`. The reference index carries official document URLs, source-goal text anchors, source locators, and checksums for traceability. Official curriculum source material remains attributable to its original publishers and is not relicensed by SkillPilot. Downstream publication should review the applicable source licenses and quotation limits for the intended distribution channel.
 
 No learner state and no personally identifying learner data are included.
 `
+
+export const buildSubjectExportLicensePolicy = () => ({
+  defaultSoftwareLicense: 'Apache-2.0',
+  defaultSkillpilotDataLicense: 'CC-BY-4.0',
+  projectScopePath: SKILLPILOT_LICENSE_SCOPE_PATH,
+  goalVisualizationLicenseCategory: GOAL_VISUALIZATION_LICENSE_CATEGORY,
+  fileLicenseField: 'licenseCategory',
+  note: 'Apache-2.0 covers SkillPilot\'s own software; CC-BY-4.0 covers rights in our own knowledge-landscape content, educational texts and images under the bundled project scope notice. Official curriculum sources and other third-party material are not relicensed. Image provenance, per-asset license notes and reviewStatus remain unchanged; the grant is not image-quality approval or whole-artifact redistribution clearance.',
+})
+
+export const subjectExportLicenseEntries = (packageRoot: string, softwareLicenseText: string, contentLicenseText: string, scopeText: string) => [
+  generatedEntry(packageRoot, 'licenses/APACHE-2.0.txt', softwareLicenseText, 'repository-license', 'skillpilot-software-apache-2.0'),
+  generatedEntry(packageRoot, 'licenses/CC-BY-4.0.txt', contentLicenseText, 'repository-license'),
+  generatedEntry(packageRoot, SKILLPILOT_LICENSE_SCOPE_PATH,
+    scopeText.replaceAll('(LICENSE)', '(APACHE-2.0.txt)').replaceAll('(LICENSES/CC-BY-4.0.txt)', '(CC-BY-4.0.txt)'),
+    'package-documentation'),
+]
 
 const buildEmbeddedProvenanceReport = (params: {
   packageId: string
@@ -2316,7 +2340,7 @@ const main = () => {
       assets: goalVisualizationAssets.map(({ record }) => record),
     },
     'goal-visualization-index',
-    'skillpilot-data-cc-by-4.0',
+    SKILLPILOT_DATA_LICENSE_CATEGORY,
   ))
 
   addEntry(entriesByPath, generatedEntry(
@@ -2327,7 +2351,7 @@ const main = () => {
       decks: cardDeckFiles.map(cardDeckIndexRecord),
     },
     'card-index',
-    'skillpilot-data-cc-by-4.0',
+    SKILLPILOT_DATA_LICENSE_CATEGORY,
   ))
 
   addEntry(entriesByPath, generatedEntry(
@@ -2338,7 +2362,7 @@ const main = () => {
       references: externalGoalReferences,
     },
     'external-dependencies',
-    'skillpilot-data-cc-by-4.0',
+    SKILLPILOT_DATA_LICENSE_CATEGORY,
   ))
 
   addEntry(entriesByPath, generatedEntry(
@@ -2365,10 +2389,11 @@ const main = () => {
     'official-source-provenance-only',
   ))
 
-  const apacheLicensePath = resolveRepoPath('LICENSE')
-  if (existsSync(apacheLicensePath)) {
-    addRepoFile(entriesByPath, archiveRoot, apacheLicensePath, 'repository-license', options.subjectSlug)
-  }
+  subjectExportLicenseEntries(archiveRoot,
+    readFileSync(resolveRepoPath('LICENSE'), 'utf8'),
+    readFileSync(resolveRepoPath('LICENSES/CC-BY-4.0.txt'), 'utf8'),
+    readFileSync(resolveRepoPath('LICENSING.md'), 'utf8'),
+  ).forEach((entry) => addEntry(entriesByPath, entry))
 
   const runtimeSchemaPath = resolveRepoPath('docs/landscape-runtime.schema.json')
   if (existsSync(runtimeSchemaPath)) {
@@ -2599,13 +2624,7 @@ const main = () => {
       maxArchivePathLength: maxPackagePathLength,
       maxArchivePathLimit: WINDOWS_SAFE_ARCHIVE_PATH_LIMIT,
     },
-    licensePolicy: {
-      defaultSoftwareLicense: 'Apache-2.0',
-      defaultSkillpilotDataLicense: 'CC-BY-4.0',
-      goalVisualizationLicenseCategory: GOAL_VISUALIZATION_LICENSE_CATEGORY,
-      fileLicenseField: 'licenseCategory',
-      note: 'Official curriculum source material is not relicensed by SkillPilot. AI-generated, SkillPilot-curated goal visualizations retain their per-asset license note and are not asserted as CC BY by the manifest category.',
-    },
+    licensePolicy: buildSubjectExportLicensePolicy(),
     sourceRepository: {
       commit: git.commit,
       shortCommit: git.shortCommit,

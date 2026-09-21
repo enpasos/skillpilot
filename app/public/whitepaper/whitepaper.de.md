@@ -374,7 +374,7 @@ Wir beginnen gerade mit [**Physik Libre**](https://physikbuch.schule/). Von dies
 
 Selbst ausprobieren, Stolperstellen finden, gemeinsam verbessern: Feedback im Cockpit wird dem Lernziel zugeordnet und bei der nächsten Überarbeitung geprüft. Lernende und Curriculum Champions bringen die Lernlandkarte so in die Praxis.
 
-Die SkillPilot-Software wird als **Open Source** unter der **Apache-2.0-Lizenz** veröffentlicht. Ziel ist eine offen überprüfbare und gemeinsam weiterentwickelbare Bildungsinfrastruktur, auf der Schulen, Fachleute und öffentliche Institutionen aufbauen können. Rechte an externen Materialien bleiben davon unberührt.
+Offen ist nicht nur die Software: Sie und die technische Infrastruktur stehen unter **[Apache 2.0](https://github.com/enpasos/skillpilot/blob/main/LICENSE)**. Unsere eigenen Skill-Landschaften, Aufgaben, Lernkarten, kuratierten Linkbeschreibungen, didaktischen Medien und dieses Whitepaper veröffentlichen wir unter **[CC BY 4.0](https://github.com/enpasos/skillpilot/blob/main/LICENSES/CC-BY-4.0.txt)**, soweit entsprechende Rechte bestehen und wir sie einräumen können. Drittinhalte und private Nutzerdaten gehören nicht zu diesen Freigaben; die [Abgrenzung des Lizenzumfangs](https://github.com/enpasos/skillpilot/blob/main/LICENSING.md) erläutert die Einzelheiten. Ziel ist eine offen überprüfbare und gemeinsam weiterentwickelbare Bildungsinfrastruktur, auf der Schulen, Fachleute und öffentliche Institutionen aufbauen können.
 
 - Institutionen behalten **Souveränität** über Curricula und Inhalte.
 - Geprüfte Visualisierungen, Aufgaben und Memory-Decks können bereits direkt an Lernziele gebunden werden; weitere Content-Formate bleiben ausbaubar.

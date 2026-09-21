@@ -2105,10 +2105,10 @@ def validate_deterministic_render_provenance(
                 decision.get("provenanceClass") == DETERMINISTIC_RENDER_PROVENANCE_CLASS,
                 decision.get("provenanceSource") == DETERMINISTIC_RENDER_PROVENANCE_SOURCE,
                 decision.get("provider") == authority.provider,
-                decision.get("legacyLicenseNote") == "SkillPilot-authored",
+                decision.get("legacyLicenseNote") in ("SkillPilot-authored", "Apache-2.0", "CC-BY-4.0"),
                 decision.get("userProvided") is False,
                 resource.get("provider") == authority.provider,
-                resource.get("license") == "SkillPilot-authored",
+                resource.get("license") == decision.get("legacyLicenseNote"),
             )
         ):
             collector.add(
@@ -4548,6 +4548,30 @@ def run_self_test(trusted: TrustedContext, fixture_path: Path, verbose: bool) ->
             passed += 1
             if verbose:
                 print("PASS deterministic-render-valid: closed provenance chain")
+
+        for license_id in ("Apache-2.0", "CC-BY-4.0"):
+            def explicit_render_label(_record: Any, resource: Any, decision: Any, _review: Any) -> None:
+                resource["license"] = license_id
+                decision["legacyLicenseNote"] = license_id
+
+            license_codes = deterministic_mutation_codes(explicit_render_label)
+            if license_codes:
+                failures.append(f"deterministic-render-{license_id}: expected no diagnostics, got {sorted(license_codes)}")
+            else:
+                passed += 1
+                if verbose:
+                    print(f"PASS deterministic-render-{license_id}: same closed provenance chain, still review-required")
+
+            def explicit_render_without_proof(record: Any, resource: Any, decision: Any, review: Any) -> None:
+                explicit_render_label(record, resource, decision, review)
+                decision.pop("deterministicRenderEvidence")
+
+            if not deterministic_mutation_codes(explicit_render_without_proof):
+                failures.append(f"deterministic-render-{license_id}-missing-proof: expected rejection")
+            else:
+                passed += 1
+                if verbose:
+                    print(f"PASS deterministic-render-{license_id}-missing-proof: rejected")
 
         def all_document_ai_relabel(
             record: dict[str, Any],

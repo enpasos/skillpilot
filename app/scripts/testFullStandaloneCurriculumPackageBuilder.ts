@@ -93,6 +93,8 @@ packageProfile.trustedContractSchemas.forEach((binding) => {
   copyRepositoryFile(`contracts/curriculum-package/v1/${basename(binding.id)}`)
 })
 copyRepositoryFile('LICENSE')
+copyRepositoryFile('LICENSING.md')
+copyRepositoryFile('LICENSES/CC-BY-4.0.txt')
 
 const semanticContract = (repositoryPath: string) => {
   const path = resolve(fixtureRepositoryRoot, repositoryPath)
@@ -302,6 +304,27 @@ const packageProfilePath = resolve(fixtureRepositoryRoot, profileRepositoryPath)
 const packageProfileIntegrity = integrity(packageProfilePath)
 const rootLicensePath = resolve(fixtureRepositoryRoot, 'LICENSE')
 const rootLicenseIntegrity = integrity(rootLicensePath)
+const projectPolicyPath = resolve(fixtureRepositoryRoot, 'LICENSING.md')
+const projectPolicyIntegrity = integrity(projectPolicyPath)
+const contentLicenseIntegrity = integrity(resolve(fixtureRepositoryRoot, 'LICENSES/CC-BY-4.0.txt'))
+const projectLicenseGrant = {
+  softwareLicenseExpression: 'Apache-2.0',
+  contentLicenseExpression: 'CC-BY-4.0',
+  contentLicenseDocument: {
+    path: 'LICENSES/CC-BY-4.0.txt',
+    bytes: contentLicenseIntegrity.bytes,
+    sha256: `sha256:${contentLicenseIntegrity.sha256}`,
+  },
+  scope: 'skillpilot-owned-contributions',
+  decisionDate: '2026-09-21',
+  decisionAuthority: 'project-owner',
+  decisionReference: 'LICENSING.md#project-rule',
+  policyPath: 'LICENSING.md',
+  policySha256: `sha256:${projectPolicyIntegrity.sha256}`,
+  policyBytes: projectPolicyIntegrity.bytes,
+  policyText: readFileSync(projectPolicyPath, 'utf8'),
+  doesNotClearRedistribution: true,
+}
 const nonBinaryRoles = packageProfile.roles.map((role) => role.role).filter((role) => role !== 'binary-asset').sort()
 
 writeJson(reviewRepositoryPath, {
@@ -330,6 +353,7 @@ writeJson(reviewRepositoryPath, {
     bytes: rootLicenseIntegrity.bytes,
     sha256: `sha256:${rootLicenseIntegrity.sha256}`,
   },
+  projectLicenseGrant,
   classDecisions: [
     {
       classId: 'skillpilot-data',
@@ -505,7 +529,7 @@ try {
     '>=0.1.0 <1.0.0',
     'default package range accepts the stable curriculum-consumer API version 0.1.0',
   )
-  assert.equal(plan.entries.length, 48, 'fixture package entry count')
+  assert.equal(plan.entries.length, 49, 'fixture package entry count')
   assert.equal(manifestFiles(plan).length, plan.entries.length - 2, 'manifest excludes only itself and SHA256SUMS')
   assert.equal(plan.publicationReady, false, 'pending review remains non-public')
   assert.equal(plan.sourceVerificationPendingCount, 0, 'fixture explicitly omits external source-review evidence')
@@ -521,6 +545,20 @@ try {
   assert.equal(assessmentRecord?.role, 'package-documentation')
   assert.equal(assessmentRecord?.provenanceClass, 'skillpilot-authored', 'assessment path override is honored')
   assert.equal(assessmentRecord?.redistributionStatus, 'review-required')
+  const packagedReviewEntry = plan.entries.find((entry) => entry.relativePath === 'metadata/provenance/redistribution-review.json')
+  assert.ok(packagedReviewEntry?.sourcePath)
+  assert.deepEqual(JSON.parse(readFileSync(packagedReviewEntry.sourcePath, 'utf8')).projectLicenseGrant, projectLicenseGrant,
+    'the package carries the complete hash-bound owner grant without clearing pending rights')
+  assert.ok(plan.entries.some((entry) => entry.relativePath === 'LICENSE'), 'the Apache license text remains bundled')
+  const contentLicenseEntry = plan.entries.find((entry) => entry.relativePath === 'LICENSES/CC-BY-4.0.txt')
+  assert.ok(contentLicenseEntry?.sourcePath, 'the complete CC-BY-4.0 content license is bundled')
+  assert.deepEqual(readFileSync(contentLicenseEntry.sourcePath), readFileSync(resolve(realRepositoryRoot, 'LICENSES/CC-BY-4.0.txt')))
+  assert.deepEqual(plan.manifest.licenseDocuments, [
+    { licenseId: 'Apache-2.0', path: 'LICENSE' },
+    { licenseId: 'CC-BY-4.0', path: 'LICENSES/CC-BY-4.0.txt' },
+  ])
+  assert.match(plan.entries.find((entry) => entry.relativePath === 'README.md')?.content?.toString('utf8') ?? '',
+    /License for SkillPilot-owned contributions/u)
 
   assert.throws(
     () => createFullStandalonePackagePlan({
@@ -558,6 +596,28 @@ try {
   )
   writeJson(reviewRepositoryPath, originalReview)
 
+  for (const [field, value] of [
+    ['softwareLicenseExpression', 'CC-BY-4.0'],
+    ['contentLicenseExpression', 'Apache-2.0'],
+    ['contentLicenseDocument', { ...projectLicenseGrant.contentLicenseDocument, sha256: `sha256:${'0'.repeat(64)}` }],
+    ['scope', 'all-materials'],
+    ['policySha256', `sha256:${'0'.repeat(64)}`],
+    ['policyText', 'Unverified blanket permission'],
+    ['doesNotClearRedistribution', false],
+  ] as const) {
+    const invalidGrant = structuredClone(originalReview)
+    ;(invalidGrant.projectLicenseGrant as JsonObject)[field] = value
+    writeJson(reviewRepositoryPath, invalidGrant)
+    assert.throws(() => createFullStandalonePackagePlan(fixturePlanOptions), /Project (?:license grant|content license document)/iu,
+      `owner grant ${field} cannot silently broaden scope or replace checked policy text`)
+  }
+  writeJson(reviewRepositoryPath, originalReview)
+  assert.throws(() => createFullStandalonePackagePlan({
+    ...fixturePlanOptions,
+    additionalLicenseDocumentPaths: { 'CC-BY-4.0': 'LICENSE' },
+  }), /Project content license document cannot be overridden/u,
+  'the grant-bound CC text cannot be replaced with arbitrary license bytes')
+
   const originalBuildInputs = readFixtureJson<JsonObject>('tmp/release-model/metadata/build-inputs.json')
   const ghostBuildInputs = structuredClone(originalBuildInputs)
   ;(ghostBuildInputs.assessmentSources as unknown[]).push({
@@ -586,7 +646,7 @@ try {
     provenanceClass: 'user-provided-generated-claim',
     decisionStatus: 'human-approved',
     redistributionStatus: 'allowed',
-    licenseExpression: 'CC-BY-4.0',
+    licenseExpression: 'MIT',
     reviewer: 'Fixture Reviewer',
     reviewedAt: '2026-07-11T00:00:00Z',
     reviewEvidence: [{ kind: 'rights-holder-license', reference: 'fixture', sha256: null }],
@@ -599,20 +659,21 @@ try {
   writeJson(reviewRepositoryPath, approvedReview)
   assert.throws(
     () => createFullStandalonePackagePlan(fixturePlanOptions),
-    /No package-local license document input was supplied for CC-BY-4.0/iu,
+    /No package-local license document input was supplied for MIT/iu,
     'approved content cannot reference an undocumented license identifier',
   )
-  const ccLicenseRepositoryPath = 'legal/cc-by-4.0.txt'
-  writeBytes(ccLicenseRepositoryPath, 'Fixture CC-BY-4.0 license text\n')
+  const thirdPartyLicenseRepositoryPath = 'legal/mit.txt'
+  writeBytes(thirdPartyLicenseRepositoryPath, 'Fixture MIT license text\n')
   const approvedPlan = createFullStandalonePackagePlan({
     ...fixturePlanOptions,
-    additionalLicenseDocumentPaths: { 'CC-BY-4.0': ccLicenseRepositoryPath },
+    additionalLicenseDocumentPaths: { MIT: thirdPartyLicenseRepositoryPath },
   })
   assert.deepEqual(
     approvedPlan.manifest.licenseDocuments,
     [
       { licenseId: 'Apache-2.0', path: 'LICENSE' },
-      { licenseId: 'CC-BY-4.0', path: 'licenses/license-001.txt' },
+      { licenseId: 'CC-BY-4.0', path: 'LICENSES/CC-BY-4.0.txt' },
+      { licenseId: 'MIT', path: 'licenses/license-001.txt' },
     ],
     'each real license identifier resolves to one deterministic package-local document',
   )

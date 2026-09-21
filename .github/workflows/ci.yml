@@ -43,6 +43,8 @@ jobs:
           cache-dependency-path: 'ai/openai custom gpt/action-regression/package-lock.json'
       - name: Install dependencies
         run: npm --prefix "ai/openai custom gpt/action-regression" ci
+      - name: Verify own-project license declarations
+        run: node --test scripts/own_npm_licenses.test.mjs scripts/goal_visualization_license.test.mjs
       - name: Test Spring-hosted Custom GPT Action control client
         run: npm --prefix "ai/openai custom gpt/action-regression" test
       - name: Validate current Custom GPT Action Session contract

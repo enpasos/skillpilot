@@ -27,4 +27,6 @@ Open-source curriculum infrastructure for learning platforms and AI coaches.
 
 ---
 
-[Software: Apache 2.0](LICENSE) · [Legal](LEGAL.md) · [Security](docs/security/index.md)
+Our software and technical infrastructure are available under [Apache 2.0](LICENSE). Our own skill-landscape content—including curriculum data, tasks, learning cards, curated annotations, educational images, and whitepapers—is available under [CC BY 4.0](LICENSES/CC-BY-4.0.txt), to the extent we can grant the necessary rights. Third-party materials and private user data are not covered by these grants; see the [licensing scope](LICENSING.md).
+
+[Apache 2.0](LICENSE) · [CC BY 4.0](LICENSES/CC-BY-4.0.txt) · [Licensing scope](LICENSING.md) · [Legal](LEGAL.md) · [Security](docs/security/index.md)

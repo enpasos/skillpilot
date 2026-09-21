@@ -67,6 +67,23 @@ supersedes earlier plans for a parallel external ChatGPT beta.
 This document is the **long-term memory** for SkillPilot, including the skill-graph explorer.  
 It captures the *concepts and design decisions* that are **not obvious from the code alone**, so humans and LLMs can extend the project consistently across different learning domains.
 
+### Project licensing
+
+The binding Product Owner decision of 21 September 2026 is **Apache-2.0 for
+our software; CC-BY-4.0 for our knowledge-landscape content**. Follow the fixed
+allocation and boundaries in `LICENSING.md`: code, technical schemas,
+developer documentation and functional coach instructions are Apache-2.0;
+own graphs, goal texts, mappings, tasks, cards, didactic media and Whitepapers
+are CC-BY-4.0. Use function, not file extension, to classify material. Full
+texts are `LICENSE` and `LICENSES/CC-BY-4.0.txt`. No general dual licensing or
+additional per-goal license approval is required for clearly own material.
+Do not relicense third-party sources, linked provider content, dependencies,
+marks or private learner data. Provenance labels such as `AI-generated,
+SkillPilot-curated` are not licenses or proof of ownership. License grants,
+source/third-party rights checks and quality approvals remain separate.
+New exports carry applicable licenses and attribution; preserve prior grants,
+immutable published archives and historical review records.
+
 ---
 
 ## 1. Purpose of this project

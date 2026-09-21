@@ -160,11 +160,29 @@ const GOAL_VISUALIZATION_CONTRACT_RELATIVE_PATHS = [
 
 const ALLOWED_LICENSE_CATEGORIES = new Set([
   'skillpilot-software-apache-2.0',
+  // Read-only compatibility: do not rewrite previously issued package declarations.
+  'skillpilot-data-apache-2.0',
   'skillpilot-data-cc-by-4.0',
   'official-source-provenance-only',
   'generated-package-metadata',
   'goal-visualization-ai-generated-curated',
 ])
+
+export const isKnownSubjectExportLicenseCategory = (category: string) => ALLOWED_LICENSE_CATEGORIES.has(category)
+
+export const subjectExportLicenseIssues = (policy: Record<string, JsonValue>, relativePaths: ReadonlySet<string>) => {
+  // Earlier exports did not bundle a project scope notice; retain their read compatibility.
+  if (policy.projectScopePath === undefined) return []
+  const required = ['licenses/APACHE-2.0.txt', 'licenses/SKILLPILOT-LICENSING.md']
+  if (policy.defaultSkillpilotDataLicense === 'CC-BY-4.0') required.push('licenses/CC-BY-4.0.txt')
+  const issues = required
+    .filter((path) => !relativePaths.has(path))
+    .map((path) => `Missing package license document: ${path}`)
+  if (policy.projectScopePath !== 'licenses/SKILLPILOT-LICENSING.md') {
+    issues.push('Own-work license scope must reference licenses/SKILLPILOT-LICENSING.md')
+  }
+  return issues
+}
 
 const GOAL_VISUALIZATION_LICENSE_CATEGORY = 'goal-visualization-ai-generated-curated'
 const GOAL_VISUALIZATION_INDEX_PATH = 'data/resources/goal-visualizations.json'
@@ -1106,8 +1124,13 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
       unsafeManifestFilePaths.length === 0,
       unsafeManifestFilePaths.slice(0, 5).join(', ') || 'ok',
     )
-    const invalidLicenseFiles = manifestFiles.filter((file) => !ALLOWED_LICENSE_CATEGORIES.has(file.licenseCategory))
+    const invalidLicenseFiles = manifestFiles.filter((file) => !isKnownSubjectExportLicenseCategory(file.licenseCategory))
     check(checks, 'manifest-license-categories-known', invalidLicenseFiles.length === 0, invalidLicenseFiles.map((file) => file.path).join(', ') || 'ok')
+    const licenseIssues = subjectExportLicenseIssues(
+      jsonObject(manifest.licensePolicy ?? {}, 'manifest.licensePolicy'),
+      new Set(fileEntries.map((path) => path.slice(archiveRoot.length + 1))),
+    )
+    check(checks, 'declared-project-license-documents-present', licenseIssues.length === 0, licenseIssues.join(', ') || 'ok')
 
     const shaPath = packageEntryPath(archiveRoot, 'metadata/SHA256SUMS')
     const manifestFilePathSet = new Set(manifestFilePaths)

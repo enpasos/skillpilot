@@ -115,4 +115,17 @@ Participation in this project is governed by the [Code of Conduct](CODE_OF_CONDU
 
 ## Licensing
 
-The source code is licensed under Apache 2.0. By contributing you agree that your contribution is licensed under the same terms. Curriculum content carries additional constraints described in [LEGAL.md](LEGAL.md) — in particular, SkillPilot models the structure of official curricula and does not reproduce teaching materials.
+Contribute under the license for the material's area:
+
+- **Apache-2.0** for software, technical schemas, developer documentation and
+  functional coach instructions.
+- **CC-BY-4.0** for knowledge landscapes, learning materials, own didactic media
+  and Whitepapers.
+
+See [LICENSING.md](LICENSING.md) for the binding allocation. When submitting a
+contribution, confirm in the pull request or accompanying submission that you
+are entitled to contribute it under that area's license. Identify included
+third-party material and retain its license, author and source notices. Do not
+submit private learner/session/chat data or user uploads as public content.
+No separate approval of the license is needed for each clearly own learning
+goal, and no copyright assignment or general relicensing authority is implied.

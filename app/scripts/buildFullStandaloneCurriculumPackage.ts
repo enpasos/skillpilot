@@ -169,6 +169,20 @@ type RedistributionReview = {
     bytes: number
     sha256: string
   }
+  projectLicenseGrant: {
+    softwareLicenseExpression: 'Apache-2.0'
+    contentLicenseExpression: 'CC-BY-4.0'
+    contentLicenseDocument: { path: 'LICENSES/CC-BY-4.0.txt'; bytes: number; sha256: string }
+    scope: 'skillpilot-owned-contributions'
+    decisionDate: '2026-09-21'
+    decisionAuthority: 'project-owner'
+    decisionReference: 'LICENSING.md#project-rule'
+    policyPath: 'LICENSING.md'
+    policySha256: string
+    policyBytes: number
+    policyText: string
+    doesNotClearRedistribution: true
+  }
   classDecisions: ClassDecision[]
   pathClassificationOverrides: Array<{
     role: string
@@ -987,6 +1001,10 @@ This directory is the JSON runtime variant of \`${params.releaseId}\`.
 - Open source-text verification items: \`${params.sourceVerificationPendingCount}\`
 
 The package is self-contained at the file level. Consumers must validate \`metadata/manifest.json\`, \`metadata/SHA256SUMS\`, the package-local schema catalog, and all runtime closure rules before installation. A technically valid candidate with pending redistribution decisions is not approved for public release.
+
+## License for SkillPilot-owned contributions
+
+SkillPilot-owned software is licensed under Apache-2.0 (\`LICENSE\`). Our skill landscapes and educational content, including our rights in curriculum data, educational documentation and illustrations, are licensed under CC-BY-4.0 (\`LICENSES/CC-BY-4.0.txt\`). The complete current scope notice is embedded with its byte length and SHA-256 in \`metadata/provenance/redistribution-review.json\` under \`projectLicenseGrant\`. Third-party materials retain their own conditions. These grants do not clear unresolved third-party rights or change the separate whole-artifact redistribution decisions above.
 `, 'utf8')
 
 const validateManifestPlanAgainstProfile = (
@@ -1204,6 +1222,39 @@ export const createFullStandalonePackagePlan = (
     || rootLicenseIntegrity.sha256 !== withoutDigestPrefix(review.rootLicenseEvidence.sha256, 'root license evidence sha256')
   ) {
     fail('Root license evidence has drifted.')
+  }
+  const projectGrant = review.projectLicenseGrant
+  if (
+    !projectGrant
+    || projectGrant.softwareLicenseExpression !== 'Apache-2.0'
+    || projectGrant.contentLicenseExpression !== 'CC-BY-4.0'
+    || projectGrant.contentLicenseDocument?.path !== 'LICENSES/CC-BY-4.0.txt'
+    || projectGrant.scope !== 'skillpilot-owned-contributions'
+    || projectGrant.decisionDate !== '2026-09-21'
+    || projectGrant.decisionAuthority !== 'project-owner'
+    || projectGrant.decisionReference !== 'LICENSING.md#project-rule'
+    || projectGrant.policyPath !== 'LICENSING.md'
+    || projectGrant.doesNotClearRedistribution !== true
+  ) {
+    fail('Project license grant is missing or has an unsupported scope.')
+  }
+  const projectPolicyPath = resolveRepositoryFile(repositoryRoot, projectGrant.policyPath, 'project licensing policy')
+  const projectPolicyBytes = readFileSync(projectPolicyPath)
+  const projectPolicyIntegrity = fileIntegrity(projectPolicyPath)
+  if (
+    projectGrant.policyText !== projectPolicyBytes.toString('utf8')
+    || projectGrant.policyBytes !== projectPolicyIntegrity.bytes
+    || projectGrant.policySha256 !== `sha256:${projectPolicyIntegrity.sha256}`
+  ) {
+    fail('Project license grant scope policy has drifted.')
+  }
+  const contentLicensePath = resolveRepositoryFile(repositoryRoot, projectGrant.contentLicenseDocument.path, 'content license')
+  const contentLicenseIntegrity = fileIntegrity(contentLicensePath)
+  if (
+    projectGrant.contentLicenseDocument.bytes !== contentLicenseIntegrity.bytes
+    || projectGrant.contentLicenseDocument.sha256 !== `sha256:${contentLicenseIntegrity.sha256}`
+  ) {
+    fail('Project content license document has drifted.')
   }
 
   const resourceItems = arrayValue<JsonObject>(resourceIndex.resources, 'resource index resources')
@@ -1456,7 +1507,9 @@ export const createFullStandalonePackagePlan = (
   attachManifestFile(readmeEntry, requiredRole('package-documentation'), classify('package-documentation', README_PATH), { kind: 'excluded-generated' })
   addEntry(entries, readmeEntry)
 
-  const requiredLicenseIds = new Set<string>()
+  const requiredLicenseIds = new Set<string>([
+    projectGrant.softwareLicenseExpression, projectGrant.contentLicenseExpression,
+  ])
   for (const entry of entries.values()) {
     const expression = entry.manifestFile?.licenseExpression
     if (expression) parseLicenseExpression(expression).forEach((identifier) => requiredLicenseIds.add(identifier))
@@ -1467,6 +1520,7 @@ export const createFullStandalonePackagePlan = (
   const additionalLicensePaths = options.additionalLicenseDocumentPaths ?? {}
   Object.keys(additionalLicensePaths).forEach((identifier) => {
     if (!requiredLicenseIds.has(identifier)) fail(`Additional license document is orphaned: ${identifier}`)
+    if (identifier === projectGrant.contentLicenseExpression) fail('Project content license document cannot be overridden.')
   })
   const licenseDocuments: Array<{ licenseId: string; path: string }> = []
   let additionalLicenseIndex = 0
@@ -1478,6 +1532,14 @@ export const createFullStandalonePackagePlan = (
       packagePath = 'LICENSE'
       sourcePath = rootLicensePath
       decision = classify('license', packagePath)
+    } else if (identifier === projectGrant.contentLicenseExpression) {
+      packagePath = projectGrant.contentLicenseDocument.path
+      sourcePath = contentLicensePath
+      decision = {
+        licenseExpression: identifier,
+        provenanceClass: 'third-party',
+        redistributionStatus: 'allowed',
+      }
     } else {
       const repositoryPath = additionalLicensePaths[identifier]
       if (!repositoryPath) fail(`No package-local license document input was supplied for ${identifier}.`)

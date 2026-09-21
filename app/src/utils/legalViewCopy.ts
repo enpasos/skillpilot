@@ -16,7 +16,7 @@ Diese Nutzungsbedingungen regeln die Nutzung des von der enpasos - Enterprise Pa
 
 Anbieter ist die **enpasos - Enterprise Patterns & Solutions GmbH**, Heuhohlweg 42, 61462 Königstein, Deutschland. Vertretungsberechtigung, Registerangaben und Umsatzsteuer-ID stehen im [Impressum](/imprint). Kontakt für Support und rechtliche Anliegen: [support@skillpilot.com](mailto:support@skillpilot.com).
 
-Diese Bedingungen gelten für den gehosteten SkillPilot-Dienst auf skillpilot.com, insbesondere für Lernenden-, Trainer- und Explorer-Funktionen, die Verwaltung pseudonymer Lernstände sowie SkillPilot Coach v1 und andere optionale Verbindungen zu KI-Lerncoaches über die von SkillPilot betriebenen Schnittstellen. Für Quellcode, der unter der Apache License 2.0 veröffentlicht ist, gilt stattdessen diese Open-Source-Lizenz; die Regeln für den gehosteten Dienst beschränken die dort gewährten Rechte nicht.
+Diese Bedingungen gelten für den gehosteten SkillPilot-Dienst auf skillpilot.com, insbesondere für Lernenden-, Trainer- und Explorer-Funktionen, die Verwaltung pseudonymer Lernstände sowie SkillPilot Coach v1 und andere optionale Verbindungen zu KI-Lerncoaches über die von SkillPilot betriebenen Schnittstellen. Für öffentlich lizenzierte eigene Projektbeiträge gilt stattdessen die jeweilige Lizenz; die Regeln für den gehosteten Dienst beschränken die dort gewährten Rechte nicht.
 
 ## 2. Vertragsschluss und unentgeltliche Nutzung
 
@@ -53,7 +53,7 @@ Sie dürfen den gehosteten Dienst nur rechtmäßig und entsprechend seinem Lernz
 * Lernnachweise, Bewertungen oder die Herkunft von Inhalten vorsätzlich täuschend manipulieren; oder
 * den Dienst nutzen, um in einer Prüfung unerlaubte Hilfe zu erhalten oder andere zu einem Rechtsverstoß anzuleiten.
 
-Zulässige Nutzung des veröffentlichten Quellcodes nach der Apache License 2.0 bleibt hiervon unberührt.
+Zulässige Nutzung der öffentlich lizenzierten eigenen Projektbeiträge bleibt hiervon unberührt.
 
 ## 6. Eingaben und Nutzungsrechte
 
@@ -123,11 +123,18 @@ Der Betreiber darf diese Bedingungen nur aus einem sachlichen Grund ändern, ins
 
 SkillPilot verwendet Strukturen und Kompetenzbeschreibungen aus staatlichen Kerncurricula und Lehrplänen, zum Beispiel des Landes Hessen. SkillPilot bildet Lernziele und Kompetenzstrukturen auf Grundlage öffentlich zugänglicher, amtlich veröffentlichter Curricula und Ordnungen im SkillPilot-Graphen ab. Dabei können Bezeichnungen, Zuschnitte und Formulierungen angepasst werden, soweit dies für eine konsistente Nutzung im Kontext von SkillPilot erforderlich ist.
 
-SkillPilot ist keine amtliche Veröffentlichung und erhebt keinen Anspruch auf wortlautgetreue oder vollständige Wiedergabe. Maßgeblich bleiben die jeweiligen Originaldokumente; Quellen werden angegeben und verlinkt. SkillPilot übernimmt keine konkreten Vorlesungsskripte, Folien oder Unterrichtsmaterialien von Lehrenden. Abgebildet wird der Kompetenzrahmen, nicht der urheberrechtlich geschützte Inhalt einer konkreten Vermittlung.
+SkillPilot ist keine amtliche Veröffentlichung und erhebt keinen Anspruch auf wortlautgetreue oder vollständige Wiedergabe. Maßgeblich bleiben die jeweiligen Originaldokumente; Quellen werden angegeben und verlinkt. SkillPilot erstellt eigene Lernzielbeschreibungen, Aufgaben, Lernkarten und Visualisierungen. Die Einbindung oder Verlinkung externer Lehrmaterialien überträgt deren Rechte nicht auf SkillPilot; eine Quellenangabe allein ist keine Nutzungsfreigabe.
 
-## Lizenzierung des Quellcodes
+## Lizenzierung eigener Projektbeiträge
 
-Der veröffentlichte Quellcode der SkillPilot-Software ist unter der **Apache License, Version 2.0** lizenziert. Diese Lizenz betrifft die dort bezeichnete Software. Curriculumquellen, Marken, Inhalte Dritter und sonstige Materialien können eigenen rechtlichen Bedingungen unterliegen.
+Für veröffentlichte eigene Projektbeiträge gelten zwei klar zugeordnete Lizenzen, soweit entsprechende Rechte bestehen und wir sie einräumen können:
+
+- **[Apache License, Version 2.0](https://github.com/enpasos/skillpilot/blob/main/LICENSE):** Software und technische Infrastruktur, einschließlich Werkzeuge, Tests, Schemas, funktionaler Coach-Instruktionen und Entwicklerdokumentation.
+- **[Creative Commons Namensnennung 4.0 International (CC BY 4.0)](https://github.com/enpasos/skillpilot/blob/main/LICENSES/CC-BY-4.0.txt):** Eigene Skill-Landschaften und Bildungsinhalte, einschließlich Curriculumdaten, Skill-Graphen, Lernzielbeschreibungen, fachlicher Zuordnungen, Aufgaben, Lernkarten, kuratierter Linkbeschreibungen, didaktischer Medien und Whitepaper.
+
+Maßgeblich sind die jeweiligen Lizenztexte und die [Abgrenzung des Lizenzumfangs](https://github.com/enpasos/skillpilot/blob/main/LICENSING.md). Es handelt sich um eine Zuordnung nach Materialart, nicht um eine pauschale Wahl zwischen beiden Lizenzen.
+
+Diese Freigabe lizenziert keine fremden Bestandteile um: Amtliche Originalquellen, Zitate, verlinkte Anbieterinhalte, Drittanbieter-Abhängigkeiten und Marken behalten ihre jeweiligen Rechte und Bedingungen. Private Lernenden-, Session-, Chat- und sonstige Nutzerdaten sind nicht Teil der Freigabe. Herkunftsangaben, Quellenverweise oder KI-Kennzeichnungen ersetzen keine erforderliche Rechteprüfung. Die Bedingungen des gehosteten Dienstes bleiben davon getrennt.
 
 ## KI-Transparenz
 
@@ -149,7 +156,7 @@ These Terms of Use govern the SkillPilot service provided by enpasos - Enterpris
 
 The provider is **enpasos - Enterprise Patterns & Solutions GmbH**, Heuhohlweg 42, 61462 Königstein, Germany. Representation, company-register details and VAT ID are available in the [Imprint](/imprint). Contact for support and legal matters: [support@skillpilot.com](mailto:support@skillpilot.com).
 
-These Terms apply to the hosted SkillPilot service on skillpilot.com, in particular learner, trainer, and explorer features, the management of pseudonymous learning state, SkillPilot Coach v1, and other optional connections to AI learning coaches through interfaces operated by SkillPilot. Source code published under the Apache License 2.0 is governed by that open-source license instead; rules for the hosted service do not restrict the rights granted by that license.
+These Terms apply to the hosted SkillPilot service on skillpilot.com, in particular learner, trainer, and explorer features, the management of pseudonymous learning state, SkillPilot Coach v1, and other optional connections to AI learning coaches through interfaces operated by SkillPilot. Our publicly licensed own project contributions are governed by their respective licenses instead; rules for the hosted service do not restrict the rights granted by those licenses.
 
 ## 2. Contract formation and free use
 
@@ -186,7 +193,7 @@ You may use the hosted service only lawfully and for its intended learning purpo
 * intentionally manipulate learning evidence, assessments, or the provenance of content in a misleading way; or
 * use the service to obtain unauthorised help in an examination or to instruct others to violate the law.
 
-Permitted use of published source code under the Apache License 2.0 remains unaffected.
+Permitted use of our publicly licensed own project contributions remains unaffected.
 
 ## 6. Inputs and limited licence
 
@@ -256,11 +263,18 @@ The provider may change these Terms only for an objective reason, in particular 
 
 SkillPilot uses structures and competency descriptions from official core curricula and syllabi, for example those of the State of Hesse. SkillPilot models learning goals and competency structures in the SkillPilot graph based on publicly accessible, officially published curricula and regulations. Names, scopes, and wording may be adjusted where necessary for consistent use within SkillPilot.
 
-SkillPilot is not an official publication and makes no claim to reproduce the wording verbatim or in full. The original documents remain authoritative; sources are cited and linked. SkillPilot does not include specific lecture notes, slides, or teaching materials from instructors. It models the competency framework, not the copyright-protected content of a particular course or method of instruction.
+SkillPilot is not an official publication and makes no claim to reproduce the wording verbatim or in full. The original documents remain authoritative; sources are cited and linked. SkillPilot creates its own learning-goal descriptions, tasks, learning cards, and visualizations. Including or linking external teaching materials does not transfer their rights to SkillPilot; a source citation alone does not grant permission to use them.
 
-## Source-code licence
+## Licence for our own project contributions
 
-Published SkillPilot source code is licensed under the **Apache License, Version 2.0**. That licence applies to the software identified there. Curriculum sources, trademarks, third-party content, and other materials may be subject to their own legal terms.
+Two clearly assigned licenses apply to our published own project contributions, to the extent the relevant rights exist and we can grant them:
+
+- **[Apache License, Version 2.0](https://github.com/enpasos/skillpilot/blob/main/LICENSE):** Software and technical infrastructure, including tools, tests, schemas, functional coach instructions, and developer documentation.
+- **[Creative Commons Attribution 4.0 International (CC BY 4.0)](https://github.com/enpasos/skillpilot/blob/main/LICENSES/CC-BY-4.0.txt):** Our own skill landscapes and educational content, including curriculum data, skill graphs, learning-goal descriptions, subject mappings, tasks, learning cards, curated link descriptions, educational media, and whitepapers.
+
+The respective license texts and the [licensing scope](https://github.com/enpasos/skillpilot/blob/main/LICENSING.md) govern these grants. This is an assignment by material type, not a blanket choice between both licenses.
+
+This grant does not relicense third-party components: official source documents, quotations, linked provider content, third-party dependencies, and trademarks retain their respective rights and terms. Private learner, session, chat, and other user data are not part of this grant. Provenance, source references, and AI labels do not replace any required rights review. The terms of the hosted service remain separate.
 
 ## AI Transparency
 

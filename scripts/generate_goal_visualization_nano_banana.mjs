@@ -60,6 +60,8 @@ function usage() {
     '  --description <text>       Optional resourceLink description.',
     '  --alt-text <text>          Optional resourceLink alt text.',
     '  --review-status <status>   Default: pilot.',
+    `  --license <text>           Own-work license. Default: ${DEFAULT_LICENSE} (LICENSING.md).`,
+    '                            Third-party material retains its applicable rights; override explicitly.',
     '  --no-import                Save generated image only; do not update canonical JSON.',
     '  --dry-run                  Write prompt/request package only; do not call the API.',
   ].join('\n')

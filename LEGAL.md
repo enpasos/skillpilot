@@ -1,10 +1,10 @@
 # Rechtliche Hinweise (Legal Notice)
 
-**Aktualisiert: 13. September 2026.** Für den gehosteten Dienst gelten die
+**Aktualisiert: 21. September 2026.** Für den gehosteten Dienst gelten die
 [Nutzungsbedingungen](https://skillpilot.com/legal) (Version 1.1.0) und die
 [Datenschutzerklärung](https://skillpilot.com/privacy), jeweils auf Deutsch und
 Englisch. Die laufende Lern-Beta nutzt Claude; eine reguläre ChatGPT-Verbindung
-ist derzeit nicht verfügbar. Die Open-Source-Lizenz des Quellcodes ist von den
+ist derzeit nicht verfügbar. Die Lizenz der veröffentlichten eigenen Projektbeiträge ist von den
 Bedingungen des gehosteten Dienstes getrennt.
 
 ## Nutzung von Curricula und Lehrplänen
@@ -17,26 +17,19 @@ SkillPilot bildet Lernziele und Kompetenzstrukturen auf Grundlage öffentlich zu
 
 SkillPilot ist keine amtliche Veröffentlichung und erhebt keinen Anspruch auf wortlautgetreue oder vollständige Wiedergabe. Maßgeblich bleiben die jeweiligen Originaldokumente; die Quellen werden angegeben und verlinkt.
 
-**Keine Übernahme von Lehrmaterialien:**
-SkillPilot enthält **keine konkreten Vorlesungsskripte, Folien oder Unterrichtsmaterialien** von Lehrenden. Die Vermittlung der Inhalte erfolgt ausschließlich durch die jeweiligen Lehrer:innen, Professor:innen oder generativ durch die KI. Wir bilden lediglich den Rahmen (das "Was") ab, nicht den urheberrechtlich geschützten Inhalt der Vermittlung (das "Wie").
+**Eigene Inhalte und Fremdmaterialien:**
+SkillPilot erstellt eigene Lernzielbeschreibungen, Aufgaben, Lernkarten und Visualisierungen. Die Einbindung oder Verlinkung externer Lehrmaterialien überträgt deren Rechte nicht auf SkillPilot. Originalquellen, übernommene Auszüge und sonstige Drittinhalte behalten ihre jeweiligen Bedingungen; eine Quellenangabe allein ist keine Nutzungsfreigabe.
 
-## Lizenzierung des Quellcodes
+## Lizenzierung eigener Projektbeiträge
 
-Der Quellcode dieses Projekts (SkillPilot Software) ist unter der **Apache License, Version 2.0** lizenziert.
+Für veröffentlichte eigene Projektbeiträge gelten zwei klar zugeordnete Lizenzen, soweit entsprechende Rechte bestehen und wir sie einräumen können:
 
-> Licensed under the Apache License, Version 2.0 (the "License");
-> you may not use this file except in compliance with the License.
-> You may obtain a copy of the License at
->
-> http://www.apache.org/licenses/LICENSE-2.0
->
-> Unless required by applicable law or agreed to in writing, software
-> distributed under the License is distributed on an "AS IS" BASIS,
-> WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-> See the License for the specific language governing permissions and
-> limitations under the License.
+- **[Apache License, Version 2.0](LICENSE):** Software und technische Infrastruktur, einschließlich Werkzeuge, Tests, Schemas, funktionaler Coach-Instruktionen und Entwicklerdokumentation.
+- **[Creative Commons Namensnennung 4.0 International (CC BY 4.0)](LICENSES/CC-BY-4.0.txt):** Eigene Skill-Landschaften und Bildungsinhalte, einschließlich Curriculumdaten, Skill-Graphen, Lernzielbeschreibungen, fachlicher Zuordnungen, Aufgaben, Lernkarten, kuratierter Linkbeschreibungen, didaktischer Medien und Whitepaper.
 
-Dies betrifft die unter dieser Lizenz veröffentlichte Software. Curriculumquellen, Marken, Inhalte Dritter und sonstige Materialien können eigenen rechtlichen Bedingungen unterliegen; ihre öffentliche Zugänglichkeit begründet für sich allein keine pauschale Nutzungsfreigabe.
+Maßgeblich sind die jeweiligen Lizenztexte und die [Abgrenzung des Lizenzumfangs](LICENSING.md). Es handelt sich um eine Zuordnung nach Materialart, nicht um eine pauschale Wahl zwischen beiden Lizenzen.
+
+Diese Freigabe lizenziert keine fremden Bestandteile um: Amtliche Originalquellen, Zitate, verlinkte Anbieterinhalte, Drittanbieter-Abhängigkeiten und Marken behalten ihre jeweiligen Rechte und Bedingungen. Private Lernenden-, Session-, Chat- und sonstige Nutzerdaten sind nicht Teil der Freigabe. Herkunftsangaben, Quellenverweise oder KI-Kennzeichnungen ersetzen keine erforderliche Rechteprüfung.
 
 ## KI-Transparenz
 
@@ -96,7 +89,7 @@ Für **Trainer:innen/Lehrende**:
 
 ### 6. Haftung und Gewährleistung
 
-Die gesetzlichen Rechte bei Mängeln und sonstige zwingende Verbraucherrechte bleiben unberührt. Für den gehosteten Dienst gilt die differenzierte Haftungsregelung in Abschnitt 12 der [Nutzungsbedingungen](https://skillpilot.com/legal), insbesondere die unbeschränkte Haftung bei Vorsatz, grober Fahrlässigkeit und schuldhafter Verletzung von Leben, Körper oder Gesundheit. Diese Repository-Hinweise schaffen keinen zusätzlichen Haftungsausschluss. Die Gewährleistungsregelungen der Apache License 2.0 für den veröffentlichten Quellcode bleiben getrennt davon anwendbar.
+Die gesetzlichen Rechte bei Mängeln und sonstige zwingende Verbraucherrechte bleiben unberührt. Für den gehosteten Dienst gilt die differenzierte Haftungsregelung in Abschnitt 12 der [Nutzungsbedingungen](https://skillpilot.com/legal), insbesondere die unbeschränkte Haftung bei Vorsatz, grober Fahrlässigkeit und schuldhafter Verletzung von Leben, Körper oder Gesundheit. Diese Repository-Hinweise schaffen keinen zusätzlichen Haftungsausschluss. Die Gewährleistungsregelungen der jeweiligen öffentlichen Lizenz für die unter ihr veröffentlichten Projektbeiträge bleiben getrennt davon anwendbar.
 
 ### 7. Verantwortungsvolle Nutzung
 

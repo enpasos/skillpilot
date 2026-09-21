@@ -207,7 +207,7 @@ The independent subject-package validator checks:
 
 Its JSON and Markdown reports record the SHA-256 of the outer ZIP container. The validator hashes that ZIP before and after all `zipinfo`/`unzip` checks and fails if the bytes change during validation.
 
-The category `goal-visualization-ai-generated-curated` records provenance and curation status. It is deliberately not treated as an SPDX identifier or an automatic CC BY grant.
+The category `goal-visualization-ai-generated-curated` records provenance and curation status, not a license or proof of ownership. CC-BY-4.0 applies to SkillPilot's own rights in this educational content under [`LICENSING.md`](https://github.com/enpasos/skillpilot/blob/main/LICENSING.md); software and technical schemas use Apache-2.0. Third-party rights and separate redistribution decisions remain unaffected.
 
 ## Image Representation in RDF
 

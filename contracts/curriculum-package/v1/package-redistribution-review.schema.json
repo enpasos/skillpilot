@@ -14,6 +14,7 @@
     "sourceReleaseModel",
     "targetReleaseProfile",
     "rootLicenseEvidence",
+    "projectLicenseGrant",
     "classDecisions",
     "pathClassificationOverrides",
     "assetSetSha256",
@@ -123,6 +124,40 @@
         "sha256": {
           "$ref": "#/$defs/sha256Digest"
         }
+      }
+    },
+    "projectLicenseGrant": {
+      "description": "The owner's Apache-2.0 software grant and CC-BY-4.0 grant for SkillPilot-owned skill landscapes and educational content, including owned portions of data, documentation and illustrations. This does not decide third-party rights or change any redistribution decision.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "softwareLicenseExpression", "contentLicenseExpression", "contentLicenseDocument",
+        "scope", "decisionDate", "decisionAuthority",
+        "decisionReference", "policyPath", "policySha256", "policyBytes",
+        "policyText", "doesNotClearRedistribution"
+      ],
+      "properties": {
+        "softwareLicenseExpression": { "const": "Apache-2.0" },
+        "contentLicenseExpression": { "const": "CC-BY-4.0" },
+        "contentLicenseDocument": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "bytes", "sha256"],
+          "properties": {
+            "path": { "const": "LICENSES/CC-BY-4.0.txt" },
+            "bytes": { "type": "integer", "minimum": 1, "maximum": 100000 },
+            "sha256": { "$ref": "#/$defs/sha256Digest" }
+          }
+        },
+        "scope": { "const": "skillpilot-owned-contributions" },
+        "decisionDate": { "const": "2026-09-21" },
+        "decisionAuthority": { "const": "project-owner" },
+        "decisionReference": { "const": "LICENSING.md#project-rule" },
+        "policyPath": { "const": "LICENSING.md" },
+        "policySha256": { "$ref": "#/$defs/sha256Digest" },
+        "policyBytes": { "type": "integer", "minimum": 1, "maximum": 100000 },
+        "policyText": { "type": "string", "minLength": 1, "maxLength": 100000 },
+        "doesNotClearRedistribution": { "const": true }
       }
     },
     "classDecisions": {
@@ -749,7 +784,9 @@
                 "enum": [
                   "AI-assisted repository-native visualization; redistribution review required",
                   "Repository-native, SkillPilot-curated (AI-assisted)",
-                  "AI-generated, SkillPilot-curated"
+                  "AI-generated, SkillPilot-curated",
+                  "Apache-2.0",
+                  "CC-BY-4.0"
                 ]
               },
               "provenanceSource": {"const": "provider-pipeline-claim"},
@@ -774,7 +811,7 @@
             ],
             "properties": {
               "legacyLicenseNote": {
-                "const": "SkillPilot-authored"
+                "enum": ["SkillPilot-authored", "Apache-2.0", "CC-BY-4.0"]
               },
               "provenanceSource": {
                 "const": "hash-bound-skillpilot-source-render"

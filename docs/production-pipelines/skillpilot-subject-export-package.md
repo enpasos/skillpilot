@@ -205,7 +205,9 @@ Important paths:
 - `data/dependencies/external-goal-references.json`: declared cross-subject goal references outside this subject package.
 - `data/sources/source-index.json`: index for referenced official sources, including official HTTP(S) source URLs.
 - `data/sources/source-goal-references.json`: source-goal reference index for review mapping IDs, source text anchors, source locators, source text hashes, and official document URLs.
-- `licenses/APACHE-2.0.txt`: SkillPilot repository license text.
+- `licenses/APACHE-2.0.txt`: license text for SkillPilot software and technical schemas.
+- `licenses/CC-BY-4.0.txt`: license text for SkillPilot's own knowledge-landscape content.
+- `licenses/SKILLPILOT-LICENSING.md`: binding allocation and third-party boundaries.
 - `schemas/`: JSON schemas for the exported structures.
 - `metadata/quality/memory-card-review/`: package-local memory-card review reports and JSONL decision ledgers where configured.
 - `metadata/manifest.json`: package metadata, source commit, coverage, checksums, file categories, and license categories.
@@ -219,6 +221,12 @@ The sibling release report is not part of the ZIP. It is the publication-facing 
 
 ## License Handling
 
+SkillPilot's own software and technical schemas use Apache-2.0; our own
+knowledge-landscape content uses CC-BY-4.0, as specified in
+[`LICENSING.md`](https://github.com/enpasos/skillpilot/blob/main/LICENSING.md). Content includes our curriculum data,
+learning materials and rights in didactic illustrations. Third-party material
+retains its own terms.
+
 Handling stays file-based and automatic:
 
 - `LICENSE.md` explains the package-level license split.
@@ -231,7 +239,7 @@ Current categories:
 - `skillpilot-data-cc-by-4.0`: SkillPilot-authored skill graph, views, mappings, dependency declarations, cards, and memory-card review decisions.
 - `official-source-provenance-only`: source references, source index records, and source-goal reference material attributable to the original official publishers.
 - `generated-package-metadata`: generated manifest, checksums, package README, license, notice, and legal notes.
-- `goal-visualization-ai-generated-curated`: AI-generated image assets selected and curated by SkillPilot. This provenance category is not an SPDX identifier and does not itself grant CC BY; the per-asset license note remains in `data/resources/goal-visualizations.json`.
+- `goal-visualization-ai-generated-curated`: AI-generated image assets selected and curated by SkillPilot. This provenance category is not an SPDX identifier or proof of ownership. The CC-BY-4.0 content grant applies to our own rights; it does not clear third-party rights. Per-asset license notes remain in `data/resources/goal-visualizations.json`.
 
 There is only one release package. It writes official source document references to `data/sources/source-index.json` and mapping-level source-goal references to `data/sources/source-goal-references.json`. Review mappings and canonical data keep mapping decisions and graph structure; repository-local paths and generated rationales are excluded from the package copy.
 
