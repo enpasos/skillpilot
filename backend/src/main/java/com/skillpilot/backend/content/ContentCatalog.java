@@ -28,20 +28,39 @@ public final class ContentCatalog {
 
     public record Index(int schemaVersion, List<String> packages) {}
     public record Provider(String name, String url, String relationship) {}
+    public record Curator(String name, String url) {}
     public record Review(String checkedAt, String authority, String rationale) {}
     public record Material(
             String id, String title, String titleEn, String url, String resourceType,
             String language, String status, List<String> goalIds, List<String> sections,
-            Review review) {}
+            Review review, Provider provider) {
+        /** Single-provider packages keep their existing authoring and construction contract. */
+        public Material(String id, String title, String titleEn, String url, String resourceType,
+                String language, String status, List<String> goalIds, List<String> sections,
+                Review review) {
+            this(id, title, titleEn, url, resourceType, language, status, goalIds, sections, review, null);
+        }
+    }
     public record ContentPackage(
             int schemaVersion, String packageId, String version, String title, String titleEn,
             String description, String descriptionEn, Provider provider, String access,
-            String aiUsage, String status, List<Material> materials) {}
+            String aiUsage, String status, List<Material> materials, Curator curator) {
+        public ContentPackage(int schemaVersion, String packageId, String version, String title, String titleEn,
+                String description, String descriptionEn, Provider provider, String access,
+                String aiUsage, String status, List<Material> materials) {
+            this(schemaVersion, packageId, version, title, titleEn, description, descriptionEn,
+                    provider, access, aiUsage, status, materials, null);
+        }
+    }
     public record PackageDescriptor(
             String packageId, String version, String title, String description,
             String providerName, String providerUrl, String access, String aiUsage,
-            int materialCount) {}
-    public record MatchedMaterial(ContentPackage contentPackage, Material material) {}
+            int materialCount, String curatorName, String curatorUrl) {}
+    public record MatchedMaterial(ContentPackage contentPackage, Material material) {
+        public Provider provider() {
+            return material.provider() == null ? contentPackage.provider() : material.provider();
+        }
+    }
 
     private final List<ContentPackage> contentPackages;
 
@@ -89,7 +108,9 @@ public final class ContentCatalog {
                         item.packageId(), item.version(), localized(item.title(), item.titleEn(), locale),
                         localized(item.description(), item.descriptionEn(), locale),
                         item.provider().name(), item.provider().url(), item.access(), item.aiUsage(),
-                        (int) item.materials().stream().filter(material -> "active".equals(material.status())).count()))
+                        (int) item.materials().stream().filter(material -> "active".equals(material.status())).count(),
+                        item.curator() == null ? null : item.curator().name(),
+                        item.curator() == null ? null : item.curator().url()))
                 .toList();
     }
 
@@ -127,7 +148,6 @@ public final class ContentCatalog {
                     || !item.version().matches("[0-9]+\\.[0-9]+\\.[0-9]+")
                     || !Set.of("active", "inactive").contains(item.status() == null ? "" : item.status())
                     || !"public-link".equals(item.access()) || !"link-only".equals(item.aiUsage())
-                    || item.provider() == null || !"independent-mapping".equals(item.provider().relationship())
                     || item.materials() == null || item.materials().size() > MAX_MATERIALS_PER_PACKAGE) {
                 throw new IllegalArgumentException("Invalid content package");
             }
@@ -135,8 +155,11 @@ public final class ContentCatalog {
             requireOptionalText(item.titleEn(), 200);
             requireText(item.description(), 1000);
             requireOptionalText(item.descriptionEn(), 1000);
-            requireText(item.provider().name(), 200);
-            URI provider = requirePublicUrl(item.provider().url());
+            URI packageProvider = requireProvider(item.provider());
+            if (item.curator() != null) {
+                requireText(item.curator().name(), 200);
+                requirePublicUrl(item.curator().url());
+            }
             List<Material> materials = new ArrayList<>();
             Set<String> materialIds = new HashSet<>();
             for (Material material : item.materials()) {
@@ -153,6 +176,7 @@ public final class ContentCatalog {
                 requireText(material.title(), 300);
                 requireOptionalText(material.titleEn(), 300);
                 URI link = requirePublicUrl(material.url());
+                URI provider = material.provider() == null ? packageProvider : requireProvider(material.provider());
                 if (!link.getHost().equalsIgnoreCase(provider.getHost())) {
                     throw new IllegalArgumentException("Content link outside declared provider");
                 }
@@ -173,17 +197,26 @@ public final class ContentCatalog {
                 requireText(material.review().rationale(), 2000);
                 materials.add(new Material(material.id(), material.title(), material.titleEn(), material.url(),
                         material.resourceType(), material.language(), material.status(),
-                        List.copyOf(material.goalIds()), List.copyOf(material.sections()), material.review()));
+                        List.copyOf(material.goalIds()), List.copyOf(material.sections()), material.review(),
+                        material.provider()));
             }
             validated.add(new ContentPackage(item.schemaVersion(), item.packageId(), item.version(),
                     item.title(), item.titleEn(), item.description(), item.descriptionEn(), item.provider(),
-                    item.access(), item.aiUsage(), item.status(), List.copyOf(materials)));
+                    item.access(), item.aiUsage(), item.status(), List.copyOf(materials), item.curator()));
         }
         return List.copyOf(validated);
     }
 
     private static boolean identifier(String value) {
         return value != null && value.matches("[a-z0-9][a-z0-9-]{0,79}");
+    }
+
+    private static URI requireProvider(Provider provider) {
+        if (provider == null || !"independent-mapping".equals(provider.relationship())) {
+            throw new IllegalArgumentException("Invalid content provider");
+        }
+        requireText(provider.name(), 200);
+        return requirePublicUrl(provider.url());
     }
 
     private static URI requirePublicUrl(String value) {

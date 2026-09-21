@@ -15,6 +15,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.springframework.core.io.ClassPathResource;
 
 class ContentCatalogTest {
     @Test
@@ -30,10 +31,12 @@ class ContentCatalogTest {
     @Test
     void bundledCatalogExpandsPhysicsWithoutChangingTheExistingSelectionId() {
         ContentCatalog catalog = new ContentCatalog(new ObjectMapper());
-        assertThat(catalog.packages("de")).hasSize(1);
-        assertThat(catalog.packages("de").getFirst().packageId()).isEqualTo("physik-libre-gymnasium");
-        assertThat(catalog.packages("de").getFirst().materialCount()).isGreaterThan(4);
-        assertThat(catalog.packages("en").getFirst().title()).isEqualTo("Physik Libre – Physics explained");
+        assertThat(catalog.packages("de").stream()
+                .filter(item -> item.packageId().equals("physik-libre-gymnasium")))
+                .singleElement().satisfies(item -> assertThat(item.materialCount()).isGreaterThan(4));
+        assertThat(catalog.packages("en").stream()
+                .filter(item -> item.packageId().equals("physik-libre-gymnasium")))
+                .singleElement().satisfies(item -> assertThat(item.title()).isEqualTo("Physik Libre – Physics explained"));
         assertThat(catalog.materialsForGoal(Set.of("physik-libre-gymnasium"),
                 "d67502e3-5e0a-595b-a24b-65b1c40de36e").getFirst().material().url())
                 .isEqualTo("https://physikbuch.schule/motion-capture.html#motion-analysis");
@@ -46,6 +49,116 @@ class ContentCatalogTest {
                     .as("new topic for an already selected package: %s", goalId).isNotEmpty();
             assertThat(catalog.materialsForGoal(Set.of(), goalId)).isEmpty();
         }
+    }
+
+    @Test
+    void bundledCuratedMathematicsSelectionUsesMaterialProvidersAndRemainsGoalSpecific() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        ContentCatalog catalog = new ContentCatalog(mapper);
+        ContentCatalog.ContentPackage mathematics;
+        try (var input = new ClassPathResource("content/enpasos-mathe/1.0.0/package.json").getInputStream()) {
+            mathematics = mapper.readValue(input, ContentCatalog.ContentPackage.class);
+        }
+        assertThat(catalog.packages("de").stream()
+                .filter(item -> item.packageId().equals("enpasos-mathe-oberstufe")))
+                .singleElement().satisfies(item -> {
+                    assertThat(item.providerName()).isNotEqualTo("enpasos");
+                    assertThat(item.curatorName()).isEqualTo("enpasos");
+                    assertThat(item.materialCount()).isGreaterThanOrEqualTo(6);
+                });
+        assertThat(mathematics.materials()).hasSizeGreaterThanOrEqualTo(6);
+        for (ContentCatalog.Material material : mathematics.materials()) {
+            for (String goalId : material.goalIds()) {
+                assertThat(catalog.materialsForGoal(Set.of(mathematics.packageId()), goalId))
+                        .anySatisfy(match -> {
+                            assertThat(match.material().id()).isEqualTo(material.id());
+                            assertThat(match.provider()).isEqualTo(material.provider() == null
+                                    ? mathematics.provider() : material.provider());
+                        });
+                assertThat(catalog.materialsForGoal(Set.of(), goalId)).isEmpty();
+                assertThat(catalog.materialsForGoal(Set.of("physik-libre-gymnasium"), goalId)).isEmpty();
+            }
+        }
+        assertThat(catalog.materialsForGoal(Set.of(mathematics.packageId()), "unmapped")).isEmpty();
+        assertThat(catalog.materialsForGoal(Set.of(mathematics.packageId()),
+                "d67502e3-5e0a-595b-a24b-65b1c40de36e")).isEmpty();
+    }
+
+    @Test
+    void originalPackageWithoutMaterialProvidersRetainsProviderFallback() throws Exception {
+        ContentCatalog.ContentPackage original;
+        try (var input = new ClassPathResource("content/physik-libre/1.0.0/package.json").getInputStream()) {
+            original = new ObjectMapper().readValue(input, ContentCatalog.ContentPackage.class);
+        }
+        ContentCatalog catalog = new ContentCatalog(List.of(original));
+        assertThat(original.materials()).allSatisfy(material -> assertThat(material.provider()).isNull());
+        assertThat(catalog.packages("de")).singleElement().satisfies(item -> {
+            assertThat(item.curatorName()).isNull();
+            assertThat(item.curatorUrl()).isNull();
+        });
+        assertThat(catalog.materialsForGoal(Set.of(original.packageId()),
+                "d67502e3-5e0a-595b-a24b-65b1c40de36e"))
+                .singleElement().satisfies(match -> assertThat(match.provider()).isEqualTo(original.provider()));
+    }
+
+    @Test
+    void curatedPackageAllowsSeveralDeclaredProvidersAndPreservesHostBinding() {
+        ContentCatalog.ContentPackage curated = mixedProviderPackage();
+        ContentCatalog catalog = new ContentCatalog(List.of(curated));
+        assertThat(catalog.packages("de")).singleElement().satisfies(item -> {
+            assertThat(item.providerName()).isEqualTo("Package provider");
+            assertThat(item.curatorName()).isEqualTo("Curator");
+            assertThat(item.curatorUrl()).isEqualTo("https://curator.example/");
+        });
+        assertThat(catalog.materialsForGoal(Set.of(curated.packageId()), "goal-a"))
+                .extracting(match -> match.provider().name()).containsExactly("Provider one", "Provider two");
+        for (ContentCatalog.Provider invalid : List.of(
+                new ContentCatalog.Provider("Provider", "https://curator.example/", "independent-mapping"),
+                new ContentCatalog.Provider("Provider", "http://one.example/", "independent-mapping"),
+                new ContentCatalog.Provider("Provider", "https://one.example/?learnerId=private", "independent-mapping"),
+                new ContentCatalog.Provider("Provider", "https://user:secret@one.example/", "independent-mapping"),
+                new ContentCatalog.Provider("", "https://one.example/", "independent-mapping"),
+                new ContentCatalog.Provider(null, "https://one.example/", "independent-mapping"),
+                new ContentCatalog.Provider("Provider", null, "independent-mapping"),
+                new ContentCatalog.Provider("Provider", "https://one.example/", "official-partner"),
+                new ContentCatalog.Provider("Provider", "https://one.example/", null))) {
+            assertThatThrownBy(() -> new ContentCatalog(List.of(curatedWithFirstProvider(invalid))))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+        assertThatThrownBy(() -> new ContentCatalog(List.of(curatedWithFirstProvider(null))))
+                .as("missing material provider falls back to the package provider, not unrestricted hosts")
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void curatorMetadataUsesTheSamePublicMetadataAndUrlBoundaries() {
+        ContentCatalog.ContentPackage original = mixedProviderPackage();
+        for (ContentCatalog.Curator invalid : List.of(
+                new ContentCatalog.Curator("", "https://curator.example/"),
+                new ContentCatalog.Curator(null, "https://curator.example/"),
+                new ContentCatalog.Curator("c".repeat(201), "https://curator.example/"),
+                new ContentCatalog.Curator("Curator", null),
+                new ContentCatalog.Curator("Curator", "http://curator.example/"),
+                new ContentCatalog.Curator("Curator", "https://curator.example/?learnerId=private"))) {
+            assertThatThrownBy(() -> new ContentCatalog(List.of(new ContentCatalog.ContentPackage(
+                    original.schemaVersion(), original.packageId(), original.version(), original.title(),
+                    original.titleEn(), original.description(), original.descriptionEn(), original.provider(),
+                    original.access(), original.aiUsage(), original.status(), original.materials(), invalid))))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+    @Test
+    void unknownMaterialProviderFieldsAreNotSilentlyAcceptedByTheCatalogMapper() {
+        assertThatThrownBy(() -> new ObjectMapper().readValue("""
+                {"id":"lesson", "provider":{"name":"Provider", "url":"https://one.example/",
+                "relationship":"independent-mapping", "skillpilotId":"private"}}
+                """, ContentCatalog.Material.class))
+                .isInstanceOf(IOException.class);
+        assertThatThrownBy(() -> new ObjectMapper().readValue("""
+                {"curator":{"name":"Curator", "url":"https://curator.example/", "skillpilotId":"private"}}
+                """, ContentCatalog.ContentPackage.class))
+                .isInstanceOf(IOException.class);
     }
 
     @Test
@@ -110,6 +223,31 @@ class ContentCatalogTest {
                 "public-link", "link-only", status,
                 List.of(new ContentCatalog.Material("lesson", "Lektion", "Lesson", url,
                         "article", "de", materialStatus, List.of(goalId), List.of("Section"), review())));
+    }
+
+    static ContentCatalog.ContentPackage mixedProviderPackage() {
+        return new ContentCatalog.ContentPackage(1, "curated-package", "1.0.0", "Title", null,
+                "Description", null,
+                new ContentCatalog.Provider("Package provider", "https://provider.example/", "independent-mapping"),
+                "public-link", "link-only", "active", List.of(
+                        new ContentCatalog.Material("first", "First", null, "https://one.example/activity",
+                                "simulation", "de", "active", List.of("goal-a"), List.of(), review(),
+                                new ContentCatalog.Provider("Provider one", "https://one.example/", "independent-mapping")),
+                        new ContentCatalog.Material("second", "Second", null, "https://two.example/activity",
+                                "simulation", "de", "active", List.of("goal-a"), List.of(), review(),
+                                new ContentCatalog.Provider("Provider two", "https://two.example/", "independent-mapping"))),
+                new ContentCatalog.Curator("Curator", "https://curator.example/"));
+    }
+
+    private static ContentCatalog.ContentPackage curatedWithFirstProvider(ContentCatalog.Provider provider) {
+        ContentCatalog.ContentPackage original = mixedProviderPackage();
+        ContentCatalog.Material first = original.materials().getFirst();
+        return new ContentCatalog.ContentPackage(original.schemaVersion(), original.packageId(), original.version(),
+                original.title(), original.titleEn(), original.description(), original.descriptionEn(),
+                original.provider(), original.access(), original.aiUsage(), original.status(),
+                List.of(new ContentCatalog.Material(first.id(), first.title(), first.titleEn(), first.url(),
+                        first.resourceType(), first.language(), first.status(), first.goalIds(), first.sections(),
+                        first.review(), provider)));
     }
 
     private static ContentCatalog.Review review() {

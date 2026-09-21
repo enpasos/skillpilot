@@ -43,9 +43,17 @@ export function validatePublicUrl(value) {
   return url
 }
 
+function validateProvider(provider) {
+  keys(provider, ['name', 'url', 'relationship'], 'provider')
+  text(provider.name, 'provider.name', 200)
+  const url = validatePublicUrl(provider.url)
+  assert.equal(provider.relationship, 'independent-mapping', 'No implicit provider endorsement')
+  return url
+}
+
 export function validatePackage(pkg, goalIds) {
   keys(pkg, ['schemaVersion', 'packageId', 'version', 'title', 'titleEn', 'description',
-    'descriptionEn', 'provider', 'access', 'aiUsage', 'status', 'materials'], 'package')
+    'descriptionEn', 'provider', 'curator', 'access', 'aiUsage', 'status', 'materials'], 'package')
   assert.equal(pkg.schemaVersion, 1, 'package schema version')
   text(pkg.packageId, 'packageId', 80)
   assert(/^[a-z\d][a-z\d-]{0,79}$/.test(pkg.packageId), 'packageId: invalid identifier')
@@ -54,10 +62,12 @@ export function validatePackage(pkg, goalIds) {
   optionalText(pkg.titleEn, 'titleEn', 200)
   text(pkg.description, 'description', 1000)
   optionalText(pkg.descriptionEn, 'descriptionEn', 1000)
-  keys(pkg.provider, ['name', 'url', 'relationship'], 'provider')
-  text(pkg.provider.name, 'provider.name', 200)
-  const providerUrl = validatePublicUrl(pkg.provider.url)
-  assert.equal(pkg.provider.relationship, 'independent-mapping', 'No implicit provider endorsement')
+  const providerUrl = validateProvider(pkg.provider)
+  if (pkg.curator != null) {
+    keys(pkg.curator, ['name', 'url'], 'curator')
+    text(pkg.curator.name, 'curator.name', 200)
+    validatePublicUrl(pkg.curator.url)
+  }
   assert.equal(pkg.access, 'public-link', 'Only public links in pilot')
   assert.equal(pkg.aiUsage, 'link-only', 'No content access authorization in pilot')
   status(pkg.status, 'package')
@@ -65,7 +75,7 @@ export function validatePackage(pkg, goalIds) {
   const seen = new Set()
   for (const material of pkg.materials) {
     keys(material, ['id', 'title', 'titleEn', 'url', 'resourceType', 'language', 'status', 'goalIds',
-      'sections', 'review'], 'material')
+      'sections', 'review', 'provider'], 'material')
     text(material.id, 'material.id', 80)
     assert(/^[a-z\d][a-z\d-]{0,79}$/.test(material.id), 'material.id: invalid identifier')
     assert(!seen.has(material.id), `Duplicate material ${material.id}`)
@@ -73,7 +83,8 @@ export function validatePackage(pkg, goalIds) {
     text(material.title, 'material.title', 300)
     optionalText(material.titleEn, 'material.titleEn', 300)
     const materialUrl = validatePublicUrl(material.url)
-    assert.equal(materialUrl.hostname, providerUrl.hostname, 'Material link outside declared provider')
+    const effectiveProviderUrl = material.provider == null ? providerUrl : validateProvider(material.provider)
+    assert.equal(materialUrl.hostname, effectiveProviderUrl.hostname, 'Material link outside declared provider')
     assert(['article', 'simulation'].includes(material.resourceType),
       'Unsupported material kind')
     assert(/^[a-z]{2}(?:-[A-Z]{2})?$/.test(material.language), 'Invalid material language')

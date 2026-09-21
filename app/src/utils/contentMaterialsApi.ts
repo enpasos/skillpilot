@@ -7,6 +7,8 @@ export interface ContentPackage {
   description: string
   providerName: string
   providerUrl: string
+  curatorName?: string
+  curatorUrl?: string
   access: string
   aiUsage: string
   materialCount: number
@@ -94,6 +96,8 @@ export const parseContentSelection = (value: unknown): ContentSelection => {
         description: text(item.description),
         providerName: text(item.providerName),
         providerUrl: safeMaterialUrl(item.providerUrl),
+        ...(item.curatorName == null ? {} : { curatorName: text(item.curatorName) }),
+        ...(item.curatorUrl == null ? {} : { curatorUrl: safeMaterialUrl(item.curatorUrl) }),
         access: text(item.access),
         aiUsage: text(item.aiUsage),
         materialCount: Number(item.materialCount),

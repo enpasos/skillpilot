@@ -2,7 +2,7 @@
 
 This document distinguishes curriculum provenance, SkillPilot-owned visualization
 assets, and optional external learning materials. The binding target is the
-[Content Integration Architecture](content-integration.md), version 1.0:
+[Content Integration Architecture](content-integration.md), version 1.1:
 **content references the curriculum; the curriculum does not select providers.**
 
 Graph semantics, placements and views are specified separately in

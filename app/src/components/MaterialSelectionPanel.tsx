@@ -132,7 +132,9 @@ const ScopedMaterialSelectionPanel = ({ skillpilotId, language, onSaved, onSavin
                 <span className="block font-semibold">{item.title}</span>
                 <span className="mt-1 block text-text-secondary">{item.description}</span>
                 <span className="mt-2 block text-xs text-text-secondary">
-                  {item.providerName} · {item.materialCount} {de ? 'Materialien' : 'materials'} · Version {item.version}
+                  {item.curatorName
+                    ? `${de ? 'Zusammengestellt von' : 'Curated by'} ${item.curatorName}`
+                    : item.providerName} · {item.materialCount} {de ? 'Materialien' : 'materials'} · Version {item.version}
                 </span>
                 <span className="mt-1 block text-xs text-text-secondary">
                   {item.access === 'public-link'

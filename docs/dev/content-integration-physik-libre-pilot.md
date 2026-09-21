@@ -35,7 +35,7 @@ lassen das gewöhnliche Lernen unverändert verfügbar.
 
 Paket: `physik-libre-gymnasium`, ursprüngliche, inzwischen ausgerollte Version `1.0.0`.
 Der Katalog verweist jetzt auf den thematisch erweiterten Nachfolger `1.1.0`;
-dessen [Abdeckung und Prüfgrenzen](../../content/physik-libre/1.1.0/README.md)
+dessen [Abdeckung und Prüfgrenzen](https://github.com/enpasos/skillpilot/blob/main/content/physik-libre/1.1.0/README.md)
 sind separat dokumentiert. Die folgenden vier Zuordnungen beschreiben den
 historischen Pilotumfang, nicht die heutige Gesamtzahl. Die gespeicherte
 Paketauswahl bleibt gültig. Diese lokale Erweiterung ist noch kein Rollout.

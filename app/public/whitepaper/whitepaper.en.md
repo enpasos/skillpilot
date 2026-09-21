@@ -355,6 +355,8 @@ For content providers, this opens a way to **connect their materials to learning
 
 We are starting with [**Physik Libre**](https://physikbuch.schule/). From there, we will develop connections to further content step by step. Curriculum and learning progress remain independent of the chosen content provider.
 
+*Further reading: [Content integration architecture](https://github.com/enpasos/skillpilot/blob/main/docs/concept/skill-graph/content-integration.md).*
+
 ### 5.3 SkillPilot in the Bologna/EHEA Context (Short Overview)
 
 Beyond the current Gymnasium focus, the model can also be applied to higher education. Bologna/EHEA sets the framework for **outcomes, transparency, recognition, and quality** in higher education. SkillPilot can support these goals, but it does not replace institutional decisions.

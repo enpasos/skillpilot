@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -125,7 +126,7 @@ class ContentSelectionIntegrationTest {
         mvc.perform(get("/api/ui/learners/{id}/content-selection", first))
                 .andExpect(status().isOk()).andExpect(jsonPath("$.revision").value(0))
                 .andExpect(jsonPath("$.selectedPackageIds").isEmpty())
-                .andExpect(jsonPath("$.packages[0].packageId").value(PACKAGE));
+                .andExpect(jsonPath("$.packages[*].packageId", org.hamcrest.Matchers.hasItem(PACKAGE)));
         mvc.perform(put("/api/ui/learners/{id}/content-selection", first)
                         .contentType(MediaType.APPLICATION_JSON).content(selectedBody))
                 .andExpect(status().isOk()).andExpect(jsonPath("$.revision").value(1));
@@ -163,6 +164,40 @@ class ContentSelectionIntegrationTest {
         assertThat(selections.selectedPackageIds(second)).containsExactly(PACKAGE);
         lifecycle.deleteConfirmed(first, first);
         lifecycle.deleteConfirmed(second, second);
+    }
+
+    @Test void curatedMathSelectionPersistsWithoutChangingPhysicsOrMasteryAndOptOutRemovesMaterials() throws Exception {
+        String first = "content-math-first";
+        String second = "content-math-second";
+        ContentCatalog.ContentPackage mathematics;
+        try (var input = new ClassPathResource("content/enpasos-mathe/1.0.0/package.json").getInputStream()) {
+            mathematics = mapper.readValue(input, ContentCatalog.ContentPackage.class);
+        }
+        String mathGoal = mathematics.materials().getFirst().goalIds().getFirst();
+        for (String id : List.of(first, second)) {
+            Learner learner = new Learner(); learner.setSkillpilotId(id); learner.setActiveGoalId(mathGoal);
+            learners.saveAndFlush(learner);
+        }
+        try {
+            jdbc.update("INSERT INTO mastery (skillpilot_id, goal_key, value, updated_at) VALUES (?, ?, 0.5, CURRENT_TIMESTAMP)",
+                    first, mathGoal);
+            var masteryBefore = jdbc.queryForList("SELECT * FROM mastery WHERE skillpilot_id = ?", first);
+            assertThat(materials.resolve(first, mathGoal, "de")).isEmpty();
+            selections.update(first, 0, List.of(mathematics.packageId()));
+            assertThat(selections.selection(first).selectedPackageIds()).containsExactly(mathematics.packageId());
+            assertThat(materials.resolve(first, mathGoal, "de")).isNotEmpty()
+                    .allSatisfy(item -> assertThat(item.provider()).isNotEqualTo("enpasos"));
+            assertThat(materials.resolve(second, mathGoal, "de")).isEmpty();
+            assertThat(materials.resolve(first, GOAL, "de")).isEmpty();
+            assertThat(materials.resolve(first, "unmapped", "de")).isEmpty();
+            selections.update(first, 1, List.of());
+            assertThat(materials.resolve(first, mathGoal, "de")).isEmpty();
+            assertThat(learners.findById(first).orElseThrow().getActiveGoalId()).isEqualTo(mathGoal);
+            assertThat(jdbc.queryForList("SELECT * FROM mastery WHERE skillpilot_id = ?", first)).isEqualTo(masteryBefore);
+        } finally {
+            lifecycle.deleteConfirmed(first, first);
+            lifecycle.deleteConfirmed(second, second);
+        }
     }
 
     @Test void actualMvcRejectsInvalidJsonWithoutChangingSavedSelectionOrActivity() throws Exception {

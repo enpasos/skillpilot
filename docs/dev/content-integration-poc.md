@@ -17,7 +17,7 @@ The eleven former Physik Libre references have been removed from canonical
 `content/migrations/physik-libre-links-2026-09-20.json` as migration evidence, not
 active teaching content. The deployed four-goal pilot remains as version `1.0.0`.
 The catalog selects its expanded `1.1.0` successor with explicit AI mapping reviews
-and documented [coverage and limits](../../content/physik-libre/1.1.0/README.md).
+and documented [coverage and limits](https://github.com/enpasos/skillpilot/blob/main/content/physik-libre/1.1.0/README.md).
 Existing selections use the same package ID and need not be saved again after
 deployment. Historical references were re-examined, not automatically approved.
 GeoGebra is inventoried for a subsequent migration; this PoC is not

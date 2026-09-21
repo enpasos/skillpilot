@@ -4,6 +4,109 @@ import tailwindcss from '@tailwindcss/vite'
 import { chromium, type Browser } from 'playwright'
 import { startViteTestServer } from './viteTestServer'
 
+const testCuratedMathPackage = async (browser: Browser, baseUrl: string) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 } })
+  try {
+    const page = await context.newPage()
+    const browserErrors: string[] = []
+    page.on('pageerror', (error) => browserErrors.push(error.message))
+    const packageId = 'enpasos-mathe-oberstufe'
+    const packageTitle = 'enpasos – Mathematik interaktiv'
+    let selectedPackageIds: string[] = []
+    let revision = 0
+    const writes: unknown[] = []
+    const providerRequests: string[] = []
+    const materials = [
+      { title: 'GeoGebra: Newton-Verfahren untersuchen', url: 'https://www.geogebra.org/m/uN22nP6P', provider: 'GeoGebra' },
+      { title: 'Desmos: Funktionsgraphen zeichnen', url: 'https://www.desmos.com/calculator', provider: 'Desmos' },
+    ].map((material) => ({ ...material, resourceType: 'simulation', language: 'de', sections: [], access: 'public-link', aiUsage: 'link-only' }))
+
+    // Both external hosts are stubbed: this is a UI contract check, not live-provider acceptance.
+    await context.route(/^https:\/\/www\.(?:geogebra\.org|desmos\.com)\//, async (route) => {
+      providerRequests.push(new URL(route.request().url()).hostname)
+      assert.equal(route.request().headers().referer, undefined)
+      assert.equal(route.request().headers().authorization, undefined)
+      assert.equal(route.request().headers()['x-skillpilot-content-capability'], undefined)
+      await route.fulfill({ status: 200, contentType: 'text/html', body: '<h1>External simulation</h1>' })
+    })
+    await page.route('**/api/ui/learners/*/content-selection?*', async (route) => {
+      assert.equal(route.request().headers()['x-skillpilot-content-capability'], undefined)
+      if (route.request().method() === 'PUT') {
+        const body = route.request().postDataJSON()
+        writes.push(body)
+        assert.equal(body.expectedRevision, revision)
+        selectedPackageIds = body.selectedPackageIds
+        revision += 1
+      }
+      await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+        revision, selectedPackageIds,
+        packages: [{ packageId, version: '1.0.0', title: packageTitle, description: 'Ausgewählte GeoGebra-Aktivitäten und Desmos für die Oberstufe.', providerName: 'GeoGebra', providerUrl: 'https://www.geogebra.org/', curatorName: 'enpasos', curatorUrl: 'https://skillpilot.com/', access: 'public-link', aiUsage: 'link-only', materialCount: 6 }],
+      }) })
+    })
+    await page.route('**/api/ui/learners/*/content-materials?*', async (route) => {
+      await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(selectedPackageIds.includes(packageId) ? materials : []) })
+    })
+
+    await page.goto(`${baseUrl}/scripts/fixtures/contentMaterialsUi.html`)
+    await page.locator('summary').click()
+    const choice = page.getByRole('checkbox', { name: new RegExp(packageTitle) })
+    const save = page.getByRole('button', { name: 'Materialauswahl speichern', exact: true })
+    const region = page.getByRole('region', { name: 'Materialien zu diesem Lernziel', exact: true })
+    assert.equal(await page.getByRole('checkbox').count(), 1, 'different material hosts do not require separate package choices')
+    assert.equal(await page.getByText('Zusammengestellt von enpasos · 6 Materialien · Version 1.0.0', { exact: true }).count(), 1,
+      'the package names its curator instead of presenting one provider as the owner of every material')
+    assert.equal(await page.getByText('GeoGebra · 6 Materialien · Version 1.0.0', { exact: true }).count(), 0)
+    assert.equal(await choice.isChecked(), false, 'the curated math package is opt-in')
+    assert.equal(await region.count(), 0)
+    await choice.check()
+    assert.equal(await region.count(), 0, 'an unsaved choice does not activate material links')
+    await save.click()
+    await page.getByText('Materialauswahl gespeichert.', { exact: true }).waitFor()
+    await region.waitFor()
+    assert.deepEqual(writes, [{ expectedRevision: 0, selectedPackageIds: [packageId] }])
+    assert.equal(providerRequests.length, 0, 'activating a multi-host package never prefetches its external materials')
+
+    await page.reload()
+    await page.locator('summary').click()
+    assert.equal(await choice.isChecked(), true, 'the single package selection survives reopening settings')
+    await region.waitFor()
+    assert.equal(await region.getByRole('link').count(), 2)
+    assert.equal(await region.getByRole('heading').count(), 0)
+    assert.equal(await region.locator('p').count(), 0)
+    assert.equal(await region.getByText(/Auswahl/).count(), 0)
+    assert.equal(providerRequests.length, 0, 'reopening the cockpit does not contact either provider')
+    for (const material of materials) {
+      const link = region.getByRole('link', { name: `Simulation: ${material.title} (externe Seite, neuer Tab)`, exact: true })
+      assert.equal(await link.getAttribute('href'), material.url)
+      assert.equal(await link.locator('svg.lucide-sliders-horizontal').count(), 1)
+      assert.equal(await link.getAttribute('rel'), 'noopener noreferrer')
+      assert.equal(await link.getAttribute('referrerpolicy'), 'no-referrer')
+      assert((await link.boundingBox())!.height >= 44, 'simulation links keep mobile touch targets')
+      const popupPromise = context.waitForEvent('page')
+      await link.click()
+      const popup = await popupPromise
+      await popup.getByRole('heading', { name: 'External simulation' }).waitFor()
+      assert.equal(new URL(popup.url()).hostname, new URL(material.url).hostname)
+      await popup.close()
+    }
+    assert.deepEqual(providerRequests, ['www.geogebra.org', 'www.desmos.com'])
+    assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'multi-host simulation links fit a mobile viewport')
+    await choice.uncheck()
+    await save.click()
+    await region.waitFor({ state: 'detached' })
+    assert.deepEqual(writes.at(-1), { expectedRevision: 1, selectedPackageIds: [] })
+    assert.deepEqual(selectedPackageIds, [], 'one opt-out removes both providers from this package')
+    assert.equal(await page.getByRole('heading', { name: 'Normal learning stays available' }).count(), 1)
+    await page.getByRole('button', { name: 'Switch language' }).click()
+    await page.locator('summary').click()
+    assert.equal(await page.getByText('Curated by enpasos · 6 materials · Version 1.0.0', { exact: true }).count(), 1)
+    assert.equal(await choice.isChecked(), false)
+    assert.deepEqual(browserErrors, [])
+  } finally {
+    await context.close()
+  }
+}
+
 const server = await startViteTestServer(fileURLToPath(new URL('../', import.meta.url)), 'scripts/fixtures/contentMaterialsUi.html', { plugins: [tailwindcss()] })
 let browser: Browser | null = null
 try {
@@ -209,8 +312,9 @@ try {
   await page.waitForTimeout(150)
   assert.equal(await summary.count(), 0, 'the optional operational kill switch hides the material UI')
   assert.equal(browserErrors.length, 0, browserErrors.join('\n'))
-  console.log('Content material UI tests passed')
   await context.close()
+  await testCuratedMathPackage(browser, server.baseUrl)
+  console.log('Content material UI tests passed (including curated multi-host math package)')
 } finally {
   await browser?.close()
   await server.close()

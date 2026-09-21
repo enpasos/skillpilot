@@ -39,7 +39,7 @@ public final class ContentMaterialResolver {
                     .limit(MAX_MATERIALS_PER_GOAL)
                     .map(match -> new ResolvedMaterial(
                             ContentCatalog.localized(match.material().title(), match.material().titleEn(), locale),
-                            match.material().url(), match.contentPackage().provider().name(),
+                            match.material().url(), match.provider().name(),
                             match.material().resourceType(), match.material().language(),
                             match.material().sections(), match.contentPackage().access(),
                             match.contentPackage().aiUsage()))

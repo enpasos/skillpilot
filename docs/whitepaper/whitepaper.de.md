@@ -357,6 +357,8 @@ Für Content-Provider eröffnet das einen Weg, ihre Inhalte **an Lernziele und d
 
 Wir beginnen gerade mit [**Physik Libre**](https://physikbuch.schule/). Von diesem Einstieg aus entwickeln wir die Anbindung weiterer Inhalte schrittweise weiter. Curriculum und Lernfortschritt bleiben dabei unabhängig vom gewählten Content-Anbieter.
 
+*Vertiefung: [Architekturrahmen für die Contentanbindung](https://github.com/enpasos/skillpilot/blob/main/docs/concept/skill-graph/content-integration.md).*
+
 ### 5.3 SkillPilot im Kontext Bologna/EHEA (Kurzüberblick)
 
 Über den aktuellen Gymnasium-Schwerpunkt hinaus ist das Modell auch auf Hochschulen übertragbar. Bologna/EHEA setzt im Hochschulraum den Rahmen für **Outcomes, Transparenz, Anerkennung und Qualität**. SkillPilot kann diese Ziele unterstützen – ersetzt aber keine institutionellen Entscheidungen.

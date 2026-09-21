@@ -22,6 +22,21 @@ const material = {
   resourceType: 'article', language: 'en', sections: ['Motion analysis'], access: 'public-link', aiUsage: 'link-only',
 }
 assert.deepEqual(parseContentSelection(selection), selection)
+const curatedSelection = {
+  ...selection,
+  packages: [{ ...selection.packages[0], curatorName: 'enpasos', curatorUrl: 'https://skillpilot.com/' }],
+}
+assert.deepEqual(parseContentSelection(curatedSelection), curatedSelection,
+  'curator metadata stays separate from the material provider')
+assert.deepEqual(parseContentSelection({
+  ...selection, packages: [{ ...selection.packages[0], curatorName: null, curatorUrl: null }],
+}), selection, 'null curator fields preserve compatibility with existing provider packages')
+assert.throws(() => parseContentSelection({
+  ...selection, packages: [{ ...selection.packages[0], curatorName: {} }],
+}))
+assert.throws(() => parseContentSelection({
+  ...selection, packages: [{ ...selection.packages[0], curatorUrl: 'javascript:alert(1)' }],
+}))
 assert.deepEqual(parseContentSelection({ ...selection, selectedPackageIds: ['retired-pilot'] }).selectedPackageIds, ['retired-pilot'],
   'retired package IDs remain visible to the UI so the learner can explicitly remove them')
 assert.deepEqual(parseResolvedMaterials([material]), [material])

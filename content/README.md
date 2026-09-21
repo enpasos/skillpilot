@@ -12,6 +12,8 @@ directory. Each versioned `package.json` contains:
 
 - `schemaVersion`, stable `packageId`, package `version`, DE/EN catalog title and
   description, provider attribution and independently created mapping status;
+- optional `curator: {name, url}` for the person or organization selecting links.
+  A curator is not the provider of the linked material;
 - explicit package `status` (`active` or `inactive`), `access: public-link` and
   `aiUsage: link-only`;
 - materials with stable local `id`, original-language title, HTTPS `url`, type,
@@ -20,8 +22,12 @@ directory. Each versioned `package.json` contains:
 
 The PoC supports `article` and `simulation` materials. Catalog entries use
 `provider/1.0.0/package.json`-shaped paths; at most 20 packages, 1,000 materials per
-package and 64 goal references per material are accepted. Each material URL must
-use the declared provider's hostname. Authoring validation and the runtime apply
+package and 64 goal references per material are accepted. Package `provider` is
+the default content provider. A material may explicitly declare its own
+`provider: {name, url, relationship}` when a curated collection mixes providers.
+Each material URL must use its effective provider's hostname; curator metadata
+never changes that check. Omitted optional fields preserve existing packages.
+Authoring validation and the runtime apply
 the same bounds; this is a deliberately limited pilot contract, not a final standard.
 
 The catalog title may be translated; that does not translate the linked material.
@@ -45,6 +51,31 @@ deployment or live-Claude acceptance claim.
 Changing or disabling a package/material never changes curriculum prerequisites
 or mastery. A withdrawn package can remain in a learner's stored selection but
 must not produce recommendations.
+
+## Curated enpasos collections
+
+- [Mathematics](enpasos-mathe/1.0.0/README.md): selected GeoGebra activities by
+  Andreas Lindner, the Desmos graphing calculator and a regular PhET simulation.
+- [Physics](enpasos-physik/1.0.0/README.md): regular PhET simulations, selectable
+  independently of Physik Libre.
+- [Physics with LabXchange](enpasos-labxchange-physik/1.0.0/README.md): two
+  English-language OpenStax readings hosted on LabXchange, for learners aged 13+.
+- [Physics with oPhysics](enpasos-ophysics/1.0.0/README.md): English-language
+  interactive activities authored and hosted by Tom Walsh, using GeoGebra.
+
+`enpasos` selects the links; GeoGebra, Desmos, PhET, LabXchange and oPhysics supply the
+linked services. The LabXchange package also attributes OpenStax as text author.
+The settings show the curator, while resolved material metadata keeps the actual
+provider. Links at learning goals remain compact, with a content-type icon.
+Use direct activity/tool URLs, not collection or search pages. The PhET choices
+are standard simulations available without payment or login for non-commercial
+learning, not paid Studio/iO offerings; their checked scope and terms are recorded
+in the package READMEs. This is link-only access, not a redistribution license.
+
+The remaining curated expansion, including more oPhysics and LabXchange
+activities and mobile checks, is tracked in
+[issue #54](https://github.com/enpasos/skillpilot/issues/54). The small local
+pilots are not a claim of full provider coverage or production availability.
 
 ## Validation
 
