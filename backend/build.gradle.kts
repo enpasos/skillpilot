@@ -90,6 +90,11 @@ tasks.test {
         "../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
     )).withPropertyName("canonicalPhysicsSourceMethodRoute")
         .withPathSensitivity(PathSensitivity.RELATIVE)
+    // ClaudeV1CanonicalExamIntegrationTest exercises current authored exam data through MCP.
+    inputs.file(layout.projectDirectory.file(
+        "../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"
+    )).withPropertyName("canonicalMathExamEvaluation")
+        .withPathSensitivity(PathSensitivity.RELATIVE)
     // The suite runs 22 @SpringBootTest classes whose distinct property sets each pin their own
     // cached Spring context in this one JVM. 1536m stopped being enough when the Claude v1
     // connector added ten of them, and the executor died with "Java heap space" rather than a

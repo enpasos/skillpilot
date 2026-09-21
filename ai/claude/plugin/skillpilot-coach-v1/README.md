@@ -2,18 +2,18 @@
 
 SkillPilot Coach v1 is the public-plugin candidate for curriculum-grounded
 SkillPilot learning coaching. Its product scope is limited to eligible paid
-Claude Chat on the Web and the native Android app. Version 1.1.7 is the sole
+Claude Chat on the Web and the native Android app. Version 1.1.8 is the sole
 current replacement candidate. Local preparation does not establish deployment,
-Marketplace publication or real-client acceptance. The existing 1.1.6 artifact
+Marketplace publication or real-client acceptance. The existing 1.1.7 artifact
 and its publication evidence remain immutable; older packages are not a
 fallback for testing this candidate.
 
 Earlier v1 direct-install packages were demonstrated in paid Claude Web chat.
 The Product Owner also used an earlier account-level direct installation with a
 Claude Pro account in the native Claude app on Android. Those observations do
-not transfer to the 1.1.7 candidate. Exact-candidate direct-install,
+not transfer to the 1.1.8 candidate. Exact-candidate direct-install,
 public-listing installation and the complete Android learning flow remain
-pending until they are verified for 1.1.7. The earlier Android observation also
+pending until they are verified for 1.1.8. The earlier Android observation also
 does not establish that the package can be installed from Android itself or
 that a public listing will reach Android. iOS, Claude Desktop Chat, Cowork and
 public Claude Code remain outside this candidate's claims.
@@ -44,10 +44,13 @@ remote SkillPilot connector. All fourteen MCP tools and both interactive MCP App
 come from that connector; the plugin does not duplicate their schemas,
 resources, or UI bytes.
 
-Version 1.1.7 makes explicit continuation available beyond daily quotas and
+Version 1.1.8 makes explicit continuation available beyond daily quotas and
 plan dates. A plan guides and prioritizes; it must never prevent learning.
-The Skill owns the common coaching flow; conditional references supply the
-Verified Recall and exam procedures only when needed. Local regression checks do not establish
+The Skill owns the common coaching flow and the complete exam procedure inline;
+only Verified Recall uses a conditional reference. Starting an exam requires
+neither a separate Skill invocation nor an evaluation-material load. Protected
+evaluation is requested only after a complete submission, using the current
+tool schema without write-only arguments. Local regression checks do not establish
 successful execution in a user's Claude account.
 
 The retained 1.1.4 privacy correction deliberately removes assessment prose from tool
@@ -61,7 +64,7 @@ plugin version. Old cached inputs are rejected; they must not be reintroduced
 to make an old installation work. OAuth, learner-session, tool identity and
 backend-owned progression boundaries remain unchanged.
 
-Version 1.1.7 keeps the chat plan-first with a compact plan status formulated by
+Version 1.1.8 keeps the chat plan-first with a compact plan status formulated by
 the backend. Claude quotes `learningPlanToday.text` verbatim and adds no counts
 or judgement of its own, for example:
 “Mathematik: Tagesziel 2 von 3 · im Plan” and
@@ -103,7 +106,7 @@ from inside the Android app, Claude Desktop Chat, Cowork, hooks, subagents, or
 public Claude Code. Those surfaces require their own acceptance evidence and a
 later reviewed release before SkillPilot can advertise them.
 
-The historical direct-install observations are not evidence for 1.1.7 or public
+The historical direct-install observations are not evidence for 1.1.8 or public
 Directory availability. Submission readiness requires this exact candidate to
 complete the dedicated Web and Android real-client acceptance gates.
 Public-listing reach on Android remains a publication verification, not a

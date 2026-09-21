@@ -1507,8 +1507,11 @@ provider policy and product review explicitly permit it.
   ChatClient/backend communication contract, behavioral integration,
   `SKILL.md`, and its provider-specific workflow references are the active sources.
   Keep each coach rule in one instruction location: shared rules belong in the
-  entrypoint, specialized rules in a clearly routed reference read before that
-  workflow. Do not make a second overlapping policy mandatory at every startup.
+  entrypoint, specialized rules in a clearly routed workflow. Use a reference
+  read before that workflow only when the host can reliably load it. The Claude
+  exam workflow is owned directly by its SKILL.md section after a real-host
+  failure to load the former reference; do not restore a mandatory `Skill` tool
+  or file lookup for exams. Do not duplicate those rules in a second policy.
   Preserve assessment, privacy and state invariants when shortening instructions;
   verify realistic coach decisions as well as package integrity. The frozen
   Custom-GPT and Visible-Session packages are historical baseline or isolated

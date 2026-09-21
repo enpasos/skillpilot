@@ -111,7 +111,6 @@ export const publicationFiles = [
   "SETUP.md",
   "skills/skillpilot-coach-v1/SKILL.md",
   "skills/skillpilot-coach-v1/references/verified-recall.md",
-  "skills/skillpilot-coach-v1/references/exams.md",
 ];
 
 export function validateClaudePluginPackage(root = packageRoot) {
@@ -146,7 +145,7 @@ export function validateClaudePluginPackage(root = packageRoot) {
   if (manifest) {
     check(manifest.name === "skillpilot-coach-v1", "Unexpected plugin name.");
     check(/^\d+\.\d+\.\d+$/u.test(manifest.version ?? ""), "Plugin version must be SemVer.");
-    check(manifest.version === "1.1.7", "Claude replacement candidate must be version 1.1.7.");
+    check(manifest.version === "1.1.8", "Claude replacement candidate must be version 1.1.8.");
     check(nonBlank(manifest.description), "Plugin description is required.");
     check(manifest.author?.name === "enpasos GmbH", "Unexpected plugin author.");
     check(manifest.homepage === "https://skillpilot.com", "Unexpected plugin homepage.");
@@ -169,7 +168,6 @@ export function validateClaudePluginPackage(root = packageRoot) {
 
   const skillText = text.get("skills/skillpilot-coach-v1/SKILL.md");
   const verifiedRecallText = text.get("skills/skillpilot-coach-v1/references/verified-recall.md");
-  const examsText = text.get("skills/skillpilot-coach-v1/references/exams.md");
   const readmeText = text.get("README.md");
   const setupText = text.get("SETUP.md");
   const normalizedSkillText = skillText.replace(/\s+/gu, " ");
@@ -185,7 +183,7 @@ export function validateClaudePluginPackage(root = packageRoot) {
   }
 
   for (const tool of expectedTools) {
-    check([skillText, verifiedRecallText, examsText].some((value) => value.includes(`\`${tool}\``)),
+    check([skillText, verifiedRecallText].some((value) => value.includes(`\`${tool}\``)),
       `Coach instructions must cover ${tool}.`);
   }
 
@@ -242,7 +240,6 @@ export function validateClaudePluginPackage(root = packageRoot) {
   errors.push(...validateClaudeCoachInstructions({
     skill: skillText,
     recall: verifiedRecallText,
-    exams: examsText,
   }));
   check(
     normalizedSetupText.includes("A plugin and Directory installation that reference this exact remote MCP URL may coexist; Claude exposes one set of tools for the shared server")
@@ -252,10 +249,10 @@ export function validateClaudePluginPackage(root = packageRoot) {
   check(
     normalizedSetupText.includes("Earlier packages were observed in paid Claude Web chat and, after account-level direct installation on Claude Pro, in the native Claude app on Android")
       && normalizedSetupText.includes("Those observations are historical evidence only")
-      && normalizedSetupText.includes("exact-candidate Web, Android and Voice acceptance for 1.1.7 is still pending")
+      && normalizedSetupText.includes("exact-candidate Web, Android and Voice acceptance for 1.1.8 is still pending")
       && normalizedSetupText.includes("no earlier package is a supported fallback")
       && normalizedSetupText.includes("Fresh public-listing installation and Android use are verified after publication and do not form a circular pre-submission gate"),
-    "SETUP.md must distinguish historical observations from pending 1.1.7 exact-candidate acceptance.",
+    "SETUP.md must distinguish historical observations from pending 1.1.8 exact-candidate acceptance.",
   );
   check(
     normalizedSetupText.includes("The v1 publication scope is limited to eligible paid Claude Chat on the Web and the native Android app after account-level installation")
@@ -281,14 +278,14 @@ export function validateClaudePluginPackage(root = packageRoot) {
   );
   check(
     normalizedReadmeText.includes("Its product scope is limited to eligible paid Claude Chat on the Web and the native Android app")
-      && normalizedReadmeText.includes("Version 1.1.7 is the sole current replacement candidate")
+      && normalizedReadmeText.includes("Version 1.1.8 is the sole current replacement candidate")
       && normalizedReadmeText.includes("Local preparation does not establish deployment, Marketplace publication or real-client acceptance")
-      && normalizedReadmeText.includes("The existing 1.1.6 artifact and its publication evidence remain immutable")
+      && normalizedReadmeText.includes("The existing 1.1.7 artifact and its publication evidence remain immutable")
       && normalizedReadmeText.includes("This is an intentional input-contract contraction, not backward compatibility")
       && normalizedReadmeText.includes("older packages are not a fallback for testing this candidate")
-      && normalizedReadmeText.includes("Those observations do not transfer to the 1.1.7 candidate")
-      && normalizedReadmeText.includes("Exact-candidate direct-install, public-listing installation and the complete Android learning flow remain pending until they are verified for 1.1.7")
-      && normalizedReadmeText.includes("Version 1.1.7 keeps the chat plan-first with a compact plan status formulated by the backend")
+      && normalizedReadmeText.includes("Those observations do not transfer to the 1.1.8 candidate")
+      && normalizedReadmeText.includes("Exact-candidate direct-install, public-listing installation and the complete Android learning flow remain pending until they are verified for 1.1.8")
+      && normalizedReadmeText.includes("Version 1.1.8 keeps the chat plan-first with a compact plan status formulated by the backend")
       && normalizedReadmeText.includes("Public-listing reach on Android remains a publication verification, not a circular pre-submission requirement")
       && normalizedReadmeText.includes("The permanent SkillPilot ID remains inside SkillPilot")
       && normalizedReadmeText.includes("[SETUP.md](./SETUP.md)")

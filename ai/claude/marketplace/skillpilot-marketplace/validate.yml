@@ -35,8 +35,8 @@ jobs:
         run: |
           test "$(git -C ../canonical rev-parse HEAD)" = '80c8f3a3e94e5c7d43c183d18bacb7ce38bb4117'
           canonical="${GITHUB_WORKSPACE}/canonical/ai/claude/plugin/skillpilot-coach-v1"
-          artifact="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.7.plugin"
-          extracted="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.7"
+          artifact="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.8.plugin"
+          extracted="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.8"
           # Publication must not depend on a download that is only indexed after publication.
           # Use the reviewed, immutable source dossier and its builder, never PR-supplied code.
           node --input-type=module - "${canonical}" "${artifact}" <<'NODE'
@@ -49,9 +49,9 @@ jobs:
           const { buildClaudePluginPackage } = await import(pathToFileURL(resolve(canonicalRoot, "build-package.mjs")));
           const { publicationFiles } = await import(pathToFileURL(resolve(canonicalRoot, "check-package.mjs")));
           const baseline = JSON.parse(readFileSync(resolve(canonicalRoot, "release/contract-baseline.json"), "utf8"));
-          assert.equal(baseline.pluginVersion, "1.1.7", "Pinned dossier version");
-          assert.equal(baseline.archive.bytes, 34586, "Pinned dossier archive bytes");
-          assert.equal(baseline.archive.sha256, "a7bb73da48087f44aeb1155b848768efc79efa71c55c9a2278c8e0cc4901d26b", "Pinned dossier archive digest");
+          assert.equal(baseline.pluginVersion, "1.1.8", "Pinned dossier version");
+          assert.equal(baseline.archive.bytes, 35909, "Pinned dossier archive bytes");
+          assert.equal(baseline.archive.sha256, "1603c79c06b9fa39f2b57033c65d4b1d5748cb048b01271f72b5708652e7525b", "Pinned dossier archive digest");
           assert.deepEqual([...publicationFiles].sort(), baseline.archive.entries.map(({ packagePath }) => packagePath).sort(), "Pinned dossier inventory");
 
           const expectedFiles = [
@@ -89,7 +89,7 @@ jobs:
           assert.deepEqual(built.entries, baseline.archive.entries, "Rebuilt archive entries");
           NODE
           printf '%s  %s\n' \
-            'a7bb73da48087f44aeb1155b848768efc79efa71c55c9a2278c8e0cc4901d26b' \
+            '1603c79c06b9fa39f2b57033c65d4b1d5748cb048b01271f72b5708652e7525b' \
             "${artifact}" | sha256sum --check --strict
           mkdir "${extracted}"
           unzip -q "${artifact}" -d "${extracted}"

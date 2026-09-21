@@ -185,10 +185,10 @@ test("published 1.1.3 marketplace does not imply guide approval or real-client a
   }
 });
 
-test("plan-status adoption 1.1.7 cannot inherit repository or client acceptance", () => {
+test("self-contained exam candidate 1.1.8 cannot inherit repository or client acceptance", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   validateClaudeMarketplaceLane(lane);
-  assert.equal(lane.plugin.version, "1.1.7");
+  assert.equal(lane.plugin.version, "1.1.8");
   const repositoryEvidence = lane.activation.evidence.find(({ id }) => id === "public-repository-default-branch");
   if (repositoryEvidence.status === "pending") {
     assert.equal(lane.activation.state, "prepared_not_published");
@@ -604,8 +604,8 @@ test("prepare exports exactly the reviewed plugin allowlist and verifies reprodu
       marketplaceRoot: outputRoot,
     });
     assert.equal(prepared.pluginName, "skillpilot-coach-v1");
-    assert.equal(prepared.version, "1.1.7");
-    assert.equal(prepared.files.length, 12);
+    assert.equal(prepared.version, "1.1.8");
+    assert.equal(prepared.files.length, 11);
     assert.deepEqual(prepared.files, verified.files);
     assert.equal(prepared.treeSha256, verified.treeSha256);
     assert(prepared.files.includes(".claude-plugin/marketplace.json"));
@@ -680,9 +680,9 @@ test("actual CI gate rebuilds the PR package with exact dossier bytes and unzip 
     const result = runWorkflowPackageGate(outputRoot, artifactPath);
     assert.equal(result.status, 0, result.stderr);
     const archive = readFileSync(artifactPath);
-    assert.equal(archive.length, 34586);
+    assert.equal(archive.length, 35909);
     assert.equal(createHash("sha256").update(archive).digest("hex"),
-      "a7bb73da48087f44aeb1155b848768efc79efa71c55c9a2278c8e0cc4901d26b");
+      "1603c79c06b9fa39f2b57033c65d4b1d5748cb048b01271f72b5708652e7525b");
     const extracted = resolve(root, "extracted");
     const unzip = spawnSync("unzip", ["-q", artifactPath, "-d", extracted], { encoding: "utf8" });
     assert.equal(unzip.status, 0, unzip.stderr);
@@ -784,7 +784,7 @@ test("local smoke test installs the expected version in an isolated Claude profi
             stdout: JSON.stringify([
               {
                 id: "skillpilot-coach-v1@skillpilot-marketplace",
-                version: "1.1.7",
+                version: "1.1.8",
                 enabled: true,
                 mcpServers: {
                   skillpilot: {
@@ -870,7 +870,7 @@ test("published verification is pinned to the configured repository", () => {
 test("source check leaves no publication tree behind", () => {
   const result = checkClaudeMarketplace({ repositoryRoot });
   assert.equal(result.pluginName, "skillpilot-coach-v1");
-  assert.equal(result.files.length, 12);
+  assert.equal(result.files.length, 11);
 });
 
 function withOutput(callback, { prepareDirectory = false } = {}) {

@@ -722,7 +722,9 @@ public class ClaudeV1McpContractAdapter {
                 "Releases sample solution, scoring rubric and passing threshold for the active exam goal, plus the "
                         + "evaluationCapability needed to save exam mastery. Call only after a complete learner "
                         + "submission is present in the current conversation, including any spoken or written "
-                        + "response. Reads only.",
+                        + "response. Present the task from activeGoal.examData; this tool is not needed to start "
+                        + "the exam. Reads only: send learningSessionId and goalId, optionally language; "
+                        + "never expectedStateVersion, clientRequestId or learner answers.",
                 objectSchema(
                         List.of(ARG_GOAL_ID),
                         Map.of(

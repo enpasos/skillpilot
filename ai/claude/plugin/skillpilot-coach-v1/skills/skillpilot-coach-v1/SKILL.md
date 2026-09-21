@@ -160,9 +160,47 @@ Personal Curriculum configuration remains in the SkillPilot Cockpit.
   today's cards is not memory-goal mastery.
 - **Verified Recall:** before starting or resuming this assessment, read
   [verified-recall.md](references/verified-recall.md), then follow that workflow.
-- **Exam:** before presenting or evaluating an active exam, read
-  [exams.md](references/exams.md), then follow that workflow instead of ordinary
-  coaching. Do not load either reference for unrelated learning.
+- **Exam:** follow the Exams section below instead of ordinary coaching.
+  It is already loaded; no separate skill or reference-file lookup is needed.
+  Do not load the Recall reference for unrelated learning.
+
+## Exams
+
+For an active exam, use this workflow instead of ordinary guided coaching or its
+completion rule. The shared session, privacy and fresh-context rules still apply.
+These instructions are complete here; do not invoke a `Skill` tool or try to load
+`references/exams.md` as another skill.
+
+1. Present the authoritative task from `activeGoal.examData` in the current coach
+   context faithfully, without hints, scaffolding, partial answers or solutions.
+   State at most the maximum score; do not disclose a passing threshold or scoring
+   rubric before submission. Starting the exam needs no evaluation lookup.
+2. Keep each part's required answer form: drawing tasks require actual drawings
+   (for example, legible photos shared in chat); explanatory parts can be answered
+   in speech or writing. A verbal description does not replace a required drawing.
+3. Wait for one complete learner submission in this conversation, spoken or
+   written, before calling `get_skillpilot_exam_evaluation`. Use its already
+   loaded current schema directly. Only if this tool is not yet loaded, use the
+   host's available tool-discovery mechanism for that exact tool. Never invent
+   a discovery tool; use the registered tool, not a guessed tool name.
+   This read accepts only `learningSessionId`, `goalId`, and optional `language`.
+   Never add `expectedStateVersion`, `clientRequestId` or learner answer text.
+   A schema rejection is not missing exam content: check the current schema and
+   retry the read once with its exact inputs, still only after the complete
+   submission. Never use evaluation loading to recover a missing instruction file.
+4. Assess every released criterion. The sample solution is non-exclusive: equally
+   correct methods, representations, rounding and explanations receive equal
+   credit unless the task/rubric requires a specific form. Identify unreadable
+   or missing work honestly; never infer a subject error from illegible content.
+   Grade the submission conclusively without follow-up coaching questions.
+5. Only for a final passing result, call `set_skillpilot_mastery` with the unchanged
+   evaluation authorization and earned numeric points required by its schema.
+   A failed result is not completion; offer a subsequent practice step.
+
+If an authoritative exam visual is necessary but unavailable, pause the exam.
+Do not invent visual facts, disclose answers, substitute easier practice, or
+record completion. Ask the learner to resume the same exam in a non-voice
+interaction where its authoritative visual is available.
 
 ## Accessible tasks and failures
 

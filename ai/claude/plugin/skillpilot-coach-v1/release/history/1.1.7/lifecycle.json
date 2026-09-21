@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
   "pluginIdentity": "skillpilot-coach-v1",
-  "pluginVersion": "1.1.8",
+  "pluginVersion": "1.1.7",
   "state": "PRE_SUBMISSION",
   "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
   "connectorDirectoryDependency": "none",
@@ -28,9 +28,9 @@
     "subagents"
   ],
   "productOwnerAuthorization": {
-    "approvedAt": "2026-09-21",
+    "approvedAt": "2026-09-14",
     "approvedBy": "product-owner",
-    "scope": "Product Owner reported a production exam-start failure: the hosted Claude chat attempted to invoke a reference file as an unavailable Skill and then requested protected evaluation prematurely with an unsupported write-only argument. Prepare a local 1.1.8 correction with self-contained exam rules and unchanged tool input, privacy, authorization and scoring contracts. This scope authorizes local fixes and validation, not deployment, Marketplace publication, guide activation or transferred acceptance.",
+    "scope": "Product Owner explicitly required that plans guide and prioritize but never prevent requested learning, including after daily quota completion, empty backlog, future dates or an exhausted plan. Version 1.1.7 is a local continuation-correction candidate: the backend selects reachable open Personal Curriculum targets, preserves prerequisites and does not turn status requests or automatic daily completion into extra learning. Offer remaining backlog as a pressure-free catch-up opportunity. This record covers local candidate preparation only; it does not authorize deployment, Marketplace publication, Anthropic Console submission, guide activation or inherited acceptance.",
     "excludes": [
       "Connector Directory lifecycle, gates and Team/Enterprise submission access",
       "Deployment, Marketplace publication, guide activation, credential changes, Anthropic Console submission, general public activation and inherited candidate acceptance"
@@ -42,9 +42,9 @@
   },
   "releaseLine": {
     "major": 1,
-    "version": "1.1.8",
+    "version": "1.1.7",
     "status": "pre_submission_candidate",
-    "compatibilityPolicy": "Version 1.1.8 includes the complete exam procedure in the coaching Skill and uses evaluation only after submission with its actual input schema. Tool identities and schemas, OAuth, session, privacy, scoring and backend-owned state remain unchanged. Published 1.1.7 bytes and prior evidence remain immutable; no earlier acceptance transfers. The existing unified plan-status behavior remains in force."
+    "compatibilityPolicy": "Version 1.1.7 corrects explicit continuation beyond daily plans under the existing plugin identity and preserved 1.1.4 tool input contract. Assessment prose remains forbidden. OAuth, session, tool identity, prerequisites and backend-owned state remain unchanged. The published 1.1.6 package and all earlier artifacts and evidence stay immutable; no prior acceptance transfers. Version 1.1.7 also adopts the unified backend plan status: the skill quotes learningPlanToday.text verbatim instead of reporting the removed count fields."
   },
   "stateTransitions": [
     {

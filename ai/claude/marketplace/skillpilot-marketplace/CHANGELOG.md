@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.8 - 2026-09-21
+
+- Include the complete exam procedure in the coaching Skill, removing the
+  separate exam-reference read that failed in the hosted chat.
+- Present the existing authoritative task before requesting evaluation; load
+  protected criteria only after a complete submission and use the actual tool
+  schema without write-only arguments.
+- Preserve the published 1.1.7 bytes, served download and historical approvals.
+  This replacement is local and unpublished; real-client acceptance is pending.
+
 ## 1.1.7 - 2026-09-19
 
 - Quote the plan status formulated by SkillPilot word for word, identical to the

@@ -42,7 +42,6 @@ test("builds a deterministic root-level Claude .plugin archive", () => {
       "SETUP.md",
       "skills/skillpilot-coach-v1/SKILL.md",
       "skills/skillpilot-coach-v1/references/verified-recall.md",
-      "skills/skillpilot-coach-v1/references/exams.md",
     ].sort((left, right) =>
       left < right ? -1 : left > right ? 1 : 0);
     assert.deepEqual(entries.map(({ name }) => name), expectedPaths);

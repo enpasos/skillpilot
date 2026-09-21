@@ -53,6 +53,16 @@ const legacyPublicationFiles = [
   "skills/skillpilot-coach-v1/SKILL.md",
   "skills/skillpilot-coach-v1/references/coaching-policy.md",
 ];
+const separateExamReferenceVersions = new Set(["1.1.5", "1.1.6", "1.1.7"]);
+const separateExamReferencePublicationFiles = [
+  ".claude-plugin/plugin.json",
+  ".mcp.json",
+  "README.md",
+  "SETUP.md",
+  "skills/skillpilot-coach-v1/SKILL.md",
+  "skills/skillpilot-coach-v1/references/verified-recall.md",
+  "skills/skillpilot-coach-v1/references/exams.md",
+];
 const compareCodeUnits = (left, right) =>
   left < right ? -1 : left > right ? 1 : 0;
 
@@ -118,7 +128,9 @@ export function validateClaudeMarketplaceLane(lane) {
   assertEqual(lane.source.licenseFile, "LICENSE", "lane.source.licenseFile");
   assertJsonEqual(
     lane.source.publicationFiles,
-    legacyInstructionVersions.has(lane.plugin?.version) ? legacyPublicationFiles : publicationFiles,
+    legacyInstructionVersions.has(lane.plugin?.version) ? legacyPublicationFiles
+      : separateExamReferenceVersions.has(lane.plugin?.version)
+        ? separateExamReferencePublicationFiles : publicationFiles,
     "lane.source.publicationFiles must remain the version-specific package allowlist",
   );
 
@@ -951,7 +963,7 @@ export function validateClaudeMarketplaceWorkflow(workflow, lane) {
     'const { publicationFiles } = await import(pathToFileURL(resolve(canonicalRoot, "check-package.mjs")));',
     'const baseline = JSON.parse(readFileSync(resolve(canonicalRoot, "release/contract-baseline.json"), "utf8"));',
     `assert.equal(baseline.pluginVersion, "${lane.plugin.version}", "Pinned dossier version");`,
-    'assert.equal(baseline.archive.bytes, 34586, "Pinned dossier archive bytes");',
+    'assert.equal(baseline.archive.bytes, 35909, "Pinned dossier archive bytes");',
     `assert.equal(baseline.archive.sha256, "${lane.plugin.directInstallSha256}", "Pinned dossier archive digest");`,
     'assert.deepEqual([...publicationFiles].sort(), baseline.archive.entries.map(({ packagePath }) => packagePath).sort(), "Pinned dossier inventory");',
     'assert.ok(!stat.isSymbolicLink(), `Symlink forbidden: ${path}`);',

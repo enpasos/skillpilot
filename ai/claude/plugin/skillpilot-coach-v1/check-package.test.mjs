@@ -11,22 +11,21 @@ const packageRoot = dirname(fileURLToPath(import.meta.url));
 const instructionPaths = {
   skill: "skills/skillpilot-coach-v1/SKILL.md",
   recall: "skills/skillpilot-coach-v1/references/verified-recall.md",
-  exams: "skills/skillpilot-coach-v1/references/exams.md",
 };
 
 test("validates the checked-in Claude plugin package", () => {
   assert.deepEqual(validateClaudePluginPackage(packageRoot), { errors: [], toolCount: 14 });
 });
 
-test("rejects a replacement candidate version other than 1.1.7", () => {
+test("rejects a replacement candidate version other than 1.1.8", () => {
   withPackageCopy((root) => {
     mutate(root, ".claude-plugin/plugin.json", (value) => value.replace(
-      '"version": "1.1.7"',
+      '"version": "1.1.8"',
       '"version": "1.0.4"',
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /replacement candidate must be version 1\.1\.7/u,
+      /replacement candidate must be version 1\.1\.8/u,
     );
   });
 });
@@ -153,12 +152,19 @@ for (const [name, owner, original, unsafeReplacement, invariant] of [
   ["restoring free-text Recall result feedback", "recall", "exactly \x60cardId\x60 and \x60passed\x60", "\x60cardId\x60, \x60passed\x60 and learner-answer feedback", "recall-results"],
   ["submitting a partial Recall batch", "recall", "or send a partial batch", "but send a partial batch when convenient", "recall-results"],
   ["continuing the stale memory goal after Recall", "recall", "Do not continue\n   the old memory goal", "Continue the old memory goal", "recall-results"],
-  ["fetching exam evaluation before a complete submission", "exams", "before calling \x60get_skillpilot_exam_evaluation\x60", "after calling \x60get_skillpilot_exam_evaluation\x60", "exam-answer-gate"],
-  ["revealing the exam rubric before submission", "exams", "do not disclose a\n   passing threshold or scoring rubric", "disclose the passing threshold and scoring rubric", "exam-answer-gate"],
-  ["rejecting equivalent correct exam methods", "exams", "receive equal\n   credit", "receive no credit", "exam-evaluation"],
-  ["marking a failing exam complete", "exams", "Only for a final passing result", "For every submitted result", "exam-evaluation"],
-  ["coaching an active exam through follow-up questions", "exams", "without follow-up coaching questions", "by asking follow-up coaching questions", "exam-evaluation"],
-  ["substituting easier practice inside an active exam", "exams", "substitute easier practice", "omit difficult work", "exam-visual-fallback"],
+  ["fetching exam evaluation before a complete submission", "skill", "before calling \x60get_skillpilot_exam_evaluation\x60", "after calling \x60get_skillpilot_exam_evaluation\x60", "exam-answer-gate"],
+  ["revealing the exam rubric before submission", "skill", "do not disclose a passing threshold or scoring\n   rubric", "disclose the passing threshold and scoring rubric", "exam-answer-gate"],
+  ["rejecting equivalent correct exam methods", "skill", "receive equal\n   credit", "receive no credit", "exam-evaluation"],
+  ["marking a failing exam complete", "skill", "Only for a final passing result", "For every submitted result", "exam-evaluation"],
+  ["coaching an active exam through follow-up questions", "skill", "without follow-up coaching questions", "by asking follow-up coaching questions", "exam-evaluation"],
+  ["substituting easier practice inside an active exam", "skill", "substitute easier practice", "omit difficult work", "exam-visual-fallback"],
+  ["requiring another Skill tool for exams", "skill", "do not invoke a \x60Skill\x60 tool", "invoke a \x60Skill\x60 tool", "exam-self-contained"],
+  ["requiring evaluation to start the task", "skill", "Starting the exam needs no evaluation lookup", "Starting the exam needs an evaluation lookup", "exam-self-contained"],
+  ["adding write-version fields to evaluation reads", "skill", "Never add \x60expectedStateVersion\x60", "Add \x60expectedStateVersion\x60", "exam-read-schema"],
+  ["requiring discovery for an already loaded evaluation tool", "skill", "Only if this tool is not yet loaded", "Before every invocation", "exam-read-schema"],
+  ["inventing a discovery tool", "skill", "Never invent\n   a discovery tool", "Invent a discovery tool", "exam-read-schema"],
+  ["retrying evaluation before the submission", "skill", "still only after the complete\n   submission", "even before the submission", "exam-read-schema"],
+  ["replacing required drawing with speech", "skill", "A verbal description does not replace a required drawing", "A verbal description replaces a required drawing", "exam-answer-form"],
 ]) {
   test("rejects " + name, () => {
     const instructions = readInstructions();
@@ -182,17 +188,15 @@ test("accepts Markdown and line-wrap changes without duplicating semantic rules"
   assert.deepEqual(validateClaudeCoachInstructions(instructions), []);
 });
 
-test("rejects a missing protected workflow reference before packaging", () => {
-  for (const owner of ["recall", "exams"]) {
-    withPackageCopy((root) => {
-      rmSync(resolve(root, instructionPaths[owner]));
-      assert.match(validateClaudePluginPackage(root).errors.join("\n"),
-        /Missing or unreadable skills\/skillpilot-coach-v1\/references\//u);
-    });
-  }
+test("rejects a missing Recall workflow reference before packaging", () => {
+  withPackageCopy((root) => {
+    rmSync(resolve(root, instructionPaths.recall));
+    assert.match(validateClaudePluginPackage(root).errors.join("\n"),
+      /Missing or unreadable skills\/skillpilot-coach-v1\/references\//u);
+  });
 });
 
-test("publishes one common Skill and only the two conditional workflow references", () => {
+test("publishes the exam workflow within the Skill without a second file to load", () => {
   assert.deepEqual(publicationFiles, [
     ".claude-plugin/plugin.json",
     ".mcp.json",
@@ -200,8 +204,17 @@ test("publishes one common Skill and only the two conditional workflow reference
     "SETUP.md",
     instructionPaths.skill,
     instructionPaths.recall,
-    instructionPaths.exams,
   ]);
+  assert.match(readInstructions().skill, /^## Exams$/mu);
+});
+
+test("an external exam file cannot substitute for the owning inline workflow", () => {
+  const instructions = readInstructions();
+  const examSection = instructions.skill.match(/## Exams\n[\s\S]*?(?=\n## )/u)[0];
+  instructions.skill = instructions.skill.replace(examSection, "");
+  instructions.exams = examSection;
+  assert.match(validateClaudeCoachInstructions(instructions).join("\n"),
+    /Coach invariant exam-answer-gate/u);
 });
 
 test("rejects restoring an eager mandatory policy load", () => {
@@ -279,7 +292,7 @@ test("rejects loss of same-server coexistence and custom-connector boundaries", 
   });
 });
 
-test("rejects conflation of historical observations with 1.1.7 acceptance", () => {
+test("rejects conflation of historical observations with 1.1.8 acceptance", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
       /Earlier packages were\s+observed in paid Claude Web chat and, after account-level direct installation\s+on Claude Pro, in the native Claude app on Android/u,
@@ -287,7 +300,7 @@ test("rejects conflation of historical observations with 1.1.7 acceptance", () =
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /distinguish historical observations from pending 1\.1\.7 exact-candidate acceptance/u,
+      /distinguish historical observations from pending 1\.1\.8 exact-candidate acceptance/u,
     );
   });
 });

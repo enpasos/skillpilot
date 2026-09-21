@@ -2,14 +2,14 @@
 // dialogue quality or real-host acceptance. Each instruction has one owner;
 // specialty references add only the protected workflow they are loaded for.
 export const instructionByteLimits = Object.freeze({
-  skill: 12 * 1024,
+  // Includes the exam workflow so Claude need not load a second skill/file.
+  skill: 15 * 1024,
   recall: 3 * 1024,
-  exams: 3 * 1024,
 });
 
-export function validateClaudeCoachInstructions({ skill, recall, exams }) {
+export function validateClaudeCoachInstructions({ skill, recall }) {
   const errors = [];
-  const documents = { skill, recall, exams };
+  const documents = { skill, recall };
   const check = (condition, message) => {
     if (!condition) errors.push(message);
   };
@@ -48,7 +48,7 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
   const navigation = sections["Navigation and specialized practice"] ?? "";
   const accessible = sections["Accessible tasks and failures"] ?? "";
   const recallWorkflow = normalize(recall);
-  const examWorkflow = normalize(exams);
+  const examWorkflow = sections.Exams ?? "";
   const requireRule = (owner, name, patterns) => {
     check(patterns.every((pattern) => pattern.test(owner)),
       "Coach invariant " + name + " is missing or weakened in its owning section.");
@@ -58,8 +58,9 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
     /read a linked workflow only when its entry condition applies/iu,
     /not during ordinary startup/iu,
     /Verified Recall:.+?before starting or resuming.+?read.+?references\/verified-recall\.md/iu,
-    /Exam:.+?before presenting or evaluating.+?read.+?references\/exams\.md/iu,
-    /Do not load either reference for unrelated learning/iu,
+    /Exam: follow the Exams section below instead of ordinary coaching/iu,
+    /It is already loaded; no separate skill or reference-file lookup is needed/iu,
+    /Do not load the Recall reference for unrelated learning/iu,
   ]);
   requireRule(session, "session-oauth", [
     /learningSessionId only from a start prompt created at.+?https:\/\/skillpilot\.com\//iu,
@@ -283,13 +284,33 @@ export function validateClaudeCoachInstructions({ skill, recall, exams }) {
     /Do not continue the old memory goal or record memory mastery separately/iu,
   ]);
   requireRule(examWorkflow, "exam-answer-gate", [
-    /Read this before presenting or evaluating an active exam/iu,
-    /shared session, privacy, communication and fresh-context rules in SKILL\.md continue to apply/iu,
+    /For an active exam/iu,
     /instead of ordinary guided coaching or its completion rule/iu,
-    /authoritative task faithfully, without hints, scaffolding, partial answers or solutions/iu,
+    /authoritative task from activeGoal\.examData in the current coach context faithfully, without hints, scaffolding, partial answers or solutions/iu,
     /at most the maximum score/iu,
     /do not disclose a passing threshold or scoring rubric before submission/iu,
     /Wait for one complete learner submission in this conversation, spoken or written, before calling get_skillpilot_exam_evaluation/iu,
+  ]);
+  requireRule(examWorkflow, "exam-self-contained", [
+    /These instructions are complete here; do not invoke a Skill tool or try to load references\/exams\.md as another skill/iu,
+    /Starting the exam needs no evaluation lookup/iu,
+    /Never use evaluation loading to recover a missing instruction file/iu,
+  ]);
+  requireRule(examWorkflow, "exam-read-schema", [
+    /Use its already loaded current schema directly/iu,
+    /Only if this tool is not yet loaded, use the host's available tool-discovery mechanism for that exact tool/iu,
+    /Never invent a discovery tool/iu,
+    /use the registered tool, not a guessed tool name/iu,
+    /This read accepts only learningSessionId, goalId, and optional language/iu,
+    /Never add expectedStateVersion, clientRequestId or learner answer text/iu,
+    /A schema rejection is not missing exam content/iu,
+    /retry the read once with its exact inputs, still only after the complete submission/iu,
+  ]);
+  requireRule(examWorkflow, "exam-answer-form", [
+    /drawing tasks require actual drawings/iu,
+    /legible photos shared in chat/iu,
+    /explanatory parts can be answered in speech or writing/iu,
+    /A verbal description does not replace a required drawing/iu,
   ]);
   requireRule(examWorkflow, "exam-evaluation", [
     /Assess every released criterion/iu,
