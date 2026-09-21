@@ -17,7 +17,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.SkillLandscape;
@@ -33,7 +32,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.server.ResponseStatusException;
@@ -67,7 +65,6 @@ class ContentSelectionControllerHttpTest {
         return MockMvcBuilders.standaloneSetup(new ContentSelectionController(
                         new ContentAvailability(enabled),
                         selections, catalog, materials, learners, lifecycle))
-                .setMessageConverters(new MappingJackson2HttpMessageConverter(new ObjectMapper()))
                 .build();
     }
 

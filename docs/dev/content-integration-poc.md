@@ -104,7 +104,9 @@ cd backend
 
 The database integration test follows persisted opt-in through the real coach
 facade and opt-out, and injects an actual optional-table SQL failure while a
-learning transaction commits mastery. Browser tests separately cover selection,
+learning transaction commits mastery. Its HTTP requests use the application's
+configured MVC converters; do not substitute a legacy Jackson converter in the
+tests. Browser tests separately cover selection,
 mobile layout, no pre-click provider requests, profile-switch isolation and
 selection without a separate credential. These are local automated integration
 checks, not a recording from the live Claude host.
@@ -155,6 +157,21 @@ Verified locally on 21 September 2026 for the ordinary Cockpit selection:
   historical OpenAI review-integrity check passed. No learner data or production
   configuration was changed; no full repository CI or live-host acceptance is
   claimed by these targeted local checks.
+
+Production follow-up on 21 September 2026: the supplied server log identified a
+Jackson-version mismatch at the selection PUT boundary. Boot's Jackson 3 HTTP
+converter could not deserialize the controller's Jackson 2 `JsonNode`, so saving
+failed before persistence. Both earlier content HTTP test setups had forced a
+Jackson 2 converter and therefore missed this fault. With the actual MVC context,
+the existing save test reproduced the same exception before the fix.
+
+The controller now uses the Jackson 3 request tree, preserving strict validation,
+ordinary profile guards and revision checks. The updated MVC/database tests cover
+selection, re-read, deselection, conflicts and invalid input without changing
+stored selection, activity or coach revision. All 110 focused backend tests and
+the material API/browser tests passed locally. This is not a full CI or live-host
+acceptance claim. Deploy the corrected backend; no frontend change, database
+migration or additional content access permission is needed for this repair.
 
 Real-host release acceptance remains separate:
 

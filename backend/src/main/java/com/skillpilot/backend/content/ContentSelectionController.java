@@ -1,6 +1,5 @@
 package com.skillpilot.backend.content;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.skillpilot.backend.service.LearnerLifecycleService;
 import com.skillpilot.backend.service.LearnerService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import tools.jackson.databind.JsonNode;
 
 /** Ordinary first-party Cockpit setting; provider tools only read resolved materials. */
 @RestController
@@ -47,6 +47,7 @@ public class ContentSelectionController {
     }
 
     @PutMapping(value = "/content-selection", consumes = MediaType.APPLICATION_JSON_VALUE)
+    // The MVC boundary uses Boot's Jackson 3 tree, not the internal Jackson 2 mapper.
     public SelectionResponse put(@PathVariable String learnerId,
             @RequestParam(defaultValue = "de") String lang,
             @RequestBody JsonNode request, HttpServletResponse response) {
@@ -60,8 +61,8 @@ public class ContentSelectionController {
                 || request.path("selectedPackageIds").size() > 20) badRequest();
         List<String> ids = new ArrayList<>();
         for (JsonNode id : request.path("selectedPackageIds")) {
-            if (!id.isTextual() || !id.textValue().matches("[a-z0-9][a-z0-9-]{0,79}")) badRequest();
-            ids.add(id.textValue());
+            if (!id.isString() || !id.stringValue().matches("[a-z0-9][a-z0-9-]{0,79}")) badRequest();
+            ids.add(id.stringValue());
         }
         return lifecycle.withActivity(learnerId, () -> {
             learners.assertWritableLearningSession(learnerId);

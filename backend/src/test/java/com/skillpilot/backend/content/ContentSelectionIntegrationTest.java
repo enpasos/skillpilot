@@ -21,9 +21,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -56,12 +56,13 @@ class ContentSelectionIntegrationTest {
     @Autowired ObjectMapper mapper;
     @Autowired CoachToolFacade coach;
     @Autowired PlatformTransactionManager transactionManager;
-    @Autowired ContentSelectionController controller;
     @Autowired ContentAvailability availability;
+    @Autowired WebApplicationContext applicationContext;
 
     private MockMvc http() {
-        return MockMvcBuilders.standaloneSetup(controller)
-                .setMessageConverters(new MappingJackson2HttpMessageConverter(mapper)).build();
+        // Exercise the real MVC converters: a forced Jackson 2 converter hid a
+        // production failure when Boot's Jackson 3 could not read the request type.
+        return MockMvcBuilders.webAppContextSetup(applicationContext).build();
     }
 
     @Test void optInPersistenceIsolationImportConcurrencyAndDeletion() throws Exception {
@@ -121,6 +122,10 @@ class ContentSelectionIntegrationTest {
         }
         MockMvc mvc = http();
         String selectedBody = "{\"expectedRevision\":0,\"selectedPackageIds\":[\"" + PACKAGE + "\"]}";
+        mvc.perform(get("/api/ui/learners/{id}/content-selection", first))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.revision").value(0))
+                .andExpect(jsonPath("$.selectedPackageIds").isEmpty())
+                .andExpect(jsonPath("$.packages[0].packageId").value(PACKAGE));
         mvc.perform(put("/api/ui/learners/{id}/content-selection", first)
                         .contentType(MediaType.APPLICATION_JSON).content(selectedBody))
                 .andExpect(status().isOk()).andExpect(jsonPath("$.revision").value(1));
@@ -152,9 +157,50 @@ class ContentSelectionIntegrationTest {
                         .content("{\"expectedRevision\":1,\"selectedPackageIds\":[]}"))
                 .andExpect(status().isOk()).andExpect(jsonPath("$.revision").value(2))
                 .andExpect(jsonPath("$.selectedPackageIds").isEmpty());
+        mvc.perform(get("/api/ui/learners/{id}/content-selection", first))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.revision").value(2))
+                .andExpect(jsonPath("$.selectedPackageIds").isEmpty());
         assertThat(selections.selectedPackageIds(second)).containsExactly(PACKAGE);
         lifecycle.deleteConfirmed(first, first);
         lifecycle.deleteConfirmed(second, second);
+    }
+
+    @Test void actualMvcRejectsInvalidJsonWithoutChangingSavedSelectionOrActivity() throws Exception {
+        String id = "content-http-invalid-json";
+        Learner learner = new Learner(); learner.setSkillpilotId(id);
+        learners.saveAndFlush(learner);
+        MockMvc mvc = http();
+        mvc.perform(put("/api/ui/learners/{id}/content-selection", id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"expectedRevision\":0,\"selectedPackageIds\":[\"" + PACKAGE + "\"]}"))
+                .andExpect(status().isOk());
+        var activityBefore = learners.findById(id).orElseThrow().getLastActivityAt();
+        try {
+            for (String invalid : List.of(
+                    "{\"expectedRevision\":1,\"selectedPackageIds\":[],\"extra\":true}",
+                    "{\"expectedRevision\":\"1\",\"selectedPackageIds\":[]}",
+                    "{\"expectedRevision\":null,\"selectedPackageIds\":[]}",
+                    "{\"expectedRevision\":1.5,\"selectedPackageIds\":[]}",
+                    "{\"expectedRevision\":9223372036854775808,\"selectedPackageIds\":[]}",
+                    "{\"expectedRevision\":1,\"selectedPackageIds\":null}",
+                    "{\"expectedRevision\":1,\"selectedPackageIds\":\"" + PACKAGE + "\"}",
+                    "{\"expectedRevision\":1,\"selectedPackageIds\":[null]}",
+                    "{\"expectedRevision\":1,\"selectedPackageIds\":[true]}",
+                    "{\"expectedRevision\":1,\"selectedPackageIds\":["
+                            + String.join(",", java.util.Collections.nCopies(21, "\"" + PACKAGE + "\"")) + "]}",
+                    "{}", "[]", "true", "null", "{broken")) {
+                mvc.perform(put("/api/ui/learners/{id}/content-selection", id)
+                                .contentType(MediaType.APPLICATION_JSON).content(invalid))
+                        .andExpect(status().isBadRequest());
+            }
+            assertThat(selections.selection(id))
+                    .isEqualTo(new ContentSelectionService.Selection(1, Set.of(PACKAGE)));
+            var unchanged = learners.findById(id).orElseThrow();
+            assertThat(unchanged.getLastActivityAt()).isEqualTo(activityBefore);
+            assertThat(unchanged.getCoachStateRevision()).isEqualTo(1);
+        } finally {
+            lifecycle.deleteConfirmed(id, id);
+        }
     }
 
     @Test void ordinaryAccessGuardsRejectMissingDeletedDerivedAndRetiredProfiles() throws Exception {
