@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.23 · **Projekt:** SkillPilot · *Ein Teil der Illustrationen ist KI-generiert.*
+**Version:** 1.0.24 · **Projekt:** SkillPilot · *Ein Teil der Illustrationen ist KI-generiert.*
 
 ---
 
@@ -62,6 +62,10 @@ Die Ziele bleiben anspruchsvoll; die Unterstützung passt sich dem Ausgangspunkt
 
 ## 2. Die Arbeitsteilung: KI erklärt, SkillPilot führt den Lernstand
 
+**Gemeinsame Vorarbeit, individuelle Lernbegleitung.** Die Wissenslandschaft wird vor ihrer individuellen Nutzung aufgebaut, nach den festgelegten Qualitätsverfahren geprüft und anschließend fortlaufend gepflegt (Abschnitt 5.1). Für die anspruchsvolle Erschließung und Strukturierung der Lehrpläne können besonders leistungsfähige KI-Systeme eingesetzt werden. Diese wiederverwendbare Vorarbeit kommt allen Lernenden zugute. Sie muss nicht für jede Person oder in jeder Lernsession erneut erbracht werden.
+
+Davon getrennt ist die KI, die beim Lernen begleitet. Sie muss die fachlichen, didaktischen und technischen Anforderungen der SkillPilot-Lernbegleitung erfüllen. Dafür muss sie nicht mit den Systemen identisch sein, die zur Erarbeitung der Wissenslandschaft eingesetzt werden. Die Qualitätsanforderungen an die Lernbegleitung gelten unabhängig von dieser Wahl.
+
 Sprachbasierte KI kann Begriffe erklären, Aufgaben formulieren, Lösungswege besprechen und auf Fragen in natürlicher Sprache eingehen. Im Lerndialog macht sie unterschiedliche Zugänge zu einem Thema möglich und passt Erklärungen an die Antworten der lernenden Person an.
 
 Für verlässliche Lernführung braucht es daneben eine eindeutige Grundlage: Welche Ziele gehören zum Curriculum, welche Voraussetzungen sind erfüllt und welcher Fortschritt ist gespeichert? SkillPilot verwaltet diese Informationen und Regeln im Backend.
@@ -69,6 +73,8 @@ Für verlässliche Lernführung braucht es daneben eine eindeutige Grundlage: We
 Über definierte Werkzeuge greift der Lerncoach auf diese **verbindlichen Backendregeln** zu. SkillPilot berechnet erreichbare Lernziele und den Planstand, prüft zulässige Zustandsänderungen und speichert bestätigten Fortschritt. Die fachliche Beurteilung im Dialog bleibt eine KI-Leistung und kann Fehler enthalten; die technische Zustandsprüfung ist kein unabhängiger Beweis für die Richtigkeit einer Lösung.
 
 Die **Plugin- und Adapterarchitektur entkoppelt den fachlichen Kern vom konkreten KI-Anbieter**. Die Provideradapter stellen die Werkzeuge über das **Model Context Protocol (MCP)** bereit. Eine neue KI-Anbindung muss unter anderem Coach-Anweisungen laden, Werkzeuge zuverlässig aufrufen, Authentisierung und Lernsession sicher handhaben sowie die benötigten Bilder und Lernkarten darstellen können. MCP standardisiert den Werkzeugzugriff, garantiert diese Fähigkeiten aber nicht. Verbindliche Entscheidungen über Lernzustand, Berechtigungen und Navigation bleiben im gemeinsamen SkillPilot-Kern; jede konkrete Anbindung wird gesondert geprüft.
+
+**Ziel ist die Wahlfreiheit unter geeigneten KI-Umgebungen.** Perspektivisch kann dazu auch eine lokal auf dem eigenen Gerät betriebene KI gehören, sofern die erforderlichen Fähigkeiten und eine geprüfte Anbindung vorhanden sind. Der heutige Claude-Zugang ist ein konkreter Einstieg, keine dauerhafte Festlegung der Architektur auf diesen Anbieter. Eine bereits verfügbare lokale Lerncoach-Anbindung wird damit nicht behauptet.
 
 **SkillPilot ist damit eine hybride Anwendung:** Der KI-Lerncoach übernimmt das sprachliche Verstehen, Erklären und fachliche Feedback. Die klassische Software verantwortet Lernzustand, Berechtigungen, Navigation und Fortschrittsverwaltung.
 
@@ -303,7 +309,7 @@ Beim Import können vorhandene Quellenprofile und Übernahmezeitpunkte als **Hin
 
 ### 5.1 Aktueller Schwerpunkt: Gymnasium Deutschland
 
-Der aktuelle Entwicklungs- und Inhaltsschwerpunkt von SkillPilot liegt auf dem **Gymnasium in Deutschland – für alle 16 Bundesländer**. Der gemeinsame Einstieg „Gymnasium (DE)“ erschließt fachliche Skill-Graphen über länderspezifische Zuordnungen und Ansichten. Gemeinsame Kompetenzen werden dabei fachlich gebündelt; Unterschiede der Landeslehrpläne, Schulstufen und Kursprofile bleiben berücksichtigt.
+Der aktuelle Entwicklungs- und Inhaltsschwerpunkt von SkillPilot liegt auf dem **Gymnasium in Deutschland – für alle 16 Bundesländer**. Der gemeinsame Einstieg „Gymnasium (DE)“ erschließt fachliche Skill-Graphen über länderspezifische Zuordnungen und Ansichten. Gemeinsame Kompetenzen werden dabei fachlich gebündelt; Unterschiede der Landeslehrpläne, Schulstufen und Kursprofile bleiben berücksichtigt. Gemeinsame Lernziele werden dadurch einmal gepflegt statt für jedes Bundesland erneut; fachliche Verbesserungen können allen darauf aufbauenden Ländersichten zugutekommen.
 
 Der Ausbau ist je Fach unterschiedlich weit fortgeschritten:
 
@@ -351,11 +357,15 @@ Der QS-Prozess bezieht sich nicht nur auf Curricula: Der SkillPilot KI-Lerncoach
 
 ![Eine Lernende wählt zwischen Erklärung, Übung und Buch; alle Zugänge unterstützen denselben Lernzielbaustein](learning-materials.png)
 
-Wir arbeiten daran, **passende Lernmaterialien an SkillPilot anzubinden** – vom Buch über YouTube-Videos bis zu Übungen. **Lehrkräfte und Lernende sollen selbst auswählen können**, welche Angebote ihren Lernweg begleiten.
+**Externe Lernmaterialien werden an das Curriculum angebunden, nicht in das Curriculum eingebaut.** Eine separate Zuordnungsebene verbindet Erklärungen, Aufgaben, Bücher, Videos und interaktive Angebote mit passenden Lernzielen und damit auch mit Lernplänen. Die Materialien können an ihren bisherigen Veröffentlichungsorten bleiben. Die gemeinsame Kompetenzstruktur bleibt unabhängig von einzelnen Anbietern und Angeboten.
 
-Für Content-Provider eröffnet das einen Weg, ihre Inhalte **an Lernziele und damit an Lernpläne anzukoppeln**. So können Verlage, Bildungsportale und andere Anbieter ihre Materialien dort zugänglich machen, wo sie beim Lernen helfen.
+**Lehrkräfte und Lernende sollen geeignete Materialien auswählen, kombinieren und wechseln können.** Lehrkräfte können dabei ihre fachliche und didaktische Erfahrung einbringen und Angebote passend zu ihrem Unterricht und den Bedürfnissen ihrer Lerngruppe zusammenstellen. Zugleich bleibt Raum für eigene Zugänge und die Materialauswahl der Lernenden. Die pädagogische Gestaltung durch Lehrende und die Selbstständigkeit der Lernenden ergänzen sich.
 
-Wir beginnen gerade mit [**Physik Libre**](https://physikbuch.schule/). Von diesem Einstieg aus entwickeln wir die Anbindung weiterer Inhalte schrittweise weiter. Curriculum und Lernfortschritt bleiben dabei unabhängig vom gewählten Content-Anbieter.
+Materialauswahl und Anbieterwechsel verändern weder die curricularen Lernziele noch bereits gespeicherte Lernstände. Die Anbindung ist optional; das Öffnen eines Materials ersetzt keinen Kompetenznachweis. Freie und kostenpflichtige Angebote nutzen denselben Architekturrahmen. Die Auswahl eines Angebots begründet weder zusätzliche Nutzungsrechte noch einen automatischen Inhaltszugriff durch die KI.
+
+**SkillPilot soll bestehende Bildungsangebote nicht vereinnahmen, sondern ihre gezielte Nutzung unterstützen.** OER-Initiativen, Verlage, Bildungsportale und andere fachkundige Beteiligte sollen ihre Materialien mit passenden Lernzielen verknüpfen können, ohne selbst ein vollständiges System zur Lernstandsführung bereitzustellen. Offene Bildungsangebote zugänglich zu machen und Menschen beim tatsächlichen Aufbau von Fähigkeiten zu begleiten, gehören dabei zusammen.
+
+Den Architekturrahmen haben wir festgelegt. Die konkrete Ausgestaltung von Zuordnungen und Austauschformaten wird an realen Angeboten erprobt und soll gemeinsam mit denjenigen weiterentwickelt werden, die Materialien erstellen und einsetzen. Wir beginnen mit [**Physik Libre**](https://physikbuch.schule/). Dieser Einstieg setzt weder eine vollständige Materialabdeckung noch einen vereinbarten Partnerstatus mit dem Anbieter voraus.
 
 *Vertiefung: [Architekturrahmen für die Contentanbindung](https://github.com/enpasos/skillpilot/blob/main/docs/concept/skill-graph/content-integration.md).*
 
@@ -376,6 +386,8 @@ Wir beginnen gerade mit [**Physik Libre**](https://physikbuch.schule/). Von dies
 
 Selbst ausprobieren, Stolperstellen finden, gemeinsam verbessern: Feedback im Cockpit wird dem Lernziel zugeordnet und bei der nächsten Überarbeitung geprüft. Lernende und Curriculum Champions bringen die Lernlandkarte so in die Praxis.
 
+**Eine Idee aus der offenen Bildungsbewegung.** Die Grundidee von SkillPilot wurde bereits 2013 auf der OER-Konferenz in Berlin unter dem Leitgedanken „Bildung in einer Landschaft aus Fähigkeiten“ vorgestellt und diskutiert. Im Mittelpunkt standen schon damals individuelle Ziele, der eigene Wissensstand und aufeinander aufbauende Fähigkeiten. Der heutige Ansatz greift diese Idee mit den Möglichkeiten moderner KI neu auf: eine gemeinsam nutzbare Wissensgrundlage mit individueller Lernbegleitung verbinden. Die [Präsentation von 2013](https://de.slideshare.net/slideshow/oer-2013-skillpilot/26948355) dokumentiert den damaligen Ansatz.
+
 Offen ist nicht nur die Software: Sie und die technische Infrastruktur stehen unter **[Apache 2.0](https://github.com/enpasos/skillpilot/blob/main/LICENSE)**. Unsere eigenen Skill-Landschaften, Aufgaben, Lernkarten, kuratierten Linkbeschreibungen, didaktischen Medien und dieses Whitepaper veröffentlichen wir unter **[CC BY 4.0](https://github.com/enpasos/skillpilot/blob/main/LICENSES/CC-BY-4.0.txt)**, soweit entsprechende Rechte bestehen und wir sie einräumen können. Drittinhalte und private Nutzerdaten gehören nicht zu diesen Freigaben; die [Abgrenzung des Lizenzumfangs](https://github.com/enpasos/skillpilot/blob/main/LICENSING.md) erläutert die Einzelheiten. Ziel ist eine offen überprüfbare und gemeinsam weiterentwickelbare Bildungsinfrastruktur, auf der Schulen, Fachleute und öffentliche Institutionen aufbauen können.
 
 - Institutionen behalten **Souveränität** über Curricula und Inhalte.
@@ -384,9 +396,13 @@ Offen ist nicht nur die Software: Sie und die technische Infrastruktur stehen un
 
 Änderungen an Curricula und Software werden über **GitHub und Pull Requests** versioniert und geprüft. Die in Abschnitt 5.1 beschriebenen Qualitätsnachweise und Praxisrückmeldungen geben dafür die Grundlage; zusätzliche institutionelle Fachreviews können darauf aufbauen.
 
-Gute individuelle Lernbegleitung soll nicht davon abhängen, wie viel Unterstützung Eltern selbst leisten oder privat finanzieren können. **SkillPilot selbst ist kostenlos.** Für den derzeitigen KI-Lerncoach-Zugang ist ein separat bezahltes Claude-Pro-Abonnement erforderlich; gegebenenfalls kommen Kosten für gewählte externe Materialien hinzu. Breite Zugänglichkeit bleibt deshalb auch eine Aufgabe für den weiteren institutionellen Ausbau.
+Gute individuelle Lernbegleitung soll nicht davon abhängen, wie viel Unterstützung Eltern selbst leisten oder privat finanzieren können. **SkillPilot selbst ist kostenlos.** Der gegenwärtige Claude-Zugang ermöglicht Erwachsenen ab 18 Jahren, den Ansatz bereits heute zu erproben; das dafür erforderliche Claude-Pro-Abonnement wird separat bezahlt.
 
-**Der nächste Schritt ist ein schulisch verantworteter, wissenschaftlich begleiteter Praxiseinsatz.** Zu prüfen ist, ob die Begleitung Verständnis, selbstständiges Problemlösen und nachhaltiges Lernen verbessert – und ob sie auch bislang unterschätzte Lernende wirksam unterstützt. Technische Funktionsfähigkeit und abgeschlossene Curriculum-QS nehmen diesen Nachweis nicht vorweg.
+**Langfristiges Ziel ist eine altersgerechte, für Schülerinnen und Schüler kostenlose Lernbegleitung einschließlich der dafür benötigten KI.** Dafür müssen geeignete Zugänge und eine tragfähige Finanzierung entstehen, die nicht auf Zahlungen der Familien angewiesen ist. Dieses Ziel ist noch nicht mit dem heutigen Erprobungszugang erreicht. Kostenpflichtige Zusatzmaterialien können eine freiwillige Wahl bleiben, dürfen aber nicht Voraussetzung eines kostenlos nutzbaren Lernwegs sein.
+
+**Der nächste Schritt ist die praktische Erprobung gemeinsam mit Lernenden, Lehrenden und Bildungspartnern.** Sie kann mit dem heutigen Zugang durch erwachsene Interessierte beginnen und gemeinsam mit OER-Initiativen, außerschulischen Bildungsangeboten und Lernbegleitern weiterentwickelt werden. Forschungspartner können die Untersuchung der pädagogischen Wirkung unterstützen; Unternehmen und Stiftungen können als Entwicklungs- oder Finanzierungspartner beitragen. Diese Möglichkeiten setzen keine bereits vereinbarten Partnerschaften voraus.
+
+Ein schulisch verantworteter Einsatz bleibt ein wichtiges Anwendungsfeld und benötigt dafür geeignete, insbesondere auch altersgerechte Zugänge. Über die unterschiedlichen Lernkontexte hinweg ist zu prüfen, ob SkillPilot Verständnis, selbstständiges Problemlösen und nachhaltiges Lernen verbessert und bislang unterschätzte Lernende wirksam unterstützt. Technische Funktionsfähigkeit, erste Nutzungserfahrungen und abgeschlossene Curriculum-QS nehmen diesen Wirksamkeitsnachweis nicht vorweg.
 
 **Initiator:**
 Träger ist die **enpasos GmbH**. Wir laden Partner ein, SkillPilot gemeinsam weiterzuentwickeln – fachlich, didaktisch und technisch.
