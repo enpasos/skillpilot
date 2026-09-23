@@ -878,7 +878,46 @@ def expect_failure(name: str, code: str, action: Any) -> None:
     fail("SELF_TEST_ACCEPTED", f"Adversarial case was accepted: {name}")
 
 
+def test_deferred_visualization_evidence() -> None:
+    # Both production paths must accept a quality hold only as a missing
+    # resource. An old live binding must never become a publishable decision.
+    import compile_curriculum_release_model as compiler
+    import validate_curriculum_release_model as validator
+
+    checks = (
+        compiler.valid_missing_visualization_evidence,
+        validator.valid_missing_visualization_evidence,
+    )
+    held = {
+        "visualizationState": "missing",
+        "missingReason": "deferred_quality_review",
+        "assetSha256": "",
+        "imageUrl": "",
+        "publicAssetPath": "",
+        "canonicalAssetPath": "",
+    }
+    for check in checks:
+        if not check(held):
+            fail("VISUALIZATION_HOLD", "A resource-free quality hold was rejected")
+        for field, value in (
+            ("assetSha256", "sha256:stale"),
+            ("imageUrl", "/assets/old.png"),
+            ("publicAssetPath", "app/public/assets/old.png"),
+            ("canonicalAssetPath", "curricula/old.png"),
+        ):
+            mutated = dict(held, **{field: value})
+            if check(mutated):
+                fail("VISUALIZATION_HOLD", f"Quality hold retained {field}")
+        for field, value in (
+            ("visualizationState", "available"),
+            ("missingReason", "unreviewed_deferral"),
+        ):
+            if check(dict(held, **{field: value})):
+                fail("VISUALIZATION_HOLD", f"Quality hold accepted {field}={value}")
+
+
 def main() -> int:
+    test_deferred_visualization_evidence()
     validators = build_validators()
     field_registry = load_json(REGISTRY_PATH)
     validate_schema(field_registry, validators, "field-semantics registry")

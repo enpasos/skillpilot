@@ -2018,6 +2018,19 @@ def compile_mapping_source_lane(
     )
 
 
+def valid_missing_visualization_evidence(record: Mapping[str, Any]) -> bool:
+    """A missing image may be deferred, but must not retain a live asset binding."""
+    return (
+        record.get("visualizationState") == "missing"
+        and record.get("missingReason")
+        in {"deferred_provider_limitation", "deferred_quality_review", "no_primary_link"}
+        and record.get("assetSha256") in {None, ""}
+        and record.get("imageUrl") in {None, ""}
+        and record.get("publicAssetPath") in {None, ""}
+        and record.get("canonicalAssetPath") in {None, ""}
+    )
+
+
 def compile_release_quality_evidence(
     publication_profile: Mapping[str, Any],
     goal_by_id: Mapping[str, Mapping[str, Any]],
@@ -2380,19 +2393,7 @@ def compile_release_quality_evidence(
         visual_goal_ids.add(goal_id)
         resource = visual_resources.get(goal_id)
         if resource is None:
-            if (
-                record.get("visualizationState") != "missing"
-                or record.get("missingReason")
-                not in {
-                    "deferred_provider_limitation",
-                    "deferred_quality_review",
-                    "no_primary_link",
-                }
-                or record.get("assetSha256") not in {None, ""}
-                or record.get("imageUrl") not in {None, ""}
-                or record.get("publicAssetPath") not in {None, ""}
-                or record.get("canonicalAssetPath") not in {None, ""}
-            ):
+            if not valid_missing_visualization_evidence(record):
                 raise CompilationError(
                     f"Goal-visualization QA has invalid missing-resource evidence for {goal_id}"
                 )
@@ -3869,7 +3870,11 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         or len(binary_records) != expected_content_counts["binaryResources"]
     ):
         raise CompilationError(
-            "Publication artifacts changed semantic-content-index conformance counts"
+            "Publication artifacts changed semantic-content-index conformance counts: "
+            f"expected {expected_content_counts}, actual "
+            f"{{'addedLogicalArtifacts': {len(publication_logical_documents)}, "
+            f"'totalLogicalArtifacts': {len(logical_records)}, "
+            f"'binaryResources': {len(binary_records)}}}"
         )
     content_index_path = "metadata/semantic-content-index.json"
     content_index = {

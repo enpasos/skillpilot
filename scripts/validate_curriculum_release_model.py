@@ -2637,6 +2637,19 @@ def build_expected_mapping_source_artifacts(
     }
 
 
+def valid_missing_visualization_evidence(record: Mapping[str, Any]) -> bool:
+    """Independently reject a deferred record that still binds an active image."""
+    return (
+        record.get("visualizationState") == "missing"
+        and record.get("missingReason")
+        in {"deferred_provider_limitation", "deferred_quality_review", "no_primary_link"}
+        and record.get("assetSha256") in {None, ""}
+        and record.get("imageUrl") in {None, ""}
+        and record.get("publicAssetPath") in {None, ""}
+        and record.get("canonicalAssetPath") in {None, ""}
+    )
+
+
 def build_expected_quality_evidence(
     context: TrustedContext,
     goal_by_id: Mapping[str, Mapping[str, Any]],
@@ -3031,17 +3044,7 @@ def build_expected_quality_evidence(
         resource = visual_resources.get(goal_id)
         if resource is None:
             require(
-                record.get("visualizationState") == "missing"
-                and record.get("missingReason")
-                in {
-                    "deferred_provider_limitation",
-                    "deferred_quality_review",
-                    "no_primary_link",
-                }
-                and record.get("assetSha256") in {None, ""}
-                and record.get("imageUrl") in {None, ""}
-                and record.get("publicAssetPath") in {None, ""}
-                and record.get("canonicalAssetPath") in {None, ""},
+                valid_missing_visualization_evidence(record),
                 f"Invalid missing visualization evidence for {goal_id}",
             )
             continue
