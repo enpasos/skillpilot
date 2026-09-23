@@ -1050,7 +1050,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(completionHandoff.has("outcomeFeedback")).isFalse();
         assertThat(completionHandoff.path("successorEvidenceReset").asBoolean()).isTrue();
         String completionText = result(completeOrdinaryGoal).path("content").toString();
-        assertThat(completionText).contains("Abschluss bestätigt", "Rückmeldung", "nicht an SkillPilot");
+        assertThat(completionText)
+                .contains("Abschluss bestätigt", "Fachliche Rückmeldung", "Gelegenheit zu Rückfragen")
+                .contains("nur bei vereinbartem Weitergehen");
         JsonNode autopilotSuccessorContext = masteryResult.path("context");
         String successorGoalId = autopilotSuccessorContext.path("activeGoal").path("goalId").asText();
         long successorStateVersion = masteryResult.path("stateVersion").asLong();
@@ -1078,15 +1080,13 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                         OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
                         OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
                         OpenAiDeV1McpContractAdapter.SET_MASTERY);
-        assertThat(completionText.indexOf(autopilotSuccessorContext
-                        .path("activeGoal")
-                        .path("title")
-                        .asText()))
-                .isGreaterThan(completionText.indexOf("Rückmeldung"));
+        assertThat(completionText)
+                .contains("Rückmeldung", "Folgezustand geladen", "nur bei vereinbartem Weitergehen")
+                .doesNotContain(autopilotSuccessorContext.path("activeGoal").path("title").asText());
 
-        // Regression for the second image in one chat: the mastery successor is
-        // already the fresh authority. Render it immediately with the successor's
-        // unchanged goal and state version, without reloading get_skillpilot_context.
+        // The confirmed mastery result is the fresh authority after the learner
+        // agreed to close and continue. Render the successor with its unchanged
+        // goal and state version, without reloading get_skillpilot_context.
         HttpResponse<String> renderAutopilotSuccessor = callTool(
                 accessToken,
                 180,

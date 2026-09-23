@@ -321,6 +321,8 @@ class OpenAiDeCoachContextProjectorTest {
                 .containsExactly("Änderungsraten deuten", "Integrale als Bestände verstehen");
         assertThat(context.instruction())
                 .contains(
+                        "Während eines offenen Abschlusses",
+                        "speichere einen fachlich belegten Abschluss vor einer neuen Aufgabe",
                         "„Dein aktives Lernziel: Warum Mathematik? – Denken, Muster & Zukunft“",
                         "Verwende den Titel, nicht die Beschreibung",
                         "Landkarte",
@@ -328,7 +330,8 @@ class OpenAiDeCoachContextProjectorTest {
                         "neugierig",
                         "beginnt erst das motivierende Gespräch",
                         "persönliche Anschlussfrage",
-                        "erst nach einer inhaltlichen Reaktion auf diese Vertiefung",
+                        "biete Rückfragen oder Abschluss an und warte auf eine weitere Antwort",
+                        "Speichere den Orientierungsabschluss erst danach",
                         "nicht zu einer unverbundenen Zielliste",
                         "keine Fachkompetenz")
                 .doesNotContain("Ein Überblick über Möglichkeiten von Analysis bis Stochastik.")
@@ -340,7 +343,8 @@ class OpenAiDeCoachContextProjectorTest {
                 .anySatisfy(policy -> assertThat(policy)
                         .contains("nur eine angebotene Möglichkeit", "noch kein Abschluss", "kein Auftrag zum Zielwechsel"))
                 .anySatisfy(policy -> assertThat(policy)
-                        .contains("aktive persönliche Anschlussfrage", "erst nach einer inhaltlichen Reaktion")
+                        .contains("aktive persönliche Anschlussfrage", "Abschlussbereitschaft")
+                        .contains("warte auf eine weitere Lernendenantwort", "Speichere erst nach dieser Zustimmung")
                         .contains("sofortiger unverbundener Zielliste ist verboten", "niemals fachliche Kompetenz"));
         assertThat(String.join("\n", context.policies()))
                 .doesNotContain("Speichere Mastery nur nach zwei unabhängigen Checks");
@@ -376,18 +380,22 @@ class OpenAiDeCoachContextProjectorTest {
                         "Data, chance and evidence-based decisions");
         assertThat(context.instruction())
                 .contains(
+                        "During a pending closure",
+                        "save any warranted completion before presenting another task or image",
                         "“Your active learning goal: Why mathematics? – Thinking, patterns & the future”",
                         "Use the title, not the description",
                         "only selects a path starts the motivational dialogue",
                         "active personal follow-up",
-                        "only after meaningful engagement with that follow-up",
+                        "invite questions or closure, and wait for a further learner answer",
+                        "Save completion only after that separate consent",
                         "never claim subject mastery")
                 .doesNotContain("An overview of possibilities from calculus to probability.");
         assertThat(context.policies())
                 .anySatisfy(policy -> assertThat(policy)
                         .contains("merely selects an offered possibility", "not completion", "not a request to switch goals"))
                 .anySatisfy(policy -> assertThat(policy)
-                        .contains("active personal follow-up", "only after meaningful engagement with that follow-up")
+                        .contains("active personal follow-up", "readiness, not the reply to a closure discussion")
+                        .contains("wait for a further learner answer", "Save completion only after that consent")
                         .contains("followed immediately by an unrelated goal list is forbidden"));
     }
 
@@ -411,11 +419,12 @@ class OpenAiDeCoachContextProjectorTest {
                         .contains("ausschließlich auf das Lernen"))
                 .anySatisfy(policy -> assertThat(policy)
                         .contains("Kompetenz noch nicht gezeigt", "bleibe beim aktiven Ziel")
-                        .contains("Zusatzfrage", "gezielten Hinweis oder Teilschritt", "neue Evidenz"));
+                        .contains("Zusatzfrage", "gezielten Hinweis oder Teilschritt", "neue Evidenz")
+                        .contains("neue Aufgabe erst nach Rückmeldung und Zustimmung zum Weitergehen"));
     }
 
     @Test
-    void teachingAndExamPoliciesKeepAssessmentFeedbackInTheConversationInBothLocales() {
+    void teachingAndExamPoliciesRequireFeedbackAndConsentBeforeCompletionInBothLocales() {
         OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
                 new CoachStateProjection("https://skillpilot.test"), "https://skillpilot.test");
         for (String locale : List.of("de", "en")) {
@@ -427,6 +436,24 @@ class OpenAiDeCoachContextProjectorTest {
                 assertThat(policies).contains(locale.equals("de")
                         ? "Antworten, Bewertungsbegründungen und Rückmeldungen bleiben"
                         : "assessment reasoning and feedback stay");
+                assertThat(policies).contains(locale.equals("de")
+                        ? "unabhängig von der Autopilot-Einstellung"
+                        : "with or without autopilot");
+                assertThat(policies).contains(locale.equals("de")
+                        ? "Gib zuerst konkrete Rückmeldung, biete Rückfragen oder Abschluss an und warte die Antwort ab"
+                        : "first give concrete feedback, invite questions or closure, and wait for the learner's reply");
+                assertThat(policies).contains(locale.equals("de")
+                        ? "Eine neue Aufgabe oder ihr Lernbild erscheint erst nach erkennbarer Zustimmung zum Weitergehen"
+                        : "Show the next task or its image only after recognizable agreement to continue");
+                assertThat(policies).contains(locale.equals("de")
+                        ? "genügt eine gemeinsame Rückfrage"
+                        : "ask one combined closure question");
+                assertThat(policies).contains(locale.equals("de")
+                        ? "ohne eine nächste Aufgabe zu unterstellen"
+                        : "without presuming another task");
+                assertThat(policies).contains(locale.equals("de")
+                        ? "biete Rückfragen oder Abschluss an und warte auf Zustimmung"
+                        : "invite questions or closure, and wait for consent");
                 assertThat(context.instruction() + policies)
                         .doesNotContain("workFeedback", "outcomeFeedback", "always pass concrete feedback",
                                 "Übergib beim Abschluss immer", "earnedPoints plus complete work");
@@ -520,6 +547,7 @@ class OpenAiDeCoachContextProjectorTest {
                 .doesNotContain(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD);
         assertThat(german.instruction())
                 .contains(
+                        "Während Rückmeldung, Rückfragen oder einer Pause biete keinen neuen Lernmodus an",
                         "„Dein aktives Lernziel: Lernkarten – Funktionen und Gleichungen“",
                         "bestätigt das Karteikartenlernen",
                         OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
@@ -532,6 +560,7 @@ class OpenAiDeCoachContextProjectorTest {
                 .doesNotContain("SRS-Kartendrill");
         assertThat(english.instruction())
                 .contains(
+                        "During feedback, follow-up questions or a pause, offer no new learning mode",
                         "“Your active learning goal: Lernkarten – Funktionen und Gleichungen”",
                         "confirms normal flashcard learning",
                         OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
@@ -581,9 +610,10 @@ class OpenAiDeCoachContextProjectorTest {
         assertThat(context.instruction())
                 .contains(
                         "„Dein aktives Lernziel: Zwischen Tabelle, Graph und Term wechseln“",
-                        "unmittelbar",
-                        "biete keine anderen Lernziele an",
-                        "keine weitere Bestätigung")
+                        "wenn keine Abschlussfrage zum bisherigen Inhalt offen ist",
+                        "weitergehen möchte",
+                        "Biete keine anderen Lernziele an",
+                        "Zustimmung zum Abschluss")
                 .doesNotContain(alternativeOne.title(), alternativeTwo.title());
         assertThat(english.frontier()).isEmpty();
         assertThat(english.nextAllowedTools())
@@ -594,9 +624,10 @@ class OpenAiDeCoachContextProjectorTest {
                 .contains(
                         "“Your active learning goal: Zwischen Tabelle, Graph und Term wechseln”",
                         "already been selected by SkillPilot",
-                        "Begin it immediately",
-                        "do not offer other learning goals",
-                        "do not ask for further confirmation")
+                        "only when no earlier task or goal closure is pending",
+                        "learner wants to continue",
+                        "Do not offer other learning goals",
+                        "learner consent to close")
                 .doesNotContain(alternativeOne.title(), alternativeTwo.title());
     }
 

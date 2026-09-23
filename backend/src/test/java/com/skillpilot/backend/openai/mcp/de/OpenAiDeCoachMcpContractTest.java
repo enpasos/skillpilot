@@ -1168,18 +1168,25 @@ class OpenAiDeCoachMcpContractTest {
                         + "before learner-facing SkillPilot coaching")
                 .contains("A successful state-changing tool result that contains its full successor context also "
                         + "satisfies the requirement")
-                .contains("Do not insert get_skillpilot_context or another SkillPilot tool before the required "
+                .contains("Do not insert get_skillpilot_context or another SkillPilot tool before an authorized "
                         + "renderer")
                 .contains("continuation.action=renderGoalVisualizationThenTeachActiveGoal is the sole cross-flow "
                         + "exception")
                 .contains("use its continuation.toolCall as this one required render call")
                 .contains("do not derive a second call from context")
-                .contains("A successful mastery result is the one ordering exception")
-                .contains("first give concrete learner-facing feedback on the completed goal using the conversation")
-                .contains("Generate feedback entirely in the chat")
+                .contains("Completing any task is a conversational boundary in both autopilot modes")
+                .contains("first give concrete feedback on the completed work")
+                .contains("offer questions or a natural close and next step, and wait for the learner's reply")
+                .contains("Do not introduce the next task or its image in that feedback response")
+                .contains("one combined closure question, not two confirmation rounds")
+                .contains("A solved task alone never proves goal mastery")
+                .contains("wait before calling set_skillpilot_mastery")
+                .contains("A natural reply such as “Alles klar, weiter”")
+                .contains("During feedback or while task/goal closure is awaiting a reply, do not render")
                 .contains("completionHandoff contains only confirmed completion facts")
-                .contains("only then begin the already activated successor")
-                .contains("Never call get_skillpilot_navigation or set_skillpilot_active_goal")
+                .contains("begin an already activated successor only if the learner also wants to continue")
+                .contains("otherwise acknowledge the actual end or pause without showing successor content or image")
+                .contains("Do not call get_skillpilot_navigation or set_skillpilot_active_goal")
                 .contains("invented learning path")
                 .contains("Assess meaning rather than wording")
                 .contains("alternative methods")
@@ -1189,10 +1196,10 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("Load all expected answers once with batchCapability")
                 .contains("one ordered assessment per answer in one atomic call with gradingCapability")
                 .contains("Never invent counts, expose answers early, use per-card tools, grade from memory")
-                .contains("Follow the confirmed continuation immediately")
+                .contains("Follow the confirmed continuation if the learner agreed to continue")
                 .contains("For renderGoalVisualizationThenTeachActiveGoal, call its toolCall once next")
                 .contains("adding only the current learningSessionId")
-                .contains("then teach in the same response; never reload or retry")
+                .contains("when continuation was agreed, then teach; never reload or retry")
                 .contains("permanent SkillPilot IDs")
                 .contains("exact activeGoal.title")
                 .contains("“Dein aktives Lernziel: <Titel>”")
@@ -1215,7 +1222,9 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("merely names one path starts the motivational dialogue")
                 .contains("not completion evidence")
                 .contains("one active personal follow-up")
-                .contains("only after the learner meaningfully engages with that tailored follow-up")
+                .contains("Meaningful engagement with the tailored follow-up or an explicit request to skip onward "
+                        + "supplies an orientation completion basis, not the final closure reply")
+                .contains("wait for the learner's next answer before saving")
                 .contains("pass its exact pathId unchanged as orientationPathId")
                 .contains("unrelated next-goal options is forbidden")
                 .contains("Do not test prior knowledge")
@@ -1283,6 +1292,9 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("unrelated frontier options")
                 .contains("test details")
                 .contains("claim subject mastery")
+                .contains("only after adequate goal evidence, concrete feedback, an opportunity for questions")
+                .contains("learner's recognizable agreement to close")
+                .contains("one combined closure answer suffices")
                 .contains("For ordinary content goals, call only after two independent");
 
         assertThat(spec(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION).tool().description())
@@ -1331,8 +1343,11 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("jeden Abzug konkret")
                 .contains("ohne Nachfrage")
                 .contains("erfinde daraus keinen konkreten fachlichen Fehler")
+                .contains("Rückfragen oder Abschluss", "separate Antwort")
+                .contains("Zustimmung zum Abschluss")
                 .contains("evaluationCapability", "earnedPoints")
                 .doesNotContain("workFeedback", "outcomeFeedback");
+        assertThat(result.content().toString()).contains("warte auf die Antwort zur Abschlussfrage");
         verify(identityResolver, never()).requireWriteAccess(any());
     }
 
@@ -1420,7 +1435,8 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(objectMapper.valueToTree(payload.completionHandoff()).has("outcomeFeedback")).isFalse();
         assertThat(payload.completionHandoff().successorGoalTitle()).isEqualTo(successor.title());
         assertThat(passingScore.content().toString())
-                .contains("Bestätigte Punktzahl: 5 von 10", successor.title());
+                .contains("Bestätigte Punktzahl: 5 von 10", "Folgezustand geladen")
+                .doesNotContain(successor.title());
         verify(coachTools).setMastery(eq(LEARNER_ID), any(MasteryUpdateRequest.class));
     }
 
@@ -1543,15 +1559,15 @@ class OpenAiDeCoachMcpContractTest {
                 .contains(
                         "Fresh authoritative successor state",
                         "invalidates every goal option",
-                        "continue it without offering a goal choice",
-                        "only after presenting completionHandoff");
+                        "only if the learner agreed to continue",
+                        "closure-only or pause request must not show the successor task or image");
         assertThat(payload.completionHandoff().completedGoalId()).isEqualTo(completed.id());
         assertThat(payload.completionHandoff().completedGoalTitle()).isEqualTo(completed.title());
         assertThat(objectMapper.valueToTree(payload.completionHandoff()).has("workFeedback")).isFalse();
         assertThat(objectMapper.valueToTree(payload.completionHandoff()).has("outcomeFeedback")).isFalse();
         assertThat(payload.completionHandoff().successorGoalTitle()).isEqualTo(successor.title());
         assertThat(payload.completionHandoff().instruction())
-                .contains("im Chat konkrete Rückmeldung", "ausschließlich im Chat", "Beginne erst anschließend");
+                .contains("vereinbarten Abschluss", "Rückfragen erfolgten vor diesem Speichern", "nur bei vereinbartem Weitergehen");
         assertThat(payload.completionHandoff().successorEvidenceReset()).isTrue();
         assertThat(payload.completionHandoff().earnedPoints()).isNull();
         assertThat(payload.completionHandoff().maxPoints()).isNull();
@@ -1570,17 +1586,15 @@ class OpenAiDeCoachMcpContractTest {
                 .contains(
                         successor.title(),
                         "bereits von SkillPilot ausgewählt",
-                        "Beginne jetzt unmittelbar",
+                        "Beginne nur dann damit",
+                        "wenn keine Abschlussfrage zum bisherigen Inhalt offen ist",
                         "keine anderen Lernziele",
-                        "keine weitere Bestätigung");
+                        "Zustimmung zum Abschluss");
         String completionSummary = ((McpSchema.TextContent) result.content().getFirst()).text();
         assertThat(completionSummary)
-                .contains("Abschluss bestätigt", "Rückmeldung", "nicht an SkillPilot")
-                .contains(successor.title(), "bereits aktiviert", "keine Lernzielauswahl")
-                .doesNotContain(unrelated.title());
-        int feedbackInstructionIndex = completionSummary.indexOf("Rückmeldung");
-        int successorIndex = completionSummary.indexOf(successor.title());
-        assertThat(successorIndex).isGreaterThan(feedbackInstructionIndex);
+                .contains("Abschluss bestätigt", "Fachliche Rückmeldung", "Gesprächsinhalte bleiben im Chat")
+                .contains("Folgezustand geladen", "nur bei vereinbartem Weitergehen")
+                .doesNotContain(successor.title(), unrelated.title());
         McpSchema.CallToolResult accidentalNavigation = call(
                 OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
                 Map.of("target", "goal"));
@@ -2327,6 +2341,8 @@ class OpenAiDeCoachMcpContractTest {
 
         assertThat(answers.isError()).isFalse();
         assertThat(result.isError()).isFalse();
+        assertThat(answers.content().toString())
+                .contains("Rückfragen oder Abschluss", "warte auf die Antwort", "erst nach Zustimmung");
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS, answers);
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, result);
         assertThat(answerPayload.answers())
@@ -2434,6 +2450,8 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(receipt.context().instruction()).isNull();
         assertThat(receipt.context().requiredAction()).isNull();
         assertThat(receipt.continuation().action()).isEqualTo("chooseMemoryMode");
+        assertThat(receipt.continuation().instruction())
+                .contains("nur bei vereinbartem Weitergehen", "Bei einer Pause bestätige nur den Abschluss");
         assertThat(objectMapper.valueToTree(result.structuredContent())
                         .path("continuation")
                         .has("toolCall"))
@@ -2550,6 +2568,7 @@ class OpenAiDeCoachMcpContractTest {
         var receipt = structured(result, OpenAiDeV1McpContractAdapter.RecallResultsReceipt.class);
         assertThat(receipt.continuation().action()).isEqualTo("followLearningPlanGuidance");
         assertThat(receipt.continuation().instruction()).contains("context.learningPlanToday.guidance")
+                .contains("Bei einer Pause bestätige nur den Abschluss")
                 .doesNotContain("Nur die harte Kartenprüfung ist für heute beendet");
         assertThat(receipt.continuation().consentRequired()).isTrue();
         assertThat(receipt.continuation().toolCall()).isNull();

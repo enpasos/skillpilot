@@ -110,6 +110,7 @@ export const publicationFiles = [
   "README.md",
   "SETUP.md",
   "skills/skillpilot-coach-v1/SKILL.md",
+  "skills/skillpilot-coach-v1/references/task-closure.md",
   "skills/skillpilot-coach-v1/references/verified-recall.md",
 ];
 
@@ -167,6 +168,7 @@ export function validateClaudePluginPackage(root = packageRoot) {
   }
 
   const skillText = text.get("skills/skillpilot-coach-v1/SKILL.md");
+  const taskClosureText = text.get("skills/skillpilot-coach-v1/references/task-closure.md");
   const verifiedRecallText = text.get("skills/skillpilot-coach-v1/references/verified-recall.md");
   const readmeText = text.get("README.md");
   const setupText = text.get("SETUP.md");
@@ -239,6 +241,7 @@ export function validateClaudePluginPackage(root = packageRoot) {
   );
   errors.push(...validateClaudeCoachInstructions({
     skill: skillText,
+    taskClosure: taskClosureText,
     recall: verifiedRecallText,
   }));
   check(

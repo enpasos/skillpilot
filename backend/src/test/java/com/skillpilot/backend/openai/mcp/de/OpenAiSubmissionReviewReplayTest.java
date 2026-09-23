@@ -25,14 +25,19 @@ class OpenAiSubmissionReviewReplayTest {
 
     @Test
     void p2OrientationThenLearning() throws Exception {
+        // The separate learner closure turn is checked by the dialog evaluator; these
+        // backend fixtures verify the authorized transition and no-next-goal case.
         fixture().contextUsesRealContentAndStructuredContentWithoutLearnerIdSecretsOrExamSolution();
         fixture().orientationCompletionActivatesTheFirstAvailableGoalFromTheSelectedAuthoritativePath();
         fixture().orientationCompletionRejectsAPathOutsideTheCurrentAuthoritativeMap();
+        fixture().plannedOrientationCompletionStopsAtQuotaDespiteSelectedPathEntry();
         fixture().masteryContinuesTheAutoActivatedSuccessorWithoutPublishingAnotherGoalChoice();
     }
 
     @Test
     void p3PracticeAndVerifiedRecall() throws Exception {
+        // The dialog case places feedback after answer release and records the batch
+        // only on the later learner closure turn. This replay checks the backend receipt.
         fixture().memoryPracticeStartHidesCardContentsFromTheModelAndExposesThemOnlyToTheComponent();
         fixture().validMemoryPracticeReviewCapabilityAuthorizesExactlyItsIssuedCard();
         fixture().capabilityBoundRecallFlowLoadsAllAnswersAndSavesOneAtomicOrderedReceipt();
@@ -42,6 +47,8 @@ class OpenAiSubmissionReviewReplayTest {
 
     @Test
     void p4CompleteExamAssessment() {
+        // The dialog case evaluates the full submission before feedback and saves
+        // mastery only after the separate learner closure turn.
         fixture().examMasteryRequiresEvaluationCapabilityAndAtLeastThePassingScore();
     }
 

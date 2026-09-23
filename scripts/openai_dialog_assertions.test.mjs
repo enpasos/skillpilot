@@ -70,27 +70,45 @@ test('negative cases count blocked forbidden attempts, not only successful mutat
   }
 })
 
-test('orientation cannot complete on a bare interest even when overall tool order is right', () => {
+test('P2 orientation completion waits for a separate learner reply after the positive closure', () => {
   const c = getCase('P2')
   const good = base(c)
-  insert(good, 'continue', tool('continue', 'set_skillpilot_mastery', { context: { learningState: 'ACTIVE', activeGoal: { goalId: 'g2' } }, stateVersion: 2 }, { expectedStateVersion: 1 }))
+  insert(good, 'closure', tool('closure', 'set_skillpilot_mastery', { context: { learningState: 'ACTIVE', activeGoal: { goalId: 'g2' } }, stateVersion: 2 }, { expectedStateVersion: 1 }))
   assert.equal(evaluateDialogCase(c, good).passed, true)
-  const bad = base(c)
-  insert(bad, 'interest', tool('interest', 'set_skillpilot_mastery', {}, { expectedStateVersion: 1 }))
-  assert.equal(failed(evaluateDialogCase(c, bad), 'orientation-consent'), true)
+  for (const earlyTurn of ['interest', 'example', 'continue']) {
+    const bad = base(c)
+    insert(bad, earlyTurn, tool(earlyTurn, 'set_skillpilot_mastery', {}, { expectedStateVersion: 1 }))
+    assert.equal(failed(evaluateDialogCase(c, bad), 'orientation-consent'), true, earlyTurn)
+  }
+  const beforeConsent = base(c)
+  beforeConsent.find(event => event.name === 'get_skillpilot_context' && event.turnId === 'continue').result.structuredContent.goalVisualization = { goalId: 'g2' }
+  insert(beforeConsent, 'continue', tool('continue', 'render_skillpilot_goal_visualization', {}, { goalId: 'g2', expectedStateVersion: 1 }))
+  assert.equal(failed(evaluateDialogCase(c, beforeConsent), 'successor-image-consent'), true)
+  const orientationImage = base(c)
+  orientationImage.find(event => event.name === 'get_skillpilot_context' && event.turnId === 'start').result.structuredContent.goalVisualization = { goalId: 'g1' }
+  insert(orientationImage, 'start', tool('start', 'render_skillpilot_goal_visualization', {}, { goalId: 'g1', expectedStateVersion: 1 }))
+  insert(orientationImage, 'closure', tool('closure', 'set_skillpilot_mastery', { context: { learningState: 'ACTIVE', activeGoal: { goalId: 'g2' } }, stateVersion: 2 }, { expectedStateVersion: 1 }))
+  assert.equal(evaluateDialogCase(c, orientationImage).passed, true)
 })
 
-test('P4 timing, current evaluation receipt and exact fixture score are checked independently of counts', () => {
+test('P4 scores after submission, then waits for a separate closure reply before saving mastery', () => {
   const c = getCase('P4')
   const evaluation = tool('submission', 'get_skillpilot_exam_evaluation', { goalId: 'exam', evaluationCapability: 'fixture-cap', scoring: { maxPoints: 25, passingPoints: 13 }, stateVersion: 1 })
-  const mastery = tool('submission', 'set_skillpilot_mastery', {}, { expectedStateVersion: 1, goalId: 'exam', evaluationCapability: 'fixture-cap', earnedPoints: 25 })
+  const mastery = tool('closure', 'set_skillpilot_mastery', {}, { expectedStateVersion: 1, goalId: 'exam', evaluationCapability: 'fixture-cap', earnedPoints: 25 })
   const good = base(c)
-  insert(good, 'submission', evaluation, mastery)
+  insert(good, 'submission', evaluation)
+  insert(good, 'closure', mastery)
   assert.equal(evaluateDialogCase(c, good).passed, true)
   const early = base(c)
   insert(early, 'task', { ...evaluation, turnId: 'task' })
-  insert(early, 'submission', mastery)
+  insert(early, 'submission', { ...mastery, turnId: 'submission' })
   assert.equal(failed(evaluateDialogCase(c, early), 'exam-submission'), true)
+  const prematureSave = base(c)
+  insert(prematureSave, 'submission', evaluation, { ...mastery, turnId: 'submission' })
+  assert.equal(failed(evaluateDialogCase(c, prematureSave), 'exam-closure-consent'), true)
+  const prematureImage = base(c)
+  insert(prematureImage, 'submission', tool('submission', 'render_skillpilot_goal_visualization', {}, { goalId: 'next-goal', expectedStateVersion: 1 }))
+  assert.equal(failed(evaluateDialogCase(c, prematureImage), 'feedback-image-gate'), true)
   const wrongScore = structuredClone(good)
   wrongScore.find(event => event.name === 'set_skillpilot_mastery').arguments.earnedPoints = 13
   assert.equal(failed(evaluateDialogCase(c, wrongScore), 'exam-score'), true)
@@ -143,6 +161,29 @@ test('P3 cannot impersonate a component or release recall answers before the ans
   const rating = tool('rate', 'review_skillpilot_memory_practice_card', {}, {}, { actor: 'component' })
   const rated = [...events.slice(0, events.findIndex(event => event.turnId === 'rate') + 1), rating]
   assert.equal(evaluateDialogCase(c, rated).checks.filter(entry => entry.id.startsWith('tool-actor')).at(-1).passed, true)
+})
+
+test('P3 separates orientation agreement and verified recall feedback from their writes', () => {
+  const c = getCase('P3')
+  const earlyOrientation = base(c)
+  insert(earlyOrientation, 'continue', tool('continue', 'set_skillpilot_mastery', {}, { expectedStateVersion: 1 }))
+  assert.equal(failed(evaluateDialogCase(c, earlyOrientation), 'orientation-consent'), true)
+  const earlyOrientationImage = base(c)
+  insert(earlyOrientationImage, 'continue', tool('continue', 'render_skillpilot_goal_visualization', {}, { goalId: 'successor', expectedStateVersion: 1 }))
+  assert.equal(failed(evaluateDialogCase(c, earlyOrientationImage), 'successor-image-consent'), true)
+  const agreedOrientation = base(c)
+  insert(agreedOrientation, 'orientation-closure', tool('orientation-closure', 'set_skillpilot_mastery', {}, { expectedStateVersion: 1 }))
+  assert.equal(failed(evaluateDialogCase(c, agreedOrientation), 'orientation-consent'), false)
+
+  const prematureResults = base(c)
+  insert(prematureResults, 'answers', tool('answers', 'record_skillpilot_verified_recall_results'))
+  assert.equal(failed(evaluateDialogCase(c, prematureResults), 'recall-closure-consent'), true)
+  const agreedResults = base(c)
+  insert(agreedResults, 'recall-closure', tool('recall-closure', 'record_skillpilot_verified_recall_results'))
+  assert.equal(failed(evaluateDialogCase(c, agreedResults), 'recall-closure-consent'), false)
+  const prematureImage = base(c)
+  insert(prematureImage, 'answers', tool('answers', 'render_skillpilot_goal_visualization', {}, { goalId: 'next-goal', expectedStateVersion: 1 }))
+  assert.equal(failed(evaluateDialogCase(c, prematureImage), 'feedback-image-gate'), true)
 })
 
 test('image authority and version are not inferred from a successful renderer response', () => {

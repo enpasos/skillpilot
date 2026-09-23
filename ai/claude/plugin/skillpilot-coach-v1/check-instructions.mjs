@@ -4,12 +4,13 @@
 export const instructionByteLimits = Object.freeze({
   // Includes the exam workflow so Claude need not load a second skill/file.
   skill: 15 * 1024,
+  taskClosure: 2 * 1024,
   recall: 3 * 1024,
 });
 
-export function validateClaudeCoachInstructions({ skill, recall }) {
+export function validateClaudeCoachInstructions({ skill, taskClosure, recall }) {
   const errors = [];
-  const documents = { skill, recall };
+  const documents = { skill, taskClosure, recall };
   const check = (condition, message) => {
     if (!condition) errors.push(message);
   };
@@ -47,6 +48,7 @@ export function validateClaudeCoachInstructions({ skill, recall }) {
   const coaching = sections["Coaching and completion"] ?? "";
   const navigation = sections["Navigation and specialized practice"] ?? "";
   const accessible = sections["Accessible tasks and failures"] ?? "";
+  const closureWorkflow = normalize(taskClosure);
   const recallWorkflow = normalize(recall);
   const examWorkflow = sections.Exams ?? "";
   const requireRule = (owner, name, patterns) => {
@@ -57,6 +59,7 @@ export function validateClaudeCoachInstructions({ skill, recall }) {
   requireRule(normalize(skill), "conditional-workflows", [
     /read a linked workflow only when its entry condition applies/iu,
     /not during ordinary startup/iu,
+    /When a task may finish, read \[task-closure\.md\]\(references\/task-closure\.md\) before replying or writing/iu,
     /Verified Recall:.+?before starting or resuming.+?read.+?references\/verified-recall\.md/iu,
     /Exam: follow the Exams section below instead of ordinary coaching/iu,
     /It is already loaded; no separate skill or reference-file lookup is needed/iu,
@@ -107,6 +110,9 @@ export function validateClaudeCoachInstructions({ skill, recall }) {
     /each previously unseen pair.+?render_skillpilot_goal_visualization exactly once as the immediate next SkillPilot tool, before any learner-facing response/iu,
     /Copy the pair to goalId and expectedStateVersion/iu,
     /also applies to write-returned contexts and voice mode/iu,
+    /While closure is pending, render nothing; after goal or Recall consent, write the completion before rendering/iu,
+    /Assess submitted work before rendering; closure feedback never renders/iu,
+    /successor rendering waits for closure consent/iu,
     /repeated pair causes no automatic render/iu,
     /never retry a render automatically after success or error/iu,
     /explicit request to show the image again, reload context once and make one new render/iu,
@@ -114,7 +120,7 @@ export function validateClaudeCoachInstructions({ skill, recall }) {
     /do not invent image details or expose its URLs\/metadata/iu,
   ]);
   requireRule(plans, "intent-priority", [
-    /Pause\/stop: acknowledge and stop, without writes or an unsolicited summary/iu,
+    /Pause\/stop: acknowledge and stop without writes or unsolicited summary, except when closure was expressly accepted; then persist only that completion/iu,
     /Do not claim saved plans were disabled/iu,
     /Status only: quote learningPlanToday\.text verbatim and stop; do not resume, switch, activate a goal or set a task/iu,
     /Explicit subject:.+?without first resuming another subject/iu,
@@ -127,7 +133,8 @@ export function validateClaudeCoachInstructions({ skill, recall }) {
     /explicit request to learn further permits resume at guidance\.state=complete, blocked or unavailable whenever resumeAvailable=true/iu,
     /With an active unmastered goal, teach it directly/iu,
     /visualization rule to its full context before speaking/iu,
-    /Do not substitute a WebGUI Weiterlernen button or another confirmation/iu,
+    /No extra start confirmation when no closure is pending/iu,
+    /WebGUI Weiterlernen button never replaces consent to offered closure/iu,
   ]);
   requireRule(plans, "plan-never-blocks-learning", [
     /A plan guides and prioritizes; it must never prevent learning/iu,
@@ -171,7 +178,8 @@ export function validateClaudeCoachInstructions({ skill, recall }) {
   requireRule(plans, "goal-announcement", [
     /Start teaching an active goal with learningPlanToday\.activeGoalAnnouncement verbatim, once/iu,
     /not before every task and not for a status-only question/iu,
-    /After a completion: feedback, changed status, then the successor's announcement/iu,
+    /After goal closure consent: confirmed completion, changed status, then any successor's announcement/iu,
+    /never announce it during closure feedback/iu,
   ]);
   requireRule(plans, "daily-guidance", [
     /learningPlanToday\.guidance\.state and \.instruction/iu,
@@ -196,28 +204,54 @@ export function validateClaudeCoachInstructions({ skill, recall }) {
     /it never blocks explicitly requested learning/iu,
   ]);
   requireRule(coaching, "ordinary-evidence", [
-    /ordinary competency,.+?small diagnostic task and adapt to the response/iu,
-    /set_skillpilot_mastery only when spoken\/written learner work in this conversation/iu,
-    /active competency through two independent checks or one genuine multi-step transfer task/iu,
-    /Self-report, praise, a copied solution, repetition or a heavily guided answer is insufficient/iu,
-    /mixed evidence calls for a targeted check/iu,
-    /Completion is binary, not a model-chosen grade/iu,
-    /concrete feedback after confirmed persistence/iu,
-    /backend alone selects its successor/iu,
-    /Never record ordinary mastery for a memory goal/iu,
-    /Correction, lowering or withdrawal of completion belongs in the Cockpit/iu,
+    /For ordinary competencies, prefer understanding and transfer/iu,
+    /Require two independent checks or genuine multi-step transfer before mastery/iu,
+    /self-report, copied solutions, repetition and heavily guided answers do not suffice/iu,
+    /Completion is binary/iu,
+    /Never set manual mastery for a memory goal/iu,
+    /backend selects successors/iu,
+    /correction or withdrawal belongs in the Cockpit/iu,
+  ]);
+  requireRule(coaching, "deliberate-closure", [
+    /When a task may finish, read \[task-closure\.md\]\(references\/task-closure\.md\) before replying or writing/iu,
+    /With autopilot on or off: give feedback, invite questions or closure, and wait/iu,
+    /If task and goal finish together, ask one combined closure question/iu,
+    /Do not write set_skillpilot_mastery, start the next task, or render its image before consent/iu,
+    /A solved task alone does not prove goal mastery/iu,
+  ]);
+  requireRule(closureWorkflow, "closure-workflow", [
+    /Read when work may finish a task/iu,
+    /what the learner showed, what succeeded, and what remains open/iu,
+    /One correct task answer does not prove the goal/iu,
+    /If the current task is incomplete, explain the gap and continue it or offer a targeted check/iu,
+    /offer questions or closure and wait for the learner's answer/iu,
+    /summarize both in one combined closure question\. One answer suffices/iu,
+    /At the end of a unit, offer an appropriate ending without assuming a next task/iu,
+    /Do not start or describe another task or goal, show its image, or call a renderer that would reveal it during this feedback turn/iu,
+    /Clarify questions about the current work.+?A pause starts nothing/iu,
+    /If a question reveals a misunderstanding, check the missing idea again before offering successful closure/iu,
+    /An explanation or hint inside an unfinished task needs no closure round/iu,
+    /A natural “Alles klar, weiter” after this offer is consent to closure and continuation/iu,
+    /If only the task ended, start the next task within the same active goal only when continuation was requested/iu,
+    /Closure with a pause closes the current work without starting another task or rendering a new image/iu,
+    /set_skillpilot_mastery only now with fresh authorized state/iu,
+    /If the learner chose to continue, use the confirmed successor context and render its image before teaching/iu,
+    /If they chose a pause, acknowledge closure and defer the image until a later explicit continuation with fresh context/iu,
+    /Do not ask for a second confirmation/iu,
+    /Consent cannot replace subject evidence; an unconfirmed write is not completion/iu,
+    /same order with autopilot enabled or disabled/iu,
   ]);
   requireRule(coaching, "orientation-not-assessment", [
     /Orientation is motivation, not subject assessment/iu,
-    /only a published outlook.+?without one remain general, inventing no paths or promised outcomes/iu,
-    /interest choice starts a tailored follow-up, not completion/iu,
-    /connect it to what the learner can understand, explore or do,.+?low-pressure reaction/iu,
-    /Do not test knowledge or correctness/iu,
-    /Complete only after a meaningful response to that follow-up or an explicit request to continue directly/iu,
+    /Use only a published outlook; invent no paths or outcomes/iu,
+    /A path choice starts a tailored follow-up/iu,
+    /invite a low-pressure reaction, without testing knowledge/iu,
+    /Meaningful engagement or a direct-continue request is orientation evidence, never advance consent before feedback/iu,
+    /a bare path choice is neither/iu,
+    /Give non-assessing feedback, offer questions or closure, and wait for a separate learner response/iu,
     /Klingt gut.+?alone is insufficient/iu,
-    /Machen wir so, dann fangen wir einfach an.+?expresses readiness/iu,
-    /set_skillpilot_mastery immediately, before further speech\/text, without another confirmation or narrated completion/iu,
-    /never describe orientation as subject mastery/iu,
+    /Only after consent call set_skillpilot_mastery/iu,
+    /never call orientation subject mastery/iu,
   ]);
   requireRule(navigation, "learner-agency", [
     /get_skillpilot_navigation_options only for a requested broader focus change or inspection/iu,
@@ -271,15 +305,19 @@ export function validateClaudeCoachInstructions({ skill, recall }) {
   ]);
   requireRule(recallWorkflow, "recall-results", [
     /Compare each answer against its matching expected answer/iu,
-    /Keep card-specific feedback in the conversation/iu,
+    /Give concrete card-specific feedback in the conversation, offer questions or closure of this batch, and wait for the learner's answer/iu,
+    /Questions stay with the just-graded cards; a pause starts nothing/iu,
+    /Consent alone does not turn an incorrect answer into a pass/iu,
+    /After recognizable consent, call record_skillpilot_verified_recall_results/iu,
     /record_skillpilot_verified_recall_results once with the full original-order result/iu,
     /exactly cardId and passed for every card/iu,
     /unchanged returned grading authorization/iu,
     /Do not add model-selected state\/retry fields or send a partial batch/iu,
-    /Follow the server's canonical continuation immediately/iu,
+    /Follow the server's canonical continuation after that accepted batch write only if the learner agreed to continue/iu,
     /stop when the continuation is waiting or complete/iu,
+    /If the learner asked to close and pause, acknowledge the closure without showing another batch or image/iu,
     /Do not manufacture a separate per-card technical loop/iu,
-    /After confirmed memory-goal completion, use the returned full successor context and its required visualization\/period guidance/iu,
+    /After confirmed memory-goal completion, use the returned full successor context and its required visualization\/period guidance only when continuing was agreed/iu,
     /teach the backend-selected goal or acknowledge the reached period target/iu,
     /Do not continue the old memory goal or record memory mastery separately/iu,
   ]);
@@ -317,10 +355,11 @@ export function validateClaudeCoachInstructions({ skill, recall }) {
     /sample solution is non-exclusive/iu,
     /equally correct methods, representations, rounding and explanations receive equal credit/iu,
     /never infer a subject error from illegible content/iu,
-    /Grade the submission conclusively without follow-up coaching questions/iu,
-    /Only for a final passing result, call set_skillpilot_mastery/iu,
+    /Grade conclusively without coaching questions that change the grade/iu,
+    /Report the assessment result and concrete feedback, offer questions and closure, then wait/iu,
+    /Only after the learner accepts closure of a final passing result, call set_skillpilot_mastery/iu,
     /unchanged evaluation authorization and earned numeric points required by its schema/iu,
-    /failed result is not completion/iu,
+    /failed result is not goal completion/iu,
   ]);
   requireRule(examWorkflow, "exam-visual-fallback", [
     /authoritative exam visual is necessary but unavailable, pause the exam/iu,

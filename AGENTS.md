@@ -277,8 +277,9 @@ The UI maintains a **mastery value per goal**:
 
 For goals authoritatively classified as `semanticKind: "orientation"`, this
 numeric field is only a compatibility completion marker: `1` means that the
-learner received the motivation/orientation and either explicitly chose to
-continue or actively engaged in a tailored motivational follow-up. Merely
+learner received the motivation/orientation, either explicitly wished to
+continue or actively engaged in a tailored motivational follow-up, and then
+accepted a separate coach offer to close after a positive summary. Merely
 repeating or selecting one of the possibilities offered by the coach starts
 that follow-up; it does not complete the orientation. The coach must connect
 the selected interest to concrete things the learner can understand, explore,
@@ -293,9 +294,10 @@ This is currently:
 
 - set **manually via UI controls** (slider + quick buttons) **for non‑SRS goals**,
 - stored as the binary completion marker `1` for orientation goals only after
-  the learner has answered the tailored motivational follow-up or explicitly
-  expressed willingness to leave the orientation and continue; a bare label
-  chosen from the coach's possibilities is not sufficient,
+  a meaningful answer to the tailored motivational follow-up or an explicit
+  wish to leave orientation, then a positive closure response from the coach
+  and a further learner answer agreeing to close; a bare label chosen from the
+  coach's possibilities is not sufficient,
 - **auto‑derived for SRS/memorization goals** (`srs-deck:*` / `memorization`):  
   a memorization goal is treated as mastered **only if no cards are due today**,
 - aggregated per **filtered goal set** into:
@@ -314,6 +316,19 @@ When agents generate feedback or suggestions, they should:
 - Prefer suggesting goals
   - whose prerequisites are mastered,
   - whose own mastery is clearly < 1.
+
+For coach-led learning, finishing a task and mastering a goal are distinct.
+After a task, give concrete feedback, say what was shown and what remains open,
+offer questions or a natural close, and wait for the learner's reply before
+showing the next task. Apply this with or without autopilot. When the same task
+also supplies all required evidence for the goal, ask one combined closure
+question. A solved task alone does not imply mastery; agreement alone is not
+evidence. Commit coach mastery only after both sufficient evidence and the
+learner's agreement to close. Answer questions about the current content and
+respect a pause. Begin new content and render its image only after recognizable
+agreement to continue, such as “Alles klar, weiter”. At the actual end, offer a
+fitting close without assuming a next task. Small explanations and hints during
+an unfinished task do not need separate confirmation.
 
 ---
 
@@ -553,10 +568,12 @@ Interpretation:
   checks, answer-release boundary, atomic persistence, state/version checks,
   idempotency and the continuation after the batch. The model only presents
   every returned prompt, waits for the complete learner submission, compares
-  its meaning with the complete answer set, and submits one assessment per
-  returned card in one atomic batch write. It must not choose a `batchSize`,
+  its meaning with the complete answer set, gives feedback, invites questions
+  or closure, waits for the learner's answer, and only after consent submits
+  one assessment per returned card in one atomic batch write. It must not choose a `batchSize`,
   fetch or save cards in a technical per-card loop, shorten the returned batch,
-  or pause after persistence when the server supplies a continuation. The V1
+  or begin the next batch during the feedback turn. After persistence, begin
+  a new batch only when the learner agreed to continue. The V1
   operations are `start_skillpilot_verified_recall(learningSessionId)`,
   `get_skillpilot_verified_recall_answers(learningSessionId,
   batchCapability)` and `record_skillpilot_verified_recall_results(
@@ -576,9 +593,11 @@ Interpretation:
   `expectedStateVersion`; the model copies them unchanged and adds only the
   already current unchanged `learningSessionId` required by the global session
   gate. The receipt never mirrors that session capability. The model invokes
-  the renderer exactly once immediately and then begins the active goal in the
-  same response. It must not reconstruct the image-specific arguments from the
-  successor context, reload context, or wait for an acknowledgement. If
+  the renderer exactly once after the learner has agreed to continue beyond
+  this batch and then begins the active goal. It must not reconstruct the
+  image-specific arguments from the successor context or reload context in
+  that turn. If the learner agreed only to close and pause, the renderer is
+  deferred until a later explicit continuation with fresh context. If
   rendering fails or the host omits the component, it does not retry and
   continues with complete teaching text. Other Recall continuations contain no
   `toolCall`.
@@ -644,19 +663,23 @@ Rule:
   gate. A conforming host may render or decline the UI resource; this optional
   presentation result must never change authentication, authorization, state,
   persistence, or the ordinary chat result.
-* A full context or state-changing result qualifies only when its full context
-  contains `goalVisualization` and permits the renderer. Every previously
+* A full context or state-changing result qualifies only when the learner has
+  agreed to begin or continue the associated goal, its full context contains
+  `goalVisualization`, and it permits the renderer. During feedback or a
+  pending task/goal closure, never render the next task's or successor goal's
+  image. Every previously
   unseen pair of that context's `goalVisualization.goalId` and the authorizing
   result's top-level `stateVersion` creates its own one-shot render
-  authorization. Call the renderer once for that pair as the immediate next
-  tool call, even if an earlier pair in the conversation
+  authorization. After the learner has agreed to continue, call the renderer
+  once for that pair as the immediate next tool call, even if an earlier pair in the conversation
   was already rendered. A repeated pair creates no automatic call. Only an
   explicit learner request to show the current image again creates one new
   one-shot authorization after a fresh qualifying result. Copy the pair into
   `goalId` and `expectedStateVersion` unchanged. Never insert another tool call,
-  reuse stale authorization, or retry otherwise. A mastery handoff remains
-  before the successor section; render before coaching the associated active
-  goal. The receipt does not replace the authoritative full result, and omitted
+  reuse stale authorization, or retry otherwise. Give feedback and invite
+  questions or closure before the mastery write; render only after agreement
+  to continue and before coaching the associated active goal. The receipt does
+  not replace the authoritative full result, and omitted
   host presentation does not weaken the text path.
   The terminal Verified-Recall cross-flow is the narrow exception to deriving
   this call from those generic facts: when its authoritative `continuation`
@@ -1494,8 +1517,9 @@ provider policy and product review explicitly permit it.
   with backend-released criteria. Never encode a deterministic technical loop
   in a prompt when one server operation can validate and execute it atomically.
   For Verified Recall this means one server-sized full batch, one full answer
-  release after the learner submission and one atomic result write, followed
-  immediately by the server-provided continuation. If the terminal successor
+  release after the learner submission, a feedback and closure turn, and one
+  atomic result write after learner consent. The server-provided continuation
+  is followed only when the learner agreed to continue. If the terminal successor
   authorizes an image, that continuation itself owns the renderer call with
   fully server-filled image-specific arguments and then teaching; the model
   derives no cross-flow arguments.
@@ -1555,7 +1579,10 @@ provider policy and product review explicitly permit it.
   client-surface gate changes this contract. When the newest full result
   contains `goalVisualization` and permits the renderer, each previously unseen
   pair of the full context's `goalVisualization.goalId` and the authorizing
-  result's top-level `stateVersion` creates a separate one-shot authorization. The model renders that pair even if an
+  result's top-level `stateVersion` creates a separate one-shot authorization
+  only when the learner agreed to begin or continue that goal. The model never
+  renders a next-task or successor image during feedback or pending closure.
+  It renders that pair even if an
   earlier pair was already rendered. A repeated pair is rendered again only
   after an explicit learner request and a fresh qualifying result; it is never
   retried automatically. The pair is copied unchanged into `goalId` and
@@ -1563,7 +1590,9 @@ provider policy and product review explicitly permit it.
   authorizes a successor image instead carries that complete renderer
   invocation inside its sole `continuation` as
   `renderGoalVisualizationThenTeachActiveGoal`; it is neither a sibling
-  `presentationAction` nor a UI binding on the Recall write. Every
+  `presentationAction` nor a UI binding on the Recall write. Execute that
+  renderer only after agreement to continue; after closure with a pause,
+  wait for a later fresh context. Every
   fachlicher model-facing tool, including state reads, receives the unchanged
   `learningSessionId` to rehydrate state after a new turn, reload, or context
   compaction.

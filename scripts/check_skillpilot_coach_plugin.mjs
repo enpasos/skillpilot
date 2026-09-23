@@ -942,7 +942,8 @@ assertBehaviorFragments(
     /neither a goal nor a batch size/iu,
     /exactly one ordered[\s\S]+assessment for every returned card/iu,
     /rejects an incomplete, duplicate or stale batch[\s\S]+atomically/iu,
-    /Follow its full successor context and continuation\s+immediately/iu,
+    /Follow its full successor context and continuation\s+only if the learner agreed to continue/iu,
+    /after closure with a pause, show no\s+next batch, goal, or image/iu,
     /do\s+not\s+reload context in that learner turn/iu,
   ],
   "server-owned atomic Verified Recall workflow",
@@ -955,7 +956,7 @@ assertBehaviorFragments(
     /continuation\.toolCall[\s\S]+exactly once/iu,
     /server-filled[\s\S]+goalId[\s\S]+expectedStateVersion[\s\S]+unchanged/iu,
     /already current unchanged `learningSessionId`[\s\S]+not mirrored[\s\S]+receipt/iu,
-    /then begin the already active goal[\s\S]+same response/iu,
+    /then begin the already active goal[\s\S]+that continuation response/iu,
     /Do not reload context/iu,
     /do not retry/iu,
     /never (?:use|introduce) a sibling `presentationAction`/iu,
@@ -991,8 +992,8 @@ assert.match(
 );
 assert.match(
   mcpContract,
-  /continuation\.action=renderGoalVisualizationThenTeachActiveGoal is the sole cross-flow exception:[\s\S]+continuation\.toolCall[\s\S]+do not derive a second call from context/u,
-  "Server instructions must treat the Recall toolCall as the one renderer invocation, not create a competing call.",
+  /continuation\.action=renderGoalVisualizationThenTeachActiveGoal is the sole cross-flow exception when the learner agreed to continue:[\s\S]+continuation\.toolCall[\s\S]+do not derive a second call from context/u,
+  "Server instructions must require learner agreement and treat the Recall toolCall as the one renderer invocation.",
 );
 assert.match(
   mcpContract,
@@ -1033,8 +1034,8 @@ const recallInstructionMatch = mcpContract.match(
 );
 assert.ok(recallInstructionMatch, "Missing concise server-side Recall invariant.");
 assert.ok(
-  compactWhitespace(recallInstructionMatch[1]).split(" ").length <= 120,
-  "The server-side Recall invariant must stay concise; deterministic orchestration belongs in backend code.",
+  compactWhitespace(recallInstructionMatch[1]).split(" ").length <= 180,
+  "The server-side Recall invariant must stay concise while including feedback and consent; deterministic orchestration belongs in backend code.",
 );
 assert.doesNotMatch(
   recallInstructionMatch[1],
@@ -1307,17 +1308,16 @@ const didacticParityRules = [
   {
     id: "post-mastery progression and completion exceptions",
     de: [
-      /didaktisch sofort sinnvoll[\s\S]+weitergehen/u,
       /gesamte personalisierte Curriculum[\s\S]+nur gratulieren oder\s+feiern[\s\S]+keine neuen Ziele/u,
       /aktuelle Fokus abgeschlossen[\s\S]+breitere Fokusoption/u,
     ],
     en: [
-      /didactically move on sensibly and immediately/u,
       /entire\s+personalized curriculum[\s\S]+only congratulate or celebrate[\s\S]+no\s+new goals/u,
       /current focus is complete[\s\S]+broader focus option/u,
     ],
     target: [
-      /After successfully saved mastery, proceed promptly to the supplied next step/u,
+      /When a task is finished[\s\S]+Offer[\s\S]+closure, then wait for an answer/u,
+      /Call `set_skillpilot_mastery` only[\s\S]+learner accepted the\s+offered closure/u,
       /completed focus[\s\S]+first supplied broader option[\s\S]+wait for acceptance/u,
       /entire personal curriculum[\s\S]+without\s+inventing new goals or extensions/u,
     ],
@@ -1387,8 +1387,9 @@ assertBehaviorFragments(
   [
     /`learningPlanToday\.activeGoalAnnouncement` verbatim once[\s\S]+exact\s+localized `activeGoal\.title`[\s\S]+never substitute the\s+description/u,
     /A bare path choice starts the dialogue; it is not completion/u,
-    /Complete orientation only after meaningful engagement[\s\S]+explicit request to continue/u,
-    /content-free acknowledgement is\s+insufficient/u,
+    /meaningful engagement with that follow-up or a direct-continue\s+request as orientation completion evidence, not advance consent/u,
+    /Wait for a separate\s+learner answer and consent before the write/u,
+    /content-free\s+acknowledgement\s+is insufficient evidence/u,
     /Connect the next hint or explanation explicitly to the learner's answer/u,
     /Offer a hint or smaller substep when needed, not the full answer/u,
     /worked mini-example[\s\S]+genuinely different next task/u,
@@ -1423,12 +1424,17 @@ assert.match(orientationSection[1], /present every\s+supplied path/u);
 assert.match(orientationSection[1], /practical contexts/u);
 assert.match(
   orientationSection[1],
-  /meaningful engagement with that follow-up[\s\S]+or an explicit request to continue/u,
-  "Orientation completion must wait for active follow-up engagement or an explicit direct-continuation request.",
+  /meaningful engagement with that follow-up or a direct-continue\s+request as orientation completion evidence, not advance consent[\s\S]+wait for a separate learner answer\s+before persisting/u,
+  "Orientation completion must distinguish evidence from consent and wait for a separate answer.",
 );
 assert.match(
   orientationSection[1],
-  /content-free acknowledgement is\s+insufficient/u,
+  /Wait for a separate\s+learner answer and consent before the write, even if the previous answer asked\s+to continue directly/u,
+  "Orientation completion must wait for learner consent after feedback.",
+);
+assert.match(
+  orientationSection[1],
+  /content-free\s+acknowledgement\s+is insufficient evidence/u,
   "Orientation completion must not treat a content-free acknowledgement as active engagement.",
 );
 assert.match(
@@ -1518,6 +1524,38 @@ assert.equal(completeBehavioralSurface.includes("[TODO:"), false);
 assert.match(combinedSkill, /expectedStateVersion/);
 assert.match(combinedSkill, /clientRequestId/);
 assert.match(combinedSkill, /STATE_VERSION_CONFLICT/);
+assertBehaviorFragments(
+  skill,
+  [
+    /If the previous coach response offered closure of a task or goal[\s\S]+wait for recognizable consent[\s\S]+starting another task, or showing a successor image/u,
+    /feedback\/closure response from the new content/u,
+    /mode-specific evidence and learner consent to the offered closure/u,
+    /direct-continue request as\s+orientation evidence, not advance consent[\s\S]+wait for a\s+separate learner answer before saving mastery/u,
+  ],
+  "coach skill task and goal closure",
+);
+assertBehaviorFragments(
+  policy,
+  [
+    /When a task is finished[\s\S]+Offer\s+questions and a natural closure, then wait for an answer/u,
+    /autopilot on or off[\s\S]+another task in the same goal/u,
+    /one combined question about closing both; one answer suffices/u,
+    /next task,[\s\S]+goal, and their image[\s\S]+must not appear in the feedback response/u,
+    /orientation completion evidence, not advance consent[\s\S]+wait for a separate learner answer\s+before persisting or showing the next goal/u,
+    /Give concrete feedback on the complete graded batch[\s\S]+wait for the learner's answer[\s\S]+After consent, call `record_skillpilot_verified_recall_results/u,
+  ],
+  "shared coaching policy consent boundary",
+);
+assertBehaviorFragments(
+  mcpContract,
+  [
+    /Completing any task is a conversational boundary in both autopilot modes[\s\S]+wait for the learner's reply/u,
+    /Do not introduce the next task or its image in that feedback response/u,
+    /wait before recording results[\s\S]+After consent, submit exactly one ordered assessment/u,
+    /Render a goal image only when the learner is beginning or continuing that goal[\s\S]+closure is awaiting a reply, do not render/u,
+  ],
+  "MCP server consent boundary",
+);
 assert.match(
   combinedSkill,
   /goalVisualization[\s\S]+render_skillpilot_goal_visualization/s,
@@ -1528,12 +1566,12 @@ assert.match(
 );
 assert.match(
   combinedSkill,
-  /contains[\s\S]+`goalVisualization`[\s\S]+permits[\s\S]+`render_skillpilot_goal_visualization`[\s\S]+form[\s\S]+pair[\s\S]+context's `goalVisualization\.goalId`[\s\S]+result's top-level `stateVersion`[\s\S]+every previously unseen pair[\s\S]+different pair was\s+rendered earlier in this conversation[\s\S]+once as the immediate next tool[\s\S]+pair to `goalId` and[\s\S]+`expectedStateVersion`[\s\S]+repeated pair creates no automatic call[\s\S]+explicit learner request to show the current image again[\s\S]+fresh qualifying result[\s\S]+never retry otherwise/s,
-  "The coach skill must retain the compact, result-bound goal-visualization rule.",
+  /contains[\s\S]+`goalVisualization`[\s\S]+permits[\s\S]+`render_skillpilot_goal_visualization`[\s\S]+form[\s\S]+pair[\s\S]+context's `goalVisualization\.goalId`[\s\S]+result's top-level `stateVersion`[\s\S]+every previously unseen pair[\s\S]+different pair was\s+rendered earlier in this conversation[\s\S]+once as the immediate next tool after closure consent[\s\S]+pair to\s+`goalId` and\s+`expectedStateVersion`[\s\S]+repeated pair creates no automatic call[\s\S]+explicit learner request to show the current image again[\s\S]+fresh qualifying result[\s\S]+never retry otherwise/s,
+  "The coach skill must retain the result-bound goal-visualization rule after closure consent.",
 );
 assert.match(
   combinedSkill,
-  /renderer\s+receipt never\s+replaces full context[\s\S]+missing[\s\S]+image never blocks[\s\S]+text response/is,
+  /renderer\s+receipt never\s+replaces\s+full context[\s\S]+missing[\s\S]+image never blocks[\s\S]+text response/is,
   "The coach skill must keep host image presentation optional and preserve complete coaching text.",
 );
 assert.match(

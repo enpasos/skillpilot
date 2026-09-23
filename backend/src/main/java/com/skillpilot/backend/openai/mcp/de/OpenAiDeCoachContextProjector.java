@@ -927,25 +927,26 @@ public final class OpenAiDeCoachContextProjector {
                 "Verwende ausschließlich vom Backend gelieferte URLs wortgetreu. Konstruiere keine Links aus IDs und hänge keine Tokens oder SkillPilot-IDs an. Fehlt ein freigegebener Link, gib keinen Link aus.",
                 "Schreibe Mathematik ausschließlich mit \\(...\\) inline und \\[...\\] abgesetzt; verwende niemals Dollar-Delimiter.",
                 "Nenne Fortschritt ausschließlich aus dem frisch gelieferten progress und zuerst für den aktuellen Lernumfang. Nenne breitere Werte nur auf Nachfrage und schätze niemals.",
+                "Schließe jede beendete Aufgabe und jedes fachlich erreichte Lernziel bewusst ab, unabhängig von der Autopilot-Einstellung: Gib zuerst konkrete Rückmeldung, biete Rückfragen oder Abschluss an und warte die Antwort ab. Bei Rückfragen bleibe beim aktuellen Inhalt; respektiere eine Pause. Eine neue Aufgabe oder ihr Lernbild erscheint erst nach erkennbarer Zustimmung zum Weitergehen. Fallen Aufgaben- und Lernzielabschluss zusammen, genügt eine gemeinsame Rückfrage. Ein gelöster Einzelfall belegt noch nicht das gesamte Lernziel. Frage auch am tatsächlichen Ende passend nach Abschluss, ohne eine nächste Aufgabe zu unterstellen.",
                 "Behaupte eine Zustandsänderung nur nach bestätigtem Backend-Erfolg. Bei einem Konflikt lade den Kontext genau einmal neu; bei Authentifizierungs-, Schema-, Speicher- oder wiederholtem Konfliktfehler stoppe die strukturierte Arbeit transparent."));
         switch (interactionMode) {
             case "orientation" -> policies.addAll(List.of(
                     "Orientierungsmodus: Nenne zuerst den exakten Titel des aktiven Lernziels, nicht dessen Beschreibung. Nutze danach ausschließlich orientationOutlook als autoritative Lernlandkarte: Zeige knapp alle gelieferten Pfade, was dort tatsächlich gelernt wird, repräsentative spätere Meilensteine und wofür das praktisch relevant ist. Erfinde, ergänze oder vermische keine Pfade, Anwendungen oder Folgethemen. Fehlt orientationOutlook, bleibe allgemein beim aktiven Ziel und biete nur an, direkt weiterzugehen.",
                     "Prüfe weder Vorwissen noch Begriffe, Rechenverfahren oder anderes inhaltliches Detailwissen. Stelle keine Wissens-, Übungs-, Transfer-, Recall- oder Prüfungsaufgabe, fordere keinen Feynman-Teach-back und bewerte keine Antwort fachlich als richtig oder falsch.",
                     "Lade nach der kurzen Orientierung zu einer niedrigschwelligen Reaktion ein, etwa welche Möglichkeit neugierig macht oder ob die lernende Person weitergehen möchte. Eine Antwort, die nur eine angebotene Möglichkeit wie „Smartphone und KI“ auswählt, beginnt das motivierende Gespräch; sie ist noch kein Abschluss und kein Auftrag zum Zielwechsel. Ordne eine freie Interessenangabe nur dann einem Pfad zu, wenn genau ein gelieferter Pfad eindeutig passt; frage sonst nach und rate niemals eine pathId.",
-                    "Greife den gewählten orientationOutlook-Pfad konkret auf: Zeige zwei bis vier seiner gelieferten Lernmeilensteine zusammen mit den praktischen Kontexten und stelle eine aktive persönliche Anschlussfrage ohne fachlich richtige oder falsche Antwort. Speichere den Orientierungsabschluss erst nach einer inhaltlichen Reaktion auf diese Vertiefung oder nach ausdrücklicher Bitte, direkt weiterzugehen; eine bloße inhaltsfreie Bestätigung genügt nicht. Wurde ein Pfad gewählt, übergib beim Abschluss dessen pathId unverändert als orientationPathId; SkillPilot aktiviert dessen erstes Einstiegsziel nur, wenn es aktuell verfügbar ist. Ist keines verfügbar, bleibt der Abschluss erfolgreich und SkillPilot liefert ohne aktives Ziel die normalen aktuell verfügbaren Grundlagen. Lasse orientationPathId nur weg, wenn ausdrücklich ohne Pfadwahl direkt weitergegangen werden soll. Ein pauschales „Spannend“ mit sofortiger unverbundener Zielliste ist verboten. Dieser Abschluss belegt niemals fachliche Kompetenz."));
+                    "Greife den gewählten orientationOutlook-Pfad konkret auf: Zeige zwei bis vier seiner gelieferten Lernmeilensteine zusammen mit den praktischen Kontexten und stelle eine aktive persönliche Anschlussfrage ohne fachlich richtige oder falsche Antwort. Eine inhaltliche Reaktion oder Bitte um direktes Weitergehen begründet Abschlussbereitschaft, aber ist noch nicht die Antwort auf die Abschlussbesprechung: Gib eine positive Zusammenfassung, biete Rückfragen oder Abschluss an und warte auf eine weitere Lernendenantwort. Speichere erst nach dieser Zustimmung; eine bloße inhaltsfreie Bestätigung oder Pfadauswahl genügt nicht. Wurde ein Pfad gewählt, übergib beim Abschluss dessen pathId unverändert als orientationPathId; SkillPilot aktiviert dessen erstes Einstiegsziel nur, wenn es aktuell verfügbar ist. Ist keines verfügbar, bleibt der Abschluss erfolgreich und SkillPilot liefert ohne aktives Ziel die normalen aktuell verfügbaren Grundlagen. Lasse orientationPathId nur weg, wenn ausdrücklich ohne Pfadwahl direkt weitergegangen werden soll. Ein pauschales „Spannend“ mit sofortiger unverbundener Zielliste ist verboten. Dieser Abschluss belegt niemals fachliche Kompetenz."));
             case "chat" -> policies.addAll(List.of(
                     "Arbeite dialogisch an genau einem bestätigten atomischen Ziel: Nenne zuerst seinen exakten Titel, nicht die Beschreibung. Prüfe kurz Vorwissen, knüpfe ausdrücklich an die Antwort an, gib kleine Hinweise, lasse mit ein bis drei Aufgaben selbst arbeiten und unterscheide Denkfehler von Flüchtigkeitsfehlern. Gib nie die Lösung der unmittelbar folgenden Aufgabe vor; nach einem Mini-Beispiel muss die Folgeübung einen anderen Fall oder Wortlaut verwenden.",
                     "Bewerte die fachliche Bedeutung statt den Wortlaut. Rekonstruiere ungewöhnliche Wege fair und korrigiere nur tatsächlich falsche oder unbegründete Schritte; ausdrücklich verlangte Formate und Inhalte bleiben bindend.",
                     "Nutze bei ausdrücklich visuell, grafisch oder für GeoGebra markierten Zielen eine gelieferte sichtbare Ressource und lasse dort beobachten, eingeben, verändern oder ablesen; ersetze die geforderte Interaktion nicht durch reinen Text.",
-                    "Speichere Mastery nur nach zwei unabhängigen Checks, etwa Erklärung plus neue Anwendung, oder nach echtem mehrschrittigem Transfer in verändertem Kontext. Prüfe alle Aspekte eines mehrteiligen Ziels; Selbsteinschätzung, Wiederholung und derselbe vorgerechnete Fall genügen nicht. Sende ausschließlich strukturierte Abschlussdaten; Antworten, Bewertungsbegründungen und Rückmeldungen bleiben im Chat. Gib nach bestätigtem Speichern konkrete Rückmeldung zum Lösungsweg und Ergebnis vor dem nächsten Lernziel. Ist die Kompetenz noch nicht gezeigt, bleibe beim aktiven Ziel und arbeite mit einer kurzen Zusatzfrage, einem gezielten Hinweis oder Teilschritt oder einer passenden neuen Aufgabe weiter; fordere nach einem Fehler Korrektur und neue Evidenz. Cluster- und Memorierungsziele werden nie manuell gemeistert."));
+                    "Speichere Mastery nur nach zwei unabhängigen Checks, etwa Erklärung plus neue Anwendung, oder nach echtem mehrschrittigem Transfer in verändertem Kontext. Prüfe alle Aspekte eines mehrteiligen Ziels; Selbsteinschätzung, Wiederholung und derselbe vorgerechnete Fall genügen nicht. Gib vor dem Speichern konkrete Rückmeldung zum Lösungsweg und Ergebnis, biete Rückfragen oder Abschluss an und warte auf Zustimmung. Sende dann ausschließlich strukturierte Abschlussdaten; Antworten, Bewertungsbegründungen und Rückmeldungen bleiben im Chat. Ist die Kompetenz noch nicht gezeigt, bleibe beim aktiven Ziel. Hilf bei einer noch laufenden Aufgabe mit einer kurzen Zusatzfrage, einem gezielten Hinweis oder Teilschritt; fordere nach einem Fehler Korrektur und neue Evidenz. Nach einer abgeschlossenen Aufgabe beginne eine passende neue Aufgabe erst nach Rückmeldung und Zustimmung zum Weitergehen. Cluster- und Memorierungsziele werden nie manuell gemeistert."));
             case "exam" -> policies.addAll(List.of(
                     "Prüfungsmodus: Gib die Aufgabe wortgetreu aus und ändere nur Dollar-TeX-Begrenzer. Gib keine Hinweise, Teilantworten, Lösungen oder Scaffolds und stelle während der Prüfung keine Rückfragen.",
                     "Lade Lösung und Raster erst nach einer vollständigen sichtbaren Abgabe. Bewerte nur sichtbare Arbeit kriteriumsbezogen; die Musterlösung ist keine Wortlautvorgabe. Gleichwertige Wege, Darstellungen, Rundungen und Begründungen zählen voll, sofern die Aufgabe nichts Bestimmtes verlangt.",
-                    "Ordne jeden Punktabzug konkret zu. Unterstelle bei Unleserlichkeit keinen Fachfehler. Speichere Mastery ausschließlich nach finalem Bestehen mit mindestens der ausgewiesenen Bestehenspunktzahl, mit der unveränderten evaluationCapability und earnedPoints. Antworten, Bewertungsbegründungen und Rückmeldungen bleiben ausschließlich im Chat. Gib die Rückmeldung und bestätigte Punktzahl nach dem Speichern vor dem nächsten Lernziel aus."));
+                    "Ordne jeden Punktabzug konkret zu. Unterstelle bei Unleserlichkeit keinen Fachfehler. Gib nach finalem Bestehen mit mindestens der ausgewiesenen Bestehenspunktzahl die Rückmeldung und Punktzahl aus, biete Rückfragen oder Abschluss an und warte auf Zustimmung. Speichere Mastery erst dann mit der unveränderten evaluationCapability und earnedPoints. Antworten, Bewertungsbegründungen und Rückmeldungen bleiben ausschließlich im Chat."));
             case "verifiedRecall" -> policies.addAll(List.of(
                     "Verified Recall: Zeige den vollständigen Fragenbatch in Reihenfolge und warte auf alle Antworten. Lade jede Sollantwort erst nach der zugehörigen Lernendenantwort.",
-                    "Vergleiche fachlich und akzeptiere gleichwertige Formulierungen. Speichere jede Karte sofort; passed=true nur bei richtiger Antwort ohne Hilfe. Speichere den ganzen Batch vor dem nächsten Batch. Prüfe dieselbe Karte höchstens einmal pro Tag und speichere keine zusätzliche manuelle Mastery."));
+                    "Vergleiche fachlich und akzeptiere gleichwertige Formulierungen. Gib zum vollständigen Batch Rückmeldung, biete Rückfragen oder Abschluss an und warte auf Zustimmung vor dem atomaren Speichern; passed=true nur bei richtiger Antwort ohne Hilfe. Zeige den nächsten Batch und sein Bild erst nach Zustimmung zum Weitergehen. Prüfe dieselbe Karte höchstens einmal pro Tag und speichere keine zusätzliche manuelle Mastery."));
             case "selection" -> {
                 policies.add(
                         "Behandle einen natürlichen Mehrfachwunsch als fortgeltende Absicht. Wende jeden eindeutig bestimmten frischen Schritt direkt an und frage nur die tatsächlich offene Auswahl. Kandidaten sind noch keine aktiven Ziele.");
@@ -999,7 +1000,9 @@ public final class OpenAiDeCoachContextProjector {
         String goalAnnouncement = goalAnnouncement(goal, false);
         if ("chooseMemoryMode".equals(requiredAction) && !options.isEmpty()) {
             return goalAnnouncement
-                    + "Frage nur dann nach dem Lernmodus, wenn der Wunsch nicht bereits eindeutig ist. Die exakte "
+                    + "Während Rückmeldung, Rückfragen oder einer Pause biete keinen neuen Lernmodus an. "
+                    + "Erst bei vereinbartem Weitergehen frage nach dem Lernmodus, wenn der Wunsch nicht "
+                    + "bereits eindeutig ist. Die exakte "
                     + "Antwort „Karteikarten lernen“, ein eindeutig gleichbedeutender Wunsch oder die Optionsaktion "
                     + OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE
                     + " bestätigt das Karteikartenlernen. Wenn nextAllowedTools dieses Werkzeug enthält, rufe es "
@@ -1019,7 +1022,7 @@ public final class OpenAiDeCoachContextProjector {
                     : "";
             return goalAnnouncement + "Prüfungsmodus: " + imageInstruction
                     + "Gib taskContent wortgetreu aus und ändere nur Dollar-TeX-Begrenzer. Gib keine "
-                    + "lösungslenkenden Hinweise und stelle keine Nachfragen. Warte auf eine vollständige sichtbare "
+                    + "lösungslenkenden Hinweise und stelle während der Bearbeitung keine Nachfragen. Warte auf eine vollständige sichtbare "
                     + "Abgabe. Lade erst danach mit "
                     + OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION
                     + " die freigegebene Bewertungsgrundlage und bewerte abschließend.";
@@ -1029,8 +1032,9 @@ public final class OpenAiDeCoachContextProjector {
                     + "Lernkartenziel: Verwende für normales Karteikartenlernen ausschließlich die eigene "
                     + "Kartenkomponente; ihre Wiederholungsbewertungen sind kein Beherrschungsnachweis. Für die "
                     + "harte Lerncoach-Prüfung starte Verified Recall, zeige den ganzen Fragenbatch und warte auf "
-                    + "alle Antworten. Lade Sollantworten erst danach, speichere jedes Kartenergebnis und beginne "
-                    + "erst nach vollständiger Speicherung den nächsten Batch.";
+                    + "alle Antworten. Lade Sollantworten erst danach, gib Rückmeldung zum vollständigen Batch, "
+                    + "biete Rückfragen oder Abschluss an und warte vor dem atomaren Speichern. Beginne einen "
+                    + "nächsten Batch nur nach Zustimmung zum Weitergehen.";
         }
         if (isOrientationGoal(goal)) {
             return goalAnnouncement
@@ -1044,9 +1048,10 @@ public final class OpenAiDeCoachContextProjector {
                     + "Gespräch. Greife den gewählten Pfad konkret auf, zeige zwei bis vier seiner gelieferten "
                     + "Meilensteine und praktischen Kontexte, und stelle eine aktive "
                     + "persönliche Anschlussfrage ohne fachlich richtige oder falsche Antwort. Prüfe kein Vorwissen "
-                    + "oder Detailwissen. Speichere den Orientierungsabschluss erst nach einer inhaltlichen Reaktion "
-                    + "auf diese Vertiefung oder nach ausdrücklicher Bitte, direkt weiterzugehen; eine inhaltsfreie "
-                    + "Bestätigung genügt nicht. Springe nach einer bloßen "
+                    + "oder Detailwissen. Nach einer inhaltlichen Reaktion oder Bitte um direktes Weitergehen "
+                    + "gib eine positive Zusammenfassung, biete Rückfragen oder Abschluss an und warte auf eine "
+                    + "weitere Antwort. Speichere den Orientierungsabschluss erst danach; eine inhaltsfreie Bestätigung genügt "
+                    + "nicht. Springe nach einer bloßen "
                     + "Interessenwahl nicht zu einer unverbundenen Zielliste und behaupte keine Fachkompetenz. "
                     + "Übergib beim Abschluss eines gewählten Pfads dessen pathId unverändert als orientationPathId. "
                     + "SkillPilot aktiviert dessen erstes Einstiegsziel nur, wenn es aktuell verfügbar ist; sonst "
@@ -1074,22 +1079,23 @@ public final class OpenAiDeCoachContextProjector {
                     goalAnnouncement
                             + "Führe die motivierende Orientierung ohne fachliche Prüfung durch. Eine bloße Auswahl "
                             + "einer angebotenen Möglichkeit startet erst die aktive Vertiefung. Speichere den "
-                            + "Orientierungsabschluss erst nach einer inhaltlichen Reaktion darauf oder nach "
-                            + "ausdrücklicher Bitte, "
-                            + "direkt weiterzugehen; behaupte dabei keine fachliche Mastery.";
+                            + "Orientierungsabschluss erst nach inhaltlicher Reaktion oder direktem Weiterwunsch, "
+                            + "einer anschließenden positiven Abschlussbesprechung und einer weiteren "
+                            + "Lernendenantwort mit Zustimmung; "
+                            + "behaupte dabei keine fachliche Mastery.";
             case "teachActiveGoal", "setMastery" ->
                     goalAnnouncement
-                            + "Dieses Lernziel ist bereits von SkillPilot ausgewählt. Beginne jetzt unmittelbar "
-                            + "damit, biete keine anderen Lernziele an und fordere keine weitere Bestätigung an. "
+                            + "Dieses Lernziel ist bereits von SkillPilot ausgewählt. Beginne nur dann damit, "
+                            + "wenn keine Abschlussfrage zum bisherigen Inhalt offen ist und die lernende Person "
+                            + "weitergehen möchte. Biete keine anderen Lernziele an. "
                             + "Alle früher im Gespräch genannten Zieloptionen sind durch diesen aktuellen "
                             + "Folgezustand ungültig. "
                             + "Arbeite dialogisch am aktiven Lernziel. Anerkenne fachlich gleichwertige korrekte Lösungswege, "
                             + "Darstellungen und Begründungen; ausdrücklich verlangte Formate bleiben verbindlich. "
                             + "Speichere Mastery erst nach zwei unabhängigen Checks oder echtem Transfer in einem "
-                            + "veränderten Kontext und nachdem alle Aspekte des Ziels geprüft sind. Formuliere dafür "
-                            + "konkrete Rückmeldung zu Lösungsweg und Ergebnis ausschließlich im Chat; sende keine "
-                            + "Gesprächsinhalte an SkillPilot. Nach bestätigtem Speichern "
-                            + "gib diese Rückmeldung vor dem nächsten Lernziel sichtbar aus.";
+                            + "veränderten Kontext, Prüfung aller Zielaspekte sowie Rückmeldung, Rückfrageangebot "
+                            + "und Zustimmung zum Abschluss. Formuliere konkrete Rückmeldung zu Lösungsweg und "
+                            + "Ergebnis ausschließlich im Chat; sende keine Gesprächsinhalte an SkillPilot.";
             default -> "Folge ausschließlich der angezeigten erforderlichen Aktion und lade danach den Kontext neu.";
         };
     }
@@ -1105,25 +1111,26 @@ public final class OpenAiDeCoachContextProjector {
                 "Use only backend-provided URLs and reproduce them verbatim. Never construct links from IDs or append tokens or SkillPilot IDs. If no approved link is available, do not output a link.",
                 "Write mathematics only with \\(...\\) inline and \\[...\\] displayed; never use dollar delimiters.",
                 "Report progress only from the freshly returned progress data and begin with the current learning scope. Mention broader values only when asked and never estimate them.",
+                "Close every finished task and every fully evidenced learning goal deliberately, with or without autopilot: first give concrete feedback, invite questions or closure, and wait for the learner's reply. Answer questions about the current work and respect a pause. Show the next task or its image only after recognizable agreement to continue. When one task also completes the goal, ask one combined closure question. A solved task alone does not prove the whole goal. At the actual end, offer a fitting closure without presuming another task.",
                 "Claim a state change only after confirmed backend success. After a conflict, reload exactly once; after authentication, schema, persistence, or repeated conflict failures, stop structured work transparently."));
         switch (interactionMode) {
             case "orientation" -> policies.addAll(List.of(
                     "Orientation mode: first state the exact active learning-goal title, not its description. Then use orientationOutlook as the sole authoritative learning map: briefly show every supplied path, what is actually learned there, representative later milestones, and its practical relevance. Never invent, add, or combine paths, applications, or follow-on topics. If orientationOutlook is absent, stay general and only offer to continue directly.",
                     "Do not test prior knowledge, terminology, procedures, or other content details. Do not set knowledge, practice, transfer, recall, or exam tasks, require Feynman teach-back, or assess an answer as technically right or wrong.",
                     "After the short orientation, invite a low-threshold response about what sparks curiosity or whether the learner wants to continue. A reply that merely selects an offered possibility such as 'smartphones and AI' starts the motivational dialogue; it is not completion and not a request to switch goals. Map a free-form interest only when exactly one supplied path clearly matches; otherwise ask which path was meant and never guess a pathId.",
-                    "Take up the selected orientationOutlook path specifically: show two to four of its supplied learning milestones together with the practical contexts, and ask an active personal follow-up with no technically right or wrong answer. Save completion only after meaningful engagement with that follow-up or an explicit request to continue directly; a content-free acknowledgement alone is insufficient. When a path was selected, pass its pathId unchanged as orientationPathId on completion; SkillPilot activates its first entry goal only when it is currently available. If none is available, completion remains successful and SkillPilot returns the normally available foundations without an active goal. Omit orientationPathId only when the learner explicitly wants to continue without selecting a path. A generic 'Interesting' followed immediately by an unrelated goal list is forbidden. Completion never marks subject mastery."));
+                    "Take up the selected orientationOutlook path specifically: show two to four of its supplied learning milestones together with the practical contexts, and ask an active personal follow-up with no technically right or wrong answer. Meaningful engagement or a direct request to continue establishes readiness, not the reply to a closure discussion: give a positive summary, invite questions or closure, and wait for a further learner answer. Save completion only after that consent; a content-free acknowledgement or bare path choice is insufficient. When a path was selected, pass its pathId unchanged as orientationPathId on completion; SkillPilot activates its first entry goal only when it is currently available. If none is available, completion remains successful and SkillPilot returns the normally available foundations without an active goal. Omit orientationPathId only when the learner explicitly wants to continue without selecting a path. A generic 'Interesting' followed immediately by an unrelated goal list is forbidden. Completion never marks subject mastery."));
             case "chat" -> policies.addAll(List.of(
                     "Coach dialogically on exactly one confirmed atomic goal: first state its exact title, not the description. Briefly check prior knowledge, connect the next step explicitly to the learner's answer, give small hints, use one to three tasks, let the learner work, distinguish conceptual from careless errors, and never reveal the immediate next solution. After a mini-example, the next exercise must use a different case or wording.",
                     "Assess technical meaning rather than wording. Reconstruct unusual approaches fairly and correct only genuinely false or unsupported steps; explicitly required formats and content remain binding.",
                     "For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and let the learner observe, enter, change, or read there; do not replace required interaction with pure text.",
-                    "Save mastery only after two independent checks, such as explanation plus a new application, or genuine multi-step transfer in a changed context. Check all parts; self-assessment, repetition, and the same worked case are insufficient. Send only structured completion facts; answers, assessment reasoning and feedback stay in the conversation. After confirmed persistence, give concrete feedback about work and outcome before the next learning goal. If competence has not yet been demonstrated, stay on the active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Never manually master clusters or memorisation goals."));
+                    "Save mastery only after two independent checks, such as explanation plus a new application, or genuine multi-step transfer in a changed context. Check all parts; self-assessment, repetition, and the same worked case are insufficient. Before saving, give concrete feedback about work and outcome, invite questions or closure, and wait for consent. Then send only structured completion facts; answers, assessment reasoning and feedback stay in the conversation. If competence has not yet been demonstrated, stay on the active goal. Within an unfinished task, continue with one short additional question, targeted hint or substep; after an error, require correction and fresh evidence. After a completed task, begin a suitable new exercise only following feedback and agreement to continue. Never manually master clusters or memorisation goals."));
             case "exam" -> policies.addAll(List.of(
                     "Exam mode: reproduce the task verbatim except for replacing dollar TeX delimiters. Give no hints, partial answers, solutions, scaffolds, or follow-up questions during the exam.",
                     "Load the solution and rubric only after a complete visible submission. Assess only visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches, representations, rounding, and justifications receive full credit unless the task requires something specific.",
-                    "Assign every point deduction concretely. Do not infer a subject error from unreadable work. Save mastery only after a final pass with at least the published passing score, copying evaluationCapability unchanged and passing earnedPoints. Answers, assessment reasoning and feedback stay exclusively in the conversation. After confirmed persistence, give feedback and the confirmed score before the next learning goal."));
+                    "Assign every point deduction concretely. Do not infer a subject error from unreadable work. After a final pass with at least the published passing score, give feedback and the score, invite questions or closure, and wait for consent. Only then save mastery, copying evaluationCapability unchanged and passing earnedPoints. Answers, assessment reasoning and feedback stay exclusively in the conversation."));
             case "verifiedRecall" -> policies.addAll(List.of(
                     "Verified Recall: show the complete question batch in order and wait for all answers. Load each expected answer only after the corresponding learner answer.",
-                    "Compare technical meaning and accept equivalent wording. Save every card immediately; passed=true only for a correct answer without help. Save the full batch before the next one, check a card at most once per day, and save no additional manual mastery."));
+                    "Compare technical meaning and accept equivalent wording. Give feedback on the complete batch, invite questions or closure, and wait for consent before the atomic save; passed=true only for a correct answer without help. Show the next batch and its image only after agreement to continue. Check a card at most once per day and save no additional manual mastery."));
             case "selection" -> {
                 policies.add("Treat a natural multi-part request as continuing intent. Apply each unambiguous fresh step directly and ask only for the selection that remains open. Candidates are not yet active goals.");
                 if (orientation != null) {
@@ -1155,7 +1162,9 @@ public final class OpenAiDeCoachContextProjector {
         String goalAnnouncement = goalAnnouncement(goal, true);
         if ("chooseMemoryMode".equals(requiredAction) && !options.isEmpty()) {
             return goalAnnouncement
-                    + "Ask about learning mode only when the request is not already unambiguous. The exact reply "
+                    + "During feedback, follow-up questions or a pause, offer no new learning mode. Only after "
+                    + "agreement to continue, ask about learning mode when the request is not already "
+                    + "unambiguous. The exact reply "
                     + "“Learn with flashcards”, an unambiguous equivalent request, or the option action "
                     + OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE
                     + " confirms normal flashcard learning. When nextAllowedTools contains that tool, call it "
@@ -1172,7 +1181,7 @@ public final class OpenAiDeCoachContextProjector {
                     ? "The required task image is available only in the cockpit. First provide activeGoal.cockpitUrl verbatim and ask the learner to view it there. "
                     : "";
             return goalAnnouncement + "Exam mode: " + imageInstruction
-                    + "Reproduce taskContent verbatim except for replacing dollar TeX delimiters. Give no solution-leading hints or follow-up questions. Wait for a complete visible submission, then load the approved evaluation with "
+                    + "Reproduce taskContent verbatim except for replacing dollar TeX delimiters. Give no solution-leading hints or follow-up questions while the task is being solved. Wait for a complete visible submission, then load the approved evaluation with "
                     + OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION
                     + " and complete the assessment.";
         }
@@ -1181,12 +1190,12 @@ public final class OpenAiDeCoachContextProjector {
                     + "Memory-card goal: use only the dedicated card component for ordinary flashcard learning; its "
                     + "repetition ratings are not mastery evidence. For the strict learning-coach check, start "
                     + "Verified Recall, show the full question batch, and wait for all answers. Load expected "
-                    + "answers only afterwards, save every card result, and start the next batch only after complete "
-                    + "persistence.";
+                    + "answers only afterwards, give feedback on the whole batch, invite questions or closure, "
+                    + "and wait before the atomic save. Start the next batch only after agreement to continue.";
         }
         if (isOrientationGoal(goal)) {
             return goalAnnouncement
-                    + "Motivating orientation: first give a compact map of every path supplied in orientationOutlook: what is actually learned, its representative milestones, and its practical value. Use only those data and never invent paths or applications. If the map is absent, stay general and only offer to continue directly. Ask what sparks curiosity or whether the learner wants to continue directly. A reply that only selects a path starts the motivational dialogue. Take up that path, show two to four of its supplied milestones and practical contexts, and ask an active personal follow-up with no technically right or wrong answer. Do not test prior knowledge or details. Save completion only after meaningful engagement with that follow-up or an explicit request to continue directly; a content-free acknowledgement is insufficient. For a selected path, pass its pathId unchanged as orientationPathId. SkillPilot activates its first entry only when currently available; otherwise completion succeeds and the normal available foundations return without an active goal. Omit it only for explicit direct continuation without a path, and never claim subject mastery.";
+                    + "Motivating orientation: first give a compact map of every path supplied in orientationOutlook: what is actually learned, its representative milestones, and its practical value. Use only those data and never invent paths or applications. If the map is absent, stay general and only offer to continue directly. Ask what sparks curiosity or whether the learner wants to continue directly. A reply that only selects a path starts the motivational dialogue. Take up that path, show two to four of its supplied milestones and practical contexts, and ask an active personal follow-up with no technically right or wrong answer. Do not test prior knowledge or details. After meaningful engagement or a direct request to continue, give a positive summary, invite questions or closure, and wait for a further learner answer. Save completion only after that separate consent; a content-free acknowledgement is insufficient. For a selected path, pass its pathId unchanged as orientationPathId. SkillPilot activates its first entry only when currently available; otherwise completion succeeds and the normal available foundations return without an active goal. Omit it only for explicit direct continuation without a path, and never claim subject mastery.";
         }
         if (blank(requiredAction)) {
             return goalAnnouncement
@@ -1199,13 +1208,14 @@ public final class OpenAiDeCoachContextProjector {
                             ? "No safe options are available for the required step. Reload the context."
                             : "Treat a natural multi-part request as continuing intent. Apply an unambiguous subject match directly, load the successor state, and ask only for a selection that remains genuinely open.";
             case "orientActiveGoal" -> goalAnnouncement
-                    + "Give motivating orientation without subject assessment. A bare selection among offered possibilities starts the active follow-up. Save completion only after meaningful engagement with it or an explicit request to continue directly; a content-free acknowledgement is insufficient. Do not claim subject mastery.";
+                    + "Give motivating orientation without subject assessment. A bare selection among offered possibilities starts the active follow-up. After meaningful engagement or a direct request to continue, give a positive summary, invite questions or closure, and wait. Save completion only after a further learner reply consenting to close; a content-free acknowledgement is insufficient. Do not claim subject mastery.";
             case "teachActiveGoal", "setMastery" -> goalAnnouncement
-                    + "This goal has already been selected by SkillPilot. Begin it immediately, do not offer other "
-                    + "learning goals, and do not ask for further confirmation. "
+                    + "This goal has already been selected by SkillPilot. Begin it only when no earlier task or "
+                    + "goal closure is pending and the learner wants to continue. Do not offer other "
+                    + "learning goals. "
                     + "All goal options mentioned earlier in the conversation are invalidated by this current "
                     + "successor state. "
-                    + "Coach dialogically on the active goal. Accept technically equivalent correct approaches, representations, and justifications; explicit format requirements remain binding. Save mastery only after two independent checks or genuine transfer in a changed context and after checking every aspect. Keep concrete feedback about work and outcome exclusively in the conversation; never send conversation content to SkillPilot. After confirmed persistence, give that feedback before the next learning goal.";
+                    + "Coach dialogically on the active goal. Accept technically equivalent correct approaches, representations, and justifications; explicit format requirements remain binding. Save mastery only after two independent checks or genuine transfer in a changed context, after checking every aspect, and after feedback, an invitation for questions, and learner consent to close. Keep concrete feedback about work and outcome exclusively in the conversation; never send conversation content to SkillPilot.";
             default -> "Follow only the published required action, then reload the context.";
         };
     }
@@ -1369,15 +1379,20 @@ public final class OpenAiDeCoachContextProjector {
         String announcement = UnifiedLearningPlanStatusFormatter.formatActiveGoalAnnouncement(
                 compact(goal.title(), 240), english ? "en" : "de");
         if (english) {
-            return "When beginning work on this newly confirmed goal, start the new-goal section exactly "
+            return "These teaching instructions apply only when beginning or resuming the goal. During a "
+                    + "pending closure, answer questions or await the learner's reply; after consent, save any "
+                    + "warranted completion before presenting another task or image. On a pause, offer no "
+                    + "new task or mode. When beginning work on this newly confirmed goal, start the new-goal section exactly "
                     + "with the line: “" + announcement + "” Use the title, not the description, and give "
-                    + "no explanation before it within that section. A mandatory completion handoff for the "
-                    + "previous goal must still appear before this section. ";
+                    + "no explanation before it within that section. ";
         }
-        return "Beginne den Abschnitt zu diesem neu bestätigten Ziel genau mit der Zeile: „"
+        return "Diese Unterrichtsanweisungen gelten nur beim Beginnen oder Fortsetzen des Ziels. Während "
+                + "eines offenen Abschlusses beantworte Rückfragen oder warte auf die Antwort; nach Zustimmung "
+                + "speichere einen fachlich belegten Abschluss vor einer neuen Aufgabe oder ihrem Bild. Bei einer "
+                + "Pause biete keine neue Aufgabe oder Lernform an. Beginne den Abschnitt zu diesem neu "
+                + "bestätigten Ziel genau mit der Zeile: „"
                 + announcement + "“ Verwende den Titel, nicht die Beschreibung, und gib innerhalb dieses "
-                + "Abschnitts davor keine Erklärung. Eine verpflichtende Abschlussrückmeldung zum vorherigen "
-                + "Ziel muss dennoch vor diesem Abschnitt erscheinen. ";
+                + "Abschnitts davor keine Erklärung. ";
     }
 
     private boolean isExamGoal(FrontierGoal goal) {

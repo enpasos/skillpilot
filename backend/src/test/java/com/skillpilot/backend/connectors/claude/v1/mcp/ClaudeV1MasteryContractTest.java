@@ -165,9 +165,9 @@ class ClaudeV1MasteryContractTest {
                                 "returned context",
                                 "canonical backend state",
                                 "do not reload",
-                                "continue immediately and naturally",
+                                "before presenting the next learning content",
                                 "Do not narrate the previous orientation's completion",
-                                "Do not ask for another confirmation")
+                                "learner already accepted the offered closure in a separate answer")
                         .doesNotContain("what went well", "what still needs practice")
                         .doesNotContain("Reload coach context now"));
         assertThat(payload(replay)).isEqualTo(resultPayload);
@@ -222,7 +222,7 @@ class ClaudeV1MasteryContractTest {
     }
 
     @Test
-    void ordinaryCompletionRetainsTheEvidenceFeedbackPresentationContract() throws Exception {
+    void ordinaryCompletionContinuesAfterFeedbackAndConsentWithoutRepeatingTheClosure() throws Exception {
         FrontierGoal activeGoal = goal(ACTIVE_GOAL_ID, "content");
         FrontierGoal backendNext = goal(BACKEND_NEXT_GOAL_ID, "content");
         when(coachToolFacade.getLearnerState(learnerId))
@@ -246,7 +246,11 @@ class ClaudeV1MasteryContractTest {
                         "presentationInstruction",
                         ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION)
                 .hasEntrySatisfying("presentationInstruction", instruction -> assertThat(instruction.toString())
-                        .contains("what went well", "what still needs practice", "active goal or next action")
+                        .contains(
+                                "already received feedback and agreed to close the previous goal",
+                                "before presenting the next learning content",
+                                "active goal or next action")
+                        .doesNotContain("what went well", "what still needs practice")
                         .doesNotContain("previous orientation's completion"));
     }
 

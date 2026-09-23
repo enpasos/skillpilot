@@ -148,6 +148,22 @@ Die Grenze lautet konkret:
 - **Prüfung:** Der Coach darf die autorisierte numerische Bewertung übermitteln.
   Die Erläuterung zu Lösungsweg, Punkten und Bestehen bleibt im Chat.
 
+Der Coach bespricht eine abgeschlossene Aufgabe zuerst fachlich, bietet
+Rückfragen oder einen passenden Abschluss an und wartet auf die Antwort. Das
+gilt mit und ohne Autopilot. Eine weitere Aufgabe erscheint erst nach
+erkennbarem Wunsch zum Weitergehen. Reicht die Aufgabe zugleich als letzter
+Verständnisnachweis für das Lernziel, genügt eine gemeinsame Abschlussfrage.
+Eine gelöste Aufgabe oder eine bloße Zustimmung ersetzt keinen vollständigen
+Verständnisnachweis. Die strukturierte Abschlussentscheidung für ein Lernziel
+wird erst nach ausreichender Evidenz **und** Zustimmung zum Abschluss
+übermittelt. Dasselbe Antwortfenster liegt zwischen der Rückmeldung zu einem
+vollständigen Verified-Recall-Batch und dessen atomarer Ergebnisspeicherung.
+Rückfragen bleiben beim aktuellen Inhalt; eine Pause löst weder den nächsten
+Inhalt noch dessen Lernbild aus. Bei Zustimmung nur zum Abschließen darf ein
+vom Backend bereits ausgewählter Nachfolger erst nach späterer ausdrücklicher
+Fortsetzung präsentiert werden. Am Ende ohne Nachfolger wird der tatsächliche
+Abschluss bestätigt.
+
 Der Coach darf einen erfolgreichen Save erst nach dem passenden Erfolgsbeleg
 behaupten. Ein abgebrochener Transport oder Timeout beweist weder Speicherung
 noch Nicht-Speicherung; dafür ist eine eindeutige technische Recovery nötig,

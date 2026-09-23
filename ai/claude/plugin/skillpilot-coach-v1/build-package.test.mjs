@@ -41,6 +41,7 @@ test("builds a deterministic root-level Claude .plugin archive", () => {
       "README.md",
       "SETUP.md",
       "skills/skillpilot-coach-v1/SKILL.md",
+      "skills/skillpilot-coach-v1/references/task-closure.md",
       "skills/skillpilot-coach-v1/references/verified-recall.md",
     ].sort((left, right) =>
       left < right ? -1 : left > right ? 1 : 0);

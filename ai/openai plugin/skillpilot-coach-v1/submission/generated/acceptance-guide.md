@@ -6,7 +6,7 @@ Automatisch aus den aktuellen Einreichungsquellen erzeugt. Nicht hier bearbeiten
 
 Kandidat: `1.1.0` · MCP-Endpunkt: `https://mcp-coach-v1.skillpilot.com/mcp`
 
-Testsuite-SHA-256: `cf6781389cebfc0ccf5b4b2d99e3d52fb53ba9bec32508296505ad0e395b84e1`
+Testsuite-SHA-256: `66ebb98b7daa48fe066f9bdd4d33bd903e194c2b4d6e3add34c9f7f54d86864b`
 
 Vertrags-SHA-256: `d4354e84f60910adb810238ceb66f6d2affce66033fb3c4be74de52837a060a7`
 
@@ -102,11 +102,15 @@ Erwarteter Startzustand: Warum Mathematik? – Denken, Muster & Zukunft; mastery
 
 #### 4. user · turnId: `continue`
 
-> Ich möchte jetzt mit Bakterienwachstum konkret weiterlernen. Ich würde einen Graphen wählen, weil man daran die Entwicklung über die Zeit und Veränderungen besonders schnell erkennt. Was kann ich am Graphen erkennen, das eine Tabelle weniger direkt zeigt?
+> Bei Bakterienwachstum würde ich einen Graphen wählen, weil man daran die Entwicklung über die Zeit und Veränderungen besonders schnell erkennt. Was kann ich am Graphen erkennen, das eine Tabelle weniger direkt zeigt?
+
+#### 5. user · turnId: `closure`
+
+> Danke, das leuchtet mir ein. Ich habe dazu keine weiteren Fragen. Alles klar, wir können die Orientierung abschließen und mit dem nächsten Lernziel weitermachen.
 
 ### Erwartetes Ergebnis
 
-German teaching follows fresh context. Interest alone does not complete orientation. After the personal reply, confirm completion and use the server-selected successor. Render once only when authorized; retain full teaching text. Do not change Level 2.
+German teaching follows fresh context. After the personal reply, answer its question, give positive closure and await a further learner reply. Only then complete orientation and teach the server-selected successor, rendering its image only when authorized. Keep full teaching text and Level 2.
 
 Erforderliche Werkzeuge: `get_skillpilot_context`, `set_skillpilot_mastery`.
 
@@ -118,7 +122,9 @@ Vorgegebene Werkzeugreihenfolge: `get_skillpilot_context` → `set_skillpilot_ma
 
 - [ ] `fresh-context` — Inhaltlich/visuell prüfen: Fresh context before learner-facing replies; use pinned locale and authoritative state.
 
-- [ ] `orientation-evidence` — Inhaltlich/visuell prüfen: Interest choice starts tailored motivation, not a test or completion. Complete only after the personal response/explicit readiness.
+- [ ] `orientation-evidence` — Inhaltlich/visuell prüfen: Interest choice starts tailored motivation, not a test or completion. Answer the personal graph question, positively close the orientation, invite questions or agreement and await the separate closure reply before completion.
+
+- [ ] `closure-gate` — Inhaltlich/visuell prüfen: The response to continue contains no successor lesson, task or successor image. Only after closure may the coach complete orientation and begin the next goal; do not add a second confirmation round.
 
 - [ ] `successor` — Inhaltlich/visuell prüfen: Use the authoritative successor and one authorized image with exact goalId and stateVersion; no blank component if not authorized.
 
@@ -163,39 +169,49 @@ Erwarteter Startzustand: Orientation active and incomplete; untouched memory-car
 
 #### 4. user · turnId: `continue`
 
-> Ich möchte jetzt mit Bakterienwachstum konkret weiterlernen. Ich würde einen Graphen wählen, weil man daran die Entwicklung über die Zeit und Veränderungen besonders schnell erkennt. Was kann ich am Graphen erkennen, das eine Tabelle weniger direkt zeigt?
+> Bei Bakterienwachstum würde ich einen Graphen wählen, weil man daran die Entwicklung über die Zeit und Veränderungen besonders schnell erkennt. Was kann ich am Graphen erkennen, das eine Tabelle weniger direkt zeigt?
 
-#### 5. user · turnId: `switch`
+#### 5. user · turnId: `orientation-closure`
+
+> Danke, das leuchtet mir ein. Ich habe dazu keine weiteren Fragen. Alles klar, wir können die Orientierung abschließen und mit dem nächsten Lernziel weitermachen.
+
+#### 6. user · turnId: `switch`
 
 > Ich möchte jetzt zum Lernziel „Lernkarten - Funktionen und Gleichungen“ wechseln und dort die fälligen Karteikarten normal üben.
 
-#### 6. user · turnId: `practice`
+#### 7. user · turnId: `practice`
 
 > Karteikarten lernen.
 
-#### 7. ui · turnId: `rate`
+#### 8. ui · turnId: `rate`
 
 > Rate all eight fixture cards Gewusst in the memory-practice UI.
 
-#### 8. user · turnId: `recall`
+#### 9. user · turnId: `recall`
 
 > Jetzt möchte ich die strenge Kartenprüfung ohne Hilfen machen.
 
-#### 9. user · turnId: `answers`
+#### 10. user · turnId: `answers`
 
 > 1. m=(y₂-y₁)/(x₂-x₁). 2. f(x)=a(x-d)²+e mit S(d|e). 3. Ein Produkt ist genau dann null, wenn mindestens ein Faktor null ist. 4. x=log_a(b), bei Basis e: x=ln(b). 5. a_(n+1)=a_n+d. 6. a_n=a_1·q^(n-1). 7. x^a·x^b=x^(a+b). 8. x_(1,2)=-p/2 ± sqrt((p/2)²-q).
 
+#### 11. user · turnId: `recall-closure`
+
+> Danke für die Rückmeldung zu allen acht Antworten. Ich habe dazu keine Fragen. Alles klar, wir können diese Kartenprüfung abschließen und gemäß meinem Lernplan weitermachen.
+
 ### Erwartetes Ergebnis
 
-Normal practice shows 8 cards in the component; ratings change scheduling, not mastery. Recall asks all 8 questions without hints. After all answers, load answers once and save one complete ordered result batch; follow the authoritative continuation.
+Normal practice shows 8 component cards; ratings affect scheduling, not mastery. Recall asks 8 questions without hints. After all answers, load answers and give feedback, then await learner closure. Only then save one ordered batch and follow the authoritative continuation.
 
-Erforderliche Werkzeuge: `get_skillpilot_context`, `get_skillpilot_navigation`, `set_skillpilot_active_goal`, `start_skillpilot_memory_practice`, `review_skillpilot_memory_practice_card`, `start_skillpilot_verified_recall`, `get_skillpilot_verified_recall_answers`, `record_skillpilot_verified_recall_results`.
+Erforderliche Werkzeuge: `get_skillpilot_context`, `get_skillpilot_navigation`, `set_skillpilot_mastery`, `set_skillpilot_active_goal`, `start_skillpilot_memory_practice`, `review_skillpilot_memory_practice_card`, `start_skillpilot_verified_recall`, `get_skillpilot_verified_recall_answers`, `record_skillpilot_verified_recall_results`.
 
 Verbotene Werkzeuge: keine zusätzlichen Verbote.
 
-Vorgegebene Werkzeugreihenfolge: `start_skillpilot_memory_practice` → `review_skillpilot_memory_practice_card` → `start_skillpilot_verified_recall` → `get_skillpilot_verified_recall_answers` → `record_skillpilot_verified_recall_results`.
+Vorgegebene Werkzeugreihenfolge: `set_skillpilot_mastery` → `set_skillpilot_active_goal` → `start_skillpilot_memory_practice` → `review_skillpilot_memory_practice_card` → `start_skillpilot_verified_recall` → `get_skillpilot_verified_recall_answers` → `record_skillpilot_verified_recall_results`.
 
 ### Prüfkriterien
+
+- [ ] `orientation-closure-gate` — Inhaltlich/visuell prüfen: Answer the personal graph question, positively close orientation and await the separate orientation-closure reply before saving completion or starting another goal.
 
 - [ ] `private-cards` — Inhaltlich/visuell prüfen: Private fronts/backs stay in component metadata, not model-visible normal-practice text.
 
@@ -203,11 +219,15 @@ Vorgegebene Werkzeugreihenfolge: `start_skillpilot_memory_practice` → `review_
 
 - [ ] `complete-recall` — Inhaltlich/visuell prüfen: All eight questions, answers and results are ordered; no protected answers or hints before the complete user submission.
 
+- [ ] `orientation-one-mastery` — `set_skillpilot_mastery`: mindestens 1, höchstens 1 Aufrufe.
+
+- [ ] `recall-closure-gate` — Inhaltlich/visuell prüfen: After all eight answers, give concrete scoring feedback and invite questions or closure. Do not save results, introduce another task, or show its image before the separate recall-closure reply.
+
 - [ ] `one-answer-load` — `get_skillpilot_verified_recall_answers`: mindestens 1, höchstens 1 Aufrufe.
 
 - [ ] `one-result` — `record_skillpilot_verified_recall_results`: mindestens 1, höchstens 1 Aufrufe.
 
-- [ ] `continuation` — Inhaltlich/visuell prüfen: Apply exactly one confirmed authoritative continuation; no arbitrary next batch or invented goal.
+- [ ] `continuation` — Inhaltlich/visuell prüfen: After recall-closure, apply exactly one confirmed authoritative continuation; no arbitrary next batch or invented goal.
 
 ### Zugeordnete automatisierte Tests
 
@@ -239,9 +259,13 @@ Erwarteter Startzustand: B1 (Analysis – „Das Algenwachstum“, 25 BE); task 
 
 > Ich reiche jetzt meine vollständige Lösung ein: 1. A(0)=500/(1+49)=10 m². 2. Für t→∞ gilt e^(-0,2t)→0, also A(t)→500 m²; das ist die begrenzte maximal bedeckte Seefläche im Modell. 3. Beim logistischen Wachstum liegt das Maximum der Wachstumsgeschwindigkeit bei A=250 m². Aus 49e^(-0,2t)=1 folgt t=ln(49)/0,2≈19,46 Tage; A'(t)=0,2·A·(1-A/500), daher A'≈25 m²/Tag. 4. A(30)=500/(1+49e^-6)≈445,85 m² und A_neu(t)=445,85·0,95^(t-30) für t≥30. Aus 10=445,85·0,95^(t-30) folgt t≈104,03 Tage. 5. Für kleine t dominiert im Nenner 49e^(-0,2t), daher A(t)≈(500/49)e^(0,2t)≈10,20e^(0,2t). Exponentielles Wachstum ist anfangs eine gute Näherung; das logistische Modell ist dennoch sinnvoll, weil es die Sättigung bei 500 m² erfasst.
 
+#### 3. user · turnId: `closure`
+
+> Danke für die Auswertung und die Rückmeldung zu meiner Lösung. Ich habe dazu keine weiteren Fragen. Alles klar, wir können die Prüfungsaufgabe und das Lernziel erfolgreich abschließen.
+
 ### Erwartetes Ergebnis
 
-Show the complete task without hints or protected evaluation. Only after the full submission, evaluate all five criteria and accept equivalent methods. This complete fixture earns 25/25; passing threshold 13/25. Save one confirmed mastery result.
+Show the task without hints. After the full submission, evaluate five criteria; this fixture earns 25/25 (pass 13/25). Give feedback, invite questions or closure, and await the learner. Only after closure save mastery and continue according to the authoritative state.
 
 Erforderliche Werkzeuge: `get_skillpilot_context`, `get_skillpilot_exam_evaluation`, `set_skillpilot_mastery`.
 
@@ -254,6 +278,8 @@ Vorgegebene Werkzeugreihenfolge: `get_skillpilot_context` → `get_skillpilot_ex
 - [ ] `no-advance-help` — Inhaltlich/visuell prüfen: No hint, formula, worked answer or evaluation receipt before the full visible submission.
 
 - [ ] `complete-scoring` — Inhaltlich/visuell prüfen: The submission includes area-limit interpretation, units, model approximation and all five criteria; expected 25/25 with passingScore 13.
+
+- [ ] `exam-closure-gate` — Inhaltlich/visuell prüfen: After submission, explain what the five criteria show and invite questions or a combined task-and-goal close. Do not save mastery, introduce another task, or show its image before the separate closure reply.
 
 - [ ] `one-evaluation` — `get_skillpilot_exam_evaluation`: mindestens 1, höchstens 1 Aufrufe.
 

@@ -47,7 +47,8 @@ resources, or UI bytes.
 Version 1.1.8 makes explicit continuation available beyond daily quotas and
 plan dates. A plan guides and prioritizes; it must never prevent learning.
 The Skill owns the common coaching flow and the complete exam procedure inline;
-only Verified Recall uses a conditional reference. Starting an exam requires
+task and goal closure and Verified Recall use conditional references. Load the
+closure reference whenever a learner may finish a task or goal. Starting an exam requires
 neither a separate Skill invocation nor an evaluation-material load. Protected
 evaluation is requested only after a complete submission, using the current
 tool schema without write-only arguments. Local regression checks do not establish

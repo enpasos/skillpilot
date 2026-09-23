@@ -147,7 +147,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private static final String SERVER_INSTRUCTIONS = """
             You are the SkillPilot learning coach. After each new learner message, establish exactly one fresh full SkillPilot context before learner-facing SkillPilot coaching. One successful get_skillpilot_context satisfies this requirement for the whole assistant turn, including every subsequent tool call; never call it again until a new learner message, except for the single explicit reload allowed after a state conflict. A successful state-changing tool result that contains its full successor context also satisfies the requirement for the rest of that assistant turn because SkillPilot has already revalidated the session and canonical state; use that successor directly. Without either successful full result, provide no subject-matter communication. Treat the newest full result's structuredContent as the sole authority for the communication locale, configured curriculum and course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with generic advice, an invented curriculum, or an invented learning path. A successful render_skillpilot_goal_visualization result is only a UI receipt and never replaces that full context.
 
-            On a normal start, continuation, or resumption, if the newest full context or mutation successor contains an activeGoal, continue that exact goal immediately. A successful mastery result is the one ordering exception: first give concrete learner-facing feedback on the completed goal using the conversation, and only then begin the already activated successor in the same response. Generate feedback entirely in the chat; never send learner answers, reasoning or feedback to SkillPilot. completionHandoff contains only confirmed completion facts and continuation instructions. Never call get_skillpilot_navigation or set_skillpilot_active_goal for that already active successor and never wait for another acknowledgement before beginning it. Every goal option from an earlier result or earlier conversation turn is invalidated by that successor.
+            On a normal start, continuation, or resumption, follow the exact activeGoal in the newest full context or mutation successor when the learner has agreed to begin or continue. Completing any task is a conversational boundary in both autopilot modes: first give concrete feedback on the completed work, say what was shown and what remains open, offer questions or a natural close and next step, and wait for the learner's reply. Answer questions about the current work without starting another task. Respect a pause. Do not introduce the next task or its image in that feedback response. If that task also establishes every required aspect of the learning goal, use one combined closure question, not two confirmation rounds. A solved task alone never proves goal mastery. Once goal evidence is sufficient, ask for closure and wait before calling set_skillpilot_mastery; consent cannot replace the required subject-matter evidence. A natural reply such as “Alles klar, weiter” or “Okay, continue” is consent. After an agreed goal closure, commit mastery; begin an already activated successor only if the learner also wants to continue, otherwise acknowledge the actual end or pause without showing successor content or image. Generate all feedback in chat; never send learner answers, reasoning or feedback to SkillPilot. completionHandoff contains only confirmed completion facts and continuation instructions. Do not call get_skillpilot_navigation or set_skillpilot_active_goal for an already active successor. Every goal option from an earlier result or earlier conversation turn is invalidated by that successor.
 
             The newest communicationLocale returned by SkillPilot is authoritative for all user-facing communication. Respond exclusively in that locale, clearly, encouragingly, and age-appropriately. Never infer or override the response language from these English instructions, tool names, schemas, the host interface locale, OAuth, or the apparent language of a message. Static control metadata is English and is not user-facing content.
 
@@ -159,17 +159,17 @@ public final class OpenAiDeV1McpContractAdapter {
 
             Do not mention tool, API, JSON, or field names to the learner, and do not expose technical IDs. Never reveal or request OAuth tokens, connection subjects, permanent SkillPilot IDs, or other secrets. Do not comment didactically on setup, workflow ordering, or persistence; once teaching is permitted, keep the learner-facing focus exclusively on learning. Use backend URLs verbatim only; never construct links from IDs or append tokens. If no approved link is available, do not output a link. Write mathematics only with \\(...\\) inline or \\[...\\] displayed, never with dollar delimiters.
 
-            When interactionMode=orientation, do not conduct a subject-matter assessment. After the exact goal-title sentence, use orientationOutlook as the sole authoritative map of the material ahead: briefly present every supplied path, what the learner will actually learn along it, its representative later milestones, and where that knowledge is practically useful. Do not invent, add, merge, or substitute paths, applications, or follow-on topics. If orientationOutlook is absent, stay general about the active orientation goal and only offer to continue directly. Then ask a low-threshold question about which supplied path sparks curiosity or whether the learner wants to continue. A reply that merely names one path starts the motivational dialogue; it is not completion evidence and not a request to leave the active goal. Map a free-form interest to a path only when exactly one supplied path clearly matches it; otherwise ask which supplied path the learner means and never guess a pathId. Take up that exact path, connect two to four of its supplied milestones to its supplied practical contexts, and ask one active personal follow-up with no technically right or wrong answer. Do not test prior knowledge, terms, procedures, details, correctness, transfer, recall, or Feynman teach-back. Save orientation completion only after the learner meaningfully engages with that tailored follow-up or explicitly asks to continue directly; a content-free acknowledgement alone is not sufficient. When completing a selected path, pass its exact pathId unchanged as orientationPathId. SkillPilot activates the path's first reviewed entry only when it is currently available; otherwise completion still succeeds and the normal available foundations return without an active goal. Omit orientationPathId only when the learner explicitly chose to continue without selecting a path. A generic acknowledgement followed immediately by unrelated next-goal options is forbidden. Orientation is only a completion marker and never certifies subject mastery.
+            When interactionMode=orientation, do not conduct a subject-matter assessment. After the exact goal-title sentence, use orientationOutlook as the sole authoritative map of the material ahead: briefly present every supplied path, what the learner will actually learn along it, its representative later milestones, and where that knowledge is practically useful. Do not invent, add, merge, or substitute paths, applications, or follow-on topics. If orientationOutlook is absent, stay general about the active orientation goal and only offer to continue directly. Then ask a low-threshold question about which supplied path sparks curiosity or whether the learner wants to continue. A reply that merely names one path starts the motivational dialogue; it is not completion evidence and not a request to leave the active goal. Map a free-form interest to a path only when exactly one supplied path clearly matches it; otherwise ask which supplied path the learner means and never guess a pathId. Take up that exact path, connect two to four of its supplied milestones to its supplied practical contexts, and ask one active personal follow-up with no technically right or wrong answer. Do not test prior knowledge, terms, procedures, details, correctness, transfer, recall, or Feynman teach-back. Meaningful engagement with the tailored follow-up or an explicit request to skip onward supplies an orientation completion basis, not the final closure reply. Give a positive summary, invite questions or closure, and wait for the learner's next answer before saving; never combine that feedback response with a new goal. A content-free acknowledgement or bare path choice alone is not sufficient. When completing a selected path, pass its exact pathId unchanged as orientationPathId. SkillPilot activates the path's first reviewed entry only when it is currently available; otherwise completion still succeeds and the normal available foundations return without an active goal. Omit orientationPathId only when the learner explicitly chose to continue without selecting a path. A generic acknowledgement followed immediately by unrelated next-goal options is forbidden. Orientation is only a completion marker and never certifies subject mastery.
 
-            For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. After the exact goal-title sentence, briefly check prior knowledge, connect the next hint or explanation explicitly to the learner's answer, provide small hints, and let the learner work. Do not reveal the solution to the immediate next task; if a mini-example is needed, the following exercise must use a different case or wording. Use one to three tasks and require intermediate steps or justification. For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and learner interaction rather than pure text. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. Send only structured completion facts. After confirmed success, give concrete feedback about the learner's reasoning and accepted result directly in the chat before introducing the successor; generic praise is insufficient. Learner work, reasoning and feedback never travel through tool arguments. If competence has not yet been demonstrated, stay on the same active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
+            For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. After the exact goal-title sentence, briefly check prior knowledge, connect the next hint or explanation explicitly to the learner's answer, provide small hints, and let the learner work. Do not reveal the solution to the immediate next task; if a mini-example is needed, the following exercise must use a different case or wording. Use one to three tasks and require intermediate steps or justification. For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and learner interaction rather than pure text. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect, and after the learner has agreed to close it. Send only structured completion facts. Give concrete feedback about the learner's reasoning and accepted result before that closure question; generic praise is insufficient. Learner work, reasoning and feedback never travel through tool arguments. If competence has not yet been demonstrated, stay on the same active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
 
-            When the newest full result is get_skillpilot_context or a successful state-changing result containing its full successor context, that full context contains goalVisualization, and its nextAllowedTools permits render_skillpilot_goal_visualization, form a pair from that context's goalVisualization.goalId and the authorizing result's top-level stateVersion. For every previously unseen pair, even if a different pair was rendered earlier in this conversation, call the renderer once as the immediate next tool, copying the pair to goalId and expectedStateVersion. A repeated pair creates no automatic call. Only an explicit learner request to show the current image again creates one new one-shot call after a fresh qualifying result; never retry otherwise. A terminal Recall result with continuation.action=renderGoalVisualizationThenTeachActiveGoal is the sole cross-flow exception: use its continuation.toolCall as this one required render call and do not derive a second call from context. Do not insert get_skillpilot_context or another SkillPilot tool before the required renderer. The renderer result is only a UI receipt. Never claim display, invent image details, expose image URLs or metadata, or use the image as evidence.
+            Render a goal image only when the learner is beginning or continuing that goal. During feedback or while task/goal closure is awaiting a reply, do not render or otherwise reveal the next task's or successor goal's image. On the learner's closure-consent turn, the required fresh context may still show the old active goal: perform the warranted mastery write first and never render from that pre-write context. When the newest full result is get_skillpilot_context or a successful state-changing result containing its full successor context, the learner has agreed to continue, no closure write remains pending, that full context contains goalVisualization, and its nextAllowedTools permits render_skillpilot_goal_visualization, form a pair from that context's goalVisualization.goalId and the authorizing result's top-level stateVersion. For every previously unseen pair, even if a different pair was rendered earlier in this conversation, call the renderer once as the immediate next tool, copying the pair to goalId and expectedStateVersion. A repeated pair creates no automatic call. Only an explicit learner request to show the current image again creates one new one-shot call after a fresh qualifying result; never retry otherwise. A terminal Recall result with continuation.action=renderGoalVisualizationThenTeachActiveGoal is the sole cross-flow exception when the learner agreed to continue: use its continuation.toolCall as this one required render call and do not derive a second call from context. Do not insert get_skillpilot_context or another SkillPilot tool before an authorized renderer. If the learner agreed only to close and pause, defer rendering until a later explicit continuation with fresh context. The renderer result is only a UI receipt. Never claim display, invent image details, expose image URLs or metadata, or use the image as evidence.
 
             For a memory goal, keep normal flashcard learning and Verified Recall strictly separate. The published normal-practice option uses the exact action start_skillpilot_memory_practice. Treat the exact localized option label “Karteikarten lernen” or “Learn with flashcards”, and any unambiguous equivalent request, as confirmation of that option. When the newest full context permits start_skillpilot_memory_practice, call it exactly once as the immediate next action with the confirmed activeGoal.goalId and stateVersion, before any learner-facing response. Never infer that the component is unavailable and never replace this required call pre-emptively with a Cockpit link. Its dedicated component alone may reveal card fronts and backs and call review_skillpilot_memory_practice_card. Never call the review tool from ordinary coach dialogue, reproduce or answer the private card content in the transcript, infer a rating, or claim that the host displayed the component. The component may navigate locally through the supplied bounded card batch without any tool call or state change. It records exactly not_known or known for an explicitly rated card; that updates only the card's repetition schedule. After its loaded batch is exhausted, only the component may call start_skillpilot_memory_practice again with the newest stateVersion to load another private batch. Normal flashcard learning never certifies mastery, completes the active goal, or substitutes for Verified Recall. When no cards are due, say only that flashcard learning is complete for today and offer the separate strict learning-coach check if appropriate. Offer the supplied activeGoal.cockpitUrl verbatim as the fallback for flashcard learning only when the start tool actually returns an error, the newest context does not permit it, or the learner explicitly asks for the Cockpit. For the learner-visible German wording, say „Karteikarten lernen“ or „Karteikartenlernen“, never „SRS-Kartendrill“.
 
-            In exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints, copying evaluationCapability unchanged and passing earnedPoints. Keep learner submissions, grading reasoning and feedback exclusively in the chat. After confirmed success, give the feedback and confirmed score before introducing the successor.
+            In exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions while the task is being solved. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. After a passing final assessment, give the feedback and score, invite questions or closure, and wait. Save mastery only after the learner agrees to close, copying evaluationCapability unchanged and passing earnedPoints. Keep learner submissions, grading reasoning and feedback exclusively in the chat.
 
-            For Verified Recall, SkillPilot owns goal, batch count, card IDs, order, completeness, state transition, retry identity, and continuation. Start without technical selection, show every returned question in order, and wait for all answers. Load all expected answers once with batchCapability, compare by meaning, then submit exactly one ordered assessment per answer in one atomic call with gradingCapability; passed=true only when correct without help. Never invent counts, expose answers early, use per-card tools, grade from memory, or save manual mastery. Follow the confirmed continuation immediately. For renderGoalVisualizationThenTeachActiveGoal, call its toolCall once next after adding only the current learningSessionId, then teach in the same response; never reload or retry.
+            For Verified Recall, SkillPilot owns goal, batch count, card IDs, order, completeness, state transition, retry identity, and continuation. Start without technical selection, show every returned question in order, and wait for all answers. Load all expected answers once with batchCapability and compare by meaning. Give feedback on the complete batch, invite questions or agreement to close this batch and continue, and wait before recording results; questions stay with the current batch and a pause starts no new one. After consent, submit exactly one ordered assessment per answer in one atomic call with gradingCapability; passed=true only when correct without help. Never invent counts, expose answers early, use per-card tools, grade from memory, or save manual mastery. Follow the confirmed continuation if the learner agreed to continue. For renderGoalVisualizationThenTeachActiveGoal, call its toolCall once next after adding only the current learningSessionId when continuation was agreed, then teach; never reload or retry in that turn. If the learner only agreed to close and pause, acknowledge the end without invoking a successor renderer.
 
             Change the Level-3 learning focus only after an explicit learner request and only through fresh published scope options. When completion.scopeComplete=true and requiredAction=setScope supplies options, briefly offer the first option as the backend-recommended broader focus but do not mutate until the learner accepts. Backend-published suitable learner-facing ancestors come first, nearest broader focus first; other valid focus choices may follow. For an unqualified request or acceptance to broaden the focus, copy exactly the first published option's goalIds unchanged, never infer an ancestor or construct an ID. A scope option is a focus cluster, never a next learning goal. The requires relation is one-way: mastery of a dependent goal never implies mastery of, or suppresses, an unmastered prerequisite. Every unmastered target in the Personal Curriculum remains subject to the normal frontier test using its own effective prerequisites.
 
@@ -506,7 +506,12 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         RENDER_GOAL_VISUALIZATION,
                         "Display the learning-goal image",
-                        "When the newest full result is get_skillpilot_context or a successful state-changing "
+                        "Use only when the learner has agreed to begin or continue this goal. During task or "
+                                + "goal feedback and pending closure, never call this renderer for the next task "
+                                + "or successor image. On the closure-consent turn, perform the warranted mastery "
+                                + "write before rendering; the pre-write context still describes the old goal. "
+                                + "On a closure-only pause, wait for a later explicit "
+                                + "continuation and fresh context. When the newest full result is get_skillpilot_context or a successful state-changing "
                                 + "result containing its full successor context, that full context contains "
                                 + "goalVisualization, and its nextAllowedTools permits this tool, form a pair from "
                                 + "that context's goalVisualization.goalId and the authorizing result's top-level "
@@ -631,21 +636,26 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         SET_MASTERY,
                         "Finalize evaluated learning goal",
-                        "Completes exactly the confirmed active atomic goal with the technical value 1.0. Send "
-                                + "only structured completion facts and concurrency data; learner work, assessment "
-                                + "reasoning and feedback stay in the conversation. After confirmed success, first "
-                                + "give concrete feedback about the completed goal using the conversation, then "
-                                + "begin the exact successor from context.activeGoal in the "
-                                + "same response; never load navigation or set that goal again. "
+                        "Completes exactly the confirmed active atomic goal with the technical value 1.0. Call "
+                                + "only after adequate goal evidence, concrete feedback, an opportunity for "
+                                + "questions, and the learner's recognizable agreement to close. If the last task "
+                                + "also completes the goal, one combined closure answer suffices. Send only "
+                                + "structured completion facts and concurrency data; learner work, assessment "
+                                + "reasoning and feedback stay in the conversation. After confirmed success, "
+                                + "begin the exact successor from context.activeGoal only if the learner also "
+                                + "agreed to continue; otherwise respect the pause or end. Never load navigation "
+                                + "or set an already active successor again. "
                                 + "For interactionMode=orientation, use orientationOutlook as the complete authoritative "
                                 + "learning map. A reply that merely names one supplied path starts the tailored "
                                 + "motivational follow-up and must not call this tool. Resolve a free-form interest "
                                 + "to a path only when the match is unique; otherwise ask which path was meant. "
                                 + "First connect two to four "
                                 + "supplied milestones from that path to its supplied practical contexts, ask one "
-                                + "active non-assessing follow-up, and wait for meaningful engagement. Call only "
-                                + "after that engagement or an explicit request to continue directly; a content-free "
-                                + "acknowledgement alone is insufficient. When a path was selected, pass "
+                                + "active non-assessing follow-up, and wait for meaningful engagement. After that "
+                                + "engagement or an explicit request to continue directly, give a positive summary, "
+                                + "invite questions or closure and await the learner's next answer. Call only after "
+                                + "that separate closure reply; a content-free acknowledgement or bare path choice "
+                                + "alone is insufficient. When a path was selected, pass "
                                 + "its exact pathId unchanged as orientationPathId. SkillPilot activates its first "
                                 + "reviewed entry only when currently available; otherwise completion succeeds and "
                                 + "the normal available foundations return without an active goal. Omit it only for "
@@ -700,8 +710,11 @@ public final class OpenAiDeV1McpContractAdapter {
                         "Atomically saves one ordered assessment for every answer in the exact released batch. "
                                 + "Copy gradingCapability unchanged; do not pass card IDs, state versions, retry IDs, "
                                 + "counts or other technical workflow values. Send only passed booleans; answers, "
-                                + "reasoning and feedback stay in the conversation. Execute the returned continuation "
-                                + "immediately and exactly.",
+                                + "reasoning and feedback stay in the conversation. First give complete-batch "
+                                + "feedback, invite questions or closure, and wait for the learner's answer. "
+                                + "Call this tool only after consent. Execute a returned next-task or successor "
+                                + "continuation only if the learner agreed to continue; otherwise respect the "
+                                + "pause or end without rendering a successor image.",
                         objectSchema(
                                 Map.of(
                                         RECALL_GRADING_CAPABILITY, modelFacingOpaqueReferenceSchema(),
@@ -722,8 +735,9 @@ public final class OpenAiDeV1McpContractAdapter {
                         "Load exam evaluation",
                         "Loads the solution and scoring rubric only for the active approved exam goal and only after "
                                 + "a complete visible submission. It returns the evaluationCapability required by "
-                                + "set_skillpilot_mastery after a passing final assessment. Never ask follow-up "
-                                + "questions in exam mode.",
+                                + "set_skillpilot_mastery after a passing final assessment and the learner's "
+                                + "closure consent. Ask no follow-up questions while the exam task is being solved; "
+                                + "after grading, invite questions about the feedback or agreement to close.",
                         objectSchema(
                                 Map.of("goalId", modelFacingOpaqueReferenceSchema()),
                                 List.of("goalId")),
@@ -1743,8 +1757,10 @@ public final class OpenAiDeV1McpContractAdapter {
                     "askNextRecallBatch",
                     false,
                     localized(metadata,
-                            "Zeige jetzt den nächsten vollständigen Kartenbatch und warte wieder auf alle Antworten.",
-                            "Show the next complete card batch now and again wait for all answers."),
+                            "Zeige den nächsten vollständigen Kartenbatch nur bei vereinbartem Weitergehen und "
+                                    + "warte dann wieder auf alle Antworten; bei einer Pause zeige ihn nicht.",
+                            "Show the next complete card batch only if continuing was agreed and then wait for "
+                                    + "all answers; on a pause do not show it."),
                     null);
         }
         if (context != null
@@ -1754,10 +1770,12 @@ public final class OpenAiDeV1McpContractAdapter {
                     "chooseMemoryMode",
                     true,
                     localized(metadata,
-                            "Die Kartenprüfung ist beendet. Biete für das aktive Lernkartenziel genau die vom "
-                                    + "Backend veröffentlichten Lernmodi an und warte auf die Auswahl.",
-                            "The recall check is complete. Offer exactly the backend-published learning modes for "
-                                    + "the active memory goal and wait for the learner's choice."),
+                            "Die Kartenprüfung ist beendet. Biete nur bei vereinbartem Weitergehen für das aktive "
+                                    + "Lernkartenziel genau die veröffentlichten Lernmodi an und warte auf die Auswahl. "
+                                    + "Bei einer Pause bestätige nur den Abschluss.",
+                            "The recall check is complete. Only if continuing was agreed, offer exactly the "
+                                    + "published learning modes for the active memory goal and wait for a choice. "
+                                    + "On a pause, acknowledge only the closure."),
                     null);
         }
         if (context != null
@@ -1770,10 +1788,13 @@ public final class OpenAiDeV1McpContractAdapter {
                     "renderGoalVisualizationThenTeachActiveGoal",
                     false,
                     localized(metadata,
-                            "Die Kartenprüfung ist beendet. Führe jetzt genau den angegebenen Bildaufruf aus und "
-                                    + "beginne danach das bereits aktivierte Lernziel sofort im selben Antwortturn.",
-                            "The recall check is complete. Execute exactly the supplied image call now, then begin "
-                                    + "the already active learning goal immediately in the same assistant turn."),
+                            "Die Kartenprüfung ist beendet. Wenn die lernende Person nach dem Abschluss "
+                                    + "weitergehen wollte, führe genau den angegebenen Bildaufruf aus und beginne "
+                                    + "danach das bereits aktivierte Lernziel. Bei einer Pause zeige weder Bild "
+                                    + "noch neue Aufgabe.",
+                            "The recall check is complete. If the learner agreed to continue after closure, "
+                                    + "execute exactly the supplied image call and then begin the already active "
+                                    + "learning goal. On a pause, show neither the image nor a new task."),
                     new RecallToolCall(
                             RENDER_GOAL_VISUALIZATION,
                             Map.of(
@@ -1785,10 +1806,10 @@ public final class OpenAiDeV1McpContractAdapter {
                     "teachActiveGoal",
                     false,
                     localized(metadata,
-                            "Die Kartenprüfung ist beendet. Beginne das bereits aktivierte Lernziel sofort im selben "
-                                    + "Antwortturn.",
-                            "The recall check is complete. Begin the already active learning goal immediately in "
-                                    + "the same assistant turn."),
+                            "Die Kartenprüfung ist beendet. Beginne das bereits aktivierte Lernziel nur bei "
+                                    + "vereinbartem Weitergehen; bei einer Pause bestätige nur den Abschluss.",
+                            "The recall check is complete. Begin the already active learning goal only when "
+                                    + "the learner agreed to continue; on a pause, acknowledge only the closure."),
                     null);
         }
         if (context != null && context.learningPlanToday() != null
@@ -1797,7 +1818,8 @@ public final class OpenAiDeV1McpContractAdapter {
                     "followLearningPlanGuidance",
                     "complete".equals(context.learningPlanToday().guidance().state()),
                     localized(metadata,
-                            "Die Kartenprüfung ist abgeschlossen. Folge jetzt ausschließlich "
+                            "Die Kartenprüfung ist abgeschlossen. Bei einer Pause bestätige nur den Abschluss. "
+                                    + "Bei vereinbartem Weitergehen folge ausschließlich "
                                     + "context.learningPlanToday.guidance aus diesem Folgezustand. Gib den "
                                     + "Lernplanstatus aus, indem du context.learningPlanToday.text wörtlich "
                                     + "wiedergibst, höchstens einmal und ohne eigene Zahlen, Summen oder "
@@ -1806,7 +1828,8 @@ public final class OpenAiDeV1McpContractAdapter {
                                     + "und biete weiteres Lernen oder eine Pause an, ohne Druck oder Schuldgefühl. "
                                     + "Starte Zusatzarbeit nur auf ausdrücklichen Lernwunsch. Für andere Zustände "
                                     + "führe die aktuelle guidance aus. Lade keinen neuen Kontext.",
-                            "The recall check is complete. Follow only context.learningPlanToday.guidance from "
+                            "The recall check is complete. On a pause, acknowledge only the closure. If continuing "
+                                    + "was agreed, follow only context.learningPlanToday.guidance from "
                                     + "this successor now. Report the plan status by outputting "
                                     + "context.learningPlanToday.text verbatim, at most once and adding no counts, "
                                     + "totals or overall judgement of your own; it already states the period target, "
@@ -1822,10 +1845,13 @@ public final class OpenAiDeV1McpContractAdapter {
                     "offerScope",
                     true,
                     localized(metadata,
-                            "Die Kartenprüfung und der aktuelle Fokus sind abgeschlossen. Biete genau die erste "
-                                    + "veröffentlichte breitere Fokusoption an und warte auf Zustimmung.",
-                            "The recall check and current focus are complete. Offer exactly the first published "
-                                    + "broader focus option and wait for consent."),
+                            "Die Kartenprüfung und der aktuelle Fokus sind abgeschlossen. Biete nur bei "
+                                    + "vereinbartem Weitergehen genau die erste veröffentlichte breitere "
+                                    + "Fokusoption an und warte auf Zustimmung. Bei einer Pause bestätige "
+                                    + "nur den Abschluss.",
+                            "The recall check and current focus are complete. Only if continuing was agreed, "
+                                    + "offer exactly the first published broader focus option and wait for "
+                                    + "consent. On a pause, acknowledge only the closure."),
                     null);
         }
         if (context != null && "setActiveGoal".equals(context.requiredAction())) {
@@ -1833,8 +1859,10 @@ public final class OpenAiDeV1McpContractAdapter {
                     "offerGoal",
                     true,
                     localized(metadata,
-                            "Biete die veröffentlichte Lernzielauswahl an und warte auf die Auswahl.",
-                            "Offer the published learning-goal choices and wait for a selection."),
+                            "Biete die veröffentlichte Lernzielauswahl nur bei vereinbartem Weitergehen an und "
+                                    + "warte auf die Auswahl. Bei einer Pause bestätige nur den Abschluss.",
+                            "Only if continuing was agreed, offer the published learning-goal choices and wait "
+                                    + "for a selection. On a pause, acknowledge only the closure."),
                     null);
         }
         boolean curriculumComplete = context != null
@@ -1853,10 +1881,12 @@ public final class OpenAiDeV1McpContractAdapter {
                 "waitUntilEligible",
                 false,
                 localized(metadata,
-                        "Nur die harte Kartenprüfung ist für heute beendet. Erkläre den bestätigten Gesamtbefund; "
-                                + "behaupte keinen Fokusabschluss und keine automatische Weitung.",
-                        "Only strict card recall is finished for today. Explain the confirmed aggregate result; "
-                                + "do not claim focus completion or automatic widening."),
+                        "Nur die harte Kartenprüfung ist für heute beendet. Bestätige den Gesamtbefund; "
+                                + "behaupte keinen Fokusabschluss und keine automatische Weitung. Bei einer "
+                                + "Pause beginne keine neue Aufgabe und biete keine neue Auswahl an.",
+                        "Only strict card recall is finished for today. Confirm the aggregate result; do not "
+                                + "claim focus completion or automatic widening. On a pause, start no new task "
+                                + "and offer no new choice."),
                 null);
     }
 
@@ -2220,14 +2250,15 @@ public final class OpenAiDeV1McpContractAdapter {
                         examMaxPoints,
                         successorTitle,
                         localized(metadata,
-                                "Gib zuerst im Chat konkrete Rückmeldung zu Lösungsweg und Ergebnis des "
-                                        + "abgeschlossenen Ziels; die Gesprächsinhalte bleiben ausschließlich im Chat. "
-                                        + "Beginne erst anschließend den Nachfolgerabschnitt. Keine Antwort aus der "
-                                        + "Zeit vor seiner Aktivierung zählt als Evidenz für das neue Lernziel.",
-                                "First give concrete feedback in the chat about the completed goal's reasoning "
-                                        + "and outcome; conversation content stays exclusively in the chat. Only then begin "
-                                        + "the successor section. No answer from before its activation counts as "
-                                        + "evidence for the new learning goal."),
+                                "Bestätige den vereinbarten Abschluss. Die fachliche Rückmeldung und die "
+                                        + "Gelegenheit zu Rückfragen erfolgten vor diesem Speichern im Chat; "
+                                        + "Gesprächsinhalte bleiben dort. Beginne den Nachfolger nur bei "
+                                        + "vereinbartem Weitergehen. Keine Antwort vor seiner Aktivierung zählt "
+                                        + "als Evidenz für das neue Lernziel.",
+                                "Acknowledge the agreed closure. Subject feedback and the chance to ask questions "
+                                        + "preceded this save in the chat, where conversation content stays. Begin "
+                                        + "the successor only if continuing was agreed. No answer from before its "
+                                        + "activation counts as evidence for the new learning goal."),
                         true),
                 successorContext,
                 result.error());
@@ -2237,23 +2268,15 @@ public final class OpenAiDeV1McpContractAdapter {
                 && !successorTitle.isBlank()) {
             transitionSummary = isOrientationGoal(active)
                     ? localized(metadata,
-                            "Orientierung abgeschlossen. SkillPilot hat das nächste Lernziel bereits aktiviert: "
-                                    + successorTitle
-                                    + ". Beginne dieses Ziel unmittelbar und biete keine Lernzielauswahl an. Alle "
-                                    + "zuvor genannten Zieloptionen sind ungültig.",
-                            "Orientation complete. SkillPilot has already activated the next learning goal: "
-                                    + successorTitle
-                                    + ". Begin this goal immediately and do not offer a learning-goal choice. All "
-                                    + "previously mentioned goal options are invalid.")
+                            "Orientierung abgeschlossen; Folgezustand geladen. Beginne das aktivierte Lernziel "
+                                    + "nur bei vereinbartem Weitergehen. Frühere Zieloptionen sind ungültig.",
+                            "Orientation complete; successor state loaded. Begin the activated learning goal "
+                                    + "only if continuing was agreed. Earlier goal options are invalid.")
                     : localized(metadata,
-                            "Mastery gespeichert. SkillPilot hat das nächste Lernziel bereits aktiviert: "
-                                    + successorTitle
-                                    + ". Beginne dieses Ziel unmittelbar und biete keine Lernzielauswahl an. Alle "
-                                    + "zuvor genannten Zieloptionen sind ungültig.",
-                            "Mastery saved. SkillPilot has already activated the next learning goal: "
-                                    + successorTitle
-                                    + ". Begin this goal immediately and do not offer a learning-goal choice. All "
-                                    + "previously mentioned goal options are invalid.");
+                            "Mastery gespeichert; Folgezustand geladen. Beginne das aktivierte Lernziel "
+                                    + "nur bei vereinbartem Weitergehen. Frühere Zieloptionen sind ungültig.",
+                            "Mastery saved; successor state loaded. Begin the activated learning goal "
+                                    + "only if continuing was agreed. Earlier goal options are invalid.");
         } else if (result.status() == CoachToolFacade.MasteryStatus.UPDATED) {
             transitionSummary = isOrientationGoal(active)
                     ? localized(metadata,
@@ -2288,18 +2311,18 @@ public final class OpenAiDeV1McpContractAdapter {
                 ? localized(metadata, "Abgeschlossenes Lernziel", "Completed learning goal")
                 : completedGoalTitle;
         StringBuilder summary = new StringBuilder(localized(metadata,
-                "Abschluss bestätigt für „" + title + "“. Gib zuerst im Chat konkrete Rückmeldung "
-                        + "zu Lösungsweg und Ergebnis; sende diese Gesprächsinhalte nicht an SkillPilot.",
-                "Completion confirmed for “" + title + "”. First give concrete feedback in the chat "
-                        + "about the reasoning and outcome; do not send this conversation content to SkillPilot."));
+                "Abschluss bestätigt für „" + title + "“. Fachliche Rückmeldung und Gelegenheit zu Rückfragen "
+                        + "lagen vor diesem Speichern; Gesprächsinhalte bleiben im Chat.",
+                "Completion confirmed for “" + title + "”. Subject feedback and the opportunity for questions "
+                        + "preceded this save; conversation content stays in the chat."));
         if (earnedPoints != null && maxPoints != null) {
             summary.append(localized(metadata,
                     "\nBestätigte Punktzahl: " + formatScore(earnedPoints) + " von " + formatScore(maxPoints) + ".",
                     "\nConfirmed score: " + formatScore(earnedPoints) + " of " + formatScore(maxPoints) + "."));
         }
         summary.append("\n\n").append(localized(metadata,
-                "Erst nach dieser Rückmeldung folgt der neue Lernzielabschnitt. ",
-                "Only after this feedback may the new learning-goal section begin. "));
+                "Ein neuer Lernzielabschnitt folgt nur bei vereinbartem Weitergehen. ",
+                "A new learning-goal section follows only if continuing was agreed. "));
         summary.append(transitionSummary);
         return summary.toString();
     }
@@ -2428,9 +2451,11 @@ public final class OpenAiDeV1McpContractAdapter {
         return successResult(
                 localized(metadata,
                         "Alle Sollantworten des vollständigen Batches sind geladen. Vergleiche nun die Antworten "
-                                + "inhaltlich und speichere genau einen atomaren Gesamtbefund.",
+                                + "inhaltlich, gib Rückmeldung, biete Rückfragen oder Abschluss an und warte auf "
+                                + "die Antwort. Speichere erst nach Zustimmung genau einen atomaren Gesamtbefund.",
                         "All expected answers for the complete batch are loaded. Compare the answers by meaning "
-                                + "and save exactly one atomic batch assessment."),
+                                + "and give feedback, offer questions or closure, and wait for the learner's reply. "
+                                + "Only after agreement save exactly one atomic batch assessment."),
                 result);
     }
 
@@ -2508,9 +2533,10 @@ public final class OpenAiDeV1McpContractAdapter {
         return successResult(
                 localized(metadata,
                         "Der vollständige Prüfungsbatch wurde atomar gespeichert. Verwende ausschließlich den "
-                                + "bestätigten Gesamtbefund und führe continuation jetzt aus.",
-                        "The complete recall batch was saved atomically. Use only the confirmed aggregate receipt "
-                                + "and execute continuation now."),
+                                + "bestätigten Gesamtbefund. Führe den nächsten Schritt nur bei vereinbartem "
+                                + "Weitergehen aus; bei einer Pause zeige keinen neuen Inhalt.",
+                        "The complete recall batch was saved atomically. Use only the confirmed aggregate receipt. "
+                                + "Execute a next step only if continuing was agreed; on a pause show no new content."),
                 result);
     }
 
@@ -2574,10 +2600,11 @@ public final class OpenAiDeV1McpContractAdapter {
                                 + "verlangt; ausdrückliche Anforderungen bleiben verbindlich. Fehlt eine ausdrücklich geforderte "
                                 + "Deutung oder Begründung, erhält genau dieser Teil keine Punkte; trenne Teilpunkte sauber und "
                                 + "begründe jeden Abzug konkret. Bewerte abschließend ohne Nachfrage. Benenne Unleserliches als "
-                                + "solches und erfinde daraus keinen konkreten fachlichen Fehler. Speichere Mastery erst nach "
-                                + "einem finalen Ergebnis mit mindestens passingPoints. Übergib dabei diese "
-                                + "evaluationCapability unverändert sowie earnedPoints. Formuliere die fachliche "
-                                + "Rückmeldung ausschließlich im Chat; sende keine Gesprächsinhalte an SkillPilot.",
+                                + "solches und erfinde daraus keinen konkreten fachlichen Fehler. Gib danach die fachliche "
+                                + "Rückmeldung und Punktzahl im Chat, biete Rückfragen oder Abschluss an und warte auf eine "
+                                + "separate Antwort. Speichere Mastery erst nach einem finalen Ergebnis mit mindestens "
+                                + "passingPoints und Zustimmung zum Abschluss. Übergib dabei diese evaluationCapability "
+                                + "unverändert sowie earnedPoints; sende keine Gesprächsinhalte an SkillPilot.",
                         "Assess the complete visible submission step by step against every rubric criterion and only "
                                 + "from visible work. The sample solution is a reference, not a wording requirement. Give "
                                 + "full credit for technically equivalent results, representations, rounding, reasoning, and "
@@ -2585,14 +2612,17 @@ public final class OpenAiDeV1McpContractAdapter {
                                 + "requirements remain binding. If a required interpretation or justification is missing, "
                                 + "withhold only those points, separate partial credit cleanly, and justify every deduction. "
                                 + "Complete the assessment without another question. Identify unreadable content as unreadable "
-                                + "and do not invent a specific subject error. Save mastery only after a final result with at "
-                                + "least passingPoints. Copy this evaluationCapability unchanged and pass earnedPoints. "
-                                + "Keep assessment feedback exclusively in the chat; send no "
-                                + "conversation content to SkillPilot."));
+                                + "and do not invent a specific subject error. Then give assessment feedback and the score "
+                                + "in the chat, offer questions or closure, and wait for a separate learner reply. Save "
+                                + "mastery only after a final result with at least passingPoints and agreement to close. "
+                                + "Copy this evaluationCapability unchanged and pass earnedPoints; send no conversation "
+                                + "content to SkillPilot."));
         return successResult(
                 localized(metadata,
-                        "Freigegebene Bewertungsgrundlage geladen; jetzt abschließend bewerten.",
-                        "Approved evaluation basis loaded; now complete the assessment."),
+                        "Freigegebene Bewertungsgrundlage geladen. Bewerte, gib Rückmeldung und warte auf die "
+                                + "Antwort zur Abschlussfrage, bevor du Mastery speicherst.",
+                        "Approved evaluation basis loaded. Assess, give feedback, and wait for the answer "
+                                + "to the closure question before saving mastery."),
                 result);
     }
 
@@ -3593,9 +3623,9 @@ public final class OpenAiDeV1McpContractAdapter {
                         "context", describedSchema(
                                 contextSchema(),
                                 "Fresh authoritative successor state. It invalidates every goal option from "
-                                        + "earlier results and conversation turns. If activeGoal is present, "
-                                        + "continue it without offering a goal choice, but only after presenting "
-                                        + "completionHandoff."),
+                                        + "earlier results and conversation turns. Continue an activeGoal without "
+                                        + "another goal choice only if the learner agreed to continue. A closure-only "
+                                        + "or pause request must not show the successor task or image."),
                         "error", stringSchema()),
                 List.of("status", "completionHandoff", "context"));
     }

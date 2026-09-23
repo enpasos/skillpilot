@@ -385,9 +385,12 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
   bis zwei konkreten Dingen, welche die lernende Person damit verstehen,
   erkunden, gestalten oder tun kann, und stellt eine aktive persönliche
   Anschlussfrage. Das Orientierungsziel bleibt aktiv.
-- **Abschluss:** erst nach einer Antwort auf diese Vertiefung oder nach einer
-  ausdrücklichen Bitte, direkt weiterzulernen. Der technische Abschlussmarker
-  bescheinigt keine Fachkompetenz.
+- **Abschluss:** Eine Antwort auf diese Vertiefung liefert Abschluss-Evidenz.
+  Auch eine ausdrückliche Bitte, direkt weiterzulernen, begründet die
+  Abschlussbereitschaft. Der Coach gibt zuerst eine positive Zusammenfassung,
+  bietet Rückfragen oder Abschluss an und wartet eine weitere Lernendenantwort
+  mit Zustimmung ab. Der technische Abschlussmarker bescheinigt keine
+  Fachkompetenz.
 - **Verboten:** Wissensdiagnose, Begriffs- oder Rechenfrage, Feynman-Teach-back,
   ein pauschales „Spannend“ mit sofortiger nächster Zielliste oder ein
   Zielwechsel allein aufgrund der Interessenwahl.
@@ -396,7 +399,13 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
 
 - **Erwartung:** ein aktives atomisches Ziel, Diagnose des Vorwissens, kleine
   Hinweise, selbstständige Arbeit, Transfer, faire Rekonstruktion alternativer
-  Wege und Mastery erst nach ausreichender Evidenz.
+  Wege und Mastery erst nach ausreichender Evidenz und Zustimmung zum
+  Abschluss. Nach jeder abgeschlossenen Aufgabe gibt der Coach Rückmeldung,
+  bietet Rückfragen oder Abschluss an und wartet die Antwort ab. Er zeigt die
+  nächste Aufgabe samt Bild erst nach Zustimmung zum Weitergehen. Schließt die
+  Aufgabe zugleich das Lernziel ab, genügt eine gemeinsame Rückfrage. Bei
+  Rückfragen oder Pause bleibt der aktuelle Inhalt maßgeblich. Der Ablauf gilt
+  unabhängig vom Autopilot und auch ohne anschließende Aufgabe.
 - **Wiederaufnahme:** Nach einer Unterbrechung wird derselbe bestätigte
   didaktische Schritt fortgesetzt, nicht ein neuer allgemeiner Erklärdialog
   begonnen.
@@ -410,34 +419,41 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
   serverseitigen Batch. Der Coach zeigt exakt alle gelieferten Fragen in der
   gelieferten Reihenfolge und wartet auf alle Antworten. Danach lädt er mit
   genau einem `get_skillpilot_verified_recall_answers` alle Sollantworten,
-  akzeptiert fachlich äquivalente Formulierungen und speichert mit genau einem
+  akzeptiert fachlich äquivalente Formulierungen, gibt zum gesamten Batch
+  Rückmeldung und wartet nach der Frage nach Rückfragen oder Abschluss auf die
+  Antwort. Erst nach Zustimmung speichert er mit genau einem
   `record_skillpilot_verified_recall_results` exakt eine Bewertung je Karte.
   Der Write ist vollständig und atomar; es gibt keine per-card Toolschleife,
   keine zusätzliche manuelle Mastery und keinen weiteren Context-Abruf im
   selben Lernendenzug. Die genau eine bestätigte Backend-`continuation` wird
-  unverändert und sofort umgesetzt, ohne sie auf eine lokale Fallliste zu
-  reduzieren und ohne auf ein inhaltsfreies „weiter“ zu warten. Aktiviert der
+  unverändert umgesetzt, wenn die lernende Person auch weitergehen möchte;
+  eine natürliche Antwort wie „Alles klar, weiter“ genügt. Bei einer Pause
+  beginnt kein nächster Inhalt. Aktiviert der
   terminale Write ein Folgeziel mit freigegebenem Bild, lautet die Aktion
   `renderGoalVisualizationThenTeachActiveGoal`: Der Coach führt den vollständig
   servergefüllten `continuation.toolCall` für
   `render_skillpilot_goal_visualization` mit `goalId` und
-  `expectedStateVersion` unverändert genau einmal unmittelbar aus, ergänzt nur
+  `expectedStateVersion` unverändert genau einmal nach Zustimmung zum
+  Weitergehen aus, ergänzt nur
   die bereits aktuelle unveränderte `learningSessionId` gemäß Session-Gate und
-  beginnt danach im selben Antwortturn das aktive Ziel. Das Receipt spiegelt
+  beginnt danach das aktive Ziel. Das Receipt spiegelt
   die Session-Capability nicht. Der Coach leitet die bildspezifischen Argumente
   nicht selbst aus dem Successor-Context ab. Bei Renderer- oder Hostfehlern
   versucht er es nicht erneut und setzt den vollständigen Textunterricht fort.
 - **Verboten:** eine Teilmenge wie fünf von acht Fragen zeigen, IDs oder
   Reihenfolge selbst bestimmen, nach einzelnen Karten lesen oder schreiben,
-  Erfolg vor dem atomaren Receipt behaupten, nach dem Recall stehenbleiben,
+  Erfolg vor dem atomaren Receipt behaupten, bei vereinbartem Weitergehen
+  ohne Grund nach dem Recall stehenbleiben,
   einen parallelen `presentationAction` verwenden oder die Recall-Mutation
   selbst an die Bild-UI binden.
 
 ### GJ-06 – Prüfung
 
-- **Erwartung:** unveränderte Aufgabe, keine Hilfe oder Nachfrage, Auswertung
-  erst nach vollständiger Abgabe, Teilpunkte nach Raster, gleichwertige
-  Lösungswege anerkannt.
+- **Erwartung:** unveränderte Aufgabe, keine Hilfe oder Nachfrage während der
+  Bearbeitung, Auswertung erst nach vollständiger Abgabe, Teilpunkte nach
+  Raster, gleichwertige Lösungswege anerkannt. Danach Rückmeldung und
+  Abschlussfrage; Mastery-Speicherung und neuer Inhalt erst nach der
+  Lernendenantwort.
 
 ### GJ-07 – Langdialog und Rehydration
 

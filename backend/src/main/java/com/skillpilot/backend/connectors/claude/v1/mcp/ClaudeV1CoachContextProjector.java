@@ -39,11 +39,16 @@ import org.springframework.stereotype.Component;
 public class ClaudeV1CoachContextProjector {
 
     static final String GOAL_VISUALIZATION_PRESENTATION_INSTRUCTION =
-            "Required presentation: form the pair from goalVisualization.goalId and this result's "
+            "Required presentation only when beginning or resuming teaching: form the pair from "
+                    + "goalVisualization.goalId and this result's "
                     + "top-level stateVersion. For every previously unseen pair in this conversation, "
                     + "call render_skillpilot_goal_visualization exactly once as the immediate next "
-                    + "SkillPilot tool, before any learner-facing response, copying the pair to goalId "
+                    + "SkillPilot tool before presenting the new learning content, copying the pair to goalId "
                     + "and expectedStateVersion. Do this even if a different pair was rendered earlier. "
+                    + "While giving feedback, answering follow-up questions or awaiting the learner's "
+                    + "agreement to close a task or goal, do not call the renderer or present the next task. "
+                    + "After agreement, perform any warranted completion write before rendering, then follow "
+                    + "its returned context; never render a stale image from the pre-closure context. "
                     + "A repeated pair creates no automatic call. If the learner explicitly asks to show "
                     + "the current image again, reload the current context once and allow one new one-shot "
                     + "call if it still qualifies. Do not retry automatically or claim that the host "
@@ -291,7 +296,8 @@ public class ClaudeV1CoachContextProjector {
                     + "and add no numbers, totals or overall judgement of your own; it already states any "
                     + "remaining backlog. When teaching of the active goal begins, output 'activeGoalAnnouncement' "
                     + "verbatim once as its first line, never before every task. Then continue the current active "
-                    + "goal directly. A clear request for "
+                    + "goal directly if no task or goal closure is pending. During a closure, give feedback and "
+                    + "await the learner's answer before another task or goal. A clear request for "
                     + "a different available subject takes priority. A status-only question or request to pause "
                     + "needs no new exercise or write.";
             case "resume" -> "For a normal learning start, resume the backend-selected due goal without asking "

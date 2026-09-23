@@ -540,15 +540,20 @@ class ClaudeV1McpContractTest {
         assertTrue(normalizedInstructions.contains(
                 "A bare acknowledgement such as \"klingt gut\" is not enough by itself"));
         assertTrue(normalizedInstructions.contains(
-                "Agreement plus a clear intent to begin or continue, including \"Machen wir so, "
-                        + "dann fangen wir einfach an\", meets that completion criterion"));
+                "A clear intent to begin or continue, including \"Machen wir so, "
+                        + "dann fangen wir einfach an\", shows readiness to leave orientation, but does not "
+                        + "authorize completion in the same answer turn"));
         assertTrue(normalizedInstructions.contains(
-                "the learner need not label the orientation complete. Call set_skillpilot_mastery "
-                        + "immediately before any further learner-facing speech or text"));
+                "Meaningful engagement shows that the orientation was received, but is not by itself "
+                        + "agreement to close and move on"));
         assertTrue(normalizedInstructions.contains(
-                "Save the completion silently without another confirmation or repeated motivational follow-up"));
+                "In a separate coach response, summarize the positive direction, offer room for "
+                        + "questions or closure, and wait for another learner answer"));
         assertTrue(normalizedInstructions.contains(
-                "then use the returned canonical successor context. Record only completion; the backend alone determines what follows"));
+                "Only after the learner accepts that offered closure in the later answer may you call "
+                        + "set_skillpilot_mastery"));
+        assertTrue(normalizedInstructions.contains(
+                "then use the returned canonical successor context without another confirmation"));
         assertTrue(normalizedInstructions.contains(
                 "A learner interest or motivational anchor expressed during orientation is context for this conversation only"));
         assertTrue(normalizedInstructions.contains(
@@ -558,13 +563,15 @@ class ClaudeV1McpContractTest {
                         + "to recall it in a future chat, session, day, learning goal, month or year"));
         assertTrue(normalizedInstructions.contains(
                 "Do not invent or imply an anchor-memory feature or persistence operation"));
-        assertTrue(instructions.contains("follow the returned next continuation immediately"));
+        assertTrue(normalizedInstructions.contains(
+                "follow the configured continuation when the learner also wishes to continue"));
         assertTrue(normalizedInstructions.contains(
                 "treat learningPlanToday as the authoritative status for the configured DAY or WEEK period, "
                         + "evaluated independently per subject"));
         assertTrue(normalizedInstructions.contains(
                 "First respect status-only questions, pause requests and explicit subject requests. "
-                        + "Only when those permit teaching, perform any immediate goalVisualization render"));
+                        + "Only when those permit teaching and no task or goal closure is pending, "
+                        + "perform any goalVisualization render"));
         assertTrue(normalizedInstructions.contains(
                 "report the learning-plan status by outputting learningPlanToday.text verbatim, at most once per response"));
         assertTrue(normalizedInstructions.contains(
@@ -600,19 +607,43 @@ class ClaudeV1McpContractTest {
         assertTrue(instructions.contains("Ordinary coach dialogue must never"));
         assertTrue(normalizedInstructions.contains("render_skillpilot_goal_visualization exactly once"));
         assertTrue(normalizedInstructions.contains("For every previously unseen pair in this conversation"));
-        assertTrue(normalizedInstructions.contains("immediate next SkillPilot tool before any learner-facing response"));
+        assertTrue(normalizedInstructions.contains(
+                "immediate next SkillPilot tool before presenting new learning content"));
         assertTrue(normalizedInstructions.contains("A repeated pair creates no automatic call"));
         assertTrue(normalizedInstructions.contains("After a successful focus or active-goal write"));
         assertTrue(normalizedInstructions.contains(
-                "after a mastery write, apply this rule directly to its returned successor context"));
+                "after a mastery write made following learner agreement, apply this rule directly to its returned successor context"));
+        assertTrue(normalizedInstructions.contains(
+                "After agreement to close a goal, perform its warranted completion write first; never render an image from the old pre-closure context"));
         assertTrue(normalizedInstructions.contains("learner explicitly asks to show the current image again"));
         assertTrue(normalizedInstructions.contains("reload the current context exactly once"));
         assertTrue(normalizedInstructions.contains("only a UI receipt and does not prove"));
 
+        assertTrue(normalizedInstructions.contains(
+                "The conscious task and goal closure applies regardless of the learner's Autopilot setting"));
+        assertTrue(normalizedInstructions.contains(
+                "Offer space for questions or agreement to close only when the relevant task or goal criteria are met"));
+        assertTrue(normalizedInstructions.contains(
+                "Then stop and wait for the learner's answer"));
+        assertTrue(normalizedInstructions.contains(
+                "Answer questions about the current content without starting another task"));
+        assertTrue(normalizedInstructions.contains("honor a pause"));
+        assertTrue(normalizedInstructions.contains(
+                "Only after agreement may you save warranted goal mastery"));
+        assertTrue(normalizedInstructions.contains(
+                "A completed task alone does not prove the entire goal is complete"));
+        assertTrue(normalizedInstructions.contains(
+                "use one combined feedback and closure question and accept one answer"));
+        assertTrue(normalizedInstructions.contains(
+                "no immediate successor, ask about closing the current work without implying another task"));
+        assertTrue(normalizedInstructions.contains(
+                "Do not present a successor task or image in the feedback and closure turn"));
+
         String renderDescription = tool(ClaudeV1Contract.TOOL_RENDER_GOAL_VISUALIZATION).description();
-        assertTrue(renderDescription.contains("Required immediate presentation step"));
+        assertTrue(renderDescription.contains("after any pending task or goal closure has received the learner's answer"));
         assertTrue(renderDescription.contains("previously unseen goalVisualization.goalId"));
         assertTrue(renderDescription.contains("A repeated pair creates no automatic call"));
+        assertTrue(renderDescription.contains("Never call during feedback, follow-up questions or a pause"));
         assertTrue(renderDescription.contains("only a UI receipt and does not prove host display"));
     }
 
@@ -750,8 +781,13 @@ class ClaudeV1McpContractTest {
         assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("presentationInstruction"));
         assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("active goal or next action"));
         assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("one concise, natural response"));
+        assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains(
+                "already received feedback and agreed to close the previous goal before this write"));
+        assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains(
+                "before presenting the next learning content"));
         assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("Do not display feedback field names"));
         assertFalse(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("Present both feedback fields visibly"));
+        assertFalse(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("what went well"));
         assertFalse(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("workFeedback"));
         assertFalse(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("outcomeFeedback"));
         assertFalse(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("successor"));
@@ -760,15 +796,16 @@ class ClaudeV1McpContractTest {
                 ClaudeV1McpContractAdapter.ORIENTATION_MASTERY_CONTINUATION_INSTRUCTION;
         assertTrue(orientationContinuation.contains("Apply this instruction silently"));
         assertTrue(orientationContinuation.contains("do not reload"));
-        assertTrue(orientationContinuation.contains("before any learner-facing communication"));
+        assertTrue(orientationContinuation.contains("before presenting the next learning content"));
         assertTrue(orientationContinuation.contains(
-                "continue immediately and naturally with only the active goal or next action"));
+                "continue naturally with only the active goal or next action"));
         assertTrue(orientationContinuation.contains(
                 "Do not narrate the previous orientation's completion"));
         assertTrue(orientationContinuation.contains(
                 "eligibility criteria, policy, self-correction, internal reasoning or conflicts"));
         assertTrue(orientationContinuation.contains("tool selection, compliance, saving or retry mechanics"));
-        assertTrue(orientationContinuation.contains("Do not ask for another confirmation"));
+        assertTrue(orientationContinuation.contains("learner already accepted the offered closure in a separate answer"));
+        assertTrue(orientationContinuation.contains("do not ask for another confirmation"));
         assertFalse(orientationContinuation.contains("what went well"));
         assertFalse(orientationContinuation.contains("what still needs practice"));
     }

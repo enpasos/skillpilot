@@ -42,6 +42,7 @@ export function evaluateDialogCase(testCase, events) {
   const check = (id, passed, detail) => checks.push({ id, passed: Boolean(passed), detail })
   if (!Array.isArray(events) || !events.length) return { passed: false, checks: [{ id: 'events', passed: false, detail: 'No observed dialog events.' }], failures: ['events'] }
   const turns = new Map(testCase.turns.map(turn => [turn.id, turn]))
+  const turnOrder = new Map(testCase.turns.map((turn, index) => [turn.id, index]))
   check('event-shape', events.every(event => object(event) && ['user', 'ui', 'assistant', 'tool'].includes(event.type) && turns.has(event.turnId) && (event.type === 'user' ? event.actor === 'user' : event.type === 'ui' ? event.actor === 'component' : event.type === 'assistant' ? event.actor === 'model' : ['model', 'component'].includes(event.actor))), 'Every observed event has an authored turn and the correct explicit actor.')
   if (!checks[0].passed) return { passed: false, checks, failures: ['event-shape'] }
   check('authored-turns', isDeepStrictEqual(events.filter(event => ['user', 'ui'].includes(event.type)).map(event => [event.turnId, event.type]), testCase.turns.map(turn => [turn.id, turn.kind === 'ui' ? 'ui' : 'user'])), 'All authored turns occur once, in order, including the simulated UI turn.')
@@ -105,7 +106,9 @@ export function evaluateDialogCase(testCase, events) {
   let recallBatch
   let recallAnswers
   const lastVisibleContext = new Map()
+  const contextGoalByTurn = new Map()
   const renderKeys = new Set()
+  let initialOrientationGoalId
   for (const [index, event] of events.entries()) {
     if (event.type !== 'tool') continue
     const args = event.arguments ?? {}
@@ -114,9 +117,14 @@ export function evaluateDialogCase(testCase, events) {
       check(`context-before-call:${index}`, lastVisibleContext.has(event.turnId), 'A successful context precedes every subsequent model operation.')
       if ('expectedStateVersion' in args) check(`fresh-version:${index}`, Number.isSafeInteger(newestVersion) && args.expectedStateVersion === newestVersion, 'Version comes from the newest successful authoritative tool result.')
     }
-    if (event.name === CONTEXT && success(event)) lastVisibleContext.set(event.turnId, payload)
-    if (event.name === MASTERY && ['P2', 'P3'].includes(testCase.id)) check(`orientation-consent:${index}`, event.turnId === 'continue', 'Bare interest/example does not authorize completion; normal card ratings do not authorize mastery.')
-    if ([EVALUATION, MASTERY].includes(event.name) && testCase.id === 'P4') check(`exam-submission:${index}`, event.turnId === 'submission', 'Evaluation and mastery must follow the full authored submission.')
+    if (event.name === CONTEXT && success(event)) {
+      lastVisibleContext.set(event.turnId, payload)
+      contextGoalByTurn.set(event.turnId, contextOf(event)?.activeGoal?.goalId)
+      if (['P2', 'P3'].includes(testCase.id) && initialOrientationGoalId === undefined) initialOrientationGoalId = contextOf(event)?.activeGoal?.goalId
+    }
+    if (event.name === MASTERY && ['P2', 'P3'].includes(testCase.id)) check(`orientation-consent:${index}`, event.turnId === (testCase.id === 'P2' ? 'closure' : 'orientation-closure'), 'Orientation mastery needs a separate learner reply after positive closure; bare interest/example and card ratings do not authorize mastery.')
+    if (event.name === EVALUATION && testCase.id === 'P4') check(`exam-submission:${index}`, event.turnId === 'submission', 'Evaluation must follow the full authored submission.')
+    if (event.name === MASTERY && testCase.id === 'P4') check(`exam-closure-consent:${index}`, event.turnId === 'closure', 'Save exam mastery only after the feedback response and separate learner agreement to close.')
     if (event.name === MASTERY && testCase.id === 'P4') {
       check(`exam-score:${index}`, evaluation && args.evaluationCapability === evaluation.evaluationCapability && args.goalId === evaluation.goalId && Number.isFinite(args.earnedPoints) && args.earnedPoints === 25 && evaluation.scoring?.maxPoints === 25 && evaluation.scoring?.passingPoints === 13, 'The complete fixture earns 25/25 under its actual 13-point passing threshold and current capability.')
     }
@@ -127,7 +135,8 @@ export function evaluateDialogCase(testCase, events) {
     if (event.name === NAVIGATION && success(event)) navigation = { turnId: event.turnId, payload }
     if (event.name === EVALUATION && success(event)) evaluation = payload
     if (event.name === RECALL && testCase.id === 'P3') check(`recall-consent:${index}`, event.turnId === 'recall', 'Strict recall starts only after the explicit strict-practice request.')
-    if ([ANSWERS, RECORD].includes(event.name) && testCase.id === 'P3') check(`recall-submission:${index}`, event.turnId === 'answers', 'Protected answers/results follow the complete authored answer turn.')
+    if (event.name === ANSWERS && testCase.id === 'P3') check(`recall-submission:${index}`, event.turnId === 'answers', 'Protected answers follow the complete authored answer turn.')
+    if (event.name === RECORD && testCase.id === 'P3') check(`recall-closure-consent:${index}`, event.turnId === 'recall-closure', 'Save verified recall results only after feedback and a separate learner agreement to close.')
     if (event.name === ANSWERS && testCase.id === 'P3') check(`recall-batch:${index}`, recallBatch && args.batchCapability === recallBatch.batchCapability, 'Use only the issued complete recall batch capability.')
     if (event.name === RECORD && testCase.id === 'P3') check(`recall-results:${index}`, recallAnswers && args.gradingCapability === recallAnswers.gradingCapability && Array.isArray(args.assessments) && args.assessments.length === 8 && args.assessments.every(item => item.passed === true), 'One complete ordered all-correct fixture assessment batch, bound to released answers.')
     if (event.name === RECALL && success(event)) {
@@ -143,6 +152,11 @@ export function evaluateDialogCase(testCase, events) {
       if (testCase.id === 'D3') check(`subject-fixture:${index}`, event.turnId === 'switch' && args.subject === 'Physik' && subjects?.some(subject => subject.subject === 'Mathematik' && subject.current === true), 'The authored switch occurs from Mathematics to Physics.')
     }
     if (event.name === RENDER) {
+      if (['P2', 'P3'].includes(testCase.id) && args.goalId !== initialOrientationGoalId) {
+        const closureTurn = testCase.id === 'P2' ? 'closure' : 'orientation-closure'
+        check(`successor-image-consent:${index}`, turnOrder.get(event.turnId) >= turnOrder.get(closureTurn), 'The successor image must wait for the separate learner orientation closure reply; an image of the still-active orientation goal may appear earlier.')
+      }
+      if ((testCase.id === 'P3' && event.turnId === 'answers') || (testCase.id === 'P4' && event.turnId === 'submission')) check(`feedback-image-gate:${index}`, args.goalId === contextGoalByTurn.get(event.turnId), 'During feedback, a successor image must wait for the separate learner closure reply.')
       const key = `${event.turnId}:${args.goalId}:${args.expectedStateVersion}`
       check(`render-once:${index}`, !renderKeys.has(key), 'Do not request the same image twice for one authoritative state and turn.')
       renderKeys.add(key)

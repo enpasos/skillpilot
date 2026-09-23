@@ -10,6 +10,7 @@ import { instructionByteLimits, validateClaudeCoachInstructions } from "./check-
 const packageRoot = dirname(fileURLToPath(import.meta.url));
 const instructionPaths = {
   skill: "skills/skillpilot-coach-v1/SKILL.md",
+  taskClosure: "skills/skillpilot-coach-v1/references/task-closure.md",
   recall: "skills/skillpilot-coach-v1/references/verified-recall.md",
 };
 
@@ -95,10 +96,14 @@ for (const [name, owner, original, unsafeReplacement, invariant] of [
   ["rendering during status-only or pause requests", "skill", "Status/pause permits no render", "Always render on status/pause", "visualization-pair"],
   ["rendering before resolving a subject request", "skill", "resolve subject requests before rendering the old goal", "render the old goal before resolving subject requests", "visualization-pair"],
   ["rendering after learner-facing speech", "skill", "before any learner-facing\nresponse", "after the learner-facing response", "visualization-pair"],
+  ["rendering a successor before closure consent", "skill", "successor rendering waits\nfor closure consent", "successor rendering happens before closure consent", "visualization-pair"],
+  ["rendering from pre-completion context on a consent turn", "skill", "after goal or Recall consent,\nwrite the completion before rendering", "after consent, render the old image before completion", "visualization-pair"],
+  ["rendering before submitted work is assessed", "skill", "Assess submitted work before rendering; closure feedback never renders", "Render before assessing submitted work", "visualization-pair"],
   ["retrying failed goal rendering", "skill", "never retry a render automatically", "retry a render automatically", "visualization-pair"],
   ["suppressing post-write or voice rendering", "skill", "to write-returned contexts and voice mode", "only to startup in text mode", "visualization-pair"],
   ["claiming a renderer receipt proves visibility", "skill", "proves neither host display nor\nvisibility", "proves the learner can see the image", "visualization-pair"],
-  ["changing state on a pause", "skill", "without writes or an unsolicited summary", "after disabling all saved plans", "intent-priority"],
+  ["changing state on an ordinary pause", "skill", "acknowledge and stop without writes or unsolicited summary", "disable saved plans on a pause", "intent-priority"],
+  ["discarding expressly accepted closure on a pause", "skill", "except when closure was expressly accepted; then persist only that completion", "discard expressly accepted closure", "intent-priority"],
   ["starting an exercise on a status request", "skill", "do not resume, switch,\n  activate a goal or set a task", "resume and start a task", "intent-priority"],
   ["resuming a different subject before an explicit choice", "skill", "without first\n  resuming another subject", "after first resuming another subject", "intent-priority"],
   ["ignoring backend resume availability", "skill", "\x60resumeAvailable=true\x60", "\x60resumeAvailable=false\x60", "guarded-resume"],
@@ -126,7 +131,8 @@ for (const [name, owner, original, unsafeReplacement, invariant] of [
   ["folding the active goal into the status text", "skill", "never the active goal", "and the active goal", "verbatim-status"],
   ["announcing the goal before every task", "skill", "not before every task", "before every task", "goal-announcement"],
   ["announcing a goal on a status request", "skill", "and not for a status-only question", "and also for a status-only question", "goal-announcement"],
-  ["announcing the successor before feedback", "skill", "feedback, changed status, then the successor's announcement", "the successor's announcement, then feedback", "goal-announcement"],
+  ["announcing the successor before closure", "skill", "After\ngoal closure consent: confirmed completion, changed status, then any successor's\nannouncement", "Before closure consent: announce the successor", "goal-announcement"],
+  ["announcing the successor during the open closure", "skill", "never announce it during closure feedback", "announce it during closure feedback", "goal-announcement"],
   ["automatically assigning extra after the daily quota", "skill", "requires an explicit request for voluntary extra", "happens automatically after quota completion", "daily-guidance"],
   ["foregrounding pauses despite a catch-up opportunity", "skill", "keep\npausing possible without foregrounding it", "strongly recommend a pause", "daily-guidance"],
   ["pressuring the learner to clear backlog", "skill", "without guilt or pressure", "using guilt and pressure", "daily-guidance"],
@@ -135,11 +141,24 @@ for (const [name, owner, original, unsafeReplacement, invariant] of [
   ["blocking explicit learning after the daily quota", "skill", "it never blocks explicitly requested learning", "it blocks explicitly requested learning", "daily-complete-precedence"],
   ["asking permission again after explicit continuation", "skill", "already expresses that intent; do not ask\nagain", "needs another confirmation", "daily-complete-precedence"],
   ["claiming blocked plans complete", "skill", "without claiming completion", "while claiming completion", "daily-guidance"],
-  ["lowering ordinary evidence to a guided answer", "skill", "two independent checks", "one heavily guided answer", "ordinary-evidence"],
-  ["choosing the successor in a completion write", "skill", "backend alone selects its successor", "coach selects its successor", "ordinary-evidence"],
-  ["testing subject knowledge in orientation", "skill", "Do not test knowledge or correctness", "Test knowledge and correctness", "orientation-not-assessment"],
-  ["completing orientation on a bare interest label", "skill", "interest choice starts a tailored follow-up, not completion", "interest choice completes the orientation", "orientation-not-assessment"],
-  ["reconfirming a clear request to leave orientation", "skill", "without another confirmation or narrated completion", "after asking for another confirmation", "orientation-not-assessment"],
+  ["lowering ordinary evidence to a guided answer", "skill", "two\nindependent checks", "one heavily guided answer", "ordinary-evidence"],
+  ["choosing the successor in a completion write", "skill", "The backend\nselects successors", "The coach selects successors", "ordinary-evidence"],
+  ["calling mastery before closure consent", "skill", "Do not write \x60set_skillpilot_mastery\x60, start the\nnext task, or render its image before consent", "Write mastery and show the next image before consent", "deliberate-closure"],
+  ["skipping task feedback", "taskClosure", "Discuss the actual work first: what the learner showed, what succeeded, and\n   what remains open", "Start the next task before discussing feedback", "closure-workflow"],
+  ["skipping closure when autopilot is off", "skill", "With autopilot on or off", "Only with autopilot on", "deliberate-closure"],
+  ["requiring two closure rounds for one completed task and goal", "taskClosure", "summarize both in **one combined** closure question. One answer suffices", "ask two separate closure questions", "closure-workflow"],
+  ["treating a solved task as goal mastery", "skill", "A solved task alone does not\nprove goal mastery", "A solved task always proves goal mastery", "deliberate-closure"],
+  ["advancing past a clarification", "taskClosure", "If a question reveals a misunderstanding, check the\n   missing idea again before offering successful closure", "Ignore the question and close immediately", "closure-workflow"],
+  ["advancing past a pause", "taskClosure", "A pause starts\n   nothing", "A pause starts a new task", "closure-workflow"],
+  ["rendering the next task during feedback", "taskClosure", "show its image, or call a\n   renderer that would reveal it during this feedback turn", "show its image during feedback", "closure-workflow"],
+  ["assuming another task exists at unit end", "taskClosure", "At the end of a unit, offer an appropriate ending without assuming a next task", "At unit end always claim another task is coming", "closure-workflow"],
+  ["starting the next task after closure with a pause", "taskClosure", "Closure with a pause closes the current work without starting\n   another task or rendering a new image", "Closure with a pause starts the next task and image", "closure-workflow"],
+  ["rendering a successor after paused closure", "taskClosure", "If they chose a pause, acknowledge closure and defer the\n   image until a later explicit continuation with fresh context", "If they chose a pause, render the successor image immediately", "closure-workflow"],
+  ["accepting consent without goal evidence", "taskClosure", "Consent cannot replace subject evidence", "Consent alone proves mastery", "closure-workflow"],
+  ["testing subject knowledge in orientation", "skill", "without testing\nknowledge", "by testing knowledge", "orientation-not-assessment"],
+  ["completing orientation on a bare interest label", "skill", "a bare path choice is neither", "a bare path choice completes orientation", "orientation-not-assessment"],
+  ["treating orientation direct-continue as advance consent", "skill", "Meaningful engagement or a direct-continue request is orientation\nevidence, never advance consent before feedback", "A direct-continue request permits immediate mastery", "orientation-not-assessment"],
+  ["skipping the separate orientation closure turn", "skill", "Give non-assessing feedback, offer questions or closure, and wait for a separate\nlearner response", "Save mastery before offering questions", "orientation-not-assessment"],
   ["rewriting the learner's published focus payload", "skill", "complete unchanged \x60goalIds\x60", "approximately matched \x60goalIds\x60", "learner-agency"],
   ["using app-only card rating from the model", "skill", "never call \x60review_skillpilot_memory_practice_card\x60 yourself", "call \x60review_skillpilot_memory_practice_card\x60 yourself", "private-memory-practice"],
   ["treating ordinary due-card practice as mastery", "skill", "today's cards is not memory-goal mastery", "today's cards establishes memory-goal mastery", "private-memory-practice"],
@@ -151,12 +170,15 @@ for (const [name, owner, original, unsafeReplacement, invariant] of [
   ["using a model-selected Recall subset", "recall", "do not supply a goal, subset, count or order", "select a goal, subset, count and order", "recall-answer-gate"],
   ["restoring free-text Recall result feedback", "recall", "exactly \x60cardId\x60 and \x60passed\x60", "\x60cardId\x60, \x60passed\x60 and learner-answer feedback", "recall-results"],
   ["submitting a partial Recall batch", "recall", "or send a partial batch", "but send a partial batch when convenient", "recall-results"],
+  ["continuing Recall without learner agreement", "recall", "only if the learner agreed to continue", "even if the learner asked to pause", "recall-results"],
+  ["showing another Recall batch after closure and pause", "recall", "acknowledge the closure without showing another batch or image", "show another batch and image", "recall-results"],
   ["continuing the stale memory goal after Recall", "recall", "Do not continue\n   the old memory goal", "Continue the old memory goal", "recall-results"],
   ["fetching exam evaluation before a complete submission", "skill", "before calling \x60get_skillpilot_exam_evaluation\x60", "after calling \x60get_skillpilot_exam_evaluation\x60", "exam-answer-gate"],
   ["revealing the exam rubric before submission", "skill", "do not disclose a passing threshold or scoring\n   rubric", "disclose the passing threshold and scoring rubric", "exam-answer-gate"],
   ["rejecting equivalent correct exam methods", "skill", "receive equal\n   credit", "receive no credit", "exam-evaluation"],
-  ["marking a failing exam complete", "skill", "Only for a final passing result", "For every submitted result", "exam-evaluation"],
-  ["coaching an active exam through follow-up questions", "skill", "without follow-up coaching questions", "by asking follow-up coaching questions", "exam-evaluation"],
+  ["marking a failing exam complete", "skill", "Only after the learner accepts closure of a final passing\n   result", "For every submitted result", "exam-evaluation"],
+  ["saving a passing exam before the learner can ask questions", "skill", "Report the assessment result and concrete feedback, offer questions and\n   closure, then wait", "Save the passing result before any feedback", "exam-evaluation"],
+  ["coaching an active exam through follow-up questions", "skill", "without coaching questions that change the grade", "by asking coaching questions that change the grade", "exam-evaluation"],
   ["substituting easier practice inside an active exam", "skill", "substitute easier practice", "omit difficult work", "exam-visual-fallback"],
   ["requiring another Skill tool for exams", "skill", "do not invoke a \x60Skill\x60 tool", "invoke a \x60Skill\x60 tool", "exam-self-contained"],
   ["requiring evaluation to start the task", "skill", "Starting the exam needs no evaluation lookup", "Starting the exam needs an evaluation lookup", "exam-self-contained"],
@@ -196,6 +218,14 @@ test("rejects a missing Recall workflow reference before packaging", () => {
   });
 });
 
+test("rejects a missing task-closure workflow reference before packaging", () => {
+  withPackageCopy((root) => {
+    rmSync(resolve(root, instructionPaths.taskClosure));
+    assert.match(validateClaudePluginPackage(root).errors.join("\n"),
+      /Missing or unreadable skills\/skillpilot-coach-v1\/references\/task-closure\.md/u);
+  });
+});
+
 test("publishes the exam workflow within the Skill without a second file to load", () => {
   assert.deepEqual(publicationFiles, [
     ".claude-plugin/plugin.json",
@@ -203,6 +233,7 @@ test("publishes the exam workflow within the Skill without a second file to load
     "README.md",
     "SETUP.md",
     instructionPaths.skill,
+    instructionPaths.taskClosure,
     instructionPaths.recall,
   ]);
   assert.match(readInstructions().skill, /^## Exams$/mu);
