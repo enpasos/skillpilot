@@ -13,6 +13,8 @@ import type {
   LearnerLearningPlansResponse,
   LearnerPlanStatus,
   LearnerPlanStatusDirection,
+  LearnerPlanBalanceGauge,
+  LearnerPlanPeriodGauge,
   LearnerPlanSubjectStatus,
   PreviewLearnerLearningPlansResponse,
   ReconcileLearnerLearningPlansRequest,
@@ -219,16 +221,70 @@ const nullableText = (value: unknown): string | null =>
 const parseStatusDirection = (value: unknown): LearnerPlanStatusDirection | null =>
   value === 'on_track' || value === 'behind' || value === 'ahead' ? value : null
 
+const signedInteger = (value: unknown, field: string): number => {
+  if (!Number.isSafeInteger(value)) {
+    throw new Error(`Invalid learning-plan status response: ${field}`)
+  }
+  return value as number
+}
+
+const needlePosition = (value: unknown, field: string, min: number, max: number): number => {
+  if (typeof value !== 'number' || !Number.isFinite(value) || value < min || value > max) {
+    throw new Error(`Invalid learning-plan status response: ${field}`)
+  }
+  return value
+}
+
+const parsePeriodGauge = (value: unknown): LearnerPlanPeriodGauge | null => {
+  if (value === null) return null
+  const source = asRecord(value, 'Invalid learning-plan status response: subject.periodGauge')
+  const completed = requiredInteger(source.completed, 'subject.periodGauge.completed')
+  const target = requiredInteger(source.target, 'subject.periodGauge.target')
+  if (completed > target || (target === 0 && source.needlePosition !== null)) {
+    throw new Error('Invalid learning-plan status response: subject.periodGauge')
+  }
+  return {
+    completed,
+    target,
+    needlePosition: target === 0
+      ? null
+      : needlePosition(source.needlePosition, 'subject.periodGauge.needlePosition', 0, 1),
+  }
+}
+
+const parseBalanceGauge = (value: unknown): LearnerPlanBalanceGauge | null => {
+  if (value === null) return null
+  const source = asRecord(value, 'Invalid learning-plan status response: subject.balanceGauge')
+  const net = signedInteger(source.net, 'subject.balanceGauge.net')
+  const typicalAmount = requiredInteger(source.typicalAmount, 'subject.balanceGauge.typicalAmount')
+  const scaleLimit = requiredInteger(source.scaleLimit, 'subject.balanceGauge.scaleLimit')
+  if (typicalAmount < 1 || scaleLimit < 1) {
+    throw new Error('Invalid learning-plan status response: subject.balanceGauge.scale')
+  }
+  return {
+    net,
+    typicalAmount,
+    scaleLimit,
+    needlePosition: needlePosition(source.needlePosition, 'subject.balanceGauge.needlePosition', -1, 1),
+    severeBehind: requiredBoolean(source.severeBehind, 'subject.balanceGauge.severeBehind'),
+    strongAhead: requiredBoolean(source.strongAhead, 'subject.balanceGauge.strongAhead'),
+  }
+}
+
 const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus => {
   const source = asRecord(value, 'Invalid learning-plan status response: subject')
   const evaluable = requiredBoolean(source.evaluable, 'subject.evaluable')
   const statusDirection = parseStatusDirection(source.statusDirection)
   const subjectLine = nullableText(source.subjectLine)
+  const periodGauge = parsePeriodGauge(source.periodGauge)
+  const balanceGauge = parseBalanceGauge(source.balanceGauge)
   // Evaluability is its own state: an unevaluable subject must never arrive carrying a
   // direction or a status line that would read like a valid balance.
   if (evaluable !== (statusDirection !== null) || evaluable !== (subjectLine !== null)
     || evaluable !== (nullableText(source.periodText) !== null)
-    || evaluable !== (nullableText(source.planStatusText) !== null)) {
+    || evaluable !== (nullableText(source.planStatusText) !== null)
+    || evaluable !== (periodGauge !== null)
+    || (!evaluable && balanceGauge !== null)) {
     throw new Error('Invalid learning-plan status response: subject.evaluability')
   }
   return {
@@ -240,6 +296,8 @@ const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus
     planStatusText: nullableText(source.planStatusText),
     subjectLine,
     statusDirection,
+    periodGauge,
+    balanceGauge,
     current: requiredBoolean(source.current, 'subject.current'),
     canContinue: requiredBoolean(source.canContinue, 'subject.canContinue'),
   }

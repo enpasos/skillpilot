@@ -55,18 +55,30 @@ const subjectStatus = (
   planStatusText: string,
   statusDirection: 'behind' | 'on_track' | 'ahead',
   current = false,
-): LearnerPlanSubjectStatus => ({
-  subjectKey,
-  landscapeIds: [subjectKey === 'mathematik' ? 'math/sek-i' : subjectKey === 'physik' ? 'physics/sek-ii' : subjectKey],
-  subjectLabel,
-  evaluable: true,
-  periodText,
-  planStatusText,
-  subjectLine: `${subjectLabel}: ${periodText} · ${planStatusText}`,
-  statusDirection,
-  current,
-  canContinue: true,
-})
+): LearnerPlanSubjectStatus => {
+  const count = Number(/^(\d+)/u.exec(planStatusText)?.[1] ?? 0)
+  const net = statusDirection === 'behind' ? -count : statusDirection === 'ahead' ? count : 0
+  return {
+    subjectKey,
+    landscapeIds: [subjectKey === 'mathematik' ? 'math/sek-i' : subjectKey === 'physik' ? 'physics/sek-ii' : subjectKey],
+    subjectLabel,
+    evaluable: true,
+    periodText,
+    planStatusText,
+    subjectLine: `${subjectLabel}: ${periodText} · ${planStatusText}`,
+    statusDirection,
+    periodGauge: periodText.includes('erreicht')
+      ? { completed: 2, target: 2, needlePosition: 1 }
+      : { completed: 0, target: 2, needlePosition: 0 },
+    balanceGauge: {
+      net, typicalAmount: 2, scaleLimit: 4,
+      needlePosition: net < 0 ? net / 5 : net / 4,
+      severeBehind: false, strongAhead: false,
+    },
+    current,
+    canContinue: true,
+  }
+}
 
 const planStatus = (subjects: LearnerPlanSubjectStatus[]): LearnerPlanStatus => ({
   asOf: '2026-09-04',
@@ -97,6 +109,9 @@ const openStatus = (currentSubjectKey: string | null) => planStatus([
 ])
 const MATH_ONLY_STATUS = planStatus([
   subjectStatus('mathematik', 'Mathematik', 'Tagesziel 0 von 2', '2 Lernziele im Rückstand', 'behind', true),
+])
+const IN_FLIGHT_STATUS = planStatus([
+  subjectStatus('mathematik', 'Mathematik', 'Tagesziel 0 von 2', '2 Lernziele im Rückstand', 'behind'),
 ])
 const REACHED_STATUS = planStatus([
   subjectStatus('mathematik', 'Mathematik', 'Tagesziel erreicht', '1 Lernziel vorgearbeitet', 'ahead'),
@@ -209,18 +224,6 @@ const Fixture = () => {
     }
   }
 
-  const continueLearning = () => {
-    if (!activeGoalId || !activeLandscapeId) return
-    pendingFocusGoalRef.current = activeGoalId
-    if (selectedGoalId === activeGoalId) {
-      goalContentRef.current?.scrollIntoView({ block: 'start' })
-      goalContentRef.current?.focus({ preventScroll: true })
-      pendingFocusGoalRef.current = null
-      return
-    }
-    applyTarget(activeLandscapeId, activeGoalId)
-  }
-
   return (
     <main data-testid="cockpit-fixture" className="mx-auto flex max-w-3xl flex-col gap-4 p-4">
       <output data-testid="cockpit-route">{`${location.pathname}${location.search}`}</output>
@@ -243,9 +246,7 @@ const Fixture = () => {
         isReconciling={actionId === 'reconcile'}
         switchingPlanId={actionId === 'reconcile' ? null : actionId}
         actionError={actionError ?? undefined}
-        onContinue={continueLearning}
         onSwitch={(planId) => { void switchPlan(planId) }}
-        onOpenSettings={() => undefined}
         onRetry={() => {
           setRetryCount((count) => count + 1)
           setActionError(null)
@@ -285,18 +286,14 @@ const InFlightRefreshFixture = () => {
       <button type="button" onClick={beginRefresh}>Aktualisierung starten</button>
       <button type="button" onClick={() => releaseRef.current?.()}>Aktualisierung abschließen</button>
       <LearnerPlanTodayOverview
-        status={MATH_ONLY_STATUS}
+        status={IN_FLIGHT_STATUS}
         plans={[PLANS[0]]}
         language="de"
         planModeEnabled
         subjectLabel={() => 'Mathematik'}
         goalLabel={() => 'Lineare Gleichungen lösen'}
-        activeGoalId="math-goal-1"
-        activeLandscapeId="math/sek-i"
         actionsDisabled={!isLearnerPlanActionAvailable(loadStatus)}
-        onContinue={() => undefined}
         onSwitch={() => undefined}
-        onOpenSettings={() => undefined}
       />
     </section>
   )
@@ -343,7 +340,7 @@ const DailyProgressFixture = () => {
       <LearnerPlanTodayOverview
         status={currentStatus} plans={[PLANS[0]]} language="de" planModeEnabled
         subjectLabel={() => 'Mathematik'} goalLabel={() => 'Lineare Gleichungen lösen'}
-        onContinue={() => undefined} onSwitch={() => setContinued((count) => count + 1)} onOpenSettings={() => undefined}
+        onSwitch={() => setContinued((count) => count + 1)}
       />
       <ProgressPopover skillpilotId="history-fixture" goalIndexAll={new Map()}>
         <button>Historie öffnen</button>

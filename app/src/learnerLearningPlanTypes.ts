@@ -54,6 +54,23 @@ export interface LearnerLearningPlanSummary {
 
 export type LearnerPlanStatusDirection = 'on_track' | 'behind' | 'ahead'
 
+/** Backend-owned values for the selected day or week. A null needle means no period target. */
+export interface LearnerPlanPeriodGauge {
+  completed: number
+  target: number
+  needlePosition: number | null
+}
+
+/** Backend-owned cumulative balance and its subject-specific display scale. */
+export interface LearnerPlanBalanceGauge {
+  net: number
+  typicalAmount: number
+  scaleLimit: number
+  needlePosition: number
+  severeBehind: boolean
+  strongAhead: boolean
+}
+
 /**
  * One subject, merged across every plan of that subject by the backend.
  *
@@ -70,6 +87,8 @@ export interface LearnerPlanSubjectStatus {
   planStatusText: string | null
   subjectLine: string | null
   statusDirection: LearnerPlanStatusDirection | null
+  periodGauge: LearnerPlanPeriodGauge | null
+  balanceGauge: LearnerPlanBalanceGauge | null
   current: boolean
   canContinue: boolean
 }

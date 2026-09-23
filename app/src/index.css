@@ -265,3 +265,45 @@ html.light {
     @apply rounded-2xl border border-border-color bg-sidebar-bg backdrop-blur transition-colors;
   }
 }
+
+/* The cockpit can be narrow even when the browser window is wide. */
+.learner-plan-subject-row {
+  container: learner-plan-subject / inline-size;
+}
+
+.learner-plan-subject-progress,
+.learner-plan-subject-switch {
+  width: 100%;
+}
+
+.learner-plan-progress-dials {
+  max-width: 32rem;
+}
+
+@container learner-plan-subject (min-width: 56rem) {
+  .learner-plan-subject-progress {
+    width: auto;
+    flex: 1 1 0%;
+  }
+
+  .learner-plan-subject-switch {
+    width: auto;
+  }
+
+  .learner-plan-progress {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .learner-plan-progress-heading {
+    width: 16rem;
+    flex-shrink: 0;
+  }
+
+  .learner-plan-progress-dials {
+    width: 100%;
+    flex: 1 1 0%;
+    margin-top: 0;
+  }
+}

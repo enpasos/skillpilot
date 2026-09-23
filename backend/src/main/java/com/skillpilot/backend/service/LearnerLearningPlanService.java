@@ -2033,6 +2033,72 @@ public class LearnerLearningPlanService {
         return UnifiedLearningPlanStatusCalculator.calculate(new PlanBalanceInputs(s, p, i, h));
     }
 
+    /**
+     * Projects the current period's existing balance into a dial. A zero target has no
+     * meaningful needle position; it remains distinct from an unavailable plan status.
+     */
+    static LearnerPlanTodayStatus.PeriodGauge periodGauge(PlanBalanceResult balance) {
+        Objects.requireNonNull(balance, "plan balance");
+        int completed = balance.erfuelltesPeriodenziel();
+        int target = completed + balance.offenesPeriodenpensum();
+        return new LearnerPlanTodayStatus.PeriodGauge(
+                completed, target, target == 0 ? null : (double) completed / target);
+    }
+
+    /**
+     * Typical positive quota of the complete, merged subject schedule. Empty days or weeks
+     * do not erase the scale. For an even number of scheduled periods, the mean of the two
+     * central quotas is rounded up to a whole progress-effective goal.
+     */
+    static Integer typicalPeriodAmount(Map<String, LocalDate> dueDates, PeriodBasis periodBasis) {
+        Objects.requireNonNull(dueDates, "plan due dates");
+        Objects.requireNonNull(periodBasis, "period basis");
+        Map<LocalDate, Integer> periodCounts = new LinkedHashMap<>();
+        for (LocalDate dueDate : dueDates.values()) {
+            Objects.requireNonNull(dueDate, "plan due date");
+            LocalDate period = periodBasis == PeriodBasis.WEEK
+                    ? dueDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
+                    : dueDate;
+            periodCounts.merge(period, 1, Integer::sum);
+        }
+        if (periodCounts.isEmpty()) {
+            return null;
+        }
+        List<Integer> positiveQuotas = periodCounts.values().stream().sorted().toList();
+        int upperIndex = positiveQuotas.size() / 2;
+        if (positiveQuotas.size() % 2 == 1) {
+            return positiveQuotas.get(upperIndex);
+        }
+        int lower = positiveQuotas.get(upperIndex - 1);
+        int upper = positiveQuotas.get(upperIndex);
+        return lower + (upper - lower + 1) / 2;
+    }
+
+    /** The authoritative signed balance and bounded needle position for one subject. */
+    static LearnerPlanTodayStatus.BalanceGauge balanceGauge(
+            PlanBalanceResult balance,
+            Map<String, LocalDate> dueDates,
+            PeriodBasis periodBasis) {
+        Objects.requireNonNull(balance, "plan balance");
+        Integer typicalAmount = typicalPeriodAmount(dueDates, periodBasis);
+        if (typicalAmount == null) {
+            return null;
+        }
+        long scaleLimit = 2L * typicalAmount;
+        int net = balance.vorsprung() - balance.rueckstand();
+        // The red extreme is strict (> 2M behind), whereas dark green starts at >= 2M.
+        // With integral goals, 2M+1 is the first point at the negative needle stop.
+        double divisor = net < 0 ? scaleLimit + 1.0 : scaleLimit;
+        double needlePosition = Math.max(-1.0, Math.min(1.0, net / divisor));
+        return new LearnerPlanTodayStatus.BalanceGauge(
+                net,
+                typicalAmount,
+                scaleLimit,
+                needlePosition,
+                net < -scaleLimit,
+                net >= scaleLimit);
+    }
+
     /** One plan's contribution to its subject: merged schedule and capabilities. */
     private record PlanEvaluation(
             Map<String, LocalDate> dueDates,
@@ -2114,7 +2180,7 @@ public class LearnerLearningPlanService {
             if (!evaluable) {
                 return new LearnerPlanTodayStatus.SubjectStatus(
                         List.copyOf(landscapeIds), subjectKey, subjectLabel, false,
-                        null, null, null, null, current, switchable, null);
+                        null, null, null, null, current, switchable, null, null, null);
             }
             PlanBalanceResult balance = calculateBalance(
                     plannedGoalIds, dueDates, periodStart, periodEnd, mastery, periodCompletions);
@@ -2130,6 +2196,8 @@ public class LearnerLearningPlanService {
                     balance.statusDirection(),
                     current,
                     switchable,
+                    periodGauge(balance),
+                    balanceGauge(balance, dueDates, periodBasis),
                     balance);
         }
     }

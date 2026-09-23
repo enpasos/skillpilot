@@ -1700,6 +1700,8 @@ class LearnerLearningPlanServiceIntegrationTest {
             assertThat(subject.evaluable()).isFalse();
             assertThat(subject.statusDirection()).isNull();
             assertThat(subject.subjectLine()).isNull();
+            assertThat(subject.periodGauge()).isNull();
+            assertThat(subject.balanceGauge()).isNull();
         });
         assertThat(status.evaluable()).isFalse();
         assertThat(status.statusText()).contains("nicht auswertbar");
@@ -1860,6 +1862,43 @@ class LearnerLearningPlanServiceIntegrationTest {
     }
 
     @Test
+    void mergedSubjectGaugeUsesEarliestDueDateOnceAndKeepsItsDailyScaleOnAFreeDay() {
+        String secondMathLandscape = "math-advanced";
+        when(learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape))
+                .thenReturn(scopeFor(secondMathLandscape,
+                        List.of("atom-a", "atom-m1"), List.of("atom-a", "atom-m1")));
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(secondMathLandscape), any()))
+                .thenAnswer(invocation -> LearnerLearningPlanService.scopeFingerprint(
+                        learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape)));
+        when(landscapeService.getById(secondMathLandscape))
+                .thenReturn(landscape(secondMathLandscape, "Mathematik"));
+
+        service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Mathe Basis", List.of(learning("first", "2026-09-04", "2026-09-04", "atom-a"))), TODAY);
+        service.upsert(LEARNER_ID, secondMathLandscape, new LearnerLearningPlanApi.UpsertRequest(
+                0L, "Mathe Vertiefung", List.of(learning("second", "2026-09-07", "2026-09-07",
+                        "atom-a", "atom-m1"))), TODAY);
+
+        LearnerPlanTodayStatus today = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(today.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.periodGauge().target()).isEqualTo(1);
+            assertThat(subject.balanceGauge().typicalAmount()).isEqualTo(1);
+            assertThat(subject.balanceGauge().net()).isZero();
+        });
+
+        LearnerPlanTodayStatus freeDay = serviceAt("2026-09-04T22:30:00Z")
+                .getTodayStatus(LEARNER_ID, "de");
+        assertThat(freeDay.asOf()).isEqualTo(LocalDate.parse("2026-09-05"));
+        assertThat(freeDay.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.periodGauge().target()).isZero();
+            assertThat(subject.periodGauge().needlePosition()).isNull();
+            assertThat(subject.periodText()).isEqualTo("Heute kein Tagesziel");
+            assertThat(subject.balanceGauge().typicalAmount()).isEqualTo(1);
+            assertThat(subject.balanceGauge().net()).isEqualTo(-1);
+        });
+    }
+
+    @Test
     void weekBasisEvaluatesTheWholeCurrentWeekAndSwitchingBackChangesNeitherPlanNorProgress() {
         learner.setFollowLearningPlans(true);
         learner.setLearningPlanPeriodBasis(
@@ -1884,6 +1923,11 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(weekly.periodEnd()).isAfterOrEqualTo(TODAY);
         // The whole running week is the reference period, not just today.
         assertThat(weekly.statusText()).isEqualTo("Mathematik: Wochenziel 0 von 2 · im Plan");
+        assertThat(weekly.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.periodGauge().target()).isEqualTo(2);
+            assertThat(subject.balanceGauge().typicalAmount()).isEqualTo(2);
+            assertThat(subject.balanceGauge().net()).isZero();
+        });
 
         learner.setLearningPlanPeriodBasis(
                 com.skillpilot.backend.service.learningplan.PeriodBasis.DAY);
@@ -1893,6 +1937,11 @@ class LearnerLearningPlanServiceIntegrationTest {
         // as one period target appears here as today's target plus a visible backlog.
         assertThat(daily.statusText())
                 .isEqualTo("Mathematik: Tagesziel 0 von 1 · 1 Lernziel im Rückstand");
+        assertThat(daily.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.periodGauge().target()).isEqualTo(1);
+            assertThat(subject.balanceGauge().typicalAmount()).isEqualTo(1);
+            assertThat(subject.balanceGauge().net()).isEqualTo(-1);
+        });
         // Changing the basis shifts the frame of reference, never the schedule or the progress.
         assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).blocks()).isEqualTo(plan.blocks());
         verify(eventPublisher, never()).publishEvent(any());

@@ -39,7 +39,8 @@ public final class LearningPlanWireAssertions {
             for (String field : java.util.List.of(
                     "unavailablePlanCount", "totals", "dueToday", "completedToday", "openToday",
                     "openOverdue", "extraCompletedToday", "dueThroughToday", "rawSaldo",
-                    "landscapeIds", "landscapeId", "subjectKey", "planId", "balance")) {
+                    "landscapeIds", "landscapeId", "subjectKey", "planId", "balance",
+                    "periodGauge", "balanceGauge", "typicalAmount", "scaleLimit", "needlePosition")) {
                 assertThat(status.findValues(field)).as("Forbidden plan field: %s", field).isEmpty();
             }
             assertThat(status.path("text").isTextual()).as("Backend text must cross the boundary").isTrue();

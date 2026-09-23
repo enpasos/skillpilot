@@ -2,10 +2,47 @@ import assert from 'node:assert/strict'
 import { fileURLToPath } from 'node:url'
 
 import tailwindcss from '@tailwindcss/vite'
-import { chromium, type Browser } from 'playwright'
+import { chromium, type Browser, type Locator } from 'playwright'
 
 import { navigateToLearnerLearningPlanGoal } from '../src/utils/learnerLearningPlanNavigation'
 import { startViteTestServer } from './viteTestServer'
+
+const assertMobileSubjectLayout = async (overview: Locator, viewport: string) => {
+  const rows = await overview.locator('[data-testid^="learner-plan-subject-"]').evaluateAll((elements) => elements.map((row) => {
+    const period = row.querySelector('[data-testid="learner-plan-period-gauge"]')!.getBoundingClientRect()
+    const balance = row.querySelector('[data-testid="learner-plan-balance-gauge"]')!.getBoundingClientRect()
+    const switchButton = row.querySelector('[data-testid="learner-plan-switch"]')?.getBoundingClientRect()
+    return {
+      subject: row.getAttribute('data-testid'),
+      periodWidth: period.width,
+      balanceWidth: balance.width,
+      periodTop: period.top,
+      balanceTop: balance.top,
+      periodBottom: period.bottom,
+      balanceBottom: balance.bottom,
+      switchTop: switchButton?.top ?? null,
+      switchWidth: switchButton?.width ?? null,
+      gaugeSpan: balance.right - period.left,
+      scrollWidth: row.scrollWidth,
+      clientWidth: row.clientWidth,
+    }
+  }))
+  assert.equal(rows.length, 2, `${viewport}: both subject rows render`)
+  for (const row of rows) {
+    assert.ok(row.periodWidth >= 110 && row.balanceWidth >= 110,
+      `${viewport}: ${row.subject} gauges stay readable: ${JSON.stringify(row)}`)
+    assert.ok(Math.abs(row.periodTop - row.balanceTop) <= 2,
+      `${viewport}: ${row.subject} gauges remain side by side: ${JSON.stringify(row)}`)
+    assert.ok(row.scrollWidth <= row.clientWidth,
+      `${viewport}: ${row.subject} does not overflow: ${JSON.stringify(row)}`)
+    if (row.switchTop !== null && row.switchWidth !== null) {
+      assert.ok(row.switchTop >= Math.max(row.periodBottom, row.balanceBottom) + 4,
+        `${viewport}: subject switch appears below both gauges: ${JSON.stringify(row)}`)
+      assert.ok(row.switchWidth >= row.gaugeSpan - 2,
+        `${viewport}: subject switch uses the mobile row width: ${JSON.stringify(row)}`)
+    }
+  }
+}
 
 let unsafeLocalSelection: string | null = null
 assert.equal(
@@ -154,15 +191,21 @@ try {
 
   const overview = page.getByTestId('cockpit-fixture').getByTestId('learner-plan-today-overview')
   await overview.getByRole('heading', { name: 'Heute' }).waitFor()
-  await overview.getByTestId('learner-plan-subject-mathematik').getByText('Tagesziel 0 von 2').first().waitFor()
+  await overview.getByTestId('learner-plan-subject-mathematik').getByText('0 von 2 Zielen', { exact: true }).waitFor()
   assert.equal(await overview.getByTestId(/learner-plan-subject-/u).count(), 2)
-  await overview.getByTestId('learner-plan-subject-mathematik').getByText('Tagesziel 0 von 2').first().waitFor()
+  await overview.getByTestId('learner-plan-subject-mathematik').getByText('0 von 2 Zielen', { exact: true }).waitFor()
   const physicsPlanRow = overview.getByTestId('learner-plan-subject-physik')
-  await physicsPlanRow.getByText('Tagesziel 0 von 2').first().waitFor()
+  await physicsPlanRow.getByText('0 von 2 Zielen', { exact: true }).waitFor()
+  assert.equal(await overview.getByTestId('learner-plan-period-gauge').count(), 2)
+  assert.equal(await overview.getByTestId('learner-plan-balance-gauge').count(), 2)
+  assert.equal(await overview.getByRole('img', { name: /0 von 2 Zielen/u }).count(), 2)
+  assert.equal(await physicsPlanRow.getByTestId('learner-plan-period-gauge').getAttribute('data-needle-position'), '0')
+  assert.equal(await physicsPlanRow.getByTestId('learner-plan-balance-gauge').getAttribute('data-needle-position'), '-0.2')
   assert.equal(await overview.getByText('Tempo der letzten 7 Tage').count(), 0)
   assert.equal(await overview.getByText('Nächstes Planziel starten').count(), 0)
   const overviewHeight = await overview.evaluate((element) => element.getBoundingClientRect().height)
-  assert.ok(overviewHeight < 620, `closed mobile today overview should stay compact, got ${overviewHeight}px`)
+  // Two readable dials per subject add height to the former text-only card.
+  assert.ok(overviewHeight < 1020, `closed mobile today overview should stay readable, got ${overviewHeight}px`)
   const mobileLayout = await overview.evaluate((element) => {
     const bounds = element.getBoundingClientRect()
     return {
@@ -178,8 +221,21 @@ try {
     mobileLayout.scrollWidth <= mobileLayout.clientWidth,
     `mobile today overview should not overflow horizontally (${mobileLayout.scrollWidth}px > ${mobileLayout.clientWidth}px)`,
   )
+  await assertMobileSubjectLayout(overview, '390px cockpit')
+  await page.setViewportSize({ width: 320, height: 640 })
+  const narrowLayout = await overview.evaluate((element) => ({
+    viewportWidth: window.innerWidth,
+    right: element.getBoundingClientRect().right,
+    scrollWidth: element.scrollWidth,
+    clientWidth: element.clientWidth,
+  }))
+  assert.ok(narrowLayout.right <= narrowLayout.viewportWidth)
+  assert.ok(narrowLayout.scrollWidth <= narrowLayout.clientWidth,
+    `narrow mobile overview should not overflow horizontally: ${JSON.stringify(narrowLayout)}`)
+  await assertMobileSubjectLayout(overview, '320px cockpit')
+  await page.setViewportSize({ width: 390, height: 844 })
   await physicsPlanRow.getByLabel('Plandetails: Physik').click()
-  await physicsPlanRow.getByText('Tagesziel 0 von 2').last().waitFor()
+  await physicsPlanRow.getByText('0 von 2 Zielen', { exact: true }).waitFor()
   // Plan details describe the schedule only; the extra-work tally is gone from the status.
   assert.equal(await physicsPlanRow.getByText(/offenes Planziel|offene Planziele/u).count(), 0)
   await physicsPlanRow.getByLabel('Plandetails: Physik').click()
@@ -195,25 +251,11 @@ try {
   assert.equal(reconcileRequests, 1, 'the first due goal is reconciled exactly once for the plan revision/day')
   await overview.getByText('Aktuelles Fach').waitFor()
   await overview.getByText(/Du lernst gerade · Mathematik/u).waitFor()
-  assert.equal(await overview.getByRole('button', { name: 'Weiterlernen' }).count(), 1)
-  await page.evaluate(() => window.scrollTo(0, 0))
-  await page.waitForFunction(() => window.scrollY === 0)
-  await overview.getByRole('button', { name: 'Weiterlernen' }).click()
+  assert.equal(await overview.getByRole('button', { name: 'Weiterlernen' }).count(), 0)
+  assert.equal(await overview.getByRole('button', { name: 'Einstellungen öffnen' }).count(), 0)
   await page.getByTestId('learner-current-goal').waitFor()
-  assert.equal(
-    await page.getByTestId('learner-current-goal').evaluate((element) => document.activeElement === element),
-    true,
-    'continue scrolls to and focuses the active learning goal',
-  )
-  const continueViewport = await page.getByTestId('learner-current-goal').evaluate((element) => {
-    const bounds = element.getBoundingClientRect()
-    return { top: bounds.top, bottom: bounds.bottom, viewportHeight: window.innerHeight, scrollY: window.scrollY }
-  })
-  assert.ok(continueViewport.scrollY > 500, `continue should move the document, got scrollY=${continueViewport.scrollY}`)
-  assert.ok(
-    continueViewport.top >= 0 && continueViewport.bottom <= continueViewport.viewportHeight,
-    'continue keeps the focused goal visible in the viewport',
-  )
+  assert.match(await page.getByTestId('learner-current-goal').innerText(), /math-goal-1/u,
+    'reconciliation routes to the active learning content without a continue button')
 
   const physicsSwitch = overview.getByRole('button', { name: 'Zu Physik wechseln' })
   await page.evaluate(() => window.scrollTo(0, 0))
@@ -269,38 +311,41 @@ try {
   )
 
   const inFlightFixture = page.getByTestId('in-flight-refresh-fixture')
-  const inFlightContinue = inFlightFixture.getByRole('button', { name: 'Weiterlernen' })
-  assert.equal(await inFlightContinue.isEnabled(), true, 'the stored plan is actionable before refresh')
+  const inFlightSwitch = inFlightFixture.getByRole('button', { name: 'Zu Mathematik wechseln' })
+  assert.equal(await inFlightSwitch.isEnabled(), true, 'the stored plan is actionable before refresh')
   await inFlightFixture.getByRole('button', { name: 'Aktualisierung starten' }).click()
   await inFlightFixture.getByTestId('in-flight-status').filter({ hasText: 'loading' }).waitFor()
   await inFlightFixture.getByRole('heading', { name: 'Heute' }).waitFor()
-  assert.equal(await inFlightContinue.isDisabled(), true, 'the visible old plan is fail-closed while refresh is pending')
+  assert.equal(await inFlightSwitch.isDisabled(), true, 'the visible old plan is fail-closed while refresh is pending')
   await inFlightFixture.getByRole('button', { name: 'Aktualisierung abschließen' }).click()
   await inFlightFixture.getByTestId('in-flight-status').filter({ hasText: 'ready' }).waitFor()
-  assert.equal(await inFlightContinue.isEnabled(), true, 'the action returns after the refresh completes')
+  assert.equal(await inFlightSwitch.isEnabled(), true, 'the action returns after the refresh completes')
   assert.equal(reconcileRequests, 1, 'later rerenders and retries do not repeat first-start reconcile')
 
   const progressFixture = page.getByTestId('daily-progress-fixture')
-  await progressFixture.getByText('Tagesziel 0 von 2', { exact: false }).first().waitFor()
+  await progressFixture.getByText('0 von 2 Zielen', { exact: true }).waitFor()
+  assert.equal(await progressFixture.getByTestId('learner-plan-period-gauge').getAttribute('data-needle-position'), '0')
   assert.equal(await progressFixture.getByRole('progressbar').count(), 0,
     'the cockpit renders the backend status, never a locally derived progress bar')
   await progressFixture.getByRole('button', { name: 'Tagespensum abschließen' }).click()
-  await progressFixture.getByText('Tagesziel erreicht', { exact: false }).first().waitFor()
+  await progressFixture.getByText('2 von 2 Zielen', { exact: true }).waitFor()
+  assert.equal(await progressFixture.getByTestId('learner-plan-period-gauge').getAttribute('data-needle-position'), '1')
   assert.equal(await progressFixture.getByTestId('voluntary-start-count').textContent(), '0', 'reaching the period target starts no extra work')
   await progressFixture.getByRole('button', { name: 'Zu Mathematik wechseln' }).click()
   assert.equal(await progressFixture.getByTestId('voluntary-start-count').textContent(), '1', 'extra work requires an explicit click')
   await progressFixture.getByRole('button', { name: 'Zusätzliches Ziel abschließen' }).click()
   await progressFixture.getByText('1 Lernziel vorgearbeitet', { exact: false }).first().waitFor()
   const completedLayout = await progressFixture.getByTestId('learner-plan-subject-mathematik').evaluate((row) => {
-    // The status line is deliberately split into period text and a coloured label, so the
-    // readable width is the container's, not that of its first span.
-    const text = row.querySelector('[aria-live]')!.getBoundingClientRect()
+    const period = row.querySelector('[data-testid="learner-plan-period-gauge"]')!.getBoundingClientRect()
+    const balance = row.querySelector('[data-testid="learner-plan-balance-gauge"]')!.getBoundingClientRect()
     const button = row.querySelector('button')!.getBoundingClientRect()
-    return { textWidth: text.width, textHeight: text.height, textBottom: text.bottom, buttonTop: button.top }
+    return { periodWidth: period.width, balanceWidth: balance.width,
+      dialBottom: Math.max(period.bottom, balance.bottom), buttonTop: button.top }
   })
-  assert.ok(completedLayout.textWidth >= 250, `daily progress must keep readable mobile width: ${JSON.stringify(completedLayout)}`)
-  assert.ok(completedLayout.textHeight <= 48, 'the daily progress sentence must not collapse into a narrow word column')
-  assert.ok(completedLayout.buttonTop >= completedLayout.textBottom, 'the switch action follows the mobile status text without overlap')
+  assert.ok(completedLayout.periodWidth >= 110 && completedLayout.balanceWidth >= 110,
+    `both gauges stay readable on mobile: ${JSON.stringify(completedLayout)}`)
+  assert.ok(completedLayout.buttonTop >= completedLayout.dialBottom,
+    'the switch action follows the mobile gauges without overlap')
   await progressFixture.getByTestId('learner-plan-today-overview').screenshot({
     path: fileURLToPath(new URL('../../tmp/learner-plan-daily-quota-mobile.png', import.meta.url)),
   })

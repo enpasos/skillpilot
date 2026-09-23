@@ -166,12 +166,20 @@ try {
     }
     if (pathname.endsWith('/learning-plans')) {
       assert.equal(new URL(request.url()).searchParams.get('language'), 'de', 'the cockpit requests explicit display language')
-      const subject = (key: string, label: string) => ({
-        subjectKey: key, landscapeIds: [key === 'mathematik' ? 'math/sek-i' : 'physics/sek-ii'], subjectLabel: label, evaluable: true,
-        periodText: storedPeriodBasis === 'DAY' ? 'Tagesziel 0 von 2' : 'Wochenziel 1 von 8', planStatusText: '2 Lernziele im R\u00fcckstand',
-        subjectLine: `${label}: Tagesziel 0 von 2 \u00b7 2 Lernziele im R\u00fcckstand`,
-        statusDirection: 'behind', current: key === 'mathematik', canContinue: true,
-      })
+      const subject = (key: string, label: string) => {
+        const periodText = storedPeriodBasis === 'DAY' ? 'Tagesziel 0 von 2' : 'Wochenziel 1 von 8'
+        const planStatusText = '2 Lernziele im R\u00fcckstand'
+        return {
+          subjectKey: key, landscapeIds: [key === 'mathematik' ? 'math/sek-i' : 'physics/sek-ii'], subjectLabel: label, evaluable: true,
+          periodText, planStatusText,
+          subjectLine: `${label}: ${periodText} \u00b7 ${planStatusText}`,
+          statusDirection: 'behind', current: key === 'mathematik', canContinue: true,
+          periodGauge: storedPeriodBasis === 'DAY'
+            ? { completed: 0, target: 2, needlePosition: 0 }
+            : { completed: 1, target: 8, needlePosition: 0.125 },
+          balanceGauge: { net: -2, typicalAmount: 2, scaleLimit: 4, needlePosition: -0.4, severeBehind: false, strongAhead: false },
+        }
+      }
       const subjects = [subject('mathematik', 'Mathematik'), subject('physik', 'Physik')]
       const status = {
         asOf: '2026-09-04', periodBasis: storedPeriodBasis,
@@ -183,7 +191,7 @@ try {
         noticeText: unavailableStatus ? '2 Fachpläne nicht auswertbar (Mathematik, Physik).' : null,
         activeGoal: { title: 'Lineare Gleichungen lösen', announcement: 'Dein aktives Lernziel: Lineare Gleichungen lösen' },
         followLearningPlans: true, resumeAvailable: true,
-        subjects: unavailableStatus ? subjects.map((entry) => ({ ...entry, evaluable: false, periodText: null, planStatusText: null, subjectLine: null, statusDirection: null, canContinue: false })) : subjects, unavailablePlanCount: unavailableStatus ? 2 : 0,
+        subjects: unavailableStatus ? subjects.map((entry) => ({ ...entry, evaluable: false, periodText: null, planStatusText: null, subjectLine: null, statusDirection: null, periodGauge: null, balanceGauge: null, canContinue: false })) : subjects, unavailablePlanCount: unavailableStatus ? 2 : 0,
       }
       return json({
         asOf: '2026-09-04',
@@ -220,6 +228,8 @@ try {
   await page.goto(`${server.baseUrl}/scripts/fixtures/learnerViewMobilePlanChromeUi.html`)
   const menuButton = page.getByRole('button', { name: 'Lernzielmenü öffnen' })
   const overview = page.getByTestId('learner-plan-today-overview')
+  assert.equal(await overview.getByRole('button', { name: 'Einstellungen öffnen' }).count(), 0)
+  assert.equal(await overview.getByRole('button', { name: 'Weiterlernen' }).count(), 0)
   await menuButton.waitFor()
   try {
     await overview.getByRole('heading', { name: 'Heute' }).waitFor({ timeout: 10_000 })
@@ -227,7 +237,7 @@ try {
     const body = await page.locator('body').innerText()
     throw new Error(`LearnerView did not render Today overview. Body:\n${body}\nBrowser errors:\n${browserErrors.join('\n')}`, { cause: error })
   }
-  await overview.getByTestId('learner-plan-subject-mathematik').getByText('Tagesziel 0 von 2').first().waitFor()
+  await overview.getByTestId('learner-plan-subject-mathematik').getByText('0 von 2 Zielen', { exact: true }).waitFor()
 
   const menuBox = await menuButton.boundingBox()
   const overviewBox = await overview.boundingBox()
@@ -322,7 +332,8 @@ try {
   }
 
   // Exercise the real settings-to-preferences-to-status path, including a fresh page load.
-  await overview.getByRole('button', { name: 'Einstellungen öffnen' }).click()
+  await menuButton.click()
+  await sidebar.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
   await materialSummary.waitFor()
   await materialSummary.click()
   assert.equal(await materialChoice.isChecked(), true, 'saved materials survive closing and reopening real settings')
@@ -349,8 +360,15 @@ try {
     throw new Error(JSON.stringify({ body: await page.locator('body').innerText(), preferenceWrites, unexpectedRequests, browserErrors }), { cause: error })
   }
   assert.equal(preferenceWrites.at(-1)?.learningPlanPeriodBasis, 'WEEK')
+  await settings.waitFor({ state: 'detached' })
+  await closeButton.click()
   await page.reload()
   await overview.getByRole('heading', { name: 'Diese Woche', exact: true }).waitFor()
+  const weeklyMathRow = overview.getByTestId('learner-plan-subject-mathematik')
+  await weeklyMathRow.getByText('1 von 8 Zielen', { exact: true }).waitFor()
+  assert.equal(await weeklyMathRow.getByTestId('learner-plan-period-gauge').getAttribute('data-needle-position'), '0.125')
+  await weeklyMathRow.getByText('1 von 8 Zielen', { exact: true }).waitFor()
+  assert.equal(await weeklyMathRow.getByText(/Typisch:/u).count(), 0)
   const announcementLayout = await overview.getByTestId('learner-plan-active-goal').evaluate((element) => {
     const box = element.getBoundingClientRect()
     const range = document.createRange()
@@ -370,9 +388,12 @@ try {
   if (process.env.SKILLPILOT_ISSUE48_SCREENSHOTS) {
     await page.screenshot({ path: fileURLToPath(new URL('../../tmp/issue48/cockpit-week-mobile.png', import.meta.url)), fullPage: true })
   }
-  await overview.getByRole('button', { name: 'Einstellungen öffnen' }).click()
+  await menuButton.click()
+  await sidebar.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
   assert.equal(await page.getByRole('radio', { name: '1 Woche', exact: true }).isChecked(), true)
   await page.getByRole('button', { name: 'Fertig', exact: true }).click()
+  await settings.waitFor({ state: 'detached' })
+  await closeButton.click()
 
   // A missing status invalidates the combined response, preserving a visibly stale snapshot.
   omitStatus = true
@@ -399,6 +420,9 @@ try {
   assert.equal(await page.getByTestId('learner-plan-empty').count(), 0,
     'unavailable plans must not be presented as no plan')
   assert.equal(await overview.locator('[data-status-direction]').count(), 0)
+  assert.equal(await overview.getByTestId('learner-plan-gauges-unavailable').count(), 2)
+  assert.equal(await overview.locator('[data-needle-position]').count(), 0,
+    'unevaluable subjects keep two muted dials without suggesting a balance')
 
   assert.equal(browserErrors.length, 0, `mobile LearnerView browser errors:\n${browserErrors.join('\n')}`)
   assert.deepEqual(unexpectedRequests, [], 'the full state already supplies focus; initial /planned must not be fetched')

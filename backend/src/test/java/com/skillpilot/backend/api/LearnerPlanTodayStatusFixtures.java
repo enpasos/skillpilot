@@ -45,6 +45,10 @@ public final class LearnerPlanTodayStatusFixtures {
             boolean current, boolean canContinue, PeriodBasis basis, String locale) {
         PlanBalanceResult balance = UnifiedLearningPlanStatusCalculator.calculate(
                 new PlanBalanceInputs(s, p, i, h));
+        // These text-contract fixtures have no due-date schedule. Use a representative
+        // one-goal period solely to provide a coherent wire example for the Cockpit fields.
+        int net = balance.vorsprung() - balance.rueckstand();
+        double balanceNeedle = Math.max(-1.0, Math.min(1.0, net / (net < 0 ? 3.0 : 2.0)));
         return new LearnerPlanTodayStatus.SubjectStatus(
                 List.of(landscapeId),
                 subjectKey(label),
@@ -56,6 +60,11 @@ public final class LearnerPlanTodayStatusFixtures {
                 balance.statusDirection(),
                 current,
                 canContinue,
+                new LearnerPlanTodayStatus.PeriodGauge(
+                        balance.erfuelltesPeriodenziel(), p,
+                        p == 0 ? null : (double) balance.erfuelltesPeriodenziel() / p),
+                new LearnerPlanTodayStatus.BalanceGauge(
+                        net, 1, 2, balanceNeedle, net < -2, net >= 2),
                 balance);
     }
 
@@ -64,7 +73,7 @@ public final class LearnerPlanTodayStatusFixtures {
             String landscapeId, String label, boolean current, boolean canContinue) {
         return new LearnerPlanTodayStatus.SubjectStatus(
                 List.of(landscapeId), subjectKey(label), label, false,
-                null, null, null, null, current, canContinue, null);
+                null, null, null, null, current, canContinue, null, null, null);
     }
 
     /** A subject backed by more than one plan, which therefore cannot be switched to. */
@@ -75,7 +84,8 @@ public final class LearnerPlanTodayStatusFixtures {
         return new LearnerPlanTodayStatus.SubjectStatus(
                 List.copyOf(landscapeIds), single.subjectKey(), label, true,
                 single.periodText(), single.planStatusText(), single.subjectLine(),
-                single.statusDirection(), current, false, single.balance());
+                single.statusDirection(), current, false,
+                single.periodGauge(), single.balanceGauge(), single.balance());
     }
 
     public static LearnerPlanTodayStatus.ActiveGoal activeGoal(String goalId, String title) {

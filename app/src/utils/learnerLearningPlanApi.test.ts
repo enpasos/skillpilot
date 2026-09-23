@@ -134,11 +134,27 @@ assert.equal(parsed.plans[0]?.nextEligibleGoal?.goalId, 'analysis-1')
 assert.equal('metrics' in parsed.plans[0], false)
 assert.equal('pace' in parsed.plans[0], false)
 assert.equal('statusDirection' in parsed.status, false, 'there is no cross-subject balance')
+assert.deepEqual(parsed.status.subjects[0].periodGauge, { completed: 0, target: 2, needlePosition: 0 })
+assert.deepEqual(parsed.status.subjects[0].balanceGauge, {
+  net: 0, typicalAmount: 2, scaleLimit: 4, needlePosition: 0,
+  severeBehind: false, strongAhead: false,
+})
 assert.throws(() => parseLearnerLearningPlansResponse({ ...parsed, status: null }), /status/u)
 assert.throws(() => parseLearnerLearningPlansResponse({
   ...parsed, status: { ...parsed.status, asOf: '2026-09-11', periodStart: '2026-09-11', periodEnd: '2026-09-11' },
 }), /status.snapshot/u)
 assert.throws(() => parseLearnerPlanStatus({ ...parsed.status, subjects: [{ ...parsed.status.subjects[0], periodText: null }] }), /evaluability/u)
+assert.throws(() => parseLearnerPlanStatus({ ...parsed.status, subjects: [{ ...parsed.status.subjects[0], periodGauge: undefined }] }), /periodGauge/u)
+assert.throws(() => parseLearnerPlanStatus({ ...parsed.status, subjects: [{ ...parsed.status.subjects[0], periodGauge: { completed: 3, target: 2, needlePosition: 1 } }] }), /periodGauge/u)
+assert.throws(() => parseLearnerPlanStatus({ ...parsed.status, subjects: [{ ...parsed.status.subjects[0], balanceGauge: { ...parsed.status.subjects[0].balanceGauge, needlePosition: 1.1 } }] }), /needlePosition/u)
+assert.doesNotThrow(() => parseLearnerPlanStatus({ ...parsed.status, subjects: [{
+  ...parsed.status.subjects[0], periodText: 'Heute kein Tagesziel',
+  periodGauge: { completed: 0, target: 0, needlePosition: null }, balanceGauge: null,
+}] }), 'a subject with no positive scheduled quota remains evaluable without a balance scale')
+assert.throws(() => parseLearnerPlanStatus({ ...parsed.status, subjects: [{
+  ...parsed.status.subjects[0], evaluable: false, periodText: null,
+  planStatusText: null, subjectLine: null, statusDirection: null,
+}] }), /evaluability/u, 'unevaluable subjects cannot carry quantitative gauges')
 
 assert.equal(formatLearnerLearningPlanDate('2026-09-01', 'de'), '01.09.2026')
 assert.equal(formatLearnerLearningPlanDate('2026-09-01', 'en'), '01/09/2026')

@@ -2172,32 +2172,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     refreshState,
   ])
 
-  const handleContinueCurrentPlanGoal = useCallback(() => {
-    if (!effectiveActiveGoalId || !activeLearningPlanLandscapeId) return
-    focusLearnerGoalContent(effectiveActiveGoalId)
-    if (effectiveActiveGoalId === currentRouteGoalId && activeLearningPlanLandscapeId === landscapeId) return
-    pendingActiveGoalRouteSyncRef.current = effectiveActiveGoalId
-    navigateToLearnerLearningPlanGoal(
-      landscapeId,
-      {
-        landscapeId: activeLearningPlanLandscapeId,
-        activeGoalId: effectiveActiveGoalId,
-      },
-      {
-        selectGoal: onSelectGoal,
-        selectGoalInLandscape: onSelectGoalInLandscape,
-      },
-    )
-  }, [
-    activeLearningPlanLandscapeId,
-    currentRouteGoalId,
-    effectiveActiveGoalId,
-    focusLearnerGoalContent,
-    landscapeId,
-    onSelectGoal,
-    onSelectGoalInLandscape,
-  ])
-
   const handleSwitchLearningPlan = useCallback(async (planId: string) => {
     const response = scopedLearningPlans
     const plan = response?.plans.find((candidate) => candidate.planId === planId)
@@ -3281,7 +3255,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           <div className="flex items-center gap-1 shrink-0">
 
             {/* SSE auto-refresh now active - manual refresh button removed */}
-            <button aria-label={localizedLanguage === 'de' ? 'Einstellungen öffnen' : 'Open settings'} onClick={() => setIsSetupOpen(true)} className="p-1 text-text-secondary hover:text-sky-400"><Settings size={16} /></button>
+            <button type="button" aria-label={localizedLanguage === 'de' ? 'Einstellungen öffnen' : 'Open settings'} onClick={() => setIsSetupOpen(true)} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-text-secondary hover:text-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><Settings size={18} aria-hidden="true" /></button>
             <ThemeToggle />
             {isMobile && (
               <button
@@ -3460,9 +3434,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   ? learnerLearningPlanCopy.staleData(formatLearnerLearningPlanDate(scopedLearningPlans.asOf, localizedLanguage))
                   : undefined}
                 actionError={learningPlanActionError ?? undefined}
-                onContinue={handleContinueCurrentPlanGoal}
                 onSwitch={(planId) => { void handleSwitchLearningPlan(planId) }}
-                onOpenSettings={() => setIsSetupOpen(true)}
                 onRetry={() => { void retryLearningPlans() }}
               />
             ) : null}

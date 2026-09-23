@@ -79,12 +79,16 @@ const planStatusBody = {
       periodText: 'Tagesziel 0 von 1', planStatusText: 'im Plan',
       subjectLine: 'Mathematik: Tagesziel 0 von 1 \u00b7 im Plan',
       statusDirection: 'on_track', current: false, canContinue: true,
+      periodGauge: { completed: 0, target: 1, needlePosition: 0 },
+      balanceGauge: { net: 0, typicalAmount: 1, scaleLimit: 2, needlePosition: 0, severeBehind: false, strongAhead: false },
     },
     {
       subjectKey: 'physik', landscapeIds: [physicsId], subjectLabel: 'Physik', evaluable: true,
       periodText: 'Tagesziel 0 von 1', planStatusText: 'im Plan',
       subjectLine: 'Physik: Tagesziel 0 von 1 \u00b7 im Plan',
       statusDirection: 'on_track', current: false, canContinue: true,
+      periodGauge: { completed: 0, target: 1, needlePosition: 0 },
+      balanceGauge: { net: 0, typicalAmount: 1, scaleLimit: 2, needlePosition: 0, severeBehind: false, strongAhead: false },
     },
   ],
   unavailablePlanCount: 0,
@@ -199,7 +203,7 @@ try {
     // The cockpit shows the backend text; it never fabricates completions of its own.
     for (const [key, subject] of [['mathematik', 'Mathematik'], ['physik', 'Physik']] as const) {
       const row = overview.getByTestId(`learner-plan-subject-${key}`)
-      await row.getByText('Tagesziel 0 von 1').first().waitFor()
+      await row.getByText('0 von 1 Ziel', { exact: true }).waitFor()
       await row.getByText('im Plan').first().waitFor()
       assert.ok(subject.length > 0)
     }
@@ -250,8 +254,9 @@ try {
       await emit(h.page, learnerA, 'CLIENT_STATE_UPDATED', 'unrelated-memory-goal')
       await h.page.waitForFunction(() => document.querySelector('[aria-label="Meine Fachpläne"]')?.getAttribute('aria-busy') === 'true')
       assert.equal(await section.getAttribute('aria-busy'), 'true')
-      assert.equal(await h.page.getByTestId('learner-plan-continue').isDisabled(), true)
       assert.equal(await section.getByRole('button', { name: 'Zu Physik wechseln' }).isDisabled(), true)
+      assert.equal(await section.getByRole('button', { name: 'Weiterlernen' }).count(), 0)
+      assert.equal(await section.getByRole('button', { name: 'Einstellungen öffnen' }).count(), 0)
       assert.equal(await h.page.getByTestId('learner-plan-today-overview').innerText(), before,
         'background refresh preserves existing labels and counts')
       assert.deepEqual(await h.page.getByTestId('learner-plan-today-overview').boundingBox(), beforeBox,
@@ -260,12 +265,14 @@ try {
       assert.equal(await h.page.getByText('Fachpläne werden aktualisiert … Planaktionen sind kurz gesperrt.').count(), 0)
       refreshGate.resolve({ status: 503, body: { error: 'Controlled plan outage' } })
       await section.getByText(/Aktualisierung fehlgeschlagen/u).waitFor()
-      assert.equal(await h.page.getByTestId('learner-plan-continue').isDisabled(), true)
       assert.equal(await section.getByRole('button', { name: 'Zu Physik wechseln' }).isDisabled(), true)
       h.replies[learnerA]!.plans = plans()
       h.replies[learnerA]!.state = state(learnerA)
       await section.getByRole('button', { name: 'Erneut versuchen' }).click()
-      await h.page.waitForFunction(() => !document.querySelector<HTMLButtonElement>('[data-testid="learner-plan-continue"]')?.disabled)
+      await h.page.waitForFunction(() => {
+        const switchButton = document.querySelector<HTMLButtonElement>('[data-testid="learner-plan-switch"]')
+        return Boolean(switchButton && !switchButton.disabled)
+      })
       assert.equal(await section.getByText(/Aktualisierung fehlgeschlagen/u).count(), 0)
       const stateRequests = h.requests.filter((r) => r.endpoint === 'state').length
       const fullRefresh = h.page.waitForResponse((response) => new URL(response.url()).pathname.endsWith('/state'))

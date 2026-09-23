@@ -317,17 +317,68 @@ Das Backend stellt die für Darstellung und Lernsteuerung erforderlichen Informa
 |---|---|
 | Zeitbezug | Periodenbasis, Beginn, Ende, Zeitzone und Bezugszeitpunkt |
 | Gesamtstatus | Auswertbarkeit und vollständiger `status.text`, ohne Gesamtbilanz |
-| Je Fach | Fachkennung, Fachname, Textbestandteile, Fachzeile, Auswertbarkeit und gegebenenfalls Statusrichtung |
+| Je Fach | Fachkennung, Fachname, Textbestandteile, Fachzeile, Auswertbarkeit, gegebenenfalls Statusrichtung und die Cockpit-Projektion für die beiden Scheibenanzeigen |
 | Lernsteuerung | Aktuelles Fach, Fortsetzungsmöglichkeiten und autorisierte nächste Handlungen |
 | Unterrichtseinstieg | Aktives Lernziel und separate lokalisierte Ankündigung |
 
-Die numerischen Rechenwerte bleiben intern für Berechnung, Tests, Diagnose und Zielauswahl verfügbar.
+Die Eingangsgrößen und internen Rechenschritte bleiben für Berechnung, Tests,
+Diagnose und Zielauswahl im Backend. Für die Scheibenanzeigen erhält das Cockpit
+gezielt die abgeleiteten Zahlen und Nadelpositionen. Es berechnet weder Pensum
+noch Planstand oder Skalierung selbst. Andere normale Statusausgaben können
+weiterhin allein den gelieferten Text und die Statusrichtung verwenden.
 
-Die Clients benötigen für die normale Statusanzeige keine eigenen Rechenwerte. Auch ein farbiges Etikett lässt sich aus dem gelieferten Text und der Statusrichtung darstellen.
+#### Cockpit-Projektion je Fach
+
+Die erste Scheibe erhält `periodGauge` mit `completed` (erfülltes
+Periodenziel), `target` (**P**) und `needlePosition` im Bereich 0 bis 1. Ihr
+Titel richtet sich nach der gespeicherten Periodenbasis: „Heute“ oder „Diese
+Woche“. Die Zähleinheit sind **fortschrittswirksame Lernziele der bereinigten
+Planmenge G**, nicht einzelne Übungsaufgaben im Chat. `completed` kann auch
+durch früher erbrachte Vorarbeit größer als die Zahl der in der laufenden
+Periode neu abgeschlossenen Ziele sein. Bei **P > 0** berechnet das Backend
+`needlePosition = completed / target`. Bei **P = 0** liefert das Backend
+`completed = 0`, `target = 0` und `needlePosition = null`; die Anzeige benennt
+den fehlenden Tages- oder Wochenzielwert, statt einen Fortschrittsanteil zu
+erfinden. Bei einem nicht auswertbaren Fach ist `periodGauge = null`.
+
+Die zweite Scheibe trägt im Cockpit den Titel „Gesamt“ und erhält
+`balanceGauge` mit `net`, `typicalAmount`,
+`scaleLimit`, `needlePosition`, `severeBehind` und `strongAhead`. Hier gilt
+`net = Vorsprung − Rückstand`, **nicht** `I − S`. Ein allein noch offenes Pensum
+der laufenden Periode erzeugt dadurch keinen angezeigten Rückstand. Die
+Neutralstellung `needlePosition = 0` bedeutet „im Plan“. Auf der positiven
+Seite gilt `needlePosition = min(1, net / scaleLimit)`, auf der negativen
+`needlePosition = max(−1, net / (scaleLimit + 1))`. Dadurch bleibt ein Rückstand
+von genau 2 × M noch knapp vor dem linken Skalenende und erreicht es erst bei
+mehr als 2 × M; Vorsprung erreicht das rechte Skalenende bereits bei genau
+2 × M. Der gelieferte Planstatustext hält die tatsächliche Bilanz auch jenseits
+der Skala sichtbar.
+Bei einem nicht auswertbaren Fach ist `balanceGauge = null`.
+
+Die typische Menge **M = `typicalAmount`** wird für das ausgewertete Fach aus
+der **vollständigen**, gültigen, zusammengeführten und nach Ziel-ID
+deduplizierten Planung bestimmt. Jedes fortschrittswirksame Ziel zählt mit
+seinem frühesten gültigen Solltermin genau einmal. Das Backend gruppiert diese
+Termine je nach gespeicherter Basis nach Berliner Kalendertag oder
+Montag-bis-Sonntag-Kalenderwoche und bildet aus den **positiven**
+Periodenpensen den Median. Bei gerader Anzahl wird das arithmetische Mittel der
+beiden mittleren Werte auf die nächste ganze Zahl aufgerundet. Perioden ohne
+Soll zählen nicht zur Stichprobe: Ein freier Tag macht die Skala daher nicht
+null. **`scaleLimit = 2 × M`**. Fehlt in der gesamten Planung ein positives
+Periodenpensum, ist M nicht belastbar bestimmbar und `balanceGauge = null`;
+die fachliche Auswertbarkeit und der vorhandene Planstatustext bleiben davon
+getrennt.
+
+`severeBehind` gilt genau bei `net < −2 × M`, `strongAhead` genau bei
+`net ≥ 2 × M`. Die erste Grenze ist also strikt, die zweite einschließlich.
+Zwischen den Grenzen bewegt sich die Nadel proportional zum Saldo. Das
+Backend liefert diese Schwellenentscheidung und beide Nadelpositionen zusammen
+mit den zugrunde liegenden Fachwerten aus demselben Datenstand.
 
 ### 7.3 Reduzierte Chat-Projektion
 
 Der Chat erhält den fertigen Status und die erforderlichen Steuerungsinformationen. Separate Plan-Zählfelder wie `dueToday`, `completedToday`, `openToday`, `openOverdue` oder `extraCompletedToday` werden nicht zusätzlich übertragen.
+Auch `periodGauge` und `balanceGauge` sind ausschließlich Cockpit-Darstellungswerte und gehören nicht in die Chat-Projektion.
 
 Die Reduktion gilt für die tatsächlich gesendeten Daten, nicht nur für deren Schema. Strukturierte Tool-Ergebnisse und gegebenenfalls zusätzlich übertragene Textdarstellungen derselben Daten verwenden die gleiche reduzierte Projektion.
 
@@ -359,17 +410,44 @@ Bei externen KI-Hosts ist die wortgetreue Wiedergabe eine zu prüfende Integrati
 
 ### 8.2 Cockpit
 
-Das Cockpit zeigt dieselben Fachzeilen. Periodentext und Planstandtext dürfen gestalterisch getrennt werden. Farbe und Typografie unterstützen die Aussage, erzeugen aber keine zusätzliche Bewertung.
+Das Cockpit zeigt im Plan-Modus **je Fach zwei Scheiben mit sichtbaren Nadeln**:
+das laufende Tages- oder Wochenpensum und den kumulierten Planstand. Die
+Backendwerte `periodGauge` und `balanceGauge` steuern die Nadeln. Die erste
+Scheibe zeigt „x von y Zielen“: Erreichtes ist blau, der noch offene Teil der
+Skala grau. Die zweite Scheibe hat links einen klar roten Bereich für starken
+Rückstand, eine neutrale graue Mitte und rechts einen klar grünen Bereich für
+Vorarbeit. Ihre Nadel ist bei starkem Rückstand rot, bei Vorarbeit grün und
+sonst neutral. Sie zeigt den gelieferten Planstatustext direkt unter
+der Nadel, zum Beispiel „1 Lernziel im Rückstand“ oder „im Plan“; Rückstand
+liegt links und Vorarbeit rechts. Die tatsächliche Bilanz bleibt bei einem
+Skalenanschlag durch diesen Text sichtbar. Die Skalierungswerte und die
+typische Menge dienen der Berechnung, erscheinen aber nicht als zusätzliche
+Beschriftung der Scheibe. Die Fachzeile wiederholt weder das Periodenpensum
+noch den Planstand.
+Die beiden Scheiben eines Fachs sind gleich hoch. Fach, Bezugszeit, Zahlen und
+Status müssen auch auf kleinen Bildschirmen eindeutig erkennbar sein. Die
+Nadelposition und der Text tragen die Bedeutung zusätzlich zur Farbe.
+Das „Heute“-Panel enthält weder einen zweiten Einstellungen-Knopf noch eine
+Schaltfläche „Weiterlernen“: Einstellungen sind über die vorhandene
+Seitenleiste erreichbar, und das aktive Lernziel steht im Lernbereich.
 
-Eine Farbe wird ausschließlich aus der gelieferten Statusrichtung abgeleitet und ersetzt nicht den Text.
+Ein fehlendes Periodenpensum und fehlende Auswertungsdaten sind unterschiedlich
+darzustellen. Falls ausschließlich die typische Menge für die zweite Skala
+fehlt, zeigt das Cockpit diese Grenze verständlich an, ohne die erste Scheibe
+oder den verfügbaren Statustext als nicht auswertbar zu behandeln.
 
-Lokale Rückstandsberechnungen, eigene Pensumskappungen und konkurrierende normale Statusdarstellungen entfallen.
+Lokale Rückstandsberechnungen, eigene Pensumskappungen und konkurrierende
+Statusdarstellungen entfallen.
 
 ### 8.3 Planung und Details
 
-Planzeitraum, aktueller Abschnitt, nächster Termin, Puffer und konkrete Zielzuordnungen bleiben unter „Plandetails“ verfügbar.
+Unter „Plandetails“ steht der Planzeitraum. Aktueller Abschnitt, nächster
+Termin, Puffer und konkrete Zielzuordnungen erscheinen nur, wenn die jeweilige
+Information tatsächlich vorhanden ist. Ein nicht geplanter Termin oder Puffer
+wird nicht durch eine leere oder Null-Angabe ersetzt. Ein geplanter Puffer mit
+null verbleibenden Werktagen bleibt sichtbar.
 
-Aus der normalen Statusdarstellung entfallen die parallele Bilanz „Bis heute insgesamt …“, der zusätzliche Mehrarbeitswert, der Erklärungstext zur Anrechnung nachgeholter Ziele und eine Tempo-Anzeige ohne eigenständigen Informationswert.
+Aus der normalen Statusdarstellung entfallen die parallele Bilanz „Bis heute insgesamt …“, der zusätzliche Mehrarbeitswert, der Erklärungstext zur Anrechnung nachgeholter Ziele und die frühere Anzeige „Tempo der letzten 7 Tage“. Die beiden Cockpit-Scheiben zeigen stattdessen die aktuelle backendseitige Fachbilanz.
 
 Eine vorhandene lernendenbezogene Vorschau verwendet dieselbe Berechnung. Neue historische Rekonstruktionen, Simulationsmodelle oder umfassende Berichtsfunktionen gehören nicht zum Umfang dieses Vorhabens.
 

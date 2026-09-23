@@ -1,5 +1,6 @@
 package com.skillpilot.backend.ui;
 
+import static org.hamcrest.Matchers.nullValue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doAnswer;
@@ -153,6 +154,42 @@ class LearnerLearningPlanControllerHttpTest {
         ordered.verify(learners).assertActiveLearnerRouteAccess(LEARNER_ID);
         ordered.verify(learningPlans).getPlans(LEARNER_ID, AS_OF, "en");
         verifyNoInteractions(lifecycle);
+    }
+
+    @Test
+    void statusGetSerializesAuthoritativeGaugeValuesWithoutRawBalance() throws Exception {
+        when(learningPlans.getTodayStatus(LEARNER_ID, "de")).thenReturn(planStatus());
+
+        mockMvc.perform(get("/api/ui/learners/{id}/learning-plans/status", LEARNER_ID)
+                        .queryParam("language", "de"))
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CACHE_CONTROL, "no-store"))
+                .andExpect(jsonPath("$.subjects[0].periodGauge.completed").value(1))
+                .andExpect(jsonPath("$.subjects[0].periodGauge.target").value(2))
+                .andExpect(jsonPath("$.subjects[0].periodGauge.needlePosition").value(0.5))
+                .andExpect(jsonPath("$.subjects[0].balanceGauge.net").value(-2))
+                .andExpect(jsonPath("$.subjects[0].balanceGauge.typicalAmount").value(1))
+                .andExpect(jsonPath("$.subjects[0].balanceGauge.scaleLimit").value(2))
+                .andExpect(jsonPath("$.subjects[0].balanceGauge.severeBehind").value(false))
+                .andExpect(jsonPath("$.subjects[0].balanceGauge.strongAhead").value(false))
+                .andExpect(jsonPath("$.subjects[0].balance").doesNotExist());
+    }
+
+    @Test
+    void statusGetKeepsUnevaluableGaugesNull() throws Exception {
+        when(learningPlans.getTodayStatus(LEARNER_ID, "de")).thenReturn(
+                com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.status(
+                        AS_OF, false, false,
+                        com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.unevaluableSubject(
+                                LANDSCAPE_ID, "Physics", false, false)));
+
+        mockMvc.perform(get("/api/ui/learners/{id}/learning-plans/status", LEARNER_ID)
+                        .queryParam("language", "de"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.subjects[0].evaluable").value(false))
+                .andExpect(jsonPath("$.subjects[0].periodGauge").value(nullValue()))
+                .andExpect(jsonPath("$.subjects[0].balanceGauge").value(nullValue()))
+                .andExpect(jsonPath("$.subjects[0].balance").doesNotExist());
     }
 
     @Test

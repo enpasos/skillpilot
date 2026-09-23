@@ -25,6 +25,8 @@ const Capture = () => {
       periodText: de ? 'Tagesziel 1 von 3' : 'Daily target 1 of 3',
       planStatusText: de ? '2 Lernziele im Rückstand' : '2 learning goals behind',
       subjectLine: null, statusDirection: 'behind', current: true, canContinue: true,
+      periodGauge: { completed: 1, target: 3, needlePosition: 1 / 3 },
+      balanceGauge: { net: -2, typicalAmount: 3, scaleLimit: 6, needlePosition: -2 / 7, severeBehind: false, strongAhead: false },
     },
     {
       subjectKey: 'physik', landscapeIds: ['physics/sek-ii'],
@@ -34,6 +36,8 @@ const Capture = () => {
       periodText: de ? 'Tagesziel erreicht' : 'Daily target reached',
       planStatusText: de ? '1 Lernziel vorgearbeitet' : '1 learning goal ahead',
       subjectLine: null, statusDirection: 'ahead', current: false, canContinue: true,
+      periodGauge: { completed: 2, target: 2, needlePosition: 1 },
+      balanceGauge: { net: 1, typicalAmount: 2, scaleLimit: 4, needlePosition: 0.25, severeBehind: false, strongAhead: false },
     },
   ].map((subject) => ({
     ...subject,
@@ -92,9 +96,7 @@ const Capture = () => {
           goalLabel={(goalId) => goals[goalId as keyof typeof goals]}
           activeGoalId="math-goal-1"
           activeLandscapeId="math/sek-i"
-          onContinue={noAction}
           onSwitch={noAction}
-          onOpenSettings={noAction}
         />
       )}
     </main>

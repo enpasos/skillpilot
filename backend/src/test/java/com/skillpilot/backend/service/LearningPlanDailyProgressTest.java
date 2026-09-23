@@ -4,7 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
+import com.skillpilot.backend.service.learningplan.PeriodBasis;
+import com.skillpilot.backend.service.learningplan.PlanBalanceInputs;
 import com.skillpilot.backend.service.learningplan.PlanBalanceResult;
+import com.skillpilot.backend.service.learningplan.UnifiedLearningPlanStatusCalculator;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
@@ -112,6 +115,95 @@ class LearningPlanDailyProgressTest {
                 TODAY, TODAY, Map.of("a", 1.0, "b", 1.0), timestamps);
         assertThat(result.erfuelltesPeriodenziel()).isZero();
         assertThat(result.rueckstand()).isEqualTo(2);
+    }
+
+    @Test
+    void periodGaugeUsesCreditedPlanGoalsAndKeepsAnEmptyQuotaDistinct() {
+        var stillOnTrack = UnifiedLearningPlanStatusCalculator.calculate(
+                new PlanBalanceInputs(13, 3, 10, 0));
+        var fulfilledWithBacklog = UnifiedLearningPlanStatusCalculator.calculate(
+                new PlanBalanceInputs(13, 3, 12, 4));
+        var coveredByAdvanceWork = UnifiedLearningPlanStatusCalculator.calculate(
+                new PlanBalanceInputs(13, 3, 13, 0));
+        var noQuota = UnifiedLearningPlanStatusCalculator.calculate(
+                new PlanBalanceInputs(10, 0, 8, 0));
+
+        assertThat(LearnerLearningPlanService.periodGauge(stillOnTrack))
+                .extracting("completed", "target", "needlePosition")
+                .containsExactly(0, 3, 0.0);
+        assertThat(LearnerLearningPlanService.balanceGauge(stillOnTrack,
+                Map.of("a", TODAY), PeriodBasis.DAY).net()).isZero();
+        assertThat(LearnerLearningPlanService.periodGauge(fulfilledWithBacklog))
+                .extracting("completed", "target", "needlePosition")
+                .containsExactly(3, 3, 1.0);
+        assertThat(LearnerLearningPlanService.balanceGauge(fulfilledWithBacklog,
+                Map.of("a", TODAY), PeriodBasis.DAY).net()).isEqualTo(-1);
+        assertThat(LearnerLearningPlanService.periodGauge(coveredByAdvanceWork))
+                .extracting("completed", "target", "needlePosition")
+                .containsExactly(3, 3, 1.0);
+        assertThat(LearnerLearningPlanService.periodGauge(noQuota))
+                .extracting("completed", "target", "needlePosition")
+                .containsExactly(0, 0, null);
+    }
+
+    @Test
+    void typicalQuotaUsesRoundedUpMedianOfPositiveDailyOrWeeklyPlanPeriods() {
+        Map<String, LocalDate> mergedDueDates = Map.of(
+                "a", LocalDate.parse("2026-09-07"),
+                "b", LocalDate.parse("2026-09-08"),
+                "c", LocalDate.parse("2026-09-08"),
+                "d", LocalDate.parse("2026-09-08"),
+                "e", LocalDate.parse("2026-09-15"),
+                "f", LocalDate.parse("2026-09-15"));
+        // Day quotas 1, 3, 2 -> median 2. Week quotas 4, 2 -> rounded-up median 3.
+        // The zero-target days between them never make either scale disappear.
+        assertThat(LearnerLearningPlanService.typicalPeriodAmount(mergedDueDates, PeriodBasis.DAY))
+                .isEqualTo(2);
+        assertThat(LearnerLearningPlanService.typicalPeriodAmount(mergedDueDates, PeriodBasis.WEEK))
+                .isEqualTo(3);
+        assertThat(LearnerLearningPlanService.typicalPeriodAmount(Map.of(), PeriodBasis.DAY))
+                .isNull();
+    }
+
+    @Test
+    void balanceGaugeUsesStrictRedAndInclusiveGreenTwoTimesThresholds() {
+        Map<String, LocalDate> schedule = Map.of("a", TODAY);
+        var atNegativeBoundary = UnifiedLearningPlanStatusCalculator.calculate(
+                new PlanBalanceInputs(10, 0, 8, 0));
+        var beyondNegativeBoundary = UnifiedLearningPlanStatusCalculator.calculate(
+                new PlanBalanceInputs(10, 0, 7, 0));
+        var atPositiveBoundary = UnifiedLearningPlanStatusCalculator.calculate(
+                new PlanBalanceInputs(10, 0, 12, 0));
+        var beyondPositiveBoundary = UnifiedLearningPlanStatusCalculator.calculate(
+                new PlanBalanceInputs(10, 0, 13, 0));
+
+        var negative = LearnerLearningPlanService.balanceGauge(
+                atNegativeBoundary, schedule, PeriodBasis.DAY);
+        assertThat(negative.net()).isEqualTo(-2);
+        assertThat(negative.typicalAmount()).isEqualTo(1);
+        assertThat(negative.scaleLimit()).isEqualTo(2);
+        assertThat(negative.needlePosition()).isEqualTo(-2.0 / 3);
+        assertThat(negative.severeBehind()).isFalse();
+
+        var severe = LearnerLearningPlanService.balanceGauge(
+                beyondNegativeBoundary, schedule, PeriodBasis.DAY);
+        assertThat(severe.net()).isEqualTo(-3);
+        assertThat(severe.needlePosition()).isEqualTo(-1);
+        assertThat(severe.severeBehind()).isTrue();
+
+        var strong = LearnerLearningPlanService.balanceGauge(
+                atPositiveBoundary, schedule, PeriodBasis.DAY);
+        assertThat(strong.net()).isEqualTo(2);
+        assertThat(strong.needlePosition()).isEqualTo(1);
+        assertThat(strong.strongAhead()).isTrue();
+
+        var beyond = LearnerLearningPlanService.balanceGauge(
+                beyondPositiveBoundary, schedule, PeriodBasis.DAY);
+        assertThat(beyond.net()).isEqualTo(3);
+        assertThat(beyond.needlePosition()).isEqualTo(1);
+        assertThat(beyond.strongAhead()).isTrue();
+        assertThat(LearnerLearningPlanService.balanceGauge(
+                atPositiveBoundary, Map.of(), PeriodBasis.DAY)).isNull();
     }
 
     private static PlanBalanceResult progress(List<LearnerLearningPlanApi.Block> blocks,

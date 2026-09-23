@@ -29,6 +29,8 @@ export const learnerPlanStatus = (
     planStatusText: 'im Plan',
     subjectLine: `${landscapeId.includes('phys') ? 'Physik' : 'Mathematik'}: Tagesziel 0 von 2 · im Plan`,
     statusDirection: 'on_track',
+    periodGauge: { completed: 0, target: 2, needlePosition: 0 },
+    balanceGauge: { net: 0, typicalAmount: 2, scaleLimit: 4, needlePosition: 0, severeBehind: false, strongAhead: false },
     current: false,
     canContinue: true,
   })),

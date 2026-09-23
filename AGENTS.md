@@ -977,9 +977,22 @@ basis (default DAY; Europe/Berlin, Monday through Sunday). Each stable subject i
 balanced independently over the same fixed, deduplicated plan-goal set; prior
 knowledge is excluded and later mastery remains in that set. Current-period
 completion events cover the period quota first, and advance work can cover it
-as well. No cross-subject balance or overall direction is permitted. Cockpit,
-chat and learner planning display the backend's exact localized `status.text`;
-the active-goal announcement is separate and appears once when teaching begins.
+as well. No cross-subject balance or overall direction is permitted. Cockpit
+renders the backend's exact localized per-subject status parts; chat and learner
+planning use the exact localized `status.text`; the active-goal announcement is
+separate and appears once when teaching begins.
+In Cockpit Plan mode, two subject-specific dials additionally use backend-owned
+period completion, net balance, scale and needle positions; the client does not
+recalculate them or replace the authoritative status text. The typical scale
+amount is derived from positive quotas of the merged subject plan as specified
+in the concept below. In the learner-facing dials, completed period work is
+blue and open work gray; the cumulative scale is clearly red for strong
+backlog, neutral gray near the plan and green for advance work. The needle and
+status text also carry the meaning. This later product-owner design decision
+supersedes the interim all-blue palette.
+The learner-facing Today panel shows the active goal as information but has no
+duplicate settings or "continue learning" button; settings remain in the goal
+sidebar and the learning content is rendered separately below the panel.
 Automatic plan reconciliation and handoff stop when the applicable period quota
 is met; further work requires an explicit learner request. A valid active goal
 remains available. **A plan guides and prioritizes learning; it must never prevent
