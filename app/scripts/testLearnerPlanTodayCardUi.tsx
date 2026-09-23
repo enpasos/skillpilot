@@ -378,24 +378,106 @@ assert.match(weeklyMarkup, />Diese Woche</u, 'the week basis reaches the heading
 assert.doesNotMatch(weeklyMarkup, /Wochenziel 2 von 5/u)
 assert.match(weeklyMarkup, /2 von 5 Zielen/u)
 
-const englishMarkup = renderToStaticMarkup(
+const englishMath: LearnerLearningPlanSummary = {
+  ...math,
+  planLabel: 'Mathematics through graduation',
+  currentBlock: { ...math.currentBlock!, title: 'Functions' },
+  nextMilestone: { ...math.nextMilestone!, title: 'Exam' },
+}
+const englishPhysics: LearnerLearningPlanSummary = {
+  ...physics,
+  planLabel: 'Physics through graduation',
+  currentBlock: { ...physics.currentBlock!, title: 'Mechanics' },
+  nextMilestone: { ...physics.nextMilestone!, title: 'Lab assessment' },
+}
+const englishSubjects = [
+  subject('mathematik', 'Mathematics', 'Daily target 0 of 1', '1 learning goal behind', 'behind', { current: true }),
+  subject('physik', 'Physics', 'Daily target 2 of 3', 'On track', 'on_track'),
+]
+const englishStatus = status(englishSubjects, {
+  language: 'en',
+  activeGoal: { title: 'Apply differentiation rules', announcement: 'Your active learning goal: Apply differentiation rules' },
+})
+const renderEnglishOverview = (
+  currentStatus: LearnerPlanStatus,
+  plans: readonly LearnerLearningPlanSummary[] = [englishMath, englishPhysics],
+  planModeEnabled = true,
+) => renderToStaticMarkup(
   <LearnerPlanTodayOverview
-    status={status(
-      [subject('mathematik', 'Mathematics', 'Daily target 0 of 3', '2 learning goals behind', 'behind')],
-      { language: 'en' },
-    )}
-    plans={[math]}
+    status={currentStatus}
+    plans={plans}
     language="en"
-    planModeEnabled
-    subjectLabel={() => 'Mathematics'}
-    goalLabel={(id) => goalLabels.get(id)}
+    planModeEnabled={planModeEnabled}
+    // Catalog titles can remain German even when the backend status is English.
+    subjectLabel={(id) => id === 'math' ? 'Mathematik' : 'Physik'}
+    goalLabel={() => 'Kurvendiskussion'}
+    activeGoalId={currentStatus.activeGoal ? 'analysis-current' : null}
+    activeLandscapeId={currentStatus.activeGoal ? 'math' : null}
     onSwitch={() => undefined}
   />,
 )
-assert.match(englishMarkup, /0 of 3 goals/u)
+
+const englishMarkup = renderEnglishOverview(englishStatus)
+assert.match(englishMarkup, />Today</u)
 assert.match(englishMarkup, />Overall</u)
-assert.match(englishMarkup, /2 learning goals behind/u)
-assert.doesNotMatch(englishMarkup, /Pace over the last 7 days/u)
+assert.match(englishMarkup, /0 of 1 goal</u, 'the singular target is localized')
+assert.match(englishMarkup, /2 of 3 goals</u, 'the plural target is localized')
+assert.match(englishMarkup, /1 learning goal behind</u)
+assert.match(englishMarkup, />On track</u)
+assert.match(englishMarkup, /Current subject</u)
+assert.match(englishMarkup, /You are learning · Mathematics</u,
+  'the active subject uses the localized backend label, even with a German catalog title')
+assert.match(englishMarkup, /Your active learning goal: Apply differentiation rules</u)
+assert.match(englishMarkup, /Switch to Physics</u)
+assert.match(englishMarkup, /Plan details: Mathematics/u)
+assert.match(englishMarkup, /Plan period</u)
+assert.match(englishMarkup, /Current plan block</u)
+assert.match(englishMarkup, /Next available</u)
+assert.match(englishMarkup, /Next milestone</u)
+assert.match(englishMarkup, /6 of 8 weekdays remaining</u)
+assert.doesNotMatch(englishMarkup, /Plandetails|Planzeitraum|Aktueller Planabschnitt|Nächster Termin|Werktagen|Zu Physik wechseln|>Heute<|>Gesamt<|Einstellungen öffnen|Weiterlernen/u)
+
+const englishWeekMarkup = renderEnglishOverview(status([
+  subject('mathematik', 'Mathematics', 'Weekly target 2 of 5', 'On track', 'on_track'),
+], { language: 'en', periodBasis: 'WEEK', periodStart: '2026-08-31', periodEnd: '2026-09-06' }))
+assert.match(englishWeekMarkup, />This week</u)
+assert.match(englishWeekMarkup, /2 of 5 goals</u)
+assert.doesNotMatch(englishWeekMarkup, /Weekly target 2 of 5|Diese Woche|Wochenziel/u,
+  'the weekly gauge replaces the backend period sentence with localized counts')
+
+const englishNoTarget = renderEnglishOverview(status([
+  subject('mathematik', 'Mathematics', 'No daily goal today', 'On track', 'on_track', {
+    periodGauge: { completed: 0, target: 0, needlePosition: null },
+  }),
+], { language: 'en' }), [{ ...englishMath, nextEligibleGoal: null, canContinue: false }])
+assert.match(englishNoTarget, /No goals planned</u)
+assert.doesNotMatch(englishNoTarget, /Keine Ziele geplant|0 of 0 goals/u)
+
+const englishNoScale = renderEnglishOverview(status([
+  subject('mathematik', 'Mathematics', 'Daily target 0 of 1', 'On track', 'on_track', { balanceGauge: null }),
+], { language: 'en' }), [{ ...englishMath, nextEligibleGoal: null, canContinue: false }])
+assert.match(englishNoScale, /Scale unavailable</u)
+assert.doesNotMatch(englishNoScale, /Skala nicht verfügbar/u)
+
+const englishUnavailable = renderEnglishOverview(status([{
+  ...unevaluable,
+  subjectLabel: 'Chemistry',
+}], { language: 'en', evaluable: false, noticeText: '1 subject plan unavailable (Chemistry).' }), [])
+assert.match(englishUnavailable, /1 subject plan unavailable \(Chemistry\)\.</u)
+assert.equal((englishUnavailable.match(/Unavailable</gu) ?? []).length, 2,
+  'both empty dials have an English fallback')
+assert.doesNotMatch(englishUnavailable, /Nicht auswertbar|data-needle-position/u)
+
+const englishUnstructured = renderEnglishOverview(status([
+  { ...englishSubjects[0], canContinue: false },
+], { language: 'en' }), [{ ...unstructuredPlan, planLabel: 'Mathematics through graduation' }])
+assert.match(englishUnstructured, /Plan period</u)
+assert.doesNotMatch(englishUnstructured, /Current plan block|Next milestone|>Buffer<|data-testid="learner-plan-switch"/u,
+  'missing schedule elements and switch action are omitted in English too')
+
+const englishPlanModeOff = renderEnglishOverview(englishStatus, [englishMath, englishPhysics], false)
+assert.match(englishPlanModeOff, /Plan mode is off</u)
+assert.doesNotMatch(englishPlanModeOff, /data-testid="learner-plan-period-gauge"|data-testid="learner-plan-switch"|>Weiterlernen<|>Einstellungen öffnen</u)
 
 
 // Stable backend identifiers bind actions even when translations collide or differ.

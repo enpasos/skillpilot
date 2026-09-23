@@ -1,10 +1,10 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { StrictMode, useState } from 'react'
+import React, { StrictMode, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { MemoryRouter } from 'react-router-dom'
 
 import '../../src/index.css'
-import { LanguageProvider } from '../../src/contexts/LanguageContext'
+import { LanguageProvider, useLanguage } from '../../src/contexts/LanguageContext'
 import { ThemeProvider } from '../../src/contexts/ThemeContext'
 import type { UiGoal } from '../../src/goalTypes'
 import { LearnerView } from '../../src/views/LearnerView'
@@ -64,6 +64,16 @@ const mathGoal = goal('math-goal-1', 'math/sek-i', 'Lineare Gleichungen lösen')
 const physicsGoal = goal('physics-goal-1', 'physics/sek-ii', 'Kräfte und Bewegung erklären')
 const goals = new Map([mathGoal, physicsGoal].map((entry) => [entry.id, entry]))
 
+const LanguageSwitchFixture = () => {
+  const { language, setLanguage } = useLanguage()
+  useEffect(() => {
+    const switchLanguage = () => setLanguage(language === 'de' ? 'en' : 'de')
+    window.addEventListener('fixture-switch-language', switchLanguage)
+    return () => window.removeEventListener('fixture-switch-language', switchLanguage)
+  }, [language, setLanguage])
+  return null
+}
+
 const Fixture = () => {
   const [currentGoal, setCurrentGoal] = useState(mathGoal)
   const [landscapeId, setLandscapeId] = useState(mathGoal.landscapeId ?? 'math/sek-i')
@@ -106,6 +116,7 @@ createRoot(rootElement).render(
     <MemoryRouter initialEntries={['/learner/math-goal-1?l=math%2Fsek-i']}>
       <LanguageProvider>
         <ThemeProvider>
+          <LanguageSwitchFixture />
           <Fixture />
         </ThemeProvider>
       </LanguageProvider>

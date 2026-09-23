@@ -81,6 +81,10 @@ try {
   let storedPeriodBasis: 'DAY' | 'WEEK' = 'DAY'
   let unavailableStatus = false
   let omitStatus = false
+  let returnWrongStatusLanguage = false
+  const requestedPlanLanguages: string[] = []
+  let englishPlanBarrier: Promise<void> | null = null
+  let englishPlanRequestStarted = () => {}
   const preferenceWrites: Array<Record<string, unknown>> = []
   let preferenceSaveBarrier: Promise<void> | null = null
   let preferenceSaveStarted = () => {}
@@ -165,10 +169,20 @@ try {
       return json({ learningPlanPeriodBasis: storedPeriodBasis })
     }
     if (pathname.endsWith('/learning-plans')) {
-      assert.equal(new URL(request.url()).searchParams.get('language'), 'de', 'the cockpit requests explicit display language')
+      const requestedLanguage = new URL(request.url()).searchParams.get('language')
+      assert.ok(requestedLanguage === 'de' || requestedLanguage === 'en',
+        'the cockpit requests an explicit supported display language')
+      requestedPlanLanguages.push(requestedLanguage)
+      if (requestedLanguage === 'en' && englishPlanBarrier) {
+        englishPlanRequestStarted()
+        await englishPlanBarrier
+      }
+      const english = requestedLanguage === 'en'
       const subject = (key: string, label: string) => {
-        const periodText = storedPeriodBasis === 'DAY' ? 'Tagesziel 0 von 2' : 'Wochenziel 1 von 8'
-        const planStatusText = '2 Lernziele im R\u00fcckstand'
+        const periodText = storedPeriodBasis === 'DAY'
+          ? (english ? 'Daily target 0 of 2' : 'Tagesziel 0 von 2')
+          : (english ? 'Weekly target 1 of 8' : 'Wochenziel 1 von 8')
+        const planStatusText = english ? '2 learning goals behind' : '2 Lernziele im R\u00fcckstand'
         return {
           subjectKey: key, landscapeIds: [key === 'mathematik' ? 'math/sek-i' : 'physics/sek-ii'], subjectLabel: label, evaluable: true,
           periodText, planStatusText,
@@ -180,16 +194,21 @@ try {
           balanceGauge: { net: -2, typicalAmount: 2, scaleLimit: 4, needlePosition: -0.4, severeBehind: false, strongAhead: false },
         }
       }
-      const subjects = [subject('mathematik', 'Mathematik'), subject('physik', 'Physik')]
+      const subjects = [subject('mathematik', english ? 'Mathematics' : 'Mathematik'),
+        subject('physik', english ? 'Physics' : 'Physik')]
       const status = {
         asOf: '2026-09-04', periodBasis: storedPeriodBasis,
         periodStart: storedPeriodBasis === 'WEEK' ? '2026-08-31' : '2026-09-04',
         periodEnd: storedPeriodBasis === 'WEEK' ? '2026-09-06' : '2026-09-04',
-        timeZone: 'Europe/Berlin', language: 'de',
+        timeZone: 'Europe/Berlin', language: returnWrongStatusLanguage && english ? 'de' : requestedLanguage,
         evaluable: !unavailableStatus,
         statusText: subjects.map((entry) => entry.subjectLine).join('\n'),
-        noticeText: unavailableStatus ? '2 Fachpläne nicht auswertbar (Mathematik, Physik).' : null,
-        activeGoal: { title: 'Lineare Gleichungen lösen', announcement: 'Dein aktives Lernziel: Lineare Gleichungen lösen' },
+        noticeText: unavailableStatus
+          ? (english ? '2 subject plans unavailable (Mathematics, Physics).'
+            : '2 Fachpläne nicht auswertbar (Mathematik, Physik).') : null,
+        activeGoal: english
+          ? { title: 'Solve linear equations', announcement: 'Your active learning goal: Solve linear equations' }
+          : { title: 'Lineare Gleichungen lösen', announcement: 'Dein aktives Lernziel: Lineare Gleichungen lösen' },
         followLearningPlans: true, resumeAvailable: true,
         subjects: unavailableStatus ? subjects.map((entry) => ({ ...entry, evaluable: false, periodText: null, planStatusText: null, subjectLine: null, statusDirection: null, periodGauge: null, balanceGauge: null, canContinue: false })) : subjects, unavailablePlanCount: unavailableStatus ? 2 : 0,
       }
@@ -423,6 +442,48 @@ try {
   assert.equal(await overview.getByTestId('learner-plan-gauges-unavailable').count(), 2)
   assert.equal(await overview.locator('[data-needle-position]').count(), 0,
     'unevaluable subjects keep two muted dials without suggesting a balance')
+
+  // The real LearnerView requests a fresh backend wording on a live language change.
+  // Hold that response so mixed German backend text with English UI copy is observable.
+  unavailableStatus = false
+  let releaseEnglishPlan = () => {}
+  englishPlanBarrier = new Promise<void>((resolve) => { releaseEnglishPlan = resolve })
+  const englishPlanRequest = new Promise<void>((resolve) => { englishPlanRequestStarted = resolve })
+  await page.evaluate(() => window.dispatchEvent(new Event('fixture-switch-language')))
+  await englishPlanRequest
+  await page.getByRole('region', { name: 'My subject plans' }).waitFor()
+  assert.equal(await page.getByRole('region', { name: 'My subject plans' })
+    .getByText('2 Lernziele im Rückstand', { exact: true }).count(), 0,
+  'German backend status must disappear while the English status is loading')
+  releaseEnglishPlan()
+  englishPlanBarrier = null
+  await overview.getByRole('heading', { name: 'This week', exact: true }).waitFor()
+  const englishMathRow = overview.getByTestId('learner-plan-subject-mathematik')
+  await englishMathRow.getByText('1 of 8 goals', { exact: true }).waitFor()
+  await englishMathRow.getByText('2 learning goals behind', { exact: true }).waitFor()
+  await overview.getByText('You are learning · Mathematics', { exact: true }).waitFor()
+  await overview.getByText('Your active learning goal: Solve linear equations', { exact: true }).waitFor()
+  await overview.getByText('Current subject', { exact: true }).waitFor()
+  assert.equal(await overview.getByRole('button', { name: 'Switch to Physics' }).count(), 1)
+  assert.equal(await overview.getByLabel('Plan details: Mathematics').count(), 1)
+  assert.equal(await overview.getByText('Plandetails', { exact: true }).count(), 0)
+  assert.equal(await page.evaluate(() => document.documentElement.lang), 'en')
+  assert.equal(requestedPlanLanguages.at(-1), 'en', 'language=en reaches the backend status endpoint')
+
+  await page.evaluate(() => window.dispatchEvent(new Event('fixture-switch-language')))
+  await overview.getByRole('heading', { name: 'Diese Woche', exact: true }).waitFor()
+  await overview.getByText('Du lernst gerade · Mathematik', { exact: true }).waitFor()
+  assert.equal(requestedPlanLanguages.at(-1), 'de', 'switching back reloads German backend status')
+
+  returnWrongStatusLanguage = true
+  await page.evaluate(() => window.dispatchEvent(new Event('fixture-switch-language')))
+  await page.getByText('Your subject plans could not be loaded right now.', { exact: true }).waitFor()
+  assert.equal(await overview.count(), 0,
+    'a backend response in the wrong language cannot revive the old German overview')
+  returnWrongStatusLanguage = false
+  await page.getByRole('button', { name: 'Try again', exact: true }).click()
+  await overview.getByRole('heading', { name: 'This week', exact: true }).waitFor()
+  await overview.getByText('You are learning · Mathematics', { exact: true }).waitFor()
 
   assert.equal(browserErrors.length, 0, `mobile LearnerView browser errors:\n${browserErrors.join('\n')}`)
   assert.deepEqual(unexpectedRequests, [], 'the full state already supplies focus; initial /planned must not be fetched')

@@ -123,7 +123,10 @@ export const LearnerPlanTodayOverview = ({
   const headingId = React.useId()
   const summaryId = React.useId()
   const weekly = status?.periodBasis === 'WEEK'
-  const activeSubject = activeLandscapeId ? subjectLabel(activeLandscapeId) : null
+  const activeSubject = activeLandscapeId
+    ? status.subjects.find((subject) => subject.landscapeIds.includes(activeLandscapeId))?.subjectLabel
+      ?? subjectLabel(activeLandscapeId)
+    : null
   const activeGoalLabel = activeGoalId ? goalLabel(activeGoalId) : undefined
   const allActionsDisabled = actionsDisabled || Boolean(staleDataMessage)
 

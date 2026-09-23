@@ -495,6 +495,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const t = useTranslation();
   const location = useLocation()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
+  const localizedLearningPlans = scopedLearningPlans?.status.language === localizedLanguage
+    ? scopedLearningPlans
+    : null
+  const learningPlanLanguagePending = scopedLearningPlans !== null && localizedLearningPlans === null
   const learnerViewCopy = getLearnerViewCopy(localizedLanguage)
   const learnerLearningPlanCopy = getLearnerLearningPlanCopy(localizedLanguage)
   const learningPlanSubjectLabels = useMemo(() => new Map(
@@ -1690,6 +1694,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       // One backend snapshot supplies schedule and authoritative status together.
       const response = await getLearnerLearningPlans(skillpilotId, undefined, { language: localizedLanguage })
       if (!isCurrentRequest()) return null
+      if (response.status.language !== localizedLanguage) {
+        throw new Error('Learning-plan status language does not match the requested language')
+      }
       learningPlansRefreshInFlightRef.current = false
       setLearningPlans(response)
       setLearningPlansDataScopeKey(requestScopeKey)
@@ -3366,22 +3373,25 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         )}
         {!isGuidedPersonalizationRequired && (
           learningPlansLoadStatus !== 'ready'
-          || (scopedLearningPlans?.status.subjects.length ?? 0) > 0
-          || (scopedLearningPlans?.plans.length ?? 0) > 0
-          || (scopedLearningPlans?.status.unavailablePlanCount ?? 0) > 0
-          || scopedLearningPlans?.followLearningPlans === true
+          || learningPlanLanguagePending
+          || (localizedLearningPlans?.status.subjects.length ?? 0) > 0
+          || (localizedLearningPlans?.plans.length ?? 0) > 0
+          || (localizedLearningPlans?.status.unavailablePlanCount ?? 0) > 0
+          || localizedLearningPlans?.followLearningPlans === true
         ) && (
           <section
             aria-label={localizedLanguage === 'de' ? 'Meine Fachpläne' : 'My subject plans'}
-            aria-busy={learningPlansLoadStatus === 'loading'}
+            aria-busy={learningPlansLoadStatus === 'loading' || learningPlanLanguagePending}
             className="mb-6 flex w-full max-w-3xl flex-col gap-4"
           >
-            {learningPlansLoadStatus === 'loading' && !scopedLearningPlans ? (
+            {(learningPlansLoadStatus === 'loading' || learningPlanLanguagePending)
+              && learningPlansLoadStatus !== 'error'
+              && !localizedLearningPlans ? (
               <p className="rounded-xl border border-border-color bg-sidebar-bg p-4 text-sm text-text-secondary" role="status">
                 {learnerLearningPlanCopy.loading}
               </p>
             ) : null}
-            {learningPlansLoadStatus === 'error' && !scopedLearningPlans ? (
+            {learningPlansLoadStatus === 'error' && !localizedLearningPlans ? (
               <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/20 dark:text-amber-100" role="alert">
                 <span>{learnerLearningPlanCopy.loadFailed}</span>
                 <button
@@ -3394,24 +3404,24 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               </div>
             ) : null}
             {learningPlansLoadStatus === 'ready'
-              && scopedLearningPlans
-              && (scopedLearningPlans.followLearningPlans || scopedLearningPlans.status.unavailablePlanCount > 0)
-              && scopedLearningPlans.plans.length === 0
-              && scopedLearningPlans.status.subjects.length === 0 ? (
+              && localizedLearningPlans
+              && (localizedLearningPlans.followLearningPlans || localizedLearningPlans.status.unavailablePlanCount > 0)
+              && localizedLearningPlans.plans.length === 0
+              && localizedLearningPlans.status.subjects.length === 0 ? (
                 <div
-                  data-testid={scopedLearningPlans.status.unavailablePlanCount > 0 ? 'learner-plan-notice' : 'learner-plan-empty'}
+                  data-testid={localizedLearningPlans.status.unavailablePlanCount > 0 ? 'learner-plan-notice' : 'learner-plan-empty'}
                   className="rounded-xl border border-border-color bg-sidebar-bg p-5 text-sm text-text-secondary shadow-sm"
                   role="status"
                 >
-                  <p className="whitespace-pre-line leading-6">{scopedLearningPlans.status.statusText}</p>
+                  <p className="whitespace-pre-line leading-6">{localizedLearningPlans.status.statusText}</p>
                 </div>
               ) : null}
-            {scopedLearningPlans && scopedLearningPlans.status.subjects.length > 0 ? (
+            {localizedLearningPlans && localizedLearningPlans.status.subjects.length > 0 ? (
               <LearnerPlanTodayOverview
-                status={scopedLearningPlans.status}
+                status={localizedLearningPlans.status}
                 plans={sortedLearningPlans}
                 language={localizedLanguage}
-                planModeEnabled={scopedLearningPlans.followLearningPlans}
+                planModeEnabled={localizedLearningPlans.followLearningPlans}
                 subjectLabel={(planLandscapeId) => (
                   learningPlanSubjectLabels.get(planLandscapeId) ?? planLandscapeId
                 )}
@@ -3431,7 +3441,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 isReconciling={learningPlanActionId === 'reconcile'}
                 switchingPlanId={learningPlanActionId === 'reconcile' ? null : learningPlanActionId}
                 staleDataMessage={learningPlansLoadStatus === 'error'
-                  ? learnerLearningPlanCopy.staleData(formatLearnerLearningPlanDate(scopedLearningPlans.asOf, localizedLanguage))
+                  ? learnerLearningPlanCopy.staleData(formatLearnerLearningPlanDate(localizedLearningPlans.asOf, localizedLanguage))
                   : undefined}
                 actionError={learningPlanActionError ?? undefined}
                 onSwitch={(planId) => { void handleSwitchLearningPlan(planId) }}
