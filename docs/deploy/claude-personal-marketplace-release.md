@@ -22,18 +22,24 @@ files. The published 1.1.8 dossier is retained byte-identically in
 `release/history/1.1.8/`. The deployed website index and archive match 1.1.9.
 
 [Marketplace PR #11](https://github.com/enpasos/skillpilot-claude-marketplace/pull/11)
-passed [final-head validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/35824006725)
-and was squash-merged with an exact head-SHA guard. The
-[main-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/35824076410)
+published the exact export after
+[final-head validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/35824006725).
+[PR #12](https://github.com/enpasos/skillpilot-claude-marketplace/pull/12)
+then pinned its validation workflow to the reviewed SkillPilot source commit
+`54c7d04cc52c4844dfb5c5d7ddaf94dae6a574ea`. This prevents later
+release-evidence edits from changing the workflow's source hash. Both PRs were
+squash-merged with exact head-SHA guards. The
+[final PR validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/35824468247)
+and [main-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/35824523541)
 passed. `verify-repository` then checked the public default branch, all twelve
 files, the rebuilt archive, both strict Claude validations and installation
 from the public HTTPS Marketplace in an isolated profile. The remote head was
 stable throughout verification.
 
-- Published revision: `7e70bd23e8c5c16ab9b0b417ed2f365698596457`.
-- Verification recorded: `2026-09-23T05:50:39.000Z`.
+- Published revision: `c16ce0f1ff97cd8d428fdc83a9243c9db2022301`.
+- Verification recorded: `2026-09-23T05:57:47.000Z`.
 - Export tree SHA-256:
-  `904ae6e0ee98069f01d739df19627c18c995f4b8bd67d7dd33b3bdd5de22674f`.
+  `8862c32e873355d401e3e9a6073c8db75625cfcae9c708a312dbc1801945ae58`.
 - Plugin: **1.1.9**, **39,441 bytes**, SHA-256
   `b53a1100fff6d84ee66c12f084a8ff359847496fbf75c8a951ee4c9a0230c3c5`.
 
