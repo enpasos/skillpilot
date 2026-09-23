@@ -34,7 +34,7 @@ import {
 const scriptRoot = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(scriptRoot, "..");
 const canonicalPluginRoot = resolve(repositoryRoot, "ai/claude/plugin/skillpilot-coach-v1");
-const pinnedCanonicalRevision = "54c7d04cc52c4844dfb5c5d7ddaf94dae6a574ea";
+const pinnedCanonicalRevision = "7109b71bfa57804cbd0d83a87b30f010076b2437";
 const marketplaceWorkflow = readFileSync(resolve(repositoryRoot,
   "ai/claude/marketplace/skillpilot-marketplace/validate.yml"), "utf8");
 function loadHistorical111MarketplaceLane() {
@@ -74,7 +74,7 @@ test("marketplace README focuses on the current version and explains observed au
   const readme = readFileSync(resolve(repositoryRoot,
     "ai/claude/marketplace/skillpilot-marketplace/README.md"), "utf8");
   const mentionedVersions = new Set(readme.match(/\b\d+\.\d+\.\d+\b/gu));
-  assert.deepEqual([...mentionedVersions], [pluginManifest.version]);
+  assert.deepEqual([...mentionedVersions], [pluginManifest.version, "1.1.9"]);
   assert.match(readme, /automatic updates/u);
   assert.match(readme, /observed in two Claude accounts/u);
   assert.match(readme, /Update timing.*can vary/u);
@@ -187,10 +187,10 @@ test("published 1.1.3 marketplace does not imply guide approval or real-client a
   }
 });
 
-test("task-closure candidate 1.1.9 cannot inherit repository or client acceptance", () => {
+test("incident candidate 1.1.10 cannot inherit repository or client acceptance", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   validateClaudeMarketplaceLane(lane);
-  assert.equal(lane.plugin.version, "1.1.9");
+  assert.equal(lane.plugin.version, "1.1.10");
   const repositoryEvidence = lane.activation.evidence.find(({ id }) => id === "public-repository-default-branch");
   if (repositoryEvidence.status === "pending") {
     assert.equal(lane.activation.state, "prepared_not_published");
@@ -606,7 +606,7 @@ test("prepare exports exactly the reviewed plugin allowlist and verifies reprodu
       marketplaceRoot: outputRoot,
     });
     assert.equal(prepared.pluginName, "skillpilot-coach-v1");
-    assert.equal(prepared.version, "1.1.9");
+    assert.equal(prepared.version, "1.1.10");
     assert.equal(prepared.files.length, 12);
     assert.deepEqual(prepared.files, verified.files);
     assert.equal(prepared.treeSha256, verified.treeSha256);
@@ -680,14 +680,18 @@ test("actual CI gate rebuilds the PR package with exact dossier bytes and unzip 
     writeFileSync(resolve(outputRoot, ".git/config"), "checkout metadata\n");
     const artifactPath = resolve(root, "candidate.plugin");
     const result = runWorkflowPackageGate(outputRoot, artifactPath);
-    assert.equal(result.status, 0, result.stderr);
+    assert.equal(result.status, 0,
+      JSON.stringify({ stderr: result.stderr, signal: result.signal, error: result.error?.message }));
     const archive = readFileSync(artifactPath);
-    assert.equal(archive.length, 39441);
+    assert.equal(archive.length, 40835);
     assert.equal(createHash("sha256").update(archive).digest("hex"),
-      "b53a1100fff6d84ee66c12f084a8ff359847496fbf75c8a951ee4c9a0230c3c5");
+      "a54c48a6b0b9345f0b2a70edd06d50995a6e62445ff87e6f8177b93a79331841");
     const extracted = resolve(root, "extracted");
     const unzip = spawnSync("unzip", ["-q", artifactPath, "-d", extracted], { encoding: "utf8" });
-    assert.equal(unzip.status, 0, unzip.stderr);
+    const extraction = unzip.error?.code === "ENOENT"
+      ? spawnSync("python3", ["-m", "zipfile", "-e", artifactPath, extracted], { encoding: "utf8" })
+      : unzip;
+    assert.equal(extraction.status, 0, extraction.stderr ?? extraction.error?.message);
     const diff = spawnSync("diff", ["--recursive", "--brief", "--no-dereference",
       extracted, resolve(outputRoot, "plugins/skillpilot-coach-v1")], { encoding: "utf8" });
     assert.equal(diff.status, 0, diff.stdout + diff.stderr);
@@ -807,7 +811,7 @@ test("local smoke test installs the expected version in an isolated Claude profi
             stdout: JSON.stringify([
               {
                 id: "skillpilot-coach-v1@skillpilot-marketplace",
-                version: "1.1.9",
+                version: "1.1.10",
                 enabled: true,
                 mcpServers: {
                   skillpilot: {
