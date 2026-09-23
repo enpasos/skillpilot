@@ -81,10 +81,9 @@ For supported clients, setup and the security boundary, see the
 
 Those packaged documents retain their canonical pre-publication snapshot;
 their preparation-time release notes are not a live availability indicator.
-This prepared Marketplace export would distribute **1.1.9** after separate
-publication authorization. The website download can still serve an earlier
-version until the corresponding backend rollout. Publication does not prove
-that an installed Claude account has already updated.
+This Marketplace export contains **1.1.9**, matching the version currently
+served by the SkillPilot website download. Repository publication does not
+prove that an installed Claude account has already updated.
 
 Technical installation ID: `skillpilot-coach-v1@skillpilot-marketplace`.
 

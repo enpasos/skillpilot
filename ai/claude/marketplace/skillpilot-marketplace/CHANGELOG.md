@@ -8,8 +8,8 @@
   and Verified Recall; consent alone never substitutes for mastery evidence.
 - Add a conditional task-closure reference and keep images for a new task
   until the learner chooses to continue.
-- Preserve published 1.1.8 bytes and evidence. The 1.1.9 package is a local
-  unpublished candidate with fresh release and client acceptance pending.
+- Preserve published 1.1.8 bytes and evidence. Repository publication and
+  real-client acceptance for 1.1.9 require separate, version-bound checks.
 
 ## 1.1.8 - 2026-09-21
 

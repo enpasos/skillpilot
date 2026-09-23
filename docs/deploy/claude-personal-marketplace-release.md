@@ -1218,10 +1218,12 @@ revision before activation:
    due goal without confirmation and never submits a plan, landscape, focus or
    goal ID.
 9. In Claude Web, engage with one tailored orientation follow-up and then say
-   `Machen wir so, dann fangen wir einfach an.` Prove that this clear start
-   intent is persisted as orientation completion without another confirmation
-   loop and that the next active goal is exactly the backend-selected successor
-   returned in the canonical mastery response. Confirm that no policy,
+   `Machen wir so, dann fangen wir einfach an.` Prove that Claude gives
+   non-assessing feedback, offers questions or closure, and waits for a separate
+   learner response before persisting orientation completion. A bare path
+   choice or `Klingt gut` is not closure consent. After consent, the next active
+   goal must be exactly the backend-selected successor returned in the
+   canonical mastery response. Confirm that no policy,
    instruction, private-deliberation, lazy-loading, schema, parameter or retry
    mechanics are narrated and that no durable anchor-memory promise is made.
 10. Repeat the complete scenario and every assertion independently in native
