@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "packageId": "enpasos-ophysics",
+  "version": "1.1.0",
+  "title": "enpasos – Physik mit oPhysics (Englisch)",
+  "titleEn": "enpasos – Physics with oPhysics (English)",
+  "description": "Acht englischsprachige Simulationen von Tom Walsh zu Rotation, Wellen, Optik und elektrischen und magnetischen Feldern. Von enpasos zusammengestellt, ohne Anmeldung direkt nutzbar und für nichtkommerzielle Bildungszwecke kostenlos.",
+  "descriptionEn": "Eight English-language simulations by Tom Walsh on rotation, waves, optics, and electric and magnetic fields. Curated by enpasos, directly usable without signing in and free for non-profit educational use.",
+  "curator": {"name": "enpasos", "url": "https://github.com/enpasos"},
+  "provider": {
+    "name": "oPhysics – Tom Walsh",
+    "url": "https://ophysics.com/",
+    "relationship": "independent-mapping"
+  },
+  "access": "public-link",
+  "aiUsage": "link-only",
+  "status": "active",
+  "materials": [
+    {
+      "id": "ophysics-double-slit",
+      "title": "oPhysics: Double Slit Diffraction and Interference (English)",
+      "url": "https://ophysics.com/l4.html",
+      "resourceType": "simulation",
+      "language": "en",
+      "status": "active",
+      "goalIds": ["6270e558-d657-5363-a6b2-e49a032a453b", "c64820e1-c0ee-4342-9225-f981650f0c52"],
+      "sections": ["Double Slit Diffraction and Interference"],
+      "review": {
+        "checkedAt": "2026-09-21",
+        "authority": "ai",
+        "rationale": "Anonyme englische GeoGebra-Simulation auf oPhysics geöffnet, Wellenlängenregler tatsächlich verändert. Zwei kohärente Wege zum Schirmpunkt machen Gangunterschied und konstruktive/destruktive Interferenz untersuchbar; Schirmabstand, Spaltabstand und Schirmpunkt sind einstellbar. Ergänzt beide aktuellen Doppelspaltziele, deckt aber weder die Intensitätshülle endlicher Einzelspaltbreiten noch polychromatische Farbordnung vollständig ab. Ideales Zwei-Wege-Modell, kein Beleg vollständiger Zielbeherrschung. Autor und Anbieter Tom Walsh/oPhysics; Nutzung für nichtkommerzielle Bildungszwecke laut Homepage erlaubt, nur verlinkt."
+      }
+    },
+    {
+      "id": "ophysics-hydrogen-energy-levels",
+      "title": "oPhysics: Hydrogen Atom – Energy Levels (English)",
+      "url": "https://ophysics.com/m1.html",
+      "resourceType": "simulation",
+      "language": "en",
+      "status": "active",
+      "goalIds": ["d7244ce4-5409-58d1-a1b4-bfae35f391e1"],
+      "sections": ["Hydrogen Atom: Energy Levels"],
+      "review": {
+        "checkedAt": "2026-09-21",
+        "authority": "ai",
+        "rationale": "Anonyme englische GeoGebra-Simulation auf oPhysics geöffnet und Übergang verändert: n=2 nach n=3 zeigt Photonabsorption mit rund 656 nm und die Niveaus -3,4 und -1,511 eV. Dies stützt die Verbindung von Energiedifferenz und Photonenenergie im aktuellen Ziel. Die stilisierten Kreis-/Wellenbilder sind keine realen Elektronenbahnen oder Orbitale; keine Zuordnung zum quantenmechanischen Aufenthaltswahrscheinlichkeitsmodell. Autor und Anbieter Tom Walsh/oPhysics; Nutzung für nichtkommerzielle Bildungszwecke laut Homepage erlaubt, nur verlinkt."
+      }
+    },
+    {
+      "id": "ophysics-electron-fields",
+      "title": "oPhysics: Electron Charge to Mass Ratio Lab (English)",
+      "url": "https://ophysics.com/em2a.html",
+      "resourceType": "simulation",
+      "language": "en",
+      "status": "active",
+      "goalIds": ["8c9394cb-f54a-508d-9750-4c49e31b3fa9"],
+      "sections": ["Electron Charge to Mass Ratio Lab"],
+      "review": {
+        "checkedAt": "2026-09-21",
+        "authority": "ai",
+        "rationale": "Anonyme englische Thomson-Simulation auf oPhysics tatsächlich bedient: Plattenspannung auf 0 V, Magnetfeld auf 500 µT, Run. Elektrische Feldpfeile verschwinden und die Elektronenbahn krümmt sich nach oben, entsprechend dem negativen Ladungsvorzeichen und senkrechten Eintritt. Ergänzt Richtung und Bahnkrümmung der magnetischen Lorentzkraft; allgemeine Eintrittswinkel und positive Ladungen werden nicht abgedeckt. Bei eingeschaltetem E-Feld wirken zusätzliche elektrische Kräfte, daher nicht als reine Lorentzbahn deuten. Nicht mit dem Fadenstrahlrohrversuch gleichsetzen. Autor/Anbieter Tom Walsh/oPhysics, nichtkommerzielle Bildungsnutzung erlaubt; nur Direktlink."
+      }
+    },
+    {
+      "id": "ophysics-rotational-inertia-torque",
+      "title": "oPhysics: Rotational Inertia and Torque (English)",
+      "url": "https://ophysics.com/r4.html",
+      "resourceType": "simulation",
+      "language": "en",
+      "status": "active",
+      "goalIds": ["cf570e66-2ce2-5923-9033-c97d74119553", "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea"],
+      "sections": ["Rotational Inertia and Torque"],
+      "review": {
+        "checkedAt": "2026-09-23",
+        "authority": "ai",
+        "rationale": "Direkte englische oPhysics-Aktivität: Körperform, Masse, Radius und tangentiale Kraft am Rand verändern; Drehmoment und Winkelbeschleunigung werden angezeigt. Im anonymen Chromium lud das GeoGebra-Applet; eine kontrollierte Parameteränderung von force=20 auf 10 änderte tor=40 auf 20 und alpha=5 auf 2,5. Unterstützt die Drehwirkung und den Zusammenhang von resultierendem Moment, Trägheitsmoment und Winkelbeschleunigung. Idealisierte starre Körper mit fester Mittelachse und konstanter Randkraft; keine beliebige Kraftrichtung, Reibung oder experimentelle Messunsicherheit. Allein kein Nachweis einer eigenständigen Berechnung. Autor/Anbieter Tom Walsh/oPhysics; nur Direktlink."
+      }
+    },
+    {
+      "id": "ophysics-wave-pulse-reflection",
+      "title": "oPhysics: Wave Pulse Reflection (Free & Fixed Ends) (English)",
+      "url": "https://ophysics.com/w9.html",
+      "resourceType": "simulation",
+      "language": "en",
+      "status": "active",
+      "goalIds": ["215f5558-562c-5686-b649-931f324c7983"],
+      "sections": ["Wave Pulse Reflection (Free & Fixed Ends)"],
+      "review": {
+        "checkedAt": "2026-09-23",
+        "authority": "ai",
+        "rationale": "Direkte englische oPhysics-Aktivität mit Auswahl von festem und freiem Ende sowie ein- und ausblendbaren einlaufenden/reflektierten Pulsen. Das GeoGebra-Applet lud im anonymen Chromium. Die Umkehr des Auslenkungspulses am festen Ende und ihr Ausbleiben am freien Ende unterstützen das Verständnis des Phasensprungs von π beziehungsweise 0. Eindimensionaler idealer Puls; keine kontinuierliche harmonische Welle, keine quantitative Phasenmessung oder reale Impedanzgrenzfläche. Ergänzung zum Ziel, kein Ersatz für dessen mathematische Beschreibung. Autor/Anbieter Tom Walsh/oPhysics; nur Direktlink."
+      }
+    },
+    {
+      "id": "ophysics-reflection-refraction",
+      "title": "oPhysics: Reflection and Refraction (English)",
+      "url": "https://ophysics.com/l7.html",
+      "resourceType": "simulation",
+      "language": "en",
+      "status": "active",
+      "goalIds": ["6a4c6042-052b-502b-a39a-0ed8941247ac"],
+      "sections": ["Reflection and Refraction"],
+      "review": {
+        "checkedAt": "2026-09-23",
+        "authority": "ai",
+        "rationale": "Direkte englische Strahlenmodell-Aktivität: Brechzahlen zweier Medien und Einfallswinkel verändern und Richtung von Reflexion und Brechung an einer ebenen Grenzfläche vergleichen. Im anonymen Chromium lud GeoGebra; n2=1,5 auf 1,2 änderte den berechneten Brechungswinkel. Stützt den ersten Teil des aktuellen Ziels zu Lichtwegen beim Medienwechsel; optische Hebung wird nicht eigens dargestellt. Einzelner idealisierter Strahl, keine Wellenfront, Dispersion oder Messunsicherheit. Autor/Anbieter Tom Walsh/oPhysics; nur Direktlink."
+      }
+    },
+    {
+      "id": "ophysics-two-charge-fields",
+      "title": "oPhysics: Equipotentials & Electric Field of Two Charges (English)",
+      "url": "https://ophysics.com/em9.html",
+      "resourceType": "simulation",
+      "language": "en",
+      "status": "active",
+      "goalIds": ["4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe", "2622bef1-bdbc-504e-b468-b600b2ca3ed8"],
+      "sections": ["Equipotentials & Electric Field of Two Charges"],
+      "review": {
+        "checkedAt": "2026-09-23",
+        "authority": "ai",
+        "rationale": "Direkte englische Aktivität mit veränderbaren Ladungen und Positionen zweier Punktladungen; Feldvektoren, Potenzial und Äquipotentiallinien lassen sich an einem beweglichen Punkt vergleichen. Anonymes Chromium lud GeoGebra; Änderung von q2=-4 auf -5 wurde übernommen. Unterstützt qualitative Feldsuperposition sowie Deutung von Potenzial- und Äquipotentialdarstellungen. Das Applet liefert die Darstellung; eigenständige Vektoraddition, Potenzialrechnung und Konstruktion der Linien bleiben beim Lernenden. Ideale Punktladungen, keine endlichen Elektroden oder realen Randfelder; Anbieter empfiehlt Eingabefelder, weil Regler nicht flüssig laufen. Autor/Anbieter Tom Walsh/oPhysics; nur Direktlink."
+      }
+    },
+    {
+      "id": "ophysics-magnetic-field-3d",
+      "title": "oPhysics: Charged Particle in a Magnetic Field 3D (English)",
+      "url": "https://ophysics.com/em8.html",
+      "resourceType": "simulation",
+      "language": "en",
+      "status": "active",
+      "goalIds": ["7fe6f8a1-5580-4e37-bf8e-9772964a6b0a", "9854589c-5feb-4942-b90f-311ddf36eb78"],
+      "sections": ["Charged Particle in a Magnetic Field 3D"],
+      "review": {
+        "checkedAt": "2026-09-23",
+        "authority": "ai",
+        "rationale": "Direkte englische 3D-Simulation mit Reglern für Masse, Ladung, Magnetfeld und Anfangsgeschwindigkeit in x- und z-Richtung; Run zeigt die Bahn. Anonymes Chromium lud GeoGebra; Änderung von B=3,5 auf 4,5 verkleinerte den berechneten Radius von 4,76 auf 3,70. Unterstützt Kreis- und Schraubenbahn sowie qualitative Krümmungsvergleiche; für feldparallelen Eintritt die senkrechte Anfangskomponente null setzen. Ideales homogenes Feld und einzelnes Teilchen, keine Kollisionen oder realen Feldränder. Richtung, Vorzeichen und Zerlegung selbst begründen; Animation allein beweist keine vollständige Zielbeherrschung. Autor/Anbieter Tom Walsh/oPhysics; nur Direktlink."
+      }
+    }
+  ]
+}

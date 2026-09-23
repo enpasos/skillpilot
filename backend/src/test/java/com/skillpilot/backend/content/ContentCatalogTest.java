@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -52,11 +53,28 @@ class ContentCatalogTest {
     }
 
     @Test
+    void bundledCuratedPackagesPublishExpandedVersionsUnderStableSelectionIds() {
+        ContentCatalog catalog = new ContentCatalog(new ObjectMapper());
+        for (var entry : Map.of(
+                "enpasos-mathe-oberstufe", 10,
+                "enpasos-physik", 5,
+                "enpasos-labxchange-physik", 5,
+                "enpasos-ophysics", 8).entrySet()) {
+            assertThat(catalog.packages("de").stream()
+                    .filter(item -> item.packageId().equals(entry.getKey())))
+                    .singleElement().satisfies(item -> {
+                        assertThat(item.version()).isEqualTo("1.1.0");
+                        assertThat(item.materialCount()).isEqualTo(entry.getValue());
+                    });
+        }
+    }
+
+    @Test
     void bundledCuratedMathematicsSelectionUsesMaterialProvidersAndRemainsGoalSpecific() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         ContentCatalog catalog = new ContentCatalog(mapper);
         ContentCatalog.ContentPackage mathematics;
-        try (var input = new ClassPathResource("content/enpasos-mathe/1.0.0/package.json").getInputStream()) {
+        try (var input = new ClassPathResource("content/enpasos-mathe/1.1.0/package.json").getInputStream()) {
             mathematics = mapper.readValue(input, ContentCatalog.ContentPackage.class);
         }
         assertThat(catalog.packages("de").stream()
@@ -64,9 +82,9 @@ class ContentCatalogTest {
                 .singleElement().satisfies(item -> {
                     assertThat(item.providerName()).isNotEqualTo("enpasos");
                     assertThat(item.curatorName()).isEqualTo("enpasos");
-                    assertThat(item.materialCount()).isGreaterThanOrEqualTo(6);
+                    assertThat(item.materialCount()).isEqualTo(10);
                 });
-        assertThat(mathematics.materials()).hasSizeGreaterThanOrEqualTo(6);
+        assertThat(mathematics.materials()).hasSize(10);
         for (ContentCatalog.Material material : mathematics.materials()) {
             for (String goalId : material.goalIds()) {
                 assertThat(catalog.materialsForGoal(Set.of(mathematics.packageId()), goalId))

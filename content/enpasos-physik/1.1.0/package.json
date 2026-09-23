@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "packageId": "enpasos-physik",
+  "version": "1.1.0",
+  "title": "enpasos – Physik ausprobieren",
+  "titleEn": "enpasos – Explore physics",
+  "description": "Fünf reguläre PhET-Simulationen zu Kräften, Stromkreisen, Energie, Wellen und Licht. Von enpasos zusammengestellt und direkt startbar; eine optionale Ergänzung, auch neben Physik Libre.",
+  "descriptionEn": "Five regular PhET simulations on forces, circuits, energy, waves and light. Curated by enpasos and directly accessible; an optional complement that can also be used alongside Physik Libre. Simulations are in German.",
+  "curator": {"name": "enpasos", "url": "https://github.com/enpasos"},
+  "provider": {
+    "name": "PhET Interactive Simulations – University of Colorado Boulder",
+    "url": "https://phet.colorado.edu/",
+    "relationship": "independent-mapping"
+  },
+  "access": "public-link",
+  "aiUsage": "link-only",
+  "status": "active",
+  "materials": [
+    {
+      "id": "phet-forces-and-motion-basics",
+      "title": "PhET: Kräfte, Trägheit und Bewegung ausprobieren",
+      "url": "https://phet.colorado.edu/sims/html/forces-and-motion-basics/latest/forces-and-motion-basics_de.html",
+      "resourceType": "simulation",
+      "language": "de",
+      "status": "active",
+      "goalIds": ["5ea765ac-c279-551a-8a94-a07da2381e5b", "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"],
+      "sections": ["Bewegung", "Reibung", "Beschleunigung"],
+      "review": {
+        "checkedAt": "2026-09-21",
+        "authority": "ai",
+        "rationale": "Direkte deutsche Standardsimulation ohne Anmeldung im Browser geladen. Reibungsfreie Bewegung nach Ende eines Schubs und der Vergleich mit Reibung unterstützen Trägheitsprinzip und resultierende Kraft. Schubkraft und resultierende äußere Kraft sind zu unterscheiden. Keine Pauschalzuordnung zur allgemeinen Impulsform des zweiten Axioms oder zu zweidimensionaler Vektoraddition. Kostenloses nichtkommerzielles Lernen gemäß PhET-Lizenzinformation; nur verlinkt, keine Studio-/iO-Instanz."
+      }
+    },
+    {
+      "id": "phet-circuit-construction-kit-dc",
+      "title": "PhET: Stromkreise aufbauen und vergleichen",
+      "url": "https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_de.html",
+      "resourceType": "simulation",
+      "language": "de",
+      "status": "active",
+      "goalIds": ["7ca44ba0-b77e-52bf-8562-f67b44767172", "01bebdfc-5819-4610-a03e-ea5e794fc954"],
+      "sections": ["Intro", "Labor"],
+      "review": {
+        "checkedAt": "2026-09-21",
+        "authority": "ai",
+        "rationale": "Direkte deutsche Standardsimulation ohne Anmeldung im Browser geladen. Durchgehende Stromwege, Unterbrechungen und getrennte Zweige unterstützen beide Ziele. Virtuelles Experimentieren bestätigt keine praktische Aufbau- oder Messkompetenz an realen Geräten. Der Coach lässt die Schaltungsentscheidung anhand der geforderten Funktion begründen. Kostenloses nichtkommerzielles Lernen gemäß PhET-Lizenzinformation; nur verlinkt, keine Studio-/iO-Instanz."
+      }
+    },
+    {
+      "id": "phet-energy-skate-park",
+      "title": "PhET: Energie im Skatepark untersuchen",
+      "url": "https://phet.colorado.edu/sims/html/energy-skate-park/latest/energy-skate-park_de.html",
+      "resourceType": "simulation",
+      "language": "de",
+      "status": "active",
+      "goalIds": ["94784e0a-7ddc-48be-91fb-dc82b78eb322", "91c49019-ea51-4ce5-a919-c91c45b25e83"],
+      "sections": ["Einführung", "Messen", "Grafiken"],
+      "review": {
+        "checkedAt": "2026-09-21",
+        "authority": "ai",
+        "rationale": "Direkte deutsche Standardsimulation ohne Anmeldung im Browser geladen. Lage- und Bewegungsenergie unterstützen mechanische Energie; mit Reibung ist thermische Energie einzubeziehen. Der Coach klärt die Systemgrenze: Energieerhaltung betrifft die Gesamtenergie des abgeschlossenen Systems, nicht bei Reibung allein dessen mechanische Energie. Kostenloses nichtkommerzielles Lernen gemäß PhET-Lizenzinformation; nur verlinkt, keine Studio-/iO-Instanz."
+      }
+    },
+    {
+      "id": "phet-wave-on-a-string",
+      "title": "PhET: Wellen am Seil erzeugen und untersuchen",
+      "url": "https://phet.colorado.edu/sims/html/wave-on-a-string/latest/wave-on-a-string_de.html",
+      "resourceType": "simulation",
+      "language": "de",
+      "status": "active",
+      "goalIds": ["bf559969-a05c-58b5-82c5-3d719d96555d", "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8"],
+      "sections": ["oszillieren", "Frequenz", "Spannung", "festes und loses Ende"],
+      "review": {
+        "checkedAt": "2026-09-23",
+        "authority": "ai",
+        "rationale": "Reguläre deutsche HTML-Simulation im anonymen mobilen Chromium geöffnet. Oszillator, Impuls, Frequenz, Spannung und Reflexion machen lokale Seilschwingung und Ausbreitung beobachtbar. Die Zuordnung zum Kenngrößenziel ist partiell: Wellenlänge, Phasengeschwindigkeit und v=λf müssen mit Messauftrag und Begründung erarbeitet werden. Lineares Medium und verlustfreie Energieausbreitung sind Modellannahmen; Dämpfung ist einstellbar. Kostenloses nichtkommerzielles Lernen laut offizieller PhET-Lizenzseite; keine Studio-/iO-Instanz."
+      }
+    },
+    {
+      "id": "phet-bending-light",
+      "title": "PhET: Lichtbrechung an Grenzflächen untersuchen",
+      "url": "https://phet.colorado.edu/sims/html/bending-light/latest/bending-light_de.html",
+      "resourceType": "simulation",
+      "language": "de",
+      "status": "active",
+      "goalIds": ["6a4c6042-052b-502b-a39a-0ed8941247ac", "58fc7852-722c-5a67-be6a-bfd1be0b527e"],
+      "sections": ["Einleitung", "Prismen", "mehr Werkzeuge"],
+      "review": {
+        "checkedAt": "2026-09-23",
+        "authority": "ai",
+        "rationale": "Reguläre deutsche HTML-Simulation im anonymen mobilen Chromium gestartet; Medien und Brechungsindices sind veränderlich, der Lichtweg an der Grenzfläche sichtbar. Damit lassen sich Brechung und beim Übergang zum dünneren Medium Totalreflexion qualitativ erkunden. Optische Hebung und Glasfasergeometrie sind nicht selbst dargestellt und werden im Coaching ergänzt. Virtuelles Strahlenmodell ersetzt kein reales Experiment; nur Direktlink für nichtkommerzielles Lernen laut offizieller PhET-Lizenzseite, kein Studio-/iO-Angebot."
+      }
+    }
+  ]
+}

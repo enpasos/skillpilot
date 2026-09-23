@@ -186,6 +186,10 @@ try {
   assert.equal(await materialRegion.getByRole('heading').count(), 0, 'no heading around compact material links')
   assert.equal(await materialRegion.locator('p').count(), 0, 'no repeated provider metadata or terms below links')
   assert.equal(await materialRegion.getByText(/Auswahl/).count(), 0, 'links do not mention package selection')
+  assert.equal(await materialRegion.getByText('EN', { exact: true }).count(), 1,
+    'English source material remains visibly marked in the German cockpit')
+  assert.equal(await materialRegion.getByText('Quellsprache: Englisch', { exact: true }).count(), 1,
+    'the source-language marker is also available to assistive technology')
   assert.equal(await link.locator('svg.lucide-book-open').count(), 1, 'articles use a book icon')
   assert.equal(await page.getByRole('link', { name: /^Artikel: Motion analysis/ }).count(), 1,
     'the icon type is also available to assistive technology')
@@ -255,6 +259,8 @@ try {
   await page.getByRole('link', { name: /Motion analysis/ }).waitFor()
   assert.equal(await page.getByRole('link', { name: /^Article: Motion analysis/ }).count(), 1,
     'English material type labels are localized')
+  assert.equal(await page.getByText('EN', { exact: true }).count(), 0,
+    'the source-language marker is omitted when it matches the cockpit language')
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'English mobile layout stays within viewport')
 
   // A late response from the previous learner must never replace the current selection.

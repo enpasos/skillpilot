@@ -74,17 +74,31 @@ class ContentMaterialResolverTest {
                 "37b33812-d428-5953-852e-57a53a4347fe",
                 "https://www.labxchange.org/library/items/lb:LabXchange:f862c35e-afbd-3c70-a08f-2a94684cd4c8:html:1",
                 "6a4c6042-052b-502b-a39a-0ed8941247ac",
-                "https://www.labxchange.org/library/items/lb:LabXchange:25a05b36-6e13-372a-9422-374c7c3f8292:html:1");
+                "https://www.labxchange.org/library/items/lb:LabXchange:25a05b36-6e13-372a-9422-374c7c3f8292:html:1",
+                "d03f1cb6-c224-53db-ad91-76cc7827978d",
+                "https://www.labxchange.org/library/items/lb:LabXchange:499dc1f4-ae20-3dba-a5f7-b6160354741e:html:1",
+                "68020906-e615-462e-a56f-dd1ccc14b8d7",
+                "https://www.labxchange.org/library/items/lb:LabXchange:5fc2e63f-60d8-3c96-baa1-6173b5eee3b0:html:1",
+                "dfa53498-34f5-5326-9d94-87e7b528caf3",
+                "https://www.labxchange.org/library/items/lb:LabXchange:aa9dd8a8-359e-3639-bfae-1c24ed558af9:html:1");
         assertOptionalEnglishPackage("enpasos-labxchange-physik", "LabXchange / OpenStax", "article", expected);
     }
 
     @Test
     void bundledOPhysicsSimulationsResolveOnlyTheReviewedGoalsInEitherLocale() {
-        Map<String, String> expected = Map.of(
-                "6270e558-d657-5363-a6b2-e49a032a453b", "https://ophysics.com/l4.html",
-                "c64820e1-c0ee-4342-9225-f981650f0c52", "https://ophysics.com/l4.html",
-                "d7244ce4-5409-58d1-a1b4-bfae35f391e1", "https://ophysics.com/m1.html",
-                "8c9394cb-f54a-508d-9750-4c49e31b3fa9", "https://ophysics.com/em2a.html");
+        Map<String, String> expected = Map.ofEntries(
+                Map.entry("6270e558-d657-5363-a6b2-e49a032a453b", "https://ophysics.com/l4.html"),
+                Map.entry("c64820e1-c0ee-4342-9225-f981650f0c52", "https://ophysics.com/l4.html"),
+                Map.entry("d7244ce4-5409-58d1-a1b4-bfae35f391e1", "https://ophysics.com/m1.html"),
+                Map.entry("8c9394cb-f54a-508d-9750-4c49e31b3fa9", "https://ophysics.com/em2a.html"),
+                Map.entry("cf570e66-2ce2-5923-9033-c97d74119553", "https://ophysics.com/r4.html"),
+                Map.entry("c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea", "https://ophysics.com/r4.html"),
+                Map.entry("215f5558-562c-5686-b649-931f324c7983", "https://ophysics.com/w9.html"),
+                Map.entry("6a4c6042-052b-502b-a39a-0ed8941247ac", "https://ophysics.com/l7.html"),
+                Map.entry("4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe", "https://ophysics.com/em9.html"),
+                Map.entry("2622bef1-bdbc-504e-b468-b600b2ca3ed8", "https://ophysics.com/em9.html"),
+                Map.entry("7fe6f8a1-5580-4e37-bf8e-9772964a6b0a", "https://ophysics.com/em8.html"),
+                Map.entry("9854589c-5feb-4942-b90f-311ddf36eb78", "https://ophysics.com/em8.html"));
         assertOptionalEnglishPackage("enpasos-ophysics", "oPhysics – Tom Walsh", "simulation", expected);
         ContentMaterialResolver resolver = new ContentMaterialResolver(new ContentCatalog(new ObjectMapper()), selections, true);
         when(selections.selectedPackageIds("learner")).thenReturn(Set.of("enpasos-ophysics"));
@@ -94,6 +108,24 @@ class ContentMaterialResolverTest {
             assertThat(resolver.resolve("learner", "b1f00a6d-1a03-496c-b1bd-c1f2259f59a8", locale))
                     .as("energy levels must not be mapped to orbital probabilities").isEmpty();
         }
+    }
+
+    @Test
+    void bundledRefractionGoalRetainsAllFourSelectedProviders() {
+        ContentMaterialResolver resolver = new ContentMaterialResolver(
+                new ContentCatalog(new ObjectMapper()), selections, true);
+        when(selections.selectedPackageIds("learner")).thenReturn(Set.of(
+                "physik-libre-gymnasium", "enpasos-physik",
+                "enpasos-labxchange-physik", "enpasos-ophysics"), Set.of());
+        assertThat(resolver.resolve("learner", "6a4c6042-052b-502b-a39a-0ed8941247ac", "de"))
+                .extracting(ContentMaterialResolver.ResolvedMaterial::url)
+                .containsExactly(
+                        "https://physikbuch.schule/light-in-different-media.html#pen-kink",
+                        "https://phet.colorado.edu/sims/html/bending-light/latest/bending-light_de.html",
+                        "https://www.labxchange.org/library/items/lb:LabXchange:25a05b36-6e13-372a-9422-374c7c3f8292:html:1",
+                        "https://ophysics.com/l7.html");
+        assertThat(resolver.resolve("learner", "6a4c6042-052b-502b-a39a-0ed8941247ac", "de"))
+                .isEmpty();
     }
 
     private void assertOptionalEnglishPackage(String packageId, String providerName, String resourceType,

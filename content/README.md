@@ -42,25 +42,25 @@ whole chapters, personal information, learner identifiers or chat text. URL quer
 parameters and credentials are not allowed. No learner-specific data is appended
 to a provider URL. The runtime does not scrape or proxy these pages.
 
-Changes to a published package require a new version. Physik Libre `1.0.0`
-preserves the deployed four-material pilot; the catalog now selects the expanded
-`1.1.0` successor (see its [mapping review](physik-libre/1.1.0/README.md)). Its
-stable package ID keeps existing explicit selections valid after deployment;
-new profiles still start without a selection. A local catalog change is not a
-deployment or live-Claude acceptance claim.
+Changes to a published package require a new version. The catalog selects
+`1.1.0` successors for Physik Libre, mathematics, PhET physics, LabXchange and oPhysics;
+their `1.0.0` pilot files remain intact. Stable package IDs keep existing
+explicit selections valid after deployment; new profiles still start without a
+selection. A local catalog change is not a deployment or live-Claude acceptance
+claim.
 Changing or disabling a package/material never changes curriculum prerequisites
 or mastery. A withdrawn package can remain in a learner's stored selection but
 must not produce recommendations.
 
 ## Curated enpasos collections
 
-- [Mathematics](enpasos-mathe/1.0.0/README.md): selected GeoGebra activities by
-  Andreas Lindner, the Desmos graphing calculator and a regular PhET simulation.
-- [Physics](enpasos-physik/1.0.0/README.md): regular PhET simulations, selectable
+- [Mathematics](enpasos-mathe/1.1.0/README.md): selected GeoGebra activities by
+  Andreas Lindner and Nicole Riegler, the Desmos graphing calculator and regular PhET simulations.
+- [Physics](enpasos-physik/1.1.0/README.md): regular PhET simulations, selectable
   independently of Physik Libre.
-- [Physics with LabXchange](enpasos-labxchange-physik/1.0.0/README.md): two
+- [Physics with LabXchange](enpasos-labxchange-physik/1.1.0/README.md): five
   English-language OpenStax readings hosted on LabXchange, for learners aged 13+.
-- [Physics with oPhysics](enpasos-ophysics/1.0.0/README.md): English-language
+- [Physics with oPhysics](enpasos-ophysics/1.1.0/README.md): English-language
   interactive activities authored and hosted by Tom Walsh, using GeoGebra.
 
 `enpasos` selects the links; GeoGebra, Desmos, PhET, LabXchange and oPhysics supply the
@@ -72,10 +72,11 @@ are standard simulations available without payment or login for non-commercial
 learning, not paid Studio/iO offerings; their checked scope and terms are recorded
 in the package READMEs. This is link-only access, not a redistribution license.
 
-The remaining curated expansion, including more oPhysics and LabXchange
-activities and mobile checks, is tracked in
-[issue #54](https://github.com/enpasos/skillpilot/issues/54). The small local
-pilots are not a claim of full provider coverage or production availability.
+The [LEIFIphysik candidate](enpasos-leifiphysik/1.0.0/README.md) is staged
+`inactive` and not cataloged: automated anonymous and mobile checks received a
+Cloudflare 403 page. Its required real-browser check remains open and is tracked in
+[issue #54](https://github.com/enpasos/skillpilot/issues/54). These local
+packages are not a claim of full provider coverage or production availability.
 
 ## Validation
 

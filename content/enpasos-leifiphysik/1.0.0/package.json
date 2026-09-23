@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "packageId": "enpasos-leifiphysik",
+  "version": "1.0.0",
+  "title": "enpasos – Physik mit LEIFIphysik",
+  "titleEn": "enpasos – Physics with LEIFIphysik",
+  "description": "Zwei deutschsprachige LEIFIphysik-Versuchsseiten zu Gleichstromkreisen und Zentripetalkraft. Von enpasos fachlich zugeordnet; bis zur Prüfung des anonymen Browserstarts und der Smartphone-Bedienung inaktiv.",
+  "descriptionEn": "Two German LEIFIphysik activity pages on direct-current circuits and centripetal force. Mapped by enpasos; inactive until anonymous browser start and mobile interaction can be verified.",
+  "curator": {"name": "enpasos", "url": "https://github.com/enpasos"},
+  "provider": {
+    "name": "LEIFIphysik – FWU Institut für Film und Bild",
+    "url": "https://www.leifiphysik.de/",
+    "relationship": "independent-mapping"
+  },
+  "access": "public-link",
+  "aiUsage": "link-only",
+  "status": "inactive",
+  "materials": [
+    {
+      "id": "leifi-dc-circuits-phet-guided",
+      "title": "LEIFIphysik: Stromkreise schalten – Gleichstrom (mit PhET)",
+      "url": "https://www.leifiphysik.de/elektrizitaetslehre/einfache-stromkreise/versuche/stromkreise-schalten-gleichstrom-simulation-von-phet",
+      "resourceType": "simulation",
+      "language": "de",
+      "status": "inactive",
+      "goalIds": [
+        "7ca44ba0-b77e-52bf-8562-f67b44767172",
+        "01bebdfc-5819-4610-a03e-ea5e794fc954",
+        "69f8f59c-b0c3-5b0b-82db-834a0e655736"
+      ],
+      "sections": ["Simulation", "Aufgaben"],
+      "review": {
+        "checkedAt": "2026-09-23",
+        "authority": "ai",
+        "rationale": "Die LEIFIphysik-Seite nennt PhET/University of Colorado Boulder als Quelle der eingebetteten Simulation und bietet eigene deutschsprachige Aufträge zu Reihen- und Parallelschaltungen, Messwerten und Aufbau nach Schaltplan. Das ergänzt den bereits separat verlinkten direkten PhET-Start um einen Arbeitskontext, ist aber keine neue Simulation. Zuordnungen unterstützen Stromwege, Schaltungswahl und Übersetzung von Schaltplan zu Aufbau nur teilweise; virtuelles Aufbauen belegt keine reale Gerätekompetenz, und die Seite fordert die Erklärung räumlicher Anordnung nicht ausdrücklich. Messziele werden wegen realem Anschluss und Messbereich nicht zugeordnet. Quelltext über Webansicht geprüft; direkter anonymer Chromium- und HTTP-Abruf aus der Prüfungsumgebung endet mit Cloudflare 403. Interaktion und Smartphone-Bedienung daher nicht bestätigt; Material bleibt inaktiv."
+      }
+    },
+    {
+      "id": "leifi-centripetal-force-speed-guided",
+      "title": "LEIFIphysik: Zentripetalkraft mit Bahngeschwindigkeit untersuchen",
+      "url": "https://www.leifiphysik.de/mechanik/kreisbewegung/versuche/betrag-der-zentripetalkraft-mit-bahngeschwindigkeit-simulation-mit-versuchsanleitung",
+      "resourceType": "simulation",
+      "language": "de",
+      "status": "inactive",
+      "goalIds": [
+        "e918b31f-6f39-5dee-ade6-3617080fb24f",
+        "accb1d9e-cd48-5983-bcef-9b9bca4a9114"
+      ],
+      "sections": ["Aufbau und Durchführung", "1. Teilversuch", "2. Teilversuch", "3. Teilversuch"],
+      "review": {
+        "checkedAt": "2026-09-23",
+        "authority": "ai",
+        "rationale": "LEIFIphysik veröffentlicht auf dieser Seite eine Canvas-Simulation mit Reglern für Masse, Bahngeschwindigkeit und Bahnradius, Tabellen und Auswertungsaufträgen zum Modell F_z = mv²/r. Die Seite nennt hier keinen PhET-Urheber. Gegenüber dem Physik-Libre-Text ist die Variation von Parametern mit angeleiteter Datenauswertung ein zusätzlicher Lernweg. Für das Herleitungsziel muss der Coach die zum Kreismittelpunkt gerichtete Kraft als resultierende Kraft fachlich erklären; die idealisierte gleichförmige Kreisbewegung behandelt keine Kräfteursache in einer konkreten Kurvenfahrt. Quelltext über Webansicht geprüft; direkter anonymer Chromium- und HTTP-Abruf aus der Prüfungsumgebung endet mit Cloudflare 403. Interaktion und Smartphone-Bedienung daher nicht bestätigt; Material bleibt inaktiv."
+      }
+    }
+  ]
+}

@@ -226,20 +226,21 @@ test('curator metadata is optional and never replaces material provider validati
   assert.doesNotThrow(() => validatePackage(fixture, goals))
 })
 
-test('curated upper-secondary mathematics pilot stays optional and mapped only to math content goals', () => {
+test('expanded upper-secondary mathematics package stays optional and mapped only to math content goals', () => {
   const mathematics = packages.find((pkg) => pkg.packageId === 'enpasos-mathe-oberstufe')
   assert.ok(mathematics)
-  assert.equal(mathematics.version, '1.0.0')
+  assert.equal(mathematics.version, '1.1.0')
   assert.equal(mathematics.curator.name, 'enpasos')
   assert.notEqual(mathematics.provider.name, 'enpasos')
   assert.equal(mathematics.aiUsage, 'link-only')
-  assert.ok(mathematics.materials.length >= 6)
+  assert.equal(mathematics.materials.length, 10)
   const ledger = JSON.parse(readFileSync(new URL('../curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json', import.meta.url)))
   const contentGoals = new Set(ledger.decisions.filter((item) => item.semanticKind === 'curricularAtomic').map((item) => item.goalId))
   const goalUrls = new Map()
   const hosts = mathematics.materials.map((material) => new URL(material.url).hostname)
-  assert.equal(hosts.filter((host) => host === 'www.geogebra.org').length, 5)
+  assert.equal(hosts.filter((host) => host === 'www.geogebra.org').length, 7)
   assert.equal(hosts.filter((host) => host === 'www.desmos.com').length, 1)
+  assert.equal(hosts.filter((host) => host === 'phet.colorado.edu').length, 2)
   for (const material of mathematics.materials) {
     assert.equal(material.resourceType, 'simulation')
     assert.equal(new URL((material.provider ?? mathematics.provider).url).hostname, new URL(material.url).hostname)
@@ -254,22 +255,25 @@ test('curated upper-secondary mathematics pilot stays optional and mapped only t
   }
 })
 
-test('authored PhET pilot uses four reviewed public simulations and fits the combined material limit', () => {
+test('authored PhET expansion uses reviewed public simulations and fits the combined material limit', () => {
   // This records the selected authoring scope, not a runtime provider allowlist or
   // a license/permission claim inferred from a URL. No Studio or PhET-iO entry is selected.
   const expected = [
     {
-      packageId: 'enpasos-mathe-oberstufe', subject: 'mathematik', materialCount: 7,
+      packageId: 'enpasos-mathe-oberstufe', subject: 'mathematik', materialCount: 10,
       simulations: {
         'phet-graphing-quadratics': 'https://phet.colorado.edu/sims/html/graphing-quadratics/latest/graphing-quadratics_de.html',
+        'phet-graphing-lines': 'https://phet.colorado.edu/sims/html/graphing-lines/latest/graphing-lines_de.html',
       },
     },
     {
-      packageId: 'enpasos-physik', subject: 'physik', materialCount: 3,
+      packageId: 'enpasos-physik', subject: 'physik', materialCount: 5,
       simulations: {
         'phet-forces-and-motion-basics': 'https://phet.colorado.edu/sims/html/forces-and-motion-basics/latest/forces-and-motion-basics_de.html',
         'phet-circuit-construction-kit-dc': 'https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_de.html',
         'phet-energy-skate-park': 'https://phet.colorado.edu/sims/html/energy-skate-park/latest/energy-skate-park_de.html',
+        'phet-wave-on-a-string': 'https://phet.colorado.edu/sims/html/wave-on-a-string/latest/wave-on-a-string_de.html',
+        'phet-bending-light': 'https://phet.colorado.edu/sims/html/bending-light/latest/bending-light_de.html',
       },
     },
   ]
@@ -324,10 +328,10 @@ test('authored PhET pilot uses four reviewed public simulations and fits the com
   }
 })
 
-test('authored LabXchange pilot keeps two direct English articles separate from their curator', () => {
+test('authored LabXchange expansion keeps direct English articles separate from their curator', () => {
   const pkg = packages.find((item) => item.packageId === 'enpasos-labxchange-physik')
   assert.ok(pkg)
-  assert.equal(pkg.version, '1.0.0')
+  assert.equal(pkg.version, '1.1.0')
   assert.equal(pkg.status, 'active')
   assert.equal(pkg.access, 'public-link')
   assert.equal(pkg.aiUsage, 'link-only')
@@ -343,6 +347,18 @@ test('authored LabXchange pilot keeps two direct English articles separate from 
     'labxchange-refraction': {
       url: 'https://www.labxchange.org/library/items/lb:LabXchange:25a05b36-6e13-372a-9422-374c7c3f8292:html:1',
       goalId: '6a4c6042-052b-502b-a39a-0ed8941247ac',
+    },
+    'labxchange-simple-pendulum': {
+      url: 'https://www.labxchange.org/library/items/lb:LabXchange:499dc1f4-ae20-3dba-a5f7-b6160354741e:html:1',
+      goalId: 'd03f1cb6-c224-53db-ad91-76cc7827978d',
+    },
+    'labxchange-wave-types': {
+      url: 'https://www.labxchange.org/library/items/lb:LabXchange:5fc2e63f-60d8-3c96-baa1-6173b5eee3b0:html:1',
+      goalId: '68020906-e615-462e-a56f-dd1ccc14b8d7',
+    },
+    'labxchange-matter-waves': {
+      url: 'https://www.labxchange.org/library/items/lb:LabXchange:aa9dd8a8-359e-3639-bfae-1c24ed558af9:html:1',
+      goalId: 'dfa53498-34f5-5326-9d94-87e7b528caf3',
     },
   }
   const ledger = JSON.parse(readFileSync(new URL(
@@ -364,10 +380,10 @@ test('authored LabXchange pilot keeps two direct English articles separate from 
   }
 })
 
-test('authored oPhysics pilot stays within the reviewed simulations and their actual physics scope', () => {
+test('authored oPhysics expansion stays within reviewed simulations and their actual physics scope', () => {
   const pkg = packages.find((item) => item.packageId === 'enpasos-ophysics')
   assert.ok(pkg)
-  assert.equal(pkg.version, '1.0.0')
+  assert.equal(pkg.version, '1.1.0')
   assert.equal(pkg.status, 'active')
   assert.equal(pkg.access, 'public-link')
   assert.equal(pkg.aiUsage, 'link-only')
@@ -385,6 +401,21 @@ test('authored oPhysics pilot stays within the reviewed simulations and their ac
     },
     'ophysics-electron-fields': {
       url: 'https://ophysics.com/em2a.html', goalIds: ['8c9394cb-f54a-508d-9750-4c49e31b3fa9'],
+    },
+    'ophysics-rotational-inertia-torque': {
+      url: 'https://ophysics.com/r4.html', goalIds: ['cf570e66-2ce2-5923-9033-c97d74119553', 'c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea'],
+    },
+    'ophysics-wave-pulse-reflection': {
+      url: 'https://ophysics.com/w9.html', goalIds: ['215f5558-562c-5686-b649-931f324c7983'],
+    },
+    'ophysics-reflection-refraction': {
+      url: 'https://ophysics.com/l7.html', goalIds: ['6a4c6042-052b-502b-a39a-0ed8941247ac'],
+    },
+    'ophysics-two-charge-fields': {
+      url: 'https://ophysics.com/em9.html', goalIds: ['4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe', '2622bef1-bdbc-504e-b468-b600b2ca3ed8'],
+    },
+    'ophysics-magnetic-field-3d': {
+      url: 'https://ophysics.com/em8.html', goalIds: ['7fe6f8a1-5580-4e37-bf8e-9772964a6b0a', '9854589c-5feb-4942-b90f-311ddf36eb78'],
     },
   }
   const ledger = JSON.parse(readFileSync(new URL(
@@ -409,4 +440,32 @@ test('authored oPhysics pilot stays within the reviewed simulations and their ac
   const mapped = new Set(pkg.materials.flatMap((material) => material.goalIds))
   assert.ok(!mapped.has('966782e5-690d-4fae-bbab-fa3fa30525c3'), 'Thomson setup is not the Fadenstrahlrohr experiment')
   assert.ok(!mapped.has('b1f00a6d-1a03-496c-b1bd-c1f2259f59a8'), 'energy-level animation does not model orbital probability')
+})
+
+test('curated successors retain pilot links and LEIFIphysik remains inactive until access is verified', () => {
+  for (const [directory, packageId] of [
+    ['enpasos-mathe', 'enpasos-mathe-oberstufe'],
+    ['enpasos-physik', 'enpasos-physik'],
+    ['enpasos-labxchange-physik', 'enpasos-labxchange-physik'],
+    ['enpasos-ophysics', 'enpasos-ophysics'],
+  ]) {
+    const pilot = JSON.parse(readFileSync(new URL(`../content/${directory}/1.0.0/package.json`, import.meta.url)))
+    const successor = packages.find((pkg) => pkg.packageId === packageId)
+    assert.ok(successor, packageId)
+    assert.equal(successor.version, '1.1.0')
+    assert.ok(successor.materials.length > pilot.materials.length)
+    for (const old of pilot.materials) {
+      const retained = successor.materials.find((material) => material.id === old.id)
+      assert.ok(retained, `${packageId}/${old.id}`)
+      assert.equal(retained.url, old.url)
+      assert.deepEqual(retained.goalIds, old.goalIds)
+    }
+  }
+
+  const leifi = JSON.parse(readFileSync(new URL('../content/enpasos-leifiphysik/1.0.0/package.json', import.meta.url)))
+  assert.equal(leifi.status, 'inactive')
+  assert.ok(leifi.materials.length > 0)
+  assert.ok(leifi.materials.every((material) => material.status === 'inactive'))
+  assert.ok(!packages.some((pkg) => pkg.packageId === leifi.packageId), 'unverified LEIFI pages must not appear in the catalog')
+  assert.doesNotThrow(() => validatePackage(leifi, goals))
 })

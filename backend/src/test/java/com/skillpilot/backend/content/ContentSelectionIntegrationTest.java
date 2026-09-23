@@ -170,9 +170,10 @@ class ContentSelectionIntegrationTest {
         String first = "content-math-first";
         String second = "content-math-second";
         ContentCatalog.ContentPackage mathematics;
-        try (var input = new ClassPathResource("content/enpasos-mathe/1.0.0/package.json").getInputStream()) {
+        try (var input = new ClassPathResource("content/enpasos-mathe/1.1.0/package.json").getInputStream()) {
             mathematics = mapper.readValue(input, ContentCatalog.ContentPackage.class);
         }
+        assertThat(mathematics.version()).isEqualTo("1.1.0");
         String mathGoal = mathematics.materials().getFirst().goalIds().getFirst();
         for (String id : List.of(first, second)) {
             Learner learner = new Learner(); learner.setSkillpilotId(id); learner.setActiveGoalId(mathGoal);

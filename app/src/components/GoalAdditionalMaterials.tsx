@@ -33,9 +33,13 @@ const ScopedGoalAdditionalMaterials = ({ skillpilotId, goalId, language }: Props
             : item.resourceType === 'simulation' ? SlidersHorizontal : LinkIcon
           const typeLabel = item.resourceType === 'article' ? (de ? 'Artikel' : 'Article')
             : item.resourceType === 'simulation' ? 'Simulation' : (de ? 'Lernmaterial' : 'Learning material')
+          const sourceLanguage = item.language.trim()
+          const showSourceLanguage = sourceLanguage.split('-')[0].toLowerCase() !== language
+          const sourceLanguageName = sourceLanguage.toLowerCase() === 'en' ? (de ? 'Englisch' : 'English')
+            : sourceLanguage.toLowerCase() === 'de' ? (de ? 'Deutsch' : 'German') : sourceLanguage.toUpperCase()
 
           return (
-            <li key={item.url}>
+            <li key={item.url} className="flex flex-wrap items-center gap-x-2">
               <a href={item.url} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer" title={typeLabel} className="inline-flex min-h-11 max-w-full items-center gap-2 rounded-sm py-2 font-medium text-sky-700 underline underline-offset-2 hover:text-sky-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:text-sky-300">
                 <Icon aria-hidden="true" className="h-5 w-5 shrink-0" />
                 <span className="min-w-0 [overflow-wrap:anywhere]">
@@ -43,6 +47,12 @@ const ScopedGoalAdditionalMaterials = ({ skillpilotId, goalId, language }: Props
                   {item.title}<span className="sr-only"> ({de ? 'externe Seite, neuer Tab' : 'external website, new tab'})</span>
                 </span>
               </a>
+              {showSourceLanguage && (
+                <span className="rounded bg-slate-100 px-1.5 py-0.5 text-xs font-semibold text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+                  <span aria-hidden="true">{sourceLanguage.toUpperCase()}</span>
+                  <span className="sr-only">{de ? `Quellsprache: ${sourceLanguageName}` : `Source language: ${sourceLanguageName}`}</span>
+                </span>
+              )}
             </li>
           )
         })}
