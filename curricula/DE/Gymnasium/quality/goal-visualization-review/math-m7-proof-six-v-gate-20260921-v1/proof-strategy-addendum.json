@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "current-image-only-review",
+  "reviewId": "math-m7-proof-six-v-gate-20260921-v1-proof-strategy-addendum",
+  "reviewer": "Codex visual reviewer /root/math_statistics_blind_a",
+  "reviewerType": "ai",
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "actualReviewedAt": "2026-09-21T22:06:38Z",
+  "sourceCanonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "sourceQaPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+  "method": "Aktuelles Laufzeit-JPG mit view_image tatsächlich geöffnet (angezeigte Großansicht 2048×1143; Quelle 2752×1536), gegen aktuelle DE-/EN-Zieltexte, Strategieinhalt, Lesbarkeit und Stil geprüft. Eigene Entscheidung vor dem Lesen des historischen Prompts und QA-Eintrags. Laufzeit- und kanonisches Quellbild separat per SHA-256 gebunden. Kein Rückschluss aus alten D-, ChatGpt- oder Humanfeldern.",
+  "scopeBoundaries": {
+    "imageGeneration": false,
+    "imageReplacement": false,
+    "canonicalEdits": false,
+    "qaAggregateEdits": false,
+    "humanFieldEdits": false,
+    "humanApprovalClaim": false,
+    "uiBrowserAcceptanceClaim": false
+  },
+  "summary": {
+    "reviewed": 1,
+    "keep": 1,
+    "correctionRequired": 0,
+    "unresolved": 0
+  },
+  "records": [
+    {
+      "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+      "title": "Beweisstrategien vergleichen und wählen (LK)",
+      "goalSnapshot": {
+        "id": "01217f4a-5221-5df9-b379-7b241fccf809",
+        "title": "Beweisstrategien vergleichen und wählen (LK)",
+        "titleEn": "Compare and choose proof strategies",
+        "description": "Die lernende Person kann für eine Behauptung geeignete Beweisstrategien (direkt, Kontraposition, Widerspruch, Induktion) vergleichen und eine begründete Wahl treffen.",
+        "descriptionEn": "The learner can compare suitable proof strategies (direct, contrapositive, contradiction, induction) for a claim and make a justified choice.",
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+          "5c632c68-fc34-582e-8581-ae9e55ab538f"
+        ],
+        "demandLevel": "AB3"
+      },
+      "goalSnapshotSha256": "sha256:14ac653d84e995b8598c69154fdd1812a59bba1ad53c86ada068b0d1212fb0b2",
+      "goalSnapshotHashFormat": "SHA-256 of UTF-8 JSON.stringify(goalSnapshot); evidence snapshot, not a native A/M fingerprint",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/01217f4a-5221-5df9-b379-7b241fccf809/01217f4a-5221-5df9-b379-7b241fccf809.jpg",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/mathematik/01217f4a-5221-5df9-b379-7b241fccf809/01217f4a-5221-5df9-b379-7b241fccf809.jpg",
+      "imageUrl": "/assets/goal-visualizations/mathematik/01217f4a-5221-5df9-b379-7b241fccf809/01217f4a-5221-5df9-b379-7b241fccf809.jpg",
+      "assetSha256": "sha256:aacb77f75615e1e9ae07702f281a53387e76517db191a363456c888ef31b9aa5",
+      "canonicalAssetSha256": "sha256:aacb77f75615e1e9ae07702f281a53387e76517db191a363456c888ef31b9aa5",
+      "providerAsRecorded": "Google Gemini / Nano Banana Pro",
+      "promptPath": "curricula/DE/Gymnasium/visualizations/mathematik/01217f4a-5221-5df9-b379-7b241fccf809/prompt.de.md",
+      "promptReferenceStrategyAsRecorded": "Vorhandener deutschsprachiger Cartoon-Infografikprompt mit Strategie-Board, vier Karten, konkreter Summenbehauptung und beispielhafter Induktionswahl. Erst nach direkter Bildprüfung gelesen; kein historischer Toolaufruf neu rekonstruiert.",
+      "inspected": true,
+      "decision": "accept_current_asset",
+      "keep": true,
+      "checks": [
+        "Die sichtbare Formel 1+2+…+n=n(n+1)/2 ist für positive ganze Zahlen n korrekt; kein falsches n(n−1) oder fehlender Nenner.",
+        "Induktion passt sachlich zu dieser Familie von Teilsummen: Aus S_n=n(n+1)/2 und S_(n+1)=S_n+(n+1) folgt S_(n+1)=(n+1)(n+2)/2. Das Bild muss diesen vollständigen Beweis nicht zusätzlich zeigen.",
+        "Das Strategie-Board nennt Direkt, Kontraposition, Widerspruch und Induktion als Alternativen. Der grüne Haken markiert eine passende Wahl für das Beispiel; andere Karten sind nicht als mathematisch unmöglich gestrichen.",
+        "Ein direkter Paarungsbeweis wäre ebenfalls möglich. Das Bild behauptet nicht ausdrücklich, Induktion sei der einzig zulässige Beweis. Die Sprechblase zur n-Abhängigkeit ist ein vereinfachter Hinweis auf eine Aussagenfamilie, keine universelle hinreichende Auswahlregel.",
+        "Die Pfeile führen von der Behauptung zum Vergleichsboard und zur gewählten Karte; sie stellen keine falsche logische Implikation oder fehlerhafte Koordinatengeometrie dar."
+      ],
+      "goalAlignment": "Das aktuelle DE/EN-Ziel verlangt Strategienvergleich und eine begründete Auswahl auf LK-/AB3-Niveau. Das Bild orientiert am gleichen Entscheidungsgegenstand und an denselben vier benannten Strategien. Aufgaben/Coaching müssen die tatsächliche Vergleichsbegründung und ihre Grenzen zusätzlich prüfen.",
+      "readability": "Formel mit n(n+1) über 2, Titel, Beschreibungszeile und Kartenbegriffe sind im angesehenen Raster lesbar. Der Haken überlagert einen Teil der Induktionskarte, lässt die gewählte Strategie aber eindeutig erkennen; keine nötige Zahl oder Formel ist verdeckt.",
+      "style": "Bestehende hellblaue cartoonartige Seminarszene mit schrägem Strategie-Board, farbigen Karten und klarer grüner Auswahlmarke. Kein Bildersatz oder Stilverlust nötig.",
+      "limitations": "Die bloße Existenz eines Parameters n erzwingt keine Induktion. Der sichtbare Hinweis wird hier nur auf die konkrete Teilsummenfamilie bezogen. Keine neue UI-/Mobil-/Kartenbreitenprüfung, keine vollständige Screenreader- oder Rechtsprüfung. Vorhandene D-/Human-Urteile wurden nicht als V-Freigabe übernommen.",
+      "findings": [],
+      "rationale": "KEEP: richtige Summenformel, geeignete beispielhafte Induktionswahl und lesbare Darstellung alternativer Strategien im vorhandenen freundlichen Stil. Die Grafik ist Orientierung zum Vergleichen/Wählen, kein vollständiger Beweis oder Leistungsnachweis.",
+      "proposedAiGate": {
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:aacb77f75615e1e9ae07702f281a53387e76517db191a363456c888ef31b9aa5",
+        "aiReviewedAt": "2026-09-21T22:06:38Z",
+        "aiReviewer": "Codex visual reviewer /root/math_statistics_blind_a",
+        "aiNotes": "Die sichtbare Formel 1+2+…+n=n(n+1)/2 ist für positive ganze Zahlen n korrekt; kein falsches n(n−1) oder fehlender Nenner. Induktion passt sachlich zu dieser Familie von Teilsummen: Aus S_n=n(n+1)/2 und S_(n+1)=S_n+(n+1) folgt S_(n+1)=(n+1)(n+2)/2. Das Bild muss diesen vollständigen Beweis nicht zusätzlich zeigen. Das Strategie-Board nennt Direkt, Kontraposition, Widerspruch und Induktion als Alternativen. Der grüne Haken markiert eine passende Wahl für das Beispiel; andere Karten sind nicht als mathematisch unmöglich gestrichen. Ein direkter Paarungsbeweis wäre ebenfalls möglich. Das Bild behauptet nicht ausdrücklich, Induktion sei der einzig zulässige Beweis. Die Sprechblase zur n-Abhängigkeit ist ein vereinfachter Hinweis auf eine Aussagenfamilie, keine universelle hinreichende Auswahlregel. Die Pfeile führen von der Behauptung zum Vergleichsboard und zur gewählten Karte; sie stellen keine falsche logische Implikation oder fehlerhafte Koordinatengeometrie dar. Formel mit n(n+1) über 2, Titel, Beschreibungszeile und Kartenbegriffe sind im angesehenen Raster lesbar. Der Haken überlagert einen Teil der Induktionskarte, lässt die gewählte Strategie aber eindeutig erkennen; keine nötige Zahl oder Formel ist verdeckt. KEEP: richtige Summenformel, geeignete beispielhafte Induktionswahl und lesbare Darstellung alternativer Strategien im vorhandenen freundlichen Stil. Die Grafik ist Orientierung zum Vergleichen/Wählen, kein vollständiger Beweis oder Leistungsnachweis."
+      }
+    }
+  ]
+}
+

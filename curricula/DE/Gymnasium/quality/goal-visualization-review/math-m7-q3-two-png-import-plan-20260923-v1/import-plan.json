@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "planId": "math-m7-q3-two-png-import-plan-20260923-v1",
+  "preparedAt": "2026-09-23T02:45:00Z",
+  "status": "ready_after_explicit_stable-canonical-signal; no import performed by this plan",
+  "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "visualizationQaPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "providerModel": "exact model identifier not exposed",
+  "assetLicense": "CC-BY-4.0 for SkillPilot-curated own didactic illustrations, subject to normal publication/right checks",
+  "reviewAuthority": "ai_candidate",
+  "humanApproved": false,
+  "records": [
+    {
+      "goalId": "3019e775-1420-510f-850b-5a29acc47a64",
+      "currentGoalTitle": "Zufallsexperimente mit Ergebnissen und Ereignissen beschreiben",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-q3-outcome-event-candidate-20260923-v1/outcome-sample-space-event-candidate-v2.png",
+      "candidateSha256": "sha256:b59b2255b6ab063211d3081a160cdb7bea5a9fba33fa3fdadd4aa4c16ae871f5",
+      "pixelSize": "1672x941 RGB PNG",
+      "independentReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-q3-outcome-event-candidate-20260923-v1/independent-review-v2.json",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-q3-outcome-event-candidate-20260923-v1/prompt.md",
+      "targetImageUrl": "/assets/goal-visualizations/mathematik/3019e775-1420-510f-850b-5a29acc47a64/3019e775-1420-510f-850b-5a29acc47a64.png",
+      "altText": "Ein schematischer Würfel zeigt oben die 3 als einzelnes Ergebnis. Daneben stehen die Ergebnismenge Ω = {1, 2, 3, 4, 5, 6} und das Ereignis E der geraden Zahlen mit E = {2, 4, 6}. In der Ergebnismenge sind 2, 4 und 6 markiert, die 3 nicht; das gezeigte Ergebnis gehört nicht zu E.",
+      "qaReason": "Einzelresultat 3, sechs verschiedene mögliche Ergebnisse und das gerade Ereignis {2,4,6} sind sichtbar konsistent; der dreiaugige Würfel hat keine widersprechenden Seitenaugen. Die leeren Seitenflächen sind eine schematische Vereinfachung, keine Abbildung der physischen Würfelbeschriftung.",
+      "integrationLimit": "Nicht als Lehre über physische Anordnung der Würfelflächen oder Fairness aus sichtbaren Augen verwenden."
+    },
+    {
+      "goalId": "ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c",
+      "currentGoalTitle": "Empirische und theoretische Wahrscheinlichkeit unterscheiden",
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-q3-model-vs-data-pointer-edit-20260923-v2/pointer-red-candidate-v2.png",
+      "candidateSha256": "sha256:4fbd8328581da6ab5f79903b9d874bcf0c5d2f765c4582897e222c4b4240332e",
+      "pixelSize": "1774x887 RGBA PNG",
+      "independentReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-q3-model-vs-data-pointer-edit-20260923-v2/independent-original-image-review-20260923-v2.json",
+      "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-q3-model-vs-data-pointer-edit-20260923-v2/edit-prompt.md",
+      "targetImageUrl": "/assets/goal-visualizations/mathematik/ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c/ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c.png",
+      "altText": "Eine faire Drehscheibe hat gleich große rote und blaue Halbkreise; der Zeiger steht im roten Feld. Das Modell ergibt P(rot) = 1/2. Daneben sind zehn Versuchsergebnisse zu sehen: sechs rot und vier blau, also 6/10 = 0,6. Bei diesen zehn Versuchen weicht die beobachtete relative Häufigkeit vom Modellwert ab.",
+      "qaReason": "Zeiger nach gezielter Korrektur klar im roten Halbkreis; zwei gleiche Sektoren begründen 1/2. Zehn sichtbare Ergebnisse sind sechs rot und vier blau; 6/10=0,6 ist ein mögliches endliches Versuchsergebnis. Das Ungleichheitszeichen gilt nur für diese Stichprobe, nicht allgemein.",
+      "integrationLimit": "RGBA-Ränder sowie Schriftlesbarkeit auf hellem, dunklem und schmalem UI prüfen; das Bild allein beweist weder das Modell noch Lernendenkompetenz."
+    }
+  ],
+  "authorizedSequenceAfterSignal": [
+    "Vor Import die aktuellen kanonischen Ziele, unabhängig geprüften PNG-Hashes und Review-Entscheidungen erneut exakt vergleichen.",
+    "Je Ziel vorhandenen offiziellen visualization:prepare- und visualization:import-Weg mit explizitem Provider, tatsächlichem Promptpfad und obigem Alttext nutzen; neue Primärlinks nicht handschreiben.",
+    "Nach Import Kandidat/Kanonisch/Public/Backend bytegleich gegen den jeweiligen SHA-256 prüfen und QA nur für diese exakten Assets mit aiApproved yes, aiApprovedAssetSha256, Reviewbegründung und humanApproved no aktualisieren.",
+    "Math-QA mechanisch regenerieren und fokussierte QA-/Asset-Checks ausführen; je Ziel versionierte Integrationsbelege schreiben.",
+    "Aktuelle D-Seiten mit zwei unabhängigen Runden sowie P-v2-Profile für die neuen Bildbindungen gezielt neu binden; nicht historische Reviews überschreiben oder aus bloßer Hashgleichheit freigeben."
+  ],
+  "currentBoundary": "Keine Änderungen an canonical, Public, Backend, QA, D/P Registry oder menschlichen Freigaben durch diesen vorbereitenden Plan. Vor D/P-Aktualisierung kein strenger Fünf-Gate-Zuwachs behaupten."
+}

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-p-v2-m7-tangent-current-text-20260923-v1",
+  "reviewedAt": "2026-09-23T14:30:00Z",
+  "reviewer": "codex-math-m7-three-current-text-delta-ai-candidate",
+  "goals": [
+    {
+      "goalId": "4cba85d3-2e25-5c4b-9c4c-37e5b201dce7",
+      "reason": "DE: Neu präzisierte Beziehung gilt für cos α≠0, nicht nur für spitze Winkel. Bild zeigt einen spitzen Fall; zusätzlicher nichtspitzer Transfer mit Vorzeichen und Nullnenner ist daher fachlich nötig. EN: The current relation applies whenever cos α≠0, not only to acute angles; image is acute only, so a non-acute sign-and-domain transfer is essential.",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "relation-derivation",
+            "essentialUnderstandingDe": "Ein frei gewählter anschaulicher oder rechnerischer Herleitungsweg muss die gesamte Domäne cos α≠0 tragen: etwa vorzeichenrichtige Koordinaten am Schenkel oder ein Dreiecksansatz, dessen Quotienten über Bezugswinkel und Quadrantenvorzeichen ausdrücklich verallgemeinert werden. Ein spitzes Einzeldreieck allein beweist nur den spitzen Fall.",
+            "essentialUnderstandingEn": "One chosen visual or computational derivation must cover the full domain cos α≠0: for example, signed ray coordinates or a triangle argument explicitly generalized through reference angles and quadrant signs. One acute triangle alone proves only the acute case.",
+            "observablePerformanceDe": "Die lernende Person leitet die Beziehung mit einem nachvollziehbaren eigenen Weg für alle Winkel mit cos α≠0 her und erklärt die nötige Verallgemeinerung, falls sie mit einem spitzen Dreieck beginnt.",
+            "observablePerformanceEn": "The learner derives the relation by one comprehensible chosen route for all angles with cos α≠0 and explains the required generalization if starting with an acute triangle."
+          },
+          {
+            "id": "domain-and-sign-transfer",
+            "essentialUnderstandingDe": "Die hergeleitete Beziehung gilt auch außerhalb des spitzen Winkels, solange cos α≠0. Vorzeichen von sin α und cos α bestimmen das Quotientenvorzeichen; bei cos α=0 ist weder dieser Quotient noch der Tangens definiert.",
+            "essentialUnderstandingEn": "The derived relation also holds beyond acute angles whenever cos α≠0. Signs of sin α and cos α determine the quotient sign; at cos α=0 neither this quotient nor tangent is defined.",
+            "observablePerformanceDe": "Die lernende Person prüft die Beziehung an einem nichtspitzen Winkel und erklärt Vorzeichen sowie Definitionsgrenze, ohne einen zweiten Herleitungsweg vorführen zu müssen.",
+            "observablePerformanceEn": "The learner checks the relation at a non-acute angle and explains sign and domain boundary without having to present a second derivation method."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "relation-derivation",
+            "domain-and-sign-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "derivation-to-application",
+            "textDe": "allgemeine symbolische Herleitung mit selbst gewählter Darstellung gegenüber konkretem nichtspitzem Transfer und Definitionsgrenze",
+            "textEn": "general symbolic derivation using a chosen representation versus concrete non-acute transfer and domain boundary"
+          },
+          {
+            "id": "angle-domain",
+            "textDe": "spitzer Winkel im rechtwinkligen Dreieck gegenüber nichtspitzem Winkel mit Vorzeichen und Ausschluss von cos α=0",
+            "textEn": "acute angle in a right triangle versus a non-acute angle with sign and exclusion of cos α=0"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "general-domain-derivation",
+            "taskDemandDe": "Leite tan α=sin α/cos α für beliebige Winkel mit cos α≠0 mit einem selbst gewählten anschaulichen oder rechnerischen Weg her. Wenn du mit einem rechtwinkligen Dreieck beginnst, erkläre ausdrücklich, wie die Beziehung samt Vorzeichen auf nichtspitze Winkel übergeht.",
+            "taskDemandEn": "Derive tan α=sin α/cos α for arbitrary angles with cos α≠0 using one visual or computational route of your choice. If you start with a right triangle, explicitly explain how the relation and signs extend to non-acute angles.",
+            "expectedPerformanceDe": "Ein möglicher Weg: Für einen Schenkelpunkt (x,y) mit r=√(x²+y²)>0 gelten sin α=y/r, cos α=x/r und bei x≠0 tan α=y/x. Daher (y/r)/(x/r)=y/x=tan α. Die Vorzeichen von x und y gelten in jedem Quadranten; x=0 ist genau cos α=0 und ausgeschlossen. Ein gleichwertiger Dreiecksweg benötigt die explizite Bezugswinkel-/Vorzeichenerweiterung.",
+            "expectedPerformanceEn": "One possible route: for a ray point (x,y) with r=√(x²+y²)>0, sin α=y/r, cos α=x/r, and when x≠0 tan α=y/x. Thus (y/r)/(x/r)=y/x=tan α. Signs of x and y apply in every quadrant; x=0 is exactly cos α=0 and is excluded. An equivalent triangle route needs explicit reference-angle/sign extension.",
+            "understandingFocusDe": "Herleitung der ganzen angegebenen Domäne statt bloßer Bestätigung an einem spitzen Einzelfall; Wahl des Beweiswegs bleibt frei.",
+            "understandingFocusEn": "Derivation across the entire stated domain rather than confirmation at one acute example; method choice remains free."
+          },
+          {
+            "id": "quadrant-two-transfer",
+            "taskDemandDe": "Ein Strahl vom Ursprung verläuft durch P=(−2,5); sein Winkel α zur positiven x-Achse ist nicht spitz. Bestimme sin α, cos α und tan α, begründe ihre Vorzeichen und erläutere, warum tan α=sin α/cos α gilt. Was wäre bei einem Punkt auf der positiven y-Achse anders?",
+            "taskDemandEn": "A ray from the origin passes through P=(−2,5); its angle α from the positive x-axis is not acute. Find sin α, cos α, and tan α, explain their signs, and why tan α=sin α/cos α. What changes for a point on the positive y-axis?",
+            "expectedPerformanceDe": "r=√29, sin α=5/√29, cos α=−2/√29 und tan α=−5/2; die Normierung kürzt sich, der Quotient hat das Vorzeichen der Steigung y/x. Auf der y-Achse ist x=0 und damit cos α=0; tan α und der Quotient sind dort nicht definiert.",
+            "expectedPerformanceEn": "r=√29, sin α=5/√29, cos α=−2/√29, and tan α=−5/2; normalization cancels, and the quotient has the sign of slope y/x. On the y-axis x=0 and cos α=0, so tangent and the quotient are undefined.",
+            "understandingFocusDe": "Der Koordinatentransfer zeigt die Beziehung außerhalb des im Bild illustrierten spitzen Winkels und testet die tatsächliche Definitionsbedingung.",
+            "understandingFocusEn": "Coordinate transfer establishes the relationship beyond the acute angle illustrated in the image and tests the actual domain condition."
+          }
+        ]
+      },
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    }
+  ]
+}

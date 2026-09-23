@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-b-codex-20260921",
+  "campaignId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-b",
+  "roundId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-b",
+  "batchId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:a15efb022d577894ec93cb64198a83848be67794e4c5185688d2e14434a99acd",
+  "bundleFingerprint": "sha256:9866d98025b9eef84ea8aa27d996c951702312544a520c3558ed3dc9869c5080",
+  "bookDigest": "sha256:97ef02724400f0f73c056b7528b7749438de8069e33f3686084fdbb4d36824f6",
+  "provider": "OpenAI",
+  "model": "GPT-5 family via Codex; exact serving revision not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:8cb13cde2bd3e19a4a037460186441f5312ce88c7948f973ee9cb55eb05e5148",
+  "independenceGroupId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "4af3dfb9-7e15-5da5-8b86-0aac6c80e266"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:a15efb022d577894ec93cb64198a83848be67794e4c5185688d2e14434a99acd"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-21T21:09:31Z",
+  "completedAt": "2026-09-21T21:11:24.413Z",
+  "status": "completed",
+  "outputDigest": "sha256:6610245447291e0cb8172c98137d23e2ac95ea4174f8add490707fc84ce6dea5",
+  "toolchainVersion": "codex-blind-description-review-v2"
+}

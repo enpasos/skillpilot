@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "targeted-image-edit-candidate-provenance",
+  "goalId": "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+  "recordedAt": "2026-09-21T22:02:06.048Z",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactServingModel": "not exposed",
+  "resultId": "exec-9adde408-e8c7-4616-941f-9d22a436db3a",
+  "prompt": {
+    "path": "edit-prompt.md",
+    "sha256": "sha256:cf9e25c702d610748084dce5bf2a11167b529e9f6903606146692a1451463d6f"
+  },
+  "reference": {
+    "path": "app/public/assets/goal-visualizations/mathematik/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f.jpg",
+    "sha256": "sha256:e52e39a3e77b0855ad766559fe179a15c6599b6f549c4468386efd051ac77c84",
+    "actuallyViewedBeforeEditing": true
+  },
+  "candidate": {
+    "path": "candidate.png",
+    "sha256": "sha256:6764ed8c68218dc8f6c24bee3e959a07e4f968c252b3a02084fd341f9644a7aa",
+    "format": "PNG",
+    "width": 1678,
+    "height": 937
+  },
+  "rootReview": {
+    "actuallyViewed": true,
+    "decision": "accepted_candidate_pending_independent_review",
+    "observations": [
+      "Absolute table entries 30,20,10,40 and margins 50,50,40,60,100 are unchanged and add correctly. Relative entries and margins are the same values divided by 100.",
+      "Joint probability uses 30/100=.30; conditional A given B uses 30/50=.60 and B given A uses30/40=.75.",
+      "Red reference row B and purple reference column A identify denominator groups; the erroneous single-cell conditional arrows are removed. Cards explicitly distinguish the three readings.",
+      "Friendly blue, hand-lettered visual style and both tables retained; cards add group explanations without a competence change."
+    ],
+    "limits": "Actual large-raster inspection. No pixel-identity or real-client acceptance claim."
+  },
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": false,
+  "canonicalImported": false,
+  "nativePrepareCompletedBeforeGeneration": true
+}

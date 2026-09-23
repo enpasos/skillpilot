@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "math-m7-q3-model-vs-data-independent-20260923-v1",
+  "reviewedAt": "2026-09-23T02:12:17Z",
+  "reviewer": "independent Codex visual and mathematical review",
+  "reviewAuthority": "ai_candidate",
+  "humanApproved": false,
+  "goal": {
+    "id": "ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c",
+    "title": "Empirische und theoretische Wahrscheinlichkeit unterscheiden",
+    "currentCanonicalDescription": "Die lernende Person kann eine aus relativen Häufigkeiten geschätzte empirische Wahrscheinlichkeit von einer aus einem Modell bestimmten theoretischen Wahrscheinlichkeit unterscheiden und beide Aussagen im Kontext einordnen.",
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"
+  },
+  "asset": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-q3-model-vs-data-candidate-20260923-v1/fair-spinner-vs-ten-results-candidate.png",
+    "sha256": "10dff8790215495c8947897f235c5663b5a86af745cc4ef2d289f12da1ae18b7",
+    "actualPixelSize": {
+      "width": 1774,
+      "height": 887
+    },
+    "originalResolutionVisuallyInspected": true,
+    "fileFormat": "PNG RGBA"
+  },
+  "checks": {
+    "spinnerGeometry": "PASS: Eine gerade vertikale Durchmesserlinie teilt die kreisförmige Scheibe sichtbar in zwei gleich große rote und blaue Halbkreise; der Zeiger liegt am oberen Rand auf der Trennlinie.",
+    "resultCount": "PASS: Rechts sind genau zehn Ergebnisse in zwei Reihen zu je fünf zu sehen: oben fünf rote, unten ein rotes und vier blaue. Insgesamt sechs rot und vier blau.",
+    "arithmeticAndNotation": "PASS: Aus dem fairen Zweifarbenmodell folgt P(rot) = 1/2. Die beobachtete relative Häufigkeit ist 6/10 = 0,6. Das Ungleich-Zeichen zwischen den Karten ist mathematisch korrekt; Dezimalkomma, Bruchstriche und Klammern sind lesbar.",
+    "probabilisticMeaning": "PASS: Modellwahrscheinlichkeit und Versuchsergebnis sind als verschiedene Aussagen gekennzeichnet. Bei nur zehn Versuchen ist die Abweichung 0,5 zu 0,6 möglich und widerlegt das faire Modell nicht. Das Bild behauptet weder Unfairness noch eine sichere Modellwahrscheinlichkeit aus zehn Beobachtungen.",
+    "goalFit": "PASS: Der Vergleich macht den Unterschied zwischen theoretischer Modellwahrscheinlichkeit und empirischer Schätzung aus relativer Häufigkeit für das aktuelle Q3-Ziel anschaulich. Die fachliche Einordnung der Stichprobenabweichung muss der Coach oder Begleittext leisten; das Bild ist eine Orientierung, keine vollständige Erklärung.",
+    "readability": "PASS mit Hinweis: Beide Karten und alle zehn farbigen Ergebnisse sind in Originalauflösung klar. In einer sehr schmalen mobilen Darstellung könnten die zweispaltigen Formeln klein werden; die Einbindung sollte ohne zusätzliche Verkleinerung geprüft werden.",
+    "styleAndArtifacts": "PASS mit Hinweis: Freundliche, abstrakte Comic-Illustration mit klaren Konturen; weder photorealistisch noch steril. Transparente, weich auslaufende Papierränder sind am Original sichtbar; ihre Wirkung auf dunklem und hellem UI-Hintergrund ist nach der Einbindung zu prüfen. Keine sichtbaren falschen oder zusätzlichen Zahlen, Logos oder Wasserzeichen."
+  },
+  "decision": "candidate_suitable_for_targeted_integration_review",
+  "decisionReason": "Im tatsächlich geöffneten Originalbild stimmen Geometrie, zehn Einzelergebnisse, Rechnungen und Zielbezug; keine fachliche Korrektur des Kandidaten nötig.",
+  "remainingActions": [
+    "README.md korrigieren: Dort stehen fälschlich 1536 × 1024; die geprüfte PNG hat tatsächlich 1774 × 887 Pixel. Hashangabe im README stimmt.",
+    "Beim gezielten Import aktuelle Ziel-, Seiten-, Kontext- und Bildbindung sowie lesbare Alt-Text-Fassung prüfen; dies ist noch keine V-Freigabe, keine kanonische Bindung und keine menschliche Freigabe.",
+    "Darstellung im hellen und dunklen Cockpit beziehungsweise in schmaler mobiler Ansicht auf Ränder und Formellesbarkeit prüfen."
+  ]
+}

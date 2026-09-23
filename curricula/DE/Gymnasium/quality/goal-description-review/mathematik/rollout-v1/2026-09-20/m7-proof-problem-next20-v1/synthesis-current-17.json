@@ -1,0 +1,524 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex Root informed synthesis; not an additional independent review",
+  "synthesizedAt": "2026-09-21T20:55:01.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-proof-problem-next20-v1-20260920",
+    "batchManifestDigest": "sha256:34427927b75733d69578844c5ae310252320131aef97e05e9471033f9647d882",
+    "configDigest": "sha256:b011bfdce59eabad281332291d77737ad444e093e12b9e418710d4c71850a58c",
+    "bundleFingerprint": "sha256:6b1f61e40a86e6b42ff6ebedd8806b0b3c502819fc637e4d8f442702b21ff75f",
+    "bookDigest": "sha256:7ea7c8f70c7010566c11193ddbb0fc3703f64ec4e69fd5d435b577d00ac07b7c",
+    "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+    "dualSummaryDigest": "sha256:812ca966f5ddee8da9efb458a624b88645325047d0b2b7d5a617c3390c7239b7",
+    "canonicalLandscapeDigest": "sha256:ee31c20e64a2584c3be3a6fcacfe32a2d55bf95f079dbeb0234d1b06dffc47c6"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-a",
+      "campaignDigest": "sha256:a41a6260e12d06d970c0aa5b563f6ced07b7b524b77304b4bca474a3cdd33f8a",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:eba97d479f8ae8aa92b87be780a450c8390dd313e8c6f6977149e7bf10faa404",
+      "runId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "runManifestDigest": "sha256:60fad9393a29128686a5228db0da4a4ed48bd8cd6ed95b0bc84d42c344aac21e",
+      "resultsDigest": "sha256:329e91f5901cf79b026c61fad742d42a2007943b5d265c3d9db874909ff0c830"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-b",
+      "campaignDigest": "sha256:2e75517c969f994726a963dcd0ef3968698ed89412db83e1268cebe54ed38ede",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d8c605d9d2e8f3235438b902eec065d19c386032e511ee3258f16088ae22b96a",
+      "runId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "runManifestDigest": "sha256:a1e2b99b173d09f363ed0018614be748221ac4c77008c186e078758cbee79dbe",
+      "resultsDigest": "sha256:267b1d842c5a3ccbdf21d74874a55e6fce3d149e5db37b2e4628144696d33217"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-1",
+      "goalId": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:599c06bd7a50789a874be94f610df467f4368df15faee9e8c41d1fd2943b130a",
+      "pageFingerprint": "sha256:f2dcc9855885775216b0a503ca32f57b7245538b58598a045ca6f79da0e39c34",
+      "goalReviewContextFingerprint": "sha256:3bee19e7c1b2661a6b9bd03520065153769c106e1bc7a7f0d0da6d8235c55b45",
+      "finalText": {
+        "titleDe": "Annahmen und Begriffe klären",
+        "titleEn": "Clarify assumptions and terms",
+        "descriptionDe": "Die lernende Person kann bei einer Aussage verwendete Begriffe präzisieren (Definitionen/Notation) und den Geltungsbereich bzw. Bedingungen (z. B. $\\mathbb{R}$, $\\mathbb{Z}$, $x > 0$) explizit angeben.",
+        "descriptionEn": "The learner can clarify terms (definitions/notation) and state the domain or conditions (e.g. $\\mathbb{R}$, $\\mathbb{Z}$, $x > 0$) explicitly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.001",
+          "recordDigest": "sha256:4ed1403648156a0ef2061e22e17198fe22f6424a8b1dbe1e045a55c6d187c2a1"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "recordDigest": "sha256:56e6371beacb647642c06b6e7aeb1ebac4100cdb7b00ebf26d98943d5ea87b67"
+        }
+      },
+      "rationaleDe": "A präzisiert Variablenbereich und Definition an ganzen Zahlen, mit Transfer zur Kehrwertbedingung; B bestätigt dieselbe begrenzte Interpretationsleistung.",
+      "rationaleEn": "A specifies domain and definition for integers, transferring to reciprocal conditions; B confirms the same bounded interpretation competence."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-2",
+      "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:80d4a288647b10eaed195bf900736bd652c6a1dfe018522fb0ac49dbe48ecc9e",
+      "pageFingerprint": "sha256:6309cfc775ce7c468f0a1af1fc258bf185697a6aac346d5e1e4ecfceb37af71d",
+      "goalReviewContextFingerprint": "sha256:380ac11f647861fb367d94987772cec2008883a6a4c02760c9716135825e29d9",
+      "finalText": {
+        "titleDe": "Plausibilität mit Beispielen testen",
+        "titleEn": "Test plausibility with examples",
+        "descriptionDe": "Die lernende Person kann eine Aussage mithilfe geeigneter Beispiele sowie Rand- und Spezialfälle auf Plausibilität prüfen und die Wahl der Beispiele begründen.",
+        "descriptionEn": "The learner can test a statement for plausibility using suitable examples as well as boundary and special cases, and justify the choice of examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.002",
+          "recordDigest": "sha256:8e5dbd40f95720a35cab29e6dfd504c5434ec3a0c5a6211bec2bd9a2709c90a9"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.1e164a09-0a2b-55ab-b927-08a4a278f72b",
+          "recordDigest": "sha256:275d8ce19754f6a14acc68df77cda95cb87a3ec6c9bac4801cc9712f91cf0981"
+        }
+      },
+      "rationaleDe": "A begründet die Auswahl von Grenz- und Zwischenfällen und wechselt zur Geometrie; beide Runden trennen Plausibilität von Beweis.",
+      "rationaleEn": "A justifies boundary and interior cases and transfers to geometry; both rounds distinguish plausibility from proof."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-3",
+      "goalId": "04118376-6dd8-532e-ab38-be22017ba93d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b79e9b6ca3171f54c6f54b1082017df0b9d98a56b6bf1c8644205752b4335c0e",
+      "pageFingerprint": "sha256:8f5c9460e683d54093c9a546a687a1b80f6aea78fc4123d410d3e4698d92cd79",
+      "goalReviewContextFingerprint": "sha256:fa29e948866c04ee6d7352be9f49d73d85e191f3325e9059fc9d2de791ee95ee",
+      "finalText": {
+        "titleDe": "Geltungsbereich bestimmen",
+        "titleEn": "Determine scope of validity",
+        "descriptionDe": "Die lernende Person kann entscheiden, ob eine Aussage allgemein oder nur unter Zusatzbedingungen gilt, und diese Bedingungen präzise formulieren.",
+        "descriptionEn": "The learner can decide whether a statement holds generally or only under additional conditions, and formulate these conditions precisely."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.003",
+          "recordDigest": "sha256:eec35ee380bc590004c1f7a44f392c477a43d77900622ca4ee426ce32b68b507"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.04118376-6dd8-532e-ab38-be22017ba93d",
+          "recordDigest": "sha256:5b8226cbe18cf2482d5207626ae057e8cd7af02d5ba4af139006bdc32630152e"
+        }
+      },
+      "rationaleDe": "A macht die Betragsbedingung und den Einfluss des Vorzeichens bei Ungleichungen konkret; B bestätigt die Entscheidung über präzise Geltungsbereiche.",
+      "rationaleEn": "A makes the absolute-value condition and the sign dependence of inequalities concrete; B confirms decisions about exact validity domains."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-4",
+      "goalId": "3de1d5b0-0a26-5124-b066-92b65a882c5e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b1af4d6bcbb291291eab987304b72ba8ed7a6cfdf58bf156af57d7fb9dcc979d",
+      "pageFingerprint": "sha256:a1c79baec98d7df4354fad5a07bf497f0c1bb51cc02f3141c29a81a1c04b6b54",
+      "goalReviewContextFingerprint": "sha256:7aeb322a31db30a87c658932c6d981429770c1b529dd5dff8c559fa11c496c0b",
+      "finalText": {
+        "titleDe": "Begründen oder widerlegen",
+        "titleEn": "Justify or refute",
+        "descriptionDe": "Die lernende Person kann eine Aussage knapp begründen (unter Nutzung bekannter Definitionen/Sätze) oder durch ein Gegenbeispiel widerlegen und dies nachvollziehbar erläutern.",
+        "descriptionEn": "The learner can briefly justify a statement (using known definitions/theorems) or refute it with a counterexample and explain this convincingly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.004",
+          "recordDigest": "sha256:6b701939b720cb7defbd1939f46a82ead0d46e3ebd8ba19c8e013b18a7973a9c"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.3de1d5b0-0a26-5124-b066-92b65a882c5e",
+          "recordDigest": "sha256:8990261fad106ee700b5f9b7151baf67ed0c3a3ab1fe770688859bab3fafaae5"
+        }
+      },
+      "rationaleDe": "A verbindet allgemeine Ganzzahldarstellungen mit einem zulässigen Gegenfall und geometrischem Transfer; B bestätigt diese alternativen Ausgänge derselben Aussagenprüfung.",
+      "rationaleEn": "A connects general integer representations with an admissible countercase and geometric transfer; B confirms these alternative outcomes of one statement assessment."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-5",
+      "goalId": "591cb948-f313-5b1c-a9cb-3df8162eeb8b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c071decf9186ba01d06ac2ff185cb0ad661ec16245290087a570a8bf56157a6a",
+      "pageFingerprint": "sha256:7b2f1699ad929f519dac0b58b438b5b482d2af472b9ee0080d46503500dab860",
+      "goalReviewContextFingerprint": "sha256:fd0390f6db504dfbc676ee18be6fb7c7c6aa6b3f599749d97bafef336961de6a",
+      "finalText": {
+        "titleDe": "Kettenschlüsse nachvollziehen und bilden",
+        "titleEn": "Follow and build chains of reasoning",
+        "descriptionDe": "Die lernende Person kann aus mehreren gegebenen Aussagen einen Kettenschluss (z. B. $A \\Rightarrow B \\Rightarrow C$) erstellen oder prüfen und die Zwischenschritte begründen.",
+        "descriptionEn": "The learner can create or check a chain of reasoning from multiple statements (e.g. $A \\Rightarrow B \\Rightarrow C$) and justify the intermediate steps."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.005",
+          "recordDigest": "sha256:1571f7ef50ef0730d594797cf6df757e9cd5460670c7318bb1a4dc2951f475f3"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.591cb948-f313-5b1c-a9cb-3df8162eeb8b",
+          "recordDigest": "sha256:2c3b474f50964b8c4f17dde99613c15b8635715862d8385aa16df551df971e3b"
+        }
+      },
+      "rationaleDe": "A prüft beide Pfeile einer Teilbarkeitskette und eine neue geometrische Kette; B bestätigt begründete Übergänge statt bloßer Satzsortierung.",
+      "rationaleEn": "A checks both arrows of a divisibility chain and a fresh geometric chain; B confirms justified transitions rather than mere statement sorting."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-6",
+      "goalId": "2b497114-66ce-5f38-9b4d-dd17a2f4088f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fe488089628eb7b7f8b0e78477ceeab3e944e82f791dd319552977b24b39b09e",
+      "pageFingerprint": "sha256:641542ac846d3f487d8d5e7edc1c591598d253660c890c467bf6a363940e39db",
+      "goalReviewContextFingerprint": "sha256:7baa8b5a54fc815dd29dfff2c00e626b2b88a7280a5ec183be304ef640bbeb5a",
+      "finalText": {
+        "titleDe": "Fehlschlüsse erkennen und korrigieren",
+        "titleEn": "Identify and correct fallacies",
+        "descriptionDe": "Die lernende Person kann typische Fehlschlüsse (z. B. Division durch 0, falsche Umkehrung) in Argumentationen identifizieren und eine korrekte Begründung angeben.",
+        "descriptionEn": "The learner can identify typical fallacies (e.g. division by 0, incorrect converse) in arguments and provide a correct justification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.006",
+          "recordDigest": "sha256:9993b20df5cc45e5553baf25b52824b2ef3242b445916e615db16a3750bd038c"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.2b497114-66ce-5f38-9b4d-dd17a2f4088f",
+          "recordDigest": "sha256:56f8034f19f68532819aec8a3f845fdc52dd1deaa2d1102c6a7ecb6759f59856"
+        }
+      },
+      "rationaleDe": "A trennt Division durch null und falsche Umkehrung von der Wahrheit der Endbehauptung; B bestätigt den vorhandenen Fehleranalyseumfang.",
+      "rationaleEn": "A separates division by zero and invalid converse from the truth of the final claim; B confirms the existing error-analysis scope."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-7",
+      "goalId": "a8d4eb81-b77a-53e3-813a-dbfeed09f1bf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:18328f3388413fb012bbc03ac27b2a9f122eafbe910fb90a836362d97d050af2",
+      "pageFingerprint": "sha256:f035a3d5fdb233b54a97175381d1f0e5e575768875de8dbb7868a3993da83830",
+      "goalReviewContextFingerprint": "sha256:8974539401e96f62a8a5f1037c3602178203e90021a2d107eb5ca5d897c15317",
+      "finalText": {
+        "titleDe": "Quantoren richtig interpretieren",
+        "titleEn": "Interpret quantifiers correctly",
+        "descriptionDe": "Die lernende Person kann Aussagen mit „für alle“/„es gibt“ in Worten und Symbolen deuten, verneinen und durch Beispiele bzw. Gegenbeispiele prüfen.",
+        "descriptionEn": "The learner can interpret statements with “for all”/“there exists” in words and symbols, negate them and test them using examples or counterexamples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.007",
+          "recordDigest": "sha256:22fccc8a9c0eca284dca2e5b0282d1ff0a8bf2d0c42c929d079a9c2977907e16"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.a8d4eb81-b77a-53e3-813a-dbfeed09f1bf",
+          "recordDigest": "sha256:500b60c317f79ff0429e5d47dd1ab7699796fae82f772bd182171d47c6701085"
+        }
+      },
+      "rationaleDe": "A benennt Quantorwechsel und veränderte Zeugenstrategie bei der Negation; B bestätigt deren Zusammenhang als eine Quantorenkompetenz.",
+      "rationaleEn": "A specifies quantifier switching and changed witness strategy under negation; B confirms their coherence as one quantifier competence."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-8",
+      "goalId": "09e85220-afc3-5357-b5bc-c4b2c17e85aa",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d51c1ff35024d6800c0e0ff98020269f39abe76b117dc8a3f7042d7f2ff19630",
+      "pageFingerprint": "sha256:4d8acac6dfdd700463cc7c6a0875a5f84a7170a6f2691a119a0eb6866547d492",
+      "goalReviewContextFingerprint": "sha256:1133142274e1eb601a2b83f5b1e41d0af9d8d5af281f5483e3e2a50e5777e23e",
+      "finalText": {
+        "titleDe": "Vermutungen mit Beispielen testen",
+        "titleEn": "Test conjectures with examples",
+        "descriptionDe": "Die lernende Person kann eine Vermutung durch systematische Beispielwahl (z. B. Randwerte, Symmetrie, Extremfälle) untersuchen und die Ergebnisse interpretieren.",
+        "descriptionEn": "The learner can explore a conjecture using systematic choice of examples (e.g. boundary values, symmetry, extreme cases) and interpret the results."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.008",
+          "recordDigest": "sha256:709c11f3c4857930ef8d7f2598bb89ea6cda9c807ea3823e216751c76e510005"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.09e85220-afc3-5357-b5bc-c4b2c17e85aa",
+          "recordDigest": "sha256:907a61af71e06880f68ff7212337526a523dbca56b6ffd0c0a9c034227eea75e"
+        }
+      },
+      "rationaleDe": "A ordnet Paritäts- und Vorzeichenfälle systematisch und überträgt dies auf geometrische Konfigurationen; B bestätigt den Unterschied zur einfachen Plausibilitätsprüfung.",
+      "rationaleEn": "A systematically organizes parity and sign cases and transfers to geometric configurations; B confirms the distinction from simple plausibility checks."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-9",
+      "goalId": "e2d56885-a204-54b4-8717-a46d029ef416",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fc15a0b6b26eae27d200ac3f0a7416009931581c10d31cfa0572bff717078458",
+      "pageFingerprint": "sha256:4391f86ddafc715addf9d6c01197f35eac9de573d24af8f164596b59d9b446d3",
+      "goalReviewContextFingerprint": "sha256:000afac91554519d728815ad7d89ece134ab9bf44ed5a38c181793a4c6cf9cdb",
+      "finalText": {
+        "titleDe": "Gegenbeispiele konstruieren",
+        "titleEn": "Construct counterexamples",
+        "descriptionDe": "Die lernende Person kann zu einer falschen Aussage gezielt ein Gegenbeispiel konstruieren (z. B. durch Wahl eines Spezialfalls) und begründen, warum es die Aussage widerlegt.",
+        "descriptionEn": "The learner can construct a targeted counterexample for a false statement (e.g. by choosing a special case) and justify why it refutes the statement."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.009",
+          "recordDigest": "sha256:0577ac0980fa092990fd632574af1b552496f532ad78474c7a78708841f73c8f"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.e2d56885-a204-54b4-8717-a46d029ef416",
+          "recordDigest": "sha256:9ddf1849d22694384d3ca56015d2d5ab4ffceefd188377b042d14e8db8feb702"
+        }
+      },
+      "rationaleDe": "A fordert ausdrücklich erfüllte Voraussetzungen und verletzte Folgerung am konstruierten Fall; B bestätigt die gezielte statt zufällige Gegenbeispielwahl.",
+      "rationaleEn": "A explicitly requires satisfied premises and a violated conclusion in the constructed case; B confirms targeted rather than random counterexample selection."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-10",
+      "goalId": "d21a1303-50fc-5e38-aeda-eeae3392c74b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:de3b540bb7a74d7021c0a698e5e04a8f18274dc0a318ba62796dd886a9b3697d",
+      "pageFingerprint": "sha256:9ca7e7068198f9b92fe98330fee581c499fb940f9d5c629e363669801ab1c4e1",
+      "goalReviewContextFingerprint": "sha256:50d5bd01deddaa7c74c2989d7db6f702ef514b1e21ca6060c71a392182e70964",
+      "finalText": {
+        "titleDe": "Direkten Beweis führen",
+        "titleEn": "Write a direct proof",
+        "descriptionDe": "Die lernende Person kann eine Behauptung aus Definitionen und bekannten Sätzen direkt herleiten und dabei jeden Schritt begründen.",
+        "descriptionEn": "The learner can derive a claim directly from definitions and known theorems and justify each step."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.011",
+          "recordDigest": "sha256:927714692559c9fb13ae91d07c37ab95ed748161ab980e312f5df6ebe0d38d4e"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.d21a1303-50fc-5e38-aeda-eeae3392c74b",
+          "recordDigest": "sha256:642b677b95434c053e27e5be3c5cf78abdbea9b8b1ab0df8464d8a10128caef6"
+        }
+      },
+      "rationaleDe": "A begründet die allgemeine Darstellung und Ganzzahligkeit aller Terme; B bestätigt die Vorwärtsherleitung ohne versteckte Annahme der Behauptung.",
+      "rationaleEn": "A justifies general representation and integrality of all terms; B confirms forward derivation without covertly assuming the claim."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-11",
+      "goalId": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a494b9a4ebafc5b186784719e831959acd1fe6c836e6edc04db8737516e605ce",
+      "pageFingerprint": "sha256:735c16d3a7ff2db7de2578b7a1b93aac841c4779dffbb3dcc3536f282fe5accc",
+      "goalReviewContextFingerprint": "sha256:60894d6d16db3a52b9a1749e87ca4ec121692c4a342323af62ccf455b946de3e",
+      "finalText": {
+        "titleDe": "Beweis durch Widerspruch",
+        "titleEn": "Prove by contradiction",
+        "descriptionDe": "Die lernende Person kann einen Widerspruchsbeweis ansetzen: Negation der Behauptung annehmen, zu einem Widerspruch führen und daraus die Behauptung folgern.",
+        "descriptionEn": "The learner can set up a proof by contradiction: assume the negation, derive a contradiction, and conclude the original claim."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.012",
+          "recordDigest": "sha256:ea88c6533bce23a663d6b1c1fa5f33ca61b33c369110c907760bacf94dea9de3"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+          "recordDigest": "sha256:49bffffeeabb04d32a81887cf95ace2f021c1752644dc0ce5a89e7529a9db18d"
+        }
+      },
+      "rationaleDe": "A verfolgt Gegenannahme, Widerspruch und Schluss vollständig und wechselt von Ordnung zu Rationalität; B bestätigt, dass der Wortlaut trotz „ansetzen“ alle Schritte verlangt.",
+      "rationaleEn": "A follows assumption, contradiction and conclusion fully and transfers from order to rationality; B confirms that the wording requires all steps despite “set up”."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-12",
+      "goalId": "5c632c68-fc34-582e-8581-ae9e55ab538f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7ec4c05a25913f3232fb429b55018bbc7aa74006c05c92d477dc3ffb2e46256a",
+      "pageFingerprint": "sha256:b5fcb68b23cce31e9dad8fa5cb15ac302c17bc81e6f47fb99430338381a6b41b",
+      "goalReviewContextFingerprint": "sha256:73fd6be224cef35d4efca816a52c08fc501bbeab98e30cea791767af5053669e",
+      "finalText": {
+        "titleDe": "Induktionsbeweis durchführen",
+        "titleEn": "Carry out an induction proof",
+        "descriptionDe": "Die lernende Person kann einen Beweis durch vollständige Induktion führen (Induktionsanfang, -voraussetzung, -schritt) und die Schlussfolgerung korrekt formulieren.",
+        "descriptionEn": "The learner can carry out a proof by induction (base case, induction hypothesis, induction step) and formulate the conclusion correctly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.013",
+          "recordDigest": "sha256:79ab0868990c3982e57a67504ac25a4f2ec759643bf303213e18a5f6f48de2b9"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.5c632c68-fc34-582e-8581-ae9e55ab538f",
+          "recordDigest": "sha256:891a1b522560cac4547c88b561e6d31695ff201792d9609601684a76670345ca"
+        }
+      },
+      "rationaleDe": "A bindet Anfang und Schritt an den Indexbereich und variiert von Identität zu Ungleichung; B bestätigt einen zusammenhängenden vollständigen Induktionsbeweis.",
+      "rationaleEn": "A binds base and step to the index range and varies from identity to inequality; B confirms a coherent complete induction proof."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-13",
+      "goalId": "f2df01c0-355e-5e51-973f-d31b0eed28ec",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3dae2a340cc80cce20a6a34e991d179cb8590088cdd7a8ab59082b46fc006d89",
+      "pageFingerprint": "sha256:055cab0245e98315060755eacecbabe344da8ffdcf33e8f1ba2067411aad33a2",
+      "goalReviewContextFingerprint": "sha256:7f34cb8b11efa837d5fedf74edf4b52813920df820821945e93d8ff00a222465",
+      "finalText": {
+        "titleDe": "Beweise verständlich präsentieren",
+        "titleEn": "Present proofs clearly",
+        "descriptionDe": "Die lernende Person kann einen Beweis sprachlich und formal verständlich darstellen (Notation, Satzbau, Verweise auf Sätze) und das Ergebnis abschließend einordnen.",
+        "descriptionEn": "The learner can present a proof clearly in language and notation (structure, references to theorems) and give a concise final conclusion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.014",
+          "recordDigest": "sha256:f497378e8253113dc195fd5becc3aa0e455540920b8921fe073eb4d63939bd7d"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.f2df01c0-355e-5e51-973f-d31b0eed28ec",
+          "recordDigest": "sha256:d059baa9ea93994d23effcf40c9e8385088a8e611b01368763b5196046b61ba2"
+        }
+      },
+      "rationaleDe": "A erklärt Variablen, Begründungsbezüge und Schlussreichweite und überträgt die Präsentation auf Geometrie; B bestätigt die Kommunikation statt erneuter Beweisfindung.",
+      "rationaleEn": "A explains variables, justification references and scope, transferring presentation to geometry; B confirms communication rather than renewed proof discovery."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-14",
+      "goalId": "4ae439c0-ce3c-5c96-9755-9899bc70e948",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9eed2ef73f7648dac5e1a4058751b051ab2a0f7c5feb458fabf30ac83fcf28b5",
+      "pageFingerprint": "sha256:d540c193ed426243cf925af6b6f4785bc87e3672359ddf30825a9da418db7324",
+      "goalReviewContextFingerprint": "sha256:d99ed58ca28435dd49637a67831ceb39855da8fa9504a14357bad9b66286f633",
+      "finalText": {
+        "titleDe": "Argumentation formalisieren und präzisieren (LK)",
+        "titleEn": "Formalize and sharpen arguments",
+        "descriptionDe": "Die lernende Person kann Argumentationen in präziser mathematischer Sprache formulieren (Quantoren, Bedingungen, Äquivalenzen) und Unklarheiten gezielt vermeiden.",
+        "descriptionEn": "The learner can formulate arguments in precise mathematical language (quantifiers, conditions, equivalences) and avoid ambiguity deliberately."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.016",
+          "recordDigest": "sha256:22c3c07c8fcd3ca0ca41b0c63e9a1f927c4dfbc53b3ed70aef512e714b39e931"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.4ae439c0-ce3c-5c96-9755-9899bc70e948",
+          "recordDigest": "sha256:b3e14eb5246232c66c404ee19f7da97c9916e5a1db431e801746dd4bc42a4377"
+        }
+      },
+      "rationaleDe": "A prüft Nichtnullbedingung, Äquivalenz und Quantorenreihenfolge; B bestätigt die Präzisierungsleistung. Der offene Vorgängerbefund bleibt separat und wird nicht mitfreigegeben.",
+      "rationaleEn": "A checks nonzero conditions, equivalence and quantifier order; B confirms formal precision. The open predecessor finding remains separate and is not approved by this decision."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-15",
+      "goalId": "dd1d9f9c-0a4e-5d01-95d8-f6993163b20c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c19d16340c9a60b490079cf5842fe430b61fdc4a8ec44af5d09682c5693f4338",
+      "pageFingerprint": "sha256:d66b6416b87215baefe42bfc024b8aaa4cd11e571e634c603177a6a165819f00",
+      "goalReviewContextFingerprint": "sha256:9f1fefb9131c8a522184bfff234ea04b783d46e6c77c4bfe7759ad2c758779a8",
+      "finalText": {
+        "titleDe": "Beweislücken identifizieren (LK)",
+        "titleEn": "Identify proof gaps",
+        "descriptionDe": "Die lernende Person kann einen vorgelegten Beweis auf Vollständigkeit prüfen und die erste fehlende oder unzureichende Begründung präzise benennen.",
+        "descriptionEn": "The learner can check a given proof for completeness and precisely name the first missing or insufficient justification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.017",
+          "recordDigest": "sha256:213d82cfc5201d4674e3ebc29ac7a92fffe4401a1a9fec63793e02b6061ee045"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.dd1d9f9c-0a4e-5d01-95d8-f6993163b20c",
+          "recordDigest": "sha256:90950896652b899bf174c12ed7acb78f2ac375a4156b03f32d972d654a1c7ece"
+        }
+      },
+      "rationaleDe": "A lokalisiert die erste unbegründete Annahme oder Operation; B bestätigt, dass keine vollständige Reparatur gefordert ist. Der offene Strategievorgänger bleibt separat.",
+      "rationaleEn": "A locates the first unjustified assumption or operation; B confirms that a full repair is not required. The open strategy predecessor remains separate."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-16",
+      "goalId": "14173f5e-d3ba-51e5-b510-49ecd0abad90",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:41270f42024fda8957c2d5f7dfb0e4746322f649b4c1240db524fdf8afa59e95",
+      "pageFingerprint": "sha256:188ec6afa82e2ce1d5969130d32c945cf49d4422a6ee71fa049f4bfd37d783ad",
+      "goalReviewContextFingerprint": "sha256:8e322bb639a92e4d31cdf777f0175e26ade1c3fbd86e2bf98a4c66f5e34f75f3",
+      "finalText": {
+        "titleDe": "Zielfrage mathematisch formulieren",
+        "titleEn": "Formulate the goal mathematically",
+        "descriptionDe": "Die lernende Person kann die Zielfrage in eine präzise mathematische Aufgabe übersetzen (z. B. Bestimme …, Zeige …, Optimiere …) und geeignete Größen/Variablen benennen.",
+        "descriptionEn": "The learner can translate a goal into a precise mathematical task (e.g. determine…, prove…, optimize…) and name suitable quantities/variables."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.019",
+          "recordDigest": "sha256:405b1126bc497e35d215e3b6f1022d204c4e64e6bc1c465446c40a919b8738e6"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.14173f5e-d3ba-51e5-b510-49ecd0abad90",
+          "recordDigest": "sha256:7dc5c435246b04995b82978e49e067471012a3e9d4604c78131258ec76f96cb4"
+        }
+      },
+      "rationaleDe": "A unterscheidet Maximierung von einer neuen Schwellenfrage und hält die Formulierung von der Lösung getrennt; B bestätigt die Rolle zwischen Erfassung und Zerlegung.",
+      "rationaleEn": "A distinguishes maximization from a fresh threshold question and separates formulation from solution; B confirms its role between information extraction and decomposition."
+    },
+    {
+      "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-17",
+      "goalId": "c1a23239-08c5-5fe2-a68f-f2075fdeb454",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ac624fe4ec7aeba6afda897bace8502bb8759e69e4a1d46aaff4e44f488fcd50",
+      "pageFingerprint": "sha256:d4e315aecd5d81ec4763efa625ffff9c606e4b38320963f2000c8b4df68ef909",
+      "goalReviewContextFingerprint": "sha256:be92c2421c4636f3f84877c5d7e840893fe74223604dad7a1affc45c37b3b419",
+      "finalText": {
+        "titleDe": "In Teilprobleme zerlegen",
+        "titleEn": "Break into subproblems",
+        "descriptionDe": "Die lernende Person kann eine komplexe Aufgabe in sinnvolle Teilprobleme zerlegen, Abhängigkeiten ordnen und Zwischenziele festlegen.",
+        "descriptionEn": "The learner can break a complex task into meaningful subproblems, order dependencies and set intermediate goals."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.020",
+          "recordDigest": "sha256:b65e00f1f6a47ddfdcf563084ebcc3186543ff1bee98358b7c20d55d121e92b7"
+        },
+        "second": {
+          "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.c1a23239-08c5-5fe2-a68f-f2075fdeb454",
+          "recordDigest": "sha256:9bd66f3e9e5b2b8bee8bd39ea6d573baeb64cbb1ffc0d79ddf90b2fdee8c6eeb"
+        }
+      },
+      "rationaleDe": "A macht Abhängigkeiten der Füllphasen und ihren Wechsel bei gleichzeitigen Zuflüssen sichtbar; B bestätigt Zwischenziele statt einer beliebigen Rechenliste.",
+      "rationaleEn": "A makes dependencies between filling phases and their change for simultaneous inflows explicit; B confirms intermediate targets rather than an arbitrary list of calculations."
+    }
+  ],
+  "manifestFingerprint": "sha256:6b041c5cf340b07f17115de86e08a85cebaee8900eb683276005b1788b6ea234"
+}

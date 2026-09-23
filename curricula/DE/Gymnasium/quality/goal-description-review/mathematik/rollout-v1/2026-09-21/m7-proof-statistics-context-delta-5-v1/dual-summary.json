@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:34919f79fc3e12c996e8c9de37e4aa1decaad22ec06fd3d77e75be7909e60aa1",
+  "reviewInputFingerprint": "sha256:f0bd9162681652cc352f2e6208ac2706359fed6ca7868e8a284df9d899313dec",
+  "goalCount": 5,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-a",
+      "roundId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-a.batch-001.codex-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-b",
+      "roundId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-b.batch-001.codex-independent-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex; exact serving model identifier not exposed::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 5,
+    "unavailable": 0,
+    "requiresSynthesis": 5
+  },
+  "goals": [
+    {
+      "goalId": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+      "firstRecordId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-a.batch-001.codex-a.record-001",
+      "secondRecordId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-b.batch-001.codex-independent-b.001",
+      "firstRunId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-a.batch-001.codex-a",
+      "secondRunId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
+      "firstRecordId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-a.batch-001.codex-a.record-002",
+      "secondRecordId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-b.batch-001.codex-independent-b.002",
+      "firstRunId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-a.batch-001.codex-a",
+      "secondRunId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+      "firstRecordId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-a.batch-001.codex-a.record-003",
+      "secondRecordId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-b.batch-001.codex-independent-b.003",
+      "firstRunId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-a.batch-001.codex-a",
+      "secondRunId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "122ab909-04ed-572b-a499-754f3bcc8ef0",
+      "firstRecordId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-a.batch-001.codex-a.record-004",
+      "secondRecordId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-b.batch-001.codex-independent-b.004",
+      "firstRunId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-a.batch-001.codex-a",
+      "secondRunId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+      "firstRecordId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-a.batch-001.codex-a.record-005",
+      "secondRecordId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-b.batch-001.codex-independent-b.005",
+      "firstRunId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-a.batch-001.codex-a",
+      "secondRunId": "mathematik-m7-proof-statistics-context-delta-5-20260921-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-683-congruence-similarity-p-bound-current-20260923-v2-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex; synthesis of two independent AI-candidate rounds, no human approval",
+  "synthesizedAt": "2026-09-23T11:30:33.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-683-congruence-similarity-p-bound-current-20260923-v2",
+    "batchManifestDigest": "sha256:893dd090ab5a31678c0fb1f81477834e7d044b47e6a7f3199550f13fba2e4937",
+    "configDigest": "sha256:7f4d625e5def37ce30c20e45ad61f63cf5de668cfbd40d8e6320770a62e95657",
+    "bundleFingerprint": "sha256:c31af4beeb7188e415fbc7da26115dce4e962cd97b620fec7eefcd0505a58b5b",
+    "bookDigest": "sha256:4db5df8fae2d1e507dca2c1cc6dc4b62c5aad26ecc3b77ed5c77eab1fe414157",
+    "reviewInputFingerprint": "sha256:64d3cb5311b71013cc30836c736b6eba9e34350cce47db2e090f36e7f735cff6",
+    "dualSummaryDigest": "sha256:3de26814f083bf6abd436254038583436b4957ff590c42b4069a8d454e876f54",
+    "canonicalLandscapeDigest": "sha256:7265fca443019c03fc63dd16d9ff113c45815dd07b6ac8d02db48bf0636c4227"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-683-congruence-similarity-p-bound-current-20260923-v2-a",
+      "campaignDigest": "sha256:d30f4d68b7ff344b33b0d497f818eaf31bbe6707806adcbd68032ebaa36bd86b",
+      "roundId": "mathematik-m7-683-congruence-similarity-p-bound-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-683-congruence-similarity-p-bound-current-20260923-v2-independent-a",
+      "reviewInputFingerprint": "sha256:64d3cb5311b71013cc30836c736b6eba9e34350cce47db2e090f36e7f735cff6",
+      "batchId": "mathematik-m7-683-congruence-similarity-p-bound-current-20260923-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:e5bb6d4e54f29c0f3c050315eae70c1738ecd75d89154ced758faae614590a7c",
+      "runId": "mathematik-m7-683-p-bound-a-codex-20260923-v1",
+      "runManifestDigest": "sha256:316511acab5f0aa3211666cafebdf808edb4420d99402437310e82c0531ebdb3",
+      "resultsDigest": "sha256:afaa8c6dc97e527853f80ef3b43d114826e2e11ff7742e55bb22926ba304e2cd"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-683-congruence-similarity-p-bound-current-20260923-v2-b",
+      "campaignDigest": "sha256:1f134ec1a412f96e8d99e2fe352aa23d2b0e97018115da130b3407069ecb1145",
+      "roundId": "mathematik-m7-683-congruence-similarity-p-bound-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-683-congruence-similarity-p-bound-current-20260923-v2-independent-b",
+      "reviewInputFingerprint": "sha256:64d3cb5311b71013cc30836c736b6eba9e34350cce47db2e090f36e7f735cff6",
+      "batchId": "mathematik-m7-683-congruence-similarity-p-bound-current-20260923-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:ff0dca2fa1585ccbd3f5085cc0b27a9727c9b357575385048fd64c9b1c627e8c",
+      "runId": "mathematik-m7-683-congruence-similarity-p-bound-current-20260923-v2-first-pass-b.batch-001.run-001",
+      "runManifestDigest": "sha256:6b5e4487b0b1b2263fc24cf4a374b4a66e45d17f7f3834f2082aea4e9b0f4bc2",
+      "resultsDigest": "sha256:86d9b74b4b77ee6407ef6de0ca1589fafb4b043893d52d9f779ff558c29c2fef"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-683-congruence-similarity-p-bound-current-20260923-v2-synthesis-decision-001",
+      "goalId": "6833664b-bd8b-44a2-95bc-c0b78ff89e31",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cf85f25e9e38e7d99c62f972a5d1c7e4ff8cf2e27de2f64a67801fcdb222696f",
+      "pageFingerprint": "sha256:eb94a86a4ae293499c81428982393668987824fbff3f4d6817dcb1c7dba73612",
+      "goalReviewContextFingerprint": "sha256:6cc39965b5f1bf92837ff30dd3c29466c19f1221c319fa9758e30bb15c87b0a8",
+      "finalText": {
+        "titleDe": "Kongruente und ähnliche Figuren erkennen und Eigenschaften geometrischer Abbildungen beschreiben",
+        "titleEn": "Recognize congruent and similar figures and describe properties of geometric transformations",
+        "descriptionDe": "Die lernende Person kann kongruente und ähnliche Figuren erkennen, Original-Bild-Beziehungen beschreiben und erklären, dass Kongruenzabbildungen Längen und Winkel, Ähnlichkeitsabbildungen Winkel und Längenverhältnisse erhalten.",
+        "descriptionEn": "The learner can recognize congruent and similar figures, describe preimage-image relations, and explain that congruence transformations preserve lengths and angles whereas similarity transformations preserve angles and length ratios."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-683-p-bound-a-codex-20260923-v1-record-001",
+          "recordDigest": "sha256:162c7a4140706380905a12d4cf22ca9c84b1ab85da56b6f6af09dc82ae353bc2"
+        },
+        "second": {
+          "recordId": "mathematik-m7-683-congruence-similarity-p-bound-current-20260923-v2-b-6833664b",
+          "recordDigest": "sha256:e6b4d421b45012efc9ca51f9032cf730b33c87728723bdd3b777b8764a2d2522"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden bestätigen den präzisierten zweisprachigen Zieltext: Kongruenzabbildungen erhalten entsprechende Längen und Winkel, Ähnlichkeitsabbildungen Winkel und Längenverhältnisse; Faktor 1 ist der gemeinsame Sonderfall. Die zweite Evidenzfassung prüft die neue Original-Bild-Zuordnung an einer Spiegelung mit umgekehrter Orientierung gegenüber einer Vergrößerung. Das exakt als Zusatzkriterium gebundene aktuelle P-v2-Kandidatenprofil deckt Verständnis, begründete Leistung und frischen Transfer bereits ab; keine neue P-Freigabe oder Lernendenleistung wird behauptet. Das Bild bleibt Anschauung, die effektive Geltung und Quellenabdeckung sind eigenständige Prüfungen.",
+      "rationaleEn": "Both independent current rounds retain the clarified bilingual goal: congruence transformations preserve corresponding lengths and angles, similarity transformations preserve angles and length ratios, with scale factor 1 as the shared special case. The second evidence version tests a fresh preimage-image relation under reflection with reversed orientation rather than enlargement. The exact current P-v2 AI-candidate profile bound as supplemental criteria already covers understanding, reasoned performance, and fresh transfer; this claims neither new P approval nor learner performance. The image remains teaching support, while effective applicability and source coverage require separate checks."
+    }
+  ],
+  "manifestFingerprint": "sha256:8d1bbe0173034ea252f1301ea98ab8380a535d6f0197803aab8423bb20a18d3a"
+}

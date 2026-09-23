@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-held-seven-geometry-route-hold-1-v1.config.json",
+  "configDigest": "sha256:77721a9c58d75665b8f96e3ee6396af03da8b2690f829e05901d538e4ca71129",
+  "goalIds": [
+    "4af3dfb9-7e15-5da5-8b86-0aac6c80e266"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:24e6352fb8b1bbf025e9f52477c83a5fab68398caef276d7b88e1c1752cfeb1a"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:97ef02724400f0f73c056b7528b7749438de8069e33f3686084fdbb4d36824f6",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:9866d98025b9eef84ea8aa27d996c951702312544a520c3558ed3dc9869c5080",
+    "reviewInputFingerprint": "sha256:058b060daa81b08a6154e654b6df1f4aa58ac24bf274f8e7a1003db2fb1e3f87",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-a",
+        "campaignDigest": "sha256:40588839c7409067725c018403589fc6178147d5ff6252bd6a0389971fc2564e",
+        "roundId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-a",
+        "independenceGroupId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-independent-a",
+        "batchId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:fe4558b4977b0e0fe2ad49463ab34f1755e27c5a4a1b32a9b28ce879ea6afdc5"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-b",
+        "campaignDigest": "sha256:dada5800e09ae67567b2413612b2fa43f58398a7179618e6960947e2387810da",
+        "roundId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-b",
+        "independenceGroupId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-independent-b",
+        "batchId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:a15efb022d577894ec93cb64198a83848be67794e4c5185688d2e14434a99acd"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

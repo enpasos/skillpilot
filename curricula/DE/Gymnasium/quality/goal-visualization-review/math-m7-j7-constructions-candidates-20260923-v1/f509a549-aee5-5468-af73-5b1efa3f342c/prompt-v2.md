@@ -1,0 +1,5 @@
+Use case: precise-object-edit
+Asset type: corrected SkillPilot grade-7 angle-bisector PNG
+Input image 1: edit target, the existing angle-bisector educational comic diagram.
+Primary request: Change only the dark presentation into a bright, high-contrast, friendly paper illustration. Background: warm pale cream. All geometry rays and point labels O, A, B, P, Q, R: bold dark navy and clearly legible. The compass-construction arcs: saturated blue and teal, visible at small size. Keep small yellow equal-angle wedges and the friendly tiny cartoon compass in the corner.
+Critical invariants: preserve original geometry and placement exactly: vertex O at left, symmetric upper OA and lower OB rays, P on OA and Q on OB equally distant from O, equal-radius construction arcs from P and Q meeting at R inside the angle, horizontal ray O–R bisecting the angle, two equal angle marks at O. Do not alter or add points, move rays, change intersections, or add text beyond point letters. No title, equations, watermark, photorealism, gradient darkness or decoration over geometry. Output clean bright raster image.

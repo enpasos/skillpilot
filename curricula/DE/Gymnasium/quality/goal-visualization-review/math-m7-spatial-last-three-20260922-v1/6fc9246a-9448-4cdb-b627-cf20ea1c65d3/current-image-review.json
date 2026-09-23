@@ -1,0 +1,51 @@
+{
+  "recordKind": "goal_visualization_current_image_review",
+  "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+  "title": "Lineare Abhängigkeit und Unabhängigkeit von Vektoren prüfen",
+  "status": "ai_candidate",
+  "decision": "keep_original",
+  "reviewedAtUtc": "2026-09-21T22:55:53.576Z",
+  "localReviewDate": "2026-09-22",
+  "reviewer": {
+    "agent": "/root/math_repaired12_blind_a",
+    "model": "Codex; exact serving model identifier not exposed",
+    "role": "targeted current-raster re-evaluation after consulting historical A/B disagreement; not a new blind D review"
+  },
+  "humanReviewed": false,
+  "actualOriginalViewed": true,
+  "asset": {
+    "path": "app/public/assets/goal-visualizations/mathematik/6fc9246a-9448-4cdb-b627-cf20ea1c65d3/6fc9246a-9448-4cdb-b627-cf20ea1c65d3.jpg",
+    "sha256": "ad5f2098065421f707e8f42637a4c427d5f7ce5fc136fb488d1195bd9b98507d"
+  },
+  "historicalDisagreement": {
+    "roundA": "KEEP",
+    "roundB": "BLOCK; challenged origin and alleged incorrect labeled axes",
+    "currentAdjudication": "The allegedly labeled wrong x/y axes are not present in the lower-left panel. Its black guides are unlabeled; the upper isolated arrows are icons, not one common coordinate plot. The lower-left assertion is coplanarity/linear dependence of free vectors, not a calibrated addition construction. A shifted common tail alone is not a mathematical defect for free vectors."
+  },
+  "ownSubjectReview": {
+    "leftAlgebra": "a=(1,0,0), b=(0,1,0), c=(1,1,0), hence c=a+b and a+b-c=0 with coefficients (1,1,-1) not all zero. The set is dependent and lies in z=0.",
+    "rightAlgebra": "The standard basis (1,0,0),(0,1,0),(0,0,1) spans three dimensions; only zero coefficients give the zero vector. Right-panel coordinate labels match the shown basis roles.",
+    "visualMeaning": "All three lower-left free-vector arrows lie in the same drawn plane. Right three-axis illustration distinguishes the independent case. These qualitative relationships are the stated geometric claims.",
+    "counterchecks": [
+      "Each pair among a,b,c is noncollinear, yet the three together are dependent; pairwise noncollinearity is not enough for triple independence.",
+      "Rank of [a b c] is 2 and determinant 0; the standard-basis matrix has rank 3 and determinant 1.",
+      "Adding a zero vector would force dependence regardless of the other vectors."
+    ],
+    "limits": "The lower-left colored arrows must not be promoted to an exact, calibrated sum diagram: a rough endpoint check places a+b tens of pixels beyond the c tip. That is not the panel's asserted graphical metric claim; it asserts common-plane dependence, backed by the exact algebra above. No pixel-exact vector-sum or coordinate-axis fidelity approval is given.",
+    "decisionRationale": "No concrete error in the current image's actual qualitative assertion warrants a new asset. Preserve KEEP while explicitly retaining the schematic boundary rather than inheriting the historical BLOCK automatically."
+  },
+  "generation": {
+    "performed": false,
+    "nativePrepareRun": false,
+    "reason": "Original kept; no image generation or candidate asset needed."
+  },
+  "boundaries": {
+    "canonicalGoalTextChanged": false,
+    "canonicalAssetWritten": false,
+    "centralQaWritten": false,
+    "registryWritten": false,
+    "ledgerWritten": false,
+    "importRun": false
+  },
+  "approvalBoundary": "AI candidate opinion only, not human approval. Parent/root separate review must remain separately attributed."
+}

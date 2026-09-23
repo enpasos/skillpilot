@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-goal-visualization-candidate-review",
+  "goalId": "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+  "reviewedAt": "2026-09-21T22:06:38Z",
+  "reviewer": "codex-independent-probability-notation-review-20260922",
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "decision": "keep",
+  "recommendedPilotDecision": "accepted_pilot",
+  "independence": {
+    "referenceAndCandidateViewedBeforeEditPromptAndRootReview": true,
+    "generationParticipation": false,
+    "method": "Actual current reference JPG and candidate PNG viewed for both goals before reading edit prompts, generation metadata, root review, or current prior D decisions.",
+    "priorKnowledge": "The assigned correction area and earlier hold inventory were known. These are independent actual-raster checks of new candidates, not a claim of historically blind review."
+  },
+  "goalSnapshot": {
+    "id": "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+    "title": "Bedingte Wahrscheinlichkeiten berechnen",
+    "titleEn": "Calculate conditional probabilities",
+    "description": "Die lernende Person kann bedingte Wahrscheinlichkeiten in Sachzusammenhängen identifizieren und sie mit Baumdiagrammen sowie Vier- oder Mehrfeldertafeln aus absoluten oder relativen Häufigkeiten berechnen.",
+    "descriptionEn": "The learner can identify conditional probabilities in context and compute them with tree diagrams and four- or multi-field tables from absolute or relative frequencies.",
+    "requires": [
+      "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f"
+    ],
+    "demandLevel": "AB2"
+  },
+  "reference": {
+    "path": "app/public/assets/goal-visualizations/mathematik/c3b9c561-dd83-5903-9ec6-49c7f51bafd5/c3b9c561-dd83-5903-9ec6-49c7f51bafd5.jpg",
+    "canonicalPath": "curricula/DE/Gymnasium/visualizations/mathematik/c3b9c561-dd83-5903-9ec6-49c7f51bafd5/c3b9c561-dd83-5903-9ec6-49c7f51bafd5.jpg",
+    "sha256": "sha256:5d78516976cd24e1c9a78e1558a4798109b1c2c160115a98d85826ba65e0ee10",
+    "canonicalSha256": "sha256:5d78516976cd24e1c9a78e1558a4798109b1c2c160115a98d85826ba65e0ee10",
+    "actuallyViewed": true
+  },
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-probability-notation-20260921-v1/c3b9c561-dd83-5903-9ec6-49c7f51bafd5/candidate.png",
+    "sha256": "sha256:35597d1ab49a10950d1b1ce8f6b9d8b09e081777f08736028f972b84238fe435",
+    "width": 1679,
+    "height": 937,
+    "format": "PNG",
+    "actuallyViewed": true
+  },
+  "provenance": {
+    "receiptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-probability-notation-20260921-v1/c3b9c561-dd83-5903-9ec6-49c7f51bafd5/generation-and-root-review.json",
+    "receiptSha256": "sha256:9d6ebc3a3c10a0e5c09e94399452a2d6af70af01d3d814dc4e3f833ea224045a",
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "tool": "image_gen__imagegen",
+    "exactServingModel": "not exposed",
+    "resultId": "exec-b26b952a-c3fa-44ee-bbc4-289dafb2075a",
+    "editPrompt": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-probability-notation-20260921-v1/c3b9c561-dd83-5903-9ec6-49c7f51bafd5/edit-prompt.md",
+      "sha256": "sha256:8903295060ae67227c251bd8a40b861e271ed5a2a2301b07b4f33d64d6d803bf"
+    },
+    "attribution": "Actual generation attributed to the separate root receipt, read only after the independent candidate verdict. No more specific serving model inferred."
+  },
+  "checks": [
+    {
+      "aspect": "relative_table",
+      "outcome": "pass",
+      "evidenceDe": "Tafel mit B/B̄ als Zeilen und A/Ā als Spalten: gemeinsame Werte 0.30,0.20,0.10,0.40; P(A)=0.40, P(Ā)=0.60, P(B)=P(B̄)=0.50. Alle Summen korrekt."
+    },
+    {
+      "aspect": "conditional_ratio",
+      "outcome": "pass",
+      "evidenceDe": "Beide unteren Formeln geben P(B|A)=P(A∩B)/P(A)=0.30/0.40=0.75 richtig an. Orange Kreise markieren sowohl Zähler 0.30 als auch Nenner 0.40; das positive P(A) erlaubt die Division."
+    },
+    {
+      "aspect": "tree_complements_and_products",
+      "outcome": "pass",
+      "evidenceDe": "A-Zweige: 0.75+0.25=1, Produkte mit 0.40 ergeben 0.30 und 0.10. Ā-Zweige: 1/3+2/3=1, Produkte mit 0.60 ergeben 0.20 und 0.40. Endereignisse und Überstriche passen zu allen vier Tafelfeldern."
+    },
+    {
+      "aspect": "exact_fraction_repair",
+      "outcome": "pass",
+      "evidenceDe": "Die früher gerundeten Gleichheitsangaben =0.33/=0.67 wurden durch exakt =1/3 und =2/3 ersetzt. Es verbleibt kein Rundungswiderspruch zwischen Zweigwerten und Endwahrscheinlichkeiten."
+    },
+    {
+      "aspect": "arrow_correspondence",
+      "outcome": "pass",
+      "evidenceDe": "Schwarze Baumzweige verbinden A bzw. Ā mit den richtigen gemeinsamen Endereignissen. Blaue Hinweise verbinden die bedingte Rechnung mit Bezugsgruppe A und passendem gemeinsamen Fall; kein geänderter Pfeil verwechselt A und Ā oder B und B̄."
+    }
+  ],
+  "style": {
+    "outcome": "pass",
+    "evidenceDe": "Warmer Papiergrund, sanfte blaue Panels, schwarze handschriftnahe Schrift, orange Markierungsringe und weiche blaue Hinweislinien erhalten die bestehende Bildlandschaft."
+  },
+  "readability": {
+    "outcome": "pass_at_inspected_raster_size",
+    "evidenceDe": "Tabellenwerte, Baum-Endereignisse, Überstriche, Bedingungsstriche, Brüche 1/3 und 2/3 sowie beide unteren Quotienten sind lesbar. Keine nötige Formel abgeschnitten.",
+    "limits": "Direct raster inspection only; no new cockpit-card-width, browser, mobile, screenreader or real-host acceptance."
+  },
+  "scopeFit": {
+    "outcome": "pass",
+    "evidenceDe": "Das AB2-Beispiel verknüpft dieselben relativen Häufigkeiten in Tafel und Baum mit der bedingten Rechnung. Es zeigt keine unzutreffende Unabhängigkeit und erweitert den Scope nicht zu einer zusätzlichen Bayes-Umkehrkompetenz."
+  },
+  "blockingFindings": [],
+  "nonBlockingNotes": [],
+  "retainedGoodContent": [
+    "Table rows B/not B and columns A/not A yield the stated joint and marginal values.",
+    "P(B|A)=0.30/0.40=0.75 and P(not B|A)=0.10/0.40=0.25 are correct.",
+    "For not A with probability0.60: 0.20/0.60=1/3 and0.40/0.60=2/3 are now exact, not rounded0.33/0.67 attached to equality.",
+    "Tree products0.40*0.75=0.30,0.40*0.25=0.10,0.60/3=0.20,0.60*2/3=0.40 match all four table cells; branch pairs sum1.",
+    "Emphasized table numerator0.30 and denominator0.40, A tree branch and formula are mutually consistent; no new wrong arrow mapping.",
+    "Warm paper, blue rounded panels, orange circles and clear hand-lettered style retained, complements and fractions readable."
+  ],
+  "reconstructionPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-probability-notation-20260921-v1/c3b9c561-dd83-5903-9ec6-49c7f51bafd5/reconstruction-prompt.md",
+  "canonicalImported": false,
+  "qaAggregateChanged": false,
+  "humanApprovalGranted": false,
+  "realHostAcceptanceClaimed": false,
+  "integrationBoundary": "This approves only the exact candidate bytes as an AI candidate. Parent coordinates any later import, current page/context/profile checks and QA aggregation. No current active-JPG approval is copied to this new PNG."
+}
+

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-vready-remainder-six-current-20260923-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-vready-remainder-six-current-20260923-v1.config.json",
+  "configDigest": "sha256:11e4dddb9216552e99fdadb79707aac655fa67c2d938052fe5b609e22c766e58",
+  "goalIds": [
+    "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+    "c9df47fa-81a9-4890-91b7-2cc80da813cb",
+    "03703b29-efd8-57e0-acf5-4381b1dc67ec",
+    "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+    "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+    "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:9d0c1719a384dc1f40b0af5d27f1dd0a8ab20c49f9f70367a5fd1e6ddc595a8a"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:14e82c5c16b6e1161d63ca420316e23e224dcf65db4d3d693fcf4d582341daaa",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:65c5d281e3a13ca6ead3cf6019187140f7a06e6a6fc791ce2b5bb482faeeb9d3",
+    "reviewInputFingerprint": "sha256:9013417db6d867b44c739b86b283ae713626db5a2a2f911f77efd40609bd6baa",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-vready-remainder-six-current-20260923-v1-a",
+        "campaignDigest": "sha256:0cc81493c6c632dca9feba9c962582b507da8798c50456f70ebdf84c5e35eb58",
+        "roundId": "mathematik-m7-vready-remainder-six-current-20260923-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-vready-remainder-six-current-20260923-v1-independent-a",
+        "batchId": "mathematik-m7-vready-remainder-six-current-20260923-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:152fcc6b8a4b3baf7057bc942703fc2f76b23e8127fb66e71f50631408f89f26"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-vready-remainder-six-current-20260923-v1-b",
+        "campaignDigest": "sha256:2ef8ce226de82dd9699690e38acd6f50106075ea34afb89595708257456546a2",
+        "roundId": "mathematik-m7-vready-remainder-six-current-20260923-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-vready-remainder-six-current-20260923-v1-independent-b",
+        "batchId": "mathematik-m7-vready-remainder-six-current-20260923-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:d6877e5d77ab4fe6de5d2eb3476a1b61023f14247cb835f60d7547e0e1112d4b"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

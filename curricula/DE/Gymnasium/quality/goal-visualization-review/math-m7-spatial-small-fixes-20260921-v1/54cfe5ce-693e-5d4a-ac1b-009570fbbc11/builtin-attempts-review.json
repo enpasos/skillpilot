@@ -1,0 +1,113 @@
+{
+  "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+  "reviewAuthority": "ai_candidate",
+  "reviewer": "Codex independent agent /root/math_repaired12_blind_a; exact serving model identifier not exposed",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen.imagegen",
+  "model": "Exact serving model identifier not exposed",
+  "sourceImagesInspected": true,
+  "generatedImagesActuallyViewed": true,
+  "attempts": [
+    {
+      "id": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "attempt": 1,
+      "selected": false,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-8eb73d8d-93cf-4714-beae-296d6584676b.png",
+      "file": "attempt-01-rejected.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:06:17.211Z",
+      "fileInfo": {
+        "sha256": "sha256:f0aa51c8f7190f73ba5eb4db814dfa1ecf1b68bb637c0a0c61c348607a19885f",
+        "bytes": 1501058,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-01.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:60547b2c461e03309fef79bc1c5d7c4b91f18ad330c0792909997706ce60841b",
+        "bytes": 1517
+      },
+      "decision": "rejected",
+      "selfReview": "Rejected: axes removed but arrows not exactly collinear or doubled. Approximate start(237,828), blue tip(406,752), green tip(603,645); expected blue midpoint(420,737)."
+    },
+    {
+      "id": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "attempt": 2,
+      "selected": false,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-6dc1df1a-cd61-4196-a1cc-2f52c2c17008.png",
+      "file": "attempt-02-rejected.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:14:53.103Z",
+      "fileInfo": {
+        "sha256": "sha256:575c693bd03d833d1ca01a6d2c67a696afdddcc7cbe335fe65f78a27e232f3e7",
+        "bytes": 1538199,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-02.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:d4eb1eee086b88326a426e9782303b055184c0ee405b14f57b1887de7d905544",
+        "bytes": 1079
+      },
+      "decision": "rejected",
+      "selfReview": "Rejected: direction-sketch labels now explicit, but start(214,827), blue tip(369,760), green tip(599,660) gives blue ratio about0.41 rather than0.5."
+    },
+    {
+      "id": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "attempt": 3,
+      "selected": false,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-a7ddef6b-228c-4452-8d83-d0550b47c42e.png",
+      "file": "attempt-03-rejected.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:16:28.863Z",
+      "fileInfo": {
+        "sha256": "sha256:ddbc526c2271a4ac2698aaadb4f9ee7ef7913babd3791465f28c585395f5f1a6",
+        "bytes": 1574511,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-03.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:1d998aa97058ed96d7b3fe062fd97d188475b1e7043b3735d45c126f3328521f",
+        "bytes": 837
+      },
+      "decision": "rejected",
+      "selfReview": "Rejected: direct midpoint edit moved the blue tip only slightly; length ratio still approximately0.42."
+    },
+    {
+      "id": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "attempt": 4,
+      "selected": false,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-dd3f8105-82e9-4dc1-8b88-4194ab949e6d.png",
+      "file": "attempt-04-rejected.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:21:34.825Z",
+      "fileInfo": {
+        "sha256": "sha256:efb3dfcb994829ef0c19c513928eafedef42052671722eb1018120f33f6c810c",
+        "bytes": 1622652,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-04.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:587b182b3e8aa33846a5308e4a001b0761edc48075f42eeccc4bdb304915a437",
+        "bytes": 912
+      },
+      "decision": "rejected",
+      "selfReview": "Rejected: green shortening substantially improves length ratio, but start~(214,827), blue tip~(374,757), green tip~(539,675) still produce a visibly kinked ray: blue slope~-0.438, full green slope~-0.468. Collinearity is the teaching target, so residual kink remains a blocker."
+    }
+  ],
+  "nativePrepare": {
+    "beforeGeneration": true,
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "note": "Native prepare completed before initial and subsequent generation attempts; only tmp prompt metadata written."
+  },
+  "constructionReferences": {
+    "used": true,
+    "note": "Exact temporary reference diagrams were used only as provider inputs in attempt2 where present; no code-rendered geometry was composited into final images. Further NBP rounds will not use these references."
+  },
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false,
+    "humanApprovalClaimed": false
+  }
+}

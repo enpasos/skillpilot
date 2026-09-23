@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-a-batch-001-gpt6",
+  "campaignId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-a",
+  "roundId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-a",
+  "batchId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:074a589e75954f6e612afad75c69f222952c989bc5067d10ed9d6ec3d495cd54",
+  "bundleFingerprint": "sha256:121b39b75c20c5da4f706ee1db89b0d0b2c7354f71a16b670962b41e39204b75",
+  "bookDigest": "sha256:b5e48ae230dfafbfd07cb6a375fcc3c1a17e40c8558e1a2b564249f5df22023d",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "c19d1f8f-b297-5a58-b1d4-26d811e4aff4"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:074a589e75954f6e612afad75c69f222952c989bc5067d10ed9d6ec3d495cd54"
+    }
+  ],
+  "startedAt": "2026-09-23T09:06:50Z",
+  "completedAt": "2026-09-23T09:07:40Z",
+  "status": "completed",
+  "outputDigest": "sha256:a4a531757fd558f9f17445a9b4e2ac7d6a9f81a3c3ecb1e3501da7f47b5ecbab",
+  "toolchainVersion": "codex-agent-2026-09-23"
+}

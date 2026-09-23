@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-proof-problem-next20-v1-20260920-resolution-5c632c68-fc34-582e-8581-ae9e55ab538f",
+  "goal": {
+    "goalId": "5c632c68-fc34-582e-8581-ae9e55ab538f",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:7ec4c05a25913f3232fb429b55018bbc7aa74006c05c92d477dc3ffb2e46256a",
+    "pageFingerprint": "sha256:b5fcb68b23cce31e9dad8fa5cb15ac302c17bc81e6f47fb99430338381a6b41b",
+    "goalReviewContextFingerprint": "sha256:73fd6be224cef35d4efca816a52c08fc501bbeab98e30cea791767af5053669e",
+    "finalText": {
+      "titleDe": "Induktionsbeweis durchführen",
+      "titleEn": "Carry out an induction proof",
+      "descriptionDe": "Die lernende Person kann einen Beweis durch vollständige Induktion führen (Induktionsanfang, -voraussetzung, -schritt) und die Schlussfolgerung korrekt formulieren.",
+      "descriptionEn": "The learner can carry out a proof by induction (base case, induction hypothesis, induction step) and formulate the conclusion correctly."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-a",
+      "campaignDigest": "sha256:a41a6260e12d06d970c0aa5b563f6ced07b7b524b77304b4bca474a3cdd33f8a",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:73fd6be224cef35d4efca816a52c08fc501bbeab98e30cea791767af5053669e",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a.batch-001",
+      "runId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "runManifestDigest": "sha256:60fad9393a29128686a5228db0da4a4ed48bd8cd6ed95b0bc84d42c344aac21e",
+      "resultsDigest": "sha256:329e91f5901cf79b026c61fad742d42a2007943b5d265c3d9db874909ff0c830",
+      "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.013",
+      "recordDigest": "sha256:79ab0868990c3982e57a67504ac25a4f2ec759643bf303213e18a5f6f48de2b9"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-b",
+      "campaignDigest": "sha256:2e75517c969f994726a963dcd0ef3968698ed89412db83e1268cebe54ed38ede",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:73fd6be224cef35d4efca816a52c08fc501bbeab98e30cea791767af5053669e",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b.batch-001",
+      "runId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "runManifestDigest": "sha256:a1e2b99b173d09f363ed0018614be748221ac4c77008c186e078758cbee79dbe",
+      "resultsDigest": "sha256:267b1d842c5a3ccbdf21d74874a55e6fce3d149e5db37b2e4628144696d33217",
+      "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.5c632c68-fc34-582e-8581-ae9e55ab538f",
+      "recordDigest": "sha256:891a1b522560cac4547c88b561e6d31695ff201792d9609601684a76670345ca"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:812ca966f5ddee8da9efb458a624b88645325047d0b2b7d5a617c3390c7239b7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-current-17.json",
+    "manifestId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-synthesis",
+    "manifestDigest": "sha256:a30996e2d0a152c8caff3e90a54e27fff5c48d715087960bf1511035e9a0ff1c",
+    "manifestFingerprint": "sha256:6b041c5cf340b07f17115de86e08a85cebaee8900eb683276005b1788b6ea234",
+    "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-12"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-12",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex Root informed synthesis; not an additional independent review",
+    "synthesizedAt": "2026-09-21T20:55:01.000Z",
+    "rationaleDe": "A bindet Anfang und Schritt an den Indexbereich und variiert von Identität zu Ungleichung; B bestätigt einen zusammenhängenden vollständigen Induktionsbeweis.",
+    "rationaleEn": "A binds base and step to the index range and varies from identity to inequality; B confirms a coherent complete induction proof.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Vollständige Induktion verknüpft einen gültigen Anfang mit einem allgemeinen Übergang von n auf n + 1; die Induktionsvoraussetzung gilt nur im Schritt und darf die zu beweisende Folgeaussage nicht schon enthalten.",
+      "essentialUnderstandingEn": "Mathematical induction links a valid base case to a general transition from n to n + 1; the induction hypothesis is used within the step and must not already assume the next statement being proved.",
+      "observablePerformanceDe": "Die lernende Person beweist 1 + 3 + … + (2n − 1) = n² für n ≥ 1 mit Anfang, klar markierter Induktionsvoraussetzung und Übergang durch Addition von 2n + 1; sie formuliert die abschließende Aussage für alle zulässigen n.",
+      "observablePerformanceEn": "The learner proves 1 + 3 + … + (2n − 1) = n² for n ≥ 1 with a base case, a clearly marked induction hypothesis and a transition adding 2n + 1, then states the conclusion for all admissible n.",
+      "transferExpectationDe": "Bei der neuen Ungleichung 2ⁿ ≥ n + 1 für n ≥ 0 passt sie Anfang und Übergang an die Ordnungsrelation an, statt den Gleichungsbeweis nur mit anderen Zahlen zu wiederholen.",
+      "transferExpectationEn": "For the fresh inequality 2ⁿ ≥ n + 1 for n ≥ 0, the learner adapts the base case and induction step to the order relation instead of merely repeating the identity proof with different numbers."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-a916ff708b8468cba7b8359fbc73f0852bd33199a85759c3df06390df1194a33",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:097a0843df7268fd1e13678c1f196912d6ab91edb8ce8094b227b8a4c48bdb46"
+}

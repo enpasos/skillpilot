@@ -1,0 +1,113 @@
+{
+  "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+  "reviewAuthority": "ai_candidate",
+  "reviewer": "Codex independent agent /root/math_repaired12_blind_a; exact serving model identifier not exposed",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen.imagegen",
+  "model": "Exact serving model identifier not exposed",
+  "sourceImagesInspected": true,
+  "generatedImagesActuallyViewed": true,
+  "attempts": [
+    {
+      "id": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "attempt": 1,
+      "selected": false,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-2fe33a03-067c-437b-aff9-dd158b4ce335.png",
+      "file": "attempt-01-rejected.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:04:41.276Z",
+      "fileInfo": {
+        "sha256": "sha256:cb767292c3f1aed73de12b9784a586d64870e0a72dc455bfdcb1c3cb22bd8701",
+        "bytes": 1360384,
+        "width": 1679,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-01.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:d6661fabfbd4fa716108bb6d2cb2040099578c7864c0d506708e47decf3d9b43",
+        "bytes": 1992
+      },
+      "decision": "rejected",
+      "selfReview": "Rejected: blue a points up-right instead of left/down under the stated positive-axis basis; green b consequently has an incompatible direction. Right blue arrow is about 39% of orange length."
+    },
+    {
+      "id": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "attempt": 2,
+      "selected": false,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-32980302-bfdd-4cf0-9a68-f9a599ad7307.png",
+      "file": "attempt-02-rejected.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:12:58.297Z",
+      "fileInfo": {
+        "sha256": "sha256:cde52326b09c124cb6054365cd263aeb9a500c47df85680c1a1bee516148a8d0",
+        "bytes": 1361263,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-02.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:082ce91c534a828b8441ad983b1774f9601c2960b7097b732742d25f25861671",
+        "bytes": 1653
+      },
+      "decision": "rejected",
+      "selfReview": "Rejected: left direction corrected, but right blue endpoint approximately (1085,552) from origin (949,671), orange endpoint (1296,343); blue/orange length about 0.38, not 0.5."
+    },
+    {
+      "id": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "attempt": 3,
+      "selected": false,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-a2c11aa8-c6c0-4a2b-ba81-47b38fade464.png",
+      "file": "attempt-03-rejected.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:17:07.468Z",
+      "fileInfo": {
+        "sha256": "sha256:ab66046811adc499217501cf0a9ded42e728d4457bd4c56cf5faa37975b86a80",
+        "bytes": 1411876,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-03.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:91bfaf9e44cae1ab55c3f8498798e1d129f3516f3f90e73eb88fc5ccdfd23fd8",
+        "bytes": 1015
+      },
+      "decision": "rejected",
+      "selfReview": "Rejected: blue extended past midpoint to approximately (1151,487); origin (949,670), orange tip (1296,343); blue/orange length about 0.57, not 0.5."
+    },
+    {
+      "id": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "attempt": 4,
+      "selected": false,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-a47a0a21-93d9-4a38-a308-7ea4f3af00df.png",
+      "file": "attempt-04-rejected.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:22:22.527Z",
+      "fileInfo": {
+        "sha256": "sha256:a88b51a4f5029f50566c1dea3726c7e7b21b28d3384d86cd6344b6a2bc09885a",
+        "bytes": 1434152,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-04.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:0d98f5bfddce91f81f680131d4bb823ae3964d70fbfec7d9ca4614ad7b4921d3",
+        "bytes": 1063
+      },
+      "decision": "rejected",
+      "selfReview": "Rejected: orange overshoots requested doubled endpoint; origin ~(949,670), blue tip ~(1151,487), orange tip ~(1417,221). Ratio about 0.42, not 0.5. Do not approve correct component arithmetic over incorrect scale drawing."
+    }
+  ],
+  "nativePrepare": {
+    "beforeGeneration": true,
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "note": "Native prepare completed before initial and subsequent generation attempts; only tmp prompt metadata written."
+  },
+  "constructionReferences": {
+    "used": true,
+    "note": "Exact temporary reference diagrams were used only as provider inputs in attempt2 where present; no code-rendered geometry was composited into final images. Further NBP rounds will not use these references."
+  },
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false,
+    "humanApprovalClaimed": false
+  }
+}

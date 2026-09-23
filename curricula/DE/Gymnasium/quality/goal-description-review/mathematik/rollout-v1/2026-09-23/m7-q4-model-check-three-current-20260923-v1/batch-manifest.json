@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-q4-model-check-three-current-20260923-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q4-model-check-three-current-20260923-v1.config.json",
+  "configDigest": "sha256:15d064c8c61896c681101c08a4b405e068237aa471e0b7d3ea6bbecb02723423",
+  "goalIds": [
+    "e03eca28-9a57-5b24-877c-2e63fecee986",
+    "163dd583-8308-53f0-b60d-34588787988d",
+    "519660d0-85e5-57a6-a219-d0a253336649"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:411f11aa80daa244156669516c12e99615e7b481f562824d73c690e3293c40ba"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:6324cfcb0bb6b84698076d99478a7fa217523bef0ee212dc4644b358fb234d46",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c740a5907b304fba5387f4ebe63144a9db23c1dd5b8422c9b5a6e75edb5692e5",
+    "reviewInputFingerprint": "sha256:e5875679d84cb0322218bcbbb262ddce413db78c3ea65f94169460464daa9891",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-q4-model-check-three-current-20260923-v1-a",
+        "campaignDigest": "sha256:37f9367e44fe9ebfbc5e620144522a4c3a8f5d0ab3c73407f57bf6a110ce4221",
+        "roundId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-q4-model-check-three-current-20260923-v1-independent-a",
+        "batchId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:f06c697d5a254487285d276fdb3e45c1898b540b8713ec65df0d3823c33b2802"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-q4-model-check-three-current-20260923-v1-b",
+        "campaignDigest": "sha256:c712efb24adf856f9fe2960256f0e8b8ef9611e6d018ccbf006c39804ca07700",
+        "roundId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-q4-model-check-three-current-20260923-v1-independent-b",
+        "batchId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:7c170230e9b878211b80dc5c59be7eb448a0471515ec638d043628b2967e8b5f"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

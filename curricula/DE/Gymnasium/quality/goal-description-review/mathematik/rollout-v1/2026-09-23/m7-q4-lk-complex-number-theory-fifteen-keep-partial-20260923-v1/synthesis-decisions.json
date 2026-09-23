@@ -1,0 +1,468 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T04:39:04.347Z",
+  "batch": {
+    "batchId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1",
+    "batchManifestDigest": "sha256:a6c178bc9eaf5f52db5e58dd6d012092390fe1d97bf73a4cad1b1a893a065fa4",
+    "configDigest": "sha256:452d50e06608778ad4a25c8a06d86fabc459c84d34c1687a8808888d1b7c7094",
+    "bundleFingerprint": "sha256:d86a1dac8d50c99b37f055571d84d0de5a80c9e220eac7b72dcea7ec8e15cd51",
+    "bookDigest": "sha256:d56dfd012f8e87e55e08a1392541d9f5e5d409106fb3932e892d0c3d2a48ba3d",
+    "reviewInputFingerprint": "sha256:2ec384980462e461312dd3472614e7bc4deefb2d5fca02ba8ae5e26a48a1b15f",
+    "dualSummaryDigest": "sha256:95c91840ef88db4ba429ce7ce5cfc2eecd99096d6315dc5fecabe2f569de9fa4",
+    "canonicalLandscapeDigest": "sha256:34a91c0c9c5107cf0ccc214dd63965efcb9828cc09fbc92dd5e1304a8493ffd8"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-a",
+      "campaignDigest": "sha256:de88bcba4993643082dd819d32ebc361ae2bdb9c0a0768e933a45b51f29223a8",
+      "roundId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:2ec384980462e461312dd3472614e7bc4deefb2d5fca02ba8ae5e26a48a1b15f",
+      "batchId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:e0656398ab0b723c21dc01bb800da2b05091b1ad47c453343b609daeb2a8bc36",
+      "runId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "runManifestDigest": "sha256:811108419a57e6b606e03922afacf3dbd0d04bdfb3902deb877050b9a6792d5b",
+      "resultsDigest": "sha256:a7da9ca628cfba60edfea26c37c4cd31139f4df6730fbe7ab1baca2774159ac0"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-b",
+      "campaignDigest": "sha256:fdc7fb80245a27307002d73c8e038a2439c1208b32195807d244b45898fb82a8",
+      "roundId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:2ec384980462e461312dd3472614e7bc4deefb2d5fca02ba8ae5e26a48a1b15f",
+      "batchId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:7053cfd667e101b6be8641254ce2734f883bd03587bf16c3523d6a5935170b47",
+      "runId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "runManifestDigest": "sha256:91281b656d00151f1c0041925bc1f33d9d508ee283b07b93ad5e4f530ecbb579",
+      "resultsDigest": "sha256:bad7ee7c16ee89c8dbc252ad4c7723c0072af9f2b55e578ba1543d3774c34f08"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-001",
+      "goalId": "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b980ff18c478dfa95b944486306a37c6bb2d0b4085b39b355406da99c5bb730a",
+      "pageFingerprint": "sha256:d59567b9dab8f3c61eb2c6b8bdda6f95cb51214d8c82f4bf25c8cbdba37c8f92",
+      "goalReviewContextFingerprint": "sha256:d0e83f09fb02f92d9c696433a0693b396f6167d31790d8f663e62f7a5e8ddc8e",
+      "finalText": {
+        "titleDe": "Komplexe Zahlen in algebraischer Form additiv nutzen",
+        "titleEn": "Use complex numbers additively in algebraic form",
+        "descriptionDe": "Die lernende Person kann Real- und Imaginärteil identifizieren, komplexe Zahlen in der Form a + bi darstellen und sie addieren oder subtrahieren.",
+        "descriptionEn": "The learner can identify real and imaginary parts, represent complex numbers in the form a + bi, and add or subtract them."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.22b66c1e-50b1-505f-a388-c39131a4e1c3",
+          "recordDigest": "sha256:3ae40f65d5d635d647ec1abd30149dc66322662a7740f3705eedf8b9ddc4f8c6"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r01",
+          "recordDigest": "sha256:c0ee1e6230f586c343b16d208ec55c506bd98c1b086158d50155360ad1dc087a"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews halten das additive Ziel für eine prüfbare Kompetenz; die algebraische und geometrische Deutung sind in der aktuellen Seite gebunden. Der zunächst vermutete Maßstabsfehler wurde am Originalpixel widerlegt.",
+      "rationaleEn": "Both independent reviews retain the assessable additive competence, bound to the current algebraic and geometric page. Original-pixel inspection disproved the initially suspected scale error."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-002",
+      "goalId": "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:179614ddf2bec95c5c3f3b38a613537caa38f7575b24b6a52cdb5ef7fc36d53a",
+      "pageFingerprint": "sha256:82eea8c2affd610b26b8b9468517b8d2a6ff68faeb8b927380a637e45fd45f2e",
+      "goalReviewContextFingerprint": "sha256:c329574309ebbb535f5bb0d9aa6eaf826993c85cad7273d305241ae3124b990d",
+      "finalText": {
+        "titleDe": "Gleichungen in der Menge der komplexen Zahlen lösen",
+        "titleEn": "Solve equations in the set of complex numbers",
+        "descriptionDe": "Die lernende Person kann einfache Gleichungen in der Menge der komplexen Zahlen lösen, insbesondere quadratische Gleichungen mit nichtreellen Lösungen, und die Lösungen in geeigneter Form darstellen.",
+        "descriptionEn": "The learner can solve simple equations in the set of complex numbers, especially quadratic equations with non-real solutions, and represent the solutions in a suitable form."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.5922affd-b1f9-5ad9-963e-25d3734c3b72",
+          "recordDigest": "sha256:634d743a735d59138948f6a958d8f2a74d6af61600bf126d7a213c17a74aae96"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r03",
+          "recordDigest": "sha256:750f6f5042fe31819c9c0e8e436c59e53d7529e144ce197fa77b8f02329b1e3d"
+        }
+      },
+      "rationaleDe": "Das Ziel trennt das Lösen komplexer Gleichungen als beobachtbare Handlung von bloßem Rechnen mit komplexen Zahlen; beide unabhängigen Reviews bestätigen die vorhandene Formulierung.",
+      "rationaleEn": "The goal makes solving equations over the complex numbers observable rather than merely manipulating numbers; both independent reviews retain the current wording."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-003",
+      "goalId": "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3442a4a53b793c2601d52f09d9b2e63f864d5380eb41d118dd8458c82d772f15",
+      "pageFingerprint": "sha256:cff11279d0746dd4132fad3fb2eed5ed659a662fa7bcceae73c12c249feea930",
+      "goalReviewContextFingerprint": "sha256:220a587602ed2dffb397caecfe5ad635bb03330082b944c31341379acf8a1519",
+      "finalText": {
+        "titleDe": "Komplexe Zahlen als 2×2-Matrizen darstellen (LK)",
+        "titleEn": "Represent complex numbers as 2x2 matrices",
+        "descriptionDe": "Die lernende Person kann eine komplexe Zahl durch eine passende 2×2-Matrix repräsentieren und die Matrixdarstellung fachsprachlich deuten.",
+        "descriptionEn": "The learner can represent a complex number by a suitable 2x2 matrix and interpret the matrix representation using correct terminology."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+          "recordDigest": "sha256:f2d469ebb8a2116a98ff03f742cbfe02ac54ce0ca4bdf3d1334ad4b1c6a905bc"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r05",
+          "recordDigest": "sha256:2de2b50b3e025126e1f6775701943e65ecc262f170e86664033701e7a777c278"
+        }
+      },
+      "rationaleDe": "Die Darstellung komplexer Zahlen durch 2×2-Matrizen ist als eine eigenständige überprüfbare Kompetenz formuliert; beide unabhängigen Reviews empfehlen KEEP.",
+      "rationaleEn": "Representing complex numbers by 2×2 matrices is a distinct assessable competence; both independent reviews recommend KEEP."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-004",
+      "goalId": "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f280e6296af70e36cbc4f634dd8668b0cac5cefc5149cd968569996e18087d47",
+      "pageFingerprint": "sha256:da6e6e492987eb5a24e937d3f4dedeba67192396f63b0df614b1df362fb94300",
+      "goalReviewContextFingerprint": "sha256:7e3c8638dee4787f9baeec077abf5f3a74994f6fcfda9860650efe4624ce248a",
+      "finalText": {
+        "titleDe": "Komplexe Zahlen algebraisch multiplizieren",
+        "titleEn": "Multiply complex numbers algebraically",
+        "descriptionDe": "Die lernende Person kann komplexe Zahlen in algebraischer Form multiplizieren, die Beziehung $i^2=-1$ nutzen und Ergebnisse als $a+bi$ darstellen.",
+        "descriptionEn": "The learner can multiply complex numbers in algebraic form, use $i^2=-1$, and represent results as $a+bi$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+          "recordDigest": "sha256:a81009c148aacdf51a082dcd32f9c98ec713755f17fdf0d9d589746640af70fe"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r08",
+          "recordDigest": "sha256:3589df421e7b2fdab099dfa084b93a97215daa82334482a2c224d0344eba4e4a"
+        }
+      },
+      "rationaleDe": "Die algebraische Multiplikation wird als einzelne prüfbare Handlung erfasst; beide Reviews fanden keine belegte Schwäche der aktuellen Beschreibung.",
+      "rationaleEn": "Algebraic multiplication is expressed as one assessable action; neither review found a substantiated weakness in the current description."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-005",
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f469f1689c2764898336e2cd09602b30953b5e3eed770f9157a917a12091bfcd",
+      "pageFingerprint": "sha256:1c4f8398323757cb96270c83d97bd22a162dfd96f1fd53235c52ef9b010fc7f1",
+      "goalReviewContextFingerprint": "sha256:6982cdffc2d7fb01158118313fb7b17277864972487d9cdeb6fdbc7fa3b164b6",
+      "finalText": {
+        "titleDe": "Komplexe Zahlen algebraisch dividieren",
+        "titleEn": "Divide complex numbers algebraically",
+        "descriptionDe": "Die lernende Person kann komplexe Zahlen in algebraischer Form dividieren, konjugiert komplexe Zahlen nutzen und Ergebnisse als $a+bi$ darstellen.",
+        "descriptionEn": "The learner can divide complex numbers in algebraic form, use complex conjugates, and represent results as $a+bi$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+          "recordDigest": "sha256:8c298d43a9756bda988830c0cdae0dcf6cf83a000b45895c88dc4db1527af532"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r09",
+          "recordDigest": "sha256:3b2229d7809db7e54c626db233e1cf6acda36949c3d7b8fd2d43dff86e031f39"
+        }
+      },
+      "rationaleDe": "Die algebraische Division einschließlich zulässigem Divisor ist in der aktuellen Kompetenz prüfbar; beide Reviews empfehlen KEEP ohne belegte Textkorrektur.",
+      "rationaleEn": "Algebraic division with an admissible divisor is assessable under the current competence; both reviews recommend KEEP without a substantiated text correction."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-006",
+      "goalId": "c1f08d89-d65a-5041-8ff3-37538f771b8c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:45eaa15b32c78f0928fc478ad3157da9b228e06ac90ba5351c4d9cf8b9437b9f",
+      "pageFingerprint": "sha256:543d216ba7b22a1fa5181a1027b93154d598f2818d748595e83194ac4698c5cc",
+      "goalReviewContextFingerprint": "sha256:8a8627ec52937205e3ce96cee18097e496a7671c24df2fb2c9171a1470428d3e",
+      "finalText": {
+        "titleDe": "Euklidischen Algorithmus anwenden (LK)",
+        "titleEn": "Apply the Euclidean algorithm (advanced course)",
+        "descriptionDe": "Die lernende Person kann den euklidischen Algorithmus erläutern und an Beispielen zur Bestimmung des größten gemeinsamen Teilers anwenden.",
+        "descriptionEn": "The learner can explain and apply the Euclidean algorithm to examples for determining the greatest common divisor."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.c1f08d89-d65a-5041-8ff3-37538f771b8c",
+          "recordDigest": "sha256:94466e2acd1dfc97636c1aa4fb11ca0058fbacc367f18280c7efc200f2f6a9c0"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r10",
+          "recordDigest": "sha256:30e39eee81880cbe27b6c6ee50646506874111753d8d7bce39786977584c8e36"
+        }
+      },
+      "rationaleDe": "Die Anwendung des euklidischen Algorithmus ist fachlich eng und durch konkrete Rechenschritte sowie Rückprüfung beobachtbar; zwei unabhängige KEEP-Entscheidungen liegen vor.",
+      "rationaleEn": "Applying the Euclidean algorithm is narrow and observable through concrete steps and checking; two independent KEEP decisions are present."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-007",
+      "goalId": "c371b3f0-dd0e-5263-b616-de6c362f70db",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fa5483313253bb1145ad2899c8aff6db6f695767df18dcd869c0092a4444f9cb",
+      "pageFingerprint": "sha256:ce92b399f41fc3d6315326a52e9b2c3e515282edd76edb695981114fb71341b7",
+      "goalReviewContextFingerprint": "sha256:92d8b5c15a5294609fe15f6507d1542fdbe1c98d3aa14fdca77d4a04f1ed6dd4",
+      "finalText": {
+        "titleDe": "Erweiterten euklidischen Algorithmus anwenden (LK)",
+        "titleEn": "Apply the extended Euclidean algorithm (advanced course)",
+        "descriptionDe": "Die lernende Person kann den erweiterten euklidischen Algorithmus anwenden und eine Darstellung des größten gemeinsamen Teilers als Linearkombination bestimmen.",
+        "descriptionEn": "The learner can apply the extended Euclidean algorithm and determine a representation of the greatest common divisor as a linear combination."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.c371b3f0-dd0e-5263-b616-de6c362f70db",
+          "recordDigest": "sha256:dca0a898e856702d176e07d2216308e11d7e0167b98ae7507a7411a16232c9ce"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r11",
+          "recordDigest": "sha256:e3c053a8f1e0c26985a191e476c0753c1268a5a68f346229e337eeadd49217e6"
+        }
+      },
+      "rationaleDe": "Der erweiterte euklidische Algorithmus ist vom Grundalgorithmus unterscheidbar und überprüfbar; beide unabhängigen Reviews halten den Zieltext.",
+      "rationaleEn": "The extended Euclidean algorithm is distinguishable from the base algorithm and assessable; both independent reviews retain the goal text."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-008",
+      "goalId": "16767f5e-5f21-5adb-8365-01b0d64c28f4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:40d52bd7baebcd73e8d1885c4da299ce6b2f0b9a68588aa17568a1d9da69c8e5",
+      "pageFingerprint": "sha256:7e2535eda568658313655044fda39ddebce650f85f677cbd28ad65c80c0c68bf",
+      "goalReviewContextFingerprint": "sha256:f44657ce46b9fe12c2d3db61e278417f3e369927fe00eaafd0a4e4395a158828",
+      "finalText": {
+        "titleDe": "Euklidische Algorithmen digital nachvollziehen (LK)",
+        "titleEn": "Trace digital implementations of Euclidean algorithms (advanced course)",
+        "descriptionDe": "Die lernende Person kann die Schritte einer Implementierung des euklidischen oder erweiterten euklidischen Algorithmus in einer Tabellenkalkulation oder Programmierumgebung den mathematischen Operationen zuordnen und das Ergebnis an einem Beispiel prüfen.",
+        "descriptionEn": "The learner can relate the steps of a spreadsheet or program implementation of the Euclidean or extended Euclidean algorithm to the corresponding mathematical operations and check the result on an example."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.16767f5e-5f21-5adb-8365-01b0d64c28f4",
+          "recordDigest": "sha256:eb721fb89fb673ed6ba0b6a911dcb818a8c9a3040efec1c9e00e5230b2c4e6c4"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r12",
+          "recordDigest": "sha256:7c93c5fc6934bde723fb5aeb85f576d5112f2c8dc7d816d4891d7220fb26ce11"
+        }
+      },
+      "rationaleDe": "Digitales Nachvollziehen der Algorithmusschritte ist eine eigenständige beobachtbare Verstehensleistung; beide Reviews bestätigen die aktuelle Formulierung.",
+      "rationaleEn": "Tracing algorithmic steps digitally is a distinct observable understanding task; both reviews confirm the current wording."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-009",
+      "goalId": "d8cbf2bd-2512-5661-b431-4aea7e688912",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:690dc03c9b7bdc9857295b5e6b889d49fe5c675d799f297bddd7ed06c085b193",
+      "pageFingerprint": "sha256:aa177abe93cf27396facd7fe8fc91eeaf824882295bf929296bbc241a47f36d5",
+      "goalReviewContextFingerprint": "sha256:bbb7b87b4cdb280852f5ca27794e91bb3616665920815a25afd89b5f1c9134ff",
+      "finalText": {
+        "titleDe": "Modulare Arithmetik nutzen (LK)",
+        "titleEn": "Use modular arithmetic (advanced course)",
+        "descriptionDe": "Die lernende Person kann Potenzen modulo $n$ effizient berechnen und die Rechenschritte fachsprachlich erläutern.",
+        "descriptionEn": "The learner can compute powers modulo $n$ efficiently and explain the calculation steps."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.d8cbf2bd-2512-5661-b431-4aea7e688912",
+          "recordDigest": "sha256:3d4006f5d99d76cfcdb1732920531efff8a01ad9ab5ce4d37c5d9565f47b044f"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r13",
+          "recordDigest": "sha256:69bc06aa2b876c5a50afa1ab620ba4521e2e083917c66c2daa0ef1477ac90a62"
+        }
+      },
+      "rationaleDe": "Das Anwenden modularer Arithmetik lässt sich an Kongruenzen begründen und prüfen; beide Reviews empfehlen KEEP. Die vermeintliche falsche Exponentenrechnung des Bildes wurde am Originalpixel entkräftet.",
+      "rationaleEn": "Using modular arithmetic can be justified and checked with congruences; both reviews recommend KEEP. Original-pixel inspection refuted the supposed exponent error in the image."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-010",
+      "goalId": "a7c2aa01-4942-597f-a65f-ebb913d0019b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4df9761da446ce45cdfdf05f263fee72a5debc610288faeac23b010f0c241c82",
+      "pageFingerprint": "sha256:d77a595478fe0dc9b5398bcff21690f564e00d4eb01faeac6f13f105b830a3b3",
+      "goalReviewContextFingerprint": "sha256:de4000950bbe8409d5a07fec0d79a67c1e0b3e95e9a03359e5ccec348606fc54",
+      "finalText": {
+        "titleDe": "Chinesischen Restsatz formulieren und Voraussetzungen prüfen (LK)",
+        "titleEn": "State the Chinese remainder theorem and check prerequisites (advanced course)",
+        "descriptionDe": "Die lernende Person kann den chinesischen Restsatz für paarweise teilerfremde Moduln formulieren, die Voraussetzungen prüfen und die Eindeutigkeit der Lösung modulo des Produktmoduls deuten.",
+        "descriptionEn": "The learner can state the Chinese remainder theorem for pairwise coprime moduli, check the prerequisites, and interpret uniqueness modulo the product modulus."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.a7c2aa01-4942-597f-a65f-ebb913d0019b",
+          "recordDigest": "sha256:da985d7f5a9e7d6f6e9c5b756cc04fa33341d81f8e6c3dc3b93c707a57fa2360"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r14",
+          "recordDigest": "sha256:840baaae3ba081fdb6cd05cd1dd76d1e458bed9cf75b65ab7e79095c89e7d23e"
+        }
+      },
+      "rationaleDe": "Formulierung und Voraussetzungen des chinesischen Restsatzes sind in diesem eigenen Ziel explizit prüfbar; beide unabhängigen Reviews halten den Text.",
+      "rationaleEn": "Stating the Chinese remainder theorem and checking its conditions are explicit and assessable in this separate goal; both independent reviews retain the text."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-011",
+      "goalId": "701b3942-9f70-548e-9d02-a34b7e64aa17",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cac22e9808792c8c239a9c53646a391e4b7f7781f71104b36c9c3f99732330e8",
+      "pageFingerprint": "sha256:861dfb04af7278af074d6d9d48dbd823dc6c4f78a07a09b0e8e0aa8d8d9227ed",
+      "goalReviewContextFingerprint": "sha256:6d9c2374c94556547e9af5526a5d676e2edc49e83a93fc9bfd41626730b77d44",
+      "finalText": {
+        "titleDe": "Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK)",
+        "titleEn": "Explain the constructive proof of the Chinese remainder theorem (advanced course)",
+        "descriptionDe": "Die lernende Person kann den konstruktiven Beweis des chinesischen Restsatzes mit den Hilfsprodukten M_i, modularen Inversen y_i sowie der Eindeutigkeit modulo des Produktmoduls nachvollziehen und fachsprachlich erläutern.",
+        "descriptionEn": "The learner can follow and explain the constructive proof of the Chinese remainder theorem using the auxiliary products M_i, modular inverses y_i, and uniqueness modulo the product modulus."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.701b3942-9f70-548e-9d02-a34b7e64aa17",
+          "recordDigest": "sha256:204e68a05545ea4a9bb3fb318658d8459f5d45a080e7181dec7c0db1d0c33b15"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r15",
+          "recordDigest": "sha256:a7d5ed3010659737811a063d3ce59d0d716e1f63c06485739718c63ec34d84c8"
+        }
+      },
+      "rationaleDe": "Die konstruktive Begründung des chinesischen Restsatzes ist als eigenständige Leistung von dessen bloßer Anwendung getrennt; beide Reviews empfehlen KEEP.",
+      "rationaleEn": "The constructive justification of the Chinese remainder theorem is distinct from merely applying it; both reviews recommend KEEP."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-012",
+      "goalId": "474fe553-d868-50d9-a19b-761e64f21c0d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9540b2026c57c19bd602cc268745529ebf2911291c7f12701272788cb9b6c0df",
+      "pageFingerprint": "sha256:9d277a568583566c73ce49227ed261c3980691b4019c010548891c195ee745a2",
+      "goalReviewContextFingerprint": "sha256:eb3372f17d9da2fc6c3295c81da95d5e0a815870ed0e74be5c7e0a212579e0d4",
+      "finalText": {
+        "titleDe": "Kleinen Satz von Fermat beweisen (LK)",
+        "titleEn": "Prove Fermat’s little theorem (advanced course)",
+        "descriptionDe": "Die lernende Person kann den kleinen Satz von Fermat formulieren, beweisen und seine Aussage in modular-arithmetischen Beispielen deuten.",
+        "descriptionEn": "The learner can state and prove Fermat’s little theorem and interpret its statement in modular arithmetic examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.474fe553-d868-50d9-a19b-761e64f21c0d",
+          "recordDigest": "sha256:9ea849c0930a55db79c27f5b5f17a5f73caa96a634e2c8363c9a58410525cb11"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r17",
+          "recordDigest": "sha256:8ede6519e18e4adf55505ee8b91e2798539021032d834895f2279b25a446de6e"
+        }
+      },
+      "rationaleDe": "Das Beweisen des kleinen Satzes von Fermat ist ein konkreter, beobachtbarer mathematischer Zieltyp; beide unabhängigen Reviews bestätigen den Wortlaut.",
+      "rationaleEn": "Proving Fermat's little theorem is a concrete observable mathematical goal type; both independent reviews confirm the wording."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-013",
+      "goalId": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:47834c8af81778cd426bfe4a66f4f46bc80a24927a1b02e08b966e6e5554bbbe",
+      "pageFingerprint": "sha256:e1dea251f1680389dc24b1671c76a253c4fb2d5507275c37ab9fccbded97bfda",
+      "goalReviewContextFingerprint": "sha256:95c91b3a27a725b0b332699f5d40b310dc33c0c22d538d6fa0be3aa1e6901b45",
+      "finalText": {
+        "titleDe": "RSA-Verfahren mathematisch erläutern und anwenden (LK)",
+        "titleEn": "Explain and apply the RSA method mathematically (advanced course)",
+        "descriptionDe": "Die lernende Person kann das Prinzip des RSA-Verfahrens als asymmetrisches Verschlüsselungsverfahren erläutern, Nachrichten damit verschlüsseln und die Korrektheit der Entschlüsselung plausibel begründen.",
+        "descriptionEn": "The learner can explain RSA as an asymmetric encryption method, encrypt messages with it, and plausibly justify why decryption recovers the original message."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
+          "recordDigest": "sha256:4091a7ef82fd72f0f19b0cadb8bb9f3eff39fc02091bce8eef4d491e03a3be56"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r18",
+          "recordDigest": "sha256:894c49c3b94315ad6363f1006f07748e4268424cce79710ce8f1568baa27b84f"
+        }
+      },
+      "rationaleDe": "Erläutern und Anwenden des RSA-Verfahrens bilden hier eine zusammenhängende Verständnisleistung mit mathematischem Prüfgegenstand; beide Reviews empfehlen KEEP.",
+      "rationaleEn": "Explaining and applying RSA form one connected understanding task with mathematical evidence; both reviews recommend KEEP."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-014",
+      "goalId": "d32f599e-3b38-5557-8ad3-565bcd99f4c6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e70391167d4befedbfe3ab0040e929ac37b4220ffb23fded086cb5459138aabb",
+      "pageFingerprint": "sha256:76d8f583d18d4d57157ad7aa6f54bd1181c87addd9795fecbe9e6d3adeccfa34",
+      "goalReviewContextFingerprint": "sha256:55fa1c368910f3e2722df22a95742f796db2e0c55d16720dcff7e7f26e6f5f39",
+      "finalText": {
+        "titleDe": "Primzahltests erläutern (LK)",
+        "titleEn": "Explain primality tests (advanced course)",
+        "descriptionDe": "Die lernende Person kann die Funktionsweise eines Primzahltests, zum Beispiel des Miller-Rabin-Tests, fachsprachlich erläutern.",
+        "descriptionEn": "The learner can explain the workings of a primality test, for example the Miller-Rabin test."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.d32f599e-3b38-5557-8ad3-565bcd99f4c6",
+          "recordDigest": "sha256:4b9d29fe4eea9dd6571acafef7af734af386b912be9948d371cd327d918a0486"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r19",
+          "recordDigest": "sha256:18f7e330fb81b2ea093c98cb2d00555034d55da7e00ab2aa623ebff36aa87ef7"
+        }
+      },
+      "rationaleDe": "Das Ziel verlangt die Erläuterung eines Primzahltests; die Trial-Division im Bild ist ein gültiges Beispiel und Miller–Rabin im Text nur ein Beispiel. Beide Reviews behalten die Kompetenz bei.",
+      "rationaleEn": "The goal requires explaining a primality test; trial division in the image is a valid example, while Miller–Rabin in the text is only an example. Both reviews retain the competence."
+    },
+    {
+      "decisionId": "math-m7-q4-lk-complex-number-theory-fifteen-keep-partial-v1-decision-015",
+      "goalId": "1c1754b7-2cd3-5635-824d-ce93f7b99514",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:54b6a2bc5aa6d9d69403c2b01c9f35e5e0cdd21f81ddc6d3c1ede61496c097c7",
+      "pageFingerprint": "sha256:497d9b69b4cee52c6ecc2195339556dc6f2a1a4608a960d6e7361b06e609e2b1",
+      "goalReviewContextFingerprint": "sha256:8bd9885413b58cdd26e3a07347b4c51051e9b85d3fa39ae06410f2714f45c504",
+      "finalText": {
+        "titleDe": "Faktorisierungsverfahren erläutern (LK)",
+        "titleEn": "Explain factorization methods (advanced course)",
+        "descriptionDe": "Die lernende Person kann die Funktionsweise eines Faktorisierungsverfahrens, zum Beispiel des quadratischen Siebs, fachsprachlich erläutern.",
+        "descriptionEn": "The learner can explain the workings of a factorization method, for example the quadratic sieve."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.1c1754b7-2cd3-5635-824d-ce93f7b99514",
+          "recordDigest": "sha256:7fc7cd13c3b678af8f0c0cf11a6ad1df194331d01c97c3b0beb623b58554b212"
+        },
+        "second": {
+          "recordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r20",
+          "recordDigest": "sha256:219a952e8a738568a81166431a871c400be1074f680390207d4b0b966fa45dc3"
+        }
+      },
+      "rationaleDe": "Die fachliche Erläuterung eines Faktorisierungsverfahrens ist einzeln überprüfbar; zwei unabhängige KEEP-Entscheidungen sind vorhanden.",
+      "rationaleEn": "Explaining a factorization method is individually assessable; two independent KEEP decisions are present."
+    }
+  ],
+  "manifestFingerprint": "sha256:0db5423071a1af2549af35ce1b53401937d91589aa506dda3405c990eeeaf8ef"
+}

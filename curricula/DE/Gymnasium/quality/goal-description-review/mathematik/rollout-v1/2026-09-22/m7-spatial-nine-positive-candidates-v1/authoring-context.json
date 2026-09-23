@@ -1,0 +1,837 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "unmaterialized-positive-profile-authoring-context",
+  "createdAt": "2026-09-21T22:21:03Z",
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "authoringMode": "informed-reuse-of-original-a-b-understanding-evidence",
+  "finalMaterialization": false,
+  "registered": false,
+  "resourceBindingsFinal": false,
+  "bindingNote": "Native goal/profile fingerprints cover authored semantics and profile content only. No reviewInputFingerprint, asset binding, current D/V approval, human approval, learner performance or real-host acceptance is asserted.",
+  "goals": [
+    {
+      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:49deecda41233341f3f54d507dda7f828b8276dd8bfa02e5f12b953e84f7b2e5",
+      "profileFingerprint": "sha256:1fac821529d95c2f0eaae0a9c5c32da3f87a58f20edafcd5e001cd5f8fea2d32",
+      "currentGoal": {
+        "id": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+        "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+        "titleEn": "Describe vectors as position, direction, and displacement vectors in space",
+        "description": "Die lernende Person kann Vektoren im Raum als Verschiebungs-, Orts- oder Richtungsvektoren darstellen, ihre Komponenten in kartesischen Koordinatensystemen angeben und ihre geometrische Bedeutung fachsprachlich deuten.",
+        "descriptionEn": "The learner can represent vectors in space as displacement, position, or direction vectors, state their components in Cartesian coordinate systems, and interpret their geometric meaning using correct terminology.",
+        "requires": [
+          "075f1ef2-6860-4b20-9df2-878157eb395e",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        }
+      },
+      "parents": [
+        {
+          "id": "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "title": "Punkte, Vektoren und Bewegungen im Raum",
+          "titleEn": "Points, Vectors, and Motion in Space",
+          "description": "Punkte und Vektoren im Raum koordinatisieren, elementare Vektoroperationen nutzen, Bewegungen mit Vektoren beschreiben und erste Körper- bzw. Figurenvorstellungen im Raum fachsprachlich deuten.",
+          "descriptionEn": "Coordinate points and vectors in space, use elementary vector operations, describe motions with vectors, and interpret first ideas of bodies and figures in space using appropriate technical language."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "075f1ef2-6860-4b20-9df2-878157eb395e",
+          "title": "Punkte und Vektoren im Raum koordinatisieren",
+          "titleEn": "Coordinate points and vectors in space",
+          "description": "Die lernende Person kann Punkte und Vektoren im dreidimensionalen Koordinatensystem eintragen, ablesen und als Orts- bzw. Richtungsvektoren deuten.",
+          "descriptionEn": "The learner can plot and read points and vectors in a three-dimensional coordinate system and interpret them as position or direction vectors."
+        },
+        {
+          "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+          "titleEn": "Why Mathematics? – Thinking, Patterns & Future",
+          "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+          "descriptionEn": "The 'Big Picture' intro: How algorithms power your smartphone, how data becomes decisions (medicine, climate), why models make growth and risks visible, and why mathematical thinking structures problem solving. Overview of the relevance of topics from calculus to stochastics for your life."
+        }
+      ],
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-a/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:00e7724aa5d0ea566adaf4ca040ee078b8d58a3c244e8be6f26881e69d3a1256",
+          "sourceRecordLineSha256": "sha256:6ba8d6174c9a3c2b90292a01731799162fd06e49a3f609027e87edd46bed4ac4",
+          "recordId": "math-b044-a-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Ein Ortsvektor bezieht sich auf einen gewählten Ursprung; ein Verschiebungsvektor verbindet zwei Punkte, und ein Richtungsvektor beschreibt eine Richtung ohne eine Geradenlänge festzulegen.",
+            "essentialUnderstandingEn": "A position vector is tied to a chosen origin; a displacement vector connects two points, and a direction vector specifies a direction without fixing a line length.",
+            "observablePerformanceDe": "Die Person zeichnet zu gegebenen Punkten Orts- und Verbindungsvektoren, liest deren Komponenten ab und erläutert die drei Rollen anhand der Pfeilanfänge.",
+            "observablePerformanceEn": "The learner draws position and connecting vectors for given points, reads their components, and explains the three roles using the arrow origins.",
+            "transferExpectationDe": "Bei verschobenem Ursprung beschreibt die Person, welche Ortsvektoren sich ändern und weshalb die Verschiebung zwischen denselben Punkten gleich bleibt.",
+            "transferExpectationEn": "With a shifted origin, the learner explains which position vectors change and why the displacement between the same points remains unchanged."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-b/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:f8dc8670014df6186fcc973b3628ce20702cb181160eb7d5834e71a028a5c54b",
+          "sourceRecordLineSha256": "sha256:fc1091c7948dc5ecb3b962c66d4161181df367a4842ce71ec67e67a58f0bc833",
+          "recordId": "math-b044-first-pass-b-root-20260907.be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Ortsvektoren beginnen im Ursprung, Verschiebungen verbinden Punkte; ein Richtungsvektor beschreibt eine von null verschiedene Geradenrichtung, keine Geradenlänge.",
+            "essentialUnderstandingEn": "Position vectors begin at the origin, displacements join two points, and a direction vector describes a nonzero line direction without fixing a line length.",
+            "observablePerformanceDe": "Erläutert OA, OB und AB=B-A in einem Bezugssystem und unterscheidet einen verschobenen Pfeilrepräsentanten von einem Punkt.",
+            "observablePerformanceEn": "Explain OA, OB and AB=B-A using one coordinate frame and distinguish a translated representative from a point.",
+            "transferExpectationDe": "Verschiebt den Ursprung und vergleicht veränderte Ortskoordinaten mit unverändertem Verschiebungsvektor.",
+            "transferExpectationEn": "Translate the origin and compare what changes in position coordinates and what stays invariant in displacement."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4610b484ec7bf73f49cae1890f69bc5771a36f996613f376adec2846bb6c8c86",
+      "profileFingerprint": "sha256:81db257490151cae800b286d7ba9fc34c80570511488d988bc97e9fc63064af3",
+      "currentGoal": {
+        "id": "aae119f2-925f-5fc1-b795-b52c9e980863",
+        "title": "Räumliche Objekte im Koordinatensystem verorten",
+        "titleEn": "Locate spatial objects in three-dimensional coordinate systems",
+        "description": "Die lernende Person kann räumliche Objekte im dreidimensionalen Koordinatensystem verorten und geeignete Koordinatenbezüge wählen.",
+        "descriptionEn": "The learner can locate spatial objects in a three-dimensional coordinate system and choose suitable coordinate references.",
+        "requires": [
+          "075f1ef2-6860-4b20-9df2-878157eb395e"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K3.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.2.SPATIAL_OBJECTS_3D_COORDINATES.COORDINATE_REPRESENTATION"
+        }
+      },
+      "parents": [
+        {
+          "id": "d9d8cd76-01fb-5f7a-b733-17f81d854af7",
+          "title": "Räumliche Objekte im dreidimensionalen Koordinatensystem darstellen",
+          "titleEn": "Represent spatial objects in three-dimensional coordinate systems",
+          "description": "Die lernende Person kann räumliche Objekte im dreidimensionalen Koordinatensystem darstellen, geeignete Schrägbilder zeichnen und Punkte mithilfe von Koordinaten fachsprachlich beschreiben.",
+          "descriptionEn": "The learner can represent spatial objects in three-dimensional coordinate systems, draw suitable oblique sketches, and describe points using coordinates with correct terminology."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "075f1ef2-6860-4b20-9df2-878157eb395e",
+          "title": "Punkte und Vektoren im Raum koordinatisieren",
+          "titleEn": "Coordinate points and vectors in space",
+          "description": "Die lernende Person kann Punkte und Vektoren im dreidimensionalen Koordinatensystem eintragen, ablesen und als Orts- bzw. Richtungsvektoren deuten.",
+          "descriptionEn": "The learner can plot and read points and vectors in a three-dimensional coordinate system and interpret them as position or direction vectors."
+        }
+      ],
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-a/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:00e7724aa5d0ea566adaf4ca040ee078b8d58a3c244e8be6f26881e69d3a1256",
+          "sourceRecordLineSha256": "sha256:f1948c4d5d7f2068bcd5875d69b3d18be80f2c66619a1d9b7d42d57a9baf3853",
+          "recordId": "math-b044-a-aae119f2-925f-5fc1-b795-b52c9e980863",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Ursprung, Achsenrichtungen und Einheiten bestimmen die Koordinaten eines räumlichen Objekts; geometrische Lage und gewählte Beschreibung sind zu unterscheiden.",
+            "essentialUnderstandingEn": "Origin, axis directions, and units determine the coordinates of a spatial object; geometric position and its chosen description must be distinguished.",
+            "observablePerformanceDe": "Die Person wählt für einen Quader einen geeigneten Bezug, ordnet den Eckpunkten konsistente Koordinaten zu und erläutert die Achsenwahl.",
+            "observablePerformanceEn": "The learner chooses a suitable frame for a cuboid, assigns consistent coordinates to its vertices, and explains the axis choice.",
+            "transferExpectationDe": "Für ein anders orientiertes Objekt oder einen an eine andere Ecke gelegten Ursprung passt die Person die Koordinaten nachvollziehbar an.",
+            "transferExpectationEn": "For a differently oriented object or an origin moved to another corner, the learner consistently adapts the coordinates."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-b/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:f8dc8670014df6186fcc973b3628ce20702cb181160eb7d5834e71a028a5c54b",
+          "sourceRecordLineSha256": "sha256:6cefdae1d2361ef5433eb4ed130d72cff0dfff7551db1ea622cadfca42388e94",
+          "recordId": "math-b044-first-pass-b-root-20260907.aae119f2-925f-5fc1-b795-b52c9e980863",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Die Koordinaten eines räumlichen Objekts hängen von Ursprung, Achsen und Einheiten ab, nicht allein von seiner Bildschirmposition.",
+            "essentialUnderstandingEn": "A spatial object's coordinates depend on chosen origin, axes and units, not only on its apparent screen position.",
+            "observablePerformanceDe": "Wählt einen geeigneten Bezug und weist charakteristischen Objektpunkten konsistente Koordinaten zu.",
+            "observablePerformanceEn": "Choose a convenient frame and assign coherent coordinates to characteristic object points.",
+            "transferExpectationDe": "Legt den Ursprung in eine andere Ecke und erklärt die geänderten Tupel desselben Körpers.",
+            "transferExpectationEn": "Move the origin to another vertex and explain changed triples for the same solid."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5fddb3d49a83541aa8f76a159bc635893b2182310f66acfeb046b90ab94b241a",
+      "profileFingerprint": "sha256:fb06d02996c47e6f55623d204e56361eab867b040c397c628af0b72bdfd4d206",
+      "currentGoal": {
+        "id": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+        "title": "Geometriesoftware zur Raumorientierung nutzen",
+        "titleEn": "Use geometry software for spatial orientation",
+        "description": "Die lernende Person kann Geometriesoftware nutzen, um räumliche Objekte im dreidimensionalen Koordinatensystem darzustellen, Ansichten zu variieren und Koordinaten- bzw. Lageinformationen zu überprüfen.",
+        "descriptionEn": "The learner can use geometry software to represent spatial objects in a three-dimensional coordinate system, vary views, and check coordinate or positional information.",
+        "requires": [
+          "aae119f2-925f-5fc1-b795-b52c9e980863",
+          "7680701b-35e3-519e-beaa-09753e733756",
+          "d81d888c-6ffa-5751-8a4b-ce2ff3085071"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K3.3",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.2.GEOMETRY_SOFTWARE_SPATIAL_ORIENTATION"
+        }
+      },
+      "parents": [
+        {
+          "id": "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "title": "Punkte, Vektoren und Bewegungen im Raum",
+          "titleEn": "Points, Vectors, and Motion in Space",
+          "description": "Punkte und Vektoren im Raum koordinatisieren, elementare Vektoroperationen nutzen, Bewegungen mit Vektoren beschreiben und erste Körper- bzw. Figurenvorstellungen im Raum fachsprachlich deuten.",
+          "descriptionEn": "Coordinate points and vectors in space, use elementary vector operations, describe motions with vectors, and interpret first ideas of bodies and figures in space using appropriate technical language."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "aae119f2-925f-5fc1-b795-b52c9e980863",
+          "title": "Räumliche Objekte im Koordinatensystem verorten",
+          "titleEn": "Locate spatial objects in three-dimensional coordinate systems",
+          "description": "Die lernende Person kann räumliche Objekte im dreidimensionalen Koordinatensystem verorten und geeignete Koordinatenbezüge wählen.",
+          "descriptionEn": "The learner can locate spatial objects in a three-dimensional coordinate system and choose suitable coordinate references."
+        },
+        {
+          "id": "7680701b-35e3-519e-beaa-09753e733756",
+          "title": "Schrägbilder räumlicher Objekte zeichnen",
+          "titleEn": "Draw oblique sketches of spatial objects",
+          "description": "Die lernende Person kann geeignete Schrägbilder räumlicher Objekte zeichnen und die Darstellung fachsprachlich erläutern.",
+          "descriptionEn": "The learner can draw suitable oblique sketches of spatial objects and explain the representation."
+        },
+        {
+          "id": "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+          "title": "Punkte im Raum mit Koordinaten beschreiben",
+          "titleEn": "Describe points in space using coordinates",
+          "description": "Die lernende Person kann Punkte im Raum mithilfe von Koordinaten fachsprachlich beschreiben und in Darstellungen verorten.",
+          "descriptionEn": "The learner can describe points in space using coordinates and locate them in representations."
+        }
+      ],
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-a/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:00e7724aa5d0ea566adaf4ca040ee078b8d58a3c244e8be6f26881e69d3a1256",
+          "sourceRecordLineSha256": "sha256:de93b1b82585306f16d8b3770fd55d5eec74669e3b590be96b21ed22ea82ddb0",
+          "recordId": "math-b044-a-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine Änderung der Softwareansicht verändert die Projektion, nicht die Koordinaten des unveränderten räumlichen Objekts; verschiedene Ansichten zeigen unterschiedliche Lageinformationen.",
+            "essentialUnderstandingEn": "Changing the software view changes the projection, not the coordinates of an unchanged spatial object; different views reveal different positional information.",
+            "observablePerformanceDe": "Die Person stellt ein räumliches Objekt in einer Geometriesoftware dar, variiert die Ansicht und überprüft eine Koordinaten- oder Lageaussage durch passende Ansichten.",
+            "observablePerformanceEn": "The learner represents a spatial object in geometry software, varies the view, and checks a coordinate or positional claim using appropriate views.",
+            "transferExpectationDe": "Wenn sich Punkte in einer Ansicht überdecken, wählt die Person eine andere Ansicht und erklärt, ob räumliche Gleichheit oder nur Projektionsüberdeckung vorliegt.",
+            "transferExpectationEn": "When points overlap in one view, the learner selects another view and explains whether this indicates spatial coincidence or only projection overlap."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-b/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:f8dc8670014df6186fcc973b3628ce20702cb181160eb7d5834e71a028a5c54b",
+          "sourceRecordLineSha256": "sha256:82d2481e2bb569b92e3ba839454fc8b3d4175df2ab41bfab7688a266ebd12b3a",
+          "recordId": "math-b044-first-pass-b-root-20260907.eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Ein Ansichtswechsel verändert die Projektion, nicht die Koordinaten oder tatsächlichen Lagebeziehungen einer festen Raumkonstruktion.",
+            "essentialUnderstandingEn": "Changing the camera view changes projection, not the coordinates or actual incidence of a fixed spatial construction.",
+            "observablePerformanceDe": "Konstruiert ein Objekt in Geometriesoftware, variiert Ansichten und prüft Koordinaten oder Lagebehauptungen am Modell.",
+            "observablePerformanceEn": "Construct an object in geometry software, vary views and check coordinates or positional claims against the model.",
+            "transferExpectationDe": "Klärt eine scheinbare Überlagerung durch eine zweite Ansicht und unterscheidet Kamera- von Punktbewegung.",
+            "transferExpectationEn": "Resolve an apparent overlap by a second view and distinguish moving the camera from moving a point."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3af577f67b8c265d92b7fa3abdb613e6df11901b6c6e3034e4f3b61437c5eaa9",
+      "profileFingerprint": "sha256:441c9c1e853b5bd8d03cfa63625b7731e9fd3e99ee7800468d8052034a8685b0",
+      "currentGoal": {
+        "id": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+        "title": "Vektoren im Raum addieren und vervielfachen",
+        "titleEn": "Add and scale vectors in space",
+        "description": "Die lernende Person kann Vektoren im Raum komponentenweise addieren und mit Skalaren vervielfachen sowie die Rechenoperationen als Verkettung und Streckung von Verschiebungen geometrisch deuten.",
+        "descriptionEn": "The learner can add vectors in space component-wise, multiply them by scalars, and interpret the operations geometrically as chained and scaled displacements.",
+        "requires": [
+          "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.2.VECTOR_ADDITION_SCALING_SPACE"
+        }
+      },
+      "parents": [
+        {
+          "id": "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "title": "Punkte, Vektoren und Bewegungen im Raum",
+          "titleEn": "Points, Vectors, and Motion in Space",
+          "description": "Punkte und Vektoren im Raum koordinatisieren, elementare Vektoroperationen nutzen, Bewegungen mit Vektoren beschreiben und erste Körper- bzw. Figurenvorstellungen im Raum fachsprachlich deuten.",
+          "descriptionEn": "Coordinate points and vectors in space, use elementary vector operations, describe motions with vectors, and interpret first ideas of bodies and figures in space using appropriate technical language."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+          "titleEn": "Describe vectors as position, direction, and displacement vectors in space",
+          "description": "Die lernende Person kann Vektoren im Raum als Verschiebungs-, Orts- oder Richtungsvektoren darstellen, ihre Komponenten in kartesischen Koordinatensystemen angeben und ihre geometrische Bedeutung fachsprachlich deuten.",
+          "descriptionEn": "The learner can represent vectors in space as displacement, position, or direction vectors, state their components in Cartesian coordinate systems, and interpret their geometric meaning using correct terminology."
+        }
+      ],
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-a/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:00e7724aa5d0ea566adaf4ca040ee078b8d58a3c244e8be6f26881e69d3a1256",
+          "sourceRecordLineSha256": "sha256:5a920ab343b30c3c55ae34a911d2aa4e07a92c5a879ce570ec11359292cace14",
+          "recordId": "math-b044-a-f37b0a72-9e23-51c7-aad5-438c17a56899",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Vektoraddition verkettet Verschiebungen, skalare Multiplikation verändert Länge und gegebenenfalls Orientierung bei erhaltener Trägergeraden; beide Operationen wirken komponentenweise.",
+            "essentialUnderstandingEn": "Vector addition chains displacements; scalar multiplication changes length and possibly orientation while preserving the carrier line, and both operations act component-wise.",
+            "observablePerformanceDe": "Die Person berechnet eine zusammengesetzte Verschiebung und einen skalierten Vektor und verbindet die Komponentenrechnung mit korrekt gerichteten Pfeilen.",
+            "observablePerformanceEn": "The learner calculates a combined displacement and a scaled vector and connects component calculations with correctly directed arrows.",
+            "transferExpectationDe": "Bei einem negativen oder gebrochenen Skalar erläutert die Person Richtungs- und Längenänderung und überprüft sie an einer eigenen Pfeildarstellung.",
+            "transferExpectationEn": "For a negative or fractional scalar, the learner explains changes of direction and length and checks them with an independently constructed arrow diagram."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-b/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:f8dc8670014df6186fcc973b3628ce20702cb181160eb7d5834e71a028a5c54b",
+          "sourceRecordLineSha256": "sha256:9bb8194e316a023a7edf38410db4e95e9b267b97e5179aa90d7f138a7c032832",
+          "recordId": "math-b044-first-pass-b-root-20260907.f37b0a72-9e23-51c7-aad5-438c17a56899",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Vektoraddition verkettet Verschiebungen; Skalarmultiplikation skaliert alle Komponenten gemeinsam und kehrt bei negativem Faktor die Richtung um.",
+            "essentialUnderstandingEn": "Vector addition composes displacements and scalar multiplication scales all components together, including direction reversal for a negative scalar.",
+            "observablePerformanceDe": "Berechnet und zeichnet Addition/Skalierung und erklärt die Übereinstimmung mit der Kopf-an-Schwanz-Konstruktion.",
+            "observablePerformanceEn": "Compute and draw addition/scaling and explain why the algebra matches a head-to-tail construction.",
+            "transferExpectationDe": "Konstruiert eine Differenz oder ein negatives/nullfaches Vielfaches als verändertes Verschiebungsproblem.",
+            "transferExpectationEn": "Construct a difference or a negative/zero multiple as a changed displacement problem."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d15456eb6c7cc1b070d450dd0389786631856af89f87edd08aa7c0a509c26fbc",
+      "profileFingerprint": "sha256:152179afb3433157aee22444e8eeb28f531de2f333d95643bd4ac3ffcb77a3aa",
+      "currentGoal": {
+        "id": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+        "title": "Linearkombinationen von Vektoren bilden und deuten",
+        "titleEn": "Form and interpret linear combinations of vectors",
+        "description": "Die lernende Person kann Vektoren als Linearkombination gegebener Vektoren darstellen, passende Koeffizienten bestimmen und die Darstellung geometrisch deuten.",
+        "descriptionEn": "The learner can represent vectors as linear combinations of given vectors, determine suitable coefficients, and interpret the representation geometrically.",
+        "requires": [
+          "f37b0a72-9e23-51c7-aad5-438c17a56899"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.SPACE.VECTORS.LINEAR_COMBINATIONS"
+        }
+      },
+      "parents": [
+        {
+          "id": "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "title": "Punkte, Vektoren und Bewegungen im Raum",
+          "titleEn": "Points, Vectors, and Motion in Space",
+          "description": "Punkte und Vektoren im Raum koordinatisieren, elementare Vektoroperationen nutzen, Bewegungen mit Vektoren beschreiben und erste Körper- bzw. Figurenvorstellungen im Raum fachsprachlich deuten.",
+          "descriptionEn": "Coordinate points and vectors in space, use elementary vector operations, describe motions with vectors, and interpret first ideas of bodies and figures in space using appropriate technical language."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+          "title": "Vektoren im Raum addieren und vervielfachen",
+          "titleEn": "Add and scale vectors in space",
+          "description": "Die lernende Person kann Vektoren im Raum komponentenweise addieren und mit Skalaren vervielfachen sowie die Rechenoperationen als Verkettung und Streckung von Verschiebungen geometrisch deuten.",
+          "descriptionEn": "The learner can add vectors in space component-wise, multiply them by scalars, and interpret the operations geometrically as chained and scaled displacements."
+        }
+      ],
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-a/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:00e7724aa5d0ea566adaf4ca040ee078b8d58a3c244e8be6f26881e69d3a1256",
+          "sourceRecordLineSha256": "sha256:3609c12bf106fe806c1d70879eeaf16f4ec6757bbaeaf535e83ae045c62b1a65",
+          "recordId": "math-b044-a-72dfc164-455d-4b63-85f0-96e803c9a1d5",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine Linearkombination setzt gegebene Richtungen mit skalaren Gewichten zusammen; die Koeffizienten beschreiben, wie der Zielvektor aus diesen Richtungen entsteht.",
+            "essentialUnderstandingEn": "A linear combination combines given directions using scalar weights; the coefficients describe how the target vector is built from those directions.",
+            "observablePerformanceDe": "Die Person bestimmt passende Koeffizienten eines Zielvektors, prüft die Komponenten und erklärt die Darstellung als Verkettung skalierter Verschiebungen.",
+            "observablePerformanceEn": "The learner determines suitable coefficients for a target vector, checks the components, and explains the representation as a chain of scaled displacements.",
+            "transferExpectationDe": "Bei einer fehlenden Komponente, einer negativen Gewichtung oder einer geometrisch anders dargestellten Zielrichtung überprüft die Person, ob und wie die Darstellung möglich ist.",
+            "transferExpectationEn": "With a missing component, a negative weight, or a geometrically changed target direction, the learner checks whether and how the representation is possible."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-b/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:f8dc8670014df6186fcc973b3628ce20702cb181160eb7d5834e71a028a5c54b",
+          "sourceRecordLineSha256": "sha256:960c03f9cc64bdadb8079d99de2e25523e3afee926c742e6ff492e225d292b2b",
+          "recordId": "math-b044-first-pass-b-root-20260907.72dfc164-455d-4b63-85f0-96e803c9a1d5",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine Linearkombination summiert skalierte gegebene Vektoren; Koeffizienten beschreiben den Aufbau der Zielverschiebung.",
+            "essentialUnderstandingEn": "A linear combination is a sum of scaled given vectors; coefficients describe how their directions generate the target displacement.",
+            "observablePerformanceDe": "Bestimmt Koeffizienten durch konsistente Komponentengleichungen und deutet die Lösung geometrisch.",
+            "observablePerformanceEn": "Determine coefficients by consistent component equations and relate the solution to a geometric construction.",
+            "transferExpectationDe": "Prüft einen Zielvektor außerhalb der Spannweite oder vergleicht Koeffizienten bei redundanten Erzeugern.",
+            "transferExpectationEn": "Test a target outside the span or compare alternative coefficients when generators are redundant."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a4aa1ee1694db01c13e2690875b027cd75fe6d046479e916224540f9bf9e92fa",
+      "profileFingerprint": "sha256:672d03199a07185de9fd53d97f17351103d7fa3a1e41d1046666fa41fa57f299",
+      "currentGoal": {
+        "id": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+        "title": "Lineare Abhängigkeit und Unabhängigkeit von Vektoren prüfen",
+        "titleEn": "Check linear dependence and independence of vectors",
+        "description": "Die lernende Person kann entscheiden, ob Vektoren linear abhängig oder unabhängig sind, die Entscheidung rechnerisch begründen und die geometrische Bedeutung erläutern.",
+        "descriptionEn": "The learner can decide whether vectors are linearly dependent or independent, justify the decision algebraically, and explain the geometric meaning.",
+        "requires": [
+          "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.SPACE.VECTORS.LINEAR_DEPENDENCE"
+        }
+      },
+      "parents": [
+        {
+          "id": "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "title": "Punkte, Vektoren und Bewegungen im Raum",
+          "titleEn": "Points, Vectors, and Motion in Space",
+          "description": "Punkte und Vektoren im Raum koordinatisieren, elementare Vektoroperationen nutzen, Bewegungen mit Vektoren beschreiben und erste Körper- bzw. Figurenvorstellungen im Raum fachsprachlich deuten.",
+          "descriptionEn": "Coordinate points and vectors in space, use elementary vector operations, describe motions with vectors, and interpret first ideas of bodies and figures in space using appropriate technical language."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+          "title": "Linearkombinationen von Vektoren bilden und deuten",
+          "titleEn": "Form and interpret linear combinations of vectors",
+          "description": "Die lernende Person kann Vektoren als Linearkombination gegebener Vektoren darstellen, passende Koeffizienten bestimmen und die Darstellung geometrisch deuten.",
+          "descriptionEn": "The learner can represent vectors as linear combinations of given vectors, determine suitable coefficients, and interpret the representation geometrically."
+        }
+      ],
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-a/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:00e7724aa5d0ea566adaf4ca040ee078b8d58a3c244e8be6f26881e69d3a1256",
+          "sourceRecordLineSha256": "sha256:be7522bf0709769a4a276ab16e91501f82ef538080491909c8980dbe9aa75919",
+          "recordId": "math-b044-a-6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Lineare Abhängigkeit liegt vor, wenn eine nichttriviale Linearkombination den Nullvektor ergibt; Unabhängigkeit bedeutet, dass nur die Nullkoeffizienten dies leisten.",
+            "essentialUnderstandingEn": "Linear dependence occurs when a nontrivial linear combination produces the zero vector; independence means that only zero coefficients do so.",
+            "observablePerformanceDe": "Die Person untersucht eine vorgegebene Vektorgruppe rechnerisch und erläutert, welche unabhängigen Raumrichtungen die Gruppe tatsächlich aufspannt.",
+            "observablePerformanceEn": "The learner checks a supplied vector family algebraically and explains which independent spatial directions it actually spans.",
+            "transferExpectationDe": "Bei drei paarweise nicht kollinearen, aber koplanaren Vektoren erkennt die Person dennoch eine Abhängigkeit und begründet den Unterschied zur Zweivektorprüfung.",
+            "transferExpectationEn": "For three pairwise noncollinear but coplanar vectors, the learner still identifies dependence and explains how this differs from testing two vectors."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-b/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:f8dc8670014df6186fcc973b3628ce20702cb181160eb7d5834e71a028a5c54b",
+          "sourceRecordLineSha256": "sha256:f084a28cd9d42dfbc5a28f5f7fa3233a999782299e50ad98c8fc8004f99e78cb",
+          "recordId": "math-b044-first-pass-b-root-20260907.6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Abhängigkeit bedeutet eine nichttriviale Nullkombination; Unabhängigkeit bedeutet nur die triviale und damit nichtredundante Erzeugerrichtungen.",
+            "essentialUnderstandingEn": "Dependence means a nontrivial zero combination; independence means only the trivial one, corresponding to nonredundant generating directions.",
+            "observablePerformanceDe": "Löst die Nullkombinationsgleichungen und erklärt Gerade, Ebene oder Raumspanne der gegebenen Vektormenge.",
+            "observablePerformanceEn": "Solve the zero-combination equations and explain line, plane or spatial span within the given vector set.",
+            "transferExpectationDe": "Nimmt einen Nullvektor hinzu oder verändert einen Erzeuger aus der Ebene heraus und begründet die Wirkung.",
+            "transferExpectationEn": "Include a zero vector or change one generator out of a plane and justify how dependence changes."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:630a4748f5eaa839e64f959fa5760dfaa0c671e66177130ed37bd342ca71d520",
+      "profileFingerprint": "sha256:bf873d139a8344a6751515b92cb47418029cdf4ccf3938cb619e47534003ae8d",
+      "currentGoal": {
+        "id": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+        "title": "Kollinearität von Vektoren im Raum prüfen",
+        "titleEn": "Check collinearity of vectors in space",
+        "description": "Die lernende Person kann prüfen, ob zwei Vektoren im Raum kollinear sind, dazu skalare Vielfache oder Komponentenvergleiche nutzen und die Entscheidung geometrisch begründen.",
+        "descriptionEn": "The learner can check whether two vectors in space are collinear, use scalar multiples or component comparisons, and justify the decision geometrically.",
+        "requires": [
+          "f37b0a72-9e23-51c7-aad5-438c17a56899"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.2.VECTOR_COLLINEARITY_SPACE"
+        }
+      },
+      "parents": [
+        {
+          "id": "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "title": "Punkte, Vektoren und Bewegungen im Raum",
+          "titleEn": "Points, Vectors, and Motion in Space",
+          "description": "Punkte und Vektoren im Raum koordinatisieren, elementare Vektoroperationen nutzen, Bewegungen mit Vektoren beschreiben und erste Körper- bzw. Figurenvorstellungen im Raum fachsprachlich deuten.",
+          "descriptionEn": "Coordinate points and vectors in space, use elementary vector operations, describe motions with vectors, and interpret first ideas of bodies and figures in space using appropriate technical language."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+          "title": "Vektoren im Raum addieren und vervielfachen",
+          "titleEn": "Add and scale vectors in space",
+          "description": "Die lernende Person kann Vektoren im Raum komponentenweise addieren und mit Skalaren vervielfachen sowie die Rechenoperationen als Verkettung und Streckung von Verschiebungen geometrisch deuten.",
+          "descriptionEn": "The learner can add vectors in space component-wise, multiply them by scalars, and interpret the operations geometrically as chained and scaled displacements."
+        }
+      ],
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-a/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:00e7724aa5d0ea566adaf4ca040ee078b8d58a3c244e8be6f26881e69d3a1256",
+          "sourceRecordLineSha256": "sha256:2e2fbe879e0439354038eb399867772d5c4ea2c5aa51cf01417b96f5e06717c4",
+          "recordId": "math-b044-a-54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Zwei Vektoren sind kollinear, wenn sie linear abhängig sind; bei nicht nullen Vektoren stimmen die Komponenten mit einem gemeinsamen skalaren Faktor überein, auch bei entgegengesetzter Orientierung.",
+            "essentialUnderstandingEn": "Two vectors are collinear when they are linearly dependent; for nonzero vectors their components agree through one scalar factor, including opposite orientations.",
+            "observablePerformanceDe": "Die Person prüft zwei Vektoren mit einem einheitlichen Skalarvergleich und erklärt die Bedeutung des Ergebnisses ohne durch Nullkomponenten zu dividieren.",
+            "observablePerformanceEn": "The learner tests two vectors using one consistent scalar comparison and explains the result without dividing by zero components.",
+            "transferExpectationDe": "Bei Nullkomponenten oder einem negativen Faktor entscheidet die Person weiterhin korrekt und unterscheidet gleiche Richtung von bloßer Kollinearität.",
+            "transferExpectationEn": "With zero components or a negative factor, the learner still decides correctly and distinguishes identical direction from collinearity alone."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-b/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:f8dc8670014df6186fcc973b3628ce20702cb181160eb7d5834e71a028a5c54b",
+          "sourceRecordLineSha256": "sha256:dbf5f71297711a75945008aace31945e5c932379d1f0f5edce0c9abc18aba4e6",
+          "recordId": "math-b044-first-pass-b-root-20260907.54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Zwei Vektoren sind kollinear, wenn ihre Komponenten ein gemeinsames skalares Vielfaches ergeben; Nullkomponenten dürfen nicht zu ungültiger Division führen.",
+            "essentialUnderstandingEn": "Two vectors are collinear when their components admit one common scalar-multiple relation, with zero components handled without invalid division.",
+            "observablePerformanceDe": "Prüft alle Komponenten mit demselben Faktor und deutet bei von null verschiedenen Vektoren gleiche oder entgegengesetzte Richtung.",
+            "observablePerformanceEn": "Check all components with one scalar and interpret parallel or opposite direction where nonzero vectors permit it.",
+            "transferExpectationDe": "Nutzt negative Skalierung oder Nullkomponenten, um das Kriterium über einfache positive Quotienten hinaus zu prüfen.",
+            "transferExpectationEn": "Use negative scaling or zero components to test the criterion beyond simple positive component ratios."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1f3dceaa1fc8e5df06d5e69391cdbff79cc1e028e7a91b466086240230db1368",
+      "profileFingerprint": "sha256:b6099bd23faca4137ca859769444f2c06ba84ce04eafc89a5a26f827af4f983c",
+      "currentGoal": {
+        "id": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+        "title": "Abstand zweier Punkte im Raum berechnen",
+        "titleEn": "Calculate the distance between two points in space",
+        "description": "Die lernende Person kann aus den Koordinaten zweier Punkte im Raum den Verbindungsvektor bilden, dessen Betrag berechnen und den Abstand geometrisch deuten.",
+        "descriptionEn": "The learner can form the connecting vector from the coordinates of two points in space, calculate its magnitude, and interpret the distance geometrically.",
+        "requires": [
+          "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+          "aae119f2-925f-5fc1-b795-b52c9e980863",
+          "7680701b-35e3-519e-beaa-09753e733756",
+          "d81d888c-6ffa-5751-8a4b-ce2ff3085071"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.2.POINT_DISTANCE_SPACE"
+        }
+      },
+      "parents": [
+        {
+          "id": "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "title": "Punkte, Vektoren und Bewegungen im Raum",
+          "titleEn": "Points, Vectors, and Motion in Space",
+          "description": "Punkte und Vektoren im Raum koordinatisieren, elementare Vektoroperationen nutzen, Bewegungen mit Vektoren beschreiben und erste Körper- bzw. Figurenvorstellungen im Raum fachsprachlich deuten.",
+          "descriptionEn": "Coordinate points and vectors in space, use elementary vector operations, describe motions with vectors, and interpret first ideas of bodies and figures in space using appropriate technical language."
+        },
+        {
+          "id": "164eb50f-1a5e-44a2-932e-561862e1378e",
+          "title": "Punkt-Punkt- und Punkt-Ebene-Abstände im Raum bestimmen",
+          "titleEn": "Determine point-point and point-plane distances in space",
+          "description": "Cluster für die fachlich getrennten Lernziele zu „Punkt-Punkt- und Punkt-Ebene-Abstände im Raum bestimmen“. Die enthaltenen atomaren Ziele machen die eigenständig beobachtbaren Leistungen explizit.",
+          "descriptionEn": "Cluster for the separated learning goals represented by “Determine point-point and point-plane distances in space”. Its atomic children make the independently observable performances explicit."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+          "title": "Betrag eines Vektors im Raum bestimmen",
+          "titleEn": "Determine the magnitude of a vector in space",
+          "description": "Die lernende Person kann den Betrag eines Vektors im Raum aus seinen Komponenten berechnen und als Länge der zugehörigen Verschiebung deuten.",
+          "descriptionEn": "The learner can calculate the magnitude of a vector in space from its components and interpret it as the length of the corresponding displacement."
+        },
+        {
+          "id": "aae119f2-925f-5fc1-b795-b52c9e980863",
+          "title": "Räumliche Objekte im Koordinatensystem verorten",
+          "titleEn": "Locate spatial objects in three-dimensional coordinate systems",
+          "description": "Die lernende Person kann räumliche Objekte im dreidimensionalen Koordinatensystem verorten und geeignete Koordinatenbezüge wählen.",
+          "descriptionEn": "The learner can locate spatial objects in a three-dimensional coordinate system and choose suitable coordinate references."
+        },
+        {
+          "id": "7680701b-35e3-519e-beaa-09753e733756",
+          "title": "Schrägbilder räumlicher Objekte zeichnen",
+          "titleEn": "Draw oblique sketches of spatial objects",
+          "description": "Die lernende Person kann geeignete Schrägbilder räumlicher Objekte zeichnen und die Darstellung fachsprachlich erläutern.",
+          "descriptionEn": "The learner can draw suitable oblique sketches of spatial objects and explain the representation."
+        },
+        {
+          "id": "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+          "title": "Punkte im Raum mit Koordinaten beschreiben",
+          "titleEn": "Describe points in space using coordinates",
+          "description": "Die lernende Person kann Punkte im Raum mithilfe von Koordinaten fachsprachlich beschreiben und in Darstellungen verorten.",
+          "descriptionEn": "The learner can describe points in space using coordinates and locate them in representations."
+        }
+      ],
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-a/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:00e7724aa5d0ea566adaf4ca040ee078b8d58a3c244e8be6f26881e69d3a1256",
+          "sourceRecordLineSha256": "sha256:3096949f6dfc458e2530101346fc76f2c5e9a93c1ea8ea0e24f18b41ea7dee98",
+          "recordId": "math-b044-a-68d4faef-1a56-5898-9c31-80b7d5d2e430",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Der Abstand zweier Punkte ist der Betrag ihres Verbindungsvektors und bleibt unter Vertauschung der Punkte gleich, obwohl sich die Vektorrichtung umkehrt.",
+            "essentialUnderstandingEn": "The distance between two points is the magnitude of their connecting vector and remains unchanged when the points are exchanged, although the vector reverses.",
+            "observablePerformanceDe": "Die Person bildet B-A, berechnet dessen Betrag und erläutert, weshalb dieser Wert die kürzeste räumliche Verbindung und nicht einen Koordinatenweg misst.",
+            "observablePerformanceEn": "The learner forms B-A, calculates its magnitude, and explains why this value measures the shortest spatial connection rather than a coordinate path.",
+            "transferExpectationDe": "Nach einer gemeinsamen Verschiebung beider Punkte oder beim Vertauschen von A und B weist die Person die Invarianz des Abstands nach.",
+            "transferExpectationEn": "After a common translation of both points or after exchanging A and B, the learner demonstrates that the distance is unchanged."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-b/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:f8dc8670014df6186fcc973b3628ce20702cb181160eb7d5834e71a028a5c54b",
+          "sourceRecordLineSha256": "sha256:24072928aa199ee5f27e6385201049fe6762beb05c9d51486c14321123a27617",
+          "recordId": "math-b044-first-pass-b-root-20260907.68d4faef-1a56-5898-9c31-80b7d5d2e430",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Der Punktabstand ist der Betrag des Verbindungsvektors und unabhängig von der Reihenfolge der Punkte.",
+            "essentialUnderstandingEn": "Point distance is the magnitude of their connecting vector and is independent of which point is chosen first.",
+            "observablePerformanceDe": "Bildet B-A, berechnet den Betrag und unterscheidet gerichtete Verschiebung vom vorzeichenlosen Abstand.",
+            "observablePerformanceEn": "Form B-A, compute its norm and explain displacement direction versus unsigned distance.",
+            "transferExpectationDe": "Verschiebt beide Endpunkte oder vertauscht sie und begründet den unveränderten Abstand bei geänderten Koordinaten beziehungsweise Vektorvorzeichen.",
+            "transferExpectationEn": "Translate both endpoints or reverse them and justify unchanged distance despite changed coordinates or vector sign."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7f688fd6be500540adabefc1fb3194878945b258de1bed3cbb50049508bae1d0",
+      "profileFingerprint": "sha256:f30ff278c51ade1d788eb735c52aad4709c34747cceb67d3140dced579ff73a0",
+      "currentGoal": {
+        "id": "69eda7f9-1898-5220-932d-e7bec839b7af",
+        "title": "Streckenlängen im Raum bestimmen",
+        "titleEn": "Determine segment lengths in space",
+        "description": "Die lernende Person kann Streckenlängen in räumlichen Figuren aus Punktkoordinaten oder geeigneten Verbindungsvektoren bestimmen und in geometrischen Kontexten verwenden.",
+        "descriptionEn": "The learner can determine segment lengths in spatial figures from point coordinates or suitable connecting vectors and use them in geometric contexts.",
+        "requires": [
+          "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.2.SEGMENT_LENGTHS_SPACE"
+        }
+      },
+      "parents": [
+        {
+          "id": "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "title": "Punkte, Vektoren und Bewegungen im Raum",
+          "titleEn": "Points, Vectors, and Motion in Space",
+          "description": "Punkte und Vektoren im Raum koordinatisieren, elementare Vektoroperationen nutzen, Bewegungen mit Vektoren beschreiben und erste Körper- bzw. Figurenvorstellungen im Raum fachsprachlich deuten.",
+          "descriptionEn": "Coordinate points and vectors in space, use elementary vector operations, describe motions with vectors, and interpret first ideas of bodies and figures in space using appropriate technical language."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+          "title": "Abstand zweier Punkte im Raum berechnen",
+          "titleEn": "Calculate the distance between two points in space",
+          "description": "Die lernende Person kann aus den Koordinaten zweier Punkte im Raum den Verbindungsvektor bilden, dessen Betrag berechnen und den Abstand geometrisch deuten.",
+          "descriptionEn": "The learner can form the connecting vector from the coordinates of two points in space, calculate its magnitude, and interpret the distance geometrically."
+        }
+      ],
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-a/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:00e7724aa5d0ea566adaf4ca040ee078b8d58a3c244e8be6f26881e69d3a1256",
+          "sourceRecordLineSha256": "sha256:b6194e3c040c968596aaf4f0b827cca6c7563f6a47318d62277a6b89164c1908",
+          "recordId": "math-b044-a-69eda7f9-1898-5220-932d-e7bec839b7af",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Für eine räumliche Strecke müssen die richtigen Endpunkte und deren Verbindungsvektor gewählt werden; Kante, Flächendiagonale und Raumdiagonale unterscheiden sich durch die beteiligten Komponenten.",
+            "essentialUnderstandingEn": "For a spatial segment, the correct endpoints and connecting vector must be selected; edges, face diagonals, and space diagonals differ in the components involved.",
+            "observablePerformanceDe": "Die Person identifiziert eine gefragte Strecke in einem Körper, bildet ihren Verbindungsvektor und deutet den berechneten Betrag im geometrischen Kontext.",
+            "observablePerformanceEn": "The learner identifies a requested segment in a solid, forms its connecting vector, and interprets the calculated magnitude geometrically.",
+            "transferExpectationDe": "Bei einer Strecke zwischen nicht gegenüberliegenden Ecken oder einem Streckenabschnitt ohne Ursprung als Endpunkt wählt die Person die Daten selbstständig passend aus.",
+            "transferExpectationEn": "For a segment between nonopposite vertices or with neither endpoint at the origin, the learner independently selects the appropriate data."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-b/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:f8dc8670014df6186fcc973b3628ce20702cb181160eb7d5834e71a028a5c54b",
+          "sourceRecordLineSha256": "sha256:abdab4f28f9f2a52002535159f40019005359b75dfa80c88263e1e7059204012",
+          "recordId": "math-b044-first-pass-b-root-20260907.69eda7f9-1898-5220-932d-e7bec839b7af",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine Strecke in einer Raumfigur wird durch den Betrag des Vektors zwischen ihren richtig identifizierten Endpunkten gemessen.",
+            "essentialUnderstandingEn": "A segment in a spatial figure is measured by the norm of the vector between its correctly identified endpoints.",
+            "observablePerformanceDe": "Wählt Endpunkte für Kante, Flächen- oder Raumdiagonale und verwendet die berechnete Länge im geometrischen Problem.",
+            "observablePerformanceEn": "Select endpoints for an edge, face diagonal or space diagonal and use the computed length in the geometric question.",
+            "transferExpectationDe": "Vergleicht Flächen- und Raumdiagonale oder erschließt eine fehlende Abmessung aus einer Streckenbedingung.",
+            "transferExpectationEn": "Compare a face diagonal with a space diagonal or infer a missing dimension from a segment constraint."
+          }
+        }
+      ]
+    }
+  ]
+}

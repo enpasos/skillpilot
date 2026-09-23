@@ -1,0 +1,196 @@
+{
+  "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+  "goalTitleDe": "Vektoren im Raum addieren und vervielfachen",
+  "status": "hold",
+  "reviewAuthority": "ai_candidate",
+  "selfReviewer": "Codex independent agent /root/math_repaired12_blind_a; exact serving model identifier not exposed",
+  "selfReviewRecordedAt": "2026-09-21T22:40:36.552Z",
+  "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+  "model": "gemini-3-pro-image (request and response summary)",
+  "tool": "scripts/generate_goal_visualization_nano_banana.mjs",
+  "nativePrepare": {
+    "completedBeforeEachGeneration": true,
+    "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)"
+  },
+  "generationOptions": {
+    "noImport": true,
+    "skipReconstructionPrompt": true,
+    "mimeType": "image/jpeg",
+    "aspectRatio": "16:9",
+    "imageSize": "2K"
+  },
+  "formatNote": "Native API400 rejected image/png; supported JPEG responses retained. ffmpeg only decoded those responses to PNG; all decoded-RGB equality checks passed. No compositing, generated geometry, cropping or post-generation geometric edit.",
+  "source": {
+    "path": "app/public/assets/goal-visualizations/mathematik/f37b0a72-9e23-51c7-aad5-438c17a56899/f37b0a72-9e23-51c7-aad5-438c17a56899.jpg",
+    "sha256": "sha256:bf04599a4a2fbb434b92669288cab31a2ef9d6d400939d8a175a6f79deb13cf2",
+    "actuallyInspected": true
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "decision": "rejected",
+      "selfReview": "Rejected: horizontal right vectors now collinear, but blue length≈367 vs orange≈790 in the 2048px rendering; ratio≈0.465, not0.5.",
+      "actuallyViewed": true,
+      "localResponseFileTimestamp": "2026-09-21T22:26:33.400Z",
+      "file": "nbp-attempt-01.png",
+      "sha256": "sha256:449057e8b3ee648c7c3cf4e26fce9b5fd7517061ea2d2acd1a185bd14ddb3a37",
+      "bytes": 3990879,
+      "width": 2752,
+      "height": 1536,
+      "originalResponse": {
+        "file": "nbp-attempt-01.original.jpg",
+        "sha256": "sha256:0abe94fd123f92c7a90e387f5fcc0a333a193f1f6578bcab5977ede4403c310d",
+        "bytes": 1744159
+      },
+      "reference": {
+        "file": "attempt-04-rejected.png",
+        "sha256": "sha256:a88b51a4f5029f50566c1dea3726c7e7b21b28d3384d86cd6344b6a2bc09885a",
+        "bytes": 1434152,
+        "width": 1678,
+        "height": 937
+      },
+      "prompt": {
+        "file": "prompt-nbp-attempt-01.exact.txt",
+        "sha256": "sha256:e721957f69fd623c0b729c1d41403b40964edd03d6dc4bd18005c20b12dfce60",
+        "bytes": 2383
+      },
+      "requestSha256": "sha256:925713d02a191a0529cdeef154bb39854e5b4bd62d8917c8531d67886c404344",
+      "responseSummary": {
+        "file": "nbp-attempt-01.response-summary.json",
+        "sha256": "sha256:1bc47d8a1d58ac8313395f13e5a985530834ee4dc1b169179fe0d4db224f2a80",
+        "bytes": 166
+      },
+      "conversion": {
+        "file": "nbp-attempt-01.png",
+        "decodedRgbEqual": true
+      }
+    },
+    {
+      "attempt": 2,
+      "decision": "rejected",
+      "selfReview": "Rejected: two parallel rows eliminate overlay ambiguity, but full lengths still≈367 and790. The dashed 'midpoint' line is left of the actual midpoint.",
+      "actuallyViewed": true,
+      "localResponseFileTimestamp": "2026-09-21T22:30:12.590Z",
+      "file": "nbp-attempt-02.png",
+      "sha256": "sha256:fb812a768a4b3c64f22a802fbe0b6bdd26ebd4a488c28b1968a71e22ce2c5915",
+      "bytes": 4109428,
+      "width": 2752,
+      "height": 1536,
+      "originalResponse": {
+        "file": "nbp-attempt-02.original.jpg",
+        "sha256": "sha256:2f2a5cbf2c2eab72880731043adae87559e7f46407e777dd5bb4eb0f33d04f5e",
+        "bytes": 1746771
+      },
+      "reference": {
+        "file": "nbp-attempt-01.png",
+        "sha256": "sha256:449057e8b3ee648c7c3cf4e26fce9b5fd7517061ea2d2acd1a185bd14ddb3a37",
+        "bytes": 3990879,
+        "width": 2752,
+        "height": 1536
+      },
+      "prompt": {
+        "file": "prompt-nbp-attempt-02.exact.txt",
+        "sha256": "sha256:360581983d449fa45cc1b1e138b8d517fe14a81f8ddb48346ae14ba42c87d561",
+        "bytes": 2063
+      },
+      "requestSha256": "sha256:a05ab47084c8fad0df0843d46fc9fb2a1d1664c649a3f94db89bcaf9f033da3c",
+      "responseSummary": {
+        "file": "nbp-attempt-02.response-summary.json",
+        "sha256": "sha256:101a5c3ef5ec1d2b16ec638b6b5d517a5a3cfe38e6611cd5b09b2b55410df438",
+        "bytes": 166
+      },
+      "conversion": {
+        "file": "nbp-attempt-02.png",
+        "decodedRgbEqual": true
+      }
+    },
+    {
+      "attempt": 3,
+      "decision": "rejected",
+      "selfReview": "Rejected: requested seven-percent blue extension was not actually achieved; same ratio≈0.465 and misplaced midpoint guide.",
+      "actuallyViewed": true,
+      "localResponseFileTimestamp": "2026-09-21T22:33:35.698Z",
+      "file": "nbp-attempt-03.png",
+      "sha256": "sha256:6c3e68976d4fa843924589a6abc97bba7e14f79f8953b8e76ea9d8faa046e208",
+      "bytes": 4195829,
+      "width": 2752,
+      "height": 1536,
+      "originalResponse": {
+        "file": "nbp-attempt-03.original.jpg",
+        "sha256": "sha256:ac00fa451589f62f06732e03297e5cc0380f1592ed9d438b68ba8f55890e1396",
+        "bytes": 1770939
+      },
+      "reference": {
+        "file": "nbp-attempt-02.png",
+        "sha256": "sha256:fb812a768a4b3c64f22a802fbe0b6bdd26ebd4a488c28b1968a71e22ce2c5915",
+        "bytes": 4109428,
+        "width": 2752,
+        "height": 1536
+      },
+      "prompt": {
+        "file": "prompt-nbp-attempt-03.exact.txt",
+        "sha256": "sha256:6ab05297dd4a012fc442c69777d7b6bef3e50aa455efe64f425299702ebd3516",
+        "bytes": 1781
+      },
+      "requestSha256": "sha256:e6bcf3543a87b49146d98907095711c67b1bc4e18c22726d93497ebbf0fed1d0",
+      "responseSummary": {
+        "file": "nbp-attempt-03.response-summary.json",
+        "sha256": "sha256:ad605caf2d8278a5081b99b1d0492f26d9d72fd7b6e75cd5dc34a55d52fce735",
+        "bytes": 166
+      },
+      "conversion": {
+        "file": "nbp-attempt-03.png",
+        "decodedRgbEqual": true
+      }
+    },
+    {
+      "attempt": 4,
+      "decision": "rejected",
+      "selfReview": "Rejected: two sequential blue a arrows have unequal lengths≈368 and422. Extra START/MITTE/ENDE guide spans only the first arrow, so ENDE is falsely attached to the chain midpoint. This latest response is worse; no candidate selected.",
+      "actuallyViewed": true,
+      "localResponseFileTimestamp": "2026-09-21T22:36:12.752Z",
+      "file": "nbp-attempt-04.png",
+      "sha256": "sha256:693baa64a6168c55dcd8aa3a4d31af94b485e267b7e81ac6ada549da4170db15",
+      "bytes": 4369010,
+      "width": 2752,
+      "height": 1536,
+      "originalResponse": {
+        "file": "nbp-attempt-04.original.jpg",
+        "sha256": "sha256:9becec96be303622458f1f76fbdbc2b2c2eeab249c3aebccbe66103b664d5316",
+        "bytes": 1832406
+      },
+      "reference": {
+        "file": "nbp-attempt-03.png",
+        "sha256": "sha256:6c3e68976d4fa843924589a6abc97bba7e14f79f8953b8e76ea9d8faa046e208",
+        "bytes": 4195829,
+        "width": 2752,
+        "height": 1536
+      },
+      "prompt": {
+        "file": "prompt-nbp-attempt-04.exact.txt",
+        "sha256": "sha256:c5e03b9abeac9cbf2c1b22368a1d534b27474c2a17123f3d21a36a4b4db50992",
+        "bytes": 2493
+      },
+      "requestSha256": "sha256:f00735e9352913f3e32045c14c7c1b7b69abd90f3c42cd634cc692af65fbaff2",
+      "responseSummary": {
+        "file": "nbp-attempt-04.response-summary.json",
+        "sha256": "sha256:bd5b8d9e78ada0ffc4f9f6720df417943259bf3516fee8f4d9cfedba05a55705",
+        "bytes": 166
+      },
+      "conversion": {
+        "file": "nbp-attempt-04.png",
+        "decodedRgbEqual": true
+      }
+    }
+  ],
+  "selectedAttempt": null,
+  "constructionReferencePolicy": "No programmatically generated diagram reference used in any NBP request; only actually inspected raster attempts.",
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false,
+    "humanApprovalClaimed": false
+  }
+}

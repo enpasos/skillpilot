@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-goal-visualization-candidate-review",
+  "goalId": "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+  "reviewedAt": "2026-09-21T22:06:38Z",
+  "reviewer": "codex-independent-probability-notation-review-20260922",
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "decision": "keep",
+  "recommendedPilotDecision": "accepted_pilot",
+  "independence": {
+    "referenceAndCandidateViewedBeforeEditPromptAndRootReview": true,
+    "generationParticipation": false,
+    "method": "Actual current reference JPG and candidate PNG viewed for both goals before reading edit prompts, generation metadata, root review, or current prior D decisions.",
+    "priorKnowledge": "The assigned correction area and earlier hold inventory were known. These are independent actual-raster checks of new candidates, not a claim of historically blind review."
+  },
+  "goalSnapshot": {
+    "id": "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+    "title": "Vierfeldertafeln interpretieren",
+    "titleEn": "Interpret four-fold tables",
+    "description": "Die lernende Person kann Vier- bzw. Mehrfeldertafeln aus Sachtexten erstellen, absolute und relative Häufigkeiten eintragen und gemeinsame sowie bedingte Wahrscheinlichkeiten an konkreten Beispielen ablesen.",
+    "descriptionEn": "The learner can build four- or multi-field tables from contextual data, enter absolute and relative frequencies, and read joint as well as conditional probabilities in concrete examples.",
+    "requires": [
+      "2a1158e5-d4ca-51d4-860c-f43bd5a86836"
+    ],
+    "demandLevel": "AB1"
+  },
+  "reference": {
+    "path": "app/public/assets/goal-visualizations/mathematik/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f.jpg",
+    "canonicalPath": "curricula/DE/Gymnasium/visualizations/mathematik/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f.jpg",
+    "sha256": "sha256:e52e39a3e77b0855ad766559fe179a15c6599b6f549c4468386efd051ac77c84",
+    "canonicalSha256": "sha256:e52e39a3e77b0855ad766559fe179a15c6599b6f549c4468386efd051ac77c84",
+    "actuallyViewed": true
+  },
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-probability-notation-20260921-v1/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/candidate.png",
+    "sha256": "sha256:6764ed8c68218dc8f6c24bee3e959a07e4f968c252b3a02084fd341f9644a7aa",
+    "width": 1678,
+    "height": 937,
+    "format": "PNG",
+    "actuallyViewed": true
+  },
+  "provenance": {
+    "receiptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-probability-notation-20260921-v1/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/generation-and-root-review.json",
+    "receiptSha256": "sha256:f47bed4348aa476fd28473576162df8f25d65249f672c0e769bc39ad0f1cb09c",
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "tool": "image_gen__imagegen",
+    "exactServingModel": "not exposed",
+    "resultId": "exec-9adde408-e8c7-4616-941f-9d22a436db3a",
+    "editPrompt": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-probability-notation-20260921-v1/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/edit-prompt.md",
+      "sha256": "sha256:cf9e25c702d610748084dce5bf2a11167b529e9f6903606146692a1451463d6f"
+    },
+    "attribution": "Actual generation attributed to the separate root receipt, read only after the independent candidate verdict. No more specific serving model inferred."
+  },
+  "checks": [
+    {
+      "aspect": "absolute_table",
+      "outcome": "pass",
+      "evidenceDe": "Innenzahlen 30,20 / 10,40; Zeilensummen 50,50; Spaltensummen 40,60; Gesamtsumme 100 stimmen."
+    },
+    {
+      "aspect": "relative_table",
+      "outcome": "pass",
+      "evidenceDe": "Alle vier Innenwerte 0.30,0.20 / 0.10,0.40 und Randsummen 0.50,0.50 sowie 0.40,0.60,1.00 entsprechen der absoluten Tafel dividiert durch 100."
+    },
+    {
+      "aspect": "joint_and_conditional_probabilities",
+      "outcome": "pass",
+      "evidenceDe": "P(A∩B)=30/100=0,30; P(A|B)=30/50=0,60; P(B|A)=30/40=0,75. Gemeinsamer Zähler 30, unterschiedliche richtige Bezugsgruppen 100/50/40."
+    },
+    {
+      "aspect": "arrow_and_reference_group_repair",
+      "outcome": "pass",
+      "evidenceDe": "Die irreführenden Einzelzellpfeile der Referenz sind entfernt. Rote Bezugszeile B und violette Bezugsspalte A werden durch Klammern und ausdrückliche Kartenüberschriften als Gruppen ausgewiesen. Keine innere oder Randzelle wird allein als bedingte Wahrscheinlichkeit bezeichnet."
+    },
+    {
+      "aspect": "notation",
+      "outcome": "pass",
+      "evidenceDe": "Schnittzeichen ∩ und Bedingungsstriche | bleiben unterscheidbar; die vertauschten Bedingungen A|B und B|A haben die jeweils richtigen Nenner. Die Tabelle nutzt Dezimalpunkte, die Karten Dezimalkommas; Werte sind eindeutig und konsistent."
+    }
+  ],
+  "style": {
+    "outcome": "pass",
+    "evidenceDe": "Hellblaue freundlich gerahmte Lernlandschaft, gelbe absolute und grüne relative Tafel, rote/violette Bezugsgruppen und abgerundete Karten. Die bisherigen passenden Farben und der zugängliche Charakter bleiben erhalten."
+  },
+  "readability": {
+    "outcome": "pass_at_inspected_raster_size",
+    "evidenceDe": "Alle Innenwerte, Randsummen, Nenner, Ereigniszeichen und drei Kartenüberschriften sind lesbar. Farbklammern verdecken keine nötigen Zahlen; erläuternde Texte sind vollständig im Bild.",
+    "limits": "Direct raster inspection only; no new cockpit-card-width, browser, mobile, screenreader or real-host acceptance."
+  },
+  "scopeFit": {
+    "outcome": "pass",
+    "evidenceDe": "Das AB1-Beispiel erklärt gemeinsame und bedingte Lesarten einer absoluten/relativen Vierfeldertafel. Eine konkrete Vierfeldertafel ist ausreichend als Orientierung; nicht jede Mehrfeldertafel oder Sachtextkonstruktion muss im Bild vollständig ausgeführt werden."
+  },
+  "blockingFindings": [],
+  "nonBlockingNotes": [
+    "Der Gebrauch von Dezimalpunkt in den Tabellen und Dezimalkomma in den Karten ist lesbar; kein fachlicher Änderungsbedarf allein daraus."
+  ],
+  "retainedGoodContent": [
+    "Absolute inner cells 30,20,10,40 sum to100; row totals50,50 and column totals40,60 correct.",
+    "Relative cells0.30,0.20,0.10,0.40, rowmarginals0.50,0.50 and columnmarginals0.40,0.60 all correspond to division by100.",
+    "Joint P(A∩B)=30/100=0.30, conditional P(A|B)=30/50=0.60 and P(B|A)=30/40=0.75 correct.",
+    "Single-cell conditional arrows replaced by explicit B reference row and A reference column with textual denominator groups; numerator30 and denominators50/40 are stated.",
+    "Friendly light-blue yellow/green table landscape retained; legible text and formulas, no cropping. Mixed decimal point/comma is understandable, not a value error."
+  ],
+  "reconstructionPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-probability-notation-20260921-v1/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/reconstruction-prompt.md",
+  "canonicalImported": false,
+  "qaAggregateChanged": false,
+  "humanApprovalGranted": false,
+  "realHostAcceptanceClaimed": false,
+  "integrationBoundary": "This approves only the exact candidate bytes as an AI candidate. Parent coordinates any later import, current page/context/profile checks and QA aggregation. No current active-JPG approval is copied to this new PNG."
+}
+

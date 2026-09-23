@@ -1,0 +1,65 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+  "campaignId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-a",
+  "roundId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a",
+  "batchId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:f3a1d70164a0bff5a312f5e27ceb0300e5cd7f893a09acd3a789f0d592a6d19a",
+  "bundleFingerprint": "sha256:e1235268a323e8dbc3b8d559d9be7257d301a18bd57baa7026ae0b8780d790fe",
+  "bookDigest": "sha256:d4da587887af181a9db83681491907e536f974b63e0b60daaddd64dc153bbc9a",
+  "provider": "openai",
+  "model": "codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:f432a6675f3aad2586a220f1421063b4046b4bd1dbe4e3622e3cca41091a28b5",
+  "independenceGroupId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "07196e72-ba47-54bf-a096-3a79bbb67e23",
+    "27542d59-aa1b-569d-8d77-41129bae26e2",
+    "bb4569bc-01ac-5bf9-8c85-05df42d70698",
+    "8d2021d0-aa14-5023-998b-187356de7986",
+    "bfbaedb9-b138-590a-87e8-4d87784dda0e",
+    "035b7fc6-830d-5f41-9c5d-2495808c09d4",
+    "ae2ca565-928d-55f4-b804-7155cf210120",
+    "dd582580-5cd3-55b3-b05e-e1c102533737",
+    "4a630596-6e2f-593e-bac6-2a6d8fa58e2f",
+    "8d126397-a8b0-528c-8986-614d56fa0749",
+    "e03eca28-9a57-5b24-877c-2e63fecee986",
+    "5836c821-d43b-5c02-9ee5-e86bb87bb054",
+    "fb4dcd2a-a6a9-5371-a2fc-95348ee130e0",
+    "74f28ce7-e568-5d6e-b946-17445b344fcc",
+    "163dd583-8308-53f0-b60d-34588787988d",
+    "519660d0-85e5-57a6-a219-d0a253336649"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:31ba5cb9e3d8952137257264fa46ec3f7dcecf290c0e6266c134763f39dc196c"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:ce4b1a76876d549ba8fe28d3acb1a59808b184f4f50da5e110fd39bd2d4af7cd"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f3a1d70164a0bff5a312f5e27ceb0300e5cd7f893a09acd3a789f0d592a6d19a"
+    }
+  ],
+  "startedAt": "2026-09-22T23:41:52.000Z",
+  "completedAt": "2026-09-22T23:44:14.981Z",
+  "status": "completed",
+  "outputDigest": "sha256:15578b4de86e827c0ebd4183e58ffaeae63932520318a8b2f0d25d0d17b92c11",
+  "toolchainVersion": "codex-goal-description-review-v2"
+}

@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:cc2f68831f513ad638ba013f5950ac8eae41037caca83c0b90b7ba062e4b0dad",
+  "reviewInputFingerprint": "sha256:560c364b3abadfa98b1b8219dfa291c3b1bc057b2ecc522a3cd3080b284d8c66",
+  "goalCount": 14,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a",
+      "roundId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-independent-a",
+      "runIds": [
+        "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-b",
+      "roundId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-independent-b",
+      "runIds": [
+        "math-m7-q2-spatial-v2-b-run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [
+      "openai::gpt-6::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 14,
+    "unavailable": 0,
+    "requiresSynthesis": 14
+  },
+  "goals": [
+    {
+      "goalId": "509ae03b-96b1-4bb1-b015-b83d14569dae",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.001",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-509ae03b",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.002",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-492463cf",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8cb5c712-9c58-5910-8c63-8c3736369b80",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.003",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-8cb5c712",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.004",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-8eb14d81",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bd3576b8-f4e5-542a-a8a2-74524d9cee21",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.005",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-bd3576b8",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "857c1c46-5d94-5dfb-9697-9a9fd04103c3",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.006",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-857c1c46",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.007",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-2ac2e902",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bda6a659-9640-53a5-8be0-24705ab623ef",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.008",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-bda6a659",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5f90df42-8a71-534d-b995-b8f7dcaf1661",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.009",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-5f90df42",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5748633c-113f-5ea8-9041-24da55919de7",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.010",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-5748633c",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d8e56cfc-a58d-5529-ab9f-e5187e31dd34",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.011",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-d8e56cfc",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.012",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-54541d08",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7bb3c312-f714-55e6-a31f-f31605a93760",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.013",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-7bb3c312",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "eb112b6f-4cc4-58af-975a-f1ea61b727f0",
+      "firstRecordId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001.014",
+      "secondRecordId": "math-m7-q2-spatial-v2-b-eb112b6f",
+      "firstRunId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a.run-001",
+      "secondRunId": "math-m7-q2-spatial-v2-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

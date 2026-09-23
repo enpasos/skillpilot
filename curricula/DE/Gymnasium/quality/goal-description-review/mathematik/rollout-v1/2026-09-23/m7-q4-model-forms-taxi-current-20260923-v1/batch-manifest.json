@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q4-model-forms-taxi-current-20260923-v1.config.json",
+  "configDigest": "sha256:988125a2cfab7e0326bc55d5b811d154b5398c5a63320914ba2bf7937734c368",
+  "goalIds": [
+    "07196e72-ba47-54bf-a096-3a79bbb67e23"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:411f11aa80daa244156669516c12e99615e7b481f562824d73c690e3293c40ba"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:9c745dc4e5026e97667c10ed49db07b2d672d9d375ee410a55c6668807ec00e8",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:79728d4ed261416a3d5e7df7e8fefcf4f79c5958f5c229411f96e41fbca9eda9",
+    "reviewInputFingerprint": "sha256:941b329d6c186abf93b6af00640ffe70b3a930b381dc06a47c11b1c28e23c69d",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-a",
+        "campaignDigest": "sha256:5e542c7a66ad1784a4399045568c3a94ef6f02571a2ec8a7204bb624a10998b8",
+        "roundId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-independent-a",
+        "batchId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:04c46fc92a67c7340ba4f10cd6386668a8f254c536f823c1c481e1430d6c2ee7"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-b",
+        "campaignDigest": "sha256:88d96827e4a91c983d8cda5fc6f9c0fdc289d989e809b4e890d3fa23fcb03c9f",
+        "roundId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-independent-b",
+        "batchId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:ba270736a47ac3706da5be7776363d3e16e47f5ddd4a1d4aa4252e30163c556a"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

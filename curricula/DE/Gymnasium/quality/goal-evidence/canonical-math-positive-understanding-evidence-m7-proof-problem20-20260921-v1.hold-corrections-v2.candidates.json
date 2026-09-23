@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-understanding-evidence-m7-proof-problem20-20260921-v1",
+  "reviewedAt": "2026-09-21T20:56:00.908Z",
+  "reviewer": "Codex Root mathematics content-specific evidence author",
+  "goals": [
+    {
+      "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+      "reason": "Strategievergleich auf LK-Niveau; Methodenpluralität gewahrt. Mathematische Aufgaben benötigen keine bedingte Wahrscheinlichkeit; Prüfung dieser bestehenden Kontextkante bleibt separate D-Aufgabe. Gezielte zweite-Fall-Korrektur nach Bildvergleich: geometrische statt im Bild gelöster arithmetischer Summe; zwei gültige Methoden dürfen gleichberechtigt verglichen werden.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "choose-proof-strategy",
+            "essentialUnderstandingDe": "Eine geeignete Beweisstrategie nutzt die Struktur der Behauptung: Implikation, Negation, explizite Darstellung oder indexabhängige Wiederholung. Mehrere Strategien können gültig sein.",
+            "essentialUnderstandingEn": "A suitable proof strategy exploits the claim’s structure: implication, negation, explicit representation or indexed repetition. Several strategies may be valid.",
+            "observablePerformanceDe": "Die Person vergleicht plausible Beweiswege anhand ihrer nötigen Schritte, wählt einen begründet aus und skizziert den entscheidenden Ansatz.",
+            "observablePerformanceEn": "The learner compares plausible proof routes by their required steps, makes a justified choice and outlines the decisive approach."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "choose-proof-strategy"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer Implikation mit günstiger Kontraposition zu einer induktiven Summenstruktur.",
+            "textEn": "Move from an implication with a convenient contrapositive to an inductive sum structure."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "parity-choice",
+            "taskDemandDe": "Für ganze n soll gezeigt werden: Ist n² ungerade, ist n ungerade. Vergleiche direkten Beweis und Kontraposition, wähle begründet und skizziere den Ansatz.",
+            "taskDemandEn": "For integer n, prove: if n² is odd, n is odd. Compare direct proof and contraposition, choose with justification and outline the approach.",
+            "expectedPerformanceDe": "Kontraposition bietet n=2k ⇒ n²=4k²=2(2k²), also gerade ⇒ Quadrat gerade. Sie vermeidet den schwerer nutzbaren Ansatz n²=2m+1. Ein korrekter direkter Fallunterscheidungsbeweis ist ebenfalls zulässig, muss aber seinen Aufwand erklären.",
+            "expectedPerformanceEn": "Contraposition gives n=2k ⇒ n²=4k²=2(2k²): even implies even square. This avoids the less useful starting representation n²=2m+1. A correct direct case proof is also admissible if its effort is explained.",
+            "understandingFocusDe": "Die algebraisch günstigere Voraussetzung begründet die Wahl.",
+            "understandingFocusEn": "The algebraically convenient premise motivates the choice."
+          },
+          {
+            "id": "geometric-sum-strategy",
+            "taskDemandDe": "Für n≥1 ist S_n=1+2+…+2^(n−1). Es soll S_n=2^n−1 gezeigt werden. Vergleiche Induktion mit einem direkten Ansatz über 2S_n−S_n, wähle begründet und skizziere den entscheidenden Schritt. Beide Wege sind zulässig.",
+            "taskDemandEn": "For n≥1, let S_n=1+2+…+2^(n−1). Establish S_n=2^n−1. Compare induction with a direct approach using 2S_n−S_n, make a justified choice and outline the decisive step. Both routes are admissible.",
+            "expectedPerformanceDe": "Induktion nutzt S_1=1=2^1−1 und S_{n+1}=S_n+2^n=(2^n−1)+2^n=2^(n+1)−1. Direkt verschiebt Verdoppeln die Potenzen: Beim Subtrahieren der endlichen Summen bleiben 2^n−1, also 2S_n−S_n=S_n=2^n−1. Die Wahl wird anhand rekursiver Erweiterung beziehungsweise kürzerer algebraischer Kürzung begründet; kein Weg ist allein wegen seines Namens richtig.",
+            "expectedPerformanceEn": "Induction uses S_1=1=2^1−1 and S_{n+1}=S_n+2^n=(2^n−1)+2^n=2^(n+1)−1. Directly, doubling shifts the powers: subtracting the finite sums leaves 2^n−1, so 2S_n−S_n=S_n=2^n−1. The choice is justified by recursive extension or shorter algebraic cancellation; no route is correct merely because of its name.",
+            "understandingFocusDe": "Rekursive und algebraische Struktur erlauben verschiedene begründete Strategien; die Bildlösung ist nicht ablesbar.",
+            "understandingFocusEn": "Recursive and algebraic structure support different justified strategies; the solution cannot be read off the image."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+      "reason": "AB1-Analyse der Ausgangssituation, kein versteckter Optimierungs-/Kombinatorikauftrag. Bestehende Zählprinzipien-Pflichtkante bleibt separat im Kontextreview. Der Auftrag legt die vollständige Zaunverwendung nun ausdrücklich fest, damit die Gleichheitsbedingung ohne versteckte Optimierungsbegründung folgt.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "givens-unknowns-constraints",
+            "essentialUnderstandingDe": "Eine Problemstellung unterscheidet feste Daten, gesuchte Größen und zulässige Bedingungen. Diese müssen vor einem Lösungsweg widerspruchsfrei notiert sein.",
+            "essentialUnderstandingEn": "A problem distinguishes fixed data, unknown quantities and admissibility conditions. These must be recorded consistently before solving.",
+            "observablePerformanceDe": "Die Person extrahiert Daten, gesuchte Größe und Nebenbedingungen aus einem Text und kennzeichnet sie übersichtlich, ohne schon die gesamte Aufgabe lösen zu müssen.",
+            "observablePerformanceEn": "The learner extracts data, the requested quantity and constraints from a text and records them clearly without having to solve the whole problem."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "givens-unknowns-constraints"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von kontinuierlichen geometrischen Größen zu ganzzahligen Stückzahlen mit Budgetgrenze.",
+            "textEn": "Move from continuous geometric quantities to integer quantities subject to a budget limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fence-data",
+            "taskDemandDe": "Ein rechteckiger Garten grenzt mit einer Seite an eine Mauer. Die drei übrigen Seiten werden eingezäunt. Alle 24 m des vorhandenen Zauns sollen verwendet werden; die Fläche soll möglichst groß werden. Notiere Gegebenes, Gesuchtes und Nebenbedingungen, ohne zu optimieren.",
+            "taskDemandEn": "A rectangular garden has one side against a wall. The other three sides are fenced. All 24 m of available fencing must be used; the area should be as large as possible. Record givens, unknowns and constraints without optimizing.",
+            "expectedPerformanceDe": "Gegeben: Rechteck, eine zaunfreie Mauerseite, 24 m Zaun. Gesucht: Seitenlängen x (quer zur Mauer), y (entlang der Mauer) mit maximaler Fläche xy. Bedingungen: x,y>0 und 2x+y=24, also 0<x<12.",
+            "expectedPerformanceEn": "Given: a rectangle, one unfenced wall side, 24 m of fence. Unknown: sides x perpendicular and y parallel to the wall maximizing area xy. Constraints: x,y>0 and 2x+y=24, hence 0<x<12.",
+            "understandingFocusDe": "Geometrische Bedeutung bestimmt die Nebenbedingung.",
+            "understandingFocusEn": "Geometric meaning determines the constraint."
+          },
+          {
+            "id": "ticket-data",
+            "taskDemandDe": "Eine Klasse hat 180 € für einen Ausflug. Der Bus kostet fest 60 €, pro teilnehmender Person kommen 8 € hinzu. Gesucht ist die größte mögliche Teilnehmerzahl. Ordne Daten, Gesuchtes und zulässige Werte; rechne die maximale Zahl noch nicht aus.",
+            "taskDemandEn": "A class has €180 for a trip. The bus costs a fixed €60 plus €8 per participant. The greatest possible participant count is sought. Organize data, unknown and admissible values without calculating the maximum.",
+            "expectedPerformanceDe": "Daten: Budget 180 €, Festkosten 60 €, variable Kosten 8 €/Person. Gesucht: größtes n. n ist eine nichtnegative ganze Zahl und muss 60+8n≤180 erfüllen; Bruchteile einer Person sind unzulässig.",
+            "expectedPerformanceEn": "Data: €180 budget, €60 fixed cost, €8/person variable cost. Unknown: greatest n. n is a nonnegative integer satisfying 60+8n≤180; fractional people are inadmissible.",
+            "understandingFocusDe": "Ganzzahligkeit und Budgetungleichung gehören zu den Ausgangsbedingungen.",
+            "understandingFocusEn": "Integrality and the budget inequality are initial constraints."
+          }
+        ]
+      }
+    }
+  ]
+}

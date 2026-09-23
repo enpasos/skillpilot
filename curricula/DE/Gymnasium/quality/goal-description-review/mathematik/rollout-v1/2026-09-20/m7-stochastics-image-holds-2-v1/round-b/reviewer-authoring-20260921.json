@@ -1,0 +1,39 @@
+{
+  "reviewer": "independent blind round-b",
+  "startedAt": "2026-09-21T21:09:31Z",
+  "reviewScope": "Only the two current bound goals, own prompt, criteria, record schema, canonical context and supplied book-page data. No historical findings, round-a outputs or other review outputs read. Image metadata is not a visual approval; supplied source references and raw applicability are not independently verified source mappings or projections.",
+  "generationParameters": {
+    "mode": "independent blind subject review",
+    "exactServingRevision": "not exposed",
+    "decisionPolicy": "KEEP unless a concrete weakness is demonstrated",
+    "authority": "ai_candidate"
+  },
+  "decisions": [
+    {
+      "goalId": "42d300e3-e982-5889-98d7-fc297f10eff1",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Bei binomialen Trefferzahlen bestimmt np die Lage und np(1−p) die Varianz. Bei festem n ist die Streuung bei p=0,5 am größten; p und 1−p spiegeln die Verteilung. Ein größeres n verbreitert bei festem innerem p die absolute, nicht die relative Streuung.",
+        "essentialUnderstandingEn": "For binomial success counts, np determines location and np(1−p) the variance. At fixed n the spread is greatest at p=0.5; p and 1−p give reflected distributions. At fixed interior p, larger n increases absolute rather than relative spread.",
+        "observablePerformanceDe": "Die lernende Person vergleicht passend skalierte Histogramme bei jeweils gezielter Änderung von n oder p, beschreibt Verschiebung, Streuung und Symmetrie und begründet die Unterschiede mithilfe der bekannten Kenngrößen statt allein nach Balkenhöhen zu urteilen.",
+        "observablePerformanceEn": "The learner compares appropriately scaled histograms with n or p varied deliberately, describes shifts, spread and symmetry, and justifies the differences using the known distribution measures rather than bar heights alone.",
+        "transferExpectationDe": "In einer neuen Vergleichsaufgabe werden zwei Verteilungen mit gleichem Erwartungswert, aber unterschiedlichem n und p gezeigt. Die lernende Person erklärt, weshalb gleiche Lage weder gleiche Streuung noch gleiche Symmetrie erzwingt, und ordnet die Histogramme begründet zu.",
+        "transferExpectationEn": "A fresh comparison presents distributions with the same mean but different n and p. The learner explains why equal location forces neither equal spread nor equal symmetry and matches the histograms with a reasoned argument."
+      },
+      "rationale": "KEEP: Der aktuelle Text verlangt ausdrücklich die begründete Analyse von Lage, Streuung und Symmetrie, nicht bloß Parameterersetzung oder Nachzeichnen. Histogrammlesen und binomiale Kenngrößen sind die passenden direkten Voraussetzungen; die spätere Kontextnutzung wird nicht vorgezogen. Die drei Verteilungsmerkmale bilden einen kohärenten Parametervergleich auf AB2-Niveau. DE/EN sind in Objekten, Operationen und Begründungsanspruch gleichwertig. Der gelieferte Bildstatus review_candidate bleibt unberührt; aus dem D-Review folgt keine visuelle Freigabe."
+    },
+    {
+      "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Eine exemplarisch gewählte stetige Verteilung ordnet Intervallen Wahrscheinlichkeiten zu; Dichtehöhe ist keine Punktwahrscheinlichkeit. Träger, Parameter und zentrale Modelleigenschaften müssen zum Sachkontext passen, bei der Exponentialverteilung etwa Nichtnegativität und konstante Ausfallrate.",
+        "essentialUnderstandingEn": "An exemplarily selected continuous distribution assigns probabilities to intervals; density height is not point probability. Support, parameters and central model properties must suit the context, such as non-negativity and a constant hazard rate for an exponential distribution.",
+        "observablePerformanceDe": "Die lernende Person verwendet eine gewählte weitere stetige Verteilung in einer konkreten Situation, bestimmt passende Intervall- oder Überschreitungswahrscheinlichkeiten und erläutert Parameter, Ergebnis und wesentliche Modellannahmen anhand dieser Situation; gleichwertige Rechenwege sind zulässig.",
+        "observablePerformanceEn": "The learner uses a selected additional continuous distribution in a concrete situation, determines relevant interval or exceedance probabilities, and explains the parameter, result and key assumptions in that context; mathematically equivalent calculation methods are acceptable.",
+        "transferExpectationDe": "Bei einem neuen Fall mit veränderter Modellannahme überprüft die lernende Person die Übertragbarkeit des gewählten Modells. Beim Exponentialbeispiel erläutert sie insbesondere, warum altersbedingt steigendes Ausfallrisiko nicht zum Modell mit konstanter Rate passt.",
+        "transferExpectationEn": "In a fresh case with a changed modelling assumption, the learner checks whether the chosen model still applies. For the exponential example, the learner explains in particular why failure risk increasing with age conflicts with a constant-rate model."
+      },
+      "rationale": "KEEP: Der Gegenstand ist ausdrücklich exemplarisch auf eine weitere stetige Verteilung begrenzt; die Exponentialverteilung ist ein Beispiel, keine zwingende Methode und kein Auftrag zur Beherrschung sämtlicher stetiger Familien. Berechnung und Kontextdeutung sind eine kohärente Modellierungsleistung. Der vorangehende Normalverteilungskontext bietet den Anschluss an stetige Modelle, ohne in der Beschreibung auf eine Binomialapproximation verengt zu werden. Die bilinguale Formulierung ist präzise und LK/AB3-angemessen. Rohscopes mit GK-Einträgen belegen keine effektive Projektion; diese und die Bildfreigabe bleiben außerhalb der hier bestätigten Beschreibung."
+    }
+  ]
+}

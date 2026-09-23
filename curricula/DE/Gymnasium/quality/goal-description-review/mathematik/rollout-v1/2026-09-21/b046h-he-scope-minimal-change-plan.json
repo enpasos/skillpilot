@@ -1,0 +1,893 @@
+{
+  "schemaVersion": 1,
+  "kind": "he-math-q24-q25-minimal-change-plan",
+  "status": "proposal",
+  "reviewAuthority": "ai_candidate",
+  "preparedAt": "2026-09-21T21:57:00Z",
+  "applied": false,
+  "completeRepair": false,
+  "scopeGoalIds": [
+    "0de1e45c-aea9-5e53-932a-027dcf509efa",
+    "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+    "7bd8f022-5002-5610-994c-a9cec1890558"
+  ],
+  "importantBoundaries": [
+    "No Canonical, composition-view, registry, ledger, QA, assessment task or learner-state mutation performed.",
+    "Operations below are proposed exact JSON-pointer edits, not an approved or sufficient standalone rollout.",
+    "Wait for the parent-coordinated stable D/P checkpoint; resolve every pointer by goal identity and exact before value at execution time.",
+    "No prerequisiteOnly substitution for curricular scope removal. HE-LK and other jurisdictions are not removed.",
+    "No learner mastery or stored plan migration is inferred or implemented."
+  ],
+  "sources": [
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "pages": [
+        43,
+        44
+      ],
+      "readMethod": "Local pdftotext reading of the actual source PDF pages, including basic/advanced-course headers.",
+      "finding": "Q2.4 long-term matrix powers/limits and Q2.5 rotations about coordinate axes are under Leistungskurs."
+    }
+  ],
+  "additionalScopeDecision": {
+    "goalId": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+    "title": "Langfristige Entwicklung von Übergangsprozessen (LK)",
+    "requiresExplicitApproval": true,
+    "rationale": "Immediate sibling under the same Q2.4 fixed-vector/long-term subtree and the same LK source clause. The proposed source-consistent selection excludes it too; a three-goal-only repair would leave this same LK content in GK.",
+    "canonicalGoalChangeProposed": false
+  },
+  "canonical": {
+    "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "beforeSha256": "sha256:5153eae20bdfe303ccb70517b938f9f8c5fb6c558e594c28ea0a1b3d75ea30a3",
+    "operations": [
+      {
+        "op": "remove",
+        "path": "/goals/1004/requires/2",
+        "before": "7bd8f022-5002-5610-994c-a9cec1890558",
+        "goalId": "81823f27-0c92-5444-ac4e-32b83169f318"
+      },
+      {
+        "op": "remove",
+        "path": "/goals/1004/examData/coveredGoalIds/2",
+        "before": "7bd8f022-5002-5610-994c-a9cec1890558",
+        "goalId": "81823f27-0c92-5444-ac4e-32b83169f318"
+      }
+    ],
+    "beforeRequires": [
+      "168d8879-0412-5524-94c5-c1d8169dbd65",
+      "803d910d-96d1-5118-b9ca-29e93d0da76d",
+      "7bd8f022-5002-5610-994c-a9cec1890558",
+      "4c494716-567b-59c2-855c-6ea45635c666",
+      "55039f9c-4ebc-5115-add5-fae95b915e46",
+      "35558905-753d-5fcb-b25e-7f85ffdbff56",
+      "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "5748633c-113f-5ea8-9041-24da55919de7"
+    ],
+    "afterRequires": [
+      "168d8879-0412-5524-94c5-c1d8169dbd65",
+      "803d910d-96d1-5118-b9ca-29e93d0da76d",
+      "4c494716-567b-59c2-855c-6ea45635c666",
+      "55039f9c-4ebc-5115-add5-fae95b915e46",
+      "35558905-753d-5fcb-b25e-7f85ffdbff56",
+      "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "5748633c-113f-5ea8-9041-24da55919de7"
+    ],
+    "beforeCoverage": [
+      "168d8879-0412-5524-94c5-c1d8169dbd65",
+      "803d910d-96d1-5118-b9ca-29e93d0da76d",
+      "7bd8f022-5002-5610-994c-a9cec1890558",
+      "4c494716-567b-59c2-855c-6ea45635c666",
+      "55039f9c-4ebc-5115-add5-fae95b915e46",
+      "35558905-753d-5fcb-b25e-7f85ffdbff56",
+      "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "5748633c-113f-5ea8-9041-24da55919de7"
+    ],
+    "afterCoverage": [
+      "168d8879-0412-5524-94c5-c1d8169dbd65",
+      "803d910d-96d1-5118-b9ca-29e93d0da76d",
+      "4c494716-567b-59c2-855c-6ea45635c666",
+      "55039f9c-4ebc-5115-add5-fae95b915e46",
+      "35558905-753d-5fcb-b25e-7f85ffdbff56",
+      "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "5748633c-113f-5ea8-9041-24da55919de7"
+    ],
+    "goalIdPrecondition": {
+      "path": "/goals/1004/id",
+      "equals": "81823f27-0c92-5444-ac4e-32b83169f318"
+    },
+    "reason": "Actual shared geometry task has only a 2D triangle map, eigenvector check and 2D projection; it does not assess 3D coordinate-axis rotation. Preserve all task/solution/scoring content and all other bindings."
+  },
+  "views": [
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "beforeSha256": "sha256:6a7f75a92471dfb2ba8e6000b5cf9a297f36853b76b59ef59e69f321cdcbc53d",
+      "operations": [
+        {
+          "op": "remove",
+          "path": "/rootNodes/0/children/1/children/3/children/6/children/4",
+          "before": {
+            "kind": "goalEntry",
+            "goalId": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e"
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/0/children/1/children/3/children/4",
+          "before": {
+            "kind": "canonicalSubtree",
+            "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+          },
+          "value": {
+            "kind": "structure",
+            "id": "q25-gk-selected-matrix-mappings",
+            "label": "Q2.5 Lineare geometrische Abbildungen und Abbildungsmatrizen",
+            "children": [
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "4c494716-567b-59c2-855c-6ea45635c666"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "4d331ba0-56d6-5730-a51b-e3d1126b31ba"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "b72d87d4-763e-54aa-940d-31f195b51700"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f"
+              }
+            ]
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/0/children/1/children/3/children/3",
+          "before": {
+            "kind": "canonicalSubtree",
+            "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+          },
+          "value": {
+            "kind": "structure",
+            "id": "q24-gk-transition-processes",
+            "label": "Q2.4 Matrizen und Übergangsprozesse",
+            "children": [
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "2826e0b6-84d3-5abb-85bd-da8db77cc17a"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "0260fa2d-a040-4799-8009-4534344926e7"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "074d755a-d307-4569-baa9-128ad6ea97dd"
+              },
+              {
+                "kind": "structure",
+                "id": "q24-gk-fixed-vectors",
+                "label": "Fixvektoren und stabile Zustände",
+                "children": [
+                  {
+                    "kind": "goalEntry",
+                    "goalId": "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "simulation": {
+        "compilerErrors": [],
+        "removedTargets": [
+          {
+            "id": "d6d8904c-896f-5850-8181-06c223346b80",
+            "title": "Matrizen, Übergangsprozesse und lineare Modelle (Sek II)",
+            "type": "cluster"
+          },
+          {
+            "id": "0a024ecf-27ee-40a2-bf41-0e2faaeb1252",
+            "title": "Fixvektoren, stabile Zustände und Langzeitverhalten",
+            "type": "cluster"
+          },
+          {
+            "id": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+            "title": "Langfristige Entwicklung von Übergangsprozessen (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+            "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+            "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "b3d2284c-21e0-5af8-942a-a4c11390c84a",
+            "title": "Lineare geometrische Abbildungen und Abbildungsmatrizen",
+            "type": "cluster"
+          },
+          {
+            "id": "7bd8f022-5002-5610-994c-a9cec1890558",
+            "title": "Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e",
+            "title": "Übergangsprozesse und Grenzverhalten mit Matrizen untersuchen (LK)",
+            "type": "atomic"
+          }
+        ],
+        "addedTargets": [],
+        "retainedGkMarkov": true,
+        "retainedSharedGeometry": true,
+        "removedStillPrerequisiteOnly": []
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "beforeSha256": "sha256:dcbd5e95214e2232274f9c041b57bc205ac81ff80f31d1fc3d6a37539eb78bf6",
+      "operations": [
+        {
+          "op": "remove",
+          "path": "/rootNodes/0/children/1/children/3/children/6/children/4",
+          "before": {
+            "kind": "goalEntry",
+            "goalId": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e"
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/0/children/1/children/3/children/4",
+          "before": {
+            "kind": "canonicalSubtree",
+            "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+          },
+          "value": {
+            "kind": "structure",
+            "id": "q25-gk-selected-matrix-mappings",
+            "label": "Q2.5 Lineare geometrische Abbildungen und Abbildungsmatrizen",
+            "children": [
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "4c494716-567b-59c2-855c-6ea45635c666"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "4d331ba0-56d6-5730-a51b-e3d1126b31ba"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "b72d87d4-763e-54aa-940d-31f195b51700"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f"
+              }
+            ]
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/0/children/1/children/3/children/3",
+          "before": {
+            "kind": "canonicalSubtree",
+            "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+          },
+          "value": {
+            "kind": "structure",
+            "id": "q24-gk-transition-processes",
+            "label": "Q2.4 Matrizen und Übergangsprozesse",
+            "children": [
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "2826e0b6-84d3-5abb-85bd-da8db77cc17a"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "0260fa2d-a040-4799-8009-4534344926e7"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "074d755a-d307-4569-baa9-128ad6ea97dd"
+              },
+              {
+                "kind": "structure",
+                "id": "q24-gk-fixed-vectors",
+                "label": "Fixvektoren und stabile Zustände",
+                "children": [
+                  {
+                    "kind": "goalEntry",
+                    "goalId": "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "simulation": {
+        "compilerErrors": [],
+        "removedTargets": [
+          {
+            "id": "d6d8904c-896f-5850-8181-06c223346b80",
+            "title": "Matrizen, Übergangsprozesse und lineare Modelle (Sek II)",
+            "type": "cluster"
+          },
+          {
+            "id": "0a024ecf-27ee-40a2-bf41-0e2faaeb1252",
+            "title": "Fixvektoren, stabile Zustände und Langzeitverhalten",
+            "type": "cluster"
+          },
+          {
+            "id": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+            "title": "Langfristige Entwicklung von Übergangsprozessen (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+            "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+            "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "b3d2284c-21e0-5af8-942a-a4c11390c84a",
+            "title": "Lineare geometrische Abbildungen und Abbildungsmatrizen",
+            "type": "cluster"
+          },
+          {
+            "id": "7bd8f022-5002-5610-994c-a9cec1890558",
+            "title": "Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e",
+            "title": "Übergangsprozesse und Grenzverhalten mit Matrizen untersuchen (LK)",
+            "type": "atomic"
+          }
+        ],
+        "addedTargets": [],
+        "retainedGkMarkov": true,
+        "retainedSharedGeometry": true,
+        "removedStillPrerequisiteOnly": []
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+      "beforeSha256": "sha256:93ddeef647ff584dd61d67aee61d453c72b9edee22aa28efb4ebdebc60ca08be",
+      "operations": [
+        {
+          "op": "remove",
+          "path": "/rootNodes/0/children/1/children/3/children/6/children/4",
+          "before": {
+            "kind": "goalEntry",
+            "goalId": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e"
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/0/children/1/children/3/children/4",
+          "before": {
+            "kind": "canonicalSubtree",
+            "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+          },
+          "value": {
+            "kind": "structure",
+            "id": "q25-gk-selected-matrix-mappings",
+            "label": "Q2.5 Lineare geometrische Abbildungen und Abbildungsmatrizen",
+            "children": [
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "4c494716-567b-59c2-855c-6ea45635c666"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "4d331ba0-56d6-5730-a51b-e3d1126b31ba"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "b72d87d4-763e-54aa-940d-31f195b51700"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f"
+              }
+            ]
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/0/children/1/children/3/children/3",
+          "before": {
+            "kind": "canonicalSubtree",
+            "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+          },
+          "value": {
+            "kind": "structure",
+            "id": "q24-gk-transition-processes",
+            "label": "Q2.4 Matrizen und Übergangsprozesse",
+            "children": [
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "2826e0b6-84d3-5abb-85bd-da8db77cc17a"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "0260fa2d-a040-4799-8009-4534344926e7"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "074d755a-d307-4569-baa9-128ad6ea97dd"
+              },
+              {
+                "kind": "structure",
+                "id": "q24-gk-fixed-vectors",
+                "label": "Fixvektoren und stabile Zustände",
+                "children": [
+                  {
+                    "kind": "goalEntry",
+                    "goalId": "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "simulation": {
+        "compilerErrors": [],
+        "removedTargets": [
+          {
+            "id": "d6d8904c-896f-5850-8181-06c223346b80",
+            "title": "Matrizen, Übergangsprozesse und lineare Modelle (Sek II)",
+            "type": "cluster"
+          },
+          {
+            "id": "0a024ecf-27ee-40a2-bf41-0e2faaeb1252",
+            "title": "Fixvektoren, stabile Zustände und Langzeitverhalten",
+            "type": "cluster"
+          },
+          {
+            "id": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+            "title": "Langfristige Entwicklung von Übergangsprozessen (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+            "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+            "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "b3d2284c-21e0-5af8-942a-a4c11390c84a",
+            "title": "Lineare geometrische Abbildungen und Abbildungsmatrizen",
+            "type": "cluster"
+          },
+          {
+            "id": "7bd8f022-5002-5610-994c-a9cec1890558",
+            "title": "Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e",
+            "title": "Übergangsprozesse und Grenzverhalten mit Matrizen untersuchen (LK)",
+            "type": "atomic"
+          }
+        ],
+        "addedTargets": [],
+        "retainedGkMarkov": true,
+        "retainedSharedGeometry": true,
+        "removedStillPrerequisiteOnly": []
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+      "beforeSha256": "sha256:b125a7c372d5a690c3f4bd33ffc445e898dfaa1199c5f5174a38f18daf9a865c",
+      "operations": [
+        {
+          "op": "remove",
+          "path": "/rootNodes/0/children/3/children/6/children/4",
+          "before": {
+            "kind": "goalEntry",
+            "goalId": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e"
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/0/children/3/children/4",
+          "before": {
+            "kind": "canonicalSubtree",
+            "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+          },
+          "value": {
+            "kind": "structure",
+            "id": "q25-gk-selected-matrix-mappings",
+            "label": "Q2.5 Lineare geometrische Abbildungen und Abbildungsmatrizen",
+            "children": [
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "4c494716-567b-59c2-855c-6ea45635c666"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "4d331ba0-56d6-5730-a51b-e3d1126b31ba"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "b72d87d4-763e-54aa-940d-31f195b51700"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "168d8879-0412-5524-94c5-c1d8169dbd65"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f"
+              }
+            ]
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/0/children/3/children/3",
+          "before": {
+            "kind": "canonicalSubtree",
+            "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+          },
+          "value": {
+            "kind": "structure",
+            "id": "q24-gk-transition-processes",
+            "label": "Q2.4 Matrizen und Übergangsprozesse",
+            "children": [
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "2826e0b6-84d3-5abb-85bd-da8db77cc17a"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "0260fa2d-a040-4799-8009-4534344926e7"
+              },
+              {
+                "kind": "canonicalSubtree",
+                "goalId": "074d755a-d307-4569-baa9-128ad6ea97dd"
+              },
+              {
+                "kind": "structure",
+                "id": "q24-gk-fixed-vectors",
+                "label": "Fixvektoren und stabile Zustände",
+                "children": [
+                  {
+                    "kind": "goalEntry",
+                    "goalId": "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "simulation": {
+        "compilerErrors": [],
+        "removedTargets": [
+          {
+            "id": "d6d8904c-896f-5850-8181-06c223346b80",
+            "title": "Matrizen, Übergangsprozesse und lineare Modelle (Sek II)",
+            "type": "cluster"
+          },
+          {
+            "id": "0a024ecf-27ee-40a2-bf41-0e2faaeb1252",
+            "title": "Fixvektoren, stabile Zustände und Langzeitverhalten",
+            "type": "cluster"
+          },
+          {
+            "id": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+            "title": "Langfristige Entwicklung von Übergangsprozessen (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+            "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+            "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "b3d2284c-21e0-5af8-942a-a4c11390c84a",
+            "title": "Lineare geometrische Abbildungen und Abbildungsmatrizen",
+            "type": "cluster"
+          },
+          {
+            "id": "7bd8f022-5002-5610-994c-a9cec1890558",
+            "title": "Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)",
+            "type": "atomic"
+          },
+          {
+            "id": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e",
+            "title": "Übergangsprozesse und Grenzverhalten mit Matrizen untersuchen (LK)",
+            "type": "atomic"
+          }
+        ],
+        "addedTargets": [],
+        "retainedGkMarkov": true,
+        "retainedSharedGeometry": true,
+        "removedStillPrerequisiteOnly": []
+      }
+    }
+  ],
+  "lkViewsUnchanged": [
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "targets": [
+        {
+          "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "target": true
+        },
+        {
+          "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+          "target": true
+        },
+        {
+          "id": "7bd8f022-5002-5610-994c-a9cec1890558",
+          "target": true
+        },
+        {
+          "id": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+          "target": true
+        },
+        {
+          "id": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e",
+          "target": true
+        }
+      ]
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "targets": [
+        {
+          "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "target": true
+        },
+        {
+          "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+          "target": true
+        },
+        {
+          "id": "7bd8f022-5002-5610-994c-a9cec1890558",
+          "target": true
+        },
+        {
+          "id": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+          "target": true
+        },
+        {
+          "id": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e",
+          "target": true
+        }
+      ]
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+      "targets": [
+        {
+          "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "target": true
+        },
+        {
+          "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+          "target": true
+        },
+        {
+          "id": "7bd8f022-5002-5610-994c-a9cec1890558",
+          "target": true
+        },
+        {
+          "id": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+          "target": true
+        },
+        {
+          "id": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e",
+          "target": true
+        }
+      ]
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+      "targets": [
+        {
+          "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "target": true
+        },
+        {
+          "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+          "target": true
+        },
+        {
+          "id": "7bd8f022-5002-5610-994c-a9cec1890558",
+          "target": true
+        },
+        {
+          "id": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+          "target": true
+        },
+        {
+          "id": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e",
+          "target": true
+        }
+      ]
+    }
+  ],
+  "rotationRemainingDirectSuccessors": [],
+  "unresolvedRequiredWork": [
+    {
+      "id": "rotation-real-lk-endpoint",
+      "goalId": "7bd8f022-5002-5610-994c-a9cec1890558",
+      "severity": "blocks_complete_route_repair",
+      "finding": "After removing the false 81823f27 dependency, no direct canonical successor remains. Thus no route through a successor can prove a genuine LK endpoint.",
+      "nextDecision": "Authorize a separately scoped LK rotation assessment or another substantively reviewed existing endpoint that actually assesses this goal. Do not retain a false requires edge or silently append LK content to the shared GK task.",
+      "suggestedTaskContent": "Candidate bounded task: determine Rz(+90°) from basis images, map P=(2,-1,3) to (1,2,3), justify invariant z-axis and length; changed case Rx(-90°) maps P to (2,3,1). No task/goal was authored into Canonical."
+    },
+    {
+      "id": "neighbor-scope-authorization",
+      "goalId": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+      "severity": "requires_parent_scope_decision",
+      "finding": "This adjacent goal was not one of the three assigned hold IDs. Its scope removal is explicitly proposed, not presumed authorized."
+    }
+  ],
+  "validationLimits": [
+    "Native composition compilation and role collection ran in memory only against the proposed 14 operations; no source files were written.",
+    "Four HE-GK candidates compile without errors; the five removed atomic/assessment targets are not converted to prerequisiteOnly; existing GK Markov and shared geometry assessments remain.",
+    "The three replaced canonical cluster projections become structure nodes; canonical clusters and global semantic denominator are unchanged.",
+    "HE-LK baseline target membership was checked for all five affected target IDs in four unchanged LK views.",
+    "This is not a full DAG/source/route/quality/Maturity validation and is not D/P/V closure."
+  ],
+  "afterAuthorizedImplementationChecks": [
+    "Re-resolve JSON pointers by IDs and compare exact before values; preserve unrelated current concurrent edits.",
+    "Native composition compilation and role diffs for all four HE-GK and HE-LK views, including absence of accidentally added or removed target atoms.",
+    "DAG and real route/assessment coverage; resolve the missing LK rotation endpoint before claiming complete repair.",
+    "Current affected BookModel/page/context bindings and final D/P/V decisions after the coordinated checkpoint.",
+    "Update only actually changed semantic-kind/source/evidence bindings; preserve unaffected A/M decisions.",
+    "Regenerate Curriculum-Quality-Status and enforce protected Maturity floors; no denominator or human-approval inflation."
+  ]
+}
+

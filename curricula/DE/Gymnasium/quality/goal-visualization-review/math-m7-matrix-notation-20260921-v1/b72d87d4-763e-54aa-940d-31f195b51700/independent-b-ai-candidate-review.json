@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-goal-visualization-candidate-review",
+  "goalId": "b72d87d4-763e-54aa-940d-31f195b51700",
+  "reviewer": "codex-independent-current-matrix-visual-review-b-20260922",
+  "reviewerAgent": "/root/math_repaired12_blind_b",
+  "model": "Codex; exact serving model identifier not exposed",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "decision": "keep",
+  "reviewedAt": "2026-09-21T22:21:33.615Z",
+  "actualVisualInspection": true,
+  "inspectionMethod": "view_image with detail=original on the exact local candidate.png; current canonical goal title/DE/EN wording read separately; mathematical and geometric assertions checked manually, with arithmetic recalculation for matrix powers.",
+  "independentOfRootVerdict": true,
+  "imagePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/b72d87d4-763e-54aa-940d-31f195b51700/candidate.png",
+  "imageSha256": "sha256:2a3e8ddcfa9d8b5d9063301304af76defcb67cc5e92b06c419f445e5d299994e",
+  "imageDimensions": {
+    "width": 1678,
+    "height": 937
+  },
+  "currentGoalTitle": "Orthogonale Spiegelungen an Koordinatenebenen mit Matrizen darstellen",
+  "checks": [
+    {
+      "aspect": "Matrix und Bildpunkt",
+      "finding": "S_xy=diag(1,1,−1) und S_xy·(2,1,3)^T=(2,1,−3)^T stimmen. Die Legende 'x und y bleiben gleich; z wechselt das Vorzeichen' beschreibt genau die xy-Ebenenspiegelung."
+    },
+    {
+      "aspect": "Ebene und Achsen",
+      "finding": "Die xy-Ebene ist als z=0 beschriftet. Der Ursprung liegt in ihr, x- und y-Achse verlaufen in der Ebene; die gerade y-Achse geht vom Ursprung nach rechts, z nach oben. F liegt sichtbar innerhalb der Ebenenfläche und außerhalb der y-Achse; es wird nicht fälschlich als Achsenpunkt dargestellt."
+    },
+    {
+      "aspect": "Lot und Symmetrie",
+      "finding": "P, F und P′ liegen auf derselben gestrichelten Geraden parallel zur z-Achse. F=(2,1,0) ist der passende Lotfuß. P und P′ stehen auf entgegengesetzten Seiten der Ebene, sichtbar gleich weit von F entfernt; die passenden Doppelmarkierungen kennzeichnen gleiche Strecken. Die perspektivische Zeichnung kodiert damit die orthogonale Spiegelung konsistent."
+    },
+    {
+      "aspect": "Koordinaten im Raumbild",
+      "finding": "Ohne Achsenticks beansprucht die Schrägdarstellung keine separate kalibrierte 2:1-x/y-Längenskala. Die sichtbare Lage von F ist mit positiven x- und y-Anteilen vereinbar; z-Vorzeichen und Fußpunktbeziehung sind eindeutig und stimmen mit den Labels überein."
+    },
+    {
+      "aspect": "Lesbarkeit und Zielpassung",
+      "finding": "P/P′/F, alle Koordinaten, Minuszeichen, Matrixdiagonale, Ebenenbezeichnung und Vorzeichenregel sind bei Originalauflösung gut lesbar. Ein konkretes korrektes Koordinatenebenenbeispiel trägt das Ziel; die Grafik muss nicht alle drei Ebenen zugleich zeigen. Kein fachlich nötiger Änderungsbefund."
+    }
+  ],
+  "blockingFindings": [],
+  "requestedChanges": [],
+  "providerMetadata": {
+    "provider": "not independently verified in this review",
+    "tool": "not independently verified in this review",
+    "exactServingModel": "not exposed",
+    "source": "No generation-and-root-review.json present for this goal at metadata read; generation provenance must remain separately bound by root."
+  },
+  "scopeLimits": [
+    "This is an independent AI candidate image review, not human approval or a human trial.",
+    "No canonical import, QA ledger mutation, page/evidence rebinding, or production acceptance performed.",
+    "KEEP covers the viewed exact PNG bytes; subsequent byte changes require a fresh binding/review.",
+    "Generation provenance is separate from visible correctness; no unexposed model identity or model diversity claimed."
+  ]
+}
+

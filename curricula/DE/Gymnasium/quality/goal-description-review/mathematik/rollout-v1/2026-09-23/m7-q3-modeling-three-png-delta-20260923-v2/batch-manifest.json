@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-modeling-three-png-delta-20260923-v2.config.json",
+  "configDigest": "sha256:4f8c3706c8d451e1fd0f2dec747737e34aab4c745818b88d52cc3016a7645b2b",
+  "goalIds": [
+    "3019e775-1420-510f-850b-5a29acc47a64",
+    "ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c",
+    "bfbaedb9-b138-590a-87e8-4d87784dda0e"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:472b52ab875e1688858a03d68b623fb106fe37b68520667e8067c079754d55ed"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:cbf8be440663ae546f3bb6795999ddac7f9a8b1a57cf316445ae8d34f20da9c3",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:b3be6291740f5a377c4176fece3b5d492b07f4c6ed8bdd42c6c19876f881d15c",
+    "reviewInputFingerprint": "sha256:8184c6eda96bc3315c9622bbd6e155fe36c7368690b1386e5f23af518de107f2",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-a",
+        "campaignDigest": "sha256:05f62adb0e15742887b092e14c60275878eea5142fa87a2af22f174b9c700b60",
+        "roundId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-independent-a",
+        "batchId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:fdefd4b00afb4d9a5fbe95d3939935ff8cf192b2de48c7169c3e5faa628e0270"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-b",
+        "campaignDigest": "sha256:49ba4417a1cca3707123fb977fce019c72c624c2253b9d9271cd4d3d5b55dc9a",
+        "roundId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-independent-b",
+        "batchId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:8fe5b87f2221fc02007d5de17ad276eb457537f94e0a28a1438c916cf571e873"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

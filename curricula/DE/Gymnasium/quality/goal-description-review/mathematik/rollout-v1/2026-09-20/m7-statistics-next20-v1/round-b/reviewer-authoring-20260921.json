@@ -1,0 +1,273 @@
+{
+  "reviewer": "independent blind round-b",
+  "startedAt": "2026-09-21T21:01:57Z",
+  "reviewScope": "Current bilingual goal descriptions, own bound canonical context and book-page data, direct prerequisites and successors. No other review outputs, adjudications or positive-profile candidates consulted. Source references and raw applicability were inspected as supplied context, not independently verified as complete source mappings or learner-facing projections. Image metadata was inspected; no image publication approval is asserted by this description review.",
+  "generationParameters": {
+    "mode": "independent blind subject review",
+    "exactServingRevision": "not exposed",
+    "decisionPolicy": "KEEP unless a concrete weakness is demonstrated",
+    "authority": "ai_candidate"
+  },
+  "decisions": [
+    {
+      "goalId": "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein Hypothesentest beurteilt Beobachtungen unter der vorläufig angenommenen Nullhypothese; ein vorab bestimmter kritischer Bereich verbindet die Entscheidung mit einem kontrollierten Fehlerrisiko, nicht mit Gewissheit über die Hypothese.",
+        "essentialUnderstandingEn": "A hypothesis test evaluates observations under a provisionally assumed null hypothesis; a predetermined critical region links the decision to a controlled error risk, not certainty about the hypothesis.",
+        "observablePerformanceDe": "Die lernende Person erläutert an einem einfachen binomialen Test, wie Nullhypothese, Verteilung, kritischer Bereich und Beobachtung zur Entscheidung zusammenwirken, und erklärt, weshalb Verwerfen und Nichtverwerfen keine sicheren Wahrheitsbeweise sind.",
+        "observablePerformanceEn": "Using a simple binomial test, the learner explains how the null hypothesis, distribution, critical region and observation jointly determine the decision, and why neither rejection nor non-rejection proves truth with certainty.",
+        "transferExpectationDe": "In einer neuen Situation mit entgegengesetztem Verdachtsmoment erklärt die lernende Person, warum nun die andere Verteilungsschwanzseite kritisch ist, während die Grundlogik des Prüfens unter der Nullhypothese gleich bleibt.",
+        "transferExpectationEn": "In a fresh situation with suspicion pointing in the opposite direction, the learner explains why the other distribution tail becomes critical while the logic of testing under the null hypothesis remains unchanged."
+      },
+      "rationale": "KEEP: Die beiden Fassungen benennen den vollständigen Argumentationskern, ohne auf dem AB1-Einstieg schon die spätere Berechnung von Testkennzahlen und Fehlerwahrscheinlichkeiten zu verlangen. Der binomiale Voraussetzungenkontext ist passend. Die Formulierung möglicher Irrtumswahrscheinlichkeit behauptet weder eine Wahrscheinlichkeit der Hypothese noch eine sichere Schlussfolgerung; die positive Evidenz konkretisiert diese Grenze."
+    },
+    {
+      "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+      "decision": "block",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Null- und Alternativhypothese beziehen sich auf dieselbe unbekannte Trefferwahrscheinlichkeit p der Grundgesamtheit, nicht auf die beobachtete relative Häufigkeit; die Sachfrage bestimmt die ein- oder zweiseitige Gegenbehauptung.",
+        "essentialUnderstandingEn": "The null and alternative hypotheses concern the same unknown population success probability p, not the observed relative frequency; the contextual question determines the one- or two-sided alternative.",
+        "observablePerformanceDe": "Die lernende Person definiert Erfolg und Parameter einer Anteilsfrage, formuliert dazu konsistente Null- und Alternativhypothesen und begründet aus dem behaupteten Anstieg, Rückgang oder Unterschied die Richtung des Tests.",
+        "observablePerformanceEn": "The learner defines success and the parameter for a question about a proportion, formulates consistent null and alternative hypotheses, and justifies the test direction from the claimed increase, decrease or difference.",
+        "transferExpectationDe": "Wird in einer frischen Aufgabe statt des Fehleranteils der Anteil fehlerfreier Produkte gezählt, formuliert die lernende Person die Hypothesen für den komplementären Parameter neu und erklärt die notwendige Umkehr der Ungleichungsrichtung.",
+        "transferExpectationEn": "When a fresh task counts fault-free products rather than defects, the learner reformulates the hypotheses for the complementary parameter and explains why the inequality direction must reverse."
+      },
+      "rationale": "BLOCK wegen einer konkreten fachfremden Voraussetzung: canonicalContext.requires enthält 858113c5-e53b-57bb-b01f-ba95c3ddcb6f, im gebundenen Buchkontext ausdrücklich Ableitungen elementarer Funktionen berechnen. Das Formulieren binomialer Anteils-Hypothesen benötigt keine Differentialrechnung; diese Kante kann den Zugang sachlich unbegründet sperren. Titel und DE/EN-Beschreibung selbst sind klar und atomar. Eine sprachliche Änderung würde den Kontextfehler nicht beheben. Kante fachlich adjudizieren, danach gezielt neu binden; keine eigenständige Graphänderung und keine Freigabe des jetzigen Kontextes."
+    },
+    {
+      "goalId": "eb2cecd6-5dca-5a2e-988b-a29b24c20345",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die Testvariable beschreibt das zufällige Ergebnis vor der Datenerhebung; ihre unter H0 festgelegte Verteilung ist von der konkret beobachteten Kennzahl zu unterscheiden. Bei unabhängigen Bernoulli-Versuchen mit gleichem p0 zählt X die Erfolge.",
+        "essentialUnderstandingEn": "The test variable describes the random outcome before data collection; its distribution specified under H0 differs from the particular observed statistic. For independent Bernoulli trials with common p0, X counts successes.",
+        "observablePerformanceDe": "Die lernende Person definiert X und n für eine Anteilsprüfung, begründet das Binomialmodell unter H0 mit dem Nullparameter und ordnet beobachteten Daten einen Wert x beziehungsweise x/n zu, ohne p0 durch den beobachteten Anteil zu ersetzen.",
+        "observablePerformanceEn": "The learner defines X and n for a proportion test, justifies the binomial model under H0 using the null parameter, and assigns observed data a value x or x/n without replacing p0 by the observed proportion.",
+        "transferExpectationDe": "Bei derselben Fragestellung mit anders codiertem Erfolg oder mit einer relativen statt absoluten Testkennzahl passt die lernende Person Variable, Wertebereich und Nullverteilung konsistent an und erklärt die Beziehung zwischen beiden Darstellungen.",
+        "transferExpectationEn": "For the same question with success recoded or a relative rather than absolute statistic, the learner consistently adapts the variable, range and null distribution and explains the relationship between the two representations."
+      },
+      "rationale": "KEEP: Definieren, Verteilung angeben und Beobachtung zuordnen bilden eine zusammenhängende Modellierungsleistung, keine beliebige Routinenliste. Die Bernoulli-Voraussetzung trägt den sachlichen Schritt; kritische Bereiche gehören folgerichtig zum Nachfolger. Die offene Voraussetzungsbindung des Hypothesen-Ziels bleibt davon unberührt und wird durch dieses KEEP nicht freigegeben. Die Sprachfassungen sind äquivalent."
+    },
+    {
+      "goalId": "677be619-5f0a-59bf-9730-0071c7d3f150",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein Verwerfungsbereich liegt in den zur Alternativhypothese passenden Verteilungsschwänzen und muss unter H0 das vorgegebene Niveau einhalten. Wegen diskreter Trefferzahlen ist das tatsächlich erreichte Niveau oft kleiner; Sigma-Regeln liefern nur Näherungen.",
+        "essentialUnderstandingEn": "A rejection region lies in the distribution tails corresponding to the alternative and must respect the specified level under H0. Discrete success counts often make the attained level smaller; sigma rules provide approximations only.",
+        "observablePerformanceDe": "Die lernende Person konstruiert aus n, Nullparameter, Alternative und Niveau eine Entscheidungsregel, überprüft die zugehörige Randwahrscheinlichkeit und erläutert bei zweiseitigen Tests die gewählte Aufteilung sowie mögliche Näherungsabweichungen.",
+        "observablePerformanceEn": "From n, the null parameter, alternative and level, the learner constructs a decision rule, checks its tail probability, and explains the chosen allocation in a two-sided test as well as possible approximation errors.",
+        "transferExpectationDe": "Beim Wechsel von einer gerichteten zu einer ungerichteten frischen Fragestellung verteilt die lernende Person das Fehlerrisiko neu auf die beiden Seiten, bestimmt neue ganzzahlige Grenzen und prüft diese statt den einseitigen Grenzwert zu übernehmen.",
+        "transferExpectationEn": "When a fresh question changes from directional to non-directional, the learner reallocates error risk across both tails, determines new integer boundaries and checks them instead of reusing the one-sided cutoff."
+      },
+      "rationale": "KEEP: Die Beschreibung verbindet die eigentliche Entscheidungskonstruktion bereits mit der kritischen Einordnung der Näherung. Binomialwahrscheinlichkeiten, inverse Fragestellungen und Sigma-Regeln stehen als konkrete Voraussetzungen bereit. Ein- und zweiseitige Varianten sind derselbe Prüfgegenstand; keine Aufspaltung nötig. DE und EN verlangen keine exakt erreichbare nominale Fehlerquote oder eindeutige universelle Zweiseitenkonvention."
+    },
+    {
+      "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "α ist die Wahrscheinlichkeit des Verwerfens bei gültiger Nullhypothese; β ist die Wahrscheinlichkeit des Nichtverwerfens bei einem festgelegten wahren Alternativwert. Beide beziehen sich auf dieselbe Entscheidungsregel, aber auf unterschiedliche Verteilungen.",
+        "essentialUnderstandingEn": "Alpha is the probability of rejection when the null hypothesis holds; beta is the probability of non-rejection at a specified true alternative value. Both refer to the same decision rule but different distributions.",
+        "observablePerformanceDe": "Die lernende Person kennzeichnet Verwerfungs- und Nichtverwerfungsbereich, berechnet deren relevante Wahrscheinlichkeiten unter Null- beziehungsweise Alternativparameter und prüft digitale Ergebnisse durch passende Summen, Komplemente und Größenordnung.",
+        "observablePerformanceEn": "The learner identifies rejection and non-rejection regions, computes their relevant probabilities under the null and alternative parameters, and checks digital results using appropriate sums, complements and plausibility bounds.",
+        "transferExpectationDe": "Für eine unveränderte Entscheidungsregel, aber einen anders weit von H0 entfernten Alternativwert erklärt und berechnet die lernende Person die veränderte β-Wahrscheinlichkeit, während die α-Wahrscheinlichkeit unverändert bleibt.",
+        "transferExpectationEn": "For an unchanged decision rule but an alternative value at a different distance from H0, the learner explains and calculates the changed beta probability while alpha remains unchanged."
+      },
+      "rationale": "KEEP: Das Ziel fordert nicht bloß eine Softwarezahl, sondern rechnerisches Nachvollziehen derselben Fehlerwahrscheinlichkeiten; die Entscheidungsregel ist sinnvoll vorgeordnet. Der benötigte Alternativparameter für β muss in einer Aufgabe gegeben oder bestimmt werden; die Beschreibung behauptet nicht, die Entscheidungsregel allein lege β fest. Diese fachliche Bedingung gehört konkret in das anzulegende Evidenzprofil. Die anschließende Kontextdeutung bleibt ein eigenes Ziel."
+    },
+    {
+      "goalId": "4b58b855-cd26-538c-8e6f-304f4cfd8ad6",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Fehler erster Art bedeutet, eine wahre H0 zu verwerfen; Fehler zweiter Art bedeutet, eine falsche H0 nicht zu verwerfen. Welche reale Fehlentscheidung das ist, hängt von der festgelegten Nullhypothese ab und nicht vom Wort positiv allein.",
+        "essentialUnderstandingEn": "A type I error rejects a true H0; a type II error fails to reject a false H0. The real-world mistake represented by each depends on the specified null hypothesis, not merely on the word positive.",
+        "observablePerformanceDe": "Die lernende Person ordnet die beiden Fehlentscheidungen in einer Tabelle aus tatsächlichem Zustand und Testentscheidung zu und erläutert für eine medizinische oder technische Anwendung jeweils die konkrete Folge unter ausdrücklich genanntem H0.",
+        "observablePerformanceEn": "The learner locates both errors in a table of actual state versus test decision and explains their concrete consequences in a medical or technical application with H0 explicitly stated.",
+        "transferExpectationDe": "Nach einem Wechsel der Nullhypothese von unbedenklich zu bedenklich ordnet die lernende Person die realen Fehlentscheidungen neu zu und erklärt, weshalb die vorherige Gleichsetzung von Fehler erster Art mit Fehlalarm nicht unverändert gilt.",
+        "transferExpectationEn": "After the null hypothesis switches from safe to unsafe, the learner reassigns the real-world mistakes and explains why the previous identification of a type I error with a false alarm no longer automatically applies."
+      },
+      "rationale": "KEEP: Unterscheiden, anwendungsbezogen erklären und Beispiele zuordnen operationalisieren den semantischen Unterschied bereits klar. Die beiden Fehler gehören zwingend zum selben Entscheidungsmodell. Der Rechenvorgänger und der Interpretationsnachfolger begrenzen den Umfang; keine Forderung nach einem zusätzlichen klinischen Diagnosemodell wird hineingelesen. Die Fassungen stimmen überein."
+    },
+    {
+      "goalId": "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein Testergebnis ist eine regelgebundene Entscheidung unter Unsicherheit: Nichtverwerfen bestätigt H0 nicht als wahr, und statistisches Verwerfen beweist weder eine bestimmte Effektgröße noch praktische Bedeutsamkeit.",
+        "essentialUnderstandingEn": "A test result is a rule-based decision under uncertainty: non-rejection does not establish H0 as true, and statistical rejection proves neither a particular effect size nor practical importance.",
+        "observablePerformanceDe": "Die lernende Person wendet eine vorgegebene Regel auf eine Beobachtung an, formuliert die Entscheidung im Sachkontext und korrigiert eine überzogene Aussage, indem sie deren Unterschied zum tatsächlich vom Test gestützten Schluss erklärt.",
+        "observablePerformanceEn": "The learner applies a specified rule to an observation, states the decision in context and corrects an overstated claim by explaining how it differs from the conclusion the test actually supports.",
+        "transferExpectationDe": "Bei gleichem beobachtetem Anteil, aber verändertem Stichprobenumfang und entsprechend vorgegebener neuer Entscheidungsregel erklärt die lernende Person mögliche unterschiedliche Testergebnisse, ohne sie als Widerspruch über die Grundgesamtheit zu behandeln.",
+        "transferExpectationEn": "For the same observed proportion but a changed sample size and an accordingly supplied new decision rule, the learner explains potentially different test outcomes without treating them as contradictory truths about the population."
+      },
+      "rationale": "KEEP: Die entscheidende Grenze zwischen Verwerfen und Nichtverwerfen sowie zulässigen und unzulässigen Aussagen ist im Text ausdrücklich enthalten. Das ist eine beobachtbare, zusammenhängende Interpretation nach der Fehlerdeutung und vor dem LK-Testvergleich. Die EN-Fassung bewahrt insbesondere das Nichtverwerfen statt eines irreführenden Beweises oder Akzeptierens."
+    },
+    {
+      "goalId": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Für eine feste Entscheidungsregel sind Operationscharakteristik Pp(Nichtverwerfen) und Gütefunktion Pp(Verwerfen) komplementär. Teststärke wird an wahren Alternativwerten gelesen; ihr Verlauf hängt von Stichprobenumfang und Regel beziehungsweise Niveau ab.",
+        "essentialUnderstandingEn": "For a fixed decision rule, the operating characteristic Pp(non-rejection) and power function Pp(rejection) are complements. Power is read at true alternative values; its profile depends on sample size and the rule or level.",
+        "observablePerformanceDe": "Die lernende Person konstruiert oder berechnet beide Kurven eines binomialen Tests, deutet ausgewählte p-Werte einschließlich Null- und Alternativfall und erläutert anhand vergleichbarer Tests, wie eine geänderte Stichprobe oder Schwelle die Teststärke beeinflusst.",
+        "observablePerformanceEn": "The learner constructs or computes both curves of a binomial test, interprets selected p values including null and alternative cases, and explains through comparable tests how changing sample size or cutoff affects power.",
+        "transferExpectationDe": "Für einen neuen zweiseitigen statt einseitigen Test begründet die lernende Person den veränderten Kurvenverlauf und die weiterhin geltende Ergänzung zu eins, ohne eine für rechtsseitige Tests gelernte monotone Kurvenform zu übertragen.",
+        "transferExpectationEn": "For a fresh two-sided rather than one-sided test, the learner explains the changed curve shape and the continuing complement-to-one relationship without importing the monotone shape learned for right-sided tests."
+      },
+      "rationale": "KEEP: Beide Funktionsbegriffe sind bereits korrekt über Verwerfen versus Nichtverwerfen definiert; Darstellung und Parametereinfluss gehören kohärent zu diesem LK/AB3-Gegenstand. Die Beschreibung verspricht keine universelle streng monotone Verbesserung für jeden diskreten Stichprobenwechsel. Direkte Voraussetzungen sind passend. Die gemischten rohen Seitenscopes belegen keine effektive GK-Projektion; diese externe Zuordnung wird hier nicht als geprüft behauptet."
+    },
+    {
+      "goalId": "03357e70-2280-532f-b629-5dfa31dc44eb",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Testqualität ist im Verhältnis zu relevanten Alternativen, Fehlerfolgen und Aufwand zu bewerten. Kleines α allein macht einen Test nicht besser; β und Teststärke ändern sich mit dem tatsächlichen Parameter und der Entscheidungsregel.",
+        "essentialUnderstandingEn": "Test quality must be evaluated relative to relevant alternatives, error consequences and effort. A small alpha alone does not make a test superior; beta and power depend on the true parameter and decision rule.",
+        "observablePerformanceDe": "Die lernende Person vergleicht zwei vorgegebene binomiale Testkonfigurationen bei denselben relevanten Alternativen, benennt den Zielkonflikt zwischen Fehlentscheidungen und begründet eine situationsgerechte Wahl mit Fehlerwahrscheinlichkeiten oder Gütewerten.",
+        "observablePerformanceEn": "The learner compares two supplied binomial test configurations at the same relevant alternatives, identifies the trade-off between errors and justifies a context-appropriate choice using error probabilities or power values.",
+        "transferExpectationDe": "Wenn in einer frischen Entscheidungssituation statt Fehlalarmen übersehene Mängel schwerer wiegen, prüft die lernende Person ihre ursprüngliche Testwahl neu und begründet eine mögliche Umkehr der Empfehlung anhand der jetzt maßgeblichen Fehlerfolgen.",
+        "transferExpectationEn": "When a fresh decision context gives missed defects greater weight than false alarms, the learner reassesses the original test choice and justifies a possible reversal using the now-relevant consequences of errors."
+      },
+      "rationale": "KEEP: Die Beschreibung nennt konkrete Bewertungskriterien und eine begründete Entscheidung statt bloßem Rechnen. Teststärke und Ergebnisinterpretation sind direkt vorausgesetzt und tragen das LK/AB3-Niveau. Unterschiedliche Verfahren werden im gegebenen binomialen Kontext verstanden, nicht als unbegrenzter Auftrag zu unbekannten Testfamilien. DE/EN sind semantisch gleich."
+    },
+    {
+      "goalId": "f85419c4-63ac-5d6d-b73b-fcb12a0ff89f",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Bei bekanntem p streut die zufällige relative Trefferhäufigkeit um p mit Standardabweichung sqrt(p(1-p)/n). Das Prognoseintervall betrifft künftige Daten; seine näherungsweise Überdeckung setzt ein geeignetes Bernoulli-Modell und eine tragfähige Normalnäherung voraus.",
+        "essentialUnderstandingEn": "For known p, the random relative success frequency varies around p with standard deviation sqrt(p(1-p)/n). The prediction interval concerns future data; approximate coverage requires an appropriate Bernoulli model and a defensible normal approximation.",
+        "observablePerformanceDe": "Die lernende Person bestimmt zu Modell, Umfang und vorgegebenem c ein Prognoseintervall, erklärt Mittelpunkt und Breite und prüft anhand erwarteter Treffer und Nichttreffer, ob die Näherung plausibel ist; verbleibende Überschreitungen werden als möglich benannt.",
+        "observablePerformanceEn": "Given the model, sample size and c, the learner determines a prediction interval, explains its centre and width, and uses expected successes and failures to assess approximation plausibility while acknowledging possible observations outside it.",
+        "transferExpectationDe": "Bei einer neuen Anwendung mit gleicher großer Stichprobe, aber sehr seltener Trefferart erkennt die lernende Person, dass groß allein die Näherung nicht rechtfertigt, und begründet, warum ein symmetrisches Intervall hier überprüft werden muss.",
+        "transferExpectationEn": "In a fresh application with the same large sample but a very rare success type, the learner recognises that large alone does not justify the approximation and explains why a symmetric interval must be checked."
+      },
+      "rationale": "KEEP: Bekanntes p, Prognosegegenstand, Näherung, Voraussetzungen und Unsicherheit sind ausdrücklich vorhanden; die Formel ersetzt das Verständnis nicht. Die beiden statistischen Voraussetzungen sind passend und Kontextinterpretation wird im Nachfolger vertieft. DE/EN bewahren insbesondere die Richtung von bekanntem Parameter zu zufälliger relativer Häufigkeit."
+    },
+    {
+      "goalId": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Beim Konfidenzintervall ist die beobachtete Häufigkeit fest und p unbekannt: Die Prognoseungleichung wird nach verträglichen p-Werten umgekehrt. Das Einsetzen von h_n in den Standardfehler ist eine zusätzliche Näherung, nicht dasselbe Intervallverfahren.",
+        "essentialUnderstandingEn": "For a confidence interval the observed frequency is fixed and p is unknown: the prediction inequality is inverted to find compatible p values. Substituting h_n into the standard error is an additional approximation, not the identical interval method.",
+        "observablePerformanceDe": "Die lernende Person bestimmt für eine geeignete Bernoulli-Stichprobe die durch die Ungleichung erlaubten p-Werte, berechnet das symmetrische Näherungsintervall und erklärt Unterschiede sowie den Bezug beider Ergebnisse zur unbekannten Trefferwahrscheinlichkeit.",
+        "observablePerformanceEn": "For an appropriate Bernoulli sample, the learner finds the p values allowed by the inequality, computes the symmetric approximate interval and explains the differences and how both relate to the unknown success probability.",
+        "transferExpectationDe": "Bei einer frischen Stichprobe mit h_n nahe null oder eins prüft die lernende Person die Grenzen der symmetrischen Näherung, statt ein enges oder degeneriertes Ergebnis ungeprüft als präzise Schätzung zu übernehmen.",
+        "transferExpectationEn": "For a fresh sample with h_n near zero or one, the learner examines the limits of the symmetric approximation instead of accepting a narrow or degenerate result as a precise estimate without checking."
+      },
+      "rationale": "KEEP: Die Beschreibung unterscheidet das Umkehren der parameterabhängigen Ungleichung von der ausdrücklich als Näherung bezeichneten symmetrischen Form. Das begrenzt den Rechengegenstand klar; Konfidenzniveau und Diagrammdeutung folgen separat. Modell- und Näherungsbedingungen werden über die Voraussetzungen und konkrete Evidenz abgesichert, nicht durch eine fachfremde Ausweitung der knappen Beschreibung. Beide Sprachfassungen stimmen überein."
+    },
+    {
+      "goalId": "aa14d9e4-5790-5d94-a245-2ff9a70bf633",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Das Konfidenzniveau beschreibt die langfristige Überdeckungsrate des Intervallverfahrens bei wiederholter Stichprobenziehung unter den Modellannahmen. Der feste Parameter wird nicht nachträglich mit dieser Wahrscheinlichkeit zufällig in das konkrete Intervall gelegt.",
+        "essentialUnderstandingEn": "The confidence level describes the interval procedure's long-run coverage under repeated sampling and the model assumptions. It does not retrospectively assign that probability to a fixed parameter randomly falling in the observed interval.",
+        "observablePerformanceDe": "Die lernende Person erklärt an einer Serie gedachter Stichproben, was ein 95-Prozent-Niveau bedeutet, und begründet, warum weder 95 Prozent der Einzelwerte noch eine sichere Aussage zum konkreten Intervall daraus folgen.",
+        "observablePerformanceEn": "Using a sequence of imagined samples, the learner explains what a 95 percent level means and justifies why it implies neither coverage of 95 percent of individual observations nor certainty about the particular observed interval.",
+        "transferExpectationDe": "Bei einem neuen Bericht mit zwei unterschiedlich breiten Intervallen auf unterschiedlichen Niveaus korrigiert die lernende Person die Behauptung, das engere müsse verlässlicher sein, und erklärt das Verhältnis von Genauigkeit und Überdeckungsanspruch.",
+        "transferExpectationEn": "Given a fresh report with differently sized intervals at different levels, the learner corrects the claim that the narrower one must be more reliable and explains the relationship between precision and intended coverage."
+      },
+      "rationale": "KEEP: Die Beschreibung verlangt ausdrücklich Erklärung, Vermeidung von Fehlinterpretationen und Begründung an Beispielen; sie ist damit mehr als eine Begriffsabfrage. Der vorausgehende Intervallkonstruktionsschritt und die spätere Kontextinterpretation grenzen die einzelne Bedeutungskompetenz passend ab. Die positive Evidenz konkretisiert den frequentistischen Bezugsrahmen ohne zusätzliche Verfahren einzuführen."
+    },
+    {
+      "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein Konfidenzdiagramm des binomialen Anteils verknüpft mögliche p-Werte und relative Häufigkeiten bei festem n und Niveau. Der Schnitt beim beobachteten h liefert das Intervall für p; eine andere Schnittführung beantwortet eine andere Frage.",
+        "essentialUnderstandingEn": "A confidence diagram for a binomial proportion relates possible p values to relative frequencies for fixed n and level. A slice at the observed h gives the interval for p; a differently directed slice answers a different question.",
+        "observablePerformanceDe": "Die lernende Person liest Achsen und Parameter einer solchen Konfidenzellipse, bestimmt am passenden Schnitt Intervallgrenzen und erklärt beim Vergleich von Diagrammen, wie größeres n oder höheres Niveau die Breite und Aussagekraft verändern.",
+        "observablePerformanceEn": "The learner reads the axes and parameters of such a confidence ellipse, obtains interval bounds from the appropriate slice, and explains through diagram comparisons how larger n or a higher level changes width and informativeness.",
+        "transferExpectationDe": "In einem neuen Diagramm mit vertauschten Achsen oder mehreren Niveaukurven identifiziert die lernende Person die richtige Schnittführung erneut und begründet die Intervallauswahl, statt die Lage einer auswendig gelernten Strecke zu kopieren.",
+        "transferExpectationEn": "In a fresh diagram with swapped axes or multiple level curves, the learner reidentifies the correct slice and justifies the interval choice instead of copying the location of a memorised segment."
+      },
+      "rationale": "KEEP: Im gebundenen Anteils- und Intervallkontext bezeichnet Konfidenzellipse die grafische Beziehung zwischen p und relativer Häufigkeit, nicht eine zusätzliche multivariate Statistikkompetenz. Lesen, interpretieren und für eine Beurteilung nutzen bilden einen gemeinsamen Darstellungswechsel. Die EN-Wendung significance of sample results wird hier durch Kontext und Evidenz als Aussagekraft verstanden, nicht als neuer Signifikanztest. Keine Pflicht zu einer kosmetischen Neuformulierung; effektive LK-Projektion ist nicht aus Rohscopes verifiziert."
+    },
+    {
+      "goalId": "410221ed-540c-5daf-8c42-d8dd12e9100a",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Bei festem Konfidenzniveau fällt die näherungsweise Intervallhalbbreite wie 1/sqrt(n); gewünschte Genauigkeit ist deshalb in eine Anforderung an n umzukehren. Ein unbekanntes p erfordert eine begründete Planungsannahme, etwa die konservative Schranke p(1-p) ≤ 1/4.",
+        "essentialUnderstandingEn": "At a fixed confidence level the approximate interval half-width decreases as 1/sqrt(n), so desired accuracy must be inverted into a requirement on n. Unknown p requires a justified planning assumption, such as the conservative bound p(1-p) ≤ 1/4.",
+        "observablePerformanceDe": "Die lernende Person unterscheidet Gesamt- und Halbbreite, stellt aus Niveau und Genauigkeitsziel die erforderliche Ungleichung auf, rundet den Umfang auf eine geeignete ganze Zahl und begründet Modellannahme sowie praktikable Datenerhebung.",
+        "observablePerformanceEn": "The learner distinguishes full width from half-width, formulates the required inequality from the level and accuracy target, rounds the sample size up to a suitable integer, and justifies the model assumption and feasible data collection.",
+        "transferExpectationDe": "Bei einer neuen Planung mit halbierter Fehlerspanne erklärt die lernende Person den ungefähr vierfachen Umfang; wird zusätzlich das Konfidenzniveau erhöht, trennt sie dessen zusätzlichen Einfluss und passt die Planung nachvollziehbar an.",
+        "transferExpectationEn": "For a fresh plan with half the margin of error, the learner explains the approximately fourfold sample size; if the confidence level also rises, the learner distinguishes that additional effect and adapts the plan transparently."
+      },
+      "rationale": "KEEP: Niveau und Genauigkeit sind beide ausdrücklich als Vorgaben genannt, sodass der benötigte Umfang nicht fälschlich allein aus einem Niveau abgeleitet wird. Rechnen oder Schätzen und begründete Planung bilden eine inverse Anwendung des vorhandenen Intervallverständnisses. Die Konfidenzdiagramm-Voraussetzung und LK/AB3-Rolle sind plausibel; DE/EN gleichwertig."
+    },
+    {
+      "goalId": "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Mittelwert, Median und Modalwert beantworten verschiedene Fragen nach einer typischen Lage. Ausreißer verändern sie unterschiedlich; Skalenniveau und Sachfrage bestimmen, welche Aussage sinnvoll ist, statt stets einen einzigen besten Mittelwert festzulegen.",
+        "essentialUnderstandingEn": "Mean, median and mode answer different questions about typical location. Outliers affect them differently; measurement scale and the contextual question determine which statement is meaningful, rather than one average always being best.",
+        "observablePerformanceDe": "Die lernende Person vergleicht die drei bekannten Kennwerte für einen überschaubaren Datensatz, erklärt die Wirkung eines extremen Wertes und wählt für eine konkrete Frage wie typisches Einkommen oder häufigste Produktgröße einen begründeten Lageparameter.",
+        "observablePerformanceEn": "The learner compares the three familiar measures for a manageable data set, explains the effect of an extreme value, and chooses a justified measure for a concrete question such as typical income or most common product size.",
+        "transferExpectationDe": "Für unveränderte Daten, aber eine neue Frage nach typischem Einzelwert statt rechnerischer Gesamtverteilung überprüft die lernende Person die Wahl erneut und begründet, warum nun Median beziehungsweise Mittelwert jeweils zweckmäßig sein können.",
+        "transferExpectationEn": "With the data unchanged but the question shifted from a typical individual value to a calculation based on the total, the learner reconsiders the choice and explains why the median or mean may respectively be suitable."
+      },
+      "rationale": "KEEP: Der Vergleich ist auf die bereits vorausgesetzten Lageparameter begrenzt und benennt Aussagekraft, Ausreißerempfindlichkeit und konkrete Auswahlbegründung. Das ist keine erneute Sammlung dreier Berechnungsroutinen. Auf dem ausgewiesenen AB1-Einstieg bleiben die Fälle vertraut und überschaubar; eine formale Robustheitsanalyse wird nicht hinzugefügt. Die beiden Sprachfassungen sind präzise gleichwertig. Die sourceRef ist Kontext, keine hier geprüfte vollständige NI-Abdeckung."
+    },
+    {
+      "goalId": "e402f330-8ac6-525f-b3ff-bc4be229d131",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Varianz erfasst die mittlere quadratische Abweichung von der Datenmitte; die Standardabweichung ist ihre Quadratwurzel und hat wieder die Einheit der Daten. Gleiche Mittelwerte können unterschiedliche Streuungen verdecken.",
+        "essentialUnderstandingEn": "Variance measures average squared deviation from the data centre; standard deviation is its square root and returns to the original data unit. Equal means may conceal different dispersions.",
+        "observablePerformanceDe": "Die lernende Person berechnet die empirischen Streuungsmaße nach der ausdrücklich benannten Konvention, erläutert den Bezug der Abweichungen zum Mittelwert und vergleicht zwei Datensätze in passenden Einheiten statt Varianz und Standardabweichung gleichzusetzen.",
+        "observablePerformanceEn": "The learner computes empirical dispersion measures under an explicitly stated convention, explains how deviations relate to the mean, and compares two data sets using appropriate units instead of treating variance and standard deviation as interchangeable.",
+        "transferExpectationDe": "Werden alle Daten in einer neuen Darstellung um dieselbe Konstante verschoben oder in eine andere Einheit umgerechnet, sagt die lernende Person die unveränderte beziehungsweise skalierte Streuung voraus und begründet die unterschiedlichen Wirkungen.",
+        "transferExpectationEn": "When a fresh representation shifts every value by the same constant or converts to another unit, the learner predicts unchanged or scaled dispersion and explains the different effects."
+      },
+      "rationale": "KEEP: Berechnung und Datendeutung der unmittelbar zusammenhängenden Varianz und Standardabweichung bilden einen sinnvollen atomaren Gegenstand. Der Mittelwert ist als benötigte Vorleistung vorhanden. Die Beschreibung macht keine falsche Behauptung zur n- gegenüber n−1-Konvention; diese muss in konkreten Aufgaben transparent sein. DE/EN verlangen dieselben einfachen Vergleiche und erweitern den Umfang nicht um Schätztheorie."
+    },
+    {
+      "goalId": "84069c5e-5526-57c1-9417-a886ccfd3f66",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein theoretisches Verteilungsmodell beschreibt mögliche Datentendenzen, nicht die exakt zu erwartende Histogrammform jeder Stichprobe. Passung verlangt sowohl sinnvolle Modellannahmen als auch einen Vergleich von Form, Lage und Streuung mit angemessener Skalierung.",
+        "essentialUnderstandingEn": "A theoretical distribution models possible data tendencies, not the exact histogram of every sample. Adequacy requires sensible model assumptions as well as comparisons of shape, location and dispersion on compatible scales.",
+        "observablePerformanceDe": "Die lernende Person vergleicht ein korrekt skaliertes Histogramm und empirische Kennwerte mit einem vorgegebenen einfachen Verteilungsmodell, beschreibt konkrete Abweichungen und begründet eine vorläufige Eignungsbeurteilung ohne bloße Gleichheit einzelner Mittelwerte.",
+        "observablePerformanceEn": "The learner compares a correctly scaled histogram and empirical measures with a supplied simple distribution model, describes concrete discrepancies and justifies a provisional adequacy judgment beyond merely matching a single mean.",
+        "transferExpectationDe": "Bei zwei neuen Datensätzen mit ähnlicher Lage und Streuung, aber einmal zwei deutlich getrennten Häufungen erklärt die lernende Person, weshalb die gleiche glockenförmige Modellannahme nicht für beide gleich gut passt.",
+        "transferExpectationEn": "For two fresh data sets with similar location and dispersion but clearly separated peaks in one, the learner explains why the same bell-shaped model need not fit both equally well."
+      },
+      "rationale": "KEEP: Histogramm- und Streuungskenntnisse tragen den Vergleich, der schon ausdrücklich Beschreibung von Abweichungen und Modellbeurteilung einschließt. Ein formaler Anpassungstest oder die vollständige Herleitung unbekannter Verteilungsfamilien wird nicht verlangt. Der Prüfgegenstand ist ein einheitlicher Daten-Modell-Abgleich; die Übersetzung erhält ihn. Vorhandener Bildstatus ersetzt keine eigenständige Lernerleistung oder Bildprüfung in dieser Runde."
+    },
+    {
+      "goalId": "e02976ad-71fc-5929-b764-df7630269c47",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein nachvollziehbares Zufallsexperiment benötigt eine eindeutige Versuchseinheit, festgelegte Ergebnisse und eine konsistente Erhebungsregel. Die Bedingungen wie Zurücklegen oder Reihenfolge gehören zum Versuch, damit Daten nicht nachträglich passend ausgewählt werden.",
+        "essentialUnderstandingEn": "A traceable random experiment needs an unambiguous trial unit, specified outcomes and a consistent collection rule. Conditions such as replacement or order are part of the experiment so that data are not selectively chosen afterward.",
+        "observablePerformanceDe": "Die lernende Person plant und realisiert eine einfache Versuchsserie mit festgelegtem Umfang und Erfassungsregel und protokolliert Rohdaten und Besonderheiten so, dass eine andere Person Ablauf und Datengrundlage nachvollziehen kann.",
+        "observablePerformanceEn": "The learner plans and carries out a simple series with a specified trial count and recording rule, documenting raw data and irregularities so another person can understand the procedure and data basis.",
+        "transferExpectationDe": "Bei einer neuen Ziehaufgabe ohne statt mit Zurücklegen passt die lernende Person Ablauf und Protokoll an und erläutert, warum die Versuchsergebnisse nun andere Bedingungen haben, statt unverändert denselben Versuchsplan zu verwenden.",
+        "transferExpectationEn": "For a fresh drawing task without rather than with replacement, the learner adapts the procedure and record and explains why the outcomes now arise under different conditions instead of blindly reusing the old plan."
+      },
+      "rationale": "KEEP: Planung, Durchführung und überprüfbare Dokumentation sind drei notwendige Teile derselben Experimentierhandlung. Der Ergebnis-/Ereignisbegriff ist passend vorausgesetzt, grafische Aufbereitung und Simulation sind getrennte Nachfolger. Die knappe AB1-Formulierung ist ausreichend prüfbar; sie fordert weder automatisch unabhängige Versuche noch einen großen wissenschaftlichen Versuchsplan. DE/EN sind deckungsgleich."
+    },
+    {
+      "goalId": "83a5546e-0ea6-576e-83e2-3387b30872bb",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Tabellen und Grafiken verdichten dieselben Rohdaten, müssen aber zur Merkmalsart passen. Absolute und relative Häufigkeiten sowie Klassen und Achsenskalierung haben unterschiedliche Bedeutungen; ihre Darstellung darf Anteile nicht verfälschen.",
+        "essentialUnderstandingEn": "Tables and graphs summarise the same raw data but must suit the variable type. Absolute and relative frequencies, classes and axis scaling have different meanings; the display must not distort proportions.",
+        "observablePerformanceDe": "Die lernende Person ordnet erhobene Daten in eine überprüfbare Häufigkeitstabelle ein, wählt eine passende Grafik mit beschrifteten Achsen und erklärt anhand von Datenart und Fragestellung ihre Auswahl; Gesamtzahl und relative Anteile bleiben konsistent.",
+        "observablePerformanceEn": "The learner organises collected data in a checkable frequency table, chooses a suitable graph with labelled axes and explains the choice through the variable type and question while keeping totals and relative proportions consistent.",
+        "transferExpectationDe": "Wechselt eine neue Erhebung von Kategorien zu Messwerten, überarbeitet die lernende Person die Darstellung und begründet Klassenbildung beziehungsweise Histogramm statt einer unpassenden Übernahme des vorherigen Kategorienbildes.",
+        "transferExpectationEn": "When a fresh survey switches from categories to measured values, the learner revises the display and justifies class grouping or a histogram instead of copying the previous categorical chart unchanged."
+      },
+      "rationale": "KEEP: Das Auswählen passender Darstellungen verhindert die Beschränkung auf mechanisches Zeichnen. Tabelle und Grafik bleiben zwei Repräsentationen desselben erhobenen Datensatzes; Berechnung und Interpretation von Kenngrößen folgen separat. Die Experiment-Voraussetzung liefert den vorgesehenen Datenkontext. Die Beschreibung ist bilingual stimmig; rohes zusätzliches SekI-Applicability wird nicht als unabhängig bestätigte Projektion ausgegeben."
+    },
+    {
+      "goalId": "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Lage und Streuung beschreiben gemeinsam Niveau und Schwankung einer experimentellen Stichprobe. Ihre sachliche Bedeutung hängt von Messgröße, Einheit und Versuchsbedingungen ab; beschreibende Kennwerte allein beweisen keine allgemeine Gesetzmäßigkeit.",
+        "essentialUnderstandingEn": "Location and dispersion jointly describe the level and variability of an experimental sample. Their interpretation depends on the measured quantity, unit and experimental conditions; descriptive measures alone do not prove a general law.",
+        "observablePerformanceDe": "Die lernende Person wertet einen aufbereiteten experimentellen Datensatz mit geeigneten Lage- und Streuungsmaßen aus und formuliert anhand der Größen und Einheiten eine begründete Aussage über typisches Ergebnis und beobachtete Schwankung.",
+        "observablePerformanceEn": "The learner analyses a prepared experimental data set using suitable location and dispersion measures and uses their values and units to justify a statement about typical outcome and observed variability.",
+        "transferExpectationDe": "Für zwei neue Messreihen mit ähnlichem Mittelwert, aber unterschiedlicher Streuung beurteilt die lernende Person deren beobachtete Wiederholbarkeit differenziert und erklärt, weshalb der gleiche Mittelwert allein keine gleichartigen Versuchsergebnisse bedeutet.",
+        "transferExpectationEn": "For two fresh measurement series with similar means but different spreads, the learner distinguishes their observed repeatability and explains why an equal mean alone does not imply equivalent experimental outcomes."
+      },
+      "rationale": "KEEP: Die direkt vorausgesetzten Ziele übernehmen Rechenverfahren, Kennwertwahl und Datenaufbereitung; dieses Ziel führt sie zu einer einzigen kontextbezogenen Datenauswertung zusammen. Lage und Streuung sind dafür komplementär, keine zufällige Bündelung unabhängiger Kapitel. Beide Beschreibungen fordern bereits Interpretation; ein zusätzlicher Signifikanztest oder Verteilungsnachweis wäre eine unzulässige Erweiterung."
+    }
+  ]
+}

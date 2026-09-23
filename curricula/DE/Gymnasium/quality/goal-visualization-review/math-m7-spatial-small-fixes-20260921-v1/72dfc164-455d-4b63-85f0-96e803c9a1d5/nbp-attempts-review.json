@@ -1,0 +1,157 @@
+{
+  "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+  "goalTitleDe": "Linearkombinationen von Vektoren bilden und deuten",
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "selfReviewer": "Codex independent agent /root/math_repaired12_blind_a; exact serving model identifier not exposed",
+  "selfReviewRecordedAt": "2026-09-21T22:40:36.553Z",
+  "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+  "model": "gemini-3-pro-image (request and response summary)",
+  "tool": "scripts/generate_goal_visualization_nano_banana.mjs",
+  "nativePrepare": {
+    "completedBeforeEachGeneration": true,
+    "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)"
+  },
+  "generationOptions": {
+    "noImport": true,
+    "skipReconstructionPrompt": true,
+    "mimeType": "image/jpeg",
+    "aspectRatio": "16:9",
+    "imageSize": "2K"
+  },
+  "formatNote": "Native API400 rejected image/png; supported JPEG responses retained. ffmpeg only decoded those responses to PNG; all decoded-RGB equality checks passed. No compositing, generated geometry, cropping or post-generation geometric edit.",
+  "source": {
+    "path": "app/public/assets/goal-visualizations/mathematik/72dfc164-455d-4b63-85f0-96e803c9a1d5/72dfc164-455d-4b63-85f0-96e803c9a1d5.jpg",
+    "sha256": "sha256:ec0d3e0d6f36e94b24c2ba58f180f370863b7b6179023d92cc77be2a446f00d9",
+    "actuallyInspected": true
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "decision": "rejected",
+      "selfReview": "Rejected: provider printed forbidden construction/pixel coordinates, including at origin and plane corners; added another blue arrow. Geometry not compliant.",
+      "actuallyViewed": true,
+      "localResponseFileTimestamp": "2026-09-21T22:26:34.552Z",
+      "file": "nbp-attempt-01.png",
+      "sha256": "sha256:84f9fabbccda62a65e09e834599a415061cccc17507ac18980932b631a6c4260",
+      "bytes": 3465413,
+      "width": 2752,
+      "height": 1536,
+      "originalResponse": {
+        "file": "nbp-attempt-01.original.jpg",
+        "sha256": "sha256:3d46ef9396c78193704b07aa8bfa02aa493b4932f787db5471fa633d3c8dc7d0",
+        "bytes": 1885077
+      },
+      "reference": {
+        "file": "attempt-03-rejected.png",
+        "sha256": "sha256:181111534696d7548c5185c28600ef98709f2f30132e67589cad1046ea737f78",
+        "bytes": 1448584,
+        "width": 1678,
+        "height": 937
+      },
+      "prompt": {
+        "file": "prompt-nbp-attempt-01.exact.txt",
+        "sha256": "sha256:49436a8d11a85e809cd3498571fa798523d46a91b7d0853ec791d4acb2faf7f1",
+        "bytes": 2352
+      },
+      "requestSha256": "sha256:cf8c1e780a7a75874b46134d058a864e0d5566398c1ba6891d3f5803432aa262",
+      "responseSummary": {
+        "file": "nbp-attempt-01.response-summary.json",
+        "sha256": "sha256:c6b443292ed400cabd6b4df61c0fafc06263dc0b369be45230d067f20de5597b",
+        "bytes": 166
+      },
+      "conversion": {
+        "file": "nbp-attempt-01.png",
+        "decodedRgbEqual": true
+      }
+    },
+    {
+      "attempt": 2,
+      "decision": "rejected",
+      "selfReview": "Rejected: pixel labels and extra blue arrow removed, but u is higher than v while displayed x points down-left,yright,zup. Given equal z components and u positive x, this remains an incompatible coordinate projection.",
+      "actuallyViewed": true,
+      "localResponseFileTimestamp": "2026-09-21T22:30:13.586Z",
+      "file": "nbp-attempt-02.png",
+      "sha256": "sha256:7d6744d48b2099fbf7dd128c09104965c34e7004fc13889f36298604be1d8a5a",
+      "bytes": 3310348,
+      "width": 2752,
+      "height": 1536,
+      "originalResponse": {
+        "file": "nbp-attempt-02.original.jpg",
+        "sha256": "sha256:f09c1774ea9c9920cbfe458c0e16869373dc7a5603e44edbe44ef9a0de2018b6",
+        "bytes": 1777818
+      },
+      "reference": {
+        "file": "nbp-attempt-01.png",
+        "sha256": "sha256:84f9fabbccda62a65e09e834599a415061cccc17507ac18980932b631a6c4260",
+        "bytes": 3465413,
+        "width": 2752,
+        "height": 1536
+      },
+      "prompt": {
+        "file": "prompt-nbp-attempt-02.exact.txt",
+        "sha256": "sha256:38404ccdc6e6b8554b93ae908c1fb2ee8829b7336cca55a0b8b74d9742991f0a",
+        "bytes": 2756
+      },
+      "requestSha256": "sha256:567f536a02f3fbee6fa8dd9a65d03d30209f0379d01685f2521ffb84703a43d0",
+      "responseSummary": {
+        "file": "nbp-attempt-02.response-summary.json",
+        "sha256": "sha256:6618a72b9081ac639880b6ec51f5a50c6af8a64e075a4659719a2b817f09a8e5",
+        "bytes": 166
+      },
+      "conversion": {
+        "file": "nbp-attempt-02.png",
+        "decodedRgbEqual": true
+      }
+    },
+    {
+      "attempt": 3,
+      "decision": "candidate_needs_independent_review",
+      "selfReview": "Candidate: all coordinate axes removed, explicit Richtungsskizze der aufgespannten Ebene. u/v share origin O and lie along adjacent edges of a plane patch. No left sum or multiple marker remains. Independent center panel has exact head-to-tail2u+v with red resultant joining common beginning/end. Component arithmetic2(1,0,1)+(0,2,1)=(2,2,3) is correct.",
+      "actuallyViewed": true,
+      "localResponseFileTimestamp": "2026-09-21T22:33:37.626Z",
+      "file": "nbp-attempt-03.png",
+      "sha256": "sha256:d0d3ef0810072d8b31874a70f9b3378e682f414aa527b955c0b7e4e40bee4fcc",
+      "bytes": 3452167,
+      "width": 2752,
+      "height": 1536,
+      "originalResponse": {
+        "file": "nbp-attempt-03.original.jpg",
+        "sha256": "sha256:bd5749894264103f3a4039dd7cb1c98f08ee7e281c8add16dfba9e8eb477e21c",
+        "bytes": 1819875
+      },
+      "reference": {
+        "file": "nbp-attempt-02.png",
+        "sha256": "sha256:7d6744d48b2099fbf7dd128c09104965c34e7004fc13889f36298604be1d8a5a",
+        "bytes": 3310348,
+        "width": 2752,
+        "height": 1536
+      },
+      "prompt": {
+        "file": "prompt-nbp-attempt-03.exact.txt",
+        "sha256": "sha256:5758a38146a916e513f2ef0b641b21a749d8f6e8824f8b447bf6c42657715588",
+        "bytes": 2175
+      },
+      "requestSha256": "sha256:aa4453cba495bffda97921db3733054d04798e87dbaa8e19adfff85165e96d3d",
+      "responseSummary": {
+        "file": "nbp-attempt-03.response-summary.json",
+        "sha256": "sha256:f3a4cf2c8d71da8befe61248728583d58be5752ad76e55c54f7a22cbaa03dd69",
+        "bytes": 166
+      },
+      "conversion": {
+        "file": "nbp-attempt-03.png",
+        "decodedRgbEqual": true
+      }
+    }
+  ],
+  "selectedAttempt": 3,
+  "constructionReferencePolicy": "No programmatically generated diagram reference used in any NBP request; only actually inspected raster attempts.",
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false,
+    "humanApprovalClaimed": false
+  }
+}

@@ -8,52 +8,17 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `69eda7f9-1898-5220-932d-e7bec839b7af.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/69eda7f9-1898-5220-932d-e7bec839b7af/69eda7f9-1898-5220-932d-e7bec839b7af.jpg`
+- Quellbild: `69eda7f9-1898-5220-932d-e7bec839b7af.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/69eda7f9-1898-5220-932d-e7bec839b7af/69eda7f9-1898-5220-932d-e7bec839b7af.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Streckenlängen im Raum bestimmen
-Beschreibung: Die lernende Person kann Streckenlängen in räumlichen Figuren aus Punktkoordinaten oder geeigneten Verbindungsvektoren bestimmen und in geometrischen Kontexten verwenden.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Streckenlaengen in einer raeumlichen Figur aus Koordinaten bestimmen.
-- Zeige einen Quader im 3D-Koordinatensystem mit:
-  A(0|0|0),
-  B(6|0|0),
-  D(0|4|0),
-  E(0|0|3),
-  C(6|4|0),
-  G(6|4|3).
-- Markiere zwei Strecken:
-  Grundflaechendiagonale AC,
-  Raumdiagonale AG.
-- Rechnung fuer AC:
-  AC = (6,4,0), |AC| = sqrt(6^2 + 4^2) = sqrt(52) ~= 7,21.
-- Rechnung fuer AG:
-  AG = (6,4,3), |AG| = sqrt(6^2 + 4^2 + 3^2) = sqrt(61) ~= 7,81.
-- Stelle klar: Streckenlaenge = Betrag des passenden Verbindungsvektors.
-
-Vermeiden:
-- AC und AG nicht verwechseln; AC liegt in der Grundflaeche, AG ist die Raumdiagonale.
-- Die Hoehe 3 bei AC nicht einrechnen.
-- Die Hoehe 3 bei AG nicht weglassen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Use case: precise-object-edit. Make exactly ONE local geometric correction in this German comic infographic. Preserve the entire image, all formulas and calculations, all cuboid vertices and labels, both colored diagonals and x/z axes.
+The black positive y-axis arrow currently has the wrong slope. Erase ONLY that y-axis arrow and its y label. Redraw the positive y axis as a straight extension of the existing bottom-depth edge A-D: start at A=(0|0|0), pass EXACTLY through D=(0|4|0), then continue beyond D in the SAME direction and place a black arrowhead with label y at the end. This arrow must be PARALLEL to the cuboid edges B-C, E-H and F-G. It must NOT be steeper than these depth edges. The D coordinate label may be shifted slightly to avoid the corrected axis.
+Keep A/B/C/D and E/F/G/H at their existing correct vertices; orange A-C and purple A-G keep their exact endpoints. x remains horizontal from A through B. z remains vertical from A through E. Do not modify any other part. Friendly comic raster PNG.
 ```
 
 ## Review-Notiz

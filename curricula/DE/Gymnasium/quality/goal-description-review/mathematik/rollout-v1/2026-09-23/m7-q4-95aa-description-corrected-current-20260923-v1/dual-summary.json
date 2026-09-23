@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:392b851fa0039a819e1717f32518f5178346ff0f4c7d345dc3ca098ca7050734",
+  "reviewInputFingerprint": "sha256:e81af2f28707058c371ea932a103e7e101f9dcf86a2257a2b6b5e656e0c0cfea",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q4-95aa-description-corrected-current-20260923-v1-a",
+      "roundId": "mathematik-m7-q4-95aa-description-corrected-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q4-95aa-description-corrected-current-20260923-v1-independent-a",
+      "runIds": [
+        "math-m7-q4-95aa-20260923-blind-a2-042153"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q4-95aa-description-corrected-current-20260923-v1-b",
+      "roundId": "mathematik-m7-q4-95aa-description-corrected-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q4-95aa-description-corrected-current-20260923-v1-independent-b",
+      "runIds": [
+        "m7-q4-95aa-blind-b-codex-20260923"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "95aa25c9-bf7f-53ee-bde2-df67cad3d46b",
+      "firstRecordId": "math-m7-q4-95aa-20260923-blind-a2-042153-record",
+      "secondRecordId": "m7-q4-95aa-blind-b-codex-20260923-95aa25c9",
+      "firstRunId": "math-m7-q4-95aa-20260923-blind-a2-042153",
+      "secondRunId": "m7-q4-95aa-blind-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

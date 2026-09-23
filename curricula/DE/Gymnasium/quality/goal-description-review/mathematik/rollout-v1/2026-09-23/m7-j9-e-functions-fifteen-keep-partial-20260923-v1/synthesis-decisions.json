@@ -1,0 +1,468 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-j9-e-functions-fifteen-keep-partial-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T06:07:14.633Z",
+  "batch": {
+    "batchId": "mathematik-m7-j9-e-functions-20-current-20260923-v1",
+    "batchManifestDigest": "sha256:e88585ebafccbfc45b8d61b3a3017dec9b3dfef7420088282a35d71084357e9e",
+    "configDigest": "sha256:c188525cf965ffbb278c086b46dba79bf8697963169b185ae38c696fbccf5c0a",
+    "bundleFingerprint": "sha256:8f9d124c5f9c9d623a241ae878ee8f9a68141db89c119d77b9626b17dbfd595d",
+    "bookDigest": "sha256:30dc6e1b8a9dc9237e9faea29da66be82d6f377278421e8e8dc0ce754c79a857",
+    "reviewInputFingerprint": "sha256:0a3a3f7ac17fb7570e267f93b8ef21f01f60cbee892f7a68160c8a008501bebd",
+    "dualSummaryDigest": "sha256:0ee090c1ae831ae925abf62117ee7d51e918352cd3a55ab0af99628ee0450d80",
+    "canonicalLandscapeDigest": "sha256:3d438a80cfcc3c7817fab19c86110f7057fa80c4c8a42a7c53b78244425c0c63"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-a",
+      "campaignDigest": "sha256:90ffc8fb6f99cd71dd4aec1799fd491bd30ab009bc581483f9541c9e1b96dcee",
+      "roundId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:0a3a3f7ac17fb7570e267f93b8ef21f01f60cbee892f7a68160c8a008501bebd",
+      "batchId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:b462e2aef84fde4023e17775f091fdf131497b09976a7c572f4f54a3b0e92cd5",
+      "runId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-a.run-001",
+      "runManifestDigest": "sha256:3635439fe941cad15a8502d5afdc81d9aa9e9ba2fb108136807293cc33bd9c61",
+      "resultsDigest": "sha256:ae1443975200c593351d24143abefe0e4a97771b101868dfccee5a3f9a98c8e4"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-b",
+      "campaignDigest": "sha256:d1a8e9bf50d79928c7073797c6db100e38dba206dc8c2e916c15d21f2b41338c",
+      "roundId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:0a3a3f7ac17fb7570e267f93b8ef21f01f60cbee892f7a68160c8a008501bebd",
+      "batchId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:409e00f6134210398d00d9cc97391d54389b3cc26080e2190ee9c55f535d7964",
+      "runId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b",
+      "runManifestDigest": "sha256:8dd8069465d675e1124a7ce1389bd1c5b5b23f4363a645bf612e5e64b9ea20c8",
+      "resultsDigest": "sha256:c220cc7ebfd1ce55b3fab27cb310b0af20f93ecaed27b07c8382a11425dfcfe2"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-001",
+      "goalId": "9189339d-1788-406c-a1a4-e0e6b851c4ea",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:89627e33c9667741e3a619e7bf4c86e6b86143f5838e6abcd0c7d5a8fcf4b2de",
+      "pageFingerprint": "sha256:221915feeeddaa25557486cdc994f7f89794f220423e5ab85e12df8e664d293c",
+      "goalReviewContextFingerprint": "sha256:072abc0fac14e85e3e8aee155cd76cea71a970da651060f38da7865e8db57f7d",
+      "finalText": {
+        "titleDe": "Höhensatz im rechtwinkligen Dreieck formulieren, begründen und anwenden",
+        "titleEn": "Formulate, justify, and apply the altitude theorem in right triangles",
+        "descriptionDe": "Die lernende Person kann den Höhensatz im rechtwinkligen Dreieck formulieren, aus geeigneten Ähnlichkeits- oder Flächenbeziehungen begründen und zur Berechnung fehlender Streckenlängen anwenden.",
+        "descriptionEn": "The learner can formulate the altitude theorem in a right triangle, justify it using suitable similarity or area relationships, and apply it to calculate missing lengths."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-9189339d-1788-406c-a1a4-e0e6b851c4ea",
+          "recordDigest": "sha256:436bdecc59caac4c2df83571d73c17110ecceb187716b8622eef2edf860fd639"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-03",
+          "recordDigest": "sha256:8428f7a659e64d8f7faaaed0585bd6349ada14cadb0a52cdaaac5d508d237f99"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen den Höhensatz als begründbare und anwendbare Beziehung im rechtwinkligen Dreieck.",
+      "rationaleEn": "Both rounds retain the altitude theorem as a justifiable and applicable relation in a right triangle."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-002",
+      "goalId": "d589c036-9280-42b9-aa39-f6aa4ee19786",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ba597188308530f33faa561c0af55f917a47a103487b2072f1afc7e1e7c97594",
+      "pageFingerprint": "sha256:9d1b24f3e14fd14257dc6e3a5304bebd9a1593d6de3053d39247f5481fdb73ee",
+      "goalReviewContextFingerprint": "sha256:57eaa49fe85830e2635b791da5e4ecfc47e1943b50215414efa5bc773845f1f6",
+      "finalText": {
+        "titleDe": "Kathetensatz im rechtwinkligen Dreieck formulieren, begründen und anwenden",
+        "titleEn": "Formulate, justify, and apply the leg theorem in right triangles",
+        "descriptionDe": "Die lernende Person kann den Kathetensatz im rechtwinkligen Dreieck formulieren, aus geeigneten Ähnlichkeits- oder Flächenbeziehungen begründen und zur Berechnung fehlender Streckenlängen anwenden.",
+        "descriptionEn": "The learner can formulate the leg theorem in a right triangle, justify it using suitable similarity or area relationships, and apply it to calculate missing lengths."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-d589c036-9280-42b9-aa39-f6aa4ee19786",
+          "recordDigest": "sha256:fac042fb932aff2d5a76bee54d1bf06f7d8353fe2e3878d7bd52accd66c9d9bd"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-04",
+          "recordDigest": "sha256:23b18c30776ac150054882a442f4889c83e10583b00013cf53a15fab8c44699a"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen den Kathetensatz mit Formulierung, Begründung und Anwendung im aktuellen Zielumfang.",
+      "rationaleEn": "Both rounds retain the leg theorem with statement, justification and application within the current goal scope."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-003",
+      "goalId": "39fa30f2-e1ae-5c36-be56-793b77906abb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c401372d693159094960ccd13bdee1c7e97bc5a66815c367a0ce36a7b4c982b8",
+      "pageFingerprint": "sha256:f39de420a4f9ee12ed050b30be1d691d1e54336b116713fa23af6657f8685fe9",
+      "goalReviewContextFingerprint": "sha256:e1e963f137689f8190e57a02cfbf8eb597ad8b69dc8618e29534cfbf6cca8ae4",
+      "finalText": {
+        "titleDe": "Gleichungen mit dem Satz vom Nullprodukt lösen",
+        "titleEn": "Solve equations using the zero-product property",
+        "descriptionDe": "Die lernende Person kann faktorisierte Gleichungen mit dem Satz vom Nullprodukt lösen und die Lösungen durch Einsetzen prüfen.",
+        "descriptionEn": "The learner can solve factorized equations using the zero-product property and check the solutions by substitution."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-39fa30f2-e1ae-5c36-be56-793b77906abb",
+          "recordDigest": "sha256:54cdc80b36368d0f2637d660cb0325601e9074cca63b96b15bf12ef2073b3345"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-06",
+          "recordDigest": "sha256:d06f6ffce364d70dbf9924f54255865c53e40242d9c335a59ed325e1f4646a50"
+        }
+      },
+      "rationaleDe": "Die Zerlegung und Nullproduktregel bilden in beiden Runden eine einzelne überprüfbare Gleichungskompetenz.",
+      "rationaleEn": "Factorization and the zero-product rule form one assessable equation-solving competence in both rounds."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-004",
+      "goalId": "a7ccb7a9-6fb0-4e2d-b6e0-6420cc5ae0bf",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:12a3cb88ea451c536c7f813c7d2572abbc539b69728afaabc8dc8eb1a14cd49c",
+      "pageFingerprint": "sha256:d3d0354083ae6a69077cd645ed31da23d829548b7805ca0faf5c2347e9a42376",
+      "goalReviewContextFingerprint": "sha256:ef7a72cbacd279fc8334a70524c6d638eaedec5b60abbb85dbed0b44f21d6815",
+      "finalText": {
+        "titleDe": "Quadratische Funktionen in Anwendungen modellieren und lösen",
+        "titleEn": "Model and solve applications with quadratic functions",
+        "descriptionDe": "Die lernende Person kann innermathematische und realitätsnahe Problemstellungen mithilfe quadratischer Funktionen modellieren, Extremwerte deuten, Ergebnisse im Sachzusammenhang validieren und Lösungswege nachvollziehbar dokumentieren.",
+        "descriptionEn": "The learner can model mathematical and real-world problems using quadratic functions, interpret extrema, validate results in context, and document solution paths coherently."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-a7ccb7a9-6fb0-4e2d-b6e0-6420cc5ae0bf",
+          "recordDigest": "sha256:80ea1466d4b5bc1c52ed41f3e50b702af02c93c5e89cd44f8f48453f77c9c0c1"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-07",
+          "recordDigest": "sha256:349c8012ad05909bc81db2384a331f480999af36b61993c949416eafc469edc2"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten das Modellieren und Lösen mit quadratischen Funktionen im selben Anwendungskontext bei.",
+      "rationaleEn": "Both rounds retain modeling and solving with quadratic functions in the same application context."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-005",
+      "goalId": "3f3557a8-7d89-4f96-8a32-e24745c34d82",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3e49b9db265b7ac8eab0f883208b7f8718f87b4c79149a18172392398c0a0bf4",
+      "pageFingerprint": "sha256:ddb5df01d94c7b2dfa2201eb1ff75169f123f47ae63472a1c8d86d32a64cdea5",
+      "goalReviewContextFingerprint": "sha256:6002bfd0baa0255648f8880d722b15e139d39fae747a1d8ac38263f0f56006cd",
+      "finalText": {
+        "titleDe": "Parabeln als Ortslinien mit Brennpunkt und Leitgerade beschreiben",
+        "titleEn": "Describe Parabolas as Loci Using Focus and Directrix",
+        "descriptionDe": "Die lernende Person kann Parabeln als Ort aller Punkte beschreiben und erzeugen, die zu einem festen Punkt und zu einer festen Geraden den gleichen Abstand haben, und die Rolle von Brennpunkt und Leitgerade in einfachen Konstruktionen erklären.",
+        "descriptionEn": "The learner can describe and construct parabolas as the locus of all points that are equally distant from a fixed point and a fixed line, and explain the role of focus and directrix in simple constructions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-3f3557a8-7d89-4f96-8a32-e24745c34d82",
+          "recordDigest": "sha256:7e0a553a191be782b6021773fa0f810f01b0455573d99ff3b31fa3265dfc0e78"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-08",
+          "recordDigest": "sha256:bdfd0e9215e622dc34a2432d51ed26c91e2bae929a606b117ee8ab42c9bfad24"
+        }
+      },
+      "rationaleDe": "Brennpunkt und Leitgerade bestimmen gemeinsam die Parabel-Ortslinie; beide Runden bestätigen diese Beschreibung.",
+      "rationaleEn": "Focus and directrix jointly define the parabola locus; both rounds retain this description."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-006",
+      "goalId": "a4246bef-647c-582f-aaa5-8ccd3120e7ef",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a7aba298aeecece94e184739b703a79d4ac4ebeadf079f7e46f1d355ccfa14df",
+      "pageFingerprint": "sha256:0631ee5a38362119333edf25dd7c07f4a96049c25ff35eb01e945f437d9e26ae",
+      "goalReviewContextFingerprint": "sha256:bc4f597220ce68074d79f88291abe1d5114b73f00644828298f868cf764620d1",
+      "finalText": {
+        "titleDe": "Nichtumkehrbarkeit des zweiten Strahlensatzes mit Gegenbeispiel begründen",
+        "titleEn": "Justify the non-converse of the second intercept theorem with a counterexample",
+        "descriptionDe": "Die lernende Person kann erklären, dass die Umkehrung des zweiten Strahlensatzes im Allgemeinen nicht gilt, und dies an einem geeigneten Gegenbeispiel begründen.",
+        "descriptionEn": "The learner can explain that the converse of the second intercept theorem does not generally hold and justify this with a suitable counterexample."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-a4246bef-647c-582f-aaa5-8ccd3120e7ef",
+          "recordDigest": "sha256:0626733bc2e1ad89e233de6b435b1fc16e718686a900efd330606c559ee3dff2"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-09",
+          "recordDigest": "sha256:c475ed9278579fbc3910e4143f4e277d18846988186f7733c7f93f1e0453dac5"
+        }
+      },
+      "rationaleDe": "Ein Gegenbeispiel zur Umkehrung des zweiten Strahlensatzes ist die genau benannte begründende Leistung; beide Runden halten sie.",
+      "rationaleEn": "A counterexample to the converse of the second intercept theorem is the precisely stated reasoning task retained by both rounds."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-007",
+      "goalId": "314854a0-4e97-462e-9486-9fd83652e91d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d87f16d1cef43066148e387d5158c8bf7b02bdb7fc38ca16dec4703ea1633da7",
+      "pageFingerprint": "sha256:55c9ad6689be8d093d883040c2bedbd60c0cf881277066eeb3349e88973638f3",
+      "goalReviewContextFingerprint": "sha256:ae140abf12f82b65c5cef365ee5cc056d742bffe5df4dbfaeb1be5a5a90322d1",
+      "finalText": {
+        "titleDe": "Taschenrechner situationsgerecht nutzen",
+        "titleEn": "Use calculators appropriately",
+        "descriptionDe": "Die lernende Person kann den Taschenrechner in geeigneten Rechen- und Sachsituationen situationsgerecht einsetzen, Ergebnisse plausibilisieren und einfache Kontrollrechnungen nutzen.",
+        "descriptionEn": "The learner can use a calculator appropriately in suitable arithmetic and contextual situations, check plausibility, and use simple cross-checks."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-314854a0-4e97-462e-9486-9fd83652e91d",
+          "recordDigest": "sha256:8f9eb887b1697075d3ffaef40513a8d326107cf226a5b5c11df3716ebf00f8af"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-11",
+          "recordDigest": "sha256:2d036045d5534187909fbc8951610d0cf9e492c844cdd494628eb499d262e8a8"
+        }
+      },
+      "rationaleDe": "Die situationsgerechte Taschenrechnerwahl und Deutung bleiben eine beobachtbare Werkzeugkompetenz; beide Runden stimmen zu.",
+      "rationaleEn": "Appropriate calculator choice and interpretation remain an observable tool competence; both rounds agree."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-008",
+      "goalId": "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1ec803a6caf5d1e9aab4c0d46053ca8c61d49c614e7178b9e719a21e64381330",
+      "pageFingerprint": "sha256:67cd5476973f52888300e764b32cc2138558954736f2431b4f27e9543a05aec6",
+      "goalReviewContextFingerprint": "sha256:5b7f5ddc53c92ab17e7cb4897b03e2410db62f68146ba2e02077b0b61a147a14",
+      "finalText": {
+        "titleDe": "Geschwindigkeit als abgeleitete Größe verwenden",
+        "titleEn": "Use speed as a derived quantity",
+        "descriptionDe": "Die lernende Person kann Geschwindigkeit als Verhältnis von Weg und Zeit deuten, passende Einheiten umrechnen und einfache Sachaufgaben zu Geschwindigkeit lösen.",
+        "descriptionEn": "The learner can interpret speed as a ratio of distance and time, convert suitable units, and solve simple contextual speed problems."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+          "recordDigest": "sha256:98af0686fe8acdb5f39051a07c6f027084333038d5422ccedc54273bc1ca2ed4"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-12",
+          "recordDigest": "sha256:d98bb5a4693009ed51d88a15294a5ed1949098c9523bd7be76bf42b5a42f4814"
+        }
+      },
+      "rationaleDe": "Geschwindigkeit als abgeleitete Größe wird im aktuellen Ziel mit Einheiten und Kontext verwendet; beide Runden bestätigen den Text.",
+      "rationaleEn": "The current goal uses speed as a derived quantity with units and context; both rounds retain the wording."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-009",
+      "goalId": "adcac2a7-e763-5442-abf2-866532fedcda",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7a41442e572c8fb34cb01a7945d7bedd6ad43c6bbf50c6920c8f9d867984a673",
+      "pageFingerprint": "sha256:d15eaef46676f855ee35b0473ba1118f4a036c4da2ead7667cccd7d99fcb3885",
+      "goalReviewContextFingerprint": "sha256:7a5b193b6fa3fe23af743d254e2ed64927c09183dc614195785b3d8c8d1a0bcc",
+      "finalText": {
+        "titleDe": "Exponentielle, lineare und quadratische Modelle vergleichen",
+        "titleEn": "Compare exponential, linear, and quadratic models",
+        "descriptionDe": "Die lernende Person kann exponentielle Wachstums- oder Zerfallsmodelle mit linearen und quadratischen Modellen vergleichen, typische Verlaufsunterschiede benennen und die Modellwahl im Kontext begründen.",
+        "descriptionEn": "The learner can compare exponential growth or decay models with linear and quadratic models, identify typical differences in behaviour, and justify the model choice in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-adcac2a7-e763-5442-abf2-866532fedcda",
+          "recordDigest": "sha256:64dadd54690d3263b3810b3e50127a7c4ba87b7612f125c63a001e9c10d35b73"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-13",
+          "recordDigest": "sha256:172fdddf03d8d52b464d4ae40604d48201d73290b629ace006e5f70e090e1ddb"
+        }
+      },
+      "rationaleDe": "Beide Runden halten den Vergleich exponentieller, linearer und quadratischer Modelle nach ihrem unterschiedlichen Verlauf.",
+      "rationaleEn": "Both rounds retain comparing exponential, linear and quadratic models by their different behavior."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-010",
+      "goalId": "29ce4053-b5c5-4a82-9ff0-3acc492284d8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5a5f365bb822d4996e72787bc3f2e5e16d6e0b02c88b5c4aaadda0391317ddef",
+      "pageFingerprint": "sha256:ed01ff9a0ad27eda9fc69c1a44eaa9ed39c4e985f609eb5b7c55157c75911a85",
+      "goalReviewContextFingerprint": "sha256:796e1b66dbf46bcf6cc65dedd0b336ddf3b3fc4da3e26a54512388adaefb23a2",
+      "finalText": {
+        "titleDe": "Quadratische Funktionen im Graphen deuten",
+        "titleEn": "Interpret quadratic functions in graphs",
+        "descriptionDe": "Die lernende Person kann den Graphen quadratischer Funktionen erkennen, Scheitelpunkt und Nullstellen bestimmen und diese in einfachen Kontexten deuten.",
+        "descriptionEn": "The learner can recognize the graph of quadratic functions, determine vertex and roots, and interpret them in simple contexts."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-29ce4053-b5c5-4a82-9ff0-3acc492284d8",
+          "recordDigest": "sha256:3c257c582f47012c056f4012477af1ddb554a468785ddb4781fb182e5617c201"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-14",
+          "recordDigest": "sha256:9ec8ad09666492d00ed0d65bb8830e77e7c4b43dce34c1032f50d84e11325343"
+        }
+      },
+      "rationaleDe": "Die Deutung quadratischer Funktionsmerkmale aus dem Graphen ist in beiden Runden klar und prüfbar.",
+      "rationaleEn": "Interpreting features of quadratic functions from a graph is clear and assessable in both rounds."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-011",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fd42505c49fa1f4d647b06e796d543b534af083021d0d7e896dc55dee30179fd",
+      "pageFingerprint": "sha256:4e472e56beb74fa36978eeacf38deb43cb1280c7f9aee7c1559d789332124731",
+      "goalReviewContextFingerprint": "sha256:b4618cd6e3f5ba76737ba14137246da49f3841b72a5877ee01935b76d60c9c17",
+      "finalText": {
+        "titleDe": "Verhalten ganzrationaler Funktionen im Unendlichen beschreiben",
+        "titleEn": "Describe the end behavior of polynomial functions",
+        "descriptionDe": "Die lernende Person kann das Verhalten ganzrationaler Funktionen für betragsgroße Argumente mit Limes-Schreibweise beschreiben und aus dem führenden Term begründen.",
+        "descriptionEn": "The learner can describe the end behavior of polynomial functions for large absolute values of the argument using limit notation and justify it from the leading term."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-0b47fec8-33ec-5f29-8d3e-64941a7c8ac5",
+          "recordDigest": "sha256:37d3ff7a536bfffb615f34b81899b05d8904166ebdf8f90de404e49c83cedcb0"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-15",
+          "recordDigest": "sha256:2374c5f65caefd7911271a28da7431ca63ab5e8a8c7761208dc733cd80a1fa6b"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen das Endverhalten ganzrationaler Funktionen anhand ihrer führenden Terme.",
+      "rationaleEn": "Both rounds retain polynomial end behavior based on leading terms."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-012",
+      "goalId": "e9c401b1-144d-525f-a148-a1113b2e82a8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f380ea1fdbb4b2ab6032e61665a6c98bc67338610fb2250e941c579c2f6feaab",
+      "pageFingerprint": "sha256:850cfae747eb9b00621dd4f735d68146f5aa61c4d59a4ee54bd055a879e88582",
+      "goalReviewContextFingerprint": "sha256:784381c44384332ed08143fde36ba75cbae0bd05beacbc13d47906f269910a08",
+      "finalText": {
+        "titleDe": "Polynomgleichungen in Funktionsuntersuchungen lösen",
+        "titleEn": "Solve polynomial equations in function investigations",
+        "descriptionDe": "Die lernende Person kann Polynomgleichungen, die bei Nullstellen-, Extremstellen- oder Wendestellenbedingungen entstehen, mit einem zur Termstruktur passenden algebraischen Verfahren lösen und die Lösungen in der Funktionsuntersuchung verwenden.",
+        "descriptionEn": "The learner can solve polynomial equations arising from zero, extremum, or inflection-point conditions using an algebraic method suited to the expression structure and use the solutions in the function investigation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-e9c401b1-144d-525f-a148-a1113b2e82a8",
+          "recordDigest": "sha256:86d86885eb16c9db801b1e1de2c0b247e41ab0b7aa080dc962ada2b7cf7a158f"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-16",
+          "recordDigest": "sha256:7efb4a83f2dfd5fcb06ecb34eed4e61a4dee65b4da33ba7922a384dba985199f"
+        }
+      },
+      "rationaleDe": "Polynomgleichungen werden zielgebunden in einer Funktionsuntersuchung gelöst; beide Runden halten die aktuelle Beschreibung.",
+      "rationaleEn": "Polynomial equations are solved within a function investigation; both rounds retain the current description."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-013",
+      "goalId": "6947245e-6bd7-52d7-9bc2-0c60cfa447c5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:af9936daaf45f3933995e6df7891f1f8d68c256955120bd97e3acc7a73b5b8a6",
+      "pageFingerprint": "sha256:a0e8d6585ff3c2ebf4838311a6ea44c5f458bd771d5eb109af43227de3c64579",
+      "goalReviewContextFingerprint": "sha256:6c3f794a39543d33c0bcf8282ccd0d912f9b71d47e3efc3852cd71b964afdead",
+      "finalText": {
+        "titleDe": "Parameterwerte aus vorgegebenen Funktionseigenschaften bestimmen",
+        "titleEn": "Determine parameter values from given function properties",
+        "descriptionDe": "Die lernende Person kann in ganzrationalen Funktionstermen einzelne Parameterwerte aus vorgegebenen Eigenschaften wie Nullstelle, Extremstelle oder Wendestelle bestimmen und die Bedingungen begründen.",
+        "descriptionEn": "The learner can determine individual parameter values in polynomial expressions from given properties such as zeros, extrema, or inflection points and justify the conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-6947245e-6bd7-52d7-9bc2-0c60cfa447c5",
+          "recordDigest": "sha256:4d7d682071e685b7daaae02d473e32e8e4a75e53fd8b8367ee377ccb751c15f1"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-17",
+          "recordDigest": "sha256:00e6d32eef1efb0bbf8304c96a00d7246607c94a94bf7d8a4c6a4d5d4408de59"
+        }
+      },
+      "rationaleDe": "Das Bestimmen von Parameterwerten aus vorgegebenen Funktionseigenschaften ist in beiden Runden eindeutig abgegrenzt.",
+      "rationaleEn": "Determining parameter values from specified function properties is clearly bounded in both rounds."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-014",
+      "goalId": "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ec39715ec39f2cca87a6147b5d05b22b28b9556841669269d9948fe20206922a",
+      "pageFingerprint": "sha256:cd219aa3f2a5c5d6a88732afaaef16dcb36795ec927ba5aa57e34c7105a80f05",
+      "goalReviewContextFingerprint": "sha256:03e468f852b960ed9bfc72fd51bc61ccc9fd5b04206ef839b5f43204082ab2da",
+      "finalText": {
+        "titleDe": "Ganzrationale Funktionen aus Eigenschaften rekonstruieren",
+        "titleEn": "Reconstruct polynomial functions from properties",
+        "descriptionDe": "Die lernende Person kann aus vorgegebenen Eigenschaften eines Graphen oder Sachzusammenhangs ein lineares Gleichungssystem für einen ganzrationalen Funktionsterm aufstellen, lösen und die entstehende Funktionsgleichung prüfen.",
+        "descriptionEn": "The learner can set up and solve a linear system for a polynomial expression from given graph or context properties and check the resulting function equation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+          "recordDigest": "sha256:03615f74bab6efe2494cd5a2eceb13e2d720c93df3da9fb0881ed6eaf91c9332"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-18",
+          "recordDigest": "sha256:5e025dbe113477029c9b24d8503e4b40d901aac6d98074ed1d6c9c0eca88df6b"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die Rekonstruktion einer ganzrationalen Funktion aus Bedingungen als prüfbare Kompetenz.",
+      "rationaleEn": "Both rounds retain reconstructing a polynomial function from conditions as an assessable competence."
+    },
+    {
+      "decisionId": "math-m7-j9-e-functions-fifteen-keep-partial-v1-decision-015",
+      "goalId": "d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:dc76418f63b396f03429aeb06e4930c0e9935a0214444c662e5c335a1404c788",
+      "pageFingerprint": "sha256:b51902f384649f7ca8bd9a8eff52b3a29de5a7863501598b98ec200eaf127c10",
+      "goalReviewContextFingerprint": "sha256:4737392f430e1e878050f00e608a2a4c3c48b928a9b822d229fb7af77c855a8b",
+      "finalText": {
+        "titleDe": "Sachzusammenhänge mit Extremstellen modellieren",
+        "titleEn": "Model contexts using extrema",
+        "descriptionDe": "Die lernende Person kann Sachzusammenhänge mit Extremstellen durch geeignete ganzrationale Funktionen modellieren und die Bedingungen fachlich deuten.",
+        "descriptionEn": "The learner can model contexts involving extrema using suitable polynomial functions and interpret the conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-j9-e20-a-d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb",
+          "recordDigest": "sha256:1e5b0d7e19671f1f023befddd2a99e173a6a82ef271500b751d14669fd44acc4"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j9-e-functions-20-current-20260923-v1-first-pass-b.batch-001.codex-gpt6-b.goal-19",
+          "recordDigest": "sha256:6a9ff90c1648f62e11f1146d6d23546fafcdfc70d341317f4c5501fee0310a09"
+        }
+      },
+      "rationaleDe": "Extremstellen werden für einen Sachzusammenhang modellierend genutzt; beide Runden halten den aktuellen Text.",
+      "rationaleEn": "Extrema are used to model a contextual situation; both rounds retain the current wording."
+    }
+  ],
+  "manifestFingerprint": "sha256:76b4fd682071230f5ef072fd4a3b3f8caaa717f9ffbfa6460f203f0247250012"
+}

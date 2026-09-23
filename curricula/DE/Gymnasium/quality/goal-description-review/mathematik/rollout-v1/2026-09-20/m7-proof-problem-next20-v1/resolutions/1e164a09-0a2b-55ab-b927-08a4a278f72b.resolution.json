@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-proof-problem-next20-v1-20260920-resolution-1e164a09-0a2b-55ab-b927-08a4a278f72b",
+  "goal": {
+    "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:80d4a288647b10eaed195bf900736bd652c6a1dfe018522fb0ac49dbe48ecc9e",
+    "pageFingerprint": "sha256:6309cfc775ce7c468f0a1af1fc258bf185697a6aac346d5e1e4ecfceb37af71d",
+    "goalReviewContextFingerprint": "sha256:380ac11f647861fb367d94987772cec2008883a6a4c02760c9716135825e29d9",
+    "finalText": {
+      "titleDe": "Plausibilität mit Beispielen testen",
+      "titleEn": "Test plausibility with examples",
+      "descriptionDe": "Die lernende Person kann eine Aussage mithilfe geeigneter Beispiele sowie Rand- und Spezialfälle auf Plausibilität prüfen und die Wahl der Beispiele begründen.",
+      "descriptionEn": "The learner can test a statement for plausibility using suitable examples as well as boundary and special cases, and justify the choice of examples."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-a",
+      "campaignDigest": "sha256:a41a6260e12d06d970c0aa5b563f6ced07b7b524b77304b4bca474a3cdd33f8a",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:380ac11f647861fb367d94987772cec2008883a6a4c02760c9716135825e29d9",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a.batch-001",
+      "runId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "runManifestDigest": "sha256:60fad9393a29128686a5228db0da4a4ed48bd8cd6ed95b0bc84d42c344aac21e",
+      "resultsDigest": "sha256:329e91f5901cf79b026c61fad742d42a2007943b5d265c3d9db874909ff0c830",
+      "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.002",
+      "recordDigest": "sha256:8e5dbd40f95720a35cab29e6dfd504c5434ec3a0c5a6211bec2bd9a2709c90a9"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-b",
+      "campaignDigest": "sha256:2e75517c969f994726a963dcd0ef3968698ed89412db83e1268cebe54ed38ede",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:380ac11f647861fb367d94987772cec2008883a6a4c02760c9716135825e29d9",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b.batch-001",
+      "runId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "runManifestDigest": "sha256:a1e2b99b173d09f363ed0018614be748221ac4c77008c186e078758cbee79dbe",
+      "resultsDigest": "sha256:267b1d842c5a3ccbdf21d74874a55e6fce3d149e5db37b2e4628144696d33217",
+      "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.1e164a09-0a2b-55ab-b927-08a4a278f72b",
+      "recordDigest": "sha256:275d8ce19754f6a14acc68df77cda95cb87a3ec6c9bac4801cc9712f91cf0981"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:812ca966f5ddee8da9efb458a624b88645325047d0b2b7d5a617c3390c7239b7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-current-17.json",
+    "manifestId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-synthesis",
+    "manifestDigest": "sha256:a30996e2d0a152c8caff3e90a54e27fff5c48d715087960bf1511035e9a0ff1c",
+    "manifestFingerprint": "sha256:6b041c5cf340b07f17115de86e08a85cebaee8900eb683276005b1788b6ea234",
+    "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-2"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-2",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex Root informed synthesis; not an additional independent review",
+    "synthesizedAt": "2026-09-21T20:55:01.000Z",
+    "rationaleDe": "A begründet die Auswahl von Grenz- und Zwischenfällen und wechselt zur Geometrie; beide Runden trennen Plausibilität von Beweis.",
+    "rationaleEn": "A justifies boundary and interior cases and transfers to geometry; both rounds distinguish plausibility from proof.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ausgewählte Beispiele können eine Aussage plausibel machen oder Zweifel auslösen, aber nicht allein allgemeine Gültigkeit beweisen; Rand- und Spezialfälle prüfen andere Aspekte als beliebige typische Werte.",
+      "essentialUnderstandingEn": "Selected examples can make a statement plausible or raise doubts but cannot alone prove universal validity; boundary and special cases probe different aspects from arbitrary typical values.",
+      "observablePerformanceDe": "Zur Aussage x² ≥ x für reelle x wählt die lernende Person selbst Werte unter 0, zwischen 0 und 1 sowie an 0 und 1, erläutert deren Prüffunktion und berichtet, was die Beispiele über die Plausibilität zeigen.",
+      "observablePerformanceEn": "For the statement x² ≥ x for real x, the learner independently selects values below 0, between 0 and 1 and at 0 and 1, explains their testing roles and reports what the examples show about plausibility.",
+      "transferExpectationDe": "Bei einer geometrischen Vermutung über Vierecke wählt sie gezielt ein Quadrat und ein nichtquadratisches Rechteck und erklärt, warum nur symmetrische Spezialfälle die Untersuchung verzerren könnten.",
+      "transferExpectationEn": "For a geometric conjecture about quadrilaterals, the learner deliberately selects a square and a nonsquare rectangle and explains why testing only symmetric special cases could bias the investigation."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-60877236c7f9713bb00f65854dd88c536d7b7044997b8913a633296da392cdd2",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:ccb1eb04e5411c1e26ee276bbacc1242724c86e52914477461351b7550211af5"
+}

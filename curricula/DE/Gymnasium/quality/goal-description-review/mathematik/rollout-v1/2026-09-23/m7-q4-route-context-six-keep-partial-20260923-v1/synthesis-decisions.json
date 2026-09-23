@@ -1,0 +1,216 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-q4-route-context-six-keep-partial-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T06:11:21.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1",
+    "batchManifestDigest": "sha256:7db9d470de740e39874372d6d1869753e997ceb6c748267704b4d1830a103e3c",
+    "configDigest": "sha256:98a013110a40fb9e3189c50f271534953af622e2bfc71b84433ed22f04e090e6",
+    "bundleFingerprint": "sha256:f9202f152b4b28bfef7d0d88f1067e22def1a531fecc6fed65be6544f3fb2f08",
+    "bookDigest": "sha256:09d76ae692b9f5dd643344b013460f01a622cea3665a855a230a1b4012e5cf61",
+    "reviewInputFingerprint": "sha256:81ab019366a58cfc4739369ed13032fea4203c7699bc913171a0e8545f80ea40",
+    "dualSummaryDigest": "sha256:1377c984e0a2e8c8bebb76d138a33796ddaf539f613b72cf9c5f2322715034f1",
+    "canonicalLandscapeDigest": "sha256:3d438a80cfcc3c7817fab19c86110f7057fa80c4c8a42a7c53b78244425c0c63"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-a",
+      "campaignDigest": "sha256:e729cc5eea187d98513fcefd5f93c5278d17c2b75e3e5f90b4c3cb0225cabe4f",
+      "roundId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:81ab019366a58cfc4739369ed13032fea4203c7699bc913171a0e8545f80ea40",
+      "batchId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:8521fa45ed68cfec4f576b7e951e44ba7a0d21118d9b93c157091e58cb9a5b19",
+      "runId": "m7-q4-route-context-nine-20260923-round-a",
+      "runManifestDigest": "sha256:3853ca48f3343b0160e4ed5587e8b6328d7fdca3c63df0aa5d2c01ef628f905a",
+      "resultsDigest": "sha256:4c335b9ba8b285dffa89c0e070992b96f14166da9a879845ece2ebfa6f85c9e2"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-b",
+      "campaignDigest": "sha256:300f8002c24b14ecdbe2a1b0d1c0dd99470fc14696e11bf0b3d7e0007aa3172a",
+      "roundId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:81ab019366a58cfc4739369ed13032fea4203c7699bc913171a0e8545f80ea40",
+      "batchId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:9ec70418d801fb811669df9f4deeeea2da0ba3ba411d2362be4e79aa4453d6ea",
+      "runId": "m7-q4-route-repair-context-nine-20260923-b-001",
+      "runManifestDigest": "sha256:772d4fba7dc8f9090046aeada87b5376181d889f0f669efbf75e4d6393ee5899",
+      "resultsDigest": "sha256:91564e35f6d7ddfec678f7ad720316642a81b30c0c4f520fe667dbde5b25c996"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-q4-route-context-six-keep-partial-v1-decision-001",
+      "goalId": "ae2ca565-928d-55f4-b804-7155cf210120",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:368ca6a7f907ea6f84c9680863eaffb32ca6e9f03431a565c01520cdcbaee44d",
+      "pageFingerprint": "sha256:a08b9a2755acdc9c3a4604c10abf0667e6dc104207efedf33fd41e0efaa5e3b2",
+      "goalReviewContextFingerprint": "sha256:216fd5dc2dfaf57812218a760fe7e2e613e7eb2c70088a53c4f2d72e0bf5cbf3",
+      "finalText": {
+        "titleDe": "Zwischenschritte dokumentieren",
+        "titleEn": "Document intermediate steps",
+        "descriptionDe": "Die lernende Person kann Rechenschritte und Umformungen nachvollziehbar dokumentieren und verwendete Regeln bzw. Sätze benennen.",
+        "descriptionEn": "The learner can document calculation steps and transformations in a comprehensible way and name the rules or theorems used."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "m7-q4-route-context-a-001",
+          "recordDigest": "sha256:13d01478ce32c2320ab11504f8b81ca2bcd57e11b665bd035bebcd44ee2ce9a5"
+        },
+        "second": {
+          "recordId": "m7-q4-route-repair-context-nine-20260923-b-r01",
+          "recordDigest": "sha256:10576ced2397a0407514476116ceff34b06c3d1f0ad77f7436492aa0b555bf02"
+        }
+      },
+      "rationaleDe": "Beide Runden behalten das prüfbare Dokumentieren von Zwischenschritten im neuen Seitenkontext der Busmodell-Abschlussaufgabe bei.",
+      "rationaleEn": "Both rounds retain assessable documentation of intermediate steps in the new bus-model assessment page context."
+    },
+    {
+      "decisionId": "math-m7-q4-route-context-six-keep-partial-v1-decision-002",
+      "goalId": "4a630596-6e2f-593e-bac6-2a6d8fa58e2f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f3e349756620b0507130e02b0a61ecba29c1330c417359b73fcdf83611f8c036",
+      "pageFingerprint": "sha256:322eeb0dc0ce79411ef1372075781d184dda24fcbb0a0c2324178fcc9f5439e9",
+      "goalReviewContextFingerprint": "sha256:0a2d212ad079cb9ccbaf938cebac02fb52f56f8fdf7056fd840bc603764a2b26",
+      "finalText": {
+        "titleDe": "Ergebnisse sichern und prüfen",
+        "titleEn": "Secure and check results",
+        "descriptionDe": "Die lernende Person kann Zwischen- und Endergebnisse prüfen (z. B. Einsetzen, Plausibilität) und bei Bedarf korrigieren.",
+        "descriptionEn": "The learner can check intermediate and final results (e.g. substitution, plausibility) and correct them if necessary."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "m7-q4-route-context-a-002",
+          "recordDigest": "sha256:cc1900ea1bf20770326ee0fe658e09c5307750107c0d524e5b263551348c80fb"
+        },
+        "second": {
+          "recordId": "m7-q4-route-repair-context-nine-20260923-b-r02",
+          "recordDigest": "sha256:6b1e41714d3aba84075935d3f258ef59450749373b54c0fed48b4ba3be176478"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen das Sichern und Prüfen von Ergebnissen mit dem aktuellen Busmodell-Rückverweis.",
+      "rationaleEn": "Both rounds retain recording and checking results with the current bus-model reverse reference."
+    },
+    {
+      "decisionId": "math-m7-q4-route-context-six-keep-partial-v1-decision-003",
+      "goalId": "fb4dcd2a-a6a9-5371-a2fc-95348ee130e0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8e66fbada8aaebef3e9454d821fae4b28ce455fab624d814cb7a8659e233eb06",
+      "pageFingerprint": "sha256:eae55b447c943277a3bf7271b985b7bf46a8dcd79caed74a8a189370138792db",
+      "goalReviewContextFingerprint": "sha256:cd9959392788596a6bcf55f92c87ef6134c7c92cef05a015952bc552eca8fdb6",
+      "finalText": {
+        "titleDe": "Modellverbesserungen vorschlagen",
+        "titleEn": "Suggest model improvements",
+        "descriptionDe": "Die lernende Person kann Verbesserungen am Modell vorschlagen (z. B. zusätzliche Einflussgrößen, andere Funktionswahl) und deren Wirkung qualitativ beschreiben.",
+        "descriptionEn": "The learner can suggest improvements to a model (e.g. additional factors, different functional form) and describe their effect qualitatively."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "m7-q4-route-context-a-003",
+          "recordDigest": "sha256:dcb14ff9073c8a6298610f1eecda4cb35f177c7c2fb8f5a0dc48bcfc3b14c606"
+        },
+        "second": {
+          "recordId": "m7-q4-route-repair-context-nine-20260923-b-r03",
+          "recordDigest": "sha256:1983cbd1704ccd23da846b27d6ad429c0447b39b7cbf00cfa9e0cac2f8c6c6bd"
+        }
+      },
+      "rationaleDe": "Der neue Busmodell-Kontext ändert die weiterhin von beiden Runden bestätigte Kompetenz, begründete Modellverbesserungen vorzuschlagen, nicht.",
+      "rationaleEn": "The new bus-model context does not change the competence of proposing justified model improvements, retained by both rounds."
+    },
+    {
+      "decisionId": "math-m7-q4-route-context-six-keep-partial-v1-decision-004",
+      "goalId": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e4d32e63bf020fcd39e5ca265184d8d604b30f029f79ee4ad9732dec3c4a991f",
+      "pageFingerprint": "sha256:8cd464c1475b22f1c581a87b909ff0e6889ad6482b8885bc14c22e936e8acf8f",
+      "goalReviewContextFingerprint": "sha256:740388c19886fa936c890bc93c263bda5b8e7a1eb60ae1ad56e322843355a0c5",
+      "finalText": {
+        "titleDe": "Alternative Modelle entwickeln (LK)",
+        "titleEn": "Develop alternative models",
+        "descriptionDe": "Die lernende Person kann für denselben Sachverhalt mindestens zwei plausible Modelle formulieren (z. B. linear vs. exponentiell) und die Annahmen explizit machen.",
+        "descriptionEn": "The learner can formulate at least two plausible models for the same situation (e.g. linear vs. exponential) and make assumptions explicit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "m7-q4-route-context-a-004",
+          "recordDigest": "sha256:f91757eb69388bb7e644fa3c41effd883db857ae4d6ae778837fa36c31c2f457"
+        },
+        "second": {
+          "recordId": "m7-q4-route-repair-context-nine-20260923-b-r04",
+          "recordDigest": "sha256:111dddefee5ededcf32a6656339e1e0a32be9297c8fa1c96b210b11b0aa03ea9"
+        }
+      },
+      "rationaleDe": "Beide Runden halten das Entwickeln eines alternativen Modells im aktuellen Algenkultur-Seitenkontext für LK prüfbar.",
+      "rationaleEn": "Both rounds retain developing an alternative model in the current advanced-course algae-culture page context."
+    },
+    {
+      "decisionId": "math-m7-q4-route-context-six-keep-partial-v1-decision-005",
+      "goalId": "163dd583-8308-53f0-b60d-34588787988d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cf8610f6a57fa12f283d4284c5844a670a8ee38fd364130deceebd239c5c27f2",
+      "pageFingerprint": "sha256:d2d8bf76c22d2d9ae46185dedf009cd76bcea164c48a025ec3933fe236648965",
+      "goalReviewContextFingerprint": "sha256:048b7d81f4922e45e312b20a2ce7f52cb671389c675ca6fbc607cf4bc9234b3b",
+      "finalText": {
+        "titleDe": "Modelle nach Kriterien vergleichen (LK)",
+        "titleEn": "Compare models by criteria",
+        "descriptionDe": "Die lernende Person kann Modelle anhand von Einfachheit, Güte und Interpretierbarkeit vergleichen und ihre jeweiligen Vor- und Nachteile für die Fragestellung begründen.",
+        "descriptionEn": "The learner can compare models in terms of simplicity, quality and interpretability and explain their respective advantages and disadvantages for the question at hand."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "m7-q4-route-context-a-005",
+          "recordDigest": "sha256:7c680812acabee5177d824371a8123c3a5de0dd4b5ac41cabe68f2371d70e16f"
+        },
+        "second": {
+          "recordId": "m7-q4-route-repair-context-nine-20260923-b-r05",
+          "recordDigest": "sha256:c539febf83d9b7abdcd7505d9915f674969b8bf996d526f114b85a3309581175"
+        }
+      },
+      "rationaleDe": "Der Kriterienvergleich der Modelle bleibt in beiden Runden fachlich begrenzt und im neuen Algenkultur-Kontext nachvollziehbar.",
+      "rationaleEn": "Criterion-based model comparison remains bounded and traceable in the new algae-culture context in both rounds."
+    },
+    {
+      "decisionId": "math-m7-q4-route-context-six-keep-partial-v1-decision-006",
+      "goalId": "519660d0-85e5-57a6-a219-d0a253336649",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ea872091a37a3ab4e5f930600d8597c749fa31b45e2ccb8dcbddee38616264b9",
+      "pageFingerprint": "sha256:6805205c0e67c531445129644e49ed1b06d7a4b6ffb08e6e2a55374f355a1ab1",
+      "goalReviewContextFingerprint": "sha256:efa0287b3540a856bded9587b45bc1fd458c550c34c41f03156e15c2e96b5c58",
+      "finalText": {
+        "titleDe": "Modellentscheidung begründen (LK)",
+        "titleEn": "Justify the model choice",
+        "descriptionDe": "Die lernende Person kann eine Modellentscheidung anhand von Vergleichskriterien begründen und qualitativ erläutern, wie empfindlich diese Entscheidung gegenüber Datenunsicherheit oder veränderten Annahmen ist.",
+        "descriptionEn": "The learner can justify a model choice using comparison criteria and explain qualitatively how sensitive that choice is to data uncertainty or changed assumptions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "m7-q4-route-context-a-006",
+          "recordDigest": "sha256:87a4b905fa518eacca4ae349b8691d0e68924366e8f732a7a5ce154136a0c8e2"
+        },
+        "second": {
+          "recordId": "m7-q4-route-repair-context-nine-20260923-b-r06",
+          "recordDigest": "sha256:e2d48c49dc55e21e62315f60bac2ae7b9df99ec0afb92d61565e1ffee4b5e076"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die Begründung einer Modellentscheidung anhand der Kriterien im aktuellen Algenkultur-Kontext.",
+      "rationaleEn": "Both rounds retain justifying a model choice against the criteria in the current algae-culture context."
+    }
+  ],
+  "manifestFingerprint": "sha256:c1cc41fe5f5e9d258f6dd968c11feca4aed3f03c0efa62703bca4b0322d94b1c"
+}

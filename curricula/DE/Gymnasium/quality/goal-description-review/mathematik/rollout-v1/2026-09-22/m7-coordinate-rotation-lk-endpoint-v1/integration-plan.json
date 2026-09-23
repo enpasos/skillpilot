@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "kind": "candidate-only-integration-plan",
+  "status": "proposal",
+  "reviewAuthority": "ai_candidate",
+  "independentSubstantiveReview": "open",
+  "canonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "observedSha256": "sha256:27b6ef4e3a00101285d86878816c21d7e0cd7030b18a440a4d95b959cd7ab91f",
+    "appendGoalsFrom": "candidate.json#/assessmentGoal and #/placementCluster",
+    "appendClusterToContainsOf": "98dcf9bd-d119-5eb1-835c-7d719f67b485",
+    "doNotAppendToContainsOf": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+    "weightRecalculationGoalIds": [
+      "6b0d2a97-cf9c-4778-9c68-16bb82b7afde",
+      "98dcf9bd-d119-5eb1-835c-7d719f67b485",
+      "c01b1ce9-a667-4a46-b251-ec33ae602b15"
+    ],
+    "sharedAssessment": {
+      "goalId": "81823f27-0c92-5444-ac4e-32b83169f318",
+      "removeOnlyGoalId": "7bd8f022-5002-5610-994c-a9cec1890558",
+      "fields": [
+        "requires",
+        "examData.coveredGoalIds"
+      ],
+      "preserveFields": [
+        "examData.taskContent",
+        "examData.taskContentEn",
+        "examData.solutionContent",
+        "examData.solutionContentEn",
+        "examData.scoring"
+      ],
+      "mustNotClaimOtherCoverageValidated": true
+    }
+  },
+  "views": [
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "beforeSha256": "sha256:e48087353eaa3a459a2793f494d5c594de68ea4367d7daba35f4da899eefa5c6",
+      "op": "add",
+      "path": "/rootNodes/0/children/1/children/3/children/7",
+      "anchor": {
+        "kind": "canonicalSubtree",
+        "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3"
+      },
+      "value": {
+        "kind": "canonicalSubtree",
+        "goalId": "6b0d2a97-cf9c-4778-9c68-16bb82b7afde"
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "beforeSha256": "sha256:56278f6e8418e0019af67ab8d778d0ab38a645d4c62040d8a0d3c89fe7970a94",
+      "op": "add",
+      "path": "/rootNodes/0/children/1/children/3/children/7",
+      "anchor": {
+        "kind": "canonicalSubtree",
+        "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3"
+      },
+      "value": {
+        "kind": "canonicalSubtree",
+        "goalId": "6b0d2a97-cf9c-4778-9c68-16bb82b7afde"
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+      "beforeSha256": "sha256:141ab186dedbcc4103ca0013574d01288964121100ce5d76578e59d89cbe7137",
+      "op": "add",
+      "path": "/rootNodes/0/children/1/children/3/children/7",
+      "anchor": {
+        "kind": "canonicalSubtree",
+        "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3"
+      },
+      "value": {
+        "kind": "canonicalSubtree",
+        "goalId": "6b0d2a97-cf9c-4778-9c68-16bb82b7afde"
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+      "beforeSha256": "sha256:46c41b81407427711be50eb6669ddb79566672b1eba53b7bbf9cf74b98e9e83c",
+      "op": "add",
+      "path": "/rootNodes/0/children/27/children/7",
+      "anchor": {
+        "kind": "canonicalSubtree",
+        "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3"
+      },
+      "value": {
+        "kind": "canonicalSubtree",
+        "goalId": "6b0d2a97-cf9c-4778-9c68-16bb82b7afde"
+      }
+    }
+  ],
+  "qaBinder": {
+    "file": "app/scripts/generateCurriculumQualityStatus.ts",
+    "constant": "CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS",
+    "appendClusterId": "6b0d2a97-cf9c-4778-9c68-16bb82b7afde",
+    "changeType": "existing QA configuration only; no runtime mechanism"
+  },
+  "semanticKindBinder": {
+    "file": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "candidateClassifications": [
+      {
+        "goalId": "42752317-6022-47f2-8b34-160db5ef01fb",
+        "semanticKind": "practiceAssessment"
+      },
+      {
+        "goalId": "6b0d2a97-cf9c-4778-9c68-16bb82b7afde",
+        "semanticKind": "practiceAssessment"
+      }
+    ],
+    "fingerprintFunction": "fingerprintSemanticKindSourceGoal in app/scripts/goalBookModel.ts",
+    "authority": "Root classification only after independent substantive review; candidate adds no authoritative record",
+    "refreshAffectedExistingOnly": true
+  },
+  "applicability": {
+    "mechanism": "existing applicabilityFromRequires on exam, inheritance boundary; cluster child-union",
+    "jurisdictions": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ],
+    "learnerTargetPlacement": "Only the four explicit HE-LK view insertions; applicability is not a course-profile or view selector",
+    "noOverrideOrNewSourceMappingProposed": true
+  },
+  "promotion": {
+    "suggestedDirectory": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/coordinate-axis-rotation-lk-v1",
+    "files": [
+      "task.de.md",
+      "task.en.md"
+    ],
+    "rewriteSourcePathsBeforeFingerprinting": true,
+    "releaseStatusNow": "needs_review",
+    "releaseStatusAfterIndependentApprovalOnly": "released"
+  },
+  "knownLimits": [
+    "Author self-check, not independent substantive approval.",
+    "Only the endpoint placement is simulated; the separate GK scope plan is not applied here.",
+    "No global route/CQR/Maturity report run; releaseStatus remains needs_review and intentionally blocks release gates.",
+    "Other jurisdictions receive no new target; their rotation-route disposition after removal of false shared coverage remains a separate integration check."
+  ]
+}
+

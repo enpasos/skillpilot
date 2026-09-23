@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:c11af31f2d4fddf918c356be2dc4b3884f4874c3c294f663c274aebdf3780575",
+  "reviewInputFingerprint": "sha256:2e0db9a6ffcf0f37ba55e3f340e949fedd737962c1b0eadb9c81cd846d340861",
+  "goalCount": 19,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a",
+      "roundId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-b",
+      "roundId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 19,
+    "unavailable": 0,
+    "requiresSynthesis": 19
+  },
+  "goals": [
+    {
+      "goalId": "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-001",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "baf7276f-60a0-4d96-b959-d63acfb929de",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-baf7276f-60a0-4d96-b959-d63acfb929de",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-002",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-8eb14d81-353a-4909-9464-61be7b1ba5b8",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-003",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "265af6af-8eac-5632-b730-800aafcde26a",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-265af6af-8eac-5632-b730-800aafcde26a",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-004",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9460c3ff-e72d-4107-bc73-087d217200aa",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-9460c3ff-e72d-4107-bc73-087d217200aa",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-005",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-18be713b-7d90-4f01-b60a-5582ac4df0e8",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-006",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3def350a-c01c-51c3-be74-b3de20ee53e1",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-3def350a-c01c-51c3-be74-b3de20ee53e1",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-007",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-008",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "69beb31d-5d02-4505-9500-3ec81af86f1e",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-69beb31d-5d02-4505-9500-3ec81af86f1e",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-009",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-010",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5f90df42-8a71-534d-b995-b8f7dcaf1661",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-5f90df42-8a71-534d-b995-b8f7dcaf1661",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-011",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "857c1c46-5d94-5dfb-9697-9a9fd04103c3",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-857c1c46-5d94-5dfb-9697-9a9fd04103c3",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-012",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ec6447d1-97da-5b77-94ae-4973b43f094e",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-ec6447d1-97da-5b77-94ae-4973b43f094e",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-013",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8cb5c712-9c58-5910-8c63-8c3736369b80",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-8cb5c712-9c58-5910-8c63-8c3736369b80",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-014",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-015",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-c2c49659-5917-5be5-a3bd-e46f1b17126f",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-016",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-017",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-018",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "firstRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001-985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "secondRecordId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b.goal-019",
+      "firstRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-a-run-001",
+      "secondRunId": "mathematik-m7-q2-analytic-spatial-geometry-19-current-20260923-v1-first-pass-b.batch-001.gpt-6-reviewer-b",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

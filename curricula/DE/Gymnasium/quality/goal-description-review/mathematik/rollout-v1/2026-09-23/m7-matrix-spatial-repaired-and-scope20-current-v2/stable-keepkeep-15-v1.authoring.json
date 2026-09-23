@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "goal-description-partial-keepkeep-authoring-v1",
+  "partialClosureId": "mathematik-m7-d20-current-keepkeep-15-20260923-v1",
+  "synthesizedBy": "OpenAI Codex, informed AI synthesis by prior Round B reviewer; no human attestation",
+  "synthesizedAt": "2026-09-23T00:23:16.000Z",
+  "sourceBundleFingerprint": "sha256:ac6b0e618dddcd2d82f4ac754235b1e5b28aa92949f6c4c40811ab540e3928bf",
+  "sourceBookDigest": "sha256:75b11e839792e6543141fe39d86097af9264285d76ee0b96aa40febb57c47fb2",
+  "sourceReviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+  "currentBaseBookDigest": "sha256:6af830be9ae935c9605328f1e5509b157581c181b777619918ec763f88a9bf43",
+  "currentSubsetBookDigest": "sha256:a9bd1a00a95aeb14e5f72cbb19e8e56d2cbf3e8035fe676c45bab959e94b172b",
+  "heldCurrentPageFingerprint": "sha256:3c0fa5b4c4a3165a71b786eb94fcec301b5e90e23a832b21ab258d766b5e01f9",
+  "excludedGoalIds": [
+    "4c494716-567b-59c2-855c-6ea45635c666",
+    "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+    "f37b0a72-9e23-51c7-aad5-438c17a56899",
+    "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+    "4bc6cc77-3d20-5d27-a74a-8efb0a038d17"
+  ],
+  "visualizationHold": {
+    "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+    "currentImageDigest": "sha256:ad5f2098065421f707e8f42637a4c427d5f7ce5fc136fb488d1195bd9b98507d",
+    "status": "D_AND_V_HOLD_CURRENT_PAGE_STALE",
+    "reasonDe": "D und V bleiben hier HOLD. Die aktuelle Seite hat nach Widerruf der AI-Bildfreigabe den Status rejected und einen anderen Page-Fingerprint als der gebundene D-Review; in beiden oberen Vektoren-Reihen zeigen gleichgerichtete Pfeile verschiedene Koordinatenvektoren. Der neue Ersatzversuch bleibt ebenfalls auf HOLD.",
+    "reasonEn": "D and V both remain on HOLD here. After the AI image approval was withdrawn, the current page has rejected status and a page fingerprint different from the bound D review; in both upper vector rows, arrows pointing in the same direction label different coordinate vectors. The proposed replacement also remains on HOLD."
+  },
+  "decisions": [
+    {
+      "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+      "goalFingerprint": "sha256:05e5b88c3553d4e6240c61d1216bc975ad865b79694b478793bc4be48c79acea",
+      "pageFingerprint": "sha256:2a75cd7f38ae3691f6dd315bd762dcfd9ea4c1de4da2402363339dbe1f5e8a91",
+      "imageDigest": "sha256:bea47985c63aa48992058ab3d688b91e8d05fb5d2123f70ec255ce0093320fff",
+      "evidenceRound": "first",
+      "rationaleDe": "Beide aktuellen Runden sind KEEP. A benennt die spaltenstochastische Konvention und die endlichen Zustände M^n v0 ausdrücklich; B bestätigt die Grenze zur nicht automatisch bewiesenen Konvergenz. Die unveränderte D-Beschreibung betrifft Matrixpotenzen, nicht das eigene Grenzmatrixziel.",
+      "rationaleEn": "Both current rounds are KEEP. A explicitly names the column-stochastic convention and finite states M^n v0; B confirms that convergence is not automatically proved. The unchanged D description concerns matrix powers, not the separate limiting-matrix goal."
+    },
+    {
+      "goalId": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+      "goalFingerprint": "sha256:82c1557e51912e482af963fc9606572b79c6cf52d6edd51729fc91a639c74982",
+      "pageFingerprint": "sha256:413965af5195a306b7cf2be117424fb14bce3e3227ad688bf41d73fd5f1255cb",
+      "imageDigest": "sha256:a5c6d718dd1500f140c19708f43feee528e6a74306b52eb8352ef3b907d8db15",
+      "evidenceRound": "second",
+      "rationaleDe": "Beide Runden sind KEEP für das eigene Grenzprozessziel. B trennt stationären Vektor, tatsächliche Konvergenz und Startunabhängigkeit ausdrücklich; A stützt dieselbe Bedingung über Grenzspalten. Deshalb wird Bs vorsichtigere Grenzwert-Evidenz gewählt.",
+      "rationaleEn": "Both rounds are KEEP for the distinct limiting-process goal. B explicitly separates a stationary vector, actual convergence, and independence from the initial state; A supports the same condition through limiting columns. B's more guarded limit evidence is selected."
+    },
+    {
+      "goalId": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+      "goalFingerprint": "sha256:532725faba60d71f68ef52c6b49afa068c4ff06c419fa50ea75d68d21d9d966a",
+      "pageFingerprint": "sha256:8d8b74f2e0d00c31c6157522f410d8ee63d998e71d5b512a1882dcc63aad067c",
+      "imageDigest": "sha256:1d50597d5214d7b61a2b6fb0f268c30f9bacdcbed845efaf7c06bff65adc6e83",
+      "evidenceRound": "second",
+      "rationaleDe": "Beide Runden sind KEEP. Bs m×n-Zuordnung bindet Matrixdimensionen, Ortsvektor und Bildvektor auch bei geändertem Zielraum präzise; A bestätigt die Zeilenwirkung. Das bleibt beim Berechnen von Bildpunkten, ohne einen neuen Abbildungstyp zu fordern.",
+      "rationaleEn": "Both rounds are KEEP. B's m-by-n mapping precisely connects matrix dimensions, position vector, and image vector even when the target-space dimension changes; A confirms the row action. This remains image-point calculation without requiring a new mapping type."
+    },
+    {
+      "goalId": "b72d87d4-763e-54aa-940d-31f195b51700",
+      "goalFingerprint": "sha256:b107106de107b5e346357bf62b8023ae7a88fcb5e397175cbf2f3d76b2ccc886",
+      "pageFingerprint": "sha256:c0d7b43cd06048af95f9c84614702cd4b909e595a4f51412eebb6a833225cf23",
+      "imageDigest": "sha256:2a3e8ddcfa9d8b5d9063301304af76defcb67cc5e92b06c419f445e5d299994e",
+      "evidenceRound": "second",
+      "rationaleDe": "Beide Runden sind KEEP für orthogonale Spiegelungen an Koordinatenebenen. B macht die unveränderten Ebenenkoordinaten, die umgekehrte Normalkoordinate und Fixpunkte sichtbar; A ergänzt die Entfernung zur Ebene. Die zweite Kette bleibt auf diese Spiegelungen begrenzt.",
+      "rationaleEn": "Both rounds are KEEP for orthogonal reflections in coordinate planes. B makes the unchanged in-plane coordinates, reversed normal coordinate, and fixed points observable; A adds distance to the plane. The second chain stays within these reflections."
+    },
+    {
+      "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46",
+      "goalFingerprint": "sha256:161954b054f179c0deb74748ecdf5c223522f2c7f9b130ac3b5ec2e5ecf5e8ae",
+      "pageFingerprint": "sha256:323ea468f15113f5c0a26a3c7b8ee3773caad2cfa18e95866051a57f1d3ae5d4",
+      "imageDigest": "sha256:771419dd4e07ee96bed6bc6ad425f33a4d8a99ece7d6298395403ce3142a6648",
+      "evidenceRound": "second",
+      "rationaleDe": "Beide Runden sind KEEP. B benennt die Bedingung, dass die feste Projektionsrichtung die Koordinatenebene eindeutig trifft, und trennt schiefe von senkrechter Projektion; A stützt den Wechsel zur schiefen Richtung. So wird bloßes Koordinaten-Nullsetzen nicht verallgemeinert.",
+      "rationaleEn": "Both rounds are KEEP. B states the condition that the fixed projection direction meet the coordinate plane uniquely and separates oblique from perpendicular projection; A supports transfer to an oblique direction. Merely zeroing a coordinate is therefore not generalized."
+    },
+    {
+      "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56",
+      "goalFingerprint": "sha256:c6950fd42ce838b2c0473ec8651762cf578ef6e9559becf11b00d216562fb533",
+      "pageFingerprint": "sha256:31bbde2e227101b07fc29d6fdd8b69d84d9c3f917411d81125a2648111f0179c",
+      "imageDigest": "sha256:67810c41b3c974fb1fdc0cdd6c2b67101c0ff7ac9c1b26aa50b8e9cbf1d9b405",
+      "evidenceRound": "second",
+      "rationaleDe": "Beide Runden sind KEEP. Bs kI-Verständnis trennt Maßstab |k| von Richtungsumkehr bei k<0 und hält den Ursprung fest; A bestätigt die Vorzeichenwirkung. Diese Evidenz konkretisiert die unveränderte zentrische Streckung.",
+      "rationaleEn": "Both rounds are KEEP. B's kI understanding separates scale |k| from direction reversal for k<0 while fixing the origin; A confirms the sign effect. This evidence specifies the unchanged central dilation."
+    },
+    {
+      "goalId": "7bd8f022-5002-5610-994c-a9cec1890558",
+      "goalFingerprint": "sha256:42615f28b319fee999bb6894ed29b747c9dac6eca565c932a33df9c3dafb201e",
+      "pageFingerprint": "sha256:b3357d045f7f62ce8ff4fa5c3c7cc2029a90e30384a9a29d73581d4c17a1ccca",
+      "imageDigest": "sha256:ce06e66689ba9322f0c6569609a4942320d98cf198866e0606427309a3a66639",
+      "evidenceRound": "first",
+      "rationaleDe": "Beide Runden sind KEEP für LK-Drehungen um Koordinatenachsen. A bindet Matrixspalten an Basisbilder und macht die Blickrichtungs-Konvention für das Winkelvorzeichen ausdrücklich; B stützt Achsenwechsel und Längenerhaltung. A wird wegen der Konventionsklarheit gewählt.",
+      "rationaleEn": "Both rounds are KEEP for advanced-track rotations about coordinate axes. A binds matrix columns to basis images and explicitly states the viewing convention for the angle sign; B supports axis changes and length preservation. A is selected for its convention clarity."
+    },
+    {
+      "goalId": "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+      "goalFingerprint": "sha256:a7752df2f947775f75dcf3a10d8292706b3132039343197cc09c160360bf4936",
+      "pageFingerprint": "sha256:74593a2932a3d97dd2fdc5b1a18bf580f4b50e97a9f54c3a6d9249e3dd693b8d",
+      "imageDigest": "sha256:35597d1ab49a10950d1b1ce8f6b9d8b09e081777f08736028f972b84238fe435",
+      "evidenceRound": "second",
+      "rationaleDe": "Beide Runden sind KEEP für das Berechnen bedingter Wahrscheinlichkeiten, getrennt vom Tabellen-Ableseziel. B nennt den positiven Nenner P(A)>0 und die Bedingungsrichtung explizit; A bestätigt die Bezugsgruppe in Tafel und Baum. Bs Bedingung schützt vor undefinierter Division.",
+      "rationaleEn": "Both rounds are KEEP for calculating conditional probabilities, distinct from the table-reading goal. B explicitly requires the positive denominator P(A)>0 and the direction of conditioning; A confirms the reference group in table and tree. B's condition prevents undefined division."
+    },
+    {
+      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "goalFingerprint": "sha256:49deecda41233341f3f54d507dda7f828b8276dd8bfa02e5f12b953e84f7b2e5",
+      "pageFingerprint": "sha256:68414ebc6ce4598e98a8cda3abe869dd7d53c1dd6961a3695b00b449f0c30c77",
+      "imageDigest": "sha256:b3578775616dae549fcf1fc0b7e281ada8841cef048158da03c6fc2153571af2",
+      "evidenceRound": "second",
+      "rationaleDe": "Beide Runden sind KEEP. B unterscheidet Ursprung-Punkt, Punkt-Punkt und einen von null verschiedenen Richtungsvektor auch bei Bezugswechsel; A bestätigt die verschiedenen Rollen gleicher Komponenten. Die zweite Kette vermeidet eine Richtungsaussage für den Nullvektor.",
+      "rationaleEn": "Both rounds are KEEP. B distinguishes origin-to-point, point-to-point, and nonzero direction vectors even when the reference changes; A confirms that identical components can have different roles. The second chain avoids assigning a direction to the zero vector."
+    },
+    {
+      "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+      "goalFingerprint": "sha256:4610b484ec7bf73f49cae1890f69bc5771a36f996613f376adec2846bb6c8c86",
+      "pageFingerprint": "sha256:bac66fe01ed54dfa18c81188578fb24a22f044b59441bb24e3bb8b6eceb8dbf5",
+      "imageDigest": "sha256:dcd41da8b98051334fb44a8a03de610328cc50cc3d23c65e09035cf0807db44c",
+      "evidenceRound": "second",
+      "rationaleDe": "Beide Runden sind KEEP. B bindet die Verortung an Ursprung, drei Achsenrichtungen und Maßstab und prüft den Bezug bei Lagewechsel; A bestätigt unveränderte Körpergeometrie. Damit bleibt das Ziel Raumorientierung statt einer neuen Transformationsroutine.",
+      "rationaleEn": "Both rounds are KEEP. B ties spatial placement to origin, three axis directions, and scale and checks the reference after a placement change; A confirms unchanged geometry of the solid. The goal remains spatial orientation rather than a new transformation routine."
+    },
+    {
+      "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+      "goalFingerprint": "sha256:5fddb3d49a83541aa8f76a159bc635893b2182310f66acfeb046b90ab94b241a",
+      "pageFingerprint": "sha256:57191f192276426738e225a38b3f0b332e0e1c5097b9a1402cfb1b70fbf50e99",
+      "imageDigest": "sha256:89fbc164a28cc5df659cfed370ae88f843f94476835915e844ff7a1e71c1cbd6",
+      "evidenceRound": "second",
+      "rationaleDe": "Beide Runden sind KEEP. B trennt wechselnde 3D-Ansicht und scheinbaren Bildschirmversatz von gespeicherten Koordinaten; A bestätigt die Perspektivprojektion und verdeckte Lagen. Das hält die Software als Erkenntniswerkzeug im bestehenden Ziel.",
+      "rationaleEn": "Both rounds are KEEP. B separates a changed 3D view and apparent screen displacement from stored coordinates; A confirms the perspective projection and hidden positions. This keeps software as an investigative tool within the existing goal."
+    },
+    {
+      "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "goalFingerprint": "sha256:d15456eb6c7cc1b070d450dd0389786631856af89f87edd08aa7c0a509c26fbc",
+      "pageFingerprint": "sha256:eacd8482db7f92e777501cfc79c3193815c3531b9140a260004257f6b761d785",
+      "imageDigest": "sha256:d0d3ef0810072d8b31874a70f9b3378e682f414aa527b955c0b7e4e40bee4fcc",
+      "evidenceRound": "second",
+      "rationaleDe": "Beide Runden sind KEEP. B verbindet Koeffizienten, Komponentenrechnung, Pfeilkette und aufgespannten Raum; A bestätigt die geometrische Grenze außerhalb des Spanns. Die gewählte Kette macht Bildung und Deutung derselben Linearkombination beobachtbar.",
+      "rationaleEn": "Both rounds are KEEP. B connects coefficients, component arithmetic, arrow chains, and span; A confirms the geometric limit outside the span. The selected chain makes construction and interpretation of the same linear combination observable."
+    },
+    {
+      "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "goalFingerprint": "sha256:630a4748f5eaa839e64f959fa5760dfaa0c671e66177130ed37bd342ca71d520",
+      "pageFingerprint": "sha256:03e9d9450f985ff0f98c909b01f3cf5c2f1be1178f39ab3754b3aae77bf066ed",
+      "imageDigest": "sha256:0daaddf6f333f56d16fc7bad130358e93fbccdb7fa2ad2c11be1d6a0e918ed0b",
+      "evidenceRound": "first",
+      "rationaleDe": "Beide Runden sind KEEP. A verlangt bei Nullkomponenten die vollständige skalare Gleichung statt undefinierter Komponentenquotienten; B markiert die getrennte Richtungs-Konvention für den Nullvektor. A wird wegen des präzisen algebraischen Tests gewählt.",
+      "rationaleEn": "Both rounds are KEEP. A requires the full scalar-multiple equation with zero components instead of undefined component ratios; B flags the separate directional convention for the zero vector. A is selected for its precise algebraic test."
+    },
+    {
+      "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+      "goalFingerprint": "sha256:1f3dceaa1fc8e5df06d5e69391cdbff79cc1e028e7a91b466086240230db1368",
+      "pageFingerprint": "sha256:7131db0dd0bc043612372261dbea51713df0769e8272f3cb5019aab576c71b7b",
+      "imageDigest": "sha256:435cc927f875f42a8e492b9fd47722efd51cb654683721e81132ad75b21d1f1f",
+      "evidenceRound": "first",
+      "rationaleDe": "Beide Runden sind KEEP. A deutet den Abstand als Betrag des Verbindungsvektors und prüft Verschiebung des Ursprungs sowie Endpunktwechsel; B bestätigt Nichtnegativität und drei Koordinatendifferenzen. A wird wegen der Invarianzbegründung gewählt.",
+      "rationaleEn": "Both rounds are KEEP. A interprets distance as the magnitude of the connecting vector and checks origin translation and endpoint reversal; B confirms nonnegativity and the three coordinate differences. A is selected for the invariance reasoning."
+    },
+    {
+      "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af",
+      "goalFingerprint": "sha256:7f688fd6be500540adabefc1fb3194878945b258de1bed3cbb50049508bae1d0",
+      "pageFingerprint": "sha256:fbc502aecdbf4573a501baac11ca4542445b51f2cd56f973b4c2f3a287646d1e",
+      "imageDigest": "sha256:c09c910d536a84625b0652f5339da8f7f74361042c5539d7a6f8d1e04317d6d4",
+      "evidenceRound": "second",
+      "rationaleDe": "Beide Runden sind KEEP. B verlangt zuerst die zur gefragten Kante oder Diagonale gehörenden Endpunkte und unterscheidet im Transfer Grundflächen-, Seiten- und Raumdiagonale; A ergänzt die Plausibilität im Figurenkontext. Bs Kette hält das eigenständige Streckenziel vom bloßen Punktabstand getrennt.",
+      "rationaleEn": "Both rounds are KEEP. B first requires the endpoints belonging to the requested edge or diagonal and distinguishes base-face, side-face, and space diagonals in transfer; A adds plausibility in the figure context. B's chain keeps this segment goal distinct from plain point distance."
+    }
+  ]
+}

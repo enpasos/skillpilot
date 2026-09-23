@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "goalId": "b72d87d4-763e-54aa-940d-31f195b51700",
+  "recordedAt": "2026-09-21T22:18:10.206Z",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactServingModel": "not exposed",
+  "resultId": "exec-93b9594d-71aa-40d5-b992-f681a7887dc9",
+  "nativePrepareCompletedBeforeGeneration": true,
+  "prompt": {
+    "path": "edit-prompt-v1.md",
+    "sha256": "sha256:03dc5e91e478a881ae260b11e6a0c2f71ba43ccb115604ede39a9c017d61cf44"
+  },
+  "reference": {
+    "path": "app/public/assets/goal-visualizations/mathematik/b72d87d4-763e-54aa-940d-31f195b51700/b72d87d4-763e-54aa-940d-31f195b51700.jpg",
+    "sha256": "sha256:077129cf10f37fc8a5b6b9f74cd600c87d9239eacbc6f962f893c7a3f0008bb1",
+    "actuallyViewedBeforeEditing": true
+  },
+  "candidate": {
+    "path": "rejected-geometry-v1.png",
+    "sha256": "sha256:587e3e33ec97df35eb538c91ad91fd46fcfb2e78629f134b9686685ff004930e",
+    "width": 1678,
+    "height": 937
+  },
+  "rootReview": {
+    "actuallyViewed": true,
+    "decision": "rejected",
+    "findings": [
+      "The y axis bends through F: F(2,1,0) must not lie on the y axis.",
+      "P-F and F-Pprime are visibly unequal despite equal-distance marks; F is not the midpoint.",
+      "Matrix and vector product are correct but do not excuse false spatial geometry."
+    ]
+  },
+  "reviewAuthority": "ai_candidate",
+  "canonicalImported": false,
+  "humanApproval": false
+}

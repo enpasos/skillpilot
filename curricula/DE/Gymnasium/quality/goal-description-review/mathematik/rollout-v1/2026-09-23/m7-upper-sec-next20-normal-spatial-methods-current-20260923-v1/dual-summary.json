@@ -1,0 +1,392 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e4997cd5104440d0ea9566e1cb471267cc39521ee1d695828ae21c97ce4dc0bc",
+  "reviewInputFingerprint": "sha256:1510909220c144778b837e902c5ae954b2cfe7b366b5998bccef5bbd24c24177",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-a",
+      "roundId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-b",
+      "roundId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "fd13605e-21d9-523f-bcf4-6824b6cc09e5",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.fd13605e-21d9-523f-bcf4-6824b6cc09e5",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-001",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8c32d941-b51c-5663-951c-a610f8900f76",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.8c32d941-b51c-5663-951c-a610f8900f76",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-002",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c406d5a0-e81d-5ce9-b535-6512a38798de",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.c406d5a0-e81d-5ce9-b535-6512a38798de",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-003",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "55d0474b-b82c-59b6-a62a-b6a0a34d9c4b",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.55d0474b-b82c-59b6-a62a-b6a0a34d9c4b",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-004",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a7778885-17aa-5eeb-a6a7-fbf4c8d55a16",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.a7778885-17aa-5eeb-a6a7-fbf4c8d55a16",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-005",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b431148b-526c-4bde-b04b-48d23101d0d3",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.b431148b-526c-4bde-b04b-48d23101d0d3",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-006",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3016ec37-1c2e-47db-83f5-e767923bc97e",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.3016ec37-1c2e-47db-83f5-e767923bc97e",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-007",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0a846521-edcc-5c3c-a844-eac061e053ce",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.0a846521-edcc-5c3c-a844-eac061e053ce",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-008",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3256476b-ec65-4038-9f5a-a8808fbcf207",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.3256476b-ec65-4038-9f5a-a8808fbcf207",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-009",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-010",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "58f613da-03be-5c6a-90a9-ff0958aa7849",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.58f613da-03be-5c6a-90a9-ff0958aa7849",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-011",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-012",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a506fc1d-b784-548f-90c3-5aae1b819b68",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.a506fc1d-b784-548f-90c3-5aae1b819b68",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-013",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-014",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8b885220-9985-52f1-a236-449d2f897acc",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.8b885220-9985-52f1-a236-449d2f897acc",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-015",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d0475ed5-cb6f-5694-9501-a1c94288d65a",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.d0475ed5-cb6f-5694-9501-a1c94288d65a",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-016",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6fcd6a1a-88d3-59d2-9bf7-ee32babb773e",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.6fcd6a1a-88d3-59d2-9bf7-ee32babb773e",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-017",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-018",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "79444ef9-cc85-5ac4-a3bc-f10d3ffbfd16",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.79444ef9-cc85-5ac4-a3bc-f10d3ffbfd16",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-019",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+      "firstRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+      "secondRecordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-020",
+      "firstRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "secondRunId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

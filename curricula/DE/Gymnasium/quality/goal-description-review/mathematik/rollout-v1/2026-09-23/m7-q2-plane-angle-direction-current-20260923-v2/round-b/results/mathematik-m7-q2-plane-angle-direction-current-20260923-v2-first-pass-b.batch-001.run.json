@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-first-pass-b.batch-001.codex-b",
+  "campaignId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-b",
+  "roundId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-first-pass-b",
+  "batchId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:66fbcb9837aadc3e85a7d25312bb117c080a8d1c1be2c05e95955ae8f2e36ccb",
+  "bundleFingerprint": "sha256:8d08b8040ebab0027598cab00505f663f249093a625c3e76cd3d8cd165820e7e",
+  "bookDigest": "sha256:d724c4374e93c9a4d4c1d6c427dd71e41ed9f130674ac329f014fe08cf3259e1",
+  "provider": "OpenAI",
+  "model": "Codex agent; exact model identifier and sampling parameters not exposed; independent blind round B, no different-model claim",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:8039dc952dfec35f4be087fde07136a282158f942f1515b4d5c4309b768af530",
+  "independenceGroupId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "bda6a659-9640-53a5-8be0-24705ab623ef"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:1608117d6a0229e5ba6a2d2ac33d52f89badf443e01acb964a73424a306d3020"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:91cfee6314613d5a37d7341b180b93319175d127e087c3fc00c34cebb8b4a7bf"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:01762d64896eabebb51bf1d9fbf6efa11774d1bac7464a6a2e505167bff4e74d"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:66fbcb9837aadc3e85a7d25312bb117c080a8d1c1be2c05e95955ae8f2e36ccb"
+    }
+  ],
+  "startedAt": "2026-09-23T02:16:38.000Z",
+  "completedAt": "2026-09-23T02:17:06.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:ad6b05a7fe1e4b4f1c731203f983b3b2058b1a0a5941a69bd1d7a31c2bf3657e",
+  "toolchainVersion": "codex-agent-description-review-v2"
+}

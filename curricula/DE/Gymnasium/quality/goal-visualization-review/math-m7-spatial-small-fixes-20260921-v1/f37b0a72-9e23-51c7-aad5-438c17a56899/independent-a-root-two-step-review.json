@@ -1,0 +1,70 @@
+{
+  "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+  "candidateFile": "root-two-step-candidate-v1.png",
+  "assetSha256": "sha256:600adcbff2431384e36b34a72f5f756b00cba2ad856920d8d046a8f7304da304",
+  "decision": "keep",
+  "recordStatus": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "reviewer": "Codex independent agent /root/math_repaired12_blind_a; exact serving model identifier not exposed",
+  "reviewedAt": "2026-09-21T22:53:13.313Z",
+  "independence": "Root authored this separate candidate. Reviewing agent viewed the actual generated PNG independently; root's proposed approval was not treated as evidence. Previous rejected attempts by this reviewer were different assets and remain rejected.",
+  "inspectionTool": "view_image",
+  "inspectedPath": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-d2323eb1-89a1-476d-96ab-7984ab21c20e.png",
+  "checks": {
+    "arithmetic": [
+      "(2,1,1)+(-1,2,3)=(1,3,4).",
+      "2(2,1,1)=(4,2,2)."
+    ],
+    "additionGeometry": {
+      "pointsApprox": {
+        "start": [
+          257,
+          501
+        ],
+        "joint": [
+          606,
+          501
+        ],
+        "finish": [
+          606,
+          266
+        ]
+      },
+      "finding": "Bluea joins start→joint, greenb joint→finish, reda+b start→finish. Shared endpoints visibly close the vector chain."
+    },
+    "scalingGeometry": {
+      "pointsApprox": {
+        "start": [
+          833,
+          440
+        ],
+        "middle": [
+          1144,
+          440
+        ],
+        "finish": [
+          1457,
+          440
+        ]
+      },
+      "firstStepPixels": 311,
+      "secondStepPixels": 313,
+      "orangeOverallPixels": 623,
+      "finding": "Two horizontal blue a steps of equal length within raster stroke tolerance; orange2a covers their full extent in the same direction."
+    },
+    "representation": "Left explicitly says Schematische Pfeilkette – keine maßstäbliche Darstellung von Raumkoordinaten! No coordinate axes or right-angle claim. This correctly separates illustrative composition from coordinate-specific metric projection.",
+    "style": "Friendly pastel comic, readable column vectors, clear color semantics, uncluttered split panels. Pencil mascot does not obstruct mathematics.",
+    "scope": "Example2 illustrates scaling and head-to-tail addition; no false claim that all scalar factors or operations are exhausted."
+  },
+  "counterchecks": [
+    "The sum red vector ends where the green second displacement ends; it is not detached or a different projection.",
+    "Right orange span equals the two blue spans combined, with no extra unequal third segment.",
+    "Changing ordera+b=b+a or considering−a would be later exercises, not required elements of this one illustration."
+  ],
+  "visibleBlockingDefects": [],
+  "limitations": [
+    "AI-only independent candidate review, not human approval.",
+    "No central QA/registry/canonical write and no runtime acceptance test performed.",
+    "Pixel coordinates are approximate measurements of the viewed raster, not a claim about generator construction coordinates."
+  ]
+}

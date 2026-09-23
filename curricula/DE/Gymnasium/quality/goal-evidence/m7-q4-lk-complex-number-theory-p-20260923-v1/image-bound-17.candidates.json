@@ -1,0 +1,944 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-q4-lk-complex-number-theory-image-bound-17-20260923-v1",
+  "reviewedAt": "2026-09-23T04:44:00Z",
+  "reviewer": "Codex / current Mathematics Q4 LK positive-evidence-v2 independent author",
+  "goals": [
+    {
+      "goalId": "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+      "reason": "The current image's plotted addition and subtraction are coherent; these fresh cases require component-wise meaning and an unknown addend, not copying its pictured operands. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Bei z=a+bi werden Real- und Imaginärteil getrennt verrechnet; Addition und Subtraktion entsprechen komponentenweisen Operationen und bleiben komplexe Zahlen.",
+            "essentialUnderstandingEn": "For z=a+bi, real and imaginary components are combined separately; addition and subtraction are component-wise operations and remain complex numbers.",
+            "observablePerformanceDe": "Die Person identifiziert beide Komponenten, stellt Ergebnisse in a+bi-Form dar und überprüft sie durch Gegenrechnen oder Lage im Zahlenraum.",
+            "observablePerformanceEn": "The learner identifies both components, writes results in a+bi form and checks them by inverse calculation or their position in the plane."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von direkter Addition/Subtraktion zweier algebraischer Zahlen zur Bestimmung eines unbekannten Summanden aus zwei gegebenen Punkten wechseln.",
+            "textEn": "Change from direct addition/subtraction of two algebraic numbers to finding an unknown addend from two given points."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "direct-components",
+            "taskDemandDe": "Berechne für z=2−3i und w=−5+4i sowohl z+w als auch z−w; benenne jeweils Real- und Imaginärteil.",
+            "taskDemandEn": "For z=2−3i and w=−5+4i, calculate both z+w and z−w; name their real and imaginary parts.",
+            "expectedPerformanceDe": "z+w=−3+i mit Realteil −3 und Imaginärteil 1; z−w=7−7i mit Realteil 7 und Imaginärteil −7. Die Komponenten werden getrennt addiert bzw. subtrahiert.",
+            "expectedPerformanceEn": "z+w=−3+i with real part −3 and imaginary part 1; z−w=7−7i with real part 7 and imaginary part −7. Components are added or subtracted separately.",
+            "understandingFocusDe": "Vorzeichen und Bedeutung der beiden Komponenten bleiben bei beiden Operationen konsistent.",
+            "understandingFocusEn": "Signs and meanings of both components stay consistent in both operations."
+          },
+          {
+            "id": "missing-addend",
+            "taskDemandDe": "In der Gaußschen Ebene liegt z bei (−2,3) und das Ergebnis z+u bei (4,−1). Bestimme u in algebraischer Form und prüfe durch Addition.",
+            "taskDemandEn": "In the complex plane z is at (−2,3) and the result z+u is at (4,−1). Find u in algebraic form and check by addition.",
+            "expectedPerformanceDe": "z=−2+3i und z+u=4−i, also u=(4−i)−(−2+3i)=6−4i; (−2+3i)+(6−4i)=4−i.",
+            "expectedPerformanceEn": "z=−2+3i and z+u=4−i, so u=(4−i)−(−2+3i)=6−4i; (−2+3i)+(6−4i)=4−i.",
+            "understandingFocusDe": "Die Person übersetzt Punkte in komplexe Zahlen und nutzt Subtraktion als Umkehrung der Addition.",
+            "understandingFocusEn": "The learner translates points into complex numbers and uses subtraction as the inverse of addition."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+      "reason": "The current image correctly represents the conjugate non-real roots of z²+4=0; the new tasks vary the equation structure and require substitution checks. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Eine negative reelle Quadratzahl besitzt in C zwei konjugierte Wurzeln; eine Verschiebung der Unbekannten verschiebt beide Lösungen, die durch Einsetzen geprüft werden.",
+            "essentialUnderstandingEn": "A negative real square has two conjugate roots in C; shifting the unknown shifts both solutions, which are checked by substitution.",
+            "observablePerformanceDe": "Die Person löst einfache komplexe Gleichungen mit beiden Lösungen, stellt sie als a+bi oder Punkte dar und prüft die Gleichung.",
+            "observablePerformanceEn": "The learner solves simple complex equations with both solutions, represents them as a+bi or points and checks the equation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer reinen Quadratik z²=−a zu einer verschobenen Quadratik (z−h)²=−a wechseln.",
+            "textEn": "Change from a pure quadratic z²=−a to a shifted quadratic (z−h)²=−a."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "pure-negative-square",
+            "taskDemandDe": "Löse z²+9=0 in C, zeichne die Lösungen in der Gaußschen Ebene und prüfe eine durch Einsetzen.",
+            "taskDemandEn": "Solve z²+9=0 in C, plot the solutions in the complex plane and check one by substitution.",
+            "expectedPerformanceDe": "z²=−9, daher z=3i oder z=−3i; die Punkte sind (0,3) und (0,−3), und (3i)²+9=−9+9=0.",
+            "expectedPerformanceEn": "z²=−9, so z=3i or z=−3i; the points are (0,3) and (0,−3), and (3i)²+9=−9+9=0.",
+            "understandingFocusDe": "Beide nichtreellen Lösungen werden als Punkte und als algebraische Zahlen identifiziert.",
+            "understandingFocusEn": "Both non-real solutions are identified as points and algebraic numbers."
+          },
+          {
+            "id": "shifted-square",
+            "taskDemandDe": "Löse (z−1)²+4=0 in C und prüfe, ob die gefundenen Zahlen die ursprüngliche Gleichung erfüllen.",
+            "taskDemandEn": "Solve (z−1)²+4=0 in C and check whether the numbers found satisfy the original equation.",
+            "expectedPerformanceDe": "Aus z−1=±2i folgt z=1±2i; für beide gilt (z−1)²=(±2i)²=−4. Die Lösungen liegen bei (1,2) und (1,−2), nicht auf der imaginären Achse.",
+            "expectedPerformanceEn": "From z−1=±2i, z=1±2i; both give (z−1)²=(±2i)²=−4. The solutions lie at (1,2) and (1,−2), not on the imaginary axis.",
+            "understandingFocusDe": "Die Verschiebung um 1 wird vor der Wurzelbildung korrekt aufgelöst und nicht als Vorzeichenwechsel behandelt.",
+            "understandingFocusEn": "The shift by 1 is undone correctly before taking square roots, not treated as a sign change."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+      "reason": "The current image correctly maps a+bi to the real 2×2 matrix and preserves multiplication; the cases independently require forward and inverse interpretation. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Die Matrix [[a,−b],[b,a]] wirkt auf R² wie Multiplikation mit a+bi auf C; ihre Spalten zeigen die Bilder von 1 und i, und ihre spezielle Struktur bewahrt die komplexe Multiplikation.",
+            "essentialUnderstandingEn": "The matrix [[a,−b],[b,a]] acts on R² like multiplication by a+bi on C; its columns show the images of 1 and i, and its special form preserves complex multiplication.",
+            "observablePerformanceDe": "Die Person baut die Matrix zu einer komplexen Zahl oder rekonstruiert die Zahl aus einer solchen Matrix und erklärt die Wirkung auf mindestens einen Vektor.",
+            "observablePerformanceEn": "The learner builds the matrix for a complex number or reconstructs the number from such a matrix and explains its action on at least one vector."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von gegebener komplexer Zahl zur Matrix und Vektorwirkung zur Umkehrung: gegebene Matrix als komplexe Zahl, Drehung und Skalierung deuten.",
+            "textEn": "Move from a given complex number to its matrix and vector action, then reverse: interpret a given matrix as a complex number, rotation and scaling."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "forward-matrix",
+            "taskDemandDe": "Bilde für z=2−3i die zugehörige reelle 2×2-Matrix und zeige an (1,0) sowie (0,1), was ihre Spalten bedeuten.",
+            "taskDemandEn": "Form the corresponding real 2×2 matrix for z=2−3i and show on (1,0) and (0,1) what its columns mean.",
+            "expectedPerformanceDe": "M(z)=[[2,3],[−3,2]]; M(z)(1,0)=(2,−3) entspricht z·1, M(z)(0,1)=(3,2) entspricht z·i=3+2i.",
+            "expectedPerformanceEn": "M(z)=[[2,3],[−3,2]]; M(z)(1,0)=(2,−3) corresponds to z·1, M(z)(0,1)=(3,2) corresponds to z·i=3+2i.",
+            "understandingFocusDe": "Das Vorzeichen des Nebendiagonaleintrags und die Bedeutung der Spalten werden geprüft.",
+            "understandingFocusEn": "The off-diagonal sign and meaning of the columns are checked."
+          },
+          {
+            "id": "inverse-matrix",
+            "taskDemandDe": "Eine lineare Abbildung hat die Matrix [[0,−2],[2,0]]. Welche komplexe Zahl repräsentiert sie und was geschieht geometrisch mit dem Punkt (1,−1)?",
+            "taskDemandEn": "A linear map has matrix [[0,−2],[2,0]]. Which complex number does it represent, and what happens geometrically to the point (1,−1)?",
+            "expectedPerformanceDe": "a=0,b=2, also z=2i. Die Abbildung dreht um +90° und streckt um 2; (1,−1) geht nach (2,2), entsprechend 2i(1−i)=2+2i.",
+            "expectedPerformanceEn": "a=0,b=2, so z=2i. The map rotates by +90° and scales by 2; (1,−1) maps to (2,2), matching 2i(1−i)=2+2i.",
+            "understandingFocusDe": "Die komplexe Bedeutung wird aus der Matrix erschlossen statt eine Formel blind einzusetzen.",
+            "understandingFocusEn": "The complex meaning is inferred from the matrix rather than blindly inserting into a formula."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "reason": "The current image correctly places the four fourth roots of unity on the unit circle; new cases vary parity and rotational symmetry. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Die Lösungen von z^n=1 haben Betrag 1 und Argumente 2πk/n für k=0,…,n−1; auf dem Einheitskreis sind sie gleichmäßig verteilt.",
+            "essentialUnderstandingEn": "The solutions of z^n=1 have modulus 1 and arguments 2πk/n for k=0,…,n−1; they are equally spaced on the unit circle.",
+            "observablePerformanceDe": "Die Person bestimmt alle verschiedenen Wurzeln, ordnet ihre Winkel und erklärt die n-fache Symmetrie am Einheitskreis.",
+            "observablePerformanceEn": "The learner determines all distinct roots, orders their angles and explains the n-fold symmetry on the unit circle."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einem ungeraden n mit Dreieckssymmetrie zu geradem n mit zusätzlich gegenüberliegenden Wurzelpaaren wechseln.",
+            "textEn": "Move from odd n with triangular symmetry to even n with additional opposite pairs of roots."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "third-roots",
+            "taskDemandDe": "Bestimme alle Lösungen von z³=1 in Polarform und markiere sie am Einheitskreis; begründe den Winkelabstand.",
+            "taskDemandEn": "Find every solution of z³=1 in polar form and mark them on the unit circle; justify the angular spacing.",
+            "expectedPerformanceDe": "z=e^(2πki/3) für k=0,1,2, also 1, −1/2+√3 i/2, −1/2−√3 i/2; die Winkel 0°,120°,240° ergeben ein gleichseitiges Dreieck.",
+            "expectedPerformanceEn": "z=e^(2πki/3) for k=0,1,2, giving 1, −1/2+√3 i/2, −1/2−√3 i/2; angles 0°,120°,240° form an equilateral triangle.",
+            "understandingFocusDe": "Vollständigkeit der drei verschiedenen Wurzeln und gleichmäßige Winkelteilung werden verbunden.",
+            "understandingFocusEn": "Completeness of the three distinct roots and equal angular spacing are connected."
+          },
+          {
+            "id": "sixth-roots",
+            "taskDemandDe": "Bestimme die Winkel aller Lösungen von z⁶=1 und erkläre, warum jede Wurzel eine gegenüberliegende Wurzel besitzt.",
+            "taskDemandEn": "Find the angles of every solution of z⁶=1 and explain why each root has an opposite root.",
+            "expectedPerformanceDe": "Die Winkel sind 0°,60°,120°,180°,240°,300°; zu k gehört k+3 modulo 6 mit Winkelplus 180°, also die Wurzel −z. Alle sechs liegen auf |z|=1.",
+            "expectedPerformanceEn": "The angles are 0°,60°,120°,180°,240°,300°; k pairs with k+3 modulo 6, adding 180° and yielding −z. All six lie on |z|=1.",
+            "understandingFocusDe": "Die Parität von n führt zu gegenüberliegenden Paaren, nicht nur zu einer anderen Anzahl von Punkten.",
+            "understandingFocusEn": "Even n creates opposite pairs, not merely a different number of points."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+      "reason": "The current product image is algebraically correct; two fresh cases contrast a general product with a conjugate product and require the i² reduction. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Beim Ausmultiplizieren komplexer Zahlen entsteht aus i²=−1 ein reeller Beitrag; das Ergebnis wird eindeutig als Realteil plus Imaginärteil mal i zusammengefasst.",
+            "essentialUnderstandingEn": "When multiplying complex numbers, i²=−1 contributes to the real part; the result is collected uniquely as real part plus imaginary part times i.",
+            "observablePerformanceDe": "Die Person multipliziert alle Terme mit richtigen Vorzeichen, vereinfacht i² und kontrolliert insbesondere bei konjugierten Faktoren das reelle Resultat.",
+            "observablePerformanceEn": "The learner multiplies every term with correct signs, simplifies i² and checks in particular that conjugate factors give a real result."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von zwei beliebigen komplexen Faktoren zum konjugierten Faktorenpaar wechseln, dessen Imaginärteile sich strukturell aufheben.",
+            "textEn": "Move from two general complex factors to a conjugate pair whose imaginary components cancel structurally."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "general-product",
+            "taskDemandDe": "Berechne (2−3i)(−1+4i) und gib Real- und Imaginärteil an; zeige die Rolle von i².",
+            "taskDemandEn": "Compute (2−3i)(−1+4i) and name its real and imaginary parts; show the role of i².",
+            "expectedPerformanceDe": "−2+8i+3i−12i²=10+11i, weil i²=−1; Realteil 10, Imaginärteil 11.",
+            "expectedPerformanceEn": "−2+8i+3i−12i²=10+11i because i²=−1; real part 10, imaginary part 11.",
+            "understandingFocusDe": "Der aus i² entstehende reelle Summand wird mit korrektem Vorzeichen berücksichtigt.",
+            "understandingFocusEn": "The real term arising from i² is included with the correct sign."
+          },
+          {
+            "id": "conjugate-product",
+            "taskDemandDe": "Berechne (−3+2i)(−3−2i) und erkläre, warum das Ergebnis reell und nicht nur zufällig eine ganze Zahl ist.",
+            "taskDemandEn": "Compute (−3+2i)(−3−2i) and explain why the result is real, not merely by coincidence an integer.",
+            "expectedPerformanceDe": "Die gemischten Terme +6i und −6i heben sich auf; 9−(2i)²=9+4=13=|−3+2i|².",
+            "expectedPerformanceEn": "The mixed terms +6i and −6i cancel; 9−(2i)²=9+4=13=|−3+2i|².",
+            "understandingFocusDe": "Die Konjugationsstruktur erklärt das reelle, nichtnegative Produkt.",
+            "understandingFocusEn": "The conjugate structure explains the real, nonnegative product."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "reason": "The current image rationalizes a nonzero complex denominator correctly; cases contrast general and purely imaginary divisors. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Division durch c+di mit c+di≠0 wird durch Multiplikation mit c−di zu einem reellen Nenner c²+d²; der Quotient wird als a+bi vereinfacht.",
+            "essentialUnderstandingEn": "Division by c+di with c+di≠0 uses c−di to make the denominator real, c²+d²; the quotient is simplified to a+bi.",
+            "observablePerformanceDe": "Die Person wählt die Konjugierte zum Nenner, dividiert Zähler und Nenner entsprechend und prüft das Ergebnis durch Rückmultiplikation.",
+            "observablePerformanceEn": "The learner chooses the conjugate of the denominator, transforms numerator and denominator accordingly and checks the result by multiplication back."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einem Nenner mit Real- und Imaginärteil zu einem rein imaginären Nenner wechseln; die algebraische Vereinfachung und Vorzeichenprüfung ändern sich.",
+            "textEn": "Move from a denominator with both real and imaginary parts to a purely imaginary denominator; simplification and sign checking change."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "mixed-denominator",
+            "taskDemandDe": "Berechne (2+i)/(1−2i) in der Form a+bi und prüfe den Quotienten durch Multiplikation mit 1−2i.",
+            "taskDemandEn": "Compute (2+i)/(1−2i) in the form a+bi and check by multiplying the quotient by 1−2i.",
+            "expectedPerformanceDe": "Mit 1+2i erweitert: (2+i)(1+2i)/(1+4)=5i/5=i; i(1−2i)=2+i.",
+            "expectedPerformanceEn": "Multiplying top and bottom by 1+2i gives (2+i)(1+2i)/(1+4)=5i/5=i; i(1−2i)=2+i.",
+            "understandingFocusDe": "Konjugation und Rückprüfung zeigen, dass der reelle Quotiententeil hier 0 ist.",
+            "understandingFocusEn": "Conjugation and reverse checking show that the quotient's real part is 0 here."
+          },
+          {
+            "id": "imaginary-denominator",
+            "taskDemandDe": "Berechne (3−i)/(2i) als a+bi und kontrolliere durch Rückmultiplikation.",
+            "taskDemandEn": "Compute (3−i)/(2i) as a+bi and check by multiplying back.",
+            "expectedPerformanceDe": "Erweitern mit −i ergibt ((3−i)(−i))/2=(−1−3i)/2=−1/2−3i/2. Multiplikation mit 2i liefert 3−i.",
+            "expectedPerformanceEn": "Multiplication by −i/−i gives ((3−i)(−i))/2=(−1−3i)/2=−1/2−3i/2. Multiplying by 2i returns 3−i.",
+            "understandingFocusDe": "Der Sonderfall rein imaginärer Nenner verlangt einen anderen, aber gleichwertigen Konjugationsschritt.",
+            "understandingFocusEn": "The purely imaginary denominator calls for a different but equivalent conjugation step."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c1f08d89-d65a-5041-8ff3-37538f771b8c",
+      "reason": "The current image's remainder chain for 252 and 105 is correct; two fresh nontrivial runs contrast a proper divisor with coprime inputs in reversed order. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Beim euklidischen Algorithmus bleibt der größte gemeinsame Teiler unter (a,b)→(b,a mod b) erhalten; der letzte von null verschiedene Rest ist der ggT, unabhängig von der Reihenfolge der Ausgangszahlen.",
+            "essentialUnderstandingEn": "In Euclid's algorithm, the greatest common divisor is invariant under (a,b)→(b,a mod b); the last nonzero remainder is the gcd, regardless of input order.",
+            "observablePerformanceDe": "Die Person führt Divisionen mit Rest korrekt aus und begründet das Ergebnis anhand der ggT-Invarianz statt nur die letzte Zahl abzulesen.",
+            "observablePerformanceEn": "The learner performs divisions with remainder correctly and justifies the result using gcd invariance rather than merely reading the last number."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von größerer erster Zahl und ggT>1 zu kleinerer erster Zahl, Anfangsquotient null und teilerfremden Eingaben wechseln.",
+            "textEn": "Move from a larger first input and gcd>1 to a smaller first input, initial quotient zero and coprime inputs."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "remainder-chain",
+            "taskDemandDe": "Bestimme ggT(143,52) mit dem euklidischen Algorithmus und erläutere, warum jeder Restschritt den ggT erhält.",
+            "taskDemandEn": "Find gcd(143,52) by Euclid's algorithm and explain why every remainder step preserves the gcd.",
+            "expectedPerformanceDe": "143=2·52+39, 52=1·39+13, 39=3·13+0; ggT=13. Gemeinsame Teiler von a,b teilen a−qb und umgekehrt, daher bleibt die Teilermenge erhalten.",
+            "expectedPerformanceEn": "143=2·52+39, 52=1·39+13, 39=3·13+0; gcd=13. Common divisors of a,b divide a−qb and conversely, so the common-divisor set is preserved.",
+            "understandingFocusDe": "Die Person verbindet Rechnung und Invarianz der gemeinsamen Teiler.",
+            "understandingFocusEn": "The learner connects the calculation with invariance of common divisors."
+          },
+          {
+            "id": "reversed-coprime-inputs",
+            "taskDemandDe": "Bestimme ggT(14,25) mit dem euklidischen Algorithmus in der gegebenen Reihenfolge und erkläre den ersten Schritt sowie die Folgerung aus dem letzten Rest.",
+            "taskDemandEn": "Find gcd(14,25) with Euclid's algorithm in the given input order and explain the first step and the implication of the final remainder.",
+            "expectedPerformanceDe": "14=0·25+14, dann 25=1·14+11, 14=1·11+3, 11=3·3+2, 3=1·2+1 und 2=2·1+0. Der ggT ist 1, also sind die Zahlen teilerfremd; der anfängliche Quotient null vertauscht die Zahlen ohne Änderung des ggT.",
+            "expectedPerformanceEn": "14=0·25+14, then 25=1·14+11, 14=1·11+3, 11=3·3+2, 3=1·2+1 and 2=2·1+0. The gcd is 1, so the numbers are coprime; the initial zero quotient effectively swaps the numbers without changing the gcd.",
+            "understandingFocusDe": "Die vollständige neue Restkette und ihre ggT-Invarianz gelten auch bei umgekehrter Eingabereihenfolge und ggT 1.",
+            "understandingFocusEn": "The complete new remainder chain and its gcd invariant also work with reversed input order and gcd 1."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c371b3f0-dd0e-5263-b616-de6c362f70db",
+      "reason": "The current image correctly back-substitutes 252 and 105; the cases contrast nonunit and unit gcd representations. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Der erweiterte euklidische Algorithmus ersetzt Reste rückwärts, bis der ggT als ganzzahlige Linearkombination der beiden Ausgangszahlen erscheint.",
+            "essentialUnderstandingEn": "The extended Euclidean algorithm substitutes remainders backward until the gcd appears as an integer linear combination of the two original numbers.",
+            "observablePerformanceDe": "Die Person führt Rest- und Rückwärtsschritte aus, gibt ganzzahlige Bézout-Koeffizienten an und verifiziert die Gleichung durch Einsetzen.",
+            "observablePerformanceEn": "The learner performs remainder and back-substitution steps, gives integer Bézout coefficients and verifies the identity by substitution."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einem Paar mit ggT>1 zu einem teilerfremden Paar mit Darstellung der 1 wechseln.",
+            "textEn": "Move from a pair with gcd>1 to a coprime pair represented as a linear combination equal to 1."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "nonunit-gcd",
+            "taskDemandDe": "Bestimme mit dem erweiterten euklidischen Algorithmus ggT(99,78) als Linearkombination von 99 und 78 und prüfe die Koeffizienten.",
+            "taskDemandEn": "Use the extended Euclidean algorithm to write gcd(99,78) as a linear combination of 99 and 78 and check the coefficients.",
+            "expectedPerformanceDe": "99=78+21, 78=3·21+15, 21=15+6, 15=2·6+3; rückwärts folgt 3=14·78−11·99. Prüfung: 1092−1089=3.",
+            "expectedPerformanceEn": "99=78+21, 78=3·21+15, 21=15+6, 15=2·6+3; back-substitution yields 3=14·78−11·99. Check: 1092−1089=3.",
+            "understandingFocusDe": "Die Linearkombination wird aus Restgleichungen abgeleitet und numerisch bestätigt.",
+            "understandingFocusEn": "The linear combination is derived from remainder equations and numerically confirmed."
+          },
+          {
+            "id": "coprime-gcd",
+            "taskDemandDe": "Finde ganze s,t mit 26s+7t=1 mittels Rückwärtseinsetzen; erkläre, was die Darstellung über ggT(26,7) aussagt.",
+            "taskDemandEn": "Find integers s,t with 26s+7t=1 by back-substitution; explain what the representation says about gcd(26,7).",
+            "expectedPerformanceDe": "26=3·7+5, 7=5+2, 5=2·2+1; 1=5−2·2=3·5−2·7=3·26−11·7. Somit s=3,t=−11 und ggT=1.",
+            "expectedPerformanceEn": "26=3·7+5, 7=5+2, 5=2·2+1; 1=5−2·2=3·5−2·7=3·26−11·7. Thus s=3,t=−11 and gcd=1.",
+            "understandingFocusDe": "Das Ziel 1 verlangt den vollständigen Rückwärtsschritt und belegt Teilerfremdheit.",
+            "understandingFocusEn": "The target 1 requires full back-substitution and establishes coprimality."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "16767f5e-5f21-5adb-8365-01b0d64c28f4",
+      "reason": "The current digital Euclid image has a correct pseudocode/spreadsheet trace; new traces require mapping state transitions and checking the mathematical gcd. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Eine digitale Euklid-Implementierung aktualisiert (a,b) zu (b,a mod b) und stoppt bei b=0; Tabellenzeilen oder Schleifenvariablen müssen diese Restgleichungen korrekt abbilden.",
+            "essentialUnderstandingEn": "A digital Euclid implementation updates (a,b) to (b,a mod b) and stops at b=0; spreadsheet rows or loop variables must faithfully represent these remainder equations.",
+            "observablePerformanceDe": "Die Person ordnet Programm- oder Tabellenzustände den Divisionen mit Rest zu und prüft den ausgegebenen ggT unabhängig an den Ausgangszahlen.",
+            "observablePerformanceEn": "The learner matches program or table states to divisions with remainder and independently checks the returned gcd against the inputs."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Vom Schleifenprotokoll mit Zustandsvariablen zur Tabellenkalkulation mit je einer Restzeile wechseln.",
+            "textEn": "Move from a loop trace with state variables to a spreadsheet with one remainder row per step."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "loop-trace",
+            "taskDemandDe": "Eine Schleife berechnet r=a mod b und setzt dann (a,b)=(b,r), solange b≠0. Trage für Start (143,52) alle Zustände ein und deute den Rückgabewert.",
+            "taskDemandEn": "A loop computes r=a mod b and then sets (a,b)=(b,r) while b≠0. List all states from (143,52) and interpret the returned value.",
+            "expectedPerformanceDe": "(143,52)→(52,39)→(39,13)→(13,0); Rückgabe a=13. Die Zustände entsprechen 143=2·52+39, 52=39+13 und 39=3·13.",
+            "expectedPerformanceEn": "(143,52)→(52,39)→(39,13)→(13,0); the returned a is 13. The states match 143=2·52+39, 52=39+13 and 39=3·13.",
+            "understandingFocusDe": "Die Zuweisungsreihenfolge und der Abbruch bei b=0 werden mathematisch gedeutet.",
+            "understandingFocusEn": "Assignment order and stopping at b=0 are interpreted mathematically."
+          },
+          {
+            "id": "spreadsheet-trace",
+            "taskDemandDe": "In einer Tabelle stehen pro Zeile Dividend A, Divisor B und Rest R=A mod B. Fülle die Restspalte für Start A=81,B=57 bis R=0 aus und prüfe das Resultat.",
+            "taskDemandEn": "A spreadsheet records dividend A, divisor B and remainder R=A mod B per row. Fill the remainder column from A=81,B=57 until R=0 and check the result.",
+            "expectedPerformanceDe": "Die Zeilen sind (81,57,24),(57,24,9),(24,9,6),(9,6,3),(6,3,0); letzter positiver Rest und ggT sind 3. Beide Eingaben sind durch 3 teilbar, durch keinen größeren gemeinsamen Teiler.",
+            "expectedPerformanceEn": "Rows are (81,57,24),(57,24,9),(24,9,6),(9,6,3),(6,3,0); the last positive remainder and gcd are 3. Both inputs are divisible by 3 and share no larger divisor.",
+            "understandingFocusDe": "Tabellenbezüge reproduzieren dieselbe ggT-Invarianz, ohne die Schleifenstruktur zu kopieren.",
+            "understandingFocusEn": "Spreadsheet references reproduce the same gcd invariant without copying the loop structure."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d8cbf2bd-2512-5661-b431-4aea7e688912",
+      "reason": "The current image's repeated squaring of 7^5 mod 13 is correct; the cases independently require binary decomposition and a short residue cycle. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Große Potenzen lassen sich durch wiederholtes Quadrieren oder erkannte Restzyklen mit kleinen Zwischenresten modulo n berechnen; Kongruenzen dürfen multipliziert und potenziert werden.",
+            "essentialUnderstandingEn": "Large powers can be computed from repeated squaring or an identified residue cycle using small intermediate remainders modulo n; congruences can be multiplied and exponentiated.",
+            "observablePerformanceDe": "Die Person wählt eine effiziente Zerlegung des Exponenten, zeigt kontrollierbare Restschritte und gibt einen Rest in 0,…,n−1 an.",
+            "observablePerformanceEn": "The learner chooses an efficient exponent decomposition, shows verifiable remainder steps and gives a residue in 0,…,n−1."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von binärer Exponentenzerlegung mit mehreren Potenzen zu einem Modulus mit sehr kurzem quadratischem Restzyklus wechseln.",
+            "textEn": "Move from binary exponent decomposition with several powers to a modulus with a very short square-residue cycle."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "binary-thirteen",
+            "taskDemandDe": "Berechne 7^13 modulo 11 ohne 7 dreizehnmal auszumultiplizieren; zeige die gewählten Potenzen.",
+            "taskDemandEn": "Compute 7^13 modulo 11 without multiplying thirteen copies of 7; show the powers used.",
+            "expectedPerformanceDe": "7²≡5, 7⁴≡5²≡3, 7⁸≡3²≡9 (mod 11). Da 13=8+4+1, ist 7^13≡9·3·7=189≡2 (mod 11).",
+            "expectedPerformanceEn": "7²≡5, 7⁴≡5²≡3, 7⁸≡3²≡9 (mod 11). Since 13=8+4+1, 7^13≡9·3·7=189≡2 (mod 11).",
+            "understandingFocusDe": "Die Zerlegung 13=8+4+1 begründet die Auswahl genau der benötigten Quadrierungen.",
+            "understandingFocusEn": "The decomposition 13=8+4+1 justifies selecting exactly the needed squares."
+          },
+          {
+            "id": "short-cycle",
+            "taskDemandDe": "Berechne 3^20 modulo 8 besonders kurz und erkläre, warum eine vollständige Potenzliste unnötig ist.",
+            "taskDemandEn": "Compute 3^20 modulo 8 especially briefly and explain why a full power list is unnecessary.",
+            "expectedPerformanceDe": "3²=9≡1 (mod 8), also 3^20=(3²)^10≡1^10=1 (mod 8); der Rest ist 1.",
+            "expectedPerformanceEn": "3²=9≡1 (mod 8), so 3^20=(3²)^10≡1^10=1 (mod 8); the residue is 1.",
+            "understandingFocusDe": "Ein erkannter Zyklus ersetzt die allgemeinere Binärzerlegung sachgerecht.",
+            "understandingFocusEn": "A recognized cycle appropriately replaces the more general binary decomposition."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a7c2aa01-4942-597f-a65f-ebb913d0019b",
+      "reason": "The current image correctly checks pairwise coprimality for moduli 3,5,7 and uniqueness modulo 105; cases test the theorem boundary independently. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Bei paarweise teilerfremden Moduln hat jede vorgegebene Restkombination genau eine Lösungsklasse modulo ihrem Produkt; die Teilerfremdheit ist eine echte Voraussetzung der benannten Satzform.",
+            "essentialUnderstandingEn": "For pairwise coprime moduli, every prescribed residue combination has exactly one solution class modulo their product; coprimality is a genuine prerequisite of this stated theorem.",
+            "observablePerformanceDe": "Die Person prüft alle nötigen ggT-Bedingungen, formuliert Existenz und Eindeutigkeit mit dem richtigen Produktmodulus und erkennt einen Fall ohne diese Voraussetzungen.",
+            "observablePerformanceEn": "The learner checks the necessary gcd conditions, states existence and uniqueness with the correct product modulus and recognizes a case lacking the prerequisites."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einem teilerfremden System mit eindeutiger Restklasse zu einem nicht teilerfremden, bereits widersprüchlichen System wechseln.",
+            "textEn": "Move from a coprime system with a unique residue class to a non-coprime system that is already inconsistent."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "coprime-statement",
+            "taskDemandDe": "Prüfe für x≡1 (mod 4) und x≡2 (mod 9) die Voraussetzungen des chinesischen Restsatzes. Was genau sagt der Satz über Lösungen, und gib ein Beispiel.",
+            "taskDemandEn": "Check the assumptions of the Chinese remainder theorem for x≡1 (mod 4) and x≡2 (mod 9). What exactly does it say about solutions, and give an example.",
+            "expectedPerformanceDe": "ggT(4,9)=1; jede Restkombination besitzt genau eine Klasse modulo 36. x=29 erfüllt beide Kongruenzen; alle Lösungen sind x≡29 (mod 36).",
+            "expectedPerformanceEn": "gcd(4,9)=1; every residue combination has exactly one class modulo 36. x=29 satisfies both congruences; all solutions are x≡29 (mod 36).",
+            "understandingFocusDe": "Die Person unterscheidet eine Lösung von der eindeutig bestimmten Restklasse modulo dem Produkt.",
+            "understandingFocusEn": "The learner distinguishes one solution from the unique residue class modulo the product."
+          },
+          {
+            "id": "noncoprime-boundary",
+            "taskDemandDe": "Für x≡1 (mod 6) und x≡2 (mod 9): Prüfe die Voraussetzung des Satzes und begründe direkt, ob eine Lösung existiert.",
+            "taskDemandEn": "For x≡1 (mod 6) and x≡2 (mod 9), check the theorem's prerequisite and justify directly whether a solution exists.",
+            "expectedPerformanceDe": "ggT(6,9)=3≠1, daher gilt die paarweise-teilerfremde Satzform nicht. Die erste Bedingung erzwingt x≡1 (mod 3), die zweite x≡2 (mod 3); das ist widersprüchlich, also gibt es keine Lösung.",
+            "expectedPerformanceEn": "gcd(6,9)=3≠1, so the pairwise-coprime theorem does not apply. The first condition implies x≡1 (mod 3), the second x≡2 (mod 3); they conflict, so no solution exists.",
+            "understandingFocusDe": "Die fehlende Voraussetzung wird mit einer mathematischen Konsequenz statt nur mit einem Etikett erklärt.",
+            "understandingFocusEn": "The failed prerequisite is connected to a mathematical consequence, not merely labeled."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "701b3942-9f70-548e-9d02-a34b7e64aa17",
+      "reason": "The current image's three-modulus construction and congruence checks are correct; cases require both the selector construction and uniqueness, then transfer to three different moduli. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Für paarweise teilerfremde m_i erzeugen M_i=M/m_i und ein Inverses y_i von M_i modulo m_i Selektoren e_i=M_i y_i, die modulo m_i gleich 1 und modulo allen anderen m_j gleich 0 sind; daraus folgen Konstruktion und Eindeutigkeit modulo M.",
+            "essentialUnderstandingEn": "For pairwise coprime m_i, M_i=M/m_i and an inverse y_i of M_i modulo m_i produce selectors e_i=M_i y_i that equal 1 modulo m_i and 0 modulo all other m_j; this establishes construction and uniqueness modulo M.",
+            "observablePerformanceDe": "Die Person begründet die Selektoreigenschaft, konstruiert x=Σa_i e_i und zeigt, dass zwei Lösungen sich um ein Vielfaches von M unterscheiden.",
+            "observablePerformanceEn": "The learner justifies the selector property, constructs x=Σa_i e_i and shows that any two solutions differ by a multiple of M."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Vom symbolisch begründeten Zwei-Modul-Fall zu drei Moduln mit mehreren modularen Inversen wechseln.",
+            "textEn": "Move from a symbolically justified two-modulus case to three moduli with several modular inverses."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-modulus-proof",
+            "taskDemandDe": "Für teilerfremde m₁,m₂ erkläre, warum e₁=m₂·(m₂⁻¹ mod m₁) und e₂=m₁·(m₁⁻¹ mod m₂) die beiden Reste auswählen. Konstruiere dann x für m₁=3,m₂=5 und Reste 2,4; begründe Eindeutigkeit.",
+            "taskDemandEn": "For coprime m₁,m₂ explain why e₁=m₂·(m₂⁻¹ mod m₁) and e₂=m₁·(m₁⁻¹ mod m₂) select the two residues. Then construct x for m₁=3,m₂=5 and residues 2,4; justify uniqueness.",
+            "expectedPerformanceDe": "e₁ ist modulo 3 gleich 1 und modulo 5 gleich 0, e₂ umgekehrt. Hier e₁=5·2=10, e₂=3·2=6; x=2·10+4·6=44≡14 (mod 15). Jede Differenz zweier Lösungen ist durch 3 und 5, also durch 15 teilbar.",
+            "expectedPerformanceEn": "e₁ equals 1 modulo 3 and 0 modulo 5, and e₂ conversely. Here e₁=5·2=10, e₂=3·2=6; x=2·10+4·6=44≡14 (mod 15). The difference of two solutions is divisible by 3 and 5, hence by 15.",
+            "understandingFocusDe": "Die allgemeine Selektorbegründung und die Eindeutigkeit tragen das Zahlenbeispiel.",
+            "understandingFocusEn": "The general selector argument and uniqueness support the numerical example."
+          },
+          {
+            "id": "three-modulus-construction",
+            "taskDemandDe": "Konstruiere mit Hilfsprodukten und Inversen eine Lösung zu x≡1 (mod 4), x≡2 (mod 5), x≡3 (mod 7). Erkläre, weshalb jeder Summand genau einen Rest beeinflusst.",
+            "taskDemandEn": "Construct a solution using auxiliary products and inverses for x≡1 (mod 4), x≡2 (mod 5), x≡3 (mod 7). Explain why each summand affects exactly one residue.",
+            "expectedPerformanceDe": "M=140; M₁=35 mit Inverser 3 mod 4 gibt e₁=105; M₂=28 mit Inverser 2 mod 5 gibt e₂=56; M₃=20 mit Inverser 6 mod 7 gibt e₃=120. x=105+2·56+3·120=577≡17 (mod 140); 17 hat die Reste 1,2,3. Jeder e_i enthält alle fremden Moduln als Faktoren.",
+            "expectedPerformanceEn": "M=140; M₁=35 with inverse 3 mod 4 gives e₁=105; M₂=28 with inverse 2 mod 5 gives e₂=56; M₃=20 with inverse 6 mod 7 gives e₃=120. x=105+2·56+3·120=577≡17 (mod 140); 17 has residues 1,2,3. Each e_i contains all other moduli as factors.",
+            "understandingFocusDe": "Die Konstruktion wird auf drei Selektoren übertragen und nicht nur durch Probieren gefunden.",
+            "understandingFocusEn": "The construction transfers to three selectors rather than finding a number by trial."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e4eaff7f-1e3d-54ea-8a59-02864948b5eb",
+      "reason": "The current image's x≡2 mod 3, x≡3 mod 5 example correctly yields 8 mod 15; new cases vary from a small residue list to substitution with a contextual period. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Simultane Kongruenzen mit paarweise teilerfremden Moduln bestimmen eine Klasse modulo dem Produkt; eine gefundene Zahl muss jeden Einzelrest erfüllen.",
+            "essentialUnderstandingEn": "Simultaneous congruences with pairwise coprime moduli determine a class modulo the product; a proposed number must satisfy every individual residue.",
+            "observablePerformanceDe": "Die Person wählt ein korrektes Lösungsverfahren, gibt die vollständige Restklasse an und prüft alle Ausgangskongruenzen.",
+            "observablePerformanceEn": "The learner chooses a correct solution method, gives the full residue class and checks every original congruence."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von direktem Listenvergleich kleiner Restklassen zur algebraischen Substitution in eine Zeitperiodenaufgabe wechseln.",
+            "textEn": "Move from directly comparing short residue lists to algebraic substitution in a time-period problem."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "listing-small",
+            "taskDemandDe": "Löse x≡1 (mod 3), x≡4 (mod 5) und gib alle ganzzahligen Lösungen in einer Kongruenz an.",
+            "taskDemandEn": "Solve x≡1 (mod 3), x≡4 (mod 5) and give all integer solutions as one congruence.",
+            "expectedPerformanceDe": "Die Kandidaten 1,4,7,10,13,… modulo 3 enthalten 4, das auch Rest 4 modulo 5 hat. Somit x≡4 (mod 15); ggT(3,5)=1 und die Klasse wiederholt sich nach 15.",
+            "expectedPerformanceEn": "The candidates 1,4,7,10,13,… modulo 3 include 4, which also has residue 4 modulo 5. Thus x≡4 (mod 15); gcd(3,5)=1 and the class repeats every 15.",
+            "understandingFocusDe": "Die vollständige Lösungsklasse wird aus beiden Restbedingungen bestimmt.",
+            "understandingFocusEn": "The complete solution class is determined from both residue conditions."
+          },
+          {
+            "id": "clock-periods",
+            "taskDemandDe": "Ein Ereignis tritt bei Minuten x≡1 (mod 4) und zugleich x≡2 (mod 7) auf. Bestimme die erste nichtnegative passende Minute und die Wiederholungsperiode durch Substitution.",
+            "taskDemandEn": "An event occurs at minutes x≡1 (mod 4) and simultaneously x≡2 (mod 7). Find the first nonnegative matching minute and recurrence period by substitution.",
+            "expectedPerformanceDe": "Setze x=1+4k; dann 4k≡1 (mod 7), also k≡2 (mod 7). Daher x=9+28t; erste nichtnegative Minute 9, Periode 28. 9 mod4=1 und 9 mod7=2.",
+            "expectedPerformanceEn": "Set x=1+4k; then 4k≡1 (mod 7), so k≡2 (mod 7). Hence x=9+28t; first nonnegative minute 9, period 28. 9 mod4=1 and 9 mod7=2.",
+            "understandingFocusDe": "Die abstrakte Restklasse wird als Zeitpunkt und Wiederholungsperiode gedeutet.",
+            "understandingFocusEn": "The abstract residue class is interpreted as a time and recurrence period."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "474fe553-d868-50d9-a19b-761e64f21c0d",
+      "reason": "The current image's residue-permutation proof for prime p is mathematically coherent; profiles require a general proof and a separate prerequisite/application case. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Für eine Primzahl p und p∤a permutiert Multiplikation mit a die von null verschiedenen Restklassen; deren Produkt kann gekürzt werden und liefert a^(p−1)≡1 (mod p).",
+            "essentialUnderstandingEn": "For prime p and p∤a, multiplication by a permutes the nonzero residue classes; their product can be cancelled to yield a^(p−1)≡1 (mod p).",
+            "observablePerformanceDe": "Die Person formuliert alle Voraussetzungen, beweist die Permutation und rechtfertigt die Kürzung; in einer Anwendung prüft sie p∤a und deutet eine Gegenlage.",
+            "observablePerformanceEn": "The learner states all assumptions, proves the permutation and justifies cancellation; in an application the learner checks p∤a and interprets a boundary case."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Vom allgemeinen Permutationsbeweis mit Restklassen zur konkreten Exponentenreduktion und einem Fall mit verletzter Teilerfremdheit wechseln.",
+            "textEn": "Move from the general residue-permutation proof to concrete exponent reduction and a case where coprimality fails."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "permutation-proof",
+            "taskDemandDe": "Beweise für prim p und p∤a den kleinen Satz von Fermat mit den nichtnulligen Restklassen 1,…,p−1. Erkläre ausdrücklich, warum das Kürzen von (p−1)! erlaubt ist.",
+            "taskDemandEn": "Prove Fermat's little theorem for prime p and p∤a using nonzero residues 1,…,p−1. Explicitly explain why cancelling (p−1)! is allowed.",
+            "expectedPerformanceDe": "Aus ar≡as (mod p) folgt wegen Invertierbarkeit von a, dass r≡s; die Produkte a·1,…,a·(p−1) sind eine Permutation. Also a^(p−1)(p−1)!≡(p−1)!; p teilt keinen Faktor von (p−1)!, daher ist das Produkt invertierbar und a^(p−1)≡1.",
+            "expectedPerformanceEn": "From ar≡as (mod p), invertibility of a gives r≡s; the products a·1,…,a·(p−1) permute the residues. Hence a^(p−1)(p−1)!≡(p−1)!; p divides no factor of (p−1)!, so that product is invertible and a^(p−1)≡1.",
+            "understandingFocusDe": "Der Beweis gilt allgemein und erklärt beide Invertierbarkeitsstellen.",
+            "understandingFocusEn": "The proof is general and explains both uses of invertibility."
+          },
+          {
+            "id": "condition-and-power",
+            "taskDemandDe": "Nutze den Satz, um 2^23 modulo 11 zu bestimmen. Prüfe anschließend, ob die Aussage a^10≡1 (mod 11) für a=11 gilt und begründe die Antwort.",
+            "taskDemandEn": "Use the theorem to find 2^23 modulo 11. Then check whether a^10≡1 (mod 11) holds for a=11 and justify the answer.",
+            "expectedPerformanceDe": "11 ist prim und 11∤2, also 2^10≡1; 23=2·10+3 und 2^23≡2³=8 (mod 11). Für a=11 ist 11^10≡0, nicht 1, da die Voraussetzung 11∤a fehlt.",
+            "expectedPerformanceEn": "11 is prime and 11∤2, so 2^10≡1; 23=2·10+3 and 2^23≡2³=8 (mod 11). For a=11, 11^10≡0, not 1, because 11∤a fails.",
+            "understandingFocusDe": "Die Voraussetzung wird vor dem Einsatz geprüft und ihre Bedeutung am Gegenfall erklärt.",
+            "understandingFocusEn": "The assumption is checked before use and its significance explained in a contrasting case."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
+      "reason": "The current image's toy RSA parameters p=5,q=11,e=3,d=27 and message 7 are consistent; cases contrast coprime and noncoprime messages under the same toy key. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "RSA nutzt öffentlich (n,e) und privat d mit ed≡1 modulo φ(n); Potenzieren modulo n verschlüsselt und entschlüsselt, und für p,q als Primfaktoren erklärt die Kongruenz der Exponenten die Rückkehr der Nachricht.",
+            "essentialUnderstandingEn": "RSA uses public (n,e) and private d with ed≡1 modulo φ(n); modular exponentiation encrypts and decrypts, and for prime factors p,q the exponent congruence explains recovery of the message.",
+            "observablePerformanceDe": "Die Person benennt öffentliche und private Größen, berechnet eine kleine Verschlüsselung und begründet die Rückgewinnung über geeignete modulare Beziehungen statt bloß zu behaupten, sie funktioniere.",
+            "observablePerformanceEn": "The learner names public and private quantities, encrypts a small message and explains recovery through appropriate modular relations rather than merely asserting that it works."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer zur Moduluszahl teilerfremden Nachricht mit Euler-Begründung zu einer Nachricht mit gemeinsamem Primfaktor und CRT-Begründung wechseln.",
+            "textEn": "Move from a message coprime to the modulus with an Euler-style argument to a message sharing a prime factor and a CRT-style argument."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "toy-coprime-message",
+            "taskDemandDe": "Für p=5,q=11,n=55, φ(n)=40, e=3 und d=27: Welche Daten sind öffentlich, welche privat? Verschlüssele m=7 und erkläre plausibel, warum Entschlüsselung zurückführt.",
+            "taskDemandEn": "For p=5,q=11,n=55, φ(n)=40, e=3 and d=27: which data are public and which private? Encrypt m=7 and plausibly explain why decryption recovers it.",
+            "expectedPerformanceDe": "Öffentlich sind n=55,e=3, privat d=27 (und die Faktorisierung). c=7³ mod55=13; ed=81=1+2·40, und ggT(7,55)=1, daher 7^81≡7 mod55. Somit entschlüsselt c^27 wieder 7.",
+            "expectedPerformanceEn": "The public values are n=55,e=3, the private value is d=27 (and the factorization). c=7³ mod55=13; ed=81=1+2·40, and gcd(7,55)=1, so 7^81≡7 mod55. Thus decrypting c^27 returns 7.",
+            "understandingFocusDe": "Schlüsselrollen, modularer Rest und die Voraussetzung für das Euler-Argument werden verbunden.",
+            "understandingFocusEn": "Key roles, modular residue and the assumption for the Euler argument are connected."
+          },
+          {
+            "id": "toy-shared-factor",
+            "taskDemandDe": "Unter demselben Schlüssel sei m=11. Verschlüssele und begründe trotz ggT(11,55)>1 über die Moduln 5 und 11, ob die Entschlüsselung m zurückgibt.",
+            "taskDemandEn": "With the same key, let m=11. Encrypt and explain via moduli 5 and 11, despite gcd(11,55)>1, whether decryption returns m.",
+            "expectedPerformanceDe": "11³=1331≡11 (mod 55), also c=11. Modulo 11 sind Nachricht und jede positive Potenz 0; modulo 5 ist 11≡1 und bleibt 1. Daher hat c^27 dieselben Reste wie 11 modulo 5 und 11 und ist folglich 11 modulo 55.",
+            "expectedPerformanceEn": "11³=1331≡11 (mod 55), so c=11. Modulo 11, the message and every positive power are 0; modulo 5, 11≡1 stays 1. Hence c^27 has the same residues as 11 modulo 5 and 11, and thus is 11 modulo 55.",
+            "understandingFocusDe": "Die Rückgewinnung wird ohne unzulässiges Euler-Kürzen bei einer nicht teilerfremden Nachricht erklärt.",
+            "understandingFocusEn": "Recovery is explained without invalid Euler cancellation for a noncoprime message."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d32f599e-3b38-5557-8ad3-565bcd99f4c6",
+      "reason": "The current image's trial-division examples are correct; the canonical goal also permits Miller-Rabin, used here to contrast a compositeness witness with a passing base. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Beim Miller-Rabin-Test wird n−1=2^s d mit ungeradem d zerlegt; für eine Basis a entscheidet die Folge a^d, a^(2d),… modulo n, ob a ein Kompositheitszeuge ist oder n diese Runde besteht. Eine bestandene einzelne Runde ist kein allgemeiner Primzahlbeweis.",
+            "essentialUnderstandingEn": "In Miller–Rabin, n−1=2^s d with odd d; for a base a, the sequence a^d, a^(2d),… modulo n decides whether a witnesses compositeness or n passes that round. Passing a single round is not a general proof of primality.",
+            "observablePerformanceDe": "Die Person berechnet die relevanten modularen Potenzen, erklärt die beiden möglichen Testergebnisse und unterscheidet sicheren Kompositheitsnachweis von einem bestandenen Testlauf.",
+            "observablePerformanceEn": "The learner computes the relevant modular powers, explains the two possible outcomes and distinguishes a certain compositeness witness from a passed test round."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einem Zeugen, der Kompositheit sicher nachweist, zu einer Basis mit −1 in der Quadrierungskette und nur bestandenem Testlauf wechseln.",
+            "textEn": "Move from a witness that proves compositeness to a base whose squaring chain reaches −1 and merely passes that test round."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "witness-twentyone",
+            "taskDemandDe": "Führe eine Miller-Rabin-Runde für n=21 mit Basis a=2 aus. Zerlege n−1 und entscheide anhand der nötigen Restfolge.",
+            "taskDemandEn": "Run one Miller–Rabin round for n=21 with base a=2. Decompose n−1 and decide from the required residue sequence.",
+            "expectedPerformanceDe": "20=2²·5. 2^5=32≡11 (mod21), nicht 1 oder −1=20; einmal quadriert 11²=121≡16, ebenfalls nicht 20. Die Basis 2 ist ein Zeuge: 21 ist sicher zusammengesetzt.",
+            "expectedPerformanceEn": "20=2²·5. 2^5=32≡11 (mod21), neither 1 nor −1=20; squaring once gives 11²=121≡16, also not 20. Base 2 is a witness: 21 is certainly composite.",
+            "understandingFocusDe": "Der Testzweig 'Zeuge' wird aus den tatsächlichen modularen Resten und s=2 abgeleitet.",
+            "understandingFocusEn": "The witness branch is derived from actual modular residues and s=2."
+          },
+          {
+            "id": "passing-seventeen",
+            "taskDemandDe": "Führe eine Runde für n=17 mit Basis a=3 aus. Was darf man nach diesem Lauf aussagen und was folgt daraus für beliebige große n nicht?",
+            "taskDemandEn": "Run a round for n=17 with base a=3. What may be concluded from this round and what would not follow for an arbitrary large n?",
+            "expectedPerformanceDe": "16=2⁴·1; die Kette 3,9,13,16 modulo17 erreicht −1=16. n besteht diese Basisrunde. Für ein beliebiges großes n beweist eine einzelne bestandene Basisrunde allein keine Primzahligkeit.",
+            "expectedPerformanceEn": "16=2⁴·1; the chain 3,9,13,16 modulo 17 reaches −1=16. n passes this base round. For an arbitrary large n, one passed base round alone does not prove primality.",
+            "understandingFocusDe": "Bestandenes Testergebnis wird korrekt schwächer als ein sicherer Kompositheitszeuge interpretiert.",
+            "understandingFocusEn": "A passing test outcome is interpreted as weaker than a certain compositeness witness."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1c1754b7-2cd3-5635-824d-ce93f7b99514",
+      "reason": "The current image's difference-of-squares factorization of 91 is correct; cases use an immediate square and a delayed square to test the method's mechanism. The two independent cases are fresh AI-authored evidence prompts for this exact goal; this is not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Das Differenz-von-Quadraten-Verfahren sucht x²−N=y² und gewinnt aus N=(x−y)(x+y) nichttriviale Faktoren; mehrere x können geprüft werden, bis ein Quadrat entsteht.",
+            "essentialUnderstandingEn": "The difference-of-squares method seeks x²−N=y² and obtains nontrivial factors from N=(x−y)(x+y); several x values may need testing before a square occurs.",
+            "observablePerformanceDe": "Die Person erläutert die Wahl von x ab ceil√N, prüft Quadratreste und bestätigt die Faktoren durch Multiplikation oder ggT.",
+            "observablePerformanceEn": "The learner explains starting x at ceil√N, checks square differences and verifies the factors by multiplication or gcd."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einem bereits beim ersten x gefundenen Quadrat zu einer Suche mit mehreren Fehlschritten und späterem Quadrattreffer wechseln.",
+            "textEn": "Move from a square found at the first x to a search with several unsuccessful candidates before a later square appears."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "immediate-square",
+            "taskDemandDe": "Erläutere an N=91 das Differenz-von-Quadraten-Verfahren: Beginne bei ceil√N und bestimme die Faktoren.",
+            "taskDemandEn": "Explain the difference-of-squares method for N=91: start at ceil√N and find the factors.",
+            "expectedPerformanceDe": "ceil√91=10; 10²−91=9=3². Deshalb 91=(10−3)(10+3)=7·13. Beide Faktoren sind größer als 1 und kleiner als 91.",
+            "expectedPerformanceEn": "ceil√91=10; 10²−91=9=3². Hence 91=(10−3)(10+3)=7·13. Both factors are greater than 1 and less than 91.",
+            "understandingFocusDe": "Das gefundene Quadrat wird als gültige nichttriviale Faktorisierung gedeutet.",
+            "understandingFocusEn": "The square found is interpreted as a valid nontrivial factorization."
+          },
+          {
+            "id": "delayed-square",
+            "taskDemandDe": "Faktorisiere N=95 mit demselben Verfahren, aber zeige die Prüfung der x-Werte ab ceil√95 bis zum ersten Quadrat und erkläre, warum man nicht beim ersten Nichtquadrat aufhört.",
+            "taskDemandEn": "Factor N=95 by the same method, but show the x values checked from ceil√95 until the first square and explain why one does not stop at the first nonsquare.",
+            "expectedPerformanceDe": "x=10 liefert 100−95=5, x=11 liefert 121−95=26, beide keine Quadrate. x=12 liefert 144−95=49=7²; daher 95=(12−7)(12+7)=5·19.",
+            "expectedPerformanceEn": "x=10 gives 100−95=5, x=11 gives 121−95=26, neither a square. x=12 gives 144−95=49=7²; therefore 95=(12−7)(12+7)=5·19.",
+            "understandingFocusDe": "Die Suche über mehrere Kandidaten und die Begründung des ersten erfolgreichen Quadrats zeigen das Verfahren statt Musterkopie.",
+            "understandingFocusEn": "Searching several candidates and justifying the first successful square demonstrate the method rather than copying a pattern."
+          }
+        ]
+      }
+    }
+  ]
+}

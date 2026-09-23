@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "independent-ai-visual-candidate-review",
+  "reviewId": "math-m7-matrix-notation-v3-independent-b-4c494716-567b-59c2-855c-6ea45635c666",
+  "reviewedAt": "2026-09-21T22:47:54Z",
+  "reviewer": "Codex / math_repaired12_blind_b",
+  "model": "Codex; exact serving model identifier not exposed",
+  "independenceGroupId": "math-m7-matrix-notation-v3-independent-b-20260922",
+  "reviewAuthority": "ai_candidate",
+  "status": "candidate",
+  "humanApproval": false,
+  "goalId": "4c494716-567b-59c2-855c-6ea45635c666",
+  "goalTitleDe": "Geometrische Abbildungen mit Matrizen beschreiben",
+  "goalDescriptionDe": "Die lernende Person kann geometrische Abbildungen, etwa Schattenwürfe oder Projektionen, mithilfe von Matrizen beschreiben und die Matrixwirkung fachsprachlich deuten.",
+  "goalDescriptionEn": "The learner can describe geometric mappings, such as shadows or projections, using matrices and explain the matrix action precisely.",
+  "goalFingerprint": "sha256:08e7eab9a182521885efa834bbabd5dd5681cbd6ba866a924f3e14df7ca9fe3b",
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/4c494716-567b-59c2-855c-6ea45635c666/candidate-v3.png",
+  "assetSha256": "sha256:5cd7bfdf824778a737715abfc82f3841c556d4e3cb69c557de96c24d1152baee",
+  "width": 1536,
+  "height": 1024,
+  "generation": {
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "tool": "image_gen__imagegen",
+    "exactServingModel": "not exposed",
+    "prompt": {
+      "path": "correction-prompt-v3.md",
+      "sha256": "sha256:22a7debcb198ac8809d11b3af627a5b17e4a9087f41f04a84f9021bf3f5564fb"
+    },
+    "reference": {
+      "path": "rejected-geometry-v1.png",
+      "sha256": "sha256:24585ff03297eee40a906089a28b4ad4731d097ad7c8f2f0fe9332e2600fe550",
+      "actuallyViewedBeforeEditing": true
+    },
+    "metadataPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/4c494716-567b-59c2-855c-6ea45635c666/generation-and-root-review-v3.json"
+  },
+  "generationMetadataProvenance": "Provider/tool/prompt/reference Angaben aus der Autorenquittung, erst nach eigener Bildbeurteilung ausgelesen. Deren rootReview-Feld wurde nicht als Beweis verwendet. Die frühere Referenzabbildung wurde in diesem Auftrag nicht neu geprüft; actuallyViewedBeforeEditing ist die Autorenangabe, keine Aussage über diesen Reviewer.",
+  "actualVisualInspection": {
+    "performed": true,
+    "tool": "view_image",
+    "detail": "original",
+    "inspectedAsset": "candidate-v3.png",
+    "width": 1536,
+    "height": 1024
+  },
+  "independence": "Eigenständige Sichtprüfung und Nachrechnung des aktuellen Rasters. Der Auftrag nannte Roots vorläufige Einschätzung und die P′-Frage; deshalb keine Behauptung vollständiger Blindheit gegenüber dem Auftraggeber.",
+  "verdict": "keep",
+  "summaryDe": "Fachlich eindeutige oblique Parallelprojektion auf die x-Achse. P′ ist der Gitterstelle 5 zugeordnet; die verbleibende geringe Markermitten-Abweichung ist im Verhältnis zum großen Punktzeichen Zeichentoleranz, kein fortbestehender falscher Koordinatenwert.",
+  "mathematicalChecks": [
+    "S=[[1,1],[0,0]] sendet (x,y) auf (x+y,0). S(2,3)=(5,0) und S(−1,2)=(1,0); beide ausgeschriebenen Rechnungen sind richtig.",
+    "Die Verschiebung vom Urbild zum Bild beträgt (y,−y)=y·(1,−1). Für P sind das (3,−3), für Q (2,−2); beide Projektionen verlaufen in derselben Richtung.",
+    "S²=S, S(x,0)=(x,0) und S(1,−1)=0. Das ist tatsächlich eine Parallelprojektion auf die x-Achse, nicht bloß eine beliebige Matrix mit korrekten Einzelwerten.",
+    "Die bildlich verwendeten Höhen sind positiv; der Schattenvergleich und die Verschiebung nach rechts gelten für diese dargestellten Punkte. Die Formel enthält auch die allgemeine vorzeichenbehaftete Wirkung."
+  ],
+  "visualGeometryChecks": [
+    "P ist sichtbar bei x=2,y=3 und Q bei x=−1,y=2 eingezeichnet; Q′ sitzt am x=1-Punkt auf y=0.",
+    "P′ liegt auf der x-Achse am Bereich der fünften positiven Gitterstelle. Seine Mitte ist leicht rechts der 5er-Linie, aber der sichtbare große Marker berührt/überdeckt die Linie; zur nächsten Gitterstelle 6 verbleibt deutlich mehr Abstand als ein Markerdurchmesser.",
+    "Die verbleibende Abweichung der P′-Markermitte liegt visuell etwa in der Größenordnung eines Markerradius, nicht einer halben Gittereinheit. Diese Aussage ist eine Sichtbeurteilung, keine behauptete pixelgenaue Vermessung.",
+    "Beide gestrichelten Projektionspfeile führen nach rechts unten zu den zugehörigen Achsenbildpunkten und sind innerhalb der illustrierten Strich-/Markertoleranz parallel. Es gibt keinen separaten konkurrierenden Endpunkt zwischen 5 und 6.",
+    "Die x-/y-Achsen haben unterschiedliche Bildskalierungen; deswegen muss die Richtung (1,−1) auf dem Raster nicht als exakt 45°-Bildwinkel erscheinen. Maßgeblich sind die Gitterkomponenten.",
+    "Die Zuordnung P′(5|0) wird durch den gezeichneten Bereich und die Rechnung gemeinsam getragen. Es ist nicht bloß ein korrektes Zahlenlabel auf einem eindeutig anders gelegenen Punkt."
+  ],
+  "legibilityAndFit": "Alle Matrixeinträge, Koordinaten, negativen Zeichen und Erklärungen sind bei Originalauflösung klar lesbar. Die freundliche Schatten-/Sonnendarstellung unterstützt das AB2-Ziel. Kein Stilfeinschliff nötig.",
+  "limits": "KEEP trotz kleiner Raster-Zeichentoleranz, nicht wegen einer Ausnahme von fachlicher Richtigkeit. Kein Anspruch pixelgenauer CAD-Geometrie. Keine QA-/Canonical-Freigabe durchgeführt.",
+  "blockers": [],
+  "requiredChanges": [],
+  "scope": "Nur Kandidatenreview. Keine Rasterbearbeitung, keine Canonical-/View-/QA-/Registryänderung; kein Human- oder Runtime-/M7-Claim."
+}

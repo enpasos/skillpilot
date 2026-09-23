@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-d20-current-keepkeep-15-20260923-v1-resolution-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+  "goal": {
+    "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:49deecda41233341f3f54d507dda7f828b8276dd8bfa02e5f12b953e84f7b2e5",
+    "pageFingerprint": "sha256:68414ebc6ce4598e98a8cda3abe869dd7d53c1dd6961a3695b00b449f0c30c77",
+    "goalReviewContextFingerprint": "sha256:734ebae4e63c16c050585758592daad3724299f5edfc0e99549dccb3c26c42d4",
+    "finalText": {
+      "titleDe": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+      "titleEn": "Describe vectors as position, direction, and displacement vectors in space",
+      "descriptionDe": "Die lernende Person kann Vektoren im Raum als Verschiebungs-, Orts- oder Richtungsvektoren darstellen, ihre Komponenten in kartesischen Koordinatensystemen angeben und ihre geometrische Bedeutung fachsprachlich deuten.",
+      "descriptionEn": "The learner can represent vectors in space as displacement, position, or direction vectors, state their components in Cartesian coordinate systems, and interpret their geometric meaning using correct terminology."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-a",
+      "campaignDigest": "sha256:a32c87a858d1763373a9a4d0b13503a58a95e8cd80a71acdc0fb833dedc8f29d",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-a",
+      "reviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+      "goalReviewContextFingerprint": "sha256:734ebae4e63c16c050585758592daad3724299f5edfc0e99549dccb3c26c42d4",
+      "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-a.batch-001",
+      "runId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "runManifestDigest": "sha256:ba8c8d6bcd58c1248aaf2948e165fac5662a869d13ef4c42db5eecd34ca0a2ba",
+      "resultsDigest": "sha256:f907604150de8c849a59b3948ff7b3d624f74be941bb57858f0dedd844a33fac",
+      "recordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-11",
+      "recordDigest": "sha256:6be343d29f7353121b945da9bc4b03c9bf9d4221d81ff27e578dd5008f3f1fe3"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-b",
+      "campaignDigest": "sha256:07a42a60dd96534a47d4f3197ec3df670bebece24c014f88071955925b598b2f",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-b",
+      "reviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+      "goalReviewContextFingerprint": "sha256:734ebae4e63c16c050585758592daad3724299f5edfc0e99549dccb3c26c42d4",
+      "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-b.batch-001",
+      "runId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "runManifestDigest": "sha256:59a47457640696053e3d3d67654db5cc857cf910bacbef26728a1ca103859cf3",
+      "resultsDigest": "sha256:93a21b94dc0c67c56803749c1d062a8bd95f38751f17706fe8f51ba2d95e8dd0",
+      "recordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "recordDigest": "sha256:78a8d3956a7850793c435a968e04dac4a0f48f22d28586740fc987ea758659a2"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:1b678c12f71ed2ce1eae62e741b671103f25b9b58a3312c78f5e2e0488768fae"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-m7-d20-current-keepkeep-15-20260923-v1-synthesis-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex, informed AI synthesis by prior Round B reviewer; no human attestation",
+    "synthesizedAt": "2026-09-23T00:23:16.000Z",
+    "rationaleDe": "Beide Runden sind KEEP. B unterscheidet Ursprung-Punkt, Punkt-Punkt und einen von null verschiedenen Richtungsvektor auch bei Bezugswechsel; A bestätigt die verschiedenen Rollen gleicher Komponenten. Die zweite Kette vermeidet eine Richtungsaussage für den Nullvektor.",
+    "rationaleEn": "Both rounds are KEEP. B distinguishes origin-to-point, point-to-point, and nonzero direction vectors even when the reference changes; A confirms that identical components can have different roles. The second chain avoids assigning a direction to the zero vector.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der Ortsvektor verbindet O mit einem Punkt, der Verschiebungsvektor zwei Punkte, und ein von null verschiedener Richtungsvektor beschreibt eine Richtung unabhängig von seiner Pfeilposition; Komponenten hängen am gewählten kartesischen Bezug.",
+      "essentialUnderstandingEn": "A position vector runs from O to a point, a displacement vector joins two points, and a nonzero direction vector describes a direction independently of arrow placement; components depend on the chosen Cartesian frame.",
+      "observablePerformanceDe": "Die Person bildet zu räumlichen Punkten OA und AB=B−A, gibt Komponenten an und erklärt, wann derselbe Koordinatenvektor eine Orts-, Verschiebungs- oder Richtungsrolle hat.",
+      "observablePerformanceEn": "The learner forms OA and AB=B−A for spatial points, gives their components, and explains when the same coordinate vector serves as a position, displacement, or direction vector.",
+      "transferExpectationDe": "Nach Verschiebung beider Endpunkte oder nach Änderung des Ursprungs erkennt die Person, welche Vektorbedeutung und Komponenten gleich bleiben und welche sich ändern.",
+      "transferExpectationEn": "After translating both endpoints or changing the origin, the learner identifies which vector meaning and components stay the same and which change."
+    },
+    "dissent": [
+      {
+        "dissentId": "compatible-review-emphasis-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+        "source": "both",
+        "textDe": "Beide aktuellen KEEP-Records bleiben vollständig gebunden; die nicht gewählte Evidenzkette ist eine kompatible, aber anders akzentuierte AI-Kandidatenperspektive.",
+        "textEn": "Both current KEEP records remain fully bound; the unselected evidence chain is a compatible but differently emphasized AI-candidate perspective.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:6cb8ebdb5a52cac38e888b8792cf80c8aa5313dc19a69d8ea84396b75728726f"
+}

@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-p-v2-m7-eight-text-six-20260923-v1",
+  "reviewedAt": "2026-09-23T08:44:23Z",
+  "reviewer": "codex-math-m7-unregistered-eight-p-first-pass-2026-09-23",
+  "goals": [
+    {
+      "goalId": "0f6c1df6-0e30-54ae-8098-e9422833ba80",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "solvability-conditions",
+            "essentialUnderstandingDe": "Seitenlängen müssen die Dreiecksungleichung erfüllen; Kongruenzdaten wie SSS legen bei erfüllten Bedingungen ein Dreieck bis auf Kongruenz fest.",
+            "essentialUnderstandingEn": "Side lengths must satisfy the triangle inequality; sufficient congruence data such as SSS determine one triangle up to congruence when feasible.",
+            "observablePerformanceDe": "Prüft vor einer Konstruktion die gegebenen Seiten und begründet aus Ungleichung und SSS, ob kein oder genau ein Dreieck möglich ist.",
+            "observablePerformanceEn": "Checks given sides before construction and justifies from the inequality and SSS whether no or exactly one triangle exists."
+          },
+          {
+            "id": "ambiguous-data",
+            "essentialUnderstandingDe": "Bei bestimmten Seiten-Winkel-Daten ist eine Lage nicht eindeutig; die Schnittpunkte von Strahl und Kreis zeigen geometrisch, ob mehrere Dreiecke möglich sind.",
+            "essentialUnderstandingEn": "With some side-angle data the position is not unique; intersections of a ray and circle show geometrically whether multiple triangles are possible.",
+            "observablePerformanceDe": "Zeichnet die zulässigen Schnittlagen einer neuen Seiten-Winkel-Konstruktion und erklärt, warum sie zu verschiedenen nichtkongruenten Dreiecken führen.",
+            "observablePerformanceEn": "Draws the admissible intersections of a fresh side-angle construction and explains why they produce distinct non-congruent triangles."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "solvability-conditions",
+            "ambiguous-data"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "drei vorgegebene Seiten mit Dreiecksungleichung gegenüber Seiten-Winkel-Lage mit zwei Kreis-Strahl-Schnitten",
+            "textEn": "three given sides with triangle inequality versus side-angle data with two circle-ray intersections"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sss",
+            "taskDemandDe": "Prüfe, ob Seiten 3 cm, 4 cm, 8 cm ein Dreieck ergeben; vergleiche mit 3 cm, 4 cm, 5 cm und begründe jeweils die Anzahl bis auf Kongruenz.",
+            "taskDemandEn": "Check whether sides 3 cm, 4 cm, 8 cm make a triangle; compare with 3 cm, 4 cm, 5 cm and justify the number up to congruence.",
+            "expectedPerformanceDe": "3+4<8 schließt das erste Dreieck aus. 3,4,5 erfüllen alle Dreiecksungleichungen und legen durch SSS bis auf Verschieben, Drehen oder Spiegeln genau ein Dreieck fest.",
+            "expectedPerformanceEn": "3+4<8 rules out the first triangle. The lengths 3,4,5 satisfy all triangle inequalities and by SSS determine exactly one triangle up to translation, rotation or reflection.",
+            "understandingFocusDe": "Existenzbedingung von Eindeutigkeit trennen.",
+            "understandingFocusEn": "Separate feasibility from uniqueness."
+          },
+          {
+            "id": "ssa",
+            "taskDemandDe": "Zeichne AB=8 cm und einen Strahl ab A; die mitgelieferte maßhaltige Skizze zeigt den Lotfuß auf dem positiven Strahl und den Lotabstand von B als 4 cm. Fordere BC=5 cm. Untersuche die Kreis-Strahl-Schnitte und begründe die Anzahl der Dreiecke.",
+            "taskDemandEn": "Draw AB=8 cm and a ray from A; the supplied scale drawing gives the perpendicular foot on the forward ray and its distance from B as 4 cm. Require BC=5 cm. Examine circle-ray intersections and justify the number of triangles.",
+            "expectedPerformanceDe": "Weil Lotabstand 4 cm < Kreisradius 5 cm < AB=8 cm, schneidet der Kreis um B den positiven Strahl zweimal. Beide Lagen von C erfüllen die Angaben und liefern zwei nichtkongruente Dreiecke.",
+            "expectedPerformanceEn": "Because perpendicular distance 4 cm < circle radius 5 cm < AB=8 cm, the circle about B cuts the positive ray twice. Both C positions meet the data and yield two non-congruent triangles.",
+            "understandingFocusDe": "Mehrdeutigkeit aus geometrischen Schnittbedingungen statt Vermutung begründen.",
+            "understandingFocusEn": "Justify ambiguity from geometric intersections, not a guess."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "scale-construction",
+            "essentialUnderstandingDe": "Bei maßstäblicher Vergrößerung oder Verkleinerung werden alle Längen mit demselben positiven Faktor k multipliziert; Winkel bleiben gleich, bei k=1 entsteht Kongruenz.",
+            "essentialUnderstandingEn": "In an enlargement or reduction all lengths are multiplied by the same positive factor k; angles remain equal, and k=1 yields congruence.",
+            "observablePerformanceDe": "Zeichnet zu einer vorgegebenen Figur je eine vergrößerte und verkleinerte Figur mit nachprüfbaren Seitenverhältnissen und Winkeln.",
+            "observablePerformanceEn": "Draws enlarged and reduced versions of a given figure with checkable side ratios and angles."
+          },
+          {
+            "id": "congruence-software",
+            "essentialUnderstandingDe": "Kongruenz erhält Länge und Winkel; eine passende Geometriesoftware kann Konstruktion und Überprüfung von Abständen, Winkeln und Skalierungsfaktor sichtbar machen.",
+            "essentialUnderstandingEn": "Congruence preserves lengths and angles; suitable geometry software can construct and verify distances, angles and a scale factor.",
+            "observablePerformanceDe": "Erstellt oder kontrolliert eine kongruente Figur durch Abbildung und begründet anhand gleicher Seiten und Winkel, warum sie nicht nur ähnlich ist.",
+            "observablePerformanceEn": "Constructs or checks a congruent figure through a transformation and justifies from equal sides and angles why it is not merely similar."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "scale-construction",
+            "congruence-software"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Koordinatenkonstruktion mit k>1 und 0<k<1 gegenüber Kongruenz durch Verschiebung mit Softwarekontrolle",
+            "textEn": "coordinate construction with k>1 and 0<k<1 versus congruence by translation checked with software"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "scale-triangle",
+            "taskDemandDe": "Für A(0;0), B(2;0), C(0;3): Zeichne mit Zentrum O=A eine Vergrößerung k=2 und eine Verkleinerung k=1/2; begründe die Ähnlichkeit.",
+            "taskDemandEn": "For A(0,0), B(2,0), C(0,3), draw an enlargement k=2 and reduction k=1/2 about O=A; justify similarity.",
+            "expectedPerformanceDe": "Die Bildpunkte sind (0;0),(4;0),(0;6) beziehungsweise (0;0),(1;0),(0;1,5); Seitenverhältnisse sind überall 2 beziehungsweise 1/2, rechte und übrige Winkel bleiben erhalten.",
+            "expectedPerformanceEn": "Image points are (0,0),(4,0),(0,6) and (0,0),(1,0),(0,1.5); every side ratio is 2 or 1/2, and all angles stay equal.",
+            "understandingFocusDe": "Einheitlichen Faktor an allen Seiten und Winkelerhalt prüfen.",
+            "understandingFocusEn": "Check one common factor for all sides and preserved angles."
+          },
+          {
+            "id": "translate-quad",
+            "taskDemandDe": "Ein Viereck habe Ecken (0,0),(3,0),(3,1),(0,1). Verschiebe es in einer Geometriesoftware um (2,−1) und begründe, warum Original und Bild kongruent sind; vergleiche mit einer Halbierung.",
+            "taskDemandEn": "A quadrilateral has vertices (0,0),(3,0),(3,1),(0,1). Translate it by (2,−1) in geometry software and justify congruence; compare with a halved version.",
+            "expectedPerformanceDe": "Bildpunkte (2,−1),(5,−1),(5,0),(2,0); jede Seitenlänge und jeder Winkel bleibt gleich, k=1. Eine Halbierung hätte k=1/2 und wäre bei positiver Länge nur ähnlich, nicht kongruent.",
+            "expectedPerformanceEn": "Image points are (2,−1),(5,−1),(5,0),(2,0); every length and angle is unchanged, k=1. Halving gives k=1/2 and, for nonzero lengths, similarity but not congruence.",
+            "understandingFocusDe": "Kongruenz als Sonderfall der Ähnlichkeit sichtbar begründen.",
+            "understandingFocusEn": "Explain congruence as a special case of similarity."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d051857c-0707-544f-ae7a-f20690d182b2",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "altitude-definition",
+            "essentialUnderstandingDe": "Eine Dreieckshöhe ist die Gerade durch einen Eckpunkt, die auf der gegenüberliegenden Seitengeraden senkrecht steht; der Lotfuß kann außerhalb des Seitenstücks liegen.",
+            "essentialUnderstandingEn": "A triangle altitude is the line through a vertex perpendicular to the opposite side line; its foot may lie outside the side segment.",
+            "observablePerformanceDe": "Ordnet jedem Eckpunkt die richtige gegenüberliegende Seitengerade zu und konstruiert eine Senkrechte durch den Eckpunkt, auch bei nötiger Verlängerung.",
+            "observablePerformanceEn": "Matches each vertex to its opposite side line and constructs a perpendicular through it, extending the side when needed."
+          },
+          {
+            "id": "check-all",
+            "essentialUnderstandingDe": "Eine geprüfte Höhenkonstruktion erfüllt gleichzeitig die Eckpunkt- und Rechtwinkelbedingung; drei Höhen eines Dreiecks werden einzeln nach dieser Eigenschaft geprüft.",
+            "essentialUnderstandingEn": "A verified altitude passes through its vertex and is perpendicular to the corresponding side line; each of a triangle's three altitudes is checked against both conditions.",
+            "observablePerformanceDe": "Konstruiert und prüft die drei Höhen an einer neuen Dreiecksform, ohne bloß die ungefähre Bildlage als Beleg zu nehmen.",
+            "observablePerformanceEn": "Constructs and checks three altitudes in a new triangle shape without treating approximate appearance as proof."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "altitude-definition",
+            "check-all"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "spitzwinkliges Dreieck mit inneren Lotfüßen gegenüber stumpfwinkligem Dreieck mit äußerem Lotfuß",
+            "textEn": "acute triangle with internal feet versus obtuse triangle with an external foot"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "acute",
+            "taskDemandDe": "Konstruiere in einem spitzwinkligen Dreieck ABC alle drei Höhen und prüfe an jeder, von welchem Eckpunkt sie ausgeht und zu welcher Gegenseite sie senkrecht steht.",
+            "taskDemandEn": "Construct all three altitudes of an acute triangle ABC and check for each its vertex and perpendicular opposite side.",
+            "expectedPerformanceDe": "h_A geht durch A senkrecht zu BC, h_B durch B senkrecht zu AC und h_C durch C senkrecht zu AB; alle Lotfüße liegen hier auf den Seitenstücken, die rechten Winkel werden überprüft.",
+            "expectedPerformanceEn": "h_A goes through A perpendicular to BC, h_B through B perpendicular to AC and h_C through C perpendicular to AB; all feet lie on side segments here, and right angles are checked.",
+            "understandingFocusDe": "Alle drei Höhen durch definierende Eigenschaften statt bloßes Schneiden kontrollieren.",
+            "understandingFocusEn": "Check all three altitudes by defining properties, not merely intersection."
+          },
+          {
+            "id": "obtuse",
+            "taskDemandDe": "Für A(0,0), B(4,0), C(−1,2) zeichne die Höhe von C auf die Gerade AB. Erkläre, warum der Lotfuß außerhalb von AB zulässig ist, und prüfe die Konstruktion.",
+            "taskDemandEn": "For A(0,0), B(4,0), C(−1,2), draw the altitude from C to line AB. Explain why an external foot is valid and verify the construction.",
+            "expectedPerformanceDe": "AB liegt auf y=0; die Senkrechte durch C hat x=−1 und Fuß F=(−1,0). F liegt auf der verlängerten Seitengeraden links von A, CF ist vertikal und damit rechtwinklig zu AB.",
+            "expectedPerformanceEn": "AB lies on y=0; the perpendicular through C has x=−1 and foot F=(−1,0). F lies on the extended side line left of A, and CF is vertical and perpendicular to AB.",
+            "understandingFocusDe": "Höhe bei stumpfem Dreieck auf der Seitengeraden statt nur dem Segment.",
+            "understandingFocusEn": "Altitude in an obtuse triangle uses the side line, not just its segment."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "source-measure",
+            "essentialUnderstandingDe": "Eine Maßangabe ist nur zusammen mit Einheit, Bezugsgröße und Darstellungsmaßstab sinnvoll; Tabellen- und Kartenzahlen bezeichnen unterschiedliche reale Größen.",
+            "essentialUnderstandingEn": "A measurement makes sense only with its unit, reference quantity and display scale; table and map values may represent different real quantities.",
+            "observablePerformanceDe": "Entnimmt aus einer neuen Tabelle und einer Karte jeweils die korrekten Maßzahlen und benennt genau, auf welches Objekt und welche Einheit sie sich beziehen.",
+            "observablePerformanceEn": "Extracts the correct measurements from a fresh table and a map and specifies the object and unit to which each refers."
+          },
+          {
+            "id": "use-convert",
+            "essentialUnderstandingDe": "Für eine mathematische Bearbeitung müssen entnommene Maße in zusammenpassende Einheiten oder reale Längen übertragen werden.",
+            "essentialUnderstandingEn": "For mathematical work, extracted measures must be converted into compatible units or real lengths.",
+            "observablePerformanceDe": "Berechnet aus vorgelegtem Quellenmaterial eine Zielgröße und erläutert erforderliche Einheiten- oder Maßstabsumrechnung.",
+            "observablePerformanceEn": "Computes a requested quantity from supplied source material and explains any needed unit or scale conversion."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-measure",
+            "use-convert"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Maßtabelle in Millimetern für Flächeninhalt gegenüber Kartenstrecke im Maßstab für reale Länge",
+            "textEn": "measurement table in millimetres for area versus map distance under a scale for real length"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "table",
+            "taskDemandDe": "Eine mitgelieferte Tabelle nennt für eine rechteckige Platte Länge 40 mm und Breite 25 mm. Entnimm die richtigen Angaben und berechne den Flächeninhalt in cm².",
+            "taskDemandEn": "A supplied table gives a rectangular plate's length as 40 mm and width as 25 mm. Extract the right entries and calculate area in cm².",
+            "expectedPerformanceDe": "Die Angaben beziehen sich auf dieselbe Platte; A=40·25=1000 mm²=10 cm², weil 1 cm²=100 mm².",
+            "expectedPerformanceEn": "The entries refer to the same plate; A=40·25=1000 mm²=10 cm² because 1 cm²=100 mm².",
+            "understandingFocusDe": "Bezugsobjekt und quadratische Einheit aus der Tabelle korrekt übernehmen.",
+            "understandingFocusEn": "Use the table's referenced object and squared unit correctly."
+          },
+          {
+            "id": "map",
+            "taskDemandDe": "Ein beigefügter Kartenausschnitt hat Maßstab 1:25 000 und die Strecke A–B misst auf der Karte 4 cm. Entnimm Maßstab und Kartenlänge und bestimme die reale Strecke.",
+            "taskDemandEn": "An attached map has scale 1:25,000 and segment A–B measures 4 cm on the map. Extract the scale and map length and find the real distance.",
+            "expectedPerformanceDe": "4 cm auf der Karte entsprechen 4·25 000=100 000 cm=1 km in der Realität; die Kartenlänge wird nicht als reale Länge ausgegeben.",
+            "expectedPerformanceEn": "4 cm on the map correspond to 4·25,000=100,000 cm=1 km in reality; the map length is not reported as the real distance.",
+            "understandingFocusDe": "Quellenmaßstab als Bezug zwischen Darstellung und Wirklichkeit nutzen.",
+            "understandingFocusEn": "Use source scale as a relation between display and reality."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "real-obstruction",
+            "essentialUnderstandingDe": "Für jedes reelle x gilt x²≥0; deshalb besitzen Gleichungen wie x²+1=0 keine reelle Lösung, obwohl ein algebraisches Lösungsverfahren eine Quadratwurzel aus Negativem verlangt.",
+            "essentialUnderstandingEn": "For every real x, x²≥0; equations such as x²+1=0 have no real solution although algebraic solving asks for a square root of a negative value.",
+            "observablePerformanceDe": "Begründet an einer neuen Gleichung die Unlösbarkeit in R durch eine Eigenschaft reeller Quadrate statt nur mit einem Taschenrechnerergebnis.",
+            "observablePerformanceEn": "Justifies lack of real solutions for a fresh equation using a property of real squares rather than a calculator result."
+          },
+          {
+            "id": "extension-purpose",
+            "essentialUnderstandingDe": "Die Einführung von i mit i²=−1 und Zahlen a+bi erlaubt Lösungen solcher Gleichungen, ohne die bisherigen reellen Rechenregeln für reelle Zahlen aufzugeben.",
+            "essentialUnderstandingEn": "Introducing i with i²=−1 and numbers a+bi permits solutions of such equations without discarding the existing real arithmetic for real numbers.",
+            "observablePerformanceDe": "Zeigt an zwei Gleichungen komplexe Lösungen, überprüft sie durch Einsetzen und erläutert, welches konkrete Lösungsproblem C gegenüber R behebt.",
+            "observablePerformanceEn": "Shows complex solutions of two equations, checks them by substitution and explains the concrete solvability problem C resolves beyond R."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "real-obstruction",
+            "extension-purpose"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "direkte Gleichung x²+c=0 gegenüber quadratischer Gleichung mit verschobenem Quadrat",
+            "textEn": "direct equation x²+c=0 versus a quadratic equation with a shifted square"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "basic",
+            "taskDemandDe": "Für x²+1=0: erkläre die reelle Unlösbarkeit, definiere i²=−1 und prüfe die neu möglichen Lösungen.",
+            "taskDemandEn": "For x²+1=0, explain why no real solution exists, define i²=−1 and check the newly available solutions.",
+            "expectedPerformanceDe": "In R ist x²+1≥1; in C sind x=±i möglich, denn (±i)²+1=0. Die Erweiterung fügt Lösungen hinzu und enthält die reellen Zahlen weiter.",
+            "expectedPerformanceEn": "Over R, x²+1≥1; in C, x=±i work because (±i)²+1=0. The extension adds solutions while still containing all real numbers.",
+            "understandingFocusDe": "Konkretes Defizit von R und Zweck der Erweiterung verbinden.",
+            "understandingFocusEn": "Connect a concrete limitation of R to the purpose of the extension."
+          },
+          {
+            "id": "shifted",
+            "taskDemandDe": "Löse x²−2x+5=0 erst als Frage in R und dann in C; erkläre, warum die Erweiterung hier nötig ist.",
+            "taskDemandEn": "Treat x²−2x+5=0 first over R and then over C; explain why the extension is needed.",
+            "expectedPerformanceDe": "(x−1)²+4=0 hat keine reelle Lösung, weil das Quadrat nicht −4 sein kann; in C erhält man x=1±2i und Einsetzen bestätigt die Nullstellen.",
+            "expectedPerformanceEn": "(x−1)²+4=0 has no real solution because a real square cannot equal −4; over C, x=1±2i and substitution verifies both roots.",
+            "understandingFocusDe": "Das gleiche Erweiterungsargument auf ein verschobenes Quadrat übertragen.",
+            "understandingFocusEn": "Transfer the extension argument to a shifted square."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "source-bound-step",
+            "essentialUnderstandingDe": "Ein kulturhistorischer Entwicklungsschritt ist an datierbare mathematische Quellen und deren konkretes Problem zu binden; ein früher formaler Umgang mit √−1 ist nicht bereits die moderne Theorie von C.",
+            "essentialUnderstandingEn": "A cultural-historical development must be tied to datable mathematical sources and their concrete problem; early formal work with √−1 is not already the modern theory of C.",
+            "observablePerformanceDe": "Ordnet einen vorgelegten frühen Quellenausschnitt und die darin benutzte Rechenhilfe zeitlich und fachlich ein, ohne moderne Begriffe unbesehen zurückzuprojizieren.",
+            "observablePerformanceEn": "Places a supplied early source extract and its computational device in its period and mathematical context without projecting modern terminology backwards."
+          },
+          {
+            "id": "conceptual-recognition",
+            "essentialUnderstandingDe": "Spätere geometrische oder arithmetische Deutungen machten komplexe Ausdrücke zu konsistent handhabbaren mathematischen Objekten; die Anerkennung verlief schrittweise und nicht durch einen einzigen Erfinderakt.",
+            "essentialUnderstandingEn": "Later geometric or arithmetic interpretations made complex expressions consistently workable mathematical objects; acceptance was gradual, not one single inventor event.",
+            "observablePerformanceDe": "Erläutert anhand einer zweiten belegten Quelle, was gegenüber der früheren Rechenhilfe neu war und warum dies zur Anerkennung als Zahlbereich beitrug.",
+            "observablePerformanceEn": "Using a second documented source, explains what was new beyond the earlier calculation aid and why it contributed to recognition as a number system."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "source-bound-step",
+            "conceptual-recognition"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "algebraische Zwischenrechnung bei Bombelli zu geometrischer Deutung bei Argand gegenüber formaler Symbolik zu Hamiltons geordneten Paaren",
+            "textEn": "algebraic intermediate calculation with Bombelli to Argand's geometric interpretation versus formal symbols to Hamilton's ordered pairs"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "bombelli-argand",
+            "taskDemandDe": "Lege einen belegten Auszug zu Bombellis Algebra (1572) mit x³=15x+4 und der formalen √−121-Zwischenrechnung sowie einen Auszug aus Argands Essai (1806) zur ebenen Darstellung vor. Erkläre den Wandel, ohne sofortige allgemeine Akzeptanz zu behaupten.",
+            "taskDemandEn": "Provide documented excerpts from Bombelli's Algebra (1572), with x³=15x+4 and a formal √−121 intermediate expression, and Argand's Essai (1806), on plane representation. Explain the change without claiming instant universal acceptance.",
+            "expectedPerformanceDe": "Bombelli nutzte Ausdrücke mit negativer Quadratwurzel rechnerisch, obwohl die bekannte Lösung x=4 reell ist; Argands Darstellung gab a+bi eine geometrische Deutung in der Ebene. Der zweite Schritt erweiterte Verständlichkeit und Handhabbarkeit, war kein plötzliches Akzeptanzdatum.",
+            "expectedPerformanceEn": "Bombelli used expressions with negative square roots computationally even though the known solution x=4 is real; Argand represented a+bi geometrically in the plane. The later step improved interpretation and use, not an instant acceptance date.",
+            "understandingFocusDe": "Formale Rechenhilfe und spätere Bedeutung anhand zweier datierter Quellen unterscheiden.",
+            "understandingFocusEn": "Distinguish formal calculation aid and later meaning using two dated sources."
+          },
+          {
+            "id": "symbol-pairs",
+            "taskDemandDe": "Lege einen frühen dokumentierten algebraischen Umgang mit √−1 und Hamiltons Arbeit über algebraische Paare (1837) vor. Ordne ein, was die Konstruktion als geordnete reelle Paare gegenüber bloßer Symbolmanipulation leistet.",
+            "taskDemandEn": "Provide documented early algebraic use of √−1 and Hamilton's work on algebraic couples (1837). Explain what construction as ordered real pairs adds beyond symbol manipulation.",
+            "expectedPerformanceDe": "Frühere Rechnungen benutzten das Symbol zweckgebunden in Gleichungslösungen; Hamilton beschrieb komplexe Zahlen als Paare reeller Zahlen mit definierten Rechenoperationen. Das liefert eine nachvollziehbare Struktur für denselben Zahlbereich, nicht die Behauptung, Hamilton habe ihn allein erfunden.",
+            "expectedPerformanceEn": "Earlier calculations used the symbol for solving equations; Hamilton described complex numbers as real-number pairs with defined operations. This supplied a coherent structure for the same number system without claiming Hamilton alone invented it.",
+            "understandingFocusDe": "Späteren strukturellen Begründungstyp unabhängig von der geometrischen Darstellung erläutern.",
+            "understandingFocusEn": "Explain a later structural justification independently of geometric representation."
+          }
+        ]
+      }
+    }
+  ]
+}

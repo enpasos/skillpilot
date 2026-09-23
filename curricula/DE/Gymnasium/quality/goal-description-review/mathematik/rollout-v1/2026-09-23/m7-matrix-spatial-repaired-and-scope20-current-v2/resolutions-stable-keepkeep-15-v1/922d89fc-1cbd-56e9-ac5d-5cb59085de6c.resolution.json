@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-d20-current-keepkeep-15-20260923-v1-resolution-922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+  "goal": {
+    "goalId": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:82c1557e51912e482af963fc9606572b79c6cf52d6edd51729fc91a639c74982",
+    "pageFingerprint": "sha256:413965af5195a306b7cf2be117424fb14bce3e3227ad688bf41d73fd5f1255cb",
+    "goalReviewContextFingerprint": "sha256:280fd1e0536467992fc85097feb7f65b42977d603bdb87fa1d286c16d128530a",
+    "finalText": {
+      "titleDe": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+      "titleEn": "Interpret limiting processes and limiting matrices (advanced course)",
+      "descriptionDe": "Die lernende Person kann Grenzprozesse bei Potenzen von Übergangsmatrizen untersuchen, Grenzmatrizen interpretieren und ihre Bedeutung für stabile Langzeitentwicklungen erläutern.",
+      "descriptionEn": "The learner can analyze limiting processes of powers of transition matrices, interpret limiting matrices, and explain their meaning for stable long-term developments."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-a",
+      "campaignDigest": "sha256:a32c87a858d1763373a9a4d0b13503a58a95e8cd80a71acdc0fb833dedc8f29d",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-a",
+      "reviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+      "goalReviewContextFingerprint": "sha256:280fd1e0536467992fc85097feb7f65b42977d603bdb87fa1d286c16d128530a",
+      "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-a.batch-001",
+      "runId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "runManifestDigest": "sha256:ba8c8d6bcd58c1248aaf2948e165fac5662a869d13ef4c42db5eecd34ca0a2ba",
+      "resultsDigest": "sha256:f907604150de8c849a59b3948ff7b3d624f74be941bb57858f0dedd844a33fac",
+      "recordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-02",
+      "recordDigest": "sha256:dc06cc8554cb99a66590ced3eac1483948c471a2787dc0bfa36cf5d550f4ca72"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-b",
+      "campaignDigest": "sha256:07a42a60dd96534a47d4f3197ec3df670bebece24c014f88071955925b598b2f",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-b",
+      "reviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+      "goalReviewContextFingerprint": "sha256:280fd1e0536467992fc85097feb7f65b42977d603bdb87fa1d286c16d128530a",
+      "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-b.batch-001",
+      "runId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "runManifestDigest": "sha256:59a47457640696053e3d3d67654db5cc857cf910bacbef26728a1ca103859cf3",
+      "resultsDigest": "sha256:93a21b94dc0c67c56803749c1d062a8bd95f38751f17706fe8f51ba2d95e8dd0",
+      "recordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+      "recordDigest": "sha256:a74dbf9cb2f3c3735e7e476a11638a65470303bac41f03005df453ce6abe866d"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:1b678c12f71ed2ce1eae62e741b671103f25b9b58a3312c78f5e2e0488768fae"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-m7-d20-current-keepkeep-15-20260923-v1-synthesis-922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex, informed AI synthesis by prior Round B reviewer; no human attestation",
+    "synthesizedAt": "2026-09-23T00:23:16.000Z",
+    "rationaleDe": "Beide Runden sind KEEP für das eigene Grenzprozessziel. B trennt stationären Vektor, tatsächliche Konvergenz und Startunabhängigkeit ausdrücklich; A stützt dieselbe Bedingung über Grenzspalten. Deshalb wird Bs vorsichtigere Grenzwert-Evidenz gewählt.",
+    "rationaleEn": "Both rounds are KEEP for the distinct limiting-process goal. B explicitly separates a stationary vector, actual convergence, and independence from the initial state; A supports the same condition through limiting columns. B's more guarded limit evidence is selected.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Grenzmatrix ist der eintragsweise Grenzwert von M^n, sofern er existiert. Mg=g allein beweist weder Konvergenz noch Startunabhängigkeit; gleiche Grenzspalten bedeuten dagegen denselben Grenzzustand für normierte Starts.",
+      "essentialUnderstandingEn": "A limiting matrix is the entrywise limit of M^n when it exists. Mg=g alone proves neither convergence nor independence of the start; identical limiting columns do imply the same limiting state for normalized starts.",
+      "observablePerformanceDe": "Die Person begründet anhand einer tragfähigen Potenzregel oder Struktur, ob M^n konvergiert, deutet eine vorhandene Grenzmatrix und vergleicht ihre Wirkung auf verschiedene Anfangsverteilungen.",
+      "observablePerformanceEn": "Using a sufficient power formula or structural argument, the learner justifies whether M^n converges, interprets an existing limiting matrix, and compares its effect on different initial distributions.",
+      "transferExpectationDe": "Bei einer periodischen oder startabhängigen Übergangsmatrix unterscheidet die Person einen stationären Vektor vom tatsächlichen Langzeitverhalten und formuliert nur die jeweils gedeckte Aussage.",
+      "transferExpectationEn": "For a periodic or start-dependent transition matrix, the learner distinguishes a stationary vector from actual long-term behavior and states only the claim supported in that case."
+    },
+    "dissent": [
+      {
+        "dissentId": "compatible-review-emphasis-922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+        "source": "both",
+        "textDe": "Beide aktuellen KEEP-Records bleiben vollständig gebunden; die nicht gewählte Evidenzkette ist eine kompatible, aber anders akzentuierte AI-Kandidatenperspektive.",
+        "textEn": "Both current KEEP records remain fully bound; the unselected evidence chain is a compatible but differently emphasized AI-candidate perspective.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:b5f94be1ac919d5edeb28a904d3d0c409ed1b7bd739a20b0b284c209260b71e7"
+}

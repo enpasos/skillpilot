@@ -1,0 +1,377 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:6b1f61e40a86e6b42ff6ebedd8806b0b3c502819fc637e4d8f442702b21ff75f",
+  "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-a",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-a",
+      "runIds": [
+        "mathematik-m7-proof-problem-next20-a-independent-20260921"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact model identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-b",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-b",
+      "runIds": [
+        "math-m7-proof-problem-next20-b-20260921-blind-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 family via Codex; exact serving revision not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.001",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.50b9426f-ebec-526d-8b9d-e61d9707a46e",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.002",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.1e164a09-0a2b-55ab-b927-08a4a278f72b",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "04118376-6dd8-532e-ab38-be22017ba93d",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.003",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.04118376-6dd8-532e-ab38-be22017ba93d",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3de1d5b0-0a26-5124-b066-92b65a882c5e",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.004",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.3de1d5b0-0a26-5124-b066-92b65a882c5e",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "591cb948-f313-5b1c-a9cb-3df8162eeb8b",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.005",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.591cb948-f313-5b1c-a9cb-3df8162eeb8b",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2b497114-66ce-5f38-9b4d-dd17a2f4088f",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.006",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.2b497114-66ce-5f38-9b4d-dd17a2f4088f",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a8d4eb81-b77a-53e3-813a-dbfeed09f1bf",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.007",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.a8d4eb81-b77a-53e3-813a-dbfeed09f1bf",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "09e85220-afc3-5357-b5bc-c4b2c17e85aa",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.008",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.09e85220-afc3-5357-b5bc-c4b2c17e85aa",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e2d56885-a204-54b4-8717-a46d029ef416",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.009",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.e2d56885-a204-54b4-8717-a46d029ef416",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.010",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.f84ea3d8-c255-552a-998a-202e42843f56",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d21a1303-50fc-5e38-aeda-eeae3392c74b",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.011",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.d21a1303-50fc-5e38-aeda-eeae3392c74b",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.012",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5c632c68-fc34-582e-8581-ae9e55ab538f",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.013",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.5c632c68-fc34-582e-8581-ae9e55ab538f",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f2df01c0-355e-5e51-973f-d31b0eed28ec",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.014",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.f2df01c0-355e-5e51-973f-d31b0eed28ec",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.015",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.01217f4a-5221-5df9-b379-7b241fccf809",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4ae439c0-ce3c-5c96-9755-9899bc70e948",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.016",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.4ae439c0-ce3c-5c96-9755-9899bc70e948",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dd1d9f9c-0a4e-5d01-95d8-f6993163b20c",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.017",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.dd1d9f9c-0a4e-5d01-95d8-f6993163b20c",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.018",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.a288231e-e4bb-5c65-b018-b79a51ca87d8",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "14173f5e-d3ba-51e5-b510-49ecd0abad90",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.019",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.14173f5e-d3ba-51e5-b510-49ecd0abad90",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c1a23239-08c5-5fe2-a68f-f2075fdeb454",
+      "firstRecordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.020",
+      "secondRecordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.c1a23239-08c5-5fe2-a68f-f2075fdeb454",
+      "firstRunId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "secondRunId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

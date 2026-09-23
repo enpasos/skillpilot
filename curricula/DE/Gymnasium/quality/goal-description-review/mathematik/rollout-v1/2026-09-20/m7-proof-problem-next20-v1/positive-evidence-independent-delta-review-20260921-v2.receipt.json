@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "bounded-positive-evidence-content-countercheck",
+  "reviewedAt": "2026-09-21T21:16:58.206Z",
+  "reviewer": "Codex independent review agent /root/oer_compact_tests",
+  "reviewerIndependence": "Separate agent from profile author; no claim of different model or human adjudication.",
+  "originalReview": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-proof-problem-next20-v1/positive-evidence-independent-review-20260921-v1.md",
+    "sha256": "sha256:bf07930303f9712ed8f4f2f863974b9f7afb45affe7ac3037690d1e619624767"
+  },
+  "sources": {
+    "originalCandidates": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-proof-problem20-20260921-v1.candidates.json",
+      "sha256": "sha256:667cef30ab3f5cf6700f72036e3b77a4921307274eea0b2568a5a3d32a31be28"
+    },
+    "current17CandidatesV2": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-proof-problem-current17-20260921-v2.candidates.json",
+      "sha256": "sha256:c606a5e7d1727825251941aac8607a4d164065db6bfd45f00b210ec2113029bb"
+    },
+    "heldCandidatesV2": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-proof-problem20-20260921-v1.hold-corrections-v2.candidates.json",
+      "sha256": "sha256:4c929b62e0c95a18e1dacfcf0af7de5f5092423bf2fa5a1e73d824961f40d74a"
+    }
+  },
+  "method": "Read every changed profile in both languages and re-derived the three corrected cases; reused the unchanged-profile reasoning and actual teaching-image observations of the original countercheck. Hashes identify reviewed bytes and are not the basis of the content decision.",
+  "results": [
+    {
+      "findingId": "P-01",
+      "goalId": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+      "oldCaseId": "no-smallest-positive",
+      "newCaseId": "irrational-sum",
+      "decision": "addressed_in_ai_candidate",
+      "mathematicalCheck": "Negating 'at least one is irrational' under a,b real gives both rational. Write a=m/n, b=r/s with integer numerators/denominators and nonzero n,s. Then (ms+rn)/(ns) has integer numerator and nonzero integer denominator, contradicting the assumed irrationality of a+b. The conclusion is at least one irrational, not necessarily both.",
+      "freshnessAndTransfer": "This is a closure-of-rationals contradiction, not the image's minimum/halving proof. The retained sqrt(2) case uses parity and a lowest-terms contradiction instead, providing a distinct reasoning structure even though both use rational representations.",
+      "scopeAndLanguage": "The fraction-closure justification is within the current contradiction-proof competence and requires no new advanced theorem. German and English express the same assumptions, negation, reasoning and bounded conclusion.",
+      "preservedCaseId": "irrational-root"
+    },
+    {
+      "findingId": "P-02",
+      "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+      "oldCaseId": "sum-strategy",
+      "newCaseId": "geometric-sum-strategy",
+      "decision": "addressed_in_ai_candidate",
+      "mathematicalCheck": "For the finite sum indexed by positive integers n, induction has base 1=2^1-1 and step (2^n-1)+2^n=2^(n+1)-1. Directly 2S_n-S_n cancels the middle terms and leaves 2^n-1. Both methods are valid, including at n=1; the expected comparison correctly accepts either with a reasoned choice.",
+      "freshnessAndTransfer": "The geometric sum is not the arithmetic identity with induction preselected in the teaching image. Comparison of recursive extension and finite algebraic cancellation is new; the other case retains an implication/contraposition comparison.",
+      "scopeAndLanguage": "Both languages ask for a justified strategy comparison and decisive step rather than a method-name guess. Existing D/context holds are separate and remain untouched.",
+      "preservedCaseId": "parity-choice"
+    },
+    {
+      "findingId": "P-03",
+      "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+      "caseId": "fence-data",
+      "decision": "addressed_in_ai_candidate",
+      "mathematicalCheck": "Both prompts now require all 24 m to be used on the three un-walled sides. Two sides of length x and one of length y therefore satisfy 2x+y=24 with x,y>0; substituting y=24-2x gives 0<x<12. No optimality argument is necessary to infer the equality.",
+      "freshnessAndTransfer": "Three fenced sides against a wall differ from the image's complete four-sided perimeter example. The retained budget case uses an inequality and nonnegative integer headcount rather than continuous geometric lengths.",
+      "scopeAndLanguage": "The task remains AB1 extraction of givens, unknowns and constraints and explicitly does not request optimization. Full-use wording is present consistently in German and English. Existing D/context holds are not cleared.",
+      "preservedCaseId": "ticket-data"
+    }
+  ],
+  "structuralChecks": {
+    "current17ProfileCount": 17,
+    "current17ProfilesExactlyUnchangedFromV1": 16,
+    "heldProfileCount": 2,
+    "changedCases": 3,
+    "companionCasesExactlyUnchangedFromV1": 3,
+    "originalV1FileUnchanged": true,
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "status": "passed"
+  },
+  "summary": {
+    "originalSubstantiveFindings": 3,
+    "addressedByReviewedDeltas": 3,
+    "remainingPFindingsFromThisCountercheck": 0,
+    "humanApproved": false,
+    "newDescriptionReviewRounds": 0,
+    "newVisualizationApprovals": 0,
+    "centralRegistryWrittenByReviewer": false,
+    "canonicalChangedByReviewer": false,
+    "globalBuildOrFiveGateCompletionClaim": false,
+    "note": "This receipt is an independent AI content review recommendation for the exact versioned candidates above. It does not grant human approval, resolve the separate three-goal D hold, or replace native current-binding and central five-gate validation. Reuse the other 17 substantive profile observations only while their relevant bindings remain valid."
+  }
+}

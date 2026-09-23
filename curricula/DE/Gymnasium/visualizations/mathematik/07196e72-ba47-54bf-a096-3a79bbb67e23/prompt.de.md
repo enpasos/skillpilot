@@ -1,56 +1,21 @@
-# Lernzielvisualisierung: Beziehungen als Modellgleichungen aufstellen
-
-## SkillPilot-Ziel
+# Lernzielvisualisierung: Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren
 
 - SkillPilot-ID: `07196e72-ba47-54bf-a096-3a79bbb67e23`
-- Titel: Beziehungen als Modellgleichungen aufstellen
-- Beschreibung: Die lernende Person kann Beziehungen zwischen Größen als Gleichungen, Funktionen oder Ungleichungen formulieren und die Modellwahl begründen.
+- Aktives Bild: `07196e72-ba47-54bf-a096-3a79bbb67e23.png`
+- SHA-256: `5e2384b38407263b6330b8f538d200355923523508db757465cef95360349fdb`
+- Format und Stil: PNG, freundlicher abstrakter Comic, klare mathematische Symbole
+- Herkunft: OpenAI/Codex-Bildgenerierung und lokaler Bildedit; der konkrete Modellbezeichner wurde vom Tool nicht ausgegeben.
+- Lizenz des eigenen didaktischen Bildes: CC-BY-4.0
 
-## Generator
+Der vollständige ursprüngliche Erzeugungsprompt, der genaue v2-Editprompt,
+beide Kandidaten, die unabhängig geprüfte Bildentscheidung und das archivierte
+frühere JPG stehen unter
+`curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-q4-model-forms-taxi-candidate-20260923-v1/`.
+Das aktuelle PNG stellt zum Taxitarif `K(x)=4+2x` mit 4 € Grundpreis und
+2 €/km zwei **alternative** Bedingungen dar: `K(x)=20` für genau 20 € sowie
+`K(x)≤20` für höchstens 20 €. Die alte Formulierung, `p·x` sei der gesamte
+Fahrpreis, war sachlich falsch und darf nicht rekonstruiert werden.
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
-- Quellbild: `07196e72-ba47-54bf-a096-3a79bbb67e23.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/07196e72-ba47-54bf-a096-3a79bbb67e23/07196e72-ba47-54bf-a096-3a79bbb67e23.jpg`
-
-## Prompt
-
-```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Beziehungen als Modellgleichungen aufstellen
-Beschreibung: Die lernende Person kann Beziehungen zwischen Größen als Gleichungen, Funktionen oder Ungleichungen formulieren und die Modellwahl begründen.
-
-Zusatzanweisung:
-Required mathematical layout:
-- Show a taxi cost model equation.
-- Formula board:
-  - "K(x) = G + p · x"
-- Meaning arrows:
-  - "G: Grundpreis"
-  - "p · x: Fahrtkosten"
-  - "x: Kilometer"
-- Add note: "Beziehung als Gleichung formulieren."
-
-Visual guidance:
-- Use a taxi meter or fare board with the formula.
-- Keep variables consistent with the definitions.
-
-Avoid:
-- Do not write `K(x)=G-p·x`.
-- Do not solve for a concrete value.
-- Do not use English text.
-```
-
-## Review-Notiz
-
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Die maschinelle Bildprüfung ist an den angegebenen PNG-Hash gebunden.
+Die menschliche Freigabe des früheren JPGs gilt nicht für dieses Bild;
+Beschreibung, Evidenz und übrige Release-Gates sind gesondert zu prüfen.

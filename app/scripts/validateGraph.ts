@@ -87,6 +87,7 @@ const CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS = [
   'f24096c6-6ca0-5c15-a2f5-7bdaec789a8d',
   '57f07e66-800c-5f7e-99ab-11dd6e520eb1',
   'd2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1',
+  '6b0d2a97-cf9c-4778-9c68-16bb82b7afde',
 ]
 const CANONICAL_GYM_MATH_SEMANTIC_KIND_LEDGER_PATH = join(
   process.cwd(),

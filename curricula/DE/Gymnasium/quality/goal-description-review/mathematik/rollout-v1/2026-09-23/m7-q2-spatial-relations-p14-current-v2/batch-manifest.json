@@ -1,0 +1,67 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q2-spatial-relations-p14-current-v2.config.json",
+  "configDigest": "sha256:8c6d84a08153729948baa78330e1886c34dc488ce180862388c330f18ff627e7",
+  "goalIds": [
+    "509ae03b-96b1-4bb1-b015-b83d14569dae",
+    "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+    "8cb5c712-9c58-5910-8c63-8c3736369b80",
+    "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+    "bd3576b8-f4e5-542a-a8a2-74524d9cee21",
+    "857c1c46-5d94-5dfb-9697-9a9fd04103c3",
+    "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+    "bda6a659-9640-53a5-8be0-24705ab623ef",
+    "5f90df42-8a71-534d-b995-b8f7dcaf1661",
+    "5748633c-113f-5ea8-9041-24da55919de7",
+    "d8e56cfc-a58d-5529-ab9f-e5187e31dd34",
+    "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
+    "7bb3c312-f714-55e6-a31f-f31605a93760",
+    "eb112b6f-4cc4-58af-975a-f1ea61b727f0"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:c88df3ee2bb4a3373b6b96ad5c4f7129e9514e01ffe66a66602221bf45dfb987"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:6d4608afb7fc400fd606adc75a21917d04e5e7b8e79f931c73e90efdbeb37945",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:cc2f68831f513ad638ba013f5950ac8eae41037caca83c0b90b7ba062e4b0dad",
+    "reviewInputFingerprint": "sha256:560c364b3abadfa98b1b8219dfa291c3b1bc057b2ecc522a3cd3080b284d8c66",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-a",
+        "campaignDigest": "sha256:fb23fcc9272916d46ce59f39e4df5daac42a2122adb2e177e720f9b2318fa1bd",
+        "roundId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-independent-a",
+        "batchId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:7c91c80d7755af6abbf6169cccf335071d3a4c8e58a238474b2c6cef47290d92"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-b",
+        "campaignDigest": "sha256:d646f85e5461d626b3f9202b71739855fc53e61e5ca60ad7ac5cfd99d9d47105",
+        "roundId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-independent-b",
+        "batchId": "mathematik-m7-q2-spatial-relations-p14-current-20260923-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:60126df5efdb399e05555e8a5972eab8833d17859f0da77518ea41d4794beb95"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

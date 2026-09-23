@@ -1,0 +1,272 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-vready-geometry-functions-eight-keep-partial-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T06:47:07.035Z",
+  "batch": {
+    "batchId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1",
+    "batchManifestDigest": "sha256:4dc7af01b4d419046c801c01d937f0f1079531425958ebc472b55b19844a3ef3",
+    "configDigest": "sha256:336a020be0ec69505f76d0090c2020672ff8eaf59f56bdc86171f94ff00a52a9",
+    "bundleFingerprint": "sha256:c55d8f01391feb001465b4ff43b68828a1d9d56961e9709c422f54941eb3e887",
+    "bookDigest": "sha256:c8419ba093c62808931436a7d5e3fd080c74c6cf974848d8c5a99a45169b0115",
+    "reviewInputFingerprint": "sha256:655ba531c0bb57d6340d65ae150e76dbb7998386600bba4c83ac7961aa026374",
+    "dualSummaryDigest": "sha256:c5f14203a30b2f20c3483811f36913598b727fc7d084f4c63b1489a1614e8fa6",
+    "canonicalLandscapeDigest": "sha256:3d438a80cfcc3c7817fab19c86110f7057fa80c4c8a42a7c53b78244425c0c63"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-a",
+      "campaignDigest": "sha256:083d746448d72df0b29bdd72648d9f95774329ce36d93014dc072ae34c21b2c9",
+      "roundId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:655ba531c0bb57d6340d65ae150e76dbb7998386600bba4c83ac7961aa026374",
+      "batchId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:da021ab6edb09ca51e0bea5e3c9294cf92fa1d6f567672ceb0f75e8137f5c518",
+      "runId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "runManifestDigest": "sha256:7b020c57b27cef7b02f77f2fd446e00a5d1b8dd80801b44ca9ef2440f4f6fd22",
+      "resultsDigest": "sha256:ae9b2380baf8faac5f7244b20a55ae4ab2d9db982d9971eaad7c663cc365af03"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-b",
+      "campaignDigest": "sha256:903ebfa573a52a17405cd8136cc361e9d4102c6975b099e7b08bb284cb5a7f31",
+      "roundId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:655ba531c0bb57d6340d65ae150e76dbb7998386600bba4c83ac7961aa026374",
+      "batchId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:cc686b292e13f18eb9f18dfa99a580e0a1f5329217659587e754aa120878ed29",
+      "runId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "runManifestDigest": "sha256:249334450a55104e14a2e3911ba891ef746d90cd8eeb7e2a7a34e93125b11a0a",
+      "resultsDigest": "sha256:1978d1b1ad25d8a23c3df618b0b3caa61b044a954ba7e5193bf125ab21de052c"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-vready-geometry-functions-eight-keep-partial-v1-decision-001",
+      "goalId": "50612a57-7b9d-45fd-bc08-e95556444760",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:32b53f63be17b4df0694c26b8bd7c76c4c928d5b9e916503deb79433ae2eb677",
+      "pageFingerprint": "sha256:3f894e4ed51ae8c241d36835fcf06a6107af50287352950c5ac12ead2f0db49a",
+      "goalReviewContextFingerprint": "sha256:48b266801cbaaf949cdc824a1b52196f2d254dde0cb724b30cbdc3b9f299fecf",
+      "finalText": {
+        "titleDe": "Volumenformel von Kreiskegeln als Grenzfall von Pyramiden plausibilisieren",
+        "titleEn": "Justify the cone volume formula as a limiting case of pyramids",
+        "descriptionDe": "Die lernende Person kann die Volumenformel eines geraden Kreiskegels plausibilisieren, indem sie den Körper als Grenzfall geeigneter Pyramiden deutet und den Zusammenhang zur Formel V = 1/3 pi r^2 h erläutert.",
+        "descriptionEn": "The learner can justify the volume formula of a right circular cone by interpreting the solid as a limiting case of suitable pyramids and by explaining the relation to V = 1/3 pi r^2 h."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-vready-geom-func-17-a:50612a57-7b9d-45fd-bc08-e95556444760",
+          "recordDigest": "sha256:48bf2d7a3e0299e9ecf6d0f519546a15d4acd898323d926b7e5611ad203a9a66"
+        },
+        "second": {
+          "recordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.003",
+          "recordDigest": "sha256:a8cddcdcf8fe3ee42e48ccb3c11f62c8395f1c322cd2f0cf9b9b45ef1f5bc3e8"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die geometrische Plausibilisierung der Kegelvolumenformel als eine Kompetenz ohne formalen Grenzwertbeweis.",
+      "rationaleEn": "Both rounds retain geometric plausibilization of the cone-volume formula as one competence without requiring a formal limit proof."
+    },
+    {
+      "decisionId": "math-m7-vready-geometry-functions-eight-keep-partial-v1-decision-002",
+      "goalId": "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:847eb69ae232c44725e27a24b487175077b5cb5516b0eaf42cbfa1f3bf7cb13f",
+      "pageFingerprint": "sha256:b35d1a36b177126fccf98514e78471b4e13af36095441ad74750af02cd7acf33",
+      "goalReviewContextFingerprint": "sha256:e409814fe75bca53fb267f7b783d9f2a26aee2e237cc4e010408b102527bef9e",
+      "finalText": {
+        "titleDe": "Rotationskörper beschreiben und deuten",
+        "titleEn": "Describe and interpret solids of revolution",
+        "descriptionDe": "Die lernende Person kann Zylinder, Kegel und Kugeln als Rotationskörper beschreiben, die zugrunde liegenden Drehbewegungen deuten und den Zusammenhang zwischen ebenen Erzeugenden und Körperformen erläutern.",
+        "descriptionEn": "The learner can describe cylinders, cones, and spheres as solids of revolution, interpret the underlying rotations, and explain the relation between planar generators and solid forms."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-vready-geom-func-17-a:b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+          "recordDigest": "sha256:a8124c2af37d4d799f0e8f59881a101bda77e51ad73b08954fd6f7d454a7eb04"
+        },
+        "second": {
+          "recordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.005",
+          "recordDigest": "sha256:70b8e976315dd63a11da875d173a8f93ca9a66db38d3b8f33ab031905286b13b"
+        }
+      },
+      "rationaleDe": "Die drei Körper sind Beispiele für ein einheitliches Rotationsprinzip; beide Runden halten den aktuellen Zieltext.",
+      "rationaleEn": "The three solids exemplify one rotation principle; both rounds retain the current goal text."
+    },
+    {
+      "decisionId": "math-m7-vready-geometry-functions-eight-keep-partial-v1-decision-003",
+      "goalId": "a4f6f5e4-f790-48d1-8b49-c9dc048c9d83",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3d5401421a834fbbc139b68a5efe0ad50b5ae26d44e39052e480b2d6dc14ffd6",
+      "pageFingerprint": "sha256:a872d2642e700fdd2121c4c359026b8f044efbd745fb6ef0693737fe7cbd601a",
+      "goalReviewContextFingerprint": "sha256:ae88f45822f65642c8f7d1fa56830ee54845fe2dd680e34d5f74cd6261136e0c",
+      "finalText": {
+        "titleDe": "Oberflächeninhalte von Kegeln begründen und berechnen",
+        "titleEn": "Justify and calculate cone surface areas",
+        "descriptionDe": "Die lernende Person kann die Formel für den Oberflächeninhalt eines geraden Kreiskegels mithilfe geeigneter Skizzen oder Netze begründen und sie in Berechnungen sicher anwenden.",
+        "descriptionEn": "The learner can justify the formula for the surface area of a right circular cone using suitable sketches or nets and apply it reliably in calculations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-vready-geom-func-17-a:a4f6f5e4-f790-48d1-8b49-c9dc048c9d83",
+          "recordDigest": "sha256:55f48159aa43f472e402da4e616356c09f0582342f67bd5b0925c9d012cb9b43"
+        },
+        "second": {
+          "recordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.006",
+          "recordDigest": "sha256:d21f98dc99df4998ac86278fc727df4f725dc708bcd664d1214c9493f168296b"
+        }
+      },
+      "rationaleDe": "Begründen und Berechnen des Kegeloberflächeninhalts bilden anhand des abgewickelten Mantels eine zusammenhängende Kompetenz.",
+      "rationaleEn": "Explaining and calculating cone surface area form one coherent competence through the developed lateral surface."
+    },
+    {
+      "decisionId": "math-m7-vready-geometry-functions-eight-keep-partial-v1-decision-004",
+      "goalId": "d9725eb6-6b1f-5674-9f17-3de10f5b1ed8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3a533317abfcdeda5409d881fab0dacd751000d3460fc8263e8d83e273494010",
+      "pageFingerprint": "sha256:c9afc9f22459f83ac556f8d0309fbc81d61e85b327854620349dee3e5e7324ac",
+      "goalReviewContextFingerprint": "sha256:3ec449fe77a27e29e75b3f03797396ef9d8aefe3f2ff88ee36c269fba68f453c",
+      "finalText": {
+        "titleDe": "Pythagoreische trigonometrische Beziehung herleiten",
+        "titleEn": "Derive the Pythagorean trigonometric identity",
+        "descriptionDe": "Die lernende Person kann die Beziehung $\\sin^2(\\alpha)+\\cos^2(\\alpha)=1$ anschaulich oder rechnerisch herleiten.",
+        "descriptionEn": "The learner can derive $\\sin^2(\\alpha)+\\cos^2(\\alpha)=1$ visually or algebraically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-vready-geom-func-17-a:d9725eb6-6b1f-5674-9f17-3de10f5b1ed8",
+          "recordDigest": "sha256:5a4387aea13abacc91e2f031115c38ee9a93cacf6cc964cc9fa315dffd615573"
+        },
+        "second": {
+          "recordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.008",
+          "recordDigest": "sha256:522187769a8b0fd85656ac401f055a22c4b8383f162b19a0cccf0d261a0f4583"
+        }
+      },
+      "rationaleDe": "Der Text fordert die Herleitung genau einer pythagoreischen trigonometrischen Identität und lässt passende Wege offen.",
+      "rationaleEn": "The text requires deriving exactly one Pythagorean trigonometric identity while leaving suitable methods open."
+    },
+    {
+      "decisionId": "math-m7-vready-geometry-functions-eight-keep-partial-v1-decision-005",
+      "goalId": "674baaa8-911d-5231-9330-881c5288634f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c8a9aa24724aa2e67c38e9be9d61ff591f89e58ce756bef4ab0dd8662397697b",
+      "pageFingerprint": "sha256:2c7374d0ba78c38a08ed135fd487c24bb56d1837359ca63c64de5f82c7d299a3",
+      "goalReviewContextFingerprint": "sha256:0eaaa384188efa9ce491dc89006bd94dde52f48a8ca707957c55a48dd4f49f39",
+      "finalText": {
+        "titleDe": "Komplementwinkelbeziehung von Sinus und Kosinus herleiten",
+        "titleEn": "Derive the complementary-angle relation of sine and cosine",
+        "descriptionDe": "Die lernende Person kann die Beziehung $\\sin(90^\\circ-\\alpha)=\\cos(\\alpha)$ anschaulich oder rechnerisch herleiten.",
+        "descriptionEn": "The learner can derive $\\sin(90^\\circ-\\alpha)=\\cos(\\alpha)$ visually or algebraically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-vready-geom-func-17-a:674baaa8-911d-5231-9330-881c5288634f",
+          "recordDigest": "sha256:5dced024e74fa0ef7677d3ab8c6c0cb55eaeaf11ff7ded4b088c228c4d53bb6b"
+        },
+        "second": {
+          "recordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.009",
+          "recordDigest": "sha256:6943e459efbd967aa702a026b4b2bd24e1611f563ef226684d34e6c752859291"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die Herleitung der einzelnen Komplementwinkelbeziehung ohne zusätzliche Teilkompetenz.",
+      "rationaleEn": "Both rounds retain derivation of the single complementary-angle identity without adding another subcompetence."
+    },
+    {
+      "decisionId": "math-m7-vready-geometry-functions-eight-keep-partial-v1-decision-006",
+      "goalId": "bfa2351c-735e-56eb-a778-2413aa68db42",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:84ffb608e6f5fa0b93db989b11f8ce765fa4f92e328496571a44238d77e516a3",
+      "pageFingerprint": "sha256:0ba27de7025bf9f1cfb3561fbd9e8357fc2f564ed199c827a49e9e5431b3eb32",
+      "goalReviewContextFingerprint": "sha256:5e64e4dfb849984533fe97b478fc04cbf30d8cfe5d393663d83dd1fde59e3e5d",
+      "finalText": {
+        "titleDe": "Parameterwirkung auf Schargraphen beschreiben",
+        "titleEn": "Describe parameter effects on family graphs",
+        "descriptionDe": "Die lernende Person kann an Schargraphen beschreiben, wie ein Parameter die Lage oder Form des Graphen verändert.",
+        "descriptionEn": "The learner can describe on family graphs how a parameter changes the position or shape of the graph."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-vready-geom-func-17-a:bfa2351c-735e-56eb-a778-2413aa68db42",
+          "recordDigest": "sha256:348ebab2569d100fea397e587da2759b4e236221bfb8abffeb76dd6690d88317"
+        },
+        "second": {
+          "recordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.011",
+          "recordDigest": "sha256:2b54f25d5b44aa0dbb3ec47c1ef10f995b52411df3a25d76c90443739ec97e59"
+        }
+      },
+      "rationaleDe": "Das Ziel beschränkt sich auf das Beschreiben der Parameterwirkung an Schargraphen; rechnerische Analysen sind eigene Ziele.",
+      "rationaleEn": "The goal is limited to describing parameter effects on function-family graphs; calculations belong to separate goals."
+    },
+    {
+      "decisionId": "math-m7-vready-geometry-functions-eight-keep-partial-v1-decision-007",
+      "goalId": "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ac972f8243b31b637ee3c2e62d9dfc00352900fd0198f9ec7b7d5da82b93d66e",
+      "pageFingerprint": "sha256:bc8f558c2e6cbbc453bc3a5cf675bee264d9525df206f10ef99f9bcaa64aacc7",
+      "goalReviewContextFingerprint": "sha256:c6381ea560151f49698ae8dcbb2bc0c30f4284092e4479edfb5d8f602eb92cd5",
+      "finalText": {
+        "titleDe": "Ganzrationale Funktionenscharen untersuchen",
+        "titleEn": "Analyze polynomial function families",
+        "descriptionDe": "Die lernende Person kann ganzrationale Funktionenscharen in Abhängigkeit vom Parameter untersuchen, charakteristische Grapheneigenschaften bestimmen und die Ergebnisse fachsprachlich deuten.",
+        "descriptionEn": "The learner can analyze polynomial function families depending on the parameter, determine characteristic graph properties, and interpret the results in mathematical language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-vready-geom-func-17-a:fcf9af67-7abd-5f69-a22a-b436297d44c5",
+          "recordDigest": "sha256:900897516a618a7fd25889c3d7a0951c1e221d3cdbd5aa0b3bfc5d39b7488c02"
+        },
+        "second": {
+          "recordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.013",
+          "recordDigest": "sha256:e1765e53bdd5e62ccfdeba399647dc11931a1ca2bc35600f234b29f687d840f6"
+        }
+      },
+      "rationaleDe": "Die Untersuchung ganzrationaler Scharen und Deutung charakteristischer Grapheneigenschaften bleibt eine abgegrenzte Analysekompetenz.",
+      "rationaleEn": "Investigating polynomial function families and interpreting characteristic graph properties remains a bounded analysis competence."
+    },
+    {
+      "decisionId": "math-m7-vready-geometry-functions-eight-keep-partial-v1-decision-008",
+      "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:48feb3aa11cb20b4eb0261019ee9de02fde0d4a99d288f615cbe67d9a5973da9",
+      "pageFingerprint": "sha256:f2f2cb227bbe62c30143cac01827be8caf99fc1133607f5f1a2cc891559faeac",
+      "goalReviewContextFingerprint": "sha256:6d407a8c0c21fa2566737935469e04f2105e3991cd334b342945543ac81ac71a",
+      "finalText": {
+        "titleDe": "Integrale ganzrationaler Funktionenscharen berechnen",
+        "titleEn": "Compute integrals of polynomial function families",
+        "descriptionDe": "Die lernende Person kann Stammfunktionen und bestimmte Integrale ganzrationaler Funktionenscharen parameterabhängig berechnen und die Ergebnisse im Zusammenhang der Schar deuten.",
+        "descriptionEn": "The learner can compute antiderivatives and definite integrals of polynomial function families depending on the parameter and interpret the results in the context of the family."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-vready-geom-func-17-a:d144a855-9139-55c7-a801-e8b85dab5f01",
+          "recordDigest": "sha256:e88b2da8bdb27a8ffa0d2c2a229edc6d73ab271ac8222f50cda01ccb93e5ed5b"
+        },
+        "second": {
+          "recordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.014",
+          "recordDigest": "sha256:cc414b79f70c68ae6e039d4453ce052448232186308fcfd144efb4cf455981c1"
+        }
+      },
+      "rationaleDe": "Stammfunktion, bestimmtes Integral und Deutung bilden dieselbe parameterabhängige Integrationskette.",
+      "rationaleEn": "Antiderivative, definite integral and interpretation form the same parameter-dependent integration chain."
+    }
+  ],
+  "manifestFingerprint": "sha256:bdf05d163ec8ab90122edfee4573cc4e04495b01eeaa206e541f262bcfccf72c"
+}

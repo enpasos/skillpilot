@@ -1,0 +1,5 @@
+Use case: precise-object-edit of Image 1, the `attempt-03.png` mathematics diagram.
+Asset type: corrected PNG learning-goal illustration.
+Primary request: Correct only the LEFT orange panel's coordinate geometry. The current red b arrow does not run parallel to the visible black +y axis, although the text says b=(0,1,0). Make the red b arrow run EXACTLY along that black +y axis from the common origin. Keep the blue a arrow along the black +x axis. Make the purple c arrow end exactly at the parallelogram sum of the blue a and corrected red b arrows; it must represent c=a+b and remain in the grey plane z=0.
+
+Preserve the complete right blue panel, all texts, symbols, color coding, layout, panel borders, font sizes and generous mobile-readable spacing from Image 1. Preserve exactly these visible formulas with no numerical or typographic changes: `a=(1,0,0)`, `b=(0,1,0)`, `c=(1,1,0)`, `c=a+b`, `a+b-c=0`, `e₁=(1,0,0)`, `e₂=(0,1,0)`, `e₃=(0,0,1)`, and `x·e₁+y·e₂+z·e₃=0 ⇒ x=y=z=0`. The left axes must be consistent with the three colored vectors. No new claims, small text, icons, watermarks or decorative vector arrows.

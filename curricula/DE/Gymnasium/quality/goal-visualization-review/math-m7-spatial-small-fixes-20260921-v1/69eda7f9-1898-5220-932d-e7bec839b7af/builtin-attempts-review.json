@@ -1,0 +1,71 @@
+{
+  "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af",
+  "reviewAuthority": "ai_candidate",
+  "reviewer": "Codex independent agent /root/math_repaired12_blind_a; exact serving model identifier not exposed",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen.imagegen",
+  "model": "Exact serving model identifier not exposed",
+  "sourceImagesInspected": true,
+  "generatedImagesActuallyViewed": true,
+  "attempts": [
+    {
+      "id": "69eda7f9-1898-5220-932d-e7bec839b7af",
+      "attempt": 1,
+      "selected": false,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-334f16e2-bd29-412b-a25a-6fb5926a2329.png",
+      "file": "attempt-01-rejected.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:09:12.379Z",
+      "fileInfo": {
+        "sha256": "sha256:5bda3dc07908037494b95af2132cce4162f7c5829b02e7863782f4b31cc230bf",
+        "bytes": 1243048,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-01.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:15bc66919ed74bfa6620afd9dcd57fa56a00e540ed70c9483b0781e0c6398f48",
+        "bytes": 1946
+      },
+      "decision": "rejected",
+      "selfReview": "Rejected: corner names and colored diagonal endpoints corrected, but y-axis arrow from A~(1046,507) to ~(1220,283) is steeper than depth edge A-D~(104, -96)."
+    },
+    {
+      "id": "69eda7f9-1898-5220-932d-e7bec839b7af",
+      "attempt": 2,
+      "selected": true,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-d84f4ed8-757d-443a-b18b-85d0605df978.png",
+      "file": "69eda7f9-1898-5220-932d-e7bec839b7af.attempt-02.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:12:19.976Z",
+      "fileInfo": {
+        "sha256": "sha256:c09c910d536a84625b0652f5339da8f7f74361042c5539d7a6f8d1e04317d6d4",
+        "bytes": 1369262,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-02.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:9089967a2f0ecb4ff7d891439295bab3c0c0849bf22cf82c7b585c5dec63d10e",
+        "bytes": 1022
+      },
+      "decision": "candidate_needs_independent_review",
+      "selfReview": "Selected only as AI candidate requiring independent review. Correct corners A/B/C/D and E/F/G/H, orange A-C and purple A-G. y-axis now follows A-D and is parallel to B-C, E-H and F-G within raster stroke tolerance."
+    }
+  ],
+  "nativePrepare": {
+    "beforeGeneration": true,
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "note": "Native prepare completed before initial and subsequent generation attempts; only tmp prompt metadata written."
+  },
+  "constructionReferences": {
+    "used": false,
+    "note": "Exact temporary reference diagrams were used only as provider inputs in attempt2 where present; no code-rendered geometry was composited into final images. Further NBP rounds will not use these references."
+  },
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false,
+    "humanApprovalClaimed": false
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "recordType": "independent_goal_visualization_ai_review",
+  "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
+  "goalTitleDe": "Widerlegung verständlich formulieren",
+  "reviewedAt": "2026-09-21T21:14:55Z",
+  "reviewer": "Independent Codex subagent; exact serving revision not exposed",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "decision": "accepted_pilot",
+  "aiApproved": "yes",
+  "aiApprovedAssetSha256": "1be92555033fa983dfd07cec527142f6618e98d9d635393bae076f0d81e1866c",
+  "humanApproval": "not_performed",
+  "independence": {
+    "generatedCandidate": false,
+    "consultedOtherVisualReview": false,
+    "priorDescriptionReviewOfGoal": true
+  },
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-proof-holds-20260921-v1/f84ea3d8-c255-552a-998a-202e42843f56/candidate.png",
+    "format": "PNG",
+    "width": 1679,
+    "height": 937,
+    "sha256": "1be92555033fa983dfd07cec527142f6618e98d9d635393bae076f0d81e1866c",
+    "actuallyViewed": true
+  },
+  "previousActiveAsset": {
+    "path": "app/public/assets/goal-visualizations/mathematik/f84ea3d8-c255-552a-998a-202e42843f56/f84ea3d8-c255-552a-998a-202e42843f56.jpg",
+    "format": "JPEG",
+    "width": 2752,
+    "height": 1536,
+    "sha256": "ee97f9be790c46f30d64a61d7a5cd4c30e834b7f7a0766562858cb061f0daed9",
+    "actuallyViewed": true,
+    "confirmedDefect": "Panel 3 labels its visibly short vertical side as 4 cm and long horizontal side as 2 cm."
+  },
+  "generationProvenance": {
+    "provider": null,
+    "modelOrTool": null,
+    "verification": "Not independently verified: inspected edit prompt and reference JPG, but no generation receipt supplied. The old JPG provider metadata is not provenance for the new PNG.",
+    "editPromptPath": "edit-prompt.md",
+    "editPromptSha256": "0e971e6b433b52b5c18aadd5be2d21e73260a3043a9e8f2f72748ca8bd11ef10",
+    "referenceStrategy": "Targeted correction of only the two dimension labels, using the previous four-panel JPG as edit and style reference."
+  },
+  "panelChecks": [
+    {
+      "panel": 1,
+      "result": "pass",
+      "observation": "The false universal statement Alle Rechtecke sind Quadrate is visibly quoted as the statement to refute, not affirmed as a rule."
+    },
+    {
+      "panel": 2,
+      "result": "pass",
+      "observation": "The 4 cm x 2 cm counterexample is drawn as a wide approximately 2:1 rectangle with four right-angle marks. Unequal adjacent side lengths exclude a square."
+    },
+    {
+      "panel": 3,
+      "result": "pass",
+      "observation": "The candidate labels the short vertical side 2 cm and the long horizontal side 4 cm. Four right angles establish the rectangle premise; unequal side lengths invalidate the square conclusion."
+    },
+    {
+      "panel": 4,
+      "result": "pass",
+      "observation": "The original universal statement is crossed out and Aussage widerlegt follows correctly from one counterexample; no converse or claim that no rectangle is a square is introduced."
+    }
+  ],
+  "otherChecks": {
+    "germanText": "pass: all visible words and umlauts readable and semantically sound; concise diagram fragments are acceptable",
+    "dimensionsAndUnits": "pass: 4 cm horizontal, 2 cm vertical, consistent with panel 2 and approximate shape",
+    "style": "pass: friendly abstract comic style, pastel panels, soft heavy outlines and small generic figures preserved",
+    "visibleArtifacts": "none observed: no watermark, technical ID, cropped text or obvious foreign logo",
+    "counterexampleLogic": "pass: premise true and claimed conclusion false are separately demonstrated",
+    "standalonePrompt": "reconstruction-prompt.md added; no new generation performed"
+  },
+  "legibility": {
+    "inspectionMethod": "Actual image views plus inspected Chromium screenshot of isolated proportional image renders; not an actual Cockpit or chat-host acceptance test",
+    "previews": [
+      {
+        "cssWidth": 840,
+        "result": "pass",
+        "observation": "Step headings, dimensions and explanatory details are readable."
+      },
+      {
+        "cssWidth": 420,
+        "result": "limited",
+        "observation": "Four-step structure remains visible; small body text needs enlargement for comfortable reading. Full mobile readability without zoom is not certified."
+      }
+    ],
+    "resolutionChange": "Candidate has fewer pixels than the previous JPG; the inspected 840-pixel rendering remains clear. Pixel-identical preservation outside the requested edit is not asserted."
+  },
+  "suggestedAltTextDe": "Vier Schritte einer Widerlegung: Die Behauptung, alle Rechtecke seien Quadrate, wird an einem Rechteck mit 4 cm langer horizontaler und 2 cm langer vertikaler Seite geprüft. Es hat vier rechte Winkel, aber nicht vier gleich lange Seiten. Damit ist die Allaussage durch ein Gegenbeispiel widerlegt.",
+  "scopeLimits": [
+    "No human approval or rights clearance is claimed.",
+    "No canonical, global QA, runtime or publication state was changed.",
+    "No approval of the current goal-description wording or full D/P/A/M/V binding is implied.",
+    "Before integration, bind actual generation provenance, PNG path and exact asset hash; recheck affected page, goal and evidence bindings.",
+    "The visible diagram supports explanation but is not learner-performance evidence."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "goalId": "7bd8f022-5002-5610-994c-a9cec1890558",
+  "recordedAt": "2026-09-21T22:25:09.349Z",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactServingModel": "not exposed",
+  "resultId": "exec-c5654146-40bd-4a59-9f14-5bd3d1ce137d",
+  "nativePrepareCompletedBeforeGeneration": true,
+  "prompt": {
+    "path": "edit-prompt-v1.md",
+    "sha256": "sha256:92e32ee9e9c176fded5ac8b389929566bd47675affb7b111eceaa544f2e116e4"
+  },
+  "reference": {
+    "path": "app/public/assets/goal-visualizations/mathematik/7bd8f022-5002-5610-994c-a9cec1890558/7bd8f022-5002-5610-994c-a9cec1890558.jpg",
+    "sha256": "sha256:006b882b5c083e3452e7a7667d96e79696326116bbcee0272defa9cc1dec7d4d",
+    "actuallyViewedBeforeEditing": true
+  },
+  "candidate": {
+    "path": "rejected-geometry-v1.png",
+    "sha256": "sha256:b44b43c464a8de7d9b8e16709b1769e6248a2145e89cc3c4fa341db050b81cd5"
+  },
+  "rootReview": {
+    "actuallyViewed": true,
+    "decision": "rejected",
+    "findings": [
+      "Blue Pxy(2,1) is plotted near(3,1), y=2 tick is mislabeled3 and stray red3 text appears.",
+      "Unequal vector lengths and arc endpoints conflict with claimed90-degree rotation; formulas are correct but not a substitute for diagram correctness."
+    ]
+  },
+  "reviewAuthority": "ai_candidate",
+  "canonicalImported": false,
+  "humanApproval": false
+}

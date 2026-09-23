@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-21/m7-proof-statistics-hold-repairs-7-v1.config.json",
+  "configDigest": "sha256:aa2e16e00e4696801a33649797b9d4776baa0bd23d5496e8a53adc25808ec9ae",
+  "goalIds": [
+    "efc3506a-5f35-4d77-9498-d70a091a470b",
+    "f14e1643-ad8d-5235-a832-97987fa18489",
+    "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+    "77d607e0-0244-55ca-ba0f-214baa94b8de",
+    "f84ea3d8-c255-552a-998a-202e42843f56",
+    "01217f4a-5221-5df9-b379-7b241fccf809",
+    "a288231e-e4bb-5c65-b018-b79a51ca87d8"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:6f397085fd00ceaa2e60060af9593ca7527f08450fc5b8e44d72cf5bb0d3912d"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:17310c80c856515d1ff58a7fafe60e8af82c92a1a9ad2936293bea399a875f53",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a2ae144e8cff16518bba0a57ff2a57f7aaaaba7ed34eefe61c41c35923223fc0",
+    "reviewInputFingerprint": "sha256:d0fd45cab7f27f9c1f372a0c4323c3c87734bbc479062affdadc1fa0726a62ad",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-a",
+        "campaignDigest": "sha256:59267404a55a7b3b7d0bb09b457c047ae0f9526e00af851389cf5ffee04bd0ab",
+        "roundId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-independent-a",
+        "batchId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:7205917a54ff3aecf031a5eaae21ce2524123ab8cca4aade7bd04e48cd9ffe86"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-b",
+        "campaignDigest": "sha256:6bc2ad9a24f929d451e2ec9ac816b6db854405df5d6fd8950568605721927209",
+        "roundId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-independent-b",
+        "batchId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:a694e3fffdc25d72c7990cbd5e6bbf1b12e5e80d6e049a4f7bd1c99229f04c0a"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

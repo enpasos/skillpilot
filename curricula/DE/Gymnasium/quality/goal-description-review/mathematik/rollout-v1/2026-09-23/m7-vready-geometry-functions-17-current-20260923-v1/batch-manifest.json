@@ -1,0 +1,70 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-vready-geometry-functions-17-current-20260923-v1.config.json",
+  "configDigest": "sha256:336a020be0ec69505f76d0090c2020672ff8eaf59f56bdc86171f94ff00a52a9",
+  "goalIds": [
+    "8064088b-dc0a-4a67-ad63-360fdcc9869d",
+    "59d5a330-61be-4590-ab46-cf7cefecd144",
+    "50612a57-7b9d-45fd-bc08-e95556444760",
+    "74d29d0c-80b3-4d46-a5f5-3c2f609e8483",
+    "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+    "a4f6f5e4-f790-48d1-8b49-c9dc048c9d83",
+    "1ea06c0c-5c60-45cd-8f31-638de98820b4",
+    "d9725eb6-6b1f-5674-9f17-3de10f5b1ed8",
+    "674baaa8-911d-5231-9330-881c5288634f",
+    "4cba85d3-2e25-5c4b-9c4c-37e5b201dce7",
+    "bfa2351c-735e-56eb-a778-2413aa68db42",
+    "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
+    "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+    "d144a855-9139-55c7-a801-e8b85dab5f01",
+    "ccfd4e60-5728-568f-adb7-0b932d8e5aac",
+    "0e8417d7-effb-5314-93ba-a571b01726ce",
+    "e33e75e3-eae5-5a09-862f-d1a11176373f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:c3626ba2c165c23aaf521a4ac75a2e31d371f837dd6190f0e40b4a8b5fb99ad9"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:c8419ba093c62808931436a7d5e3fd080c74c6cf974848d8c5a99a45169b0115",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c55d8f01391feb001465b4ff43b68828a1d9d56961e9709c422f54941eb3e887",
+    "reviewInputFingerprint": "sha256:655ba531c0bb57d6340d65ae150e76dbb7998386600bba4c83ac7961aa026374",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-a",
+        "campaignDigest": "sha256:083d746448d72df0b29bdd72648d9f95774329ce36d93014dc072ae34c21b2c9",
+        "roundId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-independent-a",
+        "batchId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:da021ab6edb09ca51e0bea5e3c9294cf92fa1d6f567672ceb0f75e8137f5c518"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-b",
+        "campaignDigest": "sha256:903ebfa573a52a17405cd8136cc361e9d4102c6975b099e7b08bb284cb5a7f31",
+        "roundId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-independent-b",
+        "batchId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:cc686b292e13f18eb9f18dfa99a580e0a1f5329217659587e754aa120878ed29"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

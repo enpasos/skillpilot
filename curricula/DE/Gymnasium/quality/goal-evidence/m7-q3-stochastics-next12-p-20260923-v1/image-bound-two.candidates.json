@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-understanding-evidence-m7-q3-stochastics-next12-image-two-20260923-v1",
+  "reviewedAt": "2026-09-23T07:22:00Z",
+  "reviewer": "codex-math-m7-q3-stochastics-first-pass-2026-09-23",
+  "goals": [
+    {
+      "goalId": "d81bc960-4eff-5c87-90b8-fec8e1cb8b3a",
+      "reason": "Text and current illustration /assets/goal-visualizations/mathematik/d81bc960-4eff-5c87-90b8-fec8e1cb8b3a/d81bc960-4eff-5c87-90b8-fec8e1cb8b3a.jpg bound at sha256:00f2c41228d35b984df1753913b247da4ea7a4b08f50d63a47c240e86b60e32a. Original pixels reviewed: Original-JPG fachlich gegen aktuelles Ziel geprüft: Bei zwei aus fünf Objekten ergeben 5·4 geordnete Paare; jede Zweierauswahl erscheint in 2! Anordnungen. Deshalb ist (5 über 2)=20/2=10 und allgemein (n über k)=n!/[k!(n-k)!]. Öffentliche und kanonische Bytes entsprechen diesem SHA. Aktueller maschineller KEEP; historische Freigaben unverändert.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "meaning",
+            "essentialUnderstandingDe": "Der Binomialkoeffizient (n über k) zählt k-elementige Teilmengen einer n-elementigen Menge, nicht geordnete Folgen.",
+            "essentialUnderstandingEn": "The binomial coefficient n choose k counts k-element subsets of an n-element set, not ordered sequences.",
+            "observablePerformanceDe": "Die lernende Person erklärt anhand konkreter Teilmengen, weshalb Umordnungen nicht mehrfach zählen.",
+            "observablePerformanceEn": "The learner uses concrete subsets to explain why permutations are not counted repeatedly."
+          },
+          {
+            "id": "mental-count",
+            "essentialUnderstandingDe": "In einfachen Fällen kann die Anzahl aus einer geordneten Zählung durch Division der k!-Umordnungen oder aus einer systematischen Liste gewonnen werden.",
+            "essentialUnderstandingEn": "In simple cases the count follows from an ordered count divided by k! permutations or from a systematic list.",
+            "observablePerformanceDe": "Die lernende Person berechnet kleine Binomialkoeffizienten ohne Hilfsmittel und gleicht den Wert mit der Teilmengenbedeutung ab.",
+            "observablePerformanceEn": "The learner computes small binomial coefficients without aids and reconciles the result with their subset meaning."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "meaning",
+            "mental-count"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "selection-size",
+            "textDe": "Zweiergruppen durch Paarliste gegenüber Dreiergruppen durch geordnete Zählung und Division",
+            "textEn": "pairs verified by listing versus triples counted by ordered selections and division"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "five-pairs",
+            "taskDemandDe": "Erkläre und berechne (5 über 2) als Auswahl zweier Personen aus fünf ohne Reihenfolge.",
+            "taskDemandEn": "Explain and compute 5 choose 2 as selecting two people from five without order.",
+            "expectedPerformanceDe": "5·4 geordnete Möglichkeiten, jedes Paar zweimal, also (5 über 2)=10. Eine Paarliste bestätigt die Zahl.",
+            "expectedPerformanceEn": "There are 5·4 ordered possibilities and each pair occurs twice, so 5 choose 2 equals 10. A pair list confirms it.",
+            "understandingFocusDe": "Bedeutung des Koeffizienten über ungeordnete Paare.",
+            "understandingFocusEn": "Interpreting the coefficient through unordered pairs."
+          },
+          {
+            "id": "six-triples",
+            "taskDemandDe": "Deute und berechne (6 über 3) ohne Hilfsmittel; begründe die Korrektur für verschiedene Reihenfolgen.",
+            "taskDemandEn": "Interpret and compute 6 choose 3 without aids; justify the correction for different orders.",
+            "expectedPerformanceDe": "6·5·4 geordnete Folgen, aber jedes Dreierteam hat 3!=6 Reihenfolgen; daher (6 über 3)=20.",
+            "expectedPerformanceEn": "There are 6·5·4 ordered sequences, but each triple has 3!=6 orders; thus 6 choose 3 equals 20.",
+            "understandingFocusDe": "Dreier-Auswahl und Reihenfolge sauber trennen.",
+            "understandingFocusEn": "Separating selection of three from their order."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "66f432e9-22d3-51a9-8787-35f91db30616",
+      "reason": "Text and current illustration /assets/goal-visualizations/mathematik/66f432e9-22d3-51a9-8787-35f91db30616/66f432e9-22d3-51a9-8787-35f91db30616.jpg bound at sha256:f1e15026bd7e03282a585b88131f4a635c6345a504013fda1223a6f179f109c3. Original pixels reviewed: Original-JPG fachlich gegen aktuelles Ziel geprüft: Das Modell B(4,0.5) erfüllt feste Versuchszahl, Unabhängigkeit, zwei Ausgänge und konstantes p. Das Histogramm zeigt für k=0..4 korrekt 1/16,4/16,6/16,4/16,1/16; der Basketball-Gegenkontext thematisiert veränderliches p und Abhängigkeit. Öffentliche und kanonische Bytes entsprechen diesem SHA. Aktueller maschineller KEEP; historische Freigaben unverändert.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "model-fit",
+            "essentialUnderstandingDe": "Eine Binomialverteilung setzt eine feste Versuchszahl, zwei Ausgänge, konstantes p und unabhängige Versuche voraus.",
+            "essentialUnderstandingEn": "A binomial distribution requires a fixed trial count, two outcomes, constant p and independent trials.",
+            "observablePerformanceDe": "Die lernende Person definiert X, n und p und begründet anhand der Erzeugung der Daten, ob das Modell passt.",
+            "observablePerformanceEn": "The learner defines X, n and p and uses the data-generating mechanism to justify whether the model fits."
+          },
+          {
+            "id": "histogram-meaning",
+            "essentialUnderstandingDe": "Ein Histogramm der Binomialverteilung ordnet jeder zulässigen Trefferzahl eine Wahrscheinlichkeit zu; Schwerpunkt und Form hängen von n und p ab.",
+            "essentialUnderstandingEn": "A binomial histogram assigns a probability to each admissible success count; center and shape depend on n and p.",
+            "observablePerformanceDe": "Die lernende Person liest typische Trefferzahlen und Schiefe aus einem passenden Histogramm ab und verbindet sie mit n und p.",
+            "observablePerformanceEn": "The learner reads typical counts and skew from a suitable histogram and relates them to n and p."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "model-fit",
+            "histogram-meaning"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "dependence",
+            "textDe": "unabhängige Produktionsfehler gegenüber Ziehung ohne Zurücklegen aus kleinem festem Bestand",
+            "textEn": "independent production defects versus drawing without replacement from a small fixed stock"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "factory-histogram",
+            "taskDemandDe": "In jeder von 20 unabhängigen Prüfungen tritt ein Defekt mit p=0,1 auf. Definiere X und erläutere, wo ein passendes Histogramm ungefähr sein Maximum hat und warum es rechtsschief ist.",
+            "taskDemandEn": "In each of 20 independent checks a defect occurs with p=0.1. Define X and explain where a suitable histogram roughly peaks and why it is right-skewed.",
+            "expectedPerformanceDe": "X zählt Defekte und folgt Bin(20;0,1); der Erwartungswert ist 2, der wahrscheinlichste Wert 2. Kleine Trefferzahlen dominieren, größere bleiben als rechter Rand möglich.",
+            "expectedPerformanceEn": "X counts defects and follows Bin(20,0.1); its mean is 2 and mode is 2. Small counts dominate while larger counts form a right tail.",
+            "understandingFocusDe": "Parameter mit Lage und Form eines Histogramms verbinden.",
+            "understandingFocusEn": "Linking parameters to histogram center and shape."
+          },
+          {
+            "id": "small-stock",
+            "taskDemandDe": "Aus einem Bestand von 25 Teilen mit genau fünf Defekten werden 20 ohne Zurücklegen geprüft. Jemand schlägt Bin(20;0,2) vor. Beurteile die Eignung.",
+            "taskDemandEn": "Twenty items are checked without replacement from a stock of 25 with exactly five defective items. Someone proposes Bin(20,0.2). Assess its suitability.",
+            "expectedPerformanceDe": "X zählt Defekte, aber die Ziehungen sind abhängig und die bedingte Trefferchance verändert sich; das vorgeschlagene Binomialmodell ist für diese exakte Situation nicht geeignet.",
+            "expectedPerformanceEn": "X counts defects, but draws are dependent and the conditional defect chance changes; the proposed binomial model is not appropriate for this exact situation.",
+            "understandingFocusDe": "Modellgrenze aus dem Ziehmechanismus statt aus der Diagrammoptik.",
+            "understandingFocusEn": "Assessing model limits from sampling mechanism rather than visual resemblance."
+          }
+        ]
+      }
+    }
+  ]
+}

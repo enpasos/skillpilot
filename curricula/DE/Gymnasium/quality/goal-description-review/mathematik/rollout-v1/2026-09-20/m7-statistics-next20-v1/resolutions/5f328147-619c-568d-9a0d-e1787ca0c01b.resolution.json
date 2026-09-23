@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-statistics-next20-v1-20260920-resolution-5f328147-619c-568d-9a0d-e1787ca0c01b",
+  "goal": {
+    "goalId": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:7dc47912a151219223b3b9d0f04cb27beddafcf1d776273845386828559bd404",
+    "pageFingerprint": "sha256:e855f2e3f51272db18da9ff097abae26c827e678fbd607d8172e17c1149d3198",
+    "goalReviewContextFingerprint": "sha256:407435f38f2c4a95c0a5a98e8b69d3679627183b357a100109cbde215651195d",
+    "finalText": {
+      "titleDe": "Konfidenzintervalle für Wahrscheinlichkeiten berechnen",
+      "titleEn": "Compute confidence intervals for probabilities",
+      "descriptionDe": "Die lernende Person kann von einer Stichprobe auf die unbekannte Trefferwahrscheinlichkeit der Grundgesamtheit schließen, Konfidenzintervalle in Sachzusammenhängen aus $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$ bestimmen und die Näherung $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ als symmetrisches Intervall um $h_n$ verwenden.",
+      "descriptionEn": "The learner can infer the unknown population success probability from a sample, determine confidence intervals in context from $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$, and use the approximation $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ as an interval symmetric about $h_n$."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-statistics-next20-v1-20260920-a",
+      "campaignDigest": "sha256:5de48c488eaf8d9e91e00a48794075a8d10eeed307836f3d141437a045d9d156",
+      "roundId": "mathematik-m7-statistics-next20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-statistics-next20-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:f40a00ab1ccc32e6eb4278c4b79aa2a29ca6c9503d3de0be13071f8b8e41152b",
+      "goalReviewContextFingerprint": "sha256:407435f38f2c4a95c0a5a98e8b69d3679627183b357a100109cbde215651195d",
+      "batchId": "mathematik-m7-statistics-next20-v1-20260920-first-pass-a.batch-001",
+      "runId": "mathematik-m7-statistics-next20-v1-20260920-first-pass-a.batch-001.independent-a",
+      "runManifestDigest": "sha256:813b562d968cc7ee116fc86c96d407ce6fc9dcc4cc736baaf5b857b3ef31893c",
+      "resultsDigest": "sha256:91c1a0ddfc5f28c9a77f2e3c2992e7f061ee3cacd0b07ac0166834cff6e0d81c",
+      "recordId": "mathematik-m7-statistics-next20-v1-20260920-first-pass-a.batch-001.independent-a.record-011",
+      "recordDigest": "sha256:44625c40d0434c8ab07fad035c698e6873ff1e079671f6dcd6baf54d907f45e1"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-statistics-next20-v1-20260920-b",
+      "campaignDigest": "sha256:9cda370d944acd152f82f9bbb86b04bc4025f020a7d81cf39da8677e2e09641b",
+      "roundId": "mathematik-m7-statistics-next20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-statistics-next20-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:f40a00ab1ccc32e6eb4278c4b79aa2a29ca6c9503d3de0be13071f8b8e41152b",
+      "goalReviewContextFingerprint": "sha256:407435f38f2c4a95c0a5a98e8b69d3679627183b357a100109cbde215651195d",
+      "batchId": "mathematik-m7-statistics-next20-v1-20260920-first-pass-b.batch-001",
+      "runId": "mathematik-m7-statistics-next20-v1-20260920-b-codex-20260921",
+      "runManifestDigest": "sha256:6127f6080af55079d7973f0fee7f4af34fedb83f33ca065d945861532592d1e7",
+      "resultsDigest": "sha256:8e4f938189066913de14f10c7795990ad6d73a4c24ce4a363f05f04d6b48b3c5",
+      "recordId": "mathematik-m7-statistics-next20-v1-20260920-b-codex-20260921.5f328147-619c-568d-9a0d-e1787ca0c01b",
+      "recordDigest": "sha256:26502fdf76e60cd082ab240f07c6d1dcb53e003bd4a2c70aaa052444bb5008aa"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d810da68ca20b761a73ec89593593d702098832e42408e037028f18b1a0721ca"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-current-17.json",
+    "manifestId": "mathematik-m7-statistics-next20-v1-20260920-current17-synthesis",
+    "manifestDigest": "sha256:22abdbe1df45086ac6bb9e14ffd9b911c09b9ba287a18f256074665802aa5bfe",
+    "manifestFingerprint": "sha256:c7ea0d1ed78dfa1fc188f2b7ed73c40f584bb35eefe9c32c4ea50ac64d52234a",
+    "decisionId": "mathematik-m7-statistics-next20-v1-20260920-current17-9"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-m7-statistics-next20-v1-20260920-current17-9",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex Root informed synthesis; not an additional independent review",
+    "synthesizedAt": "2026-09-21T21:07:58.115Z",
+    "rationaleDe": "A trennt das Umkehren der p-abhängigen Ungleichung vom Einsetzen der beobachteten Häufigkeit in den Standardfehler; B bestätigt dies und die Randlagenproblematik. Rechnen und Methodenunterscheidung sind ein gemeinsamer Gegenstand.",
+    "rationaleEn": "A separates inversion of the p-dependent inequality from substitution of observed frequency into the standard error; B confirms this and the boundary problem. Calculation and method distinction form one subject.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Beim Konfidenzintervall ist h_n beobachtet und p unbekannt: Gesucht sind die p-Werte, die die angegebene Ungleichung erfüllen. Das Einsetzen von h_n in den Streuungsterm liefert ein anderes, symmetrisches Näherungsintervall und ist keine algebraisch identische Umformung.",
+      "essentialUnderstandingEn": "For a confidence interval, h_n is observed and p is unknown: the aim is to find the p values satisfying the stated inequality. Substituting h_n in the spread term yields a different, symmetric approximate interval and is not an algebraically identical rearrangement.",
+      "observablePerformanceDe": "Die lernende Person ermittelt für Stichprobendaten und ein angegebenes c das Intervall zulässiger p-Werte aus der Ungleichung, berechnet zusätzlich die symmetrische Näherung und erklärt, an welcher Stelle dabei p durch h_n ersetzt wird.",
+      "observablePerformanceEn": "For sample data and a specified c, the learner determines the interval of admissible p values from the inequality, also computes the symmetric approximation, and explains where p is replaced by h_n.",
+      "transferExpectationDe": "Eine unabhängige Aufgabe liefert statt der Rohdaten eine Kurvendarstellung der beiden Seiten der Ungleichung oder eine Häufigkeit nahe einer Randlage. Die lernende Person bestimmt die zulässigen p-Werte und unterscheidet weiterhin das invertierte Intervall von der symmetrischen Näherung.",
+      "transferExpectationEn": "An independent task provides a graph of the two sides of the inequality instead of raw data, or a frequency near a boundary. The learner determines the admissible p values while continuing to distinguish the inverted interval from the symmetric approximation."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-78b058c19ac973110be05c97ec21d0889364d3d2e7466916cdff3a54b89641ca",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:c39100616e4dad799449ef5b0a07daa73b4f900a35719282b2fcf0e79bb14f66"
+}

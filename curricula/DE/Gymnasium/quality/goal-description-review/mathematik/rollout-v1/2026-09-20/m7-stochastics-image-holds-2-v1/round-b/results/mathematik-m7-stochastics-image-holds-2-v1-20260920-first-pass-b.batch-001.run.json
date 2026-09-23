@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-b-codex-20260921",
+  "campaignId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-b",
+  "roundId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-b",
+  "batchId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:0a5ba63c40dce0ef8f9dba4736793f22eefede29917a0c9b42f18627098a2906",
+  "bundleFingerprint": "sha256:b69cebfb281c9bf2891f016b2dd72c82ef8a14a9112a9cb20fb612caf3b054ba",
+  "bookDigest": "sha256:06ea5a4df3687b8ada17b351707d80d17628181e69f2aef7279d3301e22813d5",
+  "provider": "OpenAI",
+  "model": "GPT-5 family via Codex; exact serving revision not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:8cb13cde2bd3e19a4a037460186441f5312ce88c7948f973ee9cb55eb05e5148",
+  "independenceGroupId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "42d300e3-e982-5889-98d7-fc297f10eff1",
+    "455ef29a-7194-5c5a-b832-1c27fcbf2516"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:0a5ba63c40dce0ef8f9dba4736793f22eefede29917a0c9b42f18627098a2906"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-21T21:09:31Z",
+  "completedAt": "2026-09-21T21:11:24.412Z",
+  "status": "completed",
+  "outputDigest": "sha256:0f132ff5dee62134d3c57004f984bd7814d7097f388b9a2d0e76f9b005f61e27",
+  "toolchainVersion": "codex-blind-description-review-v2"
+}

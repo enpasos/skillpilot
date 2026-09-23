@@ -8,45 +8,17 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `52e57eb5-7cd1-5df0-a8c6-7b090f097d9f.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f.jpg`
+- Quellbild: `52e57eb5-7cd1-5df0-a8c6-7b090f097d9f.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Bearbeite das beigefügte Vierfeldertafel-Referenzbild gezielt. Erhalte beide numerisch korrekten Tafeln und den freundlichen farbigen Stil. Innenzahlen links 30,20 / 10,40; Ränder 50,50 sowie40,60, Gesamt100. Rechts normiert .30,.20 / .10,.40; Ränder .50,.50 und .40,.60, Gesamt1.00. Entferne die beiden irreführenden einzelnen Pfeile von „Bedingte Wahrscheinlichkeit“ zu nur einer Tabellenzelle. Stelle darunter drei klar getrennte Erklärungskarten dar: „Gemeinsam: P(A∩B)=30/100=0,30“; „Unter den 50 B-Fällen: P(A|B)=30/50=0,60“; „Unter den 40 A-Fällen: P(B|A)=30/40=0,75“. Verwende dezente Farbklammern für Bezugszeile B bzw. Bezugsspalte A; keine einzelne Zelle als bedingte Wahrscheinlichkeit beschriften. Rechnungen und jeweilige Bezugsgruppe eindeutig zusammengehörig.
 
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Vierfeldertafeln interpretieren
-Beschreibung: Die lernende Person kann Vier- bzw. Mehrfeldertafeln aus Sachtexten erstellen, absolute und relative Häufigkeiten eintragen und gemeinsame sowie bedingte Wahrscheinlichkeiten an konkreten Beispielen ablesen.
-
-Zusatzanweisung:
-Use one clean German title only: "Vierfeldertafeln interpretieren".
-Use exactly this consistent two-way table. Rows: B, nicht B, Summe. Columns: A, nicht A, Summe.
-Absolute frequencies:
-- B row: A = 30, nicht A = 20, Summe = 50.
-- nicht B row: A = 10, nicht A = 40, Summe = 50.
-- Summe row: A = 40, nicht A = 60, Summe = 100.
-Relative frequencies:
-- B row: A = 0.30, nicht A = 0.20, Summe = 0.50.
-- nicht B row: A = 0.10, nicht A = 0.40, Summe = 0.50.
-- Summe row: A = 0.40, nicht A = 0.60, Summe = 1.00.
-Show how to read:
-- joint probability P(A∩B) = 30/100 = 0.30.
-- conditional probability P(A|B) = 30/50 = 0.60.
-- conditional probability P(B|A) = 30/40 = 0.75.
-Do not invent any other numbers. Every row and column sum must be correct.
-Keep the image simple: table, row/column sums, and arrows showing which denominator is used.
+Ausgabe als PNG. Freundlich, abstrakt, klar, comicartig; gut lesbare deutsche Texte, großzügige Abstände, keine Fotorealistik und keine sterile technische Neugestaltung. Das aktuelle Referenzbild ist Stil-/Korrekturgrundlage, seine hier beanstandeten Fehler dürfen nicht übernommen werden. Keine technischen IDs, URLs oder Dateinamen im Bild. Mathematische Zeichen und Werte exakt setzen. Erzeugung ist ein Kandidat, keine Freigabe.
 ```
 
 ## Review-Notiz

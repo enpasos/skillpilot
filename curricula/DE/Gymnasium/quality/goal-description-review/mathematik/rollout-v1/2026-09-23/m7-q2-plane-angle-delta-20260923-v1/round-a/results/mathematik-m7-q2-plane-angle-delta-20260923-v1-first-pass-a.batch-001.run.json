@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-q2-plane-angle-delta-20260923-v1-a.run-001",
+  "campaignId": "mathematik-m7-q2-plane-angle-delta-20260923-v1-a",
+  "roundId": "mathematik-m7-q2-plane-angle-delta-20260923-v1-first-pass-a",
+  "batchId": "mathematik-m7-q2-plane-angle-delta-20260923-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:e6c2b5a21a7d969b45a7b299b64ea66ffc59e9c9d61ff2f644448aad76470357",
+  "bundleFingerprint": "sha256:4799973582221dc14bb9e52b4c18a52218e246c5c915665ec7785683291591e6",
+  "bookDigest": "sha256:ce088f1dcd112fe72113a0b85b9859eeae9c3497c3dd8852987efd5a6d656221",
+  "provider": "openai",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:8348a9b3693b5ee63647c97c2d690c60899565935259d1499f72ed94f2668f5d",
+  "independenceGroupId": "mathematik-m7-q2-plane-angle-delta-20260923-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "bda6a659-9640-53a5-8be0-24705ab623ef"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:21fdb2cff2454fe623b42ebac0030ee5b7e99233e3f78ecdb9783358c3a3f8b8"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:f9581282e6d36a56fff2ff36ae51b513e61d877791fb6da81d5e86d21883e058"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:144480162bb755225e677b4772b3fa1340cbad20d22932c4a62b9a19ceccb3a1"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e6c2b5a21a7d969b45a7b299b64ea66ffc59e9c9d61ff2f644448aad76470357"
+    }
+  ],
+  "startedAt": "2026-09-23T02:01:00.000Z",
+  "completedAt": "2026-09-23T02:03:50.560Z",
+  "status": "completed",
+  "outputDigest": "sha256:1791875b006dc3e81bcfa86c05a6bc865c8ba590ea1ea2c3a8f2e4e66b57ab21",
+  "toolchainVersion": "codex-api-review-v1"
+}

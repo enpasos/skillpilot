@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b3be6291740f5a377c4176fece3b5d492b07f4c6ed8bdd42c6c19876f881d15c",
+  "reviewInputFingerprint": "sha256:8184c6eda96bc3315c9622bbd6e155fe36c7368690b1386e5f23af518de107f2",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-a",
+      "roundId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-independent-a",
+      "runIds": [
+        "math-m7-q3-png-v2-a-openai-codex-20260923T031804Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact underlying model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-b",
+      "roundId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-independent-b",
+      "runIds": [
+        "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-first-pass-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "3019e775-1420-510f-850b-5a29acc47a64",
+      "firstRecordId": "math-m7-q3-png-v2-a-3019e775",
+      "secondRecordId": "m7-q3-three-png-v2-b-001-3019e775",
+      "firstRunId": "math-m7-q3-png-v2-a-openai-codex-20260923T031804Z",
+      "secondRunId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c",
+      "firstRecordId": "math-m7-q3-png-v2-a-ce2eb0a8",
+      "secondRecordId": "m7-q3-three-png-v2-b-002-ce2eb0a8",
+      "firstRunId": "math-m7-q3-png-v2-a-openai-codex-20260923T031804Z",
+      "secondRunId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bfbaedb9-b138-590a-87e8-4d87784dda0e",
+      "firstRecordId": "math-m7-q3-png-v2-a-bfbaedb9",
+      "secondRecordId": "m7-q3-three-png-v2-b-003-bfbaedb9",
+      "firstRunId": "math-m7-q3-png-v2-a-openai-codex-20260923T031804Z",
+      "secondRunId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

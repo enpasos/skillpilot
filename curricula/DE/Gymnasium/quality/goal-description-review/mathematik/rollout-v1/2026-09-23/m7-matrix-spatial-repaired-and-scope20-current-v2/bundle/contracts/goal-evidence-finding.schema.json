@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-finding.schema.json",
+  "title": "SkillPilot structured goal-evidence finding v1",
+  "description": "A version-bound and scope-limited finding from AI or human review. A candidate finding cannot approve or mutate a goal or evidence profile.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "findingId",
+    "runId",
+    "bundleFingerprint",
+    "goalId",
+    "goalFingerprint",
+    "pageFingerprint",
+    "defectLayer",
+    "anchoredObservation",
+    "hypothesizedMechanism",
+    "violatedCriterion",
+    "minimalCounterexample",
+    "severity",
+    "evidenceLevel",
+    "normativeTags",
+    "maximumClaimScope",
+    "counterarguments",
+    "proposedLocalChange",
+    "possibleSideEffects",
+    "broaderEvidenceNeeded",
+    "findingStatus",
+    "reviewAuthority"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-finding.schema.json"
+    },
+    "schemaVersion": { "const": 1 },
+    "findingId": { "$ref": "#/$defs/stableId" },
+    "runId": { "$ref": "#/$defs/stableId" },
+    "bundleFingerprint": { "$ref": "#/$defs/digest" },
+    "goalId": { "$ref": "#/$defs/stableId" },
+    "goalFingerprint": { "$ref": "#/$defs/digest" },
+    "pageFingerprint": { "$ref": "#/$defs/digest" },
+    "defectLayer": {
+      "enum": [
+        "canonical_goal",
+        "visualization",
+        "evidence_profile",
+        "book_projection",
+        "coaching_policy",
+        "model_behavior",
+        "runtime_guard"
+      ]
+    },
+    "anchoredObservation": { "$ref": "#/$defs/longText" },
+    "hypothesizedMechanism": { "$ref": "#/$defs/longText" },
+    "violatedCriterion": { "$ref": "#/$defs/longText" },
+    "minimalCounterexample": { "$ref": "#/$defs/longText" },
+    "severity": { "enum": ["low", "medium", "high", "blocking"] },
+    "evidenceLevel": { "enum": ["E0", "E1", "E2", "E3", "E4", "E5"] },
+    "normativeTags": {
+      "type": "array",
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "NORMATIVE",
+          "privacy",
+          "safety",
+          "accessibility",
+          "source_fidelity",
+          "provider_policy",
+          "factual_correctness"
+        ]
+      }
+    },
+    "maximumClaimScope": { "enum": ["G0", "G1", "G2", "G3", "G4"] },
+    "counterarguments": { "$ref": "#/$defs/textList" },
+    "proposedLocalChange": { "$ref": "#/$defs/longText" },
+    "possibleSideEffects": { "$ref": "#/$defs/textList" },
+    "broaderEvidenceNeeded": { "$ref": "#/$defs/longText" },
+    "findingStatus": { "enum": ["candidate", "accepted", "rejected"] },
+    "reviewAuthority": { "enum": ["ai_candidate", "human"] }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "findingStatus": { "const": "accepted" } },
+        "required": ["findingStatus"]
+      },
+      "then": {
+        "properties": { "reviewAuthority": { "const": "human" } }
+      }
+    }
+  ],
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "longText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "textList": {
+      "type": "array",
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/longText" }
+    }
+  }
+}

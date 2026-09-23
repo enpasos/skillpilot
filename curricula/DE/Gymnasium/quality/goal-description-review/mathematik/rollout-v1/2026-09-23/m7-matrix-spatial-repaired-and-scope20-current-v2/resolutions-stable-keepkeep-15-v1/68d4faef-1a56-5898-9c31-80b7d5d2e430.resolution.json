@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-d20-current-keepkeep-15-20260923-v1-resolution-68d4faef-1a56-5898-9c31-80b7d5d2e430",
+  "goal": {
+    "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:1f3dceaa1fc8e5df06d5e69391cdbff79cc1e028e7a91b466086240230db1368",
+    "pageFingerprint": "sha256:7131db0dd0bc043612372261dbea51713df0769e8272f3cb5019aab576c71b7b",
+    "goalReviewContextFingerprint": "sha256:500c1ddebef96b36259e0a2c22bf3f5d33e06087942816898d9a577634a50c27",
+    "finalText": {
+      "titleDe": "Abstand zweier Punkte im Raum berechnen",
+      "titleEn": "Calculate the distance between two points in space",
+      "descriptionDe": "Die lernende Person kann aus den Koordinaten zweier Punkte im Raum den Verbindungsvektor bilden, dessen Betrag berechnen und den Abstand geometrisch deuten.",
+      "descriptionEn": "The learner can form the connecting vector from the coordinates of two points in space, calculate its magnitude, and interpret the distance geometrically."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-a",
+      "campaignDigest": "sha256:a32c87a858d1763373a9a4d0b13503a58a95e8cd80a71acdc0fb833dedc8f29d",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-a",
+      "reviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+      "goalReviewContextFingerprint": "sha256:500c1ddebef96b36259e0a2c22bf3f5d33e06087942816898d9a577634a50c27",
+      "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-a.batch-001",
+      "runId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "runManifestDigest": "sha256:ba8c8d6bcd58c1248aaf2948e165fac5662a869d13ef4c42db5eecd34ca0a2ba",
+      "resultsDigest": "sha256:f907604150de8c849a59b3948ff7b3d624f74be941bb57858f0dedd844a33fac",
+      "recordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-18",
+      "recordDigest": "sha256:91603f9a641409f15f1462eba82dbadb25895675418c13347c82b6d2f2cb6343"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-b",
+      "campaignDigest": "sha256:07a42a60dd96534a47d4f3197ec3df670bebece24c014f88071955925b598b2f",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-b",
+      "reviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+      "goalReviewContextFingerprint": "sha256:500c1ddebef96b36259e0a2c22bf3f5d33e06087942816898d9a577634a50c27",
+      "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-b.batch-001",
+      "runId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "runManifestDigest": "sha256:59a47457640696053e3d3d67654db5cc857cf910bacbef26728a1ca103859cf3",
+      "resultsDigest": "sha256:93a21b94dc0c67c56803749c1d062a8bd95f38751f17706fe8f51ba2d95e8dd0",
+      "recordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.68d4faef-1a56-5898-9c31-80b7d5d2e430",
+      "recordDigest": "sha256:5436e4949be6007b3ecf14f4a5c0f0cbc06f732d147eadd21444e4aa1f3e8717"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:1b678c12f71ed2ce1eae62e741b671103f25b9b58a3312c78f5e2e0488768fae"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-m7-d20-current-keepkeep-15-20260923-v1-synthesis-68d4faef-1a56-5898-9c31-80b7d5d2e430",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex, informed AI synthesis by prior Round B reviewer; no human attestation",
+    "synthesizedAt": "2026-09-23T00:23:16.000Z",
+    "rationaleDe": "Beide Runden sind KEEP. A deutet den Abstand als Betrag des Verbindungsvektors und prüft Verschiebung des Ursprungs sowie Endpunktwechsel; B bestätigt Nichtnegativität und drei Koordinatendifferenzen. A wird wegen der Invarianzbegründung gewählt.",
+    "rationaleEn": "Both rounds are KEEP. A interprets distance as the magnitude of the connecting vector and checks origin translation and endpoint reversal; B confirms nonnegativity and the three coordinate differences. A is selected for the invariance reasoning.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der Abstand zweier Punkte ist der Betrag ihres Verbindungsvektors; die komponentenweisen Differenzen sind gerichtete Verschiebungen, deren quadratische Summe eine nichtnegative Länge ergibt.",
+      "essentialUnderstandingEn": "The distance between two points is the magnitude of their connecting vector; component differences are directed displacements whose squared sum yields a nonnegative length.",
+      "observablePerformanceDe": "Bildet zu zwei Raumpunkten den Verbindungsvektor, berechnet seinen Betrag und erklärt die gefundene Länge geometrisch unabhängig von der Reihenfolge der Punkte.",
+      "observablePerformanceEn": "Forms the connecting vector for two points in space, calculates its magnitude, and explains the length geometrically independently of point order.",
+      "transferExpectationDe": "Bestimmt den Abstand nach Verschiebung des Koordinatenursprungs und vertauschter Punktreihenfolge erneut und erklärt, welche Komponenten sich ändern und weshalb die Länge gleich bleibt.",
+      "transferExpectationEn": "Recomputes the distance after shifting the coordinate origin and reversing the endpoints, explaining which components change and why the length remains the same."
+    },
+    "dissent": [
+      {
+        "dissentId": "compatible-review-emphasis-68d4faef-1a56-5898-9c31-80b7d5d2e430",
+        "source": "both",
+        "textDe": "Beide aktuellen KEEP-Records bleiben vollständig gebunden; die nicht gewählte Evidenzkette ist eine kompatible, aber anders akzentuierte AI-Kandidatenperspektive.",
+        "textEn": "Both current KEEP records remain fully bound; the unselected evidence chain is a compatible but differently emphasized AI-candidate perspective.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:e7ae12e294677f33ead6f1fb82d36acb9627a89d03c8e17fbd0010468230beb2"
+}

@@ -8,52 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `4c494716-567b-59c2-855c-6ea45635c666.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/4c494716-567b-59c2-855c-6ea45635c666/4c494716-567b-59c2-855c-6ea45635c666.jpg`
+- Quellbild: `4c494716-567b-59c2-855c-6ea45635c666.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/4c494716-567b-59c2-855c-6ea45635c666/4c494716-567b-59c2-855c-6ea45635c666.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Geometrische Abbildungen mit Matrizen beschreiben
-Beschreibung: Die lernende Person kann geometrische Abbildungen, etwa Schattenwürfe oder Projektionen, mithilfe von Matrizen beschreiben und die Matrixwirkung fachsprachlich deuten.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Eine geometrische Abbildung mit einer Matrix beschreiben und deuten.
-- Verwende ein zweidimensionales Beispiel fuer einen schraegen Schattenwurf auf die x-Achse.
-- Definiere die Abbildung:
-  S(x,y) = (x + y, 0).
-- Zeige die Matrix exakt:
-  S = [ [1, 1],
-        [0, 0] ].
-- Deute die Matrixwirkung:
-  Die y-Koordinate verschwindet.
-  Die x-Koordinate wird um die urspruengliche Hoehe y nach rechts verschoben.
-  Das Bild liegt immer auf der x-Achse.
-- Teste zwei Punkte:
-  P=(2,3) wird zu P'=(5,0).
-  Q=(-1,2) wird zu Q'=(1,0).
-- Visualisiere links Punkte oberhalb der x-Achse und rechts ihre Schattenpunkte auf der x-Achse; die Projektionslinien sollen parallel schraeg nach rechts unten verlaufen.
-
-Vermeiden:
-- Nicht eine orthogonale Projektion mit S(x,y)=(x,0) zeigen; hier ist es ein schraeger Schattenwurf.
-- Nicht P'=(2,0) angeben; fuer P=(2,3) ist korrekt P'=(5,0).
-- Nicht mit Zeilenvektoren rechnen; Punkte als Spaltenvektoren oder Koordinatenpaare darstellen.
-- Keine 3D-Perspektive; dieses Beispiel ist bewusst zweidimensional.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Bearbeite ausschließlich den blauen Bildpunkt P′=(5|0) und das Ende seines gestrichelten Projektionspfeils im beigefügten PNG. Alles andere exakt erhalten. Der Punkt liegt aktuell fälschlich ZWISCHEN den x-Ticks 5 und 6. Verschiebe ihn auf der schwarzen x-Achse exakt auf den Tick 5. Im 1536×1024-Referenzbild: vom ungefähren Zentrum(822,714) nach(762,714). Der Pfeil von P(2|3) endet entsprechend am korrigierten Punkt(762,714), sodass er zum bereits richtigen Pfeil Q(-1|2) nach Q′(1|0) parallel wird. Erhalte P=(2|3) bei seinem korrekten Gitterpunkt, Q=(-1|2), Q′=(1|0), alle anderen Gitterlinien/Ticks, Formeln, Text, Sonne, Farben. Keine neuen Punkte. Die Bildkonstruktionszahlen dürfen nicht ins Bild. P′-Beschriftung bleibt nahe dem korrigierten Punkt gut lesbar. PNG.
 ```
 
 ## Review-Notiz

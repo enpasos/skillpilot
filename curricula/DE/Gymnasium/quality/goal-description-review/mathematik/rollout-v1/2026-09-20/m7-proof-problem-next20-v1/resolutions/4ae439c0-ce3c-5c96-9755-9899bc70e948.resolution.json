@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-proof-problem-next20-v1-20260920-resolution-4ae439c0-ce3c-5c96-9755-9899bc70e948",
+  "goal": {
+    "goalId": "4ae439c0-ce3c-5c96-9755-9899bc70e948",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:9eed2ef73f7648dac5e1a4058751b051ab2a0f7c5feb458fabf30ac83fcf28b5",
+    "pageFingerprint": "sha256:d540c193ed426243cf925af6b6f4785bc87e3672359ddf30825a9da418db7324",
+    "goalReviewContextFingerprint": "sha256:d99ed58ca28435dd49637a67831ceb39855da8fa9504a14357bad9b66286f633",
+    "finalText": {
+      "titleDe": "Argumentation formalisieren und präzisieren (LK)",
+      "titleEn": "Formalize and sharpen arguments",
+      "descriptionDe": "Die lernende Person kann Argumentationen in präziser mathematischer Sprache formulieren (Quantoren, Bedingungen, Äquivalenzen) und Unklarheiten gezielt vermeiden.",
+      "descriptionEn": "The learner can formulate arguments in precise mathematical language (quantifiers, conditions, equivalences) and avoid ambiguity deliberately."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-a",
+      "campaignDigest": "sha256:a41a6260e12d06d970c0aa5b563f6ced07b7b524b77304b4bca474a3cdd33f8a",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:d99ed58ca28435dd49637a67831ceb39855da8fa9504a14357bad9b66286f633",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a.batch-001",
+      "runId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "runManifestDigest": "sha256:60fad9393a29128686a5228db0da4a4ed48bd8cd6ed95b0bc84d42c344aac21e",
+      "resultsDigest": "sha256:329e91f5901cf79b026c61fad742d42a2007943b5d265c3d9db874909ff0c830",
+      "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.016",
+      "recordDigest": "sha256:22c3c07c8fcd3ca0ca41b0c63e9a1f927c4dfbc53b3ed70aef512e714b39e931"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-b",
+      "campaignDigest": "sha256:2e75517c969f994726a963dcd0ef3968698ed89412db83e1268cebe54ed38ede",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:d99ed58ca28435dd49637a67831ceb39855da8fa9504a14357bad9b66286f633",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b.batch-001",
+      "runId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "runManifestDigest": "sha256:a1e2b99b173d09f363ed0018614be748221ac4c77008c186e078758cbee79dbe",
+      "resultsDigest": "sha256:267b1d842c5a3ccbdf21d74874a55e6fce3d149e5db37b2e4628144696d33217",
+      "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.4ae439c0-ce3c-5c96-9755-9899bc70e948",
+      "recordDigest": "sha256:b3e14eb5246232c66c404ee19f7da97c9916e5a1db431e801746dd4bc42a4377"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:812ca966f5ddee8da9efb458a624b88645325047d0b2b7d5a617c3390c7239b7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-current-17.json",
+    "manifestId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-synthesis",
+    "manifestDigest": "sha256:a30996e2d0a152c8caff3e90a54e27fff5c48d715087960bf1511035e9a0ff1c",
+    "manifestFingerprint": "sha256:6b041c5cf340b07f17115de86e08a85cebaee8900eb683276005b1788b6ea234",
+    "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-14"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-14",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex Root informed synthesis; not an additional independent review",
+    "synthesizedAt": "2026-09-21T20:55:01.000Z",
+    "rationaleDe": "A prüft Nichtnullbedingung, Äquivalenz und Quantorenreihenfolge; B bestätigt die Präzisierungsleistung. Der offene Vorgängerbefund bleibt separat und wird nicht mitfreigegeben.",
+    "rationaleEn": "A checks nonzero conditions, equivalence and quantifier order; B confirms formal precision. The open predecessor finding remains separate and is not approved by this decision.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Präzise mathematische Sprache legt fest, welche Objekte gemeint sind, in welcher Reihenfolge Quantoren wirken und ob ein Schritt eine Folgerung oder eine Äquivalenz ausdrückt; Bedingungen verhindern mehrdeutige oder zu starke Aussagen.",
+      "essentialUnderstandingEn": "Precise mathematical language specifies the objects, the order in which quantifiers act and whether a step expresses implication or equivalence; conditions prevent ambiguous or overly strong statements.",
+      "observablePerformanceDe": "Die lernende Person präzisiert das Argument man kann c kürzen zu ac = bc genau dann, wenn a = b, unter der Bedingung c ≠ 0, benennt den Zahlbereich und erklärt die Wirkung der Bedingung.",
+      "observablePerformanceEn": "The learner sharpens the argument that c can be cancelled into ac = bc if and only if a = b under the condition c ≠ 0, states the number domain and explains the role of that condition.",
+      "transferExpectationDe": "Bei einer neuen sprachlichen Behauptung zu jeder ganzen Zahl gibt es eine größere schreibt sie die Quantorenfolge ∀n ∈ ℤ ∃m ∈ ℤ: m > n und erklärt, warum vertauschte Quantoren eine andere Behauptung erzeugen.",
+      "transferExpectationEn": "For the fresh verbal claim that every integer has a larger one, the learner writes the quantifier order ∀n ∈ ℤ ∃m ∈ ℤ: m > n and explains why reversing the quantifiers produces a different claim."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-5104e0430229b6ec3b62db9c5475badd817bc00fc8b9cff61cced2c4bdcd049d",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:171def12c356daa94f0de789ba2b9ea1a39274951e3a0e86a81d303f248d2e83"
+}

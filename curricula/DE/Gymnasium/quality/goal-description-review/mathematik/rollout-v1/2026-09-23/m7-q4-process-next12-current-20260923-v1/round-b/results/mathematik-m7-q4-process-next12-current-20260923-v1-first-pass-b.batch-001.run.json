@@ -1,0 +1,53 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-q4-process-next12-current-20260923-v1-first-pass-b.codex-independent-b",
+  "campaignId": "mathematik-m7-q4-process-next12-current-20260923-v1-b",
+  "roundId": "mathematik-m7-q4-process-next12-current-20260923-v1-first-pass-b",
+  "batchId": "mathematik-m7-q4-process-next12-current-20260923-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:5820f45876d5297a736ec4b12f5954f80aa7761a7fa4fc222b169d361895f172",
+  "bundleFingerprint": "sha256:e6b8c7335babbd7c8b2083a16ef28d6215d1ee2b4a8ca18219b830c3bf07a53e",
+  "bookDigest": "sha256:abb9752e61c5e681c05ec9c64a5b52ef27255cde575815e8af0be970f1b20bf0",
+  "provider": "OpenAI",
+  "model": "Codex (exact serving model not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:6df20afdedd821af5e6fc936ce5a6ab2bdb3cbffbe757056c8622c1478faa290",
+  "independenceGroupId": "mathematik-m7-q4-process-next12-current-20260923-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "08259bad-eb0c-5bd3-b2a1-b6673f796605",
+    "08a4ae81-b732-50c6-8a3f-c19b6bbd4c2b",
+    "14af09c2-999f-52fa-8d42-1f2f6b23629b",
+    "1675fdde-cba7-5456-ae70-a846e1924a68",
+    "499b8a0d-a5da-5cf7-8557-89e16152b752",
+    "4a53a441-3c2a-53aa-8a1a-e08a6898e826",
+    "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
+    "bab64124-fabf-544c-a2e5-3e6c786531d2",
+    "c8698478-4662-5b52-a3e5-7994604ff0de",
+    "e75ec65a-9692-5871-b90b-fbebe38ae0c3",
+    "fcb4cef1-b17a-5682-924c-41498fc6c9b2",
+    "fde351a8-98b1-5d75-b4df-813beb2bbe3c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:5820f45876d5297a736ec4b12f5954f80aa7761a7fa4fc222b169d361895f172"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-23T07:32:22Z",
+  "completedAt": "2026-09-23T07:38:27.672Z",
+  "status": "completed",
+  "outputDigest": "sha256:4c29fb25d6cc6135ec978d6033d49492d21ac5cc6cb9979046be9d98a8f44a8c",
+  "toolchainVersion": "skillpilot-native-review-contracts-v1-node20"
+}

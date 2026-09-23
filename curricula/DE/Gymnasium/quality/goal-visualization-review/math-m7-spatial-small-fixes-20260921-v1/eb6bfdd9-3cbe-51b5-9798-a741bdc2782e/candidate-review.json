@@ -1,0 +1,78 @@
+{
+  "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+  "goalTitleDe": "Geometriesoftware zur Raumorientierung nutzen",
+  "goalDescriptionDe": "Die lernende Person kann Geometriesoftware nutzen, um räumliche Objekte im dreidimensionalen Koordinatensystem darzustellen, Ansichten zu variieren und Koordinaten- bzw. Lageinformationen zu überprüfen.",
+  "phase": "Q2",
+  "audience": "Gymnasium Sekundarstufe II, GK und LK gemäß aktuellem Zielkontext",
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "decision": "rejected-coordinate-projection",
+  "reviewReconsideration": {
+    "reason": "Subsequent root review found inconsistent main and miniature z-axis starting heights. Earlier own visual approval below is retained as historical evidence but is superseded and insufficient.",
+    "replacementReview": "candidate-review.attempt-03.json",
+    "originalImagePreserved": true,
+    "note": "Original attempt had no native preparation; later attempts were prepared chronologically and no retroactive preparation is claimed."
+  },
+  "attempt": 1,
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen.imagegen",
+  "model": "Exact serving model identifier not exposed",
+  "generationDate": "2026-09-21",
+  "selfReviewedAt": "2026-09-21T21:55:11Z",
+  "selfReviewer": "Codex independent agent /root/math_repaired12_blind_a",
+  "source": {
+    "path": "app/public/assets/goal-visualizations/mathematik/eb6bfdd9-3cbe-51b5-9798-a741bdc2782e/eb6bfdd9-3cbe-51b5-9798-a741bdc2782e.jpg",
+    "sha256": "sha256:f6c736d8c7684a0ad0ae946c39b90c830c5caa588dfe69caaa5e3b387255c51a",
+    "role": "edit target and style reference",
+    "inspectedBeforeEdit": true,
+    "inspectionTool": "view_image",
+    "storedProvider": "Google Gemini / Nano Banana Pro"
+  },
+  "candidate": {
+    "file": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e.png",
+    "sha256": "sha256:f4b7a69be2fb6062dafef5ab972e98f16c3bc8175133c336d25479c149289240",
+    "bytes": 1249901,
+    "width": 1678,
+    "height": 937,
+    "mimeType": "image/png",
+    "license": "CC-BY-4.0",
+    "attribution": "SkillPilot, AI-generated illustration, corrected with OpenAI image generation; AI candidate",
+    "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-8c5d4d7e-c6b9-448e-ae7f-b2f4954fbe22.png"
+  },
+  "prompt": {
+    "file": "prompt-attempt-01.txt",
+    "fileSha256": "sha256:26726214ab09011cae361ea45e2185658ad08515f46b6a0c48744bfc309b2d99",
+    "formatNote": "Exact provider prompt body; file serialization adds a terminal newline.",
+    "referenceStrategy": "Single previously inspected source image; preserve all content except the specified x-projection digit.",
+    "reconstructionPrompt": "image-reconstruction-prompt.de.md",
+    "reconstructionPromptOrigin": "Written independently from the actually generated candidate, not sent as the edit prompt."
+  },
+  "selfReview": {
+    "method": "Actual generated PNG visually inspected after generation; source and candidate content compared.",
+    "correctedDefect": "The main window's x-projection numeral changed from 1 to 2.",
+    "checks": [
+      "Main point P(2|1|3), projected point P_xy(2|1|0), x marker 2 and y marker 1 agree.",
+      "Top-view point P_xy(2|1), x marker 2 and y marker 1 remain correct.",
+      "Side-view label z = 3 remains correct; its unlabelled horizontal direction makes no additional numerical claim.",
+      "Axes, projected point locations and dashed projection directions retain the source diagram's consistent oblique arrangement.",
+      "Title, view panels, rotation cue, magnifier, readable German labels, white backdrop and friendly line-art character retained.",
+      "No visible technical ID, branding, watermark or new topic."
+    ],
+    "visibleBlockingDefects": [],
+    "limitations": [
+      "This is the creating agent's AI self-review; a subsequent independent visual/fachliche review is still required.",
+      "No cockpit or rendered learner-book acceptance test was performed for this unimported candidate.",
+      "Generated edit preserves the composition but is not asserted to preserve every source pixel."
+    ]
+  },
+  "suggestedAltTextDe": "Stilisiertes Geometriesoftwarefenster mit P(2|1|3), dessen Fußpunkt P_xy(2|1|0) und passenden Achsenmarken x=2 und y=1. Drei kleinere Ansichten zeigen dieselbe 3D-Lage, die Draufsicht mit x=2 und y=1 sowie die Höhe z=3. Ein Drehpfeil lädt zum Variieren der Ansicht ein.",
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false,
+    "humanApprovalClaimed": false,
+    "note": "Candidate-only commission. No preparation/import helper was run because its default writes fall outside the commissioned candidate directory; no canonical or runtime asset has been replaced."
+  }
+}

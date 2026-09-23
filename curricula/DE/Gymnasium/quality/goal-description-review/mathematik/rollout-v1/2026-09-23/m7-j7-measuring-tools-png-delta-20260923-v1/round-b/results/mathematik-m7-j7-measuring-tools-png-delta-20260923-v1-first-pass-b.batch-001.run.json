@@ -1,0 +1,40 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-j7-measuring-tools-png-delta-20260923-v1-first-pass-b-run-001",
+  "campaignId": "mathematik-m7-j7-measuring-tools-png-delta-20260923-v1-b",
+  "roundId": "mathematik-m7-j7-measuring-tools-png-delta-20260923-v1-first-pass-b",
+  "batchId": "mathematik-m7-j7-measuring-tools-png-delta-20260923-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:5708acc731f3739c561c4adda4b1204f9dcaac4bfd753aaded26840b6ec55ad0",
+  "bundleFingerprint": "sha256:b6cae5c343ed4b2b5c2e9e004ba7c037f22e08fe2ecb0182493ef84b2b3c1bce",
+  "bookDigest": "sha256:1569fa9d885fba51889981733bf486a6ae960df094316fb2b23e78c8817c0b4b",
+  "provider": "OpenAI Codex",
+  "model": "Codex session model not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:62705f0475f231e75fd00adafa7aa5cf09e0423ddde1795e028952e0103375fd",
+  "independenceGroupId": "mathematik-m7-j7-measuring-tools-png-delta-20260923-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": ["ad26e4d9-b025-57ec-8f25-df4a2415cc62"],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:5708acc731f3739c561c4adda4b1204f9dcaac4bfd753aaded26840b6ec55ad0"
+    }
+  ],
+  "startedAt": "2026-09-23T09:30:25Z",
+  "completedAt": "2026-09-23T09:31:35Z",
+  "status": "completed",
+  "outputDigest": "sha256:73b53d852b265b11d3fd847ecfd0209f79658272f8283c76b3b46f0186adfd84",
+  "toolchainVersion": "skillpilot-description-review-v2"
+}

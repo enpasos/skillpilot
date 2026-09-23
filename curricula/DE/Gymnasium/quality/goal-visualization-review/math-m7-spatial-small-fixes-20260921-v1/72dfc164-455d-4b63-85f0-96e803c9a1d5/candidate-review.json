@@ -1,0 +1,84 @@
+{
+  "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+  "goalTitleDe": "Linearkombinationen von Vektoren bilden und deuten",
+  "phase": "Q2",
+  "audience": "Gymnasium Sekundarstufe II",
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "decision": "needs_independent_review",
+  "selfReviewer": "Codex independent agent /root/math_repaired12_blind_a; exact serving model identifier not exposed",
+  "selfReviewRecordedAt": "2026-09-21T22:40:36.553Z",
+  "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+  "model": "gemini-3-pro-image (request and response summary)",
+  "tool": "scripts/generate_goal_visualization_nano_banana.mjs",
+  "candidate": {
+    "file": "nbp-attempt-03.png",
+    "sha256": "sha256:d0d3ef0810072d8b31874a70f9b3378e682f414aa527b955c0b7e4e40bee4fcc",
+    "bytes": 3452167,
+    "width": 2752,
+    "height": 1536,
+    "mimeType": "image/png",
+    "license": "CC-BY-4.0",
+    "attribution": "SkillPilot, AI-generated illustration, AI candidate"
+  },
+  "source": {
+    "path": "app/public/assets/goal-visualizations/mathematik/72dfc164-455d-4b63-85f0-96e803c9a1d5/72dfc164-455d-4b63-85f0-96e803c9a1d5.jpg",
+    "sha256": "sha256:ec0d3e0d6f36e94b24c2ba58f180f370863b7b6179023d92cc77be2a446f00d9",
+    "actuallyInspected": true
+  },
+  "prompt": {
+    "file": "prompt-nbp-attempt-03.exact.txt",
+    "sha256": "sha256:5758a38146a916e513f2ef0b641b21a749d8f6e8824f8b447bf6c42657715588",
+    "bytes": 2175,
+    "reconstructionPrompt": "image-reconstruction-prompt.de.md",
+    "reconstructionPromptOrigin": "Individually written from actually viewed NBP3 output."
+  },
+  "nativePrepare": {
+    "completedBeforeEachGeneration": true,
+    "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)"
+  },
+  "formatProvenance": {
+    "file": "nbp-attempt-03.original.jpg",
+    "sha256": "sha256:bd5749894264103f3a4039dd7cb1c98f08ee7e281c8add16dfba9e8eb477e21c",
+    "bytes": 1819875,
+    "conversion": {
+      "file": "nbp-attempt-03.png",
+      "decodedRgbEqual": true
+    },
+    "originalApiMimeType": "image/jpeg",
+    "noGeometricPostprocessing": true
+  },
+  "selfReview": {
+    "correctedDefects": [
+      "Removed wrong spatial coordinate-axis claims and all accidentally printed pixel numbers.",
+      "Explicit heading Richtungsskizze der aufgespannten Ebene.",
+      "Left u and v both start at O and lie in the pictured plane; no false scaled-corner labels.",
+      "Middle chain2u thenv and redw share proper chain endpoints."
+    ],
+    "mathematics": [
+      "u=(1,0,1),v=(0,2,1) linearly independent; their span is a plane.",
+      "2u=(2,0,2); 2u+v=(2,2,3), as both text and the separate head-to-tail construction state.",
+      "Separate left/center/right direction sketches are not one coordinate plot. Cross-panel arrow angles need not be identical; no axes or common camera are claimed."
+    ],
+    "geometryEvidence": "At the 2048px rendering, middle O≈(845,725), head of2u≈(1178,581), common red/green end≈(1266,340). Thus the sum arrow joins the chain start and final end. Left O≈(280,723), u-tip≈(139,525), v-tip≈(761,560); both belong to the shaded plane patch. No sum point or2u marker is asserted in that left patch.",
+    "visibleBlockingDefects": [],
+    "style": "Friendly original comic characters, balloons, equations, color scheme and generous layout preserved."
+  },
+  "limitations": [
+    "Creating-agent AI candidate; root/independent QA remains separate.",
+    "No imported runtime/learner-book acceptance tested.",
+    "Axes-free representation is an intentional didactic simplification authorised by parent; it does not claim coordinate-metric projection."
+  ],
+  "attemptHistory": [
+    "builtin-attempts-review.json",
+    "nbp-attempts-review.json"
+  ],
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false,
+    "humanApprovalClaimed": false
+  }
+}

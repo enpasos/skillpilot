@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-d20-current-keepkeep-15-20260923-v1-resolution-7bd8f022-5002-5610-994c-a9cec1890558",
+  "goal": {
+    "goalId": "7bd8f022-5002-5610-994c-a9cec1890558",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:42615f28b319fee999bb6894ed29b747c9dac6eca565c932a33df9c3dafb201e",
+    "pageFingerprint": "sha256:b3357d045f7f62ce8ff4fa5c3c7cc2029a90e30384a9a29d73581d4c17a1ccca",
+    "goalReviewContextFingerprint": "sha256:c3a5f73f32a73dc90190e7e4e319af522b568494f8465a744824b413e0792587",
+    "finalText": {
+      "titleDe": "Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)",
+      "titleEn": "Represent rotations around coordinate axes with matrices (advanced course)",
+      "descriptionDe": "Die lernende Person kann Abbildungsmatrizen für Drehungen um die Koordinatenachsen im $\\mathbb{R}^3$ untersuchen und bestimmen sowie Bildpunkte berechnen.",
+      "descriptionEn": "The learner can analyze and determine mapping matrices for rotations around the coordinate axes in $\\mathbb{R}^3$ and calculate image points."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-a",
+      "campaignDigest": "sha256:a32c87a858d1763373a9a4d0b13503a58a95e8cd80a71acdc0fb833dedc8f29d",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-a",
+      "reviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+      "goalReviewContextFingerprint": "sha256:c3a5f73f32a73dc90190e7e4e319af522b568494f8465a744824b413e0792587",
+      "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-a.batch-001",
+      "runId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "runManifestDigest": "sha256:ba8c8d6bcd58c1248aaf2948e165fac5662a869d13ef4c42db5eecd34ca0a2ba",
+      "resultsDigest": "sha256:f907604150de8c849a59b3948ff7b3d624f74be941bb57858f0dedd844a33fac",
+      "recordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-08",
+      "recordDigest": "sha256:1ae0d5c6a69645629569e079fda95b6eec940d923c0447274a59cec83b67a1b9"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-b",
+      "campaignDigest": "sha256:07a42a60dd96534a47d4f3197ec3df670bebece24c014f88071955925b598b2f",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-b",
+      "reviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+      "goalReviewContextFingerprint": "sha256:c3a5f73f32a73dc90190e7e4e319af522b568494f8465a744824b413e0792587",
+      "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-b.batch-001",
+      "runId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "runManifestDigest": "sha256:59a47457640696053e3d3d67654db5cc857cf910bacbef26728a1ca103859cf3",
+      "resultsDigest": "sha256:93a21b94dc0c67c56803749c1d062a8bd95f38751f17706fe8f51ba2d95e8dd0",
+      "recordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.7bd8f022-5002-5610-994c-a9cec1890558",
+      "recordDigest": "sha256:4639dd0d525537ead7426fe5b686c225d8edd8b319c6c96e2b5de6a41de3eac2"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:1b678c12f71ed2ce1eae62e741b671103f25b9b58a3312c78f5e2e0488768fae"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-m7-d20-current-keepkeep-15-20260923-v1-synthesis-7bd8f022-5002-5610-994c-a9cec1890558",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex, informed AI synthesis by prior Round B reviewer; no human attestation",
+    "synthesizedAt": "2026-09-23T00:23:16.000Z",
+    "rationaleDe": "Beide Runden sind KEEP für LK-Drehungen um Koordinatenachsen. A bindet Matrixspalten an Basisbilder und macht die Blickrichtungs-Konvention für das Winkelvorzeichen ausdrücklich; B stützt Achsenwechsel und Längenerhaltung. A wird wegen der Konventionsklarheit gewählt.",
+    "rationaleEn": "Both rounds are KEEP for advanced-track rotations about coordinate axes. A binds matrix columns to basis images and explicitly states the viewing convention for the angle sign; B supports axis changes and length preservation. A is selected for its convention clarity.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Drehung um eine Koordinatenachse lässt die Achsenkomponente fest und dreht die dazu senkrechte Ebene; die Bilder der Basisvektoren bestimmen die Matrixspalten. Das Vorzeichen des Winkels hängt von der festgelegten Blickrichtung ab.",
+      "essentialUnderstandingEn": "A rotation about a coordinate axis preserves the axial component and rotates the perpendicular plane; the images of the basis vectors determine the matrix columns. The sign of the angle depends on the stated viewing direction.",
+      "observablePerformanceDe": "Bestimmt für eine angegebene Drehachse und einen orientierten Winkel die drei Basisbilder, baut daraus die 3×3-Matrix und berechnet sowie prüft den Bildpunkt.",
+      "observablePerformanceEn": "For a stated rotation axis and oriented angle, determines the three basis-vector images, constructs the 3×3 matrix, and calculates and checks an image point.",
+      "transferExpectationDe": "Überträgt die Herleitung von einer positiven z-Achsen-Drehung auf eine Drehung um die x-Achse oder auf einen negativen Winkel und passt Matrix und Bildpunkt entsprechend an.",
+      "transferExpectationEn": "Transfers the derivation from a positive z-axis rotation to a rotation about the x-axis or a negative angle and adjusts the matrix and image point accordingly."
+    },
+    "dissent": [
+      {
+        "dissentId": "compatible-review-emphasis-7bd8f022-5002-5610-994c-a9cec1890558",
+        "source": "both",
+        "textDe": "Beide aktuellen KEEP-Records bleiben vollständig gebunden; die nicht gewählte Evidenzkette ist eine kompatible, aber anders akzentuierte AI-Kandidatenperspektive.",
+        "textEn": "Both current KEEP records remain fully bound; the unselected evidence chain is a compatible but differently emphasized AI-candidate perspective.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:2b5dbd8a27ab30789f5f62d52cd5ad85f40a58c266f54522eff80e70aa0b0876"
+}

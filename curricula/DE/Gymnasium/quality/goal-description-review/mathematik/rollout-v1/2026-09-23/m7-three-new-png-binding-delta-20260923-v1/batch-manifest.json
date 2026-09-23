@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-three-new-png-binding-delta-20260923-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-three-new-png-binding-delta-20260923-v1.config.json",
+  "configDigest": "sha256:c7dc491c2b6942d8f5d60bd4e9195d40f59d9a5650e0f5a497eb29cb0ab09faa",
+  "goalIds": [
+    "8823e26e-694c-581b-9adf-4db7db6f43c9",
+    "7c978529-ce62-5adc-897f-24ea80babbc8",
+    "e01869db-891c-57a4-8660-789ec6875ec2"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:8816e1225fc6fd4f7e40c60712c2d694668d9426fbf8fedaa7386db830fe202e"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:75a9518b4c6a213b7497d8395aef8feac3fafcdf872360ee6f4471dc675679ec",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:58aaa29beb2611bde6ff9aba94f42130aa238d92e1e740bf25ee3630aac143a8",
+    "reviewInputFingerprint": "sha256:569f083ca2d0a10f2350f81e169a0fdaded9a346fec15b719862747e185d4c88",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-a",
+        "campaignDigest": "sha256:b93948c32ad69a45e5cb083a4141d46e912fc5eda9cbd7b4fbb826604cb84873",
+        "roundId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-independent-a",
+        "batchId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:0f957cceb59ff1adf65ad58355f196b2961eafdb9424a873afaff3838d5f7643"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-b",
+        "campaignDigest": "sha256:891e2357b95d92a8e1713f43e0c01c79edad63294b5ebaeffcb77d2fd46e6c5e",
+        "roundId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-independent-b",
+        "batchId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:5de4fcc9f2aa927be64b838f395720e0ea4d016db4a5c43feddc5eabd3426931"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

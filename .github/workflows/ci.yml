@@ -423,6 +423,8 @@ jobs:
         run: npm run test:hard-learning-routes
       - name: Test reviewed canonical Mathematics Sek-I exam routes
         run: npm run test:canonical-math-sek1-reviewed-exam-routes
+      - name: Test Q4 Caterer exam coverage and scope
+        run: npm run test:math-q4-caterer-exam-scope
       - name: Test learner-facing composition labels
         run: npm run test:learner-facing-composition-labels
       - name: Validate Competency Wording

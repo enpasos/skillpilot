@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-two-local-png-p-bound-current-20260923-v2.config.json",
+  "configDigest": "sha256:b844f652ed3af469795c04f47168934c949abd14c5a5b5b0fd371a9fe6632d67",
+  "goalIds": [
+    "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
+    "570d5931-f126-5bb4-8b7f-db236d6b727f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:e7fd4adfcc5a70bda8b0b751c6f34c0336afaf7ece533237bd91c4c0871bb13e"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:832fa3d9c4c418155e0d74eba291e64061e22aa12d1745b034278e3063758542",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e36c2f5e505d9d072305df997d956ddfca81cb87a41af9d3bdf64628b638acdd",
+    "reviewInputFingerprint": "sha256:9a68de459b2d9068244b4796527c3fca2c560e78fd8de7e9e08ef3e8ee81551c",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-a",
+        "campaignDigest": "sha256:8ff6215fc692f66a66e6b730352362ce1af92b7a068a2557844b6aa60fae0586",
+        "roundId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-independent-a",
+        "batchId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:75ef7dc05549ca6057fe31b359cd23da4c91b4102f16b8701f3df9894a721c4f"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-b",
+        "campaignDigest": "sha256:c47c8fa4d326511b87ead1f2133b2f5dad8ea1f1d9eb31ac7f6b607e5db65ab6",
+        "roundId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-independent-b",
+        "batchId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:ca65ce289dd798e0377e0bf6e608ec2095f14a71597e41177038b4caa2eff28e"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

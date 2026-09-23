@@ -8,59 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `55039f9c-4ebc-5115-add5-fae95b915e46.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/55039f9c-4ebc-5115-add5-fae95b915e46/55039f9c-4ebc-5115-add5-fae95b915e46.jpg`
+- Quellbild: `55039f9c-4ebc-5115-add5-fae95b915e46.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/55039f9c-4ebc-5115-add5-fae95b915e46/55039f9c-4ebc-5115-add5-fae95b915e46.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Parallelprojektionen auf Koordinatenebenen mit Matrizen darstellen
-Beschreibung: Die lernende Person kann Abbildungsmatrizen für Parallelprojektionen auf die Koordinatenebenen bestimmen, untersuchen und Bildpunkte berechnen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Parallelprojektionen auf Koordinatenebenen mit Matrizen darstellen.
-- Verwende einen dreidimensionalen Punkt:
-  P = (2, -1, 3).
-- Zeige eine klare Tabelle mit drei Koordinatenebenen:
-  1. Projektion auf die xy-Ebene:
-     P_xy = [ [1,0,0],
-              [0,1,0],
-              [0,0,0] ],
-     P -> (2,-1,0).
-  2. Projektion auf die xz-Ebene:
-     P_xz = [ [1,0,0],
-              [0,0,0],
-              [0,0,1] ],
-     P -> (2,0,3).
-  3. Projektion auf die yz-Ebene:
-     P_yz = [ [0,0,0],
-              [0,1,0],
-              [0,0,1] ],
-     P -> (0,-1,3).
-- Deutung:
-  Bei einer Projektion auf eine Koordinatenebene wird genau die senkrechte Koordinate auf 0 gesetzt.
-  Die Projektionspfeile sind jeweils parallel zur ausgeblendeten Achse.
-- Optional kleine 3D-Skizze nur als Orientierung; die Matrizen und Bildpunkte muessen im Vordergrund stehen.
-
-Vermeiden:
-- Nicht die falsche Koordinate auf 0 setzen.
-- Nicht eine Projektion auf eine Gerade zeigen.
-- Nicht orthogonale Lot-Notation mit beliebigen schraegen Ebenen verwenden; hier nur Koordinatenebenen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Erstelle eine freundliche, helle, klare comicartige mathematische Lerngrafik als PNG: „Parallelprojektionen auf Koordinatenebenen“. Untertitel: „Beispiele: Projektion parallel zu einer Koordinatenachse“. Keine perspektivischen 3D-Diagramme verwenden: Die korrekten Matrizen sollen mit EINER einfachen gut lesbaren Seitenansicht verbunden werden. Links: Überschrift „xy-Projektion: Seitenansicht in x-z-Richtung“. Zeichne ein schlichtes kartesisches Achsenkreuz, x waagerecht nach rechts, z senkrecht nach oben. Nur ein markierter x-Wert 2 und ein markierter z-Wert 3. Der Punkt P liegt exakt über x=2 in Höhe z=3, ein gestrichelter horizontaler Hilfsstrich verbindet ihn mit z=3. Ein senkrechter Pfeil zeigt von P gerade nach unten zu P′ auf der x-Achse bei x=2,z=0. Deutlich daneben: „Projektion parallel zu z“, „y = −1 bleibt gleich“. Keine sonstigen Punkte oder Gitterticks. Diese ausdrücklich bezeichnete Seitenansicht zeigt die Veränderung von z; sie behauptet nicht, den ganzen Raum zu zeigen. Rechts drei übersichtliche Kästen: (1) „auf xy: z wird 0“, P_xy=diag(1,1,0) als echte3×3-Matrix, „(2|−1|3) → (2|−1|0)“. (2) „auf xz: y wird 0“, P_xz=diag(1,0,1), „(2|−1|3) → (2|0|3)“. (3) „auf yz: x wird 0“, P_yz=diag(0,1,1), „(2|−1|3) → (0|−1|3)“. Diagonalmatrizen also erste[[1,0,0],[0,1,0],[0,0,0]], zweite[[1,0,0],[0,0,0],[0,0,1]], dritte[[0,0,0],[0,1,0],[0,0,1]]. Unten Merksatz „In diesen achsenparallelen Beispielen wird eine Koordinate null; die beiden anderen bleiben gleich.“ Hellblau/Creme, großzügige Abstände, handgezeichnete klare Umrandungen, kleine freundliche Glühbirnenfigur alsAkzent, gut lesbare deutscheBeschriftung. Keine technischenIDs, Pfade, Branding oder zusätzliche mathematischeAussagen. KeineFotorealistik, keine sterile technischeNeugestaltung.
 ```
 
 ## Review-Notiz

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-image-delta-three-keep-two-partial-20260923-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T01:01:15.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-image-delta-three-current-20260923-v1",
+    "batchManifestDigest": "sha256:75eb4b0fcd8d963b2b2576affe7654a82fa0b1ab4d15eb1bbd9d18c13ae38a2b",
+    "configDigest": "sha256:961dd1ae6b9a0c7bbd7ee544685a3a4cd3d0629af9bbf20b80c0a0c7617c2881",
+    "bundleFingerprint": "sha256:5a8286bf22246f7b75e63f5e7519e583b76d0954eba35ac8e62a7d09ca5cbc90",
+    "bookDigest": "sha256:8ca2e670ee932166fe77d06410e3368f082c173a3f31c664971731a9b61fda2b",
+    "reviewInputFingerprint": "sha256:531d1a0f2580a8d61876b30ff21d952a871976cb6e2f99c5d0dc00a3b92d4750",
+    "dualSummaryDigest": "sha256:9c1e51a8c205e6bfc4afe07786dd46576394eeee00c30124e7614e260a2ee109",
+    "canonicalLandscapeDigest": "sha256:d8ae3b333a8c7d2e3513444322d7bf4178c541312228291d6e0da7506d89c42d"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-image-delta-three-current-20260923-v1-a",
+      "campaignDigest": "sha256:715373435cf14a635b6349748a2b94c4479c3e959bdc3f220717a0c6cc05634d",
+      "roundId": "mathematik-m7-image-delta-three-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-image-delta-three-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:531d1a0f2580a8d61876b30ff21d952a871976cb6e2f99c5d0dc00a3b92d4750",
+      "batchId": "mathematik-m7-image-delta-three-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:55c6483024744c2f8a026e5e136c4828c77b88c76dff69bd40e7907fa2edc0d1",
+      "runId": "math-m7-image-delta-three-a-codex-20260923T005219Z",
+      "runManifestDigest": "sha256:3ba1c51ef7b8ccaa00675464c74f8224979176fd3b9884f21ca5af2b34d6efcc",
+      "resultsDigest": "sha256:d10b4f4d83ce5ce3edaee6bf9e3b3cf009d042d13e2fc81ef1d0685c7c449fea"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-image-delta-three-current-20260923-v1-b",
+      "campaignDigest": "sha256:752af6139b285c21d782eda0eda170f8db50268a90d106870f7b1b65197bfe7e",
+      "roundId": "mathematik-m7-image-delta-three-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-image-delta-three-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:531d1a0f2580a8d61876b30ff21d952a871976cb6e2f99c5d0dc00a3b92d4750",
+      "batchId": "mathematik-m7-image-delta-three-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:9772d18174a3fc46e75b6ecb7adce1c3fef55ecdd1654317e969fbe5b108bd4f",
+      "runId": "math-m7-image-delta3-20260923-b-run-001",
+      "runManifestDigest": "sha256:5504e09114915cd46070da8273e58402a2cb2dac421b975804a6f9956a52f7c2",
+      "resultsDigest": "sha256:cc417b8faa0fd2994aac59558e4e24b96d51528cc81468a2d5c3c70b1798da31"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-image-delta-three-keep-two-partial-20260923-v1-decision-001",
+      "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a4aa1ee1694db01c13e2690875b027cd75fe6d046479e916224540f9bf9e92fa",
+      "pageFingerprint": "sha256:c497cc7875c96feabea78ef928fba5dad7e2c4ad2af10e1eeb9c528005a90425",
+      "goalReviewContextFingerprint": "sha256:c23cad1fe1db7b18f38d2a04a16aac2418b5bb9f75ac69b2f0c4947316782256",
+      "finalText": {
+        "titleDe": "Lineare Abhängigkeit und Unabhängigkeit von Vektoren prüfen",
+        "titleEn": "Check linear dependence and independence of vectors",
+        "descriptionDe": "Die lernende Person kann entscheiden, ob Vektoren linear abhängig oder unabhängig sind, die Entscheidung rechnerisch begründen und die geometrische Bedeutung erläutern.",
+        "descriptionEn": "The learner can decide whether vectors are linearly dependent or independent, justify the decision algebraically, and explain the geometric meaning."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-m7-image-delta-three-a-001",
+          "recordDigest": "sha256:c48ae9d773817e41633c88dd89acc8494f1090593c581314c83326c8bb30fbe7"
+        },
+        "second": {
+          "recordId": "math-m7-image-delta3-20260923-b-6fc9246a",
+          "recordDigest": "sha256:8afa84271f1ee1f090d20042560ce65583c535dbb34b61fb673bbdb54207691f"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen den aktuellen zweisprachigen Zieltext. Die zweite Evidenzfassung prüft Nullkombination und räumliche Deutung an einer neuen Konfiguration besonders konkret; die erste bleibt als gebundene, kompatible Perspektive erhalten. Die gesondert erkannte resourceLink-Metadatenungenauigkeit wurde außerhalb des Zieltexts korrigiert.",
+      "rationaleEn": "Both independent rounds confirm the current bilingual goal text. The second evidence formulation tests the zero combination and spatial interpretation particularly concretely in a new configuration; the first remains bound as a compatible perspective. The separately identified resource-link metadata inaccuracy was corrected outside the goal text."
+    },
+    {
+      "decisionId": "mathematik-m7-image-delta-three-keep-two-partial-20260923-v1-decision-002",
+      "goalId": "fb4dcd2a-a6a9-5371-a2fc-95348ee130e0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8e66fbada8aaebef3e9454d821fae4b28ce455fab624d814cb7a8659e233eb06",
+      "pageFingerprint": "sha256:d599357847986d7b6c6bc2252dad95245391dbfabec61736163398adec5415de",
+      "goalReviewContextFingerprint": "sha256:bd50b894c2dd8d41c3dc23766bca2549d32fd482dbcb1292ed328ed7e9f04d30",
+      "finalText": {
+        "titleDe": "Modellverbesserungen vorschlagen",
+        "titleEn": "Suggest model improvements",
+        "descriptionDe": "Die lernende Person kann Verbesserungen am Modell vorschlagen (z. B. zusätzliche Einflussgrößen, andere Funktionswahl) und deren Wirkung qualitativ beschreiben.",
+        "descriptionEn": "The learner can suggest improvements to a model (e.g. additional factors, different functional form) and describe their effect qualitatively."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-m7-image-delta-three-a-003",
+          "recordDigest": "sha256:124aea647e684b9166b6549a4a735cdfa73cb6583fe400f4dbc25fb35c45ca21"
+        },
+        "second": {
+          "recordId": "math-m7-image-delta3-20260923-b-fb4dcd2a",
+          "recordDigest": "sha256:221a2e1cb3eb9da02ccc94b2fbbe6ec075fcaea4a8cb687399accde83081403a"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen den aktuellen zweisprachigen Zieltext. Die zweite Evidenzfassung macht den qualitativen Änderungs- und Transferfall konkret, ohne eine ungeprüfte Modellverbesserung als erwiesen auszugeben; die erste bleibt als gebundene, kompatible Perspektive erhalten.",
+      "rationaleEn": "Both independent rounds confirm the current bilingual goal text. The second evidence formulation makes the qualitative change and transfer case concrete without presenting an untested model improvement as established; the first remains bound as a compatible perspective."
+    }
+  ],
+  "manifestFingerprint": "sha256:cc7e1232ec8f9f1c35ada4d903f743a712d2ddbb69880d653bbeaf6dcf086836"
+}

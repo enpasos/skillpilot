@@ -8,47 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `163dd583-8308-53f0-b60d-34588787988d.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/163dd583-8308-53f0-b60d-34588787988d/163dd583-8308-53f0-b60d-34588787988d.jpg`
+- Quellbild: `163dd583-8308-53f0-b60d-34588787988d.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/163dd583-8308-53f0-b60d-34588787988d/163dd583-8308-53f0-b60d-34588787988d.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Modelle nach Kriterien vergleichen (LK)
-Beschreibung: Die lernende Person kann Modelle nach Kriterien (Einfachheit, Güte, Interpretierbarkeit) vergleichen und die Auswahl begründen.
-
-Zusatzanweisung:
-Required mathematical layout:
-- Show a criteria table comparing two models.
-- Columns: "Modell", "Einfachheit", "Güte", "Interpretierbarkeit"
-- Rows:
-  - "linear"
-  - "exponentiell"
-- Use simple symbols such as plus, circle, minus; no numerical scores.
-- Add label: "Modelle nach Kriterien vergleichen".
-
-Visual guidance:
-- Use a clean decision table with small curve icons for the two model types.
-- Make the table balanced: each model has at least one strength and one weakness.
-
-Avoid:
-- Do not declare a universal winner.
-- Do not use English text.
-- Do not add exact equations or made-up data.
-- Do not use tiny text.
+Edit the referenced educational comic illustration for an upper-secondary mathematics learning goal about comparing mathematical models by criteria. Keep the existing warm, clean, friendly abstract comic aesthetic, light classroom palette, landscape layout and German language. Remove the entire existing table of pre-assigned high/medium fit ratings and all unsupported rankings. Create a crisp, spacious new central comparison board with two simple example model cards: 'lineares Modell' with a straight rising graph, and 'exponentielles Modell' with a curved rising graph. Between/under them show exactly three question-card criteria, each with a neutral question mark rather than a plus or score: 'Einfachheit?', 'Güte an Daten?', 'Interpretierbarkeit?'. A small friendly student and teacher/coach silhouette may compare the cards. The visual should convey that choice depends on measured data and the purpose; neither function family is inherently a better fit. Use only these short, correctly spelled German labels, no duplicated title, no extra formulas, no fabricated data, no false numerical claims, no cropped text or elements. Full composition inside generous safe margins, crisp readable lettering, 16:9 landscape PNG, no photorealism, no sterile vector-chart look. Preserve the sense of a school comic, not a scientific poster.
 ```
 
 ## Review-Notiz

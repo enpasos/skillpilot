@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-proof-problem-next20-v1-20260920-resolution-2b497114-66ce-5f38-9b4d-dd17a2f4088f",
+  "goal": {
+    "goalId": "2b497114-66ce-5f38-9b4d-dd17a2f4088f",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:fe488089628eb7b7f8b0e78477ceeab3e944e82f791dd319552977b24b39b09e",
+    "pageFingerprint": "sha256:641542ac846d3f487d8d5e7edc1c591598d253660c890c467bf6a363940e39db",
+    "goalReviewContextFingerprint": "sha256:7baa8b5a54fc815dd29dfff2c00e626b2b88a7280a5ec183be304ef640bbeb5a",
+    "finalText": {
+      "titleDe": "Fehlschlüsse erkennen und korrigieren",
+      "titleEn": "Identify and correct fallacies",
+      "descriptionDe": "Die lernende Person kann typische Fehlschlüsse (z. B. Division durch 0, falsche Umkehrung) in Argumentationen identifizieren und eine korrekte Begründung angeben.",
+      "descriptionEn": "The learner can identify typical fallacies (e.g. division by 0, incorrect converse) in arguments and provide a correct justification."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-a",
+      "campaignDigest": "sha256:a41a6260e12d06d970c0aa5b563f6ced07b7b524b77304b4bca474a3cdd33f8a",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:7baa8b5a54fc815dd29dfff2c00e626b2b88a7280a5ec183be304ef640bbeb5a",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a.batch-001",
+      "runId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "runManifestDigest": "sha256:60fad9393a29128686a5228db0da4a4ed48bd8cd6ed95b0bc84d42c344aac21e",
+      "resultsDigest": "sha256:329e91f5901cf79b026c61fad742d42a2007943b5d265c3d9db874909ff0c830",
+      "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.006",
+      "recordDigest": "sha256:9993b20df5cc45e5553baf25b52824b2ef3242b445916e615db16a3750bd038c"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-b",
+      "campaignDigest": "sha256:2e75517c969f994726a963dcd0ef3968698ed89412db83e1268cebe54ed38ede",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:7baa8b5a54fc815dd29dfff2c00e626b2b88a7280a5ec183be304ef640bbeb5a",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b.batch-001",
+      "runId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "runManifestDigest": "sha256:a1e2b99b173d09f363ed0018614be748221ac4c77008c186e078758cbee79dbe",
+      "resultsDigest": "sha256:267b1d842c5a3ccbdf21d74874a55e6fce3d149e5db37b2e4628144696d33217",
+      "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.2b497114-66ce-5f38-9b4d-dd17a2f4088f",
+      "recordDigest": "sha256:56f8034f19f68532819aec8a3f845fdc52dd1deaa2d1102c6a7ecb6759f59856"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:812ca966f5ddee8da9efb458a624b88645325047d0b2b7d5a617c3390c7239b7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-current-17.json",
+    "manifestId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-synthesis",
+    "manifestDigest": "sha256:a30996e2d0a152c8caff3e90a54e27fff5c48d715087960bf1511035e9a0ff1c",
+    "manifestFingerprint": "sha256:6b041c5cf340b07f17115de86e08a85cebaee8900eb683276005b1788b6ea234",
+    "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-6"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-6",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex Root informed synthesis; not an additional independent review",
+    "synthesizedAt": "2026-09-21T20:55:01.000Z",
+    "rationaleDe": "A trennt Division durch null und falsche Umkehrung von der Wahrheit der Endbehauptung; B bestätigt den vorhandenen Fehleranalyseumfang.",
+    "rationaleEn": "A separates division by zero and invalid converse from the truth of the final claim; B confirms the existing error-analysis scope.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein formal aussehender Argumentationsschritt kann wegen verletzter Operationsbedingungen oder einer unzulässigen Umkehrung ungültig sein; ein solcher Fehler beweist weder die Schlussbehauptung noch ihr Gegenteil.",
+      "essentialUnderstandingEn": "An apparently formal step can be invalid because operation conditions fail or an implication is improperly reversed; such an error proves neither the conclusion nor its negation.",
+      "observablePerformanceDe": "In einem Scheinbeweis mit a = b identifiziert die lernende Person die Division durch a − b als Division durch null und begründet, warum der daraus gezogene Schluss nicht folgt.",
+      "observablePerformanceEn": "In a spurious proof with a = b, the learner identifies division by a − b as division by zero and explains why the resulting conclusion does not follow.",
+      "transferExpectationDe": "In einer neuen Argumentation von a² = b² auf a = b erkennt sie die falsche Umkehrung, erläutert den Fall a = −b und formuliert eine korrekte Schlussaussage oder die erforderliche Zusatzbedingung.",
+      "transferExpectationEn": "In a fresh argument from a² = b² to a = b, the learner identifies the invalid converse, explains the case a = −b and gives a valid conclusion or the necessary additional condition."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-3348a44f9aeb5cd9ad2bc3d44d31bea37a1bdc72f2e1ddc5acf841522ddb3b37",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:422f0ac365b681730d1aecc9b1893527e181c738c2fdcfa4d6d7359251f33e11"
+}

@@ -1,0 +1,78 @@
+{
+  "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+  "goalTitleDe": "Räumliche Objekte im Koordinatensystem verorten",
+  "goalDescriptionDe": "Die lernende Person kann räumliche Objekte im dreidimensionalen Koordinatensystem verorten und geeignete Koordinatenbezüge wählen.",
+  "phase": "Q2",
+  "audience": "Gymnasium Sekundarstufe II, GK und LK gemäß aktuellem Zielkontext",
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "decision": "needs_external_review",
+  "attempt": 1,
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen.imagegen",
+  "model": "Exact serving model identifier not exposed",
+  "generationDate": "2026-09-21",
+  "selfReviewedAt": "2026-09-21T21:55:11Z",
+  "selfReviewer": "Codex independent agent /root/math_repaired12_blind_a",
+  "source": {
+    "path": "app/public/assets/goal-visualizations/mathematik/aae119f2-925f-5fc1-b795-b52c9e980863/aae119f2-925f-5fc1-b795-b52c9e980863.jpg",
+    "sha256": "sha256:82a38e712f62c5c0e18b476ae2de4123a6420894a4cd5a24659e72ba430c5fe5",
+    "role": "edit target and style reference",
+    "inspectedBeforeEdit": true,
+    "inspectionTool": "view_image",
+    "storedProvider": "Google Gemini / Nano Banana Pro"
+  },
+  "candidate": {
+    "file": "aae119f2-925f-5fc1-b795-b52c9e980863.png",
+    "sha256": "sha256:dcd41da8b98051334fb44a8a03de610328cc50cc3d23c65e09035cf0807db44c",
+    "bytes": 1207553,
+    "width": 1678,
+    "height": 937,
+    "mimeType": "image/png",
+    "license": "CC-BY-4.0",
+    "attribution": "SkillPilot, AI-generated illustration, corrected with OpenAI image generation; AI candidate",
+    "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-cae96060-6032-4bf5-b309-fbb44a2c9006.png"
+  },
+  "prompt": {
+    "file": "prompt-attempt-01.txt",
+    "fileSha256": "sha256:2005ca9bfe02eda22880e1d0e15a9fdf47c36e3df3abd41b19e072d5b1493eed",
+    "formatNote": "Exact provider prompt body; file serialization adds a terminal newline.",
+    "referenceStrategy": "Single previously inspected cuboid image; retain coordinate assignments, correct dimension annotations and remove unexplained cross-section lines.",
+    "reconstructionPrompt": "image-reconstruction-prompt.de.md",
+    "reconstructionPromptOrigin": "Written independently from the actually generated candidate, not sent as the edit prompt."
+  },
+  "selfReview": {
+    "method": "Actual generated PNG visually inspected after generation; all eight coordinate labels, axis directions and three measurement annotations checked.",
+    "correctedDefects": [
+      "Ambiguous x=4 labels and misplaced y=3 label replaced by endpoint-bound AB = 4 and BC = 3 dimension arrows.",
+      "Height has its own vertical dimension arrow from the level of D to the level of H, labelled Höhe = 2.",
+      "Unexplained upper dashed horizontal line and right-face interior dashed vertical line removed."
+    ],
+    "checks": [
+      "A=(0|0|0), B=(4|0|0), C=(4|3|0), D=(0|3|0) form the correct base rectangle in the displayed oblique projection.",
+      "E=(0|0|2), F=(4|0|2), G=(4|3|2), H=(0|3|2) lie above their matching base corners.",
+      "Positive x extends from A through B to lower left, y from A through D rightward, and z from A through E upward.",
+      "The AB dimension arrow is parallel to the depth direction and attached near A and B; the BC dimension arrow spans the front horizontal edge.",
+      "Hidden-edge dashes near A remain distinguishable from the removed unexplained interior lines. The A–D line is interrupted by the large origin label; no extra section geometry is implied.",
+      "All coordinate values, German title and dimensions are readable; friendly hand-drawn character and light-blue graph-paper backdrop retained.",
+      "No visible technical ID, watermark, logo or unrelated topic."
+    ],
+    "visibleBlockingDefects": [],
+    "limitations": [
+      "This is the creating agent's AI self-review; a subsequent independent visual/fachliche review is still required.",
+      "Independent QA should also check the unobtrusive hidden-edge depiction behind the origin label.",
+      "No cockpit or rendered learner-book acceptance test was performed for this unimported candidate.",
+      "Generated edit preserves the composition but is not asserted to preserve every source pixel."
+    ]
+  },
+  "suggestedAltTextDe": "Quader im dreidimensionalen Koordinatensystem mit Ursprung A=(0|0|0), B=(4|0|0), C=(4|3|0), D=(0|3|0) und den darüberliegenden Ecken bei z=2. Eindeutig zugeordnete Maßpfeile zeigen AB=4 in x-Richtung, BC=3 in y-Richtung und die Höhe 2. Die positiven Achsen verlaufen von A durch B, D beziehungsweise E.",
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false,
+    "humanApprovalClaimed": false,
+    "note": "Candidate-only commission. No preparation/import helper was run because its default writes fall outside the commissioned candidate directory; no canonical or runtime asset has been replaced."
+  }
+}

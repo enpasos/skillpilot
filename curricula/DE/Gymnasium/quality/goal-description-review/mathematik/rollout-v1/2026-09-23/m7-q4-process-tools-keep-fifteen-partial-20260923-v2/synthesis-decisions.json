@@ -1,0 +1,468 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T03:49:43.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-q4-process-tools-20-current-20260923-v1",
+    "batchManifestDigest": "sha256:e343fcc14b836ff65ded516206426e8a1d083a342b48c0e2cb083d2458b7c5ab",
+    "configDigest": "sha256:bbf798f17b9b10bb52033706a7d18ff874ed25072bc863aad5eb13693b8a8df8",
+    "bundleFingerprint": "sha256:d0400e542bd93e0a1b0d0f959e45754d0426c5a1aa53478fdf8255af4002ddac",
+    "bookDigest": "sha256:416a70e53d399914a3bc085e05df73e12e273adcd1b2a7fd9ee6cbecbbd0f432",
+    "reviewInputFingerprint": "sha256:06266897296d13ece2d52b57ec11847695ec97d8b614e73e1e1e0a69b023d35d",
+    "dualSummaryDigest": "sha256:d78f2e74d7a0edb55c7da50cff655d80e08501d4db0938e2ee1c4f316b9b7c12",
+    "canonicalLandscapeDigest": "sha256:f813bddc7636a5794e223f45f5e4645bfcf38d2f5c292fa9445e20d512d655a5"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a",
+      "campaignDigest": "sha256:5b5f80ef39e149bef00ff64178635d763d81a0ed4d6e9274d6c8ce1a2b173f92",
+      "roundId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:06266897296d13ece2d52b57ec11847695ec97d8b614e73e1e1e0a69b023d35d",
+      "batchId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:6b2637cb9d1378ce12c9f417ee8e90e21fa611e8cfefb8e571a02def6fa16488",
+      "runId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001",
+      "runManifestDigest": "sha256:f77d71a36476c4e5b25cd42072f7de50601af2f29dd398af85139b8b08cf06a4",
+      "resultsDigest": "sha256:7dcdeea54a1c38f962c93e01153daf15fda71fd95477a241043c6e5946c8ad78"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-b",
+      "campaignDigest": "sha256:eba2db46f7c9bd872dd5cfe104a6594c63a3a98894a777e12448f34bdc37cd0f",
+      "roundId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:06266897296d13ece2d52b57ec11847695ec97d8b614e73e1e1e0a69b023d35d",
+      "batchId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:e5eb6507ab6e15b8e56e2cac86529bfafd5066e53426ae52bd3c58c41541a981",
+      "runId": "math-m7-q4-process-tools-20-20260923-b-run-001",
+      "runManifestDigest": "sha256:8a572862943905c240fae77cd8a517c5b07596b821894dbca78e22727b824973",
+      "resultsDigest": "sha256:0936896c264b0feea5dcafe158cf239c61f0a3ddf79cdbaaa98eb21189ab9295"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-001",
+      "goalId": "cedbd525-fefb-52d3-9bdd-947543ee3f2f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:63ccfc177897c89bde0ae420c8403dc529eea47ddd058d293f95b3de6075d866",
+      "pageFingerprint": "sha256:4b02f98119d14040e16d7cef37cc58b7f4512328cb227f9bad4eeb0465a25308",
+      "goalReviewContextFingerprint": "sha256:1e9c254df5059c2db7777d5bcd3a5f2abdd1788c85b6248b883a4fb778a34545",
+      "finalText": {
+        "titleDe": "Lösungsplan skizzieren",
+        "titleEn": "Sketch a solution plan",
+        "descriptionDe": "Die lernende Person kann einen Lösungsplan skizzieren (Methoden/Schritte), benötigte Informationen benennen und die Vorgehensweise kurz begründen.",
+        "descriptionEn": "The learner can sketch a solution plan (methods/steps), name required information and briefly justify the approach."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.001",
+          "recordDigest": "sha256:bec23e8581ba7e43f1be4828c3daa6f38742c3e03d5c770fc259023c7001abf7"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-cedbd525",
+          "recordDigest": "sha256:aa64e3acb4eda71d081942e1969ad73c51609b6009ebcee8400d03fef7964725"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen den aktuellen Lösungsplan als zusammenhängende Kompetenz aus Informationsbedarf, Schrittfolge und Begründung. Die zweite Evidenzfassung prüft einen eigenständigen Planwechsel, wenn statt der Fläche die Materialkosten gesucht sind.",
+      "rationaleEn": "Both independent reviews confirm the current solution plan as one coherent competence linking information needs, step order, and justification. The second evidence version tests an independent plan change when material costs rather than area are sought."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-002",
+      "goalId": "295f61e0-0f47-515b-be57-27170a5eee7a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d2931816deb90eb1d086b6af012c9fa84243bb1ca30a9726f3783b697463dea9",
+      "pageFingerprint": "sha256:8d3363b21d6afad8c09a3dacba0cdd7ee21f13e07e8b2c24c28b21054795287b",
+      "goalReviewContextFingerprint": "sha256:28cce835a7b31b6064d86621b761652a629e0fa5f3feef8eb85afcc5e1ab11c1",
+      "finalText": {
+        "titleDe": "Vorwärts- und Rückwärtsarbeiten anwenden",
+        "titleEn": "Apply forward/backward reasoning",
+        "descriptionDe": "Die lernende Person kann Vorwärts- und Rückwärtsarbeiten als Strategie anwenden, Zwischenziele formulieren und aus einer Zielformulierung geeignete Schritte ableiten.",
+        "descriptionEn": "The learner can apply forward/backward reasoning, formulate intermediate goals and derive suitable steps from a target formulation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.003",
+          "recordDigest": "sha256:f23437eb830129ec1207b101070744ac9d8bd1d65ed1c109e87292ecc49f341c"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-295f61e0",
+          "recordDigest": "sha256:e66e36a58ef9a34cfb8aa1ab58817c4868de45f718a596abadbfdee1e743aa26"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen Vorwärts- und Rückwärtsarbeiten mit einem verbindenden Zwischenziel. Die zweite Evidenzfassung prüft ausdrücklich, ob bei einer neuen Nebenbedingung die Zulässigkeit der Zwischenschritte erhalten bleibt.",
+      "rationaleEn": "Both reviews confirm forward and backward reasoning linked by an intermediate goal. The second evidence version explicitly tests whether an added constraint in a new problem preserves admissibility of the intermediate steps."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-003",
+      "goalId": "86022c15-9847-5864-b84f-9ffe5d71556e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f864d98ed400f23e80ca3483e0535246850470c6369fcd5b4d2346c2fdf61c9e",
+      "pageFingerprint": "sha256:959156120cad5f2251e9bc2e8fb73a132031b0dac05de0cf1932bed06c97b202",
+      "goalReviewContextFingerprint": "sha256:edeb86d55b5ff1831b8c29f0df7a1570be677ae50fc0b66c12b6fdd39d8b4f03",
+      "finalText": {
+        "titleDe": "Spezial- und Extremfälle nutzen",
+        "titleEn": "Use special and extreme cases",
+        "descriptionDe": "Die lernende Person kann durch Spezialfälle, Grenzwerte oder Extremfälle Hypothesen gewinnen und diese für die weitere Lösung nutzen.",
+        "descriptionEn": "The learner can use special cases, limiting cases or extreme cases to form hypotheses and use them to proceed."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.004",
+          "recordDigest": "sha256:148cccfc8f56416f8bf7caf4ee54cff67dae30269a0c09c09a73510f7dbd6e68"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-86022c15",
+          "recordDigest": "sha256:53e2c557fab053fd2244f0e3bda9502956613684094f7bc7b894481cef660a22"
+        }
+      },
+      "rationaleDe": "Beide Reviews trennen die aus Spezial-, Grenz- oder Extremfällen gewonnene Hypothese von einem allgemeinen Beweis. Die erste Evidenzfassung prüft einen strukturellen Wechsel: Ein bisher nützlicher Extremfall wird durch eine neue Nebenbedingung ausgeschlossen.",
+      "rationaleEn": "Both reviews distinguish a hypothesis drawn from special, limiting, or extreme cases from a general proof. The first evidence version tests a structural change: a new constraint rules out a previously useful extreme case."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-004",
+      "goalId": "22fb19c1-9b26-5090-a8ae-6cea79ee581a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f8e3ff524805d6bf1da6edffe823118d12a43c5fe0fcc14ae8120a37bb25db45",
+      "pageFingerprint": "sha256:39ec5e3f8694ec779d465ea88a4c93b493d2a53620bb96ee869d2c9bc08fbc80",
+      "goalReviewContextFingerprint": "sha256:16da9282743a3122fc3711e9d706e85f58a7131790ddef5c1efdce3b1b6b23a1",
+      "finalText": {
+        "titleDe": "Systematisch probieren und Muster erkennen",
+        "titleEn": "Try systematically and spot patterns",
+        "descriptionDe": "Die lernende Person kann systematisch Beispiele oder Parameter variieren, Muster erkennen und daraus einen Lösungsweg ableiten oder eine Vermutung formulieren.",
+        "descriptionEn": "The learner can vary examples or parameters systematically, spot patterns and derive a solution approach or formulate a conjecture."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.005",
+          "recordDigest": "sha256:11d9fb39c45fc295d4482a9ad684d3de996cf289c117f0aadd359e5197d582f4"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-22fb19c1",
+          "recordDigest": "sha256:ce3b1218c301e243fcfc40b68006dbde55bcf9d072c81bcce44b45664514a9c2"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen kontrollierte Variation statt unsystematischem Probieren. Die erste Evidenzfassung bindet Mustererkennung an konstant gehaltene Merkmale und prüft bei einer neuen Parameterbeschränkung, ob die frühere Vermutung trägt.",
+      "rationaleEn": "Both reviews confirm controlled variation rather than unsystematic guessing. The first evidence version ties pattern recognition to features held constant and tests whether an earlier conjecture survives a new parameter constraint."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-005",
+      "goalId": "7e1b43e2-40f9-5751-9735-d97763eb4ea2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:61260538fcba2cd48d449968de6ddf8f50f612f5340ba95a50fe1bb588c1428d",
+      "pageFingerprint": "sha256:aac2a173b22d73759a467f1c03cdda3e16149d1bd56b6b84d1a7b98a4d2be9c5",
+      "goalReviewContextFingerprint": "sha256:1d9c461e79c63f196482ccab52044db15e90185b6cf894bf98ad4ffaeb218bd9",
+      "finalText": {
+        "titleDe": "Variablen und Annahmen festlegen",
+        "titleEn": "Define variables and assumptions",
+        "descriptionDe": "Die lernende Person kann geeignete Variablen bzw. Parameter festlegen und zentrale Annahmen zur Situation oder zum Modell explizit machen.",
+        "descriptionEn": "The learner can define suitable variables or parameters and make key assumptions about the situation or the model explicit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.006",
+          "recordDigest": "sha256:d8e00c19cc42178e6102bbad272ec5a93b161cc75ed6dfa7166124d46976eedb"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-7e1b43e2",
+          "recordDigest": "sha256:1c282398a5a6b825304033b8444d2285c005e2b29a96e3d12d8c765914fd9b40"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen das Festlegen und Deuten von Variablen, Parametern und Annahmen als Einrichtung eines Modells. Die erste Evidenzfassung prüft die nötige Neufestlegung, wenn eine bisher konstante Größe veränderlich wird.",
+      "rationaleEn": "Both reviews confirm defining and interpreting variables, parameters, and assumptions as setting up a model. The first evidence version tests the required redefinition when a quantity previously treated as constant becomes variable."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-006",
+      "goalId": "a41761f2-8ba8-5af4-87c1-eb5e4ab1d020",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2ad9b173d3e0c7dcbbdfe8d322fa3b1fd57a187bf50b4e797cfee83af3984aec",
+      "pageFingerprint": "sha256:5c8dd99c2a46b187b86953df968e33172c171d8fd19fce67a8b652780dda632a",
+      "goalReviewContextFingerprint": "sha256:8e3a55e813e505dcac1fc9c51fe4b80395177d8a3319718f40b113322fae9be7",
+      "finalText": {
+        "titleDe": "Plausibilität prüfen",
+        "titleEn": "Check plausibility",
+        "descriptionDe": "Die lernende Person kann Ergebnisse durch Überschlagsrechnungen, Grenzfallbetrachtungen oder Einsetzen prüfen und Unstimmigkeiten erkennen.",
+        "descriptionEn": "The learner can check results using estimations, limiting cases or substitution and spot inconsistencies."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.009",
+          "recordDigest": "sha256:4684262023761f1bd8c5a055db83ee75d5f5904c029bb58b595e0985250e5301"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-a41761f2",
+          "recordDigest": "sha256:ae605cbf9969cb2cf196731deeb07ddaf27c3bdb4d79256e8f0da6fbb3115a5c"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen Plausibilitätskontrolle durch einen zur Aufgabe passenden unabhängigen Gegencheck, ohne daraus einen Beweis zu machen. Die erste Evidenzfassung prüft einen geänderten Einheiten- oder Größenmaßstab und die dadurch entstehende Unstimmigkeit.",
+      "rationaleEn": "Both reviews confirm checking plausibility through a suitable independent cross-check without treating it as a proof. The first evidence version tests a changed unit or magnitude scale and the inconsistency it reveals."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-007",
+      "goalId": "11f7090c-3e44-522f-9b77-1e07cceffc0f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2593a117c28089d7d37a66eec477bf5da069b42a5e9ae7e7cdd71549b7e7b875",
+      "pageFingerprint": "sha256:a579e0061e6b628b8479b7d3a32d2f68599ca59ab33ad1235487ac30cc9c6eca",
+      "goalReviewContextFingerprint": "sha256:7aa11d9d948ca3e39653e8497e9a2ac09fce68ca076b3cb44caa5bdb732b4cc2",
+      "finalText": {
+        "titleDe": "Modellgrenzen diskutieren",
+        "titleEn": "Discuss model limitations",
+        "descriptionDe": "Die lernende Person kann die Grenzen eines Modells benennen (Annahmen, Messfehler, Vereinfachungen) und die Folgen für das Ergebnis einschätzen.",
+        "descriptionEn": "The learner can name the limitations of a model (assumptions, measurement errors, simplifications) and assess the consequences for the result."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.010",
+          "recordDigest": "sha256:e049a2b27a456ff93d6d0c5966dfe93e1d94cba91d93109bc56310034347c1a7"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-11f7090c",
+          "recordDigest": "sha256:03910065df91244d419f475dc417d2e735d11c756a75d9d6c63b6feea76d0163"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen, dass Modellgrenzen erst mit ihren Folgen für Gültigkeit und Aussagekraft verstanden sind. Die zweite Evidenzfassung macht den Einfluss eines Mengenrabatts oder schwankenden Preises auf eine konkrete Kostenprognose überprüfbar.",
+      "rationaleEn": "Both reviews confirm that model limitations are understood only when their effect on validity and strength of conclusions is explained. The second evidence version makes the effect of a bulk discount or changing price on a concrete cost forecast assessable."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-008",
+      "goalId": "879f9c84-d6fb-58c3-b219-696e0070d67f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cd37197bd92ed357d49fb9bafafa116b8e21203b8dfd94e9b9fa9a289258010c",
+      "pageFingerprint": "sha256:a05364a4e15a8e6972a21ea54db0ca033f6105f2fb9f2367433c4d1f8736854d",
+      "goalReviewContextFingerprint": "sha256:26d7bb1330d22bfcdd2e8b9b39673793023bb5d34e7817854128945ae2efe852",
+      "finalText": {
+        "titleDe": "Werkzeugeinstellungen zielgerichtet setzen",
+        "titleEn": "Set tool options in a targeted way",
+        "descriptionDe": "Die lernende Person kann in einem digitalen Werkzeug Eingaben und Darstellungsparameter so setzen, dass ein mathematisches Objekt sachgerecht untersucht wird.",
+        "descriptionEn": "The learner can set inputs and display parameters in a digital tool so that a mathematical object is investigated appropriately."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.012",
+          "recordDigest": "sha256:158117ac951bbed484163eae7111be4922b547ffac198ca1bbaf96f551af3d75"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-879f9c84",
+          "recordDigest": "sha256:0df3fcd0f8eabecbdb4fb42fea06885ddbe98dc67180852ec4e201bd992e5bf9"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die sachgerechte Wahl von Eingaben und Darstellungsparametern für eine mathematische Frage. Die zweite Evidenzfassung prüft konkret, ob ein Ansichtsfenster für außerhalb liegende Nullstellen begründet erweitert wird.",
+      "rationaleEn": "Both reviews confirm appropriate choice of input and display settings for a mathematical question. The second evidence version concretely tests whether a viewing window is widened for zeros lying outside it, with justification."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-009",
+      "goalId": "7ac32297-023c-5914-9109-6285e4ce5846",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bc8ec4feecb109b85e251c17114991cb6a117b1c91e004560293c7af1184d3ab",
+      "pageFingerprint": "sha256:9ec468938995288c385d59b2d2b823f859864dcd330113dbd6633f818430f269",
+      "goalReviewContextFingerprint": "sha256:e4e5f3fa3cdc8eef889f8ae07977855582f1088f6d8fa64ef5e1ace6d4fe28be",
+      "finalText": {
+        "titleDe": "Tool-Ausgaben interpretieren",
+        "titleEn": "Interpret tool outputs",
+        "descriptionDe": "Die lernende Person kann Ausgaben digitaler Werkzeuge (Graphen, Tabellen, numerische Werte) interpretieren, mit dem Kontext verknüpfen und Plausibilität prüfen.",
+        "descriptionEn": "The learner can interpret outputs of digital tools (graphs, tables, numerical values), connect them to context and check plausibility."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.013",
+          "recordDigest": "sha256:0110af9482e79702c631859933e8ff527fb90f7e06d9e4658fed85f1f264f650"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-7ac32297",
+          "recordDigest": "sha256:6033fc6edd4ed879ba4bff47e6d30e844c2a2953230cea76830a598457fd770f"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen, dass digitale Graphen, Tabellen oder Zahlen erst mathematisch und im Kontext gedeutet werden müssen. Die zweite Evidenzfassung prüft die Übertragung auf eine neue tabellarische Ausgabe mit eigenem Plausibilitätscheck.",
+      "rationaleEn": "Both reviews confirm that digital graphs, tables, or numbers require mathematical and contextual interpretation. The second evidence version tests transfer to a new tabular output with its own plausibility check."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-010",
+      "goalId": "56f9632d-37fe-5edf-a654-f53dbb373c91",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c92bbde1681b5d3d77f8123dc0c93167417a708d098334f8f6dbe254ce5f99bd",
+      "pageFingerprint": "sha256:9206f51b0bc5c3f18eb53ce529809e03b84fc22409e57234b39f536f841a6944",
+      "goalReviewContextFingerprint": "sha256:2bf6298febbfefa933913b2666aba4c71e767ad8b96d6076e1927a4ef76fe6fc",
+      "finalText": {
+        "titleDe": "Einstellungen dokumentieren und reproduzieren",
+        "titleEn": "Document settings and reproduce results",
+        "descriptionDe": "Die lernende Person kann Eingaben, Parameter und Einstellungen eines Werkzeugs so dokumentieren, dass Ergebnisse nachvollziehbar und reproduzierbar sind.",
+        "descriptionEn": "The learner can document inputs, parameters and tool settings so that results are traceable and reproducible."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.014",
+          "recordDigest": "sha256:a8b5047a8de2593691c92a6e53b54b57bf38d7058ebc7a3ef700ce8ec8f917e8"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-56f9632d",
+          "recordDigest": "sha256:3c01366e3404ef026e560510673b784cd28d86bb5ad18c4390c943093b4d0f86"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen, dass Eingaben, Parameter und Einstellungen für reproduzierbare Tool-Ergebnisse dokumentiert werden müssen. Die zweite Evidenzfassung prüft diese Kompetenz in einer neuen Tabellenkalkulation mit Formeln, Startwerten und Kopierbereich.",
+      "rationaleEn": "Both reviews confirm that inputs, parameters, and settings must be documented for reproducible tool results. The second evidence version tests this competence in a new spreadsheet with formulas, initial values, and a copied range."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-011",
+      "goalId": "7c4e8d59-4acb-5f62-a387-c804c6fa23e0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:311140b40a9be324dd5d188e61de2736f749362b13c940b7d8c77bfd825ddbf7",
+      "pageFingerprint": "sha256:5704cc98b7b4d8735b8561cb34fa4261616a9d5c73caa8d1fc933d7f751ee304",
+      "goalReviewContextFingerprint": "sha256:fc2db9bff8cf648986dfe909ae8e373cfa86f889516d036475f2b920041b54c3",
+      "finalText": {
+        "titleDe": "Handrechnung mit digitaler Kontrolle kombinieren",
+        "titleEn": "Combine manual calculation with digital checking",
+        "descriptionDe": "Die lernende Person kann ein handschriftlich gewonnenes Ergebnis mit einem digitalen Werkzeug kontrollieren und Abweichungen fachlich einordnen.",
+        "descriptionEn": "The learner can check a manually obtained result with a digital tool and classify deviations mathematically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.015",
+          "recordDigest": "sha256:8408bf3bdd0b27e4cf32f652104bb63deef98e69e57ae04824ef9b35522c32be"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-7c4e8d59",
+          "recordDigest": "sha256:b23656cf92a07b3c5087931be80e9cf771905dff570afcb53a5c3aad5f03fe3c"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen Handrechnung mit digitalem Gegencheck und fachlicher Einordnung einer Abweichung. Die erste Evidenzfassung unterscheidet einen exakten Bruch von einer gerundeten digitalen Näherung und damit Rundung von einem echten Rechenfehler.",
+      "rationaleEn": "Both reviews confirm hand calculation with a digital cross-check and mathematical interpretation of discrepancies. The first evidence version distinguishes an exact fraction from a rounded digital approximation, and thus rounding from a genuine calculation error."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-012",
+      "goalId": "c23c4364-b5ea-513a-9d78-76bf7f113d1b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d06f1d287339da6cfe2b0511340a3e5681de0540810718611cb610b5b5236a5e",
+      "pageFingerprint": "sha256:9274fc9d8a01eb0a3c0bf2051eb7e04a7112d0a97f5054c0660835cd8a2c6eda",
+      "goalReviewContextFingerprint": "sha256:c499e48954ab4e6e518449a8145b9063ba3a71763b2aeb65049cf4bac8d7c9ad",
+      "finalText": {
+        "titleDe": "Visualisierung für komplexe Situation entwerfen (LK)",
+        "titleEn": "Design a visualization for a complex situation",
+        "descriptionDe": "Die lernende Person kann für eine anspruchsvolle Problemstellung eine geeignete Visualisierung entwerfen (z. B. Parameterabhängigkeit, 3D-Darstellung) und die Wahl begründen.",
+        "descriptionEn": "The learner can design a suitable visualization for a demanding problem (e.g. parameter dependence, 3D representation) and justify the choice."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.016",
+          "recordDigest": "sha256:f6da2a2554e2a0b142faa3b936870699df0ddd5b88e20f8c261f38c3bdce93e3"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-c23c4364",
+          "recordDigest": "sha256:c7aaf61debe16c28cc25fba86dd5e9236be3e6bd2394843b6261abd49b4483c8"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen den begründeten Entwurf einer geeigneten LK-Visualisierung statt einer pauschalen 3D-Vorgabe. Die zweite Evidenzfassung prüft bei zwei unabhängigen Parametern die Wahl zwischen 2D-Ansichten, Farbcodierung und 3D-Darstellung.",
+      "rationaleEn": "Both reviews confirm a justified design for a suitable advanced-course visualization rather than a blanket 3D requirement. The second evidence version tests the choice among 2D views, color coding, and 3D display when two parameters vary independently."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-013",
+      "goalId": "2e40a879-b62e-5dbf-aa45-020c0625a902",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:753eea77bff13e3ac986f022c03ec08dd48f2a068a15223a0ef4cd649051a733",
+      "pageFingerprint": "sha256:e4aec6de365b23dbd1c85cfcc272fcbae606face8eb27bd750ba30e91a33e665",
+      "goalReviewContextFingerprint": "sha256:f1375bdea027d1aaf95d92f9b89b041a5958fad0dab611726adeb0b73904f903",
+      "finalText": {
+        "titleDe": "Rechenregeln und Umformungen begründen",
+        "titleEn": "Justify rules and transformations",
+        "descriptionDe": "Die lernende Person kann verwendete Rechenregeln bzw. Umformungen begründen (Definition, Satz, Äquivalenzumformung) und den Zweck des Schritts erklären.",
+        "descriptionEn": "The learner can justify used rules or transformations (definition, theorem, equivalence transformation) and explain the purpose of the step."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.018",
+          "recordDigest": "sha256:1cdece3d8bd0dbad5646eda810ee36f446df8661919d802d419a887130b953e1"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-2e40a879",
+          "recordDigest": "sha256:6d2bc0416229448471b832078f3147f08bc9c8508f7c449b2b4b7d8216cc6400"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die fachliche Begründung einer verwendeten Umformung und ihres Zwecks. Die zweite Evidenzfassung prüft an einem möglichen Nullfaktor, ob eine Fallunterscheidung vor dem Teilen nötig ist und die Lösungsmenge erhalten bleibt.",
+      "rationaleEn": "Both reviews confirm mathematical justification of an applied transformation and its purpose. The second evidence version tests whether a possible zero factor requires a case distinction before division so that the solution set is preserved."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-014",
+      "goalId": "07be4b71-b7e0-5dd1-be0c-9f590f3db3f3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2b4cea8684643347be49c43ccf67102f022bd9cf4b8a5ab21f439433cf5b6a47",
+      "pageFingerprint": "sha256:0c68ac20df670fd11c02b1077fb64b0c530456399bdacdf1fe19ab774a706fa6",
+      "goalReviewContextFingerprint": "sha256:537eff98f094525c96c62195620b535a3b82c528aad1974180472c9c721aa4ea",
+      "finalText": {
+        "titleDe": "Verfahren auf neue Beispiele übertragen",
+        "titleEn": "Transfer procedures to new examples",
+        "descriptionDe": "Die lernende Person kann ein bekanntes Verfahren auf ein neues Beispiel übertragen, die Schritte anpassen und die Übertragung begründen.",
+        "descriptionEn": "The learner can transfer a known procedure to a new example, adapt steps and justify the transfer."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.019",
+          "recordDigest": "sha256:092bd03743347fb79f613359d19a64df8ec440c33908adb961a01c06032fb2de"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-07be4b71",
+          "recordDigest": "sha256:e35da619bbbe8c54292f56be940bf9daba8a082c460a51c3fc1ee5bc3a6e4a9c"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Übertragung eines bekannten Verfahrens aus seiner tragenden Struktur statt aus bloß ähnlicher Oberfläche. Die erste Evidenzfassung prüft die nötige Anpassung und Probe bei einem neuen, eingeschränkten Definitionsbereich.",
+      "rationaleEn": "Both reviews confirm transfer of a known procedure from its supporting structure rather than superficial resemblance. The first evidence version tests the necessary adaptation and check in a new case with a restricted domain."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-process-tools-keep-fifteen-partial-20260923-v2-decision-015",
+      "goalId": "b29a6ece-30f8-5ced-9782-4df1bcbad284",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:96de565a9249f6b39e9562c15848bed16d49b23641f26db32a76dd4f8e27ea45",
+      "pageFingerprint": "sha256:b467446eb8cb9f83897e8fffa75657fdb51380cbab88ebebbe3fc9390843845a",
+      "goalReviewContextFingerprint": "sha256:2b2091a42d976d1891b8a2e86f312aef080a9a4867d7dfbad814dc78cdc58b53",
+      "finalText": {
+        "titleDe": "Tool-Ergebnisse kritisch prüfen",
+        "titleEn": "Critically check tool results",
+        "descriptionDe": "Die lernende Person kann Tool-Ergebnisse auf Plausibilität prüfen, Rundungs- oder Darstellungsfehler erkennen und geeignete Gegenchecks durchführen.",
+        "descriptionEn": "The learner can check tool results for plausibility, detect rounding or representation errors and perform suitable cross-checks."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-process-tools-20-current-20260923-v1-a.run-001.020",
+          "recordDigest": "sha256:8856ba3f3a8d5675535eaff5e1fb79f5be44bc55baf3ca270bc1b3a5363eba96"
+        },
+        "second": {
+          "recordId": "math-m7-q4-process-tools-20-20260923-b-b29a6ece",
+          "recordDigest": "sha256:efc236ff1b6a2765cac456a5dfc2b14e4f06db93397f3fcb09a74568a6cc299a"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen kritische Prüfung einer Tool-Ausgabe auf Rundungs- und Darstellungsfehler mit geeignetem Gegencheck. Die zweite Evidenzfassung prüft eine scheinbare Nullstelle aus einem gerundeten Näherungswert durch höhere Genauigkeit oder Einsetzen.",
+      "rationaleEn": "Both reviews confirm critical checking of a tool output for rounding and display errors with a suitable cross-check. The second evidence version tests an apparent zero arising from a rounded approximation using higher precision or substitution."
+    }
+  ],
+  "manifestFingerprint": "sha256:ffe7079778c891d8cd374dd00b1edc1137857aab37b211e3002d56adb2f1b1f0"
+}

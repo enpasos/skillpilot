@@ -1,0 +1,1187 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "independent-ai-substantive-review-of-positive-profile-candidates",
+  "reviewId": "m7-spatial-nine-independent-b-20260922-v1",
+  "reviewedAt": "2026-09-21T22:34:43Z",
+  "reviewer": "Codex / independent substantive reviewer / math_repaired12_blind_b",
+  "model": "Codex; exact serving model identifier not exposed",
+  "independenceGroupId": "m7-spatial-nine-independent-b-20260922",
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "candidatePath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-spatial-nine-positive-candidates-v1/spatial-nine.candidates.json",
+  "candidateSha256": "sha256:5890e7d2052615f8d22c4b9a578a4b5c0851b9935ca756703d09fe2a49be4aa7",
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "criteriaPath": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+  "independence": {
+    "candidateAuthor": "math_statistics_blind_a",
+    "method": "Alle 18 Aufgaben in beiden Sprachen, Sollresultate, Erwartungsfelder und Variationsachsen wurden gegen aktuelle kanonische Ziele und prerequisites eigenständig geprüft. Erst danach wurden historische Original-A/B-Records zum Vergleich gelesen.",
+    "limits": "Die im Kandidaten selbst enthaltenen Autorenbegründungen waren sichtbar. Keine Behauptung eines blind-to-authoring-Reviews. Autoren-Selbsttests und Autoren-Urteilsdateien wurden nicht benutzt.",
+    "historicalOriginalsReadAfterOwnJudgment": true,
+    "authorSelfTestsUsed": false,
+    "modelDiversityClaimed": false
+  },
+  "summary": {
+    "profiles": 9,
+    "cases": 18,
+    "languageVersions": 36,
+    "pass": 8,
+    "changesRequested": 1,
+    "arithmeticCaseFailures": 0,
+    "localContentCorrections": 1,
+    "nativeSchemaFailures": 0,
+    "nativeSemanticFailures": 0
+  },
+  "scopeLimits": [
+    "Prüfung der P-Kandidatentexte, keine neue D- oder V-Freigabe.",
+    "Keine Bilder in diesem Auftrag neu gesichtet; historische Bildentscheidungen bleiben separat.",
+    "Kein tatsächlicher Lernenden- oder Softwarelauf durchgeführt; eb6bfdd9 formuliert dafür spätere Evidenzanforderungen.",
+    "Keine Canonical-, View-, QA-, Registry-, Ledger- oder Kandidatenänderung.",
+    "Strukturprüfung in-memory ohne Resource-Digests ist keine endgültige P-Seiten-/Assetbindung.",
+    "Kein menschliches Urteil und keine M7-Freigabe."
+  ],
+  "nativeValidation": {
+    "checkedAt": "2026-09-21T22:33:21.337Z",
+    "candidateSha256": "sha256:5890e7d2052615f8d22c4b9a578a4b5c0851b9935ca756703d09fe2a49be4aa7",
+    "canonicalSha256": "sha256:5753763bd1f8f837ef3a659827a4dead2ced36c0f44d3662d605c0f66c0f20f7",
+    "recordCount": 9,
+    "schemaErrors": [],
+    "nativeSemanticErrors": [],
+    "mode": "in-memory native materializer plus Ajv2020; reviewedResourceTypes empty; no final page or asset binding asserted",
+    "bindings": [
+      {
+        "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+        "goalFingerprint": "sha256:49deecda41233341f3f54d507dda7f828b8276dd8bfa02e5f12b953e84f7b2e5",
+        "profileFingerprint": "sha256:1fac821529d95c2f0eaae0a9c5c32da3f87a58f20edafcd5e001cd5f8fea2d32",
+        "authoringGoalMatches": true,
+        "authoringProfileMatches": true
+      },
+      {
+        "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+        "goalFingerprint": "sha256:4610b484ec7bf73f49cae1890f69bc5771a36f996613f376adec2846bb6c8c86",
+        "profileFingerprint": "sha256:81db257490151cae800b286d7ba9fc34c80570511488d988bc97e9fc63064af3",
+        "authoringGoalMatches": true,
+        "authoringProfileMatches": true
+      },
+      {
+        "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+        "goalFingerprint": "sha256:5fddb3d49a83541aa8f76a159bc635893b2182310f66acfeb046b90ab94b241a",
+        "profileFingerprint": "sha256:fb06d02996c47e6f55623d204e56361eab867b040c397c628af0b72bdfd4d206",
+        "authoringGoalMatches": true,
+        "authoringProfileMatches": true
+      },
+      {
+        "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+        "goalFingerprint": "sha256:3af577f67b8c265d92b7fa3abdb613e6df11901b6c6e3034e4f3b61437c5eaa9",
+        "profileFingerprint": "sha256:441c9c1e853b5bd8d03cfa63625b7731e9fd3e99ee7800468d8052034a8685b0",
+        "authoringGoalMatches": true,
+        "authoringProfileMatches": true
+      },
+      {
+        "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+        "goalFingerprint": "sha256:d15456eb6c7cc1b070d450dd0389786631856af89f87edd08aa7c0a509c26fbc",
+        "profileFingerprint": "sha256:152179afb3433157aee22444e8eeb28f531de2f333d95643bd4ac3ffcb77a3aa",
+        "authoringGoalMatches": true,
+        "authoringProfileMatches": true
+      },
+      {
+        "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+        "goalFingerprint": "sha256:a4aa1ee1694db01c13e2690875b027cd75fe6d046479e916224540f9bf9e92fa",
+        "profileFingerprint": "sha256:672d03199a07185de9fd53d97f17351103d7fa3a1e41d1046666fa41fa57f299",
+        "authoringGoalMatches": true,
+        "authoringProfileMatches": true
+      },
+      {
+        "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+        "goalFingerprint": "sha256:630a4748f5eaa839e64f959fa5760dfaa0c671e66177130ed37bd342ca71d520",
+        "profileFingerprint": "sha256:bf873d139a8344a6751515b92cb47418029cdf4ccf3938cb619e47534003ae8d",
+        "authoringGoalMatches": true,
+        "authoringProfileMatches": true
+      },
+      {
+        "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+        "goalFingerprint": "sha256:1f3dceaa1fc8e5df06d5e69391cdbff79cc1e028e7a91b466086240230db1368",
+        "profileFingerprint": "sha256:b6099bd23faca4137ca859769444f2c06ba84ce04eafc89a5a26f827af4f983c",
+        "authoringGoalMatches": true,
+        "authoringProfileMatches": true
+      },
+      {
+        "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af",
+        "goalFingerprint": "sha256:7f688fd6be500540adabefc1fb3194878945b258de1bed3cbb50049508bae1d0",
+        "profileFingerprint": "sha256:f30ff278c51ade1d788eb735c52aad4709c34747cceb67d3140dced579ff73a0",
+        "authoringGoalMatches": true,
+        "authoringProfileMatches": true
+      }
+    ]
+  },
+  "independentArithmeticChecks": {
+    "count": 42,
+    "allPass": true,
+    "checks": [
+      {
+        "label": "be0: AB",
+        "actual": [
+          3,
+          -2,
+          4
+        ],
+        "expected": [
+          3,
+          -2,
+          4
+        ],
+        "pass": true
+      },
+      {
+        "label": "be0: O'P",
+        "actual": [
+          3,
+          2,
+          3
+        ],
+        "expected": [
+          3,
+          2,
+          3
+        ],
+        "pass": true
+      },
+      {
+        "label": "be0: O'Q",
+        "actual": [
+          1,
+          5,
+          3
+        ],
+        "expected": [
+          1,
+          5,
+          3
+        ],
+        "pass": true
+      },
+      {
+        "label": "be0: unchanged PQ",
+        "actual": [
+          -2,
+          3,
+          0
+        ],
+        "expected": [
+          -2,
+          3,
+          0
+        ],
+        "pass": true
+      },
+      {
+        "label": "aae: corner block all8",
+        "actual": 8,
+        "expected": 8,
+        "pass": true
+      },
+      {
+        "label": "aae: full aquarium origin translation",
+        "actual": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            50
+          ],
+          [
+            0,
+            40,
+            0
+          ],
+          [
+            0,
+            40,
+            50
+          ],
+          [
+            80,
+            0,
+            0
+          ],
+          [
+            80,
+            0,
+            50
+          ],
+          [
+            80,
+            40,
+            0
+          ],
+          [
+            80,
+            40,
+            50
+          ]
+        ],
+        "expected": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            50
+          ],
+          [
+            0,
+            40,
+            0
+          ],
+          [
+            0,
+            40,
+            50
+          ],
+          [
+            80,
+            0,
+            0
+          ],
+          [
+            80,
+            0,
+            50
+          ],
+          [
+            80,
+            40,
+            0
+          ],
+          [
+            80,
+            40,
+            50
+          ]
+        ],
+        "pass": true
+      },
+      {
+        "label": "aae: example translated corner",
+        "actual": [
+          0,
+          40,
+          50
+        ],
+        "expected": [
+          0,
+          40,
+          50
+        ],
+        "pass": true
+      },
+      {
+        "label": "eb6: point top projections",
+        "actual": [
+          [
+            -2,
+            3
+          ],
+          [
+            -2,
+            3
+          ]
+        ],
+        "expected": [
+          [
+            -2,
+            3
+          ],
+          [
+            -2,
+            3
+          ]
+        ],
+        "pass": true
+      },
+      {
+        "label": "eb6: segment midpoints",
+        "actual": [
+          [
+            0,
+            0,
+            2
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ],
+        "expected": [
+          [
+            0,
+            0,
+            2
+          ],
+          [
+            0,
+            0,
+            -1
+          ]
+        ],
+        "pass": true
+      },
+      {
+        "label": "eb6: side projection separates at crossing",
+        "actual": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        "expected": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        "pass": true
+      },
+      {
+        "label": "eb6: skew-view orthogonal screen rows",
+        "actual": 0,
+        "expected": 0,
+        "pass": true
+      },
+      {
+        "label": "eb6: all three coordinate axis images nonzero",
+        "actual": true,
+        "expected": true,
+        "pass": true
+      },
+      {
+        "label": "f37: 2b",
+        "actual": [
+          6,
+          2,
+          -2
+        ],
+        "expected": [
+          6,
+          2,
+          -2
+        ],
+        "pass": true
+      },
+      {
+        "label": "f37: a+2b",
+        "actual": [
+          7,
+          0,
+          1
+        ],
+        "expected": [
+          7,
+          0,
+          1
+        ],
+        "pass": true
+      },
+      {
+        "label": "f37: negativehalf",
+        "actual": [
+          2,
+          -1,
+          -3
+        ],
+        "expected": [
+          2,
+          -1,
+          -3
+        ],
+        "pass": true
+      },
+      {
+        "label": "f37: negativehalf+v",
+        "actual": [
+          1,
+          2,
+          -2
+        ],
+        "expected": [
+          1,
+          2,
+          -2
+        ],
+        "pass": true
+      },
+      {
+        "label": "f37: return cancel",
+        "actual": [
+          0,
+          0,
+          0
+        ],
+        "expected": [
+          0,
+          0,
+          0
+        ],
+        "pass": true
+      },
+      {
+        "label": "f37: length half squared",
+        "actual": 56,
+        "expected": 56,
+        "pass": true
+      },
+      {
+        "label": "72d: 2u-v",
+        "actual": [
+          2,
+          1,
+          -1
+        ],
+        "expected": [
+          2,
+          1,
+          -1
+        ],
+        "pass": true
+      },
+      {
+        "label": "72d: redundant 3p",
+        "actual": [
+          6,
+          -3,
+          0
+        ],
+        "expected": [
+          6,
+          -3,
+          0
+        ],
+        "pass": true
+      },
+      {
+        "label": "72d: redundant p+q",
+        "actual": [
+          6,
+          -3,
+          0
+        ],
+        "expected": [
+          6,
+          -3,
+          0
+        ],
+        "pass": true
+      },
+      {
+        "label": "72d: all affine coefficient solutions sample",
+        "actual": true,
+        "expected": true,
+        "pass": true
+      },
+      {
+        "label": "6fc: nontrivial zero",
+        "actual": [
+          0,
+          0,
+          0
+        ],
+        "expected": [
+          0,
+          0,
+          0
+        ],
+        "pass": true
+      },
+      {
+        "label": "6fc: all pair crossproducts nonzero",
+        "actual": true,
+        "expected": true,
+        "pass": true
+      },
+      {
+        "label": "6fc: independent triple determinant",
+        "actual": 2,
+        "expected": 2,
+        "pass": true
+      },
+      {
+        "label": "6fc: explicit fullspan general sample",
+        "actual": [
+          -7,
+          5,
+          9
+        ],
+        "expected": [
+          -7,
+          5,
+          9
+        ],
+        "pass": true
+      },
+      {
+        "label": "54c: negative multiple",
+        "actual": [
+          0,
+          -2,
+          4
+        ],
+        "expected": [
+          0,
+          -2,
+          4
+        ],
+        "pass": true
+      },
+      {
+        "label": "54c: counterexample x",
+        "actual": true,
+        "expected": true,
+        "pass": true
+      },
+      {
+        "label": "54c: parameter onlyk0",
+        "actual": [
+          6,
+          0,
+          -3
+        ],
+        "expected": [
+          6,
+          0,
+          -3
+        ],
+        "pass": true
+      },
+      {
+        "label": "68d: first vector",
+        "actual": [
+          4,
+          -4,
+          2
+        ],
+        "expected": [
+          4,
+          -4,
+          2
+        ],
+        "pass": true
+      },
+      {
+        "label": "68d: squared distance36",
+        "actual": 36,
+        "expected": 36,
+        "pass": true
+      },
+      {
+        "label": "68d: axisroute10",
+        "actual": 10,
+        "expected": 10,
+        "pass": true
+      },
+      {
+        "label": "68d: second vector",
+        "actual": [
+          2,
+          3,
+          6
+        ],
+        "expected": [
+          2,
+          3,
+          6
+        ],
+        "pass": true
+      },
+      {
+        "label": "68d: squared distance49",
+        "actual": 49,
+        "expected": 49,
+        "pass": true
+      },
+      {
+        "label": "68d: translated points",
+        "actual": [
+          [
+            -4,
+            -3,
+            5
+          ],
+          [
+            -2,
+            0,
+            11
+          ]
+        ],
+        "expected": [
+          [
+            -4,
+            -3,
+            5
+          ],
+          [
+            -2,
+            0,
+            11
+          ]
+        ],
+        "pass": true
+      },
+      {
+        "label": "68d: reversed new-frame difference",
+        "actual": [
+          -2,
+          -3,
+          -6
+        ],
+        "expected": [
+          -2,
+          -3,
+          -6
+        ],
+        "pass": true
+      },
+      {
+        "label": "69e: interior brace squared81",
+        "actual": 81,
+        "expected": 81,
+        "pass": true
+      },
+      {
+        "label": "69e: floor squared32",
+        "actual": 32,
+        "expected": 32,
+        "pass": true
+      },
+      {
+        "label": "69e: pyramid side vector",
+        "actual": [
+          -3,
+          3,
+          4
+        ],
+        "expected": [
+          -3,
+          3,
+          4
+        ],
+        "pass": true
+      },
+      {
+        "label": "69e: pyramid side squared34",
+        "actual": 34,
+        "expected": 34,
+        "pass": true
+      },
+      {
+        "label": "69e: base diagonal vector",
+        "actual": [
+          6,
+          6,
+          0
+        ],
+        "expected": [
+          6,
+          6,
+          0
+        ],
+        "pass": true
+      },
+      {
+        "label": "69e: base squared72",
+        "actual": 72,
+        "expected": 72,
+        "pass": true
+      }
+    ]
+  },
+  "historicalSources": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-a/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:00e7724aa5d0ea566adaf4ca040ee078b8d58a3c244e8be6f26881e69d3a1256"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1/round-b/results/mathematik-rollout-v1-batch-044-spatial-geometry-vectors-and-matrix-entry-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:f8dc8670014df6186fcc973b3628ce20702cb181160eb7d5834e71a028a5c54b"
+    }
+  ],
+  "goals": [
+    {
+      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "decision": "pass",
+      "title": "Vektorrollen im Raum",
+      "scopeReview": "Die beiden AB1-Fälle prüfen Orts-, Verschiebungs- und nichtnullige Richtungsvektoren, Komponenten und Fachsprache. Ein reiner Ursprungswechsel ohne Achsendrehung ist ein angemessener Bezugstransfer, keine zusätzliche Geraden- oder Transformationskompetenz.",
+      "caseReviews": [
+        {
+          "id": "three-roles-in-one-frame",
+          "derivation": "OB−OA=(2−(−1),0−2,4−0)=(3,−2,4). OA und OB beginnen in O, AB in A. Der Richtungsvektor beschreibt die Gerade durch A und B, nicht deren Länge.",
+          "countercheck": "A+(3,−2,4)=B. OB ist nicht parallel zu AB (z würde Faktor 1 erzwingen, x widerspricht); OA ebenfalls nicht. Nichtnulligkeit ist gegeben.",
+          "result": "pass"
+        },
+        {
+          "id": "shifted-origin-fixed-displacement",
+          "derivation": "P−O'=(3,2,3), Q−O'=(1,5,3), Q−P=(−2,3,0)=(Q−O')−(P−O').",
+          "countercheck": "Der Ursprung wird geändert, nicht P oder Q bewegt; fixe Achsen und Einheiten sind ausdrücklich vorgegeben. Der freie Verbindungsvektor bleibt unverändert.",
+          "result": "pass"
+        }
+      ],
+      "bilingualReview": "DE/EN geben dieselben Punkte, Rollen, Vorzeichen und Randbedingungen vor. 'Arrow tail/head' entspricht Pfeilanfang/-ende; der englische Text verlangt keine zusätzliche Leistung.",
+      "coverageAndTransfer": "Beide Erwartungen werden durch Rollenvergleich und Ursprungswechsel beobachtbar. Die zweite Demonstration verändert die Darstellung strukturell, nicht nur Zahlen.",
+      "historicalComparison": "Historische A/B-Verständnisfelder stimmen mit dem eigenen fachlichen Urteil überein. Alte Bildfehler (Geradenlänge, Projektion) werden hier nicht freigegeben. Die damaligen Analysis-Voraussetzungen fehlen tatsächlich im aktuellen requires.",
+      "goalFingerprint": "sha256:49deecda41233341f3f54d507dda7f828b8276dd8bfa02e5f12b953e84f7b2e5",
+      "profileFingerprint": "sha256:1fac821529d95c2f0eaae0a9c5c32da3f87a58f20edafcd5e001cd5f8fea2d32",
+      "authoringGoalMatches": true,
+      "authoringProfileMatches": true,
+      "historicalDecisions": [
+        {
+          "round": "a",
+          "recordId": "math-b044-a-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "decision": "block"
+        },
+        {
+          "round": "b",
+          "recordId": "math-b044-first-pass-b-root-20260907.be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "decision": "block"
+        }
+      ]
+    },
+    {
+      "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+      "decision": "pass",
+      "title": "Räumliche Objekte koordinatisieren",
+      "scopeReview": "AB1-Koordinatenbezüge, Achsenwahl, Einheit und konsistente Eckpunkttripel; keine Schrägbild-Messung oder eigenständige Längenkompetenz erforderlich.",
+      "caseReviews": [
+        {
+          "id": "corner-frame-for-block",
+          "derivation": "Bei x entlang 5 cm, y entlang 2 cm und z entlang 6 cm ergeben sich 2³=8 verschiedene Tripel {0,5}×{0,2}×{0,6}.",
+          "countercheck": "Jede Kante verändert genau eine Komponente um 5, 2 oder 6; vollständig erklärte andere Achsenzuordnungen und Orientierungen sind ausdrücklich gleichwertig.",
+          "result": "pass"
+        },
+        {
+          "id": "symmetry-origin-aquarium",
+          "derivation": "Halbe Bodenabmessungen sind 40 und 20. Die Ecken sind {−40,40}×{−20,20}×{0,50}. Subtraktion von (−40,−20,0) liefert {0,80}×{0,40}×{0,50}; (−40,20,50) wird (0,40,50).",
+          "countercheck": "Alle acht Ecken wurden komponentenweise übertragen; Differenzen und Körperabmessungen bleiben erhalten. Negative Ortskomponenten sind keine negativen Längen.",
+          "result": "pass"
+        }
+      ],
+      "bilingualReview": "DE/EN stimmen bei Zentrierung, Achsen, Einheit, Ecken und Übersetzung überein. 'Former corner' bezeichnet dieselbe Ecke des alten Bezugssystems, keinen bewegten Punkt.",
+      "coverageAndTransfer": "Eckbezug und Symmetriebezug mit negativen Komponenten bilden zwei passende Demonstrationen der Bezugsauswahl und ihres Wechsels.",
+      "historicalComparison": "Historische A/B verlangen ebenfalls Bezugsauswahl und veränderte Tripel am gleichen Körper. Deren vertauschte Kantenbeschriftungen im alten Bild bleiben eine getrennte Bildprüfung.",
+      "goalFingerprint": "sha256:4610b484ec7bf73f49cae1890f69bc5771a36f996613f376adec2846bb6c8c86",
+      "profileFingerprint": "sha256:81db257490151cae800b286d7ba9fc34c80570511488d988bc97e9fc63064af3",
+      "authoringGoalMatches": true,
+      "authoringProfileMatches": true,
+      "historicalDecisions": [
+        {
+          "round": "a",
+          "recordId": "math-b044-a-aae119f2-925f-5fc1-b795-b52c9e980863",
+          "decision": "block"
+        },
+        {
+          "round": "b",
+          "recordId": "math-b044-first-pass-b-root-20260907.aae119f2-925f-5fc1-b795-b52c9e980863",
+          "decision": "block"
+        }
+      ]
+    },
+    {
+      "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+      "decision": "changes_requested",
+      "title": "Geometriesoftware zur Raumorientierung",
+      "scopeReview": "Beide AB2-Fälle verlangen tatsächliche Softwarekonstruktion, Ansichtswechsel und Koordinatenprüfung, nicht bloß Papierberechnung. Die geforderte Inzidenzprüfung benötigt keine Geradenschnitt-Routine. Die Falllösungen sind richtig; nur die allgemeine Variationsachse ist zu weit formuliert.",
+      "caseReviews": [
+        {
+          "id": "two-points-overlap-in-top-view",
+          "derivation": "Orthogonale Projektion entlang z sendet P und Q jeweils auf (−2,3). Ihre z-Werte unterscheiden sich um 5. Beispielsweise zeigt die xz-Ansicht die Punkte (−2,4) und (−2,−1).",
+          "countercheck": "Eine ungeeignete zweite Ansicht könnte weiter überdecken; erwartet wird ausdrücklich eine aufklärende geeignete Ansicht plus Koordinatenanzeige. Modellkoordinaten bleiben beim reinen Kameradreh fest.",
+          "result": "pass"
+        },
+        {
+          "id": "apparent-crossing-of-segments",
+          "derivation": "AB liegt vollständig bei y=0,z=2 und CD bei x=0,z=−1. Ihre xy-Projektionen schneiden sich in (0,0); die zugehörigen Raumpunkte (0,0,2) und (0,0,−1) sind verschieden.",
+          "countercheck": "Wegen der konstant verschiedenen z-Werte können die Strecken nirgends räumlich schneiden. In xz wird CD zu (0,−1) und AB bleibt auf Höhe 2 sichtbar. Eine Sicht- und Koordinatenprüfung genügt.",
+          "result": "pass"
+        }
+      ],
+      "bilingualReview": "Alle Fallbedingungen und Sollresultate sind in DE/EN gleich. Der Fehler in der Variationsachse ist ebenfalls bilingual: 'jeweils ausgeblendete Koordinate'/'which coordinate each view suppresses' schließt derzeit Schrägansichten ein.",
+      "coverageAndTransfer": "Die Punktüberdeckung und der scheinbare Streckenschnitt sind echte unabhängige Darstellungsvariationen. Tatsächliche Softwarebedienung ist als spätere Lernerevidenz zu verlangen; dieser Profilreview behauptet keinen absolvierten Softwarelauf.",
+      "historicalComparison": "Historische A/B fordern richtige Ansichten und Trennung von Kamerabewegung und Objektbewegung; keine ihrer Verständnisaussagen begründet das pauschale Weglassen einer Koordinate in Schrägansichten. Der historische falsche x-Projektionswert im Bild wird nicht neu beurteilt.",
+      "requiredChanges": [
+        {
+          "id": "B-P9-01",
+          "severity": "local_content_correction",
+          "jsonPointer": "/goals/2/profile/variationAxes/0",
+          "problemDe": "Eine allgemeine Schrägansicht blendet nicht eine bestimmte x-, y- oder z-Koordinate aus. Die Aussage gilt in dieser Form nur für achsenparallele orthogonale Ansichten.",
+          "counterexample": "Orthogonale Blickrichtung n=(1,1,1), Bildschirmbasis u=(1,−1,0)/√2 und v=(1,1,−2)/√6. Alle drei Koordinatenachsen haben von null verschiedene Bildschirmbilder. Die Projektion verliert die Komponente entlang n, nicht eine einzelne kartesische Koordinate.",
+          "suggestedTextDe": "Zwischen bezeichneten orthogonalen Drauf- und Seitenansichten sowie geeigneten Schrägansichten wechseln; bei achsenparallelen Ansichten die ausgeblendete Koordinate benennen und bei Schrägansichten die sichtbaren Lageinformationen erläutern.",
+          "suggestedTextEn": "Switch between identified orthographic top and side views and suitable oblique views; for axis-aligned views name the suppressed coordinate, and for oblique views explain the visible positional information.",
+          "acceptance": "Nur die beiden textDe/textEn-Felder dieser Variationsachse korrigieren. Beide Aufgaben und Lösungen unverändert lassen. Danach den lokalen Diff und den neuen Profilfingerprint nachprüfen; keine neue Gesamtprüfung der acht unveränderten Profile erforderlich."
+        }
+      ],
+      "goalFingerprint": "sha256:5fddb3d49a83541aa8f76a159bc635893b2182310f66acfeb046b90ab94b241a",
+      "profileFingerprint": "sha256:fb06d02996c47e6f55623d204e56361eab867b040c397c628af0b72bdfd4d206",
+      "authoringGoalMatches": true,
+      "authoringProfileMatches": true,
+      "historicalDecisions": [
+        {
+          "round": "a",
+          "recordId": "math-b044-a-eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+          "decision": "block"
+        },
+        {
+          "round": "b",
+          "recordId": "math-b044-first-pass-b-root-20260907.eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+          "decision": "block"
+        }
+      ]
+    },
+    {
+      "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "decision": "pass",
+      "title": "Vektoren addieren und skalieren",
+      "scopeReview": "Komponentenrechnung und geometrische Verkettung gehören zu derselben AB2-Operationskompetenz. Negativer Bruchfaktor, Gegenvektor und Nullfaktor bleiben im Ziel.",
+      "caseReviews": [
+        {
+          "id": "scaled-leg-in-spatial-route",
+          "derivation": "2b=(6,2,−2); a+2b=(1+6,−2+2,3−2)=(7,0,1).",
+          "countercheck": "Vom beliebigen Start S führt S+a+2b zum gleichen Endpunkt wie S+(7,0,1). 2b ist positiv kollinear zu b, Länge verdoppelt; y hebt sich auf.",
+          "result": "pass"
+        },
+        {
+          "id": "negative-half-and-return",
+          "derivation": "(−1/2)u=(2,−1,−3); Addition von (−1,3,1) liefert (1,2,−2). Rückvektor (−1,−2,2) ergibt insgesamt 0.",
+          "countercheck": "Quadratlängen sind 14 und 56, also halbe Länge; der Faktor ist negativ. 0u ist Nullverschiebung ohne Richtung und wird nicht als gerichteter Pfeil mit eigener Trägergeraden ausgegeben.",
+          "result": "pass"
+        }
+      ],
+      "bilingualReview": "Daten, Reihenfolge, Faktoren, Rückweg und Nullfall entsprechen sich vollständig. 'Orientation' und 'direction reversal' sind auf nichtnullige Vektoren bezogen.",
+      "coverageAndTransfer": "Die zweite Demonstration geht von positiver Streckung zu negativer Halbstreckung, Aufhebung und Nullfall über; beide Erwartungen werden konkret abgedeckt.",
+      "historicalComparison": "Der historische positive Kern wird beibehalten. Die pauschale alte Trägergeraden-Aussage ist für Nullskalierung im Kandidaten sinnvoll begrenzt. Die früheren falsch gerichteten Bildpfeile werden nicht beurteilt.",
+      "goalFingerprint": "sha256:3af577f67b8c265d92b7fa3abdb613e6df11901b6c6e3034e4f3b61437c5eaa9",
+      "profileFingerprint": "sha256:441c9c1e853b5bd8d03cfa63625b7731e9fd3e99ee7800468d8052034a8685b0",
+      "authoringGoalMatches": true,
+      "authoringProfileMatches": true,
+      "historicalDecisions": [
+        {
+          "round": "a",
+          "recordId": "math-b044-a-f37b0a72-9e23-51c7-aad5-438c17a56899",
+          "decision": "block"
+        },
+        {
+          "round": "b",
+          "recordId": "math-b044-first-pass-b-root-20260907.f37b0a72-9e23-51c7-aad5-438c17a56899",
+          "decision": "block"
+        }
+      ]
+    },
+    {
+      "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "decision": "pass",
+      "title": "Linearkombinationen",
+      "scopeReview": "AB2-Koeffizientenwahl, vollständige Probe und geometrische Deutung. Redundanz und eine direkt widersprüchliche Komponente untersuchen die Darstellbarkeit; kein zusätzliches Rangverfahren oder allgemeiner Unabhängigkeitsbeweis wird verlangt.",
+      "caseReviews": [
+        {
+          "id": "negative-weight-with-three-component-check",
+          "derivation": "a·u+b·v=(a,a+b,b). Aus x=2,z=−1 folgen a=2,b=−1; y=1 stimmt. Damit w=2u−v.",
+          "countercheck": "Der vollständige Vektor ist (2,1,−1); beide Koeffizienten sind eindeutig. Ein negativer v-Schritt erklärt die Richtung geometrisch.",
+          "result": "pass"
+        },
+        {
+          "id": "redundant-generators-two-representations",
+          "derivation": "q=2p, daher a·p+b·q=(a+2b)p. t=3p verlangt a+2b=3; (3,0) und (1,1) sind zwei Lösungen.",
+          "countercheck": "Alle Paare (3−2b,b) mit reellem b sind zulässig. Jede Kombination hat z=0, daher s mit z=1 unmöglich. Der Nachweis behauptet nicht, dass z=0 allein für beliebige andere Ziele hinreichend wäre.",
+          "result": "pass"
+        }
+      ],
+      "bilingualReview": "Negative Gewichtung, freie Alternativpaare, reelle Komponenten und Nichterreichbarkeit sind sprachgleich. Die Lösungen sind nicht auf das Beispielpaar beschränkt.",
+      "coverageAndTransfer": "Übergang von eindeutiger Darstellung zu redundanten Erzeugern und einem unerreichbaren Ziel liefert echte strukturelle Variation.",
+      "historicalComparison": "A/B fordern Koeffizienten, Komponentenprobe, negative Gewichte beziehungsweise redundante Erzeuger. Diese positiven Anforderungen sind erfüllt; der alte Projektionsfehler ist außerhalb dieses P-Reviews.",
+      "goalFingerprint": "sha256:d15456eb6c7cc1b070d450dd0389786631856af89f87edd08aa7c0a509c26fbc",
+      "profileFingerprint": "sha256:152179afb3433157aee22444e8eeb28f531de2f333d95643bd4ac3ffcb77a3aa",
+      "authoringGoalMatches": true,
+      "authoringProfileMatches": true,
+      "historicalDecisions": [
+        {
+          "round": "a",
+          "recordId": "math-b044-a-72dfc164-455d-4b63-85f0-96e803c9a1d5",
+          "decision": "block"
+        },
+        {
+          "round": "b",
+          "recordId": "math-b044-first-pass-b-root-20260907.72dfc164-455d-4b63-85f0-96e803c9a1d5",
+          "decision": "block"
+        }
+      ]
+    },
+    {
+      "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+      "decision": "pass",
+      "title": "Lineare Abhängigkeit und Unabhängigkeit",
+      "scopeReview": "Die vollständige Familie, nicht bloß Paare, wird algebraisch und geometrisch untersucht. Drei beziehungsweise vier Familienmitglieder in R³ sind ausdrücklich unterschieden. Der vierte Nullvektor ist eine direkte Kriterienanwendung, keine zusätzliche Dimensionssatzprüfung.",
+      "caseReviews": [
+        {
+          "id": "pairwise-noncollinear-dependent-triple",
+          "derivation": "2a+b=(2,5,1)=c, also Koeffizienten (2,1,−1) nichttrivial. a×b=(2,−1,1)≠0; c erfüllt 2x−y+z=0.",
+          "countercheck": "Alle drei Paar-Kreuzprodukte sind von null verschieden, trotzdem liegt c in span(a,b). Die Nullmuster begründen die Paar-Nichtkollinearität hier nur zusammen mit der gegebenen Nichtnulligkeit; diese ist bei allen Vektoren erfüllt.",
+          "result": "pass"
+        },
+        {
+          "id": "independent-triple-plus-zero",
+          "derivation": "Die Komponenten der Nullkombination sind (α,β,α+β+2γ); zuerst α=β=0, dann γ=0. Gegenprobe: Determinante der Spalten p,q,r ist 2≠0.",
+          "countercheck": "Jedes (x,y,z) ist x·p+y·q+((z−x−y)/2)·r. Mit dem zusätzlichen Nullvektor ist (0,0,0,1) ein nichttriviales Koeffiziententupel; span bleibt R³.",
+          "result": "pass"
+        }
+      ],
+      "bilingualReview": "DE/EN unterscheiden nichttriviale Koeffizienten von einem nichtnulligen Ergebnis, und Familiengröße von Raumdimension. Beide Formulierungen des Paarvergleichs sind für die konkreten Vektoren richtig.",
+      "coverageAndTransfer": "Abhängigkeit trotz paarweiser Nichtkollinearität, Unabhängigkeit und Nullvektorergänzung belegen beide Pflicht-Erwartungen mit geändertem Strukturtyp.",
+      "historicalComparison": "Historischer A/B-Dissens lautet Bild KEEP versus Bild BLOCK; beide fachlichen Verständniskerne sind vereinbar. Der Kandidat enthält keine Abbildung, die diesen alten Dissens stillschweigend auflösen würde. Die Bildfrage bleibt separat.",
+      "goalFingerprint": "sha256:a4aa1ee1694db01c13e2690875b027cd75fe6d046479e916224540f9bf9e92fa",
+      "profileFingerprint": "sha256:672d03199a07185de9fd53d97f17351103d7fa3a1e41d1046666fa41fa57f299",
+      "authoringGoalMatches": true,
+      "authoringProfileMatches": true,
+      "historicalDecisions": [
+        {
+          "round": "a",
+          "recordId": "math-b044-a-6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+          "decision": "keep"
+        },
+        {
+          "round": "b",
+          "recordId": "math-b044-first-pass-b-root-20260907.6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+          "decision": "block"
+        }
+      ]
+    },
+    {
+      "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "decision": "pass",
+      "title": "Kollinearität",
+      "scopeReview": "Ein gemeinsamer Skalar und alle Komponenten prüfen die aktuelle AB2-Kompetenz. Der Nullvektor wird unter ausdrücklich gesetzter Konvention behandelt; keine Richtung wird aus dem Begriff kollinear abgeleitet.",
+      "caseReviews": [
+        {
+          "id": "negative-multiple-with-zero-component",
+          "derivation": "(−2/3)(0,3,−6)=(0,−2,4)=w. Für t scheitert jede skalare Beziehung an x: 1=λ·0 ist unmöglich.",
+          "countercheck": "Die negativen beziehungsweise positiven y-/z-Werte genügen ohne x-Prüfung nicht. Der Längenfaktor 2/3 folgt aus |λ|; w und v sind entgegengesetzt orientiert.",
+          "result": "pass"
+        },
+        {
+          "id": "parameter-completion-and-zero-vector",
+          "derivation": "6=2λ gibt λ=3; −3=−λ bestätigt dies, k=0·λ erzwingt genau k=0. Dann w₀=3u.",
+          "countercheck": "Der Nullvektor ist 0·u und hat Länge 0, aber keine Richtung. Unter der vorgegebenen Definition ist das Paar abhängig/kollinear. Für k≠0 ist die y-Gleichung unmöglich.",
+          "result": "pass"
+        }
+      ],
+      "bilingualReview": "Die Nullvektor-Konvention wird in beiden Sprachen in Aufgaben und Lösungen explizit gesetzt. 'Same/opposite orientation' ist zu Recht nur den nichtnulligen Vektoren zugewiesen.",
+      "coverageAndTransfer": "Negatives Vielfaches mit Gegenbeispiel und danach Parameterbestimmung mit Nullfall liefern voneinander unabhängige Anwendungen des einen Faktorkriteriums.",
+      "historicalComparison": "A definiert kollinear als linear abhängig, B betont den sicheren Komponentenvergleich. Der Kandidat macht die Konvention ausdrücklich und vermeidet Division durch Null. Der alte Bildfehler bleibt separat.",
+      "goalFingerprint": "sha256:630a4748f5eaa839e64f959fa5760dfaa0c671e66177130ed37bd342ca71d520",
+      "profileFingerprint": "sha256:bf873d139a8344a6751515b92cb47418029cdf4ccf3938cb619e47534003ae8d",
+      "authoringGoalMatches": true,
+      "authoringProfileMatches": true,
+      "historicalDecisions": [
+        {
+          "round": "a",
+          "recordId": "math-b044-a-54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+          "decision": "block"
+        },
+        {
+          "round": "b",
+          "recordId": "math-b044-first-pass-b-root-20260907.54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+          "decision": "block"
+        }
+      ]
+    },
+    {
+      "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+      "decision": "pass",
+      "title": "Punktabstand im Raum",
+      "scopeReview": "Verbindungsvektor, Betrag und geometrische Deutung entsprechen AB2. Achsenparalleler Vergleichsweg, Ursprungswechsel und Reihenfolgewechsel sind sinnvolle Verständniskontrollen, keine Punkt-Ebene- oder Projektionsdistanz.",
+      "caseReviews": [
+        {
+          "id": "straight-distance-versus-coordinate-route",
+          "derivation": "B−A=(4,−4,2); Quadratsumme 16+16+4=36, also Abstand 6 m. Der dreiteilige achsenparallele Weg misst 4+4+2=10 m.",
+          "countercheck": "Nicht die Komponentensumme 2 und nicht die Weglänge 10 sind der euklidische Punktabstand. Das Vorzeichen −4 verschwindet im Längenquadrat; 6<10 ist plausibel.",
+          "result": "pass"
+        },
+        {
+          "id": "same-points-new-origin-and-order",
+          "derivation": "Q−P=(2,3,6), Quadratsumme 49, Abstand 7 cm. P−O'=(−4,−3,5), Q−O'=(−2,0,11); umgekehrt P'−Q'=(−2,−3,−6).",
+          "countercheck": "Subtraktion desselben Ursprungs hebt sich exakt auf; der Gegenvektor hat ebenfalls Quadratsumme 49. Einheiten sind pro Fall eindeutig und werden nicht vermischt.",
+          "result": "pass"
+        }
+      ],
+      "bilingualReview": "Alle Zahlen, Einheiten, Orientierungen und Aufgabenverben stimmen in DE/EN. Die englische 'route' ist derselbe nacheinander achsenparallele Vergleichsweg.",
+      "coverageAndTransfer": "Die zweite Anwendung kombiniert neuen Bezug und umgekehrte Endpunktreihenfolge; sie ist mehr als ein zweites Wurzelrechnen.",
+      "historicalComparison": "Die alten Verständnisfelder fordern dieselben Invarianzen. Die neuen Fälle 6 und 7 übernehmen nicht den alten Bildfall 13. Weder alter Bildfehler noch aktuelle Bildfreigabe werden durch P bestätigt.",
+      "goalFingerprint": "sha256:1f3dceaa1fc8e5df06d5e69391cdbff79cc1e028e7a91b466086240230db1368",
+      "profileFingerprint": "sha256:b6099bd23faca4137ca859769444f2c06ba84ce04eafc89a5a26f827af4f983c",
+      "authoringGoalMatches": true,
+      "authoringProfileMatches": true,
+      "historicalDecisions": [
+        {
+          "round": "a",
+          "recordId": "math-b044-a-68d4faef-1a56-5898-9c31-80b7d5d2e430",
+          "decision": "block"
+        },
+        {
+          "round": "b",
+          "recordId": "math-b044-first-pass-b-root-20260907.68d4faef-1a56-5898-9c31-80b7d5d2e430",
+          "decision": "block"
+        }
+      ]
+    },
+    {
+      "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af",
+      "decision": "pass",
+      "title": "Streckenlängen in Körpern",
+      "scopeReview": "Passende Endpunkte und geometrische Verwendung unterscheiden dieses Ziel vom vorausgesetzten isolierten Zweipunktabstand. Quader und versetzte Pyramide sind alters- und AB2-angemessen; keine Körper-Spezialformel ist nötig.",
+      "caseReviews": [
+        {
+          "id": "interior-brace-of-rectangular-frame",
+          "derivation": "AG=(4,4,7), Norm²=81, also 9 m. AC=(4,4,0), Norm²=32, also 4√2 m.",
+          "countercheck": "Die Strebe verbindet A mit G und benötigt die Höhenkomponente 7. Die kürzere Bodenstrecke verbindet andere Endpunkte. 'Idealisiert ohne Anschlusszugaben' verhindert eine falsche Baupräzisionsbehauptung.",
+          "result": "pass"
+        },
+        {
+          "id": "offset-pyramid-lateral-edge",
+          "derivation": "S−B=(−3,3,4), Norm²=34, daher √34 cm. C−A=(6,6,0), Norm²=72, daher 6√2 cm.",
+          "countercheck": "Basiszentrum ist (4,5,0), Spitze liegt 4 cm darüber; die vier Basis-Seitenlängen sind 6 cm. |S|=√57 wäre falsch, weil B nicht der Ursprung ist. AC ist Grundflächendiagonale, BS Seitenkante.",
+          "result": "pass"
+        }
+      ],
+      "bilingualReview": "Bauteilrollen, Koordinaten, Maßeinheiten, idealisierte Strebenlänge und Wurzellösungen sind gleich. Keine Übersetzung verwandelt die Seitenkante in Höhe oder Raumdiagonale.",
+      "coverageAndTransfer": "Anderer Körper, andere Streckenrolle und kein Ursprung als Endpunkt im zweiten Fall sind ein echter Transfer. Beide verpflichtenden Erwartungen werden erfüllt.",
+      "historicalComparison": "A/B verlangen korrekte Endpunktwahl und geometrische Nutzung. Die neuen Aufgaben sind numerisch und semantisch eindeutig, lösen aber den alten B/C-Bildzuordnungsfehler nicht als Nebenbehauptung.",
+      "goalFingerprint": "sha256:7f688fd6be500540adabefc1fb3194878945b258de1bed3cbb50049508bae1d0",
+      "profileFingerprint": "sha256:f30ff278c51ade1d788eb735c52aad4709c34747cceb67d3140dced579ff73a0",
+      "authoringGoalMatches": true,
+      "authoringProfileMatches": true,
+      "historicalDecisions": [
+        {
+          "round": "a",
+          "recordId": "math-b044-a-69eda7f9-1898-5220-932d-e7bec839b7af",
+          "decision": "block"
+        },
+        {
+          "round": "b",
+          "recordId": "math-b044-first-pass-b-root-20260907.69eda7f9-1898-5220-932d-e7bec839b7af",
+          "decision": "block"
+        }
+      ]
+    }
+  ],
+  "correctionFollowup": {
+    "reviewedAt": "2026-09-21T22:51:40.928Z",
+    "candidatePath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-spatial-nine-positive-candidates-v1/spatial-nine.corrected.candidates.json",
+    "candidateSha256": "sha256:b43291a6fe4aa9e9ffd4340ef52506157797817dfc0ff4717c3806d4a21ecd47",
+    "decision": "pass",
+    "resolvedFindingIds": [
+      "B-P9-01"
+    ],
+    "reviewAuthority": "ai_candidate",
+    "humanApproval": false,
+    "changeVerification": "Rekursiver JSON-Diff ergibt ausschließlich /goals/2/profile/variationAxes/0/textDe und textEn. Beide Texte stimmen exakt mit dem unabhängigen Änderungsvorschlag überein; acht andere Profile und alle 18 Fallaufgaben/-lösungen bleiben unverändert.",
+    "substantiveConclusion": "Die korrigierte Variationsachse beschränkt die ausgeblendete kartesische Koordinate auf achsenparallele orthogonale Ansichten und verlangt bei Schrägansichten nur die Interpretation sichtbarer Lageinformation. Damit ist B-P9-01 behoben.",
+    "correctedSummary": {
+      "profiles": 9,
+      "pass": 9,
+      "changesRequested": 0,
+      "carriedForwardUnchangedPass": 8,
+      "locallyRechecked": 1
+    },
+    "changedProfileFingerprint": "sha256:a45deb3d7039e712d01c618f5b4badda19860a8d373af992f070f1fd54f83f2d",
+    "nativeValidation": {
+      "candidatePath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-spatial-nine-positive-candidates-v1/spatial-nine.corrected.candidates.json",
+      "candidateSha256": "sha256:b43291a6fe4aa9e9ffd4340ef52506157797817dfc0ff4717c3806d4a21ecd47",
+      "canonicalSha256": "sha256:ebf86b54f22c03e4a8bfd6409073e2620c5a66b37f97854044f0ff1addb20d23",
+      "checkedAt": "2026-09-21T22:51:40.928Z",
+      "recordCount": 9,
+      "nativeSemanticErrors": [],
+      "schemaErrors": [],
+      "mode": "native in-memory builder and Ajv2020; no asset digests or final page-binding claim",
+      "bindings": [
+        {
+          "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "goalFingerprint": "sha256:49deecda41233341f3f54d507dda7f828b8276dd8bfa02e5f12b953e84f7b2e5",
+          "profileFingerprint": "sha256:1fac821529d95c2f0eaae0a9c5c32da3f87a58f20edafcd5e001cd5f8fea2d32",
+          "authoringGoalMatches": true,
+          "authoringProfileMatches": true
+        },
+        {
+          "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+          "goalFingerprint": "sha256:4610b484ec7bf73f49cae1890f69bc5771a36f996613f376adec2846bb6c8c86",
+          "profileFingerprint": "sha256:81db257490151cae800b286d7ba9fc34c80570511488d988bc97e9fc63064af3",
+          "authoringGoalMatches": true,
+          "authoringProfileMatches": true
+        },
+        {
+          "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+          "goalFingerprint": "sha256:5fddb3d49a83541aa8f76a159bc635893b2182310f66acfeb046b90ab94b241a",
+          "profileFingerprint": "sha256:a45deb3d7039e712d01c618f5b4badda19860a8d373af992f070f1fd54f83f2d",
+          "authoringGoalMatches": true,
+          "authoringProfileMatches": false
+        },
+        {
+          "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+          "goalFingerprint": "sha256:3af577f67b8c265d92b7fa3abdb613e6df11901b6c6e3034e4f3b61437c5eaa9",
+          "profileFingerprint": "sha256:441c9c1e853b5bd8d03cfa63625b7731e9fd3e99ee7800468d8052034a8685b0",
+          "authoringGoalMatches": true,
+          "authoringProfileMatches": true
+        },
+        {
+          "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+          "goalFingerprint": "sha256:d15456eb6c7cc1b070d450dd0389786631856af89f87edd08aa7c0a509c26fbc",
+          "profileFingerprint": "sha256:152179afb3433157aee22444e8eeb28f531de2f333d95643bd4ac3ffcb77a3aa",
+          "authoringGoalMatches": true,
+          "authoringProfileMatches": true
+        },
+        {
+          "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+          "goalFingerprint": "sha256:a4aa1ee1694db01c13e2690875b027cd75fe6d046479e916224540f9bf9e92fa",
+          "profileFingerprint": "sha256:672d03199a07185de9fd53d97f17351103d7fa3a1e41d1046666fa41fa57f299",
+          "authoringGoalMatches": true,
+          "authoringProfileMatches": true
+        },
+        {
+          "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+          "goalFingerprint": "sha256:630a4748f5eaa839e64f959fa5760dfaa0c671e66177130ed37bd342ca71d520",
+          "profileFingerprint": "sha256:bf873d139a8344a6751515b92cb47418029cdf4ccf3938cb619e47534003ae8d",
+          "authoringGoalMatches": true,
+          "authoringProfileMatches": true
+        },
+        {
+          "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+          "goalFingerprint": "sha256:1f3dceaa1fc8e5df06d5e69391cdbff79cc1e028e7a91b466086240230db1368",
+          "profileFingerprint": "sha256:b6099bd23faca4137ca859769444f2c06ba84ce04eafc89a5a26f827af4f983c",
+          "authoringGoalMatches": true,
+          "authoringProfileMatches": true
+        },
+        {
+          "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af",
+          "goalFingerprint": "sha256:7f688fd6be500540adabefc1fb3194878945b258de1bed3cbb50049508bae1d0",
+          "profileFingerprint": "sha256:f30ff278c51ade1d788eb735c52aad4709c34747cceb67d3140dced579ff73a0",
+          "authoringGoalMatches": true,
+          "authoringProfileMatches": true
+        }
+      ]
+    },
+    "bindingLimit": "Authoring-context enthält bewusst den ursprünglichen Profilfingerprint des eb6bfdd9-Profils; dort ist authoringProfileMatches=false für genau dieses korrigierte Profil erwartbar. Finale Materialisierung muss den neuen Fingerprint und endgültige Ressourcen verwenden."
+  },
+  "nextStep": "Korrektur lokal nachgeprüft: korrigierte Kandidatenfassung 9 PASS. Finale Materialisierung und zentrale Integration bleiben an endgültige Seiten-/Bildbindungen und native Integrationschecks gebunden. Der ursprüngliche 8-PASS/1-Änderungsbefund bleibt oben als Auditspur erhalten."
+}

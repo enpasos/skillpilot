@@ -1,0 +1,5 @@
+# Bearbeitungs-Prompt
+
+Generator: integrierte ChatGPT/Codex-Bildbearbeitung, 23.09.2026.
+
+> Use case: precise-object-edit of an existing scientific-educational PNG. The attached image is the EDIT TARGET. Change ONLY the text in the lower-left white rounded caption box. Replace the entire old caption 'Schnittgerade g: x = 0, y = 0 (z-Achse)' with the mathematically correct exact German caption 'Richtung der Schnittgeraden: parallel zur z-Achse'. Keep this caption on one or two neatly centered lines within the same existing white box; if needed slightly reduce font size, but retain the same dark font style and box shape. Do not add plane equations. Preserve every other pixel-like visual element, formula, vector, value, angle, axis, title, right-side calculation, color and overall 1536×1024 layout. In particular retain φ=45 Grad, n_E=(1,0,0), n_F=(1,1,0), and all arithmetic unchanged. The normal vectors determine the direction of an intersection line, not its absolute position. No new text, no extra graphic, no watermark.

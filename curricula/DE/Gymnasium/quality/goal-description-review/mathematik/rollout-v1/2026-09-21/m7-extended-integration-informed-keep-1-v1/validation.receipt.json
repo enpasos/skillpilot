@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "bounded-d-p-native-validation-receipt-v1",
+  "checkedAt": "2026-09-21T21:41:54.477Z",
+  "goalId": "0d21097c-09bf-5375-8c56-34ce8dc5bc35",
+  "checks": [
+    {
+      "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-21/m7-extended-integration-informed-keep-1-v1/emit-current-artifacts.ts --check",
+      "exitCode": 0,
+      "nativeDescriptionErrors": [],
+      "strictDescriptionComplete": true,
+      "currentTargetPageUnchanged": true,
+      "positiveProfileBodyUnchanged": true
+    },
+    {
+      "command": "npm --prefix app run quality:positive-goal-evidence-candidates -- --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-21/m7-extended-integration-informed-keep-1-v1/positive-evidence.config.json --candidates curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-21/m7-extended-integration-informed-keep-1-v1/positive-evidence.candidates.json --write",
+      "exitCode": 0,
+      "currentAiCandidateProfiles": 1
+    },
+    {
+      "command": "npm --prefix app run quality:positive-goal-evidence-candidates -- --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-21/m7-extended-integration-informed-keep-1-v1/positive-evidence.config.json --candidates curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-21/m7-extended-integration-informed-keep-1-v1/positive-evidence.candidates.json",
+      "exitCode": 0,
+      "currentAiCandidateProfiles": 1
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "positiveEvidence": {
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "profileFingerprint": "sha256:cf9f04c871f2c01fc048c619e1a6dab100e59eecbe1594b50633742cb785a196"
+  },
+  "artifacts": [
+    {
+      "path": "adjudication.json",
+      "sha256": "sha256:bcbb447f13ed6a3cd22fde5b25bdefd2ca1a2e1590ae8a7b4df70ab36f41b021"
+    },
+    {
+      "path": "emit-current-artifacts.ts",
+      "sha256": "sha256:9e8140b25ee48b2b9f1138fb18cda2a34d5e29180b1fa00d997f1e80f801076d"
+    },
+    {
+      "path": "synthesis-decisions.json",
+      "sha256": "sha256:926989b3659dece1caceea8d3e69e8c99155ea52e41721f5f200a7126a5c2df6"
+    },
+    {
+      "path": "resolutions/0d21097c-09bf-5375-8c56-34ce8dc5bc35.resolution.json",
+      "sha256": "sha256:1f1441b9788b42a778a4d3891f198f292b3ab8c16452e03b60a3c2c2c3e10fd6"
+    },
+    {
+      "path": "resolution-index.json",
+      "sha256": "sha256:b4572e2693f01c9ce55369cdb45355ea110b896798e3efd28f63519944434be8"
+    },
+    {
+      "path": "positive-evidence.candidates.json",
+      "sha256": "sha256:4b619c1530acfe84443c46f75d2692dee3e39299eaa15e5df5184581d8af51bb"
+    },
+    {
+      "path": "positive-evidence.config.json",
+      "sha256": "sha256:5f869705908e55d9050cc0f75e3ae809bd81fd431393ded4ff539386920f8c04"
+    },
+    {
+      "path": "positive-evidence.review.jsonl",
+      "sha256": "sha256:0bd68697a2dd1f71cc575fefb8f5f8be4483b9f8fff1901d131ff7bae055dd2e"
+    },
+    {
+      "path": "current-bindings.receipt.json",
+      "sha256": "sha256:a99b22f4f1d30195b305c8d202b933494eb711514c2f7199890595c3e815aa90"
+    }
+  ],
+  "sourceArtifactDigestsUnchanged": true,
+  "classification": "One newly resolved existing KEEP/REVISE description dissent; existing positive profile body newly materialized under current bindings. No new independent reviews or new profile authoring claimed.",
+  "centralRegistryChanged": false,
+  "inFlightLedgerChanged": false,
+  "canonicalChanged": false,
+  "globalBuildRun": false,
+  "centralProgressGranted": false,
+  "humanApprovalGranted": false,
+  "remainingHolds": [
+    "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+    "809ef78a-f282-5593-89be-0f2cb95570ac",
+    "972cc7e8-be9c-444c-ba45-98e817b3cf14"
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-p-v2-m7-two-local-png-bound-20260923-v1",
+  "reviewedAt": "2026-09-23T11:03:27.511Z",
+  "reviewer": "Codex independent original-pixel and current-page P-v2 review /root/two_png_independent_qa",
+  "goals": [
+    {
+      "goalId": "570d5931-f126-5bb4-8b7f-db236d6b727f",
+      "reason": "Das aktuelle Kreis-PNG zeigt im Original einen waagerechten Radius MP und die einzige senkrechte Tangente t im rechten Berührpunkt P; die 90°-Markierung und MP ⟂ t stimmen mit dem aktuellen Ziel, der Quelle und der GoalBook-Seite 141 überein. Es ist nur eine Orientierungshilfe und zeigt keine vollständigen Konstruktionsgriffe. Der erste frische Fall setzt P ausdrücklich links oben und verlangt eine neue, schräge Senkrechte; der zweite verlangt die Diagnose einer nur scheinbaren Tangente. Beide Fälle prüfen Konstruktion und geometrische Begründung unabhängig von der rechten Musterlösung im Bild. Aktueller bildgebundener P-v2-KI-Kandidat, keine menschliche Freigabe und keine Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "radius-tangent-property",
+            "essentialUnderstandingDe": "Die Tangente in einem Kreispunkt berührt den Kreis dort und steht senkrecht auf dem Radius zum Berührpunkt.",
+            "essentialUnderstandingEn": "The tangent at a point on a circle touches the circle there and is perpendicular to the radius drawn to the point of contact.",
+            "observablePerformanceDe": "Die lernende Person kennzeichnet Mittelpunkt, Berührpunkt und Radius und erklärt, warum die gesuchte Gerade als Senkrechte im Berührpunkt festgelegt ist.",
+            "observablePerformanceEn": "The learner identifies the centre, point of contact, and radius and explains why the required line is determined as the perpendicular at the point of contact."
+          },
+          {
+            "id": "exact-construction-and-justification",
+            "essentialUnderstandingDe": "Eine exakte Konstruktion muss die Senkrechtbeziehung geometrisch sichern; ein optisch passender Verlauf oder eine Messung allein begründet die Tangente nicht.",
+            "essentialUnderstandingEn": "An exact construction must secure the perpendicular relationship geometrically; a visually plausible line or measurement alone does not justify the tangent.",
+            "observablePerformanceDe": "Die lernende Person konstruiert die Senkrechte zum Radius durch den gegebenen Kreispunkt und begründet ihre Korrektheit mit dem Radius-Tangenten-Kriterium.",
+            "observablePerformanceEn": "The learner constructs the perpendicular to the radius through the given point on the circle and justifies its correctness using the radius–tangent criterion."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "radius-tangent-property",
+            "exact-construction-and-justification"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "diagram-orientation",
+            "textDe": "Berührpunkt in unterschiedlichen Lagen und verschieden ausgerichtete Radien",
+            "textEn": "Points of contact in different locations and radii with different orientations"
+          },
+          {
+            "id": "given-construction-state",
+            "textDe": "Leere Figur, unvollständige Konstruktion oder nahezu senkrechte fehlerhafte Gerade",
+            "textEn": "Empty figure, incomplete construction, or an almost perpendicular flawed line"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "construct-from-marked-point",
+            "taskDemandDe": "Zu einem Kreis mit markiertem Mittelpunkt M und einem gegebenen Kreispunkt P links oben, sodass MP schräg verläuft, ist die Tangente exakt zu konstruieren und zu begründen.",
+            "taskDemandEn": "For a circle with marked centre M and a given point P in the upper-left arc, so that MP is oblique, construct the tangent exactly and justify it.",
+            "expectedPerformanceDe": "Die lernende Person zeichnet den schrägen Radius MP, konstruiert die Senkrechte zu MP durch P und begründet mit dem Radius-Tangenten-Kriterium, dass diese Gerade den Kreis dort berührt.",
+            "expectedPerformanceEn": "The learner draws the oblique radius MP, constructs the perpendicular to MP through P, and uses the radius–tangent criterion to justify that this line touches the circle there.",
+            "understandingFocusDe": "Die geometrische Eigenschaft steuert die Konstruktion und nicht das Nachzeichnen einer Vorlage.",
+            "understandingFocusEn": "The geometric property controls the construction rather than copying a template."
+          },
+          {
+            "id": "diagnose-near-tangent",
+            "taskDemandDe": "In einer gedrehten Figur ist eine Gerade eingezeichnet, die den Kreis optisch nur zu berühren scheint; ihre Eignung als Tangente ist zu prüfen und gegebenenfalls zu korrigieren.",
+            "taskDemandEn": "In a rotated figure, a line is drawn that only appears to touch the circle; whether it is a tangent must be checked and corrected if necessary.",
+            "expectedPerformanceDe": "Die lernende Person bezieht die Gerade auf den Radius im Berührpunkt, verwirft eine nicht gesicherte Senkrechte und konstruiert die korrekte Gerade mit Begründung.",
+            "expectedPerformanceEn": "The learner relates the line to the radius at the point of contact, rejects an unsecured perpendicular, and constructs the correct line with justification.",
+            "understandingFocusDe": "Der Fehlerfall prüft die Tangentenbedingung unabhängig von visueller Ähnlichkeit.",
+            "understandingFocusEn": "The error case checks the tangent condition independently of visual similarity."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
+      "reason": "Das aktuelle Dreieck-PNG zeigt im Original die Seitenhalbierende A–M zum Mittelpunkt von BC mit gleichen Teilstrecken und ohne falsche Senkrechtbehauptung; Alttext und GoalBook-Seite 673 stimmen mit Ziel und Quelle überein. Es zeigt nur ein Beispiel, nicht die Konstruktion aller drei Seitenmittelpunkte. Der alte Transferfall mit Parametergerade und Punktprobe liegt fachlich über der J7-Konstruktionskompetenz und wurde durch eine neue schräge AC-Seite mit geometrischer Mittelpunktprüfung und Korrektur einer nur scheinbar mittigen Markierung ersetzt. Die zwei anderen Fälle prüfen alle drei Seitenhalbierenden sowie die Abgrenzung von Höhe und Winkelhalbierender. Das Bild liefert keine der drei frischen Lösungen. Aktueller bildgebundener P-v2-KI-Kandidat, keine menschliche Freigabe und keine Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "median-construction",
+            "essentialUnderstandingDe": "Die Seitenhalbierende zu einer Seite entsteht, indem deren Mittelpunkt konstruiert und mit dem gegenüberliegenden Eckpunkt verbunden wird; jedes nicht entartete Dreieck besitzt zu jeder Seite eine solche Gerade.",
+            "essentialUnderstandingEn": "The median to a side is obtained by constructing that side's midpoint and joining it to the opposite vertex; every non-degenerate triangle has one such line for each side.",
+            "observablePerformanceDe": "Die lernende Person konstruiert für neue Dreiecke die Seitenmittelpunkte und verbindet jeden mit dem richtigen gegenüberliegenden Eckpunkt, wobei die Schritte dokumentiert werden.",
+            "observablePerformanceEn": "For fresh triangles, the learner constructs side midpoints and joins each to the correct opposite vertex, documenting the steps."
+          },
+          {
+            "id": "median-verification-and-distinction",
+            "essentialUnderstandingDe": "Geprüft wird durch gleiche Teilstrecken auf der Gegenseite und den Eckpunktbezug; eine Seitenhalbierende muss im allgemeinen weder senkrecht auf der Seite stehen noch einen Eckwinkel halbieren.",
+            "essentialUnderstandingEn": "Verification uses equal subsegments on the opposite side and the relation to the vertex; in general, a median need neither be perpendicular to the side nor bisect a vertex angle.",
+            "observablePerformanceDe": "Die lernende Person kontrolliert den Mittelpunkt und weist falsche Konstruktionen zurück, die nur Senkrecht- oder Winkelbedingungen erfüllen.",
+            "observablePerformanceEn": "The learner checks the midpoint and rejects incorrect constructions that satisfy only perpendicular or angle conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "median-construction",
+            "median-verification-and-distinction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "triangle-shape",
+            "textDe": "spitzes, stumpfes oder rechtwinkliges ungleichseitiges Dreieck",
+            "textEn": "acute, obtuse, or right scalene triangle"
+          },
+          {
+            "id": "target-side",
+            "textDe": "Seitenhalbierende zu unterschiedlichen Gegenseiten",
+            "textEn": "median to different opposite sides"
+          },
+          {
+            "id": "verification-mode",
+            "textDe": "Vollständige Konstruktion gegenüber Prüfung und Korrektur eines nur scheinbaren Seitenmittelpunkts auf schräger Seite",
+            "textEn": "Complete construction versus checking and correcting an apparent midpoint on an oblique side"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-medians-base",
+            "taskDemandDe": "Zeichne ein ungleichseitiges Dreieck ABC und konstruiere alle drei Seitenhalbierenden, indem du jeden Seitenmittelpunkt bestimmst. Dokumentiere für jede Gerade den zugehörigen Eckpunkt und die halbierte Gegenseite.",
+            "taskDemandEn": "Draw a scalene triangle ABC and construct all three medians by determining every side midpoint. For each line, document its corresponding vertex and bisected opposite side.",
+            "expectedPerformanceDe": "Die lernende Person konstruiert M_a auf BC mit BM_a=M_aC und verbindet A mit M_a, analog für die beiden anderen Seiten; die Prüfung bezieht sich jeweils auf gleiche Teilstrecken.",
+            "expectedPerformanceEn": "The learner constructs M_a on BC with BM_a=M_aC and joins A to M_a, analogously for the other sides; each check uses equal subsegments.",
+            "understandingFocusDe": "Direkter Nachweis der vollständigen Konstruktion und eindeutigen Eckpunkt-Seiten-Zuordnung.",
+            "understandingFocusEn": "Direct evidence of complete construction and unambiguous vertex-side matching."
+          },
+          {
+            "id": "oblique-side-midpoint-transfer",
+            "taskDemandDe": "In einem stumpfwinkligen ungleichseitigen Dreieck ABC liegt auf der schrägen Seite AC ein Punkt N, der nur ungefähr mittig aussieht. Prüfe konstruktiv, ob BN eine Seitenhalbierende ist. Konstruiere anschließend die Seitenhalbierende von B zur Seite AC und begründe sie.",
+            "taskDemandEn": "In an obtuse scalene triangle ABC, a point N on the oblique side AC only looks approximately central. Use a construction to check whether BN is a median. Then construct and justify the median from B to AC.",
+            "expectedPerformanceDe": "Die lernende Person prüft, ob AN=NC durch exakten Streckenvergleich gilt, konstruiert den tatsächlichen Mittelpunkt M von AC, verbindet B mit M und begründet die Seitenhalbierende durch AM=MC. BN genügt nur dann, wenn N=M; Augenmaß oder Senkrechtlage allein genügen nicht.",
+            "expectedPerformanceEn": "The learner checks by exact segment comparison whether AN=NC, constructs the true midpoint M of AC, joins B to M, and justifies the median by AM=MC. BN qualifies only if N=M; visual estimation or perpendicularity alone is insufficient.",
+            "understandingFocusDe": "Unabhängiger geometrischer Transfer auf eine schräge Gegenseite mit Mittelpunktprüfung und Korrektur statt Koordinatenrechnung.",
+            "understandingFocusEn": "Independent geometric transfer to an oblique opposite side, with midpoint verification and correction instead of coordinate algebra."
+          },
+          {
+            "id": "false-perpendicular-claim-transfer",
+            "taskDemandDe": "Jemand behauptet: Jede Seitenhalbierende sei zugleich eine Mittelsenkrechte und Winkelhalbierende. Widerlege die Behauptung an einem selbst gewählten ungleichseitigen Dreieck und nenne den Sonderfall, in dem mehrere Eigenschaften zusammenfallen können.",
+            "taskDemandEn": "Someone claims that every median is also a perpendicular bisector and an angle bisector. Refute the claim using a scalene triangle of your own choice and state a special case in which several properties can coincide.",
+            "expectedPerformanceDe": "Die lernende Person konstruiert eine Medianlinie über den Seitenmittelpunkt und zeigt, dass sie im gewählten Fall weder senkrecht steht noch den Eckwinkel halbiert; im gleichschenkligen Dreieck kann die Medianlinie zur Basis diese Eigenschaften zusätzlich besitzen.",
+            "expectedPerformanceEn": "The learner constructs a median through the side midpoint and shows that in the chosen case it is neither perpendicular nor angle-bisecting; in an isosceles triangle the median to the base may additionally have these properties.",
+            "understandingFocusDe": "Zweiter unabhängiger Transfer zur begrifflichen Abgrenzung und ihrem Symmetrie-Sonderfall; Schwerpunktkonkurrenz wird nicht vorausgesetzt.",
+            "understandingFocusEn": "Second independent transfer to conceptual distinction and its symmetry special case; centroid concurrency is not assumed."
+          }
+        ]
+      }
+    }
+  ]
+}

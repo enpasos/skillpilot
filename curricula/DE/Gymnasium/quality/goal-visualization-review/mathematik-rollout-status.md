@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-20T21:21:04.211Z
+Generated: 2026-09-23T01:32:54.628Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,20 +16,20 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1187 |
+| Alle Ziele in der Landschaft | 1189 |
 | Atomare Ziele im Visualisierungs-Scope | 797 |
-| Ziele mit primaerem Visualisierungslink | 728 |
-| Coverage | 91.3% |
+| Ziele mit primaerem Visualisierungslink | 730 |
+| Coverage | 91.6% |
 | Durch Asset oder Provider-Deferred dokumentierte Ziele | 797 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 239 |
-| Offene Provider-Deferred-Ziele | 69 |
+| Offene Provider-Deferred-Ziele | 67 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 11 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 13 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -38,8 +38,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | `accepted` | 5 |
 | `ai-reviewed` | 6 |
-| `approved` | 17 |
-| `pilot` | 700 |
+| `approved` | 16 |
+| `pilot` | 703 |
 
 ## Ledger Decisions
 
@@ -106,7 +106,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 69 Provider-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 67 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -135,7 +135,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | mathematik-structural-split-deferred-2026-08-16 | `b71c332f-ef9d-5c27-983b-7103269ff419` | Glockenkurven als Funktionsmodelle untersuchen (LK) | `deferred_provider_limitation` |
 | 221 | `bc6e4c14-d4f7-537e-8e83-9b5c0086e807` | Graphen einfacher Hyperbeln mit Asymptoten zeichnen | `deferred_provider_limitation` |
 
-Weitere 49 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 47 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Provider Quota
 
@@ -191,7 +191,9 @@ Weitere 27 Eintraege stehen in der JSON-Begleitdatei.
 | `a1c79897-6ded-57f8-bee1-2d365a5083c9` | Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen | `pilot` | - |
 | `74b5a01b-c086-51d0-bc66-046029c92ef7` | Geometrische Reihen untersuchen | `pilot` | - |
 | `cc60f759-1168-5fc0-8ff5-5f7a2533e61c` | Lösbarkeit und Lösungsvielfalt linearer Gleichungen untersuchen | `pilot` | - |
+| `0de1e45c-aea9-5e53-932a-027dcf509efa` | Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK) | `pilot` | `deferred_provider_limitation` |
 | `03703b29-efd8-57e0-acf5-4381b1dc67ec` | Modalwert bestimmen und im Kontext deuten | `approved` | - |
+| `1e164a09-0a2b-55ab-b927-08a4a278f72b` | Plausibilität mit Beispielen testen | `pilot` | `deferred_provider_limitation` |
 | `f08d06dc-139d-5fd2-892c-8cc919b1e4fc` | Terme mit Variablen lesen und deuten | `pilot` | - |
 | `28d098ab-f33f-5baf-8261-f1c0c0f711fa` | Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden | `pilot` | `deferred_provider_limitation` |
 

@@ -1,0 +1,300 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-q2-bodies-nine-keep-partial-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T06:24:06.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1",
+    "batchManifestDigest": "sha256:28297d20ad18ed3e125ab4863f0540350350fc1b641beac6122b1528f4de7319",
+    "configDigest": "sha256:c7cc59e5eedd6503c8234b2f2640ee081da32b24626d2fd22a591276ba946278",
+    "bundleFingerprint": "sha256:9546c85cbc178c2d29c6c51c54db5a08e64e9862c67345365768c825fa116bc2",
+    "bookDigest": "sha256:d5f4e0970ade318a98a240582ae1e2c56002ebe5b93c77ee042fe8527c9a32b3",
+    "reviewInputFingerprint": "sha256:fb61f7594adb4bc95f17b7867c064db825a68afcba434809763ca278b10d9200",
+    "dualSummaryDigest": "sha256:cedf7027dd043e8616a736831aa03342365d1f17bbfc2da1dcf310b51cfdd947",
+    "canonicalLandscapeDigest": "sha256:3d438a80cfcc3c7817fab19c86110f7057fa80c4c8a42a7c53b78244425c0c63"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-a",
+      "campaignDigest": "sha256:6d2b3919b37480528b52041413a76ee8d4a486ede00c2f942536e2e9178982fc",
+      "roundId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:fb61f7594adb4bc95f17b7867c064db825a68afcba434809763ca278b10d9200",
+      "batchId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:6419ab6c8e8544ce220438ccaabb91f171e6182bd6a0e9314fb91ee11bb80120",
+      "runId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-a.run-001",
+      "runManifestDigest": "sha256:556920a67f664ea1a5f2f52d2f9fa90b2bad41c44a1e1e842a88bf752df20245",
+      "resultsDigest": "sha256:a88805af7af3d819cf6e1cf3bfeb49862161b759bc3f57fd5b8ef57b71fa4821"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-b",
+      "campaignDigest": "sha256:9d0bee2700a494aa4d69ffe7909f974e93f777b2b3329c76458d2d0cde21c73f",
+      "roundId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:fb61f7594adb4bc95f17b7867c064db825a68afcba434809763ca278b10d9200",
+      "batchId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:294ef640e81ff3244725278177fe020453fd3b9c55c4fd4fac8c58bd4f88cb5c",
+      "runId": "m7q2-bodies-volume-20260923-b-run-001",
+      "runManifestDigest": "sha256:4deda155fb5c4cfdaa5b0441b667b3de1839a13bfffee00005df2858e6a7b940",
+      "resultsDigest": "sha256:b565be59799608002f8a2442b3cc4eee56e31404161acb093a0c3aa14075707b"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-q2-bodies-nine-keep-partial-v1-decision-001",
+      "goalId": "1e77bb2f-0cd6-5961-b0fb-230317c73fce",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f872807fd39211a578386e526b1305c28d30c2f24c155ca004d5d42c5a19d9aa",
+      "pageFingerprint": "sha256:85bcb19cae7b57f515dcaea5c92a89f7062a6378e18554781345cfe7a082c46e",
+      "goalReviewContextFingerprint": "sha256:f0ff946546de4f65b8650fe9bc6730762858469e888ff6da4c51d933c5170fbf",
+      "finalText": {
+        "titleDe": "Volumen von Prismen aus Grundfläche und Höhe bestimmen",
+        "titleEn": "Determine prism volumes from base area and height",
+        "descriptionDe": "Die lernende Person kann den Zusammenhang $V = G \\cdot h$ geometrisch erklären und nutzen, um Volumina von Prismen aus Skizzen oder Koordinaten zu bestimmen und Einheiten korrekt anzugeben.",
+        "descriptionEn": "The learner can explain the geometric relationship $V = G \\cdot h$ and use it to determine prism volumes from sketches or coordinates and state units correctly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-a.run-001.goal-001",
+          "recordDigest": "sha256:5daf2ed78407d7f0e8b0c5833b9c795636053b6b6280c71f540fca088b9de295"
+        },
+        "second": {
+          "recordId": "m7q2-bodies-volume-20260923-b-01",
+          "recordDigest": "sha256:75da8014d7f9b256f7d5ccdde2273629df9a8baa743a2169ef2d4d512fb20474"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen den geometrisch begründeten Volumenzusammenhang V=G·h für Prismen; die Bildfreigabe wird getrennt geprüft.",
+      "rationaleEn": "Both rounds retain the geometrically justified prism volume relation V=G·h; image approval is checked separately."
+    },
+    {
+      "decisionId": "math-m7-q2-bodies-nine-keep-partial-v1-decision-002",
+      "goalId": "288633c1-f61c-5b48-af7e-a80357f96cad",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4bf22f444746da313d26217d79b2dbf66be3c9d4a6e2d9a92538184039e966ee",
+      "pageFingerprint": "sha256:1f798172da22c577bfb76b2089141ee88a8f13533fe939a10f8de9a6cf8b1009",
+      "goalReviewContextFingerprint": "sha256:ab7b9cfef8556ce94d5c40c78adfff776805e53b0bc8965cb1bdb2aaca23d40a",
+      "finalText": {
+        "titleDe": "Volumen von Pyramiden aus Grundfläche und Höhe bestimmen",
+        "titleEn": "Determine pyramid volumes from base area and height",
+        "descriptionDe": "Die lernende Person kann den Faktor $\\frac{1}{3}$ als Verhältnis zum entsprechenden Prisma deuten und den Zusammenhang $V = \\frac{1}{3} G \\cdot h$ nutzen, um Volumina von Pyramiden aus Skizzen oder Koordinaten zu bestimmen.",
+        "descriptionEn": "The learner can interpret the factor $\\frac{1}{3}$ as the volume ratio to the corresponding prism and use $V = \\frac{1}{3} G \\cdot h$ to determine pyramid volumes from sketches or coordinates."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-a.run-001.goal-002",
+          "recordDigest": "sha256:45f9c56b50df07c37fe1cde09c748c1412ba34473439da227d50d16361a5bbe9"
+        },
+        "second": {
+          "recordId": "m7q2-bodies-volume-20260923-b-02",
+          "recordDigest": "sha256:05bf207663f482514fed42f61a8ad1f65999e69a9de83ea8633bf8cae74ac6ed"
+        }
+      },
+      "rationaleDe": "Der Faktor ein Drittel und die senkrechte Höhe begrenzen die Pyramidenkompetenz in beiden Runden; die Bildfreigabe bleibt getrennt.",
+      "rationaleEn": "The one-third factor and perpendicular height bound the pyramid competence in both rounds; image approval remains separate."
+    },
+    {
+      "decisionId": "math-m7-q2-bodies-nine-keep-partial-v1-decision-003",
+      "goalId": "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:75bd067f3d29af1c19b5e002826aa961e651af3802c480ddde91ef80e897a6c5",
+      "pageFingerprint": "sha256:6960a323759419e59d06db2eb0774bb6662fd3b702b8ee448a633b92e55d7b4b",
+      "goalReviewContextFingerprint": "sha256:69dfc5075aedc637a48ab034eb77249845921f9cdd694eb4e1989b9697f9fc49",
+      "finalText": {
+        "titleDe": "Volumen von Kugeln aus dem Radius bestimmen",
+        "titleEn": "Determine sphere volumes from the radius",
+        "descriptionDe": "Die lernende Person kann die kubische Abhängigkeit des Kugelvolumens vom Radius beschreiben und den Zusammenhang $V = \\frac{4}{3} \\pi r^3$ nutzen, um Kugelvolumina aus Skizzen oder Koordinaten zu bestimmen.",
+        "descriptionEn": "The learner can describe the cubic dependence of sphere volume on the radius and use $V = \\frac{4}{3} \\pi r^3$ to determine sphere volumes from sketches or coordinates."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-a.run-001.goal-003",
+          "recordDigest": "sha256:2aa42103f41364334cfd9a67baaac1d5450bc1d0ad769af56d829a83917e5756"
+        },
+        "second": {
+          "recordId": "m7q2-bodies-volume-20260923-b-03",
+          "recordDigest": "sha256:b86d0af17970aa82c5eb6e6cb91a307b3ac3fbb88503ed2b2217ba7fdc36cbc1"
+        }
+      },
+      "rationaleDe": "Beide Runden halten die Radiusbindung und Einheitendeutung der Kugelvolumenbestimmung; die Bildfreigabe wird gesondert behandelt.",
+      "rationaleEn": "Both rounds retain the radius relation and unit interpretation for sphere volume; image approval is handled separately."
+    },
+    {
+      "decisionId": "math-m7-q2-bodies-nine-keep-partial-v1-decision-004",
+      "goalId": "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3aaa5cb57ae815d136b464cecc37d6e44023a24a6352da72fd2232590ecbab81",
+      "pageFingerprint": "sha256:c7289665b09fe0c3eec5945f0169e0286484ffbc28d0cdcd265c9bf74778af91",
+      "goalReviewContextFingerprint": "sha256:19b12b8e2501a60dfbf9965830cc41fcd43a58c9a32bfe5ee908732abf114442",
+      "finalText": {
+        "titleDe": "Spatprodukt korrekt definieren und deuten",
+        "titleEn": "Define and interpret the scalar triple product correctly",
+        "descriptionDe": "Die lernende Person kann das Spatprodukt als $[\\vec{a},\\vec{b},\\vec{c}] = \\vec{a} \\cdot (\\vec{b} \\times \\vec{c})$ korrekt angeben, die Orientierung deuten und für Volumenberechnungen den Betrag verwenden.",
+        "descriptionEn": "The learner can state the scalar triple product as $[\\vec{a},\\vec{b},\\vec{c}] = \\vec{a} \\cdot (\\vec{b} \\times \\vec{c})$, interpret its orientation and use the absolute value for volume calculations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-a.run-001.goal-004",
+          "recordDigest": "sha256:6b1dbd9c1f7417453170c915427ce952de3200c47c5a55126f2552469396160a"
+        },
+        "second": {
+          "recordId": "m7q2-bodies-volume-20260923-b-04",
+          "recordDigest": "sha256:f8ac067269430043edafaef9201df17434dc2527fdcaf2e5e008e30531812f6f"
+        }
+      },
+      "rationaleDe": "Definition, Vorzeichen und Volumenbetrag des Spatprodukts hängen fachlich zusammen und werden von beiden Runden gehalten; die Achsenzeichnung nicht.",
+      "rationaleEn": "Definition, sign and absolute volume of the scalar triple product cohere and are retained by both rounds; the axis drawing is not approved."
+    },
+    {
+      "decisionId": "math-m7-q2-bodies-nine-keep-partial-v1-decision-005",
+      "goalId": "c71ae268-f28e-59f0-982d-91db8f963378",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c43e4f2cfc633c7e8865ccb6847639640a574ccdfeb965d205c30fa64035f6ce",
+      "pageFingerprint": "sha256:b5c93226dcbfcdf063c2a55d51efe2cc900137ed55450574058277fafb18e002",
+      "goalReviewContextFingerprint": "sha256:b5afbb605145c05c7c3f96d0a0468adee86735db7104fdc84cbc28c51d3c4643",
+      "finalText": {
+        "titleDe": "Volumen von Zylindern aus Radius und Höhe bestimmen",
+        "titleEn": "Determine cylinder volumes from radius and height",
+        "descriptionDe": "Die lernende Person kann die Kreisfläche als Grundfläche eines Zylinders deuten und den Zusammenhang $V = \\pi r^2 h$ nutzen, um Volumina aus Skizzen oder Koordinaten zu bestimmen.",
+        "descriptionEn": "The learner can interpret the circular area as the base of a cylinder and use $V = \\pi r^2 h$ to determine volumes from sketches or coordinates."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-a.run-001.goal-006",
+          "recordDigest": "sha256:6b2f44c1b2f191aee51a6d9ecbeabdade808a58750e2d961d20ef99555b5511f"
+        },
+        "second": {
+          "recordId": "m7q2-bodies-volume-20260923-b-06",
+          "recordDigest": "sha256:6909534743a5f43b40cb529b33e3fd09e87335895e4e2282fe790dcebca70fe5"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen das Zylindervolumen aus Radius und Höhe samt Grundflächenbezug; die Bildfreigabe bleibt separat.",
+      "rationaleEn": "Both rounds retain cylinder volume from radius and height with its base-area relation; image approval remains separate."
+    },
+    {
+      "decisionId": "math-m7-q2-bodies-nine-keep-partial-v1-decision-006",
+      "goalId": "e8237315-654e-5150-97de-49c4cb49b3d1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5532a3ba6e01ec310e19f30efbea95e23803157950dd7e707cd6a227ed314fe8",
+      "pageFingerprint": "sha256:272172f92ee48b007cd542ebad0196d89242c1a2b59cb4971ac3bf4c60712063",
+      "goalReviewContextFingerprint": "sha256:5fd2c7fd253b8cce56b47757b8ba31af56093f56106ac34a47088948ce8f8dc3",
+      "finalText": {
+        "titleDe": "Volumen von Kegeln aus Radius und Höhe bestimmen",
+        "titleEn": "Determine cone volumes from radius and height",
+        "descriptionDe": "Die lernende Person kann den Faktor $\\frac{1}{3}$ als Verhältnis zum entsprechenden Zylinder deuten und den Zusammenhang $V = \\frac{1}{3} \\pi r^2 h$ nutzen, um Volumina von Kegeln aus Skizzen oder Koordinaten zu bestimmen.",
+        "descriptionEn": "The learner can interpret the factor $\\frac{1}{3}$ as the volume ratio to the corresponding cylinder and use $V = \\frac{1}{3} \\pi r^2 h$ to determine cone volumes from sketches or coordinates."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-a.run-001.goal-007",
+          "recordDigest": "sha256:623197184b66e3849c8d1404c368ac8298f3921125e49f2766ff060c4553aaed"
+        },
+        "second": {
+          "recordId": "m7q2-bodies-volume-20260923-b-07",
+          "recordDigest": "sha256:4389580b44f83619e228730d2db9e82496cfecac439341e764eb480ecdd451c9"
+        }
+      },
+      "rationaleDe": "Der Kegelfaktor ein Drittel wird in beiden Runden als Beziehung zum entsprechenden Zylinder erklärt; die Bildfreigabe ist getrennt.",
+      "rationaleEn": "Both rounds explain the cone's one-third factor through the corresponding cylinder; image approval is separate."
+    },
+    {
+      "decisionId": "math-m7-q2-bodies-nine-keep-partial-v1-decision-007",
+      "goalId": "e9181209-1506-59df-9053-17f36b91bb06",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0f02e81447da5c8b38d72e463961dc5b29ca3e486f38825841c9f4626e679e21",
+      "pageFingerprint": "sha256:d168ffc7e3e583ea8c3af7c2436667a1977d409840364831f5fdee8c1b83d23c",
+      "goalReviewContextFingerprint": "sha256:f42b8ea805547edb032cbca4802e6bff48d7a524776c2a502f7c35062b554e5e",
+      "finalText": {
+        "titleDe": "Volumenformeln räumlicher Körper herleiten (LK)",
+        "titleEn": "Derive volume formulas of spatial solids (advanced course)",
+        "descriptionDe": "Die lernende Person kann die Volumenformel eines ausgewählten räumlichen Körpers durch Zerlegung oder ein geeignetes Integral herleiten und die Herleitung geometrisch begründen.",
+        "descriptionEn": "The learner can derive the volume formula of a selected spatial solid by decomposition or a suitable integral and justify the derivation geometrically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-a.run-001.goal-008",
+          "recordDigest": "sha256:989d3e326c32c6785044031b5208a732f11f3e329ee722888928b750d6a622c2"
+        },
+        "second": {
+          "recordId": "m7q2-bodies-volume-20260923-b-08",
+          "recordDigest": "sha256:c83dea3f6dbbdc6ae52da6185d6b2e022e5eccf454676079301c7af3a20971cc"
+        }
+      },
+      "rationaleDe": "Beide Runden halten das Herleiten von Volumenformeln als eigene LK-Kompetenz statt bloßer Formeleinsatz.",
+      "rationaleEn": "Both rounds retain deriving volume formulas as its own advanced-course competence rather than mere formula substitution."
+    },
+    {
+      "decisionId": "math-m7-q2-bodies-nine-keep-partial-v1-decision-008",
+      "goalId": "eb070ed2-7ef4-5afe-b203-190ebb0116af",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e9ed603aa9b65b5f30416f900bbca41c8f7d2478a0c13db6e3ca7e607d945cb3",
+      "pageFingerprint": "sha256:35a0ea09e967b2e32194826cb9a71af88fb37d7e916c38ae45283483be574445",
+      "goalReviewContextFingerprint": "sha256:a1f23f45a8f0bf6894ef1bd46cdeafda7d2ead6a95cd2d0825447835df390100",
+      "finalText": {
+        "titleDe": "Parallelität und Orthogonalität einfacher Körper untersuchen",
+        "titleEn": "Analyze parallelism and orthogonality in simple solids",
+        "descriptionDe": "Die lernende Person kann an einfachen geometrischen Körpern Parallelität und Orthogonalität von Kanten, Flächen oder Raumrichtungen untersuchen.",
+        "descriptionEn": "The learner can analyze parallelism and orthogonality of edges, faces, or spatial directions in simple geometric solids."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-a.run-001.goal-010",
+          "recordDigest": "sha256:648f2a049603efc75d2d3b3bba099bd84ee406649c42ba764f6991d1955c95cf"
+        },
+        "second": {
+          "recordId": "m7q2-bodies-volume-20260923-b-10",
+          "recordDigest": "sha256:a83836b66395017b229c763f645368ea7cfd5499795029e3aa58a1164aa76f28"
+        }
+      },
+      "rationaleDe": "Parallelität und Orthogonalität einfacher Körper werden in beiden Runden anhand der räumlichen Beziehungen eindeutig geprüft.",
+      "rationaleEn": "Both rounds assess parallelism and orthogonality of simple solids through their spatial relations."
+    },
+    {
+      "decisionId": "math-m7-q2-bodies-nine-keep-partial-v1-decision-009",
+      "goalId": "636b3e2d-c687-5469-8850-e085df06878d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8097e8b44b5bc3103a136c588620f16c9f242f65efbd6871901051377530d5e3",
+      "pageFingerprint": "sha256:85bea02e9cda6dd7e20d3ea307697392e39bf45bfd8c3ed08ce44fe2b5b2e999",
+      "goalReviewContextFingerprint": "sha256:3fa1544d1c3b578e7693cf5cad63337c2573bd491a6eaf7b3b1be952086d131b",
+      "finalText": {
+        "titleDe": "Körpereigenschaften fachlich begründen",
+        "titleEn": "Justify properties of solids",
+        "descriptionDe": "Die lernende Person kann Eigenschaften einfacher Körper fachlich begründen und die verwendeten geometrischen Argumente nachvollziehbar darstellen.",
+        "descriptionEn": "The learner can justify properties of simple solids and present the geometric arguments used."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q2-bodies-volume-14-current-20260923-v1-first-pass-a.run-001.goal-012",
+          "recordDigest": "sha256:7bb217673a4090a0b5b5a1fa6a51d1e11a136773c914a408819b02e84249b5bf"
+        },
+        "second": {
+          "recordId": "m7q2-bodies-volume-20260923-b-12",
+          "recordDigest": "sha256:25e512d5274d94657afdd6b930c8c5c1c9ca942cb404f7a3b6e6bfef8b2e47ac"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen die fachliche Begründung von Körpereigenschaften mit passenden Definitionen und Beziehungen.",
+      "rationaleEn": "Both rounds retain justifying solid properties through appropriate definitions and relations."
+    }
+  ],
+  "manifestFingerprint": "sha256:c9ae0e43cca8bd7b83cb2d6a47372043ff19eb12035b6fb5ce91c88bd4462fe2"
+}

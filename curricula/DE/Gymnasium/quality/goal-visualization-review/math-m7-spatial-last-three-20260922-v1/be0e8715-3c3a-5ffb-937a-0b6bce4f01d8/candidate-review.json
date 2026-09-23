@@ -1,0 +1,114 @@
+{
+  "recordKind": "goal_visualization_candidate_self_review",
+  "status": "ai_candidate",
+  "reviewedAtUtc": "2026-09-21T22:55:53.576Z",
+  "localReviewDate": "2026-09-22",
+  "reviewer": {
+    "agent": "/root/math_repaired12_blind_a",
+    "model": "Codex; exact serving model identifier not exposed",
+    "role": "creating agent self-review"
+  },
+  "humanReviewed": false,
+  "independentQaRequired": true,
+  "sourceEvidence": [
+    "Current canonical goal and current raster personally inspected",
+    "B044 round-A and round-B exact goal records consulted; historical decisions are not automatic approvals",
+    "Current holds inventory and pre-existing correction prompt consulted"
+  ],
+  "provider": {
+    "name": "OpenAI / ChatGPT-Codex image generation",
+    "tool": "image_gen.imagegen",
+    "exactImageModelIdentifier": "not exposed",
+    "transport": "built-in image tool",
+    "outputMimeType": "image/png",
+    "postProcessing": "None; generated PNG bytes copied unchanged"
+  },
+  "boundaries": {
+    "canonicalGoalTextChanged": false,
+    "canonicalAssetWritten": false,
+    "centralQaWritten": false,
+    "registryWritten": false,
+    "ledgerWritten": false,
+    "importRun": false
+  },
+  "timeBasis": "Review timestamp is an actual observed UTC time. Generated file mtimes are separately labeled filesystem observations, not fabricated API timestamps.",
+  "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+  "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+  "decision": "keep_candidate",
+  "original": {
+    "bindingState": "original observed before parent integration; later live path may hold a replacement",
+    "gitRevisionWithVerifiedOriginalBytes": "5365a7effc96bd0532eee8b93386a80b275d0c3a",
+    "path": "app/public/assets/goal-visualizations/mathematik/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8.jpg",
+    "sha256": "beb66e99f74e8fd7ee5f017e6e496c7494ee258537f48796a7936ef1f57d290b"
+  },
+  "originalFinding": "Original direction-vector card falsely assigned the direction vector the length/scaling of an infinite line; original visible xyz axes were inconsistent with the A/B positions. Retain the correct A=(1,2,1), B=(4,3,3), AB=(3,1,2).",
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-spatial-last-three-20260922-v1/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8.attempt-02.png",
+    "sha256": "b3578775616dae549fcf1fc0b7e281ada8841cef048158da03c6fc2153571af2"
+  },
+  "candidateDimensions": {
+    "width": 1678,
+    "height": 937
+  },
+  "nativePrepare": {
+    "command": "npm --prefix app run visualization:prepare -- be0e8715-3c3a-5ffb-937a-0b6bce4f01d8 --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+    "executedBeforeEachAttempt": true,
+    "result": "success",
+    "latestMetadataMtimeUtc": "2026-09-21T22:49:39.388Z",
+    "metadataPath": "tmp/goal-visualizations/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/metadata.json",
+    "note": "Preparation writes tmp prompt metadata, not canonical import or quality approval."
+  },
+  "attempts": [
+    {
+      "number": 1,
+      "decision": "reject",
+      "asset": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-spatial-last-three-20260922-v1/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/attempt-01-rejected.png",
+        "sha256": "e079a7cc3c1ec2324eb3e87000d995d08ef4e317f936c0f8570519358b045dde"
+      },
+      "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-f180b336-98e9-4a2b-857b-9a078f7b31f1.png",
+      "generatedFileMtimeUtc": "2026-09-21T22:47:42.663Z",
+      "prompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-spatial-last-three-20260922-v1/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/prompt-attempt-01.txt",
+        "sha256": "cebb23a76d7b56218caac8f6d857e67d0ae2e835ce7184bc5a6c192ecffdd367"
+      },
+      "reference": "original",
+      "finding": "Text and axis-free triangle repaired, but upper-right r shaft was visibly too steep (approximate slope -0.428 versus AB -0.309), contradicting the explicit parallel relation."
+    },
+    {
+      "number": 2,
+      "decision": "keep_candidate",
+      "asset": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-spatial-last-three-20260922-v1/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8.attempt-02.png",
+        "sha256": "b3578775616dae549fcf1fc0b7e281ada8841cef048158da03c6fc2153571af2"
+      },
+      "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-5950df13-3225-4711-9f11-6e524c41384c.png",
+      "generatedFileMtimeUtc": "2026-09-21T22:50:18.837Z",
+      "prompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-spatial-last-three-20260922-v1/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/prompt-attempt-02.txt",
+        "sha256": "a2223d72a8aefafd54bd3ccfff522dff34445ef937da02b5d265c4d70b915372"
+      },
+      "reference": "attempt 1 generated PNG",
+      "finding": "Targeted rotation restores the r-to-AB parallelism without changing the valid endpoint triangle or corrected role text."
+    }
+  ],
+  "reconstructionPrompt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-spatial-last-three-20260922-v1/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/image-reconstruction-prompt.de.md",
+    "sha256": "53a617e7a8e4cf24b7bf301abc7f3586e73718b2ee7a75917e0a0f6cbb1dd919"
+  },
+  "proposedAltText": "Richtungsskizze mit O, A(1,2,1) und B(4,3,3): Die Pfeilkette OA+AB endet bei OB, mit AB=(3,1,2). Ein paralleler Richtungsvektor r=(3,1,2) bezeichnet die Geradenrichtung, nicht eine endliche Geradenlänge. Drei farbige Karten unterscheiden Orts-, Verschiebungs- und Richtungsvektor.",
+  "ownSubjectReview": {
+    "actualRasterViewed": true,
+    "geometry": "Approximate centers O=(322,502), A=(449,351), B=(879,218). The three arrows share these endpoints, so OA+AB=OB geometrically. AB shaft slope about -0.309 and upper-right r about -0.307 agree at rendered stroke scale. No xyz axes remain; the heading explicitly says Richtungsskizze.",
+    "algebra": "B-A=(4-1,3-2,3-1)=(3,1,2); OA+AB=(1,2,1)+(3,1,2)=(4,3,3)=OB.",
+    "meaning": "Position is anchored at O, displacement connects A to B, direction identifies a parallel line direction. The corrected card explicitly rejects a finite line-length interpretation.",
+    "counterchecks": [
+      "g(t)=A+t(3,1,2) gives A at t=0, B at t=1 and (7,4,5) at t=2; the line continues beyond B.",
+      "A nonzero scalar multiple of r parameterizes the same line; |r|=sqrt(14) is a vector length, not the length of that infinite line.",
+      "The zero vector cannot serve as a line direction."
+    ],
+    "limits": "Axis-free direction sketch illustrates roles and vector relations, not component reading from a calibrated 3D projection. It is supporting illustration, not a replacement for the full unchanged competency.",
+    "readability": "Labels, component triples and role cards are legible; friendly original comic style retained.",
+    "approvalBoundary": "This is the creating agent's own KEEP-candidate decision, not an independent or human approval."
+  }
+}

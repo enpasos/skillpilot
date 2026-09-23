@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-unregistered-eight-seki-j10-q4-current-20260923-v1.config.json",
+  "configDigest": "sha256:044ea65e068a41e99b1b650b7272518dd54374b940bad2c202e64f8b077aebe8",
+  "goalIds": [
+    "0f6c1df6-0e30-54ae-8098-e9422833ba80",
+    "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+    "d051857c-0707-544f-ae7a-f20690d182b2",
+    "2345ae25-5805-4c72-b830-32e63cc6262a",
+    "25a3cc39-976e-58a5-b882-73baee5c037c",
+    "6a4716bd-8038-46bb-b647-0db4a254fee7",
+    "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+    "e105bad8-b4e5-53fc-b02e-604f1df5b503"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:fff3da9e70c1be9d29da4681ee7b890b449bdaca803d1d78736b60d8c480751e"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:3c22311926a1909942fd55286b01ecfa1866fc9402d8710b5addb621f633d031",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:982a6aa4d7cee409cc23ae98050ece6983c79bf6780be967f124bbf370ee70d5",
+    "reviewInputFingerprint": "sha256:f55d3543d54d090bab8d0f087c822bf6aa9f967bd7117356ac0f98c0e107b105",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-a",
+        "campaignDigest": "sha256:8b34c062a97ffa7c36d43f30e165681cbb466ce45b97deb2bfab7cf055f5a585",
+        "roundId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-independent-a",
+        "batchId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:3fe116b4038f52be9868175bcf46117d85483ac4ac471ef5556eb25233036cb1"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-b",
+        "campaignDigest": "sha256:9a33db6c4fdb2335c07ce27af2571e471b1330189a4c69bbe026010546f7a92c",
+        "roundId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-independent-b",
+        "batchId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:6bfa4e4671a5b2ed4172cf2cdcc3f925d9e03ef0339202063b37a4b609d4f059"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-j10-factor-times-png-delta-20260923-v1.config.json",
+  "configDigest": "sha256:594d6afed9f60da163c72cb3f7bff4a3c600cc45ddcd1a95894477eeab4297d8",
+  "goalIds": [
+    "c19d1f8f-b297-5a58-b1d4-26d811e4aff4"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:a5de8821c46cd7627a6923ac623dc1e721c5a8f439fa5922641645342595f730"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:b5e48ae230dfafbfd07cb6a375fcc3c1a17e40c8558e1a2b564249f5df22023d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:121b39b75c20c5da4f706ee1db89b0d0b2c7354f71a16b670962b41e39204b75",
+    "reviewInputFingerprint": "sha256:cb4dd26b7e14e75308a1bf9decd115a26adec116ee922b3c743ef3ac35e7c7b7",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-a",
+        "campaignDigest": "sha256:9872e189a312c237f17cfcf1f641d9d2d63e9348913646711e01d54466255f18",
+        "roundId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-independent-a",
+        "batchId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:074a589e75954f6e612afad75c69f222952c989bc5067d10ed9d6ec3d495cd54"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-b",
+        "campaignDigest": "sha256:2167258ed5fcc5163a7e51a95df6759fdd27a58fec62a02826fa503dadf3ec7a",
+        "roundId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-independent-b",
+        "batchId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:777136b0d2d54aad16e4ed6a4aeea74191e4cadfb5416db80cd662875031b193"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-a-informed-synthesis-20260921",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex informed synthesis after reading both independent current rounds",
+  "synthesizedAt": "2026-09-21T21:11:25.412Z",
+  "batch": {
+    "batchId": "mathematik-m7-stochastics-image-holds-2-v1-20260920",
+    "batchManifestDigest": "sha256:083717b672c965009fba3bcdf4f267951ab097e9d207f18ac7fd9faa11822dd5",
+    "configDigest": "sha256:b0d0d99f6b3808e0b03ec7b93a366b3838bdc34f456237cf4f4c327585891ca6",
+    "bundleFingerprint": "sha256:b69cebfb281c9bf2891f016b2dd72c82ef8a14a9112a9cb20fb612caf3b054ba",
+    "bookDigest": "sha256:06ea5a4df3687b8ada17b351707d80d17628181e69f2aef7279d3301e22813d5",
+    "reviewInputFingerprint": "sha256:8234ab26f029e5f826ae2fef3138bd1b6760ac2c28e376d051f15df503314812",
+    "dualSummaryDigest": "sha256:ec977ecc0c32a79646107f8f482c6eab13621458484d3f015a4b328ed3278919",
+    "canonicalLandscapeDigest": "sha256:ee31c20e64a2584c3be3a6fcacfe32a2d55bf95f079dbeb0234d1b06dffc47c6"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-a",
+      "campaignDigest": "sha256:a69679ce8f96c9e7cc194c206747ca7d159a1f843759115f6fae6447620a4f1e",
+      "roundId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:8234ab26f029e5f826ae2fef3138bd1b6760ac2c28e376d051f15df503314812",
+      "batchId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:404a0ffb3b526395f16093412ab2c5846ed11ce3d484b1eed21e107f9a3e5fa0",
+      "runId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-a.batch-001.independent-a",
+      "runManifestDigest": "sha256:05dd36bc4dbbc424f819c274cb3163499913f08fa48b47c169a2f05848dc0e45",
+      "resultsDigest": "sha256:eb61f4fa2835adad1ec109cf65aa14dba6d4932fea5ddfd25582d1d4505cd1bf"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-b",
+      "campaignDigest": "sha256:fbbb6c80c39aa329cdbd0a2481c5e802595b1f355812b511ecbc24f5b9109f93",
+      "roundId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:8234ab26f029e5f826ae2fef3138bd1b6760ac2c28e376d051f15df503314812",
+      "batchId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:0a5ba63c40dce0ef8f9dba4736793f22eefede29917a0c9b42f18627098a2906",
+      "runId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-b-codex-20260921",
+      "runManifestDigest": "sha256:30ea6af8c82a6c68433c277f0f09441571f3c2213a7d5c55e72898edc7f1aa5c",
+      "resultsDigest": "sha256:0f132ff5dee62134d3c57004f984bd7814d7097f388b9a2d0e76f9b005f61e27"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-a-informed-synthesis-20260921-decision-001",
+      "goalId": "42d300e3-e982-5889-98d7-fc297f10eff1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4040fd232a0f99936b333b2f7c44c68453e31b4c0691e0071bc9987af34f3209",
+      "pageFingerprint": "sha256:3fa119664e217e8d93d57e09c835891a0c97e4921ef786064f91287f38044dc3",
+      "goalReviewContextFingerprint": "sha256:3bbb3030fa8b3273f0257b4ea300046fcde8eaf341dc991f024acae850d5a70a",
+      "finalText": {
+        "titleDe": "Einfluss von n und p auf Binomialverteilungen analysieren",
+        "titleEn": "Analyze the influence of n and p on binomial distributions",
+        "descriptionDe": "Die lernende Person kann anhand von Histogrammen untersuchen, wie sich die Parameter n und p auf Lage, Streuung und Symmetrie binomialverteilter Zufallsgrößen auswirken, und entsprechende Vergleiche an Beispielen begründen.",
+        "descriptionEn": "The learner can use histograms to analyze how parameters n and p affect location, spread, and symmetry of binomial distributions and justify comparisons with examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-a.batch-001.independent-a.record-001",
+          "recordDigest": "sha256:ca7dc7dc33fd794dd059539a6d90a19f3bdc57734eddd4f062878c539d69dd96"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-b-codex-20260921.42d300e3-e982-5889-98d7-fc297f10eff1",
+          "recordDigest": "sha256:4ab2b54d2ce7a9f5a135a10c610b205cca916d9719f9db1944014958e7943258"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden empfehlen KEEP und binden den gleichen AB2-Parametervergleich. Die Evidenz der zweiten Runde wird wegen der expliziten Unterscheidung absoluter und relativer Streuung und des Maximums bei p=0,5 gewählt; die erste Runde stützt dieselbe Histogramm- und Kenngrößenkompetenz. Beschreibung und Umfang bleiben unverändert, eine Bild- oder Humanfreigabe entsteht nicht.",
+      "rationaleEn": "Both independent current rounds recommend KEEP and bind the same AB2 parameter comparison. The second round's evidence is selected for its explicit distinction between absolute and relative spread and its maximum at p=0.5; the first round supports the same histogram and distribution-measure competence. Wording and scope remain unchanged, and no visual or human approval is granted."
+    },
+    {
+      "decisionId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-a-informed-synthesis-20260921-decision-002",
+      "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1f75c7f20d316fb9a7c90873b80da5b118d46f0965884656dfe813d5a53aa623",
+      "pageFingerprint": "sha256:af42d6d713be1959df0ea24653570d638926fa615f692565db8f374f87bd1354",
+      "goalReviewContextFingerprint": "sha256:a1be46c7de93e2900f816c4e3306656d1c81f33ced98b293142915f8c8453362",
+      "finalText": {
+        "titleDe": "Weitere stetige Verteilungen exemplarisch nutzen (LK)",
+        "titleEn": "Use further continuous distributions through examples (advanced course)",
+        "descriptionDe": "Die lernende Person kann eine weitere stetige Verteilung, zum Beispiel die Exponentialverteilung als Modell für Wartezeiten oder Zuverlässigkeitssituationen, exemplarisch verwenden, zugehörige Wahrscheinlichkeiten bestimmen und zentrale Modelleigenschaften im Kontext erläutern.",
+        "descriptionEn": "The learner can use another continuous distribution through an example, such as the exponential distribution as a model for waiting-time or reliability situations, determine associated probabilities, and explain key model properties in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-a.batch-001.independent-a.record-002",
+          "recordDigest": "sha256:25c68ab2179e09a6097f0ee703f1a34a982cd33cfa69e8bd0611b5f987cd1a34"
+        },
+        "second": {
+          "recordId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-b-codex-20260921.455ef29a-7194-5c5a-b832-1c27fcbf2516",
+          "recordDigest": "sha256:0c54e4655a22f4ac46eaaca5d63b3ba996a9e84d9c5f2c1c2ec6314f955aa08d"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Runden bestätigen die exemplarisch offene weitere stetige Verteilung. Die zweite Evidenzkette konkretisiert den Transfer über eine geänderte Modellannahme, insbesondere zunehmendes Ausfallrisiko beim optionalen Exponentialbeispiel. Die erste Kette ergänzt den Repräsentationswechsel; weder Bild noch ausgewähltes Profil schränken das Ziel exklusiv auf die Exponentialverteilung ein.",
+      "rationaleEn": "Both current rounds confirm the open choice of an additional continuous distribution used as an example. The second evidence chain specifies transfer through a changed model assumption, particularly increasing failure risk for the optional exponential example. The first chain adds a change of representation; neither the image nor the selected profile restricts the goal exclusively to the exponential distribution."
+    }
+  ],
+  "manifestFingerprint": "sha256:36a67d78a9bfc742e454d0c055862cbbb3595800aeeb26a8d696040fcddb0c9f"
+}

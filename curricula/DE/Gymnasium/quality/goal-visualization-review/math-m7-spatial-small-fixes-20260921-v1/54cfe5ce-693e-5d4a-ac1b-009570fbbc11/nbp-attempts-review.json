@@ -1,0 +1,79 @@
+{
+  "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+  "goalTitleDe": "Kollinearität von Vektoren im Raum prüfen",
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "selfReviewer": "Codex independent agent /root/math_repaired12_blind_a; exact serving model identifier not exposed",
+  "selfReviewRecordedAt": "2026-09-21T22:40:36.553Z",
+  "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+  "model": "gemini-3-pro-image (request and response summary)",
+  "tool": "scripts/generate_goal_visualization_nano_banana.mjs",
+  "nativePrepare": {
+    "completedBeforeEachGeneration": true,
+    "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)"
+  },
+  "generationOptions": {
+    "noImport": true,
+    "skipReconstructionPrompt": true,
+    "mimeType": "image/jpeg",
+    "aspectRatio": "16:9",
+    "imageSize": "2K"
+  },
+  "formatNote": "Native API400 rejected image/png; supported JPEG responses retained. ffmpeg only decoded those responses to PNG; all decoded-RGB equality checks passed. No compositing, generated geometry, cropping or post-generation geometric edit.",
+  "source": {
+    "path": "app/public/assets/goal-visualizations/mathematik/54cfe5ce-693e-5d4a-ac1b-009570fbbc11/54cfe5ce-693e-5d4a-ac1b-009570fbbc11.jpg",
+    "sha256": "sha256:ed8e50ed05df198b62e66f046f8bf22b791c023cc9c0d795eb790e3187a7a825",
+    "actuallyInspected": true
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "decision": "candidate_needs_independent_review",
+      "selfReview": "Candidate: lower-left arrows exactly parallel horizontally and approximately2:1 in length. Different origins are valid representatives of free vectors. Upper ratios2,2,2 and1.5,1,4/3 correct. No false coordinate axes.",
+      "actuallyViewed": true,
+      "localResponseFileTimestamp": "2026-09-21T22:26:33.825Z",
+      "file": "nbp-attempt-01.png",
+      "sha256": "sha256:0daaddf6f333f56d16fc7bad130358e93fbccdb7fa2ad2c11be1d6a0e918ed0b",
+      "bytes": 4157262,
+      "width": 2752,
+      "height": 1536,
+      "originalResponse": {
+        "file": "nbp-attempt-01.original.jpg",
+        "sha256": "sha256:d1bfa37063b38bc69967f8fd99353c2335c76a06cc0af80cddd9d7808f12f0ca",
+        "bytes": 2044052
+      },
+      "reference": {
+        "file": "attempt-04-rejected.png",
+        "sha256": "sha256:efb3dfcb994829ef0c19c513928eafedef42052671722eb1018120f33f6c810c",
+        "bytes": 1622652,
+        "width": 1678,
+        "height": 937
+      },
+      "prompt": {
+        "file": "prompt-nbp-attempt-01.exact.txt",
+        "sha256": "sha256:42d37dabd11c907e333d25ca4f87fb2189bc6e067d6a1c07d21ab6f56e896091",
+        "bytes": 2027
+      },
+      "requestSha256": "sha256:a897661dd226c7660487937f664c1b0c082a2882ed010f2fd00a92754c7c27e2",
+      "responseSummary": {
+        "file": "nbp-attempt-01.response-summary.json",
+        "sha256": "sha256:1ffbb0b9f327a06562fd710f144c72e99b2c57a5b8396affa69fc893be24ae1c",
+        "bytes": 166
+      },
+      "conversion": {
+        "file": "nbp-attempt-01.png",
+        "decodedRgbEqual": true
+      }
+    }
+  ],
+  "selectedAttempt": 1,
+  "constructionReferencePolicy": "No programmatically generated diagram reference used in any NBP request; only actually inspected raster attempts.",
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false,
+    "humanApprovalClaimed": false
+  }
+}

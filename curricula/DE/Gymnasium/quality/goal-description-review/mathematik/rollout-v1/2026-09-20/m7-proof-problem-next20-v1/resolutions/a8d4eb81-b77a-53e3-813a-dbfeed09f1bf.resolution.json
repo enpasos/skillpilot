@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-proof-problem-next20-v1-20260920-resolution-a8d4eb81-b77a-53e3-813a-dbfeed09f1bf",
+  "goal": {
+    "goalId": "a8d4eb81-b77a-53e3-813a-dbfeed09f1bf",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:18328f3388413fb012bbc03ac27b2a9f122eafbe910fb90a836362d97d050af2",
+    "pageFingerprint": "sha256:f035a3d5fdb233b54a97175381d1f0e5e575768875de8dbb7868a3993da83830",
+    "goalReviewContextFingerprint": "sha256:8974539401e96f62a8a5f1037c3602178203e90021a2d107eb5ca5d897c15317",
+    "finalText": {
+      "titleDe": "Quantoren richtig interpretieren",
+      "titleEn": "Interpret quantifiers correctly",
+      "descriptionDe": "Die lernende Person kann Aussagen mit „für alle“/„es gibt“ in Worten und Symbolen deuten, verneinen und durch Beispiele bzw. Gegenbeispiele prüfen.",
+      "descriptionEn": "The learner can interpret statements with “for all”/“there exists” in words and symbols, negate them and test them using examples or counterexamples."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-a",
+      "campaignDigest": "sha256:a41a6260e12d06d970c0aa5b563f6ced07b7b524b77304b4bca474a3cdd33f8a",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:8974539401e96f62a8a5f1037c3602178203e90021a2d107eb5ca5d897c15317",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a.batch-001",
+      "runId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "runManifestDigest": "sha256:60fad9393a29128686a5228db0da4a4ed48bd8cd6ed95b0bc84d42c344aac21e",
+      "resultsDigest": "sha256:329e91f5901cf79b026c61fad742d42a2007943b5d265c3d9db874909ff0c830",
+      "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.007",
+      "recordDigest": "sha256:22fccc8a9c0eca284dca2e5b0282d1ff0a8bf2d0c42c929d079a9c2977907e16"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-b",
+      "campaignDigest": "sha256:2e75517c969f994726a963dcd0ef3968698ed89412db83e1268cebe54ed38ede",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:8974539401e96f62a8a5f1037c3602178203e90021a2d107eb5ca5d897c15317",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b.batch-001",
+      "runId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "runManifestDigest": "sha256:a1e2b99b173d09f363ed0018614be748221ac4c77008c186e078758cbee79dbe",
+      "resultsDigest": "sha256:267b1d842c5a3ccbdf21d74874a55e6fce3d149e5db37b2e4628144696d33217",
+      "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.a8d4eb81-b77a-53e3-813a-dbfeed09f1bf",
+      "recordDigest": "sha256:500b60c317f79ff0429e5d47dd1ab7699796fae82f772bd182171d47c6701085"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:812ca966f5ddee8da9efb458a624b88645325047d0b2b7d5a617c3390c7239b7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-current-17.json",
+    "manifestId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-synthesis",
+    "manifestDigest": "sha256:a30996e2d0a152c8caff3e90a54e27fff5c48d715087960bf1511035e9a0ff1c",
+    "manifestFingerprint": "sha256:6b041c5cf340b07f17115de86e08a85cebaee8900eb683276005b1788b6ea234",
+    "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-7"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-7",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex Root informed synthesis; not an additional independent review",
+    "synthesizedAt": "2026-09-21T20:55:01.000Z",
+    "rationaleDe": "A benennt Quantorwechsel und veränderte Zeugenstrategie bei der Negation; B bestätigt deren Zusammenhang als eine Quantorenkompetenz.",
+    "rationaleEn": "A specifies quantifier switching and changed witness strategy under negation; B confirms their coherence as one quantifier competence.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Allaussage behauptet Gültigkeit für jedes Objekt des Bereichs, eine Existenzaussage mindestens einen passenden Fall; beim Verneinen wechseln Quantor und Eigenschaft gemeinsam.",
+      "essentialUnderstandingEn": "A universal statement claims validity for every object in its domain, whereas an existential statement requires at least one suitable case; negation changes both the quantifier and the property.",
+      "observablePerformanceDe": "Die lernende Person übersetzt und verneint für alle reellen x gilt x² ≥ 0 korrekt zu es gibt ein reelles x mit x² < 0 und erklärt, welche Art von Beispiel eine Allaussage widerlegt beziehungsweise eine Existenzaussage bestätigt.",
+      "observablePerformanceEn": "The learner translates and correctly negates for every real x, x² ≥ 0 as there exists a real x with x² < 0, and explains what kind of example refutes a universal statement or establishes an existential one.",
+      "transferExpectationDe": "Bei einer neu vorgelegten Existenzaussage x² = 4 ersetzt sie die Strategie der Widerlegung einer Allaussage durch die Suche nach einem zulässigen Zeugen und formuliert die Verneinung mit einem Allquantor.",
+      "transferExpectationEn": "For a newly presented existence claim x² = 4, the learner replaces the strategy of refuting a universal statement with a search for an admissible witness and expresses the negation with a universal quantifier."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-b1f651cf5430831784deb7fb91a776e30af74302b347799dda2b195fd01cf599",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:9bae012ecaf6a2d1be221a378873b90d32c7a2e6ca58ee4e0e9bf09bf7844710"
+}

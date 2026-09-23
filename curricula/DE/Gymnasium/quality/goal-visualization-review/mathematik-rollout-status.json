@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-20T21:21:04.211Z",
+  "generatedAt": "2026-09-23T01:32:54.628Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
@@ -10,24 +10,24 @@
     "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17"
   },
   "summary": {
-    "totalGoals": 1187,
+    "totalGoals": 1189,
     "atomicGoalsInScope": 797,
-    "goalsWithPrimaryVisualization": 728,
-    "coveragePercent": 91.3,
+    "goalsWithPrimaryVisualization": 730,
+    "coveragePercent": 91.6,
     "goalsAccountedForByAssetOrDeferred": 797,
     "accountedCoveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
       "accepted": 5,
       "ai-reviewed": 6,
-      "approved": 17,
-      "pilot": 700
+      "approved": 16,
+      "pilot": 703
     },
     "linkedVisualizationReviewStatuses": {
       "accepted": 5,
       "ai-reviewed": 6,
-      "approved": 17,
-      "pilot": 700
+      "approved": 16,
+      "pilot": 703
     },
     "reviewLedgerFiles": 239,
     "reviewDecisionCounts": {
@@ -78,12 +78,12 @@
       "rejected_regenerated": 80,
       "rejected_removed": 1
     },
-    "openProviderDeferredGoals": 69,
+    "openProviderDeferredGoals": 67,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 2,
     "regularUnlinkedGoals": 0,
     "coverageGatePassed": true,
-    "linkedWithoutAcceptedReview": 11,
+    "linkedWithoutAcceptedReview": 13,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
@@ -382,13 +382,6 @@
         "notes": "Für „Maßangaben aus Quellenmaterial entnehmen“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
       },
       {
-        "batch": "205",
-        "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
-        "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
-        "decision": "deferred_provider_limitation",
-        "notes": "Drei gezielte Kandidaten enthalten entweder ein Titelartefakt, inkonsistente Dezimalnotation oder eine Übergangsmatrix, die nicht zu den berechneten Zuständen passt. Kein Kandidat ist importierbar. The active link and canonical, public, and backend image copies were removed."
-      },
-      {
         "batch": "mathematik-structural-split-deferred-2026-08-16",
         "goalId": "34200b88-c616-58f6-aa03-efb9fd766f88",
         "title": "Mittelsenkrechten konstruieren und begründen",
@@ -436,13 +429,6 @@
         "title": "Parameteruntersuchungen mit Exponentialfunktionen (LK)",
         "decision": "deferred_provider_limitation",
         "notes": "Three attempts remained visually misleading: missing curve assignments and inaccurate tails, then a false parameter label, then a green curve with a nonzero value at x = 0. The active link and all deployed image copies were removed."
-      },
-      {
-        "batch": "195",
-        "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
-        "title": "Plausibilität mit Beispielen testen",
-        "decision": "deferred_provider_limitation",
-        "notes": "The first two attempts wrongly framed zero as a boundary case; the final attempt added a false +1 badge to the n = 2 example. The active link and all deployed image copies were removed."
       },
       {
         "batch": "mathematik-structural-split-deferred-2026-08-16",
@@ -1000,11 +986,25 @@
         "latestDecision": null
       },
       {
+        "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+        "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/0de1e45c-aea9-5e53-932a-027dcf509efa/0de1e45c-aea9-5e53-932a-027dcf509efa.png",
+        "latestDecision": "deferred_provider_limitation"
+      },
+      {
         "goalId": "03703b29-efd8-57e0-acf5-4381b1dc67ec",
         "title": "Modalwert bestimmen und im Kontext deuten",
         "reviewStatus": "approved",
         "url": "/assets/goal-visualizations/mathematik/03703b29-efd8-57e0-acf5-4381b1dc67ec/03703b29-efd8-57e0-acf5-4381b1dc67ec.png",
         "latestDecision": null
+      },
+      {
+        "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+        "title": "Plausibilität mit Beispielen testen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/1e164a09-0a2b-55ab-b927-08a4a278f72b/1e164a09-0a2b-55ab-b927-08a4a278f72b.png",
+        "latestDecision": "deferred_provider_limitation"
       },
       {
         "goalId": "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
@@ -1117,7 +1117,7 @@
       "title": "Abstand zweier Punkte im Raum berechnen",
       "phase": "Q2",
       "area": "LinearAlgebra",
-      "reviewStatus": "approved",
+      "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/68d4faef-1a56-5898-9c31-80b7d5d2e430/68d4faef-1a56-5898-9c31-80b7d5d2e430.png"
     },
     {
@@ -1494,7 +1494,7 @@
       "phase": "Q3",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/c3b9c561-dd83-5903-9ec6-49c7f51bafd5/c3b9c561-dd83-5903-9ec6-49c7f51bafd5.jpg"
+      "url": "/assets/goal-visualizations/mathematik/c3b9c561-dd83-5903-9ec6-49c7f51bafd5/c3b9c561-dd83-5903-9ec6-49c7f51bafd5.png"
     },
     {
       "goalId": "508292f2-671b-4fd3-acbf-53d705e44693",
@@ -1694,7 +1694,7 @@
       "phase": "Q2",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/4d331ba0-56d6-5730-a51b-e3d1126b31ba/4d331ba0-56d6-5730-a51b-e3d1126b31ba.jpg"
+      "url": "/assets/goal-visualizations/mathematik/4d331ba0-56d6-5730-a51b-e3d1126b31ba/4d331ba0-56d6-5730-a51b-e3d1126b31ba.png"
     },
     {
       "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
@@ -2086,7 +2086,7 @@
       "phase": "Q2",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/7bd8f022-5002-5610-994c-a9cec1890558/7bd8f022-5002-5610-994c-a9cec1890558.jpg"
+      "url": "/assets/goal-visualizations/mathematik/7bd8f022-5002-5610-994c-a9cec1890558/7bd8f022-5002-5610-994c-a9cec1890558.png"
     },
     {
       "goalId": "093397e0-eec8-45bb-9a5a-a24827876df5",
@@ -3022,7 +3022,7 @@
       "phase": "Q2",
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/eb6bfdd9-3cbe-51b5-9798-a741bdc2782e/eb6bfdd9-3cbe-51b5-9798-a741bdc2782e.jpg"
+      "url": "/assets/goal-visualizations/mathematik/eb6bfdd9-3cbe-51b5-9798-a741bdc2782e/eb6bfdd9-3cbe-51b5-9798-a741bdc2782e.png"
     },
     {
       "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
@@ -3038,7 +3038,7 @@
       "phase": "Q2",
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/4c494716-567b-59c2-855c-6ea45635c666/4c494716-567b-59c2-855c-6ea45635c666.jpg"
+      "url": "/assets/goal-visualizations/mathematik/4c494716-567b-59c2-855c-6ea45635c666/4c494716-567b-59c2-855c-6ea45635c666.png"
     },
     {
       "goalId": "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
@@ -3222,7 +3222,7 @@
       "phase": "Q2",
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/922d89fc-1cbd-56e9-ac5d-5cb59085de6c/922d89fc-1cbd-56e9-ac5d-5cb59085de6c.jpg"
+      "url": "/assets/goal-visualizations/mathematik/922d89fc-1cbd-56e9-ac5d-5cb59085de6c/922d89fc-1cbd-56e9-ac5d-5cb59085de6c.png"
     },
     {
       "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
@@ -3574,7 +3574,7 @@
       "phase": "Q2",
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/54cfe5ce-693e-5d4a-ac1b-009570fbbc11/54cfe5ce-693e-5d4a-ac1b-009570fbbc11.jpg"
+      "url": "/assets/goal-visualizations/mathematik/54cfe5ce-693e-5d4a-ac1b-009570fbbc11/54cfe5ce-693e-5d4a-ac1b-009570fbbc11.png"
     },
     {
       "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
@@ -3894,7 +3894,7 @@
       "phase": "Q2",
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/6fc9246a-9448-4cdb-b627-cf20ea1c65d3/6fc9246a-9448-4cdb-b627-cf20ea1c65d3.jpg"
+      "url": "/assets/goal-visualizations/mathematik/6fc9246a-9448-4cdb-b627-cf20ea1c65d3/6fc9246a-9448-4cdb-b627-cf20ea1c65d3.png"
     },
     {
       "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
@@ -3942,7 +3942,7 @@
       "phase": "Q2",
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/72dfc164-455d-4b63-85f0-96e803c9a1d5/72dfc164-455d-4b63-85f0-96e803c9a1d5.jpg"
+      "url": "/assets/goal-visualizations/mathematik/72dfc164-455d-4b63-85f0-96e803c9a1d5/72dfc164-455d-4b63-85f0-96e803c9a1d5.png"
     },
     {
       "goalId": "aed3ca99-815b-40b8-ae91-e11bf92f51da",
@@ -4097,6 +4097,14 @@
       "url": "/assets/goal-visualizations/mathematik/b5062446-332f-4a67-aaf7-3bfa3e5aded9/b5062446-332f-4a67-aaf7-3bfa3e5aded9.jpg"
     },
     {
+      "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+      "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/0de1e45c-aea9-5e53-932a-027dcf509efa/0de1e45c-aea9-5e53-932a-027dcf509efa.png"
+    },
+    {
       "goalId": "33c6e64c-5955-5b07-85d4-74a97b19dd56",
       "title": "Matrixpotenzen in Übergangsprozessen deuten",
       "phase": "Q2",
@@ -4222,7 +4230,7 @@
       "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/163dd583-8308-53f0-b60d-34588787988d/163dd583-8308-53f0-b60d-34588787988d.jpg"
+      "url": "/assets/goal-visualizations/mathematik/163dd583-8308-53f0-b60d-34588787988d/163dd583-8308-53f0-b60d-34588787988d.png"
     },
     {
       "goalId": "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
@@ -4262,7 +4270,7 @@
       "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/fb4dcd2a-a6a9-5371-a2fc-95348ee130e0/fb4dcd2a-a6a9-5371-a2fc-95348ee130e0.jpg"
+      "url": "/assets/goal-visualizations/mathematik/fb4dcd2a-a6a9-5371-a2fc-95348ee130e0/fb4dcd2a-a6a9-5371-a2fc-95348ee130e0.png"
     },
     {
       "goalId": "d8cbf2bd-2512-5661-b431-4aea7e688912",
@@ -4526,7 +4534,7 @@
       "phase": "Q2",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/b72d87d4-763e-54aa-940d-31f195b51700/b72d87d4-763e-54aa-940d-31f195b51700.jpg"
+      "url": "/assets/goal-visualizations/mathematik/b72d87d4-763e-54aa-940d-31f195b51700/b72d87d4-763e-54aa-940d-31f195b51700.png"
     },
     {
       "goalId": "eb112b6f-4cc4-58af-975a-f1ea61b727f0",
@@ -4582,7 +4590,7 @@
       "phase": "Q2",
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/55039f9c-4ebc-5115-add5-fae95b915e46/55039f9c-4ebc-5115-add5-fae95b915e46.jpg"
+      "url": "/assets/goal-visualizations/mathematik/55039f9c-4ebc-5115-add5-fae95b915e46/55039f9c-4ebc-5115-add5-fae95b915e46.png"
     },
     {
       "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d",
@@ -4751,6 +4759,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/7f11ffe0-7c43-4507-9101-50374a60b0e8/7f11ffe0-7c43-4507-9101-50374a60b0e8.jpg"
+    },
+    {
+      "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+      "title": "Plausibilität mit Beispielen testen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/1e164a09-0a2b-55ab-b927-08a4a278f72b/1e164a09-0a2b-55ab-b927-08a4a278f72b.png"
     },
     {
       "goalId": "a41761f2-8ba8-5af4-87c1-eb5e4ab1d020",
@@ -5182,7 +5198,7 @@
       "phase": "Q2",
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/aae119f2-925f-5fc1-b795-b52c9e980863/aae119f2-925f-5fc1-b795-b52c9e980863.jpg"
+      "url": "/assets/goal-visualizations/mathematik/aae119f2-925f-5fc1-b795-b52c9e980863/aae119f2-925f-5fc1-b795-b52c9e980863.png"
     },
     {
       "goalId": "281e0c6e-d06d-580f-8443-4369f0ea524b",
@@ -5734,7 +5750,7 @@
       "phase": "Q2",
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/69eda7f9-1898-5220-932d-e7bec839b7af/69eda7f9-1898-5220-932d-e7bec839b7af.jpg"
+      "url": "/assets/goal-visualizations/mathematik/69eda7f9-1898-5220-932d-e7bec839b7af/69eda7f9-1898-5220-932d-e7bec839b7af.png"
     },
     {
       "goalId": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
@@ -6206,7 +6222,7 @@
       "phase": "Q2",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8.jpg"
+      "url": "/assets/goal-visualizations/mathematik/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8.png"
     },
     {
       "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
@@ -6214,7 +6230,7 @@
       "phase": "Q2",
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/f37b0a72-9e23-51c7-aad5-438c17a56899/f37b0a72-9e23-51c7-aad5-438c17a56899.jpg"
+      "url": "/assets/goal-visualizations/mathematik/f37b0a72-9e23-51c7-aad5-438c17a56899/f37b0a72-9e23-51c7-aad5-438c17a56899.png"
     },
     {
       "goalId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
@@ -6374,7 +6390,7 @@
       "phase": "Q3",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f.jpg"
+      "url": "/assets/goal-visualizations/mathematik/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f.png"
     },
     {
       "goalId": "c23c4364-b5ea-513a-9d78-76bf7f113d1b",
@@ -6606,7 +6622,7 @@
       "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/f84ea3d8-c255-552a-998a-202e42843f56/f84ea3d8-c255-552a-998a-202e42843f56.jpg"
+      "url": "/assets/goal-visualizations/mathematik/f84ea3d8-c255-552a-998a-202e42843f56/f84ea3d8-c255-552a-998a-202e42843f56.png"
     },
     {
       "goalId": "bda6a659-9640-53a5-8be0-24705ab623ef",
@@ -6614,7 +6630,7 @@
       "phase": "Q2",
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/bda6a659-9640-53a5-8be0-24705ab623ef/bda6a659-9640-53a5-8be0-24705ab623ef.jpg"
+      "url": "/assets/goal-visualizations/mathematik/bda6a659-9640-53a5-8be0-24705ab623ef/bda6a659-9640-53a5-8be0-24705ab623ef.png"
     },
     {
       "goalId": "2331caf2-ccb2-5492-9fc6-48763b848bae",
@@ -6694,7 +6710,7 @@
       "phase": "Q2",
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/35558905-753d-5fcb-b25e-7f85ffdbff56/35558905-753d-5fcb-b25e-7f85ffdbff56.jpg"
+      "url": "/assets/goal-visualizations/mathematik/35558905-753d-5fcb-b25e-7f85ffdbff56/35558905-753d-5fcb-b25e-7f85ffdbff56.png"
     },
     {
       "goalId": "14173f5e-d3ba-51e5-b510-49ecd0abad90",
