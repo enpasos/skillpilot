@@ -1338,10 +1338,11 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
         // Current Layer-A totals include the reviewed HE-G9 J10/exponential-route correction.
+        // BW/RP Sek I no longer include the Q4 process assessment in their target views.
         String[][] scopes = {
                 { "DE-BB", "240", "240" },
                 { "DE-BE", "239", "239" },
-                { "DE-BW", "258", "258" },
+                { "DE-BW", "257", "257" },
                 { "DE-BY", "230", "230" },
                 { "DE-HB", "213", "213" },
                 { "DE-HE", "318", "356" },
@@ -1349,7 +1350,7 @@ public class LearnerControllerIntegrationTest {
                 { "DE-MV", "239", "239" },
                 { "DE-NI", "239", "239" },
                 { "DE-NW", "239", "239" },
-                { "DE-RP", "262", "288" },
+                { "DE-RP", "261", "287" },
                 { "DE-SH", "257", "263" },
                 { "DE-SL", "239", "239" },
                 { "DE-SN", "239", "239" },
@@ -1390,15 +1391,16 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         // HE-GK Q2.1 removes four broad-route atoms and adds three scoped assessments
-        // (net -1); HE-G9 also includes the reviewed J10 route entries. Keep exact
-        // totals alongside membership checks so compensating projection errors fail.
+        // (net -1); HE-G9 also includes the reviewed J10 route entries. Current
+        // Q4/process and LK assessments are counted in their reviewed target scopes.
+        // Keep exact totals alongside membership checks so compensating errors fail.
         String[][] scopes = {
-                { "DE-HE", "GK", "732", "753" },
-                { "DE-HE", "LK", "859", "880" },
+                { "DE-HE", "GK", "733", "754" },
+                { "DE-HE", "LK", "863", "884" },
                 { "DE-RP", "GK", "677", "702" },
-                { "DE-RP", "LK", "788", "813" },
+                { "DE-RP", "LK", "789", "814" },
                 { "DE-SH", "GK", "652", "658" },
-                { "DE-SH", "LK", "748", "754" }
+                { "DE-SH", "LK", "749", "755" }
         };
         SoftAssertions softly = new SoftAssertions();
 

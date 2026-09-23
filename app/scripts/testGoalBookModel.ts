@@ -61,7 +61,7 @@ const LEGACY_BOOK_MODEL_FIXTURE_PATH = (
 )
 const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
 // Current authoring checkpoint, not a historical review/publication approval.
-const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:24e6352fb8b1bbf025e9f52477c83a5fab68398caef276d7b88e1c1752cfeb1a'
+const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:aa38eca9f27c49c606ac0274ab83a8869b553f32e9b49d0182afa54cba52929c'
 
 const goal = ({
   id,

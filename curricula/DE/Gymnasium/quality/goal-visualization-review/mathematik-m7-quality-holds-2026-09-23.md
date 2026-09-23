@@ -39,4 +39,3 @@ Diese 27 konkreten Bildfassungen wurden beim Originalpixel-Audit fachlich beanst
 ## Re-entry gate
 
 Nur ein fachlich korrigiertes, tatsächlich erneut geprüftes Bild mit neuer exakter Asset-SHA darf wieder als primäre Visualisierung eingebunden werden. Die frühere Freigabe für den alten Hash wird nicht übertragen. Bis dahin bleiben Bildbindung und M7-V-Gate für diese Lernziele offen.
-
