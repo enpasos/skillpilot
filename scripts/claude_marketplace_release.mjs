@@ -43,8 +43,8 @@ const expectedExternalEvidence = [
 const expectedRepositoryName = "skillpilot-claude-marketplace";
 // Verify Marketplace exports against the committed 1.1.10 candidate source.
 // Publication and client acceptance remain separate, pending evidence.
-const canonicalSourceRevision = "4e72c619f5f778a60cd095eeb6c217418f9acd4c";
-const canonicalSourceTreeSha256 = "e9efaca0a270d3c8619edacb0ca85c2eace292731844b42f31aa38bb3659230e";
+const canonicalSourceRevision = "8dc0fa9b8fad65db28f2be25a165dd4a72a36bce";
+const canonicalSourceTreeSha256 = "16594707fbeca128fa8544f5da70486c6286702760e320b41c6334d7df1e4cb2";
 const legacyInstructionVersions = new Set([
   "1.0.2", "1.0.3", "1.0.4", "1.1.0", "1.1.1", "1.1.2", "1.1.3", "1.1.4",
 ]);

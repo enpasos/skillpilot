@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           repository: enpasos/skillpilot
-          ref: 4e72c619f5f778a60cd095eeb6c217418f9acd4c
+          ref: 8dc0fa9b8fad65db28f2be25a165dd4a72a36bce
           path: canonical
           sparse-checkout: ai/claude/plugin/skillpilot-coach-v1
           persist-credentials: false
@@ -70,7 +70,7 @@ jobs:
             sourceHash.update(createHash("sha256").update(readFileSync(absolute)).digest("hex"), "utf8");
             sourceHash.update("\0", "utf8");
           }
-          assert.equal(sourceHash.digest("hex"), "e9efaca0a270d3c8619edacb0ca85c2eace292731844b42f31aa38bb3659230e", "Pinned canonical source tree");
+          assert.equal(sourceHash.digest("hex"), "16594707fbeca128fa8544f5da70486c6286702760e320b41c6334d7df1e4cb2", "Pinned canonical source tree");
           const { buildClaudePluginPackage } = await import(pathToFileURL(resolve(canonicalRoot, "build-package.mjs")));
           const { publicationFiles } = await import(pathToFileURL(resolve(canonicalRoot, "check-package.mjs")));
           const baseline = JSON.parse(readFileSync(resolve(canonicalRoot, "release/contract-baseline.json"), "utf8"));

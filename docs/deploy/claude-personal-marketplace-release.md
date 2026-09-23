@@ -27,8 +27,8 @@ unchanged. The 1.1.10 exact-client regression plan is
 Web and Android Voice evidence, deployment and Marketplace publication remain
 pending. The public Marketplace and website still serve 1.1.9 until a separate
 approved rollout. The local Marketplace export pins committed SkillPilot source
-revision `4e72c619f5f778a60cd095eeb6c217418f9acd4c` and plugin-source
-tree digest `e9efaca0a270d3c8619edacb0ca85c2eace292731844b42f31aa38bb3659230e`.
+revision `8dc0fa9b8fad65db28f2be25a165dd4a72a36bce` and plugin-source
+tree digest `16594707fbeca128fa8544f5da70486c6286702760e320b41c6334d7df1e4cb2`.
 That revision must be available from
 `enpasos/skillpilot` before the external Marketplace workflow can run; no
 repository publication or 1.1.10 client acceptance has occurred.
