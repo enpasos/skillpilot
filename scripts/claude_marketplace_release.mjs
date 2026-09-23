@@ -41,7 +41,6 @@ const expectedExternalEvidence = [
   "uploaded-plugin-migration-and-marketplace-refresh",
 ];
 const expectedRepositoryName = "skillpilot-claude-marketplace";
-const expectedCanonicalSourceRevision = "a8c2869632f5d9be04d64c4eb7f365bc70ad4cae";
 const legacyInstructionVersions = new Set([
   "1.0.2", "1.0.3", "1.0.4", "1.1.0", "1.1.1", "1.1.2", "1.1.3", "1.1.4",
 ]);
@@ -925,12 +924,17 @@ function validateMarketplaceTemplates(paths, lane) {
     `## ${lane.plugin.version} -`,
     "Marketplace changelog current version",
   );
-  validateClaudeMarketplaceWorkflow(workflow, lane);
+  validateClaudeMarketplaceWorkflow(workflow, lane, paths.pluginRoot);
 }
 
-export function validateClaudeMarketplaceWorkflow(workflow, lane) {
-  // This release uses the exact reviewed source dossier before the public download
-  // index advances. Keep the source pin, PR-byte parity and closed inventory gates.
+export function validateClaudeMarketplaceWorkflow(
+  workflow,
+  lane,
+  canonicalSourceRoot = resolve(defaultRepositoryRoot, lane.source.pluginRoot),
+) {
+  // The current candidate has no commit to pin until it lands on main. Its full
+  // source-tree digest pins the builder, checker, dossier and package bytes now.
+  const sourceDigest = digestTree(canonicalSourceRoot, listRegularFiles(canonicalSourceRoot));
   const checkoutBlocks = [...workflow.matchAll(/^      - uses: actions\/checkout@[^\n]+\n(?:        [^\n]*\n)*/gmu)]
     .map(([block]) => block.trimEnd());
   assertJsonEqual(checkoutBlocks, [
@@ -944,7 +948,7 @@ export function validateClaudeMarketplaceWorkflow(workflow, lane) {
       "      - uses: actions/checkout@v6",
       "        with:",
       "          repository: enpasos/skillpilot",
-      `          ref: ${expectedCanonicalSourceRevision}`,
+      "          ref: main",
       "          path: canonical",
       "          sparse-checkout: ai/claude/plugin/skillpilot-coach-v1",
       "          persist-credentials: false",
@@ -955,15 +959,23 @@ export function validateClaudeMarketplaceWorkflow(workflow, lane) {
     "working-directory: marketplace",
     "node-version: 22",
     "run: npm install --global @anthropic-ai/claude-code@2.1.241",
-    `test "$(git -C ../canonical rev-parse HEAD)" = '${expectedCanonicalSourceRevision}'`,
     'canonical="${GITHUB_WORKSPACE}/canonical/ai/claude/plugin/skillpilot-coach-v1"',
     `artifact="\${RUNNER_TEMP}/${lane.plugin.name}-${lane.plugin.version}.plugin"`,
     'node --input-type=module - "${canonical}" "${artifact}" <<\'NODE\'',
+    'const sourceHash = createHash("sha256");',
+    'for (const name of readdirSync(directory).sort()) {',
+    'assert.ok(!stat.isSymbolicLink(), `Canonical source symlink forbidden: ${path}`);',
+    'assert.ok(stat.isFile(), `Canonical source non-regular file: ${path}`);',
+    'sourceFiles.push(path);',
+    'for (const path of sourceFiles.sort()) {',
+    'sourceHash.update(path, "utf8");',
+    'sourceHash.update(createHash("sha256").update(readFileSync(absolute)).digest("hex"), "utf8");',
+    `assert.equal(sourceHash.digest("hex"), "${sourceDigest}", "Pinned canonical source tree");`,
     'const { buildClaudePluginPackage } = await import(pathToFileURL(resolve(canonicalRoot, "build-package.mjs")));',
     'const { publicationFiles } = await import(pathToFileURL(resolve(canonicalRoot, "check-package.mjs")));',
     'const baseline = JSON.parse(readFileSync(resolve(canonicalRoot, "release/contract-baseline.json"), "utf8"));',
     `assert.equal(baseline.pluginVersion, "${lane.plugin.version}", "Pinned dossier version");`,
-    'assert.equal(baseline.archive.bytes, 35909, "Pinned dossier archive bytes");',
+    'assert.equal(baseline.archive.bytes, 39441, "Pinned dossier archive bytes");',
     `assert.equal(baseline.archive.sha256, "${lane.plugin.directInstallSha256}", "Pinned dossier archive digest");`,
     'assert.deepEqual([...publicationFiles].sort(), baseline.archive.entries.map(({ packagePath }) => packagePath).sort(), "Pinned dossier inventory");',
     'assert.ok(!stat.isSymbolicLink(), `Symlink forbidden: ${path}`);',
@@ -986,6 +998,10 @@ export function validateClaudeMarketplaceWorkflow(workflow, lane) {
     if (!workflowLines.has(requiredWorkflowText)) {
       throw new Error(`Marketplace workflow contract: ${requiredWorkflowText} is missing a required executable line.`);
     }
+  }
+  if (workflow.indexOf('assert.equal(sourceHash.digest("hex")')
+      > workflow.indexOf('const { buildClaudePluginPackage } = await import(')) {
+    throw new Error("Marketplace workflow contract: canonical source integrity must be checked before importing the builder.");
   }
 }
 

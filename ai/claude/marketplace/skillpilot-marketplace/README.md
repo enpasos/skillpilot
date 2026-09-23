@@ -1,15 +1,16 @@
 # SkillPilot Claude Marketplace
 
-**SkillPilot Coach v1 · Version 1.1.8** brings curriculum-grounded learning
+**SkillPilot Coach v1 · Version 1.1.9** brings curriculum-grounded learning
 coaching to Claude. Install it once through this Git marketplace to receive
 future plugin updates through Claude.
 
-Version 1.1.8 keeps daily and weekly plan status and makes exam instructions
-self-contained in the coaching Skill. Acceptance in real Claude accounts
-remains pending; earlier published packages and their evidence remain immutable
-history.
+Version 1.1.9 keeps daily and weekly plan status and self-contained exam
+instructions. It also lets learners ask questions or pause after task feedback,
+before the coach records a goal completion or starts another task. Acceptance
+in real Claude accounts remains pending; earlier published packages and their
+evidence remain immutable history.
 
-### In version 1.1.8
+### In version 1.1.9
 
 - The coach quotes SkillPilot's plan status word for word, exactly as the
   SkillPilot cockpit shows it: one line per subject with its daily or weekly
@@ -21,6 +22,8 @@ history.
   loads a separate workflow when needed.
 - The coach presents the exam task first and requests protected evaluation only
   after a complete submission, using the actual tool schema.
+- After a task, the coach gives feedback and waits for your answer before
+  closing the task or goal and moving on. You can ask questions or pause.
 - Your answers, assessments and feedback stay in the Claude conversation;
   SkillPilot receives only structured learning results.
 
@@ -59,28 +62,29 @@ observed in two Claude accounts.
 An upload-only installation is not the same as a marketplace installation.
 
 Update timing and available synchronization controls can vary by Claude client.
-Check that your installed plugin shows **1.1.8**, then start a fresh learning
+Check that your installed plugin shows **1.1.9**, then start a fresh learning
 session from SkillPilot. If an update has not arrived, use the refresh control
 where available or contact <support@skillpilot.com>.
 
 The observed automatic update mechanism does not mean that every account has
-already received 1.1.8. Verification of this version in individual clients
+already received 1.1.9. Verification of this version in individual clients
 remains separate from publication.
 
 ## About this beta
 
 This personal marketplace is published independently by SkillPilot; it is not
-reviewed, endorsed, curated, or verified by Anthropic. The six packaged plugin
-files match the immutable 1.1.8 direct-install artifact byte for byte.
+reviewed, endorsed, curated, or verified by Anthropic. The seven packaged plugin
+files match the prepared 1.1.9 direct-install candidate byte for byte.
 For supported clients, setup and the security boundary, see the
 [plugin README](./plugins/skillpilot-coach-v1/README.md) and
 [setup guide](./plugins/skillpilot-coach-v1/SETUP.md).
 
 Those packaged documents retain their canonical pre-publication snapshot;
 their preparation-time release notes are not a live availability indicator.
-This Marketplace distributes **1.1.8**. The separate website download can still
-serve an earlier version until the corresponding backend rollout. Publication
-here does not prove that an installed Claude account has already updated.
+This prepared Marketplace export would distribute **1.1.9** after separate
+publication authorization. The website download can still serve an earlier
+version until the corresponding backend rollout. Publication does not prove
+that an installed Claude account has already updated.
 
 Technical installation ID: `skillpilot-coach-v1@skillpilot-marketplace`.
 

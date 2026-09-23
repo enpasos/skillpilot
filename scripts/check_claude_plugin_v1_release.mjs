@@ -26,8 +26,15 @@ const historicalReleaseRoot = `${releaseRoot}/history`;
 const connectorContractBaselinePath =
   "ai/claude/connector-v1/release/contract-baseline.json";
 const expectedPluginIdentity = "skillpilot-coach-v1";
-const expectedPluginVersion = "1.1.8";
+const expectedPluginVersion = "1.1.9";
 const expectedHistoricalReleaseFiles = new Map([
+  ["1.1.8/contract-baseline.json", "80d9d8c207b2c39867b1fffe08d6a5beee0f34f1602270108f205c3ea3b668c0"],
+  ["1.1.8/direct-install-beta.json", "af9a4b163c7ba412522179cdd9847cf00eb151c3a21fbef28cbf9f4c8f98bb7b"],
+  ["1.1.8/evidence-manifest.json", "9515868d410c6530d34309db51be1e78faadb381d3fa2463e9217d529a53e6a3"],
+  ["1.1.8/lifecycle.json", "9456f858b7c0c4250c2f413eaccb362205b1d8940bd98b2678a922a3bcf7c7bc"],
+  ["1.1.8/marketplace-publication.json", "801fb86fc10c96bc1a0f12e602e7f62817642f864ae19eb9e0e207cb5996ec77"],
+  ["1.1.8/release-gates.json", "55cc246b9261094285cfd3063f93ba41c908b958f608cb5317c35bbf2017a0b6"],
+  ["1.1.8/support-readiness-drill.template.md", "1e2bf17a8ecc2b6396d64778d316f5e18e884f90690b9ea79f1110423598b8fa"],
   ["1.1.7/contract-baseline.json", "362aebe81f112968a630406cc9acdc99b80fe36f6a601ef045232649f12ea41e"],
   ["1.1.7/direct-install-beta.json", "704941bf0dd608b79bad5103de3cde3ca65f0d91edf734f4496b5973ac6073da"],
   ["1.1.7/evidence-manifest.json", "125cd5a472818a2fa99ac881bedac4994e47ea91094ea70d4e87479efbc308f6"],
@@ -220,7 +227,7 @@ export function verifyClaudePluginV1Release({
     );
     check(
       document?.pluginVersion === expectedPluginVersion,
-      "Every plugin release document must use Claude plugin version 1.1.8.",
+      "Every plugin release document must use Claude plugin version 1.1.9.",
     );
   }
 
@@ -280,15 +287,16 @@ export function verifyClaudePluginV1Release({
     "Plugin lifecycle must exclude Claude Free, iOS, Android in-app installation, Desktop Chat, Cowork, public Claude Code, hooks and subagent claims.",
   );
   check(
-    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-09-21"
+    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-09-23"
       && lifecycle?.productOwnerAuthorization?.approvedBy === "product-owner"
-      && /local 1\.1\.8 correction with self-contained exam rules/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /unchanged tool input, privacy, authorization and scoring contracts/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /issue #55/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /local unpublished 1\.1\.9 candidate/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /preserve tool input, privacy, authorization and scoring contracts/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && /local fixes and validation, not deployment, Marketplace publication, guide activation or transferred acceptance/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && Array.isArray(lifecycle?.productOwnerAuthorization?.excludes)
       && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Deployment, Marketplace publication, guide activation, credential changes, Anthropic Console submission, general public activation and inherited candidate acceptance/u.test(entry))
       && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Connector Directory/u.test(entry)),
-    "Plugin lifecycle must record local exam-correction authority without inheriting deployment, publication, guide, credential or client-acceptance authority.",
+    "Plugin lifecycle must record local issue #55 authority without inheriting deployment, publication, guide, credential or client-acceptance authority.",
   );
   check(
     lifecycle?.releaseLine?.major === 1
@@ -822,7 +830,7 @@ export function verifyHistoricalReleaseHistory(repositoryRoot, check) {
   }
   check(
     sameSet(actualFiles, [...expectedHistoricalReleaseFiles.keys()]),
-    "Historical plugin release inventory must retain the complete immutable 1.0.0 and 1.1.0 dossiers and 1.0.4 publication metadata.",
+    "Historical plugin release inventory must retain the complete immutable dossiers and publication metadata.",
   );
 }
 

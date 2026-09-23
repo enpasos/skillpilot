@@ -11,6 +11,27 @@ its own normal deployment. Full real-client acceptance of 1.1.8 remains pending;
 publication does not establish installation or synchronization in every account.
 Earlier published packages and their evidence remain immutable history.
 
+## Local 1.1.9 candidate for issue #55
+
+The 23 September 2026 task-closure change is prepared as **1.1.9**, a local,
+unpublished successor. The seven-file plugin archive is reproducible at
+**39,441 bytes**, SHA-256
+`b53a1100fff6d84ee66c12f084a8ff359847496fbf75c8a951ee4c9a0230c3c5`.
+The candidate adds `references/task-closure.md`; its Marketplace export has
+twelve files. The published 1.1.8 dossier is retained byte-identically in
+`release/history/1.1.8/`. Candidate-specific Marketplace, guide, direct-install
+and real-client evidence starts pending. The website's tracked served index
+continues to name 1.1.7 until an authorized backend rollout.
+
+The 1.1.9 Marketplace validation workflow checks a pinned SHA-256 of the full
+canonical Claude plugin source tree immediately after checking out `main` and
+before loading its package builder. It then checks the exact archive digest,
+closed export inventory, source parity and both strict Claude validations.
+This content pin lets the local CI validate an uncommitted candidate without
+claiming a future source commit or publishing it. If the canonical source tree
+changes, external Marketplace validation fails until the candidate is reviewed
+and the source digest is deliberately updated.
+
 ## 1.1.8 publication and automatic backend download
 
 On 21 September 2026, the Product Owner confirmed green CI and backend deployment

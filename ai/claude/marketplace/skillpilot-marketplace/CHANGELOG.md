@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.9 - 2026-09-23
+
+- Give concrete feedback after each task and ask whether the learner has
+  questions or wants to close before committing completion or continuing.
+- Require separate agreement to close a goal, including orientation, exams
+  and Verified Recall; consent alone never substitutes for mastery evidence.
+- Add a conditional task-closure reference and keep images for a new task
+  until the learner chooses to continue.
+- Preserve published 1.1.8 bytes and evidence. The 1.1.9 package is a local
+  unpublished candidate with fresh release and client acceptance pending.
+
 ## 1.1.8 - 2026-09-21
 
 - Include the complete exam procedure in the coaching Skill, removing the

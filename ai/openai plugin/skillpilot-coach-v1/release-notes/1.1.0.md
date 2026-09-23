@@ -26,7 +26,11 @@ snapshot remains historical evidence, not an active source-code freeze.
   chat. Mastery writes carry only structured completion facts and concurrency
   data; Verified Recall assessments carry only pass/fail outcomes. Reject
   extra assessment fields before replay processing or Core mutation, and
-  generate success feedback locally after confirmed persistence.
+  give evidence-based feedback and invite questions before persistence.
+- Close completed tasks and goals consciously with or without Autopilot: wait
+  for a separate learner reply before a warranted mastery or Recall write and
+  before showing the next task or its image. Use one closure question when the
+  same task completes its goal, and respect a requested pause.
 - Submit the remote MCP server directly, without the former development-app
   reference. Refresh listing and review scenarios from maintained sources.
 - Generate complete positive and negative portal test cases, with regression

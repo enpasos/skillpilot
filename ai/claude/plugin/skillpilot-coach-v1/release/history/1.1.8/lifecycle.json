@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
   "pluginIdentity": "skillpilot-coach-v1",
-  "pluginVersion": "1.1.9",
+  "pluginVersion": "1.1.8",
   "state": "PRE_SUBMISSION",
   "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
   "connectorDirectoryDependency": "none",
@@ -28,9 +28,9 @@
     "subagents"
   ],
   "productOwnerAuthorization": {
-    "approvedAt": "2026-09-23",
+    "approvedAt": "2026-09-21",
     "approvedBy": "product-owner",
-    "scope": "The Product Owner requested implementation of issue #55 and correction of the resulting CI failures. Prepare a local unpublished 1.1.9 candidate with learner-confirmed task and goal closure, archive published 1.1.8 evidence, and preserve tool input, privacy, authorization and scoring contracts. This scope authorizes local fixes and validation, not deployment, Marketplace publication, guide activation or transferred acceptance.",
+    "scope": "Product Owner reported a production exam-start failure: the hosted Claude chat attempted to invoke a reference file as an unavailable Skill and then requested protected evaluation prematurely with an unsupported write-only argument. Prepare a local 1.1.8 correction with self-contained exam rules and unchanged tool input, privacy, authorization and scoring contracts. This scope authorizes local fixes and validation, not deployment, Marketplace publication, guide activation or transferred acceptance.",
     "excludes": [
       "Connector Directory lifecycle, gates and Team/Enterprise submission access",
       "Deployment, Marketplace publication, guide activation, credential changes, Anthropic Console submission, general public activation and inherited candidate acceptance"
@@ -42,9 +42,9 @@
   },
   "releaseLine": {
     "major": 1,
-    "version": "1.1.9",
+    "version": "1.1.8",
     "status": "pre_submission_candidate",
-    "compatibilityPolicy": "Version 1.1.9 adds a separate learner reply after task feedback before closure, mastery write or continuation. The existing tool identities and schemas, OAuth, session, privacy, scoring and backend-owned state remain unchanged. Published 1.1.8 bytes and prior evidence remain immutable; no earlier acceptance transfers."
+    "compatibilityPolicy": "Version 1.1.8 includes the complete exam procedure in the coaching Skill and uses evaluation only after submission with its actual input schema. Tool identities and schemas, OAuth, session, privacy, scoring and backend-owned state remain unchanged. Published 1.1.7 bytes and prior evidence remain immutable; no earlier acceptance transfers. The existing unified plan-status behavior remains in force."
   },
   "stateTransitions": [
     {

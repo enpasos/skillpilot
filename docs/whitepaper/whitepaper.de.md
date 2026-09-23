@@ -62,9 +62,9 @@ Die Ziele bleiben anspruchsvoll; die Unterstützung passt sich dem Ausgangspunkt
 
 ## 2. Die Arbeitsteilung: KI erklärt, SkillPilot führt den Lernstand
 
-**Gemeinsame Vorarbeit, individuelle Lernbegleitung.** Die Wissenslandschaft wird vor ihrer individuellen Nutzung aufgebaut, nach den festgelegten Qualitätsverfahren geprüft und anschließend fortlaufend gepflegt (Abschnitt 5.1). Für die anspruchsvolle Erschließung und Strukturierung der Lehrpläne können besonders leistungsfähige KI-Systeme eingesetzt werden. Diese wiederverwendbare Vorarbeit kommt allen Lernenden zugute. Sie muss nicht für jede Person oder in jeder Lernsession erneut erbracht werden.
+**Gemeinsame Vorarbeit, individuelle Lernbegleitung.** Die Skill-Landschaft wird vor ihrer individuellen Nutzung aufgebaut, nach den festgelegten Qualitätsverfahren geprüft und anschließend fortlaufend gepflegt (Abschnitt 5.1). Für die anspruchsvolle Erschließung und Strukturierung der Lehrpläne können besonders leistungsfähige KI-Systeme eingesetzt werden. Diese wiederverwendbare Vorarbeit kommt allen Lernenden zugute. Sie muss nicht für jede Person oder in jeder Lernsession erneut erbracht werden.
 
-Davon getrennt ist die KI, die beim Lernen begleitet. Sie muss die fachlichen, didaktischen und technischen Anforderungen der SkillPilot-Lernbegleitung erfüllen. Dafür muss sie nicht mit den Systemen identisch sein, die zur Erarbeitung der Wissenslandschaft eingesetzt werden. Die Qualitätsanforderungen an die Lernbegleitung gelten unabhängig von dieser Wahl.
+Davon getrennt ist die KI, die beim Lernen begleitet. Sie muss die fachlichen, didaktischen und technischen Anforderungen der SkillPilot-Lernbegleitung erfüllen. Dafür muss sie nicht mit den Systemen identisch sein, die zur Erarbeitung der Skill-Landschaft eingesetzt werden. Die Qualitätsanforderungen an die Lernbegleitung gelten unabhängig von dieser Wahl.
 
 Sprachbasierte KI kann Begriffe erklären, Aufgaben formulieren, Lösungswege besprechen und auf Fragen in natürlicher Sprache eingehen. Im Lerndialog macht sie unterschiedliche Zugänge zu einem Thema möglich und passt Erklärungen an die Antworten der lernenden Person an.
 

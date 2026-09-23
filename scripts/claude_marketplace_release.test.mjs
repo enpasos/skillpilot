@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
+  cpSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -185,10 +186,10 @@ test("published 1.1.3 marketplace does not imply guide approval or real-client a
   }
 });
 
-test("self-contained exam candidate 1.1.8 cannot inherit repository or client acceptance", () => {
+test("task-closure candidate 1.1.9 cannot inherit repository or client acceptance", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   validateClaudeMarketplaceLane(lane);
-  assert.equal(lane.plugin.version, "1.1.8");
+  assert.equal(lane.plugin.version, "1.1.9");
   const repositoryEvidence = lane.activation.evidence.find(({ id }) => id === "public-repository-default-branch");
   if (repositoryEvidence.status === "pending") {
     assert.equal(lane.activation.state, "prepared_not_published");
@@ -604,8 +605,8 @@ test("prepare exports exactly the reviewed plugin allowlist and verifies reprodu
       marketplaceRoot: outputRoot,
     });
     assert.equal(prepared.pluginName, "skillpilot-coach-v1");
-    assert.equal(prepared.version, "1.1.8");
-    assert.equal(prepared.files.length, 11);
+    assert.equal(prepared.version, "1.1.9");
+    assert.equal(prepared.files.length, 12);
     assert.deepEqual(prepared.files, verified.files);
     assert.equal(prepared.treeSha256, verified.treeSha256);
     assert(prepared.files.includes(".claude-plugin/marketplace.json"));
@@ -619,13 +620,13 @@ test("prepare exports exactly the reviewed plugin allowlist and verifies reprodu
   });
 });
 
-test("Marketplace CI pins canonical source and credentials without depending on the public download", () => {
+test("Marketplace CI pins canonical source content and credentials without depending on the public download", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   validateClaudeMarketplaceWorkflow(marketplaceWorkflow, lane);
   assert.doesNotMatch(marketplaceWorkflow, /curl|api\/public\/claude\/plugins/u);
-  for (const replacement of ["main", "a".repeat(40)]) {
+  for (const replacement of ["feature-branch", "a".repeat(40)]) {
     const changed = marketplaceWorkflow.replace(
-      "ref: a8c2869632f5d9be04d64c4eb7f365bc70ad4cae", `ref: ${replacement}`);
+      "ref: main", `ref: ${replacement}`);
     assert.throws(() => validateClaudeMarketplaceWorkflow(changed, lane),
       /pinned checkouts mismatch/u);
   }
@@ -643,7 +644,7 @@ test("Marketplace CI pins canonical source and credentials without depending on 
 test("Marketplace workflow contract fails closed when integrity or either strict validation is weakened", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   for (const requiredLine of [
-    "test \"$(git -C ../canonical rev-parse HEAD)\"",
+    "Pinned canonical source tree", "Canonical source symlink forbidden",
     "Pinned dossier archive bytes", "Pinned dossier archive digest",
     "Pinned dossier inventory", "Symlink forbidden", "Unexpected directory",
     "Non-regular file forbidden", "Closed Marketplace inventory", "Canonical source parity",
@@ -680,15 +681,35 @@ test("actual CI gate rebuilds the PR package with exact dossier bytes and unzip 
     const result = runWorkflowPackageGate(outputRoot, artifactPath);
     assert.equal(result.status, 0, result.stderr);
     const archive = readFileSync(artifactPath);
-    assert.equal(archive.length, 35909);
+    assert.equal(archive.length, 39441);
     assert.equal(createHash("sha256").update(archive).digest("hex"),
-      "1603c79c06b9fa39f2b57033c65d4b1d5748cb048b01271f72b5708652e7525b");
+      "b53a1100fff6d84ee66c12f084a8ff359847496fbf75c8a951ee4c9a0230c3c5");
     const extracted = resolve(root, "extracted");
     const unzip = spawnSync("unzip", ["-q", artifactPath, "-d", extracted], { encoding: "utf8" });
     assert.equal(unzip.status, 0, unzip.stderr);
     const diff = spawnSync("diff", ["--recursive", "--brief", "--no-dereference",
       extracted, resolve(outputRoot, "plugins/skillpilot-coach-v1")], { encoding: "utf8" });
     assert.equal(diff.status, 0, diff.stdout + diff.stderr);
+  });
+});
+
+test("canonical source mutation fails before the Marketplace builder can run", () => {
+  withOutput(({ root, outputRoot }) => {
+    prepareClaudeMarketplace({ repositoryRoot, outputRoot });
+    const canonicalCopy = resolve(root, "canonical-source");
+    cpSync(canonicalPluginRoot, canonicalCopy, { recursive: true });
+    const builderPath = resolve(canonicalCopy, "build-package.mjs");
+    writeFileSync(builderPath, `${readFileSync(builderPath, "utf8")}\n// unexpected source change\n`);
+    const lane = loadClaudeMarketplaceLane(repositoryRoot);
+    assert.throws(
+      () => validateClaudeMarketplaceWorkflow(marketplaceWorkflow, lane, canonicalCopy),
+      /Pinned canonical source tree.*missing a required executable line/u,
+    );
+    const result = runWorkflowPackageGate(
+      outputRoot, resolve(root, "candidate.plugin"), marketplaceWorkflow, canonicalCopy,
+    );
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /Pinned canonical source tree/u);
   });
 });
 
@@ -784,7 +805,7 @@ test("local smoke test installs the expected version in an isolated Claude profi
             stdout: JSON.stringify([
               {
                 id: "skillpilot-coach-v1@skillpilot-marketplace",
-                version: "1.1.8",
+                version: "1.1.9",
                 enabled: true,
                 mcpServers: {
                   skillpilot: {
@@ -870,7 +891,7 @@ test("published verification is pinned to the configured repository", () => {
 test("source check leaves no publication tree behind", () => {
   const result = checkClaudeMarketplace({ repositoryRoot });
   assert.equal(result.pluginName, "skillpilot-coach-v1");
-  assert.equal(result.files.length, 11);
+  assert.equal(result.files.length, 12);
 });
 
 function withOutput(callback, { prepareDirectory = false } = {}) {
@@ -884,11 +905,13 @@ function withOutput(callback, { prepareDirectory = false } = {}) {
   }
 }
 
-function runWorkflowPackageGate(outputRoot, artifactPath, workflow = marketplaceWorkflow) {
+function runWorkflowPackageGate(
+  outputRoot, artifactPath, workflow = marketplaceWorkflow, canonicalRoot = canonicalPluginRoot,
+) {
   const match = workflow.match(/<<'NODE'\n([\s\S]+?)\n          NODE\n/u);
   assert.ok(match, "Workflow must contain the executable pinned package gate");
   const code = match[1].replace(/^          /gmu, "");
-  return spawnSync(process.execPath, ["--input-type=module", "-", canonicalPluginRoot, artifactPath], {
+  return spawnSync(process.execPath, ["--input-type=module", "-", canonicalRoot, artifactPath], {
     cwd: outputRoot,
     encoding: "utf8",
     input: code,
