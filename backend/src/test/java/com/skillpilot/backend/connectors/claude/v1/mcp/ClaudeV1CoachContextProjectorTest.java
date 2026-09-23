@@ -600,6 +600,8 @@ class ClaudeV1CoachContextProjectorTest {
         String instruction = (String) afterWrite.get("presentationInstruction");
         assertTrue(instruction.contains("previously unseen pair"));
         assertTrue(instruction.contains("immediate next SkillPilot tool"));
+        assertTrue(instruction.contains("completion write immediately after deciding"));
+        assertTrue(instruction.contains("wait for explicit continuation before rendering"));
         assertTrue(instruction.contains("A repeated pair creates no automatic call"));
         assertTrue(instruction.contains("reload the current context once"));
         assertTrue(instruction.contains("Do not retry automatically"));

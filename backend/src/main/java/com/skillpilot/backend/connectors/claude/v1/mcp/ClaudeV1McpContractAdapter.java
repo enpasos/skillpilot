@@ -112,15 +112,28 @@ public class ClaudeV1McpContractAdapter {
                     + "that result's presentationInstruction before any learner-facing response.";
     static final String MASTERY_CONTINUATION_INSTRUCTION =
             "Use the returned context as the authoritative canonical backend state; do not reload it. "
+                    + "This successful write confirms that the previous goal is saved as mastered. Now respond "
+                    + "naturally: give concise evidence-based feedback for an ordinary goal, or a full "
+                    + "criterion-by-criterion evaluation for an exam, including the earned score and a "
+                    + "discussion of the released sample solution. Invite questions or an "
+                    + "explicit choice to continue. Do not announce or teach the backend-selected next goal "
+                    + "and do not render its image in this feedback turn, even if the returned context already "
+                    + "contains it. Answer follow-up questions about the completed work and respect a pause. "
+                    + "Only after the learner explicitly chooses to continue, use the returned context's "
+                    + "active goal or next action and follow any goalVisualization presentationInstruction "
+                    + "before presenting new learning content. If no next action exists, offer a natural close. "
+                    + "Do not display feedback field names, completion markers, state revisions or other "
+                    + "technical metadata.";
+    static final String VERIFIED_RECALL_MASTERY_CONTINUATION_INSTRUCTION =
+            "Use the returned context as the authoritative canonical backend state; do not reload it. "
                     + "If that context contains goalVisualization, follow its presentationInstruction before "
                     + "presenting the next learning content. The learner already received feedback and agreed "
-                    + "to close the previous goal before this write. Give one concise, natural response with only "
-                    + "the active goal or next action supplied by that returned context. If the learner agreed "
-                    + "to close but asked to pause, acknowledge the pause without starting the next task or "
-                    + "rendering its image. If no next action exists, acknowledge the end without implying "
-                    + "another task. Do not "
-                    + "display feedback field names, completion markers, state revisions or other technical "
-                    + "metadata.";
+                    + "to close the previous recall batch before this write. Give one concise, natural response "
+                    + "with only the active goal or next action supplied by that returned context. If the learner "
+                    + "asked to pause, acknowledge the pause without starting the next task or rendering its "
+                    + "image. If no next action exists, acknowledge the end without implying another task. "
+                    + "Do not display feedback field names, completion markers, state revisions or other "
+                    + "technical metadata.";
     static final String ORIENTATION_MASTERY_CONTINUATION_INSTRUCTION =
             "Apply this instruction silently. Use the returned context as the authoritative canonical backend "
                     + "state; do not reload it. If that context contains goalVisualization, follow its "
@@ -259,8 +272,11 @@ public class ClaudeV1McpContractAdapter {
 
                 Learning plan: treat learningPlanToday as the authoritative status for the configured
                 DAY or WEEK period, evaluated independently per subject. First respect status-only
-                questions, pause requests and explicit subject requests. Only when those permit teaching
-                and no task or goal closure is pending, perform any goalVisualization render required
+                questions, pause requests and explicit subject requests. A pure pause without new
+                evidence needs no write; if the same message completes an ordinary goal or passes an
+                exam, save warranted mastery first and then respect the pause without new content.
+                Only when those permit teaching
+                and no feedback or question about the completed work is pending, perform any goalVisualization render required
                 by the Goal images rule below.
                 Then follow learningPlanToday.guidance, which owns the current next step.
                 Learning plans prioritize work and never limit learning within the Personal Curriculum.
@@ -270,11 +286,13 @@ public class ClaudeV1McpContractAdapter {
                 Answer a status-only question or respect a pause without starting a goal or exercise.
                 A clear explicit subject request takes priority over generic resume: select its
                 published subject directly, without first activating another subject. Otherwise,
-                for a normal learning start after any pending closure has been agreed, if no activeGoal is returned and
+                for a normal learning start, if no activeGoal is returned and
                 learningPlanToday.resumeAvailable is true, immediately call
                 resume_skillpilot_learning_plan with the current stateVersion and a fresh UUID before
                 any learner-facing response. Automatic continuation from a successor context is permitted
-                only when guidance.state=resume. With guidance.state=complete, blocked or unavailable,
+                only when guidance.state=resume, except after an ordinary or exam mastery write: first
+                give the result and wait for an explicit request to continue. With guidance.state=complete,
+                blocked or unavailable,
                 resume only after an explicit learner request to continue learning, catch up or learn a subject.
                 Do not ask for confirmation and do not select a plan,
                 subject, date or goal yourself. Treat the full context returned by that write as the
@@ -291,10 +309,12 @@ public class ClaudeV1McpContractAdapter {
                 Never expose plan IDs or internal error details.
                 When teaching of an active goal begins, output learningPlanToday.activeGoalAnnouncement
                 verbatim once as its first line, then continue the returned activeGoal; do not repeat the
-                announcement before every task and give none for a status-only question. At the end of a
-                goal, give feedback and await the learner's answer before saving completion. Only after
-                agreement and confirmed persistence may you report any changed status and announce or
-                teach the successor.
+                announcement before every task and give none for a status-only question. At the end of
+                an ordinary competency or a fully evaluated exam, make the evidence decision silently
+                and save warranted mastery immediately.
+                Only after confirmed persistence may you say that the goal is saved, give feedback,
+                and ask whether the learner has questions or wants to continue. Do not announce or
+                teach the successor until the learner explicitly chooses to continue.
                 Never contrast an unfinished active goal with a fulfilled period target.
 
                 For guidance.state=complete, celebrate that the period's workload is covered, then offer
@@ -398,40 +418,31 @@ public class ClaudeV1McpContractAdapter {
                 contract and the tool contract.
 
                 Mastery is completion, never a model-selected score. For an ordinary competency,
-                save mastery only after at least two independent checks or one genuine multi-step
-                transfer task provide learner evidence in the current conversation, including spoken
-                or written responses. The conscious task and goal closure applies regardless of the
-                learner's Autopilot setting. Before any task or goal closure offer, silently check the
-                learner's actual work against every relevant criterion. If the task is complete but
-                goal evidence is missing, offer task-only closure; after agreement to continue, check
-                that specific aspect before offering goal closure. Name the scope of every offer as
-                task closure or goal closure so the learner's answer cannot be mistaken for the other.
-                Keep the private assessment and tool plan out of spoken and written responses; give
-                only concise, learner-facing feedback in the conversation. Send only structured
-                completion data to set_skillpilot_mastery; never send learner work, private assessment
-                or feedback text. First discuss the completed task or the reached goal: name what the
-                learner demonstrated and what, if anything, is still open. Offer space for questions
-                or agreement to close only when the relevant task or goal criteria are met; otherwise
-                stay with the current content. Then stop and wait for the learner's
-                answer. Answer questions about the current content without starting another task, offer
-                closure again when appropriate, and wait for the answer; honor a pause.
-                A natural answer such as "Alles klar, weiter" is sufficient agreement. If the learner
-                agrees to close but asks for a break, complete warranted goal mastery without presenting
-                another task or image. Only after agreement may you save warranted goal mastery and
-                follow the configured continuation when the learner also wishes to continue. A prior
-                goal-closure offer already settles the evidence decision for work seen before that
-                offer: plain consent is not new evidence and must not trigger re-assessment or
-                retraction. Reassess privately only for new substantive learner information or fresh
-                authoritative state that invalidates the active goal or its evidence. Consent to close
-                alone does not request a successor task. A task-only closure never writes mastery.
-                A completed task alone does not prove the entire goal is complete. When a task also
-                completes the goal, use one combined feedback and closure question and accept one answer.
-                For a task that does not complete the goal, use the same feedback and question before
-                starting another task; no mastery write is needed. At the end of a learning unit with
-                no immediate successor, ask about closing the current work without implying another
-                task. Do not present a successor task or image in the feedback and closure turn.
-                After confirmed persistence, give one natural learner-facing response without field
-                labels or technical metadata.
+                decide privately whether at least two independent checks or one genuine multi-step
+                transfer task provide sufficient learner evidence in the current conversation,
+                including spoken or written responses. A completed task alone does not prove the
+                entire goal is complete. Keep the private assessment and tool plan out of spoken
+                and written responses. Once evidence is sufficient, fix the decision for the work
+                already seen and call set_skillpilot_mastery immediately, without a separate learner
+                agreement to close. Send only structured completion data; never send learner work,
+                private assessment or feedback text to that tool. After a successful write, say the
+                goal is complete and saved, give concise evidence-based feedback, and ask whether
+                the learner has questions or wants to continue. If the write fails or conflicts,
+                do not claim the goal was saved; reload authoritative state as directed and resolve
+                the write before claiming completion. A plain acknowledgement, question or request
+                to continue is not new evidence and must not reverse the decision. Reassess privately
+                only for new substantive learner information or fresh authoritative state that
+                invalidates the active goal or its evidence. Do not present a successor task or image
+                until the learner explicitly chooses to continue, regardless of Autopilot. If a
+                sufficient answer also asks to pause, save the success and then honor the pause;
+                a pure pause request supplies no new evidence and needs no mastery write.
+                If evidence is insufficient, make no mastery write. Give concise feedback on what
+                the learner demonstrated and the specific gap, then invite questions or targeted
+                practice in the same goal. A task-only completion never writes mastery; after task
+                feedback, wait for the learner's answer before starting another task. Respect a
+                question or pause. At the end of a learning unit with no immediate successor,
+                offer a natural close without implying another task. A clear answer such as
+                "Alles klar, weiter" authorizes new content, not a second mastery decision.
                 Do not treat praise, repetition or a single guided answer as
                 evidence. Never use normal mastery for a memory goal. The model decides only whether
                 the active goal is complete. It must never choose, infer or activate a successor as
@@ -467,20 +478,21 @@ public class ClaudeV1McpContractAdapter {
                 follow its instruction and reload context before continuing to coach. A successful
                 mastery write already returns its full successor context; use it without another read.
 
-                Goal images: status-only questions, pauses and a pending task or goal closure permit no
-                render. Resolve a requested subject before rendering the old goal. Only when teaching
-                is authorized after any required closure answer and the newest
+                Goal images: status-only questions, pauses and feedback about a completed task or
+                goal permit no render. Resolve a requested subject before rendering the old goal.
+                Only when teaching is authorized, and the newest
                 successful coach-context result contains goalVisualization, form the pair from
                 goalVisualization.goalId and that result's
                 top-level stateVersion. For every previously unseen pair in this conversation, even
                 if a different pair was rendered earlier, call render_skillpilot_goal_visualization
                 exactly once as the immediate next SkillPilot tool before presenting new learning content,
                 copying the pair to goalId and expectedStateVersion. A repeated pair creates no
-                automatic call. After agreement to close a goal, perform its warranted completion write
-                first; never render an image from the old pre-closure context. After a successful focus
-                or active-goal write, reload context first;
-                after a mastery write made following learner agreement, apply this rule directly to its
-                returned successor context. If the learner explicitly asks to show
+                automatic call. After sufficient ordinary-goal evidence or a passed exam, perform
+                the warranted mastery write first; never render an image from the old context.
+                Wait for explicit learner continuation after result feedback before rendering from
+                the returned successor context. Orientation and Verified Recall retain their own
+                closure rules. After a successful focus or active-goal write, reload context first.
+                If the learner explicitly asks to show
                 the current image again, reload the current context exactly once and, if it still
                 contains goalVisualization, make one new one-shot render call with that fresh pair;
                 never retry otherwise. The renderer result is only a UI receipt and does not prove
@@ -517,10 +529,16 @@ public class ClaudeV1McpContractAdapter {
                 most the maximum score. Wait for a complete learner submission present in the current
                 conversation, including any spoken or written response, then call
                 get_skillpilot_exam_evaluation. Assess criterion by criterion; the sample solution
-                does not prescribe wording, and an equivalent correct method earns full credit. Save
-                mastery only after a final pass and the learner's agreement to close, copying
-                evaluationCapability unchanged and passing earnedPoints. Give complete feedback and
-                invite questions before that agreement; do not begin another task or goal in that turn.
+                does not prescribe wording, and an equivalent correct method earns full credit. Fix
+                the score and pass/fail decision for this attempt immediately after complete evaluation.
+                If passed, save mastery immediately, copying evaluationCapability unchanged and passing
+                earnedPoints, without a separate closure agreement. Only after the write
+                succeeds, say that the passed goal was saved. If not passed, leave mastery unchanged
+                and do not record the failed attempt; the learner may retry the same exam without a
+                limit. In both cases give the full score, explain the assessment, discuss the task
+                and released sample solution, and
+                invite questions or a choice to continue or retry. Do not begin another task or goal
+                until the learner explicitly chooses to.
 
                 Answer in the learner's language; pass "de" or "en" as the language argument.
                 """;
@@ -585,8 +603,9 @@ public class ClaudeV1McpContractAdapter {
         tools.add(uiTool(
                 ClaudeV1Contract.TOOL_RENDER_GOAL_VISUALIZATION,
                 "Display the learning-goal image",
-                "Presentation step only when beginning or resuming teaching, after any pending task or goal "
-                        + "closure has received the learner's answer. For every previously unseen "
+                "Presentation step only when beginning or resuming teaching. After ordinary or exam "
+                        + "mastery feedback, wait for the learner's explicit request to continue; orientation "
+                        + "and Verified Recall retain their own closure rules. For every previously unseen "
                         + "goalVisualization.goalId and top-level stateVersion pair published by the newest "
                         + "context, copy that pair to goalId and expectedStateVersion before presenting the "
                         + "next learning content. Never call during feedback, follow-up questions or a pause. "
@@ -703,9 +722,13 @@ public class ClaudeV1McpContractAdapter {
                 "Set Mastery",
                 "Records mastery for the active atomic goal. For an exam goal this additionally requires the "
                         + "evaluationCapability from get_skillpilot_exam_evaluation and an earnedPoints value that "
-                        + "reaches passingPoints. Before calling, give evidence-based feedback about the current "
-                        + "goal, offer questions or closure, and wait for the learner's clear agreement. A task "
-                        + "solution alone does not justify goal mastery. Send only structured completion and "
+                        + "reaches passingPoints. For ordinary competencies, call immediately after sufficient "
+                        + "evidence; for exams, call immediately after a final passing evaluation. No separate "
+                        + "closure agreement is required for these goals. A failed exam attempt is not written "
+                        + "and may be retried. A task solution alone does not justify goal mastery. Only after "
+                        + "a successful write may you tell the learner it was saved. Give feedback and ask "
+                        + "about questions or continuation before presenting any next content. Orientation "
+                        + "retains its separate learner-accepted closure rule. Send only structured completion and "
                         + "concurrency data. Private assessment stays out of spoken and written "
                         + "responses; only concise learner-facing feedback belongs in the conversation. "
                         + "Writes learner state and advances the state revision.",
@@ -1831,8 +1854,10 @@ public class ClaudeV1McpContractAdapter {
         }
         if (earnedPoints < evaluation.scoring().passingPoints()) {
             throw new ToolConflictException(
-                    "The exam has not been passed. Give complete feedback and stay on the same exam goal; "
-                            + "do not save mastery.");
+                    "The exam has not been passed. Do not save this attempt or mastery. Give the full "
+                            + "score, explain the evaluation, discuss the task and released sample solution, "
+                            + "and invite questions or a "
+                            + "new attempt. The same exam goal remains active and may be retried.");
         }
     }
 
@@ -1906,7 +1931,7 @@ public class ClaudeV1McpContractAdapter {
                                     "The recall successor context has an inconsistent state revision.");
                         }
                         summary.put("context", context);
-                        summary.put("presentationInstruction", MASTERY_CONTINUATION_INSTRUCTION
+                        summary.put("presentationInstruction", VERIFIED_RECALL_MASTERY_CONTINUATION_INSTRUCTION
                                 + " Do not request recall answers or record another mastery update.");
                     }
                     return summary;

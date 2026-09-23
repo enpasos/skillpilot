@@ -30,7 +30,7 @@
   "productOwnerAuthorization": {
     "approvedAt": "2026-09-23",
     "approvedBy": "product-owner",
-    "scope": "The Product Owner reported a production coach incident involving visible internal deliberation and a closure decision reversed without new learner information, and requested a correction. Prepare a local unpublished 1.1.10 candidate, archive the published 1.1.9 dossier, and preserve tool input, privacy, authorization and scoring contracts. This scope authorizes local fixes and validation, not deployment, Marketplace publication, guide activation or transferred acceptance.",
+    "scope": "The Product Owner reported a production coach incident involving visible internal deliberation and a closure decision reversed without new learner information, then clarified the closure sequence: privately decide from evidence, persist only positive mastery immediately, explain every exam result including failure without saving failure, and wait for the learner before new content. Prepare a local unpublished 1.1.10 candidate, archive the published 1.1.9 dossier, and preserve tool input, privacy, authorization and scoring contracts. This scope authorizes local fixes and validation, not deployment, Marketplace publication, guide activation or transferred acceptance.",
     "excludes": [
       "Connector Directory lifecycle, gates and Team/Enterprise submission access",
       "Deployment, Marketplace publication, guide activation, credential changes, Anthropic Console submission, general public activation and inherited candidate acceptance"
@@ -44,7 +44,7 @@
     "major": 1,
     "version": "1.1.10",
     "status": "pre_submission_candidate",
-    "compatibilityPolicy": "Version 1.1.10 requires private evidence assessment before offering closure and keeps internal deliberation out of learner-facing text and speech. The separate learner reply after feedback and all existing tool identities and schemas, OAuth, session, privacy, scoring and backend-owned state remain unchanged. Published 1.1.9 bytes and prior evidence remain immutable; no earlier acceptance transfers."
+    "compatibilityPolicy": "Version 1.1.10 requires private evidence assessment followed by an immediate positive mastery write, then learner-facing feedback and a separate choice about continuation. Failed exams receive a full evaluation without a failure write, and internal deliberation stays out of learner-facing text and speech. Existing tool identities and schemas, OAuth, session, privacy, scoring and backend-owned state remain unchanged. Published 1.1.9 bytes and prior evidence remain immutable; no earlier acceptance transfers."
   },
   "stateTransitions": [
     {

@@ -41,16 +41,16 @@ add parameters absent from the schema. Use a write's full successor context
 without another read; focus/active-goal writes require the instructed reload.
 
 Status/pause permits no render; resolve subject requests before rendering the old goal.
-While closure is pending, render nothing; after goal or Recall consent,
-write the completion before rendering. Answer questions or honor a pause.
-Assess submitted work before rendering; closure feedback never renders.
+Assess submitted work before rendering. Write an evidenced ordinary-goal success
+or passing exam before result feedback; orientation and Recall keep their own
+consent rules. During result feedback, questions or a pause, render nothing.
 If teaching is permitted and a fresh full context contains `goalVisualization`, identify the pair
 (`goalVisualization.goalId`, top-level `stateVersion`). For each previously
 unseen pair in this conversation, call `render_skillpilot_goal_visualization`
 exactly once as the immediate next SkillPilot tool, before any learner-facing
 response. Copy the pair to `goalId` and `expectedStateVersion`. This also applies
 to write-returned contexts and voice mode, except that successor rendering waits
-for closure consent. A repeated pair causes no automatic
+for explicit learner continuation after result feedback. A repeated pair causes no automatic
 render; never retry a render automatically after success or error. On an explicit
 request to show the image again, reload context once and make one new render if
 the fresh context permits it. A render receipt proves neither host display nor
@@ -69,9 +69,10 @@ Automatic resume additionally requires `guidance.state=resume`.
 
 Handle intent before rendering or automatic work:
 
-- **Pause/stop:** acknowledge and stop without writes or unsolicited summary,
-  except when closure was expressly accepted; then persist only that completion.
-  Do not claim saved plans were disabled.
+- **Pause/stop:** if the same turn supplies sufficient ordinary-goal evidence or
+  a complete passing exam submission, record that success first; otherwise
+  acknowledge and stop without writes or unsolicited summary. Start no new
+  content. Do not claim saved plans were disabled.
 - **Status only:** quote `learningPlanToday.text` verbatim and stop; do not resume, switch,
   activate a goal or set a task.
 - **Explicit subject:** use the subject-change rules below, without first
@@ -84,8 +85,8 @@ Handle intent before rendering or automatic work:
   `unavailable` whenever `resumeAvailable=true`. With an active unmastered goal,
   teach it directly.
   Apply the visualization rule to its full context before speaking.
-  No extra start confirmation when no closure is pending; a WebGUI
-  **Weiterlernen** button never replaces consent to offered closure.
+  No extra start confirmation when no result is awaiting a learner response;
+  a WebGUI **Weiterlernen** button expresses continuation, never mastery evidence.
 
 For an explicit subject change, relate natural wording such as “jetzt Mathe” or
 “maths” to exactly one published `learningPlanToday.subjects` entry. Clarify
@@ -111,8 +112,8 @@ quote the new text once. A reached period target is not “nothing left”; neve
 contrast the active goal with it (no “trotzdem”/“still not completed” quota contrast).
 Start teaching an active goal with `learningPlanToday.activeGoalAnnouncement`
 verbatim, once; not before every task and not for a status-only question. After
-goal closure consent: confirmed completion, changed status, then any successor's
-announcement; never announce it during closure feedback.
+confirmed mastery, report the result and changed status when due; announce any
+successor only after explicit continuation, never during result feedback.
 
 Follow `learningPlanToday.guidance.state` and `.instruction`: `complete` means
 celebrate a reached period target only when one exists. If backlog remains, offer
@@ -138,11 +139,13 @@ Completion is binary. Never set manual mastery for a memory goal. The backend
 selects successors; correction or withdrawal belongs in the Cockpit.
 
 When a task may finish, read [task-closure.md](references/task-closure.md)
-before replying or writing. With autopilot on or off: give feedback, invite
-questions or closure, and wait. If task and goal finish together, ask **one
-combined** closure question. Do not write `set_skillpilot_mastery`, start the
-next task, or render its image before consent. A solved task alone does not
-prove goal mastery.
+before replying or writing. With autopilot on or off, silently decide from
+independent evidence. If an ordinary goal is mastered, call
+`set_skillpilot_mastery` immediately; after confirmation, give feedback and ask
+about questions or continuation. If only the task finishes, give feedback and
+the same invitation without a mastery write. When task and goal finish together,
+ask one combined question. Do not start the next task or render its image until
+explicit continuation. A solved task alone does not prove goal mastery.
 
 Orientation is motivation, not subject assessment. Use only a published outlook;
 invent no paths or outcomes. A path choice starts a tailored follow-up: connect
@@ -201,12 +204,18 @@ These instructions are complete here; do not invoke a `Skill` tool or try to loa
    credit unless the task/rubric requires a specific form. Identify unreadable
    or missing work honestly; never infer a subject error from illegible content.
    Grade conclusively without coaching questions that change the grade.
-5. Report the assessment result and concrete feedback, offer questions and
-   closure, then wait. Only after the learner accepts closure of a final passing
-   result, call `set_skillpilot_mastery` with the unchanged evaluation
-   authorization and earned numeric points required by its schema. A failed
-   result is not goal completion; answer questions and offer subsequent
-   practice only after the learner chooses to continue.
+5. Fix the score and pass/fail decision for this complete attempt. On a pass,
+   call `set_skillpilot_mastery` immediately with the unchanged evaluation
+   authorization and earned numeric points required by its schema; wait for
+   confirmation before saying mastery was saved. On a failure, make no write
+   and leave mastery unchanged; an unpassed exam can be repeated any number of
+   times. Then report the score, result and concrete feedback. Discuss the
+   task, assessment and solution after grading; answer questions and ask
+   whether to continue. A
+   discussion of the solution can reduce the independent evidence in a repeat;
+   do not invent a retry restriction. Plain “weiter” cannot change this attempt's
+   decision. Start later practice, another attempt or successor content only
+   after the learner explicitly chooses to continue.
 
 If an authoritative exam visual is necessary but unavailable, pause the exam.
 Do not invent visual facts, disclose answers, substitute easier practice, or

@@ -44,12 +44,12 @@ remote SkillPilot connector. All fourteen MCP tools and both interactive MCP App
 come from that connector; the plugin does not duplicate their schemas,
 resources, or UI bytes.
 
-Version 1.1.10 checks the evidence before offering task or goal closure. It keeps
-internal assessment deliberation out of learner-facing text and speech. Once
-the coach offers closure on sufficient evidence, an agreeing answer completes
-that decision unless the learner supplies new relevant information. The coach
-still waits for a separate learner response before it closes a task or goal,
-records mastery, or begins the next task. A plan
+Version 1.1.10 checks the evidence before reporting task or goal completion. It
+keeps internal assessment deliberation out of learner-facing text and speech.
+For an ordinary goal or a passed exam, the coach records success immediately
+and reports it only after the write is confirmed. A failed exam does not change
+mastery and may be repeated. After feedback, the learner can ask questions or
+choose to continue; the coach begins the next content only after that choice. A plan
 guides and prioritizes; it must never prevent explicitly requested learning.
 The Skill owns the common coaching flow and the complete exam procedure inline;
 task and goal closure and Verified Recall use conditional references. Load the

@@ -84,6 +84,9 @@ class ClaudeV1MasteryContractTest {
     private ClaudeV1SessionTokenCodec sessionTokens;
 
     @Autowired
+    private ClaudeV1CapabilityService capabilityService;
+
+    @Autowired
     private JdbcOperations jdbc;
 
     @MockitoBean
@@ -222,7 +225,7 @@ class ClaudeV1MasteryContractTest {
     }
 
     @Test
-    void ordinaryCompletionContinuesAfterFeedbackAndConsentWithoutRepeatingTheClosure() throws Exception {
+    void ordinaryCompletionReturnsSavedResultBeforeFeedbackAndWaitsForContinuation() throws Exception {
         FrontierGoal activeGoal = goal(ACTIVE_GOAL_ID, "content");
         FrontierGoal backendNext = goal(BACKEND_NEXT_GOAL_ID, "content");
         when(coachToolFacade.getLearnerState(learnerId))
@@ -247,11 +250,140 @@ class ClaudeV1MasteryContractTest {
                         ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION)
                 .hasEntrySatisfying("presentationInstruction", instruction -> assertThat(instruction.toString())
                         .contains(
-                                "already received feedback and agreed to close the previous goal",
-                                "before presenting the next learning content",
+                                "This successful write confirms that the previous goal is saved as mastered",
+                                "Invite questions or an explicit choice to continue",
+                                "do not render its image in this feedback turn",
+                                "before presenting new learning content",
                                 "active goal or next action")
+                        .doesNotContain("already received feedback and agreed to close")
                         .doesNotContain("what went well", "what still needs practice")
                         .doesNotContain("previous orientation's completion"));
+    }
+
+    @Test
+    void failedExamAttemptDoesNotWriteAndSameExamCanBeEvaluatedAgain() throws Exception {
+        FrontierGoal activeExam = new FrontierGoal(
+                ACTIVE_GOAL_ID,
+                "Exam task",
+                "Learner-facing exam task",
+                "atomic",
+                "exam",
+                "exam",
+                null,
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                null,
+                true);
+        when(coachToolFacade.getLearnerState(learnerId))
+                .thenReturn(learnerState(activeExam, List.of(activeExam), "teachActiveGoal"));
+        when(coachToolFacade.getExamEvaluation(
+                eq(learnerId), any(CoachToolFacade.ExamEvaluationRequest.class)))
+                .thenReturn(new CoachToolFacade.ExamEvaluationResult(
+                        ACTIVE_GOAL_ID,
+                        "Musterlösung",
+                        "Sample solution",
+                        new CoachToolFacade.ExamScoring(
+                                10.0,
+                                6.0,
+                                List.of(
+                                        new CoachToolFacade.ExamScoringStep("step-1", 4.0, "Method"),
+                                        new CoachToolFacade.ExamScoringStep("step-2", 6.0, "Reasoning")))));
+        String requestId = UUID.randomUUID().toString();
+        String capability = capabilityService.mintExamEvaluationCapability(
+                connectionId, ACTIVE_GOAL_ID, INITIAL_STATE_VERSION);
+
+        McpSchema.CallToolResult result = callMastery(
+                Map.of("evaluationCapability", capability, "earnedPoints", 4.0),
+                requestId);
+
+        assertThat(result.isError()).isTrue();
+        assertThat(payload(result))
+                .containsEntry("status", "ERROR")
+                .hasEntrySatisfying("message", message -> assertThat(message.toString())
+                        .contains("Do not save this attempt or mastery", "Give the full score",
+                                "discuss the task and released sample solution", "may be retried"));
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
+        assertThat(idempotencyRepository.findLive(
+                        sessionTokens.hash(connectionId),
+                        requestId,
+                        java.time.Instant.now()))
+                .isEmpty();
+
+        McpSchema.CallToolResult nextEvaluation = callExamEvaluation();
+        assertThat(nextEvaluation.isError()).isFalse();
+        assertThat(payload(nextEvaluation))
+                .containsEntry("goalId", ACTIVE_GOAL_ID)
+                .containsEntry("solutionContent", "Musterlösung")
+                .containsKey("evaluationCapability");
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
+        verify(coachToolFacade, never()).setMastery(any(), any());
+    }
+
+    @Test
+    void passedExamWritesMasteryAndReturnsFeedbackBeforeContinuationInstruction() throws Exception {
+        FrontierGoal activeExam = new FrontierGoal(
+                ACTIVE_GOAL_ID,
+                "Exam task",
+                "Learner-facing exam task",
+                "atomic",
+                "exam",
+                "exam",
+                null,
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                null,
+                true);
+        FrontierGoal backendNext = goal(BACKEND_NEXT_GOAL_ID, "content");
+        when(coachToolFacade.getLearnerState(learnerId))
+                .thenReturn(learnerState(activeExam, List.of(activeExam), "teachActiveGoal"));
+        when(coachToolFacade.getExamEvaluation(
+                eq(learnerId), any(CoachToolFacade.ExamEvaluationRequest.class)))
+                .thenReturn(new CoachToolFacade.ExamEvaluationResult(
+                        ACTIVE_GOAL_ID,
+                        "Musterlösung",
+                        "Sample solution",
+                        new CoachToolFacade.ExamScoring(
+                                10.0,
+                                6.0,
+                                List.of(
+                                        new CoachToolFacade.ExamScoringStep("step-1", 4.0, "Method"),
+                                        new CoachToolFacade.ExamScoringStep("step-2", 6.0, "Reasoning")))));
+        when(coachToolFacade.setMastery(eq(learnerId), any(MasteryUpdateRequest.class)))
+                .thenAnswer(invocation -> {
+                    Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+                    learner.setCoachStateRevision(learner.getCoachStateRevision() + 1);
+                    learnerRepository.save(learner);
+                    return new CoachToolFacade.MasteryResult(
+                            CoachToolFacade.MasteryStatus.UPDATED,
+                            successfulUpdate(backendNext),
+                            null,
+                            null);
+                });
+        String capability = capabilityService.mintExamEvaluationCapability(
+                connectionId, ACTIVE_GOAL_ID, INITIAL_STATE_VERSION);
+
+        McpSchema.CallToolResult result = callMastery(
+                Map.of("evaluationCapability", capability, "earnedPoints", 7.0),
+                UUID.randomUUID().toString());
+
+        assertThat(result.isError()).isFalse();
+        assertThat(payload(result))
+                .containsEntry("savedGoalId", ACTIVE_GOAL_ID)
+                .containsEntry("savedMastery", 1.0)
+                .containsEntry("earnedPoints", 7.0)
+                .hasEntrySatisfying("presentationInstruction", instruction -> assertThat(instruction.toString())
+                        .contains("This successful write confirms", "full criterion-by-criterion evaluation",
+                                "including the earned score", "discussion of the released sample solution",
+                                "Do not announce or teach",
+                                "Only after the learner explicitly chooses to continue"));
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION + 1);
+        verify(coachToolFacade, times(1)).setMastery(eq(learnerId), any(MasteryUpdateRequest.class));
     }
 
     @Test
@@ -341,6 +473,21 @@ class ClaudeV1MasteryContractTest {
         return specification.callHandler().apply(
                 McpTransportContext.EMPTY,
                 new McpSchema.CallToolRequest(ClaudeV1Contract.TOOL_SET_MASTERY, arguments));
+    }
+
+    private McpSchema.CallToolResult callExamEvaluation() {
+        McpStatelessServerFeatures.SyncToolSpecification specification = contractAdapter.toolSpecifications().stream()
+                .filter(candidate -> ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION.equals(candidate.tool().name()))
+                .findFirst()
+                .orElseThrow();
+        return specification.callHandler().apply(
+                McpTransportContext.EMPTY,
+                new McpSchema.CallToolRequest(
+                        ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION,
+                        Map.of(
+                                "learningSessionId", connectionId,
+                                "goalId", ACTIVE_GOAL_ID,
+                                "language", "en")));
     }
 
     private UnifiedLearnerStateResponse learnerState(

@@ -226,8 +226,19 @@ Follow the existing pattern: `field` (local language) and `fieldEn` (English). T
 
 - **Pass/Fail:** `passed = (total >= scoring.passingPoints)`.
 - **Total points:** `total = min(sum(stepPointsAwarded), scoring.maxPoints)`.
-- **Mastery update:** On pass, set mastery to `1.0`. On fail, leave mastery unchanged.
-- **Optional nuance:** Partial mastery could be considered if `total / maxPoints` is high, but is not part of the default flow.
+- **Mastery update:** On pass, set mastery to `1.0` immediately after the final
+  grading decision. On fail, leave mastery unchanged and do not persist the
+  unsuccessful attempt or score. The learner state therefore does not
+  distinguish an unattempted exam from an unsuccessful one, and the same exam
+  may be retried without a limit.
+- **Feedback and continuation:** After grading, tell the learner the score and
+  result, explain the evaluation and solution, answer questions, and wait for
+  an explicit choice before starting new content. A pass does not need a
+  separate learner agreement before its mastery write. The coach must not
+  claim persistence if that write fails. On failure the evaluation is still
+  discussed even though no result is saved. Revealing the solution can reduce
+  the evidential value of a later retry of the same exam; this is a known
+  current limitation without a special countermeasure.
 
 ### Exam Mode (AI exam supervisor)
 
@@ -247,8 +258,12 @@ In Exam Mode, the AI acts as a strict but fair exam supervisor. The learning coa
    - If the user asks for help or submits partial work, only request a full submission or give up.
    - If the user gives up, treat it as a submission and proceed to grading.
 3. **Grade:** Iterate through `scoring.steps`, assign points.
-4. **Feedback:** Show score, pass/fail, per-step feedback, then reveal the solution.
-   Then switch back to learning-coach mode and go through the findings.
+4. **Persist success:** If passed, write mastery immediately after the final
+   grading decision. If failed, do not write a learner result.
+5. **Feedback:** Show score, pass/fail, per-step feedback, then reveal the
+   solution. Switch back to learning-coach mode, discuss the findings and
+   invite questions or continuation. Do not start a new goal or task until
+   the learner chooses to continue.
 
 **Prompt contract (summary):**
 - Display the exam header, then `taskContent` verbatim, then the fixed submission instruction (no extra text beyond those).

@@ -318,17 +318,30 @@ When agents generate feedback or suggestions, they should:
   - whose own mastery is clearly < 1.
 
 For coach-led learning, finishing a task and mastering a goal are distinct.
-After a task, give concrete feedback, say what was shown and what remains open,
-offer questions or a natural close, and wait for the learner's reply before
-showing the next task. Apply this with or without autopilot. When the same task
-also supplies all required evidence for the goal, ask one combined closure
-question. A solved task alone does not imply mastery; agreement alone is not
-evidence. Commit coach mastery only after both sufficient evidence and the
-learner's agreement to close. Answer questions about the current content and
-respect a pause. Begin new content and render its image only after recognizable
-agreement to continue, such as “Alles klar, weiter”. At the actual end, offer a
-fitting close without assuming a next task. Small explanations and hints during
-an unfinished task do not need separate confirmation.
+The coach makes its evidence decision privately when sufficient learner work
+is available. For an ordinary content goal this can happen during the chat;
+for an `examData` assessment goal it happens after grading the complete
+submission. A solved task alone does not imply mastery, and a learner's
+agreement is not evidence. When the goal is mastered, commit the success
+immediately, before claiming it was saved or announcing a successor. Do not
+condition this write on a separate learner agreement to close. If the write
+fails, do not claim that the goal was saved. An unsuccessful exam attempt
+produces feedback but no learner-state write: SkillPilot does not distinguish
+"not passed" from "not attempted", and the learner may retry the same exam
+without a limit. After grading, disclose the score, result, tasks and solution
+and discuss them on request. This can reduce the evidential value of a later
+retry of the same exam; it is a known current limitation without a special
+countermeasure. A verdict on the submitted work stays fixed unless the learner
+provides new substantive work or an actual grading error is corrected; a
+plain "weiter" does not trigger reassessment. After feedback, invite questions
+or continuation and wait for the learner's reply before showing the next task
+or goal. Apply this with or without autopilot. Answer questions about the
+current content and respect a pause. Begin new content and render its image
+only after recognizable agreement to continue, such as “Alles klar, weiter”.
+At the actual end, offer a fitting close without assuming a next task. Small
+explanations and hints during an unfinished task do not need separate
+confirmation. Orientation and Verified Recall retain their separate completion
+and persistence rules.
 
 ---
 
@@ -676,8 +689,9 @@ Rule:
   explicit learner request to show the current image again creates one new
   one-shot authorization after a fresh qualifying result. Copy the pair into
   `goalId` and `expectedStateVersion` unchanged. Never insert another tool call,
-  reuse stale authorization, or retry otherwise. Give feedback and invite
-  questions or closure before the mastery write; render only after agreement
+  reuse stale authorization, or retry otherwise. Commit positive ordinary or
+  exam mastery as soon as the assessment is complete, then give feedback and
+  invite questions or continuation; render only after agreement
   to continue and before coaching the associated active goal. The receipt does
   not replace the authoritative full result, and omitted
   host presentation does not weaken the text path.

@@ -223,6 +223,11 @@ A goal carrying `examData`: an assessment task with a solution and a scoring sch
 *DE: Prüfungsdaten, Bewertung* — see [Node Types](skill-graph/node-types.md)
 
 Task content, solution content, and a scoring object with `maxPoints`, `passingPoints`, and per-step points. `total = min(sum(step points), maxPoints)`, `passed = total >= passingPoints`. Mastery is set to `1.0` on pass and left unchanged on failure.
+Only the success is persisted. A failed exam's score and result are explained
+to the learner but not stored in learner state, so an unsuccessful exam is
+indistinguishable from an unattempted one and the same exam can be retried.
+The positive mastery write follows the final grading decision, before the
+coach says it was saved; starting new content waits for the learner's choice.
 
 ### Exam Mode
 

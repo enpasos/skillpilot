@@ -16,15 +16,18 @@ On 23 September 2026, the Product Owner reported that the coach exposed
 private deliberation in a Voice conversation and reconsidered a goal closure
 after the learner accepted its offer without adding new learning information.
 The 1.1.10 successor is being prepared locally with an instruction and Claude
-connector correction. The exact 1.1.9 release dossier is retained under
+connector correction. The coach now decides privately from the learner's work,
+persists only demonstrated success before reporting it, and offers questions
+or continuation after feedback. A failed exam still receives its full evaluation
+and solution discussion without storing a failure; the same exam remains
+repeatable. The exact 1.1.9 release dossier is retained under
 `release/history/1.1.9/`; its published archive and Marketplace source remain
 unchanged. The 1.1.10 exact-client regression plan is
 `ai/claude/plugin/skillpilot-coach-v1/release/1.1.10-incident-regression-plan.md`.
 Web and Android Voice evidence, deployment and Marketplace publication remain
 pending. The public Marketplace and website still serve 1.1.9 until a separate
-approved rollout. The local Marketplace export now pins committed SkillPilot
-source revision `7109b71bfa57804cbd0d83a87b30f010076b2437` and its exact
-plugin-source tree digest. That revision must be available from
+approved rollout. The local Marketplace export pins a committed SkillPilot
+source revision and its exact plugin-source tree digest. That revision must be available from
 `enpasos/skillpilot` before the external Marketplace workflow can run; no
 repository publication or 1.1.10 client acceptance has occurred.
 
