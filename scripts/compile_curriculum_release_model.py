@@ -2383,7 +2383,11 @@ def compile_release_quality_evidence(
             if (
                 record.get("visualizationState") != "missing"
                 or record.get("missingReason")
-                not in {"deferred_provider_limitation", "no_primary_link"}
+                not in {
+                    "deferred_provider_limitation",
+                    "deferred_quality_review",
+                    "no_primary_link",
+                }
                 or record.get("assetSha256") not in {None, ""}
                 or record.get("imageUrl") not in {None, ""}
                 or record.get("publicAssetPath") not in {None, ""}

@@ -3033,7 +3033,11 @@ def build_expected_quality_evidence(
             require(
                 record.get("visualizationState") == "missing"
                 and record.get("missingReason")
-                in {"deferred_provider_limitation", "no_primary_link"}
+                in {
+                    "deferred_provider_limitation",
+                    "deferred_quality_review",
+                    "no_primary_link",
+                }
                 and record.get("assetSha256") in {None, ""}
                 and record.get("imageUrl") in {None, ""}
                 and record.get("publicAssetPath") in {None, ""}
