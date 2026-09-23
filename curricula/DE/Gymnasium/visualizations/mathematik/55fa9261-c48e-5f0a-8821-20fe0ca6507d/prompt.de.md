@@ -6,9 +6,17 @@
 - Titel: Mehrere Darstellungen kombinieren (LK)
 - Beschreibung: Die lernende Person kann mehrere Darstellungen sinnvoll kombinieren (z. B. Graph, Tabelle und Text) und die Kombination zur Argumentation nutzen.
 
-## Generator
+## Aktuelles korrigiertes Bild
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image editing
+- Aktives Bild: `55fa9261-c48e-5f0a-8821-20fe0ca6507d.png`
+- SHA-256: `f40de97613e67d9b28f1bbebf393ebf52fd273d6e02f83a28ca78802b79cd8d7`
+- Korrektur- und Prüfbeleg: `curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-q4-process-tools-image-repairs-20260923-v1/55fa9261-c48e-5f0a-8821-20fe0ca6507d/README.md`
+- Menschliche Freigabe: ausstehend; die frühere JPG-Freigabe gilt nicht für das korrigierte PNG.
+
+## Ursprünglicher Generator (archiviertes JPG)
+
+- Ursprünglicher Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `55fa9261-c48e-5f0a-8821-20fe0ca6507d.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/55fa9261-c48e-5f0a-8821-20fe0ca6507d/55fa9261-c48e-5f0a-8821-20fe0ca6507d.jpg`

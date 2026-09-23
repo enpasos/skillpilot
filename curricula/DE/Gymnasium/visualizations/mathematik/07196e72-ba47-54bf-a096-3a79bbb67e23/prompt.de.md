@@ -1,6 +1,7 @@
 # Lernzielvisualisierung: Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren
 
 - SkillPilot-ID: `07196e72-ba47-54bf-a096-3a79bbb67e23`
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Aktives Bild: `07196e72-ba47-54bf-a096-3a79bbb67e23.png`
 - SHA-256: `5e2384b38407263b6330b8f538d200355923523508db757465cef95360349fdb`
 - Format und Stil: PNG, freundlicher abstrakter Comic, klare mathematische Symbole
