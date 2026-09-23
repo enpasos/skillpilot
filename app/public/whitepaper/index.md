@@ -29,6 +29,9 @@ This page groups the public SkillPilot whitepapers.
 - Keep the table filter in the PDF build: it gives widthless Markdown tables
   wrapping, equal-width columns for LaTeX only, avoiding text outside the page.
   It preserves table content, explicitly authored widths, and web rendering.
+- The same filter honours `width=...` image titles, as used by the WebGUI,
+  in PDF output (CSS pixels at 96 dpi). Use this to keep narrow screenshots
+  and their captions together without changing the original image file.
 
 - Deploy the canonical Markdown and the regenerated PDF to `app/public/` with
   `python3 scripts/deploy_whitepaper.py`.

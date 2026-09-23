@@ -1,6 +1,6 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.23 · **Project:** SkillPilot · *Some illustrations are AI-generated.*
+**Version:** 1.0.25 · **Project:** SkillPilot · *Some illustrations are AI-generated.*
 
 ---
 
@@ -62,6 +62,10 @@ The goals remain ambitious; the support adapts to each learner’s starting poin
 
 ## 2. The Division of Responsibilities: AI Explains, SkillPilot Manages Learning State
 
+**Shared preparation, individual learning support.** The skill landscape is built before learners use it, reviewed under the defined quality procedures, and then maintained continuously (section 5.1). Particularly capable AI systems can be used for the demanding work of analyzing and structuring curricula. This reusable groundwork benefits all learners. It does not have to be repeated for each person or in every learning session.
+
+The AI that supports learners during learning is a separate choice. It must meet SkillPilot’s subject-matter, pedagogical, and technical requirements for learning guidance. It does not have to be the same system used to develop the skill landscape. The quality requirements for learning support apply regardless of that choice.
+
 Language-based AI can explain concepts, formulate tasks, discuss solutions, and respond to questions in natural language. In a learning dialogue, it offers different approaches to a topic and adapts explanations to the learner’s responses.
 
 Reliable learning guidance also needs an authoritative foundation: which goals belong to the curriculum, which prerequisites are met, and which progress has been recorded? SkillPilot manages these facts and rules in the backend.
@@ -69,6 +73,8 @@ Reliable learning guidance also needs an authoritative foundation: which goals b
 The learning coach accesses these **authoritative backend rules** through defined tools. SkillPilot calculates reachable learning goals and plan status, checks permitted state changes, and stores confirmed progress. Subject-specific assessment in the dialogue remains an AI judgment and can contain errors; technical validation of a state change is not independent proof that a solution is correct.
 
 The **plugin and adapter architecture decouples the subject-matter core from any particular AI provider**. Provider adapters expose tools through the **Model Context Protocol (MCP)**. A new AI integration must, among other things, load coach instructions, call tools reliably, handle authentication and learning sessions securely, and display the required images and learning cards. MCP standardizes tool access but does not guarantee these capabilities. Authoritative decisions about learning state, permissions, and navigation remain in the shared SkillPilot core; each specific integration is tested separately.
+
+**The goal is freedom to choose among suitable AI environments.** In the future, this could include AI running locally on a learner’s own device, provided it has the required capabilities and a validated integration. Today’s Claude access is a concrete starting point, not a permanent architectural commitment to that provider. This does not imply that a local learning-coach integration is already available.
 
 **SkillPilot is therefore a hybrid application:** The AI learning coach handles language understanding, explanations, and subject-specific feedback. Conventional software is responsible for learning state, permissions, navigation, and progress management.
 
@@ -220,13 +226,26 @@ Learners choose between **1 day** and **1 week**. This setting applies consisten
 - **Daily resolution:** The workload covers the current calendar day.
 - **Weekly resolution:** The workload covers the current calendar week from Monday to Sunday. Learners can complete it at the start of the week, over the weekend, or spread it out. Earlier days within the same week do not create additional backlog.
 
-The choice is saved for the SkillPilot ID; daily resolution is the default. Switching changes the time frame of the evaluation while preserving plan dates and achieved learning progress. **Period workload and backlog are separate statements:** A daily or weekly target can be reached while backlog remains. Work ahead is taken into account within the same subject.
+The choice is saved for the SkillPilot ID; weekly resolution is the default. Switching changes the time frame of the evaluation while preserving plan dates and achieved learning progress. **Period workload and backlog are separate statements:** A daily or weekly target can be reached while backlog remains. Work ahead is taken into account within the same subject.
+
+#### Plan Status in the Cockpit: Workload and Overall Progress
+
+In plan mode, the Cockpit displays **two gauges with needles** for each subject. They show at a glance how much of the current workload has been met and how overall learning progress compares with the subject plan.
+
+![Cockpit in weekly mode: Mathematics with 10 of 10 goals and 2 learning goals ahead; Physics with 12 of 12 goals and 1 learning goal ahead](learning-plan-cockpit.de.png "width=360")
+
+*Weekly Cockpit view, shown in the German interface: the weekly workload has been met in both subjects, with additional work ahead. Physics is the current subject; the active learning goal appears above the subject gauges.*
+
+- **“Today” or “This week”:** The left gauge shows the fulfilled share of the daily or weekly workload as “x of y goals.” Blue represents the fulfilled share, grey the remaining share. Work completed ahead of time is credited, so the display does not count only goals newly completed during the current period.
+- **“Overall”:** The right gauge shows the cumulative plan status for the same subject: backlog on the left, “on track” in the neutral centre, and work ahead on the right. Its scale runs from red through grey to green and takes the subject's typical daily or weekly workload into account. The text below the gauge states the actual backlog or work ahead in learning goals, even when the needle reaches either end of the scale.
+
+**Meeting the period workload does not automatically mean an older backlog has been cleared.** Likewise, a workload still open today or this week does not by itself create cumulative backlog. Each subject keeps its own balance. The active learning goal remains separately visible; an offered subject switch and expandable **“Plan details”** provide further orientation. The displays and status texts use the values calculated by SkillPilot that also inform the coach.
 
 #### The Learner Works in Chat
 
 With plan mode enabled and a valid learning session, SkillPilot handles the organization in the background:
 
-1. **Orient:** The coach quotes the plan status formulated by SkillPilot verbatim: for each subject, the daily or weekly target and any backlog or work ahead. The Cockpit shows the same sentences; the coach does no arithmetic of its own. It announces the active learning goal separately, once, when the learning task begins.
+1. **Orient:** The coach quotes the plan status formulated by SkillPilot verbatim: for each subject, the daily or weekly target and any backlog or work ahead. The Cockpit presents the same plan status through its gauges and supplied status text; the coach does no arithmetic of its own. It announces the active learning goal separately, once, when the learning task begins.
 2. **Resume automatically:** A valid ongoing goal is continued; otherwise, while the daily or weekly workload remains open, a due goal whose prerequisites permit learning is selected, if one is available. Joint activation can already select this first goal. No extra “Continue learning” click or manual goal search is needed.
 3. **Learn and check progress:** The coach explains, sets tasks, and supports the work. Only progress recorded under the applicable evidence rules changes the learning state and thus the plan status. The plan-guided flow then leads to the next permitted step.
 4. **Switch subjects or finish:** A request such as “Physics now” switches within the available subject options; other requirements remain in place. Once the period targets are reached, the coach acknowledges this and does not start another goal on its own. Reaching a daily or weekly target does not mean there is no backlog; in that case, the coach invites the learner to catch up without pressure. Further learning remains available on request, and future goals do not automatically become extra duties for the current period. The plan status explicitly identifies plans that cannot be evaluated instead of presenting them as complete.
@@ -301,7 +320,7 @@ On import, existing source profiles and import timestamps can be retained as **p
 
 ### 5.1 Current Focus: Gymnasium in Germany
 
-SkillPilot’s current development and content focus is **Gymnasium, Germany’s academic secondary school track, across all 16 federal states**. The shared “Gymnasium (DE)” entry provides access to subject-level skill graphs through state-specific mappings and views. Shared competencies are grouped by subject, while differences between state curricula, school stages, and course profiles remain represented.
+SkillPilot’s current development and content focus is **Gymnasium, Germany’s academic secondary school track, across all 16 federal states**. The shared “Gymnasium (DE)” entry provides access to subject-level skill graphs through state-specific mappings and views. Shared competencies are grouped by subject, while differences between state curricula, school stages, and course profiles remain represented. Shared learning goals are therefore maintained once rather than separately for every federal state; subject-specific improvements can benefit all state views built on those goals.
 
 The extent of development varies by subject:
 
@@ -349,11 +368,15 @@ The QA process covers more than curricula: the SkillPilot AI learning coach is c
 
 ![A learner chooses between an explanation, an exercise, and a book; all three support the same learning-goal building block](learning-materials.png)
 
-We are working to **connect suitable learning materials to SkillPilot** – from books and YouTube videos to exercises. **Teachers and learners should be able to choose** which resources support their learning journey.
+**External learning materials are connected to the curriculum, not built into it.** A separate mapping layer connects explanations, tasks, books, videos, and interactive resources to suitable learning goals and, through them, to learning plans. Materials can remain where they are already published. The shared competence structure remains independent of individual providers and resources.
 
-For content providers, this opens a way to **connect their materials to learning goals and, through them, to learning plans**. Publishers, educational portals, and other providers can make their resources accessible where they help learners.
+**Teachers and learners should be able to select, combine, and switch suitable materials.** Teachers can contribute their subject expertise and pedagogical experience by selecting resources that fit their lessons and the needs of their learning group. At the same time, learners retain room for their own approaches and material choices. Teachers’ pedagogical design and learners’ independence complement each other.
 
-We are starting with [**Physik Libre**](https://physikbuch.schule/). From there, we will develop connections to further content step by step. Curriculum and learning progress remain independent of the chosen content provider.
+Selecting materials or switching providers changes neither curricular learning goals nor progress already recorded. The integration is optional; opening a resource is not evidence of competence. Free and paid resources use the same architectural framework. Selecting a resource grants neither additional usage rights nor automatic access to its contents by the AI.
+
+**SkillPilot aims to support the purposeful use of existing educational resources, not take them over.** OER initiatives, publishers, educational portals, and other contributors with relevant expertise should be able to map their materials to suitable learning goals without providing a complete progress-management system themselves. Making open educational resources accessible and helping people actually build skills belong together.
+
+The architectural framework is defined. The details of mappings and exchange formats are being explored with real resources and are intended to be developed together with the people who create and use those materials. We are starting with [**Physik Libre**](https://physikbuch.schule/). This starting point requires neither complete resource coverage nor an agreed partnership with the provider.
 
 *Further reading: [Content integration architecture](https://github.com/enpasos/skillpilot/blob/main/docs/concept/skill-graph/content-integration.md).*
 
@@ -374,6 +397,8 @@ Beyond the current Gymnasium focus, the model can also be applied to higher educ
 
 Try it yourself, find the stumbling blocks, improve it together: feedback in the Cockpit is linked to the learning goal and reviewed during the next revision. Learners and Curriculum Champions bring the learning map into practice.
 
+**An idea rooted in the open education movement.** SkillPilot’s original idea was presented and discussed at the OER conference in Berlin in 2013 under the theme “Education in a Landscape of Skills” (German: “Bildung in einer Landschaft aus Fähigkeiten”). Individual goals, existing knowledge, and skills that build on one another were already central to that approach. Today’s project revisits the idea using modern AI: connecting a shared knowledge foundation with individual learning support. The [2013 presentation](https://de.slideshare.net/slideshow/oer-2013-skillpilot/26948355) documents the original approach.
+
 Openness extends beyond software: it and the technical infrastructure are available under **[Apache 2.0](https://github.com/enpasos/skillpilot/blob/main/LICENSE)**. We release our own skill landscapes, tasks, learning cards, curated link descriptions, educational media, and this whitepaper under **[CC BY 4.0](https://github.com/enpasos/skillpilot/blob/main/LICENSES/CC-BY-4.0.txt)**, to the extent the relevant rights exist and we can grant them. Third-party content and private user data are not covered by these grants; the [licensing scope](https://github.com/enpasos/skillpilot/blob/main/LICENSING.md) explains the boundaries. The aim is an openly inspectable educational infrastructure that can be developed collaboratively and that schools, specialists, and public institutions can build on.
 
 - Institutions retain **sovereignty** over curricula and content.
@@ -382,9 +407,13 @@ Openness extends beyond software: it and the technical infrastructure are availa
 
 Changes to curricula and software are versioned and reviewed through **GitHub and pull requests**. The quality evidence and practical feedback described in section 5.1 provide the basis; additional institutional subject reviews can build on them.
 
-Good individual learning support should not depend on how much help parents can provide themselves or afford privately. **SkillPilot itself is free.** The current AI learning-coach access requires a separately paid Claude Pro subscription; selected external materials may involve additional costs. Broad accessibility therefore also remains a task for future institutional adoption.
+Good individual learning support should not depend on how much help parents can provide themselves or afford privately. **SkillPilot itself is free.** Current Claude access lets adults aged 18 or over try the approach today; the required Claude Pro subscription is paid for separately.
 
-**The next step is a school-led practical trial with scientific evaluation.** It needs to establish whether the guidance improves understanding, independent problem solving, and lasting learning — and whether it also effectively supports learners whose potential has previously been underestimated. Technical functionality and completed curriculum QA do not establish that evidence in advance.
+**The long-term goal is age-appropriate learning support that is free for school students, including the AI it requires.** This needs suitable access arrangements and sustainable funding that does not depend on payments from families. The current trial access does not yet achieve that goal. Paid supplementary resources can remain an optional choice but must not become a prerequisite for a learning path that can be used free of charge.
+
+**The next step is practical exploration together with learners, teachers, and educational partners.** It can begin with interested adults using the current access and develop through collaboration with OER initiatives, out-of-school education providers, and learning mentors. Research partners can support the study of educational effectiveness; companies and foundations can contribute as development or funding partners. These possibilities do not imply any partnerships have already been agreed.
+
+School-led use remains an important application and requires suitable access, including age-appropriate arrangements. Across the different learning settings, evaluation must establish whether SkillPilot improves understanding, independent problem solving, and lasting learning, and whether it effectively supports learners whose potential has previously been underestimated. Technical functionality, initial user experiences, and completed curriculum QA do not establish that evidence in advance.
 
 **Initiator:**
 The organization behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together — in subject content, teaching, and technology.

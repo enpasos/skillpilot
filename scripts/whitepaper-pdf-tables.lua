@@ -30,3 +30,19 @@ function Table(tbl)
   end
   return tbl
 end
+
+-- Honour the same width=... image titles as the WebGUI. Convert CSS pixels
+-- explicitly at 96 dpi so screenshots without DPI metadata stay readable
+-- without expanding to a full PDF page. Preserve explicit image attributes.
+function Image(image)
+  if FORMAT ~= 'latex' or image.attributes.width then
+    return nil
+  end
+
+  local width = (image.title or ''):match('width=(%d+)')
+  if width and tonumber(width) > 0 then
+    image.attributes.width = string.format('%.3fmm', tonumber(width) * 25.4 / 96)
+    return image
+  end
+  return nil
+end
