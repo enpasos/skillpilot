@@ -3,34 +3,51 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.8 is published in
+Anthropic-curated or Anthropic-verified listing. Version 1.1.9 is published in
 the public Marketplace and its exact source, package and repository have been
-independently verified. The website download still serves 1.1.7 as verified on
-21 September; the automatic backend-build alignment described below requires
-its own normal deployment. Full real-client acceptance of 1.1.8 remains pending; repository
+independently verified. The website download serves the same 1.1.9 archive.
+Full real-client acceptance of 1.1.9 remains pending; repository
 publication does not establish installation or synchronization in every account.
 Earlier published packages and their evidence remain immutable history.
 
-## Local 1.1.9 candidate for issue #55
+## 1.1.9 publication for issue #55
 
-The 23 September 2026 task-closure change is prepared as **1.1.9**, a local,
-unpublished successor. The seven-file plugin archive is reproducible at
+On 23 September 2026, the Product Owner confirmed green CI and deployment and
+requested Marketplace publication. The seven-file **1.1.9** plugin archive is
+reproducible at
 **39,441 bytes**, SHA-256
 `b53a1100fff6d84ee66c12f084a8ff359847496fbf75c8a951ee4c9a0230c3c5`.
-The candidate adds `references/task-closure.md`; its Marketplace export has
-twelve files. The published 1.1.8 dossier is retained byte-identically in
-`release/history/1.1.8/`. Candidate-specific Marketplace, guide, direct-install
-and real-client evidence starts pending. The website's tracked served index
-continues to name 1.1.7 until an authorized backend rollout.
+The plugin adds `references/task-closure.md`; its Marketplace export has twelve
+files. The published 1.1.8 dossier is retained byte-identically in
+`release/history/1.1.8/`. The deployed website index and archive match 1.1.9.
+
+[Marketplace PR #11](https://github.com/enpasos/skillpilot-claude-marketplace/pull/11)
+passed [final-head validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/35824006725)
+and was squash-merged with an exact head-SHA guard. The
+[main-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/35824076410)
+passed. `verify-repository` then checked the public default branch, all twelve
+files, the rebuilt archive, both strict Claude validations and installation
+from the public HTTPS Marketplace in an isolated profile. The remote head was
+stable throughout verification.
+
+- Published revision: `7e70bd23e8c5c16ab9b0b417ed2f365698596457`.
+- Verification recorded: `2026-09-23T05:50:39.000Z`.
+- Export tree SHA-256:
+  `904ae6e0ee98069f01d739df19627c18c995f4b8bd67d7dd33b3bdd5de22674f`.
+- Plugin: **1.1.9**, **39,441 bytes**, SHA-256
+  `b53a1100fff6d84ee66c12f084a8ff359847496fbf75c8a951ee4c9a0230c3c5`.
+
+Only `public-repository-default-branch` is recorded as `pass`.
+Clean-account installation, Marketplace update and real-client learning-flow
+acceptance remain pending. No new first-party guide decision was made for 1.1.9.
 
 The 1.1.9 Marketplace validation workflow checks a pinned SHA-256 of the full
 canonical Claude plugin source tree immediately after checking out `main` and
 before loading its package builder. It then checks the exact archive digest,
 closed export inventory, source parity and both strict Claude validations.
-This content pin lets the local CI validate an uncommitted candidate without
-claiming a future source commit or publishing it. If the canonical source tree
-changes, external Marketplace validation fails until the candidate is reviewed
-and the source digest is deliberately updated.
+This content pin keeps the Marketplace workflow bound to the reviewed source.
+If the canonical source tree changes, external Marketplace validation fails
+until the candidate is reviewed and the source digest is deliberately updated.
 
 ## 1.1.8 publication and automatic backend download
 
