@@ -306,15 +306,6 @@ assert.equal(
 )
 
 const learnerViewSource = readFileSync('src/views/LearnerView.tsx', 'utf8')
-const continueHandlerStart = learnerViewSource.indexOf('const handleContinueCurrentPlanGoal = useCallback')
-const continueHandlerEnd = learnerViewSource.indexOf('\n  const handleSwitchLearningPlan = useCallback', continueHandlerStart)
-assert.ok(continueHandlerStart >= 0 && continueHandlerEnd > continueHandlerStart)
-const continueHandlerSource = learnerViewSource.slice(continueHandlerStart, continueHandlerEnd)
-assert.match(
-  continueHandlerSource,
-  /focusLearnerGoalContent\(effectiveActiveGoalId\)[\s\S]*?navigateToLearnerLearningPlanGoal\(/u,
-  'Continuing the current plan goal must reveal it before falling back to route navigation.',
-)
 const switchHandlerStart = learnerViewSource.indexOf('const handleSwitchLearningPlan = useCallback')
 const switchHandlerEnd = learnerViewSource.indexOf('\n  const retryLearningPlans = useCallback', switchHandlerStart)
 assert.ok(switchHandlerStart >= 0 && switchHandlerEnd > switchHandlerStart)
@@ -340,7 +331,7 @@ assert.match(
 )
 const transitionApplyStart = learnerViewSource.indexOf('const applyLearningPlanTransition = useCallback')
 const transitionApplyEnd = learnerViewSource.indexOf(
-  '\n  const handleContinueCurrentPlanGoal = useCallback',
+  '\n  const handleSwitchLearningPlan = useCallback',
   transitionApplyStart,
 )
 assert.ok(transitionApplyStart >= 0 && transitionApplyEnd > transitionApplyStart)
