@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 037-default-learner-period-basis-to-week
+      author: skillpilot
+      changes:
+        - addDefaultValue:
+            tableName: learner
+            columnName: learning_plan_period_basis
+            defaultValue: "WEEK"
+      rollback:
+        - addDefaultValue:
+            tableName: learner
+            columnName: learning_plan_period_basis
+            defaultValue: "DAY"

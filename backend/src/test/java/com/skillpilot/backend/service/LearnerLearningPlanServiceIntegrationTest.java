@@ -86,6 +86,8 @@ class LearnerLearningPlanServiceIntegrationTest {
         learner.setSkillpilotId(LEARNER_ID);
         learner.setLastActivityAt(CAPTURED_AT);
         learner.setFollowLearningPlans(false);
+        // Most scenarios below intentionally exercise the explicitly selected day mode.
+        learner.setLearningPlanPeriodBasis(com.skillpilot.backend.service.learningplan.PeriodBasis.DAY);
         learnerRepository.saveAndFlush(learner);
         ZoneId zone = ZoneId.of("Europe/Berlin");
         service = new LearnerLearningPlanService(
@@ -118,6 +120,29 @@ class LearnerLearningPlanServiceIntegrationTest {
                 .thenReturn(landscape(LANDSCAPE_ID, "Mathematik"));
         when(landscapeService.getById(PHYSICS_LANDSCAPE_ID))
                 .thenReturn(landscape(PHYSICS_LANDSCAPE_ID, "Physik"));
+    }
+
+    @Test
+    void missingPeriodPreferenceDefaultsToTheCurrentWeekWithoutChangingAnExplicitDayChoice() {
+        learner.setLearningPlanPeriodBasis(null);
+        var plan = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "This week", List.of(
+                        learning("monday", "2026-08-31", "2026-08-31", "atom-a"),
+                        learning("friday", "2026-09-04", "2026-09-04", "atom-b"))), TODAY);
+
+        var weekly = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(weekly.periodBasis()).isEqualTo(com.skillpilot.backend.service.learningplan.PeriodBasis.WEEK);
+        assertThat(weekly.periodStart()).isEqualTo(LocalDate.parse("2026-08-31"));
+        assertThat(weekly.periodEnd()).isEqualTo(LocalDate.parse("2026-09-06"));
+        assertThat(weekly.statusText()).isEqualTo("Mathematik: Wochenziel 0 von 2 · im Plan");
+
+        learner.setLearningPlanPeriodBasis(com.skillpilot.backend.service.learningplan.PeriodBasis.DAY);
+        var daily = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(daily.periodBasis()).isEqualTo(com.skillpilot.backend.service.learningplan.PeriodBasis.DAY);
+        assertThat(daily.periodStart()).isEqualTo(TODAY);
+        assertThat(daily.periodEnd()).isEqualTo(TODAY);
+        assertThat(daily.statusText()).isEqualTo("Mathematik: Tagesziel 0 von 1 · 1 Lernziel im Rückstand");
+        assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).blocks()).isEqualTo(plan.blocks());
     }
 
     @Test

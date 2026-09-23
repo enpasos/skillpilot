@@ -167,6 +167,8 @@ try {
 
   await page.goto(`${server.baseUrl}/scripts/fixtures/learnerPlanCockpitUi.html`)
   await page.getByTestId('plan-mode-backend-prop').filter({ hasText: 'true' }).waitFor()
+  assert.equal(await page.getByRole('radio', { name: '1 Woche', exact: true }).isChecked(), true,
+    'settings without a saved period preference select the week')
   const followLearningPlansCheckbox = page.getByRole('checkbox', { name: /^Nach Plan lernen\b/u })
   const autoPilotCheckbox = page.getByRole('checkbox', { name: /^Autopilot aktivieren\b/u })
   await page.waitForFunction(() => {

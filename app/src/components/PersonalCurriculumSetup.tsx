@@ -103,7 +103,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     initialStrategy = 'SEQUENTIAL',
     initialAutoPilot = true,
     initialFollowLearningPlans = false,
-    initialPeriodBasis = 'DAY',
+    initialPeriodBasis = 'WEEK',
     initialStrictMode = false,
     initialShowGoalVisualizationsInChat = true,
     personalizationEditor,

@@ -18,6 +18,7 @@ import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearnerLearningPlan;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.repository.LearnerLearningPlanRepository;
+import com.skillpilot.backend.service.learningplan.PeriodBasis;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -48,6 +49,7 @@ class LearnerLearningPlanServiceTest {
                 Clock.fixed(Instant.parse("2026-09-03T23:30:00Z"), ZoneId.of("UTC")));
         Learner learner = new Learner();
         learner.setSkillpilotId("preview-learner");
+        learner.setLearningPlanPeriodBasis(PeriodBasis.DAY);
         when(learners.getLearner("preview-learner")).thenReturn(learner);
         when(learners.getPlanningScope("preview-learner", "math"))
                 .thenReturn(new LearnerPlanningScopeResponse("curriculum", "math",

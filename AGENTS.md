@@ -973,7 +973,7 @@ where that goal is in scope, without calling it subject-matter mastery. Missing
 or stale result data must be shown as unavailable, never as zero achievements.
 
 Learning-plan status is backend-owned on the learner's persisted **DAY or WEEK**
-basis (default DAY; Europe/Berlin, Monday through Sunday). Each stable subject is
+basis (default WEEK; Europe/Berlin, Monday through Sunday). Each stable subject is
 balanced independently over the same fixed, deduplicated plan-goal set; prior
 knowledge is excluded and later mastery remains in that set. Current-period
 completion events cover the period quota first, and advance work can cover it

@@ -128,9 +128,7 @@ public class LearnerLearningPlanService {
     private LearnerPlanTodayStatus calculateStatus(
             String skillpilotId, Learner learner, List<LearnerLearningPlan> subjectPlans,
             LocalDate asOf, String communicationLocale, boolean preview) {
-        PeriodBasis periodBasis = learner.getLearningPlanPeriodBasis() != null
-                ? learner.getLearningPlanPeriodBasis()
-                : PeriodBasis.DAY;
+        PeriodBasis periodBasis = learner.getLearningPlanPeriodBasis();
         LocalDate periodStart = periodStart(periodBasis, asOf);
         LocalDate periodEnd = periodEnd(periodBasis, asOf);
         // Hosts pass the language stored with their learning session; the WebGUI
@@ -1100,9 +1098,7 @@ public class LearnerLearningPlanService {
         List<PlanGoalCandidate> candidates = new ArrayList<>();
         List<PlanGoalCandidate> furtherLearning = new ArrayList<>();
         Learner learner = learners.getLearner(skillpilotId);
-        PeriodBasis periodBasis = learner.getLearningPlanPeriodBasis() != null
-                ? learner.getLearningPlanPeriodBasis()
-                : PeriodBasis.DAY;
+        PeriodBasis periodBasis = learner.getLearningPlanPeriodBasis();
         LocalDate periodStart = periodStart(periodBasis, asOf);
         LocalDate periodEnd = periodEnd(periodBasis, asOf);
         Map<String, List<LearnerLearningPlanApi.Block>> validBlocks = new LinkedHashMap<>();
@@ -1196,9 +1192,7 @@ public class LearnerLearningPlanService {
             boolean enabled,
             String activeGoalId) {
         Learner learner = learners.getLearner(skillpilotId);
-        PeriodBasis periodBasis = learner.getLearningPlanPeriodBasis() != null
-                ? learner.getLearningPlanPeriodBasis()
-                : PeriodBasis.DAY;
+        PeriodBasis periodBasis = learner.getLearningPlanPeriodBasis();
         LocalDate periodStart = periodStart(periodBasis, asOf);
         LocalDate periodEnd = periodEnd(periodBasis, asOf);
         return summarize(

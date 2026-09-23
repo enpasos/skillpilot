@@ -212,7 +212,7 @@ const statusFor = (basis: 'DAY' | 'WEEK', example: Example): LearnerPlanStatus =
 }
 
 const Preview = () => {
-  const [basis, setBasis] = useState<'DAY' | 'WEEK'>('DAY')
+  const [basis, setBasis] = useState<'DAY' | 'WEEK'>('WEEK')
   const [exampleKey, setExampleKey] = useState('current')
   const [mobile, setMobile] = useState(() => window.innerWidth < 640)
   const [settingsNotice, setSettingsNotice] = useState(false)

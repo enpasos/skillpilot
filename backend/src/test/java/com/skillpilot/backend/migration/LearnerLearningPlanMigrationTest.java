@@ -17,6 +17,10 @@ class LearnerLearningPlanMigrationTest {
 
     private static final String CHANGELOG =
             "db/changelog/changes/029-add-learner-learning-plans.yaml";
+    private static final String PERIOD_BASIS_CHANGELOG =
+            "db/changelog/changes/034-add-learner-period-basis.yaml";
+    private static final String WEEK_DEFAULT_CHANGELOG =
+            "db/changelog/changes/037-default-learner-period-basis-to-week.yaml";
 
     @Test
     void migrationCreatesLearnerOwnedUniqueCascadeAndDisabledOptIn() throws Exception {
@@ -61,6 +65,53 @@ class LearnerLearningPlanMigrationTest {
                 assertThat(row.next()).isTrue();
                 assertThat(row.getInt(1)).isZero();
             }
+        }
+    }
+
+    @Test
+    void changedDatabaseDefaultPreservesPreviouslySavedDayChoices() throws Exception {
+        try (Connection connection = DriverManager.getConnection(
+                "jdbc:h2:mem:learner-period-basis-migration;MODE=PostgreSQL;DB_CLOSE_DELAY=-1")) {
+            try (Statement statement = connection.createStatement()) {
+                statement.execute("CREATE TABLE learner (skillpilot_id VARCHAR(80) PRIMARY KEY)");
+                statement.execute("INSERT INTO learner (skillpilot_id) VALUES ('existing-day')");
+            }
+            new Liquibase(PERIOD_BASIS_CHANGELOG, new ClassLoaderResourceAccessor(),
+                    new JdbcConnection(connection)).update(new Contexts());
+            assertPeriodBasis(connection, "existing-day", "DAY");
+
+            new Liquibase(WEEK_DEFAULT_CHANGELOG, new ClassLoaderResourceAccessor(),
+                    new JdbcConnection(connection)).update(new Contexts());
+            try (Statement statement = connection.createStatement()) {
+                statement.execute("INSERT INTO learner (skillpilot_id) VALUES ('new-week')");
+            }
+            assertPeriodBasis(connection, "existing-day", "DAY");
+            assertPeriodBasis(connection, "new-week", "WEEK");
+        }
+    }
+
+    @Test
+    void completeChangelogCreatesLearnersWithWeekAsTheDatabaseDefault() throws Exception {
+        try (Connection connection = DriverManager.getConnection(
+                "jdbc:h2:mem:learner-period-basis-master;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;NON_KEYWORDS=VALUE")) {
+            new Liquibase("db/changelog/db.changelog-master.yaml", new ClassLoaderResourceAccessor(),
+                    new JdbcConnection(connection)).update(new Contexts());
+            try (Statement statement = connection.createStatement()) {
+                statement.execute("INSERT INTO learner (skillpilot_id, created_at) "
+                        + "VALUES ('new-from-master', CURRENT_TIMESTAMP)");
+            }
+            assertPeriodBasis(connection, "new-from-master", "WEEK");
+        }
+    }
+
+    private static void assertPeriodBasis(Connection connection, String learnerId, String expected)
+            throws Exception {
+        try (Statement statement = connection.createStatement();
+                ResultSet row = statement.executeQuery(
+                        "SELECT learning_plan_period_basis FROM learner WHERE skillpilot_id='" + learnerId + "'")) {
+            assertThat(row.next()).isTrue();
+            assertThat(row.getString(1)).isEqualTo(expected);
+            assertThat(row.next()).isFalse();
         }
     }
 }

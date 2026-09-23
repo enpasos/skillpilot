@@ -124,7 +124,7 @@ Bestandspläne werden unterstützt, soweit ihre Grundlage zuverlässig interpret
 
 ## 4. Tages- und Wochenbasis
 
-In der Lernkonfiguration im Cockpit wird pro SkillPilot-ID dauerhaft zwischen **1 Tag** und **1 Woche** gewählt. Ohne ausdrückliche Auswahl gilt **1 Tag**.
+In der Lernkonfiguration im Cockpit wird pro SkillPilot-ID dauerhaft zwischen **1 Tag** und **1 Woche** gewählt. Ohne ausdrückliche Auswahl gilt **1 Woche**. Eine zuvor ausdrücklich gewählte Tagesbasis bleibt erhalten.
 
 | Einstellung | Laufende Periode |
 |---|---|

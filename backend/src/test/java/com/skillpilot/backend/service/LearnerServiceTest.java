@@ -190,6 +190,7 @@ public class LearnerServiceTest {
         originalPlanClock = (Clock) ReflectionTestUtils.getField(learnerLearningPlanService, "clock");
         Learner learner = new Learner();
         learner.setSkillpilotId("test-learner");
+        learner.setLearningPlanPeriodBasis(PeriodBasis.DAY);
         learner.setLearningStrategy("RANDOM");
         learner.setAutoPilot(false);
         learnerRepository.save(learner);
@@ -219,6 +220,7 @@ public class LearnerServiceTest {
         assertThat(persisted.getLearningStrategy()).isEqualTo("SEQUENTIAL");
         assertThat(persisted.getAutoPilot()).isTrue();
         assertThat(persisted.getFollowLearningPlans()).isFalse();
+        assertThat(persisted.getLearningPlanPeriodBasis()).isEqualTo(PeriodBasis.WEEK);
     }
 
     @Test
@@ -1125,7 +1127,7 @@ public class LearnerServiceTest {
         assertThat(learnerRepository.findById(learnerId).orElseThrow().getLearningPlanPeriodBasis())
                 .isEqualTo(PeriodBasis.WEEK);
         assertThat(learnerRepository.findById(other.getSkillpilotId()).orElseThrow().getLearningPlanPeriodBasis())
-                .isEqualTo(PeriodBasis.DAY);
+                .isEqualTo(PeriodBasis.WEEK);
         var after = learnerLearningPlanRepository.findByLearner_SkillpilotIdAndLandscapeId(
                 learnerId, CANONICAL_MATH_LANDSCAPE_ID).orElseThrow();
         assertThat(after.getBlocksJson()).isEqualTo(blocksBefore);

@@ -72,7 +72,7 @@ public class Learner {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "learning_plan_period_basis", nullable = false)
-    private PeriodBasis learningPlanPeriodBasis = PeriodBasis.DAY;
+    private PeriodBasis learningPlanPeriodBasis = PeriodBasis.WEEK;
 
     /**
      * Monotone revision of the learner state shared by the cockpit and all
@@ -201,11 +201,11 @@ public class Learner {
     }
 
     public PeriodBasis getLearningPlanPeriodBasis() {
-        return learningPlanPeriodBasis != null ? learningPlanPeriodBasis : PeriodBasis.DAY;
+        return learningPlanPeriodBasis != null ? learningPlanPeriodBasis : PeriodBasis.WEEK;
     }
 
     public void setLearningPlanPeriodBasis(PeriodBasis learningPlanPeriodBasis) {
-        this.learningPlanPeriodBasis = learningPlanPeriodBasis != null ? learningPlanPeriodBasis : PeriodBasis.DAY;
+        this.learningPlanPeriodBasis = learningPlanPeriodBasis != null ? learningPlanPeriodBasis : PeriodBasis.WEEK;
     }
 
     public long getCoachStateRevision() {
@@ -249,7 +249,7 @@ public class Learner {
             this.followLearningPlans = false;
         }
         if (this.learningPlanPeriodBasis == null) {
-            this.learningPlanPeriodBasis = PeriodBasis.DAY;
+            this.learningPlanPeriodBasis = PeriodBasis.WEEK;
         }
     }
 }

@@ -2645,7 +2645,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       (learnerData?.learningStrategy ?? 'SEQUENTIAL') !== preferences.strategy
       || (learnerData?.autoPilot ?? true) !== preferences.autoPilot
       || (learnerData?.followLearningPlans ?? false) !== preferences.followLearningPlans
-      || (learnerData?.learningPlanPeriodBasis ?? 'DAY') !== preferences.learningPlanPeriodBasis
+      || (learnerData?.learningPlanPeriodBasis ?? 'WEEK') !== preferences.learningPlanPeriodBasis
       || (learnerData?.strictMode ?? false) !== preferences.strictMode
       || (learnerData?.showGoalVisualizationsInChat ?? true) !== preferences.showGoalVisualizationsInChat
 
