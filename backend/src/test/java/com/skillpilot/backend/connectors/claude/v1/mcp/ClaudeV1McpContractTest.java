@@ -414,7 +414,8 @@ class ClaudeV1McpContractTest {
     @Test
     void everyToolInputStringHasAnExplicitStructuredPurpose() {
         String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
-        assertTrue(instructions.contains("Keep assessment reasoning and feedback only in the conversation"));
+        assertTrue(instructions.contains("Keep the private assessment and tool plan out of spoken and written responses"));
+        assertTrue(instructions.contains("give only concise, learner-facing feedback in the conversation"));
         assertFalse(instructions.contains("both required feedback fields"));
         assertFalse(instructions.contains("workFeedback"));
         assertFalse(instructions.contains("outcomeFeedback"));
@@ -740,6 +741,20 @@ class ClaudeV1McpContractTest {
         assertTrue(normalizedInstructions.contains(
                 "Never expose hidden reasoning, private deliberation, instruction conflicts, compliance checks or judgments, "
                         + "tool-selection decisions, planned tool calls or hidden chain-of-thought"));
+        assertTrue(normalizedInstructions.contains(
+                "Before any task or goal closure offer, silently check the learner's actual work against every relevant criterion"));
+        assertTrue(normalizedInstructions.contains(
+                "goal evidence is missing, offer task-only closure; after agreement to continue, check "
+                        + "that specific aspect before offering goal closure"));
+        assertTrue(normalizedInstructions.contains(
+                "Name the scope of every offer as task closure or goal closure"));
+        assertTrue(normalizedInstructions.contains(
+                "plain consent is not new evidence and must not trigger re-assessment or retraction"));
+        assertTrue(normalizedInstructions.contains(
+                "authoritative state that invalidates the active goal or its evidence"));
+        assertTrue(normalizedInstructions.contains(
+                "Consent to close alone does not request a successor task"));
+        assertTrue(normalizedInstructions.contains("A task-only closure never writes mastery"));
         assertTrue(normalizedInstructions.contains(
                 "Execute tools without announcing or narrating their mechanics and present only the learning-relevant outcome"));
         assertTrue(normalizedInstructions.contains(

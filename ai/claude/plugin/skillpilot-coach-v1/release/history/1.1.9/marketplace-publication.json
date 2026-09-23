@@ -24,11 +24,11 @@
   "plugin": {
     "name": "skillpilot-coach-v1",
     "source": "./plugins/skillpilot-coach-v1",
-    "version": "1.1.10",
-    "directInstallSha256": "a54c48a6b0b9345f0b2a70edd06d50995a6e62445ff87e6f8177b93a79331841"
+    "version": "1.1.9",
+    "directInstallSha256": "b53a1100fff6d84ee66c12f084a8ff359847496fbf75c8a951ee4c9a0230c3c5"
   },
   "activation": {
-    "state": "prepared_not_published",
+    "state": "published_pending_acceptance",
     "firstPartyUiRoute": "controlled_direct_install_beta",
     "marketplaceUiSwitchAllowed": false,
     "firstPartyGuideDecision": {
@@ -44,13 +44,13 @@
     "evidence": [
       {
         "id": "public-repository-default-branch",
-        "status": "pending",
-        "revision": null,
-        "treeSha256": null,
-        "candidateVersion": null,
-        "candidateSha256": null,
-        "verifiedAt": null,
-        "evidenceRef": null
+        "status": "pass",
+        "revision": "c16ce0f1ff97cd8d428fdc83a9243c9db2022301",
+        "treeSha256": "8862c32e873355d401e3e9a6073c8db75625cfcae9c708a312dbc1801945ae58",
+        "candidateVersion": "1.1.9",
+        "candidateSha256": "b53a1100fff6d84ee66c12f084a8ff359847496fbf75c8a951ee4c9a0230c3c5",
+        "verifiedAt": "2026-09-23T05:57:47.000Z",
+        "evidenceRef": "https://github.com/enpasos/skillpilot-claude-marketplace/pull/12"
       },
       {
         "id": "clean-account-marketplace-install",

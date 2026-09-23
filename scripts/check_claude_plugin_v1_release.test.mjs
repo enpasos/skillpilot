@@ -32,10 +32,10 @@ test("checked-in public plugin lane is structurally valid but fail-closed PRE_SU
   assert.equal(result.requiredPendingCount, pendingGateCount);
   assert.equal(result.blockers.length, pendingGateCount);
   assert.ok(pendingGateCount > 0);
-  assert.equal(result.pluginVersion, "1.1.9");
+  assert.equal(result.pluginVersion, "1.1.10");
 
   const baseline = readJson(repositoryRoot, `${releasePath}/contract-baseline.json`);
-  assert.equal(baseline.pluginVersion, "1.1.9");
+  assert.equal(baseline.pluginVersion, "1.1.10");
   assert.equal(baseline.remoteContract.tools.length, 14);
   assert.ok(baseline.remoteContract.tools.includes("resume_skillpilot_learning_plan"));
   assert.ok(baseline.remoteContract.tools.includes("switch_skillpilot_learning_plan_subject"));

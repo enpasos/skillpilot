@@ -401,18 +401,29 @@ public class ClaudeV1McpContractAdapter {
                 save mastery only after at least two independent checks or one genuine multi-step
                 transfer task provide learner evidence in the current conversation, including spoken
                 or written responses. The conscious task and goal closure applies regardless of the
-                learner's Autopilot setting. Keep assessment reasoning and feedback only in the conversation.
-                Send only structured completion data to set_skillpilot_mastery; never send learner work,
-                assessment reasoning or feedback text. First discuss the completed task or the reached
-                goal: name what the learner demonstrated and what, if anything, is still open. Offer
-                space for questions or agreement to close only when the relevant task or goal criteria
-                are met; otherwise stay with the current content. Then stop and wait for the learner's
+                learner's Autopilot setting. Before any task or goal closure offer, silently check the
+                learner's actual work against every relevant criterion. If the task is complete but
+                goal evidence is missing, offer task-only closure; after agreement to continue, check
+                that specific aspect before offering goal closure. Name the scope of every offer as
+                task closure or goal closure so the learner's answer cannot be mistaken for the other.
+                Keep the private assessment and tool plan out of spoken and written responses; give
+                only concise, learner-facing feedback in the conversation. Send only structured
+                completion data to set_skillpilot_mastery; never send learner work, private assessment
+                or feedback text. First discuss the completed task or the reached goal: name what the
+                learner demonstrated and what, if anything, is still open. Offer space for questions
+                or agreement to close only when the relevant task or goal criteria are met; otherwise
+                stay with the current content. Then stop and wait for the learner's
                 answer. Answer questions about the current content without starting another task, offer
                 closure again when appropriate, and wait for the answer; honor a pause.
                 A natural answer such as "Alles klar, weiter" is sufficient agreement. If the learner
                 agrees to close but asks for a break, complete warranted goal mastery without presenting
                 another task or image. Only after agreement may you save warranted goal mastery and
-                follow the configured continuation when the learner also wishes to continue.
+                follow the configured continuation when the learner also wishes to continue. A prior
+                goal-closure offer already settles the evidence decision for work seen before that
+                offer: plain consent is not new evidence and must not trigger re-assessment or
+                retraction. Reassess privately only for new substantive learner information or fresh
+                authoritative state that invalidates the active goal or its evidence. Consent to close
+                alone does not request a successor task. A task-only closure never writes mastery.
                 A completed task alone does not prove the entire goal is complete. When a task also
                 completes the goal, use one combined feedback and closure question and accept one answer.
                 For a task that does not complete the goal, use the same feedback and question before
@@ -493,8 +504,9 @@ public class ClaudeV1McpContractAdapter {
                 the answer. Resolve questions about these cards and respect a pause; present no next
                 batch, goal or image yet. After answering a question, offer closure again and wait.
                 After agreement, submit one complete ordered result set
-                containing only cardId and passed for each card. Keep learner answers, assessment
-                reasoning and feedback only in the conversation; never send them to the result tool.
+                containing only cardId and passed for each card. Keep private assessment out of
+                spoken and written responses; give only learner-facing feedback in the conversation.
+                Never send learner answers, assessment or feedback to the result tool.
                 Follow the returned next continuation only after this agreement: present all cards
                 when its status is ready and the learner wishes to continue, and stop when it is waiting
                 or complete or the learner requested a break. If the final
@@ -694,8 +706,8 @@ public class ClaudeV1McpContractAdapter {
                         + "reaches passingPoints. Before calling, give evidence-based feedback about the current "
                         + "goal, offer questions or closure, and wait for the learner's clear agreement. A task "
                         + "solution alone does not justify goal mastery. Send only structured completion and "
-                        + "concurrency data; "
-                        + "learner work, assessment reasoning and feedback stay in the conversation. "
+                        + "concurrency data. Private assessment stays out of spoken and written "
+                        + "responses; only concise learner-facing feedback belongs in the conversation. "
                         + "Writes learner state and advances the state revision.",
                 objectSchema(
                         List.of(

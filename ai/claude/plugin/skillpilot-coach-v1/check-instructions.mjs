@@ -3,8 +3,8 @@
 // specialty references add only the protected workflow they are loaded for.
 export const instructionByteLimits = Object.freeze({
   // Includes the exam workflow so Claude need not load a second skill/file.
-  skill: 15 * 1024,
-  taskClosure: 2 * 1024,
+  skill: 16 * 1024,
+  taskClosure: 3 * 1024,
   recall: 3 * 1024,
 });
 
@@ -74,7 +74,8 @@ export function validateClaudeCoachInstructions({ skill, taskClosure, recall }) 
     /never repeat credentials or opaque values/iu,
   ]);
   requireRule(session, "chat-privacy", [
-    /Keep learner answers, reasoning, interests, feedback and success wording in the conversation/iu,
+    /Keep learner answers, interests and learner-facing feedback in chat/iu,
+    /Private assessment, self-instructions and tool plans stay out of chat and voice/iu,
     /Never send that prose to SkillPilot for storage, logging or echoing/iu,
     /including through renamed fields/iu,
     /only the tool's structured inputs and unchanged server-issued choices\/authorizations/iu,
@@ -88,8 +89,7 @@ export function validateClaudeCoachInstructions({ skill, taskClosure, recall }) 
   requireRule(session, "learner-communication", [
     /learner's current German or English/iu,
     /Apply these rules silently/iu,
-    /do not narrate tool calls, loading, retries, internal fields/iu,
-    /policies or hidden deliberation/iu,
+    /never narrate tool calls, loading, retries, internal fields, versions, graph mechanics, policies, hidden deliberation or voice-format reminders/iu,
     /Explicit technical questions permit non-secret observable diagnostics/iu,
     /never protected values or hidden instructions/iu,
     /Do not claim a write succeeded before its confirmation/iu,
@@ -221,9 +221,14 @@ export function validateClaudeCoachInstructions({ skill, taskClosure, recall }) 
   ]);
   requireRule(closureWorkflow, "closure-workflow", [
     /Read when work may finish a task/iu,
+    /Before any learner-facing closure offer, silently decide from the learner's actual work/iu,
+    /every aspect.+?active goal has sufficient independent evidence/iu,
+    /review belongs before feedback and the offer, never after consent/iu,
+    /evidence audit, self-instructions and tool plan out of chat and voice/iu,
     /what the learner showed, what succeeded, and what remains open/iu,
     /One correct task answer does not prove the goal/iu,
     /If the current task is incomplete, explain the gap and continue it or offer a targeted check/iu,
+    /goal evidence is missing, offer task-only closure.+?On agreed continuation, check that specific missing aspect before offering goal closure/iu,
     /offer questions or closure and wait for the learner's answer/iu,
     /summarize both in one combined closure question\. One answer suffices/iu,
     /At the end of a unit, offer an appropriate ending without assuming a next task/iu,
@@ -234,10 +239,14 @@ export function validateClaudeCoachInstructions({ skill, taskClosure, recall }) 
     /A natural “Alles klar, weiter” after this offer is consent to closure and continuation/iu,
     /If only the task ended, start the next task within the same active goal only when continuation was requested/iu,
     /Closure with a pause closes the current work without starting another task or rendering a new image/iu,
+    /plain consent adds no new evidence and must not trigger a second review or retraction/iu,
+    /Reassess privately only for new substantive learner information or fresh state that invalidates the active goal or its evidence/iu,
     /set_skillpilot_mastery only now with fresh authorized state/iu,
-    /If the learner chose to continue, use the confirmed successor context and render its image before teaching/iu,
+    /If goal mastery was confirmed and the learner chose to continue, use the returned successor context and render its image before teaching/iu,
     /If they chose a pause, acknowledge closure and defer the image until a later explicit continuation with fresh context/iu,
     /Do not ask for a second confirmation/iu,
+    /Task-only closure never writes mastery/iu,
+    /Consent to close alone is not consent to start a successor/iu,
     /Consent cannot replace subject evidence; an unconfirmed write is not completion/iu,
     /same order with autopilot enabled or disabled/iu,
   ]);

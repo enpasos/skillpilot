@@ -2,18 +2,18 @@
 
 SkillPilot Coach v1 is the public-plugin candidate for curriculum-grounded
 SkillPilot learning coaching. Its product scope is limited to eligible paid
-Claude Chat on the Web and the native Android app. Version 1.1.9 is the sole
+Claude Chat on the Web and the native Android app. Version 1.1.10 is the sole
 current replacement candidate. Local preparation does not establish deployment,
-Marketplace publication or real-client acceptance. The published 1.1.8
-Marketplace package and the existing website download remain immutable; older packages are not a
-fallback for testing this candidate.
+Marketplace publication or real-client acceptance. The published 1.1.9
+Marketplace package and the existing website download remain immutable; older
+packages are not a fallback for testing this candidate.
 
 Earlier v1 direct-install packages were demonstrated in paid Claude Web chat.
 The Product Owner also used an earlier account-level direct installation with a
 Claude Pro account in the native Claude app on Android. Those observations do
-not transfer to the 1.1.9 candidate. Exact-candidate direct-install,
+not transfer to the 1.1.10 candidate. Exact-candidate direct-install,
 public-listing installation and the complete Android learning flow remain
-pending until they are verified for 1.1.9. The earlier Android observation also
+pending until they are verified for 1.1.10. The earlier Android observation also
 does not establish that the package can be installed from Android itself or
 that a public listing will reach Android. iOS, Claude Desktop Chat, Cowork and
 public Claude Code remain outside this candidate's claims.
@@ -44,8 +44,12 @@ remote SkillPilot connector. All fourteen MCP tools and both interactive MCP App
 come from that connector; the plugin does not duplicate their schemas,
 resources, or UI bytes.
 
-Version 1.1.9 requires a separate learner response after feedback before the
-coach closes a task or goal, records mastery, or begins the next task. A plan
+Version 1.1.10 checks the evidence before offering task or goal closure. It keeps
+internal assessment deliberation out of learner-facing text and speech. Once
+the coach offers closure on sufficient evidence, an agreeing answer completes
+that decision unless the learner supplies new relevant information. The coach
+still waits for a separate learner response before it closes a task or goal,
+records mastery, or begins the next task. A plan
 guides and prioritizes; it must never prevent explicitly requested learning.
 The Skill owns the common coaching flow and the complete exam procedure inline;
 task and goal closure and Verified Recall use conditional references. Load the
@@ -56,7 +60,7 @@ tool schema without write-only arguments. Local regression checks do not establi
 successful execution in a user's Claude account.
 
 The retained 1.1.4 privacy correction deliberately removes assessment prose from tool
-inputs. Claude judges the work and writes feedback and success messages in the
+inputs. Claude judges the work privately and writes concise feedback in the
 chat. Mastery calls carry only the structured completion decision; Verified
 Recall carries only the required card identifiers and pass/fail results, never
 answers, reasoning, `workFeedback`, `outcomeFeedback` or Recall `feedback`.
@@ -66,7 +70,7 @@ plugin version. Old cached inputs are rejected; they must not be reintroduced
 to make an old installation work. OAuth, learner-session, tool identity and
 backend-owned progression boundaries remain unchanged.
 
-Version 1.1.9 keeps the chat plan-first with a compact plan status formulated by
+Version 1.1.10 keeps the chat plan-first with a compact plan status formulated by
 the backend. Claude quotes `learningPlanToday.text` verbatim and adds no counts
 or judgement of its own, for example:
 “Mathematik: Tagesziel 2 von 3 · im Plan” and
@@ -108,7 +112,7 @@ from inside the Android app, Claude Desktop Chat, Cowork, hooks, subagents, or
 public Claude Code. Those surfaces require their own acceptance evidence and a
 later reviewed release before SkillPilot can advertise them.
 
-The historical direct-install observations are not evidence for 1.1.9 or public
+The historical direct-install observations are not evidence for 1.1.10 or public
 Directory availability. Submission readiness requires this exact candidate to
 complete the dedicated Web and Android real-client acceptance gates.
 Public-listing reach on Android remains a publication verification, not a

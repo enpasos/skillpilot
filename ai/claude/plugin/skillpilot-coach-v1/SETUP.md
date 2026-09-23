@@ -4,13 +4,13 @@
 
 SkillPilot has two deliberately separate Claude package routes:
 
-- **Current 1.1.9 replacement candidate:** install it only through an explicitly
+- **Current 1.1.10 replacement candidate:** install it only through an explicitly
   opened SkillPilot candidate test. It contains the coaching Skill and one
   declaration for the same remote SkillPilot connector. Earlier packages were
   observed in paid Claude Web chat and, after account-level direct installation
   on Claude Pro, in the native Claude app on Android. Those observations are
   historical evidence only: exact-candidate Web, Android and Voice acceptance
-  for 1.1.9 is still pending, and no earlier package is a supported fallback
+  for 1.1.10 is still pending, and no earlier package is a supported fallback
   for candidate acceptance. Preparing this candidate does not update existing
   installations, the published Marketplace release or the deployed download.
 - **Separate connector-only installation:** use the published **SkillPilot**
@@ -33,13 +33,13 @@ All fourteen MCP tools and both interactive MCP Apps come from the remote
 SkillPilot connector. The Skill provides coaching instructions only. Neither
 the Skill nor the plugin shell implements or duplicates the tools or UIs.
 
-## Current 1.1.9 candidate test
+## Current 1.1.10 candidate test
 
-1. This 1.1.9 candidate is local and unpublished. During an explicitly authorized
+1. This 1.1.10 candidate is local and unpublished. During an explicitly authorized
    candidate test on an eligible paid Claude account, use the exact prepared
-   **SkillPilot Coach v1** 1.1.9 package and enable it. The public Marketplace at
+   **SkillPilot Coach v1** 1.1.10 package and enable it. The public Marketplace at
    `https://github.com/enpasos/skillpilot-claude-marketplace` and the website
-   download continue to provide the previously published release until a
+   download continue to provide published 1.1.9 until a
    separately authorized publication and rollout.
    Do not use an earlier package as a fallback. Do not describe this
    account-level direct installation as an official Directory publication or
@@ -70,7 +70,7 @@ the Skill nor the plugin shell implements or duplicates the tools or UIs.
    > SkillPilot-Lernkontext weiter.
 
 An earlier account-level package was used successfully with Claude Pro in the
-native Claude app on Android. Exact-candidate 1.1.9 acceptance must still
+native Claude app on Android. Exact-candidate 1.1.10 acceptance must still
 exercise the verbatim multi-subject plan status, automatic plan resume, bundled
 connector, an explicit switch between two planned subjects, OAuth, intended
 SkillPilot learning flow and both interactive MCP Apps. The current SkillPilot
@@ -126,7 +126,7 @@ governed by Anthropic.
 
 Historical direct-install evidence demonstrates the Web surface and a native
 Android use on Claude Pro for an earlier package, but it does not validate
-1.1.9 or settle whether Anthropic's official plugin distribution serves either
+1.1.10 or settle whether Anthropic's official plugin distribution serves either
 surface. Public-listing reach is verified after publication against the exact
 candidate.
 

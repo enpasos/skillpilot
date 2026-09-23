@@ -10,6 +10,23 @@ Full real-client acceptance of 1.1.9 remains pending; repository
 publication does not establish installation or synchronization in every account.
 Earlier published packages and their evidence remain immutable history.
 
+## 1.1.10 local incident candidate
+
+On 23 September 2026, the Product Owner reported that the coach exposed
+private deliberation in a Voice conversation and reconsidered a goal closure
+after the learner accepted its offer without adding new learning information.
+The 1.1.10 successor is being prepared locally with an instruction and Claude
+connector correction. The exact 1.1.9 release dossier is retained under
+`release/history/1.1.9/`; its published archive and Marketplace source remain
+unchanged. The 1.1.10 exact-client regression plan is
+`ai/claude/plugin/skillpilot-coach-v1/release/1.1.10-incident-regression-plan.md`.
+Web and Android Voice evidence, deployment and Marketplace publication remain
+pending. The public Marketplace and website still serve 1.1.9 until a separate
+approved rollout. The Marketplace workflow's canonical-source revision and
+source-tree digest must be rebound to an actual committed 1.1.10 SkillPilot
+source before preparing a publishable Marketplace export; the published 1.1.9
+pin must not be relabeled with new candidate hashes.
+
 ## 1.1.9 publication for issue #55
 
 On 23 September 2026, the Product Owner confirmed green CI and deployment and

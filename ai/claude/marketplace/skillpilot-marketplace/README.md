@@ -1,16 +1,17 @@
 # SkillPilot Claude Marketplace
 
-**SkillPilot Coach v1 · Version 1.1.9** brings curriculum-grounded learning
-coaching to Claude. Install it once through this Git marketplace to receive
-future plugin updates through Claude.
+**SkillPilot Coach v1 · Version 1.1.10 candidate** provides curriculum-grounded
+learning coaching for Claude. The public Marketplace and SkillPilot download
+continue to serve 1.1.9 while this replacement candidate is tested.
 
-Version 1.1.9 keeps daily and weekly plan status and self-contained exam
-instructions. It also lets learners ask questions or pause after task feedback,
-before the coach records a goal completion or starts another task. Acceptance
-in real Claude accounts remains pending; earlier published packages and their
-evidence remain immutable history.
+Version 1.1.10 keeps daily and weekly plan status, self-contained exam
+instructions and a separate answer after task feedback. Before offering
+closure, the coach must check the evidence privately; it gives a concise
+learner-facing result without exposing its internal deliberation. Acceptance
+in real Claude accounts remains pending; published packages and their evidence
+remain immutable history.
 
-### In version 1.1.9
+### In version 1.1.10
 
 - The coach quotes SkillPilot's plan status word for word, exactly as the
   SkillPilot cockpit shows it: one line per subject with its daily or weekly
@@ -24,6 +25,8 @@ evidence remain immutable history.
   after a complete submission, using the actual tool schema.
 - After a task, the coach gives feedback and waits for your answer before
   closing the task or goal and moving on. You can ask questions or pause.
+- The coach checks whether the goal evidence is sufficient before offering
+  closure, including in voice mode. Its private deliberation stays private.
 - Your answers, assessments and feedback stay in the Claude conversation;
   SkillPilot receives only structured learning results.
 
@@ -62,28 +65,30 @@ observed in two Claude accounts.
 An upload-only installation is not the same as a marketplace installation.
 
 Update timing and available synchronization controls can vary by Claude client.
-Check that your installed plugin shows **1.1.9**, then start a fresh learning
-session from SkillPilot. If an update has not arrived, use the refresh control
-where available or contact <support@skillpilot.com>.
+After 1.1.10 is published, check that your installed plugin shows **1.1.10**,
+then start a fresh learning session from SkillPilot. If an update has not
+arrived, use the refresh control where available or contact
+<support@skillpilot.com>.
 
 The observed automatic update mechanism does not mean that every account has
-already received 1.1.9. Verification of this version in individual clients
+already received 1.1.10. Verification of this version in individual clients
 remains separate from publication.
 
 ## About this beta
 
 This personal marketplace is published independently by SkillPilot; it is not
 reviewed, endorsed, curated, or verified by Anthropic. The seven packaged plugin
-files match the prepared 1.1.9 direct-install candidate byte for byte.
+files match the prepared 1.1.10 direct-install candidate byte for byte.
 For supported clients, setup and the security boundary, see the
 [plugin README](./plugins/skillpilot-coach-v1/README.md) and
 [setup guide](./plugins/skillpilot-coach-v1/SETUP.md).
 
 Those packaged documents retain their canonical pre-publication snapshot;
 their preparation-time release notes are not a live availability indicator.
-This Marketplace export contains **1.1.9**, matching the version currently
-served by the SkillPilot website download. Repository publication does not
-prove that an installed Claude account has already updated.
+This local Marketplace export contains **1.1.10**. The public repository and
+SkillPilot website continue to serve **1.1.9** until a separately authorized
+publication and rollout. Repository publication alone will not prove that an
+installed Claude account has updated.
 
 Technical installation ID: `skillpilot-coach-v1@skillpilot-marketplace`.
 

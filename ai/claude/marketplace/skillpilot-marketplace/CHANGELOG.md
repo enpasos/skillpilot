@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.10 - 2026-09-23 (local candidate)
+
+- Check task and goal evidence privately before offering closure. Once the
+  learner accepts an offered closure, carry out that decision unless new
+  relevant learner information changes the evidence.
+- Keep private deliberation, policy checks and tool planning out of learner-facing
+  text and speech; give only concise feedback about the demonstrated work.
+- Preserve the published 1.1.9 package and its release evidence. Deployment,
+  Marketplace publication and real-client acceptance require separate checks.
+
 ## 1.1.9 - 2026-09-23
 
 - Give concrete feedback after each task and ask whether the learner has

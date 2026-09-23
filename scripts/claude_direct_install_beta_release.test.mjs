@@ -228,12 +228,17 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
     downloadBasePath: "/api/public/claude/plugins",
     accessModel: "first_party_guided_beta",
   });
-  assert.equal(canonicalLane.candidate.version, "1.1.9");
+  assert.equal(canonicalLane.candidate.version, "1.1.10");
   assert.match(canonicalLane.candidate.sha256, /^[0-9a-f]{64}$/u);
   for (const id of [
     "web-learning-plan-compact-summary", "android-voice-learning-plan-compact-summary",
     "web-learning-plan-older-due-goal-counts-toward-daily-quota", "web-learning-plan-voluntary-extra-after-daily-quota",
     "android-voice-learning-plan-older-due-goal-counts-toward-daily-quota", "android-voice-learning-plan-voluntary-extra-after-daily-quota",
+    "web-closure-evidence-before-offer", "web-consent-without-new-evidence-no-reassessment",
+    "web-task-only-closure-no-mastery",
+    "android-voice-closure-evidence-before-offer", "android-voice-consent-without-new-evidence-no-reassessment",
+    "android-voice-task-only-closure-no-mastery",
+    "android-voice-no-private-deliberation-leak",
   ]) {
     assert.equal(canonicalExactClientEvidence.checks.find((entry) => entry.id === id)?.status, "pending");
     const incomplete = structuredClone(canonicalExactClientEvidence);
@@ -295,6 +300,9 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
       "web-learning-plan-paused-and-blocked-plan-guidance",
       "web-goal-visualization-after-goal-change",
       "web-active-goal-completion-persisted",
+      "web-closure-evidence-before-offer",
+      "web-task-only-closure-no-mastery",
+      "web-consent-without-new-evidence-no-reassessment",
       "web-backend-selected-successor",
       "web-no-policy-instruction-or-internal-deliberation-narration",
       "web-no-lazy-schema-parameter-or-retry-narration",
@@ -314,6 +322,10 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
       "android-voice-learning-plan-day-complete-without-goal-menu",
       "android-voice-learning-plan-paused-and-blocked-plan-guidance",
       "android-voice-active-goal-completion-persisted",
+      "android-voice-closure-evidence-before-offer",
+      "android-voice-task-only-closure-no-mastery",
+      "android-voice-consent-without-new-evidence-no-reassessment",
+      "android-voice-no-private-deliberation-leak",
       "android-voice-backend-selected-successor",
       "android-voice-no-policy-instruction-or-internal-deliberation-narration",
       "android-voice-no-lazy-schema-parameter-or-retry-narration",
@@ -1115,9 +1127,13 @@ test("lane loading requires exact-client evidence and accepts a fully approved c
     approved.observedAt = "2026-09-01T10:00:00.000Z";
     approved.clients.web.browserVersion = "Example Browser 1.0";
     approved.clients.web.claudeModel = "Example Claude Model";
+    approved.clients.web.claudeEffort = "medium";
+    approved.clients.web.thinkingMode = "on";
     approved.clients.android.appVersion = "1.2.3";
     approved.clients.android.androidVersion = "Android 16";
     approved.clients.android.claudeModel = "Example Claude Model";
+    approved.clients.android.claudeEffort = "medium";
+    approved.clients.android.thinkingMode = "on";
     for (const check of approved.checks) {
       check.status = "pass";
     }
@@ -1126,6 +1142,18 @@ test("lane loading requires exact-client evidence and accepts a fully approved c
     approved.redactionConfirmed = true;
     approved.approvedBy = "product-owner";
     approved.approvedAt = "2026-09-01T10:05:00.000Z";
+    const missingEffort = structuredClone(approved);
+    missingEffort.clients.web.claudeEffort = null;
+    assert.throws(
+      () => validateDirectInstallBetaExactClientEvidence(missingEffort, readJson(lanePath)),
+      /clients\.web\.claudeEffort must be one of/u,
+    );
+    const mismatchedProfile = structuredClone(approved);
+    mismatchedProfile.clients.android.claudeEffort = "high";
+    assert.throws(
+      () => validateDirectInstallBetaExactClientEvidence(mismatchedProfile, readJson(lanePath)),
+      /one common host profile: claudeEffort/u,
+    );
     writeJson(exactClientEvidencePath, approved);
 
     assert.throws(

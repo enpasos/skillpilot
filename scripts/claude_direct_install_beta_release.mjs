@@ -65,6 +65,9 @@ const expectedExactClientChecks = [
   "web-learning-plan-paused-and-blocked-plan-guidance",
   "web-goal-visualization-after-goal-change",
   "web-active-goal-completion-persisted",
+  "web-closure-evidence-before-offer",
+  "web-task-only-closure-no-mastery",
+  "web-consent-without-new-evidence-no-reassessment",
   "web-backend-selected-successor",
   "web-no-policy-instruction-or-internal-deliberation-narration",
   "web-no-lazy-schema-parameter-or-retry-narration",
@@ -84,6 +87,10 @@ const expectedExactClientChecks = [
   "android-voice-learning-plan-day-complete-without-goal-menu",
   "android-voice-learning-plan-paused-and-blocked-plan-guidance",
   "android-voice-active-goal-completion-persisted",
+  "android-voice-closure-evidence-before-offer",
+  "android-voice-task-only-closure-no-mastery",
+  "android-voice-consent-without-new-evidence-no-reassessment",
+  "android-voice-no-private-deliberation-leak",
   "android-voice-backend-selected-successor",
   "android-voice-no-policy-instruction-or-internal-deliberation-narration",
   "android-voice-no-lazy-schema-parameter-or-retry-narration",
@@ -501,13 +508,13 @@ export function validateDirectInstallBetaExactClientEvidence(evidence, lane) {
   assertRecord(evidence.clients.web, "exact-client evidence.clients.web");
   assertExactKeys(
     evidence.clients.web,
-    ["browserVersion", "claudeModel"],
+    ["browserVersion", "claudeModel", "claudeEffort", "thinkingMode"],
     "exact-client evidence.clients.web",
   );
   assertRecord(evidence.clients.android, "exact-client evidence.clients.android");
   assertExactKeys(
     evidence.clients.android,
-    ["appVersion", "androidVersion", "claudeModel"],
+    ["appVersion", "androidVersion", "claudeModel", "claudeEffort", "thinkingMode"],
     "exact-client evidence.clients.android",
   );
 
@@ -550,9 +557,13 @@ export function validateDirectInstallBetaExactClientEvidence(evidence, lane) {
       ["observedAt", evidence.observedAt],
       ["clients.web.browserVersion", evidence.clients.web.browserVersion],
       ["clients.web.claudeModel", evidence.clients.web.claudeModel],
+      ["clients.web.claudeEffort", evidence.clients.web.claudeEffort],
+      ["clients.web.thinkingMode", evidence.clients.web.thinkingMode],
       ["clients.android.appVersion", evidence.clients.android.appVersion],
       ["clients.android.androidVersion", evidence.clients.android.androidVersion],
       ["clients.android.claudeModel", evidence.clients.android.claudeModel],
+      ["clients.android.claudeEffort", evidence.clients.android.claudeEffort],
+      ["clients.android.thinkingMode", evidence.clients.android.thinkingMode],
       ["externalEvidenceId", evidence.externalEvidenceId],
       ["externalEvidenceSha256", evidence.externalEvidenceSha256],
       ["approvedBy", evidence.approvedBy],
@@ -577,6 +588,16 @@ export function validateDirectInstallBetaExactClientEvidence(evidence, lane) {
     evidence.clients.web.claudeModel,
     "exact-client evidence.clients.web.claudeModel",
   );
+  assertOneOf(
+    evidence.clients.web.claudeEffort,
+    ["low", "medium", "high", "xhigh", "max"],
+    "exact-client evidence.clients.web.claudeEffort",
+  );
+  assertOneOf(
+    evidence.clients.web.thinkingMode,
+    ["on", "off"],
+    "exact-client evidence.clients.web.thinkingMode",
+  );
   assertNonEmptyString(
     evidence.clients.android.appVersion,
     "exact-client evidence.clients.android.appVersion",
@@ -589,6 +610,23 @@ export function validateDirectInstallBetaExactClientEvidence(evidence, lane) {
     evidence.clients.android.claudeModel,
     "exact-client evidence.clients.android.claudeModel",
   );
+  assertOneOf(
+    evidence.clients.android.claudeEffort,
+    ["low", "medium", "high", "xhigh", "max"],
+    "exact-client evidence.clients.android.claudeEffort",
+  );
+  assertOneOf(
+    evidence.clients.android.thinkingMode,
+    ["on", "off"],
+    "exact-client evidence.clients.android.thinkingMode",
+  );
+  for (const key of ["claudeModel", "claudeEffort", "thinkingMode"]) {
+    assertEqual(
+      evidence.clients.android[key],
+      evidence.clients.web[key],
+      `passing exact-client evidence must use one common host profile: ${key}`,
+    );
+  }
   assertNonEmptyString(
     evidence.externalEvidenceId,
     "exact-client evidence.externalEvidenceId",
