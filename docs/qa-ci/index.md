@@ -25,6 +25,8 @@ Use this page by role: start with the overview documents, then jump to a review 
   Persisted status layer used by the local Workbench dashboard.
 - [Mathematik M7: Fortsetzungs- und Zwischenstand vom 20. September](math-m7-resumed-2026-09-20.md)
   Integrierte Teilpakete, offene Nachweise und lokale Übergabeprüfungen.
+- [Mathematik M7: Fortsetzung und Pausen-Checkpoint vom 23. September](math-m7-resumed-2026-09-21.md)
+  Aktueller Fünf-Gate-Stand, fachliche Teilabschlüsse und dokumentierte offene Kandidaten.
 - [Curriculum Mapping Workbench](curriculum-mapping-workbench.md)
   Two-pane audit surface from source snapshots to learner-facing SkillPilot trees.
 - [Documentation Guidelines](../dev/documentation-guidelines.md)
@@ -112,6 +114,8 @@ These are generated audit views for configured `CQR-302` reviews. The registry l
 
 These documents capture one-off investigations, remediation slices, or dated PoC evidence. They are useful context, not durable process contracts.
 
+- [Mathematik Q4: Caterer-Prüfungsaufgabe, fokussierte QS](math-q4-caterer-exam-current-review-2026-09-23.md)
+  Geprüfte Aufgabenbindung, GK/LK-Projektion und Grenzen der maschinellen Freigabe.
 - [Issue 48: Einheitlicher Lernplanstatus](issue-48-unified-learning-plan-status.md)
   Manuell gepflegte Abnahmematrix für Tages-/Wochenstatus, Lernfortsetzung und den abgestimmten Claude-Rollout.
 - [Physik: M7-Abschluss im Mehrpass-Durchgang, 2026-09-20](physics-m7-resumed-2026-09-20.md)

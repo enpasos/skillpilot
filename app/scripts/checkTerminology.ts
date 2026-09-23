@@ -143,6 +143,23 @@ const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
     found: 'Wissenslandschaften',
     lineSha256: '863fbedf7aef561bd4fd6868d4e7d13d61b0d1a107fbb2b00c8e0fedcd4275e9',
   },
+  // Preserve the original wording in two point-in-time AI image-review records.
+  {
+    ruleId: 'TRM-001',
+    path: 'curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-probability-notation-20260921-v1/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/ai_candidate-review.json',
+    line: 85,
+    column: 50,
+    found: 'Lernlandschaft',
+    lineSha256: '3b6aefda6b8790a14f8f5b8183182dc00a9e749840613f2399b4455d09384428',
+  },
+  {
+    ruleId: 'TRM-001',
+    path: 'curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-probability-notation-20260921-v1/52e57eb5-7cd1-5df0-a8c6-7b090f097d9f/ai_candidate-review.md',
+    line: 23,
+    column: 31,
+    found: 'Lernlandschaft',
+    lineSha256: '93292fa26ce4d15b2ab87d8689386b2eb73b7169e83fdff73dc1e90240145718',
+  },
 ]
 
 /** This file lists the retired terms and would otherwise report itself. */
