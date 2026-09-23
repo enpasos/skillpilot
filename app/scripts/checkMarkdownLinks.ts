@@ -35,10 +35,13 @@ function isExternalLink(target: string): boolean {
 
 function stripMarkdownLinkTarget(target: string): string {
   const trimmed = target.trim()
-  if (trimmed.startsWith('<') && trimmed.endsWith('>')) {
-    return trimmed.slice(1, -1)
+  // Markdown permits an optional quoted title after the destination, for
+  // example an image's "width=360" title used by the WebGUI and PDF renderer.
+  const destination = trimmed.match(/^(<[^>]+>|\S+)(?:\s+(?:"[^"]*"|'[^']*'))?$/)?.[1] ?? trimmed
+  if (destination.startsWith('<') && destination.endsWith('>')) {
+    return destination.slice(1, -1)
   }
-  return trimmed
+  return destination
 }
 
 function stripFragmentAndQuery(target: string): string {
