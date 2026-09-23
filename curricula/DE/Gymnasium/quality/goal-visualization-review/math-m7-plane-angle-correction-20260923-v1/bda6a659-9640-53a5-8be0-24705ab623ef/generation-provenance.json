@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "kind": "root-agent-firsthand-generation-attestation",
+  "goalId": "bda6a659-9640-53a5-8be0-24705ab623ef",
+  "recordedAt": "2026-09-23T01:26:20Z",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactServingModelRevision": null,
+  "attestationBoundary": "The root agent generated the three images and supplied its actual prompts and image paths to the integrating independent reviewer. The integrating reviewer viewed the images and verified their archived hashes, but did not personally make or observe the generation tool calls. Prompt files reproduce the root-reported prompt text, apart from a terminal file newline.",
+  "sourceJpg": {
+    "originalCanonicalPath": "curricula/DE/Gymnasium/visualizations/mathematik/bda6a659-9640-53a5-8be0-24705ab623ef/bda6a659-9640-53a5-8be0-24705ab623ef.jpg",
+    "sha256": "b8c30a23f44e14cf1ad97671ba60b1cbaa266f0e92db6876245f475ae6e56b6f",
+    "width": 2752,
+    "height": 1536,
+    "previousPromptArchivedAs": "previous-prompt.de.md",
+    "previousPromptSha256": "99493f4ab1f25260663e610729b22ed3ceef93271d5dad82ae74da669f72dccb",
+    "retiredCopies": [
+      "retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/bda6a659-9640-53a5-8be0-24705ab623ef/bda6a659-9640-53a5-8be0-24705ab623ef.jpg",
+      "retired-active-assets/app/public/assets/goal-visualizations/mathematik/bda6a659-9640-53a5-8be0-24705ab623ef/bda6a659-9640-53a5-8be0-24705ab623ef.jpg",
+      "retired-active-assets/backend/src/main/resources/static/assets/goal-visualizations/mathematik/bda6a659-9640-53a5-8be0-24705ab623ef/bda6a659-9640-53a5-8be0-24705ab623ef.jpg"
+    ]
+  },
+  "attempts": [
+    {
+      "sequence": 1,
+      "promptPath": "edit-prompt-v1.md",
+      "input": "sourceJpg",
+      "rootReportedOutputPath": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-b9b0add3-35fc-4cd6-bae8-f978482460e3.png",
+      "archivedOutputPath": "rejected-attempt-v1.png",
+      "sha256": "4fcf42ee457c61c476b34c938f5c60b93a4df490df9c4dd2e24cb96fba320b3b",
+      "disposition": "rejected",
+      "observedDefect": "The bottom interpretation was corrected, but the white thought bubble still misspelled Normalenvektoren."
+    },
+    {
+      "sequence": 2,
+      "promptPath": "edit-prompt-v2.md",
+      "input": "rejected-attempt-v1.png",
+      "rootReportedOutputPath": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-2fac0618-2a79-405f-b9f2-a829bc165b7d.png",
+      "archivedOutputPath": "rejected-attempt-v2.png",
+      "sha256": "e93312c5103817abdd7be18f94a4bafb326ee48f14338b7915c32d31f4e50363",
+      "disposition": "rejected",
+      "observedDefect": "The word in the thought bubble remained misspelled despite the targeted correction prompt."
+    },
+    {
+      "sequence": 3,
+      "promptPath": "edit-prompt-v3.md",
+      "input": "rejected-attempt-v2.png",
+      "rootReportedOutputPath": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-bed05305-e857-4071-b540-73e27bdf3a4c.png",
+      "archivedOutputPath": "accepted-candidate.png",
+      "sha256": "b18fe49e4af4129c45e5ed9adf33745e0c8e2fe53a9b91553caeb6a2515cdda4",
+      "disposition": "accepted_pilot_after_independent_actual_image_review",
+      "observedCorrection": "The entire typo bubble is gone; the mathematics and example-specific bottom statement remain legible and correct."
+    }
+  ],
+  "activeAsset": {
+    "sha256": "b18fe49e4af4129c45e5ed9adf33745e0c8e2fe53a9b91553caeb6a2515cdda4",
+    "paths": [
+      "curricula/DE/Gymnasium/visualizations/mathematik/bda6a659-9640-53a5-8be0-24705ab623ef/bda6a659-9640-53a5-8be0-24705ab623ef.png",
+      "app/public/assets/goal-visualizations/mathematik/bda6a659-9640-53a5-8be0-24705ab623ef/bda6a659-9640-53a5-8be0-24705ab623ef.png",
+      "backend/src/main/resources/static/assets/goal-visualizations/mathematik/bda6a659-9640-53a5-8be0-24705ab623ef/bda6a659-9640-53a5-8be0-24705ab623ef.png"
+    ]
+  },
+  "independentReviewPath": "independent-review.json",
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": "not_performed",
+  "generationIsNotApproval": true
+}

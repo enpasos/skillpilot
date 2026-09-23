@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-goal-visualization-candidate-review",
+  "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56",
+  "reviewedAt": "2026-09-21T21:48:35Z",
+  "reviewer": "codex-independent-matrix-notation-review-20260921",
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "decision": "keep",
+  "recommendedPilotDecision": "accepted_pilot",
+  "independence": {
+    "referenceAndCandidateViewedBeforeRootReview": true,
+    "rootReviewAndEditPromptReadOnlyAfterIndependentVerdict": true,
+    "priorTaskKnowledge": "General open-image inventory and the instruction that these are notation candidates were known; no candidate evaluation or edit-prompt contents were read before direct paired-image inspection.",
+    "generationParticipation": false,
+    "method": "Both current reference JPGs and candidate PNGs directly inspected before reading edit prompts or generation-and-root-review.json."
+  },
+  "goalSnapshot": {
+    "title": "Zentrische Streckungen am Koordinatenursprung mit Matrizen darstellen",
+    "titleEn": "Represent central dilations at the coordinate origin with matrices",
+    "description": "Die lernende Person kann Abbildungsmatrizen zentrischer Streckungen am Koordinatenursprung bestimmen, untersuchen und die Wirkung auf Bildpunkte berechnen.",
+    "descriptionEn": "The learner can determine and analyze mapping matrices for central dilations at the coordinate origin and calculate their effect on image points.",
+    "requires": [
+      "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+      "4d331ba0-56d6-5730-a51b-e3d1126b31ba"
+    ],
+    "demandLevel": "AB2"
+  },
+  "reference": {
+    "path": "app/public/assets/goal-visualizations/mathematik/35558905-753d-5fcb-b25e-7f85ffdbff56/35558905-753d-5fcb-b25e-7f85ffdbff56.jpg",
+    "sha256": "sha256:095f5aed4cee2ffa62e3ae3064051647a9f5d7ec6f9175092b8bb55657f3bf1b",
+    "actuallyViewedBeforeEditing": true,
+    "actuallyViewed": true
+  },
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/35558905-753d-5fcb-b25e-7f85ffdbff56/candidate.png",
+    "sha256": "sha256:67810c41b3c974fb1fdc0cdd6c2b67101c0ff7ac9c1b26aa50b8e9cbf1d9b405",
+    "format": "PNG",
+    "width": 1678,
+    "height": 937,
+    "actuallyViewed": true
+  },
+  "provenance": {
+    "receiptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/35558905-753d-5fcb-b25e-7f85ffdbff56/generation-and-root-review.json",
+    "receiptSha256": "sha256:ea80d9663eae66c2931a6cbcbba10026e64d30d3254e450d6224f0a16bf596c6",
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "tool": "image_gen__imagegen",
+    "exactServingModel": "not exposed",
+    "attribution": "Generation metadata copied from the separately bound receipt only after forming the independent review verdict; no more specific serving model inferred."
+  },
+  "checks": [
+    {
+      "aspect": "matrix_products",
+      "outcome": "pass",
+      "evidenceDe": "Z=diag(2,2): Z·(1;2)=(2;4) und Z·(−2;1)=(−4;2). Jeder Operand und jedes Ergebnis ist ein tatsächlicher Spaltenvektor; Produktdimensionen 2×2 · 2×1 = 2×1."
+    },
+    {
+      "aspect": "notation_repair",
+      "outcome": "pass",
+      "evidenceDe": "Alle vier falschen T an den bereits vertikalen Vektoren sind entfernt; Komponenten, Klammern und Minuszeichen erhalten."
+    },
+    {
+      "aspect": "plotted_coordinates",
+      "outcome": "pass",
+      "evidenceDe": "P liegt auf x=1,y=2; P′ auf x=2,y=4; Q auf x=−2,y=1; Q′ auf x=−4,y=2. Die sichtbaren Gitterkreuzungen stimmen mit den vier Labels überein."
+    },
+    {
+      "aspect": "dilation_geometry",
+      "outcome": "pass",
+      "evidenceDe": "O,P,P′ sind kollinear, ebenso O,Q,Q′. Die Bildpunkte liegen jeweils auf demselben Strahl mit doppeltem Abstandsverhältnis zu O. O wird durch Z auf O abgebildet."
+    },
+    {
+      "aspect": "color_correspondence",
+      "outcome": "pass",
+      "evidenceDe": "Blau verbindet P/P′, Rot verbindet Q/Q′; Strahlen, Achsen und Matrix zeigen dieselbe Streckung mit k=2, keine Rotation oder Verschiebung."
+    }
+  ],
+  "style": {
+    "outcome": "pass",
+    "evidenceDe": "Warmer Papiergrund, handschriftnahe Beschriftung, blau/rote Punkte und die bestehende Gitter-plus-Rechnung-Anordnung bleiben erhalten. Keine neue Darstellungssprache."
+  },
+  "readability": {
+    "outcome": "pass_at_inspected_raster_size",
+    "evidenceDe": "Titel, Matrixeinträge, Komponentenzeichen, Minuszeichen und relevante Koordinaten/Dezimalwerte sind in der tatsächlich angesehenen PNG-Datei lesbar. Keine abgeschnittene Formel oder unlesbare nötige Zahl gefunden.",
+    "limit": "Direct raster inspection at supplied size; no new browser/card-width/mobile or real-host acceptance test."
+  },
+  "scopeFit": {
+    "outcome": "pass",
+    "evidenceDe": "Geeignetes AB2-Beispiel für Matrix einer zentrischen Streckung am Ursprung und berechnete Bildpunkte. Eine positive Streckung k=2 ist ein zulässiges Beispiel; das Bild muss nicht sämtliche Parameterfälle abbilden."
+  },
+  "blockingFindings": [],
+  "nonBlockingNotes": [],
+  "retainedGoodContent": [
+    "Z=diag(2,2); Z*(1,2)^T=(2,4)^T and Z*(-2,1)^T=(-4,2)^T numerically correct.",
+    "All actual operands/results shown as vertical two-component columns without transpose; product dimensions 2x2 times 2x1 give 2x1.",
+    "P=(1,2), P'=(2,4), Q=(-2,1), Q'=(-4,2) match visible coordinate grid.",
+    "O,P,P' and O,Q,Q' are collinear with displacement ratio 2; O is fixed.",
+    "Warm paper, handwritten look, blue/red point grouping, coordinate grid and layout preserved, labels legible."
+  ],
+  "reconstructionPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/35558905-753d-5fcb-b25e-7f85ffdbff56/reconstruction-prompt.md",
+  "canonicalImported": false,
+  "qaAggregateChanged": false,
+  "humanApprovalGranted": false,
+  "realHostAcceptanceClaimed": false,
+  "integrationBoundary": "Local AI candidate review only. Do not import before the parent-coordinated stable D/P checkpoint; affected page/context/profile bindings and final hashes remain integration work."
+}
+

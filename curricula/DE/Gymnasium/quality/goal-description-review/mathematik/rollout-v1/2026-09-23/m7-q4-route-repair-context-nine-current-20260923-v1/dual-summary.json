@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:f9202f152b4b28bfef7d0d88f1067e22def1a531fecc6fed65be6544f3fb2f08",
+  "reviewInputFingerprint": "sha256:81ab019366a58cfc4739369ed13032fea4203c7699bc913171a0e8545f80ea40",
+  "goalCount": 9,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-a",
+      "roundId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-independent-a",
+      "runIds": [
+        "m7-q4-route-context-nine-20260923-round-a"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-b",
+      "roundId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q4-route-repair-context-nine-current-20260923-v1-independent-b",
+      "runIds": [
+        "m7-q4-route-repair-context-nine-20260923-b-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex; exact variant not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 9,
+    "unavailable": 0,
+    "requiresSynthesis": 9
+  },
+  "goals": [
+    {
+      "goalId": "ae2ca565-928d-55f4-b804-7155cf210120",
+      "firstRecordId": "m7-q4-route-context-a-001",
+      "secondRecordId": "m7-q4-route-repair-context-nine-20260923-b-r01",
+      "firstRunId": "m7-q4-route-context-nine-20260923-round-a",
+      "secondRunId": "m7-q4-route-repair-context-nine-20260923-b-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4a630596-6e2f-593e-bac6-2a6d8fa58e2f",
+      "firstRecordId": "m7-q4-route-context-a-002",
+      "secondRecordId": "m7-q4-route-repair-context-nine-20260923-b-r02",
+      "firstRunId": "m7-q4-route-context-nine-20260923-round-a",
+      "secondRunId": "m7-q4-route-repair-context-nine-20260923-b-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fb4dcd2a-a6a9-5371-a2fc-95348ee130e0",
+      "firstRecordId": "m7-q4-route-context-a-003",
+      "secondRecordId": "m7-q4-route-repair-context-nine-20260923-b-r03",
+      "firstRunId": "m7-q4-route-context-nine-20260923-round-a",
+      "secondRunId": "m7-q4-route-repair-context-nine-20260923-b-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+      "firstRecordId": "m7-q4-route-context-a-004",
+      "secondRecordId": "m7-q4-route-repair-context-nine-20260923-b-r04",
+      "firstRunId": "m7-q4-route-context-nine-20260923-round-a",
+      "secondRunId": "m7-q4-route-repair-context-nine-20260923-b-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "163dd583-8308-53f0-b60d-34588787988d",
+      "firstRecordId": "m7-q4-route-context-a-005",
+      "secondRecordId": "m7-q4-route-repair-context-nine-20260923-b-r05",
+      "firstRunId": "m7-q4-route-context-nine-20260923-round-a",
+      "secondRunId": "m7-q4-route-repair-context-nine-20260923-b-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "519660d0-85e5-57a6-a219-d0a253336649",
+      "firstRecordId": "m7-q4-route-context-a-006",
+      "secondRecordId": "m7-q4-route-repair-context-nine-20260923-b-r06",
+      "firstRunId": "m7-q4-route-context-nine-20260923-round-a",
+      "secondRunId": "m7-q4-route-repair-context-nine-20260923-b-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
+      "firstRecordId": "m7-q4-route-context-a-007",
+      "secondRecordId": "m7-q4-route-repair-context-nine-20260923-b-r07",
+      "firstRunId": "m7-q4-route-context-nine-20260923-round-a",
+      "secondRunId": "m7-q4-route-repair-context-nine-20260923-b-001",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+      "firstRecordId": "m7-q4-route-context-a-008",
+      "secondRecordId": "m7-q4-route-repair-context-nine-20260923-b-r08",
+      "firstRunId": "m7-q4-route-context-nine-20260923-round-a",
+      "secondRunId": "m7-q4-route-repair-context-nine-20260923-b-001",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "firstRecordId": "m7-q4-route-context-a-009",
+      "secondRecordId": "m7-q4-route-repair-context-nine-20260923-b-r09",
+      "firstRunId": "m7-q4-route-context-nine-20260923-round-a",
+      "secondRunId": "m7-q4-route-repair-context-nine-20260923-b-001",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

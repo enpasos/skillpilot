@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1.config.json",
+  "configDigest": "sha256:c31afbd7645dff93d105872d60d6df0f566e84e6c7c5236f00adb17251688407",
+  "goalIds": [
+    "fd13605e-21d9-523f-bcf4-6824b6cc09e5",
+    "8c32d941-b51c-5663-951c-a610f8900f76",
+    "c406d5a0-e81d-5ce9-b535-6512a38798de",
+    "55d0474b-b82c-59b6-a62a-b6a0a34d9c4b",
+    "a7778885-17aa-5eeb-a6a7-fbf4c8d55a16",
+    "b431148b-526c-4bde-b04b-48d23101d0d3",
+    "3016ec37-1c2e-47db-83f5-e767923bc97e",
+    "0a846521-edcc-5c3c-a844-eac061e053ce",
+    "3256476b-ec65-4038-9f5a-a8808fbcf207",
+    "fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
+    "58f613da-03be-5c6a-90a9-ff0958aa7849",
+    "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
+    "a506fc1d-b784-548f-90c3-5aae1b819b68",
+    "5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+    "8b885220-9985-52f1-a236-449d2f897acc",
+    "d0475ed5-cb6f-5694-9501-a1c94288d65a",
+    "6fcd6a1a-88d3-59d2-9bf7-ee32babb773e",
+    "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+    "79444ef9-cc85-5ac4-a3bc-f10d3ffbfd16",
+    "4b16fce6-84cc-52ae-98ca-f88cc518cc28"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:55ce10dc89db1c9890f56e8b49e08c627d98d3047746bb3cc7c4a18a91683ef8"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:7b7b3fd4e8e9cf1a98b5dea9aa2623b9eb6afe1dc987043e95bb14c9ba42cbf9",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e4997cd5104440d0ea9566e1cb471267cc39521ee1d695828ae21c97ce4dc0bc",
+    "reviewInputFingerprint": "sha256:1510909220c144778b837e902c5ae954b2cfe7b366b5998bccef5bbd24c24177",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-a",
+        "campaignDigest": "sha256:28d92357c357ffc6515a0b0791e17c86d35f88fdb85dfcf346f2553b3cdba25c",
+        "roundId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-independent-a",
+        "batchId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:871e5f2a9bcb21afb1e5b8fad800ea9aeae7679b79f95106ce63bbf4012f8982"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-b",
+        "campaignDigest": "sha256:e0b130d27e9f4dc9dfcdea0aa26d92a2d8d8244b583fa79fc3bda3f4d83bc3c9",
+        "roundId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-independent-b",
+        "batchId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:1b90d1f54e3c91188637712256f77f69b56b3b34dc19bc226b7d163b899b2e51"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "recordKind": "goal_visualization_candidate_self_review",
+  "status": "ai_candidate",
+  "reviewedAtUtc": "2026-09-21T22:55:53.576Z",
+  "localReviewDate": "2026-09-22",
+  "reviewer": {
+    "agent": "/root/math_repaired12_blind_a",
+    "model": "Codex; exact serving model identifier not exposed",
+    "role": "creating agent self-review"
+  },
+  "humanReviewed": false,
+  "independentQaRequired": true,
+  "sourceEvidence": [
+    "Current canonical goal and current raster personally inspected",
+    "B044 round-A and round-B exact goal records consulted; historical decisions are not automatic approvals",
+    "Current holds inventory and pre-existing correction prompt consulted"
+  ],
+  "provider": {
+    "name": "OpenAI / ChatGPT-Codex image generation",
+    "tool": "image_gen.imagegen",
+    "exactImageModelIdentifier": "not exposed",
+    "transport": "built-in image tool",
+    "outputMimeType": "image/png",
+    "postProcessing": "None; generated PNG bytes copied unchanged"
+  },
+  "boundaries": {
+    "canonicalGoalTextChanged": false,
+    "canonicalAssetWritten": false,
+    "centralQaWritten": false,
+    "registryWritten": false,
+    "ledgerWritten": false,
+    "importRun": false
+  },
+  "timeBasis": "Review timestamp is an actual observed UTC time. Generated file mtimes are separately labeled filesystem observations, not fabricated API timestamps.",
+  "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+  "title": "Abstand zweier Punkte im Raum berechnen",
+  "decision": "keep_candidate",
+  "original": {
+    "bindingState": "original observed before parent integration; later live path may hold a replacement",
+    "gitRevisionWithVerifiedOriginalBytes": "5365a7effc96bd0532eee8b93386a80b275d0c3a",
+    "path": "app/public/assets/goal-visualizations/mathematik/68d4faef-1a56-5898-9c31-80b7d5d2e430/68d4faef-1a56-5898-9c31-80b7d5d2e430.png",
+    "sha256": "58cb988e600666f5060134c244c4e6513c0b96ce2303dfb682139cad62fba6bc"
+  },
+  "originalFinding": "The original arithmetic (3,4,12), sqrt(169)=13 was sound, but the shown 3D coordinate placement contradicted the component signs/axes. Replace only the misleading spatial plot with a clearly labeled section triangle.",
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-spatial-last-three-20260922-v1/68d4faef-1a56-5898-9c31-80b7d5d2e430/68d4faef-1a56-5898-9c31-80b7d5d2e430.attempt-02.png",
+    "sha256": "435cc927f875f42a8e492b9fd47722efd51cb654683721e81132ad75b21d1f1f"
+  },
+  "candidateDimensions": {
+    "width": 1661,
+    "height": 947
+  },
+  "nativePrepare": {
+    "command": "npm --prefix app run visualization:prepare -- 68d4faef-1a56-5898-9c31-80b7d5d2e430 --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+    "executedBeforeEachAttempt": true,
+    "result": "success",
+    "latestMetadataMtimeUtc": "2026-09-21T22:49:39.576Z",
+    "metadataPath": "tmp/goal-visualizations/68d4faef-1a56-5898-9c31-80b7d5d2e430/metadata.json",
+    "note": "Preparation writes tmp prompt metadata, not canonical import or quality approval."
+  },
+  "attempts": [
+    {
+      "number": 1,
+      "decision": "reject",
+      "asset": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-spatial-last-three-20260922-v1/68d4faef-1a56-5898-9c31-80b7d5d2e430/attempt-01-rejected.png",
+        "sha256": "263f8a9ed15b67c2b323d1bcb62f3833e149a35eefb1dd41f7ab5032403365fe"
+      },
+      "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-e3b6be9e-be42-4a7e-a3c3-c9a28cc7dfa9.png",
+      "generatedFileMtimeUtc": "2026-09-21T22:48:39.979Z",
+      "prompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-spatial-last-three-20260922-v1/68d4faef-1a56-5898-9c31-80b7d5d2e430/prompt-attempt-01.txt",
+        "sha256": "6b132046b4eef7449e51b43142c0ca6263aecbb10ea572188333e6614e5dd3c3"
+      },
+      "reference": "original",
+      "finding": "Section topology, coordinates and labels were right, but extra bottom root text had a malformed radical/open parenthesis. Prompted ratio 12:5 was also not obtained."
+    },
+    {
+      "number": 2,
+      "decision": "keep_candidate",
+      "asset": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-spatial-last-three-20260922-v1/68d4faef-1a56-5898-9c31-80b7d5d2e430/68d4faef-1a56-5898-9c31-80b7d5d2e430.attempt-02.png",
+        "sha256": "435cc927f875f42a8e492b9fd47722efd51cb654683721e81132ad75b21d1f1f"
+      },
+      "generatedSourcePath": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-4cb65822-f14e-4129-8c41-a6f514fd31de.png",
+      "generatedFileMtimeUtc": "2026-09-21T22:51:10.668Z",
+      "prompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-spatial-last-three-20260922-v1/68d4faef-1a56-5898-9c31-80b7d5d2e430/prompt-attempt-02.txt",
+        "sha256": "8f8c6a7f3241acefa317f01d697980c44e5027a22a8278f6e1d018aaf3e81d27"
+      },
+      "reference": "attempt 1 generated PNG",
+      "finding": "Malformed lower expression replaced by Grundabstand: 5. Coordinates, right angle, side labels and the exact left calculation are correct. Requested metric 12:5 raster ratio was not achieved; accepted only as the explicitly captioned schematic section, not as a metric plot."
+    }
+  ],
+  "reconstructionPrompt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-spatial-last-three-20260922-v1/68d4faef-1a56-5898-9c31-80b7d5d2e430/image-reconstruction-prompt.de.md",
+    "sha256": "98c2e9206c4727bb2ce35f838b684be1531860ecf2e35c2a077d512bb75e0f34"
+  },
+  "proposedAltText": "Links wird AB=B−A=(3,4,12) und der Abstand sqrt(3²+4²+12²)=sqrt(169)=13 berechnet. Rechts zeigt ein ausdrücklich schematisches rechtwinkliges Schnittdreieck A(1|2|0), C(4|6|0) und B(4|6|12), mit Grundabstand AC=5, Höhe CB=12 und Diagonale AB=13.",
+  "ownSubjectReview": {
+    "actualRasterViewed": true,
+    "geometry": "Approximate centers A=(1027,719), C=(1381,719), B=(1381,293). AC is horizontal, CB vertical, square at C marks the right angle, and the diagonal connects the intended A/B endpoints with a small stylized clearance around the dots.",
+    "algebra": "B-A=(4-1,6-2,12-0)=(3,4,12). Norm squared=9+16+144=169, norm=13. C=(4,6,0) is consistent with both leg vectors.",
+    "counterchecks": [
+      "C-A=(3,4,0), B-C=(0,0,12); their dot product is zero.",
+      "|C-A|=sqrt(9+16)=5 and |B-C|=12, hence |B-A|=sqrt(25+144)=13.",
+      "Reversing A/B negates the connecting vector but leaves the distance 13; a common translation likewise leaves the difference and distance unchanged."
+    ],
+    "limits": "Measured vertical/horizontal pixel ratio is about 426/354=1.20, not 12/5=2.40. This prompt requirement was not met and is not claimed. The heading expressly says schematisch; no xyz axes, calibrated units or metric reading are asserted. Acceptance is for that schematic right-triangle meaning only.",
+    "readability": "No malformed root remains; the left root covers the full three-term radicand and the following 169. Coordinates, 5/12/13 labels and section heading are clearly legible.",
+    "approvalBoundary": "Creating-agent self-review only; separate independent QA is required. No human approval claimed."
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b88b502fd545e32c47e33893e2a0a70661ba1b1f2db12abd65b7c034a4f1511e",
+  "reviewInputFingerprint": "sha256:0a7e45950c4354f8eeb3d076f4145885226c90c93d6edb8333527ae177524fa1",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-four-png-three-text-delta-20260923-v1-a",
+      "roundId": "mathematik-m7-four-png-three-text-delta-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-a",
+      "runIds": [
+        "math-m7-four-png-three-text-delta-a-codex-20260923T1020Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex agent; exact model identifier and sampling parameters not exposed; independent blind Round A::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-four-png-three-text-delta-20260923-v1-b",
+      "roundId": "mathematik-m7-four-png-three-text-delta-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex agent; exact model identifier and sampling parameters not exposed; independent blind Round B::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c",
+      "firstRecordId": "math-m7-four-png-three-text-a-001",
+      "secondRecordId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex.g01",
+      "firstRunId": "math-m7-four-png-three-text-delta-a-codex-20260923T1020Z",
+      "secondRunId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "55d0474b-b82c-59b6-a62a-b6a0a34d9c4b",
+      "firstRecordId": "math-m7-four-png-three-text-a-002",
+      "secondRecordId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex.g02",
+      "firstRunId": "math-m7-four-png-three-text-delta-a-codex-20260923T1020Z",
+      "secondRunId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b7cc2fc4-c695-5a97-93b0-3a619c632ca8",
+      "firstRecordId": "math-m7-four-png-three-text-a-003",
+      "secondRecordId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex.g03",
+      "firstRunId": "math-m7-four-png-three-text-delta-a-codex-20260923T1020Z",
+      "secondRunId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4ae9e316-509f-517d-bd94-a165817af24f",
+      "firstRecordId": "math-m7-four-png-three-text-a-004",
+      "secondRecordId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex.g04",
+      "firstRunId": "math-m7-four-png-three-text-delta-a-codex-20260923T1020Z",
+      "secondRunId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4cba85d3-2e25-5c4b-9c4c-37e5b201dce7",
+      "firstRecordId": "math-m7-four-png-three-text-a-005",
+      "secondRecordId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex.g05",
+      "firstRunId": "math-m7-four-png-three-text-delta-a-codex-20260923T1020Z",
+      "secondRunId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b431148b-526c-4bde-b04b-48d23101d0d3",
+      "firstRecordId": "math-m7-four-png-three-text-a-006",
+      "secondRecordId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex.g06",
+      "firstRunId": "math-m7-four-png-three-text-delta-a-codex-20260923T1020Z",
+      "secondRunId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d051857c-0707-544f-ae7a-f20690d182b2",
+      "firstRecordId": "math-m7-four-png-three-text-a-007",
+      "secondRecordId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex.g07",
+      "firstRunId": "math-m7-four-png-three-text-delta-a-codex-20260923T1020Z",
+      "secondRunId": "mathematik-m7-four-png-three-text-delta-20260923-v1-independent-b-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

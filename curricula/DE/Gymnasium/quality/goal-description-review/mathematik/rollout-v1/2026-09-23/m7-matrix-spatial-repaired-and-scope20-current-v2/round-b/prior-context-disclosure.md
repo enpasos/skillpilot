@@ -1,0 +1,9 @@
+# Round-B run disclosure
+
+The reviewer had previously opened the `2026-09-22/m7-matrix-probability-ten-positive-candidates-v1/README.md` and an excerpt from its candidate JSON as a format example while working on an unrelated 16-goal modeling P task. That material concerns the first ten goals of this D20 batch. It was not reopened or used as evidence in this Round-B review. This run therefore claims independence from other **D review runs**, not full blindness to all earlier P candidate material.
+
+For this Round-B task the reviewer read the bound prompt, mathematics criteria, current input, campaign and record schema, inspected all 20 current image files directly, and made individual D decisions from current DE/EN goal text, page relations, demand level and the supplied source references. The source references are labels in the bound input; no full normative source text or effective mapping proof was supplied or independently verified. No Round-A decision text, older A/B records, P19 candidates, image-audit conclusions, or synthesis/diff was opened for this task.
+
+The 6fc9246a image problem was observed directly in the JPG: its upper vector rows draw distinct coordinate vectors with matching horizontal arrows. The D text decision remains separate; the record rationale flags this as a V-HOLD. A coordinating reviewer later independently mentioned the same image finding without disclosing Round-A text decisions.
+
+The native run-manifest schema has `additionalProperties: false` and no free-form disclosure field. Its `blindToOtherRuns: true` asserts only the D-run boundary described above. `generationParametersFingerprint` binds the exact bytes of this disclosure as the run's contextual input/parameter statement; it does not claim a model temperature or other settings unavailable to this reviewer.

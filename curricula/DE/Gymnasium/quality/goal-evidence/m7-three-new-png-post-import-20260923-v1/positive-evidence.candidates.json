@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-understanding-evidence-m7-three-new-png-post-import-20260923-v1",
+  "reviewedAt": "2026-09-23T02:40:00.000Z",
+  "reviewer": "codex-math-m7-three-png-targeted-ai-candidate-2026-09-23",
+  "goals": [
+    {
+      "goalId": "8823e26e-694c-581b-9adf-4db7db6f43c9",
+      "reason": "DE: Das unveränderte Daten-Profil trennt absolute Trefferzahl, Bezugsgröße und empirische Schätzung; Spinndrad-Fälle mit ungleichen Stichprobengrößen prüfen Transfer unabhängig von der neuen Zehn-Karten-Illustration. Das tatsächlich eingebundene PNG und die aktuelle GoalBook-Seite wurden getrennt fachlich geprüft. EN: The unchanged data profile distinguishes absolute count, reference total and empirical estimate; spinner cases with unequal sample sizes test transfer independently of the new ten-card illustration. The actually bound PNG and current GoalBook page were reviewed separately.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "understanding-8823e26e",
+            "essentialUnderstandingDe": "Absolute Häufigkeit zählt Ereignistreffer; relative Häufigkeit bezieht sie auf alle Versuche und liefert eine datenabhängige, nicht automatisch exakte Wahrscheinlichkeitsschätzung.",
+            "essentialUnderstandingEn": "Absolute frequency counts event occurrences; relative frequency relates them to all trials and gives a data-dependent probability estimate that is not automatically exact.",
+            "observablePerformanceDe": "Die lernende Person grenzt Ereignis und Versuchszahl ab, berechnet beide Häufigkeiten und erläutert ihre empirische Schätzung samt verbleibender Stichprobenschwankung.",
+            "observablePerformanceEn": "The learner identifies the event and number of trials, calculates both frequencies, and explains the empirical estimate and remaining sampling variability."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "understanding-8823e26e"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Sie führt unterschiedlich große Versuchsserien sachgerecht zusammen oder wechselt die Ereignisdefinition und begründet die dadurch nötige neue Zählung statt Prozentwerte ungewichtet zu mitteln.",
+            "textEn": "The learner correctly combines trial series of unequal sizes or changes the event definition and explains the necessary recount rather than averaging percentages without weights."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "empirical-spinner-estimate",
+            "taskDemandDe": "Bei 200 Wiederholungen desselben Zufallsversuchs mit einem unveränderten Drehrad tritt das Ereignis E='blau' 86-mal auf. Bestimme absolute und relative Häufigkeit und formuliere eine empirische Schätzung für P(E), einschließlich ihrer Aussagegrenze.",
+            "taskDemandEn": "In 200 repetitions of the same random experiment with an unchanged spinner, event E='blue' occurs 86 times. Determine the absolute and relative frequencies and formulate an empirical estimate of P(E), including its limitation.",
+            "expectedPerformanceDe": "Die absolute Häufigkeit ist 86, die relative 86/200=0,43=43%. Unter vergleichbaren Wiederholungsbedingungen wird P(E) auf etwa 0,43 geschätzt. Dies ist eine Schätzung aus 200 Datenpunkten, keine exakt bewiesene Wahrscheinlichkeit oder Garantie für die nächsten 200 Versuche.",
+            "expectedPerformanceEn": "The absolute frequency is 86 and the relative frequency is 86/200=0.43=43%. Under comparable repetition conditions, P(E) is estimated at about 0.43. This is an estimate from 200 observations, not an exactly proven probability or a guarantee for the next 200 trials.",
+            "understandingFocusDe": "Ereignistreffer und Gesamtzahl werden getrennt; der beobachtete Anteil erhält eine ausdrücklich empirische Bedeutung.",
+            "understandingFocusEn": "Event occurrences and total trials are distinguished; the observed proportion is explicitly interpreted as empirical."
+          },
+          {
+            "id": "unequal-series-pooling",
+            "taskDemandDe": "Dasselbe unveränderte Drehrad liefert in zwei vergleichbaren Serien 10 blaue Ergebnisse bei 20 Versuchen und 30 bei 100 Versuchen. Bestimme eine gemeinsame Schätzung und begründe, ob das einfache Mittel der beiden Prozentwerte geeignet ist.",
+            "taskDemandEn": "The same unchanged spinner produces 10 blue outcomes in 20 trials and 30 in 100 trials in two comparable series. Determine a pooled estimate and explain whether the simple average of the percentages is suitable.",
+            "expectedPerformanceDe": "Die Gesamtzahl ist 120, die Trefferzahl 40; die Schätzung beträgt 40/120=1/3≈33,3%. Das ungewichtete Mittel (50%+30%)/2=40% behandelt die unterschiedlich großen Serien fälschlich gleich. Zählen oder Gewichtung nach 20 und 100 erhält das Gewicht jedes einzelnen Versuchs; die gemeinsame Schätzung bleibt empirisch.",
+            "expectedPerformanceEn": "There are 120 trials and 40 occurrences; the estimate is 40/120=1/3≈33.3%. The unweighted average (50%+30%)/2=40% incorrectly gives equal weight to unequal series. Counting or weighting by 20 and 100 preserves equal weight per trial; the pooled estimate remains empirical.",
+            "understandingFocusDe": "Neue Datenstruktur statt bloß neuer Zahlen: die Bezugsgröße wird über unterschiedlich große Serien hinweg sachgerecht rekonstruiert.",
+            "understandingFocusEn": "A new data structure rather than merely new numbers: the reference total is reconstructed correctly across unequal series."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "7c978529-ce62-5adc-897f-24ea80babbc8",
+      "reason": "DE: Das unveränderte Profil leitet Quader- und Würfelvolumen aus Einheitswürfeln und senkrechten Kanten ab und verlangt Einheitenumrechnung sowie Vergleich in drei neuen Fällen. Das neue PNG illustriert 12 bzw. 8 Einheitswürfel, liefert aber keine Lösung für die frischen Aufgaben; die aktuelle GoalBook-Seite ist geprüft. EN: The unchanged profile derives cuboid and cube volume from unit cubes and perpendicular edges and requires unit conversion and comparison in three fresh cases. The new PNG illustrates 12 and 8 unit cubes but supplies no solution to those tasks; the current GoalBook page was reviewed.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "unit-cubes-give-volume-structure",
+            "essentialUnderstandingDe": "Das Volumen eines Quaders zählt, wie viele Einheitswürfel den Körper lücken- und überlappungsfrei füllen; Länge mal Breite gibt die Würfelzahl einer Schicht und die Höhe die Zahl gleichartiger Schichten.",
+            "essentialUnderstandingEn": "A cuboid's volume counts how many unit cubes fill it without gaps or overlaps; length times width gives the number of cubes in one layer and height gives the number of equal layers.",
+            "observablePerformanceDe": "Die lernende Person erklärt an einem unbekannten Würfelmodell oder Schichtbild selbstständig, warum sich die Zahl der Einheitswürfel als Länge mal Breite mal Höhe ergibt, und überträgt dies beim Würfel auf a³.",
+            "observablePerformanceEn": "Using an unfamiliar unit-cube model or layer diagram, the learner independently explains why the number of unit cubes is length times width times height and transfers this to a³ for a cube."
+          },
+          {
+            "id": "perpendicular-edge-lengths-determine-volume",
+            "essentialUnderstandingDe": "Für einen Quader bestimmen drei zueinander senkrechte Kantenlängen seine räumliche Ausdehnung; ihre Produktstruktur bleibt auch bei gedrehter oder perspektivischer Darstellung erhalten.",
+            "essentialUnderstandingEn": "Three mutually perpendicular edge lengths determine a cuboid's spatial extent; their product structure is preserved even when the solid is rotated or shown in perspective.",
+            "observablePerformanceDe": "Die lernende Person identifiziert in einer neuen Darstellung die drei erforderlichen Kantenlängen, berechnet das Volumen mit V = l · b · h und weist eine irrelevante Diagonale oder doppelt verwendete Kante zurück.",
+            "observablePerformanceEn": "In a fresh representation, the learner identifies the three required edge lengths, calculates the volume using V = l · w · h, and rejects an irrelevant diagonal or a duplicated edge."
+          },
+          {
+            "id": "cubic-units-and-conversion",
+            "essentialUnderstandingDe": "Volumeneinheiten sind kubische Einheiten; deshalb wird ein Längenumrechnungsfaktor beim Volumen dreimal wirksam, etwa 1 dm³ = 1000 cm³.",
+            "essentialUnderstandingEn": "Units of volume are cubic units, so a linear conversion factor acts three times on volume, for example 1 dm³ = 1000 cm³.",
+            "observablePerformanceDe": "Die lernende Person hält die Kantenmaße vor der Multiplikation einheitenkonsistent, gibt ein Ergebnis mit kubischer Einheit an und führt eine erforderliche Volumen- oder Längenumrechnung nachvollziehbar aus.",
+            "observablePerformanceEn": "The learner makes edge measurements unit-consistent before multiplication, states the result with a cubic unit, and carries out any required volume or length conversion transparently."
+          },
+          {
+            "id": "comparison-and-plausibility-check",
+            "essentialUnderstandingDe": "Volumina lassen sich erst in derselben Einheit vergleichen; ein Ergebnis muss positiv sein, zur Zahl der Einheitswürfel passen und bei vergrößerten Kanten in vorhersehbarer Weise wachsen.",
+            "essentialUnderstandingEn": "Volumes can be compared only in the same unit; a result must be positive, agree with the number of unit cubes, and grow predictably when edge lengths increase.",
+            "observablePerformanceDe": "Die lernende Person vergleicht zwei Quader- oder Würfelvolumina nach passender Umrechnung und prüft ein Ergebnis durch Einheitswürfelzahl, Größenordnung oder eine einfache Skalierungsüberlegung.",
+            "observablePerformanceEn": "The learner compares two cuboid or cube volumes after suitable conversion and checks a result using a unit-cube count, order of magnitude, or a simple scaling argument."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "unit-cubes-give-volume-structure",
+            "perpendicular-edge-lengths-determine-volume",
+            "cubic-units-and-conversion",
+            "comparison-and-plausibility-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "representation",
+            "textDe": "Einheitswürfelmodell, Schichtbild, Netz, perspektivische Skizze oder rein verbale Maßangaben",
+            "textEn": "Unit-cube model, layer diagram, net, perspective drawing, or purely verbal dimensions"
+          },
+          {
+            "id": "solid-and-orientation",
+            "textDe": "Quader oder Würfel in aufrechter, liegender oder gedrehter Darstellung",
+            "textEn": "Cuboid or cube shown upright, sideways, or rotated"
+          },
+          {
+            "id": "unit-regime",
+            "textDe": "Einheitliche Kantenmaße, gemischte Längeneinheiten oder Vergleich bereits berechneter Volumina in verschiedenen Einheiten",
+            "textEn": "Uniform edge measurements, mixed length units, or comparison of already calculated volumes in different units"
+          },
+          {
+            "id": "performance-direction",
+            "textDe": "Volumen bestimmen, Formel über Einheitswürfel erklären, zwei Volumina vergleichen oder einen Fehler diagnostizieren",
+            "textEn": "Determine volume, explain the formula using unit cubes, compare two volumes, or diagnose an error"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "layer-model-to-formula",
+            "taskDemandDe": "Ein unbekanntes Schichtbild zeigt einen Quader mit 6 mal 4 Einheitswürfeln pro Schicht und 3 Schichten. Bestimme das Volumen und erkläre den Übergang von der Würfelzählung zu V = l · b · h.",
+            "taskDemandEn": "An unfamiliar layer diagram shows a cuboid with 6 by 4 unit cubes per layer and 3 layers. Determine the volume and explain the transition from counting cubes to V = l · w · h.",
+            "expectedPerformanceDe": "Die lernende Person bestimmt 24 Würfel pro Schicht, multipliziert mit 3, erhält 72 Volumeneinheiten und verbindet beide Faktorenfolgen mit den drei Kantenlängen.",
+            "expectedPerformanceEn": "The learner determines 24 cubes per layer, multiplies by 3, obtains 72 cubic units, and connects both stages of multiplication to the three edge lengths.",
+            "understandingFocusDe": "Die Aufgabe prüft die Bedeutung der Produktformel statt bloßes Einsetzen.",
+            "understandingFocusEn": "The task tests the meaning of the product formula rather than mere substitution."
+          },
+          {
+            "id": "mixed-unit-volume-comparison",
+            "taskDemandDe": "Ein Würfel hat 2 dm Kantenlänge; ein Quader misst 25 cm mal 20 cm mal 15 cm. Bestimme und vergleiche die Volumina in derselben Einheit.",
+            "taskDemandEn": "A cube has edge length 2 dm; a cuboid measures 25 cm by 20 cm by 15 cm. Determine and compare the volumes in the same unit.",
+            "expectedPerformanceDe": "Die lernende Person rechnet 2 dm konsistent in 20 cm oder 8 dm³ in 8000 cm³ um, erhält für den Quader 7500 cm³ und begründet den Vergleich mit identischen Einheiten.",
+            "expectedPerformanceEn": "The learner consistently converts 2 dm to 20 cm or 8 dm³ to 8000 cm³, obtains 7500 cm³ for the cuboid, and justifies the comparison using identical units.",
+            "understandingFocusDe": "Der Einheitenwechsel trennt räumliche Umrechnung von einer linearen Umrechnung.",
+            "understandingFocusEn": "The unit change distinguishes cubic conversion from linear conversion."
+          },
+          {
+            "id": "diagnose-unit-and-edge-error",
+            "taskDemandDe": "Eine Lösung zu einem gedreht gezeichneten Quader verwendet eine Flächendiagonale als Höhe und gibt 96 cm² als Volumen an. Prüfe und korrigiere die Lösung anhand der beschrifteten Kanten.",
+            "taskDemandEn": "A solution for a rotated cuboid uses a face diagonal as the height and states 96 cm² as the volume. Check and correct the solution using the labelled edges.",
+            "expectedPerformanceDe": "Die lernende Person identifiziert drei senkrechte Kantenmaße, ersetzt die Diagonale, berechnet das Produkt und begründet die kubische statt quadratische Einheit sowie die Größenordnung.",
+            "expectedPerformanceEn": "The learner identifies three perpendicular edge measurements, replaces the diagonal, calculates the product, and justifies the cubic rather than square unit and the order of magnitude.",
+            "understandingFocusDe": "Die Fehlerdiagnose prüft Kantenwahl, Volumendimension und Plausibilität gemeinsam.",
+            "understandingFocusEn": "The error diagnosis jointly tests edge selection, volume dimension, and plausibility."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e01869db-891c-57a4-8660-789ec6875ec2",
+      "reason": "DE: Das unveränderte Profil prüft disjunkte vollständige Zerlegung, Ergänzen/Subtrahieren und zwei selbstständige Lösungswege; das neue 8+4-PNG zeigt nur ein stützendes Beispiel und ersetzt weder Transfer noch Plausibilitätsprüfung. Bild und aktuelle GoalBook-Seite sind gezielt geprüft. EN: The unchanged profile tests disjoint complete decomposition, completion/subtraction and two independent solution paths; the new 8+4 PNG is only one supporting example and replaces neither transfer nor plausibility checks. Image and current GoalBook page were reviewed specifically.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "additivity-needs-disjoint-complete-parts",
+            "essentialUnderstandingDe": "Das Volumen eines zusammengesetzten Körpers ist die Summe der Teilvolumina, wenn die Teilkörper den Körper vollständig sowie lücken- und überlappungsfrei zerlegen.",
+            "essentialUnderstandingEn": "The volume of a composite solid is the sum of component volumes when the components partition the solid completely without gaps or overlaps.",
+            "observablePerformanceDe": "Die lernende Person markiert in einer neuen Körperdarstellung eine gültige Zerlegung, begründet Vollständigkeit und fehlende Überlappung und schreibt die passende Summe der Quader- oder Würfelvolumina auf.",
+            "observablePerformanceEn": "In a fresh solid representation, the learner marks a valid decomposition, justifies completeness and absence of overlap, and writes the corresponding sum of cuboid or cube volumes."
+          },
+          {
+            "id": "component-dimensions-come-from-geometry",
+            "essentialUnderstandingDe": "Die Maße jedes Teilquaders müssen aus der Gesamtgeometrie konsistent abgeleitet werden; verdeckte oder geteilte Kanten dürfen nicht unabhängig erfunden oder doppelt gezählt werden.",
+            "essentialUnderstandingEn": "The dimensions of every component cuboid must be derived consistently from the overall geometry; hidden or subdivided edges must not be invented independently or counted twice.",
+            "observablePerformanceDe": "Die lernende Person bestimmt fehlende Teilmaße durch Differenzen oder gemeinsame Kanten, berechnet jedes Teilvolumen und erläutert, welche räumliche Region jeder Term beschreibt.",
+            "observablePerformanceEn": "The learner determines missing component measurements using differences or shared edges, calculates each component volume, and explains which spatial region each term represents."
+          },
+          {
+            "id": "completion-and-subtraction-represent-complement",
+            "essentialUnderstandingDe": "Beim Ergänzen wird der Körper zu einem umschließenden Quader vervollständigt; das abzuziehende Ergänzungsvolumen muss genau die hinzugefügte, zum ursprünglichen Körper disjunkte Region sein.",
+            "essentialUnderstandingEn": "In a completion strategy, the solid is completed to an enclosing cuboid; the volume subtracted must be exactly the added region disjoint from the original solid.",
+            "observablePerformanceDe": "Die lernende Person wählt bei einem Körper mit Kerbe einen passenden umschließenden Quader, bestimmt das Ergänzungsvolumen und begründet die Differenz Gesamtquader minus Ergänzung.",
+            "observablePerformanceEn": "For a solid with a notch, the learner chooses a suitable enclosing cuboid, determines the complementary volume, and justifies the difference enclosing cuboid minus completion."
+          },
+          {
+            "id": "equivalent-strategies-and-bounds-check-result",
+            "essentialUnderstandingDe": "Verschiedene gültige Zerlegungen und eine passende Ergänzungsstrategie müssen dasselbe Volumen ergeben; zusätzlich liegt das Ergebnis zwischen null und dem Volumen eines umschließenden Quaders.",
+            "essentialUnderstandingEn": "Different valid decompositions and an appropriate completion strategy must produce the same volume; the result also lies between zero and the volume of an enclosing cuboid.",
+            "observablePerformanceDe": "Die lernende Person vergleicht zwei unabhängige Rechenwege, erklärt ihre Gleichwertigkeit über dieselbe räumliche Region und nutzt Einheit sowie obere und untere Schranke zur Fehlerkontrolle.",
+            "observablePerformanceEn": "The learner compares two independent solution paths, explains their equivalence through the same spatial region, and uses the unit and upper and lower bounds to check for errors."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "additivity-needs-disjoint-complete-parts",
+            "component-dimensions-come-from-geometry",
+            "completion-and-subtraction-represent-complement",
+            "equivalent-strategies-and-bounds-check-result"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "solid-structure",
+            "textDe": "Stufenkörper, L-förmiger Körper, Körper mit quaderförmiger Kerbe oder Vereinigung mehrerer Würfel und Quader",
+            "textEn": "Stepped solid, L-shaped solid, solid with a cuboid notch, or union of several cubes and cuboids"
+          },
+          {
+            "id": "strategy",
+            "textDe": "Horizontale oder vertikale Zerlegung, Ergänzen und Subtrahieren oder Vergleich zweier gültiger Wege",
+            "textEn": "Horizontal or vertical decomposition, completion and subtraction, or comparison of two valid approaches"
+          },
+          {
+            "id": "representation",
+            "textDe": "Perspektivskizze, Schichtmodell, Ansichten mit Maßangaben oder verbale Beschreibung einer Aussparung",
+            "textEn": "Perspective drawing, layer model, orthographic views with dimensions, or verbal description of a cut-out"
+          },
+          {
+            "id": "data-and-check",
+            "textDe": "Alle Teilmaße gegeben, Maße aus Differenzen zu bestimmen, unterschiedliche Einheiten oder vorgelegte fehlerhafte Zerlegung zu prüfen",
+            "textEn": "All component dimensions supplied, dimensions derived by subtraction, different units, or a proposed faulty decomposition to check"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "stepped-solid-two-decompositions",
+            "taskDemandDe": "Ein neuer Stufenkörper aus Quadern ist vollständig bemaßt. Bestimme sein Volumen mit einer horizontalen und einer vertikalen Zerlegung und begründe, warum beide Zerlegungen gültig sind.",
+            "taskDemandEn": "A fresh stepped solid made of cuboids is fully dimensioned. Determine its volume using a horizontal and a vertical decomposition and justify why both partitions are valid.",
+            "expectedPerformanceDe": "Die lernende Person leitet passende Teilmaße ab, addiert jeweils disjunkte vollständige Teilvolumina, erhält zweimal dasselbe Ergebnis und ordnet jedem Term eine räumliche Region zu.",
+            "expectedPerformanceEn": "The learner derives suitable component dimensions, adds disjoint and complete component volumes in each method, obtains the same result twice, and associates every term with a spatial region.",
+            "understandingFocusDe": "Der Strategiewechsel prüft Additivität unabhängig von einer eingeübten Schnittlinie.",
+            "understandingFocusEn": "The strategy change tests additivity independently of a rehearsed cut line."
+          },
+          {
+            "id": "notched-block-by-complement",
+            "taskDemandDe": "Aus einem Quader wird an einer Ecke über die gesamte Höhe eine kleinere quaderförmige Kerbe entfernt. Bestimme das Restvolumen durch Ergänzen und prüfe es mit einer Zerlegung in zwei Quader.",
+            "taskDemandEn": "A smaller cuboid notch extending through the full height is removed from one corner of a cuboid. Determine the remaining volume by completion and check it using a decomposition into two cuboids.",
+            "expectedPerformanceDe": "Die lernende Person berechnet Gesamtquader minus Kerbenvolumen, konstruiert anschließend zwei lücken- und überlappungsfreie Restquader und bestätigt die Gleichheit beider Ergebnisse.",
+            "expectedPerformanceEn": "The learner calculates enclosing cuboid minus notch volume, then constructs two remaining cuboids without gaps or overlaps and confirms equality of the two results.",
+            "understandingFocusDe": "Die Kerbe verbindet Ergänzungsdifferenz und additive Zerlegung derselben Region.",
+            "understandingFocusEn": "The notch connects completion by subtraction with additive decomposition of the same region."
+          },
+          {
+            "id": "diagnose-overlap-and-gap",
+            "taskDemandDe": "Zwei vorgeschlagene Rechnungen für einen L-förmigen Körper verwenden Teilquader; eine zählt einen Überlappungsblock doppelt, die andere lässt eine Schicht aus. Diagnostiziere beide Fehler und entwickle eine gültige Rechnung.",
+            "taskDemandEn": "Two proposed calculations for an L-shaped solid use component cuboids; one counts an overlap twice and the other omits a layer. Diagnose both errors and construct a valid calculation.",
+            "expectedPerformanceDe": "Die lernende Person lokalisiert Überlappung und Lücke räumlich, erklärt die dadurch entstehende Über- beziehungsweise Unterschätzung, wählt eine disjunkte vollständige Zerlegung und prüft das Resultat am umschließenden Quader.",
+            "expectedPerformanceEn": "The learner locates the overlap and gap spatially, explains the resulting overestimate and underestimate, chooses a disjoint complete partition, and checks the result against the enclosing cuboid.",
+            "understandingFocusDe": "Die Gegenbeispiele prüfen die Bedingungen der Volumenadditivität statt bloßes Summieren.",
+            "understandingFocusEn": "The counterexamples test the conditions of volume additivity rather than mere summation."
+          }
+        ]
+      }
+    }
+  ]
+}

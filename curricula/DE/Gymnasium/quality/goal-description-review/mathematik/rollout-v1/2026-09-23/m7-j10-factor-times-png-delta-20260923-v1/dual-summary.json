@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:121b39b75c20c5da4f706ee1db89b0d0b2c7354f71a16b670962b41e39204b75",
+  "reviewInputFingerprint": "sha256:cb4dd26b7e14e75308a1bf9decd115a26adec116ee922b3c743ef3ac35e7c7b7",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-a",
+      "roundId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-a-batch-001-gpt6"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-b",
+      "roundId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
+      "firstRecordId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-a-c19d1f8f",
+      "secondRecordId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-b-c19d1f8f",
+      "firstRunId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-a-batch-001-gpt6",
+      "secondRunId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

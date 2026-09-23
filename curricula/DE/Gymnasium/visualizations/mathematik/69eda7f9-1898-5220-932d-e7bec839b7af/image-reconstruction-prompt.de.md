@@ -1,0 +1,24 @@
+# Bildrekonstruktionsprompt: Streckenlängen im Raum bestimmen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `69eda7f9-1898-5220-932d-e7bec839b7af`
+- Titel: Streckenlängen im Raum bestimmen
+- Beschreibung: Die lernende Person kann Streckenlängen in räumlichen Figuren aus Punktkoordinaten oder geeigneten Verbindungsvektoren bestimmen und in geometrischen Kontexten verwenden.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex image generation
+- Quellbild: `69eda7f9-1898-5220-932d-e7bec839b7af.png`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Erstelle eine breite deutsche Lehrgrafik im freundlichen Comicstil auf weißem Grund. Oben eine hellblaue Titelzeile „Streckenlängen im Raum bestimmen“. Links oben großer hellblau gerahmter Merkkasten: „Streckenlänge = Betrag des passenden Verbindungsvektors“, mit gezeichnetem Pfeil zum Quader rechts oben.
+Der transparente pastellfarbene Quader hat A(0|0|0) vorne links unten, B(6|0|0) vorne rechts unten, C(6|4|0) hinten rechts unten, D(0|4|0) hinten links unten. Darüber liegen E(0|0|3), F(6|0|3), G(6|4|3), H(0|4|3). Vorderkanten verlaufen waagerecht, Tiefenkanten parallel schräg rechts oben, Höhenkanten senkrecht. Die positive x-Achse läuft von A durch B waagerecht nach rechts, die y-Achse von A genau durch D schräg rechts oben, die z-Achse von A durch E senkrecht hoch. Markiere die Grundflächendiagonale A–C orange und die Raumdiagonale A–G violett mit exakten Eckendpunkten.
+Unten links ein hellblauer Rechenkasten „Grundflächendiagonale AC“: Vektor AC = C − A = (6,4,0), Länge |AC| = √(6²+4²) = √52 ≈ 7,21. Unten rechts hellgrüner Rechenkasten „Raumdiagonale AG“: Vektor AG = G − A = (6,4,3), Länge |AG| = √(6²+4²+3²) = √61 ≈ 7,81. Dicke farbige gebogene Verweispfeile und kleine gezeichnete Lineale verbinden die Elemente. Klare große Schrift; keine Marken, URLs oder technischen IDs.
+```

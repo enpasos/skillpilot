@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:79728d4ed261416a3d5e7df7e8fefcf4f79c5958f5c229411f96e41fbca9eda9",
+  "reviewInputFingerprint": "sha256:941b329d6c186abf93b6af00640ffe70b3a930b381dc06a47c11b1c28e23c69d",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-a",
+      "roundId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-first-pass-a.batch-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-b",
+      "roundId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-independent-b",
+      "runIds": [
+        "math-m7-q4-model-forms-taxi-20260923-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+      "firstRecordId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-a-07196e72",
+      "secondRecordId": "math-m7-q4-model-forms-taxi-20260923-b-07196e72",
+      "firstRunId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "math-m7-q4-model-forms-taxi-20260923-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

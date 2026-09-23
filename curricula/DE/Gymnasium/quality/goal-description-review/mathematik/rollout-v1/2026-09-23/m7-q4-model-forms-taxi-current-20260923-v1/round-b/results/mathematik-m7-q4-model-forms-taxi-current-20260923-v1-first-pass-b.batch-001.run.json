@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-m7-q4-model-forms-taxi-20260923-b-run-001",
+  "campaignId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-b",
+  "roundId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-first-pass-b",
+  "batchId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:ba270736a47ac3706da5be7776363d3e16e47f5ddd4a1d4aa4252e30163c556a",
+  "bundleFingerprint": "sha256:79728d4ed261416a3d5e7df7e8fefcf4f79c5958f5c229411f96e41fbca9eda9",
+  "bookDigest": "sha256:9c745dc4e5026e97667c10ed49db07b2d672d9d375ee410a55c6668807ec00e8",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:61aa6e9024394b53c65e6696958e38ecf0bb177d7b35dc15e850d4e863b5aa70",
+  "independenceGroupId": "mathematik-m7-q4-model-forms-taxi-current-20260923-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "07196e72-ba47-54bf-a096-3a79bbb67e23"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:0ee8e8e2c7a4b983449c830deb1da6dadda8bbbe2aab07dc61a83af59d35c236"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:fa1206b722af946ec1f2a6aad9e4b9cefb23f74b885967934d80a78fa01199c6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ba270736a47ac3706da5be7776363d3e16e47f5ddd4a1d4aa4252e30163c556a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-23T03:32:43Z",
+  "completedAt": "2026-09-23T03:33:52Z",
+  "status": "completed",
+  "outputDigest": "sha256:11dc32396e39117bd591e5fc353aaee15e1c04fbc73356c51bf41d3915d46fa8",
+  "toolchainVersion": "goal-description-review-v2"
+}

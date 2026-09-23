@@ -1,0 +1,5 @@
+Use case: precise-object-edit
+Asset type: corrected SkillPilot grade-7 mathematics learning-goal PNG
+Input image 1: edit target, the existing perpendicular-bisector educational comic diagram.
+Primary request: Improve legibility ONLY. Replace the dark navy/black vignette with a warm pale cream or very light blue classroom-paper background. Make all segment, arc, dashed-distance and perpendicular lines high-contrast dark blue, with labels A, B, P, Q, M clearly readable dark navy. Keep a restrained friendly blue/teal/yellow comic palette.
+Critical invariants: preserve the exact construction geometry and layout: one horizontal segment A–B, midpoint M, vertical perpendicular line P–M–Q, P above Q, right-angle marker at M, equal-radius arcs from A and B crossing at P and Q, same small compass hand at left. Do not move any point, redraw mathematical geometry, add or remove labels, add equations, or change the number of arc intersections. No photorealism, watermark, title, explanatory text, or extra decoration. Output a clean, bright raster illustration suitable for a small learner UI card.

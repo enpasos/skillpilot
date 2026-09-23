@@ -1,0 +1,72 @@
+{
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "decision": "needs_independent_review",
+  "selfReviewer": "Codex independent agent /root/math_repaired12_blind_a; exact serving model identifier not exposed",
+  "selfReviewRecordedAt": "2026-09-21T22:37:20.756Z",
+  "license": "CC-BY-4.0",
+  "humanApprovalClaimed": false,
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false
+  },
+  "sourceInspection": "Original current raster and generated selected raster actually viewed; creating-agent review only. Any subsequent root judgement is separate and is not represented as this agent's independent approval.",
+  "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af",
+  "goalTitleDe": "Streckenlängen im Raum bestimmen",
+  "phase": "Q2",
+  "audience": "Gymnasium Sekundarstufe II",
+  "candidate": {
+    "file": "69eda7f9-1898-5220-932d-e7bec839b7af.attempt-02.png",
+    "sha256": "sha256:c09c910d536a84625b0652f5339da8f7f74361042c5539d7a6f8d1e04317d6d4",
+    "bytes": 1369262,
+    "width": 1678,
+    "height": 937,
+    "attribution": "SkillPilot, AI-generated illustration, AI candidate"
+  },
+  "source": {
+    "path": "app/public/assets/goal-visualizations/mathematik/69eda7f9-1898-5220-932d-e7bec839b7af/69eda7f9-1898-5220-932d-e7bec839b7af.jpg",
+    "sha256": "sha256:6bdb7d1a3e8277cc156e747fd7701f859e20cb34c24a12005a42056832e98e90",
+    "storedProvider": "Google Gemini / Nano Banana Pro"
+  },
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen.imagegen",
+  "model": "Exact serving model identifier not exposed",
+  "nativePrepare": {
+    "beforeSelectedAttempt": true,
+    "canonicalImportRun": false,
+    "providerMatchesGeneration": true,
+    "note": "Preparation writes only tmp metadata; no native import was run."
+  },
+  "prompt": {
+    "file": "prompt-attempt-02.txt",
+    "sha256": "sha256:9089967a2f0ecb4ff7d891439295bab3c0c0849bf22cf82c7b585c5dec63d10e",
+    "bytes": 1022,
+    "formatNote": "Exact prompt body; terminal file newline is serialization.",
+    "reconstructionPrompt": "image-reconstruction-prompt.de.md",
+    "reconstructionPromptOrigin": "Individually written from the actually viewed output; not a recycled generation instruction."
+  },
+  "attemptHistory": "builtin-attempts-review.json",
+  "limitations": [
+    "Creating-agent AI review is not human approval or independent QA.",
+    "No learner-book or cockpit acceptance test performed; asset is unimported.",
+    "Friendly generated raster may have small stroke-level endpoint variations."
+  ],
+  "selfReview": {
+    "correctedDefects": [
+      "B and C restored to front-right/back-right base corners.",
+      "Orange base diagonal now connects A to C; purple space diagonal A to G.",
+      "Positive x follows A-B; corrected y follows A-D; z follows A-E."
+    ],
+    "mathematics": [
+      "A=(0|0|0),B=(6|0|0),C=(6|4|0),D=(0|4|0); E,F,G,H are the corresponding height-3 points.",
+      "AC=(6,4,0) gives sqrt(36+16)=sqrt52≈7.21; AG=(6,4,3) gives sqrt61≈7.81.",
+      "Top/base/front/back vertices remain an affine cuboid; matching edges are parallel."
+    ],
+    "geometryEvidence": "Approximate selected raster: A(1046,507),B(1354,507),C(1458,411),D(1150,411),E(1046,332),F(1354,332),G(1458,233),H(1150,233). y-arrow follows A-D with small hand-drawn stroke tolerance; independent review should inspect the exact alignment.",
+    "visibleBlockingDefects": [],
+    "style": "Original comic palette, boxes, ruler icons, readable calculations and coordinate labels preserved."
+  }
+}

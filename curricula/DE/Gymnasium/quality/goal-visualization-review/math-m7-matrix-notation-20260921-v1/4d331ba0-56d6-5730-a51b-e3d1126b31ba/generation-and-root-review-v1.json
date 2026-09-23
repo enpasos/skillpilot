@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "goalId": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+  "recordedAt": "2026-09-21T22:18:10.196Z",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactServingModel": "not exposed",
+  "resultId": "exec-d165bbf2-2107-4e09-8ba4-60b6a7b5fbd2",
+  "nativePrepareCompletedBeforeGeneration": true,
+  "prompt": {
+    "path": "edit-prompt-v1.md",
+    "sha256": "sha256:0513ac03cdce56d468134be90c2e16e1bf7809cc0110c32e6140b2f8da58f544"
+  },
+  "reference": {
+    "path": "app/public/assets/goal-visualizations/mathematik/4d331ba0-56d6-5730-a51b-e3d1126b31ba/4d331ba0-56d6-5730-a51b-e3d1126b31ba.jpg",
+    "sha256": "sha256:0e4190c6989ae09e7aa930b4f442c3dddc3f571cce4a4339956aed6faca287df",
+    "actuallyViewedBeforeEditing": true
+  },
+  "candidate": {
+    "path": "candidate.png",
+    "sha256": "sha256:1d50597d5214d7b61a2b6fb0f268c30f9bacdcbed845efaf7c06bff65adc6e83",
+    "width": 1678,
+    "height": 937
+  },
+  "rootReview": {
+    "actuallyViewed": true,
+    "decision": "candidate_pending_independent_review",
+    "findings": [
+      "All points and matrix calculations agree with A=(1 1;0 1).",
+      "Orange now begins at R=(-1,1), ends at Rprime=(0,1); blue P(2,1) maps to (3,1).",
+      "Green line after the Q label points at Qprime(2,2); verify its origin is readable as Q rather than a new position.",
+      "No claim of geometrically scaled mapping arrows; they join separate coordinate diagrams."
+    ]
+  },
+  "reviewAuthority": "ai_candidate",
+  "canonicalImported": false,
+  "humanApproval": false
+}

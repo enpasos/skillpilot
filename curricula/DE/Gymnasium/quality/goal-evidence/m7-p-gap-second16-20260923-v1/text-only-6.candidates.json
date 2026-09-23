@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-p-gap-second16-text-only-6-20260923-v1",
+  "reviewedAt": "2026-09-23T08:48:31.000Z",
+  "reviewer": "OpenAI Codex subject review; AI candidate only",
+  "goals": [
+    {
+      "goalId": "909d8b16-5156-528b-a300-d9aee5405ba0",
+      "reason": "Ein Parameterwechsel und eine zusätzliche Kapazitätsbedingung machen die fachliche Modelländerung und ihre Nebenwirkung gegenüber vorhandenen Daten beobachtbar; das vorhandene Bild hat keinen aktuellen hashgebundenen AI-KEEP.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "model-adjustment",
+            "essentialUnderstandingDe": "Ein Modell wird gezielt geändert, indem eine neue Bedingung in Parameter oder Funktionsvorschrift übersetzt und der Einfluss auf alte Vorhersagen und den Gültigkeitsbereich geprüft wird.",
+            "essentialUnderstandingEn": "A model is deliberately adjusted by translating a new condition into parameters or a function rule and checking its effect on previous predictions and the valid domain.",
+            "observablePerformanceDe": "Die lernende Person benennt die verletzte neue Bedingung, ändert nur die dafür nötigen Modellteile, berechnet eine neue Aussage und erklärt, welche bisherige Passung oder Annahme sich verändert.",
+            "observablePerformanceEn": "The learner identifies the unmet new condition, changes the relevant model component, computes a revised prediction, and explains which previous fit or assumption changes."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "model-adjustment"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "model-adjustment-variation",
+            "textDe": "Zuerst wird die Steigung eines linearen Modells an eine neue Messung angepasst; dann ergänzt eine reale Obergrenze ein Sättigungsverhalten statt nur eines Zahlenwerts.",
+            "textEn": "The first case changes a linear slope to fit a new measurement; the second adds a real capacity limit and saturation rather than merely changing one number."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "changed-slope",
+            "taskDemandDe": "Das Modell y=2x+2 passt zu (0,2) und (2,6). Eine neue Messung bei x=2 ergibt y=8; halte den Anfangswert fest und passe das Modell an.",
+            "taskDemandEn": "Model y=2x+2 fits (0,2) and (2,6). A new reading at x=2 gives y=8; keep the initial value and adjust the model.",
+            "expectedPerformanceDe": "Mit y=ax+2 liefert 8=2a+2 also a=3; y=3x+2 trifft die neue Messung, aber nicht mehr die alte Messung (2,6). Die Datenlage muss geklärt werden.",
+            "expectedPerformanceEn": "With y=ax+2, 8=2a+2 gives a=3; y=3x+2 fits the new measurement but no longer fits the old (2,6). The data conflict must be resolved.",
+            "understandingFocusDe": "Gezieltes Anpassen ist keine Behauptung, dass widersprüchliche Daten zugleich perfekt passen.",
+            "understandingFocusEn": "A targeted adjustment cannot make contradictory data fit perfectly at once."
+          },
+          {
+            "id": "capacity-bound",
+            "taskDemandDe": "N(t)=100+20t beschreibt belegte Plätze. Es gibt höchstens 160 Plätze. Formuliere ein angepasstes Modell für t≥0 und deute t=4.",
+            "taskDemandEn": "N(t)=100+20t models occupied places. Capacity is 160. Give a revised model for t≥0 and interpret t=4.",
+            "expectedPerformanceDe": "N_neu(t)=min(100+20t,160); ab t=3 ist die Grenze erreicht, daher N_neu(4)=160 statt 180. Die lineare Zunahme gilt nur bis zur Sättigung.",
+            "expectedPerformanceEn": "N_new(t)=min(100+20t,160); capacity is reached at t=3, hence N_new(4)=160 rather than 180. Linear growth applies only before saturation.",
+            "understandingFocusDe": "Eine zusätzliche sachliche Bedingung verändert hier die Modellstruktur und den Gültigkeitsbereich.",
+            "understandingFocusEn": "A new contextual condition changes the model structure and its range of validity."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a594dec0-3977-5c43-9432-d4254a7f6130",
+      "reason": "Die Betragsbildung des Spatprodukts und der Faktor 1/6 für Tetraeder werden einmal an Achsenvektoren und einmal an aus Punkten gewählten gemeinsamen Kantenvektoren geprüft; das Bild hat keinen aktuellen hashgebundenen AI-KEEP.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "triple-product-volume",
+            "essentialUnderstandingDe": "Der Betrag des Spatprodukts dreier Kantenvektoren von einem gemeinsamen Eckpunkt ist das orientierungsunabhängige Spatvolumen; das Tetraeder mit denselben Kanten hat ein Sechstel davon.",
+            "essentialUnderstandingEn": "The absolute scalar triple product of three edges from a common vertex gives orientation-independent parallelepiped volume; the tetrahedron has one sixth of it.",
+            "observablePerformanceDe": "Die lernende Person wählt drei passende Kantenvektoren, berechnet Kreuz- und Skalarprodukt, nimmt den Betrag, berücksichtigt gegebenenfalls 1/6 und erläutert die Einheit.",
+            "observablePerformanceEn": "The learner chooses three compatible edge vectors, computes the cross and dot products, takes the absolute value, applies one sixth where needed, and explains the unit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "triple-product-volume"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "triple-product-volume-variation",
+            "textDe": "Von direkt gegebenen orthogonalen Vektoren wird zu vier räumlichen Punkten mit frei zu wählendem gemeinsamen Eckpunkt und vertauschter Orientierung gewechselt.",
+            "textEn": "The case changes from directly given orthogonal vectors to four spatial points requiring a common vertex and attention to orientation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "axis-vectors",
+            "taskDemandDe": "Ein Spat hat Kanten a=(2,0,0), b=(0,3,0), c=(0,0,4) cm. Bestimme Spat- und zugehöriges Tetraedervolumen.",
+            "taskDemandEn": "A parallelepiped has edges a=(2,0,0), b=(0,3,0), c=(0,0,4) cm. Find its volume and that of the associated tetrahedron.",
+            "expectedPerformanceDe": "|a·(b×c)|=24 cm³; das Tetraeder hat 24/6=4 cm³. Die drei senkrechten Kanten liefern hier dieselbe Größe wie Länge·Breite·Höhe.",
+            "expectedPerformanceEn": "|a·(b×c)|=24 cm³; the tetrahedron has 24/6=4 cm³. Here the perpendicular edges agree with length·width·height.",
+            "understandingFocusDe": "Der Betrag entfernt die willkürliche Orientierung; 1/6 ist geometrisch begründet.",
+            "understandingFocusEn": "Absolute value removes arbitrary orientation; one sixth has geometric meaning."
+          },
+          {
+            "id": "point-tetrahedron",
+            "taskDemandDe": "P=(1,0,0), Q=(1,2,0), R=(1,0,3), S=(3,0,0) sind Tetraederecken. Wähle Kanten von P und berechne das Volumen.",
+            "taskDemandEn": "P=(1,0,0), Q=(1,2,0), R=(1,0,3), S=(3,0,0) are tetrahedron vertices. Choose edges from P and find volume.",
+            "expectedPerformanceDe": "PQ=(0,2,0), PR=(0,0,3), PS=(2,0,0); der Betrag des Spatprodukts ist 12, also V_Tet=2 Volumeneinheiten. Eine Vertauschung kann nur das Vorzeichen ändern.",
+            "expectedPerformanceEn": "PQ=(0,2,0), PR=(0,0,3), PS=(2,0,0); the triple-product magnitude is 12, so tetrahedron volume is 2 cubic units. Exchanging edges changes only the sign.",
+            "understandingFocusDe": "Alle drei Vektoren müssen am selben Eckpunkt beginnen, bevor das Spatprodukt eingesetzt wird.",
+            "understandingFocusEn": "All three edge vectors must start at a common vertex before applying the triple product."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a8ff2666-8df3-4253-8021-3efe42114e40",
+      "reason": "Betrag, Punktabstand und Mittelpunkt werden vorwärts und invers an dreidimensionalen Koordinaten und ihrer geometrischen Bedeutung geprüft; kein aktueller hashgebundener AI-KEEP für das Bild.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "space-point-metrics",
+            "essentialUnderstandingDe": "Der Vektorbetrag liefert eine räumliche Länge, der Abstand zweier Punkte ist der Betrag ihres Differenzvektors, und der Mittelpunkt mittelt ihre Koordinaten komponentenweise.",
+            "essentialUnderstandingEn": "Vector magnitude gives spatial length, point distance is the magnitude of their difference vector, and a midpoint averages endpoint coordinates componentwise.",
+            "observablePerformanceDe": "Die lernende Person bildet den Verbindungsvektor, berechnet seinen Betrag und den Mittelpunkt oder rekonstruiert einen Endpunkt aus Mittelpunkt und anderem Endpunkt.",
+            "observablePerformanceEn": "The learner forms a connecting vector, computes its magnitude and midpoint, or reconstructs an endpoint from a midpoint and the other endpoint."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "space-point-metrics"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "space-point-metrics-variation",
+            "textDe": "Die Richtung der Information wechselt von zwei Endpunkten zu Mittelpunkt-plus-Endpunkt, während negative und verschwindende Koordinatendifferenzen berücksichtigt werden.",
+            "textEn": "Information changes from two endpoints to midpoint-plus-endpoint, with negative and zero coordinate differences."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-endpoints",
+            "taskDemandDe": "Für A=(1,2,3) und B=(3,−2,5): bestimme AB-Vektor, Abstand und Mittelpunkt.",
+            "taskDemandEn": "For A=(1,2,3) and B=(3,−2,5), find vector AB, distance, and midpoint.",
+            "expectedPerformanceDe": "AB=(2,−4,2), |AB|=√24=2√6; M=(2,0,4). Der Abstand ist richtungsunabhängig, obwohl BA=−AB.",
+            "expectedPerformanceEn": "AB=(2,−4,2), |AB|=√24=2√6; M=(2,0,4). Distance does not depend on direction, though BA=−AB.",
+            "understandingFocusDe": "Differenz und Mittelwert beantworten verschiedene geometrische Fragen.",
+            "understandingFocusEn": "Difference and average answer different geometric questions."
+          },
+          {
+            "id": "recover-endpoint",
+            "taskDemandDe": "A=(0,2,3) und Mittelpunkt M=(2,1,−1) sind bekannt. Rekonstruiere B und bestimme AB.",
+            "taskDemandEn": "A=(0,2,3) and midpoint M=(2,1,−1) are known. Recover B and find AB.",
+            "expectedPerformanceDe": "B=2M−A=(4,0,−5); AB=(4,−2,−8), also |AB|=√84=2√21.",
+            "expectedPerformanceEn": "B=2M−A=(4,0,−5); AB=(4,−2,−8), hence |AB|=√84=2√21.",
+            "understandingFocusDe": "Die Mittelpunktgleichung lässt sich in jeder Koordinate umkehren.",
+            "understandingFocusEn": "The midpoint relation can be reversed coordinate by coordinate."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+      "reason": "Symmetrieachsen und -ebenen werden aus deckungsgleichen Körperbildern begründet und bei Quader und Pyramide voneinander abgegrenzt; das vorhandene Bild hat keinen aktuellen hashgebundenen AI-KEEP.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "solid-symmetries",
+            "essentialUnderstandingDe": "Eine Symmetrieebene spiegelt den ganzen Körper auf sich selbst, eine Symmetrieachse erhält ihn bei einer passenden Drehung; ähnliche Formen können unterschiedlich viele solcher Symmetrien besitzen.",
+            "essentialUnderstandingEn": "A symmetry plane reflects a whole solid onto itself, while rotation about a symmetry axis maps it onto itself; related solids may have different symmetry counts.",
+            "observablePerformanceDe": "Die lernende Person lokalisiert Achsen und Ebenen am Körper, benennt die passende Spiegelung oder Drehung und verwirft eine scheinbare Symmetrie durch ein Gegenbeispiel an einer Ecke oder Kante.",
+            "observablePerformanceEn": "The learner locates axes and planes on a solid, specifies the reflection or rotation, and rejects a false symmetry by tracking a corner or edge."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "solid-symmetries"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "solid-symmetries-variation",
+            "textDe": "Ein Quader mit drei verschiedenen Kantenlängen wird mit einer geraden quadratischen Pyramide verglichen; insbesondere verschwindet deren horizontale Spiegelebene.",
+            "textEn": "A rectangular box with three distinct edge lengths is compared with a right square pyramid, notably without a horizontal mirror plane."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unequal-box",
+            "taskDemandDe": "Ein Quader ist 2×3×4 cm groß. Beschreibe seine drei mittleren Symmetrieebenen und eine Drehachse; prüfe eine diagonale Spiegelebene.",
+            "taskDemandEn": "A 2×3×4 cm rectangular box is given. Describe its three central mirror planes and a rotation axis; test a diagonal mirror plane.",
+            "expectedPerformanceDe": "Die drei Ebenen durch den Mittelpunkt parallel zu jeweils zwei Flächen spiegeln den Quader auf sich. Durch gegenüberliegende Flächenmittelpunkte gehen zweizählige Achsen. Eine diagonale Vertauschung von 2- und 3-cm-Kanten ist keine Symmetrie.",
+            "expectedPerformanceEn": "The three midplanes parallel to pairs of faces are mirrors. Axes through opposite face centres allow half-turns. A diagonal swap of 2- and 3-cm edges is not a symmetry.",
+            "understandingFocusDe": "Unterschiedliche Kantenlängen schließen zusätzliche Würfelsymmetrien aus.",
+            "understandingFocusEn": "Unequal edge lengths rule out extra cube symmetries."
+          },
+          {
+            "id": "square-pyramid",
+            "taskDemandDe": "Bei einer geraden quadratischen Pyramide liegt die Spitze über dem Grundflächenzentrum. Nenne eine Drehachse und die senkrechten Symmetrieebenen; ist die Grundflächenebene eine Spiegelebene?",
+            "taskDemandEn": "A right square pyramid has its apex above the base centre. Give a rotation axis and the vertical mirror planes; is the base plane a mirror?",
+            "expectedPerformanceDe": "Die Achse Spitze–Grundflächenzentrum ist vierzählig; vier vertikale Ebenen gehen durch diese Achse und gegenüberliegende Ecken oder Seitenmitten. Die Grundebene ist keine Symmetrieebene, weil sie die Spitze unter den Körper spiegelte.",
+            "expectedPerformanceEn": "The apex-to-base-centre axis has order four; four vertical mirror planes pass through it and opposite vertices or side midpoints. The base plane is not a mirror because it would map the apex below the solid.",
+            "understandingFocusDe": "Eine Symmetrie muss den gesamten Körper, nicht nur die Grundfläche, erhalten.",
+            "understandingFocusEn": "A symmetry must preserve the entire solid, not merely its base."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "bd637a72-6609-54f5-bb33-8a9e898bf7a0",
+      "reason": "Die Auswahl einer Heuristik wird mit der erkannten Problemstruktur und ihrem tatsächlichen Lösungsvorteil begründet; das Bild hat keinen aktuellen hashgebundenen AI-KEEP.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "heuristic-choice",
+            "essentialUnderstandingDe": "Eine Heuristik ist passend, wenn eine erkennbare Struktur wie Symmetrie oder eine Zielbedingung durch Umformen einen kürzeren, nachvollziehbaren Lösungsweg ermöglicht; die Wahl braucht eine inhaltliche Begründung.",
+            "essentialUnderstandingEn": "A heuristic fits when recognised structure, such as symmetry or a target condition, enables a shorter traceable solution; the choice needs a substantive reason.",
+            "observablePerformanceDe": "Die lernende Person benennt eine geeignete Heuristik, begründet deren Passung zur Aufgabenstruktur, führt die entscheidenden Lösungsschritte aus und prüft das Ergebnis.",
+            "observablePerformanceEn": "The learner names an appropriate heuristic, explains why it fits the task structure, carries out the decisive steps, and checks the result."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "heuristic-choice"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "heuristic-choice-variation",
+            "textDe": "Die Problemstruktur wechselt von einer symmetrischen Optimierung mit festem Umfang zu einer Teilbarkeitsaussage für alle ungeraden Zahlen mit geeignetem Spezialansatz.",
+            "textEn": "The problem changes from symmetric optimisation with fixed perimeter to a divisibility claim for every odd integer using a suitable representation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "symmetry-optimum",
+            "taskDemandDe": "Ein Rechteck hat Umfang 20 cm. Wähle eine Heuristik, um die größte Fläche zu finden, und begründe sie.",
+            "taskDemandEn": "A rectangle has perimeter 20 cm. Choose a heuristic to find the maximum area and justify it.",
+            "expectedPerformanceDe": "Mit Seiten x und 10−x ist A=x(10−x)=25−(x−5)². Die Symmetrie um x=5 und das nichtnegative Quadrat zeigen: beim Quadrat 5×5 cm ist A maximal 25 cm².",
+            "expectedPerformanceEn": "With sides x and 10−x, A=x(10−x)=25−(x−5)². Symmetry about x=5 and the nonnegative square show the 5×5 cm square maximises area at 25 cm².",
+            "understandingFocusDe": "Symmetrie bzw. Quadratergänzung macht das Maximum sichtbar, statt Werte blind zu testen.",
+            "understandingFocusEn": "Symmetry or completing the square exposes the maximum instead of blind trials."
+          },
+          {
+            "id": "odd-divisibility",
+            "taskDemandDe": "Zeige, dass für jede ungerade ganze Zahl n der Ausdruck n²−1 durch 8 teilbar ist. Welche Heuristik passt?",
+            "taskDemandEn": "Show that n²−1 is divisible by 8 for every odd integer n. Which heuristic fits?",
+            "expectedPerformanceDe": "Setze die besondere Form n=2k+1: n²−1=4k(k+1). Da eine von zwei aufeinanderfolgenden Zahlen gerade ist, teilt 8 den Ausdruck. Die Form des Sonderfalls „ungerade“ macht den entscheidenden Faktor sichtbar.",
+            "expectedPerformanceEn": "Use the special form n=2k+1: n²−1=4k(k+1). One of consecutive integers k,k+1 is even, so 8 divides the expression. The odd-number representation exposes the key factor.",
+            "understandingFocusDe": "Ein geeignetes Umkodieren der Bedingung ist ein begründeter heuristischer Schritt.",
+            "understandingFocusEn": "Recoding the given condition appropriately is a reasoned heuristic step."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e02b994f-376d-5a8e-a14c-c4acacae57cf",
+      "reason": "Definitionsbereich, Kapazitätsgrenze und Ganzzahligkeit ändern die zulässige Lösungsmenge und können ein unbeschränktes kontinuierliches Optimum ausschließen; das Bild hat keinen aktuellen hashgebundenen AI-KEEP.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "model-constraints",
+            "essentialUnderstandingDe": "Nebenbedingungen sind Teil des Modells: negative, zu große oder nicht ganzzahlige Werte können algebraisch möglich, aber sachlich unzulässig sein; Optimierung erfolgt nur auf der zulässigen Menge.",
+            "essentialUnderstandingEn": "Constraints are part of a model: negative, oversized, or fractional values may be algebraically possible yet contextually invalid; optimisation occurs only over the feasible set.",
+            "observablePerformanceDe": "Die lernende Person formuliert Definitions- und Nebenbedingungen, bestimmt rechnerische Kandidaten, filtert sie mit den Bedingungen und erläutert die Auswirkungen auf das Ergebnis.",
+            "observablePerformanceEn": "The learner states domain and side constraints, computes candidate solutions, filters them against the constraints, and explains their effect on the result."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "model-constraints"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "model-constraints-variation",
+            "textDe": "Von einer oberen Kapazitätsgrenze in einer quadratischen Gewinnfunktion wird zu nichtnegativen ganzzahligen Stückzahlen in einer linearen Ressourcenbedingung gewechselt.",
+            "textEn": "The case changes from an upper capacity bound in a quadratic profit function to nonnegative integer quantities under a linear resource condition."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "capacity-optimum",
+            "taskDemandDe": "Der Gewinn ist P(x)=−x²+12x−20 für ganze Stückzahlen 0≤x≤5. Wo liegt das zulässige Maximum?",
+            "taskDemandEn": "Profit is P(x)=−x²+12x−20 for integer quantities 0≤x≤5. Where is the feasible maximum?",
+            "expectedPerformanceDe": "Die Parabel hat ihr kontinuierliches Maximum bei x=6, doch das ist unzulässig. Auf 0 bis 5 wächst P, also x=5 und P(5)=15; die Kapazität verschiebt die Modellentscheidung.",
+            "expectedPerformanceEn": "The unconstrained parabola peaks at x=6, but this is infeasible. P increases on 0 to 5, so x=5 yields P(5)=15; capacity changes the decision.",
+            "understandingFocusDe": "Ein rechnerisches Extremum außerhalb des Definitionsbereichs ist keine Sachlösung.",
+            "understandingFocusEn": "A calculated extremum outside the domain is not a contextual solution."
+          },
+          {
+            "id": "integer-mixture",
+            "taskDemandDe": "Für zwei Packungstypen gilt x+2y=10; x,y sind nichtnegative ganze Stückzahlen. Sind x=3,y=3,5 und x=4,y=3 zulässig, und was bewirkt die Ganzzahligkeit?",
+            "taskDemandEn": "For two package types x+2y=10; x,y are nonnegative integers. Are (3,3.5) and (4,3) feasible, and what does integrality change?",
+            "expectedPerformanceDe": "Mit x=3,y=3,5 ist die Gleichung rechnerisch erfüllt, aber y=3,5 keine ganze Packung; x=4,y=3 erfüllt Gleichung und Ganzzahligkeit. Zulässig sind nur diskrete Punkte statt der ganzen Geraden im ersten Quadranten.",
+            "expectedPerformanceEn": "(3,3.5) satisfies the equation numerically, but y=3.5 is not a whole package; (4,3) satisfies both equation and integrality. Only discrete points, not the full first-quadrant line, are feasible.",
+            "understandingFocusDe": "Eine Nebenbedingung kann kontinuierliche Lösungen ausschließen, obwohl die Grundgleichung stimmt.",
+            "understandingFocusEn": "A side constraint can exclude continuous solutions despite satisfying the basic equation."
+          }
+        ]
+      }
+    }
+  ]
+}

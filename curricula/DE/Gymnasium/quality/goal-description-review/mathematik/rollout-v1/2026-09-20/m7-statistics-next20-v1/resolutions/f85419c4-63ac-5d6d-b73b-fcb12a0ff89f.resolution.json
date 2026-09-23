@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-statistics-next20-v1-20260920-resolution-f85419c4-63ac-5d6d-b73b-fcb12a0ff89f",
+  "goal": {
+    "goalId": "f85419c4-63ac-5d6d-b73b-fcb12a0ff89f",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:14a1728776c122e685f966d4854d98e81b3e60e6e1f0433cb8597b5bc8a6febd",
+    "pageFingerprint": "sha256:26ab3b45647c8430b7aa2ec7a39c68b1e1f53d72bfd01f21c705cd02bd15ccaa",
+    "goalReviewContextFingerprint": "sha256:56fec61f8cf7f6e881e89b711d708c9e5ecfb8b8a250580c40c6cc3917d925ba",
+    "finalText": {
+      "titleDe": "Prognoseintervalle für relative Häufigkeiten bestimmen",
+      "titleEn": "Determine prediction intervals for relative frequencies",
+      "descriptionDe": "Die lernende Person kann für hinreichend große unabhängige Bernoulli-Stichproben aus einer bekannten Trefferwahrscheinlichkeit näherungsweise Prognoseintervalle der Form $\\left[p-c\\sqrt{\\frac{p(1-p)}{n}};\\ p+c\\sqrt{\\frac{p(1-p)}{n}}\\right]$ für die relative Häufigkeit bestimmen und die Voraussetzungen sowie die verbleibende Prognoseunsicherheit erläutern.",
+      "descriptionEn": "For sufficiently large independent Bernoulli samples, the learner can use a known success probability to determine approximate prediction intervals of the form $\\left[p-c\\sqrt{\\frac{p(1-p)}{n}};\\ p+c\\sqrt{\\frac{p(1-p)}{n}}\\right]$ for the relative frequency and explain the assumptions and remaining prediction uncertainty."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-statistics-next20-v1-20260920-a",
+      "campaignDigest": "sha256:5de48c488eaf8d9e91e00a48794075a8d10eeed307836f3d141437a045d9d156",
+      "roundId": "mathematik-m7-statistics-next20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-statistics-next20-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:f40a00ab1ccc32e6eb4278c4b79aa2a29ca6c9503d3de0be13071f8b8e41152b",
+      "goalReviewContextFingerprint": "sha256:56fec61f8cf7f6e881e89b711d708c9e5ecfb8b8a250580c40c6cc3917d925ba",
+      "batchId": "mathematik-m7-statistics-next20-v1-20260920-first-pass-a.batch-001",
+      "runId": "mathematik-m7-statistics-next20-v1-20260920-first-pass-a.batch-001.independent-a",
+      "runManifestDigest": "sha256:813b562d968cc7ee116fc86c96d407ce6fc9dcc4cc736baaf5b857b3ef31893c",
+      "resultsDigest": "sha256:91c1a0ddfc5f28c9a77f2e3c2992e7f061ee3cacd0b07ac0166834cff6e0d81c",
+      "recordId": "mathematik-m7-statistics-next20-v1-20260920-first-pass-a.batch-001.independent-a.record-010",
+      "recordDigest": "sha256:4a98ecad20cf4ed55c6cd31c828f82fffd2f203fe29b0a7d8851290907badd77"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-statistics-next20-v1-20260920-b",
+      "campaignDigest": "sha256:9cda370d944acd152f82f9bbb86b04bc4025f020a7d81cf39da8677e2e09641b",
+      "roundId": "mathematik-m7-statistics-next20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-statistics-next20-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:f40a00ab1ccc32e6eb4278c4b79aa2a29ca6c9503d3de0be13071f8b8e41152b",
+      "goalReviewContextFingerprint": "sha256:56fec61f8cf7f6e881e89b711d708c9e5ecfb8b8a250580c40c6cc3917d925ba",
+      "batchId": "mathematik-m7-statistics-next20-v1-20260920-first-pass-b.batch-001",
+      "runId": "mathematik-m7-statistics-next20-v1-20260920-b-codex-20260921",
+      "runManifestDigest": "sha256:6127f6080af55079d7973f0fee7f4af34fedb83f33ca065d945861532592d1e7",
+      "resultsDigest": "sha256:8e4f938189066913de14f10c7795990ad6d73a4c24ce4a363f05f04d6b48b3c5",
+      "recordId": "mathematik-m7-statistics-next20-v1-20260920-b-codex-20260921.f85419c4-63ac-5d6d-b73b-fcb12a0ff89f",
+      "recordDigest": "sha256:f7d1d5c2bb59b589ef86b922a5a26e91e4393cc6615222d79a9f4fe602cb5bc3"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:d810da68ca20b761a73ec89593593d702098832e42408e037028f18b1a0721ca"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-current-17.json",
+    "manifestId": "mathematik-m7-statistics-next20-v1-20260920-current17-synthesis",
+    "manifestDigest": "sha256:22abdbe1df45086ac6bb9e14ffd9b911c09b9ba287a18f256074665802aa5bfe",
+    "manifestFingerprint": "sha256:c7ea0d1ed78dfa1fc188f2b7ed73c40f584bb35eefe9c32c4ea50ac64d52234a",
+    "decisionId": "mathematik-m7-statistics-next20-v1-20260920-current17-8"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-m7-statistics-next20-v1-20260920-current17-8",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex Root informed synthesis; not an additional independent review",
+    "synthesizedAt": "2026-09-21T21:07:58.115Z",
+    "rationaleDe": "Beide Runden unterscheiden bekanntes p und zukünftige relative Häufigkeiten, Näherung und Restrisiko. A verbindet den Repräsentationswechsel zu Trefferzahlen mit Prüfung der Näherung; B bestätigt das seltene Ereignis als Gegenprobe.",
+    "rationaleEn": "Both rounds distinguish known p from future relative frequencies, approximation and residual risk. A links transfer to success counts with checking the approximation; B confirms rare events as a diagnostic case.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Bei bekanntem p schwankt die relative Trefferhäufigkeit einer Stichprobe um p mit Standardabweichung sqrt(p(1-p)/n). Der Faktor c legt die angenäherte Überdeckungswahrscheinlichkeit fest; das Prognoseintervall betrifft zukünftige Häufigkeiten und bleibt eine Näherung unter Bernoulli- und Größenbedingungen.",
+      "essentialUnderstandingEn": "For known p, a sample's relative success frequency fluctuates around p with standard deviation sqrt(p(1-p)/n). The factor c sets the approximate coverage probability; the prediction interval concerns future frequencies and remains an approximation subject to Bernoulli and sample-size conditions.",
+      "observablePerformanceDe": "Die lernende Person bestimmt ein Prognoseintervall aus n, bekanntem p und einem passenden c, erklärt Mittelpunkt und Halbbreite und begründet, weshalb unabhängige Versuche sowie eine hinreichend geeignete Binomialverteilung für die Näherung benötigt werden.",
+      "observablePerformanceEn": "The learner determines a prediction interval from n, known p, and an appropriate c, explains its center and half-width, and explains why independent trials and a sufficiently suitable binomial distribution are needed for the approximation.",
+      "transferExpectationDe": "In einer neuen Aufgabe wird dieselbe Prognose als Bereich für Trefferzahlen verlangt oder ein seltenes Ereignis bei unverändertem n betrachtet. Die lernende Person übersetzt den Bereich korrekt beziehungsweise prüft die Tragfähigkeit der Normalnäherung neu.",
+      "transferExpectationEn": "A fresh task asks for the same prediction as a range of success counts, or considers a rare event with n unchanged. The learner translates the range correctly or reassesses the adequacy of the normal approximation."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-206ade7c680d0671c7b46c7590c84c34555aa21f4574a9f05b4a1c25ce6a0d67",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:061429bea398203257374a9b5058ed69dac8dc6eb66e82bb01d0f4f9a469ce65"
+}

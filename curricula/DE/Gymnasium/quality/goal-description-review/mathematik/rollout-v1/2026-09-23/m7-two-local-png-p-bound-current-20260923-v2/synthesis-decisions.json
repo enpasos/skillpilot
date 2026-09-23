@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-synthesis-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (GPT-6); synthesis of two independent current AI reviews",
+  "synthesizedAt": "2026-09-23T11:22:14.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2",
+    "batchManifestDigest": "sha256:e175bb8bc7097af67c4b16acdf8a1352b66d19eac25a3c082bafbb005161ea15",
+    "configDigest": "sha256:b844f652ed3af469795c04f47168934c949abd14c5a5b5b0fd371a9fe6632d67",
+    "bundleFingerprint": "sha256:e36c2f5e505d9d072305df997d956ddfca81cb87a41af9d3bdf64628b638acdd",
+    "bookDigest": "sha256:832fa3d9c4c418155e0d74eba291e64061e22aa12d1745b034278e3063758542",
+    "reviewInputFingerprint": "sha256:9a68de459b2d9068244b4796527c3fca2c560e78fd8de7e9e08ef3e8ee81551c",
+    "dualSummaryDigest": "sha256:14aaa1a24b9c49757e304d7f350fed9e4c9c1ebce1d936bd7c42f3c967145a1d",
+    "canonicalLandscapeDigest": "sha256:7265fca443019c03fc63dd16d9ff113c45815dd07b6ac8d02db48bf0636c4227"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-a",
+      "campaignDigest": "sha256:8ff6215fc692f66a66e6b730352362ce1af92b7a068a2557844b6aa60fae0586",
+      "roundId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-independent-a",
+      "reviewInputFingerprint": "sha256:9a68de459b2d9068244b4796527c3fca2c560e78fd8de7e9e08ef3e8ee81551c",
+      "batchId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:75ef7dc05549ca6057fe31b359cd23da4c91b4102f16b8701f3df9894a721c4f",
+      "runId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-a-run-001",
+      "runManifestDigest": "sha256:f4bd016566e32089a5514e722460dbaadde2023dec08b72d25f0563cfc5a8dae",
+      "resultsDigest": "sha256:d71161b5fec42c5d188d4a72a2efbd0669d20bbbc7ac0aad2125f63d7e1ac820"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-b",
+      "campaignDigest": "sha256:c47c8fa4d326511b87ead1f2133b2f5dad8ea1f1d9eb31ac7f6b607e5db65ab6",
+      "roundId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-independent-b",
+      "reviewInputFingerprint": "sha256:9a68de459b2d9068244b4796527c3fca2c560e78fd8de7e9e08ef3e8ee81551c",
+      "batchId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:ca65ce289dd798e0377e0bf6e608ec2095f14a71597e41177038b4caa2eff28e",
+      "runId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-first-pass-b.batch-001.run-001",
+      "runManifestDigest": "sha256:a19fed7c9f17bcf6a4f4e24f7ca3b4271b86a67bb9ed1387b6abe64f220e68ec",
+      "resultsDigest": "sha256:28dabd88958d53af8c3469d931a2cc61473547e23a25eaa98e864b21150c3b0a"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-synthesis-v1-decision-001",
+      "goalId": "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d42470e39d832ff587d0f490bf9d2768e4456292e3cecf14ce7092cac0b4ca8f",
+      "pageFingerprint": "sha256:e8020ba4ed4e73efc9a39983c56bc04806fcc53c3d399406e1b7dff93af76645",
+      "goalReviewContextFingerprint": "sha256:095b36b1e425f08973d56ffeb432993b275384507938a896dc0a88ad1e78c21a",
+      "finalText": {
+        "titleDe": "Seitenhalbierende in Dreiecken konstruieren",
+        "titleEn": "Construct medians in triangles",
+        "descriptionDe": "Die lernende Person kann zu einem gegebenen Dreieck die Seitenhalbierenden durch Konstruktion der Seitenmittelpunkte und Verbinden mit den gegenüberliegenden Eckpunkten konstruieren und prüfen.",
+        "descriptionEn": "For a given triangle, the learner can construct the medians by constructing each side midpoint and joining it to the opposite vertex, and can check the result."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-a-median",
+          "recordDigest": "sha256:50cc344c80323be7081fa84ea06d8e527bc5cfb632c7aefdcd7e0657644db763"
+        },
+        "second": {
+          "recordId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-b-dcda6fdf",
+          "recordDigest": "sha256:4afb7da877fc9a66444b5b0a9d3cb5a2504c6ebe4e1a9edcaffdf8af7a3fc735"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews entscheiden KEEP für dieselbe J7-Konstruktion: alle Seitenmittelpunkte bestimmen, mit den Gegenecken verbinden und die gleichen Teilstrecken prüfen. Der zweite Review benennt zusätzlich ausdrücklich, dass eine Seitenhalbierende weder Höhe noch Winkelhalbierende sein muss, ohne die kanonische Kompetenz zu erweitern. Das geprüfte PNG zeigt nur A–M mit BM = MC und ist Anschauung, kein Leistungsnachweis. Das exakt gebundene aktuelle P-v2-Profil enthält vollständige Konstruktions- und Transfererwartungen und bleibt KI-Kandidat. Externe Geltung und Quellzuordnung wurden durch diese D-Synthese nicht neu verifiziert; die alte D-Auflösung bleibt historisch erhalten.",
+      "rationaleEn": "Both independent current reviews choose KEEP for the same grade 7 construction: determine all side midpoints, join them to the opposite vertices, and check equal subsegments. The second review also explicitly distinguishes a median from an altitude or angle bisector without expanding the canonical competence. The checked PNG shows only A–M with BM = MC and is teaching support, not performance evidence. The exactly bound current P-v2 profile contains full construction and transfer expectations and remains an AI candidate. This D synthesis did not independently verify external applicability or source mapping; the older D resolution remains historical."
+    },
+    {
+      "decisionId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-synthesis-v1-decision-002",
+      "goalId": "570d5931-f126-5bb4-8b7f-db236d6b727f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a1de30a271de7ce96e8c3159b119f23532ea3580ab3040b782a061f8f63528f4",
+      "pageFingerprint": "sha256:dd54108721221fe5e63fba2c32aa7852339d517d50c00b750bbf6d18fe3c1139",
+      "goalReviewContextFingerprint": "sha256:b952155ebfad56a04fbb53d26bb219ed58a4210672f3529ce9fb7e4d172437f9",
+      "finalText": {
+        "titleDe": "Eine Kreistangente im Berührpunkt konstruieren",
+        "titleEn": "Construct a circle tangent at a point of contact",
+        "descriptionDe": "Die lernende Person kann in einem gegebenen Punkt eines Kreises die Tangente als Senkrechte zum Radius konstruieren und die Konstruktion geometrisch begründen.",
+        "descriptionEn": "At a given point on a circle, the learner can construct the tangent as the perpendicular to the radius and justify the construction geometrically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-a-tangent",
+          "recordDigest": "sha256:82c1f5ed6fc67a39264b0549d0d6dbc50236c8d0a75123a8f2ba57de70955e39"
+        },
+        "second": {
+          "recordId": "mathematik-m7-two-local-png-p-bound-current-20260923-v2-b-570d5931",
+          "recordDigest": "sha256:5f78261ee843d8e576c6dce278bc9762ade586fe08ce3b43ec6989bdf8669a24"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Reviews entscheiden KEEP für die Tangentenkonstruktion im gegebenen Kreispunkt und ihre geometrische Begründung. Der zweite Review macht besonders klar, dass die Lage des Berührpunkts die Richtung der Senkrechten zum Radius bestimmt und eine nur optisch passende Gerade zurückzuweisen ist. Das aktuelle PNG mit MP, P und t zeigt eine korrekte rechte Lage, ersetzt aber keine selbständige Konstruktion in schräger Lage. Das gebundene aktuelle P-v2-Profil prüft diese Variation sowie Fehlerdiagnose als KI-Kandidat. Die Konstruktion zweier Tangenten von einem äußeren Punkt gehört zum Folgeziel. Externe Geltung und Quellzuordnung wurden durch diese D-Synthese nicht neu verifiziert; die alte D-Auflösung bleibt historisch erhalten.",
+      "rationaleEn": "Both independent current reviews choose KEEP for constructing the tangent at a given point on the circle and justifying it geometrically. The second review makes especially clear that the contact point determines the direction of the perpendicular to the radius and that a merely plausible-looking line must be rejected. The current PNG with MP, P, and t shows a correct right-side example but does not replace independent construction at an oblique point. The bound current P-v2 profile tests that variation and error diagnosis as an AI candidate. Constructing two tangents from an external point belongs to the successor goal. This D synthesis did not independently verify external applicability or source mapping; the older D resolution remains historical."
+    }
+  ],
+  "manifestFingerprint": "sha256:8f9e02b648db2d77761c03469fd2a2eb30936c4596400d68cc91d7f72b5bb1c7"
+}

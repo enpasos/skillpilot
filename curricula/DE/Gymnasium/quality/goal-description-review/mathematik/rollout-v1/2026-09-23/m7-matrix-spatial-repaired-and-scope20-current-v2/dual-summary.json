@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:ac6b0e618dddcd2d82f4ac754235b1e5b28aa92949f6c4c40811ab540e3928bf",
+  "reviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-a",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-a",
+      "runIds": [
+        "math-m7-scope20-current-v2-round-a-codex-20260923"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::OpenAI Codex (exact model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-b",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-b",
+      "runIds": [
+        "codex-math-m7-matrix-spatial-current-b-20260923-v1"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::Codex-GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-01",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.0de1e45c-aea9-5e53-932a-027dcf509efa",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-02",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4c494716-567b-59c2-855c-6ea45635c666",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-03",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.4c494716-567b-59c2-855c-6ea45635c666",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-04",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b72d87d4-763e-54aa-940d-31f195b51700",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-05",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.b72d87d4-763e-54aa-940d-31f195b51700",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-06",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.55039f9c-4ebc-5115-add5-fae95b915e46",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-07",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.35558905-753d-5fcb-b25e-7f85ffdbff56",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7bd8f022-5002-5610-994c-a9cec1890558",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-08",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.7bd8f022-5002-5610-994c-a9cec1890558",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-09",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-10",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-11",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-12",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.aae119f2-925f-5fc1-b795-b52c9e980863",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-13",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-14",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-15",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-16",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-17",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-18",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.68d4faef-1a56-5898-9c31-80b7d5d2e430",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-19",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.69eda7f9-1898-5220-932d-e7bec839b7af",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+      "firstRecordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-20",
+      "secondRecordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+      "firstRunId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "secondRunId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "firstDecision": "split_review",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

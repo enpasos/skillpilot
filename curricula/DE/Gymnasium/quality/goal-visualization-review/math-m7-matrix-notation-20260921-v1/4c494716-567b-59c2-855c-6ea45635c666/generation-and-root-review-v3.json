@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "goalId": "4c494716-567b-59c2-855c-6ea45635c666",
+  "recordedAt": "2026-09-21T22:44:23.698Z",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactServingModel": "not exposed",
+  "resultId": "exec-5e0659ce-cdf3-4b39-ab91-d41f7ca12131",
+  "nativePrepareCompletedBeforeGeneration": true,
+  "prompt": {
+    "path": "correction-prompt-v3.md",
+    "sha256": "sha256:22a7debcb198ac8809d11b3af627a5b17e4a9087f41f04a84f9021bf3f5564fb"
+  },
+  "reference": {
+    "path": "rejected-geometry-v1.png",
+    "sha256": "sha256:24585ff03297eee40a906089a28b4ad4731d097ad7c8f2f0fe9332e2600fe550",
+    "actuallyViewedBeforeEditing": true
+  },
+  "candidate": {
+    "path": "candidate-v3.png",
+    "sha256": "sha256:5cd7bfdf824778a737715abfc82f3841c556d4e3cb69c557de96c24d1152baee"
+  },
+  "rootReview": {
+    "actuallyViewed": true,
+    "decision": "candidate_pending_independent_review",
+    "checks": [
+      "S(x,y)=(x+y,0), matrix entries, P(2,3)->(5,0), Q(-1,2)->(1,0) are correct.",
+      "Pprime now touches the x=5 gridline, but its center remains about12px to its right, roughly one marker radius. Independent review must decide if this stroke-level displacement is sufficiently unambiguous; not pre-approved by this record.",
+      "Dashed directions now approximately parallel; remaining tick alignment explicitly not hidden."
+    ]
+  },
+  "reviewAuthority": "ai_candidate",
+  "canonicalImported": false,
+  "humanApproval": false
+}

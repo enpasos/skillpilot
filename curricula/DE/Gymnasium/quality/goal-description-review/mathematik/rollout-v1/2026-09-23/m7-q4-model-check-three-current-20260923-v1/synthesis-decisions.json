@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-q4-model-check-three-current-20260923-v1-synthesis-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); informed synthesis after two independent current reviews",
+  "synthesizedAt": "2026-09-23T03:40:34.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-q4-model-check-three-current-20260923-v1",
+    "batchManifestDigest": "sha256:1626ec87a5b3d081830e7b071b6570ea5976206b0f934cb478639ad4587385df",
+    "configDigest": "sha256:15d064c8c61896c681101c08a4b405e068237aa471e0b7d3ea6bbecb02723423",
+    "bundleFingerprint": "sha256:c740a5907b304fba5387f4ebe63144a9db23c1dd5b8422c9b5a6e75edb5692e5",
+    "bookDigest": "sha256:6324cfcb0bb6b84698076d99478a7fa217523bef0ee212dc4644b358fb234d46",
+    "reviewInputFingerprint": "sha256:e5875679d84cb0322218bcbbb262ddce413db78c3ea65f94169460464daa9891",
+    "dualSummaryDigest": "sha256:9de7731d14ba13227b3d0418e3fe8dae25b74cb590278bab4dd8085f7ad51eca",
+    "canonicalLandscapeDigest": "sha256:6385c321c216b16d10384218dfbfac66f64671da7dd6d462d3be1b1bf2c156d1"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q4-model-check-three-current-20260923-v1-a",
+      "campaignDigest": "sha256:37f9367e44fe9ebfbc5e620144522a4c3a8f5d0ab3c73407f57bf6a110ce4221",
+      "roundId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q4-model-check-three-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:e5875679d84cb0322218bcbbb262ddce413db78c3ea65f94169460464daa9891",
+      "batchId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:f06c697d5a254487285d276fdb3e45c1898b540b8713ec65df0d3823c33b2802",
+      "runId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-a-run-001",
+      "runManifestDigest": "sha256:534686f04c380918130afa5d635561a6b486ba2523a40682646dad75e3ae0f78",
+      "resultsDigest": "sha256:51e9236274f38268b8cdad484d8c8f7eee822a5d6a948ba5916480267258f2cd"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q4-model-check-three-current-20260923-v1-b",
+      "campaignDigest": "sha256:c712efb24adf856f9fe2960256f0e8b8ef9611e6d018ccbf006c39804ca07700",
+      "roundId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q4-model-check-three-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:e5875679d84cb0322218bcbbb262ddce413db78c3ea65f94169460464daa9891",
+      "batchId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:7c170230e9b878211b80dc5c59be7eb448a0471515ec638d043628b2967e8b5f",
+      "runId": "math-m7-q4-model-check-three-20260923-b-run-001",
+      "runManifestDigest": "sha256:a54cfc3336e560c548aa7a8e55c360225f879a7aca923bb0f2d9930a8ab9456e",
+      "resultsDigest": "sha256:7a913753e87612f3c6a0df96346ffcb7525322c7069c64dbbceb8230f62367ae"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-q4-model-check-three-current-20260923-v1-synthesis-v1-decision-001",
+      "goalId": "e03eca28-9a57-5b24-877c-2e63fecee986",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d4baf30261585d5462c7abb720426833b3133dd440734a75d08c7214b438826d",
+      "pageFingerprint": "sha256:764ed99b1e1c0f76f1b43b1b5a9ce72bf3f9717e878668b7b6b380ad9292329a",
+      "goalReviewContextFingerprint": "sha256:1799bb766baad160ad4f90f40f3b5f3e2e56a6bb85c19f3f5eee750067316bbb",
+      "finalText": {
+        "titleDe": "Plausibilität und Realisierbarkeit prüfen",
+        "titleEn": "Check plausibility and feasibility",
+        "descriptionDe": "Die lernende Person kann ein Modellergebnis anhand von Einheiten, Größenordnungen und Randwerten auf Plausibilität und Realisierbarkeit prüfen und Auffälligkeiten im Sachkontext erklären.",
+        "descriptionEn": "The learner can check a model result for plausibility and feasibility using units, orders of magnitude and boundary values, and explain any anomalies in the original context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-q4-model-current-20260923-a-e03eca28",
+          "recordDigest": "sha256:bdbb2d94775ba7915860e6fcea8fbb422c1e52f6c13c6a835c23a9df4016cb87"
+        },
+        "second": {
+          "recordId": "math-m7-q4-model-check-three-20260923-b-e03eca28",
+          "recordDigest": "sha256:4334c38d9833b50895732666453e8e08a14c183de18bb3256849be86dda86c09"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden entscheiden KEEP für den gezielt präzisierten DE/EN-Text und die geprüfte Bildseite. Das Ziel prüft ein bereits in den Kontext zurückübersetztes Modellergebnis anhand von Größenordnung, Einheiten und Sachbedingungen; die Erklärung einer Auffälligkeit gehört zur Prüfung, ohne die separate Modellgrenzenanalyse vorwegzunehmen. Das Klassenfahrtbild ist Anschauung, kein Leistungsnachweis. Der aktuelle P-v2-Kandidat wurde gesondert geprüft; keine menschliche Freigabe wird behauptet.",
+      "rationaleEn": "Both independent current rounds choose KEEP for the targeted clarification of the German and English text and the inspected image page. The goal checks a model result already translated back into context against order of magnitude, units and factual constraints; explaining an anomaly belongs to that check without pre-empting the separate model-limits analysis. The trip image is illustrative, not proof of learner performance. The current P-v2 candidate was checked separately; no human approval is claimed."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-model-check-three-current-20260923-v1-synthesis-v1-decision-002",
+      "goalId": "163dd583-8308-53f0-b60d-34588787988d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cf8610f6a57fa12f283d4284c5844a670a8ee38fd364130deceebd239c5c27f2",
+      "pageFingerprint": "sha256:1ebaa2140f14521ca57deac3fe5e6b3aa42ad259d384f2f6443b9bdb94cadb62",
+      "goalReviewContextFingerprint": "sha256:103bbc68a353f7ab64bac4a1f2238625d39e3c70e60c09075f03bf89913a4943",
+      "finalText": {
+        "titleDe": "Modelle nach Kriterien vergleichen (LK)",
+        "titleEn": "Compare models by criteria",
+        "descriptionDe": "Die lernende Person kann Modelle anhand von Einfachheit, Güte und Interpretierbarkeit vergleichen und ihre jeweiligen Vor- und Nachteile für die Fragestellung begründen.",
+        "descriptionEn": "The learner can compare models in terms of simplicity, quality and interpretability and explain their respective advantages and disadvantages for the question at hand."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-q4-model-current-20260923-a-163dd583",
+          "recordDigest": "sha256:2a74d29240917dd73cc2942fb88cb6a92c50b7adc3f0948d9c55059584cda673"
+        },
+        "second": {
+          "recordId": "math-m7-q4-model-check-three-20260923-b-163dd583",
+          "recordDigest": "sha256:4cbed8639b6a9e298c50132faa0d3c62789ec3d7cac7899ec75c2374a94baa70"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden entscheiden KEEP für den kriterienspezifischen LK-Modellvergleich in DE und EN. Einfachheit, Güte und Interpretierbarkeit dienen dem begründeten Vergleich; die anschließende Auswahl samt Sensitivität ist ein anderes Ziel. Das tatsächlich geprüfte korrigierte PNG zeigt lineares und exponentielles Modell nur als gleichberechtigte Beispiele, ohne unbelegte Rangfolge. Die aktuelle GK/LK-Projektion wurde gesondert kontrolliert; ein P-v2-Kandidat ist separat validiert und keine menschliche Freigabe.",
+      "rationaleEn": "Both independent current rounds choose KEEP for the criteria-specific advanced-course model comparison in German and English. Simplicity, fit and interpretability support a justified comparison; the subsequent choice with sensitivity is a separate goal. The actually inspected corrected PNG presents linear and exponential models only as equal examples without an unsupported ranking. The current basic/advanced projection was checked separately; a P-v2 candidate was validated separately and is not human approval."
+    },
+    {
+      "decisionId": "mathematik-m7-q4-model-check-three-current-20260923-v1-synthesis-v1-decision-003",
+      "goalId": "519660d0-85e5-57a6-a219-d0a253336649",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ea872091a37a3ab4e5f930600d8597c749fa31b45e2ccb8dcbddee38616264b9",
+      "pageFingerprint": "sha256:cef547405c102af27ef58a980bd05750c559717fcdc69e532c7b5d09a914bf8c",
+      "goalReviewContextFingerprint": "sha256:f54f7f357db4d8e588b76ede547181cf0487558a68dd1ba4b182ddae4d7ac8b4",
+      "finalText": {
+        "titleDe": "Modellentscheidung begründen (LK)",
+        "titleEn": "Justify the model choice",
+        "descriptionDe": "Die lernende Person kann eine Modellentscheidung anhand von Vergleichskriterien begründen und qualitativ erläutern, wie empfindlich diese Entscheidung gegenüber Datenunsicherheit oder veränderten Annahmen ist.",
+        "descriptionEn": "The learner can justify a model choice using comparison criteria and explain qualitatively how sensitive that choice is to data uncertainty or changed assumptions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-q4-model-current-20260923-a-519660d0",
+          "recordDigest": "sha256:2331dc42c7d185516432ec20c89d5cc7968a9a3d8d04e1a0f5591973cb2ce466"
+        },
+        "second": {
+          "recordId": "math-m7-q4-model-check-three-20260923-b-519660d0",
+          "recordDigest": "sha256:a62f01d22340528faa33dcda8af19d1a91307d58a0be5b229cd68b2b8d5e8373"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden entscheiden KEEP für das zusammenhängende LK-Urteil: aus verglichenen Modellen begründet auswählen und die Robustheit der Entscheidung bei veränderten Annahmen oder Daten qualitativ prüfen. Der direkte Vorgänger bleibt der Vergleich, nicht die Entscheidung. Das geprüfte Bild illustriert Kriterien und erneute Prüfung bei neuen Daten, ersetzt aber keine selbstständige Transferleistung. Das aktuelle P-v2-Profil ist separat KI-validiert; keine menschliche Freigabe wird abgeleitet.",
+      "rationaleEn": "Both independent current rounds choose KEEP for the coherent advanced-course judgement: choose among compared models with reasons and qualitatively test robustness when assumptions or data change. The direct predecessor remains comparison rather than choice. The inspected image illustrates criteria and reconsideration with new data but does not replace independent transfer performance. The current P-v2 profile was separately AI-validated; no human approval is inferred."
+    }
+  ],
+  "manifestFingerprint": "sha256:fb1bf0ca783ab383466ca42b7f8e72be563cd37c04ca956d6b5ace9ced817c75"
+}

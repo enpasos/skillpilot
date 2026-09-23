@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:9866d98025b9eef84ea8aa27d996c951702312544a520c3558ed3dc9869c5080",
+  "reviewInputFingerprint": "sha256:058b060daa81b08a6154e654b6df1f4aa58ac24bf274f8e7a1003db2fb1e3f87",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-a",
+      "roundId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-independent-a",
+      "runIds": [
+        "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-a.batch-001.independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-b",
+      "roundId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-independent-b",
+      "runIds": [
+        "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-b-codex-20260921"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 family via Codex; exact serving revision not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "firstRecordId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-a.batch-001.independent-a.record-001",
+      "secondRecordId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-b-codex-20260921.4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "firstRunId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-a.batch-001.independent-a",
+      "secondRunId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-b-codex-20260921",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:65c5d281e3a13ca6ead3cf6019187140f7a06e6a6fc791ce2b5bb482faeeb9d3",
+  "reviewInputFingerprint": "sha256:9013417db6d867b44c739b86b283ae713626db5a2a2f911f77efd40609bd6baa",
+  "goalCount": 6,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-vready-remainder-six-current-20260923-v1-a",
+      "roundId": "mathematik-m7-vready-remainder-six-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-vready-remainder-six-current-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-vready-remainder-six-current-20260923-v1-first-pass-a.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-vready-remainder-six-current-20260923-v1-b",
+      "roundId": "mathematik-m7-vready-remainder-six-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-vready-remainder-six-current-20260923-v1-independent-b",
+      "runIds": [
+        "math-m7-rem6-b-20260923-run1"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::codex-runtime-unspecified::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 6,
+    "unavailable": 0,
+    "requiresSynthesis": 6
+  },
+  "goals": [
+    {
+      "goalId": "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+      "firstRecordId": "math-m7-remainder-six-a-f39c49c7",
+      "secondRecordId": "math-m7-rem6-b-f39c49c7",
+      "firstRunId": "mathematik-m7-vready-remainder-six-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-rem6-b-20260923-run1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c9df47fa-81a9-4890-91b7-2cc80da813cb",
+      "firstRecordId": "math-m7-remainder-six-a-c9df47fa",
+      "secondRecordId": "math-m7-rem6-b-c9df47fa",
+      "firstRunId": "mathematik-m7-vready-remainder-six-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-rem6-b-20260923-run1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "03703b29-efd8-57e0-acf5-4381b1dc67ec",
+      "firstRecordId": "math-m7-remainder-six-a-03703b29",
+      "secondRecordId": "math-m7-rem6-b-03703b29",
+      "firstRunId": "mathematik-m7-vready-remainder-six-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-rem6-b-20260923-run1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "firstRecordId": "math-m7-remainder-six-a-3d8f5e4c",
+      "secondRecordId": "math-m7-rem6-b-3d8f5e4c",
+      "firstRunId": "mathematik-m7-vready-remainder-six-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-rem6-b-20260923-run1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "firstRecordId": "math-m7-remainder-six-a-3e4032bd",
+      "secondRecordId": "math-m7-rem6-b-3e4032bd",
+      "firstRunId": "mathematik-m7-vready-remainder-six-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-rem6-b-20260923-run1",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ed5d869b-af4e-4b80-b34d-a2338e16ce34",
+      "firstRecordId": "math-m7-remainder-six-a-ed5d869b",
+      "secondRecordId": "math-m7-rem6-b-ed5d869b",
+      "firstRunId": "mathematik-m7-vready-remainder-six-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-rem6-b-20260923-run1",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

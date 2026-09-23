@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-d20-current-keepkeep-15-20260923-v1-resolution-c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+  "goal": {
+    "goalId": "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:a7752df2f947775f75dcf3a10d8292706b3132039343197cc09c160360bf4936",
+    "pageFingerprint": "sha256:74593a2932a3d97dd2fdc5b1a18bf580f4b50e97a9f54c3a6d9249e3dd693b8d",
+    "goalReviewContextFingerprint": "sha256:2643d326b166a5e38970687766b5ddc193f9b86e4292cb17e9d661c109619c1f",
+    "finalText": {
+      "titleDe": "Bedingte Wahrscheinlichkeiten berechnen",
+      "titleEn": "Calculate conditional probabilities",
+      "descriptionDe": "Die lernende Person kann bedingte Wahrscheinlichkeiten in Sachzusammenhängen identifizieren und sie mit Baumdiagrammen sowie Vier- oder Mehrfeldertafeln aus absoluten oder relativen Häufigkeiten berechnen.",
+      "descriptionEn": "The learner can identify conditional probabilities in context and compute them with tree diagrams and four- or multi-field tables from absolute or relative frequencies."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-a",
+      "campaignDigest": "sha256:a32c87a858d1763373a9a4d0b13503a58a95e8cd80a71acdc0fb833dedc8f29d",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-a",
+      "reviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+      "goalReviewContextFingerprint": "sha256:2643d326b166a5e38970687766b5ddc193f9b86e4292cb17e9d661c109619c1f",
+      "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-a.batch-001",
+      "runId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "runManifestDigest": "sha256:ba8c8d6bcd58c1248aaf2948e165fac5662a869d13ef4c42db5eecd34ca0a2ba",
+      "resultsDigest": "sha256:f907604150de8c849a59b3948ff7b3d624f74be941bb57858f0dedd844a33fac",
+      "recordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-10",
+      "recordDigest": "sha256:fa8bc6e4e53019c9cf0cfd55f6f0a35e0345e5484d008f9376eab24ca5b3fe80"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-b",
+      "campaignDigest": "sha256:07a42a60dd96534a47d4f3197ec3df670bebece24c014f88071955925b598b2f",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-b",
+      "reviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+      "goalReviewContextFingerprint": "sha256:2643d326b166a5e38970687766b5ddc193f9b86e4292cb17e9d661c109619c1f",
+      "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-b.batch-001",
+      "runId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "runManifestDigest": "sha256:59a47457640696053e3d3d67654db5cc857cf910bacbef26728a1ca103859cf3",
+      "resultsDigest": "sha256:93a21b94dc0c67c56803749c1d062a8bd95f38751f17706fe8f51ba2d95e8dd0",
+      "recordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+      "recordDigest": "sha256:edb5ca7c540918ddf63241d28afb1f9bc56475c64ebba5dc29e03a017f6dac57"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:1b678c12f71ed2ce1eae62e741b671103f25b9b58a3312c78f5e2e0488768fae"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-m7-d20-current-keepkeep-15-20260923-v1-synthesis-c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex, informed AI synthesis by prior Round B reviewer; no human attestation",
+    "synthesizedAt": "2026-09-23T00:23:16.000Z",
+    "rationaleDe": "Beide Runden sind KEEP für das Berechnen bedingter Wahrscheinlichkeiten, getrennt vom Tabellen-Ableseziel. B nennt den positiven Nenner P(A)>0 und die Bedingungsrichtung explizit; A bestätigt die Bezugsgruppe in Tafel und Baum. Bs Bedingung schützt vor undefinierter Division.",
+    "rationaleEn": "Both rounds are KEEP for calculating conditional probabilities, distinct from the table-reading goal. B explicitly requires the positive denominator P(A)>0 and the direction of conditioning; A confirms the reference group in table and tree. B's condition prevents undefined division.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "P(B|A) bezeichnet den Anteil von B innerhalb der positiven Bezugsgruppe A und ist bei P(A)>0 gleich P(A∩B)/P(A); die Bedingungsrichtung bestimmt den Nenner.",
+      "essentialUnderstandingEn": "P(B|A) is the proportion of B within the nonempty reference group A and, when P(A)>0, equals P(A∩B)/P(A); the direction of conditioning determines the denominator.",
+      "observablePerformanceDe": "Die Person erkennt im Sachtext das bedingende Ereignis und berechnet eine bedingte Wahrscheinlichkeit aus einer Tafel oder einem Baum mit absoluter oder relativer Häufigkeit; sie erläutert die Bezugsgruppe.",
+      "observablePerformanceEn": "The learner identifies the conditioning event in context and calculates a conditional probability from a table or tree with absolute or relative frequencies, explaining the reference group.",
+      "transferExpectationDe": "Bei vertauschter Bedingungsrichtung oder einer anders dargestellten Datenbasis bildet die Person den neuen Nenner und prüft, ob das bedingende Ereignis positive Häufigkeit hat.",
+      "transferExpectationEn": "When the conditioning direction or data representation changes, the learner uses the new denominator and checks that the conditioning event has positive frequency."
+    },
+    "dissent": [
+      {
+        "dissentId": "compatible-review-emphasis-c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+        "source": "both",
+        "textDe": "Beide aktuellen KEEP-Records bleiben vollständig gebunden; die nicht gewählte Evidenzkette ist eine kompatible, aber anders akzentuierte AI-Kandidatenperspektive.",
+        "textEn": "Both current KEEP records remain fully bound; the unselected evidence chain is a compatible but differently emphasized AI-candidate perspective.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:4d40e8a58feab048c1f6a9c87fa5b1c412c20dac82f285b4681c9b8d5086d7f6"
+}

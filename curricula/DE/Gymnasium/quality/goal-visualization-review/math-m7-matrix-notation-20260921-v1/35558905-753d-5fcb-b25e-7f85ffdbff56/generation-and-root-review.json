@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "targeted-image-edit-candidate-provenance",
+  "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56",
+  "recordedAt": "2026-09-21T21:46:23.779Z",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactServingModel": "not exposed",
+  "resultId": "exec-53c724f8-2a22-4d83-9fa9-f458a38bee62",
+  "prompt": {
+    "path": "edit-prompt.md",
+    "sha256": "sha256:caefd6104bfb79b72252a47ead8270d2e070dae9bb6fb0e61f38a9a9326d4560"
+  },
+  "reference": {
+    "path": "app/public/assets/goal-visualizations/mathematik/35558905-753d-5fcb-b25e-7f85ffdbff56/35558905-753d-5fcb-b25e-7f85ffdbff56.jpg",
+    "sha256": "sha256:095f5aed4cee2ffa62e3ae3064051647a9f5d7ec6f9175092b8bb55657f3bf1b",
+    "actuallyViewedBeforeEditing": true
+  },
+  "candidate": {
+    "path": "candidate.png",
+    "sha256": "sha256:67810c41b3c974fb1fdc0cdd6c2b67101c0ff7ac9c1b26aa50b8e9cbf1d9b405",
+    "format": "PNG",
+    "width": 1678,
+    "height": 937
+  },
+  "rootReview": {
+    "actuallyViewed": true,
+    "decision": "accepted_candidate_pending_independent_review",
+    "observations": [
+      "Z=2I maps (1,2) to(2,4) and(-2,1) to(-4,2), with vertical vectors correctly not transposed.",
+      "All four spurious transpose signs are removed; products have consistent dimensions.",
+      "The four plotted points have the claimed coordinates and lie with O on the two correct rays; distances from O double.",
+      "O remains fixed. Friendly hand-lettered, soft-coloured existing style remains; no redesign."
+    ],
+    "limits": "Actual raster inspection at displayed large size; no new mobile/browser acceptance. No pixel-identical preservation asserted."
+  },
+  "humanApproval": false,
+  "canonicalImported": false,
+  "reviewAuthority": "ai_candidate",
+  "note": "Existing explicit correction prompts were reused after actual reference inspection. Prepared through native visualization:prepare with the actual provider. Candidate kept outside active canonical resources until stable D/P checkpoint and independent image review."
+}

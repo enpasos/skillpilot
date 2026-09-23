@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-proof-problem-next20-v1-20260920-resolution-dd1d9f9c-0a4e-5d01-95d8-f6993163b20c",
+  "goal": {
+    "goalId": "dd1d9f9c-0a4e-5d01-95d8-f6993163b20c",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:c19d16340c9a60b490079cf5842fe430b61fdc4a8ec44af5d09682c5693f4338",
+    "pageFingerprint": "sha256:d66b6416b87215baefe42bfc024b8aaa4cd11e571e634c603177a6a165819f00",
+    "goalReviewContextFingerprint": "sha256:9f1fefb9131c8a522184bfff234ea04b783d46e6c77c4bfe7759ad2c758779a8",
+    "finalText": {
+      "titleDe": "Beweislücken identifizieren (LK)",
+      "titleEn": "Identify proof gaps",
+      "descriptionDe": "Die lernende Person kann einen vorgelegten Beweis auf Vollständigkeit prüfen und die erste fehlende oder unzureichende Begründung präzise benennen.",
+      "descriptionEn": "The learner can check a given proof for completeness and precisely name the first missing or insufficient justification."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-a",
+      "campaignDigest": "sha256:a41a6260e12d06d970c0aa5b563f6ced07b7b524b77304b4bca474a3cdd33f8a",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:9f1fefb9131c8a522184bfff234ea04b783d46e6c77c4bfe7759ad2c758779a8",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a.batch-001",
+      "runId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "runManifestDigest": "sha256:60fad9393a29128686a5228db0da4a4ed48bd8cd6ed95b0bc84d42c344aac21e",
+      "resultsDigest": "sha256:329e91f5901cf79b026c61fad742d42a2007943b5d265c3d9db874909ff0c830",
+      "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.017",
+      "recordDigest": "sha256:213d82cfc5201d4674e3ebc29ac7a92fffe4401a1a9fec63793e02b6061ee045"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-b",
+      "campaignDigest": "sha256:2e75517c969f994726a963dcd0ef3968698ed89412db83e1268cebe54ed38ede",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:9f1fefb9131c8a522184bfff234ea04b783d46e6c77c4bfe7759ad2c758779a8",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b.batch-001",
+      "runId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "runManifestDigest": "sha256:a1e2b99b173d09f363ed0018614be748221ac4c77008c186e078758cbee79dbe",
+      "resultsDigest": "sha256:267b1d842c5a3ccbdf21d74874a55e6fce3d149e5db37b2e4628144696d33217",
+      "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.dd1d9f9c-0a4e-5d01-95d8-f6993163b20c",
+      "recordDigest": "sha256:90950896652b899bf174c12ed7acb78f2ac375a4156b03f32d972d654a1c7ece"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:812ca966f5ddee8da9efb458a624b88645325047d0b2b7d5a617c3390c7239b7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-current-17.json",
+    "manifestId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-synthesis",
+    "manifestDigest": "sha256:a30996e2d0a152c8caff3e90a54e27fff5c48d715087960bf1511035e9a0ff1c",
+    "manifestFingerprint": "sha256:6b041c5cf340b07f17115de86e08a85cebaee8900eb683276005b1788b6ea234",
+    "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-15"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-15",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex Root informed synthesis; not an additional independent review",
+    "synthesizedAt": "2026-09-21T20:55:01.000Z",
+    "rationaleDe": "A lokalisiert die erste unbegründete Annahme oder Operation; B bestätigt, dass keine vollständige Reparatur gefordert ist. Der offene Strategievorgänger bleibt separat.",
+    "rationaleEn": "A locates the first unjustified assumption or operation; B confirms that a full repair is not required. The open strategy predecessor remains separate.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Beweislücke ist der erste Übergang, der aus den bisherigen Voraussetzungen und begründeten Schritten nicht gedeckt ist; eine richtige Schlussbehauptung macht einen unvollständigen Beweis nicht gültig.",
+      "essentialUnderstandingEn": "A proof gap is the first transition not supported by preceding assumptions and justified steps; a true conclusion does not make an incomplete proof valid.",
+      "observablePerformanceDe": "In einem vorgelegten Induktionsbeweis mit korrektem Anfang markiert die lernende Person die erste Stelle, an der die Aussage für n + 1 bereits vorausgesetzt wird, und benennt genau die noch fehlende Herleitung.",
+      "observablePerformanceEn": "In a supplied induction proof with a correct base case, the learner marks the first point where the statement for n + 1 is already assumed and identifies exactly the missing derivation.",
+      "transferExpectationDe": "In einem neuen direkten Beweis mit einer Division durch einen möglicherweise nullwertigen Ausdruck findet sie die früheste unbegründete Operation und nennt die benötigte Nichtnullbedingung, ohne aus dem Fehler allein die Falschheit der Behauptung abzuleiten.",
+      "transferExpectationEn": "In a fresh direct proof dividing by an expression that may be zero, the learner locates the earliest unsupported operation and states the required nonzero condition without inferring the claim is false merely from that error."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-c10d7eae9a52cf02ffefca6708e4dea584491fb6fe4c505ed0148672f1142a5a",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:8b17844f34b3a6ad410e2acac1a20835fbbfa4e9cdaad38bab8e16a2e3a26605"
+}

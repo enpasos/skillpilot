@@ -8,34 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `fb4dcd2a-a6a9-5371-a2fc-95348ee130e0.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/fb4dcd2a-a6a9-5371-a2fc-95348ee130e0/fb4dcd2a-a6a9-5371-a2fc-95348ee130e0.jpg`
+- Quellbild: `fb4dcd2a-a6a9-5371-a2fc-95348ee130e0.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/fb4dcd2a-a6a9-5371-a2fc-95348ee130e0/fb4dcd2a-a6a9-5371-a2fc-95348ee130e0.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Modellverbesserungen vorschlagen
-Beschreibung: Die lernende Person kann Verbesserungen am Modell vorschlagen (z. B. zusätzliche Einflussgrößen, andere Funktionswahl) und deren Wirkung qualitativ beschreiben.
-
-Zusatzanweisung:
-Pflichtinhalt: Behalte den anschaulichen Taxi-Kontext und den Vergleich von altem und verbessertem Modell. Zeichne genau zwei Modellgeraden: eine rote alte Gerade y = 2x durch den Ursprung und eine grüne verbesserte Gerade y = Grundpreis + 2x mit derselben Steigung und positivem y-Achsenabschnitt. Beschrifte beide eindeutig und halte Text und Grafik konsistent.
-
-Vermeiden: doppelte oder geisterhafte grüne Linien, unterschiedliche Steigungen, zusätzliche Kurven, Dezimalpunkte oder widersprüchliche Legenden.
-
-Korrekturhinweis: Im rechten Koordinatensystem darf genau eine einzige grüne Gerade sichtbar sein. Entferne jede zweite blasse, parallele oder geisterhafte grüne Linie vollständig.
+Revise the referenced friendly German school-comic image to avoid any mathematically misleading graph geometry. Keep the two yellow taxis, split before/after panels, top title and speech bubbles, German text about proposal and checking real prices, colors and 16:9 landscape style. Remove BOTH bottom coordinate graphs and all axes entirely. Replace the bottom half with a very simple two-panel visual receipt comparison. Left receipt under 'Ohne Grundpreis': one blue distance-charge token labelled 'Streckenpreis'. Right receipt under 'Mit Grundpreis G': the SAME blue distance-charge token labelled 'Streckenpreis', a plus sign, and one green fixed-fee token labelled 'Grundpreis G'. This makes the new model exactly the old distance charge plus one fixed base fee; no numeric amounts or unverifiable fit/ranking claims. Keep a small separate neutral callout 'An Daten prüfen'. Correctly spelled German; no duplicate captions, no new formulas, no graph, no clipped content. Friendly abstract clear comic, not photorealistic or sterile.
 ```
 
 ## Review-Notiz

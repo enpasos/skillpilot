@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-proof-problem-next20-v1-20260920-resolution-d21a1303-50fc-5e38-aeda-eeae3392c74b",
+  "goal": {
+    "goalId": "d21a1303-50fc-5e38-aeda-eeae3392c74b",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:de3b540bb7a74d7021c0a698e5e04a8f18274dc0a318ba62796dd886a9b3697d",
+    "pageFingerprint": "sha256:9ca7e7068198f9b92fe98330fee581c499fb940f9d5c629e363669801ab1c4e1",
+    "goalReviewContextFingerprint": "sha256:50d5bd01deddaa7c74c2989d7db6f702ef514b1e21ca6060c71a392182e70964",
+    "finalText": {
+      "titleDe": "Direkten Beweis führen",
+      "titleEn": "Write a direct proof",
+      "descriptionDe": "Die lernende Person kann eine Behauptung aus Definitionen und bekannten Sätzen direkt herleiten und dabei jeden Schritt begründen.",
+      "descriptionEn": "The learner can derive a claim directly from definitions and known theorems and justify each step."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-a",
+      "campaignDigest": "sha256:a41a6260e12d06d970c0aa5b563f6ced07b7b524b77304b4bca474a3cdd33f8a",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:50d5bd01deddaa7c74c2989d7db6f702ef514b1e21ca6060c71a392182e70964",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a.batch-001",
+      "runId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "runManifestDigest": "sha256:60fad9393a29128686a5228db0da4a4ed48bd8cd6ed95b0bc84d42c344aac21e",
+      "resultsDigest": "sha256:329e91f5901cf79b026c61fad742d42a2007943b5d265c3d9db874909ff0c830",
+      "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.011",
+      "recordDigest": "sha256:927714692559c9fb13ae91d07c37ab95ed748161ab980e312f5df6ebe0d38d4e"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-b",
+      "campaignDigest": "sha256:2e75517c969f994726a963dcd0ef3968698ed89412db83e1268cebe54ed38ede",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:50d5bd01deddaa7c74c2989d7db6f702ef514b1e21ca6060c71a392182e70964",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b.batch-001",
+      "runId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "runManifestDigest": "sha256:a1e2b99b173d09f363ed0018614be748221ac4c77008c186e078758cbee79dbe",
+      "resultsDigest": "sha256:267b1d842c5a3ccbdf21d74874a55e6fce3d149e5db37b2e4628144696d33217",
+      "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.d21a1303-50fc-5e38-aeda-eeae3392c74b",
+      "recordDigest": "sha256:642b677b95434c053e27e5be3c5cf78abdbea9b8b1ab0df8464d8a10128caef6"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:812ca966f5ddee8da9efb458a624b88645325047d0b2b7d5a617c3390c7239b7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-current-17.json",
+    "manifestId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-synthesis",
+    "manifestDigest": "sha256:a30996e2d0a152c8caff3e90a54e27fff5c48d715087960bf1511035e9a0ff1c",
+    "manifestFingerprint": "sha256:6b041c5cf340b07f17115de86e08a85cebaee8900eb683276005b1788b6ea234",
+    "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-10"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-10",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex Root informed synthesis; not an additional independent review",
+    "synthesizedAt": "2026-09-21T20:55:01.000Z",
+    "rationaleDe": "A begründet die allgemeine Darstellung und Ganzzahligkeit aller Terme; B bestätigt die Vorwärtsherleitung ohne versteckte Annahme der Behauptung.",
+    "rationaleEn": "A justifies general representation and integrality of all terms; B confirms forward derivation without covertly assuming the claim.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein direkter Beweis führt von geltenden Voraussetzungen über begründete Schritte zur Behauptung; Definitionen und Sätze müssen auf beliebige zulässige Objekte anwendbar sein, nicht nur auf getestete Einzelwerte.",
+      "essentialUnderstandingEn": "A direct proof proceeds from valid assumptions through justified steps to the claim; definitions and theorems must apply to arbitrary admissible objects, not only to tested individual values.",
+      "observablePerformanceDe": "Die lernende Person beweist für zwei beliebige ungerade ganze Zahlen 2m + 1 und 2n + 1 die Geradzahligkeit ihrer Summe, begründet die Darstellung als 2(m + n + 1) und die Ganzzahligkeit des Klammerausdrucks.",
+      "observablePerformanceEn": "The learner proves that the sum of two arbitrary odd integers 2m + 1 and 2n + 1 is even, justifying the representation 2(m + n + 1) and the integrality of the expression in parentheses.",
+      "transferExpectationDe": "In einer unabhängigen Teilbarkeitsaufgabe leitet sie aus a = dk und b = dℓ für ganze k und ℓ direkt ab, dass d auch a + b teilt, und benennt die zugrunde liegende Definition statt ein Zahlenmuster zu zitieren.",
+      "transferExpectationEn": "In an independent divisibility task, the learner derives directly from a = dk and b = dℓ with integer k and ℓ that d also divides a + b, naming the underlying definition rather than citing a numerical pattern."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-cb4b716c41e4ec9b55298607968e0010515dc5edbb72de43c060bdb0e7db19af",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:71c1fee43e3b6a4283730ae595fbe6444931644bbdab96076e4e4a106362e924"
+}

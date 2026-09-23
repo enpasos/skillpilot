@@ -1,0 +1,2107 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "m7-proof-statistics-hold-repairs-v1",
+  "reviewedAt": "2026-09-21",
+  "reviewer": "codex-m7-proof-statistics-hold-repairs-20260921",
+  "reviewAuthority": "ai_candidate",
+  "beforeCanonicalPath": "tmp/math-m7-before-seven-holds-20260921.json",
+  "currentCanonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "beforeCanonicalSha256": "sha256:ee31c20e64a2584c3be3a6fcacfe32a2d55bf95f079dbeb0234d1b06dffc47c6",
+  "currentCanonicalSha256AtReview": "sha256:5153eae20bdfe303ccb70517b938f9f8c5fb6c558e594c28ea0a1b3d75ea30a3",
+  "nativeGenerators": [
+    {
+      "sourcePath": "app/scripts/semanticAtomicityReview.ts",
+      "sourceSha256": "sha256:b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9"
+    },
+    {
+      "sourcePath": "app/scripts/memoryCardReview.ts",
+      "sourceSha256": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672"
+    }
+  ],
+  "semanticKindGenerator": "app/scripts/goalBookModel.ts#fingerprintSemanticKindSourceGoal",
+  "method": "Individueller Vorher-/Nachher-Vergleich aller acht deutschen und englischen Zieltexte sowie der geänderten requires-/resourceLinks-Felder. Native A/M-Funktionen direkt aus den aktuellen TypeScript-Sources ausgeführt, ohne CLI-main oder --write-fingerprints. SemanticKind mit dem exportierten nativen Fingerprintgenerator. Alte Einzelrecords vor dem Patch archiviert; keine neue Humanentscheidung oder Art-/Nenneränderung.",
+  "scope": {
+    "reviewedGoals": 8,
+    "atomicRecordUpdates": 3,
+    "memoryRecordUpdates": 3,
+    "semanticKindFingerprintUpdates": 7,
+    "semanticKindDecisionChanges": 0,
+    "canonicalChanges": 0,
+    "qaChanges": 0,
+    "registryChanges": 0,
+    "allRemain": "curricularAtomic"
+  },
+  "countsBefore": {
+    "curricularAtomic": 797,
+    "curricularArea": 233,
+    "practiceAssessment": 137,
+    "programStructure": 7,
+    "memory": 6,
+    "runtimeSupport": 5,
+    "orientation": 2,
+    "total": 1187
+  },
+  "countsAfter": {
+    "curricularAtomic": 797,
+    "curricularArea": 233,
+    "practiceAssessment": 137,
+    "programStructure": 7,
+    "memory": 6,
+    "runtimeSupport": 5,
+    "orientation": 2,
+    "total": 1187
+  },
+  "atomicUnselectedLinesSha256": "sha256:7f702b2efc032b31c737dcd3f8df83a7a7d8c9442037172b9c165fee60ff2829",
+  "memoryUnselectedLinesSha256": "sha256:8255e8f3493345b76037b7757d48cbdcd4b02ee24bdac5c6d6e2905328670173",
+  "records": [
+    {
+      "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+      "changedFields": [
+        "requires"
+      ],
+      "beforeGoal": {
+        "id": "efc3506a-5f35-4d77-9498-d70a091a470b",
+        "shortKey": "canonical_math_sek1_j10_tree_rules",
+        "title": "Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen",
+        "titleEn": "Use tree diagrams and path rules for compound experiments",
+        "description": "Die lernende Person kann zusammengesetzte Zufallsexperimente mit Baumdiagrammen strukturieren und Wahrscheinlichkeiten mit Pfadregeln in mehrstufigen Situationen bestimmen.",
+        "descriptionEn": "The learner can structure compound random experiments using tree diagrams and determine probabilities in multi-step situations using path rules.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.2",
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L5"
+          ],
+          "phase": "J10",
+          "area": "Probability",
+          "topicCode": "CANONICAL.MATH.SEK1.J10.2A"
+        },
+        "contains": [],
+        "requires": [
+          "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+          "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+          "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
+          "4ac925cf-3862-4810-be2a-d92efff7d735",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+            "title": "Visualisierung: Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen",
+            "url": "/assets/goal-visualizations/mathematik/efc3506a-5f35-4d77-9498-d70a091a470b/efc3506a-5f35-4d77-9498-d70a091a470b.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen\". Die lernende Person kann zusammengesetzte Zufallsexperimente mit Baumdiagrammen strukturieren und Wahrscheinlichkeiten mit Pfadregeln in mehrstufigen Situationen bestimmen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "afterGoal": {
+        "id": "efc3506a-5f35-4d77-9498-d70a091a470b",
+        "shortKey": "canonical_math_sek1_j10_tree_rules",
+        "title": "Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen",
+        "titleEn": "Use tree diagrams and path rules for compound experiments",
+        "description": "Die lernende Person kann zusammengesetzte Zufallsexperimente mit Baumdiagrammen strukturieren und Wahrscheinlichkeiten mit Pfadregeln in mehrstufigen Situationen bestimmen.",
+        "descriptionEn": "The learner can structure compound random experiments using tree diagrams and determine probabilities in multi-step situations using path rules.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.2",
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L5"
+          ],
+          "phase": "J10",
+          "area": "Probability",
+          "topicCode": "CANONICAL.MATH.SEK1.J10.2A"
+        },
+        "contains": [],
+        "requires": [
+          "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+          "4ac925cf-3862-4810-be2a-d92efff7d735",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+            "title": "Visualisierung: Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen",
+            "url": "/assets/goal-visualizations/mathematik/efc3506a-5f35-4d77-9498-d70a091a470b/efc3506a-5f35-4d77-9498-d70a091a470b.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen\". Die lernende Person kann zusammengesetzte Zufallsexperimente mit Baumdiagrammen strukturieren und Wahrscheinlichkeiten mit Pfadregeln in mehrstufigen Situationen bestimmen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "removedPrerequisites": [
+        {
+          "id": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+          "title": "Datenverteilungen mithilfe von Kenngrößen und Boxplots vergleichen und deuten",
+          "description": "Die lernende Person kann aus bekannten Kenngrößen und aus Boxplots Informationen über zugrunde liegende Datensätze gewinnen, vergleichende Aussagen formulieren und diese fachlich begründet beurteilen.",
+          "descriptionEn": "The learner can infer information about underlying data sets from known indicators and box plots, formulate comparative statements and evaluate them with mathematical justification.",
+          "requires": [
+            "2242c379-ddbb-4f03-8aed-13f49a4674e8",
+            "3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2",
+            "65365dce-f33f-49d8-9516-42f75883aa86",
+            "71d43fcc-d787-4874-ae4a-2336364e9c0a",
+            "72b6bfa5-8e34-4029-8f85-0277207c485e",
+            "91571d3f-3651-4477-ba21-320fc4077453",
+            "acbb7e26-f85f-405b-a3e5-affa6add6711",
+            "15505229-efec-4d01-8e71-acf15f9c2424"
+          ]
+        },
+        {
+          "id": "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
+          "title": "Statistische Daten aus Sekundärquellen entnehmen",
+          "description": "Die lernende Person kann zu einer statistischen Fragestellung passende Daten aus Sekundärquellen entnehmen, die Quelle benennen und die Daten für eine Auswertung strukturieren.",
+          "descriptionEn": "The learner can extract suitable data from secondary sources for a statistical question, name the source, and structure the data for analysis.",
+          "requires": [
+            "91571d3f-3651-4477-ba21-320fc4077453"
+          ]
+        }
+      ],
+      "currentPrerequisites": [
+        {
+          "id": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+          "title": "Laplace-Experimente auswerten",
+          "description": "Die lernende Person kann anhand der Versuchsanordnung begründen, ob ein einfaches Zufallsexperiment als Laplace-Experiment modelliert werden kann, seine Ergebnismenge und Ereignisse tabellarisch oder grafisch darstellen sowie im Laplace-Fall theoretische Ereigniswahrscheinlichkeiten als Anteil der günstigen an allen möglichen gleichwahrscheinlichen Elementarergebnissen bestimmen und deuten.",
+          "descriptionEn": "The learner can use the setup of a simple random experiment to justify whether it can be modelled as a Laplace experiment, represent its sample space and events in a table or graph, and, in the Laplace case, determine and interpret theoretical event probabilities as the proportion of favourable outcomes among all possible equally likely elementary outcomes.",
+          "requires": [
+            "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+            "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
+            "65365dce-f33f-49d8-9516-42f75883aa86"
+          ]
+        },
+        {
+          "id": "4ac925cf-3862-4810-be2a-d92efff7d735",
+          "title": "Wahrscheinlichkeiten verknüpfter Ereignisse berechnen",
+          "description": "Die lernende Person kann Wahrscheinlichkeiten verknüpfter Ereignisse aus Vierfeldertafeln und relativen Häufigkeiten ableiten, Additionsregeln begründen und Ergebnisse im Kontext interpretieren.",
+          "descriptionEn": "The learner can derive probabilities of combined events from contingency tables and relative frequencies, justify addition rules, and interpret results in context.",
+          "requires": [
+            "759485a9-51c0-4261-af7d-caa3c0e5d68b",
+            "65365dce-f33f-49d8-9516-42f75883aa86"
+          ]
+        },
+        {
+          "id": "65365dce-f33f-49d8-9516-42f75883aa86",
+          "title": "Warum Mathematik? – Entdecken, Muster & Alltag",
+          "description": "Der Sek-I-Einstieg: Wie Mathematik beim Messen, Vergleichen, Bauen, Planen und in Spielen hilft, wie Muster, Daten und Formen im Alltag auftauchen und warum mathematisches Denken beim Begründen und Problemlösen unterstützt. Überblick über Zahlen, Größen, Geometrie, Daten und erste funktionale Zusammenhänge. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+          "descriptionEn": "The lower-secondary entry point: how mathematics helps with measuring, comparing, building, planning and games, how patterns, data and shapes appear in everyday life, and why mathematical thinking supports reasoning and problem solving. Overview of numbers, quantities, geometry, data and first functional relationships.",
+          "requires": []
+        }
+      ],
+      "semanticKind": "curricularAtomic",
+      "semanticKindReason": "Baumdarstellung und Pfadregeln bilden weiterhin eine zusammenhängende Kompetenz zum Strukturieren und Berechnen mehrstufiger Zufallsexperimente. Das Entfernen direkter Voraussetzungen zu Boxplots und Sekundärquellendaten ändert den Inhaltskern nicht; beide sind für eine konkrete Baumrechnung keine notwendigen eigenständigen Voraussetzungen. Der Typ bleibt curricularAtomic.",
+      "deltaAssessment": "Nur zwei direkte requires-Kanten entfernt. Die Ziele b819973b und bc1a4cba bleiben transitiv über das unveränderte Laplace-Ziel 5ab17678 erreichbar; diese begrenzte Direktkantenkorrektur ist keine vollständige transitive Routenbereinigung.",
+      "atomic": {
+        "beforeFingerprint": "sha256:cf25002fca77113477b554251d47178b72903df7a600f6eff1e026e7d3b7e594",
+        "afterFingerprint": "sha256:cf25002fca77113477b554251d47178b72903df7a600f6eff1e026e7d3b7e594",
+        "decision": "atomic",
+        "action": "unchanged_current",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+          "fingerprint": "sha256:cf25002fca77113477b554251d47178b72903df7a600f6eff1e026e7d3b7e594",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "J10-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.",
+          "suggestedSplit": []
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+          "fingerprint": "sha256:cf25002fca77113477b554251d47178b72903df7a600f6eff1e026e7d3b7e594",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "J10-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.",
+          "suggestedSplit": []
+        }
+      },
+      "memory": {
+        "beforeFingerprint": "sha256:118005d4e48848d7e34162024e89e794942b57f193dc464117e7b1fdf2ffff02",
+        "afterFingerprint": "sha256:118005d4e48848d7e34162024e89e794942b57f193dc464117e7b1fdf2ffff02",
+        "decision": "no_memory_needed",
+        "action": "unchanged_current",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+          "fingerprint": "sha256:118005d4e48848d7e34162024e89e794942b57f193dc464117e7b1fdf2ffff02",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "memoryGoalIds": [],
+          "deckIds": [],
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-semantic-memory-pilot",
+          "reason": "Nach Karten-Level-Prüfung kein verbleibender notwendiger isolierter Memory-Anteil; Lernen erfolgt primär über Verständnis und Übung."
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+          "fingerprint": "sha256:118005d4e48848d7e34162024e89e794942b57f193dc464117e7b1fdf2ffff02",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "memoryGoalIds": [],
+          "deckIds": [],
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-semantic-memory-pilot",
+          "reason": "Nach Karten-Level-Prüfung kein verbleibender notwendiger isolierter Memory-Anteil; Lernen erfolgt primär über Verständnis und Übung."
+        }
+      },
+      "kind": {
+        "beforeRecord": {
+          "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+          "sourceFingerprint": "sha256:a79c5c3f456d0fc93f780dab86e4821c51cf3efd5c90aa77030f185d5eec8727",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "afterRecord": {
+          "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+          "sourceFingerprint": "sha256:a73c09d488009289c22c2b329a166f8262b5b42d91637d1f14875eccb655c964",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "action": "source_fingerprint_only"
+      }
+    },
+    {
+      "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
+      "changedFields": [
+        "description",
+        "descriptionEn",
+        "resourceLinks"
+      ],
+      "beforeGoal": {
+        "id": "f84ea3d8-c255-552a-998a-202e42843f56",
+        "title": "Widerlegung verständlich formulieren",
+        "titleEn": "Formulate a clear refutation",
+        "description": "Die lernende Person kann eine Widerlegung strukturiert darstellen: Aussage zitieren, Gegenbeispiel nennen, verletzte Bedingung oder fehlerhaften Schritt erklären und Schluss ziehen.",
+        "descriptionEn": "The learner can present a refutation in a structured way: cite the statement, give a counterexample, explain the violated condition or faulty step, and draw the conclusion.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "e2d56885-a204-54b4-8717-a46d029ef416"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.2",
+            "K1.4"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L3"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f84ea3d8-c255-552a-998a-202e42843f56",
+            "title": "Visualisierung: Widerlegung verständlich formulieren",
+            "url": "/assets/goal-visualizations/mathematik/f84ea3d8-c255-552a-998a-202e42843f56/f84ea3d8-c255-552a-998a-202e42843f56.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Widerlegung verständlich formulieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Widerlegung verständlich formulieren\". Die lernende Person kann eine Widerlegung strukturiert darstellen: Aussage zitieren, Gegenbeispiel nennen, verletzte Bedingung oder fehlerhaften Schritt erklären und Schluss ziehen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "afterGoal": {
+        "id": "f84ea3d8-c255-552a-998a-202e42843f56",
+        "title": "Widerlegung verständlich formulieren",
+        "titleEn": "Formulate a clear refutation",
+        "description": "Die lernende Person kann die Widerlegung einer allgemeinen Aussage durch ein Gegenbeispiel strukturiert darstellen: die Aussage nennen, zeigen, dass das Beispiel ihre Voraussetzungen erfüllt und der behaupteten Folgerung widerspricht, und den Schluss erläutern.",
+        "descriptionEn": "The learner can present the refutation of a general statement by a counterexample in a structured way: state the claim, show that the example satisfies its assumptions and contradicts the claimed conclusion, and explain the inference.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "e2d56885-a204-54b4-8717-a46d029ef416"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.2",
+            "K1.4"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L3"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f84ea3d8-c255-552a-998a-202e42843f56",
+            "title": "Visualisierung: Widerlegung verständlich formulieren",
+            "url": "/assets/goal-visualizations/mathematik/f84ea3d8-c255-552a-998a-202e42843f56/f84ea3d8-c255-552a-998a-202e42843f56.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Widerlegung verständlich formulieren.",
+            "altText": "Vier Comic-Panels widerlegen die Behauptung, alle Rechtecke seien Quadrate: Das Gegenbeispiel ist ein 4 cm breites und 2 cm hohes Rechteck. Es erfüllt die Voraussetzung von vier rechten Winkeln, aber nicht die behauptete Eigenschaft gleich langer Seiten.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "removedPrerequisites": [],
+      "currentPrerequisites": [
+        {
+          "id": "e2d56885-a204-54b4-8717-a46d029ef416",
+          "title": "Gegenbeispiele konstruieren",
+          "description": "Die lernende Person kann zu einer falschen Aussage gezielt ein Gegenbeispiel konstruieren (z. B. durch Wahl eines Spezialfalls) und begründen, warum es die Aussage widerlegt.",
+          "descriptionEn": "The learner can construct a targeted counterexample for a false statement (e.g. by choosing a special case) and justify why it refutes the statement.",
+          "requires": [
+            "09e85220-afc3-5357-b5bc-c4b2c17e85aa"
+          ]
+        }
+      ],
+      "semanticKind": "curricularAtomic",
+      "semanticKindReason": "Die neue Fassung beschreibt genau eine prüfbare kommunikative Handlung: eine allgemeine Aussage durch ein gültiges Gegenbeispiel widerlegen. Aussage, erfüllte Voraussetzungen, verletzte Folgerung und Schluss sind Bestandteile derselben Argumentation und keine unabhängigen Routinen. Fachlich korrigiert wird die alte Mehrdeutigkeit von „verletzte Bedingung“: Ein Gegenbeispiel muss die Voraussetzungen erfüllen. CurricularAtomic bleibt richtig.",
+      "deltaAssessment": "DE und EN präzisieren die Logik des Gegenbeispiels; neues Visualisierungsresource betrifft die Darstellung, nicht den semantischen Typ.",
+      "atomic": {
+        "beforeFingerprint": "sha256:b12a3ff0c9afb585d3171627d948c22ae0c6c887ae2478766f97fca329260ec4",
+        "afterFingerprint": "sha256:e1c6beb4c5353aa2cd84e291079f0373bb996e6a648b0fb45b436ce062904980",
+        "decision": "atomic",
+        "action": "individual_rereview_and_update",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
+          "fingerprint": "sha256:b12a3ff0c9afb585d3171627d948c22ae0c6c887ae2478766f97fca329260ec4",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q4-Review: Als einzelne pruefbare Prozess-, Funktionenschar- oder Komplexe-Zahlen-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+          "suggestedSplit": []
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
+          "fingerprint": "sha256:e1c6beb4c5353aa2cd84e291079f0373bb996e6a648b0fb45b436ce062904980",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-21",
+          "reviewer": "codex-m7-proof-statistics-hold-repairs-20260921",
+          "reason": "Nachprüfung 2026-09-21: Die Widerlegung einer allgemeinen Aussage durch ein Gegenbeispiel ist eine einzelne prüfbare Argumentationshandlung. Das Nennen der Aussage, Prüfen der erfüllten Voraussetzungen, Zeigen der falschen Folgerung und Erläutern des Schlusses sind logisch abhängige Teile dieses einen Produkts. Die neue Fassung beseitigt die missverständliche „verletzte Bedingung“, ohne eine zweite Kompetenz hinzuzunehmen; atomic bleibt begründet.",
+          "suggestedSplit": []
+        }
+      },
+      "memory": {
+        "beforeFingerprint": "sha256:4a534c9719f3090eda02f7e55da82db1d7c671873702d46e41bfdf7606017291",
+        "afterFingerprint": "sha256:e868828249c141002629186fb8e7ca9637404a268eb93d6a9746e3b464c5a17e",
+        "decision": "no_memory_needed",
+        "action": "individual_rereview_and_update",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
+          "fingerprint": "sha256:4a534c9719f3090eda02f7e55da82db1d7c671873702d46e41bfdf7606017291",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
+          "fingerprint": "sha256:e868828249c141002629186fb8e7ca9637404a268eb93d6a9746e3b464c5a17e",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-21",
+          "reviewer": "codex-m7-proof-statistics-hold-repairs-20260921",
+          "reason": "Nachprüfung 2026-09-21: Entscheidend ist, an einem konkreten Gegenbeispiel die Voraussetzungen zu prüfen und den Widerspruch zur Folgerung nachvollziehbar auszudrücken. Ein auswendig gelernter Vier-Schritte-Satz zeigt diese Leistung nicht. Geeignete und ungeeignete Beispiele sowie eigene Widerlegungen sind die passende Übung; kein eigener kompakter Abrufbestand und daher weiterhin no_memory_needed."
+        }
+      },
+      "kind": {
+        "beforeRecord": {
+          "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
+          "sourceFingerprint": "sha256:b4c858ecf056135996cee8aff0197fbe45f20d40067e1e7e592e441c6c23927f",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "afterRecord": {
+          "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
+          "sourceFingerprint": "sha256:4be667e6394945ca0b682f5994c120abc67ee22b1b06821b28afcd9fe4139b02",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "action": "source_fingerprint_only"
+      }
+    },
+    {
+      "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+      "changedFields": [
+        "requires"
+      ],
+      "beforeGoal": {
+        "id": "01217f4a-5221-5df9-b379-7b241fccf809",
+        "title": "Beweisstrategien vergleichen und wählen (LK)",
+        "titleEn": "Compare and choose proof strategies",
+        "description": "Die lernende Person kann für eine Behauptung geeignete Beweisstrategien (direkt, Kontraposition, Widerspruch, Induktion) vergleichen und eine begründete Wahl treffen.",
+        "descriptionEn": "The learner can compare suitable proof strategies (direct, contrapositive, contradiction, induction) for a claim and make a justified choice.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+          "5c632c68-fc34-582e-8581-ae9e55ab538f"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.4"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L3"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "01217f4a-5221-5df9-b379-7b241fccf809",
+            "title": "Visualisierung: Beweisstrategien vergleichen und wählen (LK)",
+            "url": "/assets/goal-visualizations/mathematik/01217f4a-5221-5df9-b379-7b241fccf809/01217f4a-5221-5df9-b379-7b241fccf809.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Beweisstrategien vergleichen und wählen (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Beweisstrategien vergleichen und wählen (LK)\". Die lernende Person kann für eine Behauptung geeignete Beweisstrategien (direkt, Kontraposition, Widerspruch, Induktion) vergleichen und eine begründete Wahl treffen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "afterGoal": {
+        "id": "01217f4a-5221-5df9-b379-7b241fccf809",
+        "title": "Beweisstrategien vergleichen und wählen (LK)",
+        "titleEn": "Compare and choose proof strategies",
+        "description": "Die lernende Person kann für eine Behauptung geeignete Beweisstrategien (direkt, Kontraposition, Widerspruch, Induktion) vergleichen und eine begründete Wahl treffen.",
+        "descriptionEn": "The learner can compare suitable proof strategies (direct, contrapositive, contradiction, induction) for a claim and make a justified choice.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+          "5c632c68-fc34-582e-8581-ae9e55ab538f"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.4"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L3"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "01217f4a-5221-5df9-b379-7b241fccf809",
+            "title": "Visualisierung: Beweisstrategien vergleichen und wählen (LK)",
+            "url": "/assets/goal-visualizations/mathematik/01217f4a-5221-5df9-b379-7b241fccf809/01217f4a-5221-5df9-b379-7b241fccf809.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Beweisstrategien vergleichen und wählen (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Beweisstrategien vergleichen und wählen (LK)\". Die lernende Person kann für eine Behauptung geeignete Beweisstrategien (direkt, Kontraposition, Widerspruch, Induktion) vergleichen und eine begründete Wahl treffen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "removedPrerequisites": [
+        {
+          "id": "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+          "title": "Bedingte Wahrscheinlichkeiten berechnen",
+          "description": "Die lernende Person kann bedingte Wahrscheinlichkeiten in Sachzusammenhängen identifizieren und sie mit Baumdiagrammen sowie Vier- oder Mehrfeldertafeln aus absoluten oder relativen Häufigkeiten berechnen.",
+          "descriptionEn": "The learner can identify conditional probabilities in context and compute them with tree diagrams and four- or multi-field tables from absolute or relative frequencies.",
+          "requires": [
+            "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f"
+          ]
+        }
+      ],
+      "currentPrerequisites": [
+        {
+          "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+          "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+          "descriptionEn": "The 'Big Picture' intro: How algorithms power your smartphone, how data becomes decisions (medicine, climate), why models make growth and risks visible, and why mathematical thinking structures problem solving. Overview of the relevance of topics from calculus to stochastics for your life.",
+          "requires": []
+        },
+        {
+          "id": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+          "title": "Beweis durch Widerspruch",
+          "description": "Die lernende Person kann einen Widerspruchsbeweis ansetzen: Negation der Behauptung annehmen, zu einem Widerspruch führen und daraus die Behauptung folgern.",
+          "descriptionEn": "The learner can set up a proof by contradiction: assume the negation, derive a contradiction, and conclude the original claim.",
+          "requires": [
+            "2b497114-66ce-5f38-9b4d-dd17a2f4088f",
+            "28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+            "591cb948-f313-5b1c-a9cb-3df8162eeb8b",
+            "e2d56885-a204-54b4-8717-a46d029ef416"
+          ]
+        },
+        {
+          "id": "5c632c68-fc34-582e-8581-ae9e55ab538f",
+          "title": "Induktionsbeweis durchführen",
+          "description": "Die lernende Person kann einen Beweis durch vollständige Induktion führen (Induktionsanfang, -voraussetzung, -schritt) und die Schlussfolgerung korrekt formulieren.",
+          "descriptionEn": "The learner can carry out a proof by induction (base case, induction hypothesis, induction step) and formulate the conclusion correctly.",
+          "requires": [
+            "d21a1303-50fc-5e38-aeda-eeae3392c74b"
+          ]
+        }
+      ],
+      "semanticKind": "curricularAtomic",
+      "semanticKindReason": "Eine begründete Auswahl geeigneter Beweisstrategien für eine konkrete Behauptung ist eine einzelne vergleichende Prozesskompetenz; die Liste direkt/Kontraposition/Widerspruch/Induktion benennt die Alternativen dieser Auswahl und fordert nicht vier eigenständige Beweise. Bedingte Wahrscheinlichkeiten sind keine universelle Voraussetzung für diese Auswahl. Die entfernte Kante ändert weder Inhaltskern noch curricularAtomic-Typ.",
+      "deltaAssessment": "Nur die fachfremde direkte Kante zur Berechnung bedingter Wahrscheinlichkeiten entfernt. Vorhandene beweisbezogene Voraussetzungen und Zieltext bleiben gleich.",
+      "atomic": {
+        "beforeFingerprint": "sha256:4996d6ac0c77b6c1f55bb395a51e96ca814cae72f3d72374c513ea9f4ea629a3",
+        "afterFingerprint": "sha256:4996d6ac0c77b6c1f55bb395a51e96ca814cae72f3d72374c513ea9f4ea629a3",
+        "decision": "atomic",
+        "action": "unchanged_current",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+          "fingerprint": "sha256:4996d6ac0c77b6c1f55bb395a51e96ca814cae72f3d72374c513ea9f4ea629a3",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q4-Review: Als einzelne pruefbare Prozess-, Funktionenschar- oder Komplexe-Zahlen-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+          "suggestedSplit": []
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+          "fingerprint": "sha256:4996d6ac0c77b6c1f55bb395a51e96ca814cae72f3d72374c513ea9f4ea629a3",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q4-Review: Als einzelne pruefbare Prozess-, Funktionenschar- oder Komplexe-Zahlen-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+          "suggestedSplit": []
+        }
+      },
+      "memory": {
+        "beforeFingerprint": "sha256:7a23d9b4b129a6b6fd796b9fe32c8582c15f087100e76cdc5f6d7afe44c6313a",
+        "afterFingerprint": "sha256:7a23d9b4b129a6b6fd796b9fe32c8582c15f087100e76cdc5f6d7afe44c6313a",
+        "decision": "no_memory_needed",
+        "action": "unchanged_current",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+          "fingerprint": "sha256:7a23d9b4b129a6b6fd796b9fe32c8582c15f087100e76cdc5f6d7afe44c6313a",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+          "fingerprint": "sha256:7a23d9b4b129a6b6fd796b9fe32c8582c15f087100e76cdc5f6d7afe44c6313a",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        }
+      },
+      "kind": {
+        "beforeRecord": {
+          "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+          "sourceFingerprint": "sha256:78e231e0ecd491474fb3cc546c115ebc216b0f6ad62703c41fa42f86f7436454",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "afterRecord": {
+          "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+          "sourceFingerprint": "sha256:a4b5f118f7aeaf261fbc746adb6239d3120fd3903947f429d5e6a3b9307b24b2",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "action": "source_fingerprint_only"
+      }
+    },
+    {
+      "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+      "changedFields": [
+        "requires"
+      ],
+      "beforeGoal": {
+        "id": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+        "title": "Gegebenes und Gesuchtes bestimmen",
+        "titleEn": "Identify givens and unknowns",
+        "description": "Die lernende Person kann in einer Problemstellung Gegebenes, Gesuchtes und Nebenbedingungen (z. B. Definitionsbereich, Randwerte) identifizieren und übersichtlich notieren.",
+        "descriptionEn": "The learner can identify givens, unknowns, and constraints (e.g. domain, boundary values) and note them clearly.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "122ab909-04ed-572b-a499-754f3bcc8ef0",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "3de1d5b0-0a26-5124-b066-92b65a882c5e",
+          "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.1"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+            "title": "Visualisierung: Gegebenes und Gesuchtes bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/a288231e-e4bb-5c65-b018-b79a51ca87d8/a288231e-e4bb-5c65-b018-b79a51ca87d8.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Gegebenes und Gesuchtes bestimmen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Gegebenes und Gesuchtes bestimmen\". Die lernende Person kann in einer Problemstellung Gegebenes, Gesuchtes und Nebenbedingungen (z. B. Definitionsbereich, Randwerte) identifizieren und übersichtlich notieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "afterGoal": {
+        "id": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+        "title": "Gegebenes und Gesuchtes bestimmen",
+        "titleEn": "Identify givens and unknowns",
+        "description": "Die lernende Person kann in einer Problemstellung Gegebenes, Gesuchtes und Nebenbedingungen (z. B. Definitionsbereich, Randwerte) identifizieren und übersichtlich notieren.",
+        "descriptionEn": "The learner can identify givens, unknowns, and constraints (e.g. domain, boundary values) and note them clearly.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "3de1d5b0-0a26-5124-b066-92b65a882c5e",
+          "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.1"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+            "title": "Visualisierung: Gegebenes und Gesuchtes bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/a288231e-e4bb-5c65-b018-b79a51ca87d8/a288231e-e4bb-5c65-b018-b79a51ca87d8.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Gegebenes und Gesuchtes bestimmen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Gegebenes und Gesuchtes bestimmen\". Die lernende Person kann in einer Problemstellung Gegebenes, Gesuchtes und Nebenbedingungen (z. B. Definitionsbereich, Randwerte) identifizieren und übersichtlich notieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "removedPrerequisites": [
+        {
+          "id": "122ab909-04ed-572b-a499-754f3bcc8ef0",
+          "title": "Grundlegende Zählprinzipien anwenden",
+          "description": "Die lernende Person kann kombinatorische Zählprobleme mit der Produktregel lösen und geordnete Stichproben mit oder ohne Zurücklegen an konkreten Beispielen berechnen.",
+          "descriptionEn": "The learner can solve combinatorial counting problems using the product rule and compute ordered samples with or without replacement in concrete examples.",
+          "requires": [
+            "c3b9c561-dd83-5903-9ec6-49c7f51bafd5"
+          ]
+        }
+      ],
+      "currentPrerequisites": [
+        {
+          "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+          "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+          "descriptionEn": "The 'Big Picture' intro: How algorithms power your smartphone, how data becomes decisions (medicine, climate), why models make growth and risks visible, and why mathematical thinking structures problem solving. Overview of the relevance of topics from calculus to stochastics for your life.",
+          "requires": []
+        },
+        {
+          "id": "3de1d5b0-0a26-5124-b066-92b65a882c5e",
+          "title": "Begründen oder widerlegen",
+          "description": "Die lernende Person kann eine Aussage knapp begründen (unter Nutzung bekannter Definitionen/Sätze) oder durch ein Gegenbeispiel widerlegen und dies nachvollziehbar erläutern.",
+          "descriptionEn": "The learner can briefly justify a statement (using known definitions/theorems) or refute it with a counterexample and explain this convincingly.",
+          "requires": [
+            "04118376-6dd8-532e-ab38-be22017ba93d"
+          ]
+        },
+        {
+          "id": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "title": "Annahmen und Begriffe klären",
+          "description": "Die lernende Person kann bei einer Aussage verwendete Begriffe präzisieren (Definitionen/Notation) und den Geltungsbereich bzw. Bedingungen (z. B. $\\mathbb{R}$, $\\mathbb{Z}$, $x > 0$) explizit angeben.",
+          "descriptionEn": "The learner can clarify terms (definitions/notation) and state the domain or conditions (e.g. $\\mathbb{R}$, $\\mathbb{Z}$, $x > 0$) explicitly.",
+          "requires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ]
+        }
+      ],
+      "semanticKind": "curricularAtomic",
+      "semanticKindReason": "Gegebenes, Gesuchtes und Nebenbedingungen sind die zusammengehörigen Bestandteile einer strukturierten Problemerfassung. Das Identifizieren und Notieren dieser Bestandteile bleibt ein prüfbares Produkt; es ist weder Motivation noch Assessment-Endpunkt. Die Produktregel der Kombinatorik ist keine allgemeine Voraussetzung für diese Problemerfassung. CurricularAtomic bleibt richtig.",
+      "deltaAssessment": "Nur die direkte Kante zu grundlegenden Zählprinzipien entfernt; keine neue Fachkompetenz, kein veränderter Anspruch und kein A/M-Fingerprintwechsel.",
+      "atomic": {
+        "beforeFingerprint": "sha256:2008f16216c3810c3fa2350c23309a520afbeff390bc682be2acff4488b29faf",
+        "afterFingerprint": "sha256:2008f16216c3810c3fa2350c23309a520afbeff390bc682be2acff4488b29faf",
+        "decision": "atomic",
+        "action": "unchanged_current",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+          "fingerprint": "sha256:2008f16216c3810c3fa2350c23309a520afbeff390bc682be2acff4488b29faf",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q4-Review: Als einzelne pruefbare Prozess-, Funktionenschar- oder Komplexe-Zahlen-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+          "suggestedSplit": []
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+          "fingerprint": "sha256:2008f16216c3810c3fa2350c23309a520afbeff390bc682be2acff4488b29faf",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q4-Review: Als einzelne pruefbare Prozess-, Funktionenschar- oder Komplexe-Zahlen-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+          "suggestedSplit": []
+        }
+      },
+      "memory": {
+        "beforeFingerprint": "sha256:77e3e41bbc6a95e6388bd6f88acff724517d1b991bb7072f447b74de748d0e43",
+        "afterFingerprint": "sha256:77e3e41bbc6a95e6388bd6f88acff724517d1b991bb7072f447b74de748d0e43",
+        "decision": "no_memory_needed",
+        "action": "unchanged_current",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+          "fingerprint": "sha256:77e3e41bbc6a95e6388bd6f88acff724517d1b991bb7072f447b74de748d0e43",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+          "fingerprint": "sha256:77e3e41bbc6a95e6388bd6f88acff724517d1b991bb7072f447b74de748d0e43",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        }
+      },
+      "kind": {
+        "beforeRecord": {
+          "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+          "sourceFingerprint": "sha256:9dd7e2be02c5640eca3ae8e6a358f5bc70564efd45c378bc3fde01f8b03c646f",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "afterRecord": {
+          "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+          "sourceFingerprint": "sha256:0fb0dbe89f2f1d443c3c6bfb4dcebf636676206c4c7c938407f610c0c77d9ea8",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "action": "source_fingerprint_only"
+      }
+    },
+    {
+      "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+      "changedFields": [
+        "requires"
+      ],
+      "beforeGoal": {
+        "id": "f14e1643-ad8d-5235-a832-97987fa18489",
+        "title": "Null- und Alternativhypothesen formulieren",
+        "titleEn": "Formulate null and alternative hypotheses",
+        "description": "Die lernende Person kann zu Anteilsfragestellungen eine Nullhypothese und eine passende rechts-, links- oder zweiseitige Alternativhypothese für einen binomialen Signifikanztest formulieren und den Parameter p identifizieren.",
+        "descriptionEn": "The learner can formulate a null hypothesis and a suitable right-, left-, or two-sided alternative hypothesis for a binomial significance test on proportions and identify the parameter p.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.3, S. 47, Spiegelstrich 1",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f14e1643-ad8d-5235-a832-97987fa18489",
+            "title": "Visualisierung: Null- und Alternativhypothesen formulieren",
+            "url": "/assets/goal-visualizations/mathematik/f14e1643-ad8d-5235-a832-97987fa18489/f14e1643-ad8d-5235-a832-97987fa18489.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Null- und Alternativhypothesen formulieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Null- und Alternativhypothesen formulieren\". Die lernende Person kann zu Anteilsfragestellungen eine Nullhypothese und eine passende rechts-, links- oder zweiseitige Alternativhypothese für einen binomialen Signifikanztest formulieren und den Parameter p identifizieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "afterGoal": {
+        "id": "f14e1643-ad8d-5235-a832-97987fa18489",
+        "title": "Null- und Alternativhypothesen formulieren",
+        "titleEn": "Formulate null and alternative hypotheses",
+        "description": "Die lernende Person kann zu Anteilsfragestellungen eine Nullhypothese und eine passende rechts-, links- oder zweiseitige Alternativhypothese für einen binomialen Signifikanztest formulieren und den Parameter p identifizieren.",
+        "descriptionEn": "The learner can formulate a null hypothesis and a suitable right-, left-, or two-sided alternative hypothesis for a binomial significance test on proportions and identify the parameter p.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.3, S. 47, Spiegelstrich 1",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f14e1643-ad8d-5235-a832-97987fa18489",
+            "title": "Visualisierung: Null- und Alternativhypothesen formulieren",
+            "url": "/assets/goal-visualizations/mathematik/f14e1643-ad8d-5235-a832-97987fa18489/f14e1643-ad8d-5235-a832-97987fa18489.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Null- und Alternativhypothesen formulieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Null- und Alternativhypothesen formulieren\". Die lernende Person kann zu Anteilsfragestellungen eine Nullhypothese und eine passende rechts-, links- oder zweiseitige Alternativhypothese für einen binomialen Signifikanztest formulieren und den Parameter p identifizieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "removedPrerequisites": [
+        {
+          "id": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "title": "Ableitungen elementarer Funktionen berechnen",
+          "description": "Die lernende Person kann bei ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen aus dem Aufbau des Funktionsterms die passende Ableitungsregel auswählen und damit die Ableitung schrittweise berechnen.",
+          "descriptionEn": "The learner can use the structure of polynomial functions up to degree 3 and simple exponential and power functions to select the appropriate differentiation rule and calculate the derivative step by step.",
+          "requires": [
+            "b42bdfcc-3db7-5697-8b3e-69e50962ca86"
+          ]
+        }
+      ],
+      "currentPrerequisites": [
+        {
+          "id": "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+          "title": "Argumentationsmuster von Hypothesentests erläutern",
+          "description": "Die lernende Person kann die Grundidee eines Hypothesentests erläutern: Eine Nullhypothese wird unter Unsicherheit geprüft, ein kritischer Bereich wird festgelegt und die Entscheidung wird mit einer möglichen Irrtumswahrscheinlichkeit verbunden.",
+          "descriptionEn": "The learner can explain the basic idea of a hypothesis test: a null hypothesis is checked under uncertainty, a critical region is defined, and the decision is linked to a possible error probability.",
+          "requires": [
+            "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+          ]
+        },
+        {
+          "id": "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "title": "Funktionsbegriff und Darstellungen verstehen",
+          "description": "Die lernende Person kann reellwertige Funktionen als Zuordnung zwischen Zahlenmengen beschreiben und zwischen Wertetabelle, Term und Graph wechseln.",
+          "descriptionEn": "The learner can describe real-valued functions as a mapping between sets of numbers and switch between value table, term, and graph.",
+          "requires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+          ]
+        },
+        {
+          "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+          "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+          "descriptionEn": "The 'Big Picture' intro: How algorithms power your smartphone, how data becomes decisions (medicine, climate), why models make growth and risks visible, and why mathematical thinking structures problem solving. Overview of the relevance of topics from calculus to stochastics for your life.",
+          "requires": []
+        },
+        {
+          "id": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+          "title": "Kenngrößen binomialverteilter Zufallsgrößen",
+          "description": "Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert, Varianz und Standardabweichung berechnen und diese mit der zugrunde liegenden Bernoulli-Situation in Beziehung setzen.",
+          "descriptionEn": "The learner can calculate expected value, variance, and standard deviation for binomial distributed random variables and relate them to the underlying Bernoulli situation.",
+          "requires": [
+            "e495fa38-b198-5280-a405-9e41cafd6d17"
+          ]
+        }
+      ],
+      "semanticKind": "curricularAtomic",
+      "semanticKindReason": "Das Formulieren eines zum Anteilsproblem passenden Null-/Alternativhypothesenpaares einschließlich Parameter und Richtung ist eine zusammenhängende binomiale Testmodellierung. Elementare Ableitungen sind dafür nicht nötig; ihre entfernte direkte Kante ändert den curricularAtomic-Inhalt nicht.",
+      "deltaAssessment": "Nur die direkte Ableitungs-Voraussetzung entfernt. Das ist keine fachliche Neubewertung sämtlicher unverändert verbleibender Voraussetzungen.",
+      "atomic": {
+        "beforeFingerprint": "sha256:83d226f28511c425ea0fa4271d9c44e598f65393ad57a7185bbf3be1cef7eb74",
+        "afterFingerprint": "sha256:83d226f28511c425ea0fa4271d9c44e598f65393ad57a7185bbf3be1cef7eb74",
+        "decision": "atomic",
+        "action": "unchanged_current",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+          "fingerprint": "sha256:83d226f28511c425ea0fa4271d9c44e598f65393ad57a7185bbf3be1cef7eb74",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q3-Review: Eine zusammenhaengende Test- oder Inferenzroutine; Rechnen, Deuten und Begruenden gehoeren hier zum selben pruefbaren Kompetenzkern.",
+          "suggestedSplit": []
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+          "fingerprint": "sha256:83d226f28511c425ea0fa4271d9c44e598f65393ad57a7185bbf3be1cef7eb74",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q3-Review: Eine zusammenhaengende Test- oder Inferenzroutine; Rechnen, Deuten und Begruenden gehoeren hier zum selben pruefbaren Kompetenzkern.",
+          "suggestedSplit": []
+        }
+      },
+      "memory": {
+        "beforeFingerprint": "sha256:255cc0a3ac658c497fcd061f17654a239c0dfe711476d4bdf6d9a0ac2a96a923",
+        "afterFingerprint": "sha256:255cc0a3ac658c497fcd061f17654a239c0dfe711476d4bdf6d9a0ac2a96a923",
+        "decision": "no_memory_needed",
+        "action": "unchanged_current",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+          "fingerprint": "sha256:255cc0a3ac658c497fcd061f17654a239c0dfe711476d4bdf6d9a0ac2a96a923",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+          "fingerprint": "sha256:255cc0a3ac658c497fcd061f17654a239c0dfe711476d4bdf6d9a0ac2a96a923",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        }
+      },
+      "kind": {
+        "beforeRecord": {
+          "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+          "sourceFingerprint": "sha256:7505e7188baf5de4bb5ee05085b4a30996c605165cfce3043fc67433eb12e6d9",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "afterRecord": {
+          "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+          "sourceFingerprint": "sha256:55af7ecce3c60634845377ee4cd6e35cbbf26e9183b5a073399f82195f80edc0",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "action": "source_fingerprint_only"
+      }
+    },
+    {
+      "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+      "changedFields": [
+        "description",
+        "descriptionEn",
+        "resourceLinks"
+      ],
+      "beforeGoal": {
+        "id": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+        "title": "Fehlerwahrscheinlichkeiten berechnen",
+        "titleEn": "Compute error probabilities",
+        "description": "Die lernende Person kann zu einer gegebenen Entscheidungsregel die Fehlerwahrscheinlichkeiten α und β bestimmen, auch mit digitalen Werkzeugen berechnen und rechnerisch nachvollziehen.",
+        "descriptionEn": "The learner can determine the error probabilities α and β for a given decision rule, compute them also with digital tools, and verify them numerically.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "677be619-5f0a-59bf-9730-0071c7d3f150"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.3, S. 47, Spiegelstrich 1",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+            "title": "Visualisierung: Fehlerwahrscheinlichkeiten berechnen",
+            "url": "/assets/goal-visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Fehlerwahrscheinlichkeiten berechnen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Fehlerwahrscheinlichkeiten berechnen\". Die lernende Person kann zu einer gegebenen Entscheidungsregel die Fehlerwahrscheinlichkeiten α und β bestimmen, auch mit digitalen Werkzeugen berechnen und rechnerisch nachvollziehen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "afterGoal": {
+        "id": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+        "title": "Fehlerwahrscheinlichkeiten berechnen",
+        "titleEn": "Compute error probabilities",
+        "description": "Die lernende Person kann zu einer gegebenen Entscheidungsregel die Fehlerwahrscheinlichkeit α unter der Nullhypothese und β für einen angegebenen wahren Parameterwert der Alternative berechnen, auch mit digitalen Werkzeugen, und die Berechnung nachvollziehen.",
+        "descriptionEn": "For a given decision rule, the learner can calculate the error probability α under the null hypothesis and β for a specified true parameter value in the alternative, including with digital tools, and explain the calculation.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "677be619-5f0a-59bf-9730-0071c7d3f150"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.3, S. 47, Spiegelstrich 1",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+            "title": "Visualisierung: Fehlerwahrscheinlichkeiten berechnen",
+            "url": "/assets/goal-visualizations/mathematik/78bfbde4-8e16-529e-bd53-4e29d960b2b2/78bfbde4-8e16-529e-bd53-4e29d960b2b2.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Fehlerwahrscheinlichkeiten berechnen.",
+            "altText": "Zwei Szenarien eines binomialen Tests mit n=20 und Verwerfungsbereich X≥5: α wird bei p=0,10 im Verwerfungsbereich, β bei p=0,25 im Nichtverwerfungsbereich berechnet. Die Zeichnung markiert die jeweiligen Fehlerereignisse und nennt näherungsweise α=0,043 und β=0,415.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "removedPrerequisites": [],
+      "currentPrerequisites": [
+        {
+          "id": "677be619-5f0a-59bf-9730-0071c7d3f150",
+          "title": "Entscheidungsregeln und Verwerfungsbereiche bestimmen",
+          "description": "Die lernende Person kann zu vorgegebenen Signifikanzniveaus Entscheidungsregeln sowie kritische Werte beziehungsweise Verwerfungsbereiche für ein- oder zweiseitige binomiale Tests bestimmen und Sigma-Regeln als mögliches Näherungshilfsmittel einordnen.",
+          "descriptionEn": "The learner can determine decision rules and critical values or rejection regions for one- or two-sided binomial tests at given significance levels and assess sigma rules as a possible approximation aid.",
+          "requires": [
+            "eb2cecd6-5dca-5a2e-988b-a29b24c20345",
+            "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+            "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+            "9de07e13-6a5f-5b49-a6d4-0decefb95784"
+          ]
+        }
+      ],
+      "semanticKind": "curricularAtomic",
+      "semanticKindReason": "Die neue Fassung macht die zur Fehlerberechnung nötigen Verteilungen explizit: α unter H0, β bei einem angegebenen wahren Alternativparameter. Beide Größen bewerten die Fehlerereignisse derselben vorgegebenen Entscheidungsregel; Berechnung und Nachvollzug bilden eine einzige Testauswertungsroutine. CurricularAtomic bleibt richtig.",
+      "deltaAssessment": "DE/EN ergänzen die zuvor fehlende Bestimmungsbedingung für β. Das altText-Delta beschreibt das vorhandene Testbeispiel, führt aber keine neue Kompetenz ein.",
+      "atomic": {
+        "beforeFingerprint": "sha256:b79fce377a375bcd7af4720e033e58c005420f23fa87b11b348d5c69732eda6b",
+        "afterFingerprint": "sha256:2c7fc6698b38e81a274327290202d3f1e61be19ac4db2ebeae591763328a479d",
+        "decision": "atomic",
+        "action": "individual_rereview_and_update",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+          "fingerprint": "sha256:b79fce377a375bcd7af4720e033e58c005420f23fa87b11b348d5c69732eda6b",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q3-Review: Eine zusammenhaengende Test- oder Inferenzroutine; Rechnen, Deuten und Begruenden gehoeren hier zum selben pruefbaren Kompetenzkern.",
+          "suggestedSplit": []
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+          "fingerprint": "sha256:2c7fc6698b38e81a274327290202d3f1e61be19ac4db2ebeae591763328a479d",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-21",
+          "reviewer": "codex-m7-proof-statistics-hold-repairs-20260921",
+          "reason": "Nachprüfung 2026-09-21: Die Berechnung von α als Wahrscheinlichkeit des Verwerfungsbereichs unter H0 und von β als Wahrscheinlichkeit des Nichtverwerfungsbereichs bei einem angegebenen Alternativparameter ist eine zusammenhängende Fehleranalyse derselben Entscheidungsregel. Die nun expliziten Verteilungsannahmen machen die Berechnung bestimmt; Werkzeugnutzung und Erläuterung prüfen denselben Rechengang. Keine unabhängige zusätzliche Routine, daher weiterhin atomic.",
+          "suggestedSplit": []
+        }
+      },
+      "memory": {
+        "beforeFingerprint": "sha256:74f3f2cc8d8ffcac0b6f8819d812fdf5da20359e3427f60ebdcdc098d0571445",
+        "afterFingerprint": "sha256:48a8aab6a3c077affbbb3ce49d45ee93ddd34fcda87b977ba6a8192ecc644e34",
+        "decision": "no_memory_needed",
+        "action": "individual_rereview_and_update",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+          "fingerprint": "sha256:74f3f2cc8d8ffcac0b6f8819d812fdf5da20359e3427f60ebdcdc098d0571445",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+          "fingerprint": "sha256:48a8aab6a3c077affbbb3ce49d45ee93ddd34fcda87b977ba6a8192ecc644e34",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-21",
+          "reviewer": "codex-m7-proof-statistics-hold-repairs-20260921",
+          "reason": "Nachprüfung 2026-09-21: Die Zielhandlung besteht darin, aus Entscheidungsregel und wahrem Parameter das richtige Fehlerereignis und die passende Verteilung zu wählen und die Wahrscheinlichkeit nachvollziehbar zu berechnen. Das benötigt variierte Testfälle statt isolierter Zahlen- oder Formelabfrage. Die Präzisierung von β schafft keinen zusätzlichen notwendigen Abrufbestand; ein neues zielbezogenes Memory-Deck ist nicht gerechtfertigt, daher no_memory_needed."
+        }
+      },
+      "kind": {
+        "beforeRecord": {
+          "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+          "sourceFingerprint": "sha256:c0f9b5e02caa5eff1b064f220cb7d87636eac73c4791f3e20d90783394eb2a5d",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "afterRecord": {
+          "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+          "sourceFingerprint": "sha256:a9334e227bb57e1c26bdc284363c57fecf802c430d9601ee8b333989da9ab013",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "action": "source_fingerprint_only"
+      }
+    },
+    {
+      "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+      "changedFields": [
+        "descriptionEn"
+      ],
+      "beforeGoal": {
+        "id": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+        "title": "Konfidenzdiagramme deuten (LK)",
+        "titleEn": "Interpret confidence diagrams (advanced course)",
+        "description": "Die lernende Person kann Konfidenzdiagramme, insbesondere Konfidenzellipsen, für den Zusammenhang von Stichprobenumfang, Konfidenzniveau und Intervallbreite lesen, interpretieren und zur Beurteilung der Aussagekraft von Stichprobenergebnissen nutzen.",
+        "descriptionEn": "The learner can read and interpret confidence diagrams, especially confidence ellipses, for the relationship between sample size, confidence level, and interval width, and use them to assess the significance of sample results.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "5f328147-619c-568d-9a0d-e1787ca0c01b"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.4, S. 48, Spiegelstrich 3",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+            "title": "Visualisierung: Konfidenzdiagramme deuten (LK)",
+            "url": "/assets/goal-visualizations/mathematik/77d607e0-0244-55ca-ba0f-214baa94b8de/77d607e0-0244-55ca-ba0f-214baa94b8de.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Konfidenzdiagramme deuten (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Konfidenzdiagramme deuten (LK)\". Die lernende Person kann Konfidenzdiagramme, insbesondere Konfidenzellipsen, für den Zusammenhang von Stichprobenumfang, Konfidenzniveau und Intervallbreite lesen, interpretieren und zur Beurteilung der Aussagekraft von Stichprobenergebnissen nutzen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "afterGoal": {
+        "id": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+        "title": "Konfidenzdiagramme deuten (LK)",
+        "titleEn": "Interpret confidence diagrams (advanced course)",
+        "description": "Die lernende Person kann Konfidenzdiagramme, insbesondere Konfidenzellipsen, für den Zusammenhang von Stichprobenumfang, Konfidenzniveau und Intervallbreite lesen, interpretieren und zur Beurteilung der Aussagekraft von Stichprobenergebnissen nutzen.",
+        "descriptionEn": "The learner can read and interpret confidence diagrams, especially confidence ellipses, for the relationship between sample size, confidence level, and interval width, and use them to assess how informative sample results are.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "5f328147-619c-568d-9a0d-e1787ca0c01b"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.4, S. 48, Spiegelstrich 3",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+            "title": "Visualisierung: Konfidenzdiagramme deuten (LK)",
+            "url": "/assets/goal-visualizations/mathematik/77d607e0-0244-55ca-ba0f-214baa94b8de/77d607e0-0244-55ca-ba0f-214baa94b8de.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Konfidenzdiagramme deuten (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Konfidenzdiagramme deuten (LK)\". Die lernende Person kann Konfidenzdiagramme, insbesondere Konfidenzellipsen, für den Zusammenhang von Stichprobenumfang, Konfidenzniveau und Intervallbreite lesen, interpretieren und zur Beurteilung der Aussagekraft von Stichprobenergebnissen nutzen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "removedPrerequisites": [],
+      "currentPrerequisites": [
+        {
+          "id": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+          "title": "Konfidenzintervalle für Wahrscheinlichkeiten berechnen",
+          "description": "Die lernende Person kann von einer Stichprobe auf die unbekannte Trefferwahrscheinlichkeit der Grundgesamtheit schließen, Konfidenzintervalle in Sachzusammenhängen aus $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$ bestimmen und die Näherung $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ als symmetrisches Intervall um $h_n$ verwenden.",
+          "descriptionEn": "The learner can infer the unknown population success probability from a sample, determine confidence intervals in context from $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$, and use the approximation $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ as an interval symmetric about $h_n$.",
+          "requires": [
+            "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+            "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+          ]
+        }
+      ],
+      "semanticKind": "curricularAtomic",
+      "semanticKindReason": "Konfidenzdiagramme lesen und damit die Aussagekraft von Stichprobenergebnissen beurteilen bleibt eine einheitliche diagrammgestützte Inferenzkompetenz. Stichprobenumfang, Konfidenzniveau und Intervallbreite sind miteinander verknüpfte Interpretationsgrößen. EN „how informative“ entspricht DE „Aussagekraft“ und vermeidet eine ungewollte Signifikanztest-Kompetenz. CurricularAtomic bleibt richtig.",
+      "deltaAssessment": "Nur EN: „the significance of sample results“ wird zu „how informative sample results are“. Deutscher Inhalt, Voraussetzungen, Anspruch und Bildressource bleiben gleich.",
+      "atomic": {
+        "beforeFingerprint": "sha256:91819e63a733a16833cb64d153415f4ea585c45e5417cfbad802290cdb1fa7d8",
+        "afterFingerprint": "sha256:16b290ba0176a07626dc3dad4227da0f0d9a340b3c7340e46cd7497161ac3943",
+        "decision": "atomic",
+        "action": "individual_rereview_and_update",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+          "fingerprint": "sha256:91819e63a733a16833cb64d153415f4ea585c45e5417cfbad802290cdb1fa7d8",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q3-Review: Eine zusammenhaengende Intervall- oder Stichprobenplanungsroutine mit einem klaren statistischen Deutungsziel.",
+          "suggestedSplit": []
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+          "fingerprint": "sha256:16b290ba0176a07626dc3dad4227da0f0d9a340b3c7340e46cd7497161ac3943",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-09-21",
+          "reviewer": "codex-m7-proof-statistics-hold-repairs-20260921",
+          "reason": "Nachprüfung 2026-09-21: Das Lesen von Konfidenzdiagrammen und die Beurteilung der Aussagekraft einer Stichprobe sind ein zusammenhängender Interpretationsvorgang. Die Beziehungen zwischen Stichprobenumfang, Konfidenzniveau und Intervallbreite werden am selben Diagramm beurteilt. Die englische Präzisierung zu „how informative“ entfernt eine mögliche Verwechslung mit Signifikanztests, ohne neue Teilkompetenz; weiterhin atomic.",
+          "suggestedSplit": []
+        }
+      },
+      "memory": {
+        "beforeFingerprint": "sha256:f62e9ec91b4c3ea194277046fe051695f0062f7df3bd7a2d2a5348dafd9e7748",
+        "afterFingerprint": "sha256:1200a0ef3719d541d63423dc7e1f72f4dfb1ed6f254c9ee4207f34afb1436ad6",
+        "decision": "no_memory_needed",
+        "action": "individual_rereview_and_update",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+          "fingerprint": "sha256:f62e9ec91b4c3ea194277046fe051695f0062f7df3bd7a2d2a5348dafd9e7748",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+          "fingerprint": "sha256:1200a0ef3719d541d63423dc7e1f72f4dfb1ed6f254c9ee4207f34afb1436ad6",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-09-21",
+          "reviewer": "codex-m7-proof-statistics-hold-repairs-20260921",
+          "reason": "Nachprüfung 2026-09-21: Lernende müssen aus konkreten Konfidenzdiagrammen Aussagen zu Breite und Informationsgehalt begründet gewinnen. Diese Leistung wird durch Diagrammvergleiche und veränderte Stichprobensituationen geübt, nicht durch das Reproduzieren eines Merksatzes. Die reine EN-Präzisierung bringt keine neuen abrufpflichtigen Fakten oder Formeln; weiterhin no_memory_needed."
+        }
+      },
+      "kind": {
+        "beforeRecord": {
+          "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+          "sourceFingerprint": "sha256:e3f40bb283af76f540c128751ba71e163c16d06cf80a26fecfccb8380dff5751",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "afterRecord": {
+          "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+          "sourceFingerprint": "sha256:23a0d9b5834439fb38243cf6e33739c1739fddda1834115ea6d7d876d46a9c71",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "action": "source_fingerprint_only"
+      }
+    },
+    {
+      "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+      "changedFields": [
+        "resourceLinks"
+      ],
+      "beforeGoal": {
+        "id": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+        "title": "Plausibilität mit Beispielen testen",
+        "titleEn": "Test plausibility with examples",
+        "description": "Die lernende Person kann eine Aussage mithilfe geeigneter Beispiele sowie Rand- und Spezialfälle auf Plausibilität prüfen und die Wahl der Beispiele begründen.",
+        "descriptionEn": "The learner can test a statement for plausibility using suitable examples as well as boundary and special cases, and justify the choice of examples.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.1",
+            "K1.2"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic"
+      },
+      "afterGoal": {
+        "id": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+        "title": "Plausibilität mit Beispielen testen",
+        "titleEn": "Test plausibility with examples",
+        "description": "Die lernende Person kann eine Aussage mithilfe geeigneter Beispiele sowie Rand- und Spezialfälle auf Plausibilität prüfen und die Wahl der Beispiele begründen.",
+        "descriptionEn": "The learner can test a statement for plausibility using suitable examples as well as boundary and special cases, and justify the choice of examples.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.1",
+            "K1.2"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+            "title": "Visualisierung: Plausibilität mit Beispielen testen",
+            "url": "/assets/goal-visualizations/mathematik/1e164a09-0a2b-55ab-b927-08a4a278f72b/1e164a09-0a2b-55ab-b927-08a4a278f72b.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Plausibilität mit Beispielen testen.",
+            "altText": "Comic zur Vermutung, dass n(n+1) für ganze Zahlen gerade ist: Die gezielt ausgewählten Werte −2, 0, 1 und 5 liefern 2, 0, 2 und 30. Der Schluss unterscheidet passende Beispiele von einem allgemeinen Beweis und erklärt die Bedeutung eines Gegenbeispiels.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "removedPrerequisites": [],
+      "currentPrerequisites": [
+        {
+          "id": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "title": "Annahmen und Begriffe klären",
+          "description": "Die lernende Person kann bei einer Aussage verwendete Begriffe präzisieren (Definitionen/Notation) und den Geltungsbereich bzw. Bedingungen (z. B. $\\mathbb{R}$, $\\mathbb{Z}$, $x > 0$) explizit angeben.",
+          "descriptionEn": "The learner can clarify terms (definitions/notation) and state the domain or conditions (e.g. $\\mathbb{R}$, $\\mathbb{Z}$, $x > 0$) explicitly.",
+          "requires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ]
+        }
+      ],
+      "semanticKind": "curricularAtomic",
+      "semanticKindReason": "Geeignete Beispiele sowie Rand- und Spezialfälle begründet auswählen, um eine Aussage auf Plausibilität zu prüfen, bleibt eine einzelne assessierbare Prozesskompetenz. Ein hinzugefügtes Bild verwandelt diese Handlung weder in eine Orientation noch in einen Memory- oder Assessment-Knoten. CurricularAtomic bleibt richtig.",
+      "deltaAssessment": "Ausschließlich eine primäre Bildressource hinzugefügt. ResourceLinks sind kein Feld der nativen A-/M- oder SemanticKind-Fingerprints; alle drei Bindungen bleiben unverändert aktuell. Keine erneute V-Abnahme in dieser A/M-Nachprüfung.",
+      "atomic": {
+        "beforeFingerprint": "sha256:70399360e386b0465667a2f006a9b74a2b99c29042432aed1b45bfebf665a0ac",
+        "afterFingerprint": "sha256:70399360e386b0465667a2f006a9b74a2b99c29042432aed1b45bfebf665a0ac",
+        "decision": "atomic",
+        "action": "unchanged_current",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+          "fingerprint": "sha256:70399360e386b0465667a2f006a9b74a2b99c29042432aed1b45bfebf665a0ac",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q4-Review: Als einzelne pruefbare Prozess-, Funktionenschar- oder Komplexe-Zahlen-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+          "suggestedSplit": []
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+          "fingerprint": "sha256:70399360e386b0465667a2f006a9b74a2b99c29042432aed1b45bfebf665a0ac",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q4-Review: Als einzelne pruefbare Prozess-, Funktionenschar- oder Komplexe-Zahlen-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+          "suggestedSplit": []
+        }
+      },
+      "memory": {
+        "beforeFingerprint": "sha256:194903d28efa29b5a1bc2e45c3d20643a2df3cf89c637a527a8492f24e7f29ee",
+        "afterFingerprint": "sha256:194903d28efa29b5a1bc2e45c3d20643a2df3cf89c637a527a8492f24e7f29ee",
+        "decision": "no_memory_needed",
+        "action": "unchanged_current",
+        "beforeRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+          "fingerprint": "sha256:194903d28efa29b5a1bc2e45c3d20643a2df3cf89c637a527a8492f24e7f29ee",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "afterRecord": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+          "fingerprint": "sha256:194903d28efa29b5a1bc2e45c3d20643a2df3cf89c637a527a8492f24e7f29ee",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        }
+      },
+      "kind": {
+        "beforeRecord": {
+          "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+          "sourceFingerprint": "sha256:4043939ad55ad6126cd8ae613278968528c0c86826b71d014a7a937263dd1c57",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "afterRecord": {
+          "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+          "sourceFingerprint": "sha256:4043939ad55ad6126cd8ae613278968528c0c86826b71d014a7a937263dd1c57",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+        },
+        "action": "unchanged_current"
+      }
+    }
+  ]
+}

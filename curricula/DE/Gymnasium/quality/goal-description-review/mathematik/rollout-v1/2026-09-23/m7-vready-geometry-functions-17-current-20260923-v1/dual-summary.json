@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:c55d8f01391feb001465b4ff43b68828a1d9d56961e9709c422f54941eb3e887",
+  "reviewInputFingerprint": "sha256:655ba531c0bb57d6340d65ae150e76dbb7998386600bba4c83ac7961aa026374",
+  "goalCount": 17,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-a",
+      "roundId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex independent review agent::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-b",
+      "roundId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex agent; exact model identifier and sampling parameters not exposed; independent blind round B, no different-model claim::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 17,
+    "unavailable": 0,
+    "requiresSynthesis": 17
+  },
+  "goals": [
+    {
+      "goalId": "8064088b-dc0a-4a67-ad63-360fdcc9869d",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:8064088b-dc0a-4a67-ad63-360fdcc9869d",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.001",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "59d5a330-61be-4590-ab46-cf7cefecd144",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:59d5a330-61be-4590-ab46-cf7cefecd144",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.002",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "50612a57-7b9d-45fd-bc08-e95556444760",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:50612a57-7b9d-45fd-bc08-e95556444760",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.003",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "74d29d0c-80b3-4d46-a5f5-3c2f609e8483",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:74d29d0c-80b3-4d46-a5f5-3c2f609e8483",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.004",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "split_review",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.005",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a4f6f5e4-f790-48d1-8b49-c9dc048c9d83",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:a4f6f5e4-f790-48d1-8b49-c9dc048c9d83",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.006",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1ea06c0c-5c60-45cd-8f31-638de98820b4",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:1ea06c0c-5c60-45cd-8f31-638de98820b4",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.007",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d9725eb6-6b1f-5674-9f17-3de10f5b1ed8",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:d9725eb6-6b1f-5674-9f17-3de10f5b1ed8",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.008",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "674baaa8-911d-5231-9330-881c5288634f",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:674baaa8-911d-5231-9330-881c5288634f",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.009",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4cba85d3-2e25-5c4b-9c4c-37e5b201dce7",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:4cba85d3-2e25-5c4b-9c4c-37e5b201dce7",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.010",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bfa2351c-735e-56eb-a778-2413aa68db42",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:bfa2351c-735e-56eb-a778-2413aa68db42",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.011",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.012",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:fcf9af67-7abd-5f69-a22a-b436297d44c5",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.013",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:d144a855-9139-55c7-a801-e8b85dab5f01",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.014",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ccfd4e60-5728-568f-adb7-0b932d8e5aac",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:ccfd4e60-5728-568f-adb7-0b932d8e5aac",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.015",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:0e8417d7-effb-5314-93ba-a571b01726ce",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.016",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "block",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e33e75e3-eae5-5a09-862f-d1a11176373f",
+      "firstRecordId": "math-m7-vready-geom-func-17-a:e33e75e3-eae5-5a09-862f-d1a11176373f",
+      "secondRecordId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b.017",
+      "firstRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-a.batch-001",
+      "secondRunId": "mathematik-m7-vready-geometry-functions-17-current-20260923-v1-first-pass-b.batch-001.codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

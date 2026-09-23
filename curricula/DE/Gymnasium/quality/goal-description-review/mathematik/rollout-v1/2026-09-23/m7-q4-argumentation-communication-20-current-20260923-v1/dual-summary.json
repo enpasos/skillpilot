@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:41098d32fb4ada265f7fd214e632b574c29c1e751b92bea80543e1a2f5dbe322",
+  "reviewInputFingerprint": "sha256:57b9029e7e6285564bd7d54383eb8b47b158b1b0b831bcb98fa45d91d6f24701",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a",
+      "roundId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-b",
+      "roundId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-independent-b",
+      "runIds": [
+        "math-q4-argumentation-communication-20-20260923-codex-round-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "70f37fda-545f-51dc-a002-c8e435e5c4a5",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-001",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-1",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "93fc4fbb-72f6-549b-b97a-a48aecb1534d",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-002",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-2",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-003",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-3",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fbcb4ad3-786d-5365-94ba-b105660694a5",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-004",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-4",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "aeae526e-b3a4-5a17-b177-351df0307cb9",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-005",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-5",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "block",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "121ef4c5-c1c2-5294-9582-86bab2355907",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-006",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-6",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d5e1e007-7c64-5350-8aa9-fde93f8a76b5",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-007",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-7",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ded082ed-ea38-510c-ab91-e0a50b064e07",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-008",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-8",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fc2cf102-dcde-5565-884f-7c9e3e3b54b6",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-009",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-9",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3019ed7f-8f74-5330-816c-17997156ed68",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-010",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-10",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8b635349-abc3-59e7-af93-ec28940bf690",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-011",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-11",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "33f2da84-d6ac-54d2-931a-76aed5cbc0c2",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-012",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-12",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b35f8254-dfcc-5d4d-b77f-7b182999617f",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-013",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-13",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "87372f49-c832-50f6-921f-ec9a6804d58a",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-014",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-14",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3b64b90b-ed89-5aeb-9838-bf05ccef9d77",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-015",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-15",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "18b43bc8-ee2a-5505-99ad-3a261a62f64a",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-016",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-16",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "08b80080-4895-55df-8ca6-4e8c5eb0f9f5",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-017",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-17",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "27bdc580-ba17-5399-bf02-48f354846d1d",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-018",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-18",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-019",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-19",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "21fa0c22-976e-59b3-a871-899f0c0177f3",
+      "firstRecordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-020",
+      "secondRecordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-20",
+      "firstRunId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "secondRunId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

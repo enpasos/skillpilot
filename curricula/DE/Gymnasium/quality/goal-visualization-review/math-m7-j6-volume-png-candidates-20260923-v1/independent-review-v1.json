@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-goal-visualization-candidate-review",
+  "reviewVersion": "v1",
+  "reviewedAt": "2026-09-23T02:12:44Z",
+  "reviewer": "Independent Codex subagent; exact serving revision not exposed",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "generatedByReviewer": false,
+  "actuallyViewedAtOriginalResolution": true,
+  "canonicalLandscape": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "records": [
+    {
+      "goalId": "7c978529-ce62-5adc-897f-24ea80babbc8",
+      "goalTitle": "Volumina von Quadern und Würfeln bestimmen",
+      "assetPath": "7c978529-ce62-5adc-897f-24ea80babbc8/candidate-v1.png",
+      "assetSha256": "7850e7a5fef300bb039f09b277321c3be1526e2d8163b67c597497a4ca82b17e",
+      "promptPath": "7c978529-ce62-5adc-897f-24ea80babbc8/prompt-v1.md",
+      "imageSize": "1536 x 1024 PNG",
+      "decision": "keep",
+      "findings": [
+        "The separate teal cuboid has a consistent 3-by-2 top grid, 3-by-2 front grid and 2-by-2 right-side grid: 3 x 2 x 2 = 12 unit cubes.",
+        "The amber cube has 2-by-2 subdivisions on each visible face: 2 x 2 x 2 = 8 unit cubes. The two solids are visibly separate and contain no extra, missing, floating or overlapping cubes.",
+        "Thick outlines, soft teal and amber colors, warm uncluttered background and no superfluous labels make the unit-cube structure readable and fit the friendly, abstract school-comic intent. No contradictory dimensions, formulas, text or watermark are present."
+      ],
+      "scopeLimits": [
+        "The separately rendered solids are not a precision same-scale construction; individual cube widths appear slightly different. Count the regular grids, not the absolute picture size, to compare their volumes. The discrepancy is small and does not change either cube count.",
+        "The image does not show numeric edge lengths, volume units or unit conversion. It supports the unit-cube part of the current goal but does not independently cover every competence in the description."
+      ]
+    },
+    {
+      "goalId": "e01869db-891c-57a4-8660-789ec6875ec2",
+      "goalTitle": "Volumina zusammengesetzter Quaderkörper additiv bestimmen",
+      "assetPath": "e01869db-891c-57a4-8660-789ec6875ec2/candidate-v2.png",
+      "assetSha256": "f454096e8fa85b82920b25362858887e6ef124f93df0ce8f0be5d20af217a463",
+      "promptPath": "e01869db-891c-57a4-8660-789ec6875ec2/prompt-v2.md",
+      "imageSize": "1536 x 1024 PNG",
+      "decision": "keep",
+      "findings": [
+        "The teal one-layer base has four unit cubes across its front and two units of depth visible in the exposed top grid, giving 4 x 2 x 1 = 8 unit cubes.",
+        "The amber upper layer covers the left two columns of the base, has a 2-by-2 top grid, and its right side shows the two-unit depth seam: 2 x 2 x 1 = 4 unit cubes. It rests flush on the base without a visible gap or double-counted overlap, so additive volume is 8 + 4 = 12 unit cubes.",
+        "The color boundary and unobstructed cube seams make the two cuboid components distinguishable. The warm clear comic rendering has no distracting faces, contradictory labels, numeric claims or watermark."
+      ],
+      "scopeLimits": [
+        "The lower cuboid's hidden left top and hidden rear cubes must be inferred from its regular visible edges and the flush upper placement; the diagram is an orientation aid, not a complete transparent-cube proof.",
+        "The picture illustrates valid additive decomposition but not the alternative completion-and-subtraction method or a numerical plausibility check. Those remain teaching and assessment work, not defects of this optional image."
+      ]
+    }
+  ],
+  "nonApprovalBoundary": "KEEP here means visual candidate passes this independent AI inspection only. No canonical or public import, QA-ledger decision, central registry closure, human approval, rights clearance or learner-performance evidence is asserted."
+}

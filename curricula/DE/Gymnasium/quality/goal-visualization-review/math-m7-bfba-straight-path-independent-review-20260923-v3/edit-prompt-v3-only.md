@@ -1,0 +1,7 @@
+# Tatsächlicher Prompt für `candidate-v3.png`
+
+Referenzbild: `curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-bfba-straight-path-independent-review-20260923-v2/candidate-v2.png` (SHA-256 `3eb4619272f3bd80a2b51c18d1086fa8254e340fa53a473192bdc008cae8c372`). Der Wortlaut ist aus [edit-prompt.md](edit-prompt.md) übernommen; der Import-Helfer liest nur den folgenden Textblock als Erzeugungsprompt.
+
+```text
+Conservative correction of this exact German educational cartoon, preserving the whole composition, fonts, title, labels, and friendly abstract style. The red ball rolls down a straight brown ramp. The dashed black trajectory starting next to the ball currently bends downward; replace it with ONE visibly straight dashed black arrow running diagonally down-right, parallel to the ramp's straight incline, so the motion path matches the blue card labelled 'gerade Bahn'. End that arrow at the ramp's lower right edge, not in empty space. In the yellow card 'Reibung vernachlässigt', replace the crossed-out running human pictogram with a small simple frictionless ball-on-ramp pictogram: a ball touching a short inclined plane, with no human and no misleading crossed-out person. Preserve the exact texts 'konstante Beschleunigung', 'Reibung vernachlässigt', 'gerade Bahn', 'Annahmen machen das Modell einfacher.', 'Idealisation ≠ Wirklichkeit', and 'Modellierung: Ball auf Rampe'. Do not add new mathematics, curves, labels or arrows. Output clean PNG.
+```

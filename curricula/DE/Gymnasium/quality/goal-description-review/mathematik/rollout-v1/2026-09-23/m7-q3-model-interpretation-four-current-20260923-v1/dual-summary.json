@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:cdb2c6c6975a753dde93cb403499e2f9f782481b85474dab017f79d0350c8dc5",
+  "reviewInputFingerprint": "sha256:cdbdea68660a1717627446ad9b998a4ac5230e3fcccac6ff51ced71541f02d0b",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a",
+      "roundId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a-ai-20260923"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-5-family (exact runtime model ID unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-b",
+      "roundId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-independent-b",
+      "runIds": [
+        "math-q3-model-interpretation-four-20260923-codex-round-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+      "firstRecordId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a-ai-20260923-1",
+      "secondRecordId": "math-q3-model-interpretation-four-20260923-codex-round-b-1",
+      "firstRunId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a-ai-20260923",
+      "secondRunId": "math-q3-model-interpretation-four-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "75efcc7c-3c96-47c6-a681-1e9337862a20",
+      "firstRecordId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a-ai-20260923-2",
+      "secondRecordId": "math-q3-model-interpretation-four-20260923-codex-round-b-2",
+      "firstRunId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a-ai-20260923",
+      "secondRunId": "math-q3-model-interpretation-four-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c9a897ca-a0a2-5895-bbc4-23b20840c548",
+      "firstRecordId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a-ai-20260923-3",
+      "secondRecordId": "math-q3-model-interpretation-four-20260923-codex-round-b-3",
+      "firstRunId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a-ai-20260923",
+      "secondRunId": "math-q3-model-interpretation-four-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5dbf149c-d335-552c-a918-768a12e09201",
+      "firstRecordId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a-ai-20260923-4",
+      "secondRecordId": "math-q3-model-interpretation-four-20260923-codex-round-b-4",
+      "firstRunId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a-ai-20260923",
+      "secondRunId": "math-q3-model-interpretation-four-20260923-codex-round-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

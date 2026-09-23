@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-proof-problem-next20-v1-20260920-resolution-e2d56885-a204-54b4-8717-a46d029ef416",
+  "goal": {
+    "goalId": "e2d56885-a204-54b4-8717-a46d029ef416",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:fc15a0b6b26eae27d200ac3f0a7416009931581c10d31cfa0572bff717078458",
+    "pageFingerprint": "sha256:4391f86ddafc715addf9d6c01197f35eac9de573d24af8f164596b59d9b446d3",
+    "goalReviewContextFingerprint": "sha256:000afac91554519d728815ad7d89ece134ab9bf44ed5a38c181793a4c6cf9cdb",
+    "finalText": {
+      "titleDe": "Gegenbeispiele konstruieren",
+      "titleEn": "Construct counterexamples",
+      "descriptionDe": "Die lernende Person kann zu einer falschen Aussage gezielt ein Gegenbeispiel konstruieren (z. B. durch Wahl eines Spezialfalls) und begründen, warum es die Aussage widerlegt.",
+      "descriptionEn": "The learner can construct a targeted counterexample for a false statement (e.g. by choosing a special case) and justify why it refutes the statement."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-a",
+      "campaignDigest": "sha256:a41a6260e12d06d970c0aa5b563f6ced07b7b524b77304b4bca474a3cdd33f8a",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-a",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:000afac91554519d728815ad7d89ece134ab9bf44ed5a38c181793a4c6cf9cdb",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-a.batch-001",
+      "runId": "mathematik-m7-proof-problem-next20-a-independent-20260921",
+      "runManifestDigest": "sha256:60fad9393a29128686a5228db0da4a4ed48bd8cd6ed95b0bc84d42c344aac21e",
+      "resultsDigest": "sha256:329e91f5901cf79b026c61fad742d42a2007943b5d265c3d9db874909ff0c830",
+      "recordId": "mathematik-m7-proof-problem-next20-a-independent-20260921.009",
+      "recordDigest": "sha256:0577ac0980fa092990fd632574af1b552496f532ad78474c7a78708841f73c8f"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-proof-problem-next20-v1-20260920-b",
+      "campaignDigest": "sha256:2e75517c969f994726a963dcd0ef3968698ed89412db83e1268cebe54ed38ede",
+      "roundId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-proof-problem-next20-v1-20260920-independent-b",
+      "reviewInputFingerprint": "sha256:632fefd251872d8a1e7aab84d0c162c113bd437581a1cf090b1a474aa19a83c3",
+      "goalReviewContextFingerprint": "sha256:000afac91554519d728815ad7d89ece134ab9bf44ed5a38c181793a4c6cf9cdb",
+      "batchId": "mathematik-m7-proof-problem-next20-v1-20260920-first-pass-b.batch-001",
+      "runId": "math-m7-proof-problem-next20-b-20260921-blind-v1",
+      "runManifestDigest": "sha256:a1e2b99b173d09f363ed0018614be748221ac4c77008c186e078758cbee79dbe",
+      "resultsDigest": "sha256:267b1d842c5a3ccbdf21d74874a55e6fce3d149e5db37b2e4628144696d33217",
+      "recordId": "math-m7-proof-problem-next20-b-20260921-blind-v1.e2d56885-a204-54b4-8717-a46d029ef416",
+      "recordDigest": "sha256:9ddf1849d22694384d3ca56015d2d5ab4ffceefd188377b042d14e8db8feb702"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:812ca966f5ddee8da9efb458a624b88645325047d0b2b7d5a617c3390c7239b7"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-current-17.json",
+    "manifestId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-synthesis",
+    "manifestDigest": "sha256:a30996e2d0a152c8caff3e90a54e27fff5c48d715087960bf1511035e9a0ff1c",
+    "manifestFingerprint": "sha256:6b041c5cf340b07f17115de86e08a85cebaee8900eb683276005b1788b6ea234",
+    "decisionId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-9"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-m7-proof-problem-next20-v1-20260920-current17-9",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex Root informed synthesis; not an additional independent review",
+    "synthesizedAt": "2026-09-21T20:55:01.000Z",
+    "rationaleDe": "A fordert ausdrücklich erfüllte Voraussetzungen und verletzte Folgerung am konstruierten Fall; B bestätigt die gezielte statt zufällige Gegenbeispielwahl.",
+    "rationaleEn": "A explicitly requires satisfied premises and a violated conclusion in the constructed case; B confirms targeted rather than random counterexample selection.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein Gegenbeispiel zu einer allgemeinen Wenn-Dann-Aussage muss die Voraussetzungen erfüllen und die behauptete Folgerung verletzen; ein außerhalb des Geltungsbereichs liegendes Objekt widerlegt sie nicht.",
+      "essentialUnderstandingEn": "A counterexample to a universal if-then statement must satisfy the assumptions and violate the claimed conclusion; an object outside the domain does not refute it.",
+      "observablePerformanceDe": "Zur falschen Behauptung jedes Rechteck ist ein Quadrat konstruiert die lernende Person ein Rechteck mit verschiedenen Seitenlängen und erläutert getrennt, dass die Rechteckvoraussetzungen erfüllt sind, die Quadratforderung aber scheitert.",
+      "observablePerformanceEn": "For the false claim that every rectangle is a square, the learner constructs a rectangle with unequal adjacent side lengths and separately explains that the rectangle assumptions hold while the square requirement fails.",
+      "transferExpectationDe": "Für die neue algebraische Behauptung a² = b² impliziert a = b konstruiert sie selbst ein zulässiges Paar mit verschiedenen Vorzeichen und prüft Voraussetzung und Folgerung ausdrücklich.",
+      "transferExpectationEn": "For the fresh algebraic claim that a² = b² implies a = b, the learner independently constructs an admissible pair with different signs and explicitly checks both assumption and conclusion."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-b72a5632d68ea24dc62f955c4a687447e2b1d972a5c9d54bb062d350ce8b6797",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:b1123f5b4aeb9900f8b7610b84c27d9058720f5e818ed2e256280e31b02c31ea"
+}

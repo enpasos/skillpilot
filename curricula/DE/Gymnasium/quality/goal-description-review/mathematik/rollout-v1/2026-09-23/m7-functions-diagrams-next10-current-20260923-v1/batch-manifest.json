@@ -1,0 +1,63 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-functions-diagrams-next10-current-20260923-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-functions-diagrams-next10-current-20260923-v1.config.json",
+  "configDigest": "sha256:273ff04bd60adfb99119a7c22a0d691afc3c753c03c9871f8088f7a9adc4d9ea",
+  "goalIds": [
+    "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+    "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+    "7bff61c1-1a69-4991-97de-0cff764f507e",
+    "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
+    "308f19e2-e202-5300-a2fa-1eaa717f4e73",
+    "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+    "f9fdb733-5838-4983-888a-05624eabbe17",
+    "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e",
+    "0b23413e-a334-5dd3-98e5-de067208819e",
+    "1b70498a-62a0-5a84-99dd-476b8af68da6"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:521e30f3a411e74c9c37e4d8de5707f8834a832752004ffa196930060562a9d4"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:c4b2bfa22f596abc51a177f31706e43dc578fecea9b9cb12fa9586ffba6754c3",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:d3bb81c1746400a61b48cc2c7a58f335310a847d6e2e3d9f698c7c12ccf4f2b9",
+    "reviewInputFingerprint": "sha256:844eed26073b962bdab4d88e17fe71ab94dfa1d2ca4e7e43f03d2c612502032a",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-functions-diagrams-next10-current-20260923-v1-a",
+        "campaignDigest": "sha256:22522a46ffddeefd8157323090eedb21c6ccee7fdc6e48e4ada8b0c81e45e694",
+        "roundId": "mathematik-m7-functions-diagrams-next10-current-20260923-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-functions-diagrams-next10-current-20260923-v1-independent-a",
+        "batchId": "mathematik-m7-functions-diagrams-next10-current-20260923-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:4b3170fbf9be0bec9165e7891b876623c7ee265adb85de0e3a1bf5f4466eb129"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-functions-diagrams-next10-current-20260923-v1-b",
+        "campaignDigest": "sha256:542ff4cc30205a6538e575513248225b2393a0d7b2e87a4da4323225461f76e6",
+        "roundId": "mathematik-m7-functions-diagrams-next10-current-20260923-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-functions-diagrams-next10-current-20260923-v1-independent-b",
+        "batchId": "mathematik-m7-functions-diagrams-next10-current-20260923-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:d873641521415266f5a98281324f9484b46c1ac6dcdc91233c6787321a6fa641"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

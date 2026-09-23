@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-q4-multiple-representations-corrected-png-p-20260923-v1",
+  "reviewedAt": "2026-09-23T04:29:00Z",
+  "reviewer": "Codex / current Mathematics Q4 representation P-v2 author",
+  "goals": [
+    {
+      "goalId": "55fa9261-c48e-5f0a-8821-20fe0ca6507d",
+      "reason": "Current bilingual canonical LK goal, Q4 goal-book page 565 text and corrected primary PNG were compared for mathematical meaning and context. The PNG now distinguishes the minimum value -4 from its location x=0, consistently with f(x)=x²-4, table and graph. The two fresh independent cases test whether the learner can combine representations to justify a mathematical conclusion without copying this pictured example: a shifted parabola and a discrete piecewise tariff. This is AI-authored E1/G1 candidate evidence, not observed learner mastery or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "coherent-multi-representation-argument",
+            "essentialUnderstandingDe": "Tabelle, Graph und Text tragen eine mathematische Argumentation nur gemeinsam, wenn gleiche Eingaben denselben Funktionswert meinen und Aussagen über Stellen, Werte und Verlauf auseinandergehalten werden. Einzelne Tabellenwerte oder eine bloße Skizze belegen eine globale Aussage nicht ohne passende Begründung.",
+            "essentialUnderstandingEn": "A table, graph and text jointly support a mathematical argument only when equal inputs refer to the same function value and claims about input locations, values and shape are distinguished. Isolated table values or a sketch alone do not establish a global claim without suitable reasoning.",
+            "observablePerformanceDe": "Die Person erstellt oder liest passende Werte und einen Graphen, verknüpft konkrete Merkmale über die Darstellungen hinweg und formuliert eine begründete Aussage mit richtiger Bedeutung von Eingabe und Funktionswert.",
+            "observablePerformanceEn": "The learner creates or reads suitable values and a graph, links concrete features across the representations and states a justified conclusion with the correct meanings of input and function value."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "coherent-multi-representation-argument"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quadratic-continuous-to-piecewise-discrete",
+            "textDe": "Von einer stetigen verschobenen Parabel mit Nullstellen und globalem Minimum zu einem nur für ganze Anzahlen definierten, abschnittsweise linearen Tarif mit Preiswechsel übergehen.",
+            "textEn": "Move from a continuous shifted parabola with zeros and a global minimum to a piecewise linear tariff defined only for integer counts, with a changed marginal price."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "shifted-parabola-three-forms",
+            "taskDemandDe": "Für f(x)=(x−1)²−4: Erstelle eine Tabelle für x=−1, 1 und 3, skizziere den Graphen und formuliere mit den Darstellungen einen begründeten Satz über Nullstellen, Minimumstelle und Minimumwert.",
+            "taskDemandEn": "For f(x)=(x−1)²−4: make a table for x=−1, 1 and 3, sketch the graph and use the representations to state and justify the zeros, the location of the minimum and its value.",
+            "expectedPerformanceDe": "Die Tabelle enthält f(−1)=0, f(1)=−4 und f(3)=0. Der nach oben geöffnete Graph hat die Nullstellen x=−1 und x=3 sowie den Scheitel (1|−4). Textlich: Das globale Minimum liegt bei x=1 und hat den Wert −4; (x−1)²≥0 begründet, warum kein kleinerer Funktionswert vorkommt.",
+            "expectedPerformanceEn": "The table has f(−1)=0, f(1)=−4 and f(3)=0. The upward-opening graph has zeros x=−1 and x=3 and vertex (1,−4). In words, the global minimum occurs at x=1 and has value −4; (x−1)²≥0 justifies why no smaller function value occurs.",
+            "understandingFocusDe": "Tabellenwerte, Graphpunkte und Text werden konsistent verknüpft; Stelle x=1 und Wert −4 werden ausdrücklich unterschieden.",
+            "understandingFocusEn": "Table values, graph points and text are linked consistently; location x=1 and value −4 are explicitly distinguished."
+          },
+          {
+            "id": "piecewise-tariff-three-forms",
+            "taskDemandDe": "Für ganze n≥0 kostet ein Tarif T(n)=8+3n Euro bis einschließlich n=4 Einheiten und danach T(n)=20+2(n−4) Euro. Verbinde eine Tabelle für n=3,4,5, ein Punktdiagramm und einen kurzen Text, um den Preiswechsel zu erklären.",
+            "taskDemandEn": "For integer n≥0, a tariff costs T(n)=8+3n euros up to and including n=4 units, and then T(n)=20+2(n−4) euros. Combine a table for n=3,4,5, a point plot and a short text to explain the price change.",
+            "expectedPerformanceDe": "Die Tabelle zeigt T(3)=17, T(4)=20 und T(5)=22 Euro. Das Punktdiagramm markiert insbesondere (4|20) und (5|22); es verbindet die diskreten Punkte nicht zu zulässigen Zwischenanzahlen. Der Text erklärt: Die ersten vier Einheiten kosten je zusätzlich 3 Euro, erst die fünfte erhöht den Gesamtpreis um 2 Euro; n=4 liegt noch im ersten Zweig.",
+            "expectedPerformanceEn": "The table shows T(3)=17, T(4)=20 and T(5)=22 euros. The point plot marks (4,20) and (5,22) in particular and does not present intermediate noninteger counts as admissible. The text explains that each of the first four units adds 3 euros, while the fifth adds 2 euros; n=4 still belongs to the first branch.",
+            "understandingFocusDe": "Eine andere Darstellungsstruktur wird sachgerecht kombiniert: diskrete Punktwerte statt stetiger Parabel und Wechsel des Stückpreises nach der Grenze n=4.",
+            "understandingFocusEn": "A different representation structure is combined appropriately: discrete points rather than a continuous parabola and a change of marginal price after the n=4 boundary."
+          }
+        ]
+      }
+    }
+  ]
+}

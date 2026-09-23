@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:58aaa29beb2611bde6ff9aba94f42130aa238d92e1e740bf25ee3630aac143a8",
+  "reviewInputFingerprint": "sha256:569f083ca2d0a10f2350f81e169a0fdaded9a346fec15b719862747e185d4c88",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-a",
+      "roundId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-independent-a",
+      "runIds": [
+        "math-m7-three-new-png-round-a-root-20260923"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::OpenAI Codex (exact model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-b",
+      "roundId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-independent-b",
+      "runIds": [
+        "math-m7-three-new-png-binding-round-b-20260923-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex agent; exact model identifier and sampling parameters not exposed; independent blind round B, no different-model claim::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "8823e26e-694c-581b-9adf-4db7db6f43c9",
+      "firstRecordId": "math-m7-three-new-png-round-a-root-20260923-goal-01",
+      "secondRecordId": "math-m7-three-png-b-001",
+      "firstRunId": "math-m7-three-new-png-round-a-root-20260923",
+      "secondRunId": "math-m7-three-new-png-binding-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7c978529-ce62-5adc-897f-24ea80babbc8",
+      "firstRecordId": "math-m7-three-new-png-round-a-root-20260923-goal-02",
+      "secondRecordId": "math-m7-three-png-b-002",
+      "firstRunId": "math-m7-three-new-png-round-a-root-20260923",
+      "secondRunId": "math-m7-three-new-png-binding-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e01869db-891c-57a4-8660-789ec6875ec2",
+      "firstRecordId": "math-m7-three-new-png-round-a-root-20260923-goal-03",
+      "secondRecordId": "math-m7-three-png-b-003",
+      "firstRunId": "math-m7-three-new-png-round-a-root-20260923",
+      "secondRunId": "math-m7-three-new-png-binding-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-understanding-evidence-m7-q4-model-forms-taxi-current-20260923-v1",
+  "reviewedAt": "2026-09-23T03:27:16Z",
+  "reviewer": "Codex / informed current Math Q4 model-forms P-v2 author",
+  "goals": [
+    {
+      "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+      "reason": "Drei eigenständige Fälle fordern die Formulierung einer Funktion, einer Gleichung für einen exakten Wert und einer Ungleichung für eine Grenze samt kontextbezogener Modellwahl. Der Transfer wechselt zwischen diskreten steigenden Kosten, einer stetigen abnehmenden Füllmenge und einer quadratischen Flächenbeziehung; die Taxi-Grafik liefert keine der Falllösungen.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "contextual-relation-as-function",
+            "essentialUnderstandingDe": "Eine Funktion ordnet jeder zulässigen Eingabegröße genau einen Wert der abhängigen Sachgröße zu; ihr Term bildet die gegebene Beziehung zwischen den Sachgrößen mit passenden Einheiten und einem sachlich gültigen Bereich ab.",
+            "essentialUnderstandingEn": "A function assigns exactly one value of the dependent contextual quantity to each admissible input; its expression represents the given relation between the contextual quantities with consistent units and a contextually valid domain.",
+            "observablePerformanceDe": "Die Person formuliert aus den gegebenen Größen eine Funktion, benennt die Bedeutung und Einheit von Eingabe und Funktionswert und gibt den im Kontext zulässigen Eingabebereich an.",
+            "observablePerformanceEn": "The learner formulates a function from the given quantities, states the meaning and unit of its input and output, and gives the admissible input domain in context."
+          },
+          {
+            "id": "exact-value-versus-bound",
+            "essentialUnderstandingDe": "Eine Gleichung mit einem vorgegebenen Funktionswert beschreibt einen exakten Zielwert; eine Ungleichung beschreibt eine obere oder untere Grenze für dieselbe Sachgröße. Die Gleichheit am Grenzwert gehört zur nicht strengen Ungleichung, macht beide Aussagen aber nicht gleichbedeutend.",
+            "essentialUnderstandingEn": "An equation with a specified function value describes an exact target; an inequality describes an upper or lower bound for the same contextual quantity. Equality at the boundary is included in a non-strict inequality, but the two statements are not equivalent.",
+            "observablePerformanceDe": "Die Person formuliert aus Fragen nach genau einem Wert sowie nach höchstens oder mindestens einem Wert die jeweils passende Gleichung und Ungleichung, begründet die Wahl und deutet das Vergleichszeichen bezogen auf die Sachgröße.",
+            "observablePerformanceEn": "The learner formulates the appropriate equation and inequality from questions about an exact value and about at most or at least a value, justifies the choice, and interprets the comparison sign in terms of the contextual quantity."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "contextual-relation-as-function",
+            "exact-value-versus-bound"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "discrete-increase-to-continuous-decrease",
+            "textDe": "Von einer mit der ganzzahligen Stückzahl steigenden Kostenfunktion zu einer mit der kontinuierlichen Zeit fallenden Füllmenge wechseln; Vorzeichen, Einheit und zulässiger Bereich ändern sich.",
+            "textEn": "Switch from a cost function increasing with an integer item count to a volume decreasing with continuous time; sign, unit, and admissible domain change."
+          },
+          {
+            "id": "upper-to-lower-bound",
+            "textDe": "Eine Höchstgrenze für Kosten durch eine Mindestmenge für einen verbleibenden Bestand ersetzen; das Vergleichszeichen richtet sich nach der gefragten Sachgröße.",
+            "textEn": "Replace a maximum cost with a minimum remaining quantity; the comparison sign follows the contextual quantity being asked about."
+          },
+          {
+            "id": "affine-to-quadratic-relation",
+            "textDe": "Von einer Beziehung mit Anfangswert und konstanter Rate zu einer quadratischen Flächenbeziehung wechseln; der Unterschied zwischen Funktion, exaktem Wert und Grenze bleibt erhalten.",
+            "textEn": "Switch from a relation with an initial value and constant rate to a quadratic area relation; the distinction between function, exact value, and bound remains."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "poster-printing-forms",
+            "taskDemandDe": "Eine Druckerei berechnet 6 € Einrichtungskosten und 1,50 € pro Poster. Formuliere den Gesamtpreis für n Poster als Funktion, die Bedingung für genau 18 € und die Bedingung für höchstens 18 €. Begründe jede Modellform; löse die Bedingungen nicht.",
+            "taskDemandEn": "A print shop charges a €6 setup fee and €1.50 per poster. Express the total price for n posters as a function, the condition for exactly €18, and the condition for at most €18. Justify each model form; do not solve the conditions.",
+            "expectedPerformanceDe": "Für n als positive ganze Posterzahl gilt C(n)=6 €+(1,50 €/Poster)n; C(n)=18 € steht für den exakten Preis, C(n)≤18 € für die Preisobergrenze. Die Funktion ordnet jeder zulässigen Anzahl einen Preis zu; beide Bedingungen stellen unterschiedliche Fragen an dieselbe Beziehung, wobei genau 18 € auch die Höchstgrenze erfüllt.",
+            "expectedPerformanceEn": "For n as a positive integer number of posters, C(n)=€6+(€1.50/poster)n; C(n)=€18 states the exact price and C(n)≤€18 the price cap. The function assigns a price to each admissible count; the two conditions ask different questions about the same relation, and exactly €18 also meets the cap.",
+            "understandingFocusDe": "Funktion, exakte Gleichung und obere Ungleichungsgrenze aus einer diskreten steigenden Preisbeziehung unterscheiden.",
+            "understandingFocusEn": "Distinguish a function, an exact-value equation, and an upper-bound inequality from a discrete increasing price relation."
+          },
+          {
+            "id": "draining-tank-forms",
+            "taskDemandDe": "Ein Behälter enthält zu Beginn 90 L Wasser und verliert bei geöffnetem Ablauf konstant 2 L pro Minute. Formuliere die verbleibende Wassermenge für die Zeit t bis zur Entleerung als Funktion, die Bedingung für genau 50 L und die Bedingung für mindestens 50 L. Begründe jede Modellform; löse die Bedingungen nicht.",
+            "taskDemandEn": "A container initially holds 90 L of water and loses a constant 2 L per minute while its drain is open. Express the remaining water for time t until empty as a function, the condition for exactly 50 L, and the condition for at least 50 L. Justify each model form; do not solve the conditions.",
+            "expectedPerformanceDe": "Für t in Minuten und 0≤t≤45 gilt V(t)=90 L−(2 L/min)t; V(t)=50 L beschreibt die exakte Restmenge, V(t)≥50 L die Mindestrestmenge. Die Funktion ordnet jeder zulässigen Zeit eine Restmenge zu; das ≥ bezieht sich auf Wasser, nicht unmittelbar auf die Zeit, und genau 50 L erfüllt auch die Mindestbedingung.",
+            "expectedPerformanceEn": "For t in minutes with 0≤t≤45, V(t)=90 L−(2 L/min)t; V(t)=50 L describes the exact remaining volume and V(t)≥50 L the minimum remaining volume. The function assigns a remaining volume to each admissible time; ≥ refers to water, not directly to time, and exactly 50 L also meets the minimum condition.",
+            "understandingFocusDe": "Die Modellformen bei fallender stetiger Beziehung und umgekehrter Grenzrichtung eigenständig wählen.",
+            "understandingFocusEn": "Independently choose the model forms for a decreasing continuous relation and a reversed bound direction."
+          },
+          {
+            "id": "square-garden-area-forms",
+            "taskDemandDe": "Ein quadratisches Beet hat die Seitenlänge s in Metern; seine Fläche ist das Produkt der beiden Seitenlängen. Formuliere die Fläche als Funktion von s, die Bedingung für genau 16 m² und die Bedingung für mindestens 16 m². Begründe jede Modellform; löse die Bedingungen nicht.",
+            "taskDemandEn": "A square garden bed has side length s in metres; its area is the product of its two side lengths. Express the area as a function of s, the condition for exactly 16 m², and the condition for at least 16 m². Justify each model form; do not solve the conditions.",
+            "expectedPerformanceDe": "Für s>0 m gilt A(s)=s² mit Flächenwerten in m²; A(s)=16 m² beschreibt die exakte Fläche und A(s)≥16 m² die Mindestfläche. Die Funktion ordnet jeder zulässigen Seitenlänge eine Fläche zu; Gleichung und Ungleichung stellen unterschiedliche Fragen an die gleiche quadratische Beziehung.",
+            "expectedPerformanceEn": "For s>0 m, A(s)=s² with area values in m²; A(s)=16 m² describes the exact area and A(s)≥16 m² the minimum area. The function assigns an area to each admissible side length; equation and inequality ask different questions about the same quadratic relation.",
+            "understandingFocusDe": "Die Wahl von Funktion, exakter Gleichung und unterer Ungleichungsgrenze auf eine nicht affine Beziehung übertragen.",
+            "understandingFocusEn": "Transfer the choice of function, exact-value equation, and lower-bound inequality to a non-affine relation."
+          }
+        ]
+      }
+    }
+  ]
+}

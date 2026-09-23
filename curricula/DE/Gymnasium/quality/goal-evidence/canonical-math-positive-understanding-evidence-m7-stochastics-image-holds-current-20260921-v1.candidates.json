@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-understanding-evidence-m7-stochastics-image-holds-current-20260921-v1",
+  "reviewedAt": "2026-09-21T21:14:20Z",
+  "reviewer": "Codex informed integration after independent Round A and Round B; current three-goal profile reuse",
+  "goals": [
+    {
+      "goalId": "42d300e3-e982-5889-98d7-fc297f10eff1",
+      "reason": "Informierter aktueller Rebind des vollständig gelesenen Profilkörpers nach zwei aktuellen unabhängigen KEEP-Runden. Beide Aufgabenfälle wurden anhand ihrer Histogrammhöhen, Mittelwerte, Varianzen sowie absoluten und relativen Standardabweichungen nachgerechnet und mit aktuellem Ziel, Voraussetzungen, Seitenkontext und gebundener aktueller Abbildung verglichen. Der fachlich passende Profilkörper bleibt unverändert; die neue Kandidatenfassung bindet die aktuellen Eingaben und Bildbytes und behauptet keine menschliche oder visuelle Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "parameter-shape-relations",
+            "essentialUnderstandingDe": "Für B(n,p) bestimmen np und np(1−p) Lage und Streuung. Bei festem n spiegeln sich die Verteilungen zu p und 1−p an n/2; p=1/2 liefert Symmetrie. Bei festem 0<p<1 wächst mit n die absolute Standardabweichung, während σ/n sinkt.",
+            "essentialUnderstandingEn": "For B(n,p), np and np(1−p) determine location and spread. At fixed n, distributions with p and 1−p mirror each other about n/2; p=1/2 gives symmetry. At fixed 0<p<1, absolute standard deviation increases with n while σ/n decreases.",
+            "observablePerformanceDe": "Die lernende Person vergleicht korrekt skalierte Histogramme, benennt die kontrollierte Parameteränderung und begründet Lage, Streuung und Symmetrie mit charakteristischen Werten und zugeordneten Balken.",
+            "observablePerformanceEn": "The learner compares correctly scaled histograms, identifies the controlled parameter change, and explains location, spread, and symmetry using characteristic values and corresponding bars."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "parameter-shape-relations"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "change-p-versus-change-n",
+            "textDe": "Zuerst p bei festem n spiegeln, dann n bei festem p verändern; absolute Anzahl und Anteilsskala werden auseinandergehalten.",
+            "textEn": "First reflect p at fixed n, then change n at fixed p; distinguish count scale from proportion scale."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "complementary-probabilities",
+            "taskDemandDe": "Vergleiche Histogramme von X∼B(4;0,25) und Y∼B(4;0,75). Das erste hat bei k=0,…,4 Höhen (81,108,54,12,1)/256. Ordne die Höhen des zweiten zu und begründe Lage, Streuung und Symmetriebeziehung.",
+            "taskDemandEn": "Compare histograms of X∼B(4;0.25) and Y∼B(4;0.75). The first has heights (81,108,54,12,1)/256 at k=0,…,4. Assign the second one's heights and explain location, spread, and the symmetry relation.",
+            "expectedPerformanceDe": "Y hat die umgekehrte Höhenfolge (1,12,54,108,81)/256. μ verschiebt sich von 1 zu 3; beide Varianzen sind 3/4, beide σ=√3/2. Jede Verteilung ist asymmetrisch, gemeinsam spiegeln sie sich an k=2; gleiche Streuung bedeutet keine gleiche Lage.",
+            "expectedPerformanceEn": "Y has reversed heights (1,12,54,108,81)/256. μ shifts from 1 to 3; both variances are 3/4 and both σ=√3/2. Each distribution is asymmetric, and the pair mirrors about k=2; equal spread does not imply equal location.",
+            "understandingFocusDe": "Komplementäre Trefferwahrscheinlichkeiten vertauschen Treffer- und Misserfolgsanzahlen.",
+            "understandingFocusEn": "Complementary success probabilities interchange success and failure counts."
+          },
+          {
+            "id": "more-trials",
+            "taskDemandDe": "Vergleiche auf gleicher k-Skala bereitgestellte Histogramme von B(4;0,5) und B(16;0,5). Beschreibe Lage und Symmetrie und entscheide, in welchem Sinn die zweite Verteilung breiter beziehungsweise relativ konzentrierter ist.",
+            "taskDemandEn": "Compare supplied histograms of B(4;0.5) and B(16;0.5) on the same k scale. Describe location and symmetry and decide in what sense the second is wider yet relatively more concentrated.",
+            "expectedPerformanceDe": "Symmetriezentren sind μ=2 und μ=8. σ steigt von 1 auf 2, die absolute Streuung ist größer. Auf der Anteilsskala k/n sinkt σ/n von 1/4 auf 1/8. Ein Vergleich verschieden skalierter Bilder allein wäre dafür unzureichend.",
+            "expectedPerformanceEn": "Centers of symmetry are μ=2 and μ=8. σ increases from 1 to 2, so absolute spread is larger. On the proportion scale k/n, σ/n decreases from 1/4 to 1/8. Comparing differently scaled pictures alone would be insufficient.",
+            "understandingFocusDe": "Eine Parameteränderung wird unter Angabe der betrachteten Skala interpretiert.",
+            "understandingFocusEn": "A parameter change is interpreted with explicit reference to the scale being considered."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+      "reason": "Informierter aktueller Rebind nach zwei aktuellen unabhängigen KEEP-Runden. Rate, Intervallwahrscheinlichkeit, bedingte Restwartezeit und Zuverlässigkeitsfall wurden nachgerechnet und mit dem aktuellen exemplarisch offenen DE/EN-Ziel sowie der aktuellen Abbildung verglichen. Der Exponentialprofilkörper bleibt unverändert als zulässiges Beispiel einer weiteren stetigen Verteilung. Ein überholter Dissent über eine frühere exklusive EN-Formulierung wird nur in diesem neuen Kandidaten entfernt und im Rebind-Protokoll dokumentiert; die historischen Quellen bleiben unverändert.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "exponential-waiting-time",
+            "essentialUnderstandingDe": "Im Exponentialmodell mit λ>0 hat T≥0 Dichte λe^(−λt) und Überlebenswahrscheinlichkeit P(T>t)=e^(−λt). Wahrscheinlichkeiten sind Flächen; die konstante Rate führt zur Gedächtnislosigkeit P(T>s+t|T>s)=P(T>t), nicht zu einer festen Restwartezeit.",
+            "essentialUnderstandingEn": "In the exponential model with λ>0, T≥0 has density λe^(−λt) and survival probability P(T>t)=e^(−λt). Probabilities are areas; constant rate gives memorylessness P(T>s+t|T>s)=P(T>t), not a fixed remaining wait.",
+            "observablePerformanceDe": "Die lernende Person setzt ein begründetes Exponentialmodell mit passenden Einheiten ein, berechnet Intervall- und Restwartewahrscheinlichkeiten und erläutert die Gedächtnislosigkeit sowie eine konkrete Modellgrenze.",
+            "observablePerformanceEn": "The learner uses a justified exponential model with appropriate units, calculates interval and remaining-wait probabilities, and explains memorylessness and a concrete model limitation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "exponential-waiting-time"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "waiting-versus-lifetime",
+            "textDe": "Von einer gegebenen Wartezeitrate zur aus einer Überlebenswahrscheinlichkeit bestimmten Lebensdauerrate; bedingte Restzeit wird auf einen neuen Kontext übertragen.",
+            "textEn": "Move from a stated waiting-time rate to a lifetime rate inferred from a survival probability; transfer conditional remaining time to a new context."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "service-arrival-wait",
+            "taskDemandDe": "Eine modellierte Wartezeit T bis zum nächsten unabhängig eintreffenden Auftrag ist exponentialverteilt mit λ=0,2 pro Minute. Bestimme P(2≤T≤5) und P(T>8|T>5). Erkläre die zweite Wahrscheinlichkeit und eine Grenze des Modells bei regelmäßig geplanten Aufträgen.",
+            "taskDemandEn": "The modeled waiting time T until the next independently arriving request is exponential with λ=0.2 per minute. Find P(2≤T≤5) and P(T>8|T>5). Explain the second probability and a model limitation for regularly scheduled requests.",
+            "expectedPerformanceDe": "P(2≤T≤5)=e^(−0,4)−e^(−1)≈0,30244. P(T>8|T>5)=e^(−1,6)/e^(−1)=e^(−0,6)≈0,54881: Nach fünf Minuten ohne Auftrag sind weitere drei Minuten Warten genauso wahrscheinlich wie drei Minuten zu Beginn. Ein fester Fahr-/Terminplan widerspricht meist der konstanten gedächtnislosen Ankunftsrate.",
+            "expectedPerformanceEn": "P(2≤T≤5)=e^(−0.4)−e^(−1)≈0.30244. P(T>8|T>5)=e^(−1.6)/e^(−1)=e^(−0.6)≈0.54881: after five minutes with no request, waiting three more minutes is as likely as waiting three minutes initially. A fixed schedule usually conflicts with the constant memoryless arrival rate.",
+            "understandingFocusDe": "Ein Intervall wird als Differenz von Restwahrscheinlichkeiten berechnet; die Bedingung betrifft bereits verstrichene ereignisfreie Zeit.",
+            "understandingFocusEn": "An interval is computed as a difference of survival probabilities; conditioning concerns elapsed event-free time."
+          },
+          {
+            "id": "reliability-rate-from-data",
+            "taskDemandDe": "Für eine Komponente wird eine exponentialverteilte Lebensdauer L in Stunden angenommen; P(L>10)=1/2. Bestimme λ und P(L>25|L>15). Erläutere, welche Aussage dieses Modell über Alterung macht und wann das problematisch wäre.",
+            "taskDemandEn": "A component's lifetime L in hours is assumed exponential; P(L>10)=1/2. Find λ and P(L>25|L>15). Explain what the model says about aging and when this would be problematic.",
+            "expectedPerformanceDe": "e^(−10λ)=1/2 ergibt λ=ln2/10≈0,06931 h⁻¹. Die bedingte Wahrscheinlichkeit weiterer zehn Stunden ist e^(−10λ)=1/2, unabhängig von den bereits überstandenen 15 Stunden. Das Modell hat keine altersabhängig steigende Ausfallrate; erkennbare Verschleißeffekte sprechen dagegen.",
+            "expectedPerformanceEn": "e^(−10λ)=1/2 gives λ=ln2/10≈0.06931 h⁻¹. The conditional probability of another ten hours is e^(−10λ)=1/2, independent of the 15 hours already survived. The model has no age-increasing failure rate; observable wear argues against it.",
+            "understandingFocusDe": "Gedächtnislosigkeit ist eine prüfbare Modellannahme über Restzeiten, keine Aussage über eine garantierte Lebensdauer.",
+            "understandingFocusEn": "Memorylessness is a testable model assumption about remaining lifetimes, not a guaranteed lifespan."
+          }
+        ]
+      }
+    }
+  ]
+}

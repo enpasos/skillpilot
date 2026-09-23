@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "independent-ai-visual-candidate-review",
+  "reviewId": "math-m7-matrix-notation-v3-independent-b-7bd8f022-5002-5610-994c-a9cec1890558",
+  "reviewedAt": "2026-09-21T22:47:54Z",
+  "reviewer": "Codex / math_repaired12_blind_b",
+  "model": "Codex; exact serving model identifier not exposed",
+  "independenceGroupId": "math-m7-matrix-notation-v3-independent-b-20260922",
+  "reviewAuthority": "ai_candidate",
+  "status": "candidate",
+  "humanApproval": false,
+  "goalId": "7bd8f022-5002-5610-994c-a9cec1890558",
+  "goalTitleDe": "Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)",
+  "goalDescriptionDe": "Die lernende Person kann Abbildungsmatrizen für Drehungen um die Koordinatenachsen im $\\mathbb{R}^3$ untersuchen und bestimmen sowie Bildpunkte berechnen.",
+  "goalDescriptionEn": "The learner can analyze and determine mapping matrices for rotations around the coordinate axes in $\\mathbb{R}^3$ and calculate image points.",
+  "goalFingerprint": "sha256:42615f28b319fee999bb6894ed29b747c9dac6eca565c932a33df9c3dafb201e",
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/7bd8f022-5002-5610-994c-a9cec1890558/candidate-v3.png",
+  "assetSha256": "sha256:ce06e66689ba9322f0c6569609a4942320d98cf198866e0606427309a3a66639",
+  "width": 1536,
+  "height": 1024,
+  "generation": {
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "tool": "image_gen__imagegen",
+    "exactServingModel": "not exposed",
+    "prompt": {
+      "path": "correction-prompt-v3.md",
+      "sha256": "sha256:a07baf3a9e590ee4bdb680953a0f62665e9107a19b2181499199f65ae9230b09"
+    },
+    "reference": {
+      "path": "rejected-geometry-v1.png",
+      "sha256": "sha256:b44b43c464a8de7d9b8e16709b1769e6248a2145e89cc3c4fa341db050b81cd5",
+      "actuallyViewedBeforeEditing": true
+    },
+    "metadataPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/7bd8f022-5002-5610-994c-a9cec1890558/generation-and-root-review-v3.json"
+  },
+  "generationMetadataProvenance": "Provider/tool/prompt/reference Angaben aus der Autorenquittung, erst nach eigener Bildbeurteilung ausgelesen. Deren rootReview-Feld wurde nicht als Beweis verwendet. Die frühere Referenzabbildung wurde in diesem Auftrag nicht neu geprüft; actuallyViewedBeforeEditing ist die Autorenangabe, keine Aussage über diesen Reviewer.",
+  "actualVisualInspection": {
+    "performed": true,
+    "tool": "view_image",
+    "detail": "original",
+    "inspectedAsset": "candidate-v3.png",
+    "width": 1536,
+    "height": 1024
+  },
+  "independence": "Eigenständige Sichtprüfung und Nachrechnung des aktuellen Rasters. Der Auftrag nannte Roots vorläufige Einschätzung und die P′-Frage; deshalb keine Behauptung vollständiger Blindheit gegenüber dem Auftraggeber.",
+  "verdict": "keep",
+  "summaryDe": "Die vereinfachte Draufsicht und die vollständige Spaltenvektorrechnung stellen dieselbe positive Vierteldrehung um z korrekt dar.",
+  "mathematicalChecks": [
+    "Rz(90°)=[[0,−1,0],[1,0,0],[0,0,1]] ist die aktive positive Vierteldrehung im rechtshändigen Bezug.",
+    "Die Matrixspalten sind e_y, −e_x, e_z. Alle drei unteren Basisbild-Angaben entsprechen exakt diesen Spalten.",
+    "Für P=(2,1,3) ergeben die ausgeschriebenen Zeilenprodukte 0·2−1·1+0·3=−1, 1·2+0·1+0·3=2 und 0·2+0·1+1·3=3; P′=(−1,2,3).",
+    "z bleibt unverändert; x²+y² und die räumliche Norm bleiben erhalten. P und P′ haben beide Norm²=14. Die Abbildung beschränkt sich nicht auf Punkte mit z=0.",
+    "Die nicht transponierten, senkrecht notierten Vektoren sind konsistent mit Matrixmultiplikation von links; kein doppeltes Transpositionszeichen."
+  ],
+  "visualGeometryChecks": [
+    "Links oben beginnen e_x und e_y am gleichen Ursprung, stehen sichtbar senkrecht aufeinander und besitzen vergleichbare Länge; e_x zeigt nach rechts und e_y nach oben.",
+    "Der grüne Viertelkreispfeil läuft von der positiven x-Richtung gegen den Uhrzeigersinn zur positiven y-Richtung. Die Angabe 'Blick von +z zum Ursprung' macht die Blickkonvention eindeutig.",
+    "Links gibt es bewusst keine P/P′-Punktlage oder Koordinatenskala, die den Zahlen rechts widersprechen könnte. Das Panel zeigt Basisrichtungen, nicht eine maßstäbliche Bahn des Beispielpunkts.",
+    "Unten links ist e_x→e_y korrekt; im mittleren Panel führt der Pfeil von e_y nach −e_x; rechts bleibt e_z auf derselben Achse. Die kreisende Umrandung bei z illustriert die Drehachse, nicht eine Verlagerung des Basisvektors."
+  ],
+  "legibilityAndFit": "Alle drei Matrixzeilen, der Rechenweg, Vorzeichen, Achsen- und Basisbezeichnungen sind gut lesbar. Die Beschränkung auf eine z-Achsen-Drehung ist ein zulässiges konkretes Beispiel zum umfassenderen LK-Ziel, keine behauptete Vollabdeckung.",
+  "limits": "Keine neue menschliche Zustimmung, keine Veröffentlichung und keine Aufgabe-/Lernerevidenz. Andere Achsen und allgemeine Winkel bleiben Unterrichts-/Assessmentgegenstand außerhalb dieses einzelnen Bildbeispiels.",
+  "blockers": [],
+  "requiredChanges": [],
+  "scope": "Nur Kandidatenreview. Keine Rasterbearbeitung, keine Canonical-/View-/QA-/Registryänderung; kein Human- oder Runtime-/M7-Claim."
+}

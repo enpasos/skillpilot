@@ -1,0 +1,216 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-unregistered-eight-six-keep-partial-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T08:34:27.317Z",
+  "batch": {
+    "batchId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1",
+    "batchManifestDigest": "sha256:2a2d87befc3eb01d36018c01b4ae24b2d76379190e65d6f00b6baff7a3f4fa8a",
+    "configDigest": "sha256:044ea65e068a41e99b1b650b7272518dd54374b940bad2c202e64f8b077aebe8",
+    "bundleFingerprint": "sha256:982a6aa4d7cee409cc23ae98050ece6983c79bf6780be967f124bbf370ee70d5",
+    "bookDigest": "sha256:3c22311926a1909942fd55286b01ecfa1866fc9402d8710b5addb621f633d031",
+    "reviewInputFingerprint": "sha256:f55d3543d54d090bab8d0f087c822bf6aa9f967bd7117356ac0f98c0e107b105",
+    "dualSummaryDigest": "sha256:80a47f99ac5766ceed10ae668ed49b98cfda327414a5924bbf3d1d636c4ffbeb",
+    "canonicalLandscapeDigest": "sha256:3d438a80cfcc3c7817fab19c86110f7057fa80c4c8a42a7c53b78244425c0c63"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-a",
+      "campaignDigest": "sha256:8b34c062a97ffa7c36d43f30e165681cbb466ce45b97deb2bfab7cf055f5a585",
+      "roundId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:f55d3543d54d090bab8d0f087c822bf6aa9f967bd7117356ac0f98c0e107b105",
+      "batchId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:3fe116b4038f52be9868175bcf46117d85483ac4ac471ef5556eb25233036cb1",
+      "runId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-a.run-001",
+      "runManifestDigest": "sha256:4f05f76cc7a52784b2235c3bb035eed75fb5b15dadc85f0fa277b8d92a5b591a",
+      "resultsDigest": "sha256:0b36e81f26328fca75aa43c696fb2d6e174225d25207c2404c951d2f7d705083"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-b",
+      "campaignDigest": "sha256:9a33db6c4fdb2335c07ce27af2571e471b1330189a4c69bbe026010546f7a92c",
+      "roundId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:f55d3543d54d090bab8d0f087c822bf6aa9f967bd7117356ac0f98c0e107b105",
+      "batchId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:6bfa4e4671a5b2ed4172cf2cdcc3f925d9e03ef0339202063b37a4b609d4f059",
+      "runId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-b.batch-001-run-b",
+      "runManifestDigest": "sha256:9e4134f5c5b163ff303f281101c40874ebdedf27d0e412e0c25b97bdafdf4bc6",
+      "resultsDigest": "sha256:a2a2486c7bc85a35d0722cc1d902ca41fed9310e77b5974aabffc73b01adba9e"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-unregistered-eight-six-keep-partial-v1-decision-001",
+      "goalId": "0f6c1df6-0e30-54ae-8098-e9422833ba80",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:df65695cfc9a1ae1daf228be4c152281ae0810a41eeaf14876a6d892d882ddd3",
+      "pageFingerprint": "sha256:a5c8857c69b61b570560473b7bcca0c362c254b25b085f3da9592e8c9ab7297d",
+      "goalReviewContextFingerprint": "sha256:95a5aa7b6a802c6502e168ca39756e7fac5ba466e1ac3c0472f00b6795b070cf",
+      "finalText": {
+        "titleDe": "Lösbarkeit von Dreieckskonstruktionen begründen",
+        "titleEn": "Justify the solvability of triangle constructions",
+        "descriptionDe": "Die lernende Person kann aus gegebenen Seiten- und Winkelangaben mithilfe von Kongruenzsätzen und geometrischen Bedingungen begründen, ob kein, genau ein oder mehr als ein Dreieck möglich ist.",
+        "descriptionEn": "From given side and angle data, the learner can use congruence theorems and geometric conditions to justify whether no triangle, exactly one triangle, or more than one triangle is possible."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-a.record-001",
+          "recordDigest": "sha256:96c1aac8c847ec99ccc63d2aba2d4d310963683351277958028b07b8ea17b1c5"
+        },
+        "second": {
+          "recordId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-b.batch-001-run-b.goal-001",
+          "recordDigest": "sha256:396bb997f86e925db2e9ba9e3204417a7bcfd2a74e301866aee81288a022ba1c"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden bestätigen die zusammenhängende Entscheidung über keine, eine oder mehrere mögliche Dreiecksformen aus Seiten- und Winkelangaben. Die erste Evidenzkette prüft den Wechsel des Angabetyps und begründet die Zahl möglicher Konstruktionen; sie beansprucht keine zusätzliche Quellen- oder Bildfreigabe.",
+      "rationaleEn": "Both independent rounds retain the coherent judgment of zero, one, or several possible triangle shapes from side and angle data. The first evidence chain tests a change in the type of given data and justifies the number of constructions; it makes no additional source or image approval claim."
+    },
+    {
+      "decisionId": "math-m7-unregistered-eight-six-keep-partial-v1-decision-002",
+      "goalId": "2345ae25-5805-4c72-b830-32e63cc6262a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ac9874223e06b45cab7e1132154a870ab9c34f1dbbbaeac09b4c23dcd9cd365a",
+      "pageFingerprint": "sha256:804daac25a182706c3c76ac0871541eb817798f5eb6a392d77496982a0da3fbc",
+      "goalReviewContextFingerprint": "sha256:de83ff847741e59b510bd2bd58da8cbb859f593aacbf8cb09026a7172eb0a816",
+      "finalText": {
+        "titleDe": "Dichte als abgeleitete Größe verwenden",
+        "titleEn": "Use density as a derived quantity",
+        "descriptionDe": "Die lernende Person kann Dichte als Verhältnis von Masse und Volumen deuten, passende Einheiten verwenden und einfache Sachaufgaben zu Dichte lösen.",
+        "descriptionEn": "The learner can interpret density as a ratio of mass and volume, use suitable units, and solve simple contextual density problems."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-a.record-004",
+          "recordDigest": "sha256:24586b525982972746087a0710811152ab43fecb5b965a184b5cf0a9bd6f0ff6"
+        },
+        "second": {
+          "recordId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-b.batch-001-run-b.goal-004",
+          "recordDigest": "sha256:5feb9c9055340711cadbc7ddb58148673f483cb1ca84cf15400484c0bc6cfb5d"
+        }
+      },
+      "rationaleDe": "Beide Runden halten Masse je Volumeneinheit, passende Einheiten und einfache Sachaufgaben für ein abgegrenztes Dichteziel. Die erste Evidenzkette prüft die Verhältnisidee mit umgekehrter gesuchter Größe; die aktuelle Originalbildbindung wird unabhängig auf Seitengleichheit und exakte Bildbytes geprüft und ist keine D-seitige V-Freigabe.",
+      "rationaleEn": "Both rounds retain mass per unit volume, suitable units, and simple contextual problems as one bounded density goal. The first evidence chain tests the ratio with a different unknown; the current original-image binding is checked independently for page equality and exact bytes and is not a V approval from the D review."
+    },
+    {
+      "decisionId": "math-m7-unregistered-eight-six-keep-partial-v1-decision-003",
+      "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0ff9392eeb94b352b976fa98098d5370a90dc88e11dc55d54619df55068cdc5a",
+      "pageFingerprint": "sha256:96e6dc84fff6c54ae26be93be4559b80212a461690afc56e0783668a82e0d097",
+      "goalReviewContextFingerprint": "sha256:7a2795b7c44deca09bb405527d0748ebf79abdc2af73c15c5d6fc6f4432740a7",
+      "finalText": {
+        "titleDe": "Maßangaben aus Quellenmaterial entnehmen",
+        "titleEn": "Extract measurements from source material",
+        "descriptionDe": "Die lernende Person kann Maßangaben aus Tabellen, Skizzen, Karten oder anderem Quellenmaterial entnehmen, ihre Einheit und Bezugsgröße bestimmen und die Angaben für eine mathematische Bearbeitung nutzen.",
+        "descriptionEn": "The learner can extract measurements from tables, diagrams, maps, or other source material, identify their units and reference quantities, and use the data in mathematical work."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-a.record-005",
+          "recordDigest": "sha256:7f068587796be6f2ef3b6b9c882c4ae1c97e9481dbfcb5efce7c08d2ecca4a7a"
+        },
+        "second": {
+          "recordId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-b.batch-001-run-b.goal-005",
+          "recordDigest": "sha256:37d228f9fbbb3d7f07710697414d5d913af0e20468bf6f35f749088a7503981e"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen eine zusammenhängende Quellenlesekompetenz: benötigte Maßangaben mit Einheit und Bezugsgröße erkennen und mathematisch verwenden. Die erste Evidenzkette überträgt dies zwischen Tabellen und Karten, ohne einem nicht vorliegenden Quellenbeleg weitere Inhalte zuzuschreiben.",
+      "rationaleEn": "Both rounds retain one coherent source-reading competence: identify needed measurements with their units and references and use them mathematically. The first evidence chain transfers this between tables and maps without attributing further content to an unavailable source record."
+    },
+    {
+      "decisionId": "math-m7-unregistered-eight-six-keep-partial-v1-decision-004",
+      "goalId": "6a4716bd-8038-46bb-b647-0db4a254fee7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e83a5d4f56f30f00561814430d6837cbd9f082b776de44fcc2dd6139b7a9978e",
+      "pageFingerprint": "sha256:548e599022ba6309e62ef8d57feefa1520d26e3a634856082abe61ec4e0b20d3",
+      "goalReviewContextFingerprint": "sha256:9b12d9b35c75e47865aff58b6689e23d694eff9b65d4726908d2af3a0a776732",
+      "finalText": {
+        "titleDe": "Aus Graphen ganzrationaler Funktionen Rückschlüsse auf Grad oder Funktionsterm ziehen",
+        "titleEn": "Infer degree or expression from graphs of polynomial functions",
+        "descriptionDe": "Die lernende Person kann aus dem Graphen einer ganzrationalen Funktion, soweit möglich, Rückschlüsse auf den Grad der Funktion oder einen passenden Funktionsterm ziehen.",
+        "descriptionEn": "The learner can, where possible, infer the degree of a polynomial function or a fitting function expression from its graph."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-a.record-006",
+          "recordDigest": "sha256:15913d7d13b56f5610c4c4a1b45fd417fd15e695ca56641a65e71d8686bd4d56"
+        },
+        "second": {
+          "recordId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-b.batch-001-run-b.goal-006",
+          "recordDigest": "sha256:a0b4a440d78547dd06d6a50275e784a944d5da07686a14954a2c862f5a44925e"
+        }
+      },
+      "rationaleDe": "Beide Runden belassen den vorsichtigen Rückschluss von einem Polynomgraphen auf mögliche Grade oder Terme bei „soweit möglich“. Die erste Evidenzkette verlangt begründete Einschränkungen und benennt die fehlende Eindeutigkeit einer endlichen Zeichnung; die aktuelle Originalbildbindung wird gesondert auf Seite und Bytes geprüft und ersetzt keinen Lernnachweis.",
+      "rationaleEn": "Both rounds retain the cautious inference from a polynomial graph to possible degrees or expressions only where supported. The first evidence chain requires justified constraints and names the lack of uniqueness from a finite drawing; the current original-image binding is checked separately against the page and bytes and does not replace learner evidence."
+    },
+    {
+      "decisionId": "math-m7-unregistered-eight-six-keep-partial-v1-decision-005",
+      "goalId": "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:049350d49e77e15be335a2979773ca4a389619d0ada116d9a87112863adc9c33",
+      "pageFingerprint": "sha256:8d7f2e0ad0089348c9811e59a34f88f0722d1718527b4b783ee92a08268ae324",
+      "goalReviewContextFingerprint": "sha256:2e41014358be4884216f62b4f601f6b03ea94801bef1a0c8a3fc3f6afaeb150b",
+      "finalText": {
+        "titleDe": "Die Zahlbereichserweiterung zu komplexen Zahlen mathematisch begründen (LK)",
+        "titleEn": "Justify the extension to complex numbers mathematically (advanced course)",
+        "descriptionDe": "Die lernende Person kann anhand einer in $\\mathbb{R}$ unlösbaren Gleichung erklären, welches mathematische Problem durch die Erweiterung zu $\\mathbb{C}$ gelöst wird.",
+        "descriptionEn": "Using an equation with no solution in $\\mathbb{R}$, the learner can explain the mathematical problem solved by extending the number system to $\\mathbb{C}$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-a.record-007",
+          "recordDigest": "sha256:3be7ca1357ab6e95430a2826eaaef5877020f6dd4c2251e296f1bdc82446997f"
+        },
+        "second": {
+          "recordId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-b.batch-001-run-b.goal-007",
+          "recordDigest": "sha256:6385be2962b753d1e15cb8cf80cec1db62a2a5255db9b94f0e733c4e82f17a95"
+        }
+      },
+      "rationaleDe": "Beide Runden verankern die mathematische Begründung der komplexen Zahlen in einer über den reellen Zahlen unlösbaren Gleichung und halten die Fachgeschichte beim getrennten Nachbarziel. Die erste Evidenzkette prüft dieselbe Zahlbereichsgrenze an einer erst nach quadratischer Ergänzung erkennbaren Struktur.",
+      "rationaleEn": "Both rounds anchor the mathematical reason for complex numbers in an equation unsolvable over the reals and leave the history to its separate neighboring goal. The first evidence chain tests the same number-system limitation in a structure exposed only after completing the square."
+    },
+    {
+      "decisionId": "math-m7-unregistered-eight-six-keep-partial-v1-decision-006",
+      "goalId": "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fb041587b46b6fe78f4473584207a1cb0c59b52bec8aa501028950b4b8e91b18",
+      "pageFingerprint": "sha256:a8cf0aec8885de76b47347b048f1ddb06f4f81edce98e4ce98cdf8b0e107ff25",
+      "goalReviewContextFingerprint": "sha256:d4a7255c8d69858daf5468495df140f140aa8f171d41c6abd439ed6088c87ac2",
+      "finalText": {
+        "titleDe": "Die kulturhistorische Bedeutung komplexer Zahlen einordnen (LK)",
+        "titleEn": "Contextualise the cultural and historical significance of complex numbers (advanced course)",
+        "descriptionDe": "Die lernende Person kann an einem fachhistorisch belegten Entwicklungsschritt erläutern, wie komplexe Zahlen von formalen Rechenhilfen zu einem anerkannten mathematischen Zahlbereich wurden.",
+        "descriptionEn": "Using a documented historical development, the learner can explain how complex numbers developed from formal calculation aids into an accepted mathematical number system."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-a.record-008",
+          "recordDigest": "sha256:323b1478eea27ef089378a1d928aa49a94e3740537623b74bbb74877eb31d977"
+        },
+        "second": {
+          "recordId": "mathematik-m7-unregistered-eight-seki-j10-q4-current-20260923-v1-first-pass-b.batch-001-run-b.goal-008",
+          "recordDigest": "sha256:6985647a71c13fd618582c0ee7a51c813ed5d957ad67836f287226663b028a93"
+        }
+      },
+      "rationaleDe": "Beide Runden halten den belegten fachhistorischen Entwicklungsschritt und die Unterscheidung zwischen formaler Rechenhilfe und anerkanntem Zahlbereich für ein eigenes begrenztes Ziel. Die erste Evidenzkette bindet Erklärung und Transfer an vorgelegte Belege, ohne aus dem curricularen sourceRef eine konkrete historische Tatsachenprüfung abzuleiten.",
+      "rationaleEn": "Both rounds retain a documented historical development and the distinction between a formal calculation aid and an accepted number system as one bounded goal. The first evidence chain ties explanation and transfer to supplied sources without treating the curricular sourceRef as verification of a specific historical claim."
+    }
+  ],
+  "manifestFingerprint": "sha256:caa7d6e084d67aae5f398a9df1e454bfd30839687cfc434c89ccfc6e2a33d6f8"
+}

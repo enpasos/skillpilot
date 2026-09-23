@@ -8,48 +8,30 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `6fc9246a-9448-4cdb-b627-cf20ea1c65d3.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/6fc9246a-9448-4cdb-b627-cf20ea1c65d3/6fc9246a-9448-4cdb-b627-cf20ea1c65d3.jpg`
+- Quellbild: `6fc9246a-9448-4cdb-b627-cf20ea1c65d3.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/6fc9246a-9448-4cdb-b627-cf20ea1c65d3/6fc9246a-9448-4cdb-b627-cf20ea1c65d3.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Use case: scientific-educational.
+Asset type: new replacement PNG for a German upper-secondary mathematics learning goal. Image 1 is a STYLE REFERENCE only for the warm orange/blue two-panel friendly comic treatment and large typography; do NOT copy its left-side perspective plane or axes.
 
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Create a simple, correct, mobile-readable wide illustration. Exactly two equal panels, orange left and blue right. No little captions or decorative icons. Large bold black text, generous whitespace, crisp flat comic lines, no photorealism.
 
-Titel: Lineare Abhängigkeit und Unabhängigkeit von Vektoren prüfen
-Beschreibung: Die lernende Person kann entscheiden, ob Vektoren linear abhängig oder unabhängig sind, die Entscheidung rechnerisch begründen und die geometrische Bedeutung erläutern.
+LEFT orange panel: title exactly "LINEAR ABHÄNGIG". Use a FLAT, ORTHOGONAL 2D coordinate grid to depict the plane z=0, not a perspective 3D plane. Draw black x-axis horizontal to the right and black y-axis vertical upward, with a single common origin. Draw blue vector a=(1,0,0) exactly rightward along the black x-axis by one grid unit; draw red vector b=(0,1,0) exactly upward along the black y-axis by the SAME grid unit; draw purple vector c=(1,1,0) diagonally from that same origin to the grid intersection (1,1). Draw a tiny dashed horizontal/vertical unit-square guide if useful, but no extra vector arrows. The diagonal purple arrow's endpoint must be the vector sum of the blue and red arrows. Below the grid, write these two exact, large text rows:
+"a=(1,0,0)   b=(0,1,0)   c=(1,1,0)"
+"c=a+b     a+b-c=0"
+At the bottom show the orange conclusion "ABHÄNGIG".
 
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Lineare Abhaengigkeit und Unabhaengigkeit von Vektoren im Raum pruefen.
-- Zeige zwei nebeneinanderliegende Pruefkaesten.
-- Kasten 1: linear abhaengig.
-  a = (1,0,0), b = (0,1,0), c = (1,1,0).
-  Rechnung: c = a + b.
-  Nullkombination: a + b - c = 0 mit nicht allen Koeffizienten 0.
-  Geometrie: alle drei Vektoren liegen in derselben Ebene z=0.
-- Kasten 2: linear unabhaengig.
-  e1 = (1,0,0), e2 = (0,1,0), e3 = (0,0,1).
-  Aussage: x*e1 + y*e2 + z*e3 = 0 nur fuer x = y = z = 0.
-  Geometrie: drei Raumrichtungen, nicht in einer gemeinsamen Ebene durch eine Linie.
-- Stelle die beiden Entscheidungen deutlich als "abhaengig" und "unabhaengig" dar.
+RIGHT blue panel: title exactly "LINEAR UNABHÄNGIG". Draw black 3D coordinate axes from one origin: x toward lower left, y toward lower right, z straight up. Draw blue e₁ exactly along the +x axis, red e₂ exactly along +y, green e₃ exactly along +z, all from that origin. All three basis arrows have distinct directions. Below the axes, write these two exact, large text rows:
+"e₁=(1,0,0)   e₂=(0,1,0)   e₃=(0,0,1)"
+"x·e₁+y·e₂+z·e₃=0  ⇒  x=y=z=0"
+At the bottom show the blue conclusion "UNABHÄNGIG".
 
-Vermeiden:
-- Nicht behaupten, dass a, b, c unabhaengig sind; sie sind abhaengig, weil c=a+b.
-- Nicht behaupten, dass e1, e2, e3 abhaengig sind; sie sind unabhaengig.
-- Keine falsche Nullkombination mit nur Nullen als Beweis fuer Abhaengigkeit.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Keep every arrow precisely aligned with its own labeled coordinate axis and every visible digit/formula correct. In particular, LEFT red b is vertical on vertical y-axis, NOT on the z-axis; LEFT purple c goes to (1,1), not along either single axis. No additional math claims or notes, no watermark.
 ```
 
 ## Review-Notiz

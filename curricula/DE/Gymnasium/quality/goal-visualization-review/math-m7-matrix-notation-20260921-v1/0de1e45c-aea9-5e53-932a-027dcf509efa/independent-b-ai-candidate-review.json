@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-goal-visualization-candidate-review",
+  "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+  "reviewer": "codex-independent-current-matrix-visual-review-b-20260922",
+  "reviewerAgent": "/root/math_repaired12_blind_b",
+  "model": "Codex; exact serving model identifier not exposed",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "decision": "keep",
+  "reviewedAt": "2026-09-21T22:21:33.615Z",
+  "actualVisualInspection": true,
+  "inspectionMethod": "view_image with detail=original on the exact local candidate.png; current canonical goal title/DE/EN wording read separately; mathematical and geometric assertions checked manually, with arithmetic recalculation for matrix powers.",
+  "independentOfRootVerdict": true,
+  "imagePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/0de1e45c-aea9-5e53-932a-027dcf509efa/candidate.png",
+  "imageSha256": "sha256:bea47985c63aa48992058ab3d688b91e8d05fb5d2123f70ec255ce0093320fff",
+  "imageDimensions": {
+    "width": 1536,
+    "height": 1024
+  },
+  "currentGoalTitle": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+  "checks": [
+    {
+      "aspect": "Matrix und Konvention",
+      "finding": "Die Spalten von M sind (0.8,0.2)^T und (0.3,0.7)^T: im Bild ausdrücklich Spalten von A/von B und Zeilen nach A/nach B; jede Spalte summiert sich zu 1. Zeilenweise lautet M=[[0.8,0.3],[0.2,0.7]]."
+    },
+    {
+      "aspect": "Potenz und Zustandsrechnung",
+      "finding": "M²=[[0.70,0.45],[0.30,0.55]] und M²·(0.8,0.2)^T=(0.65,0.35)^T stimmen; M² wird korrekt als zwei Übergänge erklärt."
+    },
+    {
+      "aspect": "Langfristige Aussage",
+      "finding": "(0.6,0.4)^T ist Fixvektor. Für diesen Start gilt a_n=0.6+0.2·0.5^n und b_n=0.4−0.2·0.5^n, daher der gezeigte Grenzzustand. Die monatlich gleichen Übergänge und die Begrenzung 'in diesem Modell' sind sichtbar; kein beliebiges Übergangsmodell wird pauschal als konvergent ausgegeben."
+    },
+    {
+      "aspect": "Geometrisch/quantitativ kodierte Aussagen",
+      "finding": "Die drei unteren Kästen sind ausdrücklich numerische Zustandskarten, keine unterteilten Balken oder Flächenproportionen. 80/20, 65/35 und 60/40 sind klar notiert. Die Kästen kodieren keine widersprechenden Anteilsflächen; der Pfeil markiert Entwicklung und keine zusätzliche Matrixmultiplikation mit dem Zweimonatszustand."
+    },
+    {
+      "aspect": "Lesbarkeit und Zielpassung",
+      "finding": "Matrixeinträge, Exponent 2/n, Vektorindizes, Monatsangabe und Prozentzahlen sind beim tatsächlichen Originalbild gut lesbar. Die Darstellung verbindet Potenz, Zwischenzustand und langfristige Deutung; die Figur verdeckt keinen Inhalt. Kein fachlich nötiger Änderungsbefund."
+    }
+  ],
+  "blockingFindings": [],
+  "requestedChanges": [],
+  "providerMetadata": {
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "tool": "image_gen__imagegen",
+    "exactServingModel": "not exposed",
+    "source": "generation-and-root-review.json; only provider/tool/model fields read after independent verdict; no rootChecks consumed"
+  },
+  "scopeLimits": [
+    "This is an independent AI candidate image review, not human approval or a human trial.",
+    "No canonical import, QA ledger mutation, page/evidence rebinding, or production acceptance performed.",
+    "KEEP covers the viewed exact PNG bytes; subsequent byte changes require a fresh binding/review.",
+    "Generation provenance is separate from visible correctness; no unexposed model identity or model diversity claimed."
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:a2ae144e8cff16518bba0a57ff2a57f7aaaaba7ed34eefe61c41c35923223fc0",
+  "reviewInputFingerprint": "sha256:d0fd45cab7f27f9c1f372a0c4323c3c87734bbc479062affdadc1fa0726a62ad",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-a",
+      "roundId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-b",
+      "roundId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex; exact serving model identifier not exposed::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+      "firstRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a.record-001",
+      "secondRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b.001",
+      "firstRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a",
+      "secondRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+      "firstRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a.record-002",
+      "secondRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b.002",
+      "firstRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a",
+      "secondRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "78bfbde4-8e16-529e-bd53-4e29d960b2b2",
+      "firstRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a.record-003",
+      "secondRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b.003",
+      "firstRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a",
+      "secondRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
+      "firstRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a.record-004",
+      "secondRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b.004",
+      "firstRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a",
+      "secondRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
+      "firstRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a.record-005",
+      "secondRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b.005",
+      "firstRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a",
+      "secondRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+      "firstRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a.record-006",
+      "secondRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b.006",
+      "firstRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a",
+      "secondRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+      "firstRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a.record-007",
+      "secondRecordId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b.007",
+      "firstRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-a.batch-001.codex-a",
+      "secondRunId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1-first-pass-b.batch-001.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

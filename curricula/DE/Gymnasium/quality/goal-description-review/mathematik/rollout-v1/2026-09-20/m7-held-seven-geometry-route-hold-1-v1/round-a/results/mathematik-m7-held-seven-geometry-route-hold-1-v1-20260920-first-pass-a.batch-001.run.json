@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-a.batch-001.independent-a",
+  "campaignId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-a",
+  "roundId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-a",
+  "batchId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:fe4558b4977b0e0fe2ad49463ab34f1755e27c5a4a1b32a9b28ce879ea6afdc5",
+  "bundleFingerprint": "sha256:9866d98025b9eef84ea8aa27d996c951702312544a520c3558ed3dc9869c5080",
+  "bookDigest": "sha256:97ef02724400f0f73c056b7528b7749438de8069e33f3686084fdbb4d36824f6",
+  "provider": "OpenAI",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:f23510b9f53af53793711b5342034a6b20b9b3fed4c017fee935929c1fc20b80",
+  "independenceGroupId": "mathematik-m7-held-seven-geometry-route-hold-1-v1-20260920-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "4af3dfb9-7e15-5da5-8b86-0aac6c80e266"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:fe4558b4977b0e0fe2ad49463ab34f1755e27c5a4a1b32a9b28ce879ea6afdc5"
+    }
+  ],
+  "startedAt": "2026-09-21T21:08:50Z",
+  "completedAt": "2026-09-21T21:10:54Z",
+  "status": "completed",
+  "outputDigest": "sha256:ce0cae713b731d99238a5903e9120c8ba14000e2dab4288a5f65dd8ed4640bf8",
+  "toolchainVersion": "skillpilot-app-0.0.0"
+}

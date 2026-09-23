@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:8d08b8040ebab0027598cab00505f663f249093a625c3e76cd3d8cd165820e7e",
+  "reviewInputFingerprint": "sha256:622af64242f3a38534447d17b1032a14aa5aa66461aaa2cd2be1eb351c4a56ef",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-a",
+      "roundId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-independent-a",
+      "runIds": [
+        "math-m7-plane-angle-direction-v2-round-a-root-20260923"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::OpenAI Codex (exact model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-b",
+      "roundId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-independent-b",
+      "runIds": [
+        "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-first-pass-b.batch-001.codex-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex agent; exact model identifier and sampling parameters not exposed; independent blind round B, no different-model claim::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "bda6a659-9640-53a5-8be0-24705ab623ef",
+      "firstRecordId": "math-m7-plane-angle-direction-v2-round-a-root-20260923-goal-01",
+      "secondRecordId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-first-pass-b.batch-001.codex-b.001",
+      "firstRunId": "math-m7-plane-angle-direction-v2-round-a-root-20260923",
+      "secondRunId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-first-pass-b.batch-001.codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "kind": "firsthand-image-generation-provenance",
+  "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+  "recordedAt": "2026-09-21T21:32:35.572Z",
+  "generatedOn": "2026-09-21",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactModelRevision": null,
+  "exactModelRevisionNote": "The tool did not expose a serving model revision.",
+  "resultId": "exec-9816cbf8-f33e-4491-9d3d-8d5dad897e00",
+  "actualToolPrompt": {
+    "path": "correction-prompt-v2.md",
+    "sha256": "sha256:da4abe6956e58ac90dea479a2c8717df6611a3e4b73dec90d8725bf73ce8a594"
+  },
+  "standaloneReconstructionPrompt": {
+    "path": "prompt.md",
+    "sha256": "sha256:3ba5fcd2e9cd31a85e4f72d5500720ea1834c2163344f480ffddea2c39e02bbb"
+  },
+  "reference": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-proof-holds-20260921-v1/1e164a09-0a2b-55ab-b927-08a4a278f72b/rejected-dark-background-v1.png",
+    "sha256": "sha256:98be7e99580a85651b19d8bb40f2d65647753da4d0b31155f0941ebc53aad289",
+    "actuallyInspectedBeforeEditing": true
+  },
+  "referenceStrategy": "New PNG generated from the standalone prompt; then the actual first output was used as an edit reference to replace its dark background with an opaque off-white background. No programmatic image construction or editing.",
+  "candidate": {
+    "path": "candidate.png",
+    "sha256": "sha256:2438afe2cc49365310dde78cd39a3a13bbe1360b4dc9a994ff00e88792b8bb2e"
+  },
+  "activeAsset": {
+    "path": "app/public/assets/goal-visualizations/mathematik/1e164a09-0a2b-55ab-b927-08a4a278f72b/1e164a09-0a2b-55ab-b927-08a4a278f72b.png",
+    "sha256": "sha256:2438afe2cc49365310dde78cd39a3a13bbe1360b4dc9a994ff00e88792b8bb2e"
+  },
+  "rootDecision": "accepted_pilot",
+  "rootReviewNotes": "Root actually inspected both outputs. Four correct integer cases test n(n+1): (-2)(-1)=2, 0*1=0, 1*2=2, 5*6=30. The conclusion explicitly distinguishes supporting examples from proof and states that one counterexample would refute the claim. Friendly abstract comic, clear pastel cards; no learner-performance or human approval claimed.",
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": "not_performed",
+  "generationIsNotApproval": true,
+  "independentReviewPath": "independent-review.json",
+  "priorAttempt": {
+    "resultId": "exec-9271a332-71df-4cb0-978e-41ae501a8dc5",
+    "prompt": {
+      "path": "prompt.md",
+      "sha256": "sha256:3ba5fcd2e9cd31a85e4f72d5500720ea1834c2163344f480ffddea2c39e02bbb"
+    },
+    "candidate": {
+      "path": "rejected-dark-background-v1.png",
+      "sha256": "sha256:98be7e99580a85651b19d8bb40f2d65647753da4d0b31155f0941ebc53aad289"
+    },
+    "decision": "rejected",
+    "reason": "Unexpected dark background impaired black title text readability. The second tool call corrects that observed defect."
+  }
+}

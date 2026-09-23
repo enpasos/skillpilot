@@ -1,0 +1,40 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-b-run-001",
+  "campaignId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-b",
+  "roundId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-b",
+  "batchId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:777136b0d2d54aad16e4ed6a4aeea74191e4cadfb5416db80cd662875031b193",
+  "bundleFingerprint": "sha256:121b39b75c20c5da4f706ee1db89b0d0b2c7354f71a16b670962b41e39204b75",
+  "bookDigest": "sha256:b5e48ae230dfafbfd07cb6a375fcc3c1a17e40c8558e1a2b564249f5df22023d",
+  "provider": "OpenAI",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:4c9258caa4de4094f73d5346360851a8b025f907abacfb20be00c2cba454f65a",
+  "independenceGroupId": "mathematik-m7-j10-factor-times-png-delta-20260923-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": ["c19d1f8f-b297-5a58-b1d4-26d811e4aff4"],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:777136b0d2d54aad16e4ed6a4aeea74191e4cadfb5416db80cd662875031b193"
+    }
+  ],
+  "startedAt": "2026-09-23T09:10:52Z",
+  "completedAt": "2026-09-23T09:12:09Z",
+  "status": "completed",
+  "outputDigest": "sha256:e17d13e65982ef5a677058707bf680f7c9788fafe736280e34fcf9ece759af89",
+  "toolchainVersion": "skillpilot-description-review-v2"
+}

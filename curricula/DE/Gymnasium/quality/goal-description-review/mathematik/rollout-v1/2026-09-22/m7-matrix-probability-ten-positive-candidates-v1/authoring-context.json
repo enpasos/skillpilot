@@ -1,0 +1,980 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "unmaterialized-positive-profile-authoring-context",
+  "createdAt": "2026-09-21T22:41:32Z",
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "authoringMode": "informed-reuse-of-original-a-b-understanding-evidence",
+  "finalMaterialization": false,
+  "registered": false,
+  "resourceBindingsFinal": false,
+  "bindingNote": "Native goal/profile fingerprints cover authored semantics and profile content only. No reviewInputFingerprint, asset binding, current D/V approval, human approval, learner performance or real-host acceptance is asserted.",
+  "triageSource": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/held-current-triage-v1.json",
+    "sha256": "sha256:c124169fd444199bfd605351e0ba2384db220b8f3d064aa57423d4c3b025b869",
+    "note": "Historical task-routing and draft-reuse evidence only; not a claim that old image/scope findings remain current."
+  },
+  "goals": [
+    {
+      "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:05e5b88c3553d4e6240c61d1216bc975ad865b79694b478793bc4be48c79acea",
+      "profileFingerprint": "sha256:cd62955b3c51bcd67d7b6dfe9d2cb4281cb4b4391f43878191bb40ada4861934",
+      "currentGoal": {
+        "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+        "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+        "titleEn": "Use matrix powers for long-term transition processes (advanced course)",
+        "description": "Die lernende Person kann Potenzen von Übergangsmatrizen nutzen, um langfristige Entwicklungen von Übergangsprozessen zu untersuchen und Zwischenergebnisse im Kontext zu deuten.",
+        "descriptionEn": "The learner can use powers of transition matrices to analyze long-term developments of transition processes and interpret intermediate results in context.",
+        "requires": [
+          "33c6e64c-5955-5b07-85d4-74a97b19dd56",
+          "10a33d93-dc20-5edd-ae3b-32338d05407c"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.4.LONG_TERM_MATRIX_POWERS_LK"
+        }
+      },
+      "parents": [
+        {
+          "id": "0a024ecf-27ee-40a2-bf41-0e2faaeb1252",
+          "title": "Fixvektoren, stabile Zustände und Langzeitverhalten",
+          "titleEn": "Fixed Vectors, Stable States, and Long-Term Behavior",
+          "description": "Fixvektoren als stabile Verteilungen bestimmen und das langfristige Verhalten von Übergangsprozessen mithilfe von Matrixpotenzen und Grenzbetrachtungen untersuchen.",
+          "descriptionEn": "Determine fixed vectors as stable distributions and investigate the long-term behavior of transition processes using matrix powers and limit considerations."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "33c6e64c-5955-5b07-85d4-74a97b19dd56",
+          "title": "Matrixpotenzen in Übergangsprozessen deuten",
+          "titleEn": "Interpret matrix powers in transition processes",
+          "description": "Die lernende Person kann Matrixpotenzen berechnen, Matrixeinträge bei Potenzen wie $M^2$ bestimmen und interpretieren sowie erläutern, welche Aussagen daraus über mehrschrittige Übergangsprozesse folgen.",
+          "descriptionEn": "The learner can calculate powers of matrices, determine and interpret entries of powers such as $M^2$, and explain what they imply for multi-step transition processes."
+        },
+        {
+          "id": "10a33d93-dc20-5edd-ae3b-32338d05407c",
+          "title": "Zustände in Markov-Ketten vorwärts berechnen und deuten",
+          "titleEn": "Calculate and interpret forward state developments in Markov chains",
+          "description": "Die lernende Person kann Zustandsentwicklungen in Markov-Ketten mit Anfangsvektor und Übergangsmatrix vorwärts berechnen und die Ergebnisse als Verteilungen deuten.",
+          "descriptionEn": "The learner can calculate state developments in Markov chains forward using an initial vector and transition matrix and interpret the results as distributions."
+        }
+      ],
+      "triageDraftReuse": {
+        "historicalFinding": "Q2.4 b05 a01 is explicitly LK, but this goal is still a target in all four HE-GK views. No active image; deferred_provider_limitation is not V closure.",
+        "plannedFollowup": "Repair only the evidenced HE Q2.4 target selection/source-context binding, retain LK competence and other jurisdictions; provide an appropriate actual image if V remains applicable. New contextual D and current P follow.",
+        "positiveEvidenceReuse": "No registered P owner; create/materialize and independently review a current profile. Old understandingEvidence may seed the content, not supply approval or an automatic hash rebind."
+      },
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-a/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:1d9234c75e599f38ebfa0d2ec8c48c9ff68a42c59d9600f1c90867cfb4968520",
+          "sourceRecordLineSha256": "sha256:64b5e2b2e4683cafa8b70639cf3e90ee5de34a022f5a1b1335f18dfc34a80fe1",
+          "recordId": "math-b046-round-a-20260907T155921Z-ci-integration.0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine feste Übergangsmatrix beschreibt denselben Schritt wiederholt; M^n fasst n Übergänge zusammen, und M^n v0 bleibt im gewählten Zustandsmodell deutbar.",
+            "essentialUnderstandingEn": "A fixed transition matrix repeats the same step; M^n combines n transitions, and M^n v0 retains meaning in the chosen state model.",
+            "observablePerformanceDe": "Die lernende Person vergleicht selbst berechnete Zustände nach unterschiedlich vielen Schritten, erklärt ihre Komponenten und unterscheidet beobachtete Stabilisierung von einem bewiesenen Grenzwert.",
+            "observablePerformanceEn": "The learner compares independently computed states after different numbers of steps, explains their components, and distinguishes observed stabilization from a proved limit.",
+            "transferExpectationDe": "Für einen veränderten Anfangszustand oder einen periodischen statt stabilisierenden Übergang erklärt sie, wie sich die Langzeitentwicklung verändert.",
+            "transferExpectationEn": "For a changed initial state or a periodic rather than stabilizing transition, the learner explains how long-term development changes."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-b/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:ecf7433ffaf3688a110bed07544a01f7135e282ae7f7cb8796785dcf9c4bc75d",
+          "sourceRecordLineSha256": "sha256:699fb25ec4c6662ea393fae85ecf481775e4028881102f5f97367a9353f35f33",
+          "recordId": "codex-root-math-b046-current-blind-b-20260907.0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine Potenz M^n beschreibt n aufeinanderfolgende gleichartige Übergänge; Anfangsverteilung und Schrittzahl bestimmen den Zustand.",
+            "essentialUnderstandingEn": "A power M^n represents n consecutive transitions under the same rule; the initial distribution and step count determine the state.",
+            "observablePerformanceDe": "Berechnet Zustände für mehrere Zeithorizonte, erklärt den Bezug der Einträge zu Zuständen und prüft die Erhaltung der Gesamtheit.",
+            "observablePerformanceEn": "Calculates states over several time horizons, explains how entries relate to states, and checks conservation of the total.",
+            "transferExpectationDe": "Vergleicht einen stabilisierenden Übergang mit einem periodischen Wechsel und begründet, weshalb große Schrittzahlen nicht stets denselben Zustand erzeugen.",
+            "transferExpectationEn": "Compares a stabilising transition with a periodic switch and explains why large step counts need not produce the same state."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:82c1557e51912e482af963fc9606572b79c6cf52d6edd51729fc91a639c74982",
+      "profileFingerprint": "sha256:fa597ed404eeae03218118fed4e04aa486bd2947309c077bdb5654d51e08ecfb",
+      "currentGoal": {
+        "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+        "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+        "titleEn": "Interpret limiting processes and limiting matrices (advanced course)",
+        "description": "Die lernende Person kann Grenzprozesse bei Potenzen von Übergangsmatrizen untersuchen, Grenzmatrizen interpretieren und ihre Bedeutung für stabile Langzeitentwicklungen erläutern.",
+        "descriptionEn": "The learner can analyze limiting processes of powers of transition matrices, interpret limiting matrices, and explain their meaning for stable long-term developments.",
+        "requires": [
+          "0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.3",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.4.LIMIT_PROCESSES_LIMIT_MATRICES_LK"
+        }
+      },
+      "parents": [
+        {
+          "id": "0a024ecf-27ee-40a2-bf41-0e2faaeb1252",
+          "title": "Fixvektoren, stabile Zustände und Langzeitverhalten",
+          "titleEn": "Fixed Vectors, Stable States, and Long-Term Behavior",
+          "description": "Fixvektoren als stabile Verteilungen bestimmen und das langfristige Verhalten von Übergangsprozessen mithilfe von Matrixpotenzen und Grenzbetrachtungen untersuchen.",
+          "descriptionEn": "Determine fixed vectors as stable distributions and investigate the long-term behavior of transition processes using matrix powers and limit considerations."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+          "titleEn": "Use matrix powers for long-term transition processes (advanced course)",
+          "description": "Die lernende Person kann Potenzen von Übergangsmatrizen nutzen, um langfristige Entwicklungen von Übergangsprozessen zu untersuchen und Zwischenergebnisse im Kontext zu deuten.",
+          "descriptionEn": "The learner can use powers of transition matrices to analyze long-term developments of transition processes and interpret intermediate results in context."
+        },
+        {
+          "id": "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+          "title": "Stabile Zustände mithilfe von Fixvektoren bestimmen",
+          "titleEn": "Determine stable states using fixed vectors",
+          "description": "Die lernende Person kann für eine Übergangsmatrix Fixvektoren bestimmen, sie als stabile Verteilungen interpretieren und im Kontext des zugrunde liegenden Prozesses deuten.",
+          "descriptionEn": "The learner can determine fixed vectors for a transition matrix, interpret them as stable distributions, and interpret them in the context of the underlying process."
+        }
+      ],
+      "triageDraftReuse": {
+        "historicalFinding": "Q2.4 b05 a02 explicitly LK still appears in four HE-GK target sets; vertical fixed vector also carries T, making M·g dimensionally invalid.",
+        "plannedFollowup": "Repair HE Q2.4 scope and remove erroneous transpose on the already vertical vector. Keep correct matrix arithmetic; review final image and affected D/P context.",
+        "positiveEvidenceReuse": "No registered P owner; create/materialize and independently review a current profile. Old understandingEvidence may seed the content, not supply approval or an automatic hash rebind."
+      },
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-a/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:1d9234c75e599f38ebfa0d2ec8c48c9ff68a42c59d9600f1c90867cfb4968520",
+          "sourceRecordLineSha256": "sha256:fb37fbcadf55d6cc83e380862155102e9f29bc21b93be0e0dda9c0ad29c9735d",
+          "recordId": "math-b046-round-a-20260907T155921Z-ci-integration.922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Ein Grenzwert von Matrixpotenzen beschreibt langfristige Übergangswirkungen; ein stationärer Vektor allein beweist weder die Existenz einer Grenzmatrix noch Startunabhängigkeit.",
+            "essentialUnderstandingEn": "A limit of matrix powers describes long-term transition effects; a stationary vector alone proves neither existence of a limiting matrix nor independence of the initial state.",
+            "observablePerformanceDe": "Die lernende Person deutet Zeilen oder Spalten gemäß der gewählten Konvention und zeigt an verschiedenen Startzuständen, welche Information eine gegebene Grenzmatrix erhält oder verliert.",
+            "observablePerformanceEn": "The learner interprets rows or columns according to the chosen convention and shows with different initial states what information a given limiting matrix retains or loses.",
+            "transferExpectationDe": "Sie kontrastiert eine konvergierende Kette mit einem wechselnden oder mehrfach abgeschlossenen System und begründet, welche Langzeitaussage jeweils möglich bleibt.",
+            "transferExpectationEn": "The learner contrasts a convergent chain with an alternating system or one having multiple closed classes and justifies which long-term statement remains possible."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-b/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:ecf7433ffaf3688a110bed07544a01f7135e282ae7f7cb8796785dcf9c4bc75d",
+          "sourceRecordLineSha256": "sha256:e34d6b0b2543216fb5bef7c0c1dadfd57cd5da98c3c4e09c946abeb82df1c2a8",
+          "recordId": "codex-root-math-b046-current-blind-b-20260907.922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine Grenzmatrix ist ein Grenzwert der Matrixpotenzen; stationäre Vektoren allein garantieren weder Konvergenz noch Unabhängigkeit vom Anfangszustand.",
+            "essentialUnderstandingEn": "A limiting matrix is a limit of matrix powers; stationary vectors alone guarantee neither convergence nor independence from the initial state.",
+            "observablePerformanceDe": "Deutet die Spalten einer gegebenen Grenzmatrix über Anfangszustände und unterscheidet einen Fixvektor vom Grenzwert einer ganzen Matrixfolge.",
+            "observablePerformanceEn": "Interprets the columns of a given limiting matrix through initial states and distinguishes a fixed vector from a limit of the matrix sequence.",
+            "transferExpectationDe": "Erkennt beim Wechsel zu periodischen Übergängen oder mehreren abgeschlossenen Klassen Grenzen einer startunabhängigen Langzeitaussage.",
+            "transferExpectationEn": "Recognises limits of an initial-state-independent conclusion when transitions become periodic or have several closed classes."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "4c494716-567b-59c2-855c-6ea45635c666",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:08e7eab9a182521885efa834bbabd5dd5681cbd6ba866a924f3e14df7ca9fe3b",
+      "profileFingerprint": "sha256:8cc165918ec05ad36298cf93fe0e5c5dcfaa5d6961fa6d411ea76fa7d4b5e56f",
+      "currentGoal": {
+        "id": "4c494716-567b-59c2-855c-6ea45635c666",
+        "title": "Geometrische Abbildungen mit Matrizen beschreiben",
+        "titleEn": "Describe geometric mappings with matrices",
+        "description": "Die lernende Person kann geometrische Abbildungen, etwa Schattenwürfe oder Projektionen, mithilfe von Matrizen beschreiben und die Matrixwirkung fachsprachlich deuten.",
+        "descriptionEn": "The learner can describe geometric mappings, such as shadows or projections, using matrices and explain the matrix action precisely.",
+        "requires": [
+          "69243680-c2c1-5661-80c0-c95a2be1dabf",
+          "6f09c97e-779b-500b-8092-3fb9696aa5bb"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.5.GEOMETRIC_MAPPINGS_WITH_MATRICES"
+        }
+      },
+      "parents": [
+        {
+          "id": "b3d2284c-21e0-5af8-942a-a4c11390c84a",
+          "title": "Lineare geometrische Abbildungen und Abbildungsmatrizen",
+          "titleEn": "Linear Geometric Mappings and Mapping Matrices",
+          "description": "Lineare geometrische Abbildungen wie Spiegelungen, Streckungen, Projektionen und Drehungen mit Matrizen darstellen, Bildpunkte berechnen, Abbildungsmatrizen bestimmen und Zusammensetzungen als Matrixprodukte interpretieren.",
+          "descriptionEn": "Represent linear geometric mappings such as reflections, stretches, projections, and rotations with matrices, calculate image points, determine mapping matrices, and interpret compositions as matrix products."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+          "title": "Geometrische Abbildungen als linear erkennen",
+          "titleEn": "Recognize geometric mappings as linear",
+          "description": "Die lernende Person kann bei einer einfachen geometrischen Abbildung anhand der Verträglichkeit mit Vektoraddition und skalarer Multiplikation prüfen, ob sie linear ist.",
+          "descriptionEn": "The learner can determine whether a simple geometric mapping is linear by checking whether it preserves vector addition and scalar multiplication."
+        },
+        {
+          "id": "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+          "title": "Matrix-Vektor-Produkte berechnen",
+          "titleEn": "Calculate matrix-vector products",
+          "description": "Die lernende Person kann das Produkt einer Matrix mit einem Vektor bestimmen und das Ergebnis als neuen Zustandsvektor interpretieren.",
+          "descriptionEn": "The learner can compute the product of a matrix with a vector and interpret the result as a new state vector."
+        }
+      ],
+      "triageDraftReuse": {
+        "historicalFinding": "Same historical raster misplaces Q=(-1,2) on the y-axis and duplicates/misplaces P'=(5,0).",
+        "plannedFollowup": "Correct plotted points and consistent labels only; retain matrix-description competence, then review actual replacement and affected D/P.",
+        "positiveEvidenceReuse": "No registered P owner; create/materialize and independently review a current profile. Old understandingEvidence may seed the content, not supply approval or an automatic hash rebind."
+      },
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-a/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:1d9234c75e599f38ebfa0d2ec8c48c9ff68a42c59d9600f1c90867cfb4968520",
+          "sourceRecordLineSha256": "sha256:7984752c8c511c9842e7db5bfc0ee613b7b3765b3dc07f88dd7594e41a13746f",
+          "recordId": "math-b046-round-a-20260907T155921Z-ci-integration.4c494716-567b-59c2-855c-6ea45635c666",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Die Matrixspalten sind die Bilder der Basisvektoren; eine lineare Projektionswirkung verbindet Koordinatenänderungen mit der geometrischen Abbildung.",
+            "essentialUnderstandingEn": "The matrix columns are the images of basis vectors; a linear projection connects coordinate changes with the geometric mapping.",
+            "observablePerformanceDe": "Die lernende Person beschreibt eine gegebene Abbildungsmatrix geometrisch und erklärt an selbst bestimmten Bildpunkten, welche Koordinaten erhalten oder verändert werden.",
+            "observablePerformanceEn": "The learner describes a given mapping matrix geometrically and explains using independently determined image points which coordinates are retained or changed.",
+            "transferExpectationDe": "Für eine andere Projektionsrichtung oder Bildebene passt sie die Matrixbeschreibung an und prüft, ob die resultierenden Punkte in der geforderten Bildmenge liegen.",
+            "transferExpectationEn": "For a different projection direction or image plane, the learner adapts the matrix description and checks whether the resulting points lie in the required image set."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-b/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:ecf7433ffaf3688a110bed07544a01f7135e282ae7f7cb8796785dcf9c4bc75d",
+          "sourceRecordLineSha256": "sha256:263abab500c500d034ec9cc9c8f7de41718eab495a78dd50415389f4a2323bb6",
+          "recordId": "codex-root-math-b046-current-blind-b-20260907.4c494716-567b-59c2-855c-6ea45635c666",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Die Spalten einer linearen Abbildungsmatrix beschreiben Basisbilder; eine Projektion ordnet jedem Ortsvektor seinen Schattenpunkt zu.",
+            "essentialUnderstandingEn": "The columns of a linear mapping matrix describe basis images; a projection assigns each position vector its shadow point.",
+            "observablePerformanceDe": "Formuliert aus einer gegebenen linearen Schattenregel eine Matrix, berechnet Kontrollbilder und deutet die Veränderung der Koordinaten.",
+            "observablePerformanceEn": "Builds a matrix from a given linear shadow rule, calculates check images, and interprets the coordinate changes.",
+            "transferExpectationDe": "Passt bei veränderter Projektionsrichtung die Matrix an und erklärt, welche Koordinate verschwindet und welche sich abhängig von der Höhe ändert.",
+            "transferExpectationEn": "Adapts the matrix to a changed projection direction and explains which coordinate vanishes and which changes with height."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:532725faba60d71f68ef52c6b49afa068c4ff06c419fa50ea75d68d21d9d966a",
+      "profileFingerprint": "sha256:7ab34b263f8b48c41c83d3fa79d8e1bded78ecbea25441b319d44291f590a444",
+      "currentGoal": {
+        "id": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+        "title": "Bildpunkte mit Matrizen berechnen",
+        "titleEn": "Calculate image points with matrices",
+        "description": "Die lernende Person kann zu einer gegebenen Abbildungsmatrix Bildpunkte berechnen, indem sie Vektoren mit der Matrix multipliziert.",
+        "descriptionEn": "The learner can calculate image points for a given mapping matrix by multiplying vectors with the matrix.",
+        "requires": [
+          "69243680-c2c1-5661-80c0-c95a2be1dabf",
+          "6f09c97e-779b-500b-8092-3fb9696aa5bb"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        }
+      },
+      "parents": [
+        {
+          "id": "b3d2284c-21e0-5af8-942a-a4c11390c84a",
+          "title": "Lineare geometrische Abbildungen und Abbildungsmatrizen",
+          "titleEn": "Linear Geometric Mappings and Mapping Matrices",
+          "description": "Lineare geometrische Abbildungen wie Spiegelungen, Streckungen, Projektionen und Drehungen mit Matrizen darstellen, Bildpunkte berechnen, Abbildungsmatrizen bestimmen und Zusammensetzungen als Matrixprodukte interpretieren.",
+          "descriptionEn": "Represent linear geometric mappings such as reflections, stretches, projections, and rotations with matrices, calculate image points, determine mapping matrices, and interpret compositions as matrix products."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+          "title": "Geometrische Abbildungen als linear erkennen",
+          "titleEn": "Recognize geometric mappings as linear",
+          "description": "Die lernende Person kann bei einer einfachen geometrischen Abbildung anhand der Verträglichkeit mit Vektoraddition und skalarer Multiplikation prüfen, ob sie linear ist.",
+          "descriptionEn": "The learner can determine whether a simple geometric mapping is linear by checking whether it preserves vector addition and scalar multiplication."
+        },
+        {
+          "id": "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+          "title": "Matrix-Vektor-Produkte berechnen",
+          "titleEn": "Calculate matrix-vector products",
+          "description": "Die lernende Person kann das Produkt einer Matrix mit einem Vektor bestimmen und das Ergebnis als neuen Zustandsvektor interpretieren.",
+          "descriptionEn": "The learner can compute the product of a matrix with a vector and interpret the result as a new state vector."
+        }
+      ],
+      "triageDraftReuse": {
+        "historicalFinding": "Orange arrow visually maps P to R' although the matrix calculation shown is A R=R'.",
+        "plannedFollowup": "Correct arrow source/target and point labels; obtain an actual AI visual review (no current aiApproved entry), then affected D/P.",
+        "positiveEvidenceReuse": "No registered P owner; create/materialize and independently review a current profile. Old understandingEvidence may seed the content, not supply approval or an automatic hash rebind."
+      },
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-a/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:1d9234c75e599f38ebfa0d2ec8c48c9ff68a42c59d9600f1c90867cfb4968520",
+          "sourceRecordLineSha256": "sha256:5d54ff73615202006714dc9d9afd9b9bb964b365c25ee9a9c9b9365ed2b4a6bc",
+          "recordId": "math-b046-round-a-20260907T155921Z-ci-integration.4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Ein Bildpunkt entsteht aus der linearen Kombination der Matrixspalten mit den Koordinaten seines Ortsvektors; die Multiplikationsrichtung muss zur Vektorkonvention passen.",
+            "essentialUnderstandingEn": "An image point arises from a linear combination of the matrix columns using the coordinates of its position vector; multiplication order must match the vector convention.",
+            "observablePerformanceDe": "Die lernende Person berechnet Bildpunkte selbst und begründet das Ergebnis durch Koordinatenwirkung oder Basisbilder, einschließlich eines Punktes mit negativer oder verschwindender Komponente.",
+            "observablePerformanceEn": "The learner independently calculates image points and justifies the result through coordinate effects or basis images, including a point with a negative or zero component.",
+            "transferExpectationDe": "Sie wechselt von einer Scherung zu einer Projektion oder einer anderen Dimension und deutet, warum verschiedene Urbilder gegebenenfalls dasselbe Bild erhalten.",
+            "transferExpectationEn": "The learner switches from a shear to a projection or another dimension and interprets why different original points may acquire the same image."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-b/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:ecf7433ffaf3688a110bed07544a01f7135e282ae7f7cb8796785dcf9c4bc75d",
+          "sourceRecordLineSha256": "sha256:d8ac8ec5bf09f19f347467c608ff75362634b9a929d1b7846944c6fdd528152a",
+          "recordId": "codex-root-math-b046-current-blind-b-20260907.4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Ein Bildpunkt entsteht aus dem Matrixprodukt mit dem Ortsvektor; jede Zeile bestimmt eine Bildkoordinate und die Reihenfolge ist fest.",
+            "essentialUnderstandingEn": "An image point is obtained by multiplying the mapping matrix by its position vector; each row determines an image coordinate and order matters.",
+            "observablePerformanceDe": "Berechnet Bildkoordinaten samt Zeilen-Skalarprodukten, ordnet jedem Ausgangspunkt sein Bild zu und kontrolliert die geometrische Wirkung.",
+            "observablePerformanceEn": "Calculates image coordinates with row dot products, matches each original point to its image, and checks the geometric effect.",
+            "transferExpectationDe": "Bearbeitet eine singuläre Projektion statt einer Scherung und erklärt, warum verschiedene Ausgangspunkte dasselbe Bild haben können.",
+            "transferExpectationEn": "Handles a singular projection instead of a shear and explains why different original points can have the same image."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "b72d87d4-763e-54aa-940d-31f195b51700",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b107106de107b5e346357bf62b8023ae7a88fcb5e397175cbf2f3d76b2ccc886",
+      "profileFingerprint": "sha256:1f635308b63ec04945581d1f50eca6dfe55a234544bfe116e7a4da02542de865",
+      "currentGoal": {
+        "id": "b72d87d4-763e-54aa-940d-31f195b51700",
+        "title": "Orthogonale Spiegelungen an Koordinatenebenen mit Matrizen darstellen",
+        "titleEn": "Represent orthogonal reflections in coordinate planes with matrices",
+        "description": "Die lernende Person kann Abbildungsmatrizen für orthogonale Spiegelungen an den Koordinatenebenen bestimmen, untersuchen und Bildpunkte berechnen.",
+        "descriptionEn": "The learner can determine and analyze mapping matrices for orthogonal reflections in coordinate planes and calculate image points.",
+        "requires": [
+          "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+          "4d331ba0-56d6-5730-a51b-e3d1126b31ba"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        }
+      },
+      "parents": [
+        {
+          "id": "b3d2284c-21e0-5af8-942a-a4c11390c84a",
+          "title": "Lineare geometrische Abbildungen und Abbildungsmatrizen",
+          "titleEn": "Linear Geometric Mappings and Mapping Matrices",
+          "description": "Lineare geometrische Abbildungen wie Spiegelungen, Streckungen, Projektionen und Drehungen mit Matrizen darstellen, Bildpunkte berechnen, Abbildungsmatrizen bestimmen und Zusammensetzungen als Matrixprodukte interpretieren.",
+          "descriptionEn": "Represent linear geometric mappings such as reflections, stretches, projections, and rotations with matrices, calculate image points, determine mapping matrices, and interpret compositions as matrix products."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+          "title": "Abbildungsmatrix aus Basisbildern bestimmen",
+          "titleEn": "Determine mapping matrix from basis images",
+          "description": "Die lernende Person kann die Abbildungsmatrix einer linearen Abbildung bezüglich der Standardbasis bestimmen, indem sie die Koordinatenvektoren der Bilder der geordneten Standardbasis in derselben Reihenfolge als Spalten anordnet.",
+          "descriptionEn": "The learner can determine the matrix of a linear map with respect to the standard basis by placing the coordinate vectors of the images of the ordered standard-basis vectors as columns in the same order."
+        },
+        {
+          "id": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+          "title": "Bildpunkte mit Matrizen berechnen",
+          "titleEn": "Calculate image points with matrices",
+          "description": "Die lernende Person kann zu einer gegebenen Abbildungsmatrix Bildpunkte berechnen, indem sie Vektoren mit der Matrix multipliziert.",
+          "descriptionEn": "The learner can calculate image points for a given mapping matrix by multiplying vectors with the matrix."
+        }
+      ],
+      "triageDraftReuse": {
+        "historicalFinding": "The foot P=(2,1,0) is drawn on the y-axis as if x=0, although the reflection matrix is correct.",
+        "plannedFollowup": "Correct 3D projection geometry and retain the valid reflection operation; actual new raster review and D/P context refresh.",
+        "positiveEvidenceReuse": "No registered P owner; create/materialize and independently review a current profile. Old understandingEvidence may seed the content, not supply approval or an automatic hash rebind."
+      },
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-a/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:1d9234c75e599f38ebfa0d2ec8c48c9ff68a42c59d9600f1c90867cfb4968520",
+          "sourceRecordLineSha256": "sha256:746976bcb2c9657bcb01572d7771c7883c59127e144c8cef6a64d8aa64cde2b6",
+          "recordId": "math-b046-round-a-20260907T155921Z-ci-integration.b72d87d4-763e-54aa-940d-31f195b51700",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Bei einer orthogonalen Spiegelung an einer Koordinatenebene bleiben die beiden ebenenparallelen Koordinaten erhalten; nur die Normalenkoordinate wechselt ihr Vorzeichen.",
+            "essentialUnderstandingEn": "In an orthogonal reflection in a coordinate plane, the two coordinates parallel to the plane remain unchanged; only the normal coordinate changes sign.",
+            "observablePerformanceDe": "Die lernende Person leitet die Spiegelungsmatrix aus den Basisbildern her, berechnet einen Bildpunkt und prüft, dass der Mittelpunkt der Verbindungsstrecke in der Spiegelebene liegt.",
+            "observablePerformanceEn": "The learner derives the reflection matrix from basis images, calculates an image point, and checks that the connecting segment has its midpoint in the reflection plane.",
+            "transferExpectationDe": "Beim Wechsel der Spiegelebene oder bei einem bereits in der Ebene liegenden Punkt erklärt sie die neue Vorzeichenwirkung beziehungsweise den Fixpunkt.",
+            "transferExpectationEn": "When the reflection plane changes or a point already lies in the plane, the learner explains the new sign effect or the fixed point."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-b/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:ecf7433ffaf3688a110bed07544a01f7135e282ae7f7cb8796785dcf9c4bc75d",
+          "sourceRecordLineSha256": "sha256:7d0f01467a9c820b1e9760c45ca23fc401fac55ddc96b0e240c6312e02aacb93",
+          "recordId": "codex-root-math-b046-current-blind-b-20260907.b72d87d4-763e-54aa-940d-31f195b51700",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine Spiegelung an einer Koordinatenebene erhält die beiden Ebenenkoordinaten und kehrt allein die senkrechte Koordinate um.",
+            "essentialUnderstandingEn": "A reflection in a coordinate plane preserves its two in-plane coordinates and reverses only the perpendicular coordinate.",
+            "observablePerformanceDe": "Leitet die diagonale Spiegelungsmatrix aus den Basisbildern ab, berechnet Bildpunkte und begründet Ebene als Fixpunktmenge sowie gleiche Abstände.",
+            "observablePerformanceEn": "Derives the diagonal reflection matrix from basis images, calculates image points, and explains the fixed plane and equal distances.",
+            "transferExpectationDe": "Wechselt von der xy- zur yz-Ebene und prüft auch einen Punkt auf der Ebene und die Rückkehr nach zweimaligem Spiegeln.",
+            "transferExpectationEn": "Changes from the xy-plane to the yz-plane and checks a point in the plane as well as return after two reflections."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:161954b054f179c0deb74748ecdf5c223522f2c7f9b130ac3b5ec2e5ecf5e8ae",
+      "profileFingerprint": "sha256:88654e208103c9a331188f244c6d638226695371b17202eca1374f92d50445ac",
+      "currentGoal": {
+        "id": "55039f9c-4ebc-5115-add5-fae95b915e46",
+        "title": "Parallelprojektionen auf Koordinatenebenen mit Matrizen darstellen",
+        "titleEn": "Represent parallel projections onto coordinate planes with matrices",
+        "description": "Die lernende Person kann Abbildungsmatrizen für Parallelprojektionen auf die Koordinatenebenen bestimmen, untersuchen und Bildpunkte berechnen.",
+        "descriptionEn": "The learner can determine and analyze mapping matrices for parallel projections onto coordinate planes and calculate image points.",
+        "requires": [
+          "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+          "4d331ba0-56d6-5730-a51b-e3d1126b31ba"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.5.PARALLEL_PROJECTIONS_COORDINATE_PLANES"
+        }
+      },
+      "parents": [
+        {
+          "id": "b3d2284c-21e0-5af8-942a-a4c11390c84a",
+          "title": "Lineare geometrische Abbildungen und Abbildungsmatrizen",
+          "titleEn": "Linear Geometric Mappings and Mapping Matrices",
+          "description": "Lineare geometrische Abbildungen wie Spiegelungen, Streckungen, Projektionen und Drehungen mit Matrizen darstellen, Bildpunkte berechnen, Abbildungsmatrizen bestimmen und Zusammensetzungen als Matrixprodukte interpretieren.",
+          "descriptionEn": "Represent linear geometric mappings such as reflections, stretches, projections, and rotations with matrices, calculate image points, determine mapping matrices, and interpret compositions as matrix products."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+          "title": "Abbildungsmatrix aus Basisbildern bestimmen",
+          "titleEn": "Determine mapping matrix from basis images",
+          "description": "Die lernende Person kann die Abbildungsmatrix einer linearen Abbildung bezüglich der Standardbasis bestimmen, indem sie die Koordinatenvektoren der Bilder der geordneten Standardbasis in derselben Reihenfolge als Spalten anordnet.",
+          "descriptionEn": "The learner can determine the matrix of a linear map with respect to the standard basis by placing the coordinate vectors of the images of the ordered standard-basis vectors as columns in the same order."
+        },
+        {
+          "id": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+          "title": "Bildpunkte mit Matrizen berechnen",
+          "titleEn": "Calculate image points with matrices",
+          "description": "Die lernende Person kann zu einer gegebenen Abbildungsmatrix Bildpunkte berechnen, indem sie Vektoren mit der Matrix multipliziert.",
+          "descriptionEn": "The learner can calculate image points for a given mapping matrix by multiplying vectors with the matrix."
+        }
+      ],
+      "triageDraftReuse": {
+        "historicalFinding": "yz-projection arrow is parallel to y rather than x; the drawn position of P=(2,-1,3) conflicts with the axes.",
+        "plannedFollowup": "Repair projection directions/sign geometry. Do not narrow general parallel projections to orthogonal projections merely to simplify the image; then contextual D/P.",
+        "positiveEvidenceReuse": "No registered P owner; create/materialize and independently review a current profile. Old understandingEvidence may seed the content, not supply approval or an automatic hash rebind."
+      },
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-a/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:1d9234c75e599f38ebfa0d2ec8c48c9ff68a42c59d9600f1c90867cfb4968520",
+          "sourceRecordLineSha256": "sha256:6dab3036df89083633213139dfd0cd9a0c9ffab558ce28b873044be5c99c9b39",
+          "recordId": "math-b046-round-a-20260907T155921Z-ci-integration.55039f9c-4ebc-5115-add5-fae95b915e46",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine Parallelprojektion verschiebt Punkte entlang einer festen Richtung bis zur Zielebene; die Richtungswahl bestimmt die Matrix, Orthogonalprojektion ist ein Spezialfall.",
+            "essentialUnderstandingEn": "A parallel projection moves points along one fixed direction to the target plane; the direction determines the matrix, and orthogonal projection is a special case.",
+            "observablePerformanceDe": "Die lernende Person bestimmt Basisbilder und Projektionsmatrix, berechnet Bildpunkte und prüft Zielebenenbedingung sowie Parallelität der Verbindungsvektoren zur Projektionsrichtung.",
+            "observablePerformanceEn": "The learner determines basis images and a projection matrix, calculates image points, and checks both target-plane membership and parallelism of connecting vectors to the projection direction.",
+            "transferExpectationDe": "Für eine schräg statt senkrecht gewählte Projektionsrichtung auf dieselbe Koordinatenebene erkennt sie die zusätzlich geänderten Koordinaten und begründet die angepasste Matrix.",
+            "transferExpectationEn": "For an oblique rather than perpendicular projection direction onto the same coordinate plane, the learner identifies additionally changed coordinates and justifies the adjusted matrix."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-b/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:ecf7433ffaf3688a110bed07544a01f7135e282ae7f7cb8796785dcf9c4bc75d",
+          "sourceRecordLineSha256": "sha256:81ca5c764cab3af64d1cdfdee61af99a9ee7c05ce4299424ff1895090f7b0b50",
+          "recordId": "codex-root-math-b046-current-blind-b-20260907.55039f9c-4ebc-5115-add5-fae95b915e46",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine Parallelprojektion bildet entlang einer festgelegten Richtung auf eine Ebene ab; die Richtung muss die Ebene treffen und bestimmt die Matrix.",
+            "essentialUnderstandingEn": "A parallel projection maps along a fixed direction onto a plane; the direction must meet the plane and determines the matrix.",
+            "observablePerformanceDe": "Bestimmt Basisbilder für eine gegebene Projektionsrichtung, baut die Matrix auf und prüft Bildlage sowie Parallelität von Punkt-Bildpunkt-Verbindungen.",
+            "observablePerformanceEn": "Determines basis images for a given projection direction, constructs the matrix, and checks the image plane and parallel point-to-image connections.",
+            "transferExpectationDe": "Vergleicht orthogonale mit schiefer Projektion auf dieselbe Koordinatenebene und erklärt die zusätzliche Änderung der verbleibenden Koordinaten.",
+            "transferExpectationEn": "Compares orthogonal and oblique projection onto the same coordinate plane and explains the additional change in retained coordinates."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c6950fd42ce838b2c0473ec8651762cf578ef6e9559becf11b00d216562fb533",
+      "profileFingerprint": "sha256:d7706b269fd1a31782e8f78cc4915f5d2573031197689a9a85f30fc2ca71e31e",
+      "currentGoal": {
+        "id": "35558905-753d-5fcb-b25e-7f85ffdbff56",
+        "title": "Zentrische Streckungen am Koordinatenursprung mit Matrizen darstellen",
+        "titleEn": "Represent central dilations at the coordinate origin with matrices",
+        "description": "Die lernende Person kann Abbildungsmatrizen zentrischer Streckungen am Koordinatenursprung bestimmen, untersuchen und die Wirkung auf Bildpunkte berechnen.",
+        "descriptionEn": "The learner can determine and analyze mapping matrices for central dilations at the coordinate origin and calculate their effect on image points.",
+        "requires": [
+          "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+          "4d331ba0-56d6-5730-a51b-e3d1126b31ba"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.5.CENTRAL_DILATIONS_ORIGIN"
+        }
+      },
+      "parents": [
+        {
+          "id": "b3d2284c-21e0-5af8-942a-a4c11390c84a",
+          "title": "Lineare geometrische Abbildungen und Abbildungsmatrizen",
+          "titleEn": "Linear Geometric Mappings and Mapping Matrices",
+          "description": "Lineare geometrische Abbildungen wie Spiegelungen, Streckungen, Projektionen und Drehungen mit Matrizen darstellen, Bildpunkte berechnen, Abbildungsmatrizen bestimmen und Zusammensetzungen als Matrixprodukte interpretieren.",
+          "descriptionEn": "Represent linear geometric mappings such as reflections, stretches, projections, and rotations with matrices, calculate image points, determine mapping matrices, and interpret compositions as matrix products."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+          "title": "Abbildungsmatrix aus Basisbildern bestimmen",
+          "titleEn": "Determine mapping matrix from basis images",
+          "description": "Die lernende Person kann die Abbildungsmatrix einer linearen Abbildung bezüglich der Standardbasis bestimmen, indem sie die Koordinatenvektoren der Bilder der geordneten Standardbasis in derselben Reihenfolge als Spalten anordnet.",
+          "descriptionEn": "The learner can determine the matrix of a linear map with respect to the standard basis by placing the coordinate vectors of the images of the ordered standard-basis vectors as columns in the same order."
+        },
+        {
+          "id": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+          "title": "Bildpunkte mit Matrizen berechnen",
+          "titleEn": "Calculate image points with matrices",
+          "description": "Die lernende Person kann zu einer gegebenen Abbildungsmatrix Bildpunkte berechnen, indem sie Vektoren mit der Matrix multipliziert.",
+          "descriptionEn": "The learner can calculate image points for a given mapping matrix by multiplying vectors with the matrix."
+        }
+      ],
+      "triageDraftReuse": {
+        "historicalFinding": "Already vertical vectors carry redundant transpose markers; numerical dilation and plotted relation otherwise fit.",
+        "plannedFollowup": "Remove T only from vertical column vectors, preserving correct horizontal-transpose notation; actual replacement review and affected D/P.",
+        "positiveEvidenceReuse": "No registered P owner; create/materialize and independently review a current profile. Old understandingEvidence may seed the content, not supply approval or an automatic hash rebind."
+      },
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-a/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:1d9234c75e599f38ebfa0d2ec8c48c9ff68a42c59d9600f1c90867cfb4968520",
+          "sourceRecordLineSha256": "sha256:a0872a7ad5c4e63d254e4ec91cdce1bdfb51fc835b5becba408a387290c0aad8",
+          "recordId": "math-b046-round-a-20260907T155921Z-ci-integration.35558905-753d-5fcb-b25e-7f85ffdbff56",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine zentrische Streckung am Ursprung multipliziert alle Koordinaten mit demselben Faktor; sein Betrag verändert Abstände und sein Vorzeichen die Strahlrichtung.",
+            "essentialUnderstandingEn": "A central dilation at the origin multiplies all coordinates by one factor; its magnitude changes distances and its sign changes ray direction.",
+            "observablePerformanceDe": "Die lernende Person konstruiert kI, berechnet Bildpunkte und begründet Kollinearität mit dem Ursprung sowie den gemeinsamen Abstandsfaktor.",
+            "observablePerformanceEn": "The learner constructs kI, calculates image points, and justifies collinearity with the origin and the common distance factor.",
+            "transferExpectationDe": "Bei einem negativen Faktor oder einem Betrag kleiner eins erklärt sie den Wechsel auf den Gegenstrahl beziehungsweise die Verkleinerung anhand eines neuen Punktes.",
+            "transferExpectationEn": "With a negative factor or magnitude below one, the learner explains the switch to the opposite ray or the contraction using a new point."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-b/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:ecf7433ffaf3688a110bed07544a01f7135e282ae7f7cb8796785dcf9c4bc75d",
+          "sourceRecordLineSha256": "sha256:7b4d056d20399da933d6a6146be058d5f5362b18b209a08b4a5e155636813f81",
+          "recordId": "codex-root-math-b046-current-blind-b-20260907.35558905-753d-5fcb-b25e-7f85ffdbff56",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Bei einer zentrischen Streckung um den Ursprung werden alle Koordinaten mit demselben Faktor multipliziert; Richtung und Abstand folgen dessen Vorzeichen und Betrag.",
+            "essentialUnderstandingEn": "A central dilation about the origin multiplies all coordinates by the same factor; direction and distance follow its sign and magnitude.",
+            "observablePerformanceDe": "Bestimmt kI aus Basisbildern, berechnet Bildpunkte und begründet gemeinsame Ursprungsgeraden und die Abstandsänderung.",
+            "observablePerformanceEn": "Derives kI from basis images, calculates image points, and explains common lines through the origin and the distance change.",
+            "transferExpectationDe": "Deutet einen negativen oder zwischen null und eins liegenden Faktor statt bloßer Vergrößerung und unterscheidet Richtungsumkehr von Verkürzung.",
+            "transferExpectationEn": "Interprets a negative factor or one between zero and one instead of mere enlargement and distinguishes reversal from shortening."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "7bd8f022-5002-5610-994c-a9cec1890558",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:42615f28b319fee999bb6894ed29b747c9dac6eca565c932a33df9c3dafb201e",
+      "profileFingerprint": "sha256:c1c3ef2f85ff328e55119873954c2049d66d7127c38dd031a26b79e157294e25",
+      "currentGoal": {
+        "id": "7bd8f022-5002-5610-994c-a9cec1890558",
+        "title": "Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)",
+        "titleEn": "Represent rotations around coordinate axes with matrices (advanced course)",
+        "description": "Die lernende Person kann Abbildungsmatrizen für Drehungen um die Koordinatenachsen im $\\mathbb{R}^3$ untersuchen und bestimmen sowie Bildpunkte berechnen.",
+        "descriptionEn": "The learner can analyze and determine mapping matrices for rotations around the coordinate axes in $\\mathbb{R}^3$ and calculate image points.",
+        "requires": [
+          "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+          "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        }
+      },
+      "parents": [
+        {
+          "id": "b3d2284c-21e0-5af8-942a-a4c11390c84a",
+          "title": "Lineare geometrische Abbildungen und Abbildungsmatrizen",
+          "titleEn": "Linear Geometric Mappings and Mapping Matrices",
+          "description": "Lineare geometrische Abbildungen wie Spiegelungen, Streckungen, Projektionen und Drehungen mit Matrizen darstellen, Bildpunkte berechnen, Abbildungsmatrizen bestimmen und Zusammensetzungen als Matrixprodukte interpretieren.",
+          "descriptionEn": "Represent linear geometric mappings such as reflections, stretches, projections, and rotations with matrices, calculate image points, determine mapping matrices, and interpret compositions as matrix products."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+          "title": "Bildpunkte mit Matrizen berechnen",
+          "titleEn": "Calculate image points with matrices",
+          "description": "Die lernende Person kann zu einer gegebenen Abbildungsmatrix Bildpunkte berechnen, indem sie Vektoren mit der Matrix multipliziert.",
+          "descriptionEn": "The learner can calculate image points for a given mapping matrix by multiplying vectors with the matrix."
+        },
+        {
+          "id": "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+          "title": "Abbildungsmatrix aus Basisbildern bestimmen",
+          "titleEn": "Determine mapping matrix from basis images",
+          "description": "Die lernende Person kann die Abbildungsmatrix einer linearen Abbildung bezüglich der Standardbasis bestimmen, indem sie die Koordinatenvektoren der Bilder der geordneten Standardbasis in derselben Reihenfolge als Spalten anordnet.",
+          "descriptionEn": "The learner can determine the matrix of a linear map with respect to the standard basis by placing the coordinate vectors of the images of the ordered standard-basis vectors as columns in the same order."
+        }
+      ],
+      "triageDraftReuse": {
+        "historicalFinding": "Axes are duplicated/misdirected and label -e_x=(1,0,0) has the wrong sign.",
+        "plannedFollowup": "Repair basis vectors, labels and rotation orientation; no present AI QA approval, so actual final-image review needed; retain LK scope.",
+        "positiveEvidenceReuse": "No registered P owner; create/materialize and independently review a current profile. Old understandingEvidence may seed the content, not supply approval or an automatic hash rebind."
+      },
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-a/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:1d9234c75e599f38ebfa0d2ec8c48c9ff68a42c59d9600f1c90867cfb4968520",
+          "sourceRecordLineSha256": "sha256:50b644740ddff37a4de8baa478919b5e2d9ba971857c73a9e9d227c354a5020c",
+          "recordId": "math-b046-round-a-20260907T155921Z-ci-integration.7bd8f022-5002-5610-994c-a9cec1890558",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Bei einer Drehung um eine Koordinatenachse bleibt die Achsenkomponente erhalten; die beiden anderen Komponenten folgen einer ebenen Rotation mit festgelegtem Drehsinn.",
+            "essentialUnderstandingEn": "In a rotation about a coordinate axis, the axial component is preserved; the other two components follow a planar rotation with a specified direction.",
+            "observablePerformanceDe": "Die lernende Person bestimmt die Matrix aus den gedrehten Basisvektoren, berechnet einen Bildpunkt und prüft Achsenkoordinate und Abstandserhaltung.",
+            "observablePerformanceEn": "The learner determines the matrix from rotated basis vectors, calculates an image point, and checks the axial coordinate and preservation of distance.",
+            "transferExpectationDe": "Für eine andere Koordinatenachse oder den umgekehrten Drehsinn erklärt sie die neue Lage der Sinus-/Kosinus-Einträge und kontrolliert einen geeigneten Punkt.",
+            "transferExpectationEn": "For another coordinate axis or the opposite direction of rotation, the learner explains the new positions of sine/cosine entries and checks a suitable point."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-b/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:ecf7433ffaf3688a110bed07544a01f7135e282ae7f7cb8796785dcf9c4bc75d",
+          "sourceRecordLineSha256": "sha256:821bb7f9f6d08b171eb90cf2e1e34302dddaaf984806584bd9388fd062d6a29a",
+          "recordId": "codex-root-math-b046-current-blind-b-20260907.7bd8f022-5002-5610-994c-a9cec1890558",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine Drehung um eine Koordinatenachse lässt deren Komponente fest und dreht die senkrechte Ebene unter Erhaltung von Längen und Winkeln.",
+            "essentialUnderstandingEn": "Rotation about a coordinate axis fixes its component and rotates the perpendicular plane while preserving lengths and angles.",
+            "observablePerformanceDe": "Bestimmt die Matrix aus den gedrehten Basisvektoren bei benannter Drehrichtung und berechnet sowie kontrolliert einen Bildpunkt.",
+            "observablePerformanceEn": "Determines the matrix from rotated basis vectors with a stated rotation direction and calculates and checks an image point.",
+            "transferExpectationDe": "Wechselt von der z- zur x-Achse und zu negativem Winkel, wobei feste Komponente und Vorzeichen der Sinusterme begründet werden.",
+            "transferExpectationEn": "Changes from the z-axis to the x-axis and to a negative angle, explaining the fixed component and signs of sine terms."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:992d04739b06b6ec9df9dc289476aa1d46e6b164eaa3a4d15308e9f3e1eb6938",
+      "profileFingerprint": "sha256:b0c0fb253f55fecdb71e1472fee09f72b4546c4f1a5789010315638acefda55c",
+      "currentGoal": {
+        "id": "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+        "title": "Vierfeldertafeln interpretieren",
+        "titleEn": "Interpret four-fold tables",
+        "description": "Die lernende Person kann Vier- bzw. Mehrfeldertafeln aus Sachtexten erstellen, absolute und relative Häufigkeiten eintragen und gemeinsame sowie bedingte Wahrscheinlichkeiten an konkreten Beispielen ablesen.",
+        "descriptionEn": "The learner can build four- or multi-field tables from contextual data, enter absolute and relative frequencies, and read joint as well as conditional probabilities in concrete examples.",
+        "requires": [
+          "2a1158e5-d4ca-51d4-860c-f43bd5a86836"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        }
+      },
+      "parents": [
+        {
+          "id": "f1a95baf-b91f-44db-bcb1-70a4d2e3f7d1",
+          "title": "Baumdiagramme, Vierfeldertafeln und bedingte Wahrscheinlichkeiten",
+          "titleEn": "Tree Diagrams, Contingency Tables, and Conditional Probabilities",
+          "description": "Mehrstufige Zufallsexperimente mit Baumdiagrammen modellieren, Vierfeldertafeln nutzen, bedingte Wahrscheinlichkeiten im Kontext bestimmen und stochastische Unabhängigkeit prüfen.",
+          "descriptionEn": "Model multi-stage random experiments with tree diagrams, use contingency tables, determine conditional probabilities in context, and check stochastic independence."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+          "title": "Ereignisse darstellen und Baumdiagramme nutzen",
+          "titleEn": "Represent events and use tree diagrams",
+          "description": "Die lernende Person kann mehrstufige Zufallsexperimente in Baumdiagrammen darstellen, Pfadregeln anwenden und Wahrscheinlichkeiten an konkreten Beispielrechnungen berechnen.",
+          "descriptionEn": "The learner can represent multi-stage random experiments with tree diagrams, apply path rules, and compute probabilities in concrete examples."
+        }
+      ],
+      "triageDraftReuse": {
+        "historicalFinding": "Table entries and conditional quotients are correct, but arrows attach P(A|B) to joint .30 and P(B|A) to .40.",
+        "plannedFollowup": "Retarget/remove misleading arrows, preserving correct denominators and marginal totals; final raster and affected D/P review.",
+        "positiveEvidenceReuse": "No registered P owner; create/materialize and independently review a current profile. Old understandingEvidence may seed the content, not supply approval or an automatic hash rebind."
+      },
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-a/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:1d9234c75e599f38ebfa0d2ec8c48c9ff68a42c59d9600f1c90867cfb4968520",
+          "sourceRecordLineSha256": "sha256:eb7d7e7264c096559d5fb8a8c8f83e9f666e24b8ec37c723d2cc26817037f358",
+          "recordId": "math-b046-round-a-20260907T155921Z-ci-integration.52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Innenzellen einer Kontingenztafel verbinden Merkmalsausprägungen, Randsummen definieren Bezugsgruppen; gemeinsame und bedingte Anteile verwenden unterschiedliche Nenner.",
+            "essentialUnderstandingEn": "Interior cells of a contingency table combine attribute categories, while marginal totals define reference groups; joint and conditional proportions use different denominators.",
+            "observablePerformanceDe": "Die lernende Person erstellt aus einem Sachtext eine konsistente Tafel, ergänzt fehlende Häufigkeiten und erklärt beim Auswerten eines Anteils die zugehörige Zelle und Bezugsgruppe.",
+            "observablePerformanceEn": "The learner creates a consistent table from a contextual text, fills in missing frequencies, and explains the relevant cell and reference group when interpreting a proportion.",
+            "transferExpectationDe": "Für vertauschte Merkmale oder eine Tafel mit mehr als zwei Ausprägungen rekonstruiert sie den gewünschten Anteil und überprüft Summen, statt einen alten Zellenplatz zu übernehmen.",
+            "transferExpectationEn": "For swapped attributes or a table with more than two categories, the learner reconstructs the required proportion and checks totals rather than reusing an old cell position."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-b/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:ecf7433ffaf3688a110bed07544a01f7135e282ae7f7cb8796785dcf9c4bc75d",
+          "sourceRecordLineSha256": "sha256:012d22ef82529a3d25065f2032f0192710eca22980d7cdc218e4cbd9a4a36b23",
+          "recordId": "codex-root-math-b046-current-blind-b-20260907.52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Innenzellen einer Kontingenztafel sind gemeinsame Häufigkeiten; Randwerte definieren Gesamt- oder bedingte Bezugsgruppen für unterschiedliche Quotienten.",
+            "essentialUnderstandingEn": "Interior contingency-table cells are joint frequencies; margins define total or conditional reference groups for different ratios.",
+            "observablePerformanceDe": "Erstellt aus Sachangaben eine konsistente Tafel, ergänzt Randwerte und benennt beim Ablesen gemeinsamer oder bedingter Anteile stets die Bezugsgruppe.",
+            "observablePerformanceEn": "Constructs a consistent table from contextual data, completes margins, and always names the reference group when reading joint or conditional proportions.",
+            "transferExpectationDe": "Wechselt von absoluten Zahlen zu einer normierten Mehrfeldertafel und erklärt, welche Randgruppe für eine neu formulierte Bedingung relevant ist.",
+            "transferExpectationEn": "Changes from counts to a normalised multi-category table and explains which marginal group is relevant to a newly stated condition."
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a7752df2f947775f75dcf3a10d8292706b3132039343197cc09c160360bf4936",
+      "profileFingerprint": "sha256:108256243af4543663e1437d12a6a39124491244893f5d8bf3aadac9e2a81403",
+      "currentGoal": {
+        "id": "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+        "title": "Bedingte Wahrscheinlichkeiten berechnen",
+        "titleEn": "Calculate conditional probabilities",
+        "description": "Die lernende Person kann bedingte Wahrscheinlichkeiten in Sachzusammenhängen identifizieren und sie mit Baumdiagrammen sowie Vier- oder Mehrfeldertafeln aus absoluten oder relativen Häufigkeiten berechnen.",
+        "descriptionEn": "The learner can identify conditional probabilities in context and compute them with tree diagrams and four- or multi-field tables from absolute or relative frequencies.",
+        "requires": [
+          "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        }
+      },
+      "parents": [
+        {
+          "id": "dd550132-2a3f-5b4e-a3c6-f940621186ac",
+          "title": "Grundlegende Begriffe und Methoden der Stochastik",
+          "titleEn": "Q3.1 Basic Concepts and Methods of Stochastics",
+          "description": "Clusterknoten für die Q3.1-Grundlagen der Stochastik: statistischer Wahrscheinlichkeitsbegriff, Ergebnisraum/Ereignisse, Baumdiagramme und Pfadregeln, Mengenkalkül von Ereignissen, bedingte Wahrscheinlichkeiten und Unabhängigkeit, kritische Prüfung datenbezogener Aussagen sowie kombinatorische Zählprinzipien und Binomialkoeffizient inklusive konkreter Beispielrechnungen.",
+          "descriptionEn": "Cluster node for Q3.1 stochastics foundations: statistical concept of probability, sample space/events, tree diagrams and path rules, set calculus of events, conditional probabilities and independence, critical assessment of data-based claims, and combinatorial counting principles plus binomial coefficient with concrete worked examples."
+        }
+      ],
+      "prerequisites": [
+        {
+          "id": "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+          "title": "Vierfeldertafeln interpretieren",
+          "titleEn": "Interpret four-fold tables",
+          "description": "Die lernende Person kann Vier- bzw. Mehrfeldertafeln aus Sachtexten erstellen, absolute und relative Häufigkeiten eintragen und gemeinsame sowie bedingte Wahrscheinlichkeiten an konkreten Beispielen ablesen.",
+          "descriptionEn": "The learner can build four- or multi-field tables from contextual data, enter absolute and relative frequencies, and read joint as well as conditional probabilities in concrete examples."
+        }
+      ],
+      "triageDraftReuse": {
+        "historicalFinding": "Old rounds disagree: A flags .33/.67 as rounded branch values; B keeps. A current visual audit also keeps these as ordinary two-decimal display. Table values .30/.20/.10/.40 and conditional definitions are correct.",
+        "plannedFollowup": "Resolve the exact rounding concern under KEEP with a reasoned adjudication. Do not require broad pedagogy or image regeneration automatically. If equality is judged materially misleading, change only to ≈ or 1/3,2/3 and review final bytes. No current AI QA entry; obtain explicit current-image decision. Existing rounds may be reused only with exact current context confirmed.",
+        "positiveEvidenceReuse": "No registered P owner; create/materialize and independently review a current profile. Old understandingEvidence may seed the content, not supply approval or an automatic hash rebind."
+      },
+      "originalUnderstandingEvidence": [
+        {
+          "round": "a",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-a/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-a.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:1d9234c75e599f38ebfa0d2ec8c48c9ff68a42c59d9600f1c90867cfb4968520",
+          "sourceRecordLineSha256": "sha256:f871fe293c0109b548553d8a2dea505eb461a14f9cefd6d1c8f116b64a621925",
+          "recordId": "math-b046-round-a-20260907T155921Z-ci-integration.c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine bedingte Wahrscheinlichkeit beschränkt die Bezugsmenge auf das gegebene Ereignis; der gemeinsame Anteil wird auf dessen positive Häufigkeit oder Wahrscheinlichkeit normiert.",
+            "essentialUnderstandingEn": "A conditional probability restricts the reference population to the given event; the joint proportion is normalized by that event's positive frequency or probability.",
+            "observablePerformanceDe": "Die lernende Person identifiziert Bedingung und gesuchtes Ereignis in einer neuen Situation, berechnet den richtigen Quotienten und ordnet ihn einem Baumast beziehungsweise einer Tafelauswertung zu.",
+            "observablePerformanceEn": "The learner identifies the condition and target event in a new situation, calculates the correct quotient, and locates it on a tree branch or in a table interpretation.",
+            "transferExpectationDe": "Beim Wechsel von absoluten zu relativen Daten oder bei umgekehrter Bedingung wählt sie die neue Bezugsgruppe korrekt und erkennt eine unzulässige Bedingung mit Häufigkeit null.",
+            "transferExpectationEn": "When moving from absolute to relative data or reversing the condition, the learner selects the new reference group correctly and recognizes an inadmissible condition having zero frequency."
+          }
+        },
+        {
+          "round": "b",
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-046-matrix-mappings-and-probability-foundations-20-v1/round-b/results/mathematik-rollout-v1-batch-046-matrix-mappings-and-probability-foundations-20-v1-20260907-first-pass-b.batch-001.records.jsonl",
+          "sourceFileSha256": "sha256:ecf7433ffaf3688a110bed07544a01f7135e282ae7f7cb8796785dcf9c4bc75d",
+          "sourceRecordLineSha256": "sha256:25d5e7b345751b029a3419f04a6cfc7cc5dc2d581054e1d04211d1d86a76b651",
+          "recordId": "codex-root-math-b046-current-blind-b-20260907.c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+          "understandingEvidence": {
+            "essentialUnderstandingDe": "Eine bedingte Wahrscheinlichkeit beschränkt die Bezugsmenge auf das gegebene Ereignis; der gemeinsame Anteil wird durch dessen positive Wahrscheinlichkeit geteilt.",
+            "essentialUnderstandingEn": "A conditional probability restricts the reference population to the given event; the joint proportion is divided by its positive probability.",
+            "observablePerformanceDe": "Identifiziert Bedingung und gesuchtes Ereignis, wählt aus Tafel oder Baum den richtigen Zähler und Nenner und erläutert den resultierenden Anteil.",
+            "observablePerformanceEn": "Identifies the condition and target event, selects the correct numerator and denominator from a table or tree, and explains the resulting proportion.",
+            "transferExpectationDe": "Kehrt in einem neuen Kontext die Bedingung um oder erhält absolute statt relative Daten und begründet den jeweils geänderten Nenner.",
+            "transferExpectationEn": "Reverses the condition in a fresh context or receives counts instead of proportions and explains the changed denominator."
+          }
+        }
+      ]
+    }
+  ]
+}

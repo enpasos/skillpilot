@@ -1,0 +1,75 @@
+{
+  "startedAt": "2026-09-21T21:41:08Z",
+  "reviewer": "Codex independent agent /root/math_repaired12_blind_a",
+  "model": "Codex; exact serving model identifier not exposed",
+  "generationParameters": {
+    "interface": "Codex delegated agent",
+    "samplingParameters": "not exposed",
+    "servingModelIdentifier": "not exposed",
+    "independence": "Round A agent did not inspect round B, previous review results, triage, synthesis or canonical diffs."
+  },
+  "scopeNotes": [
+    "Current bilingual description-review input and corresponding batch rows were read and verified structurally equal.",
+    "Every referenced image was opened with view_image and its current file hash compared with the bound originalDigest; all five matched.",
+    "Review concerns unchanged descriptions in their current page context and proposed understanding evidence. Image inspection does not create visualization-QA or human approval.",
+    "Page context was read from the bound input. No claim of inspecting PDF page layout or independently verifying official source PDFs, source mappings or effective composition-view projection is made.",
+    "All recommendations remain AI candidates. No canonical text, profile, QA registry or ledger was changed."
+  ],
+  "goals": [
+    {
+      "goalId": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+      "decision": "keep",
+      "rationale": "Die aktuelle Seite setzt Berechnung von Mittelwert, Median und Quartilen sowie Boxplot-Erstellung voraus. Das Ziel selbst beschreibt die darauf aufbauende vergleichende Interpretation verdichteter Daten, nicht mehrere neu zu erlernende Berechnungsroutinen. DE/EN sind gleichwertig und für J7 angemessen. Im betrachteten Bild werden Median und Streuung zweier Klassen unterschieden; die Beschreibung verlangt darüber hinaus eine begründete Aussage zu einer neuen Datendarstellung. Die veränderte Seitenbindung erfordert keine Änderung des fachlich tragfähigen Texts.",
+      "essentialUnderstandingDe": "Kenngrößen und Boxplots verdichten unterschiedliche Aspekte einer Verteilung: Lage, Streuung und die Position von Quartilen beziehungsweise Extremwerten. Aus diesen Zusammenfassungen lassen sich begrenzte vergleichende Aussagen ableiten; sie legen den vollständigen Datensatz oder seine einzelnen Werte nicht eindeutig fest.",
+      "essentialUnderstandingEn": "Summary measures and box plots compress different aspects of a distribution: location, spread and the positions of quartiles or extremes. These summaries support limited comparative conclusions; they do not uniquely determine the complete data set or its individual values.",
+      "observablePerformanceDe": "Die lernende Person vergleicht neu vorgelegte Kenngrößen oder Boxplots zweier Datensätze, formuliert getrennte Aussagen zu typischer Lage und Streuung und belegt diese mit den passenden Merkmalen. Sie prüft eine vorgelegte Vergleichsaussage darauf, ob sie aus den tatsächlich verfügbaren Informationen folgt.",
+      "observablePerformanceEn": "The learner compares newly presented summary measures or box plots for two data sets, states separate conclusions about typical location and spread and supports them with the relevant features. The learner checks whether a proposed comparison follows from the information actually available.",
+      "transferExpectationDe": "Eine frische Aufgabe zeigt zwei Verteilungen mit gleichem Median, aber verschiedenen Quartilabständen, oder wechselt von einem Boxplot zu einer Kenngrößentabelle. Die lernende Person passt ihre Vergleichsaussagen an und benennt, welche zuvor mögliche Aussage durch die neue Informationslage nicht mehr gedeckt ist.",
+      "transferExpectationEn": "A fresh task shows two distributions with the same median but different interquartile ranges, or switches from a box plot to a table of summary measures. The learner adapts the comparisons and identifies any previously possible conclusion that the new information no longer supports."
+    },
+    {
+      "goalId": "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
+      "decision": "keep",
+      "rationale": "Auswahl, Quellenangabe und Strukturierung bilden eine zusammenhängende Übernahme bereits erhobener Daten für eine konkrete Frage. Die Beschreibung verlangt weder eine eigene Erhebung noch eine statistische Auswertung und bleibt in beiden Sprachen konsistent. Der J7-Kontext mit vorausgesetzten Häufigkeiten ist passend. Das gesichtete Mobilitätsbeispiel ist ausdrücklich als Beispieldaten gekennzeichnet; seine anschließende Auswertung wird nicht zusätzlich zum Lernziel erklärt. Der angegebene BW-sourceRef wird nicht mit einer vollständigen Quellenprüfung verwechselt.",
+      "essentialUnderstandingDe": "Daten aus einer Sekundärquelle wurden bereits von anderen erhoben und sind nur dann für die Frage verwendbar, wenn Merkmal, Bezugsgruppe, Zeitraum und Einheit dazu passen. Bei der Übernahme müssen diese Bedeutungen und die Herkunft erhalten bleiben, damit die strukturierten Werte richtig zugeordnet werden können.",
+      "essentialUnderstandingEn": "Data in a secondary source have already been collected by others and are usable for the question only when the variable, reference group, time period and unit fit. Extraction must preserve these meanings and the source so that the structured values can be assigned correctly.",
+      "observablePerformanceDe": "Aus einer neu vorgelegten Quelle mit mehreren Tabellen oder Angaben wählt die lernende Person die zur statistischen Frage passenden Werte aus, nennt die Quelle und überträgt die Daten in eine übersichtliche Struktur mit eindeutigen Kategorien, Zeitbezügen und Einheiten. Sie erläutert an diesen Merkmalen die Passung ihrer Auswahl.",
+      "observablePerformanceEn": "From a newly presented source containing several tables or figures, the learner selects values relevant to the statistical question, names the source and transfers the data into a clear structure with unambiguous categories, time references and units. The learner explains the suitability of the selection using those features.",
+      "transferExpectationDe": "Eine unabhängig gestellte Aufgabe präsentiert die benötigten Angaben als Diagramm statt als Tabelle oder verwendet eine andere Bezugsgruppe beziehungsweise Einheit. Die lernende Person entnimmt die Daten mit ihren korrekten Bedeutungen und übernimmt unpassende Angaben nicht bloß wegen ähnlicher Zahlen oder Überschriften.",
+      "transferExpectationEn": "An independently presented task provides the required information as a chart instead of a table or uses a different reference group or unit. The learner extracts the data with their correct meanings and does not adopt unsuitable figures merely because their numbers or headings look similar."
+    },
+    {
+      "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+      "decision": "keep",
+      "rationale": "Der Text grenzt die Funktionstypen ausdrücklich ein und verbindet die regelgeleitete Berechnung mit dem Erkennen des Termaufbaus. Das ist eine einheitliche Ableitungskompetenz mit verschiedenen Grundfällen; eine zusätzliche Forderung nach Produkt- oder Kettenregel wäre durch die eigenständigen Nachfolgeziele nicht gedeckt. DE/EN sind semantisch gleichwertig. Die Seite verankert das Ziel nach dem Differenzenquotienten; das betrachtete Bild zeigt korrekte Grundableitungen innerhalb des beschriebenen Rahmens. Kein neuer Textbedarf entsteht allein durch die aktuelle Seitenbindung.",
+      "essentialUnderstandingDe": "Der Aufbau eines Funktionsterms bestimmt, welche elementare Ableitungsregel passt. Potenzen der Variablen und Exponentialterme mit der Variablen im Exponenten haben unterschiedliche Strukturen; bei Summen und konstanten Faktoren werden die entsprechenden Regeln auf die jeweiligen Bestandteile angewandt.",
+      "essentialUnderstandingEn": "The structure of a function expression determines which elementary differentiation rule applies. Powers of the variable and exponential terms with the variable in the exponent have different structures; sums and constant factors are handled by applying the corresponding rules to their components.",
+      "observablePerformanceDe": "Die lernende Person berechnet selbstständig die Ableitung neu vorgelegter ganzrationaler Funktionen bis Grad 3 sowie einfacher Potenz- und Exponentialfunktionen. Sie kennzeichnet die relevanten Termbestandteile und macht an ihren Rechenschritten erkennbar, warum die jeweils gewählte Grundregel passt.",
+      "observablePerformanceEn": "The learner independently calculates derivatives of newly presented polynomial functions up to degree 3 and simple power and exponential functions. The learner identifies the relevant components and makes clear through the calculation steps why each selected basic rule applies.",
+      "transferExpectationDe": "Eine neue Aufgabe stellt einen bisher in ausmultiplizierter Form gezeigten höchstens kubischen Term in einer gleichwertigen Produktform dar oder wechselt zwischen Potenz- und einfachem Exponentialterm. Die lernende Person nutzt bei Bedarf eine algebraische Umformung und wählt anschließend die passende bekannte Grundregel.",
+      "transferExpectationEn": "A new task presents an at-most-cubic expression previously shown in expanded form as an equivalent product, or switches between a power term and a simple exponential term. The learner uses an algebraic rearrangement where needed and then selects the appropriate familiar basic rule."
+    },
+    {
+      "goalId": "122ab909-04ed-572b-a499-754f3bcc8ef0",
+      "decision": "keep",
+      "rationale": "Die Produktregel und geordnete Ziehungen mit beziehungsweise ohne Zurücklegen sind hier Grundfälle desselben stufenweisen Zählens. Die Beschreibung hält den Ordnungsaspekt fest und beansprucht keine ungeordneten Stichproben oder Fakultätenschreibweise; letztere ist ein eigenes Nachfolgeziel. Beide Sprachen drücken denselben schulischen Berechnungsauftrag aus. Das gesichtete Bild zeigt 3·4, 3·3 und 4·3 mit passenden Listen von Ergebnissen. Die gegenwärtige Kontextbindung begründet keine fachliche Revision des Textes.",
+      "essentialUnderstandingDe": "Bei einem mehrstufigen Auswahlvorgang entsteht die Anzahl geordneter Ergebnisse durch das Produkt der jeweils verfügbaren Wahlmöglichkeiten, sofern diese Anzahlen für die betrachteten Stufen passend bestimmt sind. Mit Zurücklegen können Möglichkeiten erneut auftreten; ohne Zurücklegen verringert sich ihre Anzahl. Eine vertauschte Reihenfolge zählt bei geordneten Ergebnissen als anderes Ergebnis.",
+      "essentialUnderstandingEn": "In a multistage selection process, the number of ordered outcomes is the product of the available choices at each stage, provided those counts are correctly determined for the stages considered. With replacement, choices can recur; without replacement, their number decreases. Reversing the order gives a different outcome when outcomes are ordered.",
+      "observablePerformanceDe": "Zu einem neuen Zählproblem beschreibt die lernende Person die Auswahlstufen und bestimmt die Zahl der Möglichkeiten je Stufe. Sie begründet aus Reihenfolge und Zurücklegen den passenden Produktansatz und erläutert, welche vollständigen Ergebnisse gezählt werden.",
+      "observablePerformanceEn": "For a new counting problem, the learner describes the selection stages and determines the number of choices at each stage. The learner justifies the appropriate product using order and replacement and explains which complete outcomes are being counted.",
+      "transferExpectationDe": "Eine frische Aufgabe verändert eine Code- oder Ziehsituation von erlaubter Wiederholung zu einem Wiederholungsverbot oder schränkt nur die erste Stelle ein. Die lernende Person passt die einzelnen Faktoren an diese veränderte Struktur an, statt eine unveränderte Potenzformel zu übernehmen.",
+      "transferExpectationEn": "A fresh task changes a code or sampling situation from allowing repetition to forbidding it, or restricts only the first position. The learner adjusts the individual factors to the changed structure instead of retaining an unchanged power formula."
+    },
+    {
+      "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+      "decision": "keep",
+      "rationale": "Beide Sprachfassungen beschränken den Anspruch ausdrücklich auf Plausibilitätsprüfung und begründete Fallauswahl. Rand- und Spezialfälle sind dafür sinnvolle Varianten derselben Prüfung, keine eigenständigen zu bündelnden Ziele. Der Voraussetzungskontext klärt Annahmen und Begriffe; ein allgemeiner Beweis wird nicht zusätzlich verlangt. Das tatsächlich betrachtete aktuelle Bild trennt bestätigende Beispiele von Beweis und benennt die Wirkung eines Gegenbeispiels. Damit stützt der neue Seitenkontext den unveränderten Text.",
+      "essentialUnderstandingDe": "Geeignete Beispiele prüfen verschiedene strukturell relevante Fälle einer Aussage, etwa einen Randwert, einen Vorzeichenwechsel oder einen Spezialfall. Übereinstimmende Beispiele stützen ihre Plausibilität, beweisen aber keine Allgemeinaussage; ein gültiges Gegenbeispiel kann sie widerlegen.",
+      "essentialUnderstandingEn": "Suitable examples test structurally relevant cases of a statement, such as a boundary value, a sign change or a special case. Confirming examples support plausibility but do not prove a general claim; a valid counterexample can refute it.",
+      "observablePerformanceDe": "Die lernende Person wählt zu einer neuen Aussage selbstständig mehrere begründet unterschiedliche zulässige Beispiele einschließlich passender Rand- oder Spezialfälle, prüft die Aussage daran und berichtet, ob die Fälle sie stützen oder widerlegen. Sie begründet die Auswahl aus der Struktur der Aussage.",
+      "observablePerformanceEn": "For a new statement, the learner independently selects several admissible examples differing for stated reasons, including appropriate boundary or special cases, tests the statement and reports whether the cases support or refute it. The learner justifies the selection from the structure of the statement.",
+      "transferExpectationDe": "Eine unabhängig gestellte Aufgabe erweitert den Bereich von positiven zu allen ganzen Zahlen oder verändert eine nichtstrenge zu einer strengen Ungleichung. Die lernende Person ergänzt dafür geeignete negative, Null- oder Gleichheitsfälle und passt ihr Plausibilitätsurteil an, ohne erfolgreiche Einzelprüfungen als allgemeinen Beweis auszugeben.",
+      "transferExpectationEn": "An independently presented task extends the domain from positive integers to all integers or changes a non-strict inequality to a strict one. The learner adds suitable negative, zero or equality cases and adjusts the plausibility judgement without presenting successful individual checks as a general proof."
+    }
+  ]
+}

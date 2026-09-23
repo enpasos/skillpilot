@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "kind": "firsthand-image-generation-provenance",
+  "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
+  "recordedAt": "2026-09-21T21:32:35.554Z",
+  "generatedOn": "2026-09-21",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactModelRevision": null,
+  "exactModelRevisionNote": "The tool did not expose a serving model revision.",
+  "resultId": "exec-1813a619-0597-49e7-8cf3-85cae441af90",
+  "actualToolPrompt": {
+    "path": "edit-prompt.md",
+    "sha256": "sha256:0e971e6b433b52b5c18aadd5be2d21e73260a3043a9e8f2f72748ca8bd11ef10"
+  },
+  "standaloneReconstructionPrompt": {
+    "path": "reconstruction-prompt.md",
+    "sha256": "sha256:11af3bc71a04a5b857060488ef19f2f20fdf959afca0cd9e2769375c970c107f"
+  },
+  "reference": {
+    "path": "app/public/assets/goal-visualizations/mathematik/f84ea3d8-c255-552a-998a-202e42843f56/f84ea3d8-c255-552a-998a-202e42843f56.jpg",
+    "sha256": "sha256:ee97f9be790c46f30d64a61d7a5cd4c30e834b7f7a0766562858cb061f0daed9",
+    "actuallyInspectedBeforeEditing": true
+  },
+  "referenceStrategy": "Targeted edit using the actual existing four-panel JPG as reference: correct the inconsistent 4 cm/2 cm labels in panel 3, preserve the friendly comic scene and mathematical argument. The generator changed some pixels outside the labels; pixel identity is not claimed.",
+  "candidate": {
+    "path": "candidate.png",
+    "sha256": "sha256:1be92555033fa983dfd07cec527142f6618e98d9d635393bae076f0d81e1866c"
+  },
+  "activeAsset": {
+    "path": "app/public/assets/goal-visualizations/mathematik/f84ea3d8-c255-552a-998a-202e42843f56/f84ea3d8-c255-552a-998a-202e42843f56.png",
+    "sha256": "sha256:1be92555033fa983dfd07cec527142f6618e98d9d635393bae076f0d81e1866c"
+  },
+  "rootDecision": "accepted_pilot",
+  "rootReviewNotes": "Root actually inspected the old and new images; an independent image review confirms the corrected wide rectangle has horizontal 4 cm and vertical 2 cm. The original false universal claim is clearly marked and correctly refuted. The independent reviewer did not observe the generation call; this separate record supplies firsthand tool provenance.",
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": "not_performed",
+  "generationIsNotApproval": true,
+  "independentReviewPath": "independent-review.json"
+}

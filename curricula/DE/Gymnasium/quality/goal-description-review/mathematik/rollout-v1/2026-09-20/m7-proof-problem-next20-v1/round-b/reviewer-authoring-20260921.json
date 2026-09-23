@@ -1,0 +1,276 @@
+{
+  "startedAt": "2026-09-21T20:49:20Z",
+  "reviewer": "independent-blind-round-b",
+  "generationParameters": {
+    "environment": "Codex independent subagent",
+    "modelIdentity": "GPT-5 family; exact serving model revision not exposed",
+    "samplingParameters": "not exposed",
+    "scope": "supplied round-b batch, prompt, criteria and schemas only",
+    "imageInspection": false,
+    "otherReviewOutputsInspected": false
+  },
+  "decisions": [
+    {
+      "goalId": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+      "decision": "keep",
+      "rationale": "Begriffe, Notation und ausdrücklich genannte Zahlbereiche bilden die gemeinsame Kompetenz, eine Aussage eindeutig zu lesen. Das vorhandene AB1-Ziel verlangt noch keine Beweisführung; die anschließende Plausibilitätsprüfung bleibt davon unterscheidbar. DE und EN benennen dieselben Leistungen. Eine Aufnahme detaillierter Prüfvarianten in die kurze Beschreibung ist nicht nötig.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die Bedeutung einer Aussage hängt von definierten Begriffen und dem zugelassenen Bereich ihrer Variablen ab; etwa bedeutet eine nichtnegative reelle Zahl etwas anderes als eine positive ganze Zahl.",
+        "essentialUnderstandingEn": "A statement's meaning depends on defined terms and the allowed domain of its variables; a nonnegative real number is not the same as a positive integer.",
+        "observablePerformanceDe": "Die lernende Person erläutert die verwendeten Symbole einer neu vorgelegten Aussage und nennt ausdrücklich Zahlbereich und Einschränkungen wie x > 0 oder x ungleich 0, ohne diese mit der Behauptung zu verwechseln.",
+        "observablePerformanceEn": "For a newly presented statement, the learner explains its symbols and explicitly states the number domain and restrictions such as x > 0 or x not equal to 0 without confusing them with the claim.",
+        "transferExpectationDe": "Bei einer neuen Aussage, die statt symbolisch in Worten oder mit Intervallnotation vorliegt, formuliert die lernende Person dieselben Annahmen eindeutig und unterscheidet einen eingeschlossenen von einem ausgeschlossenen Randwert.",
+        "transferExpectationEn": "For a new statement given in words or interval notation rather than symbols, the learner states the assumptions precisely and distinguishes an included endpoint from an excluded one."
+      }
+    },
+    {
+      "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+      "decision": "keep",
+      "rationale": "Die Auswahl geeigneter Beispiele einschließlich Rand- und Spezialfällen ist bereits ausdrücklich zu begründen. Das Wort Plausibilität behauptet keinen allgemeinen Beweis. Die vorgelagerte Begriffsklärung passt, und das nachfolgende Bestimmen des Geltungsbereichs bleibt eine eigene Leistung. DE/EN sind gleichwertig; KEEP ohne kosmetische Verlängerung.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Beispiele liefern Hinweise auf die Plausibilität einer Aussage; Rand- und Spezialfälle prüfen andere Aspekte als beliebige Standardwerte, und bestätigende Einzelbeispiele beweisen keine allgemeine Aussage.",
+        "essentialUnderstandingEn": "Examples provide evidence of a statement's plausibility; boundary and special cases probe different aspects from arbitrary ordinary values, and confirming individual examples does not prove a universal statement.",
+        "observablePerformanceDe": "Die lernende Person wählt zu einer gegebenen Aussage einen typischen Fall sowie einen zulässigen Rand- oder Spezialfall, überprüft beide und erklärt, warum diese Auswahl aufschlussreich ist und welche Aussagekraft die Ergebnisse haben.",
+        "observablePerformanceEn": "The learner selects a typical case and a valid boundary or special case for a statement, checks both, and explains why the selection is informative and what the results establish.",
+        "transferExpectationDe": "Bei einer neuen Behauptung mit offenem statt geschlossenem Definitionsintervall passt die lernende Person die Testauswahl an und vermeidet einen unzulässigen Randwert, statt nur bekannte Zahlen auszutauschen.",
+        "transferExpectationEn": "For a new claim with an open rather than closed domain interval, the learner adapts the test cases and avoids an excluded endpoint instead of merely substituting different numbers."
+      }
+    },
+    {
+      "goalId": "04118376-6dd8-532e-ab38-be22017ba93d",
+      "decision": "keep",
+      "rationale": "Anders als die vorausgesetzte Plausibilitätsprüfung verlangt dieses AB2-Ziel eine Entscheidung über allgemeine Gültigkeit oder Zusatzbedingungen und deren präzise Formulierung. Der Wortlaut ist fachlich richtig und in beiden Sprachen deckungsgleich. Die Bedingungen begründet ein Evidenzprofil; es ist nicht nötig, jeden möglichen Beweistyp in die Beschreibung aufzunehmen.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Eine Aussage kann auf ihrem gesamten angegebenen Bereich oder nur auf einer eingeschränkten Teilmenge gelten; Zusatzbedingungen müssen zur behaupteten Beziehung passen und dürfen nicht bloß zufällig geprüfte Beispiele aufzählen.",
+        "essentialUnderstandingEn": "A statement may hold throughout its stated domain or only on a restricted subset; additional conditions must fit the claimed relationship rather than merely list examples that happened to be tested.",
+        "observablePerformanceDe": "Die lernende Person bestimmt beispielsweise, wann aus x² = y² tatsächlich x = y folgt, nennt eine passende Vorzeichenbedingung und erläutert einen Fall, in dem die uneingeschränkte Folgerung scheitert.",
+        "observablePerformanceEn": "The learner determines, for example, when x² = y² really implies x = y, states an appropriate sign condition, and explains a case in which the unrestricted implication fails.",
+        "transferExpectationDe": "Bei einer neuen Aussage mit einer Division statt einer Quadrierung identifiziert die lernende Person die erforderliche Nichtnullbedingung und formuliert den dadurch eingeschränkten Geltungsbereich.",
+        "transferExpectationEn": "For a new statement involving division instead of squaring, the learner identifies the required nonzero condition and formulates the resulting restricted scope of validity."
+      }
+    },
+    {
+      "goalId": "3de1d5b0-0a26-5124-b066-92b65a882c5e",
+      "decision": "keep",
+      "rationale": "Begründung und Widerlegung sind hier alternative Ergebnisse derselben Prüfung einer Aussage, keine unverbundenen Routinen. Bekannte Definitionen/Sätze und Gegenbeispiel sind ausdrücklich genannt; die Voraussetzungen zum Geltungsbereich sind passend. Das englische convincingly wird im gebundenen mathematischen Kontext als nachvollziehbare Begründung gelesen, nicht als bloße Überredung. Keine fachlich notwendige Textänderung.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Eine allgemeine Begründung erklärt, warum eine Beziehung aus Definitionen oder bekannten Sätzen folgt; eine allgemeine falsche Behauptung wird durch einen zulässigen Fall mit falscher Folgerung widerlegt.",
+        "essentialUnderstandingEn": "A general justification explains why a relation follows from definitions or known theorems; a false universal claim is refuted by an admissible case with a false conclusion.",
+        "observablePerformanceDe": "Die lernende Person begründet eine einfache Aussage wie die Geradheit der Summe zweier gerader Zahlen aus der Definition oder widerlegt eine neue falsche Behauptung durch ein erläutertes Gegenbeispiel.",
+        "observablePerformanceEn": "The learner justifies a simple statement such as the evenness of the sum of two even integers from the definition or refutes a new false claim with an explained counterexample.",
+        "transferExpectationDe": "Bei einer unabhängig gestellten Aussage über geometrische Figuren statt Zahlen entscheidet die lernende Person erneut zwischen einem allgemeinen Argument und einer Widerlegung und nennt die jeweils maßgeblichen Voraussetzungen.",
+        "transferExpectationEn": "For an independently presented statement about geometric figures instead of numbers, the learner again chooses between a general argument and a refutation and identifies the relevant assumptions."
+      }
+    },
+    {
+      "goalId": "591cb948-f313-5b1c-a9cb-3df8162eeb8b",
+      "decision": "keep",
+      "rationale": "Der Text bindet das Erstellen oder Prüfen der Schlusskette an die Begründung ihrer Zwischenschritte. Damit ist mehr als das bloße Sortieren von Satzkarten verlangt. Die vorgelagerte Unterscheidung von Voraussetzung und Folgerung passt, während die folgenden Beweisziele nicht vorweggenommen werden. Die bilinguale Fassung ist fachlich konsistent.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Eine Schlusskette ist gültig, wenn jede Folgerung unter den geltenden Annahmen begründet ist; die Wahrheit eines Endsatzes macht einen fehlerhaften Zwischenschritt nicht gültig und Implikationen sind nicht automatisch umkehrbar.",
+        "essentialUnderstandingEn": "A chain of reasoning is valid when each implication is justified under the assumptions; a true final statement does not validate a faulty intermediate step, and implications are not automatically reversible.",
+        "observablePerformanceDe": "Die lernende Person ordnet gegebene Wenn-Dann-Beziehungen zu A ⇒ B ⇒ C, begründet jeden Übergang und markiert eine Stelle, an der eine nicht gelieferte Umkehrung benutzt würde.",
+        "observablePerformanceEn": "The learner arranges given if-then relations into A ⇒ B ⇒ C, justifies each transition, and identifies a step that would require a converse not supplied by the premises.",
+        "transferExpectationDe": "In einer neuen Aufgabe mit einer verzweigten statt linearen Aussagenstruktur bestimmt die lernende Person, welche Aussagen gemeinsam für einen Zwischenschritt benötigt werden und welche Schlusskette tatsächlich zum Ziel führt.",
+        "transferExpectationEn": "In a new task with a branching rather than linear statement structure, the learner identifies which statements are jointly needed for an intermediate step and which chain actually reaches the conclusion."
+      }
+    },
+    {
+      "goalId": "2b497114-66ce-5f38-9b4d-dd17a2f4088f",
+      "decision": "keep",
+      "rationale": "Die zwei Beispiele Division durch null und unzulässige Umkehrung konkretisieren dieselbe Kompetenz der Fehlerdiagnose in Argumentationen. Eine korrekte Begründung ist im Kontext auch eine Begründung, weshalb der Schluss nicht trägt; es wird kein Beweis einer falschen Endaussage zugesagt. Die beiden angegebenen logischen Voraussetzungen sind sachgerecht. KEEP mit ausdrücklich fehlerbezogener Evidenz.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein Rechenschritt oder logischer Schluss benötigt gültige Voraussetzungen; insbesondere darf nicht durch null geteilt werden und aus A ⇒ B folgt nicht ohne Weiteres B ⇒ A.",
+        "essentialUnderstandingEn": "An algebraic step or logical inference requires valid assumptions; in particular, division by zero is forbidden and A ⇒ B does not by itself establish B ⇒ A.",
+        "observablePerformanceDe": "Die lernende Person bezeichnet in einem vorgelegten Scheinbeweis den ersten unzulässigen Schritt, erläutert die verletzte Voraussetzung und gibt eine gültige Korrektur oder eine begründete Zurückweisung der Folgerung an.",
+        "observablePerformanceEn": "In a presented false proof, the learner identifies the first invalid step, explains the violated assumption, and provides a valid correction or a justified rejection of the conclusion.",
+        "transferExpectationDe": "Bei einem neuen Argument wechselt die Fehlerart vom verdeckten Teilen durch null zur unzulässigen Umkehrung; die lernende Person diagnostiziert den konkreten Fehler statt nur das zuvor gelernte Warnwort zu wiederholen.",
+        "transferExpectationEn": "In a new argument, the fault changes from hidden division by zero to an unjustified converse; the learner diagnoses the actual error instead of merely repeating the warning used in the previous case."
+      }
+    },
+    {
+      "goalId": "a8d4eb81-b77a-53e3-813a-dbfeed09f1bf",
+      "decision": "keep",
+      "rationale": "Deuten, Verneinen und Prüfen sind kohärente Anwendungen der Bedeutung der Quantoren, nicht allein wegen mehrerer Verben aufzuspalten. DE/EN stimmen überein. Das bekannte Wenn-Dann-Verständnis ist eine plausible Grundlage; weder verschachtelte Quantorenlogik noch ein formaler Kalkül werden zusätzlich verlangt.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Eine Allaussage verlangt Gültigkeit für jedes Element des genannten Bereichs, eine Existenzaussage mindestens einen Zeugen; beim Verneinen werden Quantor und Aussage gemeinsam negiert.",
+        "essentialUnderstandingEn": "A universal statement requires validity for every element of the stated domain, while an existential statement requires at least one witness; negation changes both the quantifier and the predicate.",
+        "observablePerformanceDe": "Die lernende Person übersetzt eine vorgelegte All- oder Existenzaussage zwischen Worten und Symbolen, formuliert die Negation und erklärt, ob ein gezeigtes Beispiel als Zeuge oder Gegenbeispiel ausreicht.",
+        "observablePerformanceEn": "The learner translates a presented universal or existential statement between words and symbols, formulates its negation, and explains whether a proposed example suffices as a witness or counterexample.",
+        "transferExpectationDe": "Bei einer neuen Aussage über dieselbe Eigenschaft, aber einen anderen Grundbereich, prüft die lernende Person erneut Existenz oder Allgemeingültigkeit und erklärt, warum ein früherer Zeuge oder ein früheres Gegenbeispiel jetzt unzulässig sein kann.",
+        "transferExpectationEn": "For a new statement about the same property but a different domain, the learner reassesses existence or universal validity and explains why an earlier witness or counterexample may no longer be admissible."
+      }
+    },
+    {
+      "goalId": "09e85220-afc3-5357-b5bc-c4b2c17e85aa",
+      "decision": "keep",
+      "rationale": "Gegenüber der vorausgesetzten einfachen Plausibilitätsprüfung nennt dieses AB2-Ziel die systematische Untersuchung einer Vermutung und Interpretation der Befunde. Randwerte, Symmetrie und Extremfälle sind heuristische Möglichkeiten, keine Pflichtliste unabhängiger Kompetenzen. Die Beschreibung verspricht keinen Beweis aus Beispielen und ist bilingual deckungsgleich.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Eine systematische Beispielwahl untersucht strukturell unterschiedliche Fälle einer Vermutung; Symmetrie, Rand- und Extremfälle können Muster oder Gegenbeispiele sichtbar machen, aber wiederholte Bestätigung allein beweist die Vermutung nicht.",
+        "essentialUnderstandingEn": "Systematic examples examine structurally different cases of a conjecture; symmetry, boundary and extreme cases can reveal patterns or counterexamples, but repeated confirmation alone does not prove the conjecture.",
+        "observablePerformanceDe": "Die lernende Person entwirft für eine neue Vermutung eine geordnete Folge von Untersuchungsfällen, begründet deren Unterschiede und interpretiert, ob die Ergebnisse die Vermutung stützen, einschränken oder widerlegen.",
+        "observablePerformanceEn": "The learner designs an organized set of investigative cases for a new conjecture, justifies their structural differences, and interprets whether the results support, restrict or refute the conjecture.",
+        "transferExpectationDe": "Wird eine zunächst symmetrische geometrische Konfiguration unabhängig asymmetrisch verändert, entwickelt die lernende Person eine angepasste Testauswahl und untersucht, ob das vermutete Muster bestehen bleibt.",
+        "transferExpectationEn": "When an initially symmetric geometric configuration is independently changed to an asymmetric one, the learner adapts the test selection and investigates whether the conjectured pattern persists."
+      }
+    },
+    {
+      "goalId": "e2d56885-a204-54b4-8717-a46d029ef416",
+      "decision": "keep",
+      "rationale": "Die bewusste Konstruktion eines Gegenbeispiels und die Begründung seiner widerlegenden Wirkung bilden eine klar abgegrenzte Kompetenz nach systematischer Beispieluntersuchung. Das Ziel verlangt bereits mehr als bloßes Nennen eines Zahlenwerts. Die Bedeutung allgemeiner falscher Aussagen ist durch den Gegenbeispielkontext hinreichend begrenzt; keine Erweiterung auf jede denkbare logische Satzform nötig.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein Gegenbeispiel zu einer allgemeinen Wenn-Dann-Aussage muss sämtliche Voraussetzungen erfüllen und zugleich die Folgerung verletzen; ein Fall außerhalb des Geltungsbereichs ist keine Widerlegung.",
+        "essentialUnderstandingEn": "A counterexample to a universal if-then statement must satisfy every assumption while violating the conclusion; a case outside the domain does not refute the statement.",
+        "observablePerformanceDe": "Die lernende Person konstruiert zu einer neuen falschen Behauptung einen gezielt ausgewählten Zahlen- oder Figurenfall und überprüft getrennt die erfüllten Voraussetzungen und die falsche Folgerung.",
+        "observablePerformanceEn": "The learner constructs a deliberately chosen numerical or geometric case for a new false claim and separately verifies the satisfied assumptions and the false conclusion.",
+        "transferExpectationDe": "Nach einer zusätzlichen Einschränkung, die das erste Gegenbeispiel ausschließt, sucht die lernende Person für eine weiterhin falsche neue Aussage ein anders aufgebautes zulässiges Gegenbeispiel und begründet dessen Wirkung.",
+        "transferExpectationEn": "After an added restriction excludes the first counterexample, the learner finds a structurally different admissible counterexample to a new statement that is still false and explains why it works."
+      }
+    },
+    {
+      "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
+      "decision": "revise",
+      "rationale": "Die Formulierung verletzte Bedingung oder fehlerhafter Schritt verwischt zwei fachliche Unterschiede: Ein Gegenbeispiel muss die Voraussetzungen erfüllen, nicht verletzen; ein fehlerhafter Beweisschritt allein widerlegt die behauptete Aussage noch nicht. Im gebundenen Gegenbeispiel-Cluster ist eine knappe Präzisierung auf erfüllte Voraussetzungen und verletzte Folgerung möglich, ohne die Kompetenz zu verbreitern. Beide Sprachen enthalten dieselbe Unschärfe.",
+      "proposedDescriptionDe": "Die lernende Person kann eine Aussage mithilfe eines Gegenbeispiels nachvollziehbar widerlegen, indem sie zeigt, dass es die Voraussetzungen erfüllt, aber die behauptete Folgerung verletzt, und daraus den Schluss formuliert.",
+      "proposedDescriptionEn": "The learner can clearly refute a statement using a counterexample by showing that it satisfies the assumptions but violates the claimed conclusion, and formulate the resulting conclusion.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Eine verständliche Widerlegung verbindet die genaue Aussage mit einem zulässigen Gegenbeispiel und erklärt den Widerspruch zur behaupteten Folgerung; die Widerlegung einer Aussage ist nicht bloß das Aufdecken eines Fehlers in einem Beweisversuch.",
+        "essentialUnderstandingEn": "A clear refutation connects the exact statement to an admissible counterexample and explains the conflict with its claimed conclusion; refuting a statement is not merely finding an error in an attempted proof.",
+        "observablePerformanceDe": "Die lernende Person formuliert aus einer Aussage und einem gefundenen Gegenbeispiel eine eigenständige Widerlegung, die Voraussetzungen, Gegenfall, nicht erfüllte Folgerung und Schluss ausdrücklich miteinander verbindet.",
+        "observablePerformanceEn": "Given a statement and a discovered counterexample, the learner writes an independent refutation explicitly connecting the assumptions, counterexample, failed conclusion and final inference.",
+        "transferExpectationDe": "Zu einer neuen graphisch statt rechnerisch dargestellten Behauptung formuliert die lernende Person eine textliche Widerlegung und grenzt sie von einer bloßen Kritik an einem fehlerhaften Lösungsweg ab.",
+        "transferExpectationEn": "For a new claim presented graphically rather than algebraically, the learner writes a verbal refutation and distinguishes it from merely criticizing a faulty solution attempt."
+      }
+    },
+    {
+      "goalId": "d21a1303-50fc-5e38-aeda-eeae3392c74b",
+      "decision": "keep",
+      "rationale": "Direktes Herleiten und Begründen jedes Schritts sind bereits präzise benannt. Die Voraussetzungen zu Implikationen, Schlussketten und Gegenbeispielen stützen die Unterscheidung von Beweis und bloßem Prüfen. Der Text lässt einfache altersangemessene wie anspruchsvollere fachliche Fälle zu, ohne einen Spezialbeweis vorzuschreiben. DE/EN erhalten dieselbe Anforderung.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein direkter Beweis führt von den Voraussetzungen und Definitionen durch gültige Schlüsse zur Behauptung; die Behauptung darf nicht als eigene Begründung vorausgesetzt werden und Beispiele ersetzen den allgemeinen Schluss nicht.",
+        "essentialUnderstandingEn": "A direct proof proceeds from assumptions and definitions through valid inferences to the claim; the claim cannot be assumed as its own justification, and examples do not replace a general argument.",
+        "observablePerformanceDe": "Die lernende Person entwickelt einen direkten Beweis einer neuen einfachen Aussage, etwa über die Teilbarkeit einer Summe, und nennt zu jeder Umformung die verwendete Definition oder zulässige Schlussregel.",
+        "observablePerformanceEn": "The learner develops a direct proof of a new simple claim, for example about divisibility of a sum, and identifies the definition or valid inference supporting each transformation.",
+        "transferExpectationDe": "Bei einer neuen geometrischen statt arithmetischen Aussage wählt die lernende Person passende bekannte Sätze und bildet daraus einen direkten Beweis, statt den zuvor verwendeten algebraischen Ablauf zu kopieren.",
+        "transferExpectationEn": "For a new geometric rather than arithmetic claim, the learner selects appropriate known theorems and constructs a direct proof instead of copying the earlier algebraic sequence."
+      }
+    },
+    {
+      "goalId": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+      "decision": "keep",
+      "rationale": "Trotz des einleitenden ansetzen wird der vollständige Weg von der Negation über den Widerspruch bis zur ursprünglichen Behauptung ausdrücklich verlangt; eine Änderung zu durchführen wäre daher kosmetisch. Die logischen Voraussetzungen sind passend und beide Sprachfassungen stimmen überein. Induktion und Kontraposition bleiben andere, nicht hier einzuführende Verfahren.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Wenn aus der Negation einer Behauptung zusammen mit den geltenden Voraussetzungen ein echter Widerspruch folgt, kann die Negation nicht gelten; ein nur überraschendes oder unerwünschtes Ergebnis ist noch kein Widerspruch.",
+        "essentialUnderstandingEn": "If the negation of a claim together with the standing assumptions yields a genuine contradiction, the negation cannot hold; a merely surprising or undesirable result is not a contradiction.",
+        "observablePerformanceDe": "Die lernende Person negiert eine neu gestellte Behauptung korrekt, leitet daraus begründet zwei unvereinbare Aussagen ab und erklärt, warum damit die ursprüngliche Behauptung bewiesen ist.",
+        "observablePerformanceEn": "The learner correctly negates a newly presented claim, derives two incompatible statements with justification, and explains why this proves the original claim.",
+        "transferExpectationDe": "Bei einer neuen Existenz- oder Nichtexistenzaussage formuliert die lernende Person die passende Gegenannahme und findet einen Widerspruch zu einer Voraussetzung, ohne die Form eines zuvor behandelten Zahlenbeweises lediglich nachzuahmen.",
+        "transferExpectationEn": "For a new existence or nonexistence claim, the learner formulates the appropriate contrary assumption and derives a contradiction with a premise without merely imitating an earlier numerical proof."
+      }
+    },
+    {
+      "goalId": "5c632c68-fc34-582e-8581-ae9e55ab538f",
+      "decision": "keep",
+      "rationale": "Die vollständige Induktion ist mit Anfang, Voraussetzung, Schritt und Schluss fachlich vollständig beschrieben. Das ist ein zusammenhängender Beweis und keine Sammlung unabhängiger Rechenverfahren. Der direkte Beweis als Voraussetzung trägt die lokale Herleitung im Induktionsschritt. Beide Sprachen sind gleichwertig; genaue Aufgabenfamilien und Startindexvariationen gehören in P, nicht in die Beschreibung.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Induktionsanfang und allgemein begründeter Übergang von n auf n+1 sichern eine Behauptung für alle ganzen Indizes ab dem Startwert; die Induktionsvoraussetzung ist eine bedingte Annahme für den Schritt, kein vorweggenommener Gesamtbeweis.",
+        "essentialUnderstandingEn": "A base case and a generally justified transition from n to n+1 establish a claim for every integer index from the starting value onward; the induction hypothesis is a conditional assumption within the step, not an assumption of the entire result.",
+        "observablePerformanceDe": "Die lernende Person führt einen Induktionsbeweis einer neu vorgelegten Summenformel, kennzeichnet Anfang und Voraussetzung, begründet den Übergang und formuliert den bewiesenen Indexbereich korrekt.",
+        "observablePerformanceEn": "The learner proves a newly presented summation formula by induction, identifies the base case and hypothesis, justifies the transition, and states the proven index range correctly.",
+        "transferExpectationDe": "Für eine neue Teilbarkeits- oder Ungleichungsbehauptung mit anderem zulässigem Startindex gestaltet die lernende Person den Induktionsschritt neu und erklärt, warum der gewählte Anfang den geforderten Bereich abdeckt.",
+        "transferExpectationEn": "For a new divisibility or inequality claim with a different admissible starting index, the learner redesigns the induction step and explains why the chosen base case covers the required range."
+      }
+    },
+    {
+      "goalId": "f2df01c0-355e-5e51-973f-d31b0eed28ec",
+      "decision": "keep",
+      "rationale": "Die Darstellung eines Beweises ist durch verständliche Sprache, Notation, Satzverweise und abschließende Einordnung konkretisiert. Diese kommunikative Leistung unterscheidet sich vom vorausgesetzten Finden eines direkten Beweises. Die englische Schlussformulierung kann denselben Geltungsbezug tragen; es gibt keinen belegten zusätzlichen deutschen Kompetenzteil, der eine Neuformulierung erzwingt.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Eine nachvollziehbare Beweispräsentation macht Annahmen, logische Übergänge und benutzte Sätze sprachlich und symbolisch sichtbar und hält den Schluss innerhalb des tatsächlich bewiesenen Geltungsbereichs.",
+        "essentialUnderstandingEn": "An understandable proof presentation makes assumptions, logical transitions and cited theorems explicit in words and symbols and keeps the conclusion within the scope actually proved.",
+        "observablePerformanceDe": "Die lernende Person überführt einen gegebenen knappen Beweisentwurf in einen zusammenhängenden Text mit definierter Notation, begründeten Verweisen und einem klar auf die Behauptung bezogenen Schlusssatz.",
+        "observablePerformanceEn": "The learner turns a terse proof outline into a coherent text with defined notation, justified references and a final sentence clearly tied to the claim.",
+        "transferExpectationDe": "Bei einem neuen überwiegend bildlichen Beweis erläutert die lernende Person die sichtbaren Beziehungen in mathematischer Sprache und grenzt den bewiesenen Sachverhalt von zusätzlichen, nicht bewiesenen Vermutungen ab.",
+        "transferExpectationEn": "For a new proof expressed mainly through a diagram, the learner explains the depicted relationships in mathematical language and distinguishes the established result from additional unproved conjectures."
+      }
+    },
+    {
+      "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+      "decision": "block",
+      "rationale": "Der bilinguale Strategievergleich ist als LK-Kompetenz an sich klar. Der gebundene direkte Requires-Kontext verlangt jedoch zusätzlich c3b9c561-dd83-5903-9ec6-49c7f51bafd5 (Bedingte Wahrscheinlichkeiten berechnen). Bedingte Wahrscheinlichkeit ist keine allgemeine notwendige Voraussetzung für die Wahl zwischen direktem Beweis, Kontraposition, Widerspruch und Induktion; dafür liefert der Input auch keine fachliche Brücke. Eine reine Textänderung kann diese sachfremde Zugangshürde nicht verantwortbar kaschieren. Die LK-Tags werden als Umfangsgrenze respektiert; eine effektive GK/LK-Projektion wird ohne separate Mappingnachweise nicht bestätigt.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die logische Form und Struktur einer Behauptung beeinflussen geeignete Beweiswege: Induktion benötigt eine passende Indexstruktur, Kontraposition eine Implikation und ein Widerspruchsbeweis eine nutzbare Gegenannahme.",
+        "essentialUnderstandingEn": "The logical form and structure of a claim influence suitable proof methods: induction requires an appropriate index structure, contraposition an implication, and contradiction a useful contrary assumption.",
+        "observablePerformanceDe": "Die lernende Person vergleicht für eine neu gestellte Behauptung tatsächlich geeignete Beweisansätze, nennt deren Ansatzpunkte oder Schwierigkeiten und begründet die eigene Auswahl, statt nur einen Methodennamen zu nennen.",
+        "observablePerformanceEn": "For a newly presented claim, the learner compares genuinely suitable proof approaches, identifies their starting points or difficulties, and justifies the selection instead of merely naming a method.",
+        "transferExpectationDe": "Wird eine allgemeine Zahlenbehauptung durch eine Aussage über eine ganze Indexfolge ersetzt, prüft die lernende Person neu, ob Induktion nun passt und warum die zuvor gewählte Strategie nicht automatisch die günstigste bleibt.",
+        "transferExpectationEn": "When a general numerical claim is replaced by a statement about an integer-indexed family, the learner reassesses whether induction now fits and why the previously chosen strategy is not automatically still the most suitable."
+      }
+    },
+    {
+      "goalId": "4ae439c0-ce3c-5c96-9755-9899bc70e948",
+      "decision": "keep",
+      "rationale": "Die gebundene LK-Beschreibung verlangt eine zusammenhängende Präzisierung von Argumentationen anhand von Quantoren, Bedingungen und Äquivalenzen. Diese sind Bestandteile eindeutiger mathematischer Sprache, keine neue Sammlung von Beweisverfahren. Der lokale Anschluss an Strategievergleich ist verständlich; dessen separat beanstandete Voraussetzung wird hierdurch nicht freigegeben. DE/EN stimmen überein. Eine externe GK/LK-Projektion wurde nicht geprüft.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Quantoren, Bedingungen und die Unterscheidung von Implikation und Äquivalenz bestimmen den genauen Gehalt einer Argumentation; sprachliche Präzision muss diesen Gehalt erhalten und darf die Behauptung nicht unbemerkt verstärken.",
+        "essentialUnderstandingEn": "Quantifiers, conditions, and the distinction between implication and equivalence determine the exact content of an argument; precise wording must preserve that content rather than silently strengthen the claim.",
+        "observablePerformanceDe": "Die lernende Person formuliert ein neu vorgelegtes mehrdeutiges Argument mit benannten Variablenbereichen, passenden Quantoren und eindeutig gerichteten Schlusszeichen und erklärt die beseitigte Mehrdeutigkeit.",
+        "observablePerformanceEn": "The learner reformulates a newly presented ambiguous argument with specified variable domains, appropriate quantifiers and unambiguous directions of inference, explaining which ambiguity was removed.",
+        "transferExpectationDe": "In einer neuen Aufgabe, in der nur eine Richtung einer Beziehung begründet ist, ersetzt die lernende Person eine vorschnelle Äquivalenz durch die richtige Implikation und formuliert präzise, welche zusätzliche Begründung für die Umkehrung fehlen würde.",
+        "transferExpectationEn": "In a new task where only one direction of a relationship is justified, the learner replaces a premature equivalence with the correct implication and states precisely what additional justification the converse would require."
+      }
+    },
+    {
+      "goalId": "dd1d9f9c-0a4e-5d01-95d8-f6993163b20c",
+      "decision": "keep",
+      "rationale": "Das Identifizieren der ersten fehlenden oder unzureichenden Begründung ist eine beobachtbare, eng abgegrenzte LK-Leistung. Der Text verlangt keine eigenständige Reparatur beliebiger Beweise und erweitert damit den Umfang nicht unnötig. Beide Sprachfassungen passen. Das KEEP des Wortlauts bestätigt nicht die separat beanstandete Voraussetzung am vorgeordneten Strategieziel oder externe Geltungszuordnungen.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein Beweis ist erst vollständig, wenn jeder erforderliche Schluss einschließlich Voraussetzungen und nötiger Fälle begründet ist; eine richtige Endaussage kann eine frühere Lücke nicht rückwirkend schließen.",
+        "essentialUnderstandingEn": "A proof is complete only when every necessary inference, including its assumptions and required cases, is justified; a correct conclusion cannot retrospectively fill an earlier gap.",
+        "observablePerformanceDe": "Die lernende Person verfolgt einen neuen Beweis in seiner angegebenen Reihenfolge, nennt die erste nicht gedeckte Schlussstelle und beschreibt genau die dort fehlende Voraussetzung, Fallprüfung oder Begründung.",
+        "observablePerformanceEn": "The learner follows a new proof in its stated order, identifies the first unsupported inference, and describes the exact missing assumption, case check or justification at that point.",
+        "transferExpectationDe": "Bei einem neuen Beweis mit ausgelassenem Sonderfall statt unzulässiger Umformung erkennt die lernende Person den anderen Lückentyp und lokalisiert die erste Stelle, an der Vollständigkeit nur behauptet wird.",
+        "transferExpectationEn": "For a new proof omitting a special case rather than using an invalid transformation, the learner recognizes the different type of gap and locates the first point where completeness is merely asserted."
+      }
+    },
+    {
+      "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+      "decision": "block",
+      "rationale": "Die DE/EN-Beschreibung der allgemeinen Problemerfassung ist angemessen und atomar. Der direkte gebundene Requires-Eintrag 122ab909-04ed-572b-a499-754f3bcc8ef0 (Grundlegende Zählprinzipien anwenden) verlangt aber ein Spezialverfahren, das zum Identifizieren von Gegebenem, Gesuchtem und Nebenbedingungen in allgemeinen Aufgaben nicht notwendig ist. Der Input begrenzt das Ziel nicht auf kombinatorische Probleme. Diese Kontextschwäche ist keine Beschreibungsfrage und lässt sich nicht durch Umformulieren ohne unzulässige Verengung lösen.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Gegebene Informationen, gesuchte Größen und einschränkende Bedingungen haben verschiedene Rollen in einer Aufgabe; ein erzählerisches Detail ist nicht automatisch eine benötigte mathematische Angabe.",
+        "essentialUnderstandingEn": "Given information, target quantities and restricting conditions play different roles in a problem; a narrative detail is not automatically a necessary mathematical datum.",
+        "observablePerformanceDe": "Die lernende Person ordnet in einer neuen Textaufgabe die vorhandenen Angaben, die Zielfrage und Bedingungen wie zulässige Werte oder feste Randgrößen übersichtlich und erklärt die Zuordnung.",
+        "observablePerformanceEn": "In a new word problem, the learner clearly organizes the supplied data, the target question, and constraints such as admissible values or fixed boundary quantities, explaining the classification.",
+        "transferExpectationDe": "Bei einer neuen Aufgabe mit Angaben in einer Skizze oder Tabelle statt ausschließlich im Text erkennt die lernende Person dieselben Informationsrollen und benennt eine fehlende Angabe, ohne sie zu erfinden.",
+        "transferExpectationEn": "For a new problem with information in a diagram or table rather than entirely in prose, the learner recognizes the same information roles and identifies a missing datum without inventing it."
+      }
+    },
+    {
+      "goalId": "14173f5e-d3ba-51e5-b510-49ecd0abad90",
+      "decision": "keep",
+      "rationale": "Das Übersetzen einer Zielfrage und Benennen dazu passender Größen ist eine kohärente Formulierungsleistung nach der Problemerfassung und vor der Zerlegung in Teilprobleme. Die Beschreibung verlangt noch keine vollständige Lösung oder Optimierung. Die Beispieloperatoren und DE/EN-Bedeutung passen. Das Wortlaut-KEEP löst nicht die separat beanstandete Voraussetzung des vorgeordneten Ziels.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Eine mathematische Zielfrage benennt, welche Größe bestimmt, welche Aussage gezeigt oder welches Kriterium optimiert werden soll; Variablen erhalten ihre Bedeutung aus dieser Frage und den festgelegten Bedingungen.",
+        "essentialUnderstandingEn": "A mathematical target question specifies which quantity is to be determined, which claim proved, or which criterion optimized; variables gain their meaning from that question and its stated conditions.",
+        "observablePerformanceDe": "Die lernende Person übersetzt eine neu vorgelegte alltagssprachliche Frage in einen eindeutigen mathematischen Auftrag und benennt die dazugehörigen Größen oder Variablen mit ihrer Bedeutung.",
+        "observablePerformanceEn": "The learner translates a newly presented everyday question into an unambiguous mathematical task and identifies the relevant quantities or variables together with their meanings.",
+        "transferExpectationDe": "Bei einem neuen Kontext, der statt eines festen Werts eine bestmögliche Lösung unter Bedingungen verlangt, formuliert die lernende Person ein Optimierungsziel und unterscheidet Zielgröße und Nebenbedingung, ohne schon das Problem lösen zu müssen.",
+        "transferExpectationEn": "In a new context asking for the best feasible solution instead of a fixed value, the learner formulates an optimization objective and distinguishes the objective from the constraint without yet having to solve the problem."
+      }
+    },
+    {
+      "goalId": "c1a23239-08c5-5fe2-a68f-f2075fdeb454",
+      "decision": "keep",
+      "rationale": "Zerlegung, Abhängigkeitsordnung und Zwischenziele beschreiben einen einzigen strukturierenden Problemlöseschritt. Die vorgegebene Zielfrage ist eine passende Grundlage; der nachgelagerte konkrete Lösungsplan wird nicht bereits verlangt. Beide Sprachen sind klar und lassen fachlich gleichwertige Zerlegungen zu. Keine Erweiterung der Beschreibung erforderlich.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Sinnvolle Teilprobleme erzeugen Ergebnisse, die andere Schritte benötigen; ihre Abhängigkeiten bestimmen eine mögliche Bearbeitungsreihenfolge, während unabhängige Teilprobleme unterschiedlich angeordnet werden dürfen.",
+        "essentialUnderstandingEn": "Useful subproblems produce results needed by later steps; dependencies determine a feasible order, while independent subproblems may be arranged in different orders.",
+        "observablePerformanceDe": "Die lernende Person zerlegt eine neue mehrschrittige Aufgabe in begründete Teilfragen, benennt jeweils das benötigte Zwischenergebnis und ordnet die Schritte so, dass Voraussetzungen rechtzeitig vorliegen.",
+        "observablePerformanceEn": "The learner decomposes a new multistep task into justified subquestions, identifies the intermediate result needed at each step, and orders the steps so that prerequisites are available when required.",
+        "transferExpectationDe": "Bei einer neuen Variante, in der ein bisher gegebenes Zwischenergebnis erst ermittelt werden muss oder zwei Teilwege unabhängig werden, passt die lernende Person die Zerlegung und Reihenfolge begründet an.",
+        "transferExpectationEn": "In a new variant where a previously given intermediate result must first be derived or two subtasks become independent, the learner adapts the decomposition and ordering with justification."
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "independent-ai-visual-candidate-review",
+  "reviewId": "math-m7-matrix-notation-v3-independent-b-55039f9c-4ebc-5115-add5-fae95b915e46",
+  "reviewedAt": "2026-09-21T22:47:54Z",
+  "reviewer": "Codex / math_repaired12_blind_b",
+  "model": "Codex; exact serving model identifier not exposed",
+  "independenceGroupId": "math-m7-matrix-notation-v3-independent-b-20260922",
+  "reviewAuthority": "ai_candidate",
+  "status": "candidate",
+  "humanApproval": false,
+  "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46",
+  "goalTitleDe": "Parallelprojektionen auf Koordinatenebenen mit Matrizen darstellen",
+  "goalDescriptionDe": "Die lernende Person kann Abbildungsmatrizen für Parallelprojektionen auf die Koordinatenebenen bestimmen, untersuchen und Bildpunkte berechnen.",
+  "goalDescriptionEn": "The learner can determine and analyze mapping matrices for parallel projections onto coordinate planes and calculate image points.",
+  "goalFingerprint": "sha256:161954b054f179c0deb74748ecdf5c223522f2c7f9b130ac3b5ec2e5ecf5e8ae",
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/55039f9c-4ebc-5115-add5-fae95b915e46/candidate-v3.png",
+  "assetSha256": "sha256:771419dd4e07ee96bed6bc6ad425f33a4d8a99ece7d6298395403ce3142a6648",
+  "width": 1536,
+  "height": 1024,
+  "generation": {
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "tool": "image_gen__imagegen",
+    "exactServingModel": "not exposed",
+    "prompt": {
+      "path": "correction-prompt-v3.md",
+      "sha256": "sha256:5f3a536bfc209d6987d2c9bf5826ddcb8b47531cfbb1ad681185cdb2872db0d8"
+    },
+    "reference": null,
+    "metadataPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/55039f9c-4ebc-5115-add5-fae95b915e46/generation-and-root-review-v3.json"
+  },
+  "generationMetadataProvenance": "Provider/tool/prompt/reference Angaben aus der Autorenquittung, erst nach eigener Bildbeurteilung ausgelesen. Deren rootReview-Feld wurde nicht als Beweis verwendet. Die frühere Referenzabbildung wurde in diesem Auftrag nicht neu geprüft; actuallyViewedBeforeEditing ist die Autorenangabe, keine Aussage über diesen Reviewer.",
+  "actualVisualInspection": {
+    "performed": true,
+    "tool": "view_image",
+    "detail": "original",
+    "inspectedAsset": "candidate-v3.png",
+    "width": 1536,
+    "height": 1024
+  },
+  "independence": "Eigenständige Sichtprüfung und Nachrechnung des aktuellen Rasters. Der Auftrag nannte Roots vorläufige Einschätzung und die P′-Frage; deshalb keine Behauptung vollständiger Blindheit gegenüber dem Auftraggeber.",
+  "verdict": "keep",
+  "summaryDe": "Drei achsenparallele Spezialfälle der Parallelprojektion sind korrekt und klar als solche begrenzt; die Seitenansicht erklärt den xy-Fall ohne falsche 3D-Punktlage.",
+  "mathematicalChecks": [
+    "Pxy=diag(1,1,0) sendet (2,−1,3) auf (2,−1,0); nur z wird null.",
+    "Pxz=diag(1,0,1) sendet (2,−1,3) auf (2,0,3); nur y wird null.",
+    "Pyz=diag(0,1,1) sendet (2,−1,3) auf (0,−1,3); nur x wird null.",
+    "Alle drei Matrizen sind idempotent, lassen ihre Zielebene punktweise fest und haben die jeweils ausgelöschte Koordinatenachse als Kern.",
+    "Untertitel und Merksatz begrenzen die Behauptung 'eine Koordinate null, zwei gleich' ausdrücklich auf die achsenparallelen Beispiele. Für allgemeine schiefe Projektionsrichtungen wäre eine solche Verallgemeinerung falsch, wird hier aber nicht behauptet."
+  ],
+  "visualGeometryChecks": [
+    "Das linke Panel ist ausdrücklich eine Seitenansicht mit x horizontal und z vertikal. Der Punkt P liegt über dem x-Wert 2 auf der markierten Höhe 3.",
+    "Der horizontale Hilfsstrich trifft denselben z=3-Wert wie P; der blaue Pfeil ist senkrecht, also parallel zur gezeichneten z-Achse.",
+    "P′ liegt direkt unter P bei unverändertem x=2 und z=0. Der Zusatz 'y=−1 bleibt gleich' erklärt die in dieser Seitenansicht nicht dargestellte Tiefe.",
+    "Das Auftreffen auf der horizontalen Bildachse wird durch die Seitenansicht nicht als Behauptung y=0 im Raum verwendet: Die lesbare Punktkoordinate P′(2|−1|0) bleibt mit dem Zusatz konsistent.",
+    "Die drei rechten Kästen sind eindeutig den Ebenen xy, xz und yz zugeordnet; keine vertauschte Matrixzeile oder falsche gelöschte Komponente."
+  ],
+  "legibilityAndFit": "Die wenigen Skalenwerte, Punkttripel, Matrixeinträge und Überschriften sind auch ohne Detailraster eindeutig lesbar. Die einfache Seitenansicht passt zum AB2-Ziel und vermeidet eine perspektivisch unklare Tiefenlage.",
+  "limits": "Das Bild zeigt achsenparallele, damit orthogonale Spezialfälle. Es wird keine allgemeine Richtungsmatrix jeder Parallelprojektion behauptet. Keine QA-/Canonical-Änderung durch diesen Review.",
+  "blockers": [],
+  "requiredChanges": [],
+  "scope": "Nur Kandidatenreview. Keine Rasterbearbeitung, keine Canonical-/View-/QA-/Registryänderung; kein Human- oder Runtime-/M7-Claim."
+}

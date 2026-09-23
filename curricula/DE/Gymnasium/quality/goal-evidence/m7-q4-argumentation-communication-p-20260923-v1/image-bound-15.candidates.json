@@ -1,0 +1,834 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-q4-argumentation-communication-image-bound-15-20260923-v1",
+  "reviewedAt": "2026-09-23T05:24:25Z",
+  "reviewer": "Codex subagent / Math Q4 P-v2 independent AI author",
+  "goals": [
+    {
+      "goalId": "70f37fda-545f-51dc-a002-c8e435e5c4a5",
+      "reason": "Fresh process-skill cases distinguish contextual interpretation from mere calculation. Current Q4 page and canonical DE/EN goal match; current image remains bound by hash. AI candidate, not learner evidence or human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Ein rechnerisches Ergebnis beantwortet eine Sachfrage erst, wenn Größe, Einheit, zulässiger Bereich und praktische Bedeutung zum Ausgangsmodell passen.",
+            "essentialUnderstandingEn": "A computed result answers a real-world question only when its quantity, unit, admissible domain, and practical meaning fit the original model.",
+            "observablePerformanceDe": "Die Person setzt ein Ergebnis in einen vollständigen Antwortsatz um, benennt Einheit und Bezugsgröße und prüft, ob es in der Situation realisierbar ist.",
+            "observablePerformanceEn": "The learner turns a result into a complete answer, names its unit and referent, and checks whether it is feasible in the situation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einem linearen Kostenmodell zu einem abklingenden Konzentrationsmodell wechseln; das Ergebnis bezeichnet nun einen Zustand zu einer Zeit statt einen Preis für eine Strecke.",
+            "textEn": "Move from a linear cost model to a decaying concentration model; the result now denotes a state at a time rather than a price for a distance."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fare-context",
+            "taskDemandDe": "Ein Taximodell lautet K(d)=4+2,50d Euro für d Kilometer mit d≥0. Berechne K(6) und beantworte die Frage nach den Kosten der 6-km-Fahrt mit Bedeutung beider Summanden.",
+            "taskDemandEn": "A taxi model is K(d)=4+2.50d euros for d kilometers with d≥0. Find K(6) and answer the cost question for a 6-km trip, explaining both terms.",
+            "expectedPerformanceDe": "K(6)=19 Euro; 4 Euro sind Grundpreis und 15 Euro der Streckenanteil. Die Fahrt kostet nach diesem Modell 19 Euro, nicht 19 km.",
+            "expectedPerformanceEn": "K(6)=19 euros; 4 euros are the base fare and 15 euros the distance charge. Under this model the trip costs 19 euros, not 19 km.",
+            "understandingFocusDe": "Rechnung, Einheit und reale Zielfrage werden ausdrücklich zusammengeführt.",
+            "understandingFocusEn": "Calculation, unit, and real-world question are explicitly connected."
+          },
+          {
+            "id": "concentration-context",
+            "taskDemandDe": "Ein Modell c(t)=100e^(−0,2t) gibt mg/L nach t Stunden an. Deute c(5)≈36,8 im Kontext und prüfe die zulässige Zeitangabe.",
+            "taskDemandEn": "A model c(t)=100e^(−0.2t) gives mg/L after t hours. Interpret c(5)≈36.8 in context and check the admissible time.",
+            "expectedPerformanceDe": "Nach 5 Stunden beträgt die modellierte Konzentration etwa 36,8 mg/L; t=5≥0 ist zulässig. 36,8 bezeichnet keine Stundenzahl und keine entfernte Stoffmenge.",
+            "expectedPerformanceEn": "After 5 hours the modeled concentration is about 36.8 mg/L; t=5≥0 is admissible. 36.8 is not a duration or an amount removed.",
+            "understandingFocusDe": "Ein Ergebnis wird als zeitbezogener Zustand mit korrekter Einheit statt als bloße Zahl gedeutet.",
+            "understandingFocusEn": "A result is interpreted as a time-related state with the right unit rather than a bare number."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fbcb4ad3-786d-5365-94ba-b105660694a5",
+      "reason": "Fresh cases match the current Q4 error-analysis goal and explicitly repair assumption and rounding errors; hash-bound current visual retained. AI candidate only.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Ein Fehler wird über die verletzte Voraussetzung oder die unzulässige Näherung lokalisiert; die Korrektur bewahrt Definitionsbedingungen und ausreichende Genauigkeit statt nur ein neues Endergebnis zu liefern.",
+            "essentialUnderstandingEn": "An error is located through a violated assumption or inadmissible approximation; the correction preserves domain conditions and adequate precision rather than merely replacing the final answer.",
+            "observablePerformanceDe": "Die Person zeigt den konkreten falschen Schritt, erklärt seine Wirkung und führt eine überprüfbare korrigierte Rechnung aus.",
+            "observablePerformanceEn": "The learner identifies the exact faulty step, explains its effect, and carries out a checkable corrected calculation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von ungültigem Kürzen bei einer nicht definierten Stelle zu zu früher Rundung in einer Flächenrechnung wechseln.",
+            "textEn": "Move from invalid cancellation at an undefined input to premature rounding in an area calculation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cancelled-hole",
+            "taskDemandDe": "Eine Lösung setzt (x²−4)/(x−2)=x+2 auch bei x=2. Finde den Fehler und korrigiere die Aussage einschließlich Definitionsbereich.",
+            "taskDemandEn": "A solution uses (x²−4)/(x−2)=x+2 even at x=2. Find the error and correct the statement including its domain.",
+            "expectedPerformanceDe": "Kürzen ergibt x+2 nur für x≠2, weil der ursprüngliche Nenner bei 2 null ist. Dort ist der Bruch undefiniert, auch wenn der vereinfachte Term 4 ergäbe.",
+            "expectedPerformanceEn": "Cancellation yields x+2 only for x≠2 because the original denominator is zero at 2. The fraction is undefined there even though the simplified expression would give 4.",
+            "understandingFocusDe": "Die ursprüngliche Voraussetzung bleibt nach der Umformung sichtbar.",
+            "understandingFocusEn": "The original condition remains visible after simplification."
+          },
+          {
+            "id": "rounding-early",
+            "taskDemandDe": "Für ein Quadrat mit Seitenlänge √2 cm verwendet jemand √2≈1,4 und meldet die Fläche 1,96 cm² als exakten Wert. Diagnostiziere und korrigiere.",
+            "taskDemandEn": "For a square with side length √2 cm, someone uses √2≈1.4 and reports area 1.96 cm² as exact. Diagnose and correct.",
+            "expectedPerformanceDe": "(√2)²=2 cm² exakt; 1,96 cm² entsteht aus vorzeitigem Runden und darf höchstens als Näherung der gerundeten Seitenlänge gelten. Exakte Werte bis zum Schluss beibehalten.",
+            "expectedPerformanceEn": "(√2)²=2 cm² exactly; 1.96 cm² comes from premature rounding and at most approximates the rounded side length. Keep exact values until the end.",
+            "understandingFocusDe": "Anders als beim ersten Fall wird die Rechengültigkeit durch Präzision statt durch den Definitionsbereich begrenzt.",
+            "understandingFocusEn": "Unlike the first case, validity is limited by precision rather than domain."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "aeae526e-b3a4-5a17-b177-351df0307cb9",
+      "reason": "Fresh notation cases match the current bilingual canonical goal. The original image was re-viewed at full resolution: its marks around f, 3 and 7 are paired quotation marks, not an f-prime claim, so image binding remains eligible. No human approval is asserted.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Mathematische Symbole erhalten ihre Bedeutung aus Rolle und Kontext: f bezeichnet die Funktion, f(x) ihren Wert an x und f′(x) die lokale Änderungsrate; bedingte Wahrscheinlichkeiten benennen Ereignis und Bedingung in fester Reihenfolge.",
+            "essentialUnderstandingEn": "Mathematical symbols gain meaning from role and context: f denotes the function, f(x) its value at x, and f′(x) the local rate of change; conditional probabilities name event and condition in a fixed order.",
+            "observablePerformanceDe": "Die Person erläutert Symbole in verständlicher Sprache, ergänzt ein Beispiel und unterscheidet ähnlich aussehende, aber verschiedene Aussagen.",
+            "observablePerformanceEn": "The learner explains symbols in accessible language, adds an example, and distinguishes similar-looking but different statements."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von Funktions- und Ableitungsnotation zu bedingter Wahrscheinlichkeit wechseln; die Erklärung muss sich an eine Person ohne Vorwissen anpassen.",
+            "textEn": "Move from function and derivative notation to conditional probability; the explanation must adapt to someone without prior knowledge."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "function-notation",
+            "taskDemandDe": "Für f(x)=3x² gilt f(2)=12 und f′(2)=12. Erkläre einer jüngeren Person, warum gleiche Zahlen hier nicht dasselbe bedeuten.",
+            "taskDemandEn": "For f(x)=3x², both f(2)=12 and f′(2)=12. Explain to a younger student why the equal numbers do not mean the same thing.",
+            "expectedPerformanceDe": "f(2)=12 ist der Funktionswert bei 2; f′(2)=12 ist die Tangentensteigung bzw. momentane Änderungsrate dort. Bei f′(3)=18 wird der Unterschied sichtbar.",
+            "expectedPerformanceEn": "f(2)=12 is the function value at 2; f′(2)=12 is the tangent slope or instantaneous rate there. f′(3)=18 makes the distinction visible.",
+            "understandingFocusDe": "Die Symbole werden nach ihrer mathematischen Rolle und nicht nach ihrem zufällig gleichen Zahlenwert erklärt.",
+            "understandingFocusEn": "The symbols are explained by mathematical role, not by their accidentally equal numerical values."
+          },
+          {
+            "id": "conditional-notation",
+            "taskDemandDe": "Von 100 Lernenden fahren 40 Rad, 20 wurden an einem Regentag befragt, und 8 gehören zu beiden Gruppen. Erkläre P(Rad|Regen) und P(Regen|Rad) mit passenden Zahlen.",
+            "taskDemandEn": "Among 100 learners, 40 cycle, 20 were surveyed on a rainy day, and 8 belong to both groups. Explain P(Cycle|Rain) and P(Rain|Cycle) using numbers.",
+            "expectedPerformanceDe": "P(Rad|Regen)=8/20=0,4 bezieht sich auf die 20 Regentag-Fälle; P(Regen|Rad)=8/40=0,2 auf die 40 Radfahrenden. Der Strich bedeutet 'unter der Bedingung', und die Reihenfolge zählt.",
+            "expectedPerformanceEn": "P(Cycle|Rain)=8/20=0.4 refers to the 20 rainy-day cases; P(Rain|Cycle)=8/40=0.2 to the 40 cyclists. The bar means 'given', and order matters.",
+            "understandingFocusDe": "Ein zweiter Fachkontext verlangt dieselbe adressatengerechte Unterscheidung von Symbol und Bedeutung.",
+            "understandingFocusEn": "A second subject context demands the same audience-aware distinction between symbol and meaning."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "121ef4c5-c1c2-5294-9582-86bab2355907",
+      "reason": "Both fresh tasks assess communication of a valid solution, not only computing it. Current Q4 page and hash-bound image match the canonical goal; AI candidate only.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Ein nachvollziehbarer Lösungsweg verbindet Ausgangsaussage, zulässige Schritte und Schluss; zentrale Verzweigungen und Bedingungen müssen begründet werden, statt nur Resultate aufzuzählen.",
+            "essentialUnderstandingEn": "A comprehensible solution connects the starting statement, valid steps, and conclusion; key branches and conditions need reasons rather than a list of results.",
+            "observablePerformanceDe": "Die Person erklärt einen Rechenweg so, dass eine andere Person die kritischen Schritte und eine Probe selbst nachvollziehen kann.",
+            "observablePerformanceEn": "The learner explains a method so another person can follow the critical steps and check the result independently."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer Gleichung mit zwei Wurzelzweigen zu einer Ungleichung mit Richtungserhalt bei Division durch eine positive Zahl wechseln.",
+            "textEn": "Move from an equation with two square-root branches to an inequality where dividing by a positive number preserves direction."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "square-branch-explanation",
+            "taskDemandDe": "Erkläre einer Mitschülerin vollständig, wie (x−2)²=9 gelöst wird; hebe den Schritt hervor, an dem zwei Lösungen entstehen, und prüfe sie.",
+            "taskDemandEn": "Explain fully to a classmate how (x−2)²=9 is solved; highlight the step that creates two solutions and check them.",
+            "expectedPerformanceDe": "Aus x−2=±3 folgen x=5 und x=−1; beide erfüllen die Ausgangsgleichung. Das ± ist notwendig, weil beide Zahlen dasselbe Quadrat 9 besitzen.",
+            "expectedPerformanceEn": "From x−2=±3 follow x=5 and x=−1; both satisfy the original equation. The ± is needed because both numbers have square 9.",
+            "understandingFocusDe": "Die erklärende Person begründet die Verzweigung und lässt keine Lösung stillschweigend weg.",
+            "understandingFocusEn": "The explainer justifies the branch and does not silently omit a solution."
+          },
+          {
+            "id": "inequality-explanation",
+            "taskDemandDe": "Erkläre Schritt für Schritt die Lösungsmenge von 3(x−1)≤6. Begründe ausdrücklich, was beim Teilen durch 3 mit dem Ungleichheitszeichen geschieht.",
+            "taskDemandEn": "Explain step by step the solution set of 3(x−1)≤6. State explicitly what dividing by 3 does to the inequality sign.",
+            "expectedPerformanceDe": "3x−3≤6, also 3x≤9 und x≤3. Da 3 positiv ist, bleibt die Richtung erhalten; x=3 erfüllt die Randgleichheit.",
+            "expectedPerformanceEn": "3x−3≤6, so 3x≤9 and x≤3. Since 3 is positive, the direction is unchanged; x=3 satisfies the boundary equality.",
+            "understandingFocusDe": "Die Erklärung wird auf eine andere Schlussstruktur übertragen und benennt dort den entscheidenden Grund.",
+            "understandingFocusEn": "The explanation transfers to a different reasoning structure and names its decisive reason."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d5e1e007-7c64-5350-8aa9-fde93f8a76b5",
+      "reason": "Fresh function and probability cases demonstrate purposeful representation choice and integration. Existing current image is input-bound by digest; no human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Ein Beispiel oder eine Darstellung macht eine mathematische Aussage nur dann verständlicher, wenn dargestellte Werte und Argument dieselbe Beziehung zeigen und die Darstellung gezielt ausgewählt wird.",
+            "essentialUnderstandingEn": "An example or representation clarifies a mathematical claim only when its displayed values and the argument express the same relationship and the representation is chosen for that purpose.",
+            "observablePerformanceDe": "Die Person wählt eine passende Tabelle, einen Graphen oder eine andere Darstellung, bindet konkrete Merkmale an die Begründung und erklärt deren Aussagegrenze.",
+            "observablePerformanceEn": "The learner chooses a suitable table, graph, or other representation, links concrete features to the argument, and explains what the representation does and does not show."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer Funktionsschnittstelle mit Tabelle/Graph zu einer diskreten Ereigniswahrscheinlichkeit mit Ergebnisbaum wechseln.",
+            "textEn": "Move from a function intersection shown by table/graph to a discrete event probability shown by an outcome tree."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "function-intersections",
+            "taskDemandDe": "Erkläre, warum f(x)=x² und g(x)=2x sich bei x=0 und x=2 treffen. Nutze eine kurze Wertetabelle und beschreibe, was man im Graphen sieht.",
+            "taskDemandEn": "Explain why f(x)=x² and g(x)=2x meet at x=0 and x=2. Use a short value table and describe what the graphs show.",
+            "expectedPerformanceDe": "Bei x=0 haben beide Wert 0, bei x=2 beide Wert 4; x²=2x führt zu x(x−2)=0. Tabelle und Graph zeigen die Punkte (0,0) und (2,4), die Rechnung sichert ihre Vollständigkeit.",
+            "expectedPerformanceEn": "At x=0 both have value 0, at x=2 both have value 4; x²=2x gives x(x−2)=0. Table and graph show (0,0) and (2,4), while algebra confirms there are no others.",
+            "understandingFocusDe": "Tabelle und Graph illustrieren die Lösung; die Rechnung begründet, dass keine Schnittpunkte fehlen.",
+            "understandingFocusEn": "Table and graph illustrate the solution; algebra confirms no intersection is missing."
+          },
+          {
+            "id": "coin-outcomes",
+            "taskDemandDe": "Erkläre für zwei faire Münzwürfe mit einem Ergebnisbaum, warum 'genau ein Kopf' Wahrscheinlichkeit 1/2 hat; erkläre, weshalb eine bloße Balkenhöhe weniger informativ wäre.",
+            "taskDemandEn": "Use an outcome tree for two fair coin tosses to explain why 'exactly one head' has probability 1/2; explain why a bare bar height would show less.",
+            "expectedPerformanceDe": "HH, HT, TH und TT sind gleich wahrscheinlich. Genau ein Kopf umfasst HT und TH, also 2/4=1/2; der Baum zeigt die zwei verschiedenen Wege, die ein Balken allein nicht erklärt.",
+            "expectedPerformanceEn": "HH, HT, TH and TT are equally likely. Exactly one head consists of HT and TH, so 2/4=1/2; the tree shows two distinct paths that a bar alone does not explain.",
+            "understandingFocusDe": "Eine neue Darstellungsform wird nach ihrem Erklärzweck gewählt und in die Argumentation eingebaut.",
+            "understandingFocusEn": "A new representation is chosen for its explanatory purpose and integrated into the reasoning."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ded082ed-ea38-510c-ab91-e0a50b064e07",
+      "reason": "Two distinct critique situations require actual correction of algebra and assumptions, matching the process goal. Current image hash is retained; AI candidate only.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Fachliche Kritik wird anhand der betroffenen Aussage oder Modellbedingung geprüft; eine überarbeitete Argumentation benennt den Fehler, korrigiert ihn und zeigt, weshalb die neue Schlussfolgerung trägt.",
+            "essentialUnderstandingEn": "Subject-matter criticism is checked against the affected statement or model condition; a revised argument names the error, corrects it, and shows why the new conclusion holds.",
+            "observablePerformanceDe": "Die Person reagiert auf einen konkreten Einwand mit einer nachvollziehbaren Änderung des Lösungswegs und einer Probe der korrigierten Aussage.",
+            "observablePerformanceEn": "The learner responds to a concrete objection with a traceable change to the solution and a check of the corrected claim."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer ausgelassenen algebraischen Lösung zu einer geänderten Randbedingung im Flächenmodell wechseln.",
+            "textEn": "Move from an omitted algebraic solution to a changed boundary condition in an area model."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "missing-negative-root",
+            "taskDemandDe": "Ein erster Lösungsentwurf behauptet x²=16 habe nur x=4. Eine Mitschülerin fragt nach negativen Zahlen. Überarbeite den Weg und erkläre, was der Einwand ändert.",
+            "taskDemandEn": "An initial solution claims x²=16 has only x=4. A classmate asks about negative numbers. Revise the method and explain what the objection changes.",
+            "expectedPerformanceDe": "Aus x²=16 folgt x=±4; die Probe ergibt 4²=(−4)²=16. Der Einwand macht die zuvor ausgelassene zweite Lösung sichtbar.",
+            "expectedPerformanceEn": "From x²=16 follows x=±4; checking gives 4²=(−4)²=16. The objection reveals the previously omitted second solution.",
+            "understandingFocusDe": "Die Kritik wird sachlich geprüft und als konkrete Korrektur in die Schlusskette integriert.",
+            "understandingFocusEn": "The criticism is checked and integrated as a specific correction to the reasoning."
+          },
+          {
+            "id": "wall-fence-revision",
+            "taskDemandDe": "Ein Team nutzt für 20 m Zaun die Vierseiten-Formel A=x(10−x) und meldet maximal 25 m². Ein Hinweis lautet: Eine Seite liegt an einer Mauer und braucht keinen Zaun. Überarbeite Modell und Ergebnis.",
+            "taskDemandEn": "A team uses the four-side formula A=x(10−x) for 20 m of fencing and reports a maximum of 25 m². A comment says one side lies along a wall and needs no fence. Revise the model and result.",
+            "expectedPerformanceDe": "Für zwei Breiten x und eine eingezäunte Länge y gilt 2x+y=20, also A=x(20−2x)=−2(x−5)²+50. Das Maximum beträgt 50 m² bei x=5 m, y=10 m; die alte Bedingung war falsch.",
+            "expectedPerformanceEn": "For two widths x and one fenced length y, 2x+y=20, so A=x(20−2x)=−2(x−5)²+50. The maximum is 50 m² at x=5 m, y=10 m; the former constraint was wrong.",
+            "understandingFocusDe": "Eine veränderte Sachvoraussetzung erzwingt eine neue Modellgleichung und wird nicht als bloßer Rechenfehler abgetan.",
+            "understandingFocusEn": "A changed real-world condition requires a new model equation rather than being treated as a mere arithmetic slip."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fc2cf102-dcde-5565-884f-7c9e3e3b54b6",
+      "reason": "AI-authored process-evidence tasks describe observable coordination and synthesis, not an actual group's observed behavior. Existing current image bound by digest; no human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Kooperatives mathematisches Arbeiten braucht kompatible Teilaufgaben, gemeinsame Begriffe/Einheiten und eine prüfbare Zusammenführung; mehrere richtige Einzelresultate ergeben ohne Abstimmung noch kein gemeinsames Ergebnis.",
+            "essentialUnderstandingEn": "Collaborative mathematics needs compatible subtasks, shared definitions and units, and a verifiable synthesis; several correct partial results do not by themselves form a shared conclusion.",
+            "observablePerformanceDe": "Die Person teilt fachlich sinnvolle Arbeit auf, gleicht Teilresultate ab und dokumentiert eine gemeinsam überprüfte Antwort statt nebeneinander stehender Zahlen.",
+            "observablePerformanceEn": "The learner divides the work meaningfully, reconciles partial results, and documents a jointly checked answer rather than juxtaposed numbers."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von Modellvorhersage und Datenabgleich zu komplementären Wahrscheinlichkeitsrechnungen mit zwei verschiedenen Teilwegen wechseln.",
+            "textEn": "Move from model prediction plus data comparison to complementary probability calculations obtained by different routes."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "distance-team",
+            "taskDemandDe": "Drei Personen untersuchen ein Modell d(t)=20t km: A berechnet die Vorhersage für t=3 h, B prüft den Messwert 54 km, C kontrolliert Einheiten. Plane die Aufteilung und formuliere eine gemeinsame Schlussfolgerung.",
+            "taskDemandEn": "Three people investigate d(t)=20t km: A predicts the distance for t=3 h, B checks an observed 54 km, and C checks units. Assign roles and formulate one joint conclusion.",
+            "expectedPerformanceDe": "A erhält 60 km, B meldet 54 km, C bestätigt km und h; gemeinsam wird dokumentiert, dass das Modell nach 3 h um 6 km über dem Messwert liegt und keine exakte Beschreibung dieses Datenpunkts ist.",
+            "expectedPerformanceEn": "A obtains 60 km, B reports 54 km, C confirms km and h; the group records that the model overpredicts the observation by 6 km after 3 h and is not exact at that data point.",
+            "understandingFocusDe": "Teilresultate werden mit gemeinsamer Bezugszeit und Einheit zu einer überprüften Aussage verbunden.",
+            "understandingFocusEn": "Partial results are combined into a checked claim with a shared time and unit."
+          },
+          {
+            "id": "probability-team",
+            "taskDemandDe": "Ein Team soll P(mindestens eine 6 in zwei fairen Würfen) bestimmen. Eine Teilgruppe zählt passende Paare, die andere berechnet das Gegenereignis. Führe die Wege zusammen und dokumentiere eine gemeinsame Prüfung.",
+            "taskDemandEn": "A team must find P(at least one six in two fair rolls). One subgroup counts favorable pairs, the other uses the complement. Reconcile the methods and document one shared check.",
+            "expectedPerformanceDe": "Direkt gibt es 11 von 36 geordneten Paaren; über das Gegenereignis 1−(5/6)²=11/36. Beide Wege stimmen überein; das gemeinsame Ergebnis ist 11/36 mit benanntem Ereignis.",
+            "expectedPerformanceEn": "Directly there are 11 of 36 ordered pairs; via the complement 1−(5/6)²=11/36. The methods agree; the shared result is 11/36 with the event named.",
+            "understandingFocusDe": "Andersartige Teilwege werden auf dieselbe Ereignisdefinition und denselben Nenner abgestimmt.",
+            "understandingFocusEn": "Different partial methods are reconciled against the same event definition and denominator."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3019ed7f-8f74-5330-816c-17997156ed68",
+      "reason": "Current image digest and canonical page are consistent. Fresh cases demand structured mathematical communication with distinct assumptions; this is an AI candidate, not human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Eine mathematische Präsentation macht Fragestellung, Annahmen, Vorgehen, Ergebnis und Deutung in sachgerechter Reihenfolge sichtbar; zentrale Rechenschritte stützen die Aussage statt die Zuhörenden mit Details zu überladen.",
+            "essentialUnderstandingEn": "A mathematical presentation makes the question, assumptions, method, result, and interpretation visible in a purposeful order; key steps support the claim without burying listeners in details.",
+            "observablePerformanceDe": "Die Person erstellt eine knappe, logisch geordnete Darstellung, hebt den entscheidenden Schritt hervor und schließt mit einer Antwort in Kontext und Einheit.",
+            "observablePerformanceEn": "The learner prepares a concise, logically ordered presentation, highlights the decisive step, and ends with a contextual answer and unit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer deterministischen Flächenoptimierung zu einer Wahrscheinlichkeit bei Ziehen ohne Zurücklegen wechseln; die Gliederung bleibt, aber die kritische Annahme ändert sich.",
+            "textEn": "Move from deterministic area optimization to probability for draws without replacement; the presentation structure stays while the critical assumption changes."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rectangle-presentation",
+            "taskDemandDe": "Präsentiere in höchstens vier Abschnitten, warum ein Rechteck mit 20 m Umfang maximal 25 m² Fläche hat; nenne Frage, Modell, entscheidenden Schritt und Schluss.",
+            "taskDemandEn": "In at most four sections, present why a rectangle with 20 m perimeter has maximum area 25 m²; state question, model, decisive step, and conclusion.",
+            "expectedPerformanceDe": "Frage: maximale Fläche. Modell: 2x+2y=20, A=x(10−x)=−(x−5)²+25 für 0≤x≤10. Der Quadratterm ist höchstens 0, daher 25 m² bei x=y=5 m.",
+            "expectedPerformanceEn": "Question: maximum area. Model: 2x+2y=20, A=x(10−x)=−(x−5)²+25 for 0≤x≤10. The square term is at most 0, so 25 m² at x=y=5 m.",
+            "understandingFocusDe": "Der quadratische Scheitelpunkt wird als entscheidender Begründungsschritt hervorgehoben.",
+            "understandingFocusEn": "The quadratic vertex is highlighted as the decisive reasoning step."
+          },
+          {
+            "id": "urn-presentation",
+            "taskDemandDe": "Präsentiere die Chance, aus einer Urne mit 3 roten und 2 blauen Kugeln zweimal ohne Zurücklegen rot zu ziehen; ordne Ereignis, Vorgehen und Ergebnis für Zuhörende.",
+            "taskDemandEn": "Present the chance of drawing red twice without replacement from an urn with 3 red and 2 blue balls; organize event, method, and result for listeners.",
+            "expectedPerformanceDe": "Ereignis RR; beim ersten Zug 3/5, beim zweiten nach Rot 2/4. P(RR)=(3/5)(2/4)=3/10=30 %. Der zweite Faktor hängt vom ersten Zug ab.",
+            "expectedPerformanceEn": "Event RR; first draw 3/5, second after red 2/4. P(RR)=(3/5)(2/4)=3/10=30%. The second factor depends on the first draw.",
+            "understandingFocusDe": "Die Darstellung überträgt die Struktur und betont nun die bedingte zweite Ziehung statt eines Flächenmaximums.",
+            "understandingFocusEn": "The presentation transfers the structure and now highlights the conditional second draw rather than an area maximum."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8b635349-abc3-59e7-af93-ec28940bf690",
+      "reason": "Fresh self-edit tasks require concrete revisions in clarity, structure and vocabulary, not a generic communication checklist. Existing current image hash-bound; AI candidate only.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Gute mathematische Kommunikation ist zugleich fachlich richtig und für Adressaten nachvollziehbar; Selbstprüfung erkennt unklare Bezugsbereiche, fehlende Zwischenschritte und nicht erklärte Fachwörter.",
+            "essentialUnderstandingEn": "Good mathematical communication is both correct and accessible to its audience; self-review detects unclear domains, missing links, and unexplained technical terms.",
+            "observablePerformanceDe": "Die Person markiert konkrete Unklarheiten in einer eigenen Erklärung, überarbeitet sie und begründet, weshalb die neue Fassung die mathematische Aussage besser trägt.",
+            "observablePerformanceEn": "The learner identifies specific ambiguities in their own explanation, revises them, and explains why the new version communicates the mathematics better."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer unklaren Aussage über Monotonie zu einer unklaren Wahrscheinlichkeitsaussage mit fehlender Ereignisdefinition wechseln.",
+            "textEn": "Move from an unclear claim about monotonicity to an unclear probability claim with an unstated event definition."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "monotonicity-self-edit",
+            "taskDemandDe": "Du hast zu f(x)=x² gesagt: 'Der Graph steigt, weil die Werte größer werden.' Prüfe Klarheit, Struktur und Fachsprache deiner Erklärung und formuliere eine verbesserte Version.",
+            "taskDemandEn": "You said about f(x)=x²: 'The graph rises because the values get larger.' Review clarity, structure, and technical wording, then produce a better version.",
+            "expectedPerformanceDe": "Die Aussage gilt nicht für alle x. Präzise: f ist auf (−∞,0] fallend und auf [0,∞) steigend; der Scheitel (0,0) trennt die Bereiche. Ein Vergleich von f(−2)=4 und f(−1)=1 erklärt die linke Seite.",
+            "expectedPerformanceEn": "The claim does not hold for all x. Precisely, f decreases on (−∞,0] and increases on [0,∞); vertex (0,0) separates them. Comparing f(−2)=4 with f(−1)=1 explains the left side.",
+            "understandingFocusDe": "Die Person benennt den fehlenden Bereich und ersetzt ihn durch eine adressatengerechte, gegliederte Aussage.",
+            "understandingFocusEn": "The learner names the missing domain and replaces it with an audience-aware, structured statement."
+          },
+          {
+            "id": "event-self-edit",
+            "taskDemandDe": "Du hast zu vier fairen Würfen gesagt: 'Es ist wahrscheinlich, eine Sechs zu haben', und nur 1−(5/6)^4 notiert. Überarbeite die Erklärung für jemanden ohne Stochastikvorkenntnisse.",
+            "taskDemandEn": "For four fair rolls you said: 'It is likely to get a six,' and wrote only 1−(5/6)^4. Revise the explanation for someone new to probability.",
+            "expectedPerformanceDe": "Das Ereignis lautet 'mindestens eine Sechs in vier unabhängigen Würfen'. (5/6)^4 ist die Chance auf keine Sechs; das Gegenereignis hat 1−(5/6)^4=671/1296≈51,8 %. 'Wahrscheinlich' wird so quantitativ und verständlich belegt.",
+            "expectedPerformanceEn": "The event is 'at least one six in four independent rolls'. (5/6)^4 is the chance of no six; its complement is 1−(5/6)^4=671/1296≈51.8%. 'Likely' is now supported quantitatively and accessibly.",
+            "understandingFocusDe": "Die Revision erklärt Ereignis, Formel und Ergebnis in klarer Reihenfolge statt nur ein Schlagwort zu setzen.",
+            "understandingFocusEn": "The revision explains event, formula, and result in a clear order rather than relying on a vague phrase."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "33f2da84-d6ac-54d2-931a-76aed5cbc0c2",
+      "reason": "LK written-exposition competence is evidenced through two valid, differently structured proofs with accurate theorem references. Current image bound by digest; no human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Eine schriftliche mathematische Ausarbeitung trennt Behauptung, Voraussetzungen, Begründung und Schluss; verwendete Definitionen oder Sätze werden an der Stelle genannt, an der sie die Schlusskette tragen.",
+            "essentialUnderstandingEn": "A written mathematical exposition separates claim, assumptions, reasoning, and conclusion; definitions or theorems are cited where they support the inference.",
+            "observablePerformanceDe": "Die Person gliedert einen vollständigen schriftlichen Beweis, referenziert das benutzte Beweisprinzip oder Kriterium korrekt und schließt mit der genau bewiesenen Aussage.",
+            "observablePerformanceEn": "The learner structures a complete written proof, cites the proof principle or criterion correctly, and ends with precisely the statement proved."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer Induktionsausarbeitung über eine diskrete Summe zu einer Ausarbeitung über Monotonie mittels Ableitungskriterium wechseln.",
+            "textEn": "Move from an induction write-up for a discrete sum to a monotonicity write-up using a derivative criterion."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "odd-sum-writeup",
+            "taskDemandDe": "Verfasse eine kurze Ausarbeitung zur Aussage 1+3+⋯+(2n−1)=n² für n≥1. Gliedere Behauptung, Induktionsanfang, Schritt und Schluss und benenne das Induktionsprinzip.",
+            "taskDemandEn": "Write a short exposition of 1+3+⋯+(2n−1)=n² for n≥1. Separate claim, base case, inductive step, and conclusion, and name the induction principle.",
+            "expectedPerformanceDe": "Für n=1 gilt 1=1². Unter Annahme S_n=n² ist S_(n+1)=n²+(2n+1)=(n+1)². Nach vollständiger Induktion gilt die Behauptung für alle n≥1; die Induktionsannahme wird genau im Schritt genutzt.",
+            "expectedPerformanceEn": "For n=1, 1=1². Assuming S_n=n², S_(n+1)=n²+(2n+1)=(n+1)². By mathematical induction the claim holds for every n≥1; the induction hypothesis is used precisely in the step.",
+            "understandingFocusDe": "Die Ausarbeitung zeigt, an welcher Stelle das genannte Beweisprinzip die allgemeine Folgerung erlaubt.",
+            "understandingFocusEn": "The exposition shows where the named proof principle permits the general conclusion."
+          },
+          {
+            "id": "monotonicity-writeup",
+            "taskDemandDe": "Verfasse eine gegliederte Begründung dafür, dass f(x)=x³+x auf ℝ streng wächst. Verweise ausdrücklich auf das passende Ableitungskriterium und schließe nicht mehr, als dieses erlaubt.",
+            "taskDemandEn": "Write a structured justification that f(x)=x³+x is strictly increasing on ℝ. Cite the appropriate derivative criterion and do not claim more than it entails.",
+            "expectedPerformanceDe": "f ist auf ℝ differenzierbar und f′(x)=3x²+1>0 für jedes x. Nach dem Monotoniekriterium ist f auf ℝ streng wachsend. Die Rechnung, der Satzbezug und die Folgerung sind getrennt erkennbar.",
+            "expectedPerformanceEn": "f is differentiable on ℝ and f′(x)=3x²+1>0 for every x. By the derivative criterion, f is strictly increasing on ℝ. The calculation, cited criterion, and conclusion are distinct.",
+            "understandingFocusDe": "Ein anderer Beweisstil verlangt dieselbe schriftliche Struktur mit dem jeweils tatsächlich verwendeten Satz.",
+            "understandingFocusEn": "A different proof style requires the same written structure with the theorem actually used."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b35f8254-dfcc-5d4d-b77f-7b182999617f",
+      "reason": "Fresh LK cases require formal precision beyond generic proofreading; current image is hash-bound and no human sign-off is claimed.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Sprachliche Präzision in einer LK-Ausarbeitung legt Definitionsbereich, Quantor und Implikationsrichtung offen; eine stilistische Überarbeitung ändert nicht heimlich den mathematischen Wahrheitsgehalt.",
+            "essentialUnderstandingEn": "Language precision in an advanced-course exposition makes domain, quantifier, and implication direction explicit; stylistic revision must not silently change mathematical truth.",
+            "observablePerformanceDe": "Die Person ersetzt mehrdeutige oder falsche Formulierungen durch nachprüfbare Aussagen und erläutert die logisch relevante Änderung.",
+            "observablePerformanceEn": "The learner replaces ambiguous or false wording with checkable statements and explains the logically relevant change."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer unbeschränkten Monotoniebehauptung zu einer Aussage mit Voraussetzung, Folgerung und unzulässiger Umkehrung wechseln.",
+            "textEn": "Move from an unrestricted monotonicity claim to a statement with premise, conclusion, and an invalid converse."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "precise-monotonicity",
+            "taskDemandDe": "Überarbeite die LK-Formulierung 'f(x)=x² steigt immer; am Ursprung ändert sich nichts' in präzise Fachsprache. Belege, welche Einschränkung nötig ist.",
+            "taskDemandEn": "Revise the advanced-course wording 'f(x)=x² always increases; nothing changes at the origin' into precise mathematics. Show what restriction is needed.",
+            "expectedPerformanceDe": "f ist auf (−∞,0] streng fallend, auf [0,∞) streng steigend und besitzt bei x=0 ein globales Minimum. Die unbeschränkte Aussage 'immer steigend' ist falsch; die Teilintervalle machen sie überprüfbar.",
+            "expectedPerformanceEn": "f strictly decreases on (−∞,0], strictly increases on [0,∞), and has a global minimum at x=0. The unrestricted claim 'always increasing' is false; the intervals make the revision testable.",
+            "understandingFocusDe": "Präzision entsteht durch explizite Intervalle und benannte Eigenschaft statt durch bloß eleganteren Stil.",
+            "understandingFocusEn": "Precision comes from explicit intervals and a named property, not just smoother wording."
+          },
+          {
+            "id": "precise-implication",
+            "taskDemandDe": "Ein Text lautet: 'Eine Zahl ist gerade, wenn sie durch 4 teilbar ist; also gilt auch das Gegenteil.' Formuliere die tatsächlich gültige Aussage mit Quantor und widerlege die unzulässige Umkehrung.",
+            "taskDemandEn": "A text says, 'A number is even if it is divisible by 4, so the converse also holds.' State the valid claim with a quantifier and refute the invalid converse.",
+            "expectedPerformanceDe": "Für jede ganze Zahl n gilt 4|n ⇒ 2|n, denn n=4k=2(2k). Die Umkehrung 2|n ⇒ 4|n ist falsch, z. B. n=2. 'Wenn' und 'genau dann, wenn' dürfen nicht vertauscht werden.",
+            "expectedPerformanceEn": "For every integer n, 4|n ⇒ 2|n since n=4k=2(2k). The converse 2|n ⇒ 4|n is false, e.g. n=2. 'If' must not be replaced with 'if and only if'.",
+            "understandingFocusDe": "Die Revision stellt Richtung und Geltungsbereich einer mathematischen Behauptung ausdrücklich klar.",
+            "understandingFocusEn": "The revision explicitly clarifies direction and domain of a mathematical claim."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3b64b90b-ed89-5aeb-9838-bf05ccef9d77",
+      "reason": "Current Q4 process goal explicitly calls for structured chains and proof patterns; two fresh valid proof forms fit. Existing image digest bound, AI candidate only.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Eine gültige Schlusskette verbindet die Voraussetzung über benannte, gerechtfertigte Zwischenschritte mit genau der behaupteten Folgerung; direkter Beweis und Kontraposition sind verschiedene zulässige Muster.",
+            "essentialUnderstandingEn": "A valid chain links its premise through named, justified intermediate steps to exactly the claimed conclusion; direct proof and contraposition are distinct valid patterns.",
+            "observablePerformanceDe": "Die Person ordnet Voraussetzungen und Schluss, schreibt eine lückenlose Kette und benennt, warum das gewählte Beweismuster die Aussage absichert.",
+            "observablePerformanceEn": "The learner identifies premise and conclusion, writes a gap-free chain, and names why the chosen proof pattern supports the claim."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einem direkten Beweis über die Definition gerader Zahlen zu einer Kontraposition über Quadrate wechseln.",
+            "textEn": "Move from a direct proof using the definition of even numbers to contraposition about squares."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "even-plus-even",
+            "taskDemandDe": "Baue einen direkten Beweis der Aussage auf: Die Summe zweier gerader ganzer Zahlen ist gerade. Nenne Voraussetzung und Folgerung.",
+            "taskDemandEn": "Construct a direct proof that the sum of two even integers is even. Identify premise and conclusion.",
+            "expectedPerformanceDe": "Aus a=2m und b=2n mit m,n∈ℤ folgt a+b=2(m+n); m+n∈ℤ, also ist a+b gerade. Das Muster ist ein direkter Beweis aus der Definition.",
+            "expectedPerformanceEn": "With a=2m and b=2n for integers m,n, a+b=2(m+n); m+n is an integer, so a+b is even. The pattern is a direct proof from the definition.",
+            "understandingFocusDe": "Jeder Pfeil der Schlusskette benutzt die genannte Voraussetzung oder eine begründete Umformung.",
+            "understandingFocusEn": "Each link in the chain uses the premise or a justified transformation."
+          },
+          {
+            "id": "square-even-contrapositive",
+            "taskDemandDe": "Begründe für ganze n die Aussage: Aus 'n² ist gerade' folgt 'n ist gerade'. Benenne das Beweismuster und vermeide den Schluss aus bloßen Beispielen.",
+            "taskDemandEn": "For integer n, justify: if n² is even, then n is even. Name the proof pattern and avoid relying on examples.",
+            "expectedPerformanceDe": "Kontraposition: Ist n ungerade, n=2k+1, so n²=4k²+4k+1=2(2k²+2k)+1 ungerade. Daher impliziert gerades n² ein gerades n. Das ist nicht die unzulässige Umkehrung ohne Begründung.",
+            "expectedPerformanceEn": "Contraposition: if n is odd, n=2k+1, then n²=4k²+4k+1=2(2k²+2k)+1 is odd. Thus even n² implies even n. This is not an unsupported converse.",
+            "understandingFocusDe": "Die Implikationsrichtung wird durch ein neues, ausdrücklich benanntes Beweismuster gesichert.",
+            "understandingFocusEn": "The implication direction is supported by a new, explicitly named proof pattern."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "18b43bc8-ee2a-5505-99ad-3a261a62f64a",
+      "reason": "Fresh base-and-transfer pair directly tests adapting a solution path rather than repeating a numerical variant. Current image bound by hash, AI candidate only.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Ein bekannter Lösungsweg wird nur übertragen, wenn die tragende Struktur wiedererkannt wird; geänderte Gleichungsart oder Anzahl möglicher Lösungen erfordern angepasste Schritte und erneute Prüfung.",
+            "essentialUnderstandingEn": "A known method transfers only after identifying its governing structure; a changed equation type or number of possible solutions requires adapted steps and renewed checks.",
+            "observablePerformanceDe": "Die Person benennt den beibehaltenen Kern, zeigt die notwendige Anpassung und prüft die Lösungen in der neuen Aufgabe.",
+            "observablePerformanceEn": "The learner names what remains valid, shows the necessary adaptation, and checks solutions in the changed problem."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einem linearen Schnittpunkt zweier Geraden zu Schnittpunkten einer Geraden mit einer Parabel wechseln; Gleichsetzen bleibt, die Lösungsmenge nicht.",
+            "textEn": "Move from the intersection of two lines to a line-parabola intersection; equating expressions remains valid, but the solution set changes."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "line-line-transfer-base",
+            "taskDemandDe": "Bestimme den Schnittpunkt von y=2x+1 und y=7−x. Beschreibe, welcher Schritt sich als allgemeine Idee für Schnittprobleme eignet.",
+            "taskDemandEn": "Find the intersection of y=2x+1 and y=7−x. Explain which step is a reusable idea for intersection problems.",
+            "expectedPerformanceDe": "2x+1=7−x ergibt x=2 und y=5, also (2,5). Der übertragbare Kern ist: An einem Schnittpunkt haben beide Darstellungen denselben y-Wert.",
+            "expectedPerformanceEn": "2x+1=7−x gives x=2 and y=5, hence (2,5). The reusable core is that both expressions have the same y-value at an intersection.",
+            "understandingFocusDe": "Die Person trennt allgemeine Schnittidee von der hier nur linearen Gleichung.",
+            "understandingFocusEn": "The learner separates the general intersection idea from the equation being linear in this case."
+          },
+          {
+            "id": "line-parabola-adaptation",
+            "taskDemandDe": "Übertrage die Schnittidee auf y=2x+1 und y=x²+1. Welche Schritte ändern sich, wie viele Schnittpunkte entstehen und wie überprüfst du sie?",
+            "taskDemandEn": "Transfer the intersection idea to y=2x+1 and y=x²+1. Which steps change, how many intersections occur, and how do you check them?",
+            "expectedPerformanceDe": "2x+1=x²+1 führt zu x(x−2)=0 und damit x=0 oder 2; die Punkte sind (0,1) und (2,5). Gleichsetzen bleibt, aber statt linearer Umformung braucht es das Lösen einer Quadratik und beide Lösungen werden eingesetzt.",
+            "expectedPerformanceEn": "2x+1=x²+1 gives x(x−2)=0, hence x=0 or 2; the points are (0,1) and (2,5). Equating stays, but quadratic solving replaces linear rearrangement and both answers are substituted.",
+            "understandingFocusDe": "Die veränderte Struktur wird ausdrücklich erkannt und die zusätzliche Lösung nicht übersehen.",
+            "understandingFocusEn": "The changed structure is identified explicitly and the extra solution is not missed."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "08b80080-4895-55df-8ca6-4e8c5eb0f9f5",
+      "reason": "Both fresh comparisons explicitly cover all named Q4 criteria and include domain limits; current image bound by hash, AI candidate only.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Funktionsklassen unterscheiden sich in Definitionslücken, Verhalten an den Rändern, möglicher Zahl von Extrema/Wendestellen und geeigneten Nullstellenwegen; solche Vergleiche brauchen begründete Bedingungen statt bloße Graphenähnlichkeit.",
+            "essentialUnderstandingEn": "Function classes differ in domain gaps, end behavior, possible extrema/inflection points, and suitable root strategies; comparisons need justified conditions rather than visual resemblance.",
+            "observablePerformanceDe": "Die Person vergleicht konkrete Vertreter anhand von Term, Ableitungen und Definitionsbereich und begründet, welche Eigenschaften klassentypisch bzw. beispielabhängig sind.",
+            "observablePerformanceEn": "The learner compares concrete representatives using formulas, derivatives, and domains, and explains which features are characteristic of the classes and which depend on the example."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von Polynom versus Exponentialfunktion zu gebrochenrationaler Funktion versus quadratischem Polynom wechseln; Polstelle und Asymptote ändern die Vergleichskriterien.",
+            "textEn": "Move from polynomial versus exponential function to rational function versus quadratic polynomial; a pole and asymptote change the comparison criteria."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cubic-exponential",
+            "taskDemandDe": "Vergleiche f(x)=x³−x und g(x)=2^x bezüglich Verhalten für x→±∞, Extrema/Wendestellen und einer passenden Nullstellenstrategie; begründe deine Aussagen.",
+            "taskDemandEn": "Compare f(x)=x³−x and g(x)=2^x for x→±∞, extrema/inflection points, and a suitable root strategy; justify the claims.",
+            "expectedPerformanceDe": "f verhält sich wie x³, hat Nullstellen −1,0,1, zwei Extrema aus f′=3x²−1 und einen Wendepunkt bei 0 aus f′′=6x. g>0, wächst streng, hat keine Nullstelle, Extrema oder Wendestelle; g→0 für x→−∞ und g→∞ für x→∞.",
+            "expectedPerformanceEn": "f behaves like x³, has roots −1,0,1, two extrema from f′=3x²−1, and one inflection at 0 from f′′=6x. g>0, increases strictly, has no root, extremum, or inflection; g→0 as x→−∞ and g→∞ as x→∞.",
+            "understandingFocusDe": "Termstruktur und Ableitungen statt bloßem Kurvenbild tragen den Klassenvergleich.",
+            "understandingFocusEn": "Formula structure and derivatives rather than visual shape carry the class comparison."
+          },
+          {
+            "id": "rational-quadratic",
+            "taskDemandDe": "Vergleiche r(x)=1/(x−1) und q(x)=(x−1)²−1 nach denselben Kriterien. Welche neue Rolle spielen Definitionsbereich und Asymptote?",
+            "taskDemandEn": "Compare r(x)=1/(x−1) and q(x)=(x−1)²−1 using the same criteria. What new role do domain and asymptote play?",
+            "expectedPerformanceDe": "r ist bei x=1 undefiniert, hat dort eine Polstelle, für |x|→∞ Grenzwert 0, keine Nullstelle und auf jedem Definitionsintervall weder Extremum noch Wendepunkt. q→∞ an beiden Enden, hat Minimum (1,−1), Nullstellen 0 und 2, keinen Wendepunkt; quadratische Gleichung liefert die Nullstellen.",
+            "expectedPerformanceEn": "r is undefined at x=1 with a pole, tends to 0 as |x|→∞, has no root and no extremum or inflection on either domain interval. q→∞ at both ends, has minimum (1,−1), roots 0 and 2, and no inflection; a quadratic equation yields the roots.",
+            "understandingFocusDe": "Der Transfer ergänzt Definitionslücke und Asymptote, ohne einen Vorzeichenwechsel über die Polstelle als Wendepunkt zu missdeuten.",
+            "understandingFocusEn": "The transfer adds domain gap and asymptote without mistaking a sign change across the pole for an inflection point."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "reason": "Fresh cases compare structurally different probability terms with correct event meaning; existing current image is hash-bound. AI candidate only.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Wahrscheinlichkeitsterme sind nur vergleichbar, wenn Ereignis und Versuchsbedingungen geklärt sind; Produkt, Gegenereignis und Zählfaktor ändern ihre Bedeutung mit Abhängigkeit und Ereignisstruktur.",
+            "essentialUnderstandingEn": "Probability expressions can be compared only after events and trial conditions are clear; products, complements, and counting factors change meaning with dependence and event structure.",
+            "observablePerformanceDe": "Die Person ordnet Terme den passenden Ereignissen zu, berechnet oder vergleicht sie korrekt und erklärt, weshalb eine Wahrscheinlichkeit größer ist.",
+            "observablePerformanceEn": "The learner maps expressions to their events, calculates or compares them correctly, and explains why one probability is larger."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von zwei Ziehungen mit/ohne Zurücklegen zu zwei Ereignissen in drei unabhängigen Würfen wechseln; nun entscheidet Gegenereignis versus genau-einmal-Zählung.",
+            "textEn": "Move from two draws with/without replacement to two events in three independent rolls; now the distinction is complement versus exactly-once counting."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "replacement-compare",
+            "taskDemandDe": "Eine Urne enthält 3 rote und 2 blaue Kugeln. Vergleiche für zwei Ziehungen die Chance auf zweimal Rot ohne Zurücklegen mit der Chance auf zweimal Rot mit Zurücklegen. Deute die Faktoren.",
+            "taskDemandEn": "An urn has 3 red and 2 blue balls. Compare the chance of two reds without replacement with that of two reds with replacement. Explain the factors.",
+            "expectedPerformanceDe": "Ohne Zurücklegen gilt (3/5)(2/4)=3/10=0,30; mit Zurücklegen (3/5)²=9/25=0,36. Der zweite Rotanteil sinkt nur ohne Zurücklegen, deshalb ist die zweite Wahrscheinlichkeit größer.",
+            "expectedPerformanceEn": "Without replacement, (3/5)(2/4)=3/10=0.30; with replacement, (3/5)²=9/25=0.36. The second red fraction falls only without replacement, so the latter probability is larger.",
+            "understandingFocusDe": "Der Vergleich stützt sich auf die geänderte Bedingung der zweiten Ziehung.",
+            "understandingFocusEn": "The comparison rests on the changed condition of the second draw."
+          },
+          {
+            "id": "at-least-versus-exact",
+            "taskDemandDe": "Bei drei fairen Würfen stehen die Terme 1−(5/6)³ und 3·(1/6)·(5/6)². Welches Ereignis beschreibt jeder und welcher Term ist größer?",
+            "taskDemandEn": "For three fair rolls consider 1−(5/6)³ and 3·(1/6)·(5/6)². Which event does each describe and which expression is larger?",
+            "expectedPerformanceDe": "1−(5/6)³=91/216 gilt für mindestens eine Sechs; 3·(1/6)·(5/6)²=75/216 für genau eine Sechs. Mindestens eine enthält auch zwei und drei Sechsen, daher ist 91/216 größer.",
+            "expectedPerformanceEn": "1−(5/6)³=91/216 describes at least one six; 3·(1/6)·(5/6)²=75/216 exactly one six. At least one also includes two and three sixes, so 91/216 is larger.",
+            "understandingFocusDe": "Der größere Term wird über Ereignismengen und nicht nur durch Dezimalzahlen begründet.",
+            "understandingFocusEn": "The larger term is explained through event inclusion, not only decimal calculation."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-stochastics-image-holds-2-v1-20260920",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-image-holds-2-v1.config.json",
+  "configDigest": "sha256:b0d0d99f6b3808e0b03ec7b93a366b3838bdc34f456237cf4f4c327585891ca6",
+  "goalIds": [
+    "42d300e3-e982-5889-98d7-fc297f10eff1",
+    "455ef29a-7194-5c5a-b832-1c27fcbf2516"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:24e6352fb8b1bbf025e9f52477c83a5fab68398caef276d7b88e1c1752cfeb1a"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:06ea5a4df3687b8ada17b351707d80d17628181e69f2aef7279d3301e22813d5",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:b69cebfb281c9bf2891f016b2dd72c82ef8a14a9112a9cb20fb612caf3b054ba",
+    "reviewInputFingerprint": "sha256:8234ab26f029e5f826ae2fef3138bd1b6760ac2c28e376d051f15df503314812",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-a",
+        "campaignDigest": "sha256:a69679ce8f96c9e7cc194c206747ca7d159a1f843759115f6fae6447620a4f1e",
+        "roundId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-a",
+        "independenceGroupId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-independent-a",
+        "batchId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:404a0ffb3b526395f16093412ab2c5846ed11ce3d484b1eed21e107f9a3e5fa0"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-b",
+        "campaignDigest": "sha256:fbbb6c80c39aa329cdbd0a2481c5e802595b1f355812b511ecbc24f5b9109f93",
+        "roundId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-b",
+        "independenceGroupId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-independent-b",
+        "batchId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:0a5ba63c40dce0ef8f9dba4736793f22eefede29917a0c9b42f18627098a2906"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

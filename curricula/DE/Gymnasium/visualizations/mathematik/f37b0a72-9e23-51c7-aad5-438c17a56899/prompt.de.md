@@ -8,47 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `f37b0a72-9e23-51c7-aad5-438c17a56899.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/f37b0a72-9e23-51c7-aad5-438c17a56899/f37b0a72-9e23-51c7-aad5-438c17a56899.jpg`
+- Quellbild: `f37b0a72-9e23-51c7-aad5-438c17a56899.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/f37b0a72-9e23-51c7-aad5-438c17a56899/f37b0a72-9e23-51c7-aad5-438c17a56899.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Vektoren im Raum addieren und vervielfachen
-Beschreibung: Die lernende Person kann Vektoren im Raum komponentenweise addieren und mit Skalaren vervielfachen sowie die Rechenoperationen als Verkettung und Streckung von Verschiebungen geometrisch deuten.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Vektoren im Raum komponentenweise addieren und mit Skalaren vervielfachen.
-- Zeige ein 3D-Koordinatensystem mit zwei Verschiebungsvektoren:
-  a = (2, 1, 1),
-  b = (-1, 2, 3).
-- Addition:
-  a + b = (2 + (-1), 1 + 2, 1 + 3) = (1, 3, 4).
-  Zeige die geometrische Kopf-an-Schwanz-Verkettung und den Resultatvektor vom Startpunkt zum Endpunkt.
-- Skalarmultiplikation:
-  2a = (4, 2, 2).
-  Zeige 2a als gleichgerichtete, doppelt so lange Verschiebung wie a.
-- Komponenten als Spalten- oder Tupelschreibweise klar lesbar darstellen.
-
-Vermeiden:
-- Nicht komponentenweise falsch addieren; das Ergebnis muss (1,3,4) sein.
-- 2a nicht als (2,2,2) oder als Laengenverdopplung ohne Richtung darstellen.
-- Keine 2D-Darstellung ohne z-Komponente.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Erstelle eine helle, freundliche, abstrakte Comic-Lerngrafik im Querformat als PNG: „Vektoren im Raum addieren und vervielfachen“. Zwei klar getrennte Felder, große lesbare deutsche Schrift, Pastellblau und Creme, kleine freundliche Stiftfigur. KEINE räumlichen Achsen, keine perspektivischen Gitter. Links Überschrift „Verschiebungen verketten“. Zeige ein einziges rechtwinkliges Pfeildreieck: a als blauer waagerechter Pfeil nach rechts, am Kopf von a setzt b als grüner senkrechter Pfeil nach oben an. Roter Summenpfeil vom Anfang von a zum Ende von b, Beschriftung a+b. Dies ist ausdrücklich eine „schematische Pfeilkette“, keine maßstäbliche Darstellung von Raumkoordinaten. Darunter echte dreizeilige Spaltenvektorrechnung a=(2;1;1), b=(-1;2;3), a+b=(1;3;4), jeweils mit senkrecht untereinander stehenden Zahlen und großen Klammern. Rechts Überschrift „Verschiebung verdoppeln“. Statt zwei unabhängig gezeichneter unterschiedlich langer Pfeile zeichne EINE waagerechte rote Strecke mit markiertem Anfang, Mitte und Ende. Zwei GENAU GLEICH lange, nahtlos aneinander anschließende blaue Pfeile zeigen von Anfang zur Mitte und von Mitte zum Ende; JEDER trägt das Label a. Direkt darunter zeigt ein orangener Pfeil 2a vom selben Anfang bis zum selben Ende. Die Mitte liegt genau halbwegs zwischen Anfang und Ende. Kein anderer Pfeil, kein Gitter, keine x/y/z-Achsen. Darunter dreizeilige Spaltenvektorrechnung 2a=2·(2;1;1)=(4;2;2). Merksatz unten: „Addition: Verschiebungen aneinanderhängen. Faktor 2: dieselbe Verschiebung zweimal.“ Gezeichnete Längen müssen diese Verdopplung eindeutig bestätigen. Nicht photorealistisch. Keine Programmcode- oder Pixeltexte im Bild.
 ```
 
 ## Review-Notiz

@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:d86a1dac8d50c99b37f055571d84d0de5a80c9e220eac7b72dcea7ec8e15cd51",
+  "reviewInputFingerprint": "sha256:2ec384980462e461312dd3472614e7bc4deefb2d5fca02ba8ae5e26a48a1b15f",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-a",
+      "roundId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-b",
+      "roundId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-independent-b",
+      "runIds": [
+        "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex-session-model-not-exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.22b66c1e-50b1-505f-a388-c39131a4e1c3",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r01",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r02",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.5922affd-b1f9-5ad9-963e-25d3734c3b72",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r03",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r04",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r05",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.8e18154d-41d6-592e-ba98-537edad338e8",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r06",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9b339361-7719-573d-a913-432246c502ee",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.9b339361-7719-573d-a913-432246c502ee",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r07",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r08",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r09",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c1f08d89-d65a-5041-8ff3-37538f771b8c",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.c1f08d89-d65a-5041-8ff3-37538f771b8c",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r10",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c371b3f0-dd0e-5263-b616-de6c362f70db",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.c371b3f0-dd0e-5263-b616-de6c362f70db",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r11",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "16767f5e-5f21-5adb-8365-01b0d64c28f4",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.16767f5e-5f21-5adb-8365-01b0d64c28f4",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r12",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d8cbf2bd-2512-5661-b431-4aea7e688912",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.d8cbf2bd-2512-5661-b431-4aea7e688912",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r13",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a7c2aa01-4942-597f-a65f-ebb913d0019b",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.a7c2aa01-4942-597f-a65f-ebb913d0019b",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r14",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "701b3942-9f70-548e-9d02-a34b7e64aa17",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.701b3942-9f70-548e-9d02-a34b7e64aa17",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r15",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e4eaff7f-1e3d-54ea-8a59-02864948b5eb",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.e4eaff7f-1e3d-54ea-8a59-02864948b5eb",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r16",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "474fe553-d868-50d9-a19b-761e64f21c0d",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.474fe553-d868-50d9-a19b-761e64f21c0d",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r17",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r18",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d32f599e-3b38-5557-8ad3-565bcd99f4c6",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.d32f599e-3b38-5557-8ad3-565bcd99f4c6",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r19",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1c1754b7-2cd3-5635-824d-ce93f7b99514",
+      "firstRecordId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001.1c1754b7-2cd3-5635-824d-ce93f7b99514",
+      "secondRecordId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836-r20",
+      "firstRunId": "mathematik-m7-q4-lk-complex-number-theory-20-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "math-m7-q4-lk-complex-theory-round-b-codex-20260923-042836",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

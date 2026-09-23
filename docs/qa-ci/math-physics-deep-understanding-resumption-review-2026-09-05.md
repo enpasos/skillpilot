@@ -8,12 +8,13 @@ Mathematik-Pause ist damit aufgehoben. Maßgeblich sind die aktuellen
 `curricularAtomic`-Ziele und die strenge D/P/A/M/V-Schnittmenge; M7 bleibt rein
 maschinell und behauptet keine menschliche Freigabe.
 
-Der [Mathematik-Fortsetzungsstand vom 20. September](math-m7-resumed-2026-09-20.md)
-dokumentiert die aktuelle Ausgangslage, Zuständigkeiten und Integration.
-**Neuester Stand:** Auf Nutzerwunsch wird nur der begonnene Stand
-commitfähig konsolidiert; die Zielverfolgung ist pausiert. Aktuell sind
-434/797 Mathematikziele streng abgeschlossen, Physik bleibt bei 478/478.
-Offene Reviews bleiben im In-flight-Ledger und werden nicht als fertig gezählt.
+Der [Mathematik-Fortsetzungsstand vom 21. September](math-m7-resumed-2026-09-21.md)
+dokumentiert den aktuellen Auftrag, die Integration und die laufenden Deltas.
+**Neuester Auftrag:** „Schließe Mathematik ab“ hebt die Zwischenstandspause
+auf. Der letzte stabile zentrale Lauf bestätigt 461/797 Mathematikziele
+(27 neue strenge Abschlüsse seit 434/797); Physik bleibt bei 478/478.
+Weitere enge Inhalts- und Bindungsreparaturen laufen. Sie zählen erst nach
+aktueller zentraler Validierung; offene Reviews bleiben im In-flight-Ledger.
 Arbeitsweise: zunächst größere zusammenhängende Kandidatenpakete schließen,
 danach gezielte unabhängige Kontrolle; vollständige QS und aufwendige Builds
 gebündelt am stabilen Zwischenstand. Unveränderte gültige Nachweise und gute

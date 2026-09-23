@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-d20-current-keepkeep-15-20260923-v1-resolution-69eda7f9-1898-5220-932d-e7bec839b7af",
+  "goal": {
+    "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:7f688fd6be500540adabefc1fb3194878945b258de1bed3cbb50049508bae1d0",
+    "pageFingerprint": "sha256:fbc502aecdbf4573a501baac11ca4542445b51f2cd56f973b4c2f3a287646d1e",
+    "goalReviewContextFingerprint": "sha256:e77080247d544f9925ecb4b28ba68f167ba492a84b9e75e31d4839467ba5dca6",
+    "finalText": {
+      "titleDe": "Streckenlängen im Raum bestimmen",
+      "titleEn": "Determine segment lengths in space",
+      "descriptionDe": "Die lernende Person kann Streckenlängen in räumlichen Figuren aus Punktkoordinaten oder geeigneten Verbindungsvektoren bestimmen und in geometrischen Kontexten verwenden.",
+      "descriptionEn": "The learner can determine segment lengths in spatial figures from point coordinates or suitable connecting vectors and use them in geometric contexts."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-a",
+      "campaignDigest": "sha256:a32c87a858d1763373a9a4d0b13503a58a95e8cd80a71acdc0fb833dedc8f29d",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-a",
+      "reviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+      "goalReviewContextFingerprint": "sha256:e77080247d544f9925ecb4b28ba68f167ba492a84b9e75e31d4839467ba5dca6",
+      "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-a.batch-001",
+      "runId": "math-m7-scope20-current-v2-round-a-codex-20260923",
+      "runManifestDigest": "sha256:ba8c8d6bcd58c1248aaf2948e165fac5662a869d13ef4c42db5eecd34ca0a2ba",
+      "resultsDigest": "sha256:f907604150de8c849a59b3948ff7b3d624f74be941bb57858f0dedd844a33fac",
+      "recordId": "math-m7-scope20-current-v2-round-a-codex-20260923-goal-19",
+      "recordDigest": "sha256:1a6bcafdd7d51b89932522330071c00f1248a2041a5596565adc2aad7240ddf3"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-b",
+      "campaignDigest": "sha256:07a42a60dd96534a47d4f3197ec3df670bebece24c014f88071955925b598b2f",
+      "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-independent-b",
+      "reviewInputFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+      "goalReviewContextFingerprint": "sha256:e77080247d544f9925ecb4b28ba68f167ba492a84b9e75e31d4839467ba5dca6",
+      "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2-first-pass-b.batch-001",
+      "runId": "codex-math-m7-matrix-spatial-current-b-20260923-v1",
+      "runManifestDigest": "sha256:59a47457640696053e3d3d67654db5cc857cf910bacbef26728a1ca103859cf3",
+      "resultsDigest": "sha256:93a21b94dc0c67c56803749c1d062a8bd95f38751f17706fe8f51ba2d95e8dd0",
+      "recordId": "codex-math-m7-matrix-spatial-current-b-20260923-v1.69eda7f9-1898-5220-932d-e7bec839b7af",
+      "recordDigest": "sha256:0bdae6e748b27154b37abcb0d4f1cd9d8e20e844090302b3101e24c16b15e8cb"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:1b678c12f71ed2ce1eae62e741b671103f25b9b58a3312c78f5e2e0488768fae"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "mathematik-m7-d20-current-keepkeep-15-20260923-v1-synthesis-69eda7f9-1898-5220-932d-e7bec839b7af",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex, informed AI synthesis by prior Round B reviewer; no human attestation",
+    "synthesizedAt": "2026-09-23T00:23:16.000Z",
+    "rationaleDe": "Beide Runden sind KEEP. B verlangt zuerst die zur gefragten Kante oder Diagonale gehörenden Endpunkte und unterscheidet im Transfer Grundflächen-, Seiten- und Raumdiagonale; A ergänzt die Plausibilität im Figurenkontext. Bs Kette hält das eigenständige Streckenziel vom bloßen Punktabstand getrennt.",
+    "rationaleEn": "Both rounds are KEEP. B first requires the endpoints belonging to the requested edge or diagonal and distinguishes base-face, side-face, and space diagonals in transfer; A adds plausibility in the figure context. B's chain keeps this segment goal distinct from plain point distance.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "In einer Raumfigur muss zuerst das richtige Endpunktpaar für die gefragte Kante oder Diagonale gewählt werden; die Streckenlänge ist dann der Betrag des zugehörigen Verbindungsvektors.",
+      "essentialUnderstandingEn": "In a spatial figure, one must first select the right endpoint pair for the requested edge or diagonal; the segment length is then the magnitude of its connecting vector.",
+      "observablePerformanceDe": "Die Person identifiziert in einer gegebenen Figur die gesuchte Strecke, bestimmt ihre Endpunkte und Koordinatendifferenzen und verwendet die berechnete Länge in einer geometrischen Aussage.",
+      "observablePerformanceEn": "The learner identifies the requested segment in a given figure, determines its endpoints and coordinate differences, and uses the calculated length in a geometric statement.",
+      "transferExpectationDe": "Bei einem anderen Körper oder einer nicht achsenparallelen Strecke wählt die Person neue Endpunkte und unterscheidet Grundflächen-, Seiten- und Raumdiagonale anhand ihrer Komponenten.",
+      "transferExpectationEn": "For another solid or a non-axis-aligned segment, the learner chooses new endpoints and distinguishes a face, side, or space diagonal from its components."
+    },
+    "dissent": [
+      {
+        "dissentId": "compatible-review-emphasis-69eda7f9-1898-5220-932d-e7bec839b7af",
+        "source": "both",
+        "textDe": "Beide aktuellen KEEP-Records bleiben vollständig gebunden; die nicht gewählte Evidenzkette ist eine kompatible, aber anders akzentuierte AI-Kandidatenperspektive.",
+        "textEn": "Both current KEEP records remain fully bound; the unselected evidence chain is a compatible but differently emphasized AI-candidate perspective.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:c270512c1fa72803eee59e2c6d5a760c3096bda380d083db618ff3bdca0aa338"
+}

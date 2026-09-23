@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-understanding-evidence-m7-q2-plane-angle-direction-20260923-v2",
+  "reviewedAt": "2026-09-23T02:16:14.984Z",
+  "reviewer": "Codex current-direction-PNG P-v2 content review; exact model identifier unavailable",
+  "goals": [
+    {
+      "goalId": "bda6a659-9640-53a5-8be0-24705ab623ef",
+      "reason": "Das korrigierte PNG sha256:01c320fb4ea450c66d4c14104d14093fd288112e4f97cade2554109ddbc64164 wurde im Original betrachtet: n_E=(1,0,0) weist in positive x-Richtung, n_F=(1,1,0) diagonal in der xy-Ebene; die eingezeichneten Pfeillängen sind schematisch und keine maßstäbliche Koordinatenablesung. Rechnerisch gilt |n_E·n_F|/(|n_E||n_F|)=1/√2, also der kleinere nicht orientierte Ebenenschnittwinkel φ=45°. Das Bild behauptet nur die Richtung der Schnittgeraden parallel zur z-Achse, nicht ihre exakte Lage; diese Richtung ist zu beiden Normalen orthogonal. Die unveränderten Transferfälle wurden unabhängig erneut gerechnet: E:x=0 und F:x+√3y=0 ergeben 60° entlang der z-Achse; aus der Parameterform von F folgt z−x−y=2, mit E:x+y=1 ergibt sich φ≈35,26° und die Schnittgerade x+y=1,z=3. Der Betrag im Winkelansatz macht die Normalenvorzeichenwahl irrelevant. Die aktuelle Quelle Q2.3, S. 42, Spiegelstrich 8 und die Bildgrenze wurden geprüft. Visualisierung und Transferaufgaben sind nur ein P-v2-KI-Kandidat, keine menschliche Freigabe oder Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "normal-angle",
+            "essentialUnderstandingDe": "Der kleinere nicht orientierte Schnittwinkel zweier Ebenen liegt zwischen 0° und 90° und folgt aus ihren Normalenrichtungen; er ist unabhängig von Vorzeichenwahl und Skalierung geeigneter Normalenvektoren.",
+            "essentialUnderstandingEn": "The smaller unoriented intersection angle of two planes lies between 0° and 90° and follows from their normal directions; it is independent of sign choice and scaling of suitable normal vectors.",
+            "observablePerformanceDe": "Die lernende Person gewinnt von null verschiedene Normalenvektoren und berechnet φ=arccos(|n_E·n_F|/(|n_E||n_F|)) im passenden Winkelbereich.",
+            "observablePerformanceEn": "The learner obtains nonzero normal vectors and computes φ=arccos(|n_E·n_F|/(|n_E||n_F|)) in the appropriate angle range."
+          },
+          {
+            "id": "intersection-interpretation",
+            "essentialUnderstandingDe": "Bei nicht parallelen Ebenen beschreibt der berechnete Normalenwinkel den Ebenenwinkel entlang der Schnittgeraden, nicht einen von Gleichungsvorzeichen abhängigen gerichteten Winkel.",
+            "essentialUnderstandingEn": "For nonparallel planes, the computed normal-vector angle describes the plane angle along their intersection line, not an oriented angle dependent on equation signs.",
+            "observablePerformanceDe": "Die lernende Person deutet den Wert als Ebenenschnittwinkel und erklärt, weshalb Umkehren einer Normalen denselben geometrischen Winkel liefert.",
+            "observablePerformanceEn": "The learner interprets the value as a plane intersection angle and explains why reversing a normal gives the same geometric angle."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "normal-angle",
+            "intersection-interpretation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "normal-source-and-sign",
+            "textDe": "Von zwei Ebenen in Koordinatenform mit positivem Normalen-Skalarprodukt zu einer Parameter- und einer Koordinatenebene mit negativem Skalarprodukt wechseln; die Normale muss aus Spannrichtungen gewonnen werden.",
+            "textEn": "Change from two coordinate-form planes with positive normal dot product to a parametric and a coordinate-form plane with negative dot product; obtain a normal from spanning directions."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "coordinate-planes",
+            "taskDemandDe": "Bestimme den Schnittwinkel von E:x=0 und F:x+√3 y=0; erläutere, worauf sich der Winkel geometrisch bezieht.",
+            "taskDemandEn": "Find the intersection angle of E:x=0 and F:x+√3 y=0; explain what the angle refers to geometrically.",
+            "expectedPerformanceDe": "Mit n_E=(1,0,0), n_F=(1,√3,0) sind die Beträge 1 und 2, das Skalarprodukt 1, also cos φ=1/2 und φ=60°. Die Ebenen schneiden sich entlang der z-Achse; 60° ist ihr kleinerer Schnittwinkel.",
+            "expectedPerformanceEn": "With n_E=(1,0,0), n_F=(1,√3,0), the magnitudes are 1 and 2 and the dot product is 1, so cos φ=1/2 and φ=60°. The planes meet along the z axis; 60° is their smaller intersection angle.",
+            "understandingFocusDe": "Geeignete Normalen wählen und ihren kleineren Winkel als Ebenenschnittwinkel deuten.",
+            "understandingFocusEn": "Choose suitable normals and interpret their smaller angle as the plane intersection angle."
+          },
+          {
+            "id": "parametric-sign-reversal",
+            "taskDemandDe": "E:x+y=1; F:X=(0,0,2)+s(1,0,1)+t(0,1,1), s,t∈R. Bestimme den Ebenenschnittwinkel und erkläre, warum die Vorzeichenwahl einer Normalen ihn nicht ändert.",
+            "taskDemandEn": "E:x+y=1; F:X=(0,0,2)+s(1,0,1)+t(0,1,1), s,t∈R. Find the plane intersection angle and explain why reversing a normal does not change it.",
+            "expectedPerformanceDe": "n_E=(1,1,0); zu beiden F-Spannrichtungen senkrecht ist n_F=(−1,−1,1). Das Skalarprodukt ist −2, die Beträge √2 und √3. Daher cos φ=2/√6 und φ≈35,26°. F erfüllt z−x−y=2; die Ebenen schneiden sich bei x+y=1,z=3. Ein Vorzeichenwechsel lässt den Betrag des Skalarprodukts und φ unverändert.",
+            "expectedPerformanceEn": "n_E=(1,1,0); a normal to both F spanning directions is n_F=(−1,−1,1). Their dot product is −2 and their magnitudes are √2 and √3. Thus cos φ=2/√6 and φ≈35.26°. F satisfies z−x−y=2; the planes meet at x+y=1,z=3. Reversing a normal leaves the absolute dot product and φ unchanged.",
+            "understandingFocusDe": "Normalen aus verschiedenen Darstellungen gewinnen und Orientierungsunabhängigkeit begründen.",
+            "understandingFocusEn": "Obtain normals from different representations and justify orientation independence."
+          }
+        ]
+      }
+    }
+  ]
+}

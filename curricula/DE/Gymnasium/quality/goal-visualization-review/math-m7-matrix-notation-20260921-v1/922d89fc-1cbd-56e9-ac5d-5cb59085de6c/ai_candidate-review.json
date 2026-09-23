@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-goal-visualization-candidate-review",
+  "goalId": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+  "reviewedAt": "2026-09-21T21:48:35Z",
+  "reviewer": "codex-independent-matrix-notation-review-20260921",
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "decision": "keep",
+  "recommendedPilotDecision": "accepted_pilot",
+  "independence": {
+    "referenceAndCandidateViewedBeforeRootReview": true,
+    "rootReviewAndEditPromptReadOnlyAfterIndependentVerdict": true,
+    "priorTaskKnowledge": "General open-image inventory and the instruction that these are notation candidates were known; no candidate evaluation or edit-prompt contents were read before direct paired-image inspection.",
+    "generationParticipation": false,
+    "method": "Both current reference JPGs and candidate PNGs directly inspected before reading edit prompts or generation-and-root-review.json."
+  },
+  "goalSnapshot": {
+    "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+    "titleEn": "Interpret limiting processes and limiting matrices (advanced course)",
+    "description": "Die lernende Person kann Grenzprozesse bei Potenzen von Übergangsmatrizen untersuchen, Grenzmatrizen interpretieren und ihre Bedeutung für stabile Langzeitentwicklungen erläutern.",
+    "descriptionEn": "The learner can analyze limiting processes of powers of transition matrices, interpret limiting matrices, and explain their meaning for stable long-term developments.",
+    "requires": [
+      "0de1e45c-aea9-5e53-932a-027dcf509efa",
+      "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf"
+    ],
+    "demandLevel": "AB3"
+  },
+  "reference": {
+    "path": "app/public/assets/goal-visualizations/mathematik/922d89fc-1cbd-56e9-ac5d-5cb59085de6c/922d89fc-1cbd-56e9-ac5d-5cb59085de6c.jpg",
+    "sha256": "sha256:f140304ce51ca9c6968218de142bde5821abfd57faa46c2f0b5dc7a5c593e1ef",
+    "actuallyViewedBeforeEditing": true,
+    "actuallyViewed": true
+  },
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/922d89fc-1cbd-56e9-ac5d-5cb59085de6c/candidate.png",
+    "sha256": "sha256:a5c6d718dd1500f140c19708f43feee528e6a74306b52eb8352ef3b907d8db15",
+    "format": "PNG",
+    "width": 1679,
+    "height": 937,
+    "actuallyViewed": true
+  },
+  "provenance": {
+    "receiptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/922d89fc-1cbd-56e9-ac5d-5cb59085de6c/generation-and-root-review.json",
+    "receiptSha256": "sha256:ff4dcdbc9016107331be5e8d5ac680f78d48ed9f2c1af2c39f6573d1d91d7131",
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "tool": "image_gen__imagegen",
+    "exactServingModel": "not exposed",
+    "attribution": "Generation metadata copied from the separately bound receipt only after forming the independent review verdict; no more specific serving model inferred."
+  },
+  "checks": [
+    {
+      "aspect": "matrix_convention",
+      "outcome": "pass",
+      "evidenceDe": "Spalten sind ausdrücklich Von A/Von B, Zeilen Nach A/Nach B. Spaltensummen 0,8+0,2=1 und 0,3+0,7=1; nichtnegative Übergangswahrscheinlichkeiten."
+    },
+    {
+      "aspect": "stationary_vector",
+      "outcome": "pass",
+      "evidenceDe": "M·g=(0,8·0,6+0,3·0,4; 0,2·0,6+0,7·0,4)=(0,6;0,4). g ist tatsächlich vertikal ohne T, daher 2×2 mal 2×1."
+    },
+    {
+      "aspect": "limiting_matrix",
+      "outcome": "pass",
+      "evidenceDe": "G hat beide Spalten g. Die Eigenwerte der konkreten Matrix sind 1 und 0,5; deshalb konvergieren ihre Potenzen zur gezeigten Grenzmatrix. Beide gezeigten normierten Starts liefern G·v₀=g."
+    },
+    {
+      "aspect": "notation_repair",
+      "outcome": "pass",
+      "evidenceDe": "Das falsche T an dem schon vertikalen g ist entfernt. Die waagerechten Startpaare und das waagerechte Schlusszahlenpaar behalten mathematisch richtige T."
+    },
+    {
+      "aspect": "geometry_and_flow",
+      "outcome": "pass",
+      "evidenceDe": "Hier ist keine räumliche Koordinatengeometrie beansprucht. Die Verzweigung verbindet zwei unterschiedliche Starts mit denselben Endanteilen. Die zwei Spaltenpfeile adressieren die beiden gleichen G-Spalten."
+    }
+  ],
+  "style": {
+    "outcome": "pass",
+    "evidenceDe": "Die hellblau-schwarze Kasten-/Sprechblasenlandschaft, klare Links-rechts-Führung und zwei Ergebniszweige bleiben erhalten. Keine fotografische oder sterile Neugestaltung."
+  },
+  "readability": {
+    "outcome": "pass_at_inspected_raster_size",
+    "evidenceDe": "Titel, Matrixeinträge, Komponentenzeichen, Minuszeichen und relevante Koordinaten/Dezimalwerte sind in der tatsächlich angesehenen PNG-Datei lesbar. Keine abgeschnittene Formel oder unlesbare nötige Zahl gefunden.",
+    "limit": "Direct raster inspection at supplied size; no new browser/card-width/mobile or real-host acceptance test."
+  },
+  "scopeFit": {
+    "outcome": "pass",
+    "evidenceDe": "Geeignetes konkretes Beispiel für Grenzmatrizen und stabile Langzeitentwicklung auf LK-Niveau. Startunabhängigkeit gilt für diese gezeigte Kette und normierte Wahrscheinlichkeitsstarts, nicht als Satz über jede Markov-Kette. Keine Forderung, alle Nichtkonvergenzfälle im Orientierungsbild abzubilden."
+  },
+  "blockingFindings": [],
+  "nonBlockingNotes": [
+    "Spalten-Hinweispfeile liegen dicht am Grenzmatrix-Kopf; Beschriftung und Zahlen bleiben lesbar. Kein neuer fachlicher Reparaturbedarf."
+  ],
+  "retainedGoodContent": [
+    "M is column stochastic: 0.8+0.2=1 and 0.3+0.7=1.",
+    "M*(0.6,0.4)^T=(0.6,0.4)^T; eigenvalues 1 and 0.5 establish convergence for this example.",
+    "G has both columns (0.6,0.4)^T and sends both shown normalized start states to the same stationary distribution.",
+    "Actual vertical stationary vector no longer carries an erroneous transpose; row-vector start notation and final row tuple correctly retain T.",
+    "Arrow-based blue-black overview style, readable formulas, box hierarchy and both branches preserved."
+  ],
+  "reconstructionPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/922d89fc-1cbd-56e9-ac5d-5cb59085de6c/reconstruction-prompt.md",
+  "canonicalImported": false,
+  "qaAggregateChanged": false,
+  "humanApprovalGranted": false,
+  "realHostAcceptanceClaimed": false,
+  "integrationBoundary": "Local AI candidate review only. Do not import before the parent-coordinated stable D/P checkpoint; affected page/context/profile bindings and final hashes remain integration work."
+}
+

@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e1235268a323e8dbc3b8d559d9be7257d301a18bd57baa7026ae0b8780d790fe",
+  "reviewInputFingerprint": "sha256:4ed5cc24f1e2773f90ec3358f218f423d6528883c7b6e0692b78d06234cc6bec",
+  "goalCount": 16,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-a",
+      "roundId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-independent-a",
+      "runIds": [
+        "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-b",
+      "roundId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-independent-b",
+      "runIds": [
+        "math-m7-modeling-process-d16-v2-round-b-codex-20260923"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::OpenAI Codex (exact model identifier unavailable)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 16,
+    "unavailable": 0,
+    "requiresSynthesis": 16
+  },
+  "goals": [
+    {
+      "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-001",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-01",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "27542d59-aa1b-569d-8d77-41129bae26e2",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-002",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-02",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bb4569bc-01ac-5bf9-8c85-05df42d70698",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-003",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-03",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8d2021d0-aa14-5023-998b-187356de7986",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-004",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-04",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bfbaedb9-b138-590a-87e8-4d87784dda0e",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-005",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-05",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "035b7fc6-830d-5f41-9c5d-2495808c09d4",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-006",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-06",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ae2ca565-928d-55f4-b804-7155cf210120",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-007",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-07",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dd582580-5cd3-55b3-b05e-e1c102533737",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-008",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-08",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4a630596-6e2f-593e-bac6-2a6d8fa58e2f",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-009",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-09",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8d126397-a8b0-528c-8986-614d56fa0749",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-010",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-10",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e03eca28-9a57-5b24-877c-2e63fecee986",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-011",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-11",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5836c821-d43b-5c02-9ee5-e86bb87bb054",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-012",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-12",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fb4dcd2a-a6a9-5371-a2fc-95348ee130e0",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-013",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-13",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-014",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-14",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "163dd583-8308-53f0-b60d-34588787988d",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-015",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-15",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "519660d0-85e5-57a6-a219-d0a253336649",
+      "firstRecordId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001-record-016",
+      "secondRecordId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923-goal-16",
+      "firstRunId": "mathematik-m7-modeling-process-sixteen-current-20260923-v2-first-pass-a-run-001",
+      "secondRunId": "math-m7-modeling-process-d16-v2-round-b-codex-20260923",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

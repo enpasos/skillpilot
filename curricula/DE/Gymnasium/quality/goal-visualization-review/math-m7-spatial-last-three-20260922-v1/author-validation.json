@@ -1,0 +1,21 @@
+{
+  "recordKind": "local_candidate_author_validation",
+  "checkedAtUtc": "2026-09-21T23:01:54.819Z",
+  "result": "pass",
+  "scope": "Only files authored by /root/math_repaired12_blind_a; separate root review/import additions excluded",
+  "ownCandidateAndCurrentReviewJson": 3,
+  "verifiedPathSha256Bindings": 15,
+  "historicalOriginalsVerifiedAgainstGitRevision": 2,
+  "historicalGitRevision": "5365a7effc96bd0532eee8b93386a80b275d0c3a",
+  "ownPromptsWithoutUuid": 6,
+  "f37IndependentReviewJsonParsed": true,
+  "nativePrepare": "Succeeded before each of the four built-in generations; actual provider recorded",
+  "nativeImportByThisAgent": false,
+  "centralQaByThisAgent": false,
+  "humanApproval": false,
+  "validationNotes": [
+    "Initial all-live-path check detected the concurrently parent-imported 68d PNG at the same path; historical original hash was retained and verified against its Git object.",
+    "Later broad-folder checks also encountered separately authored root review/history files; final check explicitly scopes the three own reviews and six own prompts.",
+    "git diff --check completed without diagnostics for the scoped paths; content hashes and JSON parse checks above cover the new untracked author files."
+  ]
+}

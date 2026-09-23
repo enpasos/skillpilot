@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "q25-local-assessment-placement-alternative",
+  "status": "candidate_not_applied",
+  "independentSubstantiveAssessmentReview": "open_in_candidate",
+  "canonical": {
+    "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "observedSha256": "sha256:27b6ef4e3a00101285d86878816c21d7e0cd7030b18a440a4d95b959cd7ab91f",
+    "appendGoalIds": [
+      "6b0d2a97-cf9c-4778-9c68-16bb82b7afde",
+      "42752317-6022-47f2-8b34-160db5ef01fb"
+    ],
+    "clusterParentId": "b3d2284c-21e0-5af8-942a-a4c11390c84a",
+    "noNewChildUnder": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+    "noDirectChildUnder": "98dcf9bd-d119-5eb1-835c-7d719f67b485",
+    "taskObjects": "candidate.json",
+    "sharedAssessmentCoverageRemoval": {
+      "goalId": "81823f27-0c92-5444-ac4e-32b83169f318",
+      "removeGoalId": "7bd8f022-5002-5610-994c-a9cec1890558",
+      "fields": [
+        "requires",
+        "examData.coveredGoalIds"
+      ],
+      "otherFieldsUnchanged": true
+    },
+    "recomputeUniqueAtomicDescendantWeightsFor": [
+      "6b0d2a97-cf9c-4778-9c68-16bb82b7afde",
+      "b3d2284c-21e0-5af8-942a-a4c11390c84a",
+      "4720daf4-cefe-43a9-a0e8-9db55286f558",
+      "98dcf9bd-d119-5eb1-835c-7d719f67b485",
+      "c01b1ce9-a667-4a46-b251-ec33ae602b15"
+    ]
+  },
+  "composition": {
+    "requiredChanges": "Only the four HE-GK view changes from ../b046h-he-scope-minimal-change-plan.json; resolve by IDs.",
+    "manualLkViewEdits": [],
+    "manualOtherStateViewEdits": [],
+    "targetRuleProvenInAll88Views": "new assessment is target if and only if 7bd8f022-5002-5610-994c-a9cec1890558 remains target after the full HE-GK scope delta",
+    "targetCount": 72,
+    "newExistingContentTargetCount": 0,
+    "existingOtherOrNationalGkAssessmentTargets": 34
+  },
+  "binders": {
+    "qaFile": "app/scripts/generateCurriculumQualityStatus.ts",
+    "qaConstant": "CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS",
+    "appendTerminalClusterId": "6b0d2a97-cf9c-4778-9c68-16bb82b7afde",
+    "semanticKindLedger": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "classifyNewNodesAs": "practiceAssessment",
+    "sourceAndPublicationPaths": "As in original integration-plan.json; independent review before needs_review -> released",
+    "DPAffinity": "Refresh only actually changed current pages/contexts after substantive route decision; no new curricularAtomic denominator",
+    "applicability": "Existing applicabilityFromRequires / child-union, no new mechanism or override"
+  },
+  "requiredIntegrationChecks": [
+    "Validate exact source/compiler applicability and final routes in all affected scopes, especially CQR-104.",
+    "Confirm the 34 existing other/national GK placements intentionally retain the already selected content competence; no hidden source/profile approval inferred.",
+    "Regenerate quality status and enforce protected Maturity floors after approved integration.",
+    "Run generated HE duration-view parity; no new generator branch needed."
+  ],
+  "proofFile": "q25-alternative-self-check.json"
+}
+

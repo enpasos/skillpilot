@@ -1,0 +1,328 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-j10-functions-equations-keep-ten-partial-20260923-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T02:04:42.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1",
+    "batchManifestDigest": "sha256:1d102787871489b735cae283380366f64400880a5de0a1ac2653cd134a0addd2",
+    "configDigest": "sha256:cb238b1c720f8d37594753d329f0339edabb6d7010320fe12e6833c01d588778",
+    "bundleFingerprint": "sha256:443b1b8e263fd266a27d7d7fea97e1f67b02ea3559490fc182605e347692806b",
+    "bookDigest": "sha256:2a6326c656a2b826495ed3271ae7cd603fc81bb77a2bfb8dc28a91bca8855d4a",
+    "reviewInputFingerprint": "sha256:f7fa21dfd5706f2920b4b6e74219d8d9755a5d18bacdbcef59157301fdcfa825",
+    "dualSummaryDigest": "sha256:e77809e353f22c848627b43beaf7bf98f023ef13943a3ce829a2e1e550a1cceb",
+    "canonicalLandscapeDigest": "sha256:e4b869c70177d7c6c50a55aba2f40c4a58cae011834ce3551abd4b4839994d22"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a",
+      "campaignDigest": "sha256:478614d11d98345bbfdf2f86c8407ae548b3635a2073ac30b71650ae0885542a",
+      "roundId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:f7fa21dfd5706f2920b4b6e74219d8d9755a5d18bacdbcef59157301fdcfa825",
+      "batchId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:20b037e61ad7f32b98ea64ae5fc899d49d0073f8931e56bfcaf949fae92e9daf",
+      "runId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "runManifestDigest": "sha256:86daa0b3d273f05a0cdaafe953e7cfee7605f5864bb2d73596a78ab269138a5b",
+      "resultsDigest": "sha256:219118b1d12202d8769be982597a4a74730044e238be0cb10db0f5b003eb989b"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-b",
+      "campaignDigest": "sha256:3613aee7b3a094a5768563d6c7b6a8ac6b85f7f293c67c88c23593770829f94d",
+      "roundId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:f7fa21dfd5706f2920b4b6e74219d8d9755a5d18bacdbcef59157301fdcfa825",
+      "batchId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:92f2260de315e347b62bd6a4a8be2c42999196bbf1214ccf0f28f1512f6ffc56",
+      "runId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "runManifestDigest": "sha256:d4c513736161672a31b46505454ff2c09ca3687e4c9dc6f35b7cd93bb7b95d68",
+      "resultsDigest": "sha256:e028e4615e3eeda3b24c39f3ef85bc847225e8eee06ce552fbd068977981991f"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-j10-functions-equations-keep-ten-partial-20260923-v1-decision-001",
+      "goalId": "42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:207a4ce985f183f29898b3f53a2e877262aae925b9eef3a3cec0b06524c04e02",
+      "pageFingerprint": "sha256:c37c64554764e6a0d29d13743b1d2671179aafe14edf6a02c4959b4327405d3c",
+      "goalReviewContextFingerprint": "sha256:54d0476764b02f37e367885bc10388fa4eac43b965603ef8a168d308b15477d5",
+      "finalText": {
+        "titleDe": "Exponentielles Wachstum in Termen, Tabellen und Graphen beschreiben",
+        "titleEn": "Describe exponential growth in expressions, tables, and graphs",
+        "descriptionDe": "Die lernende Person kann exponentielle Wachstums- und Zerfallsprozesse in Termen, Tabellen und Graphen beschreiben, Parameter deuten und typische Verläufe im Sachkontext erklären.",
+        "descriptionEn": "The learner can describe exponential growth and decay processes in expressions, tables, and graphs, interpret parameters, and explain typical trajectories in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.003",
+          "recordDigest": "sha256:4e072857c46c76443ac2572850f44802ea1795bf10240c3cd231e8c0f88c1204"
+        },
+        "second": {
+          "recordId": "math-m7-j10-fe18-b-003",
+          "recordDigest": "sha256:41e2d6a60e805c880e66206181cb1d3cb6abfeb33e9dded16506b1b652953479"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die integrierte Beschreibung exponentieller Prozesse über Term, Tabelle und Graph. Die zweite Evidenzfassung verbindet Startwert und Faktor mit einer eigenständig aus einer verbalen Abnahme konstruierten Darstellung und einem Zunahme-Transfer.",
+      "rationaleEn": "Both independent reviews confirm the integrated description of exponential processes across expression, table, and graph. The second evidence version links initial value and factor to an independently constructed decay representation and a growth transfer."
+    },
+    {
+      "decisionId": "mathematik-m7-j10-functions-equations-keep-ten-partial-20260923-v1-decision-002",
+      "goalId": "15ce2a7e-a5dc-44f7-8a5e-6d04dd81db12",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2833c3ebb6b23a6d080118c2d9af7aeee0c09a6bb1be5aec18be9aee986c2aee",
+      "pageFingerprint": "sha256:6712b95db9af17ce39805e19d424b17115e594424d5d8d92c872c234f0b200bd",
+      "goalReviewContextFingerprint": "sha256:944ee012f66a663d409f15d284f7e022d30f974104f24f333edb7ec80c25f36f",
+      "finalText": {
+        "titleDe": "Ganzrationale Funktionen als Summen von Potenzfunktionen beschreiben",
+        "titleEn": "Describe polynomial functions as sums of power functions",
+        "descriptionDe": "Die lernende Person kann ganzrationale Funktionen als Summen von Potenzfunktionen mit ganzzahligen nicht negativen Exponenten beschreiben und Terme dieser Form fachsprachlich einordnen.",
+        "descriptionEn": "The learner can describe polynomial functions as sums of power functions with non-negative integer exponents and classify expressions of this form using mathematical language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.006",
+          "recordDigest": "sha256:4fcb18ffcd509d1cc63dd964bdef9f5071afec59262bca3c1c7f43042879188c"
+        },
+        "second": {
+          "recordId": "math-m7-j10-fe18-b-006",
+          "recordDigest": "sha256:93dc4ed63dd024a324caa9862bc54ad5ee453fc67d50d32cf1f209f88aeb7fca"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle Potenzsummen-Kompetenz. Die erste Evidenzfassung prüft besonders klar die Umformung einer faktorisierten Darstellung und die Abgrenzung zu negativen oder gebrochenen Exponenten.",
+      "rationaleEn": "Both independent reviews confirm the current power-sum competence. The first evidence version particularly clearly tests conversion from factored form and the distinction from negative or fractional exponents."
+    },
+    {
+      "decisionId": "mathematik-m7-j10-functions-equations-keep-ten-partial-20260923-v1-decision-003",
+      "goalId": "283ec44e-747c-55e3-9a61-4a4cc70ebfab",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0d944edfff6c0916ccc66f3aea1d4e7048f84ac0347e2ebf681461ecf92cc201",
+      "pageFingerprint": "sha256:88276227c835fda1bf97af7841a8107d2919741acc803c1aee068c0d0b3be11f",
+      "goalReviewContextFingerprint": "sha256:7db2f071d69b74fdc69412f14395df90c39e0ce40002a4e781fd7c02d5dbcd22",
+      "finalText": {
+        "titleDe": "Randverhalten ganzrationaler Funktionen aus dem Term begründen",
+        "titleEn": "Justify polynomial end behavior from the expression",
+        "descriptionDe": "Die lernende Person kann das Verhalten einer ganzrationalen Funktion für $x\\to\\infty$ und $x\\to-\\infty$ aus dem Grad und dem Vorzeichen ihres führenden Koeffizienten begründen.",
+        "descriptionEn": "The learner can justify the behavior of a polynomial function as $x\\to\\infty$ and $x\\to-\\infty$ from its degree and the sign of its leading coefficient."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.007",
+          "recordDigest": "sha256:1c2465091d97a62642faa9bccd3128492e5df120c1fe5eda5da131789414cf40"
+        },
+        "second": {
+          "recordId": "math-m7-j10-fe18-b-007",
+          "recordDigest": "sha256:636a5c30e9253a50dc747137ae35fd6cac06780655cdc014e0cef4e4a23e5309"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die Begründung des Randverhaltens aus Grad und Leitkoeffizient. Die erste Evidenzfassung benennt beide Richtungen x gegen plus und minus unendlich und transferiert gezielt Gradparität sowie Vorzeichen.",
+      "rationaleEn": "Both independent reviews confirm reasoning about end behavior from degree and leading coefficient. The first evidence version names both positive and negative infinite directions and transfers parity and sign deliberately."
+    },
+    {
+      "decisionId": "mathematik-m7-j10-functions-equations-keep-ten-partial-20260923-v1-decision-004",
+      "goalId": "0190e463-51a7-4860-9b35-d875530a85ba",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b84655af5e0115547504f971d92f1dbf8fa9376e569aa261669e712f5eabd4dc",
+      "pageFingerprint": "sha256:5dc84ebc7acd6814550ceec4446df5a7e9614d5eaf74d01dbee6b549293923a1",
+      "goalReviewContextFingerprint": "sha256:b344e211c25c9b4f02dbc87c5d57acd206fce93ab70461c6941417fe1f4fcfb9",
+      "finalText": {
+        "titleDe": "Symmetrie ganzrationaler Funktionsgraphen am Term prüfen",
+        "titleEn": "Check symmetry of polynomial graphs from the expression",
+        "descriptionDe": "Die lernende Person kann bei ganzrationalen Funktionen rechnerisch und anhand der Struktur des Funktionsterms prüfen, ob der Graph achsensymmetrisch zur y-Achse oder punktsymmetrisch zum Ursprung ist.",
+        "descriptionEn": "The learner can use calculations and the structure of the expression to check whether a polynomial graph is symmetric with respect to the y-axis or point-symmetric about the origin."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.008",
+          "recordDigest": "sha256:f05271b2d7b0764c44eb8c716b6dce0286cd6eebc3bac23a66455eef1ee6e5d3"
+        },
+        "second": {
+          "recordId": "math-m7-j10-fe18-b-008",
+          "recordDigest": "sha256:dd5a724ed8a4bdbaec3a808a853384efdddcf45b8499265a881f3f11ab4d5416"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die Symmetrieprüfung über f(-x). Die zweite Evidenzfassung prüft eine neu hinzugefügte gerade oder ungerade Termkomponente und damit eine relevante Änderung der Symmetrie.",
+      "rationaleEn": "Both independent reviews confirm symmetry checking through f(-x). The second evidence version tests a newly added even or odd term and thus a relevant symmetry change."
+    },
+    {
+      "decisionId": "mathematik-m7-j10-functions-equations-keep-ten-partial-20260923-v1-decision-005",
+      "goalId": "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:89a5d9ca5b6e28f747fb4c87b397023a9b2d73f1b5e0eb1b1ce62e433592cee6",
+      "pageFingerprint": "sha256:19875d68d19a66a8a9d2309a8a289fe72e321aa6e068ff647700c30c2f8e5a2c",
+      "goalReviewContextFingerprint": "sha256:3015dc8eb76fab7eb95e3b89a630feba1aa1c47e5508ed4c0cc18f179041f59d",
+      "finalText": {
+        "titleDe": "Grundlegende Ableitungsregeln auf elementare Funktionsterme anwenden",
+        "titleEn": "Apply basic differentiation rules to elementary function terms",
+        "descriptionDe": "Die lernende Person kann Faktorregel, Summenregel und Potenzregel auf einfache Funktionsterme anwenden und die einzelnen Ableitungsschritte fachsprachlich nachvollziehbar darstellen.",
+        "descriptionEn": "The learner can apply the constant-factor rule, sum rule, and power rule to simple function terms and present the differentiation steps clearly using mathematical language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.010",
+          "recordDigest": "sha256:2b32387868f83ff2acc1932a364f634b70ce43c47039d2e5a834a4f97ba1516c"
+        },
+        "second": {
+          "recordId": "math-m7-j10-fe18-b-010",
+          "recordDigest": "sha256:a70cb9671d1a4cc8f8f45f1e3caadb668be41648667a0eb59bfc9746df44e72b"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die Anwendung von Faktor-, Summen- und Potenzregel auf einfache Terme. Die erste Evidenzfassung trennt die Rollen von Koeffizient, Exponent und Konstante und bleibt ohne nicht beanspruchte Produkt- oder Kettenregel.",
+      "rationaleEn": "Both independent reviews confirm application of constant-factor, sum, and power rules to simple expressions. The first evidence version distinguishes coefficient, exponent, and constant without importing product or chain rules."
+    },
+    {
+      "decisionId": "mathematik-m7-j10-functions-equations-keep-ten-partial-20260923-v1-decision-006",
+      "goalId": "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:42f95a9e08c38358b89ce225726f4140132bacc121c5601bb69ccf4a88d4bef2",
+      "pageFingerprint": "sha256:41c392f0f0d1cbb9989d6840d6b944e1e9b7a87ec8e87da65ee791adb869119e",
+      "goalReviewContextFingerprint": "sha256:35e7ef591442dc54e2dddb016a8b90dff1c19619c9311d49ac236f9fefa1d6fc",
+      "finalText": {
+        "titleDe": "Tangenten- und Normalengleichungen in einfachen Fällen aufstellen",
+        "titleEn": "Set up tangent and normal equations in simple cases",
+        "descriptionDe": "Die lernende Person kann zu einfachen differenzierbaren Funktionen in gegebenen Punkten Tangenten- und Normalengleichungen bestimmen und die dabei verwendeten Steigungen fachsprachlich deuten.",
+        "descriptionEn": "The learner can determine tangent and normal equations for simple differentiable functions at given points and interpret the slopes using mathematical language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.012",
+          "recordDigest": "sha256:16ebb0f5ea4e731b7254b41be678f3deee56b5059cfc536b04a6349a5279e219"
+        },
+        "second": {
+          "recordId": "math-m7-j10-fe18-b-012",
+          "recordDigest": "sha256:e0d3b4343f850584a2ff57a2c794f6965cd79ddac1af958918d73d5a38ce4b36"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen Tangente und Normale als zusammenhängende Geradenkonstruktion im selben Punkt. Die zweite Evidenzfassung prüft den Sonderfall einer waagerechten Tangente mit vertikaler Normalen ausdrücklich.",
+      "rationaleEn": "Both independent reviews confirm tangent and normal as one connected line construction at the same point. The second evidence version explicitly tests a horizontal tangent with a vertical normal."
+    },
+    {
+      "decisionId": "mathematik-m7-j10-functions-equations-keep-ten-partial-20260923-v1-decision-007",
+      "goalId": "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:15e8a3f3be236d7e2aa2b62edc806067d41292920a541a80caf5ead5f1969091",
+      "pageFingerprint": "sha256:af2534d9857b782154a28bca1e02a2656ea069172f9b820fdfd88dd079fc1871",
+      "goalReviewContextFingerprint": "sha256:9c89ce536f4f33298feed13ee1c177337245945fb2d99b6daadbb2482dbc113a",
+      "finalText": {
+        "titleDe": "Tangenten als lineare Approximationen nutzen",
+        "titleEn": "Use tangents as linear approximations",
+        "descriptionDe": "Die lernende Person kann Tangenten in einfachen Situationen als lokale lineare Approximationen nutzen und die Näherung fachsprachlich deuten.",
+        "descriptionEn": "The learner can use tangents as local linear approximations in simple situations and interpret the approximation using mathematical language."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.013",
+          "recordDigest": "sha256:bbc09baf5280cc36ee5456a7b778848c61e815346b2ac93afb3fc9a471035f5a"
+        },
+        "second": {
+          "recordId": "math-m7-j10-fe18-b-013",
+          "recordDigest": "sha256:38182f0cdb4a605240a954e16479719491ce4cc54861b0853cb5b70de957f4d4"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die Tangente als lokale lineare Approximation. Die erste Evidenzfassung macht den Transfer vom nahen Schätzwert zu einem weiter entfernten Fall und der dort begrenzten Zuverlässigkeit besonders deutlich.",
+      "rationaleEn": "Both independent reviews confirm the tangent as a local linear approximation. The first evidence version clearly transfers from a nearby estimate to a farther case with reduced reliability."
+    },
+    {
+      "decisionId": "mathematik-m7-j10-functions-equations-keep-ten-partial-20260923-v1-decision-008",
+      "goalId": "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:15270367b8ab9b7d2bc8ef2181ca78c4c03e753a48c49448ff9700b7082b662f",
+      "pageFingerprint": "sha256:16d4c08b5ca199fd6156d96d89292664fb8f9b877592e9fe5e32374caf47ba5c",
+      "goalReviewContextFingerprint": "sha256:55e4b4bf163237f0629c8b797f09e4283344b7851fce7fb8bbc26a4ac9dd2d23",
+      "finalText": {
+        "titleDe": "Wurzelgleichungen durch einmaliges Quadrieren lösen",
+        "titleEn": "Solve radical equations by one squaring step",
+        "descriptionDe": "Die lernende Person kann Wurzelgleichungen lösen, bei denen einmaliges Quadrieren zielführend ist, und mögliche Scheinlösungen durch Einsetzen prüfen.",
+        "descriptionEn": "The learner can solve radical equations where one squaring step is suitable and check possible extraneous solutions by substitution."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.015",
+          "recordDigest": "sha256:f88af5e4eb9cb4cf7ddf60fb83b72992233250b80546f344f5083fbc04708bc4"
+        },
+        "second": {
+          "recordId": "math-m7-j10-fe18-b-015",
+          "recordDigest": "sha256:47079981542ddac26435eadbfba397d8e905c3cba28296f8f0441919951eb569"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen einmaliges Quadrieren mit anschließender Probe. Die zweite Evidenzfassung macht an einer konkreten Gleichung Definitions- und Vorzeichenbedingungen sowie das Verwerfen einer Scheinlösung überprüfbar.",
+      "rationaleEn": "Both independent reviews confirm one squaring step followed by checking. The second evidence version makes domain and sign conditions and rejection of an extraneous root assessable in a concrete equation."
+    },
+    {
+      "decisionId": "mathematik-m7-j10-functions-equations-keep-ten-partial-20260923-v1-decision-009",
+      "goalId": "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d364d874d68ce8d283bb407c1d17770b4c854d71ab8fdcde165b4566367976a3",
+      "pageFingerprint": "sha256:5d37ae26aa50e1b37e38781480917ad7a03d73dfbef495d1c2851acc4eb0fb6f",
+      "goalReviewContextFingerprint": "sha256:5f70dea3863a0b1bc4462e8404e434dfc3a0987e79d8063c2555ae301428b0e9",
+      "finalText": {
+        "titleDe": "Potenzgleichungen lösen",
+        "titleEn": "Solve power equations",
+        "descriptionDe": "Die lernende Person kann einfache Potenzgleichungen mit geeigneten Umkehroperationen, Wurzel- oder Potenzschreibweisen lösen und die Lösungen prüfen.",
+        "descriptionEn": "The learner can solve simple power equations using suitable inverse operations, radical or power notation, and check the solutions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.016",
+          "recordDigest": "sha256:ca66803c902ea2b957990caf4db23023fb266ed7cb1e15a5e54c1d611bada1d9"
+        },
+        "second": {
+          "recordId": "math-m7-j10-fe18-b-016",
+          "recordDigest": "sha256:2f1dc5cb675b687333bb8cbd82acb64e1c42daae1ac8991f7637cdd235104edc"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die Lösung einfacher Potenzgleichungen. Die erste Evidenzfassung verknüpft Vorzeichen und gerade bzw. ungerade Exponenten mit der Anzahl zulässiger reeller Lösungen und einer geänderten rechten Seite.",
+      "rationaleEn": "Both independent reviews confirm solving simple power equations. The first evidence version links sign and even or odd exponents to the number of admissible real solutions and a changed right-hand side."
+    },
+    {
+      "decisionId": "mathematik-m7-j10-functions-equations-keep-ten-partial-20260923-v1-decision-010",
+      "goalId": "2bd88d66-5daf-53bb-aa02-4c010963679d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f34886702bf4054bad83942abc732c0cd4df2e44c041e00687c5b5dd27905a64",
+      "pageFingerprint": "sha256:6d1b7d8241f81d8d9702311d28d43c926998db3e884d40ded0296b4dcbc6306e",
+      "goalReviewContextFingerprint": "sha256:e76bdaf06d8c83adce0fa83612a02551007a1c37f51d617d22296cc9f21f4cbc",
+      "finalText": {
+        "titleDe": "Substitution zum Lösen von Gleichungen anwenden",
+        "titleEn": "Use substitution to solve equations",
+        "descriptionDe": "Die lernende Person kann Gleichungen durch eine geeignete Substitution auf eine bekannte Gleichungsform zurückführen, die Rücksubstitution durchführen und die Lösungen prüfen.",
+        "descriptionEn": "The learner can use a suitable substitution to reduce equations to a known equation form, back-substitute, and check the solutions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.017",
+          "recordDigest": "sha256:663e98906683c843e9cf913b463dcb39a283d7e2c74935797324b1b3fcd26719"
+        },
+        "second": {
+          "recordId": "math-m7-j10-fe18-b-017",
+          "recordDigest": "sha256:ce0cff883c0ce0c6f09a08fc05707b90208ebff3ba69e698274de5e3ec0e8734"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen Substitution, Rücksubstitution und Probe als einen Lösungsweg. Die erste Evidenzfassung prüft zusätzlich die Zulässigkeit der Hilfsvariablen an einem unabhängigen Fall.",
+      "rationaleEn": "Both independent reviews confirm substitution, back-substitution, and checking as one solution pathway. The first evidence version also tests admissibility of the auxiliary variable in an independent case."
+    }
+  ],
+  "manifestFingerprint": "sha256:2534a6b4fe2f6a88e95ffd749bfb43a081cadf2a20f3a4d669f61f7d8dbb4d7c"
+}

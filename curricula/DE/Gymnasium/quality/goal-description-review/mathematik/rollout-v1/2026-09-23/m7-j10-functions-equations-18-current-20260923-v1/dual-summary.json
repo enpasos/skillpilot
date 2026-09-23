@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:443b1b8e263fd266a27d7d7fea97e1f67b02ea3559490fc182605e347692806b",
+  "reviewInputFingerprint": "sha256:f7fa21dfd5706f2920b4b6e74219d8d9755a5d18bacdbcef59157301fdcfa825",
+  "goalCount": 18,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a",
+      "roundId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-b",
+      "roundId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-independent-b",
+      "runIds": [
+        "math-m7-j10-functions-equations-18-round-b-20260923-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex agent; exact model identifier and sampling parameters not exposed; independent blind round B, no different-model claim::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 18,
+    "unavailable": 0,
+    "requiresSynthesis": 18
+  },
+  "goals": [
+    {
+      "goalId": "31207307-0cf9-4a56-bf14-90196dc2b3d4",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.001",
+      "secondRecordId": "math-m7-j10-fe18-b-001",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.002",
+      "secondRecordId": "math-m7-j10-fe18-b-002",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.003",
+      "secondRecordId": "math-m7-j10-fe18-b-003",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.004",
+      "secondRecordId": "math-m7-j10-fe18-b-004",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.005",
+      "secondRecordId": "math-m7-j10-fe18-b-005",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "15ce2a7e-a5dc-44f7-8a5e-6d04dd81db12",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.006",
+      "secondRecordId": "math-m7-j10-fe18-b-006",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "283ec44e-747c-55e3-9a61-4a4cc70ebfab",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.007",
+      "secondRecordId": "math-m7-j10-fe18-b-007",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0190e463-51a7-4860-9b35-d875530a85ba",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.008",
+      "secondRecordId": "math-m7-j10-fe18-b-008",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.009",
+      "secondRecordId": "math-m7-j10-fe18-b-009",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.010",
+      "secondRecordId": "math-m7-j10-fe18-b-010",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.011",
+      "secondRecordId": "math-m7-j10-fe18-b-011",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.012",
+      "secondRecordId": "math-m7-j10-fe18-b-012",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.013",
+      "secondRecordId": "math-m7-j10-fe18-b-013",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.014",
+      "secondRecordId": "math-m7-j10-fe18-b-014",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.015",
+      "secondRecordId": "math-m7-j10-fe18-b-015",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.016",
+      "secondRecordId": "math-m7-j10-fe18-b-016",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2bd88d66-5daf-53bb-aa02-4c010963679d",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.017",
+      "secondRecordId": "math-m7-j10-fe18-b-017",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+      "firstRecordId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001.018",
+      "secondRecordId": "math-m7-j10-fe18-b-018",
+      "firstRunId": "mathematik-m7-j10-functions-equations-18-current-20260923-v1-a.run-001",
+      "secondRunId": "math-m7-j10-functions-equations-18-round-b-20260923-v1",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

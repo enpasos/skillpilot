@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-evidence-q4-process-tools-text-only-4-20260923-v1",
+  "reviewedAt": "2026-09-23T04:00:24.000Z",
+  "reviewer": "codex-math-q4-process-tools-p-v2-independent-candidate",
+  "goals": [
+    {
+      "goalId": "bd637a72-6609-54f5-bb33-8a9e898bf7a0",
+      "reason": "Text-only AI candidate grounded in current canonical goal and Q4 book page 2; the visualization's task lacks the target needed for its stated backward-reasoning justification, so its bytes are not P-bound.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Current image asks only 'Welche Zahl passt?' without a stated target or condition, then chooses backward reasoning because 'Zielwert ist bekannt'. The illustration's justification is unsupported by its visible task; V remains HOLD."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Eine Heuristik wird aufgrund der Struktur der Aufgabe gewählt: Symmetrie passt zu austauschbaren Größen, Rückwärtsarbeiten zu einem gegebenen Ziel und umkehrbaren Schritten.",
+            "essentialUnderstandingEn": "A heuristic is selected from the task structure: symmetry fits interchangeable quantities, backward reasoning a given target and reversible steps.",
+            "observablePerformanceDe": "Die Person wählt eine passende Heuristik, nennt ein tragfähiges Strukturmerkmal und grenzt eine plausible andere Strategie für diese Aufgabe ab.",
+            "observablePerformanceEn": "The learner chooses a suitable heuristic, names a relevant structural feature and distinguishes a plausible alternative for that task."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Vom symmetrischen Flächenproblem zu einer Folge umkehrbarer Rechenschritte mit bekanntem Endwert wechseln.",
+            "textEn": "Change from a symmetric area problem to reversible arithmetic steps with a known final value."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "direct-case",
+            "taskDemandDe": "Bei Rechtecken mit festem Umfang 20 cm soll ein Kandidat für die größte Fläche gefunden werden. Welche Heuristik würdest du zuerst wählen: Symmetrie, Rückwärtsarbeiten oder Einzelfälle? Begründe die Wahl.",
+            "taskDemandEn": "For rectangles with fixed perimeter 20 cm, a candidate for greatest area is sought. Which heuristic would you choose first: symmetry, backward reasoning or individual cases? Justify the choice.",
+            "expectedPerformanceDe": "Symmetrie der Seiten a und b ist ein guter Ansatz, weil Vertauschen Fläche und Umfang nicht ändert und gleiche Seiten einen naheliegenden Kandidaten liefern; Einzelfälle können ihn anregen, beweisen ihn aber nicht allein.",
+            "expectedPerformanceEn": "Symmetry of sides a and b is a useful starting point because swapping them changes neither area nor perimeter and equal sides suggest a candidate; individual cases can suggest but not by themselves prove it.",
+            "understandingFocusDe": "Die Wahl wird durch austauschbare Größen und die Grenze bloßer Beispiele begründet.",
+            "understandingFocusEn": "The choice is justified by interchangeable quantities and the limit of examples alone."
+          },
+          {
+            "id": "transfer-case",
+            "taskDemandDe": "Eine gesuchte Zahl wird zuerst verdreifacht und dann um 7 erhöht; das Ergebnis ist 31. Wähle eine Heuristik, erkläre sie und sage, warum Symmetrie hier nicht der erste Ansatz ist.",
+            "taskDemandEn": "An unknown number is first tripled and then increased by 7; the result is 31. Choose a heuristic, explain it and say why symmetry is not the first approach here.",
+            "expectedPerformanceDe": "Rückwärtsarbeiten vom bekannten Ziel: 31−7=24, dann 24/3=8; die Schritte sind umkehrbar. Es gibt keine austauschbaren Größen, deren Symmetrie den Lösungsweg trägt.",
+            "expectedPerformanceEn": "Work backward from the known target: 31−7=24, then 24/3=8; the steps are reversible. There are no interchangeable quantities whose symmetry drives the solution.",
+            "understandingFocusDe": "Die Strategie wird wegen bekannter Zielgröße und Umkehrbarkeit neu gewählt.",
+            "understandingFocusEn": "The strategy is newly selected because the target is known and the steps are reversible."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e02b994f-376d-5a8e-a14c-c4acacae57cf",
+      "reason": "Text-only candidate; the current visualization contains contradictory markings and is not bound as validated evidence.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Current image has stray '≠' before 30b≥73, '{a}' before b∈N and '≥' before b≥0, plus a crossed-out fourth bus although b=4 is later marked valid. Treat visual QA as HOLD independently of this text-only P profile."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Nebenbedingungen filtern rechnerische Lösungen nach Kontext und Definitionsbereich; Ganzzahligkeit, Nichtnegativität und Kapazitäts- oder Budgetgrenzen ändern die zulässige Menge.",
+            "essentialUnderstandingEn": "Constraints filter numerical solutions by context and domain; integrality, nonnegativity and capacity or budget limits change the admissible set.",
+            "observablePerformanceDe": "Die Person formuliert eine passende Bedingung, prüft Kandidaten daran und erklärt die Auswirkung auf zulässige Lösungen.",
+            "observablePerformanceEn": "The learner states an appropriate condition, tests candidates against it and explains its effect on admissible solutions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer ganzzahligen Mindestkapazität zu einer ganzzahligen Budgetobergrenze wechseln; Ungleichungsrichtung und Rundung wechseln.",
+            "textEn": "Change from an integer minimum capacity to an integer budget ceiling; the inequality direction and rounding change."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "direct-case",
+            "taskDemandDe": "73 Personen fahren in Bussen mit je 30 Plätzen. Modelliert b die Busanzahl: Welche Nebenbedingungen gelten und was ist die kleinste zulässige Anzahl?",
+            "taskDemandEn": "Seventy-three people travel in buses with 30 seats each. If b models the number of buses, what constraints apply and what is the smallest admissible number?",
+            "expectedPerformanceDe": "b ist positive ganze Zahl und 30b≥73; aus b≥73/30≈2,43 folgt mindestens b=3. Zwei Busse reichen nicht, ein Bruchteil eines Busses ist nicht zulässig.",
+            "expectedPerformanceEn": "b is a positive integer and 30b≥73; b≥73/30≈2.43 implies at least b=3. Two buses do not suffice and a fractional bus is inadmissible.",
+            "understandingFocusDe": "Ganzzahligkeit und Mindestkapazität filtern den rechnerischen Grenzwert.",
+            "understandingFocusEn": "Integrality and minimum capacity filter the numerical threshold."
+          },
+          {
+            "id": "transfer-case",
+            "taskDemandDe": "Ein Verein kann höchstens 200 Euro ausgeben; 80 Euro sind fix, jedes Plakat kostet 12 Euro. Setze für die Anzahl x Nebenbedingungen und bestimme die größte zulässige Anzahl.",
+            "taskDemandEn": "A club can spend at most 200 euros; 80 euros are fixed and each poster costs 12 euros. Set constraints for the number x and find the largest admissible number.",
+            "expectedPerformanceDe": "x ist nichtnegative ganze Zahl, 80+12x≤200; daraus x≤10. Zehn Plakate kosten 200 Euro, elf würden die Grenze überschreiten.",
+            "expectedPerformanceEn": "x is a nonnegative integer, 80+12x≤200; hence x≤10. Ten posters cost 200 euros, whereas eleven exceed the limit.",
+            "understandingFocusDe": "Eine Budgetobergrenze erfordert Abrunden statt Aufrunden und eine neue Zulässigkeitsprüfung.",
+            "understandingFocusEn": "A budget ceiling requires rounding down rather than up and a new admissibility check."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "909d8b16-5156-528b-a300-d9aee5405ba0",
+      "reason": "Text-only candidate; the current visualization contains a boundary contradiction and typo and is deliberately not bound as validated evidence.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Current image states x>20 for the lower marginal price, but captions say 'Ab dem 20.'/'Ab 20'; 'geringrn' is also misspelled. This P candidate makes no image-validation claim."
+      ],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Eine gezielte Modelländerung passt genau den veränderten Parameter oder die veränderte Bedingung an; bei einer Preisstufe bleiben Grenzzuordnung und bereits aufgelaufene Kosten konsistent.",
+            "essentialUnderstandingEn": "A purposeful model change adjusts exactly the changed parameter or condition; in tiered pricing, threshold assignment and accumulated cost remain consistent.",
+            "observablePerformanceDe": "Die Person formuliert ein angepasstes Modell, begründet die geänderten und unveränderten Teile und prüft einen Wert unmittelbar an der Stufengrenze.",
+            "observablePerformanceEn": "The learner formulates an adapted model, justifies changed and unchanged parts and checks a value immediately at the tier boundary."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer Erhöhung der festen Gebühr bei unveränderter Rabattgrenze zur Verschiebung der Rabattgrenze bei unveränderter Gebühr wechseln.",
+            "textEn": "Change from an increase in the fixed fee with an unchanged discount threshold to a shifted discount threshold with an unchanged fee."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "direct-case",
+            "taskDemandDe": "Ein Getränkestand nutzt für ganze x≥0 das Kostenmodell K(x)=15+2x für x≤20 und K(x)=55+1,80(x−20) für x>20 (Euro). Die feste Gebühr steigt um 5 Euro. Passe das Modell an und prüfe x=20 und x=21.",
+            "taskDemandEn": "For integer x≥0, a drinks stand uses the cost model K(x)=15+2x for x≤20 and K(x)=55+1.80(x−20) for x>20 (euros). The fixed fee rises by 5 euros. Adapt the model and check x=20 and x=21.",
+            "expectedPerformanceDe": "K_neu(x)=20+2x für x≤20 und 60+1,80(x−20) für x>20; K_neu(20)=60, K_neu(21)=61,80. Nur die feste Komponente steigt, die 21. Einheit erhält den niedrigeren Grenzpreis.",
+            "expectedPerformanceEn": "K_new(x)=20+2x for x≤20 and 60+1.80(x−20) for x>20; K_new(20)=60, K_new(21)=61.80. Only the fixed component rises, while the 21st unit gets the lower marginal price.",
+            "understandingFocusDe": "Die feste Gebühr wird in beiden Zweigen geändert, ohne die Grenze x>20 umzudeuten.",
+            "understandingFocusEn": "The fixed fee changes in both branches without reinterpreting the threshold x>20."
+          },
+          {
+            "id": "transfer-case",
+            "taskDemandDe": "Im ursprünglichen Modell beginnt der niedrigere Stückpreis nun erst nach 25 statt nach 20 Getränken; die feste Gebühr bleibt 15 Euro. Passe beide Zweige an und prüfe x=25 und x=26.",
+            "taskDemandEn": "In the original model, the lower unit price now begins after 25 rather than after 20 drinks; the fixed fee stays 15 euros. Adapt both branches and check x=25 and x=26.",
+            "expectedPerformanceDe": "K_neu(x)=15+2x für x≤25 und 65+1,80(x−25) für x>25; K_neu(25)=65, K_neu(26)=66,80. Der Startwert des zweiten Zweigs enthält 25 Einheiten zum alten Preis.",
+            "expectedPerformanceEn": "K_new(x)=15+2x for x≤25 and 65+1.80(x−25) for x>25; K_new(25)=65, K_new(26)=66.80. The second branch starts with 25 units at the old price.",
+            "understandingFocusDe": "Die geänderte Schwelle verschiebt sowohl Zweigbedingung als auch Anschlusswert.",
+            "understandingFocusEn": "The changed threshold shifts both the branch condition and the joining value."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "55fa9261-c48e-5f0a-8821-20fe0ca6507d",
+      "reason": "Text-only AI candidate grounded in current canonical goal and Q4 book page 17; current image wording 'Minimum bei −4' is misleading and is not P-bound as validated evidence.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Current image labels the vertex (0|−4) and table gives f(0)=−4, but also says 'Minimum bei −4' without distinguishing location x=0 from minimum value −4. Strict visual review marks this wording V-HOLD; this P record does not validate the image."
+      ],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Tabelle, Graph und Text stützen eine Argumentation, wenn Werte, Lage im Koordinatensystem und sprachliche Schlussfolgerung dieselbe mathematische Aussage tragen.",
+            "essentialUnderstandingEn": "Table, graph and text support an argument when values, coordinate location and verbal conclusion express the same mathematical claim.",
+            "observablePerformanceDe": "Die Person kombiniert mindestens zwei passende Darstellungen, verknüpft konkrete Merkmale und formuliert daraus eine überprüfbare Aussage mit korrekter x-/y-Bedeutung.",
+            "observablePerformanceEn": "The learner combines at least two suitable representations, links concrete features and formulates a checkable conclusion with correct x/y meaning."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von Nullstellen und Scheitel einer Parabel zu einem nicht symmetrisch um null liegenden stückweise linearen Tarif wechseln.",
+            "textEn": "Change from the zeros and vertex of a parabola to a piecewise linear tariff whose key point is not centered at zero."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "direct-case",
+            "taskDemandDe": "Für f(x)=x²−4 liegen die Tabellenwerte (−2,0),(0,−4),(2,0) vor. Nutze Tabelle, Graphskizze und einen Satz zur Argumentation über Nullstellen und Minimum.",
+            "taskDemandEn": "For f(x)=x²−4 the table values (−2,0),(0,−4),(2,0) are given. Use table, graph sketch and a sentence to argue about zeros and minimum.",
+            "expectedPerformanceDe": "Tabelle und nach oben geöffnete Parabel zeigen Nullstellen x=−2 und x=2 sowie Scheitel (0,−4); der Text unterscheidet Lage x=0 und Minimalwert −4. Die drei Darstellungen stimmen überein.",
+            "expectedPerformanceEn": "Table and upward-opening parabola show zeros x=−2 and x=2 and vertex (0,−4); the text distinguishes location x=0 from minimum value −4. The three representations agree.",
+            "understandingFocusDe": "Koordinaten werden korrekt in Orts- und Wertangaben übersetzt.",
+            "understandingFocusEn": "Coordinates are correctly translated into location and value statements."
+          },
+          {
+            "id": "transfer-case",
+            "taskDemandDe": "Ein Tarif kostet T(x)=10+2x bis einschließlich x=5 Einheiten, danach T(x)=20+1,5(x−5), für ganze x≥0. Verbinde eine kleine Tabelle, ein Punktdiagramm und Text, um den Übergang zu erklären.",
+            "taskDemandEn": "A tariff costs T(x)=10+2x up to and including x=5 units, then T(x)=20+1.5(x−5), for integer x≥0. Combine a small table, a point plot and text to explain the transition.",
+            "expectedPerformanceDe": "T(4)=18, T(5)=20, T(6)=21,5; das Punktdiagramm markiert (5,20) und danach kleinere Zuwächse pro Einheit. Der Text erklärt: erst die 6. Einheit kostet 1,5, während 5 Einheiten 20 kosten.",
+            "expectedPerformanceEn": "T(4)=18, T(5)=20, T(6)=21.5; the point plot marks (5,20) and smaller increments per unit afterward. The text explains: only the sixth unit costs 1.5, while five units cost 20.",
+            "understandingFocusDe": "Bei neuer Darstellungsstruktur müssen Tabellenwerte, Knickpunkt und Tarifdeutung zusammenpassen.",
+            "understandingFocusEn": "With a new representation structure, table values, break point and tariff interpretation must agree."
+          }
+        ]
+      }
+    }
+  ]
+}

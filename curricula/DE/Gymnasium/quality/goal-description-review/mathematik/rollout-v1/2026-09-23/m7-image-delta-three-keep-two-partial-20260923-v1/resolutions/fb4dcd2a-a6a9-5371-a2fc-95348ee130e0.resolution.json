@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-image-delta-three-keep-two-partial-20260923-v1-resolution-fb4dcd2a-a6a9-5371-a2fc-95348ee130e0",
+  "goal": {
+    "goalId": "fb4dcd2a-a6a9-5371-a2fc-95348ee130e0",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:8e66fbada8aaebef3e9454d821fae4b28ce455fab624d814cb7a8659e233eb06",
+    "pageFingerprint": "sha256:d599357847986d7b6c6bc2252dad95245391dbfabec61736163398adec5415de",
+    "goalReviewContextFingerprint": "sha256:bd50b894c2dd8d41c3dc23766bca2549d32fd482dbcb1292ed328ed7e9f04d30",
+    "finalText": {
+      "titleDe": "Modellverbesserungen vorschlagen",
+      "titleEn": "Suggest model improvements",
+      "descriptionDe": "Die lernende Person kann Verbesserungen am Modell vorschlagen (z. B. zusätzliche Einflussgrößen, andere Funktionswahl) und deren Wirkung qualitativ beschreiben.",
+      "descriptionEn": "The learner can suggest improvements to a model (e.g. additional factors, different functional form) and describe their effect qualitatively."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-image-delta-three-current-20260923-v1-a",
+      "campaignDigest": "sha256:715373435cf14a635b6349748a2b94c4479c3e959bdc3f220717a0c6cc05634d",
+      "roundId": "mathematik-m7-image-delta-three-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-image-delta-three-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:531d1a0f2580a8d61876b30ff21d952a871976cb6e2f99c5d0dc00a3b92d4750",
+      "goalReviewContextFingerprint": "sha256:bd50b894c2dd8d41c3dc23766bca2549d32fd482dbcb1292ed328ed7e9f04d30",
+      "batchId": "mathematik-m7-image-delta-three-current-20260923-v1-first-pass-a.batch-001",
+      "runId": "math-m7-image-delta-three-a-codex-20260923T005219Z",
+      "runManifestDigest": "sha256:3ba1c51ef7b8ccaa00675464c74f8224979176fd3b9884f21ca5af2b34d6efcc",
+      "resultsDigest": "sha256:d10b4f4d83ce5ce3edaee6bf9e3b3cf009d042d13e2fc81ef1d0685c7c449fea",
+      "recordId": "math-m7-image-delta-three-a-003",
+      "recordDigest": "sha256:124aea647e684b9166b6549a4a735cdfa73cb6583fe400f4dbc25fb35c45ca21"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-image-delta-three-current-20260923-v1-b",
+      "campaignDigest": "sha256:752af6139b285c21d782eda0eda170f8db50268a90d106870f7b1b65197bfe7e",
+      "roundId": "mathematik-m7-image-delta-three-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-image-delta-three-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:531d1a0f2580a8d61876b30ff21d952a871976cb6e2f99c5d0dc00a3b92d4750",
+      "goalReviewContextFingerprint": "sha256:bd50b894c2dd8d41c3dc23766bca2549d32fd482dbcb1292ed328ed7e9f04d30",
+      "batchId": "mathematik-m7-image-delta-three-current-20260923-v1-first-pass-b.batch-001",
+      "runId": "math-m7-image-delta3-20260923-b-run-001",
+      "runManifestDigest": "sha256:5504e09114915cd46070da8273e58402a2cb2dac421b975804a6f9956a52f7c2",
+      "resultsDigest": "sha256:cc417b8faa0fd2994aac59558e4e24b96d51528cc81468a2d5c3c70b1798da31",
+      "recordId": "math-m7-image-delta3-20260923-b-fb4dcd2a",
+      "recordDigest": "sha256:221a2e1cb3eb9da02ccc94b2fbbe6ec075fcaea4a8cb687399accde83081403a"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9c1e51a8c205e6bfc4afe07786dd46576394eeee00c30124e7614e260a2ee109"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "mathematik-m7-image-delta-three-keep-two-partial-20260923-v1",
+    "manifestDigest": "sha256:0bf5c351ffe3b7d2b12f32a7f04df8a1d14ca24d7b6664200cb4feecaf88fa53",
+    "manifestFingerprint": "sha256:cc7e1232ec8f9f1c35ada4d903f743a712d2ddbb69880d653bbeaf6dcf086836",
+    "decisionId": "mathematik-m7-image-delta-three-keep-two-partial-20260923-v1-decision-002"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-m7-image-delta-three-keep-two-partial-20260923-v1-decision-002",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+    "synthesizedAt": "2026-09-23T01:01:15.000Z",
+    "rationaleDe": "Beide unabhängigen Runden bestätigen den aktuellen zweisprachigen Zieltext. Die zweite Evidenzfassung macht den qualitativen Änderungs- und Transferfall konkret, ohne eine ungeprüfte Modellverbesserung als erwiesen auszugeben; die erste bleibt als gebundene, kompatible Perspektive erhalten.",
+    "rationaleEn": "Both independent rounds confirm the current bilingual goal text. The second evidence formulation makes the qualitative change and transfer case concrete without presenting an untested model improvement as established; the first remains bound as a compatible perspective.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine erkennbare Modellgrenze kann aus einer fehlenden Einflussgröße, einem fehlenden festen Anteil oder einer ungeeigneten Funktionsform entstehen. Eine gezielte Änderung verändert die Vorhersagen in beschreibbarer Weise und ist erst anhand der Situation und der Daten als Verbesserung zu beurteilen.",
+      "essentialUnderstandingEn": "An observed model limitation can arise from a missing influencing factor, a missing fixed component, or an unsuitable functional form. A targeted change alters predictions in a describable way and counts as an improvement only when judged against the situation and data.",
+      "observablePerformanceDe": "Die lernende Person benennt bei einem Modell und beobachteten Abweichungen eine plausible Änderung, etwa einen Grundpreis zusätzlich zum Streckenpreis, und beschreibt qualitativ, welche Vorhersagen dadurch steigen und wie die Änderung an realen Preisen geprüft werden könnte.",
+      "observablePerformanceEn": "Given a model and observed discrepancies, the learner identifies a plausible change, such as adding a base fare to distance-based taxi pricing, and describes qualitatively which predictions would rise and how real prices could be used to check the change.",
+      "transferExpectationDe": "Bei unabhängig vorgelegten Messdaten, deren Zuwachs mit der Zeit deutlich abflacht, schlägt die lernende Person statt eines bloßen festen Zuschlags eine passend veränderte Funktionsform vor und erläutert die qualitative Wirkung auf spätere Vorhersagen.",
+      "transferExpectationEn": "For independently presented measurements whose increase clearly levels off over time, the learner proposes a suitable change of functional form rather than merely adding a fixed offset and explains the qualitative effect on later predictions."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-4e0d6e4404f0f1546492d61cd5063f7cc962f3bcb4d6278217288ade2c3a568e",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:97f883367037f188d2c7a9f740484ed7c8fa8af69977818753d5d7d0b5d51c1c"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-m7-q4-model-check-three-current-20260923-v1-resolution-519660d0-85e5-57a6-a219-d0a253336649",
+  "goal": {
+    "goalId": "519660d0-85e5-57a6-a219-d0a253336649",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:ea872091a37a3ab4e5f930600d8597c749fa31b45e2ccb8dcbddee38616264b9",
+    "pageFingerprint": "sha256:cef547405c102af27ef58a980bd05750c559717fcdc69e532c7b5d09a914bf8c",
+    "goalReviewContextFingerprint": "sha256:f54f7f357db4d8e588b76ede547181cf0487558a68dd1ba4b182ddae4d7ac8b4",
+    "finalText": {
+      "titleDe": "Modellentscheidung begründen (LK)",
+      "titleEn": "Justify the model choice",
+      "descriptionDe": "Die lernende Person kann eine Modellentscheidung anhand von Vergleichskriterien begründen und qualitativ erläutern, wie empfindlich diese Entscheidung gegenüber Datenunsicherheit oder veränderten Annahmen ist.",
+      "descriptionEn": "The learner can justify a model choice using comparison criteria and explain qualitatively how sensitive that choice is to data uncertainty or changed assumptions."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q4-model-check-three-current-20260923-v1-a",
+      "campaignDigest": "sha256:37f9367e44fe9ebfbc5e620144522a4c3a8f5d0ab3c73407f57bf6a110ce4221",
+      "roundId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q4-model-check-three-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:e5875679d84cb0322218bcbbb262ddce413db78c3ea65f94169460464daa9891",
+      "goalReviewContextFingerprint": "sha256:f54f7f357db4d8e588b76ede547181cf0487558a68dd1ba4b182ddae4d7ac8b4",
+      "batchId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-a.batch-001",
+      "runId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-a-run-001",
+      "runManifestDigest": "sha256:534686f04c380918130afa5d635561a6b486ba2523a40682646dad75e3ae0f78",
+      "resultsDigest": "sha256:51e9236274f38268b8cdad484d8c8f7eee822a5d6a948ba5916480267258f2cd",
+      "recordId": "mathematik-q4-model-current-20260923-a-519660d0",
+      "recordDigest": "sha256:2331dc42c7d185516432ec20c89d5cc7968a9a3d8d04e1a0f5591973cb2ce466"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q4-model-check-three-current-20260923-v1-b",
+      "campaignDigest": "sha256:c712efb24adf856f9fe2960256f0e8b8ef9611e6d018ccbf006c39804ca07700",
+      "roundId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q4-model-check-three-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:e5875679d84cb0322218bcbbb262ddce413db78c3ea65f94169460464daa9891",
+      "goalReviewContextFingerprint": "sha256:f54f7f357db4d8e588b76ede547181cf0487558a68dd1ba4b182ddae4d7ac8b4",
+      "batchId": "mathematik-m7-q4-model-check-three-current-20260923-v1-first-pass-b.batch-001",
+      "runId": "math-m7-q4-model-check-three-20260923-b-run-001",
+      "runManifestDigest": "sha256:a54cfc3336e560c548aa7a8e55c360225f879a7aca923bb0f2d9930a8ab9456e",
+      "resultsDigest": "sha256:7a913753e87612f3c6a0df96346ffcb7525322c7069c64dbbceb8230f62367ae",
+      "recordId": "math-m7-q4-model-check-three-20260923-b-519660d0",
+      "recordDigest": "sha256:a62f01d22340528faa33dcda8af19d1a91307d58a0be5b229cd68b2b8d5e8373"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9de7731d14ba13227b3d0418e3fe8dae25b74cb590278bab4dd8085f7ad51eca"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "mathematik-m7-q4-model-check-three-current-20260923-v1-synthesis-v1",
+    "manifestDigest": "sha256:c34a91960ec6fc6d3e3f9feb53481e406bbf5e2c9d07538f9bbdbe008f4f419b",
+    "manifestFingerprint": "sha256:fb1bf0ca783ab383466ca42b7f8e72be563cd37c04ca956d6b5ace9ced817c75",
+    "decisionId": "mathematik-m7-q4-model-check-three-current-20260923-v1-synthesis-v1-decision-003"
+  },
+  "synthesis": {
+    "synthesisId": "mathematik-m7-q4-model-check-three-current-20260923-v1-synthesis-v1-decision-003",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); informed synthesis after two independent current reviews",
+    "synthesizedAt": "2026-09-23T03:40:34.000Z",
+    "rationaleDe": "Beide unabhängigen aktuellen Runden entscheiden KEEP für das zusammenhängende LK-Urteil: aus verglichenen Modellen begründet auswählen und die Robustheit der Entscheidung bei veränderten Annahmen oder Daten qualitativ prüfen. Der direkte Vorgänger bleibt der Vergleich, nicht die Entscheidung. Das geprüfte Bild illustriert Kriterien und erneute Prüfung bei neuen Daten, ersetzt aber keine selbstständige Transferleistung. Das aktuelle P-v2-Profil ist separat KI-validiert; keine menschliche Freigabe wird abgeleitet.",
+    "rationaleEn": "Both independent current rounds choose KEEP for the coherent advanced-course judgement: choose among compared models with reasons and qualitatively test robustness when assumptions or data change. The direct predecessor remains comparison rather than choice. The inspected image illustrates criteria and reconsideration with new data but does not replace independent transfer performance. The current P-v2 profile was separately AI-validated; no human approval is inferred.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Modellwahl beruht auf den für die Fragestellung gewichteten Vergleichskriterien. Wenn Messwerte unsicher sind oder Annahmen geändert werden, können sich Passung und Vorzüge der Modelle verschieben; die Begründung muss erkennen lassen, ob die Wahl unter solchen Änderungen tragfähig bleibt.",
+      "essentialUnderstandingEn": "A model choice rests on comparison criteria weighted for the question at hand. Uncertain measurements or changed assumptions can shift the models' fit and advantages; the justification must show whether the choice remains defensible under such changes.",
+      "observablePerformanceDe": "Aus zwei zuvor verglichenen Modellen wählt die lernende Person für eine vorgelegte Fragestellung eines aus und begründet die Entscheidung mit konkreten Kriterien und Daten. Sie zeigt qualitativ an einer unsicheren Messung oder einer Modellannahme, ob und warum die Wahl bei einer plausiblen Änderung bestehen bliebe oder kippen könnte.",
+      "observablePerformanceEn": "From two previously compared models, the learner chooses one for a given question and justifies the decision with specific criteria and data. They show qualitatively, using an uncertain measurement or a model assumption, whether and why a plausible change would leave the choice intact or could reverse it.",
+      "transferExpectationDe": "In einem unabhängig vorgelegten Prognosefall mit breiteren Messintervallen und einer geänderten Annahme über den weiteren Verlauf begründet die lernende Person die Modellwahl erneut und erklärt, ob diese unter den neuen Unsicherheiten robust bleibt oder neu getroffen werden muss.",
+      "transferExpectationEn": "In an independently presented forecasting case with wider measurement intervals and a changed assumption about future development, the learner justifies the model choice afresh and explains whether it remains robust under the new uncertainties or must be reconsidered."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-3b209bdf282e95a9715be4b1496901a21df70631b69fa0ce9687418198bee62e",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:4a42a76213bb328ebea515bde465d7383c0e6d5f07927782127c7e7023e968ec"
+}

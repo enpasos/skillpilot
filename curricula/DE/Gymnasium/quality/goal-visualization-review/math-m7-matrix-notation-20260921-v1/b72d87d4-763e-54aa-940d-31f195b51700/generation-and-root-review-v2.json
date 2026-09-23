@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "goalId": "b72d87d4-763e-54aa-940d-31f195b51700",
+  "recordedAt": "2026-09-21T22:19:51.335Z",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactServingModel": "not exposed",
+  "resultId": "exec-259836db-0401-4244-87ac-1b8b32198066",
+  "nativePrepareCompletedBeforeFirstGeneration": true,
+  "prompt": {
+    "path": "correction-prompt-v2.md",
+    "sha256": "sha256:2afc0c85c204ddeb61738210fc45955f00442d6265ac109b51b2f238cecd95a6"
+  },
+  "reference": {
+    "path": "rejected-geometry-v1.png",
+    "sha256": "sha256:587e3e33ec97df35eb538c91ad91fd46fcfb2e78629f134b9686685ff004930e",
+    "actuallyViewedBeforeEditing": true
+  },
+  "candidate": {
+    "path": "candidate.png",
+    "sha256": "sha256:2a3e8ddcfa9d8b5d9063301304af76defcb67cc5e92b06c419f445e5d299994e"
+  },
+  "rootReview": {
+    "actuallyViewed": true,
+    "decision": "candidate_pending_independent_review",
+    "findings": [
+      "The y axis is now straight through O; F is visibly off the axis and within the xy plane.",
+      "P, F and Pprime are vertically aligned; P-F and F-Pprime have visually equal lengths, with F at the midpoint.",
+      "The positive x direction and the location of F admit positive x and y components in this oblique view. No common screen scale between differently projected coordinate axes is claimed.",
+      "Sxy=diag(1,1,-1) and its product with column vector(2,1,3) are correct.",
+      "All coordinate labels, the fixed x and y components, sign change of z, equal-distance markers, readable friendly comic style are retained."
+    ]
+  },
+  "reviewAuthority": "ai_candidate",
+  "canonicalImported": false,
+  "humanApproval": false
+}

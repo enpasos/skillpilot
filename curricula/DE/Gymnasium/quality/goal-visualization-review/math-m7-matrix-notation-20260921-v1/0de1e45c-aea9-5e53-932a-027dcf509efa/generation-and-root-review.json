@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+  "recordedAt": "2026-09-21T22:09:39.272Z",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactServingModel": "not exposed",
+  "nativePrepareCompletedBeforeFirstGeneration": true,
+  "attempts": [
+    {
+      "attempt": 1,
+      "prompt": {
+        "path": "prompt.md",
+        "sha256": "sha256:b29fcd9549d42536b1263867e15ef676281a282d8250b0cba60faee6c9a2b08d"
+      },
+      "image": {
+        "path": "rejected-bar-proportions-v1.png",
+        "sha256": "sha256:ddbd1bba01dbeafc2c69fcd6beb0afac90505ad3594c6153ac3e8bfbe3261e0f"
+      },
+      "resultId": "exec-567f82d5-b8b7-485c-887e-5e79914b9ff4",
+      "decision": "rejected",
+      "findings": "Matrices and values correct, but percentage bars visibly closer to 75/25,61/39,58/42 than claimed80/20,65/35,60/40.",
+      "actuallyViewed": true,
+      "reference": null
+    },
+    {
+      "attempt": 2,
+      "prompt": {
+        "path": "correction-prompt-v2.md",
+        "sha256": "sha256:1668959786e0825a55a43d3ad9a8cb2ffdb3c0bc0994fd7fa6fe74dce9000508"
+      },
+      "image": {
+        "path": "rejected-bar-proportions-v2.png",
+        "sha256": "sha256:fa5699f6db5df365e30606580d5e7a2f8fcbf6be86a163f388664eefa3b12d74"
+      },
+      "resultId": "exec-3f33e26d-67ea-4feb-b8b8-06a41d281f3d",
+      "decision": "rejected",
+      "findings": "Requested precise local boundary shift not achieved; bars remain misleading.",
+      "actuallyViewed": true,
+      "reference": "rejected-bar-proportions-v1.png"
+    },
+    {
+      "attempt": 3,
+      "prompt": {
+        "path": "correction-prompt-v3.md",
+        "sha256": "sha256:13a63158a6abfecb96b7da1e55303ac05d647aad465a518c3ccf0c5fdbfc6440"
+      },
+      "image": {
+        "path": "candidate.png",
+        "sha256": "sha256:bea47985c63aa48992058ab3d688b91e8d05fb5d2123f70ec255ce0093320fff"
+      },
+      "resultId": "exec-5b0fe869-a428-45ae-947f-e4728036b003",
+      "decision": "candidate_pending_independent_review",
+      "findings": "Replace only the failed quantitative bars with neutral numeric state cards; no geometrical magnitude encoded now. Matrices, powers, values and friendly illustration retained.",
+      "actuallyViewed": true,
+      "reference": "rejected-bar-proportions-v2.png"
+    }
+  ],
+  "rootChecks": [
+    "Column-stochastic M=(.8 .3;.2 .7); M²=(.70 .45;.30 .55).",
+    "M² times (.8,.2) gives (.65,.35).",
+    "With fixed monthly transitions, A share follows a_(n+1)=.3+.5a_n; from .8 it approaches .6, B approaches.4.",
+    "All displayed column vectors have proper dimensions; no spurious transpose.",
+    "Final state cards explicitly refer to the long-term state in this model, not equality at a finite month.",
+    "Final numeric cards remove erroneous length claims rather than accepting wrong graph geometry.",
+    "Bright cream/blue/orange abstract comic style and legible formulas preserved."
+  ],
+  "reviewAuthority": "ai_candidate",
+  "independentReviewPending": true,
+  "canonicalImported": false,
+  "humanApproval": false
+}

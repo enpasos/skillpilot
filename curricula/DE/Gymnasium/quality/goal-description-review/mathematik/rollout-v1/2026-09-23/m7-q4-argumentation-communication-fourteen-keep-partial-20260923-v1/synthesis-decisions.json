@@ -1,0 +1,440 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T05:15:13.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1",
+    "batchManifestDigest": "sha256:fcdec18bf7ab32a4c03d2444c0945b09339554cbd9a9be49f010aa459fe76593",
+    "configDigest": "sha256:c993ef0d03fbf3bc12f9251a127f83d68772b6f30f29414b0287c98a71a67436",
+    "bundleFingerprint": "sha256:41098d32fb4ada265f7fd214e632b574c29c1e751b92bea80543e1a2f5dbe322",
+    "bookDigest": "sha256:efcb59c69f327c8effab5b126b2183e448000e5e3150150942da8e19d3ab1cf0",
+    "reviewInputFingerprint": "sha256:57b9029e7e6285564bd7d54383eb8b47b158b1b0b831bcb98fa45d91d6f24701",
+    "dualSummaryDigest": "sha256:632be9191fa8b68d37297f3dbebb56f11b02705c01efa7c16fee9f7be26282f8",
+    "canonicalLandscapeDigest": "sha256:34a91c0c9c5107cf0ccc214dd63965efcb9828cc09fbc92dd5e1304a8493ffd8"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a",
+      "campaignDigest": "sha256:624d206d28d9371e1755e6822917b4b8fe512be773f0714bba86d9db2cee7c2d",
+      "roundId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:57b9029e7e6285564bd7d54383eb8b47b158b1b0b831bcb98fa45d91d6f24701",
+      "batchId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:419c03f81d89336f07f7bf75de61dd62de7c93c5059d03908b880dd42564cf42",
+      "runId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001",
+      "runManifestDigest": "sha256:9dbff31b88f11897e68c4e00da847be4507b6857e667c334c9a627afe8c29620",
+      "resultsDigest": "sha256:54b3a5384b916f32d31ccacb419843d40f44cd5a10034098744ebf69a63b213d"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-b",
+      "campaignDigest": "sha256:f5df26c172cdb34daae358a5b9768338f5fd3e33c033fc55d567858b3d9e9ab2",
+      "roundId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:57b9029e7e6285564bd7d54383eb8b47b158b1b0b831bcb98fa45d91d6f24701",
+      "batchId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:b3cb7e1cb39158a4e9cb2aa4b0db21d41e76a230133b4657c066aa6841b1a185",
+      "runId": "math-q4-argumentation-communication-20-20260923-codex-round-b",
+      "runManifestDigest": "sha256:9e668154d66f0ea2f516ca3ed109ae84b378a8e20b8df88bbfee7c1a3b0e0ac1",
+      "resultsDigest": "sha256:040945c5ae4eba9ad96b59295c83acf57a505e583d864b82a9034c0eb3710ef4"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-001",
+      "goalId": "70f37fda-545f-51dc-a002-c8e435e5c4a5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:faf10a242f8bcccdb783fccfd0d0d03e537a1b7be007c8fbc33d5766d88caf21",
+      "pageFingerprint": "sha256:30ce027c96dd5ebde9b5f1788be708206f149511f318a961560a603cdaaa2e53",
+      "goalReviewContextFingerprint": "sha256:88673c8fc95c38e5524b49550074eb5876dbb61e18ea88e1542aafecda55149e",
+      "finalText": {
+        "titleDe": "Ergebnis im Kontext deuten",
+        "titleEn": "Interpret results in context",
+        "descriptionDe": "Die lernende Person kann ein Ergebnis in der Ausgangssituation interpretieren (Einheiten, Bedeutung, Realisierbarkeit) und es als Antwort auf die Zielfrage formulieren.",
+        "descriptionEn": "The learner can interpret a result in the original situation (units, meaning, feasibility) and formulate it as an answer to the goal question."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-001",
+          "recordDigest": "sha256:44ae27515d673631c794d9f777040eed5b699f84c885fd62f5e71b47eaeb1b35"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-1",
+          "recordDigest": "sha256:a5af5d6731c46cb2a0a2118b68b5890047f31b0bfb59398560ea241ccfe20d7c"
+        }
+      },
+      "rationaleDe": "Beide Reviews halten das Deuten eines Ergebnisses mit Einheiten und Realisierbarkeit als prüfbare Kompetenz; das Beispiel mit 73 Personen und 30 Plätzen erfordert korrekt drei Busse.",
+      "rationaleEn": "Both reviews retain interpreting a result with units and feasibility as assessable; the 73-person, 30-seat example correctly requires three buses."
+    },
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-002",
+      "goalId": "fbcb4ad3-786d-5365-94ba-b105660694a5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d953164f5d13f4d885788d89c9a503e702b1a5eaa556c4ec790cca86ebedd6ac",
+      "pageFingerprint": "sha256:2482f578a80bd710d179080c71269deb51d6608455bd5ede6f0df040c91fe582",
+      "goalReviewContextFingerprint": "sha256:a51a4c07a54c1d4ed46777575b177ffb01831209851f80fb3e17279ad76fbbc3",
+      "finalText": {
+        "titleDe": "Fehlerquellen analysieren und beheben",
+        "titleEn": "Analyze and fix error sources",
+        "descriptionDe": "Die lernende Person kann typische Fehlerquellen (Rechenfehler, falsche Voraussetzungen, Rundung) identifizieren und gezielt korrigieren.",
+        "descriptionEn": "The learner can identify typical sources of error (calculation mistakes, wrong assumptions, rounding) and correct them deliberately."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-004",
+          "recordDigest": "sha256:22240ce803e8e9f168073f88fe4eff30141743b98522fd467a803b908f248f8b"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-4",
+          "recordDigest": "sha256:4bdc1928fadd4ff538a652bc32c77ea0d5b0653ad31e06c8e831a3c47f6bf0b3"
+        }
+      },
+      "rationaleDe": "Fehler erkennen und gezielt korrigieren ist eine einzelne beobachtbare Handlung; beide Reviews bestätigen den aktuellen Text und das Bild mit korrekter Probe für x=2.",
+      "rationaleEn": "Identifying and deliberately correcting an error is one observable action; both reviews retain the current text and the image with a correct check for x=2."
+    },
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-003",
+      "goalId": "121ef4c5-c1c2-5294-9582-86bab2355907",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:683b889ef72d2ece213fc3069f9c7f5a1b2ffb8fde121b8a65fea3b10d5dfca4",
+      "pageFingerprint": "sha256:956c07adaf276b50a6e40d6c2ad201d9916b9c2815e48153a28843d43e3b8608",
+      "goalReviewContextFingerprint": "sha256:215cee2ed3f93102dd93d7f715db0f558c5c3bf5611d193b0653043191566c04",
+      "finalText": {
+        "titleDe": "Lösung nachvollziehbar erklären",
+        "titleEn": "Explain a solution clearly",
+        "descriptionDe": "Die lernende Person kann einen Lösungsweg nachvollziehbar erklären, Begründungen angeben und zentrale Schritte hervorheben.",
+        "descriptionEn": "The learner can explain a solution path clearly, provide justifications and highlight key steps."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-006",
+          "recordDigest": "sha256:34b7826d35e8deb9827cf8d656bae81e1e194bbb7b51e16e62fdc53407220f37"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-6",
+          "recordDigest": "sha256:5efb36272078447d59c86d48a036ce77f3781d88c3ea7b4e7ee5ed89897d2c4f"
+        }
+      },
+      "rationaleDe": "Ein Lösungsweg mit hervorgehobenen Schritten und Begründungen ist eigenständig prüfbar; beide unabhängigen Reviews empfehlen KEEP.",
+      "rationaleEn": "Explaining a solution with highlighted steps and reasons is independently assessable; both separate reviews recommend KEEP."
+    },
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-004",
+      "goalId": "d5e1e007-7c64-5350-8aa9-fde93f8a76b5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:60044914df498c98ece7b99f10987ad2447d419033132484a55f848bb4dc9857",
+      "pageFingerprint": "sha256:3593935d081761198c55ca112474815cac139551f339a4d16308f4bb8e2e7ff0",
+      "goalReviewContextFingerprint": "sha256:6601f1dc7219bf42e41b6f7500d281d5a59d1368e0088f3ad3fda8e3164d7dd8",
+      "finalText": {
+        "titleDe": "Mit Beispielen und Darstellungen erklären",
+        "titleEn": "Explain using examples and representations",
+        "descriptionDe": "Die lernende Person kann zur Erklärung passende Beispiele oder Darstellungen nutzen (Graph, Tabelle) und diese in die Argumentation einbinden.",
+        "descriptionEn": "The learner can use suitable examples or representations (graph, table) to explain and integrate them into the argument."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-007",
+          "recordDigest": "sha256:6a115f1769925e21b8aea1d189b4ab46ca2b76a4da08592a9ce4256bf1c93eae"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-7",
+          "recordDigest": "sha256:b0af2382080fbf7b4c758b7ca817ce68fb0a12a4a193801f31e69b5c0ada0f47"
+        }
+      },
+      "rationaleDe": "Beispiele, Tabelle und Graph werden als Begründungshilfen eingesetzt und nicht bloß benannt; beide Reviews halten den Zieltext samt aktueller Bildbindung.",
+      "rationaleEn": "Examples, a table and a graph serve an explanatory argument rather than being merely named; both reviews retain the wording and current image binding."
+    },
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-005",
+      "goalId": "ded082ed-ea38-510c-ab91-e0a50b064e07",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bf74b357d576fa61e5cdaa94b84936c9457d9a98612754de7ea4950062193d3c",
+      "pageFingerprint": "sha256:eb4ab4be461dc6dbb20e4571a2b687b5340b3bf9ba691e66c9875970e094e943",
+      "goalReviewContextFingerprint": "sha256:16ea5dc666440369ee3b86723270310159ce5f1f971ede735a45385bec4d42c0",
+      "finalText": {
+        "titleDe": "Kritik aufnehmen und integrieren",
+        "titleEn": "Incorporate feedback",
+        "descriptionDe": "Die lernende Person kann Kritik aufnehmen, eigene Fehler erkennen und den Lösungsweg bzw. die Argumentation entsprechend verbessern.",
+        "descriptionEn": "The learner can take in feedback, recognize own errors and improve the solution path or argument accordingly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-008",
+          "recordDigest": "sha256:473941669f5dde66f09b472fff8a48d28e006074cd83a4e229fc8d23a61dd891"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-8",
+          "recordDigest": "sha256:6ff0c257b3ef69b81b37a07f15246c326c421badadfcc30d76247410337dbef6"
+        }
+      },
+      "rationaleDe": "Kritik aufnehmen, einen konkreten Fehler erkennen und eine Lösung verbessern ist beobachtbar; beide unabhängigen Reviews empfehlen KEEP.",
+      "rationaleEn": "Taking feedback, recognizing a concrete error and improving a solution is observable; both independent reviews recommend KEEP."
+    },
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-006",
+      "goalId": "fc2cf102-dcde-5565-884f-7c9e3e3b54b6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:344cfd66e2ae6cb2b363ec2e48f9c8d9fc49d1e1b3a647459f357677c5d53db9",
+      "pageFingerprint": "sha256:ffb3b4a493d8675ecfedae043e2cdc01a1c894ec29a3cdc8def3dbd039e79fee",
+      "goalReviewContextFingerprint": "sha256:2104b030513eae013c15fcb96671d3b8c745fca5fb2de0b17d49955e7896d7fc",
+      "finalText": {
+        "titleDe": "Kooperativ Ergebnisse erarbeiten",
+        "titleEn": "Work collaboratively to reach results",
+        "descriptionDe": "Die lernende Person kann in der Gruppe Aufgaben verteilen, Zwischenergebnisse zusammenführen und ein gemeinsames Ergebnis dokumentieren.",
+        "descriptionEn": "The learner can distribute tasks in a group, combine intermediate results and document a shared result."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-009",
+          "recordDigest": "sha256:292c582a3be5fe5fe5db0062205935351edbce9561b174fc2a2006a38c14d85b"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-9",
+          "recordDigest": "sha256:41a1c4bab20e917723ba910efd3811ff1b9d723df1617b0d72d255f5a27d51c0"
+        }
+      },
+      "rationaleDe": "Aufgabenteilung, Abgleich von Zwischenergebnissen und gemeinsames Dokumentieren bilden die überprüfbare kooperative Leistung; beide Reviews halten den Text.",
+      "rationaleEn": "Dividing work, reconciling intermediate results and documenting a joint outcome form the assessable cooperative task; both reviews retain the text."
+    },
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-007",
+      "goalId": "3019ed7f-8f74-5330-816c-17997156ed68",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d39353190dbd5d0aecc5fc699b975e435a08c2e5a34daa67bbb61243ce3a6ffe",
+      "pageFingerprint": "sha256:66f201a592139626919d951eb36d77238d9cc9191f8d3441ab4e370a9ec29001",
+      "goalReviewContextFingerprint": "sha256:ca152fd920ed0319705725b39053076f7b444268187eb0919803d871e5b449be",
+      "finalText": {
+        "titleDe": "Ergebnisse strukturiert präsentieren",
+        "titleEn": "Present results in a structured way",
+        "descriptionDe": "Die lernende Person kann Ergebnisse strukturiert präsentieren (Fragestellung, Vorgehen, Ergebnis, Interpretation) und zentrale Punkte hervorheben.",
+        "descriptionEn": "The learner can present results in a structured way (question, approach, result, interpretation) and highlight key points."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-010",
+          "recordDigest": "sha256:a0ad32dfe49bb063209dbb4b0aa9249f7c053ea60a6ce0c0473333f925a7bb5d"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-10",
+          "recordDigest": "sha256:0135c580fa7a1b05fde56afb8f9e4faabc499f06174a7cb00003fe517297d0c3"
+        }
+      },
+      "rationaleDe": "Die Struktur Fragestellung–Vorgehen–Ergebnis–Interpretation macht eine Präsentation konkret prüfbar; beide Reviews bestätigen den aktuellen Wortlaut.",
+      "rationaleEn": "The question–method–result–interpretation structure makes a presentation concretely assessable; both reviews confirm the current wording."
+    },
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-008",
+      "goalId": "8b635349-abc3-59e7-af93-ec28940bf690",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7f7cd91c3c5c90ed3ee26846daea341d6b3401f4a688b68ed24302979affbe01",
+      "pageFingerprint": "sha256:b746fc2d3a98e724e4be8b1f604d18c049cbfaea0a0f921f85d9464044f15e44",
+      "goalReviewContextFingerprint": "sha256:db5955b70c5c822b377b86bb99e0588abbf2029635a908f83aed786b3c9d277a",
+      "finalText": {
+        "titleDe": "Kommunikation reflektieren und verbessern",
+        "titleEn": "Reflect on and improve communication",
+        "descriptionDe": "Die lernende Person kann die eigene Kommunikation reflektieren (Klarheit, Struktur, Fachsprache) und konkrete Verbesserungen ableiten.",
+        "descriptionEn": "The learner can reflect on their communication (clarity, structure, technical language) and derive concrete improvements."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-011",
+          "recordDigest": "sha256:86882b151991a2014b1f656a6c8d7cafe4869352dc72bd11c6680582a2b26f23"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-11",
+          "recordDigest": "sha256:6a98fd66b584201ea20d1f785c02dddb6e1bda2eaa33d9ff48a36fd479a775d3"
+        }
+      },
+      "rationaleDe": "Die eigene Kommunikation anhand von Klarheit, Struktur und Fachsprache zu verbessern ist eine konkrete Reflexionsleistung; beide Reviews empfehlen KEEP.",
+      "rationaleEn": "Improving one's communication using clarity, structure and technical language is a concrete reflection task; both reviews recommend KEEP."
+    },
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-009",
+      "goalId": "33f2da84-d6ac-54d2-931a-76aed5cbc0c2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d2de787d841b67bb6da1cde1791380751d59f6ae138262feb3ba917803ac867e",
+      "pageFingerprint": "sha256:ece4a88a663775348366639688896231a8a7cc74f6350c322011d2e3c4babf86",
+      "goalReviewContextFingerprint": "sha256:c8fe8a9c99713f9620649b247dc59fa67ad178e81cfeed51016fd8fbcf2c5391",
+      "finalText": {
+        "titleDe": "Schriftliche Ausarbeitung strukturieren (LK)",
+        "titleEn": "Structure a written solution",
+        "descriptionDe": "Die lernende Person kann eine schriftliche Ausarbeitung strukturiert verfassen (Gliederung, Begründungen, Schluss) und korrekt referenzieren (Definitionen/Sätze).",
+        "descriptionEn": "The learner can write a structured solution (outline, justifications, conclusion) and reference definitions/theorems correctly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-012",
+          "recordDigest": "sha256:cca8ad1dcfb7de3694430ab3621e56502be27fff7b9a4d0cc91247955ada9041"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-12",
+          "recordDigest": "sha256:34508da7816c8ce86bdcca564ced1446c5dc35cca23731da40b6b8284fd5d430"
+        }
+      },
+      "rationaleDe": "Eine LK-Ausarbeitung mit Gliederung, Begründung, Schluss und Referenzen ist als schriftliche Leistung prüfbar; beide unabhängigen Reviews behalten das Ziel.",
+      "rationaleEn": "An advanced-course written argument with structure, justification, conclusion and references is assessable; both independent reviews retain the goal."
+    },
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-010",
+      "goalId": "b35f8254-dfcc-5d4d-b77f-7b182999617f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e7e9a053e76797af62e203957da6b7bd4feb1acefe2e612cd41a77cacd2d08bf",
+      "pageFingerprint": "sha256:0839c0aa1aaa1c7f88431f67849966abd3904b6a4c603480de170ff7ef2751c8",
+      "goalReviewContextFingerprint": "sha256:ce6eb9663af06b1ee031a005232a85bf4dcf094ea1e0d25fd764983085de1497",
+      "finalText": {
+        "titleDe": "Stil und Präzision verbessern (LK)",
+        "titleEn": "Improve style and precision",
+        "descriptionDe": "Die lernende Person kann eine Ausarbeitung sprachlich überarbeiten, Mehrdeutigkeiten vermeiden und die Argumentation formal präzisieren.",
+        "descriptionEn": "The learner can revise a write-up for language and clarity, avoid ambiguity and sharpen the formal argument."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-013",
+          "recordDigest": "sha256:a940613e3df372f36b93ff410059e478351aab4edc226389fa30f3e8fdc8e096"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-13",
+          "recordDigest": "sha256:f537f8a3c236fa52d9d1231abc20e2675b4eaa4a0da4c93429e6ebfb5c478659"
+        }
+      },
+      "rationaleDe": "Sprachliche Mehrdeutigkeiten und formale Ungenauigkeit gezielt zu korrigieren ist eine beobachtbare Überarbeitung; beide Reviews empfehlen KEEP.",
+      "rationaleEn": "Deliberately correcting linguistic ambiguity and formal imprecision is an observable revision; both reviews recommend KEEP."
+    },
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-011",
+      "goalId": "3b64b90b-ed89-5aeb-9838-bf05ccef9d77",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7980d4d09c18509ca4ce6dd308f5a51ca4ce659e19a24d4a0e3a3736cdb623fc",
+      "pageFingerprint": "sha256:26648f2a55019e73869aa3845dfd7e4f6e1c543750c5b4013e1aedcb543b6aca",
+      "goalReviewContextFingerprint": "sha256:79c85ddf90795b1ad45853f13c1dfd2423c4220eca8fd36c4951b776a26b4d4c",
+      "finalText": {
+        "titleDe": "Logische Schlussfolgerungen entwickeln",
+        "titleEn": "Develop logical conclusions",
+        "descriptionDe": "Die lernende Person kann eigene Argumentationen strukturiert aufbauen, Schlussketten mit formalen oder anschaulichen Begründungen absichern und typische Beweismuster benennen.",
+        "descriptionEn": "The learner can structure own arguments, back up chains of reasoning with formal or illustrative justifications, and name typical proof patterns."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-015",
+          "recordDigest": "sha256:e3005ff02d662dc1f4ae2f10f792a401cae399dbd22b5ed902ca4f5927f2061b"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-15",
+          "recordDigest": "sha256:63883ea827bca229bcc848fda14b112c0cc2f8dec098a66a475a924f46017220"
+        }
+      },
+      "rationaleDe": "Eine Schlusskette aufzubauen und durch Begründungen zu sichern ist fachlich einheitlich und prüfbar; beide Reviews halten die aktuelle Beschreibung.",
+      "rationaleEn": "Building a chain of inference and supporting it with reasons is coherent and assessable; both reviews retain the current description."
+    },
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-012",
+      "goalId": "18b43bc8-ee2a-5505-99ad-3a261a62f64a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fed04220ea982ef07636f529530d2a094fdc782d0a2bf50881806aa36b457e02",
+      "pageFingerprint": "sha256:dd30920c4df44f2bbe14fb0c988b4db154b36d1ade63b42886ea6fbf142e2c91",
+      "goalReviewContextFingerprint": "sha256:756a7d07919a4980d2ff76c4c3f378c60c2dda2d9fd425c4b5942bb185066b17",
+      "finalText": {
+        "titleDe": "Lösungsweg auf eine verwandte Situation übertragen",
+        "titleEn": "Transfer a solution path to a related situation",
+        "descriptionDe": "Die lernende Person kann einen bekannten Lösungsweg auf eine verwandte Problemstellung übertragen und notwendige Anpassungen begründen.",
+        "descriptionEn": "The learner can transfer a known solution path to a related problem and justify necessary adaptations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-016",
+          "recordDigest": "sha256:890f96652013b1c4078090c6607d175d71966aefdaea021c8f93a4de4c7a2d2d"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-16",
+          "recordDigest": "sha256:0402abc12a5abfc3215c2e7671068ce73077e0ae942bcefb341bbfa81f45ec90"
+        }
+      },
+      "rationaleDe": "Die Anpassung eines bekannten Lösungswegs an geänderte Bedingungen ist als Transferleistung konkret beobachtbar; beide Reviews empfehlen KEEP.",
+      "rationaleEn": "Adapting a known solution to changed conditions is a concrete observable transfer task; both reviews recommend KEEP."
+    },
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-013",
+      "goalId": "08b80080-4895-55df-8ca6-4e8c5eb0f9f5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d67462b40c95a8d761f417e14766875a9a3721d8d45b1aabf3fe745c74745800",
+      "pageFingerprint": "sha256:2f0cc5e6e0d294fd6028d0c42286fc851518fdeefe50b77e49881142be7b251c",
+      "goalReviewContextFingerprint": "sha256:3afd8c4ceadad51282a98d8521f07efcab0b93b9aeea2b680ca8e4dadbebfbea",
+      "finalText": {
+        "titleDe": "Funktionsklassen argumentativ vergleichen",
+        "titleEn": "Compare function classes argumentatively",
+        "descriptionDe": "Die lernende Person kann bekannte Funktionsklassen hinsichtlich Verhalten im Unendlichen, Anzahl von Extrema und Wendestellen sowie geeigneter Nullstellenstrategien vergleichen und die Aussagen fachlich begründen.",
+        "descriptionEn": "The learner can compare known function classes with respect to end behavior, the number of extrema and inflection points, and suitable root-finding strategies, and justify the statements mathematically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-017",
+          "recordDigest": "sha256:f214c73e3feb18aa3cbd2e20198e3c56e1a696e75d35c3a8acb546c637fad639"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-17",
+          "recordDigest": "sha256:e897039a677812a85a16adef6d9cb2e1a9a90b2c88d64a0c55274217815ca368"
+        }
+      },
+      "rationaleDe": "Der begründete Vergleich von Funktionsklassen an Randverhalten, Extrem- und Wendestellen sowie Nullstellenstrategien ist prüfbar; beide Reviews behalten das Ziel.",
+      "rationaleEn": "A reasoned comparison of function classes by end behaviour, extrema, inflections and root-finding methods is assessable; both reviews retain the goal."
+    },
+    {
+      "decisionId": "math-m7-q4-argumentation-communication-fourteen-keep-partial-v1-decision-014",
+      "goalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ed85a023996452e5641c6bda0bd6473671420a77fd0e74e0f6f3761af45730d9",
+      "pageFingerprint": "sha256:667a6a1a926bb647c8fbb6fef2e325160524b385fc1bbc652c456ee374cf24bd",
+      "goalReviewContextFingerprint": "sha256:4e592893a9126aa6b0bff0959e8db63a777dcf56ffd69d699336df0743add35c",
+      "finalText": {
+        "titleDe": "Wahrscheinlichkeiten anhand von Termen vergleichen",
+        "titleEn": "Compare probabilities using terms",
+        "descriptionDe": "Die lernende Person kann vorgegebene oder selbst bestimmte Wahrscheinlichkeitsterme vergleichen, ihre Bedeutung im Zufallskontext erläutern und die größere Wahrscheinlichkeit begründen.",
+        "descriptionEn": "The learner can compare given or self-derived probability terms, explain their meaning in the random context, and justify the larger probability."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1-a-run-001-019",
+          "recordDigest": "sha256:7d16a39a4d41d50a7b8acfc2a5816df26f8e4242ef0d5364ac70c609e8761670"
+        },
+        "second": {
+          "recordId": "math-q4-argumentation-communication-20-20260923-codex-round-b-19",
+          "recordDigest": "sha256:1a615bf8a304783431dd39813320fd0b2a43fdbcdb77774b24ce51f677cd1023"
+        }
+      },
+      "rationaleDe": "Wahrscheinlichkeitsterme im Zufallskontext zu vergleichen und die größere Wahrscheinlichkeit zu begründen ist eine zusammenhängende Kompetenz; beide Reviews empfehlen KEEP und die gezeigte Rechnung ist korrekt.",
+      "rationaleEn": "Comparing probability expressions in context and justifying the larger probability is one coherent competence; both reviews recommend KEEP and the pictured calculation is correct."
+    }
+  ],
+  "manifestFingerprint": "sha256:2e0a7c312596a2eb19980e6027d7c6c73c2153fabb13d3adfcd7bf9d152bcdbf"
+}

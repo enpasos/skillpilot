@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46",
+  "recordedAt": "2026-09-21T22:44:23.776Z",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactServingModel": "not exposed",
+  "resultId": "exec-cbf8b549-74e6-4f54-90e1-0e1463cf4c66",
+  "nativePrepareCompletedBeforeGeneration": true,
+  "prompt": {
+    "path": "correction-prompt-v3.md",
+    "sha256": "sha256:5f3a536bfc209d6987d2c9bf5826ddcb8b47531cfbb1ad681185cdb2872db0d8"
+  },
+  "reference": null,
+  "candidate": {
+    "path": "candidate-v3.png",
+    "sha256": "sha256:771419dd4e07ee96bed6bc6ad425f33a4d8a99ece7d6298395403ce3142a6648"
+  },
+  "rootReview": {
+    "actuallyViewed": true,
+    "decision": "candidate_pending_independent_review",
+    "checks": [
+      "Deliberate x-z side view shows P at x2,z3 and Pprime at x2,z0, same vertical line; y=-1 explicitly unchanged.",
+      "The xy/xz/yz matrices diag110/101/011 and all displayed image triples are correct.",
+      "Subtitle and final statement restrict coordinate deletion to these axis-parallel examples; no false general projection claim.",
+      "No unlabeled perspective geometry or projected coordinate signs; light blue/cream comic style retained."
+    ]
+  },
+  "reviewAuthority": "ai_candidate",
+  "canonicalImported": false,
+  "humanApproval": false
+}

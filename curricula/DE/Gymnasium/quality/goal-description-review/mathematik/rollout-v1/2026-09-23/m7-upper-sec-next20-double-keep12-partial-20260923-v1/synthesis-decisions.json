@@ -1,0 +1,384 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-upper-sec-next20-double-keep12-partial-20260923-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T08:22:23.970Z",
+  "batch": {
+    "batchId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1",
+    "batchManifestDigest": "sha256:a520899c186283983efea6debecc371d4850b74a64c0ccdfad552769b026e83c",
+    "configDigest": "sha256:c31afbd7645dff93d105872d60d6df0f566e84e6c7c5236f00adb17251688407",
+    "bundleFingerprint": "sha256:e4997cd5104440d0ea9566e1cb471267cc39521ee1d695828ae21c97ce4dc0bc",
+    "bookDigest": "sha256:7b7b3fd4e8e9cf1a98b5dea9aa2623b9eb6afe1dc987043e95bb14c9ba42cbf9",
+    "reviewInputFingerprint": "sha256:1510909220c144778b837e902c5ae954b2cfe7b366b5998bccef5bbd24c24177",
+    "dualSummaryDigest": "sha256:d095e112742ebdfe1b6ef348f023846d0fb40dea8d5932a1b3db7a1446610d2a",
+    "canonicalLandscapeDigest": "sha256:3d438a80cfcc3c7817fab19c86110f7057fa80c4c8a42a7c53b78244425c0c63"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-a",
+      "campaignDigest": "sha256:28d92357c357ffc6515a0b0791e17c86d35f88fdb85dfcf346f2553b3cdba25c",
+      "roundId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:1510909220c144778b837e902c5ae954b2cfe7b366b5998bccef5bbd24c24177",
+      "batchId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:871e5f2a9bcb21afb1e5b8fad800ea9aeae7679b79f95106ce63bbf4012f8982",
+      "runId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "runManifestDigest": "sha256:31813b430da1c889c283c35e0f89b3d93c96a3111aa0fcdaed8232a9a5c66249",
+      "resultsDigest": "sha256:a5f88de374cd14c9b309bd30c6cec506e93dc332638f2dddd30063d1a0b51746"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-b",
+      "campaignDigest": "sha256:e0b130d27e9f4dc9dfcdea0aa26d92a2d8d8244b583fa79fc3bda3f4d83bc3c9",
+      "roundId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:1510909220c144778b837e902c5ae954b2cfe7b366b5998bccef5bbd24c24177",
+      "batchId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:1b90d1f54e3c91188637712256f77f69b56b3b34dc19bc226b7d163b899b2e51",
+      "runId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "runManifestDigest": "sha256:7308ba92473bb30e56d51a4e9d3f2f136bcc2603ddefd316f542bf950ee2d738",
+      "resultsDigest": "sha256:f8b582d2a3cbfed2a1b0a5dbd6d3ee23570a4933621c0a52b42608732fbac23b"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-upper-sec-next20-double-keep12-partial-20260923-v1-decision-001",
+      "goalId": "8c32d941-b51c-5663-951c-a610f8900f76",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3d8aa01e4f5f1d971b3cb9c89b7d9ad4014ffc2f5402f086266d94eb976fccac",
+      "pageFingerprint": "sha256:be6c219311774992f6d3e8c4485a2a1fe28df184bba747c5ef1082c37cc8f09e",
+      "goalReviewContextFingerprint": "sha256:4b524ebe2b48865e5557928d52ff09071d3bce0fbf49c4542414a427afead82c",
+      "finalText": {
+        "titleDe": "Wahrscheinlichkeiten normalverteilter Zufallsgrößen bestimmen (LK)",
+        "titleEn": "Determine probabilities for normally distributed random variables (advanced course)",
+        "descriptionDe": "Die lernende Person kann Wahrscheinlichkeiten normalverteilter Zufallsgrößen in Sachzusammenhängen mit digitalen Werkzeugen oder als Flächen unter dem Dichtegraphen bestimmen und im Kontext deuten.",
+        "descriptionEn": "The learner can determine probabilities for normally distributed random variables in context using digital tools or areas under the density graph and interpret the results."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.8c32d941-b51c-5663-951c-a610f8900f76",
+          "recordDigest": "sha256:758ce1f418e6d125d0d1bfdc01fa631db067f2d9e48404f311a8325db10f6810"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-002",
+          "recordDigest": "sha256:b415cacf465e9e898e050c2c537150f0ab567433c897496ab212752834c2aa8b"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen Wahrscheinlichkeit als Dichtefläche mit Kontextdeutung. Die zweite Evidenzfassung trennt ausdrücklich Dichtehöhe und Wahrscheinlichkeit und prüft einen Intervalltransfer bei veränderten Parametern.",
+      "rationaleEn": "Both reviews confirm probability as density area with contextual interpretation. The second evidence version explicitly distinguishes density height from probability and tests interval transfer under changed parameters."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-next20-double-keep12-partial-20260923-v1-decision-002",
+      "goalId": "55d0474b-b82c-59b6-a62a-b6a0a34d9c4b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:996d0da34d12d265539ab2019c9e865e20f4b11020ae7868f17923f38ba3d25b",
+      "pageFingerprint": "sha256:8c7207755c0051c4741c3eceeaf5c33ef57267d49197985a7345c803f348d119",
+      "goalReviewContextFingerprint": "sha256:a4beb26eaa43a401351b2f0d11f791646528e1a0d0120efbecbfe2f1d591bc6b",
+      "finalText": {
+        "titleDe": "Diskrete und stetige Zufallsgrößen unterscheiden (LK)",
+        "titleEn": "Distinguish discrete and continuous random variables (advanced course)",
+        "descriptionDe": "Die lernende Person kann diskrete und stetige Zufallsgrößen anhand ihres Wertebereichs und der Art ihrer Wahrscheinlichkeitsbeschreibung unterscheiden und passende Beispiele begründet zuordnen.",
+        "descriptionEn": "The learner can distinguish discrete and continuous random variables from their range and the way probabilities are represented and can classify suitable examples with justification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.55d0474b-b82c-59b6-a62a-b6a0a34d9c4b",
+          "recordDigest": "sha256:c6d656c029a0cbffe734bfa7ae456212c71fc0cff2f6e9cca62d44cf487a80f0"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-004",
+          "recordDigest": "sha256:66d06011f9478a1d4ef501578988f7346cd77bd69cf405e7cf256adfb0ec8ec4"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Unterscheidung diskreter und stetiger Zufallsgrößen. Die zweite Evidenzfassung behandelt gerundete Messwerte ausdrücklich als neuen Grenzfall zwischen angezeigten Werten und zugrunde liegender Größe.",
+      "rationaleEn": "Both reviews confirm the distinction between discrete and continuous random variables. The second evidence version treats rounded measurements explicitly as a new boundary case between displayed values and the underlying variable."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-next20-double-keep12-partial-20260923-v1-decision-003",
+      "goalId": "a7778885-17aa-5eeb-a6a7-fbf4c8d55a16",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:476341061feda6c22848ec894d7b47e240c1e24a368e782c9e0ac82219d9407d",
+      "pageFingerprint": "sha256:8d1e5787647af8296e3530bc8f5fda3ed85fe7528fbe52e59528aa4d765f60e4",
+      "goalReviewContextFingerprint": "sha256:0041fb0fdcd4a516c7f2dbe41aa0aac5834e2fcc93859c26aa64094c0338512a",
+      "finalText": {
+        "titleDe": "Die Verteilungsfunktion der Normalverteilung als Integralfunktion deuten (LK)",
+        "titleEn": "Interpret the normal cumulative distribution function as an integral function (advanced course)",
+        "descriptionDe": "Die lernende Person kann $\\Phi_{\\mu,\\sigma}(x)=\\int_{-\\infty}^{x}\\varphi_{\\mu,\\sigma}(t)\\,dt$ als bis zur Grenze $x$ aufsummierte Wahrscheinlichkeit deuten und den Zusammenhang zwischen Dichtegraph, Fläche und Verteilungswert erläutern.",
+        "descriptionEn": "The learner can interpret $\\Phi_{\\mu,\\sigma}(x)=\\int_{-\\infty}^{x}\\varphi_{\\mu,\\sigma}(t)\\,dt$ as accumulated probability up to the boundary $x$ and explain the relationship between the density graph, area, and cumulative probability."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.a7778885-17aa-5eeb-a6a7-fbf4c8d55a16",
+          "recordDigest": "sha256:e5268e3b97da40fd1bdb5b82e2eb4d4217480053abdd0d825c78072c26331b69"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-005",
+          "recordDigest": "sha256:399fae7a0c1d942f4cb4138636c120e23fafb780e004f246e8fc17e2e0e00d85"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die kumulierte Dichtefläche als Verteilungswert. Die zweite Evidenzfassung verbindet eine verschobene Verteilung mit dem festen Schwellenwert und der Differenz zweier kumulierter Flächen.",
+      "rationaleEn": "Both reviews confirm accumulated density area as the cumulative value. The second evidence version links a shifted distribution to a fixed threshold and the difference between two accumulated areas."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-next20-double-keep12-partial-20260923-v1-decision-004",
+      "goalId": "3256476b-ec65-4038-9f5a-a8808fbcf207",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:da2b6acba706dc38381e3613038ac46f6c1b8c7b0f6d2e88c516216996664702",
+      "pageFingerprint": "sha256:97b41c2b018df9461329ae169b18ae12e28f7aa81ce1d5c50a38dc9567d74d07",
+      "goalReviewContextFingerprint": "sha256:0fbf9d33429c68544146b796b7b0fd8c4278518af6af32688756a1b8a567f5a2",
+      "finalText": {
+        "titleDe": "Punkt-Gerade-Abstände im Raum bestimmen",
+        "titleEn": "Determine point-line distances in space",
+        "descriptionDe": "Die lernende Person kann Punkt-Gerade-Abstände im Raum mithilfe von Projektionen, Lotbeziehungen und analytischen Darstellungen bestimmen und die Ergebnisse geometrisch deuten.",
+        "descriptionEn": "The learner can determine point-line distances in space using projections, perpendicular relations, and analytic representations and interpret the results geometrically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.3256476b-ec65-4038-9f5a-a8808fbcf207",
+          "recordDigest": "sha256:91b00919ce017fd2d75456f899b9c6aa668daad9b6c98a34522d0069fb72ac72"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-009",
+          "recordDigest": "sha256:71c18c925024a7ecb2f51c97e97ffa9a8682d1ef73452cf43d3271cce0e1c54b"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen den Punkt-Gerade-Abstand als Lotlänge. Die erste Evidenzfassung lässt Projektion oder Lotbeziehung als gleichwertige Wege zu und prüft den Wechsel zu einer schrägen Geraden.",
+      "rationaleEn": "Both reviews confirm point-line distance as perpendicular length. The first evidence version permits projection or a perpendicular relation as equivalent routes and tests a change to an oblique line."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-next20-double-keep12-partial-20260923-v1-decision-005",
+      "goalId": "fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8cc19648b2b9b2f390d689e705b06bc50e6905a0edca6d0bdd9327354d0a01b1",
+      "pageFingerprint": "sha256:a2c8fa33137f0a8da8bffc7c5082588007999b9afe63d60fdeef23bbe6853ba1",
+      "goalReviewContextFingerprint": "sha256:7f398748a2a0946abce759f66ecd55c4d8200db4586a8d3ac1dcafd364391c56",
+      "finalText": {
+        "titleDe": "Abstandsverfahren im Raum auswählen und anwenden",
+        "titleEn": "Choose and apply a distance method in space",
+        "descriptionDe": "Die lernende Person kann für eine gegebene Punkt-, Geraden- oder Ebenenkonfiguration ein passendes analytisches Abstandsverfahren auswählen und anwenden.",
+        "descriptionEn": "The learner can choose and apply a suitable analytic distance method for a given point, line, or plane configuration."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
+          "recordDigest": "sha256:c15a64df4a47e070d800ff0bdaac3f8ab60e8be3a8d02a90d472899d27bf6e58"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-010",
+          "recordDigest": "sha256:d818873e1005794a16daecb51545da1130b4a86402a5b08cac7e20d59ee2ed50"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die lageabhängige Wahl eines analytischen Abstandsverfahrens. Die erste Evidenzfassung bleibt methodenoffen und verlangt eine räumliche Ergebnisprüfung bei veränderter Konfiguration.",
+      "rationaleEn": "Both reviews confirm choosing an analytic distance method from the spatial configuration. The first evidence version remains method neutral and requires a spatial result check when the configuration changes."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-next20-double-keep12-partial-20260923-v1-decision-006",
+      "goalId": "58f613da-03be-5c6a-90a9-ff0958aa7849",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:22e585e956a224aa48ccf267efc25c878fcb2b083640fc84a0a1a817e40ef76f",
+      "pageFingerprint": "sha256:ca93df7788891037012f0e509f115f136a63578b1303882b438df56382db643d",
+      "goalReviewContextFingerprint": "sha256:1edf3550b9e24c8fff2d74239aea2528f684066b979ba0fda44bc2fd4455d197",
+      "finalText": {
+        "titleDe": "Besondere Lagen von Geraden zu Koordinatenachsen und Koordinatenebenen untersuchen",
+        "titleEn": "Analyze special positions of lines relative to coordinate axes and coordinate planes",
+        "descriptionDe": "Die lernende Person kann besondere Lagen einer Geraden zu Koordinatenachsen und Koordinatenebenen untersuchen, rechnerisch begründen und geometrisch deuten.",
+        "descriptionEn": "The learner can analyze special positions of a line relative to coordinate axes and coordinate planes, justify them algebraically, and interpret them geometrically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.58f613da-03be-5c6a-90a9-ff0958aa7849",
+          "recordDigest": "sha256:01caf90d0e61c88516f2b39fa7aa51ba2363d6b877ee3d4f6901129094411806"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-011",
+          "recordDigest": "sha256:4eb6951c8f9cffc3355f63fc295cbdacfc72df92074491630f25c0c78ec75e62"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen, dass Richtungsvektor und Stützpunkt besondere Geradenlagen bestimmen. Die erste Evidenzfassung verlangt rechnerische und räumliche Deutung sowie einen Transfer bei geändertem Stützpunkt.",
+      "rationaleEn": "Both reviews confirm that direction vector and support point determine special line positions. The first evidence version requires algebraic and spatial interpretation and transfer when the support point changes."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-next20-double-keep12-partial-20260923-v1-decision-007",
+      "goalId": "a506fc1d-b784-548f-90c3-5aae1b819b68",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c10ab61f4b9793dc80e2e1b6e439799084ff49ad27d763d2ea17cef86bb4281e",
+      "pageFingerprint": "sha256:feaf86d370e320130108adfec04aef321d9f9778277818eb13aaea6088a06f64",
+      "goalReviewContextFingerprint": "sha256:e4151b677fa3d35fa87ad4a01103c67fa8995a3a9b7ba832c0a76377c9bb9cf7",
+      "finalText": {
+        "titleDe": "Die Volumenformel schiefer Prismen mit Cavalieri plausibilisieren",
+        "titleEn": "Make the volume formula for oblique prisms plausible using Cavalieri's principle",
+        "descriptionDe": "Die lernende Person kann mit dem Prinzip von Cavalieri plausibilisieren, warum ein schiefes Prisma mit Grundflächeninhalt $G$ und Höhe $h$ das Volumen $V=G\\cdot h$ besitzt.",
+        "descriptionEn": "Using Cavalieri's principle, the learner can give a plausibility argument for why an oblique prism with base area $G$ and height $h$ has volume $V=G\\cdot h$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.a506fc1d-b784-548f-90c3-5aae1b819b68",
+          "recordDigest": "sha256:9fd115e6dada92e3d6876d38325afd477ecb44ab65a2538e5ad079b6bbcc8325"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-013",
+          "recordDigest": "sha256:15ce571fae7b0af0e7c72ff0398a52be2415f1269935f5bcaffcee5bae03ab30"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen Cavalieri als Plausibilisierung von G mal h beim schiefen Prisma. Die zweite Evidenzfassung unterscheidet senkrechte Höhe und schräge Kante an einer anders geformten Grundfläche.",
+      "rationaleEn": "Both reviews confirm Cavalieri as a plausibility argument for G times h in an oblique prism. The second evidence version distinguishes perpendicular height from a slanted edge for a differently shaped base."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-next20-double-keep12-partial-20260923-v1-decision-008",
+      "goalId": "5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:abc26a3daa02fb105ebd31037ff94481889d19c5b2320164e72a1d0dd95ad529",
+      "pageFingerprint": "sha256:80319592ea9bbacd2b2f463154b646b33c9028ffeed6c1cff13e677c82c5f2de",
+      "goalReviewContextFingerprint": "sha256:f8ecd47c9193b064325d730f321532ebb249320c81ec5f6121b9262544f6147c",
+      "finalText": {
+        "titleDe": "Die Volumenformel von Pyramiden begründen",
+        "titleEn": "Justify the volume formula for pyramids",
+        "descriptionDe": "Die lernende Person kann die Struktur der Formel $V=\\frac13G\\cdot h$ für eine Pyramide durch einen geeigneten Zerlegungs- oder Vergleichsgedanken begründen und den Faktor $\\frac13$ fachlich deuten.",
+        "descriptionEn": "The learner can justify the structure of $V=\\frac13G\\cdot h$ for a pyramid using a suitable decomposition or comparison and interpret the factor $\\frac13$ mathematically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+          "recordDigest": "sha256:b0886e1ae88f11c8999bf6cb66daa12c4be0b71658ca54f7db84880d902fa8f2"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-014",
+          "recordDigest": "sha256:44c529d820be31eef4f20a0cbadd9c2413a408ea7bd50f0bb3cf17693be12298"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die geometrische Begründung des Drittelfaktors. Die zweite Evidenzfassung grenzt ihn von einer vermeintlich gekürzten Höhe ab und überträgt den Vergleich auf eine schiefe Pyramide.",
+      "rationaleEn": "Both reviews confirm the geometric justification of the one-third factor. The second evidence version distinguishes it from a supposedly shortened height and transfers the comparison to an oblique pyramid."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-next20-double-keep12-partial-20260923-v1-decision-009",
+      "goalId": "d0475ed5-cb6f-5694-9501-a1c94288d65a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:abe4140cdaf7f739143a19ed93b8f9f0ad412b266950a5d5bf19c3368a548223",
+      "pageFingerprint": "sha256:fbc9891842f3298360d1c1794ba74f09cb7dc5101d119e67f3c4e785d31bd9dd",
+      "goalReviewContextFingerprint": "sha256:47d57b90730dc2b65ad08a47273d09433df20b8707c14cb9a2a4ab71b109a704",
+      "finalText": {
+        "titleDe": "Aussagekraft und Grenzen diskutieren (LK)",
+        "titleEn": "Discuss explanatory power and limitations",
+        "descriptionDe": "Die lernende Person kann die Aussagekraft einer Visualisierung diskutieren, Grenzen benennen (Skalierung, Datenlage) und Verbesserungen vorschlagen.",
+        "descriptionEn": "The learner can discuss the explanatory power of a visualization, name limitations (scaling, data quality) and suggest improvements."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.d0475ed5-cb6f-5694-9501-a1c94288d65a",
+          "recordDigest": "sha256:a3db74fb786e67344ebc7c457f829566cec193f6b1266f5bdb603638c9f40f13"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-016",
+          "recordDigest": "sha256:68dcb8a55f0c338187c8f7842a55cb9adf5fc83cc71e10dd147f23c3b6a1b82f"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Bewertung von Aussagekraft und Grenzen einer Visualisierung. Die zweite Evidenzfassung verknüpft Achse oder Datenbasis mit einer eigenständig neu begründeten Interpretation.",
+      "rationaleEn": "Both reviews confirm evaluating the explanatory power and limitations of a visualization. The second evidence version links axis or data basis to an independently reconsidered interpretation."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-next20-double-keep12-partial-20260923-v1-decision-010",
+      "goalId": "6fcd6a1a-88d3-59d2-9bf7-ee32babb773e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c90afd6a5ea66bbe4195c9cf417141229da8eae2cb376a54cb444804edc8c6da",
+      "pageFingerprint": "sha256:3c1033709526cdcfae36387ed015254b35aacf7fd9f1a3c10aef128dad48ef30",
+      "goalReviewContextFingerprint": "sha256:20ff738f63868db5baf7c5567a2bd0dfbe971d6d7a7f2ace4010217573f6c939",
+      "finalText": {
+        "titleDe": "Aufwand und Genauigkeit vergleichen (LK)",
+        "titleEn": "Compare effort and accuracy",
+        "descriptionDe": "Die lernende Person kann verschiedene Verfahren hinsichtlich Aufwand (Schritte, Rechenzeit) und Genauigkeit vergleichen und geeignete Kriterien benennen.",
+        "descriptionEn": "The learner can compare different methods by effort (steps, computation time) and accuracy and name suitable criteria."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.6fcd6a1a-88d3-59d2-9bf7-ee32babb773e",
+          "recordDigest": "sha256:1de0544cfe18664e077c65bdae08976cfa5b0b7499f106dda03b321829d7967a"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-017",
+          "recordDigest": "sha256:9b83e971c4e5d1e54a861cc512e02e23d3f4e035346633795abe59f9b044e73e"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen den Vergleich von Aufwand und Genauigkeit. Die zweite Evidenzfassung macht den Zielkonflikt und eine neue Fehlerschranke als Entscheidungsgrund ausdrücklich prüfbar.",
+      "rationaleEn": "Both reviews confirm comparison of effort and accuracy. The second evidence version makes the tradeoff and a new error bound explicitly assessable as decision criteria."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-next20-double-keep12-partial-20260923-v1-decision-011",
+      "goalId": "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6a5f3607cfa68dbb1d80982b2e8145c633735aac0833ec97b7974c83d07de348",
+      "pageFingerprint": "sha256:85d3aaa655cbb285ed262528f8972ad71828b8cae329eafa7860d40112ece7bf",
+      "goalReviewContextFingerprint": "sha256:b40895c6389f7d86e4ad7d934ecae66bdb79acf568f66fb63136854a0e72010b",
+      "finalText": {
+        "titleDe": "Ortskurven von Extrempunkten bestimmen (LK)",
+        "titleEn": "Determine loci of extrema (advanced course)",
+        "descriptionDe": "Die lernende Person kann für eine Funktionenschar die Koordinaten ihrer Extrempunkte parameterabhängig bestimmen, den Parameter eliminieren und daraus die Gleichung der Ortskurve herleiten.",
+        "descriptionEn": "For a family of functions, the learner can determine the parameter-dependent coordinates of its extrema, eliminate the parameter, and derive the equation of their locus."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+          "recordDigest": "sha256:b8bf451390648df8ec3d034f79f5411bb152f97310aef281b147a7672a718f65"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-018",
+          "recordDigest": "sha256:2136aa873d5a61f2b4e9a66133be29c2042abf5971ef57fb0f60b3473f67b24e"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Ortskurve tatsächlicher Extrempunkte nach Parameterelimination. Die erste Evidenzfassung prüft den tatsächlich durchlaufenen Kurvenabschnitt bei beschränktem Parameterbereich.",
+      "rationaleEn": "Both reviews confirm the locus of actual extrema after parameter elimination. The first evidence version checks the portion genuinely traced under a restricted parameter domain."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-next20-double-keep12-partial-20260923-v1-decision-012",
+      "goalId": "79444ef9-cc85-5ac4-a3bc-f10d3ffbfd16",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:dc5d06da9cdd91cf642b3ff10a85fb3157b10ac82b3425ff081fcdf58a820993",
+      "pageFingerprint": "sha256:bf32987c23959b6516b36a19725012ee9a2a782d72d16b8b7acd4ddacda65503",
+      "goalReviewContextFingerprint": "sha256:30aa0b43d5db160e22911b6fe8d70f189fd7f630291d198f1bcbf59fa795aa47",
+      "finalText": {
+        "titleDe": "Ortskurven von Wendepunkten bestimmen (LK)",
+        "titleEn": "Determine loci of inflection points (advanced course)",
+        "descriptionDe": "Die lernende Person kann für eine Funktionenschar die Koordinaten ihrer Wendepunkte parameterabhängig bestimmen, den Parameter eliminieren und daraus die Gleichung der Ortskurve herleiten.",
+        "descriptionEn": "For a family of functions, the learner can determine the parameter-dependent coordinates of its inflection points, eliminate the parameter, and derive the equation of their locus."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.79444ef9-cc85-5ac4-a3bc-f10d3ffbfd16",
+          "recordDigest": "sha256:e3d5388e80e78addc6d2a027da9828b972117b321bc7e3b0b3d87623d7419726"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-019",
+          "recordDigest": "sha256:515ad05e3163b10294ff06c0115654043f6c85029a5f1068e897ea834493f46e"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die Ortskurve tatsächlicher Wendepunkte. Die erste Evidenzfassung prüft den Krümmungswechsel und schließt formale Kurvenpunkte ohne Wendepunkt aus.",
+      "rationaleEn": "Both reviews confirm the locus of actual inflection points. The first evidence version checks the change in curvature and excludes formal curve points without an inflection point."
+    }
+  ],
+  "manifestFingerprint": "sha256:d5ff7c4f546ec5dbc0448760c50782ea01811c1d8a703ec4fd8542d3b60eae04"
+}

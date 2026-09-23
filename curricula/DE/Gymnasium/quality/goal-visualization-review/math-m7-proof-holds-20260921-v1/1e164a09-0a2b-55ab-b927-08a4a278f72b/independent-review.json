@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "recordType": "independent_goal_visualization_ai_review",
+  "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+  "goalTitleDe": "Plausibilität mit Beispielen testen",
+  "reviewedAt": "2026-09-21T21:31:58Z",
+  "reviewer": "Independent Codex subagent; exact serving revision not exposed",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "decision": "accepted_pilot",
+  "aiApproved": "yes",
+  "aiApprovedAssetSha256": "2438afe2cc49365310dde78cd39a3a13bbe1360b4dc9a994ff00e88792b8bb2e",
+  "humanApproval": "not_performed",
+  "independence": {
+    "generatedCandidate": false,
+    "consultedOtherVisualReviewOfThisCandidate": false,
+    "priorDescriptionReviewOfGoal": true,
+    "reviewType": "Independent actual-image review informed by the current goal and supplied generation/edit prompts; not a blind description review"
+  },
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-proof-holds-20260921-v1/1e164a09-0a2b-55ab-b927-08a4a278f72b/candidate.png",
+    "version": "second candidate after background correction",
+    "format": "PNG",
+    "width": 1536,
+    "height": 1024,
+    "pngColorType": 2,
+    "sha256": "2438afe2cc49365310dde78cd39a3a13bbe1360b4dc9a994ff00e88792b8bb2e",
+    "actuallyViewed": true
+  },
+  "currentGoalBinding": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "titleDe": "Plausibilität mit Beispielen testen",
+    "titleEn": "Test plausibility with examples",
+    "descriptionDe": "Die lernende Person kann eine Aussage mithilfe geeigneter Beispiele sowie Rand- und Spezialfälle auf Plausibilität prüfen und die Wahl der Beispiele begründen.",
+    "descriptionEn": "The learner can test a statement for plausibility using suitable examples as well as boundary and special cases, and justify the choice of examples.",
+    "requires": ["50b9426f-ebec-526d-8b9d-e61d9707a46e"],
+    "activePublicPath": "app/public/assets/goal-visualizations/mathematik/1e164a09-0a2b-55ab-b927-08a4a278f72b/1e164a09-0a2b-55ab-b927-08a4a278f72b.png",
+    "activePublicBytesEqualCandidate": true,
+    "scopeDecision": "Appropriate teaching example for selecting contrasting integer cases and distinguishing plausibility from proof; not an assessment of independent example selection. No finite boundary of the integers is invented."
+  },
+  "generationProvenance": {
+    "providerDeclaredByCurrentResourceLink": "OpenAI / ChatGPT-Codex image generation",
+    "providerIndependentlyVerified": false,
+    "generationReceiptInspected": false,
+    "standalonePromptPath": "prompt.md",
+    "standalonePromptSha256": "3ba5fcd2e9cd31a85e4f72d5500720ea1834c2163344f480ffddea2c39e02bbb",
+    "correctionPromptPath": "correction-prompt-v2.md",
+    "correctionPromptSha256": "da4abe6956e58ac90dea479a2c8717df6611a3e4b73dec90d8725bf73ce8a594",
+    "earlierCandidatePath": "rejected-dark-background-v1.png",
+    "earlierCandidateSha256": "98be7e99580a85651b19d8bb40f2d65647753da4d0b31155f0941ebc53aad289",
+    "earlierCandidateActuallyViewedInThisReview": false,
+    "note": "Earlier-candidate rejection is supplied context, not independently re-adjudicated here. No pixel-identical preservation claim or rights clearance is made."
+  },
+  "mathematicalChecks": [
+    {"case": "n = -2", "result": "pass", "observation": "(-2) times (-1) equals 2; both negative signs and parentheses are visibly unambiguous; 2 is even."},
+    {"case": "n = 0", "result": "pass", "observation": "0 times 1 equals 0; zero is even because 0 = 2 times 0. The special case is correctly included."},
+    {"case": "n = 1", "result": "pass", "observation": "1 times 2 equals 2, an even integer."},
+    {"case": "n = 5", "result": "pass", "observation": "5 times 6 equals 30, an even integer."},
+    {"case": "quantifier and conclusion", "result": "pass", "observation": "The conjecture is stated over all integers. The four matching cases are explicitly not called a proof. Green checks label individual even results, not the universal statement."},
+    {"case": "counterexample semantics", "result": "pass", "observation": "Ein Gegenbeispiel würde die Vermutung widerlegen is a correct conditional statement about universal conjectures, not a claim that this true conjecture has a counterexample."}
+  ],
+  "visualChecks": {
+    "style": "pass: friendly abstract comic learner, clear rounded pastel cards, restrained decorative marks; no photorealism or sterile plot replacement",
+    "background": "pass: actually viewed image has a light opaque background and legible dark title; PNG truecolour type 2 has no alpha channel",
+    "germanTextAndNotation": "pass: title, conjecture, case labels and limiting conclusion are complete, correctly spelled and clearly separated",
+    "layout": "pass: conjecture above four parallel cases and explicit limited conclusion below; no overlapping formulas, clipped task text, foreign logo or watermark observed",
+    "legibility": "pass at inspected native 1536 by 1024 view; full phone-size legibility without enlargement is not certified",
+    "promptCompliance": "Substantive formulas and requested words preserved. Minor decorative styling is immaterial; uniform exact colour or pixel equality was not required for fachliche acceptance."
+  },
+  "suggestedAltTextDe": "Eine mathematische Vermutung wird an vier unterschiedlichen ganzen Zahlen geprüft: Für n gleich minus zwei, null, eins und fünf ergeben n mal n plus eins die geraden Zahlen zwei, null, zwei und dreißig. Die Grafik betont, dass diese passenden Beispiele noch kein allgemeiner Beweis sind; ein Gegenbeispiel würde eine Allaussage widerlegen.",
+  "scopeLimits": [
+    "No human approval, license ownership finding or rights clearance is asserted.",
+    "No runtime, Cockpit, mobile-device or chat-host acceptance test was performed.",
+    "No canonical, central QA, registry or publication state was changed by this review.",
+    "Image acceptance is not D/P/A/M/V completion or evidence of any learner's mastery.",
+    "Positive-understanding cases must be fresh and must not count copying the displayed n(n+1) cases or conclusion as an independent demonstration."
+  ]
+}

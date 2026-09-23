@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-22T23:29:53Z",
+  "scope": "Technical canonical-input rebinding of the existing reviewed Mathematics G8/G9 split-layout policy; no new subject, placement, or human review decision.",
+  "baseRevision": "87772c32f",
+  "policyPath": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "binding": {
+    "beforeSha256": "ee31c20e64a2584c3be3a6fcacfe32a2d55bf95f079dbeb0234d1b06dffc47c6",
+    "afterSha256": "e5325bf3a434e3b85646aa60e9a4b7a6881f360b77b86f254457a741a76af2ef",
+    "changedPolicyFields": [
+      "inputs.canonical.sha256"
+    ]
+  },
+  "comparisonWithHead": {
+    "canonicalGoalCountBefore": 1187,
+    "canonicalGoalCountAfter": 1189,
+    "programUnitsUnchanged": true,
+    "goalPlacementsUnchanged": true,
+    "reviewedSek1TemplateCount": 6,
+    "reviewedSplitPlacementCount": 61,
+    "policyReferencedAndExpandedGoalCount": 47,
+    "policyReferencedAndExpandedGoalsUnchanged": true,
+    "sixGeneratedSek1ViewFilesUnchanged": true,
+    "scopeOfOtherCanonicalChanges": "Changes outside the policy-referenced goals include upper-secondary Q2 graph and assessment work, resource links, and prerequisite corrections. This receipt does not review their subject content."
+  },
+  "historicalTemplateHashNote": "The policy's de-he-seki-g9.view.json fileSha256 is b64d7ec99e26033e66e1b1ffbb92a5821c53716b035844d07fe07cd26ffa604f; the current generated file already has SHA-256 d3cf6398f220c43ef4af4fbe0d1ff1347edebfe6485ab7f03f3624bc4d5e92eb at HEAD. The generator does not use template fileSha256 as a live input gate. This historical field was not changed or treated as fresh review evidence.",
+  "verification": {
+    "all18GeneratedViewsMatchCurrentFiles": true,
+    "commandsPassed": [
+      "npm --prefix app run check:math-duration-composition-views",
+      "npm --prefix app run test:canonical-math-sek1-reviewed-exam-routes",
+      "npm --prefix app run test:hessen-math-q24-q25-scope",
+      "npm --prefix app run check:he-math-duration-projection"
+    ]
+  },
+  "humanApproval": false,
+  "curriculumMaturityClaim": null
+}

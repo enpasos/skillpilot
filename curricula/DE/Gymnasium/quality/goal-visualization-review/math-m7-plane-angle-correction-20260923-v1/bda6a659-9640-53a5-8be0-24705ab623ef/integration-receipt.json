@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "kind": "goal-visualization-targeted-integration-receipt",
+  "goalId": "bda6a659-9640-53a5-8be0-24705ab623ef",
+  "checkedAt": "2026-09-23T01:31:18Z",
+  "decision": "accepted_pilot_ai_candidate",
+  "activeAssetSha256": "b18fe49e4af4129c45e5ed9adf33745e0c8e2fe53a9b91553caeb6a2515cdda4",
+  "retiredJpgSha256": "b8c30a23f44e14cf1ad97671ba60b1cbaa266f0e92db6876245f475ae6e56b6f",
+  "targetChecks": [
+    "Exactly one canonical primary visualization link remains for this goal; it points to the PNG and declares the actual provider and CC-BY-4.0 for the rights SkillPilot can license. No independent third-party rights clearance is inferred.",
+    "Canonical, Web/public and local backend-static PNG copies are byte-identical to the accepted candidate.",
+    "Current Math QA record points to the same PNG and binds its AI approval to the exact current asset SHA-256; humanApproved remains no.",
+    "All three previously active JPG copies were moved, not discarded, into retired-active-assets with their original repository-relative paths and matching old SHA-256; no old JPG remains in an active visualization root.",
+    "The national Math atlas BookModel rebuilt from current sources contains this goal's page with the PNG URL, matching originalDigest, qaStatus review_candidate and approvedForPublication false. The published BookModel was not modified."
+  ],
+  "nativeChecks": [
+    {
+      "command": "npm --prefix app run check:goal-visualization-assets",
+      "result": "pass: 1612 links in 21 landscapes"
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-qa -- --subject=mathematik",
+      "result": "pass: Math QA ledger up to date"
+    },
+    {
+      "command": "npm --prefix app run test:goal-visualization-qa-model",
+      "result": "pass: four hash-binding guarantees"
+    },
+    {
+      "command": "npm --prefix app run test:goal-visualization-qa-status",
+      "result": "pass: thirteen AI-approval status guarantees"
+    },
+    {
+      "command": "npm --prefix app run test:goal-book-model",
+      "result": "fails at pre-existing published national Math atlas digest checkpoint: rebuilt current source digest sha256:a0ee8e494ed2acc242a0169b48bea2bb1e86645148929b53468cc5654bebcafd differs from fixed test/published digest sha256:24e6352fb8b1bbf025e9f52477c83a5fab68398caef276d7b88e1c1752cfeb1a. This is broader shared authoring drift and was not repaired in this asset-only task."
+    }
+  ],
+  "publicationAndApprovalBoundary": "Local import and machine review only. No human approval, published BookModel update, deployment or real-host acceptance is claimed.",
+  "backendStaticNote": "The local backend-static asset was copied and verified; backend/src/main/resources/static is gitignored/generated in this repository."
+}

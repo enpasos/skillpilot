@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-unregistered-eight-open-two-20260923-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-unregistered-eight-open-two-20260923-v1.config.json",
+  "configDigest": "sha256:314b3ff0a67c5927a89cfa34b4605798b2d98007e2e7502794724a4ca34f12f0",
+  "goalIds": [
+    "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+    "d051857c-0707-544f-ae7a-f20690d182b2"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:a510f4d47f510c3e83b36d71286ad90b5b9b3b6404ff793928a2fd6013665511"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:6849f40b2d613ef4eaceea3a5b71fc9c5b0e44725ba90d73a3a33fb46c379411",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:bffa274cd166cdc8fa4abb19c300f92e05bf8ca0a21903c11ae695ce657288e0",
+    "reviewInputFingerprint": "sha256:33f59e0295b9886ee9e79035649cc555d581d0ac150791027fc97a16443a468f",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-unregistered-eight-open-two-20260923-v1-a",
+        "campaignDigest": "sha256:17c39f24586682379218979e4c32e773e11f0a58aba506a3b4d2772837bf5f29",
+        "roundId": "mathematik-m7-unregistered-eight-open-two-20260923-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-unregistered-eight-open-two-20260923-v1-independent-a",
+        "batchId": "mathematik-m7-unregistered-eight-open-two-20260923-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:f4b4fd9b4fbd72279abd6b5486d33fc6a2ff89f7d478731aa7eca58c9e090950"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-unregistered-eight-open-two-20260923-v1-b",
+        "campaignDigest": "sha256:73ff5cc39a07fea505595a5c5bc278207ace4142aa395de1ed037aed5362212d",
+        "roundId": "mathematik-m7-unregistered-eight-open-two-20260923-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-unregistered-eight-open-two-20260923-v1-independent-b",
+        "batchId": "mathematik-m7-unregistered-eight-open-two-20260923-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:68832b6ec291ce3b14e2333796a8f601a6b1c74acdf50cd911a32c32d1cb0e45"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

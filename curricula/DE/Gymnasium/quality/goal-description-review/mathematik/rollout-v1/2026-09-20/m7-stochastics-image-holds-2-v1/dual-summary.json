@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b69cebfb281c9bf2891f016b2dd72c82ef8a14a9112a9cb20fb612caf3b054ba",
+  "reviewInputFingerprint": "sha256:8234ab26f029e5f826ae2fef3138bd1b6760ac2c28e376d051f15df503314812",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-a",
+      "roundId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-a",
+      "independenceGroupId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-independent-a",
+      "runIds": [
+        "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-a.batch-001.independent-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-b",
+      "roundId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-b",
+      "independenceGroupId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-independent-b",
+      "runIds": [
+        "mathematik-m7-stochastics-image-holds-2-v1-20260920-b-codex-20260921"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 family via Codex; exact serving revision not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "42d300e3-e982-5889-98d7-fc297f10eff1",
+      "firstRecordId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-a.batch-001.independent-a.record-001",
+      "secondRecordId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-b-codex-20260921.42d300e3-e982-5889-98d7-fc297f10eff1",
+      "firstRunId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-a.batch-001.independent-a",
+      "secondRunId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-b-codex-20260921",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+      "firstRecordId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-a.batch-001.independent-a.record-002",
+      "secondRecordId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-b-codex-20260921.455ef29a-7194-5c5a-b832-1c27fcbf2516",
+      "firstRunId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-first-pass-a.batch-001.independent-a",
+      "secondRunId": "mathematik-m7-stochastics-image-holds-2-v1-20260920-b-codex-20260921",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

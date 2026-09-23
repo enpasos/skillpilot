@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-m7-q3-png-v2-a-openai-codex-20260923T031804Z",
+  "campaignId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-a",
+  "roundId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-first-pass-a",
+  "batchId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:fdefd4b00afb4d9a5fbe95d3939935ff8cf192b2de48c7169c3e5faa628e0270",
+  "bundleFingerprint": "sha256:b3be6291740f5a377c4176fece3b5d492b07f4c6ed8bdd42c6c19876f881d15c",
+  "bookDigest": "sha256:cbf8be440663ae546f3bb6795999ddac7f9a8b1a57cf316445ae8d34f20da9c3",
+  "provider": "OpenAI",
+  "model": "Codex (exact underlying model identifier unavailable)",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:6d6a710a63610954aebde1ce06acab31a49044ffe518daac1cd3e8094907d76b",
+  "independenceGroupId": "mathematik-m7-q3-modeling-three-png-delta-20260923-v2-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "3019e775-1420-510f-850b-5a29acc47a64",
+    "ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c",
+    "bfbaedb9-b138-590a-87e8-4d87784dda0e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:2e1033c0793e29a041a6ec6afa06dc9795fb5bb64824cd6b87ff90dbc96d977c"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:fdefd4b00afb4d9a5fbe95d3939935ff8cf192b2de48c7169c3e5faa628e0270"
+    }
+  ],
+  "startedAt": "2026-09-23T03:18:04.000Z",
+  "completedAt": "2026-09-23T03:19:58.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:4dccd211200d88d097bff6066d554dfb151df4bede8686287ac2278f60117237",
+  "toolchainVersion": "goal-description-review-v2-codex-local"
+}

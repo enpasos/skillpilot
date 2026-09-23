@@ -1,0 +1,192 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-upper-sec-four-keep-with-dissent-20260923-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T08:22:23.970Z",
+  "batch": {
+    "batchId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1",
+    "batchManifestDigest": "sha256:a520899c186283983efea6debecc371d4850b74a64c0ccdfad552769b026e83c",
+    "configDigest": "sha256:c31afbd7645dff93d105872d60d6df0f566e84e6c7c5236f00adb17251688407",
+    "bundleFingerprint": "sha256:e4997cd5104440d0ea9566e1cb471267cc39521ee1d695828ae21c97ce4dc0bc",
+    "bookDigest": "sha256:7b7b3fd4e8e9cf1a98b5dea9aa2623b9eb6afe1dc987043e95bb14c9ba42cbf9",
+    "reviewInputFingerprint": "sha256:1510909220c144778b837e902c5ae954b2cfe7b366b5998bccef5bbd24c24177",
+    "dualSummaryDigest": "sha256:d095e112742ebdfe1b6ef348f023846d0fb40dea8d5932a1b3db7a1446610d2a",
+    "canonicalLandscapeDigest": "sha256:b56ee8cec75271a5facbdfd4c0050db8625154df9d8ef93bf02e5bf2132018aa"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-a",
+      "campaignDigest": "sha256:28d92357c357ffc6515a0b0791e17c86d35f88fdb85dfcf346f2553b3cdba25c",
+      "roundId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:1510909220c144778b837e902c5ae954b2cfe7b366b5998bccef5bbd24c24177",
+      "batchId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:871e5f2a9bcb21afb1e5b8fad800ea9aeae7679b79f95106ce63bbf4012f8982",
+      "runId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.batch-001-run-a",
+      "runManifestDigest": "sha256:31813b430da1c889c283c35e0f89b3d93c96a3111aa0fcdaed8232a9a5c66249",
+      "resultsDigest": "sha256:a5f88de374cd14c9b309bd30c6cec506e93dc332638f2dddd30063d1a0b51746"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-b",
+      "campaignDigest": "sha256:e0b130d27e9f4dc9dfcdea0aa26d92a2d8d8244b583fa79fc3bda3f4d83bc3c9",
+      "roundId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:1510909220c144778b837e902c5ae954b2cfe7b366b5998bccef5bbd24c24177",
+      "batchId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:1b90d1f54e3c91188637712256f77f69b56b3b34dc19bc226b7d163b899b2e51",
+      "runId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001",
+      "runManifestDigest": "sha256:7308ba92473bb30e56d51a4e9d3f2f136bcc2603ddefd316f542bf950ee2d738",
+      "resultsDigest": "sha256:f8b582d2a3cbfed2a1b0a5dbd6d3ee23570a4933621c0a52b42608732fbac23b"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-upper-sec-four-keep-with-dissent-20260923-v1-decision-001",
+      "goalId": "fd13605e-21d9-523f-bcf4-6824b6cc09e5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6abb30853bc232235903f68f60d75031fae02f9e185ee31d6e7a2b48dca6c45a",
+      "pageFingerprint": "sha256:ab7e7aa0af823208d4ca25b12289780da830c45543373c3b08594922e00cce06",
+      "goalReviewContextFingerprint": "sha256:3db68d7ee75eaef88032c1b625821740b62d6fb3f9ad7cd8d0e6cb1568470553",
+      "finalText": {
+        "titleDe": "Dichtefunktion der Normalverteilung angeben und deuten (LK)",
+        "titleEn": "State and interpret the normal distribution density",
+        "descriptionDe": "Die lernende Person kann die Dichtefunktion der Normalverteilung $\\varphi_{\\mu,\\sigma}(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^{-\\frac12\\left(\\frac{x-\\mu}{\\sigma}\\right)^2}$ angeben, die Rolle der Parameter $\\mu$ und $\\sigma$ erläutern und grundlegende Eigenschaften interpretieren.",
+        "descriptionEn": "The learner can state the normal distribution density $\\varphi_{\\mu,\\sigma}(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^{-\\frac12\\left(\\frac{x-\\mu}{\\sigma}\\right)^2}$, explain the role of the parameters $\\mu$ and $\\sigma$, and interpret basic properties."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.fd13605e-21d9-523f-bcf4-6824b6cc09e5",
+          "recordDigest": "sha256:2e15f9a5f549526c3169cde232e437f804c52fa543a44d28afe6d12d272f15fe"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-001",
+          "recordDigest": "sha256:17f1f11ff1c4d43c1af16fec0f02ea8eda99fa29f90dfd3a84f7e33eac321b33"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann die Dichtefunktion der Normalverteilung $\\varphi_{\\mu,\\sigma}(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^{-\\frac12\\left(\\frac{x-\\mu}{\\sigma}\\right)^2}$ angeben, erläutern, wie $\\mu$ die Lage und $\\sigma$ die Streuung der symmetrischen Dichtekurve bestimmen.",
+        "proposedDescriptionEn": "The learner can state the normal distribution density $\\varphi_{\\mu,\\sigma}(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^{-\\frac12\\left(\\frac{x-\\mu}{\\sigma}\\right)^2}$, explain how $\\mu$ determines the location and $\\sigma$ the spread of the symmetric density curve.",
+        "rationaleDe": "Der REVISE-Vorschlag benennt Lage, Streuung und Symmetrie nützlicherweise explizit, belegt aber keinen fehlenden Kompetenzbestandteil: Beide Parameter und die Deutung grundlegender Dichte-Eigenschaften sind bereits im Ziel enthalten und im aktuellen Evidenzprofil konkret operationalisiert.",
+        "rationaleEn": "The REVISE proposal usefully names location, spread and symmetry, but does not establish a missing competency: both parameters and interpretation of basic density properties are already in the goal and concretely operationalized in the current evidence profile."
+      },
+      "rationaleDe": "Die Dichteformel und die Deutung beider Parameter sind im bestehenden Zieltext ausdrücklich enthalten. Die Eigenschaften werden im aktuellen Evidenzprofil als Symmetrie, Gesamtfläche und Wirkung auf Breite und Höhe präzise geprüft; die vorgeschlagene Eingrenzung ist keine notwendige Korrektur des Lernziels.",
+      "rationaleEn": "The current goal explicitly includes the density formula and interpretation of both parameters. The current evidence profile tests symmetry, total area, spread and peak height precisely; narrowing the goal text is not a necessary correction."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-four-keep-with-dissent-20260923-v1-decision-002",
+      "goalId": "3016ec37-1c2e-47db-83f5-e767923bc97e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2b2c375ab03a6f6fd86f792bb39cdeddb79d69e87d6f4a26c197ac629d745e48",
+      "pageFingerprint": "sha256:48a6a685293ba7ad067cde4407affed5a84b2bd7c326b18b3b9486cc9b52c0b9",
+      "goalReviewContextFingerprint": "sha256:09b6904120b5667fd771bf0d4739410c8cac299ce1df0010fba3e3c3968ce686",
+      "finalText": {
+        "titleDe": "Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen",
+        "titleEn": "Visualize the definition of the dot product using orthogonal projections",
+        "descriptionDe": "Die lernende Person kann die orthogonale Projektion eines Vektors auf die durch einen anderen Vektor bestimmte Richtung nutzen, um die Definition des Skalarprodukts geometrisch zu veranschaulichen und fachsprachlich zu erläutern.",
+        "descriptionEn": "The learner can use the orthogonal projection of one vector onto the direction determined by another vector to visualize and explain the definition of the dot product geometrically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.3016ec37-1c2e-47db-83f5-e767923bc97e",
+          "recordDigest": "sha256:58f2c97c79b3150a4699ae80cc32911862a6d5bfb37810ebaa86e723294c1cef"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-007",
+          "recordDigest": "sha256:49daaa96fa78530698b4dfbc713154478acdf4eaf7b9b452e88da95450adbb7a"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "first",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann das Skalarprodukt zweier Vektoren mithilfe einer orthogonalen Projektion als Produkt einer Vektorlänge und der vorzeichenbehafteten Projektionslänge des anderen Vektors geometrisch veranschaulichen und erläutern.",
+        "proposedDescriptionEn": "The learner can use an orthogonal projection to visualize and explain the dot product of two vectors geometrically as the product of one vector’s length and the other vector’s signed projection length.",
+        "rationaleDe": "Die im REVISE-Vorschlag ausformulierte Produktbeziehung und das Vorzeichen sind fachlich richtig, aber im vorhandenen Begriff der geometrischen Skalarproduktdefinition angelegt und im aktuellen Evidenzprofil ausdrücklich gebunden. Ihr Fehlen im knappen Zieltext ist kein belegter Inhaltsfehler.",
+        "rationaleEn": "The product relation and sign made explicit by the REVISE proposal are correct, but they are inherent in the named geometric dot-product definition and explicitly bound in the current evidence profile. Their omission from the concise goal text is not a demonstrated content defect."
+      },
+      "rationaleDe": "Die bestehende Beschreibung bindet die orthogonale Projektion ausdrücklich an die geometrische Definition des Skalarprodukts und verlangt ihre fachsprachliche Erläuterung. Das aktuelle Evidenzprofil prüft die vorzeichenbehaftete Projektionslänge und die Produktbeziehung an positiven und negativen Fällen.",
+      "rationaleEn": "The current description explicitly connects orthogonal projection with the geometric definition of the dot product and requires an explanation. The current evidence profile tests signed projection length and the product relation in positive and negative cases."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-four-keep-with-dissent-20260923-v1-decision-003",
+      "goalId": "8b885220-9985-52f1-a236-449d2f897acc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:009f557b2763691cbf155408816d1890a8f041812685332e57c7a986d3c8fd19",
+      "pageFingerprint": "sha256:a69b695596d5e9a31853f36fe22af9355b4f6769df8370a22358c71632cd59ec",
+      "goalReviewContextFingerprint": "sha256:5bb85531da528d8f518390c280d2e47d50e88b30e8a60dbb16e26225128d817b",
+      "finalText": {
+        "titleDe": "Entscheidungen begründet treffen (LK)",
+        "titleEn": "Make justified decisions",
+        "descriptionDe": "Die lernende Person kann unter Randbedingungen (Zeit, Hilfsmittel, Zielgenauigkeit) eine Strategie auswählen und die Entscheidung nachvollziehbar begründen.",
+        "descriptionEn": "The learner can choose a strategy under constraints (time, tools, target accuracy) and justify the decision clearly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.8b885220-9985-52f1-a236-449d2f897acc",
+          "recordDigest": "sha256:9d4f180a6326b9bd3c06ddc9b9c5458a9e984f7467e08ed1446cba0b1d7c399d"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-015",
+          "recordDigest": "sha256:11b27c631f190521247b7dd36acd4a2f448f93e4e6a6e7245e41364b367a037b"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "first",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann bei einer mathematischen Aufgabe unter Randbedingungen wie Zeit, Hilfsmitteln und Zielgenauigkeit eine Lösungsstrategie auswählen und ihre Eignung nachvollziehbar begründen.",
+        "proposedDescriptionEn": "For a mathematical task, the learner can choose a solution strategy under constraints such as time, available tools, and target accuracy and clearly justify why it is suitable.",
+        "rationaleDe": "Der REVISE-Vorschlag macht den mathematischen Aufgabenbezug expliziter, ändert aber weder Randbedingungen noch geforderte Entscheidung. Der fachliche Kontext ist über Ziel und Evidenzprofil ausreichend bestimmt; die zusätzliche Formulierung ist keine notwendige Reparatur.",
+        "rationaleEn": "The REVISE proposal makes the mathematical task context more explicit but changes neither the constraints nor the required decision. The disciplinary context is sufficiently defined by the goal and evidence profile; this extra wording is not a necessary repair."
+      },
+      "rationaleDe": "Der bestehende LK-Prozesszieltext nennt die drei entscheidenden Randbedingungen und fordert eine nachvollziehbar begründete Strategiewahl. Der mathematische Aufgabenbezug und der Vergleich einer Alternative sind im aktuellen Evidenzprofil mit zwei kontrastierenden Flächenaufgaben überprüfbar konkretisiert.",
+      "rationaleEn": "The existing advanced process goal names all three decisive constraints and requires a reasoned strategy choice. The mathematical task context and comparison with an alternative are made testable in the current evidence profile through two contrasting area tasks."
+    },
+    {
+      "decisionId": "mathematik-m7-upper-sec-four-keep-with-dissent-20260923-v1-decision-004",
+      "goalId": "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c4eb5e00a0e77b84eb3a3bc9879b747070f1521e601613bc4347c4a94d876997",
+      "pageFingerprint": "sha256:95245a7e072ec8c2e31177053d17ed327f5e5028870a95ea56b2dd4b536e9a3b",
+      "goalReviewContextFingerprint": "sha256:65c5189d1497be86b949c0dc03be99f78107d4a6f9e679b4aea1d3509bf6afed",
+      "finalText": {
+        "titleDe": "Anschlussbedingungen ohne Sprung und Knick modellieren",
+        "titleEn": "Model joins without jumps or kinks",
+        "descriptionDe": "Die lernende Person kann Anschlussbedingungen ohne Sprung und ohne Knick durch geeignete ganzrationale Funktionen modellieren und fachlich deuten.",
+        "descriptionEn": "The learner can model joins without jumps or kinks using suitable polynomial functions and interpret the conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-a.4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+          "recordDigest": "sha256:b8bc75007ea14e88db178c0cb88ad08c8e0ab8ef95618b48003f5a7c7b126f83"
+        },
+        "second": {
+          "recordId": "mathematik-m7-upper-sec-next20-normal-spatial-methods-current-20260923-v1-first-pass-b-run-001.goal-020",
+          "recordDigest": "sha256:ad933f50e679fd982f8ff46e9dc8e92bb34f1390cd16506c65257c1f72cc060a"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann Anschlüsse ganzrationaler Funktionen ohne Sprung und Knick modellieren, indem sie Funktionswerte und erste Ableitungen an der Anschlussstelle passend gleichsetzt und die Bedingungen deutet.",
+        "proposedDescriptionEn": "The learner can model joins of polynomial functions without jumps or kinks by matching function values and first derivatives at the join and interpreting those conditions.",
+        "rationaleDe": "Der REVISE-Vorschlag nennt das Gleichsetzen von Funktionswerten und ersten Ableitungen zutreffend als Lösungsweg. Der bestehende Zieltext behauptet jedoch keine unzureichende Bedingung; Sprung- und Knickfreiheit tragen beide Bedingungen und das aktuelle Evidenzprofil prüft sie getrennt.",
+        "rationaleEn": "The REVISE proposal correctly names equality of function values and first derivatives as a method. The current goal does not assert an insufficient condition: absence of jump and corner entails both, and the current evidence profile tests each separately."
+      },
+      "rationaleDe": "Ohne Sprung und Knick bezeichnet am Anschluss bereits die zusammenhängende Modellierung von Wert- und Steigungsstetigkeit. Die beiden Bedingungen und ihre Prüfung an unterschiedlichen Polynomanschlüssen sind im aktuellen Evidenzprofil ausdrücklich operationalisiert.",
+      "rationaleEn": "A join without a jump or corner already denotes the coherent modeling of matching values and slopes. Both conditions and their verification for different polynomial joins are explicitly operationalized in the current evidence profile."
+    }
+  ],
+  "manifestFingerprint": "sha256:7158ed7bc20ab98ae6c392d2690a65af3608e0880d7cc42843346be45063838a"
+}

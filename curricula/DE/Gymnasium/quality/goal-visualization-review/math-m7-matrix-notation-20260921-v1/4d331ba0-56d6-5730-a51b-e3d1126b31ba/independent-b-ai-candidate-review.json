@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-goal-visualization-candidate-review",
+  "goalId": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+  "reviewer": "codex-independent-current-matrix-visual-review-b-20260922",
+  "reviewerAgent": "/root/math_repaired12_blind_b",
+  "model": "Codex; exact serving model identifier not exposed",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "decision": "keep",
+  "reviewedAt": "2026-09-21T22:21:33.615Z",
+  "actualVisualInspection": true,
+  "inspectionMethod": "view_image with detail=original on the exact local candidate.png; current canonical goal title/DE/EN wording read separately; mathematical and geometric assertions checked manually, with arithmetic recalculation for matrix powers.",
+  "independentOfRootVerdict": true,
+  "imagePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/4d331ba0-56d6-5730-a51b-e3d1126b31ba/candidate.png",
+  "imageSha256": "sha256:1d50597d5214d7b61a2b6fb0f268c30f9bacdcbed845efaf7c06bff65adc6e83",
+  "imageDimensions": {
+    "width": 1678,
+    "height": 937
+  },
+  "currentGoalTitle": "Bildpunkte mit Matrizen berechnen",
+  "checks": [
+    {
+      "aspect": "Matrix und vollständige Rechnungen",
+      "finding": "A=[[1,1],[0,1]] ergibt A·(2,1)^T=(3,1)^T, A·(0,2)^T=(2,2)^T und A·(−1,1)^T=(0,1)^T. Alle ausgeschriebenen Zeilenprodukte und Vorzeichen im Bild stimmen."
+    },
+    {
+      "aspect": "Linkes Koordinatensystem",
+      "finding": "Die tatsächlich gesetzten Punkte liegen auf den bezeichneten Gitterkoordinaten P=(2,1), Q=(0,2), R=(−1,1); Q liegt auf der y-Achse. Zahlenrichtung und Ursprung stimmen."
+    },
+    {
+      "aspect": "Rechtes Koordinatensystem",
+      "finding": "P′ liegt bei (3,1), Q′ bei (2,2), R′ bei (0,1) auf der y-Achse. Die eingezeichneten Höhen stimmen mit unverändertem y überein; kein Zielpunkt ist bloß durch ein richtiges Textlabel an einer falschen Stelle kaschiert."
+    },
+    {
+      "aspect": "Verknüpfung und Bedeutung",
+      "finding": "Blaue, grüne und orange Verbindungspfeile verbinden die korrespondierenden Punktpaare. Ihre gekrümmten Wege sind Zuordnungsanzeiger, keine behaupteten geometrischen Bewegungsbahnen. Die Deutung 'Die y-Koordinaten bleiben gleich' passt zu dieser Matrix."
+    },
+    {
+      "aspect": "Notation und Lesbarkeit",
+      "finding": "Spaltenvektoren sind in den eigentlichen Produkten vertikal gesetzt; die Semikolon-Kurznotation in der Sprechblase ist damit eindeutig. Primes, Minuszeichen, Achsen, Gitter und sämtliche Zahlen sind bei Originalauflösung lesbar. Kein fachlich nötiger Änderungsbefund."
+    }
+  ],
+  "blockingFindings": [],
+  "requestedChanges": [],
+  "providerMetadata": {
+    "provider": "not independently verified in this review",
+    "tool": "not independently verified in this review",
+    "exactServingModel": "not exposed",
+    "source": "No generation-and-root-review.json present for this goal at metadata read; generation provenance must remain separately bound by root."
+  },
+  "scopeLimits": [
+    "This is an independent AI candidate image review, not human approval or a human trial.",
+    "No canonical import, QA ledger mutation, page/evidence rebinding, or production acceptance performed.",
+    "KEEP covers the viewed exact PNG bytes; subsequent byte changes require a fresh binding/review.",
+    "Generation provenance is separate from visible correctness; no unexposed model identity or model diversity claimed."
+  ]
+}
+

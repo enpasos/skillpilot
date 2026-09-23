@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-20260922-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-matrix-spatial-repaired-and-scope20-v1.config.json",
+  "configDigest": "sha256:f2ca453d9f676d7bacb35d233e5a86750f578b74e5ed791c615577e9fba600bf",
+  "goalIds": [
+    "0de1e45c-aea9-5e53-932a-027dcf509efa",
+    "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+    "4c494716-567b-59c2-855c-6ea45635c666",
+    "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+    "b72d87d4-763e-54aa-940d-31f195b51700",
+    "55039f9c-4ebc-5115-add5-fae95b915e46",
+    "35558905-753d-5fcb-b25e-7f85ffdbff56",
+    "7bd8f022-5002-5610-994c-a9cec1890558",
+    "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+    "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+    "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+    "aae119f2-925f-5fc1-b795-b52c9e980863",
+    "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+    "f37b0a72-9e23-51c7-aad5-438c17a56899",
+    "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+    "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+    "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+    "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+    "69eda7f9-1898-5220-932d-e7bec839b7af",
+    "4bc6cc77-3d20-5d27-a74a-8efb0a038d17"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:35acafd7adbf157205cb67063a513f3fd853b9727a53b5823604ed220abadc83"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:0c0a2bf453fecafdd11985e7660c22006e67f4558db345d595786428bb9f2dd2",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:95aa15b22b8869ad0f1ea25ba0dce10040915660b92aac8ff9a17032eb4bcb94",
+    "reviewInputFingerprint": "sha256:d36664b3019a454d77a6ff9157c48398822c10f5bd57070c93cc69c64132250e",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-20260922-v1-a",
+        "campaignDigest": "sha256:db814faa053585b226e0a4ed596bfa51673d1003c2521cacfa113f2120409d9b",
+        "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-20260922-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-20260922-v1-independent-a",
+        "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-20260922-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:d4797066767abd43e60dcc9ae82293bed2bf5d5cb697167a13bcbd5d1258a000"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-matrix-spatial-repaired-and-scope20-20260922-v1-b",
+        "campaignDigest": "sha256:c741d78a9b077a963f00ac1c8ec7e779e0a72b868a4599fddf58ebc1f69a9514",
+        "roundId": "mathematik-m7-matrix-spatial-repaired-and-scope20-20260922-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-20260922-v1-independent-b",
+        "batchId": "mathematik-m7-matrix-spatial-repaired-and-scope20-20260922-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:49056c53ff5239d13fbd050704b2b4629f5535214d84c206dc3a280ba1c1c542"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

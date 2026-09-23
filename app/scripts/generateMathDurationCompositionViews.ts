@@ -179,6 +179,9 @@ const SEK1_MEMORY_GOAL_ID = '4eefbd04-9e49-41ea-a087-9ad6ac71ec5a'
 const J6_REFLECTIONS_CLUSTER_ID = '1335dff9-db1e-5dd6-aa55-3938b6d3b0ec'
 const J6_NETS_GOAL_ID = 'f52e9d72-4995-5c80-91d2-7761ea0cbec0'
 const J6_OBLIQUE_VIEW_GOAL_ID = '6bb52f96-6320-5a34-afb0-db9b471dd4ac'
+// The Q4 Caterer assessment was mapped to a lower-secondary process source, but
+// it is a phase-local upper-secondary exam, not a Sek-I learner target.
+const Q4_CATERER_ASSESSMENT_GOAL_ID = '3095e125-fbb7-51c6-bf12-ffbb1735b9b7'
 const SEK1_EXAM_FOLDER_IDS_BY_YEAR: Record<string, string> = {
   '5': '81c8da58-9258-488e-9ab8-48500ab31652',
   '6': '7a2a5706-aff4-4fd0-b092-1779d6ecbc1f',
@@ -1131,12 +1134,13 @@ const createRpSek1Node = (
   durationModel: DurationModel,
   excludedGoalIds: Set<string> = new Set(),
 ): CompositionNode => {
+  const sek1ExcludedGoalIds = new Set([...excludedGoalIds, Q4_CATERER_ASSESSMENT_GOAL_ID])
   const templateFileName = `de-rp-seki-${durationModel.toLowerCase()}.view.json`
-  const routeContext = reviewedLayoutRouteContext(templateFileName, excludedGoalIds)
-  const initialBuckets = assignRpStageBuckets(excludedGoalIds)
+  const routeContext = reviewedLayoutRouteContext(templateFileName, sek1ExcludedGoalIds)
+  const initialBuckets = assignRpStageBuckets(sek1ExcludedGoalIds)
   const assignedGoalIds = new Set(Object.values(initialBuckets).flat())
   const supplementGoalIds = sortGoalIdsByTitle(baseRpSek1SupplementIds, goalById)
-    .filter((goalId) => !excludedGoalIds.has(goalId) && !assignedGoalIds.has(goalId))
+    .filter((goalId) => !sek1ExcludedGoalIds.has(goalId) && !assignedGoalIds.has(goalId))
   const buckets = completeSek1RouteBuckets({
     jurisdiction: 'DE-RP',
     durationModel,
@@ -1146,7 +1150,7 @@ const createRpSek1Node = (
       ...routeContext.replacementTargetGoalIds,
       ...legacyExamRouteSeedGoalIds('DE-RP', yearLabelsByDuration[durationModel]),
     ],
-    excludedGoalIds,
+    excludedGoalIds: sek1ExcludedGoalIds,
     blockedPrerequisiteGoalIds: routeContext.blockedPrerequisiteGoalIds,
     bucketForCanonicalYear: rpBucketForCanonicalYear,
   })
@@ -1176,7 +1180,7 @@ const createRpSek1Node = (
   return applyReviewedSplitLayout(
     sek1Node,
     templateFileName,
-    excludedGoalIds,
+    sek1ExcludedGoalIds,
   )
 }
 

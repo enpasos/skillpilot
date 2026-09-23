@@ -1,0 +1,91 @@
+{
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "decision": "needs_independent_review",
+  "selfReviewer": "Codex independent agent /root/math_repaired12_blind_a; exact serving model identifier not exposed",
+  "selfReviewRecordedAt": "2026-09-21T22:37:20.756Z",
+  "license": "CC-BY-4.0",
+  "humanApprovalClaimed": false,
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false
+  },
+  "sourceInspection": "Original current raster and generated selected raster actually viewed; creating-agent review only. Any subsequent root judgement is separate and is not represented as this agent's independent approval.",
+  "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+  "goalTitleDe": "Kollinearität von Vektoren im Raum prüfen",
+  "phase": "Q2",
+  "audience": "Gymnasium Sekundarstufe II",
+  "candidate": {
+    "file": "nbp-attempt-01.png",
+    "sha256": "sha256:0daaddf6f333f56d16fc7bad130358e93fbccdb7fa2ad2c11be1d6a0e918ed0b",
+    "bytes": 4157262,
+    "width": 2752,
+    "height": 1536,
+    "attribution": "SkillPilot, AI-generated illustration, AI candidate"
+  },
+  "source": {
+    "path": "app/public/assets/goal-visualizations/mathematik/54cfe5ce-693e-5d4a-ac1b-009570fbbc11/54cfe5ce-693e-5d4a-ac1b-009570fbbc11.jpg",
+    "sha256": "sha256:ed8e50ed05df198b62e66f046f8bf22b791c023cc9c0d795eb790e3187a7a825",
+    "storedProvider": "Google Gemini / Nano Banana Pro"
+  },
+  "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+  "tool": "scripts/generate_goal_visualization_nano_banana.mjs --no-import",
+  "model": "gemini-3-pro-image (request and response summary)",
+  "nativePrepare": {
+    "beforeSelectedAttempt": true,
+    "canonicalImportRun": false,
+    "providerMatchesGeneration": true,
+    "note": "Native helper uses --no-import and --skip-reconstruction-prompt; standalone prompt was written by the creating reviewer from the image."
+  },
+  "prompt": {
+    "file": "prompt-nbp-attempt-01.exact.txt",
+    "sha256": "sha256:42d37dabd11c907e333d25ca4f87fb2189bc6e067d6a1c07d21ab6f56e896091",
+    "bytes": 2027,
+    "formatNote": "Exact prompt body; terminal file newline is serialization.",
+    "reconstructionPrompt": "image-reconstruction-prompt.de.md",
+    "reconstructionPromptOrigin": "Individually written from the actually viewed output; not a recycled generation instruction."
+  },
+  "attemptHistory": ["builtin-attempts-review.json", "nbp-attempts-review.json"],
+  "limitations": [
+    "Creating-agent AI review is not human approval or independent QA.",
+    "No learner-book or cockpit acceptance test performed; asset is unimported.",
+    "Friendly generated raster may have small stroke-level endpoint variations."
+  ],
+  "selfReview": {
+    "correctedDefects": [
+      "Misleading coordinate axes removed; both lower panels explicitly labelled Richtungsskizze.",
+      "Left free vectors now exactly horizontal and parallel; b is visually about twice as long as a, with no kink."
+    ],
+    "mathematics": [
+      "a=(2,-1,3),b=(4,-2,6): every displayed component ratio is2, hence b=2a.",
+      "a=(2,-1,3),c=(3,-1,4): ratios1.5,1,4/3 are unequal, hence noncollinear.",
+      "Left arrows use different origins. This deviates from the generation request's shared origin but is mathematically valid for free vectors; collinearity includes parallel representatives."
+    ],
+    "geometryEvidence": "At the 2048px-wide viewed rendering, blue length≈208px and green≈407px, ratio≈0.511. Both arrow shafts are horizontal; right a/c share a point with genuinely distinct directions. Final native width2752; scale invariant.",
+    "visibleBlockingDefects": [],
+    "style": "Large handwritten German text, green/red comparison headers, yellow conclusion boxes and pastel comic panels preserved."
+  },
+  "formatProvenance": {
+    "nativeResponseFile": "nbp-attempt-01.original.jpg",
+    "sha256": "sha256:d1bfa37063b38bc69967f8fd99353c2335c76a06cc0af80cddd9d7808f12f0ca",
+    "bytes": 2044052,
+    "responseSummary": "nbp-attempt-01.response-summary.json",
+    "pngConversion": "ffmpeg -v error -i nbp-attempt-01.original.jpg -frames:v 1 nbp-attempt-01.png",
+    "decodedRgbEqual": true,
+    "note": "Interactions endpoint rejected image/png with400; used supported JPEG then lossless decoded-RGB PNG serialization, no geometry compositing or programmatic image repair.",
+    "generationResponseFileTimestamp": "2026-09-21T22:26:33.825Z",
+    "requestMetadata": {
+      "model": "gemini-3-pro-image",
+      "response_format": {
+        "type": "image",
+        "mime_type": "image/jpeg",
+        "aspect_ratio": "16:9",
+        "image_size": "2K"
+      },
+      "requestSha256": "a897661dd226c7660487937f664c1b0c082a2882ed010f2fd00a92754c7c27e2"
+    }
+  }
+}

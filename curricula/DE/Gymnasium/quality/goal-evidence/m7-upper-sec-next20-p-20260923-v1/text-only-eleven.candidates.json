@@ -1,0 +1,669 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-understanding-evidence-m7-upper-sec-next20-text-eleven-20260923-v1",
+  "reviewedAt": "2026-09-23T08:29:15Z",
+  "reviewer": "codex-math-m7-upper-sec-next20-p-first-pass-2026-09-23",
+  "goals": [
+    {
+      "goalId": "8c32d941-b51c-5663-951c-a610f8900f76",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "event-area",
+            "essentialUnderstandingDe": "Bei einer stetigen Normalverteilung ist eine Intervall- oder Randwahrscheinlichkeit die passende Fläche unter der Dichte; ein einzelner exakter Wert hat Wahrscheinlichkeit 0.",
+            "essentialUnderstandingEn": "For a continuous normal distribution, an interval or tail probability is the corresponding area under the density; a single exact value has probability 0.",
+            "observablePerformanceDe": "Übersetzt ein Kontext-Ereignis in korrekte Grenzen und markiert die richtige Fläche einschließlich Komplement bei einer oberen Grenze.",
+            "observablePerformanceEn": "Translates a contextual event into correct bounds and marks the corresponding area, including a complement for an upper tail."
+          },
+          {
+            "id": "tool-context",
+            "essentialUnderstandingDe": "Ein digitales Normalverteilungswerkzeug liefert einen Verteilungswert, dessen Eingaben μ,σ und Grenze zur Sachgröße und Einheit passen müssen.",
+            "essentialUnderstandingEn": "A digital normal-distribution tool returns a distribution value whose μ,σ and bound must match the contextual quantity and unit.",
+            "observablePerformanceDe": "Bestimmt eine Wahrscheinlichkeit mit CDF oder digitalem Werkzeug, kontrolliert 0≤P≤1 und formuliert das Ergebnis im Sachkontext.",
+            "observablePerformanceEn": "Finds a probability using a CDF or digital tool, checks 0≤P≤1 and states the result in context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "event-area",
+            "tool-context"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "zweiseitiger Bereich um μ gegenüber einseitigem oberem Randereignis",
+            "textEn": "two-sided interval around μ versus a one-sided upper-tail event"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "central",
+            "taskDemandDe": "Füllmengen seien normalverteilt mit μ=100 ml, σ=10 ml. Bestimme und deute P(90≤X≤110) mit Werkzeug oder Fläche.",
+            "taskDemandEn": "Fill volumes are normal with μ=100 ml, σ=10 ml. Find and interpret P(90≤X≤110) using a tool or area.",
+            "expectedPerformanceDe": "Standardisierung ergibt P(−1≤Z≤1)≈0,683; etwa 68,3 % der Füllmengen liegen zwischen 90 und 110 ml, als mittlere Fläche.",
+            "expectedPerformanceEn": "Standardization gives P(−1≤Z≤1)≈0.683; about 68.3% of fill volumes lie between 90 and 110 ml, represented by the central area.",
+            "understandingFocusDe": "Intervallgrenzen, Flächenbild und Kontextanteil verbinden.",
+            "understandingFocusEn": "Connect interval bounds, area and contextual proportion."
+          },
+          {
+            "id": "upper",
+            "taskDemandDe": "Eine Messgröße sei normalverteilt mit μ=50, σ=5. Bestimme und deute die Chance, dass sie 60 überschreitet.",
+            "taskDemandEn": "A measurement is normal with μ=50, σ=5. Find and interpret the chance it exceeds 60.",
+            "expectedPerformanceDe": "P(X>60)=1−Φ((60−50)/5)=1−Φ(2)≈0,0228; die kleine rechte Schwanzfläche bedeutet etwa 2,3 % über 60.",
+            "expectedPerformanceEn": "P(X>60)=1−Φ((60−50)/5)=1−Φ(2)≈0.0228; the small right-tail area means about 2.3% exceed 60.",
+            "understandingFocusDe": "Komplement und einseitige Fläche sachgerecht wählen.",
+            "understandingFocusEn": "Choose a complement and one-sided area appropriately."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "c406d5a0-e81d-5ce9-b535-6512a38798de",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "inverse-equation",
+            "essentialUnderstandingDe": "Eine vorgegebene Normalwahrscheinlichkeit wird erst als CDF- oder Intervallgleichung formuliert; die gesuchte Größe kann Grenze oder Parameter sein.",
+            "essentialUnderstandingEn": "A specified normal probability is first expressed as a CDF or interval equation; the unknown may be a bound or parameter.",
+            "observablePerformanceDe": "Formuliert aus zwei unterschiedlichen inverse Fragestellungen die passende Gleichung mit richtigen Parametern und Wahrscheinlichkeitsseite.",
+            "observablePerformanceEn": "Forms the appropriate equation from two different inverse questions with correct parameters and probability side."
+          },
+          {
+            "id": "solve-check",
+            "essentialUnderstandingDe": "Die inverse Lösung muss im Wertebereich und zur Richtung der Fläche passen; numerische Quantile oder Umstellen sind an der Ausgangswahrscheinlichkeit zu prüfen.",
+            "essentialUnderstandingEn": "An inverse solution must fit the domain and area direction; numerical quantiles or rearrangement must be checked against the original probability.",
+            "observablePerformanceDe": "Bestimmt Unbekannte, setzt zurück ein und erläutert, warum das Ergebnis relativ zu μ und der geforderten Wahrscheinlichkeit plausibel ist.",
+            "observablePerformanceEn": "Finds the unknown, substitutes back and explains why the result is plausible relative to μ and the requested probability."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "inverse-equation",
+            "solve-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "unbekannte obere Grenze bei bekannten μ,σ gegenüber unbekanntem μ bei gegebener Grenze",
+            "textEn": "unknown upper bound with known μ,σ versus unknown μ with a given bound"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "quantile",
+            "taskDemandDe": "X~N(100,10²). Finde b mit P(X≤b)=0,90 und prüfe die Lage von b.",
+            "taskDemandEn": "X~N(100,10²). Find b with P(X≤b)=0.90 and check where b lies.",
+            "expectedPerformanceDe": "Φ((b−100)/10)=0,90 liefert z₀,₉≈1,2816, also b≈112,8; b liegt oberhalb von μ und Rückeinsetzen ergibt ≈0,90.",
+            "expectedPerformanceEn": "Φ((b−100)/10)=0.90 gives z₀.₉≈1.2816 and b≈112.8; b exceeds μ and substitution returns ≈0.90.",
+            "understandingFocusDe": "Quantil als Grenze aus einer kumulierten Fläche gewinnen.",
+            "understandingFocusEn": "Obtain a quantile bound from cumulative area."
+          },
+          {
+            "id": "unknown-mean",
+            "taskDemandDe": "Bei σ=5 und P(X≤60)≈0,8413 einer Normalverteilung: Bestimme μ und prüfe die Lösung.",
+            "taskDemandEn": "For a normal distribution with σ=5 and P(X≤60)≈0.8413, find μ and check it.",
+            "expectedPerformanceDe": "Φ((60−μ)/5)≈0,8413=Φ(1), daher μ≈55; 60 liegt eine Standardabweichung über dem Mittelwert.",
+            "expectedPerformanceEn": "Φ((60−μ)/5)≈0.8413=Φ(1), hence μ≈55; 60 is one standard deviation above the mean.",
+            "understandingFocusDe": "Verteilungsparameter statt Grenze invers bestimmen.",
+            "understandingFocusEn": "Invert for a distribution parameter rather than a bound."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "55d0474b-b82c-59b6-a62a-b6a0a34d9c4b",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "support",
+            "essentialUnderstandingDe": "Diskrete Größen haben abzählbare mögliche Werte, stetige Größen werden auf einem Intervall gemessen; dies bestimmt die Art der Wahrscheinlichkeitsaussage.",
+            "essentialUnderstandingEn": "Discrete variables have countable possible values, whereas continuous variables are measured over an interval; this determines the type of probability statement.",
+            "observablePerformanceDe": "Ordnet neue Zähl- und Messgrößen mit ausdrücklichem Wertebereich begründet diskret oder stetig zu.",
+            "observablePerformanceEn": "Classifies new counts and measurements as discrete or continuous, stating their possible values and reasons."
+          },
+          {
+            "id": "probability-form",
+            "essentialUnderstandingDe": "Bei diskreten Größen können Einzelwerte positive Masse haben; bei ideal stetigen Größen sind Punktwahrscheinlichkeiten 0 und Intervalle werden über Dichteflächen beschrieben.",
+            "essentialUnderstandingEn": "Discrete variables can put positive mass on exact values; for ideal continuous variables point probabilities are zero and intervals are described by density areas.",
+            "observablePerformanceDe": "Formuliert für je eine diskrete und stetige Größe eine sinnvolle Einzelwert- beziehungsweise Intervallwahrscheinlichkeit und erklärt den Unterschied.",
+            "observablePerformanceEn": "Forms a meaningful exact-value or interval probability for a discrete and a continuous variable and explains the difference."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "support",
+            "probability-form"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Anzahl erfolgreicher Versuche gegenüber gemessener Dauer; anschließend Anzahl Defekte gegenüber gemessener Masse",
+            "textEn": "number of successes versus measured duration, then defect count versus measured mass"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "attempts-time",
+            "taskDemandDe": "Vergleiche die Anzahl Treffer in zehn Würfen mit der Wartezeit bis zum nächsten Treffer; nenne Wertebereiche und sinnvolle Wahrscheinlichkeiten.",
+            "taskDemandEn": "Compare the number of hits in ten throws with waiting time until the next hit; give possible values and meaningful probabilities.",
+            "expectedPerformanceDe": "Trefferzahl nimmt 0,…,10 an und P(X=4) ist sinnvoll; Wartezeit kann jeden nichtnegativen reellen Wert annehmen und wird etwa durch P(2≤T≤3), nicht P(T=2)>0 beschrieben.",
+            "expectedPerformanceEn": "Hit count takes 0,…,10 and P(X=4) is meaningful; waiting time can take any nonnegative real value and is described by e.g. P(2≤T≤3), not P(T=2)>0.",
+            "understandingFocusDe": "Wertebereich und probabilistische Darstellung verbinden.",
+            "understandingFocusEn": "Connect support and probability representation."
+          },
+          {
+            "id": "defects-mass",
+            "taskDemandDe": "Bei einer Produktion: Vergleiche die Zahl defekter Teile in einer Kiste mit der Masse eines zufällig gewählten Teils.",
+            "taskDemandEn": "In production, compare the number of defective items in a box with the mass of a randomly selected item.",
+            "expectedPerformanceDe": "Defektzahl ist ganzzahlig und kann Einzelwahrscheinlichkeiten tragen; idealisierte Masse ist reell in einem Bereich, exakte Punktmasse hat Wahrscheinlichkeit 0, ein Massenintervall positive Fläche.",
+            "expectedPerformanceEn": "Defect count is integer-valued and may have point masses; idealized mass is real-valued over a range, an exact mass has probability zero and a mass interval has positive area.",
+            "understandingFocusDe": "Neue Sachgrößen ohne Oberflächenmerkmal wie eine Dezimalschreibweise klassifizieren.",
+            "understandingFocusEn": "Classify new quantities without relying on superficial features such as decimal notation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a7778885-17aa-5eeb-a6a7-fbf4c8d55a16",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "accumulated-area",
+            "essentialUnderstandingDe": "Φμ,σ(x) ist die von −∞ bis x unter der Dichte angesammelte Fläche P(X≤x), nicht die Dichtehöhe am Punkt.",
+            "essentialUnderstandingEn": "Φμ,σ(x) is the area accumulated under the density from −∞ to x, P(X≤x), not the density height at x.",
+            "observablePerformanceDe": "Markiert für eine neue Normaldichte die richtige Fläche zu Φ(x) und erläutert ihre Änderung beim Verschieben der Grenze.",
+            "observablePerformanceEn": "Marks the correct area for Φ(x) under a fresh normal density and explains how it changes when the bound moves."
+          },
+          {
+            "id": "interval-difference",
+            "essentialUnderstandingDe": "Eine Intervallwahrscheinlichkeit ist die Differenz zweier kumulierter Flächen; die Dichte ist die lokale Änderungsrate der Verteilungsfunktion.",
+            "essentialUnderstandingEn": "An interval probability is the difference of two cumulative areas; density is the local rate of change of the CDF.",
+            "observablePerformanceDe": "Drückt P(a<X≤b) durch Φ(b)−Φ(a) aus und beschreibt am Graphen, warum die Differenz genau die Fläche zwischen a und b ist.",
+            "observablePerformanceEn": "Expresses P(a<X≤b) as Φ(b)−Φ(a) and explains graphically why this is exactly the area between a and b."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "accumulated-area",
+            "interval-difference"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "CDF-Wert am Symmetriezentrum gegenüber Intervallfläche einer verschobenen und gestreckten Dichte",
+            "textEn": "CDF value at symmetry center versus interval area under a shifted, rescaled density"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "standard",
+            "taskDemandDe": "Zeichne schematisch die Standardnormaldichte; erkläre Φ(0) und stelle P(0<Z≤1) als CDF-Differenz dar.",
+            "taskDemandEn": "Sketch a standard normal density; explain Φ(0) and express P(0<Z≤1) as a CDF difference.",
+            "expectedPerformanceDe": "Φ(0)=0,5 ist die linke Halbfläche; P(0<Z≤1)=Φ(1)−Φ(0)≈0,3413 ist die zwischen 0 und 1 liegende Fläche.",
+            "expectedPerformanceEn": "Φ(0)=0.5 is the left half-area; P(0<Z≤1)=Φ(1)−Φ(0)≈0.3413 is the area from 0 to 1.",
+            "understandingFocusDe": "Kumulierte Fläche von lokaler Dichtehöhe unterscheiden.",
+            "understandingFocusEn": "Distinguish cumulative area from local density height."
+          },
+          {
+            "id": "shifted",
+            "taskDemandDe": "Y~N(10,2²). Erläutere Φ₁₀,₂(12) graphisch und gewinne P(10<Y≤12) daraus.",
+            "taskDemandEn": "Y~N(10,2²). Explain Φ₁₀,₂(12) graphically and derive P(10<Y≤12).",
+            "expectedPerformanceDe": "Φ₁₀,₂(12)≈0,8413 ist die Fläche links von 12; Φ₁₀,₂(10)=0,5, daher ist die gesuchte Zwischenfläche ≈0,3413. Höhere Dichte bedeutet steileren lokalen CDF-Anstieg.",
+            "expectedPerformanceEn": "Φ₁₀,₂(12)≈0.8413 is the area left of 12; Φ₁₀,₂(10)=0.5, so the interval area is ≈0.3413. Higher density means steeper local CDF growth.",
+            "understandingFocusDe": "Neue Lage und Streuung in Flächen- und Änderungsdeutung übertragen.",
+            "understandingFocusEn": "Transfer shifted location and spread into area and change-rate interpretation."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "b431148b-526c-4bde-b04b-48d23101d0d3",
+      "reason": "Available original JPG sha256:aec28a4d43dff8b6764a059ce592aaf9b223d35bd609aef7511fb7e685887b67 has current AI V-HOLD: normal-approximation shading ends at labeled 55 rather than formula's 55.5, plus visible typo. Text-only AI candidate; V remains open.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "shape-conditions",
+            "essentialUnderstandingDe": "Viele vergleichbare, hinreichend unabhängige Beiträge oder ein Binomialmodell mit hinreichend großem np und n(1−p) können eine annähernd symmetrische Glockenform begründen; eine harte Rand- oder Schieflage schränkt die Näherung ein.",
+            "essentialUnderstandingEn": "Many comparable, sufficiently independent contributions or a binomial model with sufficiently large np and n(1−p) can support an approximately symmetric bell shape; a hard boundary or skew limits it.",
+            "observablePerformanceDe": "Prüft an neuen Situationen Verteilungsform und Abhängigkeitsannahmen und begründet, ob eine Normalnäherung plausibel ist.",
+            "observablePerformanceEn": "Checks distribution shape and dependence assumptions in new situations and justifies whether a normal approximation is plausible."
+          },
+          {
+            "id": "discrete-approximation",
+            "essentialUnderstandingDe": "Wird eine ganzzahlige Binomialgröße stetig angenähert, stimmen Mittelwert und Streuung der Näherung mit np und √(np(1−p)) überein; Intervallgrenzen benötigen eine Stetigkeitskorrektur.",
+            "essentialUnderstandingEn": "When an integer-valued binomial variable is approximated continuously, the approximating mean and spread are np and √(np(1−p)); interval bounds need a continuity correction.",
+            "observablePerformanceDe": "Übersetzt ein diskretes Intervall in ein Flächenintervall mit um 0,5 erweiterten Grenzen und nennt den Näherungscharakter.",
+            "observablePerformanceEn": "Converts a discrete interval to an area interval with bounds extended by 0.5 and states that it is approximate."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "shape-conditions",
+            "discrete-approximation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "geeignete symmetrische Binomialzahl gegenüber seltenem Ereignis mit stark schiefer Verteilung",
+            "textEn": "suitable symmetric-ish binomial count versus rare-event strongly skewed count"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "suitable-binomial",
+            "taskDemandDe": "Bei X~Bin(100;0,4): Untersuche eine Normalnäherung und stelle P(35≤X≤45) als stetige Flächenwahrscheinlichkeit dar.",
+            "taskDemandEn": "For X~Bin(100,0.4), assess a normal approximation and express P(35≤X≤45) as a continuous-area probability.",
+            "expectedPerformanceDe": "np=40 und n(1−p)=60 sind groß; Y~N(40,24) ist plausibel und P(35≤X≤45)≈P(34,5≤Y≤45,5), ausdrücklich nur näherungsweise.",
+            "expectedPerformanceEn": "np=40 and n(1−p)=60 are large; Y~N(40,24) is plausible and P(35≤X≤45)≈P(34.5≤Y≤45.5), explicitly only approximate.",
+            "understandingFocusDe": "Eignung und korrekte Grenzverschiebung zusammen sehen.",
+            "understandingFocusEn": "Combine suitability with correct boundary shifts."
+          },
+          {
+            "id": "rare",
+            "taskDemandDe": "Bei 20 unabhängigen Versuchen tritt ein Ereignis je mit p=0,001 auf. Prüfe, ob die Trefferzahl durch eine Normalverteilung brauchbar angenähert wird, und begründe.",
+            "taskDemandEn": "In 20 independent trials an event occurs with p=0.001 each time. Assess whether the hit count is usefully approximated by a normal distribution, with reasons.",
+            "expectedPerformanceDe": "np=0,02 ist sehr klein; fast alle Ergebnisse sind 0, die Verteilung stark rechtsschief und am Rand 0 abgeschnitten. Eine symmetrische Normalnäherung ist hier nicht sachgerecht.",
+            "expectedPerformanceEn": "np=0.02 is very small; nearly all results are 0, the distribution is highly right-skewed and bounded at 0. A symmetric normal approximation is unsuitable here.",
+            "understandingFocusDe": "Nicht bloß große n, sondern Lage und Form des Modells prüfen.",
+            "understandingFocusEn": "Check model location and shape, not merely a large n."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3256476b-ec65-4038-9f5a-a8808fbcf207",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "foot-condition",
+            "essentialUnderstandingDe": "Der Fußpunkt eines Punkt-Gerade-Lots liegt auf der Geraden und der Verbindungsvektor zum Punkt steht orthogonal zum Richtungsvektor.",
+            "essentialUnderstandingEn": "The foot of a point-to-line perpendicular lies on the line and the vector from foot to point is orthogonal to its direction vector.",
+            "observablePerformanceDe": "Bestimmt den Geradenparameter mit einer Orthogonalitäts- oder Projektionsgleichung und überprüft beide Fußpunktbedingungen.",
+            "observablePerformanceEn": "Finds the line parameter using an orthogonality or projection equation and checks both foot conditions."
+          },
+          {
+            "id": "distance-meaning",
+            "essentialUnderstandingDe": "Der Punkt-Gerade-Abstand ist die Länge des Lotvektors und damit das Minimum aller Punkt-zu-Geradenpunkt-Strecken.",
+            "essentialUnderstandingEn": "Point-to-line distance is the length of the perpendicular vector and hence the minimum of all point-to-line-point segments.",
+            "observablePerformanceDe": "Berechnet die Lotlänge und erklärt anhand eines anderen Geradenpunkts, warum dessen Verbindung nicht kürzer ist.",
+            "observablePerformanceEn": "Computes perpendicular length and explains with another line point why its connection is not shorter."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "foot-condition",
+            "distance-meaning"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "achsparallele Gerade mit unmittelbarem Lotfuß gegenüber schräger Gerade mit Parameterprojektion",
+            "textEn": "axis-parallel line with immediate foot versus slanted line requiring parameter projection"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "axis",
+            "taskDemandDe": "P=(2,3,4), g=(0,0,0)+t(1,0,0): bestimme Lotfuß, Abstand und vergleiche mit der Strecke zum Ursprung.",
+            "taskDemandEn": "P=(2,3,4), g=(0,0,0)+t(1,0,0): find the foot and distance and compare with the segment to the origin.",
+            "expectedPerformanceDe": "F=(2,0,0), P−F=(0,3,4) orthogonal zu (1,0,0), d=5; die Strecke zum Ursprung hat √29>5.",
+            "expectedPerformanceEn": "F=(2,0,0), P−F=(0,3,4) is orthogonal to (1,0,0), d=5; the origin-to-P segment is √29>5.",
+            "understandingFocusDe": "Lot statt beliebiger Verbindungsstrecke ausweisen.",
+            "understandingFocusEn": "Establish a perpendicular rather than arbitrary connection."
+          },
+          {
+            "id": "slanted",
+            "taskDemandDe": "P=(2,0,1), g=(0,0,0)+t(1,1,0): bestimme den Fuß durch (P−t v)·v=0 und den Abstand.",
+            "taskDemandEn": "P=(2,0,1), g=(0,0,0)+t(1,1,0): find the foot from (P−t v)·v=0 and the distance.",
+            "expectedPerformanceDe": "(2−t,−t,1)·(1,1,0)=2−2t=0, daher t=1, F=(1,1,0); P−F=(1,−1,1) und d=√3.",
+            "expectedPerformanceEn": "(2−t,−t,1)·(1,1,0)=2−2t=0, so t=1, F=(1,1,0); P−F=(1,−1,1) and d=√3.",
+            "understandingFocusDe": "Analytische Lotbedingung auf eine schräge Raumgerade übertragen.",
+            "understandingFocusEn": "Transfer the analytic perpendicular condition to an oblique spatial line."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
+      "reason": "Available original JPG sha256:34d1cbf8bc5441310aeaec6e6b896d49ded01ccd3f3129b7812adc1bcdcb9a5d has current AI V-HOLD: visible equal-area labels contradict drawn prism fronts. Text-only AI candidate; V remains open.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "volume-ratio",
+            "essentialUnderstandingDe": "Bei Teilkörpern mit identischem Querschnitt G verhalten sich Volumina wie die zugehörigen Höhen; bei anderer Querschnittsgeometrie muss zuerst die Volumenstruktur geklärt werden.",
+            "essentialUnderstandingEn": "For parts with the same cross-sectional area G, volumes are proportional to their heights; with different cross-sectional geometry the volume structure must first be clarified.",
+            "observablePerformanceDe": "Bestimmt aus einer räumlichen Zerlegung beide Volumina und kürzt erst nach Begründung gemeinsamer Querschnittsfläche zum Verhältnis.",
+            "observablePerformanceEn": "Finds both part volumes from a spatial split and reduces their ratio only after justifying common cross-sectional area."
+          },
+          {
+            "id": "part-whole",
+            "essentialUnderstandingDe": "Teilvolumina addieren sich zum Gesamtvolumen; ein Verhältnis V₁:V₂ ist von den Anteilen V₁:V und V₂:V zu unterscheiden.",
+            "essentialUnderstandingEn": "Part volumes add to total volume; ratio V₁:V₂ differs from shares V₁:V and V₂:V.",
+            "observablePerformanceDe": "Gibt in einer neuen Zerlegung Teil-zu-Teil-Verhältnis, Gesamtvolumen und mindestens einen Gesamtanteil mit stimmigen Einheiten an.",
+            "observablePerformanceEn": "Gives part-to-part ratio, total volume and at least one share of the whole for a new split, with consistent units."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "volume-ratio",
+            "part-whole"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "zwei prismatische Abschnitte mit bekannter gemeinsamer Fläche gegenüber Höhenteilung eines Gesamtprismas",
+            "textEn": "two prismatic sections with known common area versus dividing a whole prism by height"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "stacked",
+            "taskDemandDe": "Ein Prisma mit durchgehendem Querschnitt G=8 cm² wird in Abschnitte mit Höhen 2 cm und 5 cm zerlegt. Bestimme Volumina, Verhältnis und Gesamtvolumen.",
+            "taskDemandEn": "A prism with constant cross-section G=8 cm² is split into sections of heights 2 cm and 5 cm. Find volumes, ratio and total.",
+            "expectedPerformanceDe": "V₁=16 cm³, V₂=40 cm³, V₁:V₂=2:5 und V=56 cm³; gemeinsames G kürzt sich beim Verhältnis.",
+            "expectedPerformanceEn": "V₁=16 cm³, V₂=40 cm³, V₁:V₂=2:5 and V=56 cm³; common G cancels in the ratio.",
+            "understandingFocusDe": "Gemeinsame Fläche und additiven Gesamtinhalt begründen.",
+            "understandingFocusEn": "Justify common area and additive total volume."
+          },
+          {
+            "id": "quarter-cut",
+            "taskDemandDe": "Ein 12 cm hohes gerades Prisma wird mit einer zur Grundfläche parallelen Ebene nach 3 cm geteilt. Bestimme Teilverhältnis und Anteil des kleineren Stücks am Ganzen ohne G zu kennen.",
+            "taskDemandEn": "A 12 cm high right prism is cut by a plane parallel to the base after 3 cm. Find the part-to-part ratio and smaller share of the whole without knowing G.",
+            "expectedPerformanceDe": "Die Teilhöhen sind 3 und 9 cm bei gleichem G; V₁:V₂=1:3, V₁/V=3/12=1/4. Für das Verhältnis ist ein Zahlenwert von G nicht nötig.",
+            "expectedPerformanceEn": "Heights are 3 and 9 cm with common G; V₁:V₂=1:3, V₁/V=3/12=1/4. No numerical G is needed for the ratio.",
+            "understandingFocusDe": "Teil-zu-Teil und Teil-zu-Ganzes sauber trennen.",
+            "understandingFocusEn": "Separate part-to-part from part-to-whole."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a506fc1d-b784-548f-90c3-5aae1b819b68",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "cavalieri-slices",
+            "essentialUnderstandingDe": "Schert man ein gerades Prisma ohne Änderung von Grundfläche G und senkrechter Höhe h, haben in jeder gleichen Höhe parallele Querschnitte denselben Flächeninhalt; Cavalieri liefert daher gleiches Volumen.",
+            "essentialUnderstandingEn": "If a right prism is sheared without changing base area G or perpendicular height h, corresponding parallel cross-sections at every height have equal area; Cavalieri therefore gives equal volume.",
+            "observablePerformanceDe": "Beschreibt an einer geraden und schiefen Prismenskizze die zu vergleichenden Schnitte und leitet aus deren Flächengleichheit die Volumengleichheit ab.",
+            "observablePerformanceEn": "Describes matching slices of right and oblique prisms and derives equal volumes from their equal areas."
+          },
+          {
+            "id": "height-not-edge",
+            "essentialUnderstandingDe": "In V=G·h ist h der senkrechte Abstand der Grundebenen und nicht die schräge Seitenkante; eine Scherung kann die Kante ändern, ohne das Volumen zu ändern.",
+            "essentialUnderstandingEn": "In V=G·h, h is the perpendicular separation of base planes, not the slanted side edge; shear can change the edge without changing volume.",
+            "observablePerformanceDe": "Wählt in einem neuen schiefen Prisma die senkrechte Höhe und begründet den berechneten Rauminhalt statt die Kantenlänge einzusetzen.",
+            "observablePerformanceEn": "Selects perpendicular height in a fresh oblique prism and justifies its volume rather than using edge length."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "cavalieri-slices",
+            "height-not-edge"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Scherung eines rechtwinkligen Prismas gegenüber zwei verschieden schiefen Prismen gleicher Schnittflächen und Höhe",
+            "textEn": "shearing a right prism versus comparing two differently oblique prisms with equal slices and height"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "shear",
+            "taskDemandDe": "Ein gerades Prisma hat G=12 cm² und senkrechte Höhe 4 cm. Die obere Fläche wird seitlich verschoben. Begründe mit Cavalieri das Volumen des schiefen Prismas.",
+            "taskDemandEn": "A right prism has G=12 cm² and perpendicular height 4 cm. Its top face is shifted sideways. Use Cavalieri to justify the oblique prism volume.",
+            "expectedPerformanceDe": "Jeder parallele Schnitt bleibt flächengleich 12 cm²; die beiden Körper haben dieselbe senkrechte Höhe 4 cm, also V=G·h=48 cm³ trotz längerer Seitenkanten.",
+            "expectedPerformanceEn": "Every parallel slice remains area 12 cm²; both solids have perpendicular height 4 cm, so V=G·h=48 cm³ despite longer lateral edges.",
+            "understandingFocusDe": "Flächengleichheit der Schnitte statt äußere Schrägheit als Invariante.",
+            "understandingFocusEn": "Equal slice areas rather than visible slant as invariant."
+          },
+          {
+            "id": "two-oblique",
+            "taskDemandDe": "Zwei unterschiedlich schiefe Prismen besitzen je G=6 dm² und senkrechte Höhe 7 dm, aber verschieden lange Schrägkanten. Vergleiche ihre Volumina und begründe.",
+            "taskDemandEn": "Two differently oblique prisms have G=6 dm² and perpendicular height 7 dm but different slanted edges. Compare and justify their volumes.",
+            "expectedPerformanceDe": "Auf jeder Höhe sind entsprechende Schnitte 6 dm² groß; Cavalieri ergibt für beide V=42 dm³. Schrägkantenlänge ist dafür kein Höhenersatz.",
+            "expectedPerformanceEn": "At each height corresponding slices have area 6 dm²; Cavalieri gives V=42 dm³ for both. Slanted edge length cannot replace height.",
+            "understandingFocusDe": "Cavalieri auf andere Scherungen und Einheiten übertragen.",
+            "understandingFocusEn": "Transfer Cavalieri across different shears and units."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "third-factor",
+            "essentialUnderstandingDe": "Ein geeigneter Zerlegungs- oder Vergleichsgedanke erklärt, weshalb eine Pyramide mit derselben Grundfläche G und senkrechten Höhe h ein Drittel des zugehörigen Prismenvolumens besitzt.",
+            "essentialUnderstandingEn": "A suitable dissection or comparison explains why a pyramid with the same base area G and perpendicular height h has one third of the corresponding prism volume.",
+            "observablePerformanceDe": "Erläutert an einer dreieckigen Grundfläche eine Zerlegung eines Vergleichsprismas in drei volumengleiche Pyramiden oder einen gleichwertigen Schnittflächenvergleich und folgert den Faktor 1/3.",
+            "observablePerformanceEn": "Explains a comparison prism with triangular base dissected into three equal-volume pyramids, or an equivalent cross-section comparison, and derives the factor 1/3."
+          },
+          {
+            "id": "formula-interpretation",
+            "essentialUnderstandingDe": "G und h beziehen sich auf dieselbe Pyramide; h ist senkrecht zur Grundfläche und der Faktor 1/3 ist ein Volumenverhältnis, keine Kürzung der Grundfläche oder Höhe.",
+            "essentialUnderstandingEn": "G and h refer to the same pyramid; h is perpendicular to the base and the 1/3 factor is a volume ratio, not a reduction of base area or height.",
+            "observablePerformanceDe": "Berechnet an neuer Grundform das Volumen, vergleicht mit G·h und deutet 1/3 sowie die Kubikeinheit.",
+            "observablePerformanceEn": "Computes volume for a new base shape, compares with G·h and interprets 1/3 and cubic units."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "third-factor",
+            "formula-interpretation"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Volumenbegründung an einem Dreiecksprisma gegenüber Transfer auf eine anders geformte Pyramide",
+            "textEn": "volume argument with a triangular prism versus transfer to a differently based pyramid"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "triangular",
+            "taskDemandDe": "Ein Dreiecksprisma hat Grundfläche G=9 cm² und Höhe h=6 cm. Erläutere eine Zerlegung in drei volumengleiche dreieckige Pyramiden und bestimme das Volumen einer solchen Pyramide.",
+            "taskDemandEn": "A triangular prism has base area G=9 cm² and height h=6 cm. Explain a dissection into three equal-volume triangular pyramids and find one pyramid's volume.",
+            "expectedPerformanceDe": "Das Prisma hat 54 cm³; die geeignete Dreierzerlegung ordnet jeder Pyramide dasselbe Volumen zu, also 18 cm³=1/3·9·6. Gleichheit ist über passende gemeinsame Grundflächen und Höhen der Teiltetraeder zu begründen.",
+            "expectedPerformanceEn": "The prism has 54 cm³; a suitable three-part dissection assigns each pyramid equal volume, hence 18 cm³=1/3·9·6. Equality must be justified through corresponding bases and heights of the tetrahedra.",
+            "understandingFocusDe": "Drittelfaktor aus einer räumlichen Gleichvolumen-Zerlegung statt Merksatz.",
+            "understandingFocusEn": "Derive the one-third factor from an equal-volume spatial dissection rather than a memorized rule."
+          },
+          {
+            "id": "other-base",
+            "taskDemandDe": "Eine Pyramide mit rechteckiger Grundfläche 4 cm×6 cm und senkrechter Höhe 5 cm: begründe den Übertrag des Drittelvergleichs und bestimme ihr Volumen im Vergleich zum Prisma.",
+            "taskDemandEn": "A pyramid with rectangular base 4 cm×6 cm and perpendicular height 5 cm: justify transfer of the one-third comparison and find its volume relative to the prism.",
+            "expectedPerformanceDe": "G=24 cm² und Vergleichsprisma V=120 cm³; Zerlegung der Grundfläche in Dreiecke überträgt den Faktor 1/3 additiv auf die Pyramide, daher V=40 cm³.",
+            "expectedPerformanceEn": "G=24 cm² and comparison-prism volume is 120 cm³; triangulating the base transfers the factor 1/3 additively to the pyramid, so V=40 cm³.",
+            "understandingFocusDe": "Begründeten Faktor auf andere Grundfläche und additives Volumen übertragen.",
+            "understandingFocusEn": "Transfer justified factor to a different base and additive volumes."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "extrema-parameter",
+            "essentialUnderstandingDe": "Extrempunkte einer Funktionenschar erfordern parameterabhängige stationäre x-Werte und eine Klassifikation; ihre y-Werte entstehen durch Einsetzen in denselben Funktionsterm.",
+            "essentialUnderstandingEn": "Extrema of a function family require parameter-dependent stationary x-values and classification; their y-values come from substituting into the same function.",
+            "observablePerformanceDe": "Bestimmt und klassifiziert für neue Scharen sämtliche Extrempunkte in Abhängigkeit vom zulässigen Parameter.",
+            "observablePerformanceEn": "Finds and classifies all extrema of fresh families as functions of the admissible parameter."
+          },
+          {
+            "id": "eliminate-locus",
+            "essentialUnderstandingDe": "Die Ortskurve enthält genau die erreichbaren Extrempunkte; Parameterelimination muss auch Parameterbereich und mögliche Zweige berücksichtigen.",
+            "essentialUnderstandingEn": "The locus contains exactly attainable extremum points; eliminating the parameter must retain its domain and possible branches.",
+            "observablePerformanceDe": "Eliminiert den Parameter aus den Extrempunktkoordinaten und gibt die Ortskurve mit den tatsächlich erreichbaren x-Bereichen an.",
+            "observablePerformanceEn": "Eliminates the parameter from extremum coordinates and states the locus with its actually attainable x-ranges."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "extrema-parameter",
+            "eliminate-locus"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "quadratische Schar mit einem Minimum gegenüber kubischer Schar mit zwei Extremzweigen und t>0",
+            "textEn": "quadratic family with one minimum versus cubic family with two extrema branches and t>0"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "quadratic",
+            "taskDemandDe": "Für f_a(x)=x²−2ax+a, a∈R: bestimme Extrempunkt und Ortskurve.",
+            "taskDemandEn": "For f_a(x)=x²−2ax+a, a∈R, find the extremum and its locus.",
+            "expectedPerformanceDe": "f′=2x−2a ergibt x=a, f″=2>0 ein Minimum; y=a−a², also nach a=x die Ortskurve y=x−x² für alle x∈R.",
+            "expectedPerformanceEn": "f′=2x−2a gives x=a, f″=2>0 a minimum; y=a−a², hence after a=x the locus is y=x−x² for all real x.",
+            "understandingFocusDe": "Parameterkoordinaten und Elimination bei einem Zweig verbinden.",
+            "understandingFocusEn": "Connect parameter coordinates and elimination for one branch."
+          },
+          {
+            "id": "cubic",
+            "taskDemandDe": "Für g_t(x)=x³−3tx, t>0: bestimme beide Extrempunkte, klassifiziere sie und beschreibe ihre Ortskurve samt Einschränkung.",
+            "taskDemandEn": "For g_t(x)=x³−3tx, t>0, find and classify both extrema and describe their locus including its restriction.",
+            "expectedPerformanceDe": "g′=3(x²−t) liefert x=±√t; g″=6x, also Maximum links und Minimum rechts. Mit t=x² gilt y=x³−3x³=−2x³; x≠0, linke/rechte Zweige bleiben erhalten, Ursprung nicht.",
+            "expectedPerformanceEn": "g′=3(x²−t) gives x=±√t; g″=6x, so a maximum on the left and a minimum on the right. With t=x², y=x³−3x³=−2x³; x≠0, both branches remain and the origin is excluded.",
+            "understandingFocusDe": "Mehrere Zweige und Parametergrenze bei Elimination erhalten.",
+            "understandingFocusEn": "Preserve multiple branches and parameter restriction on elimination."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "79444ef9-cc85-5ac4-a3bc-f10d3ffbfd16",
+      "reason": "Current visualization QA reports no available canonical/public image for this goal. Text-only AI candidate; V remains open and no image approval is claimed.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "inflection-parameter",
+            "essentialUnderstandingDe": "Wendepunkte einer Schar werden über einen tatsächlichen Krümmungswechsel beziehungsweise eine hinreichende Bedingung wie f″=0 und f‴≠0 bestimmt und in den Term zurückgesetzt.",
+            "essentialUnderstandingEn": "Inflection points of a family require an actual curvature change, or a sufficient condition such as f″=0 and f‴≠0, followed by substitution into the function.",
+            "observablePerformanceDe": "Bestimmt für neue Scharen parameterabhängige Wendepunkte und prüft, dass stationäre zweite Ableitung hier wirklich einen Krümmungswechsel liefert.",
+            "observablePerformanceEn": "Finds parameter-dependent inflection points in fresh families and verifies that zero second derivative really gives a curvature change here."
+          },
+          {
+            "id": "locus-domain",
+            "essentialUnderstandingDe": "Die Ortskurve entsteht durch Elimination des Parameters aus beiden Wendepunktkoordinaten; ein fester x-Wert kann auch eine vertikale Ortsgerade ergeben.",
+            "essentialUnderstandingEn": "The locus comes from eliminating the parameter from both inflection-point coordinates; fixed x can yield a vertical locus line.",
+            "observablePerformanceDe": "Leitet einmal eine Funktionsgleichung und einmal eine nicht als y=f(x) darstellbare Ortsmenge ab, jeweils mit dem zulässigen Parameterbereich.",
+            "observablePerformanceEn": "Derives one function-graph equation and one locus not expressible as y=f(x), each with admissible parameter range."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "inflection-parameter",
+            "locus-domain"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "parameterabhängige Wendestelle gegenüber fester Wendestelle mit variablem y-Wert",
+            "textEn": "parameter-dependent inflection abscissa versus fixed inflection abscissa with variable ordinate"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "moving",
+            "taskDemandDe": "Für f_a(x)=x³−3ax², a∈R: bestimme Wendepunkt und Ortskurve.",
+            "taskDemandEn": "For f_a(x)=x³−3ax², a∈R, find the inflection point and locus.",
+            "expectedPerformanceDe": "f″=6x−6a, also x=a; f‴=6≠0 bestätigt Wendung. W=(a,−2a³), Parameterelimination ergibt y=−2x³ für alle x∈R.",
+            "expectedPerformanceEn": "f″=6x−6a, so x=a; f‴=6≠0 confirms inflection. W=(a,−2a³), yielding locus y=−2x³ for all real x.",
+            "understandingFocusDe": "Bewegte Wendestelle in eine Ortsfunktion überführen.",
+            "understandingFocusEn": "Turn moving inflection abscissa into a locus function."
+          },
+          {
+            "id": "vertical",
+            "taskDemandDe": "Für g_t(x)=x³−3t²x+t, t∈R: bestimme Wendepunkt und Ortsmenge.",
+            "taskDemandEn": "For g_t(x)=x³−3t²x+t, t∈R, find the inflection point and locus.",
+            "expectedPerformanceDe": "g″=6x und g‴=6, daher Wendestelle x=0 für jedes t; g_t(0)=t. Alle W=(0,t) ergeben die vertikale Gerade x=0, nicht y=f(x).",
+            "expectedPerformanceEn": "g″=6x and g‴=6, so inflection is at x=0 for every t; g_t(0)=t. All W=(0,t) form the vertical line x=0, not y=f(x).",
+            "understandingFocusDe": "Parameterelimination ohne künstliche Funktionsform.",
+            "understandingFocusEn": "Eliminate parameter without forcing function form."
+          }
+        ]
+      }
+    }
+  ]
+}

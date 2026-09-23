@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "targeted-image-edit-candidate-provenance",
+  "goalId": "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+  "recordedAt": "2026-09-21T22:02:06.064Z",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactServingModel": "not exposed",
+  "resultId": "exec-b26b952a-c3fa-44ee-bbc4-289dafb2075a",
+  "prompt": {
+    "path": "edit-prompt.md",
+    "sha256": "sha256:8903295060ae67227c251bd8a40b861e271ed5a2a2301b07b4f33d64d6d803bf"
+  },
+  "reference": {
+    "path": "app/public/assets/goal-visualizations/mathematik/c3b9c561-dd83-5903-9ec6-49c7f51bafd5/c3b9c561-dd83-5903-9ec6-49c7f51bafd5.jpg",
+    "sha256": "sha256:5d78516976cd24e1c9a78e1558a4798109b1c2c160115a98d85826ba65e0ee10",
+    "actuallyViewedBeforeEditing": true
+  },
+  "candidate": {
+    "path": "candidate.png",
+    "sha256": "sha256:35597d1ab49a10950d1b1ce8f6b9d8b09e081777f08736028f972b84238fe435",
+    "format": "PNG",
+    "width": 1679,
+    "height": 937
+  },
+  "rootReview": {
+    "actuallyViewed": true,
+    "decision": "accepted_candidate_pending_independent_review",
+    "observations": [
+      "Two bottom branch probabilities now equal exact fractions1/3 and2/3; no rounded .33/.67 equality remains.",
+      "From A=.40 the .75/.25 branches yield.30/.10; from notA=.60 the1/3 and2/3 branches yield.20/.40.",
+      "Table margins and both Bayes-style conditional ratio formulas retain the correct numerator.30 and conditioning denominator.40.",
+      "Complements and condition bars remain correctly placed. Existing gentle cream/blue cartoon layout retained without substantive redesign."
+    ],
+    "limits": "Actual large-raster inspection. No pixel-identity or real-client acceptance claim."
+  },
+  "reviewAuthority": "ai_candidate",
+  "humanApproval": false,
+  "canonicalImported": false,
+  "nativePrepareCompletedBeforeGeneration": true
+}

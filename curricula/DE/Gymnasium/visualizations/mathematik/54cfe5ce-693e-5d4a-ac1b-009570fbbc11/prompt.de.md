@@ -8,10 +8,10 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: pilot
-- Quellbild: `54cfe5ce-693e-5d4a-ac1b-009570fbbc11.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/54cfe5ce-693e-5d4a-ac1b-009570fbbc11/54cfe5ce-693e-5d4a-ac1b-009570fbbc11.jpg`
+- Quellbild: `54cfe5ce-693e-5d4a-ac1b-009570fbbc11.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/54cfe5ce-693e-5d4a-ac1b-009570fbbc11/54cfe5ce-693e-5d4a-ac1b-009570fbbc11.png`
 
 ## Prompt
 
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,27 +31,8 @@ Titel: Kollinearität von Vektoren im Raum prüfen
 Beschreibung: Die lernende Person kann prüfen, ob zwei Vektoren im Raum kollinear sind, dazu skalare Vielfache oder Komponentenvergleiche nutzen und die Entscheidung geometrisch begründen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Kollinearitaet von Vektoren im Raum mit Komponentenvergleich pruefen.
-- Zeige zwei Prueffelder nebeneinander.
-- Feld 1: kollinear.
-  a = (2, -1, 3)
-  b = (4, -2, 6)
-  Komponentenvergleich: 4/2 = 2, (-2)/(-1) = 2, 6/3 = 2.
-  Schluss: b = 2a, also kollinear.
-  Geometrisch: a und b liegen auf parallelen bzw. derselben Richtungslinie, b ist doppelt so lang wie a.
-- Feld 2: nicht kollinear.
-  a = (2, -1, 3)
-  c = (3, -1, 4)
-  Komponentenvergleich: 3/2 != 1, (-1)/(-1) = 1, 4/3 != 1.
-  Schluss: kein gemeinsamer Faktor, also nicht kollinear.
-- Zeige ein kleines 3D-Koordinatensystem mit Pfeilen fuer die Vektoren.
-
-Vermeiden:
-- Nicht behaupten, dass c ein Vielfaches von a ist.
-- Die Vorzeichen in a=(2,-1,3) und b=(4,-2,6) nicht verlieren.
-- Kollinearitaet nicht mit linearer Unabhaengigkeit von drei Vektoren vermischen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Korrigiere NUR die untere linke Richtungsskizze des Referenzbildes. Alle oberen Texte und Rechnungen, Überschrift, rechts nichtkollineares Beispiel und Comicstil bleiben unverändert. Linke Werte a=(2,-1,3), b=(4,-2,6), b=2a sind richtig.
+Entferne beide schrägen Pfeile links unten vollständig. Zeichne stattdessen eine einfache WAAGERECHTE achsenfreie Richtungsskizze: gemeinsamer schwarzer Ursprung bei etwa (150,800), grüner Pfeil b waagerecht nach rechts bis etwa (550,800), dünnerer blauer Pfeil a exakt über der ersten Hälfte bis etwa (350,800). Der blaue Endpunkt ist der EXAKTE Mittelpunkt vom Ursprung zur grünen Spitze. Beide Schäfte liegen exakt auf EINER horizontalen Geraden und starten am gleichen Ursprung. Keine Knicke, kein Winkel, kein Versatz; b ist exakt doppelt so lang wie a. Setze lesbare Beschriftungen a und b an die jeweiligen Pfeile. Der Text „b ist doppelt so lang wie a, gleiche Richtung“ bleibt neben der Zeichnung. Keine Koordinaten oder Pixelzahlen abdrucken. Keine Raumachsen oder Raster ergänzen. PNG, kein SVG.
 ```
 
 ## Review-Notiz

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "targeted-image-edit-candidate-provenance",
+  "goalId": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+  "recordedAt": "2026-09-21T21:46:23.768Z",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen__imagegen",
+  "exactServingModel": "not exposed",
+  "resultId": "exec-54c37312-d9d2-4bcc-af17-fe0784fa4726",
+  "prompt": {
+    "path": "edit-prompt.md",
+    "sha256": "sha256:ebfea47f8ac453d2d73d17e93174f9d683ddcb0e49f366557b5171c3e07f1d1d"
+  },
+  "reference": {
+    "path": "app/public/assets/goal-visualizations/mathematik/922d89fc-1cbd-56e9-ac5d-5cb59085de6c/922d89fc-1cbd-56e9-ac5d-5cb59085de6c.jpg",
+    "sha256": "sha256:f140304ce51ca9c6968218de142bde5821abfd57faa46c2f0b5dc7a5c593e1ef",
+    "actuallyViewedBeforeEditing": true
+  },
+  "candidate": {
+    "path": "candidate.png",
+    "sha256": "sha256:a5c6d718dd1500f140c19708f43feee528e6a74306b52eb8352ef3b907d8db15",
+    "format": "PNG",
+    "width": 1679,
+    "height": 937
+  },
+  "rootReview": {
+    "actuallyViewed": true,
+    "decision": "accepted_candidate_pending_independent_review",
+    "observations": [
+      "The displayed transition matrix is column-stochastic: columns (0.8,0.2) and (0.3,0.7).",
+      "M times column vector (0.6,0.4) is (0.6,0.4); the spurious transpose on that already vertical vector is removed.",
+      "The other eigenvalue is 0.5, so powers converge to the displayed equal-column limit matrix; for probability start vectors both given initial states have the same limiting fractions.",
+      "Valid transposes on horizontally written start and final coordinate pairs remain. Text, values and the clear existing visual organization are preserved."
+    ],
+    "limits": "Actual raster inspection at displayed large size; no new mobile/browser acceptance. No pixel-identical preservation asserted."
+  },
+  "humanApproval": false,
+  "canonicalImported": false,
+  "reviewAuthority": "ai_candidate",
+  "note": "Existing explicit correction prompts were reused after actual reference inspection. Prepared through native visualization:prepare with the actual provider. Candidate kept outside active canonical resources until stable D/P checkpoint and independent image review."
+}

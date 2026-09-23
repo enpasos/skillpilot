@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q2-plane-angle-direction-current-20260923-v2.config.json",
+  "configDigest": "sha256:c9fde794decbc2f86d4cbc1f6aa03a83f74c69f62f39fbf7e308158d31d2dd61",
+  "goalIds": [
+    "bda6a659-9640-53a5-8be0-24705ab623ef"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:f9fda30bc54b8a2e4575b207c24c133cdb54b7c48a36a26ee97856811c406ce0"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:d724c4374e93c9a4d4c1d6c427dd71e41ed9f130674ac329f014fe08cf3259e1",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:8d08b8040ebab0027598cab00505f663f249093a625c3e76cd3d8cd165820e7e",
+    "reviewInputFingerprint": "sha256:622af64242f3a38534447d17b1032a14aa5aa66461aaa2cd2be1eb351c4a56ef",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-a",
+        "campaignDigest": "sha256:4cf0e0196f81205c7780b6a591f535b28fce5239c9227469c3759e4bd73fd214",
+        "roundId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-independent-a",
+        "batchId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:f05c3db012fcfa08c1511e3dd77e64e5253a9aaab5273f9ffc7c1654d0c9c45d"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-b",
+        "campaignDigest": "sha256:274ad1141851ad8c9715cb7a84faf7424103539e69e7b70dd1cce690a3d99ca5",
+        "roundId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-independent-b",
+        "batchId": "mathematik-m7-q2-plane-angle-direction-current-20260923-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:66fbcb9837aadc3e85a7d25312bb117c080a8d1c1be2c05e95955ae8f2e36ccb"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

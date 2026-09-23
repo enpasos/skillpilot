@@ -1,0 +1,87 @@
+{
+  "status": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "decision": "needs_independent_review",
+  "selfReviewer": "Codex independent agent /root/math_repaired12_blind_a; exact serving model identifier not exposed",
+  "selfReviewRecordedAt": "2026-09-21T22:37:20.756Z",
+  "license": "CC-BY-4.0",
+  "humanApprovalClaimed": false,
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false
+  },
+  "sourceInspection": "Original current raster and generated selected raster actually viewed; creating-agent review only. Any subsequent root judgement is separate and is not represented as this agent's independent approval.",
+  "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+  "goalTitleDe": "Geometriesoftware zur Raumorientierung nutzen",
+  "phase": "Q2",
+  "audience": "Gymnasium Sekundarstufe II",
+  "candidate": {
+    "file": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e.attempt-03.png",
+    "sha256": "sha256:89fbc164a28cc5df659cfed370ae88f843f94476835915e844ff7a1e71c1cbd6",
+    "bytes": 1305130,
+    "width": 1678,
+    "height": 937,
+    "attribution": "SkillPilot, AI-generated illustration, AI candidate"
+  },
+  "source": {
+    "path": "app/public/assets/goal-visualizations/mathematik/eb6bfdd9-3cbe-51b5-9798-a741bdc2782e/eb6bfdd9-3cbe-51b5-9798-a741bdc2782e.jpg",
+    "sha256": "sha256:f6c736d8c7684a0ad0ae946c39b90c830c5caa588dfe69caaa5e3b387255c51a",
+    "storedProvider": "Google Gemini / Nano Banana Pro"
+  },
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen.imagegen",
+  "model": "Exact serving model identifier not exposed",
+  "nativePrepare": {
+    "beforeSelectedAttempt": true,
+    "canonicalImportRun": false,
+    "providerMatchesGeneration": true,
+    "note": "Preparation writes only tmp metadata; no native import was run."
+  },
+  "prompt": {
+    "file": "prompt-attempt-03.txt",
+    "sha256": "sha256:9d0795b1f41e6fb5529b23f4da2e5035018bd995a0f1519fdd997ce7d2b1de4a",
+    "bytes": 781,
+    "formatNote": "Exact prompt body; terminal file newline is serialization.",
+    "reconstructionPrompt": "image-reconstruction-prompt.attempt-03.de.md",
+    "reconstructionPromptOrigin": "Individually written from the actually viewed output; not a recycled generation instruction."
+  },
+  "attemptHistory": "builtin-attempts-review.json",
+  "limitations": [
+    "Creating-agent AI review is not human approval or independent QA.",
+    "No learner-book or cockpit acceptance test performed; asset is unimported.",
+    "Friendly generated raster may have small stroke-level endpoint variations."
+  ],
+  "selfReview": {
+    "correctedDefects": [
+      "Main and miniature upper dashed blue connections now descend rightward from the z-axis height consistent with the ground offset.",
+      "Previously fixed red x numeral2, y1 and both 2D views retained."
+    ],
+    "mathematics": [
+      "Main ground vector O→Pxy approximately(243,114); top z→P approximately(243,119), no former near-horizontal wrong projection.",
+      "P=(2|1|3),Pxy=(2|1|0), xy view(2|1), side heightz=3 agree."
+    ],
+    "geometryEvidence": {
+      "method": "Read-only RGB-pixel extraction by ffmpeg and least-squares linefit of blue dash pixels, no edits.",
+      "main": {
+        "fittedSlope": 0.4925521050727533,
+        "zAxisIntersectionY": 288.8293030545489,
+        "manualExpectedY": 294,
+        "residualPixels": -5.170696945451084
+      },
+      "mini": {
+        "fittedSlope": 0.5458042499054431,
+        "zAxisIntersectionY": 180.1213810473473,
+        "manualExpectedY": 184,
+        "residualPixels": -3.878618952652687
+      }
+    },
+    "reviewFlags": [
+      "Residual deviations of approximately5px main and4px miniature are disclosed; no claim of pixel-perfect geometry. Independent reviewer decides stroke-tolerance acceptability."
+    ],
+    "visibleBlockingDefects": [],
+    "style": "Original software-window comic, point/axis colors, hand rotation icon, magnifier and 2D views retained."
+  }
+}

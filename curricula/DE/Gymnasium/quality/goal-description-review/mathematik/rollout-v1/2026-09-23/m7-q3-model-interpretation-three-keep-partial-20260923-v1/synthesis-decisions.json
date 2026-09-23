@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-q3-model-interpretation-three-keep-partial-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T05:10:45.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1",
+    "batchManifestDigest": "sha256:1994111d528fb35cbf30e647e1a4ca8d7978da813bcafcf362e19126553b314a",
+    "configDigest": "sha256:f3d40b360d41ceb0e9e41253d14d69e62ec66daad1d1e7c26a3d638b1f57b0f8",
+    "bundleFingerprint": "sha256:cdb2c6c6975a753dde93cb403499e2f9f782481b85474dab017f79d0350c8dc5",
+    "bookDigest": "sha256:3d1b3c490ae83639763b3e2a5710cabc1a30ad7ed6cf11e55b91f641f0bb1986",
+    "reviewInputFingerprint": "sha256:cdbdea68660a1717627446ad9b998a4ac5230e3fcccac6ff51ced71541f02d0b",
+    "dualSummaryDigest": "sha256:90b155f892a8d5ea9510af01aa1bebbd287c3fbeed825f382311c33884f0a245",
+    "canonicalLandscapeDigest": "sha256:34a91c0c9c5107cf0ccc214dd63965efcb9828cc09fbc92dd5e1304a8493ffd8"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a",
+      "campaignDigest": "sha256:ba9944fc406f3c92752af78b4e19bf8a25902fc0bd140608a4c7d31aea3ab52b",
+      "roundId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-independent-a",
+      "reviewInputFingerprint": "sha256:cdbdea68660a1717627446ad9b998a4ac5230e3fcccac6ff51ced71541f02d0b",
+      "batchId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:e96c6ae536d48db046955552fc2e085f9862b132922e2aeeb234a7176d242f4c",
+      "runId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a-ai-20260923",
+      "runManifestDigest": "sha256:6382f48b910c2c30b1b6c392ef3078a3551f01143b4e819c2e27dafa31d35c9a",
+      "resultsDigest": "sha256:e90ccdc689167205d4c0e5fbf7cef8ea69c088dbad639e1654976811e8b88660"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-b",
+      "campaignDigest": "sha256:79227c0852145a62ef7a6be83e3aae4fb63031dac1b9863e81f917ccdd84cfb7",
+      "roundId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-independent-b",
+      "reviewInputFingerprint": "sha256:cdbdea68660a1717627446ad9b998a4ac5230e3fcccac6ff51ced71541f02d0b",
+      "batchId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:cc8bbff736e41e0123d3b9f0cf2f40974461942af3b26098f65bd336995cbdfc",
+      "runId": "math-q3-model-interpretation-four-20260923-codex-round-b",
+      "runManifestDigest": "sha256:2feb4cad28305866cd5e7f7b80dae0b3f02b58b622dc2b0ec4c6cedf5c71f15b",
+      "resultsDigest": "sha256:859cd524b5061d0511257bd3c400fdf1478a88b029100f961991894aacaa8c48"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-q3-model-interpretation-three-keep-partial-v1-decision-001",
+      "goalId": "75efcc7c-3c96-47c6-a681-1e9337862a20",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:18c2072207054a632f05e0acdbffbb58021d234dacc8077c4c7ba0e09fe1b0ae",
+      "pageFingerprint": "sha256:a895a3660ff75847c54d65f1972bcf257c63d60a211a18369210ddf434a5c77e",
+      "goalReviewContextFingerprint": "sha256:4fe7d95ffe6dc152bd2086d03cad6d130a5b50dff6fc38741d8312c8f9bb7fcb",
+      "finalText": {
+        "titleDe": "Veröffentlichte Erhebungen kritisch beurteilen",
+        "titleEn": "Critically assess published surveys",
+        "descriptionDe": "Die lernende Person kann veröffentlichte Erhebungen anhand von Erhebungsdesign, Stichprobe, Darstellung und Aussagekraft kritisch beurteilen und statistische Schlussfolgerungen fachlich einordnen.",
+        "descriptionEn": "The learner can critically assess published surveys in terms of survey design, sample, presentation, and explanatory power and classify statistical conclusions appropriately."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a-ai-20260923-2",
+          "recordDigest": "sha256:37c361de7f38297d42fc54c2463d243c99d336d82171a6c037c74fab619bd934"
+        },
+        "second": {
+          "recordId": "math-q3-model-interpretation-four-20260923-codex-round-b-2",
+          "recordDigest": "sha256:f0832e9528578b79373e257e698d575df5ca528971bd315e3bc50cdcc2d67dc3"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews halten die kritische Beurteilung von Erhebungen anhand von Design, Stichprobe, Darstellung und Aussagekraft als prüfbare Kompetenz; das gebundene Bild veranschaulicht eine verkürzte Achse und eine nicht repräsentative Gelegenheitsstichprobe korrekt.",
+      "rationaleEn": "Both independent reviews retain critical evaluation of survey design, sampling, display and inference as assessable. The bound image correctly illustrates a truncated axis and a non-representative convenience sample."
+    },
+    {
+      "decisionId": "math-m7-q3-model-interpretation-three-keep-partial-v1-decision-002",
+      "goalId": "c9a897ca-a0a2-5895-bbc4-23b20840c548",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:53b9521a5f92e5e9a2cb30c7257e923c154ed96f0682d1d97d7c19b52c77efd1",
+      "pageFingerprint": "sha256:cecdc492eb3501ff5d7794e8c48d89f7d8da1fd9424a5c1e2a133b4a30378633",
+      "goalReviewContextFingerprint": "sha256:814c0ae331274933388ce9a4062b9bda3a876542ecfd9e9b2ce971621eaeb607",
+      "finalText": {
+        "titleDe": "Poisson-Verteilung als Modell seltener Ereignisse nutzen",
+        "titleEn": "Use the Poisson distribution as a model for rare events",
+        "descriptionDe": "Die lernende Person kann die Poisson-Verteilung als Näherung der Binomialverteilung für seltene Ereignisse motivieren, Situationen pro Zeit- oder Flächeneinheit modellieren, Parameter bestimmen und zugehörige Wahrscheinlichkeiten in konkreten Beispielen berechnen.",
+        "descriptionEn": "The learner can motivate the Poisson distribution as an approximation to the binomial distribution for rare events, model situations per time or area unit, determine parameters and compute associated probabilities in concrete examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a-ai-20260923-3",
+          "recordDigest": "sha256:a724bb77fda788cd81adee9394cf4d56c9e9612e9de433795da38abaea90633e"
+        },
+        "second": {
+          "recordId": "math-q3-model-interpretation-four-20260923-codex-round-b-3",
+          "recordDigest": "sha256:50a7c65abbb6a332956a226e2c14475cfb1847b428b14da46a3d295da15cfe97"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die modellgebundene Poisson-Kompetenz mit Parameterwahl, Rechnung und Interpretation; das Bild zeigt für λ=2 die Werte P(0) bis P(4) fachlich passend.",
+      "rationaleEn": "Both reviews confirm the model-bound Poisson competence with parameter choice, calculation and interpretation; the image represents P(0) through P(4) for lambda=2 correctly."
+    },
+    {
+      "decisionId": "math-m7-q3-model-interpretation-three-keep-partial-v1-decision-003",
+      "goalId": "5dbf149c-d335-552c-a918-768a12e09201",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7d3189323328b2c799aa9303b6b035759de832bcaeb923b31e3606c7df62bba0",
+      "pageFingerprint": "sha256:01f02f10f3c4eb8f1e6f4a741f6e9a9fa0fec64bbac33e6c5586c3e603e9573c",
+      "goalReviewContextFingerprint": "sha256:b7cfb5e1a3f82095382d27f0096cc39d7cdb5e17033fbd9bcecb523847acf4c2",
+      "finalText": {
+        "titleDe": "Normalverteilung zur Modellierung von Messdaten verwenden (LK)",
+        "titleEn": "Use normal distribution to model measurement data (advanced course)",
+        "descriptionDe": "Die lernende Person kann annähernd normalverteilte Messdaten mithilfe der Normalverteilung modellieren, aus Mittelwert und Standardabweichung Wahrscheinlichkeiten für Bereiche bestimmen und die Angemessenheit des Modells diskutieren.",
+        "descriptionEn": "The learner can model approximately normally distributed measurement data using the normal distribution, determine probabilities for ranges from mean and standard deviation, and discuss the appropriateness of the model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q3-model-interpretation-four-current-20260923-v1-a-ai-20260923-4",
+          "recordDigest": "sha256:f63259873e820f7bcf1b587523b46a207eee787ea440062894ba485163929274"
+        },
+        "second": {
+          "recordId": "math-q3-model-interpretation-four-20260923-codex-round-b-4",
+          "recordDigest": "sha256:880335f9e951a96cc9f333fe9bdc474096f04e829d99de1cf853c8352b4b70a5"
+        }
+      },
+      "rationaleDe": "Die LK-Kompetenz verbindet Normalmodell, Bereichswahrscheinlichkeit und Eignungsprüfung in einem Sachzusammenhang; beide unabhängigen Reviews empfehlen KEEP, und μ=170 cm sowie σ=6 cm sind im Bild konsistent dargestellt.",
+      "rationaleEn": "The advanced-course goal links normal modelling, interval probability and fit assessment in one context; both independent reviews recommend KEEP, and the image represents mu=170 cm and sigma=6 cm consistently."
+    }
+  ],
+  "manifestFingerprint": "sha256:ac08497938525086e6e59c97b590057eff790f077d900e28705a6fdb9023424e"
+}

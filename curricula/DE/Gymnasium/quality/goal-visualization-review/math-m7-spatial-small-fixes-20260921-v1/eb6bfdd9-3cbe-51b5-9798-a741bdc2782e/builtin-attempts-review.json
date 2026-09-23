@@ -1,0 +1,71 @@
+{
+  "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+  "reviewAuthority": "ai_candidate",
+  "reviewer": "Codex independent agent /root/math_repaired12_blind_a; exact serving model identifier not exposed",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen.imagegen",
+  "model": "Exact serving model identifier not exposed",
+  "sourceImagesInspected": true,
+  "generatedImagesActuallyViewed": true,
+  "attempts": [
+    {
+      "id": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+      "attempt": 2,
+      "selected": false,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-2280d60a-4518-4de3-b267-170a3078d042.png",
+      "file": "attempt-02-rejected.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:19:13.781Z",
+      "fileInfo": {
+        "sha256": "sha256:7bcb75749a1eb17986320b9ad708ed182bb1f891356fc1dc00d34c9659b29f76",
+        "bytes": 1262918,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-02.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:3fd8e475cdc6edf51cea96c599b8e08e74a919cef5e43d3097637980525caeaf",
+        "bytes": 1713
+      },
+      "decision": "rejected",
+      "selfReview": "Rejected follow-up: large dashed connection fixed; miniature connection still begins about 6-7 pixels too low relative to affine height."
+    },
+    {
+      "id": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+      "attempt": 3,
+      "selected": true,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-9a9896a4-8d33-4eb8-8323-11ac882f1d49.png",
+      "file": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e.attempt-03.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:20:51.760Z",
+      "fileInfo": {
+        "sha256": "sha256:89fbc164a28cc5df659cfed370ae88f843f94476835915e844ff7a1e71c1cbd6",
+        "bytes": 1305130,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-03.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:9d0795b1f41e6fb5529b23f4da2e5035018bd995a0f1519fdd997ce7d2b1de4a",
+        "bytes": 781
+      },
+      "decision": "candidate_needs_independent_review",
+      "selfReview": "Selected as AI candidate with explicit residual tolerance flag, not geometric perfection or QA approval. Fitted blue-dash main slope0.49255, z-axis interceptY288.83 vs manually expected294; mini slope0.54580, interceptY180.12 vs expected184. This is far closer than attempt1; approximately5px/4px residual warrants independent review, especially miniature."
+    }
+  ],
+  "nativePrepare": {
+    "beforeGeneration": true,
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "note": "Applies only to follow-up attempts2+3. First attempt had no native preparation; that earlier omission remains documented."
+  },
+  "constructionReferences": {
+    "used": false,
+    "note": "Exact temporary reference diagrams were used only as provider inputs in attempt2 where present; no code-rendered geometry was composited into final images. Further NBP rounds will not use these references."
+  },
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false,
+    "humanApprovalClaimed": false
+  }
+}

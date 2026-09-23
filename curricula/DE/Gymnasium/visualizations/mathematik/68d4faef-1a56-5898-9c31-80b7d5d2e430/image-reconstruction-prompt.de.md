@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Quellbild: `68d4faef-1a56-5898-9c31-80b7d5d2e430.png`
 
 ## Zweck
@@ -18,5 +18,13 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein Diagramm auf hellblauem kariertem Papier. Oben mittig steht der Titel "Abstand zweier Punkte im Raum berechnen" in schwarzer, fetter Schrift. Links oben sind mathematische Gleichungen in schwarzer Schrift, linksbündig ausgerichtet: "$\vec{AB}$ = B - A", darunter "= (4-1, 6-2, 12-0)", und darunter "= (3, 4, 12)". Links unten befindet sich ein weißes Rechteck mit einem dünnen schwarzen Rand. Darin stehen weitere mathematische Gleichungen, linksbündig: "Abstand d(A,B) = |$\vec{AB}$|", darunter "= $\sqrt{3^2 + 4^2 + 12^2}$", darunter "= $\sqrt{169}$", und darunter "= 13". Rechts ist ein dreidimensionales kartesisches Koordinatensystem mit schwarzen Achsen. Die x-Achse zeigt schräg nach unten links, die y-Achse horizontal nach rechts und die z-Achse vertikal nach oben. Die Achsen sind mit 'x', 'y' und 'z' beschriftet. Ein schwarzer Punkt A ist nahe dem Ursprung positioniert und mit 'A(1|2|0)' beschriftet. Ein weiterer schwarzer Punkt B ist weiter oben rechts positioniert und mit 'B(4|6|12)' beschriftet. Ein dicker, dunkelorangefarbener Vektor mit schwarzer Umrandung und einer Pfeilspitze ist von Punkt A zu Punkt B gezeichnet. Über dem Vektor steht die Beschriftung "$\vec{AB}$". Unterhalb des Vektors steht die Beschriftung "d(A,B) = 13". Der Vektor und die Beschriftung "d(A,B) = 13" sind von einem weichen, leuchtenden orangefarbenen Schein umgeben.
+# Bildrekonstruktionsprompt
+
+Erzeuge eine deutschsprachige PNG-Lernillustration im freundlichen, ruhigen Comicstil, breites Querformat etwa 1661 × 947 Pixel. Hellblaues dekoratives Karopapier ohne Achsenbeschriftung oder Einheitenskala, schwarze gut lesbare Schrift, orange hervorgehobener Verbindungsvektor. Keine IDs oder Freigabestempel.
+
+Titel: „Abstand zweier Punkte im Raum berechnen“. Links die komponentenweise Rechnung mit korrektem Vektorpfeil über AB: AB=B−A=(4−1,6−2,12−0)=(3,4,12). Darunter ein umrandeter Kasten: „Abstand d(A,B)=|AB|“, dann √(3²+4²+12²)=√169=13. Jeder Wurzelstrich muss den kompletten Radikanden überdecken; keine offenen Klammern oder zusätzlichen Terme.
+
+Rechts steht ausdrücklich „Schnittdreieck durch A und B (schematisch)“. Zeichne ein einfaches rechtwinkliges Schnittdreieck mit A(1|2|0) links unten, C(4|6|0) rechts unten und B(4|6|12) senkrecht über C. AC ist waagerecht und mit 5 beschriftet, CB senkrecht und mit 12 beschriftet. Markiere den rechten Winkel bei C mit einem kleinen Quadrat. Eine orange gerichtete Diagonale führt von A nach B und trägt AB sowie d(A,B)=13. Die Endpunkte und die zugehörigen Beschriftungen müssen eindeutig übereinstimmen. Unter dem Dreieck: „Grundabstand: 5“.
+
+Dies ist ein ausdrücklich schematisches Schnittdreieck, keine x/y/z-Projektion und keine Maßstabszeichnung. Die Grundstrecke 5 fasst die horizontalen Differenzen 3 und 4 zusammen: C−A=(3,4,0), B−C=(0,0,12), beide orthogonal. Die gezeichnete Höhe kann für die Lesbarkeit angepasst sein; keine Ablesbarkeit von Längen aus Karokästchen behaupten. Fachlich entscheidend sind der rechte Winkel, die richtig zugeordneten Punkte und die konsistenten Längen 5,12,13. Vermeide zusätzliche räumliche Achsen oder irreführende Hilfslinien.
 ```

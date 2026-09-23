@@ -1,0 +1,92 @@
+{
+  "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+  "reviewAuthority": "ai_candidate",
+  "reviewer": "Codex independent agent /root/math_repaired12_blind_a; exact serving model identifier not exposed",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "tool": "image_gen.imagegen",
+  "model": "Exact serving model identifier not exposed",
+  "sourceImagesInspected": true,
+  "generatedImagesActuallyViewed": true,
+  "attempts": [
+    {
+      "id": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "attempt": 1,
+      "selected": false,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-38c3b474-76dc-40e1-a3a9-46d5c5066b3e.png",
+      "file": "attempt-01-rejected.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:05:18.337Z",
+      "fileInfo": {
+        "sha256": "sha256:56d6c20466eba3a74cec4c67153a463067cc49f310cc8ade82410b8d92e9cb56",
+        "bytes": 1411154,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-01.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:2431e88392e1335a295b343113c394ba8680528f761dac09b20af4d455688cf6",
+        "bytes": 1856
+      },
+      "decision": "rejected",
+      "selfReview": "Rejected: blue u still points up-right despite y=0 and positive x down-left; green v does not start at origin; purple patch lacks consistent parallelogram geometry."
+    },
+    {
+      "id": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "attempt": 2,
+      "selected": false,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-5cfb743d-d578-410e-9e0b-10fee67786ee.png",
+      "file": "attempt-02-rejected.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:13:56.222Z",
+      "fileInfo": {
+        "sha256": "sha256:f98d7eb4338f10f70c719a74f6eec3722abeaf4a7251c537683d4f6453f7811e",
+        "bytes": 1455954,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-02.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:759916b6e89f882bb05c050713bb90f4bad9181fd34f405e659bbe82725bcee9",
+        "bytes": 1436
+      },
+      "decision": "rejected",
+      "selfReview": "Rejected: arrows now have qualitatively correct directions, but u endpoint ~(155,489) is not midpoint of O~(231,591) to 2u~(109,435), whose midpoint is (170,513). Far patch vertex also displaced by roughly 14 px from parallelogram closure."
+    },
+    {
+      "id": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+      "attempt": 3,
+      "selected": false,
+      "source": "/home/enpasos/.codex/generated_images/01a0c5e9-79a2-71c2-bb7c-79fa9c132049/exec-20be3920-c3e5-4fb3-99ea-fb3922501413.png",
+      "file": "attempt-03-rejected.png",
+      "generatedSourceMtimeUtc": "2026-09-21T22:17:55.729Z",
+      "fileInfo": {
+        "sha256": "sha256:181111534696d7548c5185c28600ef98709f2f30132e67589cad1046ea737f78",
+        "bytes": 1448584,
+        "width": 1678,
+        "height": 937
+      },
+      "promptFile": "prompt-attempt-03.txt",
+      "promptFileInfo": {
+        "sha256": "sha256:530c3694da3356ff79a3db78f926f40f4624c80e5f76f5b692cc0540583d29a7",
+        "bytes": 1264
+      },
+      "decision": "rejected",
+      "selfReview": "Rejected: far patch corner moved but u midpoint defect persists; corner closure remains imperfect. Pixel instruction did not fix geometry. Patch and vector labels are not sufficient evidence of a consistent spatial projection."
+    }
+  ],
+  "nativePrepare": {
+    "beforeGeneration": true,
+    "provider": "OpenAI / ChatGPT-Codex image generation",
+    "note": "Native prepare completed before initial and subsequent generation attempts; only tmp prompt metadata written."
+  },
+  "constructionReferences": {
+    "used": true,
+    "note": "Exact temporary reference diagrams were used only as provider inputs in attempt2 where present; no code-rendered geometry was composited into final images. Further NBP rounds will not use these references."
+  },
+  "integration": {
+    "imported": false,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "ledgerChanged": false,
+    "humanApprovalClaimed": false
+  }
+}

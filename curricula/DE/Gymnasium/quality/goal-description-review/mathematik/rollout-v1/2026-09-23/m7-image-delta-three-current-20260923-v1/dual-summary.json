@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:5a8286bf22246f7b75e63f5e7519e583b76d0954eba35ac8e62a7d09ca5cbc90",
+  "reviewInputFingerprint": "sha256:531d1a0f2580a8d61876b30ff21d952a871976cb6e2f99c5d0dc00a3b92d4750",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-image-delta-three-current-20260923-v1-a",
+      "roundId": "mathematik-m7-image-delta-three-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-image-delta-three-current-20260923-v1-independent-a",
+      "runIds": [
+        "math-m7-image-delta-three-a-codex-20260923T005219Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-6 family (exact model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-image-delta-three-current-20260923-v1-b",
+      "roundId": "mathematik-m7-image-delta-three-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-image-delta-three-current-20260923-v1-independent-b",
+      "runIds": [
+        "math-m7-image-delta3-20260923-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+      "firstRecordId": "math-m7-image-delta-three-a-001",
+      "secondRecordId": "math-m7-image-delta3-20260923-b-6fc9246a",
+      "firstRunId": "math-m7-image-delta-three-a-codex-20260923T005219Z",
+      "secondRunId": "math-m7-image-delta3-20260923-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "163dd583-8308-53f0-b60d-34588787988d",
+      "firstRecordId": "math-m7-image-delta-three-a-002",
+      "secondRecordId": "math-m7-image-delta3-20260923-b-163dd583",
+      "firstRunId": "math-m7-image-delta-three-a-codex-20260923T005219Z",
+      "secondRunId": "math-m7-image-delta3-20260923-b-run-001",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fb4dcd2a-a6a9-5371-a2fc-95348ee130e0",
+      "firstRecordId": "math-m7-image-delta-three-a-003",
+      "secondRecordId": "math-m7-image-delta3-20260923-b-fb4dcd2a",
+      "firstRunId": "math-m7-image-delta-three-a-codex-20260923T005219Z",
+      "secondRunId": "math-m7-image-delta3-20260923-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

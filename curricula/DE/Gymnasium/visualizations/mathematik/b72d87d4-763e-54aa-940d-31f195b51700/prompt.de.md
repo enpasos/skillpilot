@@ -8,52 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `b72d87d4-763e-54aa-940d-31f195b51700.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/b72d87d4-763e-54aa-940d-31f195b51700/b72d87d4-763e-54aa-940d-31f195b51700.jpg`
+- Quellbild: `b72d87d4-763e-54aa-940d-31f195b51700.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/b72d87d4-763e-54aa-940d-31f195b51700/b72d87d4-763e-54aa-940d-31f195b51700.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Orthogonale Spiegelungen an Koordinatenebenen mit Matrizen darstellen
-Beschreibung: Die lernende Person kann Abbildungsmatrizen für orthogonale Spiegelungen an den Koordinatenebenen bestimmen, untersuchen und Bildpunkte berechnen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Orthogonale Spiegelung an einer Koordinatenebene mit einer Matrix darstellen.
-- Verwende ein dreidimensionales Koordinatensystem und die Spiegelung an der xy-Ebene.
-- Zeige die Spiegelungsmatrix exakt:
-  S_xy = [ [1, 0,  0],
-           [0, 1,  0],
-           [0, 0, -1] ].
-- Zeige die Wirkung auf einen Punkt:
-  P = (2, 1, 3).
-  P' = S_xy * [2; 1; 3] = [2; 1; -3], also P' = (2, 1, -3).
-- Visualisiere:
-  Die xy-Ebene als horizontale Ebene z=0.
-  P oberhalb der Ebene bei z=3.
-  P' senkrecht darunter bei z=-3.
-  Die Verbindung P--P' steht senkrecht auf der xy-Ebene.
-- Deutung:
-  x und y bleiben gleich; nur das Vorzeichen der z-Koordinate wechselt.
-
-Vermeiden:
-- Nicht an der xz- oder yz-Ebene spiegeln.
-- Nicht P'=(2,-1,3) oder P'=(-2,1,3) angeben.
-- Die Strecke von P zu P' darf nicht schraeg zur Ebene sein; sie muss senkrecht zur xy-Ebene wirken.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Korrigiere das beigefügte vorhandene PNG mit zwei strikt lokalen Geometrieänderungen. Erhalte den freundlichen Comicstil und alle richtigen Texte, Zahlen, Matrizen, die blaue Ebene und die rechte Bildhälfte. 1. Die positive y-Achse muss eine EINZIGE gerade waagerechte schwarze Linie vom Ursprung O nach rechts sein. Sie darf NICHT über den grünen Punkt F verlaufen und darf KEINEN Knick haben. O liegt im Referenzbild ungefähr bei (389,525). Zeichne diese y-Achse gerade von dort bis etwa (880,525); Pfeilspitze rechts, y darunter. Lösche dafür vollständig die bisherige schwarze Linie O-F-rechts. F bleibt bei (552,568), also klar UNTERHALB der y-Achse und nicht darauf. 2. Der grüne Punkt F muss exakt in der Mitte der senkrechten gestrichelten Strecke zwischen P und P′ liegen. Belasse F und den unteren roten Punkt P′ (ungefähr552,800). Verschiebe den oberen roten Punkt P samt roter Beschriftung nach unten auf ungefähr(552,336). Die vertikalen Abstände P-F und F-P′ sind dann gleich232Bildpixel. Erhalte die beiden gleichen Abstandmarkierungen. Alle drei Punkte exakt übereinander. Das sind Bildkonstruktionskoordinaten, die NICHT als Text ins Bild kommen. Die Fachbeschriftungen bleiben P=(2|1|3), F=(2|1|0), P′=(2|1|-3). Die x-Achse bleibt eine gerade Diagonale nach links unten, die z-Achse gerade nach oben. Sonst nichts ändern. Kein Foto-Look, keine zusätzlichen Achsen, keine neuen Pfeile. PNG.
 ```
 
 ## Review-Notiz

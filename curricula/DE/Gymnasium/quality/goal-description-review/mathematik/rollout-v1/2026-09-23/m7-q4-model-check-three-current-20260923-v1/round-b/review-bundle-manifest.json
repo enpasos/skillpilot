@@ -1,0 +1,118 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:6324cfcb0bb6b84698076d99478a7fa217523bef0ee212dc4644b358fb234d46",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-math-m7-q4-model-check-three-current-20260923-v1",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 3,
+  "goals": [
+    {
+      "goalId": "e03eca28-9a57-5b24-877c-2e63fecee986",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:d4baf30261585d5462c7abb720426833b3133dd440734a75d08c7214b438826d",
+      "pageFingerprint": "sha256:764ed99b1e1c0f76f1b43b1b5a9ce72bf3f9717e878668b7b6b380ad9292329a",
+      "evidenceReview": null
+    },
+    {
+      "goalId": "163dd583-8308-53f0-b60d-34588787988d",
+      "pageNumber": 2,
+      "goalFingerprint": "sha256:cf8610f6a57fa12f283d4284c5844a670a8ee38fd364130deceebd239c5c27f2",
+      "pageFingerprint": "sha256:1ebaa2140f14521ca57deac3fe5e6b3aa42ad259d384f2f6443b9bdb94cadb62",
+      "evidenceReview": null
+    },
+    {
+      "goalId": "519660d0-85e5-57a6-a219-d0a253336649",
+      "pageNumber": 3,
+      "goalFingerprint": "sha256:ea872091a37a3ab4e5f930600d8597c749fa31b45e2ccb8dcbddee38616264b9",
+      "pageFingerprint": "sha256:cef547405c102af27ef58a980bd05750c559717fcdc69e532c7b5d09a914bf8c",
+      "evidenceReview": null
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:acd2e1b17ce9b5798157725ed09b9df84e81fb13508d22561f70b3b0927fd1d1",
+      "bytes": 536540
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:bc604a4401105618854f1115f853e5a57357362770756f78777e336e7408e879",
+      "bytes": 391115
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:bbed46acae41506f2c7e62001a81a768ffdd77d22e876a05231fb533c04156ea",
+      "bytes": 7378
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:fc32f32b657f28ad9396dfdd05d4dd1b4a4bc25452c89065d82039cce991de63",
+      "bytes": 31541
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:ab6f353dcd45691c1471f6867a26e66eb8efea6246c9668eec62b09eac05bdbf",
+      "bytes": 7379
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:0497f6811473effa8184d8572699bb835f414a5d53c48696f3e16b3d28e3cc34",
+      "bytes": 22194
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:b756aa4e902e2143a07f5a388ce4bd7762283e2470354a3c88d319f372084aeb",
+      "bytes": 12357
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:e45437bf37edde726ff49f20c92741536e66a0ae308bf5831957789e3ea06d98",
+      "bytes": 4783
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+      "bytes": 4496
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:c740a5907b304fba5387f4ebe63144a9db23c1dd5b8422c9b5a6e75edb5692e5"
+}

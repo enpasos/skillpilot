@@ -1,0 +1,243 @@
+import { createHash } from 'node:crypto'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
+import { join, resolve } from 'node:path'
+
+const here = resolve(import.meta.dirname)
+const prefix = 'mathematik-m7-functions-diagrams-next10-current-20260923-v1-first-pass-a.batch-001'
+const sha = (value) => `sha256:${createHash('sha256').update(value).digest('hex')}`
+const read = async (path) => JSON.parse(await readFile(path, 'utf8'))
+
+// Independent first-pass description judgments from this round's bound pages.
+// This is not a visualization QA release or a canonical/source-mapping decision.
+const judgments = [
+  {
+    id: '5e7d5ff2-b92c-4989-85bc-8d87ad7edadd',
+    decision: 'keep',
+    de: [
+      'Ein Diagramm verbindet die bezeichnete Kategorie oder Eingangsgröße mit einem Wert auf einer skalierten Achse; Beschriftung und Einheit legen erst fest, was der abgelesene Zahlenwert bedeutet.',
+      'Die lernende Person benennt an einem einfachen, bisher unbekannten Diagramm Achsen, Skala und Einheit und liest für eine vorgegebene Kategorie oder Stelle den passenden Wert mit Bedeutung ab.',
+      'Bei einem neuen Diagramm mit anderer Skalenschrittweite oder anderem Diagrammtyp liest sie denselben Sachverhalt nicht bloß nach Bildhöhe, sondern anhand der tatsächlichen Achseneinteilung und Einheit.'
+    ],
+    en: [
+      'A diagram links a labelled category or input quantity to a value on a scaled axis; labels and units establish what the read numerical value means.',
+      'For an unfamiliar simple diagram, the learner identifies the axes, scale, and unit and reads the appropriate value and its meaning for a specified category or position.',
+      'For a new diagram with a different scale step or chart type, the learner reads the quantity from the actual axis markings and unit rather than from visual height alone.'
+    ],
+    rationale: 'Das J6-Ziel bleibt beim Lesen, nicht beim späteren Deuten von Trends. Aktueller DE/EN-Text und gebundener Diagrammkontext sind verständlich; die Evidenz prüft Skala, Beschriftung und Einheit eigenständig.'
+  },
+  {
+    id: '0c2ddfcd-1399-41ad-aaed-4f061812602a',
+    decision: 'keep',
+    de: [
+      'Vergleiche und erste Trends beziehen mehrere korrekt abgelesene Werte aufeinander; ein Gesamttrend ist von einzelnen Schwankungen zu unterscheiden und zeigt für sich allein keine Ursache.',
+      'Die lernende Person beschreibt an einem unbekannten einfachen Diagramm einen auffälligen Höchst- oder Tiefstwert, vergleicht passende Werte und formuliert eine durch die Daten gestützte Entwicklung in Alltagssprache.',
+      'Bei einer neuen zeitlich geordneten Darstellung mit zwischenzeitlichem Rückgang unterscheidet sie die lokale Abnahme vom Gesamttrend und vermeidet eine aus dem Diagramm nicht belegte Kausalbehauptung.'
+    ],
+    en: [
+      'Comparisons and initial trends relate several correctly read values; an overall trend must be distinguished from individual fluctuations and does not by itself establish a cause.',
+      'For an unfamiliar simple diagram, the learner describes a notable high or low value, compares relevant values, and expresses a data-supported development in everyday language.',
+      'For a new time-ordered display with an intervening decline, the learner separates the local decrease from the overall trend and avoids a causal claim not supported by the diagram.'
+    ],
+    rationale: 'Die Beschreibung verbindet Auffälligkeit, Vergleich und Trend als eine J6-Deutung auf Basis des vorgeschalteten Ablesens. Das aktuelle Bild zeigt tatsächlich einen lokalen Rückgang trotz späterer Zunahme; es ersetzt keine unabhängige Deutung.'
+  },
+  {
+    id: '7bff61c1-1a69-4991-97de-0cff764f507e',
+    decision: 'keep',
+    de: [
+      'Allgemeine, Scheitelpunkt- und Nullstellenform können dieselbe quadratische Funktion darstellen, machen aber verschiedene Eigenschaften unmittelbar sichtbar; eine reelle Nullstellenform setzt reelle Nullstellen voraus.',
+      'Die lernende Person erkennt an gegebenen Termen die Darstellungsform, erklärt den Vorteil für y-Achsenabschnitt, Scheitelpunkt oder reelle Nullstellen und wählt für eine konkrete Frage begründet die geeignete Form.',
+      'Bei einer neuen quadratischen Funktion ohne reelle Nullstellen verwirft sie eine reelle Nullstellenform als ungeeignet und nutzt eine andere vorhandene Form, statt jede Form als stets verfügbar zu behandeln.'
+    ],
+    en: [
+      'Expanded, vertex, and real-factorized forms can represent the same quadratic function but expose different properties directly; a real-factorized form requires real zeros.',
+      'Given expressions, the learner recognizes their forms, explains the advantage for finding the y-intercept, vertex, or real zeros, and justifies which form suits a concrete question.',
+      'For a new quadratic function without real zeros, the learner rejects a real-factorized form as unavailable and uses another suitable form rather than assuming every form always exists.'
+    ],
+    rationale: '„In passenden Situationen“ begrenzt den bestehenden Wortlaut ausreichend; die mathematisch wichtige Verfügbarkeit der Nullstellenform wird im Profil explizit. Die drei Formen sind hier alternative Darstellungen derselben Funktion, nicht drei unabhängig zu absolvierende Kompetenzen.'
+  },
+  {
+    id: 'c19d1f8f-b297-5a58-b1d4-26d811e4aff4',
+    decision: 'keep',
+    de: [
+      'In einem exponentiellen Modell bedeutet eine feste Verdoppelungs- oder Halbwertszeit, dass derselbe Multiplikationsfaktor 2 beziehungsweise 1/2 nach jedem gleich langen Zeitintervall erneut wirkt; sie hängt vom Wachstumsfaktor, nicht vom Anfangswert ab.',
+      'Die lernende Person formuliert für ein gegebenes Wachstums- oder Zerfallsmodell die passende Faktorbedingung, bestimmt die Faktorzeit mit einer zulässigen logarithmischen oder gleichwertigen Methode und deutet Zahl und Zeiteinheit im Sachkontext.',
+      'Bei einem neuen Zerfallsmodell statt eines Wachstumsmodells entscheidet sie selbst zwischen Halbwerts- und Verdoppelungszeit und begründet, weshalb ein anderer Anfangsbestand die Faktorzeit nicht ändert.'
+    ],
+    en: [
+      'In an exponential model, a fixed doubling time or half-life means that the same factor 2 or 1/2 acts again after every equal time interval; the factor time depends on the growth factor, not the initial amount.',
+      'For a given growth or decay model, the learner sets up the appropriate factor condition, determines the factor time by logarithms or an equivalent valid method, and interprets the number and time unit in context.',
+      'For a new decay rather than growth model, the learner independently chooses half-life rather than doubling time and explains why changing the initial amount does not change that factor time.'
+    ],
+    rationale: 'Bestimmen und Deuten bilden eine zusammenhängende Faktorzeit-Kompetenz; die Formulierung ist in DE/EN parallel und setzt die gebundenen Exponential-/Logarithmus-Vorkenntnisse voraus. Kein Bild ist an diese Seite gebunden; die knappe Quellenreferenz allein belegt keine externe Quellenprüfung.'
+  },
+  {
+    id: '308f19e2-e202-5300-a2fa-1eaa717f4e73',
+    decision: 'keep',
+    de: [
+      'Für eine Exponentialfunktion der vorausgesetzten Form b·a^x mit a>0 und a≠1 nähert sich der Funktionswert in einer x-Richtung der waagerechten Asymptote y=0; welche Richtung das ist, hängt von Wachstum oder Zerfall ab, während der Sachkontext den sinnvollen Eingabebereich begrenzen kann.',
+      'Die lernende Person liest aus Term und Graph ab, ob die Werte bei großen positiven oder negativen x gegen 0 streben, nennt die waagerechte Asymptote und erklärt ihre sachliche Bedeutung, ohne sie mit einem tatsächlich erreichten Wert zu verwechseln.',
+      'Bei einer neuen Funktion mit Wachstumsfaktor statt Zerfallsfaktor kehrt sie die relevante x-Richtung korrekt um und prüft, ob negative Zeitwerte im gegebenen Kontext überhaupt sinnvoll sind.'
+    ],
+    en: [
+      'For an exponential function of the prerequisite form b·a^x with a>0 and a≠1, the output approaches the horizontal asymptote y=0 in one x direction; that direction depends on growth or decay, while the real-world context may restrict meaningful inputs.',
+      'From an expression and graph, the learner identifies whether values tend to 0 for large positive or negative x, names the horizontal asymptote, and explains its contextual meaning without treating it as a value actually attained.',
+      'For a new function with a growth rather than a decay factor, the learner correctly reverses the relevant x direction and checks whether negative time values make sense in that context.'
+    ],
+    rationale: 'Der bestehende Wortlaut ist für die gebundene Exponential-Voraussetzung fachlich verständlich. Die Evidenz begrenzt die Aussage bewusst auf den vorausgesetzten Termtyp und trennt mathematisches x→±∞ vom Sachbereich; kein Bild ist gebunden und die Quellenreferenz wurde nicht extern verifiziert.'
+  },
+  {
+    id: '7156558c-57f1-4372-9ba7-0640c3f7cb3a',
+    decision: 'keep',
+    de: [
+      'Der Differenzenquotient beschreibt die mittlere Änderung über ein Intervall als Sekantensteigung; wenn dieses Intervall um einen Punkt schrumpft und die Steigungen gegen einen eindeutigen Wert streben, ergibt sich die momentane Änderung als Tangentensteigung.',
+      'Die lernende Person berechnet für eine einfache Funktion Sekantensteigungen über zunehmend kurze Intervalle, ordnet sie im Graphen zu und erklärt den Grenzübergang zur Tangentensteigung an einer gewählten Stelle.',
+      'Bei einem neuen Graphen mit einer Ecke vergleicht sie die Annäherung von links und rechts und erkennt, warum dort aus den Sekantensteigungen keine eindeutige Tangentensteigung folgt.'
+    ],
+    en: [
+      'A difference quotient describes average change over an interval as a secant slope; if the interval around a point shrinks and the slopes approach one value, instantaneous change is obtained as the tangent slope.',
+      'For a simple function, the learner calculates secant slopes over progressively shorter intervals, locates them on its graph, and explains the limiting transition to the tangent slope at a chosen point.',
+      'For a new graph with a corner, the learner compares approaches from the left and right and recognizes why the secant slopes there do not give a unique tangent slope.'
+    ],
+    rationale: 'Mittlere und momentane Änderungsrate bilden hier den einen didaktischen Übergang, nicht zwei unverbundene Routinen. Das vorhandene x²-Bild rechnet Sekante und Tangente konsistent; unabhängige Grenzübergangs-Evidenz bleibt nötig.'
+  },
+  {
+    id: 'f9fdb733-5838-4983-888a-05624eabbe17',
+    decision: 'keep',
+    de: [
+      'Im Bogenmaß gilt (sin x)′=cos x und (cos x)′=−sin x; die Ableitungswerte beschreiben die jeweiligen Graphensteigungen und erklären die Verschiebung der zugehörigen Ableitungsgraphen.',
+      'Die lernende Person leitet einen einfachen Term mit Sinus oder Kosinus korrekt ab, begründet das Vorzeichen der Kosinus-Ableitung und verknüpft Nullstellen und Vorzeichen der Ableitung mit Hoch-, Tief- und Steigungsverhalten des Ausgangsgraphen.',
+      'Bei einem neuen Term mit negativem Vorfaktor und vertauschter trigonometrischer Grundfunktion überträgt sie die Ableitungsregel samt Vorzeichen und prüft die resultierende Graphenlage an markanten Stellen.'
+    ],
+    en: [
+      'In radians, (sin x)′=cos x and (cos x)′=−sin x; derivative values describe the slopes of the original graphs and explain how the corresponding derivative graphs are shifted.',
+      'The learner differentiates a simple sine or cosine expression correctly, explains the sign in the derivative of cosine, and links zeros and signs of the derivative to maxima, minima, and increasing or decreasing behaviour of the original graph.',
+      'For a new expression with a negative coefficient and the other basic trigonometric function, the learner transfers the derivative rule including its sign and checks the resulting graph against key points.'
+    ],
+    rationale: 'Ableitungsregel und Graphdeutung sind im aktuellen Text zusammengeführt und durch die vorausgesetzten Grundregeln gedeckt. Das Bild zeigt beide Grundableitungen und deren Graphen konsistent; die Bogenmaßbedingung ist als fachliche Evidenz wichtig, ohne den kurzen Beschreibungstext aufzublähen.'
+  },
+  {
+    id: '367a59ce-a388-5c93-b6f9-a3b0c6c3b45e',
+    decision: 'keep',
+    de: [
+      'Beim Zinseszins werden Zinsen der Vorperiode Teil des Kapitals für die nächste Periode; Zinssatz und Laufzeit beziehen sich auf dieselbe Periodenlänge, Anfangs- und Endkapital auf verschiedene Zeitpunkte.',
+      'Die lernende Person benennt in einer kurzen Finanzsituation Anfangskapital, Zinssatz je Periode, Laufzeit und Endkapital und erklärt, welcher Anteil der Zunahme auf Zinsen auf bereits gutgeschriebene Zinsen zurückgeht.',
+      'Bei einer neuen Situation mit monatlichen statt jährlichen Zinsperioden ordnet sie Zinssatz und Laufzeit derselben Periode zu und erklärt den Zinseszinseffekt, ohne einen Jahreszins unverändert pro Monat anzusetzen.'
+    ],
+    en: [
+      'With compound interest, interest earned in one period becomes part of the principal for the next; the interest rate and duration must refer to the same period length, while initial and final capital refer to different times.',
+      'In a short financial situation, the learner identifies initial capital, interest rate per period, duration, and final capital and explains which part of the increase is interest earned on previously credited interest.',
+      'In a new situation with monthly rather than yearly interest periods, the learner aligns rate and duration with the same period and explains the compound-interest effect without applying an annual rate unchanged each month.'
+    ],
+    rationale: 'Das AB1-Ziel verlangt fachsprachliches Erläutern der Größen, nicht selbstständiges Lösen beliebiger Finanzmodelle. Die visuelle 3%-Beispielrechnung und Gegenüberstellung einfacher/zusammengesetzter Zinsen ist rechnerisch konsistent; die Begriffs-Evidenz bleibt eigenständig.'
+  },
+  {
+    id: '0b23413e-a334-5dd3-98e5-de067208819e',
+    decision: 'keep',
+    de: [
+      'Schnittpunkte haben gemeinsame Koordinaten: Für die y-Achse gilt x=0, für die x-Achse f(x)=0 und für zwei Funktionsgraphen f(x)=g(x); grafische und rechnerische Lösungen müssen dieselben Punkte beschreiben.',
+      'Die lernende Person bestimmt für einfache lineare oder quadratische Funktionen Achsen- und Graphenschnittpunkte rechnerisch, liest sie im Graphen ab und überprüft durch Einsetzen die vollständigen Koordinaten.',
+      'Bei einer neuen Konstellation mit einer Berührung oder ohne Schnitt zweier Graphen deutet sie die Anzahl reeller Lösungen von f(x)=g(x) im Graphen, statt stets zwei Schnittpunkte zu erwarten.'
+    ],
+    en: [
+      'Intersection points share coordinates: the y-axis requires x=0, the x-axis requires f(x)=0, and two function graphs require f(x)=g(x); graphical and algebraic solutions must describe the same points.',
+      'For simple linear or quadratic functions, the learner determines axis intercepts and graph intersections algebraically, reads them on the graph, and checks the complete coordinates by substitution.',
+      'In a new case where two graphs touch or do not intersect, the learner interprets the number of real solutions to f(x)=g(x) graphically rather than always expecting two intersection points.'
+    ],
+    rationale: 'Die drei Gleichheitsbedingungen sind Ausprägungen einer einzigen Schnittpunkt-Idee. Die bestehende Beschreibung und das aktuelle Beispiel f=x², g=x+2 samt (-1,1) und (2,4) sind fachlich konsistent; die Evidenz verlangt Graph- und Rechnungskontrolle.'
+  },
+  {
+    id: '1b70498a-62a0-5a84-99dd-476b8af68da6',
+    decision: 'keep',
+    de: [
+      'Bei gleichen Eingabeschritten hat ein lineares Modell konstante erste Differenzen und ein quadratisches konstante zweite Differenzen; Modellwahl, Parameter und Ergebnis müssen zu Daten, Einheiten und Annahmen der Realsituation passen.',
+      'Die lernende Person wählt für eine einfache bisher unbekannte Situation anhand der Änderungsstruktur ein lineares oder quadratisches Modell, bestimmt benötigte Parameter aus passenden Angaben und deutet ein berechnetes Ergebnis mit Einheit und Gültigkeitsbereich.',
+      'Bei einer neuen Situation mit veränderlichen ersten, aber näherungsweise konstanten zweiten Differenzen überprüft sie die bisherige lineare Annahme und entscheidet, ob ein quadratisches Modell die Angaben im betrachteten Bereich besser beschreibt.'
+    ],
+    en: [
+      'For equal input steps, a linear model has constant first differences and a quadratic model has constant second differences; model choice, parameters, and result must fit the data, units, and assumptions of the real-world situation.',
+      'For a simple unfamiliar situation, the learner chooses a linear or quadratic model from its pattern of change, determines needed parameters from suitable information, and interprets a computed result with its unit and domain of validity.',
+      'In a new situation with changing first differences but approximately constant second differences, the learner rechecks a previously linear assumption and decides whether a quadratic model fits the information better over the range in question.'
+    ],
+    rationale: 'Der Wortlaut beschreibt eine zusammenhängende einfache Modellierungskette und ist DE/EN-parallel. Davon strikt getrennt bleibt der gebundene Bild-HOLD: Das Bild zeigt für „Ball fällt“ eine bei 0 startende, zunächst steigende Höhenparabel statt einen Fall aus Anfangshöhe; dieser Datensatz gibt das Bild nicht frei.'
+  }
+]
+
+const campaign = await read(join(here, 'description-review-campaign.json'))
+const bundle = await read(join(here, '..', 'bundle', 'manifest.json'))
+const batch = campaign.batches[0]
+const inputPath = join(here, 'batches', `${prefix}.input.jsonl`)
+const inputs = (await readFile(inputPath, 'utf8')).trim().split('\n').map(JSON.parse)
+if (judgments.length !== inputs.length || judgments.some((judgment, index) => judgment.id !== inputs[index].goal.goalId)) {
+  throw new Error('Authored judgments do not match bound batch order')
+}
+const runId = `${campaign.roundId}.run-001`
+const fields = ['essentialUnderstandingDe', 'observablePerformanceDe', 'transferExpectationDe']
+const englishFields = ['essentialUnderstandingEn', 'observablePerformanceEn', 'transferExpectationEn']
+const records = judgments.map((judgment, index) => {
+  const source = inputs[index].goal
+  const understandingEvidence = Object.fromEntries([
+    ...fields.map((name, fieldIndex) => [name, judgment.de[fieldIndex]]),
+    ...englishFields.map((name, fieldIndex) => [name, judgment.en[fieldIndex]])
+  ])
+  return {
+    $schema: 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json',
+    schemaVersion: 1,
+    recordId: `${runId}.goal-${index + 1}`,
+    runId,
+    campaignId: campaign.campaignId,
+    roundId: campaign.roundId,
+    bundleFingerprint: campaign.bundleFingerprint,
+    bookDigest: campaign.bookDigest,
+    goalId: source.goalId,
+    goalFingerprint: source.goalFingerprint,
+    pageFingerprint: source.pageFingerprint,
+    currentTitleDe: source.currentTitleDe,
+    currentTitleEn: source.currentTitleEn,
+    currentDescriptionDe: source.currentDescriptionDe,
+    currentDescriptionEn: source.currentDescriptionEn,
+    decision: judgment.decision,
+    understandingEvidence,
+    rationale: judgment.rationale,
+    evidenceProfileContract: 'positive-understanding-evidence-v2',
+    evidenceProfileRecommendation: source.reviewContext.evidenceProfile === null ? 'create' : 'revise',
+    recordStatus: 'candidate',
+    reviewAuthority: 'ai_candidate'
+  }
+})
+const resultsDirectory = join(here, 'results')
+await mkdir(resultsDirectory, { recursive: true })
+const outputBytes = Buffer.from(records.map((record) => JSON.stringify(record)).join('\n') + '\n')
+const timestamp = new Date().toISOString()
+const run = {
+  $schema: 'https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json',
+  schemaVersion: 1,
+  runId,
+  campaignId: campaign.campaignId,
+  roundId: campaign.roundId,
+  batchId: batch.batchId,
+  batchInputFingerprint: batch.batchInputFingerprint,
+  bundleFingerprint: campaign.bundleFingerprint,
+  bookDigest: campaign.bookDigest,
+  provider: 'openai',
+  model: 'codex-runtime-unspecified',
+  role: 'subject_reviewer',
+  promptFamilyId: 'goal-description-understanding-evidence-review-v2',
+  promptFingerprint: campaign.promptFingerprint,
+  criteriaFingerprint: campaign.criteriaFingerprint,
+  generationParametersFingerprint: sha('host-managed sampling parameters not exposed'),
+  independenceGroupId: campaign.independenceGroupId,
+  blindToOtherRuns: true,
+  goalIds: batch.goalIds,
+  inputArtifacts: [
+    { role: 'description_review_batch_input_jsonl', digest: batch.batchInputFingerprint },
+    ...bundle.artifacts.filter(({ role }) => ['review_prompt', 'review_criteria'].includes(role)).map(({ role, digest }) => ({ role, digest }))
+  ],
+  startedAt: timestamp,
+  completedAt: timestamp,
+  status: 'completed',
+  outputDigest: sha(outputBytes),
+  toolchainVersion: 'codex-manual-blind-review-v1'
+}
+await writeFile(join(resultsDirectory, `${prefix}.records.jsonl`), outputBytes)
+await writeFile(join(resultsDirectory, `${prefix}.run.json`), JSON.stringify(run, null, 2) + '\n')
+console.log(`Authored ${records.length} blind candidate records at ${resultsDirectory}`)

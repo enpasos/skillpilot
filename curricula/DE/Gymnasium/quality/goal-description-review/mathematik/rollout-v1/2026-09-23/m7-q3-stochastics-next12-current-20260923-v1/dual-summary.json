@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:9bc49e34e12bbe2919dbc43114d2a007a1ceeecf2652aecb393115a9637cadf8",
+  "reviewInputFingerprint": "sha256:029b3314332f5d9be461e8426c13c863016fd1a448cc6bbcadef48d2707e6d4f",
+  "goalCount": 12,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-a",
+      "roundId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::codex-runtime-unspecified::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-b",
+      "roundId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.codex-independent-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact serving model not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 12,
+    "unavailable": 0,
+    "requiresSynthesis": 12
+  },
+  "goals": [
+    {
+      "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
+      "firstRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-1",
+      "secondRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.70efdec0-110c-5564-849b-bc05cfff0f6a",
+      "firstRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d81bc960-4eff-5c87-90b8-fec8e1cb8b3a",
+      "firstRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-2",
+      "secondRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.d81bc960-4eff-5c87-90b8-fec8e1cb8b3a",
+      "firstRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+      "firstRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-3",
+      "secondRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+      "firstRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e495fa38-b198-5280-a405-9e41cafd6d17",
+      "firstRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-4",
+      "secondRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.e495fa38-b198-5280-a405-9e41cafd6d17",
+      "firstRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9b6f4d7d-a804-5666-b7ea-85bb3c73da4a",
+      "firstRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-5",
+      "secondRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.9b6f4d7d-a804-5666-b7ea-85bb3c73da4a",
+      "firstRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "firstRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-6",
+      "secondRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "firstRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "aa00edfa-cf8d-500e-994f-7e33a5ebd045",
+      "firstRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-7",
+      "secondRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.aa00edfa-cf8d-500e-994f-7e33a5ebd045",
+      "firstRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "66f432e9-22d3-51a9-8787-35f91db30616",
+      "firstRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-8",
+      "secondRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.66f432e9-22d3-51a9-8787-35f91db30616",
+      "firstRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9de07e13-6a5f-5b49-a6d4-0decefb95784",
+      "firstRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-9",
+      "secondRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.9de07e13-6a5f-5b49-a6d4-0decefb95784",
+      "firstRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.codex-independent-b",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4d906967-9f4b-5dc8-af7a-d403b95d61f5",
+      "firstRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-10",
+      "secondRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.4d906967-9f4b-5dc8-af7a-d403b95d61f5",
+      "firstRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5c9ac68c-3928-518c-bbe0-e044667035a6",
+      "firstRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-11",
+      "secondRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.5c9ac68c-3928-518c-bbe0-e044667035a6",
+      "firstRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ae483d98-54e0-5985-96d2-fc1351d22e4f",
+      "firstRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-12",
+      "secondRecordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.ae483d98-54e0-5985-96d2-fc1351d22e4f",
+      "firstRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001",
+      "secondRunId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.codex-independent-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

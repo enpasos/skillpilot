@@ -4,48 +4,23 @@
 
 - SkillPilot-ID: `f84ea3d8-c255-552a-998a-202e42843f56`
 - Titel: Widerlegung verständlich formulieren
-- Beschreibung: Die lernende Person kann eine Widerlegung strukturiert darstellen: Aussage zitieren, Gegenbeispiel nennen, verletzte Bedingung oder fehlerhaften Schritt erklären und Schluss ziehen.
+- Beschreibung: Die lernende Person kann die Widerlegung einer allgemeinen Aussage durch ein Gegenbeispiel strukturiert darstellen: die Aussage nennen, zeigen, dass das Beispiel ihre Voraussetzungen erfüllt und der behaupteten Folgerung widerspricht, und den Schluss erläutern.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `f84ea3d8-c255-552a-998a-202e42843f56.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/f84ea3d8-c255-552a-998a-202e42843f56/f84ea3d8-c255-552a-998a-202e42843f56.jpg`
+- Quellbild: `f84ea3d8-c255-552a-998a-202e42843f56.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/f84ea3d8-c255-552a-998a-202e42843f56/f84ea3d8-c255-552a-998a-202e42843f56.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Widerlegung verständlich formulieren
-Beschreibung: Die lernende Person kann eine Widerlegung strukturiert darstellen: Aussage zitieren, Gegenbeispiel nennen, verletzte Bedingung oder fehlerhaften Schritt erklären und Schluss ziehen.
-
-Zusatzanweisung:
-Required mathematical layout:
-- Show a four-step structure for a written refutation:
-  1. "Aussage zitieren"
-  2. "Gegenbeispiel nennen"
-  3. "Bedingung prüfen"
-  4. "Schluss ziehen"
-- Use this false statement only: "Alle Rechtecke sind Quadrate."
-- Counterexample: "Rechteck 4 cm x 2 cm".
-- Explanation: "vier rechte Winkel, aber Seiten nicht alle gleich".
-- Conclusion: "Aussage widerlegt".
-
-Avoid:
-- Do not draw a square as the counterexample.
-- Do not imply rectangles are never squares.
-- Do not use unrelated geometry facts.
+Use case: precise-object-edit.
+Asset type: SkillPilot German mathematics learning-goal PNG, friendly abstract comic diagram.
+Image 1 is the edit target. Preserve its entire four-panel composition, readable German lettering, pastel blue/green/yellow/orange palette, rounded bold black outlines, existing tiny friendly characters, examples and title.
+Primary request: correct ONLY the two dimension labels on the drawn horizontal rectangle in the THIRD, yellow panel. Its long horizontal bottom edge must say exactly "4 cm"; its short vertical left edge must say exactly "2 cm". This must match the visibly wider-than-tall 2:1 rectangle and the "4 cm x 2 cm" example in panel two.
+Keep all other text, arrows, right-angle marks, rectangles, colours, panel arrangement and characters unchanged. No photorealism, no added elements, no watermark. Output a high-quality PNG with the same wide landscape composition.
 ```
 
 ## Review-Notiz

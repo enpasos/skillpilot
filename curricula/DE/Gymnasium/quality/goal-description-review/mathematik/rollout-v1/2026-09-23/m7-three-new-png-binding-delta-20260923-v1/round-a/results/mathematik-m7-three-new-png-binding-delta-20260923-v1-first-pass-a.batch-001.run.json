@@ -1,0 +1,38 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-m7-three-new-png-round-a-root-20260923",
+  "campaignId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-a",
+  "roundId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-first-pass-a",
+  "batchId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:0f957cceb59ff1adf65ad58355f196b2961eafdb9424a873afaff3838d5f7643",
+  "bundleFingerprint": "sha256:58aaa29beb2611bde6ff9aba94f42130aa238d92e1e740bf25ee3630aac143a8",
+  "bookDigest": "sha256:75a9518b4c6a213b7497d8395aef8feac3fafcdf872360ee6f4471dc675679ec",
+  "provider": "OpenAI",
+  "model": "OpenAI Codex (exact model identifier unavailable)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:eae901c241649721a6ea4cde2c080073cd16b5f1b57dc4cee01f1e5838395272",
+  "independenceGroupId": "mathematik-m7-three-new-png-binding-delta-20260923-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8823e26e-694c-581b-9adf-4db7db6f43c9",
+    "7c978529-ce62-5adc-897f-24ea80babbc8",
+    "e01869db-891c-57a4-8660-789ec6875ec2"
+  ],
+  "inputArtifacts": [
+    {"role": "review_prompt", "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"},
+    {"role": "review_criteria", "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"},
+    {"role": "review_input_json", "digest": "sha256:b229e4564f46b36327ef75cfed619a2d85c049d9baabb9a1f28cdff94f40c3db"},
+    {"role": "book_model", "digest": "sha256:51395e9329b516a3edce11746bef5266d6439ada4a8cc8ca328b3cdbfc14d23d"},
+    {"role": "book_pdf_render_manifest", "digest": "sha256:c499716222fd6e7af198c2813a439047ceeeaae8bc767f5b41e5ac051dc9092e"},
+    {"role": "description_review_batch_input_jsonl", "digest": "sha256:0f957cceb59ff1adf65ad58355f196b2961eafdb9424a873afaff3838d5f7643"}
+  ],
+  "startedAt": "2026-09-23T02:39:12Z",
+  "completedAt": "2026-09-23T02:40:17Z",
+  "status": "completed",
+  "outputDigest": "sha256:c48d80282adc45e1b6cd578c69c5d4efe679c1635e198b3c31e92289748e477a",
+  "toolchainVersion": "codex-interactive-review-v1"
+}

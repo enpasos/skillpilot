@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "recordType": "independent_goal_visualization_ai_review",
+  "goalId": "bda6a659-9640-53a5-8be0-24705ab623ef",
+  "goalTitleDe": "Winkel zwischen zwei Ebenen berechnen",
+  "reviewedAt": "2026-09-23T01:26:20Z",
+  "reviewer": "Independent Codex subagent; exact serving revision not exposed",
+  "reviewAuthority": "ai_candidate",
+  "recordStatus": "candidate",
+  "decision": "accepted_pilot",
+  "aiApproved": "yes",
+  "aiApprovedAssetSha256": "b18fe49e4af4129c45e5ed9adf33745e0c8e2fe53a9b91553caeb6a2515cdda4",
+  "humanApproval": "not_performed",
+  "independence": {
+    "generatedCandidate": false,
+    "consultedOtherVisualReview": false,
+    "rootSuppliedGenerationChain": true,
+    "personallyObservedGenerationCall": false
+  },
+  "candidate": {
+    "path": "accepted-candidate.png",
+    "format": "PNG",
+    "width": 1678,
+    "height": 937,
+    "sha256": "b18fe49e4af4129c45e5ed9adf33745e0c8e2fe53a9b91553caeb6a2515cdda4",
+    "actuallyViewedAtOriginalResolution": true
+  },
+  "inspectedComparators": [
+    {
+      "path": "retired-active-assets/curricula/DE/Gymnasium/visualizations/mathematik/bda6a659-9640-53a5-8be0-24705ab623ef/bda6a659-9640-53a5-8be0-24705ab623ef.jpg",
+      "sha256": "b8c30a23f44e14cf1ad97671ba60b1cbaa266f0e92db6876245f475ae6e56b6f",
+      "actuallyViewed": true,
+      "finding": "The former bottom sentence presented a general claim that the plane angle is the acute angle between the normal vectors; that wording was replaced by a statement about this 45-degree example."
+    },
+    {
+      "path": "rejected-attempt-v1.png",
+      "sha256": "4fcf42ee457c61c476b34c938f5c60b93a4df490df9c4dd2e24cb96fba320b3b",
+      "actuallyViewed": true,
+      "finding": "Bottom statement corrected, but a malformed Normalenvektoren word remained in the thought bubble."
+    },
+    {
+      "path": "rejected-attempt-v2.png",
+      "sha256": "e93312c5103817abdd7be18f94a4bafb326ee48f14338b7915c32d31f4e50363",
+      "actuallyViewed": true,
+      "finding": "Targeted spelling prompt did not fix the bubble, so it was not accepted."
+    }
+  ],
+  "mathematicsAndVisualChecks": {
+    "goalFit": "pass: the diagram and calculation explain the angle between two planes using their normal vectors and interpret the intersection angle for the shown example",
+    "vectorGeometry": "pass: n_E=(1,0,0) lies on positive x; n_F=(1,1,0) is diagonal in the positive xy quadrant; the marked 45-degree angle is between those vectors",
+    "calculation": "pass: n_E dot n_F=1, |n_E|=1, |n_F|=sqrt(2), cos(phi)=1/sqrt(2), and phi=45 Grad",
+    "interpretation": "pass: the bottom sentence now states only that the intersection angle is 45 Grad here, avoiding the former generalization about a spitze Winkel between arbitrarily oriented normals",
+    "gCaption": "limited but not contradictory: g:x=0,y=0 (z-axis) is consistent with the earlier documented worked example E:x=0 and F:x+y=0. Their equations are not shown in this compact infographic, so the precise position of g is supplied example context and is not derivable from the displayed normals alone.",
+    "visibleGermanAndNotation": "pass: title, Skalarprodukt heading, vector labels, formula, Schnittgerade caption and final Deutung sentence are legible; the typo bubble and its thought circles are absent",
+    "styleAndArtifacts": "pass: friendly flat blue/orange infographic remains suitable for Gymnasium Q2; no visible watermark, technical ID, foreign logo, cropped equation or conspicuous image-edit artifact"
+  },
+  "suggestedAltTextDe": "Koordinatendiagramm in der xy-Ebene: n_E=(1,0,0) liegt auf der positiven x-Achse, n_F=(1,1,0) diagonal bei 45 Grad. Rechts ergibt das Skalarprodukt cos(phi)=1/sqrt(2); in diesem Beispiel beträgt der Schnittwinkel der Ebenen 45 Grad.",
+  "scopeLimits": [
+    "Native-resolution image inspection is not an actual learner-device or ChatGPT-host presentation test.",
+    "The image supports explanation, not proof of learner performance or the full current goal-description quality binding.",
+    "No human approval or independent third-party rights clearance is claimed.",
+    "Generation prompts and call order come from the root agent's firsthand report; the independent reviewer verified the images and hashes but did not call the generation tool."
+  ]
+}
