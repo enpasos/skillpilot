@@ -42,6 +42,15 @@ assert(paragraphs(de, 'claude', 'claude-app').includes('funktioniert') && paragr
 assert(paragraphs(de, 'claude', 'claude-app').includes('nicht eine vollständige Prüfung') && paragraphs(en, 'claude', 'claude-app').includes('not complete testing'), 'beta experience does not imply universal device acceptance')
 assert(paragraphs(de, 'claude', 'claude-voice').includes('warte dann kurz') && paragraphs(en, 'claude', 'claude-voice').includes('wait briefly'), 'Claude voice guidance advises waiting through occasional pauses')
 assert(paragraphs(de, 'claude', 'claude-voice').includes('anschließend weiter') && paragraphs(en, 'claude', 'claude-voice').includes('resumes speaking'), 'Claude voice guidance explains observed recovery')
+for (const [copy, image, flashcard, voiceOff, reload, voiceOn] of [
+  [de, 'Bild', 'Lernkarte', 'Voice Mode kurz aus', 'denselben Chat neu', 'Voice Mode wieder einschalten'],
+  [en, 'image', 'flashcard', 'voice mode off', 'same chat', 'voice mode back on'],
+] as const) {
+  const guidance = paragraphs(copy, 'claude', 'claude-voice')
+  assert(guidance.includes(image) && guidance.includes(flashcard), 'Claude voice FAQ covers missing images and flashcards')
+  const positions = [voiceOff, reload, voiceOn].map(step => guidance.indexOf(step))
+  assert(positions.every(position => position >= 0) && positions[0] < positions[1] && positions[1] < positions[2], 'Claude voice workaround keeps the off, reload, on sequence')
+}
 assert(paragraphs(de, 'claude', 'continue-on-phone').includes('denselben bestehenden Chat') && paragraphs(en, 'claude', 'continue-on-phone').includes('same existing chat'), 'device switching keeps the existing Claude chat')
 assert(paragraphs(de, 'claude', 'continue-on-phone').includes('24 Stunden') && paragraphs(en, 'claude', 'continue-on-phone').includes('24 hours'), 'cross-device continuation respects session validity')
 assert(de.recommendation.paragraphs.some(item => item.includes('parallele ChatGPT-Beta bieten wir nicht an')) && en.recommendation.paragraphs.some(item => item.includes('not offering a parallel ChatGPT beta')), 'no parallel external ChatGPT beta is advertised')

@@ -3,16 +3,15 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.9 is published in
-the public Marketplace and its exact source, package and repository have been
-independently verified. On 23 September 2026 the website download was verified
-to serve the separately prepared 1.1.10 archive; the Marketplace still serves
-1.1.9 pending its own publication. Full real-client acceptance remains
+Anthropic-curated or Anthropic-verified listing. Version 1.1.10 is published in
+the public personal Marketplace; its exact source, package and repository have
+been independently verified. The website download serves the same 1.1.10
+archive. Full real-client acceptance remains
 pending; repository publication does not establish installation or
 synchronization in every account.
 Earlier published packages and their evidence remain immutable history.
 
-## 1.1.10 local incident candidate
+## 1.1.10 repository publication
 
 On 23 September 2026, the Product Owner reported that the coach exposed
 private deliberation in a Voice conversation and reconsidered a goal closure
@@ -26,7 +25,7 @@ repeatable. The exact 1.1.9 release dossier is retained under
 `release/history/1.1.9/`; its published archive and Marketplace source remain
 unchanged. The 1.1.10 exact-client regression plan is
 `ai/claude/plugin/skillpilot-coach-v1/release/1.1.10-incident-regression-plan.md`.
-Web and Android Voice evidence and Marketplace publication remain pending.
+Web and Android Voice client acceptance remain pending.
 The website index and downloaded bytes now match the 1.1.10 archive at 41,166
 bytes and SHA-256
 `4304cb825942db3fa2c7e6a352481794a523ea21afba0e6db71f6314fddee618`.
@@ -36,14 +35,21 @@ installed Marketplace update. The local Marketplace export pins committed
 SkillPilot source
 revision `8dc0fa9b8fad65db28f2be25a165dd4a72a36bce` and plugin-source
 tree digest `16594707fbeca128fa8544f5da70486c6286702760e320b41c6334d7df1e4cb2`.
-That revision must be available from
-`enpasos/skillpilot` before the external Marketplace workflow can run; no
-repository publication or 1.1.10 client acceptance has occurred.
-The corrected twelve-file local Marketplace export has tree SHA-256
+That revision is available from `enpasos/skillpilot`. The corrected twelve-file
+Marketplace export has tree SHA-256
 `ac46ca37e788ae137c7c2465ec2be53564b41e3de5f26d010ccc2a06307ed780`.
-Generator verification, both strict Claude CLI validations and an isolated
-local install passed. This is preparation evidence, not source-CI, remote
-publication or real-client acceptance.
+[Source CI](https://github.com/enpasos/skillpilot/actions/runs/35875547903)
+passed. [Marketplace PR #13](https://github.com/enpasos/skillpilot-claude-marketplace/pull/13)
+passed its [final-head validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/35880492294)
+and was squash-merged with a head-SHA guard. The
+[main-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/35880727127)
+passed. `verify-repository` then checked
+the public default branch, exact twelve-file inventory, rebuilt archive, both
+strict Claude CLI validations and installation from its HTTPS URL in an
+isolated profile. It reported revision
+`b5c1b7579eefe087f55872402642e962790adc9a` with the same tree hash.
+Only the repository evidence is `pass`; clean-account installation, update,
+real-client learning flow and a new first-party guide decision remain pending.
 
 ## 1.1.9 publication for issue #55
 

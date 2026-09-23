@@ -40,7 +40,7 @@ const germanCopy: FaqViewCopy = {
   backToApp: 'Zurück zu SkillPilot',
   title: 'Häufige Fragen zu SkillPilot',
   subtitle: 'Mit Claude in der Beta lernen. ChatGPT folgt nach gezielter Prüfung und offizieller Veröffentlichung.',
-  reviewedLabel: 'Stand: 13. September 2026',
+  reviewedLabel: 'Stand: 23. September 2026',
   recommendation: {
     eyebrow: 'Jetzt mitlernen',
     title: 'Die laufende Beta nutzt Claude',
@@ -78,6 +78,7 @@ const germanCopy: FaqViewCopy = {
           question: 'Kann ich mit Claude im Voice Mode lernen?',
           paragraphs: [
             'Ja. Voice Mode funktioniert im laufenden Claude-Beta-Test. Gelegentlich stockt die Sprachausgabe; warte dann kurz. Nach unseren bisherigen Erfahrungen spricht Claude anschließend weiter.',
+            'Wenn im Voice Mode ein Bild oder eine Lernkarte nicht erscheint, hilft derzeit dieser Workaround: Schalte Voice Mode kurz aus und lade denselben Chat neu. Sobald das Bild oder die Lernkarte sichtbar ist, kannst du Voice Mode wieder einschalten.',
             'Falls es nicht weitergeht, kannst du im Textchat fortfahren. Ob ein Lernziel gespeichert wurde, prüfst du im SkillPilot-Cockpit – eine gesprochene Erfolgsantwort allein bestätigt das nicht.',
           ],
         },
@@ -196,7 +197,7 @@ const englishCopy: FaqViewCopy = {
   backToApp: 'Back to SkillPilot',
   title: 'Frequently asked questions about SkillPilot',
   subtitle: 'Learn with Claude in the beta. ChatGPT will follow after focused testing and official publication.',
-  reviewedLabel: 'Status: September 13, 2026',
+  reviewedLabel: 'Status: September 23, 2026',
   recommendation: {
     eyebrow: 'Join the learning',
     title: 'Our current beta uses Claude',
@@ -234,6 +235,7 @@ const englishCopy: FaqViewCopy = {
           question: 'Can I learn with Claude in voice mode?',
           paragraphs: [
             'Yes. Voice mode works in the ongoing Claude beta. The spoken response occasionally pauses; wait briefly when this happens. In our experience so far, Claude then resumes speaking.',
+            'If an image or flashcard does not appear in voice mode, this workaround currently helps: briefly turn voice mode off and reload the same chat. Once the image or flashcard is visible, you can turn voice mode back on.',
             'If it does not resume, you can continue in text chat. Check the SkillPilot cockpit to see whether a learning goal was saved – a spoken success message alone does not confirm that.',
           ],
         },
