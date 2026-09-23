@@ -26,8 +26,10 @@ unchanged. The 1.1.10 exact-client regression plan is
 `ai/claude/plugin/skillpilot-coach-v1/release/1.1.10-incident-regression-plan.md`.
 Web and Android Voice evidence, deployment and Marketplace publication remain
 pending. The public Marketplace and website still serve 1.1.9 until a separate
-approved rollout. The local Marketplace export pins a committed SkillPilot
-source revision and its exact plugin-source tree digest. That revision must be available from
+approved rollout. The local Marketplace export pins committed SkillPilot source
+revision `4e72c619f5f778a60cd095eeb6c217418f9acd4c` and plugin-source
+tree digest `e9efaca0a270d3c8619edacb0ca85c2eace292731844b42f31aa38bb3659230e`.
+That revision must be available from
 `enpasos/skillpilot` before the external Marketplace workflow can run; no
 repository publication or 1.1.10 client acceptance has occurred.
 

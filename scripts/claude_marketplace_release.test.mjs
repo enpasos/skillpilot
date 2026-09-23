@@ -34,7 +34,7 @@ import {
 const scriptRoot = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(scriptRoot, "..");
 const canonicalPluginRoot = resolve(repositoryRoot, "ai/claude/plugin/skillpilot-coach-v1");
-const pinnedCanonicalRevision = "7109b71bfa57804cbd0d83a87b30f010076b2437";
+const pinnedCanonicalRevision = "4e72c619f5f778a60cd095eeb6c217418f9acd4c";
 const marketplaceWorkflow = readFileSync(resolve(repositoryRoot,
   "ai/claude/marketplace/skillpilot-marketplace/validate.yml"), "utf8");
 function loadHistorical111MarketplaceLane() {
@@ -683,9 +683,9 @@ test("actual CI gate rebuilds the PR package with exact dossier bytes and unzip 
     assert.equal(result.status, 0,
       JSON.stringify({ stderr: result.stderr, signal: result.signal, error: result.error?.message }));
     const archive = readFileSync(artifactPath);
-    assert.equal(archive.length, 40835);
+    assert.equal(archive.length, 41166);
     assert.equal(createHash("sha256").update(archive).digest("hex"),
-      "a54c48a6b0b9345f0b2a70edd06d50995a6e62445ff87e6f8177b93a79331841");
+      "4304cb825942db3fa2c7e6a352481794a523ea21afba0e6db71f6314fddee618");
     const extracted = resolve(root, "extracted");
     const unzip = spawnSync("unzip", ["-q", artifactPath, "-d", extracted], { encoding: "utf8" });
     const extraction = unzip.error?.code === "ENOENT"
