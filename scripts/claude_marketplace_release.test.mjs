@@ -34,6 +34,7 @@ import {
 const scriptRoot = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(scriptRoot, "..");
 const canonicalPluginRoot = resolve(repositoryRoot, "ai/claude/plugin/skillpilot-coach-v1");
+const pinnedCanonicalRevision = "54c7d04cc52c4844dfb5c5d7ddaf94dae6a574ea";
 const marketplaceWorkflow = readFileSync(resolve(repositoryRoot,
   "ai/claude/marketplace/skillpilot-marketplace/validate.yml"), "utf8");
 function loadHistorical111MarketplaceLane() {
@@ -624,9 +625,9 @@ test("Marketplace CI pins canonical source content and credentials without depen
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   validateClaudeMarketplaceWorkflow(marketplaceWorkflow, lane);
   assert.doesNotMatch(marketplaceWorkflow, /curl|api\/public\/claude\/plugins/u);
-  for (const replacement of ["feature-branch", "a".repeat(40)]) {
+  for (const replacement of ["main", "a".repeat(40)]) {
     const changed = marketplaceWorkflow.replace(
-      "ref: main", `ref: ${replacement}`);
+      `ref: ${pinnedCanonicalRevision}`, `ref: ${replacement}`);
     assert.throws(() => validateClaudeMarketplaceWorkflow(changed, lane),
       /pinned checkouts mismatch/u);
   }
@@ -697,10 +698,11 @@ test("canonical source mutation fails before the Marketplace builder can run", (
   withOutput(({ root, outputRoot }) => {
     prepareClaudeMarketplace({ repositoryRoot, outputRoot });
     const canonicalCopy = resolve(root, "canonical-source");
-    cpSync(canonicalPluginRoot, canonicalCopy, { recursive: true });
+    copyPinnedCanonicalSource(canonicalCopy);
+    const lane = loadClaudeMarketplaceLane(repositoryRoot);
+    validateClaudeMarketplaceWorkflow(marketplaceWorkflow, lane, canonicalCopy);
     const builderPath = resolve(canonicalCopy, "build-package.mjs");
     writeFileSync(builderPath, `${readFileSync(builderPath, "utf8")}\n// unexpected source change\n`);
-    const lane = loadClaudeMarketplaceLane(repositoryRoot);
     assert.throws(
       () => validateClaudeMarketplaceWorkflow(marketplaceWorkflow, lane, canonicalCopy),
       /Pinned canonical source tree.*missing a required executable line/u,
@@ -906,14 +908,40 @@ function withOutput(callback, { prepareDirectory = false } = {}) {
 }
 
 function runWorkflowPackageGate(
-  outputRoot, artifactPath, workflow = marketplaceWorkflow, canonicalRoot = canonicalPluginRoot,
+  outputRoot, artifactPath, workflow = marketplaceWorkflow, canonicalRoot = null,
 ) {
   const match = workflow.match(/<<'NODE'\n([\s\S]+?)\n          NODE\n/u);
   assert.ok(match, "Workflow must contain the executable pinned package gate");
   const code = match[1].replace(/^          /gmu, "");
-  return spawnSync(process.execPath, ["--input-type=module", "-", canonicalRoot, artifactPath], {
-    cwd: outputRoot,
-    encoding: "utf8",
-    input: code,
-  });
+  const temporaryRoot = canonicalRoot === null
+    ? mkdtempSync(resolve(dirname(artifactPath), "pinned-source-"))
+    : null;
+  try {
+    const sourceRoot = temporaryRoot === null
+      ? canonicalRoot
+      : copyPinnedCanonicalSource(resolve(temporaryRoot, "source"));
+    return spawnSync(process.execPath, ["--input-type=module", "-", sourceRoot, artifactPath], {
+      cwd: outputRoot,
+      encoding: "utf8",
+      input: code,
+    });
+  } finally {
+    if (temporaryRoot !== null) rmSync(temporaryRoot, { recursive: true, force: true });
+  }
+}
+
+function copyPinnedCanonicalSource(destination) {
+  cpSync(canonicalPluginRoot, destination, { recursive: true });
+  // The immutable checkout predates the repository-publication evidence.
+  // Reconstruct only that metadata so executable tests run without Git history.
+  const lanePath = resolve(destination, "release/marketplace-publication.json");
+  const lane = JSON.parse(readFileSync(lanePath, "utf8"));
+  lane.activation.state = "prepared_not_published";
+  const repositoryEvidence = lane.activation.evidence[0];
+  repositoryEvidence.status = "pending";
+  for (const field of ["revision", "treeSha256", "candidateVersion", "candidateSha256", "verifiedAt", "evidenceRef"]) {
+    repositoryEvidence[field] = null;
+  }
+  writeFileSync(lanePath, `${JSON.stringify(lane, null, 2)}\n`);
+  return destination;
 }

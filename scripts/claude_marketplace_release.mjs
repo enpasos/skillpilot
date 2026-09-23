@@ -41,6 +41,10 @@ const expectedExternalEvidence = [
   "uploaded-plugin-migration-and-marketplace-refresh",
 ];
 const expectedRepositoryName = "skillpilot-claude-marketplace";
+// Keep the published Marketplace verifier on the exact reviewed source.
+// Later release evidence changes the live dossier but not these plugin bytes.
+const canonicalSourceRevision = "54c7d04cc52c4844dfb5c5d7ddaf94dae6a574ea";
+const canonicalSourceTreeSha256 = "9ef6c9e2ef1d5112f876398f4f3b446335d04156373e2ec8f2f4026dd67eebfa";
 const legacyInstructionVersions = new Set([
   "1.0.2", "1.0.3", "1.0.4", "1.1.0", "1.1.1", "1.1.2", "1.1.3", "1.1.4",
 ]);
@@ -924,17 +928,17 @@ function validateMarketplaceTemplates(paths, lane) {
     `## ${lane.plugin.version} -`,
     "Marketplace changelog current version",
   );
-  validateClaudeMarketplaceWorkflow(workflow, lane, paths.pluginRoot);
+  validateClaudeMarketplaceWorkflow(workflow, lane);
 }
 
 export function validateClaudeMarketplaceWorkflow(
   workflow,
   lane,
-  canonicalSourceRoot = resolve(defaultRepositoryRoot, lane.source.pluginRoot),
+  canonicalSourceRoot = null,
 ) {
-  // The current candidate has no commit to pin until it lands on main. Its full
-  // source-tree digest pins the builder, checker, dossier and package bytes now.
-  const sourceDigest = digestTree(canonicalSourceRoot, listRegularFiles(canonicalSourceRoot));
+  const sourceDigest = canonicalSourceRoot === null
+    ? canonicalSourceTreeSha256
+    : digestTree(canonicalSourceRoot, listRegularFiles(canonicalSourceRoot));
   const checkoutBlocks = [...workflow.matchAll(/^      - uses: actions\/checkout@[^\n]+\n(?:        [^\n]*\n)*/gmu)]
     .map(([block]) => block.trimEnd());
   assertJsonEqual(checkoutBlocks, [
@@ -948,7 +952,7 @@ export function validateClaudeMarketplaceWorkflow(
       "      - uses: actions/checkout@v6",
       "        with:",
       "          repository: enpasos/skillpilot",
-      "          ref: main",
+      `          ref: ${canonicalSourceRevision}`,
       "          path: canonical",
       "          sparse-checkout: ai/claude/plugin/skillpilot-coach-v1",
       "          persist-credentials: false",
