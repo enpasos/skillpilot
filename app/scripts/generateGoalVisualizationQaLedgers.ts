@@ -10,6 +10,7 @@ import {
   type GoalVisualizationMissingReason,
   type GoalVisualizationQaYesNo,
 } from './goalVisualizationQaModel'
+import { assertQualityDeferralEvidence } from './goalVisualizationQualityDeferral'
 import {
   isActiveClusterOverviewForVisualization,
   isOrdinaryAtomicGoalForVisualization,
@@ -109,7 +110,7 @@ const collectFiles = (directory: string, predicate: (fileName: string) => boolea
   return result
 }
 
-type ReviewDisposition = 'accepted' | 'deferred_provider_limitation' | 'other_final'
+type ReviewDisposition = 'accepted' | 'deferred_provider_limitation' | 'deferred_quality_review' | 'other_final'
 
 const reviewDate = (content: string, fileName: string): string => {
   const metadataDate = content.match(/^(?:Review date|Date):\s*(\d{4}-\d{2}-\d{2})\s*$/imu)?.[1]
@@ -121,6 +122,7 @@ const reviewDisposition = (cells: string[]): ReviewDisposition | null => {
   for (const cell of cells) {
     const value = cell.replace(/^`|`$/gu, '').trim().toLowerCase()
     if (value === 'deferred_provider_limitation') return 'deferred_provider_limitation'
+    if (value === 'deferred_quality_review') return 'deferred_quality_review'
     if (value === 'accepted' || value.startsWith('accepted_') || value === 'approved') return 'accepted'
     if (value.startsWith('imported') || value.startsWith('withdrawn') || value.startsWith('removed')) {
       return 'other_final'
@@ -158,6 +160,9 @@ const latestReviewDispositionByGoal = (subject: string): Map<string, ReviewDispo
       const goalId = identity[1]
       const codeCells = Array.from(line.matchAll(/`([^`]+)`/gu), (match) => match[1])
       const disposition = reviewDisposition(codeCells.slice(1))
+      if (disposition === 'deferred_quality_review') {
+        assertQualityDeferralEvidence(reviewRoot, goalId, line)
+      }
       if (disposition) dispositionByGoal.set(goalId, disposition)
     })
   })
@@ -292,8 +297,9 @@ const buildLedgers = (subjects: Set<string> | null): GoalVisualizationQaLedger[]
           dispositions = latestReviewDispositionByGoal(subject)
           dispositionBySubject.set(subject, dispositions)
         }
-        missingReason = dispositions.get(goalId) === 'deferred_provider_limitation'
-          ? 'deferred_provider_limitation'
+        const disposition = dispositions.get(goalId)
+        missingReason = disposition === 'deferred_provider_limitation' || disposition === 'deferred_quality_review'
+          ? disposition
           : 'no_primary_link'
       }
 

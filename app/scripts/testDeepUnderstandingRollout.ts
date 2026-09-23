@@ -79,6 +79,9 @@ assert.equal(hasCompletedDeepUnderstandingVisualizationReview({ ...imageReview, 
 assert.equal(hasCompletedDeepUnderstandingVisualizationReview({
   ...imageReview, visualizationState: 'missing', missingReason: 'deferred_provider_limitation', humanApproved: 'yes',
 }), false, 'Even a formerly approved image cannot complete deferred necessary work.')
+assert.equal(hasCompletedDeepUnderstandingVisualizationReview({
+  ...imageReview, visualizationState: 'missing', missingReason: 'deferred_quality_review', humanApproved: 'yes',
+}), false, 'A quality-deferred image cannot satisfy the machine-only M7 visualization gate.')
 
 const fixtureLandscape = {
   landscapeId: 'fixture-landscape', goals: [{ id: 'goal-a' }, { id: 'goal-b' }],
@@ -194,11 +197,28 @@ assert.throws(
 )
 
 const report = await generateDeepUnderstandingRollout()
-assert.equal(report.blockingIssueCount, 0)
 const mathematics = report.subjects.find(({ subject }) => subject === 'mathematik')
 const physics = report.subjects.find(({ subject }) => subject === 'physik')
 assert.ok(mathematics)
 assert.ok(physics)
+const mathQa = JSON.parse(readFileSync(resolve(
+  repositoryRoot,
+  'curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json',
+), 'utf8')) as { records: Array<{ goalId: string; visualizationState: string; missingReason: string }> }
+const qualityHoldGoalIds = new Set(mathQa.records
+  .filter((record) => record.visualizationState === 'missing' && record.missingReason === 'deferred_quality_review')
+  .map((record) => record.goalId))
+const staleEvidenceGoalIds = mathematics.issues.map((issue) => {
+  const match = issue.match(/: ([0-9a-f-]{36}): stale reviewInputFingerprint; expected sha256:[0-9a-f]{64}$/u)
+  assert.ok(match, `Unexpected Mathematics rollout blocker: ${issue}`)
+  return match[1]
+})
+assert.ok(staleEvidenceGoalIds.every((goalId) => qualityHoldGoalIds.has(goalId)))
+assert.equal(new Set(staleEvidenceGoalIds).size, staleEvidenceGoalIds.length)
+assert.equal(report.blockingIssueCount, staleEvidenceGoalIds.length, 'No unrelated subject may have rollout blockers')
+assert.equal(physics.issues.length, 0)
+assert.ok([...qualityHoldGoalIds].every((goalId) => mathematics.deferredVisualizationGoalIds.includes(goalId)))
+assert.ok([...qualityHoldGoalIds].every((goalId) => !mathematics.strictCompleteGoalIds.includes(goalId)))
 for (const subject of [mathematics, physics]) {
   assert.ok(subject.denominator && subject.denominator > 0)
   assert.equal(subject.strictCompleteGoalIds.length, subject.strictComplete)
@@ -210,7 +230,11 @@ for (const subject of [mathematics, physics]) {
   assert.equal(subject.gates.currentMemoryReviewDecisions, subject.denominator)
   assert.ok(subject.gates.currentVisualizationQaRecords >= subject.strictComplete)
   assert.equal(subject.strictCompletionReady, hasStrictDeepUnderstandingCompletion(subject))
-  assert.ok(subject.requiredChecks.every(({ status }) => status === 'pass'))
+  assert.deepEqual(
+    subject.requiredChecks.filter(({ status }) => status === 'fail').map(({ id }) => id),
+    subject.subject === 'mathematik' && staleEvidenceGoalIds.length > 0 ? ['positive-evidence-validation'] : [],
+    'Only stale evidence bound to withdrawn quality-held images may remain open',
+  )
   assert.equal(subject.currentGoalIds.length, subject.denominator)
   assert.ok(subject.deferredVisualizationGoalIds.every((goalId) => !subject.strictCompleteGoalIds.includes(goalId)))
 }

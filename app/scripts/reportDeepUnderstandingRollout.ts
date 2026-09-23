@@ -185,7 +185,7 @@ interface VisualizationQaRecord {
   landscapeId: string
   landscapePath: string
   visualizationState: 'available' | 'missing'
-  missingReason: '' | 'no_primary_link' | 'deferred_provider_limitation'
+  missingReason: '' | 'no_primary_link' | 'deferred_provider_limitation' | 'deferred_quality_review'
   imageUrl: string
   publicAssetPath: string
   canonicalAssetPath: string
@@ -890,7 +890,7 @@ const loadVisualizationReadyGoals = (
     ))
     if (record.visualizationState === 'missing') {
       if (
-        record.missingReason === 'deferred_provider_limitation'
+        (record.missingReason === 'deferred_provider_limitation' || record.missingReason === 'deferred_quality_review')
         && primaryLinks.length === 0
         && !record.imageUrl
         && !record.assetSha256

@@ -1,5 +1,10 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 
+import { assertQualityDeferralEvidence } from './goalVisualizationQualityDeferral'
 import {
   coverageGateFailure,
   isAcceptedDecision,
@@ -24,6 +29,7 @@ acceptedDecisions.forEach((decision) => {
 
 const nonAcceptedDecisions = [
   'deferred_provider_limitation',
+  'deferred_quality_review',
   'rejected_regenerated',
   'blocked_provider_quota',
   'not_attempted_after_quota_block',
@@ -81,6 +87,21 @@ assert.deepEqual(
 
 assert.deepEqual(
   parseReviewDecisionRow(
+    '| `87372f49-c832-50f6-921f-ec9a6804d58a` | Heuristik | `deferred_quality_review` | `sha256:abc` | Archiv | Unbewiesenes Maximum |',
+    'quality-holds',
+  ),
+  {
+    batch: 'quality-holds',
+    goalId: '87372f49-c832-50f6-921f-ec9a6804d58a',
+    title: 'Heuristik',
+    decision: 'deferred_quality_review',
+    notes: 'Unbewiesenes Maximum',
+  },
+  'quality holds remain explicit non-accepted review decisions',
+)
+
+assert.deepEqual(
+  parseReviewDecisionRow(
     '| `05946a6a-aaaa-bbbb-cccc-123456789abc` | `deferred_provider_limitation` | Kanonischer Titel | drei Versuche |',
     'shard-1',
   ),
@@ -117,5 +138,34 @@ assert.equal(
   null,
   'a UUID embedded in a candidate path must not be parsed as a goal identity',
 )
+
+const heldGoalId = '87372f49-c832-50f6-921f-ec9a6804d58a'
+const reviewRoot = mkdtempSync(join(tmpdir(), 'skillpilot-quality-hold-'))
+try {
+  const archive = `quality-hold-test/assets/${heldGoalId}/${heldGoalId}.png`
+  const imageBytes = Buffer.from('archived-original-fixture')
+  const imageHash = `sha256:${createHash('sha256').update(imageBytes).digest('hex')}`
+  mkdirSync(join(reviewRoot, 'quality-hold-test', 'assets', heldGoalId), { recursive: true })
+  writeFileSync(join(reviewRoot, archive), imageBytes)
+  const row = `| \`${heldGoalId}\` | Heuristik | \`deferred_quality_review\` | \`${imageHash}\` | \`${archive}\` | Die Illustration behauptet ein unbewiesenes Maximum. |`
+  assert.doesNotThrow(() => assertQualityDeferralEvidence(reviewRoot, heldGoalId, row))
+  assert.throws(
+    () => assertQualityDeferralEvidence(reviewRoot, heldGoalId, row.replace(imageHash, `sha256:${'0'.repeat(64)}`)),
+    /does not match/u,
+    'a quality hold cannot cite different archived bytes',
+  )
+  assert.throws(
+    () => assertQualityDeferralEvidence(reviewRoot, heldGoalId, row.replace(archive, `quality-hold-test/assets/${heldGoalId}/missing.png`)),
+    /does not identify the exact goal image/u,
+    'a quality hold must identify the original goal image',
+  )
+  assert.throws(
+    () => assertQualityDeferralEvidence(reviewRoot, heldGoalId, `| \`${heldGoalId}\` | Heuristik | \`deferred_quality_review\` | Offen |`),
+    /needs an exact SHA-256/u,
+    'a bare decision must not count as documented coverage',
+  )
+} finally {
+  rmSync(reviewRoot, { recursive: true, force: true })
+}
 
 console.log('Goal-visualization rollout status passed: accepted vocabulary, coverage gate, and ledger parsing verified.')

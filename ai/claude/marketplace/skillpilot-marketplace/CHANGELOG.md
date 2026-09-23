@@ -1,14 +1,17 @@
 # Changelog
 
-## 1.1.10 - 2026-09-23 (local candidate)
+## 1.1.10 - 2026-09-23
 
-- Check task and goal evidence privately before offering closure. Once the
-  learner accepts an offered closure, carry out that decision unless new
-  relevant learner information changes the evidence.
+- Decide privately from the learner's work whether an ordinary goal is mastered.
+  Save a demonstrated success immediately, before claiming it was saved or
+  announcing a successor; learner agreement is not a mastery-write condition.
+- Give concrete task and exam feedback, including a full result and solution
+  discussion after an unsuccessful exam, without storing a failed result.
+  Answer questions or respect a pause before starting new content.
 - Keep private deliberation, policy checks and tool planning out of learner-facing
-  text and speech; give only concise feedback about the demonstrated work.
-- Preserve the published 1.1.9 package and its release evidence. Deployment,
-  Marketplace publication and real-client acceptance require separate checks.
+  text and speech. The exact 1.1.10 download is live on SkillPilot; Marketplace
+  publication and real-client Web and Android Voice acceptance are verified
+  separately.
 
 ## 1.1.9 - 2026-09-23
 

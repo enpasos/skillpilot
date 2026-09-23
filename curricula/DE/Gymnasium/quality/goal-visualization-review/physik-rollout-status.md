@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-20T09:08:32.942Z
+Generated: 2026-09-23T13:02:35.776Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -20,12 +20,13 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Atomare Ziele im Visualisierungs-Scope | 478 |
 | Ziele mit primaerem Visualisierungslink | 478 |
 | Coverage | 100.0% |
-| Durch Asset oder Provider-Deferred dokumentierte Ziele | 478 |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 478 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 97 |
 | Offene Provider-Deferred-Ziele | 0 |
+| Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
@@ -85,12 +86,17 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
-- Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
+- Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
+- Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.
 - Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.
 
 ## Quality Queues
 
 ### Open Provider Deferred
+
+Keine Eintraege.
+
+### Open Quality Deferred
 
 Keine Eintraege.
 

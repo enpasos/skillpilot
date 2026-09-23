@@ -13,7 +13,7 @@ interface QaRecord {
   goalId: string
   landscapePath: string
   visualizationState: VisualizationState
-  missingReason: '' | 'no_primary_link' | 'deferred_provider_limitation'
+  missingReason: '' | 'no_primary_link' | 'deferred_provider_limitation' | 'deferred_quality_review'
   imageUrl: string
   assetSha256: string
 }
@@ -30,11 +30,13 @@ interface RolloutReport {
     atomicGoalsInScope: number
     goalsWithPrimaryVisualization: number
     openProviderDeferredGoals: number
+    openQualityDeferredGoals: number
     regularUnlinkedGoals: number
     coverageGatePassed: boolean
   }
   qualityQueues: {
     openProviderDeferred: Array<{ goalId: string }>
+    openQualityDeferred: Array<{ goalId: string }>
   }
   visualizedGoals: Array<{ goalId: string }>
 }
@@ -107,8 +109,14 @@ for (const subject of subjects) {
 
   const available = atomicRecords.filter((record) => record.visualizationState === 'available')
   const missing = atomicRecords.filter((record) => record.visualizationState === 'missing')
-  const deferred = missing.filter((record) => record.missingReason === 'deferred_provider_limitation')
-  const regularMissing = missing.filter((record) => record.missingReason !== 'deferred_provider_limitation')
+  const providerDeferred = missing.filter((record) => record.missingReason === 'deferred_provider_limitation')
+  const qualityDeferred = missing.filter((record) => record.missingReason === 'deferred_quality_review')
+  const regularMissing = missing.filter((record) => record.missingReason === 'no_primary_link')
+  assert.equal(
+    providerDeferred.length + qualityDeferred.length + regularMissing.length,
+    missing.length,
+    `${subject}: unknown missing reason`,
+  )
 
   available.forEach((record) => {
     assert.ok(record.imageUrl, `${subject}:${record.goalId}: available record has no image URL`)
@@ -122,7 +130,8 @@ for (const subject of subjects) {
 
   assert.equal(atomicRecords.length, rollout.summary.atomicGoalsInScope, `${subject}: target-scope mismatch`)
   assert.equal(available.length, rollout.summary.goalsWithPrimaryVisualization, `${subject}: active-image mismatch`)
-  assert.equal(deferred.length, rollout.summary.openProviderDeferredGoals, `${subject}: deferred mismatch`)
+  assert.equal(providerDeferred.length, rollout.summary.openProviderDeferredGoals, `${subject}: provider-deferred mismatch`)
+  assert.equal(qualityDeferred.length, rollout.summary.openQualityDeferredGoals, `${subject}: quality-deferred mismatch`)
   assert.equal(regularMissing.length, rollout.summary.regularUnlinkedGoals, `${subject}: regular-missing mismatch`)
   assert.equal(rollout.summary.coverageGatePassed, regularMissing.length === 0, `${subject}: coverage-gate mismatch`)
   assertSameGoalIds(
@@ -131,9 +140,14 @@ for (const subject of subjects) {
     `${subject}: active-image goal IDs differ between QA and rollout report`,
   )
   assertSameGoalIds(
-    deferred.map((record) => record.goalId),
+    providerDeferred.map((record) => record.goalId),
     rollout.qualityQueues.openProviderDeferred.map((record) => record.goalId),
     `${subject}: deferred goal IDs differ between QA and rollout report`,
+  )
+  assertSameGoalIds(
+    qualityDeferred.map((record) => record.goalId),
+    rollout.qualityQueues.openQualityDeferred.map((record) => record.goalId),
+    `${subject}: quality-deferred goal IDs differ between QA and rollout report`,
   )
   if (regularMissing.length === 0) {
     assertSameGoalIds(
@@ -141,12 +155,13 @@ for (const subject of subjects) {
       [
         ...rollout.visualizedGoals.map((record) => record.goalId),
         ...rollout.qualityQueues.openProviderDeferred.map((record) => record.goalId),
+        ...rollout.qualityQueues.openQualityDeferred.map((record) => record.goalId),
       ],
       `${subject}: target-scope goal IDs differ between QA and rollout report`,
     )
   }
 
   console.log(
-    `${subject}: QA/rollout parity passed (${atomicRecords.length} atomic scope, ${clusterOverviewRecords.length} active cluster overview, ${available.length} active, ${deferred.length} deferred, ${regularMissing.length} regular missing).`,
+    `${subject}: QA/rollout parity passed (${atomicRecords.length} atomic scope, ${clusterOverviewRecords.length} active cluster overview, ${available.length} active, ${providerDeferred.length} provider deferred, ${qualityDeferred.length} quality deferred, ${regularMissing.length} regular missing).`,
   )
 }

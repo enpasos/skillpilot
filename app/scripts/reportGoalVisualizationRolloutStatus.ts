@@ -3,6 +3,7 @@ import { basename, dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import { isOrdinaryAtomicGoalForVisualization } from '../../scripts/goal_visualization_scope.mjs'
+import { assertQualityDeferralEvidence } from './goalVisualizationQualityDeferral'
 
 type ReviewDecision =
   | 'accepted_pilot'
@@ -13,6 +14,7 @@ type ReviewDecision =
   | 'accepted_pilot_after_user_review_correction'
   | 'blocked_provider_quota'
   | 'deferred_provider_limitation'
+  | 'deferred_quality_review'
   | 'not_generated_provider_quota'
   | 'not_requested_provider_quota'
   | 'rejected_not_linked'
@@ -98,6 +100,7 @@ interface GoalVisualizationRolloutReport {
     reviewLedgerFiles: number
     reviewDecisionCounts: Record<string, number>
     openProviderDeferredGoals: number
+    openQualityDeferredGoals: number
     openProviderQuotaGoals: number
     blockedProviderQuotaLedgers: number
     regularUnlinkedGoals: number
@@ -113,6 +116,7 @@ interface GoalVisualizationRolloutReport {
   }
   qualityQueues: {
     openProviderDeferred: ReviewDecisionRow[]
+    openQualityDeferred: ReviewDecisionRow[]
     openProviderQuota: ReviewDecisionRow[]
     rejectedNotLinked: ReviewDecisionRow[]
     userReviewCorrections: ReviewDecisionRow[]
@@ -365,6 +369,9 @@ function parseReviewLedger(path: string, subject: string): ReviewLedger {
 
   text.split(/\r?\n/).forEach((line) => {
     const decision = parseReviewDecisionRow(line, batch)
+    if (decision?.decision === 'deferred_quality_review') {
+      assertQualityDeferralEvidence(dirname(resolveRepoPath(path)), decision.goalId, line)
+    }
     if (decision) decisions.push(decision)
   })
 
@@ -417,7 +424,7 @@ function latestDecisionRows(ledgers: ReviewLedger[]): ReviewDecisionRow[] {
 }
 
 export function isReviewDecision(decision: string | null | undefined): boolean {
-  return /^(?:accepted(?:_|$)|rejected(?:_|$)|deferred_provider_limitation$|blocked_provider_quota$|not_(?:generated|requested|attempted)|correction_open_|provider_temporary_)/u.test(decision ?? '')
+  return /^(?:accepted(?:_|$)|rejected(?:_|$)|deferred_(?:provider_limitation|quality_review)$|blocked_provider_quota$|not_(?:generated|requested|attempted)|correction_open_|provider_temporary_)/u.test(decision ?? '')
 }
 
 export function isAcceptedDecision(decision: string | null | undefined): boolean {
@@ -470,14 +477,30 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
   }).length
   const linkedGoalIds = new Set(visualizedGoals.map((row) => row.goalId))
   const atomicGoalIds = new Set(atomicGoals.map((goal) => goal.id))
+  const linkedQualityHold = latestDecisions.find((row) => (
+    row.decision === 'deferred_quality_review'
+    && atomicGoalIds.has(row.goalId)
+    && linkedGoalIds.has(row.goalId)
+  ))
+  if (linkedQualityHold) {
+    throw new Error(`${args.subject}:${linkedQualityHold.goalId}: quality-deferred image must have no active primary link`)
+  }
   const openProviderDeferred = latestDecisions.filter((row) => {
     return row.decision === 'deferred_provider_limitation'
       && atomicGoalIds.has(row.goalId)
       && !linkedGoalIds.has(row.goalId)
   })
+  const openQualityDeferred = latestDecisions.filter((row) => {
+    return row.decision === 'deferred_quality_review'
+      && atomicGoalIds.has(row.goalId)
+      && !linkedGoalIds.has(row.goalId)
+  })
   const openProviderDeferredGoalIds = new Set(openProviderDeferred.map((row) => row.goalId))
+  const openQualityDeferredGoalIds = new Set(openQualityDeferred.map((row) => row.goalId))
   const regularUnlinkedGoals = atomicGoals.filter((goal) => {
-    return !linkedGoalIds.has(goal.id) && !openProviderDeferredGoalIds.has(goal.id)
+    return !linkedGoalIds.has(goal.id)
+      && !openProviderDeferredGoalIds.has(goal.id)
+      && !openQualityDeferredGoalIds.has(goal.id)
   })
   const linkedWithoutAcceptedReview = visualizedGoals.filter((row) => {
     return !isAcceptedDecision(latestDecisionByGoalId.get(row.goalId)?.decision)
@@ -493,7 +516,9 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
       && atomicGoalIds.has(row.goalId)
       && !linkedGoalIds.has(row.goalId)
   })
-  const goalsAccountedForByAssetOrDeferred = linkedGoalIds.size + openProviderDeferredGoalIds.size
+  const goalsAccountedForByAssetOrDeferred = linkedGoalIds.size
+    + openProviderDeferredGoalIds.size
+    + openQualityDeferredGoalIds.size
 
   return {
     schemaVersion: 1,
@@ -519,6 +544,7 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
       reviewLedgerFiles: ledgers.length,
       reviewDecisionCounts: decisionCounts,
       openProviderDeferredGoals: openProviderDeferred.length,
+      openQualityDeferredGoals: openQualityDeferred.length,
       openProviderQuotaGoals: openProviderQuota.length,
       blockedProviderQuotaLedgers: ledgers.filter((ledger) => ledger.status?.includes('blocked_provider_quota')).length,
       regularUnlinkedGoals: regularUnlinkedGoals.length,
@@ -534,6 +560,7 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
     },
     qualityQueues: {
       openProviderDeferred,
+      openQualityDeferred,
       openProviderQuota,
       rejectedNotLinked,
       userReviewCorrections,
@@ -636,12 +663,13 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
       ['Atomare Ziele im Visualisierungs-Scope', summary.atomicGoalsInScope],
       ['Ziele mit primaerem Visualisierungslink', summary.goalsWithPrimaryVisualization],
       ['Coverage', `${summary.coveragePercent.toFixed(1)}%`],
-      ['Durch Asset oder Provider-Deferred dokumentierte Ziele', summary.goalsAccountedForByAssetOrDeferred],
+      ['Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele', summary.goalsAccountedForByAssetOrDeferred],
       ['Dokumentierte Coverage', `${summary.accountedCoveragePercent.toFixed(1)}%`],
       ['Coverage-Gate', summary.coverageGatePassed ? 'bestanden' : 'nicht bestanden'],
       ['Release-approved Visualisierungen', summary.releaseApprovedVisualizationCount],
       ['Review-Ledger-Dateien', summary.reviewLedgerFiles],
       ['Offene Provider-Deferred-Ziele', summary.openProviderDeferredGoals],
+      ['Offene Quality-Deferred-Ziele', summary.openQualityDeferredGoals],
       ['Offene Provider-Quota-Ziele', summary.openProviderQuotaGoals],
       ['Provider-Quota-blockierte Ledger', summary.blockedProviderQuotaLedgers],
       ['Regulaere unvisualisierte Ziele ohne Deferred-Status', summary.regularUnlinkedGoals],
@@ -680,9 +708,10 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push('')
   lines.push('- Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.')
   lines.push('- Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.')
-  lines.push('- Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.')
-  if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
-    lines.push(`- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur ${summary.openProviderDeferredGoals} Provider-Deferred-Ziel(e).`)
+  lines.push('- Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.')
+  lines.push('- Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.')
+  if (summary.regularUnlinkedGoals === 0 && (summary.openProviderDeferredGoals > 0 || summary.openQualityDeferredGoals > 0)) {
+    lines.push(`- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind ${summary.openProviderDeferredGoals} Provider- und ${summary.openQualityDeferredGoals} Quality-Deferred-Ziel(e).`)
   } else {
     lines.push('- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.')
   }
@@ -692,6 +721,9 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push('### Open Provider Deferred')
   lines.push('')
   lines.push(...renderDecisionRows(report.qualityQueues.openProviderDeferred, 20))
+  lines.push('### Open Quality Deferred')
+  lines.push('')
+  lines.push(...renderDecisionRows(report.qualityQueues.openQualityDeferred, 30))
   lines.push('### Open Provider Quota')
   lines.push('')
   lines.push(...renderDecisionRows(report.qualityQueues.openProviderQuota, 20))
@@ -711,6 +743,10 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push(...renderDecisionRows(report.consistency.acceptedReviewWithoutLink, 30))
   lines.push('## Next Command')
   lines.push('')
+  if (summary.openQualityDeferredGoals > 0) {
+    lines.push(`Priority: correct the ${summary.openQualityDeferredGoals} quality-deferred image(s) named above, inspect each replacement at original resolution, and record a new approval for its exact SHA-256 before re-linking. This is open M7-V work; the provider batch command below is a separate queue.`)
+    lines.push('')
+  }
   lines.push('```bash')
   if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
     lines.push(`npm --prefix app run visualization:plan-batch -- --count 6 --landscape ${report.request.landscapePath} --output tmp/goal-visualization-${report.request.subject}-next-batch.txt --include-deferred`)
@@ -721,6 +757,8 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push('')
   if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
     lines.push('Use this only for an intentional provider-limitation revisit. Generated candidates still require full mathematical review before import; otherwise keep the existing deferred ledger decisions.')
+  } else if (summary.openQualityDeferredGoals > 0) {
+    lines.push('Quality-deferred images require targeted correction and a new exact-asset review before re-linking. Do not treat this documented queue as M7 completion.')
   } else {
     lines.push('After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.')
   }
@@ -742,7 +780,7 @@ export function coverageGateFailure(report: {
   summary: { regularUnlinkedGoals: number }
 }): string | null {
   if (report.summary.regularUnlinkedGoals === 0) return null
-  return `${report.request.subject}: coverage gate failed: ${report.summary.regularUnlinkedGoals} ordinary atomic goal(s) have neither a primary visualization nor a current deferred_provider_limitation decision.`
+  return `${report.request.subject}: coverage gate failed: ${report.summary.regularUnlinkedGoals} ordinary atomic goal(s) have neither a primary visualization nor a current documented deferred decision.`
 }
 
 function writeOrCheck(args: Args, report: GoalVisualizationRolloutReport): void {

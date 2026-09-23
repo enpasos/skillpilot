@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-09-21T03:48:41.903Z
+Generated: 2026-09-23T12:53:56.388Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,11 +16,11 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1187 |
-| Atomare Blattleernziele | 928 |
+| Alle Mathematik-Ziele | 1192 |
+| Atomare Blattleernziele | 932 |
 | Davon relevant fuer Quellenbegruendung | 797 |
-| Memory-/Nicht-Content-Blattziele | 131 |
-| Clusterziele | 259 |
+| Memory-/Nicht-Content-Blattziele | 135 |
+| Clusterziele | 260 |
 | Runtime-Quellenbegruendungen | 741 |
 | Runtime-Ziele mit klassischem Quellenweg | 741 |
 | Runtime-Ziele mit MEM/FWU-konsistenter Route | 227 |
@@ -28,10 +28,10 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Relevante Blattziele mit MEM/FWU-konsistenter Route | 227/797 (28.5%) |
 | Relevante Blattziele ohne Runtime-Quellenbegruendung | 56 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
-| Cluster mit direkter Runtime-Quellenbegruendung | 0/259 |
-| Cluster ohne direkte Runtime-Quellenbegruendung | 259 |
-| contains-Relationen mit Begruendungstext | 0/1308 |
-| requires-Relationen mit Begruendungstext | 0/2436 |
+| Cluster mit direkter Runtime-Quellenbegruendung | 0/260 |
+| Cluster ohne direkte Runtime-Quellenbegruendung | 260 |
+| contains-Relationen mit Begruendungstext | 0/1313 |
+| requires-Relationen mit Begruendungstext | 0/2439 |
 
 ## Interpretation
 
@@ -250,6 +250,7 @@ Weitere 434 Eintraege stehen in der JSON-Begleitdatei.
 | Schnittpunkte von Geraden und Ebenen bestimmen und deuten | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.LINE_AND_LINE_PLANE_INTERSECTIONS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum > Schnittpunkte von Geraden und Ebenen bestimmen und deuten |
 | Vertiefende Untersuchungen im Raum (LK) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum > Vertiefende Untersuchungen im Raum (LK) |
 | Lineare geometrische Abbildungen und Abbildungsmatrizen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lineare geometrische Abbildungen und Abbildungsmatrizen |
+| Prüfung zur Koordinatenachsendrehung (LK) (canonical_math_q2_lk_coordinate_axis_rotation_assessments) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lineare geometrische Abbildungen und Abbildungsmatrizen > Prüfung zur Koordinatenachsendrehung (LK) |
 | Matrizen, Übergangsprozesse und lineare Modelle (Sek II) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) |
 | Fixvektoren, stabile Zustände und Langzeitverhalten | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.MATRICES.FIXED_VECTORS_AND_LONG_TERM_BEHAVIOR | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Fixvektoren, stabile Zustände und Langzeitverhalten |
 | Matrixoperationen und Mehrschrittprozesse | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.MATRICES.OPERATIONS_AND_MULTI_STEP_PROCESSES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Matrixoperationen und Mehrschrittprozesse |
@@ -291,13 +292,12 @@ Weitere 434 Eintraege stehen in der JSON-Begleitdatei.
 | Komplexe Zahlen | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Komplexe Zahlen |
 | Komplexe Zahlen algebraisch multiplizieren und dividieren | Q4 | unknown | CANONICAL.MATH.SEK2.Q4.3.MULTIPLY_AND_DIVIDE_COMPLEX_NUMBERS_ALGEBRAICALLY | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Komplexe Zahlen > Komplexe Zahlen algebraisch multiplizieren und dividieren |
 | Zahlbereichserweiterung zu komplexen Zahlen begründen (LK) (canonical_math_sek2_q4_complex_extension_necessity_by) | Q4 | Algebra | CANONICAL.MATH.SEK2.Q4.COMPLEX_EXTENSION_BY | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Komplexe Zahlen > Zahlbereichserweiterung zu komplexen Zahlen begründen (LK) |
-| Problemlösen und Argumentieren | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren |
 
-Weitere 199 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 200 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/public/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-09-21T03:47:38.310Z
+- Runtime index generated: 2026-09-23T12:53:28.246Z
 

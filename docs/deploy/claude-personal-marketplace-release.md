@@ -5,9 +5,11 @@ This runbook governs the repository-backed personal marketplace for
 marketplace mechanism itself does not alter that candidate. It is not an
 Anthropic-curated or Anthropic-verified listing. Version 1.1.9 is published in
 the public Marketplace and its exact source, package and repository have been
-independently verified. The website download serves the same 1.1.9 archive.
-Full real-client acceptance of 1.1.9 remains pending; repository
-publication does not establish installation or synchronization in every account.
+independently verified. On 23 September 2026 the website download was verified
+to serve the separately prepared 1.1.10 archive; the Marketplace still serves
+1.1.9 pending its own publication. Full real-client acceptance remains
+pending; repository publication does not establish installation or
+synchronization in every account.
 Earlier published packages and their evidence remain immutable history.
 
 ## 1.1.10 local incident candidate
@@ -15,7 +17,7 @@ Earlier published packages and their evidence remain immutable history.
 On 23 September 2026, the Product Owner reported that the coach exposed
 private deliberation in a Voice conversation and reconsidered a goal closure
 after the learner accepted its offer without adding new learning information.
-The 1.1.10 successor is being prepared locally with an instruction and Claude
+The 1.1.10 successor was prepared locally with an instruction and Claude
 connector correction. The coach now decides privately from the learner's work,
 persists only demonstrated success before reporting it, and offers questions
 or continuation after feedback. A failed exam still receives its full evaluation
@@ -24,14 +26,24 @@ repeatable. The exact 1.1.9 release dossier is retained under
 `release/history/1.1.9/`; its published archive and Marketplace source remain
 unchanged. The 1.1.10 exact-client regression plan is
 `ai/claude/plugin/skillpilot-coach-v1/release/1.1.10-incident-regression-plan.md`.
-Web and Android Voice evidence, deployment and Marketplace publication remain
-pending. The public Marketplace and website still serve 1.1.9 until a separate
-approved rollout. The local Marketplace export pins committed SkillPilot source
+Web and Android Voice evidence and Marketplace publication remain pending.
+The website index and downloaded bytes now match the 1.1.10 archive at 41,166
+bytes and SHA-256
+`4304cb825942db3fa2c7e6a352481794a523ea21afba0e6db71f6314fddee618`.
+The credential-free production support synthetic passed all eight checks on
+23 September 2026. Neither check proves a real-client learning flow or an
+installed Marketplace update. The local Marketplace export pins committed
+SkillPilot source
 revision `8dc0fa9b8fad65db28f2be25a165dd4a72a36bce` and plugin-source
 tree digest `16594707fbeca128fa8544f5da70486c6286702760e320b41c6334d7df1e4cb2`.
 That revision must be available from
 `enpasos/skillpilot` before the external Marketplace workflow can run; no
 repository publication or 1.1.10 client acceptance has occurred.
+The corrected twelve-file local Marketplace export has tree SHA-256
+`ac46ca37e788ae137c7c2465ec2be53564b41e3de5f26d010ccc2a06307ed780`.
+Generator verification, both strict Claude CLI validations and an isolated
+local install passed. This is preparation evidence, not source-CI, remote
+publication or real-client acceptance.
 
 ## 1.1.9 publication for issue #55
 

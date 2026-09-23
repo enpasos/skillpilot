@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v5",
-  "generatedAt": "2026-09-23T11:39:22.054Z",
+  "generatedAt": "2026-09-23T13:06:18.226Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -31,8 +31,8 @@
     },
     "ruleStatus": {
       "pass": 229,
-      "warn": 20,
-      "fail": 5,
+      "warn": 19,
+      "fail": 6,
       "not_configured": 68
     }
   },
@@ -42287,24 +42287,43 @@
         },
         {
           "id": "CQR-303",
-          "status": "warn",
-          "summary": "Deep curriculum QA is incomplete: 672/797 current curricularAtomic goals strictly complete.",
+          "status": "fail",
+          "summary": "Deep curriculum QA is incomplete: 663/797 current curricularAtomic goals strictly complete.",
           "metrics": {
             "expectedGoals": 797,
-            "remaining": 125,
-            "strictComplete": 672,
+            "remaining": 134,
+            "strictComplete": 663,
             "currentDescriptionResolutions": 728,
-            "currentPositiveEvidenceProfiles": 797,
+            "currentPositiveEvidenceProfiles": 747,
             "currentSemanticAtomicityDecisions": 797,
             "currentMemoryReviewDecisions": 797,
             "currentVisualizationQaRecords": 711,
-            "deferredVisualizations": 54,
-            "requiredChecksPassed": 6,
+            "deferredVisualizations": 81,
+            "requiredChecksPassed": 5,
             "requiredChecksTotal": 6,
-            "blockingIssues": 0
+            "blockingIssues": 27
           },
           "details": [
-            "54 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-four-new-png-bound-p-20260923-v1/upper-sec-retained-nine.config.json: f2a12269-6bcb-564a-9fdb-45cfdbd704fc: stale reviewInputFingerprint; expected sha256:e408c5e98173152839c12bc53f2f5700338c262ec3e35d837a75004c5b7e0763",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-functions-diagrams-next10-p-20260923-v1/text-only-three-after-c19-image-20260923-v1.config.json: 1b70498a-62a0-5a84-99dd-476b8af68da6: stale reviewInputFingerprint; expected sha256:aa28a3da82697a8d913b3000bfdfa28814aa41e98513c83a1a3f81af54943fe5",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-p-gap-second16-20260923-v1/text-only-6.config.json: 909d8b16-5156-528b-a300-d9aee5405ba0: stale reviewInputFingerprint; expected sha256:01132064e9509e0b8e3a34ec28f2423a7f0ef67d7759da6e119d079c73636de9",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-p-gap-second16-20260923-v1/text-only-6.config.json: a594dec0-3977-5c43-9432-d4254a7f6130: stale reviewInputFingerprint; expected sha256:8473f38d5cc8483450eb61d0676efeffbecc71a2c8004e2e09c7690ffdd35677",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-p-gap-second16-20260923-v1/text-only-6.config.json: b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2: stale reviewInputFingerprint; expected sha256:2cb1517981a424fbe2d9d3f165f82926757639acb3d104f573d81c14150ed9d0",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-p-gap-second16-20260923-v1/text-only-6.config.json: bd637a72-6609-54f5-bb33-8a9e898bf7a0: stale reviewInputFingerprint; expected sha256:62eb0a0431226b21f33d644c3640f2ea9a12563402566ffa760543c2e75bb997",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-p-gap-second16-20260923-v1/text-only-6.config.json: e02b994f-376d-5a8e-a14c-c4acacae57cf: stale reviewInputFingerprint; expected sha256:7de858f3ae60d62ac23b427ea5f9699ed2b418926e24b4b8f2445738f7ad5fa7",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-q2-bodies-volume-keep9-p-20260923-v1/text-only-six.config.json: 1e77bb2f-0cd6-5961-b0fb-230317c73fce: stale reviewInputFingerprint; expected sha256:589e2c5d0281ebf68faac481bc8a51d4bf55b62ac289cd1e0e6a24017fbdc645",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-q2-bodies-volume-keep9-p-20260923-v1/text-only-six.config.json: 288633c1-f61c-5b48-af7e-a80357f96cad: stale reviewInputFingerprint; expected sha256:83bd974d9521e1da240d48ea6adb8a6fe2733ff591142ee4c485411910b28425",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-q2-bodies-volume-keep9-p-20260923-v1/text-only-six.config.json: 2f2c9f1a-07f0-59e4-b84a-60648c3b0bda: stale reviewInputFingerprint; expected sha256:2d4d732e8cecce7b494871443c289bc0f9433acd024646093b6614d83fcc63b6",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-q2-bodies-volume-keep9-p-20260923-v1/text-only-six.config.json: 944dd479-9f30-5acb-ab32-3ea0b6dc8e06: stale reviewInputFingerprint; expected sha256:dcf3a1214b50159158e5baf3bbf5c901c893bf38cd14354791fd2fbc81322f04",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-q2-bodies-volume-keep9-p-20260923-v1/text-only-six.config.json: c71ae268-f28e-59f0-982d-91db8f963378: stale reviewInputFingerprint; expected sha256:4f80ca9c4c6ebe8083431e210c1a033cdc196182b2690e1ba029795e25518956",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-q2-bodies-volume-keep9-p-20260923-v1/text-only-six.config.json: e8237315-654e-5150-97de-49c4cb49b3d1: stale reviewInputFingerprint; expected sha256:27a9d4b864810ae569a200887e4c470270378333df88e0126d9630a80ddc4f83",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-q2-spatial-plane-angle-current-p-20260923-v1/retained-thirteen.config.json: 7bb3c312-f714-55e6-a31f-f31605a93760: stale reviewInputFingerprint; expected sha256:10a2d29ea4e15293bc414dcda37e0029165b57e9fa7ad792f7f32485183b1571",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-q4-argumentation-communication-p-20260923-v1/text-only-hold-5.config.json: 21fa0c22-976e-59b3-a871-899f0c0177f3: stale reviewInputFingerprint; expected sha256:3d359748d44d10b89225a1c2322cbf2629587abe342c811fa1620663fad409dd",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-q4-argumentation-communication-p-20260923-v1/text-only-hold-5.config.json: 27bdc580-ba17-5399-bf02-48f354846d1d: stale reviewInputFingerprint; expected sha256:927df6fc2605b34c50a9cf7780201d1babf7a4836ab3e373c63668c4981c71a4",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-q4-argumentation-communication-p-20260923-v1/text-only-hold-5.config.json: 87372f49-c832-50f6-921f-ec9a6804d58a: stale reviewInputFingerprint; expected sha256:64bdbcd9b634c0c4f17fb5d880c717aa1150b099e52ed6d188f9d45c181ed540",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-q4-argumentation-communication-p-20260923-v1/text-only-hold-5.config.json: 93fc4fbb-72f6-549b-b97a-a48aecb1534d: stale reviewInputFingerprint; expected sha256:d100139bdbf93894c397158adaa529a0968244c8a1b955b329587761e72f8863",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-q4-argumentation-communication-p-20260923-v1/text-only-hold-5.config.json: c97a33d9-d5e4-56c5-ae4c-822bc4f54898: stale reviewInputFingerprint; expected sha256:32bbbc1db1c5710ced28dc1f6ecdb7b291012c43917fb4b8a95353e13173d207",
+            "mathematik: curricula/DE/Gymnasium/quality/goal-evidence/m7-q4-lk-complex-number-theory-p-20260923-v1/text-only-hold-3.config.json: 4f64f771-20ba-581a-86ba-bcdb1759e4d2: stale reviewInputFingerprint; expected sha256:6e77b1f8cb66991414401ca2f8df61e6e2a2f97818e87f8e9b6d1fe90e1cfeb8"
           ]
         },
         {

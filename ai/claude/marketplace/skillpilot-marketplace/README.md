@@ -1,15 +1,16 @@
 # SkillPilot Claude Marketplace
 
-**SkillPilot Coach v1 · Version 1.1.10 candidate** provides curriculum-grounded
-learning coaching for Claude. The public Marketplace and SkillPilot download
-continue to serve 1.1.9 while this replacement candidate is tested.
+**SkillPilot Coach v1 · Version 1.1.10** provides curriculum-grounded learning
+coaching for Claude. SkillPilot's website serves the exact 1.1.10 download.
+Publication through this Git Marketplace and installation in individual Claude
+accounts are checked separately.
 
-Version 1.1.10 keeps daily and weekly plan status, self-contained exam
-instructions and a separate answer after task feedback. Before offering
-closure, the coach must check the evidence privately; it gives a concise
-learner-facing result without exposing its internal deliberation. Acceptance
-in real Claude accounts remains pending; published packages and their evidence
-remain immutable history.
+Version 1.1.10 keeps daily and weekly plan status and self-contained exam
+instructions. The coach assesses learning evidence privately, saves a
+demonstrated success before reporting it, and asks whether the learner has
+questions or wants to continue before starting new content. Acceptance in real
+Claude accounts, including Web and Android Voice, remains pending; published
+packages and their evidence remain immutable history.
 
 ### In version 1.1.10
 
@@ -23,10 +24,14 @@ remain immutable history.
   loads a separate workflow when needed.
 - The coach presents the exam task first and requests protected evaluation only
   after a complete submission, using the actual tool schema.
-- After a task, the coach gives feedback and waits for your answer before
-  closing the task or goal and moving on. You can ask questions or pause.
-- The coach checks whether the goal evidence is sufficient before offering
-  closure, including in voice mode. Its private deliberation stays private.
+- When the work demonstrates an ordinary goal, the coach saves that success
+  before saying it was completed. If only the task is complete, it does not
+  mark the goal as mastered.
+- The coach explains the result, then waits for your questions or decision to
+  continue before starting another task or goal. You can pause at any time.
+- A failed exam still receives its score, feedback and solution discussion,
+  without storing a failed learning result. Private deliberation stays out of
+  learner-facing text and speech, including voice mode.
 - Your answers, assessments and feedback stay in the Claude conversation;
   SkillPilot receives only structured learning results.
 
@@ -85,9 +90,8 @@ For supported clients, setup and the security boundary, see the
 
 Those packaged documents retain their canonical pre-publication snapshot;
 their preparation-time release notes are not a live availability indicator.
-This local Marketplace export contains **1.1.10**. The public repository and
-SkillPilot website continue to serve **1.1.9** until a separately authorized
-publication and rollout. Repository publication alone will not prove that an
+This Marketplace export contains **1.1.10**, matching the exact archive served
+by the SkillPilot website. Repository publication alone will not prove that an
 installed Claude account has updated.
 
 Technical installation ID: `skillpilot-coach-v1@skillpilot-marketplace`.

@@ -1,6 +1,6 @@
 export type GoalVisualizationQaYesNo = 'yes' | 'no'
 export type GoalVisualizationState = 'available' | 'missing'
-export type GoalVisualizationMissingReason = '' | 'no_primary_link' | 'deferred_provider_limitation'
+export type GoalVisualizationMissingReason = '' | 'no_primary_link' | 'deferred_provider_limitation' | 'deferred_quality_review'
 
 export interface GoalVisualizationAssetStateFields {
   visualizationState: GoalVisualizationState

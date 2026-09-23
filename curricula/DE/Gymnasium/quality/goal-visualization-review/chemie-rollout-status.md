@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-07T05:55:47.838Z
+Generated: 2026-09-23T13:02:35.806Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -20,12 +20,13 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | Atomare Ziele im Visualisierungs-Scope | 376 |
 | Ziele mit primaerem Visualisierungslink | 353 |
 | Coverage | 93.9% |
-| Durch Asset oder Provider-Deferred dokumentierte Ziele | 376 |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 376 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 19 |
 | Offene Provider-Deferred-Ziele | 23 |
+| Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
@@ -68,8 +69,9 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
-- Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 23 Provider-Deferred-Ziel(e).
+- Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
+- Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 23 Provider- und 0 Quality-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -99,6 +101,10 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | 018 | `e56040b5-1da8-5080-b358-086d04922339` | Silikone herstellen und strukturbezogen vergleichen | `deferred_provider_limitation` |
 
 Weitere 3 Eintraege stehen in der JSON-Begleitdatei.
+
+### Open Quality Deferred
+
+Keine Eintraege.
 
 ### Open Provider Quota
 

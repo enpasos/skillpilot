@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-23T01:32:54.628Z
+Generated: 2026-09-23T13:06:43.235Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,20 +16,21 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1189 |
+| Alle Ziele in der Landschaft | 1192 |
 | Atomare Ziele im Visualisierungs-Scope | 797 |
-| Ziele mit primaerem Visualisierungslink | 730 |
-| Coverage | 91.6% |
-| Durch Asset oder Provider-Deferred dokumentierte Ziele | 797 |
+| Ziele mit primaerem Visualisierungslink | 716 |
+| Coverage | 89.8% |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 797 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 239 |
-| Offene Provider-Deferred-Ziele | 67 |
+| Review-Ledger-Dateien | 240 |
+| Offene Provider-Deferred-Ziele | 54 |
+| Offene Quality-Deferred-Ziele | 27 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 13 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 26 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -39,7 +40,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted` | 5 |
 | `ai-reviewed` | 6 |
 | `approved` | 16 |
-| `pilot` | 703 |
+| `pilot` | 689 |
 
 ## Ledger Decisions
 
@@ -77,6 +78,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `blocked_provider_quota` | 5 |
 | `correction_open_provider_credit_exhausted` | 4 |
 | `deferred_provider_limitation` | 91 |
+| `deferred_quality_review` | 27 |
 | `not_attempted_after_quota_block` | 4 |
 | `rejected_after_review_regenerated` | 7 |
 | `rejected_after_second_regeneration` | 1 |
@@ -96,8 +98,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-b042s-final-image-repairs-2026-09-07.md` |
-| Latest ledger status | - |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-m7-quality-holds-2026-09-23.md` |
+| Latest ledger status | `image_audit_complete_27_deferred_quality_reviews` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17` |
 
@@ -105,8 +107,9 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
-- Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 67 Provider-Deferred-Ziel(e).
+- Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
+- Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 54 Provider- und 27 Quality-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -115,10 +118,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
 | mathematik-structural-split-deferred-2026-08-16 | `308f19e2-e202-5300-a2fa-1eaa717f4e73` | Asymptotisches Verhalten exponentieller Funktionen deuten | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `4ae9e316-509f-517d-bd94-a165817af24f` | Begrenzte Wachstums- und Zerfallsprozesse aus Daten modellieren | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `e495fa38-b198-5280-a405-9e41cafd6d17` | Bernoulli-Experimente und -Ketten identifizieren und parametrisieren | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `aa00edfa-cf8d-500e-994f-7e33a5ebd045` | Binomialwahrscheinlichkeiten bestimmen und deuten | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `b7cc2fc4-c695-5a97-93b0-3a619c632ca8` | Das empirische Gesetz der großen Zahlen erläutern | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `06ce2b1b-e888-5322-9ed9-dfc6d322956a` | Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK) | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `9b6f4d7d-a804-5666-b7ea-85bb3c73da4a` | Die Formel für Binomialwahrscheinlichkeiten an einem Beispiel begründen | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `e105bad8-b4e5-53fc-b02e-604f1df5b503` | Die kulturhistorische Bedeutung komplexer Zahlen einordnen (LK) | `deferred_provider_limitation` |
@@ -127,15 +128,49 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | mathematik-structural-split-deferred-2026-08-16 | `5619ca5b-dc2a-504e-ad89-2e0ca0a83822` | Die Volumenformel von Pyramiden begründen | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0` | Die Zahlbereichserweiterung zu komplexen Zahlen mathematisch begründen (LK) | `deferred_provider_limitation` |
 | 194 | `dc12f281-f161-572b-a973-8405ae9b2498` | Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `55d0474b-b82c-59b6-a62a-b6a0a34d9c4b` | Diskrete und stetige Zufallsgrößen unterscheiden (LK) | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `3017e774-8d9f-5129-828f-7684db5afc1e` | Dreiecke aus Kongruenzangaben konstruieren | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `570d5931-f126-5bb4-8b7f-db236d6b727f` | Eine Kreistangente im Berührpunkt konstruieren | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c` | Empirische und theoretische Wahrscheinlichkeit unterscheiden | `deferred_provider_limitation` |
 | 204 | `121e3fdf-54d2-4d46-bc2d-f6e725f10f41` | Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `b71c332f-ef9d-5c27-983b-7103269ff419` | Glockenkurven als Funktionsmodelle untersuchen (LK) | `deferred_provider_limitation` |
 | 221 | `bc6e4c14-d4f7-537e-8e83-9b5c0086e807` | Graphen einfacher Hyperbeln mit Asymptoten zeichnen | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8` | Grundlegende Eigenschaften der natürlichen Logarithmusfunktion erläutern (LK) | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `d051857c-0707-544f-ae7a-f20690d182b2` | Höhen in Dreiecken konstruieren | `deferred_provider_limitation` |
+| mathematik-ai-correction-shard-1 | `ae483d98-54e0-5985-96d2-fc1351d22e4f` | Hypothesentests bei verändertem Stichprobenumfang variieren | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `9de07e13-6a5f-5b49-a6d4-0decefb95784` | Inverse Fragestellungen zu Binomialverteilungen lösen | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `c406d5a0-e81d-5ce9-b535-6512a38798de` | Inverse Fragestellungen zur Normalverteilung lösen (LK) | `deferred_provider_limitation` |
 
-Weitere 47 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 34 Eintraege stehen in der JSON-Begleitdatei.
+
+### Open Quality Deferred
+
+| Batch | Goal ID | Title | Decision |
+| --- | --- | --- | --- |
+| mathematik-m7-quality-holds-2026-09-23 | `87372f49-c832-50f6-921f-ec9a6804d58a` | Eine heuristische Strategie anwenden | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `7feaaebd-cc8d-522b-8b3a-ea22675c65dd` | Extremstellen parameterabhängig untersuchen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `c97a33d9-d5e4-56c5-ae4c-822bc4f54898` | Grenzen der Werkzeugnutzung benennen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `a7fb1a7a-8315-5bcb-842e-48293293dfcc` | Grundrechenarten in der Gaußschen Zahlenebene deuten | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `93fc4fbb-72f6-549b-b97a-a48aecb1534d` | Hand- und Tool-Verfahren kombinieren | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `bd637a72-6609-54f5-bb33-8a9e898bf7a0` | Heuristik auswählen und begründen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `27bdc580-ba17-5399-bf02-48f354846d1d` | Heuristischen Stetigkeitsbegriff zum Argumentieren nutzen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `4f64f771-20ba-581a-86ba-bcdb1759e4d2` | Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `9b339361-7719-573d-a913-432246c502ee` | Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK) | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `909d8b16-5156-528b-a300-d9aee5405ba0` | Modell gezielt anpassen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `e02b994f-376d-5a8e-a14c-c4acacae57cf` | Nebenbedingungen berücksichtigen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `74d29d0c-80b3-4d46-a5f5-3c2f609e8483` | Pyramiden und Kegel darstellen, Netze nutzen und Fachbegriffe verwenden | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `1b70498a-62a0-5a84-99dd-476b8af68da6` | Realsituationen mit linearen und quadratischen Funktionen modellieren | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `944dd479-9f30-5acb-ab32-3ea0b6dc8e06` | Spatprodukt korrekt definieren und deuten | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2` | Symmetrien einfacher Körper untersuchen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `f2a12269-6bcb-564a-9fdb-45cfdbd704fc` | Teilungsverhältnisse bei Volumina untersuchen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `e33e75e3-eae5-5a09-862f-d1a11176373f` | Transformationsscharen bekannter Funktionsklassen untersuchen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `7bb3c312-f714-55e6-a31f-f31605a93760` | Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK) | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `e8237315-654e-5150-97de-49c4cb49b3d1` | Volumen von Kegeln aus Radius und Höhe bestimmen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `2f2c9f1a-07f0-59e4-b84a-60648c3b0bda` | Volumen von Kugeln aus dem Radius bestimmen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `1e77bb2f-0cd6-5961-b0fb-230317c73fce` | Volumen von Prismen aus Grundfläche und Höhe bestimmen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `288633c1-f61c-5b48-af7e-a80357f96cad` | Volumen von Pyramiden aus Grundfläche und Höhe bestimmen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `a594dec0-3977-5c43-9432-d4254a7f6130` | Volumen von Spaten und Tetraedern mit Spatprodukt berechnen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `c71ae268-f28e-59f0-982d-91db8f963378` | Volumen von Zylindern aus Radius und Höhe bestimmen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6` | Zählverfahren und kombinatorische Überlegungen für Wahrscheinlichkeiten nutzen | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `4aa70ad4-171d-5671-a864-c0c7758fa0ed` | Zufallsexperimente mit Software simulieren | `deferred_quality_review` |
+| mathematik-m7-quality-holds-2026-09-23 | `21fa0c22-976e-59b3-a871-899f0c0177f3` | Zufallsexperimente und Ereignisse aus Termen formulieren | `deferred_quality_review` |
 
 ### Open Provider Quota
 
@@ -188,20 +223,35 @@ Weitere 27 Eintraege stehen in der JSON-Begleitdatei.
 | `96c55cb6-d2c7-5145-8567-b5f570f55a8a` | Algebraische Terme faktorisieren | `pilot` | `deferred_provider_limitation` |
 | `e2bf726a-126c-5c66-9fbb-6e04c129bb0f` | Äquivalenz durch Begründung oder Gegenbeispiel prüfen | `pilot` | `deferred_provider_limitation` |
 | `630bb145-9a3f-5c88-ab5a-fb69a9bb76e4` | Arithmetische Reihen untersuchen | `pilot` | - |
+| `4ae9e316-509f-517d-bd94-a165817af24f` | Begrenzte Wachstums- und Zerfallsprozesse aus Daten modellieren | `pilot` | `deferred_provider_limitation` |
+| `b7cc2fc4-c695-5a97-93b0-3a619c632ca8` | Das empirische Gesetz der großen Zahlen erläutern | `pilot` | `deferred_provider_limitation` |
+| `55d0474b-b82c-59b6-a62a-b6a0a34d9c4b` | Diskrete und stetige Zufallsgrößen unterscheiden (LK) | `pilot` | `deferred_provider_limitation` |
+| `570d5931-f126-5bb4-8b7f-db236d6b727f` | Eine Kreistangente im Berührpunkt konstruieren | `pilot` | `deferred_provider_limitation` |
+| `ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c` | Empirische und theoretische Wahrscheinlichkeit unterscheiden | `pilot` | `deferred_provider_limitation` |
 | `a1c79897-6ded-57f8-bee1-2d365a5083c9` | Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen | `pilot` | - |
 | `74b5a01b-c086-51d0-bc66-046029c92ef7` | Geometrische Reihen untersuchen | `pilot` | - |
+| `ad26e4d9-b025-57ec-8f25-df4a2415cc62` | Größen mit geeigneten Messmitteln erfassen | `pilot` | `deferred_provider_limitation` |
+| `8823e26e-694c-581b-9adf-4db7db6f43c9` | Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen | `pilot` | `deferred_provider_limitation` |
 | `cc60f759-1168-5fc0-8ff5-5f7a2533e61c` | Lösbarkeit und Lösungsvielfalt linearer Gleichungen untersuchen | `pilot` | - |
+| `25a3cc39-976e-58a5-b882-73baee5c037c` | Maßangaben aus Quellenmaterial entnehmen | `pilot` | `deferred_provider_limitation` |
 | `0de1e45c-aea9-5e53-932a-027dcf509efa` | Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK) | `pilot` | `deferred_provider_limitation` |
 | `03703b29-efd8-57e0-acf5-4381b1dc67ec` | Modalwert bestimmen und im Kontext deuten | `approved` | - |
 | `1e164a09-0a2b-55ab-b927-08a4a278f72b` | Plausibilität mit Beispielen testen | `pilot` | `deferred_provider_limitation` |
+| `dcda6fdf-108f-5ea1-bce7-6f30d6443517` | Seitenhalbierende in Dreiecken konstruieren | `pilot` | `deferred_provider_limitation` |
 | `f08d06dc-139d-5fd2-892c-8cc919b1e4fc` | Terme mit Variablen lesen und deuten | `pilot` | - |
+| `c19d1f8f-b297-5a58-b1d4-26d811e4aff4` | Verdoppelungs- und Halbwertszeiten bestimmen und deuten | `pilot` | `deferred_provider_limitation` |
+| `7c978529-ce62-5adc-897f-24ea80babbc8` | Volumina von Quadern und Würfeln bestimmen | `pilot` | `deferred_provider_limitation` |
+| `e01869db-891c-57a4-8660-789ec6875ec2` | Volumina zusammengesetzter Quaderkörper additiv bestimmen | `pilot` | `deferred_provider_limitation` |
 | `28d098ab-f33f-5baf-8261-f1c0c0f711fa` | Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden | `pilot` | `deferred_provider_limitation` |
+| `3019e775-1420-510f-850b-5a29acc47a64` | Zufallsexperimente mit Ergebnissen und Ereignissen beschreiben | `pilot` | `deferred_provider_limitation` |
 
 ### Accepted Review Without Link
 
 Keine Eintraege.
 
 ## Next Command
+
+Priority: correct the 27 quality-deferred image(s) named above, inspect each replacement at original resolution, and record a new approval for its exact SHA-256 before re-linking. This is open M7-V work; the provider batch command below is a separate queue.
 
 ```bash
 npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json --output tmp/goal-visualization-mathematik-next-batch.txt --include-deferred

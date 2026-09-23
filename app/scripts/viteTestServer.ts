@@ -25,6 +25,10 @@ export const startViteTestServer = async (
       // not own, while disabling discovery breaks CommonJS dependency interop.
       optimizeDeps: {
         entries: [fixtureEntry],
+        // JSX transforms introduce this import while Vite serves the fixture.
+        // Prebundle it with React on the first pass so a slow CI browser does
+        // not load two optimizer generations and hit an invalid hook call.
+        include: ['react/jsx-dev-runtime'],
       },
       server: {
         middlewareMode: true,

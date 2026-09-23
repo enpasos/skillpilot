@@ -70,11 +70,11 @@ const marketplaceTemplate = JSON.parse(
   ),
 );
 
-test("marketplace README focuses on the current version and explains observed automatic updates", () => {
+test("marketplace README names only the current version and explains observed automatic updates", () => {
   const readme = readFileSync(resolve(repositoryRoot,
     "ai/claude/marketplace/skillpilot-marketplace/README.md"), "utf8");
   const mentionedVersions = new Set(readme.match(/\b\d+\.\d+\.\d+\b/gu));
-  assert.deepEqual([...mentionedVersions], [pluginManifest.version, "1.1.9"]);
+  assert.deepEqual([...mentionedVersions], [pluginManifest.version]);
   assert.match(readme, /automatic updates/u);
   assert.match(readme, /observed in two Claude accounts/u);
   assert.match(readme, /Update timing.*can vary/u);

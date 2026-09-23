@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-21T03:48:41.903Z",
+  "generatedAt": "2026-09-23T12:53:56.388Z",
   "generator": "app/scripts/reportGoalSourceRationaleCoverage.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "runtimeIndexPath": "app/public/data/goal-source-rationales-math-public.json"
   },
   "sourceIndex": {
-    "generatedAt": "2026-09-21T03:47:38.310Z",
+    "generatedAt": "2026-09-23T12:53:28.246Z",
     "generator": "app/scripts/generateGoalSourceRationales.ts",
     "summary": {
       "requestedGoals": 741,
@@ -770,13 +770,13 @@
     }
   },
   "summary": {
-    "totalGoals": 1187,
-    "atomicLeaves": 928,
+    "totalGoals": 1192,
+    "atomicLeaves": 932,
     "relevantAtomicLeaves": 797,
-    "memoryOrNonContentLeaves": 131,
-    "clusters": 259,
-    "containsRelations": 1308,
-    "requiresRelations": 2436,
+    "memoryOrNonContentLeaves": 135,
+    "clusters": 260,
+    "containsRelations": 1313,
+    "requiresRelations": 2439,
     "runtimeItems": 741,
     "runtimeItemsInLandscape": 741,
     "runtimeItemsMissingFromLandscape": 0,
@@ -787,7 +787,7 @@
     "relevantLeavesMissingRuntimeSourceRationale": 56,
     "relevantLeavesWithRuntimeClassicGap": 0,
     "clustersWithDirectRuntimeSourceRationale": 0,
-    "clustersWithoutDirectRuntimeSourceRationale": 259,
+    "clustersWithoutDirectRuntimeSourceRationale": 260,
     "containsRelationRationalesImplemented": 0,
     "requiresRelationRationalesImplemented": 0,
     "relevantLeafClassicCoveragePercent": 93,
@@ -5887,7 +5887,7 @@
       {
         "id": "07196e72-ba47-54bf-a096-3a79bbb67e23",
         "shortKey": null,
-        "title": "Beziehungen als Modellgleichungen aufstellen",
+        "title": "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren",
         "type": "atomic",
         "phase": "Q4",
         "area": "unknown",
@@ -5898,7 +5898,7 @@
           "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
           "Problemlösen und Argumentieren",
           "Mathematische Modelle bilden",
-          "Beziehungen als Modellgleichungen aufstellen"
+          "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren"
         ],
         "runtimeCovered": true,
         "classicSourceRoute": true,
@@ -12797,6 +12797,26 @@
         "classification": "cluster_aggregate_pending"
       },
       {
+        "id": "6b0d2a97-cf9c-4778-9c68-16bb82b7afde",
+        "shortKey": "canonical_math_q2_lk_coordinate_axis_rotation_assessments",
+        "title": "Prüfung zur Koordinatenachsendrehung (LK)",
+        "type": "cluster",
+        "phase": "Q2",
+        "area": "unknown",
+        "topicCode": null,
+        "pathTitles": [
+          "Mathematik",
+          "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+          "Raum, Matrizen und lineare Modelle (Sek II)",
+          "Lineare geometrische Abbildungen und Abbildungsmatrizen",
+          "Prüfung zur Koordinatenachsendrehung (LK)"
+        ],
+        "runtimeCovered": false,
+        "classicSourceRoute": false,
+        "memSparqlStatus": null,
+        "classification": "cluster_aggregate_pending"
+      },
+      {
         "id": "d6d8904c-896f-5850-8181-06c223346b80",
         "shortKey": null,
         "title": "Matrizen, Übergangsprozesse und lineare Modelle (Sek II)",
@@ -17346,8 +17366,8 @@
       }
     ],
     "relationRationales": {
-      "containsRelationsPending": 1308,
-      "requiresRelationsPending": 2436
+      "containsRelationsPending": 1313,
+      "requiresRelationsPending": 2439
     }
   },
   "rows": [
@@ -19471,6 +19491,47 @@
       "classicSourceRoute": true,
       "memSparqlStatus": "mem_sparql_not_configured",
       "classification": "covered_runtime_classic_mem_pending"
+    },
+    {
+      "id": "6b0d2a97-cf9c-4778-9c68-16bb82b7afde",
+      "shortKey": "canonical_math_q2_lk_coordinate_axis_rotation_assessments",
+      "title": "Prüfung zur Koordinatenachsendrehung (LK)",
+      "type": "cluster",
+      "phase": "Q2",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Raum, Matrizen und lineare Modelle (Sek II)",
+        "Lineare geometrische Abbildungen und Abbildungsmatrizen",
+        "Prüfung zur Koordinatenachsendrehung (LK)"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "cluster_aggregate_pending"
+    },
+    {
+      "id": "42752317-6022-47f2-8b34-160db5ef01fb",
+      "shortKey": "canonical_math_q2_coordinate_axis_rotation_lk_endpoint_v1",
+      "title": "Drehmatrizen um Koordinatenachsen eigenständig bestimmen und prüfen (LK)",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Raum, Matrizen und lineare Modelle (Sek II)",
+        "Lineare geometrische Abbildungen und Abbildungsmatrizen",
+        "Prüfung zur Koordinatenachsendrehung (LK)",
+        "Drehmatrizen um Koordinatenachsen eigenständig bestimmen und prüfen (LK)"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
     },
     {
       "id": "35558905-753d-5fcb-b25e-7f85ffdbff56",
@@ -24789,7 +24850,7 @@
     {
       "id": "07196e72-ba47-54bf-a096-3a79bbb67e23",
       "shortKey": null,
-      "title": "Beziehungen als Modellgleichungen aufstellen",
+      "title": "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren",
       "type": "atomic",
       "phase": "Q4",
       "area": "unknown",
@@ -24800,7 +24861,7 @@
         "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
         "Problemlösen und Argumentieren",
         "Mathematische Modelle bilden",
-        "Beziehungen als Modellgleichungen aufstellen"
+        "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren"
       ],
       "runtimeCovered": true,
       "classicSourceRoute": true,
@@ -26255,6 +26316,26 @@
       "classification": "non_content_or_memory"
     },
     {
+      "id": "0c44524c-f617-5076-8acf-729cd5515c14",
+      "shortKey": "canonical_math_sek2_q4_assessment_process_document_check_model_improve",
+      "title": "Busmodell dokumentieren, prüfen und verbessern",
+      "type": "atomic",
+      "phase": "Q4",
+      "area": "Prozesskompetenzen",
+      "topicCode": "CANONICAL.MATH.SEK2.Q4.PRACTICE.PROCESS_BUS_MODEL_CHECK",
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Übungen Q4",
+        "Übungen Prozesskompetenzen",
+        "Busmodell dokumentieren, prüfen und verbessern"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
       "id": "7337049a-c85c-5b94-adaa-81dc93528bf8",
       "shortKey": null,
       "title": "Darstellungen sicher wechseln und bewerten",
@@ -26348,6 +26429,45 @@
         "Übungen Q4",
         "Übungen Prozesskompetenzen",
         "Sachkontexte modellieren und Entscheidungen begründen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "1fcb56db-5e3f-57da-862d-f3bdf9984af2",
+      "shortKey": "canonical_math_sek2_q4_assessment_lk_compare_algae_growth_models",
+      "title": "Wachstumsmodelle für eine Algenkultur vergleichen",
+      "type": "atomic",
+      "phase": "Q4",
+      "area": "Prozesskompetenzen",
+      "topicCode": "CANONICAL.MATH.SEK2.Q4.PRACTICE.LK_ALGAE_MODEL_CHOICE",
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Übungen Q4",
+        "Übungen Prozesskompetenzen",
+        "Wachstumsmodelle für eine Algenkultur vergleichen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "non_content_or_memory"
+    },
+    {
+      "id": "c849eeab-e88f-5e82-89d9-761a1e17d97b",
+      "shortKey": "canonical_math_sek2_q4_assessment_lk_validate_tank_inflow_analysis",
+      "title": "Zuflussmodell für einen Wassertank prüfen",
+      "type": "atomic",
+      "phase": "Q4",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK2.Q4.PRACTICE.LK_TANK_RATE_VALIDATION",
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Übungen Q4",
+        "Zuflussmodell für einen Wassertank prüfen"
       ],
       "runtimeCovered": false,
       "classicSourceRoute": false,
