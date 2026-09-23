@@ -937,10 +937,18 @@ function copyPinnedCanonicalSource(destination) {
   const lanePath = resolve(destination, "release/marketplace-publication.json");
   const lane = JSON.parse(readFileSync(lanePath, "utf8"));
   lane.activation.state = "prepared_not_published";
-  const repositoryEvidence = lane.activation.evidence[0];
-  repositoryEvidence.status = "pending";
-  for (const field of ["revision", "treeSha256", "candidateVersion", "candidateSha256", "verifiedAt", "evidenceRef"]) {
-    repositoryEvidence[field] = null;
+  lane.activation.firstPartyUiRoute = "controlled_direct_install_beta";
+  lane.activation.marketplaceUiSwitchAllowed = false;
+  const guideDecision = lane.activation.firstPartyGuideDecision;
+  guideDecision.status = "pending";
+  for (const field of ["approvedAt", "approvedBy", "candidateVersion", "candidateSha256", "repositoryRevision", "repositoryTreeSha256", "evidenceRef"]) {
+    guideDecision[field] = null;
+  }
+  for (const evidence of lane.activation.evidence) {
+    evidence.status = "pending";
+    for (const field of ["revision", "treeSha256", "candidateVersion", "candidateSha256", "verifiedAt", "evidenceRef"]) {
+      evidence[field] = null;
+    }
   }
   writeFileSync(lanePath, `${JSON.stringify(lane, null, 2)}\n`);
   return destination;
