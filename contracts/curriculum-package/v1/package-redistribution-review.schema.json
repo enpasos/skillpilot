@@ -666,6 +666,18 @@
         }
       }
     },
+    "userProvidedImportEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["receiptPath", "receiptSha256", "promptNumber", "sourcePath", "sourceSha256"],
+      "properties": {
+        "receiptPath": {"$ref": "#/$defs/repositoryPath"},
+        "receiptSha256": {"$ref": "#/$defs/sha256Digest"},
+        "promptNumber": {"type": "integer", "minimum": 1},
+        "sourcePath": {"$ref": "#/$defs/repositoryPath"},
+        "sourceSha256": {"$ref": "#/$defs/sha256Digest"}
+      }
+    },
     "assetDecision": {
       "allOf": [
         {
@@ -753,6 +765,9 @@
             "deterministicRenderEvidence": {
               "$ref": "#/$defs/deterministicRenderEvidence"
             },
+            "userProvidedImportEvidence": {
+              "$ref": "#/$defs/userProvidedImportEvidence"
+            },
             "provenanceFingerprint": {
               "$ref": "#/$defs/sha256Digest"
             },
@@ -766,6 +781,16 @@
             "reviewer": {},
             "reviewedAt": {},
             "reviewEvidence": {}
+          }
+        },
+        {
+          "if": {"required": ["userProvidedImportEvidence"]},
+          "then": {
+            "properties": {
+              "provenanceClass": {"const": "user-provided-generated-claim"},
+              "provenanceSource": {"const": "user-provided-generated-claim"},
+              "userProvided": {"const": true}
+            }
           }
         },
         {

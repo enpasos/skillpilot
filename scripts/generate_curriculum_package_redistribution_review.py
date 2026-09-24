@@ -88,6 +88,17 @@ PATH_CLASSIFICATION_OVERRIDES: tuple[dict[str, str], ...] = (
 )
 
 USER_PROVIDED_RE = re.compile(r"user-provided", re.IGNORECASE)
+# This imported batch has its own active prompt and image receipt. Older
+# per-goal prompt.de.md files describe withdrawn Nano images and stay historical.
+# Neither this provenance binding nor the receipt's machine review clears rights.
+USER_PROVIDED_IMPORT = {
+    "provider": "ChatGPT image generation (user-provided via Astra)",
+    "packageId": "math-m7-astra-user-prompts-20260924-v1",
+    "receiptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/user-image-sight-and-prompt21-receipt-20260924-v2.json",
+    "receiptSha256": "2006852f3713294e891b1b9637a54df0ba847f56c8ef70b33a18654a03c1bc6d",
+    "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/prompts.md",
+    "promptSha256": "6d50e0c2736a2207948adcb5637ab37a15c29196748f4268b39eac8783a73767",
+}
 # Exact current Codex image-generator labels.  A project license by itself is
 # never provenance; the prompt must independently repeat the provider verbatim.
 CODEX_IMAGE_PROVIDERS = frozenset({
@@ -375,6 +386,53 @@ def verify_asset_source(source_path: str, expected_bytes: int, expected_sha256: 
         )
 
 
+def user_import_prompt_evidence(
+    provider: str, owner_goal_id: str, source_path: str,
+    byte_count: int, asset_sha256: str,
+) -> dict[str, Any] | None:
+    if provider != USER_PROVIDED_IMPORT["provider"]:
+        return None
+    receipt_path = repo_file(USER_PROVIDED_IMPORT["receiptPath"])
+    prompt_path = repo_file(USER_PROVIDED_IMPORT["promptPath"])
+    for label, path in (("receipt", receipt_path), ("prompt", prompt_path)):
+        if sha256_file(path) != USER_PROVIDED_IMPORT[f"{label}Sha256"]:
+            raise ReviewError(f"User import {label} hash drift for {owner_goal_id!r}")
+    receipt = require_object(read_json(receipt_path), "user import receipt")
+    if receipt.get("schemaVersion") != 2 or receipt.get("packageId") != USER_PROVIDED_IMPORT["packageId"]:
+        raise ReviewError("Unexpected user import receipt identity")
+    rows = require_list(receipt.get("rows"), "user import receipt rows")
+    matches = [row for row in rows if isinstance(row, dict) and row.get("goalId") == owner_goal_id]
+    if len(matches) != 1:
+        raise ReviewError(f"User import has no unique goal binding for {owner_goal_id!r}")
+    row = matches[0]
+    number = row.get("promptNumber")
+    if (
+        row.get("status") != "active_machine_v_approved_current_p_reviewed"
+        or row.get("sha256") != f"sha256:{asset_sha256}"
+        or not isinstance(row.get("currentImageUrl"), str)
+        or source_path != "app/public" + row["currentImageUrl"]
+        or type(number) is not int or number < 1
+    ):
+        raise ReviewError(f"User import active image binding differs for {owner_goal_id!r}")
+    original_path = row.get("sourcePath")
+    verify_asset_source(original_path, byte_count, asset_sha256)
+    prompt_text = prompt_path.read_text(encoding="utf-8")
+    heading = rf"^## {number}\. {re.escape(owner_goal_id)} — [^\n]+\n\n\S"
+    if len(re.findall(heading, prompt_text, re.MULTILINE)) != 1:
+        raise ReviewError(f"User import prompt/goal binding differs for {owner_goal_id!r}")
+    return {
+        "promptPath": USER_PROVIDED_IMPORT["promptPath"],
+        "promptSha256": f"sha256:{USER_PROVIDED_IMPORT['promptSha256']}",
+        "userProvidedImportEvidence": {
+            "receiptPath": USER_PROVIDED_IMPORT["receiptPath"],
+            "receiptSha256": f"sha256:{USER_PROVIDED_IMPORT['receiptSha256']}",
+            "promptNumber": number,
+            "sourcePath": original_path,
+            "sourceSha256": f"sha256:{asset_sha256}",
+        },
+    }
+
+
 def unique_prompt_match(pattern: re.Pattern[str], prompt_text: str, label: str) -> Any:
     matches = pattern.findall(prompt_text)
     if len(matches) != 1:
@@ -595,7 +653,10 @@ def load_source_model(release_root: Path) -> SourceModel:
             raise ReviewError(f"Build input {resource_id!r} has no sourcePath")
         verify_asset_source(source_path, byte_count, asset_sha256)
 
-        prompt_relative = (
+        import_evidence = user_import_prompt_evidence(
+            provider, owner_goal_id, source_path, byte_count, asset_sha256
+        )
+        prompt_relative = import_evidence["promptPath"] if import_evidence else (
             "curricula/DE/Gymnasium/visualizations/mathematik/"
             f"{owner_goal_id}/prompt.de.md"
         )
@@ -608,7 +669,7 @@ def load_source_model(release_root: Path) -> SourceModel:
             raise ReviewError(
                 f"Historical prompt/provider binding differs for resource {resource_id!r}"
             )
-        if provider_match is None or provider_match.group(1) != provider:
+        if not import_evidence and (provider_match is None or provider_match.group(1) != provider):
             if legacy_binding is None:
                 raise ReviewError(
                     f"Prompt provider metadata differs for resource {resource_id!r}"
@@ -676,6 +737,8 @@ def load_source_model(release_root: Path) -> SourceModel:
         }
         if deterministic_evidence is not None:
             base["deterministicRenderEvidence"] = deterministic_evidence
+        if import_evidence is not None:
+            base["userProvidedImportEvidence"] = import_evidence["userProvidedImportEvidence"]
         base["provenanceFingerprint"] = digest(base)
         asset_bases.append(base)
 
@@ -1298,12 +1361,19 @@ def validate_review(
         "userProvided": "ASSET_PROVENANCE_DRIFT",
         "promptSha256": "ASSET_PROVENANCE_DRIFT",
         "deterministicRenderEvidence": "ASSET_PROVENANCE_DRIFT",
+        "userProvidedImportEvidence": "ASSET_PROVENANCE_DRIFT",
         "provenanceFingerprint": "ASSET_PROVENANCE_DRIFT",
     }
     for resource_id in sorted(set(expected_by_id) & set(actual_by_id)):
         expected = expected_by_id[resource_id]
         actual = actual_by_id[resource_id]
         index = resource_ids.index(resource_id)
+        if "userProvidedImportEvidence" in actual and "userProvidedImportEvidence" not in expected:
+            diagnostics.append(Diagnostic(
+                "ASSET_PROVENANCE_DRIFT",
+                f"/assetDecisions/{index}/userProvidedImportEvidence",
+                "No asset-bound user import exists for this resource",
+            ))
         for field, expected_value in expected.items():
             if actual.get(field) != expected_value:
                 diagnostics.append(
@@ -1393,9 +1463,90 @@ def write_json_atomic(path: Path, value: Any) -> None:
             temporary_path.unlink()
 
 
+def run_user_import_prompt_self_test() -> None:
+    from unittest.mock import patch
+
+    goal_id = "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e"
+    image = b"exact user supplied image"
+    image_sha = sha256_bytes(image)
+    public_path = f"app/public/assets/{goal_id}.png"
+    prompt = f"## 21. {goal_id} — Winkelbeziehungen\n\nThe active imported prompt.\n"
+    receipt = {
+        "schemaVersion": 2,
+        "packageId": USER_PROVIDED_IMPORT["packageId"],
+        "rows": [{
+            "goalId": goal_id, "promptNumber": 21,
+            "status": "active_machine_v_approved_current_p_reviewed",
+            "sha256": f"sha256:{image_sha}",
+            "currentImageUrl": f"/assets/{goal_id}.png",
+            "sourcePath": "incoming.png",
+            "humanReleaseApproved": False,
+        }],
+    }
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory)
+        historical_prompt = root / "prompt.de.md"
+        historical_prompt.write_text("- Provider: Google Gemini / Nano Banana Pro\n")
+        original_historical_bytes = historical_prompt.read_bytes()
+        bindings = dict(USER_PROVIDED_IMPORT, receiptPath="receipt.json", promptPath="prompts.md")
+        with patch.dict(USER_PROVIDED_IMPORT, bindings, clear=True), patch(__name__ + ".REPO_ROOT", root):
+            def reset() -> None:
+                (root / "receipt.json").write_text(json.dumps(receipt), encoding="utf-8")
+                (root / "prompts.md").write_text(prompt, encoding="utf-8")
+                (root / "incoming.png").write_bytes(image)
+                for label, filename in (("receipt", "receipt.json"), ("prompt", "prompts.md")):
+                    USER_PROVIDED_IMPORT[f"{label}Sha256"] = sha256_file(root / filename)
+
+            arguments = (USER_PROVIDED_IMPORT["provider"], goal_id, public_path, len(image), image_sha)
+            reset()
+            actual = user_import_prompt_evidence(*arguments)
+            if actual is None or actual["promptPath"] != "prompts.md" or actual["userProvidedImportEvidence"]["promptNumber"] != 21:
+                raise ReviewError("Self-test did not choose the active asset-bound user prompt")
+            if historical_prompt.read_bytes() != original_historical_bytes:
+                raise ReviewError("Self-test changed the historical provider prompt")
+            if user_import_prompt_evidence("Google Gemini / Nano Banana Pro", *arguments[1:]) is not None:
+                raise ReviewError("Self-test changed the legacy prompt path")
+
+            def rejected(label: str) -> None:
+                try:
+                    user_import_prompt_evidence(*arguments)
+                except ReviewError:
+                    return
+                raise ReviewError(f"Self-test accepted invalid user import: {label}")
+
+            for filename in ("receipt.json", "prompts.md", "incoming.png"):
+                reset()
+                (root / filename).unlink()
+                rejected(f"missing {filename}")
+                reset()
+                (root / filename).write_bytes(b"tampered input")
+                rejected(f"drifted {filename}")
+
+            mutations = [
+                ("missing goal", lambda value: value.update(rows=[])),
+                ("duplicate goal", lambda value: value["rows"].append(copy.deepcopy(value["rows"][0]))),
+                ("withdrawn image", lambda value: value["rows"][0].update(status="withdrawn_quality_hold")),
+                ("wrong image", lambda value: value["rows"][0].update(sha256="sha256:" + "0" * 64)),
+                ("wrong URL", lambda value: value["rows"][0].update(currentImageUrl="/assets/other.png")),
+                ("wrong prompt", lambda value: value["rows"][0].update(promptNumber=20)),
+                ("boolean prompt", lambda value: value["rows"][0].update(promptNumber=True)),
+                ("missing source path", lambda value: value["rows"][0].pop("sourcePath")),
+                ("escaping source path", lambda value: value["rows"][0].update(sourcePath="../outside.png")),
+            ]
+            for label, mutation in mutations:
+                reset()
+                value = copy.deepcopy(receipt)
+                mutation(value)
+                (root / "receipt.json").write_text(json.dumps(value), encoding="utf-8")
+                USER_PROVIDED_IMPORT["receiptSha256"] = sha256_file(root / "receipt.json")
+                rejected(label)
+    print("User-import prompt self-test passed: active binding with historical prompt preserved, legacy path unchanged, 15 rejected missing/drift/mismatch cases.")
+
+
 def run_self_test(
     review: dict[str, Any], source: SourceModel, schema: dict[str, Any]
 ) -> None:
+    run_user_import_prompt_self_test()
     baseline = validate_review(review, source, schema)
     if baseline:
         raise ReviewError(
@@ -1429,6 +1580,15 @@ def run_self_test(
             raise ReviewError("Self-test accepted a mismatched AI-assisted native pair")
 
     fresh_review = build_review(source)
+    imported_indexes = [
+        index for index, item in enumerate(fresh_review["assetDecisions"])
+        if "userProvidedImportEvidence" in item
+    ]
+    if not imported_indexes or any(
+        {key: fresh_review["assetDecisions"][index][key] for key in DECISION_FIELDS} != pending_decision()
+        for index in imported_indexes
+    ):
+        raise ReviewError("User import provenance inferred a redistribution approval")
     native_indexes = [
         index for index, item in enumerate(fresh_review["assetDecisions"])
         if item["provenanceClass"] == AI_ASSISTED_NATIVE_PROVENANCE_CLASS
@@ -1637,6 +1797,27 @@ def run_self_test(
         "provider-drift",
         "ASSET_PROVIDER_DRIFT",
         lambda value: value["assetDecisions"][0].update({"provider": "unknown provider"}),
+    )
+    import_index = imported_indexes[0]
+    case(
+        "user-import-receipt-hash-drift", "ASSET_PROVENANCE_DRIFT",
+        lambda value: value["assetDecisions"][import_index]["userProvidedImportEvidence"].update(
+            receiptSha256="sha256:" + "0" * 64
+        ),
+    )
+    case(
+        "user-import-evidence-removed", "ASSET_PROVENANCE_DRIFT",
+        lambda value: value["assetDecisions"][import_index].pop("userProvidedImportEvidence"),
+    )
+    legacy_user_index = next(
+        index for index, item in enumerate(review["assetDecisions"])
+        if item["userProvided"] and "userProvidedImportEvidence" not in item
+    )
+    case(
+        "user-import-evidence-invented", "ASSET_PROVENANCE_DRIFT",
+        lambda value: value["assetDecisions"][legacy_user_index].update(
+            userProvidedImportEvidence=copy.deepcopy(review["assetDecisions"][import_index]["userProvidedImportEvidence"])
+        ),
     )
     case(
         "prompt-evidence-drift",
