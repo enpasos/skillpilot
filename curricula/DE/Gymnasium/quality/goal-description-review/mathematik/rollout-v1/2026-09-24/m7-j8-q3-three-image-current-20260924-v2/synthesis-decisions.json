@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-informed-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex informed AI synthesis of two independent current rounds with separately checked source, page, image and external P-v3 evidence; no human approval",
+  "synthesizedAt": "2026-09-24T00:28:07.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-j8-q3-three-image-current-20260924-v2",
+    "batchManifestDigest": "sha256:0831b588c40d4c8df5ae8c18ff956b8bfa3e89b0d67635fdab8e8d2e54397fa4",
+    "configDigest": "sha256:2c1d679ae7ff8c9ea15098435395fcdada700e91d6bc2a5b166cb77d357db523",
+    "bundleFingerprint": "sha256:0e1a1927dd0eb272caf23a76ad42bb0cd7570f5bb6db0c6a5095063491382aec",
+    "bookDigest": "sha256:9898cd6321d9c8329b40777dff0f1522ecd4124d03a48dacb5b82f49f7aba6f9",
+    "reviewInputFingerprint": "sha256:c24577188d857e7a19bdf7b559a78d5c69e05593c0f8d12bd455ac5560c65afb",
+    "dualSummaryDigest": "sha256:1c7ac80f86cd11d04ed21ab56463b739482bd80ff694f06375f117ed826bc209",
+    "canonicalLandscapeDigest": "sha256:89d09e3309cebbe5b0abe9221008befb7bd2249cd1814ebab14cd140ffc9f44a"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-a",
+      "campaignDigest": "sha256:17105b46bec2d7fbba3803ca28e7008a2d3a1e0fac4bf2c13665f8d799d22149",
+      "roundId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-independent-a",
+      "reviewInputFingerprint": "sha256:c24577188d857e7a19bdf7b559a78d5c69e05593c0f8d12bd455ac5560c65afb",
+      "batchId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:95c28290803a5d5a4eed1ddfcfcbcce46a8b8832275a9d4bb70fba2b60e695d5",
+      "runId": "m7-j8-q3-three-image-d-a-20260924-v2",
+      "runManifestDigest": "sha256:78033fb4bb4832cf63cdc59b57e8c9f0e48c261c168079714f7369a8f37c3b4d",
+      "resultsDigest": "sha256:493059ef058fa159a35bd03a7a456e73596d482724ef3014d425264177b260cc"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-b",
+      "campaignDigest": "sha256:56533997952d143fc3dd7401e65644d40f690f3ec515f6b3c8b09bad87c5d499",
+      "roundId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-independent-b",
+      "reviewInputFingerprint": "sha256:c24577188d857e7a19bdf7b559a78d5c69e05593c0f8d12bd455ac5560c65afb",
+      "batchId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:9a0af188d55460fb0e28bca11a244c79d215dabb5a31f9ae213086b8aae27b17",
+      "runId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-first-pass-b-run-001",
+      "runManifestDigest": "sha256:070ac37b3fe7c986a853388e297f50ab98a1f3d21886367bcd2acfa3d0f0440f",
+      "resultsDigest": "sha256:e7153167133c365af3d59c4705f937dde1cf3783ec0e3c876c4d686d878047b5"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-informed-synthesis-decision-001",
+      "goalId": "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:63844e0c5b5a23fae50360e4069f8fc54a07ecd6d6ebcb9d7f4405691d1cb092",
+      "pageFingerprint": "sha256:a320b31ab6cd66f2ff68ba5418ecd1d39a6b9eca304a8844d1b3f25d706091c0",
+      "goalReviewContextFingerprint": "sha256:8adbd481e92acc3ab0fdb6127dad5dde574d3184f8afee38429a5fe97cf0793d",
+      "finalText": {
+        "titleDe": "Parameter einfacher Hyperbeln aus Graphen bestimmen",
+        "titleEn": "Determine parameters of simple hyperbolas from graphs",
+        "descriptionDe": "Die lernende Person kann bei einem gegebenen Graphen einer Funktion der Form f(x) = a/(x - d) + e mit a ≠ 0 die Parameter d und e aus den Asymptoten sowie a mithilfe eines weiteren Graphenpunkts bestimmen und den rekonstruierten Funktionsterm am Graphen prüfen.",
+        "descriptionEn": "Given the graph of a function of the form f(x) = a/(x - d) + e with a ≠ 0, the learner can determine d and e from the asymptotes, determine a using one additional point on the graph, and check the reconstructed function expression against the graph."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "m7-j8-q3-three-image-d-a-20260924-v2.3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+          "recordDigest": "sha256:e421e010ae19a300f2b6b78d8205ace2440f58876f2b5a87d7aa5cb20c52388f"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-first-pass-b-3f1a97d2",
+          "recordDigest": "sha256:a2a88e7056b72f3a26dffee37ba6e278e948f17a9c0a9fc3e19e0fe06cf314f4"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden belegen dieselbe eng gefasste Graph-zu-Term-Kompetenz. BY M8.3 verwendet a/(x+b)+c, äquivalent zu a/(x-d)+e mit d=-b; die partielle Zuordnung verlangt kein zusätzliches Graphzeichnen. Im Originalbild sind x=1, y=3 und die Punkte (0,1), (2,5), (3,4) mit a=2 konsistent und bei 360 px lesbar. Das externe registrierte P-v3 prüft neue positive und negative a-Fälle und einen Kontrollpunkt; die Autorenwerte dürfen nicht auf dem Lernendenblatt stehen. Die unterschiedlichen A/B-Belegformulierungen sind kein fachlicher Widerspruch. KEEP ist ein KI-Synthesekandidat, keine menschliche Freigabe.",
+      "rationaleEn": "Both independent current rounds support the same narrow graph-to-expression competence. Bavarian M8.3 writes a/(x+b)+c, equivalent to a/(x-d)+e with d=-b; the partial mapping does not import the separate task of drawing a graph. In the original image, x=1, y=3 and points (0,1), (2,5), (3,4) are consistent with a=2 and readable at 360 px. The separately registered P-v3 tests new positive and negative a cases and an independent check point; authoring values must not appear on the learner sheet. The differing A/B evidence wording is not a substantive conflict. KEEP remains an AI synthesis candidate, not human approval."
+    },
+    {
+      "decisionId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-informed-synthesis-decision-002",
+      "goalId": "8c32d941-b51c-5663-951c-a610f8900f76",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3d8aa01e4f5f1d971b3cb9c89b7d9ad4014ffc2f5402f086266d94eb976fccac",
+      "pageFingerprint": "sha256:c6e645dfbb2abbb2b3277bf38379fd09716e4e294ba512571409593a86fa048d",
+      "goalReviewContextFingerprint": "sha256:49f5471e2735d556879e44ee1ab13d1564873151dbbb50f085e2746d4f140fe6",
+      "finalText": {
+        "titleDe": "Wahrscheinlichkeiten normalverteilter Zufallsgrößen bestimmen (LK)",
+        "titleEn": "Determine probabilities for normally distributed random variables (advanced course)",
+        "descriptionDe": "Die lernende Person kann Wahrscheinlichkeiten normalverteilter Zufallsgrößen in Sachzusammenhängen mit digitalen Werkzeugen oder als Flächen unter dem Dichtegraphen bestimmen und im Kontext deuten.",
+        "descriptionEn": "The learner can determine probabilities for normally distributed random variables in context using digital tools or areas under the density graph and interpret the results."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "m7-j8-q3-three-image-d-a-20260924-v2.8c32d941-b51c-5663-951c-a610f8900f76",
+          "recordDigest": "sha256:8dc9e6fac0c55568ff79fc3a461a15867c3429b87381215b7c0f26484f3d47f0"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-first-pass-b-8c32d941",
+          "recordDigest": "sha256:7214eef28723cbe3e7c662b5c7228e85237f50b7765594c23e0e7f18ee32d902"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Runden tragen die DE/EN-Fassung durch HE KCGO Q3.2, Druck-S. 47, erhöhtes Niveau: Wahrscheinlichkeit im Sachkontext mittels digitaler Werkzeuge oder Dichtefläche bestimmen und deuten. Die zusätzliche ältere Mappingkante zur inversen Parametersuche erweitert dieses Ziel nicht. Das Bild zeigt nur eine korrekte generische Intervallfläche P(a≤X≤b), bei 360 px lesbar, aber keinen Kontext oder Werkzeugeinsatz; das externe aktuelle P-v3 fordert darum unabhängige Füllmengen- und rechtsseitige Körpergrößenfälle mit Kontextdeutung. Tatsächliche HE-Target-Projektion LK G8/G9=true und GK G8/G9=false, ungeachtet der breiten Buchmatrix. Die A/B-Belegdifferenz betrifft Formulierungen, nicht den Inhalt. KEEP bleibt KI-Kandidat.",
+      "rationaleEn": "Both current rounds support the DE/EN wording under Hesse KCGO Q3.2, printed p. 47, advanced level: determine and interpret contextual probabilities using digital tools or density areas. An older additional mapping edge to inverse parameter estimation does not expand this goal. The image shows only a correct generic interval area P(a≤X≤b), readable at 360 px, not a context or tool use; the external current P-v3 therefore requires independent fill-volume and right-tail body-height cases with contextual interpretation. The actual Hesse target projection is true for LK G8/G9 and false for GK G8/G9 despite the broad goal-book matrix. The A/B evidence differs in wording, not substance. KEEP remains an AI candidate."
+    },
+    {
+      "decisionId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-informed-synthesis-decision-003",
+      "goalId": "a7778885-17aa-5eeb-a6a7-fbf4c8d55a16",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f2f2dc1f7949662ad645b07d98f456386e2ee888e29dd1d81f662755ed691a9d",
+      "pageFingerprint": "sha256:69d3760e1f46ccdd18521b29dad8a15eea6993b37ee3b3134726a491fce362db",
+      "goalReviewContextFingerprint": "sha256:2d625ed682319c8686d34edf5a52984541eb3b09cb74661e2996c8f24940a863",
+      "finalText": {
+        "titleDe": "Die Verteilungsfunktion der Normalverteilung als Integralfunktion deuten (LK)",
+        "titleEn": "Interpret the normal cumulative distribution function as an integral function (advanced course)",
+        "descriptionDe": "Die lernende Person kann den Wert der Verteilungsfunktion einer Normalverteilung bei x als Integral ihrer Dichte von −∞ bis x und damit als bis x aufsummierte Wahrscheinlichkeit deuten und den Zusammenhang zwischen Dichtegraph, Fläche und Verteilungswert erläutern.",
+        "descriptionEn": "The learner can interpret the value of a normal distribution's cumulative distribution function at x as the integral of its density from negative infinity to x, hence as accumulated probability up to x, and explain the relationship between the density graph, area, and cumulative probability."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "m7-j8-q3-three-image-d-a-20260924-v2.a7778885-17aa-5eeb-a6a7-fbf4c8d55a16",
+          "recordDigest": "sha256:a7de901b9b9fe13cede4a9125727ca3a57c8d2e308af39141fdb9d9565339c1a"
+        },
+        "second": {
+          "recordId": "mathematik-m7-j8-q3-three-image-current-20260924-v2-first-pass-b-a7778885",
+          "recordDigest": "sha256:e5f18865dcfc572734feb50c0e39e99e17c3c22acae9081dc914dff767ea3a32"
+        }
+      },
+      "rationaleDe": "Beide aktuellen Runden bestätigen den exakten HE-Q3.2-LK-Quellanker, Druck-S. 47: Fμ,σ(x) integriert die Dichte von −∞ bis x. Der aktuelle DE/EN-Text hält links kumulierte Wahrscheinlichkeit, Dichtegraph und Fläche zusammen und verwechselt F(x) weder mit der Dichtehöhe noch mit einer beidseitig begrenzten Fläche. Das Originalbild färbt nur links von x; Grenze und F(x)=P(X≤x) bleiben bei 360 px erkennbar. Das externe aktuelle P-v3 prüft getrennt einen links kumulierten Wert und eine asymmetrische Intervallfläche an anderer Normalverteilung. Tatsächliches HE-Target ist LK, nicht GK. Die A/B-Unterschiede in Belegformulierungen ändern diese Aussage nicht; KEEP ist nur KI-Kandidat.",
+      "rationaleEn": "Both current rounds confirm the exact Hesse Q3.2 advanced-course source, printed p. 47: Fμ,σ(x) integrates the density from negative infinity to x. The current DE/EN text coherently relates left-accumulated probability, density graph and area, without mistaking F(x) for a density height or a two-sided interval area. The original image shades only left of x; the boundary and F(x)=P(X≤x) remain recognizable at 360 px. The external current P-v3 separately tests a left-cumulative value and an asymmetric interval area under another normal distribution. The actual Hesse target is LK, not GK. A/B differences in evidence wording do not change this finding; KEEP is only an AI candidate."
+    }
+  ],
+  "manifestFingerprint": "sha256:db877f44f00b5fd5fefdcf663640f61ae45b567e56c32f379300e66eab0d5643"
+}

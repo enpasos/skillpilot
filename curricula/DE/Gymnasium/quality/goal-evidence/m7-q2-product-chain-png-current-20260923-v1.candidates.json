@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-p-v2-m7-q2-product-chain-png-current-20260923-v1",
+  "reviewedAt": "2026-09-23T18:33:02.697Z",
+  "reviewer": "codex-math-m7-q2-rules-current-png-targeted-p-review-20260923",
+  "goals": [
+    {
+      "goalId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+      "reason": "Das neue Q2-LK-Comic-PNG illustriert die Kettenregel korrekt an g(t)=t³ und u(x)=x²+1, einschließlich des inneren Faktors 2x. Eine Musterzeichnung ist keine selbstständige Lernendenleistung. Das fachlich weiterhin passende vorhandene P-v2-Profil verlangt in zwei anderen Fällen die eigenständige Zerlegung, Auswertung der äußeren Ableitung am inneren Wert und einen begründeten inneren Faktor; die zweite Aufgabe überträgt auf eine nichtlineare innere Exponentialverkettung. Fachlicher Kern KEEP, aktuelle Bildbindung gezielt neu geprüft; KI-Kandidat E1/G1 ohne menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "understanding-ae5010cc",
+            "essentialUnderstandingDe": "Bei einer Verkettung wird die äußere Änderungsrate am inneren Funktionswert ausgewertet und mit der inneren Änderungsrate multipliziert.",
+            "essentialUnderstandingEn": "For a composition, the outer rate of change is evaluated at the inner function value and multiplied by the inner rate of change.",
+            "observablePerformanceDe": "Die Person zerlegt eine Funktion in äußere und innere Funktion, bildet f'(g(x))g'(x) und erläutert am Ergebnis beide Faktoren.",
+            "observablePerformanceEn": "The learner decomposes a function into outer and inner functions, forms f'(g(x))g'(x), and explains both factors in the result."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "understanding-ae5010cc"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Bei einer nichtlinearen inneren Funktion oder vertauschter Verkettungsreihenfolge passt sie Auswertungsstelle und inneren Faktor begründet an.",
+            "textEn": "With a nonlinear inner function or a reversed composition order, the learner correctly adjusts the evaluation point and inner factor."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "composition-order-derivative",
+            "taskDemandDe": "Vergleiche die Ableitungen von F(x)=(3x−2)⁴ und G(x)=3x⁴−2. Benenne jeweils innere und äußere Funktion und begründe, weshalb dieselben Grundfunktionen nicht dieselbe Ableitung ergeben.",
+            "taskDemandEn": "Compare the derivatives of F(x)=(3x−2)⁴ and G(x)=3x⁴−2. Identify the inner and outer functions in each case and explain why the same basic functions do not give the same derivative.",
+            "expectedPerformanceDe": "Bei F ist innen3x−2 und außen u⁴, daher F′=4(3x−2)³·3=12(3x−2)³. Bei G ist innen x⁴ und außen3u−2, daher G′=3·4x³=12x³. Die äußere Ableitung wird jeweils am inneren Wert ausgewertet; bloßes Vertauschen ist nicht zulässig.",
+            "expectedPerformanceEn": "For F, the inner function is3x−2 and the outer function is u⁴, hence F′=4(3x−2)³·3=12(3x−2)³. For G, the inner function is x⁴ and the outer function is3u−2, hence G′=3·4x³=12x³. The outer derivative is evaluated at the respective inner value; exchanging the order is not valid.",
+            "understandingFocusDe": "Die Reihenfolge steuert Auswertungsstelle und inneren Faktor der Ableitung.",
+            "understandingFocusEn": "Composition order determines the evaluation point and inner derivative factor."
+          },
+          {
+            "id": "nonlinear-inner-rate",
+            "taskDemandDe": "Leite H(x)=exp(−x²) ab. Begründe das Vorzeichen von H′ links und rechts von0 allein aus der korrekt aufgebauten Ableitung. Prüfe die Behauptung H′=exp(−x²).",
+            "taskDemandEn": "Differentiate H(x)=exp(−x²). Justify the sign of H′ to the left and right of0 from the correctly constructed derivative. Assess the claim H′=exp(−x²).",
+            "expectedPerformanceDe": "Innen u=−x² mit u′=−2x, außen exp(u) mit Ableitung exp(u). Daher H′=−2x exp(−x²); wegen des positiven Exponentialfaktors ist H′ links von0 positiv, bei0 null und rechts negativ. Die behauptete Ableitung lässt den nichtkonstanten inneren Faktor weg und ist schon bei0 falsch.",
+            "expectedPerformanceEn": "The inner function is u=−x² with u′=−2x; the outer function exp(u) has derivative exp(u). Thus H′=−2x exp(−x²); because the exponential factor is positive, H′ is positive left of0, zero at0, and negative to the right. The claimed derivative omits the nonconstant inner factor and is already wrong at0.",
+            "understandingFocusDe": "Die neue nichtlineare innere Funktion verlangt einen variablen Faktor, nicht nur eine konstante Korrektur.",
+            "understandingFocusEn": "The new nonlinear inner function requires a variable factor, not merely a constant adjustment."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "cf48c918-f6c1-5429-8da6-14df43f2f550",
+      "reason": "Das neue Q2-LK-Comic-PNG illustriert die Produktregel für x²(x+1) mit beiden Änderungsbeiträgen und korrekt kontrollierter Polynomableitung. Es ist keine selbstständige Lernendenleistung. Das fachlich weiterhin passende vorhandene P-v2-Profil prüft in anderen Fällen beide Summanden, eine unabhängige Ausmultiplizier-Kontrolle und den Transfer auf einen Exponentialfaktor samt passender lokaler Kontrolle. Fachlicher Kern KEEP, aktuelle Bildbindung gezielt neu geprüft; KI-Kandidat E1/G1 ohne menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "understanding-cf48c918",
+            "essentialUnderstandingDe": "Wenn beide Faktoren von x abhängen, tragen beide Änderungen zur Ableitung des Produkts bei: u'v+uv', nicht u'v'.",
+            "essentialUnderstandingEn": "When both factors depend on x, both changes contribute to the derivative of the product: u'v+uv', not u'v'.",
+            "observablePerformanceDe": "Die Person identifiziert beide Faktoren, leitet sie korrekt ab und prüft bei einem ausmultiplizierbaren Produkt die Gleichheit mit der Ableitung der ausmultiplizierten Form.",
+            "observablePerformanceEn": "The learner identifies both factors, differentiates them correctly, and checks an expandable product against the derivative of its expanded form."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "understanding-cf48c918"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Bei einem Produkt mit Exponentialfaktor begründet sie weiterhin beide Beiträge und wählt eine geeignete lokale oder algebraische Plausibilitätsprüfung.",
+            "textEn": "For a product involving an exponential factor, the learner still explains both contributions and chooses a suitable local or algebraic plausibility check."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "expandable-product-check",
+            "taskDemandDe": "Leite p(x)=(x²−1)(x+2) zunächst als Produkt ab. Erkläre beide Beiträge und prüfe dein Ergebnis unabhängig durch Ausmultiplizieren und anschließendes Ableiten.",
+            "taskDemandEn": "Differentiate p(x)=(x²−1)(x+2) first as a product. Explain both contributions and independently check the result by expanding and then differentiating.",
+            "expectedPerformanceDe": "p′=2x(x+2)+(x²−1)·1=3x²+4x−1. Der erste Summand erfasst die Änderung des ersten Faktors bei festgehaltenem zweiten, der zweite die Änderung des zweiten bei festgehaltenem ersten. Die Expansion p=x³+2x²−x−2 liefert dieselbe Ableitung; das bloße Produkt 2x·1 wäre falsch.",
+            "expectedPerformanceEn": "p′=2x(x+2)+(x²−1)·1=3x²+4x−1. The first term accounts for change in the first factor with the second held fixed, and the second for change in the second with the first held fixed. Expansion p=x³+2x²−x−2 gives the same derivative; merely multiplying 2x by1 would be incorrect.",
+            "understandingFocusDe": "Die zwei Beiträge und eine strukturell unabhängige Rechenprobe machen die Produktregel nachvollziehbar.",
+            "understandingFocusEn": "The two contributions and a structurally independent check make the product rule understandable."
+          },
+          {
+            "id": "exponential-product-cancellation",
+            "taskDemandDe": "Bestimme die Ableitung von q(x)=(x−1)eˣ und begründe ihre Form. Eine andere Lösung behauptet q′=eˣ. Widerlege sie und erkläre insbesondere den Ableitungswert bei x=0.",
+            "taskDemandEn": "Determine the derivative of q(x)=(x−1)eˣ and justify its form. Another solution claims q′=eˣ. Refute it and explain the derivative value at x=0 in particular.",
+            "expectedPerformanceDe": "q′=1·eˣ+(x−1)eˣ=xeˣ. Bei x=0 heben sich die Beiträge 1 und−1 auf, daher q′(0)=0, nicht1. Die falsche Lösung differenziert nur den linearen Faktor und unterschlägt, dass auch eˣ variiert. Eine symmetrische Differenzenprüfung um0 nähert sich entsprechend0.",
+            "expectedPerformanceEn": "q′=1·eˣ+(x−1)eˣ=xeˣ. At x=0, the contributions1 and−1 cancel, so q′(0)=0, not1. The incorrect solution differentiates only the linear factor and ignores variation of eˣ. A symmetric difference check around0 consequently approaches0.",
+            "understandingFocusDe": "Beim nichtpolynomialen Produkt bleibt die Bedeutung beider Änderungsbeiträge erhalten; ein nuller Gesamtanstieg kann durch Kompensation entstehen.",
+            "understandingFocusEn": "For a nonpolynomial product, both rate contributions remain meaningful; a zero total slope can arise through cancellation."
+          }
+        ]
+      }
+    }
+  ]
+}

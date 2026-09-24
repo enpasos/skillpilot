@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-09-23T13:06:18.226Z
+Generated: 2026-09-24T03:27:38.346Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -40,7 +40,7 @@ Rules version: curriculum-quality-v5
 | Informatik (Gymnasium, DE) | M6 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 0 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M6 | 176 | 136 | 26/26 | 16/16 | 1 | 0 | 0 |
-| Mathematik (Gymnasium, DE) | M6 | 1192 | 932 | 31/31 | 16/16 | 2 | 0 | 1 |
+| Mathematik (Gymnasium, DE) | M6 | 1192 | 932 | 31/31 | 16/16 | 2 | 1 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Physik (Gymnasium, DE) | M7 | 764 | 639 | 25/25 | 16/16 | 2 | 0 | 0 |
 | Politik und Wirtschaft (Gymnasium, DE) | M6 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 0 |

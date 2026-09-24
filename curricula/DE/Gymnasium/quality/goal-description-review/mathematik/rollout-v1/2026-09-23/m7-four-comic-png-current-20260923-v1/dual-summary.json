@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:92ad5daa7dc700cf1fa355ab2fe1a9205d671215412708edea759fbc1f68f2c7",
+  "reviewInputFingerprint": "sha256:b790b17264de88c057e575b3fc4bd502303256316b49c4e9e7a935131ab1ddc0",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-four-comic-png-current-20260923-v1-a",
+      "roundId": "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-four-comic-png-current-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-a.run-1"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-four-comic-png-current-20260923-v1-b",
+      "roundId": "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-four-comic-png-current-20260923-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-four-comic-png-current-20260923-v1-b.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [
+      "openai::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "e495fa38-b198-5280-a405-9e41cafd6d17",
+      "firstRecordId": "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-a.run-1.e495fa38-b198-5280-a405-9e41cafd6d17",
+      "secondRecordId": "mathematik-m7-four-comic-png-current-20260923-v1-b.run-001.001",
+      "firstRunId": "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-a.run-1",
+      "secondRunId": "mathematik-m7-four-comic-png-current-20260923-v1-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5a2371fd-74ce-5013-932e-35d3713aeaf7",
+      "firstRecordId": "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-a.run-1.5a2371fd-74ce-5013-932e-35d3713aeaf7",
+      "secondRecordId": "mathematik-m7-four-comic-png-current-20260923-v1-b.run-001.002",
+      "firstRunId": "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-a.run-1",
+      "secondRunId": "mathematik-m7-four-comic-png-current-20260923-v1-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f17935b0-189f-5e0c-988d-ce508b710097",
+      "firstRecordId": "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-a.run-1.f17935b0-189f-5e0c-988d-ce508b710097",
+      "secondRecordId": "mathematik-m7-four-comic-png-current-20260923-v1-b.run-001.003",
+      "firstRunId": "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-a.run-1",
+      "secondRunId": "mathematik-m7-four-comic-png-current-20260923-v1-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "740ab443-776a-5c7a-8f1d-2b0b59a5ed32",
+      "firstRecordId": "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-a.run-1.740ab443-776a-5c7a-8f1d-2b0b59a5ed32",
+      "secondRecordId": "mathematik-m7-four-comic-png-current-20260923-v1-b.run-001.004",
+      "firstRunId": "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-a.run-1",
+      "secondRunId": "mathematik-m7-four-comic-png-current-20260923-v1-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

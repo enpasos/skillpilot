@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:cb54259f8eaefd3c9cb529acf6637d04e1e268dc89f41a24e599e0ab9f48ec85",
+  "reviewInputFingerprint": "sha256:b1e9f9f85bbe00c8a9c163f40a402038641933a490e19d1699a63681d9fa2346",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q2-product-chain-png-current-20260923-v1-a",
+      "roundId": "mathematik-m7-q2-product-chain-png-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q2-product-chain-png-current-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-q2-product-chain-png-current-20260923-v1-first-pass-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q2-product-chain-png-current-20260923-v1-b",
+      "roundId": "mathematik-m7-q2-product-chain-png-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q2-product-chain-png-current-20260923-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-q2-product-chain-png-current-20260923-v1-b.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "cf48c918-f6c1-5429-8da6-14df43f2f550",
+      "firstRecordId": "m7-q2-product-chain-png-v1-a-cf48c918-f6c1-5429-8da6-14df43f2f550",
+      "secondRecordId": "mathematik-m7-q2-product-chain-png-current-20260923-v1-b.run-001.001",
+      "firstRunId": "mathematik-m7-q2-product-chain-png-current-20260923-v1-first-pass-a-run-001",
+      "secondRunId": "mathematik-m7-q2-product-chain-png-current-20260923-v1-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+      "firstRecordId": "m7-q2-product-chain-png-v1-a-ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+      "secondRecordId": "mathematik-m7-q2-product-chain-png-current-20260923-v1-b.run-001.002",
+      "firstRunId": "mathematik-m7-q2-product-chain-png-current-20260923-v1-first-pass-a-run-001",
+      "secondRunId": "mathematik-m7-q2-product-chain-png-current-20260923-v1-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

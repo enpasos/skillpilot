@@ -1,57 +1,22 @@
-# Lernzielvisualisierung: Volumen von Kugeln berechnen (Formelsammlung)
+# Lernzielvisualisierung: Volumen von Kugeln aus dem Radius bestimmen
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `2f2c9f1a-07f0-59e4-b84a-60648c3b0bda`
-- Titel: Volumen von Kugeln berechnen (Formelsammlung)
-- Beschreibung: Die lernende Person kann Volumina von Kugeln mithilfe der Formelsammlung berechnen ($V = \frac{4}{3} \pi r^3$) und den Radius aus Skizzen oder Koordinaten bestimmen.
+- Titel: Volumen von Kugeln aus dem Radius bestimmen
+- Beschreibung: Die lernende Person kann die kubische Abhängigkeit des Kugelvolumens vom Radius beschreiben und den Zusammenhang $V = \frac{4}{3} \pi r^3$ nutzen, um Kugelvolumina aus Skizzen oder Koordinaten zu bestimmen.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI/ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `2f2c9f1a-07f0-59e4-b84a-60648c3b0bda.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/2f2c9f1a-07f0-59e4-b84a-60648c3b0bda/2f2c9f1a-07f0-59e4-b84a-60648c3b0bda.jpg`
+- Quellbild: `2f2c9f1a-07f0-59e4-b84a-60648c3b0bda.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/2f2c9f1a-07f0-59e4-b84a-60648c3b0bda/2f2c9f1a-07f0-59e4-b84a-60648c3b0bda.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Volumen von Kugeln berechnen (Formelsammlung)
-Beschreibung: Die lernende Person kann Volumina von Kugeln mithilfe der Formelsammlung berechnen ($V = \frac{4}{3} \pi r^3$) und den Radius aus Skizzen oder Koordinaten bestimmen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Volumen einer Kugel mit der Formel aus der Formelsammlung berechnen.
-- Zeige eine Kugel mit Mittelpunkt M und Radius r=3 cm.
-- Markiere den Radius als Strecke vom Mittelpunkt zur Kugeloberflaeche.
-- Formel:
-  V=4/3*pi*r^3.
-- Rechnung:
-  V=4/3*pi*(3 cm)^3.
-  (3 cm)^3=27 cm^3.
-  V=36pi cm^3.
-  V ~= 113,1 cm^3.
-- Beschrifte klar:
-  Radius r=3 cm,
-  Volumen V=36pi cm^3 ~= 113,1 cm^3.
-
-Vermeiden:
-- Nicht den Durchmesser 6 cm als Radius verwenden.
-- Nicht die Oberflaeche 4*pi*r^2 berechnen.
-- Nicht V=12pi cm^3 oder V=108pi cm^3 angeben.
-- Keine Zylinder-, Kegel- oder Pyramidenformel zeigen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Use case: precise-object-edit. Correct the geometric scale in this square sphere-volume comic while preserving all existing German words and formulas exactly. The blue sphere's drawn diameter is about 520 px and represents r=6 cm; the orange sphere represents r=3 cm and MUST have exactly HALF that drawn diameter, about 260 px (currently it is too large at about 340 px). Shrink only the complete orange sphere, its dashed equator, and its black center-to-surface radius arrow together so orange diameter becomes visually half blue diameter. Keep orange sphere centered near x=235, y=470, preserve its r=3 cm label close to the shortened radius arrow and keep its supporting shadow under it. The blue sphere, its r=6 cm label and radius arrow, orange 'Radius × 2' arrow, 'Volumen × 8' arrows and all equation cards remain otherwise unchanged. Result should show a true 1:2 diameter/radius visual comparison, not a merely slightly larger blue sphere. Preserve opaque pale background, friendly abstract comic style, high phone legibility; no photorealism, no watermark.
 ```
 
 ## Review-Notiz

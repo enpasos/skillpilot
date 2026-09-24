@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-three-v-png-readable-integral-current-20260923-v2.config.json",
+  "configDigest": "sha256:75019d5b8b26aeb9de89d5d66fcb0f3343307158cd9c85d006abfcb1493e1448",
+  "goalIds": [
+    "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+    "8c32d941-b51c-5663-951c-a610f8900f76",
+    "a7778885-17aa-5eeb-a6a7-fbf4c8d55a16"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:780a13e32d0e0f43c6f069ddc74093eb8bbca480b209fde038fac22d34eb7479"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:e8b4f2d5358f9f34b008aa85184a0d3d77067aefe2e554c682d04ae17e844a6d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:2f582f1dfcfb908ef29c7fa4f937b4da32e322d6c07651a5bafed7967dfb3689",
+    "reviewInputFingerprint": "sha256:b01b837f8f6bc85295c1736b5275b8d1fed9c20bc13b6ccf2ef6bc418325fecc",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-a",
+        "campaignDigest": "sha256:667f5f65a42bbf9dba9a1a9ec0fe77a0d04174e1fce2cf66306370fff3bdd09d",
+        "roundId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-independent-a",
+        "batchId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:ffe9e30c71f4ca659d929acca8c19eab9389075bca8a265e247b51f54bdd462d"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-b",
+        "campaignDigest": "sha256:a4dd876957d535cfde3eaafcba4d7caed569ed2e17d75131b955f6571c50135d",
+        "roundId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-independent-b",
+        "batchId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:88da809d5b3cdda7f6599208587645ae7c201fe98bc31ff79bfce04d7acd5c16"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

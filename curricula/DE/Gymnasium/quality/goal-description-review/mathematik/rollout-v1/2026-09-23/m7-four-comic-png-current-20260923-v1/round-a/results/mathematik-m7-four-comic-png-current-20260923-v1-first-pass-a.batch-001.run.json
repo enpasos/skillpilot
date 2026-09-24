@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-a.run-1",
+  "campaignId": "mathematik-m7-four-comic-png-current-20260923-v1-a",
+  "roundId": "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-a",
+  "batchId": "mathematik-m7-four-comic-png-current-20260923-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:c378dbde90b89afa53a75ee2ad0e618489ca71d8caf63e222e5db4ceac11e025",
+  "bundleFingerprint": "sha256:92ad5daa7dc700cf1fa355ab2fe1a9205d671215412708edea759fbc1f68f2c7",
+  "bookDigest": "sha256:aee293cca73d1ea63e1faf9d76cf4acce7f1297f909cd7e9a133fb4c474e26ef",
+  "provider": "openai",
+  "model": "Codex subagent (runtime model ID not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:f0d6cd224eae4a77d04b2c93a5c7b0c229bf099041627a139355b56742539a38",
+  "generationParametersFingerprint": "sha256:dc24cc9f6d631928f7166b438c823d0f24a2f8c246fd418f20df49a1ec3ed896",
+  "independenceGroupId": "mathematik-m7-four-comic-png-current-20260923-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "e495fa38-b198-5280-a405-9e41cafd6d17",
+    "5a2371fd-74ce-5013-932e-35d3713aeaf7",
+    "f17935b0-189f-5e0c-988d-ce508b710097",
+    "740ab443-776a-5c7a-8f1d-2b0b59a5ed32"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:9ab90ccb03a66976fb087e021fd467d2df3a59acbe472a8da36ec20d1b4eb282"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:b62cf2f966f9f8a30330d2725f4aa001bed38fc1ba40d42e65f6446d634dcdb8"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:f0d6cd224eae4a77d04b2c93a5c7b0c229bf099041627a139355b56742539a38"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:c378dbde90b89afa53a75ee2ad0e618489ca71d8caf63e222e5db4ceac11e025"
+    }
+  ],
+  "startedAt": "2026-09-23T17:48:00.000Z",
+  "completedAt": "2026-09-23T17:52:25.215Z",
+  "status": "completed",
+  "outputDigest": "sha256:db5bb1d4ddd01eb652d013cd8021037f29e86ef35cd007eb163ccd8b8768f6a5",
+  "toolchainVersion": "codex-subagent-review-v1"
+}

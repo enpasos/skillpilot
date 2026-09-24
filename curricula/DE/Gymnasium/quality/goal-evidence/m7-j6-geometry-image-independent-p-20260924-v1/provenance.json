@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "purpose": "SHA-pinned split of active five-record J6 P-v2 owner: three unaffected lines retained byte-for-byte, two image-independent AI candidates materialized separately",
+  "sourceFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-006b-j6-split-children-current-v1.config.json",
+      "sha256": "sha256:08b24d9765a4a99bee75764a4e13ff1e1540532d99bda16c73cc98100ee50521"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-006b-j6-split-children-current-v1.review.jsonl",
+      "sha256": "sha256:a1f519494d83f3cc840537fd612d814e93d4ef1f69c3d55e8ea54def91613b95"
+    }
+  ],
+  "movedGoalIds": [
+    "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+    "f52e9d72-4995-5c80-91d2-7761ea0cbec0"
+  ],
+  "retainedGoalIds": [
+    "2f3d24e7-2450-55d8-97c2-3e106d2854c6",
+    "50e4ecab-d462-5496-b493-b30d699eb100",
+    "bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82"
+  ],
+  "sourceProfileFingerprints": {
+    "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa": "sha256:08c28fcac6a81633f29adbd5cf67a2e2c3a24dfa3ef2384413384317b06e7706",
+    "f52e9d72-4995-5c80-91d2-7761ea0cbec0": "sha256:3ee6664117af7c49abffc8216c436cf7ad13cdab3b5fb0900b3d2a9d20892f48"
+  },
+  "currentImageSha256ByGoalId": {
+    "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa": "sha256:4f851ba6e40d0867ee8f23cd79fd62520c6952d75020a80118cc0e853fe4578d",
+    "f52e9d72-4995-5c80-91d2-7761ea0cbec0": "sha256:33faa361768fd778065b75ba384dfe6d97e1e00123370f72c78610f6cd540785"
+  },
+  "mathematicalChecks": {
+    "cuboid": "2(6×4 + 6×2 + 4×2) = 88 cm²; omitted pair contributes 16 cm²",
+    "imageNet": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        1,
+        0
+      ],
+      "C": [
+        2,
+        0
+      ],
+      "D": [
+        3,
+        0
+      ],
+      "E": [
+        1,
+        -1
+      ],
+      "F": [
+        1,
+        1
+      ]
+    },
+    "candidateNet": {
+      "squares": {
+        "A": [
+          0,
+          0
+        ],
+        "B": [
+          1,
+          0
+        ],
+        "C": [
+          2,
+          0
+        ],
+        "D": [
+          0,
+          -1
+        ],
+        "E": [
+          1,
+          1
+        ],
+        "F": [
+          1,
+          2
+        ]
+      },
+      "oppositePairs": [
+        "A/C",
+        "B/F",
+        "D/E"
+      ]
+    },
+    "repairedNet": {
+      "squares": {
+        "A": [
+          0,
+          0
+        ],
+        "B": [
+          1,
+          0
+        ],
+        "C": [
+          2,
+          0
+        ],
+        "D": [
+          2,
+          1
+        ],
+        "E": [
+          3,
+          1
+        ],
+        "F": [
+          4,
+          1
+        ]
+      },
+      "oppositePairs": [
+        "A/C",
+        "B/E",
+        "D/F"
+      ]
+    },
+    "conditions": "Each new net is a connected six-square tree, folds to six distinct cube-face normals, and is not a rotated/reflected copy of the image net or the other new net."
+  },
+  "outputPaths": [
+    "curricula/DE/Gymnasium/quality/goal-evidence/m7-j6-geometry-image-independent-p-20260924-v1/retained-batch-006b-unaffected-3.config.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/m7-j6-geometry-image-independent-p-20260924-v1/retained-batch-006b-unaffected-3.review.jsonl",
+    "curricula/DE/Gymnasium/quality/goal-evidence/m7-j6-geometry-image-independent-p-20260924-v1/positive-evidence.config.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/m7-j6-geometry-image-independent-p-20260924-v1/positive-evidence.candidates.json"
+  ]
+}

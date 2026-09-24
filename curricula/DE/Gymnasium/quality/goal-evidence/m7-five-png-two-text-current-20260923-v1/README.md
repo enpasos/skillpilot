@@ -1,0 +1,32 @@
+# M7 Mathematics: five PNG bindings and two current text revisions, P-v2
+
+This package is **AI-candidate authoring only**. `positive-evidence.candidates.json` contains seven bilingual positive-understanding profiles, `positive-evidence.config.json` defines their exact-current image-bound review, and `positive-evidence.review.jsonl` materializes all seven current AI-candidate records. No human approval, observed learner performance, or M7 completion is claimed. The central registry, canonical, visualization QA and book are not edited by this package.
+
+## Content decisions
+
+| Goal prefix | P-v2 decision | Exact current curricular source / provenance |
+| --- | --- | --- |
+| `04fe` | Keep the two existing `derive-properties` / `bound-logarithm` cases: the ln image shows the graph and inverse relation but not the derivation or bound transfer. | Canonical `sourceRef`: `HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 41, Spiegelstrich 4`. |
+| `bc6` | Replace first-case `2/(x−1)−3` by `2/(x−2)−3`, keeping the positive-a task structure; asymptotes `x=2`, `y=−3`, example points `(3,−1)`, `(4,−2)`, `(1,−5)`, `(0,−4)`. Keep negative-a case verbatim. The new PNG uses `1/(x−1)+1`. | Canonical has no direct `sourceRef`; exact provenance: `curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json`, source landscape `c1600692-e543-5cf2-a399-6bd96e6b817f`, source goal `71e28934-eefb-5600-aaa6-7991b1162d4b` in `curricula/DE/Gymnasium/input/BY/gymnasium/Mathematik.json`. No source page is invented. |
+| `d8f` | Replace the picture-overlapping time→radius→circle-area first case with time→distance→fuel consumption: `s(t)=20t+5t²` km for `0≤t≤2` hours, `V(s)=0,06s` litres; at `t=2`, `s=60` km and `V=3,6` litres. Keep `messsignal-und-kalibrierung` verbatim and update the intermediate-variable variation axis. | Canonical `sourceRef`: `KLP NRW Mathematik Sek II (Gymnasium/Gesamtschule, 2023), 2.4.2 Funktionen und Analysis, Erwartungen (6) und (9), S. 27.` |
+| `a8f` | Replace picture-overlapping `x²+1=0` first case by `x²+4=0` with `x=±2i`, and generalize the essential real-square obstacle to `x²+c=0`, `c>0`. Keep the shifted-square second case verbatim. | Canonical `sourceRef`: `LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.1`. |
+| `308f` | Keep both existing cases: temperature with a positive baseline and shifted exponential growth are independent of the new unshifted light-attenuation illustration. | Canonical `sourceRef`: `Bildungsplan Studienstufe Mathematik, Hamburg 2022, S. 33`. |
+| `ed5` | Keep both y-axis/diagonal projection cases after the revised fixed-subspace and perpendicular-remainder text; no formal matrix method is added to an initial linear-mapping intuition. | No direct canonical `sourceRef`; exact provenance registry entry is source landscape `c36ba9b3-4d11-4b19-a278-cd6c3c3fcc71`, source goal `3206078a-175a-47d3-b1c7-ce75447a8ca8`. |
+| `8cb` | Keep both `E:y=2` and oblique-plane cases after the revised common-normal / midpoint text. The image plane `z=0` is not copied. | Canonical `sourceRef`: `HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 10`. |
+
+The exact previous active P config and review paths, source-file SHA-256 values, every transferred record's raw-line SHA-256, and the 32 retained raw-line pins are in [`retained-source-pins.json`](retained-source-pins.json). Those seven owners were resolved from the Mathematics `positiveEvidenceConfigPaths` in `curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json`, **not** guessed from historical filenames. The profile starting points in the active records are fingerprint-identical to the reviewed candidate sources; four complete profiles and all three unchanged second cases were checked for exact equality. The original seven old owner files remain untouched.
+
+## Scope-safe old-owner split
+
+The [`retained/`](retained/) directory has one successor config and one JSONL for each old owner (`rest-04fe`, `rest-bc6`, `rest-d8f`, `rest-a8f`, `rest-308`, `rest-ed5`, `rest-8cb`). Their 7+2+5+2+1+4+11 = **32** records are raw-line identical to the pinned current source records, in source order. Only the transferred goal ID was removed from each config's scope; the config's review path and descriptive label were adjusted to refer to its new partial file. Each of the seven partial configs independently passed `quality:positive-goal-evidence:check`. The parent agent can later replace the seven old active config paths with these seven successor paths and add the new seven-goal config; that registry edit is not done here.
+
+## Materialization and gate
+
+The new config uses `reviewedResourceTypes: ["goal-visualization"]`, so the candidate materializer binds exact current image bytes as well as goal semantics. After the three pending PNGs were imported and the complete GoalBook build succeeded, all seven current book pages were checked against the visualization QA and byte-identical canonical/public assets. The image digests for 04fe, bc6, d8f, a8f, 308f, ed5 and 8cb matched the pages and QA. The following materialization and validation both passed:
+
+```bash
+npm --prefix app run quality:positive-goal-evidence-candidates -- --config curricula/DE/Gymnasium/quality/goal-evidence/m7-five-png-two-text-current-20260923-v1/positive-evidence.config.json --candidates curricula/DE/Gymnasium/quality/goal-evidence/m7-five-png-two-text-current-20260923-v1/positive-evidence.candidates.json --write
+npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/m7-five-png-two-text-current-20260923-v1/positive-evidence.config.json
+```
+
+The review has seven distinct current `reviewInputFingerprint` values and seven records at `status: needs_human_review`, `reviewAuthority: ai_candidate`, `E1/G1`, with no review run IDs. The four unchanged complete profiles retain their previous profile fingerprints; the bc6, d8f and a8f profiles have new fingerprints, while their second cases remain byte-identical to the pinned active predecessor records. The seven rest configs each passed the positive-evidence checker; their 32 record lines and seven original source config/review files still match the recorded SHA-256 pins. The prior first cases for d8f and a8f cannot be salvaged by a hash refresh because their worked examples are visible in the teaching images. A current P case still tests independent learner work, not the visible image alone.

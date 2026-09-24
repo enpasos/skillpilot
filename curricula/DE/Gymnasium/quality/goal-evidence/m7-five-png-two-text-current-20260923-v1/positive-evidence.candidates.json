@@ -1,0 +1,454 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-understanding-evidence-m7-five-png-two-text-current-20260923-v1",
+  "reviewedAt": "2026-09-23T20:28:07Z",
+  "reviewer": "Codex AI candidate author /root/four_d_v2_a_fresh (exact model identifier unavailable)",
+  "goals": [
+    {
+      "goalId": "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
+      "reason": "DE: Aktuelles Q2-LK-Ziel und neue ln-Umkehrgrafik erneut geprüft. Die unveränderten Fälle verlangen Begründungen aller Eigenschaften sowie einen frischen Schranken-Transfer; das Bild liefert weder die Begründungskette noch den Schrankenfall. EN: Rechecked current advanced-course goal and inverse-ln image; unchanged cases still require property justifications and a fresh bound transfer not supplied by the image.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Die Eigenschaften von ln folgen aus der streng wachsenden Bijektion eˣ: ℝ→(0,∞): ln hat Definitionsmenge (0,∞), Wertemenge ℝ, Nullstelle 1, ist streng wachsend und unbeschränkt in beiden Randrichtungen.",
+            "essentialUnderstandingEn": "The properties of ln follow from the strictly increasing bijection eˣ: ℝ→(0,∞): ln has domain (0,∞), range ℝ, zero 1, is strictly increasing, and is unbounded at its two ends.",
+            "observablePerformanceDe": "Die lernende Person begründet die Mengen, ln(1)=0, die Monotonie sowie ln(x)→−∞ für x→0⁺ und ln(x)→∞ für x→∞ jeweils durch die umgekehrte Exponentialzuordnung. Aus Exponentialabschätzungen wie e⁻¹<z<1 leitet sie −1<ln(z)<0 ab und verwendet dies, um eine anders skalierte oder nur teilweise beschriftete Logarithmusskizze zu kontrollieren.",
+            "observablePerformanceEn": "The learner justifies the sets, ln(1)=0, monotonicity, and the limits ln(x)→−∞ as x→0⁺ and ln(x)→∞ as x→∞, each through the inverse exponential relationship. From exponential bounds such as e⁻¹<z<1, they infer −1<ln(z)<0 and use this to check a logarithm sketch with different scaling or only partial labels."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "proof-to-bounds",
+            "textDe": "Die aus exp hergeleiteten Eigenschaften werden zur Begründung einer konkreten Schranke für ln genutzt.",
+            "textEn": "Properties derived from exp are used to justify a specific bound on ln."
+          },
+          {
+            "id": "boundary-direction",
+            "textDe": "Das Verhalten für x→0⁺ wird vom Verhalten für x→∞ unterschieden, statt Unbeschränktheit mit einem falschen Definitionsbereich zu verwechseln.",
+            "textEn": "Behaviour as x→0⁺ is distinguished from behaviour as x→∞, rather than confusing unboundedness with an incorrect domain."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "derive-properties",
+            "taskDemandDe": "Begründe aus der Umkehrbeziehung zu eˣ Definitions- und Wertemenge, Nullstelle, Monotonie und beide Randverhalten von ln. Verknüpfe jede Aussage mit einer Eigenschaft von eˣ.",
+            "taskDemandEn": "Use inversion of eˣ to justify the domain, range, zero, monotonicity and both end behaviours of ln. Link each assertion to an exponential property.",
+            "expectedPerformanceDe": "Die positive Wertemenge von exp wird D_ln=(0,∞), ihre reelle Definitionsmenge wird W_ln=ℝ. Aus e⁰=1 folgt ln(1)=0; strenge Zunahme bleibt beim Umkehren erhalten. eᵘ→0 für u→−∞ und eᵘ→∞ für u→∞ ergeben die entsprechenden ln-Randverhalten.",
+            "expectedPerformanceEn": "The positive range of exp becomes D_ln=(0,∞), and its real domain becomes W_ln=ℝ. e⁰=1 gives ln(1)=0; strict increase is preserved by inversion. eᵘ→0 as u→−∞ and eᵘ→∞ as u→∞ yield the corresponding ln end behaviours.",
+            "understandingFocusDe": "Jede Eigenschaft wird aus der Umkehrstruktur hergeleitet, nicht nur als Liste erinnert.",
+            "understandingFocusEn": "Every property is derived from the inverse structure, not merely recalled as a list."
+          },
+          {
+            "id": "bound-logarithm",
+            "taskDemandDe": "Für eine unbekannte Zahl z gilt e⁻³<z<e⁻². Begründe ohne Dezimalrechnung einen Wertebereich und das Vorzeichen von ln(z). Erläutere anhand der Beziehung zusätzlich, wie positive Argumente beliebig große negative ln-Werte besitzen können.",
+            "taskDemandEn": "For an unknown number z, e⁻³<z<e⁻². Without decimal calculations, justify an interval and sign for ln(z). Also use this relation to explain how positive arguments can have arbitrarily large negative logarithm values.",
+            "expectedPerformanceDe": "Wegen der streng wachsenden Umkehrung gilt −3<ln(z)<−2, also ln(z)<0. Exponentialwerte zu immer negativeren Exponenten bleiben positiv und nähern sich 0; ihre ln-Werte sind diese negativen Exponenten.",
+            "expectedPerformanceEn": "Strictly increasing inversion gives −3<ln(z)<−2, so ln(z)<0. Exponential values for increasingly negative exponents remain positive and approach 0; their logarithms are those negative exponents.",
+            "understandingFocusDe": "Die allgemeine Monotonie- und Randargumentation wird auf unvollständig gegebene Information angewendet.",
+            "understandingFocusEn": "General monotonicity and boundary reasoning are applied to incomplete numerical information."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+      "reason": "DE: Der neue Bildgraph zeigt 1/(x−1)+1. Der erste P-Fall verwendet nun 2/(x−2)−3 mit rechnerisch geprüften Punkten auf beiden Ästen; der negative Vorzeichenfall bleibt unverändert. EN: The new image shows 1/(x−1)+1; the first P case now uses 2/(x−2)−3 with checked points on both branches, while the negative-numerator transfer is retained.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "asymptotes-points-and-branches-from-parameters",
+            "essentialUnderstandingDe": "Für f(x) = a/(x - d) + e sind x = d und y = e die senkrechte beziehungsweise waagerechte Asymptote. Vorzeichen und Betrag von a bestimmen die Lage und Form der beiden Äste, die sich den Asymptoten annähern, sie aber nicht schneiden.",
+            "essentialUnderstandingEn": "For f(x) = a/(x - d) + e, x = d and y = e are the vertical and horizontal asymptotes, respectively. The sign and magnitude of a determine the position and shape of the two branches, which approach but do not cross the asymptotes.",
+            "observablePerformanceDe": "Die lernende Person liest selbstständig a, d und e aus einem gegebenen Term ab, trägt beide Asymptoten ein, bestimmt geeignete Punkte auf beiden Ästen und zeichnet einen Graphen, dessen Astlage und Annäherungsverhalten zu den Parametern passen.",
+            "observablePerformanceEn": "The learner independently reads a, d, and e from a given expression, draws both asymptotes, determines suitable points on both branches, and draws a graph whose branch orientation and approach behavior are consistent with the parameters."
+          },
+          {
+            "id": "graph-check-against-function-values",
+            "essentialUnderstandingDe": "Eine plausible Hyperbelskizze muss nicht nur das Asymptotengerüst, sondern auch konkrete Funktionswerte und das Vorzeichen von a auf beiden Seiten von x = d wiedergeben.",
+            "essentialUnderstandingEn": "A plausible hyperbola sketch must reproduce not only the asymptotic framework but also concrete function values and the sign of a on both sides of x = d.",
+            "observablePerformanceDe": "Die lernende Person prüft die eigene Skizze mit berechneten Punkten auf beiden Ästen und berichtigt eine Astlage oder Skalierung, die zwar die Asymptoten, aber nicht die Funktionswerte erfüllt.",
+            "observablePerformanceEn": "The learner checks their sketch using calculated points on both branches and corrects a branch position or scale that fits the asymptotes but not the function values."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "asymptotes-points-and-branches-from-parameters",
+            "graph-check-against-function-values"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "asymptote-location",
+            "textDe": "Positive oder negative horizontale und vertikale Verschiebung",
+            "textEn": "Positive or negative horizontal and vertical translation"
+          },
+          {
+            "id": "a-structure",
+            "textDe": "Positives oder negatives a mit Betrag größer oder kleiner als 1",
+            "textEn": "Positive or negative a with magnitude greater or less than 1"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "positive-a-shifted-hyperbola",
+            "taskDemandDe": "Zeichne f(x) = 2/(x - 2) - 3 ohne Graphvorlage. Bestimme beide Asymptoten, berechne mindestens zwei Punkte auf jedem Ast und begründe deren Lage relativ zum Asymptotenschnittpunkt.",
+            "taskDemandEn": "Draw f(x) = 2/(x - 2) - 3 without a graph template. Determine both asymptotes, calculate at least two points on each branch, and justify their positions relative to the intersection of the asymptotes.",
+            "expectedPerformanceDe": "Die lernende Person zeichnet x = 2 und y = -3, nutzt beispielsweise (3|-1), (4|-2), (1|-5) und (0|-4) und ordnet wegen a > 0 die Äste rechts oberhalb beziehungsweise links unterhalb des Asymptotenschnittpunkts an.",
+            "expectedPerformanceEn": "The learner draws x = 2 and y = -3, uses points such as (3, -1), (4, -2), (1, -5), and (0, -4), and places the branches to the upper right and lower left of the asymptote intersection because a > 0.",
+            "understandingFocusDe": "Asymptoten, Punkte und Astlage werden aus demselben Term koordiniert.",
+            "understandingFocusEn": "Asymptotes, points, and branch positions are coordinated from the same expression."
+          },
+          {
+            "id": "negative-fractional-a",
+            "taskDemandDe": "Zeichne g(x) = -0,5/(x + 2) + 1 ohne Graphvorlage und prüfe eine Skizze, die beide Äste wie bei positivem a einträgt. Nutze selbst gewählte Kontrollpunkte.",
+            "taskDemandEn": "Draw g(x) = -0.5/(x + 2) + 1 without a graph template and check a sketch that places both branches as if a were positive. Use control points of your own choice.",
+            "expectedPerformanceDe": "Die lernende Person bestimmt x = -2 und y = 1, berechnet etwa (-1|0,5) und (-3|1,5) und ordnet wegen a < 0 die Äste rechts unterhalb und links oberhalb des Asymptotenschnittpunkts an. Sie berichtigt die vorgeschlagene Orientierung.",
+            "expectedPerformanceEn": "The learner determines x = -2 and y = 1, calculates points such as (-1, 0.5) and (-3, 1.5), and places the branches to the lower right and upper left of the asymptote intersection because a < 0. They correct the proposed orientation.",
+            "understandingFocusDe": "Der Transfer prüft Vorzeichenwirkung und Stauchung unabhängig von einer vertrauten Standardlage.",
+            "understandingFocusEn": "The transfer assesses the effect of the sign and compression independently of a familiar standard position."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d8f1fd06-785e-5d15-a8e5-7d8b36f91287",
+      "reason": "DE: Das neue Bild zeigt Zeit→Radius→Kreisfläche; dieser Fall ist als unabhängiger P-Nachweis ungeeignet. Der erste Fall prüft deshalb Zeit→Weg→Verbrauch mit eigener Zwischenvariable und Einheiten; der zweite Messsignal-Kalibrierungsfall bleibt. EN: The image teaches time→radius→circle area, so the first P case is replaced by time→distance→consumption; the independent signal-calibration case is retained.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "zwischenvariable-und-reihenfolge",
+            "essentialUnderstandingDe": "Eine Verkettung verknüpft zwei sachlich aufeinanderfolgende Beziehungen: Der Ausgabewert der inneren Funktion ist die Eingabe der äußeren Funktion. Diese Zwischenvariable bestimmt die Reihenfolge, die Einheiten und den zulässigen Bereich der Gesamtzuordnung.",
+            "essentialUnderstandingEn": "A composition connects two contextually consecutive relationships: the output of the inner function is the input of the outer function. This intermediate variable determines the order, units and admissible domain of the overall mapping.",
+            "observablePerformanceDe": "Die lernende Person benennt Eingabe, Zwischenvariable und Ausgabe, ordnet innere und äußere Funktion zu und begründet, dass die von der inneren Funktion erzeugten Werte im verwendeten Bereich der äußeren Funktion liegen.",
+            "observablePerformanceEn": "The learner identifies input, intermediate variable and output, assigns the inner and outer functions, and explains that the values produced by the inner function lie within the outer function's relevant domain."
+          },
+          {
+            "id": "gesamtmodell-erlaeutern",
+            "essentialUnderstandingDe": "Das Gesamtmodell beschreibt denselben sachlichen Vorgang wie die aufeinanderfolgenden Einzelzuordnungen. Eine passende Zerlegung wird durch die Bedeutung der Größen begründet, nicht allein durch eine formale Möglichkeit, einen Term umzuschreiben.",
+            "essentialUnderstandingEn": "The overall model describes the same contextual process as the consecutive individual mappings. A suitable decomposition is justified by the meanings of the quantities, not merely by a formal possibility of rewriting an expression.",
+            "observablePerformanceDe": "Die lernende Person bildet oder zerlegt einen Gesamtterm passend zum Kontext und erläutert an einem Eingabewert, wie das Zwischenergebnis zum sachlich interpretierten Endergebnis führt.",
+            "observablePerformanceEn": "The learner forms or decomposes an overall expression in accordance with the context and explains, for an input value, how the intermediate result leads to the contextually interpreted final result."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "zwischenvariable-und-reihenfolge",
+            "gesamtmodell-erlaeutern"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "richtung-der-modellierung",
+            "textDe": "Wechsel vom Zusammensetzen zweier gegebener Beziehungen zur kontextbezogenen Zerlegung eines Gesamtmodells.",
+            "textEn": "Change from composing two given relationships to decomposing an overall model using its context."
+          },
+          {
+            "id": "zwischenvariable",
+            "textDe": "Zurückgelegte Strecke als Zwischenvariable gegenüber elektrischem Signal mit linearer Kalibrierung.",
+            "textEn": "Travelled distance as an intermediate variable versus an electrical signal with linear calibration."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "weg-und-verbrauch",
+            "taskDemandDe": "Für 0<=t<=2 ist t die Zahl der Stunden seit Fahrtbeginn und s(t)=20t+5t² die zurückgelegte Strecke in Kilometern. Ein idealisiertes Fahrzeug verbraucht 0,06 Liter je Kilometer; für die Kilometerzahl s gilt V(s)=0,06s Liter. Modelliere den Verbrauch in Abhängigkeit von t, erläutere innere und äußere Funktion und deute t=2.",
+            "taskDemandEn": "For 0<=t<=2, t is the number of hours since departure and s(t)=20t+5t² is the distance travelled in kilometres. An idealized vehicle consumes 0.06 litres per kilometre; for a numerical distance s in kilometres, V(s)=0.06s litres. Model consumption as a function of t, explain the inner and outer functions, and interpret t=2.",
+            "expectedPerformanceDe": "Die lernende Person identifiziert s als innere und V als äußere Funktion und bildet V(s(t))=0,06(20t+5t²)=1,2t+0,3t² Liter. Im Bereich 0<=t<=2 steigt s von 0 auf 60 km; diese Werte sind für V zulässig. Bei t=2 gilt erst s=60 km, dann V=3,6 Liter. Die Reihenfolge Zeit→Weg→Verbrauch folgt aus den Bedeutungen der Größen.",
+            "expectedPerformanceEn": "The learner identifies s as the inner and V as the outer function and forms V(s(t))=0.06(20t+5t²)=1.2t+0.3t² litres. Over 0<=t<=2, s increases from 0 to 60 km; these values are admissible inputs to V. At t=2, distance is first 60 km, then consumption is 3.6 litres. The time→distance→consumption order follows from the meanings of the quantities.",
+            "understandingFocusDe": "Eigenständige Verkettung in einem vom Bild unabhängigen Weg-Verbrauch-Modell mit Zwischenvariable, Einheiten und zulässigem Bereich.",
+            "understandingFocusEn": "Independent composition in a distance-consumption model distinct from the image, with intermediate variable, units and admissible domain."
+          },
+          {
+            "id": "messsignal-und-kalibrierung",
+            "taskDemandDe": "Ein idealisiertes System zeigt T(t)=10+40e^(-t/5) Grad Celsius für t>=0 Minuten an. Das Messsignal startet bei 2 Volt und fällt mit dem Faktor e^(-t/5); die Kalibrierung ordnet 0 Volt den Wert 10 Grad Celsius und jedem zusätzlichen Volt 20 Grad Celsius mehr zu. Zerlege das Modell sachgerecht und erläutere beide Funktionen.",
+            "taskDemandEn": "An idealized system displays T(t)=10+40e^(-t/5) degrees Celsius for t>=0 minutes. The signal starts at 2 volts and decreases by factor e^(-t/5); calibration maps 0 volts to 10 degrees Celsius and each additional volt to 20 more degrees Celsius. Decompose the model appropriately and explain both functions.",
+            "expectedPerformanceDe": "Die lernende Person identifiziert U(t)=2e^(-t/5) als innere und F(U)=10+20U als äußere Funktion. Sie erläutert Zeit -> Spannung -> Temperatur, den Signalbereich 0<U<=2 Volt und prüft T(0)=50 sowie T(5)=10+40/e Grad Celsius über beide Zuordnungen.",
+            "expectedPerformanceEn": "The learner identifies U(t)=2e^(-t/5) as the inner function and F(U)=10+20U as the outer function. They explain time -> voltage -> temperature, the signal range 0<U<=2 volts, and check T(0)=50 and T(5)=10+40/e degrees Celsius through both mappings.",
+            "understandingFocusDe": "Frischer Transfer in umgekehrter Modellierungsrichtung mit einer physikalisch bedeuteten Zwischenvariable; beide erforderlichen Erwartungen werden unabhängig abgedeckt.",
+            "understandingFocusEn": "Fresh transfer in the reverse modeling direction with a physically meaningful intermediate variable; both required expectations are covered independently."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+      "reason": "DE: Das neue Bild zeigt x²+1=0 und ±i. Der direkte P-Fall wird zu x²+4=0 mit ±2i; das allgemeine Realzahl-Hindernis wird ohne Kopie des Bildterms formuliert. Der verschobene Quadratfall bleibt. EN: The image shows x²+1=0 and ±i; the direct P case now uses x²+4=0 and ±2i, while the shifted-square transfer remains.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "real-obstruction",
+            "essentialUnderstandingDe": "Für jedes reelle x gilt x²≥0; deshalb ist x²+c=0 bei c>0 in ℝ unlösbar, während die algebraische Lösung eine Quadratwurzel aus einer negativen Zahl verlangt.",
+            "essentialUnderstandingEn": "For every real x, x²≥0; therefore x²+c=0 with c>0 has no solution in ℝ, while algebraic solving calls for a square root of a negative number.",
+            "observablePerformanceDe": "Begründet an einer neuen Gleichung die Unlösbarkeit in R durch eine Eigenschaft reeller Quadrate statt nur mit einem Taschenrechnerergebnis.",
+            "observablePerformanceEn": "Justifies lack of real solutions for a fresh equation using a property of real squares rather than a calculator result."
+          },
+          {
+            "id": "extension-purpose",
+            "essentialUnderstandingDe": "Die Einführung von i mit i²=−1 und Zahlen a+bi erlaubt Lösungen solcher Gleichungen, ohne die bisherigen reellen Rechenregeln für reelle Zahlen aufzugeben.",
+            "essentialUnderstandingEn": "Introducing i with i²=−1 and numbers a+bi permits solutions of such equations without discarding the existing real arithmetic for real numbers.",
+            "observablePerformanceDe": "Zeigt an zwei Gleichungen komplexe Lösungen, überprüft sie durch Einsetzen und erläutert, welches konkrete Lösungsproblem C gegenüber R behebt.",
+            "observablePerformanceEn": "Shows complex solutions of two equations, checks them by substitution and explains the concrete solvability problem C resolves beyond R."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "real-obstruction",
+            "extension-purpose"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "direkte Gleichung x²+c=0 gegenüber quadratischer Gleichung mit verschobenem Quadrat",
+            "textEn": "direct equation x²+c=0 versus a quadratic equation with a shifted square"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "basic",
+            "taskDemandDe": "Für x²+4=0: erkläre die reelle Unlösbarkeit, definiere i²=−1 und prüfe die neu möglichen Lösungen.",
+            "taskDemandEn": "For x²+4=0, explain why no real solution exists, define i²=−1 and check the newly available solutions.",
+            "expectedPerformanceDe": "In ℝ gilt x²+4≥4. In ℂ sind x=±2i möglich, denn (±2i)²+4=−4+4=0. Die Erweiterung fügt Lösungen hinzu und enthält die reellen Zahlen weiter.",
+            "expectedPerformanceEn": "Over ℝ, x²+4≥4. Over ℂ, x=±2i work because (±2i)²+4=−4+4=0. The extension adds solutions while still containing all real numbers.",
+            "understandingFocusDe": "Konkretes Defizit von R und Zweck der Erweiterung verbinden.",
+            "understandingFocusEn": "Connect a concrete limitation of R to the purpose of the extension."
+          },
+          {
+            "id": "shifted",
+            "taskDemandDe": "Löse x²−2x+5=0 erst als Frage in R und dann in C; erkläre, warum die Erweiterung hier nötig ist.",
+            "taskDemandEn": "Treat x²−2x+5=0 first over R and then over C; explain why the extension is needed.",
+            "expectedPerformanceDe": "(x−1)²+4=0 hat keine reelle Lösung, weil das Quadrat nicht −4 sein kann; in C erhält man x=1±2i und Einsetzen bestätigt die Nullstellen.",
+            "expectedPerformanceEn": "(x−1)²+4=0 has no real solution because a real square cannot equal −4; over C, x=1±2i and substitution verifies both roots.",
+            "understandingFocusDe": "Das gleiche Erweiterungsargument auf ein verschobenes Quadrat übertragen.",
+            "understandingFocusEn": "Transfer the extension argument to a shifted square."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "308f19e2-e202-5300-a2fa-1eaa717f4e73",
+      "reason": "DE: Aktuelles J10-Ziel und neues Lichtdämpfungsbild geprüft. Die unveränderten Fälle verlangen Temperatur-Grenzwert mit Modellbereich und verschobenes Wachstum in umgekehrter Grenzrichtung; weder Zahlen noch Kontexte kopieren das Bild. EN: Current Year-10 goal and light-attenuation image rechecked; retained cooling and shifted-growth cases remain independent in context, values and limiting direction.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "term-to-limits",
+            "essentialUnderstandingDe": "Für a·b^x+c mit a>0 und b>0, b≠1 nähert sich der Term in der jeweils abfallenden x-Richtung dem Wert c, während er in der anderen Richtung unbegrenzt wächst.",
+            "essentialUnderstandingEn": "For a·b^x+c with a>0 and b>0, b≠1, the expression approaches c in the direction where b^x tends to zero and grows without bound in the other direction.",
+            "observablePerformanceDe": "Die lernende Person begründet aus Basis und Verschiebung die Grenzrichtung für x→+∞ und x→−∞ und gibt die waagerechte Asymptote an.",
+            "observablePerformanceEn": "From base and shift, the learner justifies both x→+∞ and x→−∞ behavior and states the horizontal asymptote."
+          },
+          {
+            "id": "graph-and-context",
+            "essentialUnderstandingDe": "Die waagerechte Asymptote ist ein Annäherungswert des Graphen, kein im endlichen Modellzeitpunkt automatisch erreichter Wert; im Kontext gilt nur der sachlich zulässige Eingabebereich.",
+            "essentialUnderstandingEn": "The horizontal asymptote is a value the graph approaches, not automatically reaches at a finite model time; contextual interpretation is limited to admissible inputs.",
+            "observablePerformanceDe": "Die lernende Person verortet die Asymptote am Graphen und erklärt ihre Bedeutung in einer Sachlage, wobei sie mathematische Extrapolation und gültigen Modellbereich unterscheidet.",
+            "observablePerformanceEn": "The learner locates the asymptote on the graph and explains it in context, distinguishing mathematical extrapolation from the valid model domain."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "term-to-limits",
+            "graph-and-context"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "base-direction",
+            "textDe": "abklingende Funktion mit Asymptote bei x→+∞ gegenüber wachsende Funktion mit Asymptote bei x→−∞",
+            "textEn": "decaying function with asymptote as x→+∞ versus growing function with asymptote as x→−∞"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cooling-baseline",
+            "taskDemandDe": "Ein Temperaturmodell für t≥0 lautet T(t)=4·0,5^t+2 °C. Beschreibe aus Term und Graphen das Verhalten für große positive und mathematisch auch große negative t; deute die Asymptote im sachlichen Bereich.",
+            "taskDemandEn": "A temperature model for t≥0 is T(t)=4·0.5^t+2 °C. From expression and graph describe behavior for large positive and mathematically large negative t; interpret the asymptote in the contextual domain.",
+            "expectedPerformanceDe": "Für t→+∞ nähert sich T(t) von oben 2 °C, also y=2 als waagerechte Asymptote; für t→−∞ wächst der mathematische Term unbegrenzt. Negative Zeit liegt außerhalb des angegebenen Modellbereichs; die 2 °C sind ein Annäherungswert, keine endliche exakte Messung.",
+            "expectedPerformanceEn": "As t→+∞, T(t) approaches 2 °C from above, so y=2 is the horizontal asymptote; as t→−∞ the mathematical expression grows without bound. Negative time is outside the stated model domain; 2 °C is a limiting value, not an exact finite-time reading.",
+            "understandingFocusDe": "Termgrenze, Graph und physikalischen Geltungsbereich zusammenführen.",
+            "understandingFocusEn": "Reconciling expression limit, graph and physical domain."
+          },
+          {
+            "id": "shifted-growth",
+            "taskDemandDe": "Für g(x)=3·2^x−1 in einem mathematischen Messindex x∈ℝ: beschreibe beide Enden des Graphen, nenne die waagerechte Asymptote und deute −1 als Modellniveau.",
+            "taskDemandEn": "For g(x)=3·2^x−1 in a mathematical measurement index x∈ℝ, describe both ends of the graph, name the horizontal asymptote and interpret −1 as a model level.",
+            "expectedPerformanceDe": "Für x→−∞ gilt 2^x→0 und g(x)→−1 von oben; für x→+∞ wächst g(x) unbegrenzt. Die Asymptote y=−1 ist ein nur angenähertes unteres Modellniveau, kein bei endlichem x angenommener Wert.",
+            "expectedPerformanceEn": "As x→−∞, 2^x→0 and g(x)→−1 from above; as x→+∞, g(x) grows without bound. The asymptote y=−1 is an approached lower model level, not a value attained at finite x.",
+            "understandingFocusDe": "Bei umgekehrter Exponentialrichtung die andere Grenzseite identifizieren.",
+            "understandingFocusEn": "Identifying the opposite limiting side for exponential growth."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "ed5d869b-af4e-4b80-b34d-a2338e16ce34",
+      "reason": "DE: Der aktuelle Zieltext nennt festen linearen Unterraum, orthogonalen Rest und erste Abbildungsintuition. Die unveränderten y-Achsen- und Diagonalfälle prüfen feste Zuordnungsregel und Lotbedingung; die Bildzahlen (3,2) werden nicht übernommen. EN: The revised goal's fixed-subspace, perpendicular-remainder and initial mapping meaning remain covered by the unchanged y-axis and diagonal cases, independently of the image values.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "fixed-target-and-perpendicular-remainder",
+            "essentialUnderstandingDe": "Bei einer orthogonalen Projektion liegt das Bild eines Vektors in einer fest gewählten Richtung oder einem Unterraum; der Rest vom Original zum Bild steht senkrecht darauf.",
+            "essentialUnderstandingEn": "Under orthogonal projection, the image of a vector lies in a fixed chosen direction or subspace; the remainder from the original to its image is perpendicular to it.",
+            "observablePerformanceDe": "Die lernende Person markiert in einer neuen Skizze Vektor, Bildvektor, Zielgerade und Lot, erklärt die Senkrechtbedingung und unterscheidet Original und Bild.",
+            "observablePerformanceEn": "In a new diagram, the learner marks the vector, image vector, target line and perpendicular, explains the right-angle condition, and distinguishes original from image."
+          },
+          {
+            "id": "same-rule-for-new-inputs",
+            "essentialUnderstandingDe": "Die feste Zielrichtung legt dieselbe Projektionsregel für jeden Eingabevektor fest; ein Wechsel des Eingabevektors ändert das Bild, nicht die Zielrichtung.",
+            "essentialUnderstandingEn": "A fixed target direction defines the same projection rule for every input vector; changing the input changes its image, not the target direction.",
+            "observablePerformanceDe": "Die lernende Person erläutert an zwei anders liegenden Vektoren oder an einer anderen festen Zielgeraden, welche Komponente im Bild bleibt und wieso dies als systematische Abbildung verstanden werden kann.",
+            "observablePerformanceEn": "Using two differently placed vectors or another fixed target line, the learner explains what component remains in the image and why this is a systematic mapping."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "fixed-target-and-perpendicular-remainder",
+            "same-rule-for-new-inputs"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "target-direction",
+            "textDe": "y-Achse gegenüber diagonaler Gerade y=x",
+            "textEn": "y-axis versus diagonal line y=x"
+          },
+          {
+            "id": "input-position",
+            "textDe": "Vektor links der Zielachse gegenüber Vektor neben einer schrägen Zielgeraden",
+            "textEn": "vector left of the target axis versus vector beside a slanted target line"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "project-to-y-axis",
+            "taskDemandDe": "Skizziere die orthogonale Projektion von v=(−2,4) auf die y-Achse. Gib den Bildvektor an und erläutere am Lot die feste Abbildungsregel auch für einen anderen Vektor w=(3,1).",
+            "taskDemandEn": "Sketch the orthogonal projection of v=(−2,4) onto the y-axis. Give the image vector and explain the fixed mapping rule using the perpendicular, also for another vector w=(3,1).",
+            "expectedPerformanceDe": "v wird auf (0,4) abgebildet, w auf (0,1); die x-Komponente fällt jeweils weg und die y-Komponente bleibt. Die Restvektoren (−2,0) und (3,0) stehen senkrecht auf der y-Achse.",
+            "expectedPerformanceEn": "v maps to (0,4) and w to (0,1); each x-component is removed and each y-component retained. Residuals (−2,0) and (3,0) are perpendicular to the y-axis.",
+            "understandingFocusDe": "Eine feste Zielachse legt dieselbe geometrische Regel für verschiedene Eingaben fest.",
+            "understandingFocusEn": "One fixed target axis gives the same geometric rule for different inputs."
+          },
+          {
+            "id": "project-to-diagonal",
+            "taskDemandDe": "Ein anderes Ziel ist die Gerade y=x durch den Ursprung. Zeichne v=(4,0) und seinen orthogonalen Bildvektor auf diese Gerade; begründe mit dem Restvektor und dem rechten Winkel, warum der Bildpunkt passt.",
+            "taskDemandEn": "The new target is the line y=x through the origin. Draw v=(4,0) and its orthogonal image vector on that line; use the residual vector and right angle to justify the image point.",
+            "expectedPerformanceDe": "Das Bild ist (2,2) auf y=x; v−(2,2)=(2,−2) steht senkrecht zur Richtung (1,1), weil sein Skalarprodukt 2−2=0 ist oder ein rechter Winkel geometrisch erkennbar ist. Die Zielgerade bleibt für weitere Eingaben dieselbe.",
+            "expectedPerformanceEn": "The image is (2,2) on y=x; v−(2,2)=(2,−2) is perpendicular to direction (1,1), since their dot product is 2−2=0 or the right angle is evident geometrically. The target line stays fixed for other inputs.",
+            "understandingFocusDe": "Transfer von einer Koordinatenachse auf einen schrägen Unterraum ohne verpflichtende Matrixmethode.",
+            "understandingFocusEn": "Transfer from a coordinate axis to a diagonal subspace without requiring a matrix method."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8cb5c712-9c58-5910-8c63-8c3736369b80",
+      "reason": "DE: Der aktuelle Zieltext fordert Spiegelpunkt, gemeinsame Ebenennormale und Lotfuß als Mittelpunkt. Die unveränderten Fälle E:y=2 und E:x+y+z=3 prüfen dies unabhängig von der Bild-Ebene z=0. EN: The revised goal's reflection, common normal and midpoint foot remain covered by the unchanged axis-parallel and oblique cases, distinct from the image plane.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "foot-midpoint",
+            "essentialUnderstandingDe": "Bei der Spiegelung eines Punktes an einer Ebene ist der Lotfuß der Mittelpunkt zwischen Urbild und Bild; die Verbindungsstrecke steht senkrecht auf der Ebene und beide Punkte haben gleichen Abstand zur Ebene.",
+            "essentialUnderstandingEn": "When reflecting a point across a plane, its perpendicular foot is the midpoint between original and image; their connecting segment is perpendicular to the plane and both points have equal distance from it.",
+            "observablePerformanceDe": "Die lernende Person ermittelt den Lotfuß und das Spiegelbild für eine gegebene Ebene und prüft Ebenenzugehörigkeit, Mittelpunkts- und Orthogonalitätsbedingung.",
+            "observablePerformanceEn": "The learner finds the perpendicular foot and reflected point for a given plane and checks plane membership, midpoint, and perpendicularity conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "foot-midpoint"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "mirror-orientation",
+            "textDe": "Eine koordinatenparallele Ebene mit unmittelbarer Koordinatenregel wechselt zu einer schiefen Ebene mit rechnerischem Lotfuß.",
+            "textEn": "A coordinate-parallel plane with an immediate coordinate rule changes to an oblique plane requiring a computed perpendicular foot."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "axis-parallel-plane",
+            "taskDemandDe": "Spiegle P=(3,5,−1) an E:y=2 und belege das Ergebnis mit dem Lotfuß.",
+            "taskDemandEn": "Reflect P=(3,5,−1) across E:y=2 and verify the result using the perpendicular foot.",
+            "expectedPerformanceDe": "F=(3,2,−1), P'=(3,−1,−1). F liegt auf E, ist Mittelpunkt von PP', und PP' verläuft in y-Richtung senkrecht zu E; beide Abstände sind 3.",
+            "expectedPerformanceEn": "F=(3,2,−1), P'=(3,−1,−1). F lies on E, is the midpoint of PP', and PP' runs in the y direction perpendicular to E; both distances are 3.",
+            "understandingFocusDe": "Die Spiegelung wird durch Lot und Mittelpunkt, nicht nur eine Vorzeichenregel, belegt.",
+            "understandingFocusEn": "Reflection is established by perpendicularity and midpoint, not merely by a sign rule."
+          },
+          {
+            "id": "oblique-plane",
+            "taskDemandDe": "Spiegle P=(3,2,4) an E:x+y+z=3. Berechne den Lotfuß und kontrolliere das Bild.",
+            "taskDemandEn": "Reflect P=(3,2,4) across E:x+y+z=3. Compute the perpendicular foot and check the image.",
+            "expectedPerformanceDe": "Die Normale (1,1,1) führt von P um 2(1,1,1) zu F=(1,0,2) auf E. Daher P'=2F−P=(-1,-2,0). F ist Mittelpunkt und PP' ist parallel zur Normalen.",
+            "expectedPerformanceEn": "Moving 2(1,1,1) from P along the normal reaches F=(1,0,2) on E. Thus P'=2F−P=(-1,-2,0). F is the midpoint and PP' is parallel to the normal.",
+            "understandingFocusDe": "Das Lotfußprinzip trägt auch eine nicht achsenparallele Ebene.",
+            "understandingFocusEn": "The perpendicular-foot principle also works for a non-axis-parallel plane."
+          }
+        ]
+      }
+    }
+  ]
+}

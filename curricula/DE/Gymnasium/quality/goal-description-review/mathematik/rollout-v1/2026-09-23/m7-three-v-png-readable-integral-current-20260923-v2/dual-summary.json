@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:2f582f1dfcfb908ef29c7fa4f937b4da32e322d6c07651a5bafed7967dfb3689",
+  "reviewInputFingerprint": "sha256:b01b837f8f6bc85295c1736b5275b8d1fed9c20bc13b6ccf2ef6bc418325fecc",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-a",
+      "roundId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-independent-a",
+      "runIds": [
+        "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-first-pass-a-codex-20260923T2140Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex (exact model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-b",
+      "roundId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-independent-b",
+      "runIds": [
+        "math-m7-three-png-v2-rb-run-20260923-01"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::Codex AI reviewer (exact model identifier not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+      "firstRecordId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-a-001",
+      "secondRecordId": "math-m7-three-png-v2-rb-record-01",
+      "firstRunId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-first-pass-a-codex-20260923T2140Z",
+      "secondRunId": "math-m7-three-png-v2-rb-run-20260923-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8c32d941-b51c-5663-951c-a610f8900f76",
+      "firstRecordId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-a-002",
+      "secondRecordId": "math-m7-three-png-v2-rb-record-02",
+      "firstRunId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-first-pass-a-codex-20260923T2140Z",
+      "secondRunId": "math-m7-three-png-v2-rb-run-20260923-01",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a7778885-17aa-5eeb-a6a7-fbf4c8d55a16",
+      "firstRecordId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-a-003",
+      "secondRecordId": "math-m7-three-png-v2-rb-record-03",
+      "firstRunId": "mathematik-m7-three-v-png-readable-integral-current-20260923-v2-first-pass-a-codex-20260923T2140Z",
+      "secondRunId": "math-m7-three-png-v2-rb-run-20260923-01",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

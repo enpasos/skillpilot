@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-j7-triangle-png-current-20260923-v2-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex; exact model identifier unavailable; synthesis of two independent current AI candidate rounds, no human approval",
+  "synthesizedAt": "2026-09-23T19:49:13.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-j7-triangle-png-current-20260923-v2",
+    "batchManifestDigest": "sha256:7c5071d108b27d407602128ea4709ac0c9d60570c11b92fc6b363785d084bc35",
+    "configDigest": "sha256:342d8ac33e04f719155105da11656546ce7f3e5f8f0da7b2bf688b66fb1b2891",
+    "bundleFingerprint": "sha256:6184d3061f3e1a7982b17edfc16ea5a70a0ce71464877274bc21b7a5334a1fb2",
+    "bookDigest": "sha256:bffd2c36c4a70f7e62430abbe57ac6ba1ec76dbad7c1f6432ea0dcceb8b50248",
+    "reviewInputFingerprint": "sha256:81da2bbb3553c8e34aa26252495cfc726699b2b52fca76f6bca5f6cac38df5f4",
+    "dualSummaryDigest": "sha256:6f53dbc47d140ced4c5b41aa8bc3005eddfb0a0c6853cfd7f58e26bf1687e91b",
+    "canonicalLandscapeDigest": "sha256:876901d59f94f895f104841e5d5566cc0afad4b8c1be60e32675d171045749b9"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j7-triangle-png-current-20260923-v2-a",
+      "campaignDigest": "sha256:85b5288f3d500bc5f1d8ed1a32dc817b43846a4a9628ca3cf82b28d6d05bd963",
+      "roundId": "mathematik-m7-j7-triangle-png-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j7-triangle-png-current-20260923-v2-independent-a",
+      "reviewInputFingerprint": "sha256:81da2bbb3553c8e34aa26252495cfc726699b2b52fca76f6bca5f6cac38df5f4",
+      "batchId": "mathematik-m7-j7-triangle-png-current-20260923-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:93e4e8de802b3546ba848ce64776858bfd9690c0a387ebb4e7a29cb4d2a6e965",
+      "runId": "j7-triangle-png-current-20260923-v2-a-codex-independent",
+      "runManifestDigest": "sha256:43dfc7ee7866fc05cf2978166372d0b40a801aeb02a1b0b5e4f09d393d723475",
+      "resultsDigest": "sha256:be6fcb708b658a4b1a7b9aef9f5ccac1df06aacb5d8e72440a0522ba03bbe5bf"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j7-triangle-png-current-20260923-v2-b",
+      "campaignDigest": "sha256:64a6af4487371799f9f22d29d2cf78367f7a2b3320a0c920f57fa457c9410d56",
+      "roundId": "mathematik-m7-j7-triangle-png-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j7-triangle-png-current-20260923-v2-independent-b",
+      "reviewInputFingerprint": "sha256:81da2bbb3553c8e34aa26252495cfc726699b2b52fca76f6bca5f6cac38df5f4",
+      "batchId": "mathematik-m7-j7-triangle-png-current-20260923-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:cd9c8b905af139cbd92b7f126779ee4494e0085607609cd2dd1e1ee8025791cd",
+      "runId": "math-m7-j7-triangle-png-current-20260923-v2-first-pass-b-codex",
+      "runManifestDigest": "sha256:bb40b6d877580f20fcfaf5a125a8e4e29148cf1291f7d6b0a5cb19164b08ccd2",
+      "resultsDigest": "sha256:f14d2495ee406a7ededce57affe3b01ce55c3a9f6c9ebeecebdaa07001ffdc5d"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-j7-triangle-png-current-20260923-v2-synthesis-decision-001",
+      "goalId": "3017e774-8d9f-5129-828f-7684db5afc1e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f9564c7842c2190915f104d884b98ffd4c38527d0af89a54bf00a9808e596cda",
+      "pageFingerprint": "sha256:ea76b61e0ab60ecc9706e5d520a5235bc970a5e559e356a8de3465a2e17902d7",
+      "goalReviewContextFingerprint": "sha256:80af2d17be9e209d50e8ae0d40640b139ae158d91232b373640ceb240de4ffc1",
+      "finalText": {
+        "titleDe": "Dreiecke aus Kongruenzangaben konstruieren",
+        "titleEn": "Construct triangles from congruence data",
+        "descriptionDe": "Die lernende Person kann ein durch zulässige Seiten- und Winkelangaben bestimmtes Dreieck mit Geodreieck und Zirkel konstruieren und die Konstruktionsschritte nachvollziehbar dokumentieren.",
+        "descriptionEn": "The learner can construct a triangle determined by valid side and angle data using a set square and compass and document the construction steps clearly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "j7-triangle-png-current-20260923-v2-a-3017e774",
+          "recordDigest": "sha256:8cea9be7beee90894d2f7df986fa2011270f893c21c6a644aa79ec42e19759ee"
+        },
+        "second": {
+          "recordId": "math-m7-j7-triangle-png-current-20260923-v2-first-pass-b-codex-3017e774",
+          "recordDigest": "sha256:aba54b55c86529314cd667d1a806d127ca705d2ab1a772b51624ad3a8f357f65"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen aktuellen Runden halten die kurze J7-Beschreibung. Sie fordert zulässige Angaben, tatsächliche Konstruktion mit Geodreieck und Zirkel sowie nachvollziehbare Schritte. Das aktuelle 5/6/7-cm-SSS-PNG zeigt nur ein mögliches Ergebnis und Werkzeuge; das erhaltene aktuelle P-v2-Profil verlangt zwei eigenständig ausgeführte, dokumentierte Konstruktionen. Lösbarkeitsklassifikation des Nachbarziels wird nicht eingeführt.",
+      "rationaleEn": "Both independent current rounds keep the concise grade-7 description. It requires admissible data, actual construction with a set square and compass, and traceable steps. The current 5/6/7-cm SSS PNG shows only a possible result and tools; the retained current P-v2 profile requires two independently executed and documented constructions. It does not import the sibling's solvability classification."
+    },
+    {
+      "decisionId": "mathematik-m7-j7-triangle-png-current-20260923-v2-synthesis-decision-002",
+      "goalId": "0f6c1df6-0e30-54ae-8098-e9422833ba80",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0b2c81973a41cf427a627ae146cff3c34ea6417fbb1268af21e0cbae2fe6f353",
+      "pageFingerprint": "sha256:846ec10f301b87de29e89318c96ac03e60ef0f6837c744503c0e4134a6975de4",
+      "goalReviewContextFingerprint": "sha256:5dcdf2a1ab5c7240351a97b11cffb731b7ed40f7b6c5a1d128fec0a24d16e8d7",
+      "finalText": {
+        "titleDe": "Lösbarkeit von Dreieckskonstruktionen begründen",
+        "titleEn": "Justify the solvability of triangle constructions",
+        "descriptionDe": "Die lernende Person kann aus gegebenen Seiten- und Winkelangaben mithilfe von Kongruenzsätzen und geometrischen Bedingungen begründen, ob kein Dreieck, genau ein Dreieck bis auf Kongruenz oder mehrere nicht kongruente Dreiecke möglich sind.",
+        "descriptionEn": "From given side and angle data, the learner can use congruence theorems and geometric conditions to justify whether no triangle, exactly one triangle up to congruence, or several non-congruent triangles are possible."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "j7-triangle-png-current-20260923-v2-a-0f6c1df6",
+          "recordDigest": "sha256:83df92a2e5cadcc347b23d85107dc172145d277f892149279a49fda53666a7af"
+        },
+        "second": {
+          "recordId": "math-m7-j7-triangle-png-current-20260923-v2-first-pass-b-codex-0f6c1df6",
+          "recordDigest": "sha256:49cb83ed7961224a406fb0381d21ebe53885554f3e10385068647be4e6361db1"
+        }
+      },
+      "rationaleDe": "Die beiden früheren Runden belegten dieselbe lokale Unschärfe beim Zählen gespiegelter Dreiecke; der kanonische Text wurde deshalb in DE und EN eng auf genau ein Dreieck bis auf Kongruenz beziehungsweise mehrere nicht kongruente Dreiecke präzisiert. Beide voneinander unabhängigen neuen Runden prüfen die korrigierte aktuelle Seite, das PNG und die aktualisierte P-v2-Bindung und halten die Fassung. Das Bild zeigt drei mögliche Situationen, ersetzt aber keine Begründung zu konkreten Daten; das inhaltlich unveränderte P-v2-Profil prüft diese unabhängig. Keine weitere Änderung ist belegt.",
+      "rationaleEn": "The two earlier rounds identified the same local ambiguity when counting reflected triangles, so the canonical DE and EN texts were narrowly clarified to one triangle up to congruence versus several non-congruent triangles. Both independent new rounds reviewed the corrected current page, PNG and refreshed P-v2 binding and keep that wording. The image illustrates three possible situations but cannot replace reasoning about concrete data; the substantively unchanged P-v2 profile tests this independently. No further edit is warranted."
+    }
+  ],
+  "manifestFingerprint": "sha256:1838f13a816447d2f58bbdd3047ba82ca5941b6387e5bbb8f0fabd8fc2942f94"
+}

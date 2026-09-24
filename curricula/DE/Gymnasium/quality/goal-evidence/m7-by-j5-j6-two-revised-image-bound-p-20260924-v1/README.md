@@ -1,0 +1,18 @@
+# Two revised J5 Math goals: current image-bound P-v2 AI candidates
+
+This package separates `a4c2b831-02f0-5d55-a300-7823a71352c4` and `d658e26a-e351-4bca-824e-f346deaa87c5` from the active 24-record batch-002 P owner after their source-backed bilingual canonical description revisions. The old owner and its review ledger remain unchanged as historical inputs. `materialize-candidates-and-retention.mjs` verifies both source-file SHA-256 digests and the moved source-profile fingerprints, then preserves the other **22 raw review lines byte-for-byte** under `retained-batch-002-unaffected-22.*`. Its `provenance.json` records the source pins and original JPG hashes. The retained config still has no image resource binding, exactly as its source owner did; it is not a claim that those 22 images were newly reviewed here.
+
+The new exact-current config binds both `goal-visualization` JPGs. The prime-factor profile is substantively unchanged (`sha256:32e95b4899c0480e38bc0022b944a5e1c3c4a364bc484329a25d9085da34fe58`): the revised DE/EN goal now explicitly asks for complete factorization, multiplication back, and the same factors by different routes. Its two independent cases use two paths for **756** and diagnose an incomplete factorization of **168**. The original image only depicts one factor tree for **72**, so neither fresh answer is copied from it.
+
+The power profile now explicitly limits the base to integers and the exponent to natural `n ≥ 1`, matching the revised goal and [LehrplanPLUS Bayern Gymnasium Mathematik 5, M5.3.1](https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/5/mathematik). The first case remains `4³ = 4·4·4 = 64` against the false `4·3 = 12` reading. The independent reverse-direction transfer writes `(−3)·(−3)·(−3)` as `(−3)³ = −27`, rejecting `+27` from the factor sign. The original JPG shows only `3⁴ = 81` with a positive base; it does not demonstrate the negative-base case. The revised profile fingerprint is `sha256:1041438633bb2360c2d12d9c88a4dd9be1517a4323413dc981e43966a753b132`.
+
+All 24 current package records are `needs_human_review` / `ai_candidate`, `E1/G1`, with no review-run IDs or human approval. The two-goal P checker reports **2 current, 0 blocking issues**; the retained checker reports **22 current, 0 blocking issues**. The candidate materializer's no-write reproduction check and the V2 profile, candidate-materializer, and positive-review self-tests pass. The package does not itself edit the central rollout config, canonical goals, image/QA files, D reviews, or any registry. Until the central config replaces the old owner path with both new config paths, this package is prepared but not centrally active; registering old and new owners together would create duplicate P ownership.
+
+Reproduce from the repository root:
+
+```bash
+node curricula/DE/Gymnasium/quality/goal-evidence/m7-by-j5-j6-two-revised-image-bound-p-20260924-v1/materialize-candidates-and-retention.mjs
+npm --prefix app exec -- tsx app/scripts/materializePositiveGoalEvidenceCandidates.ts --config curricula/DE/Gymnasium/quality/goal-evidence/m7-by-j5-j6-two-revised-image-bound-p-20260924-v1/positive-evidence.config.json --candidates curricula/DE/Gymnasium/quality/goal-evidence/m7-by-j5-j6-two-revised-image-bound-p-20260924-v1/positive-evidence.candidates.json
+npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/m7-by-j5-j6-two-revised-image-bound-p-20260924-v1/positive-evidence.config.json
+npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/m7-by-j5-j6-two-revised-image-bound-p-20260924-v1/retained-batch-002-unaffected-22.config.json
+```

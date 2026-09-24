@@ -1,58 +1,22 @@
-# Lernzielvisualisierung: Volumen von Zylindern berechnen (Formelsammlung)
+# Lernzielvisualisierung: Volumen von Zylindern aus Radius und Höhe bestimmen
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `c71ae268-f28e-59f0-982d-91db8f963378`
-- Titel: Volumen von Zylindern berechnen (Formelsammlung)
-- Beschreibung: Die lernende Person kann Volumina von Zylindern mithilfe der Formelsammlung berechnen ($V = \pi r^2 h$) und Radius sowie Höhe aus Skizzen oder Koordinaten bestimmen.
+- Titel: Volumen von Zylindern aus Radius und Höhe bestimmen
+- Beschreibung: Die lernende Person kann die Kreisfläche als Grundfläche eines Zylinders deuten und den Zusammenhang $V = \pi r^2 h$ nutzen, um Volumina aus Skizzen oder Koordinaten zu bestimmen.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI/ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `c71ae268-f28e-59f0-982d-91db8f963378.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/c71ae268-f28e-59f0-982d-91db8f963378/c71ae268-f28e-59f0-982d-91db8f963378.jpg`
+- Quellbild: `c71ae268-f28e-59f0-982d-91db8f963378.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/c71ae268-f28e-59f0-982d-91db8f963378/c71ae268-f28e-59f0-982d-91db8f963378.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Volumen von Zylindern berechnen (Formelsammlung)
-Beschreibung: Die lernende Person kann Volumina von Zylindern mithilfe der Formelsammlung berechnen ($V = \pi r^2 h$) und Radius sowie Höhe aus Skizzen oder Koordinaten bestimmen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Volumen eines Zylinders mit der Formel aus der Formelsammlung berechnen.
-- Zeige einen Zylinder mit:
-  Radius r=3 cm,
-  Hoehe h=10 cm.
-- Rechnung:
-  G=pi*r^2=pi*(3 cm)^2=9pi cm^2.
-  V=G*h=9pi cm^2*10 cm=90pi cm^3.
-  90pi cm^3 ~= 282,7 cm^3.
-- Beschrifte klar:
-  Radius r,
-  senkrechte Hoehe h,
-  Grundflaeche G,
-  Volumen V.
-- Kurzer Hinweis: Radius ist die halbe Breite des Kreises.
-
-Vermeiden:
-- Nicht den Durchmesser 6 cm als Radius verwenden.
-- Nicht V=1/3*pi*r^2*h verwenden.
-- Nicht Mantelflaeche oder Oberflaeche berechnen.
-- Nicht 180pi cm^3 oder 30pi cm^3 angeben.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Use case: precise-object-edit. Edit this square German cylinder-volume comic. Essential change: replace EVERY transparent/black gutter and transparent outer pixel with a fully opaque warm pale-cream-to-sky-blue background across the entire square canvas, so the image works in both light and dark UI. Make the vertical dimension label 'h = 10 cm' next to the main cylinder/arrow large dark navy type inside a small rounded light label, clearly readable at 360px width. Preserve all other elements and exact math: orange base radius r = 3 cm from center to edge, height arrow vertical from cylinder bottom to top, G = πr² = 9π cm², V = G · h = 90π cm³, three congruent circular slices, and title/footer spelling. No new symbols, no Formelsammlung, no formula book, no photographic rendering or watermark.
 ```
 
 ## Review-Notiz

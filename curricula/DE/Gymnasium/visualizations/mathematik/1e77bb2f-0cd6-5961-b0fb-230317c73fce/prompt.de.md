@@ -1,61 +1,22 @@
-# Lernzielvisualisierung: Volumen von Prismen berechnen (Formelsammlung)
+# Lernzielvisualisierung: Volumen von Prismen aus Grundfläche und Höhe bestimmen
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `1e77bb2f-0cd6-5961-b0fb-230317c73fce`
-- Titel: Volumen von Prismen berechnen (Formelsammlung)
-- Beschreibung: Die lernende Person kann Volumina von Prismen mithilfe der Formelsammlung berechnen ($V = G \cdot h$), indem sie Grundfläche und Höhe aus Skizzen oder Koordinaten bestimmt und Einheiten korrekt angibt.
+- Titel: Volumen von Prismen aus Grundfläche und Höhe bestimmen
+- Beschreibung: Die lernende Person kann den Zusammenhang $V = G \cdot h$ geometrisch erklären und nutzen, um Volumina von Prismen aus Skizzen oder Koordinaten zu bestimmen und Einheiten korrekt anzugeben.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI/ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `1e77bb2f-0cd6-5961-b0fb-230317c73fce.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/1e77bb2f-0cd6-5961-b0fb-230317c73fce/1e77bb2f-0cd6-5961-b0fb-230317c73fce.jpg`
+- Quellbild: `1e77bb2f-0cd6-5961-b0fb-230317c73fce.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/1e77bb2f-0cd6-5961-b0fb-230317c73fce/1e77bb2f-0cd6-5961-b0fb-230317c73fce.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Volumen von Prismen berechnen (Formelsammlung)
-Beschreibung: Die lernende Person kann Volumina von Prismen mithilfe der Formelsammlung berechnen ($V = G \cdot h$), indem sie Grundfläche und Höhe aus Skizzen oder Koordinaten bestimmt und Einheiten korrekt angibt.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Volumen eines Prismas mit der Formel aus der Formelsammlung berechnen.
-- Zeige ein gerades rechteckiges Prisma.
-- Grundflaeche ist ein Rechteck mit:
-  Laenge 5 cm,
-  Breite 4 cm.
-- Prismahoehe ist der Abstand zwischen den parallelen Grundflaechen:
-  h_Prism=7 cm.
-- Rechnung:
-  G=5 cm*4 cm=20 cm^2.
-  V=G*h_Prism=20 cm^2*7 cm=140 cm^3.
-- Beschrifte die orange Grundflaeche direkt mit:
-  Grundflaeche G=20 cm^2.
-- Beschrifte die 7-cm-Strecke direkt mit:
-  Prismahoehe h_Prism=7 cm.
-- Kurzer Hinweis: Flaecheneinheit cm^2, Volumeneinheit cm^3.
-
-Vermeiden:
-- Nicht schreiben, dass G gleich 4 cm oder 5 cm ist.
-- Keine einzelne Seitenlaenge als Grundflaeche bezeichnen.
-- Keine Dreieckshoehe zeigen.
-- Keine Pyramide, keinen Kegel, keinen Zylinder zeigen.
-- Nicht V=1/3*G*h verwenden.
-- Nicht V=70 cm^3 oder V=280 cm^3 angeben.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Use case: scientific-educational. Make a SQUARE 1:1 PNG for a SkillPilot mathematics learning-goal illustration. Minimal, charming, abstract COMIC with an entirely OPAQUE pale-blue/cream background. At 360 px display width the numbers and labels MUST be readable. No people, no speech bubbles, no notes, no decorative text. Only FOUR text regions are allowed: (1) top title exactly 'Prismenvolumen'; (2) in/near highlighted orange base exactly 'G = 20 cm²'; (3) next to a truly vertical height arrow exactly 'h = 7 cm'; (4) bottom large card exactly 'V = G · h = 140 cm³'. The single main visual takes most of the square: a clean upright rectangular prism with a highlighted ORANGE base that is 5 cm by 4 cm and a perpendicular height of 7 cm. Add small unobtrusive base-edge labels '5 cm' and '4 cm' (these are part of visual region 2). Show three faint horizontal congruent orange slices inside the prism to make the repeated-base idea obvious; no books or formula-sheet symbolism. A height arrow starts at base level and ends at top level, parallel to the vertical edges, not on a sloping depth edge. The base area 5×4=20 cm², volume 20×7=140 cm³; keep all labels/math exact. Layout uses large navy lettering, warm orange/cyan pastel and slightly hand-drawn outlines; clean white space around math. Do not add any other words or equations, no transparent pixels, no watermark, no photorealism.
 ```
 
 ## Review-Notiz

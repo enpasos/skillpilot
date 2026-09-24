@@ -1,0 +1,51 @@
+{
+  "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+  "status": "candidate_only_unlinked",
+  "promptDocument": "../prompts.md",
+  "generator": "built-in OpenAI/ChatGPT-Codex image generation; exact image model identifier unavailable",
+  "sourceDirectory": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054",
+  "nativePixels": [1254, 1254],
+  "mobileReviewPixels": [360, 360],
+  "candidates": [
+    {
+      "round": "graph-v1",
+      "sourceFile": "exec-f0ccbd19-e399-4008-b2b1-1ac65f86845c.png",
+      "archivedFile": "candidates/graph-v1-rejected-unequal-scale.png",
+      "sha256": "8be9c2e0e485565ce534e80e101e6896c27a61d7d7b51d88bf6651119e88f46a",
+      "pngColorType": "RGB",
+      "decision": "rejected",
+      "reason": "axis scale and y=x reflection disagree; logarithm curve is too flat"
+    },
+    {
+      "round": "graph-v2-edit",
+      "sourceFile": "exec-4c9da186-9e7e-4149-a351-e4db9f040972.png",
+      "archivedFile": "candidates/graph-v2-rejected-unequal-scale.png",
+      "sha256": "fa29a47cb875ad41b587822cc079d3ceb27f33c20c8fe30df7e864949ecf5dc1",
+      "pngColorType": "RGB",
+      "decision": "rejected",
+      "reason": "edit retained misleading graph scale and reflection geometry"
+    },
+    {
+      "round": "machine-v3",
+      "sourceFile": "exec-8d73e6c2-e3fb-43fb-bdba-2d8bc56ddd7f.png",
+      "archivedFile": "candidates/machine-v3-rejected-alpha.png",
+      "sha256": "edabd17989a1e631786bc8d5abc1607dd72b43f69b64717d29f58783840fcdae",
+      "pngColorType": "RGBA",
+      "fullyTransparentPixels": 203984,
+      "partlyTransparentPixels": 1367635,
+      "decision": "rejected",
+      "reason": "content correct but transparent gaps prevent robust display"
+    },
+    {
+      "round": "machine-v4-opaque-edit",
+      "sourceFile": "exec-b071dbe3-b508-4609-b08d-462479de2601.png",
+      "archivedFile": "candidates/machine-v4-content-and-mobile-pass-unlinked.png",
+      "sha256": "479febd190329bb27e307e30d213fbcafdb222caca99bbc63ed0941184c5d56e",
+      "pngColorType": "RGB",
+      "fullyTransparentPixels": 0,
+      "partlyTransparentPixels": 0,
+      "decision": "candidate_content_and_360px_pass_unlinked",
+      "scopeLimit": "depicts numerical inverse input/output, not graph reflection across y=x"
+    }
+  ]
+}

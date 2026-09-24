@@ -1,0 +1,36 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "m7-q3-binomial-two-image-final-a-20260924",
+  "campaignId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-a",
+  "roundId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-first-pass-a",
+  "batchId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:d978227c7ec4105fba945071603d9dccbd40de22114eec1e3699890727098840",
+  "bundleFingerprint": "sha256:25e79f7ab6e7679a7551ad652529b43d6569559b8b9c84d0782df4496367cc09",
+  "bookDigest": "sha256:34a843407041007e800aee9717cff739736061aec76063b24b134351a9928da7",
+  "provider": "OpenAI",
+  "model": "Codex (exact runtime model identifier unavailable)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:c7cab397678190515236dc01bf91ccdfe4569c783af771ca791fb8047ee0aaa1",
+  "generationParametersFingerprint": "sha256:503f092cad29e822d5690be157b6fd059672050d3e4aa9533b70de9e79036a5d",
+  "independenceGroupId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "9b6f4d7d-a804-5666-b7ea-85bb3c73da4a",
+    "aa00edfa-cf8d-500e-994f-7e33a5ebd045"
+  ],
+  "inputArtifacts": [
+    { "role": "book_pdf", "digest": "sha256:f6c4e0ebba6df2eadfe0dcfc4aad16e1891442f7306e07ecd38406b02a4e7fe7" },
+    { "role": "review_input_json", "digest": "sha256:c5db391822fe7cd30def36a7a44998d9dec4229fa6615082eb8967e6c6848cc6" },
+    { "role": "review_prompt", "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b" },
+    { "role": "review_criteria", "digest": "sha256:c7cab397678190515236dc01bf91ccdfe4569c783af771ca791fb8047ee0aaa1" },
+    { "role": "description_review_batch_input_jsonl", "digest": "sha256:d978227c7ec4105fba945071603d9dccbd40de22114eec1e3699890727098840" }
+  ],
+  "startedAt": "2026-09-23T23:22:00.000Z",
+  "completedAt": "2026-09-23T23:27:00.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:b1f45ce7e07239b26576e24611efd2961ba11ec6bce163e3c910b27b98f4de16",
+  "toolchainVersion": "goal-description-review-v2"
+}

@@ -1,0 +1,12 @@
+# Construction image prompts
+
+Provider: built-in OpenAI/ChatGPT-Codex `image_gen`; model ID not exposed.
+Base was generated without input images. Edit targeted that base image.
+
+## Base prompt (`v1-invalid-arcs.png`)
+
+> Use case: scientific-educational. Asset type: landscape PNG learning-goal visualization for German grade 7 mathematics, displayed in a compact goal card. Create a friendly, abstract, clean comic-style illustration on a pale sky-blue background, with warm cream paper, bold dark-navy linework and a few muted coral/teal accents. Subject: a single mathematically consistent SSS triangle construction on an uncluttered sheet. Draw a horizontal base segment A–B, clearly marked 7 cm. Above it draw C closer horizontally to A than to B, connected to A and B. Mark AC as 5 cm and BC as 6 cm. Show two light dashed compass arcs crossing precisely at C: one arc centered at A with radius AC, the other centered at B with radius BC. A small friendly stylized compass and a set square may sit off to the right without obscuring the geometry. The triangle itself must be scalene, with AB visibly longest, BC between AB and AC; C should lie above the left half of AB, consistent with side lengths 5, 6, 7. Exact readable in-image labels only: A, B, C, 5 cm, 6 cm, 7 cm, SSS. The two arcs must meet exactly at C, not at invented points; each measured length labels its correct segment. No extra lengths, numbers, faces, text or logos. Ensure crisp readable geometry at small display size. This is a learning orientation image, not a full worksheet or solution. Avoid photorealism, 3D rendering, sterile vector-chart look and excessive text.
+
+## Targeted edit (`v2-clean-sss-candidate.png`)
+
+> Use case: precise-object-edit. Edit target: the provided comic-style triangle-construction image. Change only this: remove every teal dashed/dotted compass arc and the small dashed strokes around point C completely, leaving a clean cream sheet behind them. Preserve the triangle and its vertex positions A, B, C exactly; preserve all three solid dark-navy sides and their proportions; preserve the labels A, B, C, 5 cm, 6 cm, 7 cm, SSS verbatim in exactly their current positions; preserve the pencil compass, set square, border, pale blue background, colors, and style. Do not add any new lines, marks, text or arrows. The clean scalene SSS triangle with drawing tools illustrates the construction goal without suggesting invalid arc geometry.

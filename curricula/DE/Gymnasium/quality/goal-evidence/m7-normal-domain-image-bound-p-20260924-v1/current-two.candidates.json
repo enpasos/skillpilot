@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-p-v2-m7-normal-domain-image-bound-20260924-v1",
+  "reviewedAt": "2026-09-24T02:12:21.898Z",
+  "reviewer": "Codex current-pixel, current-page and independent-transfer P-v2 review /root/math_p_gap",
+  "goals": [
+    {
+      "goalId": "b431148b-526c-4bde-b04b-48d23101d0d3",
+      "reason": "DE: Das neue PNG zeigt 100 unabhängige faire Münzwürfe mit p=0,5 als schematisch annähernd glockenförmig und 100 unabhängige Versuche mit p=0,01, np=1, als rechtsschief und für ein Normalmodell ungeeignet. Die Histogramme sind ausdrücklich schematisch; keine Stetigkeitskorrektur oder Intervallfläche wird als Ziel behauptet. Die frischen P-Fälle Bin(100;0,4) und Bin(20;0,001) sind andere Parameter und prüfen Modellvoraussetzungen, Gegenbeispiel und Begründung ohne Ablesen des Bildes. Aktueller bildgebundener KI-Kandidat, keine menschliche Freigabe oder Lernendenleistung. EN: The new image contrasts a plausible fair-coin binomial model with a rare-event skewed model; the two assessment cases use different parameters and independently test the current recognition goal, not continuity correction.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "model-structure",
+            "essentialUnderstandingDe": "Viele vergleichbare, hinreichend unabhängige Beiträge oder ein Binomialmodell mit ausreichend großen Werten von np und n(1−p) können eine annähernd symmetrische Glockenform plausibel machen; die bloße Zahl der Versuche genügt nicht.",
+            "essentialUnderstandingEn": "Many comparable, sufficiently independent contributions or a binomial model with sufficiently large np and n(1−p) can make an approximately symmetric bell shape plausible; a large trial count alone is insufficient.",
+            "observablePerformanceDe": "Die lernende Person erkennt in einer neuen Situation die relevanten Modellannahmen und erläutert, weshalb eine Normalnäherung plausibel sein kann, ohne eine Wahrscheinlichkeit zu berechnen.",
+            "observablePerformanceEn": "The learner identifies relevant model assumptions in a new situation and explains why a normal approximation may be plausible, without calculating a probability."
+          },
+          {
+            "id": "counterevidence",
+            "essentialUnderstandingDe": "Seltene Treffer, starke Schiefe, eine nahe Randlage oder ausgeprägte Abhängigkeiten sprechen gegen die unkritische Normalnäherung; eine bekannte Glockenform darf nicht allein aus n abgeleitet werden.",
+            "essentialUnderstandingEn": "Rare hits, strong skew, a nearby boundary, or pronounced dependence argue against an uncritical normal approximation; a bell shape cannot be inferred from n alone.",
+            "observablePerformanceDe": "Die lernende Person unterscheidet einen plausiblen von einem ungeeigneten Fall und nennt das entscheidende Gegenargument aus Form, Rand oder Abhängigkeit.",
+            "observablePerformanceEn": "The learner distinguishes a plausible from an unsuitable case and gives the decisive counterargument from shape, boundary, or dependence."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "model-structure",
+            "counterevidence"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "geeignete symmetrische Binomialzahl gegenüber seltenem Ereignis mit stark schiefer Verteilung",
+            "textEn": "suitable symmetric-ish binomial count versus rare-event strongly skewed count"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "suitable-binomial",
+            "taskDemandDe": "Bei X~Bin(100;0,4): Ist eine Normalnäherung der Trefferzahl plausibel? Begründe allein anhand des Entstehungsmodells und der zu erwartenden Form, ohne Wahrscheinlichkeiten oder Flächen zu berechnen.",
+            "taskDemandEn": "For X~Bin(100,0.4), is a normal approximation of the hit count plausible? Justify from the generating model and expected shape only, without calculating probabilities or areas.",
+            "expectedPerformanceDe": "Bei unabhängigen Bernoulli-Versuchen sind np=40 und n(1−p)=60 beide groß; die Verteilung liegt nicht dicht an einem Rand und ist nicht extrem schief. Eine annähernde Glockenform ist plausibel, aber nicht exakt normalverteilt.",
+            "expectedPerformanceEn": "With independent Bernoulli trials, np=40 and n(1−p)=60 are both large; the distribution is not near a boundary or extremely skewed. An approximate bell shape is plausible, but the count is not exactly normally distributed.",
+            "understandingFocusDe": "Normalnäherung als begründete Erkennung einer Situation, nicht als Intervall- oder Stetigkeitskorrekturrechnung.",
+            "understandingFocusEn": "Normal approximation as justified recognition of a situation, not an interval or continuity-correction calculation."
+          },
+          {
+            "id": "rare",
+            "taskDemandDe": "Bei 20 unabhängigen Versuchen tritt ein Ereignis je mit p=0,001 auf. Prüfe, ob die Trefferzahl durch eine Normalverteilung brauchbar angenähert wird, und begründe.",
+            "taskDemandEn": "In 20 independent trials an event occurs with p=0.001 each time. Assess whether the hit count is usefully approximated by a normal distribution, with reasons.",
+            "expectedPerformanceDe": "np=0,02 ist sehr klein; fast alle Ergebnisse sind 0, die Verteilung stark rechtsschief und am Rand 0 abgeschnitten. Eine symmetrische Normalnäherung ist hier nicht sachgerecht.",
+            "expectedPerformanceEn": "np=0.02 is very small; nearly all results are 0, the distribution is highly right-skewed and bounded at 0. A symmetric normal approximation is unsuitable here.",
+            "understandingFocusDe": "Gegenbeispiel zur bloßen n-Regel: seltene Treffer und Randlage verhindern die Glockenform.",
+            "understandingFocusEn": "Counterexample to an n-only rule: rare hits and a boundary prevent a bell shape."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "502ecaa7-cca6-5c51-a1cc-da09a7b2382c",
+      "reason": "DE: Das neue PNG unterscheidet fachlich korrekt den Term f(x)=1/(x−3) mit x≠3, einen vollständig gezeichneten Graphen mit geschlossenem x=1 und offenem x=4 sowie im Laufkontext t≥0. Die frischen P-Fälle verwenden stattdessen √(x+1)/(x−2), einen anderen vollständigen Graphen [−3,4) und einen Tank mit sachlichem Zeitraum [0,12]. Sie prüfen die Unterscheidung von rechnerischer und sachlicher Definitionsmenge unabhängig vom Bild. Aktueller bildgebundener KI-Kandidat, keine menschliche Freigabe oder Lernendenleistung. EN: The corrected image shows distinct algebraic, full-graph, and contextual domains; the independent assessment cases use different functions and context, requiring justification rather than image recall.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "admissible-inputs",
+            "essentialUnderstandingDe": "Die Definitionsmenge enthält die zugelassenen Eingaben. Nenner dürfen nicht null werden und reelle Quadratwurzeln verlangen nichtnegative Radikanden; im vollständigen Graphen gehören genau die vorkommenden x-Koordinaten dazu.",
+            "essentialUnderstandingEn": "The domain contains admissible inputs. Denominators must be nonzero and real square roots require nonnegative radicands; in a complete graph, exactly the occurring x-coordinates belong to it.",
+            "observablePerformanceDe": "Die lernende Person bestimmt aus Term oder vollständig spezifiziertem Graphen die zulässigen x-Werte, begründet Ausschlüsse und notiert offene oder geschlossene Grenzen korrekt.",
+            "observablePerformanceEn": "The learner determines admissible x-values from an expression or fully specified graph, justifies exclusions and records open or closed boundaries correctly."
+          },
+          {
+            "id": "contextual-restrictions",
+            "essentialUnderstandingDe": "Sachbedingungen können die rechnerisch möglichen Eingaben zusätzlich beschränken; ein begrenztes Zeichenfenster allein legt die Definitionsmenge einer Funktion nicht fest.",
+            "essentialUnderstandingEn": "Context can further restrict algebraically possible inputs; a limited plotting window alone does not determine a function's domain.",
+            "observablePerformanceDe": "Die lernende Person leitet sachliche Eingabegrenzen aus der Aufgabenangabe ab und kennzeichnet, welche Beschränkung aus dem Term und welche aus dem Modell stammt.",
+            "observablePerformanceEn": "The learner derives contextual input boundaries from the task information and identifies which restriction comes from the expression and which from the model."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "admissible-inputs",
+            "contextual-restrictions"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "source-of-restriction",
+            "textDe": "Zwischen algebraischem Ausschluss, vollständig gezeichneten Graphenendpunkten und sachlicher Modellgrenze wechseln.",
+            "textEn": "Change between an algebraic exclusion, fully specified graph endpoints and a contextual model boundary."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "expression-and-complete-graph",
+            "taskDemandDe": "Bestimme den maximalen reellen Definitionsbereich von f(x)=√(x+1)/(x−2). Ein separat gegebener vollständiger Graph besteht aus einem durchgehenden Bogen von einem ausgefüllten Punkt bei x=−3 bis zu einem offenen Punkt bei x=4. Bestimme auch dessen Definitionsmenge und begründe beide Angaben.",
+            "taskDemandEn": "Determine the maximal real domain of f(x)=√(x+1)/(x−2). A separately supplied complete graph consists of a continuous arc from a filled endpoint at x=−3 to an open endpoint at x=4. Determine that domain too and justify both answers.",
+            "expectedPerformanceDe": "Für den Term gilt x≥−1 und x≠2, also [−1,2)∪(2,∞). Der vollständige Graph hat Definitionsmenge [−3,4). Die Begründung ordnet jede Grenze dem Radikanden, Nenner oder Endpunkt zu.",
+            "expectedPerformanceEn": "For the expression, x≥−1 and x≠2, so the domain is [−1,2)∪(2,∞). The complete graph has domain [−3,4). The justification connects each boundary to the radicand, denominator or endpoint.",
+            "understandingFocusDe": "Die Zulässigkeit wird aus expliziter Information bestimmt und nicht mit dem sichtbaren Zeichenfenster verwechselt.",
+            "understandingFocusEn": "Admissibility is determined from explicit information and distinguished from the visible plotting window."
+          },
+          {
+            "id": "contextual-domain",
+            "taskDemandDe": "Ein Vorratsbehälter enthält anfangs 60 Liter und gibt gleichmäßig 5 Liter pro Minute ab. Das Modell V(t)=60−5t beschreibt nur den Zeitraum vom Öffnen bis zum vollständigen Leeren. Bestimme seinen sachlichen Definitionsbereich und vergleiche ihn mit dem maximalen reellen Definitionsbereich des Terms.",
+            "taskDemandEn": "A tank initially contains 60 litres and releases 5 litres per minute. The model V(t)=60−5t describes only the period from opening to complete emptying. Determine its contextual domain and compare it with the expression's maximal real domain.",
+            "expectedPerformanceDe": "Rechnerisch ist der Term für jedes reelle t definiert. Im Modell beginnt t bei 0 und endet bei 12 Minuten; D=[0,12]. Beide Grenzen folgen aus der beschriebenen Modellphase und sind eingeschlossen.",
+            "expectedPerformanceEn": "Algebraically the expression is defined for every real t. In the model t begins at 0 and ends at 12 minutes, so D=[0,12]. Both boundaries follow from the stated model period and are included.",
+            "understandingFocusDe": "Die neue Einschränkung entsteht aus dem Sachmodell statt aus einer undefinierten Rechenoperation.",
+            "understandingFocusEn": "The new restriction arises from the contextual model rather than an undefined operation."
+          }
+        ]
+      }
+    }
+  ]
+}

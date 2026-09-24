@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-understanding-evidence-m7-three-normal-hyperbola-png-current-20260924-v3",
+  "reviewedAt": "2026-09-24T00:15:08Z",
+  "reviewer": "OpenAI Codex subject review; AI candidate only (exact runtime model identifier unavailable)",
+  "goals": [
+    {
+      "goalId": "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+      "reason": "DE: Das geprüfte v2-Profil bleibt in v3 unverändert: Der aktuelle J8-Graph-zu-Term-Zieltext und das Original-PNG zeigen 2/(x−1)+3; die zwei unabhängig neu zu zeichnenden Graphen verlangen 6/(x−2)−1 und −2/(x+2)+3 mit eigener Punkt- und Astkontrolle. Im Lernendenblatt dürfen die in diesem Autorenbriefing angegebenen Asymptoten nicht als Zahlen vorweggenommen werden. EN: The checked v2 profile is retained unchanged in v3: the current J8 graph-to-expression text and original PNG show 2/(x−1)+3; two independently drawn new graphs require 6/(x−2)−1 and −2/(x+2)+3 with their own point and branch checks. The authoring brief's asymptote coordinates must not be disclosed numerically in the learner-facing task.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "asymptotes-identify-translation-parameters",
+            "essentialUnderstandingDe": "Bei f(x) = a/(x - d) + e mit a ≠ 0 ist x = d die senkrechte und y = e die waagerechte Asymptote. Ihre Lage bestimmt d und e und verankert die Verschiebung der Hyperbel am Asymptotenschnittpunkt (d|e).",
+            "essentialUnderstandingEn": "For f(x) = a/(x - d) + e with a ≠ 0, x = d is the vertical asymptote and y = e is the horizontal asymptote. Their positions determine d and e and anchor the translation of the hyperbola at the asymptote intersection (d, e).",
+            "observablePerformanceDe": "Die lernende Person identifiziert an einem unbekannten, nicht mit Parameterwerten annotierten Graphen beide Asymptoten, liest ihre Koordinaten auch bei beschrifteter Achsenskalierung korrekt ab, ordnet sie d und e zu und begründet die Zuordnung mit der Annäherung der Äste an die beiden Geraden.",
+            "observablePerformanceEn": "On an unfamiliar graph without annotated parameter values, the learner identifies both asymptotes, reads their coordinates correctly from labeled axis scales, assigns them to d and e, and justifies the assignment by how the branches approach the two lines."
+          },
+          {
+            "id": "one-point-determines-a-and-second-point-checks-term",
+            "essentialUnderstandingDe": "Sind d und e bekannt, erfüllt jeder Graphenpunkt (x_0|y_0) mit x_0 ≠ d den Zusammenhang a = (y_0 - e)(x_0 - d) und bestimmt damit a sowie den vollständigen Funktionsterm eindeutig. Das Vorzeichen von a passt zur Astlage relativ zu den Asymptoten; ein weiterer Graphenpunkt erlaubt eine davon unabhängige Rückprüfung.",
+            "essentialUnderstandingEn": "Once d and e are known, every point (x_0, y_0) on the graph with x_0 ≠ d satisfies a = (y_0 - e)(x_0 - d), thereby uniquely determining a and the complete function expression. The sign of a agrees with the branch positions relative to the asymptotes; another point on the graph provides an independent check.",
+            "observablePerformanceDe": "Die lernende Person wählt einen klar ablesbaren Graphenpunkt, berechnet daraus a, formuliert f(x) = a/(x - d) + e und prüft den Term anschließend an beiden Asymptoten, an der Astlage und an einem zweiten Graphenpunkt, der nicht zur Berechnung von a verwendet wurde.",
+            "observablePerformanceEn": "The learner selects one clearly readable point on the graph, calculates a from it, states f(x) = a/(x - d) + e, and then checks the expression using both asymptotes, the branch positions, and a second point on the graph that was not used to calculate a."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "asymptotes-identify-translation-parameters",
+            "one-point-determines-a-and-second-point-checks-term"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "asymptote-location",
+            "textDe": "Positive, negative oder gemischte Werte von d und e mit verschieden liegendem Asymptotenschnittpunkt",
+            "textEn": "Positive, negative, or mixed values of d and e with differently located asymptote intersections"
+          },
+          {
+            "id": "parameter-sign-and-magnitude",
+            "textDe": "Positives oder negatives a mit unterschiedlichem Betrag und entsprechend veränderter Astlage und Skalierung",
+            "textEn": "Positive or negative a with different magnitude and correspondingly changed branch positions and scale"
+          },
+          {
+            "id": "graph-reading-conditions",
+            "textDe": "Unterschiedliche Achsenskalierungen und verschieden gut ablesbare Punkte, wobei der Kontrollpunkt vom Bestimmungspunkt getrennt bleibt",
+            "textEn": "Different axis scales and differently readable points, while keeping the checking point distinct from the point used for determination"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "positive-a-reconstruction-with-independent-check",
+            "taskDemandDe": "Ein frisch vorgelegter, nicht annotierter Hyperbelgraph hat die Asymptoten x = 2 und y = -1 und enthält die gut ablesbaren Punkte (4|2) und (-1|-3). Lies d und e aus dem Graphen ab, bestimme a nur mit (4|2), gib den Funktionsterm an und prüfe ihn anschließend unabhängig mit (-1|-3) sowie anhand der Astlage.",
+            "taskDemandEn": "A freshly presented, unannotated hyperbola graph has asymptotes x = 2 and y = -1 and contains the clearly readable points (4, 2) and (-1, -3). Read d and e from the graph, determine a using only (4, 2), state the function expression, and then check it independently with (-1, -3) and the branch positions.",
+            "expectedPerformanceDe": "Die lernende Person erhält d = 2 und e = -1, berechnet a = (2 + 1)(4 - 2) = 6 und formuliert f(x) = 6/(x - 2) - 1. Sie bestätigt mit (-1|-3), dass (-1 - 2)·(-3 + 1) = 6 gilt, und ordnet die Äste wegen a > 0 rechts oberhalb und links unterhalb des Asymptotenschnittpunkts an.",
+            "expectedPerformanceEn": "The learner obtains d = 2 and e = -1, calculates a = (2 + 1)(4 - 2) = 6, and states f(x) = 6/(x - 2) - 1. Using (-1, -3), the learner confirms that (-1 - 2)(-3 + 1) = 6 and places the branches above-right and below-left of the asymptote intersection because a > 0.",
+            "understandingFocusDe": "Asymptoten und ein Punkt bestimmen den Term; ein anderer Punkt und die Astlage liefern eine vom Bestimmungsschritt getrennte Kontrolle.",
+            "understandingFocusEn": "The asymptotes and one point determine the expression; a different point and the branch positions provide a check separate from the determination step."
+          },
+          {
+            "id": "negative-a-transfer-with-changed-axis-scale",
+            "taskDemandDe": "Ein zweiter, unabhängig vorgelegter Hyperbelgraph verwendet für die beiden Achsen unterschiedliche beschriftete Skalierungen. Seine Asymptoten liegen bei x = -2 und y = 3; gut ablesbar sind die Punkte (0|2) und (-3|5). Rekonstruiere den Funktionsterm aus den Graphenmerkmalen, verwende nur (0|2) zur Bestimmung von a und kontrolliere das Ergebnis anschließend mit (-3|5) und der gegenüber dem ersten Fall umgekehrten Astlage.",
+            "taskDemandEn": "A second, independently presented hyperbola graph uses different labeled scales on the two axes. Its asymptotes are x = -2 and y = 3, and the points (0, 2) and (-3, 5) are clearly readable. Reconstruct the function expression from the graph features, use only (0, 2) to determine a, and then check the result with (-3, 5) and the branch positions reversed from the first case.",
+            "expectedPerformanceDe": "Die lernende Person liest d = -2 und e = 3 trotz der veränderten Skalierung korrekt ab, berechnet a = (2 - 3)(0 + 2) = -2 und formuliert f(x) = -2/(x + 2) + 3. Sie bestätigt mit (-3|5), dass (-3 + 2)·(5 - 3) = -2 gilt, und begründet die Astlage rechts unterhalb und links oberhalb des Asymptotenschnittpunkts durch a < 0.",
+            "expectedPerformanceEn": "The learner correctly reads d = -2 and e = 3 despite the changed scale, calculates a = (2 - 3)(0 + 2) = -2, and states f(x) = -2/(x + 2) + 3. Using (-3, 5), the learner confirms that (-3 + 2)(5 - 3) = -2 and justifies the branches below-right and above-left of the asymptote intersection through a < 0.",
+            "understandingFocusDe": "Der unabhängige Transfer verändert Verschiebung, Vorzeichen, Betrag und Lesebedingungen, erhält aber denselben Zusammenhang zwischen Asymptoten, Punkt und Funktionsterm.",
+            "understandingFocusEn": "The independent transfer changes the translation, sign, magnitude, and reading conditions while preserving the same relationship among asymptotes, point, and function expression."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8c32d941-b51c-5663-951c-a610f8900f76",
+      "reason": "DE: Der Q3-LK-Quellentext verlangt Normalwahrscheinlichkeiten in Sachzusammenhängen; v2 war formal grün, aber sein oberer Randfall nannte nur eine unbestimmte Messgröße ohne Einheit. v3 behält den unabhängigen Füllmengenfall und ersetzt den Transfer durch eine modellierte Körpergrößengruppe in cm mit explizitem Ereignis und Deutung. Das Original-PNG zeigt bloß das generische Intervall [a,b]; weder Zahlen noch Kontexte der beiden Fälle sind dort enthalten. EN: The Q3 advanced-course source requires normal probabilities in real contexts; v2 was formally green, but its upper-tail case gave only an unspecified measurement without a unit. v3 keeps the independent fill-volume case and replaces the transfer with a modeled adult-height group in cm, an explicit event, and interpretation. The original PNG shows only a generic [a,b] interval, with neither case's numbers or context.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "event-area",
+            "essentialUnderstandingDe": "Bei einer stetigen Normalverteilung ist eine Intervall- oder Randwahrscheinlichkeit die passende Fläche unter der Dichte; ein einzelner exakter Wert hat Wahrscheinlichkeit 0.",
+            "essentialUnderstandingEn": "For a continuous normal distribution, an interval or tail probability is the corresponding area under the density; a single exact value has probability 0.",
+            "observablePerformanceDe": "Übersetzt ein Kontext-Ereignis in korrekte Grenzen und markiert die richtige Fläche einschließlich Komplement bei einer oberen Grenze.",
+            "observablePerformanceEn": "Translates a contextual event into correct bounds and marks the corresponding area, including a complement for an upper tail."
+          },
+          {
+            "id": "tool-context",
+            "essentialUnderstandingDe": "Ein digitales Normalverteilungswerkzeug liefert einen Verteilungswert, dessen Eingaben μ,σ und Grenze zur Sachgröße und Einheit passen müssen.",
+            "essentialUnderstandingEn": "A digital normal-distribution tool returns a distribution value whose μ,σ and bound must match the contextual quantity and unit.",
+            "observablePerformanceDe": "Bestimmt eine Wahrscheinlichkeit mit CDF oder digitalem Werkzeug, kontrolliert 0≤P≤1 und formuliert das Ergebnis im Sachkontext.",
+            "observablePerformanceEn": "Finds a probability using a CDF or digital tool, checks 0≤P≤1 and states the result in context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "event-area",
+            "tool-context"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "zweiseitiger Bereich um μ gegenüber einseitigem oberem Randereignis",
+            "textEn": "two-sided interval around μ versus a one-sided upper-tail event"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "central",
+            "taskDemandDe": "Füllmengen seien normalverteilt mit μ=100 ml, σ=10 ml. Bestimme und deute P(90≤X≤110) mit Werkzeug oder Fläche.",
+            "taskDemandEn": "Fill volumes are normal with μ=100 ml, σ=10 ml. Find and interpret P(90≤X≤110) using a tool or area.",
+            "expectedPerformanceDe": "Standardisierung ergibt P(−1≤Z≤1)≈0,683; etwa 68,3 % der Füllmengen liegen zwischen 90 und 110 ml, als mittlere Fläche.",
+            "expectedPerformanceEn": "Standardization gives P(−1≤Z≤1)≈0.683; about 68.3% of fill volumes lie between 90 and 110 ml, represented by the central area.",
+            "understandingFocusDe": "Intervallgrenzen, Flächenbild und Kontextanteil verbinden.",
+            "understandingFocusEn": "Connect interval bounds, area and contextual proportion."
+          },
+          {
+            "id": "upper",
+            "taskDemandDe": "Die Körpergröße X in einer modellierten Gruppe erwachsener Personen sei normalverteilt mit μ=170 cm und σ=5 cm. Bestimme mit einer Normalverteilungs-CDF oder einem digitalen Werkzeug die Wahrscheinlichkeit, dass eine zufällig ausgewählte Person aus dieser Gruppe größer als 180 cm ist. Kennzeichne die zugehörige Dichtefläche und deute das Ergebnis für die modellierte Gruppe.",
+            "taskDemandEn": "Height X in a modeled group of adults is normally distributed with μ=170 cm and σ=5 cm. Use a normal CDF or digital tool to find the probability that a randomly selected person from this group is taller than 180 cm. Mark the corresponding density area and interpret the result for this modeled group.",
+            "expectedPerformanceDe": "P(X>180 cm)=1−Φ((180−170)/5)=1−Φ(2)≈0,0228. Die kleine rechte Schwanzfläche bedeutet: Im Modell sind etwa 2,3 % der Personen dieser Gruppe größer als 180 cm; 0,0228 ist keine Dichtehöhe am Einzelwert.",
+            "expectedPerformanceEn": "P(X>180 cm)=1−Φ((180−170)/5)=1−Φ(2)≈0.0228. The small right-tail area means that about 2.3% of people in this modeled group are taller than 180 cm; 0.0228 is not the density height at one value.",
+            "understandingFocusDe": "Ein Sachereignis mit Einheit in einen einseitigen rechten Flächenanteil und das passende CDF-Komplement übertragen und dessen Prozentsatz auf die definierte Gruppe beziehen.",
+            "understandingFocusEn": "Translate a contextual event with a unit into a right-tail area and the appropriate CDF complement, then relate its percentage to the defined group."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "a7778885-17aa-5eeb-a6a7-fbf4c8d55a16",
+      "reason": "DE: Der aktuelle DE/EN-Zieltext bindet Verteilungswert, Integral von −∞ bis x und links kumulierte Fläche. v2 war formal grün, aber sein verschobener Fall verwendete denselben standardisierten Bereich 0<Z≤1 und dieselbe Zahl 0,3413 wie der Standardfall. v3 erhält die Verständniserwartungen, verlangt jedoch als Transfer eine asymmetrische, den Mittelwert kreuzende Fläche bei veränderter Lage und Streuung; das Original-PNG zeigt keine dieser numerischen Fälle. EN: The current DE/EN goal binds the CDF value, integral from negative infinity to x, and left-accumulated area. v2 was formally green, but its shifted case used exactly the same standardized interval 0<Z≤1 and the same 0.3413 answer as the standard case. v3 retains the understanding expectations but requires an asymmetric interval crossing the mean under changed location and spread; the original PNG supplies neither numerical case.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "accumulated-area",
+            "essentialUnderstandingDe": "Φμ,σ(x) ist die von −∞ bis x unter der Dichte angesammelte Fläche P(X≤x), nicht die Dichtehöhe am Punkt.",
+            "essentialUnderstandingEn": "Φμ,σ(x) is the area accumulated under the density from −∞ to x, P(X≤x), not the density height at x.",
+            "observablePerformanceDe": "Markiert für eine neue Normaldichte die richtige Fläche zu Φ(x) und erläutert ihre Änderung beim Verschieben der Grenze.",
+            "observablePerformanceEn": "Marks the correct area for Φ(x) under a fresh normal density and explains how it changes when the bound moves."
+          },
+          {
+            "id": "interval-difference",
+            "essentialUnderstandingDe": "Eine Intervallwahrscheinlichkeit ist die Differenz zweier kumulierter Flächen; die Dichte ist die lokale Änderungsrate der Verteilungsfunktion.",
+            "essentialUnderstandingEn": "An interval probability is the difference of two cumulative areas; density is the local rate of change of the CDF.",
+            "observablePerformanceDe": "Drückt P(a<X≤b) durch Φ(b)−Φ(a) aus und beschreibt am Graphen, warum die Differenz genau die Fläche zwischen a und b ist.",
+            "observablePerformanceEn": "Expresses P(a<X≤b) as Φ(b)−Φ(a) and explains graphically why this is exactly the area between a and b."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "accumulated-area",
+            "interval-difference"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "CDF-Wert am Symmetriezentrum mit einseitigem Standardintervall gegenüber einem asymmetrischen, den Mittelwert kreuzenden Intervall unter verschobener und gestreckter Dichte",
+            "textEn": "CDF value at the symmetry center with a one-sided standard interval versus an asymmetric interval crossing the mean under a shifted and rescaled density"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "standard",
+            "taskDemandDe": "Zeichne schematisch die Standardnormaldichte; erkläre Φ(0) und stelle P(0<Z≤1) als CDF-Differenz dar.",
+            "taskDemandEn": "Sketch a standard normal density; explain Φ(0) and express P(0<Z≤1) as a CDF difference.",
+            "expectedPerformanceDe": "Φ(0)=0,5 ist die linke Halbfläche; P(0<Z≤1)=Φ(1)−Φ(0)≈0,3413 ist die zwischen 0 und 1 liegende Fläche.",
+            "expectedPerformanceEn": "Φ(0)=0.5 is the left half-area; P(0<Z≤1)=Φ(1)−Φ(0)≈0.3413 is the area from 0 to 1.",
+            "understandingFocusDe": "Kumulierte Fläche von lokaler Dichtehöhe unterscheiden.",
+            "understandingFocusEn": "Distinguish cumulative area from local density height."
+          },
+          {
+            "id": "shifted",
+            "taskDemandDe": "Y~N(10,2²). Erläutere Φ₁₀,₂(11) als Integral der Dichte von −∞ bis 11 und markiere die linke Fläche in einer selbst gezeichneten Skizze. Bestimme anschließend P(8<Y≤11) als Differenz kumulierter Flächen und erkläre, warum der Wert weder die Dichtehöhe bei 11 noch derselbe Flächenanteil wie im Standardfall ist.",
+            "taskDemandEn": "Y~N(10,2²). Explain Φ₁₀,₂(11) as the integral of the density from negative infinity to 11 and mark the left area in your own sketch. Then find P(8<Y≤11) as a difference of cumulative areas and explain why the result is neither the density height at 11 nor the same area share as in the standard case.",
+            "expectedPerformanceDe": "Φ₁₀,₂(11)=Φ(0,5)≈0,6915 ist die Fläche links von 11; Φ₁₀,₂(8)=Φ(−1)≈0,1587. Daher gilt P(8<Y≤11)=Φ(0,5)−Φ(−1)≈0,5328 als Fläche zwischen 8 und 11, die den Mittelwert 10 kreuzt. Die Dichtehöhe an einer einzelnen Stelle ist kein solcher Wahrscheinlichkeitsanteil; wo die Dichte größer ist, steigt die CDF lokal steiler.",
+            "expectedPerformanceEn": "Φ₁₀,₂(11)=Φ(0.5)≈0.6915 is the area left of 11; Φ₁₀,₂(8)=Φ(−1)≈0.1587. Thus P(8<Y≤11)=Φ(0.5)−Φ(−1)≈0.5328 is the area between 8 and 11, crossing the mean 10. The density height at one point is not such a probability share; where density is higher, the CDF rises more steeply locally.",
+            "understandingFocusDe": "Veränderte Lage und Streuung auf ein asymmetrisches Intervall übertragen; kumulierte, dazwischenliegende und lokale Flächen-/Dichteaussagen sauber trennen.",
+            "understandingFocusEn": "Transfer changed location and spread to an asymmetric interval; distinguish cumulative and intervening areas from local density statements."
+          }
+        ]
+      }
+    }
+  ]
+}

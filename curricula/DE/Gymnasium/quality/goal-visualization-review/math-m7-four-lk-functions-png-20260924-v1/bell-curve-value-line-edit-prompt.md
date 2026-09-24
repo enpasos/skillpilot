@@ -1,0 +1,8 @@
+```text
+Use case: precise-object-edit.
+Asset type: square German upper-secondary mathematics learning-goal illustration.
+Input image 1: edit target; preserve its friendly abstract comic style, opaque cream/sky-blue background, orange bell curve, navy lettering and current 1254-square layout.
+Primary request: Correct ONLY the plotted value at x=2 and x=6. The formula in the existing image is C(x)=3·e^(−((x−4)/2)^2), so C(2)=C(6)=3/e≈1.103, not exactly 1. The two orange dots and their shared dashed horizontal guide currently lie on the y=1 tick. Move BOTH dots and the shared dashed horizontal guide about 0.103 y-units ABOVE the y=1 tick, roughly 16 image pixels upward if adjacent y-ticks are 156 pixels apart. Keep each dot's x-coordinate fixed at its existing x=2 or x=6 position, and keep their heights exactly equal. Adjust only the immediately adjacent orange curve strokes and the two vertical dashed point guides as needed so the curve meets the moved dots smoothly and symmetrically and the guides meet the dots. Keep the peak at (4,3), the symmetric bell shape, and the curve approaching but never crossing the horizontal x-axis.
+Text (verbatim and unchanged): "C(x) = 3 · e^(−((x−4)/2)²)", "C(2) = C(6) = 3/e", "(4,3)", "Konzentration C (mg/L)", "Ort x (m)", "A=3: Höhe", "μ=4: Mitte", "s=2: Breite".
+Constraints: Do not move or relabel any axis or tick, do not change the formula, labels, parameter badges, river/background scene, colors, font, size, or composition. Do not change the peak, add new features, or introduce transparency. Output a fully opaque RGB square PNG legible at 360×360 px. This is a concentration profile, not a probability density.
+```

@@ -1,0 +1,40 @@
+{
+  "goalId": "b71c332f-ef9d-5c27-983b-7103269ff419",
+  "status": "hold_unlinked",
+  "generationPrompt": "../prompts.md#bell-curve-as-a-concentration-model-candidate-1",
+  "editPrompt": "../bell-curve-value-line-edit-prompt.md",
+  "generator": "built-in OpenAI/ChatGPT-Codex image generation; exact image model identifier unavailable",
+  "nativePixels": [1254, 1254],
+  "mobileReviewPixels": [360, 360],
+  "plotMeasurement": {
+    "yOneTickPx": 734,
+    "yTwoTickPx": 576,
+    "pixelsPerYUnitApprox": 158,
+    "expectedThreeOverE": 1.1036383235,
+    "expectedHorizontalLineYPxApprox": 718
+  },
+  "candidates": [
+    {
+      "round": "v1-generated",
+      "sourceFile": "/home/enpasos/.codex/generated_images/01a03a32-5c3d-7122-a394-13d4f26b0054/exec-da4ff432-e389-4b02-9f99-0e9951214984.png",
+      "archivedFile": "candidates/bell-v1-held-value-line.png",
+      "sha256": "a35d702a6d16e37e16da3ac74ee0b6ce2c8c609a24d0c693c051b11d847c0e91",
+      "pngColorType": "RGB",
+      "horizontalLineYPxApprox": 729,
+      "plottedValueApprox": 1.03,
+      "decision": "hold",
+      "reason": "points and guide nearly coincide with y=1 despite exact 3/e label"
+    },
+    {
+      "round": "v2-single-targeted-edit",
+      "sourceFile": "/home/enpasos/.codex/generated_images/01a0d116-22ff-76c0-8ec1-f95b0f3d4c5e/exec-d449e3cf-ecc2-4b98-86c0-850e77d9b6a5.png",
+      "archivedFile": "candidates/bell-v2-held-overshot-value-line.png",
+      "sha256": "489f8389e15015e019a87e35000142270bf092ec85f7eeb82b1addac64bfc14e",
+      "pngColorType": "RGB",
+      "horizontalLineYPxApprox": 708.5,
+      "plottedValueApprox": 1.16,
+      "decision": "hold",
+      "reason": "single edit overshot intended y=3/e position by approximately nine pixels; no further iteration"
+    }
+  ]
+}

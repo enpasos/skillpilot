@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:25e79f7ab6e7679a7551ad652529b43d6569559b8b9c84d0782df4496367cc09",
+  "reviewInputFingerprint": "sha256:5674fc0135a69e9c13af1d1c7df9ed01c09d400551f9b2565078dfbb7c8613b3",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-a",
+      "roundId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-independent-a",
+      "runIds": [
+        "m7-q3-binomial-two-image-final-a-20260924"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact runtime model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-b",
+      "roundId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-independent-b",
+      "runIds": [
+        "mathematik-m7-q3-binomial-two-image-final-20260924-v2-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact model identifier unavailable)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "9b6f4d7d-a804-5666-b7ea-85bb3c73da4a",
+      "firstRecordId": "m7-q3-binomial-two-image-final-a-20260924.9b6f4d7d-a804-5666-b7ea-85bb3c73da4a",
+      "secondRecordId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-b-run-001.record-01",
+      "firstRunId": "m7-q3-binomial-two-image-final-a-20260924",
+      "secondRunId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "aa00edfa-cf8d-500e-994f-7e33a5ebd045",
+      "firstRecordId": "m7-q3-binomial-two-image-final-a-20260924.aa00edfa-cf8d-500e-994f-7e33a5ebd045",
+      "secondRecordId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-b-run-001.record-02",
+      "firstRunId": "m7-q3-binomial-two-image-final-a-20260924",
+      "secondRunId": "mathematik-m7-q3-binomial-two-image-final-20260924-v2-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

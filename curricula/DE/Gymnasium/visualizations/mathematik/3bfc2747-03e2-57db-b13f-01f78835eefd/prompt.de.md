@@ -4,48 +4,19 @@
 
 - SkillPilot-ID: `3bfc2747-03e2-57db-b13f-01f78835eefd`
 - Titel: Konvergenz und Grenzen numerischer Verfahren reflektieren
-- Beschreibung: Die lernende Person kann die Konvergenz numerischer Verfahren einschätzen, Abbruchkriterien nennen und Grenzen beziehungsweise Fehlerquellen erläutern.
+- Beschreibung: Die lernende Person kann an einem numerischen Verfahren beurteilen, ob und wie zuverlässig die Näherungen konvergieren, und ein Abbruchkriterium sowie eine relevante Fehlerquelle begründen.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI/ChatGPT-Codex image generation
 - Status: pilot
-- Quellbild: `3bfc2747-03e2-57db-b13f-01f78835eefd.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/3bfc2747-03e2-57db-b13f-01f78835eefd/3bfc2747-03e2-57db-b13f-01f78835eefd.jpg`
+- Quellbild: `3bfc2747-03e2-57db-b13f-01f78835eefd.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/3bfc2747-03e2-57db-b13f-01f78835eefd/3bfc2747-03e2-57db-b13f-01f78835eefd.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Konvergenz und Grenzen numerischer Verfahren reflektieren
-Beschreibung: Die lernende Person kann die Konvergenz numerischer Verfahren einschätzen, Abbruchkriterien nennen und Grenzen beziehungsweise Fehlerquellen erläutern.
-
-Zusatzanweisung:
-Pflichtinhalt:
-
-- Show a reflective checklist for numerical root-finding methods.
-- Include four labeled checkpoints:
-  `Konvergenz?`, `Abbruchkriterium`, `Fehlerquelle`, `Grenze des Verfahrens`.
-- Use one small example panel for `f(x)=x^2-2` with an interval shrinking until `Breite < 0.01`.
-- Show an error warning panel: `falscher Startwert`, `Rundungsfehler`, `keine Vorzeichenpruefung`.
-- Show a final decision line: `Naeherung akzeptieren, wenn Genauigkeit zur Aufgabe passt`.
-
-Vermeiden:
-
-- Do not present a numerical approximation as exact equality unless it is marked as approximate.
-- Do not claim every method converges from every start value.
-- Do not omit the idea of an explicit stopping criterion.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+Generate a NEW SQUARE 1:1 PNG for a German upper-secondary math learning-goal illustration. It MUST read clearly at 360 px width without zoom: very large dark lettering, few words, no dense paragraphs or tiny decimals. Friendly abstract hand-drawn educational COMIC, warm soft blue/cream/orange/teal, a small smiling helper robot and student as charming accents, not photorealistic, not sterile technical vector. The focus is assessing convergence, a valid stop criterion, a likely error and a method limit for ONE example. Main title exactly: “Ist die Näherung verlässlich?” Subtitle exactly: “Beispiel: Intervallhalbierung” and nearby “f(x) = x² − 2”. Central large schematic shrinking interval strip with labels exactly “[1; 2]” then “7× halbieren” then “Breite = 1/128 < 0,01”. Make the final strip visibly smaller, and label the strip “schematisch” (not on a common number axis). Because the initial interval width is 1, seven halvings give 1/128; do NOT show any final interval endpoints or root estimate. Below: four BIG simple cards in a clear 2×2 grid with ONLY these text pairs: “Konvergenz” / “stetig + Vorzeichenwechsel”; “Abbruch” / “Breite < 0,01”; “Fehlerquelle” / “Startintervall ungeprüft”; “Grenze” / “Scheitern ≠ keine Nullstelle”. Footer exactly: “Genauigkeit muss zur Aufgabe passen.” All text in precise German, no extra mathematical claims. In particular, make it clear these convergence and stopping conditions are for the pictured interval-halving example, NOT for all numerical algorithms. Avoid decorative microtext, spurious equations, axes, logos, brands, or watermarks. Professional classroom-friendly and highly legible on a phone.
 ```
 
 ## Review-Notiz

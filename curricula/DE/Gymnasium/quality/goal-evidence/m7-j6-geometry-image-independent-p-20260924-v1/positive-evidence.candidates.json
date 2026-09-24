@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-p-v2-m7-j6-geometry-image-independent-20260924-v1",
+  "reviewedAt": "2026-09-23T22:48:03.000Z",
+  "reviewer": "Codex AI candidate author /root/math_three_v_d_round_a_v2 (exact model identifier unavailable)",
+  "goals": [
+    {
+      "goalId": "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+      "reason": "DE: Das aktuelle 4 × 3 × 2-JPG nennt alle Flächenpaare und 52 cm²; der frühere Diagnosefall verwendete exakt dieselben Maße und dasselbe Ergebnis. Nur dieser Fall wurde durch 6 × 4 × 2 mit fehlendem 4 × 2-Flächenpaar und 88 cm² ersetzt. Die anderen zwei Fälle, alle Erwartungen und die drei unabhängigen Nachweise bleiben erhalten. EN: The current 4 by 3 by 2 image gives every face pair and 52 square centimetres; the old diagnosis case repeated those dimensions and answer. Only that case is replaced by 6 by 4 by 2 with a missing 4 by 2 face pair and 88 square centimetres. The other two cases, all expectations, and three independent demonstrations remain. AI candidate only; no human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "surface-is-complete-boundary-sum",
+            "essentialUnderstandingDe": "Der Oberflächeninhalt eines Quaders oder Würfels ist die Summe der Flächeninhalte aller sechs äußeren Begrenzungsflächen. Innenliegende gedachte Schnitte gehören nicht zur Oberfläche, und jede äußere Fläche darf weder fehlen noch doppelt gezählt werden.",
+            "essentialUnderstandingEn": "The surface area of a cuboid or cube is the sum of the areas of all six exterior boundary faces. Internal imagined cuts do not belong to the surface, and no exterior face may be omitted or counted twice.",
+            "observablePerformanceDe": "Die lernende Person identifiziert in einer unbekannten Körperdarstellung oder einem Netz alle sechs Außenflächen, führt eine nachvollziehbare Zählliste und begründet, dass jede Fläche genau einmal in die Oberflächensumme eingeht.",
+            "observablePerformanceEn": "In an unfamiliar solid diagram or net, the learner identifies all six exterior faces, maintains a transparent count, and justifies that every face enters the surface-area sum exactly once."
+          },
+          {
+            "id": "edge-pairs-determine-three-face-pairs",
+            "essentialUnderstandingDe": "Bei einem Quader bestimmen die drei Kantenlängen a, b und c genau drei Rechtecktypen mit Flächeninhalten ab, ac und bc; jeder Typ tritt auf zwei gegenüberliegenden Seiten auf. Beim Würfel fallen diese drei Typen zu sechs gleich großen Quadraten zusammen.",
+            "essentialUnderstandingEn": "For a cuboid, the three edge lengths a, b, and c determine exactly three rectangle types with areas ab, ac, and bc; each type occurs on two opposite faces. For a cube, these three types coincide as six congruent squares.",
+            "observablePerformanceDe": "Die lernende Person ordnet jeder Seitenfläche die beiden tatsächlich anliegenden Kantenlängen zu, fasst nur wirklich gleich große Gegenflächen zusammen, berechnet 2(ab + ac + bc) beziehungsweise 6a² aus der Flächenstruktur und versieht das Ergebnis mit einer Flächeneinheit.",
+            "observablePerformanceEn": "The learner assigns to each face the two edge lengths that actually bound it, groups only genuinely congruent opposite faces, derives 2(ab + ac + bc) or 6a squared from the face structure, and states the result in an area unit."
+          },
+          {
+            "id": "orientation-and-net-do-not-change-area",
+            "essentialUnderstandingDe": "Drehen des Körpers oder Auffalten zu einem gültigen Netz verändert weder die sechs Flächen noch ihre Maße. Eine Oberflächenrechnung muss daher in verschiedenen Darstellungen dieselben Flächenpaare und denselben Gesamtwert erkennen lassen.",
+            "essentialUnderstandingEn": "Rotating the solid or unfolding it into a valid net changes neither the six faces nor their dimensions. A surface-area calculation must therefore reveal the same face pairs and the same total in different representations.",
+            "observablePerformanceDe": "Die lernende Person überträgt die Kantenlängen zwischen Schrägbild, beschriftetem Körper und ungewohntem Netz, prüft einen fremden Rechenansatz auf fehlende oder doppelte Flächen und korrigiert ihn anhand der geometrischen Zuordnung.",
+            "observablePerformanceEn": "The learner transfers edge lengths among an oblique drawing, a labelled solid, and an unfamiliar net, checks another person's calculation for missing or duplicated faces, and corrects it using the geometric correspondence."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "surface-is-complete-boundary-sum",
+            "edge-pairs-determine-three-face-pairs",
+            "orientation-and-net-do-not-change-area"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "solid-type",
+            "textDe": "Würfel oder Quader mit zwei beziehungsweise drei verschiedenen Kantenlängen",
+            "textEn": "Cube or cuboid with two or three different edge lengths"
+          },
+          {
+            "id": "representation",
+            "textDe": "Beschriftetes Körperbild, gedrehter Körper oder ungewohnt angeordnetes Netz",
+            "textEn": "Labelled solid diagram, rotated solid, or unusually arranged net"
+          },
+          {
+            "id": "reasoning-demand",
+            "textDe": "Vollständig berechnen, Paarstruktur begründen oder einen unvollständigen Ansatz reparieren",
+            "textEn": "Calculate completely, justify the pairing structure, or repair an incomplete setup"
+          },
+          {
+            "id": "dimensions-and-units",
+            "textDe": "Veränderte Kantenlängen und passende Flächeneinheiten",
+            "textEn": "Changed edge lengths and appropriate area units"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cuboid-five-three-two-complete-sum",
+            "taskDemandDe": "Ein Quader besitzt die Kantenlängen 5 cm, 3 cm und 2 cm. Bestimme seinen Oberflächeninhalt, liste die sechs berücksichtigten Seitenflächen strukturiert auf und erkläre, weshalb keine weitere Fläche hinzukommt.",
+            "taskDemandEn": "A cuboid has edge lengths 5 cm, 3 cm, and 2 cm. Determine its surface area, list the six included faces in a structured way, and explain why no additional face is needed.",
+            "expectedPerformanceDe": "Die lernende Person erfasst zwei Flächen zu 5 · 3, zwei zu 5 · 2 und zwei zu 3 · 2, berechnet 2(15 + 10 + 6) = 62 cm² und begründet die Vollständigkeit mit den drei Paaren gegenüberliegender Außenflächen.",
+            "expectedPerformanceEn": "The learner counts two faces of 5 times 3, two of 5 times 2, and two of 3 times 2, calculates 2(15 + 10 + 6) equals 62 square centimetres, and justifies completeness using the three pairs of opposite exterior faces.",
+            "understandingFocusDe": "Die explizite Flächenliste prüft vollständiges und genau einmaliges Erfassen statt bloße Formelreproduktion.",
+            "understandingFocusEn": "The explicit face list tests complete, exactly-once counting rather than mere formula reproduction."
+          },
+          {
+            "id": "unfamiliar-net-eight-four-three",
+            "taskDemandDe": "In einem ungewohnt angeordneten Netz eines Quaders mit Kantenlängen 8 cm, 4 cm und 3 cm sind nur drei zusammenstoßende Kanten beschriftet. Übertrage die Maße auf alle sechs Rechtecke, markiere gleich große Gegenflächen und bestimme den Oberflächeninhalt.",
+            "taskDemandEn": "In an unusually arranged net of a cuboid with edge lengths 8 cm, 4 cm, and 3 cm, only three meeting edges are labelled. Transfer the dimensions to all six rectangles, mark congruent opposite faces, and determine the surface area.",
+            "expectedPerformanceDe": "Die lernende Person verfolgt gemeinsame Kanten im Netz, identifiziert je zwei Rechtecke 8 × 4, 8 × 3 und 4 × 3 und berechnet 2(32 + 24 + 12) = 136 cm², unabhängig von der Lage der Flächen im Netz.",
+            "expectedPerformanceEn": "The learner follows shared edges in the net, identifies two rectangles each of sizes 8 by 4, 8 by 3, and 4 by 3, and calculates 2(32 + 24 + 12) equals 136 square centimetres, independently of where the faces lie in the net.",
+            "understandingFocusDe": "Die veränderte Darstellung prüft, ob Flächenmaße aus Kantenbeziehungen und nicht aus ihrer Papierlage abgeleitet werden.",
+            "understandingFocusEn": "The changed representation tests whether face dimensions are derived from edge relationships rather than position on the page."
+          },
+          {
+            "id": "diagnose-missing-face-pair-six-four-two",
+            "taskDemandDe": "Für einen Quader mit Kantenlängen 6 cm, 4 cm und 2 cm schlägt jemand 2(6 · 4 + 6 · 2) = 72 cm² als Oberflächeninhalt vor. Prüfe den Ansatz, benenne das fehlende Flächenpaar geometrisch und korrigiere das Ergebnis.",
+            "taskDemandEn": "For a cuboid with edge lengths 6 cm, 4 cm, and 2 cm, someone proposes 2(6 times 4 plus 6 times 2) equals 72 square centimetres as its surface area. Check the setup, name the missing pair of faces geometrically, and correct the result.",
+            "expectedPerformanceDe": "Die lernende Person erkennt das fehlende Paar der 4 cm × 2 cm großen Seitenflächen. Sie ergänzt 2 · 8 cm² = 16 cm², erhält 88 cm² und begründet dies mit den sechs äußeren Flächen statt nur mit einer erinnerten Formel.",
+            "expectedPerformanceEn": "The learner identifies the missing pair of 4 cm by 2 cm faces, adds 2 times 8 square centimetres equals 16 square centimetres, obtains 88 square centimetres, and explains this using the six exterior faces rather than only a memorized formula.",
+            "understandingFocusDe": "Die Diagnose bindet einen algebraischen Ansatz an die tatsächlichen Außenflächen eines neuen Quaders; die 4 × 3 × 2-Bildrechnung liefert weder fehlendes Paar noch Ergebnis.",
+            "understandingFocusEn": "The diagnosis connects an algebraic setup to the actual exterior faces of a new cuboid; the 4 by 3 by 2 image supplies neither the missing pair nor the result."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+      "reason": "DE: Das aktuelle JPG zeigt eine Viererreihe mit zwei Anhängen am zweiten Quadrat; der frühere erste Fall verlangte genau dieses Netz, und der dritte nannte es als Reparaturlösung. Beide überlappenden Fälle wurden durch mathematisch geprüfte, voneinander und vom Bild verschiedene Würfelnetze ersetzt. Der Quadernetz-Fall, alle Erwartungen und die drei unabhängigen Nachweise bleiben erhalten. EN: The current image shows a four-square strip with two attachments on the second square; the former first case required exactly that net, and the third named it as a repair. Both overlapping cases are replaced by mathematically checked cube nets distinct from each other and the image. The cuboid-net case, all expectations, and three independent demonstrations remain. AI candidate only; no human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "net-has-six-connected-compatible-faces",
+            "essentialUnderstandingDe": "Ein Quader- oder Würfelnetz besteht aus genau sechs zusammenhängenden Seitenflächen. Gemeinsam gezeichnete Kanten müssen beim Quader dieselbe Länge besitzen und die vorgegebenen Rechtecktypen vollständig enthalten; bloße Anzahl oder Zusammenhang allein garantiert noch keine Faltbarkeit.",
+            "essentialUnderstandingEn": "A cuboid or cube net consists of exactly six connected faces. Edges drawn as shared must have equal length for a cuboid and the required rectangle types must be complete; count or connectedness alone does not guarantee foldability.",
+            "observablePerformanceDe": "Die lernende Person zeichnet für einen neuen Quader oder Würfel alle sechs maßlich passenden Flächen kantenverbunden, kennzeichnet die Flächentypen beziehungsweise Kantenlängen und weist Vollständigkeit sowie Kompatibilität der gemeinsamen Kanten nach.",
+            "observablePerformanceEn": "For a fresh cuboid or cube, the learner draws all six dimensionally matching faces connected edge to edge, labels the face types or edge lengths, and verifies completeness and compatibility of shared edges."
+          },
+          {
+            "id": "folding-determines-adjacency-and-overlap",
+            "essentialUnderstandingDe": "Beim Falten werden gemeinsam gezeichnete Kanten zu Körperkanten; dadurch legen Faltwege fest, welche Flächen benachbart oder gegenüberliegend werden. Ein Netz ist ungültig, wenn zwei Flächen dieselbe Körperseite beanspruchen, sich überdecken oder eine Lücke bleibt.",
+            "essentialUnderstandingEn": "When folded, shared drawn edges become edges of the solid; folding paths therefore determine which faces become adjacent or opposite. A net is invalid if two faces occupy the same side of the solid, overlap, or leave a gap.",
+            "observablePerformanceDe": "Die lernende Person verfolgt bei einem unbekannten Kandidatennetz die Faltung gedanklich, mit Markierungen oder an einem Modell, ordnet mindestens ein Paar gegenüberliegender Flächen zu und begründet eindeutig, ob der Körper ohne Lücke und Überlappung schließt.",
+            "observablePerformanceEn": "For an unfamiliar candidate net, the learner tracks folding mentally, with annotations, or using a model, identifies at least one pair of opposite faces, and gives an unambiguous justification of whether the solid closes without a gap or overlap."
+          },
+          {
+            "id": "valid-nets-are-nonunique-and-repairable",
+            "essentialUnderstandingDe": "Derselbe Körper kann verschiedene gültige Netze besitzen, weil Flächen entlang unterschiedlicher Körperkanten aufgeklappt werden können. Gültigkeit hängt nicht von einem einzigen auswendig gelernten Muster ab, sondern von erhaltenen Nachbarschaften, passenden Kanten und kollisionsfreier Faltung.",
+            "essentialUnderstandingEn": "The same solid can have different valid nets because faces may be unfolded along different solid edges. Validity does not depend on one memorized pattern but on preserved adjacencies, matching edges, and collision-free folding.",
+            "observablePerformanceDe": "Die lernende Person erzeugt oder erkennt ein zweites, anders angeordnetes gültiges Netz und repariert ein ungültiges Netz gezielt, indem sie Flächen versetzt und anschließend die Kanten- und Faltbedingungen erneut nachweist.",
+            "observablePerformanceEn": "The learner creates or recognizes a second valid net with a different arrangement and deliberately repairs an invalid net by moving faces and then re-verifying edge and folding conditions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "net-has-six-connected-compatible-faces",
+            "folding-determines-adjacency-and-overlap",
+            "valid-nets-are-nonunique-and-repairable"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "solid-type-and-proportions",
+            "textDe": "Würfel oder Quader mit wechselnden drei Kantenlängen und Flächentypen",
+            "textEn": "Cube or cuboid with varying three edge lengths and face types"
+          },
+          {
+            "id": "net-arrangement",
+            "textDe": "Kreuzform, Streifen mit Anhängen oder andere ungewohnte zusammenhängende Anordnung",
+            "textEn": "Cross shape, strip with attachments, or another unfamiliar connected arrangement"
+          },
+          {
+            "id": "validation-mode",
+            "textDe": "Gedankliches Falten, markierte Gegenflächen, reales Papiermodell oder begründete Kantenverfolgung",
+            "textEn": "Mental folding, marked opposite faces, physical paper model, or justified edge tracing"
+          },
+          {
+            "id": "performance-mode",
+            "textDe": "Neues Netz entwerfen, Kandidaten entscheiden oder ein ungültiges Netz reparieren",
+            "textEn": "Design a new net, decide among candidates, or repair an invalid net"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cube-three-row-offset-branch-validity",
+            "taskDemandDe": "Zeichne sechs Einheitsquadrate: A, B und C waagerecht nebeneinander, D direkt über A, E direkt unter B und F direkt unter E. Prüfe durch einen nachvollziehbaren Faltweg, ob ein Würfel ohne Lücke oder Überlappung entsteht, und markiere gegenüberliegende Flächen.",
+            "taskDemandEn": "Draw six unit squares: A, B, and C in one horizontal row, D directly above A, E directly below B, and F directly below E. Use a traceable folding path to check whether they form a cube without a gap or overlap, and mark opposite faces.",
+            "expectedPerformanceDe": "Die lernende Person zeichnet sechs kantenverbundene Quadrate, faltet sie in sechs verschiedene Seitenlagen und erkennt A/C, B/F sowie D/E als Gegenflächenpaare. Sie begründet, warum keine zwei Quadrate dieselbe Würfelseite besetzen.",
+            "expectedPerformanceEn": "The learner draws six edge-connected squares, folds them to six distinct face positions, and identifies A/C, B/F, and D/E as opposite pairs. The learner explains why no two squares occupy the same cube face.",
+            "understandingFocusDe": "Das gültige Netz besitzt weder die Viererreihe noch die beidseitigen Anhänge am selben Quadrat des Bildes; die Faltbegründung prüft eigenständige räumliche Übertragung.",
+            "understandingFocusEn": "This valid net has neither the image’s four-square strip nor its two attachments on the same square; the folding explanation tests independent spatial transfer."
+          },
+          {
+            "id": "cuboid-four-three-two-net-design",
+            "taskDemandDe": "Entwirf für einen Quader mit Kantenlängen 4 cm, 3 cm und 2 cm ein vollständiges Netz. Beschrifte alle Flächenmaße, erkläre, welche Rechtecke beim Falten gegenüberliegen, und prüfe alle gemeinsam gezeichneten Kanten auf passende Länge.",
+            "taskDemandEn": "Design a complete net for a cuboid with edge lengths 4 cm, 3 cm, and 2 cm. Label all face dimensions, explain which rectangles become opposite when folded, and check every shared drawn edge for matching length.",
+            "expectedPerformanceDe": "Die lernende Person verwendet genau zwei Rechtecke 4 × 3, zwei 4 × 2 und zwei 3 × 2, verbindet nur gleich lange Kanten, erhält ein zusammenhängendes Netz und begründet anhand des Faltwegs je ein korrektes Gegenflächenpaar ohne Überlappung.",
+            "expectedPerformanceEn": "The learner uses exactly two 4 by 3 rectangles, two 4 by 2 rectangles, and two 3 by 2 rectangles, joins only equal-length edges, obtains a connected net, and uses the folding path to justify each correct pair of opposite faces without overlap.",
+            "understandingFocusDe": "Unterschiedliche Flächentypen prüfen Kantenkompatibilität und Vollständigkeit spezifisch für Quader.",
+            "understandingFocusEn": "Different face types specifically test edge compatibility and completeness for cuboids."
+          },
+          {
+            "id": "repair-two-by-three-rectangle-offset-snake",
+            "taskDemandDe": "Sechs Einheitsquadrate bilden ein vollständiges 2-mal-3-Rechteck. Erkläre anhand des Faltens, warum es kein Würfelnetz ist. Verschiebe genau zwei Quadrate, lasse die anderen vier an ihrem Platz und prüfe, ob dein neues zusammenhängendes Netz einen Würfel ohne Überlappung ergibt.",
+            "taskDemandEn": "Six unit squares form a complete two-by-three rectangle. Explain by folding why it is not a cube net. Move exactly two squares, leave the other four in place, and check whether your new connected net forms a cube without overlap.",
+            "expectedPerformanceDe": "Die lernende Person erkennt, dass ein 2-mal-2-Block vier Flächen an einem vermeintlichen Würfeleck erzwingt und sich beim Falten Flächen überdecken. Eine gültige Reparatur lässt die obere Dreierreihe stehen, behält das untere Quadrat unter deren rechtem Ende und versetzt die beiden anderen unteren Quadrate rechts daneben. So entstehen zwei um zwei Quadrate versetzte Dreierreihen; beim Falten besetzen alle sechs Flächen unterschiedliche Seiten. Andere nachgewiesen gültige Zwei-Quadrat-Reparaturen sind ebenfalls richtig.",
+            "expectedPerformanceEn": "The learner recognizes that a two-by-two block would force four faces around a purported cube vertex and leads to overlap on folding. One valid repair keeps the top row of three and the lower square below its rightmost square, then moves the other two lower squares to its right. This gives two rows of three offset by two squares; on folding, all six faces occupy distinct sides. Other justified valid two-square repairs are also correct.",
+            "understandingFocusDe": "Die gezielte Zwei-Quadrat-Reparatur eines ungültigen Netzes verlangt Faltprüfung und eine andere Topologie als das Bild; eine bloße Kopie des gezeigten Viererstreifens genügt nicht.",
+            "understandingFocusEn": "Repairing the invalid net by moving two squares requires a folding check and a topology different from the image; copying the pictured four-square strip is insufficient."
+          }
+        ]
+      }
+    }
+  ]
+}

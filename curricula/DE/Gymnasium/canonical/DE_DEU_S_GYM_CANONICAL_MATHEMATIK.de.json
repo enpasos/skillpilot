@@ -3720,22 +3720,7 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": [
-        {
-          "type": "goal-visualization",
-          "resourceType": "image",
-          "role": "primary",
-          "skillpilotId": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
-          "title": "Visualisierung: Parallele und senkrechte Lagebeziehungen erkennen und begründen",
-          "url": "/assets/goal-visualizations/mathematik/2231c29b-eb4e-51ae-9cb1-eb033bf16099/2231c29b-eb4e-51ae-9cb1-eb033bf16099.jpg",
-          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
-          "description": "Visualisierung zum Lernziel: Parallele und senkrechte Lagebeziehungen erkennen und begründen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Parallele und senkrechte Lagebeziehungen erkennen und begründen\". Die lernende Person kann bei Strecken und Geraden Parallelität oder Senkrechtlage anhand ihrer geometrischen Bedingungen erkennen, fachsprachlich beschreiben und die Zuordnung unabhängig von Lage oder Ausrichtung begründen.",
-          "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
-          "reviewStatus": "pilot"
-        }
-      ]
+      "resourceLinks": []
     },
     {
       "id": "3e53a39b-1c75-4034-a647-8de85719e1fb",
@@ -3991,7 +3976,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "34200b88-c616-58f6-aa03-efb9fd766f88",
+          "title": "Visualisierung: Mittelsenkrechten konstruieren und begründen",
+          "url": "/assets/goal-visualizations/mathematik/34200b88-c616-58f6-aa03-efb9fd766f88/34200b88-c616-58f6-aa03-efb9fd766f88.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Geometrisches Beispiel zur Mittelsenkrechten: Punkt P hat zu A und B gleiche Abstände.",
+          "altText": "Strecke AB mit Mittelpunkt M; PM steht senkrecht auf AB, und der darüberliegende Punkt P ist von A und B gleich weit entfernt. Rechts sind Zirkel und Geodreieck als Werkzeuge zu sehen.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "f509a549-aee5-5468-af73-5b1efa3f342c",
@@ -5045,8 +5046,8 @@
       "shortKey": "canonical_math_factor_natural_numbers_into_primes",
       "title": "Natürliche Zahlen in Primfaktoren zerlegen",
       "titleEn": "Factor natural numbers into primes",
-      "description": "Die lernende Person kann natürliche Zahlen größer als 1 schrittweise in Primfaktoren zerlegen, die vollständige Zerlegung angeben und durch Rückmultiplikation prüfen.",
-      "descriptionEn": "The learner can factor natural numbers greater than 1 step by step into prime factors, state the complete prime factorization, and check it by multiplying the factors.",
+      "description": "Die lernende Person kann natürliche Zahlen größer als 1 schrittweise vollständig in Primfaktoren zerlegen, die Zerlegung durch Rückmultiplikation prüfen und an verschiedenen Zerlegungswegen zeigen, dass bis auf die Reihenfolge dieselben Primfaktoren entstehen.",
+      "descriptionEn": "The learner can factor natural numbers greater than 1 completely into primes step by step, check the factorization by multiplying back, and use different factorization paths to show that the same prime factors result, up to order.",
       "core": true,
       "weight": 1,
       "tags": [
@@ -5103,7 +5104,7 @@
           "url": "/assets/goal-visualizations/mathematik/a4c2b831-02f0-5d55-a300-7823a71352c4/a4c2b831-02f0-5d55-a300-7823a71352c4.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Natürliche Zahlen in Primfaktoren zerlegen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Natürliche Zahlen in Primfaktoren zerlegen\". Die lernende Person kann natürliche Zahlen größer als 1 schrittweise in Primfaktoren zerlegen, die vollständige Zerlegung angeben und durch Rückmultiplikation prüfen.",
+          "altText": "Ein Faktorbaum zerlegt 72 vollständig in die Primfaktoren 2³·3². Die Rückmultiplikation bestätigt das Ergebnis; ein zweiter Zerlegungsweg ist nicht abgebildet.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -5234,7 +5235,7 @@
           "url": "/assets/goal-visualizations/mathematik/d658e26a-e351-4bca-824e-f346deaa87c5/d658e26a-e351-4bca-824e-f346deaa87c5.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Potenzen mit natürlichen Exponenten deuten und berechnen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Potenzen mit natürlichen Exponenten deuten und berechnen\". Die lernende Person kann für eine Potenz a^n mit natürlichem Exponenten n ≥ 1 Basis und Exponent unterscheiden, a^n als wiederholte Multiplikation von n gleichen Faktoren deuten, den Wert berechnen und das Ergebnis an der Faktorstruktur prüfen.",
+          "altText": "Das Beispiel 3⁴ = 3·3·3·3 = 81 zeigt eine Potenz mit positiver ganzzahliger Basis als wiederholte Multiplikation. Negative Basen sind hier nicht abgebildet.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -5243,8 +5244,8 @@
       "shortKey": "canonical_math_interpret_and_compute_powers_with_natural_exponents",
       "title": "Potenzen mit natürlichen Exponenten deuten und berechnen",
       "titleEn": "Interpret and compute powers with natural exponents",
-      "description": "Die lernende Person kann für eine Potenz a^n mit natürlichem Exponenten n ≥ 1 Basis und Exponent unterscheiden, a^n als wiederholte Multiplikation von n gleichen Faktoren deuten, den Wert berechnen und das Ergebnis an der Faktorstruktur prüfen.",
-      "descriptionEn": "For a power a^n with natural exponent n ≥ 1, the learner can distinguish base and exponent, interpret a^n as repeated multiplication of n equal factors, calculate its value, and check the result against the factor structure.",
+      "description": "Die lernende Person kann bei Potenzen a^n mit ganzzahliger Basis a und natürlichem Exponenten n ≥ 1 Basis und Exponent unterscheiden, a^n als Produkt aus n gleichen Faktoren deuten, den Wert berechnen und das Ergebnis an der Faktorstruktur prüfen.",
+      "descriptionEn": "For powers a^n with integer base a and natural exponent n ≥ 1, the learner can distinguish base and exponent, interpret a^n as a product of n equal factors, calculate its value, and check the result against the factor structure.",
       "requires": [
         "cafd6520-c4af-4109-9863-cc49ba6fad4d",
         "65365dce-f33f-49d8-9516-42f75883aa86"
@@ -13498,7 +13499,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "308f19e2-e202-5300-a2fa-1eaa717f4e73",
+          "title": "Visualisierung: Exponentielle Lichtdämpfung und Asymptote",
+          "url": "/assets/goal-visualizations/mathematik/308f19e2-e202-5300-a2fa-1eaa717f4e73/308f19e2-e202-5300-a2fa-1eaa717f4e73.png",
+          "provider": "OpenAI/ChatGPT-Codex imagegen (model/version not exposed)",
+          "description": "Schematisches Lichtdämpfungsmodell mit waagerechter Asymptote; gezeigt wird nur d ≥ 0.",
+          "altText": "Schematisches Modell einer Lichtdämpfung: I(d) = 100 · (1/2)^d für eine Dicke d in Zentimetern. Der Graph startet bei 100 Prozent, fällt bei wachsendem d und nähert sich der waagerechten Asymptote I = 0, ohne sie bei endlichem d zu erreichen. Rechts tritt ein Lichtstrahl nach einer Materialplatte schwächer aus.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "c930edbf-535c-48c5-b38b-ed3cf56ea184",
@@ -19737,15 +19754,31 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "3017e774-8d9f-5129-828f-7684db5afc1e",
+          "title": "Visualisierung: Dreiecke aus Kongruenzangaben konstruieren",
+          "url": "/assets/goal-visualizations/mathematik/3017e774-8d9f-5129-828f-7684db5afc1e/3017e774-8d9f-5129-828f-7684db5afc1e.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Anschauliches SSS-Beispiel zu einem konstruierbaren Dreieck; die eigentlichen Konstruktionsschritte sind nicht abgebildet.",
+          "altText": "Ein Dreieck ABC mit AB = 7 cm, AC = 5 cm und BC = 6 cm liegt neben Zirkel und Geodreieck. Das Bild zeigt ein mögliches Ergebnis, nicht die Konstruktion oder deren Nachweis.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "0f6c1df6-0e30-54ae-8098-e9422833ba80",
       "shortKey": "canonical_math_sek1_j7_justify_triangle_construction_solvability",
       "title": "Lösbarkeit von Dreieckskonstruktionen begründen",
       "titleEn": "Justify the solvability of triangle constructions",
-      "description": "Die lernende Person kann aus gegebenen Seiten- und Winkelangaben mithilfe von Kongruenzsätzen und geometrischen Bedingungen begründen, ob kein, genau ein oder mehr als ein Dreieck möglich ist.",
-      "descriptionEn": "From given side and angle data, the learner can use congruence theorems and geometric conditions to justify whether no triangle, exactly one triangle, or more than one triangle is possible.",
+      "description": "Die lernende Person kann aus gegebenen Seiten- und Winkelangaben mithilfe von Kongruenzsätzen und geometrischen Bedingungen begründen, ob kein Dreieck, genau ein Dreieck bis auf Kongruenz oder mehrere nicht kongruente Dreiecke möglich sind.",
+      "descriptionEn": "From given side and angle data, the learner can use congruence theorems and geometric conditions to justify whether no triangle, exactly one triangle up to congruence, or several non-congruent triangles are possible.",
       "weight": 1,
       "core": true,
       "tags": [
@@ -19794,7 +19827,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "0f6c1df6-0e30-54ae-8098-e9422833ba80",
+          "title": "Visualisierung: Lösbarkeit von Dreieckskonstruktionen begründen",
+          "url": "/assets/goal-visualizations/mathematik/0f6c1df6-0e30-54ae-8098-e9422833ba80/0f6c1df6-0e30-54ae-8098-e9422833ba80.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Drei schematische Fälle zur Dreieckskonstruktion: unmögliche Seiten, gültige SSS-Daten und eine mögliche SSA-Mehrdeutigkeit.",
+          "altText": "Links: 2 cm + 3 cm < 6 cm, daher kein Dreieck. Mitte: ein Dreieck aus gültigen SSS-Seitenangaben, eindeutig bis auf Kongruenz beziehungsweise Spiegelung. Rechts: eine schematische SSA-Konstellation mit zwei möglichen Punkten C1 und C2 auf demselben Strahl; kein allgemeiner Satz für alle SSA-Daten. Die Skizzen ersetzen keine Begründung.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "d051857c-0707-544f-ae7a-f20690d182b2",
@@ -20122,20 +20171,6 @@
         ]
       },
       "resourceLinks": [
-        {
-          "type": "goal-visualization",
-          "resourceType": "image",
-          "role": "primary",
-          "skillpilotId": "9023226b-fc17-412b-807c-2bb45cd551d5",
-          "title": "Visualisierung: Quadratische Gleichungen lösen",
-          "url": "/assets/goal-visualizations/mathematik/9023226b-fc17-412b-807c-2bb45cd551d5/9023226b-fc17-412b-807c-2bb45cd551d5.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
-          "description": "Visualisierung zum Lernziel: Quadratische Gleichungen lösen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Quadratische Gleichungen lösen\". Die lernende Person kann quadratische Gleichungen grafisch, durch quadratische Ergänzung oder mit einer Lösungsformel bearbeiten und Sachprobleme darauf zurückführen.",
-          "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
-          "reviewStatus": "pilot"
-        },
         {
           "type": "tool",
           "title": "GeoGebra Graphing Calculator",
@@ -20689,7 +20724,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f17935b0-189f-5e0c-988d-ce508b710097",
+          "title": "Visualisierung: Lineare Ungleichungen lösen und Lösungsmengen darstellen",
+          "url": "/assets/goal-visualizations/mathematik/f17935b0-189f-5e0c-988d-ce508b710097/f17935b0-189f-5e0c-988d-ce508b710097.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Visualisierung zum Lernziel: Lineare Ungleichungen lösen und Lösungsmengen darstellen.",
+          "altText": "Die Ungleichung −2x < 6 wird durch Division beider Seiten durch −2 mit umgekehrter Ordnungsrichtung zu x > −3; auf der Zahlengeraden ist −3 ausgeschlossen und der Strahl zeigt nach rechts.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "612dfc95-95cb-44df-80ae-d8446199cb0d",
@@ -21146,6 +21197,20 @@
           "provider": "GeoGebra",
           "description": "Dynamischer Graphikrechner für Visualisierung und gemeinsame Arbeit an Koordinatensystemen, Graphen und Funktionsdarstellungen.",
           "lang": "mul"
+        },
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+          "title": "Visualisierung: Graphen einfacher Hyperbeln mit Asymptoten zeichnen",
+          "url": "/assets/goal-visualizations/mathematik/bc6e4c14-d4f7-537e-8e83-9b5c0086e807/bc6e4c14-d4f7-537e-8e83-9b5c0086e807.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Visualisierung zum Lernziel: Graphen einfacher Hyperbeln mit Asymptoten zeichnen.",
+          "altText": "Zum Term f(x) = 1/(x − 1) + 1 sind die senkrechte Asymptote x = 1, die waagerechte Asymptote y = 1 und die beiden dazu passend liegenden Hyperbeläste dargestellt.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
         }
       ],
       "dimensionTags": {
@@ -21210,6 +21275,20 @@
         ]
       },
       "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
+          "title": "Visualisierung: Parameter einfacher Hyperbeln aus Graphen bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/3f1a97d2-7de6-5799-81f2-39782c3e54d7/3f1a97d2-7de6-5799-81f2-39782c3e54d7.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Parameter einer Hyperbel aus Asymptoten und Graphenpunkten ablesen.",
+          "altText": "Graph von f(x) = 2/(x−1) + 3 mit gestrichelten Asymptoten x = 1 und y = 3; markiert sind (0,1), (2,5) und (3,4). Daraus folgen d = 1, e = 3 und a = 2.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        },
         {
           "type": "tool",
           "title": "GeoGebra Graphing Calculator",
@@ -27865,7 +27944,23 @@
         ]
       },
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "740ab443-776a-5c7a-8f1d-2b0b59a5ed32",
+          "title": "Visualisierung: Umkehrung und Kontraposition bilden",
+          "url": "/assets/goal-visualizations/mathematik/740ab443-776a-5c7a-8f1d-2b0b59a5ed32/740ab443-776a-5c7a-8f1d-2b0b59a5ed32.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Visualisierung zum Lernziel: Umkehrung und Kontraposition bilden.",
+          "altText": "Drei Zeilen unterscheiden Aussage P ⇒ Q, Umkehrung Q ⇒ P und Kontraposition ¬Q ⇒ ¬P.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "e2bf726a-126c-5c66-9fbb-6e04c129bb0f",
@@ -29805,12 +29900,12 @@
           "role": "primary",
           "skillpilotId": "fde351a8-98b1-5d75-b4df-813beb2bbe3c",
           "title": "Visualisierung: Beziehungen im Modell formulieren",
-          "url": "/assets/goal-visualizations/mathematik/fde351a8-98b1-5d75-b4df-813beb2bbe3c/fde351a8-98b1-5d75-b4df-813beb2bbe3c.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
+          "url": "/assets/goal-visualizations/mathematik/fde351a8-98b1-5d75-b4df-813beb2bbe3c/fde351a8-98b1-5d75-b4df-813beb2bbe3c.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
           "description": "Visualisierung zum Lernziel: Beziehungen im Modell formulieren.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Beziehungen im Modell formulieren\". Die lernende Person kann Beziehungen zwischen Größen als Gleichungen, Ungleichungen oder Funktionen formulieren und die Bedeutung der Terme im Kontext deuten.",
+          "altText": "Comicartiger Schulkiosk mit einem Kostenmodell: 15 Euro Fixkosten und 2 Euro Materialkosten je Saft. Für x Säfte ergibt sich K(x) = 15 + 2x.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -35293,12 +35388,12 @@
           "role": "primary",
           "skillpilotId": "fcb4cef1-b17a-5682-924c-41498fc6c9b2",
           "title": "Visualisierung: Aussagen strukturiert formulieren",
-          "url": "/assets/goal-visualizations/mathematik/fcb4cef1-b17a-5682-924c-41498fc6c9b2/fcb4cef1-b17a-5682-924c-41498fc6c9b2.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
+          "url": "/assets/goal-visualizations/mathematik/fcb4cef1-b17a-5682-924c-41498fc6c9b2/fcb4cef1-b17a-5682-924c-41498fc6c9b2.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
           "description": "Visualisierung zum Lernziel: Aussagen strukturiert formulieren.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Aussagen strukturiert formulieren\". Die lernende Person kann mathematische Aussagen strukturiert formulieren (Bedingungen, Schlussfolgerung) und Notation konsistent verwenden.",
+          "altText": "Comicartige Tabletseite: Eine gerade Zahl n wird als n = 2k mit k ∈ ℤ geschrieben. Daraus folgt n² = 4k² = 2(2k²), also ist n² gerade. Daneben stehen Prüfpunkte für Variable, Bedingung und Folgerung.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -43611,7 +43706,23 @@
       },
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, E.6, S. 34",
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "3bfc2747-03e2-57db-b13f-01f78835eefd",
+          "title": "Visualisierung: Konvergenz und Grenzen numerischer Verfahren reflektieren",
+          "url": "/assets/goal-visualizations/mathematik/3bfc2747-03e2-57db-b13f-01f78835eefd/3bfc2747-03e2-57db-b13f-01f78835eefd.png",
+          "provider": "OpenAI/ChatGPT-Codex image generation",
+          "description": "Schematische Intervallhalbierung als Beispiel für Konvergenz, Abbruchkriterium, Fehlerquelle und Verfahrensgrenze.",
+          "altText": "Comic-Infografik: Das Intervall [1; 2] für f(x) = x² − 2 wird siebenmal halbiert; seine Breite beträgt dann 1/128 und liegt unter 0,01. Vier Karten nennen die Voraussetzungen für dieses Verfahren, ein Abbruchkriterium, ein ungeprüftes Startintervall als Fehlerquelle und die Grenze, dass ein gescheitertes Verfahren keine fehlende Nullstelle beweist.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "b18ec043-d84d-5b88-a5cf-be01d620c98b",
@@ -44592,11 +44703,11 @@
           "skillpilotId": "502ecaa7-cca6-5c51-a1cc-da09a7b2382c",
           "title": "Visualisierung: Definitionsmenge einer Funktion bestimmen",
           "url": "/assets/goal-visualizations/mathematik/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/502ecaa7-cca6-5c51-a1cc-da09a7b2382c.png",
-          "provider": "Google Gemini / Nano Banana Pro",
-          "description": "Cartoon-Visualisierung zur Bestimmung der Definitionsmenge aus Term, Graph und Sachkontext.",
-          "altText": "Cartoon-Infografik mit drei Zugängen zur Definitionsmenge: Term mit Nenner ungleich null, Graph mit Lücke und Sachkontext Ballwurf mit nichtnegativer Zeit.",
+          "provider": "OpenAI/ChatGPT-Codex image generation",
+          "description": "Comic mit drei Zugängen zur Definitionsmenge: Term, Graph und Sachkontext.",
+          "altText": "Drei Felder: Beim Term f(x)=1/(x−3) ist x=3 ausgeschlossen; ein waagerechter Graph bei y=2 beginnt geschlossen bei x=1 und endet offen bei x=4, also 1≤x<4; im Weg-Zeit-Kontext gilt t≥0.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ],
@@ -48388,7 +48499,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "5a2371fd-74ce-5013-932e-35d3713aeaf7",
+          "title": "Visualisierung: Laplace-Wahrscheinlichkeiten mit relativen Häufigkeiten vergleichen",
+          "url": "/assets/goal-visualizations/mathematik/5a2371fd-74ce-5013-932e-35d3713aeaf7/5a2371fd-74ce-5013-932e-35d3713aeaf7.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Visualisierung zum Lernziel: Laplace-Wahrscheinlichkeiten mit relativen Häufigkeiten vergleichen.",
+          "altText": "Drei Vergleichskarten zu einem fairen Würfel ohne Zahlenstrahl: P(6) = 1/6 ungefähr 0,167; 3 Sechsen in 12 Würfen ergeben 0,25; 19 Sechsen in 120 Würfen ergeben ungefähr 0,158. Im gezeigten Beispiel liegt 19/120 näher bei 1/6.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "1462c189-8679-5f32-bf58-6e81e99e4635",
@@ -49144,15 +49271,31 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "e495fa38-b198-5280-a405-9e41cafd6d17",
+          "title": "Visualisierung: Bernoulli-Experimente und -Ketten identifizieren und parametrisieren",
+          "url": "/assets/goal-visualizations/mathematik/e495fa38-b198-5280-a405-9e41cafd6d17/e495fa38-b198-5280-a405-9e41cafd6d17.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Visualisierung zum Lernziel: Bernoulli-Experimente und -Ketten identifizieren und parametrisieren.",
+          "altText": "Vier unabhängige Münzwürfe als Bernoulli-Kette mit n = 4; beim fairen Einzelwurf ist p(Kopf) = 1/2.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "9b6f4d7d-a804-5666-b7ea-85bb3c73da4a",
       "shortKey": "canonical_math_q3_justify_binomial_point_probability_formula",
       "title": "Die Formel für Binomialwahrscheinlichkeiten an einem Beispiel begründen",
       "titleEn": "Justify the binomial point-probability formula using an example",
-      "description": "Die lernende Person kann die Faktoren der Formel $P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}$ an einem passenden Bernoulli-Ketten-Beispiel kombinatorisch und probabilistisch begründen.",
-      "descriptionEn": "Using a suitable Bernoulli-chain example, the learner can justify the factors in $P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}$ from combinatorial and probabilistic reasoning.",
+      "description": "Die lernende Person kann an einem passenden Bernoulli-Ketten-Beispiel begründen, warum die Binomialformel für genau k Treffer die Anzahl möglicher Trefferpositionen mit der Wahrscheinlichkeit einer festen Treffer-Niete-Folge multipliziert.",
+      "descriptionEn": "Using a suitable Bernoulli-chain example, the learner can justify why the binomial formula for exactly k successes multiplies the number of possible success placements by the probability of one fixed success-failure sequence.",
       "weight": 1,
       "tags": [
         "GK",
@@ -49197,7 +49340,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "9b6f4d7d-a804-5666-b7ea-85bb3c73da4a",
+          "title": "Visualisierung: Die Formel für Binomialwahrscheinlichkeiten an einem Beispiel begründen",
+          "url": "/assets/goal-visualizations/mathematik/9b6f4d7d-a804-5666-b7ea-85bb3c73da4a/9b6f4d7d-a804-5666-b7ea-85bb3c73da4a.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Vier faire, unabhängige Münzwürfe: sechs verschiedene Folgen mit genau zweimal Kopf, jede mit Wahrscheinlichkeit 1/16, zusammen 6/16.",
+          "altText": "Sechs verschiedene Folgen mit genau zwei Kopf- und zwei Zahl-Ergebnissen bei vier fairen, unabhängigen Würfen: KKZZ, KZKZ, KZZK, ZKKZ, ZKZK, ZZKK. Jede Folge hat Wahrscheinlichkeit 1/16, alle sechs zusammen 6/16.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "42d300e3-e982-5889-98d7-fc297f10eff1",
@@ -49441,7 +49600,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "aa00edfa-cf8d-500e-994f-7e33a5ebd045",
+          "title": "Visualisierung: Binomialwahrscheinlichkeiten bestimmen und deuten",
+          "url": "/assets/goal-visualizations/mathematik/aa00edfa-cf8d-500e-994f-7e33a5ebd045/aa00edfa-cf8d-500e-994f-7e33a5ebd045.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Für X binomialverteilt mit n=4 und p=1/2 werden Punkt-, Intervall- und kumulierte Wahrscheinlichkeiten als 6/16, 10/16 und 11/16 illustriert.",
+          "altText": "Drei Ereignisse für X mit n=4 und p=1/2: genau X=2 hat 6/16, 1≤X≤2 hat 10/16, X≤2 hat 11/16. Die Markierungen zeigen ausgewählte Ergebniszahlen, keine Balkenhöhen.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "9de07e13-6a5f-5b49-a6d4-0decefb95784",
@@ -50000,7 +50175,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "8c32d941-b51c-5663-951c-a610f8900f76",
+          "title": "Visualisierung: Wahrscheinlichkeiten normalverteilter Zufallsgrößen bestimmen (LK)",
+          "url": "/assets/goal-visualizations/mathematik/8c32d941-b51c-5663-951c-a610f8900f76/8c32d941-b51c-5663-951c-a610f8900f76.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Wahrscheinlichkeit als Fläche unter der Normaldichte zwischen a und b.",
+          "altText": "Unter einer symmetrischen Glockenkurve ist nur die Fläche zwischen den Grenzen a und b eingefärbt. Sie steht für P(a ≤ X ≤ b).",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "c406d5a0-e81d-5ce9-b535-6512a38798de",
@@ -50179,8 +50370,8 @@
       "shortKey": "canonical_math_q3_interpret_normal_cdf_as_integral_lk",
       "title": "Die Verteilungsfunktion der Normalverteilung als Integralfunktion deuten (LK)",
       "titleEn": "Interpret the normal cumulative distribution function as an integral function (advanced course)",
-      "description": "Die lernende Person kann $\\Phi_{\\mu,\\sigma}(x)=\\int_{-\\infty}^{x}\\varphi_{\\mu,\\sigma}(t)\\,dt$ als bis zur Grenze $x$ aufsummierte Wahrscheinlichkeit deuten und den Zusammenhang zwischen Dichtegraph, Fläche und Verteilungswert erläutern.",
-      "descriptionEn": "The learner can interpret $\\Phi_{\\mu,\\sigma}(x)=\\int_{-\\infty}^{x}\\varphi_{\\mu,\\sigma}(t)\\,dt$ as accumulated probability up to the boundary $x$ and explain the relationship between the density graph, area, and cumulative probability.",
+      "description": "Die lernende Person kann den Wert der Verteilungsfunktion einer Normalverteilung bei x als Integral ihrer Dichte von −∞ bis x und damit als bis x aufsummierte Wahrscheinlichkeit deuten und den Zusammenhang zwischen Dichtegraph, Fläche und Verteilungswert erläutern.",
+      "descriptionEn": "The learner can interpret the value of a normal distribution's cumulative distribution function at x as the integral of its density from negative infinity to x, hence as accumulated probability up to x, and explain the relationship between the density graph, area, and cumulative probability.",
       "weight": 1,
       "tags": [
         "LK"
@@ -50225,7 +50416,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "a7778885-17aa-5eeb-a6a7-fbf4c8d55a16",
+          "title": "Visualisierung: Die Verteilungsfunktion der Normalverteilung als Integralfunktion deuten (LK)",
+          "url": "/assets/goal-visualizations/mathematik/a7778885-17aa-5eeb-a6a7-fbf4c8d55a16/a7778885-17aa-5eeb-a6a7-fbf4c8d55a16.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Verteilungswert als kumulierte Fläche unter der Normaldichte bis x.",
+          "altText": "Unter einer Glockenkurve ist die gesamte Fläche von links bis zur Grenze x eingefärbt. Sie entspricht F(x) = P(X ≤ x).",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "b431148b-526c-4bde-b04b-48d23101d0d3",
@@ -50282,12 +50489,12 @@
           "role": "primary",
           "skillpilotId": "b431148b-526c-4bde-b04b-48d23101d0d3",
           "title": "Visualisierung: Annähernd normalverteilte Zufallsgrößen in Situationen erkennen (LK)",
-          "url": "/assets/goal-visualizations/mathematik/b431148b-526c-4bde-b04b-48d23101d0d3/b431148b-526c-4bde-b04b-48d23101d0d3.jpg",
-          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
-          "description": "Visualisierung zum Lernziel: Annähernd normalverteilte Zufallsgrößen in Situationen erkennen (LK).",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Annähernd normalverteilte Zufallsgrößen in Situationen erkennen (LK)\". Die lernende Person kann stochastische Situationen erkennen und untersuchen, die zu annähernd normalverteilten Zufallsgrößen führen.",
+          "url": "/assets/goal-visualizations/mathematik/b431148b-526c-4bde-b04b-48d23101d0d3/b431148b-526c-4bde-b04b-48d23101d0d3.png",
+          "provider": "OpenAI/ChatGPT-Codex image generation",
+          "description": "Comicvergleich zur begründeten Einschätzung, wann ein Binomialmodell annähernd normalverteilt sein kann.",
+          "altText": "Zwei schematische Histogramme: 100 faire Münzwürfe mit p=0,5 sind annähernd glockenförmig; bei 100 unabhängigen Versuchen mit Trefferchance 1 Prozent ist die Trefferzahl rechtsschief und ein Normalmodell unpassend.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -51659,7 +51866,23 @@
         ]
       },
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "4d906967-9f4b-5dc8-af7a-d403b95d61f5",
+          "title": "Visualisierung: Prognoseintervalle im Kontext interpretieren",
+          "url": "/assets/goal-visualizations/mathematik/4d906967-9f4b-5dc8-af7a-d403b95d61f5/4d906967-9f4b-5dc8-af7a-d403b95d61f5.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Bekanntes p und festes n führen zu einem Prognosebereich für die künftige relative Häufigkeit X/n.",
+          "altText": "Skizze eines Prognoseintervalls für die künftige relative Häufigkeit X/n bei bekanntem p und festem n: drei mögliche Werte im markierten Bereich, ein weiterer außerhalb; keine Garantie.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "5c9ac68c-3928-518c-bbe0-e044667035a6",
@@ -51712,7 +51935,23 @@
         ]
       },
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "5c9ac68c-3928-518c-bbe0-e044667035a6",
+          "title": "Visualisierung: Konfidenzintervalle im Kontext interpretieren",
+          "url": "/assets/goal-visualizations/mathematik/5c9ac68c-3928-518c-bbe0-e044667035a6/5c9ac68c-3928-518c-bbe0-e044667035a6.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Eine beobachtete Stichprobe liefert einen Schätzbereich für eine unbekannte Trefferwahrscheinlichkeit p.",
+          "altText": "Aus einer bereits beobachteten symbolischen Stichprobe führt ein Pfeil zu einem markierten Schätzbereich für die unbekannte Trefferwahrscheinlichkeit p. Ein tatsächlicher Wert von p ist nicht eingetragen.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "77d607e0-0244-55ca-ba0f-214baa94b8de",
@@ -60291,7 +60530,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
+          "title": "Visualisierung: Grundlegende Eigenschaften der natürlichen Logarithmusfunktion erläutern (LK)",
+          "url": "/assets/goal-visualizations/mathematik/04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8/04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Visualisierung zum Lernziel: Grundlegende Eigenschaften der natürlichen Logarithmusfunktion erläutern (LK).",
+          "altText": "Der Graph von y = ln(x) verläuft nur für x > 0, schneidet die x-Achse bei (1,0), steigt nach rechts immer langsamer und wird als Umkehrung von e^u = x gezeigt.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c",
@@ -60904,7 +61159,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "cf48c918-f6c1-5429-8da6-14df43f2f550",
+          "title": "Visualisierung: Produktregel beim Ableiten anwenden (LK)",
+          "url": "/assets/goal-visualizations/mathematik/cf48c918-f6c1-5429-8da6-14df43f2f550/cf48c918-f6c1-5429-8da6-14df43f2f550.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Visualisierung zum Lernziel: Produktregel beim Ableiten anwenden (LK).",
+          "altText": "Produktregel für g(x) = x² und h(x) = x + 1: f′(x) = 2x(x + 1) + x²; die Kontrolle über f(x) = x³ + x² ergibt f′(x) = 3x² + 2x.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
@@ -60957,7 +61228,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+          "title": "Visualisierung: Kettenregel beim Ableiten anwenden (LK)",
+          "url": "/assets/goal-visualizations/mathematik/ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75/ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Visualisierung zum Lernziel: Kettenregel beim Ableiten anwenden (LK).",
+          "altText": "Kettenregel am Beispiel g(t) = t³ und u(x) = x² + 1: f(x) = (x² + 1)³ und f′(x) = 3(x² + 1)² · 2x; äußere und innere Funktion sind farblich getrennt.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "d8f1fd06-785e-5d15-a8e5-7d8b36f91287",
@@ -61010,7 +61297,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d8f1fd06-785e-5d15-a8e5-7d8b36f91287",
+          "title": "Visualisierung: Zeit, Radius und Fläche verkettet",
+          "url": "/assets/goal-visualizations/mathematik/d8f1fd06-785e-5d15-a8e5-7d8b36f91287/d8f1fd06-785e-5d15-a8e5-7d8b36f91287.png",
+          "provider": "OpenAI/ChatGPT-Codex imagegen (model/version not exposed)",
+          "description": "Ein Kreisflächenmodell zeigt die Reihenfolge Zeit, Radius, Fläche und den zusammengesetzten Term.",
+          "altText": "Vier vertikale Schritte zeigen eine Funktionsverkettung: Zeit t in Jahren, Radius r(t) = (1+t) m, Fläche A(r) = πr² und schließlich A(r(t)) = π(1+t)² m². Neben der Flächenformel ist ein einzelnes kreisförmiges Beet mit eingezeichnetem Radius zu sehen.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "858f7863-50cd-5b4c-9654-a0766f2b2d53",
@@ -61901,8 +62204,8 @@
       "id": "1e77bb2f-0cd6-5961-b0fb-230317c73fce",
       "title": "Volumen von Prismen aus Grundfläche und Höhe bestimmen",
       "titleEn": "Determine prism volumes from base area and height",
-      "description": "Die lernende Person kann den Zusammenhang $V = G \\cdot h$ geometrisch erklären und nutzen, um Volumina von Prismen aus Skizzen oder Koordinaten zu bestimmen und Einheiten korrekt anzugeben.",
-      "descriptionEn": "The learner can explain the geometric relationship $V = G \\cdot h$ and use it to determine prism volumes from sketches or coordinates and state units correctly.",
+      "description": "Die lernende Person kann den Zusammenhang V = G · h geometrisch erklären und nutzen, um Volumina von Prismen aus Skizzen oder Koordinaten zu bestimmen und Einheiten korrekt anzugeben.",
+      "descriptionEn": "The learner can explain the geometric relationship V = G · h and use it to determine prism volumes from sketches or coordinates and state units correctly.",
       "weight": 1,
       "tags": [
         "GK",
@@ -61945,14 +62248,29 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "1e77bb2f-0cd6-5961-b0fb-230317c73fce",
+          "title": "Visualisierung: Volumen von Prismen aus Grundfläche und Höhe bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/1e77bb2f-0cd6-5961-b0fb-230317c73fce/1e77bb2f-0cd6-5961-b0fb-230317c73fce.png",
+          "provider": "OpenAI/ChatGPT-Codex image generation",
+          "description": "Comic zum Prismenvolumen aus gleicher Grundfläche und senkrechter Höhe.",
+          "altText": "Ein Quaderprisma hat die orange Grundfläche G = 20 cm² mit Seiten 5 cm und 4 cm sowie die senkrechte Höhe h = 7 cm. Gleiche Querschnitte verdeutlichen V = G · h = 140 cm³.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "288633c1-f61c-5b48-af7e-a80357f96cad",
       "title": "Volumen von Pyramiden aus Grundfläche und Höhe bestimmen",
       "titleEn": "Determine pyramid volumes from base area and height",
-      "description": "Die lernende Person kann den Faktor $\\frac{1}{3}$ als Verhältnis zum entsprechenden Prisma deuten und den Zusammenhang $V = \\frac{1}{3} G \\cdot h$ nutzen, um Volumina von Pyramiden aus Skizzen oder Koordinaten zu bestimmen.",
-      "descriptionEn": "The learner can interpret the factor $\\frac{1}{3}$ as the volume ratio to the corresponding prism and use $V = \\frac{1}{3} G \\cdot h$ to determine pyramid volumes from sketches or coordinates.",
+      "description": "Die lernende Person kann den Faktor 1/3 als Verhältnis zum entsprechenden Prisma deuten und den Zusammenhang V = (G · h)/3 nutzen, um Volumina von Pyramiden aus Skizzen oder Koordinaten zu bestimmen.",
+      "descriptionEn": "The learner can interpret the factor 1/3 as the volume ratio to the corresponding prism and use V = (G · h)/3 to determine pyramid volumes from sketches or coordinates.",
       "weight": 1,
       "tags": [
         "GK",
@@ -61995,7 +62313,22 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "288633c1-f61c-5b48-af7e-a80357f96cad",
+          "title": "Visualisierung: Volumen von Pyramiden aus Grundfläche und Höhe bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/288633c1-f61c-5b48-af7e-a80357f96cad/288633c1-f61c-5b48-af7e-a80357f96cad.png",
+          "provider": "OpenAI/ChatGPT-Codex image generation",
+          "description": "Comicvergleich einer quadratischen Pyramide mit einem entsprechenden Prisma.",
+          "altText": "Quadratische Pyramide und Prisma besitzen dieselbe Grundfläche 6 cm mal 6 cm und die senkrechte Höhe 9 cm. G = 36 cm²; das Prisma hat 324 cm³, die Pyramide 108 cm³ und damit ein Drittel des Volumens.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
@@ -62102,8 +62435,8 @@
       "id": "c71ae268-f28e-59f0-982d-91db8f963378",
       "title": "Volumen von Zylindern aus Radius und Höhe bestimmen",
       "titleEn": "Determine cylinder volumes from radius and height",
-      "description": "Die lernende Person kann die Kreisfläche als Grundfläche eines Zylinders deuten und den Zusammenhang $V = \\pi r^2 h$ nutzen, um Volumina aus Skizzen oder Koordinaten zu bestimmen.",
-      "descriptionEn": "The learner can interpret the circular area as the base of a cylinder and use $V = \\pi r^2 h$ to determine volumes from sketches or coordinates.",
+      "description": "Die lernende Person kann die Kreisfläche als Grundfläche eines Zylinders deuten und den Zusammenhang V = πr²h nutzen, um Volumina aus Skizzen oder Koordinaten zu bestimmen.",
+      "descriptionEn": "The learner can interpret the circular area as the base of a cylinder and use V = πr²h to determine volumes from sketches or coordinates.",
       "weight": 1,
       "tags": [
         "GK",
@@ -62146,14 +62479,29 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "c71ae268-f28e-59f0-982d-91db8f963378",
+          "title": "Visualisierung: Volumen von Zylindern aus Radius und Höhe bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/c71ae268-f28e-59f0-982d-91db8f963378/c71ae268-f28e-59f0-982d-91db8f963378.png",
+          "provider": "OpenAI/ChatGPT-Codex image generation",
+          "description": "Comic zum Zylindervolumen aus Kreisfläche und senkrechter Höhe.",
+          "altText": "Ein Zylinder hat den Grundkreisradius r = 3 cm und die senkrechte Höhe h = 10 cm. Gleiche Kreisflächen entlang der Höhe ergeben G = 9π cm² und V = G · h = 90π cm³.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "e8237315-654e-5150-97de-49c4cb49b3d1",
       "title": "Volumen von Kegeln aus Radius und Höhe bestimmen",
       "titleEn": "Determine cone volumes from radius and height",
-      "description": "Die lernende Person kann den Faktor $\\frac{1}{3}$ als Verhältnis zum entsprechenden Zylinder deuten und den Zusammenhang $V = \\frac{1}{3} \\pi r^2 h$ nutzen, um Volumina von Kegeln aus Skizzen oder Koordinaten zu bestimmen.",
-      "descriptionEn": "The learner can interpret the factor $\\frac{1}{3}$ as the volume ratio to the corresponding cylinder and use $V = \\frac{1}{3} \\pi r^2 h$ to determine cone volumes from sketches or coordinates.",
+      "description": "Die lernende Person kann den Faktor 1/3 als Verhältnis zum entsprechenden Zylinder deuten und den Zusammenhang V = (πr²h)/3 nutzen, um Volumina von Kegeln aus Skizzen oder Koordinaten zu bestimmen.",
+      "descriptionEn": "The learner can interpret the factor 1/3 as the volume ratio to the corresponding cylinder and use V = (πr²h)/3 to determine cone volumes from sketches or coordinates.",
       "weight": 1,
       "tags": [
         "GK",
@@ -62196,14 +62544,29 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "e8237315-654e-5150-97de-49c4cb49b3d1",
+          "title": "Visualisierung: Volumen von Kegeln aus Radius und Höhe bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/e8237315-654e-5150-97de-49c4cb49b3d1/e8237315-654e-5150-97de-49c4cb49b3d1.png",
+          "provider": "OpenAI/ChatGPT-Codex image generation",
+          "description": "Comicvergleich von Kegel und Zylinder mit gleichem Radius und gleicher senkrechter Höhe.",
+          "altText": "Kegel und Zylinder haben jeweils Radius 3 cm und senkrechte Höhe 12 cm. G = 9π cm²; das Zylindervolumen ist 108π cm³ und das Kegelvolumen ein Drittel davon, 36π cm³.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
       "title": "Volumen von Kugeln aus dem Radius bestimmen",
       "titleEn": "Determine sphere volumes from the radius",
-      "description": "Die lernende Person kann die kubische Abhängigkeit des Kugelvolumens vom Radius beschreiben und den Zusammenhang $V = \\frac{4}{3} \\pi r^3$ nutzen, um Kugelvolumina aus Skizzen oder Koordinaten zu bestimmen.",
-      "descriptionEn": "The learner can describe the cubic dependence of sphere volume on the radius and use $V = \\frac{4}{3} \\pi r^3$ to determine sphere volumes from sketches or coordinates.",
+      "description": "Die lernende Person kann die kubische Abhängigkeit des Kugelvolumens vom Radius beschreiben und den Zusammenhang V = (4/3)πr³ nutzen, um Kugelvolumina aus Skizzen oder Koordinaten zu bestimmen.",
+      "descriptionEn": "The learner can describe the cubic dependence of sphere volume on the radius and use V = (4/3)πr³ to determine sphere volumes from sketches or coordinates.",
       "weight": 1,
       "tags": [
         "GK",
@@ -62246,7 +62609,22 @@
         ]
       },
       "type": "atomic",
-      "resourceLinks": []
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
+          "title": "Visualisierung: Volumen von Kugeln aus dem Radius bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/2f2c9f1a-07f0-59e4-b84a-60648c3b0bda/2f2c9f1a-07f0-59e4-b84a-60648c3b0bda.png",
+          "provider": "OpenAI/ChatGPT-Codex image generation",
+          "description": "Comic zum Kugelvolumen und seiner kubischen Abhängigkeit vom Radius.",
+          "altText": "Zwei Kugeln mit Radien 3 cm und 6 cm im Verhältnis 1 zu 2; ihre Volumina 36π cm³ und 288π cm³ stehen im Verhältnis 1 zu 8. Die Formel V = vier Drittel πr³ erklärt die kubische Abhängigkeit.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "e9181209-1506-59df-9053-17f36b91bb06",
@@ -63043,8 +63421,8 @@
       "id": "8cb5c712-9c58-5910-8c63-8c3736369b80",
       "title": "Punkte an Ebenen spiegeln",
       "titleEn": "Reflect points across planes",
-      "description": "Die lernende Person kann Punkte an Ebenen spiegeln, Lotfußpunkte bzw. gleiche Abstände zur Spiegelebene nutzen und die Konstruktion rechnerisch sowie geometrisch begründen.",
-      "descriptionEn": "The learner can reflect points across planes, use perpendicular foot points or equal distances to the mirror plane, and justify the construction computationally and geometrically.",
+      "description": "Die lernende Person kann zu einem Punkt und einer Ebene den Spiegelpunkt bestimmen und rechnerisch sowie geometrisch begründen, dass beide Punkte auf derselben Ebenennormalen liegen und der Lotfußpunkt ihr Mittelpunkt ist.",
+      "descriptionEn": "The learner can determine the reflection of a point across a plane and justify computationally and geometrically that both points lie on the same normal to the plane and that their perpendicular foot is the midpoint.",
       "weight": 1,
       "tags": [
         "GK",
@@ -63103,7 +63481,7 @@
           "url": "/assets/goal-visualizations/mathematik/8cb5c712-9c58-5910-8c63-8c3736369b80/8cb5c712-9c58-5910-8c63-8c3736369b80.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Punkte an Ebenen spiegeln.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Punkte an Ebenen spiegeln\". Die lernende Person kann Punkte an Ebenen spiegeln, Lotfußpunkte bzw. gleiche Abstände zur Spiegelebene nutzen und die Konstruktion rechnerisch sowie geometrisch begründen.",
+          "altText": "Punkt P wird an der Ebene z = 0 zu P' gespiegelt; die Verbindungsstrecke steht senkrecht auf der Ebene und wird im Lotfußpunkt F halbiert.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -64188,22 +64566,7 @@
       "type": "atomic",
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 3 und 8",
       "semanticAtomic": true,
-      "resourceLinks": [
-        {
-          "type": "goal-visualization",
-          "resourceType": "image",
-          "role": "primary",
-          "skillpilotId": "18be713b-7d90-4f01-b60a-5582ac4df0e8",
-          "title": "Visualisierung: Schnittwinkel zwischen geometrischen Objekten berechnen",
-          "url": "/assets/goal-visualizations/mathematik/18be713b-7d90-4f01-b60a-5582ac4df0e8/18be713b-7d90-4f01-b60a-5582ac4df0e8.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
-          "description": "Visualisierung zum Lernziel: Schnittwinkel zwischen geometrischen Objekten berechnen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Schnittwinkel zwischen geometrischen Objekten berechnen\". Die lernende Person kann die Größe des Schnittwinkels zwischen zwei sich schneidenden geometrischen Objekten berechnen und das Ergebnis geometrisch deuten.",
-          "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
-          "reviewStatus": "pilot"
-        }
-      ]
+      "resourceLinks": []
     },
     {
       "id": "fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
@@ -66129,8 +66492,8 @@
       "shortKey": "canonical_math_sek2_linear_mappings_projection_intuition",
       "title": "Orthogonale Projektionen als erste lineare Abbildungsintuition deuten",
       "titleEn": "Interpret orthogonal projections as a first intuition for linear mappings",
-      "description": "Die lernende Person kann orthogonale Projektionen als erste lineare Projektionsvorstellungen deuten und fachsprachlich erläutern, dass dabei Vektoren systematisch auf feste Richtungen oder Unterräume bezogen werden.",
-      "descriptionEn": "The learner can interpret orthogonal projections as a first intuition for linear mappings and explain precisely that vectors are systematically related to fixed directions or subspaces.",
+      "description": "Die lernende Person kann an orthogonalen Projektionen auf einen festen linearen Unterraum erläutern, dass jedem Vektor ein Anteil in diesem Unterraum und ein dazu senkrechter Rest zugeordnet wird, und dies als erstes Beispiel einer linearen Abbildung deuten.",
+      "descriptionEn": "The learner can use orthogonal projections onto a fixed linear subspace to explain how each vector is assigned a component in that subspace and a perpendicular remainder, and interpret this as an initial example of a linear mapping.",
       "core": true,
       "weight": 1,
       "tags": [
@@ -66184,7 +66547,7 @@
           "url": "/assets/goal-visualizations/mathematik/ed5d869b-af4e-4b80-b34d-a2338e16ce34/ed5d869b-af4e-4b80-b34d-a2338e16ce34.jpg",
           "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
           "description": "Visualisierung zum Lernziel: Orthogonale Projektionen als erste lineare Abbildungsintuition deuten.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Orthogonale Projektionen als erste lineare Abbildungsintuition deuten\". Die lernende Person kann orthogonale Projektionen als erste lineare Projektionsvorstellungen deuten und fachsprachlich erläutern, dass dabei Vektoren systematisch auf feste Richtungen oder Unterräume bezogen werden.",
+          "altText": "Ein Vektor (3,2) wird orthogonal auf die x-Achse zum Vektor (3,0) projiziert; der Restvektor (0,2) steht senkrecht auf der x-Achse.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -78713,7 +79076,23 @@
       ],
       "contains": [],
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+          "title": "Visualisierung: Von reellen zu komplexen Lösungen",
+          "url": "/assets/goal-visualizations/mathematik/a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0/a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0.png",
+          "provider": "OpenAI/ChatGPT-Codex imagegen (model/version not exposed)",
+          "description": "Das Beispiel x² + 1 = 0 ist in ℝ unlösbar und hat in ℂ die Lösungen ±i.",
+          "altText": "Die Gleichung x² + 1 = 0 steht über zwei Comicfeldern. Links gilt für reelle Zahlen x² ≥ 0, daher gibt es keine reelle Lösung. Rechts stehen x = ±i und i² = −1; die Punkte i und −i liegen oberhalb und unterhalb des Ursprungs auf der imaginären Achse der komplexen Ebene.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "e105bad8-b4e5-53fc-b02e-604f1df5b503",
@@ -83263,7 +83642,23 @@
       },
       "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 10",
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
+          "title": "Visualisierung: Teilungsverhältnisse bei Strecken untersuchen",
+          "url": "/assets/goal-visualizations/mathematik/5d9c156b-e5a4-5e91-9da3-22e858eb1f8e/5d9c156b-e5a4-5e91-9da3-22e858eb1f8e.png",
+          "provider": "OpenAI/Codex image_gen.imagegen (model version not exposed)",
+          "description": "Fachlich geprüfte Comic-Orientierung zum Lernziel.",
+          "altText": "Schematische Strecke AB in fünf Teilstücke gegliedert: P liegt nach dem zweiten Teilstück, sodass AP zu PB im Verhältnis 2 zu 3 steht; darunter P = A + 2/5 · (B − A).",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
@@ -83531,7 +83926,23 @@
       },
       "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.1, Kompetenz 4, S. 24.",
       "type": "atomic",
-      "semanticAtomic": true
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+          "title": "Visualisierung: Laufzeit tabellarisch näherungsweise bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/fc34449a-fbf4-574c-884f-ecdf48b42d2e/fc34449a-fbf4-574c-884f-ecdf48b42d2e.png",
+          "provider": "OpenAI/Codex image_gen.imagegen (model version not exposed)",
+          "description": "Fachlich geprüfte Comic-Orientierung zum Lernziel.",
+          "altText": "Tabellenartige Übersicht: Bei 10 % Zins wächst ein Guthaben von 100 € in Periode 0 über 110 € in Periode 1 auf 121 € in Periode 2. Das Ziel von mindestens 120 € ist erstmals nach zwei vollständigen Perioden erreicht.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "03703b29-efd8-57e0-acf5-4381b1dc67ec",

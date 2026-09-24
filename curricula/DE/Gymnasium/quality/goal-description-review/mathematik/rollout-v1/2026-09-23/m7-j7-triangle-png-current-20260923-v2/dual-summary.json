@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:6184d3061f3e1a7982b17edfc16ea5a70a0ce71464877274bc21b7a5334a1fb2",
+  "reviewInputFingerprint": "sha256:81da2bbb3553c8e34aa26252495cfc726699b2b52fca76f6bca5f6cac38df5f4",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j7-triangle-png-current-20260923-v2-a",
+      "roundId": "mathematik-m7-j7-triangle-png-current-20260923-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j7-triangle-png-current-20260923-v2-independent-a",
+      "runIds": [
+        "j7-triangle-png-current-20260923-v2-a-codex-independent"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex agent (exact model identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j7-triangle-png-current-20260923-v2-b",
+      "roundId": "mathematik-m7-j7-triangle-png-current-20260923-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j7-triangle-png-current-20260923-v2-independent-b",
+      "runIds": [
+        "math-m7-j7-triangle-png-current-20260923-v2-first-pass-b-codex"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::Codex subagent; runtime model ID not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "3017e774-8d9f-5129-828f-7684db5afc1e",
+      "firstRecordId": "j7-triangle-png-current-20260923-v2-a-3017e774",
+      "secondRecordId": "math-m7-j7-triangle-png-current-20260923-v2-first-pass-b-codex-3017e774",
+      "firstRunId": "j7-triangle-png-current-20260923-v2-a-codex-independent",
+      "secondRunId": "math-m7-j7-triangle-png-current-20260923-v2-first-pass-b-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0f6c1df6-0e30-54ae-8098-e9422833ba80",
+      "firstRecordId": "j7-triangle-png-current-20260923-v2-a-0f6c1df6",
+      "secondRecordId": "math-m7-j7-triangle-png-current-20260923-v2-first-pass-b-codex-0f6c1df6",
+      "firstRunId": "j7-triangle-png-current-20260923-v2-a-codex-independent",
+      "secondRunId": "math-m7-j7-triangle-png-current-20260923-v2-first-pass-b-codex",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

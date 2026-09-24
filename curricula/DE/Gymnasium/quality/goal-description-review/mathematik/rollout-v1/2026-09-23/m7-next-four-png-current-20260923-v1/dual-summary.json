@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:12840f828db8bc12b2720617d87a76108862f51a78db59066aa8eab0bf9756a1",
+  "reviewInputFingerprint": "sha256:5172d9fdd98f89f61f5e0b2ad6c0a8b82b6a91a0d09902b3ad2e0a06e48153dd",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-next-four-png-current-20260923-v1-a",
+      "roundId": "mathematik-m7-next-four-png-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-next-four-png-current-20260923-v1-independent-a",
+      "runIds": [
+        "math-m7-next-four-png-current-20260923-v1-a-run-001-codex"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-next-four-png-current-20260923-v1-b",
+      "roundId": "mathematik-m7-next-four-png-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-next-four-png-current-20260923-v1-independent-b",
+      "runIds": [
+        "math-m7-next-four-png-rb-run-20260924-01"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::Codex AI reviewer (exact model identifier not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "4d906967-9f4b-5dc8-af7a-d403b95d61f5",
+      "firstRecordId": "math-m7-next-four-png-current-20260923-v1-a-run-001-codex-4d906967",
+      "secondRecordId": "math-m7-next-four-png-rb-record-01",
+      "firstRunId": "math-m7-next-four-png-current-20260923-v1-a-run-001-codex",
+      "secondRunId": "math-m7-next-four-png-rb-run-20260924-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5c9ac68c-3928-518c-bbe0-e044667035a6",
+      "firstRecordId": "math-m7-next-four-png-current-20260923-v1-a-run-001-codex-5c9ac68c",
+      "secondRecordId": "math-m7-next-four-png-rb-record-02",
+      "firstRunId": "math-m7-next-four-png-current-20260923-v1-a-run-001-codex",
+      "secondRunId": "math-m7-next-four-png-rb-run-20260924-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+      "firstRecordId": "math-m7-next-four-png-current-20260923-v1-a-run-001-codex-fc34449a",
+      "secondRecordId": "math-m7-next-four-png-rb-record-03",
+      "firstRunId": "math-m7-next-four-png-current-20260923-v1-a-run-001-codex",
+      "secondRunId": "math-m7-next-four-png-rb-run-20260924-01",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
+      "firstRecordId": "math-m7-next-four-png-current-20260923-v1-a-run-001-codex-5d9c156b",
+      "secondRecordId": "math-m7-next-four-png-rb-record-04",
+      "firstRunId": "math-m7-next-four-png-current-20260923-v1-a-run-001-codex",
+      "secondRunId": "math-m7-next-four-png-rb-run-20260924-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-four-comic-png-current-20260923-v2-b.run-001",
+  "campaignId": "mathematik-m7-four-comic-png-current-20260923-v2-b",
+  "roundId": "mathematik-m7-four-comic-png-current-20260923-v2-first-pass-b",
+  "batchId": "mathematik-m7-four-comic-png-current-20260923-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:de3b13ae7b68417de55b65d0d682ce287fe946d46a93a73f6594ef8514bfed5d",
+  "bundleFingerprint": "sha256:c2ec5163962e7d3b4204fb8966258e055c9b7da5fc609e96dbb6a5bb8e926396",
+  "bookDigest": "sha256:b4d9a27dc677d80c5e3f6148dfd5170ea93604b301d4660c325554fa0d2cd585",
+  "provider": "openai",
+  "model": "Codex subagent (runtime model ID not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:5d9332019fa23bc82a8a3e399793d147a45eb4c57ffdf99f3813938c1b70178c",
+  "generationParametersFingerprint": "sha256:51fcc33a8d42aa4be373865b0e4809f553c7c2a43ede3ce8a6fe89c39d4dee1b",
+  "independenceGroupId": "mathematik-m7-four-comic-png-current-20260923-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "e495fa38-b198-5280-a405-9e41cafd6d17",
+    "5a2371fd-74ce-5013-932e-35d3713aeaf7",
+    "f17935b0-189f-5e0c-988d-ce508b710097",
+    "740ab443-776a-5c7a-8f1d-2b0b59a5ed32"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:13a4569017a23509d248d6bc91d9afcd785ef90b9089894918db85780908b0c9"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:43f4f95954454bd7ca5b31df8621bce9ce5b74a67f2a1dbab496c00e7e93d946"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:fed43bc54c476446973151bcea092942dce0778323cc085ecfe36f8f4774dd05"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:5d9332019fa23bc82a8a3e399793d147a45eb4c57ffdf99f3813938c1b70178c"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:de3b13ae7b68417de55b65d0d682ce287fe946d46a93a73f6594ef8514bfed5d"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-23T18:06:26.000Z",
+  "completedAt": "2026-09-23T18:07:31.913Z",
+  "status": "completed",
+  "outputDigest": "sha256:ec959bc9f4d6ef24f3553ed4505cc09dc076f0cd67967a30578bbf04df8302de",
+  "toolchainVersion": "codex-api-review-v1"
+}

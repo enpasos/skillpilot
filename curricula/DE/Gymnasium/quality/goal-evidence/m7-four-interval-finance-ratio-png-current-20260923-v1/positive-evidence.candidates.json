@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-p-v2-m7-four-interval-finance-ratio-png-current-20260923-v1",
+  "reviewedAt": "2026-09-23T22:02:00Z",
+  "reviewer": "Codex AI candidate author /root/q3_lk_scope_audit (exact model identifier unavailable)",
+  "goals": [
+    {
+      "goalId": "4d906967-9f4b-5dc8-af7a-d403b95d61f5",
+      "reason": "DE: Aktuelles Ziel und PNG erneut fachlich geprüft: Die Skizze zeigt bei bekanntem p und festem n ein allgemeines Vorhersageintervall für die künftige relative Häufigkeit ohne Zahlen. Die unveränderten zwei Fälle verlangen dagegen eigene Intervall- und Kontextdeutungen bei p = 0,6, n = 100 beziehungsweise p = 0,2, n = 50; der häufige Fehlschluss einer garantierten künftigen Häufigkeit wird geprüft. EN: Rechecked the current goal and PNG: it illustrates a generic prediction interval for a future relative frequency given known p and fixed n, without numbers. The two unchanged cases independently require interval and context interpretations at p = 0.6, n = 100 and p = 0.2, n = 50, including rejection of a guaranteed future frequency.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "future-frequency",
+            "essentialUnderstandingDe": "Ein Prognoseintervall bei bekanntem p bezieht sich auf die noch zufällige relative Häufigkeit X/n einer zukünftigen Stichprobe festgelegter Größe.",
+            "essentialUnderstandingEn": "With known p, a prediction interval concerns the still-random relative frequency X/n in a future sample of fixed size.",
+            "observablePerformanceDe": "Die lernende Person nennt Zufallsgröße, Stichprobenumfang und Intervallgrenzen und erläutert den möglichen Bereich künftiger relativer Häufigkeiten.",
+            "observablePerformanceEn": "The learner identifies random variable, sample size and interval bounds and explains the range of possible future relative frequencies."
+          },
+          {
+            "id": "correct-misreading",
+            "essentialUnderstandingDe": "Das Intervall beschreibt weder einen Schätzbereich für das bereits bekannte p noch eine Garantie für jede einzelne Zukunftsstichprobe.",
+            "essentialUnderstandingEn": "The interval is neither an estimate for already known p nor a guarantee for every individual future sample.",
+            "observablePerformanceDe": "Die lernende Person korrigiert eine typische Vertauschung von p und beobachteter Häufigkeit und formuliert die Aussage mit angemessener Unsicherheit.",
+            "observablePerformanceEn": "The learner corrects a common swap of p and observed frequency and phrases the claim with appropriate uncertainty."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "future-frequency",
+            "correct-misreading"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "future-context",
+            "textDe": "künftige Ja-Stimmen in einer Umfrage gegenüber künftige Qualitätsfehler in einer Serie",
+            "textEn": "future yes-votes in a survey versus future defects in a production run"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "survey-prediction",
+            "taskDemandDe": "Bei bekannter Zustimmungswahrscheinlichkeit p=0,6 ist für eine zukünftige Stichprobe von 100 ein Prognoseintervall [0,50;0,70] angegeben. Deute es und korrigiere: p liegt wahrscheinlich darin.",
+            "taskDemandEn": "With known approval probability p=0.6, a prediction interval [0.50,0.70] is given for a future sample of 100. Interpret it and correct: p probably lies in it.",
+            "expectedPerformanceDe": "Das Intervall betrifft die künftige beobachtete Ja-Häufigkeit X/100, etwa 50 bis 70 von 100, nicht eine Schätzung des bekannten p=0,6; einzelne Stichproben können außerhalb liegen.",
+            "expectedPerformanceEn": "The interval concerns the future observed yes-frequency X/100, roughly 50 to 70 of 100, not an estimate of known p=0.6; individual samples may fall outside.",
+            "understandingFocusDe": "Bekannten Modellparameter und künftige Zufallsbeobachtung trennen.",
+            "understandingFocusEn": "Separating known model parameter from future random observation."
+          },
+          {
+            "id": "defect-prediction",
+            "taskDemandDe": "Für eine Produktion ist p(Defekt)=0,2 bekannt. Für die nächsten 50 Teile wird ein Prognoseintervall [0,10;0,30] für die relative Defekthäufigkeit angegeben. Erläutere die Aussage und eine Grenze.",
+            "taskDemandEn": "A production process has known p(defect)=0.2. A prediction interval [0.10,0.30] is given for the defect frequency among the next 50 items. Explain its meaning and one limit.",
+            "expectedPerformanceDe": "Die künftige Defekthäufigkeit X/50 wird als voraussichtlich zwischen 10 % und 30 % beschrieben, entsprechend etwa 5 bis 15 Defekten; das ist keine Garantie für genau diese 50 Teile.",
+            "expectedPerformanceEn": "The future defect frequency X/50 is expected to lie between 10% and 30%, about 5 to 15 defects; this is no guarantee for those exact 50 items.",
+            "understandingFocusDe": "Prognose auf eine andere Zielgröße und Stichprobengröße übertragen.",
+            "understandingFocusEn": "Transferring prediction to a different outcome and sample size."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5c9ac68c-3928-518c-bbe0-e044667035a6",
+      "reason": "DE: Aktuelles Ziel und PNG erneut fachlich geprüft: Das Bild geht von einer beobachteten Stichprobe zur Schätzung des unbekannten Anteils p über, ohne Zahlenbeispiel. Die unveränderten Fälle nutzen neue Stichproben 48/100 und 12/40 mit gegebenen Intervallen und prüfen die Bedeutung langfristiger Überdeckung statt einer Wahrscheinlichkeit für den festen unbekannten Parameter. EN: Rechecked the current goal and PNG: it moves from an observed sample to estimating an unknown proportion p, without a numeric case. The unchanged cases use fresh samples 48/100 and 12/40 with supplied intervals and test long-run coverage rather than a probability for the fixed unknown parameter.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "parameter-estimate",
+            "essentialUnderstandingDe": "Ein Konfidenzintervall wird aus einer beobachteten Stichprobe berechnet und dient der Schätzung einer unbekannten festen Trefferwahrscheinlichkeit p.",
+            "essentialUnderstandingEn": "A confidence interval is computed from an observed sample and estimates an unknown fixed success probability p.",
+            "observablePerformanceDe": "Die lernende Person benennt Stichprobenbefund und geschätzten Parameter und deutet die Grenzen als plausible Werte für p.",
+            "observablePerformanceEn": "The learner names the sample result and estimated parameter and interprets bounds as plausible values of p."
+          },
+          {
+            "id": "coverage-meaning",
+            "essentialUnderstandingDe": "Ein 95-%-Konfidenzniveau beschreibt die langfristige Abdeckung eines Verfahrens über wiederholte Stichproben, nicht einen Zufallswert des festen p nach Beobachtung.",
+            "essentialUnderstandingEn": "A 95% confidence level describes a method's long-run coverage across repeated samples, not randomness of fixed p after observing the data.",
+            "observablePerformanceDe": "Die lernende Person korrigiert eine Aussage über 95 % Einzelpersonen oder eine 95-%-Wahrscheinlichkeit für das feste p in diesem konkreten Intervall.",
+            "observablePerformanceEn": "The learner corrects a claim about 95% of individuals or a 95% probability for fixed p in this particular interval."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "parameter-estimate",
+            "coverage-meaning"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "sample-result",
+            "textDe": "Zustimmungsstichprobe mit 48 von 100 gegenüber Qualitätsstichprobe mit 12 von 40",
+            "textEn": "approval sample with 48 of 100 versus quality sample with 12 of 40"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "approval-ci",
+            "taskDemandDe": "Aus 48 Ja-Antworten unter 100 Befragten wurde ein 95-%-Konfidenzintervall [0,38;0,58] berechnet. Deute es und prüfe die Aussage: 95 % der Befragten stimmen zu.",
+            "taskDemandEn": "From 48 yes-responses among 100 people, a 95% confidence interval [0.38,0.58] was computed. Interpret it and assess: 95% of respondents approve.",
+            "expectedPerformanceDe": "48 % stimmen in der Stichprobe zu; das Intervall schätzt die unbekannte Zustimmungschance p auf plausible 38 % bis 58 %. 95 % bezeichnet die Verfahrensabdeckung, nicht den Anteil der Befragten.",
+            "expectedPerformanceEn": "48% approve in the sample; the interval estimates unknown approval probability p with plausible values from 38% to 58%. The 95% refers to method coverage, not respondent share.",
+            "understandingFocusDe": "Stichprobenanteil, Parameter und Konfidenzniveau trennen.",
+            "understandingFocusEn": "Separating sample proportion, parameter and confidence level."
+          },
+          {
+            "id": "defect-ci",
+            "taskDemandDe": "Bei 12 Defekten unter 40 Teilen ergibt eine Methode das 95-%-Konfidenzintervall [0,18;0,45]. Korrigiere: Die feste Defektwahrscheinlichkeit liegt mit 95 % Wahrscheinlichkeit genau in diesem Intervall.",
+            "taskDemandEn": "For 12 defects among 40 items, a method gives a 95% confidence interval [0.18,0.45]. Correct: the fixed defect probability has a 95% chance of lying in this exact interval.",
+            "expectedPerformanceDe": "Die unbekannte feste Defektwahrscheinlichkeit p wird auf plausible Werte von 0,18 bis 0,45 geschätzt; bei wiederholter Anwendung überdecken etwa 95 % solcher Intervalle das jeweilige feste p. Nach Beobachtung ist p nicht zufällig.",
+            "expectedPerformanceEn": "Unknown fixed defect probability p is estimated with plausible values from 0.18 to 0.45; across repeated samples about 95% of intervals from the method cover the fixed p. After observation p itself is not random.",
+            "understandingFocusDe": "Langfristige Verfahrensaussage statt posteriorer Einzelfallwahrscheinlichkeit.",
+            "understandingFocusEn": "Long-run method statement rather than a posterior probability for one interval."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+      "reason": "DE: Aktuelles Ziel und PNG erneut fachlich geprüft: Das Bild illustriert 100 € bei 10 % Zins bis zur 120-€-Schwelle im zweiten Zeitraum. Das unveränderte Profil verlangt eigenständige Tabellenentscheidungen für 1.000 € bei 5 % und einen andersartigen Tilgungsfall mit 3.000 € Schuld und monatlicher Zahlung; die Lösungen sind nicht aus dem Bild ablesbar. EN: Rechecked the current goal and PNG: the image illustrates €100 at 10% reaching a €120 threshold in period two. The unchanged profile requires independent spreadsheet decisions for €1,000 at 5% and a structurally different €3,000 debt-repayment case with monthly payment; neither result can be read from the image.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "duration-as-first-target-period",
+            "essentialUnderstandingDe": "Die Laufzeit ist in diesem diskreten Finanzmodell die Anzahl der festgelegten Zins- oder Zahlungsperioden bis die Zielbedingung erstmals erfüllt ist. Die Startzeile beschreibt den Zeitpunkt null; deshalb unterscheiden sich Zeilennummer, Anzahl der Aktualisierungsschritte und verstrichene Zeit. Bei einem Mindest- oder Höchstziel belegt die unmittelbar vorherige Periode, dass die gefundene ganze Periodenzahl minimal ist.",
+            "essentialUnderstandingEn": "In this discrete financial model, the term is the number of specified interest or payment periods until the target condition is met for the first time. The initial row represents time zero, so the row number, number of update steps, and elapsed time must be distinguished. For a minimum or maximum target, the immediately preceding period establishes that the identified whole number of periods is minimal.",
+            "observablePerformanceDe": "Die lernende Person kennzeichnet in einer neuen Tabelle den Anfangszeitpunkt als Periode null, identifiziert die erste Zeile, die das vorgegebene Guthaben- oder Restschuldziel erfüllt, vergleicht sie mit der vorherigen Zeile und deutet die Zahl der Aktualisierungsschritte in der im Kontext genannten Zeiteinheit.",
+            "observablePerformanceEn": "In a new spreadsheet, the learner labels the initial time as period zero, identifies the first row that meets the specified balance or remaining-debt target, compares it with the preceding row, and interprets the number of update steps in the time unit stated in the context."
+          },
+          {
+            "id": "construct-progression-and-check-term",
+            "essentialUnderstandingDe": "Bei gegebenem Anfangsbestand, Zinssatz und gegebenenfalls regelmäßiger Zahlung legt die periodische Aktualisierungsregel den gesamten Kontoverlauf fest. Zinsperiode, Zahlungsperiode, Buchungszeitpunkt und Zielrichtung müssen konsistent modelliert werden; Rundungen dürfen die erste Zielerreichung nicht unbemerkt um eine Periode verschieben.",
+            "essentialUnderstandingEn": "Given an initial balance, an interest rate, and, where applicable, a regular payment, the periodic update rule determines the complete balance progression. The interest period, payment period, transaction timing, and target direction must be modelled consistently; rounding must not silently shift the first attainment of the target by one period.",
+            "observablePerformanceDe": "Die lernende Person erstellt die Aktualisierungsregel mit passenden Zellbezügen und Vorzeichen, setzt die Tabelle bis über die Zielgrenze fort und prüft die gefundene Laufzeit anhand des unverfrüht gerundeten Verlaufs. Sie begründet, warum die Zielbedingung in keiner früheren Periode erfüllt ist und ob das Ergebnis als Jahre, Monate oder andere Perioden zu berichten ist.",
+            "observablePerformanceEn": "The learner constructs the update rule with appropriate cell references and signs, extends the spreadsheet beyond the target boundary, and checks the identified duration against the progression before premature rounding. The learner explains why the target condition is not met in any earlier period and whether the result should be reported as years, months, or another period unit."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "duration-as-first-target-period",
+            "construct-progression-and-check-term"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "target-direction",
+            "textDe": "Erstes Erreichen oder Überschreiten eines Sparziels gegenüber erstem Erreichen oder Unterschreiten einer Zielrestschuld",
+            "textEn": "First reaching or exceeding a savings target versus first reaching or falling below a target remaining debt"
+          },
+          {
+            "id": "period-and-cash-flow-structure",
+            "textDe": "Jährliche reine Verzinsung oder monatliche Verzinsung mit einer festen Zahlung am Periodenende",
+            "textEn": "Annual interest without payments or monthly interest with a fixed payment at the end of each period"
+          },
+          {
+            "id": "time-interpretation",
+            "textDe": "Zinsperioden, Zahlungsperioden und daraus folgende Kalenderzeiteinheit bei ausdrücklich festgelegtem Startzeitpunkt",
+            "textEn": "Interest periods, payment periods, and the resulting calendar-time unit with an explicitly specified initial time"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "savings-target-first-interest-period",
+            "taskDemandDe": "Ein Guthaben von 1.000 € wird ohne weitere Einzahlungen jährlich mit 5 % verzinst. Bestimme mit einer Tabellenkalkulation, nach wie vielen vollständigen Zinsperioden erstmals mindestens 1.200 € vorhanden sind. Weise mit der vorherigen Tabellenzeile nach, dass die Laufzeit nicht kürzer ist, und deute die Periodenzahl als Zeit.",
+            "taskDemandEn": "A balance of €1,000 earns 5% annual interest without further deposits. Use a spreadsheet to determine after how many complete interest periods the balance first reaches at least €1,200. Use the preceding row to show that the duration is not shorter, and interpret the period count as time.",
+            "expectedPerformanceDe": "Die lernende Person beginnt mit Periode 0 bei 1.000 € und setzt den Bestand mit dem Faktor 1,05 fort. Nach drei Perioden stehen rund 1.157,63 € und nach vier Perioden rund 1.215,51 € in der Tabelle; damit wird das Ziel erstmals nach vier Zinsperioden beziehungsweise vier Jahren erreicht.",
+            "expectedPerformanceEn": "The learner begins with period 0 at €1,000 and updates the balance using the factor 1.05. The spreadsheet shows about €1,157.63 after three periods and about €1,215.51 after four, so the target is first reached after four interest periods, or four years.",
+            "understandingFocusDe": "Der direkte Fall prüft Startzeile, diskrete Periodenzählung, erste Zielüberschreitung und die zeitliche Interpretation ohne regelmäßige Zahlungen.",
+            "understandingFocusEn": "The direct case tests the initial row, discrete period counting, first crossing of a target, and interpretation as elapsed time without regular payments."
+          },
+          {
+            "id": "debt-target-payment-period-transfer",
+            "taskDemandDe": "Eine Restschuld von 3.000 € wird zu Beginn jedes Monats mit 1 % auf den bisherigen Bestand verzinst; danach werden am Monatsende 500 € gezahlt. Bestimme mit einer neuen Tabelle die erste Zahlungsperiode, nach der die Restschuld höchstens 1.800 € beträgt, und prüfe die vorherige Periode sowie die Buchungsreihenfolge.",
+            "taskDemandEn": "A remaining debt of €3,000 accrues 1% interest on the existing balance at the start of each month, after which €500 is paid at the end of the month. Use a new spreadsheet to determine the first payment period after which the remaining debt is at most €1,800, and check the preceding period and the transaction order.",
+            "expectedPerformanceDe": "Die lernende Person verwendet je Monat neuer Bestand gleich alter Bestand mal 1,01 minus 500 €. Die Restschuld beträgt nach einer Periode 2.530,00 €, nach zwei Perioden 2.055,30 € und nach drei Perioden rund 1.575,85 €. Da die zweite Periode das Ziel noch nicht erfüllt, beträgt die gesuchte Laufzeit drei Zahlungsperioden beziehungsweise drei Monate.",
+            "expectedPerformanceEn": "For each month, the learner uses new balance equals old balance times 1.01 minus €500. The remaining debt is €2,530.00 after one period, €2,055.30 after two, and about €1,575.85 after three. Because the second period does not yet meet the target, the required duration is three payment periods, or three months.",
+            "understandingFocusDe": "Der unabhängige Transfer prüft die Laufzeit in einem abnehmenden Modell mit Höchstziel, monatlicher Zahlungsperiode und ausdrücklicher Zins-vor-Zahlung-Reihenfolge.",
+            "understandingFocusEn": "The independent transfer tests duration in a decreasing model with a maximum target, monthly payment periods, and an explicit interest-before-payment order."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
+      "reason": "DE: Aktuelles Ziel und PNG erneut fachlich geprüft: Die räumliche Skizze zeigt nur das Teilungsverhältnis 2:3 beziehungsweise t = 2/5. Die unveränderten Fälle verlangen das selbstständige Bestimmen und Begründen des Verhältnisses eines gegebenen Teilpunkts mit t = 1/3 sowie den Richtungsvergleich bei räumlich schräg liegenden Punkten mit t = 1/4 und 3/4; kein Ergebnis lässt sich aus dem Bild kopieren. EN: Rechecked the current goal and PNG: the spatial sketch shows only the 2:3 ratio, or t = 2/5. The unchanged cases require independently finding and explaining the ratio for a given division point at t = 1/3 and comparing the direction of oblique spatial points at t = 1/4 and 3/4; no answer can be copied from the image.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "ratio",
+            "essentialUnderstandingDe": "Für einen inneren Teilpunkt P=A+t(B−A) mit 0<t<1 gilt AP:PB=t:(1−t), unabhängig von der Raumlage der Strecke.",
+            "essentialUnderstandingEn": "For an internal division point P=A+t(B−A), 0<t<1, AP:PB=t:(1−t), regardless of the segment's spatial orientation.",
+            "observablePerformanceDe": "Die lernende Person bestimmt aus Raumkoordinaten den Parameter t und begründet damit das Verhältnis der Teilstrecken.",
+            "observablePerformanceEn": "The learner obtains parameter t from spatial coordinates and uses it to justify the ratio of the two subsegments."
+          },
+          {
+            "id": "compare",
+            "essentialUnderstandingDe": "Teilungsverhältnisse lassen sich entlang derselben gerichteten Strecke vergleichen, indem die normierte Lage t statt bloßer Koordinatendifferenzen betrachtet wird.",
+            "essentialUnderstandingEn": "Division ratios along the same directed segment are compared through normalized position t, not by raw coordinate differences alone.",
+            "observablePerformanceDe": "Die lernende Person ordnet zwei Teilpunkte auf einer Raumstrecke, berechnet beide Verhältnisse und erklärt den Vergleich geometrisch.",
+            "observablePerformanceEn": "The learner orders two points on a spatial segment, calculates both ratios and explains the comparison geometrically."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "ratio",
+            "compare"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "orientation",
+            "textDe": "achsenparallele Strecke gegenüber schräger Strecke im Raum mit zwei Teilpunkten",
+            "textEn": "axis-parallel segment versus oblique spatial segment with two division points"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "axis-segment",
+            "taskDemandDe": "A=(0,0,0), B=(6,0,0), P=(2,0,0). Bestimme AP:PB und begründe den Wert durch die Lage auf AB.",
+            "taskDemandEn": "A=(0,0,0), B=(6,0,0), P=(2,0,0). Find AP:PB and justify it from P's position on AB.",
+            "expectedPerformanceDe": "P=A+(1/3)(B−A); daher AP=2 und PB=4, also AP:PB=1:2. P liegt ein Drittel von A nach B.",
+            "expectedPerformanceEn": "P=A+(1/3)(B−A); hence AP=2 and PB=4, so AP:PB=1:2. P lies one third of the way from A to B.",
+            "understandingFocusDe": "Teilparameter und Längenverhältnis konsistent deuten.",
+            "understandingFocusEn": "Interpreting the division parameter and length ratio consistently."
+          },
+          {
+            "id": "oblique-compare",
+            "taskDemandDe": "A=(1,2,3), B=(5,6,7), P=(2,3,4), Q=(4,5,6). Vergleiche AP:PB und AQ:QB mit Begründung.",
+            "taskDemandEn": "A=(1,2,3), B=(5,6,7), P=(2,3,4), Q=(4,5,6). Compare AP:PB and AQ:QB with justification.",
+            "expectedPerformanceDe": "P=A+(1/4)(B−A), Q=A+(3/4)(B−A). Somit AP:PB=1:3 und AQ:QB=3:1; Q liegt näher bei B.",
+            "expectedPerformanceEn": "P=A+(1/4)(B−A), Q=A+(3/4)(B−A). Thus AP:PB=1:3 and AQ:QB=3:1; Q is closer to B.",
+            "understandingFocusDe": "Raumlage ändert das normierte Teilungsverhältnis nicht.",
+            "understandingFocusEn": "Spatial orientation does not change normalized division ratios."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:2326bec901f59eaa4568bdca96442a6d61110a7ec3c9b7e6109223a6bd19b250",
+  "reviewInputFingerprint": "sha256:66e05f34c5774c590bb992b79d132b91bfe15acec40d3896c4874d96117b2277",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j5-coordinates-units-two-d-current-20260924-v1-a",
+      "roundId": "mathematik-m7-j5-coordinates-units-two-d-current-20260924-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j5-coordinates-units-two-d-current-20260924-v1-independent-a",
+      "runIds": [
+        "m7-j5-coordinates-units-two-d-a-20260924"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact runtime model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j5-coordinates-units-two-d-current-20260924-v1-b",
+      "roundId": "mathematik-m7-j5-coordinates-units-two-d-current-20260924-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j5-coordinates-units-two-d-current-20260924-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-j5-coordinates-units-two-d-current-20260924-v1-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact model identifier unavailable)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "25593605-5e13-55cc-9a05-8f3d737e15e9",
+      "firstRecordId": "m7-j5-coordinates-units-two-d-a-20260924.25593605-5e13-55cc-9a05-8f3d737e15e9",
+      "secondRecordId": "mathematik-m7-j5-coordinates-units-two-d-current-20260924-v1-b-run-001.record-01",
+      "firstRunId": "m7-j5-coordinates-units-two-d-a-20260924",
+      "secondRunId": "mathematik-m7-j5-coordinates-units-two-d-current-20260924-v1-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "firstRecordId": "m7-j5-coordinates-units-two-d-a-20260924.f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "secondRecordId": "mathematik-m7-j5-coordinates-units-two-d-current-20260924-v1-b-run-001.record-02",
+      "firstRunId": "m7-j5-coordinates-units-two-d-a-20260924",
+      "secondRunId": "mathematik-m7-j5-coordinates-units-two-d-current-20260924-v1-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

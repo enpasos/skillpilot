@@ -1,0 +1,9 @@
+# Mathematik Q3: zwei aktuelle Binomial-Bildbindungen, D-v2 Round A
+
+Prüfe beide aktuellen kanonischen DE/EN-Zieltexte unabhängig nach dem gemeinsamen D-v2-Prompt anhand des hessischen KCGO Mathematik 2024, Q3.2, des vollständigen gerenderten Lernzielbuchs, der direkten Voraussetzungen und Nachfolger, der tatsächlichen Original-PNGs und 360-px-Ansichten sowie der externen aktuellen P-v2-Fälle. Ein Schema- oder Hash-Erfolg ersetzt kein fachliches Urteil.
+
+Für `9b6f4d7d…` nennt das Bild vier faire, unabhängige Münzwürfe und zeigt sechs verschiedene Folgen mit genau zwei Köpfen, je `1/16`, insgesamt `6/16`. Das ist nur ein Beispiel für die Faktoren der Formel; die unabhängige P-Leistung nutzt vier Versuche mit `p=0,3` und einen anderen Fünf-Versuche-Transfer. Prüfe, ob der D-Text die kombinatorische Platzierungszahl und die Wahrscheinlichkeit einer festen Folge innerhalb seiner Kürze klar beansprucht, ohne die Bildlösung als Kompetenznachweis zu behandeln.
+
+Für `aa00edfa…` zeigt das Bild bei vier fairen Münzwürfen `P(X=2)=6/16`, `P(1≤X≤2)=10/16` und `P(X≤2)=11/16`, wobei die markierten Kreise Ergebniswerte, keine Balkenhöhen sind. Die Bildüberschrift nennt Fairness, nicht ausdrücklich Unabhängigkeit; der D-Text setzt bereits eine binomialverteilte Zufallsgröße voraus. Prüfe diese Darstellungsgrenze ausdrücklich. Die unabhängige P-Leistung nutzt fünf Versuche mit `p=0,4`, andere Ereignisgrenzen und Kontextdeutung. Prüfe Punkt-, Intervall- und kumulierte Ereignisse sowie Summenschreibweise oder digitale Werkzeuge gegen den Q3.2-Quelltext, ohne den Bildfall als ganze Kompetenz auszugeben.
+
+Schreibe zu jedem Ziel eine belegte Entscheidung KEEP, REVISE, SPLIT_REVIEW oder BLOCK und sechs spezifische bilinguale Verständnis-/Leistungs-/Transferfelder. Alle Resultate bleiben KI-Kandidaten ohne menschliche Freigabe.

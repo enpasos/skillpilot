@@ -24,17 +24,19 @@ import {
   type GoalDescriptionSynthesisDigest,
 } from './validateGoalDescriptionRolloutSynthesisDecisionManifest'
 import { validateLegacyResolutionIndexSnapshot } from './reportDeepUnderstandingRollout'
+import {
+  classifyMathM7PartialPageOrImageBinding,
+  validateMathM7PartialOpenReason,
+  type MathM7PartialOpenGoal,
+} from './mathM7PartialOpenReason'
+import { validatePositiveGoalEvidenceRecordSemantics, type PositiveGoalEvidenceReviewRecord } from './positiveGoalEvidenceProfileModel'
+import type { LearningGoal } from '../src/landscapeTypes'
 
 type Claim = {
   goalId: string
   evidenceRound: 'first' | 'second'
   rationaleDe: string
   rationaleEn: string
-}
-type OpenGoal = {
-  goalId: string
-  reason: 'review_dissent' | 'review_block' | 'current_image_hold'
-  note: string
 }
 type Config = {
   schemaVersion: 1
@@ -44,7 +46,15 @@ type Config = {
   manifestId: string
   expectedGoalCount: number
   claimed: Claim[]
-  open: OpenGoal[]
+  open: MathM7PartialOpenGoal[]
+  claimedEvidenceBindings?: Array<{
+    goalId: string
+    positiveEvidenceReviewPath: string
+    bwMappingReviewPath: string
+    bwSourceGoalId: string
+    bySourcePath: string
+    bySourceGoalId: string
+  }>
 }
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
@@ -59,6 +69,14 @@ const withinRollout = (path: string): string => {
   const difference = relative(rolloutRoot, resolved)
   if (!difference || difference === '..' || difference.startsWith(`..${sep}`)) {
     throw new Error(`Partial materializer path is outside Mathematics rollout: ${path}`)
+  }
+  return resolved
+}
+const withinRepository = (path: string): string => {
+  const resolved = resolve(root, path)
+  const difference = relative(root, resolved)
+  if (!difference || difference === '..' || difference.startsWith(`..${sep}`)) {
+    throw new Error(`Partial evidence path is outside the repository: ${path}`)
   }
   return resolved
 }
@@ -122,7 +140,7 @@ const main = async () => {
     || !sourceConfig.goalIds.every((id) => allIds.includes(id))
     || !same(sourceConfig.goalIds.filter((id) => claimedIds.includes(id)), claimedIds)
     || materialization.claimed.some((choice) => !choice.rationaleDe?.trim() || !choice.rationaleEn?.trim() || !['first', 'second'].includes(choice.evidenceRound))
-    || materialization.open.some((entry) => !entry.note?.trim() || !['review_dissent', 'review_block', 'current_image_hold'].includes(entry.reason))
+    || materialization.open.some((entry) => !entry.note?.trim() || !['review_dissent', 'review_revision', 'review_block', 'current_image_hold', 'unresolved_prior_dissent'].includes(entry.reason))
   ) throw new Error('Source campaign, dual summary, or claimed/open partition changed')
   const openById = new Map(materialization.open.map((entry) => [entry.goalId, entry]))
   for (const summary of dual.summary.goals) {
@@ -134,16 +152,23 @@ const main = async () => {
     }
     const entry = openById.get(summary.goalId)
     if (!entry) throw new Error(`${summary.goalId}: unclassified campaign goal`)
-    const bothKeep = summary.firstDecision === 'keep' && summary.secondDecision === 'keep'
-    if (entry.reason === 'review_dissent' && bothKeep) {
-      throw new Error(`${summary.goalId}: review-dissent exclusion has two KEEP decisions`)
+    let priorReviewRecord: { goalId: string; recordId: string; decision: string } | undefined
+    if (entry.reason === 'unresolved_prior_dissent' && entry.priorDissent?.reviewRecordPath) {
+      const priorPath = withinRollout(entry.priorDissent.reviewRecordPath)
+      if (priorPath.startsWith(`${source}${sep}`) || !priorPath.endsWith('.records.jsonl')) {
+        throw new Error(`${summary.goalId}: prior dissent must cite a different review campaign's records JSONL`)
+      }
+      const priorRecords = (await readFile(priorPath, 'utf8')).trim().split('\n')
+        .map((line) => JSON.parse(line) as { goalId: string; recordId: string; decision: string })
+      priorReviewRecord = priorRecords.find(({ recordId }) => recordId === entry.priorDissent?.recordId)
     }
-    if (entry.reason === 'review_block' && (summary.firstDecision !== 'block' || summary.secondDecision !== 'block')) {
-      throw new Error(`${summary.goalId}: review-block exclusion needs two BLOCK decisions`)
-    }
-    if (entry.reason === 'current_image_hold' && !bothKeep) {
-      throw new Error(`${summary.goalId}: image-hold exclusion also has review dissent; classify both explicitly before synthesis`)
-    }
+    const openError = validateMathM7PartialOpenReason(
+      entry,
+      summary.firstDecision,
+      summary.secondDecision,
+      priorReviewRecord,
+    )
+    if (openError) throw new Error(openError)
   }
 
   const base = await loadGoalBookBuildInputs(sourceConfig.baseGoalBookConfigPath)
@@ -159,14 +184,28 @@ const main = async () => {
     || base.model.pages.length !== dual.prepared.manifest.curriculumAtomicDenominatorAtPreparation
   ) throw new Error('Prepared model or current curricularAtomic denominator changed')
   let campaignBoundImageByteCount = 0
+  let campaignExactPageCount = 0
+  let campaignNoImagePageCount = 0
+  const unclaimedPageOrImageDrift: Array<{ goalId: string; reason: string }> = []
   for (const goalId of sourceConfig.goalIds) {
     const preparedPage = preparedModel.pages.find((page) => page.goalId === goalId)
     const currentPage = current.pages.find((page) => page.goalId === goalId)
-    if (!preparedPage || !currentPage || !same(currentPage, preparedPage)) {
-      throw new Error(`${goalId}: source campaign GoalBook page changed; targeted review is required`)
+    if (classifyMathM7PartialPageOrImageBinding(
+      goalId,
+      claimedIds.includes(goalId),
+      Boolean(preparedPage && currentPage && same(currentPage, preparedPage)),
+      'GoalBook page',
+    ) === 'unclaimed_drift') {
+      unclaimedPageOrImageDrift.push({ goalId, reason: 'current GoalBook page differs from the reviewed source campaign' })
+      continue
     }
+    if (!currentPage) throw new Error(`${goalId}: exact current page unexpectedly missing`)
+    campaignExactPageCount += 1
     const visualization = currentPage.visualization
-    if (!visualization) continue
+    if (!visualization) {
+      campaignNoImagePageCount += 1
+      continue
+    }
     if (!visualization.url || !visualization.originalDigest) {
       throw new Error(`${goalId}: source campaign image binding is incomplete`)
     }
@@ -179,8 +218,20 @@ const main = async () => {
     if (publicDifference === '..' || publicDifference.startsWith(`..${sep}`)) {
       throw new Error(`${goalId}: source campaign image escapes public root`)
     }
-    if (sha256(await readFile(imagePath)) !== visualization.originalDigest) {
-      throw new Error(`${goalId}: source campaign image bytes changed`)
+    let actualImageDigest: GoalDescriptionSynthesisDigest | null = null
+    try {
+      actualImageDigest = sha256(await readFile(imagePath))
+    } catch (error) {
+      if (!(error instanceof Error && 'code' in error && error.code === 'ENOENT')) throw error
+    }
+    if (classifyMathM7PartialPageOrImageBinding(
+      goalId,
+      claimedIds.includes(goalId),
+      actualImageDigest === visualization.originalDigest,
+      'image bytes',
+    ) === 'unclaimed_drift') {
+      unclaimedPageOrImageDrift.push({ goalId, reason: 'bound image bytes differ from the reviewed source campaign' })
+      continue
     }
     campaignBoundImageByteCount += 1
   }
@@ -197,6 +248,12 @@ const main = async () => {
   }>()
   const expectedGoals: GoalDescriptionRolloutSynthesisExpectedGoal[] = []
   const imageBindings: Array<Record<string, unknown>> = []
+  const evidenceBindings: Array<Record<string, unknown>> = []
+  if (materialization.claimedEvidenceBindings && (
+    materialization.claimedEvidenceBindings.length !== claimedIds.length
+    || new Set(materialization.claimedEvidenceBindings.map(({ goalId }) => goalId)).size !== claimedIds.length
+    || !claimedIds.every((goalId) => materialization.claimedEvidenceBindings?.some((binding) => binding.goalId === goalId))
+  )) throw new Error('Claimed source/P evidence bindings must cover exactly the claimed goals')
   for (const choice of materialization.claimed) {
     const goalId = choice.goalId
     const first = extractGoalDescriptionDualRoundResolutionSource({ artifacts: dual.first, goalId, label: 'First' })
@@ -261,6 +318,75 @@ const main = async () => {
         goalReviewContextFingerprint: contextFingerprint,
         imagePublicPath: null,
         imageDigest: null,
+      })
+    }
+    const auxiliary = materialization.claimedEvidenceBindings?.find(({ goalId: id }) => id === goalId)
+    if (auxiliary) {
+      const positivePath = withinRepository(auxiliary.positiveEvidenceReviewPath)
+      const positiveBytes = await readFile(positivePath)
+      const positiveRecords = positiveBytes.toString('utf8').trim().split('\n')
+        .map((line) => JSON.parse(line) as PositiveGoalEvidenceReviewRecord)
+      const positive = positiveRecords.find((record) => record.goalId === goalId)
+      if (!positive || positiveRecords.filter((record) => record.goalId === goalId).length !== 1) {
+        throw new Error(`${goalId}: exactly one current positive-understanding-evidence-v2 record is required`)
+      }
+      const resourceDigests = visualization ? { [visualization.url]: visualization.originalDigest! } : {}
+      const positiveErrors = validatePositiveGoalEvidenceRecordSemantics(
+        positive,
+        canonicalGoal as unknown as LearningGoal,
+        resourceDigests,
+        'curricularAtomic',
+      )
+      if (positiveErrors.length || positive.status !== 'needs_human_review' || positive.reviewAuthority !== 'ai_candidate') {
+        throw new Error(`${goalId}: current P binding invalid or approval overstated: ${positiveErrors.join(' | ')}`)
+      }
+      const mappingPath = withinRepository(auxiliary.bwMappingReviewPath)
+      const mappingBytes = await readFile(mappingPath)
+      const mapping = JSON.parse(mappingBytes.toString('utf8')) as {
+        sourceExtractionPath: string
+        mappings: Array<{ legacyGoalId: string; canonicalGoalId: string; matchType: string }>
+      }
+      if (!mapping.mappings.some((entry) => entry.legacyGoalId === auxiliary.bwSourceGoalId && entry.canonicalGoalId === goalId && entry.matchType === 'exact')) {
+        throw new Error(`${goalId}: active BW exact source mapping is missing`)
+      }
+      const extractionPath = withinRepository(mapping.sourceExtractionPath)
+      const extractionBytes = await readFile(extractionPath)
+      const extraction = JSON.parse(extractionBytes.toString('utf8')) as {
+        sourceDocument: { path: string; official: boolean }
+        sourceGoals: Array<{ id: string; sourceSpan: string }>
+      }
+      const bwSource = extraction.sourceGoals.find(({ id }) => id === auxiliary.bwSourceGoalId)
+      if (!bwSource?.sourceSpan.includes('Gerade und Ebene') || !bwSource.sourceSpan.includes('zwischen Ebenen') || !extraction.sourceDocument.official) {
+        throw new Error(`${goalId}: BW extraction/source-document binding changed`)
+      }
+      const bwDocumentPath = withinRepository(extraction.sourceDocument.path)
+      const bwDocumentDigest = sha256(await readFile(bwDocumentPath))
+      const byPath = withinRepository(auxiliary.bySourcePath)
+      const byBytes = await readFile(byPath)
+      const byLandscape = JSON.parse(byBytes.toString('utf8')) as { goals: Array<{ id: string; description: string }> }
+      const bySource = byLandscape.goals.find(({ id }) => id === auxiliary.bySourceGoalId)
+      if (!bySource?.description.includes('zweier Ebenen sowie einer Geraden von einer Ebene')) {
+        throw new Error(`${goalId}: BY source does not substantiate both object pairs`)
+      }
+      evidenceBindings.push({
+        goalId,
+        positiveEvidenceReviewPath: auxiliary.positiveEvidenceReviewPath,
+        positiveEvidenceReviewDigest: sha256(positiveBytes),
+        positiveEvidenceProfileFingerprint: positive.profileFingerprint,
+        positiveEvidenceStatus: positive.status,
+        positiveEvidenceAuthority: positive.reviewAuthority,
+        bwMappingReviewPath: auxiliary.bwMappingReviewPath,
+        bwMappingReviewDigest: sha256(mappingBytes),
+        bwSourceGoalId: auxiliary.bwSourceGoalId,
+        bwSourceExtractionPath: mapping.sourceExtractionPath,
+        bwSourceExtractionDigest: sha256(extractionBytes),
+        bwOfficialDocumentPath: extraction.sourceDocument.path,
+        bwOfficialDocumentDigest: bwDocumentDigest,
+        bySourcePath: auxiliary.bySourcePath,
+        bySourceDigest: sha256(byBytes),
+        bySourceGoalId: auxiliary.bySourceGoalId,
+        directGoalBookSourceRef: input.canonicalContext.sourceRef ?? null,
+        interpretation: 'BW exact mapping and BY source passage are verified separately; no direct GoalBook sourceRef or BY exact mapping is inferred.',
       })
     }
     expectedGoals.push({
@@ -455,14 +581,14 @@ const main = async () => {
     schemaVersion: 1,
     receiptId: materialization.manifestId,
     status: 'ai_synthesis_candidate_not_registered',
-    purpose: 'Partial strict-D closure for exactly the claimed live-page KEEP/KEEP Mathematics goals; dissent and concrete current-image holds remain open.',
+    purpose: 'Partial strict-D closure for exactly the claimed live-page KEEP/KEEP Mathematics goals; excluded current or earlier dissent and image holds remain open.',
     materializationConfigPath: relative(root, configPath),
     materializationConfigDigest: sha256(await readFile(configPath)),
     sourceBatchId: dual.prepared.manifest.batchId,
     sourceCampaignGoalCount: dual.summary.goalCount,
     claimedGoalIds: claimedIds,
     openGoals: materialization.open,
-    openDisposition: 'No strict D closure, image acceptance, or human approval is inferred for excluded goals. Review dissent and current-image holds require separate targeted handling.',
+    openDisposition: 'No strict D closure, image acceptance, or human approval is inferred for excluded goals. Current dissent, unresolved earlier dissent, source-campaign drift, and image holds require separate targeted handling.',
     sourceBundleFingerprint: dual.prepared.manifest.artifacts.bundleFingerprint,
     sourceReviewInputFingerprint: dual.first.input.reviewInputFingerprint,
     sourceDualSummaryDigest: sha256(dual.bytes),
@@ -478,12 +604,14 @@ const main = async () => {
     globalBookDigestDriftDisposition: 'Whole-book and subset digests are provenance, not an equivalence claim. Every claimed goal is rechecked against live canonical context, full GoalBook page, both review contexts and exact current image bytes. Image quality approval is not inferred.',
     sourceCampaignPageAndImagePreflight: {
       goalCount: sourceConfig.goalIds.length,
-      exactCurrentPageCount: sourceConfig.goalIds.length,
+      exactCurrentPageCount: campaignExactPageCount,
       exactBoundImageByteCount: campaignBoundImageByteCount,
-      noImagePageCount: sourceConfig.goalIds.length - campaignBoundImageByteCount,
-      meaning: 'All source-campaign GoalBook pages equal the prepared review pages and every bound image matches its page SHA-256 on each materializer run. This is a byte-binding check, not image-quality acceptance or strict D closure for excluded goals.',
+      noImagePageCount: campaignNoImagePageCount,
+      unclaimedPageOrImageDrift,
+      meaning: 'Only claimed pages must equal their reviewed source pages and retain exact image bytes. Unclaimed drift is recorded, not accepted; this is no whole-campaign preflight pass, image-quality acceptance, or strict D closure for excluded goals.',
     },
     claimedPageAndImageBindings: imageBindings,
+    claimedPositiveEvidenceAndSourceBindings: evidenceBindings,
     synthesisManifestPath: 'synthesis-decisions.json',
     synthesisManifestDigest: sha256(synthesisBytes),
     resolutionIndexPath: 'resolution-index.json',

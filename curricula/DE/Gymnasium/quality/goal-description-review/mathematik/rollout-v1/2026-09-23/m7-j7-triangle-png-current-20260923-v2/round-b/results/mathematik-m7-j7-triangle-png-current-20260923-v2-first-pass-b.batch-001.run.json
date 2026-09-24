@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-m7-j7-triangle-png-current-20260923-v2-first-pass-b-codex",
+  "campaignId": "mathematik-m7-j7-triangle-png-current-20260923-v2-b",
+  "roundId": "mathematik-m7-j7-triangle-png-current-20260923-v2-first-pass-b",
+  "batchId": "mathematik-m7-j7-triangle-png-current-20260923-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:cd9c8b905af139cbd92b7f126779ee4494e0085607609cd2dd1e1ee8025791cd",
+  "bundleFingerprint": "sha256:6184d3061f3e1a7982b17edfc16ea5a70a0ce71464877274bc21b7a5334a1fb2",
+  "bookDigest": "sha256:bffd2c36c4a70f7e62430abbe57ac6ba1ec76dbad7c1f6432ea0dcceb8b50248",
+  "provider": "openai",
+  "model": "Codex subagent; runtime model ID not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:bc3afc2cc18f288091b5ca6748359f7c1d0ee20f58373b5e318bf7de69f82eef",
+  "generationParametersFingerprint": "sha256:789e7aa8836f3e743e5e0940d3181ab05651de0b5f7f74d95c11ee1637a3e8ba",
+  "independenceGroupId": "mathematik-m7-j7-triangle-png-current-20260923-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "3017e774-8d9f-5129-828f-7684db5afc1e",
+    "0f6c1df6-0e30-54ae-8098-e9422833ba80"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:bc3afc2cc18f288091b5ca6748359f7c1d0ee20f58373b5e318bf7de69f82eef"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:9c2892ad535a0d8b3a8ea056c1748f47393b9d4be4997f07b7f5b1788d8bc849"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:cd9c8b905af139cbd92b7f126779ee4494e0085607609cd2dd1e1ee8025791cd"
+    }
+  ],
+  "startedAt": "2026-09-23T19:47:45.097Z",
+  "completedAt": "2026-09-23T19:48:49.152Z",
+  "status": "completed",
+  "outputDigest": "sha256:f14d2495ee406a7ededce57affe3b01ce55c3a9f6c9ebeecebdaa07001ffdc5d",
+  "toolchainVersion": "goal-description-review-v2"
+}

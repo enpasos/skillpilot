@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-p-v2-m7-j7-triangle-png-current-20260923-v2",
+  "reviewedAt": "2026-09-23T19:32:56.977Z",
+  "reviewer": "codex-math-m7-j7-solvability-current-text-p-recheck-20260923",
+  "goals": [
+    {
+      "goalId": "0f6c1df6-0e30-54ae-8098-e9422833ba80",
+      "reason": "Die aktuelle DE/EN-Beschreibung präzisiert nach unabhängigem D-Review die SSS-Eindeutigkeit auf Kongruenzklassen und unterscheidet mehrere nicht kongruente Lösungen. Der bestehende fachliche P-v2-Kern drückt genau diese Bedingung bereits aus und prüft sie an frischen SSS- und SSA-Daten. Das dreiteilige Original-PNG bleibt Orientierung, kein Leistungsnachweis. Deshalb wird nur die aktuelle Ziel-/Seiten-/Bildbindung neu materialisiert; das Profil bleibt byte-identisch. KI-Kandidat E1/G1, keine menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "solvability-conditions",
+            "essentialUnderstandingDe": "Seitenlängen müssen die Dreiecksungleichung erfüllen; Kongruenzdaten wie SSS legen bei erfüllten Bedingungen ein Dreieck bis auf Kongruenz fest.",
+            "essentialUnderstandingEn": "Side lengths must satisfy the triangle inequality; sufficient congruence data such as SSS determine one triangle up to congruence when feasible.",
+            "observablePerformanceDe": "Prüft vor einer Konstruktion die gegebenen Seiten und begründet aus Ungleichung und SSS, ob kein oder genau ein Dreieck möglich ist.",
+            "observablePerformanceEn": "Checks given sides before construction and justifies from the inequality and SSS whether no or exactly one triangle exists."
+          },
+          {
+            "id": "ambiguous-data",
+            "essentialUnderstandingDe": "Bei bestimmten Seiten-Winkel-Daten ist eine Lage nicht eindeutig; die Schnittpunkte von Strahl und Kreis zeigen geometrisch, ob mehrere Dreiecke möglich sind.",
+            "essentialUnderstandingEn": "With some side-angle data the position is not unique; intersections of a ray and circle show geometrically whether multiple triangles are possible.",
+            "observablePerformanceDe": "Zeichnet die zulässigen Schnittlagen einer neuen Seiten-Winkel-Konstruktion und erklärt, warum sie zu verschiedenen nichtkongruenten Dreiecken führen.",
+            "observablePerformanceEn": "Draws the admissible intersections of a fresh side-angle construction and explains why they produce distinct non-congruent triangles."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "solvability-conditions",
+            "ambiguous-data"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "drei vorgegebene Seiten mit Dreiecksungleichung gegenüber Seiten-Winkel-Lage mit zwei Kreis-Strahl-Schnitten",
+            "textEn": "three given sides with triangle inequality versus side-angle data with two circle-ray intersections"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sss",
+            "taskDemandDe": "Prüfe, ob Seiten 3 cm, 4 cm, 8 cm ein Dreieck ergeben; vergleiche mit 3 cm, 4 cm, 5 cm und begründe jeweils die Anzahl bis auf Kongruenz.",
+            "taskDemandEn": "Check whether sides 3 cm, 4 cm, 8 cm make a triangle; compare with 3 cm, 4 cm, 5 cm and justify the number up to congruence.",
+            "expectedPerformanceDe": "3+4<8 schließt das erste Dreieck aus. 3,4,5 erfüllen alle Dreiecksungleichungen und legen durch SSS bis auf Verschieben, Drehen oder Spiegeln genau ein Dreieck fest.",
+            "expectedPerformanceEn": "3+4<8 rules out the first triangle. The lengths 3,4,5 satisfy all triangle inequalities and by SSS determine exactly one triangle up to translation, rotation or reflection.",
+            "understandingFocusDe": "Existenzbedingung von Eindeutigkeit trennen.",
+            "understandingFocusEn": "Separate feasibility from uniqueness."
+          },
+          {
+            "id": "ssa",
+            "taskDemandDe": "Zeichne AB=8 cm und einen Strahl ab A; die mitgelieferte maßhaltige Skizze zeigt den Lotfuß auf dem positiven Strahl und den Lotabstand von B als 4 cm. Fordere BC=5 cm. Untersuche die Kreis-Strahl-Schnitte und begründe die Anzahl der Dreiecke.",
+            "taskDemandEn": "Draw AB=8 cm and a ray from A; the supplied scale drawing gives the perpendicular foot on the forward ray and its distance from B as 4 cm. Require BC=5 cm. Examine circle-ray intersections and justify the number of triangles.",
+            "expectedPerformanceDe": "Weil Lotabstand 4 cm < Kreisradius 5 cm < AB=8 cm, schneidet der Kreis um B den positiven Strahl zweimal. Beide Lagen von C erfüllen die Angaben und liefern zwei nichtkongruente Dreiecke.",
+            "expectedPerformanceEn": "Because perpendicular distance 4 cm < circle radius 5 cm < AB=8 cm, the circle about B cuts the positive ray twice. Both C positions meet the data and yield two non-congruent triangles.",
+            "understandingFocusDe": "Mehrdeutigkeit aus geometrischen Schnittbedingungen statt Vermutung begründen.",
+            "understandingFocusEn": "Justify ambiguity from geometric intersections, not a guess."
+          }
+        ]
+      }
+    }
+  ]
+}

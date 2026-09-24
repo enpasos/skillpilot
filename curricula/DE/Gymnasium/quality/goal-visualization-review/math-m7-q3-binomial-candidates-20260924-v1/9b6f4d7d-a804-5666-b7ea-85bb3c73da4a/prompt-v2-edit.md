@@ -1,0 +1,6 @@
+Use case: precise-object-edit
+Asset type: corrected unbound PNG candidate for a German upper-secondary mathematics learning-goal card
+Input images: Image 1 is the exact edit target, a six-card comic illustration of all two-heads patterns from four tosses.
+Primary request: Improve only the top-area contrast and overall brightness. Replace the dark navy/black vignette behind the heading and legend with a warm ivory/light-blue background like the card areas. Render the heading and legend in solid dark navy so every word is immediately readable at a 360 px card width. Retain the friendly hand-drawn comic image language, orange K coins and teal Z coins.
+Preserve exactly: six cards in 2-by-3 layout; four coin chips in every card; patterns top row KKZZ, KZKZ, KZZK and bottom row ZKKZ, ZKZK, ZZKK; highlight around first card; "1 Muster: 1/16" inside first card; "6 Muster: 6/16" at bottom; top title "Genau 2-mal Kopf bei 4 Würfen"; legend "K = Kopf" and "Z = Zahl". Keep all fractions, coin letters, sequence order and card count unchanged.
+Constraints: Change only background/heading/legend contrast, not the math or layout. No extra cards, characters, numbers, formulas, labels, logos, watermark, technical IDs, or photorealism.

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-p-v2-m7-j5-units-source-bound-20260924-v1",
+  "reviewedAt": "2026-09-23T23:02:00.000Z",
+  "reviewer": "Codex AI candidate author /root/by_ten_d_round_a (exact model identifier unavailable)",
+  "goals": [
+    {
+      "goalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "reason": "DE: Die aktuelle BY-J5-Quelle M5.4.1 nennt Geld, Länge, Masse und Zeit, nicht das im alten Pflichtfall verlangte Liter-Volumen. Das P-v2-Profil verlangt weiter zwei unabhängige Demonstrationen: neue Längen in gemeinsamer Einheit ordnen und eine gemischte Fahrtdauer mit 1 h = 60 min gegen eine falsche 120-min-Angabe prüfen und vergleichen. Das Bild zeigt nur eine Bandlänge; die neue Zeitrelation und der Vergleich sind daraus nicht abschreibbar. Die Einheiteninvariante ist mathematisch präzisiert. EN: Bavaria year-5 source M5.4.1 names money, length, mass, and time, not the litre-volume case previously required. The P-v2 profile still requires two independent demonstrations: ordering fresh lengths in a common unit and checking a mixed journey duration using 1 h = 60 min against a false 120-minute claim before comparing durations. The image depicts only a ribbon length; it does not supply the new time relation or comparison. The quantity invariant is stated more precisely. AI candidate only; no human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "unit-and-conversion",
+            "essentialUnderstandingDe": "Eine Einheit muss zur Größenart und Größenordnung passen; beim Umrechnen bleibt die Größe gleich, während Zahlenwert und Größe der Einheit sich entsprechend dem Einheitenverhältnis gegensinnig ändern.",
+            "essentialUnderstandingEn": "A unit must suit the type and scale of a quantity; conversion preserves the quantity while the numerical value and the size of the unit change inversely according to the unit relationship.",
+            "observablePerformanceDe": "Die lernende Person wählt für eine neue Messgröße eine sinnvolle Einheit, rechnet über eine begründete Einheitenbeziehung um und prüft Richtung und Größenordnung.",
+            "observablePerformanceEn": "For a new measurement quantity, the learner chooses a sensible unit, converts using a justified unit relation, and checks direction and order of magnitude."
+          },
+          {
+            "id": "normalized-comparison",
+            "essentialUnderstandingDe": "Messwerte mit verschiedenen Einheiten sind erst nach Darstellung in derselben Einheit direkt vergleichbar; Einheitenzeichen allein dürfen nicht wie Zahlen behandelt werden.",
+            "essentialUnderstandingEn": "Measurements in different units are directly comparable only after expression in the same unit; unit symbols cannot be treated like numbers alone.",
+            "observablePerformanceDe": "Die lernende Person vereinheitlicht zwei Messwerte, ordnet sie und weist einen Vergleich zurück, der nur die ursprünglichen Zahlenwerte betrachtet.",
+            "observablePerformanceEn": "The learner converts two measurements to a common unit, orders them, and rejects a comparison based only on the original numerical values."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "unit-and-conversion",
+            "normalized-comparison"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quantity-type",
+            "textDe": "Geld, Länge, Masse oder Zeit im BY-J5-Bereich",
+            "textEn": "Money, length, mass, or time in the Bavaria year-5 scope"
+          },
+          {
+            "id": "unit-relation-and-notation",
+            "textDe": "Dezimale Längenumrechnung gegenüber dem 60er-Verhältnis und gemischter Schreibweise bei Zeit",
+            "textEn": "Decimal length conversion versus the factor of 60 and mixed-unit notation for time"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "mixed-lengths",
+            "taskDemandDe": "2,35 m, 228 cm und 0,0024 km sind in einer geeigneten gemeinsamen Einheit zu ordnen.",
+            "taskDemandEn": "2.35 m, 228 cm, and 0.0024 km must be ordered in a suitable common unit.",
+            "expectedPerformanceDe": "Die lernende Person rechnet etwa in Meter um, erhält 2,35 m, 2,28 m und 2,4 m und begründet die Reihenfolge mit Größenordnung.",
+            "expectedPerformanceEn": "The learner converts, for example, to metres, obtains 2.35 m, 2.28 m, and 2.4 m, and justifies the order by magnitude.",
+            "understandingFocusDe": "Der größte ursprüngliche Zahlenwert ist nicht automatisch die größte Länge.",
+            "understandingFocusEn": "The largest original numerical value is not automatically the greatest length."
+          },
+          {
+            "id": "mixed-time-sixty-factor-check",
+            "taskDemandDe": "Zwei Fahrten dauern 1 h 20 min und 75 min. Eine automatische Anzeige behauptet 1 h 20 min = 120 min. Prüfe diese Angabe, stelle beide Dauern in Minuten dar und vergleiche sie.",
+            "taskDemandEn": "Two journeys take 1 h 20 min and 75 min. An automated display claims 1 h 20 min = 120 min. Check the claim, express both durations in minutes, and compare them.",
+            "expectedPerformanceDe": "Die lernende Person verwendet 1 h = 60 min, erhält 1 h 20 min = 80 min, verwirft 120 min und begründet, dass die erste Fahrt 5 min länger dauert, ohne ihre Dauer durch das Umrechnen zu verändern.",
+            "expectedPerformanceEn": "The learner uses 1 h = 60 min, obtains 1 h 20 min = 80 min, rejects 120 min, and explains that the first journey lasts 5 min longer without conversion changing its duration.",
+            "understandingFocusDe": "Die nichtdezimale Zeitbeziehung und die gemischte Schreibweise verlangen einen eigenständigen Transfer: Einheitenverhältnis, Werterhaltung und Vergleich in gemeinsamer Einheit bleiben maßgeblich.",
+            "understandingFocusEn": "The non-decimal time relationship and mixed-unit notation require independent transfer: the unit relationship, unchanged quantity, and comparison in a common unit remain decisive."
+          }
+        ]
+      }
+    }
+  ]
+}

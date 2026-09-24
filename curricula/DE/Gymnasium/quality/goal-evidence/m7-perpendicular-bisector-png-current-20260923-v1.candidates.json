@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-p-v2-m7-perpendicular-bisector-png-current-20260923-v1",
+  "reviewedAt": "2026-09-23T17:02:00.000Z",
+  "reviewer": "codex-math-m7-perpendicular-bisector-positive-evidence-review-20260923",
+  "goals": [
+    {
+      "goalId": "34200b88-c616-58f6-aa03-efb9fd766f88",
+      "reason": "Das aktuelle PNG zeigt im Original nur ein symmetrisches Beispiel mit Mittelpunkt M, rechtem Winkel bei M und PA = PB; es zeigt weder die vollständige Gerade noch die Konstruktionsschritte. Deshalb verlangen die Aufgaben ausdrücklich eigene, neue Konstruktionen mit Zirkel und Geodreieck sowie eine unabhängige Begründung der gesamten Ortslinie. Der alte Koordinatenfall war zwar korrekt gerechnet, prüfte aber zusätzlich eine nicht zum Ziel gehörende Distanzformel und ersetzte die Geodreieck-Leistung nicht. Aktueller bildgebundener P-v2-KI-Kandidat; keine menschliche Freigabe und keine Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "compass-construction",
+            "essentialUnderstandingDe": "Bei einer nicht entarteten Strecke liefern gleiche Zirkelradien größer als die halbe Streckenlänge zwei Schnittpunkte der Bögen; ihre ganze Verbindungsgerade ist die Mittelsenkrechte.",
+            "essentialUnderstandingEn": "For a non-degenerate segment, equal compass radii greater than half the segment length produce two arc intersections; the entire line through them is the perpendicular bisector.",
+            "observablePerformanceDe": "Die lernende Person wählt und begründet den Radius, zeichnet mit dem Zirkel beide Bogenschnittpunkte und deren ganze Verbindungsgerade und prüft Mittelpunkt und rechten Winkel.",
+            "observablePerformanceEn": "The learner selects and justifies the radius, draws both arc intersections with a compass and the entire line through them, and checks the midpoint and right angle."
+          },
+          {
+            "id": "set-square-construction",
+            "essentialUnderstandingDe": "Mit dem Geodreieck wird zuerst der Mittelpunkt der Strecke bestimmt und dann durch ihn die ganze Senkrechte zur Strecke gezeichnet; bloß eine kurze Lotstrecke ist nicht die ganze Ortslinie.",
+            "essentialUnderstandingEn": "With a set square, the midpoint of the segment is found first and then the entire perpendicular line through it is drawn; a short perpendicular segment alone is not the whole locus.",
+            "observablePerformanceDe": "Die lernende Person markiert bei einer anders liegenden Strecke den Mittelpunkt mit dem Geodreieck, konstruiert dort die Senkrechte als Gerade und kontrolliert beide Bedingungen.",
+            "observablePerformanceEn": "For a differently oriented segment, the learner marks its midpoint with a set square, constructs the perpendicular there as a line, and checks both conditions."
+          },
+          {
+            "id": "equal-distance-locus",
+            "essentialUnderstandingDe": "Genau die Punkte der Mittelsenkrechten sind von beiden Endpunkten gleich weit entfernt; bei verschiedenen Endpunkten gilt auch der Rückschluss von gleichen Abständen auf die Zugehörigkeit zur ganzen Geraden.",
+            "essentialUnderstandingEn": "Exactly the points on the perpendicular bisector are equidistant from both endpoints; for distinct endpoints, the converse also identifies points on the entire line.",
+            "observablePerformanceDe": "Die lernende Person begründet gleiche Endpunktabstände an einem frischen Punkt und beschreibt bei einer neuen Ortslinienfrage die ganze Gerade statt nur eines einzelnen Punkts.",
+            "observablePerformanceEn": "The learner justifies equal endpoint distances for a fresh point and describes the entire line, rather than a single point, in a new locus problem."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["compass-construction", "set-square-construction", "equal-distance-locus"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {"id": "segment-orientation", "textDe": "schräge, fast senkrechte oder anders orientierte Strecke", "textEn": "oblique, nearly vertical, or differently oriented segment"},
+          {"id": "construction-tool", "textDe": "Zirkelkonstruktion oder Geodreieckkonstruktion, beide verpflichtend", "textEn": "compass or set-square construction, both required"},
+          {"id": "reasoning-direction", "textDe": "Konstruktion begründen oder von gleichen Abständen auf die Ortslinie schließen", "textEn": "justify a construction or infer the locus from equal distances"}
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "oblique-compass-construction",
+            "taskDemandDe": "Konstruiere zu einer nur textlich vorgegebenen, schräg liegenden Strecke AB der Länge 7 cm mit dem Zirkel die ganze Mittelsenkrechte. Begründe die Radiuswahl und warum die Gerade durch beide Bogenschnittpunkte stimmt.",
+            "taskDemandEn": "For a verbally specified oblique 7 cm segment AB, construct its entire perpendicular bisector with a compass. Justify the radius choice and why the line through both arc intersections is correct.",
+            "expectedPerformanceDe": "Die lernende Person wählt denselben Radius über 3,5 cm um A und B, zeichnet zwei Bogenschnittpunkte und deren ganze Verbindungsgerade und prüft, dass diese AB im Mittelpunkt rechtwinklig schneidet und ihre Punkte zu A und B gleiche Abstände haben.",
+            "expectedPerformanceEn": "The learner uses the same radius greater than 3.5 cm about A and B, draws two arc intersections and the entire line through them, and checks that it meets AB perpendicularly at its midpoint and that its points are equidistant from A and B.",
+            "understandingFocusDe": "Eigenständige Zirkelkonstruktion und Begründung der Konstruktionsidee ohne Bildvorlage.",
+            "understandingFocusEn": "Independent compass construction and justification without an image template."
+          },
+          {
+            "id": "near-vertical-set-square-construction",
+            "taskDemandDe": "Zeichne eine fast senkrecht liegende 6-cm-Strecke CD. Konstruiere ihre ganze Mittelsenkrechte mit dem Geodreieck. Wähle einen neuen Punkt X auf dieser Geraden, der nicht der Mittelpunkt M ist, und begründe ohne Ablesen aus einem vorgegebenen Bild, warum XC = XD gilt.",
+            "taskDemandEn": "Draw a nearly vertical 6 cm segment CD. Construct its entire perpendicular bisector with a set square. Choose a new point X on that line other than the midpoint M and justify, without reading from a supplied image, why XC = XD.",
+            "expectedPerformanceDe": "Die lernende Person markiert den Mittelpunkt bei 3 cm, zeichnet dort mit dem Geodreieck die ganze Senkrechte und erläutert an den rechtwinkligen Dreiecken CMX und DMX: CM = DM und MX ist gemeinsam, also XC = XD.",
+            "expectedPerformanceEn": "The learner marks the midpoint at 3 cm, uses the set square to draw the entire perpendicular there, and explains using right triangles CMX and DMX: CM = DM and MX is common, hence XC = XD.",
+            "understandingFocusDe": "Unabhängige zweite Konstruktionsmethode und Transfer der Gleichabständigkeit auf eine neue Lage.",
+            "understandingFocusEn": "Independent second construction method and transfer of equidistance to a new orientation."
+          },
+          {
+            "id": "two-stations-locus-converse",
+            "taskDemandDe": "Zwei verschiedene Messstationen A und B liegen 12 km auseinander. Beschreibe alle Orte, die von beiden gleich weit entfernt sind, und begründe sowohl die Richtung von der Mittelsenkrechten zu gleichen Abständen als auch den Rückschluss.",
+            "taskDemandEn": "Two distinct monitoring stations A and B are 12 km apart. Describe every location equidistant from both, and justify both the implication from the perpendicular bisector to equal distances and its converse.",
+            "expectedPerformanceDe": "Die lernende Person nennt die ganze Mittelsenkrechte von AB, nicht nur einen Beispielpunkt. Vorwärts begründet sie gleiche Abstände durch kongruente Dreiecke an der Senkrechten durch den Mittelpunkt. Rückwärts erkennt sie bei einem Punkt abseits von AB das gleichschenklige Dreieck mit Basis AB, dessen Symmetrieachse durch den Mittelpunkt verläuft; der Mittelpunkt selbst gehört ebenfalls zur Ortslinie.",
+            "expectedPerformanceEn": "The learner identifies the entire perpendicular bisector of AB, not merely one example point. In the forward direction, they justify equal distances using congruent triangles at the perpendicular through the midpoint. Conversely, for a point off AB they recognize an isosceles triangle with base AB whose symmetry axis passes through the midpoint; the midpoint itself also belongs to the locus.",
+            "understandingFocusDe": "Eigenständiger Ortslinien-Transfer mit Begründung der Umkehrung ohne PNG-Vorlage.",
+            "understandingFocusEn": "Independent locus transfer with converse reasoning and no PNG template."
+          }
+        ]
+      }
+    }
+  ]
+}

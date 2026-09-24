@@ -1,0 +1,68 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-run-a-1",
+  "campaignId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-a",
+  "roundId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-first-pass-a",
+  "batchId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:3ee20e49cad94de19aca04c551c77096d57c278c99f556dc68e851ad4a03a233",
+  "bundleFingerprint": "sha256:92f4923c57a7c35e49067b79dc8c08c4b77ab7c1335a43bfc3b7c44e6f317f90",
+  "bookDigest": "sha256:a26ee77ec1aea6bb314c4bba46e9fcb8133b9dcd23edfd6e7c7a9c876ef291fe",
+  "provider": "OpenAI",
+  "model": "Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:3c1c7638553f35f228ae9f03031065b8676fc4a60f73c4c60a0f4f080567aa96",
+  "generationParametersFingerprint": "sha256:fffc491ecf67669b7d307053d4956b11d68409beab39c9eb8e9aa671ba613e4d",
+  "independenceGroupId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "baf7276f-60a0-4d96-b959-d63acfb929de",
+    "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+    "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+    "6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
+    "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+    "5f90df42-8a71-534d-b995-b8f7dcaf1661",
+    "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+    "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+    "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+    "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+    "985d5529-a586-50eb-bd7f-2db2be8906d1"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:ae4d7565a3e8766e9c8831dbf583763ee14cc31f69373b843de865f0518b4abe"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:6975bc134262c886360c5b320d89acb078f0bb44649fde3444ac07c248d54c26"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:0924277aae140bc604243da686120db78053a89fc49ef6b6fd0e9acf2e3e0c84"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:37df6355d28980fa36239890b49dcb560bdca77aa0b6d80348d7f75276463d7b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:3c1c7638553f35f228ae9f03031065b8676fc4a60f73c4c60a0f4f080567aa96"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:3ee20e49cad94de19aca04c551c77096d57c278c99f556dc68e851ad4a03a233"
+    }
+  ],
+  "startedAt": "2026-09-23T23:51:24.751Z",
+  "completedAt": "2026-09-23T23:51:24.751Z",
+  "status": "completed",
+  "outputDigest": "sha256:2336713de9ba18346924e208c28814a925217c7fbe24f58cca452424db6b15c6",
+  "toolchainVersion": "skillpilot-goal-description-review-v2"
+}

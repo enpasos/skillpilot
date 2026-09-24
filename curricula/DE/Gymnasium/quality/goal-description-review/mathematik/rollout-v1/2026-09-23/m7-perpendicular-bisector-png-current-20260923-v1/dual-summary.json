@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b60188593b5d77e1d2138711d7494e831b761ab242cb5b9faddc492c10ec2c20",
+  "reviewInputFingerprint": "sha256:1e407c27bad94052fafa09ec739d8ffbe586d824f57432c1a346f9abef4e207a",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-perpendicular-bisector-png-current-20260923-v1-a",
+      "roundId": "mathematik-m7-perpendicular-bisector-png-current-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-perpendicular-bisector-png-current-20260923-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-perpendicular-bisector-png-current-20260923-v1-a.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-perpendicular-bisector-png-current-20260923-v1-b",
+      "roundId": "mathematik-m7-perpendicular-bisector-png-current-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-perpendicular-bisector-png-current-20260923-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-perpendicular-bisector-png-current-20260923-v1-b.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [
+      "openai::Codex subagent (runtime model ID not exposed)::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "34200b88-c616-58f6-aa03-efb9fd766f88",
+      "firstRecordId": "mathematik-m7-perpendicular-bisector-png-current-20260923-v1-a.run-001.001",
+      "secondRecordId": "mathematik-m7-perpendicular-bisector-png-current-20260923-v1-b.run-001.001",
+      "firstRunId": "mathematik-m7-perpendicular-bisector-png-current-20260923-v1-a.run-001",
+      "secondRunId": "mathematik-m7-perpendicular-bisector-png-current-20260923-v1-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

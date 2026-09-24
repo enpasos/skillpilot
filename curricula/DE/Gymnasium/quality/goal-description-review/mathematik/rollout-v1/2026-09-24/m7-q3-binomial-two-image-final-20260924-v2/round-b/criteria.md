@@ -1,0 +1,9 @@
+# Mathematik Q3: unabhängige finale D-v2-Prüfung zweier Binomialziele
+
+Prüfe die **aktuellen** DE/EN-Zieltexte der beiden Q3-Ziele eigenständig nach dem gemeinsamen D-v2-Prompt. Nutze das hessische KCGO Mathematik 2024, Q3.2, die vollständigen neu gerenderten Zielseiten, direkte Voraussetzungen und Nachfolger, die aktuellen Original-PNGs und 360-px-Ansichten sowie die bildgebundenen positiven P-v2-Fälle. Frühere D-Entscheidungen sind weder Beleg noch Vorgabe; ein grüner Hash-Check ersetzt kein fachliches Urteil.
+
+Bei `9b6f4d7d…` verlange die in der Quelle genannte kombinatorische und probabilistische Begründung der Binomialformel an einem passenden Bernoulli-Ketten-Beispiel. Der aktuelle Text beschreibt die Anzahl der Trefferpositionen und die Wahrscheinlichkeit einer festen Folge in Prosa. Prüfe, ob dies in DE und EN gleichwertig und auf der **ganzen Seite** lesbar ist und die Formel nicht in eine bloße Rechenanweisung verengt. Das Bild zeigt nur vier faire, unabhängige Würfe mit sechs Mustern für genau zweimal Kopf und `1/16` je Folge; der aktuelle P-v2-Vertrag verlangt zwei eigenständige Leistungen mit `p=0,3` beziehungsweise `p=0,8`.
+
+Bei `aa00edfa…` prüfe Punkt-, Intervall- und kumulierte Wahrscheinlichkeiten sowie Kontextdeutung gegen den Quelltext zu Summenzeichen und digitalen Werkzeugen. Das Bild markiert Ergebniszahlen bei vier fairen Münzwürfen, keine Histogrammbalken: `6/16`, `10/16`, `11/16`. Fairness ist sichtbar, Unabhängigkeit steht nicht ausdrücklich im Bild; die Beschreibung setzt eine binomialverteilte Zufallsgröße voraus. Der aktuelle P-v2-Vertrag verlangt andere Ereignisgrenzen bei `n=5,p=0,4` und einen unabhängigen Defekt-Transfer. Behandle Bilder als Lehrstütze, nicht als Leistungsnachweis.
+
+Jede KEEP-, REVISE-, SPLIT_REVIEW- oder BLOCK-Entscheidung braucht konkrete fachliche Belege und sechs bilinguale Verständnis-, Leistungs- und Transferfelder. Resultate bleiben KI-Kandidaten ohne menschliche Freigabe.

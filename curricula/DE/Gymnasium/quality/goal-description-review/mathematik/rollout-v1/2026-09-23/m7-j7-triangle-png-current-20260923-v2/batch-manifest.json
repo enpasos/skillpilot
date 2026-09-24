@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-j7-triangle-png-current-20260923-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-j7-triangle-png-current-20260923-v2.config.json",
+  "configDigest": "sha256:342d8ac33e04f719155105da11656546ce7f3e5f8f0da7b2bf688b66fb1b2891",
+  "goalIds": [
+    "3017e774-8d9f-5129-828f-7684db5afc1e",
+    "0f6c1df6-0e30-54ae-8098-e9422833ba80"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:4d1a1d3951adf755bc603b192f4e1e6a30492c6e1a0dac4bcc9f389a3a09bab7"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:bffd2c36c4a70f7e62430abbe57ac6ba1ec76dbad7c1f6432ea0dcceb8b50248",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:6184d3061f3e1a7982b17edfc16ea5a70a0ce71464877274bc21b7a5334a1fb2",
+    "reviewInputFingerprint": "sha256:81da2bbb3553c8e34aa26252495cfc726699b2b52fca76f6bca5f6cac38df5f4",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-j7-triangle-png-current-20260923-v2-a",
+        "campaignDigest": "sha256:85b5288f3d500bc5f1d8ed1a32dc817b43846a4a9628ca3cf82b28d6d05bd963",
+        "roundId": "mathematik-m7-j7-triangle-png-current-20260923-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-j7-triangle-png-current-20260923-v2-independent-a",
+        "batchId": "mathematik-m7-j7-triangle-png-current-20260923-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:93e4e8de802b3546ba848ce64776858bfd9690c0a387ebb4e7a29cb4d2a6e965"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-j7-triangle-png-current-20260923-v2-b",
+        "campaignDigest": "sha256:64a6af4487371799f9f22d29d2cf78367f7a2b3320a0c920f57fa457c9410d56",
+        "roundId": "mathematik-m7-j7-triangle-png-current-20260923-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-j7-triangle-png-current-20260923-v2-independent-b",
+        "batchId": "mathematik-m7-j7-triangle-png-current-20260923-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:cd9c8b905af139cbd92b7f126779ee4494e0085607609cd2dd1e1ee8025791cd"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

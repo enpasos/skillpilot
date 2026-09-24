@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-09-23T12:53:56.388Z
+Generated: 2026-09-24T03:48:29.953Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -299,5 +299,5 @@ Weitere 200 Eintraege stehen in der JSON-Begleitdatei.
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/public/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-09-23T12:53:28.246Z
+- Runtime index generated: 2026-09-24T03:47:46.744Z
 
