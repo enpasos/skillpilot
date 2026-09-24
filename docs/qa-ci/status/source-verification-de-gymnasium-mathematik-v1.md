@@ -78,7 +78,7 @@ Reviewer, Zeitstempel und Begründung sind für jede abgeschlossene Entscheidung
 
 ## Evidenzbindung und technische Grenze
 
-- Profil: `contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json` (`sha256:56389b264ced92c901a5880a8d4389294766bee444bafabdb9e3ab7832f19cb7`)
+- Profil: `contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json` (`sha256:05f85648c8ebe28cfe0e932cec54ca284e522764db71cff90ac2c51a99c70789`)
 - Source-Extraction-Dateien: 31
 - Source-Dokument-Referenzen: 55 auf 49 unterschiedliche PDF-Pfade
 - PDF-Projektions-Metadatensätze: 9
