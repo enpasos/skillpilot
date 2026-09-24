@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import {
   existsSync,
@@ -565,6 +566,45 @@ expectOutlinePreconditionFailure(
 
 const html = renderGoalBookHtml(model, renderOptions)
 
+const mathDescription = 'Die lernende Person kann Funktionen der Form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$ und $\\cos(b\\cdot(x-c))$ integrieren.'
+const mathTitle = 'Funktionen $f(x)=a\\cdot b^x+c$ <script>alert(1)</script>'
+const mathModel = {
+  ...model,
+  pages: [{
+    ...model.pages[0],
+    title: mathTitle,
+    description: mathDescription,
+  }, {
+    ...model.pages[1],
+    requires: [{ ...model.pages[1].requires[0], title: mathTitle }],
+  }],
+} satisfies GoalBookModel
+const mathHtml = renderGoalBookHtml(mathModel, renderOptions)
+assert.match(mathHtml, /<span class="katex"><span class="katex-mathml"><math/u)
+assert.match(mathHtml, /<span class="katex-html" aria-hidden="true">/u)
+assert.equal((mathHtml.match(/class="katex"/gu) ?? []).length, 5, 'title, description, and reference formulas are typeset')
+assert.doesNotMatch(mathHtml, /\$e\^\{ax\+b\}\$|\$f\(x\)=/u, 'TeX delimiters are absent from visible book copy')
+assert.match(mathHtml, /font-src data:/u, 'formula fonts are permitted only as embedded data')
+assert.match(mathHtml, /@font-face[^}]*src:url\(data:font\/woff2;base64,[A-Za-z0-9+/=]+\)/u)
+assert.doesNotMatch(mathHtml, /url\(fonts\/|src:url\(https?:|@import|<link[\s>]|<script[\s>]/iu)
+assert.match(mathHtml, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/u, 'ordinary title text stays escaped')
+assert.throws(
+  () => renderGoalBookHtml({
+    ...mathModel,
+    pages: [{ ...mathModel.pages[0], description: 'Unvollständig $e^{ax+b}' }, mathModel.pages[1]],
+  }, renderOptions),
+  new RegExp(`Goal ${GOAL_A} description has an unclosed TeX delimiter`, 'u'),
+  'a malformed math delimiter fails with its goal and field',
+)
+assert.throws(
+  () => renderGoalBookHtml({
+    ...mathModel,
+    pages: [{ ...mathModel.pages[0], description: 'Ungültig $\\notacommand$' }, mathModel.pages[1]],
+  }, renderOptions),
+  new RegExp(`Goal ${GOAL_A} description contains invalid TeX`, 'u'),
+  'an unsupported math command cannot silently leak as raw TeX',
+)
+
 assert.equal(
   html.match(/<article class="goal-page"/gu)?.length,
   model.pages.length,
@@ -1045,11 +1085,16 @@ const runChromiumSmoke = async (required: boolean) => {
       ...model,
       pages: [{
         ...model.pages[0],
+        title: mathModel.pages[0].title,
+        description: mathDescription,
         visualization: {
           ...model.pages[0].visualization!,
           url: publicUrl,
         },
-      }, model.pages[1]],
+      }, {
+        ...model.pages[1],
+        requires: mathModel.pages[1].requires,
+      }],
     } as GoalBookModel
     const localRenderOptions = {
       feedbackBaseUrl: renderOptions.feedbackBaseUrl,
@@ -1181,6 +1226,15 @@ const runChromiumSmoke = async (required: boolean) => {
     const pdf = readFileSync(pdfPath)
     assert.ok(pdf.length > 1_000, 'Chromium produces a non-empty PDF')
     assert.equal(pdf.subarray(0, 5).toString('ascii'), '%PDF-', 'output has a PDF header')
+    const extractedText = execFileSync('pdftotext', ['-layout', pdfPath, '-'], { encoding: 'utf8' })
+    assert.doesNotMatch(extractedText, /\$e\^\{ax\+b\}\$|\\sin\(|\\cos\(/u, 'PDF text never shows raw TeX')
+    assert.match(extractedText, /Funktionen der Form/u)
+    const embeddedFonts = execFileSync('pdffonts', [pdfPath], { encoding: 'utf8' })
+    assert.match(
+      embeddedFonts,
+      /KaTeX_Main-Regular\s+CID TrueType\s+Identity-H\s+yes\s+yes\s+yes/u,
+      'the actual PDF embeds the local math font instead of relying on a substitute',
+    )
     assert.equal(pdfManifest.pageCount, localAssetModel.pages.length)
     assert.equal(pdfManifest.goalPageCount, localAssetModel.pages.length)
     assert.equal(

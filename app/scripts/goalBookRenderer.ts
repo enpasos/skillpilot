@@ -1,8 +1,10 @@
 import { execFile } from 'node:child_process'
 import { createHash } from 'node:crypto'
+import { readFileSync } from 'node:fs'
 import { mkdtemp, mkdir, readFile, realpath, rename, rm, writeFile } from 'node:fs/promises'
 import { basename, dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { promisify } from 'node:util'
+import katex from 'katex'
 import type { Browser, Page } from 'playwright'
 import {
   GOAL_BOOK_MODEL_SCHEMA_VERSION,
@@ -448,6 +450,82 @@ const escapeHtml = (value: string) => value
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#39;')
 
+// Publication HTML is self-contained. Embed the packaged WOFF2 faces rather
+// than letting Chromium silently substitute fonts or fetch KaTeX assets.
+const goalBookKatexStyles = () => {
+  const cssPath = new URL('../node_modules/katex/dist/katex.min.css', import.meta.url)
+  const css = readFileSync(cssPath, 'utf8')
+  let fontCount = 0
+  const embedded = css.replace(
+    /src:url\(fonts\/([A-Za-z0-9_-]+\.woff2)\) format\("woff2"\),url\(fonts\/[A-Za-z0-9_-]+\.woff\) format\("woff"\),url\(fonts\/[A-Za-z0-9_-]+\.ttf\) format\("truetype"\)/gu,
+    (_match, filename: string) => {
+      fontCount += 1
+      const font = readFileSync(new URL(`../node_modules/katex/dist/fonts/${filename}`, import.meta.url))
+      return `src:url(data:font/woff2;base64,${font.toString('base64')}) format("woff2")`
+    },
+  )
+  if (fontCount === 0 || /url\((?!data:)/u.test(embedded)) {
+    throw new Error('Goal-book KaTeX CSS must contain only embedded WOFF2 fonts')
+  }
+  return embedded
+}
+
+let embeddedKatexStyles: string | null = null
+const katexStyles = () => (embeddedKatexStyles ??= goalBookKatexStyles())
+
+type MathDelimiter = { open: string; close: string; displayMode: boolean }
+const MATH_DELIMITERS: readonly MathDelimiter[] = [
+  { open: '$$', close: '$$', displayMode: true },
+  { open: '$', close: '$', displayMode: false },
+  { open: '\\[', close: '\\]', displayMode: true },
+  { open: '\\(', close: '\\)', displayMode: false },
+]
+
+const isEscapedAt = (value: string, index: number) => {
+  let slashes = 0
+  for (let cursor = index - 1; cursor >= 0 && value[cursor] === '\\'; cursor -= 1) slashes += 1
+  return slashes % 2 === 1
+}
+
+const findUnescaped = (value: string, delimiter: string, start: number): number => {
+  let index = value.indexOf(delimiter, start)
+  while (index >= 0 && isEscapedAt(value, index)) index = value.indexOf(delimiter, index + 1)
+  return index
+}
+
+const renderMathText = (value: string, label: string): string => {
+  let rendered = ''
+  let position = 0
+  while (position < value.length) {
+    const next = MATH_DELIMITERS
+      .map((delimiter) => ({ delimiter, index: findUnescaped(value, delimiter.open, position) }))
+      .filter(({ index }) => index >= 0)
+      .sort((left, right) => left.index - right.index || right.delimiter.open.length - left.delimiter.open.length)[0]
+    if (!next) break
+    const { delimiter, index } = next
+    const start = index + delimiter.open.length
+    const end = findUnescaped(value, delimiter.close, start)
+    if (end < 0) {
+      throw new Error(`${label} has an unclosed TeX delimiter ${delimiter.open}`)
+    }
+    const expression = value.slice(start, end)
+    if (expression.trim() === '') throw new Error(`${label} contains an empty TeX expression`)
+    rendered += escapeHtml(value.slice(position, index))
+    try {
+      rendered += katex.renderToString(expression, {
+        displayMode: delimiter.displayMode,
+        output: 'htmlAndMathml',
+        throwOnError: true,
+        trust: false,
+      })
+    } catch (error) {
+      throw new Error(`${label} contains invalid TeX: ${error instanceof Error ? error.message : String(error)}`)
+    }
+    position = end + delimiter.close.length
+  }
+  return rendered + escapeHtml(value.slice(position))
+}
+
 const renderBookmarkSafeChapterLabel = (value: string) => (
   value.split(' ').map(escapeHtml).join('&#160;<wbr>')
 )
@@ -805,7 +883,7 @@ const referenceList = (
     const pageLabel = reference.pageNumber === undefined
       ? ''
       : `<span class="reference-page">S. ${reference.pageNumber}</span>`
-    return `<li><a href="#${escapeHtml(reference.anchor)}"><span>${escapeHtml(reference.title)}</span><code>${escapeHtml(reference.goalId)}</code>${pageLabel}</a></li>`
+    return `<li><a href="#${escapeHtml(reference.anchor)}"><span>${renderMathText(reference.title, `Goal ${reference.goalId} reference title`)}</span><code>${escapeHtml(reference.goalId)}</code>${pageLabel}</a></li>`
   }).join('')
   if (items.length === 0) {
     return `<p class="empty-reference-list">${escapeHtml(copy.none)}</p>`
@@ -826,8 +904,8 @@ const externalReferenceList = (
       <p class="section-heading section-heading--small" id="${escapeHtml(headingId)}">${escapeHtml(label)}</p>
       <ul>${references.map((reference) => (
         `<li>${reference.canonicalUrl
-          ? `<a href="${escapeHtml(reference.canonicalUrl)}" rel="noreferrer noopener"><span>${escapeHtml(reference.title)}</span> <code>${escapeHtml(reference.goalId)}</code></a>`
-          : `<span>${escapeHtml(reference.title)}</span> <code>${escapeHtml(reference.goalId)}</code>`}</li>`
+          ? `<a href="${escapeHtml(reference.canonicalUrl)}" rel="noreferrer noopener"><span>${renderMathText(reference.title, `Goal ${reference.goalId} external reference title`)}</span> <code>${escapeHtml(reference.goalId)}</code></a>`
+          : `<span>${renderMathText(reference.title, `Goal ${reference.goalId} external reference title`)}</span> <code>${escapeHtml(reference.goalId)}</code>`}</li>`
       )).join('')}</ul>
     </section>`
 }
@@ -1017,7 +1095,7 @@ const renderPage = (
 
   return `<article class="goal-page${relationDensityClass}" id="${escapeHtml(page.anchor)}" data-goal-id="${escapeHtml(page.goalId)}" data-page-number="${page.pageNumber}" data-chapter-ids="${escapeHtml(page.chapterIds.join(' '))}" aria-labelledby="${escapeHtml(page.anchor)}-title">
     <header class="goal-header">
-      <h2 class="goal-title" id="${escapeHtml(page.anchor)}-title"><a class="goal-self-link" href="#${escapeHtml(page.anchor)}">${escapeHtml(page.title)}</a></h2>
+      <h2 class="goal-title" id="${escapeHtml(page.anchor)}-title"><a class="goal-self-link" href="#${escapeHtml(page.anchor)}">${renderMathText(page.title, `Goal ${page.goalId} title`)}</a></h2>
       <p class="goal-id"><span>${escapeHtml(copy.goalId)}</span> <code>${escapeHtml(page.goalId)}</code></p>
       ${breadcrumbs}
     </header>
@@ -1025,7 +1103,7 @@ const renderPage = (
       ${visualization}
       <section class="goal-description" aria-labelledby="${escapeHtml(page.anchor)}-description-heading">
         <p class="section-heading" id="${escapeHtml(page.anchor)}-description-heading">${escapeHtml(copy.description)}</p>
-        <p>${escapeHtml(page.description)}</p>
+        <p>${renderMathText(page.description, `Goal ${page.goalId} description`)}</p>
         ${applicabilitySummary}
       </section>
       <div class="goal-relations">
@@ -1568,6 +1646,7 @@ export const renderGoalBookHtml = (
   const pages = model.pages.map((page) => (
     renderPage(model, page, options, pagesByGoalId, copy, navigation)
   )).join('\n')
+  const hasMath = pages.includes('class="katex"')
   return `<!doctype html>
 <html lang="${escapeHtml(language)}">
 <head>
@@ -1575,9 +1654,10 @@ export const renderGoalBookHtml = (
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="skillpilot-goal-book-renderer" content="${GOAL_BOOK_RENDERER_VERSION}">
   <meta name="skillpilot-goal-book-print-profile" content="${escapeHtml(JSON.stringify(printDerivativePolicy))}">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src ${hasMath ? 'data:' : "'none'"}; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
   <title>${escapeHtml(model.book.title)}</title>
   <style>${STYLES}</style>
+  ${hasMath ? `<style>${katexStyles()}</style>` : ''}
 </head>
 <body>
 ${frontMatter}
