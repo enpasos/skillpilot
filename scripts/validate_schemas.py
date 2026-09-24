@@ -17,6 +17,11 @@ NON_LANDSCAPE_GOAL_COLLECTION_ROOTS = (
 GOAL_VISUALIZATION_REVIEW_ROOT = os.path.normpath(
     "curricula/DE/Gymnasium/quality/goal-visualization-review"
 )
+FORMULA_TEXT_NORMALIZATION_RECEIPT_PATH = os.path.join(
+    GOAL_VISUALIZATION_REVIEW_ROOT,
+    "math-m7-five-volume-png-20260924-v1",
+    "formula-text-normalization.json",
+)
 
 
 def validate_personalization_flow_contract(schema_path, schema):
@@ -526,6 +531,10 @@ def is_known_non_landscape_goal_collection(file_path, data):
         and data.get("batchId") == os.path.basename(os.path.dirname(normalized_path))
         and data.get("status") == "candidates_for_independent_review"
         and data.get("authority") == "ai_candidate_author"
+    ) or (
+        normalized_path == FORMULA_TEXT_NORMALIZATION_RECEIPT_PATH
+        and data.get("receiptId")
+        == "math-m7-five-volume-formula-text-normalization-20260924-v1"
     )
 
 
@@ -620,6 +629,12 @@ def validate_landscape_discovery_contract():
                 "authority": "ai_candidate_author",
             },
         ),
+        (
+            "math-m7-five-volume-png-20260924-v1/formula-text-normalization.json",
+            {
+                "receiptId": "math-m7-five-volume-formula-text-normalization-20260924-v1",
+            },
+        ),
     ]
     for relative_path, markers in review_formats:
         review_path = os.path.join(GOAL_VISUALIZATION_REVIEW_ROOT, relative_path)
@@ -660,6 +675,16 @@ def validate_landscape_discovery_contract():
         if "batchId" in markers:
             other_batch_path = review_path.replace(markers["batchId"], "other-batch")
             cases.append((other_batch_path, review, True))
+        if "receiptId" in markers:
+            other_batch_path = review_path.replace(
+                "math-m7-five-volume-png-20260924-v1", "other-batch"
+            )
+            cases.append((other_batch_path, review, True))
+            nested_copy_path = review_path.replace(
+                "math-m7-five-volume-png-20260924-v1/",
+                "math-m7-five-volume-png-20260924-v1/backup/",
+            )
+            cases.append((nested_copy_path, review, True))
 
     for file_path, data, expected in cases:
         if looks_like_runtime_landscape(file_path, data) is not expected:
