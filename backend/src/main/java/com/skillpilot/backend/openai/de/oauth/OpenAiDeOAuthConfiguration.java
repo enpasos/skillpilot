@@ -12,6 +12,12 @@ import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidatio
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.openai.de.OpenAiDeSecureModeValidation;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
+import com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidator;
+import com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeAuthorizationValidator;
+import com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeClientRequestFilter;
+import com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeRefreshTokenFamilies;
+import com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeFamilyAuthorizationService;
+import com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeFamilyRefreshAuthenticationProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.URI;
 import java.time.Duration;
@@ -31,6 +37,7 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -114,12 +121,13 @@ public class OpenAiDeOAuthConfiguration {
             JdbcOperations jdbcOperations,
             @Qualifier("openAiDeRegisteredClientRepository") RegisteredClientRepository registeredClients,
             OpenAiDeProperties properties,
-            AuthenticatedClientPolicy policy) {
+            AuthenticatedClientPolicy policy,
+            ObjectProvider<OpenAiNativeRefreshTokenFamilies> nativeFamilies) {
         var profiles = OpenAiDeClientProfiles.configurations(properties).stream()
                 .map(value -> new AuthenticatedClientPolicy.Profile(OpenAiDeClientProfiles.primaryProfileId(value),
                         policyFingerprint(value), normalizedClientAuthenticationMethod(value), isClientSecretBasic(value)))
                 .toList();
-        return policy.protectProfiles(new ProviderScopedOAuth2AuthorizationService(
+        OAuth2AuthorizationService protectedService = policy.protectProfiles(new ProviderScopedOAuth2AuthorizationService(
                 new JdbcOAuth2AuthorizationService(
                         jdbcOperations,
                         new JdbcRegisteredClientRepository(jdbcOperations)),
@@ -130,6 +138,25 @@ public class OpenAiDeOAuthConfiguration {
                             .filter(value -> value.getOauth().getClientId().trim().equals(client.getClientId()))
                             .map(OpenAiDeClientProfiles::primaryProfileId).findFirst().orElse(null);
                 });
+        return properties.getOauth().getNativeCimd().isEnabled()
+                ? new OpenAiNativeFamilyAuthorizationService(protectedService, registeredClients, nativeFamilies.getObject(),
+                        properties.getOauth().getNativeCimd().getClientId())
+                : protectedService;
+    }
+
+    @Bean
+    @ConditionalOnProperty(name = "skillpilot.openai.coach.v1.oauth.native-cimd.enabled", havingValue = "true")
+    @ConditionalOnMissingBean(OpenAiNativeCimdValidator.class)
+    OpenAiNativeCimdValidator openAiNativeCimdValidator(OpenAiDeProperties properties, ObjectMapper mapper) {
+        // Validate the exact resource-derived identity before any remote retrieval.
+        OpenAiDeClientProfiles.configurations(properties);
+        return OpenAiNativeCimdValidator.production(properties.getOauth().getNativeCimd().getClientId(), mapper);
+    }
+
+    @Bean
+    @ConditionalOnProperty(name = "skillpilot.openai.coach.v1.oauth.native-cimd.enabled", havingValue = "true")
+    OpenAiNativeRefreshTokenFamilies openAiNativeRefreshTokenFamilies(JdbcOperations jdbc, PlatformTransactionManager manager) {
+        return new OpenAiNativeRefreshTokenFamilies(jdbc, manager);
     }
 
     @Bean
@@ -415,6 +442,8 @@ public class OpenAiDeOAuthConfiguration {
             OpenAiDeCimdMetadataValidator.MetadataRetriever documentRetriever,
             AuthenticatedClientPolicy policy,
             OpenAiDeProperties properties,
+            ObjectProvider<OpenAiNativeCimdValidator> nativeCimd,
+            ObjectProvider<OpenAiNativeRefreshTokenFamilies> nativeFamilies,
             JdbcOperations jdbcOperations, PlatformTransactionManager transactionManager) throws Exception {
         org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer server =
                 new org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer();
@@ -434,46 +463,63 @@ public class OpenAiDeOAuthConfiguration {
                         .authorizationServerSettings(authorizationServerSettings)
                         .tokenGenerator(tokenGenerator)
                         .clientAuthentication(clientAuthentication -> {
-                            if (isPrivateKeyJwt(properties)) {
-                                OpenAiDeJwtClientAssertionValidator clientAssertionValidator =
-                                        clientAssertionValidatorProvider.getIfAvailable();
-                                if (clientAssertionValidator == null) {
-                                    throw new IllegalStateException(
-                                            "OpenAI Coach V1 private_key_jwt requires the client assertion validator.");
-                                }
-                                var decoderFactory = new OpenAiDeClientAssertionDecoderFactory(properties,
-                                        clientAssertionValidator, documentRetriever, Clock.systemUTC());
-                                clientAuthentication.authenticationProviders(providers ->
-                                        providers.stream()
-                                                .filter(JwtClientAssertionAuthenticationProvider.class::isInstance)
-                                                .map(JwtClientAssertionAuthenticationProvider.class::cast)
-                                                .forEach(provider ->
-                                                        provider.setJwtDecoderFactory(decoderFactory)));
-                            } else if (isPublicClient(properties)) {
-                                clientAuthentication
-                                        .authenticationConverters(converters -> {
-                                            converters.add(0, new OpenAiDePublicRefreshClientAuthenticationConverter());
-                                            converters.add(0, new OpenAiDePublicRevocationClientAuthenticationConverter());
-                                        })
-                                        .authenticationProviders(providers -> {
-                                            providers.add(0, new OpenAiDePublicRefreshClientAuthenticationProvider(
-                                                    registeredClients));
-                                            providers.add(0, new OpenAiDePublicRevocationClientAuthenticationProvider(
-                                                    registeredClients));
-                                        });
+                            boolean publicClientEnabled = isPublicClient(properties)
+                                    || properties.getOauth().getNativeCimd().isEnabled();
+                            if (publicClientEnabled) {
+                                String publicClientId = properties.getOauth().getNativeCimd().isEnabled()
+                                        ? properties.getOauth().getNativeCimd().getClientId()
+                                        : properties.getOauth().getClientId();
+                                clientAuthentication.authenticationConverters(converters -> {
+                                    converters.add(0, new OpenAiDePublicRefreshClientAuthenticationConverter(publicClientId));
+                                    converters.add(0, new OpenAiDePublicRevocationClientAuthenticationConverter(publicClientId));
+                                });
                             }
+                            // This configurer accepts one provider-list customizer. Keep the JWT
+                            // decoder and the public-client providers in the same callback.
+                            clientAuthentication.authenticationProviders(providers -> {
+                                if (isPrivateKeyJwt(properties)) {
+                                    OpenAiDeJwtClientAssertionValidator clientAssertionValidator =
+                                            clientAssertionValidatorProvider.getIfAvailable();
+                                    if (clientAssertionValidator == null) {
+                                        throw new IllegalStateException(
+                                                "OpenAI Coach V1 private_key_jwt requires the client assertion validator.");
+                                    }
+                                    var decoderFactory = new OpenAiDeClientAssertionDecoderFactory(properties,
+                                            clientAssertionValidator, documentRetriever, Clock.systemUTC());
+                                    providers.stream()
+                                            .filter(JwtClientAssertionAuthenticationProvider.class::isInstance)
+                                            .map(JwtClientAssertionAuthenticationProvider.class::cast)
+                                            .forEach(provider -> provider.setJwtDecoderFactory(decoderFactory));
+                                }
+                                if (publicClientEnabled) {
+                                    providers.add(0, new OpenAiDePublicRefreshClientAuthenticationProvider(registeredClients));
+                                    providers.add(0, new OpenAiDePublicRevocationClientAuthenticationProvider(registeredClients));
+                                }
+                            });
                         })
                         .tokenEndpoint(endpoint -> endpoint.authenticationProviders(providers -> {
                             for (int i = 0; i < providers.size(); i++) {
                                 if (providers.get(i) instanceof org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeAuthenticationProvider) {
                                     providers.set(i, new OAuthAuthorizationCodeExchangeGuard(providers.get(i),
                                             authorizationService, jdbcOperations, transactionManager));
+                                } else if (properties.getOauth().getNativeCimd().isEnabled()
+                                        && providers.get(i) instanceof org.springframework.security.oauth2.server.authorization.authentication.OAuth2RefreshTokenAuthenticationProvider) {
+                                    providers.set(i, new OpenAiNativeFamilyRefreshAuthenticationProvider(providers.get(i),
+                                            nativeFamilies.getObject(), properties.getOauth().getNativeCimd().getClientId()));
                                 }
                             }
                         }))
                         .tokenRevocationEndpoint(endpoint -> endpoint.authenticationProviders(providers ->
                                 OAuthTokenRevocationBoundary.restrict(providers, authorizationService)))
-                        .authorizationEndpoint(endpoint -> endpoint.consentPage(CONSENT_ENDPOINT)))
+                        .authorizationEndpoint(endpoint -> {
+                            endpoint.consentPage(CONSENT_ENDPOINT);
+                            if (properties.getOauth().getNativeCimd().isEnabled()) {
+                                endpoint.authenticationProviders(providers -> providers.stream()
+                                        .filter(org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationProvider.class::isInstance)
+                                        .map(org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationProvider.class::cast)
+                                        .forEach(provider -> provider.setAuthenticationValidator(new OpenAiNativeAuthorizationValidator(nativeCimd.getObject()))));
+                            }
+                        }))
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
                 .securityContext(context -> context.securityContextRepository(contextRepository))
                 .csrf(csrf -> csrf.ignoringRequestMatchers(endpointsMatcher))
@@ -507,6 +553,10 @@ public class OpenAiDeOAuthConfiguration {
                         chain.doFilter(request, response);
                     }
                 }, OpenAiDeOAuthResourceValidationFilter.class);
+        if (properties.getOauth().getNativeCimd().isEnabled()) {
+            http.addFilterBefore(new OpenAiNativeClientRequestFilter(properties.getOauth().getNativeCimd().getClientId()),
+                    OpenAiDeBindingAuthenticationFilter.class);
+        }
         return http.build();
     }
 
@@ -592,7 +642,13 @@ public class OpenAiDeOAuthConfiguration {
             throw new IllegalStateException(
                     "skillpilot.openai.coach.v1.oauth.redirect-uris must contain the callback shown in ChatGPT app management.");
         }
-        redirectUris.forEach(value -> requireHttpsUri(value, "OpenAI Coach V1 OAuth redirect URI"));
+        if (OpenAiDeClientProfiles.isNativeProfile(properties)) {
+            if (!redirectUris.equals(Set.of(OpenAiDeProperties.OAuth.NativeCimd.REDIRECT_URI))) {
+                throw new IllegalStateException("Native OpenAI callback must exactly match its resource-specific loopback pin.");
+            }
+        } else {
+            redirectUris.forEach(value -> requireHttpsUri(value, "OpenAI Coach V1 OAuth redirect URI"));
+        }
         String authenticationMethod = normalizedClientAuthenticationMethod(properties);
         if (!Set.of(
                         CLIENT_AUTH_NONE,

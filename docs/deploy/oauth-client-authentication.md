@@ -6,6 +6,12 @@ globale Pflicht zu ausschließlich vertraulichen Clients. Claude darf mit
 ChatGPT-JWT, Claude-Beta und vertrauliche Claude-Verbindungen werden unabhängig
 abgenommen. Herstellerantworten sperren nur die jeweils abhängige Funktion.
 
+**Ergänzung vom 24. September 2026:** Der Product Owner autorisiert den nativen
+ChatGPT-Desktop-Client mit CIMD und PKCE am bestehenden OpenAI-V1-Endpunkt.
+Für diesen Verbindungsversuch darf die Zertifikatsprüfung auf `observe` stehen.
+Konfiguration und konkreter Ablauf stehen im
+[nativen CIMD-Runbook](openai-native-cimd.md).
+
 **Implementiert → technisch getestet → mit echtem Host getestet → produktiv
 aktiviert** sind getrennte Ergebnisse. Lokale Tests und öffentliche Discovery
 sind keine neue Host-Abnahme. Veröffentlichte Pakete, historische Belege und
@@ -33,12 +39,13 @@ Die Namen sind interne SkillPilot-Profile, keine Herstellerparameter.
 | --- | --- | --- |
 | `chatgpt-cimd-jwt` | Exakte CIMD-Identität, ausschließlich `private_key_jwt` | Vorgesehene reale Installation, OAuth- und Lernbetrieb abgenommen; keine allgemeine OpenAI-Erlaubnis erforderlich |
 | `chatgpt-basic-transition` | Expliziter bestehender Client, `client_secret_basic` | Vorhandene sichere Verbindung erhalten; gesondertes Übergangsprofil, kein JWT-Fallback |
+| `chatgpt-native-cimd-public` | Exakte native CIMD-Identität, `none`, S256 PKCE und Loopback-Callback | Hochgeladenes Desktop-Plugin; eigene Host-Abnahme, derselbe MCP-Endpunkt und OAuth-Issuer |
 | `claude-cimd-public` | Exakter öffentlicher CIMD-Client, `none` und PKCE `S256` | Unabhängig abgenommenes Beta-Profil; keine zentrale Credential-Hinterlegung nötig |
 | `claude-custom-confidential` | Dedizierter Client, genau Basic oder Post | Kontrollierte eigene/Admin-Verbindung mit geschütztem Secret und echter Custom-Connector-Abnahme |
 | `claude-anthropic-held` | Separater dedizierter Client, genau Basic oder Post | Tatsächliche zentrale Hinterlegung durch Anthropic und Abnahme dieses Verteilungswegs |
 | `chatgpt-mtls` | Zusätzliche OpenAI-Transportprüfung, getrennt von OAuth | Positiver/negativer Transporttest; Claude bleibt unbeeinträchtigt |
 
-`none` beim öffentlichen Claude-Client bedeutet **keinen geheimen
+`none` bei den öffentlichen Claude- und nativen ChatGPT-Clients bedeutet **keinen geheimen
 Clientnachweis am Token-Endpunkt**, nicht frei zugänglichen MCP-Lernbetrieb.
 Nutzerautorisierung, Code/PKCE, Access-Token-Prüfung, Scopes, Audience und die
 unabhängige SkillPilot-Lernsession bleiben erforderlich. Der reguläre

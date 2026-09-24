@@ -8,6 +8,7 @@ This page groups deployment-facing operational documentation.
 - [Vorgehen für Beta-Test und ChatGPT-Veröffentlichung](claude-beta-chatgpt-release-strategy.md)
 - [Lernzielbücher: Build und Git-Historienbereinigung](goal-book-build-and-history-cleanup.md)
 - [ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover](openai-mcp-coach-v1.md)
+- [ChatGPT desktop plugin: native CIMD on the existing V1 endpoint](openai-native-cimd.md)
 - [OAuth-Clientauthentifizierung: profilweise Abnahme und Betrieb](oauth-client-authentication.md)
 - [OAuth: getrennte Hersteller-Arbeitspakete](oauth-provider-followups.md)
 - [SkillPilot Coach v1: Release, Rollback und Stilllegung](openai-plugin-v1-release.md)

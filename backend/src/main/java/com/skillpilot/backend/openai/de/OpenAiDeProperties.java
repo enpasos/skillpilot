@@ -271,11 +271,12 @@ public class OpenAiDeProperties {
         private String clientSecret = "";
         private List<String> redirectUris = new ArrayList<>();
         // The normal SkillPilot ChatGPT app is a pre-registered confidential
-        // client. Public-client mode must be selected explicitly in isolated
-        // compatibility tests and is rejected by secure production mode.
+        // client. The optional native CIMD client is a separate pinned public
+        // profile; it never changes this primary client's method.
         private String clientAuthenticationMethod = "client_secret_basic";
         private String authorizationPolicyVersion = "1";
         private final TransitionalBasic transitionalBasic = new TransitionalBasic();
+        private final NativeCimd nativeCimd = new NativeCimd();
         private String clientJwkSetUri = "";
         private String clientAssertionSigningAlgorithm = "RS256";
         private String clientAssertionAudience = "";
@@ -329,6 +330,22 @@ public class OpenAiDeProperties {
         public void setAuthorizationPolicyVersion(String value) { authorizationPolicyVersion = value; }
 
         public TransitionalBasic getTransitionalBasic() { return transitionalBasic; }
+        public NativeCimd getNativeCimd() { return nativeCimd; }
+
+        /** Native desktop is a distinct public OAuth client on the same protected resource. */
+        public static class NativeCimd {
+            public static final String CLIENT_ID = "https://chatgpt.com/oauth/codex/Su4_F3uWAhkS/client.json";
+            public static final String REDIRECT_URI = "http://127.0.0.1/callback/Su4_F3uWAhkS";
+            private boolean enabled;
+            private String clientId = CLIENT_ID;
+            private String authorizationPolicyVersion = "native-cimd-v1";
+            public boolean isEnabled() { return enabled; }
+            public void setEnabled(boolean value) { enabled = value; }
+            public String getClientId() { return clientId; }
+            public void setClientId(String value) { clientId = value; }
+            public String getAuthorizationPolicyVersion() { return authorizationPolicyVersion; }
+            public void setAuthorizationPolicyVersion(String value) { authorizationPolicyVersion = value; }
+        }
 
         /** Explicit, separate old connection during the CIMD migration; never a JWT fallback. */
         public static class TransitionalBasic {

@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { CurriculumDropdown } from './CurriculumDropdown'
 import { LearnerSetupStepCard } from './LearnerSetupStepCard'
+import { ChatGptTestStart } from './ChatGptTestStart'
 import { PersonalCurriculumEditor } from './PersonalCurriculumEditor'
 import { SkillpilotIdFilePasswordDialog } from './SkillpilotIdFilePasswordDialog'
 import { LearnerDataManagementDialog } from './LearnerDataManagementDialog'
@@ -49,6 +50,7 @@ import {
   isOpenAiMcpEligibilityDeclinedError,
   OpenAiMcpEligibilityDeclinedError,
 } from '../coachVariants/openAiMcp/providerEligibility'
+import { requestOpenAiMcpStart } from '../coachVariants/openAiMcp/request'
 import {
   getSafeClaudePluginSetupUrl,
   getSafeClaudeWebUrl,
@@ -117,6 +119,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const evaluatedCompletedSetupScopeRef = React.useRef('')
   // Use location (ensure import is added)
   const location = useLocation()
+  const chatGptTestRequested = new URLSearchParams(location.search).get('chatgptTest') === '1'
 
   React.useEffect(() => {
     const params = new URLSearchParams(location.search)
@@ -789,6 +792,22 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     } finally {
       setChatStartLoading(false)
     }
+  }
+
+  const prepareChatGptTest = async () => {
+    if (!chatGptTestRequested || !personalCurriculumReady) return null
+    const effectiveId = sanitizeSkillpilotId(skillpilotId)
+    const eligibilityLanguage = language.startsWith('en') ? 'en' : 'de'
+    if (!effectiveId || !confirmOpenAiMcpEligibility(eligibilityLanguage, effectiveId)) return null
+    const curriculum = persistLearnerStart(effectiveId)
+    if (!curriculum) return null
+    return requestOpenAiMcpStart({
+      skillpilotId: effectiveId,
+      language,
+      selectedCurriculum: curriculum,
+      client: 'chatgpt-integration-test',
+      providerEligibilityConfirmed: true,
+    })
   }
 
   const handleOpenChatGpt = async () => {
@@ -1516,6 +1535,13 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                           </button>
                         )}
                       </section>
+                      {chatGptTestRequested && personalCurriculumReady && (
+                        <ChatGptTestStart
+                          key={`${sanitizedLearnerId}:${selectedLandscapeId}:${language}`}
+                          language={language}
+                          onPrepare={prepareChatGptTest}
+                        />
+                      )}
                       <div>
                         <a
                           href={personalCurriculumReady ? learnerCockpitHref : undefined}

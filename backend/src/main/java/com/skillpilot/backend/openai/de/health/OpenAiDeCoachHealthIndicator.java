@@ -36,6 +36,12 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
     private final int expectedToolCount;
     private final Optional<AuthenticatedClientPolicy> authenticationPolicy;
     private final Optional<OpenAiDeCimdMetadataGate> metadataGate;
+    private Optional<com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidator> nativeMetadata = Optional.empty();
+
+    @Autowired
+    void nativeMetadata(org.springframework.beans.factory.ObjectProvider<com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidator> provider) {
+        nativeMetadata = Optional.ofNullable(provider.getIfAvailable());
+    }
 
     public OpenAiDeCoachHealthIndicator(
             OpenAiDeProperties properties,
@@ -161,6 +167,8 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
         health.withDetail("provider", "openai")
                 .withDetail("authenticationProfile", OpenAiDeClientProfiles.primaryProfileId(properties))
                 .withDetail("clientMetadataReady", clientMetadataReady)
+                .withDetail("nativeCimdEnabled", properties.getOauth().getNativeCimd().isEnabled())
+                .withDetail("nativeClientMetadataReady", nativeMetadata.map(value -> value.hasVerifiedMetadata()).orElse(false))
                 .withDetail("authenticationProfilesActive", profileStatus)
                 .withDetail("authenticationPolicyCompatible", authenticationPolicyCompatible)
                 .withDetail("localeBinding", "learning-session")

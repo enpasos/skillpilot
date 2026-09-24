@@ -137,6 +137,7 @@ def validate_authorization_server(
     document: Any,
     base_url: str,
     required_client_authentication_method: str | None = None,
+    require_native_cimd: bool = False,
 ) -> None:
     metadata = _require_object(document)
     base = _normalized_https_base_url(base_url)
@@ -166,32 +167,27 @@ def validate_authorization_server(
         {READ_SCOPE, WRITE_SCOPE, OFFLINE_SCOPE},
     )
 
-    token_authentication_methods = metadata.get(
-        "token_endpoint_auth_methods_supported"
+    token_authentication_methods = _require_unique_nonempty_strings(
+        metadata, "token_endpoint_auth_methods_supported"
     )
-    if token_authentication_methods not in (
-        ["client_secret_basic"],
-        ["none"],
-        ["private_key_jwt"],
-    ):
+    methods = set(token_authentication_methods)
+    if not methods.issubset({"client_secret_basic", "none", "private_key_jwt"}):
         raise MetadataValidationError(
-            "token_endpoint_auth_methods_supported must be exactly "
-            "['client_secret_basic'], ['none'] or ['private_key_jwt']"
+            "token_endpoint_auth_methods_supported contains an unsupported client method"
         )
     _require_exact_value(
         metadata,
         "revocation_endpoint_auth_methods_supported",
         token_authentication_methods,
     )
-    authentication_method = token_authentication_methods[0]
     if (
         required_client_authentication_method is not None
-        and authentication_method != required_client_authentication_method
+        and required_client_authentication_method not in methods
     ):
         raise MetadataValidationError(
             "token endpoint client authentication must be "
             f"{required_client_authentication_method!r}, "
-            f"got {authentication_method!r}"
+            f"got {token_authentication_methods!r}"
         )
 
     if "registration_endpoint" in metadata:
@@ -199,7 +195,12 @@ def validate_authorization_server(
             "registration_endpoint must be absent; open DCR is not supported"
         )
 
-    if authentication_method == "private_key_jwt":
+    if require_native_cimd or ("none" in methods and len(methods) > 1):
+        if "none" not in methods:
+            raise MetadataValidationError("native CIMD requires the public client method 'none'")
+        _require_exact_value(metadata, "client_id_metadata_document_supported", True)
+
+    if "private_key_jwt" in methods:
         _require_exact_value(
             metadata, "client_id_metadata_document_supported", True
         )
@@ -215,9 +216,11 @@ def validate_authorization_server(
                 "private_key_jwt requires supported asymmetric signing algorithms"
             )
     else:
-        if "client_id_metadata_document_supported" in metadata:
+        if "client_id_metadata_document_supported" in metadata and (
+            "none" not in methods or metadata["client_id_metadata_document_supported"] is not True
+        ):
             raise MetadataValidationError(
-                "non-CIMD client metadata must not advertise CIMD support"
+                "only a supported CIMD client profile may advertise CIMD support"
             )
         if "token_endpoint_auth_signing_alg_values_supported" in metadata:
             raise MetadataValidationError(
@@ -251,6 +254,8 @@ def _parse_arguments() -> argparse.Namespace:
         "--required-client-authentication-method",
         choices=("client_secret_basic", "none", "private_key_jwt"),
     )
+    parser.add_argument("--require-native-cimd", action="store_true",
+                        help="Require the additional public native CIMD client profile on the same issuer.")
     return parser.parse_args()
 
 
@@ -259,7 +264,7 @@ def main() -> int:
     try:
         document = json.load(sys.stdin)
         if arguments.kind == "protected-resource":
-            if arguments.required_client_authentication_method is not None:
+            if arguments.required_client_authentication_method is not None or arguments.require_native_cimd:
                 raise MetadataValidationError(
                     "client authentication applies only to authorization metadata"
                 )
@@ -282,6 +287,7 @@ def main() -> int:
                 document,
                 arguments.base_url,
                 arguments.required_client_authentication_method,
+                arguments.require_native_cimd,
             )
     except (json.JSONDecodeError, MetadataValidationError) as error:
         print(f"OAuth metadata validation failed: {error}", file=sys.stderr)

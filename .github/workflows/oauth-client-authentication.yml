@@ -80,6 +80,7 @@ jobs:
         run: >-
           ./gradlew test --console=plain
           --tests 'com.skillpilot.backend.openai.de.oauth.*Test'
+          --tests 'com.skillpilot.backend.openai.nativev1.oauth.*Test'
           --tests 'com.skillpilot.backend.openai.de.OpenAiDeSecureModeConfigurationTest'
           --tests 'com.skillpilot.backend.openai.de.health.OpenAiDeCoachHealthIndicatorTest'
           --tests 'com.skillpilot.backend.connectors.claude.v1.oauth.*Test'
@@ -110,6 +111,10 @@ jobs:
               'com.skillpilot.backend.openai.de.oauth.OpenAiDeClientAssertionDecoderFactoryTest',
               'com.skillpilot.backend.openai.de.oauth.OpenAiDePinnedJwkSourceTest',
               'com.skillpilot.backend.openai.de.oauth.OpenAiDePrivateKeyJwtFlowIntegrationTest',
+              'com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeOAuthFlowIntegrationTest',
+              'com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeClientProfilesTest',
+              'com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidatorTest',
+              'com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeRefreshTokenFamiliesTest',
               'com.skillpilot.backend.openai.de.oauth.OpenAiDeClientProfilesTest',
               'com.skillpilot.backend.openai.de.oauth.OpenAiDeCimdMetadataGateTest',
               'com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthLegacyClientCutoverTest',

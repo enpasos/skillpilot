@@ -34,7 +34,7 @@ const Fixture = () => {
   }
 
   return (
-    <MemoryRouter initialEntries={['/']}>
+    <MemoryRouter initialEntries={[`/${window.location.search}`]}>
       <LanguageProvider>
         <ThemeProvider>
           <SessionSetup

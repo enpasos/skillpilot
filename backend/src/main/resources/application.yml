@@ -159,6 +159,10 @@ skillpilot:
           client-assertion-clock-skew: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_CLOCK_SKEW:PT30S}
           client-assertion-max-lifetime: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_MAX_LIFETIME:PT5M}
           authorization-policy-version: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_AUTHORIZATION_POLICY_VERSION:1}
+          native-cimd:
+            enabled: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_ENABLED:false}
+            client-id: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_CLIENT_ID:https://chatgpt.com/oauth/codex/Su4_F3uWAhkS/client.json}
+            authorization-policy-version: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_AUTHORIZATION_POLICY_VERSION:native-cimd-v1}
           transitional-basic:
             enabled: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_ENABLED:false}
             authorization-policy-version: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_AUTHORIZATION_POLICY_VERSION:1}

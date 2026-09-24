@@ -68,6 +68,7 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",
         "skillpilot.openai.coach.v1.oauth.protected-resource-metadata=https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
         "skillpilot.openai.coach.v1.oauth.client-authentication-method=private_key_jwt",
+        "skillpilot.openai.coach.v1.oauth.native-cimd.enabled=true",
         "skillpilot.openai.coach.v1.oauth.client-id=https://chatgpt.com/oauth/test/client.json",
         "skillpilot.openai.coach.v1.oauth.client-jwk-set-uri=https://chatgpt.com/oauth/jwks.json",
         "skillpilot.openai.coach.v1.oauth.client-assertion-audience=https://skillpilot.test/api/openai/v1/oauth2/token",
@@ -99,7 +100,7 @@ class OpenAiDePrivateKeyJwtFlowIntegrationTest {
 
     @Test void privateJwtPkceRefreshReplayAndCutoverKeepLearnerMappingIndependent() throws Exception {
         var metadata = json.readTree(get(OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH).body());
-        assertThat(metadata.path("token_endpoint_auth_methods_supported")).hasSize(2);
+        assertThat(metadata.path("token_endpoint_auth_methods_supported")).hasSize(3);
         assertThat(metadata.path("token_endpoint_auth_methods_supported").get(0).asText()).isEqualTo("private_key_jwt");
         assertThat(metadata.has("registration_endpoint")).isFalse();
         String challenge = Base64.getUrlEncoder().withoutPadding().encodeToString(
@@ -149,6 +150,12 @@ class OpenAiDePrivateKeyJwtFlowIntegrationTest {
         String nextAccess = json.readTree(refreshed.body()).path("access_token").asText();
         String nextRefresh = json.readTree(refreshed.body()).path("refresh_token").asText();
         assertThat(nextRefresh).isNotEqualTo(refresh);
+        // The additional native public converter must not intercept hosted JWT revocation.
+        var revokeConsumed = post(OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
+                assertion(List.of(Map.entry("client_id", CLIENT), Map.entry("token", refresh)),
+                        jwt(AUDIENCE, UUID.randomUUID().toString())));
+        assertThat(revokeConsumed.statusCode()).withFailMessage(revokeConsumed.body()).isEqualTo(200);
+        assertThat(introspector.introspect(nextAccess)).isNotNull();
 
         // A database registration downgrade cannot reactivate either OAuth or MCP access.
         jdbc.update("UPDATE oauth2_registered_client SET client_authentication_methods = 'none' WHERE client_id = ?", CLIENT);

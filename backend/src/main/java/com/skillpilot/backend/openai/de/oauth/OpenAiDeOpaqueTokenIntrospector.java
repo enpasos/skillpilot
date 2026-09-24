@@ -124,7 +124,9 @@ public final class OpenAiDeOpaqueTokenIntrospector implements OpaqueTokenIntrosp
             String method = expectedClient.getClientAuthenticationMethods().iterator().next().getValue();
             attributes.put("client_authentication_method", method);
             attributes.put("client_profile", OpenAiDeOAuthConfiguration.CLIENT_AUTH_PRIVATE_KEY_JWT.equals(method)
-                    ? OpenAiDeClientProfiles.CIMD_JWT : OpenAiDeClientProfiles.BASIC_TRANSITION);
+                    ? OpenAiDeClientProfiles.CIMD_JWT : OpenAiDeOAuthConfiguration.CLIENT_AUTH_NONE.equals(method)
+                        && com.skillpilot.backend.openai.de.OpenAiDeProperties.OAuth.NativeCimd.CLIENT_ID.equals(expectedClient.getClientId())
+                            ? OpenAiDeClientProfiles.NATIVE_CIMD_PUBLIC : OpenAiDeClientProfiles.BASIC_TRANSITION);
         }
         attributes.put("scope", accessTokenScopes);
         attributes.put("aud", List.of(mcpUrl));

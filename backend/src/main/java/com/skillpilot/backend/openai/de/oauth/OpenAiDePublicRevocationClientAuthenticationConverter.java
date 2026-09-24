@@ -9,6 +9,11 @@ import org.springframework.security.web.authentication.AuthenticationConverter;
 import org.springframework.util.StringUtils;
 
 final class OpenAiDePublicRevocationClientAuthenticationConverter implements AuthenticationConverter {
+    private final String expectedClientId;
+
+    OpenAiDePublicRevocationClientAuthenticationConverter(String expectedClientId) {
+        this.expectedClientId = expectedClientId;
+    }
 
     static final String PUBLIC_REVOCATION_REQUEST = "skillpilot_openai_de_public_revocation_request";
 
@@ -19,7 +24,11 @@ final class OpenAiDePublicRevocationClientAuthenticationConverter implements Aut
             return null;
         }
         String clientId = request.getParameter("client_id");
-        if (!StringUtils.hasText(clientId)
+        if (request.getHeader("Authorization") != null
+                || request.getParameter("client_assertion") != null
+                || request.getParameter("client_assertion_type") != null
+                || !expectedClientId.equals(clientId)
+                || !StringUtils.hasText(clientId)
                 || request.getParameterValues("client_id") == null
                 || request.getParameterValues("client_id").length != 1
                 || StringUtils.hasText(request.getParameter("client_secret"))) {

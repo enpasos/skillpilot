@@ -11,6 +11,11 @@ import org.springframework.util.StringUtils;
 
 /** Recognizes refresh requests from the configured public ChatGPT client. */
 final class OpenAiDePublicRefreshClientAuthenticationConverter implements AuthenticationConverter {
+    private final String expectedClientId;
+
+    OpenAiDePublicRefreshClientAuthenticationConverter(String expectedClientId) {
+        this.expectedClientId = expectedClientId;
+    }
 
     @Override
     public Authentication convert(HttpServletRequest request) {
@@ -20,7 +25,11 @@ final class OpenAiDePublicRefreshClientAuthenticationConverter implements Authen
             return null;
         }
         String clientId = request.getParameter("client_id");
-        if (!StringUtils.hasText(clientId)
+        if (request.getHeader("Authorization") != null
+                || request.getParameter("client_assertion") != null
+                || request.getParameter("client_assertion_type") != null
+                || !expectedClientId.equals(clientId)
+                || !StringUtils.hasText(clientId)
                 || request.getParameterValues("client_id") == null
                 || request.getParameterValues("client_id").length != 1
                 || StringUtils.hasText(request.getParameter("client_secret"))) {

@@ -81,6 +81,25 @@ class OpenAiDeCoachHealthIndicatorTest {
     }
 
     @Test
+    void nativeMetadataReadinessIsDiagnosticAndDoesNotFetchOrBlockHostedReadiness() {
+        var properties = secureProperties();
+        properties.getOauth().getNativeCimd().setEnabled(true);
+        var metadata = mock(com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidator.class);
+        var beans = new org.springframework.beans.factory.support.StaticListableBeanFactory();
+        beans.addBean("nativeMetadata", metadata);
+        var indicator = new OpenAiDeCoachHealthIndicator(properties, Optional.of(contract()),
+                Optional.of(curriculumRevisionProvider()), true, false,
+                Optional.of(mock(AuthenticatedClientPolicy.class)));
+        indicator.nativeMetadata(beans.getBeanProvider(com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidator.class));
+        assertThat(indicator.health().getStatus()).isEqualTo(Status.UP);
+        assertThat(indicator.health().getDetails()).containsEntry("nativeCimdEnabled", true)
+                .containsEntry("nativeClientMetadataReady", false);
+        when(metadata.hasVerifiedMetadata()).thenReturn(true);
+        assertThat(indicator.health().getDetails()).containsEntry("nativeClientMetadataReady", true);
+        org.mockito.Mockito.verify(metadata, org.mockito.Mockito.never()).verify();
+    }
+
+    @Test
     void sharedReadinessRemainsValidWhenOptionalOpenAiProviderIsDisabled() {
         productionHealthRunner(new java.util.concurrent.atomic.AtomicBoolean(true)).run(context -> {
             assertThat(context).hasNotFailed();

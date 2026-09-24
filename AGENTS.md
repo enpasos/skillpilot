@@ -64,6 +64,17 @@ supersedes earlier plans for a parallel external ChatGPT beta.
   not silence on a general support question, can block the next step.
 - This work order does not itself submit, publish or change production settings.
 
+On **24 September 2026**, the Product Owner explicitly authorized trying the
+documented ChatGPT archive upload and adapting the server to native desktop
+CIMD with S256 PKCE. Use the existing V1 MCP endpoint and OAuth issuer; do not
+introduce a second OpenAI endpoint for this integration. The native client is
+a separate, exactly pinned public OAuth profile, never a fallback from failed
+confidential authentication. The Product Owner permits mTLS `observe` for the
+initial working integration; mandatory client certificates are later transport
+hardening, not a prerequisite for this test. OAuth, learner-session isolation,
+and truthful host acceptance remain required. See the
+[native CIMD integration runbook](docs/deploy/openai-native-cimd.md).
+
 This document is the **long-term memory** for SkillPilot, including the skill-graph explorer.  
 It captures the *concepts and design decisions* that are **not obvious from the code alone**, so humans and LLMs can extend the project consistently across different learning domains.
 
@@ -1399,6 +1410,11 @@ Provider-facing contracts must use derived temporary context instead:
   Product Owner on 11 September 2026. `chatgpt-cimd-jwt` requires the exactly
   pinned ChatGPT CIMD and `private_key_jwt`; the existing confidential Basic
   connection may remain as the explicit `chatgpt-basic-transition` profile.
+  `chatgpt-native-cimd-public` additionally supports the uploaded desktop plugin
+  with a pinned OpenAI native CIMD document, S256 PKCE, exact loopback callback
+  host/path and a variable listener port. It uses the same V1 resource and
+  issuer, with separate profile provenance and refresh-token rotation. `none`
+  is the public client's token-endpoint method, not anonymous MCP access.
   `claude-cimd-public` is an authorized production beta using public CIMD,
   Authorization Code and S256 PKCE, not confidential client authentication.
   `claude-custom-confidential` and `claude-anthropic-held` use dedicated secret
@@ -1434,8 +1450,11 @@ Provider-facing contracts must use derived temporary context instead:
   may exist only for an actual loopback socket peer. Never derive it from
   `X-Forwarded-For`, a request header, URL, query, or shared secret. Public
   protected-resource metadata and domain challenge remain certificate-free.
-  The backend mode and root-owned nginx mode must match fail-closed, and plugin
-  publication requires `enforce`.
+  The backend mode and root-owned nginx mode must match fail-closed. The
+  hosted release's certificate acceptance remains a separate transport check;
+  the authorized native desktop integration uses `observe` because that client
+  does not supply the hosted OpenAI certificate. No certificate result replaces
+  OAuth or a learning session.
 - OpenAI MCP uses one App, public tool catalog, endpoint and
   registration per contract major, not per language. Plugin metadata, skill
   instructions, tool names, descriptions, schemas and stable machine values use

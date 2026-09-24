@@ -83,6 +83,7 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.coach.v1.server-build=test-build",
         "skillpilot.openai.coach.v1.writes-enabled=true",
         "skillpilot.openai.coach.v1.oauth.enabled=true",
+        "skillpilot.openai.coach.v1.oauth.native-cimd.enabled=true",
         "skillpilot.openai.coach.v1.mcp.enabled=true",
         "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
         "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",
@@ -150,6 +151,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     @Autowired
     private JdbcOperations jdbcOperations;
 
+    @org.springframework.test.context.bean.override.mockito.MockitoBean
+    private com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidator nativeCimd;
+
     private HttpClient browser;
     private final Map<String, Long> observedSessionVersions = new HashMap<>();
 
@@ -161,6 +165,18 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     @BeforeEach
     void setUp() {
         observedSessionVersions.clear();
+        String nativeId = com.skillpilot.backend.openai.de.OpenAiDeProperties.OAuth.NativeCimd.CLIENT_ID;
+        String nativeRedirect = com.skillpilot.backend.openai.de.OpenAiDeProperties.OAuth.NativeCimd.REDIRECT_URI;
+        org.mockito.Mockito.when(nativeCimd.clientId()).thenReturn(nativeId);
+        org.mockito.Mockito.when(nativeCimd.redirectUri()).thenReturn(nativeRedirect);
+        var structural = new com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidator(nativeId, objectMapper,
+                uri -> { throw new java.io.IOException("Network disabled in E2E fixture"); });
+        org.mockito.Mockito.when(nativeCimd.validRedirect(org.mockito.ArgumentMatchers.anyString()))
+                .thenAnswer(call -> structural.validRedirect(call.getArgument(0)));
+        jdbcOperations.update("DELETE FROM openai_native_refresh_history");
+        jdbcOperations.update("DELETE FROM openai_native_refresh_family");
+        // Each provider-profile invocation starts with the same due Recall deck.
+        jdbcOperations.update("DELETE FROM learner_client_state WHERE skillpilot_id = ?", PERMANENT_SKILLPILOT_ID);
         jdbcOperations.update("DELETE FROM oauth2_authorization_consent");
         jdbcOperations.update("DELETE FROM oauth2_authorization");
         pendingLaunchRepository.deleteAllInBatch();
@@ -467,16 +483,19 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         }
     }
 
-    @Test
-    void appOnlyOAuthAndExplicitLearningSessionPersistLearnerStateWithoutExposingPermanentId()
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.ValueSource(booleans = {false, true})
+    void appOnlyOAuthAndExplicitLearningSessionPersistLearnerStateWithoutExposingPermanentId(boolean nativeClient)
             throws Exception {
+        String activeClientId = nativeClient ? com.skillpilot.backend.openai.de.OpenAiDeProperties.OAuth.NativeCimd.CLIENT_ID : CLIENT_ID;
+        String activeCallback = nativeClient ? "http://127.0.0.1:49173/callback/Su4_F3uWAhkS" : CALLBACK;
         assertLegacyStateIsEmpty();
 
         String externalState = "chatgpt-e2e-state";
         String authorizePath = OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT + "?" + form(List.of(
                 Map.entry("response_type", "code"),
-                Map.entry("client_id", CLIENT_ID),
-                Map.entry("redirect_uri", CALLBACK),
+                Map.entry("client_id", activeClientId),
+                Map.entry("redirect_uri", activeCallback),
                 Map.entry("scope", String.join(" ", List.of(
                         OpenAiDeOAuthConfiguration.READ_SCOPE,
                         OpenAiDeOAuthConfiguration.WRITE_SCOPE,
@@ -503,7 +522,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         HttpResponse<String> approval = postForm(
                 OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT,
                 List.of(
-                        Map.entry("client_id", CLIENT_ID),
+                        Map.entry("client_id", activeClientId),
                         Map.entry("state", consentState),
                         Map.entry("scope", OpenAiDeOAuthConfiguration.READ_SCOPE),
                         Map.entry("scope", OpenAiDeOAuthConfiguration.WRITE_SCOPE),
@@ -513,12 +532,12 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         Map<String, String> callbackQuery = parseQuery(callback.getRawQuery());
         assertThat(callbackQuery.get("state")).isEqualTo(externalState);
 
-        HttpResponse<String> token = postOpenAiAuthenticatedForm(
+        HttpResponse<String> token = postProfileForm(nativeClient,
                 OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
                 List.of(
                         Map.entry("grant_type", "authorization_code"),
-                        Map.entry("client_id", CLIENT_ID),
-                        Map.entry("redirect_uri", CALLBACK),
+                        Map.entry("client_id", activeClientId),
+                        Map.entry("redirect_uri", activeCallback),
                         Map.entry("code", callbackQuery.get("code")),
                         Map.entry("code_verifier", VERIFIER),
                         Map.entry("resource", OpenAiDeV1ContractMetadata.OAUTH_RESOURCE)));
@@ -1331,17 +1350,21 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertLegacyStateIsEmpty();
         assertThat(learningSessionRepository.count()).isEqualTo(1);
 
-        HttpResponse<String> revocation = postOpenAiAuthenticatedForm(
+        HttpResponse<String> revocation = postProfileForm(nativeClient,
                 OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
                 List.of(
-                        Map.entry("client_id", CLIENT_ID),
+                        Map.entry("client_id", activeClientId),
                         Map.entry("token", refreshToken),
                         Map.entry("token_type_hint", "refresh_token")));
         assertThat(revocation.statusCode()).withFailMessage(revocation.body()).isEqualTo(200);
         OAuth2Authorization revokedAuthorization =
                 authorizationService.findByToken(refreshToken, OAuth2TokenType.REFRESH_TOKEN);
-        assertThat(revokedAuthorization).isNotNull();
-        assertThat(revokedAuthorization.getRefreshToken().isInvalidated()).isTrue();
+        if (nativeClient) {
+            assertThat(revokedAuthorization).isNull();
+        } else {
+            assertThat(revokedAuthorization).isNotNull();
+            assertThat(revokedAuthorization.getRefreshToken().isInvalidated()).isTrue();
+        }
         assertThat(learningSessionRepository.count())
                 .as("OAuth revocation does not revoke the independent learning session")
                 .isEqualTo(1);
@@ -1381,6 +1404,11 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .POST(HttpRequest.BodyPublishers.ofString(form(parameters)))
                 .build();
         return browser.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
+    private HttpResponse<String> postProfileForm(boolean nativeClient, String path,
+            List<Map.Entry<String, String>> parameters) throws Exception {
+        return nativeClient ? postForm(path, parameters) : postOpenAiAuthenticatedForm(path, parameters);
     }
 
     private HttpResponse<String> postOpenAiAuthenticatedForm(

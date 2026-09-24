@@ -15,6 +15,10 @@ const requiredProviderSuites = [
   'com.skillpilot.backend.openai.de.oauth.OpenAiDeClientAssertionDecoderFactoryTest',
   'com.skillpilot.backend.openai.de.oauth.OpenAiDePinnedJwkSourceTest',
   'com.skillpilot.backend.openai.de.oauth.OpenAiDePrivateKeyJwtFlowIntegrationTest',
+  'com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeOAuthFlowIntegrationTest',
+  'com.skillpilot.backend.openai.de.oauth.OpenAiDeNativeClientProfilesTest',
+  'com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidatorTest',
+  'com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeRefreshTokenFamiliesTest',
   'com.skillpilot.backend.openai.de.oauth.OpenAiDeClientProfilesTest',
   'com.skillpilot.backend.openai.de.oauth.OpenAiDeCimdMetadataGateTest',
   'com.skillpilot.backend.oauth.OAuthTokenRevocationBoundaryTest',
@@ -60,6 +64,7 @@ test('OAuth security is repeatable without production credentials or paid host c
 test('OAuth security covers both providers and requires the real PostgreSQL lane', () => {
   for (const suite of [
     'com.skillpilot.backend.openai.de.oauth.*Test',
+    'com.skillpilot.backend.openai.nativev1.oauth.*Test',
     'com.skillpilot.backend.openai.de.health.OpenAiDeCoachHealthIndicatorTest',
     'com.skillpilot.backend.connectors.claude.v1.oauth.*Test',
     'com.skillpilot.backend.connectors.claude.v1.ClaudeV1CrossProviderIsolationTest',

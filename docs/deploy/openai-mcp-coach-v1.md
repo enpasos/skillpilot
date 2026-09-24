@@ -11,6 +11,13 @@ Die folgenden Basic-Beispiele sind kein Methoden-Fallback für JWT-Clients.
 Claude-Beta und Herstelleranfragen blockieren diese Freigabe nicht.
 Die Implementierung allein aktiviert keine Produktionsverbindung.
 
+**Native Desktop-Integration, 24. September 2026:** Das hochgeladene Plugin
+verwendet denselben MCP-Endpunkt und OAuth-Issuer. Ein zusätzliches
+`chatgpt-native-cimd-public`-Profil unterstützt natives CIMD mit S256 PKCE;
+für diesen Versuch ist mTLS `observe` ausdrücklich freigegeben. Siehe
+[Konfiguration und Teststart](openai-native-cimd.md). Die folgenden
+`enforce`-Abnahmen betreffen den gehosteten Zertifikatstransport.
+
 **Status:** Die Einlieferung `1.0.0` wurde abgelehnt (`REJECTED`). Der Product
 Owner hat die ChatGPT-Entwicklungssperren ausdrücklich aufgehoben; der aktuelle
 Nachfolger ist der noch unveröffentlichte Entwurf `1.1.0`. Siehe
@@ -46,7 +53,9 @@ Insbesondere verwaltet ChatGPT OAuth Access- und Refresh-Token automatisch;
 Benutzer geben niemals OAuth-Token, OAuth-Client-Secret oder dauerhafte
 SkillPilot-ID im Chat ein. Jeder ausdrückliche autorisierte Start über die
 First-Party-Weboberfläche erzeugt jedoch eine davon unabhängige, absolut 24
-Stunden gültige `learningSessionId` und öffnet einen neuen Chat. SkillPilot
+Stunden gültige `learningSessionId`. Der reguläre freigegebene Start öffnet
+einen neuen Chat; beim expliziten Desktop-Teststart wird die vorbereitete
+Nachricht in einen neuen Chat mit ausgewähltem Plugin kopiert. SkillPilot
 trägt diese Referenz automatisch in die kurze Startnachricht ein; ChatGPT
 übergibt sie unverändert an jedes fachliche MCP-Werkzeug.
 
@@ -633,12 +642,12 @@ Wert ist deshalb ausschließlich für einen bewusst isolierten read-only Canary
 geeignet. Die Betriebsabschaltung darf keine erneute OAuth-Verbindung auslösen.
 
 Der normale aktivierte Provider startet ausschließlich im sicheren
-Clientmodus; es gibt keinen produktiven `secure-mode=false`-Schalter. Der
-sichere Clientmodus verlangt `client_secret_basic` und prüft die exakte
-Client-ID, das Secret in konstantzeitgeeigneter Form, Redirect-Allowlist,
-Resource, Scopes und PKCE `S256`. Fehlendes Secret, `none`,
-`private_key_jwt`, DCR, CIMD und jeder stille Profil-Fallback brechen den Start
-beziehungsweise den Tokenaustausch fail-closed ab.
+Clientmodus; es gibt keinen produktiven `secure-mode=false`-Schalter.
+Clientnachweis und Callback werden pro explizitem Profil geprüft: Basic mit
+Secret, gehostetes CIMD mit `private_key_jwt` und optional natives CIMD mit
+`none` und Loopback-Callback. Resource, Scopes und PKCE `S256` bleiben
+verpflichtend. Eine Methode darf nur von ihrer konfigurierten Clientidentität
+verwendet werden; DCR und ein stiller Profil-Fallback bleiben ausgeschlossen.
 
 Auch `SKILLPILOT_SIGNING_SECRET` ist für den aktivierten OpenAI-V1-Provider
 verpflichtend. Der Prozess bricht den Start ab, wenn der Wert fehlt, dem

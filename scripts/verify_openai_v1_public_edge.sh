@@ -30,6 +30,7 @@ RESERVED_MCP_ORIGINS=(
 )
 EXPECTED_CHALLENGE="${SKILLPILOT_OPENAI_COACH_V1_OPENAI_APPS_CHALLENGE:-}"
 MTLS_EDGE_MODE="${SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE:-disabled}"
+NATIVE_CIMD_ENABLED="${SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_ENABLED:-false}"
 GOAL_VISUALIZATION_ASSET_ROOT="${ROOT_DIR}/app/public/assets/goal-visualizations"
 
 case "${MTLS_EDGE_MODE}" in
@@ -37,6 +38,16 @@ case "${MTLS_EDGE_MODE}" in
     ;;
   *)
     echo "CHECK public_edge_configuration FAIL invalid mTLS edge mode ${MTLS_EDGE_MODE}" >&2
+    exit 2
+    ;;
+esac
+
+native_cimd_metadata_args=()
+case "${NATIVE_CIMD_ENABLED}" in
+  true) native_cimd_metadata_args+=(--require-native-cimd) ;;
+  false) ;;
+  *)
+    echo "CHECK public_edge_configuration FAIL invalid native CIMD enable flag" >&2
     exit 2
     ;;
 esac
@@ -132,6 +143,7 @@ fetch_authorization_metadata() {
     "${ROOT_DIR}/scripts/validate_openai_oauth_metadata.py" \
     --kind authorization-server \
     --base-url "${AUTHORIZATION_ORIGIN}" \
+    "${native_cimd_metadata_args[@]}" \
     <"${output_file}"; then
     echo "CHECK ${check_name} FAIL invalid discovery document" >&2
     exit 1

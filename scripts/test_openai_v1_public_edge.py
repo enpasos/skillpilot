@@ -79,6 +79,70 @@ class OAuthMetadataContractTest(unittest.TestCase):
                 self.AUTHORIZATION_ORIGIN,
             )
 
+    def authorization_metadata(self, methods: list[str]) -> dict[str, object]:
+        issuer = f"{self.AUTHORIZATION_ORIGIN}/api/openai/v1"
+        metadata = {
+            "issuer": issuer,
+            "authorization_endpoint": f"{issuer}/oauth2/authorize",
+            "token_endpoint": f"{issuer}/oauth2/token",
+            "revocation_endpoint": f"{issuer}/oauth2/revoke",
+            "introspection_endpoint": f"{issuer}/oauth2/introspect",
+            "response_types_supported": ["code"],
+            "grant_types_supported": ["authorization_code", "refresh_token"],
+            "code_challenge_methods_supported": ["S256"],
+            "scopes_supported": [METADATA_MODULE.READ_SCOPE, METADATA_MODULE.WRITE_SCOPE, "offline_access"],
+            "token_endpoint_auth_methods_supported": methods,
+            "revocation_endpoint_auth_methods_supported": methods,
+        }
+        if "private_key_jwt" in methods:
+            metadata["client_id_metadata_document_supported"] = True
+            metadata["token_endpoint_auth_signing_alg_values_supported"] = ["RS256"]
+        return metadata
+
+    def test_existing_client_methods_remain_valid_without_native_cimd(self) -> None:
+        for method in ("client_secret_basic", "private_key_jwt", "none"):
+            with self.subTest(method=method):
+                METADATA_MODULE.validate_authorization_server(
+                    self.authorization_metadata([method]), self.AUTHORIZATION_ORIGIN, method)
+
+    def test_native_public_cimd_coexists_with_hosted_client_on_same_issuer(self) -> None:
+        for methods in (["client_secret_basic", "none"], ["private_key_jwt", "none"],
+                        ["private_key_jwt", "client_secret_basic", "none"], ["none"]):
+            metadata = self.authorization_metadata(methods)
+            metadata["client_id_metadata_document_supported"] = True
+            with self.subTest(methods=methods):
+                METADATA_MODULE.validate_authorization_server(
+                    metadata, self.AUTHORIZATION_ORIGIN, "none", require_native_cimd=True)
+                # Hosted method remains independently discoverable.
+                METADATA_MODULE.validate_authorization_server(
+                    metadata, self.AUTHORIZATION_ORIGIN, methods[0])
+
+        # A confidential transition can coexist without enabling native CIMD.
+        METADATA_MODULE.validate_authorization_server(
+            self.authorization_metadata(["private_key_jwt", "client_secret_basic"]),
+            self.AUTHORIZATION_ORIGIN, "private_key_jwt")
+
+    def test_native_cimd_metadata_rejects_missing_support_insecure_pkce_and_open_dcr(self) -> None:
+        original = self.authorization_metadata(["client_secret_basic", "none"])
+        original["client_id_metadata_document_supported"] = True
+        for field, value in (
+            ("client_id_metadata_document_supported", False),
+            ("code_challenge_methods_supported", ["plain"]),
+            ("token_endpoint_auth_methods_supported", ["client_secret_basic"]),
+            ("token_endpoint_auth_methods_supported", ["none", "none"]),
+            ("token_endpoint_auth_methods_supported", ["client_secret_post", "none"]),
+            ("registration_endpoint", "https://skillpilot.com/register"),
+            ("issuer", "https://skillpilot.com/api/openai/native/v1"),
+            ("token_endpoint", "https://skillpilot.com/api/openai/native/v1/oauth2/token"),
+        ):
+            with self.subTest(field=field, value=value), self.assertRaises(MetadataValidationError):
+                METADATA_MODULE.validate_authorization_server(
+                    {**original, field: value}, self.AUTHORIZATION_ORIGIN, require_native_cimd=True)
+        missing = dict(original)
+        del missing["client_id_metadata_document_supported"]
+        with self.assertRaises(MetadataValidationError):
+            METADATA_MODULE.validate_authorization_server(missing, self.AUTHORIZATION_ORIGIN)
+
 
 class PublicEdgeDeploymentContractTest(unittest.TestCase):
     RESERVED_HOSTS = tuple(
@@ -431,6 +495,8 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
         self.assertIn("canonical_oauth_discovery", script)
         self.assertIn("issuer_relative_oauth_discovery", script)
         self.assertIn("oauth_discovery_alias_parity", script)
+        self.assertIn("SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_ENABLED", script)
+        self.assertIn("--require-native-cimd", script)
         self.assertIn("cmp -s", script)
         self.assertIn("--proto '=https'", script)
         self.assertIn("--max-redirs 0", script)

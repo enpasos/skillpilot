@@ -85,6 +85,9 @@ export const IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAMES = Object.freeze([
   "SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_CLIENT_SECRET",
   "SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_REDIRECT_URIS",
   "SKILLPILOT_OPENAI_COACH_V1_OAUTH_LEGACY_CLIENT_IDS",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_ENABLED",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_CLIENT_ID",
+  "SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_AUTHORIZATION_POLICY_VERSION",
 ]);
 const IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAME_SET = new Set(
   IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAMES,
@@ -164,6 +167,7 @@ export function isForbiddenOpenAiV1EnvironmentName(name) {
     name === LEGACY_OPENAI_APPS_CHALLENGE ||
     REMOVED_DIRECT_START_ENVIRONMENT_NAMES.includes(name) ||
     FORBIDDEN_OPENAI_V1_URL_OVERRIDE_NAMES.includes(name) ||
+    name.startsWith("SKILLPILOT_OPENAI_NATIVE_") ||
     (COACH_LINE_ENVIRONMENT_NAME.test(name) &&
       !IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAME_SET.has(name))
   );
@@ -203,6 +207,11 @@ export function validateExplicitPublicOverrides(env) {
     if (COACH_LINE_ENVIRONMENT_NAME.test(name)) {
       assert.fail(
         `${name} must not be set; this coach-line setting is not implemented by the current shared Spring server.`,
+      );
+    }
+    if (name.startsWith("SKILLPILOT_OPENAI_NATIVE_")) {
+      assert.fail(
+        `${name} must not be set; native CIMD is an OAuth client profile under SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_*.`,
       );
     }
     if (REMOVED_DIRECT_START_ENVIRONMENT_NAMES.includes(name)) {

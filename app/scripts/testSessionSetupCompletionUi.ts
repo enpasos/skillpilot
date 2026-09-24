@@ -539,6 +539,53 @@ try {
     returning.apiMetrics.resumeRequests === 1,
     'continuing with an existing learner records exactly one resume activity',
   )
+  assert(await returning.page.getByTestId('chatgpt-test-start').count() === 0,
+    'the integration test handoff is absent without the explicit test URL')
+
+  const chatTestContext = await browser.newContext({ locale: 'de-DE', permissions: ['clipboard-read', 'clipboard-write'] })
+  await chatTestContext.addInitScript((termsVersion) => {
+    localStorage.setItem('skillpilot_lang', 'de')
+    localStorage.setItem('skillpilot_terms_accepted_version', termsVersion)
+  }, CURRENT_TERMS_VERSION)
+  const nativeTest = await openFreshSetupPage(chatTestContext, `${baseUrl}?chatgptTest=1`)
+  await nativeTest.page.getByLabel('Deine SkillPilot-ID').fill(existingLearnerId)
+  await continueToCompletedSetup(nativeTest.page)
+  let nativeLaunches = 0
+  const startMessage = `Setze meine Lernsession fort. learningSessionId: sps_${'A'.repeat(43)}`
+  await nativeTest.page.route('**/openai/v1/launch', async (route) => {
+    nativeLaunches += 1
+    const request = route.request()
+    const body = request.postDataJSON() as Record<string, unknown>
+    assert(request.method() === 'POST', 'test start uses the existing first-party launch')
+    assert(body.providerEligibilityConfirmed === true && body.communicationLocale === 'de',
+      'test start preserves explicit eligibility and communication locale')
+    assert(body.selectedCurriculum === CANONICAL_GYMNASIUM_ROOT_ID,
+      'test start uses the configured personal curriculum')
+    await new Promise(resolve => setTimeout(resolve, 100))
+    await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({
+      prompt: startMessage, learningSessionId: `sps_${'A'.repeat(43)}`,
+      expiresAt: '2099-09-25T10:00:00Z', webUrl: 'https://chatgpt.com/',
+    }) })
+  })
+  nativeTest.page.once('dialog', dialog => void dialog.dismiss())
+  await nativeTest.page.getByRole('button', { name: 'Startnachricht erzeugen' }).click()
+  assert(nativeLaunches === 0, 'declining eligibility does not create a learning session')
+  nativeTest.page.once('dialog', dialog => void dialog.accept())
+  await nativeTest.page.getByRole('button', { name: 'Startnachricht erzeugen' }).click()
+  const preparedMessage = nativeTest.page.getByLabel('Vorbereitete Startnachricht')
+  await preparedMessage.waitFor()
+  assert(Number(nativeLaunches) === 1 && await preparedMessage.inputValue() === startMessage,
+    'one explicit test start displays the authoritative session handoff unchanged')
+  assert(!(await preparedMessage.inputValue()).includes(existingLearnerId),
+    'the handoff excludes the permanent learner ID')
+  await nativeTest.page.getByRole('button', { name: 'Startnachricht kopieren' }).click()
+  await nativeTest.page.getByRole('button', { name: 'Kopiert', exact: true }).waitFor()
+  assert(await nativeTest.page.evaluate(() => navigator.clipboard.readText()) === startMessage,
+    'the copy action hands the exact server prompt to the clipboard')
+  assert(await nativeTest.page.evaluate(() => !JSON.stringify(localStorage).includes('sps_')
+    && !JSON.stringify(sessionStorage).includes('sps_')), 'session capabilities are not persisted in browser storage')
+  assert(chatTestContext.pages().length === 1, 'preparing a desktop test does not navigate to an unselected web chat')
+  await chatTestContext.close()
 
   const compactButtons = returning.page.getByRole('button', { name: /^Ändern:/u })
   await compactButtons.first().waitFor()

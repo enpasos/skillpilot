@@ -112,6 +112,38 @@ test("line-specific and process-shared environment names remain valid", () => {
   );
 });
 
+test("native CIMD environment is a profile of the existing OAuth server", () => {
+  const applicationYaml = readFileSync(
+    new URL("../backend/src/main/resources/application.yml", import.meta.url), "utf8");
+  assert.match(applicationYaml,
+    /native-cimd:\s*\n\s*enabled: \$\{SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_ENABLED:false\}/u);
+  for (const name of [
+    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_ENABLED",
+    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_CLIENT_ID",
+    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_AUTHORIZATION_POLICY_VERSION",
+  ]) {
+    assert.equal(isForbiddenOpenAiV1EnvironmentName(name), false, name);
+  }
+  for (const name of [
+    "SKILLPILOT_OPENAI_NATIVE_V1_MTLS_EDGE_MODE",
+    "SKILLPILOT_OPENAI_NATIVE_V1_MCP_URL",
+    "SKILLPILOT_OPENAI_NATIVE_V1_OAUTH_RESOURCE",
+    "SKILLPILOT_OPENAI_NATIVE_V1_CLIENT_SECRET",
+    "SKILLPILOT_OPENAI_NATIVE_V1_CLIENT_ID_TYPO",
+    "SKILLPILOT_OPENAI_NATIVE_V2_ENABLED",
+    "SKILLPILOT_OPENAI_NATIVE_V1_ENABLED",
+  ]) {
+    assert.throws(() => validateExplicitPublicOverrides({ [name]: "never-print-this" }),
+      /native CIMD is an OAuth client profile/u);
+    assert.deepEqual(parseServiceEnvironmentFile(`${name}=never-print-this`), { [name]: true });
+    const completed = spawnSync("bash", ["-c", 'source "$1"; _skillpilot_openai_v1_forbidden_environment_name "$2"',
+      "native-env-test", new URL("./lib/openai_v1_service_environment.sh", import.meta.url).pathname, name],
+    { encoding: "utf8" });
+    assert.equal(completed.status, 0, name);
+    assert.equal(completed.stdout + completed.stderr, "");
+  }
+});
+
 test("independent OAuth client profiles pass namespace checks without retaining credentials", () => {
   assert.doesNotThrow(() =>
     validateExplicitPublicOverrides(authenticatedClientEnvironment),

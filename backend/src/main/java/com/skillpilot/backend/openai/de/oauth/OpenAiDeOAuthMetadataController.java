@@ -84,8 +84,10 @@ public class OpenAiDeOAuthMetadataController {
                 .map(OpenAiDeOAuthConfiguration::normalizedClientAuthenticationMethod).distinct().toList();
         metadata.put("token_endpoint_auth_methods_supported", methods);
         metadata.put("revocation_endpoint_auth_methods_supported", methods);
-        if (OpenAiDeOAuthConfiguration.isPrivateKeyJwt(properties)) {
+        if (OpenAiDeOAuthConfiguration.isPrivateKeyJwt(properties) || properties.getOauth().getNativeCimd().isEnabled()) {
             metadata.put("client_id_metadata_document_supported", true);
+        }
+        if (OpenAiDeOAuthConfiguration.isPrivateKeyJwt(properties)) {
             metadata.put(
                     "token_endpoint_auth_signing_alg_values_supported",
                     List.of(OpenAiDeOAuthConfiguration

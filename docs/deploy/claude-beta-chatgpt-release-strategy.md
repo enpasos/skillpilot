@@ -10,6 +10,14 @@ ChatGPT-Beta und die weitere Suche nach ChatGPT-Verteilungsworkarounds.
 Sie dokumentiert die Arbeitsreihenfolge, keine bereits erfolgte Stabilisierung,
 Abnahme, Einreichung oder Veröffentlichung.
 
+**Explizite Ergänzung vom 24. September 2026:** Der Product Owner möchte den
+inzwischen sichtbaren offiziellen Archivimport in ChatGPT ausprobieren und
+hat die Anpassung an natives CIMD/PKCE autorisiert. Dafür bleibt es bei einem
+OpenAI-Endpunkt; mTLS darf zunächst auf `observe` stehen. Dieser konkrete
+Integrationstest ist von der früheren Pause ausgenommen. Er ändert weder die
+öffentliche Anbieterfreigabe noch behauptet er eine abgeschlossene Abnahme.
+Siehe [native CIMD-Integration](openai-native-cimd.md).
+
 ## 1. Jetzt: laufenden Beta-Test mit Claude fortführen
 
 Claude bleibt die Plattform für den tatsächlichen Beta-Test. Die
