@@ -1,0 +1,3 @@
+# Round A independence disclosure
+
+The reviewer independently reached `revise` for both goals, sent those preliminary judgments to the coordinating agent, and drafted both JSONL records without inspecting round B or any other review output. After the judgments and record text were drafted, but before the run receipt was completed, the coordinating agent disclosed that the other round had the same preliminary decisions. No other round's records or rationale were accessed. The run field `blindToOtherRuns: true` records that no other run artifacts were inspected; it does not establish complete decision-level blinding after that disclosure. Treat this limitation explicitly in any synthesis or independence claim.

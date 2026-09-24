@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-q2-pyramid-cone-volume-current-20260924-v1.config.json",
+  "configDigest": "sha256:929bf4b3a350275db82097e63d1d6770ddd096df1c92547211e35fed477e7064",
+  "goalIds": [
+    "288633c1-f61c-5b48-af7e-a80357f96cad",
+    "e8237315-654e-5150-97de-49c4cb49b3d1"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:03d3f2a797149d485b852cc252c5b7076bb5d3a9ec890089a2390d27cd5c7253"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:9f26da58b298c1f9eb9b656fb28afd2b240facb230ca038be4434c8269503038",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:4a6a9330c6886a51cd787ac9d356ab34bd15b07543129de7e9a561bec1fcbb08",
+    "reviewInputFingerprint": "sha256:cba12d035a4fb8e1a1592eab41ab60072e23f27bd994f623f8d3823f0535d044",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-a",
+        "campaignDigest": "sha256:82e0b1e9c5dcd119644d08e2f9e836145bbc42a68cbfe526fa2badcc998cdd2c",
+        "roundId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-independent-a",
+        "batchId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:4576630fa228533c904eda2a50988b4b01b75c1b5872c1299bba85fe9f0925fc"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-b",
+        "campaignDigest": "sha256:cc40ff5ab211fe2fee89bf2449054407fc8ad5b5c96db3f569bceaf60e794977",
+        "roundId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-independent-b",
+        "batchId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:88aa07695552872437dda3aefd395f9a9218a1803f02fc8a1ce6cb97587ff0f8"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

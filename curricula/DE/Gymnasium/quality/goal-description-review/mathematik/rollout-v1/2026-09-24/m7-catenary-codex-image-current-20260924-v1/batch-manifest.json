@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-catenary-codex-image-current-20260924-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-catenary-codex-image-current-20260924-v1.config.json",
+  "configDigest": "sha256:76e54e2957e1dd34f7414be6997db939310a9c5f25d2ab5d7cbb0dfe95134409",
+  "goalIds": [
+    "164921f6-3bf7-5efc-a438-ea4759dca9ef"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:53d0b66ed0da073b6e0c81b274d6d2288406a099f5ebac1aca04ac59fbcb78c7"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:c41bfc27f4bdac6b8146ec36d2a5eaac95f86766cbe4517617076ca383626242",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:b2e141b540a9f8d491fd6fba361d9857ea8b8b3c326e73250fb954c8bf2afbfa",
+    "reviewInputFingerprint": "sha256:3c4e1700f4349ec8d69268463c3c0272bda5ece0cd9d4acc97c58abf82dedf24",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-catenary-codex-image-current-20260924-v1-a",
+        "campaignDigest": "sha256:668d6452bb4043d576c91a215ac651a8d8b60f0b7974d63b22982abbe4e9b5e0",
+        "roundId": "mathematik-m7-catenary-codex-image-current-20260924-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-catenary-codex-image-current-20260924-v1-independent-a",
+        "batchId": "mathematik-m7-catenary-codex-image-current-20260924-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:5e86e4096429690e3f0a25aeb78e95c6803562544e467761a443e496385ccab5"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-catenary-codex-image-current-20260924-v1-b",
+        "campaignDigest": "sha256:b07c2f4737e808a775a645250f4127f0a39dd1f94f60f4a794d5a5f011734a90",
+        "roundId": "mathematik-m7-catenary-codex-image-current-20260924-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-catenary-codex-image-current-20260924-v1-independent-b",
+        "batchId": "mathematik-m7-catenary-codex-image-current-20260924-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:10758be224cc474908f901d18b17b98e3382ce792e2724b8cf9e9769069a7576"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

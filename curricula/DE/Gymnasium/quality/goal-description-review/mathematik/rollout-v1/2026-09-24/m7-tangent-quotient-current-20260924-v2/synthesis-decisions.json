@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-tangent-quotient-corrected-source-20260924-v2",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-09-24T17:54:55.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-tangent-quotient-current-20260924-v2",
+    "batchManifestDigest": "sha256:f53dbd0d0a61d87dbc2105198467678a11bb9d94c39e37fdfef26448d94d8017",
+    "configDigest": "sha256:c5f26a3f888ecf99464edc37fd92a808287616330142da1704880ce8c295c66a",
+    "bundleFingerprint": "sha256:036fba6de5e6350eb01a1df8c075b45f5e77323809a55ce65ecfacaad71f9b18",
+    "bookDigest": "sha256:350af61cdfa3b9cbbb46230da75601665647f996269b08b227d31d56c0f574bd",
+    "reviewInputFingerprint": "sha256:25749467f98f3b8670854175a60a5946a26b2b4e901a9a3f9f7e0356c50dafae",
+    "dualSummaryDigest": "sha256:018b2fe7a4379bda1d07e05050648c09eaa4b53f1a6daa552f17cce5c8354bbc",
+    "canonicalLandscapeDigest": "sha256:75398b13f17942a72f1e8015cf1dbfad68b220339ea913faf165c40b216b92b7"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-tangent-quotient-current-20260924-v2-a",
+      "campaignDigest": "sha256:7c11ee82212b0bc9639691981aa1612f3b9003a6969ca593cfe9033aa3d9357c",
+      "roundId": "mathematik-m7-tangent-quotient-current-20260924-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-tangent-quotient-current-20260924-v2-independent-a",
+      "reviewInputFingerprint": "sha256:25749467f98f3b8670854175a60a5946a26b2b4e901a9a3f9f7e0356c50dafae",
+      "batchId": "mathematik-m7-tangent-quotient-current-20260924-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:b012850b7389799ce860303230c864e11ad2b62a530227b3013b36baa62856dc",
+      "runId": "mathematik-m7-tangent-quotient-current-20260924-v2-first-pass-a.run-001",
+      "runManifestDigest": "sha256:bae7b5cea792f0acf4aa063c0a473992fdcee04faf229a0e1a6b356a87a12ad1",
+      "resultsDigest": "sha256:b67a564b735fb6d95f0d6ccc94655f16bdd697829515573999eacd2f030e03a3"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-tangent-quotient-current-20260924-v2-b",
+      "campaignDigest": "sha256:4d61c6d30d130703264edf3e56c094fc55e303c5c95691871071469e3d95cbee",
+      "roundId": "mathematik-m7-tangent-quotient-current-20260924-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-tangent-quotient-current-20260924-v2-independent-b",
+      "reviewInputFingerprint": "sha256:25749467f98f3b8670854175a60a5946a26b2b4e901a9a3f9f7e0356c50dafae",
+      "batchId": "mathematik-m7-tangent-quotient-current-20260924-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:aba27fc49be9c2598874844470c1dab10d51ff02d3830f8dc91e0acefef4cfcd",
+      "runId": "mathematik-m7-tangent-quotient-current-20260924-v2-b-001",
+      "runManifestDigest": "sha256:25a8f774c03ea4ffc0434e74e35f70ffaef3377388b0da500af227a52c6ed327",
+      "resultsDigest": "sha256:357e8f93ca232372ee950cc0e1a448a05a3efdb9837eb99535e8d6fae89bd953"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-tangent-quotient-corrected-source-20260924-v2-keep",
+      "goalId": "4cba85d3-2e25-5c4b-9c4c-37e5b201dce7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:25471a392301027cac06d61dc394019669c9809baaabaf8a0fa28dccaeb539bd",
+      "pageFingerprint": "sha256:3a061afaa10e7cd3d7bbd6d4878bcd771d2c53aca032f85dcd8d537b7a6764eb",
+      "goalReviewContextFingerprint": "sha256:9f58b39acec33e0c21657af06721e591ea11aca1d9684bbb9dba69cb4a2d08a0",
+      "finalText": {
+        "titleDe": "Tangensquotient herleiten",
+        "titleEn": "Derive the tangent quotient identity",
+        "descriptionDe": "Die lernende Person kann für Winkel mit $\\cos(\\alpha)\\neq 0$ die Beziehung $\\tan(\\alpha)=\\sin(\\alpha)/\\cos(\\alpha)$ anschaulich oder rechnerisch herleiten.",
+        "descriptionEn": "For angles with $\\cos(\\alpha)\\neq 0$, the learner can derive $\\tan(\\alpha)=\\sin(\\alpha)/\\cos(\\alpha)$ visually or algebraically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-tangent-quotient-current-20260924-v2-first-pass-a.record-001",
+          "recordDigest": "sha256:cddff522bde099428594e3b354cefc6159db01b6d7c72271198c07b4ade339e4"
+        },
+        "second": {
+          "recordId": "mathematik-m7-tangent-quotient-current-20260924-v2-b-001-4cba85d3",
+          "recordDigest": "sha256:f055f7445ffa196b4d61f50eed2a869868ff3b6e2c0bb41f68827b27a26fdc26"
+        }
+      },
+      "rationaleDe": "Beide unabhängig und am korrigierten aktuellen Kontext geprüften Runden entscheiden keep. Der knappe deutsche und englische Zieltext fordert dieselbe Herleitung des Tangensquotienten und nennt mit Kosinus ungleich null die mathematisch notwendige Definitionsbedingung. Der amtliche BW-Bildungsplan 2016 führt die Beziehung in 3.3.3(7) auf gedruckter Seite 34; die Quellenangabe wurde im kanonischen Ziel und im zugehörigen Quellenziel entsprechend korrigiert. Runde A begründet die gemeinsame Hypotenuse und die vorzeichenbehafteten Einheitskreiskoordinaten; Runde B macht den dritten Quadranten zum konkreten frischen Transferfall. Für die separate positive Verständnisevidenz wird deshalb B gewählt, ohne eine bestimmte Darstellungsweise im kanonischen Ziel vorzuschreiben. Die Illustration ist Lehrhilfe, kein Nachweis einer selbstständigen Herleitung. Eine bundesweite Quellenabdeckung oder menschliche Freigabe wird hier nicht behauptet.",
+      "rationaleEn": "Both independent rounds bound to the corrected current context decide keep. The concise German and English goal texts require the same derivation of the tangent quotient and state the mathematically necessary condition that cosine is nonzero. The official 2016 Baden-Württemberg curriculum lists this relation in 3.3.3(7) on printed page 34; the canonical and matching extracted source references were corrected accordingly. Round A explains the common hypotenuse and signed unit-circle coordinates; Round B makes a third-quadrant angle a concrete fresh transfer case. B is therefore selected for the separate positive understanding evidence without prescribing one representation in the canonical goal. The illustration is teaching support, not evidence of an independent derivation. This decision claims neither nationwide source coverage nor human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:26b5fd9399480e609ef512e21a9d0cda6fb6bbda76d9e914e87b0bda27083ae7"
+}

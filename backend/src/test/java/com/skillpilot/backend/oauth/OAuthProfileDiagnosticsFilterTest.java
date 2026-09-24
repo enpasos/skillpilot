@@ -87,13 +87,16 @@ class OAuthProfileDiagnosticsFilterTest {
         var first = new MockHttpServletResponse();
         outer.doFilter(request("/api/openai/v1/oauth2/token"), first, (req, res) -> {
             OAuthProfileDiagnostics.markProfile("chatgpt-cimd-jwt");
+            OAuthProfileDiagnostics.markClientAuthMethod(OAuthProfileDiagnostics.ClientAuthMethod.JWT_ASSERTION);
             inner.doFilter(req, res, (nestedReq, nestedRes) -> first.setStatus(400));
         });
         var second = new MockHttpServletResponse();
         outer.doFilter(request("/api/openai/v1/oauth2/token"), second, (req, res) -> second.setStatus(200));
         assertThat(logs.list).hasSize(2);
-        assertThat(logs.list.getFirst().getFormattedMessage()).contains("profile=chatgpt-cimd-jwt", "result=rejected");
-        assertThat(logs.list.get(1).getFormattedMessage()).contains("profile=unknown", "http_status=200");
+        assertThat(logs.list.getFirst().getFormattedMessage()).contains("profile=chatgpt-cimd-jwt", "result=rejected",
+                "client_auth_method=JWT_ASSERTION");
+        assertThat(logs.list.get(1).getFormattedMessage()).contains("profile=unknown", "http_status=200",
+                "client_auth_method=UNKNOWN");
         assertThat(first.getHeader(OAuthProfileDiagnosticsFilter.CORRELATION_HEADER))
                 .isNotEqualTo(second.getHeader(OAuthProfileDiagnosticsFilter.CORRELATION_HEADER));
     }

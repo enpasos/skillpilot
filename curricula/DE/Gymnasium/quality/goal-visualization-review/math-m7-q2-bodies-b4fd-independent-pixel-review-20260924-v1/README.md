@@ -1,0 +1,18 @@
+# Q2-Körpersymmetrie: unabhängige Kandidaten-Sichtprüfung
+
+Stand: 2026-09-24. Dies ist eine **KI-Sichtprüfung des Kandidaten in Originalauflösung**, keine menschliche Abnahme und noch keine Freigabe des aktiven Lernzielbilds. Das aktuelle Ziel ist `b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2` („Symmetrien einfacher Körper untersuchen“): Symmetrieachsen und Symmetrieebenen einfacher geometrischer Körper bestimmen und fachsprachlich beschreiben.
+
+| Bild | Pfad | SHA-256 | Befund |
+| --- | --- | --- | --- |
+| Historisches Bild (HOLD) | `curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-quality-holds-20260923-v1/assets/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2.jpg` | `328512490536b62a9c9dc87f1c21d91fc8de69ccc6fbea9b04b332bba65de6bb` | Die zentrale Beschriftung sagt „Vertikale Symmetrieebee“ statt „Symmetrieebene“; zusätzlich überlagert sich links Text. HOLD bleibt. |
+| Neuer OpenAI-imagegen-Kandidat | `curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-q2-bodies-open-eight-after-volume-three-20260924-v1/candidates/visualizations/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2.candidate.png` | `7312f69448ec5bf846e1a3c6e491356a223b5eff8c26025145838ea9209bc329` | **Pixelprüfung: geeignet als Importkandidat**, noch nicht aktives V. |
+
+Der neue Kandidat wurde unabhängig vom Erzeuger anhand der tatsächlichen 1254 × 1254 RGBA-Pixel geprüft. Er zeigt einen Quader mit deutlich ungleichen projizierten Kantenrichtungen. Die blaue Ebene liegt auf halber Höhe; rote und grüne senkrechte Mittelebenen sind zu den jeweiligen gegenüberliegenden Flächenpaaren parallel. Die drei gestrichelten Achsen treffen sich am Körperzentrum und verlaufen in den drei Kantenrichtungen. Für einen Quader mit drei verschiedenen Kantenlängen sind genau diese drei Spiegelmittelebenen und drei zweizähligen Drehachsen fachlich plausibel. Die farbigen Ebenen ragen zur Sichtbarkeit über den Körper hinaus; dies ist keine zusätzliche oder diagonale Symmetriebehauptung. Weder Text noch Zahlen oder Rechenwerte können den alten Schreibfehler wiederholen. Das warme Comic-Diagramm ist für eine Lernzielkarte wesentlich knapper als das alte beschriftete Bild.
+
+Die transparente Überlagerung von sechs geometrischen Objekten ist dennoch dicht. Bei der Integration sind daher die Darstellung in tatsächlicher Cockpit-Kartengröße und ein knapper Alt-Text zu prüfen, der die Spiegel- und Drehoperationen voneinander unterscheidet. Das Bild zeigt nur den Quader als Beispiel; die Pyramide aus dem positiven Verständnisnachweis wird dadurch nicht illustriert, was kein Widerspruch zum Ziel ist.
+
+## Qualifikationsgrenze und nächste Schritte
+
+Die aktuelle kanonische Verknüpfung und das V-QA-Register bleiben auf `missing/deferred_quality_review`; dieses Dokument setzt **kein** `aiApproved`. Die Bildimportierung würde den aktuellen GoalBook-Seiten-/Kontextfingerprint ändern. Deshalb muss die bereits validierte D-KEEP-Synthese für `b4fd…` gezielt mit der neuen exakten Seite erneut geprüft und gebunden werden. Ebenso muss der P-v2-Nachweis **bildgebunden** am importierten Asset-Hash und dem aktuellen Ziel überprüft werden; das alte text-only-Profil darf nicht nur mit neuem Hash versehen werden. Erst nach Import, gezielter D-/P-/V-Prüfung und Einbindung der gültigen Nachweise in die zentrale Registry wäre ein strenger Nettoabschluss möglich. Aktueller Nettozuwachs aus dieser Prüfung: **0**.
+
+Die ursprüngliche Generator-Herkunft und der tatsächliche Prompt sind im zugehörigen `candidates/visualizations/provenance-and-inspection.md` des Q2-Pakets dokumentiert. Diese unabhängige Prüfung beansprucht weder einen anderen Generator noch eine menschliche Begutachtung.

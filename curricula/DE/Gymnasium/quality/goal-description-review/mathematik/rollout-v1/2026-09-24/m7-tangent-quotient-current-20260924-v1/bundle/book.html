@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mathematik M7: Tangensquotient mit aktueller Seitenbindung</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Mathematik M7: Tangensquotient mit aktueller Seitenbindung</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>1 atomare Lernziele</dt><dd>4 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:4e03a14996126d57230cdfc6772f9d117ebc33b28e425cb913f022484abecbec</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:goal-book-math-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-71894e7ef4af5f94dc6093d2" aria-label="Mathematik"><a href="#goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7"><span class="toc-entry-label">Mathematik</span></a></h2>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:goal-book-bundesland-supplements" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-dfefd5ef67d7bfcb62fbc0f8" aria-label="Bundeslandspezifische Ergänzungen"><a href="#goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7"><span class="toc-entry-label">Bundeslandspezifische&#160;<wbr>Ergänzungen</span></a></h3>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:goal-book-supplement-seki" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-e847a07c08f5ec5d127ed63a" aria-label="Sekundarstufe I"><a href="#goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7"><span class="toc-entry-label">Sekundarstufe&#160;<wbr>I</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:goal-book-supplement-SekI-Geometry" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-b4eccc0603397098915ed181" aria-label="Geometrie"><a href="#goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7"><span class="toc-entry-label">Geometrie</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7" data-goal-id="4cba85d3-2e25-5c4b-9c4c-37e5b201dce7" data-page-number="1" data-chapter-ids="structure:goal-book-math-root structure:goal-book-bundesland-supplements structure:goal-book-supplement-seki structure:goal-book-supplement-SekI-Geometry" aria-labelledby="goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7-title"><a class="goal-self-link" href="#goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7">Tangensquotient herleiten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4cba85d3-2e25-5c4b-9c4c-37e5b201dce7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-71894e7ef4af5f94dc6093d2">Mathematik</a></li><li><a href="#chapter-dfefd5ef67d7bfcb62fbc0f8">Bundeslandspezifische Ergänzungen</a></li><li><a href="#chapter-e847a07c08f5ec5d127ed63a">Sekundarstufe I</a></li><li><a href="#chapter-b4eccc0603397098915ed181">Geometrie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3aca07a265ed579af066bd3af7000caf4d11870c44f5c58d8f7d1ba29adc7903" data-rendered-digest="sha256:508db8d2a06d4d15d104987456c092a801aa25694d4bd684a899c2de25b92a90" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/mathematik/4cba85d3-2e25-5c4b-9c4c-37e5b201dce7/4cba85d3-2e25-5c4b-9c4c-37e5b201dce7.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Tangensquotient herleiten&quot;. Die lernende Person kann die Beziehung $\tan(\alpha)=\sin(\alpha)/\cos(\alpha)$ anschaulich oder rechnerisch herleiten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7-description-heading">
+        <p class="section-heading" id="goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für Winkel mit $\cos(\alpha)\neq 0$ die Beziehung $\tan(\alpha)=\sin(\alpha)/\cos(\alpha)$ anschaulich oder rechnerisch herleiten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, HE, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. I · G9</li><li><strong>MV, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7-requires-heading">
+          <p class="section-heading" id="goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7-reverse-heading">
+          <p class="section-heading" id="goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c8818eae-0c4d-4fa1-9085-04a9c95a668b" rel="noreferrer noopener"><span>Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen</span> <code>c8818eae-0c4d-4fa1-9085-04a9c95a668b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11" rel="noreferrer noopener"><span>Sinus- und Kosinusfunktionen als periodische Funktionen beschreiben</span> <code>5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-674baaa8-911d-5231-9330-881c5288634f" rel="noreferrer noopener"><span>Komplementwinkelbeziehung von Sinus und Kosinus herleiten</span> <code>674baaa8-911d-5231-9330-881c5288634f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4cba85d3-2e25-5c4b-9c4c-37e5b201dce7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c9d7546d-3d4a-5f68-b609-831ee8de8877" rel="noreferrer noopener"><span>Aufgabe 2 (Jahrgangsstufe 10, 12 BE)</span> <code>c9d7546d-3d4a-5f68-b609-831ee8de8877</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 1</span>
+      <span>Buch-Digest <code>sha256:4e03a14996126d57230cdfc6772f9d117ebc33b28e425cb913f022484abecbec</code></span>
+      <span>Ziel-Fingerprint <code>sha256:25471a392301027cac06d61dc394019669c9809baaabaf8a0fa28dccaeb539bd</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-math-m7-tangent-quotient-current-20260924-v1&amp;edition=curricular-atomic-v1&amp;goalId=4cba85d3-2e25-5c4b-9c4c-37e5b201dce7&amp;goalFingerprint=sha256%3A25471a392301027cac06d61dc394019669c9809baaabaf8a0fa28dccaeb539bd&amp;pageFingerprint=sha256%3A3a061afaa10e7cd3d7bbd6d4878bcd771d2c53aca032f85dcd8d537b7a6764eb&amp;bookDigest=sha256%3A4e03a14996126d57230cdfc6772f9d117ebc33b28e425cb913f022484abecbec&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

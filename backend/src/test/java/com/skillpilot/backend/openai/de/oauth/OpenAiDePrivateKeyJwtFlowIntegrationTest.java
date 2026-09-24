@@ -2,8 +2,13 @@ package com.skillpilot.backend.openai.de.oauth;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.awaitility.Awaitility.await;
 import static org.mockito.Mockito.verifyNoInteractions;
 
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.Logger;
+import ch.qos.logback.classic.spi.ILoggingEvent;
+import ch.qos.logback.core.read.ListAppender;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
@@ -14,6 +19,8 @@ import com.nimbusds.jose.jwk.gen.RSAKeyGenerator;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.skillpilot.backend.oauth.AuthenticatedClientPolicy;
+import com.skillpilot.backend.oauth.OAuthProfileDiagnostics;
+import com.skillpilot.backend.oauth.OAuthProfileDiagnosticsFilter;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.service.OpenAiDeCoachConnectionService;
 import java.net.CookieManager;
@@ -26,6 +33,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -33,8 +41,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -125,12 +135,36 @@ class OpenAiDePrivateKeyJwtFlowIntegrationTest {
         var grant = List.of(Map.entry("grant_type", "authorization_code"), Map.entry("client_id", CLIENT),
                 Map.entry("code", code), Map.entry("redirect_uri", CALLBACK), Map.entry("code_verifier", VERIFIER),
                 Map.entry("resource", RESOURCE));
-        assertInvalidClient(post(OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT, grant));
         String basic = "Basic " + Base64.getEncoder().encodeToString((URLEncoder.encode(CLIENT, StandardCharsets.UTF_8)
                 + ":synthetic-wrong-secret").getBytes(StandardCharsets.UTF_8));
-        assertInvalidClient(post(OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT, grant, basic));
-        assertInvalidClient(post(OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
-                assertion(grant, jwt(RESOURCE, UUID.randomUUID().toString()))));
+        String wrongAudienceAssertion = jwt(RESOURCE, UUID.randomUUID().toString());
+        var logger = (Logger) LoggerFactory.getLogger(OAuthProfileDiagnostics.class);
+        Level previousLevel = logger.getLevel();
+        var logs = new ListAppender<ILoggingEvent>();
+        // The HTTP server writes these events from a different thread.
+        logs.list = new CopyOnWriteArrayList<>();
+        logs.start(); logger.setLevel(Level.WARN); logger.addAppender(logs);
+        try {
+            var noMethod = post(OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT, grant);
+            assertRejectedDiagnostics(logs, noMethod, "CLIENT_METHOD_REJECTED", "NONE");
+            var basicMethod = post(OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT, grant, basic);
+            assertRejectedDiagnostics(logs, basicMethod, "CLIENT_METHOD_REJECTED", "SECRET_BASIC");
+            var secretPostGrant = new ArrayList<>(grant);
+            secretPostGrant.add(Map.entry("client_secret", "synthetic-wrong-secret"));
+            var postMethod = post(OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT, secretPostGrant);
+            assertRejectedDiagnostics(logs, postMethod, "CLIENT_METHOD_REJECTED", "SECRET_POST");
+            var wrongAudience = post(OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
+                    assertion(grant, wrongAudienceAssertion));
+            assertRejectedDiagnostics(logs, wrongAudience, "JWT_AUDIENCE_REJECTED", "JWT_ASSERTION");
+            assertThat(logs.list).hasSize(4).allSatisfy(event -> {
+                assertThat(event.getThrowableProxy()).isNull();
+                assertThat(event.getFormattedMessage()).doesNotContain(CLIENT, CALLBACK, RESOURCE,
+                        VERIFIER, code, basic, "synthetic-wrong-secret", wrongAudienceAssertion,
+                        wrongAudienceAssertion.split("\\.")[1]);
+            });
+        } finally {
+            logger.detachAppender(logs); logger.setLevel(previousLevel); logs.stop();
+        }
         String usedAssertion = jwt(AUDIENCE, UUID.randomUUID().toString());
         var tokens = post(OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT, assertion(grant, usedAssertion));
         assertThat(tokens.statusCode()).withFailMessage(tokens.body()).isEqualTo(200);
@@ -248,6 +282,21 @@ class OpenAiDePrivateKeyJwtFlowIntegrationTest {
     private void assertInvalidClient(HttpResponse<String> response) throws Exception {
         assertThat(response.statusCode()).withFailMessage(response.body()).isIn(400, 401);
         assertThat(json.readTree(response.body()).path("error").asText()).isEqualTo("invalid_client");
+    }
+    private void assertRejectedDiagnostics(ListAppender<ILoggingEvent> logs, HttpResponse<String> response,
+            String reason, String method) throws Exception {
+        assertInvalidClient(response);
+        String correlation = response.headers().firstValue(OAuthProfileDiagnosticsFilter.CORRELATION_HEADER).orElseThrow();
+        assertThat(UUID.fromString(correlation).toString()).isEqualTo(correlation);
+        // A response can reach the client before the servlet filter finishes its log call.
+        await().atMost(Duration.ofSeconds(5)).untilAsserted(() ->
+                assertThat(logs.list).filteredOn(event -> event.getFormattedMessage()
+                        .contains("correlation_id=" + correlation)).singleElement().satisfies(event -> {
+                            assertThat(event.getLevel()).isEqualTo(Level.WARN);
+                            assertThat(event.getFormattedMessage()).contains("provider=openai ", "endpoint=TOKEN ",
+                                    "result=rejected ", "reason=" + reason + " ", "client_auth_method=" + method + " ",
+                                    "http_status=" + response.statusCode() + " ", "correlation_id=" + correlation);
+                        }));
     }
     private static List<Map.Entry<String, String>> assertion(List<Map.Entry<String, String>> form, String jwt) {
         var result = new ArrayList<>(form);

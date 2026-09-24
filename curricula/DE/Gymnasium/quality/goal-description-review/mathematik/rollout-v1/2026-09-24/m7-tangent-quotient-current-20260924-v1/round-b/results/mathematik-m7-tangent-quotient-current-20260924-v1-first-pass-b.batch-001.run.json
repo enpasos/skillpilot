@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-tangent-quotient-current-20260924-v1-b-001",
+  "campaignId": "mathematik-m7-tangent-quotient-current-20260924-v1-b",
+  "roundId": "mathematik-m7-tangent-quotient-current-20260924-v1-first-pass-b",
+  "batchId": "mathematik-m7-tangent-quotient-current-20260924-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:38598d7ff21155f463db8db0d9010df2edab7da77e0734b5e8ff32253a9a7f4a",
+  "bundleFingerprint": "sha256:6f963397f99cc96926a6eeabaf1b093a017a3585d3a05b780c5a3178b9f9bc9a",
+  "bookDigest": "sha256:4e03a14996126d57230cdfc6772f9d117ebc33b28e425cb913f022484abecbec",
+  "provider": "openai",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:7b2391ec4039b39460f7853916153a4a84cb14e2ebee35c69c4b58ff1ab24bc5",
+  "independenceGroupId": "mathematik-m7-tangent-quotient-current-20260924-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "4cba85d3-2e25-5c4b-9c4c-37e5b201dce7"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:bf81b2882338c79f6e6729107c4174dc81152774ebe98fb5b6fb74fa123a3b3b"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:07148f66f855bc4913d401e9e94e4c8a12fe22e95766b1bb5fdba538c5bf9b7c"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:e03f53b3f658b2c4f5386f81e8dc7b54bf0ea385afcd0d6c24bccafa6628908f"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:38598d7ff21155f463db8db0d9010df2edab7da77e0734b5e8ff32253a9a7f4a"
+    }
+  ],
+  "startedAt": "2026-09-24T17:47:36Z",
+  "completedAt": "2026-09-24T17:48:45Z",
+  "status": "completed",
+  "outputDigest": "sha256:c97284c48df766604aacd6bba46709c78c8882378821618ade9962d0ba98c1d4",
+  "toolchainVersion": "codex-gpt-6-manual-review-v1"
+}

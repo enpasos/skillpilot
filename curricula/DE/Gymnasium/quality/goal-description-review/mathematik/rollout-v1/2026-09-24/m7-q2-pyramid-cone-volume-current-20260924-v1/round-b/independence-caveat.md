@@ -1,0 +1,3 @@
+# Round B independence caveat
+
+The Round B reviewer formed and sent the preliminary `revise` decision for both goals, with the equal-base and perpendicular-height rationale, before learning anything about Round A's decision. The coordinator then disclosed that Round A's preliminary decision matched it. The reviewer did not inspect Round A records, rationale, or earlier packages and completed the content and evidence reasoning from the current canonical goals, the bound Round B inputs, the actual book and images, and the official Hessian curriculum. The finalized Round B result must therefore not be described as fully blind to the other round's decision after that disclosure.

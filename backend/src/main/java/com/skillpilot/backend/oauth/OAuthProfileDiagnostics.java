@@ -15,6 +15,8 @@ public final class OAuthProfileDiagnostics {
     public enum Reason {
         NONE, POLICY_REJECTED, INVALID_PROVENANCE, PROFILE_SUPERSEDED, REFRESH_REUSED,
         CLIENT_AUTHENTICATION_REJECTED, INVALID_TOKEN, INSUFFICIENT_SCOPE,
+        CLIENT_METHOD_REJECTED, CLIENT_REGISTRATION_NOT_FOUND, CLIENT_CREDENTIALS_MISSING,
+        CLIENT_SECRET_REJECTED, AUTHORIZATION_CODE_REJECTED, PKCE_REJECTED,
         JWT_REGISTRATION_MISMATCH, JWT_DECODE_REJECTED, JWT_IDENTITY_REJECTED,
         JWT_AUDIENCE_REJECTED, JWT_AUDIENCE_USES_ISSUER, JWT_AUDIENCE_USES_TOKEN_ENDPOINT,
         JWT_TIME_REJECTED, JWT_HEADER_REJECTED,
@@ -23,6 +25,14 @@ public final class OAuthProfileDiagnostics {
     }
 
     private OAuthProfileDiagnostics() {}
+
+    public enum ClientAuthMethod { UNKNOWN, NONE, SECRET_BASIC, SECRET_POST, JWT_ASSERTION, OTHER }
+
+    /** A bounded transport classification only; never accept a request-supplied label. */
+    public static void markClientAuthMethod(ClientAuthMethod method) {
+        Context context = CURRENT.get();
+        if (context != null && method != null) context.clientAuthMethod = method;
+    }
 
     /** Accept only known internal profile labels, never raw request names or client IDs. */
     public static void markProfile(String profile) {
@@ -61,11 +71,13 @@ public final class OAuthProfileDiagnostics {
         Reason reason = context.reason;
         if (failed && reason == Reason.NONE) reason = status >= 500 ? Reason.INTERNAL_ERROR : Reason.HTTP_REJECTED;
         String result = failed ? "rejected" : "http_completed";
-        String message = "oauth_profile provider={} profile={} endpoint={} result={} reason={} http_status={} correlation_id={}";
+        String message = "oauth_profile provider={} profile={} endpoint={} result={} reason={} client_auth_method={} http_status={} correlation_id={}";
         if (failed) {
-            LOG.warn(message, context.provider, context.profile, context.endpoint, result, reason.name(), status, context.correlation);
+            LOG.warn(message, context.provider, context.profile, context.endpoint, result, reason.name(),
+                    context.clientAuthMethod, status, context.correlation);
         } else {
-            LOG.debug(message, context.provider, context.profile, context.endpoint, result, reason.name(), status, context.correlation);
+            LOG.debug(message, context.provider, context.profile, context.endpoint, result, reason.name(),
+                    context.clientAuthMethod, status, context.correlation);
         }
     }
 
@@ -75,6 +87,7 @@ public final class OAuthProfileDiagnostics {
         final String correlation;
         String profile = "unknown";
         Reason reason = Reason.NONE;
+        ClientAuthMethod clientAuthMethod = ClientAuthMethod.UNKNOWN;
         Context(String provider, Endpoint endpoint, String correlation) {
             this.provider = provider; this.endpoint = endpoint; this.correlation = correlation;
         }

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-tangent-quotient-current-20260924-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-tangent-quotient-current-20260924-v2.config.json",
+  "configDigest": "sha256:c5f26a3f888ecf99464edc37fd92a808287616330142da1704880ce8c295c66a",
+  "goalIds": [
+    "4cba85d3-2e25-5c4b-9c4c-37e5b201dce7"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:03d3f2a797149d485b852cc252c5b7076bb5d3a9ec890089a2390d27cd5c7253"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:350af61cdfa3b9cbbb46230da75601665647f996269b08b227d31d56c0f574bd",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:036fba6de5e6350eb01a1df8c075b45f5e77323809a55ce65ecfacaad71f9b18",
+    "reviewInputFingerprint": "sha256:25749467f98f3b8670854175a60a5946a26b2b4e901a9a3f9f7e0356c50dafae",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-tangent-quotient-current-20260924-v2-a",
+        "campaignDigest": "sha256:7c11ee82212b0bc9639691981aa1612f3b9003a6969ca593cfe9033aa3d9357c",
+        "roundId": "mathematik-m7-tangent-quotient-current-20260924-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-tangent-quotient-current-20260924-v2-independent-a",
+        "batchId": "mathematik-m7-tangent-quotient-current-20260924-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:b012850b7389799ce860303230c864e11ad2b62a530227b3013b36baa62856dc"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-tangent-quotient-current-20260924-v2-b",
+        "campaignDigest": "sha256:4d61c6d30d130703264edf3e56c094fc55e303c5c95691871071469e3d95cbee",
+        "roundId": "mathematik-m7-tangent-quotient-current-20260924-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-tangent-quotient-current-20260924-v2-independent-b",
+        "batchId": "mathematik-m7-tangent-quotient-current-20260924-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:aba27fc49be9c2598874844470c1dab10d51ff02d3830f8dc91e0acefef4cfcd"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

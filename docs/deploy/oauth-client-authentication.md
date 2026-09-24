@@ -651,7 +651,8 @@ Korrelationskennung protokollieren; keine Tokens oder Request-Bodies.
 Fehlende Telemetrie nicht als erfolgreich überwachten Betrieb ausweisen.
 
 Die implementierte Diagnosebasis heißt `OAuthProfileDiagnostics`: feste
-Provider-/Profillabels, `result`, begrenztes `reason`, HTTP-Status und neu
+Provider-/Profillabels, `endpoint`, `result`, begrenztes `reason`,
+`client_auth_method`, HTTP-Status und neu
 generierte `correlation_id`. Dieselbe Kennung steht im Antwortheader
 `X-SkillPilot-Request-ID`; eingehende Kennungen werden nicht ungeprüft
 übernommen. Vor einer vertrauenswürdigen Clientzuordnung bleibt das Profil
@@ -661,6 +662,23 @@ gezielt aktivieren, nicht global Request-/Security-Debuglogging einschalten.
 `http_completed` bescheinigt keinen fachlich erfolgreichen Lernvorgang.
 Externes Dashboard, Alarme und Latenzauswertung benötigen zusätzlich ihre
 eigene operative Einrichtung und Abnahme.
+
+Bei abgewiesener OpenAI-Clientauthentifizierung zeigt `client_auth_method`
+ausschließlich eine feste Klasse der empfangenen Authentifizierung:
+`NONE`, `SECRET_BASIC`, `SECRET_POST`, `JWT_ASSERTION`, `OTHER` oder `UNKNOWN`.
+`JWT_ASSERTION` besagt nur, dass Spring einen JWT-Assertion-Versuch erkannt hat;
+es bestätigt weder eine gültige Signatur noch eine akzeptierte Anmeldemethode.
+Ohne klassifizierten Ablehnungsversuch bleibt das Feld `UNKNOWN`.
+`CLIENT_METHOD_REJECTED` unterscheidet eine unzulässige Methode von fehlender
+Clientregistrierung (`CLIENT_REGISTRATION_NOT_FOUND`), fehlenden Zugangsdaten
+(`CLIENT_CREDENTIALS_MISSING`), abgewiesenem Secret (`CLIENT_SECRET_REJECTED`),
+Code-Ablehnung (`AUTHORIZATION_CODE_REJECTED`) und PKCE-Ablehnung
+(`PKCE_REJECTED`). Diese Zuordnung verwendet nur exakt bekannte Spring-Fehler;
+unbekannte Fehler bleiben `CLIENT_AUTHENTICATION_REJECTED`. Spezifische
+JWT-/Policy-Diagnosen behalten Vorrang. Niemals freie Exception-Texte,
+Client-IDs, Secrets, Assertions, Codes oder PKCE-Verifier protokollieren.
+Eine Methodenabweichung anhand der App-Konfiguration und dieses Nachweises
+beheben; ein abgewiesenes vertrauliches Profil darf nicht auf `none` ausweichen.
 
 Die gemeinsame Readiness-Gruppe umfasst `readinessState,db`; die getrennte
 Gruppe `openaiReadiness` zusätzlich `openAiDeCoach`. Damit darf ein ausschließlich

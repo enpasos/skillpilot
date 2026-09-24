@@ -1301,3 +1301,62 @@ Veröffentlichungsprofil noch die Vorher-Zahlen 742 Bildentscheidungen und
 758 beziehungsweise 39 aktuell sind. Das Veröffentlichungsprofil blieb
 entsprechend der ursprünglichen QS-Scope-Grenze unverändert. Daher wird
 hier **keine vollständige CI-, Release- oder Produktionsfreigabe** behauptet.
+
+## Commitfähiger QS-Zwischenstand mit erneuter Nutzerpause am 24. September
+
+Der Nutzer hat nach einem commitfähigen Zwischenstand ausdrücklich die Pause
+der Mathematik-M7-Zielverfolgung angeordnet. Der neu ausgeführte zentrale
+Fünf-Gate-Check bestätigt **723/797** aktuelle Mathematikziele streng
+abgeschlossen (90,7 %), Gates **D733/P775/A797/M797/V757**, **6/6**
+Prüfungen und **0** Blocker. Gegenüber dem letzten zentral bestätigten
+723er Stand beträgt der Nettozuwachs **0**: **0** neue fachliche Abschlüsse
+und **0** nur wiederhergestellte Bindungen. Die drei zusätzlich aktuellen
+P-Profile schließen wegen anderer offener Gates kein weiteres Ziel streng ab.
+Der neu generierte Status weist Mathematik als **M6 / CQR-303 WARN
+(723/797)** und Physik weiter als **M7 / CQR-303 PASS (478/478)** aus.
+Alle neun geschützten Reifegrad-Untergrenzen bestehen. Menschliche
+Curriculumfreigabe, Release-Gates und Erprobung bleiben getrennt offen.
+
+Die bereits begonnenen Pakete wurden ohne künstliche Abschlüsse gesichert:
+
+- **Q2 Pyramiden-/Kegelvolumen:** Beide aktuellen unabhängigen D-Runden
+  verlangen `revise`. Ein vorbereiteter Textänderungsversuch wurde vor der
+  Pause vollständig aus den operativen Zielen und A-/M-Ledgern entfernt;
+  die v1-Prüfrunden bleiben erhalten. Für einen Abschluss braucht der
+  fachlich präzisierte Text neue unabhängige Reviews der dann aktuellen
+  Ziel- und Seitenfassung. Netto **+0 fachlich / +0 Bindung**.
+- **V-bereite Geometrie/Funktionen:** Beide neunzieligen Runden haben je
+  9/9 valide Records. Die [Paket-Reconciliation](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-vready-geometry-functions-open-nine-current-20260924-v2/reconciliation-after-valid-b-20260924.md)
+  hält zwei KEEP/KEEP-Kandidaten, sechs HOLDs und das bereits separat
+  abgeschlossene Tangensquotientenziel auseinander. Der Paketcheck kann
+  die exakte frühere PDF-Bindung derzeit nicht reproduzieren; keine neue
+  Resolution wurde registriert. Netto **+0 / +0**.
+- **Zwölf In-flight-Restziele:** Ein [ausdrücklich unvalidierter A-Entwurf](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-open-inflight-remnants-12-current-20260924-v2/round-a/runs/a-review-content.draft-status.md)
+  ist erhalten. Ein gültiger A-Run, unabhängiger B-Run und Synthese fehlen;
+  die gitignorierte gebundene `book.pdf` ist lokal nicht verfügbar. Netto
+  **+0 / +0**.
+- **Logarithmus-Transformation:** Drei mit der ChatGPT/Codex-Bildfunktion
+  erzeugte PNG-Versuche wurden in
+  [Bildbefund und Hasharchiv](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-log-transform-codex-candidates-20260924-v1/review.md)
+  dokumentiert. Der Nutzer beurteilt die Punktmarkierungen als gut genug;
+  die linke Kurvenlage des letzten Kandidaten bleibt mathematisch
+  widersprüchlich. Kein Kandidat wurde als aktives Zielbild oder V-Freigabe
+  gebunden. Netto **+0 / +0**.
+
+Für den bereits begonnenen Tangensquotienten wurde `sourceRef` von BW
+3.3.3(7), gedruckter S. 33 auf **S. 34** korrigiert. Das lokale amtliche
+BW-PDF enthält Kompetenz (7) auf PDF-Seite 36, gedruckter Seite 34.
+Gegen `HEAD` sind in der kanonischen Mathematikdatei alle 1.192 Ziel-IDs,
+ihre Reihenfolge und sämtliche anderen Felder gleich. Der SHA im geprüften
+G8/G9-Split-Layout-Plan wurde nach diesem Feldvergleich technisch an die
+aktuelle Kanonik gebunden; das ist keine neue Layout- oder Fachfreigabe.
+Beide aus der BW-Quellenstelle abgeleiteten Mathematik-Rationale-Indizes
+wurden neu erzeugt; ihr inhaltlicher Diff ist auf den korrigierten
+Quellenverweis beschränkt. Drei ältere kanonische Ziele derselben Kompetenz
+(`429f4f7e…`, `d9725eb6…`, `674baaa8…`) zitieren noch S. 33 und bleiben
+als gezielte Quellen- und Nachweisarbeit für die Fortsetzung sichtbar.
+
+Die Nutzerpause gilt **nach** dem unten dokumentierten technischen
+Commitfähigkeitscheck. Keine Veröffentlichung, kein Deployment, keine
+Portalschreiboperation und keine M7- oder menschliche Freigabe folgt aus
+diesem Zwischenstand.
