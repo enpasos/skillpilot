@@ -96,6 +96,31 @@ CODEX_IMAGE_PROVIDERS = frozenset({
     "OpenAI/ChatGPT-Codex image generation",
     "OpenAI/Codex image_gen.imagegen (model version not exposed)",
 })
+# Existing reviewed prompts use several older provider headings, including two
+# verbatim image-generation prompts with the provider recorded in the linked
+# immutable review instead.  Preserve those prompt bytes and accept only these
+# exact resource/provider/prompt-hash bindings; this is provenance, not rights
+# clearance or image-quality approval.  New prompts must use '- Provider: ...'.
+LEGACY_PROMPT_PROVIDER_BINDINGS = {
+    "goal-resource:308f19e2-e202-5300-a2fa-1eaa717f4e73:0": ("OpenAI/ChatGPT-Codex imagegen (model/version not exposed)", "11d5459efecc12683d92a2309261d3bc41afac13a0442b9fc0e739514f6189c2"),
+    "goal-resource:3017e774-8d9f-5129-828f-7684db5afc1e:0": ("ChatGPT/Codex imagegen (model/version not exposed)", "756222480cad90d5dada3d8b16d097fe90ab49df051e89460cabbe910b75c4df"),
+    "goal-resource:0f6c1df6-0e30-54ae-8098-e9422833ba80:0": ("ChatGPT/Codex imagegen (model/version not exposed)", "b80e1affcc18a347effd77e8f8f99a8519996770a6cd73557b4a6c03c3ed2d93"),
+    "goal-resource:bc6e4c14-d4f7-537e-8e83-9b5c0086e807:1": ("ChatGPT/Codex imagegen (model/version not exposed)", "17079d2280679cad77ef4f72f87052dcd801782052b99472cd14e03b8baa5687"),
+    "goal-resource:9b6f4d7d-a804-5666-b7ea-85bb3c73da4a:0": ("OpenAI / ChatGPT-Codex image generation", "200da417a37792f7b37d80ff9e62048271b23233925f02a05de1b02d46667fa7"),
+    "goal-resource:aa00edfa-cf8d-500e-994f-7e33a5ebd045:0": ("OpenAI / ChatGPT-Codex image generation", "d0b1ed0a9f46ef4ac26224e1694157133beba681d95cbd70f1eeab10db7b2b61"),
+    "goal-resource:04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8:0": ("ChatGPT/Codex imagegen (model/version not exposed)", "b89d64899d4f2d1d79cd573d33daeee7ceb30f82989403a315b5ccfad2df3120"),
+    "goal-resource:d8f1fd06-785e-5d15-a8e5-7d8b36f91287:0": ("OpenAI/ChatGPT-Codex imagegen (model/version not exposed)", "bf944a32b73022a6d1760e78e4b7b3994b226a9594a909879d1a69e40265f333"),
+    "goal-resource:a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0:0": ("OpenAI/ChatGPT-Codex imagegen (model/version not exposed)", "e9bd3e36d1f96284ab89a8e202caebd22d11b38bb4b99bcb1f6e06692f21b91c"),
+}
+REVIEW_ONLY_PROMPT_PROVIDER_EVIDENCE = {
+    "goal-resource:bc6e4c14-d4f7-537e-8e83-9b5c0086e807:1",
+    "goal-resource:04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8:0",
+}
+REVIEW_ONLY_PROVIDER_NOTE = (
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/"
+    "math-m7-ln-hyperbola-mobile-png-20260923-v1.md"
+)
+REVIEW_ONLY_PROVIDER_NOTE_SHA256 = "de9a97fb8b76865cefe55a8a65e0d641fcb381c7ddc115bc616799fe4c9edd43"
 PROMPT_PROVIDER_RE = re.compile(r"^- Provider: (.+)$", re.MULTILINE)
 PROMPT_SOURCE_SVG_RE = re.compile(r"^- Immutable SVG: `([^`]+)`$", re.MULTILINE)
 PROMPT_SOURCE_SVG_SHA_RE = re.compile(
@@ -577,11 +602,21 @@ def load_source_model(release_root: Path) -> SourceModel:
         prompt_path = repo_file(prompt_relative)
         prompt_text = prompt_path.read_text(encoding="utf-8")
         provider_match = PROMPT_PROVIDER_RE.search(prompt_text)
-        if provider_match is None or provider_match.group(1) != provider:
-            raise ReviewError(
-                f"Prompt provider metadata differs for resource {resource_id!r}"
-            )
         prompt_sha256 = sha256_file(prompt_path)
+        if provider_match is None or provider_match.group(1) != provider:
+            if LEGACY_PROMPT_PROVIDER_BINDINGS.get(resource_id) != (
+                provider, prompt_sha256
+            ):
+                raise ReviewError(
+                    f"Prompt provider metadata differs for resource {resource_id!r}"
+                )
+            if resource_id in REVIEW_ONLY_PROMPT_PROVIDER_EVIDENCE and (
+                sha256_file(repo_file(REVIEW_ONLY_PROVIDER_NOTE))
+                != REVIEW_ONLY_PROVIDER_NOTE_SHA256
+            ):
+                raise ReviewError(
+                    f"Historical provider review differs for resource {resource_id!r}"
+                )
         deterministic_evidence: dict[str, Any] | None = None
         if legacy_license_note == SKILLPILOT_AUTHORED_LICENSE_NOTE or (
             legacy_license_note in OWN_CONTENT_LICENSE_IDS
