@@ -61,7 +61,8 @@ const LEGACY_BOOK_MODEL_FIXTURE_PATH = (
 )
 const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
 // Current authoring checkpoint, not a historical review/publication approval.
-const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:a2749527f230325a4476419e766baa3801fdb0f8aca760a6f8667ac00bb40933'
+// The BW Tangensquotient source reference was corrected from printed p. 33 to p. 34.
+const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:03d3f2a797149d485b852cc252c5b7076bb5d3a9ec890089a2390d27cd5c7253'
 
 const goal = ({
   id,
@@ -1005,6 +1006,10 @@ assert.equal(nationalAtlas.book.pageCount, 797)
 assert.equal(nationalAtlas.book.scope.schoolForm, 'Gymnasium')
 assert.deepEqual(Object.keys(nationalAtlas.book.scope), ['schoolForm'])
 assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 797)
+assert.equal(
+  canonicalGoalById.get('4cba85d3-2e25-5c4b-9c4c-37e5b201dce7')?.sourceRef,
+  'Bildungsplan BW Mathematik Gymnasium 2016, 3.3.3, Kompetenz 7, S. 34.',
+)
 assert.equal(nationalAtlas.digest, EXPECTED_NATIONAL_MATH_MODEL_DIGEST)
 assert.equal(
   `${JSON.stringify(nationalAtlas, null, 2)}\n`,
