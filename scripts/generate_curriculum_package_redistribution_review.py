@@ -603,20 +603,23 @@ def load_source_model(release_root: Path) -> SourceModel:
         prompt_text = prompt_path.read_text(encoding="utf-8")
         provider_match = PROMPT_PROVIDER_RE.search(prompt_text)
         prompt_sha256 = sha256_file(prompt_path)
+        legacy_binding = LEGACY_PROMPT_PROVIDER_BINDINGS.get(resource_id)
+        if legacy_binding is not None and legacy_binding != (provider, prompt_sha256):
+            raise ReviewError(
+                f"Historical prompt/provider binding differs for resource {resource_id!r}"
+            )
         if provider_match is None or provider_match.group(1) != provider:
-            if LEGACY_PROMPT_PROVIDER_BINDINGS.get(resource_id) != (
-                provider, prompt_sha256
-            ):
+            if legacy_binding is None:
                 raise ReviewError(
                     f"Prompt provider metadata differs for resource {resource_id!r}"
                 )
-            if resource_id in REVIEW_ONLY_PROMPT_PROVIDER_EVIDENCE and (
-                sha256_file(repo_file(REVIEW_ONLY_PROVIDER_NOTE))
-                != REVIEW_ONLY_PROVIDER_NOTE_SHA256
-            ):
-                raise ReviewError(
-                    f"Historical provider review differs for resource {resource_id!r}"
-                )
+        if resource_id in REVIEW_ONLY_PROMPT_PROVIDER_EVIDENCE and (
+            sha256_file(repo_file(REVIEW_ONLY_PROVIDER_NOTE))
+            != REVIEW_ONLY_PROVIDER_NOTE_SHA256
+        ):
+            raise ReviewError(
+                f"Historical provider review differs for resource {resource_id!r}"
+            )
         deterministic_evidence: dict[str, Any] | None = None
         if legacy_license_note == SKILLPILOT_AUTHORED_LICENSE_NOTE or (
             legacy_license_note in OWN_CONTENT_LICENSE_IDS
