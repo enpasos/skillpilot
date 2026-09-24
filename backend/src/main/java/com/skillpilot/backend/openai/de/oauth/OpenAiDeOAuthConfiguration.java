@@ -495,6 +495,7 @@ public class OpenAiDeOAuthConfiguration {
                                     providers.add(0, new OpenAiDePublicRefreshClientAuthenticationProvider(registeredClients));
                                     providers.add(0, new OpenAiDePublicRevocationClientAuthenticationProvider(registeredClients));
                                 }
+                                providers.replaceAll(OpenAiDeClientAuthenticationDiagnostics::new);
                             });
                         })
                         .tokenEndpoint(endpoint -> endpoint.authenticationProviders(providers -> {

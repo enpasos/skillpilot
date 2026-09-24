@@ -37,7 +37,7 @@ public final class OAuthProfileDiagnosticsFilter extends OncePerRequestFilter {
             chain.doFilter(request, response);
             return;
         }
-        String correlation = OAuthProfileDiagnostics.begin(provider);
+        String correlation = OAuthProfileDiagnostics.begin(provider, endpoint(request));
         boolean threw = false;
         try {
             response.setHeader(CORRELATION_HEADER, correlation);
@@ -49,5 +49,15 @@ public final class OAuthProfileDiagnosticsFilter extends OncePerRequestFilter {
         } finally {
             OAuthProfileDiagnostics.finish(threw ? 500 : response.getStatus());
         }
+    }
+
+    /** Only called after the exact provider path allowlist; never log a raw URL or query. */
+    private static OAuthProfileDiagnostics.Endpoint endpoint(HttpServletRequest request) {
+        String path = RawHttpServletRequest.unwrap(request).getRequestURI();
+        if (path.endsWith("/authorize")) return OAuthProfileDiagnostics.Endpoint.AUTHORIZE;
+        if (path.endsWith("/token")) return OAuthProfileDiagnostics.Endpoint.TOKEN;
+        if (path.endsWith("/revoke")) return OAuthProfileDiagnostics.Endpoint.REVOKE;
+        if (path.endsWith("/introspect")) return OAuthProfileDiagnostics.Endpoint.INTROSPECT;
+        return OAuthProfileDiagnostics.Endpoint.MCP;
     }
 }

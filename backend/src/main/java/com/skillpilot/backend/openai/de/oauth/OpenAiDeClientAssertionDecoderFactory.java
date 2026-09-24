@@ -5,6 +5,8 @@ import com.nimbusds.jose.proc.JWSVerificationKeySelector;
 import com.nimbusds.jose.proc.SecurityContext;
 import com.nimbusds.jwt.proc.DefaultJWTProcessor;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
+import com.skillpilot.backend.oauth.OAuthProfileDiagnostics;
+import com.skillpilot.backend.oauth.OAuthProfileDiagnostics.Reason;
 import java.net.URI;
 import java.time.Clock;
 import java.util.Set;
@@ -15,6 +17,7 @@ import org.springframework.security.oauth2.jwt.BadJwtException;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtDecoderFactory;
+import org.springframework.security.oauth2.jwt.JwtException;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.MappedJwtClaimSetConverter;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
@@ -57,8 +60,16 @@ final class OpenAiDeClientAssertionDecoderFactory implements JwtDecoderFactory<R
                 || client.getClientSecret() != null
                 || !properties.getOauth().getClientJwkSetUri().equals(client.getClientSettings().getJwkSetUrl())
                 || !SignatureAlgorithm.RS256.equals(client.getClientSettings().getTokenEndpointAuthenticationSigningAlgorithm())) {
+            OAuthProfileDiagnostics.markReasonIfAbsent(Reason.JWT_REGISTRATION_MISMATCH);
             throw new BadJwtException("OpenAI client registration does not match the pinned authentication policy.");
         }
-        return decoder;
+        return token -> {
+            try {
+                return decoder.decode(token);
+            } catch (JwtException rejected) {
+                OAuthProfileDiagnostics.markReasonIfAbsent(Reason.JWT_DECODE_REJECTED);
+                throw rejected;
+            }
+        };
     }
 }

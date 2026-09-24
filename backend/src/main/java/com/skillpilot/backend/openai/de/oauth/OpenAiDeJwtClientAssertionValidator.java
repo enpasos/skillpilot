@@ -1,6 +1,8 @@
 package com.skillpilot.backend.openai.de.oauth;
 
 import com.skillpilot.backend.oauth.JdbcOAuthClientAssertionReplayStore;
+import com.skillpilot.backend.oauth.OAuthProfileDiagnostics;
+import com.skillpilot.backend.oauth.OAuthProfileDiagnostics.Reason;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
@@ -52,16 +54,16 @@ final class OpenAiDeJwtClientAssertionValidator implements OAuth2TokenValidator<
     public OAuth2TokenValidatorResult validate(Jwt jwt) {
         Object kid = jwt.getHeaders().get("kid");
         if (!(kid instanceof String kidValue) || kidValue.isBlank() || kidValue.length() > 256) {
-            return failure("The private_key_jwt assertion must contain a non-empty kid header.");
+            return failure(Reason.JWT_IDENTIFIER_REJECTED, "The private_key_jwt assertion must contain a non-empty kid header.");
         }
         if (jwt.getId() == null || jwt.getId().isBlank() || jwt.getId().length() > 512) {
-            return failure("The private_key_jwt assertion must contain a non-empty jti claim.");
+            return failure(Reason.JWT_IDENTIFIER_REJECTED, "The private_key_jwt assertion must contain a non-empty jti claim.");
         }
         if (jwt.getExpiresAt() == null) {
-            return failure("The private_key_jwt assertion must contain an exp claim.");
+            return failure(Reason.JWT_TIME_REJECTED, "The private_key_jwt assertion must contain an exp claim.");
         }
         if (jwt.getSubject() == null || jwt.getSubject().isBlank() || jwt.getSubject().length() > 2048) {
-            return failure("The private_key_jwt assertion must identify its client.");
+            return failure(Reason.JWT_IDENTITY_REJECTED, "The private_key_jwt assertion must identify its client.");
         }
 
         Instant now = clock.instant();
@@ -69,22 +71,23 @@ final class OpenAiDeJwtClientAssertionValidator implements OAuth2TokenValidator<
         try {
             retainUntil = jwt.getExpiresAt().plus(clockSkew);
         } catch (RuntimeException invalidTime) {
-            return failure("Invalid private_key_jwt expiration.");
+            return failure(Reason.JWT_TIME_REJECTED, "Invalid private_key_jwt expiration.");
         }
         if (retainUntil.isBefore(now)) {
-            return failure("The private_key_jwt assertion has expired.");
+            return failure(Reason.JWT_TIME_REJECTED, "The private_key_jwt assertion has expired.");
         }
         try {
             return replayStore.consume(jwt.getSubject(), jwt.getId(), retainUntil, maxEntries)
                     ? OAuth2TokenValidatorResult.success()
-                    : failure("The private_key_jwt assertion cannot be consumed.");
+                    : failure(Reason.JWT_REPLAY_OR_CAPACITY_REJECTED, "The private_key_jwt assertion cannot be consumed.");
         } catch (DataAccessException | TransactionException unavailable) {
             // Storage failure is an authentication failure, never an in-memory fallback.
-            return failure("The private_key_jwt replay protection is unavailable.");
+            return failure(Reason.JWT_REPLAY_STORAGE_UNAVAILABLE, "The private_key_jwt replay protection is unavailable.");
         }
     }
 
-    private static OAuth2TokenValidatorResult failure(String description) {
+    private static OAuth2TokenValidatorResult failure(Reason reason, String description) {
+        OAuthProfileDiagnostics.markReasonIfAbsent(reason);
         return OAuth2TokenValidatorResult.failure(new OAuth2Error(
                 OAuth2ErrorCodes.INVALID_CLIENT,
                 description,

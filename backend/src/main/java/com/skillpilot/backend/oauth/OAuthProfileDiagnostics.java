@@ -15,6 +15,10 @@ public final class OAuthProfileDiagnostics {
     public enum Reason {
         NONE, POLICY_REJECTED, INVALID_PROVENANCE, PROFILE_SUPERSEDED, REFRESH_REUSED,
         CLIENT_AUTHENTICATION_REJECTED, INVALID_TOKEN, INSUFFICIENT_SCOPE,
+        JWT_REGISTRATION_MISMATCH, JWT_DECODE_REJECTED, JWT_IDENTITY_REJECTED,
+        JWT_AUDIENCE_REJECTED, JWT_AUDIENCE_USES_ISSUER, JWT_AUDIENCE_USES_TOKEN_ENDPOINT,
+        JWT_TIME_REJECTED, JWT_HEADER_REJECTED,
+        JWT_IDENTIFIER_REJECTED, JWT_REPLAY_OR_CAPACITY_REJECTED, JWT_REPLAY_STORAGE_UNAVAILABLE,
         STORAGE_UNAVAILABLE, METADATA_UNAVAILABLE, HTTP_REJECTED, INTERNAL_ERROR
     }
 
@@ -38,12 +42,14 @@ public final class OAuthProfileDiagnostics {
 
     static boolean hasContext() { return CURRENT.get() != null; }
 
-    static String begin(String provider) {
+    public enum Endpoint { AUTHORIZE, TOKEN, REVOKE, INTROSPECT, MCP }
+
+    static String begin(String provider, Endpoint endpoint) {
         if (!Set.of("openai", "claude").contains(provider) || CURRENT.get() != null) {
             throw new IllegalStateException("OAuth diagnostics requires an isolated known-provider context.");
         }
         String correlation = UUID.randomUUID().toString();
-        CURRENT.set(new Context(provider, correlation));
+        CURRENT.set(new Context(provider, endpoint, correlation));
         return correlation;
     }
 
@@ -55,19 +61,22 @@ public final class OAuthProfileDiagnostics {
         Reason reason = context.reason;
         if (failed && reason == Reason.NONE) reason = status >= 500 ? Reason.INTERNAL_ERROR : Reason.HTTP_REJECTED;
         String result = failed ? "rejected" : "http_completed";
-        String message = "oauth_profile provider={} profile={} result={} reason={} http_status={} correlation_id={}";
+        String message = "oauth_profile provider={} profile={} endpoint={} result={} reason={} http_status={} correlation_id={}";
         if (failed) {
-            LOG.warn(message, context.provider, context.profile, result, reason.name(), status, context.correlation);
+            LOG.warn(message, context.provider, context.profile, context.endpoint, result, reason.name(), status, context.correlation);
         } else {
-            LOG.debug(message, context.provider, context.profile, result, reason.name(), status, context.correlation);
+            LOG.debug(message, context.provider, context.profile, context.endpoint, result, reason.name(), status, context.correlation);
         }
     }
 
     private static final class Context {
         final String provider;
+        final Endpoint endpoint;
         final String correlation;
         String profile = "unknown";
         Reason reason = Reason.NONE;
-        Context(String provider, String correlation) { this.provider = provider; this.correlation = correlation; }
+        Context(String provider, Endpoint endpoint, String correlation) {
+            this.provider = provider; this.endpoint = endpoint; this.correlation = correlation;
+        }
     }
 }

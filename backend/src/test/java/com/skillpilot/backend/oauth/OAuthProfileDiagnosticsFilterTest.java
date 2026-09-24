@@ -49,6 +49,7 @@ class OAuthProfileDiagnosticsFilterTest {
         assertThat(logs.list).hasSize(1);
         assertThat(logs.list.getFirst().getLevel()).isEqualTo(Level.DEBUG);
         assertThat(logs.list.getFirst().getFormattedMessage()).contains("profile=chatgpt-cimd-jwt", "http_status=200", correlation)
+                .contains("endpoint=TOKEN")
                 .doesNotContain("fake-bearer-secret", "fake-client-secret", "fake-client-assertion", "fake-learning-session",
                         "attacker-correlation-secret", "fake-cookie-secret", "fake-query-secret");
     }
@@ -114,6 +115,23 @@ class OAuthProfileDiagnosticsFilterTest {
             assertThat(response.getHeader(OAuthProfileDiagnosticsFilter.CORRELATION_HEADER)).isNull();
         }
         assertThat(logs.list).isEmpty();
+    }
+
+    @Test void rejectedRequestsIdentifyOnlyTheBoundedEndpointCategory() throws Exception {
+        var cases = java.util.Map.of(
+                "/api/openai/v1/oauth2/authorize", "AUTHORIZE",
+                "/api/openai/v1/oauth2/token", "TOKEN",
+                "/api/openai/v1/oauth2/revoke", "REVOKE",
+                "/api/openai/v1/oauth2/introspect", "INTROSPECT",
+                "/internal/openai/v1/mcp", "MCP");
+        for (var entry : cases.entrySet()) {
+            new OAuthProfileDiagnosticsFilter("openai").doFilter(request(entry.getKey()),
+                    new MockHttpServletResponse(), (req, res) -> ((MockHttpServletResponse) res).setStatus(401));
+            assertThat(logs.list.getLast().getFormattedMessage())
+                    .contains("endpoint=" + entry.getValue(), "reason=HTTP_REJECTED")
+                    .doesNotContain(entry.getKey(), "fake-query-secret", "fake-client-assertion", "fake-learning-session");
+        }
+        assertThat(logs.list).hasSize(cases.size());
     }
 
     private static MockHttpServletRequest request(String path) {
