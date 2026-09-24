@@ -88,6 +88,14 @@ PATH_CLASSIFICATION_OVERRIDES: tuple[dict[str, str], ...] = (
 )
 
 USER_PROVIDED_RE = re.compile(r"user-provided", re.IGNORECASE)
+# Exact current Codex image-generator labels.  A project license by itself is
+# never provenance; the prompt must independently repeat the provider verbatim.
+CODEX_IMAGE_PROVIDERS = frozenset({
+    "OpenAI/ChatGPT-Codex imagegen (model/version not exposed)",
+    "ChatGPT/Codex imagegen (model/version not exposed)",
+    "OpenAI/ChatGPT-Codex image generation",
+    "OpenAI/Codex image_gen.imagegen (model version not exposed)",
+})
 PROMPT_PROVIDER_RE = re.compile(r"^- Provider: (.+)$", re.MULTILINE)
 PROMPT_SOURCE_SVG_RE = re.compile(r"^- Immutable SVG: `([^`]+)`$", re.MULTILINE)
 PROMPT_SOURCE_SVG_SHA_RE = re.compile(
@@ -194,6 +202,7 @@ def validate_image_license_input(provider: str, note: str, resource_id: str) -> 
             provider == "Google Gemini / Nano Banana Pro"
             or provider.startswith("Google Gemini / Nano Banana Pro (")
             or provider.startswith("OpenAI ")
+            or provider in CODEX_IMAGE_PROVIDERS
             or USER_PROVIDED_RE.search(provider) is not None
             or provider == DETERMINISTIC_RENDER_PROVIDER
         ):
@@ -1407,6 +1416,7 @@ def run_self_test(
         ("Google Gemini / Nano Banana Pro", False),
         ("Google Gemini / Nano Banana Pro (gemini-3-pro-image)", False),
         ("OpenAI / ChatGPT-Codex image generation", False),
+        *((provider, False) for provider in sorted(CODEX_IMAGE_PROVIDERS)),
         (AI_ASSISTED_NATIVE_PROVIDER, True),
         ("user-provided generated image", False),
     )
