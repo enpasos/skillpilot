@@ -4,6 +4,7 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeRepositoryCurriculumRevision } from "./compute_curriculum_revision.mjs";
+import { assertCurrentCoachBehavior } from "./check_skillpilot_coach_behavior.mjs";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pluginRoot = resolve(
@@ -166,6 +167,7 @@ const contractMetadata = read(resolve(
 ));
 const releaseScript = read(resolve(repositoryRoot, "scripts/openai_plugin_release.mjs"));
 const combinedSkill = `${skill}\n${policy}`;
+assertCurrentCoachBehavior({ skill, policy });
 // Assessment prose is conversation-local, never a tool argument or receipt.
 for (const [name, source] of [
   ["active skill/policy", combinedSkill],
@@ -1316,8 +1318,8 @@ const didacticParityRules = [
       /current focus is complete[\s\S]+broader focus option/u,
     ],
     target: [
-      /When a task is finished[\s\S]+Offer[\s\S]+closure, then wait for an answer/u,
-      /Call `set_skillpilot_mastery` only[\s\S]+learner accepted the\s+offered closure/u,
+      /ordinary[\s\S]+`set_skillpilot_mastery`[\s\S]+immediately/u,
+      /feedback[\s\S]+wait for[\s\S]+continuation/u,
       /completed focus[\s\S]+first supplied broader option[\s\S]+wait for acceptance/u,
       /entire personal curriculum[\s\S]+without\s+inventing new goals or extensions/u,
     ],
@@ -1404,7 +1406,7 @@ assertBehaviorFragments(
     /Feynman-style loop[\s\S]+learner's own words[\s\S]+explain only that gap[\s\S]+changed application/u,
     /distinguish a conceptual gap\s+from a careless error/u,
     /competence is not yet demonstrated[\s\S]+continue working on the\s+same goal/u,
-    /returned handoff[\s\S]+before any successor/u,
+    /`completionHandoff` for the completed work[\s\S]+successor\s+only after explicit continuation/u,
     /Acknowledge completed focus or curriculum[\s\S]+Never invent extensions/u,
     /Use navigation only after an explicit request to change focus or goal/u,
     /missing prerequisite or\s+foundation/u,
@@ -1527,19 +1529,15 @@ assert.match(combinedSkill, /STATE_VERSION_CONFLICT/);
 assertBehaviorFragments(
   skill,
   [
-    /If the previous coach response offered closure of a task or goal[\s\S]+wait for recognizable consent[\s\S]+starting another task, or showing a successor image/u,
     /feedback\/closure response from the new content/u,
-    /mode-specific evidence and learner consent to the offered closure/u,
     /direct-continue request as\s+orientation evidence, not advance consent[\s\S]+wait for a\s+separate learner answer before saving mastery/u,
   ],
   "coach skill task and goal closure",
 );
 assertBehaviorFragments(
-  policy,
+  compactWhitespace(policy),
   [
-    /When a task is finished[\s\S]+Offer\s+questions and a natural closure, then wait for an answer/u,
-    /autopilot on or off[\s\S]+another task in the same goal/u,
-    /one combined question about closing both; one answer suffices/u,
+    /autopilot on or off[\s\S]+next task,[\s\S]+goal, and their image must not appear in the feedback response/u,
     /next task,[\s\S]+goal, and their image[\s\S]+must not appear in the feedback response/u,
     /orientation completion evidence, not advance consent[\s\S]+wait for a separate learner answer\s+before persisting or showing the next goal/u,
     /Give concrete feedback on the complete graded batch[\s\S]+wait for the learner's answer[\s\S]+After consent, call `record_skillpilot_verified_recall_results/u,
@@ -1566,8 +1564,8 @@ assert.match(
 );
 assert.match(
   combinedSkill,
-  /contains[\s\S]+`goalVisualization`[\s\S]+permits[\s\S]+`render_skillpilot_goal_visualization`[\s\S]+form[\s\S]+pair[\s\S]+context's `goalVisualization\.goalId`[\s\S]+result's top-level `stateVersion`[\s\S]+every previously unseen pair[\s\S]+different pair was\s+rendered earlier in this conversation[\s\S]+once as the immediate next tool after closure consent[\s\S]+pair to\s+`goalId` and\s+`expectedStateVersion`[\s\S]+repeated pair creates no automatic call[\s\S]+explicit learner request to show the current image again[\s\S]+fresh qualifying result[\s\S]+never retry otherwise/s,
-  "The coach skill must retain the result-bound goal-visualization rule after closure consent.",
+  /contains[\s\S]+`goalVisualization`[\s\S]+permits[\s\S]+`render_skillpilot_goal_visualization`[\s\S]+form[\s\S]+pair[\s\S]+context's `goalVisualization\.goalId`[\s\S]+result's top-level `stateVersion`[\s\S]+every previously unseen pair[\s\S]+different pair was\s+rendered earlier in this conversation[\s\S]+once as the immediate next tool when teaching is permitted[\s\S]+pair to\s+`goalId` and\s+`expectedStateVersion`[\s\S]+repeated pair creates no automatic call[\s\S]+explicit learner request to show the current image again[\s\S]+fresh qualifying result[\s\S]+never retry otherwise/s,
+  "The coach skill must retain the result-bound goal-visualization rule only when teaching is permitted.",
 );
 assert.match(
   combinedSkill,

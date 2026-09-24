@@ -106,7 +106,6 @@ export function evaluateDialogCase(testCase, events) {
   let recallBatch
   let recallAnswers
   const lastVisibleContext = new Map()
-  const contextGoalByTurn = new Map()
   const renderKeys = new Set()
   let initialOrientationGoalId
   for (const [index, event] of events.entries()) {
@@ -119,13 +118,12 @@ export function evaluateDialogCase(testCase, events) {
     }
     if (event.name === CONTEXT && success(event)) {
       lastVisibleContext.set(event.turnId, payload)
-      contextGoalByTurn.set(event.turnId, contextOf(event)?.activeGoal?.goalId)
       if (['P2', 'P3'].includes(testCase.id) && initialOrientationGoalId === undefined) initialOrientationGoalId = contextOf(event)?.activeGoal?.goalId
     }
     if (event.name === MASTERY && ['P2', 'P3'].includes(testCase.id)) check(`orientation-consent:${index}`, event.turnId === (testCase.id === 'P2' ? 'closure' : 'orientation-closure'), 'Orientation mastery needs a separate learner reply after positive closure; bare interest/example and card ratings do not authorize mastery.')
     if (event.name === EVALUATION && testCase.id === 'P4') check(`exam-submission:${index}`, event.turnId === 'submission', 'Evaluation must follow the full authored submission.')
-    if (event.name === MASTERY && testCase.id === 'P4') check(`exam-closure-consent:${index}`, event.turnId === 'closure', 'Save exam mastery only after the feedback response and separate learner agreement to close.')
     if (event.name === MASTERY && testCase.id === 'P4') {
+      check(`exam-immediate-save:${index}`, event.turnId === 'submission' && !events.slice(0, index).some(prior => prior.type === 'assistant' && prior.turnId === 'submission'), 'Save the passing complete attempt immediately after evaluation, before result feedback, without waiting for learner closure consent.')
       check(`exam-score:${index}`, evaluation && args.evaluationCapability === evaluation.evaluationCapability && args.goalId === evaluation.goalId && Number.isFinite(args.earnedPoints) && args.earnedPoints === 25 && evaluation.scoring?.maxPoints === 25 && evaluation.scoring?.passingPoints === 13, 'The complete fixture earns 25/25 under its actual 13-point passing threshold and current capability.')
     }
     if (event.name === SCOPE && testCase.id === 'P5') {
@@ -156,7 +154,7 @@ export function evaluateDialogCase(testCase, events) {
         const closureTurn = testCase.id === 'P2' ? 'closure' : 'orientation-closure'
         check(`successor-image-consent:${index}`, turnOrder.get(event.turnId) >= turnOrder.get(closureTurn), 'The successor image must wait for the separate learner orientation closure reply; an image of the still-active orientation goal may appear earlier.')
       }
-      if ((testCase.id === 'P3' && event.turnId === 'answers') || (testCase.id === 'P4' && event.turnId === 'submission')) check(`feedback-image-gate:${index}`, args.goalId === contextGoalByTurn.get(event.turnId), 'During feedback, a successor image must wait for the separate learner closure reply.')
+      if ((testCase.id === 'P3' && event.turnId === 'answers') || (testCase.id === 'P4' && event.turnId === 'submission')) check(`feedback-image-gate:${index}`, false, 'Assess submitted work before rendering; no image is shown during result feedback. Successor content waits for the separate learner continuation reply.')
       const key = `${event.turnId}:${args.goalId}:${args.expectedStateVersion}`
       check(`render-once:${index}`, !renderKeys.has(key), 'Do not request the same image twice for one authoritative state and turn.')
       renderKeys.add(key)

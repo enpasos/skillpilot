@@ -469,10 +469,10 @@
         {
           "id": "closure",
           "kind": "user",
-          "text": "Danke für die Auswertung und die Rückmeldung zu meiner Lösung. Ich habe dazu keine weiteren Fragen. Alles klar, wir können die Prüfungsaufgabe und das Lernziel erfolgreich abschließen."
+          "text": "Danke für die Auswertung und die Rückmeldung zu meiner Lösung. Ich habe dazu keine weiteren Fragen. Alles klar, weiter."
         }
       ],
-      "portalSummary": "Show the task without hints. After the full submission, evaluate five criteria; this fixture earns 25/25 (pass 13/25). Give feedback, invite questions or closure, and await the learner. Only after closure save mastery and continue according to the authoritative state.",
+      "portalSummary": "Show only the task. Grade the complete submission: 25/25, pass at 13. Save success immediately before feedback, without closure consent. Explain the result and invite questions or continuation. Wait for the learner's reply before successor content; plain continuation never changes the verdict.",
       "tools": {
         "required": [
           "get_skillpilot_context",
@@ -492,7 +492,7 @@
         {
           "id": "no-advance-help",
           "kind": "manual",
-          "description": "No hint, formula, worked answer or evaluation receipt before the full visible submission."
+          "description": "No hint, formula, worked answer, passing threshold, rubric or evaluation receipt before the full visible submission."
         },
         {
           "id": "complete-scoring",
@@ -500,9 +500,9 @@
           "description": "The submission includes area-limit interpretation, units, model approximation and all five criteria; expected 25/25 with passingScore 13."
         },
         {
-          "id": "exam-closure-gate",
+          "id": "exam-save-and-continuation",
           "kind": "manual",
-          "description": "After submission, explain what the five criteria show and invite questions or a combined task-and-goal close. Do not save mastery, introduce another task, or show its image before the separate closure reply."
+          "description": "After assessing the complete submission privately, save the passing result immediately before result feedback, without requiring closure consent. Then explain what the five criteria show and invite questions or continuation. Do not introduce another task or render an image until the separate learner continuation reply. Plain continuation does not reassess this verdict."
         },
         {
           "id": "one-evaluation",

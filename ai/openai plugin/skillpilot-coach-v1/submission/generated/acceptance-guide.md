@@ -6,11 +6,11 @@ Automatisch aus den aktuellen Einreichungsquellen erzeugt. Nicht hier bearbeiten
 
 Kandidat: `1.1.0` · MCP-Endpunkt: `https://mcp-coach-v1.skillpilot.com/mcp`
 
-Testsuite-SHA-256: `66ebb98b7daa48fe066f9bdd4d33bd903e194c2b4d6e3add34c9f7f54d86864b`
+Testsuite-SHA-256: `6e6b56155c2c6b5348cc4ec7b5d2289043cf81b14aa503b7cc083410dc2ebbc8`
 
-Vertrags-SHA-256: `0dd59e90c1c54fe28608133ec1738461352f82d653c6f2749d7e9b8faf20c130`
+Vertrags-SHA-256: `2fa6ba594955edc4d9d6203f4fec968a11027664a48806e64852d391cd07bb7a`
 
-Paket-Snapshot-SHA-256: `e19f8e0c5fabfc96cbf267bdb9b7f6d89c0d9a4964b2ba86f14327bf0b3d944d`
+Paket-Snapshot-SHA-256: `7c0273bc93d8ffc7fa12490e81fe039d9f64422124ce6fab9ff09e365b42b548`
 
 ## Vorbereitung
 
@@ -261,11 +261,11 @@ Erwarteter Startzustand: B1 (Analysis – „Das Algenwachstum“, 25 BE); task 
 
 #### 3. user · turnId: `closure`
 
-> Danke für die Auswertung und die Rückmeldung zu meiner Lösung. Ich habe dazu keine weiteren Fragen. Alles klar, wir können die Prüfungsaufgabe und das Lernziel erfolgreich abschließen.
+> Danke für die Auswertung und die Rückmeldung zu meiner Lösung. Ich habe dazu keine weiteren Fragen. Alles klar, weiter.
 
 ### Erwartetes Ergebnis
 
-Show the task without hints. After the full submission, evaluate five criteria; this fixture earns 25/25 (pass 13/25). Give feedback, invite questions or closure, and await the learner. Only after closure save mastery and continue according to the authoritative state.
+Show only the task. Grade the complete submission: 25/25, pass at 13. Save success immediately before feedback, without closure consent. Explain the result and invite questions or continuation. Wait for the learner's reply before successor content; plain continuation never changes the verdict.
 
 Erforderliche Werkzeuge: `get_skillpilot_context`, `get_skillpilot_exam_evaluation`, `set_skillpilot_mastery`.
 
@@ -275,11 +275,11 @@ Vorgegebene Werkzeugreihenfolge: `get_skillpilot_context` → `get_skillpilot_ex
 
 ### Prüfkriterien
 
-- [ ] `no-advance-help` — Inhaltlich/visuell prüfen: No hint, formula, worked answer or evaluation receipt before the full visible submission.
+- [ ] `no-advance-help` — Inhaltlich/visuell prüfen: No hint, formula, worked answer, passing threshold, rubric or evaluation receipt before the full visible submission.
 
 - [ ] `complete-scoring` — Inhaltlich/visuell prüfen: The submission includes area-limit interpretation, units, model approximation and all five criteria; expected 25/25 with passingScore 13.
 
-- [ ] `exam-closure-gate` — Inhaltlich/visuell prüfen: After submission, explain what the five criteria show and invite questions or a combined task-and-goal close. Do not save mastery, introduce another task, or show its image before the separate closure reply.
+- [ ] `exam-save-and-continuation` — Inhaltlich/visuell prüfen: After assessing the complete submission privately, save the passing result immediately before result feedback, without requiring closure consent. Then explain what the five criteria show and invite questions or continuation. Do not introduce another task or render an image until the separate learner continuation reply. Plain continuation does not reassess this verdict.
 
 - [ ] `one-evaluation` — `get_skillpilot_exam_evaluation`: mindestens 1, höchstens 1 Aufrufe.
 

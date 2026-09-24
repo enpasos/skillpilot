@@ -1084,9 +1084,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .contains("Rückmeldung", "Folgezustand geladen", "nur bei vereinbartem Weitergehen")
                 .doesNotContain(autopilotSuccessorContext.path("activeGoal").path("title").asText());
 
-        // The confirmed mastery result is the fresh authority after the learner
-        // agreed to close and continue. Render the successor with its unchanged
-        // goal and state version, without reloading get_skillpilot_context.
+        // The confirmed mastery result supplies the successor authority. The coach
+        // gives feedback first and waits for explicit continuation before rendering.
+        // This transport assertion checks that the issued goal/state pair remains valid.
         HttpResponse<String> renderAutopilotSuccessor = callTool(
                 accessToken,
                 180,

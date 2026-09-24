@@ -100,14 +100,14 @@ public record OpenAiDeLearningPlanToday(
         String instruction = switch (state) {
             case "continue" -> "Output 'text' verbatim when reporting plan status, at most once per "
                     + "response, and add no numbers, totals or overall judgement of your own. Then "
-                    + "continue the active goal directly. A status-only question or pause permits no "
+                    + "continue the active goal directly. A pure status-only question or pause without new evidence permits no "
                     + "unsolicited visualization, navigation, exercise or write. Resolve a requested "
                     + "subject before rendering the old goal and use only the switched successor; "
                     + "never interrupt an active exam.";
             case "resume" -> "For a normal learning start call resume_skillpilot_learning_plan using the "
                     + "current stateVersion. A clear subject request takes priority: use its exact "
                     + "published subject with canContinue=true before rendering the old goal. For "
-                    + "status-only questions or a pause do not render, navigate, start a goal or write "
+                    + "pure status-only questions or a pause without new evidence do not render, navigate, start a goal or write "
                     + "state. When reporting plan status, output 'text' verbatim and add no numbers of "
                     + "your own.";
             case "complete" -> "Acknowledge only reached period targets named in the backend text. "
@@ -129,7 +129,7 @@ public record OpenAiDeLearningPlanToday(
                     + "learner to repair configuration.";
             case "paused" -> "Automatic plan guidance is off; do not enable or resume it automatically. A "
                     + "normal learning request may use the active goal or authoritative frontier. Status-only "
-                    + "or pause requests start no exercise and make no write. When reporting plan status, "
+                    + "or pure pause requests without new evidence start no exercise and make no write. When reporting plan status, "
                     + "output 'text' verbatim.";
             default -> "Output 'text' verbatim including its "
                     + "unavailability notice, never claim the period is complete and never invent a "
@@ -139,7 +139,12 @@ public record OpenAiDeLearningPlanToday(
                     + "an eligible personal target. Any plan correction can be handled separately by the "
                     + "teacher. Do not send the learner through configuration.";
         };
-        return new Guidance(state, instruction);
+        return new Guidance(state,
+                "For ordinary goals and fully evaluated exams, save warranted success immediately, including "
+                        + "when sufficient evidence also asks to pause. After that save, give feedback and wait "
+                        + "for explicit learner continuation before applying any teaching, rendering or resume "
+                        + "instruction below. Orientation and Verified Recall retain their separate closure rules. "
+                        + instruction);
     }
 
     private static String safeSubjectLabel(String value) {

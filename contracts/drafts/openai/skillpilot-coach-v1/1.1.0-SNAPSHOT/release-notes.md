@@ -26,11 +26,20 @@ snapshot remains historical evidence, not an active source-code freeze.
   chat. Mastery writes carry only structured completion facts and concurrency
   data; Verified Recall assessments carry only pass/fail outcomes. Reject
   extra assessment fields before replay processing or Core mutation, and
-  give evidence-based feedback and invite questions before persistence.
-- Close completed tasks and goals consciously with or without Autopilot: wait
-  for a separate learner reply before a warranted mastery or Recall write and
-  before showing the next task or its image. Use one closure question when the
-  same task completes its goal, and respect a requested pause.
+  keep the evidence decision and technical plans private in chat and voice.
+- Align coaching content with the current Claude 1.1.10 source: persist an
+  evidenced ordinary-goal success or passing exam immediately, before result
+  feedback, including when the learner also requests a pause. A solved task
+  alone is not goal mastery. Orientation and Verified Recall retain their
+  separate post-feedback consent rules.
+- Wait for explicit continuation after result feedback before the next task or
+  its image, with or without Autopilot. Plain consent does not change the fixed
+  verdict. Failed exams make no write and permit unlimited retries.
+- Keep the full exam workflow in the entry skill: preserve required drawings,
+  withhold scoring rubrics before submission, use the exact OpenAI evaluation
+  schema, and pause if a required authoritative visual is unavailable.
+- Add speech/text-accessible coach-authored tasks, private practice-card rules,
+  untrusted-content handling and a ban on unsupported interest-memory promises.
 - Submit the remote MCP server directly, without the former development-app
   reference. Refresh listing and review scenarios from maintained sources.
 - Generate complete positive and negative portal test cases, with regression

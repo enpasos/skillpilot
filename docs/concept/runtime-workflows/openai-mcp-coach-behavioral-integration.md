@@ -399,12 +399,18 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
 
 - **Erwartung:** ein aktives atomisches Ziel, Diagnose des Vorwissens, kleine
   Hinweise, selbstständige Arbeit, Transfer, faire Rekonstruktion alternativer
-  Wege und Mastery erst nach ausreichender Evidenz und Zustimmung zum
-  Abschluss. Nach jeder abgeschlossenen Aufgabe gibt der Coach Rückmeldung,
-  bietet Rückfragen oder Abschluss an und wartet die Antwort ab. Er zeigt die
+  Wege. Der Coach entscheidet vor seiner Rückmeldung anhand unabhängiger
+  Evidenz, ob nur die Aufgabe oder das ganze Lernziel abgeschlossen ist. Bei
+  ausreichender Zielevidenz speichert er Mastery sofort und wartet die
+  Bestätigung ab, bevor er den Erfolg meldet; eine Zustimmung zum Abschluss
+  ist keine zusätzliche Speicherbedingung. Eine gelöste Aufgabe allein beweist
+  nicht das ganze Ziel. Nach jeder abgeschlossenen Aufgabe gibt der Coach
+  Rückmeldung, bietet Rückfragen oder Weiterlernen an und wartet die Antwort ab. Er zeigt die
   nächste Aufgabe samt Bild erst nach Zustimmung zum Weitergehen. Schließt die
   Aufgabe zugleich das Lernziel ab, genügt eine gemeinsame Rückfrage. Bei
-  Rückfragen oder Pause bleibt der aktuelle Inhalt maßgeblich. Der Ablauf gilt
+  Rückfragen oder Pause bleibt der aktuelle Inhalt maßgeblich; ein im selben
+  Zug belegter Zielerfolg wird auch vor einer Pause gespeichert. Ein bloßes
+  „weiter“ ändert die Evidenzentscheidung nicht. Der Ablauf gilt
   unabhängig vom Autopilot und auch ohne anschließende Aufgabe.
 - **Wiederaufnahme:** Nach einer Unterbrechung wird derselbe bestätigte
   didaktische Schritt fortgesetzt, nicht ein neuer allgemeiner Erklärdialog
@@ -450,10 +456,20 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
 ### GJ-06 – Prüfung
 
 - **Erwartung:** unveränderte Aufgabe, keine Hilfe oder Nachfrage während der
-  Bearbeitung, Auswertung erst nach vollständiger Abgabe, Teilpunkte nach
-  Raster, gleichwertige Lösungswege anerkannt. Danach Rückmeldung und
-  Abschlussfrage; Mastery-Speicherung und neuer Inhalt erst nach der
-  Lernendenantwort.
+  Bearbeitung, Bewertungsschwelle und Raster erst nach vollständiger Abgabe,
+  vorgeschriebene Zeichnungen als tatsächliche Zeichnungen. Die Auswertung
+  bewertet jedes Kriterium und erkennt gleichwertige Lösungswege an. Bei
+  bestandenem Versuch speichert der Coach Mastery sofort mit der freigegebenen
+  Evaluation-Capability und den erreichten Punkten, auch wenn die lernende
+  Person zugleich pausieren möchte. Erst nach bestätigter Speicherung meldet
+  er den gespeicherten Erfolg. Ein nicht bestandener Versuch erzeugt keinen
+  Write und darf beliebig oft wiederholt werden. Danach folgen Teilpunkte,
+  Gesamtergebnis, konkrete Rückmeldung und das Angebot für Rückfragen oder
+  Weiterlernen. Aufgabe und Lösung dürfen nun besprochen werden; ein bloßes
+  „weiter“ verändert das feststehende Ergebnis nicht. Neuer Inhalt samt Bild
+  beginnt erst nach ausdrücklicher Zustimmung zum Weitergehen. Fehlt eine
+  notwendige autoritative Abbildung, pausiert dieselbe Prüfung ohne erfundene
+  Bildangaben oder Ersatzaufgabe.
 
 ### GJ-07 – Langdialog und Rehydration
 

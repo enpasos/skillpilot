@@ -143,7 +143,7 @@ oder Fokusoption wird das Fixture frisch validiert, nicht mit alten Zahlen erzwu
 | P1 | englischer sessionloser Start: genau der kurze First-Party-Hinweis, keine Tools oder Lehre |
 | P2 | Interesse allein beendet Orientierung nicht; persönliche Fortsetzung, frischer Kontext, autoritatives Ziel; freigegebenes Bild ohne Verlust des Lehrtexts |
 | P3 | normale Übung ohne Mastery-Nachweis; alle acht Recallantworten einschließlich Scheitelkoordinaten, Antwortfreigabe und vollständiger geordneter Ergebnisbatch genau einmal |
-| P4 | vollständige Aufgabe ohne Vorabhilfe; Evaluation erst nach vollständiger Abgabe, fünf Kriterien, 25/25 Punkte bei vollständiger Musterabgabe, Schwelle 13/25 |
+| P4 | vollständige Aufgabe ohne Vorabhilfe; Evaluation erst nach vollständiger Abgabe, fünf Kriterien, 25/25 Punkte bei vollständiger Musterabgabe, Schwelle 13/25; bestandenen Versuch vor Ergebnisrückmeldung speichern, Folgeinhalt erst nach ausdrücklichem Weiterlernen |
 | P5 | zunächst nur Fokusoptionen; nach Zustimmung frische erste Option mit vollständigem Payload, Mastery unverändert |
 | N1 | synthetische nicht existente Session: `SESSION_REQUIRED`, lokalisierter Neustarthinweis, keine Mutation oder Lehre |
 | N2 | neues Fach/neue Schulstufe nur im WebGUI; kein verdeckter Level-2-Wechsel |
@@ -153,7 +153,7 @@ oder Fokusoption wird das Fixture frisch validiert, nicht mit alten Zahlen erzwu
 | D3 | Wechsel nur zu bereits gewähltem erlaubtem Planfach, ohne Level-2-/Mastery-Änderung |
 | D4 | fehlender, blockierter oder nicht fortsetzbarer Plan: wahrheitsgemäßer Status, kein unerlaubter Write |
 | D5 | reine Statusfrage: nur frischer Kontext und knappe Übersicht, kein Bild, Navigation oder Unterricht |
-| D6 | ausdrückliche Pause: kurz bestätigen und stoppen, keine automatische Fortsetzung oder Mutation |
+| D6 | reine Pause ohne neue Zielevidenz oder angenommene Orientierungs-/Recall-Abschlussfrage: kurz bestätigen und stoppen, keine automatische Fortsetzung oder Mutation |
 
 ## 6. Automatisierung und Beweisgrenzen
 

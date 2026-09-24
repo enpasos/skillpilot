@@ -443,7 +443,9 @@ class OpenAiDeV11DailyPlanContractTest {
         JsonNode content = objectMapper.valueToTree(result.structuredContent());
         assertThat(content.path("learningPlanToday").path("guidance").path("instruction").asText())
                 .contains("no unsolicited visualization, navigation, exercise or write",
-                        "before rendering the old goal");
+                        "before rendering the old goal", "pause without new evidence",
+                        "save warranted success immediately", "sufficient evidence also asks to pause",
+                        "wait for explicit learner continuation");
         verify(coachTools, never()).resumeLearningPlan(any(), any());
         verify(coachTools, never()).switchLearningPlanSubject(any(), any(), any());
         verify(coachTools, never()).setMastery(any(), any());

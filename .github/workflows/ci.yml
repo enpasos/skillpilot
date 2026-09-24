@@ -121,7 +121,7 @@ jobs:
         run: npm --prefix "ai/openai app" test
       - name: Test plugin release and CI configuration
         run: |
-          node --test scripts/openai_plugin_release.test.mjs scripts/plugin_ci_workflows.test.mjs
+          node --test scripts/openai_plugin_release.test.mjs scripts/plugin_ci_workflows.test.mjs scripts/check_skillpilot_coach_behavior.test.mjs
       - name: Validate SkillPilot Coach source and current submission contract
         run: node scripts/check_openai_plugin_versioning.mjs
       - name: Validate current OpenAI 1.1 plan contract

@@ -322,7 +322,7 @@ class OpenAiDeCoachContextProjectorTest {
         assertThat(context.instruction())
                 .contains(
                         "Während eines offenen Abschlusses",
-                        "speichere einen fachlich belegten Abschluss vor einer neuen Aufgabe",
+                        "Speichere belegten Erfolg bei gewöhnlichen Zielen und Prüfungen sofort",
                         "„Dein aktives Lernziel: Warum Mathematik? – Denken, Muster & Zukunft“",
                         "Verwende den Titel, nicht die Beschreibung",
                         "Landkarte",
@@ -381,7 +381,7 @@ class OpenAiDeCoachContextProjectorTest {
         assertThat(context.instruction())
                 .contains(
                         "During a pending closure",
-                        "save any warranted completion before presenting another task or image",
+                        "Save warranted ordinary or exam mastery immediately",
                         "“Your active learning goal: Why mathematics? – Thinking, patterns & the future”",
                         "Use the title, not the description",
                         "only selects a path starts the motivational dialogue",
@@ -424,7 +424,7 @@ class OpenAiDeCoachContextProjectorTest {
     }
 
     @Test
-    void teachingAndExamPoliciesRequireFeedbackAndConsentBeforeCompletionInBothLocales() {
+    void teachingAndExamPoliciesSaveSuccessBeforeFeedbackAndWaitBeforeNewContentInBothLocales() {
         OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
                 new CoachStateProjection("https://skillpilot.test"), "https://skillpilot.test");
         for (String locale : List.of("de", "en")) {
@@ -440,23 +440,33 @@ class OpenAiDeCoachContextProjectorTest {
                         ? "unabhängig von der Autopilot-Einstellung"
                         : "with or without autopilot");
                 assertThat(policies).contains(locale.equals("de")
-                        ? "Gib zuerst konkrete Rückmeldung, biete Rückfragen oder Abschluss an und warte die Antwort ab"
-                        : "first give concrete feedback, invite questions or closure, and wait for the learner's reply");
+                        ? "Gib dann konkrete Rückmeldung, biete Rückfragen oder Weitergehen an und warte die Antwort ab"
+                        : "Then give concrete feedback, invite questions or continuation, and wait for the learner's reply");
                 assertThat(policies).contains(locale.equals("de")
                         ? "Eine neue Aufgabe oder ihr Lernbild erscheint erst nach erkennbarer Zustimmung zum Weitergehen"
                         : "Show the next task or its image only after recognizable agreement to continue");
                 assertThat(policies).contains(locale.equals("de")
-                        ? "genügt eine gemeinsame Rückfrage"
-                        : "ask one combined closure question");
+                        ? "speichere belegten Erfolg sofort, ohne separate Abschlusszustimmung"
+                        : "save warranted success immediately, without separate closure consent");
                 assertThat(policies).contains(locale.equals("de")
                         ? "ohne eine nächste Aufgabe zu unterstellen"
                         : "without presuming another task");
                 assertThat(policies).contains(locale.equals("de")
-                        ? "biete Rückfragen oder Abschluss an und warte auf Zustimmung"
-                        : "invite questions or closure, and wait for consent");
+                        ? "ausreichende Leistung zusammen mit einem Pausenwunsch wird zuerst gespeichert"
+                        : "sufficient evidence together with a pause request is saved first");
                 assertThat(context.instruction() + policies)
                         .doesNotContain("workFeedback", "outcomeFeedback", "always pass concrete feedback",
-                                "Übergib beim Abschluss immer", "earnedPoints plus complete work");
+                                "Übergib beim Abschluss immer", "earnedPoints plus complete work",
+                                "Gib vor dem Speichern konkrete Rückmeldung", "Before saving, give concrete feedback",
+                                "Only then save mastery", "Speichere Mastery erst dann");
+                if (context.interactionMode().equals("exam")) {
+                    assertThat(policies).contains(locale.equals("de")
+                            ? "Bei Nichtbestehen speichere weder Versuch noch Mastery"
+                            : "On failure, write neither the attempt nor mastery");
+                    assertThat(policies).contains(locale.equals("de")
+                            ? "dieselbe Prüfung darf unbegrenzt wiederholt werden"
+                            : "the same exam may be retried without a limit");
+                }
             }
         }
     }
@@ -613,7 +623,7 @@ class OpenAiDeCoachContextProjectorTest {
                         "wenn keine Abschlussfrage zum bisherigen Inhalt offen ist",
                         "weitergehen möchte",
                         "Biete keine anderen Lernziele an",
-                        "Zustimmung zum Abschluss")
+                        "ohne separate Abschlusszustimmung")
                 .doesNotContain(alternativeOne.title(), alternativeTwo.title());
         assertThat(english.frontier()).isEmpty();
         assertThat(english.nextAllowedTools())
@@ -627,7 +637,7 @@ class OpenAiDeCoachContextProjectorTest {
                         "only when no earlier task or goal closure is pending",
                         "learner wants to continue",
                         "Do not offer other learning goals",
-                        "learner consent to close")
+                        "without separate closure consent")
                 .doesNotContain(alternativeOne.title(), alternativeTwo.title());
     }
 

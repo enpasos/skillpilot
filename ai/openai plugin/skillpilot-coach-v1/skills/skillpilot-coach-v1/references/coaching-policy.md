@@ -98,7 +98,8 @@ For each learner turn:
    retry; never for changed arguments.
 6. After a successful write, continue directly from its full successor
    context. If it offers a goal visualization, invoke the renderer as specified
-   below only after any pending task or goal closure has been accepted;
+   below only when teaching is permitted and any preceding result feedback has
+   received explicit learner continuation;
    otherwise produce the response without another state read.
 
 On `STATE_VERSION_CONFLICT`, reload once and re-evaluate intent. Treat another
@@ -154,8 +155,10 @@ Resolve status-only, pause and explicit subject requests before visualization,
 navigation, mode-specific teaching, or generic
 automatic continuation, as specified in `SKILL.md`. A status request performs
 no learning-state mutation and starts no task. A pause stops this coaching
-response, not the stored plan. If closure and pause are both explicitly accepted,
-confirm only that closure and show no successor. A clear subject request is
+response, not the stored plan. Sufficient ordinary-goal evidence or a complete
+passing exam submission still requires its success write before pausing.
+Orientation and Recall closure keep their separate consent rules. Show no
+successor while pausing. A clear subject request is
 sufficient intent to
 switch within the already configured plans, but never to alter Level 2.
 Changing the configured curriculum, stage or subject selection still belongs
@@ -212,17 +215,18 @@ the quoted status text never contains it; never substitute the
 description. Never introduce the goal as "trotzdem noch nicht abgeschlossen" in
 contrast to a reached period target.
 
-Assess submitted task work before rendering. On learner consent to close an
-evidenced goal or graded Recall batch, make its completion write before
-rendering from the confirmed successor; never render the old goal from the
-turn-opening context. When no task submission awaits feedback, no closure
+Assess submitted task work privately before rendering. Persist ordinary-goal
+success or a passing exam immediately before result feedback; orientation and
+graded Recall batches retain their separate consent gates. Never render the old
+goal from the turn-opening context or a successor during feedback, questions or
+a pause. When no task submission awaits feedback, no closure
 question or completion write is pending, and the newest full context or
 mutation successor contains `goalVisualization`
 and explicitly permits `render_skillpilot_goal_visualization`, form a pair from
 that context's `goalVisualization.goalId` and its authorizing result's top-level
 `stateVersion`. For every previously unseen pair—even if a different pair was
 rendered earlier in this conversation—invoke the renderer once as the immediate
-next tool after closure consent, copying the pair to `goalId` and `expectedStateVersion`. A repeated
+next tool when teaching is permitted, copying the pair to `goalId` and `expectedStateVersion`. A repeated
 pair creates no automatic call. Only an explicit learner request to show the
 current image again creates one new one-shot call after a fresh qualifying
 result; never retry otherwise. Never render a successor image during feedback
@@ -306,25 +310,31 @@ For an ordinary active subject goal:
 9. If the required competence is not yet demonstrated, continue working on the
    same goal. Do not save mastery or move on merely because an attempt ended.
 
-When a task is finished, first give concrete feedback about the learner's work:
-what they showed, what remains open, and whether this task was solved. Offer
-questions and a natural closure, then wait for an answer. This applies with
-autopilot on or off, including when another task in the same goal is ready. If
-the task also supplies sufficient evidence for the entire goal, summarize the
-goal and ask one combined question about closing both; one answer suffices.
-Solving one task does not automatically prove the goal. If the goal remains
-open, ask only to close this task before starting another. Answer questions
-about the current work; if a question reveals a misunderstanding, check that
-idea again before offering successful closure. Reoffer closure after answering
-questions. Respect a pause. The next task,
-goal, and their image must not appear in the feedback response, including
-through an early renderer call. A hint or explanation inside an unfinished task
-does not need a separate
-closure. At the end of a learning unit with no next task, offer a natural end
-without implying a further task. A natural “Alles klar, weiter” in answer to
-the closure offer consents to closure and continuation; do not add another
-confirmation dialog. Closure consent without a wish to continue authorizes no
-next task or image.
+Before replying when a task may finish, silently decide from the learner's work
+whether the task is complete and every aspect of the active goal has sufficient
+independent evidence. Keep this evidence audit, self-instructions and tool plan
+out of chat and voice. Solving one task does not automatically prove the goal.
+If the task is incomplete, explain the gap and continue it or offer a targeted
+check. If only the task is complete, give feedback about this task without a
+mastery write or stored failure; on continuation check the specific missing
+aspect within the same goal. If the ordinary goal has sufficient evidence, call
+`set_skillpilot_mastery` immediately and wait for confirmation before saying it
+was completed or saved, then give concrete feedback. Agreement to close is not
+an evidence or persistence gate. On a failed or conflicting write, do not claim
+completion or overwrite another client's work.
+
+Name what the learner showed, what succeeded and what remains open. Offer
+questions or continuation, then wait for an answer. This applies with autopilot
+on or off. If task and goal finish together, summarize them and ask one combined
+question. The next task, goal, and their image must not appear in the feedback
+response, including through an early renderer call. Answer questions about the
+current work and respect a pause. Plain consent, “abschließen” or “Alles klar,
+weiter” adds no subject evidence and does not reopen or retract the fixed
+decision. New substantive work or an actual grading error can justify another
+check; never silently undo confirmed mastery. A hint or explanation inside an
+unfinished task needs no closure round. At the end of a unit, offer a natural
+close without assuming a further task exists. Only explicit continuation starts
+new content; closure or a pause alone starts nothing.
 
 For visual, graph, or GeoGebra goals, use the supplied visible environment and
 let the learner observe, enter, change, and read representations. Do not replace
@@ -333,8 +343,9 @@ required interaction with textual guessing.
 ### Mastery evidence
 
 Call `set_skillpilot_mastery` only for the confirmed active atomic goal after it
-was worked on in the current conversation **and** the learner accepted the
-offered closure. Require either:
+was worked on in the current conversation and sufficient evidence is available.
+Persist that success before result feedback, without waiting for learner
+agreement. Require either:
 
 - two independent checks, such as explanation plus a new application; or
 - genuine multi-step transfer in a changed context.
@@ -343,12 +354,14 @@ Cover every explicitly named aspect. Self-assessment, repeated supplied wording,
 one fully worked example, one subpart, navigation, or an unsupported answer is
 not enough. After an error, require correction and fresh evidence.
 
-Never set manual mastery for clusters or memorization goals. Every mastery call
+Completion is binary. Correction or withdrawal of confirmed mastery belongs in
+the Cockpit; use only its supplied URL. Never set manual mastery for clusters or
+memorization goals. Every mastery call
 contains only structured completion facts and concurrency data. Learner answers,
-assessment reasoning and feedback stay exclusively in the conversation. Give
-concrete localized feedback about visible work before asking for closure and
-before the mastery write. After the confirmed save, present any required
-`completionHandoff` before introducing the confirmed successor. It contains
+assessment reasoning and feedback stay exclusively in the conversation. After
+the confirmed save, give concrete localized feedback and present any required
+`completionHandoff` for the completed work; introduce the confirmed successor
+only after explicit continuation. The handoff contains
 only server-owned completion facts and instructions, never echoed chat content.
 Evidence from the preceding goal never counts for the successor. Consent alone
 never replaces evidence, and an unconfirmed write is not completion.
@@ -371,7 +384,8 @@ chooses normal practice, call it once with the active goal and current state
 version. The dedicated component alone may reveal answers, move within its
 bounded batch, and call `review_skillpilot_memory_practice_card` with
 `not_known` or `known` for the displayed card. Never infer or submit that choice
-in dialogue. Only the component may load a further batch.
+in dialogue. Never copy private card fronts, backs or review authorizations into
+chat. Only the component may load a further batch.
 
 Practice changes repetition scheduling only. Never describe it as mastery or
 Verified Recall. Its receipt is not full context. Offer the supplied Cockpit URL
@@ -390,7 +404,8 @@ per-card read/write loops.
 1. Call `start_skillpilot_verified_recall(learningSessionId)` once. It accepts
    neither a goal nor a batch size. Show every returned card in its server order
    as one numbered batch without expected answers, retain its opaque
-   `batchCapability`, and wait for answers to all cards.
+   `batchCapability`, and wait for answers to all cards in this conversation.
+   Spoken and written answers both count; never fetch expected answers early.
 2. After the complete learner submission, call
    `get_skillpilot_verified_recall_answers(learningSessionId, batchCapability)`
    exactly once. Retain its opaque `gradingCapability`. Compare every learner
@@ -422,34 +437,10 @@ idea briefly but do not repeat the card. Do not set additional manual mastery.
 
 ## 7. Assessment
 
-Enter this mode only for a confirmed active assessment goal.
-
-### Task phase
-
-- Output supplied task content exactly, changing only TeX delimiters.
-- If an image is required, output the supplied cockpit URL exactly before the
-  task.
-- Give no hint, partial solution, path, scaffold, or follow-up question.
-- Wait for a complete visible submission.
-
-### Evaluation phase
-
-Only after submission, load the approved evaluation and grade:
-
-- visible text, calculations, results, and justifications only;
-- criterion by criterion;
-- equivalent correct methods, representations, and permitted rounding fully;
-- missing subparts with the corresponding deduction;
-- unreadable content as not assessable, without inventing an error.
-
-Report sub-scores and total. For each deduction, state the gap, correct approach,
-and correct partial result or conclusion. Offer questions and closure, then wait.
-Copy the opaque `evaluationCapability` unchanged into the mastery call with
-finite `earnedPoints` only after consent. Keep criterion-based reasoning and
-feedback exclusively in chat. Save mastery only at or above `passingPoints`.
-For a failed result, answer questions and offer further practice only after the
-learner chooses it; do not claim goal completion. After a confirmed passing
-save, present the required handoff before any successor.
+For a confirmed active assessment goal, use the complete
+[Exams workflow in SKILL.md](../SKILL.md#exams). It is loaded with the entrypoint;
+no additional instruction lookup is needed. The ordinary coaching workflow does
+not govern an exam.
 
 ## 8. Resources, errors, and completion
 
@@ -463,7 +454,8 @@ save, present the required handoff before any successor.
   its supplied route and do not teach the same activity in parallel.
 - On authentication, schema, persistence, repeated conflict, or idempotency
   failure, stop truthfully and follow the server instruction. Claim neither
-  presumed success nor silent continuation.
+  presumed success nor silent continuation. Only the Exams workflow's bounded
+  evaluation-read schema correction is an exception.
 - State only fresh progress values. Give current-scope progress first and a
   broader total only on request. Never estimate.
 - Acknowledge completed focus or curriculum briefly and offer only supplied
@@ -487,8 +479,10 @@ Before responding, verify:
 7. A new goal section begins with its exact title; any previous-goal handoff is
    complete first.
 8. The current coaching mode and evidence threshold are satisfied.
-9. Feedback and the closure question precede any mastery write or next task;
-   one learner answer separates them, and no successor image appears early.
+9. Ordinary-goal success and passing exams were saved before result feedback;
+   orientation and Recall obeyed their separate consent gates. One learner
+   answer agreeing to continue separates result feedback from new content, and
+   no successor image appears early.
 10. Every URL is authorized and every state claim is confirmed.
 11. The learner-facing response contains no system mechanics or technical IDs.
 
