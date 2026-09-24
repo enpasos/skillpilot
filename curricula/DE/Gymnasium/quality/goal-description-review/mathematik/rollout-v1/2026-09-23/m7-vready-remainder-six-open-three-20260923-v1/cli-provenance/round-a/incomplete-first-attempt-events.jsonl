@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"01a0d224-3fad-79c3-9096-ddb748127c4b"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"The supplied GoalBook input has the three goal and fingerprint bindings, but no `runId`, `campaignId`, `roundId`, or `recordId` values. Those are required by the schema, so I need the exact bound values before I can return valid JSONL. I’ll review the goal content in the meantime."}}
+{"type":"item.completed","item":{"id":"item_1","type":"agent_message","text":"Please provide the exact bound runId, campaignId, roundId, and three recordId values, in goal order. The supplied input omits them, and the schema requires them."}}
+{"type":"item.completed","item":{"id":"item_2","type":"agent_message","text":"I’ve completed the content review for all three goals. The JSONL records are ready once the missing IDs are supplied; I can’t invent those bindings without breaking the review instructions and schema."}}

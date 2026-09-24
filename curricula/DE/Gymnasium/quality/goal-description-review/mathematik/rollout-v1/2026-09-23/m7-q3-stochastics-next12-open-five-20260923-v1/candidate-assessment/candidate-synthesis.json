@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "synthesisId": "mathematik-m7-q3-stochastics-open-five-candidate-synthesis-20260924-v1",
+  "batchId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1",
+  "status": "batch_local_machine_candidate",
+  "synthesizedAt": "2026-09-24",
+  "reviewValidationPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/candidate-assessment/dual-round-validation.json",
+  "currentBundleFingerprint": "sha256:cf6b8ad7bea4df7bc4b7c272a2bbd09f77df033f3d0409703ca4dd92740bbd46",
+  "currentReviewInputFingerprint": "sha256:5b2843e955bcc5d62bb799901da8f972943a80943a7425642f50bbd1f2229f0a",
+  "strictClosures": 0,
+  "goals": [
+    {
+      "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
+      "roundA": "revise",
+      "roundB": "revise",
+      "synthesis": "revise",
+      "candidateDescriptionDe": "Die lernende Person kann die Anzahl ungeordneter Auswahlen ohne Zurücklegen mithilfe von Fakultäten berechnen, ohne den Binomialkoeffizientenbegriff zu verwenden, und das Ergebnis an kleinen Beispielen prüfen.",
+      "candidateDescriptionEn": "The learner can calculate the number of unordered selections without replacement using factorials, without using the binomial coefficient term, and check the result with small examples.",
+      "rationale": "Both current reviews find that 'Stichproben berechnen' leaves the requested count implicit. The synthesis names the number of selections, retains the factorial method and the original distinction from the later binomial-coefficient goal, and keeps checking as a small plausibility step. Systematic enumeration is not made a new required method.",
+      "positiveUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Bei einer ungeordneten Auswahl ohne Zurücklegen zählt jede Gruppe unabhängig von der Reihenfolge ihrer Elemente genau einmal; Fakultäten zählen zunächst geordnete Auswahlen und der passende Quotient korrigiert die Mehrfachzählung.",
+        "essentialUnderstandingEn": "In an unordered selection without replacement, each group counts exactly once regardless of the order of its elements; factorials first count ordered selections, and the appropriate quotient corrects that multiple counting.",
+        "observablePerformanceDe": "Die lernende Person bestimmt aus n und k die Anzahl ungeordneter Auswahlen, stellt dafür einen passenden Fakultätsquotienten auf, erklärt die Korrektur der Mehrfachzählung und prüft das Ergebnis an einem kleinen Beispiel.",
+        "observablePerformanceEn": "Given n and k, the learner determines the number of unordered selections, sets up an appropriate factorial quotient, explains the correction for multiple counting, and checks the result in a small example.",
+        "transferExpectationDe": "Wenn in einer neuen Aufgabe statt der ausgewählten die ausgeschlossenen Objekte betrachtet werden, deutet die lernende Person dieselbe Auswahlstruktur mit n−k und begründet, warum die Anzahl gleich bleibt.",
+        "transferExpectationEn": "When a new task focuses on the excluded rather than the selected objects, the learner interprets the same selection structure using n−k and explains why the count remains unchanged."
+      },
+      "otherGates": {
+        "currentPProfile": "needs_human_review / ai_candidate; current scoped check has zero blocking issues",
+        "memory": "no_memory_needed; full current math check passed",
+        "visualization": "missing; deferred_provider_limitation"
+      },
+      "candidateGate": "wording finding resolved in synthesis candidate; not integrated; missing current machine visualization gate"
+    },
+    {
+      "goalId": "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+      "roundA": "keep",
+      "roundB": "revise",
+      "synthesis": "revise",
+      "candidateDescriptionDe": "Die lernende Person kann in Anwendungen die Anzahl ungeordneter Auswahlen ohne Zurücklegen (z. B. Lottotipps) mit Binomialkoeffizienten bestimmen und die Anzahl im Kontext deuten.",
+      "candidateDescriptionEn": "In applications, the learner can use binomial coefficients to determine the number of unordered selections without replacement (for example, lottery combinations) and interpret that count in context.",
+      "rationale": "The page's context and source distinguish combinatorial counts from the following Laplace-probability goal 0408. The current title and context make the count plausible, but explicitly naming 'Anzahl' prevents an avoidable count-versus-probability ambiguity while preserving the already claimed application and interpretation.",
+      "positiveUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Ein Binomialkoeffizient zählt die verschiedenen ungeordneten Auswahlen der Größe k aus n unterscheidbaren Elementen, wenn ohne Zurücklegen gewählt wird; der Wert ist zunächst eine Anzahl von Möglichkeiten.",
+        "essentialUnderstandingEn": "A binomial coefficient counts the distinct unordered selections of size k from n distinguishable items when selection is without replacement; its value is first a count of possibilities.",
+        "observablePerformanceDe": "Die lernende Person identifiziert in einer Anwendung n und k, begründet, weshalb die Reihenfolge nicht unterscheidet, berechnet den Binomialkoeffizienten und deutet die gezählten Auswahlen im Kontext.",
+        "observablePerformanceEn": "In an application, the learner identifies n and k, justifies why order does not distinguish outcomes, calculates the binomial coefficient, and interprets the selections counted in context.",
+        "transferExpectationDe": "In einer neuen Auswahlaufgabe mit einem geänderten Grundbestand passt die lernende Person n oder k an die Situation an und erklärt, welche Gruppen der neue Binomialkoeffizient zählt.",
+        "transferExpectationEn": "In a new selection problem with a changed pool, the learner adapts n or k to the situation and explains which groups the new binomial coefficient counts."
+      },
+      "otherGates": {
+        "currentPProfile": "needs_human_review / ai_candidate; current scoped check has zero blocking issues",
+        "memory": "no_memory_needed; full current math check passed",
+        "visualization": "missing; deferred_provider_limitation"
+      },
+      "candidateGate": "wording conflict resolved in synthesis candidate; not integrated; missing current machine visualization gate"
+    },
+    {
+      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "roundA": "revise",
+      "roundB": "revise",
+      "synthesis": "revise",
+      "candidateDescriptionDe": "Die lernende Person kann bei unabhängigen Ziehungen mit Zurücklegen und gleichwahrscheinlichen Einzelergebnissen die Laplace-Wahrscheinlichkeit für genau k Treffer in n Ziehungen mithilfe eines Binomialkoeffizienten berechnen und im Kontext deuten.",
+      "candidateDescriptionEn": "For independent draws with replacement and equally likely elementary outcomes, the learner can use a binomial coefficient to calculate the Laplace probability of exactly k successes in n draws and interpret it in context.",
+      "rationale": "Both current reviews ask for the event and the assumptions. The source explicitly distinguishes with-replacement binomial tasks from without-replacement hypergeometric tasks. The synthesis names the event exactly and states equal elementary probabilities and independent repeated draws; it keeps the existing combinatorial method and contextual interpretation.",
+      "positiveUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Bei unabhängigen Ziehungen mit Zurücklegen bleibt die Erfolgswahrscheinlichkeit p gleich; für genau k Treffer in n Ziehungen zählt der Binomialkoeffizient die Trefferpositionen, und jede entsprechende Folge hat die Wahrscheinlichkeit p^k(1−p)^(n−k).",
+        "essentialUnderstandingEn": "With independent draws with replacement, the success probability p remains constant; for exactly k successes in n draws, the binomial coefficient counts the success positions, and each such sequence has probability p^k(1−p)^(n−k).",
+        "observablePerformanceDe": "Die lernende Person bestimmt aus einer Beschreibung n und p, erklärt, warum Zurücklegen die unabhängigen Ziehungen mit gleichbleibender Trefferwahrscheinlichkeit erlaubt, und verknüpft Anzahl der Trefferfolgen und Einzelwahrscheinlichkeit zur gesuchten Laplace-Wahrscheinlichkeit.",
+        "observablePerformanceEn": "From a description, the learner determines n and p, explains why replacement permits independent draws with a constant success probability, and combines the number of success sequences with the probability of each sequence to obtain the Laplace probability.",
+        "transferExpectationDe": "Bei einer neuen Urne, in der mehrere Farben als Treffer gelten, fasst die lernende Person deren Anteile zu p zusammen und prüft, ob Unabhängigkeit und gleichbleibende Trefferwahrscheinlichkeit für die Rechnung erhalten bleiben.",
+        "transferExpectationEn": "For a new urn in which several colours count as success, the learner combines their proportions into p and checks whether independence and a constant success probability still hold for the calculation."
+      },
+      "otherGates": {
+        "currentPProfile": "needs_human_review / ai_candidate; current scoped check has zero blocking issues",
+        "memory": "no_memory_needed; full current math check passed",
+        "visualization": "missing; deferred_provider_limitation"
+      },
+      "candidateGate": "wording finding resolved in synthesis candidate; not integrated; missing current machine visualization gate"
+    },
+    {
+      "goalId": "66f432e9-22d3-51a9-8787-35f91db30616",
+      "roundA": "keep",
+      "roundB": "keep",
+      "synthesis": "keep_description_and_atomicity_candidate",
+      "candidateDescriptionDe": "Die lernende Person kann geeignete Situationen als binomialverteilte Zufallsgrößen modellieren, anhand von Histogrammen typische Eigenschaften erkennen und die Eignung des Modells kritisch beurteilen.",
+      "candidateDescriptionEn": "The learner can model suitable situations as binomial random variables, recognize characteristic features in histograms, and critically assess the suitability of the model.",
+      "rationale": "Both current exact-bound description reviews keep the unchanged description and independently characterize modeling, histogram interpretation, and model-fit judgment as one coherent contextual application. The valid current full-landscape semantic-atomicity record classifies the unchanged semantic fingerprint as atomic, and KCGO Q3.2 p.47 supports the linked aspects. Synthesis records this batch-local candidate resolution; it does not modify the ledger. The direct source mapping remains an integration candidate.",
+      "positiveUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Ein Binomialmodell setzt eine feste Anzahl unabhängiger Versuche mit zwei Ergebnisarten und gleichbleibender Trefferwahrscheinlichkeit voraus; n und p prägen Histogramm und Verteilung, während die Versuchsanordnung die Modellpassung begrenzt.",
+        "essentialUnderstandingEn": "A binomial model assumes a fixed number of independent trials with two outcome types and a constant success probability; n and p shape the histogram and distribution, while the trial setup limits model fit.",
+        "observablePerformanceDe": "Die lernende Person legt für einen Kontext Zufallsgröße, n und p fest, prüft die Modellannahmen, deutet typische Histogrammeigenschaften anhand der Parameter und begründet, ob das Modell zur Situation passt.",
+        "observablePerformanceEn": "For a context, the learner defines the random variable, n, and p, checks the model assumptions, interprets characteristic histogram features using the parameters, and justifies whether the model fits the situation.",
+        "transferExpectationDe": "In einer strukturell ähnlichen Situation mit abhängigen Versuchen oder veränderlicher Trefferwahrscheinlichkeit erkennt die lernende Person die verletzte Voraussetzung und beurteilt, warum ein ähnlich aussehendes Histogramm allein die Binomialannahmen nicht belegt.",
+        "transferExpectationEn": "In a structurally similar situation with dependent trials or changing success probability, the learner identifies the violated assumption and explains why a similar-looking histogram alone does not establish the binomial assumptions."
+      },
+      "sourceBindingCandidate": "Add a direct binding to HMKB KCGO Mathematik 2024, Q3.2, p.47 during integration if the source mapping supports the split clauses on model limits and histogram analysis; current canonical sourceRef remains absent and the current route remains classic_source_partial.",
+      "otherGates": {
+        "currentPProfile": "needs_human_review / ai_candidate; current scoped check has zero blocking issues",
+        "memory": "no_memory_needed; full current math check passed",
+        "visualization": "KEEP existing JPG sha256:f1e15026bd7e03282a585b88131f4a635c6345a504013fda1223a6f179f109c3; current machine QA remains approved; unchanged"
+      },
+      "candidateGate": "description keep and atomicity candidate resolved for this batch; direct source binding still requires integration review; no canonical integration in this batch",
+      "atomicityStatus": "candidate_atomic based on current exact-fingerprint ledger plus current A/B description rationales; not rewritten in ledger",
+      "atomicityCandidate": "candidate_atomic; see rationale; global ledger unchanged"
+    },
+    {
+      "goalId": "9de07e13-6a5f-5b49-a6d4-0decefb95784",
+      "roundA": "split_review",
+      "roundB": "keep",
+      "synthesis": "needs_developer_review",
+      "candidateDescriptionDe": null,
+      "candidateDescriptionEn": null,
+      "rationale": "The official Baden-Wuerttemberg V2 curriculum groups the unknown n, p, and k under one inverse-binomial competence, but the current reviews disagree on semantic atomicity. n and k are discrete unknowns with event-dependent admissibility, while p is continuous and may yield different solution sets. This source/context combination does not settle whether one coherent inverse-task family or three independently assessable goals is the better canonical decomposition. Do not force a keep or split yet.",
+      "currentSharedEvidence": {
+        "essentialUnderstandingDe": "Eine inverse Binomialaufgabe gibt eine Wahrscheinlichkeitsbedingung vor und sucht eine Modellgröße; n und k sind ganzzahlig, p liegt zwischen 0 und 1, und jeder Kandidat muss die angegebene Ereigniswahrscheinlichkeit erfüllen.",
+        "essentialUnderstandingEn": "An inverse binomial problem gives a probability condition and asks for a model quantity; n and k are integers, p lies between 0 and 1, and every candidate must satisfy the stated event probability.",
+        "observablePerformanceDe": "Die lernende Person überführt das Ereignis in eine Binomialwahrscheinlichkeit, identifiziert die gesuchte Größe, beachtet deren zulässigen Wertebereich und überprüft den gefundenen Wert an der ursprünglichen Bedingung.",
+        "observablePerformanceEn": "The learner translates the event into a binomial probability, identifies the unknown quantity, respects its admissible domain, and checks the resulting value against the original condition.",
+        "transferExpectationDe": "Bei einer neuen inversen Frage mit einer anderen Ereignisform prüft die lernende Person erneut, welche Werte zulässig sind und wie der gefundene Kandidat die neue Wahrscheinlichkeitsbedingung erfüllt.",
+        "transferExpectationEn": "For a new inverse question with a different event form, the learner again checks which values are admissible and how the candidate satisfies the new probability condition."
+      },
+      "atomicityStatus": "open; current full-landscape ledger still records atomic, current independent A/B decisions conflict, so no candidate ledger replacement is authorized",
+      "possibleSplitForDeveloperReview": [
+        "Bei gegebenem p und genau spezifiziertem Punkt-, Intervall- oder kumuliertem Ereignis einen unbekannten ganzzahligen Versuchsumfang n bestimmen und im Kontext prüfen.",
+        "Bei gegebenem n und genau spezifiziertem Ereignis alle zulässigen Trefferwahrscheinlichkeiten p bestimmen und im Kontext prüfen.",
+        "Bei gegebenem n und p eine unbekannte Ereignisgrenze k für ein genau spezifiziertes Punkt-, Intervall- oder kumuliertes Ereignis bestimmen und deuten."
+      ],
+      "sourceBindingCandidate": "Refresh the V1 sourceRef to the official Baden-Wuerttemberg Mathematics V2 (29 Feb 2024), §3.3.5, competence (14), during integration. The canonical sourceRef is unchanged in this batch.",
+      "otherGates": {
+        "currentPProfile": "needs_human_review / ai_candidate; current scoped check has zero blocking issues",
+        "memory": "no_memory_needed; full current math check passed",
+        "visualization": "missing; deferred_provider_limitation"
+      },
+      "candidateGate": "atomicity and description decision remain open; missing current machine visualization gate"
+    }
+  ],
+  "roundResolution": {
+    "strictDistinctModelPolicy": "passed",
+    "exactAgreementCount": 0,
+    "synthesisRequiredCount": 5,
+    "descriptionDecisionConsensus": {
+      "70efdec0-110c-5564-849b-bc05cfff0f6a": "revise/revise; synthesized wording candidate",
+      "1b67aeb4-2a55-531f-94da-283b4e3df5f1": "keep/revise; synthesized count-specific revision",
+      "0408ac7f-0530-5de5-b248-cf581c9b5a17": "revise/revise; synthesized event/model-condition revision",
+      "66f432e9-22d3-51a9-8787-35f91db30616": "keep/keep; synthesis retains unchanged description; current semantic-atomicity record corroborates atomic classification",
+      "9de07e13-6a5f-5b49-a6d4-0decefb95784": "split_review/keep; atomicity remains unresolved"
+    }
+  },
+  "nonChanges": {
+    "canonicalLandscape": "unchanged",
+    "centralRegistry": "unchanged",
+    "inFlightLedger": "unchanged",
+    "globalSemanticAtomicityLedger": "unchanged",
+    "globalPositiveEvidenceLedgers": "unchanged",
+    "historicalArtifacts": "unchanged",
+    "visualizationLinksAndQA": "unchanged"
+  },
+  "netProgress": {
+    "newFachlicheCompletions": 0,
+    "restoredBindings": 0,
+    "strictCandidateClosures": 0,
+    "descriptionCandidatesReadyForLaterIntegration": 4,
+    "openAtomicityOrScopeDisputes": 1,
+    "newImageBindingsOrApprovals": 0
+  },
+  "nextStep": "Parent integration review: apply only synthesized description candidates/keep after current source and dependent-layer checks; resolve the 9de07e13-6a5f-5b49-a6d4-0decefb95784 atomicity/scope dispute separately; keep four missing images unbound and preserve the 66f432e9-22d3-51a9-8787-35f91db30616 JPG."
+}

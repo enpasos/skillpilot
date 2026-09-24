@@ -1,0 +1,65 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-open-inflight-remnants-12-current-20260924-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-open-inflight-remnants-12-current-20260924-v2.config.json",
+  "configDigest": "sha256:018e0e75c441ce6d9284275e51fcd5c78021e1a075441019dcfc55227eb08e13",
+  "goalIds": [
+    "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+    "93fc4fbb-72f6-549b-b97a-a48aecb1534d",
+    "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+    "aeae526e-b3a4-5a17-b177-351df0307cb9",
+    "87372f49-c832-50f6-921f-ec9a6804d58a",
+    "27bdc580-ba17-5399-bf02-48f354846d1d",
+    "21fa0c22-976e-59b3-a871-899f0c0177f3",
+    "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+    "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+    "9b339361-7719-573d-a913-432246c502ee",
+    "f37b0a72-9e23-51c7-aad5-438c17a56899",
+    "1a18dbb3-f350-4766-9c8b-20ca018ccef1"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:2f5c0141a679f2081f89acc5a8473e4e00d6ebefdcf5b936219be474208b6839"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:3bbbf36eb001c6a32782fe0e3737cb6160850341dd90b88a4085ba673a5df412",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a",
+    "reviewInputFingerprint": "sha256:238a9363d539a00a01c856e3862a0f2f833c7a31a69f511bcaed7e1fcd639e42",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-open-inflight-remnants-12-current-20260924-v2-a",
+        "campaignDigest": "sha256:b4d4cd26b8a2b238b19b317d6b9865c383906f7006e4a32fc02ba665854c6229",
+        "roundId": "mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-open-inflight-remnants-12-current-20260924-v2-independent-a",
+        "batchId": "mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:7bb4c0f45580b1a8c956c62341a4dd724d250d5a00a0bc39aa745c9956c81d26"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-open-inflight-remnants-12-current-20260924-v2-b",
+        "campaignDigest": "sha256:866f1d5fae572c5bdde0427491062b5ea0cfc030a4f6e42daa1f26f17cc02151",
+        "roundId": "mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-open-inflight-remnants-12-current-20260924-v2-independent-b",
+        "batchId": "mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:701684c727f1c8c1d8b013f9efd816fc94384735e2fad83912833569162bc3a2"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

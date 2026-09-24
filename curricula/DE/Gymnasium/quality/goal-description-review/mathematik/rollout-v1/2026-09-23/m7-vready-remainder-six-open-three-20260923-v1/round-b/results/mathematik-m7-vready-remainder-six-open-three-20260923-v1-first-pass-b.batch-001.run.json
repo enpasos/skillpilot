@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-b-gpt-6-luna",
+  "campaignId": "mathematik-m7-vready-remainder-six-open-three-20260923-v1-b",
+  "roundId": "mathematik-m7-vready-remainder-six-open-three-20260923-v1-first-pass-b",
+  "batchId": "mathematik-m7-vready-remainder-six-open-three-20260923-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:3e8b64dcd95434c71ccdce1f8ae458df71a25740991ee3b6d6310abb996b2b69",
+  "bundleFingerprint": "sha256:b5090c98fb789382e94de3e5a8e082a846c332fb4368f61f8ffd9335ce445579",
+  "bookDigest": "sha256:eb65ef808bd1fb2ab9f65e9863dbdf10aefedcd83ab0e52d3852341a7b17ae62",
+  "provider": "OpenAI",
+  "model": "gpt-6-luna",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:014939dd4c3e8ab6268b5a113950c885997712b8d8a97e033d2663115d32c4a4",
+  "independenceGroupId": "mathematik-m7-vready-remainder-six-open-three-20260923-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+    "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+    "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:df899401b907c3efa1a0e76817c374c9217fd8cbaa4ff3e9ab315db50660b1ef"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:3e8b64dcd95434c71ccdce1f8ae458df71a25740991ee3b6d6310abb996b2b69"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-24T06:43:08.501736Z",
+  "completedAt": "2026-09-24T06:48:36.960Z",
+  "status": "completed",
+  "outputDigest": "sha256:11dcff9f43c8731e452c9255975ccdb30ef9ad8ee02dd26b0ba3dfe6be691e37",
+  "toolchainVersion": "skillpilot-goal-description-review-v2"
+}

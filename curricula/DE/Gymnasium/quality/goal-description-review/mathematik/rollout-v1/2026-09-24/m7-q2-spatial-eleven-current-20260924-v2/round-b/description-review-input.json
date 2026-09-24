@@ -1,0 +1,1880 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v3/goal-description-review-input.schema.json",
+  "schemaVersion": 3,
+  "bundleFingerprint": "sha256:407deb0951e809a69366f33fb68d11385df1193e1885b72a9926f202967b5221",
+  "bookDigest": "sha256:6827ff47a295c67b291dd578703cb43948961ab32a625e0ce71e9e5ec4648e7a",
+  "goalCount": 11,
+  "goals": [
+    {
+      "goalId": "baf7276f-60a0-4d96-b959-d63acfb929de",
+      "goalFingerprint": "sha256:0148be2a3e0704cd8903759903d47ccec7ae0191cf4cf48247f50f6411b7e388",
+      "pageFingerprint": "sha256:f6b2f129a77d2dd8c8fb985ffe7c7351bde56f1868ccc249408f7e3e01355e8a",
+      "currentTitleDe": "Schnittpunkte von Geraden mit Ebenen berechnen",
+      "currentTitleEn": "Calculate intersections of lines with planes",
+      "currentDescriptionDe": "Die lernende Person kann Schnittpunkte von Geraden mit Ebenen mithilfe von Parametergleichungen und Ebenengleichungen berechnen und die Ergebnisse geometrisch deuten.",
+      "currentDescriptionEn": "The learner can calculate intersections of lines with planes using parametric line equations and plane equations and interpret the results geometrically.",
+      "canonicalContext": {
+        "shortKey": null,
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.SPACE.LINE_PLANE_INTERSECTION"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "effe43eb-cabe-56cb-a228-35887d7915c1",
+          "fa02cf14-0411-4fe3-8be7-a62c69743e26",
+          "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+          "d76766a5-ce07-5c7a-987b-157f2998b05e",
+          "ce491ec0-c558-5872-86fd-289e60a38403",
+          "ea4bd128-17ab-5a8b-ae98-29552d774fb0"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "reviewContext": {
+        "page": {
+          "pageNumber": 1,
+          "navigationOrder": 5,
+          "treeOrder": 9,
+          "goalId": "baf7276f-60a0-4d96-b959-d63acfb929de",
+          "anchor": "goal-baf7276f-60a0-4d96-b959-d63acfb929de",
+          "title": "Schnittpunkte von Geraden mit Ebenen berechnen",
+          "description": "Die lernende Person kann Schnittpunkte von Geraden mit Ebenen mithilfe von Parametergleichungen und Ebenengleichungen berechnen und die Ergebnisse geometrisch deuten.",
+          "breadcrumbs": [
+            "Mathematik",
+            "Bundeslandspezifische Ergänzungen",
+            "Sekundarstufe II",
+            "Lineare Algebra und analytische Geometrie"
+          ],
+          "chapterIds": [
+            "structure:goal-book-math-root",
+            "structure:goal-book-bundesland-supplements",
+            "structure:goal-book-supplement-sekii",
+            "structure:goal-book-supplement-SekII-LinearAlgebra"
+          ],
+          "applicability": [
+            {
+              "jurisdiction": "DE-BW",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            }
+          ],
+          "requires": [],
+          "reverseRequires": [],
+          "externalPrerequisites": [
+            {
+              "goalId": "effe43eb-cabe-56cb-a228-35887d7915c1",
+              "title": "Geraden im Raum parametrisch darstellen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-effe43eb-cabe-56cb-a228-35887d7915c1"
+            },
+            {
+              "goalId": "fa02cf14-0411-4fe3-8be7-a62c69743e26",
+              "title": "Zwischen Koordinaten- und Normalenform von Ebenen wechseln",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-fa02cf14-0411-4fe3-8be7-a62c69743e26"
+            },
+            {
+              "goalId": "d76766a5-ce07-5c7a-987b-157f2998b05e",
+              "title": "Zwischen Ebenenformen umformen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-d76766a5-ce07-5c7a-987b-157f2998b05e"
+            },
+            {
+              "goalId": "ce491ec0-c558-5872-86fd-289e60a38403",
+              "title": "Punktprobe und Lage eines Punktes zur Ebene prüfen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-ce491ec0-c558-5872-86fd-289e60a38403"
+            },
+            {
+              "goalId": "ea4bd128-17ab-5a8b-ae98-29552d774fb0",
+              "title": "Ebenengleichung aus geometrischen Bedingungen bestimmen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-ea4bd128-17ab-5a8b-ae98-29552d774fb0"
+            },
+            {
+              "goalId": "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+              "title": "Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-36e0de23-1e3b-5c69-888f-e5e19e79cbbe"
+            }
+          ],
+          "externalReverseRequires": [
+            {
+              "goalId": "1878f680-095c-511d-aaed-e98393f7fde9",
+              "title": "Raumorientierung und Volumenprobleme lösen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9"
+            }
+          ],
+          "visualization": {
+            "resourceType": "image",
+            "title": "Visualisierung: Schnittpunkte von Geraden mit Ebenen berechnen",
+            "url": "/assets/goal-visualizations/mathematik/baf7276f-60a0-4d96-b959-d63acfb929de/baf7276f-60a0-4d96-b959-d63acfb929de.jpg",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Schnittpunkte von Geraden mit Ebenen berechnen\". Die lernende Person kann Schnittpunkte von Geraden mit Ebenen mithilfe von Parametergleichungen und Ebenengleichungen berechnen und die Ergebnisse geometrisch deuten.",
+            "originalDigest": "sha256:a2049ee4118def7c190802cfb4682fcc50a8825b5555598fc09497a8c4dc21a3",
+            "qaStatus": "review_candidate",
+            "approvedForPublication": false
+          },
+          "evidenceReview": null,
+          "goalFingerprint": "sha256:0148be2a3e0704cd8903759903d47ccec7ae0191cf4cf48247f50f6411b7e388",
+          "pageFingerprint": "sha256:f6b2f129a77d2dd8c8fb985ffe7c7351bde56f1868ccc249408f7e3e01355e8a"
+        },
+        "evidenceProfile": null
+      }
+    },
+    {
+      "goalId": "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+      "goalFingerprint": "sha256:b804f1f2bd4a27e869b3c5362f65b952941d342dc3b59cd0b3049745a29c832a",
+      "pageFingerprint": "sha256:bcce231939560d9c665bb66b638c538c423da68fa901f545a98cf1e0a5ebda72",
+      "currentTitleDe": "Gerade-Ebene- und Ebene-Ebene-Abstände im Raum bestimmen",
+      "currentTitleEn": "Determine line-plane and plane-plane distances in space",
+      "currentDescriptionDe": "Die lernende Person kann Gerade-Ebene- und Ebene-Ebene-Abstände im Raum mithilfe analytischer Verfahren bestimmen und die Ergebnisse geometrisch deuten.",
+      "currentDescriptionEn": "The learner can determine line-plane and plane-plane distances in space using analytic methods and interpret the results geometrically.",
+      "canonicalContext": {
+        "shortKey": null,
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.SPACE.LINE_PLANE_AND_PLANE_PLANE_DISTANCES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+          "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "reviewContext": {
+        "page": {
+          "pageNumber": 2,
+          "navigationOrder": 0,
+          "treeOrder": 4,
+          "goalId": "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+          "anchor": "goal-8eb14d81-353a-4909-9464-61be7b1ba5b8",
+          "title": "Gerade-Ebene- und Ebene-Ebene-Abstände im Raum bestimmen",
+          "description": "Die lernende Person kann Gerade-Ebene- und Ebene-Ebene-Abstände im Raum mithilfe analytischer Verfahren bestimmen und die Ergebnisse geometrisch deuten.",
+          "breadcrumbs": [
+            "Mathematik",
+            "Bundeslandspezifische Ergänzungen",
+            "Sekundarstufe II",
+            "Lineare Algebra und analytische Geometrie"
+          ],
+          "chapterIds": [
+            "structure:goal-book-math-root",
+            "structure:goal-book-bundesland-supplements",
+            "structure:goal-book-supplement-sekii",
+            "structure:goal-book-supplement-SekII-LinearAlgebra"
+          ],
+          "applicability": [
+            {
+              "jurisdiction": "DE-BW",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-BY",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": "G9",
+                  "courseProfile": "LK"
+                }
+              ]
+            }
+          ],
+          "requires": [],
+          "reverseRequires": [],
+          "externalPrerequisites": [
+            {
+              "goalId": "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+              "title": "Schnittwinkel über Richtungs- und Normalenvektoren bestimmen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5"
+            },
+            {
+              "goalId": "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+              "title": "Lagebeziehung zwischen Gerade und Ebene untersuchen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f"
+            }
+          ],
+          "externalReverseRequires": [
+            {
+              "goalId": "1878f680-095c-511d-aaed-e98393f7fde9",
+              "title": "Raumorientierung und Volumenprobleme lösen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9"
+            }
+          ],
+          "visualization": {
+            "resourceType": "image",
+            "title": "Visualisierung: Gerade-Ebene- und Ebene-Ebene-Abstände im Raum bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/8eb14d81-353a-4909-9464-61be7b1ba5b8/8eb14d81-353a-4909-9464-61be7b1ba5b8.jpg",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Gerade-Ebene- und Ebene-Ebene-Abstände im Raum bestimmen\". Die lernende Person kann Gerade-Ebene- und Ebene-Ebene-Abstände im Raum mithilfe analytischer Verfahren bestimmen und die Ergebnisse geometrisch deuten.",
+            "originalDigest": "sha256:c98359ecf26be95141c303bc76c5ff3a632c8e00ac33bf8674e299249687472a",
+            "qaStatus": "review_candidate",
+            "approvedForPublication": false
+          },
+          "evidenceReview": null,
+          "goalFingerprint": "sha256:b804f1f2bd4a27e869b3c5362f65b952941d342dc3b59cd0b3049745a29c832a",
+          "pageFingerprint": "sha256:bcce231939560d9c665bb66b638c538c423da68fa901f545a98cf1e0a5ebda72"
+        },
+        "evidenceProfile": null
+      }
+    },
+    {
+      "goalId": "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+      "goalFingerprint": "sha256:3ce857b1abeb6353516113a9e3100cf296d4cf6fe2ba3d75bec3ad880a0daddd",
+      "pageFingerprint": "sha256:ca1c52b60cd265d5344a1c68701462debc115f0091023a002913e8c655bf3c72",
+      "currentTitleDe": "Schnittwinkel zwischen geometrischen Objekten berechnen",
+      "currentTitleEn": "Calculate intersection angles between geometric objects",
+      "currentDescriptionDe": "Die lernende Person kann die Größe des Schnittwinkels zwischen zwei sich schneidenden geometrischen Objekten berechnen und das Ergebnis geometrisch deuten.",
+      "currentDescriptionEn": "The learner can calculate the size of the intersection angle between two intersecting geometric objects and interpret the result geometrically.",
+      "canonicalContext": {
+        "shortKey": null,
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 3 und 8",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.SPACE.INTERSECTION_ANGLES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "9460c3ff-e72d-4107-bc73-087d217200aa",
+          "fa02cf14-0411-4fe3-8be7-a62c69743e26",
+          "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+          "d76766a5-ce07-5c7a-987b-157f2998b05e",
+          "ce491ec0-c558-5872-86fd-289e60a38403",
+          "ea4bd128-17ab-5a8b-ae98-29552d774fb0"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "reviewContext": {
+        "page": {
+          "pageNumber": 3,
+          "navigationOrder": 3,
+          "treeOrder": 7,
+          "goalId": "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+          "anchor": "goal-18be713b-7d90-4f01-b60a-5582ac4df0e8",
+          "title": "Schnittwinkel zwischen geometrischen Objekten berechnen",
+          "description": "Die lernende Person kann die Größe des Schnittwinkels zwischen zwei sich schneidenden geometrischen Objekten berechnen und das Ergebnis geometrisch deuten.",
+          "breadcrumbs": [
+            "Mathematik",
+            "Bundeslandspezifische Ergänzungen",
+            "Sekundarstufe II",
+            "Lineare Algebra und analytische Geometrie"
+          ],
+          "chapterIds": [
+            "structure:goal-book-math-root",
+            "structure:goal-book-bundesland-supplements",
+            "structure:goal-book-supplement-sekii",
+            "structure:goal-book-supplement-SekII-LinearAlgebra"
+          ],
+          "applicability": [
+            {
+              "jurisdiction": "DE-BW",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "GK"
+                },
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-BY",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": "G9",
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-HE",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "GK"
+                },
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            }
+          ],
+          "requires": [],
+          "reverseRequires": [],
+          "externalPrerequisites": [
+            {
+              "goalId": "9460c3ff-e72d-4107-bc73-087d217200aa",
+              "title": "Skalarprodukt als Orthogonalitätskriterium nutzen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-9460c3ff-e72d-4107-bc73-087d217200aa"
+            },
+            {
+              "goalId": "fa02cf14-0411-4fe3-8be7-a62c69743e26",
+              "title": "Zwischen Koordinaten- und Normalenform von Ebenen wechseln",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-fa02cf14-0411-4fe3-8be7-a62c69743e26"
+            },
+            {
+              "goalId": "d76766a5-ce07-5c7a-987b-157f2998b05e",
+              "title": "Zwischen Ebenenformen umformen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-d76766a5-ce07-5c7a-987b-157f2998b05e"
+            },
+            {
+              "goalId": "ce491ec0-c558-5872-86fd-289e60a38403",
+              "title": "Punktprobe und Lage eines Punktes zur Ebene prüfen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-ce491ec0-c558-5872-86fd-289e60a38403"
+            },
+            {
+              "goalId": "ea4bd128-17ab-5a8b-ae98-29552d774fb0",
+              "title": "Ebenengleichung aus geometrischen Bedingungen bestimmen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-ea4bd128-17ab-5a8b-ae98-29552d774fb0"
+            },
+            {
+              "goalId": "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+              "title": "Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-36e0de23-1e3b-5c69-888f-e5e19e79cbbe"
+            }
+          ],
+          "externalReverseRequires": [
+            {
+              "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+              "title": "Geraden, Ebenen und Schnittfiguren analysieren",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008"
+            }
+          ],
+          "visualization": null,
+          "evidenceReview": null,
+          "goalFingerprint": "sha256:3ce857b1abeb6353516113a9e3100cf296d4cf6fe2ba3d75bec3ad880a0daddd",
+          "pageFingerprint": "sha256:ca1c52b60cd265d5344a1c68701462debc115f0091023a002913e8c655bf3c72"
+        },
+        "evidenceProfile": null
+      }
+    },
+    {
+      "goalId": "6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
+      "goalFingerprint": "sha256:895224851631cca316b85e67e5a7f12a1ca38e00b60299e43dcd24b2a17a91ab",
+      "pageFingerprint": "sha256:3c5913891ee0cad786e18ba6c540917b2f35cb96f36e14f0ccd0f652e1628f2d",
+      "currentTitleDe": "Spezielle Lagen von Geraden und Ebenen begründen (LK)",
+      "currentTitleEn": "Justify special positions of lines and planes (advanced course)",
+      "currentDescriptionDe": "Die lernende Person kann besondere Lagebeziehungen von Geraden und Ebenen im Raum analysieren, rechnerisch begründen und die Ergebnisse geometrisch interpretieren.",
+      "currentDescriptionEn": "The learner can analyze special positional relationships of lines and planes in space, justify them computationally, and interpret the results geometrically.",
+      "canonicalContext": {
+        "shortKey": null,
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "effe43eb-cabe-56cb-a228-35887d7915c1",
+          "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+          "3def350a-c01c-51c3-be74-b3de20ee53e1",
+          "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+          "fac75b4a-4ec2-5d38-bbce-9b002c8a4904"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "reviewContext": {
+        "page": {
+          "pageNumber": 4,
+          "navigationOrder": 10,
+          "treeOrder": 15,
+          "goalId": "6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
+          "anchor": "goal-6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
+          "title": "Spezielle Lagen von Geraden und Ebenen begründen (LK)",
+          "description": "Die lernende Person kann besondere Lagebeziehungen von Geraden und Ebenen im Raum analysieren, rechnerisch begründen und die Ergebnisse geometrisch interpretieren.",
+          "breadcrumbs": [
+            "Mathematik",
+            "Bundeslandspezifische Ergänzungen",
+            "Sekundarstufe II",
+            "Weitere fachliche Ziele"
+          ],
+          "chapterIds": [
+            "structure:goal-book-math-root",
+            "structure:goal-book-bundesland-supplements",
+            "structure:goal-book-supplement-sekii",
+            "structure:goal-book-supplement-SekII-Sonstiges"
+          ],
+          "applicability": [
+            {
+              "jurisdiction": "DE-BW",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            }
+          ],
+          "requires": [],
+          "reverseRequires": [],
+          "externalPrerequisites": [
+            {
+              "goalId": "effe43eb-cabe-56cb-a228-35887d7915c1",
+              "title": "Geraden im Raum parametrisch darstellen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-effe43eb-cabe-56cb-a228-35887d7915c1"
+            },
+            {
+              "goalId": "3def350a-c01c-51c3-be74-b3de20ee53e1",
+              "title": "Schnittpunkt von Gerade und Ebene berechnen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-3def350a-c01c-51c3-be74-b3de20ee53e1"
+            },
+            {
+              "goalId": "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+              "title": "Schnittwinkel über Richtungs- und Normalenvektoren bestimmen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5"
+            },
+            {
+              "goalId": "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+              "title": "Lagebeziehung zwischen Gerade und Ebene untersuchen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f"
+            },
+            {
+              "goalId": "fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
+              "title": "Abstandsverfahren im Raum auswählen und anwenden",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-fac75b4a-4ec2-5d38-bbce-9b002c8a4904"
+            }
+          ],
+          "externalReverseRequires": [
+            {
+              "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+              "title": "Transformationsargumente für Flächen und Volumina nutzen (LK)",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-7d37513b-fa1a-54cc-9e2a-9279a381f0f0"
+            }
+          ],
+          "visualization": {
+            "resourceType": "image",
+            "title": "Visualisierung: Spezielle Lagen von Geraden und Ebenen begründen (LK)",
+            "url": "/assets/goal-visualizations/mathematik/6b2a1c04-8c28-51ff-905b-9c9492a26cc3/6b2a1c04-8c28-51ff-905b-9c9492a26cc3.jpg",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Spezielle Lagen von Geraden und Ebenen begründen (LK)\". Die lernende Person kann besondere Lagebeziehungen von Geraden und Ebenen im Raum analysieren, rechnerisch begründen und die Ergebnisse geometrisch interpretieren.",
+            "originalDigest": "sha256:8031e9262a0956fefdb3615a1c49d1a0559d9185b9ca093cbfdc946f111b708b",
+            "qaStatus": "review_candidate",
+            "approvedForPublication": false
+          },
+          "evidenceReview": null,
+          "goalFingerprint": "sha256:895224851631cca316b85e67e5a7f12a1ca38e00b60299e43dcd24b2a17a91ab",
+          "pageFingerprint": "sha256:3c5913891ee0cad786e18ba6c540917b2f35cb96f36e14f0ccd0f652e1628f2d"
+        },
+        "evidenceProfile": null
+      }
+    },
+    {
+      "goalId": "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+      "goalFingerprint": "sha256:f3d741b5fae1e6f19154775582bf5eb21eccefc563f6e4ad125c9d72200110d2",
+      "pageFingerprint": "sha256:b5b652a629d3b021347e632af6a917d80a857f6ceb9139b719e7549535b9e0be",
+      "currentTitleDe": "Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK)",
+      "currentTitleEn": "Investigate positional relations of planes as well as of lines and planes (advanced course)",
+      "currentDescriptionDe": "Die lernende Person kann die Lagebeziehung zweier Ebenen untersuchen, dazu das zugehörige lineare Gleichungssystem systematisch lösen und die Lösungsmenge geometrisch interpretieren.",
+      "currentDescriptionEn": "The learner can analyze the positional relationship of two planes, systematically solve the associated linear system, and interpret the solution set geometrically.",
+      "canonicalContext": {
+        "shortKey": null,
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 43, Spiegelstrich 13",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.SPACE.PLANE_AND_LINE_PLANE_RELATIONS_ADVANCED"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "fa02cf14-0411-4fe3-8be7-a62c69743e26",
+          "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+          "d76766a5-ce07-5c7a-987b-157f2998b05e",
+          "ce491ec0-c558-5872-86fd-289e60a38403",
+          "ea4bd128-17ab-5a8b-ae98-29552d774fb0",
+          "69beb31d-5d02-4505-9500-3ec81af86f1e"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "reviewContext": {
+        "page": {
+          "pageNumber": 5,
+          "navigationOrder": 4,
+          "treeOrder": 8,
+          "goalId": "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+          "anchor": "goal-0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+          "title": "Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK)",
+          "description": "Die lernende Person kann die Lagebeziehung zweier Ebenen untersuchen, dazu das zugehörige lineare Gleichungssystem systematisch lösen und die Lösungsmenge geometrisch interpretieren.",
+          "breadcrumbs": [
+            "Mathematik",
+            "Bundeslandspezifische Ergänzungen",
+            "Sekundarstufe II",
+            "Lineare Algebra und analytische Geometrie"
+          ],
+          "chapterIds": [
+            "structure:goal-book-math-root",
+            "structure:goal-book-bundesland-supplements",
+            "structure:goal-book-supplement-sekii",
+            "structure:goal-book-supplement-SekII-LinearAlgebra"
+          ],
+          "applicability": [
+            {
+              "jurisdiction": "DE-BW",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-HE",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-SH",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            }
+          ],
+          "requires": [],
+          "reverseRequires": [],
+          "externalPrerequisites": [
+            {
+              "goalId": "fa02cf14-0411-4fe3-8be7-a62c69743e26",
+              "title": "Zwischen Koordinaten- und Normalenform von Ebenen wechseln",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-fa02cf14-0411-4fe3-8be7-a62c69743e26"
+            },
+            {
+              "goalId": "d76766a5-ce07-5c7a-987b-157f2998b05e",
+              "title": "Zwischen Ebenenformen umformen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-d76766a5-ce07-5c7a-987b-157f2998b05e"
+            },
+            {
+              "goalId": "ce491ec0-c558-5872-86fd-289e60a38403",
+              "title": "Punktprobe und Lage eines Punktes zur Ebene prüfen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-ce491ec0-c558-5872-86fd-289e60a38403"
+            },
+            {
+              "goalId": "ea4bd128-17ab-5a8b-ae98-29552d774fb0",
+              "title": "Ebenengleichung aus geometrischen Bedingungen bestimmen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-ea4bd128-17ab-5a8b-ae98-29552d774fb0"
+            },
+            {
+              "goalId": "69beb31d-5d02-4505-9500-3ec81af86f1e",
+              "title": "Lagebeziehungen von Geraden im Raum untersuchen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-69beb31d-5d02-4505-9500-3ec81af86f1e"
+            },
+            {
+              "goalId": "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+              "title": "Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-36e0de23-1e3b-5c69-888f-e5e19e79cbbe"
+            }
+          ],
+          "externalReverseRequires": [
+            {
+              "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+              "title": "Geraden, Ebenen und Schnittfiguren analysieren",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008"
+            },
+            {
+              "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+              "title": "Ebenenscharen in Koordinatengleichung untersuchen (LK)",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc"
+            }
+          ],
+          "visualization": {
+            "resourceType": "image",
+            "title": "Visualisierung: Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK)",
+            "url": "/assets/goal-visualizations/mathematik/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd.jpg",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK)\". Die lernende Person kann die Lagebeziehung zweier Ebenen untersuchen, dazu das zugehörige lineare Gleichungssystem systematisch lösen und die Lösungsmenge geometrisch interpretieren.",
+            "originalDigest": "sha256:3cbffc6b2ad80b1e5760065e7669fa45f05ba64f5b7b4c8d80de95f09ea4f230",
+            "qaStatus": "review_candidate",
+            "approvedForPublication": false
+          },
+          "evidenceReview": null,
+          "goalFingerprint": "sha256:f3d741b5fae1e6f19154775582bf5eb21eccefc563f6e4ad125c9d72200110d2",
+          "pageFingerprint": "sha256:b5b652a629d3b021347e632af6a917d80a857f6ceb9139b719e7549535b9e0be"
+        },
+        "evidenceProfile": null
+      }
+    },
+    {
+      "goalId": "5f90df42-8a71-534d-b995-b8f7dcaf1661",
+      "goalFingerprint": "sha256:bf9b7131a37afdd6bf51d1e379d981101268b7b7b83ecccc95e780eaa3a3f750",
+      "pageFingerprint": "sha256:45bbc0443ee66c198615ea7ec992aa57e90072b896eff9c5a0e85ba6012ed8af",
+      "currentTitleDe": "Parameterabhängige Winkel und Lagebeziehungen untersuchen",
+      "currentTitleEn": "Analyze parameter-dependent angles and spatial relations",
+      "currentDescriptionDe": "Die lernende Person kann in räumlichen Konfigurationen mit einem zusätzlichen Parameter Winkel zwischen einer Geraden und einer Ebene sowie zwischen zwei Ebenen untersuchen und Parameterwerte bestimmen, für die eine vorgegebene Winkel-, Orthogonalitäts-, Parallelitäts- oder Lagebedingung erfüllt ist.",
+      "currentDescriptionEn": "The learner can analyze, in spatial configurations with an additional parameter, angles between a line and a plane and between two planes, and determine parameter values for which a specified angle, orthogonality, parallelism, or positional condition is satisfied.",
+      "canonicalContext": {
+        "shortKey": "canonical_math_q2_analyze_parameter_dependent_angles_and_spatial_relations",
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 9",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.PARAMETER_DEPENDENT_ANGLES_RELATIONS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "69beb31d-5d02-4505-9500-3ec81af86f1e",
+          "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+          "bda6a659-9640-53a5-8be0-24705ab623ef"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "reviewContext": {
+        "page": {
+          "pageNumber": 6,
+          "navigationOrder": 1,
+          "treeOrder": 5,
+          "goalId": "5f90df42-8a71-534d-b995-b8f7dcaf1661",
+          "shortKey": "canonical_math_q2_analyze_parameter_dependent_angles_and_spatial_relations",
+          "anchor": "goal-5f90df42-8a71-534d-b995-b8f7dcaf1661",
+          "title": "Parameterabhängige Winkel und Lagebeziehungen untersuchen",
+          "description": "Die lernende Person kann in räumlichen Konfigurationen mit einem zusätzlichen Parameter Winkel zwischen einer Geraden und einer Ebene sowie zwischen zwei Ebenen untersuchen und Parameterwerte bestimmen, für die eine vorgegebene Winkel-, Orthogonalitäts-, Parallelitäts- oder Lagebedingung erfüllt ist.",
+          "breadcrumbs": [
+            "Mathematik",
+            "Bundeslandspezifische Ergänzungen",
+            "Sekundarstufe II",
+            "Lineare Algebra und analytische Geometrie"
+          ],
+          "chapterIds": [
+            "structure:goal-book-math-root",
+            "structure:goal-book-bundesland-supplements",
+            "structure:goal-book-supplement-sekii",
+            "structure:goal-book-supplement-SekII-LinearAlgebra"
+          ],
+          "applicability": [
+            {
+              "jurisdiction": "DE-BW",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-HE",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "GK"
+                },
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            }
+          ],
+          "requires": [],
+          "reverseRequires": [],
+          "externalPrerequisites": [
+            {
+              "goalId": "69beb31d-5d02-4505-9500-3ec81af86f1e",
+              "title": "Lagebeziehungen von Geraden im Raum untersuchen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-69beb31d-5d02-4505-9500-3ec81af86f1e"
+            },
+            {
+              "goalId": "bda6a659-9640-53a5-8be0-24705ab623ef",
+              "title": "Winkel zwischen zwei Ebenen berechnen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-bda6a659-9640-53a5-8be0-24705ab623ef"
+            },
+            {
+              "goalId": "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+              "title": "Lagebeziehung zwischen Gerade und Ebene untersuchen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-24174bba-a654-5f81-8de3-ca5bd09d9b6f"
+            }
+          ],
+          "externalReverseRequires": [
+            {
+              "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+              "title": "Geraden, Ebenen und Schnittfiguren analysieren",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008"
+            }
+          ],
+          "visualization": {
+            "resourceType": "image",
+            "title": "Visualisierung: Parameterabhängige Winkel und Lagebeziehungen untersuchen",
+            "url": "/assets/goal-visualizations/mathematik/5f90df42-8a71-534d-b995-b8f7dcaf1661/5f90df42-8a71-534d-b995-b8f7dcaf1661.png",
+            "altText": "Die lernende Person kann in räumlichen Konfigurationen mit einem zusätzlichen Parameter Winkel zwischen einer Geraden und einer Ebene sowie zwischen zwei Ebenen untersuchen und Parameterwerte bestimmen, für die eine vorgegebene Winkel-, Orthogonalitäts-, Parallelitäts- oder Lagebedingung erfüllt ist.",
+            "originalDigest": "sha256:a54dee14f07c5df6e482e198713cb19fd64fb9660b76056cdf042eb513d5fc36",
+            "qaStatus": "review_candidate",
+            "approvedForPublication": false
+          },
+          "evidenceReview": null,
+          "goalFingerprint": "sha256:bf9b7131a37afdd6bf51d1e379d981101268b7b7b83ecccc95e780eaa3a3f750",
+          "pageFingerprint": "sha256:45bbc0443ee66c198615ea7ec992aa57e90072b896eff9c5a0e85ba6012ed8af"
+        },
+        "evidenceProfile": null
+      }
+    },
+    {
+      "goalId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+      "goalFingerprint": "sha256:f90c9f0f2464037c7c5dad29666c41a849156457fed237d0fbb4c19d26c1bb63",
+      "pageFingerprint": "sha256:5c9c36810390172a1830ce888275542518b41451cc1eb256aa3a71117c1aed80",
+      "currentTitleDe": "Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden",
+      "currentTitleEn": "Apply the foot-of-perpendicular method for point-plane distance",
+      "currentDescriptionDe": "Die lernende Person kann ein Lotfußpunktverfahren erarbeiten und anwenden, um den Abstand eines Punktes von einer Ebene zu bestimmen und geometrisch zu begründen.",
+      "currentDescriptionEn": "The learner can develop and apply a foot-of-perpendicular method to determine the distance from a point to a plane and justify it geometrically.",
+      "canonicalContext": {
+        "shortKey": "canonical_math_q2_apply_foot_point_method_for_point_plane_distance",
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 10",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.POINT_PLANE_DISTANCE_FOOT_POINT"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+          "8cb5c712-9c58-5910-8c63-8c3736369b80"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "reviewContext": {
+        "page": {
+          "pageNumber": 7,
+          "navigationOrder": 2,
+          "treeOrder": 6,
+          "goalId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+          "shortKey": "canonical_math_q2_apply_foot_point_method_for_point_plane_distance",
+          "anchor": "goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+          "title": "Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden",
+          "description": "Die lernende Person kann ein Lotfußpunktverfahren erarbeiten und anwenden, um den Abstand eines Punktes von einer Ebene zu bestimmen und geometrisch zu begründen.",
+          "breadcrumbs": [
+            "Mathematik",
+            "Bundeslandspezifische Ergänzungen",
+            "Sekundarstufe II",
+            "Lineare Algebra und analytische Geometrie"
+          ],
+          "chapterIds": [
+            "structure:goal-book-math-root",
+            "structure:goal-book-bundesland-supplements",
+            "structure:goal-book-supplement-sekii",
+            "structure:goal-book-supplement-SekII-LinearAlgebra"
+          ],
+          "applicability": [
+            {
+              "jurisdiction": "DE-BW",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "GK"
+                },
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-BY",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": "G9",
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-HE",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "GK"
+                },
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            }
+          ],
+          "requires": [],
+          "reverseRequires": [
+            {
+              "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+              "title": "Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)",
+              "anchor": "goal-c2c49659-5917-5be5-a3bd-e46f1b17126f",
+              "pageNumber": 8
+            }
+          ],
+          "externalPrerequisites": [
+            {
+              "goalId": "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+              "title": "Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-36e0de23-1e3b-5c69-888f-e5e19e79cbbe"
+            },
+            {
+              "goalId": "8cb5c712-9c58-5910-8c63-8c3736369b80",
+              "title": "Punkte an Ebenen spiegeln",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-8cb5c712-9c58-5910-8c63-8c3736369b80"
+            }
+          ],
+          "externalReverseRequires": [
+            {
+              "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+              "title": "Geraden, Ebenen und Schnittfiguren analysieren",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008"
+            }
+          ],
+          "visualization": {
+            "resourceType": "image",
+            "title": "Visualisierung: Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden",
+            "url": "/assets/goal-visualizations/mathematik/79c4cd21-af64-5925-968e-9bc1f74cd0ad/79c4cd21-af64-5925-968e-9bc1f74cd0ad.jpg",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden\". Die lernende Person kann ein Lotfußpunktverfahren erarbeiten und anwenden, um den Abstand eines Punktes von einer Ebene zu bestimmen und geometrisch zu begründen.",
+            "originalDigest": "sha256:60bab740018efa5ff1015a2ff7191df1ad24495a7cca4c3d47283cc9d365f543",
+            "qaStatus": "review_candidate",
+            "approvedForPublication": false
+          },
+          "evidenceReview": null,
+          "goalFingerprint": "sha256:f90c9f0f2464037c7c5dad29666c41a849156457fed237d0fbb4c19d26c1bb63",
+          "pageFingerprint": "sha256:5c9c36810390172a1830ce888275542518b41451cc1eb256aa3a71117c1aed80"
+        },
+        "evidenceProfile": null
+      }
+    },
+    {
+      "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+      "goalFingerprint": "sha256:1fd20eeb0da9cdb0649a574013a8d8f5077d8bfa22b4f32fcdcf9d083965f32d",
+      "pageFingerprint": "sha256:be0863c87797ca9fe0078eced12f9ea1059b6e98d61004f4c1fb2ad29482d682",
+      "currentTitleDe": "Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)",
+      "currentTitleEn": "Apply foot-of-perpendicular methods for distances between points, lines, and planes (advanced course)",
+      "currentDescriptionDe": "Die lernende Person kann Lotfußpunktverfahren zur Bestimmung des kürzesten Abstands zwischen Punkt und Gerade, Punkt und Ebene, zwei parallelen oder windschiefen Geraden, einer Geraden und einer zu ihr parallelen Ebene sowie zwei parallelen Ebenen entwickeln, auswählen und anwenden.",
+      "currentDescriptionEn": "The learner can develop, select, and apply perpendicular-foot methods to determine the shortest distance between a point and a line, a point and a plane, two parallel or skew lines, a line and a plane parallel to it, and two parallel planes.",
+      "canonicalContext": {
+        "shortKey": "canonical_math_q2_apply_foot_point_methods_for_distances_between_points_lines_planes_lk",
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 43, Spiegelstrich 13",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.GENERAL_FOOT_POINT_DISTANCE_METHODS_LK"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+          "3256476b-ec65-4038-9f5a-a8808fbcf207",
+          "509ae03b-96b1-4bb1-b015-b83d14569dae"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "reviewContext": {
+        "page": {
+          "pageNumber": 8,
+          "navigationOrder": 6,
+          "treeOrder": 10,
+          "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+          "shortKey": "canonical_math_q2_apply_foot_point_methods_for_distances_between_points_lines_planes_lk",
+          "anchor": "goal-c2c49659-5917-5be5-a3bd-e46f1b17126f",
+          "title": "Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)",
+          "description": "Die lernende Person kann Lotfußpunktverfahren zur Bestimmung des kürzesten Abstands zwischen Punkt und Gerade, Punkt und Ebene, zwei parallelen oder windschiefen Geraden, einer Geraden und einer zu ihr parallelen Ebene sowie zwei parallelen Ebenen entwickeln, auswählen und anwenden.",
+          "breadcrumbs": [
+            "Mathematik",
+            "Bundeslandspezifische Ergänzungen",
+            "Sekundarstufe II",
+            "Lineare Algebra und analytische Geometrie"
+          ],
+          "chapterIds": [
+            "structure:goal-book-math-root",
+            "structure:goal-book-bundesland-supplements",
+            "structure:goal-book-supplement-sekii",
+            "structure:goal-book-supplement-SekII-LinearAlgebra"
+          ],
+          "applicability": [
+            {
+              "jurisdiction": "DE-BY",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": "G9",
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-HE",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            }
+          ],
+          "requires": [
+            {
+              "goalId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+              "title": "Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden",
+              "anchor": "goal-79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+              "pageNumber": 7
+            }
+          ],
+          "reverseRequires": [
+            {
+              "goalId": "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+              "title": "Punkte in allgemeinen Raumkonfigurationen spiegeln (LK)",
+              "anchor": "goal-fcd1d180-ddce-5408-8c5d-70e417b179e7",
+              "pageNumber": 9
+            },
+            {
+              "goalId": "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+              "title": "Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)",
+              "anchor": "goal-a97c7cce-1343-5d04-926f-4a4f323b3c21",
+              "pageNumber": 10
+            },
+            {
+              "goalId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+              "title": "Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK)",
+              "anchor": "goal-985d5529-a586-50eb-bd7f-2db2be8906d1",
+              "pageNumber": 11
+            }
+          ],
+          "externalPrerequisites": [
+            {
+              "goalId": "3256476b-ec65-4038-9f5a-a8808fbcf207",
+              "title": "Punkt-Gerade-Abstände im Raum bestimmen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-3256476b-ec65-4038-9f5a-a8808fbcf207"
+            },
+            {
+              "goalId": "509ae03b-96b1-4bb1-b015-b83d14569dae",
+              "title": "Gerade-Gerade-Abstände im Raum bestimmen",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-509ae03b-96b1-4bb1-b015-b83d14569dae"
+            }
+          ],
+          "externalReverseRequires": [
+            {
+              "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+              "title": "Geraden, Ebenen und Schnittfiguren analysieren",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008"
+            }
+          ],
+          "visualization": {
+            "resourceType": "image",
+            "title": "Visualisierung: Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)",
+            "url": "/assets/goal-visualizations/mathematik/c2c49659-5917-5be5-a3bd-e46f1b17126f/c2c49659-5917-5be5-a3bd-e46f1b17126f.jpg",
+            "altText": "Die lernende Person kann Lotfußpunktverfahren zur Bestimmung des kürzesten Abstands zwischen Punkt und Gerade, Punkt und Ebene, zwei parallelen oder windschiefen Geraden, einer Geraden und einer zu ihr parallelen Ebene sowie zwei parallelen Ebenen entwickeln, auswählen und anwenden.",
+            "originalDigest": "sha256:e8c30316ab8b0bff31ae299b4fe6aeffd8863146361ce234f88181c079155d7b",
+            "qaStatus": "review_candidate",
+            "approvedForPublication": false
+          },
+          "evidenceReview": null,
+          "goalFingerprint": "sha256:1fd20eeb0da9cdb0649a574013a8d8f5077d8bfa22b4f32fcdcf9d083965f32d",
+          "pageFingerprint": "sha256:be0863c87797ca9fe0078eced12f9ea1059b6e98d61004f4c1fb2ad29482d682"
+        },
+        "evidenceProfile": null
+      }
+    },
+    {
+      "goalId": "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "goalFingerprint": "sha256:8d51b8f36f268a48f5ecead70088ffe8bf72e2c5671c9500684e37e75eb3d92f",
+      "pageFingerprint": "sha256:2ee0ddd8d215ad76526824926c7e44fadf754d9b84caedad1d62dfece87aabc0",
+      "currentTitleDe": "Punkte in allgemeinen Raumkonfigurationen spiegeln (LK)",
+      "currentTitleEn": "Reflect points in general spatial configurations (advanced course)",
+      "currentDescriptionDe": "Die lernende Person kann Punkte in allgemeinen räumlichen Konfigurationen spiegeln und die Ergebnisse geometrisch prüfen.",
+      "currentDescriptionEn": "The learner can reflect points in general spatial configurations and check the results geometrically.",
+      "canonicalContext": {
+        "shortKey": "canonical_math_q2_reflect_points_lines_and_planes_generally_lk_points",
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 43, Spiegelstrich 13",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK.POINTS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "8cb5c712-9c58-5910-8c63-8c3736369b80",
+          "c2c49659-5917-5be5-a3bd-e46f1b17126f"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "reviewContext": {
+        "page": {
+          "pageNumber": 9,
+          "navigationOrder": 7,
+          "treeOrder": 11,
+          "goalId": "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+          "shortKey": "canonical_math_q2_reflect_points_lines_and_planes_generally_lk_points",
+          "anchor": "goal-fcd1d180-ddce-5408-8c5d-70e417b179e7",
+          "title": "Punkte in allgemeinen Raumkonfigurationen spiegeln (LK)",
+          "description": "Die lernende Person kann Punkte in allgemeinen räumlichen Konfigurationen spiegeln und die Ergebnisse geometrisch prüfen.",
+          "breadcrumbs": [
+            "Mathematik",
+            "Bundeslandspezifische Ergänzungen",
+            "Sekundarstufe II",
+            "Lineare Algebra und analytische Geometrie"
+          ],
+          "chapterIds": [
+            "structure:goal-book-math-root",
+            "structure:goal-book-bundesland-supplements",
+            "structure:goal-book-supplement-sekii",
+            "structure:goal-book-supplement-SekII-LinearAlgebra"
+          ],
+          "applicability": [
+            {
+              "jurisdiction": "DE-BW",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-BY",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": "G9",
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-HE",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            }
+          ],
+          "requires": [
+            {
+              "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+              "title": "Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)",
+              "anchor": "goal-c2c49659-5917-5be5-a3bd-e46f1b17126f",
+              "pageNumber": 8
+            }
+          ],
+          "reverseRequires": [
+            {
+              "goalId": "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+              "title": "Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)",
+              "anchor": "goal-a97c7cce-1343-5d04-926f-4a4f323b3c21",
+              "pageNumber": 10
+            }
+          ],
+          "externalPrerequisites": [
+            {
+              "goalId": "8cb5c712-9c58-5910-8c63-8c3736369b80",
+              "title": "Punkte an Ebenen spiegeln",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-8cb5c712-9c58-5910-8c63-8c3736369b80"
+            }
+          ],
+          "externalReverseRequires": [
+            {
+              "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+              "title": "Geraden, Ebenen und Schnittfiguren analysieren",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008"
+            }
+          ],
+          "visualization": {
+            "resourceType": "image",
+            "title": "Visualisierung: Punkte in allgemeinen Raumkonfigurationen spiegeln (LK)",
+            "url": "/assets/goal-visualizations/mathematik/fcd1d180-ddce-5408-8c5d-70e417b179e7/fcd1d180-ddce-5408-8c5d-70e417b179e7.jpg",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Punkte in allgemeinen Raumkonfigurationen spiegeln (LK)\". Die lernende Person kann Punkte in allgemeinen räumlichen Konfigurationen spiegeln und die Ergebnisse geometrisch prüfen.",
+            "originalDigest": "sha256:bb9021406a1de4a4d7dc735e21bdc43f3a1566b12af6901de22245e3f361e5c2",
+            "qaStatus": "review_candidate",
+            "approvedForPublication": false
+          },
+          "evidenceReview": null,
+          "goalFingerprint": "sha256:8d51b8f36f268a48f5ecead70088ffe8bf72e2c5671c9500684e37e75eb3d92f",
+          "pageFingerprint": "sha256:2ee0ddd8d215ad76526824926c7e44fadf754d9b84caedad1d62dfece87aabc0"
+        },
+        "evidenceProfile": null
+      }
+    },
+    {
+      "goalId": "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "goalFingerprint": "sha256:8bb1bb839cc28c85570d9c41a3fff0841b8805dec4360f5a15a00ea15e24e821",
+      "pageFingerprint": "sha256:62637391625cae8f7327d1d05f88abf6d7075acfd6040b204550918a31395ef4",
+      "currentTitleDe": "Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)",
+      "currentTitleEn": "Reflect lines in general spatial configurations (advanced course)",
+      "currentDescriptionDe": "Die lernende Person kann Geraden in allgemeinen räumlichen Konfigurationen spiegeln, geeignete Lot- bzw. Symmetriebedingungen aufstellen und die Ergebnisse geometrisch prüfen.",
+      "currentDescriptionEn": "The learner can reflect lines in general spatial configurations, set up suitable perpendicular or symmetry conditions, and check the results geometrically.",
+      "canonicalContext": {
+        "shortKey": "canonical_math_q2_reflect_points_lines_and_planes_generally_lk_lines",
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 43, Spiegelstrich 13",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK.LINES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+          "8cb5c712-9c58-5910-8c63-8c3736369b80",
+          "c2c49659-5917-5be5-a3bd-e46f1b17126f"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "reviewContext": {
+        "page": {
+          "pageNumber": 10,
+          "navigationOrder": 8,
+          "treeOrder": 12,
+          "goalId": "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+          "shortKey": "canonical_math_q2_reflect_points_lines_and_planes_generally_lk_lines",
+          "anchor": "goal-a97c7cce-1343-5d04-926f-4a4f323b3c21",
+          "title": "Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)",
+          "description": "Die lernende Person kann Geraden in allgemeinen räumlichen Konfigurationen spiegeln, geeignete Lot- bzw. Symmetriebedingungen aufstellen und die Ergebnisse geometrisch prüfen.",
+          "breadcrumbs": [
+            "Mathematik",
+            "Bundeslandspezifische Ergänzungen",
+            "Sekundarstufe II",
+            "Lineare Algebra und analytische Geometrie"
+          ],
+          "chapterIds": [
+            "structure:goal-book-math-root",
+            "structure:goal-book-bundesland-supplements",
+            "structure:goal-book-supplement-sekii",
+            "structure:goal-book-supplement-SekII-LinearAlgebra"
+          ],
+          "applicability": [
+            {
+              "jurisdiction": "DE-BW",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-BY",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": "G9",
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-HE",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            }
+          ],
+          "requires": [
+            {
+              "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+              "title": "Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)",
+              "anchor": "goal-c2c49659-5917-5be5-a3bd-e46f1b17126f",
+              "pageNumber": 8
+            },
+            {
+              "goalId": "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+              "title": "Punkte in allgemeinen Raumkonfigurationen spiegeln (LK)",
+              "anchor": "goal-fcd1d180-ddce-5408-8c5d-70e417b179e7",
+              "pageNumber": 9
+            }
+          ],
+          "reverseRequires": [
+            {
+              "goalId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+              "title": "Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK)",
+              "anchor": "goal-985d5529-a586-50eb-bd7f-2db2be8906d1",
+              "pageNumber": 11
+            }
+          ],
+          "externalPrerequisites": [
+            {
+              "goalId": "8cb5c712-9c58-5910-8c63-8c3736369b80",
+              "title": "Punkte an Ebenen spiegeln",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-8cb5c712-9c58-5910-8c63-8c3736369b80"
+            }
+          ],
+          "externalReverseRequires": [
+            {
+              "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+              "title": "Geraden, Ebenen und Schnittfiguren analysieren",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008"
+            }
+          ],
+          "visualization": {
+            "resourceType": "image",
+            "title": "Visualisierung: Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)",
+            "url": "/assets/goal-visualizations/mathematik/a97c7cce-1343-5d04-926f-4a4f323b3c21/a97c7cce-1343-5d04-926f-4a4f323b3c21.jpg",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)\". Die lernende Person kann Geraden in allgemeinen räumlichen Konfigurationen spiegeln, geeignete Lot- bzw. Symmetriebedingungen aufstellen und die Ergebnisse geometrisch prüfen.",
+            "originalDigest": "sha256:e49940b3d327ba539aef28d21ec8db69bab4a7be8761265dbf94e45f6113e34d",
+            "qaStatus": "review_candidate",
+            "approvedForPublication": false
+          },
+          "evidenceReview": null,
+          "goalFingerprint": "sha256:8bb1bb839cc28c85570d9c41a3fff0841b8805dec4360f5a15a00ea15e24e821",
+          "pageFingerprint": "sha256:62637391625cae8f7327d1d05f88abf6d7075acfd6040b204550918a31395ef4"
+        },
+        "evidenceProfile": null
+      }
+    },
+    {
+      "goalId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "goalFingerprint": "sha256:bc8a369e485f9d5af36a764fa179a571f7ede18b196f6674da9284809678d0ba",
+      "pageFingerprint": "sha256:ce7e389f8b3ef31cc1fba5ae274c328d891d32700c202b305197a6ca2b8046c0",
+      "currentTitleDe": "Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK)",
+      "currentTitleEn": "Reflect planes in general spatial configurations (advanced course)",
+      "currentDescriptionDe": "Die lernende Person kann Ebenen in allgemeinen räumlichen Konfigurationen spiegeln, geeignete Symmetriebedingungen aufstellen und die Ergebnisse geometrisch prüfen.",
+      "currentDescriptionEn": "The learner can reflect planes in general spatial configurations, set up suitable symmetry conditions, and check the results geometrically.",
+      "canonicalContext": {
+        "shortKey": "canonical_math_q2_reflect_points_lines_and_planes_generally_lk_planes",
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "competencyRefs": [],
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 43, Spiegelstrich 13",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK.PLANES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": true,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+          "8cb5c712-9c58-5910-8c63-8c3736369b80",
+          "c2c49659-5917-5be5-a3bd-e46f1b17126f"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "reviewContext": {
+        "page": {
+          "pageNumber": 11,
+          "navigationOrder": 9,
+          "treeOrder": 13,
+          "goalId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+          "shortKey": "canonical_math_q2_reflect_points_lines_and_planes_generally_lk_planes",
+          "anchor": "goal-985d5529-a586-50eb-bd7f-2db2be8906d1",
+          "title": "Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK)",
+          "description": "Die lernende Person kann Ebenen in allgemeinen räumlichen Konfigurationen spiegeln, geeignete Symmetriebedingungen aufstellen und die Ergebnisse geometrisch prüfen.",
+          "breadcrumbs": [
+            "Mathematik",
+            "Bundeslandspezifische Ergänzungen",
+            "Sekundarstufe II",
+            "Lineare Algebra und analytische Geometrie"
+          ],
+          "chapterIds": [
+            "structure:goal-book-math-root",
+            "structure:goal-book-bundesland-supplements",
+            "structure:goal-book-supplement-sekii",
+            "structure:goal-book-supplement-SekII-LinearAlgebra"
+          ],
+          "applicability": [
+            {
+              "jurisdiction": "DE-BW",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-BY",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": "G9",
+                  "courseProfile": "LK"
+                }
+              ]
+            },
+            {
+              "jurisdiction": "DE-HE",
+              "scopes": [
+                {
+                  "stage": "SekII",
+                  "durationModel": null,
+                  "courseProfile": "LK"
+                }
+              ]
+            }
+          ],
+          "requires": [
+            {
+              "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+              "title": "Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)",
+              "anchor": "goal-c2c49659-5917-5be5-a3bd-e46f1b17126f",
+              "pageNumber": 8
+            },
+            {
+              "goalId": "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+              "title": "Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)",
+              "anchor": "goal-a97c7cce-1343-5d04-926f-4a4f323b3c21",
+              "pageNumber": 10
+            }
+          ],
+          "reverseRequires": [],
+          "externalPrerequisites": [
+            {
+              "goalId": "8cb5c712-9c58-5910-8c63-8c3736369b80",
+              "title": "Punkte an Ebenen spiegeln",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-8cb5c712-9c58-5910-8c63-8c3736369b80"
+            }
+          ],
+          "externalReverseRequires": [
+            {
+              "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+              "title": "Geraden, Ebenen und Schnittfiguren analysieren",
+              "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-2f8a3a90-717d-5ac1-b54e-facca26e9008"
+            }
+          ],
+          "visualization": {
+            "resourceType": "image",
+            "title": "Visualisierung: Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK)",
+            "url": "/assets/goal-visualizations/mathematik/985d5529-a586-50eb-bd7f-2db2be8906d1/985d5529-a586-50eb-bd7f-2db2be8906d1.jpg",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK)\". Die lernende Person kann Ebenen in allgemeinen räumlichen Konfigurationen spiegeln, geeignete Symmetriebedingungen aufstellen und die Ergebnisse geometrisch prüfen.",
+            "originalDigest": "sha256:cf54e59eaf5edb3a7ac481d4b370906f984053f3416a37dfab8f96fee5f31d32",
+            "qaStatus": "review_candidate",
+            "approvedForPublication": false
+          },
+          "evidenceReview": null,
+          "goalFingerprint": "sha256:bc8a369e485f9d5af36a764fa179a571f7ede18b196f6674da9284809678d0ba",
+          "pageFingerprint": "sha256:ce7e389f8b3ef31cc1fba5ae274c328d891d32700c202b305197a6ca2b8046c0"
+        },
+        "evidenceProfile": null
+      }
+    }
+  ],
+  "reviewInputFingerprint": "sha256:e0e6fb83c796523505db636ad4f1d40a78a28de20ecaafabeaa0b5818a520db0"
+}

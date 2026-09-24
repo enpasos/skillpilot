@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-24T02:28:30.559Z",
+  "generatedAt": "2026-09-24T13:31:26.207Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
@@ -12,8 +12,8 @@
   "summary": {
     "totalGoals": 1192,
     "atomicGoalsInScope": 797,
-    "goalsWithPrimaryVisualization": 742,
-    "coveragePercent": 93.1,
+    "goalsWithPrimaryVisualization": 758,
+    "coveragePercent": 95.1,
     "goalsAccountedForByAssetOrDeferred": 797,
     "accountedCoveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
@@ -21,15 +21,15 @@
       "accepted": 5,
       "ai-reviewed": 6,
       "approved": 16,
-      "pilot": 715
+      "pilot": 731
     },
     "linkedVisualizationReviewStatuses": {
       "accepted": 5,
       "ai-reviewed": 6,
       "approved": 16,
-      "pilot": 715
+      "pilot": 731
     },
-    "reviewLedgerFiles": 247,
+    "reviewLedgerFiles": 249,
     "reviewDecisionCounts": {
       "accepted": 2,
       "accepted_after_regeneration": 8,
@@ -41,6 +41,7 @@
       "accepted_pilot": 606,
       "accepted_pilot_after_fresh_ai_review": 96,
       "accepted_pilot_after_fresh_ai_review_correction": 1,
+      "accepted_pilot_after_original_resolution_ai_review": 16,
       "accepted_pilot_after_provider_retry": 2,
       "accepted_pilot_after_reference_guided_regeneration": 1,
       "accepted_pilot_after_regeneration": 172,
@@ -62,8 +63,8 @@
       "accepted_user_supplied_replacement": 1,
       "blocked_provider_quota": 5,
       "correction_open_provider_credit_exhausted": 4,
-      "deferred_provider_limitation": 91,
-      "deferred_quality_review": 30,
+      "deferred_provider_limitation": 92,
+      "deferred_quality_review": 35,
       "not_attempted_after_quota_block": 4,
       "rejected_after_review_regenerated": 7,
       "rejected_after_second_regeneration": 1,
@@ -79,8 +80,8 @@
       "rejected_regenerated": 80,
       "rejected_removed": 1
     },
-    "openProviderDeferredGoals": 30,
-    "openQualityDeferredGoals": 25,
+    "openProviderDeferredGoals": 9,
+    "openQualityDeferredGoals": 30,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 2,
     "regularUnlinkedGoals": 0,
@@ -89,41 +90,13 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-m7-five-volume-png-20260924-v1.md",
-    "latestLedgerStatus": "completed",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-zz-prompt20-current-deferral-2026-09-24.md",
+    "latestLedgerStatus": null,
     "resumeFile": "",
     "promptAppendDir": "tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17"
   },
   "qualityQueues": {
     "openProviderDeferred": [
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
-        "title": "Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK)",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK)“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "e105bad8-b4e5-53fc-b02e-604f1df5b503",
-        "title": "Die kulturhistorische Bedeutung komplexer Zahlen einordnen (LK)",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Die kulturhistorische Bedeutung komplexer Zahlen einordnen (LK)“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "a506fc1d-b784-548f-90c3-5aae1b819b68",
-        "title": "Die Volumenformel schiefer Prismen mit Cavalieri plausibilisieren",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Die Volumenformel schiefer Prismen mit Cavalieri plausibilisieren“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
-        "title": "Die Volumenformel von Pyramiden begründen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Die Volumenformel von Pyramiden begründen“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
       {
         "batch": "194",
         "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
@@ -132,32 +105,11 @@
         "notes": "All three candidates corrected the maximum from 41 m to 21 m, but none placed h(0)=h(4)=1 consistently on its explicit vertical scale. The active link and canonical, public and backend asset copies were removed."
       },
       {
-        "batch": "204",
-        "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
-        "title": "Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Previous active SHA-256 `2194f6769d8d770d4de9cef2b6e61a8073ba35982cea7680abe63d3efd3c8fb5` was withdrawn. Drei gezielte Kandidaten koppeln die beschrifteten Koordinaten nicht korrekt an die gezeichneten Rechteck-Eckpunkte. Ein fachlich korrektes Asset ist aus dieser Provider-Runde nicht importierbar. The active link and canonical, public, and backend image copies were removed."
-      },
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "b71c332f-ef9d-5c27-983b-7103269ff419",
-        "title": "Glockenkurven als Funktionsmodelle untersuchen (LK)",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Glockenkurven als Funktionsmodelle untersuchen (LK)“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
         "batch": "mathematik-structural-split-deferred-2026-08-16",
         "goalId": "d051857c-0707-544f-ae7a-f20690d182b2",
         "title": "Höhen in Dreiecken konstruieren",
         "decision": "deferred_provider_limitation",
         "notes": "Für „Höhen in Dreiecken konstruieren“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
-        "batch": "mathematik-ai-correction-shard-1",
-        "goalId": "ae483d98-54e0-5985-96d2-fc1351d22e4f",
-        "title": "Hypothesentests bei verändertem Stichprobenumfang variieren",
-        "decision": "deferred_provider_limitation",
-        "notes": "Three attempts corrected the original absolute-spread misconception by using `X/n`, but none simultaneously kept comparable-alpha decision boundaries and unambiguous alpha/beta region labels. The final attempt still pointed `β≈0` into a region right of the decision boundary. The active link and canonical, public, and backend asset copies were removed."
       },
       {
         "batch": "mathematik-structural-split-deferred-2026-08-16",
@@ -172,13 +124,6 @@
         "title": "Inverse Fragestellungen zur Normalverteilung lösen (LK)",
         "decision": "deferred_provider_limitation",
         "notes": "Für „Inverse Fragestellungen zur Normalverteilung lösen (LK)“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "164921f6-3bf7-5efc-a438-ea4759dca9ef",
-        "title": "Kettenlinien als Funktionsmodelle untersuchen (LK)",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Kettenlinien als Funktionsmodelle untersuchen (LK)“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
       },
       {
         "batch": "197",
@@ -202,13 +147,6 @@
         "notes": "Drei gezielte Versuche erzeugen keine durchgängig konsistent beschrifteten kongruenten, vergrößerten und verkleinerten Dreiecke. Ein fachlich korrektes Asset ist aus dieser Provider-Runde nicht importierbar. The active link and canonical, public, and backend image copies were removed."
       },
       {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "743e5470-ff39-551e-9aba-529656418c66",
-        "title": "Kreistangenten von einem äußeren Punkt konstruieren",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Kreistangenten von einem äußeren Punkt konstruieren“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
         "batch": "205",
         "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
         "title": "Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell)",
@@ -216,98 +154,21 @@
         "notes": "Drei gezielte Versuche vertauschen Bezeichner oder mischen deutsche Dezimalkommas mit Dezimalpunkten. Kein vollständig konsistenter Kandidat ist importierbar. The active link and canonical, public, and backend image copies were removed."
       },
       {
-        "batch": "205",
-        "goalId": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
-        "title": "Newton-Verfahren zur Nullstellennäherung anwenden",
-        "decision": "deferred_provider_limitation",
-        "notes": "Drei gezielte Kandidaten zeigen die numerisch richtigen Newton-Schritte, koppeln den markierten positiven Nullstellenpunkt aber nicht an den tatsächlichen Schnitt von f(x)=x²−2 mit der x-Achse. Ein fachlich korrektes Asset ist aus dieser Provider-Runde nicht importierbar. The active link and canonical, public, and backend image copies were removed."
-      },
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
-        "title": "Ortskurven von Extrempunkten bestimmen (LK)",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Ortskurven von Extrempunkten bestimmen (LK)“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "79444ef9-cc85-5ac4-a3bc-f10d3ffbfd16",
-        "title": "Ortskurven von Wendepunkten bestimmen (LK)",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Ortskurven von Wendepunkten bestimmen (LK)“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
-        "batch": "193",
-        "goalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
-        "title": "Parameter quadratischer Funktionen in Scheitelpunktform deuten",
-        "decision": "deferred_provider_limitation",
-        "notes": "Three targeted attempts remained mathematically misleading: attempts 1 and 2 opened the e<0 shift downward, while attempt 3 put the e=0 vertex below the x-axis. The active link and canonical, public and backend asset copies were removed."
-      },
-      {
-        "batch": "195",
-        "goalId": "e7350739-c89f-5c7b-b4d1-717d6a767298",
-        "title": "Parameteruntersuchungen mit Exponentialfunktionen (LK)",
-        "decision": "deferred_provider_limitation",
-        "notes": "Three attempts remained visually misleading: missing curve assignments and inaccurate tails, then a false parameter label, then a green curve with a nonzero value at x = 0. The active link and all deployed image copies were removed."
-      },
-      {
-        "batch": "206",
-        "goalId": "3256476b-ec65-4038-9f5a-a8808fbcf207",
-        "title": "Punkt-Gerade-Abstände im Raum bestimmen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Drei gezielte Kandidaten enthalten weiterhin 0.5 in der Projektionsrechnung. Die fachlich richtige Rechnung wird damit typografisch nicht zuverlässig erzeugt. The active link and canonical, public, and backend image copies were removed."
-      },
-      {
-        "batch": "206",
-        "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
-        "title": "Punkte und Vektoren im Raum koordinatisieren",
-        "decision": "deferred_provider_limitation",
-        "notes": "Drei strukturell vereinfachte Kandidaten ordnen die Komponenten von Punkt und Vektor nicht konsistent den x-, y- und z-Achsenrichtungen zu. Die Zeichnungen bleiben fachlich irreführend. The active link and canonical, public, and backend image copies were removed."
-      },
-      {
-        "batch": "206",
-        "goalId": "47400de4-b0e4-5bb6-a1bd-bd2beee616bb",
-        "title": "Regula falsi zur Nullstellennäherung anwenden",
-        "decision": "deferred_provider_limitation",
-        "notes": "Drei Kandidaten koppeln die korrekten Regula-falsi-Werte nicht an eine geometrisch maßstäbliche Zeichnung; besonders die Lage von 4/3 und √2 bleibt sichtbar falsch. The active link and canonical, public, and backend image copies were removed."
-      },
-      {
-        "batch": "206",
-        "goalId": "36728db8-da44-4add-97b8-0fdd7cfd9c41",
-        "title": "Satz des Thales begründen und anwenden",
-        "decision": "deferred_provider_limitation",
-        "notes": "Nach drei Kandidaten ist entweder die Begründung unvollständig oder die Gleichheitsmarkierung falsch. Der letzte Versuch behauptet durch identische Striche zusätzlich falsche Chordengleichheiten. The active link and canonical, public, and backend image copies were removed."
-      },
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "e663cc67-5249-55db-b103-357b58a1ca91",
-        "title": "Sinus- und Kosinussatz in allgemeinen Dreiecken anwenden",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Sinus- und Kosinussatz in allgemeinen Dreiecken anwenden“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
+        "batch": "mathematik-zz-prompt20-current-deferral-2026-09-24",
         "goalId": "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c",
         "title": "Transformationen von Logarithmusgraphen deuten (LK)",
         "decision": "deferred_provider_limitation",
-        "notes": "Für „Transformationen von Logarithmusgraphen deuten (LK)“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
-        "batch": "203",
-        "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
-        "title": "Winkelbeziehungen in Figuren beschreiben und für geometrische Argumentationen nutzen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Three generated candidates still placed the allegedly supplementary same-side interior angles on opposite sides of the transversal, thereby drawing alternate interior angles. The active link and canonical, public, and backend image copies were removed."
-      },
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "f509a549-aee5-5468-af73-5b1efa3f342c",
-        "title": "Winkelhalbierende konstruieren und begründen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Winkelhalbierende konstruieren und begründen“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
+        "notes": "Für Prompt 20 liegt weiterhin kein eigenständiges, fachlich geeignetes PNG vor; die falsch kopierte Prompt-19-Datei wird nicht eingebunden."
       }
     ],
     "openQualityDeferred": [
+      {
+        "batch": "mathematik-z-astra-image-sight-20260924-v1",
+        "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+        "title": "Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK)",
+        "decision": "deferred_quality_review",
+        "notes": "The requested reflected pair (ln 4, 4) and (4, ln 4) and its guides are absent after the specifically reported misplaced marker; the correction target is not met."
+      },
       {
         "batch": "mathematik-m7-quality-holds-2026-09-23",
         "goalId": "87372f49-c832-50f6-921f-ec9a6804d58a",
@@ -321,6 +182,13 @@
         "title": "Extremstellen parameterabhängig untersuchen",
         "decision": "deferred_quality_review",
         "notes": "HOLD für den unveränderten Asset-Hash: Im Beispiel a=2 nennt die Tabelle T(2&#124;-4), aber der kleine Graph zeichnet den Scheitel auf die x-Achse und beschriftet ihn 2(-4) statt mit einer korrekten Koordinate. Die parameterabhängige Lage des Tiefpunkts ist Kern des Lernziels; die visuelle Aussage widerspricht der richtigen Rechnung. Original-JPG visuell geprüft und unabhängig in D/P beanstandet. Frühere ChatGPT-Prüfnotizen bleiben als Historie erhalten, begründen aber keine aktuelle Freigabe."
+      },
+      {
+        "batch": "mathematik-z-astra-image-sight-20260924-v1",
+        "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+        "title": "Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen",
+        "decision": "deferred_quality_review",
+        "notes": "Point A is drawn left of the x = -3 grid line although its label states A(-3,-2); the other labelled vertices follow the grid."
       },
       {
         "batch": "mathematik-m7-quality-holds-2026-09-23",
@@ -358,6 +226,20 @@
         "notes": "BILD-HOLD: f(1)=-1 und f(2)=2 sind als definierte Funktionswerte beschriftet, die entsprechenden Stellen im Graphen aber mit offenen statt ausgefuellten Kreisen markiert. Fuer die Zwischenwertidee ist diese Inkonsistenz besonders irrefuehrend."
       },
       {
+        "batch": "mathematik-z-astra-image-sight-20260924-v1",
+        "goalId": "ae483d98-54e0-5985-96d2-fc1351d22e4f",
+        "title": "Hypothesentests bei verändertem Stichprobenumfang variieren",
+        "decision": "deferred_quality_review",
+        "notes": "For n = 50 and p1 = 0.6, the orange distribution peaks to the right of the K >= 32 cutoff; its mean must be K = 30, to the left of that cutoff."
+      },
+      {
+        "batch": "mathematik-z-astra-image-sight-20260924-v1",
+        "goalId": "164921f6-3bf7-5efc-a438-ea4759dca9ef",
+        "title": "Kettenlinien als Funktionsmodelle untersuchen (LK)",
+        "decision": "deferred_quality_review",
+        "notes": "A hanging chain and its graph are twice called a Katenoide; the correct curve is a Kettenlinie, while a catenoid is a surface."
+      },
+      {
         "batch": "mathematik-m7-quality-holds-2026-09-23",
         "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
         "title": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
@@ -384,6 +266,13 @@
         "title": "Nebenbedingungen berücksichtigen",
         "decision": "deferred_quality_review",
         "notes": "HOLD: The picture crosses out the mathematically valid lower bound b≥73/30≈2.43 and depicts a fourth bus as rejected although b=4 is feasible. Stray glyphs further impair meaning. Earlier approval of this exact asset is revoked pending targeted correction."
+      },
+      {
+        "batch": "mathematik-z-astra-image-sight-20260924-v1",
+        "goalId": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
+        "title": "Newton-Verfahren zur Nullstellennäherung anwenden",
+        "decision": "deferred_quality_review",
+        "notes": "The positions marked x1 = 1.5, x2 approx 1.4167 and sqrt(2) do not use the plotted common x scale; the root marker is left of the curve crossing."
       },
       {
         "batch": "mathematik-2231-right-angle-hold-20260924-v1",
@@ -2223,6 +2112,14 @@
       "url": "/assets/goal-visualizations/mathematik/9b6f4d7d-a804-5666-b7ea-85bb3c73da4a/9b6f4d7d-a804-5666-b7ea-85bb3c73da4a.png"
     },
     {
+      "goalId": "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+      "title": "Die kulturhistorische Bedeutung komplexer Zahlen einordnen (LK)",
+      "phase": "Q4",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/e105bad8-b4e5-53fc-b02e-604f1df5b503/e105bad8-b4e5-53fc-b02e-604f1df5b503.png"
+    },
+    {
       "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
       "title": "Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)",
       "phase": "Q2",
@@ -2237,6 +2134,22 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/a7778885-17aa-5eeb-a6a7-fbf4c8d55a16/a7778885-17aa-5eeb-a6a7-fbf4c8d55a16.png"
+    },
+    {
+      "goalId": "a506fc1d-b784-548f-90c3-5aae1b819b68",
+      "title": "Die Volumenformel schiefer Prismen mit Cavalieri plausibilisieren",
+      "phase": "J10",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/a506fc1d-b784-548f-90c3-5aae1b819b68/a506fc1d-b784-548f-90c3-5aae1b819b68.png"
+    },
+    {
+      "goalId": "5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+      "title": "Die Volumenformel von Pyramiden begründen",
+      "phase": "J10",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/5619ca5b-dc2a-504e-ad89-2e0ca0a83822/5619ca5b-dc2a-504e-ad89-2e0ca0a83822.png"
     },
     {
       "goalId": "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
@@ -3415,6 +3328,14 @@
       "url": "/assets/goal-visualizations/mathematik/39fa30f2-e1ae-5c36-be56-793b77906abb/39fa30f2-e1ae-5c36-be56-793b77906abb.jpg"
     },
     {
+      "goalId": "b71c332f-ef9d-5c27-983b-7103269ff419",
+      "title": "Glockenkurven als Funktionsmodelle untersuchen (LK)",
+      "phase": "Q1",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/b71c332f-ef9d-5c27-983b-7103269ff419/b71c332f-ef9d-5c27-983b-7103269ff419.png"
+    },
+    {
       "goalId": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
       "title": "Graphen einfacher Hyperbeln mit Asymptoten zeichnen",
       "phase": "J8",
@@ -4029,6 +3950,14 @@
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/1dd0266c-41b4-5481-b64b-7b718cfe799b/1dd0266c-41b4-5481-b64b-7b718cfe799b.jpg"
+    },
+    {
+      "goalId": "743e5470-ff39-551e-9aba-529656418c66",
+      "title": "Kreistangenten von einem äußeren Punkt konstruieren",
+      "phase": "J8",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/743e5470-ff39-551e-9aba-529656418c66/743e5470-ff39-551e-9aba-529656418c66.png"
     },
     {
       "goalId": "ded082ed-ea38-510c-ab91-e0a50b064e07",
@@ -4807,6 +4736,22 @@
       "url": "/assets/goal-visualizations/mathematik/b72d87d4-763e-54aa-940d-31f195b51700/b72d87d4-763e-54aa-940d-31f195b51700.png"
     },
     {
+      "goalId": "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+      "title": "Ortskurven von Extrempunkten bestimmen (LK)",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/fdce0ced-46a0-594a-9b5d-d2dc18e5e473/fdce0ced-46a0-594a-9b5d-d2dc18e5e473.png"
+    },
+    {
+      "goalId": "79444ef9-cc85-5ac4-a3bc-f10d3ffbfd16",
+      "title": "Ortskurven von Wendepunkten bestimmen (LK)",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/79444ef9-cc85-5ac4-a3bc-f10d3ffbfd16/79444ef9-cc85-5ac4-a3bc-f10d3ffbfd16.png"
+    },
+    {
       "goalId": "eb112b6f-4cc4-58af-975a-f1ea61b727f0",
       "title": "Parabelbahnen mithilfe von Parametern darstellen (LK)",
       "phase": "Q2",
@@ -4935,6 +4880,14 @@
       "url": "/assets/goal-visualizations/mathematik/ea8e3dfb-7fd7-5d49-ae07-01864e6aa464/ea8e3dfb-7fd7-5d49-ae07-01864e6aa464.jpg"
     },
     {
+      "goalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+      "title": "Parameter quadratischer Funktionen in Scheitelpunktform deuten",
+      "phase": "J9",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/5bced7dc-6557-4af1-9e70-d87f850d3b7f/5bced7dc-6557-4af1-9e70-d87f850d3b7f.png"
+    },
+    {
       "goalId": "895a60ea-606a-4e77-a5af-ecc13d68e8fb",
       "title": "Parameter trigonometrischer Funktionen deuten",
       "phase": "J10",
@@ -4989,6 +4942,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/be18cef8-ad5b-56d4-9ecf-9ba45bad211e/be18cef8-ad5b-56d4-9ecf-9ba45bad211e.jpg"
+    },
+    {
+      "goalId": "e7350739-c89f-5c7b-b4d1-717d6a767298",
+      "title": "Parameteruntersuchungen mit Exponentialfunktionen (LK)",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/e7350739-c89f-5c7b-b4d1-717d6a767298/e7350739-c89f-5c7b-b4d1-717d6a767298.png"
     },
     {
       "goalId": "6947245e-6bd7-52d7-9bc2-0c60cfa447c5",
@@ -5263,6 +5224,14 @@
       "url": "/assets/goal-visualizations/mathematik/804d7443-9976-5d81-a47d-1601f42f7e0e/804d7443-9976-5d81-a47d-1601f42f7e0e.jpg"
     },
     {
+      "goalId": "3256476b-ec65-4038-9f5a-a8808fbcf207",
+      "title": "Punkt-Gerade-Abstände im Raum bestimmen",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3256476b-ec65-4038-9f5a-a8808fbcf207/3256476b-ec65-4038-9f5a-a8808fbcf207.png"
+    },
+    {
       "goalId": "66a96282-340d-5220-91a6-cc97e2ec2220",
       "title": "Punkt-Normalen-Form einer Ebene aufstellen",
       "phase": "Q2",
@@ -5309,6 +5278,14 @@
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/57f6d5e4-7c24-4e70-9cf6-737f01d79914/57f6d5e4-7c24-4e70-9cf6-737f01d79914.jpg"
+    },
+    {
+      "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+      "title": "Punkte und Vektoren im Raum koordinatisieren",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/075f1ef2-6860-4b20-9df2-878157eb395e/075f1ef2-6860-4b20-9df2-878157eb395e.png"
     },
     {
       "goalId": "25593605-5e13-55cc-9a05-8f3d737e15e9",
@@ -5519,6 +5496,14 @@
       "url": "/assets/goal-visualizations/mathematik/0bd7dc9b-c7f9-52e6-b374-a019edfd821c/0bd7dc9b-c7f9-52e6-b374-a019edfd821c.jpg"
     },
     {
+      "goalId": "47400de4-b0e4-5bb6-a1bd-bd2beee616bb",
+      "title": "Regula falsi zur Nullstellennäherung anwenden",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/47400de4-b0e4-5bb6-a1bd-bd2beee616bb/47400de4-b0e4-5bb6-a1bd-bd2beee616bb.png"
+    },
+    {
       "goalId": "4d55ba50-8d67-560c-a10f-cccff4728c40",
       "title": "Reihen als Folgen von Partialsummen beschreiben (LK)",
       "phase": "Q4",
@@ -5663,6 +5648,14 @@
       "url": "/assets/goal-visualizations/mathematik/80956a2c-5811-4021-863e-95675bec31f5/80956a2c-5811-4021-863e-95675bec31f5.jpg"
     },
     {
+      "goalId": "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+      "title": "Satz des Thales begründen und anwenden",
+      "phase": "J8",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/36728db8-da44-4add-97b8-0fdd7cfd9c41/36728db8-da44-4add-97b8-0fdd7cfd9c41.png"
+    },
+    {
       "goalId": "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
       "title": "Scheitelpunkte quadratischer Funktionen bestimmen",
       "phase": "GLOBAL",
@@ -5797,6 +5790,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/bbef7cf2-90fa-59fa-a115-8b651aab9231/bbef7cf2-90fa-59fa-a115-8b651aab9231.jpg"
+    },
+    {
+      "goalId": "e663cc67-5249-55db-b103-357b58a1ca91",
+      "title": "Sinus- und Kosinussatz in allgemeinen Dreiecken anwenden",
+      "phase": "J9",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/e663cc67-5249-55db-b103-357b58a1ca91/e663cc67-5249-55db-b103-357b58a1ca91.png"
     },
     {
       "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
@@ -6893,6 +6894,22 @@
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/bda6a659-9640-53a5-8be0-24705ab623ef/bda6a659-9640-53a5-8be0-24705ab623ef.png"
+    },
+    {
+      "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+      "title": "Winkelbeziehungen in Figuren beschreiben und für geometrische Argumentationen nutzen",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/fc047e6e-5d6d-460f-99fc-ade3a23b9a8e/fc047e6e-5d6d-460f-99fc-ade3a23b9a8e.png"
+    },
+    {
+      "goalId": "f509a549-aee5-5468-af73-5b1efa3f342c",
+      "title": "Winkelhalbierende konstruieren und begründen",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f509a549-aee5-5468-af73-5b1efa3f342c/f509a549-aee5-5468-af73-5b1efa3f342c.png"
     },
     {
       "goalId": "2331caf2-ccb2-5492-9fc6-48763b848bae",

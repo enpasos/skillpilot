@@ -1,0 +1,36 @@
+{
+  "sourceCommand": "codex debug models",
+  "sourceCatalogDigest": "sha256:910e860f7328bd01c26cf2c9d0a4150fa5ff66fa8c81deb66d54721ba52d1519",
+  "model": {
+    "slug": "gpt-6-sol",
+    "display_name": "GPT-6-Sol",
+    "supported_reasoning_levels": [
+      {
+        "effort": "low",
+        "description": "Fast responses with lighter reasoning"
+      },
+      {
+        "effort": "medium",
+        "description": "Balances speed and reasoning depth for everyday tasks"
+      },
+      {
+        "effort": "high",
+        "description": "Greater reasoning depth for complex problems"
+      },
+      {
+        "effort": "xhigh",
+        "description": "Extra high reasoning depth for complex problems"
+      },
+      {
+        "effort": "max",
+        "description": "Maximum reasoning depth for the hardest problems"
+      },
+      {
+        "effort": "ultra",
+        "description": "Maximum reasoning with automatic task delegation"
+      }
+    ]
+  },
+  "providerFieldInCatalog": null,
+  "identityVerification": "The model slug was explicitly supplied with --model in invocation.txt and matched this local Codex CLI catalog entry; distinct model slugs are the diversity basis."
+}

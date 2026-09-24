@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 1,
+  "assessmentId": "mathematik-m7-q3-stochastics-open-five-candidate-assessment-20260924-v1",
+  "batchId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1",
+  "status": "candidate_only",
+  "assessedAt": "2026-09-24",
+  "currentBindings": {
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeSha256": "sha256:7e8be28c98430881f5271e669012e98ea09fd8d38368d7d903bf3fcc615f850b",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "preparedFivePageBookModelDigest": "sha256:13c7f8bf41b8dd1700554a9307f6f98571a043d01b1d15b1159e8ecf07630fb2",
+    "preparedFivePageBundleFingerprint": "sha256:cf6b8ad7bea4df7bc4b7c272a2bbd09f77df033f3d0409703ca4dd92740bbd46",
+    "preparedFivePageReviewInputFingerprint": "sha256:5b2843e955bcc5d62bb799901da8f972943a80943a7425642f50bbd1f2229f0a",
+    "preparedAt": "2026-09-24T07:41:05+02:00",
+    "canonicalPublicGoalBookModelPath": "app/public/lernzielbuch/de-gym-mathematik-bundesweit.book-model.json",
+    "canonicalPublicGoalBookModelSha256": "sha256:42f5e7f51f820432fcf5a23c7172c2c2611c281cec92cff53a10c5e502c688be",
+    "currentIndependentReviews": {
+      "validationPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/candidate-assessment/dual-round-validation.json",
+      "bundleFingerprint": "sha256:cf6b8ad7bea4df7bc4b7c272a2bbd09f77df033f3d0409703ca4dd92740bbd46",
+      "reviewInputFingerprint": "sha256:5b2843e955bcc5d62bb799901da8f972943a80943a7425642f50bbd1f2229f0a",
+      "roundA": {
+        "provider": "openai",
+        "model": "gpt-5.6-sol",
+        "sessionId": "01a0d1fa-71cf-76b1-b420-6087e655ec4d",
+        "status": "completed",
+        "goalCount": 5
+      },
+      "roundB": {
+        "provider": "openai",
+        "model": "gpt-6-sol",
+        "sessionId": "01a0d1fc-c8c1-7ea1-85e2-27cea4e59e7a",
+        "status": "completed",
+        "goalCount": 5
+      },
+      "diversityPolicy": "require_distinct_provider_or_model",
+      "diversityPolicySatisfied": true,
+      "exactAgreementCount": 0,
+      "disagreementCount": 5,
+      "requiresSynthesisCount": 5,
+      "automaticAcceptance": false
+    }
+  },
+  "packageDisposition": {
+    "strictCandidateClosures": 0,
+    "descriptionRevisionCandidates": 3,
+    "descriptionKeepCandidatesWithSynthesis": 1,
+    "atomicityOrScopeDisputesOpen": 1,
+    "imagesBoundOrChanged": 0,
+    "centralLandscapeOrRegistryOrLedgerChanges": 0,
+    "historicalArtifactsChanged": 0,
+    "reason": "Two distinct-model current A/B rounds are validated. Synthesis resolves three wording candidates and the 66 description keep candidate; the current semantic-atomicity ledger and both current description reviews support the unchanged atomic application goal. Goal 9de remains open because current A/B disagree on atomicity and scope. Current source integration and V gates remain separate."
+  },
+  "goals": [
+    {
+      "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
+      "title": "Kombinationen ohne Zurücklegen mit Fakultäten berechnen",
+      "currentDescriptionDe": "Die lernende Person kann ungeordnete Stichproben ohne Zurücklegen mithilfe von Fakultäten berechnen (ohne Binomialkoeffizientenbegriff) und Ergebnisse an Beispielen prüfen.",
+      "currentDescriptionEn": "The learner can compute unordered samples without replacement using factorials (without using the binomial coefficient term) and verify results with examples.",
+      "currentGoalFingerprint": "sha256:27f03a19cffd512939579bfd7d7af8d4b1c68e3be1a1983108b507fe97b831ea",
+      "previousTwelveGoalPageFingerprint": "sha256:212b5b8daa9dc654ac599196a4607b3adb475653cd033fb1790acc08782ee528",
+      "currentFivePageFingerprint": "sha256:3fa75ff7037a9164d0c3f0ee0a815f9b50e274d3ccc1fdb09c87f4bb8a62d8f1",
+      "reviewRecords": {
+        "historicalRoundA": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-1",
+          "decision": "keep"
+        },
+        "historicalRoundB": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.70efdec0-110c-5564-849b-bc05cfff0f6a",
+          "decision": "revise",
+          "finding": "The object to calculate is the number of unordered samples; the draft makes the count explicit."
+        },
+        "currentRoundA": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-first-pass-a.run-001.goal-1",
+          "decision": "revise",
+          "provider": "openai",
+          "model": "gpt-5.6-sol",
+          "sessionId": "01a0d1fa-71cf-76b1-b420-6087e655ec4d"
+        },
+        "currentRoundB": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-first-pass-b.run-001.goal-1",
+          "decision": "revise",
+          "provider": "openai",
+          "model": "gpt-6-sol",
+          "sessionId": "01a0d1fc-c8c1-7ea1-85e2-27cea4e59e7a"
+        }
+      },
+      "currentGate": {
+        "description": "fresh current-context A/B revise/revise; wording finding synthesized to an explicit unordered-selection count; batch-local only, not integrated",
+        "understandingEvidence": "positive-understanding-evidence-v2 candidate, needs_human_review; text-only because primary visualization is missing",
+        "semanticAtomicity": "current full-landscape ledger says atomic; retained",
+        "memory": "no_memory_needed; current full-landscape memory check passed",
+        "visualization": "missing; deferred_provider_limitation"
+      },
+      "sourceBinding": {
+        "canonicalSourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.1, S. 46, Spiegelstrich 6",
+        "officialSourceUrl": "https://www.kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+        "assessment": "The current 2024 KCGO Q3.1 content is the bound source. The wording candidate narrows the object to the number of unordered selections and retains the factorial method without requiring the later binomial-coefficient term."
+      },
+      "descriptionCandidate": {
+        "status": "draft_for_fresh_independent_review",
+        "descriptionDe": "Die lernende Person kann die Anzahl ungeordneter Stichproben ohne Zurücklegen mithilfe von Fakultäten bestimmen (ohne den Binomialkoeffizientenbegriff) und das Ergebnis an kleinen Beispielen prüfen.",
+        "descriptionEn": "The learner can determine the number of unordered samples without replacement using factorials (without the binomial coefficient concept) and check the result with small examples."
+      }
+    },
+    {
+      "goalId": "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+      "title": "Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen",
+      "currentDescriptionDe": "Die lernende Person kann Anwendungsfälle ungeordneter Stichproben ohne Zurücklegen (z. B. Lotto) mit Binomialkoeffizienten berechnen und die Ergebnisse interpretieren.",
+      "currentDescriptionEn": "The learner can solve applications of unordered samples without replacement (e.g., lottery) using binomial coefficients and interpret the results.",
+      "currentGoalFingerprint": "sha256:542ca55cff708be351ee561148b77419244e2e91e391123226d39b184534c1ae",
+      "previousTwelveGoalPageFingerprint": "sha256:50d8b05de5a2226cf1e86926150fe2d7229d0b37def1684c0237f54b4547be2e",
+      "currentFivePageFingerprint": "sha256:5586341e1377667edd549662007bd326cb50dd0360b6961a39adc784fdd4f123",
+      "reviewRecords": {
+        "historicalRoundA": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-3",
+          "decision": "keep"
+        },
+        "historicalRoundB": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+          "decision": "revise",
+          "finding": "The application does not say whether a count or a probability is required; the draft says to determine the number of unordered selections."
+        },
+        "currentRoundA": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-first-pass-a.run-001.goal-2",
+          "decision": "keep",
+          "provider": "openai",
+          "model": "gpt-5.6-sol",
+          "sessionId": "01a0d1fa-71cf-76b1-b420-6087e655ec4d"
+        },
+        "currentRoundB": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-first-pass-b.run-001.goal-2",
+          "decision": "revise",
+          "provider": "openai",
+          "model": "gpt-6-sol",
+          "sessionId": "01a0d1fc-c8c1-7ea1-85e2-27cea4e59e7a"
+        }
+      },
+      "currentGate": {
+        "description": "fresh current-context A/B keep/revise; synthesized count-versus-probability clarification; batch-local only, not integrated",
+        "understandingEvidence": "positive-understanding-evidence-v2 candidate, needs_human_review; text-only because primary visualization is missing",
+        "semanticAtomicity": "current full-landscape ledger says atomic; retained",
+        "memory": "no_memory_needed; current full-landscape memory check passed",
+        "visualization": "missing; deferred_provider_limitation"
+      },
+      "sourceBinding": {
+        "canonicalSourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.1, S. 46, Spiegelstrich 6; Q3.1, S. 46, Spiegelstrich 7",
+        "officialSourceUrl": "https://www.kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+        "assessment": "The current 2024 KCGO Q3.1 source references remain applicable. The draft makes the assessed output the number of unordered choices, avoiding confusion with a probability calculation."
+      },
+      "descriptionCandidate": {
+        "status": "draft_for_fresh_independent_review",
+        "descriptionDe": "Die lernende Person kann in Anwendungsfällen ohne Zurücklegen die Anzahl ungeordneter Auswahlen (z. B. Lottotipps) mit Binomialkoeffizienten bestimmen und das Ergebnis im Kontext deuten.",
+        "descriptionEn": "In applications without replacement, the learner can determine the number of unordered selections (e.g. lottery tickets) with binomial coefficients and interpret the result in context."
+      }
+    },
+    {
+      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "title": "Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell)",
+      "currentDescriptionDe": "Die lernende Person kann bei Ziehungen mit Zurücklegen Wahrscheinlichkeiten mit dem Binomialkoeffizienten berechnen (z. B. Urne mit Zurücklegen) und Ergebnisse an konkreten Beispielen nachvollziehen.",
+      "currentDescriptionEn": "The learner can compute probabilities for draws with replacement using the binomial coefficient (e.g., an urn with replacement) and work through concrete examples.",
+      "currentGoalFingerprint": "sha256:4d96dacf2b0130106a2954c6597c2973e36a5bc5c8ef80e3a70e35ee258161b4",
+      "previousTwelveGoalPageFingerprint": "sha256:939ef60d3cbb7294c7ad6c1b83c347e206f9fdffc6af1e529f34ef2b6586ce34",
+      "currentFivePageFingerprint": "sha256:ffd3342b1ae5597c90b442d92f28497191e0968cd8dee2992e9297864bc229e0",
+      "reviewRecords": {
+        "historicalRoundA": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-6",
+          "decision": "keep"
+        },
+        "historicalRoundB": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.0408ac7f-0530-5de5-b248-cf581c9b5a17",
+          "decision": "revise",
+          "finding": "The event and Laplace/binomial assumptions are underspecified; the draft states repeated independent equal-probability draws and exactly k successes."
+        },
+        "currentRoundA": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-first-pass-a.run-001.goal-3",
+          "decision": "revise",
+          "provider": "openai",
+          "model": "gpt-5.6-sol",
+          "sessionId": "01a0d1fa-71cf-76b1-b420-6087e655ec4d"
+        },
+        "currentRoundB": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-first-pass-b.run-001.goal-3",
+          "decision": "revise",
+          "provider": "openai",
+          "model": "gpt-6-sol",
+          "sessionId": "01a0d1fc-c8c1-7ea1-85e2-27cea4e59e7a"
+        }
+      },
+      "currentGate": {
+        "description": "fresh current-context A/B revise/revise; synthesized exact-k event and draw-condition clarification; batch-local only, not integrated",
+        "understandingEvidence": "positive-understanding-evidence-v2 candidate, needs_human_review; text-only because primary visualization is missing",
+        "semanticAtomicity": "current full-landscape ledger says atomic; retained",
+        "memory": "no_memory_needed; current full-landscape memory check passed",
+        "visualization": "missing; deferred_provider_limitation"
+      },
+      "sourceBinding": {
+        "canonicalSourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.1, S. 46, Spiegelstrich 7",
+        "officialSourceUrl": "https://www.kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+        "assessment": "The current 2024 KCGO Q3.1 source binds this with-replacement binomial/Laplace case. The draft names the exactly-k event and the repeated-draw assumptions."
+      },
+      "descriptionCandidate": {
+        "status": "draft_for_fresh_independent_review",
+        "descriptionDe": "Die lernende Person kann bei gleichartigen, unabhängigen Ziehungen mit Zurücklegen und gleichwahrscheinlichen Einzelergebnissen die Wahrscheinlichkeit für genau k Treffer mithilfe eines Binomialkoeffizienten berechnen und im Beispiel erläutern.",
+        "descriptionEn": "For repeated, identical independent draws with replacement and equally likely elementary outcomes, the learner can calculate the probability of exactly k successes using a binomial coefficient and explain it in an example."
+      }
+    },
+    {
+      "goalId": "66f432e9-22d3-51a9-8787-35f91db30616",
+      "title": "Binomialverteilungen in Kontexten nutzen",
+      "currentDescriptionDe": "Die lernende Person kann geeignete Situationen als binomialverteilte Zufallsgrößen modellieren, anhand von Histogrammen typische Eigenschaften erkennen und die Eignung des Modells kritisch beurteilen.",
+      "currentDescriptionEn": "The learner can model suitable situations as binomial distributed random variables, recognize typical properties based on histograms, and critically assess the suitability of the model.",
+      "currentGoalFingerprint": "sha256:9f92b55ee5a7b2e3735e0c26b8dd31bc10de219b0b3525fcef5cdc84c2c22d44",
+      "previousTwelveGoalPageFingerprint": "sha256:269866641404ae3d416e82d685caac59a5ba3cf9d3184d447f69da71d9e81ecb",
+      "currentFivePageFingerprint": "sha256:b691c6f1b200876ae4bc9e283b722cf4e2e20c294ba10a4d98da11e3dcee40f3",
+      "reviewRecords": {
+        "historicalRoundA": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-8",
+          "decision": "keep",
+          "finding": "The three activities can form an integrated application after the prerequisites."
+        },
+        "historicalRoundB": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.66f432e9-22d3-51a9-8787-35f91db30616",
+          "decision": "split_review",
+          "finding": "Model selection, histogram reading, and model-adequacy assessment can be demonstrated independently. The existing image illustrates them but cannot prove the combined evidence by itself."
+        },
+        "currentRoundA": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-first-pass-a.run-001.goal-4",
+          "decision": "keep",
+          "provider": "openai",
+          "model": "gpt-5.6-sol",
+          "sessionId": "01a0d1fa-71cf-76b1-b420-6087e655ec4d"
+        },
+        "currentRoundB": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-first-pass-b.run-001.goal-4",
+          "decision": "keep",
+          "provider": "openai",
+          "model": "gpt-6-sol",
+          "sessionId": "01a0d1fc-c8c1-7ea1-85e2-27cea4e59e7a"
+        }
+      },
+      "currentGate": {
+        "description": "fresh exact-bound A/B keep/keep; batch-local synthesis keeps unchanged description; not integrated",
+        "understandingEvidence": "positive-understanding-evidence-v2 image-bound candidate, needs_human_review; profile records the current JPG digest",
+        "semanticAtomicity": "current full-landscape ledger says atomic with current fingerprint; both exact-bound current reviews keep the coherent application description; batch synthesis records this candidate resolution without changing the ledger",
+        "memory": "no_memory_needed; current full-landscape memory check passed",
+        "visualization": "available; current JPG sha256:f1e15026bd7e03282a585b88131f4a635c6345a504013fda1223a6f179f109c3; current machine QA approved and unchanged"
+      },
+      "sourceBinding": {
+        "canonicalSourceRef": null,
+        "currentClassicRoute": "classic_source_partial",
+        "currentRationalePath": "docs/qa-ci/status/goal-source-rationales-math-all-relevant.json",
+        "directCurrentSourceCandidate": "HMKB KCGO Mathematik 2024, Q3.2 Wahrscheinlichkeitsverteilungen: model limits under Bernoulli chains; histogram analysis under binomial random variables.",
+        "officialSourceUrl": "https://www.kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+        "assessment": "The existing source-rationale route resolves through Bremen as a partial, cross-goal mapping. Bind Q3.2 directly during later integration if its mappings support the adopted split; do not describe the present route as a direct per-goal sourceRef."
+      },
+      "atomicityCandidate": {
+        "status": "candidate_atomic",
+        "rationale": "The unchanged semantic fingerprint has a valid current full-landscape atomicity record classifying the goal as one distribution-modeling application competence. Both fresh exact-bound description reviewers independently keep the description and describe its model selection, histogram reading, and suitability judgment as a coherent contextual task sequence. Q3.2 p.47 supports these linked aspects. This is a batch-local candidate synthesis only; no atomicity ledger row is rewritten.",
+        "proposedSplitForReview": []
+      },
+      "imageDisposition": "KEEP current JPG. It visibly presents the three current operations, correct B(4,0.5) histogram values, and a basketball counter-context. Do not rebind it to any proposed split goal before text and context stabilize."
+    },
+    {
+      "goalId": "9de07e13-6a5f-5b49-a6d4-0decefb95784",
+      "title": "Inverse Fragestellungen zu Binomialverteilungen lösen",
+      "currentDescriptionDe": "Die lernende Person kann bei vorgegebener Binomialwahrscheinlichkeit systematisch einen unbekannten Wert von $n$, $p$ oder einer Ereignisgrenze $k$ bestimmen und die gefundene Lösung im Kontext prüfen.",
+      "currentDescriptionEn": "Given a binomial probability, the learner can systematically determine an unknown value of $n$, $p$, or an event boundary $k$ and check the solution in context.",
+      "currentGoalFingerprint": "sha256:cdca0847d35512bd84a788a40c596e45eeffce8d84665a68bea78c92df2d40c9",
+      "previousTwelveGoalPageFingerprint": "sha256:06e199857c6b80408cc3f85ae8ec60508ed69c9172fc6469809894a3c3d41e39",
+      "currentFivePageFingerprint": "sha256:e3106c54ca0650069ccfec6e1fabdb498fd80e56853a513c9b31906dd69cfe61",
+      "reviewRecords": {
+        "historicalRoundA": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-a.run-001.goal-9",
+          "decision": "split_review",
+          "finding": "Finding n, p, and k are independently assessable inverse routines."
+        },
+        "historicalRoundB": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-current-20260923-v1-first-pass-b.9de07e13-6a5f-5b49-a6d4-0decefb95784",
+          "decision": "split_review",
+          "finding": "The admissible domains and procedures for n, p, and k differ; each subgoal must state the event type."
+        },
+        "currentRoundA": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-first-pass-a.run-001.goal-5",
+          "decision": "split_review",
+          "provider": "openai",
+          "model": "gpt-5.6-sol",
+          "sessionId": "01a0d1fa-71cf-76b1-b420-6087e655ec4d"
+        },
+        "currentRoundB": {
+          "recordId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-first-pass-b.run-001.goal-5",
+          "decision": "keep",
+          "provider": "openai",
+          "model": "gpt-6-sol",
+          "sessionId": "01a0d1fc-c8c1-7ea1-85e2-27cea4e59e7a"
+        }
+      },
+      "currentGate": {
+        "description": "fresh current-context A/B split_review/keep; synthesis cannot settle semantic atomicity, remains open",
+        "understandingEvidence": "positive-understanding-evidence-v2 candidate, needs_human_review; text-only because primary visualization is missing",
+        "semanticAtomicity": "open: full-landscape ledger currently says atomic, fresh current A/B disagree split_review/keep, and current source grouping does not decide semantic atomicity",
+        "memory": "no_memory_needed; current full-landscape memory check passed",
+        "visualization": "missing; deferred_provider_limitation"
+      },
+      "sourceBinding": {
+        "currentSourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.3.5, Kompetenz 12, S. 37",
+        "currentSourceCandidate": "Bildungsplan BW Mathematik Gymnasium V2 (29.02.2024), 3.3.5, Kompetenz 14: determine the missing parameter n, p, or k with suitable aids.",
+        "officialSourceUrl": "https://www.bildungsplaene-bw.de/%2CLde/BP2016BW_ALLG_GYM_M.V2_IK_9-10_05",
+        "assessment": "The canonical sourceRef cites the 2016 V1 page. The current official V2 page retains this content at competency 14, so later integration should refresh the exact source citation and extraction binding."
+      },
+      "atomicityCandidate": {
+        "status": "needs_developer_review",
+        "reason": "Both independent rounds call for splitting. n and k are discrete unknowns with different event constraints; p is a real-valued parameter and may have multiple admissible solutions. The current description does not specify point, interval, or cumulative probability form.",
+        "suggestedSplit": [
+          "Given p and a specified event condition, determine an unknown trial count n and check the integer solution in context.",
+          "Given n and a specified event condition, determine admissible success-probability values p with an appropriate tool and check all solutions in context.",
+          "Given n, p, and a specified point, interval, or cumulative target, determine the event boundary k and interpret the discrete boundary in context."
+        ]
+      }
+    }
+  ],
+  "nextStep": "Parent integration review: apply only the synthesized candidate revisions/keep after current source and dependent-layer checks; keep 9de07e13-6a5f-5b49-a6d4-0decefb95784 open for semantic-atomicity adjudication; keep four missing images unbound and preserve the 66f432e9-22d3-51a9-8787-35f91db30616 JPG."
+}

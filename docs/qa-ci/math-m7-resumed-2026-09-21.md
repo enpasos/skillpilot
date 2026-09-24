@@ -1167,3 +1167,137 @@ geprüften G8/G9-Split-Layout-Plan wurde erst nach Feldvergleich aktualisiert:
 unverändert. Geändert sind zwölf deutsche und zwölf englische Beschreibungen
 sowie 40 Bildlinks. Alle 18 Dauer-Kompositionssichten werden mit diesem
 Stand reproduzierbar generiert.
+
+## Eng integrierte Fortsetzung am 24. September: vier weitere Mathematikziele
+
+Nach dem 703er Checkpoint wurden vier disjunkte aktuelle D-Teilresolutionen
+einzeln über die zentrale Registry gebunden. `50eb5156…` (Q2-Körper),
+`66f432e9…` (Q3-Binomialkontext), `fcb4cef1…` (Q4-Aussagen) und
+`3e4032bd…` (Scheitelpunkt) erfüllen nun jeweils die strenge
+D/P/A/M/V-Schnittmenge. Jede Resolution hält ihre eigenen aktuellen
+unabhängigen Beschreibungsrunden, Ziel-/Seitenbindungen und fachlichen
+Quellenentscheidungen fest; unveränderte kanonische Texte und gute Bilder
+blieben erhalten. `fde351a8…` bleibt wegen eines konkret belegten
+Quellen-/Geltungskonflikts ausdrücklich ausgeschlossen.
+
+Der aktuelle [zentrale Check nach dem Scheitelpunktziel](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-vready-remainder-six-open-three-20260923-v1/central-rollout-check.after-3e.txt)
+bestätigt Mathematik **707/797 (88,7 %)**, D733/P772/A797/M797/V741,
+**6/6** Checks, **0** Blocker und **90** offene aktuelle Ziele. Gegenüber
+703/797 sind dies netto **+4 neue fachliche strenge Abschlüsse** und
+**0 lediglich wiederhergestellte Bindungen**; die Zwischenstände 704 und 706
+sind in den jeweiligen Paketreceipts belegt. Physik bleibt **478/478 (M7)**.
+Die gebundenen P-Profile bleiben wahrheitsgemäß `ai_candidate` und
+`needs_human_review`; dieser Maschinenstand behauptet weder menschliche
+Curriculumfreigabe noch Erprobung oder Veröffentlichung. Mathematik ist noch
+nicht M7; CQR-303 und die abhängigen vollständigen Layer-A-Abschlussläufe
+bleiben für den 100-%-Integrationsstand offen.
+
+Das getrennte [Astra-Promptpaket](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/README.md)
+enthält 22 aktuelle V-offene Bildanweisungen. Nutzerbilder zu Prompt 1–6
+wurden nur zugeordnet und hashgebunden abgelegt; diese Zuordnung ist keine
+maschinelle V-Freigabe. Der Prompt zur Pyramidenformel wurde nach
+Nutzerhinweis auf dünne horizontale Querschnitte und einen nachgeordneten
+Integralzusatz umgestellt. Die übrigen Prompts 3 und 5–22 wurden gezielt
+inhaltlich geprüft und teils korrigiert. Parallel laufen die abgegrenzten
+Q2-Formel-/Raum-, Q4-Quellen- und In-flight-Restpakete weiter; ungeprüfte
+Kandidaten zählen nicht zum 707er Stand.
+
+## Astra-Bildpaket nach Nutzer-Sichtprüfungswunsch: 16 strenge Abschlüsse
+
+Die 22 nummerierten Nutzer-PNGs wurden nach dem zunächst dokumentierten
+Prompt-Match auf den späteren Hinweis zu möglichen Kopierfehlern in
+Originalauflösung fachlich und visuell geprüft. Die [Sichtentscheidungen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-z-astra-image-sight-20260924-v1.md)
+enthalten je Ziel den exakten Bildhash und konkrete Befunde. Prompt 21
+liegt nun als eigenständiges, zur Winkelbeziehungsaufgabe passendes PNG
+vor und ist eingebunden. Prompt 20 ist weiterhin bytegleich mit Prompt
+19 und bleibt ungebunden. Die Bilder zu Prompt 1, 5, 7, 8 und 10 sind
+wegen belegter Mängel aus aktiven Ziel- und Assetbindungen entfernt und
+mit Originalbytes archiviert. Gute vorhandene Bilder wurden nicht
+ersetzt.
+
+16 angenommene Bilder erhielten eine aktuelle hashgebundene maschinelle
+V-Prüfung und eine [gezielte P-v2-Bild-/Seitenprüfung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/positive-current-image-bound-v1/binding-review-receipt.json)
+gegen das jeweilige Understanding-Profil. Beim Pyramidenziel wurde das
+Profil fachlich auf schrumpfende horizontale Querschnitte und eine
+bereitgestellte Grenzrechnung umgestellt; der Integralzusatz wird nicht
+als Jahrgang-10-Routine verlangt. Die fünf nach dem Rückzug wieder
+unveränderten P-Records und neun unveränderte Nachbarn wurden in
+versionierten Teilkonfigurationen bytegleich erhalten. Keine bloße
+Hash-Aktualisierung wird als fachliche P-Prüfung gezählt. Alle neuen
+P-Records bleiben `ai_candidate`/`needs_human_review`; die V-Prüfung
+ist ausschließlich maschinell.
+
+Der zentrale Bericht bestätigt nun Mathematik **723/797 (90,7 %)**,
+Gates **D733/P772/A797/M797/V757**, **6/6** maschinelle Checks und
+**0** Blocker. Gegenüber 707/797 sind das netto **+16 neue fachlich
+geprüfte strenge Abschlüsse**. Die **fünf wiederhergestellten alten
+P-Bindungen** sind davon getrennt und erzeugen keinen eigenen strengen
+Zuwachs. Physik bleibt **478/478 (M7)**. Der neu generierte
+Curriculumstatus weist Mathematik weiterhin als **M6 / CQR-303 WARN**
+mit 74 offenen aktuellen Zielen aus, Physik als **M7 / CQR-303 PASS**.
+Alle neun geschützten Reifegrad-Untergrenzen bestehen. Der Asset-Check
+besteht für 1.640 aktuelle Visualisierungslinks; 57 ignorierte, nicht
+mehr verlinkte Backend-Laufzeitkopien wurden aus dem lokalen Buildbaum
+entfernt. Die [aktuelle Paketquittung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/user-image-sight-and-prompt21-receipt-20260924-v2.json)
+weist jedes der 22 Bilder und seinen Status aus.
+
+Als Nächstes sind die sechs benötigten Ersatzbilder (Prompt 1, 5, 7,
+8, 10 und 20) sowie die bereits begonnenen D-Lückenpakete gezielt
+fortzusetzen. Menschliche Prüfung, Release-Freigabe und Erprobung
+bleiben getrennt und offen; der Maschinenstand behauptet keine solche
+Freigabe. Vollständige Layer-A-Abschlussläufe werden am späteren
+stabilen 100-%-Integrationsstand gebündelt.
+
+Bei der Wiederaufnahme sind die 16 bereits angenommenen Nutzerbilder
+aus der oben verlinkten Paketquittung mit ihren exakten Hashes und
+gültigen Bindungen weiterzuverwenden. Sie werden nicht erneut fachlich
+oder visuell geprüft. Die [Paketregel zur Wiederaufnahme](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/README.md#wiederaufnahme-bereits-angenommene-bilder-erhalten)
+trennt sie von den sechs weiterhin offenen Ersatzbildern und begrenzt
+neue Prüfungen auf tatsächlich veränderte Bild-, Ziel- und
+Nachweisbindungen.
+
+Die spätere QA/Coverage-Parität stellte für Prompt 20 den weiterhin
+gültigen Provider-Aufschub neben dem dokumentierten Kopierfehler wieder
+her. Der generierte Status zählt damit **39 statt 38** offene
+Visualisierungsaufschübe (9 Provider, 30 Qualität); die strengen
+Abschlüsse **723/797**, alle fünf Gate-Zahlen und die Physikgrenze
+bleiben unverändert. Dies ist eine Statuskorrektur, kein neuer
+fachlicher Abschluss und keine erneute Prüfung angenommener Bilder.
+
+## Gesicherte offene D-Kandidaten für den nächsten Anlauf
+
+Die folgenden fünf Pakete sind im Zwischenstand versioniert, aber **nicht**
+zentral als D-Abschluss registriert. Ihre vorhandenen, gültigen Arbeitsschritte
+bleiben erhalten; die jeweils fehlenden Schritte werden gezielt fortgesetzt:
+
+| Paket | Erreichter Kandidatenstand | Nächster fachlicher Schritt |
+|---|---|---|
+| [Q2 Raumgeometrie, 11 Ziele](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-q2-spatial-eleven-current-20260924-v2.config.json) | Zwei unabhängige Runden; alle 11 benötigen Synthese | Befunde je Ziel auflösen und aktuelle Resolutionen binden |
+| [Q2 Volumen/Quellenweg, 2 Ziele](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-q2-volume-two-source-route-current-20260924-v2.config.json) | Kandidatentexte und A/B-Bundles vorbereitet | Unabhängige Runden durchführen |
+| [In-flight-Rest, 12 Ziele](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-open-inflight-remnants-12-current-20260924-v2.config.json) | Aktueller Quellen-/Seitenkontext; A-Aufrufspur und B-Plan | Vollständige, validierte A/B-Ergebnisse herstellen |
+| [V-ready Geometrie/Funktionen, 9 Ziele](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-vready-geometry-functions-open-nine-current-20260924-v2.config.json) | Runde A liegt vor | Unabhängige Runde B und Synthese abschließen |
+| [LK-Geltung, 3 Ziele](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-lk-applicability-hold-three-current-20260924-v2.config.json) | Bundles und HE-GK-Projektionsaudit vorbereitet | Quellen-/Geltungsfrage und unabhängige Runden klären |
+
+Generierte `book.html`/`book.pdf`-Derivate bleiben gitignoriert und können
+aus den versionierten Konfigurationen und Manifests wiederhergestellt werden.
+
+## Commit- und Deploy-Prüfstand vom 24. September
+
+Der vollständige lokale Produktionsbuild mit der in `.nvmrc` festgelegten
+Node-Version 20.20.2 bestand: vier GoalBooks samt Publikationsprüfung,
+TypeScript und Vite. Graph, G8/G9-Kompositionssichten, Visualisierungs-QA
+und -Coverage samt Parität, Curriculumstatus, alle neun geschützten
+Reifegrad-Untergrenzen, Dokumentationslinks, JSON-Schemas und Ziel-UUIDs
+bestanden ebenfalls. Die [technische Bindung des Split-Layout-Plans](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/math-duration-layout-binding-audit-20260924.md)
+wurde nach Feldvergleich aktualisiert; dies ist keine neue Layoutfreigabe.
+
+Ein lokaler `./run_ci.sh curriculum`-Gesamtlauf kam bis durch den
+Anwendungsbuild und stoppte erst bei einem hermetischen
+Paket-Consumer-Selbsttest: In der aktuellen Umgebung ist `strace` innerhalb
+der `bwrap`-Isolation nicht systemweit verfügbar. Eine separat gestartete
+Release-Modell-Konformität zeigte zudem, dass das bestehende
+Veröffentlichungsprofil noch die Vorher-Zahlen 742 Bildentscheidungen und
+55 fehlende Zielbilder erwartet, während nach den 16 angenommenen PNGs
+758 beziehungsweise 39 aktuell sind. Das Veröffentlichungsprofil blieb
+entsprechend der ursprünglichen QS-Scope-Grenze unverändert. Daher wird
+hier **keine vollständige CI-, Release- oder Produktionsfreigabe** behauptet.

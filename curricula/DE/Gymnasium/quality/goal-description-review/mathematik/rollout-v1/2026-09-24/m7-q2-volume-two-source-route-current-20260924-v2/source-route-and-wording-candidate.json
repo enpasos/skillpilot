@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "batch-local candidate; not canonical or central integration",
+  "createdAt": "2026-09-24",
+  "sourceHandling": "Source extraction IDs and actual official PDF pages are retained with their original identities; no source ID or title was relabelled.",
+  "sources": [
+    {
+      "key": "HMKB-KCGO-Math-2024",
+      "file": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "pdfPage": 41,
+      "printedPage": 41,
+      "sourceGoalId": "he-math-sekii:Q2.2",
+      "relevantText": "Q2.2 benennt räumliche Koordinatensysteme sowie einfache geometrische Körper einschließlich gerader und schiefer Pyramiden und das Begründen/Ausnutzen ihrer Eigenschaften zur Volumenberechnung; eine Drittelformel oder Kegel werden dort nicht ausdrücklich genannt.",
+      "sha256": "sha256:d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953"
+    },
+    {
+      "key": "TH-Gymnasium-Mathematik-2018-2019",
+      "file": "curricula/DE/Gymnasium/input/TH/lp_gy_mathematik_10.04.2019_TSP.pdf",
+      "url": "https://www.schulportal-thueringen.de/tip/resources/medien/19980?dateiname=lp_gy_mathematik_10.04.2019_TSP.pdf",
+      "pdfPage": 36,
+      "printedPage": 36,
+      "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-3-geometrie-009-1740cc4455",
+      "relevantText": "ohne Hilfsmittel die Formel angeben für: Volumen von geraden Pyramiden und Kegeln (V = 1/3 · A_G · h).",
+      "sha256": "sha256:ee1fca0285f1c9d72edd990073dc4909b0ab5b127ddef59fc46d2c54932179b2"
+    },
+    {
+      "key": "SL-GOS-Mathematik-EP-2014",
+      "file": "curricula/DE/Gymnasium/input/SL/LP_Ma_EP_GOS_2014.pdf",
+      "url": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Mathematik/LP_Ma_EP_GOS_2014.pdf?__blob=publicationFile&v=3",
+      "pdfPage": 16,
+      "printedPage": 16,
+      "sourceGoalId": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-e-gk-lk-t02-stereometrie-b25-84ab972c66",
+      "relevantText": "Volumengleichheit der drei Pyramiden bei der spezifischen Zerlegung des dreiseitigen Prismas und damit die Volumenformel der Pyramide; page also states V = 1/3 · G · h for pyramids.",
+      "sha256": "sha256:0b23cf2551733db966d86e5ec5e349b17df5d50ad31cc9fa4e0680d015e54770"
+    },
+    {
+      "key": "SL-GOS-Mathematik-EP-2014",
+      "file": "curricula/DE/Gymnasium/input/SL/LP_Ma_EP_GOS_2014.pdf",
+      "url": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Mathematik/LP_Ma_EP_GOS_2014.pdf?__blob=publicationFile&v=3",
+      "pdfPage": 17,
+      "printedPage": 17,
+      "sourceGoalId": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-e-gk-lk-t02-stereometrie-b29-dc4ea0e56b",
+      "relevantText": "Kegel, Halbkugel und Zylinder mit gleichem Radius und gleicher Höhe haben das Volumenverhältnis 1:2:3.",
+      "sha256": "sha256:0b23cf2551733db966d86e5ec5e349b17df5d50ad31cc9fa4e0680d015e54770"
+    }
+  ],
+  "candidateBindings": [
+    {
+      "goalId": "288633c1-f61c-5b48-af7e-a80357f96cad",
+      "old": {
+        "title": "Volumen von Pyramiden aus Grundfläche und Höhe bestimmen",
+        "titleEn": "Determine pyramid volumes from base area and height",
+        "description": "Die lernende Person kann den Faktor 1/3 als Verhältnis zum entsprechenden Prisma deuten und den Zusammenhang V = (G · h)/3 nutzen, um Volumina von Pyramiden aus Skizzen oder Koordinaten zu bestimmen.",
+        "descriptionEn": "The learner can interpret the factor 1/3 as the volume ratio to the corresponding prism and use V = (G · h)/3 to determine pyramid volumes from sketches or coordinates.",
+        "sourceRef": null
+      },
+      "candidate": {
+        "title": "Volumen von Pyramiden aus Grundfläche und Höhe bestimmen",
+        "titleEn": "Determine pyramid volumes from base area and height",
+        "description": "Die lernende Person kann aus einer Skizze oder Koordinatendarstellung die Grundfläche G und die senkrechte Höhe h einer Pyramide bestimmen, ihr Volumen mit V = (G · h)/3 berechnen und den Faktor 1/3 als Volumenverhältnis zu einem Prisma mit derselben Grundfläche und senkrechten Höhe erläutern.",
+        "descriptionEn": "The learner can identify a pyramid’s base area G and perpendicular height h from a sketch or coordinate representation, calculate its volume using V = (G · h)/3, and explain the factor 1/3 as the volume ratio to a prism with the same base area and perpendicular height.",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41 (Körperbeschreibungen und Nutzung geometrischer Eigenschaften zur Volumenberechnung); Thüringer Lehrplan Mathematik Gymnasium 2018/2019, S. 36 (Formel für gerade Pyramiden); Saarland, Lehrplan Mathematik Einführungsphase der gymnasialen Oberstufe, Juli 2014, S. 16 (Dreipyramidenzerlegung und Pyramiden-Volumenformel)."
+      },
+      "sourceRoute": {
+        "heSourceGoalId": "he-math-sekii:Q2.2",
+        "thSourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-3-geometrie-009-1740cc4455",
+        "slSourceGoalId": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-e-gk-lk-t02-stereometrie-b25-84ab972c66",
+        "qualification": "HE gives Q2.2 body/volume application context, TH directly lists the formula for straight pyramids, and SL connects pyramid volume formula to the three-pyramid prism decomposition."
+      }
+    },
+    {
+      "goalId": "e8237315-654e-5150-97de-49c4cb49b3d1",
+      "old": {
+        "title": "Volumen von Kegeln aus Radius und Höhe bestimmen",
+        "titleEn": "Determine cone volumes from radius and height",
+        "description": "Die lernende Person kann den Faktor 1/3 als Verhältnis zum entsprechenden Zylinder deuten und den Zusammenhang V = (πr²h)/3 nutzen, um Volumina von Kegeln aus Skizzen oder Koordinaten zu bestimmen.",
+        "descriptionEn": "The learner can interpret the factor 1/3 as the volume ratio to the corresponding cylinder and use V = (πr²h)/3 to determine cone volumes from sketches or coordinates.",
+        "sourceRef": null
+      },
+      "candidate": {
+        "title": "Volumen von Kegeln aus Radius und Höhe bestimmen",
+        "titleEn": "Determine cone volumes from radius and height",
+        "description": "Die lernende Person kann den Grundkreisradius r und die senkrechte Höhe h eines Kegels aus Skizzen oder Koordinaten bestimmen, sein Volumen mit V = (πr²h)/3 berechnen und den Faktor 1/3 als Volumenverhältnis zu einem Zylinder mit gleichem Grundkreisradius und gleicher senkrechter Höhe erläutern.",
+        "descriptionEn": "The learner can identify a cone’s base radius r and perpendicular height h from sketches or coordinates, calculate its volume using V = (πr²h)/3, and explain the factor 1/3 as the volume ratio to a cylinder with the same base radius and perpendicular height.",
+        "sourceRef": "Thüringer Lehrplan Mathematik Gymnasium 2018/2019, S. 36 (Formel für gerade Kegel); Saarland, Lehrplan Mathematik Einführungsphase der gymnasialen Oberstufe, Juli 2014, S. 17 (Volumenverhältnis von Kegel, Halbkugel und Zylinder bei gleichem Radius und gleicher Höhe)."
+      },
+      "sourceRoute": {
+        "thSourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-3-geometrie-009-1740cc4455",
+        "slSourceGoalId": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-e-gk-lk-t02-stereometrie-b29-dc4ea0e56b",
+        "qualification": "TH directly lists the formula for straight cones; SL states the cone/hemisphere/cylinder volume ratio 1:2:3 at equal radius and height. HE Q2.2 does not explicitly name cones and is not claimed as the direct cone source."
+      }
+    }
+  ],
+  "unchanged": {
+    "historicalV1Package": "untouched",
+    "centralRegistry": "untouched",
+    "inFlightLedger": "untouched",
+    "canonicalGoalFile": "untouched",
+    "visualizations": "existing assets kept; no generation or content changes"
+  }
+}

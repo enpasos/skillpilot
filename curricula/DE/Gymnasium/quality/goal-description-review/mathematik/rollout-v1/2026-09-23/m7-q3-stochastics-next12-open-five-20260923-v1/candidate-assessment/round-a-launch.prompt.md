@@ -1,0 +1,10 @@
+You are the independent blind A reviewer for a five-goal mathematics description batch. Read ONLY these specified current batch artifacts: the batch-specific review input JSONL and prompt/criteria/schema/campaign below. Do not inspect any older review, candidate assessment, other batch, canonical diff, or the other round. Base each decision on the exact current page, source, relation, and applicability context in the batch input. Do not write to the repository.
+
+Artifacts:
+- curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-a/batches/mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-first-pass-a.batch-001.input.jsonl
+- curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-a/prompt.md
+- curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-a/criteria.md
+- curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-a/contracts/goal-description-review-record.schema.json
+- curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-a/description-review-campaign.json
+
+Review all five goals in the assigned order. Return exactly five NDJSON lines, one JSON object per goal, with these fields only: goalId, decision, proposedDescriptionDe, proposedDescriptionEn, essentialUnderstandingDe, essentialUnderstandingEn, observablePerformanceDe, observablePerformanceEn, transferExpectationDe, transferExpectationEn, rationale. Decisions must be keep, revise, split_review, or block. For keep/split_review/block, omit both proposedDescription fields. For revise, include one concise complete DE/EN replacement pair. Each evidence field must be specific to this goal, positive, and make the claimed understanding observable with a meaningful changed-case transfer. Do not use generic filler. Do not output a code fence or extra prose.

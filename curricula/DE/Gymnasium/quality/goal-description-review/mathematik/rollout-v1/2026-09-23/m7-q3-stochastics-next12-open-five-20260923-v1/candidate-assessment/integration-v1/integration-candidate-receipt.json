@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "m7-q3-stochastics-four-target-integration-candidate-receipt-20260924-v1",
+  "checkedAt": "2026-09-24",
+  "status": "batch_local_candidate_only",
+  "scopeGoalIds": [
+    "70efdec0-110c-5564-849b-bc05cfff0f6a",
+    "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+    "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+    "66f432e9-22d3-51a9-8787-35f91db30616"
+  ],
+  "excludedGoalId": "9de07e13-6a5f-5b49-a6d4-0decefb95784",
+  "candidateSnapshot": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/candidate-assessment/integration-v1/candidate-landscape.json",
+    "sha256": "sha256:30889d846cfda58ec683ac198a6bfe59133c1a75729fc1af73c3314a1812c1cd",
+    "canonicalLandscapeChanged": false,
+    "centralRegistryOrInFlightLedgerChanged": false
+  },
+  "sourceCheck": {
+    "pdfPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+    "pdfSha256": "sha256:d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953",
+    "method": "Re-extracted official PDF pages 46-47 locally with Poppler pdftotext -layout.",
+    "findings": [
+      {
+        "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
+        "fit": "Q3.1 p.46 lists unordered samples without replacement, factorial, and binomial coefficient; exact source span supports the revised factorial-count wording.",
+        "bindingStatus": "direct/current; no change made"
+      },
+      {
+        "goalId": "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+        "fit": "Q3.1 p.46 lists binomial coefficients and lottery problems in the without-replacement Laplace/counting context; current mapping rationale assigns the count-specific lottery aspect to this target.",
+        "bindingStatus": "mapped/current; no change made"
+      },
+      {
+        "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+        "fit": "Q3.1 p.46 explicitly includes Laplace probabilities, urn draws with replacement, and simple binomial-distribution tasks. Q3.2 p.47 gives the Bernoulli-chain point-probability formula.",
+        "bindingStatus": "current route is classic_source_partial through Q4.2 p.51; refresh/record a direct current Q3 source rationale at central integration"
+      },
+      {
+        "goalId": "66f432e9-22d3-51a9-8787-35f91db30616",
+        "fit": "Description unchanged. Q3.2 p.47 directly supports modelling limits and histogram-property analysis for binomially distributed random variables.",
+        "bindingStatus": "current sourceRef absent and rationale route partial; add/review a direct Q3.2 p.47 mapping at central integration"
+      }
+    ],
+    "graphAndPageContext": "Exact graph dependencies and page fingerprints are recorded in source-and-scope-verification.json; candidate target 66 is exactly equal to its canonical goal object."
+  },
+  "gateStates": [
+    {
+      "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
+      "D": "synthesized revised-text candidate; not integrated",
+      "P": "refreshed P-v2, needs_human_review / ai_candidate; no blockers, no approval claimed",
+      "A": "refreshed exact-text atomic candidate; current scoped check",
+      "M": "refreshed no_memory_needed candidate; current scoped check; no card layer required",
+      "V": "missing image; open"
+    },
+    {
+      "goalId": "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+      "D": "synthesized revised-text candidate; not integrated",
+      "P": "refreshed P-v2, needs_human_review / ai_candidate; no blockers, no approval claimed",
+      "A": "refreshed exact-text atomic candidate; current scoped check",
+      "M": "refreshed no_memory_needed candidate; current scoped check; no card layer required",
+      "V": "missing image; open"
+    },
+    {
+      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "D": "synthesized revised-text candidate; not integrated",
+      "P": "refreshed P-v2, needs_human_review / ai_candidate; no blockers, no approval claimed",
+      "A": "refreshed exact-text atomic candidate; current scoped check",
+      "M": "refreshed no_memory_needed candidate; current scoped check; no card layer required",
+      "V": "missing image; open"
+    },
+    {
+      "goalId": "66f432e9-22d3-51a9-8787-35f91db30616",
+      "D": "unchanged text retained as A/B keep/keep synthesis candidate; not integrated",
+      "P": "existing image-bound P-v2 retained, needs_human_review / ai_candidate; scoped check current",
+      "A": "existing exact-current canonical record atomic; full math check current",
+      "M": "existing exact-current canonical record no_memory_needed; full memory/card/visibility check current",
+      "V": "KEEP current JPG SHA-256 sha256:f1e15026bd7e03282a585b88131f4a635c6345a504013fda1223a6f179f109c3; current QA untouched; this pass did not re-review image"
+    }
+  ],
+  "testedCommands": [
+    {
+      "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=<integration-v1>/positive-understanding-three.config.json",
+      "result": "passed",
+      "detail": "3 candidates, 0 blockers; all need human review; none approved."
+    },
+    {
+      "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=<batch>/candidate-assessment/positive-understanding-image-66.config.json",
+      "result": "passed",
+      "detail": "Current image-bound profile; 0 blockers; existing status retained."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/semanticAtomicityReview.ts --config=<integration-v1>/semantic-atomicity-three.config.json --mode=check",
+      "result": "passed",
+      "detail": "3/3 exact candidate records atomic; no missing/stale/obsolete."
+    },
+    {
+      "command": "npm --prefix app run quality:semantic-atomicity:check -- --config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+      "result": "passed",
+      "detail": "797/797 current atomic; no missing/stale/obsolete."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/memoryCardReview.ts --config=<integration-v1>/memory-review-three.config.json --mode=check",
+      "result": "passed",
+      "detail": "3/3 current no_memory_needed; no blockers; exact subset has no card-visibility layer."
+    },
+    {
+      "command": "npm --prefix app run quality:memory-card-review:check -- --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+      "result": "passed",
+      "detail": "797 ordinary atomics; 758 no-memory, 39 memory-required; 128 card rows; 2 visibility scopes; no gaps/stale."
+    },
+    {
+      "command": "npm --prefix app run check:goal-source-rationale-coverage",
+      "result": "passed",
+      "detail": "Current report is up to date; it does not eliminate the partial/direct-source follow-ups above."
+    },
+    {
+      "command": "PATH=tmp/skillpilot-poppler-utils/root/usr/bin:$PATH LD_LIBRARY_PATH=tmp/skillpilot-poppler-utils/root/usr/lib/x86_64-linux-gnu pdftotext -layout -f 46 -l 47 curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf -",
+      "result": "passed",
+      "detail": "Current source text reread; findings summarized above."
+    },
+    {
+      "command": "sha256sum candidate-landscape.json official-KCGO-PDF; compare canonical/candidate goal objects",
+      "result": "passed",
+      "detail": "Hashes match recorded values; target 66 object unchanged."
+    },
+    {
+      "command": "PATH=tmp/skillpilot-poppler-utils/root/usr/bin:$PATH LD_LIBRARY_PATH=tmp/skillpilot-poppler-utils/root/usr/lib/x86_64-linux-gnu npm --prefix app run quality:goal-description-rollout-batch -- check --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1.config.json",
+      "result": "passed",
+      "detail": "Standalone exact-current five-goal description batch valid."
+    },
+    {
+      "command": "Python recursive JSON/JSONL parser and supplementary provider-prompt metadata/body scan",
+      "result": "passed",
+      "detail": "32 batch JSON and 11 JSONL files parsed; three supplementary prompt files have no technical goal ID in provider-facing bodies, excluded 9de, and no image output files exist."
+    }
+  ],
+  "integrationReadiness": {
+    "status": "candidate descriptions and dependent-layer records are ready for parent integration review; strict integration is not ready",
+    "remainingMachineGates": [
+      "Integrate 3 revised descriptions plus 66 keep decision, then refresh exact D/page bindings and authoritative ledgers.",
+      "Refresh direct source rationale for 0408 and direct Q3.2 p.47 binding for 66.",
+      "Supply, inspect, bind, and pass current machine V for 70ef, 1b67, and 0408."
+    ],
+    "humanReleaseGates": "No human review, approval, release, or trial is claimed."
+  },
+  "netProgress": {
+    "strictCandidateClosures": 0,
+    "newFachlicheCompletions": 0,
+    "restoredBindings": 0,
+    "descriptionRevisionCandidates": 3,
+    "descriptionKeepCandidates": 1,
+    "refreshedPCandidates": 3,
+    "refreshedACandidates": 3,
+    "refreshedMCandidates": 3,
+    "exactCurrent66RecordsRetained": true,
+    "imageBindingsOrApprovalsChanged": 0,
+    "historicalArtifactsChanged": 0
+  },
+  "nextStep": "Parent integration review for the four scoped IDs only; keep 9de out and preserve the 66 JPG and QA.",
+  "supersededAttempts": [
+    {
+      "command": "npm --prefix app run quality:goal-description-rollout-batch -- check --config=<path>",
+      "result": "failed_due_to_cli_syntax",
+      "detail": "CLI expects --config <path>; corrected invocation immediately passed."
+    }
+  ]
+}

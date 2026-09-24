@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "recordedDate": "2026-09-24",
+  "scope": "batch-local M7 QA package; no canonical landscape, central registry, in-flight ledger, image asset, or QA-ledger edit",
+  "batch": {
+    "batchId": "mathematik-m7-vready-remainder-six-open-three-20260923-v1",
+    "batchManifestPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-vready-remainder-six-open-three-20260923-v1/batch-manifest.json",
+    "bundleFingerprint": "sha256:b5090c98fb789382e94de3e5a8e082a846c332fb4368f61f8ffd9335ce445579",
+    "bookDigest": "sha256:eb65ef808bd1fb2ab9f65e9863dbdf10aefedcd83ab0e52d3852341a7b17ae62",
+    "reviewInputFingerprint": "sha256:ef79453e64dd8eb7fac4681cd6d2ff17baf2cabfe552e2191661fad2b022570b",
+    "goalIds": [
+      "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+    ]
+  },
+  "independentDescriptionReviews": {
+    "receipt": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-vready-remainder-six-open-three-20260923-v1/independent-review-cli-runs.receipt.json",
+    "rounds": [
+      {
+        "round": "A",
+        "model": "gpt-6-sol",
+        "runId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-a-gpt-6-sol",
+        "threadId": "01a0d226-33be-7960-90cd-8cb8e4f33c65"
+      },
+      {
+        "round": "B",
+        "model": "gpt-6-luna",
+        "runId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-b-gpt-6-luna",
+        "threadId": "01a0d227-564d-7723-922b-4df98a307943"
+      }
+    ],
+    "distinctCatalogVerifiedModels": true,
+    "blindSeparateInputs": true,
+    "dualValidatorExitCode": 0,
+    "dualSummaryPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-vready-remainder-six-open-three-20260923-v1/dual-summary.json",
+    "requiresSynthesis": 3,
+    "strictDescriptionResolutionCandidateCount": 3,
+    "resolutionIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-vready-remainder-six-open-three-20260923-v1/resolution-index.json",
+    "resolutionIndexDigest": "sha256:78b5f805fa97f8bdceba4284cd26883d4f82ce038fea6b6e8d9fb86acf76f9dc",
+    "synthesisManifestPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-vready-remainder-six-open-three-20260923-v1/synthesis-decisions.json",
+    "synthesisManifestDigest": "sha256:e0a3bc77d4599e89792952dce661617bce03f25b574ad4cce80ee2021f41a282"
+  },
+  "synthesis": {
+    "goalDecisions": [
+      {
+        "goalId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+        "decision": "keep_current",
+        "evidenceRound": "first",
+        "revisionDissentSourceRound": "first",
+        "reason": "A proposal rejected explicitly as potentially narrowing the combined counting-strategy/probability scope; current wording retained and favorable/possible count and model conditions remain in V2 evidence."
+      },
+      {
+        "goalId": "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "decision": "keep_current",
+        "evidenceRound": "second",
+        "reason": "Both rounds preserve one coherent form/vertex/graph competence; current source mappings agree."
+      },
+      {
+        "goalId": "ed5d869b-af4e-4b80-b34d-a2338e16ce34",
+        "decision": "keep_current",
+        "evidenceRound": "second",
+        "reason": "Keep introductory geometric projection-to-mapping intuition; no added formal additivity/homogeneity performance."
+      }
+    ],
+    "canonicalTextChanged": false
+  },
+  "goalGateSnapshot": {
+    "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6": {
+      "goalFingerprint": "sha256:f8c6d77b0b2e16c87ef25d26a6a554aa7a940bf4a3123c815a02e1fa85058254",
+      "currentP": {
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "goalFingerprint": "sha256:f8c6d77b0b2e16c87ef25d26a6a554aa7a940bf4a3123c815a02e1fa85058254",
+        "reviewInputFingerprint": "sha256:703de5eecd665f4f3607e6804f5bf6da1f822e6d4ec921d2168eafca8fa0baef",
+        "profileFingerprint": "sha256:dd2695589304c8462b68c8e278cffc88a1361daa4f17b4479a7b16c18bca5436"
+      },
+      "atomicity": {
+        "status": "atomic",
+        "semanticAtomic": true,
+        "fingerprint": "sha256:624a1ea872076c85ce6506f66b3bbacf083c473022a940f272ec2b7125c04436"
+      },
+      "memory": {
+        "status": "no_memory_needed",
+        "memoryGoalIds": [],
+        "deckIds": [],
+        "fingerprint": "sha256:d0a70f0eda4d5823b70b5e83fdbac9888457e983e72cbd08d539b60c12e44d52"
+      },
+      "visualization": {
+        "primaryLink": null,
+        "qaState": "missing",
+        "qaAssetSha256": null,
+        "aiApproved": null,
+        "aiApprovedAssetSha256": null,
+        "humanApproved": "no"
+      },
+      "sourceRef": null
+    },
+    "3e4032bd-4d8c-4e72-bfdd-64a34df053c9": {
+      "goalFingerprint": "sha256:501c93c5ca77d58a6d4160cc89846cfccd169994c8ea4a11773573afc6d0ed43",
+      "currentP": {
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "goalFingerprint": "sha256:501c93c5ca77d58a6d4160cc89846cfccd169994c8ea4a11773573afc6d0ed43",
+        "reviewInputFingerprint": "sha256:18cd297ac859e37bc3f754ef83e5a27325145c69e9357febe0456051b1ac6ff4",
+        "profileFingerprint": "sha256:665b6faf7d867d446c1309943106c87cf5fafa969ffbbb5adaea139bc64bb11d"
+      },
+      "atomicity": {
+        "status": "atomic",
+        "semanticAtomic": true,
+        "fingerprint": "sha256:c10400614ebccf81e5449d37f1283084b085803a4f754b1b7ce99165ef859f82"
+      },
+      "memory": {
+        "status": "memory_required",
+        "memoryGoalIds": [
+          "77259806-add7-5fcb-b89c-376e1b0c88d6",
+          "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a"
+        ],
+        "deckIds": [
+          "de_gymnasium_math_functions_basics",
+          "de_gymnasium_math_seki_core"
+        ],
+        "fingerprint": "sha256:22b55432e825e5adf1cf1adcfeb6a9dc7dfba27ca39e16c2f1b6041b5e058649"
+      },
+      "visualization": {
+        "primaryLink": {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+          "title": "Visualisierung: Scheitelpunkte quadratischer Funktionen bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/3e4032bd-4d8c-4e72-bfdd-64a34df053c9/3e4032bd-4d8c-4e72-bfdd-64a34df053c9.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Scheitelpunkte quadratischer Funktionen bestimmen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Scheitelpunkte quadratischer Funktionen bestimmen\". Die lernende Person kann aus quadratischen Termen den Scheitelpunkt ermitteln, zwischen Normal- und Scheitelpunktform wechseln und den zugehörigen Graphen skizzieren.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        },
+        "qaState": "available",
+        "qaAssetSha256": "sha256:a5a948a36cec5b38bb598c4d25959ce2cbe54ed5910d76baa2a8bb9f7223eb6d",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:a5a948a36cec5b38bb598c4d25959ce2cbe54ed5910d76baa2a8bb9f7223eb6d",
+        "humanApproved": "no"
+      },
+      "sourceRef": null
+    },
+    "ed5d869b-af4e-4b80-b34d-a2338e16ce34": {
+      "goalFingerprint": "sha256:49287589dc34cb492ee43fefbb305e281f19bb3a13ccbc4b722cdd78608c26ab",
+      "currentP": {
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "goalFingerprint": "sha256:49287589dc34cb492ee43fefbb305e281f19bb3a13ccbc4b722cdd78608c26ab",
+        "reviewInputFingerprint": "sha256:1aed4d119e500823bbef091072898b7256ac3b6b637b7c2460cd73f6ad5dae2f",
+        "profileFingerprint": "sha256:e032bf308efafed2f7f2bae1711d80ff0212831dfffe38c109a868cf355f3144"
+      },
+      "atomicity": {
+        "status": "atomic",
+        "semanticAtomic": true,
+        "fingerprint": "sha256:2cd460dd1ff73e83f14f6ac2df287fc852bd42e9f70603eb2f896e62ffd66eba"
+      },
+      "memory": {
+        "status": "no_memory_needed",
+        "memoryGoalIds": [],
+        "deckIds": [],
+        "fingerprint": "sha256:aebd856e3b13a4a90886d84f245cef000626d32a27fb2af19b668fc0bf13395f"
+      },
+      "visualization": {
+        "primaryLink": {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "ed5d869b-af4e-4b80-b34d-a2338e16ce34",
+          "title": "Visualisierung: Orthogonale Projektionen als erste lineare Abbildungsintuition deuten",
+          "url": "/assets/goal-visualizations/mathematik/ed5d869b-af4e-4b80-b34d-a2338e16ce34/ed5d869b-af4e-4b80-b34d-a2338e16ce34.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Orthogonale Projektionen als erste lineare Abbildungsintuition deuten.",
+          "altText": "Ein Vektor (3,2) wird orthogonal auf die x-Achse zum Vektor (3,0) projiziert; der Restvektor (0,2) steht senkrecht auf der x-Achse.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        },
+        "qaState": "available",
+        "qaAssetSha256": "sha256:5b22a3496ce993ca96771331e287acfa647e13d7878b673dccdd9d33daeaa747",
+        "aiApproved": "yes",
+        "aiApprovedAssetSha256": "sha256:5b22a3496ce993ca96771331e287acfa647e13d7878b673dccdd9d33daeaa747",
+        "humanApproved": "no"
+      },
+      "sourceRef": null
+    }
+  },
+  "aggregateChecks": [
+    {
+      "gate": "P current positive-understanding-evidence-v2",
+      "status": "partial",
+      "details": "Current scoped P-v2 candidate validates for 3e and ed5; 3d candidate is stale on reviewInputFingerprint and is not re-bound or counted."
+    },
+    {
+      "gate": "A semantic atomicity",
+      "status": "pass",
+      "command": "npm --prefix app run quality:semantic-atomicity:check -- --config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+      "details": "797/797 atomic; zero missing, stale, obsolete, non-atomic, or developer-review records."
+    },
+    {
+      "gate": "M memory-card review",
+      "status": "pass",
+      "command": "npm --prefix app run quality:memory-card-review:check -- --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+      "details": "797 scoped; zero missing/stale/obsolete decisions or cards; all 64 primary cards kept; two visibility scopes checked; zero memory-required goals without a visible memory node. Batch decisions: 3d/ed5 no_memory_needed; 3e memory_required with two memory goals and two decks."
+    },
+    {
+      "gate": "V machine visualization metadata",
+      "status": "partial",
+      "command": "npm --prefix app run check:goal-visualization-qa -- --subject=mathematik; npm --prefix app run check:goal-visualization-approval-coverage -- --subject=mathematik",
+      "details": "Ledger current; approval-coverage check passes (756 available visualizations). 3e and ed5 retain current machine approval with exact asset hashes. 3d has no primary resource and QA state missing/deferred_quality_review. HumanApproved remains no for all."
+    },
+    {
+      "gate": "Source coverage",
+      "status": "pass",
+      "command": "npm --prefix app run check:goal-source-rationale-coverage",
+      "details": "Generated source-rationale coverage report is current. Selected exact mapping records and limitations documented in source-page-context-review.receipt.json; page sourceRef is null, so this package does not claim complete jurisdiction-by-jurisdiction mapping verification."
+    }
+  ],
+  "centralProgress": {
+    "netNewCentralStrictClosures": 0,
+    "why": "No central registry or in-flight-ledger integration in this assignment. Three batch-local strict D resolution candidates are not full five-gate M7 closures."
+  },
+  "humanReleaseGates": {
+    "status": "separate_not_claimed",
+    "humanApprovalForPositiveEvidence": "not claimed",
+    "humanApprovalForVisualizations": "no",
+    "humanReleaseReview": "not performed by this machine-QA package"
+  },
+  "blockers": [
+    {
+      "goalId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "gates": [
+        "P",
+        "V"
+      ],
+      "detail": "P current binding fails only because reviewInputFingerprint is stale (existing record sha256:703de5eecd665f4f3607e6804f5bf6da1f822e6d4ec921d2168eafca8fa0baef; current checker expects sha256:54a33530361e0a61b2887662b39d622af1574c546e3b7e1963e7c647f5df86ab). V is missing; current canonical goal has no primary visualization link and QA reports missing/deferred_quality_review."
+    }
+  ],
+  "artifactDigest": {
+    "dual-summary.json": "sha256:c9d71f8f1811c22470e65d73b28a2555a7b87fa4e6585c0441c6fb99c802ebb4",
+    "synthesis-decisions.json": "sha256:e0a3bc77d4599e89792952dce661617bce03f25b574ad4cce80ee2021f41a282",
+    "source-page-context-review.receipt.json": "sha256:24d593419e5607d8ed04caa8b1d11218b3780a1ae6a6580be85580ed8d52bcb8",
+    "independent-review-cli-runs.receipt.json": "sha256:31137e0be59c6d3ef7574b88b771253e1e2efeb571c836a4c78cf7f98cc0a560"
+  }
+}

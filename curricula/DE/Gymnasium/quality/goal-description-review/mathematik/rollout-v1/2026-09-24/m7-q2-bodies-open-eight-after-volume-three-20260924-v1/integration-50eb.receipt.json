@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-m7-q2-bodies-50eb-central-integration-20260924-v1",
+  "checkedAt": "2026-09-24",
+  "status": "machine_qs_integration_confirmed",
+  "scope": {
+    "subject": "Mathematik",
+    "goalId": "50eb5156-5046-5887-80dc-3128c5f8cbd6",
+    "noCanonicalTextChange": true,
+    "noImageOrQaChange": true,
+    "noHistoricalReviewChange": true
+  },
+  "descriptionGate": {
+    "resolutionIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-q2-bodies-open-eight-after-volume-three-20260924-v1/resolution-index.50eb-target-only.json",
+    "resolutionPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-q2-bodies-open-eight-after-volume-three-20260924-v1/candidate-resolutions/50eb5156-5046-5887-80dc-3128c5f8cbd6.resolution.json",
+    "goalFingerprint": "sha256:76c2582ea504910a6336c29515f141f1a9f35131c6815173ffae1c956f244de8",
+    "pageFingerprint": "sha256:7a7254bcad9e4e125a4d49f35e4c8882e24a391536ac45429b26e72e41b4bd84",
+    "goalReviewContextFingerprint": "sha256:d83de13cdbbfd0c0ba0b5755fe6e07566023e10ae5b7a2be938a77afc342e2f5",
+    "decision": "keep_current",
+    "strictDescriptionComplete": true,
+    "validator": "app/scripts/validateGoalDescriptionDualRoundResolution.ts",
+    "validatorResult": "passed; strictDescriptionComplete=true",
+    "humanAttestation": null
+  },
+  "sourceCheck": {
+    "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+    "sourcePage": "printed p.41, Q2.2, bullet 4; vector/scalar-product detail in bullets 2-3 on same page",
+    "relevantWording": [
+      "Seitenlängen, Parallelität, Orthogonalität, Winkelgrößen",
+      "Bestimmen des Winkels zwischen zwei Vektoren"
+    ],
+    "assessment": "The current goal’s body classes and length/angle properties are directly supported; the page’s vector and scalar-product bullets support the vector-representation method. Source check is limited to this Hessian curriculum page and does not assert nationwide source coverage."
+  },
+  "otherGates": {
+    "positiveUnderstandingEvidence": {
+      "status": "needs_human_review",
+      "authority": "ai_candidate",
+      "profileVersion": "positive-understanding-evidence-v2",
+      "current": true
+    },
+    "semanticAtomicity": {
+      "status": "atomic",
+      "current": true
+    },
+    "memory": {
+      "status": "no_memory_needed",
+      "current": true
+    },
+    "visualization": {
+      "status": "available",
+      "aiApproved": true,
+      "assetCurrent": true,
+      "assetSha256": "sha256:4b0815f7e8b0afe6329bb1963991270383af089033bab28dc7b49912676e71bb",
+      "humanApproved": false,
+      "reviewAction": "no image inspection or change in this task"
+    }
+  },
+  "rollout": {
+    "centralConfigPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "reportScriptPath": "app/scripts/reportDeepUnderstandingRollout.ts",
+    "reportCommand": "npm --prefix app run quality:deep-understanding-rollout -- --format=json",
+    "reportSnapshotPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-q2-bodies-open-eight-after-volume-three-20260924-v1/central-rollout-report.after-50eb.json",
+    "reportSnapshotSha256": "sha256:9eeee0bf1ad93aa03e9106d976d476ff7c21b96b99b3da8a0c88d5ce01ec3db5",
+    "strictCheckCommand": "npm --prefix app run quality:deep-understanding-rollout:check",
+    "strictCheckExitCode": 0,
+    "stableBaseline": {
+      "path": "docs/qa-ci/math-m7-resumed-2026-09-21.md",
+      "reportedMathematics": "703/797"
+    },
+    "after": {
+      "mathematics": "704/797",
+      "percentage": "88.3%",
+      "strictCompletionReady": false,
+      "blockingIssues": 0,
+      "requiredChecks": "6/6 passed",
+      "physics": "478/478 (100.0%), unchanged"
+    },
+    "durableDelta": {
+      "strictGoalCount": 1,
+      "newStrictGoalIds": [
+        "50eb5156-5046-5887-80dc-3128c5f8cbd6"
+      ],
+      "lostStrictGoalIds": [],
+      "restoredBindingNetContribution": 0,
+      "descriptionResolutionGate": 730,
+      "positiveEvidenceGate": 772,
+      "atomicityGate": 797,
+      "memoryGate": 797,
+      "visualizationGate": 741
+    },
+    "transientNote": "A temporary report during Q2 spatial package restoration showed 702/797 because the original dual-summary file was absent. The stable pre-package baseline was 703/797; after byte-exact restoration the previously counted 8eb goal is present again. Do not count that temporary loss/recovery as durable net progress."
+  },
+  "protectedFloors": {
+    "command": "npm --prefix app run check:curriculum-maturity-floors",
+    "exitCode": 0,
+    "output": "curriculum maturity floors passed: 9 protected curricula",
+    "mathMinimum": "M6",
+    "physicsMinimum": "M6",
+    "exceptions": []
+  }
+}

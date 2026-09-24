@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-q2-bodies-open-eight-after-volume-three-20260924-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-q2-bodies-open-eight-after-volume-three-20260924-v1.config.json",
+  "configDigest": "sha256:6ea7a5608be794e26935539bb8c9a438bec6be0111ca81eee205da289ff6c29d",
+  "goalIds": [
+    "288633c1-f61c-5b48-af7e-a80357f96cad",
+    "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+    "a594dec0-3977-5c43-9432-d4254a7f6130",
+    "e8237315-654e-5150-97de-49c4cb49b3d1",
+    "50eb5156-5046-5887-80dc-3128c5f8cbd6",
+    "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+    "5f548596-9bc3-532e-88a0-81d5029809e9",
+    "9f9c7ece-b81c-55fa-8073-dd816d7d4778"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:2f5c0141a679f2081f89acc5a8473e4e00d6ebefdcf5b936219be474208b6839"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:d83bcf19781074eb04d4271ed26ea695edc630c125d0d6135c0f8d121c6f48d2",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a4bcdffd25104ae9319a70d1ab26f01b7e6c3171bb2d258d72dfb5cbafbc8a8d",
+    "reviewInputFingerprint": "sha256:78807fea2262f5e5698530e922707db9b0d9c8be1a758d587167ae2517f1e3bd",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-q2-bodies-open-eight-after-volume-three-20260924-v1-a",
+        "campaignDigest": "sha256:3dc4fefab78280700160f516ab1bb5a8ec9cf76c302a2c943dfb256ea1affa5d",
+        "roundId": "mathematik-m7-q2-bodies-open-eight-after-volume-three-20260924-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-q2-bodies-open-eight-after-volume-three-20260924-v1-independent-a",
+        "batchId": "mathematik-m7-q2-bodies-open-eight-after-volume-three-20260924-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:de2cf1c895fa2a9b0d3848dacd7487b0f50db6f5b615a2cec215f78603af0662"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-q2-bodies-open-eight-after-volume-three-20260924-v1-b",
+        "campaignDigest": "sha256:d3f4395b8ac112a0886a82f45765f419747a232f3441f1c230c05d9db812f645",
+        "roundId": "mathematik-m7-q2-bodies-open-eight-after-volume-three-20260924-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-q2-bodies-open-eight-after-volume-three-20260924-v1-independent-b",
+        "batchId": "mathematik-m7-q2-bodies-open-eight-after-volume-three-20260924-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:419f6c486f2a6be13924b0dce5a10502bf9972ec0b2a88932f029b2ab35826a9"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

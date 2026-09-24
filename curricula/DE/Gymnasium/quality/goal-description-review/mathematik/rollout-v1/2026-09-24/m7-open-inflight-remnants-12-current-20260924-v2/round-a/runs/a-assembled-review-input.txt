@@ -1,0 +1,1568 @@
+# SkillPilot goal-description understanding-evidence review v2
+
+You are one independent reviewer of a fingerprint-bound SkillPilot learning-goal
+batch. Review every assigned goal exactly once. Work only from the supplied
+batch context, the applicable subject-specific criteria, and the bound output
+schema. Do not inspect or infer another reviewer's output, an earlier round, an
+adjudication, or a canonical diff. This is a blind first pass.
+
+The purpose is to keep each canonical description concise and learner-facing
+while making the competence clear enough for a learning coach to teach toward
+genuine understanding and to seek independent evidence of it. A description
+alone does not guarantee Coach or Mastery behavior; detailed assessment
+expectations remain in a separate `positive-understanding-evidence-v2` profile.
+
+For every goal, formulate a content-specific chain of positive understanding
+evidence:
+
+- `essentialUnderstandingDe` and `essentialUnderstandingEn` name the central
+  concepts, relationships, distinctions, structures, models, meanings, or
+  conditions the learner is expected to understand;
+- `observablePerformanceDe` and `observablePerformanceEn` state what the
+  learner independently explains, predicts, constructs, compares, interprets,
+  justifies, derives, investigates, analyzes, or applies so that this
+  understanding becomes observable; and
+- `transferExpectationDe` and `transferExpectationEn` state how the learner
+  applies the same understanding to a structurally related but meaningfully
+  changed case presented independently as a fresh task.
+
+All six fields must be specific to the exact goal. Repeating generic phrases
+about understanding, independence, transfer, or deep learning is insufficient.
+A number swap or a surface rewording of the same exercise is not a meaningful
+changed case.
+
+Keep the two authoring layers separate:
+
+- `description` is short, bilingual, learner-facing, and limited to the
+  competence itself. It may name an essential distinction, reason, model
+  condition, interpretation, or application already claimed by this goal.
+- `understandingEvidence` records the three bilingual expectations for this
+  review. Detailed coverage rules, variation axes, application cases, scoring,
+  assistance history, and repeated demonstrations belong in the separate V2
+  profile.
+
+Use the supplied page context deliberately:
+
+- when present, `canonicalContext` binds the current canonical core/weight,
+  tags, competency dimensions, applicability, structural relations, atomicity,
+  and selected applicability semantics; treat these fields as scope constraints,
+  not as permission to invent a broader competence;
+- direct prerequisites and containing context delimit assumed prior knowledge
+  and the goal's curricular role;
+- direct successors help detect accidental duplication or scope expansion;
+- a visualization is teaching support, never evidence that the learner can
+  perform independently; and
+- any supplied current V2 profile is review context, not authority and not a
+  reason to leave an ambiguous description unchanged.
+
+Raw canonical applicability and a `sourceRef` are not proof of the effective
+learner-facing projection or complete source mapping. Unless separate bound
+mapping, composition-view, or source-manifest evidence is supplied, do not
+claim that those external relationships were verified.
+
+For each assigned goal:
+
+1. Determine what the current title, bilingual descriptions, relations,
+   applicability context, and supplied source evidence actually claim. Preserve
+   the stable goal identity, curricular scope, demand level, method neutrality,
+   and semantic atomicity.
+2. Apply every subject-specific criterion independently. Do not import a useful
+   but unclaimed competence or a sibling source clause.
+3. Write the six bilingual understanding-evidence fields as one coherent chain
+   from essential understanding through independently observable performance to
+   meaningful transfer.
+4. Decide exactly one of:
+   - `keep`: the current description is already clear, accurate, bilingual, and
+     sufficiently informative for this goal;
+   - `revise`: one concise local wording change can remove a concrete ambiguity
+     or make an already claimed aspect of understanding observable without
+     widening the goal;
+   - `split_review`: the goal appears to combine independently assessable
+     competencies, so a wording-only change would conceal an atomicity issue;
+   - `block`: factual correctness, source fidelity, identity, applicability,
+     model convention, missing evidence, or another issue prevents a
+     responsible wording proposal.
+5. For `revise`, provide exactly one complete German and one semantically
+   equivalent English replacement. Both must be usable verbatim. For every
+   other decision, omit both replacement fields.
+6. Set `evidenceProfileContract` to
+   `positive-understanding-evidence-v2`. Use `none` only when a supplied current
+   profile already expresses the complete goal-specific understanding,
+   performance, and transfer contract; use `create` when none exists; and use
+   `revise` when the supplied current profile needs alignment. This
+   recommendation does not create or mutate a profile.
+7. Copy every run, campaign, bundle, book, goal, page, and current-text binding
+   exactly from the supplied batch. Never reconstruct a fingerprint.
+
+Return newline-delimited JSON with exactly one record per assigned goal, in the
+assigned order. Every line must validate against the bound
+`goal-description-review-record.schema.json`. Set `recordStatus` to `candidate`
+and `reviewAuthority` to `ai_candidate`. Return no prose, Markdown, code fence,
+summary, or unrecognized key.
+
+Do not include learner data, conversation data, personal learner identifiers,
+credentials, private provider traces, invented source evidence, or an inferred
+claim about an actual learner. A canonical `goalId` identifies public curriculum
+content, not a person.
+
+
+---
+SUBJECT-SPECIFIC REVIEW CRITERIA (apply them independently)
+---
+# Mathematik: Kriterien für den Lernzielbeschreibungs-Review v2
+
+Apply every criterion independently to every assigned mathematics goal.
+
+- **Exact curricular scope:** Preserve the competence claimed by the current
+  title, bilingual descriptions, relations, applicability context, and supplied
+  source evidence. Do not import a sibling operation or raise the demand level.
+- **Mathematical essential understanding:** Name the content-specific
+  relationships, distinctions, structures, meanings, invariants, conditions,
+  or reasons that organize the competence. A topic label, formula name, or
+  procedural instruction alone is insufficient.
+- **Independently observable performance:** State what the learner independently
+  explains, derives, constructs, compares, represents, interprets, justifies,
+  checks, models, or solves. Name the mathematical objects and relationships;
+  do not use a generic phrase such as “shows understanding”.
+- **Structure before substitution:** A calculation goal must keep quantities,
+  operations, representations, signs, units where relevant, and result meaning
+  connected. Copying a worked template or substituting values into a supplied
+  formula is not by itself evidence of understanding.
+- **Representation coordination:** Where relevant, require construction,
+  interpretation, or translation among verbal descriptions, tables, graphs,
+  terms, equations, diagrams, geometric figures, symbolic statements, or data.
+  Copying the supplied visualization is insufficient.
+- **Reasoned choice:** When alternatives, representations, models, solution
+  paths, approximations, or strategies are part of the competence, make the
+  decisive mathematical criteria, trade-offs, assumptions, or limits explicit.
+- **Justification and proof discipline:** Distinguish an example from a general
+  argument, an implication from an equivalence, plausibility from proof, and a
+  numerical check from a derivation. Accept valid age- and stage-appropriate
+  forms of reasoning within the claimed scope.
+- **Modeling discipline:** Connect assumptions, mathematical model, solution,
+  interpretation, and model limits. Preserve the difference between a
+  mathematical result and a claim about the original situation.
+- **Data and uncertainty:** For statistics or numerical procedures, preserve
+  the relationship between data, chosen measure or method, variability,
+  approximation, error, convergence, and the strength of the conclusion.
+- **Meaningful changed-case transfer:** Change a structurally relevant feature,
+  such as representation, parameter regime, constraint, direction of
+  inference, data shape, geometric configuration, or modeling assumption. A
+  number swap in an otherwise identical template is not enough.
+- **Method neutrality:** Accept mathematically equivalent approaches. Require a
+  particular method only when that method is itself the stated competence or is
+  normatively source-bound.
+- **Semantic atomicity remains reviewable:** An existing atomicity decision does
+  not prohibit `split_review`. Use it when separate performances could be
+  mastered independently. Keep coherent calculate-and-interpret or
+  construct-and-justify chains together when they are genuinely one competence.
+- **Age and stage fit:** Keep the description understandable at its effective
+  Gymnasium stage while retaining the current mathematical precision and demand.
+- **DE/EN parity:** German and English express the same objects, operations,
+  conditions, reasoning, independence, and transfer demand. Neither language
+  may add or omit a facet.
+- **Description/profile boundary:** Keep a replacement short and
+  learner-facing. Detailed cases, variation sequences, coverage, repeated
+  demonstrations, and assessment conditions belong in the separate
+  `positive-understanding-evidence-v2` profile.
+- **Conservative revision:** Use `keep` when the current text is already
+  adequate. Use `revise` only for a concrete local improvement that preserves
+  identity and scope. Use `block` for unresolved source, identity, factual, or
+  applicability ambiguity.
+- **No automatic authority:** Every AI record remains
+  `candidate`/`ai_candidate`. Agreement between models is not an approval and
+  cannot mutate curriculum or runtime behavior.
+
+At the start of a new current-state campaign, recommend `create` when no current
+V2 profile is supplied. A visualization remains teaching support; evidence must
+be learner-generated in an independently presented task.
+
+
+---
+CURRENT SOURCE/PAGE BINDING RECEIPT (cite only direct bound evidence; null means unbound)
+---
+{
+  "receiptId": "mathematik-m7-open-inflight-remnants-12-current-20260924-v2-source-page-context-current-review",
+  "status": "current-bundle-validated; scoped-source-bindings-recorded",
+  "bundleFingerprint": "sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a",
+  "sourceLimits": {
+    "directlyBoundCurrentSourceGoals": [
+      "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+      "27bdc580-ba17-5399-bf02-48f354846d1d",
+      "21fa0c22-976e-59b3-a871-899f0c0177f3",
+      "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+      "9b339361-7719-573d-a913-432246c502ee",
+      "f37b0a72-9e23-51c7-aad5-438c17a56899"
+    ],
+    "noDirectCanonicalSourceRef": [
+      "93fc4fbb-72f6-549b-b97a-a48aecb1534d",
+      "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+      "aeae526e-b3a4-5a17-b177-351df0307cb9",
+      "87372f49-c832-50f6-921f-ec9a6804d58a",
+      "1a18dbb3-f350-4766-9c8b-20ca018ccef1"
+    ],
+    "note": "A direct sourceRef was followed to current source-extraction records and source PDF digests where possible. No inferred source binding is claimed for goals with sourceRef=null; these goals may be reviewed against their exact current canonical/GoalBook scope but source fidelity remains unresolved unless a separate authoritative mapping is supplied. A source citation does not establish complete jurisdictional coverage."
+  },
+  "entries": [
+    {
+      "ordinal": 1,
+      "goalId": "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+      "titleDe": "Zufallsexperimente mit Software simulieren",
+      "titleEn": "Simulate random experiments with software",
+      "descriptionDe": "Die lernende Person kann Zufallsexperimente mit geeigneter Software (z. B. Tabellenkalkulation) simulieren, absolute und relative Häufigkeiten auswerten und die Ergebnisse grafisch darstellen.",
+      "descriptionEn": "The learner can simulate random experiments using suitable software, such as a spreadsheet, evaluate absolute and relative frequencies, and present the results graphically.",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:5d9c37b189464e5717872d15a42d3674732d0a77be77d916ed54b513ebe37434",
+      "pageFingerprint": "sha256:b489638e2304333c2b9df9877241e5bda82e59dde8610a97fd11292521e3c983",
+      "canonicalContext": {
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.5, S. 48, Spiegelstrich 1",
+        "semanticAtomic": true,
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "hessen-kc-2024",
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3",
+          "processCompetencies": [
+            "K2.2",
+            "K5.2",
+            "K6.2"
+          ]
+        },
+        "requires": [
+          "e02976ad-71fc-5929-b764-df7630269c47",
+          "8823e26e-694c-581b-9adf-4db7db6f43c9"
+        ],
+        "contains": [],
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "pageContext": {
+        "externalPrerequisites": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-8823e26e-694c-581b-9adf-4db7db6f43c9",
+            "goalId": "8823e26e-694c-581b-9adf-4db7db6f43c9",
+            "title": "Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen"
+          },
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-e02976ad-71fc-5929-b764-df7630269c47",
+            "goalId": "e02976ad-71fc-5929-b764-df7630269c47",
+            "title": "Zufallsexperimente planen und durchführen"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+            "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+            "title": "Statistische Daten und Verteilungen abgleichen"
+          }
+        ],
+        "visualization": null
+      },
+      "sourceBinding": {
+        "status": "bound_to_current_source_extraction",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.5, S. 48, Spiegelstrich 1",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+        "sourceExtractionDigest": "sha256:f019332e31d21ff83198235b8f446d18e27287a5ebc42bbfeff891a581d2f2b3",
+        "sourcePdfPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+        "sourcePdfDigest": "sha256:d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953",
+        "sourceGoalRecords": [
+          {
+            "sourceGoalId": "he-math-sekii-q3-5-b01-a01-3126e61d",
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.5, S. 48, Spiegelstrich 1, Aspekt 1",
+            "topicCode": "Q3.5",
+            "sourceSpan": "absolute und relative Häufigkeit für selbst durchgeführte Zufallsexperimente",
+            "sourceText": "– statistischer Wahrscheinlichkeitsbegriff:\n  absolute und relative Häufigkeit für selbst durchgeführte Zufallsexperimente, grafische Darstellung, Simulationen von Zufallsexperimenten mit einer geeigneten Software (zum Beispiel Tabellenkalkulation)",
+            "sourcePage": 48,
+            "passageId": "he-math-sekii:Q3.5",
+            "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+          },
+          {
+            "sourceGoalId": "he-math-sekii-q3-5-b01-a02-a701a0e2",
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.5, S. 48, Spiegelstrich 1, Aspekt 2",
+            "topicCode": "Q3.5",
+            "sourceSpan": "grafische Darstellung",
+            "sourceText": "– statistischer Wahrscheinlichkeitsbegriff:\n  absolute und relative Häufigkeit für selbst durchgeführte Zufallsexperimente, grafische Darstellung, Simulationen von Zufallsexperimenten mit einer geeigneten Software (zum Beispiel Tabellenkalkulation)",
+            "sourcePage": 48,
+            "passageId": "he-math-sekii:Q3.5",
+            "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+          },
+          {
+            "sourceGoalId": "he-math-sekii-q3-5-b01-a03-66089e5a",
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.5, S. 48, Spiegelstrich 1, Aspekt 3",
+            "topicCode": "Q3.5",
+            "sourceSpan": "Simulationen von Zufallsexperimenten mit einer geeigneten Software (zum Beispiel Tabellenkalkulation)",
+            "sourceText": "– statistischer Wahrscheinlichkeitsbegriff:\n  absolute und relative Häufigkeit für selbst durchgeführte Zufallsexperimente, grafische Darstellung, Simulationen von Zufallsexperimenten mit einer geeigneten Software (zum Beispiel Tabellenkalkulation)",
+            "sourcePage": 48,
+            "passageId": "he-math-sekii:Q3.5",
+            "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 2,
+      "goalId": "93fc4fbb-72f6-549b-b97a-a48aecb1534d",
+      "titleDe": "Hand- und Tool-Verfahren kombinieren",
+      "titleEn": "Combine manual and tool methods",
+      "descriptionDe": "Die lernende Person kann handschriftliche Schritte mit Tool-Unterstützung sinnvoll kombinieren (z. B. Umformen von Hand, Lösen per CAS) und die Vorgehensweise begründen.",
+      "descriptionEn": "The learner can combine manual steps with tool support meaningfully (e.g. transform by hand, solve via CAS) and justify the approach.",
+      "pageNumber": 2,
+      "goalFingerprint": "sha256:9c8a8e8307b556d208217458c34217b4f081a3ec285c4ca625cf781070ae94ea",
+      "pageFingerprint": "sha256:5f3d8ba44b30f7d13daf4216fbf805abfe38f4fc6d5e46fb583ee48800f674ba",
+      "canonicalContext": {
+        "sourceRef": null,
+        "semanticAtomic": null,
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "hessen-kc-2024",
+          "guidingIdeas": [
+            "L1",
+            "L5"
+          ],
+          "phase": "Q4",
+          "processCompetencies": [
+            "K5.2"
+          ]
+        },
+        "requires": [
+          "b29a6ece-30f8-5ced-9782-4df1bcbad284"
+        ],
+        "contains": [],
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "pageContext": {
+        "externalPrerequisites": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-b29a6ece-30f8-5ced-9782-4df1bcbad284",
+            "goalId": "b29a6ece-30f8-5ced-9782-4df1bcbad284",
+            "title": "Tool-Ergebnisse kritisch prüfen"
+          }
+        ],
+        "externalReverseRequires": [],
+        "visualization": null
+      },
+      "sourceBinding": {
+        "status": "no_direct_canonical_sourceRef",
+        "sourceRef": null,
+        "excerpts": []
+      }
+    },
+    {
+      "ordinal": 3,
+      "goalId": "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+      "titleDe": "Grenzen der Werkzeugnutzung benennen",
+      "titleEn": "Name limitations of tool use",
+      "descriptionDe": "Die lernende Person kann Grenzen digitaler Werkzeuge benennen (z. B. Definitionsbereich, numerische Näherung, Mehrdeutigkeit) und geeignete Sicherungen wählen.",
+      "descriptionEn": "The learner can name limitations of digital tools (e.g. domain issues, numerical approximation, ambiguity) and choose suitable safeguards.",
+      "pageNumber": 3,
+      "goalFingerprint": "sha256:aad4ff2580dc783d195b4b8e4932e5d60bf53411bb5317525be2c7322fdb65d2",
+      "pageFingerprint": "sha256:6daa80ac14ec816f768a2c671553705e2e75521af9b9d71a0d0eae2bbd523fff",
+      "canonicalContext": {
+        "sourceRef": null,
+        "semanticAtomic": null,
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB3",
+          "framework": "hessen-kc-2024",
+          "guidingIdeas": [
+            "L1",
+            "L5"
+          ],
+          "phase": "Q4",
+          "processCompetencies": [
+            "K5.2"
+          ]
+        },
+        "requires": [
+          "93fc4fbb-72f6-549b-b97a-a48aecb1534d"
+        ],
+        "contains": [],
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "pageContext": {
+        "externalPrerequisites": [],
+        "externalReverseRequires": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-4c319dfd-ebb1-504b-a036-c780e1915900",
+            "goalId": "4c319dfd-ebb1-504b-a036-c780e1915900",
+            "title": "Formale Verfahren und Werkzeuge reflektiert einsetzen"
+          }
+        ],
+        "visualization": null
+      },
+      "sourceBinding": {
+        "status": "no_direct_canonical_sourceRef",
+        "sourceRef": null,
+        "excerpts": []
+      }
+    },
+    {
+      "ordinal": 4,
+      "goalId": "aeae526e-b3a4-5a17-b177-351df0307cb9",
+      "titleDe": "Notation adressatengerecht erläutern",
+      "titleEn": "Explain notation for the audience",
+      "descriptionDe": "Die lernende Person kann verwendete Notation und Symbole adressatengerecht erläutern und passende Beispiele zur Verdeutlichung geben.",
+      "descriptionEn": "The learner can explain used notation and symbols for the audience and give suitable examples to clarify.",
+      "pageNumber": 4,
+      "goalFingerprint": "sha256:3c7764333b2d5185eea9ac17373c521fde536bb0ce94b71450f33dfa0e344288",
+      "pageFingerprint": "sha256:e79f1bb3d9c594c0ee7f154f82286cbad4fcbc7a4dce3277e04fe6e921ae7b06",
+      "canonicalContext": {
+        "sourceRef": null,
+        "semanticAtomic": null,
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "hessen-kc-2024",
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q4",
+          "processCompetencies": [
+            "K6.1"
+          ]
+        },
+        "requires": [
+          "fcb4cef1-b17a-5682-924c-41498fc6c9b2"
+        ],
+        "contains": [],
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "pageContext": {
+        "externalPrerequisites": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-fcb4cef1-b17a-5682-924c-41498fc6c9b2",
+            "goalId": "fcb4cef1-b17a-5682-924c-41498fc6c9b2",
+            "title": "Aussagen strukturiert formulieren"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-b9a501c4-9d74-5514-b77b-895980b89b1b",
+            "goalId": "b9a501c4-9d74-5514-b77b-895980b89b1b",
+            "title": "Mathematische Ergebnisse adressatengerecht kommunizieren"
+          }
+        ],
+        "visualization": {
+          "altText": "Didaktische Visualisierung zum Lernziel \"Notation adressatengerecht erläutern\". Die lernende Person kann verwendete Notation und Symbole adressatengerecht erläutern und passende Beispiele zur Verdeutlichung geben.",
+          "approvedForPublication": false,
+          "originalDigest": "sha256:fd230b4a6ec4071bf78335622e3699a0c73502c8ed3635d84d349f015ca6f287",
+          "qaStatus": "review_candidate",
+          "resourceType": "image",
+          "title": "Visualisierung: Notation adressatengerecht erläutern",
+          "url": "/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.jpg"
+        }
+      },
+      "sourceBinding": {
+        "status": "no_direct_canonical_sourceRef",
+        "sourceRef": null,
+        "excerpts": []
+      }
+    },
+    {
+      "ordinal": 5,
+      "goalId": "87372f49-c832-50f6-921f-ec9a6804d58a",
+      "titleDe": "Eine heuristische Strategie anwenden",
+      "titleEn": "Apply one heuristic strategy",
+      "descriptionDe": "Die lernende Person kann für eine offene Problemstellung eine passende heuristische Strategie auswählen, anwenden und die Wahl begründen.",
+      "descriptionEn": "The learner can choose and apply a suitable heuristic strategy for an open problem and justify the choice.",
+      "pageNumber": 5,
+      "goalFingerprint": "sha256:486f421421b5c2394994455140d3045b9c0220b9a1fff0c51855bb9a8d808f95",
+      "pageFingerprint": "sha256:6d405480ba6a9c6a513c26c2755f0f7f30037c5066eaca13d3bb7893e0818018",
+      "canonicalContext": {
+        "sourceRef": null,
+        "semanticAtomic": null,
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "hessen-kc-2024",
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "phase": "Q4",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ]
+        },
+        "requires": [
+          "c0e34fa8-fde5-5a4e-9b84-c5d5db719b58"
+        ],
+        "contains": [],
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "pageContext": {
+        "externalPrerequisites": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-c0e34fa8-fde5-5a4e-9b84-c5d5db719b58",
+            "goalId": "c0e34fa8-fde5-5a4e-9b84-c5d5db719b58",
+            "title": "Mathematische Probleme erkennen und formulieren"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-499b8a0d-a5da-5cf7-8557-89e16152b752",
+            "goalId": "499b8a0d-a5da-5cf7-8557-89e16152b752",
+            "title": "Argumente und Aussagen beurteilen"
+          }
+        ],
+        "visualization": null
+      },
+      "sourceBinding": {
+        "status": "no_direct_canonical_sourceRef",
+        "sourceRef": null,
+        "excerpts": []
+      }
+    },
+    {
+      "ordinal": 6,
+      "goalId": "27bdc580-ba17-5399-bf02-48f354846d1d",
+      "titleDe": "Heuristischen Stetigkeitsbegriff zum Argumentieren nutzen",
+      "titleEn": "Use a heuristic continuity concept for argumentation",
+      "descriptionDe": "Die lernende Person kann mit der Vorstellung eines Graphen ohne Sprung und mit der Zwischenwertidee argumentieren, ohne einen formalen Stetigkeitsbeweis zu führen.",
+      "descriptionEn": "The learner can argue using the idea of a graph without jumps and the intermediate value idea without giving a formal proof of continuity.",
+      "pageNumber": 6,
+      "goalFingerprint": "sha256:ebce414475957128b13f47f8454c5b53e57e6a32a13b4d0a1465b25565f00452",
+      "pageFingerprint": "sha256:c1260428a6c519c6881f7669c6f4635e1c9df2b30176c1df73484a8c9acaeb41",
+      "canonicalContext": {
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 7",
+        "semanticAtomic": true,
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "hessen-kc-2024",
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "Q4",
+          "processCompetencies": [
+            "K1.2",
+            "K2.2",
+            "K5.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.2.USE_HEURISTIC_CONTINUITY_ARGUMENT"
+        },
+        "requires": [
+          "f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
+          "591cb948-f313-5b1c-a9cb-3df8162eeb8b"
+        ],
+        "contains": [],
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "pageContext": {
+        "externalPrerequisites": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
+            "goalId": "f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
+            "title": "Bisektionsverfahren zur Nullstellennäherung anwenden"
+          },
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-591cb948-f313-5b1c-a9cb-3df8162eeb8b",
+            "goalId": "591cb948-f313-5b1c-a9cb-3df8162eeb8b",
+            "title": "Kettenschlüsse nachvollziehen und bilden"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-f77b9b40-6afc-5d9e-821e-79903bbbcb94",
+            "goalId": "f77b9b40-6afc-5d9e-821e-79903bbbcb94",
+            "title": "Problemlösestrategien und Argumente entwickeln"
+          }
+        ],
+        "visualization": null
+      },
+      "sourceBinding": {
+        "status": "bound_to_current_source_extraction",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 7",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+        "sourceExtractionDigest": "sha256:f019332e31d21ff83198235b8f446d18e27287a5ebc42bbfeff891a581d2f2b3",
+        "sourcePdfPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+        "sourcePdfDigest": "sha256:d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953",
+        "sourceGoalRecords": [
+          {
+            "sourceGoalId": "he-math-sekii-q4-2-b07-a01-60ac61a9",
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 7, Aspekt 1",
+            "topicCode": "Q4.2",
+            "sourceSpan": "Argumentieren mit einem heuristischen Stetigkeitsbegriff (ohne Sprung, Zwischenwertsatz)",
+            "sourceText": "– Argumentieren mit einem heuristischen Stetigkeitsbegriff (ohne Sprung, Zwischenwertsatz)",
+            "sourcePage": 51,
+            "passageId": "he-math-sekii:Q4.2",
+            "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 7,
+      "goalId": "21fa0c22-976e-59b3-a871-899f0c0177f3",
+      "titleDe": "Zufallsexperimente und Ereignisse aus Termen formulieren",
+      "titleEn": "Formulate random experiments and events from terms",
+      "descriptionDe": "Die lernende Person kann zu gegebenen Wahrscheinlichkeitstermen passende Zufallsexperimente und Ereignisse formulieren und die Termbestandteile fachlich zuordnen.",
+      "descriptionEn": "The learner can formulate matching random experiments and events for given probability terms and assign the term components mathematically.",
+      "pageNumber": 7,
+      "goalFingerprint": "sha256:96728976a9ae256984d654ca8f65faafa1a3e6278faa1d6156199ec0c076aa00",
+      "pageFingerprint": "sha256:19cea730a3fda7113b9eca718dc84b37dd2eb5ee906a1a63f5068ee64e343fd0",
+      "canonicalContext": {
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 13",
+        "semanticAtomic": true,
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "hessen-kc-2024",
+          "guidingIdeas": [
+            "L5"
+          ],
+          "phase": "Q4",
+          "processCompetencies": [
+            "K1.2",
+            "K3.2",
+            "K6.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.2.FORMULATE_RANDOM_EXPERIMENTS_FROM_TERMS"
+        },
+        "requires": [
+          "3019e775-1420-510f-850b-5a29acc47a64",
+          "71d1fd4d-8471-5f25-94a0-4c531a74783c",
+          "aa00edfa-cf8d-500e-994f-7e33a5ebd045"
+        ],
+        "contains": [],
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "pageContext": {
+        "externalPrerequisites": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-3019e775-1420-510f-850b-5a29acc47a64",
+            "goalId": "3019e775-1420-510f-850b-5a29acc47a64",
+            "title": "Zufallsexperimente mit Ergebnissen und Ereignissen beschreiben"
+          },
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-71d1fd4d-8471-5f25-94a0-4c531a74783c",
+            "goalId": "71d1fd4d-8471-5f25-94a0-4c531a74783c",
+            "title": "Ereignisse als Mengen verknüpfen"
+          },
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-aa00edfa-cf8d-500e-994f-7e33a5ebd045",
+            "goalId": "aa00edfa-cf8d-500e-994f-7e33a5ebd045",
+            "title": "Binomialwahrscheinlichkeiten bestimmen und deuten"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-f77b9b40-6afc-5d9e-821e-79903bbbcb94",
+            "goalId": "f77b9b40-6afc-5d9e-821e-79903bbbcb94",
+            "title": "Problemlösestrategien und Argumente entwickeln"
+          }
+        ],
+        "visualization": null
+      },
+      "sourceBinding": {
+        "status": "bound_to_current_source_extraction",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 13",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+        "sourceExtractionDigest": "sha256:f019332e31d21ff83198235b8f446d18e27287a5ebc42bbfeff891a581d2f2b3",
+        "sourcePdfPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+        "sourcePdfDigest": "sha256:d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953",
+        "sourceGoalRecords": [
+          {
+            "sourceGoalId": "he-math-sekii-q4-2-b13-a01-9970fb1b",
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 13, Aspekt 1",
+            "topicCode": "Q4.2",
+            "sourceSpan": "Vergleichen von Wahrscheinlichkeiten zum Beispiel anhand zu bestimmender Terme",
+            "sourceText": "– Vergleichen von Wahrscheinlichkeiten zum Beispiel anhand zu bestimmender Terme, Formulieren von Zufallsexperimenten und Ereignissen anhand gegebener Terme",
+            "sourcePage": 51,
+            "passageId": "he-math-sekii:Q4.2",
+            "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+          },
+          {
+            "sourceGoalId": "he-math-sekii-q4-2-b13-a02-fd18df25",
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 13, Aspekt 2",
+            "topicCode": "Q4.2",
+            "sourceSpan": "Formulieren von Zufallsexperimenten und Ereignissen anhand gegebener Terme",
+            "sourceText": "– Vergleichen von Wahrscheinlichkeiten zum Beispiel anhand zu bestimmender Terme, Formulieren von Zufallsexperimenten und Ereignissen anhand gegebener Terme",
+            "sourcePage": 51,
+            "passageId": "he-math-sekii:Q4.2",
+            "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 8,
+      "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "titleDe": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
+      "titleEn": "Represent complex numbers in polar form and in the Gaussian plane",
+      "descriptionDe": "Die lernende Person kann komplexe Zahlen in der Gaußschen Zahlenebene und in Polarform $z=r\\cdot e^{i\\varphi}=r\\cdot(\\cos\\varphi+i\\cdot\\sin\\varphi)$ mit $r\\ge 0$ darstellen, ihren Betrag und für $z\\ne 0$ ein Argument bestimmen sowie Darstellungen mit $\\varphi=\\omega t$ fachsprachlich deuten.",
+      "descriptionEn": "The learner can represent complex numbers in the Gaussian plane and in polar form $z=r\\cdot e^{i\\varphi}=r\\cdot(\\cos\\varphi+i\\cdot\\sin\\varphi)$ with $r\\ge 0$, determine their modulus and, for $z\\ne 0$, an argument, and interpret representations with $\\varphi=\\omega t$ using appropriate mathematical terminology.",
+      "pageNumber": 8,
+      "goalFingerprint": "sha256:0cda3c7da0e32989db40a40d20f30ca5bce090b4c4f8a01fa6f36f06f1ac3ff4",
+      "pageFingerprint": "sha256:9593b11e8282545fef01a3d9fc43cf81d4b7f43ec6800be5dba2df9aaed772e5",
+      "canonicalContext": {
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.3, S. 52, Spiegelstrich 2",
+        "semanticAtomic": true,
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "hessen-kc-2024",
+          "guidingIdeas": [
+            "L1",
+            "L3"
+          ],
+          "phase": "Q4",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ]
+        },
+        "requires": [
+          "22b66c1e-50b1-505f-a388-c39131a4e1c3"
+        ],
+        "contains": [],
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "pageContext": {
+        "externalPrerequisites": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3",
+            "goalId": "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+            "title": "Komplexe Zahlen in algebraischer Form additiv nutzen"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+            "goalId": "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+            "title": "Komplexe Zahlen als 2×2-Matrizen darstellen (LK)"
+          },
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-8e18154d-41d6-592e-ba98-537edad338e8",
+            "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+            "title": "Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)"
+          }
+        ],
+        "visualization": null
+      },
+      "sourceBinding": {
+        "status": "bound_to_current_source_extraction",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.3, S. 52, Spiegelstrich 2",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+        "sourceExtractionDigest": "sha256:f019332e31d21ff83198235b8f446d18e27287a5ebc42bbfeff891a581d2f2b3",
+        "sourcePdfPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+        "sourcePdfDigest": "sha256:d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953",
+        "sourceGoalRecords": [
+          {
+            "sourceGoalId": "he-math-sekii-q4-3-b02-a01-3006f1e4",
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.3, S. 52, Spiegelstrich 2, Aspekt 1",
+            "topicCode": "Q4.3",
+            "sourceSpan": "Darstellen in der Gaußschen Zahlenebene, $z=e^{i\\omega t}=\\cos(\\omega t)+i\\cdot\\sin(\\omega t)$",
+            "sourceText": "– Polarform:\n  Darstellen in der Gaußschen Zahlenebene, $z=e^{i\\omega t}=\\cos(\\omega t)+i\\cdot\\sin(\\omega t)$, Deuten der Grundrechenarten in der Gaußschen Zahlenebene",
+            "sourcePage": 52,
+            "passageId": "he-math-sekii:Q4.3",
+            "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 9,
+      "goalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+      "titleDe": "Grundrechenarten in der Gaußschen Zahlenebene deuten",
+      "titleEn": "Interpret arithmetic operations in the Gaussian plane",
+      "descriptionDe": "Die lernende Person kann Addition, Subtraktion, Multiplikation und Division komplexer Zahlen in der Gaußschen Zahlenebene geometrisch deuten, insbesondere als Verschiebung, Streckung oder Drehung.",
+      "descriptionEn": "The learner can interpret addition, subtraction, multiplication, and division of complex numbers geometrically in the Gaussian plane, especially as translation, scaling, or rotation.",
+      "pageNumber": 9,
+      "goalFingerprint": "sha256:ea55af27bfbe031c5ea76854c307698db0c8e9f804aec5edc4c8665a6716c3b1",
+      "pageFingerprint": "sha256:d5f28ddf306f9e3ce562aa37aa9b09f7653f262fb94441188432ba8e738591d6",
+      "canonicalContext": {
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.3, S. 52, Spiegelstrich 2",
+        "semanticAtomic": true,
+        "core": null,
+        "dimensionTags": {
+          "demandLevel": "AB2",
+          "framework": "hessen-kc-2024",
+          "guidingIdeas": [
+            "L1",
+            "L3"
+          ],
+          "phase": "Q4",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3",
+            "K5.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.3.INTERPRET_OPERATIONS_IN_GAUSSIAN_PLANE"
+        },
+        "requires": [
+          "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+          "4f64f771-20ba-581a-86ba-bcdb1759e4d2"
+        ],
+        "contains": [],
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "pageContext": {
+        "externalPrerequisites": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3",
+            "goalId": "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+            "title": "Komplexe Zahlen in algebraischer Form additiv nutzen"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-a8525adc-fad3-53f5-953f-213bd37b09e8",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+            "title": "Komplexe Zahlen sicher anwenden"
+          }
+        ],
+        "visualization": null
+      },
+      "sourceBinding": {
+        "status": "bound_to_current_source_extraction",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.3, S. 52, Spiegelstrich 2",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+        "sourceExtractionDigest": "sha256:f019332e31d21ff83198235b8f446d18e27287a5ebc42bbfeff891a581d2f2b3",
+        "sourcePdfPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+        "sourcePdfDigest": "sha256:d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953",
+        "sourceGoalRecords": [
+          {
+            "sourceGoalId": "he-math-sekii-q4-3-b02-a02-81cc46bf",
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.3, S. 52, Spiegelstrich 2, Aspekt 2",
+            "topicCode": "Q4.3",
+            "sourceSpan": "Deuten der Grundrechenarten in der Gaußschen Zahlenebene",
+            "sourceText": "– Polarform:\n  Darstellen in der Gaußschen Zahlenebene, $z=e^{i\\omega t}=\\cos(\\omega t)+i\\cdot\\sin(\\omega t)$, Deuten der Grundrechenarten in der Gaußschen Zahlenebene",
+            "sourcePage": 52,
+            "passageId": "he-math-sekii:Q4.3",
+            "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 10,
+      "goalId": "9b339361-7719-573d-a913-432246c502ee",
+      "titleDe": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+      "titleEn": "Investigate Mandelbrot sequences of complex numbers with software (advanced course)",
+      "descriptionDe": "Die lernende Person kann Folgen komplexer Zahlen im Zusammenhang mit der Mandelbrot-Menge auf Beschränktheit untersuchen und die Mandelbrot-Menge mit geeigneter Software veranschaulichen.",
+      "descriptionEn": "The learner can investigate boundedness of complex sequences in the context of the Mandelbrot set and visualize the Mandelbrot set with appropriate software.",
+      "pageNumber": 10,
+      "goalFingerprint": "sha256:a4fd97979e06eb33292219bc2e43f1cd73d43faecbcbe560425b9aecfbb20f35",
+      "pageFingerprint": "sha256:9ac15d63ac31589d225574b3a15183b057e20d91a47c198c385e97e1571237d5",
+      "canonicalContext": {
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.1",
+        "semanticAtomic": true,
+        "core": false,
+        "dimensionTags": {
+          "area": "Algebra",
+          "demandLevel": "AB3",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "Q4",
+          "processCompetencies": [
+            "K2.3",
+            "K4.2",
+            "K5.2"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.COMPLEX_MANDELBROT_BY"
+        },
+        "requires": [
+          "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+          "8e18154d-41d6-592e-ba98-537edad338e8"
+        ],
+        "contains": [],
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "pageContext": {
+        "externalPrerequisites": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-8e18154d-41d6-592e-ba98-537edad338e8",
+            "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+            "title": "Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-a8525adc-fad3-53f5-953f-213bd37b09e8",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+            "title": "Komplexe Zahlen sicher anwenden"
+          }
+        ],
+        "visualization": null
+      },
+      "sourceBinding": {
+        "status": "bound_to_current_source_extraction",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.1",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+        "sourceExtractionDigest": "sha256:77f04b8d5954a799d6946860d69a5f06d9058e9b4813421eef5d6b3798afa6e6",
+        "sourcePdfPath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_12_Vertiefungskurs.pdf",
+        "sourcePdfDigest": "sha256:0c999c585ec65ed7f167d0d07b6a40fe12d435cbcffed56c39f44674f684e138",
+        "sourceGoalRecords": [
+          {
+            "sourceGoalId": "f30e29d2-ac94-54ae-9d9b-8f73f49c56ef",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.1",
+            "topicCode": "M12-V.1",
+            "sourceSpan": "untersuchen im Zusammenhang mit der Mandelbrot-Menge Folgen komplexer Zahlen auf Beschränktheit. Sie veranschaulichen die Mandelbrot-Menge mithilfe einer geeigneten Software.",
+            "sourceText": "untersuchen im Zusammenhang mit der Mandelbrot-Menge Folgen komplexer Zahlen auf Beschränktheit. Sie veranschaulichen die Mandelbrot-Menge mithilfe einer geeigneten Software.",
+            "sourcePage": null,
+            "passageId": "by-math-gym-m12-v-1",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_12_Vertiefungskurs.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 11,
+      "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "titleDe": "Vektoren im Raum addieren und vervielfachen",
+      "titleEn": "Add and scale vectors in space",
+      "descriptionDe": "Die lernende Person kann Vektoren im Raum komponentenweise addieren und mit Skalaren vervielfachen sowie die Rechenoperationen als Verkettung und Streckung von Verschiebungen geometrisch deuten.",
+      "descriptionEn": "The learner can add vectors in space component-wise, multiply them by scalars, and interpret the operations geometrically as chained and scaled displacements.",
+      "pageNumber": 11,
+      "goalFingerprint": "sha256:3af577f67b8c265d92b7fa3abdb613e6df11901b6c6e3034e4f3b61437c5eaa9",
+      "pageFingerprint": "sha256:8a100e422aff1777ca74348571da72822c23e7db40ab52d328638fae5f7b89c5",
+      "canonicalContext": {
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 2",
+        "semanticAtomic": true,
+        "core": null,
+        "dimensionTags": {
+          "area": "LinearAlgebra",
+          "demandLevel": "AB2",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "processCompetencies": [
+            "K1.1",
+            "K4.1"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.2.VECTOR_ADDITION_SCALING_SPACE"
+        },
+        "requires": [
+          "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+        ],
+        "contains": [],
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "pageContext": {
+        "externalPrerequisites": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+            "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+            "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9",
+            "goalId": "1878f680-095c-511d-aaed-e98393f7fde9",
+            "title": "Raumorientierung und Volumenprobleme lösen"
+          },
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-72dfc164-455d-4b63-85f0-96e803c9a1d5",
+            "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+            "title": "Linearkombinationen von Vektoren bilden und deuten"
+          },
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+            "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+            "title": "Kollinearität von Vektoren im Raum prüfen"
+          },
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+            "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+            "title": "Betrag eines Vektors im Raum bestimmen"
+          },
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6",
+            "goalId": "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6",
+            "title": "Lineare Gleichungssysteme in der Analytischen Geometrie systematisch lösen"
+          }
+        ],
+        "visualization": {
+          "altText": "Schematische Kopf-an-Schwanz-Pfeilkette und Komponentensumme (2,1,1)+(−1,2,3)=(1,3,4). Zwei gleich lange a-Verschiebungen hintereinander ergeben den doppelt langen Gesamtpfeil 2a; 2·(2,1,1)=(4,2,2).",
+          "approvedForPublication": false,
+          "originalDigest": "sha256:600adcbff2431384e36b34a72f5f756b00cba2ad856920d8d046a8f7304da304",
+          "qaStatus": "review_candidate",
+          "resourceType": "image",
+          "title": "Visualisierung: Vektoren im Raum addieren und vervielfachen",
+          "url": "/assets/goal-visualizations/mathematik/f37b0a72-9e23-51c7-aad5-438c17a56899/f37b0a72-9e23-51c7-aad5-438c17a56899.png"
+        }
+      },
+      "sourceBinding": {
+        "status": "bound_to_current_source_extraction",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 2",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+        "sourceExtractionDigest": "sha256:f019332e31d21ff83198235b8f446d18e27287a5ebc42bbfeff891a581d2f2b3",
+        "sourcePdfPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+        "sourcePdfDigest": "sha256:d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953",
+        "sourceGoalRecords": [
+          {
+            "sourceGoalId": "he-math-sekii-q2-2-b02-a03-5d12cf5d",
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 2, Aspekt 3",
+            "topicCode": "Q2.2",
+            "sourceSpan": "Rechnen mit Vektoren (Addition und Vervielfachung von Vektoren)",
+            "sourceText": "– Vektoren:\n  Beschreiben von Verschiebungen im Raum mithilfe von Vektoren, Ortsvektor eines Punktes, Rechnen mit Vektoren (Addition und Vervielfachung von Vektoren), Kollinearität zweier Vektoren, Betrag eines Vektors, Abstand zweier Punkte im Raum, Streckenlängen",
+            "sourcePage": 41,
+            "passageId": "he-math-sekii:Q2.2",
+            "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 12,
+      "goalId": "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+      "titleDe": "Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen",
+      "titleEn": "Investigate monotonicity, extrema, and function-derivative relationships",
+      "descriptionDe": "Die lernende Person kann den Zusammenhang zwischen Funktion und Ableitungsfunktion in einfachen Fällen graphisch erklären und Funktionen mit der ersten Ableitung auf Monotonie sowie lokale und globale Extremstellen untersuchen.",
+      "descriptionEn": "The learner can explain the relationship between a function and its derivative graphically in simple cases and use the first derivative to investigate monotonicity as well as local and global extrema.",
+      "pageNumber": 12,
+      "goalFingerprint": "sha256:9299fdfaf425156492d7d0abc9abebfefb361a6d67992d7c231499176069fcf6",
+      "pageFingerprint": "sha256:5df5471c156a8a1cd13b4c5d07f55a95b94c56d007cd006e7496459618100bfb",
+      "canonicalContext": {
+        "sourceRef": null,
+        "semanticAtomic": true,
+        "core": true,
+        "dimensionTags": {
+          "area": "Analysis",
+          "demandLevel": "AB2",
+          "framework": "canonical-gymnasium-math",
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "J10",
+          "processCompetencies": [
+            "K1.1",
+            "K3.1",
+            "K4.1"
+          ],
+          "topicCode": "CANONICAL.MATH.SEK1.J10.7C"
+        },
+        "requires": [
+          "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+          "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "contains": [],
+        "tags": [
+          "canonical",
+          "modality:visual",
+          "representation:graph",
+          "tool:geogebra"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "pageContext": {
+        "externalPrerequisites": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86",
+            "goalId": "65365dce-f33f-49d8-9516-42f75883aa86",
+            "title": "Warum Mathematik? – Entdecken, Muster & Alltag"
+          },
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+            "goalId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+            "title": "Ableitungsbegriff aus mittleren und momentanen Änderungsraten entwickeln"
+          },
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+            "goalId": "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+            "title": "Grundlegende Ableitungsregeln auf elementare Funktionsterme anwenden"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+            "goalId": "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+            "title": "Tangenten- und Normalengleichungen in einfachen Fällen aufstellen"
+          },
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+            "goalId": "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+            "title": "Tangenten als lineare Approximationen nutzen"
+          },
+          {
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+            "goalId": "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+            "title": "Wendestellen und Krümmungsverhalten mit Ableitungen beschreiben"
+          }
+        ],
+        "visualization": {
+          "altText": "Didaktische Visualisierung zum Lernziel \"Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen\". Die lernende Person kann den Zusammenhang zwischen Funktion und Ableitungsfunktion in einfachen Fällen graphisch erklären und Funktionen mit der ersten Ableitung auf Monotonie sowie lokale und globale Extremstellen untersuchen.",
+          "approvedForPublication": false,
+          "originalDigest": "sha256:e86811073adffb07edf396609b50057f7ec5ab58df2edf5af051d84887c8290a",
+          "qaStatus": "review_candidate",
+          "resourceType": "image",
+          "title": "Visualisierung: Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen",
+          "url": "/assets/goal-visualizations/mathematik/1a18dbb3-f350-4766-9c8b-20ca018ccef1/1a18dbb3-f350-4766-9c8b-20ca018ccef1.jpg"
+        }
+      },
+      "sourceBinding": {
+        "status": "no_direct_canonical_sourceRef",
+        "sourceRef": null,
+        "excerpts": []
+      }
+    }
+  ]
+}
+
+
+---
+BOUND RECORD SCHEMA
+---
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+  "title": "SkillPilot learning-goal description review record v1",
+  "description": "Exactly one fingerprint-bound decision for one learning goal in one description-review run. AI output remains a non-authoritative candidate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "recordId",
+    "runId",
+    "campaignId",
+    "roundId",
+    "bundleFingerprint",
+    "bookDigest",
+    "goalId",
+    "goalFingerprint",
+    "pageFingerprint",
+    "currentTitleDe",
+    "currentTitleEn",
+    "currentDescriptionDe",
+    "currentDescriptionEn",
+    "decision",
+    "understandingEvidence",
+    "rationale",
+    "evidenceProfileContract",
+    "evidenceProfileRecommendation",
+    "recordStatus",
+    "reviewAuthority"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json"
+    },
+    "schemaVersion": { "const": 1 },
+    "recordId": { "$ref": "#/$defs/stableId" },
+    "runId": { "$ref": "#/$defs/stableId" },
+    "campaignId": { "$ref": "#/$defs/stableId" },
+    "roundId": { "$ref": "#/$defs/stableId" },
+    "bundleFingerprint": { "$ref": "#/$defs/digest" },
+    "bookDigest": { "$ref": "#/$defs/digest" },
+    "goalId": { "$ref": "#/$defs/stableId" },
+    "goalFingerprint": { "$ref": "#/$defs/digest" },
+    "pageFingerprint": { "$ref": "#/$defs/digest" },
+    "currentTitleDe": { "$ref": "#/$defs/nonBlank" },
+    "currentTitleEn": { "$ref": "#/$defs/nonBlank" },
+    "currentDescriptionDe": { "$ref": "#/$defs/longText" },
+    "currentDescriptionEn": { "$ref": "#/$defs/longText" },
+    "decision": { "enum": ["keep", "revise", "split_review", "block"] },
+    "proposedDescriptionDe": { "$ref": "#/$defs/longText" },
+    "proposedDescriptionEn": { "$ref": "#/$defs/longText" },
+    "understandingEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "essentialUnderstandingDe",
+        "essentialUnderstandingEn",
+        "observablePerformanceDe",
+        "observablePerformanceEn",
+        "transferExpectationDe",
+        "transferExpectationEn"
+      ],
+      "properties": {
+        "essentialUnderstandingDe": {
+          "description": "Positive, goal-specific statement in German of the subject-specific ideas, relationships, distinctions, structures, models, meanings, or conditions the learner understands.",
+          "$ref": "#/$defs/longText"
+        },
+        "essentialUnderstandingEn": {
+          "description": "Positive, goal-specific statement in English of the subject-specific ideas, relationships, distinctions, structures, models, meanings, or conditions the learner understands.",
+          "$ref": "#/$defs/longText"
+        },
+        "observablePerformanceDe": {
+          "description": "Concrete statement in German of what the learner can explain, justify, construct, compare, or solve as evidence of that understanding.",
+          "$ref": "#/$defs/longText"
+        },
+        "observablePerformanceEn": {
+          "description": "Concrete statement in English of what the learner can explain, justify, construct, compare, or solve as evidence of that understanding.",
+          "$ref": "#/$defs/longText"
+        },
+        "transferExpectationDe": {
+          "description": "Positive statement in German of how the learner applies the understanding to a changed example, representation, or context.",
+          "$ref": "#/$defs/longText"
+        },
+        "transferExpectationEn": {
+          "description": "Positive statement in English of how the learner applies the understanding to a changed example, representation, or context.",
+          "$ref": "#/$defs/longText"
+        }
+      }
+    },
+    "rationale": { "$ref": "#/$defs/longText" },
+    "evidenceProfileContract": { "const": "positive-understanding-evidence-v2" },
+    "evidenceProfileRecommendation": { "enum": ["none", "create", "revise"] },
+    "recordStatus": { "enum": ["candidate", "accepted", "rejected"] },
+    "reviewAuthority": { "enum": ["ai_candidate", "human"] }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "decision": { "const": "revise" } },
+        "required": ["decision"]
+      },
+      "then": {
+        "properties": {
+          "proposedDescriptionDe": { "$ref": "#/$defs/longText" },
+          "proposedDescriptionEn": { "$ref": "#/$defs/longText" }
+        },
+        "required": ["proposedDescriptionDe", "proposedDescriptionEn"]
+      },
+      "else": {
+        "not": {
+          "anyOf": [
+            { "required": ["proposedDescriptionDe"] },
+            { "required": ["proposedDescriptionEn"] }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "reviewAuthority": { "const": "ai_candidate" } },
+        "required": ["reviewAuthority"]
+      },
+      "then": {
+        "properties": { "recordStatus": { "const": "candidate" } }
+      }
+    },
+    {
+      "if": {
+        "properties": { "recordStatus": { "const": "accepted" } },
+        "required": ["recordStatus"]
+      },
+      "then": {
+        "properties": { "reviewAuthority": { "const": "human" } }
+      }
+    }
+  ],
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "longText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    }
+  }
+}
+
+
+---
+EXACT ASSIGNED BATCH INPUT JSONL (current pages, goals, context and fingerprints)
+---
+{"batchGoalIds":["4aa70ad4-171d-5671-a864-c0c7758fa0ed","93fc4fbb-72f6-549b-b97a-a48aecb1534d","c97a33d9-d5e4-56c5-ae4c-822bc4f54898","aeae526e-b3a4-5a17-b177-351df0307cb9","87372f49-c832-50f6-921f-ec9a6804d58a","27bdc580-ba17-5399-bf02-48f354846d1d","21fa0c22-976e-59b3-a871-899f0c0177f3","4f64f771-20ba-581a-86ba-bcdb1759e4d2","a7fb1a7a-8315-5bcb-842e-48293293dfcc","9b339361-7719-573d-a913-432246c502ee","f37b0a72-9e23-51c7-aad5-438c17a56899","1a18dbb3-f350-4766-9c8b-20ca018ccef1"],"batchId":"mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a.batch-001","bookDigest":"sha256:3bbbf36eb001c6a32782fe0e3737cb6160850341dd90b88a4085ba673a5df412","bundleFingerprint":"sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a","goal":{"canonicalContext":{"applicability":{"jurisdiction":["DE-BB","DE-BE","DE-BW","DE-BY","DE-HB","DE-HE","DE-HH","DE-MV","DE-NI","DE-NW","DE-RP","DE-SH","DE-SL","DE-SN","DE-ST","DE-TH"]},"applicabilitySemantics":{"fromRequires":null,"mappingInheritance":null,"projection":null},"competencyRefs":[],"contains":[],"core":null,"dimensionTags":{"demandLevel":"AB2","framework":"hessen-kc-2024","guidingIdeas":["L4","L5"],"phase":"Q3","processCompetencies":["K2.2","K5.2","K6.2"]},"examples":[],"nodeKind":null,"phase":null,"requires":["e02976ad-71fc-5929-b764-df7630269c47","8823e26e-694c-581b-9adf-4db7db6f43c9"],"semanticAtomic":true,"semanticKind":null,"shortKey":null,"sourceRef":"HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.5, S. 48, Spiegelstrich 1","tags":["GK","LK"],"type":"atomic","weight":1},"currentDescriptionDe":"Die lernende Person kann Zufallsexperimente mit geeigneter Software (z. B. Tabellenkalkulation) simulieren, absolute und relative Häufigkeiten auswerten und die Ergebnisse grafisch darstellen.","currentDescriptionEn":"The learner can simulate random experiments using suitable software, such as a spreadsheet, evaluate absolute and relative frequencies, and present the results graphically.","currentTitleDe":"Zufallsexperimente mit Software simulieren","currentTitleEn":"Simulate random experiments with software","goalFingerprint":"sha256:5d9c37b189464e5717872d15a42d3674732d0a77be77d916ed54b513ebe37434","goalId":"4aa70ad4-171d-5671-a864-c0c7758fa0ed","pageFingerprint":"sha256:b489638e2304333c2b9df9877241e5bda82e59dde8610a97fd11292521e3c983","reviewContext":{"evidenceProfile":null,"page":{"anchor":"goal-4aa70ad4-171d-5671-a864-c0c7758fa0ed","applicability":[{"jurisdiction":"DE-BB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BY","scopes":[{"courseProfile":"LK","durationModel":"G9","stage":"SekII"}]},{"jurisdiction":"DE-HB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HE","scopes":[{"courseProfile":null,"durationModel":"G9","stage":"SekI"},{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-MV","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NI","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-RP","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SL","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SN","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-ST","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-TH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]}],"breadcrumbs":["Mathematik","Sekundarstufe II (GK und LK)","Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik","Statistik und weitere Wahrscheinlichkeitsverteilungen","Q3.5 Statistik: Datenanalyse und Modellvergleich","Zufallsexperimente statistisch auswerten"],"chapterIds":["structure:goal-book-math-root","structure:goal-book-math-sekii-gk-lk","structure:canonical-structure:stochastics","structure:canonical-goal-35e14223-54fc-5ec1-ae73-ac9f13b07db2","structure:canonical-goal-d5054d79-6483-5d8a-a33b-b074f1cd5904","structure:canonical-goal-fb3c96bd-8888-5259-bc76-a3a24b4c9a15"],"description":"Die lernende Person kann Zufallsexperimente mit geeigneter Software (z. B. Tabellenkalkulation) simulieren, absolute und relative Häufigkeiten auswerten und die Ergebnisse grafisch darstellen.","evidenceReview":null,"externalPrerequisites":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-8823e26e-694c-581b-9adf-4db7db6f43c9","goalId":"8823e26e-694c-581b-9adf-4db7db6f43c9","title":"Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen"},{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-e02976ad-71fc-5929-b764-df7630269c47","goalId":"e02976ad-71fc-5929-b764-df7630269c47","title":"Zufallsexperimente planen und durchführen"}],"externalReverseRequires":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-c83dc2d1-f44f-5fae-86ce-280c68c3c55e","goalId":"c83dc2d1-f44f-5fae-86ce-280c68c3c55e","title":"Statistische Daten und Verteilungen abgleichen"}],"goalFingerprint":"sha256:5d9c37b189464e5717872d15a42d3674732d0a77be77d916ed54b513ebe37434","goalId":"4aa70ad4-171d-5671-a864-c0c7758fa0ed","navigationOrder":2,"pageFingerprint":"sha256:b489638e2304333c2b9df9877241e5bda82e59dde8610a97fd11292521e3c983","pageNumber":1,"requires":[],"reverseRequires":[],"title":"Zufallsexperimente mit Software simulieren","treeOrder":13,"visualization":null}}},"ordinal":1,"recordSchemaDigest":"sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff","reviewInputFingerprint":"sha256:238a9363d539a00a01c856e3862a0f2f833c7a31a69f511bcaed7e1fcd639e42","schemaVersion":3}
+{"batchGoalIds":["4aa70ad4-171d-5671-a864-c0c7758fa0ed","93fc4fbb-72f6-549b-b97a-a48aecb1534d","c97a33d9-d5e4-56c5-ae4c-822bc4f54898","aeae526e-b3a4-5a17-b177-351df0307cb9","87372f49-c832-50f6-921f-ec9a6804d58a","27bdc580-ba17-5399-bf02-48f354846d1d","21fa0c22-976e-59b3-a871-899f0c0177f3","4f64f771-20ba-581a-86ba-bcdb1759e4d2","a7fb1a7a-8315-5bcb-842e-48293293dfcc","9b339361-7719-573d-a913-432246c502ee","f37b0a72-9e23-51c7-aad5-438c17a56899","1a18dbb3-f350-4766-9c8b-20ca018ccef1"],"batchId":"mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a.batch-001","bookDigest":"sha256:3bbbf36eb001c6a32782fe0e3737cb6160850341dd90b88a4085ba673a5df412","bundleFingerprint":"sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a","goal":{"canonicalContext":{"applicability":{"jurisdiction":["DE-BB","DE-BE","DE-BW","DE-HB","DE-HE","DE-HH","DE-MV","DE-NI","DE-NW","DE-RP","DE-SH","DE-SL","DE-SN","DE-ST","DE-TH"]},"applicabilitySemantics":{"fromRequires":null,"mappingInheritance":null,"projection":null},"competencyRefs":[],"contains":[],"core":null,"dimensionTags":{"demandLevel":"AB2","framework":"hessen-kc-2024","guidingIdeas":["L1","L5"],"phase":"Q4","processCompetencies":["K5.2"]},"examples":[],"nodeKind":null,"phase":null,"requires":["b29a6ece-30f8-5ced-9782-4df1bcbad284"],"semanticAtomic":null,"semanticKind":null,"shortKey":null,"sourceRef":null,"tags":["GK","LK"],"type":"atomic","weight":1},"currentDescriptionDe":"Die lernende Person kann handschriftliche Schritte mit Tool-Unterstützung sinnvoll kombinieren (z. B. Umformen von Hand, Lösen per CAS) und die Vorgehensweise begründen.","currentDescriptionEn":"The learner can combine manual steps with tool support meaningfully (e.g. transform by hand, solve via CAS) and justify the approach.","currentTitleDe":"Hand- und Tool-Verfahren kombinieren","currentTitleEn":"Combine manual and tool methods","goalFingerprint":"sha256:9c8a8e8307b556d208217458c34217b4f081a3ec285c4ca625cf781070ae94ea","goalId":"93fc4fbb-72f6-549b-b97a-a48aecb1534d","pageFingerprint":"sha256:5f3d8ba44b30f7d13daf4216fbf805abfe38f4fc6d5e46fb583ee48800f674ba","reviewContext":{"evidenceProfile":null,"page":{"anchor":"goal-93fc4fbb-72f6-549b-b97a-a48aecb1534d","applicability":[{"jurisdiction":"DE-BB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-MV","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NI","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-RP","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SL","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SN","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-ST","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-TH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]}],"breadcrumbs":["Mathematik","Sekundarstufe II (GK und LK)","Funktionenscharen, Argumentieren und komplexe Zahlen","Problemlösen und Argumentieren","Technische Hilfsmittel zielgerichtet einsetzen"],"chapterIds":["structure:goal-book-math-root","structure:goal-book-math-sekii-gk-lk","structure:canonical-structure:function-families","structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6","structure:canonical-goal-ad20aa99-d6c0-5d91-8cda-74fb908eb1ff"],"description":"Die lernende Person kann handschriftliche Schritte mit Tool-Unterstützung sinnvoll kombinieren (z. B. Umformen von Hand, Lösen per CAS) und die Vorgehensweise begründen.","evidenceReview":null,"externalPrerequisites":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-b29a6ece-30f8-5ced-9782-4df1bcbad284","goalId":"b29a6ece-30f8-5ced-9782-4df1bcbad284","title":"Tool-Ergebnisse kritisch prüfen"}],"externalReverseRequires":[],"goalFingerprint":"sha256:9c8a8e8307b556d208217458c34217b4f081a3ec285c4ca625cf781070ae94ea","goalId":"93fc4fbb-72f6-549b-b97a-a48aecb1534d","navigationOrder":4,"pageFingerprint":"sha256:5f3d8ba44b30f7d13daf4216fbf805abfe38f4fc6d5e46fb583ee48800f674ba","pageNumber":2,"requires":[],"reverseRequires":[{"anchor":"goal-c97a33d9-d5e4-56c5-ae4c-822bc4f54898","goalId":"c97a33d9-d5e4-56c5-ae4c-822bc4f54898","pageNumber":3,"title":"Grenzen der Werkzeugnutzung benennen"}],"title":"Hand- und Tool-Verfahren kombinieren","treeOrder":18,"visualization":null}}},"ordinal":2,"recordSchemaDigest":"sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff","reviewInputFingerprint":"sha256:238a9363d539a00a01c856e3862a0f2f833c7a31a69f511bcaed7e1fcd639e42","schemaVersion":3}
+{"batchGoalIds":["4aa70ad4-171d-5671-a864-c0c7758fa0ed","93fc4fbb-72f6-549b-b97a-a48aecb1534d","c97a33d9-d5e4-56c5-ae4c-822bc4f54898","aeae526e-b3a4-5a17-b177-351df0307cb9","87372f49-c832-50f6-921f-ec9a6804d58a","27bdc580-ba17-5399-bf02-48f354846d1d","21fa0c22-976e-59b3-a871-899f0c0177f3","4f64f771-20ba-581a-86ba-bcdb1759e4d2","a7fb1a7a-8315-5bcb-842e-48293293dfcc","9b339361-7719-573d-a913-432246c502ee","f37b0a72-9e23-51c7-aad5-438c17a56899","1a18dbb3-f350-4766-9c8b-20ca018ccef1"],"batchId":"mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a.batch-001","bookDigest":"sha256:3bbbf36eb001c6a32782fe0e3737cb6160850341dd90b88a4085ba673a5df412","bundleFingerprint":"sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a","goal":{"canonicalContext":{"applicability":{"jurisdiction":["DE-BB","DE-BE","DE-BW","DE-HB","DE-HE","DE-HH","DE-MV","DE-NI","DE-NW","DE-RP","DE-SH","DE-SL","DE-SN","DE-ST","DE-TH"]},"applicabilitySemantics":{"fromRequires":null,"mappingInheritance":null,"projection":null},"competencyRefs":[],"contains":[],"core":null,"dimensionTags":{"demandLevel":"AB3","framework":"hessen-kc-2024","guidingIdeas":["L1","L5"],"phase":"Q4","processCompetencies":["K5.2"]},"examples":[],"nodeKind":null,"phase":null,"requires":["93fc4fbb-72f6-549b-b97a-a48aecb1534d"],"semanticAtomic":null,"semanticKind":null,"shortKey":null,"sourceRef":null,"tags":["GK","LK"],"type":"atomic","weight":1},"currentDescriptionDe":"Die lernende Person kann Grenzen digitaler Werkzeuge benennen (z. B. Definitionsbereich, numerische Näherung, Mehrdeutigkeit) und geeignete Sicherungen wählen.","currentDescriptionEn":"The learner can name limitations of digital tools (e.g. domain issues, numerical approximation, ambiguity) and choose suitable safeguards.","currentTitleDe":"Grenzen der Werkzeugnutzung benennen","currentTitleEn":"Name limitations of tool use","goalFingerprint":"sha256:aad4ff2580dc783d195b4b8e4932e5d60bf53411bb5317525be2c7322fdb65d2","goalId":"c97a33d9-d5e4-56c5-ae4c-822bc4f54898","pageFingerprint":"sha256:6daa80ac14ec816f768a2c671553705e2e75521af9b9d71a0d0eae2bbd523fff","reviewContext":{"evidenceProfile":null,"page":{"anchor":"goal-c97a33d9-d5e4-56c5-ae4c-822bc4f54898","applicability":[{"jurisdiction":"DE-BB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-MV","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NI","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-RP","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SL","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SN","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-ST","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-TH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]}],"breadcrumbs":["Mathematik","Sekundarstufe II (GK und LK)","Funktionenscharen, Argumentieren und komplexe Zahlen","Problemlösen und Argumentieren","Technische Hilfsmittel zielgerichtet einsetzen"],"chapterIds":["structure:goal-book-math-root","structure:goal-book-math-sekii-gk-lk","structure:canonical-structure:function-families","structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6","structure:canonical-goal-ad20aa99-d6c0-5d91-8cda-74fb908eb1ff"],"description":"Die lernende Person kann Grenzen digitaler Werkzeuge benennen (z. B. Definitionsbereich, numerische Näherung, Mehrdeutigkeit) und geeignete Sicherungen wählen.","evidenceReview":null,"externalPrerequisites":[],"externalReverseRequires":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-4c319dfd-ebb1-504b-a036-c780e1915900","goalId":"4c319dfd-ebb1-504b-a036-c780e1915900","title":"Formale Verfahren und Werkzeuge reflektiert einsetzen"}],"goalFingerprint":"sha256:aad4ff2580dc783d195b4b8e4932e5d60bf53411bb5317525be2c7322fdb65d2","goalId":"c97a33d9-d5e4-56c5-ae4c-822bc4f54898","navigationOrder":5,"pageFingerprint":"sha256:6daa80ac14ec816f768a2c671553705e2e75521af9b9d71a0d0eae2bbd523fff","pageNumber":3,"requires":[{"anchor":"goal-93fc4fbb-72f6-549b-b97a-a48aecb1534d","goalId":"93fc4fbb-72f6-549b-b97a-a48aecb1534d","pageNumber":2,"title":"Hand- und Tool-Verfahren kombinieren"}],"reverseRequires":[],"title":"Grenzen der Werkzeugnutzung benennen","treeOrder":19,"visualization":null}}},"ordinal":3,"recordSchemaDigest":"sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff","reviewInputFingerprint":"sha256:238a9363d539a00a01c856e3862a0f2f833c7a31a69f511bcaed7e1fcd639e42","schemaVersion":3}
+{"batchGoalIds":["4aa70ad4-171d-5671-a864-c0c7758fa0ed","93fc4fbb-72f6-549b-b97a-a48aecb1534d","c97a33d9-d5e4-56c5-ae4c-822bc4f54898","aeae526e-b3a4-5a17-b177-351df0307cb9","87372f49-c832-50f6-921f-ec9a6804d58a","27bdc580-ba17-5399-bf02-48f354846d1d","21fa0c22-976e-59b3-a871-899f0c0177f3","4f64f771-20ba-581a-86ba-bcdb1759e4d2","a7fb1a7a-8315-5bcb-842e-48293293dfcc","9b339361-7719-573d-a913-432246c502ee","f37b0a72-9e23-51c7-aad5-438c17a56899","1a18dbb3-f350-4766-9c8b-20ca018ccef1"],"batchId":"mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a.batch-001","bookDigest":"sha256:3bbbf36eb001c6a32782fe0e3737cb6160850341dd90b88a4085ba673a5df412","bundleFingerprint":"sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a","goal":{"canonicalContext":{"applicability":{"jurisdiction":["DE-BB","DE-BE","DE-BW","DE-HB","DE-HE","DE-HH","DE-MV","DE-NI","DE-NW","DE-RP","DE-SH","DE-SL","DE-SN","DE-ST","DE-TH"]},"applicabilitySemantics":{"fromRequires":null,"mappingInheritance":null,"projection":null},"competencyRefs":[],"contains":[],"core":null,"dimensionTags":{"demandLevel":"AB2","framework":"hessen-kc-2024","guidingIdeas":["L1"],"phase":"Q4","processCompetencies":["K6.1"]},"examples":[],"nodeKind":null,"phase":null,"requires":["fcb4cef1-b17a-5682-924c-41498fc6c9b2"],"semanticAtomic":null,"semanticKind":null,"shortKey":null,"sourceRef":null,"tags":["GK","LK"],"type":"atomic","weight":1},"currentDescriptionDe":"Die lernende Person kann verwendete Notation und Symbole adressatengerecht erläutern und passende Beispiele zur Verdeutlichung geben.","currentDescriptionEn":"The learner can explain used notation and symbols for the audience and give suitable examples to clarify.","currentTitleDe":"Notation adressatengerecht erläutern","currentTitleEn":"Explain notation for the audience","goalFingerprint":"sha256:3c7764333b2d5185eea9ac17373c521fde536bb0ce94b71450f33dfa0e344288","goalId":"aeae526e-b3a4-5a17-b177-351df0307cb9","pageFingerprint":"sha256:e79f1bb3d9c594c0ee7f154f82286cbad4fcbc7a4dce3277e04fe6e921ae7b06","reviewContext":{"evidenceProfile":null,"page":{"anchor":"goal-aeae526e-b3a4-5a17-b177-351df0307cb9","applicability":[{"jurisdiction":"DE-BB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-MV","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NI","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-RP","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SL","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SN","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-ST","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-TH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]}],"breadcrumbs":["Mathematik","Sekundarstufe II (GK und LK)","Funktionenscharen, Argumentieren und komplexe Zahlen","Problemlösen und Argumentieren","Mathematische Sprache verwenden"],"chapterIds":["structure:goal-book-math-root","structure:goal-book-math-sekii-gk-lk","structure:canonical-structure:function-families","structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6","structure:canonical-goal-27402f01-1740-5a36-a4f7-5f43166e6e1b"],"description":"Die lernende Person kann verwendete Notation und Symbole adressatengerecht erläutern und passende Beispiele zur Verdeutlichung geben.","evidenceReview":null,"externalPrerequisites":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-fcb4cef1-b17a-5682-924c-41498fc6c9b2","goalId":"fcb4cef1-b17a-5682-924c-41498fc6c9b2","title":"Aussagen strukturiert formulieren"}],"externalReverseRequires":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-b9a501c4-9d74-5514-b77b-895980b89b1b","goalId":"b9a501c4-9d74-5514-b77b-895980b89b1b","title":"Mathematische Ergebnisse adressatengerecht kommunizieren"}],"goalFingerprint":"sha256:3c7764333b2d5185eea9ac17373c521fde536bb0ce94b71450f33dfa0e344288","goalId":"aeae526e-b3a4-5a17-b177-351df0307cb9","navigationOrder":6,"pageFingerprint":"sha256:e79f1bb3d9c594c0ee7f154f82286cbad4fcbc7a4dce3277e04fe6e921ae7b06","pageNumber":4,"requires":[],"reverseRequires":[],"title":"Notation adressatengerecht erläutern","treeOrder":21,"visualization":{"altText":"Didaktische Visualisierung zum Lernziel \"Notation adressatengerecht erläutern\". Die lernende Person kann verwendete Notation und Symbole adressatengerecht erläutern und passende Beispiele zur Verdeutlichung geben.","approvedForPublication":false,"originalDigest":"sha256:fd230b4a6ec4071bf78335622e3699a0c73502c8ed3635d84d349f015ca6f287","qaStatus":"review_candidate","resourceType":"image","title":"Visualisierung: Notation adressatengerecht erläutern","url":"/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.jpg"}}}},"ordinal":4,"recordSchemaDigest":"sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff","reviewInputFingerprint":"sha256:238a9363d539a00a01c856e3862a0f2f833c7a31a69f511bcaed7e1fcd639e42","schemaVersion":3}
+{"batchGoalIds":["4aa70ad4-171d-5671-a864-c0c7758fa0ed","93fc4fbb-72f6-549b-b97a-a48aecb1534d","c97a33d9-d5e4-56c5-ae4c-822bc4f54898","aeae526e-b3a4-5a17-b177-351df0307cb9","87372f49-c832-50f6-921f-ec9a6804d58a","27bdc580-ba17-5399-bf02-48f354846d1d","21fa0c22-976e-59b3-a871-899f0c0177f3","4f64f771-20ba-581a-86ba-bcdb1759e4d2","a7fb1a7a-8315-5bcb-842e-48293293dfcc","9b339361-7719-573d-a913-432246c502ee","f37b0a72-9e23-51c7-aad5-438c17a56899","1a18dbb3-f350-4766-9c8b-20ca018ccef1"],"batchId":"mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a.batch-001","bookDigest":"sha256:3bbbf36eb001c6a32782fe0e3737cb6160850341dd90b88a4085ba673a5df412","bundleFingerprint":"sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a","goal":{"canonicalContext":{"applicability":{"jurisdiction":["DE-BB","DE-BE","DE-BW","DE-HB","DE-HE","DE-HH","DE-MV","DE-NI","DE-NW","DE-RP","DE-SL","DE-SN","DE-ST","DE-TH"]},"applicabilitySemantics":{"fromRequires":null,"mappingInheritance":null,"projection":null},"competencyRefs":[],"contains":[],"core":null,"dimensionTags":{"demandLevel":"AB2","framework":"hessen-kc-2024","guidingIdeas":["L1","L2","L4"],"phase":"Q4","processCompetencies":["K2.2","K3.2"]},"examples":[],"nodeKind":null,"phase":null,"requires":["c0e34fa8-fde5-5a4e-9b84-c5d5db719b58"],"semanticAtomic":null,"semanticKind":null,"shortKey":null,"sourceRef":null,"tags":["GK","LK"],"type":"atomic","weight":1},"currentDescriptionDe":"Die lernende Person kann für eine offene Problemstellung eine passende heuristische Strategie auswählen, anwenden und die Wahl begründen.","currentDescriptionEn":"The learner can choose and apply a suitable heuristic strategy for an open problem and justify the choice.","currentTitleDe":"Eine heuristische Strategie anwenden","currentTitleEn":"Apply one heuristic strategy","goalFingerprint":"sha256:486f421421b5c2394994455140d3045b9c0220b9a1fff0c51855bb9a8d808f95","goalId":"87372f49-c832-50f6-921f-ec9a6804d58a","pageFingerprint":"sha256:6d405480ba6a9c6a513c26c2755f0f7f30037c5066eaca13d3bb7893e0818018","reviewContext":{"evidenceProfile":null,"page":{"anchor":"goal-87372f49-c832-50f6-921f-ec9a6804d58a","applicability":[{"jurisdiction":"DE-BB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-MV","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NI","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-RP","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SL","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SN","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-ST","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-TH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]}],"breadcrumbs":["Mathematik","Sekundarstufe II (GK und LK)","Funktionenscharen, Argumentieren und komplexe Zahlen","Problemlösen und Argumentieren"],"chapterIds":["structure:goal-book-math-root","structure:goal-book-math-sekii-gk-lk","structure:canonical-structure:function-families","structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6"],"description":"Die lernende Person kann für eine offene Problemstellung eine passende heuristische Strategie auswählen, anwenden und die Wahl begründen.","evidenceReview":null,"externalPrerequisites":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-c0e34fa8-fde5-5a4e-9b84-c5d5db719b58","goalId":"c0e34fa8-fde5-5a4e-9b84-c5d5db719b58","title":"Mathematische Probleme erkennen und formulieren"}],"externalReverseRequires":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-499b8a0d-a5da-5cf7-8557-89e16152b752","goalId":"499b8a0d-a5da-5cf7-8557-89e16152b752","title":"Argumente und Aussagen beurteilen"}],"goalFingerprint":"sha256:486f421421b5c2394994455140d3045b9c0220b9a1fff0c51855bb9a8d808f95","goalId":"87372f49-c832-50f6-921f-ec9a6804d58a","navigationOrder":3,"pageFingerprint":"sha256:6d405480ba6a9c6a513c26c2755f0f7f30037c5066eaca13d3bb7893e0818018","pageNumber":5,"requires":[],"reverseRequires":[],"title":"Eine heuristische Strategie anwenden","treeOrder":16,"visualization":null}}},"ordinal":5,"recordSchemaDigest":"sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff","reviewInputFingerprint":"sha256:238a9363d539a00a01c856e3862a0f2f833c7a31a69f511bcaed7e1fcd639e42","schemaVersion":3}
+{"batchGoalIds":["4aa70ad4-171d-5671-a864-c0c7758fa0ed","93fc4fbb-72f6-549b-b97a-a48aecb1534d","c97a33d9-d5e4-56c5-ae4c-822bc4f54898","aeae526e-b3a4-5a17-b177-351df0307cb9","87372f49-c832-50f6-921f-ec9a6804d58a","27bdc580-ba17-5399-bf02-48f354846d1d","21fa0c22-976e-59b3-a871-899f0c0177f3","4f64f771-20ba-581a-86ba-bcdb1759e4d2","a7fb1a7a-8315-5bcb-842e-48293293dfcc","9b339361-7719-573d-a913-432246c502ee","f37b0a72-9e23-51c7-aad5-438c17a56899","1a18dbb3-f350-4766-9c8b-20ca018ccef1"],"batchId":"mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a.batch-001","bookDigest":"sha256:3bbbf36eb001c6a32782fe0e3737cb6160850341dd90b88a4085ba673a5df412","bundleFingerprint":"sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a","goal":{"canonicalContext":{"applicability":{"jurisdiction":["DE-BB","DE-BE","DE-BW","DE-HB","DE-HE","DE-HH","DE-MV","DE-NI","DE-NW","DE-RP","DE-SH","DE-SL","DE-SN","DE-ST","DE-TH"]},"applicabilitySemantics":{"fromRequires":null,"mappingInheritance":null,"projection":null},"competencyRefs":[],"contains":[],"core":null,"dimensionTags":{"demandLevel":"AB2","framework":"hessen-kc-2024","guidingIdeas":["L1","L4"],"phase":"Q4","processCompetencies":["K1.2","K2.2","K5.2"],"topicCode":"CANONICAL.MATH.SEK2.Q4.2.USE_HEURISTIC_CONTINUITY_ARGUMENT"},"examples":[],"nodeKind":null,"phase":null,"requires":["f40fcaf7-c630-589c-9f48-6c9e69da0b9d","591cb948-f313-5b1c-a9cb-3df8162eeb8b"],"semanticAtomic":true,"semanticKind":null,"shortKey":null,"sourceRef":"HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 7","tags":["GK","LK"],"type":"atomic","weight":1},"currentDescriptionDe":"Die lernende Person kann mit der Vorstellung eines Graphen ohne Sprung und mit der Zwischenwertidee argumentieren, ohne einen formalen Stetigkeitsbeweis zu führen.","currentDescriptionEn":"The learner can argue using the idea of a graph without jumps and the intermediate value idea without giving a formal proof of continuity.","currentTitleDe":"Heuristischen Stetigkeitsbegriff zum Argumentieren nutzen","currentTitleEn":"Use a heuristic continuity concept for argumentation","goalFingerprint":"sha256:ebce414475957128b13f47f8454c5b53e57e6a32a13b4d0a1465b25565f00452","goalId":"27bdc580-ba17-5399-bf02-48f354846d1d","pageFingerprint":"sha256:c1260428a6c519c6881f7669c6f4635e1c9df2b30176c1df73484a8c9acaeb41","reviewContext":{"evidenceProfile":null,"page":{"anchor":"goal-27bdc580-ba17-5399-bf02-48f354846d1d","applicability":[{"jurisdiction":"DE-BB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-MV","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NI","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-RP","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SL","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SN","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-ST","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-TH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]}],"breadcrumbs":["Mathematik","Sekundarstufe II (GK und LK)","Funktionenscharen, Argumentieren und komplexe Zahlen","Problemlösen und Argumentieren"],"chapterIds":["structure:goal-book-math-root","structure:goal-book-math-sekii-gk-lk","structure:canonical-structure:function-families","structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6"],"description":"Die lernende Person kann mit der Vorstellung eines Graphen ohne Sprung und mit der Zwischenwertidee argumentieren, ohne einen formalen Stetigkeitsbeweis zu führen.","evidenceReview":null,"externalPrerequisites":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-f40fcaf7-c630-589c-9f48-6c9e69da0b9d","goalId":"f40fcaf7-c630-589c-9f48-6c9e69da0b9d","title":"Bisektionsverfahren zur Nullstellennäherung anwenden"},{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-591cb948-f313-5b1c-a9cb-3df8162eeb8b","goalId":"591cb948-f313-5b1c-a9cb-3df8162eeb8b","title":"Kettenschlüsse nachvollziehen und bilden"}],"externalReverseRequires":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-f77b9b40-6afc-5d9e-821e-79903bbbcb94","goalId":"f77b9b40-6afc-5d9e-821e-79903bbbcb94","title":"Problemlösestrategien und Argumente entwickeln"}],"goalFingerprint":"sha256:ebce414475957128b13f47f8454c5b53e57e6a32a13b4d0a1465b25565f00452","goalId":"27bdc580-ba17-5399-bf02-48f354846d1d","navigationOrder":7,"pageFingerprint":"sha256:c1260428a6c519c6881f7669c6f4635e1c9df2b30176c1df73484a8c9acaeb41","pageNumber":6,"requires":[],"reverseRequires":[],"title":"Heuristischen Stetigkeitsbegriff zum Argumentieren nutzen","treeOrder":22,"visualization":null}}},"ordinal":6,"recordSchemaDigest":"sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff","reviewInputFingerprint":"sha256:238a9363d539a00a01c856e3862a0f2f833c7a31a69f511bcaed7e1fcd639e42","schemaVersion":3}
+{"batchGoalIds":["4aa70ad4-171d-5671-a864-c0c7758fa0ed","93fc4fbb-72f6-549b-b97a-a48aecb1534d","c97a33d9-d5e4-56c5-ae4c-822bc4f54898","aeae526e-b3a4-5a17-b177-351df0307cb9","87372f49-c832-50f6-921f-ec9a6804d58a","27bdc580-ba17-5399-bf02-48f354846d1d","21fa0c22-976e-59b3-a871-899f0c0177f3","4f64f771-20ba-581a-86ba-bcdb1759e4d2","a7fb1a7a-8315-5bcb-842e-48293293dfcc","9b339361-7719-573d-a913-432246c502ee","f37b0a72-9e23-51c7-aad5-438c17a56899","1a18dbb3-f350-4766-9c8b-20ca018ccef1"],"batchId":"mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a.batch-001","bookDigest":"sha256:3bbbf36eb001c6a32782fe0e3737cb6160850341dd90b88a4085ba673a5df412","bundleFingerprint":"sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a","goal":{"canonicalContext":{"applicability":{"jurisdiction":["DE-BB","DE-BE","DE-BW","DE-HB","DE-HE","DE-HH","DE-MV","DE-NI","DE-NW","DE-RP","DE-SL","DE-SN","DE-ST","DE-TH"]},"applicabilitySemantics":{"fromRequires":null,"mappingInheritance":null,"projection":null},"competencyRefs":[],"contains":[],"core":null,"dimensionTags":{"demandLevel":"AB2","framework":"hessen-kc-2024","guidingIdeas":["L5"],"phase":"Q4","processCompetencies":["K1.2","K3.2","K6.2"],"topicCode":"CANONICAL.MATH.SEK2.Q4.2.FORMULATE_RANDOM_EXPERIMENTS_FROM_TERMS"},"examples":[],"nodeKind":null,"phase":null,"requires":["3019e775-1420-510f-850b-5a29acc47a64","71d1fd4d-8471-5f25-94a0-4c531a74783c","aa00edfa-cf8d-500e-994f-7e33a5ebd045"],"semanticAtomic":true,"semanticKind":null,"shortKey":null,"sourceRef":"HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 13","tags":["GK","LK"],"type":"atomic","weight":1},"currentDescriptionDe":"Die lernende Person kann zu gegebenen Wahrscheinlichkeitstermen passende Zufallsexperimente und Ereignisse formulieren und die Termbestandteile fachlich zuordnen.","currentDescriptionEn":"The learner can formulate matching random experiments and events for given probability terms and assign the term components mathematically.","currentTitleDe":"Zufallsexperimente und Ereignisse aus Termen formulieren","currentTitleEn":"Formulate random experiments and events from terms","goalFingerprint":"sha256:96728976a9ae256984d654ca8f65faafa1a3e6278faa1d6156199ec0c076aa00","goalId":"21fa0c22-976e-59b3-a871-899f0c0177f3","pageFingerprint":"sha256:19cea730a3fda7113b9eca718dc84b37dd2eb5ee906a1a63f5068ee64e343fd0","reviewContext":{"evidenceProfile":null,"page":{"anchor":"goal-21fa0c22-976e-59b3-a871-899f0c0177f3","applicability":[{"jurisdiction":"DE-BB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-MV","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NI","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-RP","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SL","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SN","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-ST","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-TH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]}],"breadcrumbs":["Mathematik","Sekundarstufe II (GK und LK)","Funktionenscharen, Argumentieren und komplexe Zahlen","Problemlösen und Argumentieren"],"chapterIds":["structure:goal-book-math-root","structure:goal-book-math-sekii-gk-lk","structure:canonical-structure:function-families","structure:canonical-goal-a5f07620-a895-52db-a0cc-1d05bf64c3d6"],"description":"Die lernende Person kann zu gegebenen Wahrscheinlichkeitstermen passende Zufallsexperimente und Ereignisse formulieren und die Termbestandteile fachlich zuordnen.","evidenceReview":null,"externalPrerequisites":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-3019e775-1420-510f-850b-5a29acc47a64","goalId":"3019e775-1420-510f-850b-5a29acc47a64","title":"Zufallsexperimente mit Ergebnissen und Ereignissen beschreiben"},{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-71d1fd4d-8471-5f25-94a0-4c531a74783c","goalId":"71d1fd4d-8471-5f25-94a0-4c531a74783c","title":"Ereignisse als Mengen verknüpfen"},{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-aa00edfa-cf8d-500e-994f-7e33a5ebd045","goalId":"aa00edfa-cf8d-500e-994f-7e33a5ebd045","title":"Binomialwahrscheinlichkeiten bestimmen und deuten"}],"externalReverseRequires":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-f77b9b40-6afc-5d9e-821e-79903bbbcb94","goalId":"f77b9b40-6afc-5d9e-821e-79903bbbcb94","title":"Problemlösestrategien und Argumente entwickeln"}],"goalFingerprint":"sha256:96728976a9ae256984d654ca8f65faafa1a3e6278faa1d6156199ec0c076aa00","goalId":"21fa0c22-976e-59b3-a871-899f0c0177f3","navigationOrder":8,"pageFingerprint":"sha256:19cea730a3fda7113b9eca718dc84b37dd2eb5ee906a1a63f5068ee64e343fd0","pageNumber":7,"requires":[],"reverseRequires":[],"title":"Zufallsexperimente und Ereignisse aus Termen formulieren","treeOrder":23,"visualization":null}}},"ordinal":7,"recordSchemaDigest":"sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff","reviewInputFingerprint":"sha256:238a9363d539a00a01c856e3862a0f2f833c7a31a69f511bcaed7e1fcd639e42","schemaVersion":3}
+{"batchGoalIds":["4aa70ad4-171d-5671-a864-c0c7758fa0ed","93fc4fbb-72f6-549b-b97a-a48aecb1534d","c97a33d9-d5e4-56c5-ae4c-822bc4f54898","aeae526e-b3a4-5a17-b177-351df0307cb9","87372f49-c832-50f6-921f-ec9a6804d58a","27bdc580-ba17-5399-bf02-48f354846d1d","21fa0c22-976e-59b3-a871-899f0c0177f3","4f64f771-20ba-581a-86ba-bcdb1759e4d2","a7fb1a7a-8315-5bcb-842e-48293293dfcc","9b339361-7719-573d-a913-432246c502ee","f37b0a72-9e23-51c7-aad5-438c17a56899","1a18dbb3-f350-4766-9c8b-20ca018ccef1"],"batchId":"mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a.batch-001","bookDigest":"sha256:3bbbf36eb001c6a32782fe0e3737cb6160850341dd90b88a4085ba673a5df412","bundleFingerprint":"sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a","goal":{"canonicalContext":{"applicability":{"jurisdiction":["DE-BB","DE-BE","DE-BW","DE-BY","DE-HB","DE-HE","DE-HH","DE-MV","DE-NI","DE-NW","DE-RP","DE-SL","DE-SN","DE-ST","DE-TH"]},"applicabilitySemantics":{"fromRequires":null,"mappingInheritance":null,"projection":null},"competencyRefs":[],"contains":[],"core":null,"dimensionTags":{"demandLevel":"AB2","framework":"hessen-kc-2024","guidingIdeas":["L1","L3"],"phase":"Q4","processCompetencies":["K2.3","K3.3"]},"examples":[],"nodeKind":null,"phase":null,"requires":["22b66c1e-50b1-505f-a388-c39131a4e1c3"],"semanticAtomic":true,"semanticKind":null,"shortKey":null,"sourceRef":"HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.3, S. 52, Spiegelstrich 2","tags":["GK","LK"],"type":"atomic","weight":1},"currentDescriptionDe":"Die lernende Person kann komplexe Zahlen in der Gaußschen Zahlenebene und in Polarform $z=r\\cdot e^{i\\varphi}=r\\cdot(\\cos\\varphi+i\\cdot\\sin\\varphi)$ mit $r\\ge 0$ darstellen, ihren Betrag und für $z\\ne 0$ ein Argument bestimmen sowie Darstellungen mit $\\varphi=\\omega t$ fachsprachlich deuten.","currentDescriptionEn":"The learner can represent complex numbers in the Gaussian plane and in polar form $z=r\\cdot e^{i\\varphi}=r\\cdot(\\cos\\varphi+i\\cdot\\sin\\varphi)$ with $r\\ge 0$, determine their modulus and, for $z\\ne 0$, an argument, and interpret representations with $\\varphi=\\omega t$ using appropriate mathematical terminology.","currentTitleDe":"Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen","currentTitleEn":"Represent complex numbers in polar form and in the Gaussian plane","goalFingerprint":"sha256:0cda3c7da0e32989db40a40d20f30ca5bce090b4c4f8a01fa6f36f06f1ac3ff4","goalId":"4f64f771-20ba-581a-86ba-bcdb1759e4d2","pageFingerprint":"sha256:9593b11e8282545fef01a3d9fc43cf81d4b7f43ec6800be5dba2df9aaed772e5","reviewContext":{"evidenceProfile":null,"page":{"anchor":"goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2","applicability":[{"jurisdiction":"DE-BB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BY","scopes":[{"courseProfile":"LK","durationModel":"G9","stage":"SekII"}]},{"jurisdiction":"DE-HB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-MV","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NI","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-RP","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SL","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SN","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-ST","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-TH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]}],"breadcrumbs":["Mathematik","Sekundarstufe II (GK und LK)","Funktionenscharen, Argumentieren und komplexe Zahlen","Komplexe Zahlen"],"chapterIds":["structure:goal-book-math-root","structure:goal-book-math-sekii-gk-lk","structure:canonical-structure:function-families","structure:canonical-goal-248d7dc3-6d85-55b3-8859-584c79869d75"],"description":"Die lernende Person kann komplexe Zahlen in der Gaußschen Zahlenebene und in Polarform $z=r\\cdot e^{i\\varphi}=r\\cdot(\\cos\\varphi+i\\cdot\\sin\\varphi)$ mit $r\\ge 0$ darstellen, ihren Betrag und für $z\\ne 0$ ein Argument bestimmen sowie Darstellungen mit $\\varphi=\\omega t$ fachsprachlich deuten.","evidenceReview":null,"externalPrerequisites":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3","goalId":"22b66c1e-50b1-505f-a388-c39131a4e1c3","title":"Komplexe Zahlen in algebraischer Form additiv nutzen"}],"externalReverseRequires":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-eda8580e-1f10-5dbd-9aaf-92367f40a6bd","goalId":"eda8580e-1f10-5dbd-9aaf-92367f40a6bd","title":"Komplexe Zahlen als 2×2-Matrizen darstellen (LK)"},{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-8e18154d-41d6-592e-ba98-537edad338e8","goalId":"8e18154d-41d6-592e-ba98-537edad338e8","title":"Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)"}],"goalFingerprint":"sha256:0cda3c7da0e32989db40a40d20f30ca5bce090b4c4f8a01fa6f36f06f1ac3ff4","goalId":"4f64f771-20ba-581a-86ba-bcdb1759e4d2","navigationOrder":9,"pageFingerprint":"sha256:9593b11e8282545fef01a3d9fc43cf81d4b7f43ec6800be5dba2df9aaed772e5","pageNumber":8,"requires":[],"reverseRequires":[{"anchor":"goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc","goalId":"a7fb1a7a-8315-5bcb-842e-48293293dfcc","pageNumber":9,"title":"Grundrechenarten in der Gaußschen Zahlenebene deuten"},{"anchor":"goal-9b339361-7719-573d-a913-432246c502ee","goalId":"9b339361-7719-573d-a913-432246c502ee","pageNumber":10,"title":"Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)"}],"title":"Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen","treeOrder":25,"visualization":null}}},"ordinal":8,"recordSchemaDigest":"sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff","reviewInputFingerprint":"sha256:238a9363d539a00a01c856e3862a0f2f833c7a31a69f511bcaed7e1fcd639e42","schemaVersion":3}
+{"batchGoalIds":["4aa70ad4-171d-5671-a864-c0c7758fa0ed","93fc4fbb-72f6-549b-b97a-a48aecb1534d","c97a33d9-d5e4-56c5-ae4c-822bc4f54898","aeae526e-b3a4-5a17-b177-351df0307cb9","87372f49-c832-50f6-921f-ec9a6804d58a","27bdc580-ba17-5399-bf02-48f354846d1d","21fa0c22-976e-59b3-a871-899f0c0177f3","4f64f771-20ba-581a-86ba-bcdb1759e4d2","a7fb1a7a-8315-5bcb-842e-48293293dfcc","9b339361-7719-573d-a913-432246c502ee","f37b0a72-9e23-51c7-aad5-438c17a56899","1a18dbb3-f350-4766-9c8b-20ca018ccef1"],"batchId":"mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a.batch-001","bookDigest":"sha256:3bbbf36eb001c6a32782fe0e3737cb6160850341dd90b88a4085ba673a5df412","bundleFingerprint":"sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a","goal":{"canonicalContext":{"applicability":{"jurisdiction":["DE-BB","DE-BE","DE-BW","DE-BY","DE-HB","DE-HE","DE-HH","DE-MV","DE-NI","DE-NW","DE-RP","DE-SL","DE-SN","DE-ST","DE-TH"]},"applicabilitySemantics":{"fromRequires":null,"mappingInheritance":null,"projection":null},"competencyRefs":[],"contains":[],"core":null,"dimensionTags":{"demandLevel":"AB2","framework":"hessen-kc-2024","guidingIdeas":["L1","L3"],"phase":"Q4","processCompetencies":["K2.3","K3.3","K5.2"],"topicCode":"CANONICAL.MATH.SEK2.Q4.3.INTERPRET_OPERATIONS_IN_GAUSSIAN_PLANE"},"examples":[],"nodeKind":null,"phase":null,"requires":["22b66c1e-50b1-505f-a388-c39131a4e1c3","4f64f771-20ba-581a-86ba-bcdb1759e4d2"],"semanticAtomic":true,"semanticKind":null,"shortKey":null,"sourceRef":"HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.3, S. 52, Spiegelstrich 2","tags":["GK","LK"],"type":"atomic","weight":1},"currentDescriptionDe":"Die lernende Person kann Addition, Subtraktion, Multiplikation und Division komplexer Zahlen in der Gaußschen Zahlenebene geometrisch deuten, insbesondere als Verschiebung, Streckung oder Drehung.","currentDescriptionEn":"The learner can interpret addition, subtraction, multiplication, and division of complex numbers geometrically in the Gaussian plane, especially as translation, scaling, or rotation.","currentTitleDe":"Grundrechenarten in der Gaußschen Zahlenebene deuten","currentTitleEn":"Interpret arithmetic operations in the Gaussian plane","goalFingerprint":"sha256:ea55af27bfbe031c5ea76854c307698db0c8e9f804aec5edc4c8665a6716c3b1","goalId":"a7fb1a7a-8315-5bcb-842e-48293293dfcc","pageFingerprint":"sha256:d5f28ddf306f9e3ce562aa37aa9b09f7653f262fb94441188432ba8e738591d6","reviewContext":{"evidenceProfile":null,"page":{"anchor":"goal-a7fb1a7a-8315-5bcb-842e-48293293dfcc","applicability":[{"jurisdiction":"DE-BB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BY","scopes":[{"courseProfile":"LK","durationModel":"G9","stage":"SekII"}]},{"jurisdiction":"DE-HB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-MV","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NI","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-RP","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SL","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SN","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-ST","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-TH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]}],"breadcrumbs":["Mathematik","Sekundarstufe II (GK und LK)","Funktionenscharen, Argumentieren und komplexe Zahlen","Komplexe Zahlen"],"chapterIds":["structure:goal-book-math-root","structure:goal-book-math-sekii-gk-lk","structure:canonical-structure:function-families","structure:canonical-goal-248d7dc3-6d85-55b3-8859-584c79869d75"],"description":"Die lernende Person kann Addition, Subtraktion, Multiplikation und Division komplexer Zahlen in der Gaußschen Zahlenebene geometrisch deuten, insbesondere als Verschiebung, Streckung oder Drehung.","evidenceReview":null,"externalPrerequisites":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-22b66c1e-50b1-505f-a388-c39131a4e1c3","goalId":"22b66c1e-50b1-505f-a388-c39131a4e1c3","title":"Komplexe Zahlen in algebraischer Form additiv nutzen"}],"externalReverseRequires":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-a8525adc-fad3-53f5-953f-213bd37b09e8","goalId":"a8525adc-fad3-53f5-953f-213bd37b09e8","title":"Komplexe Zahlen sicher anwenden"}],"goalFingerprint":"sha256:ea55af27bfbe031c5ea76854c307698db0c8e9f804aec5edc4c8665a6716c3b1","goalId":"a7fb1a7a-8315-5bcb-842e-48293293dfcc","navigationOrder":10,"pageFingerprint":"sha256:d5f28ddf306f9e3ce562aa37aa9b09f7653f262fb94441188432ba8e738591d6","pageNumber":9,"requires":[{"anchor":"goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2","goalId":"4f64f771-20ba-581a-86ba-bcdb1759e4d2","pageNumber":8,"title":"Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen"}],"reverseRequires":[],"title":"Grundrechenarten in der Gaußschen Zahlenebene deuten","treeOrder":26,"visualization":null}}},"ordinal":9,"recordSchemaDigest":"sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff","reviewInputFingerprint":"sha256:238a9363d539a00a01c856e3862a0f2f833c7a31a69f511bcaed7e1fcd639e42","schemaVersion":3}
+{"batchGoalIds":["4aa70ad4-171d-5671-a864-c0c7758fa0ed","93fc4fbb-72f6-549b-b97a-a48aecb1534d","c97a33d9-d5e4-56c5-ae4c-822bc4f54898","aeae526e-b3a4-5a17-b177-351df0307cb9","87372f49-c832-50f6-921f-ec9a6804d58a","27bdc580-ba17-5399-bf02-48f354846d1d","21fa0c22-976e-59b3-a871-899f0c0177f3","4f64f771-20ba-581a-86ba-bcdb1759e4d2","a7fb1a7a-8315-5bcb-842e-48293293dfcc","9b339361-7719-573d-a913-432246c502ee","f37b0a72-9e23-51c7-aad5-438c17a56899","1a18dbb3-f350-4766-9c8b-20ca018ccef1"],"batchId":"mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a.batch-001","bookDigest":"sha256:3bbbf36eb001c6a32782fe0e3737cb6160850341dd90b88a4085ba673a5df412","bundleFingerprint":"sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a","goal":{"canonicalContext":{"applicability":{"jurisdiction":["DE-BB","DE-BE","DE-BW","DE-BY","DE-HB","DE-HE","DE-HH","DE-MV","DE-NI","DE-NW","DE-RP","DE-SL","DE-SN","DE-ST","DE-TH"]},"applicabilitySemantics":{"fromRequires":null,"mappingInheritance":null,"projection":null},"competencyRefs":[],"contains":[],"core":false,"dimensionTags":{"area":"Algebra","demandLevel":"AB3","framework":"canonical-gymnasium-math","guidingIdeas":["L1","L4"],"phase":"Q4","processCompetencies":["K2.3","K4.2","K5.2"],"topicCode":"CANONICAL.MATH.SEK2.Q4.COMPLEX_MANDELBROT_BY"},"examples":[],"nodeKind":null,"phase":null,"requires":["4f64f771-20ba-581a-86ba-bcdb1759e4d2","8e18154d-41d6-592e-ba98-537edad338e8"],"semanticAtomic":true,"semanticKind":null,"shortKey":"canonical_math_sek2_q4_complex_mandelbrot_sequence_software_by","sourceRef":"LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.1","tags":["LK","canonical"],"type":"atomic","weight":1},"currentDescriptionDe":"Die lernende Person kann Folgen komplexer Zahlen im Zusammenhang mit der Mandelbrot-Menge auf Beschränktheit untersuchen und die Mandelbrot-Menge mit geeigneter Software veranschaulichen.","currentDescriptionEn":"The learner can investigate boundedness of complex sequences in the context of the Mandelbrot set and visualize the Mandelbrot set with appropriate software.","currentTitleDe":"Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)","currentTitleEn":"Investigate Mandelbrot sequences of complex numbers with software (advanced course)","goalFingerprint":"sha256:a4fd97979e06eb33292219bc2e43f1cd73d43faecbcbe560425b9aecfbb20f35","goalId":"9b339361-7719-573d-a913-432246c502ee","pageFingerprint":"sha256:9ac15d63ac31589d225574b3a15183b057e20d91a47c198c385e97e1571237d5","reviewContext":{"evidenceProfile":null,"page":{"anchor":"goal-9b339361-7719-573d-a913-432246c502ee","applicability":[{"jurisdiction":"DE-BB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BY","scopes":[{"courseProfile":"LK","durationModel":"G9","stage":"SekII"}]},{"jurisdiction":"DE-HB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-MV","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NI","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-RP","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SL","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SN","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-ST","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-TH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]}],"breadcrumbs":["Mathematik","Sekundarstufe II (GK und LK)","Funktionenscharen, Argumentieren und komplexe Zahlen","Komplexe Zahlen"],"chapterIds":["structure:goal-book-math-root","structure:goal-book-math-sekii-gk-lk","structure:canonical-structure:function-families","structure:canonical-goal-248d7dc3-6d85-55b3-8859-584c79869d75"],"description":"Die lernende Person kann Folgen komplexer Zahlen im Zusammenhang mit der Mandelbrot-Menge auf Beschränktheit untersuchen und die Mandelbrot-Menge mit geeigneter Software veranschaulichen.","evidenceReview":null,"externalPrerequisites":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-8e18154d-41d6-592e-ba98-537edad338e8","goalId":"8e18154d-41d6-592e-ba98-537edad338e8","title":"Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)"}],"externalReverseRequires":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-a8525adc-fad3-53f5-953f-213bd37b09e8","goalId":"a8525adc-fad3-53f5-953f-213bd37b09e8","title":"Komplexe Zahlen sicher anwenden"}],"goalFingerprint":"sha256:a4fd97979e06eb33292219bc2e43f1cd73d43faecbcbe560425b9aecfbb20f35","goalId":"9b339361-7719-573d-a913-432246c502ee","navigationOrder":11,"pageFingerprint":"sha256:9ac15d63ac31589d225574b3a15183b057e20d91a47c198c385e97e1571237d5","pageNumber":10,"requires":[{"anchor":"goal-4f64f771-20ba-581a-86ba-bcdb1759e4d2","goalId":"4f64f771-20ba-581a-86ba-bcdb1759e4d2","pageNumber":8,"title":"Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen"}],"reverseRequires":[],"shortKey":"canonical_math_sek2_q4_complex_mandelbrot_sequence_software_by","title":"Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)","treeOrder":27,"visualization":null}}},"ordinal":10,"recordSchemaDigest":"sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff","reviewInputFingerprint":"sha256:238a9363d539a00a01c856e3862a0f2f833c7a31a69f511bcaed7e1fcd639e42","schemaVersion":3}
+{"batchGoalIds":["4aa70ad4-171d-5671-a864-c0c7758fa0ed","93fc4fbb-72f6-549b-b97a-a48aecb1534d","c97a33d9-d5e4-56c5-ae4c-822bc4f54898","aeae526e-b3a4-5a17-b177-351df0307cb9","87372f49-c832-50f6-921f-ec9a6804d58a","27bdc580-ba17-5399-bf02-48f354846d1d","21fa0c22-976e-59b3-a871-899f0c0177f3","4f64f771-20ba-581a-86ba-bcdb1759e4d2","a7fb1a7a-8315-5bcb-842e-48293293dfcc","9b339361-7719-573d-a913-432246c502ee","f37b0a72-9e23-51c7-aad5-438c17a56899","1a18dbb3-f350-4766-9c8b-20ca018ccef1"],"batchId":"mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a.batch-001","bookDigest":"sha256:3bbbf36eb001c6a32782fe0e3737cb6160850341dd90b88a4085ba673a5df412","bundleFingerprint":"sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a","goal":{"canonicalContext":{"applicability":{"jurisdiction":["DE-BB","DE-BE","DE-BW","DE-BY","DE-HB","DE-HE","DE-HH","DE-MV","DE-NI","DE-NW","DE-RP","DE-SH","DE-SL","DE-SN","DE-ST","DE-TH"]},"applicabilitySemantics":{"fromRequires":null,"mappingInheritance":null,"projection":null},"competencyRefs":[],"contains":[],"core":null,"dimensionTags":{"area":"LinearAlgebra","demandLevel":"AB2","framework":"canonical-gymnasium-math","guidingIdeas":["L3"],"phase":"Q2","processCompetencies":["K1.1","K4.1"],"topicCode":"CANONICAL.MATH.SEK2.Q2.2.VECTOR_ADDITION_SCALING_SPACE"},"examples":[],"nodeKind":null,"phase":null,"requires":["be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"],"semanticAtomic":true,"semanticKind":null,"shortKey":"canonical_math_q2_add_and_scale_vectors_in_space","sourceRef":"HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 2","tags":["GK","LK","canonical"],"type":"atomic","weight":1},"currentDescriptionDe":"Die lernende Person kann Vektoren im Raum komponentenweise addieren und mit Skalaren vervielfachen sowie die Rechenoperationen als Verkettung und Streckung von Verschiebungen geometrisch deuten.","currentDescriptionEn":"The learner can add vectors in space component-wise, multiply them by scalars, and interpret the operations geometrically as chained and scaled displacements.","currentTitleDe":"Vektoren im Raum addieren und vervielfachen","currentTitleEn":"Add and scale vectors in space","goalFingerprint":"sha256:3af577f67b8c265d92b7fa3abdb613e6df11901b6c6e3034e4f3b61437c5eaa9","goalId":"f37b0a72-9e23-51c7-aad5-438c17a56899","pageFingerprint":"sha256:8a100e422aff1777ca74348571da72822c23e7db40ab52d328638fae5f7b89c5","reviewContext":{"evidenceProfile":null,"page":{"anchor":"goal-f37b0a72-9e23-51c7-aad5-438c17a56899","applicability":[{"jurisdiction":"DE-BB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-BY","scopes":[{"courseProfile":"GK","durationModel":"G9","stage":"SekII"},{"courseProfile":"LK","durationModel":"G9","stage":"SekII"}]},{"jurisdiction":"DE-HB","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HE","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-HH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-MV","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NI","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-NW","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-RP","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SL","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-SN","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-ST","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]},{"jurisdiction":"DE-TH","scopes":[{"courseProfile":"GK","durationModel":null,"stage":"SekII"},{"courseProfile":"LK","durationModel":null,"stage":"SekII"}]}],"breadcrumbs":["Mathematik","Sekundarstufe II (GK und LK)","Analytische Geometrie, lineare Algebra und vertiefte Analysis","Punkte, Vektoren und Bewegungen im Raum"],"chapterIds":["structure:goal-book-math-root","structure:goal-book-math-sekii-gk-lk","structure:canonical-structure:geometry-and-advanced-analysis","structure:canonical-goal-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44"],"description":"Die lernende Person kann Vektoren im Raum komponentenweise addieren und mit Skalaren vervielfachen sowie die Rechenoperationen als Verkettung und Streckung von Verschiebungen geometrisch deuten.","evidenceReview":null,"externalPrerequisites":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-be0e8715-3c3a-5ffb-937a-0b6bce4f01d8","goalId":"be0e8715-3c3a-5ffb-937a-0b6bce4f01d8","title":"Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben"}],"externalReverseRequires":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-1878f680-095c-511d-aaed-e98393f7fde9","goalId":"1878f680-095c-511d-aaed-e98393f7fde9","title":"Raumorientierung und Volumenprobleme lösen"},{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-72dfc164-455d-4b63-85f0-96e803c9a1d5","goalId":"72dfc164-455d-4b63-85f0-96e803c9a1d5","title":"Linearkombinationen von Vektoren bilden und deuten"},{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-54cfe5ce-693e-5d4a-ac1b-009570fbbc11","goalId":"54cfe5ce-693e-5d4a-ac1b-009570fbbc11","title":"Kollinearität von Vektoren im Raum prüfen"},{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-fb7a4fa0-03b5-53b4-bd86-608480b748a1","goalId":"fb7a4fa0-03b5-53b4-bd86-608480b748a1","title":"Betrag eines Vektors im Raum bestimmen"},{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6","goalId":"27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6","title":"Lineare Gleichungssysteme in der Analytischen Geometrie systematisch lösen"}],"goalFingerprint":"sha256:3af577f67b8c265d92b7fa3abdb613e6df11901b6c6e3034e4f3b61437c5eaa9","goalId":"f37b0a72-9e23-51c7-aad5-438c17a56899","navigationOrder":1,"pageFingerprint":"sha256:8a100e422aff1777ca74348571da72822c23e7db40ab52d328638fae5f7b89c5","pageNumber":11,"requires":[],"reverseRequires":[],"shortKey":"canonical_math_q2_add_and_scale_vectors_in_space","title":"Vektoren im Raum addieren und vervielfachen","treeOrder":8,"visualization":{"altText":"Schematische Kopf-an-Schwanz-Pfeilkette und Komponentensumme (2,1,1)+(−1,2,3)=(1,3,4). Zwei gleich lange a-Verschiebungen hintereinander ergeben den doppelt langen Gesamtpfeil 2a; 2·(2,1,1)=(4,2,2).","approvedForPublication":false,"originalDigest":"sha256:600adcbff2431384e36b34a72f5f756b00cba2ad856920d8d046a8f7304da304","qaStatus":"review_candidate","resourceType":"image","title":"Visualisierung: Vektoren im Raum addieren und vervielfachen","url":"/assets/goal-visualizations/mathematik/f37b0a72-9e23-51c7-aad5-438c17a56899/f37b0a72-9e23-51c7-aad5-438c17a56899.png"}}}},"ordinal":11,"recordSchemaDigest":"sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff","reviewInputFingerprint":"sha256:238a9363d539a00a01c856e3862a0f2f833c7a31a69f511bcaed7e1fcd639e42","schemaVersion":3}
+{"batchGoalIds":["4aa70ad4-171d-5671-a864-c0c7758fa0ed","93fc4fbb-72f6-549b-b97a-a48aecb1534d","c97a33d9-d5e4-56c5-ae4c-822bc4f54898","aeae526e-b3a4-5a17-b177-351df0307cb9","87372f49-c832-50f6-921f-ec9a6804d58a","27bdc580-ba17-5399-bf02-48f354846d1d","21fa0c22-976e-59b3-a871-899f0c0177f3","4f64f771-20ba-581a-86ba-bcdb1759e4d2","a7fb1a7a-8315-5bcb-842e-48293293dfcc","9b339361-7719-573d-a913-432246c502ee","f37b0a72-9e23-51c7-aad5-438c17a56899","1a18dbb3-f350-4766-9c8b-20ca018ccef1"],"batchId":"mathematik-m7-open-inflight-remnants-12-current-20260924-v2-first-pass-a.batch-001","bookDigest":"sha256:3bbbf36eb001c6a32782fe0e3737cb6160850341dd90b88a4085ba673a5df412","bundleFingerprint":"sha256:e1359370263f4f2f87a6b741364add86b621a50ca2a81bfabc24d98c2f5cd32a","goal":{"canonicalContext":{"applicability":{"jurisdiction":["DE-BB","DE-BE","DE-BW","DE-BY","DE-HB","DE-HE","DE-HH","DE-MV","DE-NI","DE-NW","DE-RP","DE-SH","DE-SL","DE-SN","DE-ST","DE-TH"]},"applicabilitySemantics":{"fromRequires":null,"mappingInheritance":null,"projection":null},"competencyRefs":[],"contains":[],"core":true,"dimensionTags":{"area":"Analysis","demandLevel":"AB2","framework":"canonical-gymnasium-math","guidingIdeas":["L1","L4"],"phase":"J10","processCompetencies":["K1.1","K3.1","K4.1"],"topicCode":"CANONICAL.MATH.SEK1.J10.7C"},"examples":[],"nodeKind":null,"phase":null,"requires":["7156558c-57f1-4372-9ba7-0640c3f7cb3a","9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c","65365dce-f33f-49d8-9516-42f75883aa86"],"semanticAtomic":true,"semanticKind":null,"shortKey":"canonical_math_sek1_j10_first_derivative_analysis","sourceRef":null,"tags":["canonical","modality:visual","representation:graph","tool:geogebra"],"type":"atomic","weight":1},"currentDescriptionDe":"Die lernende Person kann den Zusammenhang zwischen Funktion und Ableitungsfunktion in einfachen Fällen graphisch erklären und Funktionen mit der ersten Ableitung auf Monotonie sowie lokale und globale Extremstellen untersuchen.","currentDescriptionEn":"The learner can explain the relationship between a function and its derivative graphically in simple cases and use the first derivative to investigate monotonicity as well as local and global extrema.","currentTitleDe":"Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen","currentTitleEn":"Investigate monotonicity, extrema, and function-derivative relationships","goalFingerprint":"sha256:9299fdfaf425156492d7d0abc9abebfefb361a6d67992d7c231499176069fcf6","goalId":"1a18dbb3-f350-4766-9c8b-20ca018ccef1","pageFingerprint":"sha256:5df5471c156a8a1cd13b4c5d07f55a95b94c56d007cd006e7496459618100bfb","reviewContext":{"evidenceProfile":null,"page":{"anchor":"goal-1a18dbb3-f350-4766-9c8b-20ca018ccef1","applicability":[{"jurisdiction":"DE-BB","scopes":[{"courseProfile":null,"durationModel":"G8","stage":"SekI"},{"courseProfile":null,"durationModel":"G9","stage":"SekI"}]},{"jurisdiction":"DE-BW","scopes":[{"courseProfile":null,"durationModel":"G8","stage":"SekI"},{"courseProfile":null,"durationModel":"G9","stage":"SekI"}]},{"jurisdiction":"DE-BY","scopes":[{"courseProfile":null,"durationModel":"G9","stage":"SekI"}]},{"jurisdiction":"DE-HB","scopes":[{"courseProfile":null,"durationModel":"G8","stage":"SekI"}]},{"jurisdiction":"DE-HE","scopes":[{"courseProfile":null,"durationModel":"G9","stage":"SekI"}]},{"jurisdiction":"DE-HH","scopes":[{"courseProfile":null,"durationModel":"G8","stage":"SekI"}]},{"jurisdiction":"DE-MV","scopes":[{"courseProfile":null,"durationModel":"G8","stage":"SekI"}]},{"jurisdiction":"DE-NI","scopes":[{"courseProfile":null,"durationModel":"G9","stage":"SekI"}]},{"jurisdiction":"DE-NW","scopes":[{"courseProfile":null,"durationModel":"G9","stage":"SekI"}]},{"jurisdiction":"DE-RP","scopes":[{"courseProfile":null,"durationModel":"G9","stage":"SekI"}]},{"jurisdiction":"DE-SH","scopes":[{"courseProfile":null,"durationModel":"G8","stage":"SekI"},{"courseProfile":null,"durationModel":"G9","stage":"SekI"}]},{"jurisdiction":"DE-SL","scopes":[{"courseProfile":null,"durationModel":"G9","stage":"SekI"}]},{"jurisdiction":"DE-SN","scopes":[{"courseProfile":null,"durationModel":"G8","stage":"SekI"}]},{"jurisdiction":"DE-ST","scopes":[{"courseProfile":null,"durationModel":"G8","stage":"SekI"}]},{"jurisdiction":"DE-TH","scopes":[{"courseProfile":null,"durationModel":"G8","stage":"SekI"}]}],"breadcrumbs":["Mathematik","Sekundarstufe I","Jahrgangsstufe 10","Ableitungsbegriff und elementare Ableitungsregeln in J10 nutzen"],"chapterIds":["structure:goal-book-math-root","structure:canonical-structure:sek1","structure:canonical-structure:j10","structure:canonical-goal-0fd96c54-c629-45aa-a640-e2718890ddf9"],"description":"Die lernende Person kann den Zusammenhang zwischen Funktion und Ableitungsfunktion in einfachen Fällen graphisch erklären und Funktionen mit der ersten Ableitung auf Monotonie sowie lokale und globale Extremstellen untersuchen.","evidenceReview":null,"externalPrerequisites":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-65365dce-f33f-49d8-9516-42f75883aa86","goalId":"65365dce-f33f-49d8-9516-42f75883aa86","title":"Warum Mathematik? – Entdecken, Muster & Alltag"},{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-7156558c-57f1-4372-9ba7-0640c3f7cb3a","goalId":"7156558c-57f1-4372-9ba7-0640c3f7cb3a","title":"Ableitungsbegriff aus mittleren und momentanen Änderungsraten entwickeln"},{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c","goalId":"9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c","title":"Grundlegende Ableitungsregeln auf elementare Funktionsterme anwenden"}],"externalReverseRequires":[{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-b43a1e45-f05c-4d78-8453-f6fa677dc24c","goalId":"b43a1e45-f05c-4d78-8453-f6fa677dc24c","title":"Tangenten- und Normalengleichungen in einfachen Fällen aufstellen"},{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-06bdbecb-53e0-5ac3-992f-d6fd20555b59","goalId":"06bdbecb-53e0-5ac3-992f-d6fd20555b59","title":"Tangenten als lineare Approximationen nutzen"},{"canonicalUrl":"https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-ad66009f-55fb-563f-ace0-dbfeae7c76c3","goalId":"ad66009f-55fb-563f-ace0-dbfeae7c76c3","title":"Wendestellen und Krümmungsverhalten mit Ableitungen beschreiben"}],"goalFingerprint":"sha256:9299fdfaf425156492d7d0abc9abebfefb361a6d67992d7c231499176069fcf6","goalId":"1a18dbb3-f350-4766-9c8b-20ca018ccef1","navigationOrder":0,"pageFingerprint":"sha256:5df5471c156a8a1cd13b4c5d07f55a95b94c56d007cd006e7496459618100bfb","pageNumber":12,"requires":[],"reverseRequires":[],"shortKey":"canonical_math_sek1_j10_first_derivative_analysis","title":"Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen","treeOrder":4,"visualization":{"altText":"Didaktische Visualisierung zum Lernziel \"Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen\". Die lernende Person kann den Zusammenhang zwischen Funktion und Ableitungsfunktion in einfachen Fällen graphisch erklären und Funktionen mit der ersten Ableitung auf Monotonie sowie lokale und globale Extremstellen untersuchen.","approvedForPublication":false,"originalDigest":"sha256:e86811073adffb07edf396609b50057f7ec5ab58df2edf5af051d84887c8290a","qaStatus":"review_candidate","resourceType":"image","title":"Visualisierung: Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen","url":"/assets/goal-visualizations/mathematik/1a18dbb3-f350-4766-9c8b-20ca018ccef1/1a18dbb3-f350-4766-9c8b-20ca018ccef1.jpg"}}}},"ordinal":12,"recordSchemaDigest":"sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff","reviewInputFingerprint":"sha256:238a9363d539a00a01c856e3862a0f2f833c7a31a69f511bcaed7e1fcd639e42","schemaVersion":3}
+
+
+---
+END OF ASSIGNED INPUT
+Return only the required JSONL, one record for each exact goal in order. Do not inspect files or outputs from another run.

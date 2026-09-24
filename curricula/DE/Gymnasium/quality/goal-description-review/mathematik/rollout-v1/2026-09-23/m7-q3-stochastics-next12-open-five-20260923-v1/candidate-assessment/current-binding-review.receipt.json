@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-m7-q3-stochastics-open-five-current-binding-review-20260924-v1",
+  "batchId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1",
+  "status": "batch_local_candidate_review",
+  "reviewedAt": "2026-09-24",
+  "strictCandidateClosures": 0,
+  "binding": {
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeSha256": "sha256:7e8be28c98430881f5271e669012e98ea09fd8d38368d7d903bf3fcc615f850b",
+    "bookModelDigest": "sha256:13c7f8bf41b8dd1700554a9307f6f98571a043d01b1d15b1159e8ecf07630fb2",
+    "fivePageBundleFingerprint": "sha256:cf6b8ad7bea4df7bc4b7c272a2bbd09f77df033f3d0409703ca4dd92740bbd46",
+    "reviewInputFingerprint": "sha256:5b2843e955bcc5d62bb799901da8f972943a80943a7425642f50bbd1f2229f0a",
+    "pdfSha256": "sha256:cc81494cf1a53dc1851e8c831e180d66b5b6f4a84f8a3def248709c081586d53"
+  },
+  "goalBindings": [
+    {
+      "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
+      "currentPageFingerprint": "sha256:3fa75ff7037a9164d0c3f0ee0a815f9b50e274d3ccc1fdb09c87f4bb8a62d8f1",
+      "currentDescriptionGate": "current exact-bound A/B: revise/revise; synthesized wording candidate; not integrated",
+      "source": "HMKB KCGO Mathematik 2024, Q3.1, p.46: combinatorial counting problems; unordered samples without replacement; factorial and binomial coefficient",
+      "context": "External prerequisite: factorials in combinatorial counting. External reverse links include binomial-coefficient abbreviation, combinatorial interpretation, and heuristic selection.",
+      "visualization": "missing; deferred_provider_limitation"
+    },
+    {
+      "goalId": "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+      "currentPageFingerprint": "sha256:5586341e1377667edd549662007bd326cb50dd0360b6961a39adc784fdd4f123",
+      "currentDescriptionGate": "current exact-bound A/B: keep/revise; count-versus-probability ambiguity resolved in wording candidate; not integrated",
+      "source": "HMKB KCGO Mathematik 2024, Q3.1, p.46: combinatorial counting problems and Laplace probabilities from counting methods",
+      "context": "External prerequisite: binomial coefficients as an abbreviation. The current open-five page lists 0408 as a direct successor and 7e1b as an external reverse prerequisite.",
+      "visualization": "missing; deferred_provider_limitation"
+    },
+    {
+      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "currentPageFingerprint": "sha256:ffd3342b1ae5597c90b442d92f28497191e0968cd8dee2992e9297864bc229e0",
+      "currentDescriptionGate": "current exact-bound A/B: revise/revise; event and draw assumptions clarified in wording candidate; not integrated",
+      "source": "HMKB KCGO Mathematik 2024, Q3.1, p.46: Laplace probabilities using counting, including draws with replacement and simple binomial-distribution tasks",
+      "context": "Direct prerequisite: 1b67aeb4-2a55-531f-94da-283b4e3df5f1. External reverse prerequisite: hypergeometric Laplace probabilities without replacement.",
+      "visualization": "missing; deferred_provider_limitation"
+    },
+    {
+      "goalId": "66f432e9-22d3-51a9-8787-35f91db30616",
+      "currentPageFingerprint": "sha256:b691c6f1b200876ae4bc9e283b722cf4e2e20c294ba10a4d98da11e3dcee40f3",
+      "currentDescriptionGate": "current exact-bound A/B: keep/keep; description candidate kept; current semantic-atomicity ledger classifies the unchanged goal atomic and both current reviews describe one coherent contextual competence; direct source binding still needs integration review",
+      "source": "No direct canonical sourceRef. Existing route is classic_source_partial via Bremen; current HMKB KCGO Mathematik 2024, Q3.2, p.47 separately names model limits, histogram analysis, and binomial random variables as source candidates.",
+      "context": "External prerequisites: binomial distribution characteristics and reading histograms. Current reverse links include distributions in contexts, Poisson applications, normal approximation, and Poisson derivation.",
+      "visualization": "KEEP existing JPG sha256:f1e15026bd7e03282a585b88131f4a635c6345a504013fda1223a6f179f109c3; current machine QA remains approved; no image link or QA record changed"
+    },
+    {
+      "goalId": "9de07e13-6a5f-5b49-a6d4-0decefb95784",
+      "currentPageFingerprint": "sha256:e3106c54ca0650069ccfec6e1fabdb498fd80e56853a513c9b31906dd69cfe61",
+      "currentDescriptionGate": "current exact-bound A/B: split_review/keep; current A/B and semantic-atomicity evidence conflict; synthesis leaves the atomicity/scope decision open",
+      "source": "Current canonical sourceRef points to Baden-Wuerttemberg 2016 V1 competence 12, p.37. Official V2 (29 Feb 2024), §3.3.5 competence 14, retains determining the missing n, p, or k with suitable aids; candidate source refresh only, not applied.",
+      "context": "External prerequisite: binomial probabilities. External reverse prerequisite: decision rules and rejection regions.",
+      "visualization": "missing; deferred_provider_limitation"
+    }
+  ],
+  "sourceChecks": [
+    {
+      "source": "https://www.kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "retrievedCopySha256": "sha256:d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953",
+      "pagesExtracted": "46-47",
+      "method": "pdfinfo and pdftotext -layout using repository-local Poppler; Q3.1 and Q3.2 wording read directly"
+    },
+    {
+      "source": "https://www.bildungsplaene-bw.de/%2CLde/BP2016BW_ALLG_GYM_M.V2_IK_9-10_05",
+      "pageDate": "Mathematik 2016 in der Fassung vom 29. Februar 2024 (V2)",
+      "section": "3.3.5, competence 14",
+      "method": "Official Baden-Wuerttemberg curriculum page read directly; it specifies determining the missing binomial parameter n, p, or k with suitable aids"
+    }
+  ],
+  "reviewState": {
+    "historicalRounds": "Preserved; previous A/B page fingerprints differ from this five-page bundle.",
+    "currentRounds": {
+      "status": "strict_dual_round_validation_passed; synthesis required for all five; automatic acceptance false",
+      "bundleFingerprint": "sha256:cf6b8ad7bea4df7bc4b7c272a2bbd09f77df033f3d0409703ca4dd92740bbd46",
+      "reviewInputFingerprint": "sha256:5b2843e955bcc5d62bb799901da8f972943a80943a7425642f50bbd1f2229f0a",
+      "validatorReceiptPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/candidate-assessment/dual-round-validation.json",
+      "diversityPolicy": "require_distinct_provider_or_model",
+      "roundA": {
+        "provider": "openai",
+        "model": "gpt-5.6-sol",
+        "runId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-first-pass-a.run-001",
+        "sessionId": "01a0d1fa-71cf-76b1-b420-6087e655ec4d",
+        "independenceGroupId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-independent-a",
+        "status": "completed"
+      },
+      "roundB": {
+        "provider": "openai",
+        "model": "gpt-6-sol",
+        "runId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-first-pass-b.run-001",
+        "sessionId": "01a0d1fc-c8c1-7ea1-85e2-27cea4e59e7a",
+        "independenceGroupId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1-independent-b",
+        "status": "completed"
+      },
+      "summary": {
+        "exactAgreement": 0,
+        "disagreement": 5,
+        "synthesisRequired": 5,
+        "unavailable": 0,
+        "automaticAcceptance": false
+      }
+    },
+    "images": "No image creation, binding, replacement, or QA change in this package.",
+    "scope": "No canonical landscape, central registry, in-flight ledger, or global evidence ledger changed."
+  }
+}

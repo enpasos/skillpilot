@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-lk-applicability-hold-three-current-20260924-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-lk-applicability-hold-three-current-20260924-v2.config.json",
+  "configDigest": "sha256:380debd3710f4b002e2c64db2867760ecbb070b8742b7559796c2543198c8722",
+  "goalIds": [
+    "803d910d-96d1-5118-b9ca-29e93d0da76d",
+    "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+    "ae3483e3-4712-56a1-a881-2e1f8a1a8df9"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:2f5c0141a679f2081f89acc5a8473e4e00d6ebefdcf5b936219be474208b6839"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:8bb87ded224ab087ac3a7d222c99468da9b602783f77572b70f7e84c0bf7ef8d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:b8c5c3f99dd019591b42937f5cb5d7fa8f8fd7369381a3f0e5133c951d17e196",
+    "reviewInputFingerprint": "sha256:8f98f7cca7e421732244e400bc47c996f6676926994a2c20791c87f71febaef7",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-lk-applicability-hold-three-current-20260924-v2-a",
+        "campaignDigest": "sha256:af5c02e8d88a7686a5edcab8d52838afa11f3f2f2072b4095593021ac960403c",
+        "roundId": "mathematik-m7-lk-applicability-hold-three-current-20260924-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-lk-applicability-hold-three-current-20260924-v2-independent-a",
+        "batchId": "mathematik-m7-lk-applicability-hold-three-current-20260924-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:1a0be4e3c6cd0a0494e65a0bf01723cc9b8e79b7009d1f2daba3baae6f7e5cd3"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-lk-applicability-hold-three-current-20260924-v2-b",
+        "campaignDigest": "sha256:c352a461dd8bb388c58f37ec6d49c47cba81c18bfae5be98ba6ddd4456e567ec",
+        "roundId": "mathematik-m7-lk-applicability-hold-three-current-20260924-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-lk-applicability-hold-three-current-20260924-v2-independent-b",
+        "batchId": "mathematik-m7-lk-applicability-hold-three-current-20260924-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:f764cbf63933f9f849c151ab2a71099013c32025252d869fe49a4ad74da1bf48"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

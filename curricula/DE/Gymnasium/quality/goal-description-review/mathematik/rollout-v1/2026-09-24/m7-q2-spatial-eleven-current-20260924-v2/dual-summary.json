@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:407deb0951e809a69366f33fb68d11385df1193e1885b72a9926f202967b5221",
+  "reviewInputFingerprint": "sha256:e0e6fb83c796523505db636ad4f1d40a78a28de20ecaafabeaa0b5818a520db0",
+  "goalCount": 11,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-a",
+      "roundId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-independent-a",
+      "runIds": [
+        "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001"
+      ],
+      "providers": [
+        "OpenAI via local Codex CLI"
+      ],
+      "modelIdentities": [
+        "OpenAI via local Codex CLI::gpt-6-sol::gpt-6-sol"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-b",
+      "roundId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-independent-b",
+      "runIds": [
+        "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001"
+      ],
+      "providers": [
+        "OpenAI via local Codex CLI"
+      ],
+      "modelIdentities": [
+        "OpenAI via local Codex CLI::gpt-6-luna::gpt-6-luna"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI via local Codex CLI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 11,
+    "unavailable": 0,
+    "requiresSynthesis": 11
+  },
+  "goals": [
+    {
+      "goalId": "baf7276f-60a0-4d96-b959-d63acfb929de",
+      "firstRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001.goal-01",
+      "secondRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001.baf7276f-60a0-4d96-b959-d63acfb929de",
+      "firstRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001",
+      "secondRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+      "firstRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001.goal-02",
+      "secondRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001.8eb14d81-353a-4909-9464-61be7b1ba5b8",
+      "firstRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001",
+      "secondRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+      "firstRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001.goal-03",
+      "secondRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001.18be713b-7d90-4f01-b60a-5582ac4df0e8",
+      "firstRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001",
+      "secondRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
+      "firstRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001.goal-04",
+      "secondRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001.6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
+      "firstRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001",
+      "secondRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+      "firstRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001.goal-05",
+      "secondRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001.0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+      "firstRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001",
+      "secondRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5f90df42-8a71-534d-b995-b8f7dcaf1661",
+      "firstRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001.goal-06",
+      "secondRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001.5f90df42-8a71-534d-b995-b8f7dcaf1661",
+      "firstRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001",
+      "secondRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+      "firstRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001.goal-07",
+      "secondRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001.79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+      "firstRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001",
+      "secondRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+      "firstRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001.goal-08",
+      "secondRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001.c2c49659-5917-5be5-a3bd-e46f1b17126f",
+      "firstRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001",
+      "secondRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "firstRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001.goal-09",
+      "secondRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001.fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "firstRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001",
+      "secondRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "firstRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001.goal-10",
+      "secondRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001.a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "firstRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001",
+      "secondRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "firstRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001.goal-11",
+      "secondRecordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001.985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "firstRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-a-001",
+      "secondRunId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-run-b-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

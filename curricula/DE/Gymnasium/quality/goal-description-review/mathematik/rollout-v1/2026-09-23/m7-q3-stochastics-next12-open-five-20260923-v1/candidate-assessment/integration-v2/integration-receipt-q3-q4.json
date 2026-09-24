@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-m7-q3-q4-two-target-strict-integration-20260924-v1",
+  "status": "machine_qs_integration_confirmed",
+  "createdAt": "2026-09-24T09:12:00Z",
+  "scope": "Target-specific current machine QS binding only; no canonical goal text, source mapping, P/A/M/V ledger record, or image bytes changed.",
+  "stableBefore": {
+    "mathematik": "704/797 (parent-confirmed stable baseline after durable 50eb close)",
+    "physik": "478/478"
+  },
+  "integrations": [
+    {
+      "goalId": "66f432e9-22d3-51a9-8787-35f91db30616",
+      "titleDe": "Binomialverteilungen in Kontexten nutzen",
+      "decision": "keep_current",
+      "strictDescriptionComplete": true,
+      "canonicalTextChanged": false,
+      "currentBindings": {
+        "goalFingerprint": "sha256:9f92b55ee5a7b2e3735e0c26b8dd31bc10de219b0b3525fcef5cdc84c2c22d44",
+        "pageFingerprint": "sha256:b691c6f1b200876ae4bc9e283b722cf4e2e20c294ba10a4d98da11e3dcee40f3",
+        "goalReviewContextFingerprint": "sha256:cde6aabc5c6bafb21cd60c5d13c8205352dd96a555d84aa51e8100cf4d1f34bb"
+      },
+      "dualRounds": {
+        "validationPolicy": "require_distinct_provider_or_model",
+        "roundA": {
+          "provider": "openai",
+          "model": "gpt-5.6-sol"
+        },
+        "roundB": {
+          "provider": "openai",
+          "model": "gpt-6-sol"
+        },
+        "roundsBlind": true,
+        "decisions": [
+          "keep",
+          "keep"
+        ],
+        "synthesis": "keep_current",
+        "validatorOutput": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/candidate-assessment/integration-v2/resolution-validator-66.txt"
+      },
+      "source": {
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/candidate-assessment/integration-v2/source-review-66.json",
+        "officialRef": "HMKB KCGO Mathematik 2024, Q3.2, p.47",
+        "support": [
+          "context modeling and modeling limits for Bernoulli chains",
+          "analysis of histogram properties for binomially distributed random variables"
+        ],
+        "scopeNote": "Hessian source only; no nationwide source-coverage claim, applicability change, or source-mapping change."
+      },
+      "otherGates": {
+        "positiveEvidence": {
+          "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/candidate-assessment/positive-understanding-image-66.review.jsonl",
+          "status": "needs_human_review",
+          "authority": "ai_candidate",
+          "evidenceProfile": "positive-understanding-evidence-v2",
+          "goalFingerprint": "sha256:9f92b55ee5a7b2e3735e0c26b8dd31bc10de219b0b3525fcef5cdc84c2c22d44"
+        },
+        "atomicity": {
+          "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+          "status": "atomic",
+          "fingerprint": "sha256:b06be7cab5b846fc64ef252ab12e5d566554b33d3776ed11eaa0e8f2cbe16762"
+        },
+        "memory": {
+          "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+          "status": "no_memory_needed",
+          "fingerprint": "sha256:9d5f98a7b46e61f818872c045bcfe4c93e506b3753c9c22fbbe7fecf3f099e85"
+        },
+        "visualization": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+          "status": "current_ai_approved_keep",
+          "assetSha256": "sha256:f1e15026bd7e03282a585b88131f4a635c6345a504013fda1223a6f179f109c3",
+          "assetFormat": "existing JPG, unchanged",
+          "humanGate": "not newly asserted by this integration"
+        }
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/resolutions/66f432e9-22d3-51a9-8787-35f91db30616.resolution.json",
+        "digest": "sha256:475599500f6e91c766cf446a1c4fdf715b0478c941714fe7ff03b79f89e11063",
+        "fingerprint": "sha256:fcf898bae573a63801e6cb87bac138d6ccb1168ec3e5332ad6c3134ffc63a070"
+      },
+      "partialIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/resolution-index.66-target-only.json",
+        "digest": "sha256:dab727da74649473ff5382ae17e6a81ee3f23f7c4df53671371aa28a15059dd9"
+      }
+    },
+    {
+      "goalId": "fcb4cef1-b17a-5682-924c-41498fc6c9b2",
+      "titleDe": "Aussagen strukturiert formulieren",
+      "decision": "keep_current",
+      "strictDescriptionComplete": true,
+      "canonicalTextChanged": false,
+      "currentBindings": {
+        "goalFingerprint": "sha256:311ee0e1f636fe14eddff5e28da4125a0850103c4c2f0b203fe32eb5b8d4cd6d",
+        "pageFingerprint": "sha256:e19671e0d8144cda57f39bb2baecdb78e20626a0b9257727cffe25b0ce475ddb",
+        "goalReviewContextFingerprint": "sha256:86b42c3f70622ad100cf65f3655189725978749a48bd93b632af76b0673b8e4c"
+      },
+      "dualRounds": {
+        "validationPolicy": "require_distinct_provider_or_model",
+        "roundA": {
+          "provider": "openai",
+          "model": "gpt-5.6-sol"
+        },
+        "roundB": {
+          "provider": "openai",
+          "model": "gpt-6-sol"
+        },
+        "roundsBlind": true,
+        "decisions": [
+          "keep",
+          "keep"
+        ],
+        "synthesis": "keep_current",
+        "validatorOutput": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q4-process-next12-open-two-20260923-v1/candidate-assessment/integration-v2/resolution-validator-fcb.txt"
+      },
+      "source": {
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q4-process-next12-open-two-20260923-v1/candidate-assessment/integration-v2/fcb-source-review.json",
+        "officialMappedRefs": [
+          "HMKB KCGO Mathematik 2024 Q4.2 p.51 bullet 4 aspect 2: Erläutern und Entwickeln von Argumentationen und logischen Schlussfolgerungen",
+          "Bildungsplan BW 2016, 2.1 Kompetenz 5 p.12: eine mathematische Aussage in einer standardisierten Form (zum Beispiel Wenn-Dann) formulieren"
+        ],
+        "scopeNote": "Two state-specific mapped sources support the wording; no nationwide coverage claim is derived from these alone, and existing applicability/mappings remain unchanged."
+      },
+      "otherGates": {
+        "positiveEvidence": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/m7-q4-two-corrected-png-current-p-20260924-v1/positive-evidence.review.jsonl",
+          "status": "needs_human_review",
+          "authority": "ai_candidate",
+          "evidenceProfile": "positive-understanding-evidence-v2",
+          "goalFingerprint": "sha256:311ee0e1f636fe14eddff5e28da4125a0850103c4c2f0b203fe32eb5b8d4cd6d"
+        },
+        "atomicity": {
+          "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+          "status": "atomic",
+          "fingerprint": "sha256:682bc01940475af38f2abedaf6cf03b97735b9dea4cb9ab13c5de85001dda7a1"
+        },
+        "memory": {
+          "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+          "status": "no_memory_needed",
+          "fingerprint": "sha256:38a9d9af251b019f4bcd21864c660a068de93827e91a8025688f90f486f6ed65"
+        },
+        "visualization": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+          "status": "current_ai_approved_keep",
+          "assetSha256": "sha256:2fced6226ce06bde28b37b391daeb0710dd1272ba6e25dd3aff28dbbfc45e67e",
+          "assetFormat": "PNG, unchanged",
+          "humanGate": "humanApproved=no; separate human review remains open"
+        }
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q4-process-next12-open-two-20260923-v1/resolutions/fcb4cef1-b17a-5682-924c-41498fc6c9b2.resolution.json",
+        "digest": "sha256:001196b0f9225cc107090a8231b306e6c958b3e62fa296792dc76f8247e72a69",
+        "fingerprint": "sha256:38049de11a8de45b233597268a34d72b0706e5d2cba5e8130f4365eae89d4be8"
+      },
+      "partialIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q4-process-next12-open-two-20260923-v1/resolution-index.fcb-target-only.json",
+        "digest": "sha256:a401f0cb3143aa4c195577ee79ec02eff8e0edbbe9e2c4aea87ce2168f6a00ac"
+      }
+    }
+  ],
+  "central": {
+    "registryPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "reportPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/central-rollout-report.after-q3-q4.json",
+    "reportSha256": "sha256:6f57ae6764b7076b8a7eeacdd9a9a0e1ad54d231aa3f859512ece15b383882bb",
+    "checkPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/central-rollout-check.after-q3-q4.txt",
+    "checkExitCode": 0,
+    "mathematik": {
+      "strictComplete": 706,
+      "denominator": 797,
+      "percentage": "88.6%",
+      "netStrictGainVsStable704": 2,
+      "blockingIssues": 0,
+      "requiredChecks": [
+        {
+          "id": "semantic-kind-scope",
+          "status": "pass"
+        },
+        {
+          "id": "description-review-validation",
+          "status": "pass"
+        },
+        {
+          "id": "positive-evidence-validation",
+          "status": "pass"
+        },
+        {
+          "id": "semantic-atomicity-check",
+          "status": "pass"
+        },
+        {
+          "id": "memory-card-check",
+          "status": "pass"
+        },
+        {
+          "id": "visualization-freshness-and-approval-check",
+          "status": "pass"
+        }
+      ],
+      "gateCounts": {
+        "descriptions": 732,
+        "positiveEvidence": 772,
+        "semanticAtomicity": 797,
+        "memory": 797,
+        "visualization": 741
+      }
+    },
+    "physik": {
+      "strictComplete": 478,
+      "denominator": 478,
+      "percentage": "100.0%",
+      "blockingIssues": 0,
+      "requiredChecks": 6,
+      "allPass": true
+    }
+  },
+  "progress": {
+    "newStrictDescriptionClosures": 2,
+    "newSubstantiveCanonicalGoalOrTextChanges": 0,
+    "restoredBindings": 0,
+    "remainingMathematicsStrictOpen": 91,
+    "excludedGoalIds": [
+      "fde351a8-98b1-5d75-b4df-813beb2bbe3c"
+    ]
+  },
+  "openIssue": "fde351a8-98b1-5d75-b4df-813beb2bbe3c remains excluded pending parent source-route audit; current applicability/source mismatch is not resolved by this integration.",
+  "protectedFloorCheck": {
+    "command": "npm --prefix app run check:curriculum-maturity-floors",
+    "result": "passed: 9 protected curricula",
+    "physicsM7Retained": "478/478"
+  },
+  "humanReleaseGates": {
+    "separate": true,
+    "claim": "No new human review, release approval, student testing, or external acceptance is claimed. Both P profiles remain needs_human_review/ai_candidate; Q4 visualization humanApproved=no."
+  },
+  "nonChanges": {
+    "canonicalMathematicsGoalFile": "unchanged",
+    "historicReviewRounds": "preserved",
+    "sourceMappingReviewHistory": "unchanged",
+    "q3ExistingJpg": "unchanged",
+    "q4CurrentPng": "unchanged"
+  }
+}

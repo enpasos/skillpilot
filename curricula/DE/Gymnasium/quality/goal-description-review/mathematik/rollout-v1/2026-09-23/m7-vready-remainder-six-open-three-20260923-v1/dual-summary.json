@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b5090c98fb789382e94de3e5a8e082a846c332fb4368f61f8ffd9335ce445579",
+  "reviewInputFingerprint": "sha256:ef79453e64dd8eb7fac4681cd6d2ff17baf2cabfe552e2191661fad2b022570b",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-vready-remainder-six-open-three-20260923-v1-a",
+      "roundId": "mathematik-m7-vready-remainder-six-open-three-20260923-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-vready-remainder-six-open-three-20260923-v1-independent-a",
+      "runIds": [
+        "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-a-gpt-6-sol"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-vready-remainder-six-open-three-20260923-v1-b",
+      "roundId": "mathematik-m7-vready-remainder-six-open-three-20260923-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-vready-remainder-six-open-three-20260923-v1-independent-b",
+      "runIds": [
+        "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-b-gpt-6-luna"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-luna::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "firstRecordId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-a-gpt-6-sol-3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "secondRecordId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-b-gpt-6-luna-3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "firstRunId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-a-gpt-6-sol",
+      "secondRunId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-b-gpt-6-luna",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "firstRecordId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-a-gpt-6-sol-3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "secondRecordId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-b-gpt-6-luna-3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "firstRunId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-a-gpt-6-sol",
+      "secondRunId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-b-gpt-6-luna",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ed5d869b-af4e-4b80-b34d-a2338e16ce34",
+      "firstRecordId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-a-gpt-6-sol-ed5d869b-af4e-4b80-b34d-a2338e16ce34",
+      "secondRecordId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-b-gpt-6-luna-ed5d869b-af4e-4b80-b34d-a2338e16ce34",
+      "firstRunId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-a-gpt-6-sol",
+      "secondRunId": "codex-cli-m7-vready-remainder-six-open-three-20260923-v1-b-gpt-6-luna",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

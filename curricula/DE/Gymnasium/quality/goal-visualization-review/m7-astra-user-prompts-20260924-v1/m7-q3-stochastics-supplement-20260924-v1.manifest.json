@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "packageId": "m7-q3-stochastics-open-three-prompt-supplement-20260924-v1",
+  "status": "batch-local unbound prompt candidates",
+  "createdAt": "2026-09-24",
+  "parentPackage": "m7-astra-user-prompts-20260924-v1",
+  "candidateLandscapePath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/candidate-assessment/integration-v1/candidate-landscape.json",
+  "candidateLandscapeSha256": "sha256:30889d846cfda58ec683ac198a6bfe59133c1a75729fc1af73c3314a1812c1cd",
+  "officialSource": {
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+    "sha256": "sha256:d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953",
+    "pages": {
+      "Q3.1": 46,
+      "Q3.2": 47
+    },
+    "reviewMethod": "local pdftotext -layout of pages 46-47 during this pass"
+  },
+  "handling": {
+    "imageGenerationPerformed": false,
+    "imageVisualOrContentReviewPerformed": false,
+    "canonicalLinksChanged": false,
+    "strictVisualGate": "open; no image generated or bound",
+    "futureReviewRequired": "User-provided images are currently checked only for prompt mapping by explicit user instruction. A separate exact-hash machine V review would be required for closure and awaits clarification; generation or prompt match is not approval."
+  },
+  "entries": [
+    {
+      "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
+      "title": "Kombinationen ohne Zurücklegen mit Fakultäten berechnen",
+      "candidateDescriptionDe": "Die lernende Person kann die Anzahl ungeordneter Auswahlen ohne Zurücklegen mithilfe von Fakultäten berechnen, ohne den Binomialkoeffizientenbegriff zu verwenden, und das Ergebnis an kleinen Beispielen prüfen.",
+      "currentPageFingerprint": "sha256:3fa75ff7037a9164d0c3f0ee0a815f9b50e274d3ccc1fdb09c87f4bb8a62d8f1",
+      "sourceAlignmentCandidate": "Q3.1 p.46, bullet 6, unordered samples without replacement / factorial",
+      "promptPath": "incoming/70efdec0-110c-5564-849b-bc05cfff0f6a.prompt-v1.md",
+      "promptFileSha256": "sha256:b9e1b2740a4d45519ba8eb46d6a2a0b1a8c86f063a8ad234b981950f3c59a081",
+      "expectedImagePath": "incoming/70efdec0-110c-5564-849b-bc05cfff0f6a.png",
+      "visualGate": "open",
+      "status": "prompt only; do not count as closure"
+    },
+    {
+      "goalId": "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+      "title": "Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen",
+      "candidateDescriptionDe": "Die lernende Person kann in Anwendungen die Anzahl ungeordneter Auswahlen ohne Zurücklegen (z. B. Lottotipps) mit Binomialkoeffizienten bestimmen und die Anzahl im Kontext deuten.",
+      "currentPageFingerprint": "sha256:5586341e1377667edd549662007bd326cb50dd0360b6961a39adc784fdd4f123",
+      "sourceAlignmentCandidate": "Q3.1 p.46, bullets 6-7, unordered counting and lottery tasks",
+      "promptPath": "incoming/1b67aeb4-2a55-531f-94da-283b4e3df5f1.prompt-v1.md",
+      "promptFileSha256": "sha256:63a941c1505721e224f4f6e6658472b06d7b069a156dc9cd54cb99d9d22898f0",
+      "expectedImagePath": "incoming/1b67aeb4-2a55-531f-94da-283b4e3df5f1.png",
+      "visualGate": "open",
+      "status": "prompt only; do not count as closure"
+    },
+    {
+      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "title": "Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell)",
+      "candidateDescriptionDe": "Die lernende Person kann bei unabhängigen Ziehungen mit Zurücklegen und gleichwahrscheinlichen Einzelergebnissen die Laplace-Wahrscheinlichkeit für genau k Treffer in n Ziehungen mithilfe eines Binomialkoeffizienten berechnen und im Kontext deuten.",
+      "currentPageFingerprint": "sha256:ffd3342b1ae5597c90b442d92f28497191e0968cd8dee2992e9297864bc229e0",
+      "sourceAlignmentCandidate": "Q3.1 p.46, bullet 7; current rationale route remains classic_source_partial, so direct binding rationale is still an integration follow-up",
+      "promptPath": "incoming/0408ac7f-0530-5de5-b248-cf581c9b5a17.prompt-v1.md",
+      "promptFileSha256": "sha256:99ccb4267290055791de2dc708c4bc88f03d7b18eb194378c3d152d1a82f9122",
+      "expectedImagePath": "incoming/0408ac7f-0530-5de5-b248-cf581c9b5a17.png",
+      "visualGate": "open",
+      "status": "prompt only; do not count as closure"
+    }
+  ]
+}

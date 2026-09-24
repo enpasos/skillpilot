@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-24T02:28:30.559Z
+Generated: 2026-09-24T13:31:26.207Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,15 +18,15 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1192 |
 | Atomare Ziele im Visualisierungs-Scope | 797 |
-| Ziele mit primaerem Visualisierungslink | 742 |
-| Coverage | 93.1% |
+| Ziele mit primaerem Visualisierungslink | 758 |
+| Coverage | 95.1% |
 | Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 797 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 247 |
-| Offene Provider-Deferred-Ziele | 30 |
-| Offene Quality-Deferred-Ziele | 25 |
+| Review-Ledger-Dateien | 249 |
+| Offene Provider-Deferred-Ziele | 9 |
+| Offene Quality-Deferred-Ziele | 30 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
@@ -40,7 +40,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted` | 5 |
 | `ai-reviewed` | 6 |
 | `approved` | 16 |
-| `pilot` | 715 |
+| `pilot` | 731 |
 
 ## Ledger Decisions
 
@@ -56,6 +56,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_pilot` | 606 |
 | `accepted_pilot_after_fresh_ai_review` | 96 |
 | `accepted_pilot_after_fresh_ai_review_correction` | 1 |
+| `accepted_pilot_after_original_resolution_ai_review` | 16 |
 | `accepted_pilot_after_provider_retry` | 2 |
 | `accepted_pilot_after_reference_guided_regeneration` | 1 |
 | `accepted_pilot_after_regeneration` | 172 |
@@ -77,8 +78,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_user_supplied_replacement` | 1 |
 | `blocked_provider_quota` | 5 |
 | `correction_open_provider_credit_exhausted` | 4 |
-| `deferred_provider_limitation` | 91 |
-| `deferred_quality_review` | 30 |
+| `deferred_provider_limitation` | 92 |
+| `deferred_quality_review` | 35 |
 | `not_attempted_after_quota_block` | 4 |
 | `rejected_after_review_regenerated` | 7 |
 | `rejected_after_second_regeneration` | 1 |
@@ -98,8 +99,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-m7-five-volume-png-20260924-v1.md` |
-| Latest ledger status | `completed` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-zz-prompt20-current-deferral-2026-09-24.md` |
+| Latest ledger status | - |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17` |
 
@@ -109,7 +110,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
 - Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 30 Provider- und 25 Quality-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 9 Provider- und 30 Quality-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -117,44 +118,36 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
-| mathematik-structural-split-deferred-2026-08-16 | `06ce2b1b-e888-5322-9ed9-dfc6d322956a` | Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK) | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `e105bad8-b4e5-53fc-b02e-604f1df5b503` | Die kulturhistorische Bedeutung komplexer Zahlen einordnen (LK) | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `a506fc1d-b784-548f-90c3-5aae1b819b68` | Die Volumenformel schiefer Prismen mit Cavalieri plausibilisieren | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `5619ca5b-dc2a-504e-ad89-2e0ca0a83822` | Die Volumenformel von Pyramiden begründen | `deferred_provider_limitation` |
 | 194 | `dc12f281-f161-572b-a973-8405ae9b2498` | Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) | `deferred_provider_limitation` |
-| 204 | `121e3fdf-54d2-4d46-bc2d-f6e725f10f41` | Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `b71c332f-ef9d-5c27-983b-7103269ff419` | Glockenkurven als Funktionsmodelle untersuchen (LK) | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `d051857c-0707-544f-ae7a-f20690d182b2` | Höhen in Dreiecken konstruieren | `deferred_provider_limitation` |
-| mathematik-ai-correction-shard-1 | `ae483d98-54e0-5985-96d2-fc1351d22e4f` | Hypothesentests bei verändertem Stichprobenumfang variieren | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `9de07e13-6a5f-5b49-a6d4-0decefb95784` | Inverse Fragestellungen zu Binomialverteilungen lösen | `deferred_provider_limitation` |
 | mathematik-structural-split-deferred-2026-08-16 | `c406d5a0-e81d-5ce9-b535-6512a38798de` | Inverse Fragestellungen zur Normalverteilung lösen (LK) | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `164921f6-3bf7-5efc-a438-ea4759dca9ef` | Kettenlinien als Funktionsmodelle untersuchen (LK) | `deferred_provider_limitation` |
 | 197 | `1b67aeb4-2a55-531f-94da-283b4e3df5f1` | Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen | `deferred_provider_limitation` |
 | 197 | `70efdec0-110c-5564-849b-bc05cfff0f6a` | Kombinationen ohne Zurücklegen mit Fakultäten berechnen | `deferred_provider_limitation` |
 | 205 | `2041f4ec-620d-4a20-9922-6ebf16f8f8fa` | Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `743e5470-ff39-551e-9aba-529656418c66` | Kreistangenten von einem äußeren Punkt konstruieren | `deferred_provider_limitation` |
 | 205 | `0408ac7f-0530-5de5-b248-cf581c9b5a17` | Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell) | `deferred_provider_limitation` |
-| 205 | `0c7bbd3f-0a04-4f0e-888b-40ab7841fb76` | Newton-Verfahren zur Nullstellennäherung anwenden | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `fdce0ced-46a0-594a-9b5d-d2dc18e5e473` | Ortskurven von Extrempunkten bestimmen (LK) | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `79444ef9-cc85-5ac4-a3bc-f10d3ffbfd16` | Ortskurven von Wendepunkten bestimmen (LK) | `deferred_provider_limitation` |
-
-Weitere 10 Eintraege stehen in der JSON-Begleitdatei.
+| mathematik-zz-prompt20-current-deferral-2026-09-24 | `8b3ce429-e6bb-5d33-b6aa-6ded41afc74c` | Transformationen von Logarithmusgraphen deuten (LK) | `deferred_provider_limitation` |
 
 ### Open Quality Deferred
 
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
+| mathematik-z-astra-image-sight-20260924-v1 | `06ce2b1b-e888-5322-9ed9-dfc6d322956a` | Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK) | `deferred_quality_review` |
 | mathematik-m7-quality-holds-2026-09-23 | `87372f49-c832-50f6-921f-ec9a6804d58a` | Eine heuristische Strategie anwenden | `deferred_quality_review` |
 | mathematik-m7-quality-holds-2026-09-23 | `7feaaebd-cc8d-522b-8b3a-ea22675c65dd` | Extremstellen parameterabhängig untersuchen | `deferred_quality_review` |
+| mathematik-z-astra-image-sight-20260924-v1 | `121e3fdf-54d2-4d46-bc2d-f6e725f10f41` | Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen | `deferred_quality_review` |
 | mathematik-m7-quality-holds-2026-09-23 | `c97a33d9-d5e4-56c5-ae4c-822bc4f54898` | Grenzen der Werkzeugnutzung benennen | `deferred_quality_review` |
 | mathematik-m7-quality-holds-2026-09-23 | `a7fb1a7a-8315-5bcb-842e-48293293dfcc` | Grundrechenarten in der Gaußschen Zahlenebene deuten | `deferred_quality_review` |
 | mathematik-m7-quality-holds-2026-09-23 | `93fc4fbb-72f6-549b-b97a-a48aecb1534d` | Hand- und Tool-Verfahren kombinieren | `deferred_quality_review` |
 | mathematik-m7-quality-holds-2026-09-23 | `bd637a72-6609-54f5-bb33-8a9e898bf7a0` | Heuristik auswählen und begründen | `deferred_quality_review` |
 | mathematik-m7-quality-holds-2026-09-23 | `27bdc580-ba17-5399-bf02-48f354846d1d` | Heuristischen Stetigkeitsbegriff zum Argumentieren nutzen | `deferred_quality_review` |
+| mathematik-z-astra-image-sight-20260924-v1 | `ae483d98-54e0-5985-96d2-fc1351d22e4f` | Hypothesentests bei verändertem Stichprobenumfang variieren | `deferred_quality_review` |
+| mathematik-z-astra-image-sight-20260924-v1 | `164921f6-3bf7-5efc-a438-ea4759dca9ef` | Kettenlinien als Funktionsmodelle untersuchen (LK) | `deferred_quality_review` |
 | mathematik-m7-quality-holds-2026-09-23 | `4f64f771-20ba-581a-86ba-bcdb1759e4d2` | Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen | `deferred_quality_review` |
 | mathematik-m7-quality-holds-2026-09-23 | `9b339361-7719-573d-a913-432246c502ee` | Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK) | `deferred_quality_review` |
 | mathematik-m7-quality-holds-2026-09-23 | `909d8b16-5156-528b-a300-d9aee5405ba0` | Modell gezielt anpassen | `deferred_quality_review` |
 | mathematik-m7-quality-holds-2026-09-23 | `e02b994f-376d-5a8e-a14c-c4acacae57cf` | Nebenbedingungen berücksichtigen | `deferred_quality_review` |
+| mathematik-z-astra-image-sight-20260924-v1 | `0c7bbd3f-0a04-4f0e-888b-40ab7841fb76` | Newton-Verfahren zur Nullstellennäherung anwenden | `deferred_quality_review` |
 | mathematik-2231-right-angle-hold-20260924-v1 | `2231c29b-eb4e-51ae-9cb1-eb033bf16099` | Parallele und senkrechte Lagebeziehungen erkennen und begründen | `deferred_quality_review` |
 | mathematik-m7-quality-holds-2026-09-23 | `74d29d0c-80b3-4d46-a5f5-3c2f609e8483` | Pyramiden und Kegel darstellen, Netze nutzen und Fachbegriffe verwenden | `deferred_quality_review` |
 | mathematik-m7-quadratic-completion-hold-2026-09-23 | `9023226b-fc17-412b-807c-2bb45cd551d5` | Quadratische Gleichungen lösen | `deferred_quality_review` |
@@ -255,7 +248,7 @@ Keine Eintraege.
 
 ## Next Command
 
-Priority: correct the 25 quality-deferred image(s) named above, inspect each replacement at original resolution, and record a new approval for its exact SHA-256 before re-linking. This is open M7-V work; the provider batch command below is a separate queue.
+Priority: correct the 30 quality-deferred image(s) named above, inspect each replacement at original resolution, and record a new approval for its exact SHA-256 before re-linking. This is open M7-V work; the provider batch command below is a separate queue.
 
 ```bash
 npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json --output tmp/goal-visualization-mathematik-next-batch.txt --include-deferred

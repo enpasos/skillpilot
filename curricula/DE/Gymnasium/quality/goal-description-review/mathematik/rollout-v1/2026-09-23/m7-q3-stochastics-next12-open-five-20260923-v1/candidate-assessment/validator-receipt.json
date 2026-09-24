@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "mathematik-m7-q3-stochastics-open-five-validator-receipt-20260924-v1",
+  "batchId": "mathematik-m7-q3-stochastics-next12-open-five-20260923-v1",
+  "checkedAt": "2026-09-24",
+  "status": "batch_local_candidate_only",
+  "strictCandidateClosures": 0,
+  "checks": [
+    {
+      "command": "PATH=tmp/skillpilot-poppler-utils/root/usr/bin:$PATH LD_LIBRARY_PATH=tmp/skillpilot-poppler-utils/root/usr/lib/x86_64-linux-gnu npm --prefix app run quality:goal-description-rollout-batch -- prepare --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1.config.json",
+      "result": "passed",
+      "detail": "Prepared five-page current bundle; book model, review bundle, and current review input fingerprints are recorded in candidate-assessment.json."
+    },
+    {
+      "command": "PATH=tmp/skillpilot-poppler-utils/root/usr/bin:$PATH LD_LIBRARY_PATH=tmp/skillpilot-poppler-utils/root/usr/lib/x86_64-linux-gnu npm --prefix app run quality:goal-description-rollout-batch -- check --config curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1.config.json",
+      "result": "passed",
+      "detail": "Standalone goal-description batch valid; goals=5."
+    },
+    {
+      "command": "npm --prefix app run quality:semantic-atomicity:check -- --config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+      "result": "passed",
+      "detail": "797 current ledger leaves; 797 atomic, 0 needs developer review, 0 non-atomic, 0 missing/stale/obsolete. Existing full-ledger classifications for targets 66f and 9de remain atomic and do not resolve this batch's fresh A/B and atomicity findings."
+    },
+    {
+      "command": "npm --prefix app run quality:memory-card-review:check -- --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+      "result": "passed",
+      "detail": "797 ordinary atomic goals; 758 no-memory and 39 memory-required; 128 card rows, 64 primary cards kept, no missing/stale/obsolete records, no visibility gaps across 2 scopes."
+    },
+    {
+      "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/candidate-assessment/positive-understanding-text-four.config.json",
+      "result": "passed",
+      "detail": "Four scoped current profiles; all needs_human_review/ai_candidate; 0 approved, 0 rejected, 0 blocking issues."
+    },
+    {
+      "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/candidate-assessment/positive-understanding-image-66.config.json",
+      "result": "passed",
+      "detail": "Goal 66f current image-bound profile; needs_human_review/ai_candidate; 0 approved, 0 rejected, 0 blocking issues."
+    },
+    {
+      "command": "npm --prefix app run check:goal-source-rationale-coverage",
+      "result": "passed",
+      "detail": "Existing coverage report is up to date. The direct Q3.2 source candidate for goal 66f and the BW V2 source-refresh candidate for 9de remain batch-local proposals."
+    },
+    {
+      "command": "node -e \"JSON.parse(require('fs').readFileSync('curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/candidate-assessment/candidate-assessment.json','utf8'))\"",
+      "result": "passed",
+      "detail": "Candidate assessment JSON parses successfully."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewDualRound.ts --first-bundle curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-a/review-bundle-manifest.json --first-input curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-a/description-review-input.json --first-campaign curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-a/description-review-campaign.json --first-batches-dir curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-a/batches --first-results-dir curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-a/results --second-bundle curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-b/review-bundle-manifest.json --second-input curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-b/description-review-input.json --second-campaign curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-b/description-review-campaign.json --second-batches-dir curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-b/batches --second-results-dir curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1/round-b/results --diversity-policy require_distinct_provider_or_model",
+      "result": "passed",
+      "detail": "Strictly validated exact current five-page bundle/input. Distinct logged models were openai::gpt-5.6-sol::(unspecified-version) and openai::gpt-6-sol::(unspecified-version); all five require synthesis and automatic acceptance is false. Full result is dual-round-validation.json."
+    },
+    {
+      "command": "node recursive JSON/JSONL syntax parse over curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q3-stochastics-next12-open-five-20260923-v1",
+      "result": "passed",
+      "detail": "All 32 JSON and JSONL files in the batch folder parse successfully."
+    }
+  ],
+  "uncompletedChecks": [
+    {
+      "check": "Candidate integration into canonical descriptions, sources, evidence ledgers, semantic-atomicity ledger, and central report",
+      "status": "not_in_scope_for_this_batch",
+      "reason": "Batch authorization allows candidates and receipts only; no canonical landscape, central registry, or in-flight ledger edits."
+    },
+    {
+      "check": "Current machine visualization gates for goals 70efdec0-110c-5564-849b-bc05cfff0f6a, 1b67aeb4-2a55-531f-94da-283b4e3df5f1, 0408ac7f-0530-5de5-b248-cf581c9b5a17, 9de07e13-6a5f-5b49-a6d4-0decefb95784",
+      "status": "open",
+      "reason": "Primary visualizations are missing and remain deferred. Goal 66f432e9-22d3-51a9-8787-35f91db30616 keeps its current approved JPG and QA unchanged."
+    },
+    {
+      "check": "Final synthesis for goal 9de07e13-6a5f-5b49-a6d4-0decefb95784",
+      "status": "open",
+      "reason": "Current rounds disagree on keep versus split, and the official curriculum grouping does not settle semantic atomicity or all inverse-event scope conditions."
+    }
+  ],
+  "netProgress": {
+    "newFachlicheClosures": 0,
+    "descriptionRevisionCandidates": 3,
+    "descriptionKeepCandidatesWithSynthesis": 1,
+    "openAtomicityOrScopeDisputes": 1,
+    "restoredBindings": 0,
+    "visualizationLinksOrApprovalsChanged": 0,
+    "centralLandscapeOrRegistryOrLedgerChanges": 0,
+    "historicalArtifactsChanged": 0
+  },
+  "nextStep": "Parent may review the batch-local synthesis candidates; if integrating, refresh goal 66 source mapping and goal 9de V2 citation as applicable, resolve 9de atomicity separately, then perform dependent exact-bound checks and schedule image QA after text/context stabilization."
+}

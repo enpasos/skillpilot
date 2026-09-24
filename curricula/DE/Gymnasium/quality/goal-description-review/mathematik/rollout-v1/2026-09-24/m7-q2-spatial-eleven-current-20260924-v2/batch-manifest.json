@@ -1,0 +1,64 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-q2-spatial-eleven-current-20260924-v2.config.json",
+  "configDigest": "sha256:e288aa6842df19c2edec90e309efb25b14e0659264d1deb03378e9ba7a4fbc1c",
+  "goalIds": [
+    "baf7276f-60a0-4d96-b959-d63acfb929de",
+    "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+    "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+    "6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
+    "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+    "5f90df42-8a71-534d-b995-b8f7dcaf1661",
+    "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+    "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+    "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+    "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+    "985d5529-a586-50eb-bd7f-2db2be8906d1"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:2f5c0141a679f2081f89acc5a8473e4e00d6ebefdcf5b936219be474208b6839"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:6827ff47a295c67b291dd578703cb43948961ab32a625e0ce71e9e5ec4648e7a",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:407deb0951e809a69366f33fb68d11385df1193e1885b72a9926f202967b5221",
+    "reviewInputFingerprint": "sha256:e0e6fb83c796523505db636ad4f1d40a78a28de20ecaafabeaa0b5818a520db0",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-a",
+        "campaignDigest": "sha256:16afc1ce44f4f5eb2ded93b1c029fb201474f074a910b3628543ee481a9da8a0",
+        "roundId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-independent-a",
+        "batchId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:62477e305174385b7af7965ab448fa16a2e6336e72f41f9cba6f7590009c5573"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-b",
+        "campaignDigest": "sha256:e45cae74ad78ab33b448ce011a99927fd60752bcc9f15d9b724889b6841d60bb",
+        "roundId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-independent-b",
+        "batchId": "mathematik-m7-q2-spatial-eleven-current-20260924-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:31b6b284a1c98f264dcdde99aa2f19316b5803cd98cf684dc4000c43de1570f5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

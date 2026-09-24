@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-q4-process-next12-open-two-20260923-v1-first-pass-a.run-001",
+  "campaignId": "mathematik-m7-q4-process-next12-open-two-20260923-v1-a",
+  "roundId": "mathematik-m7-q4-process-next12-open-two-20260923-v1-first-pass-a",
+  "batchId": "mathematik-m7-q4-process-next12-open-two-20260923-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:e522e1f59b436a73433dc8dc1b215aa85ab9f6e5b3796466ed80563e4eaa9246",
+  "bundleFingerprint": "sha256:8ef6b426f273ab9e534cbd4769ea12548db457b8d182685f1c9b89c3f5bd76fc",
+  "bookDigest": "sha256:7253ed8145c461c27d21a7269498efd11d55e808fcafc1e67c71102c3aca4a79",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:cc426613366ac265a7aeb926a3f6e97ae9aa2b5b0b348fd1646dfcf6e94d318b",
+  "independenceGroupId": "mathematik-m7-q4-process-next12-open-two-20260923-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "fcb4cef1-b17a-5682-924c-41498fc6c9b2",
+    "fde351a8-98b1-5d75-b4df-813beb2bbe3c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e522e1f59b436a73433dc8dc1b215aa85ab9f6e5b3796466ed80563e4eaa9246"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-24T06:01:16.098Z",
+  "completedAt": "2026-09-24T06:03:37.127Z",
+  "status": "completed",
+  "outputDigest": "sha256:422b5a5a7ba0452e7c1cb689c6825bdb2785a7b11ba68a4aec4ca4b11a445c14",
+  "toolchainVersion": "codex-cli-0.155.0-alpha.16.3"
+}
