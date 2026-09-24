@@ -149,11 +149,13 @@ test("verification detects canonical skill drift without refreshing a receipt", 
   assert.throws(() => verifyMarketplace(output, root), /differs from current canonical source/);
 });
 
-test("CI preserves hidden manifests and checks rather than publishing or connecting", () => {
+test("manual-only CI preserves hidden manifests and checks rather than publishing or connecting", () => {
   const workflow = readFileSync(resolve(repositoryRoot, ".github/workflows/openai-marketplace.yml"), "utf8");
   assert.match(workflow, /include-hidden-files: true/);
   assert.match(workflow, /contents: read/);
-  assert.match(workflow, /schedule:/);
+  assert.match(workflow, /^  workflow_dispatch:/m);
+  assert.doesNotMatch(workflow, /^  (?:schedule|push|pull_request):/m,
+    "The paused marketplace experiment must not run on a schedule, push or pull request.");
   assert.match(workflow, /node --test scripts\/openai_marketplace_release\.test\.mjs/);
   assert.match(workflow, /node scripts\/openai_marketplace_release\.mjs verify/);
   assert.doesNotMatch(workflow, /secrets\.|git push|codex mcp login/);

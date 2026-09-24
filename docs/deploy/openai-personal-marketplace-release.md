@@ -123,9 +123,11 @@ modify production, or submit anything to OpenAI. `verify` compares the exported
 tree with the current inputs, including the canonical plugin bytes. A source
 change invalidates the old export; create and verify a fresh output directory.
 
-The `.github/workflows/openai-marketplace.yml` lane runs the automated tests,
-export, and verification. The exported repository has its own validation
-workflow. Those checks are package evidence, not a simulated real-host pass.
+The `.github/workflows/openai-marketplace.yml` lane is available only through
+manual `workflow_dispatch`. It runs the automated tests, export, and verification
+on demand; pushes, pull requests and schedules no longer trigger this paused
+experiment. The exported repository has its own validation workflow. Those
+checks are package evidence, not a simulated real-host pass.
 
 ## Publish the Git source
 

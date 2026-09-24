@@ -1,34 +1,9 @@
 name: Experimental OpenAI personal marketplace
 
+# Paused distribution experiment; retain export verification for manual use only.
+# See docs/deploy/claude-beta-chatgpt-release-strategy.md.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '25 6 * * *'
-  pull_request:
-    paths:
-      - '.github/workflows/openai-marketplace.yml'
-      - '.nvmrc'
-      - 'LICENSE'
-      - 'ai/openai plugin/skillpilot-coach-v1/**'
-      - 'ai/openai-marketplace/**'
-      - 'scripts/openai_marketplace_release*'
-      - 'scripts/lib/openai_plugin_install_files.mjs'
-      - 'scripts/lib/reproducible_plugin_archive.mjs'
-      - 'scripts/openai_plugin_release.mjs'
-      - 'docs/deploy/openai-personal-marketplace-release.md'
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/openai-marketplace.yml'
-      - '.nvmrc'
-      - 'LICENSE'
-      - 'ai/openai plugin/skillpilot-coach-v1/**'
-      - 'ai/openai-marketplace/**'
-      - 'scripts/openai_marketplace_release*'
-      - 'scripts/lib/openai_plugin_install_files.mjs'
-      - 'scripts/lib/reproducible_plugin_archive.mjs'
-      - 'scripts/openai_plugin_release.mjs'
-      - 'docs/deploy/openai-personal-marketplace-release.md'
 
 permissions:
   contents: read
