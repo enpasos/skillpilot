@@ -3,7 +3,10 @@ package com.skillpilot.backend.openai;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.regex.Pattern;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
@@ -22,6 +25,27 @@ class OpenAiRuntimeEnvironmentValidationConfigurationTest {
                 "SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_AUTHORIZATION_POLICY_VERSION",
                 "SKILLPILOT_OPENAI_COACH_V1_OPENAI_APPS_CHALLENGE",
                 "SKILLPILOT_OPENAI_RATE_LIMIT_ENABLED"));
+    }
+
+    @Test
+    void acceptsEveryV1EnvironmentNameBoundInApplicationConfiguration() throws IOException {
+        try (var configuration = getClass().getResourceAsStream("/application.yml")) {
+            assertThat(configuration).isNotNull();
+            var applicationYaml = new String(configuration.readAllBytes(), StandardCharsets.UTF_8);
+            var environmentNames = Pattern.compile(
+                            "\\$\\{(SKILLPILOT_OPENAI_COACH_V1_[A-Z0-9_]+)(?=[:}])")
+                    .matcher(applicationYaml)
+                    .results()
+                    .map(match -> match.group(1))
+                    .distinct()
+                    .toList();
+            assertThat(environmentNames).contains(
+                    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_AUDIENCE",
+                    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_AUTHORIZATION_POLICY_VERSION",
+                    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_CLIENT_SECRET",
+                    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_ENABLED");
+            OpenAiRuntimeEnvironmentValidationConfiguration.requireNoForbiddenNames(environmentNames);
+        }
     }
 
     @Test
