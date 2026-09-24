@@ -314,6 +314,27 @@ const marketplaceLane = publishedVersion === candidateManifest.version
   ? candidateMarketplaceLane
   : JSON.parse(readFileSync(resolve(dirname(marketplaceLanePath),
     `history/${publishedVersion}/marketplace-publication.json`), 'utf8')) as MarketplaceLane
+function assertMarketplacePublicationEvidenceRef(value: string | null | undefined) {
+  const references = (value ?? '').split('; ')
+  assert.match(references[0] ?? '',
+    /^https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace\/pull\/\d+$/u)
+  if (references.length === 1) return
+  assert.equal(references.length, 3, 'extended publication evidence needs a CI run and verification result')
+  assert.match(references[1] ?? '',
+    /^https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace\/actions\/runs\/[1-9]\d*$/u)
+  assert.equal(references[2], 'verify-repository PASS')
+}
+const sampleMarketplacePr = 'https://github.com/enpasos/skillpilot-claude-marketplace/pull/999'
+const sampleMarketplaceRun = 'https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/999'
+assertMarketplacePublicationEvidenceRef(sampleMarketplacePr)
+assertMarketplacePublicationEvidenceRef(`${sampleMarketplacePr}; ${sampleMarketplaceRun}; verify-repository PASS`)
+for (const invalidEvidenceRef of [
+  `${sampleMarketplacePr}; unverified`,
+  `${sampleMarketplacePr}; https://github.com/other/repo/actions/runs/999; verify-repository PASS`,
+  `${sampleMarketplacePr}; ${sampleMarketplaceRun}; verify-repository FAIL`,
+]) {
+  assert.throws(() => assertMarketplacePublicationEvidenceRef(invalidEvidenceRef))
+}
 function assertSeparateMarketplacePublication(lane: MarketplaceLane) {
   // A verified Marketplace update may precede the download/guide promotion.
   // Neither publication nor a historical approval promotes that new guide.
@@ -339,8 +360,7 @@ function assertSeparateMarketplacePublication(lane: MarketplaceLane) {
     assert.match(publication.revision ?? '', /^[a-f0-9]{40}$/u)
     assert.match(publication.treeSha256 ?? '', /^[a-f0-9]{64}$/u)
     assert.equal(new Date(publication.verifiedAt ?? '').toISOString(), publication.verifiedAt)
-    assert.match(publication.evidenceRef ?? '',
-      /^https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace\/pull\/\d+$/u)
+    assertMarketplacePublicationEvidenceRef(publication.evidenceRef)
   } else {
     assert.equal(publication.status, 'pending')
     assert.equal(lane.activation?.state, 'prepared_not_published')
@@ -422,6 +442,7 @@ if (candidateMarketplaceLane.activation?.firstPartyGuideDecision?.status === 'ap
     (lane: MarketplaceLane) => { lane.activation!.evidence![0]!.candidateVersion = '1.1.5' },
     (lane: MarketplaceLane) => { lane.activation!.evidence![0]!.candidateSha256 = '0'.repeat(64) },
     (lane: MarketplaceLane) => { lane.activation!.evidence![0]!.revision = null },
+    (lane: MarketplaceLane) => { lane.activation!.evidence![0]!.evidenceRef = `${sampleMarketplacePr}; unverified` },
     (lane: MarketplaceLane) => { lane.activation!.evidence![1]!.status = 'pass' },
     (lane: MarketplaceLane) => { lane.activation!.marketplaceUiSwitchAllowed = true },
     (lane: MarketplaceLane) => { lane.activation!.firstPartyGuideDecision!.approvedBy = 'product-owner' },
@@ -480,8 +501,7 @@ if (repositoryEvidence?.status === 'pending') {
   assert.match(repositoryEvidence?.revision ?? '', /^[a-f0-9]{40}$/u)
   assert.match(repositoryEvidence?.treeSha256 ?? '', /^[a-f0-9]{64}$/u)
   assert.equal(new Date(repositoryEvidence?.verifiedAt ?? '').toISOString(), repositoryEvidence?.verifiedAt)
-  assert.match(repositoryEvidence?.evidenceRef ?? '',
-    /^https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace\/pull\/\d+$/u)
+  assertMarketplacePublicationEvidenceRef(repositoryEvidence?.evidenceRef)
 }
 assert.equal(repositoryEvidence?.status, 'pass', 'guide approval needs verified publication first')
 assert.equal(guideDecision?.repositoryRevision, repositoryEvidence?.revision)
