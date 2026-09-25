@@ -101,8 +101,10 @@ class OpenAiDeV11DailyPlanContractTest {
         var status = LearnerPlanTodayStatusFixtures.status(
                 LocalDate.parse("2026-09-14"), basis, locale, true, false, false, 0,
                 new LearnerPlanTodayStatus.ActiveGoal("goal-1", title, announcement),
-                List.of(LearnerPlanTodayStatusFixtures.subject("private-math",
-                        english ? "Mathematics" : "Mathematik", 13, 3, 9, 1, true, true, basis, locale),
+                List.of(LearnerPlanTodayStatusFixtures.withAchievement(
+                        LearnerPlanTodayStatusFixtures.subject("private-math",
+                                english ? "Mathematics" : "Mathematik", 13, 3, 9, 1,
+                                true, true, basis, locale), 10, 364),
                         LearnerPlanTodayStatusFixtures.subject("private-physics",
                                 english ? "Physics" : "Physik", 2, 0, 0, 0, false, true, basis, locale)));
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(activeGoalState(title));
@@ -112,6 +114,10 @@ class OpenAiDeV11DailyPlanContractTest {
 
         JsonNode projection = objectMapper.valueToTree(result.structuredContent()).path("learningPlanToday");
         assertThat(projection.path("text").asText()).isEqualTo(status.statusText());
+        for (String cockpitOnlyField : List.of(
+                "achievedGoalCount", "targetGoalCount", "balanceDialText")) {
+            assertThat(projection.findValues(cockpitOnlyField)).as(cockpitOnlyField).isEmpty();
+        }
         assertThat(projection.path("periodBasis").asText()).isEqualTo(basis.name());
         assertThat(projection.path("activeGoalAnnouncement").asText()).isEqualTo(announcement);
         assertThat(result.content()).singleElement().isInstanceOfSatisfying(McpSchema.TextContent.class,

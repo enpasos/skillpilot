@@ -172,6 +172,9 @@ class LearnerLearningPlanControllerHttpTest {
                 .andExpect(jsonPath("$.subjects[0].balanceGauge.scaleLimit").value(2))
                 .andExpect(jsonPath("$.subjects[0].balanceGauge.severeBehind").value(false))
                 .andExpect(jsonPath("$.subjects[0].balanceGauge.strongAhead").value(false))
+                .andExpect(jsonPath("$.subjects[0].achievedGoalCount").value(10))
+                .andExpect(jsonPath("$.subjects[0].targetGoalCount").value(364))
+                .andExpect(jsonPath("$.subjects[0].balanceDialText").value("2 behind"))
                 .andExpect(jsonPath("$.subjects[0].balance").doesNotExist());
     }
 
@@ -189,6 +192,9 @@ class LearnerLearningPlanControllerHttpTest {
                 .andExpect(jsonPath("$.subjects[0].evaluable").value(false))
                 .andExpect(jsonPath("$.subjects[0].periodGauge").value(nullValue()))
                 .andExpect(jsonPath("$.subjects[0].balanceGauge").value(nullValue()))
+                .andExpect(jsonPath("$.subjects[0].achievedGoalCount").value(nullValue()))
+                .andExpect(jsonPath("$.subjects[0].targetGoalCount").value(nullValue()))
+                .andExpect(jsonPath("$.subjects[0].balanceDialText").value(nullValue()))
                 .andExpect(jsonPath("$.subjects[0].balance").doesNotExist());
     }
 
@@ -376,9 +382,11 @@ class LearnerLearningPlanControllerHttpTest {
 
     private static com.skillpilot.backend.api.LearnerPlanTodayStatus planStatus() {
         return com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.status(AS_OF, false, false,
-                com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
-                        LANDSCAPE_ID, "Physics", 4, 2, 1, 1, false, false,
-                        com.skillpilot.backend.service.learningplan.PeriodBasis.DAY, "en"));
+                com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.withAchievement(
+                        com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures.subject(
+                                LANDSCAPE_ID, "Physics", 4, 2, 1, 1, false, false,
+                                com.skillpilot.backend.service.learningplan.PeriodBasis.DAY, "en"),
+                        10, 364));
     }
 
     private static LearnerLearningPlanApi.PlanSummary summary() {

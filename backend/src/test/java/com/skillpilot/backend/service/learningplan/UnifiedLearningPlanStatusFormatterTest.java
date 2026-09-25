@@ -96,6 +96,31 @@ class UnifiedLearningPlanStatusFormatterTest {
     }
 
     @Test
+    void compactBalanceDialTextKeepsFullChatStatusUnchanged() {
+        PlanBalanceResult behind = UnifiedLearningPlanStatusCalculator.calculate(
+                new PlanBalanceInputs(13, 3, 12, 4));
+        PlanBalanceResult onTrack = UnifiedLearningPlanStatusCalculator.calculate(
+                new PlanBalanceInputs(13, 3, 13, 0));
+        PlanBalanceResult ahead = UnifiedLearningPlanStatusCalculator.calculate(
+                new PlanBalanceInputs(13, 3, 15, 6));
+
+        assertThat(UnifiedLearningPlanStatusFormatter.formatBalanceDialText(behind, "de"))
+                .isEqualTo("1 im Rückstand");
+        assertThat(UnifiedLearningPlanStatusFormatter.formatBalanceDialText(onTrack, "de"))
+                .isEqualTo("im Plan");
+        assertThat(UnifiedLearningPlanStatusFormatter.formatBalanceDialText(ahead, "de"))
+                .isEqualTo("2 vorgearbeitet");
+        assertThat(UnifiedLearningPlanStatusFormatter.formatBalanceDialText(behind, "en"))
+                .isEqualTo("1 behind");
+        assertThat(UnifiedLearningPlanStatusFormatter.formatBalanceDialText(onTrack, "en"))
+                .isEqualTo("on track");
+        assertThat(UnifiedLearningPlanStatusFormatter.formatBalanceDialText(ahead, "en"))
+                .isEqualTo("2 ahead");
+        assertThat(UnifiedLearningPlanStatusFormatter.formatPlanStatusText(behind, "de"))
+                .isEqualTo("1 Lernziel im Rückstand");
+    }
+
+    @Test
     void testActiveGoalAnnouncement() {
         assertThat(UnifiedLearningPlanStatusFormatter.formatActiveGoalAnnouncement("Potenzfunktionen beschreiben", "de"))
                 .isEqualTo("Dein aktives Lernziel: Potenzfunktionen beschreiben");

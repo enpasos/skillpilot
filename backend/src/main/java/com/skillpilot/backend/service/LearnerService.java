@@ -2703,6 +2703,39 @@ public class LearnerService {
     }
 
     /**
+     * The current Level-2 atomic targets grouped by landscape, without reading mastery.
+     * A plan status already has one effective mastery snapshot, so its Cockpit achievement
+     * counts can use that same snapshot without rebuilding the projection or SRS overlay
+     * once per subject. An unresolved Personal Curriculum has no usable target result.
+     */
+    @Transactional(readOnly = true)
+    Map<String, List<String>> getPersonalCurriculumAtomicTargetsByLandscape(String skillpilotId) {
+        Learner learner = getLearner(skillpilotId);
+        if (!hasCompletedPersonalCurriculum(learner)
+                || learner.getSelectedCurriculum() == null
+                || learner.getSelectedCurriculum().isBlank()) {
+            return Map.of();
+        }
+        GoalProjection projection = getGoalProjection(
+                learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        Map<String, LinkedHashSet<String>> byLandscape = new LinkedHashMap<>();
+        for (String goalId : projection.targetGoalIds()) {
+            if (!isCountedAtomicGoal(projection.structuralGoals().get(goalId))) {
+                continue;
+            }
+            String landscapeId = landscapeService.getLandscapeIdForGoal(goalId);
+            if (landscapeId != null) {
+                byLandscape.computeIfAbsent(landscapeId, ignored -> new LinkedHashSet<>())
+                        .add(goalId);
+            }
+        }
+        Map<String, List<String>> result = new LinkedHashMap<>();
+        byLandscape.forEach((landscapeId, goalIds) ->
+                result.put(landscapeId, List.copyOf(goalIds)));
+        return Map.copyOf(result);
+    }
+
+    /**
      * Explicit further learning may leave a dated plan or its temporary focus,
      * but only within this subject's personal targets and the real frontier.
      */

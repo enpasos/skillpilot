@@ -91,7 +91,12 @@ const goalLabels = new Map([
   ['mechanics-next', 'Kräfte addieren'],
 ])
 
-const mathsBehind = subject('mathematik', 'Mathematik', 'Tagesziel 0 von 3', '2 Lernziele im Rückstand', 'behind', { current: true })
+const mathsBehind = subject('mathematik', 'Mathematik', 'Tagesziel 0 von 3', '2 Lernziele im Rückstand', 'behind', {
+  current: true,
+  achievedGoalCount: 10,
+  targetGoalCount: 364,
+  balanceDialText: '2 im Rückstand',
+})
 const physicsOnTrack = subject('physik', 'Physik', 'Tagesziel 1 von 2', 'im Plan', 'on_track')
 
 const enabledMarkup = renderToStaticMarkup(
@@ -111,10 +116,14 @@ const enabledMarkup = renderToStaticMarkup(
 assert.match(enabledMarkup, /<section[^>]+data-testid="learner-plan-today-overview"[^>]+aria-labelledby="[^"]+"/u)
 // The description only exists while there is a notice to describe.
 assert.doesNotMatch(enabledMarkup, /aria-describedby/u)
+assert.match(enabledMarkup, /<h2[^>]*class="sr-only"[^>]*>Lernplan<\/h2>/u)
 assert.match(enabledMarkup, />Heute</u)
-// The first dial states the period and quota; the second uses the backend status wording.
+// The first dial states the period and quota; the second separates overall mastery
+// from the shorter plan balance while retaining the full backend wording for access.
 assert.doesNotMatch(enabledMarkup, /Tagesziel 0 von 3/u)
-assert.match(enabledMarkup, /2 Lernziele im Rückstand/u)
+assert.match(enabledMarkup, /GESAMT: <span[^>]*>10 von 364<\/span>/u)
+assert.match(enabledMarkup, />2 im Rückstand<\/p>/u)
+assert.match(enabledMarkup, /aria-label="Mathematik: 2 Lernziele im Rückstand\."/u)
 assert.doesNotMatch(enabledMarkup, /Tagesziel 1 von 2/u)
 assert.match(enabledMarkup, />im Plan</u)
 assert.doesNotMatch(enabledMarkup, /<span class="text-sm text-text-primary">Tagesziel/u,
@@ -127,10 +136,10 @@ assert.match(enabledMarkup, /data-status-direction="on_track"/u)
 // The two real gauges use backend positions and show planned-goal counts.
 assert.equal((enabledMarkup.match(/data-testid="learner-plan-period-gauge"/gu) ?? []).length, 2)
 assert.equal((enabledMarkup.match(/data-testid="learner-plan-balance-gauge"/gu) ?? []).length, 2)
-assert.match(enabledMarkup, /0 von 3 Zielen/u)
+assert.match(enabledMarkup, />0 von 3</u)
 assert.doesNotMatch(enabledMarkup, /Frühere Abschlüsse werden angerechnet|Typisch:/u)
 assert.match(enabledMarkup, /data-needle-position="-0\.4"/u)
-assert.match(enabledMarkup, /aria-label="Mathematik: Heute, 0 von 3 Zielen"/u)
+assert.match(enabledMarkup, /aria-label="Mathematik: Heute, 0 von 3"/u)
 assert.doesNotMatch(enabledMarkup, /<linearGradient\b|<stop\b/u,
   'the dials use distinct progress and balance segments rather than a continuous gradient')
 assert.doesNotMatch(enabledMarkup, /<progress/u)
@@ -140,7 +149,8 @@ assert.match(enabledMarkup, /Ableitungsregeln anwenden/u)
 assert.doesNotMatch(enabledMarkup, /data-testid="learner-plan-continue"|>Weiterlernen<|>Einstellungen öffnen</u,
   'the Today panel only reports progress and the active goal; navigation lives outside it')
 assert.match(enabledMarkup, /Aktuelles Fach/u)
-assert.match(enabledMarkup, /Zu Physik wechseln/u)
+assert.match(enabledMarkup, /aria-label="Zu Physik wechseln"/u)
+assert.match(enabledMarkup, /Wechseln<\/button>/u)
 assert.equal((enabledMarkup.match(/data-testid="learner-plan-switch"/gu) ?? []).length, 1)
 assert.match(enabledMarkup, /Plandetails: Mathematik/u)
 assert.match(enabledMarkup, /Analysis/u)
@@ -296,7 +306,7 @@ const reachedMarkup = renderToStaticMarkup(
     onSwitch={() => undefined}
   />,
 )
-assert.match(reachedMarkup, /2 von 2 Zielen/u)
+assert.match(reachedMarkup, />2 von 2</u)
 assert.match(reachedMarkup, /2 Lernziele vorgearbeitet/u)
 assert.match(reachedMarkup, /data-status-direction="ahead"/u)
 assert.match(reachedMarkup, /data-testid="learner-plan-switch"/u)
@@ -309,9 +319,8 @@ const noTargetMarkup = renderToStaticMarkup(<LearnerPlanTodayOverview
   plans={[math]} language="de" planModeEnabled subjectLabel={() => 'Mathematik'} goalLabel={() => undefined}
   onSwitch={() => undefined}
 />)
-assert.match(noTargetMarkup, /Heute kein Tagesziel/u)
-assert.match(noTargetMarkup, /Keine Ziele geplant/u)
-assert.doesNotMatch(noTargetMarkup, /0 von 0 Planzielen|>0%</u)
+assert.match(noTargetMarkup, /Nichts geplant/u)
+assert.doesNotMatch(noTargetMarkup, /0 von 0|>0%</u)
 assert.match(noTargetMarkup, /data-testid="learner-plan-period-gauge"[^>]*>/u)
 
 const noScaleMarkup = renderToStaticMarkup(<LearnerPlanTodayOverview
@@ -332,7 +341,7 @@ const overshootMarkup = renderToStaticMarkup(<LearnerPlanTodayOverview
   plans={[math]} language="de" planModeEnabled subjectLabel={() => 'Mathematik'} goalLabel={() => undefined}
   onSwitch={() => undefined}
 />)
-assert.match(overshootMarkup, /2 von 2 Zielen/u)
+assert.match(overshootMarkup, />2 von 2</u)
 assert.match(overshootMarkup, /17 Lernziele im Rückstand/u, 'the backend wording preserves the actual balance past the dial stop')
 assert.match(overshootMarkup, /data-severity="severe-behind"/u)
 assert.match(overshootMarkup, /data-needle-position="-1"/u)
@@ -374,9 +383,12 @@ const weeklyMarkup = renderToStaticMarkup(
     onSwitch={() => undefined}
   />,
 )
-assert.match(weeklyMarkup, />Diese Woche</u, 'the week basis reaches the heading too')
+assert.match(weeklyMarkup, /<h2[^>]*class="sr-only"[^>]*>Lernplan<\/h2>/u)
+assert.match(weeklyMarkup, />Diese Woche</u, 'the week basis appears on the left dial')
+assert.doesNotMatch(weeklyMarkup, /<h2[^>]*>Diese Woche<\/h2>/u,
+  'the outer period heading is visually omitted')
 assert.doesNotMatch(weeklyMarkup, /Wochenziel 2 von 5/u)
-assert.match(weeklyMarkup, /2 von 5 Zielen/u)
+assert.match(weeklyMarkup, />2 von 5</u)
 
 const englishMath: LearnerLearningPlanSummary = {
   ...math,
@@ -418,17 +430,19 @@ const renderEnglishOverview = (
 )
 
 const englishMarkup = renderEnglishOverview(englishStatus)
+assert.match(englishMarkup, /<h2[^>]*class="sr-only"[^>]*>Learning plan<\/h2>/u)
 assert.match(englishMarkup, />Today</u)
-assert.match(englishMarkup, />Overall</u)
-assert.match(englishMarkup, /0 of 1 goal</u, 'the singular target is localized')
-assert.match(englishMarkup, /2 of 3 goals</u, 'the plural target is localized')
+assert.match(englishMarkup, />OVERALL</u)
+assert.match(englishMarkup, />0 of 1</u, 'the daily target is localized')
+assert.match(englishMarkup, />2 of 3</u, 'the second daily target is localized')
 assert.match(englishMarkup, /1 learning goal behind</u)
 assert.match(englishMarkup, />On track</u)
 assert.match(englishMarkup, /Current subject</u)
 assert.match(englishMarkup, /You are learning · Mathematics</u,
   'the active subject uses the localized backend label, even with a German catalog title')
 assert.match(englishMarkup, /Your active learning goal: Apply differentiation rules</u)
-assert.match(englishMarkup, /Switch to Physics</u)
+assert.match(englishMarkup, /aria-label="Switch to Physics"/u)
+assert.match(englishMarkup, /Switch<\/button>/u)
 assert.match(englishMarkup, /Plan details: Mathematics/u)
 assert.match(englishMarkup, /Plan period</u)
 assert.match(englishMarkup, /Current plan block</u)
@@ -441,7 +455,9 @@ const englishWeekMarkup = renderEnglishOverview(status([
   subject('mathematik', 'Mathematics', 'Weekly target 2 of 5', 'On track', 'on_track'),
 ], { language: 'en', periodBasis: 'WEEK', periodStart: '2026-08-31', periodEnd: '2026-09-06' }))
 assert.match(englishWeekMarkup, />This week</u)
-assert.match(englishWeekMarkup, /2 of 5 goals</u)
+assert.doesNotMatch(englishWeekMarkup, /<h2[^>]*>This week<\/h2>/u,
+  'the outer period heading is visually omitted in English too')
+assert.match(englishWeekMarkup, />2 of 5</u)
 assert.doesNotMatch(englishWeekMarkup, /Weekly target 2 of 5|Diese Woche|Wochenziel/u,
   'the weekly gauge replaces the backend period sentence with localized counts')
 
@@ -450,8 +466,8 @@ const englishNoTarget = renderEnglishOverview(status([
     periodGauge: { completed: 0, target: 0, needlePosition: null },
   }),
 ], { language: 'en' }), [{ ...englishMath, nextEligibleGoal: null, canContinue: false }])
-assert.match(englishNoTarget, /No goals planned</u)
-assert.doesNotMatch(englishNoTarget, /Keine Ziele geplant|0 of 0 goals/u)
+assert.match(englishNoTarget, /Nothing planned</u)
+assert.doesNotMatch(englishNoTarget, /Nichts geplant|0 of 0</u)
 
 const englishNoScale = renderEnglishOverview(status([
   subject('mathematik', 'Mathematics', 'Daily target 0 of 1', 'On track', 'on_track', { balanceGauge: null }),

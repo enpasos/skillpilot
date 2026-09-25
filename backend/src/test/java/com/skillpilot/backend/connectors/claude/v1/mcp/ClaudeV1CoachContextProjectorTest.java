@@ -80,9 +80,10 @@ class ClaudeV1CoachContextProjectorTest {
         LearnerPlanTodayStatus today = LearnerPlanTodayStatusFixtures.status(
                 LocalDate.of(2026, 9, 4), true, true, 2, null,
                 List.of(
-                        LearnerPlanTodayStatusFixtures.ambiguousSubject(
-                                List.of("private-math-a", "private-math-b"), "Mathematik\n",
-                                9, 5, 3, 3, true),
+                        LearnerPlanTodayStatusFixtures.withAchievement(
+                                LearnerPlanTodayStatusFixtures.ambiguousSubject(
+                                        List.of("private-math-a", "private-math-b"), "Mathematik\n",
+                                        9, 5, 3, 3, true), 10, 364),
                         LearnerPlanTodayStatusFixtures.subject(
                                 "private-physics", "Physik", 6, 4, 1, 1, false, true),
                         LearnerPlanTodayStatusFixtures.unevaluableSubject(
@@ -108,7 +109,8 @@ class ClaudeV1CoachContextProjectorTest {
         assertEquals(today.statusText(), projected.get("text"));
         assertFalse(projected.containsKey("totals"));
         for (String countField : List.of(
-                "dueToday", "completedToday", "openToday", "openOverdue", "extraCompletedToday")) {
+                "dueToday", "completedToday", "openToday", "openOverdue", "extraCompletedToday",
+                "achievedGoalCount", "targetGoalCount", "balanceDialText")) {
             assertFalse(projected.toString().contains(countField), countField + " must not reach the model");
         }
 

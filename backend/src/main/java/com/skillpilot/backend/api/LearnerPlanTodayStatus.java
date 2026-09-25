@@ -83,7 +83,11 @@ public record LearnerPlanTodayStatus(
      * Goals shared by several plans of the same subject count once, and the earliest valid
      * scheduled date wins. Both gauges are null when the subject is unevaluable. An evaluable
      * subject still has its period gauge when its quota is zero; its balance gauge is null
-     * only if no positive quota exists anywhere in that subject's schedule.</p>
+     * only if no positive quota exists anywhere in that subject's schedule. The independent
+     * achievement counts cover all current Level-2 atomic targets for this subject, including
+     * goals mastered before the plan began. Both counts are null when that scope is unavailable.
+     * {@code balanceDialText} is the compact Cockpit label; the full plan status wording remains
+     * authoritative for the chat.</p>
      */
     public record SubjectStatus(
             List<String> landscapeIds,
@@ -98,6 +102,9 @@ public record LearnerPlanTodayStatus(
             boolean canContinue,
             PeriodGauge periodGauge,
             BalanceGauge balanceGauge,
+            Integer achievedGoalCount,
+            Integer targetGoalCount,
+            String balanceDialText,
             @JsonIgnore PlanBalanceResult balance) {
 
         /**

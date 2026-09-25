@@ -73,6 +73,18 @@ public final class UnifiedLearningPlanStatusFormatter {
         return formatPlanStatusText(balance.rueckstand(), balance.vorsprung(), locale);
     }
 
+    /** Compact label beside the Cockpit balance dial, without repeating "learning goal". */
+    public static String formatBalanceDialText(PlanBalanceResult balance, String locale) {
+        Objects.requireNonNull(balance, "plan balance");
+        if (balance.rueckstand() > 0) {
+            return balance.rueckstand() + (isEnglish(locale) ? " behind" : " im Rückstand");
+        }
+        if (balance.vorsprung() > 0) {
+            return balance.vorsprung() + (isEnglish(locale) ? " ahead" : " vorgearbeitet");
+        }
+        return isEnglish(locale) ? "on track" : "im Plan";
+    }
+
     public static String formatSubjectLine(
             String subjectLabel,
             PeriodBasis basis,

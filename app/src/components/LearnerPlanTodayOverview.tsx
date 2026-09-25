@@ -1,7 +1,6 @@
 import {
   ChevronDown,
   CircleAlert,
-  Repeat2,
 } from 'lucide-react'
 import * as React from 'react'
 
@@ -122,7 +121,6 @@ export const LearnerPlanTodayOverview = ({
   const copy = getLearnerLearningPlanCopy(language)
   const headingId = React.useId()
   const summaryId = React.useId()
-  const weekly = status?.periodBasis === 'WEEK'
   const activeSubject = activeLandscapeId
     ? status.subjects.find((subject) => subject.landscapeIds.includes(activeLandscapeId))?.subjectLabel
       ?? subjectLabel(activeLandscapeId)
@@ -147,8 +145,8 @@ export const LearnerPlanTodayOverview = ({
       className="rounded-2xl border border-sky-200 bg-sidebar-bg p-4 shadow-sm dark:border-sky-900/60 sm:p-5"
     >
       <div className="min-w-0">
-        <h2 id={headingId} className="text-xl font-bold text-text-primary">
-          {weekly ? (language === 'de' ? 'Diese Woche' : 'This week') : copy.todayTitle}
+        <h2 id={headingId} className="sr-only">
+          {language === 'de' ? 'Lernplan' : 'Learning plan'}
         </h2>
         {/* The subject dials carry the per-subject status; only the unavailability notice stays here. */}
         {status?.noticeText ? (
@@ -239,36 +237,30 @@ export const LearnerPlanTodayOverview = ({
             <li
               key={subject.subjectKey}
               data-testid={`learner-plan-subject-${subject.subjectKey}`}
-              className="learner-plan-subject-row py-3 first:pt-0 last:pb-0"
+              className="learner-plan-subject-row py-3 last:pb-0"
             >
               <div className="flex flex-wrap items-center gap-3">
                 <div className="learner-plan-subject-progress min-w-0">
                   <LearnerPlanDailyProgress subject={subject} language={language}
                     periodBasis={status.periodBasis} showGauges={planModeEnabled}
-                    currentBadgeLabel={copy.currentSubjectBadge} />
+                    currentBadgeLabel={copy.currentSubjectBadge}
+                    switchAction={canSwitch && plan ? {
+                      accessibleLabel: isSwitching ? copy.switchBusy : copy.switchSubjectAction(subject.subjectLabel),
+                      label: isSwitching ? copy.switchBadgeBusy : copy.switchBadgeAction,
+                      busy: isSwitching,
+                      disabled: allActionsDisabled || isReconciling || Boolean(switchingPlanId),
+                      onClick: () => onSwitch(plan.planId),
+                    } : undefined} />
                 </div>
-                {canSwitch && plan ? (
-                  <button
-                    type="button"
-                    data-testid="learner-plan-switch"
-                    aria-busy={isSwitching || undefined}
-                    disabled={allActionsDisabled || isReconciling || Boolean(switchingPlanId)}
-                    onClick={() => onSwitch(plan.planId)}
-                    className="learner-plan-subject-switch inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-sky-300 bg-white px-3 py-2 text-sm font-semibold text-sky-800 transition-colors hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-60 dark:border-sky-800 dark:bg-slate-900 dark:text-sky-200"
-                  >
-                    <Repeat2 size={16} aria-hidden="true" />
-                    {isSwitching ? copy.switchBusy : copy.switchSubjectAction(subject.subjectLabel)}
-                  </button>
-                ) : null}
               </div>
               {subjectPlans.length > 0 ? (
-                <details className="group mt-2 rounded-lg text-sm">
+                <details className="group mt-1 text-sm">
                   <summary
                     aria-label={`${copy.detailsAction}: ${subject.subjectLabel}`}
-                    className="inline-flex min-h-9 cursor-pointer list-none items-center gap-1 rounded-md px-2 py-1.5 font-medium text-text-secondary hover:bg-input-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 [&::-webkit-details-marker]:hidden"
+                    className="inline-flex min-h-6 cursor-pointer list-none items-center gap-1 rounded-md px-0.5 text-xs font-normal text-slate-400 hover:text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-slate-500 dark:hover:text-slate-300 [&::-webkit-details-marker]:hidden"
                   >
                     {copy.detailsAction}
-                    <ChevronDown className="transition-transform group-open:rotate-180" size={16} aria-hidden="true" />
+                    <ChevronDown className="transition-transform group-open:rotate-180" size={14} aria-hidden="true" />
                   </summary>
                   {subjectPlans.map((subjectPlan) => (
                     <LearnerPlanDetails

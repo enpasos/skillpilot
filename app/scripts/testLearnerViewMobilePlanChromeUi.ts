@@ -251,12 +251,17 @@ try {
   assert.equal(await overview.getByRole('button', { name: 'Weiterlernen' }).count(), 0)
   await menuButton.waitFor()
   try {
-    await overview.getByRole('heading', { name: 'Heute' }).waitFor({ timeout: 10_000 })
+    const heading = overview.getByRole('heading', { name: 'Lernplan', exact: true })
+    await heading.waitFor({ timeout: 10_000 })
+    assert.match(await heading.getAttribute('class') ?? '', /\bsr-only\b/u)
+    assert.equal(await overview.getAttribute('aria-labelledby'), await heading.getAttribute('id'))
+    await overview.getByTestId('learner-plan-period-gauge').first()
+      .getByText('Heute', { exact: true }).waitFor({ timeout: 10_000 })
   } catch (error) {
     const body = await page.locator('body').innerText()
     throw new Error(`LearnerView did not render Today overview. Body:\n${body}\nBrowser errors:\n${browserErrors.join('\n')}`, { cause: error })
   }
-  await overview.getByTestId('learner-plan-subject-mathematik').getByText('0 von 2 Zielen', { exact: true }).waitFor()
+  await overview.getByTestId('learner-plan-subject-mathematik').getByText('0 von 2', { exact: true }).waitFor()
 
   const menuBox = await menuButton.boundingBox()
   const overviewBox = await overview.boundingBox()
@@ -267,6 +272,10 @@ try {
     `mobile menu must not overlap Today overview: menu=${JSON.stringify(menuBox)}, overview=${JSON.stringify(overviewBox)}`,
   )
   assert.equal(await overview.getByRole('button', { name: 'Zu Mathematik wechseln', exact: true }).count(), 0)
+  const physicsSwitch = overview.getByTestId('learner-plan-subject-physik')
+    .getByRole('button', { name: 'Zu Physik wechseln', exact: true })
+  assert.equal(await physicsSwitch.getByText('Wechseln', { exact: true }).isVisible(), true,
+    'the compact switch badge retains the full accessible subject action')
   assert.equal(await page.locator('summary').filter({ hasText: 'Zusätzliche Lernmaterialien' }).count(), 0,
     'material configuration does not occupy the ordinary learning view')
   assert.equal(materialSelectionReads, 0, 'the selection catalog is loaded only when settings are opened')
@@ -374,7 +383,7 @@ try {
   releasePreferenceSave()
   preferenceSaveBarrier = null
   try {
-  await overview.getByRole('heading', { name: 'Diese Woche', exact: true }).waitFor()
+  await overview.getByTestId('learner-plan-period-gauge').first().getByText('Diese Woche', { exact: true }).waitFor()
   } catch (error) {
     throw new Error(JSON.stringify({ body: await page.locator('body').innerText(), preferenceWrites, unexpectedRequests, browserErrors }), { cause: error })
   }
@@ -382,11 +391,11 @@ try {
   await settings.waitFor({ state: 'detached' })
   await closeButton.click()
   await page.reload()
-  await overview.getByRole('heading', { name: 'Diese Woche', exact: true }).waitFor()
+  await overview.getByTestId('learner-plan-period-gauge').first().getByText('Diese Woche', { exact: true }).waitFor()
   const weeklyMathRow = overview.getByTestId('learner-plan-subject-mathematik')
-  await weeklyMathRow.getByText('1 von 8 Zielen', { exact: true }).waitFor()
+  await weeklyMathRow.getByText('1 von 8', { exact: true }).waitFor()
   assert.equal(await weeklyMathRow.getByTestId('learner-plan-period-gauge').getAttribute('data-needle-position'), '0.125')
-  await weeklyMathRow.getByText('1 von 8 Zielen', { exact: true }).waitFor()
+  await weeklyMathRow.getByText('1 von 8', { exact: true }).waitFor()
   assert.equal(await weeklyMathRow.getByText(/Typisch:/u).count(), 0)
   const announcementLayout = await overview.getByTestId('learner-plan-active-goal').evaluate((element) => {
     const box = element.getBoundingClientRect()
@@ -422,14 +431,14 @@ try {
   omitStatus = false
   await overview.getByRole('button', { name: 'Erneut versuchen', exact: true }).click()
   await page.waitForFunction(() => !document.body.textContent?.includes('Aktualisierung fehlgeschlagen.'))
-  await overview.getByRole('heading', { name: 'Diese Woche', exact: true }).waitFor()
+  await overview.getByTestId('learner-plan-period-gauge').first().getByText('Diese Woche', { exact: true }).waitFor()
   omitStatus = true
   await page.reload()
   await page.getByText('Deine Fachpläne konnten gerade nicht geladen werden.', { exact: true }).waitFor()
   assert.equal(await overview.count(), 0, 'initial status failure cannot look like an empty healthy overview')
   omitStatus = false
   await page.getByRole('button', { name: 'Erneut versuchen', exact: true }).click()
-  await overview.getByRole('heading', { name: 'Diese Woche', exact: true }).waitFor()
+  await overview.getByTestId('learner-plan-period-gauge').first().getByText('Diese Woche', { exact: true }).waitFor()
 
   unavailableStatus = true
   await page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')))
@@ -457,9 +466,13 @@ try {
   'German backend status must disappear while the English status is loading')
   releaseEnglishPlan()
   englishPlanBarrier = null
-  await overview.getByRole('heading', { name: 'This week', exact: true }).waitFor()
+  const englishHeading = overview.getByRole('heading', { name: 'Learning plan', exact: true })
+  await englishHeading.waitFor()
+  assert.match(await englishHeading.getAttribute('class') ?? '', /\bsr-only\b/u)
+  assert.equal(await overview.getAttribute('aria-labelledby'), await englishHeading.getAttribute('id'))
+  await overview.getByTestId('learner-plan-period-gauge').first().getByText('This week', { exact: true }).waitFor()
   const englishMathRow = overview.getByTestId('learner-plan-subject-mathematik')
-  await englishMathRow.getByText('1 of 8 goals', { exact: true }).waitFor()
+  await englishMathRow.getByText('1 of 8', { exact: true }).waitFor()
   await englishMathRow.getByText('2 learning goals behind', { exact: true }).waitFor()
   await overview.getByText('You are learning · Mathematics', { exact: true }).waitFor()
   await overview.getByText('Your active learning goal: Solve linear equations', { exact: true }).waitFor()
@@ -471,7 +484,7 @@ try {
   assert.equal(requestedPlanLanguages.at(-1), 'en', 'language=en reaches the backend status endpoint')
 
   await page.evaluate(() => window.dispatchEvent(new Event('fixture-switch-language')))
-  await overview.getByRole('heading', { name: 'Diese Woche', exact: true }).waitFor()
+  await overview.getByTestId('learner-plan-period-gauge').first().getByText('Diese Woche', { exact: true }).waitFor()
   await overview.getByText('Du lernst gerade · Mathematik', { exact: true }).waitFor()
   assert.equal(requestedPlanLanguages.at(-1), 'de', 'switching back reloads German backend status')
 
@@ -482,7 +495,7 @@ try {
     'a backend response in the wrong language cannot revive the old German overview')
   returnWrongStatusLanguage = false
   await page.getByRole('button', { name: 'Try again', exact: true }).click()
-  await overview.getByRole('heading', { name: 'This week', exact: true }).waitFor()
+  await overview.getByTestId('learner-plan-period-gauge').first().getByText('This week', { exact: true }).waitFor()
   await overview.getByText('You are learning · Mathematics', { exact: true }).waitFor()
 
   assert.equal(browserErrors.length, 0, `mobile LearnerView browser errors:\n${browserErrors.join('\n')}`)

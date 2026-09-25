@@ -11,18 +11,30 @@ const assertMobileSubjectLayout = async (overview: Locator, viewport: string) =>
   const rows = await overview.locator('[data-testid^="learner-plan-subject-"]').evaluateAll((elements) => elements.map((row) => {
     const period = row.querySelector('[data-testid="learner-plan-period-gauge"]')!.getBoundingClientRect()
     const balance = row.querySelector('[data-testid="learner-plan-balance-gauge"]')!.getBoundingClientRect()
-    const switchButton = row.querySelector('[data-testid="learner-plan-switch"]')?.getBoundingClientRect()
+    const heading = row.querySelector('.learner-plan-progress-heading')!
+    const headingBounds = heading.getBoundingClientRect()
+    const subjectHeading = heading.querySelector('h3')!.getBoundingClientRect()
+    const switchElement = row.querySelector('[data-testid="learner-plan-switch"]')
+    const switchButton = switchElement?.getBoundingClientRect()
     return {
       subject: row.getAttribute('data-testid'),
       periodWidth: period.width,
       balanceWidth: balance.width,
       periodTop: period.top,
       balanceTop: balance.top,
-      periodBottom: period.bottom,
-      balanceBottom: balance.bottom,
-      switchTop: switchButton?.top ?? null,
-      switchWidth: switchButton?.width ?? null,
+      headingBottom: headingBounds.bottom,
+      subjectHeadingRight: subjectHeading.right,
+      switchButton: switchButton ? {
+        left: switchButton.left,
+        right: switchButton.right,
+        top: switchButton.top,
+        bottom: switchButton.bottom,
+        width: switchButton.width,
+        inHeading: heading.contains(switchElement),
+      } : null,
       gaugeSpan: balance.right - period.left,
+      rowLeft: row.getBoundingClientRect().left,
+      rowRight: row.getBoundingClientRect().right,
       scrollWidth: row.scrollWidth,
       clientWidth: row.clientWidth,
     }
@@ -35,11 +47,20 @@ const assertMobileSubjectLayout = async (overview: Locator, viewport: string) =>
       `${viewport}: ${row.subject} gauges remain side by side: ${JSON.stringify(row)}`)
     assert.ok(row.scrollWidth <= row.clientWidth,
       `${viewport}: ${row.subject} does not overflow: ${JSON.stringify(row)}`)
-    if (row.switchTop !== null && row.switchWidth !== null) {
-      assert.ok(row.switchTop >= Math.max(row.periodBottom, row.balanceBottom) + 4,
-        `${viewport}: subject switch appears below both gauges: ${JSON.stringify(row)}`)
-      assert.ok(row.switchWidth >= row.gaugeSpan - 2,
-        `${viewport}: subject switch uses the mobile row width: ${JSON.stringify(row)}`)
+    assert.ok(row.headingBottom <= Math.min(row.periodTop, row.balanceTop) + 1,
+      `${viewport}: ${row.subject} heading is above both gauges: ${JSON.stringify(row)}`)
+    if (row.subject === 'learner-plan-subject-physik') {
+      assert.ok(row.switchButton && row.switchButton.inHeading,
+        `${viewport}: subject switch is in the Physik heading: ${JSON.stringify(row)}`)
+      assert.ok(row.switchButton.left >= row.subjectHeadingRight - 1
+        && row.switchButton.bottom <= Math.min(row.periodTop, row.balanceTop) + 1,
+      `${viewport}: subject switch follows Physik before the gauges: ${JSON.stringify(row)}`)
+      assert.ok(row.switchButton.width < row.gaugeSpan - 2
+        && row.switchButton.left >= row.rowLeft - 1 && row.switchButton.right <= row.rowRight + 1,
+      `${viewport}: compact subject switch fits inside the row: ${JSON.stringify(row)}`)
+    } else {
+      assert.equal(row.switchButton, null,
+        `${viewport}: current subject has no switch badge: ${JSON.stringify(row)}`)
     }
   }
 }
@@ -192,15 +213,19 @@ try {
   await page.getByTestId('plan-mode-applied').filter({ hasText: 'true' }).waitFor()
 
   const overview = page.getByTestId('cockpit-fixture').getByTestId('learner-plan-today-overview')
-  await overview.getByRole('heading', { name: 'Heute' }).waitFor()
-  await overview.getByTestId('learner-plan-subject-mathematik').getByText('0 von 2 Zielen', { exact: true }).waitFor()
+  const overviewHeading = overview.getByRole('heading', { name: 'Lernplan', exact: true })
+  await overviewHeading.waitFor()
+  assert.match(await overviewHeading.getAttribute('class') ?? '', /\bsr-only\b/u)
+  assert.equal(await overview.getAttribute('aria-labelledby'), await overviewHeading.getAttribute('id'))
+  await overview.getByTestId('learner-plan-period-gauge').first().getByText('Heute', { exact: true }).waitFor()
+  await overview.getByTestId('learner-plan-subject-mathematik')
+    .getByTestId('learner-plan-period-gauge').getByText('0 von 2', { exact: true }).waitFor()
   assert.equal(await overview.getByTestId(/learner-plan-subject-/u).count(), 2)
-  await overview.getByTestId('learner-plan-subject-mathematik').getByText('0 von 2 Zielen', { exact: true }).waitFor()
   const physicsPlanRow = overview.getByTestId('learner-plan-subject-physik')
-  await physicsPlanRow.getByText('0 von 2 Zielen', { exact: true }).waitFor()
+  await physicsPlanRow.getByTestId('learner-plan-period-gauge').getByText('0 von 2', { exact: true }).waitFor()
   assert.equal(await overview.getByTestId('learner-plan-period-gauge').count(), 2)
   assert.equal(await overview.getByTestId('learner-plan-balance-gauge').count(), 2)
-  assert.equal(await overview.getByRole('img', { name: /0 von 2 Zielen/u }).count(), 2)
+  assert.equal(await overview.getByRole('img', { name: /0 von 2/u }).count(), 2)
   assert.equal(await physicsPlanRow.getByTestId('learner-plan-period-gauge').getAttribute('data-needle-position'), '0')
   assert.equal(await physicsPlanRow.getByTestId('learner-plan-balance-gauge').getAttribute('data-needle-position'), '-0.2')
   assert.equal(await overview.getByText('Tempo der letzten 7 Tage').count(), 0)
@@ -237,7 +262,7 @@ try {
   await assertMobileSubjectLayout(overview, '320px cockpit')
   await page.setViewportSize({ width: 390, height: 844 })
   await physicsPlanRow.getByLabel('Plandetails: Physik').click()
-  await physicsPlanRow.getByText('0 von 2 Zielen', { exact: true }).waitFor()
+  await physicsPlanRow.getByTestId('learner-plan-period-gauge').getByText('0 von 2', { exact: true }).waitFor()
   // Plan details describe the schedule only; the extra-work tally is gone from the status.
   assert.equal(await physicsPlanRow.getByText(/offenes Planziel|offene Planziele/u).count(), 0)
   await physicsPlanRow.getByLabel('Plandetails: Physik').click()
@@ -252,6 +277,12 @@ try {
   await page.waitForTimeout(120)
   assert.equal(reconcileRequests, 1, 'the first due goal is reconciled exactly once for the plan revision/day')
   await overview.getByText('Aktuelles Fach').waitFor()
+  assert.equal(await overview.getByTestId('learner-plan-subject-mathematik')
+    .locator('.learner-plan-progress-heading').getByText('Aktuelles Fach', { exact: true }).count(), 1)
+  const physicsSwitchBadge = physicsPlanRow.locator('.learner-plan-progress-heading')
+    .getByTestId('learner-plan-switch')
+  assert.equal(await physicsSwitchBadge.getAttribute('aria-label'), 'Zu Physik wechseln')
+  assert.equal((await physicsSwitchBadge.textContent())?.trim(), 'Wechseln')
   await overview.getByText(/Du lernst gerade · Mathematik/u).waitFor()
   assert.equal(await overview.getByRole('button', { name: 'Weiterlernen' }).count(), 0)
   assert.equal(await overview.getByRole('button', { name: 'Einstellungen öffnen' }).count(), 0)
@@ -283,8 +314,8 @@ try {
   })
   assert.ok(switchViewport.scrollY > 500, `subject switch should move the document, got scrollY=${switchViewport.scrollY}`)
   assert.ok(
-    switchViewport.top >= 0 && switchViewport.bottom <= switchViewport.viewportHeight,
-    'subject switch keeps the focused goal visible in the viewport',
+    switchViewport.top >= -1 && switchViewport.bottom <= switchViewport.viewportHeight + 1,
+    `subject switch keeps the focused goal visible in the viewport: ${JSON.stringify(switchViewport)}`,
   )
   assert.deepEqual(
     learnerMutationPaths,
@@ -317,7 +348,8 @@ try {
   assert.equal(await inFlightSwitch.isEnabled(), true, 'the stored plan is actionable before refresh')
   await inFlightFixture.getByRole('button', { name: 'Aktualisierung starten' }).click()
   await inFlightFixture.getByTestId('in-flight-status').filter({ hasText: 'loading' }).waitFor()
-  await inFlightFixture.getByRole('heading', { name: 'Heute' }).waitFor()
+  await inFlightFixture.getByTestId('learner-plan-period-gauge').first()
+    .getByText('Heute', { exact: true }).waitFor()
   assert.equal(await inFlightSwitch.isDisabled(), true, 'the visible old plan is fail-closed while refresh is pending')
   await inFlightFixture.getByRole('button', { name: 'Aktualisierung abschließen' }).click()
   await inFlightFixture.getByTestId('in-flight-status').filter({ hasText: 'ready' }).waitFor()
@@ -325,12 +357,12 @@ try {
   assert.equal(reconcileRequests, 1, 'later rerenders and retries do not repeat first-start reconcile')
 
   const progressFixture = page.getByTestId('daily-progress-fixture')
-  await progressFixture.getByText('0 von 2 Zielen', { exact: true }).waitFor()
+  await progressFixture.getByTestId('learner-plan-period-gauge').getByText('0 von 2', { exact: true }).waitFor()
   assert.equal(await progressFixture.getByTestId('learner-plan-period-gauge').getAttribute('data-needle-position'), '0')
   assert.equal(await progressFixture.getByRole('progressbar').count(), 0,
     'the cockpit renders the backend status, never a locally derived progress bar')
   await progressFixture.getByRole('button', { name: 'Tagespensum abschließen' }).click()
-  await progressFixture.getByText('2 von 2 Zielen', { exact: true }).waitFor()
+  await progressFixture.getByTestId('learner-plan-period-gauge').getByText('2 von 2', { exact: true }).waitFor()
   assert.equal(await progressFixture.getByTestId('learner-plan-period-gauge').getAttribute('data-needle-position'), '1')
   assert.equal(await progressFixture.getByTestId('voluntary-start-count').textContent(), '0', 'reaching the period target starts no extra work')
   await progressFixture.getByRole('button', { name: 'Zu Mathematik wechseln' }).click()
@@ -340,14 +372,21 @@ try {
   const completedLayout = await progressFixture.getByTestId('learner-plan-subject-mathematik').evaluate((row) => {
     const period = row.querySelector('[data-testid="learner-plan-period-gauge"]')!.getBoundingClientRect()
     const balance = row.querySelector('[data-testid="learner-plan-balance-gauge"]')!.getBoundingClientRect()
-    const button = row.querySelector('button')!.getBoundingClientRect()
+    const heading = row.querySelector('.learner-plan-progress-heading')!
+    const switchElement = heading.querySelector('[data-testid="learner-plan-switch"]')!
+    const switchButton = switchElement.getBoundingClientRect()
     return { periodWidth: period.width, balanceWidth: balance.width,
-      dialBottom: Math.max(period.bottom, balance.bottom), buttonTop: button.top }
+      gaugeTop: Math.min(period.top, balance.top), headingBottom: heading.getBoundingClientRect().bottom,
+      switchBottom: switchButton.bottom, switchInHeading: heading.contains(switchElement),
+      switchWidth: switchButton.width, gaugeSpan: balance.right - period.left }
   })
   assert.ok(completedLayout.periodWidth >= 110 && completedLayout.balanceWidth >= 110,
     `both gauges stay readable on mobile: ${JSON.stringify(completedLayout)}`)
-  assert.ok(completedLayout.buttonTop >= completedLayout.dialBottom,
-    'the switch action follows the mobile gauges without overlap')
+  assert.ok(completedLayout.switchInHeading
+    && completedLayout.switchBottom <= completedLayout.gaugeTop + 1
+    && completedLayout.headingBottom <= completedLayout.gaugeTop + 1
+    && completedLayout.switchWidth < completedLayout.gaugeSpan - 2,
+  `the switch badge stays in the heading above the mobile gauges: ${JSON.stringify(completedLayout)}`)
   await progressFixture.getByTestId('learner-plan-today-overview').screenshot({
     path: fileURLToPath(new URL('../../tmp/learner-plan-daily-quota-mobile.png', import.meta.url)),
   })

@@ -1211,6 +1211,9 @@ public class LearnerServiceTest {
         selectCompletedCanonicalMathCurriculum();
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         var scope = learnerService.getPlanningScope(learnerId, CANONICAL_MATH_LANDSCAPE_ID);
+        assertThat(learnerService.getPersonalCurriculumAtomicTargetsByLandscape(learnerId)
+                .get(CANONICAL_MATH_LANDSCAPE_ID))
+                .containsExactlyInAnyOrderElementsOf(scope.scopeAtomicGoalIds());
         masteryRepository.saveAllAndFlush(scope.scopeAtomicGoalIds().stream()
                 .map(id -> new Mastery(learner, id, 1.0)).toList());
 

@@ -205,10 +205,6 @@ The coach explains through conversation; SkillPilot keeps the curriculum, confir
 
 A navigable curriculum does not yet answer the everyday question: **“What do I need to learn today or this week, and how far have I got?”** A learning plan connects progress already made, goals still open, and time remaining. It makes deviations from the planned pace visible and provides a basis for agreeing on more learning time, additional support, or a different rhythm. Individual learning therefore does not mean learning without commitments to a time frame. **The plan guides learning, but must not prevent it.**
 
-![Daily overview for Mathematics and Physics showing the current goal, progress, and subject switching](learning-plan-ui.en.png)
-
-*From the application: the planning interface keeps both subjects in view — what have I achieved, and what comes next? Captured with example data.*
-
 #### The Teacher Plans the Framework
 
 The **Personal Curriculum** defines which competencies belong to the selected educational context. The **learning plan** specifies which topics or groups of learning goals should be addressed within which periods. It complements the skill graph without replacing its goals or prerequisites. To work through an entire curriculum, the plan must cover its intended scope; completing a partial plan does not automatically mean completing the curriculum.
@@ -228,16 +224,16 @@ Learners choose between **1 day** and **1 week**. This setting applies consisten
 
 The choice is saved for the SkillPilot ID; weekly resolution is the default. Switching changes the time frame of the evaluation while preserving plan dates and achieved learning progress. **Period workload and backlog are separate statements:** A daily or weekly target can be reached while backlog remains. Work ahead is taken into account within the same subject.
 
-#### Plan Status in the Cockpit: Workload and Overall Progress
+#### Plan Status in the Cockpit: Workload, Overall Progress, and Plan Balance
 
-In plan mode, the Cockpit displays **two gauges with needles** for each subject. They show at a glance how much of the current workload has been met and how overall learning progress compares with the subject plan.
+In plan mode, the Cockpit displays **two gauges with needles** for each subject. The left gauge shows the completed daily or weekly workload. Above the right gauge is the number of goals achieved across that subject's Personal Curriculum; its needle separately shows progress against the subject plan.
 
-![Cockpit in weekly mode: Mathematics with 10 of 10 goals and 2 learning goals ahead; Physics with 12 of 12 goals and 1 learning goal ahead](learning-plan-cockpit.de.png "width=360")
+![Cockpit in weekly mode: Mathematics 10 of 10 this week, 10 of 364 overall and 2 ahead; Physics 12 of 12, 18 of 128 overall and 1 ahead](learning-plan-cockpit.en.png "width=360")
 
-*Weekly Cockpit view, shown in the German interface: the weekly workload has been met in both subjects, with additional work ahead. Physics is the current subject; the active learning goal appears above the subject gauges.*
+*Weekly Cockpit view with example data: both weekly workloads are complete. The numbers above the right gauges show overall progress; the needles and short labels below them show work ahead. Physics is the current subject.*
 
-- **“Today” or “This week”:** The left gauge shows the fulfilled share of the daily or weekly workload as “x of y goals.” Blue represents the fulfilled share, grey the remaining share. Work completed ahead of time is credited, so the display does not count only goals newly completed during the current period.
-- **“Overall”:** The right gauge shows the cumulative plan status for the same subject: backlog on the left, “on track” in the neutral centre, and work ahead on the right. Its scale runs from red through grey to green and takes the subject's typical daily or weekly workload into account. The text below the gauge states the actual backlog or work ahead in learning goals, even when the needle reaches either end of the scale.
+- **“Today” or “This week”:** The left gauge shows the fulfilled share of the daily or weekly workload as “x of y.” Blue represents the fulfilled share, grey the remaining share. Work completed ahead of time is credited, so the display does not count only goals newly completed during the current period.
+- **“Overall: x of y”:** The number above the right gauge counts achieved atomic goals in the subject's current Personal Curriculum. Goals achieved before the learning plan began are included; each goal is counted only once within the subject. The needle below shows the **plan balance**: backlog on the left, “on track” in the neutral centre, and work ahead on the right. Its scale runs from red through grey to green and takes the subject's typical daily or weekly workload into account. The short label below the gauge gives the actual backlog or work ahead, even when the needle reaches either end of the scale. Missing source data is never presented as zero overall progress.
 
 **Meeting the period workload does not automatically mean an older backlog has been cleared.** Likewise, a workload still open today or this week does not by itself create cumulative backlog. Each subject keeps its own balance. The active learning goal remains separately visible; an offered subject switch and expandable **“Plan details”** provide further orientation. The displays and status texts use the values calculated by SkillPilot that also inform the coach.
 
@@ -245,7 +241,7 @@ In plan mode, the Cockpit displays **two gauges with needles** for each subject.
 
 With plan mode enabled and a valid learning session, SkillPilot handles the organization in the background:
 
-1. **Orient:** The coach quotes the plan status formulated by SkillPilot verbatim: for each subject, the daily or weekly target and any backlog or work ahead. The Cockpit presents the same plan status through its gauges and supplied status text; the coach does no arithmetic of its own. It announces the active learning goal separately, once, when the learning task begins.
+1. **Orient:** The coach quotes the plan status formulated by SkillPilot verbatim: for each subject, the daily or weekly target and any backlog or work ahead. The Cockpit shows a short form of the plan balance beside the gauge; the coach does no arithmetic of its own. It announces the active learning goal separately, once, when the learning task begins.
 2. **Resume automatically:** A valid ongoing goal is continued; otherwise, while the daily or weekly workload remains open, a due goal whose prerequisites permit learning is selected, if one is available. Joint activation can already select this first goal. No extra “Continue learning” click or manual goal search is needed.
 3. **Learn and check progress:** The coach explains, sets tasks, and supports the work. Only progress recorded under the applicable evidence rules changes the learning state and thus the plan status. The plan-guided flow then leads to the next permitted step.
 4. **Switch subjects or finish:** A request such as “Physics now” switches within the available subject options; other requirements remain in place. Once the period targets are reached, the coach acknowledges this and does not start another goal on its own. Reaching a daily or weekly target does not mean there is no backlog; in that case, the coach invites the learner to catch up without pressure. Further learning remains available on request, and future goals do not automatically become extra duties for the current period. The plan status explicitly identifies plans that cannot be evaluated instead of presenting them as complete.
@@ -254,12 +250,12 @@ A status-only question does not start a new task; a requested pause remains a pa
 
 #### Example: Mathematics and Physics on the Same Day
 
-An **illustrative daily example**, not live data: in mathematics, 13 goals are scheduled through today and 9 have been mastered in total; in physics, 10 are scheduled and 11 have been mastered. The count includes planned goals that contribute to progress, including those scheduled for later; goals already mastered when the plan was created are excluded.
+An **illustrative daily example**, not live data: in mathematics, 13 plan goals are scheduled through today and 9 progress-effective plan goals have been achieved; in physics, 10 are scheduled and 11 have been achieved. The **plan balance** also counts plan goals scheduled for later, but excludes goals already mastered when the plan was created. By contrast, “Overall: x of y” in the Cockpit covers all current atomic goals in the Personal Curriculum, including earlier achievements.
 
-| Subject | Completed today / Workload | Additional plan status |
+| Subject | Daily workload | Additional plan status |
 |---|---|---|
 | Mathematics | 1 of 3 | 2 learning goals behind |
-| Physics | 2 of 2 — daily target reached | 1 learning goal ahead |
+| Physics | 2 of 2 | 1 learning goal ahead |
 
 The two mathematics goals still open today and the additional backlog are shown separately. Work ahead in physics does **not** offset the mathematics backlog. “Ahead” describes the amount of progress, not mastery of every item scheduled earlier; earlier open goals remain available for goal selection.
 

@@ -156,6 +156,74 @@ assert.throws(() => parseLearnerPlanStatus({ ...parsed.status, subjects: [{
   planStatusText: null, subjectLine: null, statusDirection: null,
 }] }), /evaluability/u, 'unevaluable subjects cannot carry quantitative gauges')
 
+const legacySubject = { ...parsed.status.subjects[0] }
+delete legacySubject.achievedGoalCount
+delete legacySubject.targetGoalCount
+delete legacySubject.balanceDialText
+const parseSubjectUpdate = (changes: Record<string, unknown>) => parseLearnerPlanStatus({
+  ...parsed.status,
+  subjects: [{ ...legacySubject, ...changes }],
+}).subjects[0]
+const parsedLegacySubject = parseSubjectUpdate({})
+assert.equal(Object.prototype.hasOwnProperty.call(parsedLegacySubject, 'achievedGoalCount'), false)
+assert.equal(Object.prototype.hasOwnProperty.call(parsedLegacySubject, 'targetGoalCount'), false)
+assert.equal(Object.prototype.hasOwnProperty.call(parsedLegacySubject, 'balanceDialText'), false)
+
+const countedSubject = parseSubjectUpdate({
+  achievedGoalCount: 10,
+  targetGoalCount: 364,
+  statusDirection: 'behind',
+  planStatusText: 'Ein Lernziel im Rückstand',
+  balanceDialText: '1 im Rückstand',
+})
+assert.equal(countedSubject.achievedGoalCount, 10)
+assert.equal(countedSubject.targetGoalCount, 364)
+assert.equal(countedSubject.planStatusText, 'Ein Lernziel im Rückstand')
+assert.equal(countedSubject.balanceDialText, '1 im Rückstand')
+const unavailableCounts = parseSubjectUpdate({ achievedGoalCount: null, targetGoalCount: null })
+assert.deepEqual(
+  [unavailableCounts.achievedGoalCount, unavailableCounts.targetGoalCount],
+  [null, null],
+)
+for (const invalid of [
+  { achievedGoalCount: 10 },
+  { targetGoalCount: 364 },
+  { achievedGoalCount: 10, targetGoalCount: null },
+  { achievedGoalCount: null, targetGoalCount: 364 },
+  { achievedGoalCount: 11, targetGoalCount: 10 },
+  { achievedGoalCount: -1, targetGoalCount: 10 },
+  { achievedGoalCount: 1.5, targetGoalCount: 10 },
+  { achievedGoalCount: Number.MAX_SAFE_INTEGER + 1, targetGoalCount: Number.MAX_SAFE_INTEGER + 1 },
+  { achievedGoalCount: 10, targetGoalCount: '364' },
+]) {
+  assert.throws(() => parseSubjectUpdate(invalid), /goalCounts|achievedGoalCount|targetGoalCount/u)
+}
+for (const invalid of [null, '', '   ', 1]) {
+  assert.throws(() => parseSubjectUpdate({ balanceDialText: invalid }), /evaluability/u)
+}
+const unevaluableSubject = {
+  evaluable: false,
+  periodText: null,
+  planStatusText: null,
+  subjectLine: null,
+  statusDirection: null,
+  periodGauge: null,
+  balanceGauge: null,
+  balanceDialText: null,
+  achievedGoalCount: 10,
+  targetGoalCount: 364,
+}
+assert.equal(parseSubjectUpdate(unevaluableSubject).achievedGoalCount, 10,
+  'goal counts may be available even when the plan balance is not evaluable')
+for (const invalid of ['', '1 im Rückstand', undefined]) {
+  assert.throws(() => parseSubjectUpdate({ ...unevaluableSubject, balanceDialText: invalid }), /evaluability/u)
+}
+assert.equal(parseSubjectUpdate({
+  periodGauge: { completed: 0, target: 0, needlePosition: null },
+  balanceGauge: null,
+  balanceDialText: 'im Plan',
+}).balanceDialText, 'im Plan', 'zero scheduled quota still permits a localized balance label')
+
 assert.equal(formatLearnerLearningPlanDate('2026-09-01', 'de'), '01.09.2026')
 assert.equal(formatLearnerLearningPlanDate('2026-09-01', 'en'), '01/09/2026')
 assert.equal(

@@ -349,6 +349,10 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.getPlanningScope(LEARNER_ID, PHYSICS_LANDSCAPE_ID))
                 .thenReturn(scopeFor(PHYSICS_LANDSCAPE_ID,
                         List.of("atom-p", "atom-q"), List.of("atom-p")));
+        when(learnerService.getPersonalCurriculumAtomicTargetsByLandscape(LEARNER_ID))
+                .thenReturn(Map.of(
+                        LANDSCAPE_ID, List.of("atom-a", "atom-b", "atom-c", "atom-d"),
+                        PHYSICS_LANDSCAPE_ID, List.of("atom-p", "atom-q")));
         LearnerLearningPlanApi.ActivateRequest request = new LearnerLearningPlanApi.ActivateRequest(
                 TODAY, List.of(
                         new LearnerLearningPlanApi.ActivationPlan(PHYSICS_LANDSCAPE_ID,
@@ -377,6 +381,13 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(preview.days().get(4).status().statusText()).isEqualTo(
                 "Mathematik: Tagesziel 0 von 1 · 2 Lernziele im Rückstand\n"
                         + "Physik: Heute kein Tagesziel · 1 Lernziel im Rückstand");
+        assertThat(preview.days()).allSatisfy(day -> {
+            assertThat(day.status().subjects().get(0).achievedGoalCount()).isEqualTo(1);
+            assertThat(day.status().subjects().get(0).targetGoalCount()).isEqualTo(4);
+            assertThat(day.status().subjects().get(1).achievedGoalCount()).isEqualTo(1);
+            assertThat(day.status().subjects().get(1).targetGoalCount()).isEqualTo(2);
+        });
+        verify(learnerService, times(1)).getPersonalCurriculumAtomicTargetsByLandscape(LEARNER_ID);
         assertThat(learner.getFollowLearningPlans()).isFalse();
         assertThat(learner.getActiveGoalId()).isEqualTo("already-active");
         assertThat(learner.getLastActivityAt()).isEqualTo(CAPTURED_AT);
@@ -2039,6 +2050,104 @@ class LearnerLearningPlanServiceIntegrationTest {
                 "atom-a", TODAY.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant()));
         assertThat(service.getTodayStatus(LEARNER_ID, "de").statusText())
                 .isEqualTo("Mathematik: Tagesziel erreicht · im Plan");
+    }
+
+    @Test
+    void overallAchievementIncludesPrePlanMasteryAndSurvivesCompletionBasisAndReplanning() {
+        when(learnerService.getPersonalCurriculumAtomicTargetsByLandscape(LEARNER_ID))
+                .thenReturn(Map.of(LANDSCAPE_ID, List.of("atom-a", "atom-b", "atom-c")));
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-c", 1.0));
+        var plan = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Mathe", List.of(
+                        learning("first", "2026-09-04", "2026-09-04", "atom-a", "atom-b", "atom-c"))),
+                TODAY);
+
+        var before = service.getTodayStatus(LEARNER_ID, "de").subjects().getFirst();
+        assertThat(before.achievedGoalCount()).isEqualTo(1);
+        assertThat(before.targetGoalCount()).isEqualTo(3);
+        assertThat(before.periodGauge().target()).isEqualTo(2);
+        assertThat(before.balanceDialText()).isEqualTo("im Plan");
+
+        when(learnerService.getMastery(LEARNER_ID))
+                .thenReturn(Map.of("atom-a", 1.0, "atom-c", 1.0));
+        when(learnerService.getGoalCompletionsOnDate(LEARNER_ID, TODAY)).thenReturn(
+                Map.of("atom-a", TODAY.atStartOfDay(ZoneId.of("Europe/Berlin")).toInstant()));
+        var completed = service.getTodayStatus(LEARNER_ID, "de").subjects().getFirst();
+        assertThat(completed.achievedGoalCount()).isEqualTo(2);
+        assertThat(completed.targetGoalCount()).isEqualTo(3);
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").subjects().getFirst().achievedGoalCount())
+                .isEqualTo(2);
+
+        learner.setLearningPlanPeriodBasis(com.skillpilot.backend.service.learningplan.PeriodBasis.WEEK);
+        var weekly = service.getTodayStatus(LEARNER_ID, "en").subjects().getFirst();
+        assertThat(weekly.achievedGoalCount()).isEqualTo(2);
+        assertThat(weekly.targetGoalCount()).isEqualTo(3);
+        assertThat(weekly.balanceDialText()).isEqualTo("on track");
+
+        learner.setLearningPlanPeriodBasis(com.skillpilot.backend.service.learningplan.PeriodBasis.DAY);
+        var replanned = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(plan.revision(), "Remaining goal", List.of(
+                        learning("remaining", "2026-09-07", "2026-09-07", "atom-b"))), TODAY);
+        assertThat(replanned.revision()).isEqualTo(plan.revision() + 1);
+        var nextDay = serviceAt("2026-09-07T08:00:00Z")
+                .getTodayStatus(LEARNER_ID, "de").subjects().getFirst();
+        assertThat(nextDay.achievedGoalCount()).isEqualTo(2);
+        assertThat(nextDay.targetGoalCount()).isEqualTo(3);
+    }
+
+    @Test
+    void overallAchievementUsesAllCurrentLandscapesOfTheSubjectAndDeduplicatesGoals() {
+        String extension = "math-extension";
+        when(landscapeService.getById(extension)).thenReturn(landscape(extension, "Mathematik"));
+        when(learnerService.getPersonalCurriculumAtomicTargetsByLandscape(LEARNER_ID))
+                .thenReturn(Map.of(
+                        LANDSCAPE_ID, List.of("atom-a", "atom-b", "atom-c"),
+                        extension, List.of("atom-a", "atom-d"),
+                        PHYSICS_LANDSCAPE_ID, List.of("atom-p", "atom-q")));
+        when(learnerService.getMastery(LEARNER_ID))
+                .thenReturn(Map.of("atom-a", 1.0, "atom-d", 1.0, "atom-p", 1.0));
+        service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Mathe", List.of(
+                        learning("math", "2026-09-04", "2026-09-04", "atom-b"))), TODAY);
+        service.upsert(LEARNER_ID, PHYSICS_LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Physik", List.of(
+                        learningWithFocus("physics", "physics-focus", "2026-09-04", "2026-09-04", "atom-q"))), TODAY);
+
+        var subjects = service.getTodayStatus(LEARNER_ID, "de").subjects();
+        assertThat(subjects).hasSize(2);
+        assertThat(subjects.get(0).subjectKey()).isEqualTo("mathematik");
+        assertThat(subjects.get(0).landscapeIds()).containsExactly(LANDSCAPE_ID);
+        assertThat(subjects.get(0).achievedGoalCount()).isEqualTo(2);
+        assertThat(subjects.get(0).targetGoalCount()).isEqualTo(4);
+        assertThat(subjects.get(1).subjectKey()).isEqualTo("physik");
+        assertThat(subjects.get(1).achievedGoalCount()).isEqualTo(1);
+        assertThat(subjects.get(1).targetGoalCount()).isEqualTo(2);
+    }
+
+    @Test
+    void achievementAndPlanEvaluabilityFailIndependentlyWithoutInventingZero() {
+        when(learnerService.getPersonalCurriculumAtomicTargetsByLandscape(LEARNER_ID))
+                .thenReturn(Map.of(LANDSCAPE_ID, List.of("atom-a", "atom-b", "atom-c")));
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-c", 1.0));
+        var plan = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Mathe", List.of(
+                        learning("math", "2026-09-04", "2026-09-04", "atom-a"))), TODAY);
+        var stored = planRepository.findById(plan.planId()).orElseThrow();
+        stored.setBlocksJson("{not-json");
+        planRepository.saveAndFlush(stored);
+
+        var brokenPlan = service.getTodayStatus(LEARNER_ID, "de").subjects().getFirst();
+        assertThat(brokenPlan.evaluable()).isFalse();
+        assertThat(brokenPlan.balanceDialText()).isNull();
+        assertThat(brokenPlan.achievedGoalCount()).isEqualTo(1);
+        assertThat(brokenPlan.targetGoalCount()).isEqualTo(3);
+
+        when(learnerService.getPersonalCurriculumAtomicTargetsByLandscape(LEARNER_ID))
+                .thenThrow(new ResponseStatusException(HttpStatus.CONFLICT, "scope unavailable"));
+        var missingScope = service.getTodayStatus(LEARNER_ID, "de").subjects().getFirst();
+        assertThat(missingScope.achievedGoalCount()).isNull();
+        assertThat(missingScope.targetGoalCount()).isNull();
+        assertThat(missingScope.balanceDialText()).isNull();
     }
 
     @Test

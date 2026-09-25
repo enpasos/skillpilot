@@ -89,6 +89,11 @@ export interface LearnerPlanSubjectStatus {
   statusDirection: LearnerPlanStatusDirection | null
   periodGauge: LearnerPlanPeriodGauge | null
   balanceGauge: LearnerPlanBalanceGauge | null
+  /** Current counts for the selected Personal Curriculum; absent on older responses, null if unavailable. */
+  achievedGoalCount?: number | null
+  targetGoalCount?: number | null
+  /** Backend-localized short balance wording for the dial; absent on older responses. */
+  balanceDialText?: string | null
   current: boolean
   canContinue: boolean
 }

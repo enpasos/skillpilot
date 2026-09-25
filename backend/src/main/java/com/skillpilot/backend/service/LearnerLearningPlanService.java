@@ -128,6 +128,14 @@ public class LearnerLearningPlanService {
     private LearnerPlanTodayStatus calculateStatus(
             String skillpilotId, Learner learner, List<LearnerLearningPlan> subjectPlans,
             LocalDate asOf, String communicationLocale, boolean preview) {
+        return calculateStatus(skillpilotId, learner, subjectPlans, asOf,
+                communicationLocale, preview, null);
+    }
+
+    private LearnerPlanTodayStatus calculateStatus(
+            String skillpilotId, Learner learner, List<LearnerLearningPlan> subjectPlans,
+            LocalDate asOf, String communicationLocale, boolean preview,
+            StatusReadSnapshot snapshot) {
         PeriodBasis periodBasis = learner.getLearningPlanPeriodBasis();
         LocalDate periodStart = periodStart(periodBasis, asOf);
         LocalDate periodEnd = periodEnd(periodBasis, asOf);
@@ -137,7 +145,8 @@ public class LearnerLearningPlanService {
 
         boolean enabled = Boolean.TRUE.equals(learner.getFollowLearningPlans());
         String activeGoalId = learner.getActiveGoalId();
-        Map<String, Double> mastery = learners.getMastery(skillpilotId);
+        Map<String, Double> mastery = snapshot == null
+                ? learners.getMastery(skillpilotId) : snapshot.mastery();
         boolean activeGoalInProgress = activeGoalId != null
                 && !activeGoalId.isBlank()
                 && mastery.getOrDefault(activeGoalId, 0.0) < MASTERY_THRESHOLD;
@@ -199,6 +208,12 @@ public class LearnerLearningPlanService {
         Map<String, Instant> periodCompletions = periodBasis == PeriodBasis.WEEK
                 ? learners.getGoalCompletionsBetween(skillpilotId, periodStart, periodEnd)
                 : learners.getGoalCompletionsOnDate(skillpilotId, asOf);
+        // The dated plan captures only goals still open when it was created. The Cockpit's
+        // overall achievement count instead uses every current Level-2 target in the subject,
+        // including goals mastered before that plan and goals outside its dated blocks.
+        Map<String, SubjectAchievement> achievementBySubject = snapshot == null
+                ? currentSubjectAchievements(skillpilotId, mastery, bySubject.keySet())
+                : snapshot.achievements();
 
         List<LearnerPlanTodayStatus.SubjectStatus> subjects = new ArrayList<>();
         List<String> subjectLines = new ArrayList<>();
@@ -206,7 +221,8 @@ public class LearnerLearningPlanService {
         boolean resumeAvailable = !activeGoalInProgress && personalContinuationAvailable;
         for (SubjectAggregate aggregate : bySubject.values()) {
             LearnerPlanTodayStatus.SubjectStatus subject = aggregate.toSubjectStatus(
-                    periodBasis, periodStart, periodEnd, mastery, periodCompletions, effectiveLocale);
+                    periodBasis, periodStart, periodEnd, mastery, periodCompletions,
+                    achievementBySubject.get(aggregate.subjectKey), effectiveLocale);
             subjects.add(subject);
             if (subject.subjectLine() != null && !subject.subjectLine().isBlank()) {
                 subjectLines.add(subject.subjectLine());
@@ -274,6 +290,69 @@ public class LearnerLearningPlanService {
                 List.copyOf(subjects),
                 unavailablePlanCount,
                 automaticResume);
+    }
+
+    /**
+     * Counts current personal-curriculum targets once per stable subject. The goal IDs come
+     * from the same Level-2 planning scope used for authoring; the mastery values come from
+     * the status read's one effective snapshot (including the SRS overlay). A missing or
+     * unreadable scope cannot be presented as zero progress.
+     */
+    private Map<String, SubjectAchievement> currentSubjectAchievements(
+            String skillpilotId, Map<String, Double> mastery, Set<String> displayedSubjects) {
+        if (displayedSubjects.isEmpty()) {
+            return Map.of();
+        }
+        final Map<String, List<String>> targetIdsByLandscape;
+        try {
+            targetIdsByLandscape = learners.getPersonalCurriculumAtomicTargetsByLandscape(skillpilotId);
+        } catch (ResponseStatusException | IllegalArgumentException
+                | IllegalStateException | NullPointerException exception) {
+            if (exception instanceof ResponseStatusException response
+                    && response.getStatusCode().is5xxServerError()) {
+                throw response;
+            }
+            return Map.of();
+        }
+        if (targetIdsByLandscape == null || targetIdsByLandscape.isEmpty()) {
+            return Map.of();
+        }
+
+        Map<String, Set<String>> targetIdsBySubject = new LinkedHashMap<>();
+        Set<String> unavailableSubjects = new HashSet<>();
+        for (Map.Entry<String, List<String>> entry : targetIdsByLandscape.entrySet()) {
+            String landscapeId = entry.getKey();
+            String subjectKey = stableSubjectKey(landscapeId);
+            if (subjectKey == null || !displayedSubjects.contains(subjectKey)) {
+                continue;
+            }
+            if (entry.getValue() == null || entry.getValue().isEmpty()
+                    || entry.getValue().stream().anyMatch(id -> id == null || id.isBlank())) {
+                unavailableSubjects.add(subjectKey);
+                continue;
+            }
+            targetIdsBySubject.computeIfAbsent(subjectKey, ignored -> new LinkedHashSet<>())
+                    .addAll(entry.getValue());
+        }
+
+        Map<String, SubjectAchievement> result = new LinkedHashMap<>();
+        targetIdsBySubject.forEach((subjectKey, targetIds) -> {
+            if (!unavailableSubjects.contains(subjectKey)) {
+                int achieved = (int) targetIds.stream()
+                        .filter(goalId -> mastery.getOrDefault(goalId, 0.0) >= MASTERY_THRESHOLD)
+                        .count();
+                result.put(subjectKey, new SubjectAchievement(achieved, targetIds.size()));
+            }
+        });
+        return result;
+    }
+
+    private record SubjectAchievement(int achievedGoalCount, int targetGoalCount) {
+    }
+
+    private record StatusReadSnapshot(
+            Map<String, Double> mastery,
+            Map<String, SubjectAchievement> achievements) {
     }
 
     /**
@@ -553,11 +632,21 @@ public class LearnerLearningPlanService {
                         entry.getValue().blocks(), false))
                 .map(this::previewPlan)
                 .toList();
+        Map<String, Double> mastery = learners.getMastery(skillpilotId);
+        Set<String> displayedSubjects = new HashSet<>();
+        for (LearnerLearningPlan draft : drafts) {
+            String subjectKey = stableSubjectKey(draft.getLandscapeId());
+            if (subjectKey != null) {
+                displayedSubjects.add(subjectKey);
+            }
+        }
+        StatusReadSnapshot snapshot = new StatusReadSnapshot(mastery,
+                currentSubjectAchievements(skillpilotId, mastery, displayedSubjects));
         List<LearnerLearningPlanApi.PreviewDay> days = new ArrayList<>();
         for (int offset = 0; offset < PREVIEW_DAYS; offset++) {
             LocalDate date = asOf.plusDays(offset);
             days.add(new LearnerLearningPlanApi.PreviewDay(date,
-                    calculateStatus(skillpilotId, learner, drafts, date, communicationLocale, true)));
+                    calculateStatus(skillpilotId, learner, drafts, date, communicationLocale, true, snapshot)));
         }
         return new LearnerLearningPlanApi.PreviewResponse(asOf, List.copyOf(days));
     }
@@ -2167,6 +2256,7 @@ public class LearnerLearningPlanService {
                 LocalDate periodEnd,
                 Map<String, Double> mastery,
                 Map<String, Instant> periodCompletions,
+                SubjectAchievement achievement,
                 String locale) {
             // An ambiguous subject fails closed for switching: a switch must never guess
             // which plan of a subject the learner meant.
@@ -2174,7 +2264,10 @@ public class LearnerLearningPlanService {
             if (!evaluable) {
                 return new LearnerPlanTodayStatus.SubjectStatus(
                         List.copyOf(landscapeIds), subjectKey, subjectLabel, false,
-                        null, null, null, null, current, switchable, null, null, null);
+                        null, null, null, null, current, switchable, null, null,
+                        achievement == null ? null : achievement.achievedGoalCount(),
+                        achievement == null ? null : achievement.targetGoalCount(),
+                        null, null);
             }
             PlanBalanceResult balance = calculateBalance(
                     plannedGoalIds, dueDates, periodStart, periodEnd, mastery, periodCompletions);
@@ -2192,6 +2285,9 @@ public class LearnerLearningPlanService {
                     switchable,
                     periodGauge(balance),
                     balanceGauge(balance, dueDates, periodBasis),
+                    achievement == null ? null : achievement.achievedGoalCount(),
+                    achievement == null ? null : achievement.targetGoalCount(),
+                    UnifiedLearningPlanStatusFormatter.formatBalanceDialText(balance, locale),
                     balance);
         }
     }

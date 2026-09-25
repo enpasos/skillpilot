@@ -6,6 +6,8 @@ export interface LearnerLearningPlanCopy {
   currentGoalLabel: string
   switchSubjectAction: (subject: string) => string
   switchBusy: string
+  switchBadgeAction: string
+  switchBadgeBusy: string
   preparingNextGoal: string
   detailsAction: string
   switchFailed: string
@@ -37,6 +39,8 @@ export const getLearnerLearningPlanCopy = (
       currentGoalLabel: 'Du lernst gerade',
       switchSubjectAction: (subject) => `Zu ${subject} wechseln`,
       switchBusy: 'Fach wird gewechselt …',
+      switchBadgeAction: 'Wechseln',
+      switchBadgeBusy: 'Wechselt …',
       preparingNextGoal: 'SkillPilot wählt dein nächstes fälliges Lernziel aus …',
       detailsAction: 'Plandetails',
       switchFailed: 'Das Fach konnte nicht gewechselt werden. Dein bisheriges Lernziel bleibt erhalten.',
@@ -64,6 +68,8 @@ export const getLearnerLearningPlanCopy = (
       currentGoalLabel: 'You are learning',
       switchSubjectAction: (subject) => `Switch to ${subject}`,
       switchBusy: 'Switching subject…',
+      switchBadgeAction: 'Switch',
+      switchBadgeBusy: 'Switching…',
       preparingNextGoal: 'SkillPilot is selecting your next due learning goal…',
       detailsAction: 'Plan details',
       switchFailed: 'The subject could not be switched. Your previous learning goal remains unchanged.',

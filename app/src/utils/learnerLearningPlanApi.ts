@@ -271,6 +271,32 @@ const parseBalanceGauge = (value: unknown): LearnerPlanBalanceGauge | null => {
   }
 }
 
+const parseSubjectGoalCounts = (source: Record<string, unknown>): Pick<
+  LearnerPlanSubjectStatus,
+  'achievedGoalCount' | 'targetGoalCount'
+> => {
+  const hasAchieved = Object.prototype.hasOwnProperty.call(source, 'achievedGoalCount')
+  const hasTarget = Object.prototype.hasOwnProperty.call(source, 'targetGoalCount')
+  // Older status responses have neither field. Keep their absence distinct from
+  // an explicit null pair, which means the selected goal scope is unavailable.
+  if (!hasAchieved && !hasTarget) return {}
+  if (hasAchieved !== hasTarget) {
+    throw new Error('Invalid learning-plan status response: subject.goalCounts')
+  }
+  if (source.achievedGoalCount === null && source.targetGoalCount === null) {
+    return { achievedGoalCount: null, targetGoalCount: null }
+  }
+  if (source.achievedGoalCount === null || source.targetGoalCount === null) {
+    throw new Error('Invalid learning-plan status response: subject.goalCounts')
+  }
+  const achievedGoalCount = requiredInteger(source.achievedGoalCount, 'subject.achievedGoalCount')
+  const targetGoalCount = requiredInteger(source.targetGoalCount, 'subject.targetGoalCount')
+  if (achievedGoalCount > targetGoalCount) {
+    throw new Error('Invalid learning-plan status response: subject.goalCounts')
+  }
+  return { achievedGoalCount, targetGoalCount }
+}
+
 const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus => {
   const source = asRecord(value, 'Invalid learning-plan status response: subject')
   const evaluable = requiredBoolean(source.evaluable, 'subject.evaluable')
@@ -278,13 +304,19 @@ const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus
   const subjectLine = nullableText(source.subjectLine)
   const periodGauge = parsePeriodGauge(source.periodGauge)
   const balanceGauge = parseBalanceGauge(source.balanceGauge)
+  const goalCounts = parseSubjectGoalCounts(source)
+  const hasBalanceDialText = Object.prototype.hasOwnProperty.call(source, 'balanceDialText')
+  const balanceDialText = nullableText(source.balanceDialText)
   // Evaluability is its own state: an unevaluable subject must never arrive carrying a
   // direction or a status line that would read like a valid balance.
   if (evaluable !== (statusDirection !== null) || evaluable !== (subjectLine !== null)
     || evaluable !== (nullableText(source.periodText) !== null)
     || evaluable !== (nullableText(source.planStatusText) !== null)
     || evaluable !== (periodGauge !== null)
-    || (!evaluable && balanceGauge !== null)) {
+    || (!evaluable && balanceGauge !== null)
+    || (hasBalanceDialText && (evaluable
+      ? balanceDialText === null
+      : source.balanceDialText !== null))) {
     throw new Error('Invalid learning-plan status response: subject.evaluability')
   }
   return {
@@ -298,6 +330,8 @@ const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus
     statusDirection,
     periodGauge,
     balanceGauge,
+    ...goalCounts,
+    ...(hasBalanceDialText ? { balanceDialText } : {}),
     current: requiredBoolean(source.current, 'subject.current'),
     canContinue: requiredBoolean(source.canContinue, 'subject.canContinue'),
   }

@@ -16,6 +16,7 @@ import type {
 type Sample = {
   periodText: string | null
   planStatusText: string | null
+  balanceDialText: string | null
   statusDirection: LearnerPlanStatusDirection | null
   periodGauge: LearnerPlanPeriodGauge | null
   balanceGauge: LearnerPlanBalanceGauge | null
@@ -38,30 +39,37 @@ const balance = (
 
 const sample = (
   periodText: string,
-  planStatusText: string,
+  balanceDialText: string,
   statusDirection: LearnerPlanStatusDirection,
   completed: number,
   target: number,
   periodNeedle: number | null,
   balanceGauge: LearnerPlanBalanceGauge | null,
 ): Sample => ({
-  periodText, planStatusText, statusDirection,
+  periodText,
+  planStatusText: statusDirection === 'behind'
+    ? `${Math.abs(balanceGauge?.net ?? 0)} ${Math.abs(balanceGauge?.net ?? 0) === 1 ? 'Lernziel' : 'Lernziele'} im Rückstand`
+    : statusDirection === 'ahead'
+      ? `${balanceGauge?.net ?? 0} ${balanceGauge?.net === 1 ? 'Lernziel' : 'Lernziele'} vorgearbeitet`
+      : balanceDialText,
+  balanceDialText,
+  statusDirection,
   periodGauge: { completed, target, needlePosition: periodNeedle },
   balanceGauge,
 })
 
 const unavailable: Sample = {
-  periodText: null, planStatusText: null, statusDirection: null,
+  periodText: null, planStatusText: null, balanceDialText: null, statusDirection: null,
   periodGauge: null, balanceGauge: null,
 }
 
-const DAY_MATH = sample('Tagesziel 0 von 6', '1 Lernziel im Rückstand', 'behind', 0, 6, 0,
+const DAY_MATH = sample('Tagesziel 0 von 6', '1 im Rückstand', 'behind', 0, 6, 0,
   balance(-1, 3, 6, -1 / 7))
-const DAY_PHYSICS = sample('Tagesziel 0 von 7', '13 Lernziele im Rückstand', 'behind', 0, 7, 0,
+const DAY_PHYSICS = sample('Tagesziel 0 von 7', '13 im Rückstand', 'behind', 0, 7, 0,
   balance(-13, 4, 8, -1, true))
-const WEEK_MATH = sample('Wochenziel 0 von 10', '1 Lernziel im Rückstand', 'behind', 0, 10, 0,
+const WEEK_MATH = sample('Wochenziel 0 von 10', '1 im Rückstand', 'behind', 0, 10, 0,
   balance(-1, 8, 16, -1 / 17))
-const WEEK_PHYSICS = sample('Wochenziel 0 von 12', '13 Lernziele im Rückstand', 'behind', 0, 12, 0,
+const WEEK_PHYSICS = sample('Wochenziel 0 von 12', '13 im Rückstand', 'behind', 0, 12, 0,
   balance(-13, 6, 12, -1, true))
 
 const EXAMPLES: Example[] = [
@@ -87,53 +95,53 @@ const EXAMPLES: Example[] = [
     key: 'backlog', label: 'Pensum erfüllt · Rückstand',
     note: 'Das gewählte Tages- oder Wochenpensum ist erreicht. Älterer Rückstand bleibt trotzdem sichtbar.',
     day: {
-      math: sample('Tagesziel erreicht', '1 Lernziel im Rückstand', 'behind', 6, 6, 1, balance(-1, 3, 6, -1 / 7)),
-      physics: sample('Tagesziel erreicht', '13 Lernziele im Rückstand', 'behind', 7, 7, 1, balance(-13, 4, 8, -1, true)),
+      math: sample('Tagesziel erreicht', '1 im Rückstand', 'behind', 6, 6, 1, balance(-1, 3, 6, -1 / 7)),
+      physics: sample('Tagesziel erreicht', '13 im Rückstand', 'behind', 7, 7, 1, balance(-13, 4, 8, -1, true)),
     },
     week: {
-      math: sample('Wochenziel erreicht', '1 Lernziel im Rückstand', 'behind', 10, 10, 1, balance(-1, 8, 16, -1 / 17)),
-      physics: sample('Wochenziel erreicht', '13 Lernziele im Rückstand', 'behind', 12, 12, 1, balance(-13, 6, 12, -1, true)),
+      math: sample('Wochenziel erreicht', '1 im Rückstand', 'behind', 10, 10, 1, balance(-1, 8, 16, -1 / 17)),
+      physics: sample('Wochenziel erreicht', '13 im Rückstand', 'behind', 12, 12, 1, balance(-13, 6, 12, -1, true)),
     },
   },
   {
     key: 'mild-ahead', label: 'Leichter Vorsprung',
     note: 'Auch kleiner Vorsprung hat eine grüne Gesamtnadel. Die tatsächliche Zahl steht weiter unter der Scheibe.',
     day: {
-      math: sample('Tagesziel erreicht', '2 Lernziele vorgearbeitet', 'ahead', 6, 6, 1, balance(2, 3, 6, 2 / 6)),
-      physics: sample('Tagesziel erreicht', '1 Lernziel vorgearbeitet', 'ahead', 7, 7, 1, balance(1, 4, 8, 1 / 8)),
+      math: sample('Tagesziel erreicht', '2 vorgearbeitet', 'ahead', 6, 6, 1, balance(2, 3, 6, 2 / 6)),
+      physics: sample('Tagesziel erreicht', '1 vorgearbeitet', 'ahead', 7, 7, 1, balance(1, 4, 8, 1 / 8)),
     },
     week: {
-      math: sample('Wochenziel erreicht', '2 Lernziele vorgearbeitet', 'ahead', 10, 10, 1, balance(2, 8, 16, 2 / 16)),
-      physics: sample('Wochenziel erreicht', '1 Lernziel vorgearbeitet', 'ahead', 12, 12, 1, balance(1, 6, 12, 1 / 12)),
+      math: sample('Wochenziel erreicht', '2 vorgearbeitet', 'ahead', 10, 10, 1, balance(2, 8, 16, 2 / 16)),
+      physics: sample('Wochenziel erreicht', '1 vorgearbeitet', 'ahead', 12, 12, 1, balance(1, 6, 12, 1 / 12)),
     },
   },
   {
     key: 'ahead', label: 'Vorarbeit · Vorsprung',
     note: 'Früher erledigte Planziele zählen mit. Der tatsächliche Vorsprung bleibt über dem Anschlag lesbar.',
     day: {
-      math: sample('Tagesziel erreicht', '7 Lernziele vorgearbeitet', 'ahead', 6, 6, 1, balance(7, 3, 6, 1, false, true)),
-      physics: sample('Tagesziel erreicht', '9 Lernziele vorgearbeitet', 'ahead', 7, 7, 1, balance(9, 4, 8, 1, false, true)),
+      math: sample('Tagesziel erreicht', '7 vorgearbeitet', 'ahead', 6, 6, 1, balance(7, 3, 6, 1, false, true)),
+      physics: sample('Tagesziel erreicht', '9 vorgearbeitet', 'ahead', 7, 7, 1, balance(9, 4, 8, 1, false, true)),
     },
     week: {
-      math: sample('Wochenziel erreicht', '17 Lernziele vorgearbeitet', 'ahead', 10, 10, 1, balance(17, 8, 16, 1, false, true)),
-      physics: sample('Wochenziel erreicht', '13 Lernziele vorgearbeitet', 'ahead', 12, 12, 1, balance(13, 6, 12, 1, false, true)),
+      math: sample('Wochenziel erreicht', '17 vorgearbeitet', 'ahead', 10, 10, 1, balance(17, 8, 16, 1, false, true)),
+      physics: sample('Wochenziel erreicht', '13 vorgearbeitet', 'ahead', 12, 12, 1, balance(13, 6, 12, 1, false, true)),
     },
   },
   {
     key: 'no-target', label: 'Kein Periodenziel',
     note: 'Ein leerer Zeitraum erzeugt keinen künstlichen Null-Prozent-Wert. Die Planbilanz bleibt verfügbar.',
     day: {
-      math: sample('Heute kein Tagesziel', '1 Lernziel im Rückstand', 'behind', 0, 0, null, balance(-1, 3, 6, -1 / 7)),
-      physics: sample('Heute kein Tagesziel', '13 Lernziele im Rückstand', 'behind', 0, 0, null, balance(-13, 4, 8, -1, true)),
+      math: sample('Heute kein Tagesziel', '1 im Rückstand', 'behind', 0, 0, null, balance(-1, 3, 6, -1 / 7)),
+      physics: sample('Heute kein Tagesziel', '13 im Rückstand', 'behind', 0, 0, null, balance(-13, 4, 8, -1, true)),
     },
     week: {
-      math: sample('Diese Woche kein Wochenziel', '1 Lernziel im Rückstand', 'behind', 0, 0, null, balance(-1, 8, 16, -1 / 17)),
-      physics: sample('Diese Woche kein Wochenziel', '13 Lernziele im Rückstand', 'behind', 0, 0, null, balance(-13, 6, 12, -1, true)),
+      math: sample('Diese Woche kein Wochenziel', '1 im Rückstand', 'behind', 0, 0, null, balance(-1, 8, 16, -1 / 17)),
+      physics: sample('Diese Woche kein Wochenziel', '13 im Rückstand', 'behind', 0, 0, null, balance(-13, 6, 12, -1, true)),
     },
   },
   {
     key: 'unavailable', label: 'Nicht auswertbar',
-    note: 'Mathematik bleibt auswertbar. Fehlende Physikdaten zeigen dort zwei Platzhalter ohne erfundene Bilanz.',
+    note: 'Mathematik bleibt auswertbar. Für Physik fehlen in diesem Beispiel Plan- und Ergebnisdaten; die Scheiben zeigen Platzhalter und keine erfundene Bilanz.',
     day: { math: DAY_MATH, physics: unavailable },
     week: { math: WEEK_MATH, physics: unavailable },
   },
@@ -169,17 +177,53 @@ const MOCK_PLANS: LearnerLearningPlanSummary[] = [
   },
 ]
 
-const statusFor = (basis: 'DAY' | 'WEEK', example: Example): LearnerPlanStatus => {
+type PreviewLanguage = 'de' | 'en'
+
+const mockPlansFor = (language: PreviewLanguage): LearnerLearningPlanSummary[] => {
+  if (language === 'de') return MOCK_PLANS
+  return MOCK_PLANS.map((plan) => ({
+    ...plan,
+    planLabel: plan.landscapeId.startsWith('math') ? 'Mathematics' : 'Physics',
+    currentBlock: plan.currentBlock
+      ? { ...plan.currentBlock, title: 'Current learning section' }
+      : null,
+  }))
+}
+
+const englishSample = (basis: 'DAY' | 'WEEK', value: Sample): Sample => {
+  if (!value.periodGauge) return value
+  const { completed, target } = value.periodGauge
+  const periodText = target === 0
+    ? basis === 'DAY' ? 'No daily target today' : 'No weekly target this week'
+    : completed >= target
+      ? basis === 'DAY' ? 'Daily target met' : 'Weekly target met'
+      : `${basis === 'DAY' ? 'Daily' : 'Weekly'} target ${completed} of ${target}`
+  const net = value.balanceGauge?.net ?? 0
+  const planStatusText = value.statusDirection === 'on_track' ? 'On track'
+    : value.statusDirection === 'behind'
+      ? `${Math.abs(net)} learning ${Math.abs(net) === 1 ? 'goal' : 'goals'} behind`
+      : `${net} learning ${net === 1 ? 'goal' : 'goals'} ahead`
+  const balanceDialText = value.statusDirection === 'on_track' ? 'On track'
+    : value.statusDirection === 'behind' ? `${Math.abs(net)} behind` : `${net} ahead`
+  return { ...value, periodText, planStatusText, balanceDialText }
+}
+
+const statusFor = (basis: 'DAY' | 'WEEK', example: Example, language: PreviewLanguage): LearnerPlanStatus => {
   const values = basis === 'DAY' ? example.day : example.week
   const subjects: LearnerPlanSubjectStatus[] = ([
-    ['mathematik', 'Mathematik', 'math/sek-i', values.math],
-    ['physik', 'Physik', 'physics/sek-i', values.physics],
-  ] as const).map(([subjectKey, subjectLabel, landscapeId, value]) => {
+    ['mathematik', language === 'de' ? 'Mathematik' : 'Mathematics', 'math/sek-i', values.math, 10, 364],
+    ['physik', language === 'de' ? 'Physik' : 'Physics', 'physics/sek-i', values.physics, 18, 128],
+  ] as const).map(([subjectKey, subjectLabel, landscapeId, rawValue, achievedGoalCount, targetGoalCount]) => {
+    const value = language === 'de' ? rawValue : englishSample(basis, rawValue)
     const evaluable = value.periodGauge !== null
     return {
       subjectKey, landscapeIds: [landscapeId], subjectLabel, evaluable,
+      // Both achievement counts belong to the same selected scope, independent of the plan gauges.
+      achievedGoalCount: example.key === 'unavailable' && subjectKey === 'physik' ? null : achievedGoalCount,
+      targetGoalCount: example.key === 'unavailable' && subjectKey === 'physik' ? null : targetGoalCount,
       periodText: value.periodText,
       planStatusText: value.planStatusText,
+      balanceDialText: value.balanceDialText,
       subjectLine: evaluable ? subjectLabel + ': ' + value.periodText + ' · ' + value.planStatusText : null,
       statusDirection: value.statusDirection,
       periodGauge: value.periodGauge,
@@ -189,20 +233,25 @@ const statusFor = (basis: 'DAY' | 'WEEK', example: Example): LearnerPlanStatus =
     }
   })
   const unavailableCount = subjects.filter((subject) => !subject.evaluable).length
-  const notice = unavailableCount ? '1 Fachplan nicht auswertbar (Physik).' : null
+  const notice = unavailableCount
+    ? language === 'de' ? '1 Fachplan nicht auswertbar (Physik).' : '1 subject plan unavailable (Physics).'
+    : null
   return {
     asOf: '2026-09-23',
     periodBasis: basis,
     periodStart: basis === 'DAY' ? '2026-09-23' : '2026-09-21',
     periodEnd: basis === 'DAY' ? '2026-09-23' : '2026-09-27',
     timeZone: 'Europe/Berlin',
-    language: 'de',
+    language,
     evaluable: unavailableCount === 0,
     statusText: [...subjects.map((subject) => subject.subjectLine).filter(Boolean), ...(notice ? [notice] : [])].join('\n'),
     noticeText: notice,
-    activeGoal: {
+    activeGoal: language === 'de' ? {
       title: 'Masse von Körpern messen und vergleichen',
       announcement: 'Dein aktives Lernziel: Masse von Körpern messen und vergleichen',
+    } : {
+      title: 'Measuring and comparing the mass of objects',
+      announcement: 'Your active learning goal: Measuring and comparing the mass of objects',
     },
     followLearningPlans: true,
     resumeAvailable: true,
@@ -214,10 +263,11 @@ const statusFor = (basis: 'DAY' | 'WEEK', example: Example): LearnerPlanStatus =
 const Preview = () => {
   const [basis, setBasis] = useState<'DAY' | 'WEEK'>('WEEK')
   const [exampleKey, setExampleKey] = useState('current')
+  const [language, setLanguage] = useState<PreviewLanguage>('de')
   const [mobile, setMobile] = useState(() => window.innerWidth < 640)
   const [settingsNotice, setSettingsNotice] = useState(false)
   const example = EXAMPLES.find((item) => item.key === exampleKey) ?? EXAMPLES[0]
-  const status = statusFor(basis, example)
+  const status = statusFor(basis, example, language)
 
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-8 text-slate-900 sm:px-6">
@@ -225,17 +275,17 @@ const Preview = () => {
         <header className="overflow-hidden rounded-3xl px-5 py-7 text-white shadow-xl sm:px-8 sm:py-9"
           style={{ background: 'linear-gradient(135deg, #0f172a 0%, #0c4a6e 100%)' }}>
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-300">SkillPilot · Issue #56</p>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-300">SkillPilot · Issue #57</p>
             <span className="rounded-full border border-sky-300/40 bg-sky-300/15 px-3 py-1 text-xs font-semibold text-sky-100">
-              Visuelle Vorschau · Beispieldaten
+              Visuelle Vorschau · synthetische Beispielwerte
             </span>
           </div>
           <h1 className="mt-4 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
             Heute und Gesamt auf einen Blick
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
-            Hier läuft die echte Cockpit-Komponente mit festen Beispieldaten. Du kannst Zeitraum,
-            Plansituation und Ansichtsbreite ausprobieren.
+            Hier läuft die echte Cockpit-Komponente mit festen Beispielwerten. Die Zahlen für erreichte
+            und gesamte Lernziele sind frei gewählt und bleiben beim Wechsel von Zeitraum und Plansituation gleich.
           </p>
         </header>
 
@@ -250,6 +300,19 @@ const Preview = () => {
                     className={'min-h-10 rounded-lg px-5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ' +
                       (basis === value ? 'bg-white text-sky-800 shadow-sm' : 'text-slate-600 hover:text-slate-900')}>
                     {value === 'DAY' ? 'Tag' : 'Woche'}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">Sprache der Cockpit-Karte</p>
+              <div className="inline-flex rounded-xl bg-slate-100 p-1" role="group" aria-label="Sprache der Cockpit-Karte">
+                {(['de', 'en'] as const).map((value) => (
+                  <button key={value} type="button" data-testid={'preview-language-' + value}
+                    aria-pressed={language === value} onClick={() => setLanguage(value)}
+                    className={'min-h-10 rounded-lg px-5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 ' +
+                      (language === value ? 'bg-white text-sky-800 shadow-sm' : 'text-slate-600 hover:text-slate-900')}>
+                    {value.toUpperCase()}
                   </button>
                 ))}
               </div>
@@ -295,10 +358,13 @@ const Preview = () => {
             <div data-testid="preview-frame" className={'mx-auto transition-[max-width] duration-200 ' +
               (mobile ? 'max-w-[390px]' : 'max-w-[1600px]')}>
               <LearnerPlanTodayOverview
-                status={status} plans={MOCK_PLANS} language="de" planModeEnabled
-                subjectLabel={(id) => id.startsWith('math') ? 'Mathematik' : 'Physik'}
+                status={status} plans={mockPlansFor(language)} language={language} planModeEnabled
+                subjectLabel={(id) => id.startsWith('math')
+                  ? language === 'de' ? 'Mathematik' : 'Mathematics'
+                  : language === 'de' ? 'Physik' : 'Physics'}
                 goalLabel={(id) => id === 'physics-mass'
-                  ? 'Masse von Körpern messen und vergleichen' : 'Nächstes Lernziel'}
+                  ? language === 'de' ? 'Masse von Körpern messen und vergleichen' : 'Measuring and comparing the mass of objects'
+                  : language === 'de' ? 'Nächstes Lernziel' : 'Next learning goal'}
                 activeGoalId="physics-mass" activeLandscapeId="physics/sek-i"
                 onSwitch={() => setSettingsNotice(true)}
               />
@@ -314,7 +380,7 @@ const Preview = () => {
           ) : null}
         </section>
         <footer className="mt-8 pb-5 text-xs text-slate-500">
-          Entwurf zur Sichtprüfung · keine Kontodaten, keine Backend-Verbindung, keine Lernstandsänderung.
+          Entwurf zur Sichtprüfung · frei gewählte Beispielwerte, keine Kontodaten, keine Backend-Verbindung, keine Lernstandsänderung.
         </footer>
       </div>
     </main>

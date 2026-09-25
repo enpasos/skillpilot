@@ -205,10 +205,6 @@ Der Coach erklärt im Gespräch; SkillPilot hält Curriculum, bestätigten Lernf
 
 Ein navigierbarer Lehrplan beantwortet noch nicht die Alltagsfrage: **„Was muss ich heute oder diese Woche lernen, und wie weit bin ich schon?“** Ein Lernplan verbindet erreichten Lernstand, noch offene Ziele und verbleibende Zeit. Er macht Abweichungen vom vorgesehenen Tempo sichtbar und bietet Anlass, mehr Lernzeit, zusätzliche Unterstützung oder einen anderen Rhythmus zu vereinbaren. Individuelles Lernen bedeutet damit nicht Lernen ohne zeitliche Verbindlichkeit. **Der Plan leitet, aber er darf Lernen nicht verhindern.**
 
-![Tagesübersicht für Mathematik und Physik mit aktuellem Lernziel, Fortschritt und Fachwechsel](learning-plan-ui.de.png)
-
-*Aus der Anwendung: Die Planungsoberfläche hält beide Fächer im Blick – was ist schon geschafft, was steht noch an? Aufnahme mit Beispieldaten.*
-
 #### Die Lehrkraft plant den Rahmen
 
 Das **Persönliche Curriculum** bestimmt, welche Kompetenzen zum gewählten Bildungskontext gehören. Der **Lernplan** legt fest, welche Themen oder Lernzielgruppen in welchen Zeiträumen bearbeitet werden sollen. Er ergänzt den Skill-Graphen, ersetzt aber weder seine Lernziele noch deren Voraussetzungen. Soll der gesamte Lehrplan durchlaufen werden, muss die Planung dessen vorgesehenen Umfang abdecken; ein abgeschlossener Teilplan ist nicht automatisch ein abgeschlossener Lehrplan.
@@ -228,16 +224,16 @@ Lernende wählen zwischen **1 Tag** und **1 Woche**. Diese Einstellung gilt geme
 
 Die Auswahl wird für die SkillPilot-ID gespeichert; ohne eigene Auswahl gilt die Wochenauflösung. Ein Wechsel verändert den zeitlichen Bezug der Auswertung, während Plantermine und erreichter Lernfortschritt erhalten bleiben. **Periodenpensum und Rückstand sind getrennte Aussagen:** Ein Tages- oder Wochenziel kann erreicht sein, obwohl noch Rückstand besteht. Vorarbeit wird innerhalb desselben Fachs berücksichtigt.
 
-#### Planstand im Cockpit: Pensum und Gesamtstand
+#### Planstand im Cockpit: Pensum, Gesamtfortschritt und Plansaldo
 
-Im Plan-Modus zeigt das Cockpit für jedes Fach **zwei Scheiben mit Nadeln**. Sie machen auf einen Blick sichtbar, wie viel des aktuellen Pensums bereits erfüllt ist und wie der Lernfortschritt insgesamt zum Fachplan steht.
+Im Plan-Modus zeigt das Cockpit für jedes Fach **zwei Scheiben mit Nadeln**. Links steht das erfüllte Tages- oder Wochenpensum. Rechts steht über der Scheibe, wie viele Ziele des persönlichen Curriculums in diesem Fach insgesamt erreicht sind; die Nadel zeigt getrennt davon den Stand zum Fachplan.
 
-![Cockpit im Wochenmodus: Mathematik mit 10 von 10 Zielen und 2 Lernzielen Vorarbeit; Physik mit 12 von 12 Zielen und 1 Lernziel Vorarbeit](learning-plan-cockpit.de.png "width=360")
+![Cockpit im Wochenmodus: Mathematik 10 von 10 diese Woche, gesamt 10 von 364 und 2 vorgearbeitet; Physik 12 von 12, gesamt 18 von 128 und 1 vorgearbeitet](learning-plan-cockpit.de.png "width=360")
 
-*Wochenansicht des Cockpits: Das Wochenpensum ist in beiden Fächern erfüllt, zusätzlich besteht Vorarbeit. Physik ist das aktuelle Fach; das aktive Lernziel steht über den Fachanzeigen.*
+*Wochenansicht mit Beispieldaten: Beide Wochenpensen sind erfüllt. Die Zahlen über den rechten Scheiben zeigen den Gesamtfortschritt; die Nadeln und die kurzen Texte darunter zeigen die Vorarbeit. Physik ist das aktuelle Fach.*
 
-- **„Heute“ beziehungsweise „Diese Woche“:** Die linke Scheibe zeigt den erfüllten Anteil des Tages- oder Wochenpensums als „x von y Zielen“. Blau steht für den erfüllten, Grau für den noch offenen Anteil. Bereits geleistete Vorarbeit wird angerechnet; die Anzeige zählt deshalb nicht nur Ziele, die in der laufenden Periode neu abgeschlossen wurden.
-- **„Gesamt“:** Die rechte Scheibe zeigt den kumulierten Planstand desselben Fachs: Rückstand links, „im Plan“ in der neutralen Mitte, Vorarbeit rechts. Die Skala reicht von Rot über Grau bis Grün und berücksichtigt das typische Tages- oder Wochenpensum dieses Fachs. Der Text unter der Scheibe nennt den tatsächlichen Rückstand oder Vorsprung in Lernzielen, auch wenn die Nadel einen Anschlag erreicht.
+- **„Heute“ beziehungsweise „Diese Woche“:** Die linke Scheibe zeigt den erfüllten Anteil des Tages- oder Wochenpensums als „x von y“. Blau steht für den erfüllten, Grau für den noch offenen Anteil. Bereits geleistete Vorarbeit wird angerechnet; die Anzeige zählt deshalb nicht nur Ziele, die in der laufenden Periode neu abgeschlossen wurden.
+- **„Gesamt: x von y“:** Die Zahl über der rechten Scheibe zählt die erreichten atomaren Ziele des aktuellen persönlichen Curriculums in diesem Fach. Auch vor Beginn des Lernplans erreichte Ziele zählen mit; ein Ziel wird innerhalb des Fachs nur einmal gezählt. Die Nadel darunter zeigt den **Plansaldo**: Rückstand links, „im Plan“ in der neutralen Mitte, Vorarbeit rechts. Die Skala reicht von Rot über Grau bis Grün und berücksichtigt das typische Tages- oder Wochenpensum dieses Fachs. Der kurze Text unter der Scheibe nennt den tatsächlichen Rückstand oder Vorsprung, auch wenn die Nadel einen Anschlag erreicht. Bei fehlender Datengrundlage wird keine Null als Gesamtfortschritt ausgegeben.
 
 **Ein erfülltes Periodenpensum bedeutet nicht automatisch, dass ein älterer Rückstand aufgeholt ist.** Ebenso erzeugt ein heute oder diese Woche noch offenes Pensum allein keinen kumulierten Rückstand. Die Fachbilanzen bleiben getrennt. Das aktive Lernziel ist separat sichtbar; ein angebotener Fachwechsel und die aufklappbaren **„Plandetails“** ermöglichen die weitere Orientierung. Anzeigen und Statustexte beruhen auf den von SkillPilot berechneten Werten, die auch der Coach verwendet.
 
@@ -245,7 +241,7 @@ Im Plan-Modus zeigt das Cockpit für jedes Fach **zwei Scheiben mit Nadeln**. Si
 
 Bei aktivem Planmodus und gültiger Lernsession hält SkillPilot die Organisation im Hintergrund:
 
-1. **Orientieren:** Der Coach übernimmt den von SkillPilot formulierten Planstand wörtlich: je Fach das Tages- oder Wochenziel und gegebenenfalls Rückstand oder Vorarbeit. Das Cockpit zeigt denselben Planstand mit den Scheibenanzeigen und den bereitgestellten Statustexten; der Coach rechnet nicht selbst. Das aktive Lernziel kündigt er getrennt davon einmal zu Beginn der Lernaufgabe an.
+1. **Orientieren:** Der Coach übernimmt den von SkillPilot formulierten Planstand wörtlich: je Fach das Tages- oder Wochenziel und gegebenenfalls Rückstand oder Vorarbeit. Das Cockpit zeigt den Plansaldo in kurzer Form an der Scheibe; der Coach rechnet nicht selbst. Das aktive Lernziel kündigt er getrennt davon einmal zu Beginn der Lernaufgabe an.
 2. **Automatisch anknüpfen:** Ein gültiges laufendes Ziel wird fortgesetzt; andernfalls wird bei noch offenem Tages- oder Wochenpensum ein fälliges, nach den Voraussetzungen lernbares Ziel gewählt, sofern eines verfügbar ist. Die gemeinsame Aktivierung kann dieses erste Ziel bereits auswählen. Es ist kein zusätzlicher Klick auf „Weiterlernen“ oder eine manuelle Zielsuche nötig.
 3. **Lernen und Fortschritt prüfen:** Der Coach erklärt, stellt Aufgaben und begleitet die Bearbeitung. Erst nach den geltenden Evidenzregeln gespeicherter Fortschritt verändert den Lernstand und damit den Planstand. Danach führt der plan-geführte Ablauf zum nächsten zulässigen Schritt.
 4. **Fach wechseln oder abschließen:** Ein Wunsch wie „Jetzt Physik“ wechselt innerhalb der verfügbaren Fachoptionen; die übrigen Anforderungen bleiben bestehen. Sind die Periodenziele erreicht, würdigt der Coach das und startet kein weiteres Ziel von sich aus. Ein erreichtes Tages- oder Wochenziel heißt nicht, dass kein Rückstand mehr besteht: Dann lädt der Coach ohne Druck zum Aufholen ein. Weiterlernen bleibt auf Wunsch jederzeit möglich; künftige Ziele werden nicht automatisch zu zusätzlicher Pflicht für die laufende Periode. Nicht auswertbare Pläne nennt der Planstand ausdrücklich, statt sie als erledigt darzustellen.
@@ -254,12 +250,12 @@ Eine reine Statusfrage startet keine neue Aufgabe; eine gewünschte Pause bleibt
 
 #### Beispiel: Mathematik und Physik an einem Tag
 
-Ein **illustratives Tagesbeispiel**, keine Live-Daten: In Mathematik sind bis heute 13 Ziele vorgesehen und insgesamt 9 beherrscht, in Physik 10 vorgesehen und 11 beherrscht. Gezählt werden die fortschrittswirksamen Planziele einschließlich später vorgesehener Ziele; bei Planerstellung bereits beherrschte Ziele gehören nicht dazu.
+Ein **illustratives Tagesbeispiel**, keine Live-Daten: In Mathematik sind bis heute 13 Planziele vorgesehen und 9 fortschrittswirksame Planziele erreicht, in Physik 10 vorgesehen und 11 erreicht. Für den **Plansaldo** zählen auch später vorgesehene Planziele, aber keine Ziele, die schon bei Planerstellung beherrscht wurden. Die Zahl „Gesamt: x von y“ im Cockpit verwendet dagegen alle aktuellen atomaren Ziele des persönlichen Curriculums und schließt frühere Abschlüsse ein.
 
-| Fach | Heute geschafft / Pensum | Zusätzlicher Planstand |
+| Fach | Tagespensum | Zusätzlicher Planstand |
 |---|---|---|
 | Mathematik | 1 von 3 | 2 Lernziele im Rückstand |
-| Physik | 2 von 2 – Tagesziel erreicht | 1 Lernziel vorgearbeitet |
+| Physik | 2 von 2 | 1 Lernziel vorgearbeitet |
 
 Die zwei heute noch offenen Mathe-Ziele und der zusätzliche Rückstand werden getrennt ausgewiesen. Physik-Vorarbeit gleicht den Mathe-Rückstand **nicht** aus. „Vorgearbeitet“ beschreibt den Umfang des Fortschritts, nicht die Beherrschung aller früher eingeplanten Inhalte; offene frühere Ziele bleiben für die Zielauswahl bestehen.
 
