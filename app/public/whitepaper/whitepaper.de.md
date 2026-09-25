@@ -160,7 +160,7 @@ Bei fachlichen Verständniszielen fragt der Coach nach Begründungen und Erklär
 
 #### Mastery: Fortschritt als Evidenzmodell
 
-Die aktuelle Cockpit-Ansicht trennt gewöhnliches Karteikartenüben vom evidenzwirksamen **Verified Recall**. Die Aufnahme dazu steht im Anhang, Detail A.
+Die aktuelle Cockpit-Ansicht trennt gewöhnliches Karteikartenüben vom evidenzwirksamen **Verified Recall**.
 
 **Mastery** ist der backendseitige Lernzustand auf atomaren Zielen, kein Chatprotokoll. Bei gewöhnlichen Lernzielen meldet der Coach nach den geltenden Evidenzregeln eine Abschlussentscheidung; das Backend prüft und speichert die zulässige Zustandsänderung. Das Cockpit zeigt den gespeicherten Stand. Orientierungsknoten verwenden nur einen Abschlussmarker und bescheinigen keine fachliche Beherrschung. Bei Memorierknoten wird Mastery aus dem serverseitigen Kartenstatus und dem **Verified Recall** abgeleitet; gewöhnliches Karteikartenüben verändert nur den Wiederholungsplan. Clusterfortschritt wird gewichtet aus den enthaltenen Zielen aggregiert.
 
@@ -184,7 +184,7 @@ In einem Kontext wie „Mathematik, Jahrgangsstufe 7“ oder „Leistungskurs Ph
 
 Eine mögliche Route führt von einer **Orientierung** über **angeleitetes Verstehen** zum **selbstständigen Anwenden**. Notwendiges Memorieren kann parallel laufen; nicht jedes Thema benötigt Karteikarten oder einen eigenen Orientierungsknoten. Die Voraussetzungen im Graphen und der aktuelle Lernstand bestimmen den nächsten zulässigen Schritt, nicht ein starrer Vier-Schritte-Ablauf.
 
-Ein schematisches Beispiel im Anhang, Detail B, zeigt eine solche Route aus Orientierung, Verstehen und Anwenden mit parallelem Memorieren, wie sie in SkillPilot modelliert und als PDF exportiert werden kann.
+Ein schematisches Beispiel im Anhang zeigt eine solche Route aus Orientierung, Verstehen und Anwenden mit parallelem Memorieren, wie sie in SkillPilot modelliert und als PDF exportiert werden kann.
 
 Für Inhalte, die zuverlässig abrufbar sein sollen – etwa Vokabeln, Notation oder ausgewählte Formeln –, ergänzt **Spaced Repetition** die Arbeit mit Erklärungen und Aufgaben. Es ersetzt weder fachliches Verständnis noch die selbstständige Anwendung.
 
@@ -425,18 +425,8 @@ Träger ist die **enpasos GmbH**. Wir laden Partner ein, SkillPilot gemeinsam we
 
 ---
 
-## Anhang: Zwei Detailansichten
+## Anhang: Eine modellierte Lernroute
 
-Die folgenden Ansichten vertiefen die Fortschritts- und Lernroutenmodelle aus Abschnitt 3.
-
-### Detail A: Memorieren und Verified Recall
-
-![Aktueller Fortschritts- und Prüfstatus eines aktiven Memorierlernziels](current-mastery.png)
-
-*Aus der Anwendung: Fortschritts- und Prüfstatus eines Memorierlernziels. Die Trennung von gewöhnlichem Karteikartenüben und evidenzwirksamem Verified Recall erläutert Abschnitt 3.2.*
-
-### Detail B: Eine modellierte Lernroute
-
-![Schematische Lernroute: von der Orientierung über Grundlagen zur selbstständigen Anwendung](requires-flow.de.svg)
+![Schematische Lernroute: von der Orientierung über Grundlagen zur selbstständigen Anwendung](requires-flow.de.svg "width=560")
 
 *Schematische Vertiefung zu Abschnitt 3.3: Orientierung, Verstehen und selbstständige Anwendung sind über Voraussetzungen verbunden; notwendiges Memorieren läuft parallel. Der Graph und der aktuelle Lernstand bestimmen den nächsten zulässigen Schritt, nicht ein starrer Ablauf.*

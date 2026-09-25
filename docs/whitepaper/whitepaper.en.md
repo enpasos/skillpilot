@@ -160,7 +160,7 @@ For subject-specific understanding goals, the coach asks for reasoning and expla
 
 #### Mastery: Progress as an Evidence Model
 
-The current Cockpit view separates ordinary flashcard practice from evidence-bearing **Verified Recall**. The screenshot is included in Appendix Detail A.
+The current Cockpit view separates ordinary flashcard practice from evidence-bearing **Verified Recall**.
 
 **Mastery** is the backend-owned learning state for atomic goals, not a chat log. For ordinary learning goals, the coach reports a completion decision under the applicable evidence rules; the backend checks and stores the permitted state change. The Cockpit shows the recorded state. Orientation nodes use only a completion marker and do not certify subject mastery. For memorization nodes, mastery is derived from server-side card state and **Verified Recall**; ordinary flashcard practice changes only the repetition schedule. Cluster progress is a weighted aggregate of the contained goals.
 
@@ -184,7 +184,7 @@ Within a context such as “Mathematics, Year 7” or “Advanced Physics Course
 
 One possible route leads from **orientation** through **guided understanding** to **independent application**. Necessary memorization can run in parallel; not every topic needs flashcards or its own orientation node. The prerequisites in the graph and the current learning state determine the next permitted step, not a rigid four-step sequence.
 
-The schematic example in Appendix Detail B shows such a route from orientation through understanding to application, with memorization running in parallel, as it can be modeled in SkillPilot and exported as a PDF.
+The schematic example in the appendix shows such a route from orientation through understanding to application, with memorization running in parallel, as it can be modeled in SkillPilot and exported as a PDF.
 
 For content that needs to be recalled reliably — such as vocabulary, notation, or selected formulas — **spaced repetition** complements work with explanations and tasks. It replaces neither subject understanding nor independent application.
 
@@ -427,18 +427,8 @@ The organization behind SkillPilot is **enpasos GmbH**. We invite partners to de
 
 ---
 
-## Appendix: Two Detailed Views
+## Appendix: A Modeled Learning Route
 
-The following views expand on the progress and learning-route models in section 3.
-
-### Detail A: Memorization and Verified Recall
-
-![Current progress and assessment state for an active memorization goal](current-mastery.png)
-
-*From the application: progress and assessment status for a memorization goal. Section 3.2 explains the distinction between ordinary flashcard practice and evidence-bearing Verified Recall. German curriculum shown.*
-
-### Detail B: A Modeled Learning Route
-
-![Schematic learning route: from orientation through foundations to independent application](requires-flow.en.svg)
+![Schematic learning route: from orientation through foundations to independent application](requires-flow.en.svg "width=560")
 
 *A schematic detail for section 3.3: orientation, understanding, and independent application are connected by prerequisites; necessary memorization runs in parallel. The graph and current learning state determine the next permitted step, not a rigid sequence.*
