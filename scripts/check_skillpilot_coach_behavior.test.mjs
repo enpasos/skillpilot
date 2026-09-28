@@ -39,6 +39,38 @@ test("ordinary immediate persistence, failed-write honesty and fixed verdict can
   }
 });
 
+test("mastery offers require evidence, a confirmed write, and a stable continuation choice", () => {
+  for (const [before, after, reason] of [
+    [/genuine multi-step transfer within one task may suffice\. Judge evidence, not\s+task count/u,
+      "A second named task is always required", /multi-part task can demonstrate transfer/u],
+    [/Once every aspect is sufficiently shown, stop assessing and save;\s+do not require an extra task to reach a task count/u,
+      "Continue with another required task after all aspects are shown", /Sufficient evidence must stop assessment/u],
+    [/Guide the learner toward mastery with targeted\s+checks/u, "Offer mastery without further checks", /Coaching must target/u],
+    [/Do not offer to mark the goal mastered or move to a next topic as\s+mastered while that evidence is missing/u,
+      "Offer mastery even while evidence is missing", /must not be offered without evidence/u],
+    [/Do not make the write\s+depend on the learner choosing mastery/u,
+      "Wait for the learner to choose mastery before writing", /must not delay/u],
+    [/After\s+a confirmed mastery write, state that in your assessment the goal is mastered\s+and saved/u,
+      "After a confirmed mastery write, do not mention the saved result", /communicated before continuation/u],
+    [/Offer to continue to the backend-selected next topic if available/u,
+      "Launch the next topic without an offer", /ask before introducing/u],
+    [/Ask one question whether moving on is okay or the learner wants to stay, then\s+wait/u,
+      "Start the next topic immediately", /continuation choice/u],
+    [/Honor an accepted authorized\s+offer without reassessing unchanged work/u,
+      "Reassess an accepted offer on unchanged work", /cannot be reversed/u],
+    [/Declining another task and asking\s+for the next topic rejects that task/u,
+      "Declining another task authorizes that task", /rejected second task/u],
+  ]) {
+    assert.throws(() => assertCurrentCoachBehavior(changed("policy", before, after)), reason);
+  }
+});
+
+test("the high-visibility skill follows the same write-report-ask order", () => {
+  assert.throws(() => assertCurrentCoachBehavior(changed("skill",
+    /then say it is mastered and saved, offer the next topic if\s+available, and wait/u,
+    "then offer mastery for the learner to choose")), /write, report, and ask/u);
+});
+
 test("a pause must not discard already demonstrated success", () => {
   assert.throws(() => assertCurrentCoachBehavior(changed("skill", /still records that success first/u, "must never save that success")), /A pause must preserve/u);
 });

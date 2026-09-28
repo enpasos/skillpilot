@@ -21,6 +21,7 @@ import {
   validateClaudePluginPackage,
 } from "../ai/claude/plugin/skillpilot-coach-v1/check-package.mjs";
 import { loadDirectInstallBetaLane } from "./claude_direct_install_beta_release.mjs";
+import { verifyHistoricalReleaseHistory } from "./check_claude_plugin_v1_release.mjs";
 
 const scriptPath = fileURLToPath(import.meta.url);
 const defaultRepositoryRoot = resolve(dirname(scriptPath), "..");
@@ -41,10 +42,11 @@ const expectedExternalEvidence = [
   "uploaded-plugin-migration-and-marketplace-refresh",
 ];
 const expectedRepositoryName = "skillpilot-claude-marketplace";
-// Verify Marketplace exports against the committed 1.1.10 candidate source.
-// Publication and client acceptance remain separate, pending evidence.
+// The published Marketplace template remains pinned to the committed 1.1.10
+// source while the 1.1.11 successor is prepared locally.
 const canonicalSourceRevision = "8dc0fa9b8fad65db28f2be25a165dd4a72a36bce";
 const canonicalSourceTreeSha256 = "16594707fbeca128fa8544f5da70486c6286702760e320b41c6334d7df1e4cb2";
+const publishedTemplateVersion = "1.1.10";
 const legacyInstructionVersions = new Set([
   "1.0.2", "1.0.3", "1.0.4", "1.1.0", "1.1.1", "1.1.2", "1.1.3", "1.1.4",
 ]);
@@ -544,6 +546,11 @@ export function prepareClaudeMarketplace({
 } = {}) {
   const paths = releasePaths(repositoryRoot, outputRoot);
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
+  if (lane.plugin.version !== publishedTemplateVersion) {
+    throw new Error(
+      `Marketplace export for ${lane.plugin.version} is pending a committed source pin; the published ${publishedTemplateVersion} template must remain unchanged.`,
+    );
+  }
   validateSource(paths, lane, buildPackage);
   assertSafeOutputRoot(paths, lane);
 
@@ -743,6 +750,14 @@ export function checkClaudeMarketplace({
   repositoryRoot = defaultRepositoryRoot,
   buildPackage = buildClaudePluginPackage,
 } = {}) {
+  const candidateLane = loadClaudeMarketplaceLane(repositoryRoot);
+  if (candidateLane.plugin.version !== publishedTemplateVersion) {
+    return checkPublishedTemplateWithPendingCandidate({
+      repositoryRoot,
+      candidateLane,
+      buildPackage,
+    });
+  }
   const temporaryRoot = mkdtempSync(
     resolve(tmpdir(), "skillpilot-claude-marketplace-check-"),
   );
@@ -757,6 +772,55 @@ export function checkClaudeMarketplace({
   } finally {
     rmSync(temporaryRoot, { recursive: true, force: true });
   }
+}
+
+function checkPublishedTemplateWithPendingCandidate({
+  repositoryRoot,
+  candidateLane,
+  buildPackage,
+}) {
+  assertEqual(candidateLane.activation.state, "prepared_not_published",
+    "unpublished candidate marketplace state");
+  verifyHistoricalReleaseHistory(repositoryRoot, (condition, message) => {
+    if (!condition) throw new Error(message);
+  });
+  const publishedLane = readJson(resolveWithin(repositoryRoot,
+    `ai/claude/plugin/skillpilot-coach-v1/release/history/${publishedTemplateVersion}/marketplace-publication.json`,
+    "published marketplace lane"), "published marketplace lane");
+  validateClaudeMarketplaceLane(publishedLane);
+  assertEqual(publishedLane.plugin.version, publishedTemplateVersion,
+    "published marketplace template version");
+  assertEqual(publishedLane.activation.state, "published_pending_acceptance",
+    "published marketplace state");
+  const publishedBaseline = readJson(resolveWithin(repositoryRoot,
+    `ai/claude/plugin/skillpilot-coach-v1/release/history/${publishedTemplateVersion}/contract-baseline.json`,
+    "published plugin baseline"), "published plugin baseline");
+  assertEqual(publishedBaseline.pluginVersion, publishedTemplateVersion,
+    "published plugin baseline version");
+  assertEqual(publishedBaseline.archive.sha256, publishedLane.plugin.directInstallSha256,
+    "published Marketplace archive binding");
+  const paths = releasePaths(repositoryRoot, resolve(repositoryRoot, defaultOutputRelativePath));
+  validateMarketplaceTemplates(paths, publishedLane);
+  validateClaudeMarketplaceManifest(readJson(resolve(paths.templateRoot, "marketplace.json"),
+    "published marketplace template"), publishedLane, {
+    name: publishedLane.plugin.name,
+    version: publishedTemplateVersion,
+  });
+  const directInstallLane = loadDirectInstallBetaLane(repositoryRoot);
+  validateMarketplaceCandidateAgainstDirectInstall(candidateLane, directInstallLane);
+  const pluginValidation = validateClaudePluginPackage(paths.pluginRoot);
+  if (pluginValidation.errors.length > 0) {
+    throw new Error(`Unpublished Claude plugin source validation failed:\n- ${pluginValidation.errors.join("\n- ")}`);
+  }
+  verifyDirectInstallCandidate(paths.pluginRoot, candidateLane, buildPackage);
+  return {
+    pluginName: publishedLane.plugin.name,
+    version: publishedTemplateVersion,
+    files: expectedOutputFiles(publishedLane),
+    treeSha256: publishedLane.activation.evidence[0].treeSha256,
+    outputRoot: null,
+    pendingCandidateVersion: candidateLane.plugin.version,
+  };
 }
 
 export function verifyPublishedClaudeMarketplace({
@@ -1291,6 +1355,9 @@ async function main() {
   console.log(
     `CHECK claude_marketplace ${command.toUpperCase()} plugin=${result.pluginName} version=${result.version} files=${result.files.length} tree_sha256=${result.treeSha256}`,
   );
+  if (result.pendingCandidateVersion) {
+    console.log(`MARKETPLACE_EXPORT_PENDING version=${result.pendingCandidateVersion} awaiting committed source pin`);
+  }
   if (result.outputRoot) {
     console.log(`Marketplace=${relative(defaultRepositoryRoot, result.outputRoot)}`);
   }

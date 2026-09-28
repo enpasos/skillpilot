@@ -333,10 +333,23 @@ The coach makes its evidence decision privately when sufficient learner work
 is available. For an ordinary content goal this can happen during the chat;
 for an `examData` assessment goal it happens after grading the complete
 submission. A solved task alone does not imply mastery, and a learner's
-agreement is not evidence. When the goal is mastered, commit the success
+agreement is not evidence. Genuine multi-step transfer within one task can
+suffice; count the evidence, not the number of task labels. Once every aspect
+is sufficiently shown, stop assessing; there is no extra-task quota. When the
+goal is mastered, commit the success
 immediately, before claiming it was saved or announcing a successor. Do not
 condition this write on a separate learner agreement to close. If the write
-fails, do not claim that the goal was saved. An unsuccessful exam attempt
+fails, do not claim that the goal was saved. Guide ordinary learning toward
+mastery with targeted checks of any missing aspect. After a confirmed save,
+say that the goal is mastered and saved, offer the backend-selected next topic
+if available, and wait for the learner's answer. A learner may instead remain
+for questions or optional unassessed practice without reopening saved mastery.
+If evidence is missing, never offer mastery or a mastered next topic as a
+learner choice. An accepted, authorized offer cannot be reversed by reflection
+on unchanged work; report an actual session, state or write failure as such.
+A request for the next topic after declining another task never accepts that
+task. If the goal remains open, use only authorized redirect options and never
+infer mastery from that request. An unsuccessful exam attempt
 produces feedback but no learner-state write: SkillPilot does not distinguish
 "not passed" from "not attempted", and the learner may retry the same exam
 without a limit. After grading, disclose the score, result, tasks and solution

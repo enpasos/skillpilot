@@ -19,6 +19,7 @@ function requireRules(source, rules) {
 export function assertCurrentCoachBehavior({ skill, policy }) {
   const preparation = section(skill, "Preparation");
   const workflow = section(skill, "Current-turn workflow");
+  const essentials = section(skill, "Mode essentials");
   const ordinary = section(policy, "5. Dialogic learning and mastery");
   const exam = section(skill, "Exams");
   const accessible = section(skill, "Accessible tasks");
@@ -39,11 +40,42 @@ export function assertCurrentCoachBehavior({ skill, policy }) {
     [/During feedback, questions or a pause, render nothing/u,
       "Result feedback must not expose the next task or image."],
   ]);
+  requireRules(essentials, [
+    [/If only the task ends, give feedback about that task, offer a targeted check or pause, and make no mastery write/u,
+      "Task-only completion must steer toward the missing evidence without a mastery write."],
+    [/If the ordinary goal is mastered, call `set_skillpilot_mastery` immediately and await confirmation before claiming completion, then say it is mastered and saved, offer the next topic if available, and wait/u,
+      "The coach must write, report, and ask in that order."],
+    [/When task and goal finish together, ask one combined question/u,
+      "Combined task and goal completion must prompt only once."],
+  ]);
   requireRules(ordinary, [
     [/`set_skillpilot_mastery` immediately/u, "Ordinary mastery requires an immediate evidence-based write."],
     [/two independent checks[\s\S]+genuine multi-step transfer/u, "Ordinary mastery still requires independent evidence."],
+    [/genuine multi-step transfer within one task may suffice[\s\S]+Judge evidence, not task count/iu,
+      "A multi-part task can demonstrate transfer without a second task label."],
+    [/Once every aspect is sufficiently shown, stop assessing and save; do not require an extra task to reach a task count/iu,
+      "Sufficient evidence must stop assessment without an extra task quota."],
     [/(?:verdict|fixed decision)[\s\S]+new substantive work[\s\S]+grading error/iu, "Continuation alone must not reassess an existing verdict."],
     [/(?:write fails|failed or conflicting write)[\s\S]+(?:do not|never) claim/u, "Failed writes must never be presented as saved mastery."],
+    [/Guide the learner toward mastery with targeted checks/u, "Coaching must target the missing evidence."],
+    [/Do not offer to mark the goal mastered or move to a next topic as mastered while that evidence is missing/u,
+      "Mastery and a mastered successor must not be offered without evidence."],
+    [/Do not make the write depend on the learner choosing mastery/u,
+      "Learner consent must not delay a positive mastery write."],
+    [/After a confirmed mastery write, state that in your assessment the goal is mastered and saved/u,
+      "A confirmed mastery write must be communicated before continuation."],
+    [/Offer to continue to the backend-selected next topic if available/u,
+      "The coach must ask before introducing the next topic."],
+    [/Ask one question whether moving on is okay or the learner wants to stay, then wait/u,
+      "The coach must wait for the learner's continuation choice."],
+    [/If the learner stays after mastery, answer questions or offer optional unassessed practice without changing mastery/u,
+      "The learner may remain on a mastered goal."],
+    [/only choices supported by the fixed verdict and current authorized state/u,
+      "Offers must already be supported by the verdict and backend state."],
+    [/Honor an accepted authorized offer without reassessing unchanged work/u,
+      "An accepted offer cannot be reversed by reflection alone."],
+    [/Declining another task and asking for the next topic rejects that task/u,
+      "A rejected second task cannot be started on a next-topic request."],
   ]);
   for (const source of [workflow, ordinary, exam]) {
     assert.doesNotMatch(source,

@@ -115,13 +115,18 @@ public class ClaudeV1McpContractAdapter {
                     + "This successful write confirms that the previous goal is saved as mastered. Now respond "
                     + "naturally: give concise evidence-based feedback for an ordinary goal, or a full "
                     + "criterion-by-criterion evaluation for an exam, including the earned score and a "
-                    + "discussion of the released sample solution. Invite questions or an "
-                    + "explicit choice to continue. Do not announce or teach the backend-selected next goal "
-                    + "and do not render its image in this feedback turn, even if the returned context already "
-                    + "contains it. Answer follow-up questions about the completed work and respect a pause. "
+                    + "discussion of the released sample solution. State that in your assessment the previous "
+                    + "goal is mastered and saved. If the returned context has a next goal, offer to move to "
+                    + "the backend-selected next topic; if it has another next action, offer that step. Ask one "
+                    + "question: is moving on okay, or would the learner like to stay for questions? Wait for "
+                    + "the answer. If no next action exists, offer a fitting close. Do not introduce or teach "
+                    + "the next goal and do not render its image "
+                    + "in this feedback turn, even if the returned context already contains it. If the learner "
+                    + "stays after ordinary mastery, answer questions or offer optional unassessed practice "
+                    + "without changing saved mastery. Respect a pause. "
                     + "Only after the learner explicitly chooses to continue, use the returned context's "
                     + "active goal or next action and follow any goalVisualization presentationInstruction "
-                    + "before presenting new learning content. If no next action exists, offer a natural close. "
+                    + "before presenting new learning content. "
                     + "Do not display feedback field names, completion markers, state revisions or other "
                     + "technical metadata.";
     static final String VERIFIED_RECALL_MASTERY_CONTINUATION_INSTRUCTION =
@@ -421,16 +426,24 @@ public class ClaudeV1McpContractAdapter {
                 decide privately whether at least two independent checks or one genuine multi-step
                 transfer task provide sufficient learner evidence in the current conversation,
                 including spoken or written responses. A completed task alone does not prove the
-                entire goal is complete. Keep the private assessment and tool plan out of spoken
+                entire goal is complete. Genuine multi-step transfer within one task may suffice;
+                judge the learner's evidence, not the number of task labels. Keep the private
+                assessment and tool plan out of spoken
                 and written responses. Once evidence is sufficient, fix the decision for the work
                 already seen and call set_skillpilot_mastery immediately, without a separate learner
-                agreement to close. Send only structured completion data; never send learner work,
+                agreement to close. Stop assessing as soon as every aspect is shown; do not demand
+                another task to satisfy a task count. Send only structured completion data; never
+                send learner work,
                 private assessment or feedback text to that tool. After a successful write, say the
-                goal is complete and saved, give concise evidence-based feedback, and ask whether
-                the learner has questions or wants to continue. If the write fails or conflicts,
+                goal is mastered and saved in your assessment, give concise evidence-based feedback,
+                offer to move to the backend-selected next topic if available, and ask one question
+                whether that is okay or the learner wants to stay for questions. Wait for the answer.
+                If the learner stays, answer questions or offer optional unassessed practice without
+                changing saved mastery. If the write fails or conflicts,
                 do not claim the goal was saved; reload authoritative state as directed and resolve
                 the write before claiming completion. A plain acknowledgement, question or request
-                to continue is not new evidence and must not reverse the decision. Reassess privately
+                to continue is not new evidence and must not reverse the decision. Honor an accepted
+                authorized offer without reassessing unchanged work. Reassess privately
                 only for new substantive learner information or fresh authoritative state that
                 invalidates the active goal or its evidence. Do not present a successor task or image
                 until the learner explicitly chooses to continue, regardless of Autopilot. If a
@@ -438,10 +451,13 @@ public class ClaudeV1McpContractAdapter {
                 a pure pause request supplies no new evidence and needs no mastery write.
                 If evidence is insufficient, make no mastery write. Give concise feedback on what
                 the learner demonstrated and the specific gap, then invite questions or targeted
-                practice in the same goal. A task-only completion never writes mastery; after task
+                practice in the same goal. Do not offer mastered status or the next topic as if the
+                current goal were mastered. A task-only completion never writes mastery; after task
                 feedback, wait for the learner's answer before starting another task. Respect a
-                question or pause. At the end of a learning unit with no immediate successor,
-                offer a natural close without implying another task. A clear answer such as
+                question or pause. Declining another task and asking for the next topic does not
+                authorize that declined task or provide mastery evidence. At the end of a learning
+                unit with no immediate successor, offer a natural close without implying another
+                task. A clear answer such as
                 "Alles klar, weiter" authorizes new content, not a second mastery decision.
                 Do not treat praise, repetition or a single guided answer as
                 evidence. Never use normal mastery for a memory goal. The model decides only whether

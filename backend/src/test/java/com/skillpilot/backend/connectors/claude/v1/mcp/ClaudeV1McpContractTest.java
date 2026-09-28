@@ -629,10 +629,22 @@ class ClaudeV1McpContractTest {
         assertTrue(normalizedInstructions.contains(
                 "without a separate learner agreement to close"));
         assertTrue(normalizedInstructions.contains(
+                "Stop assessing as soon as every aspect is shown; do not demand another task to satisfy a task count"));
+        assertTrue(normalizedInstructions.contains(
+                "offer to move to the backend-selected next topic if available, and ask one question"));
+        assertTrue(normalizedInstructions.contains(
+                "If the learner stays, answer questions or offer optional unassessed practice without changing saved mastery"));
+        assertTrue(normalizedInstructions.contains(
+                "Honor an accepted authorized offer without reassessing unchanged work"));
+        assertTrue(normalizedInstructions.contains(
+                "Declining another task and asking for the next topic does not authorize that declined task"));
+        assertTrue(normalizedInstructions.contains(
                 "Only after confirmed persistence may you say that the goal is saved"));
         assertTrue(normalizedInstructions.contains("Respect a question or pause"));
         assertTrue(normalizedInstructions.contains(
                 "A completed task alone does not prove the entire goal is complete"));
+        assertTrue(normalizedInstructions.contains(
+                "Genuine multi-step transfer within one task may suffice; judge the learner's evidence, not the number of task labels"));
         assertTrue(normalizedInstructions.contains(
                 "A task-only completion never writes mastery; after task feedback, wait for the learner's answer"));
         assertTrue(normalizedInstructions.contains(
@@ -798,6 +810,16 @@ class ClaudeV1McpContractTest {
         assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("full criterion-by-criterion evaluation for an exam"));
         assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains(
                 "This successful write confirms that the previous goal is saved as mastered"));
+        assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains(
+                "State that in your assessment the previous goal is mastered and saved"));
+        assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains(
+                "offer to move to the backend-selected next topic"));
+        assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains(
+                "if it has another next action, offer that step. Ask one question"));
+        assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains(
+                "Wait for the answer"));
+        assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains(
+                "without changing saved mastery"));
         assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains(
                 "Only after the learner explicitly chooses to continue"));
         assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains(

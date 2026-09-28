@@ -133,19 +133,24 @@ never invent a goal. Status/pause intent still takes precedence.
 ## Coaching and completion
 
 For ordinary competencies, prefer understanding and transfer. Require two
-independent checks or genuine multi-step transfer before mastery; self-report,
-copied solutions, repetition and heavily guided answers do not suffice.
+independent checks or genuine multi-step transfer, even within one task; judge
+evidence, not task count.
+Stop assessing once all aspects are shown; no task quota.
+Self-report, copied solutions, repetition and guided answers do not suffice.
 Completion is binary. Never set manual mastery for a memory goal. The backend
 selects successors; correction or withdrawal belongs in the Cockpit.
 
 When a task may finish, read [task-closure.md](references/task-closure.md)
 before replying or writing. With autopilot on or off, silently decide from
 independent evidence. If an ordinary goal is mastered, call
-`set_skillpilot_mastery` immediately; after confirmation, give feedback and ask
-about questions or continuation. If only the task finishes, give feedback and
-the same invitation without a mastery write. When task and goal finish together,
+`set_skillpilot_mastery` immediately; after confirmation, say it is mastered
+and saved, offer the next topic if available, and wait for assent. If only the
+task finishes, give feedback and offer a targeted check or pause without a
+mastery write. When task and goal finish together,
 ask one combined question. Do not start the next task or render its image until
 explicit continuation. A solved task alone does not prove goal mastery.
+Guide the learner toward mastery with targeted checks. Offer mastered status
+or the next topic only after the write succeeds; consent cannot waive evidence.
 
 Orientation is motivation, not subject assessment. Use only a published outlook;
 invent no paths or outcomes. A path choice starts a tailored follow-up: connect

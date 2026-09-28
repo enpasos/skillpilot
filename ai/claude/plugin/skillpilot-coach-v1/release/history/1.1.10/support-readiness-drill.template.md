@@ -12,8 +12,8 @@
 | Field | Value |
 | --- | --- |
 | Drill status | `pending` |
-| Candidate version | `1.1.11` |
-| Candidate SHA-256 | `0648c174c52f057aca123cbcef8c1285c9d655bd81175382ce66155a9267f884` |
+| Candidate version | `1.1.10` |
+| Candidate SHA-256 | `b53a1100fff6d84ee66c12f084a8ff359847496fbf75c8a951ee4c9a0230c3c5` |
 | Source commit (40 characters) | `UNASSIGNED - BLOCKING` |
 | Remote marketplace revision (40 characters) | `NOT YET AVAILABLE - PREPUBLICATION`; replace in later activation evidence |
 | Marketplace tree SHA-256 | `UNASSIGNED - BLOCKING` |
@@ -84,7 +84,7 @@ check. The personal-marketplace beta has no proactive per-operation monitor,
 real-time detection promise or SLA. This template neither satisfies nor
 duplicates the separate exact-client acceptance gate.
 
-The 1.1.11 exact-client gate remains `pending` until a fresh Marketplace or
+The 1.1.10 exact-client gate remains `pending` until a fresh Marketplace or
 explicit exact-candidate install on the controlled Web and Android Voice
 clients independently completes the daily-plan, automatic-resume and
 orientation scenarios. No earlier package or evidence satisfies this gate.

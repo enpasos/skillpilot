@@ -18,15 +18,15 @@ test("validates the checked-in Claude plugin package", () => {
   assert.deepEqual(validateClaudePluginPackage(packageRoot), { errors: [], toolCount: 14 });
 });
 
-test("rejects a replacement candidate version other than 1.1.10", () => {
+test("rejects a replacement candidate version other than 1.1.11", () => {
   withPackageCopy((root) => {
     mutate(root, ".claude-plugin/plugin.json", (value) => value.replace(
-      '"version": "1.1.10"',
+      '"version": "1.1.11"',
       '"version": "1.0.4"',
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /replacement candidate must be version 1\.1\.10/u,
+      /replacement candidate must be version 1\.1\.11/u,
     );
   });
 });
@@ -145,16 +145,30 @@ for (const [name, owner, original, unsafeReplacement, invariant] of [
   ["asking permission again after explicit continuation", "skill", "already expresses that intent; do not ask\nagain", "needs another confirmation", "daily-complete-precedence"],
   ["claiming blocked plans complete", "skill", "without claiming completion", "while claiming completion", "daily-guidance"],
   ["lowering ordinary evidence to a guided answer", "skill", "two\nindependent checks", "one heavily guided answer", "ordinary-evidence"],
+  ["counting tasks instead of transfer evidence", "skill", "even within one task; judge\nevidence, not task count", "only after two separately named tasks", "ordinary-evidence"],
+  ["continuing assessment after goal evidence is complete", "skill", "Stop assessing once all aspects are shown; no task quota", "Keep testing after all aspects are shown", "ordinary-evidence"],
+  ["denying transfer within one task", "taskClosure", "genuine multi-step transfer within one task may", "one task can never be sufficient", "closure-workflow"],
   ["choosing the successor in a completion write", "skill", "The backend\nselects successors", "The coach selects successors", "ordinary-evidence"],
   ["delaying mastery until closure consent", "skill", "If an ordinary goal is mastered, call\n\x60set_skillpilot_mastery\x60 immediately", "If an ordinary goal is mastered, wait for closure consent before calling set_skillpilot_mastery", "deliberate-closure"],
+  ["offering mastery before a confirmed write", "skill", "Offer mastered status\nor the next topic only after the write succeeds", "Offer mastery before attempting the write", "deliberate-closure"],
+  ["letting consent waive missing evidence", "skill", "consent cannot waive evidence", "consent can waive evidence", "deliberate-closure"],
   ["skipping task feedback", "taskClosure", "Give brief, concrete feedback: what the learner showed and what succeeded", "Start the next task without feedback", "closure-workflow"],
   ["replying before private evidence review", "taskClosure", "Before replying, silently decide from the learner's actual work", "Reply before reviewing the learner's actual work", "closure-workflow"],
   ["omitting a missing goal aspect", "taskClosure", "On requested continuation, check the\n   specific missing aspect within this goal", "On requested continuation, skip the missing aspect", "closure-workflow"],
   ["writing mastery after task-only closure", "taskClosure", "Close only \"diese Aufgabe\"; make no\n   mastery write and store no failure", "Close the task and write mastery anyway", "closure-workflow"],
+  ["offering goal completion with missing evidence", "taskClosure", "Do not offer goal mastery or a\n   next topic as if this goal were mastered", "Offer goal mastery despite missing evidence", "closure-workflow"],
+  ["making the mastery write a learner option", "taskClosure", "Never make the write contingent on a\n   learner choosing mastery", "Wait for the learner to choose mastery before writing", "closure-workflow"],
+  ["requiring another task after sufficient evidence", "taskClosure", "Ask no further assessment question or required\n   task once every aspect has been shown", "Ask another task even after mastery evidence is complete", "closure-workflow"],
+  ["omitting the saved mastery announcement", "taskClosure", "After a\n   confirmed mastery write, say that in your assessment the goal is mastered\n   and saved", "After a confirmed mastery write, say only the task is complete", "closure-workflow"],
+  ["omitting the next-topic offer", "taskClosure", "Offer to continue to the backend-selected next topic if available", "Announce the next task without an offer", "closure-workflow"],
+  ["omitting the continuation question", "taskClosure", "ask one question whether moving on is okay or the learner wants to stay", "Start the next topic without asking", "closure-workflow"],
+  ["changing mastery after the learner stays", "taskClosure", "optional unassessed practice without changing mastery", "practice that reopens saved mastery", "closure-workflow"],
+  ["reassessing an accepted offer", "taskClosure", "an accepted authorized offer without reassessing unchanged work", "an accepted authorized offer by reassessing unchanged work", "closure-workflow"],
+  ["starting a declined second task", "taskClosure", "Declining another task and asking for the next topic rejects that task", "Declining another task and asking for the next topic authorizes that task", "closure-workflow"],
   ["reassessing unchanged work after consent", "taskClosure", "adds no subject evidence and does not\n   reopen or retract the fixed decision", "triggers reassessment and retraction", "closure-workflow"],
   ["starting a successor after closure alone", "taskClosure", "A pause or closure alone starts nothing", "Closure alone starts a successor", "closure-workflow"],
   ["skipping closure when autopilot is off", "skill", "With autopilot on or off", "Only with autopilot on", "deliberate-closure"],
-  ["requiring two closure rounds for one completed task and goal", "taskClosure", "summarize them and ask\n   **one combined** question", "ask two separate questions", "closure-workflow"],
+  ["requiring two closure rounds for one completed task and goal", "taskClosure", "If task and goal finished together, summarize them", "If task and goal finished together, ask two separate questions", "closure-workflow"],
   ["treating a solved task as goal mastery", "skill", "A solved task alone does not prove goal mastery", "A solved task always proves goal mastery", "deliberate-closure"],
   ["silently undoing confirmed mastery after questions", "taskClosure", "never silently undo confirmed mastery", "silently undo confirmed mastery", "closure-workflow"],
   ["advancing past a pause", "taskClosure", "A pause or closure alone starts nothing", "A pause starts new content", "closure-workflow"],
@@ -334,7 +348,7 @@ test("rejects loss of same-server coexistence and custom-connector boundaries", 
   });
 });
 
-test("rejects conflation of historical observations with 1.1.10 acceptance", () => {
+test("rejects conflation of historical observations with 1.1.11 acceptance", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
       /Earlier packages were\s+observed in paid Claude Web chat and, after account-level direct installation\s+on Claude Pro, in the native Claude app on Android/u,
@@ -342,7 +356,7 @@ test("rejects conflation of historical observations with 1.1.10 acceptance", () 
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /distinguish historical observations from pending 1\.1\.10 exact-candidate acceptance/u,
+      /distinguish historical observations from pending 1\.1\.11 exact-candidate acceptance/u,
     );
   });
 });

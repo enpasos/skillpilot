@@ -26,8 +26,15 @@ const historicalReleaseRoot = `${releaseRoot}/history`;
 const connectorContractBaselinePath =
   "ai/claude/connector-v1/release/contract-baseline.json";
 const expectedPluginIdentity = "skillpilot-coach-v1";
-const expectedPluginVersion = "1.1.10";
+const expectedPluginVersion = "1.1.11";
 const expectedHistoricalReleaseFiles = new Map([
+  ["1.1.10/contract-baseline.json", "f57950a2ea6c0e6f67059486a537a91055776127196fb06d35426d2494439ae5"],
+  ["1.1.10/direct-install-beta.json", "f190d88010a9f7795999c1e90e7dd221f4a213ece495830918e2c61e5c67bee4"],
+  ["1.1.10/evidence-manifest.json", "8d6bb110a682613b0eec13b55158b03cac23f2e78bb720bc2323d7131ec6157b"],
+  ["1.1.10/lifecycle.json", "9d0300d936dc82d5e5b9082f4d5f51d2404ae8b4eb9e83d2978ee6bd5ab0a48f"],
+  ["1.1.10/marketplace-publication.json", "0441d001adeaaa3b876a3e1286427b58b66d802af0ce35e58ee37c3cb249f58d"],
+  ["1.1.10/release-gates.json", "7a0d4e6a099db010f7c7f297e74bc99309331344bda002c7a5de400bfa271253"],
+  ["1.1.10/support-readiness-drill.template.md", "690810d0feed657de0d3c60d90780fc5e212ca5ee815da5b795f70bb2ff6a0ee"],
   ["1.1.9/contract-baseline.json", "c3dd3b002e1d22627c46df79463fd36758d181b1dc52e173ce1cf34c91782500"],
   ["1.1.9/direct-install-beta.json", "934b45a74bf71088a1567c7c99f5d1c8d93cd44645250d7c0ddeb5389e02d3da"],
   ["1.1.9/evidence-manifest.json", "70bb0dd8c48228889c5b9ecd8d54c19c15c6b2b0a193bb265985f52949a82dfb"],
@@ -234,7 +241,7 @@ export function verifyClaudePluginV1Release({
     );
     check(
       document?.pluginVersion === expectedPluginVersion,
-      "Every plugin release document must use Claude plugin version 1.1.10.",
+      "Every plugin release document must use Claude plugin version 1.1.11.",
     );
   }
 
@@ -294,17 +301,17 @@ export function verifyClaudePluginV1Release({
     "Plugin lifecycle must exclude Claude Free, iOS, Android in-app installation, Desktop Chat, Cowork, public Claude Code, hooks and subagent claims.",
   );
   check(
-    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-09-23"
+    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-09-28"
       && lifecycle?.productOwnerAuthorization?.approvedBy === "product-owner"
-      && /production coach incident involving visible internal deliberation and a closure decision reversed without new learner information/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /local unpublished 1\.1\.10 candidate/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /archive the published 1\.1\.9 dossier/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /reversed an offered goal-mastery decision without new learner information/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /local unpublished 1\.1\.11 successor/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /archive the published 1\.1\.10 dossier/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && /preserve tool input, privacy, authorization and scoring contracts/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && /local fixes and validation, not deployment, Marketplace publication, guide activation or transferred acceptance/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && Array.isArray(lifecycle?.productOwnerAuthorization?.excludes)
       && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Deployment, Marketplace publication, guide activation, credential changes, Anthropic Console submission, general public activation and inherited candidate acceptance/u.test(entry))
       && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Connector Directory/u.test(entry)),
-    "Plugin lifecycle must record local 1.1.10 incident authority without inheriting deployment, publication, guide, credential or client-acceptance authority.",
+    "Plugin lifecycle must record local 1.1.11 successor authority without inheriting deployment, publication, guide, credential or client-acceptance authority.",
   );
   check(
     lifecycle?.releaseLine?.major === 1

@@ -11,6 +11,12 @@ pending; repository publication does not establish installation or
 synchronization in every account.
 Earlier published packages and their evidence remain immutable history.
 
+The 1.1.11 offer-commitment correction is a local candidate. Its archive and
+release dossier are prepared for review, with host acceptance and Marketplace
+export pending. The public personal Marketplace and website continue serving
+the verified 1.1.10 bytes; the Marketplace workflow remains pinned to that
+published source until a later authorized 1.1.11 publication preparation.
+
 ## 1.1.10 repository publication
 
 On 23 September 2026, the Product Owner reported that the coach exposed

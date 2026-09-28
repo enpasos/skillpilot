@@ -251,7 +251,12 @@ class ClaudeV1MasteryContractTest {
                 .hasEntrySatisfying("presentationInstruction", instruction -> assertThat(instruction.toString())
                         .contains(
                                 "This successful write confirms that the previous goal is saved as mastered",
-                                "Invite questions or an explicit choice to continue",
+                                "State that in your assessment the previous goal is mastered and saved",
+                                "offer to move to the backend-selected next topic",
+                                "if it has another next action, offer that step",
+                                "Ask one question",
+                                "Wait for the answer",
+                                "without changing saved mastery",
                                 "do not render its image in this feedback turn",
                                 "before presenting new learning content",
                                 "active goal or next action")
@@ -380,7 +385,7 @@ class ClaudeV1MasteryContractTest {
                 .hasEntrySatisfying("presentationInstruction", instruction -> assertThat(instruction.toString())
                         .contains("This successful write confirms", "full criterion-by-criterion evaluation",
                                 "including the earned score", "discussion of the released sample solution",
-                                "Do not announce or teach",
+                                "Do not introduce or teach",
                                 "Only after the learner explicitly chooses to continue"));
         assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION + 1);
         verify(coachToolFacade, times(1)).setMastery(eq(learnerId), any(MasteryUpdateRequest.class));
