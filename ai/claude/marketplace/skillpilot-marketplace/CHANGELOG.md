@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.1.11 - 2026-09-28
+
+- Judge mastery privately from the learner's evidence. Genuine transfer within
+  one task can suffice; once every aspect of a goal is shown, stop assessing.
+- Save demonstrated mastery immediately. Only after the write succeeds, say
+  that the goal is mastered and saved, offer the backend-selected next topic,
+  and wait for the learner's agreement before starting it. Questions or optional
+  practice do not reopen saved mastery.
+- When evidence is incomplete, check the missing aspect before offering mastery
+  or a mastered next topic. Do not reverse an accepted, authorized offer based
+  only on further reflection over unchanged work.
+- Preserve the 1.1.10 package and its publication evidence. Marketplace
+  publication and real-client Web and Android Voice acceptance for 1.1.11 are
+  separate, version-bound checks.
+
 ## 1.1.10 - 2026-09-23
 
 - Decide privately from the learner's work whether an ordinary goal is mastered.
