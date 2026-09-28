@@ -171,7 +171,8 @@ class LearnerPlanningScopeServiceTest {
                         "911f3200-1dbc-59a6-90df-c883c77de39c",
                         "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
                         "1b664036-3c29-5d94-9f42-97069aaa2c53",
-                        "315093d4-515a-542c-b776-d72a12763d1a",
+                        "315093d4-515a-542c-b776-d72a12763d1a")
+                .doesNotContain(
                         "dc12f281-f161-572b-a973-8405ae9b2498",
                         "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
                         "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2");
@@ -196,7 +197,8 @@ class LearnerPlanningScopeServiceTest {
                 .doesNotContain(hessenFixedPoints, advancedParallelProjection, advancedIntegralContext);
         selectMathScope("DE-HE", "LK");
         assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
-                .contains(hessenFixedPoints, advancedParallelProjection, advancedIntegralContext);
+                .contains(hessenFixedPoints, advancedParallelProjection)
+                .doesNotContain(advancedIntegralContext);
 
         selectMathScope("DE-BY", "GK");
         assertThat(compositionViewService.findLearnerScopeView(MATH_LANDSCAPE_ID, Map.of(
@@ -221,7 +223,8 @@ class LearnerPlanningScopeServiceTest {
                 .doesNotContain(advancedParallelProjection, advancedIntegralContext);
         selectMathScope("DE-NI", "LK");
         assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
-                .contains(advancedParallelProjection, advancedIntegralContext);
+                .contains(advancedParallelProjection)
+                .doesNotContain(advancedIntegralContext);
     }
 
     @Test

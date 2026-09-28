@@ -55,7 +55,7 @@ class CompositionViewServiceTest {
         assertThat(match.get("mergedFromViewIds")).isEqualTo(List.of("de-de-gym-math-lk", "de-de-gym-math-gk"));
         @SuppressWarnings("unchecked")
         List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
-        assertThat(roots).singleElement().satisfies(root -> {
+        assertThat(roots).filteredOn(root -> "structure".equals(root.get("kind"))).singleElement().satisfies(root -> {
             @SuppressWarnings("unchecked")
             List<Map<String, Object>> children = (List<Map<String, Object>>) root.get("children");
             assertThat(children)
@@ -105,6 +105,31 @@ class CompositionViewServiceTest {
             assertThat(service.resolveStructureReference(option.syntheticGoalId()))
                     .isEqualTo(option);
         });
+    }
+
+    @Test
+    void findRootScopeOptions_excludesPrerequisiteOnlyRootsAndKeepsDirectTargets(
+            @TempDir Path tempDir) throws IOException {
+        Path viewDir = tempDir.resolve("DE/Gymnasium/composition-views/mathematik");
+        Files.createDirectories(viewDir);
+        Files.writeString(viewDir.resolve("root-roles.view.json"), """
+                {
+                  "viewId": "root-roles-view",
+                  "landscapeId": "test-landscape",
+                  "scope": {"schoolForm": "Gymnasium", "stage": "SekII"},
+                  "rootNodes": [
+                    {"kind": "goalEntry", "goalId": "precondition", "projectionRole": "prerequisiteOnly"},
+                    {"kind": "goalEntry", "goalId": "target"}
+                  ]
+                }
+                """);
+        LandscapeProperties properties = new LandscapeProperties();
+        properties.setDirectory(tempDir.toString());
+        CompositionViewService service = new CompositionViewService(properties, new ObjectMapper());
+
+        assertThat(service.findRootScopeOptions("root-roles-view"))
+                .extracting(CompositionViewService.CompositionStructureResolution::syntheticGoalId)
+                .containsExactly("target");
     }
 
     @Test
@@ -481,7 +506,7 @@ class CompositionViewServiceTest {
                 .isEqualTo("merged:de-he-gym-sekii-math-lk+de-he-gym-sekii-math-gk");
         @SuppressWarnings("unchecked")
         List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
-        assertThat(roots).singleElement().satisfies(root -> {
+        assertThat(roots).filteredOn(root -> "structure".equals(root.get("kind"))).singleElement().satisfies(root -> {
             assertThat(root)
                     .containsEntry("id", "sek2-gk-lk")
                     .containsEntry("label", "Sekundarstufe II (GK + LK)");
