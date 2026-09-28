@@ -153,6 +153,14 @@ REVIEW_ONLY_PROVIDER_NOTE_SHA256 = "de9a97fb8b76865cefe55a8a65e0d641fcb381c7ddc1
 # These active PNGs replaced historical Gemini JPGs. Their original prompt.de.md
 # remains historical; bind redistribution evidence to the current edit/revision.
 ACTIVE_PROMPT_OVERRIDES = {
+    "goal-resource:1dd0266c-41b4-5481-b64b-7b718cfe799b:0": "curricula/DE/Gymnasium/visualizations/mathematik/1dd0266c-41b4-5481-b64b-7b718cfe799b/prompt.imagegen-perspective-correction.de.md",
+    "goal-resource:5518ceb3-f668-5b52-a9b1-57653b16ca98:0": "curricula/DE/Gymnasium/visualizations/mathematik/5518ceb3-f668-5b52-a9b1-57653b16ca98/prompt.imagegen-correction.de.md",
+    "goal-resource:2850e8f6-2330-50d3-a577-d519540d9924:0": "curricula/DE/Gymnasium/visualizations/mathematik/2850e8f6-2330-50d3-a577-d519540d9924/prompt.imagegen-correction.de.md",
+    "goal-resource:803d910d-96d1-5118-b9ca-29e93d0da76d:0": "curricula/DE/Gymnasium/visualizations/mathematik/803d910d-96d1-5118-b9ca-29e93d0da76d/prompt.imagegen-correction.de.md",
+    "goal-resource:d3c42193-f1b7-5c6d-a991-bf034d99359f:0": "curricula/DE/Gymnasium/visualizations/mathematik/d3c42193-f1b7-5c6d-a991-bf034d99359f/prompt.imagegen-correction.de.md",
+    "goal-resource:5619ca5b-dc2a-504e-ad89-2e0ca0a83822:0": "curricula/DE/Gymnasium/visualizations/mathematik/5619ca5b-dc2a-504e-ad89-2e0ca0a83822/prompt.imagegen-cube-choice.de.md",
+    "goal-resource:e105bad8-b4e5-53fc-b02e-604f1df5b503:0": "curricula/DE/Gymnasium/visualizations/mathematik/e105bad8-b4e5-53fc-b02e-604f1df5b503/prompt.imagegen-coordinate-correction.de.md",
+    "goal-resource:985d5529-a586-50eb-bd7f-2db2be8906d1:0": "curricula/DE/Gymnasium/visualizations/mathematik/985d5529-a586-50eb-bd7f-2db2be8906d1/prompt.imagegen-final.de.md",
     "goal-resource:7d37513b-fa1a-54cc-9e2a-9279a381f0f0:0": "curricula/DE/Gymnasium/visualizations/mathematik/7d37513b-fa1a-54cc-9e2a-9279a381f0f0/prompt.imagegen-central-dilation.de.md",
     "goal-resource:0f4f9957-8afe-4aab-9dd8-c26c9aee2afd:0": "curricula/DE/Gymnasium/visualizations/mathematik/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd/prompt.imagegen-edit.de.md",
     "goal-resource:49f9059a-876c-5051-8146-d008b5cc691c:0": "curricula/DE/Gymnasium/visualizations/mathematik/49f9059a-876c-5051-8146-d008b5cc691c/prompt.imagegen-neutral-title.de.md",

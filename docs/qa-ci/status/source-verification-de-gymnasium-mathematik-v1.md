@@ -17,9 +17,9 @@ Die maschinelle Prüfung weist nur zusammenhängende Texttreffer nach. Sie ist k
 | Prüfschritt | Anzahl | Einordnung |
 | --- | ---: | --- |
 | Source-Ziele gesamt | 9977 | 31 gebundene Source-Extraction-Dateien |
-| Treffer in authored Passage-Carriern | 9493 | automatisch, keine Human-Freigabe |
+| Treffer in authored Passage-Carriern | 9491 | automatisch, keine Human-Freigabe |
 | zusätzliche Treffer in gebundener PDF-Projektion | 5 | automatisch, keine Human-Freigabe |
-| offene Human-Reviews | 479 | fachlich am Original prüfen |
+| offene Human-Reviews | 481 | fachlich am Original prüfen |
 | abgeschlossene Human-Reviews | 0 | davon akzeptiert: 0, abgelehnt: 0 |
 
 ## Offene Reviews nach Collection
@@ -30,13 +30,14 @@ Die maschinelle Prüfung weist nur zusammenhängende Texttreffer nach. Sie ist k
 | `DE-BW-MATHEMATIK-SEKII-BP2016-MAPPING-3-SOURCE-EXTRACTION-TRANSFER-1` | 221 | 130 | 3 | 88 |
 | `DE-BY-MATHEMATIK-GYMNASIUM-LEHRPLANPLUS-MAPPING-3` | 468 | 466 | 0 | 2 |
 | `DE-HE-MATHEMATIK-SEKI-KC-G8-G9-MAPPING-3` | 601 | 583 | 0 | 18 |
+| `DE-MV-MATHEMATIK-SEKI-RAHMENPLAENE-2020-2019-MAPPING-3-SOURCE-EXTRACTION-REVIEW` | 369 | 367 | 0 | 2 |
 | `DE-SH-MATHEMATIK-SEKII-FACHANFORDERUNGEN-2024-MAPPING-3-SOURCE-EXTRACTION-REVIEW` | 274 | 265 | 1 | 8 |
 | `DE-SN-MATHEMATIK-SEKI-LEHRPLAN-GYMNASIUM-2019-MAPPING-3-SOURCE-EXTRACTION-REVIEW` | 327 | 326 | 0 | 1 |
 | `bb-math-lower-secondary-source-extraction-to-canonical-math-review` | 289 | 170 | 0 | 119 |
 | `be-math-lower-secondary-source-extraction-to-canonical-math-review` | 289 | 170 | 0 | 119 |
 | `de-be-math-sekii-go-2014-source-extraction-to-canonical-math` | 195 | 88 | 0 | 107 |
 
-Weitere 22 Collections haben keine offenen Source-Text-Reviews.
+Weitere 21 Collections haben keine offenen Source-Text-Reviews.
 
 ## Offene Reviews nach Quelldokument
 
@@ -50,6 +51,7 @@ Weitere 22 Collections haben keine offenen Source-Text-Reviews.
 | `curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_9.pdf` | 1 |
 | `curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.pdf` | 8 |
 | `curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf` | 10 |
+| `curricula/DE/Gymnasium/input/MV/Mathematik_Gymnasium_7_10_2019.pdf` | 2 |
 | `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf` | 8 |
 | `curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-mathematik-sachsen-2019.pdf` | 1 |
 
@@ -78,12 +80,12 @@ Reviewer, Zeitstempel und Begründung sind für jede abgeschlossene Entscheidung
 
 ## Evidenzbindung und technische Grenze
 
-- Profil: `contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json` (`sha256:8fd38d4f8e6d6987ecffa9e353b99dafe000da2b416345529006049ec809a8b9`)
+- Profil: `contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json` (`sha256:8b00d68660ba052d21aee3be2f7dfec3629ecba9e1914b4c32c1fcb165d18946`)
 - Source-Extraction-Dateien: 31
 - Source-Dokument-Referenzen: 55 auf 49 unterschiedliche PDF-Pfade
-- PDF-Projektions-Metadatensätze: 9
+- PDF-Projektions-Metadatensätze: 10
 - aufgezeichnetes Werkzeug: `pdftotext version 22.02.0`
-- normaler Check: prüft Profil-, Extraction-, SourceGoal-, Passage-Carrier-, PDF-, Projektionsmetadaten- und Ledgerkonsistenz; er behauptet ausdrücklich keinen unabhängigen Nachweis der fünf PDF-Treffer
+- normaler Check: prüft Profil-, Extraction-, SourceGoal-, Passage-Carrier-, PDF-, Projektionsmetadaten- und Ledgerkonsistenz; er behauptet ausdrücklich keinen unabhängigen Nachweis der PDF-Treffer
 - Replay-Check: `python scripts/generate_curriculum_source_verification_review.py --check --replay-pdf-evidence` erzeugt alle Projektionen nur im Speicher erneut und verlangt gleiche Hashes, Größen, Treffer und Reviewqueue
 
 Es werden keine vollständigen `pdftotext`-Ausgaben amtlicher PDFs versioniert. Die kryptografische Metadatenbindung allein beweist weder den PDF-Treffer noch, dass ein PDF-Extractor semantisch korrekt gelesen hat. Der Replay-Check beweist die technische Reproduzierbarkeit; unklare Fälle bleiben trotzdem in der menschlichen Reviewqueue.

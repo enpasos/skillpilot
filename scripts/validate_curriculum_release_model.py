@@ -3414,8 +3414,9 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
         extended = goal.get("extendedData")
         if isinstance(extended, dict):
             # Mirror the compiler projection independently: override evidence
-            # remains authoring-only once runtime applicability is resolved.
+            # and mastery-migration notes remain authoring-only.
             extended.pop("applicabilityOverrides", None)
+            extended.pop("masteryMigration", None)
             if not extended:
                 goal.pop("extendedData", None)
                 extended = None

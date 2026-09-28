@@ -273,6 +273,19 @@ def normalize_text(value: str) -> str:
     return re.sub(r"\s+", " ", unicodedata.normalize("NFC", value)).strip()
 
 
+def informative_pdf_match_text(normalized_source_text: str) -> bool:
+    # A one-letter OCR/source-extraction fragment such as "A" occurs almost
+    # anywhere in a PDF. A substring match cannot verify that source claim.
+    return sum(character.isalnum() for character in normalized_source_text) >= 4
+
+
+def pdf_projection_match_start(normalized_source_text: str, projection_text: str) -> int | None:
+    if not informative_pdf_match_text(normalized_source_text):
+        return None
+    position = projection_text.find(normalized_source_text)
+    return position if position >= 0 else None
+
+
 def normalized_projection_bytes(raw_text: str) -> bytes:
     normalized = normalize_text(raw_text)
     if not normalized:
@@ -884,7 +897,9 @@ def build_review(
             existing_match = existing_pdf_matches.get(key)
             if extract_projections:
                 projection_text = projection_text_by_pdf_sha[pdf_sha]
-                position = projection_text.find(miss["normalizedSourceText"])
+                position = pdf_projection_match_start(
+                    miss["normalizedSourceText"], projection_text
+                )
                 evidence = (
                     pdf_match_evidence(
                         goal_evidence,
@@ -892,10 +907,14 @@ def build_review(
                         miss["normalizedSourceText"],
                         position,
                     )
-                    if position >= 0
+                    if position is not None
                     else None
                 )
             elif existing_match is not None:
+                if not informative_pdf_match_text(miss["normalizedSourceText"]):
+                    raise VerificationError(
+                        f"Non-informative PDF match evidence for {key!r}"
+                    )
                 position = existing_match.get("normalizedMatchStart")
                 if not isinstance(position, int):
                     raise VerificationError(f"Invalid PDF match position for {key!r}")
@@ -1238,7 +1257,7 @@ def render_report(review: dict[str, Any], context: dict[str, Any]) -> str:
             f"- aufgezeichnetes Werkzeug: `{review['extractorEvidence']['recordedVersion']}`",
             "- normaler Check: prüft Profil-, Extraction-, SourceGoal-, Passage-Carrier-, "
             "PDF-, Projektionsmetadaten- und Ledgerkonsistenz; er behauptet ausdrücklich "
-            "keinen unabhängigen Nachweis der fünf PDF-Treffer",
+            "keinen unabhängigen Nachweis der PDF-Treffer",
             "- Replay-Check: `python scripts/generate_curriculum_source_verification_review.py "
             "--check --replay-pdf-evidence` erzeugt alle Projektionen nur im Speicher erneut "
             "und verlangt gleiche Hashes, Größen, Treffer und Reviewqueue",
@@ -1292,6 +1311,15 @@ def replay_pdf_evidence(review: dict[str, Any]) -> str:
 
 
 def self_test(expected: dict[str, Any]) -> None:
+    if pdf_projection_match_start("A", "Ein beliebiges A im PDF") is not None:
+        raise VerificationError("Self-test accepted a one-letter PDF substring as source evidence")
+    if pdf_projection_match_start("A + B", "Die Formel A + B steht hier") is not None:
+        raise VerificationError("Self-test accepted a short PDF formula fragment as source evidence")
+    source_phrase = "Volumen einer Kugel"
+    pdf_line = "Der Lehrplan nennt das Volumen einer Kugel ausdrücklich."
+    if pdf_projection_match_start(source_phrase, pdf_line) != pdf_line.index(source_phrase):
+        raise VerificationError("Self-test rejected an informative PDF source line")
+
     try:
         json.loads(
             '{"sourcePdfBytes":{"type":"integer","type":"number"}}',

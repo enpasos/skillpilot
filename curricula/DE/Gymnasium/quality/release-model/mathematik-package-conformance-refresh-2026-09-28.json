@@ -1,0 +1,59 @@
+{
+  "kind": "technical-mathematics-release-model-conformance-refresh",
+  "date": "2026-09-28",
+  "trigger": {
+    "githubRunId": 36468539199,
+    "commit": "55d505d46c8c486a677760c35ecf57ebcb3b2be3",
+    "failedStep": "Validate Curriculum Package Contracts",
+    "firstFailure": "Four current Pythagoras assessment sourceArtifactPath values were outside the explicit assessments/mathematik relocation prefix."
+  },
+  "scope": {
+    "assessmentRelocationReceipt": "curricula/DE/Gymnasium/assessments/mathematik/m7-pythagoras-structure-20260928-v1/relocation-receipt.json",
+    "authoringOnlyMasteryMigration": "Six canonical masteryMigration notes are omitted from the compiled runtime model after semantic-kind fingerprint validation; no canonical migration meaning or stable goal ID changes.",
+    "conformanceCountMethod": "Observed from the current deterministic release-model compiler, checked by the independent release-model validator; counts describe package content and evidence, not curriculum completion or approvals.",
+    "publicationEvidenceProfileSha256": "8b00d68660ba052d21aee3be2f7dfec3629ecba9e1914b4c32c1fcb165d18946",
+    "releaseModelProfileSha256": "acf6c6af41e62d8ee71763b452133df63ace72f0f446071fb943286c729ea692",
+    "compiledContentDigest": "sha256:9c1e975f7f06844af9edb3de4b09a90b8b23e41f6f7b930bffa8938fbc2c993e"
+  },
+  "humanImageScopeAudit": {
+    "formerCurricularAtomicHumanApprovedCount": 121,
+    "currentCurricularAtomicHumanApprovedCount": 118,
+    "reason": "The three former human-approved goal images below belong to goals now classified runtimeSupport/compatibilityOnly following semantic splits; they are excluded from current curricularAtomic package visualization scope. This refresh grants no approval to replacement or new images.",
+    "historicalAssets": [
+      {
+        "goalId": "0a846521-edcc-5c3c-a844-eac061e053ce",
+        "sha256": "eb701abfbd708e476820135d7fb0b51c4d350908a8c9203d8711642681b567f7",
+        "currentCanonicalImage": "unchanged historical image still linked to runtimeSupport compatibility goal"
+      },
+      {
+        "goalId": "809ef78a-f282-5593-89be-0f2cb95570ac",
+        "sha256": "027da3a06ec3b0f2f59a2d5a694b3caf0679f71f6e11040bf60f7182a291b9de",
+        "currentCanonicalImage": "historical source/public image files preserved; no active image link on runtimeSupport compatibility goal"
+      },
+      {
+        "goalId": "a8ff2666-8df3-4253-8021-3efe42114e40",
+        "sha256": "a7e1ec3af922de59849a1c463aa06c725e3ead5ea6cb7b66a10acf40c060f77e",
+        "currentCanonicalImage": "unchanged historical image still linked to runtimeSupport compatibility goal"
+      }
+    ]
+  },
+  "redistributionReview": {
+    "currentBinaryAssets": 832,
+    "decisionStatus": "all 832 assets pending-human-review",
+    "humanApprovedAssets": 0,
+    "publicationReady": false,
+    "sharedDecisionFieldsChanged": 0,
+    "newResourceIds": 15,
+    "obsoleteResourceIds": 1,
+    "reviewEvidence": "No human redistribution decisions added; source asset bytes and current generation prompts are verified separately."
+  },
+  "sourceVerification": {
+    "sourceGoals": 9977,
+    "carrierMatches": 9491,
+    "pdfProjectionMatches": 5,
+    "pendingHumanReviews": 481,
+    "completedHumanReviews": 0,
+    "change": "Two Mecklenburg-Vorpommern Stereometrie source rows remain pending after current PDF binding: a one-letter A is not informative PDF substring evidence, and an incomplete source phrase has no contiguous match. Existing 479 human review decisions and evidence remain unchanged.",
+    "pdfReplay": "Ten PDF projections independently replayed with pdftotext 22.02.0; no human source approval inferred."
+  }
+}

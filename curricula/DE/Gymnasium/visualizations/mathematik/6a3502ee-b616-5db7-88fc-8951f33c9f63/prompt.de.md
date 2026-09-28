@@ -1,6 +1,7 @@
 # Lernzielvisualisierung: Den Kehrsatz des Pythagoras beweisen
 
 - Ziel-ID: `6a3502ee-b616-5db7-88fc-8951f33c9f63`
+- Provider: OpenAI imagegen
 - Aktives Quellbild: `6a3502ee-b616-5db7-88fc-8951f33c9f63.png`
 - SHA-256: `dd76447150b51af15d97264ef9eccd3d656ac51d2a380582a80028de145450c6`
 - Generator: OpenAI built-in imagegen; konkrete Modellkennung vom Tool nicht ausgegeben
@@ -65,7 +66,7 @@ Precise-object-edit of the provided educational proof image. Change ONLY the thr
 Precise-object-edit of the provided landscape educational math illustration. Keep both side-by-side triangle diagrams, all vertices, side labels, colors, right-angle marker only at C', panel positions, soft comic style, and final SSS conclusion unchanged. In the FIRST bottom reasoning box only, replace the existing expression "a²+b²=c²" with the exact complete expression "d²=a²+b²=c²". Widen that first box as much as needed while keeping three reasoning boxes and large legible type when the whole image is 360 pixels wide. Keep the MIDDLE box exactly "d=c". Keep the LAST box exactly "SSS ⇒ ∠C=90°". Do not change any other text or mathematical relationship. The new first box makes explicit that Pythagoras in the right auxiliary triangle gives d²=a²+b², equal to c² from the given premise.
 ```
 
-## Versuch 5: pending independent geometric review; not active
+## Versuch 5: nach unabhängiger geometrischer Prüfung aktiv
 
 - Datei: `tmp/m7-20260928-continuation/pyth-converse-proof-exact-imagegen.png`
 - SHA-256: `dd76447150b51af15d97264ef9eccd3d656ac51d2a380582a80028de145450c6`

@@ -1,0 +1,91 @@
+{
+  "id": "e086671c-9f55-5d8b-8467-b6390dc6a879",
+  "title": "Prüfung: Eine exakte Wurzelstrecke konstruieren",
+  "description": "Die lernende Person kann die Kompetenz „Wurzelstrecken mit dem Satz des Pythagoras konstruieren“ in einer selbstständigen Prüfungsaufgabe zeigen.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical",
+    "phase:SekI",
+    "ExamTask"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-SL"
+    ],
+    "stage": [
+      "SekI"
+    ]
+  },
+  "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/m7-pythagoras-structure-20260928-v1/e086671c-9f55-5d8b-8467-b6390dc6a879.assessment.json",
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3",
+      "K4"
+    ],
+    "guidingIdeas": [
+      "L2",
+      "L3"
+    ],
+    "phase": "J9",
+    "area": "Mathematik",
+    "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J9.3A69DAB2"
+  },
+  "shortKey": "canonical_math_sek1_j9_assessment_3a69dab2",
+  "contains": [],
+  "requires": [
+    "3a69dab2-3fe8-5076-a980-5b7ac1bd1127"
+  ],
+  "phase": "J9",
+  "type": "atomic",
+  "nodeKind": "exam",
+  "examData": {
+    "reviewStatus": "released",
+    "reviewNote": "Aktiver AI-Arbeitsstand mit fachlich ausgearbeiteter Aufgabe und Lösung vom 2026-09-28; keine menschliche Freigabe. Zentrale Qualitätsnachweise separat erforderlich.",
+    "coveredGoalIds": [
+      "3a69dab2-3fe8-5076-a980-5b7ac1bd1127"
+    ],
+    "coveredStrands": [
+      "L2"
+    ],
+    "demandLevels": [
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "Gegeben ist eine Einheitsstrecke von 1 cm. Eine technische Zeichnung benötigt eine Strecke der exakten Länge $\\sqrt{13}$ cm.\n\n1. Konstruiere diese Strecke mithilfe eines rechtwinkligen Dreiecks und dokumentiere deine Schritte. Näherungsweises Abmessen eines Dezimalwerts zählt nicht als Konstruktion. (4 BE)\n2. Begründe, warum deine Konstruktion einen rechten Winkel liefert und die markierte Strecke genau die geforderte Länge hat. (3 BE)\n3. Jemand zeichnet ein Dreieck mit Seitenabschnitten 2 cm und 3 cm, lässt aber den eingeschlossenen Winkel frei. Er behauptet, die Verbindungsstrecke sei immer $\\sqrt{13}$ cm. Prüfe die Behauptung und nenne die fehlende Konstruktionsbedingung. (3 BE)",
+    "solutionContent": "Ein möglicher Weg: Strecke AB=3 cm zeichnen, in A die Senkrechte zu AB konstruieren, auf ihr AC=2 cm abtragen und B mit C verbinden. Die verbindende Strecke BC ist die gesuchte Wurzelstrecke. Die Senkrechtkonstruktion sichert den rechten Winkel bei A; damit gilt $BC^2=AB^2+AC^2=9+4=13$, also wegen positiver Länge $BC=\\sqrt{13}$ cm. Die Behauptung aus Teil 3 ist falsch: Die beiden gegebenen Längen allein erzwingen die Quadratsummenbeziehung nicht; die beiden Schenkel müssen senkrecht sein. Bei anderem eingeschlossenen Winkel ändert sich die Verbindungsstrecke. Ohne ausgeführte oder eindeutig rekonstruierbar dokumentierte Konstruktion maximal 6/10; ohne gesicherte Rechtwinkligkeit oder exakten Längennachweis maximal 7/10.",
+    "scoring": {
+      "maxPoints": 10,
+      "passingPoints": 8,
+      "steps": [
+        {
+          "id": "construction",
+          "points": 4,
+          "description": "Ausführbare Konstruktion und Dokumentation"
+        },
+        {
+          "id": "proof",
+          "points": 3,
+          "description": "Rechter Winkel und exakte Länge nachgewiesen"
+        },
+        {
+          "id": "condition",
+          "points": 3,
+          "description": "Fehlerhafte Konstruktion anhand der Winkelbedingung beurteilt"
+        }
+      ]
+    },
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/m7-pythagoras-structure-20260928-v1/e086671c-9f55-5d8b-8467-b6390dc6a879.assessment.json"
+  },
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary",
+    "applicabilityFromRequires": true
+  }
+}

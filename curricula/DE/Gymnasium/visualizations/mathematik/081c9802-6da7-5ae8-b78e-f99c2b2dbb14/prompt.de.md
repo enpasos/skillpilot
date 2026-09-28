@@ -1,6 +1,7 @@
 # Lernzielvisualisierung: Rechtwinkligkeit mit dem Kehrsatz des Pythagoras prüfen
 
 - Ziel-ID: `081c9802-6da7-5ae8-b78e-f99c2b2dbb14`
+- Provider: OpenAI imagegen
 - Aktives Quellbild: `081c9802-6da7-5ae8-b78e-f99c2b2dbb14.png`
 - SHA-256: `4d2d8170e20beca927eaa82696250221a1415439e4b3fdaa01b5b80b5d1996d7`
 - Generator: OpenAI built-in imagegen (konkrete Modellkennung vom Tool nicht ausgegeben)

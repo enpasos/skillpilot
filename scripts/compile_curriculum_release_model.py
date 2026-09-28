@@ -2999,9 +2999,11 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
 
         extended = goal.get("extendedData")
         if isinstance(extended, dict):
-            # Applicability overrides are reviewed authoring evidence. The
-            # resolved runtime applicability above is the release contract.
+            # Applicability overrides and mastery-migration notes are
+            # authoring evidence. The resolved applicability and stable goal
+            # IDs above are the runtime release contract.
             extended.pop("applicabilityOverrides", None)
+            extended.pop("masteryMigration", None)
             if not extended:
                 goal.pop("extendedData", None)
                 extended = None
