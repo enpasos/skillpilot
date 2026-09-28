@@ -3276,7 +3276,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               type="button"
               aria-label={learnerViewCopy.hideGoalSidebarLabel}
               aria-controls="learner-goal-sidebar"
-              aria-expanded="true"
+              aria-expanded={isDesktopSidebarOpen}
               title={learnerViewCopy.hideGoalSidebarLabel}
               onClick={() => {
                 setIsDesktopSidebarOpen(false)
@@ -3387,7 +3387,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               type="button"
               aria-label={learnerViewCopy.showGoalSidebarLabel}
               aria-controls="learner-goal-sidebar"
-              aria-expanded="false"
+              aria-expanded={isDesktopSidebarOpen}
               onClick={() => {
                 setIsDesktopSidebarOpen(true)
                 requestAnimationFrame(() => desktopHideButtonRef.current?.focus())
