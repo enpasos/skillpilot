@@ -3,30 +3,44 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.10 is published in
+Anthropic-curated or Anthropic-verified listing. Version 1.1.11 is published in
 the public personal Marketplace; its exact source, package and repository have
-been independently verified. The website now serves the 1.1.11 archive; the
-public Marketplace remains on 1.1.10 until its separate repository publication.
+been independently verified. The website serves the matching 1.1.11 archive.
 Full real-client acceptance remains pending; repository publication does not
 establish installation or synchronization in every account.
 Earlier published packages and their evidence remain immutable history.
 
-The Product Owner reported green CI and deployment on 28 September 2026 and
+## 1.1.11 repository publication
+
+On 28 September 2026, the Product Owner reported green CI and deployment and
 requested publication of the 1.1.11 offer-commitment correction in the
 personal Git Marketplace. The exact 1.1.11 website index and downloaded
 archive were checked at 42,633 bytes and SHA-256
 `0648c174c52f057aca123cbcef8c1285c9d655bd81175382ce66155a9267f884`.
-The Marketplace source template is prepared for 1.1.11 and pins the green
-SkillPilot revision `70a2a25adb77ebfd8b1749fd50d93fc4aa35d301` and its
-Claude plugin source-tree SHA-256
+The Marketplace export pins the green SkillPilot revision
+`70a2a25adb77ebfd8b1749fd50d93fc4aa35d301` and its Claude plugin
+source-tree SHA-256
 `237c3d0d7deae66b0b0b4757f3f69eac98c15430a4c0cff1f3d868644375a9af`.
-The local twelve-file Marketplace export passed both strict Claude validations
-and an isolated installation, with tree SHA-256
+The exact twelve-file export has tree SHA-256
 `df38b47fc9b309adbbd910c04491ff4693e7cef3aa4f102977a14a2cd35f7dcf`.
-The publication PR, remote-branch verification and exact-client acceptance
-remain separate steps. Until the publication PR is
-merged, the public Marketplace revision is the verified 1.1.10 commit
-`b5c1b7579eefe087f55872402642e962790adc9a`.
+
+[Marketplace PR #14](https://github.com/enpasos/skillpilot-claude-marketplace/pull/14)
+passed its [final-head validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/36421718916)
+and was squash-merged independently of the SkillPilot source PR. The resulting
+public `main` revision is `1cb5b7904243b1b0ad6ee8fa576176bb09c2353e`.
+Its [main-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/36423148702)
+passed. `verifyPublishedClaudeMarketplace` checked the actual public default
+branch, closed file inventory, exact tree and rebuilt archive, both strict
+Claude validations, and installation from the HTTPS Marketplace in an isolated
+Claude profile. The remote head remained unchanged throughout verification.
+The repository evidence was recorded at `2026-09-28T12:40:27.000Z`.
+
+The packaged README and SETUP text are preparation-time snapshots, including
+their prepublication status wording; their bytes remain bound to the deployed
+archive. The Marketplace root README identifies that limitation. Only
+`public-repository-default-branch` is recorded as `pass`; clean-account
+installation, migration/refresh, and real-client learning-flow acceptance
+remain pending. No new first-party guide decision was made for 1.1.11.
 
 ## 1.1.10 repository publication
 

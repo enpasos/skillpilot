@@ -207,15 +207,19 @@ test("published 1.1.3 marketplace does not imply guide approval or real-client a
   }
 });
 
-test("local 1.1.11 candidate cannot inherit repository or client acceptance", () => {
+test("published 1.1.11 repository evidence stays bound without client acceptance", () => {
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   validateClaudeMarketplaceLane(lane);
   assert.equal(lane.plugin.version, "1.1.11");
+  assert.equal(lane.activation.state, "published_pending_acceptance");
+  assert.equal(lane.activation.firstPartyUiRoute, "controlled_direct_install_beta");
+  assert.equal(lane.activation.marketplaceUiSwitchAllowed, false);
+  assert.equal(lane.activation.firstPartyGuideDecision.status, "pending");
   const repositoryEvidence = lane.activation.evidence.find(({ id }) => id === "public-repository-default-branch");
-  if (repositoryEvidence.status === "pending") {
-    assert.equal(lane.activation.state, "prepared_not_published");
-    assert.equal(lane.activation.marketplaceUiSwitchAllowed, false);
-  }
+  assert.equal(repositoryEvidence.status, "pass");
+  assert.equal(repositoryEvidence.revision, "1cb5b7904243b1b0ad6ee8fa576176bb09c2353e");
+  assert.equal(repositoryEvidence.treeSha256, "df38b47fc9b309adbbd910c04491ff4693e7cef3aa4f102977a14a2cd35f7dcf");
+  assert.equal(repositoryEvidence.candidateSha256, "0648c174c52f057aca123cbcef8c1285c9d655bd81175382ce66155a9267f884");
   for (const record of [lane.activation.firstPartyGuideDecision, ...lane.activation.evidence]) {
     if (record.status !== "pending") {
       assert.equal(record.candidateVersion, lane.plugin.version);
