@@ -813,7 +813,7 @@ export function useAppCore({
   const matchedMathView = effectiveMatchedCompositionViewsByLandscapeId[selectedLandscapeId]
   const matchedMathScope = matchedMathView?.scope
   const bavarianMathCompositionView = currentLandscapeHasMatchedCompositionView
-    && selectedLandscapeId === '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+    && currentLandscapeEntry?.meta.subject === 'Mathematik'
     && matchedMathScope !== null
     && typeof matchedMathScope === 'object'
     && !Array.isArray(matchedMathScope)

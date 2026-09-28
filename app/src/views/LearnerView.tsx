@@ -119,6 +119,7 @@ interface LearnerViewProps {
   routeGoalId?: string
   skillpilotId: string
   landscapeId: string
+  landscapeSubject?: string
   currentLandscapeHasMatchedCompositionView: boolean
   activeFilter?: string
   onLogout?: () => void
@@ -370,6 +371,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   routeGoalId,
   skillpilotId,
   landscapeId,
+  landscapeSubject,
   currentLandscapeHasMatchedCompositionView,
   activeFilter = 'all',
   onLogout,
@@ -792,7 +794,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return supportedActiveFilters.length > 0 ? supportedActiveFilters.join(',') : undefined
   }, [landscapeId, personalConfig, activeFilter, supportedFilterIds])
   const bavarianMathCompositionView = currentLandscapeHasMatchedCompositionView
-    && landscapeId === '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+    && landscapeSubject === 'Mathematik'
     && normalizeJurisdictionCode(rootLandscapeId ? personalConfig[rootLandscapeId]?.filterId : undefined) === 'DE-BY'
   const learnerVisibleChildrenByParent = useMemo(
     () => {
