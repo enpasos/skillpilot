@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title description">
+  <title id="title">Beweis des Kehrsatzes des Pythagoras durch Hilfsdreieck</title>
+  <desc id="description">Ein Dreieck mit Seiten a, b, c und c²=a²+b² wird mit einem rechtwinkligen Hilfsdreieck verglichen, dessen Katheten a und b sind. Für dessen dritte Seite d folgt d²=a²+b²=c² und deshalb d=c. Mit SSS sind die Dreiecke kongruent, also ist der dem c gegenüberliegende Winkel im Ausgangsdreieck 90 Grad.</desc>
+  <rect width="1600" height="900" fill="#fffdf8"/>
+  <text x="800" y="95" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="55" font-weight="700" fill="#102b48">Den Kehrsatz des Pythagoras beweisen</text>
+  <text x="800" y="151" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="30" fill="#344f67">Voraussetzung: c² = a² + b² für die Seiten des Ausgangsdreiecks</text>
+
+  <rect x="90" y="188" width="625" height="465" rx="24" fill="#eef6fc" stroke="#bdd3e5" stroke-width="3"/>
+  <rect x="845" y="188" width="625" height="465" rx="24" fill="#fff3e9" stroke="#e8c7aa" stroke-width="3"/>
+  <text x="402" y="240" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="33" font-weight="700" fill="#154d8c">Ausgangsdreieck</text>
+  <text x="1157" y="240" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="33" font-weight="700" fill="#ad521b">Rechtwinkliges Hilfsdreieck</text>
+
+  <!-- Both diagrams are exact 3-4-5 right triangles in different orientations; the left angle is not marked until the proof concludes. -->
+  <path d="M150 600 L650 600 L330 360 Z" fill="#b6dcf5" stroke="#1265ad" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M920 600 L1320 600 L920 300 Z" fill="#ffd2ac" stroke="#d56724" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M920 570 h30 v30" fill="none" stroke="#a43e0a" stroke-width="5"/>
+  <g font-family="DejaVu Sans,Arial,sans-serif" font-size="31" font-weight="700" fill="#102b48">
+    <text x="135" y="625">A</text><text x="650" y="625">B</text><text x="320" y="344">C</text>
+    <text x="910" y="632">C′</text><text x="900" y="289">A′</text><text x="1322" y="625">B′</text>
+    <text x="395" y="638">c</text><text x="215" y="460">b</text><text x="515" y="455">a</text>
+    <text x="899" y="454">b</text><text x="1100" y="637">a</text><text x="1155" y="421">d</text>
+    <text x="338" y="405" fill="#154d8c">?</text>
+    <text x="954" y="563" fill="#ad521b">90°</text>
+  </g>
+  <path d="M745 422H814" stroke="#102b48" stroke-width="7"/>
+  <path d="M800 407l17 15-17 15" fill="none" stroke="#102b48" stroke-width="7"/>
+
+  <rect x="170" y="680" width="1260" height="174" rx="24" fill="#f0f5fa" stroke="#b9ccda" stroke-width="3"/>
+  <g font-family="DejaVu Sans,Arial,sans-serif" font-size="35" fill="#102b48">
+    <text x="800" y="733" text-anchor="middle">d² = a² + b² = c²  ⇒  d = c (positive Längen)</text>
+    <text x="800" y="785" text-anchor="middle">Gleiche Seiten a, b, c  ⇒  kongruent nach SSS</text>
+    <text x="800" y="837" text-anchor="middle" font-weight="700" fill="#a94a16">Daher: ∠C = ∠C′ = 90°</text>
+  </g>
+</svg>

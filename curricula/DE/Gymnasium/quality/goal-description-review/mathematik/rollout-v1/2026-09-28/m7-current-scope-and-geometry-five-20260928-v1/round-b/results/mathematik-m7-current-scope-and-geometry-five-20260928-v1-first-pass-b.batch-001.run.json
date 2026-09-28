@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-b.batch-001.fresh-b",
+  "campaignId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-b",
+  "roundId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-b",
+  "bundleFingerprint": "sha256:33223e43bed264d11c4fd5e31b20e07f3c954ac7aef8b416481db5988e31f484",
+  "bookDigest": "sha256:e11137d1e79f3f1f0a4da0c2147c29b8cc20cde9f75e2b6b89a61f67696aa5b6",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "independenceGroupId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-independent-b",
+  "batchId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:20fd3366427cc7aedd7115a470720c4bbc78b7fc20a51bf107d1d0a246eb3130",
+  "provider": "OpenAI",
+  "model": "gpt-6-astra",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "generationParametersFingerprint": "sha256:a56e9109e5bbf8cf5c9d544c4cb9a8e826a4d9693fc8d69ed725f141e510b399",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "803d910d-96d1-5118-b9ca-29e93d0da76d",
+    "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+    "fde351a8-98b1-5d75-b4df-813beb2bbe3c",
+    "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+    "d98849c7-bd0b-50d4-90aa-6293a3adb211"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:20fd3366427cc7aedd7115a470720c4bbc78b7fc20a51bf107d1d0a246eb3130"
+    }
+  ],
+  "startedAt": "2026-09-28T11:43:28.771Z",
+  "completedAt": "2026-09-28T11:50:13.886302Z",
+  "status": "completed",
+  "outputDigest": "sha256:149e5ce2b8d6333903d4a4295707b6f07f33d0cb0204979287914dfade0cada7",
+  "toolchainVersion": "skillpilot-description-review-v2"
+}

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Vektoren addieren und subtrahieren</title>
+  <desc id="desc">Links zeigen die Pfeile a gleich (2,1) und b gleich (minus 1,2) die Summe (1,3). Rechts wird b durch seinen Gegenvektor rückgängig gemacht; a minus b ist (3,minus 1). Darunter steht eine passende dreidimensionale Komponentenrechnung.</desc>
+  <defs>
+    <marker id="blue" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="15" refY="8" orient="auto"><path d="M0 0 L16 8 L0 16 Z" fill="#1766bb"/></marker>
+    <marker id="green" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="15" refY="8" orient="auto"><path d="M0 0 L16 8 L0 16 Z" fill="#17865b"/></marker>
+    <marker id="orange" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="15" refY="8" orient="auto"><path d="M0 0 L16 8 L0 16 Z" fill="#c05b16"/></marker>
+    <marker id="purple" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="15" refY="8" orient="auto"><path d="M0 0 L16 8 L0 16 Z" fill="#7542aa"/></marker>
+  </defs>
+  <rect width="1200" height="720" fill="#fffdf8"/>
+  <text x="600" y="63" text-anchor="middle" font-family="Arial,sans-serif" font-size="38" font-weight="bold" fill="#122a4c">Vektoren: Verschiebungen verknüpfen und rückgängig machen</text>
+  <rect x="45" y="100" width="530" height="465" rx="20" fill="#eef6ff" stroke="#b6d2ed" stroke-width="2"/>
+  <rect x="625" y="100" width="530" height="465" rx="20" fill="#fff2e8" stroke="#edd0b8" stroke-width="2"/>
+  <text x="310" y="146" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" font-weight="bold" fill="#122a4c">Addition: a + b</text>
+  <text x="890" y="146" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" font-weight="bold" fill="#122a4c">Subtraktion: a − b = a + (−b)</text>
+  <g stroke="#bfd0e2" stroke-width="1">
+    <path d="M100 190 V475 M170 190 V475 M240 190 V475 M310 190 V475 M380 190 V475 M450 190 V475 M520 190 V475 M100 190 H520 M100 260 H520 M100 330 H520 M100 400 H520 M100 470 H520"/>
+    <path d="M680 190 V475 M750 190 V475 M820 190 V475 M890 190 V475 M960 190 V475 M1030 190 V475 M1100 190 V475 M680 190 H1100 M680 260 H1100 M680 330 H1100 M680 400 H1100 M680 470 H1100"/>
+  </g>
+  <g stroke="#5d7188" stroke-width="2"><path d="M100 400 H520 M240 475 V190 M680 400 H1100 M820 475 V190"/></g>
+  <g fill="none" stroke-linecap="round" stroke-width="8">
+    <path d="M240 400 L380 330" stroke="#1766bb" marker-end="url(#blue)"/>
+    <path d="M380 330 L310 190" stroke="#17865b" marker-end="url(#green)"/>
+    <path d="M240 400 L310 190" stroke="#7542aa" marker-end="url(#purple)"/>
+    <path d="M820 400 L960 330" stroke="#1766bb" marker-end="url(#blue)"/>
+    <path d="M960 330 L1030 470" stroke="#c05b16" marker-end="url(#orange)"/>
+    <path d="M820 400 L1030 470" stroke="#7542aa" marker-end="url(#purple)"/>
+  </g>
+  <g font-family="Arial,sans-serif" font-size="24" font-weight="bold">
+    <text x="295" y="347" fill="#1766bb">a</text><text x="388" y="257" fill="#17865b">b</text><text x="172" y="286" fill="#7542aa">a + b</text>
+    <text x="875" y="347" fill="#1766bb">a</text><text x="1040" y="394" fill="#c05b16">−b</text><text x="888" y="485" fill="#7542aa">a − b</text>
+  </g>
+  <g fill="#122a4c" font-family="Arial,sans-serif" font-size="24">
+    <text x="310" y="530" text-anchor="middle">(2, 1) + (−1, 2) = (1, 3)</text>
+    <text x="890" y="530" text-anchor="middle">(2, 1) − (−1, 2) = (3, −1)</text>
+  </g>
+  <text x="600" y="627" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" fill="#122a4c">Im Raum ebenso, Koordinate für Koordinate:</text>
+  <text x="600" y="675" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" font-weight="bold" fill="#122a4c">(2, 1, 1) + (−1, 2, 3) = (1, 3, 4)</text>
+</svg>

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:fad2fb80f3be25d033b35ef0e69aa3c2a53a15382f5b50d0e5aa0c5416afed66",
+  "reviewInputFingerprint": "sha256:0251df52119b200ee4ea9b2e8b9e6979763d1613fb5cea5b13f66b8ff84aa62a",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q2-two-planes-current-20260928-v1-a",
+      "roundId": "mathematik-m7-q2-two-planes-current-20260928-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q2-two-planes-current-20260928-v1-independent-a",
+      "runIds": [
+        "m7-q2-two-planes-current-20260928-v1-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q2-two-planes-current-20260928-v1-b",
+      "roundId": "mathematik-m7-q2-two-planes-current-20260928-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q2-two-planes-current-20260928-v1-independent-b",
+      "runIds": [
+        "math-m7-q2-two-planes-current-20260928-v1-batch-001-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+      "firstRecordId": "m7-q2-two-planes-current-20260928-v1-a-record-001",
+      "secondRecordId": "math-m7-q2-two-planes-current-20260928-v1-b-0f4f9957",
+      "firstRunId": "m7-q2-two-planes-current-20260928-v1-a-run-001",
+      "secondRunId": "math-m7-q2-two-planes-current-20260928-v1-batch-001-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

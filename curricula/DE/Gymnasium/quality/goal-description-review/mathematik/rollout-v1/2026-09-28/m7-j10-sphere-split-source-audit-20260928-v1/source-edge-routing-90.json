@@ -1,0 +1,1746 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex; AI source routing review, no human approval",
+  "reviewedAt": "2026-09-28",
+  "oldGoalId": "1ea06c0c-5c60-45cd-8f31-638de98820b4",
+  "childGoalIds": [
+    "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+    "bb227e31-0b0b-544a-b5e0-548256a70dec"
+  ],
+  "edgeCount": 90,
+  "retainedPartialSphereSourceRows": 25,
+  "removedMisboundSphereSourceRows": 65,
+  "authority": "ai_review",
+  "decisions": [
+    {
+      "edgeNumber": 1,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_MATHEMATIK_SEKI_BP2016.source-extraction.json",
+      "sourceGoalId": "bw-math-seki-bp2016-3-3-2-05-975237f5",
+      "jurisdiction": "DE-BW",
+      "sourceTextBefore": "die Formeln für das Volumen von Pyramide, Kegel und Kugel durch Plausibilitätsbetrachtung erläutern",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.3.2, Kompetenz 5, S. 32.",
+      "sourceSpan": "die Formeln für das Volumen von Pyramide, Kegel und Kugel durch Plausibilitätsbetrachtung erläutern",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+        "50612a57-7b9d-45fd-bc08-e95556444760"
+      ],
+      "rationaleDe": "Die Quelle nennt ausdrücklich nur die Plausibilisierung/Herleitung des Kugelvolumens. Kein Oberflächennachweis; keine Integralrechnung vorausgesetzt."
+    },
+    {
+      "edgeNumber": 2,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_MATHEMATIK_SEKI_BP2016.source-extraction.json",
+      "sourceGoalId": "bw-math-seki-bp2016-3-3-2-07-642d8d26",
+      "jurisdiction": "DE-BW",
+      "sourceTextBefore": "den Oberflächeninhalt und das Volumen von Prisma, Pyramide, Zylinder, Kegel und Kugel berechnen",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.3.2, Kompetenz 7, S. 32.",
+      "sourceSpan": "den Oberflächeninhalt und das Volumen von Prisma, Pyramide, Zylinder, Kegel und Kugel berechnen",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+        "f1348d40-3872-5e44-8892-3600c811796f",
+        "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+        "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+        "a4f6f5e4-f790-48d1-8b49-c9dc048c9d83",
+        "7b860649-373e-5523-9843-ec96b3537f1f",
+        "1e77bb2f-0cd6-5961-b0fb-230317c73fce",
+        "288633c1-f61c-5b48-af7e-a80357f96cad",
+        "c71ae268-f28e-59f0-982d-91db8f963378",
+        "e8237315-654e-5150-97de-49c4cb49b3d1",
+        "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 3,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sourceGoalId": "5ddd53f7-1c68-5a70-bf48-6f25d08e5735",
+      "jurisdiction": "DE-BY",
+      "sourceTextBefore": "machen die Struktur der Formeln zur Bestimmung des Volumens bzw. des Oberflächeninhalts einer Kugel plausibel.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M10.5",
+      "sourceSpan": "machen die Struktur der Formeln zur Bestimmung des Volumens bzw. des Oberflächeninhalts einer Kugel plausibel.",
+      "previousMatchType": "exact",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [],
+      "rationaleDe": "BY M10.5 nennt die Plausibilisierung von Kugelvolumen bzw. -oberfläche. Beide getrennten Kinder erhalten jeweils partial; die Quelle trägt allein noch keine vollständige Anwendung."
+    },
+    {
+      "edgeNumber": 4,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_MATHEMATIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-content-overview-5-9-030-992f1f3f15",
+      "jurisdiction": "DE-HB",
+      "sourceTextBefore": "Oberfläche und Volumen von Zylinder, Pyramiden, Kegel, Kugeln",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 10",
+      "sourceSpan": "S. 10, Wesentliche Inhalte der Jahrgänge 5-9",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 5,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_MATHEMATIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j6-content-standards-017-3cc4a8f06b",
+      "jurisdiction": "DE-HB",
+      "sourceTextBefore": "benennen und charakterisieren Figuren (Rechteck, Quadrat, Parallelogramm, Dreieck, Kreis) und Körper (Würfel, Quader, Prisma, Pyramide, Zylinder, Kegel, Kugel) und identifizieren sie in ihrer Umwelt",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 15",
+      "sourceSpan": "S. 15, Inhaltsbezogene Kompetenzen am Ende der Jahrgangsstufe 6",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+        "879389a7-73de-45bb-a632-0d918c23a082"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 6,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_MATHEMATIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-content-restriction-overview-005-21243a2fd3",
+      "jurisdiction": "DE-HB",
+      "sourceTextBefore": "Oberfläche und Volumen von Zylinder, Pyramiden, Kegel, Kugeln",
+      "sourceRef": "Anlage Einschraenkung der Gueltigkeit des Bildungsplans Mathematik Jahrgangsstufen 5-9, Bremen 2022, S. 1",
+      "sourceSpan": "S. 1, Eingeschränkte wesentliche Inhalte für Jahrgang 9",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 7,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_MATHEMATIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-001-9309018189",
+      "jurisdiction": "DE-HB",
+      "sourceTextBefore": "benennen und charakterisieren Körper (Zylinder, Pyramiden, Kegel, Kugeln) und identifizieren sie in ihrer Umwelt",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 23",
+      "sourceSpan": "S. 23, Geometrie-Standards für Jahrgang 9 aus bestehender Fassung",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 8,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_MATHEMATIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-002-1ef0253177",
+      "jurisdiction": "DE-HB",
+      "sourceTextBefore": "skizzieren Schrägbilder, entwerfen Netze von Zylindern, Pyramiden und Kegeln und stellen die Körper her",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 23",
+      "sourceSpan": "S. 23, Geometrie-Standards für Jahrgang 9 aus bestehender Fassung",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 9,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_MATHEMATIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "sourceGoalId": "de-hb-mathematik-seki-bildungsplan-2006-2022-hb-seki-j9-geometry-standards-003-419614a224",
+      "jurisdiction": "DE-HB",
+      "sourceTextBefore": "schätzen und bestimmen Umfänge und Flächeninhalte von Kreisen und zusammengesetzten Figuren sowie Oberflächen und Volumina von Zylindern, Pyramiden, Kegeln, Kugeln und zusammengesetzten Körpern",
+      "sourceRef": "Bildungsplan Mathematik Gymnasium Jahrgangsstufe 5-10, Bremen 2006, S. 23",
+      "sourceSpan": "S. 23, Geometrie-Standards für Jahrgang 9 aus bestehender Fassung",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "b9a501c4-9d74-5514-b77b-895980b89b1b",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 10,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+      "sourceGoalId": "he-math-seki-kc-7-3-koerper-j9-10-03-a57c19d5",
+      "jurisdiction": "DE-HE",
+      "sourceTextBefore": "Beschreibung von Volumen und Oberflächeninhalt bei Pyramide, Kegel, Kugel",
+      "sourceRef": "Kerncurriculum Mathematik Sek I Gymnasium, Kap. 7.3, Körper, Jahrgangsstufe 9/10",
+      "sourceSpan": "Beschreibung von Volumen und Oberflächeninhalt bei Pyramide, Kegel, Kugel",
+      "previousMatchType": "exact",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+        "7b860649-373e-5523-9843-ec96b3537f1f",
+        "a4f6f5e4-f790-48d1-8b49-c9dc048c9d83"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 11,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+      "sourceGoalId": "he-math-seki-kc-7-3-messvorgaenge-j9-10-02-e072eef8",
+      "jurisdiction": "DE-HE",
+      "sourceTextBefore": "Volumen und Oberflächeninhalt bei Pyramide, Kegel, Zylinder, Kugel",
+      "sourceRef": "Kerncurriculum Mathematik Sek I Gymnasium, Kap. 7.3, Messvorgänge, Jahrgangsstufe 9/10",
+      "sourceSpan": "Volumen und Oberflächeninhalt bei Pyramide, Kegel, Zylinder, Kugel",
+      "previousMatchType": "exact",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+        "7b860649-373e-5523-9843-ec96b3537f1f",
+        "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+        "a4f6f5e4-f790-48d1-8b49-c9dc048c9d83"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 12,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+      "sourceGoalId": "he-math-seki-g9-10-3-01-049098a5",
+      "jurisdiction": "DE-HE",
+      "sourceTextBefore": "Pyramide, Kegel, Kugel",
+      "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 10.3 Geometrie",
+      "sourceSpan": "Pyramide, Kegel, Kugel",
+      "previousMatchType": "exact",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "74d29d0c-80b3-4d46-a5f5-3c2f609e8483",
+        "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e"
+      ],
+      "rationaleDe": "Im gelesenen HE-G9-Kontext 10.3 stehen Kugel, Oberflächeninhalt, Volumen und experimentell-heuristische Herleitung zusammen; beide Kinder bilden je eine Teilfacette."
+    },
+    {
+      "edgeNumber": 13,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+      "sourceGoalId": "he-math-seki-g9-10-3-04-a9d4a57e",
+      "jurisdiction": "DE-HE",
+      "sourceTextBefore": "Oberflächeninhalt und Volumen Experimentelles und heuristisches Arbeiten (Schüttversuche, Modelle, Näherungsverfahren)",
+      "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 10.3 Geometrie",
+      "sourceSpan": "Oberflächeninhalt und Volumen Experimentelles und heuristisches Arbeiten (Schüttversuche, Modelle, Näherungsverfahren)",
+      "previousMatchType": "exact",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+        "7b860649-373e-5523-9843-ec96b3537f1f",
+        "a4f6f5e4-f790-48d1-8b49-c9dc048c9d83",
+        "50612a57-7b9d-45fd-bc08-e95556444760"
+      ],
+      "rationaleDe": "Im gelesenen HE-G9-Kontext 10.3 stehen Kugel, Oberflächeninhalt, Volumen und experimentell-heuristische Herleitung zusammen; beide Kinder bilden je eine Teilfacette."
+    },
+    {
+      "edgeNumber": 14,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+      "sourceGoalId": "he-math-seki-g8-9g-2-02-0a3ec297",
+      "jurisdiction": "DE-HE",
+      "sourceTextBefore": "Oberflächeninhalt und Volumen von Pyrami- Herleitung und Begründung der Formeln (angemessene de, Kegel, Kugel Auswahl treffen, Wiederaufgreifen des Satzes des Pythagoras)",
+      "sourceRef": "Lehrplan Gymnasium G8 Mathematik, G8 9G.2 Geometrie / Funktionen",
+      "sourceSpan": "Oberflächeninhalt und Volumen von Pyrami- Herleitung und Begründung der Formeln (angemessene de, Kegel, Kugel Auswahl treffen, Wiederaufgreifen des Satzes des Pythagoras)",
+      "previousMatchType": "exact",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "74d29d0c-80b3-4d46-a5f5-3c2f609e8483",
+        "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+        "7b860649-373e-5523-9843-ec96b3537f1f"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 15,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_MATHEMATIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "sourceGoalId": "hh-math-seki-2022-hh-seki-5-6-05-04-150ea66493",
+      "jurisdiction": "DE-HH",
+      "sourceTextBefore": "Quader, Würfel, Kegel, Zylinder, Kugel unterscheiden",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I - Mathematik, Hamburg 2022, S. 48",
+      "sourceSpan": "S. 48, Modul 5/6 5",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 16,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_MATHEMATIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "sourceGoalId": "hh-math-seki-2022-hh-seki-5-6-05-06-cb2e44e7c8",
+      "jurisdiction": "DE-HH",
+      "sourceTextBefore": "Quader, Würfel, Pyramide, Prisma, Kegel, Kugel, Zylinder beschreiben ihre definierenden Eigenschaften",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I - Mathematik, Hamburg 2022, S. 48",
+      "sourceSpan": "S. 48, Modul 5/6 5",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 17,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_MATHEMATIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "sourceGoalId": "hh-math-seki-2022-hh-seki-9-10-02-01-ca344b96ad",
+      "jurisdiction": "DE-HH",
+      "sourceTextBefore": "Pyramide, Kegel und Kugel (auch aus ihrer Umwelt) charakterisieren und aus ihren Darstellungen erkennen",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I - Mathematik, Hamburg 2022, S. 81",
+      "sourceSpan": "S. 81, Modul 9/10 2",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 18,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_MATHEMATIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "sourceGoalId": "hh-math-seki-2022-hh-seki-9-10-02-02-0c6682f81d",
+      "jurisdiction": "DE-HH",
+      "sourceTextBefore": "Netze und Schrägbilder von Pyramide und Kegel erkennen und mithilfe dynamischer Geometriesoftware zeichnen",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I - Mathematik, Hamburg 2022, S. 81",
+      "sourceSpan": "S. 81, Modul 9/10 2",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 19,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_MATHEMATIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "sourceGoalId": "hh-math-seki-2022-hh-seki-9-10-02-03-67bdf4b497",
+      "jurisdiction": "DE-HH",
+      "sourceTextBefore": "Schrägbilder von aus bisher bekannten zusammengesetzten Körpern entwerfen (z. B. mithilfe dynamischer Geometriesoftware)",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I - Mathematik, Hamburg 2022, S. 81",
+      "sourceSpan": "S. 81, Modul 9/10 2",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 20,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_MATHEMATIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "sourceGoalId": "hh-math-seki-2022-hh-seki-9-10-02-05-4e55063744",
+      "jurisdiction": "DE-HH",
+      "sourceTextBefore": "Oberflächeninhalt und Volumen von Pyramide, Kegel und Kugel mit Formelsammlung und Taschenrechner berechnen sowie mithilfe digitaler Mathematikwerkzeuge ermitteln",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I - Mathematik, Hamburg 2022, S. 81",
+      "sourceSpan": "S. 81, Modul 9/10 2",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 21,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_MATHEMATIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "sourceGoalId": "hh-math-seki-2022-hh-seki-9-10-02-09-dfd6c613a7",
+      "jurisdiction": "DE-HH",
+      "sourceTextBefore": "Satz von Cavalieri anwenden",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I - Mathematik, Hamburg 2022, S. 81",
+      "sourceSpan": "S. 81, Modul 9/10 2",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 22,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_MATHEMATIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "sourceGoalId": "hh-math-seki-2022-hh-seki-9-10-02-10-68b3da35e2",
+      "jurisdiction": "DE-HH",
+      "sourceTextBefore": "Formel für das Volumen einer Pyramide und Kugel herleiten",
+      "sourceRef": "Bildungsplan Gymnasium Sekundarstufe I - Mathematik, Hamburg 2022, S. 81",
+      "sourceSpan": "S. 81, Modul 9/10 2",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Die Quelle nennt ausdrücklich nur die Plausibilisierung/Herleitung des Kugelvolumens. Kein Oberflächennachweis; keine Integralrechnung vorausgesetzt."
+    },
+    {
+      "edgeNumber": 23,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_MATHEMATIK_SEKI_RAHMENPLAENE_2020_2019.source-extraction.json",
+      "sourceGoalId": "de-mv-mathematik-seki-rahmenplaene-2020-2019-mv-seki-gym-j7-korperdarstellung-001-7b41ed0018",
+      "jurisdiction": "DE-MV",
+      "sourceTextBefore": "Quader, Pyramide und aus diesen zusammenge-",
+      "sourceRef": "Rahmenplan Mathematik Gymnasium/Gesamtschule Jahrgangsstufen 7-10, Mecklenburg-Vorpommern 2019, S. 23",
+      "sourceSpan": "S. 23, Körperdarstellung",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 24,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_MATHEMATIK_SEKI_RAHMENPLAENE_2020_2019.source-extraction.json",
+      "sourceGoalId": "de-mv-mathematik-seki-rahmenplaene-2020-2019-mv-seki-gym-j8-planimetrie-und-stereometrie-003-202a79b82e",
+      "jurisdiction": "DE-MV",
+      "sourceTextBefore": "Pyramide, Zylinder und aus diesen sowie Pris-",
+      "sourceRef": "Rahmenplan Mathematik Gymnasium/Gesamtschule Jahrgangsstufen 7-10, Mecklenburg-Vorpommern 2019, S. 28",
+      "sourceSpan": "S. 28, Planimetrie und Stereometrie",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 25,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_MATHEMATIK_SEKI_RAHMENPLAENE_2020_2019.source-extraction.json",
+      "sourceGoalId": "de-mv-mathematik-seki-rahmenplaene-2020-2019-mv-seki-gym-j10-stereometrie-001-de1cd4e776",
+      "jurisdiction": "DE-MV",
+      "sourceTextBefore": "Pyramide und Zylinder zusammengesetzte",
+      "sourceRef": "Rahmenplan Mathematik Gymnasium/Gesamtschule Jahrgangsstufen 7-10, Mecklenburg-Vorpommern 2019, S. 43",
+      "sourceSpan": "S. 43, Stereometrie",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Die anhand der amtlichen PDF S.40 reparierte Tabellenzeile nennt Kugel, Volumen und Oberflächeninhalt ausdrücklich. Die frühere fragmentierte Extraktion unterschlug Kugel; beide Kinder erhalten nur partial."
+    },
+    {
+      "edgeNumber": 26,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json",
+      "sourceGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematische-darstellungen-verwenden-011-4a492fdb55",
+      "jurisdiction": "DE-NI",
+      "sourceTextBefore": "zeichnen Schrägbilder von Pyramiden und entwerfen Netze.",
+      "sourceRef": "Kerncurriculum Mathematik fuer das Gymnasium Schuljahrgaenge 5-10, Niedersachsen, S. 19",
+      "sourceSpan": "S. 19, Prozesskompetenz: Mathematische Darstellungen verwenden",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 27,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json",
+      "sourceGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-kreis-und-korperberechnungen-008-2db58805e1",
+      "jurisdiction": "DE-NI",
+      "sourceTextBefore": "Oberflächeninhalt und Volumen der Pyramide und des Kegels",
+      "sourceRef": "Kerncurriculum Mathematik fuer das Gymnasium Schuljahrgaenge 5-10, Niedersachsen, S. 54",
+      "sourceSpan": "S. 54, Lernbereich-Kern: Kreis- und Körperberechnungen",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 28,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json",
+      "sourceGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-kreis-und-korperberechnungen-009-47c8448821",
+      "jurisdiction": "DE-NI",
+      "sourceTextBefore": "Oberflächeninhalt und Volumen der Kugel",
+      "sourceRef": "Kerncurriculum Mathematik fuer das Gymnasium Schuljahrgaenge 5-10, Niedersachsen, S. 54",
+      "sourceSpan": "S. 54, Lernbereich-Kern: Kreis- und Körperberechnungen",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 29,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_MATHEMATIK_SEKI_KLP_2019.source-extraction.json",
+      "sourceGoalId": "de-nw-mathematik-seki-klp-2019-nw-seki-erprobung-geometrie-002-1c09f2ff48",
+      "jurisdiction": "DE-NW",
+      "sourceTextBefore": "Körper: Quader, Pyramide, Zylinder, Kegel, Kugel, Schrägbilder und Netze (Quader und Würfel), Oberflächeninhalt und Volumen (Quader und Würfel)",
+      "sourceRef": "Kernlehrplan Mathematik Sekundarstufe I Gymnasium G9, Nordrhein-Westfalen 2019, S. 25",
+      "sourceSpan": "S. 25, Erprobungsstufe Geometrie",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "7c978529-ce62-5adc-897f-24ea80babbc8",
+        "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 30,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_MATHEMATIK_SEKI_KLP_2019.source-extraction.json",
+      "sourceGoalId": "de-nw-mathematik-seki-klp-2019-nw-seki-stufe-2-geometrie-002-99bd8e7415",
+      "jurisdiction": "DE-NW",
+      "sourceTextBefore": "Körper: Kugel, Zylinder, Prisma, Kegel und Pyramide, Oberflächeninhalt und Volumen",
+      "sourceRef": "Kernlehrplan Mathematik Sekundarstufe I Gymnasium G9, Nordrhein-Westfalen 2019, S. 34",
+      "sourceSpan": "S. 34, Sek-I zweite Stufe Geometrie",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 31,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "sourceGoalId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-os-l3-raum-form-016-13846f1cca",
+      "jurisdiction": "DE-RP",
+      "sourceTextBefore": "Mathematische Idealisierungen erkennen Würfel, Quader, Kugel, Kegel, Pyramide,",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 35",
+      "sourceSpan": "S. 35, Orientierungsstufe L3 Raum und Form",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 32,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "sourceGoalId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-os-l3-raum-form-025-e2c8eb7840",
+      "jurisdiction": "DE-RP",
+      "sourceTextBefore": "aute, Parallelogramm, ürfel, Quader, Kugel, Kegel, Pyramide, Zyliner, Prisma, cke, Kante, Fläche, etz, Körper, Schrägbild, oordinatensystem",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 36",
+      "sourceSpan": "S. 36, Orientierungsstufe L3 Raum und Form",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 33,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "sourceGoalId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l2-messen-groessen-017-8e18ca0a55",
+      "jurisdiction": "DE-RP",
+      "sourceTextBefore": "Pyramide",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 96",
+      "sourceSpan": "S. 96, Klassenstufen 9 und 10 MSA L2 Messen und Größen",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 34,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "sourceGoalId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l2-messen-groessen-020-d686f71c3a",
+      "jurisdiction": "DE-RP",
+      "sourceTextBefore": "Kegel Kugel",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 96",
+      "sourceSpan": "S. 96, Klassenstufen 9 und 10 MSA L2 Messen und Größen",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Der gelesene RP-Tabellenkontext S.96 ordnet Kegel/Kugel dem Bestimmen von Volumen und Oberflächeninhalt zu. Je Kind partial; keine pauschale Herleitungsgarantie."
+    },
+    {
+      "edgeNumber": 35,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "sourceGoalId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l2-messen-groessen-021-b4a50f5325",
+      "jurisdiction": "DE-RP",
+      "sourceTextBefore": "Formeln herleiten Volumen der Pyramide Oberflächeninhalt des Kegels",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 97",
+      "sourceSpan": "S. 97, Klassenstufen 9 und 10 MSA L2 Messen und Größen",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 36,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "sourceGoalId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l3-raum-form-005-ed344f960e",
+      "jurisdiction": "DE-RP",
+      "sourceTextBefore": "Schrägbilder und Netze zeichnen und Bezi hungen herstellen Pyramide Kegel",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 101",
+      "sourceSpan": "S. 101, Klassenstufen 9 und 10 MSA L3 Raum und Form",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 37,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l2-grossen-und-messen-T053-48f3ebc1d4",
+      "jurisdiction": "DE-SH",
+      "sourceTextBefore": "Pyramide",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 33",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee Größen und Messen, Zeile 1686",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 38,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l2-grossen-und-messen-T055-1874af88fe",
+      "jurisdiction": "DE-SH",
+      "sourceTextBefore": "Kegel",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 33",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee Größen und Messen, Zeile 1689",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 39,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l2-grossen-und-messen-T056-094149931b",
+      "jurisdiction": "DE-SH",
+      "sourceTextBefore": "Kugel",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 33",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee Größen und Messen, Zeile 1691",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Der gelesene SH-L2-Tabellenkontext S.33 nennt das Bestimmen und Vergleichen von Oberflächeninhalten und Volumina, einschließlich Kugeln. Je Kind partial; L4-Körperbenennung bleibt getrennt."
+    },
+    {
+      "edgeNumber": 40,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l2-grossen-und-messen-T057-d18e2a354e",
+      "jurisdiction": "DE-SH",
+      "sourceTextBefore": "zusammengesetzten Körpern aus Quadern, Würfeln, Prismen, Pyramiden und Zylindern",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 33",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee Größen und Messen, Zeile 1692",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 41,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l2-grossen-und-messen-T058-9196b68706",
+      "jurisdiction": "DE-SH",
+      "sourceTextBefore": "zusammengesetzten Körpern mit Kegeln oder Kugeln",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 33",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee Größen und Messen, Zeile 1696",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Der gelesene SH-L2-Tabellenkontext S.33 nennt das Bestimmen und Vergleichen von Oberflächeninhalten und Volumina, einschließlich Kugeln. Je Kind partial; L4-Körperbenennung bleibt getrennt."
+    },
+    {
+      "edgeNumber": 42,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l4-raum-und-form-T051-41046dc786",
+      "jurisdiction": "DE-SH",
+      "sourceTextBefore": "Pyramide",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 40",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee Raum und Form, Zeile 2061",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 43,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l4-raum-und-form-T052-0d26e76d4b",
+      "jurisdiction": "DE-SH",
+      "sourceTextBefore": "Kegel",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 40",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee Raum und Form, Zeile 2062",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 44,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l4-raum-und-form-T054-8a788105ff",
+      "jurisdiction": "DE-SH",
+      "sourceTextBefore": "Kugel",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 40",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee Raum und Form, Zeile 2064",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 45,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-5-6-t04-figuren-und-korper-b37-2af55804c8",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "zeichnen Netze von Quadern, Prismen und Pyramiden und bauen damit Flächenmodelle.",
+      "sourceRef": "Lehrplan Mathematik Klassenstufen 5/6 im neunjährigen Gymnasium, Saarland, Juli 2023",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufen 5/6 im neunjährigen Gymnasium, Saarland, Juli 2023, Figuren und Körper, Kompetenzbuendel 37",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 46,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b01-68a6a1efab",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "identifizieren Pyramiden im Alltag,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 1",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 47,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b02-db01c781c6",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "entscheiden, ob ein vorgegebener Körper eine Pyramide ist, und klassifizieren diese gegebenenfalls,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 2",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 48,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b03-0b945221a7",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "zeichnen Netze und Schrägbilder von geeigneten Pyramiden,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 3",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 49,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b04-ede6812d8a",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "entscheiden, ob ein vorgegebener Körper ein Pyramidenstumpf ist.",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 4",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 50,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b05-970b0246a6",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "identifizieren rechte Winkel in geeigneten ebenen Schnitten durch Pyramiden,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 5",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 51,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b06-8dd8590717",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "berechnen Längen von Strecken und Maße von Winkeln in geeigneten ebenen Schnitten durch Pyramiden,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 6",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 52,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b07-fa55c650ce",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "berechnen Mantel- und Oberflächeninhalte von Pyramiden.",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 7",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 53,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b09-3a21817429",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "begründen anhand eines Beispiels, dass der Satz des Cavalieri nicht umkehrbar ist, begründen die Volumengleichheit von Prismen bzw. Pyramiden mit gleichgroßen Grundflächen und gleicher Höhe,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 9",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "e45a39e5-cc9b-577e-a28d-691319410b9a",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 54,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b10-dc2829ec20",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "leiten die Volumenformel für Pyramiden mit beliebiger Grundfläche her,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 10",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 55,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b11-bc5b47996d",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "berechnen Volumen von Pyramiden und Pyramidenstümpfen.",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 11",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 56,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b12-e874492f11",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "identifizieren Kegel im Alltag,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 12",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 57,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b13-87ecb7a041",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "entscheiden, ob ein vorgegebener Körper ein (Kreis-)Kegel ist, und klassifizieren diesen gegebenenfalls,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 13",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 58,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b14-fb1263cc90",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "zeichnen Netze und skizzieren Schrägbilder von geeigneten Kegeln,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 14",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 59,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b15-b2c866cb55",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "entscheiden, ob ein vorgegebener Körper ein Kegelstumpf ist.",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 15",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 60,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b17-efade854cb",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "leiten die Formel zur Berechnung des Mantelinhalts eines geraden Kegels her,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 17",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 61,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b18-64bf05b411",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "berechnen Mantel- und Oberflächeninhalte von geraden Kegeln,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 18",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 62,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b19-0776001a0f",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "leiten die Volumenformel für Kegel her,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 19",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 63,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b20-d0f1048078",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "berechnen Volumen von Kegeln und Kegelstümpfen,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 20",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 64,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b21-fba2af7fef",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "berechnen Längen von Strecken und Maße von Winkeln in geeigneten ebenen Schnitten durch gerade Kegel.",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 21",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 65,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b22-9aafdb13f7",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "identifizieren Kugeln und Halbkugeln im Alltag,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 22",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 66,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b23-9283c327c6",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "leiten die Formel für das Volumen oder den Oberflächeninhalt einer Kugel her,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 23",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "SL b23 fordert die Herleitung des Volumens ODER der Oberfläche. Die Alternativität bleibt erhalten: zwei partielle Bezüge belegen keine verbindliche doppelte Herleitung."
+    },
+    {
+      "edgeNumber": 67,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "sourceGoalId": "de-sl-mathematik-seki-gym9-2023-2026-sl-seki-10-t05-pyramide-kegel-kugel-b24-648cdff63d",
+      "jurisdiction": "DE-SL",
+      "sourceTextBefore": "berechnen Volumen und Oberflächeninhalte von Kugeln,",
+      "sourceRef": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026",
+      "sourceSpan": "Lehrplan Mathematik Klassenstufe 10 im neunjährigen Gymnasium, Saarland, Maerz 2026, Pyramide, Kegel, Kugel, Kompetenzbuendel 24",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 68,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sourceGoalId": "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-7-lb03-darstellen-und-berechnen-von-prismen-und-pyramiden-r001-9cb77d3a2e",
+      "jurisdiction": "DE-SN",
+      "sourceTextBefore": "Beherrschen des Darstellens von Prismen und Pyramiden",
+      "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Klassenstufe 7, Lernbereich 3, Zeile 1461",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "3095e125-fbb7-51c6-bf12-ffbb1735b9b7",
+        "4c319dfd-ebb1-504b-a036-c780e1915900",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 69,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sourceGoalId": "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-7-lb03-darstellen-und-berechnen-von-prismen-und-pyramiden-r004-b78a054e86",
+      "jurisdiction": "DE-SN",
+      "sourceTextBefore": "Beherrschen des Berechnens von Oberflächeninhalt, Volumen und Masse für Pyramiden und zusammengesetzte Körper",
+      "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Klassenstufe 7, Lernbereich 3, Zeile 1470",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 70,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sourceGoalId": "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-7-lb03-darstellen-und-berechnen-von-prismen-und-pyramiden-r005-21199b7c02",
+      "jurisdiction": "DE-SN",
+      "sourceTextBefore": "Kennen des Begriffs Pyramidenstumpf",
+      "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Klassenstufe 7, Lernbereich 3, Zeile 1475",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 71,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sourceGoalId": "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-9-lb02-kreise-kreiszylinder-und-kugeln-r001-56396c3eaa",
+      "jurisdiction": "DE-SN",
+      "sourceTextBefore": "Anwenden von Berechnungsverfahren für Umfang und Flächeninhalt von Kreisen und Kreisteilen sowie für Oberflächeninhalt, Volumen und Masse von Kreiszylindern und Kugeln",
+      "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Klassenstufe 9, Lernbereich 2, Zeile 1855",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 72,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sourceGoalId": "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-9-lb03-rechtwinklige-dreiecke-r008-3cc34726bd",
+      "jurisdiction": "DE-SN",
+      "sourceTextBefore": "Oberflächeninhalt und Volumen von Pyramide und Kreiskegel",
+      "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Klassenstufe 9, Lernbereich 3, Zeile 1878",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 73,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sourceGoalId": "de-sn-mathematik-seki-lehrplan-gymnasium-2019-sn-seki-10-lb03-algebraisches-losen-geometrischer-probleme-r003-adb740e021",
+      "jurisdiction": "DE-SN",
+      "sourceTextBefore": "Berechnungen an allgemeinen Dreiecken, Pyramiden und Kegeln auch im Zusammenhang mit realitätsnahen Problemstellungen",
+      "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+      "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Klassenstufe 10, Lernbereich 3, Zeile 2072",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd",
+        "b9a501c4-9d74-5514-b77b-895980b89b1b",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "879389a7-73de-45bb-a632-0d918c23a082"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 74,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_MATHEMATIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sourceGoalId": "de-st-mathematik-seki-fachlehrplan-gymnasium-2019-st-seki-7-8-gk-lk-korperdarstellung-k004-853114e2c6",
+      "jurisdiction": "DE-ST",
+      "sourceTextBefore": "Prismen, Pyramiden, Kreiszylinder als Netz darstellen",
+      "sourceRef": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019",
+      "sourceSpan": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019, Schuljahrgaenge 7/8, Körperdarstellung, Zeile 1808",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "3095e125-fbb7-51c6-bf12-ffbb1735b9b7",
+        "4c319dfd-ebb1-504b-a036-c780e1915900",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 75,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_MATHEMATIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sourceGoalId": "de-st-mathematik-seki-fachlehrplan-gymnasium-2019-st-seki-7-8-gk-lk-korperdarstellung-k005-35422a29f7",
+      "jurisdiction": "DE-ST",
+      "sourceTextBefore": "Prismen und Pyramiden als Schrägbild (α  45°; q  21 ) darstellen",
+      "sourceRef": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019",
+      "sourceSpan": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019, Schuljahrgaenge 7/8, Körperdarstellung, Zeile 1809",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "3095e125-fbb7-51c6-bf12-ffbb1735b9b7",
+        "4c319dfd-ebb1-504b-a036-c780e1915900",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 76,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_MATHEMATIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sourceGoalId": "de-st-mathematik-seki-fachlehrplan-gymnasium-2019-st-seki-7-8-gk-lk-korperdarstellung-k006-d99bc9ec99",
+      "jurisdiction": "DE-ST",
+      "sourceTextBefore": "Prismen, Pyramiden, Kreiszylinder und Kegel als Zweitafelbild darstellen",
+      "sourceRef": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019",
+      "sourceSpan": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019, Schuljahrgaenge 7/8, Körperdarstellung, Zeile 1810",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "3095e125-fbb7-51c6-bf12-ffbb1735b9b7",
+        "4c319dfd-ebb1-504b-a036-c780e1915900",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 77,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_MATHEMATIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sourceGoalId": "de-st-mathematik-seki-fachlehrplan-gymnasium-2019-st-seki-7-8-gk-lk-korperdarstellung-w010-ad6edb470b",
+      "jurisdiction": "DE-ST",
+      "sourceTextBefore": "Begriffe: gerade und schiefe Prismen sowie Pyramide, Kreiszylinder, Kegel (mit Beschränkung auf gerade Körper), Kugel",
+      "sourceRef": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019",
+      "sourceSpan": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019, Schuljahrgaenge 7/8, Körperdarstellung, Zeile 1822",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 78,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_MATHEMATIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sourceGoalId": "de-st-mathematik-seki-fachlehrplan-gymnasium-2019-st-seki-7-8-gk-lk-korperberechnung-k002-8b4cb94f32",
+      "jurisdiction": "DE-ST",
+      "sourceTextBefore": "Oberflächeninhalt und Volumen von Kreiszylindern, Kreiskegeln, Pyramiden und Kugeln berechnen",
+      "sourceRef": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019",
+      "sourceSpan": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019, Schuljahrgaenge 7/8, Körperberechnung, Zeile 1834",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 79,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_MATHEMATIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sourceGoalId": "de-st-mathematik-seki-fachlehrplan-gymnasium-2019-st-seki-7-8-gk-lk-korperberechnung-w007-2cc203ce9b",
+      "jurisdiction": "DE-ST",
+      "sourceTextBefore": "Formeln für Oberflächeninhalt und Volumen von Kreiszylinder, Kreiskegel, Pyramide und Kugel",
+      "sourceRef": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019",
+      "sourceSpan": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019, Schuljahrgaenge 7/8, Körperberechnung, Zeile 1850",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 80,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2025-2-1-4-raum-und-form-018-cffe4874cd",
+      "jurisdiction": "DE-TH",
+      "sourceTextBefore": "Körper (Würfel, Quader, Pyramide, Kegel, Zylinder, Kugel): identifizieren",
+      "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2025, S. 12",
+      "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2025, Klassenstufe 6: Figuren und Koerper, Zeile 527",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 81,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2025-2-1-4-raum-und-form-019-2cf55ed999",
+      "jurisdiction": "DE-TH",
+      "sourceTextBefore": "Körper (Würfel, Quader, Pyramide, Kegel, Zylinder, Kugel): durch Eigenschaften beschreiben",
+      "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2025, S. 12",
+      "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2025, Klassenstufe 6: Figuren und Koerper, Zeile 528",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 82,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2025-2-1-4-raum-und-form-020-f4eb738b0b",
+      "jurisdiction": "DE-TH",
+      "sourceTextBefore": "Körper (Würfel, Quader, Pyramide, Kegel, Zylinder, Kugel): klassifizieren",
+      "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2025, S. 12",
+      "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2025, Klassenstufe 6: Figuren und Koerper, Zeile 529",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 83,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2018-2-2-3-geometrie-020-de37facad1",
+      "jurisdiction": "DE-TH",
+      "sourceTextBefore": "gerade Prismen und Pyramiden: identifizieren",
+      "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 24",
+      "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, Klassenstufe 8: Geometrie, Zeile 1051",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 84,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2018-2-2-3-geometrie-021-9dda3b0f7e",
+      "jurisdiction": "DE-TH",
+      "sourceTextBefore": "gerade Prismen und Pyramiden: durch charakterisierende Eigenschaften beschreiben",
+      "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 24",
+      "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, Klassenstufe 8: Geometrie, Zeile 1052",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 85,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2018-2-2-3-geometrie-022-2f73db5bf5",
+      "jurisdiction": "DE-TH",
+      "sourceTextBefore": "gerade Prismen und Pyramiden: im Schrägbild, im Zweitafelbild und als Netz maßstäblich darstellen",
+      "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 24",
+      "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, Klassenstufe 8: Geometrie, Zeile 1053",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "3095e125-fbb7-51c6-bf12-ffbb1735b9b7",
+        "4c319dfd-ebb1-504b-a036-c780e1915900",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 86,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2018-2-2-3-geometrie-023-2178a09864",
+      "jurisdiction": "DE-TH",
+      "sourceTextBefore": "gerade Zylinder und Kegel: identifizieren",
+      "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 24",
+      "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, Klassenstufe 8: Geometrie, Zeile 1055",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 87,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2018-2-2-3-geometrie-024-87da65462f",
+      "jurisdiction": "DE-TH",
+      "sourceTextBefore": "gerade Zylinder und Kegel: durch charakterisierende Eigenschaften beschreiben",
+      "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 24",
+      "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, Klassenstufe 8: Geometrie, Zeile 1056",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 88,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2018-2-2-3-geometrie-025-c123e172f7",
+      "jurisdiction": "DE-TH",
+      "sourceTextBefore": "gerade Zylinder und Kegel: im Zweitafelbild und als Netz maßstäblich darstellen",
+      "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 24",
+      "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, Klassenstufe 8: Geometrie, Zeile 1057",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "3095e125-fbb7-51c6-bf12-ffbb1735b9b7",
+        "4c319dfd-ebb1-504b-a036-c780e1915900",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    },
+    {
+      "edgeNumber": 89,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2018-2-2-3-geometrie-026-313098550b",
+      "jurisdiction": "DE-TH",
+      "sourceTextBefore": "Oberflächeninhalt und Volumen von geraden Prismen, Pyramiden, Zylindern, Kegeln und von Kugeln berechnen,",
+      "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 24",
+      "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, Klassenstufe 8: Geometrie, Zeile 1059",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "replacementMatchType": "partial",
+      "preservedOtherCanonicalGoalIds": [
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "dd14916c-1bd5-57be-8867-250866066d55",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce"
+      ],
+      "rationaleDe": "Die Quelle trägt Oberflächeninhalt und Volumen von Kugeln als getrennte Teilfacetten. Jede Kindkante bleibt partial; weitere Körper/Leistungen und nicht genannte Plausibilisierung werden nicht vereinnahmt."
+    },
+    {
+      "edgeNumber": 90,
+      "mappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "sourceGoalId": "de-th-mathematik-seki-lehrplan-gymnasium-2018-2025-th-seki-2018-2-2-3-geometrie-028-65c53f4233",
+      "jurisdiction": "DE-TH",
+      "sourceTextBefore": "die Formel ohne Hilfsmittel angeben und erläutern für: Volumen von geraden Pyramiden und Kegeln V= A G⋅h 3 )",
+      "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 25",
+      "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, Klassenstufe 8: Geometrie, Zeile 1069",
+      "previousMatchType": "partial",
+      "replacementGoalIds": [],
+      "replacementMatchType": null,
+      "preservedOtherCanonicalGoalIds": [
+        "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+      ],
+      "rationaleDe": "Diese konkrete Quellaussage fordert nur Körpererkennung/-darstellung oder Leistungen an anderen Körpern; sie trägt weder die Oberflächen- noch die Volumenformel der Kugel. Die sachfremde Kugelkante wird entfernt; andere bestehende Zielzuordnungen dieser Quelle bleiben unverändert."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-09-28T14:08:54.924752+00:00",
+  "scope": "Three accepted PNG integrations and affected asset/QA/status checks only",
+  "checks": [
+    {
+      "command": "npm --prefix app run check:goal-visualization-assets",
+      "exitCode": 0,
+      "result": "Passed for 1696 links in 21 landscapes."
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-qa -- --subjects=mathematik",
+      "exitCode": 0,
+      "result": "Mathematics QA ledger is current."
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-rollout-coverage",
+      "exitCode": 0,
+      "result": "Mathematics visualization rollout and required coverage are current."
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-qa-coverage-parity",
+      "exitCode": 0,
+      "result": "Mathematics 803 atomic scope, 25 active cluster overviews, 803 active; physics 478/478. All configured subject parity checks passed."
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-rollout-status",
+      "exitCode": 0,
+      "result": "Mathematics visualization JSON and Markdown status are current."
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "result": "No whitespace errors."
+    }
+  ],
+  "additionalAssertions": [
+    "All nine active PNG copies match the three independently accepted SHA-256 values.",
+    "None of the three active source/public/backend asset directories contains an SVG.",
+    "All three original SVG byte streams remain hash-identical in dated review history.",
+    "Only three resourceLinks changed during canonical import; goal semantics stayed unchanged.",
+    "Only the three intended QA rows received new AI review bindings.",
+    "All three humanApproved values remain no; humanReviewedAt remains null."
+  ],
+  "strictM7ClosureClaimed": false,
+  "fullCiOwnedBy": "/root"
+}

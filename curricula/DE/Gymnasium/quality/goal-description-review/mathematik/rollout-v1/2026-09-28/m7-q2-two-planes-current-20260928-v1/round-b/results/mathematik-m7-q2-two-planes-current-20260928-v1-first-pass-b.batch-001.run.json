@@ -1,0 +1,32 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-m7-q2-two-planes-current-20260928-v1-batch-001-b",
+  "campaignId": "mathematik-m7-q2-two-planes-current-20260928-v1-b",
+  "roundId": "mathematik-m7-q2-two-planes-current-20260928-v1-first-pass-b",
+  "batchId": "mathematik-m7-q2-two-planes-current-20260928-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:81eccc6263177cc9a93571ebc757f95e41d75aaa613d12be33da78694be4434f",
+  "bundleFingerprint": "sha256:fad2fb80f3be25d033b35ef0e69aa3c2a53a15382f5b50d0e5aa0c5416afed66",
+  "bookDigest": "sha256:8c776b8f4b2395f7ceb98a9d735cadbd85dbe2b2740e5a89619139c1bd0687d7",
+  "provider": "OpenAI",
+  "model": "gpt-6-sol",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:2d219b15c2e393152464b93c8b93cb145610cb9e3623f9e95849e29d43d51b55",
+  "independenceGroupId": "mathematik-m7-q2-two-planes-current-20260928-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": ["0f4f9957-8afe-4aab-9dd8-c26c9aee2afd"],
+  "inputArtifacts": [
+    {"role": "review_prompt", "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"},
+    {"role": "review_criteria", "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"},
+    {"role": "review_input_json", "digest": "sha256:d25564179f157ef479e43d910b5e3558c9d149b2b77cf18d65225423fb70fb71"},
+    {"role": "description_review_batch_input_jsonl", "digest": "sha256:81eccc6263177cc9a93571ebc757f95e41d75aaa613d12be33da78694be4434f"}
+  ],
+  "startedAt": "2026-09-28T09:23:55Z",
+  "completedAt": "2026-09-28T09:24:40Z",
+  "status": "completed",
+  "outputDigest": "sha256:7f19ca8bff20d330f25d70ffa8c1caf395dfac34e9f72a1245922a2e2de298fa",
+  "toolchainVersion": "codex-manual-v1"
+}

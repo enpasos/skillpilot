@@ -1,0 +1,94 @@
+{
+  "id": "2686049c-2cb2-5595-be5b-4860c3ceb76b",
+  "title": "Prüfung: Warum gilt der Satz des Pythagoras?",
+  "description": "Die lernende Person kann die Kompetenz „Den Satz des Pythagoras geometrisch beweisen“ in einer selbstständigen Prüfungsaufgabe zeigen.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical",
+    "phase:SekI",
+    "ExamTask"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-HE",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL"
+    ],
+    "stage": [
+      "SekI"
+    ]
+  },
+  "sourceRef": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-pythagoras-structure-20260928-v1/2686049c-2cb2-5595-be5b-4860c3ceb76b.assessment.json",
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3",
+      "K4"
+    ],
+    "guidingIdeas": [
+      "L2",
+      "L3"
+    ],
+    "phase": "J9",
+    "area": "Mathematik",
+    "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J9.487EC508"
+  },
+  "shortKey": "canonical_math_sek1_j9_assessment_487ec508",
+  "contains": [],
+  "requires": [
+    "487ec508-f421-5a5a-a84c-98f88a8fb3e5"
+  ],
+  "phase": "J9",
+  "type": "atomic",
+  "nodeKind": "exam",
+  "examData": {
+    "reviewStatus": "released",
+    "reviewNote": "Aktiver AI-Arbeitsstand mit fachlich ausgearbeiteter Aufgabe und Lösung vom 2026-09-28; keine menschliche Freigabe. Zentrale Qualitätsnachweise separat erforderlich.",
+    "coveredGoalIds": [
+      "487ec508-f421-5a5a-a84c-98f88a8fb3e5"
+    ],
+    "coveredStrands": [
+      "L2"
+    ],
+    "demandLevels": [
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "Ein rechtwinkliges Dreieck hat positive Kathetenlängen $a,b$ und Hypotenusenlänge $c$. Vier kongruente Kopien lassen sich in die Ecken eines Quadrats der Seitenlänge $a+b$ legen, sodass die Hypotenusen die innere Restfigur begrenzen.\n\n1. Skizziere die Anordnung und begründe, dass die innere Restfigur ein Quadrat der Seitenlänge $c$ ist. Gehe dabei auf Seiten und Winkel ein. (3 BE)\n2. Berechne den Flächeninhalt des großen Quadrats auf zwei Arten und leite daraus $a^2+b^2=c^2$ her. Begründe die Gleichsetzung und jeden Umformungsschritt. (5 BE)\n3. Erkläre, warum dies ein Beweis für alle rechtwinkligen Dreiecke ist und weshalb die Kontrolle nur eines Dreiecks mit Seiten 3, 4 und 5 dafür nicht genügt. (2 BE)",
+    "solutionContent": "Die vier äußeren rechtwinkligen Dreiecke haben dieselbe Hypotenuse $c$. Benachbarte spitze Winkel ergeben zusammen $90^\\circ$; deshalb beträgt jeder Winkel der inneren Restfigur $180^\\circ-90^\\circ=90^\\circ$. Alle vier Seiten sind $c$: Es ist ein Quadrat.\n\nDie disjunkte Zerlegung liefert $(a+b)^2=4\\cdot\\frac{ab}{2}+c^2=2ab+c^2$. Ausmultiplizieren ergibt $a^2+2ab+b^2=2ab+c^2$; Subtraktion von $2ab$ ergibt $a^2+b^2=c^2$. Es werden keine konkreten Seitenwerte vorausgesetzt, sondern beliebige positive Katheten eines beliebigen rechtwinkligen Dreiecks. Ein Zahlenbeispiel bestätigt nur einen Fall. Ohne gesicherte Restquadratform oder ohne korrekte allgemeine Flächengleichung maximal 7/10 Punkte.",
+    "scoring": {
+      "maxPoints": 10,
+      "passingPoints": 8,
+      "steps": [
+        {
+          "id": "rest-square",
+          "points": 3,
+          "description": "Restquadrat mit Seiten- und Winkelbegründung"
+        },
+        {
+          "id": "area-proof",
+          "points": 5,
+          "description": "Allgemeine Flächenzerlegung und vollständige Herleitung"
+        },
+        {
+          "id": "generality",
+          "points": 2,
+          "description": "Allgemeiner Beweis von Zahlenprobe unterschieden"
+        }
+      ]
+    },
+    "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-pythagoras-structure-20260928-v1/2686049c-2cb2-5595-be5b-4860c3ceb76b.assessment.json"
+  },
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary",
+    "applicabilityFromRequires": true
+  }
+}

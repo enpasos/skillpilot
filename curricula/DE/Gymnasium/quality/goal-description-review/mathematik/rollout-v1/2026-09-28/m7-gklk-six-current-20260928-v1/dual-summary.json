@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:ded10d646af326cc375a4ba53303d225940a417df313a7003178dfaf29110104",
+  "reviewInputFingerprint": "sha256:594c5b3b68450522303583da0982f60589e3361575b7d4bce9381b12fda8163e",
+  "goalCount": 6,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-gklk-six-current-20260928-v1-a",
+      "roundId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-gklk-six-current-20260928-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a-codex-native"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex; exact serving model ID not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-gklk-six-current-20260928-v1-b",
+      "roundId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-gklk-six-current-20260928-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 6,
+    "unavailable": 0,
+    "requiresSynthesis": 6
+  },
+  "goals": [
+    {
+      "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
+      "firstRecordId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a-codex-native-01",
+      "secondRecordId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b.dc12f281-f161-572b-a973-8405ae9b2498",
+      "firstRunId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a-codex-native",
+      "secondRunId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+      "firstRecordId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a-codex-native-02",
+      "secondRecordId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b.0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+      "firstRunId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a-codex-native",
+      "secondRunId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "firstRecordId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a-codex-native-03",
+      "secondRecordId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b.71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "firstRunId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a-codex-native",
+      "secondRunId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "firstRecordId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a-codex-native-04",
+      "secondRecordId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b.49f9059a-876c-5051-8146-d008b5cc691c",
+      "firstRunId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a-codex-native",
+      "secondRunId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b431148b-526c-4bde-b04b-48d23101d0d3",
+      "firstRecordId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a-codex-native-05",
+      "secondRecordId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b.b431148b-526c-4bde-b04b-48d23101d0d3",
+      "firstRunId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a-codex-native",
+      "secondRunId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9b339361-7719-573d-a913-432246c502ee",
+      "firstRecordId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a-codex-native-06",
+      "secondRecordId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b.9b339361-7719-573d-a913-432246c502ee",
+      "firstRunId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-a-codex-native",
+      "secondRunId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

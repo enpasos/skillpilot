@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title description">
+  <title id="title">Mittlerer Bestand einer quadratischen Bestandsfunktion</title>
+  <desc id="description">Links der exakte Graph B(t)=10+t² für 0 bis 3 Minuten. Er beginnt bei 10 Litern mit waagerechter Tangente, passiert bei t=1 den Wert 11 Liter und bei t=2 den Wert 14 Liter und endet bei 19 Litern. Rechts ein gleich breites Rechteck der Höhe 13 Liter. Beide dargestellten Flächen sind bei identischem horizontalem und vertikalem Maßstab genau 39 Liter-Minuten groß.</desc>
+  <rect width="1600" height="900" fill="#fffdf8"/>
+  <text x="800" y="93" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="62" font-weight="700" fill="#102b48">Mittlerer Bestand</text>
+  <text x="375" y="160" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="33" fill="#154d8c">B(t) = 10 + t²  (Liter)</text>
+  <text x="1125" y="160" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="33" fill="#a94a16">Konstanter Mittelwert: 13 L</text>
+
+  <!-- Identical scales in both panels: 550 px for 3 min and 20 px per liter. -->
+  <g stroke="#dce6ee" stroke-width="2">
+    <path d="M100 650H650 M850 650H1400 M100 450H650 M850 450H1400 M100 390H650 M850 390H1400 M100 270H650 M850 270H1400"/>
+    <path d="M283.333 270V650 M466.667 270V650 M1033.333 270V650 M1216.667 270V650"/>
+  </g>
+
+  <!-- y(s)=450-180s² and x(s)=100+550s, 0≤s≤1: the tangent at s=0 is horizontal. -->
+  <path d="M100 650 L100 450 Q375 450 650 270 L650 650 Z" fill="#acd5f4" fill-opacity=".8"/>
+  <path d="M100 450 Q375 450 650 270" fill="none" stroke="#0865bd" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="100" cy="450" r="9" fill="#0865bd"/>
+  <circle cx="283.333" cy="430" r="6" fill="#0865bd"/>
+  <circle cx="466.667" cy="370" r="6" fill="#0865bd"/>
+  <circle cx="650" cy="270" r="9" fill="#0865bd"/>
+  <text x="68" y="457" text-anchor="end" font-family="DejaVu Sans,Arial,sans-serif" font-size="30" fill="#102b48">10 L</text>
+  <text x="667" y="277" font-family="DejaVu Sans,Arial,sans-serif" font-size="30" fill="#102b48">19 L</text>
+  <text x="286" y="416" font-family="DejaVu Sans,Arial,sans-serif" font-size="24" fill="#154d8c">11 L</text>
+  <text x="468" y="356" font-family="DejaVu Sans,Arial,sans-serif" font-size="24" fill="#154d8c">14 L</text>
+
+  <rect x="850" y="390" width="550" height="260" fill="#ffd2ad" stroke="#e86716" stroke-width="7"/>
+  <text x="818" y="398" text-anchor="end" font-family="DejaVu Sans,Arial,sans-serif" font-size="30" fill="#102b48">13 L</text>
+
+  <g stroke="#102b48" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M100 650H690 M100 650V220"/>
+    <path d="M850 650H1440 M850 650V220"/>
+  </g>
+  <g font-family="DejaVu Sans,Arial,sans-serif" font-size="29" fill="#102b48">
+    <text x="100" y="695" text-anchor="middle">0</text><text x="650" y="695" text-anchor="middle">3</text>
+    <text x="850" y="695" text-anchor="middle">0</text><text x="1400" y="695" text-anchor="middle">3</text>
+    <text x="375" y="740" text-anchor="middle">Zeit t (min)</text>
+    <text x="1125" y="740" text-anchor="middle">Zeit t (min)</text>
+    <text x="95" y="210">Bestand (L)</text>
+    <text x="845" y="210">Bestand (L)</text>
+  </g>
+  <text x="750" y="565" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="77" font-weight="700" fill="#102b48">=</text>
+
+  <rect x="160" y="770" width="1280" height="92" rx="20" fill="#f0f5fa" stroke="#abc0d3" stroke-width="2"/>
+  <text x="800" y="807" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="28" fill="#102b48">Gleicher Flächeninhalt:  ∫₀³ B(t) dt = 39 L·min</text>
+  <text x="800" y="846" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="28" fill="#102b48">B̄ = (39 L·min) / (3 min) = 13 L</text>
+</svg>

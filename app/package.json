@@ -46,7 +46,7 @@
     "test:learner-cockpit-startup": "tsx scripts/testLearnerCoreStartupUi.ts && tsx scripts/testLearnerViewStartupUi.ts",
     "test:composition-projection-roles": "tsx scripts/testCompositionProjectionRoles.ts",
     "test:physics-source-method-routes": "tsx --test ../scripts/check_physics_source_method_routes.test.ts",
-    "test:goal-book-model": "tsx scripts/testGoalBookModel.ts",
+    "test:goal-book-model": "tsx scripts/testGoalBookModel.ts && npm run test:math-distance-reflection-structure && npm run test:math-pythagoras-structure",
     "test:goal-book-chapter-projection": "tsx src/utils/goalBookChapterProjection.test.ts",
     "test:physics-goal-book-inputs": "tsx scripts/testPhysicsGoalBookInputs.ts",
     "test:goal-book-renderer": "tsx scripts/testGoalBookRenderer.ts",
@@ -245,7 +245,9 @@
     "report:atomic": "tsx scripts/generateAtomicReport.ts",
     "report:applicability": "tsx scripts/compileApplicability.ts",
     "apply:applicability": "tsx scripts/applyApplicability.ts",
-    "mcp:server": "npm --prefix \"../ai/openai app\" run start"
+    "mcp:server": "npm --prefix \"../ai/openai app\" run start",
+    "test:math-distance-reflection-structure": "tsx scripts/testMathDistanceReflectionStructure.ts",
+    "test:math-pythagoras-structure": "tsx scripts/testMathPythagorasStructure.ts"
   },
   "dependencies": {
     "@types/dagre": "^0.7.53",

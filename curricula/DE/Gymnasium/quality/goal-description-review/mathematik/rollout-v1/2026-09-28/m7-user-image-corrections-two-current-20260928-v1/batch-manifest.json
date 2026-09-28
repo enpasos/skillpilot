@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-user-image-corrections-two-current-20260928-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-user-image-corrections-two-current-20260928-v1.config.json",
+  "configDigest": "sha256:3d07db4a2fd892209809c869f8ad40ec898a1c5c190083830f23e4f373f2310f",
+  "goalIds": [
+    "eb070ed2-7ef4-5afe-b203-190ebb0116af",
+    "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 799,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:d5602674d538b9f4a818925ea83c30cb44b4a5c20fe429d18efe24777f4fbfad"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:0220307902af017d167d978e799946822ac0fe2a2c9bd8e2dcfa489d4db85780",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:cd1be4c1ce5d5c4eaf397120df22e10b88eecf9c8af7418820d6eae6631c13e8",
+    "reviewInputFingerprint": "sha256:6d2be5c57f57d7bb7dba962fe437bb659db38999efd3fffa08ae87d416a5693d",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-user-image-corrections-two-current-20260928-v1-a",
+        "campaignDigest": "sha256:e0187eb6aed6764371ad2729b0fe82ad20d761f719d77278284a7ccb5d80992a",
+        "roundId": "mathematik-m7-user-image-corrections-two-current-20260928-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-user-image-corrections-two-current-20260928-v1-independent-a",
+        "batchId": "mathematik-m7-user-image-corrections-two-current-20260928-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:b3b32576f3e74ee1542b74fb33d49ef884314166631506bfcc7c3ce7977885d7"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-user-image-corrections-two-current-20260928-v1-b",
+        "campaignDigest": "sha256:0b2383b333ae8a3e30aa663b843696fba42423a0dd5345feede8e0aae43d9e5a",
+        "roundId": "mathematik-m7-user-image-corrections-two-current-20260928-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-user-image-corrections-two-current-20260928-v1-independent-b",
+        "batchId": "mathematik-m7-user-image-corrections-two-current-20260928-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:91b414d3fb88a3c7aa24ff301378c7380a5cc5cfdfd61c2f7f56326f71f280bc"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

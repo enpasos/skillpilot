@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "m7-current-image-repairs-20260928-v1-converse-proof-png-integration",
+  "recordedAt": "2026-09-28T14:40:29Z",
+  "reviewStatus": "ai_candidate",
+  "decision": "accepted_pilot_after_regeneration",
+  "humanApproved": false,
+  "scope": "Current actual PNG, exact geometric correspondences and 360px legibility for one atomic proof goal; V-only, no D/P or human release approval",
+  "goalId": "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+  "goalTitle": "Den Kehrsatz des Pythagoras beweisen",
+  "goalDescription": "Die lernende Person kann den Kehrsatz des Pythagoras beweisen, indem sie ein rechtwinkliges Hilfsdreieck mit den beiden kürzeren Seiten vergleicht, die Gleichheit der dritten Seite mit dem Satz des Pythagoras nachweist und mittels Kongruenz auf den rechten Winkel im ursprünglichen Dreieck schließt.",
+  "provider": "OpenAI built-in imagegen",
+  "model": "not exposed by the built-in tool",
+  "provenance": {
+    "exactPromptsAndRejectedDefects": "curricula/DE/Gymnasium/visualizations/mathematik/6a3502ee-b616-5db7-88fc-8951f33c9f63/prompt.de.md",
+    "mathReference": "tmp/m7-20260928-continuation/pyth-converse-proof-exact-translation-reference.png",
+    "referenceSha256": "715c029c3270c00c9cad0600620932bb2018ba954f565cd54949c559e578c005",
+    "referenceIsTemporaryOnly": true,
+    "generatedFinalIsNotTheSvgReference": true,
+    "rejectedPreviousCandidate": "curricula/DE/Gymnasium/quality/goal-visualization-review/m7-current-image-repairs-20260928-v1/rejected-converse-proof-geometry-b6bae.png",
+    "rejectedSha256": "b6bae508244409c7c034af760591c0af1a8c3bba38f36eec999acd5df1953cd5",
+    "rejectedDefect": "Corresponding a/b side ratios reversed between panels and marked auxiliary angle was about 87°; it was never approved as the active PNG.",
+    "historicalSvgSha256": "44559c3852e14552b2484eddad8019cead3df6e669c2bf58ea6c191150f9ac6c",
+    "historicalSvgAndPromptRetained": true
+  },
+  "bindings": {
+    "canonicalLink": "/assets/goal-visualizations/mathematik/6a3502ee-b616-5db7-88fc-8951f33c9f63/6a3502ee-b616-5db7-88fc-8951f33c9f63.png",
+    "source": "curricula/DE/Gymnasium/visualizations/mathematik/6a3502ee-b616-5db7-88fc-8951f33c9f63/6a3502ee-b616-5db7-88fc-8951f33c9f63.png",
+    "public": "app/public/assets/goal-visualizations/mathematik/6a3502ee-b616-5db7-88fc-8951f33c9f63/6a3502ee-b616-5db7-88fc-8951f33c9f63.png",
+    "backend": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/6a3502ee-b616-5db7-88fc-8951f33c9f63/6a3502ee-b616-5db7-88fc-8951f33c9f63.png",
+    "allThreeAssetCopiesSha256": "dd76447150b51af15d97264ef9eccd3d656ac51d2a380582a80028de145450c6",
+    "dimensions": [1672, 941],
+    "cardPreview": "tmp/m7-20260928-continuation/pyth-converse-proof-exact-imagegen.360.png",
+    "cardPreviewSha256": "5eb4d3385a3848c182eabef9890468e7b11807d79345e77f36063cd5d06582b9",
+    "cardPreviewDimensions": [360, 203]
+  },
+  "reviews": [
+    {
+      "reviewer": "OpenAI Codex /root",
+      "kind": "ai",
+      "actualOriginalAnd360Viewed": true,
+      "finding": "The panel vertices visibly match by translation; green b is about 478px, blue a about 363px and coral c/d about 600px in both. The auxiliary angle is about 90°. Side names, marker placement, proof chain and 360px core text are correct."
+    },
+    {
+      "reviewer": "OpenAI Codex /root/fresh_b",
+      "kind": "independent_ai",
+      "actualOriginalAnd360Viewed": true,
+      "evidence": "curricula/DE/Gymnasium/quality/goal-visualization-review/m7-current-image-repairs-20260928-v1/fresh-b-converse-proof-exact-png-independent-review.json",
+      "finding": "Pixel-centroid measurements on the final PNG show corresponding side lengths differing by at most 0.0775% and angles C≈90.14°, C′≈90.07°. All symbolic labels, question/right-angle markers and the complete reasoning ribbon remain legible at 360px."
+    }
+  ],
+  "humanReviewOrApprovalClaimed": false,
+  "issues": []
+}

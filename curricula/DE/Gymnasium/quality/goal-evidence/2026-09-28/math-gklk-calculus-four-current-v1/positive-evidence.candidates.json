@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-gklk-calculus-four-current-20260928-v1",
+  "reviewedAt": "2026-09-28T11:58:47.643580Z",
+  "reviewer": "Codex gpt-6-astra fresh_b mathematical profile author; AI candidate only",
+  "goals": [
+    {
+      "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
+      "reason": "DE: Aktuell gebundene atomare Differential-Anwendung gemäß M13.4 und zwei übereinstimmenden unabhängigen D-Reviews. Kubische Höhe und Maximum einer aus einem kumulierten Modell abgeleiteten Eintrittsrate verlangen echte Methodenwahl jenseits des quadratischen Tankbilds. EN: Currently bound atomic differential application under M13.4 and two agreeing independent D reviews. Cubic altitude and maximal rate derived from a cumulative model require genuine method choice beyond the quadratic tank illustration.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "question-method",
+            "essentialUnderstandingDe": "Der Funktionswert beschreibt den Bestand oder Zustand, die erste Ableitung seine lokale Änderungsrate. Welche Größe gesucht wird, entscheidet darüber, welche Funktion auf Extremwerte untersucht wird.",
+            "essentialUnderstandingEn": "A function value describes a stock or state, while its first derivative describes its local rate of change. The quantity requested determines which function is investigated for extrema.",
+            "observablePerformanceDe": "Die lernende Person wählt aus einer Sachfrage die zu untersuchende Größe, begründet die dafür passende Ableitungsuntersuchung und führt sie selbständig aus.",
+            "observablePerformanceEn": "The learner selects the quantity to investigate from a contextual question, justifies the suitable derivative investigation, and carries it out independently."
+          },
+          {
+            "id": "extremum-context",
+            "essentialUnderstandingDe": "Eine Ableitungsnullstelle liefert zunächst einen Kandidaten. Verhalten und Randwerte im sachlichen Intervall entscheiden über ein globales Extremum; Zeitpunkt, Wert und Änderungsrate haben unterschiedliche Einheiten.",
+            "essentialUnderstandingEn": "A zero derivative initially supplies a candidate. Behavior and endpoint values on the meaningful interval determine a global extremum; time, value, and rate have different units.",
+            "observablePerformanceDe": "Die lernende Person begründet das gesuchte Extremum, berücksichtigt bei Bedarf Randwerte und erklärt sowohl den Zeitpunkt als auch die zugehörige Größe mit ihrer Kontexteinheit.",
+            "observablePerformanceEn": "The learner justifies the requested extremum, accounts for endpoints when needed, and explains both its time and associated quantity with contextual units."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "question-method",
+            "extremum-context"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Größte Höhe aus einem kubischen Höhenmodell gegenüber größter Zuflussrate aus einem kumulierten Personenzahlmodell; die zweite Frage verlangt eine andere Ableitungsordnung.",
+            "textEn": "Greatest height from a cubic altitude model versus greatest arrival rate from a cumulative people-count model; the second question requires a different derivative order."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cubic-altitude",
+            "taskDemandDe": "Für einen Ballon beschreibt H(t)=100+12t−t³ die Höhe in Metern, t die Zeit in Minuten, 0≤t≤3. Zu welchem Zeitpunkt ist der Ballon im betrachteten Intervall am höchsten? Wähle und begründe eine passende Untersuchung und deute Zeitpunkt und Ergebnis.",
+            "taskDemandEn": "For a balloon, H(t)=100+12t−t³ describes altitude in metres, with time t in minutes and 0≤t≤3. When is the balloon highest on this interval? Select and justify an appropriate investigation and interpret the time and result.",
+            "expectedPerformanceDe": "H′(t)=12−3t² verschwindet im Intervall bei t=2. Die Höhe steigt davor und fällt danach; auch H(0)=100, H(2)=116 und H(3)=109 bestätigen den globalen Vergleich. Nach 2 Minuten ist die maximale Höhe 116 m erreicht; die Änderungsrate ist dort 0 m/min. Gültige alternative Extremumsargumente sind gleichwertig.",
+            "expectedPerformanceEn": "H′(t)=12−3t² vanishes at t=2 within the interval. Altitude increases before and decreases after that time; H(0)=100, H(2)=116, and H(3)=109 also confirm the global comparison. Maximum altitude of 116 m is reached after 2 minutes; the rate then is 0 m/min. Valid alternative extremum arguments are equivalent.",
+            "understandingFocusDe": "Eine kubische Kontextfunktion untersuchen, die innere stationäre Stelle sichern und sachliche Größe von Änderungsrate unterscheiden.",
+            "understandingFocusEn": "Investigate a cubic contextual function, establish the interior stationary point as the maximum, and distinguish the contextual quantity from its rate."
+          },
+          {
+            "id": "maximum-arrival-rate",
+            "taskDemandDe": "Ein geglättetes Modell C(t)=30t+6t²−t³ gibt für 0≤t≤4 die seit Öffnung eingetretene Personenzahl an; t wird in Minuten gemessen. Wann ist die Eintrittsrate am größten und wie groß ist sie? Begründe, weshalb die Suche nach dem größten C(t) eine andere Frage beantwortet.",
+            "taskDemandEn": "A smoothed model C(t)=30t+6t²−t³ gives the cumulative number of entrants since opening for 0≤t≤4, with t in minutes. When is the arrival rate greatest, and what is its value? Explain why seeking the largest C(t) answers a different question.",
+            "expectedPerformanceDe": "Die gesuchte Rate ist C′(t)=30+12t−3t² in Personen/min. Ihr Maximum liegt bei t=2, da C″(t)=12−6t dort von positiv zu negativ wechselt; C′(2)=42 gegenüber C′(0)=C′(4)=30. C ist im ganzen Intervall steigend und mit C(4)=152 erst am rechten Rand maximal; die größte Gesamtzahl ist nicht die größte Eintrittsrate.",
+            "expectedPerformanceEn": "The requested rate is C′(t)=30+12t−3t² people/min. It is maximal at t=2 because C″(t)=12−6t changes from positive to negative there; C′(2)=42 whereas C′(0)=C′(4)=30. C increases throughout the interval and reaches C(4)=152 at the right endpoint; the largest total is not the largest arrival rate.",
+            "understandingFocusDe": "Eigenständiger Transfer der Methodenwahl von einem Bestand auf dessen Rate, ohne die Nullstellenbedingung aus dem ersten Fall unverändert zu kopieren.",
+            "understandingFocusEn": "Independent transfer of method selection from a stock to its rate rather than copying the first case’s zero-derivative condition unchanged."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+      "reason": "DE: Aktuelle integrale Anwendung gemäß M13.4, dessen Teilmapping partial bleibt. Bewegungsort/Gesamtweg bei Vorzeichenwechsel und Beetfläche aus nichtlinearer Breite variieren Integralbedeutung, Variable und Einheit. EN: Current integral application under M13.4, retaining the partial mapping. Position/distance with sign changes and garden area from nonlinear width vary integral meaning, variable, and unit.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "context-integral",
+            "essentialUnderstandingDe": "Integrand und Integrationsgrenzen legen fest, welche aufaddierte Wirkung ein bestimmtes Integral beschreibt; die Einheit entsteht aus der Einheit des Integranden mal derjenigen der Integrationsvariablen.",
+            "essentialUnderstandingEn": "The integrand and limits determine which accumulated effect a definite integral describes; its unit is the integrand unit multiplied by the integration-variable unit.",
+            "observablePerformanceDe": "Die lernende Person wählt aus einer Sachfrage ein passendes bestimmtes Integral, begründet Integrand und Grenzen und berechnet den Wert mit einem gültigen Verfahren.",
+            "observablePerformanceEn": "The learner selects an appropriate definite integral from a contextual question, justifies its integrand and limits, and evaluates it by a valid method."
+          },
+          {
+            "id": "signed-result",
+            "essentialUnderstandingDe": "Ein Integral kann eine vorzeichenbehaftete Änderung oder eine geometrische Menge beschreiben. Anfangsbestand, Nettoänderung und insgesamt positiv gezählte Menge sind durch die Sachfrage zu unterscheiden.",
+            "essentialUnderstandingEn": "An integral can represent a signed change or a geometric quantity. The contextual question determines how to distinguish initial amount, net change, and a total counted positively.",
+            "observablePerformanceDe": "Die lernende Person deutet den Integralwert mit Einheit und passt den Ansatz bei einer Frage nach Endbestand oder Gesamtweg einschließlich Vorzeichenwechseln sachgerecht an.",
+            "observablePerformanceEn": "The learner interprets the integral value with its unit and appropriately adapts the setup for a final amount or total distance, including sign changes."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "context-integral",
+            "signed-result"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Zeitintegration einer vorzeichenwechselnden Geschwindigkeit mit Anfangsort gegenüber räumlicher Integration einer nichtlinearen Breite zu einer Fläche.",
+            "textEn": "Time integration of a sign-changing velocity with an initial position versus spatial integration of a nonlinear width to obtain area."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "motion-signed-distance",
+            "taskDemandDe": "Ein Fahrzeug bewegt sich auf einer geraden Teststrecke mit v(t)=6−2t m/s für 0≤t≤5 s. Zu Beginn liegt es bei s(0)=4 m auf der Ortsachse. Bestimme seinen Ort nach 5 s und den insgesamt gefahrenen Weg. Begründe die Integrale und die Bedeutung ihrer Vorzeichen und Einheiten.",
+            "taskDemandEn": "A vehicle moves along a straight test track with v(t)=6−2t m/s for 0≤t≤5 s. Initially its position is s(0)=4 m. Determine its position after 5 s and its total distance traveled. Justify the integrals and the meanings of their signs and units.",
+            "expectedPerformanceDe": "Die Ortsänderung beträgt ∫₀⁵(6−2t)dt=[6t−t²]₀⁵=5 m, also s(5)=9 m. Bei t=3 s wechselt v das Vorzeichen. Der Weg ist ∫₀³v(t)dt−∫₃⁵v(t)dt=9−(−4)=13 m, gleichwertig ∫₀⁵|v(t)|dt. Anfangsort, Verschiebung und Weg sind unterschiedliche Größen.",
+            "expectedPerformanceEn": "Displacement is ∫₀⁵(6−2t)dt=[6t−t²]₀⁵=5 m, giving s(5)=9 m. Velocity changes sign at t=3 s. Distance is ∫₀³v(t)dt−∫₃⁵v(t)dt=9−(−4)=13 m, equivalently ∫₀⁵|v(t)|dt. Initial position, displacement, and distance are distinct quantities.",
+            "understandingFocusDe": "Die gleiche Geschwindigkeitsfunktion verlangt je nach Sachfrage einen vorzeichenbehafteten oder positiven Akkumulationsansatz.",
+            "understandingFocusEn": "The same velocity function requires signed or positive accumulation depending on the contextual question."
+          },
+          {
+            "id": "nonlinear-width-area",
+            "taskDemandDe": "Ein Beet reicht entlang einer geraden Kante von x=0 m bis x=9 m. Seine senkrecht zu dieser Kante gemessene Breite beträgt w(x)=√x Meter, wenn x als Zahlenwert in Metern eingesetzt wird. Bestimme die Beetfläche und erkläre, weshalb das gewählte Integral eine Fläche liefert.",
+            "taskDemandEn": "A garden bed extends along a straight edge from x=0 m to x=9 m. Its width perpendicular to that edge is w(x)=√x metres when x is entered numerically in metres. Determine the bed’s area and explain why the chosen integral gives an area.",
+            "expectedPerformanceDe": "Schmale Querstreifen haben näherungsweise Fläche w(x)Δx; ihre Grenzsumme ist A=∫₀⁹√x dx=[(2/3)x^(3/2)]₀⁹=18 m². Die Breite ist nichtnegativ, daher ist hier kein Vorzeichenwechsel aufzutrennen und kein Anfangsbestand zu addieren. Die Recheneinheit ist m·m=m².",
+            "expectedPerformanceEn": "Thin transverse strips have approximate area w(x)Δx; their limiting sum is A=∫₀⁹√x dx=[(2/3)x^(3/2)]₀⁹=18 m². Width is nonnegative, so no sign change needs splitting and no initial amount is added. The resulting unit is m·m=m².",
+            "understandingFocusDe": "Transfer von zeitlicher Änderung zu räumlicher Aufsummierung bei nichtlinearer Breite; die Integralbedeutung muss neu aus dem Kontext begründet werden.",
+            "understandingFocusEn": "Transfer from temporal change to spatial accumulation with nonlinear width; the integral’s meaning must be justified anew from the context."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "reason": "DE: Aktueller eigener M13.4-Validierungsaspekt; Ergebnis- und Annahmenprüfung bleiben von Differential-/Integralmethodenwahl getrennt. Zwei konkrete Modelle prüfen Kapazität, Zuflussannahme, Datenabweichung und zulässige Grenzaussage. EN: Current M13.4 validation aspect; checking outcomes and assumptions remains separate from selecting differential/integral methods. Two concrete models check capacity, inflow assumptions, data discrepancy, and admissible limit claims.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "assumption-validity",
+            "essentialUnderstandingDe": "Ein Analysis-Modell beschreibt nur unter seinen sachlichen Annahmen eine reale Entwicklung; ein formal richtiges Ergebnis kann außerhalb dieser Bedingungen unbrauchbar sein.",
+            "essentialUnderstandingEn": "A calculus model describes a real process only under its contextual assumptions; a formally correct result may be unusable outside those conditions.",
+            "observablePerformanceDe": "Die lernende Person benennt in einem vorgelegten Modell die maßgeblichen Annahmen und prüft, ob behauptete Resultate mit den Sachbedingungen vereinbar sind.",
+            "observablePerformanceEn": "The learner identifies the relevant assumptions of a supplied model and checks whether claimed outcomes are compatible with contextual conditions."
+          },
+          {
+            "id": "limits-evidence",
+            "essentialUnderstandingDe": "Kapazitäten, Flussrichtungen und unabhängige Messwerte können die zulässige Verwendung eines Modells begrenzen. Ein passender Einzelwert beweist nicht die Gültigkeit auf dem gesamten Intervall.",
+            "essentialUnderstandingEn": "Capacities, flow directions, and independent measurements can constrain a model’s valid use. One compatible value does not establish validity throughout an interval.",
+            "observablePerformanceDe": "Die lernende Person führt geeignete sachliche Kontrollen durch, nennt einen konkreten Gültigkeitsvorbehalt und formuliert, welche Aussage das Modell noch trägt.",
+            "observablePerformanceEn": "The learner applies appropriate contextual checks, identifies a concrete validity limitation, and states which conclusion the model still supports."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "assumption-validity",
+            "limits-evidence"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Integralbasiertes Tankmodell mit Kapazitäts- und Richtungsgrenze gegenüber Differentialmodell der Abkühlung mit Messwertprüfung und asymptotischer Umgebungsgrenze.",
+            "textEn": "Integral-based tank model with capacity and flow-direction limits versus a cooling differential model checked against measurements and its ambient-temperature asymptote."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "tank-capacity-before-negative-flow",
+            "taskDemandDe": "Ein Tank fasst 18 Liter und enthält zunächst 2 Liter. Ein behauptetes reines Zuflussmodell ohne Abfluss lautet r(t)=6−t L/min für 0≤t≤8 min, mit V(t)=2+6t−t²/2 Litern. Gegeben sind V(4)=18, V(6)=20 und V(8)=18. Jemand erklärt das Modell für die gesamten 8 Minuten für gültig, weil Anfangs- und Endmenge in den Tank passen. Prüfe diese Aussage und benenne Annahmen und Grenzen.",
+            "taskDemandEn": "A tank holds 18 litres and initially contains 2 litres. A claimed pure-inflow model with no outflow is r(t)=6−t L/min for 0≤t≤8 min, giving V(t)=2+6t−t²/2 litres. V(4)=18, V(6)=20, and V(8)=18 are supplied. Someone declares the model valid for all 8 minutes because the initial and final amounts fit in the tank. Evaluate the claim and identify assumptions and limits.",
+            "expectedPerformanceDe": "Die Rechnung beschreibt den Bestand nur ohne Überlaufen oder sonstigen Abfluss. Schon nach 4 min ist die Kapazität erreicht, danach überschreitet das Modell zeitweise 18 L; V(6)=20 ist als Tankbestand unmöglich. Nach 6 min wird r zusätzlich negativ und widerspricht reinem Zufluss. Der passende Endwert bei 8 min rettet die Zwischenwerte nicht. Unter den angegebenen Annahmen ist der Modellbestand höchstens bis einschließlich 4 min sachlich verwendbar; danach wäre eine angepasste Abfluss-/Überlaufbeschreibung nötig.",
+            "expectedPerformanceEn": "The calculation describes the stored amount only without overflow or other outflow. Capacity is reached after 4 min; afterward the model temporarily exceeds 18 L, and V(6)=20 is impossible as tank content. After 6 min, r also becomes negative and contradicts pure inflow. A compatible final value at 8 min does not rescue the intermediate values. Under the stated assumptions, modeled tank content is usable at most through 4 min; later behavior would require an adjusted outflow/overflow description.",
+            "understandingFocusDe": "Ein sachlich unmöglicher Zwischenwert und die frühere Kapazitätsgrenze begrenzen ein formal korrekt integriertes Modell; kein neues Modell muss konstruiert werden.",
+            "understandingFocusEn": "An impossible intermediate value and the earlier capacity limit restrict a formally correct integrated model; constructing a new model is not required."
+          },
+          {
+            "id": "cooling-data-and-limit",
+            "taskDemandDe": "Für eine Tasse in einem Raum mit konstant 20 °C wird T(t)=20+60e^(−t/10) °C angesetzt, t in Minuten. Das Modell liefert T(0)=80 °C, T(10)≈42,1 °C und langfristig 20 °C. Eine unabhängige Messung ergibt T(10)=50 °C mit maximal 1 °C Messabweichung. Prüfe die Aussagen: Das Modell sei bereits durch den richtigen Anfangswert bestätigt; mit längerem Warten werde die Tasse nach diesem Modell 15 °C erreichen.",
+            "taskDemandEn": "A cup in a room held at 20 °C is modeled by T(t)=20+60e^(−t/10) °C, with t in minutes. The model gives T(0)=80 °C, T(10)≈42.1 °C, and a long-term value of 20 °C. An independent measurement gives T(10)=50 °C with at most 1 °C measurement error. Assess the claims that the correct initial value already confirms the model and that waiting longer will bring the cup to 15 °C according to this model.",
+            "expectedPerformanceDe": "Der Anfangswert allein validiert weder die angenommene Abkühlungsrate noch konstante Umgebungsbedingungen. Die Abweichung bei 10 min beträgt etwa 7,9 °C und übersteigt die angegebene Messabweichung; das konkrete Modell ist für diese Daten nicht ausreichend bestätigt und muss überprüft werden. Für endliches t≥0 gilt T(t)>20 °C, der Grenzwert ist 20 °C; 15 °C wird in diesem Modell nie erreicht. Damit wird nicht die gesamte Modellklasse widerlegt, sondern die behauptete Geltung des konkreten Ansatzes und die unerlaubte Ergebnisdeutung.",
+            "expectedPerformanceEn": "The initial value alone validates neither the assumed cooling rate nor constant ambient conditions. The discrepancy at 10 min is about 7.9 °C, exceeding the stated measurement error; this particular model is not adequately supported by those data and requires checking. For every finite t≥0, T(t)>20 °C, with limit 20 °C; this model never reaches 15 °C. This challenges the claimed validity of the specific setup and its improper interpretation, not the whole model class.",
+            "understandingFocusDe": "Frischer Transfer von harten Kapazitäten zu unabhängigen Daten und einer mathematischen Modellgrenze; positive Werte allein genügen nicht als Validierung.",
+            "understandingFocusEn": "Fresh transfer from hard capacity limits to independent data and a mathematical model limit; positive values alone do not validate the model."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "reason": "DE: Die gebundenen M12.1.2-Bildformeln verlangen positive Quotienten- und negative Produktgrenzen. Beide Richtungen sind in eigenständigen Fällen mit Wachstumsplausibilisierung und Vorzeichen enthalten; kein formaler Beweisweg wird erzwungen. EN: Bound M12.1.2 image formulas require a positive-direction quotient and negative-direction product limit. Both appear in independent cases with growth plausibility and signs; no formal proof method is imposed.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "positive-infinity-comparison",
+            "essentialUnderstandingDe": "Für jede feste natürliche Potenz n wächst e^x im positiven Unendlichen relativ schneller als x^n, daher geht x^n/e^x gegen null. Ein größerer Potenzgrad kann den sichtbaren Übergang verschieben, ohne die Grenzaussage zu ändern.",
+            "essentialUnderstandingEn": "For every fixed natural-number power n, e^x grows relatively faster than x^n at positive infinity, so x^n/e^x tends to zero. A higher degree can shift where the behavior becomes visible without changing the limit.",
+            "observablePerformanceDe": "Die lernende Person vergleicht exponentielles und Potenzwachstum und plausibilisiert die Quotientengrenze durch eine passende Darstellung oder schlüssige Wachstumsüberlegung.",
+            "observablePerformanceEn": "The learner compares exponential and power growth and gives a plausible explanation of the quotient limit using a suitable representation or coherent growth argument."
+          },
+          {
+            "id": "negative-infinity-product",
+            "essentialUnderstandingDe": "Mit u=−x geht das Produkt x^n e^x im negativen Unendlichen in (−1)^n u^n/e^u über; daher ist sein Grenzwert ebenfalls null. Die Parität steuert die Annäherungsseite, nicht den Nullgrenzwert.",
+            "essentialUnderstandingEn": "With u=−x, the product x^n e^x at negative infinity becomes (−1)^n u^n/e^u, so its limit is also zero. Parity determines the side of approach, not whether the limit is zero.",
+            "observablePerformanceDe": "Die lernende Person überträgt die Wachstumsbeziehung auf das negative Unendliche und erklärt Produktgrenzwert und Vorzeichen an gerader und ungerader Potenz.",
+            "observablePerformanceEn": "The learner transfers the growth relation to negative infinity and explains the product limit and sign for even and odd powers."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "positive-infinity-comparison",
+            "negative-infinity-product"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Positives Unendlich mit einem Quotienten gegenüber negativem Unendlich mit einem Produkt; ungerade und gerade Potenzen unterscheiden die Annäherungsseite.",
+            "textEn": "Positive infinity with a quotient versus negative infinity with a product; odd and even powers distinguish the side of approach."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fixed-power-quotient",
+            "taskDemandDe": "Für einen festen positiven ganzzahligen Exponenten n vergleiche q_n(x)=x^n/e^x bei x→+∞. Erkläre plausibel den Grenzwert und weshalb auch ein sehr großer, aber festgehaltener Exponent die Aussage nicht ändert. Du darfst Graphen, Tabellen oder eine passende symbolische Wachstumsüberlegung wählen; ein bestimmtes formales Beweisverfahren ist nicht vorgeschrieben.",
+            "taskDemandEn": "For a fixed positive integer exponent n, compare q_n(x)=x^n/e^x as x→+∞. Give a plausible explanation of the limit and why even a very large but fixed exponent does not change it. You may choose graphs, tables, or suitable symbolic growth reasoning; no particular formal proof method is required.",
+            "expectedPerformanceDe": "Der Grenzwert ist 0. Eine mögliche Plausibilisierung vergleicht Schritte gleicher Länge: e^(x+1)/e^x=e, während (x+1)^n/x^n=(1+1/x)^n gegen 1 geht. Damit wird der Quotient schließlich mit einem Faktor kleiner als 1 verkleinert; für jedes feste n überwiegt das Exponentialwachstum. Ein größerer Exponent verschiebt den Übergang, nicht die asymptotische Dominanz. Endliche Graphen oder Tabellen illustrieren diese Struktur, sind allein aber kein Beweis für alle x. Andere schlüssige Plausibilisierungen sind zulässig.",
+            "expectedPerformanceEn": "The limit is 0. One plausible explanation compares equal-length steps: e^(x+1)/e^x=e, whereas (x+1)^n/x^n=(1+1/x)^n tends to 1. Thus the quotient eventually shrinks by a factor below 1; exponential growth dominates for every fixed n. A larger exponent shifts the transition rather than the asymptotic dominance. Finite graphs or tables illustrate this structure but alone do not prove it for all x. Other coherent plausibility arguments are valid.",
+            "understandingFocusDe": "Allgemeine feste Potenz statt bloßer Übernahme der im Bild gezeigten n=2-Kurve; Plausibilitätsargument und vollständiger Beweis bleiben unterscheidbar.",
+            "understandingFocusEn": "An arbitrary fixed power rather than merely copying the illustrated n=2 curve; a plausibility argument remains distinguishable from a full proof."
+          },
+          {
+            "id": "negative-product-parity",
+            "taskDemandDe": "Untersuche unabhängig davon p_3(x)=x³e^x und p_4(x)=x⁴e^x für x→−∞. Erkläre die beiden Grenzwerte und jeweils die Annäherungsseite. Stelle einen nachvollziehbaren Bezug zum Vergleich von natürlicher Exponentialfunktion und Potenz her.",
+            "taskDemandEn": "Independently investigate p_3(x)=x³e^x and p_4(x)=x⁴e^x as x→−∞. Explain both limits and their respective sides of approach. Make a traceable connection to comparing the natural exponential function with powers.",
+            "expectedPerformanceDe": "Mit u=−x→+∞ gilt p_3(x)=−u³/e^u und p_4(x)=u⁴/e^u. Die Quotientenbeträge gehen gegen 0, weil e^u jede dieser festen Potenzen überwiegt. Daher geht p_3 von negativen Werten gegen 0, p_4 von positiven Werten gegen 0. Das stark abfallende e^x bestimmt den Betragsgrenzwert trotz wachsendem |x|^n.",
+            "expectedPerformanceEn": "With u=−x→+∞, p_3(x)=−u³/e^u and p_4(x)=u⁴/e^u. Both quotient magnitudes tend to 0 because e^u dominates each fixed power. Thus p_3 approaches 0 from negative values and p_4 from positive values. The rapid decay of e^x determines the magnitude limit despite growing |x|^n.",
+            "understandingFocusDe": "Struktureller Transfer auf die andere Unendlichkeitsrichtung, Produktdarstellung und Vorzeichen; kein bloßer Zahlentausch im Quotientenfall.",
+            "understandingFocusEn": "Structural transfer to the opposite direction at infinity, a product representation, and sign; not merely changing numbers in the quotient case."
+          }
+        ]
+      }
+    }
+  ]
+}

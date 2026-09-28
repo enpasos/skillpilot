@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001.fresh-b",
+  "campaignId": "mathematik-m7-gklk-six-current-20260928-v1-b",
+  "roundId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b",
+  "bundleFingerprint": "sha256:ded10d646af326cc375a4ba53303d225940a417df313a7003178dfaf29110104",
+  "bookDigest": "sha256:d8f39abb13bcd277a41518e5789fff1cafc5c8441c4e97b2930435dacb12c39f",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:6ca5ced6df98cc0c188efdd0209e1a4ef5686c1f16b8aa5f26d604115e4df4e0",
+  "independenceGroupId": "mathematik-m7-gklk-six-current-20260928-v1-independent-b",
+  "batchId": "mathematik-m7-gklk-six-current-20260928-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:c9cf94951cafe0a20e0a19acb9bb5cd6493e0996731e30e3ad5921a2ab54256f",
+  "provider": "OpenAI",
+  "model": "gpt-6-astra",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "generationParametersFingerprint": "sha256:a56e9109e5bbf8cf5c9d544c4cb9a8e826a4d9693fc8d69ed725f141e510b399",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "dc12f281-f161-572b-a973-8405ae9b2498",
+    "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+    "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+    "49f9059a-876c-5051-8146-d008b5cc691c",
+    "b431148b-526c-4bde-b04b-48d23101d0d3",
+    "9b339361-7719-573d-a913-432246c502ee"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:6ca5ced6df98cc0c188efdd0209e1a4ef5686c1f16b8aa5f26d604115e4df4e0"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:c9cf94951cafe0a20e0a19acb9bb5cd6493e0996731e30e3ad5921a2ab54256f"
+    }
+  ],
+  "startedAt": "2026-09-28T11:43:28.771Z",
+  "completedAt": "2026-09-28T11:50:13.865735Z",
+  "status": "completed",
+  "outputDigest": "sha256:e9421d2fd62538195b6f66c3b90d9092d6baba5d4a0d3ed99bb6a7cd17555247",
+  "toolchainVersion": "skillpilot-description-review-v2"
+}

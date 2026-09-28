@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-09-28T03:13:52.008Z
+Generated: 2026-09-28T14:49:24.882Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,27 +16,27 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1203 |
-| Atomare Blattleernziele | 941 |
-| Davon relevant fuer Quellenbegruendung | 799 |
-| Memory-/Nicht-Content-Blattziele | 142 |
-| Clusterziele | 262 |
-| Runtime-Quellenbegruendungen | 745 |
-| Runtime-Ziele mit klassischem Quellenweg | 745 |
-| Runtime-Ziele mit MEM/FWU-konsistenter Route | 230 |
-| Relevante Blattziele mit klassischem Quellenweg | 745/799 (93.2%) |
-| Relevante Blattziele mit MEM/FWU-konsistenter Route | 230/799 (28.8%) |
+| Alle Mathematik-Ziele | 1231 |
+| Atomare Blattleernziele | 958 |
+| Davon relevant fuer Quellenbegruendung | 803 |
+| Memory-/Nicht-Content-Blattziele | 155 |
+| Clusterziele | 273 |
+| Runtime-Quellenbegruendungen | 749 |
+| Runtime-Ziele mit klassischem Quellenweg | 749 |
+| Runtime-Ziele mit MEM/FWU-konsistenter Route | 234 |
+| Relevante Blattziele mit klassischem Quellenweg | 749/803 (93.3%) |
+| Relevante Blattziele mit MEM/FWU-konsistenter Route | 234/803 (29.1%) |
 | Relevante Blattziele ohne Runtime-Quellenbegruendung | 54 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
-| Cluster mit direkter Runtime-Quellenbegruendung | 0/262 |
-| Cluster ohne direkte Runtime-Quellenbegruendung | 262 |
-| contains-Relationen mit Begruendungstext | 0/1326 |
-| requires-Relationen mit Begruendungstext | 0/2437 |
+| Cluster mit direkter Runtime-Quellenbegruendung | 0/273 |
+| Cluster ohne direkte Runtime-Quellenbegruendung | 273 |
+| contains-Relationen mit Begruendungstext | 0/1366 |
+| requires-Relationen mit Begruendungstext | 0/2466 |
 
 ## Interpretation
 
 - Die Runtime-Datei enthaelt aktuell direkte Quellenbegruendungen fuer alle bereits klassisch belegten relevanten Mathematik-Blattziele. Sie deckt Zielknoten ab, aber noch keine `requires`- oder `contains`-Relationstexte.
-- Die 745 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
+- Die 749 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
 - MEM/FWU-SPARQL ist nur dort als konsistent gezaehlt, wo der klassische Quellenweg bereits auf einen passenden MEM-Erwartungstext gematcht werden konnte.
 
 ## Gaps By Phase
@@ -45,12 +45,12 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | --- | --- | --- | --- | --- |
 | Q4 | 162 | 123 (75.9%) | 39 (24.1%) | 39 |
 | E | 96 | 88 (91.7%) | 25 (26.0%) | 8 |
-| Q2 | 141 | 138 (97.9%) | 21 (14.9%) | 3 |
+| Q2 | 138 | 135 (97.8%) | 20 (14.5%) | 3 |
 | Q3 | 76 | 73 (96.1%) | 16 (21.1%) | 3 |
-| J9 | 47 | 46 (97.9%) | 18 (38.3%) | 1 |
-| J10 | 58 | 58 (100.0%) | 21 (36.2%) | 0 |
-| Q1 | 48 | 48 (100.0%) | 10 (20.8%) | 0 |
-| J7 | 46 | 46 (100.0%) | 17 (37.0%) | 0 |
+| J9 | 51 | 50 (98.0%) | 18 (35.3%) | 1 |
+| J10 | 60 | 60 (100.0%) | 23 (38.3%) | 0 |
+| Q1 | 48 | 48 (100.0%) | 11 (22.9%) | 0 |
+| J7 | 47 | 47 (100.0%) | 19 (40.4%) | 0 |
 | J6 | 43 | 43 (100.0%) | 22 (51.2%) | 0 |
 | J8 | 39 | 39 (100.0%) | 16 (41.0%) | 0 |
 | J5 | 36 | 36 (100.0%) | 23 (63.9%) | 0 |
@@ -60,11 +60,11 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Bucket | Relevant leaves | Classic | MEM consistent | Missing |
 | --- | --- | --- | --- | --- |
-| unknown | 385 | 337 (87.5%) | 70 (18.2%) | 48 |
-| Analysis | 131 | 126 (96.2%) | 39 (29.8%) | 5 |
+| unknown | 382 | 334 (87.4%) | 70 (18.3%) | 48 |
+| Analysis | 133 | 128 (96.2%) | 40 (30.1%) | 5 |
 | Stochastics | 2 | 1 (50.0%) | 1 (50.0%) | 1 |
-| Geometry | 82 | 82 (100.0%) | 40 (48.8%) | 0 |
-| LinearAlgebra | 68 | 68 (100.0%) | 7 (10.3%) | 0 |
+| Geometry | 88 | 88 (100.0%) | 43 (48.9%) | 0 |
+| LinearAlgebra | 67 | 67 (100.0%) | 7 (10.4%) | 0 |
 | Algebra | 56 | 56 (100.0%) | 33 (58.9%) | 0 |
 | Arithmetic | 46 | 46 (100.0%) | 24 (52.2%) | 0 |
 | Measurement | 11 | 11 (100.0%) | 4 (36.4%) | 0 |
@@ -143,20 +143,22 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Goal | Phase | Area | Topic | Path |
 | --- | --- | --- | --- | --- |
-| Abstände und Längen im Raum bestimmen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Abstände und Längen im Raum bestimmen |
+| Abstand zweier Punkte im Raum berechnen (canonical_math_q2_compute_distance_between_two_points_in_space) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.POINT_DISTANCE_SPACE | Abstände und Längen im Raum (Bestands-ID) > Abstand zweier Punkte im Raum berechnen |
+| Gerade-Gerade-Abstände im Raum bestimmen | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.DISTANCES.LINE_LINE | Abstände und Längen im Raum (Bestands-ID) > Gerade-Gerade-Abstände im Raum bestimmen |
+| Punkt-Gerade-Abstände im Raum bestimmen | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.DISTANCES.POINT_LINE | Abstände und Längen im Raum (Bestands-ID) > Punkt-Gerade-Abstände im Raum bestimmen |
+| Betrag eines Vektors im Raum bestimmen (canonical_math_q2_compute_vector_magnitude_in_space) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.VECTOR_MAGNITUDE_SPACE | Abstände, Beträge und Mittelpunkte im Raum (Bestands-ID) > Betrag eines Vektors im Raum bestimmen |
+| Mittelwerte von Funktionen mit Integralen bestimmen und deuten (canonical_math_definite_integral_function_mean) | Q1 | Analysis | CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.APPLICATIONS.FUNCTION_MEAN | Bestände und Mittelwerte (Bestands-ID) > Mittelwerte von Funktionen mit Integralen bestimmen und deuten |
 | Abstandsverfahren im Raum auswählen und anwenden | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Abstandsverfahren im Raum auswählen und anwenden |
 | Flächeninhalte in räumlichen Sachzusammenhängen berechnen (canonical_math_q2_calculate_areas_in_spatial_applications) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.SPATIAL_AREA_APPLICATIONS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Flächeninhalte in räumlichen Sachzusammenhängen berechnen |
 | Gerade-Ebene- und Ebene-Ebene-Abstände im Raum bestimmen | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.LINE_PLANE_AND_PLANE_PLANE_DISTANCES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Gerade-Ebene- und Ebene-Ebene-Abstände im Raum bestimmen |
-| Gerade-Gerade-Abstände im Raum bestimmen | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.DISTANCES.LINE_LINE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Gerade-Gerade-Abstände im Raum bestimmen |
-| Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK) (canonical_math_q2_apply_foot_point_methods_for_distances_between_points_lines_planes_lk) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.GENERAL_FOOT_POINT_DISTANCE_METHODS_LK | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK) |
 | Parabelbahnen mithilfe von Parametern darstellen (LK) (canonical_math_q2_represent_parabolic_paths_with_parameters_lk) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.PARABOLIC_TRAJECTORIES_PARAMETERS_LK | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Parabelbahnen mithilfe von Parametern darstellen (LK) |
 | Projektionen auf Koordinatenebenen untersuchen (canonical_math_q2_analyze_projection_onto_coordinate_planes) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.PROJECTION_ONTO_COORDINATE_PLANES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Projektionen auf Koordinatenebenen untersuchen |
-| Punkt-Gerade-Abstände im Raum bestimmen | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.DISTANCES.POINT_LINE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkt-Gerade-Abstände im Raum bestimmen |
 | Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden (canonical_math_q2_apply_foot_point_method_for_point_plane_distance) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.POINT_PLANE_DISTANCE_FOOT_POINT | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkt-Punkt- und Punkt-Ebene-Abstände im Raum bestimmen > Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden |
 | Punkte an Ebenen spiegeln | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.PLANE.REFLECTION | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkte an Ebenen spiegeln |
-| Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK) (canonical_math_q2_reflect_points_lines_and_planes_generally_lk_planes) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK.PLANES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkte, Geraden und Ebenen allgemein spiegeln (LK) > Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK) |
-| Geraden in allgemeinen Raumkonfigurationen spiegeln (LK) (canonical_math_q2_reflect_points_lines_and_planes_generally_lk_lines) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK.LINES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkte, Geraden und Ebenen allgemein spiegeln (LK) > Geraden in allgemeinen Raumkonfigurationen spiegeln (LK) |
-| Punkte in allgemeinen Raumkonfigurationen spiegeln (LK) (canonical_math_q2_reflect_points_lines_and_planes_generally_lk_points) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK.POINTS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkte, Geraden und Ebenen allgemein spiegeln (LK) > Punkte in allgemeinen Raumkonfigurationen spiegeln (LK) |
+| Ebenen an vorgegebenen Spiegelträgern im Raum spiegeln (LK) (canonical_math_q2_reflect_points_lines_and_planes_generally_lk_planes) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK.PLANES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkte, Geraden und Ebenen allgemein spiegeln (LK) > Ebenen an vorgegebenen Spiegelträgern im Raum spiegeln (LK) |
+| Eine Raumgerade an einem Punkt spiegeln (LK) (canonical_math_q2_reflect_spatial_line_in_point_bw) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.LINE_REFLECTION_IN_POINT | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkte, Geraden und Ebenen allgemein spiegeln (LK) > Eine Raumgerade an einem Punkt spiegeln (LK) |
+| Geraden an vorgegebenen Spiegelträgern im Raum spiegeln (LK) (canonical_math_q2_reflect_points_lines_and_planes_generally_lk_lines) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK.LINES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkte, Geraden und Ebenen allgemein spiegeln (LK) > Geraden an vorgegebenen Spiegelträgern im Raum spiegeln (LK) |
+| Punkte an vorgegebenen Spiegelträgern im Raum spiegeln (LK) (canonical_math_q2_reflect_points_lines_and_planes_generally_lk_points) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK.POINTS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkte, Geraden und Ebenen allgemein spiegeln (LK) > Punkte an vorgegebenen Spiegelträgern im Raum spiegeln (LK) |
 | Sachprobleme mit Geraden und Ebenen modellieren | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Sachprobleme mit Geraden und Ebenen modellieren |
 | Schnittwinkel über Richtungs- und Normalenvektoren bestimmen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Schnittwinkel über Richtungs- und Normalenvektoren bestimmen |
 | Schnittwinkel zweier Geraden berechnen | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.INTERSECTION_ANGLES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Schnittwinkel zweier Geraden berechnen |
@@ -213,8 +215,6 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Übergangsprozesse mit Zustandsvektoren und Übergangsmatrizen beschreiben (canonical_math_q2_describe_transition_processes_with_state_vectors_and_transition_matrices) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.4.STATE_VECTORS_TRANSITION_MATRICES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen > Übergangsprozesse mit Zustandsvektoren und Übergangsmatrizen beschreiben |
 | Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen (canonical_math_q2_assess_backward_markov_calculations_for_validity_and_uniqueness) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen > Zustände in Markov-Ketten berechnen > Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen |
 | Zustände in Markov-Ketten vorwärts berechnen und deuten (canonical_math_q2_calculate_and_interpret_forward_markov_state_developments) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen > Zustände in Markov-Ketten berechnen > Zustände in Markov-Ketten vorwärts berechnen und deuten |
-| Abstand zweier Punkte im Raum berechnen (canonical_math_q2_compute_distance_between_two_points_in_space) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.POINT_DISTANCE_SPACE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Abstand zweier Punkte im Raum berechnen |
-| Betrag eines Vektors im Raum bestimmen (canonical_math_q2_compute_vector_magnitude_in_space) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.VECTOR_MAGNITUDE_SPACE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Betrag eines Vektors im Raum bestimmen |
 | Geometriesoftware zur Raumorientierung nutzen (canonical_math_q2_use_geometry_software_for_spatial_orientation) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.GEOMETRY_SOFTWARE_SPATIAL_ORIENTATION | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Geometriesoftware zur Raumorientierung nutzen |
 | Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen |
 | Kollinearität von Vektoren im Raum prüfen (canonical_math_q2_check_collinearity_of_vectors_in_space) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.VECTOR_COLLINEARITY_SPACE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Kollinearität von Vektoren im Raum prüfen |
@@ -230,6 +230,9 @@ Weitere 435 Eintraege stehen in der JSON-Begleitdatei.
 
 | Goal | Phase | Area | Topic | Path |
 | --- | --- | --- | --- | --- |
+| Abstände und Längen im Raum (Bestands-ID) | Q2 | unknown | - | Abstände und Längen im Raum (Bestands-ID) |
+| Abstände, Beträge und Mittelpunkte im Raum (Bestands-ID) (canonical_math_sek1_j9_vector_distances_midpoints) | J9 | Geometry | CANONICAL.MATH.SEK1.J9.8C | Abstände, Beträge und Mittelpunkte im Raum (Bestands-ID) |
+| Bestände und Mittelwerte (Bestands-ID) | Q1 | unknown | - | Bestände und Mittelwerte (Bestands-ID) |
 | Mathematik (canonical_math_module) | GLOBAL | Mathematik | CANONICAL.MATH | Mathematik |
 | Abiturprüfung Mathematik (GK) (abi_gk_offer_2026) | Abitur | unknown | - | Mathematik > Abiturprüfung Mathematik (GK) |
 | Teil 1: Hilfsmittelfrei | Abitur | unknown | - | Mathematik > Abiturprüfung Mathematik (GK) > Teil 1: Hilfsmittelfrei |
@@ -240,6 +243,7 @@ Weitere 435 Eintraege stehen in der JSON-Begleitdatei.
 | Analytische Geometrie, lineare Algebra und vertiefte Analysis | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis |
 | Raum, Matrizen und lineare Modelle (Sek II) (canonical_math_sek2_space_matrices_models) | GLOBAL | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.LINEARALGEBRA | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) |
 | Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.DISTANCES_ANGLES_REFLECTIONS_AND_APPLICATIONS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum |
+| Lotfußpunktverfahren für Raumabstände (LK) (canonical_math_q2_apply_foot_point_methods_for_distances_between_points_lines_planes_lk) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.GENERAL_FOOT_POINT_DISTANCE_METHODS_LK | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Lotfußpunktverfahren für Raumabstände (LK) |
 | Punkt-Punkt- und Punkt-Ebene-Abstände im Raum bestimmen | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.POINT_POINT_AND_POINT_PLANE_DISTANCES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkt-Punkt- und Punkt-Ebene-Abstände im Raum bestimmen |
 | Punkte, Geraden und Ebenen allgemein spiegeln (LK) (canonical_math_q2_reflect_points_lines_and_planes_generally_lk) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkte, Geraden und Ebenen allgemein spiegeln (LK) |
 | Geraden, Ebenen und Gleichungsformen im Raum | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.LINES_PLANES_AND_EQUATION_FORMS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Geraden, Ebenen und Gleichungsformen im Raum |
@@ -286,16 +290,12 @@ Weitere 435 Eintraege stehen in der JSON-Begleitdatei.
 | Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) (canonical_math_sek2_parameters_argumentation_complex) | GLOBAL | Analysis | CANONICAL.MATH.SEK2.PARAMETERS.ARGUMENTATION.COMPLEX | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) |
 | Funktionenscharen und Parameteruntersuchungen (Sek II) (canonical_math_sek2_function_families_parameters) | GLOBAL | Analysis | CANONICAL.MATH.SEK2.FUNCTION_FAMILIES.PARAMETERS | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) |
 | Funktionenscharen und Parameteruntersuchungen | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) > Funktionenscharen und Parameteruntersuchungen |
-| Ortskurven von Extrem- und Wendepunkten bestimmen (LK) | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) > Funktionenscharen und Parameteruntersuchungen > Ortskurven von Extrem- und Wendepunkten bestimmen (LK) |
-| Komplexe Zahlen | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Komplexe Zahlen |
-| Komplexe Zahlen algebraisch multiplizieren und dividieren | Q4 | unknown | CANONICAL.MATH.SEK2.Q4.3.MULTIPLY_AND_DIVIDE_COMPLEX_NUMBERS_ALGEBRAICALLY | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Komplexe Zahlen > Komplexe Zahlen algebraisch multiplizieren und dividieren |
-| Zahlbereichserweiterung zu komplexen Zahlen begründen (LK) (canonical_math_sek2_q4_complex_extension_necessity_by) | Q4 | Algebra | CANONICAL.MATH.SEK2.Q4.COMPLEX_EXTENSION_BY | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Komplexe Zahlen > Zahlbereichserweiterung zu komplexen Zahlen begründen (LK) |
 
-Weitere 202 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 213 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/public/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-09-28T02:16:04.479Z
+- Runtime index generated: 2026-09-28T14:49:13.211Z
 

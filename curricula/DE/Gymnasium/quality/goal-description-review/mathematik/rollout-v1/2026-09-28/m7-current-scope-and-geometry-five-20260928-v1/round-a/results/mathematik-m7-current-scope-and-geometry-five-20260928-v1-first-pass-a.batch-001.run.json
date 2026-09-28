@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-a-codex-native",
+  "campaignId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-a",
+  "roundId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-a",
+  "batchId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:cb67079710e903138ff57a5d7de3d3c5e41a8d12694a56b0bd0aa1089fb0b30b",
+  "bundleFingerprint": "sha256:33223e43bed264d11c4fd5e31b20e07f3c954ac7aef8b416481db5988e31f484",
+  "bookDigest": "sha256:e11137d1e79f3f1f0a4da0c2147c29b8cc20cde9f75e2b6b89a61f67696aa5b6",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex; exact serving model ID not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:cb7ac4440699e555c4cb07ed586d5311ff39fb7ab66e2270e6152ccce185e452",
+  "independenceGroupId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "803d910d-96d1-5118-b9ca-29e93d0da76d",
+    "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+    "fde351a8-98b1-5d75-b4df-813beb2bbe3c",
+    "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+    "d98849c7-bd0b-50d4-90aa-6293a3adb211"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:cb67079710e903138ff57a5d7de3d3c5e41a8d12694a56b0bd0aa1089fb0b30b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-28T11:28:48Z",
+  "completedAt": "2026-09-28T11:33:02Z",
+  "status": "completed",
+  "outputDigest": "sha256:cf7c733364660f00bace356b6268f6f444cd74862ba34d1434b2beab0216953d",
+  "toolchainVersion": "codex-native-review-v1"
+}

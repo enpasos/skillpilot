@@ -157,6 +157,8 @@ ACTIVE_PROMPT_OVERRIDES = {
     "goal-resource:0f4f9957-8afe-4aab-9dd8-c26c9aee2afd:0": "curricula/DE/Gymnasium/visualizations/mathematik/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd/prompt.imagegen-edit.de.md",
     "goal-resource:49f9059a-876c-5051-8146-d008b5cc691c:0": "curricula/DE/Gymnasium/visualizations/mathematik/49f9059a-876c-5051-8146-d008b5cc691c/prompt.imagegen-neutral-title.de.md",
     "goal-resource:71fe4a39-38e8-5c6a-8eef-ff4783fe70c2:0": "curricula/DE/Gymnasium/visualizations/mathematik/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2/prompt.imagegen-neutral-title.de.md",
+    "goal-resource:5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d:0": "curricula/DE/Gymnasium/visualizations/mathematik/5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d/prompt.imagegen-correction.de.md",
+    "goal-resource:eb070ed2-7ef4-5afe-b203-190ebb0116af:0": "curricula/DE/Gymnasium/visualizations/mathematik/eb070ed2-7ef4-5afe-b203-190ebb0116af/prompt.imagegen-correction.de.md",
 }
 PROMPT_PROVIDER_RE = re.compile(r"^- Provider: (.+)$", re.MULTILINE)
 PROMPT_SOURCE_SVG_RE = re.compile(r"^- Immutable SVG: `([^`]+)`$", re.MULTILINE)

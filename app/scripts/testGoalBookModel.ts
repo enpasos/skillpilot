@@ -65,7 +65,7 @@ const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
 // Current authoring checkpoint, not a review or publication approval. The
 // nationwide atlas keeps all current curricular-atomic page IDs; this digest binds current text,
 // visuals, exam edges and explicit LK applicability.
-const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:1fc32634142bdb6ff089f1f4855e98f8d27917575ff127a5c97c1f146a5fea17'
+const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:87d576884332696141ab505a279196401f14563661e71f9bfe6b9a44e1abf57f'
 
 const goal = ({
   id,
@@ -1018,10 +1018,10 @@ const publishedNationalAtlasText = await readFile(fileURLToPath(new URL(
 )), 'utf8')
 assert.equal(nationalAtlas.book.id, 'de-gym-mathematik-bundesweit')
 assert.equal(nationalAtlas.book.viewId, 'de-gym-math-national-atlas')
-assert.equal(nationalAtlas.book.pageCount, 799)
+assert.equal(nationalAtlas.book.pageCount, curricularAtomicGoalIds.size)
 assert.equal(nationalAtlas.book.scope.schoolForm, 'Gymnasium')
 assert.deepEqual(Object.keys(nationalAtlas.book.scope), ['schoolForm'])
-assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 799)
+assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, curricularAtomicGoalIds.size)
 assert.deepEqual(
   nationalAtlas.pages.map(({ goalId }) => goalId).sort(),
   [...curricularAtomicGoalIds].sort(),

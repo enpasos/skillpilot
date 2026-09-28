@@ -177,7 +177,11 @@ const kindLedger = readJson('curricula/DE/Gymnasium/quality/release-model/mathem
   counts: { curricularAtomic: number, practiceAssessment: number },
   decisions: Array<{ goalId: string, semanticKind: string, sourceFingerprint: string }>
 }
-assert.equal(kindLedger.counts.curricularAtomic, 799, 'The new terminal does not change the M7 denominator')
+const currentCurricularAtomicIds = new Set(kindLedger.decisions
+  .filter(({ semanticKind }) => semanticKind === 'curricularAtomic')
+  .map(({ goalId }) => goalId))
+assert.equal(kindLedger.counts.curricularAtomic, currentCurricularAtomicIds.size)
+assert.equal(currentCurricularAtomicIds.has(localAssessmentId), false, 'The new terminal does not enter the M7 denominator')
 for (const [id, kind] of [[goalId, 'curricularAtomic'], [oldParentId, 'curricularArea'], [q25ParentId, 'curricularArea'], [q2PracticeId, 'practiceAssessment'], [assessmentId, 'practiceAssessment'], [localAssessmentId, 'practiceAssessment']]) {
   const decision = kindLedger.decisions.find((entry) => entry.goalId === id)
   assert.equal(decision?.semanticKind, kind)

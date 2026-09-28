@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-eb070-correct-parallel-markings-p-20260928-v1",
+  "reviewedAt": "2026-09-28T08:30:17.000Z",
+  "reviewer": "Codex independent current-image P-v2 content reinspection; AI candidate only",
+  "goals": [
+    {
+      "goalId": "eb070ed2-7ef4-5afe-b203-190ebb0116af",
+      "reason": "DE: Das neue PNG wurde bei Originalauflösung inhaltlich geprüft: AB, DC, EF und HG tragen dieselben blauen Doppelmarkierungen; AD, BC, EH und FG dieselben grünen Dreifachmarkierungen; die vier Hochkanten sind rot. Die früher vertauschten Markierungen an EF und AD sind damit korrigiert. AB⊥AE, Seitenfläche ABFE⊥Grundfläche ABCD und die Gegenflächenbeziehung sind richtig. Das Profil wurde erneut auf zwei unabhängige Fälle geprüft: Quaderkanten und eine Seitenfläche werden über Richtungen begründet; am neuen Dreiecksprisma muss insbesondere AB⊥AC gegen AB nicht senkrecht BC unterschieden werden. Keine dieser Antworten lässt sich aus dem Bild ablesen. E1/G1-AI-Kandidat, keine Humanfreigabe. EN: The new PNG was inspected at native resolution: AB, DC, EF and HG have matching blue double markings; AD, BC, EH and FG matching green triple markings; all four vertical edges are red. The formerly swapped EF and AD markings are corrected. AB perpendicular to AE, side face ABFE perpendicular to base ABCD, and the opposite-face relation are correct. Two independent cases were rechecked: cuboid edges and a side face need direction-based reasoning, while the fresh triangular prism contrasts AB perpendicular to AC with AB not perpendicular to BC. The image supplies neither answer. E1/G1 AI candidate, not human-approved.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "spatial-parallel-and-perpendicular-relations",
+            "essentialUnderstandingDe": "An einem Körper hängen Parallelität und Orthogonalität von den räumlichen Richtungen ab: Kantenrichtungen können über proportionale Vektoren oder ein Skalarprodukt verglichen werden, und eine Kante ist zu einer Fläche senkrecht, wenn ihre Richtung senkrecht auf zwei unabhängigen Richtungen der Fläche steht.",
+            "essentialUnderstandingEn": "On a solid, parallelism and orthogonality depend on spatial directions: edge directions can be compared using proportional vectors or a dot product, and an edge is perpendicular to a face when its direction is perpendicular to two independent directions in that face.",
+            "observablePerformanceDe": "Die lernende Person identifiziert an einem neuen einfachen Körper konkrete Kanten- und Flächenpaare, entscheidet Parallelität beziehungsweise Orthogonalität und begründet jede Entscheidung durch räumliche Richtungen statt nur durch den Bildeindruck.",
+            "observablePerformanceEn": "On a new simple solid, the learner identifies specific edge and face pairs, decides parallelism or orthogonality, and justifies each decision through spatial directions rather than visual appearance alone."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "spatial-parallel-and-perpendicular-relations"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "solid-and-incidence",
+            "textDe": "Quader mit paarweise achsenparallelen Kanten und Seitenfläche gegenüber geradem Dreiecksprisma mit nicht rechtwinkliger dritter Grundkante.",
+            "textEn": "Cuboid with axis-parallel edges and a side face versus a right triangular prism whose third base edge is not perpendicular."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "cuboid-edge-face",
+            "taskDemandDe": "Für einen Quader seien A=(0,0,0), B=(2,0,0), C=(2,2,0), D=(0,2,0), E=(0,0,2), F=(2,0,2), G=(2,2,2) und H=(0,2,2). Prüfe AB∥DC, AB⊥BC und AB⊥der Seitenfläche BCGF; begründe räumlich.",
+            "taskDemandEn": "For a cuboid let A=(0,0,0), B=(2,0,0), C=(2,2,0), D=(0,2,0), E=(0,0,2), F=(2,0,2), G=(2,2,2), H=(0,2,2). Check AB∥DC, AB⊥BC, and AB perpendicular to side face BCGF; justify spatially.",
+            "expectedPerformanceDe": "AB=(2,0,0) und DC=(2,0,0), also parallel. BC=(0,2,0) hat mit AB Skalarprodukt 0. Die Fläche BCGF liegt in x=2 und wird etwa von BC=(0,2,0) und BF=(0,0,2) aufgespannt; AB ist zu beiden senkrecht und trifft die Fläche bei B.",
+            "expectedPerformanceEn": "AB=(2,0,0) and DC=(2,0,0), hence parallel. BC=(0,2,0) has dot product 0 with AB. Face BCGF lies in x=2 and is spanned, for example, by BC=(0,2,0) and BF=(0,0,2); AB is perpendicular to both and meets the face at B.",
+            "understandingFocusDe": "Kante-Kante- und Kante-Fläche-Beziehungen werden mit passenden räumlichen Bedingungen getrennt geprüft.",
+            "understandingFocusEn": "Edge-edge and edge-face relations are checked with their appropriate spatial conditions."
+          },
+          {
+            "id": "right-triangular-prism",
+            "taskDemandDe": "Ein gerades Dreiecksprisma hat Grundpunkte A=(0,0,0), B=(3,0,0), C=(0,4,0) und Deckpunkte A', B', C' jeweils 2 Einheiten darüber. Untersuche AB⊥AC, AB⊥BC, AA'∥BB' und AA'⊥Grundfläche; begründe.",
+            "taskDemandEn": "A right triangular prism has base vertices A=(0,0,0), B=(3,0,0), C=(0,4,0), with upper vertices A', B', C' each 2 units above. Analyze AB⊥AC, AB⊥BC, AA'∥BB', and AA' perpendicular to the base; justify.",
+            "expectedPerformanceDe": "AB=(3,0,0), AC=(0,4,0), BC=(−3,4,0) und AA'=BB'=(0,0,2). AB·AC=0, aber AB·BC=−9, also ist das zweite Kantenpaar nicht orthogonal. Die Hochkanten sind parallel; (0,0,2) steht auf den unabhängigen Grundrichtungen AB und AC senkrecht.",
+            "expectedPerformanceEn": "AB=(3,0,0), AC=(0,4,0), BC=(−3,4,0), and AA'=BB'=(0,0,2). AB·AC=0, but AB·BC=−9, so the second edge pair is not perpendicular. The vertical edges are parallel; (0,0,2) is perpendicular to the independent base directions AB and AC.",
+            "understandingFocusDe": "Bei anderer Grundflächenform werden räumliche Beziehungen neu aus Richtungen erschlossen.",
+            "understandingFocusEn": "With a changed base shape, spatial relations are established afresh from directions."
+          }
+        ]
+      }
+    }
+  ]
+}

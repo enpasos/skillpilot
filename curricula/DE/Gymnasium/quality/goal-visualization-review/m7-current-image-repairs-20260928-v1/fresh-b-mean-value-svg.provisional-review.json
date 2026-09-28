@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "fresh-b-mean-value-exact-svg-provisional-20260928",
+  "reviewStatus": "ai_candidate",
+  "reviewType": "provisional_unimported_asset_check",
+  "reviewedAt": "2026-09-28T12:47:02.621261+00:00",
+  "reviewer": {
+    "kind": "ai",
+    "agentTask": "/root/fresh_b",
+    "provider": "OpenAI",
+    "model": "gpt-6-astra",
+    "reasoningEffort": "ultra",
+    "sessionId": "01a0e7d3-b26a-78c1-a7fe-befc7d815a5c"
+  },
+  "source": {
+    "path": "tmp/m7-20260928-continuation/mean-value-exact.svg",
+    "digest": "sha256:66993886f08a78b162ee04124e02054ee529bdc1c4a6312bacf06dd9d15fac39"
+  },
+  "renderViews": [
+    {
+      "path": "tmp/m7-pythagoras-review-20260928-views/mean-value-exact.original.png",
+      "digest": "sha256:14a0dc71579ff0e6c55645336635d2ca229fbb07b92f029b7987190ee62a4f12",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "viewed": true,
+      "tool": "view_image",
+      "renderMethod": "rsvg-convert from mean-value-exact.svg"
+    },
+    {
+      "path": "tmp/m7-pythagoras-review-20260928-views/mean-value-exact.360.png",
+      "digest": "sha256:817f8ace2be6968b585c5267f5c12162757097b65215550498465fc60c1f71dd",
+      "dimensions": [
+        360,
+        203
+      ],
+      "viewed": true,
+      "tool": "view_image",
+      "renderMethod": "rsvg-convert from mean-value-exact.svg"
+    }
+  ],
+  "decision": "keep",
+  "activeVBinding": false,
+  "humanApproved": false,
+  "finalGoalIdBinding": null,
+  "mathematicalChecks": {
+    "sourcePath": "tmp/m7-20260928-continuation/mean-value-exact.svg",
+    "sourceDigest": "sha256:66993886f08a78b162ee04124e02054ee529bdc1c4a6312bacf06dd9d15fac39",
+    "parametricCurve": "x=100+550s, y=450-180s^2, t=3s",
+    "samples": [
+      {
+        "t": 0,
+        "pixelX": 100.0,
+        "pixelY": 450.0,
+        "liters": 10.0
+      },
+      {
+        "t": 1,
+        "pixelX": 283.33333333333337,
+        "pixelY": 430.0,
+        "liters": 11.0
+      },
+      {
+        "t": 2,
+        "pixelX": 466.66666666666663,
+        "pixelY": 370.0,
+        "liters": 14.0
+      },
+      {
+        "t": 3,
+        "pixelX": 650.0,
+        "pixelY": 270.0,
+        "liters": 19.0
+      }
+    ],
+    "initialTangentSlope": 0,
+    "curvedAreaPx2": 143000.0,
+    "rectangleAreaPx2": 143000,
+    "areaLiterMinutes": 39.0,
+    "averageLiters": 13.0,
+    "activeVBinding": false
+  },
+  "reviewDe": "Der quadratische Bézierpfad liefert x=100+550s und y=450−180s². Bei t=3s und 20 px je Liter ist dies exakt B(t)=10+t². Die Anfangstangente ist waagerecht; die Punkte 10,11,14,19 L stimmen. Unter Kurve und Rechteck liegen jeweils 143000 px², bei gleichen Maßstäben also 39 L·min. Der Mittelwert ist korrekt 13 L. Das Gleichheitszeichen wird durch den Text eindeutig auf den Flächeninhalt bezogen.",
+  "legibility360De": "Kurve, Anfangs-/Endwert, Rechteckhöhe und Zeitintervall bleiben bei 360 px unterscheidbar; die kleine Integralzeile ist für genaues Lesen im Original besser.",
+  "scope": "Only the specified mean-value-exact.svg was inspected; no discarded imagegen PNG was used. Positive provisional mathematical assessment only. Final active goal/link/hash binding requires the later import and a separate binding check.",
+  "issues": []
+}

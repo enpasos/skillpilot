@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-graph-antiderivative-bidirectional-current-20260928-v2",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex; synthesis of two independent AI review candidates (exact synthesizer model identifier unavailable)",
+  "synthesizedAt": "2026-09-28T09:13:53.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2",
+    "batchManifestDigest": "sha256:a04436f435823f4c63eb0adae82ddebc903b07117899d1b77298de690a7e0d1b",
+    "configDigest": "sha256:00912956904d6bbd1f621a5c0506d087f43d306aa3c6a7c06e39b0d87145bf6e",
+    "bundleFingerprint": "sha256:c6d024e135b5e5a102107be28d0ff07113623fc1cbb418adf0058975fe366d15",
+    "bookDigest": "sha256:42c00ba492fb5887108d027a76a232da9a7f8fd7ae9353b5bca7a0d425330b55",
+    "reviewInputFingerprint": "sha256:2ee4d7b22aa8d2b30d8684d90c5dd801f8b296669f6ecd640ea2ce3bcb8fa0bd",
+    "dualSummaryDigest": "sha256:019dfc2a776cb0bfd04d5783e8c10c0ede1233e7db8567847174a8b8d78a3c94",
+    "canonicalLandscapeDigest": "sha256:aed9ee6541dc4fead4ca3deeccd82bd907e2693c437fb58981c80188c37cbc4b"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-a",
+      "campaignDigest": "sha256:5cf77da6db2085143864e69df1de2da143ba7ed233ee5a11772c29142b0d7bf8",
+      "roundId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-independent-a",
+      "reviewInputFingerprint": "sha256:2ee4d7b22aa8d2b30d8684d90c5dd801f8b296669f6ecd640ea2ce3bcb8fa0bd",
+      "batchId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:ac975d63290f0b6b2d34641aa4effed0c7c4fadeb76b7c92c0bbbd4bcff0b9f8",
+      "runId": "m7-graph-antiderivative-bidirectional-20260928-v2-a-run-001",
+      "runManifestDigest": "sha256:a0ee3f64c14145df6ce73e4d7abfb7147442a19f99428059c7377f37c33f13ab",
+      "resultsDigest": "sha256:a99247ba30d26f67ee2f1c3206fccb5fb53c82d2176bc0e9051a198b50428a20"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-b",
+      "campaignDigest": "sha256:991b48ecf436b32a8d49a2329c0d926eb12bb723764c393e1b8db9a9d8c40c16",
+      "roundId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-independent-b",
+      "reviewInputFingerprint": "sha256:2ee4d7b22aa8d2b30d8684d90c5dd801f8b296669f6ecd640ea2ce3bcb8fa0bd",
+      "batchId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:e12ee5287f091c0d1c7503c4d039d3b27b0b1b4d6445a9ca11b873a60b09e98b",
+      "runId": "math-m7-graph-antiderivative-bidirectional-v2-round-b-openai-gpt6-20260928",
+      "runManifestDigest": "sha256:dec4ffcaf05d6bdfa745150aea4b21ae88925c25ef1757fda613536b731c4f5e",
+      "resultsDigest": "sha256:ada2796b0f8f4daed31c1d2552b939fac622e39b444c88e85f997a9160fdadee"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-graph-antiderivative-bidirectional-current-20260928-v2-decision-001",
+      "goalId": "21676dae-8619-59d1-89e3-a35bb2297e2c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6bf767e8345b92a0bab034917a46d34d532cdd6a3db2d42f474629a225861669",
+      "pageFingerprint": "sha256:96b5bd7a4b036ef467c08b42f897c94dbb73e7895d9b04d4f0bf8692ec69cade",
+      "goalReviewContextFingerprint": "sha256:366800f3f920cd32c236785db3bad5a3270019730df4200f204a38bce21e903c",
+      "finalText": {
+        "titleDe": "Aus dem Funktionsgraphen einen Stammfunktionsgraphen skizzieren",
+        "titleEn": "Sketch an antiderivative graph from a function graph",
+        "descriptionDe": "Die lernende Person kann aus dem Graphen einer Funktion f den Verlauf des Graphen einer möglichen Stammfunktion F skizzieren, diesen mithilfe der Beziehung F′ = f begründen und erklären, warum ein anderer gewählter Anfangswert den Graphen nur vertikal verschiebt.",
+        "descriptionEn": "The learner can sketch the graph of a possible antiderivative F from the graph of a function f, justify its course using F′ = f, and explain why choosing a different initial value only shifts the graph vertically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "m7-graph-antiderivative-bidirectional-20260928-v2-a-record-001",
+          "recordDigest": "sha256:f13c3d24bf1112fbad45d57917bfed45fdd288bb7774a99fd1dccee65207b72d"
+        },
+        "second": {
+          "recordId": "math-m7-graph-antiderivative-bidirectional-v2-round-b-openai-gpt6-20260928.21676dae",
+          "recordDigest": "sha256:7e0b908189574e24a542f9e4ea37a7d1a5e8e9918cd8846bb5fc047604f007de"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten den aktuellen DE-/EN-Text: Vom f-Graphen wird ein möglicher F-Graph skizziert, dessen Verlauf mit F′ = f begründet wird; ein anderer Anfangswert ändert auf dem betrachteten Intervall nur die vertikale Lage. Die zweite Evidenzfassung macht diese Intervallbedingung und den Transfer zwischen berührender und schneidender Nullstelle von f besonders klar. Das aktuelle Bild zeigt f(x)=x, eine passende Stammfunktion und deren vertikale Verschiebung mathematisch richtig; es ist Lehrhilfe, keine Leistungsprobe. Die lokale BW-Quellenextraktion 3.4.4(17)/3.5.4(12) nennt ausdrücklich beide Graphrichtungen, belegt aber für sich allein weder alle anderen Landeszuordnungen noch eine vollständige Eins-zu-eins-Abdeckung der Teilzuordnungen.",
+      "rationaleEn": "Both independent rounds retain the current German and English text: a possible F graph is sketched from the graph of f, justified by F′ = f, and a different initial value changes only its vertical position on the interval considered. The second evidence version states this interval condition and transfer between a touching and a crossing zero of f especially clearly. The current image correctly shows f(x)=x, a compatible antiderivative and its vertical shift; it is teaching support, not proof of learner performance. The local BW source extraction 3.4.4(17)/3.5.4(12) explicitly names both graph directions, but alone proves neither all other state mappings nor complete one-to-one coverage of partial mappings."
+    },
+    {
+      "decisionId": "math-m7-graph-antiderivative-bidirectional-current-20260928-v2-decision-002",
+      "goalId": "85eda551-cfc1-52c6-a252-4c7394c1f7e6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:05c9596623c0120bfb1cabc1a39607cbb0a95a41b09f8898acb2808d0a40963f",
+      "pageFingerprint": "sha256:a018b590ff00ba0d1d2d3863ff3e354ab89db38efeeb1aa5720ced7168556666",
+      "goalReviewContextFingerprint": "sha256:5cf0c12b26202f723fc28548be48c4594b0194276d082dec639720c347cf25ce",
+      "finalText": {
+        "titleDe": "Aus einem Stammfunktionsgraphen den Funktionsgraphen skizzieren",
+        "titleEn": "Sketch a function graph from an antiderivative graph",
+        "descriptionDe": "Die lernende Person kann aus dem Graphen einer Stammfunktion F den Graphen von f = F′ skizzieren und dessen Werte, Vorzeichen und Nullstellen mit den Tangentensteigungen von F begründen.",
+        "descriptionEn": "The learner can sketch the graph of f = F′ from an antiderivative graph F and justify its values, signs, and zeros using the tangent slopes of F."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "m7-graph-antiderivative-bidirectional-20260928-v2-a-record-002",
+          "recordDigest": "sha256:d93f91625f6484f8a064d4aa82db08a9fafc24cd69201ad88d97feb40e772cf9"
+        },
+        "second": {
+          "recordId": "math-m7-graph-antiderivative-bidirectional-v2-round-b-openai-gpt6-20260928.85eda551",
+          "recordDigest": "sha256:326fabaff9972056f96c4949e3d5da17b946e996559cca1f173422feb7e17a92"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden prüfen und halten den inzwischen korrigierten aktuellen Text: Aus den Tangentensteigungen des vorgegebenen F-Graphen werden Werte, Vorzeichen und Nullstellen von f = F′ hergeleitet, nicht umgekehrt. Die erste Evidenzfassung verlangt eine selbstständige neue Skizze und einen Transfer mit waagerechter Tangente ohne Richtungswechsel; die zweite ist fachlich gleichgerichtet. Das Bild F(x)=x² zu f(x)=2x und seine Vorzeichenkarten stimmen mathematisch. Die lokale BW-Quellenextraktion 3.4.4(17)/3.5.4(12) nennt diese umgekehrte Graphrichtung ausdrücklich. Die daraus abgeleitete BW-Geltung und die Teilzuordnungen bleiben getrennt von dieser D-Textprüfung; das Bild ist kein selbstständiger Leistungsnachweis.",
+      "rationaleEn": "Both independent rounds review and retain the now-correct current text: values, signs and zeros of f = F′ are derived from tangent slopes of the given F graph, not the other way round. The first evidence version requires an independent fresh sketch and transfer to a horizontal tangent without a change of direction; the second is mathematically aligned. The image F(x)=x² to f(x)=2x and its sign cards are correct. The local BW source extraction 3.4.4(17)/3.5.4(12) explicitly names this reverse graph direction. The resulting BW applicability and partial mappings remain separate from this D text review; the image is not evidence of independent performance."
+    }
+  ],
+  "manifestFingerprint": "sha256:b0d0c525c6842187b2948bc8a90774744d5dbe13e730fc3aea378443caa96cc6"
+}

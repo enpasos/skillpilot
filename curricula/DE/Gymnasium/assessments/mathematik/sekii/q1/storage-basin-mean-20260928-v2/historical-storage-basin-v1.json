@@ -1,0 +1,111 @@
+{
+  "id": "0f18f4e2-efd9-58b8-9b7e-f26aa2fbf43b",
+  "title": "Integrale als Flächen und Bestände deuten",
+  "description": "Die lernende Person kann eine materialgestützte Q1-Klausuraufgabe zu Flächeninhalten, Beständen und Integralen selbstständig lösen und die Bedeutung der Ergebnisse fachlich erläutern.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3",
+      "K4",
+      "K5"
+    ],
+    "guidingIdeas": [
+      "L1",
+      "L2",
+      "L4"
+    ],
+    "phase": "Q1"
+  },
+  "requires": [
+    "0d21097c-09bf-5375-8c56-34ce8dc5bc35",
+    "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+    "b559e2ea-60ef-4b3f-a37c-669b867ace29",
+    "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
+    "ced4f794-9b42-4be4-bde5-7d44f134a140",
+    "24f21c0c-b506-56ec-ad17-39b209af4585",
+    "5042fd2b-bab2-50be-8144-c9ccf5618615"
+  ],
+  "contains": [],
+  "examples": [],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "0d21097c-09bf-5375-8c56-34ce8dc5bc35",
+      "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+      "b559e2ea-60ef-4b3f-a37c-669b867ace29",
+      "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
+      "ced4f794-9b42-4be4-bde5-7d44f134a140",
+      "24f21c0c-b506-56ec-ad17-39b209af4585",
+      "5042fd2b-bab2-50be-8144-c9ccf5618615"
+    ],
+    "coveredStrands": [
+      "L1",
+      "L2",
+      "L4"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "taskContent": "Die Zuflussrate in ein Speicherbecken wird für $0 \\le t \\le 8$ Stunden durch\n$$\nz(t)= -\\frac14 t^2 + 2t + 3\n$$\nin $\\text{m}^3/\\text{h}$ beschrieben.\n\n1. Berechnen Sie den gesamten Zufluss im Zeitraum von $0$ bis $8$ Stunden.\n2. Bestimmen Sie die mittlere Zuflussrate in diesem Zeitraum.\n3. Zu Beginn befinden sich $12\\,\\text{m}^3$ Wasser im Becken. Stellen Sie eine Funktion $B(t)$ für den Beckeninhalt auf, wenn kein Wasser abfließt.\n4. Erläutern Sie den Unterschied zwischen Zuflussrate und Beckeninhalt im gegebenen Modell.",
+    "solutionContent": "1. Gesamtzufluss:\n$$\n\\int_0^8 \\left(-\\frac14 t^2 + 2t + 3\\right)\\,dt\n= \\left(-\\frac1{12}t^3 + t^2 + 3t\\right)_0^8.\n$$\nDamit ergibt sich\n$$\n-\\frac1{12}\\cdot 512 + 64 + 24 = -\\frac{128}{3} + 88 = \\frac{136}{3}.\n$$\nDer gesamte Zufluss beträgt also\n$$\n\\frac{136}{3}\\,\\text{m}^3 \\approx 45{,}33\\,\\text{m}^3.\n$$\n\n2. Die mittlere Zuflussrate ist\n$$\n\\bar z = \\frac{1}{8}\\int_0^8 z(t)\\,dt = \\frac{1}{8}\\cdot \\frac{136}{3} = \\frac{17}{3}\\,\\text{m}^3/\\text{h} \\approx 5{,}67\\,\\text{m}^3/\\text{h}.\n$$\n\n3. Der Beckeninhalt ergibt sich durch Aufintegrieren:\n$$\nB(t)=12+\\int_0^t \\left(-\\frac14 x^2+2x+3\\right)\\,dx.\n$$\nAlso\n$$\nB(t)=12-\\frac1{12}t^3+t^2+3t.\n$$\n\n4. Die Zuflussrate $z(t)$ gibt an, wie schnell sich der Inhalt pro Stunde ändert. Der Beckeninhalt $B(t)$ beschreibt dagegen die gesamte bis zum Zeitpunkt $t$ angesammelte Wassermenge. Inhalt ist also die aufintegrierte Änderungsrate plus Anfangsbestand.",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 10,
+      "steps": [
+        {
+          "id": "q1_int_1",
+          "points": 5,
+          "description": "Gesamtzufluss korrekt mit Integral berechnet"
+        },
+        {
+          "id": "q1_int_2",
+          "points": 4,
+          "description": "Mittlere Zuflussrate korrekt bestimmt"
+        },
+        {
+          "id": "q1_int_3",
+          "points": 6,
+          "description": "Bestandsfunktion korrekt aufgestellt"
+        },
+        {
+          "id": "q1_int_4",
+          "points": 5,
+          "description": "Unterschied zwischen Rate und Bestand fachlich korrekt erläutert"
+        }
+      ]
+    }
+  },
+  "phase": "Q1",
+  "type": "atomic"
+}

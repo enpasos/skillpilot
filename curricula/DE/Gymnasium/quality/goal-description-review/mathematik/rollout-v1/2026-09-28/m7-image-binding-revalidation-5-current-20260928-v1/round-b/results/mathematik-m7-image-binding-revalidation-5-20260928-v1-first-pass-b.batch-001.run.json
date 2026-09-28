@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-image-binding-revalidation-5-20260928-v1-first-pass-b.batch-001.codex-independent-b",
+  "campaignId": "mathematik-m7-image-binding-revalidation-5-20260928-v1-b",
+  "roundId": "mathematik-m7-image-binding-revalidation-5-20260928-v1-first-pass-b",
+  "batchId": "mathematik-m7-image-binding-revalidation-5-20260928-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:0d275f7ac270fb0423f87257cdfd2ab5d6785f943441a5628ed1af5ff671c76a",
+  "bundleFingerprint": "sha256:8f20b3f72168955faf9717578f8c6b3f9c53ff36f82216b38f1d6a59d6134e46",
+  "bookDigest": "sha256:6d445a3b9b10700d63c79a7510e6fcaa4f8bd9542806a6bc442f7608502aef63",
+  "provider": "OpenAI",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:cd4026de423ee3010a60098d781c864c173ef172e7544017d11ac29f42a279fc",
+  "independenceGroupId": "mathematik-m7-image-binding-revalidation-5-20260928-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1b70498a-62a0-5a84-99dd-476b8af68da6",
+    "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+    "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+    "cddcdabd-ad58-58ad-bfbd-d9fd8fe2d8fa",
+    "f52e9d72-4995-5c80-91d2-7761ea0cbec0"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:0d275f7ac270fb0423f87257cdfd2ab5d6785f943441a5628ed1af5ff671c76a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-28T11:11:51Z",
+  "completedAt": "2026-09-28T11:11:51Z",
+  "status": "completed",
+  "outputDigest": "sha256:547254ef5769a9c8a444d745ff2fc592ab3e0a9ac05d0e2e1b4960d1d7ef1907",
+  "toolchainVersion": "codex-independent-description-review-v2"
+}

@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "fresh-b-pythagoras-proof-png-independent-20260928",
+  "reviewedAt": "2026-09-28T14:21:07.589028+00:00",
+  "reviewer": {
+    "kind": "ai",
+    "provider": "OpenAI",
+    "model": "gpt-6-astra",
+    "agent": "/root/fresh_b"
+  },
+  "reviewStatus": "ai_candidate",
+  "humanApproved": false,
+  "goalId": "487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+  "goalText": {
+    "id": "487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+    "title": "Den Satz des Pythagoras geometrisch beweisen",
+    "description": "Die lernende Person kann den Satz des Pythagoras für ein beliebiges rechtwinkliges Dreieck an einer geeigneten Zerlegungs- oder Ergänzungsfigur geometrisch beweisen und dabei die verwendeten Flächenbeziehungen und die Allgemeingültigkeit der Schlussfolgerung nachvollziehbar begründen.",
+    "descriptionEn": "The learner can prove the Pythagorean theorem for an arbitrary right triangle using a suitable dissection or completion diagram and justify the area relations and the generality of the conclusion."
+  },
+  "goalTextDigest": "sha256:80bc462c1926b920e60ae3c906795ed4424a4fd08ad4e8bbeb831018f343d10d",
+  "candidate": {
+    "path": "tmp/m7-20260928-continuation/pyth-proof-png-work/pythagoras-proof-candidate.png",
+    "sha256": "sha256:bd98f29244650f931965ec217ab32ec0dae003ecb26c2b7f1a0b83b6495190fa",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "actualOriginalViewed": true,
+    "viewTool": "view_image",
+    "viewDetail": "original"
+  },
+  "preview360": {
+    "path": "tmp/m7-20260928-continuation/pyth-proof-png-work/pythagoras-proof-360.png",
+    "sha256": "sha256:b8e9557952653ce154fcda35b2413918a25b6d1522ebbeeaf0affddf8289c6a8",
+    "dimensions": [
+      360,
+      203
+    ],
+    "actualViewed": true,
+    "viewTool": "view_image",
+    "viewDetail": "original",
+    "aspectRatioPreserved": true,
+    "verifiedExactLanczosResizeOfCandidate": true
+  },
+  "decision": "accept",
+  "mathematicsDecision": "accept",
+  "visualDecision": "accept",
+  "mobile360Decision": "accept_orientation_with_small_text_limit",
+  "checks": {
+    "geometry": [
+      "Outer square is approximately 588 by 588 px; four right-angle marks lie at its true corner angles.",
+      "Visually located inner vertices approximately (376,188),(711,439),(459,774),(125,524) give side lengths 418.60,419.20,417.20,419.40 px and successive angles 90.11,89.86,89.95,90.08 degrees. These differences are within the thick raster outline; the figure depicts a square without misleading distortion.",
+      "Each corner triangle has the same two leg lengths, approximately 251 and 336 px, in alternating orientation. Top a/b and left b/a labels agree with the actual subdivisions; c labels an inner hypotenuse edge and c² labels its area."
+    ],
+    "areaDerivation": [
+      "Four congruent right triangles each have area ab/2. The outer square side is a+b and the inner square side is c.",
+      "(a+b)² = 4·ab/2 + c² expands to a²+2ab+b² = 2ab+c², hence c²=a²+b². Every displayed formula is correct.",
+      "For arbitrary positive a,b, adjacent acute triangle angles sum to 90 degrees, making every inner corner a right angle; congruent hypotenuses make all inner sides equal. This justifies the drawn square without assuming the Pythagorean theorem. The picture need not contain a complete written angle proof to serve as orientation."
+    ],
+    "goalFit": [
+      "The decomposition supports the current goal of a geometric proof and explanation of the area relation and its generality. No numerical-special-case restriction is introduced."
+    ],
+    "styleAndReadability": [
+      "Friendly light-blue/peach textured classroom illustration, clear navy text and orange conclusion; no visible generated text or geometry artifacts at original resolution.",
+      "At 360px, the square/triangle arrangement, a/b labels, area relations and c²=a²+b² remain discernible. Subtitle, small c edge label and bottom generality sentence are small and not comfortably readable; no claim that every annotation is comfortably legible without enlargement."
+    ]
+  },
+  "provenance": {
+    "candidateMetadataPath": "tmp/m7-20260928-continuation/pyth-proof-png-candidate.json",
+    "candidateMetadataSha256": "sha256:0f891f34ee867cdfbd6cc1523ad147d3083bd94a3822ec25dcd8792c432bea72",
+    "generator": "OpenAI built-in imagegen",
+    "generatedImagePath": "/home/enpasos/.codex/generated_images/01a0e85d-31d3-73d2-9725-2bc8295576c0/exec-a409ee2f-9b89-43a1-b8fb-03e0de7ce984.png",
+    "generatedImageSha256": "sha256:bd98f29244650f931965ec217ab32ec0dae003ecb26c2b7f1a0b83b6495190fa",
+    "generatedBytesEqualReviewedCandidate": true,
+    "promptRecordedIn": "exactPrompt field of candidate metadata",
+    "inputGeometryReference": "tmp/m7-20260928-continuation/pyth-proof-png-work/reference-geometry.png",
+    "inputGeometryReferenceSha256": "sha256:61b82cd37c5b2f95c3eede0e0bc614162dc09d3b275a02d4ee8d5f66afe97885",
+    "geometryReferenceSource": "app/public/assets/goal-visualizations/mathematik/487ec508-f421-5a5a-a84c-98f88a8fb3e5/487ec508-f421-5a5a-a84c-98f88a8fb3e5.svg",
+    "geometryReferenceSourceSha256": "sha256:3f68d224464877b1f9ff3cba8ed86b2399fbb06364cf64861ac3192d4e170ebe",
+    "limitations": [
+      "Prompt and reference provenance are read from the generator metadata; this independent reviewer did not invoke generation.",
+      "Two earlier rejected variants are documented by the generating agent; they were not independently viewed in this review and their defects are not attributed as new reviewer findings."
+    ]
+  },
+  "scope": {
+    "activeAssetBindingVerified": false,
+    "activeSvgStillPresentAtReview": true,
+    "writesToCanonicalOrQAOrRegistry": false,
+    "noHumanApproval": true,
+    "noStrictM7Closure": true
+  },
+  "notes": [
+    "This is a hash-bound candidate review, not an active import or current QA binding. Only this temporary review JSON was written.",
+    "360px inspection does not change the original-size acceptance; retain the explicit small-text limitation rather than claiming universal mobile readability."
+  ]
+}

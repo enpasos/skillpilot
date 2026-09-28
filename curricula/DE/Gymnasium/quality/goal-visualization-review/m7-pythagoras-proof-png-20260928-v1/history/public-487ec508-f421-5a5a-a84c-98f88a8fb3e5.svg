@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title description">
+  <title id="title">Geometrischer Beweis des Satzes des Pythagoras</title>
+  <desc id="description">Ein Quadrat der Seitenlänge a+b ist durch vier kongruente rechtwinklige Dreiecke mit Katheten a und b und ein inneres Quadrat der Seitenlänge c zerlegt. Der Flächenvergleich ergibt (a+b)²=4 mal ab/2+c² und daher c²=a²+b².</desc>
+  <rect width="1600" height="900" fill="#fffdf8"/>
+  <text x="800" y="95" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="56" font-weight="700" fill="#102b48">Satz des Pythagoras geometrisch beweisen</text>
+  <text x="800" y="148" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="29" fill="#344f67">Vier gleiche rechtwinklige Dreiecke und ein inneres Quadrat</text>
+
+  <!-- Exact dissection for a=3 and b=4 in arbitrary units: outer side a+b=7; center side c=5. -->
+  <path d="M120 180H680V740H120Z" fill="#f3f7fb" stroke="#173a56" stroke-width="7"/>
+  <path d="M120 180 L360 180 L120 500 Z" fill="#a9d4f4" stroke="#1962a4" stroke-width="4"/>
+  <path d="M680 180 L680 420 L360 180 Z" fill="#a9d4f4" stroke="#1962a4" stroke-width="4"/>
+  <path d="M680 740 L440 740 L680 420 Z" fill="#a9d4f4" stroke="#1962a4" stroke-width="4"/>
+  <path d="M120 740 L120 500 L440 740 Z" fill="#a9d4f4" stroke="#1962a4" stroke-width="4"/>
+  <path d="M360 180 L680 420 L440 740 L120 500 Z" fill="#ffd4ad" stroke="#d65b19" stroke-width="6"/>
+  <g fill="none" stroke="#173a56" stroke-width="4">
+    <path d="M120 180h22v22h-22"/>
+    <path d="M680 180h-22v22h22"/>
+    <path d="M680 740h-22v-22h22"/>
+    <path d="M120 740h22v-22h-22"/>
+  </g>
+  <g font-family="DejaVu Sans,Arial,sans-serif" fill="#102b48" font-size="36" font-weight="700">
+    <text x="240" y="218" text-anchor="middle">a</text>
+    <text x="520" y="218" text-anchor="middle">b</text>
+    <text x="155" y="350">b</text>
+    <text x="155" y="625">a</text>
+    <text x="400" y="470" font-size="54">c²</text>
+    <text x="505" y="315" fill="#a94a16">c</text>
+  </g>
+
+  <rect x="810" y="230" width="700" height="510" rx="28" fill="#f0f6fa" stroke="#b9ccda" stroke-width="3"/>
+  <g font-family="DejaVu Sans,Arial,sans-serif" fill="#102b48">
+    <text x="850" y="295" font-size="37" font-weight="700">Flächenvergleich</text>
+    <text x="850" y="370" font-size="36">Großes Quadrat: (a+b)²</text>
+    <text x="850" y="430" font-size="36">Vier Dreiecke: 4 · ab/2</text>
+    <text x="850" y="490" font-size="36">Inneres Quadrat: c²</text>
+    <path d="M850 520H1470" stroke="#b9ccda" stroke-width="3"/>
+    <text x="850" y="585" font-size="36">(a+b)² = 4 · ab/2 + c²</text>
+    <text x="850" y="670" font-size="46" font-weight="700" fill="#a94a16">c² = a² + b²</text>
+  </g>
+  <text x="800" y="822" text-anchor="middle" font-family="DejaVu Sans,Arial,sans-serif" font-size="31" fill="#344f67">Gleiche Figur, zwei Flächenbeschreibungen → gültig für alle a,b &gt; 0</text>
+</svg>

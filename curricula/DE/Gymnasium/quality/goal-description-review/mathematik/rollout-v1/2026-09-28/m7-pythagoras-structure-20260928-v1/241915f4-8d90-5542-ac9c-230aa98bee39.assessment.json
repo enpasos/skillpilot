@@ -1,0 +1,96 @@
+{
+  "id": "241915f4-8d90-5542-ac9c-230aa98bee39",
+  "title": "Prüfung: Rechtwinklige Dreiecke sicher erkennen",
+  "description": "Die lernende Person kann die Kompetenz „Rechtwinkligkeit mit dem Kehrsatz des Pythagoras prüfen“ in einer selbstständigen Prüfungsaufgabe zeigen.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical",
+    "phase:SekI",
+    "ExamTask"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-HE",
+      "DE-SH",
+      "DE-SL"
+    ],
+    "stage": [
+      "SekI"
+    ]
+  },
+  "sourceRef": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-pythagoras-structure-20260928-v1/241915f4-8d90-5542-ac9c-230aa98bee39.assessment.json",
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3",
+      "K4"
+    ],
+    "guidingIdeas": [
+      "L2",
+      "L3"
+    ],
+    "phase": "J9",
+    "area": "Mathematik",
+    "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J9.081C9802"
+  },
+  "shortKey": "canonical_math_sek1_j9_assessment_081c9802",
+  "contains": [],
+  "requires": [
+    "081c9802-6da7-5ae8-b78e-f99c2b2dbb14"
+  ],
+  "phase": "J9",
+  "type": "atomic",
+  "nodeKind": "exam",
+  "examData": {
+    "reviewStatus": "released",
+    "reviewNote": "Aktiver AI-Arbeitsstand mit fachlich ausgearbeiteter Aufgabe und Lösung vom 2026-09-28; keine menschliche Freigabe. Zentrale Qualitätsnachweise separat erforderlich.",
+    "coveredGoalIds": [
+      "081c9802-6da7-5ae8-b78e-f99c2b2dbb14"
+    ],
+    "coveredStrands": [
+      "L2"
+    ],
+    "demandLevels": [
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "Drei Dreiecke sind durch ihre Seitenlängen gegeben. Die Angaben erfüllen jeweils die Dreiecksungleichung.\n\n1. Im Dreieck $ABC$ gilt $AB=13$ cm, $AC=5$ cm und $BC=12$ cm. Prüfe rechnerisch, ob es rechtwinklig ist, und benenne gegebenenfalls den rechten Winkel. (4 BE)\n2. Ein zweites Dreieck hat Seitenlängen 5 cm, 7 cm und 9 cm. Prüfe ebenfalls die Rechtwinkligkeit und begründe auch eine verneinende Entscheidung. (3 BE)\n3. Ein drittes Dreieck hat Seitenlängen 1,5 cm, 2 cm und 2,5 cm. Jemand sagt, der Kehrsatz gelte nur bei ganzen Zahlen. Prüfe die Aussage anhand dieses Dreiecks. (3 BE)",
+    "solutionContent": "1. $AB=13$ ist die längste Seite. $5^2+12^2=25+144=169=13^2$. Nach dem Kehrsatz ist das Dreieck rechtwinklig; der rechte Winkel liegt gegenüber AB, also bei C.\n2. 9 ist die längste Seite. $5^2+7^2=25+49=74\\ne81=9^2$. Ein rechtwinkliges Dreieck müsste nach dem Satz diese Gleichheit erfüllen; daher ist dieses Dreieck nicht rechtwinklig.\n3. $1{,}5^2+2^2=2{,}25+4=6{,}25=2{,}5^2$. Das Dreieck ist rechtwinklig; der Kehrsatz gilt für positive reelle Seitenlängen, nicht nur ganze Zahlen. Ohne Prüfung der längsten Seite oder ohne begründete Entscheidung im negativen Fall maximal 7/10 Punkte.",
+    "scoring": {
+      "maxPoints": 10,
+      "passingPoints": 8,
+      "steps": [
+        {
+          "id": "positive-angle",
+          "points": 4,
+          "description": "Längste Seite, Quadratsumme und richtiger rechter Winkel"
+        },
+        {
+          "id": "negative",
+          "points": 3,
+          "description": "Nichtrechtwinkligkeit korrekt begründet"
+        },
+        {
+          "id": "noninteger",
+          "points": 3,
+          "description": "Kriterium korrekt auf nichtganze Seitenlängen angewandt"
+        }
+      ]
+    },
+    "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-pythagoras-structure-20260928-v1/241915f4-8d90-5542-ac9c-230aa98bee39.assessment.json"
+  },
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary",
+    "applicabilityFromRequires": true
+  }
+}

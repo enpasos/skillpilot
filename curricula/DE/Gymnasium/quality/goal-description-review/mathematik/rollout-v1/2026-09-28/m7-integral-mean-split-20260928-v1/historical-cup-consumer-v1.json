@@ -1,0 +1,118 @@
+{
+  "id": "6420e4be-fcb1-537a-8367-206431e5b14e",
+  "title": "Integralmodelle in Sachkontexten anwenden",
+  "description": "Die lernende Person kann eine Q1-Klausuraufgabe zu Mittelwerten, Beständen, Rotationskörpern oder parametrischen Integraltermen selbstständig bearbeiten und den Kontext korrekt deuten.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3",
+      "K4",
+      "K5"
+    ],
+    "guidingIdeas": [
+      "L1",
+      "L2",
+      "L4"
+    ],
+    "phase": "Q1"
+  },
+  "requires": [
+    "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+    "809ef78a-f282-5593-89be-0f2cb95570ac",
+    "34604a97-0c64-5b06-81e2-6ac818732d60",
+    "0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+    "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+    "269675a9-13cd-4a3a-ab75-63794f5c9710",
+    "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+    "ece68088-71a8-466b-874c-09e6baac19fc",
+    "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+    "19481f5d-94de-4a74-b765-cbebd1525994",
+    "281e0c6e-d06d-580f-8443-4369f0ea524b"
+  ],
+  "contains": [],
+  "examples": [],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+      "809ef78a-f282-5593-89be-0f2cb95570ac",
+      "34604a97-0c64-5b06-81e2-6ac818732d60",
+      "0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+      "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+      "269675a9-13cd-4a3a-ab75-63794f5c9710",
+      "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+      "ece68088-71a8-466b-874c-09e6baac19fc",
+      "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+      "19481f5d-94de-4a74-b765-cbebd1525994",
+      "281e0c6e-d06d-580f-8443-4369f0ea524b"
+    ],
+    "coveredStrands": [
+      "L1",
+      "L2",
+      "L4"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "taskContent": "Das Innenprofil eines Trinkbechers wird im Längsschnitt für $0 \\le x \\le 12$ cm durch\n$$\nr(x)=2+\\frac{x}{6}\n$$\nbeschrieben. Dabei ist $r(x)$ der Innenradius in cm. Durch Rotation des Graphen um die $x$-Achse entsteht das Innenvolumen des Bechers.\n\n1. Stellen Sie ein Integral für das Innenvolumen des Bechers auf und berechnen Sie das Volumen.\n2. Bestimmen Sie die mittlere Querschnittsfläche des Bechers auf dem Intervall $0 \\le x \\le 12$.\n3. Prüfen Sie, ob der Becher mindestens $0{,}33$ Liter fasst.\n4. Erläutern Sie, warum beim Volumenintegral $r(x)^2$ und nicht nur $r(x)$ integriert wird.",
+    "solutionContent": "1. Beim Rotieren um die $x$-Achse entsteht ein Rotationskörper mit dem Volumen\n$$\nV=\\pi\\int_0^{12} r(x)^2\\,dx\n= \\pi\\int_0^{12} \\left(2+\\frac{x}{6}\\right)^2\\,dx.\n$$\nAusmultiplizieren liefert\n$$\n\\left(2+\\frac{x}{6}\\right)^2 = 4+\\frac{2}{3}x+\\frac1{36}x^2.\n$$\nAlso\n$$\nV=\\pi\\int_0^{12}\\left(4+\\frac{2}{3}x+\\frac1{36}x^2\\right)dx\n= \\pi\\left(4x+\\frac13x^2+\\frac1{108}x^3\\right)_0^{12}.\n$$\nDamit ergibt sich\n$$\nV=\\pi(48+48+16)=112\\pi\\,\\text{cm}^3\\approx 351{,}9\\,\\text{cm}^3.\n$$\n\n2. Die mittlere Querschnittsfläche ist Volumen durch Höhe:\n$$\n\\bar A = \\frac{V}{12} = \\frac{112\\pi}{12}=\\frac{28\\pi}{3}\\,\\text{cm}^2\\approx 29{,}3\\,\\text{cm}^2.\n$$\n\n3. Es gilt\n$$\n112\\pi\\,\\text{cm}^3 \\approx 351{,}9\\,\\text{cm}^3.\n$$\nDa $1\\,\\text{Liter}=1000\\,\\text{cm}^3$, fasst der Becher etwa\n$$\n0{,}352\\,\\text{Liter}.\n$$\nDer Becher fasst also mehr als $0{,}33$ Liter.\n\n4. In jedem Querschnitt senkrecht zur $x$-Achse entsteht eine Kreisfläche mit\n$$\nA(x)=\\pi r(x)^2.\n$$\nFür das Volumen werden diese Kreisflächen über die Höhe aufsummiert. Nur den Radius $r(x)$ zu integrieren würde eine Länge aufsummieren, aber kein Volumen beschreiben.",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 10,
+      "steps": [
+        {
+          "id": "q1_rot_1",
+          "points": 6,
+          "description": "Volumenintegral korrekt aufgestellt und berechnet"
+        },
+        {
+          "id": "q1_rot_2",
+          "points": 4,
+          "description": "Mittlere Querschnittsfläche korrekt bestimmt"
+        },
+        {
+          "id": "q1_rot_3",
+          "points": 5,
+          "description": "Fassungsvermögen korrekt geprüft und in Liter gedeutet"
+        },
+        {
+          "id": "q1_rot_4",
+          "points": 5,
+          "description": "Bedeutung von r(x)^2 im Volumenmodell fachlich korrekt erläutert"
+        }
+      ]
+    }
+  },
+  "phase": "Q1",
+  "type": "atomic"
+}

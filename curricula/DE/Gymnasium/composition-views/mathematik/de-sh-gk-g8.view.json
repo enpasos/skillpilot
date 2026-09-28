@@ -11,6 +11,16 @@
   "rootNodes": [
     {
       "kind": "goalEntry",
+      "goalId": "440edf01-1824-597a-9afa-2f23f5becfba",
+      "projectionRole": "prerequisiteOnly"
+    },
+    {
+      "kind": "goalEntry",
+      "goalId": "a7896fa5-993e-52b9-8aa4-10420b35bfd9",
+      "projectionRole": "prerequisiteOnly"
+    },
+    {
+      "kind": "goalEntry",
       "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
       "projectionRole": "prerequisiteOnly"
     },
@@ -433,10 +443,6 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "a8ff2666-8df3-4253-8021-3efe42114e40"
-                    },
-                    {
-                      "kind": "goalEntry",
                       "goalId": "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43"
                     },
                     {
@@ -470,6 +476,14 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "34ba4714-a0ff-4a48-857f-d2481cbe0441"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "6a3502ee-b616-5db7-88fc-8951f33c9f63"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "487ec508-f421-5a5a-a84c-98f88a8fb3e5"
                     },
                     {
                       "kind": "structure",
@@ -630,7 +644,7 @@
                       "goalId": "2242c379-ddbb-4f03-8aed-13f49a4674e8"
                     },
                     {
-                      "kind": "goalEntry",
+                      "kind": "canonicalSubtree",
                       "goalId": "1a18dbb3-f350-4766-9c8b-20ca018ccef1"
                     },
                     {
@@ -723,15 +737,15 @@
                     },
                     {
                       "kind": "goalEntry",
+                      "goalId": "081c9802-6da7-5ae8-b78e-f99c2b2dbb14"
+                    },
+                    {
+                      "kind": "goalEntry",
                       "goalId": "fd860da9-73ba-47cd-a1a8-452424915a80"
                     },
                     {
                       "kind": "goalEntry",
                       "goalId": "4d78bbcc-89b8-47f0-aa45-516199e4da5d"
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "80956a2c-5811-4021-863e-95675bec31f5"
                     },
                     {
                       "kind": "goalEntry",
@@ -790,7 +804,7 @@
                       "goalId": "46bdcc16-418f-417a-89cf-033d7ae6c8cc"
                     },
                     {
-                      "kind": "goalEntry",
+                      "kind": "canonicalSubtree",
                       "goalId": "8064088b-dc0a-4a67-ad63-360fdcc9869d"
                     },
                     {
@@ -806,16 +820,16 @@
                       "goalId": "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee"
                     },
                     {
+                      "kind": "canonicalSubtree",
+                      "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+                    },
+                    {
                       "kind": "goalEntry",
                       "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6"
                     },
                     {
                       "kind": "goalEntry",
                       "goalId": "19f170e4-b88f-4c06-b72a-ce6923748bb4"
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
                     },
                     {
                       "kind": "canonicalSubtree",
@@ -840,6 +854,11 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "66077296-a8f8-4645-938b-7c3424cb2f14"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+                      "projectionRole": "prerequisiteOnly"
                     },
                     {
                       "kind": "goalEntry",
@@ -930,7 +949,7 @@
                       "goalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89"
                     },
                     {
-                      "kind": "goalEntry",
+                      "kind": "canonicalSubtree",
                       "goalId": "1ea06c0c-5c60-45cd-8f31-638de98820b4"
                     },
                     {
@@ -1078,7 +1097,27 @@
             },
             {
               "kind": "goalEntry",
+              "goalId": "853905c5-e82b-592f-a485-1ff84c8bb22e",
+              "projectionRole": "prerequisiteOnly"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "92b246e4-8abc-5c6b-add2-367044181be0",
+              "projectionRole": "prerequisiteOnly"
+            },
+            {
+              "kind": "goalEntry",
               "goalId": "a70d4194-1f95-5dc4-884d-8ca856663601",
+              "projectionRole": "prerequisiteOnly"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "e086671c-9f55-5d8b-8467-b6390dc6a879",
+              "projectionRole": "prerequisiteOnly"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "e96bc8e4-463b-5e86-b0c4-2c87b74d68f5",
               "projectionRole": "prerequisiteOnly"
             }
           ]
@@ -1253,8 +1292,59 @@
                   "displayLabel": "Vertiefung der Analysis"
                 },
                 {
-                  "kind": "canonicalSubtree",
-                  "goalId": "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44"
+                  "kind": "structure",
+                  "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+                  "label": "Punkte, Vektoren und Bewegungen im Raum",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+                    }
+                  ]
                 },
                 {
                   "kind": "canonicalSubtree",
@@ -1555,6 +1645,26 @@
           ]
         }
       ]
+    },
+    {
+      "kind": "goalEntry",
+      "goalId": "e086671c-9f55-5d8b-8467-b6390dc6a879",
+      "projectionRole": "prerequisiteOnly"
+    },
+    {
+      "kind": "goalEntry",
+      "goalId": "bea0e5a0-4833-5337-b6f1-7251b8cf8089",
+      "projectionRole": "prerequisiteOnly"
+    },
+    {
+      "kind": "goalEntry",
+      "goalId": "853905c5-e82b-592f-a485-1ff84c8bb22e",
+      "projectionRole": "prerequisiteOnly"
+    },
+    {
+      "kind": "goalEntry",
+      "goalId": "2f626446-4b32-5674-a687-9cd754bdfede",
+      "projectionRole": "prerequisiteOnly"
     }
   ]
 }

@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "fresh-b-three-final-png-independent-review-20260928",
+  "recordedAt": "2026-09-28T14:02:53.650447+00:00",
+  "reviewer": {
+    "kind": "ai",
+    "provider": "OpenAI",
+    "model": "gpt-6-astra",
+    "agent": "/root/fresh_b"
+  },
+  "reviewStatus": "ai_candidate",
+  "humanApproved": false,
+  "reviews": [
+    {
+      "goalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+      "goalText": {
+        "id": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+        "title": "Mittelwerte von Funktionen mit Integralen bestimmen und deuten",
+        "description": "Die lernende Person kann den Mittelwert einer gegebenen Funktion auf einem Intervall mit einem bestimmten Integral bestimmen, die Division durch die Intervalllänge als Ausgleich zu einem konstanten Funktionswert begründen und das Ergebnis mit passender Einheit im Kontext deuten, auch bei Bestands- und Änderungsratenfunktionen.",
+        "descriptionEn": "The learner can determine the mean value of a given function on an interval using a definite integral, justify division by the interval length as replacing the function by a constant value with the same accumulated effect, and interpret the result with the appropriate unit in context, including stock and rate-of-change functions."
+      },
+      "goalTextDigest": "sha256:202502f4949f223e459f32fe94d65a6b7937b695238b8bf372db24e6772c4cf1",
+      "source": {
+        "path": "/home/enpasos/.codex/generated_images/01a0e7b0-a428-7ad1-abed-04d1c0387935/exec-b0481879-66cf-4673-b7f5-a786b2119b72.png",
+        "sha256": "sha256:ed8d74154977fe4a943bf4e77c759003c34e38f4ab61f2d19cbba98d7b1e024e"
+      },
+      "dimensions": [
+        1672,
+        941
+      ],
+      "actualOriginalViewed": true,
+      "viewTool": "view_image",
+      "viewDetail": "original",
+      "mathDecision": "accept",
+      "visualDecision": "accept",
+      "mathChecks": [
+        "B(t)=10+t² gives B(0)=10, B(1)=11, B(2)=14, B(3)=19 L.",
+        "B′(0)=0; the drawn initial tangent is horizontal within schematic drawing precision.",
+        "Integral from 0 to 3 is 39 L·min; division by 3 min gives mean stock 13 L.",
+        "The rising curved area and constant rectangle communicate equal accumulated stock correctly."
+      ],
+      "visualChecks": [
+        "Friendly blue/orange illustration, legible formula and labels at original resolution.",
+        "An illustrative stock case fits the goal; the image need not separately show every possible rate-function case."
+      ],
+      "humanApproved": false
+    },
+    {
+      "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+      "goalText": {
+        "id": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+        "title": "Vektoren komponentenweise addieren und subtrahieren",
+        "description": "Die lernende Person kann Vektoren in Ebene und Raum komponentenweise addieren und subtrahieren und das Ergebnis als verknüpfte beziehungsweise rückgängig gemachte Verschiebung geometrisch deuten.",
+        "descriptionEn": "The learner can add and subtract vectors in the plane and in space component-wise and interpret the result geometrically as combined or reversed displacements."
+      },
+      "goalTextDigest": "sha256:e8f9d1f872ad6d75bc4b2e6fc7bc5fcf1f4e69d583c6bb0ee8c3216113fe4cb0",
+      "source": {
+        "path": "/home/enpasos/.codex/generated_images/01a0e7b0-a428-7ad1-abed-04d1c0387935/exec-d9751e2b-196d-4e70-a82f-61a1637be6e0.png",
+        "sha256": "sha256:faa0b30c7d896ea59413c3fcff773e0c405e7b301e0c3718bbbf79c3860d91cc"
+      },
+      "dimensions": [
+        1619,
+        971
+      ],
+      "actualOriginalViewed": true,
+      "viewTool": "view_image",
+      "viewDetail": "original",
+      "mathDecision": "accept",
+      "visualDecision": "accept",
+      "mathChecks": [
+        "a=(2,1), b=(-1,2); a+b=(1,3). The green translated b arrow and purple result match the labelled grid.",
+        "-b=(1,-2); a-b=(3,-1). The orange arrow and purple result have the correct direction and endpoints.",
+        "3D example (2,1,1)+(-1,2,3)=(1,3,4) is correct."
+      ],
+      "visualChecks": [
+        "Clear friendly paired addition/subtraction panels; arrows, signs and labels are legible at original resolution.",
+        "Plane diagrams plus the 3D calculation fit component-wise operations in plane and space."
+      ],
+      "humanApproved": false
+    },
+    {
+      "goalId": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+      "goalText": {
+        "id": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+        "title": "Vektoren mit Skalaren multiplizieren und geometrisch deuten",
+        "description": "Die lernende Person kann Vektoren in Ebene und Raum komponentenweise mit Skalaren multiplizieren und geometrisch erklären, wie der Faktor den Betrag verändert, bei negativem Vorzeichen die Richtung umkehrt und bei null den Nullvektor erzeugt.",
+        "descriptionEn": "The learner can multiply vectors in the plane and in space component-wise by scalars and explain geometrically how the factor changes magnitude, reverses direction when negative, and yields the zero vector when zero."
+      },
+      "goalTextDigest": "sha256:d2898aaee506291b9c83e1c9de3b4b4aa321d967aad799b7db5e41c00099bd94",
+      "source": {
+        "path": "/home/enpasos/.codex/generated_images/01a0e7b0-a428-7ad1-abed-04d1c0387935/exec-ede41248-f5e1-4801-8257-bd837475d322.png",
+        "sha256": "sha256:8b51e4c6ce5b4ea22b5c99fea509255c270b7cdf1050e8a0c4b17559cfae1101"
+      },
+      "dimensions": [
+        1774,
+        887
+      ],
+      "actualOriginalViewed": true,
+      "viewTool": "view_image",
+      "viewDetail": "original",
+      "mathDecision": "accept",
+      "visualDecision": "accept",
+      "mathChecks": [
+        "a=(2;1), 2a=(4;2), a/2=(1;0,5), -a=(-2;-1) and -2·(2;1;3)=(-4;-2;-6) are correct.",
+        "Approximate measured arrow lengths in the accepted preceding schematic were 1:2.03:0.51:1.00; the final background edit preserves their geometry.",
+        "Positive arrows point up-right; the negative arrow has equal length and reverses direction.",
+        "Small angle differences of approximately 28°,31°,33° between hand-drawn positive arrows are acceptable for this explicitly schematic illustration without coordinate grids."
+      ],
+      "visualChecks": [
+        "Final image has a clean opaque cream-white background and smooth panel edges; former black matte and edge fringes are removed.",
+        "Semicolon coordinate separators distinguish the decimal comma in (1;0,5); all formulas remain legible.",
+        "The zero-factor case is not pictured; the orientation image is not required to contain the entire learning goal. Imported alt text must describe the actual four schematic panels."
+      ],
+      "humanApproved": false
+    }
+  ],
+  "candidateHistory": [
+    {
+      "goalId": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+      "source": {
+        "path": "/home/enpasos/.codex/generated_images/01a0e7b0-a428-7ad1-abed-04d1c0387935/exec-86fc8522-9017-41f4-857d-0f76ff74f4e3.png",
+        "sha256": "sha256:f3e47e51c3172085149659f8d959586b24fb77170e631eb6e8fa2c51d75cddd3"
+      },
+      "decision": "reject",
+      "defects": [
+        "Green endpoint labelled (4,2) lies substantially right of the x=4 gridline, approximately x=4.8; it does not depict 2·(2,1).",
+        "Coordinate (1,0,5) is ambiguous with German decimal comma; use (1;0,5)."
+      ]
+    },
+    {
+      "goalId": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+      "source": {
+        "path": "/home/enpasos/.codex/generated_images/01a0e7b0-a428-7ad1-abed-04d1c0387935/exec-b0f61596-bdcc-43eb-b100-30d9ba78e47a.png",
+        "sha256": "sha256:fb3141faf51c8b7b61ae1b776958dcbb271a000ee5b3184a0e8cd530b1aa9f22"
+      },
+      "mathDecision": "accept_schematic",
+      "decision": "superseded_after_visual_cleanup",
+      "defects": [
+        "RGB image has no alpha transparency; outer background is opaque black.",
+        "White and yellow fringe artifacts are visible around panel edges."
+      ],
+      "note": "The reviewer accepted its schematic mathematics and explicitly reported the visual/technical defects; this intermediate was not falsely recorded as a mathematical rejection."
+    }
+  ],
+  "scope": {
+    "actualOriginalImagesViewed": 5,
+    "finalImagesAccepted": 3,
+    "mobile360ReviewPerformed": false,
+    "activeAssetBindingVerified": false,
+    "writesToCanonicalOrQualityOrQA": false,
+    "noHumanApproval": true,
+    "noStrictM7Closure": true
+  },
+  "notes": [
+    "This receipt materializes the actual independent conversation reviews. It does not invent a mobile review, active runtime binding or human approval.",
+    "The final scalar PNG was independently viewed again after the background edit; formulas, directions and ratios were checked, with read-only pixel-mask overlap of approximately97–98 percent for arrow regions versus the previously accepted schematic."
+  ]
+}

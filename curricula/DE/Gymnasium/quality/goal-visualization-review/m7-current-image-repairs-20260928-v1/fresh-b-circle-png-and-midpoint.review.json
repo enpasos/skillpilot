@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "m7-current-image-repairs-20260928-v1-fresh-b-circle-png-and-midpoint",
+  "reviewType": "independent_visualization_review",
+  "reviewStatus": "ai_candidate",
+  "reviewedAt": "2026-09-28T12:18:16.071094+00:00",
+  "reviewer": {
+    "kind": "ai",
+    "agentTask": "/root/fresh_b",
+    "provider": "OpenAI",
+    "model": "gpt-6-astra",
+    "reasoningEffort": "ultra",
+    "sessionId": "01a0e7d3-b26a-78c1-a7fe-befc7d815a5c"
+  },
+  "scope": "Independent V-only inspection of two corrected currently active circle PNGs and the currently active reused midpoint PNG; each original and each actual 360px derivative viewed.",
+  "independence": {
+    "otherCurrentImageReviewResultsRead": false,
+    "ownPriorCircleBlockKnown": true,
+    "decisionBasis": "Actual newly active pixels, current DE/EN goal text, independent mathematical checks; no approval inherited from legacy assets."
+  },
+  "reviewPolicy": [
+    "Images provide orientation; they need not contain a full proof or all goal aspects.",
+    "Visible mathematical claims and assignments must be correct.",
+    "Keep is an AI candidate recommendation only."
+  ],
+  "bindings": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "canonicalFileDigestObservedAtFinalBindingCheck": "sha256:46429282ddc20391bb8e4afa597e13b34ef6184c2d26c12c5b740fee76c0302a",
+    "globalCanonicalDigestIsNotAnApprovalBinding": true,
+    "bindingCheckAt": "2026-09-28T12:18:16.071094+00:00",
+    "allThreeGoalTextsLinksAndAssetDigestsUnchangedSinceActiveViewing": true,
+    "textAndLinkDigestEncoding": "sha256 over UTF-8 json.dumps(ensure_ascii=False,sort_keys=True,separators=(comma,colon)); text keys goalId,title,description,titleEn,descriptionEn"
+  },
+  "summary": {
+    "reviewedGoals": 3,
+    "activeOriginalViews": 3,
+    "preview360Views": 3,
+    "keep": 3,
+    "block": 0,
+    "humanApprovals": 0
+  },
+  "reviews": [
+    {
+      "goalId": "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "reviewStatus": "ai_candidate",
+      "decision": "keep",
+      "currentlyActiveForGoal": true,
+      "goalText": {
+        "goalId": "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+        "title": "Kreisumfänge und Bogenlängen bestimmen",
+        "description": "Die lernende Person kann Umfänge von Kreisen und Kreisteilen bestimmen, indem sie Radius oder Durchmesser mit dem Umfang verknüpft, Kreisbögen als Anteil des Vollkreises berechnet und bei geschlossenen Kreisteilen die geraden Randstücke berücksichtigt.",
+        "titleEn": "Determine circumferences and arc lengths",
+        "descriptionEn": "The learner can determine perimeters of circles and circle parts by relating the radius or diameter to circumference, calculating arcs as fractions of a full circle, and including the straight boundary segments of closed circle parts."
+      },
+      "goalTextDigest": "sha256:bd0a7a5ba8178851cd1d14f66e4f808d895657a6c11d38408ce77cf894d739fd",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+        "title": "Visualisierung: Kreisumfänge und Bogenlängen bestimmen",
+        "url": "/assets/goal-visualizations/mathematik/4dbb8e8e-c0b5-5d51-8897-0024d77e8602/4dbb8e8e-c0b5-5d51-8897-0024d77e8602.png",
+        "provider": "OpenAI imagegen (edited SkillPilot asset)",
+        "description": "Korrigierte gemeinsame Kreisillustration: Der Bogenlängenpfeil zeigt auf den roten Halbkreisbogen.",
+        "altText": "Vollkreis mit Radius 3 cm: Umfang 6π cm, Fläche 9π cm². Halbkreis mit Radius 4 cm: roter Bogen 4π cm und gesamter Rand 4π cm plus gerader Durchmesser 8 cm.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:418023cde327f86265fed6ae7726d1a492ff63f4985ebf881a03a19edbcc74cc",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/4dbb8e8e-c0b5-5d51-8897-0024d77e8602/4dbb8e8e-c0b5-5d51-8897-0024d77e8602.png",
+        "digest": "sha256:18def74e82a3c161aaefbfea08116641f9d7f83f030fc8b7013838060b4fb576",
+        "originalViewed": true,
+        "originalViewedWith": "view_image"
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v2-views/4dbb8e8e-c0b5-5d51-8897-0024d77e8602.360.png",
+        "digest": "sha256:ebbeabfd39ad208958f0ce3fff2e85635b85b4be6736ddafbfc3e3e0340bd0b1",
+        "width": 360,
+        "height": 201,
+        "viewed": true,
+        "viewedWith": "view_image",
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; complete image without crop or annotation"
+      },
+      "mathematicalReviewDe": "Der schwarze Pfeil aus dem Bogenlängenbereich endet jetzt am roten gekrümmten Halbkreisbogen. Die frühere falsche Zuordnung zum geraden blauen Durchmesser ist behoben. Radius und Durchmesser stimmen: r=3 cm und d=6 cm im Vollkreis, r=4 cm und d=8 cm im Halbkreis. U=6π cm≈18,85 cm, A=9π cm²≈28,27 cm², b=4π cm≈12,57 cm und b+d=4π cm+8 cm≈20,57 cm sind korrekt. Die grüne Flächenfüllung und die rote Bogen-/blaue Durchmesserunterscheidung sind konsistent. Die perspektivischen Pizza-, Garten- und Alltagsmotive sind schematische Kontexte ohne eigenen numerischen Maßstabsanspruch.",
+      "didacticFitDe": "Vollkreisumfang, Halbkreisbogen und gesamter geschlossener Rand sind als zusammenhängende Orientierung korrekt unterschieden. Ein allgemeiner Sektorfall muss nicht zusätzlich vollständig gerechnet werden.",
+      "legibility360De": "Bei tatsächlicher Breite von 360 px sind Vollkreis, Halbkreis, Radius/Durchmesser, Farbcodierung und der reparierte Pfeil unterscheidbar. Die Hauptformeln lassen sich erkennen; kleine Kontextbezeichnungen und Zahlen sind dicht gesetzt und brauchen für genaue Lektüre Vergrößerung. Die Kernorientierung bleibt erhalten.",
+      "altTextReviewDe": "Der aktuelle Alttext stimmt mit der betrachteten mathematischen Darstellung überein.",
+      "issues": [],
+      "humanApproved": false,
+      "validationScope": "V-only AI candidate recommendation for exact current bytes and goal text; not D/P review or strict M7 closure",
+      "supersedesForThisNewAssetOnly": {
+        "reviewFile": "fresh-b-current-eleven.review.json",
+        "previousAssetDigest": "sha256:75df663179adb8390fdd4ea8f4c52e13160094dcae42ea8e0fa55c6da01f6f34",
+        "previousDecision": "block",
+        "resolvedIssue": "ARC_LABEL_POINTER_TARGETS_DIAMETER",
+        "oldImageReviewRemainsUnchanged": true
+      }
+    },
+    {
+      "goalId": "2f073195-52ef-5219-926c-f3f58ebdc556",
+      "reviewStatus": "ai_candidate",
+      "decision": "keep",
+      "currentlyActiveForGoal": true,
+      "goalText": {
+        "goalId": "2f073195-52ef-5219-926c-f3f58ebdc556",
+        "title": "Flächeninhalte von Kreisen und Kreisausschnitten bestimmen",
+        "description": "Die lernende Person kann Flächeninhalte von Kreisen und Kreisausschnitten bestimmen, indem sie Radius oder Durchmesser mit der Kreisfläche verknüpft, den Anteil am Vollkreis berücksichtigt und das Ergebnis mit passender Flächeneinheit im Kontext deutet.",
+        "titleEn": "Determine areas of circles and sectors",
+        "descriptionEn": "The learner can determine areas of circles and sectors by relating the radius or diameter to circle area, accounting for the fraction of the full circle, and interpreting the result in context using an appropriate area unit."
+      },
+      "goalTextDigest": "sha256:4e3c01ac0dd41ecc3878feb7a4818cd8fb994c8e406b31498a81ef5445ebd3de",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "2f073195-52ef-5219-926c-f3f58ebdc556",
+        "title": "Visualisierung: Flächeninhalte von Kreisen und Kreisausschnitten bestimmen",
+        "url": "/assets/goal-visualizations/mathematik/2f073195-52ef-5219-926c-f3f58ebdc556/2f073195-52ef-5219-926c-f3f58ebdc556.png",
+        "provider": "OpenAI imagegen (edited SkillPilot asset)",
+        "description": "Korrigierte gemeinsame Kreisillustration: Der Bogenlängenpfeil zeigt auf den roten Halbkreisbogen.",
+        "altText": "Vollkreis mit Radius 3 cm: Umfang 6π cm, Fläche 9π cm². Halbkreis mit Radius 4 cm: roter Bogen 4π cm und gesamter Rand 4π cm plus gerader Durchmesser 8 cm.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:23259cd481b878e18c5547d669a813779b41e07e86eb9ad06fbf1824aa58b81f",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/2f073195-52ef-5219-926c-f3f58ebdc556/2f073195-52ef-5219-926c-f3f58ebdc556.png",
+        "digest": "sha256:18def74e82a3c161aaefbfea08116641f9d7f83f030fc8b7013838060b4fb576",
+        "originalViewed": true,
+        "originalViewedWith": "view_image"
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v2-views/2f073195-52ef-5219-926c-f3f58ebdc556.360.png",
+        "digest": "sha256:ebbeabfd39ad208958f0ce3fff2e85635b85b4be6736ddafbfc3e3e0340bd0b1",
+        "width": 360,
+        "height": 201,
+        "viewed": true,
+        "viewedWith": "view_image",
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; complete image without crop or annotation"
+      },
+      "mathematicalReviewDe": "Der schwarze Pfeil aus dem Bogenlängenbereich endet jetzt am roten gekrümmten Halbkreisbogen. Die frühere falsche Zuordnung zum geraden blauen Durchmesser ist behoben. Radius und Durchmesser stimmen: r=3 cm und d=6 cm im Vollkreis, r=4 cm und d=8 cm im Halbkreis. U=6π cm≈18,85 cm, A=9π cm²≈28,27 cm², b=4π cm≈12,57 cm und b+d=4π cm+8 cm≈20,57 cm sind korrekt. Die grüne Flächenfüllung und die rote Bogen-/blaue Durchmesserunterscheidung sind konsistent. Die perspektivischen Pizza-, Garten- und Alltagsmotive sind schematische Kontexte ohne eigenen numerischen Maßstabsanspruch.",
+      "didacticFitDe": "Das grün markierte Vollkreisbeispiel veranschaulicht den Flächeninhalt korrekt. Die zusätzliche Umfangsbetrachtung ist fachlich richtig. Eine vollständige Kreisausschnittsrechnung ist keine Voraussetzung einer passenden Orientierung zum Kindziel.",
+      "legibility360De": "Bei tatsächlicher Breite von 360 px sind Vollkreis, Halbkreis, Radius/Durchmesser, Farbcodierung und der reparierte Pfeil unterscheidbar. Die Hauptformeln lassen sich erkennen; kleine Kontextbezeichnungen und Zahlen sind dicht gesetzt und brauchen für genaue Lektüre Vergrößerung. Die Kernorientierung bleibt erhalten.",
+      "altTextReviewDe": "Der aktuelle Alttext stimmt mit der betrachteten mathematischen Darstellung überein.",
+      "issues": [],
+      "humanApproved": false,
+      "validationScope": "V-only AI candidate recommendation for exact current bytes and goal text; not D/P review or strict M7 closure",
+      "supersedesForThisNewAssetOnly": {
+        "reviewFile": "fresh-b-current-eleven.review.json",
+        "previousAssetDigest": "sha256:75df663179adb8390fdd4ea8f4c52e13160094dcae42ea8e0fa55c6da01f6f34",
+        "previousDecision": "block",
+        "resolvedIssue": "ARC_LABEL_POINTER_TARGETS_DIAMETER",
+        "oldImageReviewRemainsUnchanged": true
+      }
+    },
+    {
+      "goalId": "bea0e5a0-4833-5337-b6f1-7251b8cf8089",
+      "reviewStatus": "ai_candidate",
+      "decision": "keep",
+      "currentlyActiveForGoal": true,
+      "goalText": {
+        "goalId": "bea0e5a0-4833-5337-b6f1-7251b8cf8089",
+        "title": "Mittelpunkte von Raumstrecken aus Koordinaten bestimmen",
+        "description": "Die lernende Person kann den Mittelpunkt einer Strecke im Raum aus den Koordinaten ihrer Endpunkte bestimmen, als halbe Summe der Ortsvektoren deuten und durch gleiche Verbindungsvektoren zu beiden Endpunkten prüfen.",
+        "titleEn": "Determine midpoints of spatial segments from coordinates",
+        "descriptionEn": "The learner can determine the midpoint of a segment in space from its endpoint coordinates, interpret it as half the sum of the position vectors, and check it using equal displacement vectors to both endpoints."
+      },
+      "goalTextDigest": "sha256:c8663f4ecc9695b1d173d1ed4c7a41e6473ad8a037d3163c6681b662ef36cfdf",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "bea0e5a0-4833-5337-b6f1-7251b8cf8089",
+        "title": "Visualisierung: Mittelpunkte von Raumstrecken aus Koordinaten bestimmen",
+        "url": "/assets/goal-visualizations/mathematik/bea0e5a0-4833-5337-b6f1-7251b8cf8089/bea0e5a0-4833-5337-b6f1-7251b8cf8089.png",
+        "provider": "Google Gemini / Nano Banana Pro (reused SkillPilot asset)",
+        "description": "Bytegleich wiederverwendetes Raumkoordinatenbild mit Mittelpunktrechnung und Abstand als zusätzlichem Kontext.",
+        "altText": "A(1|2|3) und B(5|4|7) bilden die Raumstrecke mit Mittelpunkt M(3|3|5). Die Koordinaten des Mittelpunktes sind die Mittelwerte der jeweiligen Endpunktkoordinaten; ein ergänzender Abstand ist 6.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:c11aaba8ccb9d9cc250c8cadd4eac8a2ab16c1f333ad6e2a3011f39e7c518252",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/bea0e5a0-4833-5337-b6f1-7251b8cf8089/bea0e5a0-4833-5337-b6f1-7251b8cf8089.png",
+        "digest": "sha256:a7e1ec3af922de59849a1c463aa06c725e3ead5ea6cb7b66a10acf40c060f77e",
+        "originalViewed": true,
+        "originalViewedWith": "view_image"
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v2-views/bea0e5a0-4833-5337-b6f1-7251b8cf8089.360.png",
+        "digest": "sha256:1f09ddf8e853a24fbb8c2b193ef28285d61ed5784da63f0ffc2e1b530cee33ea",
+        "width": 360,
+        "height": 201,
+        "viewed": true,
+        "viewedWith": "view_image",
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; complete image without crop or annotation"
+      },
+      "mathematicalReviewDe": "Für A(1|2|3) und B(5|4|7) ist M=(A+B)/2=(3|3|5) richtig. B−A=(4|2|4) und der ergänzende Abstand sqrt(16+4+16)=6 stimmen. Der gezeichnete Mittelpunkt liegt innerhalb der schematischen Zeichentoleranz auf halber Strecke; die Endpunktlabels sind richtig zugeordnet. Als unabhängige rechnerische Kontrolle ergibt sich AM=MB=(2|1|2). Es gibt kein falsches Koordinatenraster oder einen widersprüchlichen Achsenmaßstab.",
+      "didacticFitDe": "Die Mittelpunktmarkierung und die ausdrücklich ausgeführte halbe Koordinatensumme passen direkt zum neuen Mittelpunkt-Kindziel. Die zusätzlichen Abstands- und Betragsrechnungen sind korrekter Kontext und verhindern diese Wiederverwendung nicht. Die Prüfung AM=MB muss im Orientierungsbild nicht ebenfalls vollständig dargestellt sein.",
+      "legibility360De": "In 360 px sind A, B, die Raumkoordinaten, der Punkt M sowie der Wert M(3|3|5) klar zuzuordnen. Die Rechenkästen und die Tabelle sind klein, aber als mathematische Zusatzinformationen erkennbar; zum genauen Nachvollziehen empfiehlt sich die Originalansicht.",
+      "altTextReviewDe": "Der aktuelle Alttext stimmt mit der betrachteten mathematischen Darstellung überein.",
+      "issues": [],
+      "humanApproved": false,
+      "validationScope": "V-only AI candidate recommendation for exact current bytes and goal text; not D/P review or strict M7 closure",
+      "reuseCheck": {
+        "reusedFromGoalId": "a8ff2666-8df3-4253-8021-3efe42114e40",
+        "sourceAssetPath": "app/public/assets/goal-visualizations/mathematik/a8ff2666-8df3-4253-8021-3efe42114e40/a8ff2666-8df3-4253-8021-3efe42114e40.png",
+        "byteIdentityVerified": true,
+        "legacyApprovalInherited": false,
+        "newChildFitIndependentlyReviewed": true,
+        "activeChildOriginalAndPreviewViewedAfterBinding": true
+      }
+    }
+  ],
+  "writes": {
+    "reviewJsonOnly": true,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "originalImagesChanged": false,
+    "temporaryPreviewDirectory": "tmp/m7-current-image-repairs-20260928-v2-views"
+  },
+  "limitations": [
+    "The two previous JPG block decisions remain valid historical records for their old hashes.",
+    "This review does not grant human approval, D/P closure or strict M7 closure.",
+    "Small text in the 360px previews is less comfortable to read than in the originals; the main visual relationships remain recognizable."
+  ]
+}

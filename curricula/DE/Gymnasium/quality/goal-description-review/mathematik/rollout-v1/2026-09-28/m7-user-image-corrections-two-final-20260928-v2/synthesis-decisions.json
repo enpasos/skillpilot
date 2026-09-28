@@ -1,0 +1,112 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-image-corrections-final-two-20260928-v2",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex; adjudication of two independent AI review candidates (exact synthesizer model identifier unavailable)",
+  "synthesizedAt": "2026-09-28T09:01:15.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-user-image-corrections-two-final-20260928-v2",
+    "batchManifestDigest": "sha256:dbb831175cc38ed5b84a968ade17feb42c58f71404ed5c5ba99cbfce3c570d7d",
+    "configDigest": "sha256:f11b99062cc49515112aa37d5a7fcd1251f0714b2ac8ead0923969a56408fadb",
+    "bundleFingerprint": "sha256:0a5935ff7d973f3d1f55636358d1afcb238d32623d6fa45528b26a1b78bde643",
+    "bookDigest": "sha256:6f7e84c524c13647e70c08bb188136df857b29872795a88ce794be18240d4335",
+    "reviewInputFingerprint": "sha256:867fe105908a16fe64d7d7536d70bddab1c1bf8353185345832f08e88ab6ae8e",
+    "dualSummaryDigest": "sha256:bef6bd0bcfed21c6951d5ea9313147a1913eccae733b56fa9453a5ba0636f185",
+    "canonicalLandscapeDigest": "sha256:aed9ee6541dc4fead4ca3deeccd82bd907e2693c437fb58981c80188c37cbc4b"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-a",
+      "campaignDigest": "sha256:f5e0011ff9ba0713a1a04f0d5cec58c49509fa7e83e149808554571aee7ea8a8",
+      "roundId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-independent-a",
+      "reviewInputFingerprint": "sha256:867fe105908a16fe64d7d7536d70bddab1c1bf8353185345832f08e88ab6ae8e",
+      "batchId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:c6e2efdd91e3acba95b1b0d8208d90451b11f2615a8bfa76f4dd5330314f0fdb",
+      "runId": "math-m7-user-image-corrections-two-final-20260928-v2-first-pass-a-run-20260928",
+      "runManifestDigest": "sha256:119285edebf1e625865a86771f03a593477c1e828b9b47d8d7fd87c2b6ed6abe",
+      "resultsDigest": "sha256:ffa1dafda2acc140e137906306cdf5c412550b29228ec36145371001949f2ff8"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-b",
+      "campaignDigest": "sha256:47c7ac29231149bd740fcfb6f57d5787d41893f3b25995bc3e6c4d3badeaa217",
+      "roundId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-independent-b",
+      "reviewInputFingerprint": "sha256:867fe105908a16fe64d7d7536d70bddab1c1bf8353185345832f08e88ab6ae8e",
+      "batchId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:9af1a38283161f307bb7aa5bedbd7cbb8c83b8a87cce1cc2be005e97d203bc34",
+      "runId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-b.run-001",
+      "runManifestDigest": "sha256:52e1e66605468028549ddeecbc158d49a84c07264eb7b688bf08d10cd3bf0c84",
+      "resultsDigest": "sha256:575b9a9cd25f67d39906c4fd827c51d5de4b6514064372e7ba9adea73f2afd78"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-image-corrections-final-two-20260928-v2-decision-001",
+      "goalId": "eb070ed2-7ef4-5afe-b203-190ebb0116af",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e9ed603aa9b65b5f30416f900bbca41c8f7d2478a0c13db6e3ca7e607d945cb3",
+      "pageFingerprint": "sha256:d55e1cf6f88e0d36652772377f95347de106658b643261dc1851694a2dfb19c0",
+      "goalReviewContextFingerprint": "sha256:67b9c3d3f6405902885f3ae3c9aca56cedb27848136ca6434151c4dc5ecc9921",
+      "finalText": {
+        "titleDe": "Parallelität und Orthogonalität einfacher Körper untersuchen",
+        "titleEn": "Analyze parallelism and orthogonality in simple solids",
+        "descriptionDe": "Die lernende Person kann an einfachen geometrischen Körpern Parallelität und Orthogonalität von Kanten, Flächen oder Raumrichtungen untersuchen.",
+        "descriptionEn": "The learner can analyze parallelism and orthogonality of edges, faces, or spatial directions in simple geometric solids."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-two-final-20260928-v2-a-eb070",
+          "recordDigest": "sha256:a6d836c46a480cf77e30921c6054c070b6d5816c3f7a95ebe8cc6f30cfd91f47"
+        },
+        "second": {
+          "recordId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-b.eb070ed2-7ef4-5afe-b203-190ebb0116af",
+          "recordDigest": "sha256:54fb18688543d807d286e7d49b75cd53db4d55adf8427f6188b7befeecb26e81"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten die knappe zweisprachige Beschreibung. Das endgültig korrigierte Bild bezeichnet die drei parallelen Kantenfamilien, die Flächen ADHE und ABCD sowie AB senkrecht AE widerspruchsfrei. Für eine selbstständige Beurteilung an einem anderen Körper reichen Bildkopie und Schrägbildeindruck nicht; die in Runde A formulierte richtungs- und flächenbezogene Evidenz wahrt die Methodenoffenheit des Ziels. Die spezifischeren Vektor- und Normalenverfahren der Runde B sind mögliche Begründungswege, aber keine zusätzliche Pflicht in der Beschreibung. Bildfreigabe und vollständige Quellen-/Projektionsprüfung bleiben getrennte Gates.",
+      "rationaleEn": "Both independent rounds retain the concise bilingual description. The final corrected image consistently labels the three parallel edge families, faces ADHE and ABCD, and AB perpendicular to AE. For independent assessment on a different solid, copying the picture or trusting an oblique drawing is insufficient; round A's direction- and face-based evidence preserves method choice. Round B's more specific vector and normal methods are possible justifications, not an added requirement in the description. Image approval and full source/projection verification remain separate gates."
+    },
+    {
+      "decisionId": "math-m7-image-corrections-final-two-20260928-v2-decision-002",
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f469f1689c2764898336e2cd09602b30953b5e3eed770f9157a917a12091bfcd",
+      "pageFingerprint": "sha256:2cef6abe050b3ed471a3d09976b4f69b0d0a0e9b6f5df560e2bba2b098505429",
+      "goalReviewContextFingerprint": "sha256:2c460a503face4a74a21e3da2af6386fda7f882e71c344bf919ba60708fe191d",
+      "finalText": {
+        "titleDe": "Komplexe Zahlen algebraisch dividieren",
+        "titleEn": "Divide complex numbers algebraically",
+        "descriptionDe": "Die lernende Person kann komplexe Zahlen in algebraischer Form dividieren, konjugiert komplexe Zahlen nutzen und Ergebnisse als $a+bi$ darstellen.",
+        "descriptionEn": "The learner can divide complex numbers in algebraic form, use complex conjugates, and represent results as $a+bi$."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-m7-two-final-20260928-v2-a-5ba7",
+          "recordDigest": "sha256:557d5e02f2ce27c721a65966f7949e039e147b1ffba38bc8f2a293300105d011"
+        },
+        "second": {
+          "recordId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-b.5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+          "recordDigest": "sha256:29dd02d6037b6e97e723905ead739934200956ffb3f75a35cca99e761adba165"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann komplexe Zahlen in algebraischer Form dividieren, indem sie mit der konjugiert komplexen Zahl des von null verschiedenen Divisors erweitert, so einen reellen Nenner erhält und das Ergebnis als $a+bi$ darstellt.",
+        "proposedDescriptionEn": "The learner can divide complex numbers in algebraic form by multiplying numerator and denominator by the complex conjugate of the nonzero divisor, obtaining a real denominator and expressing the result as $a+bi$.",
+        "rationaleDe": "Runde B benennt zutreffend die Konjugierte des Divisors und die notwendige Bedingung Divisor ungleich null. Der vorgeschlagene Satz macht das Erweitern mit dieser Konjugierten durch 'indem' jedoch zum obligatorischen Verfahren jeder Division; das würde die allgemeine Kompetenz unnötig auf einen Lösungsweg verengen, etwa bei reellen oder rein imaginären Divisoren. Die aktuelle Beschreibung nennt Division, Nutzung konjugiert komplexer Zahlen und die Ergebnisform bereits eindeutig; die genaue Verfahrensbegründung gehört in das positive Evidenzprofil. Das lokal vorliegende hessische Kerncurriculum Q4.3, gedruckte Seite 52, nennt Rechnen mit komplexen Zahlen in algebraischer Form, aber keinen ausschließlich vorgeschriebenen Algorithmus.",
+        "rationaleEn": "Round B correctly identifies the divisor's conjugate and the necessary nonzero-divisor condition. Its proposed sentence nevertheless makes conjugate expansion mandatory for every division through 'by', unnecessarily narrowing the general competence to one procedure, for example with real or purely imaginary divisors. The current description already names division, use of complex conjugates and the result form unambiguously; the precise procedural justification belongs in the positive evidence profile. The locally available Hessian core curriculum Q4.3, printed page 52, requires calculation with complex numbers in algebraic form but prescribes no exclusive algorithm."
+      },
+      "rationaleDe": "Die endgültige Abbildung zeigt die Gleichungskette korrekt: Erweitern von (3+2i)/(1-i) mit (1+i) ergibt den reellen Nenner 2, den Zähler 1+5i und die Form 1/2+(5/2)i. Runde A hält die bereits vollständige, kurze Beschreibung; Runde B schlägt eine fachlich mögliche, aber für alle Fälle zu verfahrensfeste Formulierung vor. Deren hilfreiche Präzisierung zum von null verschiedenen Divisor und zur Konjugierten bleibt als ausdrücklich abgewogener Dissens erhalten. Die Zielbeschreibung wird nicht verschärft und die Bildfreigabe bleibt ein eigenes Gate.",
+      "rationaleEn": "The final illustration shows a correct equality chain: expanding (3+2i)/(1-i) by (1+i) gives the real denominator 2, numerator 1+5i and form 1/2+(5/2)i. Round A retains the already complete concise description; round B suggests a mathematically possible wording that mandates one method too strongly for all cases. Its helpful clarification of the nonzero divisor and its conjugate remains recorded as explicitly weighed dissent. The goal description is not tightened, and image approval remains a separate gate."
+    }
+  ],
+  "manifestFingerprint": "sha256:58ddc92db3544985b104c58edb31bafd81315b78bde913b2073dde80f1467d04"
+}

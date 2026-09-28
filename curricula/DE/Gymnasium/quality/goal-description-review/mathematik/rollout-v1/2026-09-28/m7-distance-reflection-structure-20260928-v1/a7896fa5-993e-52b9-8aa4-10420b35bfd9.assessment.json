@@ -1,0 +1,91 @@
+{
+  "weight": 1,
+  "tags": [
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3",
+      "K4",
+      "K5"
+    ],
+    "guidingIdeas": [
+      "L1",
+      "L2",
+      "L3",
+      "L4"
+    ],
+    "phase": "Q2"
+  },
+  "contains": [],
+  "examples": [],
+  "applicability": {
+    "jurisdiction": [
+      "DE-HE"
+    ],
+    "stage": [
+      "SekII"
+    ],
+    "courseProfile": [
+      "LK"
+    ]
+  },
+  "phase": "Q2",
+  "type": "atomic",
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary",
+    "applicabilityFromRequires": true
+  },
+  "id": "a7896fa5-993e-52b9-8aa4-10420b35bfd9",
+  "title": "Spiegelträger im CAD-Modell unterscheiden und anwenden (LK)",
+  "description": "Die lernende Person kann ausdrücklich vorgegebene räumliche Spiegelungen von Punkten, Geraden und Ebenen selbstständig berechnen und ihre Symmetriebedingungen prüfen.",
+  "requires": [
+    "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+    "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+    "985d5529-a586-50eb-bd7f-2db2be8906d1"
+  ],
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "985d5529-a586-50eb-bd7f-2db2be8906d1"
+    ],
+    "coveredStrands": [
+      "L3"
+    ],
+    "demandLevels": [
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "In einem räumlichen CAD-Modell werden Spiegeloperationen stets mit ihrem Träger angegeben. Eine Achsenspiegelung bedeutet hier eine Halbdrehung um die Achse, keine Ebenenspiegelung.\n\n1. Für $P=(2|3|4)$ sind drei verschiedene Operationen vorgegeben: Zentralspiegelung an $C=(1|0|0)$, Halbdrehung um die $x$-Achse und Spiegelung an $S:x+y=2$. Bestimme jeweils $P'$. Begründe die Mittelpunkt- bzw. Lotbedingungen und erläutere, warum die drei Bilder verschieden sind. (9 BE)\n2. Die Gerade $g$ geht durch $A=(2|1|0)$ und $B=(2|1|1)$. Spiegle sie an $C=(1|0|0)$ und anschließend, unabhängig davon, an $S:x+y=2$. Bestimme beide Bildgeraden aus je zwei Bildpunkten und prüfe die jeweilige Symmetriebedingung. (6 BE)\n3. Spiegle $F:x=3$ an $S:x+y=2$. Nutze drei nicht kollineare Punkte und einen vierten Kontrollpunkt. Untersuche danach die Halbdrehung von $F$ um die $x$-Achse: Bleibt die Ebene als Menge gleich? Begründe den Unterschied zwischen einer unveränderten Ebene und punktweiser Fixierung. (7 BE)",
+    "solutionContent": "1. Am Zentrum: $P'=2C-P=(0|-3|-4)$ und $(P+P')/2=C$. Um die $x$-Achse: Lotfuß $H=(2|0|0)$, daher $P'=(2|-3|-4)$; $H$ ist der Mittelpunkt und $P-H$ senkrecht zur Achse. An $S$ mit $n=(1|1|0)$: $P'=P-2\\frac{n\\cdot P-2}{n\\cdot n}n=(-1|0|4)$; Mittelpunkt $H=(0{,}5|1{,}5|4)$ liegt in $S$, $P-P'=(3|3|0)$ ist normal zu $S$. Verschiedene Träger ergeben verschiedene Isometrien, obwohl jeweils derselbe Mittelpunktsgedanke trägt.\n\n2. Am Zentrum: $A'=(0|-1|0)$, $B'=(0|-1|-1)$, somit $g'_C:(0|-1|0)+t(0|0|-1)$. Beide Punktpaar-Mittelpunkte sind $C$. An $S$: $A'=(1|0|0)$, $B'=(1|0|1)$, somit $g'_S:(1|0|0)+t(0|0|1)$. Die Mittelpunkte $(1{,}5|0{,}5|0)$ und $(1{,}5|0{,}5|1)$ liegen in $S$; die Verbindungsvektoren sind parallel zu $(1|1|0)$. Zwei verschiedene Bildpunkte bestimmen jeweils die ganze Bildgerade.\n\n3. Für $S$ gilt $(x,y,z)\\mapsto(2-y,2-x,z)$. Aus $A=(3|0|0)$, $B=(3|1|0)$, $D=(3|0|1)$ werden $(2|-1|0)$, $(1|-1|0)$, $(2|-1|1)$: nicht kollinear, daher $F':y=-1$. Der Kontrollpunkt $(3|2|2)$ wird auf $(0|-1|2)$ abgebildet. Bei Halbdrehung um die $x$-Achse gilt $(x,y,z)\\mapsto(x,-y,-z)$; folglich bleibt $x=3$ als Menge bestehen. Nur $(3|0|0)$ ist in dieser Ebene ein Fixpunkt; z. B. $(3|1|0)$ wird verändert.\n\nFachliche Bewertungsgrenze: Fehlt in Aufgabe 1 eine der drei Trägerbedingungen, höchstens 6/9 BE. Fehlt in Aufgabe 2 einer der beiden Trägerfälle oder die Begründung durch zwei verschiedene Punkte, höchstens 3/6 BE. Fehlen in Aufgabe 3 entweder drei nicht kollineare Bildpunkte mit Kontrolle oder die Unterscheidung von Mengeninvarianz und punktweiser Fixierung, höchstens 4/7 BE. Dann sind insgesamt höchstens 19/22 BE erreichbar, zum Bestehen werden 20 BE benötigt. Der Server prüft die Gesamtgrenze; die Teilfallgrenzen sind fachliche Bewertungsanweisungen.",
+    "scoring": {
+      "maxPoints": 22,
+      "passingPoints": 20,
+      "steps": [
+        {
+          "id": "reflection_points",
+          "points": 9,
+          "description": "Alle drei Punktabbildungen mit zugehöriger Trägerbedingung begründet"
+        },
+        {
+          "id": "reflection_lines",
+          "points": 6,
+          "description": "Geradenbilder bei zwei vorgegebenen Trägern aus zwei Punkten begründet"
+        },
+        {
+          "id": "reflection_planes",
+          "points": 7,
+          "description": "Ebenenbild kontrolliert und Mengeninvarianz von punktweiser Fixierung unterschieden"
+        }
+      ]
+    }
+  }
+}

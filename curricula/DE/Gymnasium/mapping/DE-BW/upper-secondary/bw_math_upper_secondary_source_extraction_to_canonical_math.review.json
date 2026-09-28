@@ -740,15 +740,6 @@
       ]
     },
     {
-      "legacyGoalId": "bw-math-sekii-bp2016-3-4-2-08",
-      "canonicalGoalId": "809ef78a-f282-5593-89be-0f2cb95570ac",
-      "matchType": "partial",
-      "reviewDecisionId": "bw-math-sekii-bp2016-3-4-2-08",
-      "transferredFromLegacyGoalIds": [
-        "e396ffe4-2039-440a-bde2-83670c093bfd"
-      ]
-    },
-    {
       "legacyGoalId": "bw-math-sekii-bp2016-3-4-2-09a-flaecheninhalt-graph-x-achse",
       "canonicalGoalId": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
       "matchType": "exact",
@@ -923,7 +914,7 @@
     },
     {
       "legacyGoalId": "bw-math-sekii-bp2016-3-4-3-07b-gerade-an-punkt-spiegeln",
-      "canonicalGoalId": "dd042c27-d513-5352-9de9-2a5923a98e69",
+      "canonicalGoalId": "976def9e-c81c-5875-9d87-a1024318ce48",
       "matchType": "partial",
       "reviewDecisionId": "bw-math-sekii-bp2016-3-4-3-07b-gerade-an-punkt-spiegeln",
       "transferredFromLegacyGoalIds": [
@@ -2549,6 +2540,15 @@
       "canonicalGoalId": "36728db8-da44-4add-97b8-0fdd7cfd9c41",
       "matchType": "exact",
       "reviewDecisionId": "bw-math-sekii-bp2016-3-4-3-08"
+    },
+    {
+      "legacyGoalId": "bw-math-sekii-bp2016-3-4-2-08",
+      "canonicalGoalId": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+      "matchType": "partial",
+      "reviewDecisionId": "bw-math-sekii-bp2016-3-4-2-08",
+      "transferredFromLegacyGoalIds": [
+        "e396ffe4-2039-440a-bde2-83670c093bfd"
+      ]
     }
   ],
   "decisions": [
@@ -4396,18 +4396,19 @@
       "sourceSpan": "den Mittelwert einer Funktion auf einem Intervall berechnen",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "809ef78a-f282-5593-89be-0f2cb95570ac"
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
       ],
-      "rationale": "Das BP2016-Kursstufen-Source-Ziel wurde aus der amtlichen Kompetenznummer extrahiert. Die vorhandene BW-Kursstufen-Pilot-Bruecke deckt diese Kompetenz inhaltlich ueber die gelisteten kanonischen Ziele ab; exact/partial beschreibt nur die Zuordnungsform, nicht offene Arbeit.",
-      "reviewedAt": "2026-05-06",
-      "reviewer": "codex",
+      "rationale": "Expliziter Funktionsmittelwert beziehungsweise mittlerer Bestand/mittlere Rate. Neues Mittelwertziel; keine Rekonstruktion aus diesem Aspekt ableiten. Kursgrenze der Originalquelle bleibt verbindlich.",
+      "reviewedAt": "2026-09-28",
+      "reviewer": "OpenAI Codex; 809ef source-routing AI review",
       "evidence": {
         "method": "bp2016-upper-secondary-source-extraction-transfer",
         "sourceTopicCode": "BP2016-3.4.2",
         "transferredFromLegacyGoalIds": [
           "e396ffe4-2039-440a-bde2-83670c093bfd"
         ]
-      }
+      },
+      "matchType": "partial"
     },
     {
       "sourceGoalId": "bw-math-sekii-bp2016-3-4-2-09a-flaecheninhalt-graph-x-achse",
@@ -4762,10 +4763,10 @@
       "sourceSpan": "Spiegelung einer Geraden an einem Punkt im Raum bearbeiten",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "dd042c27-d513-5352-9de9-2a5923a98e69"
+        "976def9e-c81c-5875-9d87-a1024318ce48"
       ],
-      "rationale": "Granularisierung von BP2016 3.4.3(7): Dieses Teilziel deckt die explizit genannte Spiegelung einer Geraden an einem Punkt ab; die Zuordnung bleibt partial, weil das kanonische Ziel allgemein Punkte, Geraden und Ebenen in räumlichen Konfigurationen umfasst.",
-      "reviewedAt": "2026-05-06",
+      "rationale": "Der ausdrücklich benannte Fall Gerade an Punkt wird direkt am eigenen engen BW-LK-Ziel gebunden. Die Quellenkante bleibt konservativ partial; das allgemeine HE-Spiegeltrio wird nicht als BW-Pflicht abgeleitet. Mittelpunktkontrolle und zwei verschiedene Bildpunkte operationalisieren denselben räumlichen Spiegelungsfall.",
+      "reviewedAt": "2026-09-28",
       "reviewer": "codex",
       "evidence": {
         "method": "bp2016-upper-secondary-source-extraction-granularity-split",

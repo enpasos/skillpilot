@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1.config.json",
+  "configDigest": "sha256:fed17b3b2314a52545d54bdb882da7e03db336118f08905774aa95ce306997d2",
+  "goalIds": [
+    "803d910d-96d1-5118-b9ca-29e93d0da76d",
+    "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+    "fde351a8-98b1-5d75-b4df-813beb2bbe3c",
+    "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+    "d98849c7-bd0b-50d4-90aa-6293a3adb211"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 800,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:2a4f0d8c7f8ec2de89712ca374b41a2ebb4230851f0ac11b653eb46493f94617"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:e11137d1e79f3f1f0a4da0c2147c29b8cc20cde9f75e2b6b89a61f67696aa5b6",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:33223e43bed264d11c4fd5e31b20e07f3c954ac7aef8b416481db5988e31f484",
+    "reviewInputFingerprint": "sha256:2670cee210cc8039cf1ecb70c72113629e91879b940fda99d0572a6a591f7641",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-a",
+        "campaignDigest": "sha256:335e2d64ec9fec7feda0851d3f008a671c4805fd9cf11eeb39948c2f36674aac",
+        "roundId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-independent-a",
+        "batchId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:cb67079710e903138ff57a5d7de3d3c5e41a8d12694a56b0bd0aa1089fb0b30b"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-b",
+        "campaignDigest": "sha256:4e8379e6400e976c569b0931d1ae4dc7b219e27434466391808a3ba825341fcd",
+        "roundId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-independent-b",
+        "batchId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:20fd3366427cc7aedd7115a470720c4bbc78b7fc20a51bf107d1d0a246eb3130"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

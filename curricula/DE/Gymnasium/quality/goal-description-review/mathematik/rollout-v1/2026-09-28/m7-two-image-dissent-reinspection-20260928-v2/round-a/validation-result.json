@@ -1,0 +1,15 @@
+{
+  "validatedAt": "2026-09-28T11:20:04Z",
+  "checks": [
+    {
+      "command": "npm --prefix app run validate:goal-description-review -- [round-a bound files]",
+      "exitCode": 0,
+      "output": "Goal-description review batch valid: 2"
+    },
+    {
+      "command": "npm --prefix app run validate:goal-description-review-campaign -- [round-a bound directories]",
+      "exitCode": 0,
+      "output": "Goal-description review campaign results valid: 2"
+    }
+  ]
+}

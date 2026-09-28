@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "m7-current-image-repairs-20260928-v1-converse-criterion-png",
+  "recordedAt": "2026-09-28T14:43:13Z",
+  "reviewStatus": "ai_candidate",
+  "decision": "accepted_pilot_after_regeneration",
+  "humanApproved": false,
+  "scope": "Current actual PNG and 360px card rendering for one atomic goal; V-only, no D/P approval or human release gate",
+  "goalId": "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+  "goalTitle": "Rechtwinkligkeit mit dem Kehrsatz des Pythagoras prüfen",
+  "goalDescription": "Die lernende Person kann bei einem Dreieck mit gegebenen Seitenlängen die längste Seite bestimmen und anhand der Quadratsummenbeziehung entscheiden, ob das Dreieck rechtwinklig ist, sowie gegebenenfalls die Lage des rechten Winkels angeben und ihre Entscheidung mit Satz und Kehrsatz begründen.",
+  "provider": "OpenAI built-in imagegen",
+  "model": "not exposed by the built-in tool",
+  "provenance": {
+    "promptAndRejectedAttempt": "curricula/DE/Gymnasium/visualizations/mathematik/081c9802-6da7-5ae8-b78e-f99c2b2dbb14/prompt.de.md",
+    "mathReference": "tmp/m7-20260928-continuation/pythagoras-converse-criterion-exact.preview.png",
+    "referenceSha256": "542de29255f5687ca99389d0fd3611f023246eb147cf6a7e133d1d0a311fba73",
+    "rejectedAttemptSha256": "278174ded60fc5300683680e5280f351184566da954ce316ca1c3e0f5eb2342b",
+    "rejectedDefect": "Drawn 5-to-12 side ratios substantially disagreed with labels despite correct calculations; the first candidate was not activated.",
+    "historicalSvgSha256": "1247d4f8ee4eaf04d8002b2ad4cb8f5fc9076c6a583b7b32f23c755ab65af764",
+    "historicalSvgRetained": true
+  },
+  "bindings": {
+    "canonicalLink": "/assets/goal-visualizations/mathematik/081c9802-6da7-5ae8-b78e-f99c2b2dbb14/081c9802-6da7-5ae8-b78e-f99c2b2dbb14.png",
+    "source": "curricula/DE/Gymnasium/visualizations/mathematik/081c9802-6da7-5ae8-b78e-f99c2b2dbb14/081c9802-6da7-5ae8-b78e-f99c2b2dbb14.png",
+    "public": "app/public/assets/goal-visualizations/mathematik/081c9802-6da7-5ae8-b78e-f99c2b2dbb14/081c9802-6da7-5ae8-b78e-f99c2b2dbb14.png",
+    "backend": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/081c9802-6da7-5ae8-b78e-f99c2b2dbb14/081c9802-6da7-5ae8-b78e-f99c2b2dbb14.png",
+    "allThreeAssetCopiesSha256": "4d2d8170e20beca927eaa82696250221a1415439e4b3fdaa01b5b80b5d1996d7",
+    "dimensions": [1672, 941],
+    "cardPreview": "tmp/m7-20260928-continuation/pyth-converse-criterion-preview360.png",
+    "cardPreviewSha256": "18d70f4d90bc8b1d853ca11b9ce3f983e5646eeb4066fd08b686eea3be258d49",
+    "cardPreviewDimensions": [360, 203]
+  },
+  "reviews": [
+    {
+      "reviewer": "OpenAI Codex /root/pyth_converse_png",
+      "kind": "ai",
+      "actualOriginalAnd360Viewed": true,
+      "finding": "5,12,13 is shown with the right angle opposite the longest side 13 and 5²+12²=13². 5,12,14 has longest side 14, a visibly obtuse opposite angle, no right-angle mark, and 5²+12²≠14². The generated side proportions follow the exact locally authored reference closely enough for this illustration."
+    },
+    {
+      "reviewer": "OpenAI Codex /root",
+      "kind": "independent_ai",
+      "actualOriginalAnd360Viewed": true,
+      "finding": "Independent original-size and 360px inspection confirmed side assignment, right/obtuse angle placement and both formulas. Main triples, equations and decisions remain legible. The smallest explanatory footer is borderline at 360px and is not used for the decisive comparison."
+    }
+  ],
+  "humanReviewOrApprovalClaimed": false,
+  "issues": []
+}

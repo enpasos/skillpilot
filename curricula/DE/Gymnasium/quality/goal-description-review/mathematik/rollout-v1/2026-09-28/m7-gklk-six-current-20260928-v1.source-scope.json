@@ -1,0 +1,1243 @@
+{
+  "schemaVersion": 1,
+  "status": "current_source_scope_audit_not_a_review_approval",
+  "checkedAt": "2026-09-28T11:35:01.618Z",
+  "bookDigest": "sha256:189b921f0cbd8e4684e34937668585955881eefb0ed863c6cc3b7a4dc8fa3588",
+  "curricularAtomicGoalCount": 800,
+  "rule": "BY GK is compulsory elevated-level mathematics; BY LK additionally contains all five Vertiefungskurs modules. Technical projection labels do not rename official courses.",
+  "fileBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "digest": "sha256:5bf04ff9ad25793202eabb27e9cfa72943939933fa1f0fb06f7c80c3047af146"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "digest": "sha256:77f04b8d5954a799d6946860d69a5f06d9058e9b4813421eef5d6b3798afa6e6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_source_extraction_to_canonical_math.review.json",
+      "digest": "sha256:e8d79e88436dd1178a088d500aaa502e5d2c6cb061ef150e30dc8beb2d0b9c4b"
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "digest": "sha256:97eacf1152c859fd4a766f1d3f136449b20bc8af3d626b4c0f048bb6b3a7e2aa"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "digest": "sha256:6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+      "digest": "sha256:b1c34f1274e92376bf39062d99e4dcdf5d4b8db4ddd815b7f279f5bd5396d5ed"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+      "digest": "sha256:dfa8dadb24be7ef775487e6706e48f7be76186c1644867fd112f3baaf8cb4fa9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+      "digest": "sha256:8854f75fd00fd2e230e8dd8bdca51352f326949320a07b739623233b90fcaea3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+      "digest": "sha256:87808f409ae654aaa67e9549b814e91a68411199fdebe48a61f68aea8dd41588"
+    }
+  ],
+  "goals": [
+    {
+      "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
+      "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden",
+      "goalFingerprint": "sha256:b9ce75b0b7644e56d012e764870f32f375f4a96b2872e4697f5c875ad89942dc",
+      "applicability": [
+        {
+          "jurisdiction": "DE-BY",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            }
+          ]
+        }
+      ],
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+      "canonicalTags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "bySekIICourseProfiles": [
+        "GK",
+        "LK"
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Differentialrechnung in Sachzusammenhängen auswählen und anwenden",
+        "url": "/assets/goal-visualizations/mathematik/dc12f281-f161-572b-a973-8405ae9b2498/dc12f281-f161-572b-a973-8405ae9b2498.png",
+        "altText": "Ein Wassertank und der Graph der Füllhöhe h(t)=1+4t−t² für 0 bis 4 Stunden. Der Graph beginnt bei 1 Meter, erreicht bei t=2 Stunden den Hochpunkt (2|5) mit waagerechter Tangente und endet wieder bei 1 Meter. Die Ableitung h′(t)=4−2t liefert h′(2)=0.",
+        "originalDigest": "sha256:107ce45905fc8013470e02559d55d8ee9185f620c4401cb337d80e280fdee458",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      },
+      "directSourceMappings": [],
+      "inheritedClusterSourceMappings": [
+        {
+          "legacyGoalId": "d9114972-3b24-5b3a-99c4-3bb72a32cc55",
+          "canonicalGoalId": "ead1f5ce-fdf4-5591-8982-395001017848",
+          "matchType": "exact",
+          "reviewDecisionId": "d9114972-3b24-5b3a-99c4-3bb72a32cc55",
+          "source": {
+            "id": "d9114972-3b24-5b3a-99c4-3bb72a32cc55",
+            "title": "wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknü",
+            "description": "Die lernende Person kann wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknüpfter Funktionen, auch mit Parametern, an; dabei nutzen sie auch eine dynamische Mathematiksoftware.",
+            "passageId": "by-math-gym-m13-4",
+            "topicCode": "M13.4",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 13",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST13_EA_TEIL2",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil2.pdf",
+            "sourceSpan": "wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknüpfter Funktionen, auch mit Parametern, an; dabei nutzen sie auch eine dynamische Mathematiksoftware.",
+            "sourceText": "wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknüpfter Funktionen, auch mit Parametern, an; dabei nutzen sie auch eine dynamische Mathematiksoftware.",
+            "parentBulletText": "wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknüpfter Funktionen, auch mit Parametern, an; dabei nutzen sie auch eine dynamische Mathematiksoftware.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+            "granularity": "official-learning-expectation",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:13",
+              "topic:M13.4",
+              "sourceDocument:JGST13_EA_TEIL2"
+            ]
+          }
+        },
+        {
+          "legacyGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+          "canonicalGoalId": "ead1f5ce-fdf4-5591-8982-395001017848",
+          "matchType": "exact",
+          "reviewDecisionId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+          "source": {
+            "id": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+            "title": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und re",
+            "description": "Die lernende Person kann den Lehrplanaspekt erfüllen: wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+            "passageId": "by-math-gym-m13-4",
+            "topicCode": "M13.4",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 13",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST13_EA_TEIL2",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil2.pdf",
+            "sourceSpan": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+            "sourceText": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+            "parentBulletText": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an; sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+            "granularity": "official-learning-expectation-aspect",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:13",
+              "topic:M13.4",
+              "sourceDocument:JGST13_EA_TEIL2"
+            ],
+            "splitFromSourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+            "splitIndex": 1,
+            "splitPartCount": 2
+          }
+        },
+        {
+          "legacyGoalId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+          "canonicalGoalId": "ead1f5ce-fdf4-5591-8982-395001017848",
+          "matchType": "exact",
+          "reviewDecisionId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+          "source": {
+            "id": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+            "title": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential-",
+            "description": "Die lernende Person kann den Lehrplanaspekt erfüllen: sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "passageId": "by-math-gym-m13-4",
+            "topicCode": "M13.4",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 13",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST13_EA_TEIL2",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil2.pdf",
+            "sourceSpan": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "sourceText": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "parentBulletText": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an; sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+            "granularity": "official-learning-expectation-aspect",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:13",
+              "topic:M13.4",
+              "sourceDocument:JGST13_EA_TEIL2"
+            ],
+            "splitFromSourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+            "splitIndex": 2,
+            "splitPartCount": 2
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+      "title": "Integralrechnung in Sachzusammenhängen auswählen und anwenden",
+      "goalFingerprint": "sha256:2965d7d1414ba6733fca55d532856577f149064fb8fdec8c0f0ec18dc0863160",
+      "applicability": [
+        {
+          "jurisdiction": "DE-BY",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            }
+          ]
+        }
+      ],
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+      "canonicalTags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "bySekIICourseProfiles": [
+        "GK",
+        "LK"
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Integralrechnung in Sachzusammenhängen auswählen und anwenden",
+        "url": "/assets/goal-visualizations/mathematik/0b162cb0-8507-5ac2-b9d6-57f40f4d3f35/0b162cb0-8507-5ac2-b9d6-57f40f4d3f35.jpg",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Integralrechnung in Sachzusammenhängen auswählen und anwenden\". Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Integralrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.",
+        "originalDigest": "sha256:532ff015057db5c336b05c7710accabc0d2a8879a218f31b2f5b69231050cce1",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      },
+      "directSourceMappings": [
+        {
+          "legacyGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+          "canonicalGoalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+          "matchType": "partial",
+          "reviewDecisionId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+          "source": {
+            "id": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+            "title": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und re",
+            "description": "Die lernende Person kann den Lehrplanaspekt erfüllen: wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+            "passageId": "by-math-gym-m13-4",
+            "topicCode": "M13.4",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 13",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST13_EA_TEIL2",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil2.pdf",
+            "sourceSpan": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+            "sourceText": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+            "parentBulletText": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an; sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+            "granularity": "official-learning-expectation-aspect",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:13",
+              "topic:M13.4",
+              "sourceDocument:JGST13_EA_TEIL2"
+            ],
+            "splitFromSourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+            "splitIndex": 1,
+            "splitPartCount": 2
+          }
+        }
+      ],
+      "inheritedClusterSourceMappings": [
+        {
+          "legacyGoalId": "d9114972-3b24-5b3a-99c4-3bb72a32cc55",
+          "canonicalGoalId": "ead1f5ce-fdf4-5591-8982-395001017848",
+          "matchType": "exact",
+          "reviewDecisionId": "d9114972-3b24-5b3a-99c4-3bb72a32cc55",
+          "source": {
+            "id": "d9114972-3b24-5b3a-99c4-3bb72a32cc55",
+            "title": "wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknü",
+            "description": "Die lernende Person kann wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknüpfter Funktionen, auch mit Parametern, an; dabei nutzen sie auch eine dynamische Mathematiksoftware.",
+            "passageId": "by-math-gym-m13-4",
+            "topicCode": "M13.4",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 13",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST13_EA_TEIL2",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil2.pdf",
+            "sourceSpan": "wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknüpfter Funktionen, auch mit Parametern, an; dabei nutzen sie auch eine dynamische Mathematiksoftware.",
+            "sourceText": "wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknüpfter Funktionen, auch mit Parametern, an; dabei nutzen sie auch eine dynamische Mathematiksoftware.",
+            "parentBulletText": "wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknüpfter Funktionen, auch mit Parametern, an; dabei nutzen sie auch eine dynamische Mathematiksoftware.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+            "granularity": "official-learning-expectation",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:13",
+              "topic:M13.4",
+              "sourceDocument:JGST13_EA_TEIL2"
+            ]
+          }
+        },
+        {
+          "legacyGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+          "canonicalGoalId": "ead1f5ce-fdf4-5591-8982-395001017848",
+          "matchType": "exact",
+          "reviewDecisionId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+          "source": {
+            "id": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+            "title": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und re",
+            "description": "Die lernende Person kann den Lehrplanaspekt erfüllen: wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+            "passageId": "by-math-gym-m13-4",
+            "topicCode": "M13.4",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 13",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST13_EA_TEIL2",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil2.pdf",
+            "sourceSpan": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+            "sourceText": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+            "parentBulletText": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an; sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+            "granularity": "official-learning-expectation-aspect",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:13",
+              "topic:M13.4",
+              "sourceDocument:JGST13_EA_TEIL2"
+            ],
+            "splitFromSourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+            "splitIndex": 1,
+            "splitPartCount": 2
+          }
+        },
+        {
+          "legacyGoalId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+          "canonicalGoalId": "ead1f5ce-fdf4-5591-8982-395001017848",
+          "matchType": "exact",
+          "reviewDecisionId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+          "source": {
+            "id": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+            "title": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential-",
+            "description": "Die lernende Person kann den Lehrplanaspekt erfüllen: sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "passageId": "by-math-gym-m13-4",
+            "topicCode": "M13.4",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 13",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST13_EA_TEIL2",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil2.pdf",
+            "sourceSpan": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "sourceText": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "parentBulletText": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an; sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+            "granularity": "official-learning-expectation-aspect",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:13",
+              "topic:M13.4",
+              "sourceDocument:JGST13_EA_TEIL2"
+            ],
+            "splitFromSourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+            "splitIndex": 2,
+            "splitPartCount": 2
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "title": "Analysis-Modelle in Sachzusammenhängen validieren",
+      "goalFingerprint": "sha256:96ee3c8c7e0f1241ac5e6bc215f139e61d3cf3caf7b8c35505d8778f5fd143a9",
+      "applicability": [
+        {
+          "jurisdiction": "DE-BY",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            }
+          ]
+        }
+      ],
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+      "canonicalTags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "bySekIICourseProfiles": [
+        "GK",
+        "LK"
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Analysis-Modelle in Sachzusammenhängen validieren",
+        "url": "/assets/goal-visualizations/mathematik/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2.png",
+        "altText": "Vor einem Zelt stehen Besucher. Daneben zeigt ein Diagramm N(t) erst als grüne, positive Kurve und nach der Nullstelle gestrichelt in Rot unter der Zeitachse; ein rotes Kreuz markiert die unmögliche negative Besucherzahl.",
+        "originalDigest": "sha256:ccb83c8b71dd3f17115550542eef224ee5ee18f46bac65d70a0415239f561c9b",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      },
+      "directSourceMappings": [
+        {
+          "legacyGoalId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+          "canonicalGoalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+          "matchType": "partial",
+          "reviewDecisionId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+          "source": {
+            "id": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+            "title": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential-",
+            "description": "Die lernende Person kann den Lehrplanaspekt erfüllen: sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "passageId": "by-math-gym-m13-4",
+            "topicCode": "M13.4",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 13",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST13_EA_TEIL2",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil2.pdf",
+            "sourceSpan": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "sourceText": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "parentBulletText": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an; sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+            "granularity": "official-learning-expectation-aspect",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:13",
+              "topic:M13.4",
+              "sourceDocument:JGST13_EA_TEIL2"
+            ],
+            "splitFromSourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+            "splitIndex": 2,
+            "splitPartCount": 2
+          }
+        }
+      ],
+      "inheritedClusterSourceMappings": [
+        {
+          "legacyGoalId": "d9114972-3b24-5b3a-99c4-3bb72a32cc55",
+          "canonicalGoalId": "ead1f5ce-fdf4-5591-8982-395001017848",
+          "matchType": "exact",
+          "reviewDecisionId": "d9114972-3b24-5b3a-99c4-3bb72a32cc55",
+          "source": {
+            "id": "d9114972-3b24-5b3a-99c4-3bb72a32cc55",
+            "title": "wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknü",
+            "description": "Die lernende Person kann wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknüpfter Funktionen, auch mit Parametern, an; dabei nutzen sie auch eine dynamische Mathematiksoftware.",
+            "passageId": "by-math-gym-m13-4",
+            "topicCode": "M13.4",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 13",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST13_EA_TEIL2",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil2.pdf",
+            "sourceSpan": "wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknüpfter Funktionen, auch mit Parametern, an; dabei nutzen sie auch eine dynamische Mathematiksoftware.",
+            "sourceText": "wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknüpfter Funktionen, auch mit Parametern, an; dabei nutzen sie auch eine dynamische Mathematiksoftware.",
+            "parentBulletText": "wenden ihre bisherigen Kenntnisse der Differential- und Integralrechnung bei der Untersuchung verknüpfter Funktionen, auch mit Parametern, an; dabei nutzen sie auch eine dynamische Mathematiksoftware.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+            "granularity": "official-learning-expectation",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:13",
+              "topic:M13.4",
+              "sourceDocument:JGST13_EA_TEIL2"
+            ]
+          }
+        },
+        {
+          "legacyGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+          "canonicalGoalId": "ead1f5ce-fdf4-5591-8982-395001017848",
+          "matchType": "exact",
+          "reviewDecisionId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+          "source": {
+            "id": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+            "title": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und re",
+            "description": "Die lernende Person kann den Lehrplanaspekt erfüllen: wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+            "passageId": "by-math-gym-m13-4",
+            "topicCode": "M13.4",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 13",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST13_EA_TEIL2",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil2.pdf",
+            "sourceSpan": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+            "sourceText": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+            "parentBulletText": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an; sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+            "granularity": "official-learning-expectation-aspect",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:13",
+              "topic:M13.4",
+              "sourceDocument:JGST13_EA_TEIL2"
+            ],
+            "splitFromSourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+            "splitIndex": 1,
+            "splitPartCount": 2
+          }
+        },
+        {
+          "legacyGoalId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+          "canonicalGoalId": "ead1f5ce-fdf4-5591-8982-395001017848",
+          "matchType": "exact",
+          "reviewDecisionId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+          "source": {
+            "id": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+            "title": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential-",
+            "description": "Die lernende Person kann den Lehrplanaspekt erfüllen: sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "passageId": "by-math-gym-m13-4",
+            "topicCode": "M13.4",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 13",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST13_EA_TEIL2",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil2.pdf",
+            "sourceSpan": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "sourceText": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "parentBulletText": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an; sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.4",
+            "granularity": "official-learning-expectation-aspect",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:13",
+              "topic:M13.4",
+              "sourceDocument:JGST13_EA_TEIL2"
+            ],
+            "splitFromSourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+            "splitIndex": 2,
+            "splitPartCount": 2
+          }
+        }
+      ]
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "title": "Exponential- und Potenzfunktionen asymptotisch vergleichen",
+      "goalFingerprint": "sha256:f063c539d349d4c681418ea1f41744f5fc576fd6032268ace60511311119bde9",
+      "applicability": [
+        {
+          "jurisdiction": "DE-BB",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BW",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BY",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-MV",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-RP",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-TH",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        }
+      ],
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.1.2",
+      "canonicalTags": [
+        "LK",
+        "canonical"
+      ],
+      "bySekIICourseProfiles": [
+        "GK",
+        "LK"
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Exponential- und Potenzfunktionen asymptotisch vergleichen",
+        "url": "/assets/goal-visualizations/mathematik/49f9059a-876c-5051-8146-d008b5cc691c/49f9059a-876c-5051-8146-d008b5cc691c.png",
+        "altText": "Zwei Kurven vergleichen e^x und x². Die rote Exponentialkurve wächst für große x deutlich schneller als die blaue Potenzkurve; darunter steht der Grenzwert e^x/x² gegen unendlich für x gegen unendlich.",
+        "originalDigest": "sha256:c9c351b208eafcd5efa0bd6d38e9a56d1dbc945bddc74894a9f303cd8b7cf4d1",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      },
+      "directSourceMappings": [
+        {
+          "legacyGoalId": "5d5f98a2-9cfb-559f-adaf-3701e1a84339",
+          "canonicalGoalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+          "matchType": "exact",
+          "reviewDecisionId": "5d5f98a2-9cfb-559f-adaf-3701e1a84339",
+          "source": {
+            "id": "5d5f98a2-9cfb-559f-adaf-3701e1a84339",
+            "title": "machen durch einen Vergleich des Wachstums von Exponential- und Potenzfunktion die Grenzwerte und pl",
+            "description": "Die lernende Person kann machen durch einen Vergleich des Wachstums von Exponential- und Potenzfunktion die Grenzwerte und plausibel.",
+            "passageId": "by-math-gym-m12-ea-1-2",
+            "topicCode": "M12-EA.1.2",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 12",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST12_EA",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_12_eA.pdf",
+            "sourceSpan": "machen durch einen Vergleich des Wachstums von Exponential- und Potenzfunktion die Grenzwerte und plausibel.",
+            "sourceText": "machen durch einen Vergleich des Wachstums von Exponential- und Potenzfunktion die Grenzwerte und plausibel.",
+            "parentBulletText": "machen durch einen Vergleich des Wachstums von Exponential- und Potenzfunktion die Grenzwerte und plausibel.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.1.2",
+            "granularity": "official-learning-expectation",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:12",
+              "topic:M12-EA.1.2",
+              "sourceDocument:JGST12_EA"
+            ]
+          }
+        }
+      ],
+      "inheritedClusterSourceMappings": []
+    },
+    {
+      "goalId": "b431148b-526c-4bde-b04b-48d23101d0d3",
+      "title": "Annähernd normalverteilte Zufallsgrößen in Situationen erkennen",
+      "goalFingerprint": "sha256:db1f26d774f655c188e7488907fcee9dadd41f4631406411c902a9bfce019a64",
+      "applicability": [
+        {
+          "jurisdiction": "DE-BB",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BW",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-BY",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-MV",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-RP",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        },
+        {
+          "jurisdiction": "DE-TH",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "GK"
+            },
+            {
+              "stage": "SekII",
+              "durationModel": null,
+              "courseProfile": "LK"
+            }
+          ]
+        }
+      ],
+      "sourceRef": null,
+      "canonicalTags": [
+        "LK"
+      ],
+      "bySekIICourseProfiles": [
+        "GK",
+        "LK"
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Annähernd normalverteilte Zufallsgrößen in Situationen erkennen",
+        "url": "/assets/goal-visualizations/mathematik/b431148b-526c-4bde-b04b-48d23101d0d3/b431148b-526c-4bde-b04b-48d23101d0d3.png",
+        "altText": "Zwei schematische Histogramme: 100 faire Münzwürfe mit p=0,5 sind annähernd glockenförmig; bei 100 unabhängigen Versuchen mit Trefferchance 1 Prozent ist die Trefferzahl rechtsschief und ein Normalmodell unpassend.",
+        "originalDigest": "sha256:de87084c06ea972b84ce521e6c70ee57e0f4f304ab40d466f48760ecf59fef0f",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      },
+      "directSourceMappings": [
+        {
+          "legacyGoalId": "8a81f8bb-f573-588b-a488-0a5f8f3e5468",
+          "canonicalGoalId": "b431148b-526c-4bde-b04b-48d23101d0d3",
+          "matchType": "exact",
+          "reviewDecisionId": "8a81f8bb-f573-588b-a488-0a5f8f3e5468",
+          "source": {
+            "id": "8a81f8bb-f573-588b-a488-0a5f8f3e5468",
+            "title": "machen die Bedeutung der Normalverteilung damit plausibel, dass die Erhebung von Messwerten (z. B. K",
+            "description": "Die lernende Person kann machen die Bedeutung der Normalverteilung damit plausibel, dass die Erhebung von Messwerten (z. B. Körpergröße, Länge von Werkstücken) häufig zu glockenförmigen Histogrammen führt.",
+            "passageId": "by-math-gym-m13-2",
+            "topicCode": "M13.2",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 13",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST13_EA_TEIL1",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil1.pdf",
+            "sourceSpan": "machen die Bedeutung der Normalverteilung damit plausibel, dass die Erhebung von Messwerten (z. B. Körpergröße, Länge von Werkstücken) häufig zu glockenförmigen Histogrammen führt.",
+            "sourceText": "machen die Bedeutung der Normalverteilung damit plausibel, dass die Erhebung von Messwerten (z. B. Körpergröße, Länge von Werkstücken) häufig zu glockenförmigen Histogrammen führt.",
+            "parentBulletText": "machen die Bedeutung der Normalverteilung damit plausibel, dass die Erhebung von Messwerten (z. B. Körpergröße, Länge von Werkstücken) häufig zu glockenförmigen Histogrammen führt.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.2",
+            "granularity": "official-learning-expectation",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:13",
+              "topic:M13.2",
+              "sourceDocument:JGST13_EA_TEIL1"
+            ]
+          }
+        }
+      ],
+      "inheritedClusterSourceMappings": []
+    },
+    {
+      "goalId": "9b339361-7719-573d-a913-432246c502ee",
+      "title": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+      "goalFingerprint": "sha256:a4fd97979e06eb33292219bc2e43f1cd73d43faecbcbe560425b9aecfbb20f35",
+      "applicability": [
+        {
+          "jurisdiction": "DE-BY",
+          "scopes": [
+            {
+              "stage": "SekII",
+              "durationModel": "G9",
+              "courseProfile": "LK"
+            }
+          ]
+        }
+      ],
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.1",
+      "canonicalTags": [
+        "LK",
+        "canonical"
+      ],
+      "bySekIICourseProfiles": [
+        "LK"
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Visualisierung: Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+        "url": "/assets/goal-visualizations/mathematik/9b339361-7719-573d-a913-432246c502ee/9b339361-7719-573d-a913-432246c502ee.png",
+        "altText": "Schematische, nicht maßstäbliche Silhouette der Mandelbrot-Menge neben zwei Iterationsbeispielen für z₀=0 und zₙ₊₁=zₙ²+c: Bei c=0 bleibt die Folge 0 und beschränkt, bei c=1 wächst sie 0, 1, 2, 5 und ist unbeschränkt.",
+        "originalDigest": "sha256:ade268c6b3cdf801f49fdc0587ec8792e73ecbbcbaf648e680e46ed710da46d2",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      },
+      "directSourceMappings": [
+        {
+          "legacyGoalId": "f30e29d2-ac94-54ae-9d9b-8f73f49c56ef",
+          "canonicalGoalId": "9b339361-7719-573d-a913-432246c502ee",
+          "matchType": "exact",
+          "reviewDecisionId": "f30e29d2-ac94-54ae-9d9b-8f73f49c56ef",
+          "source": {
+            "id": "f30e29d2-ac94-54ae-9d9b-8f73f49c56ef",
+            "title": "untersuchen im Zusammenhang mit der Mandelbrot-Menge Folgen komplexer Zahlen auf Beschränktheit. Sie",
+            "description": "Die lernende Person kann untersuchen im Zusammenhang mit der Mandelbrot-Menge Folgen komplexer Zahlen auf Beschränktheit. Sie veranschaulichen die Mandelbrot-Menge mithilfe einer geeigneten Software.",
+            "passageId": "by-math-gym-m12-v-1",
+            "topicCode": "M12-V.1",
+            "stage": "SekII",
+            "grade": "Jahrgangsstufe 12",
+            "courseLevel": "LK",
+            "sourceDocumentKey": "JGST12_VERTIEFUNG",
+            "sourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_12_Vertiefungskurs.pdf",
+            "sourceSpan": "untersuchen im Zusammenhang mit der Mandelbrot-Menge Folgen komplexer Zahlen auf Beschränktheit. Sie veranschaulichen die Mandelbrot-Menge mithilfe einer geeigneten Software.",
+            "sourceText": "untersuchen im Zusammenhang mit der Mandelbrot-Menge Folgen komplexer Zahlen auf Beschränktheit. Sie veranschaulichen die Mandelbrot-Menge mithilfe einer geeigneten Software.",
+            "parentBulletText": "untersuchen im Zusammenhang mit der Mandelbrot-Menge Folgen komplexer Zahlen auf Beschränktheit. Sie veranschaulichen die Mandelbrot-Menge mithilfe einer geeigneten Software.",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.1",
+            "granularity": "official-learning-expectation",
+            "contains": [],
+            "requires": [],
+            "tags": [
+              "source:DE-BY",
+              "subject:Mathematik",
+              "stage:SekII",
+              "grade:12",
+              "topic:M12-V.1",
+              "sourceDocument:JGST12_VERTIEFUNG",
+              "course:Vertiefungskurs"
+            ]
+          }
+        }
+      ],
+      "inheritedClusterSourceMappings": []
+    }
+  ],
+  "noHumanApproval": true,
+  "noStrictDClaim": true
+}

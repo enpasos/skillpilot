@@ -31,6 +31,8 @@ Use this page by role: start with the overview documents, then jump to a review 
   Fachliche Restentscheidungen, Prüfkriterien und Reihenfolge für den commitfähigen Zwischenstand.
 - [Mathematik M7: commitfähiger Pausen-Checkpoint vom 28. September](math-m7-commit-checkpoint-2026-09-28.md)
   Gesicherter M6-Stand, gezielte Prüfungsfreigaben und klar abgegrenzte Restarbeit.
+- [Mathematik M7: Integrationscheckpoint vom 28. September](math-m7-commit-checkpoint-2026-09-28-v2.md)
+  Aktueller Fünf-Gate-Stand, Bild- und Quellenreparaturen sowie lokale Prüfungen.
 - [Curriculum Mapping Workbench](curriculum-mapping-workbench.md)
   Two-pane audit surface from source snapshots to learner-facing SkillPilot trees.
 - [Documentation Guidelines](../dev/documentation-guidelines.md)

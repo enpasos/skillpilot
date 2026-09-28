@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "fresh-b-pythagoras-converse-two-png-independent-20260928",
+  "reviewedAt": "2026-09-28T14:30:24.786468+00:00",
+  "reviewer": {
+    "kind": "ai",
+    "provider": "OpenAI",
+    "model": "gpt-6-astra",
+    "agent": "/root/fresh_b"
+  },
+  "reviewStatus": "ai_candidate",
+  "humanApproved": false,
+  "reviews": [
+    {
+      "goalId": "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+      "goalText": {
+        "id": "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+        "title": "Den Kehrsatz des Pythagoras beweisen",
+        "description": "Die lernende Person kann den Kehrsatz des Pythagoras beweisen, indem sie ein rechtwinkliges Hilfsdreieck mit den beiden kürzeren Seiten vergleicht, die Gleichheit der dritten Seite mit dem Satz des Pythagoras nachweist und mittels Kongruenz auf den rechten Winkel im ursprünglichen Dreieck schließt.",
+        "descriptionEn": "The learner can prove the converse of the Pythagorean theorem by comparing a right auxiliary triangle with the two shorter sides, establishing equality of the third side using the Pythagorean theorem, and using congruence to infer the right angle in the original triangle."
+      },
+      "goalTextDigest": "sha256:eaa94806b776d319854f2e2eecd24c69f1bc0a1a389037b3e2e2a1be71566d48",
+      "candidate": {
+        "path": "tmp/m7-20260928-continuation/pyth-converse-proof-compact-imagegen.png",
+        "sha256": "sha256:b6bae508244409c7c034af760591c0af1a8c3bba38f36eec999acd5df1953cd5",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "actualOriginalViewed": true,
+        "viewTool": "view_image",
+        "viewDetail": "original"
+      },
+      "preview360": {
+        "path": "tmp/m7-20260928-continuation/pyth-converse-proof-compact-imagegen.360.png",
+        "sha256": "sha256:13acb6b395f19ca6fc9ad8effa1a800acb7572d63a865e01f70a612c5b7114f8",
+        "dimensions": [
+          360,
+          203
+        ],
+        "actualViewed": true,
+        "viewTool": "view_image",
+        "viewDetail": "original",
+        "resizeMethod": "Pillow LANCZOS; width360, height rounded to preserve aspect ratio"
+      },
+      "humanApproved": false,
+      "activeBindingClaimed": false,
+      "decision": "hold",
+      "formulaAndLogicalChainDecision": "pass",
+      "geometryDecision": "hold",
+      "mobile360ReadabilityDecision": "pass",
+      "styleDecision": "pass",
+      "correctFeatures": [
+        "a and b meet at C and C′, while c and d lie opposite the corresponding angles; labels and colors are assigned to matching sides.",
+        "Given the premise a²+b²=c², Pythagoras in the right auxiliary triangle gives d²=a²+b²=c². Positive side lengths imply d=c; SSS then gives C=C′=90°. This displayed chain is correct.",
+        "The original angle has only a question mark; the right-angle marker appears only in the auxiliary triangle.",
+        "All essential labels, exponents, equalities and the SSS conclusion remain legible at 360px; friendly restrained diagram style."
+      ],
+      "geometryMeasurements": {
+        "method": "Vertex centers estimated directly from the original rendered PNG; values below are approximate raster diagnostics, not exact authored coordinates.",
+        "givenTriangle": {
+          "visuallyEstimatedVertexCentersPx": {
+            "A": [
+              122,
+              492
+            ],
+            "B": [
+              689,
+              493
+            ],
+            "C": [
+              386,
+              188
+            ]
+          },
+          "aBCPx": 429.9232489642773,
+          "bACPx": 402.6313450291718,
+          "baseABPx": 567.0008818335294,
+          "aOverB": 1.067783853075642,
+          "apexAngleDegrees": 85.783264054385
+        },
+        "auxiliaryTriangle": {
+          "visuallyEstimatedVertexCentersPx": {
+            "A": [
+              976,
+              488
+            ],
+            "B": [
+              1525,
+              489
+            ],
+            "C": [
+              1255,
+              200
+            ]
+          },
+          "aBCPx": 395.5009481657408,
+          "bACPx": 400.98004937901834,
+          "baseABPx": 549.000910746057,
+          "aOverB": 0.9863357261246218,
+          "apexAngleDegrees": 87.14392744989932
+        }
+      },
+      "blockingFinding": "The proof relies on matching side lengths, but the rendered triangles do not preserve the same side proportions: a/b is about1.068 on the left and0.986 on the right. This discrepancy remains under uniform scaling; left a is visibly longer than b while the auxiliary a is slightly shorter. The marked auxiliary angle is approximately87.1°, rather than perpendicular. The geometry is insufficiently faithful for this SSS illustration despite correct symbolic reasoning.",
+      "requiredCorrection": [
+        "Generate both triangles from the same geometric construction, preserving a:b:c across panels; translation or rigid rotation/reflection is allowed.",
+        "Make the two auxiliary legs perpendicular and place the square marker on those actual legs.",
+        "Preserve the current readable large type, colors, side labels and complete logical ribbon; do not add a right-angle marker to the original triangle."
+      ],
+      "suggestedExactImagegenGeometryReference": {
+        "canvas": [
+          1672,
+          941
+        ],
+        "given": {
+          "A": [
+            100,
+            500
+          ],
+          "B": [
+            700,
+            500
+          ],
+          "C": [
+            484,
+            212
+          ]
+        },
+        "auxiliary": {
+          "A_prime": [
+            950,
+            500
+          ],
+          "B_prime": [
+            1550,
+            500
+          ],
+          "C_prime": [
+            1334,
+            212
+          ]
+        },
+        "sideLengthsPx": {
+          "a_BC_and_BprimeCprime": 360,
+          "b_AC_and_AprimeCprime": 480,
+          "c_AB_and_d_AprimeBprime": 600
+        },
+        "sideRatio": "a:b:c =3:4:5; use this only as a layout proportion and retain symbolic a,b,c,d labels in the final illustration.",
+        "geometryIdentity": "The second triangle is the first translated by (850,0); the two legs have dot product0 at both C and C′.",
+        "auxiliaryRightAnglePolyline": [
+          [
+            1308.4,
+            231.2
+          ],
+          [
+            1327.6,
+            256.8
+          ],
+          [
+            1353.2,
+            237.6
+          ]
+        ],
+        "colorBinding": {
+          "a": "blue",
+          "b": "green",
+          "c_and_d": "coral red"
+        },
+        "formulaRibbon": "d²=a²+b²=c² → d=c → SSS ⇒ ∠C=90°",
+        "formatInstruction": "Coordinate data for the image generator; no programmatic SVG asset is created or proposed for active use."
+      }
+    },
+    {
+      "goalId": "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+      "goalText": {
+        "id": "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+        "title": "Rechtwinkligkeit mit dem Kehrsatz des Pythagoras prüfen",
+        "description": "Die lernende Person kann bei einem Dreieck mit gegebenen Seitenlängen die längste Seite bestimmen und anhand der Quadratsummenbeziehung entscheiden, ob das Dreieck rechtwinklig ist, sowie gegebenenfalls die Lage des rechten Winkels angeben und ihre Entscheidung mit Satz und Kehrsatz begründen.",
+        "descriptionEn": "The learner can identify the longest side of a triangle with given side lengths, decide from the sum-of-squares relation whether it is right-angled, and locate the right angle where present, justifying the decision using the theorem and its converse."
+      },
+      "goalTextDigest": "sha256:876b36a4898ec1fffef9977ebf03a5e2b3f16a72ed47fa40922d3a6ef2c973b3",
+      "candidate": {
+        "path": "tmp/m7-20260928-continuation/pyth-converse-criterion-imagegen.png",
+        "sha256": "sha256:4d2d8170e20beca927eaa82696250221a1415439e4b3fdaa01b5b80b5d1996d7",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "actualOriginalViewed": true,
+        "viewTool": "view_image",
+        "viewDetail": "original"
+      },
+      "preview360": {
+        "path": "tmp/m7-20260928-continuation/pyth-converse-criterion-imagegen.360.png",
+        "sha256": "sha256:7443e8241f9a6cbe621977debac58d4452715056f4a1930fb4284d82130b1f17",
+        "dimensions": [
+          360,
+          203
+        ],
+        "actualViewed": true,
+        "viewTool": "view_image",
+        "viewDetail": "original",
+        "resizeMethod": "Pillow LANCZOS; width360, height rounded to preserve aspect ratio"
+      },
+      "humanApproved": false,
+      "activeBindingClaimed": false,
+      "decision": "pass",
+      "mathematicsDecision": "pass",
+      "geometryDecision": "pass_schematic",
+      "mobile360ReadabilityDecision": "pass_key_content",
+      "styleDecision": "pass",
+      "mathChecks": [
+        "Both triples satisfy the triangle inequality:5+12>13 and5+12>14.",
+        "5²+12²=25+144=169=13², so the first triangle is right; the right-angle mark lies between the sides5 and12, opposite13.",
+        "5²+12²=169≠196=14², so the second triangle is not right. Side14 is the longest and lies opposite the visibly obtuse apex.",
+        "Exact 5-12-14 apex angle is arccos((25+144−196)/(2·5·12))≈103.003°. The rendered estimate≈102.64° is consistent.",
+        "The bottom statement correctly locates a right angle opposite the longest side when equality holds."
+      ],
+      "geometryChecks": {
+        "rightTriangleCounterexample": {
+          "visuallyEstimatedVertexCentersPx": {
+            "A": [
+              912,
+              547
+            ],
+            "B": [
+              1477,
+              548
+            ],
+            "C": [
+              1021,
+              379
+            ]
+          },
+          "aBCPx": 486.30957218627725,
+          "bACPx": 200.26232796010336,
+          "baseABPx": 565.0008849550592,
+          "aOverB": 2.428362723732847,
+          "apexAngleDegrees": 102.64047845449873
+        },
+        "rightNormalizedToBase14": [
+          4.9622446019079325,
+          12.050129817317762,
+          14
+        ],
+        "leftDiagramMeasuredVerticalHorizontalPx": [
+          200.0025,
+          449.0045
+        ],
+        "leftDiagramQualification": "The 5-side is approximately6.9 percent longer relative to the12-side than an exact scale drawing; this is a schematic ungridded picture. The actual perpendicularity, opposite longest side and correct 5-12-13 relation remain unambiguous. No exact-scale claim is granted.",
+        "counterexampleConclusion": "The corrected 5-12-14 shape closely preserves the labelled side ratios (approximately4.96:12.05:14); no false right-angle marker."
+      },
+      "readabilityChecks": [
+        "At360px the side triples, side numbers, longest-side indicators, both square equations and both right/non-right conclusions remain legible.",
+        "The subtitle and bottom explanatory sentence are small; the essential decision and side/angle placement are communicated by the large labels and diagram."
+      ],
+      "blockingFindings": []
+    }
+  ],
+  "provenance": {
+    "metadataPath": "tmp/m7-20260928-continuation/pyth-converse-png-candidates.json",
+    "metadataSha256": "sha256:46295b7d0866447b1b4d699155cdb922188897e033298b059cb7274cd67e4fe5",
+    "declaredProvider": "OpenAI built-in imagegen",
+    "declaredModel": "not exposed by the built-in tool",
+    "exactPromptLocation": "goals[].attempts[].promptLines in the candidate metadata",
+    "selectedHashesVerified": true,
+    "limitations": [
+      "Generation provenance is read from the generator metadata; this independent reviewer did not invoke generation.",
+      "Earlier rejected/superseded candidates were not viewed in this independent review and their reported defects are not newly certified here."
+    ]
+  },
+  "scope": {
+    "actualOriginalsViewed": 2,
+    "actual360PreviewsViewed": 2,
+    "activeFilesChanged": false,
+    "noHumanApproval": true,
+    "noStrictM7Closure": true
+  },
+  "writes": [
+    "Two temporary aspect-preserving360px previews",
+    "This temporary review JSON"
+  ]
+}

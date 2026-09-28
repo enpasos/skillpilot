@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "scope": "Pythagoras proof PNG binding and affected visualization checks",
+  "checks": [
+    {
+      "command": "npm --prefix app run check:goal-visualization-assets",
+      "exitCode": 0,
+      "result": "Passed for 1696 links in 21 landscapes."
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-qa -- --subjects=mathematik",
+      "exitCode": 0,
+      "result": "Current Mathematics QA ledger."
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-rollout-coverage",
+      "exitCode": 0,
+      "result": "Current rollout status and required coverage."
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-qa-coverage-parity",
+      "exitCode": 0,
+      "result": "Mathematics 803/803 active atomic images; Physics 478/478."
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-approval-coverage",
+      "exitCode": 0,
+      "result": "Mathematics 828 active visualizations with exact-hash AI or human visual evidence; no display exceptions."
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-rollout-status",
+      "exitCode": 0,
+      "result": "Generated Mathematics visualization status is current."
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "result": "No whitespace errors at integration check."
+    }
+  ],
+  "assertions": [
+    "The three active PNG copies match the independently accepted SHA-256.",
+    "The old SVG bytes remain unchanged in dated review history and are absent from the three active asset trees.",
+    "Only this goal's primary resourceLink changed in its canonical goal; the goal's non-image semantics are unchanged.",
+    "The exact active PNG hash is AI-approved in the visual QA row; humanApproved remains no and humanReviewedAt remains null."
+  ],
+  "centralFiveGateReportRecomputedHere": false,
+  "fullCiRunHere": false
+}

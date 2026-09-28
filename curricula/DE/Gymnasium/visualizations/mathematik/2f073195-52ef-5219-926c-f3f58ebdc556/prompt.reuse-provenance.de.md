@@ -1,0 +1,3 @@
+# Historische Wiederverwendung vor der Pfeilkorrektur
+
+Das zuerst bytegleich übernommene JPG stammt von `/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/visualizations/mathematik/8064088b-dc0a-4a67-ad63-360fdcc9869d/8064088b-dc0a-4a67-ad63-360fdcc9869d.jpg`. Es bleibt mit seinem ursprünglichen Provider und Prompt als historischer Stand erhalten. In diesem JPG zeigte ein Bogenlängenpfeil auf den geraden Durchmesser. Das nun aktive PNG wurde mit OpenAI imagegen gezielt korrigiert; der tatsächliche Edit-Prompt steht in `prompt.de.md`. QA, D und P sind neu an Kind-ID und aktiven PNG-Hash zu binden. Keine Freigabe oder Lernerfolgsübertragung aus dem Altknoten.

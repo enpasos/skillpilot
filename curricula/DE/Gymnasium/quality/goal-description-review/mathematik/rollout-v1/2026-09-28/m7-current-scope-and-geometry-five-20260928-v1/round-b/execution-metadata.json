@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-b.batch-001.fresh-b",
+  "executionKind": "actual_native_codex_subagent_review",
+  "agentTask": "/root/fresh_b",
+  "threadId": "01a0e7d3-b26a-78c1-a7fe-befc7d815a5c",
+  "sessionStartFromOwnTurnContext": "2026-09-28T11:43:28.771Z",
+  "completedAt": "2026-09-28T11:50:13.886302Z",
+  "provider": "OpenAI",
+  "model": "gpt-6-astra",
+  "reasoningEffort": "ultra",
+  "modelEvidence": "Own session turn_context metadata, no model override inferred",
+  "blindToOtherReviews": true,
+  "otherReviewerOutputsRead": false,
+  "reviewedInputs": [
+    "AGENTS.md",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/prompt.md",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/criteria.md",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/description-review-campaign.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/review-bundle-manifest.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/contracts/goal-description-review-record.schema.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/batches/mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-b.batch-001.input.jsonl"
+  ],
+  "generationParametersPath": "generation-parameters.json",
+  "generationParametersDigest": "sha256:a56e9109e5bbf8cf5c9d544c4cb9a8e826a4d9693fc8d69ed725f141e510b399",
+  "outputPath": "results/mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-b.batch-001.records.jsonl",
+  "outputDigest": "sha256:149e5ce2b8d6333903d4a4295707b6f07f33d0cb0204979287914dfade0cada7",
+  "imageInspections": [
+    {
+      "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/803d910d-96d1-5118-b9ca-29e93d0da76d/803d910d-96d1-5118-b9ca-29e93d0da76d.jpg",
+      "boundDigest": "sha256:1b0cb7b7e1391937d1e745971869890b6c08aa30b7917d8e1d6d45cc4088a2bd",
+      "actualDigest": "sha256:1b0cb7b7e1391937d1e745971869890b6c08aa30b7917d8e1d6d45cc4088a2bd",
+      "inspectedWith": "view_image",
+      "actualImageViewed": true,
+      "imageDecision": "blocked_candidate",
+      "notes": "Die Beschreibung ist fachlich präzise, bilingual gleichwertig, auf eine Projektion begrenzt und nennt die notwendige Richtungsbedingung; kein Wording-Split angezeigt. Der gebundene JPG-Snapshot enthält jedoch eine irreführende Koordinatenzeichnung: positive x-Richtung zeigt vom Ursprung nach links unten, positive y-Richtung nach rechts, z ist vertikal. Für A′=(2,−1,−1) tragen daher sowohl 2x als auch −y eine linke horizontale Komponente bei, −z keine; A′ ist dennoch rechts vom Ursprung eingezeichnet. Auch A=(2,−1,3) kann dort nicht liegen. Matrix, Ebenenprobe und vertikale Projektionsstrecke sind algebraisch richtig, retten diese falsche Zeichnung aber nicht. Block gilt diesem gebundenen Bild, nicht einer inzwischen möglicherweise anderen Ressource. Der Mappingscope anderer Länder wurde nicht unabhängig belegt. Kein aktuelles V2-Profil geliefert."
+    },
+    {
+      "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/d3c42193-f1b7-5c6d-a991-bf034d99359f/d3c42193-f1b7-5c6d-a991-bf034d99359f.jpg",
+      "boundDigest": "sha256:513dfca6840522f8e455ef5f5a0ba7c83ea7d412c34bc7bf26bfbb3913dae83f",
+      "actualDigest": "sha256:513dfca6840522f8e455ef5f5a0ba7c83ea7d412c34bc7bf26bfbb3913dae83f",
+      "inspectedWith": "view_image",
+      "actualImageViewed": true,
+      "imageDecision": "blocked_candidate",
+      "notes": "Die Beschreibung ist mathematisch und bilingual korrekt; das Aufstellen und Lösen derselben Fixpunktbedingung ist atomar zusammenhängend und die Methode ausdrücklich beansprucht. Der gebundene JPG-Snapshot ist sachlich irreführend: Die als y=x bezeichnete dicke Fixgerade schneidet die x-Achse rechts vom Achsenursprung, obwohl jede lineare Abbildung den Ursprung fixiert und diese Gerade zwingend durch ihn verlaufen muss. Auch das gezeichnete R liegt nicht auf einer vom Achsenschnitt aus gleich großen x- und y-Verschiebung; die beschrifteten Spiegelpunkte passen nicht zur gemeinsamen Achsengeometrie. Richtige Matrix und Textgleichungen beseitigen den Bildfehler nicht. Block gilt nur dem betrachteten, hashgebundenen JPG. Kein aktuelles V2-Profil geliefert; externe vollständige Quellenabdeckung wurde nicht aus sourceRef gefolgert."
+    },
+    {
+      "goalId": "fde351a8-98b1-5d75-b4df-813beb2bbe3c",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/fde351a8-98b1-5d75-b4df-813beb2bbe3c/fde351a8-98b1-5d75-b4df-813beb2bbe3c.png",
+      "boundDigest": "sha256:a831dbbe7a5cc3b92da30376bf22cf63c6cbd02f18be8e51cea20510e2febd44",
+      "actualDigest": "sha256:a831dbbe7a5cc3b92da30376bf22cf63c6cbd02f18be8e51cea20510e2febd44",
+      "inspectedWith": "view_image",
+      "actualImageViewed": true,
+      "imageDecision": "suitable_orientation_candidate",
+      "notes": "Die Beschreibung ist auf die Mathematisierung einer funktionalen Beziehung und ihre Größenbedeutungen begrenzt. Sie übernimmt weder Annahmenwahl aus der Voraussetzung noch Ergebnisdeutung und Nebenbedingungsprüfung aus Nachfolgezielen; DE/EN entsprechen einander. Das betrachtete PNG zeigt korrekt K(x)=15+2x mit 15 Euro Fixkosten und 2 Euro Materialkosten je Saft. Das einfache lineare Beispiel orientiert, begrenzt die allgemeine Kompetenz aber nicht auf lineare Funktionen. Die gebundene Anwendbarkeit schließt Bayern aus; eine eigene Verifikation aller Länderquellen wird damit nicht behauptet. Kein aktuelles V2-Profil geliefert."
+    },
+    {
+      "goalId": "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/1dd0266c-41b4-5481-b64b-7b718cfe799b/1dd0266c-41b4-5481-b64b-7b718cfe799b.png",
+      "boundDigest": "sha256:dd945aa240b7d6cdcc380df4e39d2fd058706e48061ae4b87b09807de099802a",
+      "actualDigest": "sha256:dd945aa240b7d6cdcc380df4e39d2fd058706e48061ae4b87b09807de099802a",
+      "inspectedWith": "view_image",
+      "actualImageViewed": true,
+      "imageDecision": "suitable_orientation_candidate",
+      "notes": "Konstruktion und Abstandsbegründung sind eine gemeinsame elementare Kreisvorstellung; die Zirkelmethode ist ausdrücklich Gegenstand des Ziels und die englische Fassung ist inhaltlich gleichwertig. Die J5-Anforderung bleibt bei einer anschaulichen Begründung statt eines formalen Ortslinienbeweises. Das tatsächliche PNG kennzeichnet die linke Ellipsenansicht ausdrücklich als Schrägansicht und zeigt rechts einen frontalen Kreis mit passend liegendem Mittelpunkt und gleich langen Radien. Die exemplarischen drei Punkte unterstützen die Orientierung; die allgemeine Abstandsbegründung entsteht durch das Zirkelprinzip. Keine zusätzlichen Länderquellen verifiziert. Kein aktuelles V2-Profil geliefert."
+    },
+    {
+      "goalId": "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+      "assetPath": "app/public/assets/goal-visualizations/mathematik/d98849c7-bd0b-50d4-90aa-6293a3adb211/d98849c7-bd0b-50d4-90aa-6293a3adb211.jpg",
+      "boundDigest": "sha256:cbde47065ca9c8be63244b82923c13a34a16cd99b20dcae770ba488f98b1c9bc",
+      "actualDigest": "sha256:cbde47065ca9c8be63244b82923c13a34a16cd99b20dcae770ba488f98b1c9bc",
+      "inspectedWith": "view_image",
+      "actualImageViewed": true,
+      "imageDecision": "suitable_orientation_candidate",
+      "notes": "Erkennen, Darstellen und Einordnen beziehen sich auf dieselbe hierarchische Klassifikationskompetenz und rechtfertigen keinen Split nur wegen mehrerer Vierecksnamen. Die inklusive Trapezdefinition beseitigt eine reale Konventionsambiguität; DE/EN stimmen überein und die knappe Eigenschaftsbegründung passt zu J5. Im tatsächlichen JPG stimmen Klassenmerkmale und Pfeilrichtungen: Quadrat zu Rechteck/Raute, beide weiter zum Parallelogramm, Parallelogramm zum Trapez, Raute zum inklusiven Drachenviereck. Die Legende nennt die Bedeutung ist immer auch ein. Keine Winkel- oder Seitenbehauptung widerspricht der gezeigten Orientierung. Der generische Alttext sollte separat um die sichtbaren Hierarchiebeziehungen ergänzt werden. Keine umfassende Länderquellenprüfung behauptet. Kein aktuelles V2-Profil geliefert."
+    }
+  ],
+  "authority": "candidate/ai_candidate only; no human approval, no canonical mutation, no M7 completion",
+  "limitations": [
+    "Review uses bound snapshots; parallel current-canon edits are outside this run.",
+    "No current V2 evidence profiles were supplied; every recommendation is create.",
+    "No full PDF page rendering review was performed."
+  ],
+  "validation": [
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+        "--bundle",
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/review-bundle-manifest.json",
+        "--input",
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/description-review-input.json",
+        "--campaign",
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/description-review-campaign.json",
+        "--run",
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/results/mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-b.batch-001.run.json",
+        "--batch-input",
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/batches/mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-b.batch-001.input.jsonl",
+        "--records",
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/results/mathematik-m7-current-scope-and-geometry-five-20260928-v1-first-pass-b.batch-001.records.jsonl"
+      ],
+      "exitCode": 0,
+      "output": "Goal-description review batch valid: 5\n",
+      "completedAt": "2026-09-28T11:50:34.163655+00:00"
+    },
+    {
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+        "--bundle",
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/review-bundle-manifest.json",
+        "--input",
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/description-review-input.json",
+        "--campaign",
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/description-review-campaign.json",
+        "--batches-dir",
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/batches",
+        "--results-dir",
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-current-scope-and-geometry-five-20260928-v1/round-b/results"
+      ],
+      "exitCode": 0,
+      "output": "Goal-description review campaign results valid: 5\n",
+      "completedAt": "2026-09-28T11:50:34.823874+00:00"
+    }
+  ]
+}

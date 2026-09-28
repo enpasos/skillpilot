@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-28T11:26:13.656816+00:00",
+  "status": "ai_source_mapping_repair_not_human_approval",
+  "canonicalGoalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+  "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_source_extraction_to_canonical_math.review.json",
+  "before": {
+    "legacyGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+    "canonicalGoalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+    "matchType": "partial",
+    "reviewDecisionId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3"
+  },
+  "after": {
+    "legacyGoalId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+    "canonicalGoalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+    "matchType": "partial",
+    "reviewDecisionId": "by-math-m13-4-9371884f-s02-bf45d4d2b4"
+  },
+  "currentDecisions": [
+    {
+      "sourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+      "topicCode": "M13.4",
+      "sourceSpan": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "ead1f5ce-fdf4-5591-8982-395001017848",
+        "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35"
+      ],
+      "matchType": "exact",
+      "rationale": "Der erste gesplittete M13.4-Aspekt verlangt die flexible und reflektierte Anwendung der Differential- und Integralrechnung. Der Elterncluster bleibt als Gesamtzuordnung exact; das Integralblatt 0b162cb0 deckt nur den Integralteil ab und bleibt partial. Die eigenständige Validierungsleistung 71fe4a39 ist am zweiten Source-Aspekt gebunden. M13.4 gehört zum regulären bayerischen Pflichtfach auf erhöhtem Anforderungsniveau; die technische GK/LK-Zuordnung wird getrennt durch die Composition-Views bestimmt.",
+      "reviewedAt": "2026-09-28",
+      "reviewer": "codex",
+      "evidence": {
+        "method": "source-extraction-by-m3-gap-resolution",
+        "sourceTopicCode": "M13.4",
+        "sourceDocumentKey": "JGST13_EA_TEIL2",
+        "sourceSplitPolicy": "original-source-goal-id-retained-for-first-aspect"
+      }
+    },
+    {
+      "sourceGoalId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+      "topicCode": "M13.4",
+      "sourceSpan": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "ead1f5ce-fdf4-5591-8982-395001017848",
+        "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2"
+      ],
+      "matchType": "exact",
+      "rationale": "Der zweite gesplittete M13.4-Aspekt nennt ausdrücklich das Interpretieren und Validieren von Ergebnissen. Das Validierungsblatt 71fe4a39 wird direkt diesem passenden Aspekt zugeordnet; die Kante bleibt partial, weil das Blatt zusätzlich Modellannahmen und Grenzen beurteilt und der Source-Aspekt darüber hinaus Berufsfeldorientierung enthält. Der Elterncluster bleibt als Gesamtzuordnung exact. Die erste Source-ID wird nicht mehr stellvertretend für den ungesplitteten Bullet verwendet.",
+      "reviewedAt": "2026-09-28",
+      "reviewer": "codex",
+      "evidence": {
+        "method": "current-split-source-aspect-revalidation",
+        "parentSourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+        "sourceSplitIndex": 2,
+        "sourceSplitPartCount": 2,
+        "sourceTopicCode": "M13.4",
+        "sourceDocumentKey": "JGST13_EA_TEIL2"
+      }
+    }
+  ],
+  "reason": "The historical source ID now identifies only the application aspect of the split M13.4 bullet. The validation child belongs to the actual second aspect. Partial fidelity remains partial; no exact upgrade, goal-text edit or authority change is made.",
+  "validation": [
+    "Existing backend BY GK/LK planning-scope regression passed.",
+    "Full GoalMappingRepositoryFixtureTest passed: 87 tests, zero failures/errors, including current BY/BW child-source assertions.",
+    "python scripts/validate_schemas.py passed for 21284 files."
+  ],
+  "noCanonicalOrViewOrRuntimeChangesInThisSubtask": true,
+  "noStrictDClaim": true,
+  "noHumanApproval": true
+}

@@ -99,6 +99,8 @@ interface SplitLayoutTemplate {
   placementCount: number
   excludedGoalIds?: string[]
   prerequisiteOnlyGoalIds?: string[]
+  prerequisiteOnlyOverrideGoalIds?: string[]
+  additionalTargetGoalIds?: string[]
   placements: SplitLayoutPlacement[]
 }
 
@@ -297,7 +299,7 @@ const collectExpandedReferencedGoalIds = (nodes: CompositionNode[]) => {
 }
 
 const removeStructureById = (nodes: CompositionNode[], structureId: string): CompositionNode[] =>
-  nodes.flatMap((node) => {
+  nodes.flatMap<CompositionNode>((node) => {
     if (node.kind !== 'structure') return [node]
     if (node.id === structureId) return []
     const children = removeStructureById(node.children, structureId)
@@ -466,12 +468,67 @@ const isGoalApplicableToJurisdiction = (goalId: string, jurisdiction: string): b
   return !jurisdictions || jurisdictions.includes(jurisdiction)
 }
 
+for (const template of splitLayoutPlan.sek1Templates) {
+  const overrideGoalIds = template.prerequisiteOnlyOverrideGoalIds ?? []
+  if (!Array.isArray(overrideGoalIds)) {
+    throw new Error(`${template.fileName}: prerequisite-only overrides must be an array`)
+  }
+  const seen = new Set<string>()
+  for (const goalId of overrideGoalIds) {
+    if (typeof goalId !== 'string' || !goalId.trim()) {
+      throw new Error(`${template.fileName}: prerequisite-only override must have a goal ID`)
+    }
+    if (seen.has(goalId)) {
+      throw new Error(`${template.fileName}: duplicate prerequisite-only override ${goalId}`)
+    }
+    seen.add(goalId)
+    const goal = goalById.get(goalId)
+    if (!goal) {
+      throw new Error(`${template.fileName}: missing prerequisite-only override goal ${goalId}`)
+    }
+    if ((goal.contains?.length ?? 0) > 0) {
+      throw new Error(`${template.fileName}: prerequisite-only override ${goalId} is not atomic`)
+    }
+  }
+  const additionalTargetGoalIds = template.additionalTargetGoalIds ?? []
+  if (!Array.isArray(additionalTargetGoalIds)) {
+    throw new Error(`${template.fileName}: additional targets must be an array`)
+  }
+  const jurisdiction = template.fileName.split('-').slice(0, 2).join('-').toUpperCase()
+  const nonTargetGoalIds = new Set([
+    ...(template.excludedGoalIds ?? []),
+    ...(template.prerequisiteOnlyGoalIds ?? []),
+    ...overrideGoalIds,
+  ])
+  const seenTargets = new Set<string>()
+  for (const goalId of additionalTargetGoalIds) {
+    if (typeof goalId !== 'string' || !goalId.trim()) {
+      throw new Error(`${template.fileName}: additional target must have a goal ID`)
+    }
+    if (seenTargets.has(goalId)) {
+      throw new Error(`${template.fileName}: duplicate additional target ${goalId}`)
+    }
+    seenTargets.add(goalId)
+    const goal = goalById.get(goalId)
+    if (!goal || (goal.contains?.length ?? 0) > 0 || semanticKindByGoalId.get(goalId) !== 'curricularAtomic') {
+      throw new Error(`${template.fileName}: additional target ${goalId} must be an existing curricular atom`)
+    }
+    if (!isGoalApplicableToJurisdiction(goalId, jurisdiction)) {
+      throw new Error(`${template.fileName}: additional target ${goalId} is not applicable to ${jurisdiction}`)
+    }
+    if (nonTargetGoalIds.has(goalId)) {
+      throw new Error(`${template.fileName}: additional target ${goalId} is also explicitly excluded`)
+    }
+  }
+}
+
 interface CompleteSek1RouteBucketsOptions<TBucket extends string> {
   jurisdiction: string
   durationModel: DurationModel
   buckets: Record<TBucket, string[]>
   supplementGoalIds?: string[]
   routeSeedGoalIds?: string[]
+  additionalTargetGoalIds?: string[]
   excludedGoalIds?: Set<string>
   blockedPrerequisiteGoalIds?: Set<string>
   bucketForCanonicalYear: (year: string) => TBucket | null
@@ -492,17 +549,43 @@ const completeSek1RouteBuckets = <TBucket extends string>({
   buckets,
   supplementGoalIds = [],
   routeSeedGoalIds = [],
+  additionalTargetGoalIds = [],
   excludedGoalIds = new Set<string>(),
   blockedPrerequisiteGoalIds = new Set<string>(),
   bucketForCanonicalYear,
 }: CompleteSek1RouteBucketsOptions<TBucket>): Record<TBucket, string[]> => {
   const completedBuckets = Object.fromEntries(
-    Object.entries(buckets).map(([bucket, goalIds]) => [bucket, new Set(goalIds as string[])]),
+    Object.entries(buckets).map(([bucket, goalIds]) => [
+      bucket,
+      // Existing split overrides verify their original mapped membership before
+      // removing it. Keep these blocked atoms for that check, never as seeds.
+      new Set((goalIds as string[]).filter((goalId) => (
+        isGoalApplicableToJurisdiction(goalId, jurisdiction) || blockedPrerequisiteGoalIds.has(goalId)
+      ))),
+    ]),
   ) as Record<TBucket, Set<string>>
+  const placedGoalIds = new Set([
+    ...(Object.values(completedBuckets) as Set<string>[]).flatMap((goalIds) => [...goalIds]),
+    ...supplementGoalIds,
+  ])
+  for (const goalId of additionalTargetGoalIds) {
+    // Cross-stage goals already placed outside Sek I retain their existing parent.
+    if (excludedGoalIds.has(goalId) || placedGoalIds.has(goalId)) continue
+    if (blockedPrerequisiteGoalIds.has(goalId)) {
+      throw new Error(`${jurisdiction} ${durationModel}: additional target ${goalId} is blocked by the reviewed layout`)
+    }
+    const year = canonicalSek1Year(goalId)
+    const bucket = year === null ? null : bucketForCanonicalYear(year)
+    if (bucket === null || completedBuckets[bucket] === undefined) {
+      throw new Error(`No ${jurisdiction} ${durationModel} bucket for additional target ${goalId}`)
+    }
+    completedBuckets[bucket].add(goalId)
+    placedGoalIds.add(goalId)
+  }
   const presentGoalIds = new Set<string>([
     SEK1_MOTIVATION_GOAL_ID,
     SEK1_MEMORY_GOAL_ID,
-    ...Object.values(completedBuckets).flatMap((goalIds) => Array.from(goalIds)),
+    ...(Object.values(completedBuckets) as Set<string>[]).flatMap((goalIds) => Array.from(goalIds)),
     ...supplementGoalIds,
     ...routeSeedGoalIds,
     ...excludedGoalIds,
@@ -687,7 +770,7 @@ const collectAtomicGoalIdsFromNodes = (nodes: CompositionNode[]): Set<string> =>
 const removeDirectGoalReferences = (
   nodes: CompositionNode[],
   removeGoalIds: ReadonlySet<string>,
-): CompositionNode[] => nodes.flatMap((node) => {
+): CompositionNode[] => nodes.flatMap<CompositionNode>((node) => {
   if (node.kind !== 'structure') {
     return node.kind !== 'landscapeEntry' && removeGoalIds.has(node.goalId) ? [] : [node]
   }
@@ -746,6 +829,7 @@ const filterLayoutNodeByExcludedGoals = (
 interface ReviewedLayoutRouteContext {
   blockedPrerequisiteGoalIds: Set<string>
   replacementTargetGoalIds: string[]
+  additionalTargetGoalIds: string[]
 }
 
 /**
@@ -778,6 +862,8 @@ const reviewedLayoutRouteContext = (
   }
 
   const blockedPrerequisiteGoalIds = new Set<string>(effectiveExcludedGoalIds)
+  ;(template.prerequisiteOnlyOverrideGoalIds ?? [])
+    .forEach((goalId) => blockedPrerequisiteGoalIds.add(goalId))
   template.placements
     .flatMap((placement) => placement.removeAtomicGoalIds)
     .filter((goalId) => !replacementTargetGoalIds.has(goalId))
@@ -786,6 +872,7 @@ const reviewedLayoutRouteContext = (
   return {
     blockedPrerequisiteGoalIds,
     replacementTargetGoalIds: sortGoalIdsByTitle(replacementTargetGoalIds, goalById),
+    additionalTargetGoalIds: template.additionalTargetGoalIds ?? [],
   }
 }
 
@@ -948,6 +1035,7 @@ const createSek1Node = (durationModel: DurationModel, excludedGoalIds: Set<strin
   const initialBuckets = assignPrimaryGradeBuckets(durationModel, excludedGoalIds)
   const assignedGoalIds = new Set(Object.values(initialBuckets).flat())
   const extraGoalIds = baseSek1SupplementIds.filter((goalId) => {
+    if (!isGoalApplicableToJurisdiction(goalId, 'DE-HE')) return false
     if (excludedGoalIds.has(goalId)) return false
     if (assignedGoalIds.has(goalId)) return false
     const evidenceDurations = evidenceDurationsByAtomicId.get(goalId)
@@ -958,6 +1046,7 @@ const createSek1Node = (durationModel: DurationModel, excludedGoalIds: Set<strin
     durationModel,
     buckets: initialBuckets,
     supplementGoalIds: extraGoalIds,
+    additionalTargetGoalIds: routeContext.additionalTargetGoalIds,
     routeSeedGoalIds: [
       ...routeContext.replacementTargetGoalIds,
       ...legacyExamRouteSeedGoalIds('DE-HE', yearLabelsByDuration[durationModel]),
@@ -1147,12 +1236,14 @@ const createRpSek1Node = (
   const initialBuckets = assignRpStageBuckets(sek1ExcludedGoalIds)
   const assignedGoalIds = new Set(Object.values(initialBuckets).flat())
   const supplementGoalIds = sortGoalIdsByTitle(baseRpSek1SupplementIds, goalById)
-    .filter((goalId) => !sek1ExcludedGoalIds.has(goalId) && !assignedGoalIds.has(goalId))
+    .filter((goalId) => isGoalApplicableToJurisdiction(goalId, 'DE-RP')
+      && !sek1ExcludedGoalIds.has(goalId) && !assignedGoalIds.has(goalId))
   const buckets = completeSek1RouteBuckets({
     jurisdiction: 'DE-RP',
     durationModel,
     buckets: initialBuckets,
     supplementGoalIds,
+    additionalTargetGoalIds: routeContext.additionalTargetGoalIds,
     routeSeedGoalIds: [
       ...routeContext.replacementTargetGoalIds,
       ...legacyExamRouteSeedGoalIds('DE-RP', yearLabelsByDuration[durationModel]),
@@ -1358,6 +1449,7 @@ const createShSek1Node = (
     durationModel,
     buckets: assignShBandBuckets(excludedGoalIds),
     supplementGoalIds: shStageWideJ6GoalIds,
+    additionalTargetGoalIds: routeContext.additionalTargetGoalIds,
     routeSeedGoalIds: [
       ...routeContext.replacementTargetGoalIds,
       ...legacyExamRouteSeedGoalIds('DE-SH', yearLabelsByDuration[durationModel]),
@@ -1485,6 +1577,42 @@ const applyDirectPrerequisiteOnlyOverrides = (
   return clone(node)
 })
 
+/** Authored atomic scope overrides also cover mapped direct entries and atoms
+ * inherited from a canonical subtree, independently of split placements. */
+const applyReviewedPrerequisiteOnlyOverrides = (view: CompositionView): CompositionView => {
+  const templateFileName = `${view.scope.jurisdiction.toLowerCase()}-seki-${view.scope.durationModel.toLowerCase()}.view.json`
+  const template = splitLayoutTemplateByFileName.get(templateFileName)
+  if (!template) throw new Error(`Missing reviewed split-layout template ${templateFileName}`)
+  const overrideGoalIds = new Set(template.prerequisiteOnlyOverrideGoalIds ?? [])
+  if (overrideGoalIds.size === 0) return view
+
+  const directlyOverriddenGoalIds = new Set<string>()
+  const rootNodes = applyDirectPrerequisiteOnlyOverrides(view.rootNodes, overrideGoalIds, directlyOverriddenGoalIds)
+  rootNodes.push(...[...overrideGoalIds]
+    .filter((goalId) => !directlyOverriddenGoalIds.has(goalId))
+    .map((goalId): CompositionNode => ({ kind: 'goalEntry', goalId, projectionRole: 'prerequisiteOnly' })))
+  const remainingTargets = collectProjectedTargetGoalIds(rootNodes)
+  const failedOverrides = [...overrideGoalIds].filter((goalId) => remainingTargets.has(goalId))
+  if (failedOverrides.length > 0) {
+    throw new Error(`${view.viewId}: prerequisite-only override remained a target: ${failedOverrides.join(', ')}`)
+  }
+  return { ...view, rootNodes }
+}
+
+const removePrerequisiteOnlyReferences = (
+  nodes: CompositionNode[],
+  goalIds: ReadonlySet<string>,
+): CompositionNode[] => nodes.flatMap<CompositionNode>((node) => {
+  if (node.kind === 'structure') {
+    const children = removePrerequisiteOnlyReferences(node.children, goalIds)
+    return children.length > 0 ? [{ ...node, children }] : []
+  }
+  if (node.kind !== 'landscapeEntry' && node.projectionRole === 'prerequisiteOnly' && goalIds.has(node.goalId)) {
+    return []
+  }
+  return [node]
+})
+
 /**
  * Assessment nodes with applicabilityFromRequires belong to a generated view
  * only when every direct curricular prerequisite remains a learnable target
@@ -1505,27 +1633,50 @@ const filterAssessmentsWithoutTargetPrerequisites = (view: CompositionView): Com
     [...allTargetGoalIds]
       .filter((goalId) => semanticKindByGoalId.get(goalId) === 'curricularAtomic'),
   )
-  const unavailableAssessmentGoalIds = [...collectProjectedTargetGoalIds([sek1Node], view.scope.jurisdiction)]
+  const sek1TargetGoalIds = collectProjectedTargetGoalIds([sek1Node])
+  const authoredFolderAssessmentGoalIds = new Set(
+    Object.values(SEK1_EXAM_FOLDER_IDS_BY_YEAR)
+      .filter((folderId) => allTargetGoalIds.has(folderId) && sek1TargetGoalIds.has(folderId))
+      .flatMap((folderId) => collectAtomicDescendantIds(folderId)),
+  )
+  // The compiler does not filter jurisdiction. Even an inapplicable assessment
+  // inherited from a shared exam folder needs an explicit non-target role.
+  const derivedAssessmentGoalIds = [...new Set([...sek1TargetGoalIds, ...authoredFolderAssessmentGoalIds])]
     .filter((goalId) => {
       const goal = goalById.get(goalId)
       if (!goal || (goal.nodeKind !== 'exam' && !goal.examData)) return false
-      if (goal.extendedData?.applicabilityFromRequires !== true) return false
-      return (goal.requires ?? []).some((requiredId) => (
+      return goal.extendedData?.applicabilityFromRequires === true
+    })
+  const unavailableAssessmentGoalIds = derivedAssessmentGoalIds
+    .filter((goalId) => (goalById.get(goalId)?.requires ?? []).some((requiredId) => (
         semanticKindByGoalId.get(requiredId) === 'curricularAtomic'
         && !learnableCurricularAtomicGoalIds.has(requiredId)
-      ))
-    })
+      )))
     .sort()
+  const unavailableAssessmentGoalIdSet = new Set(unavailableAssessmentGoalIds)
+  // A broader duration target projection can make a base-view exclusion stale.
+  // Remove only its direct non-target override, leaving the task in its authored
+  // year folder; never create a detached target or introduce another exam year.
+  const restoredAssessmentGoalIds = new Set(derivedAssessmentGoalIds.filter((goalId) => (
+    authoredFolderAssessmentGoalIds.has(goalId) && !unavailableAssessmentGoalIdSet.has(goalId)
+  )))
+  const reconciledView = {
+    ...view,
+    rootNodes: removePrerequisiteOnlyReferences(view.rootNodes, restoredAssessmentGoalIds),
+  }
+  const reconciledSek1Node = findStructureById(reconciledView.rootNodes, structureId)
+  if (!reconciledSek1Node || reconciledSek1Node.kind !== 'structure') {
+    throw new Error(`Missing reconciled Sek-I structure ${structureId} in ${view.viewId}`)
+  }
 
   excludedAssessmentIdsByViewId.set(view.viewId, unavailableAssessmentGoalIds)
-  if (unavailableAssessmentGoalIds.length === 0) return view
+  if (unavailableAssessmentGoalIds.length === 0) return reconciledView
 
-  const unavailableAssessmentGoalIdSet = new Set(unavailableAssessmentGoalIds)
   const directlyOverriddenGoalIds = new Set<string>()
   const filteredSek1Node = {
-    ...clone(sek1Node),
+    ...clone(reconciledSek1Node),
     children: applyDirectPrerequisiteOnlyOverrides(
-      sek1Node.children,
+      reconciledSek1Node.children,
       unavailableAssessmentGoalIdSet,
       directlyOverriddenGoalIds,
     ),
@@ -1537,11 +1688,11 @@ const filterAssessmentsWithoutTargetPrerequisites = (view: CompositionView): Com
     goalId,
     projectionRole: 'prerequisiteOnly',
     })))
-  const replaced = replaceStructureById(view.rootNodes, structureId, filteredSek1Node)
+  const replaced = replaceStructureById(reconciledView.rootNodes, structureId, filteredSek1Node)
   if (!replaced.replaced) throw new Error(`${view.viewId}: could not apply assessment visibility filter`)
   const filteredView = { ...view, rootNodes: replaced.nodes }
   const stillTargetAssessmentGoalIds = unavailableAssessmentGoalIds.filter((goalId) => (
-    collectProjectedTargetGoalIds(filteredView.rootNodes, view.scope.jurisdiction).has(goalId)
+    collectProjectedTargetGoalIds(filteredView.rootNodes).has(goalId)
   ))
   if (stillTargetAssessmentGoalIds.length > 0) {
     throw new Error(
@@ -1650,7 +1801,9 @@ const restoreSek1ExternalPrerequisites = (view: CompositionView): CompositionVie
 const generatedViews = new Map(
   [...unfilteredGeneratedViews].map(([fileName, view]) => [
     fileName,
-    restoreSek1ExternalPrerequisites(restoreRightPrismFolder(filterAssessmentsWithoutTargetPrerequisites(view))),
+    restoreSek1ExternalPrerequisites(restoreRightPrismFolder(filterAssessmentsWithoutTargetPrerequisites(
+      applyReviewedPrerequisiteOnlyOverrides(view),
+    ))),
   ]),
 )
 

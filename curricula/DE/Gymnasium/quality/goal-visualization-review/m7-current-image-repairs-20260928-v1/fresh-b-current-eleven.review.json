@@ -1,0 +1,621 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "m7-current-image-repairs-20260928-v1-fresh-b-eleven",
+  "reviewType": "independent_visualization_review",
+  "reviewStatus": "ai_candidate",
+  "reviewedAt": "2026-09-28T12:13:23.718584+00:00",
+  "reviewer": {
+    "kind": "ai",
+    "agentTask": "/root/fresh_b",
+    "provider": "OpenAI",
+    "model": "gpt-6-astra",
+    "reasoningEffort": "ultra",
+    "sessionId": "01a0e7d3-b26a-78c1-a7fe-befc7d815a5c"
+  },
+  "scope": "Independent V-only visual inspection of eleven currently active original image files and eleven 360px whole-image derivatives against current DE/EN goal text. No D/P adjudication.",
+  "independence": {
+    "otherCurrentImageReviewResultsRead": false,
+    "priorDescriptionReviewsKnown": true,
+    "decisionBasis": "Actual current original and 360px pixels, mathematical checks, current exact goal text and current resource link; no legacy decision inherited."
+  },
+  "reviewPolicy": [
+    "The image is an orientation, not a complete proof or assessment of every aspect of the goal.",
+    "Visible mathematical claims and point, line, region, label and formula assignments must be correct.",
+    "Keep is an AI candidate recommendation only; it does not grant human approval."
+  ],
+  "bindings": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "canonicalFileDigestObservedAtFinalBindingCheck": "sha256:8dd43e70218314f30f417393ca047fbcb2ab750c2d9dffb616a81cad911e0783",
+    "globalCanonicalDigestIsNotAnApprovalBinding": true,
+    "bindingCheckAt": "2026-09-28T12:13:23.718584+00:00",
+    "allElevenGoalTextsLinksAndAssetDigestsUnchangedSinceViewing": true,
+    "textAndLinkDigestEncoding": "sha256 over UTF-8 json.dumps(ensure_ascii=False,sort_keys=True,separators=(comma,colon)); text payload keys are goalId,title,description,titleEn,descriptionEn"
+  },
+  "summary": {
+    "reviewedGoals": 11,
+    "originalViews": 11,
+    "preview360Views": 11,
+    "keep": 9,
+    "block": 2,
+    "humanApprovals": 0
+  },
+  "reviews": [
+    {
+      "goalId": "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+      "reviewStatus": "ai_candidate",
+      "decision": "keep",
+      "goalText": {
+        "goalId": "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+        "title": "Kreise aus Mittelpunkt und Radius zeichnen und begründen",
+        "description": "Die lernende Person kann zu einem gegebenen Mittelpunkt und Radius mit dem Zirkel einen Kreis zeichnen und begründen, dass alle Punkte der Kreislinie denselben Abstand vom Mittelpunkt haben.",
+        "titleEn": "Draw and justify circles from a centre and radius",
+        "descriptionEn": "The learner can use a compass to draw a circle from a given centre and radius and explain that every point on the circumference is the same distance from the centre."
+      },
+      "goalTextDigest": "sha256:587beea3e0426a9d3119930746711b5c12658e825b4fa53aaa0acad03383234f",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+        "title": "Visualisierung: Kreise aus Mittelpunkt und Radius zeichnen und begründen",
+        "url": "/assets/goal-visualizations/mathematik/1dd0266c-41b4-5481-b64b-7b718cfe799b/1dd0266c-41b4-5481-b64b-7b718cfe799b.png",
+        "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+        "description": "Visualisierung zum Lernziel: Kreise aus Mittelpunkt und Radius zeichnen und begründen.",
+        "altText": "Links zeichnet ein Zirkel einen Kreis auf einem schräg dargestellten Blatt; die Nadel bleibt im Mittelpunkt M, die Bleistiftspitze hat Abstand r. Die Schrägansicht ist ausdrücklich beschriftet. Rechts zeigt die frontale Kreisdarstellung drei Punkte P1, P2 und P3 im gleichen Abstand r von M.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:b012f63a55f75a6916d8d9ce777cdf6062351e8c47fd98dbfcf773dd6ee2d2f4",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/1dd0266c-41b4-5481-b64b-7b718cfe799b/1dd0266c-41b4-5481-b64b-7b718cfe799b.png",
+        "digest": "sha256:dd945aa240b7d6cdcc380df4e39d2fd058706e48061ae4b87b09807de099802a",
+        "originalViewedWith": "view_image",
+        "originalViewed": true
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v1-views/1dd0266c-41b4-5481-b64b-7b718cfe799b.360.png",
+        "digest": "sha256:27b46f562cb8fbde9c2809a4d6fb8e74f378d19f91e02dc8d46979afef357d7a",
+        "width": 360,
+        "height": 201,
+        "viewedWith": "view_image",
+        "viewed": true,
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; exact whole image, no crop or annotation"
+      },
+      "mathematicalReviewDe": "Die Schrägansicht des Zirkelblatts ist ausdrücklich als solche bezeichnet. In der frontalen Kreisskizze liegt M im Mittelpunkt; P1, P2 und P3 liegen auf dem Kreis und die Radien zeigen den gleichen Abstand r. Die elliptische Erscheinung des schrägen Blatts behauptet keinen elliptischen Kreis.",
+      "didacticFitDe": "Zirkelhandlung und gleicher Abstand veranschaulichen die Kompetenz. Ein vollständiger Beweis ist für diese Orientierung nicht erforderlich.",
+      "legibility360De": "Kreis, Mittelpunkt und Zirkel sind in 360 px klar erkennbar; kleine Punktbezeichnungen bleiben knapp, die Kernzuordnung bleibt verständlich.",
+      "altTextReviewDe": "Der aktuelle Alttext stimmt mit der betrachteten mathematischen Darstellung überein.",
+      "issues": [],
+      "humanApproved": false,
+      "validationScope": "Current image bytes and orientation fit only; not D/P review or strict M7 closure"
+    },
+    {
+      "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+      "reviewStatus": "ai_candidate",
+      "decision": "keep",
+      "goalText": {
+        "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+        "title": "Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)",
+        "description": "Die lernende Person kann für eine Parallelprojektion entlang einer vorgegebenen Richtung, die nicht in der Zielebene liegt, auf eine beliebige Ursprungsebene im $\\mathbb{R}^3$ die Abbildungsmatrix bestimmen und untersuchen.",
+        "titleEn": "Represent parallel projections onto origin planes with matrices (advanced course)",
+        "descriptionEn": "The learner can determine and analyze the mapping matrix for a parallel projection along a given direction that does not lie in the target plane onto an arbitrary plane through the origin in $\\mathbb{R}^3$."
+      },
+      "goalTextDigest": "sha256:87640aa2713f5dc767386648545ad2c4603874479dd18eba69f76ca67516fdb6",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+        "title": "Visualisierung: Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)",
+        "url": "/assets/goal-visualizations/mathematik/803d910d-96d1-5118-b9ca-29e93d0da76d/803d910d-96d1-5118-b9ca-29e93d0da76d.png",
+        "provider": "OpenAI imagegen",
+        "description": "Schematische Parallelprojektion eines Punktes X entlang d auf die Ebene E durch O. Der Bildpunkt X′ liegt in E. Für nᵀd ungleich null gilt P = I − d nᵀ/(nᵀd), x′ = Px und P² = P.",
+        "altText": "Schematische Parallelprojektion eines Punktes X entlang d auf die Ebene E durch O. Der Bildpunkt X′ liegt in E. Für nᵀd ungleich null gilt P = I − d nᵀ/(nᵀd), x′ = Px und P² = P.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:22047a4d6e4998700a9756827ffbbc3d7dd65a870027f029914ee7906ffb6cf6",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/803d910d-96d1-5118-b9ca-29e93d0da76d/803d910d-96d1-5118-b9ca-29e93d0da76d.png",
+        "digest": "sha256:5a26cf5054d124c67f3a2a4d97b285f5a307fd84dc7e7f8f597364a32a06e826",
+        "originalViewedWith": "view_image",
+        "originalViewed": true
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v1-views/803d910d-96d1-5118-b9ca-29e93d0da76d.360.png",
+        "digest": "sha256:e85fda159fe338c7441a533c9344d70f80e974da53b5e19d5cb6a3baab44c745",
+        "width": 360,
+        "height": 201,
+        "viewedWith": "view_image",
+        "viewed": true,
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; exact whole image, no crop or annotation"
+      },
+      "mathematicalReviewDe": "O und X′ liegen in E, X liegt außerhalb. Der Projektionspfeil ist parallel zur angegebenen Richtung d. Für E: nᵀx=0 und nᵀd≠0 ist P=I−dnᵀ/(nᵀd) korrekt; x′=Px und P²=P stimmen. Die schematische Zeichnung erhebt keinen widersprüchlichen numerischen Koordinatenanspruch.",
+      "didacticFitDe": "Die aktuelle PNG zeigt die allgemeine Projektionsidee und die wesentliche Bedingung für die Matrix. Sie ist fachlich passend zum LK-Ziel.",
+      "legibility360De": "Geometrische Zuordnung, Bedingung und Matrixformel sind bei 360 px erkennbar; einzelne Zusatztexte sind klein.",
+      "altTextReviewDe": "Der aktuelle Alttext stimmt mit der betrachteten mathematischen Darstellung überein.",
+      "issues": [],
+      "humanApproved": false,
+      "validationScope": "Current image bytes and orientation fit only; not D/P review or strict M7 closure"
+    },
+    {
+      "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "reviewStatus": "ai_candidate",
+      "decision": "keep",
+      "goalText": {
+        "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+        "title": "Fixpunkte linearer Abbildungen bestimmen (LK)",
+        "description": "Die lernende Person kann Fixpunkte linearer geometrischer Abbildungen bestimmen, indem sie die Bedingung $A\\vec{x}=\\vec{x}$ als lineares Gleichungssystem aufstellt und löst.",
+        "titleEn": "Determine fixed points of linear mappings (advanced course)",
+        "descriptionEn": "The learner can determine fixed points of linear geometric mappings by setting up and solving the condition $A\\vec{x}=\\vec{x}$ as a system of linear equations."
+      },
+      "goalTextDigest": "sha256:d6c4a98eda024e4c753d8f24ce9b646d9c14f9fac4549eefa8ab9865947e2c6e",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+        "title": "Visualisierung: Fixpunkte linearer Abbildungen bestimmen (LK)",
+        "url": "/assets/goal-visualizations/mathematik/d3c42193-f1b7-5c6d-a991-bf034d99359f/d3c42193-f1b7-5c6d-a991-bf034d99359f.png",
+        "provider": "OpenAI imagegen",
+        "description": "Spiegelung an y = x: R = (2,2) bleibt fest, während P = (3,1) auf P′ = (1,3) abgebildet wird. Die Matrix vertauscht die Koordinaten; ihre Fixpunktbedingung führt auf x = y.",
+        "altText": "Spiegelung an y = x: R = (2,2) bleibt fest, während P = (3,1) auf P′ = (1,3) abgebildet wird. Die Matrix vertauscht die Koordinaten; ihre Fixpunktbedingung führt auf x = y.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:e216d638ac127d870258c64577ea697fcaa829bcecec227d2609d53bcd544a83",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/d3c42193-f1b7-5c6d-a991-bf034d99359f/d3c42193-f1b7-5c6d-a991-bf034d99359f.png",
+        "digest": "sha256:48c574d439a89bb8ef221be70781ed83f1ef4815836920cd48d3b1896702d978",
+        "originalViewedWith": "view_image",
+        "originalViewed": true
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v1-views/d3c42193-f1b7-5c6d-a991-bf034d99359f.360.png",
+        "digest": "sha256:6041ba6bb013d1e611041e61dc4bf2064f684db97612b114826a618fcff8cfa2",
+        "width": 360,
+        "height": 201,
+        "viewedWith": "view_image",
+        "viewed": true,
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; exact whole image, no crop or annotation"
+      },
+      "mathematicalReviewDe": "Die Fixgerade y=x verläuft durch den Ursprung. R=(2,2) liegt auf ihr; P=(3,1) und P′=(1,3) passen zu den Rasterpositionen. A=[[0,1],[1,0]] vertauscht die Koordinaten; Ax=x führt auf x=y. Es ist kein relevanter Versatz der Fixgeraden vom Ursprung sichtbar.",
+      "didacticFitDe": "Ein korrekter Spiegelungsfall erklärt Fixpunkte und den Übergang von der Matrixbedingung zur Fixgeraden. Andere lineare Abbildungen müssen nicht im Bild vorgeführt werden.",
+      "legibility360De": "Fixgerade, Punkte, Matrix und Fixpunktbedingung bleiben in 360 px unterscheidbar; das Raster unterstützt die Zuordnung.",
+      "altTextReviewDe": "Der aktuelle Alttext stimmt mit der betrachteten mathematischen Darstellung überein.",
+      "issues": [],
+      "humanApproved": false,
+      "validationScope": "Current image bytes and orientation fit only; not D/P review or strict M7 closure"
+    },
+    {
+      "goalId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "reviewStatus": "ai_candidate",
+      "decision": "keep",
+      "goalText": {
+        "goalId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+        "title": "Ebenen an vorgegebenen Spiegelträgern im Raum spiegeln (LK)",
+        "description": "Die lernende Person kann eine Ebene an einem vorgegebenen Zentrum, einer Achse als Halbdrehung oder einer Ebene spiegeln, die Bildebene aus drei nicht kollinearen Bildpunkten bestimmen und sie mit einem weiteren Bildpunkt kontrollieren.",
+        "titleEn": "Reflect planes in specified spatial mirror sets (advanced course)",
+        "descriptionEn": "Given a centre, an axis of half-turn or a mirror plane, the learner can reflect a plane, determine its image from three non-collinear image points and check it using an additional image point."
+      },
+      "goalTextDigest": "sha256:2198bc2c2de2e6c773b8f3b956c4e0f92c4f1ef1100e4b9261d4a5da2f9a1a9a",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+        "title": "Visualisierung: Ebenen an vorgegebenen Spiegelträgern im Raum spiegeln (LK)",
+        "url": "/assets/goal-visualizations/mathematik/985d5529-a586-50eb-bd7f-2db2be8906d1/985d5529-a586-50eb-bd7f-2db2be8906d1.png",
+        "provider": "OpenAI imagegen",
+        "description": "Spezialfall einer Ebenenspiegelung an S: x=2; drei nichtkollineare Original- und Bildpunkte bestimmen je eine Ebene.",
+        "altText": "Die Ebene F: x=5 enthält die nichtkollinearen Punkte A(5|0|0), B(5|2|0), C(5|0|3). Spiegelung an S: x=2 mit x′=4−x ergibt F′: x=−1 und die drei entsprechenden Bildpunkte. Die Zeichnung zeigt nur diesen Spezialfall; andere Spiegelträger und ein vierter Prüfpunkt gehören zur eigenständigen Aufgabe.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:9b4293a2e80dfaae0d1773a10dda5ea394d4a40aee709490f3a81a00898d7784",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/985d5529-a586-50eb-bd7f-2db2be8906d1/985d5529-a586-50eb-bd7f-2db2be8906d1.png",
+        "digest": "sha256:4ec9927afd54e711d7e1dbfe2d6ac30c9a7778dfb4704e309ee1acc4233fbf8c",
+        "originalViewedWith": "view_image",
+        "originalViewed": true
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v1-views/985d5529-a586-50eb-bd7f-2db2be8906d1.360.png",
+        "digest": "sha256:e3b8dab4e88c6626fbf9c79f015eb4ebb97a2b5f587cedfa74361c58676b85fb",
+        "width": 360,
+        "height": 201,
+        "viewedWith": "view_image",
+        "viewed": true,
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; exact whole image, no crop or annotation"
+      },
+      "mathematicalReviewDe": "Die Spiegelung an S: x=2 bildet x=5 gemäß x′=4−x auf x=−1 ab. A(5|0|0), B(5|2|0), C(5|0|3) sind nicht kollinear und werden den korrekten A′, B′, C′ mit unveränderten y- und z-Koordinaten zugeordnet. Der Mittelpunkt der Original- und Bild-x-Werte ist 2. Die drei schematischen Ebenenfelder beanspruchen keinen numerischen Darstellungsmaßstab.",
+      "didacticFitDe": "Der ausdrücklich gewählte Spezialfall ist eine korrekte Orientierung zum aktuellen Ziel. Das Bild muss weder alle Spiegelträger noch den zusätzlichen Prüfpunkt vollständig behandeln.",
+      "legibility360De": "Die Ebenenbezeichnungen, Zuordnungstabelle und Regel x′=4−x sind in 360 px erkennbar; die Koordinaten sind klein, jedoch konsistent.",
+      "altTextReviewDe": "Der aktuelle Alttext stimmt mit der betrachteten mathematischen Darstellung überein.",
+      "issues": [],
+      "humanApproved": false,
+      "validationScope": "Current image bytes and orientation fit only; not D/P review or strict M7 closure"
+    },
+    {
+      "goalId": "976def9e-c81c-5875-9d87-a1024318ce48",
+      "reviewStatus": "ai_candidate",
+      "decision": "keep",
+      "goalText": {
+        "goalId": "976def9e-c81c-5875-9d87-a1024318ce48",
+        "title": "Eine Raumgerade an einem Punkt spiegeln (LK)",
+        "description": "Die lernende Person kann eine Raumgerade an einem vorgegebenen Punkt spiegeln, aus zwei verschiedenen Geradenpunkten die Bildgerade bestimmen und das Zentrum als gemeinsamen Mittelpunkt der Punkt-Bildpunkt-Paare prüfen.",
+        "titleEn": "Reflect a spatial line in a point (advanced course)",
+        "descriptionEn": "Given a centre of reflection, the learner can reflect a spatial line, determine its image from two distinct points on the original line and verify that the centre is the midpoint of each point-image pair."
+      },
+      "goalTextDigest": "sha256:7ce03e67b1101b28d783f39bf497ca2955eff89ba0716d7fba215132deefee9a",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "976def9e-c81c-5875-9d87-a1024318ce48",
+        "title": "Visualisierung: Eine Raumgerade an einem Punkt spiegeln (LK)",
+        "url": "/assets/goal-visualizations/mathematik/976def9e-c81c-5875-9d87-a1024318ce48/976def9e-c81c-5875-9d87-a1024318ce48.png",
+        "provider": "OpenAI imagegen",
+        "description": "Schematische Punktspiegelung einer Raumgeraden am Zentrum C durch Spiegelung von zwei verschiedenen Punkten.",
+        "altText": "Blaue Gerade g durch A und B, rote Bildgerade g′ durch A′ und B′. Beide gestrichelten Strecken A–C–A′ und B–C–B′ gehen durch das gemeinsame Zentrum C; C ist jeweils der Mittelpunkt. Die Regel für jeden Raumpunkt ist X′ = 2C − X.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:b527ce39e56679f3bad5b243728384a537c65bb7e252f9c60ac134d3c4f8ae96",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/976def9e-c81c-5875-9d87-a1024318ce48/976def9e-c81c-5875-9d87-a1024318ce48.png",
+        "digest": "sha256:fdc3c40b33180d1e6ea07a76380bfa855b08282e7e0ddf921e8701c18e100c63",
+        "originalViewedWith": "view_image",
+        "originalViewed": true
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v1-views/976def9e-c81c-5875-9d87-a1024318ce48.360.png",
+        "digest": "sha256:fc7901e0e91635f56a862bf6901c9af3a61d0e9c76467be3bf0195819282939c",
+        "width": 360,
+        "height": 180,
+        "viewedWith": "view_image",
+        "viewed": true,
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; exact whole image, no crop or annotation"
+      },
+      "mathematicalReviewDe": "A–C–A′ und B–C–B′ verlaufen jeweils auf einer Geraden; C ist innerhalb der Zeichentoleranz jeweils der gemeinsame Mittelpunkt. Die beiden Geraden g und g′ sind parallel, die vertauschte Reihenfolge der Punktbilder passt zur Punktspiegelung. X′=2C−X ist die korrekte Raumregel.",
+      "didacticFitDe": "Zwei verschiedene Geradenpunkte und ihre Bilder bestimmen die Bildgerade; die Illustration trifft damit den Kern des aktuellen Ziels.",
+      "legibility360De": "Die farblich getrennten Geraden und beide gestrichelten Verbindungslinien sind bei 360 px klar zu verfolgen; die Mittelpunktidee bleibt sichtbar.",
+      "altTextReviewDe": "Der aktuelle Alttext stimmt mit der betrachteten mathematischen Darstellung überein.",
+      "issues": [],
+      "humanApproved": false,
+      "validationScope": "Current image bytes and orientation fit only; not D/P review or strict M7 closure"
+    },
+    {
+      "goalId": "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+      "reviewStatus": "ai_candidate",
+      "decision": "keep",
+      "goalText": {
+        "goalId": "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "title": "Oberfläche von Kugeln deuten und bestimmen",
+        "description": "Die lernende Person kann die Struktur der Kugeloberflächenformel $O=4\\pi r^2$ geometrisch plausibilisieren, die Formel für einfache Hüll- und Beschichtungsfragen mit Radius oder Durchmesser anwenden und Flächeneinheit sowie quadratische Skalierung begründen.",
+        "titleEn": "Interpret and determine the surface area of spheres",
+        "descriptionEn": "The learner can give a geometric plausibility argument for the sphere surface-area formula $O=4\\pi r^2$, apply it to simple covering and coating questions from a radius or diameter, and explain the area unit and quadratic scaling."
+      },
+      "goalTextDigest": "sha256:83973567a7b7d4d02c2f0e1d3bfd0bcc7b02947cd32a52e62eca2041b715d5df",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "title": "Visualisierung: Oberfläche von Kugeln deuten und bestimmen",
+        "url": "/assets/goal-visualizations/mathematik/7b01d3d8-1fff-5924-b133-5a4825dc742e/7b01d3d8-1fff-5924-b133-5a4825dc742e.png",
+        "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+        "description": "Visualisierung zum Lernziel: Oberfläche von Kugeln deuten und bestimmen.",
+        "altText": "Eine Kugel wird nur außen bemalt. Eine Strecke vom Mittelpunkt zur Oberfläche markiert den Radius r. Die Oberfläche beträgt O=4πr²; r ist die Hälfte des Durchmessers, eine Flächeneinheit ist cm². Doppelter Radius bedeutet vierfache Oberfläche. Die Zeichnung unterstützt die Orientierung, die geometrische Plausibilisierung wird im Lerntext behandelt.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:0d8f564cdba3a51ed237c59d457adabc643b7403c719a3da0dcd459dc9e6f348",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/7b01d3d8-1fff-5924-b133-5a4825dc742e/7b01d3d8-1fff-5924-b133-5a4825dc742e.png",
+        "digest": "sha256:071346fa7486250244bfae122614403c81cc6c0364b29f5d01eb75e15eed4ee8",
+        "originalViewedWith": "view_image",
+        "originalViewed": true
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v1-views/7b01d3d8-1fff-5924-b133-5a4825dc742e.360.png",
+        "digest": "sha256:1e593e7943fec5af2c0002d79f2908e9fe409e8637bfa099b80258651a09de75",
+        "width": 360,
+        "height": 360,
+        "viewedWith": "view_image",
+        "viewed": true,
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; exact whole image, no crop or annotation"
+      },
+      "mathematicalReviewDe": "Der markierte Radius reicht vom Kugelmittelpunkt zur Oberfläche. Die Bemalung bezieht sich auf die äußere Hülle. O=4πr², r=d/2, die Einheit cm² und die vierfache Oberfläche bei doppeltem Radius stimmen. Es wird kein Volumen als Oberfläche markiert.",
+      "didacticFitDe": "Hüll- und Beschichtungsfrage und quadratische Skalierung sind passend illustriert. Die Formel muss im Orientierungsbild nicht vollständig geometrisch hergeleitet werden.",
+      "legibility360De": "Hülle, Radius, Formel, Flächeneinheit und Skalierung sind bei 360 px gut erkennbar.",
+      "altTextReviewDe": "Der aktuelle Alttext stimmt mit der betrachteten mathematischen Darstellung überein.",
+      "issues": [],
+      "humanApproved": false,
+      "validationScope": "Current image bytes and orientation fit only; not D/P review or strict M7 closure"
+    },
+    {
+      "goalId": "bb227e31-0b0b-544a-b5e0-548256a70dec",
+      "reviewStatus": "ai_candidate",
+      "decision": "keep",
+      "goalText": {
+        "goalId": "bb227e31-0b0b-544a-b5e0-548256a70dec",
+        "title": "Volumen von Kugeln deuten und bestimmen",
+        "description": "Die lernende Person kann die Struktur der Kugelvolumenformel $V=\\frac43\\pi r^3$ geometrisch plausibilisieren, die Formel für einfache Füll- und Rauminhaltsfragen mit Radius oder Durchmesser anwenden und Volumeneinheit sowie kubische Skalierung begründen.",
+        "titleEn": "Interpret and determine the volume of spheres",
+        "descriptionEn": "The learner can give a geometric plausibility argument for the sphere-volume formula $V=\\frac43\\pi r^3$, apply it to simple capacity and spatial-volume questions from a radius or diameter, and explain the volume unit and cubic scaling."
+      },
+      "goalTextDigest": "sha256:48f3a4131fa7110ec0d053874a96aee5766c117cdcea7d57fe33f76258fa9443",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "bb227e31-0b0b-544a-b5e0-548256a70dec",
+        "title": "Visualisierung: Volumen von Kugeln deuten und bestimmen",
+        "url": "/assets/goal-visualizations/mathematik/bb227e31-0b0b-544a-b5e0-548256a70dec/bb227e31-0b0b-544a-b5e0-548256a70dec.png",
+        "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+        "description": "Visualisierung zum Lernziel: Volumen von Kugeln deuten und bestimmen.",
+        "altText": "Ein Schnitt durch die Mitte zeigt die Kugel als Kreis, der den umschließenden Zylinderquerschnitt an allen vier Seiten berührt. Beide Körper haben Radius r, der Zylinder Höhe 2r. Das Kugelvolumen ist zwei Drittel des Zylindervolumens, also 4πr³/3. Die Einheit ist zum Beispiel cm³, bei doppeltem Radius wird das Volumen achtmal so groß. Der Schnitt zeigt die Abmessungen, nicht das Volumenverhältnis als Flächenverhältnis.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:9c8d1294cdff4d74f84c283826888632a6e8fc426214ee3cd3cb3a6b531ab2d8",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/bb227e31-0b0b-544a-b5e0-548256a70dec/bb227e31-0b0b-544a-b5e0-548256a70dec.png",
+        "digest": "sha256:631917ff46438f2deab8a00403455c8ba2654342a2657ee55a843587f71e5bb3",
+        "originalViewedWith": "view_image",
+        "originalViewed": true
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v1-views/bb227e31-0b0b-544a-b5e0-548256a70dec.360.png",
+        "digest": "sha256:8e9c92afcd94f355743453b3b661ccff9ff58d57fc0d36788653ab19ab748c22",
+        "width": 360,
+        "height": 360,
+        "viewedWith": "view_image",
+        "viewed": true,
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; exact whole image, no crop or annotation"
+      },
+      "mathematicalReviewDe": "Der ausdrücklich bezeichnete Mittelschnitt zeigt die Kugel im umschließenden Zylinder mit gleichem Radius r und Höhe 2r. V_Zylinder=πr²·2r und V_Kugel=(2/3)V_Zylinder=(4/3)πr³ sind richtig; cm³ und der Faktor 8 bei doppeltem Radius ebenfalls. Das Verhältnis 2/3 ist als Volumenverhältnis bezeichnet, nicht als Verhältnis der sichtbaren Kreis- und Rechteckflächen.",
+      "didacticFitDe": "Der Vergleich mit dem umschließenden Zylinder gibt eine richtige Orientierung zur Formelstruktur. Ein vollständiger Cavalieri-Beweis ist keine Voraussetzung dieses Bildes.",
+      "legibility360De": "Schnitt, Abmessungen, Volumenvergleich, Faktor 4/3 und kubische Skalierung sind bei 360 px gut erkennbar.",
+      "altTextReviewDe": "Der aktuelle Alttext stimmt mit der betrachteten mathematischen Darstellung überein.",
+      "issues": [],
+      "humanApproved": false,
+      "validationScope": "Current image bytes and orientation fit only; not D/P review or strict M7 closure"
+    },
+    {
+      "goalId": "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "reviewStatus": "ai_candidate",
+      "decision": "block",
+      "goalText": {
+        "goalId": "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+        "title": "Kreisumfänge und Bogenlängen bestimmen",
+        "description": "Die lernende Person kann Umfänge von Kreisen und Kreisteilen bestimmen, indem sie Radius oder Durchmesser mit dem Umfang verknüpft, Kreisbögen als Anteil des Vollkreises berechnet und bei geschlossenen Kreisteilen die geraden Randstücke berücksichtigt.",
+        "titleEn": "Determine circumferences and arc lengths",
+        "descriptionEn": "The learner can determine perimeters of circles and circle parts by relating the radius or diameter to circumference, calculating arcs as fractions of a full circle, and including the straight boundary segments of closed circle parts."
+      },
+      "goalTextDigest": "sha256:bd0a7a5ba8178851cd1d14f66e4f808d895657a6c11d38408ce77cf894d739fd",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+        "title": "Visualisierung: Kreisumfänge und Bogenlängen bestimmen",
+        "url": "/assets/goal-visualizations/mathematik/4dbb8e8e-c0b5-5d51-8897-0024d77e8602/4dbb8e8e-c0b5-5d51-8897-0024d77e8602.jpg",
+        "provider": "Google Gemini / Nano Banana Pro (reused SkillPilot asset)",
+        "description": "Unverändert übernommene gemeinsame Kreisillustration mit Vollkreis, Halbkreisbogen und Randvergleich.",
+        "altText": "Kreis mit r=3 cm und d=6 cm: Umfang 6π cm und Fläche 9π cm². Daneben Halbkreis mit r=4 cm und d=8 cm: Bogenlänge 4π cm, gesamter Rand 4π cm plus 8 cm. Das Bild ist eine Orientierung; die kindbezogene Kompetenz wird unabhängig geprüft.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:7106a235f76178ffb0faff3359eb6d057914930530e4fce31e33c494179029da",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/4dbb8e8e-c0b5-5d51-8897-0024d77e8602/4dbb8e8e-c0b5-5d51-8897-0024d77e8602.jpg",
+        "digest": "sha256:75df663179adb8390fdd4ea8f4c52e13160094dcae42ea8e0fa55c6da01f6f34",
+        "originalViewedWith": "view_image",
+        "originalViewed": true
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v1-views/4dbb8e8e-c0b5-5d51-8897-0024d77e8602.360.png",
+        "digest": "sha256:0e902929bc6feda299ff1649fb4748c6d990478e50b03c6eb34932c90353a92d",
+        "width": 360,
+        "height": 201,
+        "viewedWith": "view_image",
+        "viewed": true,
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; exact whole image, no crop or annotation"
+      },
+      "mathematicalReviewDe": "Die Zahlen und Formeln sind korrekt: U=6π cm, A=9π cm², Halbkreisbogen b=4π cm und geschlossener Rand b+d=4π cm+8 cm. Jedoch endet der schwarze gebogene Zuordnungspfeil aus dem Kasten Bogenlänge b=πr unmittelbar am blauen geraden Durchmesser des Halbkreises statt am roten Kreisbogen. Dies ordnet die Bogenlänge dem falschen Randstück zu.",
+      "didacticFitDe": "Die Unterscheidung von gebogenem und geradem Rand ist gerade für dieses Lernziel wesentlich. Die korrekte Formel und die rote Bogenbeschriftung beheben die widersprüchliche Pfeilzuordnung nicht. Der Block betrifft diese sichtbare Zuordnung, nicht fehlende Vollständigkeit.",
+      "legibility360De": "Die dichte gemeinsame Illustration enthält bei 360 px sehr kleine Rechen- und Kontexttexte. Der rote Bogen, der blaue Durchmesser und der fehlerhafte schwarze Zuordnungspfeil sind weiterhin sichtbar.",
+      "altTextReviewDe": "Der Alttext beschreibt die mathematische Absicht passend. Er korrigiert keinen irreführenden sichtbaren Pfeil.",
+      "issues": [
+        {
+          "code": "ARC_LABEL_POINTER_TARGETS_DIAMETER",
+          "severity": "blocking",
+          "location": "Rechte Bildhälfte, schwarzer gebogener Pfeil oberhalb des Kastens b=π·r=4π cm; Pfeilspitze unmittelbar unter dem blauen geraden Randstück nahe dessen rechtem Ende.",
+          "correctionDe": "Den Pfeil zur roten Halbkreislinie führen oder den irreführenden Zuordnungspfeil entfernen; neue Bildbytes anschließend erneut prüfen."
+        }
+      ],
+      "humanApproved": false,
+      "validationScope": "Current image bytes and orientation fit only; not D/P review or strict M7 closure"
+    },
+    {
+      "goalId": "2f073195-52ef-5219-926c-f3f58ebdc556",
+      "reviewStatus": "ai_candidate",
+      "decision": "block",
+      "goalText": {
+        "goalId": "2f073195-52ef-5219-926c-f3f58ebdc556",
+        "title": "Flächeninhalte von Kreisen und Kreisausschnitten bestimmen",
+        "description": "Die lernende Person kann Flächeninhalte von Kreisen und Kreisausschnitten bestimmen, indem sie Radius oder Durchmesser mit der Kreisfläche verknüpft, den Anteil am Vollkreis berücksichtigt und das Ergebnis mit passender Flächeneinheit im Kontext deutet.",
+        "titleEn": "Determine areas of circles and sectors",
+        "descriptionEn": "The learner can determine areas of circles and sectors by relating the radius or diameter to circle area, accounting for the fraction of the full circle, and interpreting the result in context using an appropriate area unit."
+      },
+      "goalTextDigest": "sha256:4e3c01ac0dd41ecc3878feb7a4818cd8fb994c8e406b31498a81ef5445ebd3de",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "2f073195-52ef-5219-926c-f3f58ebdc556",
+        "title": "Visualisierung: Flächeninhalte von Kreisen und Kreisausschnitten bestimmen",
+        "url": "/assets/goal-visualizations/mathematik/2f073195-52ef-5219-926c-f3f58ebdc556/2f073195-52ef-5219-926c-f3f58ebdc556.jpg",
+        "provider": "Google Gemini / Nano Banana Pro (reused SkillPilot asset)",
+        "description": "Unverändert übernommene gemeinsame Kreisillustration mit Vollkreis, Halbkreisbogen und Randvergleich.",
+        "altText": "Kreis mit r=3 cm und d=6 cm: Umfang 6π cm und Fläche 9π cm². Daneben Halbkreis mit r=4 cm und d=8 cm: Bogenlänge 4π cm, gesamter Rand 4π cm plus 8 cm. Das Bild ist eine Orientierung; die kindbezogene Kompetenz wird unabhängig geprüft.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:0f8d1d894e9f08324eced784c2549172dd51cd20fed2e1e0bc32b88284244d65",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/2f073195-52ef-5219-926c-f3f58ebdc556/2f073195-52ef-5219-926c-f3f58ebdc556.jpg",
+        "digest": "sha256:75df663179adb8390fdd4ea8f4c52e13160094dcae42ea8e0fa55c6da01f6f34",
+        "originalViewedWith": "view_image",
+        "originalViewed": true
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v1-views/2f073195-52ef-5219-926c-f3f58ebdc556.360.png",
+        "digest": "sha256:0e902929bc6feda299ff1649fb4748c6d990478e50b03c6eb34932c90353a92d",
+        "width": 360,
+        "height": 201,
+        "viewedWith": "view_image",
+        "viewed": true,
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; exact whole image, no crop or annotation"
+      },
+      "mathematicalReviewDe": "Die Vollkreisfläche A=πr²=9π cm² ist richtig dargestellt und grün markiert. Die aktive Illustration enthält zusätzlich dieselbe falsche Pfeilzuordnung wie bei 4dbb8e8e: Vom Kasten Bogenlänge b=πr zeigt der schwarze Pfeil auf den blauen geraden Durchmesser statt auf den roten Halbkreisbogen.",
+      "didacticFitDe": "Das Kreisflächenbeispiel passt als Orientierung; eine vollständige Kreisausschnittsrechnung wird nicht verlangt. Der fachlich irreführende Bogenlängenpfeil bleibt aber Teil der tatsächlich sichtbaren gemeinsamen Illustration und begründet den Block auch für diese Verwendung.",
+      "legibility360De": "Die dichte Illustration ist in 360 px knapp; Flächenfüllung und Hauptformel bleiben unterscheidbar, die kleinen Zusatztexte benötigen Vergrößerung. Der falsche Pfeil ist weiterhin sichtbar.",
+      "altTextReviewDe": "Der Alttext beschreibt die mathematische Absicht passend. Er korrigiert keinen irreführenden sichtbaren Pfeil.",
+      "issues": [
+        {
+          "code": "ARC_LABEL_POINTER_TARGETS_DIAMETER",
+          "severity": "blocking",
+          "location": "Rechte Bildhälfte, schwarzer gebogener Pfeil oberhalb des Kastens b=π·r=4π cm; Pfeilspitze unmittelbar unter dem blauen geraden Randstück nahe dessen rechtem Ende.",
+          "correctionDe": "Den Pfeil zur roten Halbkreislinie führen oder den irreführenden Zuordnungspfeil entfernen; neue Bildbytes anschließend erneut prüfen."
+        }
+      ],
+      "humanApproved": false,
+      "validationScope": "Current image bytes and orientation fit only; not D/P review or strict M7 closure"
+    },
+    {
+      "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+      "reviewStatus": "ai_candidate",
+      "decision": "keep",
+      "goalText": {
+        "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+        "title": "Funktions- und Ableitungsgraphen in Beziehung setzen",
+        "description": "Die lernende Person kann bei einfachen Funktionen vom Graphen der Funktion auf den Graphen ihrer Ableitungsfunktion und umgekehrt auf einen möglichen Funktionsgraphen qualitativ schließen und die Zuordnung anhand von Steigungen, Vorzeichen und Nullstellen der Ableitung begründen.",
+        "titleEn": "Relate function and derivative graphs",
+        "descriptionEn": "The learner can qualitatively infer the derivative graph from the graph of a simple function and, conversely, a possible function graph from its derivative graph, and justify the correspondence using slopes, signs, and zeros of the derivative."
+      },
+      "goalTextDigest": "sha256:5ccb7751a6ae9b1723f942fe71c43b2895ba26b86f0b150162e214ae0ac87886",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+        "title": "Visualisierung: Funktions- und Ableitungsgraphen in Beziehung setzen",
+        "url": "/assets/goal-visualizations/mathematik/5518ceb3-f668-5b52-a9b1-57653b16ca98/5518ceb3-f668-5b52-a9b1-57653b16ca98.png",
+        "provider": "OpenAI imagegen (edited from SkillPilot Gemini illustration)",
+        "description": "Korrigiertes gemeinsames Beispiel f(x)=−x²+4 und f′(x)=−2x; Zusammenhang von Graphen, Ableitungsvorzeichen und innerem Maximum.",
+        "altText": "Parabel f(x)=−x²+4 mit Scheitel (0,4) und Ableitungsgerade f′(x)=−2x. Vor x=0 ist die Ableitung positiv und der Funktionsgraph steigt, danach ist sie negativ und der Graph fällt. Die Grafik zeigt ein Beispiel; andere Funktionen und Randextrema sind separat zu prüfen.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:6adb655a3676e1d0018f75c58403f32daf9f113d8940362bb6ea33c80eb71920",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/5518ceb3-f668-5b52-a9b1-57653b16ca98/5518ceb3-f668-5b52-a9b1-57653b16ca98.png",
+        "digest": "sha256:e88426d1ac5bba09ec3ac51fb87380342fb29577f2da3f9b3d03e14871390fc2",
+        "originalViewedWith": "view_image",
+        "originalViewed": true
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v1-views/5518ceb3-f668-5b52-a9b1-57653b16ca98.360.png",
+        "digest": "sha256:4b09ed23986338518f80e6b3b653ca9f27410302a5e62dc09106544524e92a17",
+        "width": 360,
+        "height": 201,
+        "viewedWith": "view_image",
+        "viewed": true,
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; exact whole image, no crop or annotation"
+      },
+      "mathematicalReviewDe": "f(x)=−x²+4 hat Scheitel (0,4) und Nullstellen −2 und 2, wie dargestellt. Die Ableitung f′(x)=−2x verläuft durch den Ursprung und ist links davon positiv, rechts negativ. Tabelle und Steig-/Fallzuordnung stimmen. f′(x)=0 wird ausdrücklich nur als notwendige Bedingung einer inneren Extremstelle bezeichnet; das Maximum wird auf dieses Beispiel bezogen. Es sind keine falschen Tangenten eingezeichnet.",
+      "didacticFitDe": "Das Beispiel zeigt eine korrekte Beziehung zwischen Funktion und Ableitung. Die umgekehrte Rekonstruktion eines möglichen Funktionsgraphen braucht das Bild nicht vollständig vorzuführen.",
+      "legibility360De": "Beide Graphen, Formeln und Vorzeichenstruktur sind in 360 px sichtbar. Der einschränkende Text zur notwendigen Bedingung ist klein; zum genauen Lesen hilft die Originalansicht.",
+      "altTextReviewDe": "Der aktuelle Alttext stimmt mit der betrachteten mathematischen Darstellung überein.",
+      "issues": [],
+      "humanApproved": false,
+      "validationScope": "Current image bytes and orientation fit only; not D/P review or strict M7 closure"
+    },
+    {
+      "goalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "reviewStatus": "ai_candidate",
+      "decision": "keep",
+      "goalText": {
+        "goalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+        "title": "Monotonie und Extrema mit der ersten Ableitung untersuchen",
+        "description": "Die lernende Person kann bei einer einfachen differenzierbaren Funktion auf einem angegebenen Bereich mit dem Vorzeichen der ersten Ableitung Monotonieintervalle und lokale Extremstellen begründen und durch Vergleich relevanter Funktionswerte entscheiden, ob und wo globale Extremwerte vorliegen.",
+        "titleEn": "Investigate monotonicity and extrema using the first derivative",
+        "descriptionEn": "The learner can use the sign of the first derivative to justify intervals of monotonicity and local extrema of a simple differentiable function on a specified domain, and compare the relevant function values to decide whether and where global extrema occur."
+      },
+      "goalTextDigest": "sha256:b45e1594c2a36a1dd761f188b69c80bc70b78fb92e9bd96a0a57294fbcc6f4e8",
+      "resourceLink": {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "2850e8f6-2330-50d3-a577-d519540d9924",
+        "title": "Visualisierung: Monotonie und Extrema mit der ersten Ableitung untersuchen",
+        "url": "/assets/goal-visualizations/mathematik/2850e8f6-2330-50d3-a577-d519540d9924/2850e8f6-2330-50d3-a577-d519540d9924.png",
+        "provider": "OpenAI imagegen (edited from SkillPilot Gemini illustration)",
+        "description": "Korrigiertes gemeinsames Beispiel f(x)=−x²+4 und f′(x)=−2x; Zusammenhang von Graphen, Ableitungsvorzeichen und innerem Maximum.",
+        "altText": "Parabel f(x)=−x²+4 mit Scheitel (0,4) und Ableitungsgerade f′(x)=−2x. Vor x=0 ist die Ableitung positiv und der Funktionsgraph steigt, danach ist sie negativ und der Graph fällt. Die Grafik zeigt ein Beispiel; andere Funktionen und Randextrema sind separat zu prüfen.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      "resourceLinkDigest": "sha256:4531b71ce0022b776f7eaefabb912985fe19047ac0f4d92ec74713f63083f0d5",
+      "asset": {
+        "path": "app/public/assets/goal-visualizations/mathematik/2850e8f6-2330-50d3-a577-d519540d9924/2850e8f6-2330-50d3-a577-d519540d9924.png",
+        "digest": "sha256:e88426d1ac5bba09ec3ac51fb87380342fb29577f2da3f9b3d03e14871390fc2",
+        "originalViewedWith": "view_image",
+        "originalViewed": true
+      },
+      "preview360": {
+        "path": "tmp/m7-current-image-repairs-20260928-v1-views/2850e8f6-2330-50d3-a577-d519540d9924.360.png",
+        "digest": "sha256:4b09ed23986338518f80e6b3b653ca9f27410302a5e62dc09106544524e92a17",
+        "width": 360,
+        "height": 201,
+        "viewedWith": "view_image",
+        "viewed": true,
+        "creation": "ffmpeg -vf scale=360:-1:flags=lanczos -frames:v 1; exact whole image, no crop or annotation"
+      },
+      "mathematicalReviewDe": "Die Parabel f(x)=−x²+4 und f′(x)=−2x sind konsistent. Der Vorzeichenwechsel der Ableitung von positiv zu negativ begründet das gezeigte Maximum bei x=0. Der Hinweis auf die notwendige Bedingung behauptet keine allgemeine Hinlänglichkeit von f′=0. Das Bild behauptet kein falsches globales Minimum oder einen falschen Randpunkt.",
+      "didacticFitDe": "Das konkrete Beispiel veranschaulicht Monotonie und ein inneres Maximum fachlich richtig. Nicht alle möglichen Bereiche, Randextrema oder Funktionswertvergleiche müssen im Orientierungsbild ausgearbeitet sein.",
+      "legibility360De": "Graphen und Vorzeichenwechsel sind in 360 px klar zu unterscheiden; kleine Einschränkungen und Zusatztexte erfordern für genaue Lektüre die Originalansicht.",
+      "altTextReviewDe": "Der aktuelle Alttext stimmt mit der betrachteten mathematischen Darstellung überein.",
+      "issues": [],
+      "humanApproved": false,
+      "validationScope": "Current image bytes and orientation fit only; not D/P review or strict M7 closure"
+    }
+  ],
+  "writes": {
+    "reviewJsonOnly": true,
+    "canonicalChanged": false,
+    "qaChanged": false,
+    "registryChanged": false,
+    "originalImagesChanged": false,
+    "temporaryPreviewDirectory": "tmp/m7-current-image-repairs-20260928-v1-views"
+  },
+  "limitations": [
+    "This artifact records an AI review recommendation, not human acceptance or strict M7 closure.",
+    "Preview derivatives are reproducible inspection aids and are not authored replacements for the original assets.",
+    "9 keep recommendations remain bound to their exact listed asset and goal-text digests; changed bytes or claims require a new review."
+  ]
+}

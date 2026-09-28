@@ -40,6 +40,7 @@ const changedPrerequisites = [
   '993a14e8-60f0-5764-9340-b2447a5fa84b', 'c0e34fa8-fde5-5a4e-9b84-c5d5db719b58',
   '972cc7e8-be9c-444c-ba45-98e817b3cf14', '91e2f564-3bc8-4924-af85-2a3fa84c1471',
 ]
+const retiredCompatibilityGoalId = '972cc7e8-be9c-444c-ba45-98e817b3cf14'
 const assessmentClusterId = '967d1863-1b9b-4798-8a35-ae4e9760e322'
 // Both native commands own explicit terminal-cluster lists. Inspect only these
 // declarations here; importing validateGraph would start its full-repo run.
@@ -84,7 +85,7 @@ const kindLedger = readJson('curricula/DE/Gymnasium/quality/release-model/mathem
   decisions: Array<{ goalId: string, semanticKind: string, sourceFingerprint: string }>
 }
 const expectedKinds = new Map([
-  ...changedPrerequisites.map((id) => [id, 'curricularAtomic'] as const),
+  ...changedPrerequisites.map((id) => [id, id === retiredCompatibilityGoalId ? 'runtimeSupport' : 'curricularAtomic'] as const),
   ['c01b1ce9-a667-4a46-b251-ec33ae602b15', 'programStructure'],
   [assessmentClusterId, 'curricularArea'],
   ...tasks.map((id) => [id, 'practiceAssessment'] as const),

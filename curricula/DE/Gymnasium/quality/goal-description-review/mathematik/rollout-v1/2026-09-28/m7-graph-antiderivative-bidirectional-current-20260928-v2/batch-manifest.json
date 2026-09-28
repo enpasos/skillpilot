@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-graph-antiderivative-bidirectional-current-20260928-v2.config.json",
+  "configDigest": "sha256:00912956904d6bbd1f621a5c0506d087f43d306aa3c6a7c06e39b0d87145bf6e",
+  "goalIds": [
+    "21676dae-8619-59d1-89e3-a35bb2297e2c",
+    "85eda551-cfc1-52c6-a252-4c7394c1f7e6"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 799,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:8e2b1292df53f11b09429f39aba9c7f19a876515c563a9b71dc031b457e49ced"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:42c00ba492fb5887108d027a76a232da9a7f8fd7ae9353b5bca7a0d425330b55",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c6d024e135b5e5a102107be28d0ff07113623fc1cbb418adf0058975fe366d15",
+    "reviewInputFingerprint": "sha256:2ee4d7b22aa8d2b30d8684d90c5dd801f8b296669f6ecd640ea2ce3bcb8fa0bd",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-a",
+        "campaignDigest": "sha256:5cf77da6db2085143864e69df1de2da143ba7ed233ee5a11772c29142b0d7bf8",
+        "roundId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-independent-a",
+        "batchId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:ac975d63290f0b6b2d34641aa4effed0c7c4fadeb76b7c92c0bbbd4bcff0b9f8"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-b",
+        "campaignDigest": "sha256:991b48ecf436b32a8d49a2329c0d926eb12bb723764c393e1b8db9a9d8c40c16",
+        "roundId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-independent-b",
+        "batchId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:e12ee5287f091c0d1c7503c4d039d3b27b0b1b4d6445a9ca11b873a60b09e98b"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

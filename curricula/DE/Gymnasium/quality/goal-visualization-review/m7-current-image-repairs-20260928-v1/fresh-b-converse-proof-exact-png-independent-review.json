@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "fresh-b-pythagoras-converse-corrected-png-independent-20260928",
+  "reviewedAt": "2026-09-28T14:37:47.918261+00:00",
+  "reviewer": {
+    "kind": "ai",
+    "provider": "OpenAI",
+    "model": "gpt-6-astra",
+    "agent": "/root/fresh_b"
+  },
+  "reviewStatus": "ai_candidate",
+  "humanApproved": false,
+  "goalId": "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+  "goalText": {
+    "id": "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+    "title": "Den Kehrsatz des Pythagoras beweisen",
+    "description": "Die lernende Person kann den Kehrsatz des Pythagoras beweisen, indem sie ein rechtwinkliges Hilfsdreieck mit den beiden kürzeren Seiten vergleicht, die Gleichheit der dritten Seite mit dem Satz des Pythagoras nachweist und mittels Kongruenz auf den rechten Winkel im ursprünglichen Dreieck schließt.",
+    "descriptionEn": "The learner can prove the converse of the Pythagorean theorem by comparing a right auxiliary triangle with the two shorter sides, establishing equality of the third side using the Pythagorean theorem, and using congruence to infer the right angle in the original triangle."
+  },
+  "goalTextDigest": "sha256:eaa94806b776d319854f2e2eecd24c69f1bc0a1a389037b3e2e2a1be71566d48",
+  "candidate": {
+    "path": "tmp/m7-20260928-continuation/pyth-converse-proof-exact-imagegen.png",
+    "sha256": "sha256:dd76447150b51af15d97264ef9eccd3d656ac51d2a380582a80028de145450c6",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "actualOriginalViewed": true,
+    "viewTool": "view_image",
+    "viewDetail": "original"
+  },
+  "preview360": [
+    {
+      "path": "tmp/m7-20260928-continuation/pyth-converse-proof-exact-imagegen.360.png",
+      "sha256": "sha256:5eb4d3385a3848c182eabef9890468e7b11807d79345e77f36063cd5d06582b9",
+      "dimensions": [
+        360,
+        203
+      ],
+      "actualViewed": true,
+      "viewTool": "view_image",
+      "viewDetail": "original",
+      "method": "Provided aspect-preserving preview; resampling kernel not asserted"
+    },
+    {
+      "path": "tmp/m7-20260928-continuation/pyth-converse-proof-exact-imagegen.independent360.png",
+      "sha256": "sha256:d183cdc2bb4dd47140b93c3e107d74ac81c0b281218d293f1058023fc96106ff",
+      "dimensions": [
+        360,
+        203
+      ],
+      "actualViewed": true,
+      "viewTool": "view_image",
+      "viewDetail": "original",
+      "method": "Independent Pillow LANCZOS resize of final candidate"
+    }
+  ],
+  "decision": "pass",
+  "mathematicsDecision": "pass",
+  "geometryDecision": "pass",
+  "mobile360ReadabilityDecision": "pass",
+  "styleDecision": "pass",
+  "geometry": {
+    "measurementMethod": "Dark vertex-dot centroids measured from actual candidate pixels. In each35×35-pixel ROI around visually identified vertex, select RGB thresholds R<50,G<75,B<110, take largest8-connected component and calculate its centroid. Thick raster strokes and dot antialiasing limit subpixel interpretation.",
+    "vertexCentersPx": {
+      "A": [
+        101.45664739884393,
+        499.2774566473988
+      ],
+      "B": [
+        700.8863198458574,
+        499.30635838150283
+      ],
+      "C": [
+        482.8365019011407,
+        211.63117870722434
+      ],
+      "Ap": [
+        950.0307692307692,
+        499.34038461538466
+      ],
+      "Bp": [
+        1548.996153846154,
+        499.3596153846154
+      ],
+      "Cp": [
+        1330.930501930502,
+        211.496138996139
+      ]
+    },
+    "triangles": {
+      "given": {
+        "aBCPx": 360.9746973215055,
+        "bACPx": 477.6933897732197,
+        "baseABPx": 599.4296731437676,
+        "aOverB": 0.7556619058364504,
+        "angleAtCDegrees": 90.13660242932798,
+        "normalizedToBase5": [
+          3.010984553269931,
+          3.9845657562121506,
+          5
+        ]
+      },
+      "auxiliary": {
+        "aBCPx": 361.1343373093414,
+        "bACPx": 477.4294880993847,
+        "baseABPx": 598.9653849241024,
+        "aOverB": 0.7564139759087638,
+        "angleAtCDegrees": 90.06689530719625,
+        "normalizedToBase5": [
+          3.014651150125331,
+          3.9854514143574584,
+          5
+        ]
+      }
+    },
+    "correspondingSideRelativeDifferencesPercent": {
+      "aBCPx": 0.044224703011161194,
+      "bACPx": 0.05524499176349887,
+      "baseABPx": 0.0774549943832685
+    },
+    "finding": "Corresponding side lengths agree to within0.08 percent and both apex angles agree with90 degrees within0.14 degrees. The two triangles visibly preserve the same proportions and satisfy the intended congruence within raster precision. The prior ratio reversal and non-right auxiliary geometry are corrected."
+  },
+  "logicAndLabels": [
+    "b=AC and b=A′C′ are green; a=BC and a=B′C′ are blue; c=AB and d=A′B′ are coral. Opposite-vertex side naming and all corresponding labels are correct.",
+    "The original angleC has a question mark; the constructed auxiliary angleC′ alone has the right-angle square, on the actual perpendicular legs.",
+    "The given condition a²+b²=c² and Pythagoras in the auxiliary right triangle imply d²=a²+b²=c². Since side lengths are positive,d=c. Along with matching a,b, SSS gives the corresponding angleC=C′=90°.",
+    "The complete displayed formula chain d²=a²+b²=c², d=c, SSS⇒∠C=90° is correct. The picture supports the proof and need not repeat every premise in prose."
+  ],
+  "visualAndMobileChecks": [
+    "Both original and two independently opened360px previews were actually inspected.",
+    "At360px both panel headings, all six vertex names and primes, a/b/c/d labels, the question/right-angle markers, exponents and complete three-step chain remain readable.",
+    "Friendly warm colored cards and hand-painted textures preserve clean geometry and clear labels. No watermark, technical ID or false additional mathematical claim."
+  ],
+  "provenance": {
+    "metadataPath": "tmp/m7-20260928-continuation/pyth-converse-png-candidates.json",
+    "metadataSha256": "sha256:0ea2a8ba32d52ae8de7a369432db9ab275b4f5c9b760f56f8628c46f6bc87be2",
+    "provider": "OpenAI built-in imagegen",
+    "model": "not exposed by the built-in tool",
+    "selectedMetadataMatches": true,
+    "generatedImagePath": "/home/enpasos/.codex/generated_images/01a0e85d-5ac3-7d83-bf6f-e83d1548acc5/exec-5c8f43e0-bbbc-4448-9992-580723c6233c.png",
+    "generatedImageSha256": "sha256:dd76447150b51af15d97264ef9eccd3d656ac51d2a380582a80028de145450c6",
+    "byteIdenticalToReviewedCandidate": true,
+    "promptLocation": "goals[0].attempts[4].promptLines in candidate metadata",
+    "inputReferencePath": "tmp/m7-20260928-continuation/pyth-converse-proof-exact-translation-reference.png",
+    "inputReferenceSha256": "sha256:715c029c3270c00c9cad0600620932bb2018ba954f565cd54949c559e578c005",
+    "provenanceBoundary": "Generated final PNG reviewed directly; exact temporary geometry reference is provenance, not the active output. Generator claims are read from metadata, not independently witnessed tool execution."
+  },
+  "supersedesCandidateDecision": {
+    "previousReviewPath": "tmp/m7-20260928-continuation/pyth-converse-independent-review.json",
+    "previousReviewSha256": "sha256:485af63a48d7e6eeb439d029402206a808cd47e14a42575e4749bf0900927ff4",
+    "previousCandidateSha256": "sha256:b6bae508244409c7c034af760591c0af1a8c3bba38f36eec999acd5df1953cd5",
+    "previousDecision": "hold",
+    "previousEvidencePreserved": true,
+    "newDecisionAppliesOnlyTo": "sha256:dd76447150b51af15d97264ef9eccd3d656ac51d2a380582a80028de145450c6"
+  },
+  "scope": {
+    "activeBindingVerified": false,
+    "activeFilesChanged": false,
+    "noHumanApproval": true,
+    "noStrictM7Closure": true
+  },
+  "writes": [
+    "One independent temporary360px preview",
+    "This temporary independent review JSON"
+  ]
+}

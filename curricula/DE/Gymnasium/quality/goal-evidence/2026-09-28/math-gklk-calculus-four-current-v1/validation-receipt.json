@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-09-28T12:02:28.416551+00:00",
+  "authority": "ai_candidate only, needs_human_review, E1/G1",
+  "validator": {
+    "command": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/positiveGoalEvidenceReview.ts",
+      "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-09-28/math-gklk-calculus-four-current-v1/positive-evidence.config.json",
+      "--mode=check"
+    ],
+    "exitCode": 0,
+    "output": "# Positive Goal Evidence Review: canonical-math-m7-gklk-calculus-four-current-20260928-v1\nScope: Four current calculus application, model validation and asymptotic-comparison profiles with two independent structural cases each\nConfigured goals: 4\nApproved: 0\nNeeds human review: 4\nRejected: 0\nBlocking issues: 0\n"
+  },
+  "mathematicalChecks": {
+    "cubicAltitude": "H(0)=100,H(2)=116,H(3)=109; H′=12−3t²",
+    "arrivalRate": "C′(0)=30,C′(2)=42,C′(4)=30; C(4)=152",
+    "motion": "displacement 5 m; end position 9 m; total distance 13 m",
+    "gardenArea": "(2/3)*9^(3/2)=18 m²",
+    "tank": "V(4)=18,V(6)=20,V(8)=18; capacity first reached at4",
+    "cooling": "20+60 exp(−1)≈42.1; discrepancy≈7.9 exceeds1",
+    "asymptotics": "equal-step quotient ratio e^(−1)(1+1/x)^n; negative-direction substitution (−1)^n u^n/e^u"
+  },
+  "registryWritten": false,
+  "separateReview": "Two prior independent D reviews inform scope; they are not independent reviews or human approval of these newly authored P profiles."
+}

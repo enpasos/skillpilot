@@ -1,0 +1,69 @@
+{
+  "recordedAt": "2026-09-28T12:10:43.459748+00:00",
+  "authority": "machine_checks_and_ai_audit",
+  "humanApproval": false,
+  "ownChildDefinitionsSha256": "a806ca29506efa6d1a29d3551bbe03abaf68af7ce71e55668062334e8508f78f",
+  "checks": {
+    "compositionViews": {
+      "result": "pass",
+      "count": 297,
+      "command": "npm --prefix app run validate:composition-views"
+    },
+    "examMarkdown": {
+      "result": "pass",
+      "command": "npm --prefix app run test:exam-markdown"
+    },
+    "checkpointContracts": {
+      "result": "pass",
+      "command": "npm --prefix app run test:math-checkpoint-exams"
+    },
+    "reviewedSekIExamRoutes": {
+      "result": "pass",
+      "command": "npm --prefix app run test:canonical-math-sek1-reviewed-exam-routes"
+    },
+    "gitDiffCheck": {
+      "result": "pass",
+      "command": "git diff --check"
+    },
+    "ownChildrenAandM": {
+      "result": "current",
+      "goalIds": [
+        "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+        "2850e8f6-2330-50d3-a577-d519540d9924"
+      ]
+    },
+    "globalGraph": {
+      "result": "blocked-by-parallel-package",
+      "remainingEdges": [
+        "a8ff2666 -> 1bc118c3",
+        "bd2c5e29 -> 972cc7e8"
+      ]
+    },
+    "globalAandM": {
+      "result": "blocked-by-parallel-package",
+      "missing": [
+        "976def9e"
+      ],
+      "stale": [
+        "985d5529",
+        "a97c7cce",
+        "fcd1d180"
+      ],
+      "obsolete": [
+        "0a846521",
+        "c2c49659"
+      ]
+    },
+    "durationGenerator": {
+      "result": "integration-pending",
+      "reason": "Global canonical hash must be rebound after all concurrent structural edits. Last execution stopped at root-owned a8ff -> old 1bc cluster."
+    }
+  },
+  "integrationPending": [
+    "current child images and D/P/V",
+    "dependent D/P context rebinds",
+    "global duration/A/M/graph checks after parallel changes",
+    "central five-gate report",
+    "final CI"
+  ]
+}

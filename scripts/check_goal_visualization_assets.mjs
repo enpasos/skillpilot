@@ -14,7 +14,11 @@ const runtimeRoots = [
   'backend/src/main/resources/static/assets/goal-visualizations',
 ]
 const canonicalRoot = 'curricula/DE/Gymnasium/visualizations'
-const allowedExtensions = new Set(['.png', '.jpg', '.jpeg', '.webp'])
+const allowedExtensions = new Set(['.png', '.jpg', '.jpeg', '.webp', '.svg'])
+// Existing SVG reference/source files are not all goal-primary assets. Keep
+// the historical orphan scan scoped to raster assets; linked SVGs are checked
+// above for exact paths, identical copies and standalone content.
+const orphanScanExtensions = new Set(['.png', '.jpg', '.jpeg', '.webp'])
 const historicalAssetManifest = JSON.parse(fs.readFileSync(path.join(
   repoRoot,
   'scripts/config/historical-goal-visualization-assets.json',
@@ -32,6 +36,14 @@ function sha256(filePath) {
   return crypto.createHash('sha256').update(fs.readFileSync(filePath)).digest('hex')
 }
 
+function safeStandaloneSvg(filePath) {
+  const source = fs.readFileSync(filePath, 'utf8')
+  if (!/^\s*(?:<\?xml[^>]*>\s*)?<svg\b[^>]*\bxmlns\s*=\s*["']http:\/\/www\.w3\.org\/2000\/svg["']/iu.test(source)) {
+    return false
+  }
+  return !/(?:<!DOCTYPE|<!ENTITY|<\s*(?:script|foreignObject|iframe|object|embed|image|use|a)\b|\bon[a-z]+\s*=|\b(?:href|xlink:href)\s*=|@import|url\(\s*["']?(?!#))/iu.test(source)
+}
+
 function imageFilesBelow(rootPath) {
   if (!fs.existsSync(rootPath)) return []
   const files = []
@@ -42,7 +54,7 @@ function imageFilesBelow(rootPath) {
       const entryPath = path.join(current, entry.name)
       if (entry.isDirectory()) {
         pending.push(entryPath)
-      } else if (entry.isFile() && allowedExtensions.has(path.extname(entry.name).toLowerCase())) {
+      } else if (entry.isFile() && orphanScanExtensions.has(path.extname(entry.name).toLowerCase())) {
         files.push(entryPath)
       }
     }
@@ -78,7 +90,7 @@ if (historicalAssetManifest.schemaVersion !== 1 || !Array.isArray(historicalAsse
   for (const entry of historicalAssetManifest.assets) {
     const relativePath = entry?.path
     if (typeof relativePath !== 'string'
-      || !/^([a-z0-9-]+)\/([0-9a-f-]{36})\/\2\.(png|jpe?g|webp)$/u.test(relativePath)
+      || !/^([a-z0-9-]+)\/([0-9a-f-]{36})\/\2\.(png|jpe?g|webp|svg)$/u.test(relativePath)
       || !/^[0-9a-f]{64}$/u.test(entry?.sha256 ?? '')
       || historicalAssets.has(relativePath)) {
       fail(`Invalid or duplicate historical visualization asset: ${String(relativePath)}.`)
@@ -176,6 +188,9 @@ for (const landscapePath of landscapePaths) {
         fail(`${prefix}: canonical asset escapes the visualization root through a symlink.`)
       } else {
         assetCopies.push(canonicalPath)
+        if (extension === '.svg' && !safeStandaloneSvg(canonicalPath)) {
+          fail(`${prefix}: SVG must be standalone and contain no active or external content.`)
+        }
       }
 
       const promptPath = path.join(path.dirname(canonicalPath), 'prompt.de.md')

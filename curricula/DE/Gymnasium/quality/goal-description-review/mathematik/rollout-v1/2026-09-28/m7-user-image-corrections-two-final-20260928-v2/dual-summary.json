@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:0a5935ff7d973f3d1f55636358d1afcb238d32623d6fa45528b26a1b78bde643",
+  "reviewInputFingerprint": "sha256:867fe105908a16fe64d7d7536d70bddab1c1bf8353185345832f08e88ab6ae8e",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-a",
+      "roundId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-independent-a",
+      "runIds": [
+        "math-m7-user-image-corrections-two-final-20260928-v2-first-pass-a-run-20260928"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-b",
+      "roundId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-independent-b",
+      "runIds": [
+        "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-b.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex model identifier not exposed; generation parameters not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "eb070ed2-7ef4-5afe-b203-190ebb0116af",
+      "firstRecordId": "math-m7-two-final-20260928-v2-a-eb070",
+      "secondRecordId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-b.eb070ed2-7ef4-5afe-b203-190ebb0116af",
+      "firstRunId": "math-m7-user-image-corrections-two-final-20260928-v2-first-pass-a-run-20260928",
+      "secondRunId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "firstRecordId": "math-m7-two-final-20260928-v2-a-5ba7",
+      "secondRecordId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-b.5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "firstRunId": "math-m7-user-image-corrections-two-final-20260928-v2-first-pass-a-run-20260928",
+      "secondRunId": "mathematik-m7-user-image-corrections-two-final-20260928-v2-first-pass-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

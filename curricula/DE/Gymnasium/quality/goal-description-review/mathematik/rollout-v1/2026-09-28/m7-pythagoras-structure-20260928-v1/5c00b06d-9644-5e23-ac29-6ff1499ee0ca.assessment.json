@@ -1,0 +1,93 @@
+{
+  "id": "5c00b06d-9644-5e23-ac29-6ff1499ee0ca",
+  "title": "Prüfung: Den Kehrsatz mit einem Hilfsdreieck beweisen",
+  "description": "Die lernende Person kann die Kompetenz „Den Kehrsatz des Pythagoras beweisen“ in einer selbstständigen Prüfungsaufgabe zeigen.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical",
+    "phase:SekI",
+    "ExamTask"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-HE",
+      "DE-SH",
+      "DE-SL"
+    ],
+    "stage": [
+      "SekI"
+    ]
+  },
+  "sourceRef": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-pythagoras-structure-20260928-v1/5c00b06d-9644-5e23-ac29-6ff1499ee0ca.assessment.json",
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3",
+      "K4"
+    ],
+    "guidingIdeas": [
+      "L2",
+      "L3"
+    ],
+    "phase": "J9",
+    "area": "Mathematik",
+    "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J9.6A3502EE"
+  },
+  "shortKey": "canonical_math_sek1_j9_assessment_6a3502ee",
+  "contains": [],
+  "requires": [
+    "6a3502ee-b616-5db7-88fc-8951f33c9f63"
+  ],
+  "phase": "J9",
+  "type": "atomic",
+  "nodeKind": "exam",
+  "examData": {
+    "reviewStatus": "released",
+    "reviewNote": "Aktiver AI-Arbeitsstand mit fachlich ausgearbeiteter Aufgabe und Lösung vom 2026-09-28; keine menschliche Freigabe. Zentrale Qualitätsnachweise separat erforderlich.",
+    "coveredGoalIds": [
+      "6a3502ee-b616-5db7-88fc-8951f33c9f63"
+    ],
+    "coveredStrands": [
+      "L2"
+    ],
+    "demandLevels": [
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "Ein Dreieck hat Seitenlängen $a,b,c>0$, wobei $c$ die längste Seite ist und $a^2+b^2=c^2$ gilt. Zeige ohne Winkelmessung, dass der Winkel gegenüber $c$ ein rechter Winkel sein muss.\n\n1. Beschreibe ein geeignetes rechtwinkliges Hilfsdreieck und benenne seine Seiten. (2 BE)\n2. Führe den Beweis vollständig: Weise die Gleichheit der dritten Seite nach und begründe den Übergang vom Hilfsdreieck zum ursprünglichen Dreieck. (6 BE)\n3. Eine Mitschülerin meint: „Weil der Satz des Pythagoras gilt, gilt automatisch auch seine Umkehrung.“ Erkläre, welche fehlende Begründung dein Beweis ergänzt. (2 BE)",
+    "solutionContent": "Konstruiere ein rechtwinkliges Hilfsdreieck mit Katheten $a,b$ und Hypotenuse $c'$. Im Hilfsdreieck gilt der bereits bekannte Satz: $(c')^2=a^2+b^2$. Nach Voraussetzung ist $a^2+b^2=c^2$, also $(c')^2=c^2$. Wegen positiver Längen folgt $c'=c$.\n\nDamit stimmen alle drei Seiten des ursprünglichen und des Hilfsdreiecks überein. Nach SSS sind sie kongruent; entsprechende Winkel sind gleich. Der Winkel gegenüber $c$ ist somit wie im Hilfsdreieck $90^\\circ$. Eine Implikation allein rechtfertigt ihre Umkehrung nicht; erst der Längennachweis zusammen mit der Kongruenz liefert hier den fehlenden Schluss. Ohne Gleichheit der dritten Seite oder ohne Kongruenz-/Winkelübertragung maximal 7/10 Punkte.",
+    "scoring": {
+      "maxPoints": 10,
+      "passingPoints": 8,
+      "steps": [
+        {
+          "id": "auxiliary",
+          "points": 2,
+          "description": "Geeignetes rechtwinkliges Hilfsdreieck"
+        },
+        {
+          "id": "converse-proof",
+          "points": 6,
+          "description": "Positive dritte Seiten gleich; SSS und Winkelübertragung"
+        },
+        {
+          "id": "logical-direction",
+          "points": 2,
+          "description": "Notwendigkeit einer eigenen Umkehrungsbegründung"
+        }
+      ]
+    },
+    "sourceArtifactPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-pythagoras-structure-20260928-v1/5c00b06d-9644-5e23-ac29-6ff1499ee0ca.assessment.json"
+  },
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary",
+    "applicabilityFromRequires": true
+  }
+}

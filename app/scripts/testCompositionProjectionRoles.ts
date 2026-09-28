@@ -534,7 +534,7 @@ const hesseLkDirectPrerequisiteClosure = [
   ['29ce4053-b5c5-4a82-9ff0-3acc492284d8', '39fa30f2-e1ae-5c36-be56-793b77906abb'],
   ['075f1ef2-6860-4b20-9df2-878157eb395e', 'f242a3e8-55a3-492e-8354-b81b24cdbb78'],
   ['075f1ef2-6860-4b20-9df2-878157eb395e', '19f170e4-b88f-4c06-b72a-ce6923748bb4'],
-  ['944dd479-9f30-5acb-ab32-3ea0b6dc8e06', '0a846521-edcc-5c3c-a844-eac061e053ce'],
+  ['944dd479-9f30-5acb-ab32-3ea0b6dc8e06', '54541d08-61cc-5a6d-b6d9-d0270a7d1949'],
   ['36e0de23-1e3b-5c69-888f-e5e19e79cbbe', 'fac75b4a-4ec2-5d38-bbce-9b002c8a4904'],
   ['508292f2-671b-4fd3-acbf-53d705e44693', 'efc3506a-5f35-4d77-9498-d70a091a470b'],
   ['508292f2-671b-4fd3-acbf-53d705e44693', '4ac925cf-3862-4810-be2a-d92efff7d735'],
@@ -543,8 +543,8 @@ const hesseLkDirectPrerequisiteClosure = [
   ['4a53a441-3c2a-53aa-8a1a-e08a6898e826', '9278bc5e-a77f-5f72-8636-0d0d3e3d32ae'],
   ['8cb5c712-9c58-5910-8c63-8c3736369b80', 'fac75b4a-4ec2-5d38-bbce-9b002c8a4904'],
   ['bd3576b8-f4e5-542a-a8a2-74524d9cee21', 'fac75b4a-4ec2-5d38-bbce-9b002c8a4904'],
-  ['c2c49659-5917-5be5-a3bd-e46f1b17126f', '3256476b-ec65-4038-9f5a-a8808fbcf207'],
-  ['c2c49659-5917-5be5-a3bd-e46f1b17126f', '509ae03b-96b1-4bb1-b015-b83d14569dae'],
+  ['3256476b-ec65-4038-9f5a-a8808fbcf207', '265af6af-8eac-5632-b730-800aafcde26a'],
+  ['509ae03b-96b1-4bb1-b015-b83d14569dae', 'effe43eb-cabe-56cb-a228-35887d7915c1'],
 ] as const
 
 prerequisiteOnlyGoalIds.forEach((goalId) => {

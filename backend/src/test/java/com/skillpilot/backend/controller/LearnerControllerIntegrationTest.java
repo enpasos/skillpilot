@@ -46,9 +46,9 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_ID = "c01b1ce9-a667-4a46-b251-ec33ae602b15";
-    // HE-GK Q2.1 now excludes the broader parameter/modeling route. Champion totals
-    // count legacy-equivalent atoms, not the three new canonical GK assessments.
-    private static final long HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS = 292;
+    // Champion totals count legacy-equivalent atoms. The reviewed 809ef split
+    // removes its exact legacy equivalence; new mean/reconstruction edges are partial.
+    private static final long HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS = 291;
     private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String CANONICAL_PHYSICS_ROOT_ID = "bf980fff-b62b-4ea4-a20d-31681a7ad785";
     private static final String CANONICAL_CHEMISTRY_ID = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
@@ -1337,28 +1337,26 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
-        // The J9 quadratic assessment is now visible in every state (+1).
-        // HE/RP/SH duration views also gain one atom from the reviewed J7 prism
-        // split; HE excludes two no-longer-supported Sek-I targets (07196e72
-        // and fde351a8), leaving its previous total unchanged.
-        // BW/RP Sek I no longer include the Q4 process assessment in their target views.
+        // Reviewed 2026-09-28 content splits and year-specific source projections
+        // change the exact visible target sets. Totals include local assessments;
+        // excluded compatibility IDs and prerequisite-only goals do not count.
         String[][] scopes = {
-                { "DE-BB", "241", "241" },
-                { "DE-BE", "240", "240" },
-                { "DE-BW", "258", "258" },
-                { "DE-BY", "231", "231" },
-                { "DE-HB", "214", "214" },
-                { "DE-HE", "318", "356" },
-                { "DE-HH", "240", "240" },
-                { "DE-MV", "240", "240" },
-                { "DE-NI", "240", "240" },
-                { "DE-NW", "240", "240" },
-                { "DE-RP", "263", "289" },
-                { "DE-SH", "259", "265" },
-                { "DE-SL", "240", "240" },
-                { "DE-SN", "240", "240" },
-                { "DE-ST", "240", "240" },
-                { "DE-TH", "241", "241" }
+                { "DE-BB", "246", "246" },
+                { "DE-BE", "242", "242" },
+                { "DE-BW", "265", "265" },
+                { "DE-BY", "235", "235" },
+                { "DE-HB", "218", "218" },
+                { "DE-HE", "325", "366" },
+                { "DE-HH", "242", "242" },
+                { "DE-MV", "243", "243" },
+                { "DE-NI", "243", "243" },
+                { "DE-NW", "243", "243" },
+                { "DE-RP", "266", "293" },
+                { "DE-SH", "267", "276" },
+                { "DE-SL", "245", "245" },
+                { "DE-SN", "243", "243" },
+                { "DE-ST", "243", "243" },
+                { "DE-TH", "244", "244" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1393,20 +1391,16 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
-        // The J7 prism split, J9 quadratic assessment, antiderivative
-        // atom/assessment and line-angle assessment add five HE-GK targets.
-        // LK also gains the local dilation and two-plane assessments but loses
-        // three BY-only analysis goals and the BY-only Mandelbrot goal. RP/SH
-        // gain the prism and quadratic endpoints; their LK scopes lose the
-        // same BY-only goals where previously inherited. Keep exact
-        // totals alongside membership checks so compensating errors fail.
+        // Reviewed 2026-09-28 content splits, scoped year corrections and Q1
+        // assessment routes determine these cross-stage totals. Retain both exact
+        // counts and HE-GK membership assertions so compensating errors fail.
         String[][] scopes = {
-                { "DE-HE", "GK", "738", "759" },
-                { "DE-HE", "LK", "866", "887" },
-                { "DE-RP", "GK", "679", "704" },
-                { "DE-RP", "LK", "788", "813" },
-                { "DE-SH", "GK", "654", "660" },
-                { "DE-SH", "LK", "749", "755" }
+                { "DE-HE", "GK", "746", "770" },
+                { "DE-HE", "LK", "877", "901" },
+                { "DE-RP", "GK", "680", "706" },
+                { "DE-RP", "LK", "791", "817" },
+                { "DE-SH", "GK", "662", "671" },
+                { "DE-SH", "LK", "759", "768" }
         };
         SoftAssertions softly = new SoftAssertions();
 

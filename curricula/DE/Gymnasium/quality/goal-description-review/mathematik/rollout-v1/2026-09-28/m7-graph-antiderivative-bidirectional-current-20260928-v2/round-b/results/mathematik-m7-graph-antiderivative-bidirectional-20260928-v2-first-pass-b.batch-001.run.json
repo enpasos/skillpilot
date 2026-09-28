@@ -1,0 +1,43 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-m7-graph-antiderivative-bidirectional-v2-round-b-openai-gpt6-20260928",
+  "campaignId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-b",
+  "roundId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-first-pass-b",
+  "batchId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:e12ee5287f091c0d1c7503c4d039d3b27b0b1b4d6445a9ca11b873a60b09e98b",
+  "bundleFingerprint": "sha256:c6d024e135b5e5a102107be28d0ff07113623fc1cbb418adf0058975fe366d15",
+  "bookDigest": "sha256:42c00ba492fb5887108d027a76a232da9a7f8fd7ae9353b5bca7a0d425330b55",
+  "provider": "OpenAI",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "mathematik-m7-graph-antiderivative-bidirectional-20260928-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "21676dae-8619-59d1-89e3-a35bb2297e2c",
+    "85eda551-cfc1-52c6-a252-4c7394c1f7e6"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e12ee5287f091c0d1c7503c4d039d3b27b0b1b4d6445a9ca11b873a60b09e98b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-28T09:12:16Z",
+  "completedAt": "2026-09-28T09:13:52Z",
+  "status": "completed",
+  "outputDigest": "sha256:ada2796b0f8f4daed31c1d2552b939fac622e39b444c88e85f997a9160fdadee",
+  "toolchainVersion": "codex.goal-description-review.v2"
+}
