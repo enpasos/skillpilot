@@ -319,19 +319,35 @@ function assertMarketplacePublicationEvidenceRef(value: string | null | undefine
   assert.match(references[0] ?? '',
     /^https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace\/pull\/\d+$/u)
   if (references.length === 1) return
-  assert.equal(references.length, 3, 'extended publication evidence needs a CI run and verification result')
-  assert.match(references[1] ?? '',
-    /^https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace\/actions\/runs\/[1-9]\d*$/u)
-  assert.equal(references[2], 'verify-repository PASS')
+  assert.ok(references.length === 3 || references.length === 4,
+    'extended publication evidence needs a PR run, optional main run, and verification result')
+  for (const run of references.slice(1, -1)) {
+    assert.match(run,
+      /^https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace\/actions\/runs\/[1-9]\d*$/u)
+  }
+  if (references.length === 3) {
+    assert.equal(references[2], 'verify-repository PASS')
+  } else {
+    assert.notEqual(references[1], references[2], 'PR and main runs need separate evidence')
+    assert.equal(references[3],
+      'verifyPublishedClaudeMarketplace PASS against public main and HTTPS installation')
+  }
 }
 const sampleMarketplacePr = 'https://github.com/enpasos/skillpilot-claude-marketplace/pull/999'
 const sampleMarketplaceRun = 'https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/999'
+const sampleMarketplaceMainRun = 'https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/1000'
+const samplePublishedVerification = 'verifyPublishedClaudeMarketplace PASS against public main and HTTPS installation'
 assertMarketplacePublicationEvidenceRef(sampleMarketplacePr)
 assertMarketplacePublicationEvidenceRef(`${sampleMarketplacePr}; ${sampleMarketplaceRun}; verify-repository PASS`)
+assertMarketplacePublicationEvidenceRef(
+  `${sampleMarketplacePr}; ${sampleMarketplaceRun}; ${sampleMarketplaceMainRun}; ${samplePublishedVerification}`)
 for (const invalidEvidenceRef of [
   `${sampleMarketplacePr}; unverified`,
   `${sampleMarketplacePr}; https://github.com/other/repo/actions/runs/999; verify-repository PASS`,
   `${sampleMarketplacePr}; ${sampleMarketplaceRun}; verify-repository FAIL`,
+  `${sampleMarketplacePr}; ${sampleMarketplaceRun}; https://github.com/other/repo/actions/runs/1000; ${samplePublishedVerification}`,
+  `${sampleMarketplacePr}; ${sampleMarketplaceRun}; ${sampleMarketplaceRun}; ${samplePublishedVerification}`,
+  `${sampleMarketplacePr}; ${sampleMarketplaceRun}; ${sampleMarketplaceMainRun}; verifyPublishedClaudeMarketplace FAIL`,
 ]) {
   assert.throws(() => assertMarketplacePublicationEvidenceRef(invalidEvidenceRef))
 }
