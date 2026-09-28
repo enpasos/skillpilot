@@ -65,7 +65,7 @@ const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
 // Current authoring checkpoint, not a review or publication approval. The
 // nationwide atlas keeps all current curricular-atomic page IDs; this digest binds current text,
 // visuals, exam edges and explicit LK applicability.
-const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:0f3c6dd7548a67240028a0f1d5f01e827ef419b45680ed10ef61b3f326c4a45d'
+const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:1fc32634142bdb6ff089f1f4855e98f8d27917575ff127a5c97c1f146a5fea17'
 
 const goal = ({
   id,
