@@ -96,6 +96,8 @@ test('current OpenAI contract, submission and runtime checks remain active', () 
     'scripts/openai_plugin_submission.mjs check',
     'scripts/validate_openai_v1_runtime_config.test.mjs',
     'scripts/validate_openai_v1_runtime_config.mjs',
+    'scripts/audit_npm_dependencies.test.mjs',
+    'node scripts/audit_npm_dependencies.mjs "ai/openai app"',
   ]) assert(ci.includes(command), `Current check missing: ${command}`)
 })
 

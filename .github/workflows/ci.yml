@@ -123,7 +123,7 @@ jobs:
         run: npm --prefix "ai/openai app" test
       - name: Test plugin release and CI configuration
         run: |
-          node --test scripts/openai_plugin_release.test.mjs scripts/plugin_ci_workflows.test.mjs scripts/check_skillpilot_coach_behavior.test.mjs
+          node --test scripts/openai_plugin_release.test.mjs scripts/plugin_ci_workflows.test.mjs scripts/check_skillpilot_coach_behavior.test.mjs scripts/audit_npm_dependencies.test.mjs
       - name: Validate SkillPilot Coach source and current submission contract
         run: node scripts/check_openai_plugin_versioning.mjs
       - name: Validate current OpenAI 1.1 plan contract
@@ -138,7 +138,7 @@ jobs:
       - name: Validate exact V1 production boundary configuration
         run: node scripts/validate_openai_v1_runtime_config.mjs
       - name: Audit MCP App dependencies
-        run: npm --prefix "ai/openai app" audit --audit-level=moderate
+        run: node scripts/audit_npm_dependencies.mjs "ai/openai app"
       - name: Retain checked OpenAI submission worksheets
         uses: actions/upload-artifact@v6
         with:
