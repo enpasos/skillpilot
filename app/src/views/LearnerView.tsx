@@ -6,8 +6,7 @@ import { CompetenceTree } from '../components/CompetenceTree'
 import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
 import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview'
-import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck } from 'lucide-react'
-import { ThemeToggle } from '../components/ThemeToggle'
+import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
 import { LearnerDataManagementDialog } from '../components/LearnerDataManagementDialog'
@@ -2467,6 +2466,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   // Sidebar state
   const [sidebarWidth, setSidebarWidth] = useState(320)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(true)
+  const desktopHideButtonRef = useRef<HTMLButtonElement>(null)
+  const desktopShowButtonRef = useRef<HTMLButtonElement>(null)
   const isResizing = useRef(false)
 
   const resize = useCallback((e: MouseEvent) => {
@@ -3212,7 +3214,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         className={`flex flex-col bg-sidebar-bg border-r border-border-color shrink-0
           fixed inset-y-0 left-0 z-50 shadow-2xl transition-transform duration-300
           ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-          md:translate-x-0 md:relative md:shadow-none md:transition-none md:flex
+          md:relative md:shadow-none md:transition-none
+          ${isDesktopSidebarOpen ? 'md:flex md:translate-x-0' : 'md:hidden'}
         `}
         style={{
           width: isMobile ? '85%' : sidebarWidth,
@@ -3268,7 +3271,21 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
             {/* SSE auto-refresh now active - manual refresh button removed */}
             <button type="button" aria-label={localizedLanguage === 'de' ? 'Einstellungen öffnen' : 'Open settings'} onClick={() => setIsSetupOpen(true)} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-text-secondary hover:text-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><Settings size={18} aria-hidden="true" /></button>
-            <ThemeToggle />
+            <button
+              ref={desktopHideButtonRef}
+              type="button"
+              aria-label={learnerViewCopy.hideGoalSidebarLabel}
+              aria-controls="learner-goal-sidebar"
+              aria-expanded={isDesktopSidebarOpen}
+              title={learnerViewCopy.hideGoalSidebarLabel}
+              onClick={() => {
+                setIsDesktopSidebarOpen(false)
+                requestAnimationFrame(() => desktopShowButtonRef.current?.focus())
+              }}
+              className="hidden min-h-11 min-w-11 items-center justify-center rounded-md text-text-secondary hover:text-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 md:inline-flex"
+            >
+              <PanelLeftClose size={18} aria-hidden="true" />
+            </button>
             {isMobile && (
               <button
                 type="button"
@@ -3361,6 +3378,25 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         data-testid="learner-main-content"
         className="relative flex flex-1 flex-col items-center overflow-y-auto bg-chat-bg p-6 pt-16 md:pt-6"
       >
+        {!isDesktopSidebarOpen && (
+          <div className="mb-4 hidden w-full md:flex">
+            <button
+              ref={desktopShowButtonRef}
+              type="button"
+              aria-label={learnerViewCopy.showGoalSidebarLabel}
+              aria-controls="learner-goal-sidebar"
+              aria-expanded={isDesktopSidebarOpen}
+              onClick={() => {
+                setIsDesktopSidebarOpen(true)
+                requestAnimationFrame(() => desktopHideButtonRef.current?.focus())
+              }}
+              className="inline-flex min-h-11 items-center gap-2 rounded-md border border-border-color bg-sidebar-bg px-3 text-sm font-medium text-text-secondary shadow-sm hover:text-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
+            >
+              <PanelLeftOpen size={18} aria-hidden="true" />
+              {learnerViewCopy.showGoalSidebarLabel}
+            </button>
+          </div>
+        )}
         {/* Mobile Toggle Button */}
         {isMobile && !isSidebarOpen && (
           <button

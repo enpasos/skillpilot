@@ -11,6 +11,8 @@ export interface LearnerViewCopy {
   revealActiveGoalTitle: string
   openGoalMenuLabel: string
   closeGoalMenuLabel: string
+  showGoalSidebarLabel: string
+  hideGoalSidebarLabel: string
   memoryGoalModeTitle: string
   memoryGoalModeBody: string
   memoryModeLabel: string
@@ -46,6 +48,8 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         revealActiveGoalTitle: 'Gehe zum aktiven Ziel',
         openGoalMenuLabel: 'Lernzielmenü öffnen',
         closeGoalMenuLabel: 'Lernzielmenü schließen',
+        showGoalSidebarLabel: 'Lernziele anzeigen',
+        hideGoalSidebarLabel: 'Lernziele ausblenden',
         memoryGoalModeTitle: 'Karteikarten lernen',
         memoryGoalModeBody: 'Lerne hier mit Karteikarten oder starte die harte Prüfung mit dem Lerncoach. Dabei wird die Antwort ohne Kartenhilfe abgefragt und anschließend gespeichert.',
         memoryModeLabel: 'Modus',
@@ -78,6 +82,8 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         revealActiveGoalTitle: 'Go to active goal',
         openGoalMenuLabel: 'Open learning-goal menu',
         closeGoalMenuLabel: 'Close learning-goal menu',
+        showGoalSidebarLabel: 'Show learning goals',
+        hideGoalSidebarLabel: 'Hide learning goals',
         memoryGoalModeTitle: 'Learn with flashcards',
         memoryGoalModeBody: 'Learn here with flashcards or start strict verification with the Learning Coach. The answer is recalled without card help and then saved.',
         memoryModeLabel: 'Mode',

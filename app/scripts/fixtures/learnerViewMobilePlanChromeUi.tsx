@@ -104,6 +104,7 @@ const Fixture = () => {
       ]}
       rootLandscapeId="school-root"
       parentMap={new Map()}
+      onLogout={() => window.alert('Vorschau: In der echten Lernansicht führt Exit zurück zur Startseite.')}
     />
   )
 }
