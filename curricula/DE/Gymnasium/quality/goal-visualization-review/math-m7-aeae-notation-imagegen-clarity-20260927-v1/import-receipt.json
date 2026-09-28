@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "goalId": "aeae526e-b3a4-5a17-b177-351df0307cb9",
+  "purpose": "Two-stage OpenAI imagegen clarity edit of previously AI-KEEP old JPEG; no claim that old notation was mathematically false",
+  "oldImage": {
+    "paths": [
+      "curricula/DE/Gymnasium/visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.jpg",
+      "app/public/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.jpg",
+      "backend/src/main/resources/static/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.jpg"
+    ],
+    "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-aeae-notation-imagegen-clarity-20260927-v1/prior/aeae526e-b3a4-5a17-b177-351df0307cb9.jpg",
+    "sha256": "sha256:fd230b4a6ec4071bf78335622e3699a0c73502c8ed3635d84d349f015ca6f287"
+  },
+  "oldPrompt": {
+    "path": "curricula/DE/Gymnasium/visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/prompt.de.md",
+    "archivePath": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-aeae-notation-imagegen-clarity-20260927-v1/prior/prompt.de.md",
+    "sha256": "sha256:fd77b6f9b79f277256ffdad17bc82f2dbf65bf79f20636111b92f9939a844b2d"
+  },
+  "oldResourceLinkArchive": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-aeae-notation-imagegen-clarity-20260927-v1/prior/resource-link.json",
+  "oldQaRecordArchive": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-aeae-notation-imagegen-clarity-20260927-v1/prior/qa-record.json",
+  "imagegenEdits": [
+    {
+      "stage": 1,
+      "source": "curricula/DE/Gymnasium/visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.jpg",
+      "output": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-aeae-notation-imagegen-clarity-20260927-v1/intermediate-unquoted-f.png",
+      "sha256": "sha256:ca8b6ce933e055466b01e7de4949e3587f7ef7b1d1d74802776642d3a9d40c56",
+      "change": "Replace quoted f in the left speech bubble with unquoted f; original quotation mark was not a proven derivative prime."
+    },
+    {
+      "stage": 2,
+      "source": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-aeae-notation-imagegen-clarity-20260927-v1/intermediate-unquoted-f.png",
+      "output": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-aeae-notation-imagegen-clarity-20260927-v1/final-candidate-no-arrows.png",
+      "sha256": "sha256:a04ca7f4853c4fff837d381c7c7851376285dae9a1d4a2291fc2347c89887281",
+      "change": "Remove two thin black dashed connector arrows without replacement; retain f(3)=7, callouts and x/f(x) table."
+    }
+  ],
+  "activePngPaths": [
+    "curricula/DE/Gymnasium/visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.png",
+    "app/public/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.png",
+    "backend/src/main/resources/static/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.png"
+  ],
+  "activePngSha256": "sha256:a04ca7f4853c4fff837d381c7c7851376285dae9a1d4a2291fc2347c89887281",
+  "historicalJpegDisposition": "The old JPEG was first archived byte-for-byte, then each of the three now-unlinked production JPEG copies was moved into prior/former-canonical.jpg, prior/former-app-public.jpg and prior/former-backend.jpg. All four retained archive copies have the old exact SHA-256; former production JPEG paths are absent so the asset check has no orphans.",
+  "retirementScript": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-aeae-notation-imagegen-clarity-20260927-v1/retire-unlinked-jpegs.mjs",
+  "visualReviewAuthority": "Independent AI only; no human approval; see review note and exact-hash QA ledger update."
+}

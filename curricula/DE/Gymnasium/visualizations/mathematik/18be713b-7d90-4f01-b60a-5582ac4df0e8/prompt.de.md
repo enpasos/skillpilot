@@ -8,41 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini gemini-3.1-flash-image (thinking_level=high)
 - Status: pilot
-- Quellbild: `18be713b-7d90-4f01-b60a-5582ac4df0e8.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/18be713b-7d90-4f01-b60a-5582ac4df0e8/18be713b-7d90-4f01-b60a-5582ac4df0e8.jpg`
+- Quellbild: `18be713b-7d90-4f01-b60a-5582ac4df0e8.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/18be713b-7d90-4f01-b60a-5582ac4df0e8/18be713b-7d90-4f01-b60a-5582ac4df0e8.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Schnittwinkel zwischen geometrischen Objekten berechnen
-Beschreibung: Die lernende Person kann die Größe des Schnittwinkels zwischen zwei sich schneidenden geometrischen Objekten berechnen und das Ergebnis geometrisch deuten.
-
-Zusatzanweisung:
-Überarbeite im vorhandenen Bild nur die rechte Deutungsbox, damit sie nicht mehr wie eine widersprüchliche Durchstreichung wirkt.
-
-Pflichtinhalt:
-- Zeige dort zwei sauber beschriftete benachbarte Winkel: „kleiner Schnittwinkel α=45°“ und „Nebenwinkel 135°“.
-- Hebe 45° positiv hervor und kennzeichne 135° nur mit dem Text „nicht der kleinere Winkel“.
-- Entferne das rote Kreuz und jede zusätzliche Zahl 90° aus dieser Deutungsbox.
-- Erhalte die korrekte Skalarproduktrechnung und die große zentrale Winkelzeichnung unverändert.
-
-Vermeiden:
-- Kein rotes Durchstreichkreuz, kein 90°-Label und keine unbeschriftete zweite Lösung.
-- Keine Änderung des Ergebnisses α=45°.
-- Keine technischen Metadaten, Logos oder Wasserzeichen.
+Erzeuge ein PNG im breiten Querformat (etwa 16:9) als freundliche, klare Mathematik-Comicgrafik auf warmem Cremegrund, mit kräftigen Linien und wenigen großen deutschen Labels; bei 360 Pixel Breite lesbar, ohne Logo oder Wasserzeichen. Zeichne zwei sich im Ursprung O schneidende Geraden: g mit Richtungsvektor u=(1,0) exakt horizontal nach rechts, h mit v=(1,1) diagonal nach rechts oben. Bei gleich langen x- und y-Einheiten bildet h mit g exakt 45°. Der Winkelbogen für α=45° liegt zwischen den beiden positiv gerichteten Vektorpfeilen direkt am Ursprung, nicht zwischen h und einer zusätzlich gezeichneten y-Achse. Kleiner Rechenbeleg cos α=(u·v)/(|u||v|)=1/√2. Zeichne außer g und h keine dritte Gerade, die als Winkelschenkel verwechselt werden kann.
 ```
 
 ## Review-Notiz

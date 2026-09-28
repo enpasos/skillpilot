@@ -7,6 +7,7 @@ import { join } from 'node:path'
 import { assertQualityDeferralEvidence } from './goalVisualizationQualityDeferral'
 import {
   coverageGateFailure,
+  hasCurrentExactByteAiQaEvidence,
   isAcceptedDecision,
   isReviewDecision,
   parseReviewDecisionRow,
@@ -168,4 +169,54 @@ try {
   rmSync(reviewRoot, { recursive: true, force: true })
 }
 
-console.log('Goal-visualization rollout status passed: accepted vocabulary, coverage gate, and ledger parsing verified.')
+const qaRoot = mkdtempSync(join(tmpdir(), 'skillpilot-rollout-qa-'))
+try {
+  const goalId = '74dc4b0d-a167-564c-bdc1-5cf510aee280'
+  const url = `/assets/goal-visualizations/mathematik/${goalId}/${goalId}.png`
+  const publicAssetPath = `app/public${url}`
+  const canonicalAssetPath = `curricula/DE/Gymnasium/visualizations/mathematik/${goalId}/${goalId}.png`
+  const imageBytes = Buffer.from('current-image-fixture')
+  const assetSha256 = `sha256:${createHash('sha256').update(imageBytes).digest('hex')}`
+  mkdirSync(join(qaRoot, 'app/public/assets/goal-visualizations/mathematik', goalId), { recursive: true })
+  mkdirSync(join(qaRoot, 'curricula/DE/Gymnasium/visualizations/mathematik', goalId), { recursive: true })
+  writeFileSync(join(qaRoot, publicAssetPath), imageBytes)
+  writeFileSync(join(qaRoot, canonicalAssetPath), imageBytes)
+
+  const linked = { goalId, url }
+  const record = {
+    goalId,
+    subject: 'mathematik',
+    visualizationState: 'available',
+    imageUrl: url,
+    publicAssetPath,
+    canonicalAssetPath,
+    assetSha256,
+    aiApproved: 'yes',
+    aiApprovedAssetSha256: assetSha256,
+    humanIssueIdentified: 'no',
+  }
+  const hasQaEvidence = (override = {}, linkedOverride = linked) => hasCurrentExactByteAiQaEvidence(
+    linkedOverride,
+    { ...record, ...override },
+    'mathematik',
+    qaRoot,
+  )
+  assert.equal(hasQaEvidence(), true, 'matching current public/canonical bytes and exact-hash AI QA count')
+  assert.equal(hasQaEvidence({ aiApproved: 'no' }), false, 'AI rejection does not count')
+  assert.equal(hasQaEvidence({ aiApprovedAssetSha256: `sha256:${'0'.repeat(64)}` }), false, 'stale approval does not count')
+  assert.equal(hasQaEvidence({ humanIssueIdentified: 'yes' }), false, 'human NOK prevents this classification')
+  assert.equal(hasQaEvidence({ visualizationState: 'missing' }), false, 'a missing QA asset does not count')
+  assert.equal(hasQaEvidence({ imageUrl: `${url}?stale=1` }), false, 'QA must name the current primary URL')
+  assert.equal(hasQaEvidence({ publicAssetPath: `app/public/assets/goal-visualizations/mathematik/${goalId}/other.png` }), false, 'QA must name the current public path')
+  assert.equal(hasQaEvidence({ subject: 'physik' }), false, 'QA must belong to the current subject')
+  assert.equal(hasCurrentExactByteAiQaEvidence(linked, undefined, 'mathematik', qaRoot), false, 'missing QA evidence does not count')
+  writeFileSync(join(qaRoot, publicAssetPath), Buffer.from('different-public-image'))
+  assert.equal(hasQaEvidence(), false, 'a changed public asset invalidates exact-byte evidence')
+  writeFileSync(join(qaRoot, publicAssetPath), imageBytes)
+  writeFileSync(join(qaRoot, canonicalAssetPath), Buffer.from('different-canonical-image'))
+  assert.equal(hasQaEvidence(), false, 'a changed canonical asset invalidates exact-byte evidence')
+} finally {
+  rmSync(qaRoot, { recursive: true, force: true })
+}
+
+console.log('Goal-visualization rollout status passed: accepted vocabulary, coverage gate, ledger parsing, and exact-byte AI QA verified.')

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-line-angle-scope-hold-20260927-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-line-angle-scope-hold-20260927-v1.config.json",
+  "configDigest": "sha256:2ba2e1f9d0fd661a3dc1de22aed868caf17c55530f47cdc7b61387a472cf6d40",
+  "goalIds": [
+    "18be713b-7d90-4f01-b60a-5582ac4df0e8"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:bfe1cf6f9afbd6699b982a3f9de7c02b8cfa95c1a8e38d049681236ebfc0cc24"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:73de299834dd88339c5298091b7252f699046b0fa460d0ad69e5bbf40fcc8570",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:5c3d01795f80ee3ddb9ad00c47cf4be4c25613bd29dd076aa0985f53f81bc1a1",
+    "reviewInputFingerprint": "sha256:3be783fdf4178e24a2c7108f048b5a399950614245ed965840765e298fd05ad6",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-line-angle-scope-hold-20260927-v1-a",
+        "campaignDigest": "sha256:058ba9b8b63ec134df7aa1ac7800e0317e64cb10a79959206a3f99b4922df307",
+        "roundId": "mathematik-m7-line-angle-scope-hold-20260927-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-line-angle-scope-hold-20260927-v1-independent-a",
+        "batchId": "mathematik-m7-line-angle-scope-hold-20260927-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:ab0c2c1bffad9fda5f83c7269ea5946f3c8514e10cf7ac103f8c3590d3a2f9b2"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-line-angle-scope-hold-20260927-v1-b",
+        "campaignDigest": "sha256:215d0d8eac538e2bb7cc0455e4460d15b870695c6c322b8a0a5bb3a816477c3a",
+        "roundId": "mathematik-m7-line-angle-scope-hold-20260927-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-line-angle-scope-hold-20260927-v1-independent-b",
+        "batchId": "mathematik-m7-line-angle-scope-hold-20260927-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:a753f785cb88688e326948488cdf8810b2ca965f9bb1484dbf948bd70a2cfbfb"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

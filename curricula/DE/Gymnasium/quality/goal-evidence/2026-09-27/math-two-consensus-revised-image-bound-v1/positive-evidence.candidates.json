@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-two-consensus-revised-image-bound-20260927-v1",
+  "reviewedAt": "2026-09-27T16:07:36Z",
+  "reviewer": "Codex current DE/EN and exact-PNG mathematical reinspection; AI candidate only",
+  "goals": [
+    {
+      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "reason": "Neuer DE/EN-Text und unverändertes PNG sha256:a522c90588fefc0b8a112963a693a0531bf4cb9116d2128a69c79e34807b4c53 gemeinsam geprüft. Das Bild zeigt 2R+1B, drei Ziehungen mit Zurücklegen, die drei Trefferpositionen RRB/RBR/BRR und 4/9 korrekt. Der neue zweite Fall verlangt die Bildung eines zusammengesetzten Trefferereignisses aus zwei Farben, eine andere Zugzahl und eine neue genau-k-Wahrscheinlichkeit; er ist keine bloße Variation der Kugelzahlen. Beide Fälle prüfen konstantes p und die Zählrolle des Binomialkoeffizienten. E1/G1-KI-Kandidat, keine menschliche Freigabe oder Lernleistungsbeobachtung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "constant-success-probability",
+            "essentialUnderstandingDe": "Zurücklegen stellt die Urnenzusammensetzung wieder her; bei gleicher Ziehregel bleibt die Trefferwahrscheinlichkeit p in jedem unabhängigen Zug konstant.",
+            "essentialUnderstandingEn": "Replacement restores the urn composition; under the same drawing rule the success probability p stays constant on each independent draw.",
+            "observablePerformanceDe": "Die lernende Person definiert das Trefferereignis, ermittelt p aus der Urne und begründet dessen Konstanz über alle Ziehungen.",
+            "observablePerformanceEn": "The learner defines the success event, obtains p from the urn, and explains why it stays constant across the draws."
+          },
+          {
+            "id": "exact-k-arrangements",
+            "essentialUnderstandingDe": "Für genau k Treffer in n Ziehungen haben alle Trefferanordnungen dieselbe Wahrscheinlichkeit p^k(1−p)^(n−k); der Binomialkoeffizient zählt ihre Positionen.",
+            "essentialUnderstandingEn": "For exactly k successes in n draws, every success arrangement has probability p^k(1−p)^(n−k); the binomial coefficient counts their positions.",
+            "observablePerformanceDe": "Die lernende Person berechnet die genau-k-Wahrscheinlichkeit und erklärt den Binomialkoeffizienten anhand der Anordnungen statt ihn nur in eine Formel einzusetzen.",
+            "observablePerformanceEn": "The learner calculates the exactly-k probability and explains the binomial coefficient through the arrangements rather than merely substituting into a formula."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["constant-success-probability", "exact-k-arrangements"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "success-event-structure",
+            "textDe": "Einfarbiger Treffer in einer zweifarbigen Urne gegenüber Treffer als Vereinigung zweier Farben in einer dreifarbigen Urne; auch die Zugzahl ändert sich.",
+            "textEn": "Success as one color in a two-color urn versus success as the union of two colors in a three-color urn; the number of draws also changes."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "two-red-image-case",
+            "taskDemandDe": "Eine Urne enthält zwei rote und eine blaue Kugel. Es wird dreimal mit Zurücklegen gezogen. Berechne P(genau zwei rote Ziehungen) und erkläre den Kombinationsfaktor.",
+            "taskDemandEn": "An urn holds two red and one blue ball. Three draws are made with replacement. Calculate P(exactly two red draws) and explain the combination factor.",
+            "expectedPerformanceDe": "p(rot)=2/3 bleibt konstant; RRB, RBR und BRR liefern (3 über 2)(2/3)^2(1/3)=4/9.",
+            "expectedPerformanceEn": "p(red)=2/3 stays constant; RRB, RBR and BRR give (3 choose 2)(2/3)^2(1/3)=4/9.",
+            "understandingFocusDe": "Konstantes p durch Zurücklegen und drei Trefferanordnungen werden verbunden.",
+            "understandingFocusEn": "Constant p from replacement is connected to the three success arrangements."
+          },
+          {
+            "id": "compound-color-success",
+            "taskDemandDe": "Eine Urne enthält zwei grüne, eine gelbe und zwei schwarze Kugeln. Bei fünf Ziehungen mit Zurücklegen gilt grün oder gelb als Treffer. Berechne P(genau zwei Treffer) und erkläre p und den Kombinationsfaktor.",
+            "taskDemandEn": "An urn holds two green, one yellow and two black balls. In five draws with replacement, either green or yellow counts as a success. Calculate P(exactly two successes) and explain p and the combination factor.",
+            "expectedPerformanceDe": "Das zusammengesetzte Trefferereignis hat p=(2+1)/5=3/5, ein Fehlschlag p=2/5. Genau zwei Treffer haben (5 über 2)=10 Positionierungen: 10(3/5)^2(2/5)^3=144/625.",
+            "expectedPerformanceEn": "The compound success event has p=(2+1)/5=3/5 and failure probability 2/5. Exactly two successes have (5 choose 2)=10 placements: 10(3/5)^2(2/5)^3=144/625.",
+            "understandingFocusDe": "Treffer aus mehreren Elementarfarben bilden, konstantes p erhalten und die genau-k-Anordnungen unabhängig bestimmen.",
+            "understandingFocusEn": "Forming success from multiple elementary colors, retaining constant p, and independently counting exactly-k arrangements."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "27bdc580-ba17-5399-bf02-48f354846d1d",
+      "reason": "Neuer DE/EN-Text und unverändertes PNG sha256:4d134eb230ac996f76b52ace1b44fa83879b39c788689ac7b2a836e42e3e8f51 gemeinsam geprüft. Das Bild zeigt einen durchgehenden Nullstellen-Spezialfall; seine Worte 'Ohne Sprung' sind im Bild nur auf diesen gezeichneten Verlauf bezogen. Das P-Profil benennt die stärkere Intervallbedingung ausdrücklich und prüft als Transfer eine hebbare Lücke ohne Sprung: f(x)=x außer f(0)=2 nimmt trotz Randwerten −1 und 1 den Wert 0 nicht an. Ein formaler Stetigkeitsbeweis wird nicht gefordert. E1/G1-KI-Kandidat, keine menschliche Freigabe oder Lernleistungsbeobachtung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "interval-continuity-and-existence",
+            "essentialUnderstandingDe": "Nur ein im ganzen betrachteten Intervall durchgehender Funktionsgraph trägt die Zwischenwertfolgerung: Zwischen zwei gegebenen Funktionswerten wird jeder Zwischenwert mindestens einmal angenommen.",
+            "essentialUnderstandingEn": "Only a function graph continuous throughout the interval supports the intermediate-value inference: every value between two given function values is attained at least once.",
+            "observablePerformanceDe": "Die lernende Person nennt die Intervallvoraussetzung und begründet anschaulich die Existenz eines Punkts mit vorgegebenem Zwischenwert, ohne dessen Ort oder Eindeutigkeit zu behaupten.",
+            "observablePerformanceEn": "The learner states the interval condition and gives an intuitive existence reason for a point with a specified intermediate value, without claiming its location or uniqueness."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["interval-continuity-and-existence"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "interval-condition",
+            "textDe": "Durchgehender Graph und nichtnulliger Zwischenwert gegenüber stückweise gegebenem Graphen mit hebbarer Lücke am Zielwert und gleichen Randvorzeichen.",
+            "textEn": "A continuous graph and a nonzero intermediate value versus a piecewise-defined graph with a removable hole at the target value and the same endpoint signs."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "continuous-nonzero-target",
+            "taskDemandDe": "Ein Funktionsgraph verläuft auf [−2,2] durchgehend. Es gilt f(−2)=−3 und f(2)=1. Begründe anschaulich, ob der Wert −1 angenommen wird, ohne die Stelle zu bestimmen.",
+            "taskDemandEn": "A function graph is continuous on [−2,2], with f(−2)=−3 and f(2)=1. Explain intuitively whether the value −1 is attained, without finding the location.",
+            "expectedPerformanceDe": "−1 liegt zwischen −3 und 1. Wegen des durchgehenden Verlaufs gibt es mindestens ein c∈(−2,2) mit f(c)=−1; weder Stelle noch Eindeutigkeit folgen.",
+            "expectedPerformanceEn": "−1 lies between −3 and 1. Because the graph is continuous, at least one c∈(−2,2) has f(c)=−1; neither location nor uniqueness follows.",
+            "understandingFocusDe": "Die Folgerung hängt vom Verlauf auf dem ganzen Intervall ab, nicht nur von den Randwerten.",
+            "understandingFocusEn": "The inference depends on the graph throughout the interval, not just on endpoint values."
+          },
+          {
+            "id": "removable-hole-countercase",
+            "taskDemandDe": "Auf [−1,1] sei f(x)=x für x≠0 und f(0)=2. Obwohl f(−1)=−1 und f(1)=1 gilt: Darf man aus der Zwischenwertidee folgern, dass f irgendwo 0 ist? Begründe anhand des Graphen.",
+            "taskDemandEn": "On [−1,1] let f(x)=x for x≠0 and f(0)=2. Although f(−1)=−1 and f(1)=1, may the intermediate-value idea be used to conclude that f is zero somewhere? Explain from the graph.",
+            "expectedPerformanceDe": "Nein. Bei x=0 hat der Graph eine Lücke bei (0,0) und stattdessen den Wert 2; für x≠0 ist f(x)=x≠0. Die Randwerte schließen 0 ein, aber der Graph ist nicht im ganzen Intervall durchgehend.",
+            "expectedPerformanceEn": "No. At x=0 the graph has a hole at (0,0) and instead takes value 2; for x≠0, f(x)=x≠0. The endpoint values bracket zero, but the graph is not continuous throughout the interval.",
+            "understandingFocusDe": "Eine hebbare Lücke ist kein Sprung und widerlegt gerade die zu schwache alte Bedingung 'ohne Sprung'.",
+            "understandingFocusEn": "A removable hole is not a jump and directly exposes why the old no-jump condition was too weak."
+          }
+        ]
+      }
+    }
+  ]
+}

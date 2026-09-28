@@ -22,8 +22,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Metric | Value |
 | --- | --- |
-| ordinary atomic goals reviewed | 797 |
-| goals without memory need | 758 |
+| ordinary atomic goals reviewed | 799 |
+| goals without memory need | 760 |
 | goals with intentional memory support | 39 |
 | goals needing developer review | 0 |
 | primary cards in scope | 64 |
@@ -39,8 +39,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 290 | 2 | 7 | 0 |
-| Mathematik Sek I (DE-BW) | `curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json` | 289 | 2 | 10 | 0 |
+| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 291 | 2 | 7 | 0 |
+| Mathematik Sek I (DE-BW) | `curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json` | 290 | 2 | 10 | 0 |
 
 ## Memory-Required Goals
 
@@ -59,10 +59,10 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | J8: Laplace-Experimente auswerten (`5ab17678-bba7-4e6b-9aff-5a909e24d40e`) | `de_gymnasium_math_stochastics_core` | Die Bedingung gleichwahrscheinlicher Elementarergebnisse und das Verhältnis günstig zu möglich sind ein enger Abrufbaustein; Modellwahl, Darstellung, Deutung und Transfer verbleiben im gewöhnlichen Lernziel und in Aufgaben. |
 | J8: Potenzgesetze mit ganzzahligen Exponenten anwenden (`6596405a-9728-41df-9163-53670ec2a937`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |
 | J9: Abstände, Beträge und Mittelpunkte im Raum berechnen (`a8ff2666-8df3-4253-8021-3efe42114e40`) | `de_gymnasium_math_linalg_core`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Notation oder Prüfkriterium der linearen Algebra. |
-| J9: Quadratische Gleichungen lösen (`9023226b-fc17-412b-807c-2bb45cd551d5`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |
+| J9: Quadratische Gleichungen lösen (`9023226b-fc17-412b-807c-2bb45cd551d5`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Der Abruf kompakter quadratischer Lösungsformeln und Notation bleibt durch die bestehenden schmalen Decks sinnvoll. Die anspruchsvollere Wahl des Verfahrens, null/eins/zwei reelle Lösungen und deren Begründung werden durch Aufgaben geprüft und nicht durch Karten ersetzt; keine neue Karte abgeleitet. |
 | Q1: Bestände und Mittelwerte modellieren (`809ef78a-f282-5593-89be-0f2cb95570ac`) | `de_gymnasium_math_analysis_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
 | Q1: Einfache Integrale berechnen (`a9ed219d-d497-55e5-a4e0-4d45d2554f6b`) | `de_gymnasium_math_analysis_core` | Individuelle fachliche AI-Nachprüfung nach quellengebundener DE/EN-Präzisierung: Die tatsächlich gelesene DE/EN-Karte math_analysis_c13 sichert eng begrenzt die kompakte Potenzregel F=x^(n+1)/(n+1) mit n≠−1. Dieser verfügbare Regelbaustein bleibt für die flüssige Anwendung im erweiterten linearen Term notwendig; das neue Erschließen aus Ableitungsregeln, die Linearkombination, trigonometrische Vorzeichen und Intervallwahl müssen unabhängig erklärt werden und sind durch Kartenabruf nicht nachgewiesen. Die Karte nennt eine Stammfunktion, daher fehlt dort keine allgemeine Konstante. Vorhandener memory_required-Status samt echtem Deck-/Memoryziel-/Kartenbezug bleibt individuell bestätigt; es wird kein zusätzliches Deck angelegt. Keine menschliche Einzelabnahme behauptet. |
-| Q1: Hauptsatz der Differential- und Integralrechnung nutzen (`b9bbd2a8-1379-5ffb-817f-41467d48abef`) | `de_gymnasium_math_analysis_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
+| Q1: Hauptsatz der Differential- und Integralrechnung nutzen (`b9bbd2a8-1379-5ffb-817f-41467d48abef`) | `de_gymnasium_math_analysis_core` | Die knappe Hauptsatzregel F(b)-F(a) und die Vorzeichenbedeutung koennen im bestehenden Analysis-Kernregel-Deck wiederholt werden; eigenstaendiges Verstehen und Anwenden des Zusammenhangs werden durch das FTC-Lernziel und seine Aufgaben geprueft. KI-Fachpruefung, keine menschliche Einzelabnahme. |
 | Q2: Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK) (`3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4`) | `de_gymnasium_math_analysis_core` | Einzelprüfung 2026-09-20: memory_required bleibt auf den kompakten Zusammenhang (ln x)′=1/x und seine Umkehrung als Stammfunktion begrenzt. Die bestehenden Karten math_analysis_c05 und math_analysis_c14 im Deck de_gymnasium_math_analysis_core bleiben passend: Für x>0 gilt ln\|x\|=ln x. Die neue positive Definitionsmenge erweitert den Kartenumfang nicht; Verstehen und Integralaufgaben bleiben führend. |
 | Q2: Kettenregel beim Ableiten anwenden (LK) (`ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75`) | `de_gymnasium_math_analysis_core` | Die Kettenregel ist ein kompakter, notwendiger Abrufbaustein. Verständnis, Auswahl der Regel und Kontrolle der Ableitung bleiben im gewöhnlichen Lernziel und in Aufgaben verankert. |
 | Q2: Matrizen multiplizieren (`304111dd-426b-520b-a275-3fa37da1b0e0`) | `de_gymnasium_math_linalg_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Notation oder Prüfkriterium der linearen Algebra. |
@@ -81,7 +81,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | Q3: Stochastische Unabhängigkeit an Baumdiagrammen und Vierfeldertafeln prüfen (`dabff49b-d40a-4c81-a584-21408b2d4219`) | `de_gymnasium_math_stochastics_core`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik. |
 | Q3: Wahrscheinlichkeiten in Bernoulli-Ketten berechnen (`837b015a-c2a2-5f31-831c-ae16ee2ee6ce`) | `de_gymnasium_math_stochastics_core`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik. |
 | Q4: Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK) (`8e18154d-41d6-592e-ba98-537edad338e8`) | `de_gymnasium_math_complex_parameter` | Memory-Anteil streng begrenzt auf kompakte Notation, Formel oder Definition zu komplexen Zahlen. |
-| Q4: Grundrechenarten in der Gaußschen Zahlenebene deuten (`a7fb1a7a-8315-5bcb-842e-48293293dfcc`) | `de_gymnasium_math_complex_parameter` | Memory-Anteil streng begrenzt auf kompakte Notation, Formel oder Definition zu komplexen Zahlen. |
+| Q4: Grundrechenarten in der Gaußschen Zahlenebene deuten (`a7fb1a7a-8315-5bcb-842e-48293293dfcc`) | `de_gymnasium_math_complex_parameter` | Der Ausschluss des Nulldivisors präzisiert die bestehende Division ohne die Merkeignung zu ändern. Memory-Anteil bleibt streng auf kompakte Notation, Formel oder Definition zu komplexen Zahlen begrenzt. |
 | Q4: Komplexe Zahlen algebraisch dividieren (`5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d`) | `de_gymnasium_math_complex_parameter` | Memory-Anteil streng begrenzt auf kompakte Notation, Formel oder Definition zu komplexen Zahlen. |
 | Q4: Komplexe Zahlen in algebraischer Form additiv nutzen (`22b66c1e-50b1-505f-a388-c39131a4e1c3`) | `de_gymnasium_math_complex_parameter` | Memory-Anteil streng begrenzt auf kompakte Notation, Formel oder Definition zu komplexen Zahlen. |
 | Q4: Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen (`4f64f771-20ba-581a-86ba-bcdb1759e4d2`) | `de_gymnasium_math_complex_parameter` | Memory-Anteil streng begrenzt auf kompakte Notation, Formel oder Definition zu komplexen Zahlen. |

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Replace stale seven-goal Mathematics P block with six exact retained records and one newly content-reviewed current line-line angle-only record; central registry untouched",
+  "sourceFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-two-consensus-revised-image-bound-v1/retained-seven.config.json",
+      "sha256": "sha256:23a4012239b918704cc8465bf27f03545bc3b06d9c03098289e0027cca85301b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-two-consensus-revised-image-bound-v1/retained-seven.review.jsonl",
+      "sha256": "sha256:693072b6cabd2565bd446f1fbcafba5ccb43017017c5cfbc9d23c8b47acce3cf"
+    }
+  ],
+  "movedGoalId": "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+  "retainedGoalIds": [
+    "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+    "909d8b16-5156-528b-a300-d9aee5405ba0",
+    "e02b994f-376d-5a8e-a14c-c4acacae57cf",
+    "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
+    "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+    "7156558c-57f1-4372-9ba7-0640c3f7cb3a"
+  ],
+  "retainedRawLineSha256ByGoalId": {
+    "2041f4ec-620d-4a20-9922-6ebf16f8f8fa": "sha256:ebdfe3b415389630cbceb49ed01c1375a7b8aa1373c95780c2bf1b5cf9bd8666",
+    "909d8b16-5156-528b-a300-d9aee5405ba0": "sha256:8d49f79cec6683513e74607fbe74072fc7495fb11cb4fe2a75e1fd356a75d947",
+    "e02b994f-376d-5a8e-a14c-c4acacae57cf": "sha256:2378861918b58dcea7cb1f57a027ed8747769502c57b9d3565f4c534089055c1",
+    "f2a12269-6bcb-564a-9fdb-45cfdbd704fc": "sha256:01bc385c958163db1236290f3622922f69b9870c037acf8c6d8e17c1e08759a3",
+    "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6": "sha256:66fc4988a5c4a954bb499e36e262bd78178e140b549887b7e0962cbf8ff78c22",
+    "7156558c-57f1-4372-9ba7-0640c3f7cb3a": "sha256:472fb25d24437322dc916e0f7b81f53184af39b82d1263bfbc0903c7e81308e5"
+  },
+  "oldProfileFingerprint": "sha256:3d5202e2511d02bc89ceccf5cc0c677abb3d8ff129e371d6c3e5848dce87383b",
+  "oldProfileIssue": "Line-plane case lies outside current two-intersecting-lines goal and is not retained.",
+  "currentGoal": {
+    "title": "Schnittwinkel zweier Geraden berechnen",
+    "description": "Die lernende Person kann den nichtstumpfen Schnittwinkel zweier sich schneidender Geraden mithilfe ihrer Richtungsvektoren berechnen und geometrisch deuten.",
+    "descriptionEn": "The learner can calculate the non-obtuse intersection angle between two intersecting lines using their direction vectors and interpret it geometrically."
+  },
+  "reviewedVisualContent": "Directly inspected current PNG: g horizontal through origin, h rising through origin; u=(1,0), v=(1,1), marked acute 45°, positive-dot cosine 1/√2. Formula as depicted is correct for its positive-dot case but does not by itself teach reversal invariance.",
+  "imageBinding": {
+    "url": "/assets/goal-visualizations/mathematik/18be713b-7d90-4f01-b60a-5582ac4df0e8/18be713b-7d90-4f01-b60a-5582ac4df0e8.png",
+    "paths": [
+      "curricula/DE/Gymnasium/visualizations/mathematik/18be713b-7d90-4f01-b60a-5582ac4df0e8/18be713b-7d90-4f01-b60a-5582ac4df0e8.png",
+      "app/public/assets/goal-visualizations/mathematik/18be713b-7d90-4f01-b60a-5582ac4df0e8/18be713b-7d90-4f01-b60a-5582ac4df0e8.png",
+      "backend/src/main/resources/static/assets/goal-visualizations/mathematik/18be713b-7d90-4f01-b60a-5582ac4df0e8/18be713b-7d90-4f01-b60a-5582ac4df0e8.png"
+    ],
+    "sha256": "sha256:984456f9834149a31314167bc77a31b4ebdb1f9b4b896810ffb104427067bde2",
+    "altText": "Die Gerade g mit Richtungsvektor u=(1,0) und die Gerade h mit v=(1,1) schneiden sich im Ursprung unter 45 Grad; die Skalarproduktformel ergibt cos alpha gleich 1 durch Wurzel 2.",
+    "qaAuthority": "AI yes; human no"
+  },
+  "outputConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-line-line-angle-p-rebind-v1/positive-evidence.config.json",
+  "outputCandidatesPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-line-line-angle-p-rebind-v1/positive-evidence.candidates.json",
+  "outputReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-line-line-angle-p-rebind-v1/positive-evidence.review.jsonl",
+  "retainedConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-line-line-angle-p-rebind-v1/retained-six.config.json",
+  "retainedReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-line-line-angle-p-rebind-v1/retained-six.review.jsonl",
+  "authority": "needs_human_review; ai_candidate; E1/G1; no human approval"
+}

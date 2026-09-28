@@ -1,0 +1,9 @@
+# Mathematik: eine korrekt konstruierte Dreieckshöhe
+
+Ziel `d051857c-0707-544f-ae7a-f20690d182b2` („Höhen in Dreiecken konstruieren“). Diese Entscheidung betrifft nur das aktive Bild, nicht die D-/P-Nachweise oder eine menschliche Freigabe.
+
+Das neue 1672 × 941 PNG wurde mit dem integrierten OpenAI/Codex-Bildwerkzeug erzeugt; dessen Modellversion wurde nicht angezeigt. Der genaue Prompt und die verworfenen Versuche liegen unter `tmp/math-m7-image-prompts-2026-09-27/generated/d051857c-0707-544f-ae7a-f20690d182b2/`. Die unveränderten Bildbytes sind in den kanonischen, öffentlichen und Backend-Asset-Pfad kopiert. Aktiver SHA-256: `2917a9bc4cae8b6eed706afe668a6da22503d1ff35405285b4cc633e76c5c53a`. Keine fremde Bildvorlage oder private Lerndaten wurden verwendet.
+
+Unabhängige fachlich-visuelle Prüfung am Original und bei 360 px: `BC` ist waagerecht, `AH` verläuft gerade und senkrecht von `A` zum Lotfuß `H` im Inneren von `BC`; das Rechtwinkelzeichen liegt an der richtigen Stelle. `A`, `B`, `C`, `H` und `hₐ` sind eindeutig lesbar. Die Off-Center-Lage von `H` vermeidet die irreführende Gleichsetzung mit einer Seitenhalbierenden. Das freundliche, sparsame Farbschema passt zur Mathematik-Bildwelt. Die drei früheren Versuche blieben wegen mathematisch falscher oder unvollständiger Linien HOLD.
+
+**AI-KEEP für genau diese Bildbytes.** Das Bild visualisiert die definierende Senkrechte an *einem* spitzwinkligen Beispiel. Es beansprucht nicht, alle drei Höhen oder Lotfüße außerhalb des Seitenstücks zu zeigen. Der aktuelle Zieltext fordert ausdrücklich jede Höhe zur gegenüberliegenden **Geraden**; das separate positive Evidenzprofil prüft drei Höhen auch in einem stumpfwinkligen Dreieck. Diese Lern- und Prüfanforderungen werden durch das Bild weder eingeschränkt noch als erfüllt behauptet. Menschliche Prüfung bleibt offen.

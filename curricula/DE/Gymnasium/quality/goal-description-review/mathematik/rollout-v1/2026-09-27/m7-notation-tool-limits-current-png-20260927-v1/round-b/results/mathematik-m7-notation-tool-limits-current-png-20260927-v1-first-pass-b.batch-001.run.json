@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b.reviewer-b.manual-20260927",
+  "campaignId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-b",
+  "roundId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b",
+  "batchId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:6ef770b2b5a5d261b89d9173c7265921db7e8ceda2562a58630651cfe5b47fe0",
+  "bundleFingerprint": "sha256:e32181970311f6ed2e74ffc3b0b3653dd843ea70ebccf657f2a0fef325f39b68",
+  "bookDigest": "sha256:7f00e472ba425f08c2fc998ccbbf06fbeec4feeb1bd4ec419faec255e5b82f3c",
+  "provider": "OpenAI",
+  "model": "Codex (exact runtime model not exposed to reviewer)",
+  "role": "disconfirming_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:a906b57f4a8c8ca60a3433c15801802970aba4827685a08ef8a5b5f4424f19fa",
+  "independenceGroupId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "aeae526e-b3a4-5a17-b177-351df0307cb9",
+    "c97a33d9-d5e4-56c5-ae4c-822bc4f54898"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:055c88a3cc04b73b4459ce8552942ab4de06fd5e6829353cee891ef2e66a5ad4"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:33678ec8c232dad12f9492e370380da1c99d9653994c636d551fa3e54046cde9"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:45b2e5a0886a5f5c1747dc0e394afa5524d34a993f3362ebe84db4d6d160fce3"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:6ef770b2b5a5d261b89d9173c7265921db7e8ceda2562a58630651cfe5b47fe0"
+    }
+  ],
+  "startedAt": "2026-09-27T17:15:25Z",
+  "completedAt": "2026-09-27T17:15:55Z",
+  "status": "completed",
+  "outputDigest": "sha256:544c905c4cfb94ee2f04dd819c1412a9f2094ab24098068bc1c2e494b42ee160",
+  "toolchainVersion": "codex-blind-review-manual-v1"
+}

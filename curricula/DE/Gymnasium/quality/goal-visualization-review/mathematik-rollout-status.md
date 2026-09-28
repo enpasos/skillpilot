@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-09-24T13:31:26.207Z
+Generated: 2026-09-28T03:10:24.267Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,31 +16,32 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1192 |
-| Atomare Ziele im Visualisierungs-Scope | 797 |
-| Ziele mit primaerem Visualisierungslink | 758 |
-| Coverage | 95.1% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 797 |
+| Alle Ziele in der Landschaft | 1203 |
+| Atomare Ziele im Visualisierungs-Scope | 799 |
+| Ziele mit primaerem Visualisierungslink | 799 |
+| Coverage | 100.0% |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 799 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 249 |
-| Offene Provider-Deferred-Ziele | 9 |
-| Offene Quality-Deferred-Ziele | 30 |
+| Review-Ledger-Dateien | 266 |
+| Offene Provider-Deferred-Ziele | 0 |
+| Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 47 |
+| Verlinkt ohne akzeptierende Ledger-Entscheidung oder aktuelle AI-QA | 0 |
+| Verlinkt mit aktueller hashgebundener AI-QA, ohne akzeptierende Ledger-Entscheidung | 51 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 5 |
+| `accepted` | 4 |
 | `ai-reviewed` | 6 |
-| `approved` | 16 |
-| `pilot` | 731 |
+| `approved` | 15 |
+| `pilot` | 774 |
 
 ## Ledger Decisions
 
@@ -51,15 +52,17 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_after_user_issue_correction` | 8 |
 | `accepted_ai` | 2 |
 | `accepted_context_visualization` | 2 |
+| `accepted_current_text_retained` | 2 |
 | `accepted_documented_repo_native_fallback` | 3 |
 | `accepted_existing_asset` | 11 |
 | `accepted_pilot` | 606 |
+| `accepted_pilot_after_exact_png_review` | 2 |
 | `accepted_pilot_after_fresh_ai_review` | 96 |
 | `accepted_pilot_after_fresh_ai_review_correction` | 1 |
-| `accepted_pilot_after_original_resolution_ai_review` | 16 |
+| `accepted_pilot_after_original_resolution_ai_review` | 53 |
 | `accepted_pilot_after_provider_retry` | 2 |
 | `accepted_pilot_after_reference_guided_regeneration` | 1 |
-| `accepted_pilot_after_regeneration` | 172 |
+| `accepted_pilot_after_regeneration` | 174 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_attempt` | 13 |
 | `accepted_pilot_after_second_regeneration` | 15 |
@@ -69,6 +72,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_pilot_after_third_attempt` | 5 |
 | `accepted_pilot_after_third_regeneration` | 6 |
 | `accepted_pilot_after_user_review_correction` | 47 |
+| `accepted_pilot_display_with_known_defect` | 1 |
 | `accepted_replacement` | 4 |
 | `accepted_retroactive_nano_banana` | 14 |
 | `accepted_reuse_after_current_visual_review` | 2 |
@@ -79,7 +83,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `blocked_provider_quota` | 5 |
 | `correction_open_provider_credit_exhausted` | 4 |
 | `deferred_provider_limitation` | 92 |
-| `deferred_quality_review` | 35 |
+| `deferred_quality_review` | 36 |
 | `not_attempted_after_quota_block` | 4 |
 | `rejected_after_review_regenerated` | 7 |
 | `rejected_after_second_regeneration` | 1 |
@@ -99,7 +103,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-zz-prompt20-current-deferral-2026-09-24.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-zzzzz-ln-existing-keep-20260927-v1.md` |
 | Latest ledger status | - |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17` |
@@ -110,58 +114,18 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
 - Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 9 Provider- und 30 Quality-Deferred-Ziel(e).
+- Die separate AI-QA-Kategorie verlangt den aktuellen primaeren Link, `available`, `aiApproved: yes`, denselben genehmigten SHA-256 und passende Bytes sowohl im Public- als auch im Canonical-Asset. Historische Ledger-Entscheidungen bleiben sichtbar. Diese Kategorie ist weder Human- noch Release-Freigabe.
+- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.
 
 ## Quality Queues
 
 ### Open Provider Deferred
 
-| Batch | Goal ID | Title | Decision |
-| --- | --- | --- | --- |
-| 194 | `dc12f281-f161-572b-a973-8405ae9b2498` | Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `d051857c-0707-544f-ae7a-f20690d182b2` | Höhen in Dreiecken konstruieren | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `9de07e13-6a5f-5b49-a6d4-0decefb95784` | Inverse Fragestellungen zu Binomialverteilungen lösen | `deferred_provider_limitation` |
-| mathematik-structural-split-deferred-2026-08-16 | `c406d5a0-e81d-5ce9-b535-6512a38798de` | Inverse Fragestellungen zur Normalverteilung lösen (LK) | `deferred_provider_limitation` |
-| 197 | `1b67aeb4-2a55-531f-94da-283b4e3df5f1` | Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen | `deferred_provider_limitation` |
-| 197 | `70efdec0-110c-5564-849b-bc05cfff0f6a` | Kombinationen ohne Zurücklegen mit Fakultäten berechnen | `deferred_provider_limitation` |
-| 205 | `2041f4ec-620d-4a20-9922-6ebf16f8f8fa` | Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen | `deferred_provider_limitation` |
-| 205 | `0408ac7f-0530-5de5-b248-cf581c9b5a17` | Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell) | `deferred_provider_limitation` |
-| mathematik-zz-prompt20-current-deferral-2026-09-24 | `8b3ce429-e6bb-5d33-b6aa-6ded41afc74c` | Transformationen von Logarithmusgraphen deuten (LK) | `deferred_provider_limitation` |
+Keine Eintraege.
 
 ### Open Quality Deferred
 
-| Batch | Goal ID | Title | Decision |
-| --- | --- | --- | --- |
-| mathematik-z-astra-image-sight-20260924-v1 | `06ce2b1b-e888-5322-9ed9-dfc6d322956a` | Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK) | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `87372f49-c832-50f6-921f-ec9a6804d58a` | Eine heuristische Strategie anwenden | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `7feaaebd-cc8d-522b-8b3a-ea22675c65dd` | Extremstellen parameterabhängig untersuchen | `deferred_quality_review` |
-| mathematik-z-astra-image-sight-20260924-v1 | `121e3fdf-54d2-4d46-bc2d-f6e725f10f41` | Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `c97a33d9-d5e4-56c5-ae4c-822bc4f54898` | Grenzen der Werkzeugnutzung benennen | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `a7fb1a7a-8315-5bcb-842e-48293293dfcc` | Grundrechenarten in der Gaußschen Zahlenebene deuten | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `93fc4fbb-72f6-549b-b97a-a48aecb1534d` | Hand- und Tool-Verfahren kombinieren | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `bd637a72-6609-54f5-bb33-8a9e898bf7a0` | Heuristik auswählen und begründen | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `27bdc580-ba17-5399-bf02-48f354846d1d` | Heuristischen Stetigkeitsbegriff zum Argumentieren nutzen | `deferred_quality_review` |
-| mathematik-z-astra-image-sight-20260924-v1 | `ae483d98-54e0-5985-96d2-fc1351d22e4f` | Hypothesentests bei verändertem Stichprobenumfang variieren | `deferred_quality_review` |
-| mathematik-z-astra-image-sight-20260924-v1 | `164921f6-3bf7-5efc-a438-ea4759dca9ef` | Kettenlinien als Funktionsmodelle untersuchen (LK) | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `4f64f771-20ba-581a-86ba-bcdb1759e4d2` | Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `9b339361-7719-573d-a913-432246c502ee` | Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK) | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `909d8b16-5156-528b-a300-d9aee5405ba0` | Modell gezielt anpassen | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `e02b994f-376d-5a8e-a14c-c4acacae57cf` | Nebenbedingungen berücksichtigen | `deferred_quality_review` |
-| mathematik-z-astra-image-sight-20260924-v1 | `0c7bbd3f-0a04-4f0e-888b-40ab7841fb76` | Newton-Verfahren zur Nullstellennäherung anwenden | `deferred_quality_review` |
-| mathematik-2231-right-angle-hold-20260924-v1 | `2231c29b-eb4e-51ae-9cb1-eb033bf16099` | Parallele und senkrechte Lagebeziehungen erkennen und begründen | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `74d29d0c-80b3-4d46-a5f5-3c2f609e8483` | Pyramiden und Kegel darstellen, Netze nutzen und Fachbegriffe verwenden | `deferred_quality_review` |
-| mathematik-m7-quadratic-completion-hold-2026-09-23 | `9023226b-fc17-412b-807c-2bb45cd551d5` | Quadratische Gleichungen lösen | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `1b70498a-62a0-5a84-99dd-476b8af68da6` | Realsituationen mit linearen und quadratischen Funktionen modellieren | `deferred_quality_review` |
-| mathematik-18be-q2-angle-hold-20260924-v1 | `18be713b-7d90-4f01-b60a-5582ac4df0e8` | Schnittwinkel zwischen geometrischen Objekten berechnen | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `944dd479-9f30-5acb-ab32-3ea0b6dc8e06` | Spatprodukt korrekt definieren und deuten | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2` | Symmetrien einfacher Körper untersuchen | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `f2a12269-6bcb-564a-9fdb-45cfdbd704fc` | Teilungsverhältnisse bei Volumina untersuchen | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `e33e75e3-eae5-5a09-862f-d1a11176373f` | Transformationsscharen bekannter Funktionsklassen untersuchen | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `7bb3c312-f714-55e6-a31f-f31605a93760` | Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK) | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `a594dec0-3977-5c43-9432-d4254a7f6130` | Volumen von Spaten und Tetraedern mit Spatprodukt berechnen | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6` | Zählverfahren und kombinatorische Überlegungen für Wahrscheinlichkeiten nutzen | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `4aa70ad4-171d-5671-a864-c0c7758fa0ed` | Zufallsexperimente mit Software simulieren | `deferred_quality_review` |
-| mathematik-m7-quality-holds-2026-09-23 | `21fa0c22-976e-59b3-a871-899f0c0177f3` | Zufallsexperimente und Ereignisse aus Termen formulieren | `deferred_quality_review` |
+Keine Eintraege.
 
 ### Open Provider Quota
 
@@ -205,42 +169,46 @@ Weitere 27 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Review/Link Consistency
 
-### Linked Without Accepted Review
+### Current Exact-Byte AI QA Without Accepted Ledger Review
 
-| Goal ID | Title | Link status | Latest ledger decision |
+| Goal ID | Title | Latest ledger decision | Current QA asset SHA-256 |
 | --- | --- | --- | --- |
-| `6c26a00a-ad1e-59cc-93e2-a38e1683665c` | Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten | `pilot` | - |
-| `74dc4b0d-a167-564c-bdc1-5cf510aee280` | Algebraische Terme ausmultiplizieren | `pilot` | `deferred_provider_limitation` |
-| `96c55cb6-d2c7-5145-8567-b5f570f55a8a` | Algebraische Terme faktorisieren | `pilot` | `deferred_provider_limitation` |
-| `e2bf726a-126c-5c66-9fbb-6e04c129bb0f` | Äquivalenz durch Begründung oder Gegenbeispiel prüfen | `pilot` | `deferred_provider_limitation` |
-| `630bb145-9a3f-5c88-ab5a-fb69a9bb76e4` | Arithmetische Reihen untersuchen | `pilot` | - |
-| `308f19e2-e202-5300-a2fa-1eaa717f4e73` | Asymptotisches Verhalten exponentieller Funktionen deuten | `pilot` | `deferred_provider_limitation` |
-| `4ae9e316-509f-517d-bd94-a165817af24f` | Begrenzte Wachstums- und Zerfallsprozesse aus Daten modellieren | `pilot` | `deferred_provider_limitation` |
-| `e495fa38-b198-5280-a405-9e41cafd6d17` | Bernoulli-Experimente und -Ketten identifizieren und parametrisieren | `pilot` | `deferred_provider_limitation` |
-| `aa00edfa-cf8d-500e-994f-7e33a5ebd045` | Binomialwahrscheinlichkeiten bestimmen und deuten | `pilot` | `deferred_provider_limitation` |
-| `b7cc2fc4-c695-5a97-93b0-3a619c632ca8` | Das empirische Gesetz der großen Zahlen erläutern | `pilot` | `deferred_provider_limitation` |
-| `9b6f4d7d-a804-5666-b7ea-85bb3c73da4a` | Die Formel für Binomialwahrscheinlichkeiten an einem Beispiel begründen | `pilot` | `deferred_provider_limitation` |
-| `a7778885-17aa-5eeb-a6a7-fbf4c8d55a16` | Die Verteilungsfunktion der Normalverteilung als Integralfunktion deuten (LK) | `pilot` | `deferred_provider_limitation` |
-| `a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0` | Die Zahlbereichserweiterung zu komplexen Zahlen mathematisch begründen (LK) | `pilot` | `deferred_provider_limitation` |
-| `55d0474b-b82c-59b6-a62a-b6a0a34d9c4b` | Diskrete und stetige Zufallsgrößen unterscheiden (LK) | `pilot` | `deferred_provider_limitation` |
-| `3017e774-8d9f-5129-828f-7684db5afc1e` | Dreiecke aus Kongruenzangaben konstruieren | `pilot` | `deferred_provider_limitation` |
-| `570d5931-f126-5bb4-8b7f-db236d6b727f` | Eine Kreistangente im Berührpunkt konstruieren | `pilot` | `deferred_provider_limitation` |
-| `ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c` | Empirische und theoretische Wahrscheinlichkeit unterscheiden | `pilot` | `deferred_provider_limitation` |
-| `a1c79897-6ded-57f8-bee1-2d365a5083c9` | Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen | `pilot` | - |
-| `74b5a01b-c086-51d0-bc66-046029c92ef7` | Geometrische Reihen untersuchen | `pilot` | - |
-| `bc6e4c14-d4f7-537e-8e83-9b5c0086e807` | Graphen einfacher Hyperbeln mit Asymptoten zeichnen | `pilot` | `deferred_provider_limitation` |
-| `ad26e4d9-b025-57ec-8f25-df4a2415cc62` | Größen mit geeigneten Messmitteln erfassen | `pilot` | `deferred_provider_limitation` |
-| `04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8` | Grundlegende Eigenschaften der natürlichen Logarithmusfunktion erläutern (LK) | `pilot` | `deferred_provider_limitation` |
-| `8823e26e-694c-581b-9adf-4db7db6f43c9` | Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen | `pilot` | `deferred_provider_limitation` |
-| `ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75` | Kettenregel beim Ableiten anwenden (LK) | `pilot` | `deferred_provider_limitation` |
-| `5c9ac68c-3928-518c-bbe0-e044667035a6` | Konfidenzintervalle im Kontext interpretieren | `pilot` | `deferred_provider_limitation` |
-| `5a2371fd-74ce-5013-932e-35d3713aeaf7` | Laplace-Wahrscheinlichkeiten mit relativen Häufigkeiten vergleichen | `pilot` | `deferred_provider_limitation` |
-| `f17935b0-189f-5e0c-988d-ce508b710097` | Lineare Ungleichungen lösen und Lösungsmengen darstellen | `pilot` | `deferred_provider_limitation` |
-| `cc60f759-1168-5fc0-8ff5-5f7a2533e61c` | Lösbarkeit und Lösungsvielfalt linearer Gleichungen untersuchen | `pilot` | - |
-| `0f6c1df6-0e30-54ae-8098-e9422833ba80` | Lösbarkeit von Dreieckskonstruktionen begründen | `pilot` | `deferred_provider_limitation` |
-| `25a3cc39-976e-58a5-b882-73baee5c037c` | Maßangaben aus Quellenmaterial entnehmen | `pilot` | `deferred_provider_limitation` |
+| `6c26a00a-ad1e-59cc-93e2-a38e1683665c` | Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten | - | `sha256:8697ead37c9f52e0dbf5474a6a2f964fb249118e0f52b3d29134dbf660d57a23` |
+| `74dc4b0d-a167-564c-bdc1-5cf510aee280` | Algebraische Terme ausmultiplizieren | `deferred_provider_limitation` | `sha256:a03a52c3259669e99836770640c2e19ad1e77a7b15a119f5a167ba10c5c539fd` |
+| `96c55cb6-d2c7-5145-8567-b5f570f55a8a` | Algebraische Terme faktorisieren | `deferred_provider_limitation` | `sha256:ad705c2b94b1e59d06d82d6834e4fcef28fb58bcd0750afb75c4a1109e2f920b` |
+| `e2bf726a-126c-5c66-9fbb-6e04c129bb0f` | Äquivalenz durch Begründung oder Gegenbeispiel prüfen | `deferred_provider_limitation` | `sha256:8a49fe5712e844c33ec5f3fdb15cf426c43be60d7008b725650f97d748dba8b5` |
+| `630bb145-9a3f-5c88-ab5a-fb69a9bb76e4` | Arithmetische Reihen untersuchen | - | `sha256:ac96aff6ac27effb52d076b2dcf27897fff22f2390ea6e9bf569640f189c1223` |
+| `308f19e2-e202-5300-a2fa-1eaa717f4e73` | Asymptotisches Verhalten exponentieller Funktionen deuten | `deferred_provider_limitation` | `sha256:3f4b1c6120b0ab626c5b4f8e384fc8518cef7e29dd02a13c5560fcd141d4f9df` |
+| `21676dae-8619-59d1-89e3-a35bb2297e2c` | Aus dem Funktionsgraphen einen Stammfunktionsgraphen skizzieren | - | `sha256:c0a71332b8ed8877f8e87ae7898007aeb29e4436680bf804b2e17692051d773a` |
+| `85eda551-cfc1-52c6-a252-4c7394c1f7e6` | Aus einem Stammfunktionsgraphen den Funktionsgraphen skizzieren | - | `sha256:3e76f9f36d4f0b9e9187ee2f85e08c0e45b9300bd143ff2c29568d5c1dd1aedb` |
+| `4ae9e316-509f-517d-bd94-a165817af24f` | Begrenzte Wachstums- und Zerfallsprozesse aus Daten modellieren | `deferred_provider_limitation` | `sha256:21963bd9c0e8c10e257db5b84786a64cd97c5c781f81bf54beb63f0be0b57eff` |
+| `e495fa38-b198-5280-a405-9e41cafd6d17` | Bernoulli-Experimente und -Ketten identifizieren und parametrisieren | `deferred_provider_limitation` | `sha256:165fb00a213aa4f21401a2e4a121c1121cce7dc27ed28ab047c932520e01152b` |
+| `aa00edfa-cf8d-500e-994f-7e33a5ebd045` | Binomialwahrscheinlichkeiten bestimmen und deuten | `deferred_provider_limitation` | `sha256:58cd2f73b87e66856188dc09c03562dbd8cb6186174e3745014e6162f6dfb837` |
+| `b7cc2fc4-c695-5a97-93b0-3a619c632ca8` | Das empirische Gesetz der großen Zahlen erläutern | `deferred_provider_limitation` | `sha256:6ab1febb836104ecfeec6ffb0e3201705028b613687dec5d0f6a80758e230c41` |
+| `9b6f4d7d-a804-5666-b7ea-85bb3c73da4a` | Die Formel für Binomialwahrscheinlichkeiten an einem Beispiel begründen | `deferred_provider_limitation` | `sha256:cfc3330cbdeee3ec592a19662174cb7f4f80af70cb3c857c185baf2a5015ada0` |
+| `a7778885-17aa-5eeb-a6a7-fbf4c8d55a16` | Die Verteilungsfunktion der Normalverteilung als Integralfunktion deuten (LK) | `deferred_provider_limitation` | `sha256:0aab1d68fb4f8e45fa13525b19a836fb00a2efa921822f397ac7f32c7144ef94` |
+| `a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0` | Die Zahlbereichserweiterung zu komplexen Zahlen mathematisch begründen (LK) | `deferred_provider_limitation` | `sha256:ac42af07cb94d6131e20ee4d3de6a7011661b4a19f21c536615692372486f70b` |
+| `55d0474b-b82c-59b6-a62a-b6a0a34d9c4b` | Diskrete und stetige Zufallsgrößen unterscheiden (LK) | `deferred_provider_limitation` | `sha256:e4aa9210b0831521cbc1388ec9bf48e9fd4fee4658e3c6bde4e980e9e1491102` |
+| `3017e774-8d9f-5129-828f-7684db5afc1e` | Dreiecke aus Kongruenzangaben konstruieren | `deferred_provider_limitation` | `sha256:90cc10eb382f715b7cfc217685d2ee8c86eef357d7d651b7d71ef31877799a71` |
+| `570d5931-f126-5bb4-8b7f-db236d6b727f` | Eine Kreistangente im Berührpunkt konstruieren | `deferred_provider_limitation` | `sha256:48971c7fddbb8ab7fdf890a2a65f0063ad7ea617df5341823ae5c23f84031778` |
+| `ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c` | Empirische und theoretische Wahrscheinlichkeit unterscheiden | `deferred_provider_limitation` | `sha256:4fbd8328581da6ab5f79903b9d874bcf0c5d2f765c4582897e222c4b4240332e` |
+| `a1c79897-6ded-57f8-bee1-2d365a5083c9` | Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen | - | `sha256:8697ead37c9f52e0dbf5474a6a2f964fb249118e0f52b3d29134dbf660d57a23` |
+| `74b5a01b-c086-51d0-bc66-046029c92ef7` | Geometrische Reihen untersuchen | - | `sha256:e8f80fe97fd829028eab68f82452aaf0cf98497b9baf11af8acd9310a14c96b9` |
+| `bc6e4c14-d4f7-537e-8e83-9b5c0086e807` | Graphen einfacher Hyperbeln mit Asymptoten zeichnen | `deferred_provider_limitation` | `sha256:0a92fbd2f1b3327e58d1e6dd05a6dbac7d426ba4e4cd4dc3e0a3d545ffe5d1d7` |
+| `ad26e4d9-b025-57ec-8f25-df4a2415cc62` | Größen mit geeigneten Messmitteln erfassen | `deferred_provider_limitation` | `sha256:110889b4aa70f56e8cc5803ca3cf482bb5400f2a48ea90d4abdf98dcc73f82c1` |
+| `04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8` | Grundlegende Eigenschaften der natürlichen Logarithmusfunktion erläutern (LK) | `deferred_provider_limitation` | `sha256:afef00903c8d8c8d60da5d9e1191b428ff421499e59159cd7d85401626e08056` |
+| `8823e26e-694c-581b-9adf-4db7db6f43c9` | Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen | `deferred_provider_limitation` | `sha256:1d1942cdde3d42dd8086ad98ded83431986b4f6e27487e9f88c450a3d0cfc8a7` |
+| `ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75` | Kettenregel beim Ableiten anwenden (LK) | `deferred_provider_limitation` | `sha256:6c71876d3782952b2e7293092a44f10d536b341f14c46a1b9108079ea8526f8f` |
+| `5c9ac68c-3928-518c-bbe0-e044667035a6` | Konfidenzintervalle im Kontext interpretieren | `deferred_provider_limitation` | `sha256:08326e4e189cf65f7d7ec89bcfb8e7e6a5ea7802782de79fe3c507a7d687f3ea` |
+| `5a2371fd-74ce-5013-932e-35d3713aeaf7` | Laplace-Wahrscheinlichkeiten mit relativen Häufigkeiten vergleichen | `deferred_provider_limitation` | `sha256:aa578a6d6fddbd68fdb3a91ba4e535a481880cbc69092bbab7e2c6dc8c894fec` |
+| `f17935b0-189f-5e0c-988d-ce508b710097` | Lineare Ungleichungen lösen und Lösungsmengen darstellen | `deferred_provider_limitation` | `sha256:4d800383ced84863c26e5d832e95b0a451c98434d46c41c6c6e387ab97008ca2` |
+| `cc60f759-1168-5fc0-8ff5-5f7a2533e61c` | Lösbarkeit und Lösungsvielfalt linearer Gleichungen untersuchen | - | `sha256:682e00a3f38e373b614aca1b16f3f861a7b94005da4d973ab805bcb9962f747f` |
 
-Weitere 17 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 21 Eintraege stehen in der JSON-Begleitdatei.
+
+### Linked Without Accepted Ledger Review or Current AI QA
+
+Keine Eintraege.
 
 ### Accepted Review Without Link
 
@@ -248,17 +216,16 @@ Keine Eintraege.
 
 ## Next Command
 
-Priority: correct the 30 quality-deferred image(s) named above, inspect each replacement at original resolution, and record a new approval for its exact SHA-256 before re-linking. This is open M7-V work; the provider batch command below is a separate queue.
-
 ```bash
-npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json --output tmp/goal-visualization-mathematik-next-batch.txt --include-deferred
+npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json --output tmp/goal-visualization-mathematik-next-batch.txt
 ```
 
-Use this only for an intentional provider-limitation revisit. Generated candidates still require full mathematical review before import; otherwise keep the existing deferred ledger decisions.
+After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
+- AI-QA ledger: `curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json`
 - Prompt append dir: `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17`
 

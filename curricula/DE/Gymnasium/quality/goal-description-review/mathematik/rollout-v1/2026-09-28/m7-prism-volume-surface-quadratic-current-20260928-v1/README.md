@@ -1,0 +1,3 @@
+# Überholter Prüfansatz; nicht registrieren
+
+Dieser vorbereitete Dreier-Batch enthält den Stand **vor** der inhaltlichen Präzisierung von `68fb0e78` und vor dem endgültigen Atlas-/Bildstand. Zwei unabhängige, nur diagnostische Erstprüfungen beanstandeten den damaligen Volumentext übereinstimmend als `revise`. Da die neue Formulierung inzwischen kanonisch ist, sind weder dieses Bundle noch die alten Prüfurteile für einen strengen D-Abschluss aktuell. Maßgeblich ist ausschließlich der anschließend neu gebaute, vollständig geprüfte Batch `../m7-prism-volume-surface-quadratic-current-20260928-v2/`.

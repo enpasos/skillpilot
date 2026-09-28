@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-fourteen-one-keep-20260927-v2",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-27T17:21:23.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-final-fourteen-triage-20260927-v1",
+    "batchManifestDigest": "sha256:0ae8f352fac64cd4fe90b4c149456acaec79d1e705be3b3d3a9396a9a354b875",
+    "configDigest": "sha256:f2b41c5192d33745562f8866b241fe8a7054822a5c7e2d0cb6a3bd6844e174bd",
+    "bundleFingerprint": "sha256:3de6f2672bf669890f761eb2e4567391b6d9d28ef740447b3117910512d7b3db",
+    "bookDigest": "sha256:617b4ddf68f00ec97686b01c15579ad35f77180cff663f85b2ea8a2609a876d7",
+    "reviewInputFingerprint": "sha256:82dea656ee23365387ca402499317be9a93d3bd606f9a11be4b66d03e86f0442",
+    "dualSummaryDigest": "sha256:c55ebc804f4ada8e61269480789494570ee063a197ee5305a4a0caf999093aae",
+    "canonicalLandscapeDigest": "sha256:f2f33fb5eb86cd8524283ac0755e513aa528a7256fd37950be6249bcfd441f3f"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-final-fourteen-triage-20260927-v1-a",
+      "campaignDigest": "sha256:1338fa6d1c8d347374762a6fc68053cd4d448402a89db41158f91bdce866ebff",
+      "roundId": "mathematik-m7-final-fourteen-triage-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-final-fourteen-triage-20260927-v1-independent-a",
+      "reviewInputFingerprint": "sha256:82dea656ee23365387ca402499317be9a93d3bd606f9a11be4b66d03e86f0442",
+      "batchId": "mathematik-m7-final-fourteen-triage-20260927-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:0950d89c9671a46909a5611fce548a3e531e99395deb038d4ac2fbba65074615",
+      "runId": "mathematik-m7-final-fourteen-triage-20260927-v1-first-pass-a.batch-001.codex-independent-a",
+      "runManifestDigest": "sha256:c0113e1e023803385e982115a051cd62e3868b4be7acea8e87716cd2c46b224d",
+      "resultsDigest": "sha256:c58ff22d71787696218ec1b43d7ac211d262dfb644a930bf7fa19a9c00221e81"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-final-fourteen-triage-20260927-v1-b",
+      "campaignDigest": "sha256:ec50093e5a677ab3acde1a05bf8006a5cc658b47df6f226c83f6b9b6906e4ad5",
+      "roundId": "mathematik-m7-final-fourteen-triage-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-final-fourteen-triage-20260927-v1-independent-b",
+      "reviewInputFingerprint": "sha256:82dea656ee23365387ca402499317be9a93d3bd606f9a11be4b66d03e86f0442",
+      "batchId": "mathematik-m7-final-fourteen-triage-20260927-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:aa721672c296b9b64b055837f33e3011494be8e89aca0cb22db257ba812e0db2",
+      "runId": "mathematik-m7-final-fourteen-triage-20260927-v1-first-pass-b.reviewer-b.manual-20260927",
+      "runManifestDigest": "sha256:e4cc7defd7708cf0eca2d53cb664b1949188918d2a9287eb5443091e9376a727",
+      "resultsDigest": "sha256:733a224da8d891f29561fc55427553ee6a901f4b836e6b270d0d4b8c2a30b13f"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-fourteen-one-keep-20260927-v2-decision-001",
+      "goalId": "a594dec0-3977-5c43-9432-d4254a7f6130",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c0971d4e073a9ba69602fb467e29d943bcfe42bdd9e5070b0a78229e2f567e18",
+      "pageFingerprint": "sha256:b5d84c839695a217cf71f8817d48af5f5532816c5070b438f99f5b375dd392be",
+      "goalReviewContextFingerprint": "sha256:72d813d45270824900e3a5a95a17f8ac3a8c1684cb050c474fff17b771eb0a24",
+      "finalText": {
+        "titleDe": "Volumen von Spaten und Tetraedern mit Spatprodukt berechnen",
+        "titleEn": "Calculate volumes of parallelepipeds and tetrahedra with the scalar triple product",
+        "descriptionDe": "Die lernende Person kann Volumina von Spaten (Parallelepipeden) und Tetraedern aus Koordinaten mithilfe des Spatprodukts bestimmen ($V_{Spat} = |\\vec{a} \\cdot (\\vec{b} \\times \\vec{c})|$, $V_{Tet} = \\frac{1}{6} V_{Spat}$) und passende Kantenvektoren wählen.",
+        "descriptionEn": "The learner can determine volumes of parallelepipeds (spats) and tetrahedra from coordinates using the scalar triple product ($V_{spat} = |\\vec{a} \\cdot (\\vec{b} \\times \\vec{c})|$, $V_{tet} = \\frac{1}{6} V_{spat}$) and choose appropriate edge vectors."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-final-fourteen-triage-20260927-v1-first-pass-a.batch-001.codex-independent-a.012",
+          "recordDigest": "sha256:91a34844104f5a1aae9255ce664ba6792526c10797619dddc099d166388e13ae"
+        },
+        "second": {
+          "recordId": "mathematik-m7-final-fourteen-triage-20260927-v1-first-pass-b.reviewer-b.manual-20260927.a594dec0-3977-5c43-9432-d4254a7f6130",
+          "recordDigest": "sha256:d2e7868dc01bd673945c6c538b80e701b51b389d6268ab4e9d1d7bc32e041be1"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KI-Runden behalten das Volumen eines Tetraeders als zusammenhängende Anwendung des Spatvolumens: Der Faktor ein Sechstel wird geometrisch gedeutet und das Ergebnis am Körper geprüft. Bild und P-Nachweis bleiben eigenständige Gates; keine Humanfreigabe wird behauptet.",
+      "rationaleEn": "Both independent AI rounds retain tetrahedron volume as a coherent application of parallelepiped volume: the one-sixth factor is interpreted geometrically and the result checked against the solid. Image and P evidence remain separate gates; no human approval is claimed."
+    }
+  ],
+  "manifestFingerprint": "sha256:fd7210da6a16e2f5ca063494cdaafbb4840028e4bd66fd6bfbb239a389af04ea"
+}

@@ -8,7 +8,7 @@
 > Source of truth: `docs/qa-ci/status/goal-source-rationales-math-all-relevant.json`
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 
-Generated: 2026-09-24T20:36:04.395Z
+Generated: 2026-09-28T02:27:10.581Z
 
 Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-Mathematikreport zu bearbeitbaren Issues. Sie ist kein Runtime-Gate; sie priorisiert die naechsten Source-Extraction- und Mapping-Arbeiten.
 
@@ -16,9 +16,9 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 
 | Metric | Value |
 | --- | --- |
-| Classic-source gap issues | 56 |
-| Mit belegten Geschwisterzielen | 25 |
-| Ohne belegten Elternkontext | 31 |
+| Classic-source gap issues | 54 |
+| Mit belegten Geschwisterzielen | 22 |
+| Ohne belegten Elternkontext | 32 |
 | Phasen mit Gaps | 5 |
 | Bereiche mit Gaps | 3 |
 
@@ -31,9 +31,9 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 
 | Bucket | Issues | Sibling-supported | Isolated |
 | --- | --- | --- | --- |
-| Q4 | 40 | 17 | 23 |
+| Q4 | 39 | 15 | 24 |
 | E | 8 | 0 | 8 |
-| Q2 | 4 | 4 | 0 |
+| Q2 | 3 | 3 | 0 |
 | Q3 | 3 | 3 | 0 |
 | J9 | 1 | 1 | 0 |
 
@@ -41,16 +41,15 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 
 | Bucket | Issues | Sibling-supported | Isolated |
 | --- | --- | --- | --- |
-| unknown | 48 | 23 | 25 |
-| Analysis | 7 | 1 | 6 |
+| unknown | 48 | 19 | 29 |
+| Analysis | 5 | 2 | 3 |
 | Stochastics | 1 | 1 | 0 |
 
 ## Issue Queue
 
 | Issue | Lane | Phase | Area | Goal | Covered siblings | Primary source anchor | Path |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| GSR-GAP-7D37513B | Geschwister-Mapping pruefen | Q2 | unknown | Transformationsargumente für Flächen und Volumina nutzen (LK) | 16 | Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK) (DE-BW \| Bildungsplan BW Mathematik Gymnasium 2016, 3.4.2, Kompetenz 6, S. 40. \| bw-math-sekii-bp2016-3-4-2-06) | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Transformationsargumente für Flächen und Volumina nutzen (LK) |
-| GSR-GAP-3AEA4D33 | Geschwister-Mapping pruefen | Q2 | unknown | Schnittfiguren von Ebenen mit Polyedern bestimmen (LK) | 1 | Schnittgerade zweier Ebenen bestimmen (LK) (DE-HE \| HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 13, Aspekt 2 \| he-math-sekii-q2-3-b13-a02-b3fca74f) | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum > Vertiefende Untersuchungen im Raum (LK) > Schnittfiguren von Ebenen mit Polyedern bestimmen (LK) |
+| GSR-GAP-3AEA4D33 | Geschwister-Mapping pruefen | Q2 | unknown | Schnittfiguren von Ebenen mit Polyedern bestimmen (LK) | 1 | Schnittgerade zweier Ebenen bestimmen (LK) (DE-HE \| HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 43, Spiegelstrich 13, Aspekt 2 \| he-math-sekii-q2-3-b13-a02-b3fca74f) | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum > Vertiefende Untersuchungen im Raum (LK) > Schnittfiguren von Ebenen mit Polyedern bestimmen (LK) |
 | GSR-GAP-D8F1FD06 | Geschwister-Mapping pruefen | Q2 | unknown | Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK) (canonical_math_q2_use_composed_functions_for_quantifiable_models_lk) | 2 | Kettenregel beim Ableiten anwenden (LK) (DE-BY \| LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.4.2 \| b2650cbe-490c-547e-a55a-d5916c3c0647) | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Vertiefung der Analysis > Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK) > Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK) |
 | GSR-GAP-BF17CADA | Geschwister-Mapping pruefen | Q2 | unknown | Sachsituationen mit einer erweiterten Funktionsklasse modellieren | 6 | Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen (DE-SH \| Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 66 \| de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K005-fd01e50e5f) | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Vertiefung der Analysis > Sachsituationen mit einer erweiterten Funktionsklasse modellieren |
 | GSR-GAP-5E615E88 | Geschwister-Mapping pruefen | Q4 | unknown | Parameter für vorgegebene Nullstellen bestimmen | 8 | Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen (DE-HE \| HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 2 \| he-math-sekii-q4-1-b02-a02-eebba818) | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Funktionenscharen und Parameteruntersuchungen (Sek II) > Funktionenscharen und Parameteruntersuchungen > Parameter für vorgegebene Nullstellen bestimmen |
@@ -80,9 +79,10 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 | GSR-GAP-D0475ED5 | Quellenbeleg suchen | Q4 | unknown | Aussagekraft und Grenzen diskutieren (LK) | 0 | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Komplexe Visualisierungen entwickeln (LK) > Aussagekraft und Grenzen diskutieren (LK) |
 | GSR-GAP-55FA9261 | Quellenbeleg suchen | Q4 | unknown | Mehrere Darstellungen kombinieren (LK) | 0 | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Komplexe Visualisierungen entwickeln (LK) > Mehrere Darstellungen kombinieren (LK) |
 | GSR-GAP-C23C4364 | Quellenbeleg suchen | Q4 | unknown | Visualisierung für komplexe Situation entwerfen (LK) | 0 | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Komplexe Visualisierungen entwickeln (LK) > Visualisierung für komplexe Situation entwerfen (LK) |
-| GSR-GAP-5C4B5AB1 | Geschwister-Mapping pruefen | Q4 | unknown | Modell vollständig notieren | 1 | Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren (DE-HE \| Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra \| he-math-seki-g9-9-1-03-6c2d7b55) | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mathematische Modelle bilden > Modell vollständig notieren |
-| GSR-GAP-C3CAD3F5 | Geschwister-Mapping pruefen | Q4 | unknown | Rand- und Anfangsbedingungen festlegen | 1 | Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren (DE-HE \| Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra \| he-math-seki-g9-9-1-03-6c2d7b55) | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mathematische Modelle bilden > Rand- und Anfangsbedingungen festlegen |
-| GSR-GAP-670286AA | Geschwister-Mapping pruefen | Q4 | unknown | Variablen und Parameter definieren | 1 | Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren (DE-HE \| Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra \| he-math-seki-g9-9-1-03-6c2d7b55) | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mathematische Modelle bilden > Variablen und Parameter definieren |
+| GSR-GAP-07196E72 | Quellenbeleg suchen | Q4 | unknown | Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren | 0 | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mathematische Modelle bilden > Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren |
+| GSR-GAP-5C4B5AB1 | Quellenbeleg suchen | Q4 | unknown | Modell vollständig notieren | 0 | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mathematische Modelle bilden > Modell vollständig notieren |
+| GSR-GAP-C3CAD3F5 | Quellenbeleg suchen | Q4 | unknown | Rand- und Anfangsbedingungen festlegen | 0 | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mathematische Modelle bilden > Rand- und Anfangsbedingungen festlegen |
+| GSR-GAP-670286AA | Quellenbeleg suchen | Q4 | unknown | Variablen und Parameter definieren | 0 | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mathematische Modelle bilden > Variablen und Parameter definieren |
 | GSR-GAP-74F28CE7 | Quellenbeleg suchen | Q4 | unknown | Alternative Modelle entwickeln (LK) | 0 | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mehrere Modelle vergleichen (LK) > Alternative Modelle entwickeln (LK) |
 | GSR-GAP-163DD583 | Quellenbeleg suchen | Q4 | unknown | Modelle nach Kriterien vergleichen (LK) | 0 | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mehrere Modelle vergleichen (LK) > Modelle nach Kriterien vergleichen (LK) |
 | GSR-GAP-519660D0 | Quellenbeleg suchen | Q4 | unknown | Modellentscheidung begründen (LK) | 0 | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mehrere Modelle vergleichen (LK) > Modellentscheidung begründen (LK) |
@@ -98,9 +98,7 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 | GSR-GAP-99BFB566 | Quellenbeleg suchen | E | unknown | Termmerkmale aus Graphen ableiten | 0 | - | Mathematik > Grundlagen der Analysis und mathematische Modelle > Funktionen und ihre Darstellung > Zwischen Darstellungen wechseln > Termmerkmale aus Graphen ableiten |
 | GSR-GAP-42B57670 | Quellenbeleg suchen | E | unknown | Übertragungen begründen und prüfen | 0 | - | Mathematik > Grundlagen der Analysis und mathematische Modelle > Funktionen und ihre Darstellung > Zwischen Darstellungen wechseln > Übertragungen begründen und prüfen |
 | GSR-GAP-B04D65DC | Quellenbeleg suchen | E | unknown | Zwischen Tabelle, Graph und Term wechseln | 0 | - | Mathematik > Grundlagen der Analysis und mathematische Modelle > Funktionen und ihre Darstellung > Zwischen Darstellungen wechseln > Zwischen Tabelle, Graph und Term wechseln |
-| GSR-GAP-71FE4A39 | Quellenbeleg suchen | Q4 | Analysis | Analysis-Modelle in Sachzusammenhängen validieren (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_model_validation) | 0 | - | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) > Analysis-Modelle in Sachzusammenhängen validieren (LK) |
-| GSR-GAP-DC12F281 | Quellenbeleg suchen | Q4 | Analysis | Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_differential_context) | 0 | - | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) > Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) |
-| GSR-GAP-0B162CB0 | Quellenbeleg suchen | Q4 | Analysis | Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_integral_context) | 0 | - | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) > Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK) |
+| GSR-GAP-DC12F281 | Geschwister-Mapping pruefen | Q4 | Analysis | Differentialrechnung in Sachzusammenhängen auswählen und anwenden (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_differential_context) | 2 | Integralrechnung in Sachzusammenhängen auswählen und anwenden (DE-BY \| LehrplanPLUS Bayern Gymnasium Mathematik, M13.4 \| 9371884f-3c08-5f6f-b963-163f2ccc9cb3) | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden > Differentialrechnung in Sachzusammenhängen auswählen und anwenden |
 | GSR-GAP-6C26A00A | Geschwister-Mapping pruefen | J9 | Analysis | Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten (canonical_math_sek1_j9_read_quadratic_axes_and_signs) | 1 | Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen (DE-BW \| Bildungsplan BW Mathematik Gymnasium 2016, 3.2.4, Kompetenz 2, S. 28. \| bw-math-seki-bp2016-3-2-4-02-7a39c971) | Mathematik > Jahrgangsstufe 9 > Quadratische Funktionen beschreiben und anwenden > Quadratische Funktionen und Gleichungen grundlegend untersuchen > Quadratische Funktionen in Darstellungen deuten > Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten > Eigenschaften quadratischer Funktionen aus Graphen ablesen > Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten |
 | GSR-GAP-18293A33 | Geschwister-Mapping pruefen | Q3 | Stochastics | Statistische Erhebungen exemplarisch planen und dokumentieren | 1 | Daten tabellarisch und grafisch aufbereiten (DE-BB \| RLP BE/BB Mathematik 1-10, Kap. 2.2, [L5] Daten und Zufall - Niveaustufen E-H, Niveaustufe E, S. 34. \| bb-math-seki-rlp-1-10-2-2-l5-daten-zufall-e-02-7d847ca1) | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Statistik und weitere Wahrscheinlichkeitsverteilungen > Q3.5 Statistik: Datenanalyse und Modellvergleich > Zufallsexperimente statistisch auswerten > Statistische Erhebungen planen, auswerten und kritisch beurteilen > Statistische Erhebungen planen und Daten aufbereiten > Statistische Erhebungen exemplarisch planen und dokumentieren |
 | GSR-GAP-CE2EB0A8 | Geschwister-Mapping pruefen | Q3 | unknown | Empirische und theoretische Wahrscheinlichkeit unterscheiden (canonical_math_q3_distinguish_empirical_and_theoretical_probability) | 2 | Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen (DE-BY \| LehrplanPLUS Bayern Gymnasium Mathematik, M8.5 \| 40b2829a-35fd-5e6e-96ba-20ec6928940d) | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Wahrscheinlichkeiten und Verteilungen (Sek II) > Grundlegende Begriffe und Methoden der Stochastik > Statistischen Wahrscheinlichkeitsbegriff anwenden > Empirische und theoretische Wahrscheinlichkeit unterscheiden |
@@ -110,5 +108,5 @@ Diese Review-Liste verdichtet die klassischen Quellen-Gaps aus dem All-Relevant-
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - All-relevant report: `docs/qa-ci/status/goal-source-rationales-math-all-relevant.json`
-- All-relevant generated: 2026-09-24T18:54:31.917Z
+- All-relevant generated: 2026-09-28T02:23:10.486Z
 

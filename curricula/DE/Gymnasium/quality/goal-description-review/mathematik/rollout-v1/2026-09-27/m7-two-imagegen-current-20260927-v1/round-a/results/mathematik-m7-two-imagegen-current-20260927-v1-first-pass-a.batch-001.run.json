@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-m7-two-imagegen-a-20260927-run-1",
+  "campaignId": "mathematik-m7-two-imagegen-current-20260927-v1-a",
+  "roundId": "mathematik-m7-two-imagegen-current-20260927-v1-first-pass-a",
+  "batchId": "mathematik-m7-two-imagegen-current-20260927-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:d8e2bb2c46d03df1715b2b618aeeac5ad16b175f990411919ef78ffe26d6ad0c",
+  "bundleFingerprint": "sha256:09c1c311b8459bfb76e9b391ddb99d78dab85422bbfa92b168f7b0bc21ebeb4a",
+  "bookDigest": "sha256:943f77d99f7130d28d4712149b79b0ed6eab703c0187cdc34245a38e2e98cfa4",
+  "provider": "OpenAI",
+  "model": "Codex active model",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:7e25f504448ac4c23489f21c59923a47ca85759407b36f1538ff96579a691955",
+  "independenceGroupId": "mathematik-m7-two-imagegen-current-20260927-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+    "a7fb1a7a-8315-5bcb-842e-48293293dfcc"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:d8e2bb2c46d03df1715b2b618aeeac5ad16b175f990411919ef78ffe26d6ad0c"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:a203aa3289b5154dbc99e596230f61ef645983372a47ccea7a186fb9fe1489fd"
+    }
+  ],
+  "startedAt": "2026-09-27T16:30:45Z",
+  "completedAt": "2026-09-27T16:31:57Z",
+  "status": "completed",
+  "outputDigest": "sha256:2fc49daa0aca9561fef7e4996242078f4c0e766ef493db284918e279b028db2c",
+  "toolchainVersion": "codex-repository-review-v1"
+}

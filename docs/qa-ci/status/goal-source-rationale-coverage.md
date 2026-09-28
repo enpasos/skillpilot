@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-09-24T20:35:38.676Z
+Generated: 2026-09-28T03:13:52.008Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,41 +16,41 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1192 |
-| Atomare Blattleernziele | 932 |
-| Davon relevant fuer Quellenbegruendung | 797 |
-| Memory-/Nicht-Content-Blattziele | 135 |
-| Clusterziele | 260 |
-| Runtime-Quellenbegruendungen | 741 |
-| Runtime-Ziele mit klassischem Quellenweg | 741 |
-| Runtime-Ziele mit MEM/FWU-konsistenter Route | 227 |
-| Relevante Blattziele mit klassischem Quellenweg | 741/797 (93.0%) |
-| Relevante Blattziele mit MEM/FWU-konsistenter Route | 227/797 (28.5%) |
-| Relevante Blattziele ohne Runtime-Quellenbegruendung | 56 |
+| Alle Mathematik-Ziele | 1203 |
+| Atomare Blattleernziele | 941 |
+| Davon relevant fuer Quellenbegruendung | 799 |
+| Memory-/Nicht-Content-Blattziele | 142 |
+| Clusterziele | 262 |
+| Runtime-Quellenbegruendungen | 745 |
+| Runtime-Ziele mit klassischem Quellenweg | 745 |
+| Runtime-Ziele mit MEM/FWU-konsistenter Route | 230 |
+| Relevante Blattziele mit klassischem Quellenweg | 745/799 (93.2%) |
+| Relevante Blattziele mit MEM/FWU-konsistenter Route | 230/799 (28.8%) |
+| Relevante Blattziele ohne Runtime-Quellenbegruendung | 54 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
-| Cluster mit direkter Runtime-Quellenbegruendung | 0/260 |
-| Cluster ohne direkte Runtime-Quellenbegruendung | 260 |
-| contains-Relationen mit Begruendungstext | 0/1313 |
-| requires-Relationen mit Begruendungstext | 0/2439 |
+| Cluster mit direkter Runtime-Quellenbegruendung | 0/262 |
+| Cluster ohne direkte Runtime-Quellenbegruendung | 262 |
+| contains-Relationen mit Begruendungstext | 0/1326 |
+| requires-Relationen mit Begruendungstext | 0/2437 |
 
 ## Interpretation
 
 - Die Runtime-Datei enthaelt aktuell direkte Quellenbegruendungen fuer alle bereits klassisch belegten relevanten Mathematik-Blattziele. Sie deckt Zielknoten ab, aber noch keine `requires`- oder `contains`-Relationstexte.
-- Die 741 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
+- Die 745 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
 - MEM/FWU-SPARQL ist nur dort als konsistent gezaehlt, wo der klassische Quellenweg bereits auf einen passenden MEM-Erwartungstext gematcht werden konnte.
 
 ## Gaps By Phase
 
 | Bucket | Relevant leaves | Classic | MEM consistent | Missing |
 | --- | --- | --- | --- | --- |
-| Q4 | 162 | 122 (75.3%) | 37 (22.8%) | 40 |
-| E | 94 | 86 (91.5%) | 24 (25.5%) | 8 |
-| Q2 | 142 | 138 (97.2%) | 21 (14.8%) | 4 |
+| Q4 | 162 | 123 (75.9%) | 39 (24.1%) | 39 |
+| E | 96 | 88 (91.7%) | 25 (26.0%) | 8 |
+| Q2 | 141 | 138 (97.9%) | 21 (14.9%) | 3 |
 | Q3 | 76 | 73 (96.1%) | 16 (21.1%) | 3 |
 | J9 | 47 | 46 (97.9%) | 18 (38.3%) | 1 |
 | J10 | 58 | 58 (100.0%) | 21 (36.2%) | 0 |
 | Q1 | 48 | 48 (100.0%) | 10 (20.8%) | 0 |
-| J7 | 45 | 45 (100.0%) | 17 (37.8%) | 0 |
+| J7 | 46 | 46 (100.0%) | 17 (37.0%) | 0 |
 | J6 | 43 | 43 (100.0%) | 22 (51.2%) | 0 |
 | J8 | 39 | 39 (100.0%) | 16 (41.0%) | 0 |
 | J5 | 36 | 36 (100.0%) | 23 (63.9%) | 0 |
@@ -60,10 +60,10 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Bucket | Relevant leaves | Classic | MEM consistent | Missing |
 | --- | --- | --- | --- | --- |
-| unknown | 386 | 338 (87.6%) | 70 (18.1%) | 48 |
-| Analysis | 129 | 122 (94.6%) | 36 (27.9%) | 7 |
+| unknown | 385 | 337 (87.5%) | 70 (18.2%) | 48 |
+| Analysis | 131 | 126 (96.2%) | 39 (29.8%) | 5 |
 | Stochastics | 2 | 1 (50.0%) | 1 (50.0%) | 1 |
-| Geometry | 81 | 81 (100.0%) | 40 (49.4%) | 0 |
+| Geometry | 82 | 82 (100.0%) | 40 (48.8%) | 0 |
 | LinearAlgebra | 68 | 68 (100.0%) | 7 (10.3%) | 0 |
 | Algebra | 56 | 56 (100.0%) | 33 (58.9%) | 0 |
 | Arithmetic | 46 | 46 (100.0%) | 24 (52.2%) | 0 |
@@ -84,7 +84,6 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Goal | Phase | Area | Topic | Path |
 | --- | --- | --- | --- | --- |
-| Transformationsargumente für Flächen und Volumina nutzen (LK) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Transformationsargumente für Flächen und Volumina nutzen (LK) |
 | Schnittfiguren von Ebenen mit Polyedern bestimmen (LK) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum > Vertiefende Untersuchungen im Raum (LK) > Schnittfiguren von Ebenen mit Polyedern bestimmen (LK) |
 | Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK) (canonical_math_q2_use_composed_functions_for_quantifiable_models_lk) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Vertiefung der Analysis > Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK) > Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK) |
 | Sachsituationen mit einer erweiterten Funktionsklasse modellieren | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Vertiefung der Analysis > Sachsituationen mit einer erweiterten Funktionsklasse modellieren |
@@ -115,6 +114,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Aussagekraft und Grenzen diskutieren (LK) | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Komplexe Visualisierungen entwickeln (LK) > Aussagekraft und Grenzen diskutieren (LK) |
 | Mehrere Darstellungen kombinieren (LK) | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Komplexe Visualisierungen entwickeln (LK) > Mehrere Darstellungen kombinieren (LK) |
 | Visualisierung für komplexe Situation entwerfen (LK) | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Komplexe Visualisierungen entwickeln (LK) > Visualisierung für komplexe Situation entwerfen (LK) |
+| Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mathematische Modelle bilden > Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren |
 | Modell vollständig notieren | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mathematische Modelle bilden > Modell vollständig notieren |
 | Rand- und Anfangsbedingungen festlegen | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mathematische Modelle bilden > Rand- und Anfangsbedingungen festlegen |
 | Variablen und Parameter definieren | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Mathematische Modelle bilden > Variablen und Parameter definieren |
@@ -133,9 +133,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Termmerkmale aus Graphen ableiten | E | unknown | - | Mathematik > Grundlagen der Analysis und mathematische Modelle > Funktionen und ihre Darstellung > Zwischen Darstellungen wechseln > Termmerkmale aus Graphen ableiten |
 | Übertragungen begründen und prüfen | E | unknown | - | Mathematik > Grundlagen der Analysis und mathematische Modelle > Funktionen und ihre Darstellung > Zwischen Darstellungen wechseln > Übertragungen begründen und prüfen |
 | Zwischen Tabelle, Graph und Term wechseln | E | unknown | - | Mathematik > Grundlagen der Analysis und mathematische Modelle > Funktionen und ihre Darstellung > Zwischen Darstellungen wechseln > Zwischen Tabelle, Graph und Term wechseln |
-| Analysis-Modelle in Sachzusammenhängen validieren (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_model_validation) | Q4 | Analysis | CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.MODEL_VALIDATION | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) > Analysis-Modelle in Sachzusammenhängen validieren (LK) |
-| Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_differential_context) | Q4 | Analysis | CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.DIFFERENTIAL_CONTEXT | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) > Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) |
-| Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK) (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_integral_context) | Q4 | Analysis | CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.INTEGRAL_CONTEXT | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK) > Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK) |
+| Differentialrechnung in Sachzusammenhängen auswählen und anwenden (canonical_math_sek2_q4_diff_integral_methods_context_validate_by_differential_context) | Q4 | Analysis | CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.DIFFERENTIAL_CONTEXT | Mathematik > Integralrechnung und Differenzialgleichungen > Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II) > Anwendungen der Integralrechnung > Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden > Differentialrechnung in Sachzusammenhängen auswählen und anwenden |
 | Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten (canonical_math_sek1_j9_read_quadratic_axes_and_signs) | J9 | Analysis | CANONICAL.MATH.SEK1.J9.2A2A | Mathematik > Jahrgangsstufe 9 > Quadratische Funktionen beschreiben und anwenden > Quadratische Funktionen und Gleichungen grundlegend untersuchen > Quadratische Funktionen in Darstellungen deuten > Quadratische Funktionen in Graphen, Darstellungen und Parametern deuten > Eigenschaften quadratischer Funktionen aus Graphen ablesen > Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten |
 | Statistische Erhebungen exemplarisch planen und dokumentieren | Q3 | Stochastics | CANONICAL.MATH.SEK2.STATISTICS.SURVEYS.PLAN_AND_DOCUMENT | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Statistik und weitere Wahrscheinlichkeitsverteilungen > Q3.5 Statistik: Datenanalyse und Modellvergleich > Zufallsexperimente statistisch auswerten > Statistische Erhebungen planen, auswerten und kritisch beurteilen > Statistische Erhebungen planen und Daten aufbereiten > Statistische Erhebungen exemplarisch planen und dokumentieren |
 | Empirische und theoretische Wahrscheinlichkeit unterscheiden (canonical_math_q3_distinguish_empirical_and_theoretical_probability) | Q3 | unknown | - | Mathematik > Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik > Stochastik, Tests und Statistik (Sek II) > Wahrscheinlichkeiten und Verteilungen (Sek II) > Grundlegende Begriffe und Methoden der Stochastik > Statistischen Wahrscheinlichkeitsbegriff anwenden > Empirische und theoretische Wahrscheinlichkeit unterscheiden |
@@ -161,7 +159,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Punkte in allgemeinen Raumkonfigurationen spiegeln (LK) (canonical_math_q2_reflect_points_lines_and_planes_generally_lk_points) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.GENERAL_REFLECTION_POINTS_LINES_PLANES_LK.POINTS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Punkte, Geraden und Ebenen allgemein spiegeln (LK) > Punkte in allgemeinen Raumkonfigurationen spiegeln (LK) |
 | Sachprobleme mit Geraden und Ebenen modellieren | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Sachprobleme mit Geraden und Ebenen modellieren |
 | Schnittwinkel über Richtungs- und Normalenvektoren bestimmen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Schnittwinkel über Richtungs- und Normalenvektoren bestimmen |
-| Schnittwinkel zwischen geometrischen Objekten berechnen | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.INTERSECTION_ANGLES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Schnittwinkel zwischen geometrischen Objekten berechnen |
+| Schnittwinkel zweier Geraden berechnen | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.INTERSECTION_ANGLES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Schnittwinkel zweier Geraden berechnen |
 | Vektorprodukt definieren (LK) (canonical_math_q2_define_vector_product_lk) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.VECTOR_PRODUCT_DEFINITION_LK | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Vektorprodukt definieren (LK) |
 | Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK) (canonical_math_q2_apply_vector_product_for_normals_and_areas_lk) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.VECTOR_PRODUCT_NORMALS_AREAS_LK | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK) |
 | Winkel zwischen zwei Ebenen berechnen (canonical_math_q2_compute_angle_between_two_planes) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.PLANE_PLANE_ANGLE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum > Winkel zwischen zwei Ebenen berechnen |
@@ -183,16 +181,15 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Lösungsmengen linearer Gleichungssysteme geometrisch deuten (canonical_math_q2_interpret_solution_sets_of_linear_systems_geometrically) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.LINEAR_SYSTEM_SOLUTION_SETS_GEOMETRY | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Geraden, Ebenen und Gleichungsformen im Raum > Lösungsmengen linearer Gleichungssysteme geometrisch deuten |
 | Parallelogramme und Dreiecke in Parameterform darstellen | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.PARAMETRIC.FIGURES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Geraden, Ebenen und Gleichungsformen im Raum > Parallelogramme und Dreiecke in Parameterform darstellen |
 | Punktprobe bei Geraden und Strecken in Parameterform durchführen (canonical_math_q2_check_point_on_parametric_line_or_segment) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.PARAMETRIC_LINE_POINT_TEST | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Geraden, Ebenen und Gleichungsformen im Raum > Punktprobe bei Geraden und Strecken in Parameterform durchführen |
-| Besondere Lagen von Geraden zu Koordinatenachsen und Koordinatenebenen untersuchen (canonical_math_q2_analyze_special_line_positions_to_axes_and_coordinate_planes) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.SPECIAL_LINE_POSITIONS_AXES_COORDINATE_PLANES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum > Besondere Lagen von Geraden zu Koordinatenachsen und Koordinatenebenen untersuchen |
 | Parameterabhängige Winkel und Lagebeziehungen untersuchen (canonical_math_q2_analyze_parameter_dependent_angles_and_spatial_relations) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.3.PARAMETER_DEPENDENT_ANGLES_RELATIONS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum > Parameterabhängige Winkel und Lagebeziehungen untersuchen |
 | Schnittpunkte von Geraden mit Ebenen berechnen | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.LINE_PLANE_INTERSECTION | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum > Schnittpunkte von Geraden mit Ebenen berechnen |
-| Spezielle Lagen von Geraden und Ebenen begründen (LK) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum > Spezielle Lagen von Geraden und Ebenen begründen (LK) |
 | Schnittgerade zweier Ebenen bestimmen (LK) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lagebeziehungen und Schnittmengen im Raum > Vertiefende Untersuchungen im Raum (LK) > Schnittgerade zweier Ebenen bestimmen (LK) |
 | Abbildungsmatrix aus Basisbildern bestimmen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lineare geometrische Abbildungen und Abbildungsmatrizen > Abbildungsmatrix aus Basisbildern bestimmen |
 | Bildpunkte mit Matrizen berechnen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lineare geometrische Abbildungen und Abbildungsmatrizen > Bildpunkte mit Matrizen berechnen |
 | Drehungen um Koordinatenachsen mit Matrizen darstellen (LK) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lineare geometrische Abbildungen und Abbildungsmatrizen > Drehungen um Koordinatenachsen mit Matrizen darstellen (LK) |
 | Eigene Abbildungen modellieren und interpretieren | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lineare geometrische Abbildungen und Abbildungsmatrizen > Eigene Abbildungen modellieren und interpretieren |
 | Fixpunkte linearer Abbildungen bestimmen (LK) (canonical_math_q2_determine_fixed_points_of_linear_mappings_lk) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.5.FIXED_POINTS_LINEAR_MAPPINGS_LK | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lineare geometrische Abbildungen und Abbildungsmatrizen > Fixpunkte linearer Abbildungen bestimmen (LK) |
+| Flächen- und Volumenskalierung bei zentrischer Streckung begründen (LK) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lineare geometrische Abbildungen und Abbildungsmatrizen > Flächen- und Volumenskalierung bei zentrischer Streckung begründen (LK) |
 | Geometrische Abbildungen als linear erkennen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lineare geometrische Abbildungen und Abbildungsmatrizen > Geometrische Abbildungen als linear erkennen |
 | Geometrische Abbildungen mit Matrizen beschreiben (canonical_math_q2_describe_geometric_mappings_with_matrices) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.5.GEOMETRIC_MAPPINGS_WITH_MATRICES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lineare geometrische Abbildungen und Abbildungsmatrizen > Geometrische Abbildungen mit Matrizen beschreiben |
 | Orthogonale Projektionen als erste lineare Abbildungsintuition deuten (canonical_math_sek2_linear_mappings_projection_intuition) | GLOBAL | LinearAlgebra | CANONICAL.MATH.SEK2.LINEAR_MAPPINGS.PROJECTION_INTUITION | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Lineare geometrische Abbildungen und Abbildungsmatrizen > Orthogonale Projektionen als erste lineare Abbildungsintuition deuten |
@@ -225,8 +222,9 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Eigenschaften ebener Figuren für Flächenberechnungen nutzen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_area_properties) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.AREA_PROPERTIES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften ebener Figuren für Flächenberechnungen untersuchen > Eigenschaften ebener Figuren für Flächenberechnungen nutzen |
 | Kongruenzbeziehungen ebener Figuren untersuchen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity_congruence) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.CONGRUENCE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften ebener Figuren für Flächenberechnungen untersuchen > Kongruenzbeziehungen ebener Figuren untersuchen |
 | Längen- und Winkelbeziehungen einfacher Körper untersuchen (canonical_math_q2_analyze_properties_of_simple_solid_bodies_lengths_angles) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_SIMPLE_SOLID_BODY_PROPERTIES.LENGTHS_ANGLES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften einfacher geometrischer Körper untersuchen > Längen- und Winkelbeziehungen einfacher Körper untersuchen |
+| Parallelität und Orthogonalität einfacher Körper untersuchen (canonical_math_q2_analyze_properties_of_simple_solid_bodies_parallel_orthogonal) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_SIMPLE_SOLID_BODY_PROPERTIES.PARALLEL_ORTHOGONAL | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften einfacher geometrischer Körper untersuchen > Parallelität und Orthogonalität einfacher Körper untersuchen |
 
-Weitere 434 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 435 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Cluster Direct Rationale Pending
 
@@ -293,11 +291,11 @@ Weitere 434 Eintraege stehen in der JSON-Begleitdatei.
 | Komplexe Zahlen algebraisch multiplizieren und dividieren | Q4 | unknown | CANONICAL.MATH.SEK2.Q4.3.MULTIPLY_AND_DIVIDE_COMPLEX_NUMBERS_ALGEBRAICALLY | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Komplexe Zahlen > Komplexe Zahlen algebraisch multiplizieren und dividieren |
 | Zahlbereichserweiterung zu komplexen Zahlen begründen (LK) (canonical_math_sek2_q4_complex_extension_necessity_by) | Q4 | Algebra | CANONICAL.MATH.SEK2.Q4.COMPLEX_EXTENSION_BY | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Komplexe Zahlen > Zahlbereichserweiterung zu komplexen Zahlen begründen (LK) |
 
-Weitere 200 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 202 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/public/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-09-24T18:54:32.426Z
+- Runtime index generated: 2026-09-28T02:16:04.479Z
 

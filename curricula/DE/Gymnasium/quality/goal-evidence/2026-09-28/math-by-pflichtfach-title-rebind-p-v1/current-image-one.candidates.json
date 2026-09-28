@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewedAt": "2026-09-28T00:37:10Z",
+  "reviewer": "OpenAI Codex current-goal and case review; AI candidate only",
+  "reviewId": "canonical-math-by-pflichtfach-title-rebind-image-one-p-20260928-v1",
+  "goals": [
+    {
+      "goalId": "b431148b-526c-4bde-b04b-48d23101d0d3",
+      "reason": "Der irreführende LK-Zusatz wurde aus dem BY-Pflichtfach-Titel entfernt; Zielkern und Voraussetzungen blieben gleich. Das bestehende bildgebundene Profil wurde erneut geprüft: Bin(100;0,4) mit np=40 und n(1−p)=60 ist für eine Normalnäherung plausibel, Bin(20;0,001) mit np=0,02 nicht. Diese Parameter und Ergebnisse sind nicht aus dem aktuellen Bild mit Bin(100;0,5) und Bin(100;0,01) ablesbar. Aktueller AI-Kandidat; keine menschliche Freigabe.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "model-structure",
+            "essentialUnderstandingDe": "Viele vergleichbare, hinreichend unabhängige Beiträge oder ein Binomialmodell mit ausreichend großen Werten von np und n(1−p) können eine annähernd symmetrische Glockenform plausibel machen; die bloße Zahl der Versuche genügt nicht.",
+            "essentialUnderstandingEn": "Many comparable, sufficiently independent contributions or a binomial model with sufficiently large np and n(1−p) can make an approximately symmetric bell shape plausible; a large trial count alone is insufficient.",
+            "observablePerformanceDe": "Die lernende Person erkennt in einer neuen Situation die relevanten Modellannahmen und erläutert, weshalb eine Normalnäherung plausibel sein kann, ohne eine Wahrscheinlichkeit zu berechnen.",
+            "observablePerformanceEn": "The learner identifies relevant model assumptions in a new situation and explains why a normal approximation may be plausible, without calculating a probability."
+          },
+          {
+            "id": "counterevidence",
+            "essentialUnderstandingDe": "Seltene Treffer, starke Schiefe, eine nahe Randlage oder ausgeprägte Abhängigkeiten sprechen gegen die unkritische Normalnäherung; eine bekannte Glockenform darf nicht allein aus n abgeleitet werden.",
+            "essentialUnderstandingEn": "Rare hits, strong skew, a nearby boundary, or pronounced dependence argue against an uncritical normal approximation; a bell shape cannot be inferred from n alone.",
+            "observablePerformanceDe": "Die lernende Person unterscheidet einen plausiblen von einem ungeeigneten Fall und nennt das entscheidende Gegenargument aus Form, Rand oder Abhängigkeit.",
+            "observablePerformanceEn": "The learner distinguishes a plausible from an unsuitable case and gives the decisive counterargument from shape, boundary, or dependence."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "model-structure",
+            "counterevidence"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "geeignete symmetrische Binomialzahl gegenüber seltenem Ereignis mit stark schiefer Verteilung",
+            "textEn": "suitable symmetric-ish binomial count versus rare-event strongly skewed count"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "suitable-binomial",
+            "taskDemandDe": "Bei X~Bin(100;0,4): Ist eine Normalnäherung der Trefferzahl plausibel? Begründe allein anhand des Entstehungsmodells und der zu erwartenden Form, ohne Wahrscheinlichkeiten oder Flächen zu berechnen.",
+            "taskDemandEn": "For X~Bin(100,0.4), is a normal approximation of the hit count plausible? Justify from the generating model and expected shape only, without calculating probabilities or areas.",
+            "expectedPerformanceDe": "Bei unabhängigen Bernoulli-Versuchen sind np=40 und n(1−p)=60 beide groß; die Verteilung liegt nicht dicht an einem Rand und ist nicht extrem schief. Eine annähernde Glockenform ist plausibel, aber nicht exakt normalverteilt.",
+            "expectedPerformanceEn": "With independent Bernoulli trials, np=40 and n(1−p)=60 are both large; the distribution is not near a boundary or extremely skewed. An approximate bell shape is plausible, but the count is not exactly normally distributed.",
+            "understandingFocusDe": "Normalnäherung als begründete Erkennung einer Situation, nicht als Intervall- oder Stetigkeitskorrekturrechnung.",
+            "understandingFocusEn": "Normal approximation as justified recognition of a situation, not an interval or continuity-correction calculation."
+          },
+          {
+            "id": "rare",
+            "taskDemandDe": "Bei 20 unabhängigen Versuchen tritt ein Ereignis je mit p=0,001 auf. Prüfe, ob die Trefferzahl durch eine Normalverteilung brauchbar angenähert wird, und begründe.",
+            "taskDemandEn": "In 20 independent trials an event occurs with p=0.001 each time. Assess whether the hit count is usefully approximated by a normal distribution, with reasons.",
+            "expectedPerformanceDe": "np=0,02 ist sehr klein; fast alle Ergebnisse sind 0, die Verteilung stark rechtsschief und am Rand 0 abgeschnitten. Eine symmetrische Normalnäherung ist hier nicht sachgerecht.",
+            "expectedPerformanceEn": "np=0.02 is very small; nearly all results are 0, the distribution is highly right-skewed and bounded at 0. A symmetric normal approximation is unsuitable here.",
+            "understandingFocusDe": "Gegenbeispiel zur bloßen n-Regel: seltene Treffer und Randlage verhindern die Glockenform.",
+            "understandingFocusEn": "Counterexample to an n-only rule: rare hits and a boundary prevent a bell shape."
+          }
+        ]
+      }
+    }
+  ]
+}

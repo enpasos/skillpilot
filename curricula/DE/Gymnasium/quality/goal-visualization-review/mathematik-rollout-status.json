@@ -1,50 +1,53 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-24T13:31:26.207Z",
+  "generatedAt": "2026-09-28T03:10:24.267Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "reviewDirPath": "curricula/DE/Gymnasium/quality/goal-visualization-review",
     "currentResumeFilePath": "",
-    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17"
+    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17",
+    "qaLedgerPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json"
   },
   "summary": {
-    "totalGoals": 1192,
-    "atomicGoalsInScope": 797,
-    "goalsWithPrimaryVisualization": 758,
-    "coveragePercent": 95.1,
-    "goalsAccountedForByAssetOrDeferred": 797,
+    "totalGoals": 1203,
+    "atomicGoalsInScope": 799,
+    "goalsWithPrimaryVisualization": 799,
+    "coveragePercent": 100,
+    "goalsAccountedForByAssetOrDeferred": 799,
     "accountedCoveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "accepted": 5,
+      "accepted": 4,
       "ai-reviewed": 6,
-      "approved": 16,
-      "pilot": 731
+      "approved": 15,
+      "pilot": 774
     },
     "linkedVisualizationReviewStatuses": {
-      "accepted": 5,
+      "accepted": 4,
       "ai-reviewed": 6,
-      "approved": 16,
-      "pilot": 731
+      "approved": 15,
+      "pilot": 774
     },
-    "reviewLedgerFiles": 249,
+    "reviewLedgerFiles": 266,
     "reviewDecisionCounts": {
       "accepted": 2,
       "accepted_after_regeneration": 8,
       "accepted_after_user_issue_correction": 8,
       "accepted_ai": 2,
       "accepted_context_visualization": 2,
+      "accepted_current_text_retained": 2,
       "accepted_documented_repo_native_fallback": 3,
       "accepted_existing_asset": 11,
       "accepted_pilot": 606,
+      "accepted_pilot_after_exact_png_review": 2,
       "accepted_pilot_after_fresh_ai_review": 96,
       "accepted_pilot_after_fresh_ai_review_correction": 1,
-      "accepted_pilot_after_original_resolution_ai_review": 16,
+      "accepted_pilot_after_original_resolution_ai_review": 53,
       "accepted_pilot_after_provider_retry": 2,
       "accepted_pilot_after_reference_guided_regeneration": 1,
-      "accepted_pilot_after_regeneration": 172,
+      "accepted_pilot_after_regeneration": 174,
       "accepted_pilot_after_resume": 5,
       "accepted_pilot_after_second_attempt": 13,
       "accepted_pilot_after_second_regeneration": 15,
@@ -54,6 +57,7 @@
       "accepted_pilot_after_third_attempt": 5,
       "accepted_pilot_after_third_regeneration": 6,
       "accepted_pilot_after_user_review_correction": 47,
+      "accepted_pilot_display_with_known_defect": 1,
       "accepted_replacement": 4,
       "accepted_retroactive_nano_banana": 14,
       "accepted_reuse_after_current_visual_review": 2,
@@ -64,7 +68,7 @@
       "blocked_provider_quota": 5,
       "correction_open_provider_credit_exhausted": 4,
       "deferred_provider_limitation": 92,
-      "deferred_quality_review": 35,
+      "deferred_quality_review": 36,
       "not_attempted_after_quota_block": 4,
       "rejected_after_review_regenerated": 7,
       "rejected_after_second_regeneration": 1,
@@ -80,299 +84,25 @@
       "rejected_regenerated": 80,
       "rejected_removed": 1
     },
-    "openProviderDeferredGoals": 9,
-    "openQualityDeferredGoals": 30,
+    "openProviderDeferredGoals": 0,
+    "openQualityDeferredGoals": 0,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 2,
     "regularUnlinkedGoals": 0,
     "coverageGatePassed": true,
-    "linkedWithoutAcceptedReview": 47,
+    "linkedWithoutAcceptedReview": 0,
+    "linkedWithCurrentAiQaWithoutAcceptedLedgerReview": 51,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-zz-prompt20-current-deferral-2026-09-24.md",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-zzzzz-ln-existing-keep-20260927-v1.md",
     "latestLedgerStatus": null,
     "resumeFile": "",
     "promptAppendDir": "tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17"
   },
   "qualityQueues": {
-    "openProviderDeferred": [
-      {
-        "batch": "194",
-        "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
-        "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK)",
-        "decision": "deferred_provider_limitation",
-        "notes": "All three candidates corrected the maximum from 41 m to 21 m, but none placed h(0)=h(4)=1 consistently on its explicit vertical scale. The active link and canonical, public and backend asset copies were removed."
-      },
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "d051857c-0707-544f-ae7a-f20690d182b2",
-        "title": "Höhen in Dreiecken konstruieren",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Höhen in Dreiecken konstruieren“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "9de07e13-6a5f-5b49-a6d4-0decefb95784",
-        "title": "Inverse Fragestellungen zu Binomialverteilungen lösen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Inverse Fragestellungen zu Binomialverteilungen lösen“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
-        "batch": "mathematik-structural-split-deferred-2026-08-16",
-        "goalId": "c406d5a0-e81d-5ce9-b535-6512a38798de",
-        "title": "Inverse Fragestellungen zur Normalverteilung lösen (LK)",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für „Inverse Fragestellungen zur Normalverteilung lösen (LK)“ ist noch kein einzeln fachlich und visuell freigegebenes Ersatzbild vorhanden; kein altes Clusterbild wird überdehnt."
-      },
-      {
-        "batch": "197",
-        "goalId": "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
-        "title": "Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Three produced candidates remained visibly inconsistent: eight instead of ten listed pairs, then six balls for a five-element ground set, then malformed pair labels with duplicated numerals. The active link and all deployed image copies were removed."
-      },
-      {
-        "batch": "197",
-        "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
-        "title": "Kombinationen ohne Zurücklegen mit Fakultäten berechnen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Attempts 1 and 2 rendered the wrong double-factorial denominator `(n−k)!!`; the final fresh candidate corrected the calculation but visibly placed six balls in the ground-set urn labelled `n = 5`. The active link and all deployed image copies were removed."
-      },
-      {
-        "batch": "205",
-        "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
-        "title": "Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen",
-        "decision": "deferred_provider_limitation",
-        "notes": "Drei gezielte Versuche erzeugen keine durchgängig konsistent beschrifteten kongruenten, vergrößerten und verkleinerten Dreiecke. Ein fachlich korrektes Asset ist aus dieser Provider-Runde nicht importierbar. The active link and canonical, public, and backend image copies were removed."
-      },
-      {
-        "batch": "205",
-        "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
-        "title": "Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell)",
-        "decision": "deferred_provider_limitation",
-        "notes": "Drei gezielte Versuche vertauschen Bezeichner oder mischen deutsche Dezimalkommas mit Dezimalpunkten. Kein vollständig konsistenter Kandidat ist importierbar. The active link and canonical, public, and backend image copies were removed."
-      },
-      {
-        "batch": "mathematik-zz-prompt20-current-deferral-2026-09-24",
-        "goalId": "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c",
-        "title": "Transformationen von Logarithmusgraphen deuten (LK)",
-        "decision": "deferred_provider_limitation",
-        "notes": "Für Prompt 20 liegt weiterhin kein eigenständiges, fachlich geeignetes PNG vor; die falsch kopierte Prompt-19-Datei wird nicht eingebunden."
-      }
-    ],
-    "openQualityDeferred": [
-      {
-        "batch": "mathematik-z-astra-image-sight-20260924-v1",
-        "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
-        "title": "Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK)",
-        "decision": "deferred_quality_review",
-        "notes": "The requested reflected pair (ln 4, 4) and (4, ln 4) and its guides are absent after the specifically reported misplaced marker; the correction target is not met."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "87372f49-c832-50f6-921f-ec9a6804d58a",
-        "title": "Eine heuristische Strategie anwenden",
-        "decision": "deferred_quality_review",
-        "notes": "BILD-HOLD: Die Tabelle testet nur x=8 bis 12 und nennt selbst lediglich das groesste getestete Produkt. Trotzdem behauptet das Bild ohne allgemeinen Beweis ein globales Maximum und 'Ziel erreicht'. Eine heuristische Vermutung darf nicht als bewiesenes Maximum ausgegeben werden."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
-        "title": "Extremstellen parameterabhängig untersuchen",
-        "decision": "deferred_quality_review",
-        "notes": "HOLD für den unveränderten Asset-Hash: Im Beispiel a=2 nennt die Tabelle T(2&#124;-4), aber der kleine Graph zeichnet den Scheitel auf die x-Achse und beschriftet ihn 2(-4) statt mit einer korrekten Koordinate. Die parameterabhängige Lage des Tiefpunkts ist Kern des Lernziels; die visuelle Aussage widerspricht der richtigen Rechnung. Original-JPG visuell geprüft und unabhängig in D/P beanstandet. Frühere ChatGPT-Prüfnotizen bleiben als Historie erhalten, begründen aber keine aktuelle Freigabe."
-      },
-      {
-        "batch": "mathematik-z-astra-image-sight-20260924-v1",
-        "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
-        "title": "Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen",
-        "decision": "deferred_quality_review",
-        "notes": "Point A is drawn left of the x = -3 grid line although its label states A(-3,-2); the other labelled vertices follow the grid."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
-        "title": "Grenzen der Werkzeugnutzung benennen",
-        "decision": "deferred_quality_review",
-        "notes": "BILD-HOLD: Im rechten Panel sind π/6 und 5π/6 auf der Zahlengeraden [0, π] nicht an ihren proportionalen Positionen eingezeichnet. Die Zahlenwerte im Text sind richtig, die grafische Bindung ist irrefuehrend."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
-        "title": "Grundrechenarten in der Gaußschen Zahlenebene deuten",
-        "decision": "deferred_quality_review",
-        "notes": "HOLD after original-pixel review of exact asset SHA: the subtraction panel labels z-u=1-i for z=2+i and u=1+2i, but its green arrow/endpoint is drawn below Im=-1, between -1 and -2. The equation is correct, the geometric depiction is not. Previous approval is superseded; do not count V until corrected and reviewed."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "93fc4fbb-72f6-549b-b97a-a48aecb1534d",
-        "title": "Hand- und Tool-Verfahren kombinieren",
-        "decision": "deferred_quality_review",
-        "notes": "BILD-HOLD: Die mit y=2x+3 beschriftete blaue Gerade verlaeuft im Graphen durch den Ursprung statt die y-Achse bei 3 zu schneiden. Die handschriftliche Rechnung und der markierte Schnittpunkt (4,11) sind richtig, die Graphenbindung nicht."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "bd637a72-6609-54f5-bb33-8a9e898bf7a0",
-        "title": "Heuristik auswählen und begründen",
-        "decision": "deferred_quality_review",
-        "notes": "HOLD: The question merely asks which number fits; no concrete target value or condition is shown. The visible task cannot substantiate the selected backward-working heuristic. Earlier approval of this exact asset is revoked pending targeted correction."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "27bdc580-ba17-5399-bf02-48f354846d1d",
-        "title": "Heuristischen Stetigkeitsbegriff zum Argumentieren nutzen",
-        "decision": "deferred_quality_review",
-        "notes": "BILD-HOLD: f(1)=-1 und f(2)=2 sind als definierte Funktionswerte beschriftet, die entsprechenden Stellen im Graphen aber mit offenen statt ausgefuellten Kreisen markiert. Fuer die Zwischenwertidee ist diese Inkonsistenz besonders irrefuehrend."
-      },
-      {
-        "batch": "mathematik-z-astra-image-sight-20260924-v1",
-        "goalId": "ae483d98-54e0-5985-96d2-fc1351d22e4f",
-        "title": "Hypothesentests bei verändertem Stichprobenumfang variieren",
-        "decision": "deferred_quality_review",
-        "notes": "For n = 50 and p1 = 0.6, the orange distribution peaks to the right of the K >= 32 cutoff; its mean must be K = 30, to the left of that cutoff."
-      },
-      {
-        "batch": "mathematik-z-astra-image-sight-20260924-v1",
-        "goalId": "164921f6-3bf7-5efc-a438-ea4759dca9ef",
-        "title": "Kettenlinien als Funktionsmodelle untersuchen (LK)",
-        "decision": "deferred_quality_review",
-        "notes": "A hanging chain and its graph are twice called a Katenoide; the correct curve is a Kettenlinie, while a catenoid is a surface."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
-        "title": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
-        "decision": "deferred_quality_review",
-        "notes": "HOLD after original-pixel review of exact asset SHA: the labeled point z=3+4i uses unequal plotted x/y scales (approximately 96 versus 71 pixels per unit), so its visible vector and marked polar angle are about 45 degrees while the text asserts phi=arctan(4/3) about 53.1 degrees. The polar-angle depiction is misleading despite correct coordinate and formula labels. Previous approval is superseded; correct and review the visual before V."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "9b339361-7719-573d-a913-432246c502ee",
-        "title": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
-        "decision": "deferred_quality_review",
-        "notes": "HOLD after original-pixel review of exact asset SHA: the right-hand complex-plane graphic places the red point labeled c=0 roughly 80 pixels to the right of the drawn Im(c) axis rather than at the axes intersection. The iteration values are correct but the coordinate placement is not. Previous approval is superseded; correct and review the visual before V."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "909d8b16-5156-528b-a300-d9aee5405ba0",
-        "title": "Modell gezielt anpassen",
-        "decision": "deferred_quality_review",
-        "notes": "HOLD: Printed price change says ab dem 20. Getränk despite formula changing only after 20 (from drink 21); the drawn new slope is far below the mathematically required 90% of the prior slope, and graph annotation/lettering are defective. Corrected candidate-v1 was independently held for the remaining graph defect. Earlier approval of this exact asset is revoked."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "e02b994f-376d-5a8e-a14c-c4acacae57cf",
-        "title": "Nebenbedingungen berücksichtigen",
-        "decision": "deferred_quality_review",
-        "notes": "HOLD: The picture crosses out the mathematically valid lower bound b≥73/30≈2.43 and depicts a fourth bus as rejected although b=4 is feasible. Stray glyphs further impair meaning. Earlier approval of this exact asset is revoked pending targeted correction."
-      },
-      {
-        "batch": "mathematik-z-astra-image-sight-20260924-v1",
-        "goalId": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
-        "title": "Newton-Verfahren zur Nullstellennäherung anwenden",
-        "decision": "deferred_quality_review",
-        "notes": "The positions marked x1 = 1.5, x2 approx 1.4167 and sqrt(2) do not use the plotted common x scale; the root marker is left of the curve crossing."
-      },
-      {
-        "batch": "mathematik-2231-right-angle-hold-20260924-v1",
-        "goalId": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
-        "title": "Parallele und senkrechte Lagebeziehungen erkennen und begründen",
-        "decision": "deferred_quality_review",
-        "notes": "Die zwei mit 90° markierten Geradenpaare sind sichtbar nicht orthogonal; unten etwa 79°, oben etwa 85°, deshalb keine fachliche Bildfreigabe."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "74d29d0c-80b3-4d46-a5f5-3c2f609e8483",
-        "title": "Pyramiden und Kegel darstellen, Netze nutzen und Fachbegriffe verwenden",
-        "decision": "deferred_quality_review",
-        "notes": "HOLD für den unveränderten Asset-Hash: Im als Kegelnetz bezeichneten Teil hat die grüne Mantelfläche zwei gekrümmte Begrenzungen und die Form einer Linse. Ein Kegelnetz benötigt einen Kreissektor mit zwei geraden Radien; das gezeigte Netz ist nicht zu einem Kegel faltbar. Original-JPG visuell geprüft. Frühere ChatGPT-Prüfnotizen bleiben als Historie erhalten, begründen aber keine aktuelle Freigabe."
-      },
-      {
-        "batch": "mathematik-m7-quadratic-completion-hold-2026-09-23",
-        "goalId": "9023226b-fc17-412b-807c-2bb45cd551d5",
-        "title": "Quadratische Gleichungen lösen",
-        "decision": "deferred_quality_review",
-        "notes": "BILD-HOLD: Im Feld „Quadratische Ergänzung“ zeigt das grüne x²-Quadrat oben einen Streifen der Breite 1 und rechts drei Streifen der Breite 1; die eingezeichnete Ecke ist 1 × 3. Die gezeigte Flächenzerlegung ergänzt damit zu (x + 1)(x + 3) = x² + 4x + 3 statt zum daneben behaupteten Quadrat (x + 2)² = x² + 4x + 4. Die algebraischen Formeln sind korrekt, das zentrale Bild lehrt jedoch eine falsche geometrische Begründung. Frühere Reviews prüften Formel und Untertitel, übersahen diese Zeichnung."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "1b70498a-62a0-5a84-99dd-476b8af68da6",
-        "title": "Realsituationen mit linearen und quadratischen Funktionen modellieren",
-        "decision": "deferred_quality_review",
-        "notes": "BILD-HOLD for exact asset SHA-256 1a67ba07d39e9730f2e100bd87d1761ef1d44daf70796529603238c779667b33: The lower panel labels its situation 'Ball fällt' (a ball falling from a building) and c as the start height, but the displayed height-time parabola starts at h(0)=0, initially rises to an interior maximum, and only then falls. That graph depicts an upward throw from ground level, not the illustrated simple fall from an elevated start. The mismatch misleads model selection and contextual interpretation required by the current goal. Keep existing asset unchanged pending targeted correction and new exact-image review; historical ChatGPT triage and human fields remain untouched."
-      },
-      {
-        "batch": "mathematik-18be-q2-angle-hold-20260924-v1",
-        "goalId": "18be713b-7d90-4f01-b60a-5582ac4df0e8",
-        "title": "Schnittwinkel zwischen geometrischen Objekten berechnen",
-        "decision": "deferred_quality_review",
-        "notes": "Der mit 45° beschriftete Bogen liegt zwischen y-Achse und h statt zwischen g und h; die Richtungen widersprechen den Vektoren."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
-        "title": "Spatprodukt korrekt definieren und deuten",
-        "decision": "deferred_quality_review",
-        "notes": "BILD-HOLD for exact JPG SHA 327da301d87ab0d9865256e8357515f9ff840cde1a2839dda58c134249e0c3c6: The drawn x-axis runs diagonally down-left and the y-axis runs right, but a=(2,0,0) is drawn right and b=(0,3,0) diagonally down-left. The vector coordinate labels contradict the axes despite correct scalar-product arithmetic. Prior AI approval is superseded."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
-        "title": "Symmetrien einfacher Körper untersuchen",
-        "decision": "deferred_quality_review",
-        "notes": "BILD-HOLD for exact JPG SHA 328512490536b62a9c9dc87f1c21d91fc8de69ccc6fbea9b04b332bba65de6bb: The right-hand technical label visibly says 'Vertikale Symmetrieebee' instead of 'Symmetrieebene'. This misspelling is in a central fachsprachliche label for the goal. Geometry remains plausible, but the image needs a corrected label and fresh review. Prior AI approval is superseded."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
-        "title": "Teilungsverhältnisse bei Volumina untersuchen",
-        "decision": "deferred_quality_review",
-        "notes": "HOLD für den unveränderten Asset-Hash: Die beiden orangefarbenen Frontflächen sind jeweils mit G=12 cm² beschriftet und gleich hoch gezeichnet, tragen aber unter sich verschiedene Breiten 3 cm und 9 cm. Diese sichtbaren Flächen können daher nicht beide G=12 cm² haben; die für V=G·h gemeinte gemeinsame Querschnittsfläche ist nicht korrekt markiert. Die Tabellenrechnung allein ist richtig, das räumliche Bild widerspricht ihr. Original-JPG visuell geprüft. Frühere ChatGPT-Prüfnotizen bleiben als Historie erhalten, begründen aber keine aktuelle Freigabe."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "e33e75e3-eae5-5a09-862f-d1a11176373f",
-        "title": "Transformationsscharen bekannter Funktionsklassen untersuchen",
-        "decision": "deferred_quality_review",
-        "notes": "HOLD für den unveränderten Asset-Hash: Der rote Scheitel S(-1&#124;0) liegt im Bild deutlich links vom eigenen x=-1-Achsenstrich; die grüne S(2&#124;0)-Position passt ebenfalls nicht zur gezeigten Einheitenskalierung. Die zentrale Parameter-Graph-Beziehung ist damit im Bild widersprüchlich. Original-JPG visuell geprüft und unabhängig in P- und D-Runde beanstandet. Frühere ChatGPT-Prüfnotizen bleiben als Historie erhalten, begründen aber keine aktuelle Freigabe."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "7bb3c312-f714-55e6-a31f-f31605a93760",
-        "title": "Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK)",
-        "decision": "deferred_quality_review",
-        "notes": "Freigabe für genau diesen JPG-Hash widerrufen: Die gezeichnete Strecke A→B ist horizontal, obwohl B−A=(2,0,0) in Richtung der im Bild schräg nach links unten laufenden x-Achse zeigen müsste. Rechenwerte allein reichen für die fachliche Bildfreigabe nicht. Korrigiertes Bild und erneute Sichtprüfung erforderlich."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "a594dec0-3977-5c43-9432-d4254a7f6130",
-        "title": "Volumen von Spaten und Tetraedern mit Spatprodukt berechnen",
-        "decision": "deferred_quality_review",
-        "notes": "BILD-HOLD for exact JPG SHA 3a58326f99fa6bc7daa2f8c05b09f807b53e2de29fde14b353f31b3a45e00477: In both the Spat and Tetraeder panels, the drawn x-axis runs diagonally down-left and the y-axis runs right, but a=(2,0,0) points right and b=(0,3,0) points diagonally down-left. The numeric products 24 and 4 are correct; the geometry contradicts the coordinate labels. Prior AI approval is superseded."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
-        "title": "Zählverfahren und kombinatorische Überlegungen für Wahrscheinlichkeiten nutzen",
-        "decision": "deferred_quality_review",
-        "notes": "HOLD für den unveränderten Asset-Hash: Die Rechnung P(gleiche Farbe)=10/36 ist korrekt, doch direkt daneben zeigt ein grüner Haken eine gezogene rote und blaue Kugel als angeblich günstiges Paar. Rot-blau erfüllt das Ereignis gleiche Farbe gerade nicht. Original-JPG visuell geprüft; unabhängige D-Runde B meldete denselben Widerspruch. Frühere ChatGPT-Prüfnotizen bleiben als Historie erhalten, begründen aber keine aktuelle Freigabe."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
-        "title": "Zufallsexperimente mit Software simulieren",
-        "decision": "deferred_quality_review",
-        "notes": "BILD-HOLD: Die Tabelle nennt fuer die Wuerfelergebnisse 1..6 die Haeufigkeiten 166,171,160,170,166,167 bei n=1000. Das als daraus abgeleitet bezeichnete Balkendiagramm macht jedoch 6 zum hoechsten und 3 deutlich niedriger; 2 muesste mit 0,171 am hoechsten sein. Tabelle und Diagramm sind fachlich nicht konsistent."
-      },
-      {
-        "batch": "mathematik-m7-quality-holds-2026-09-23",
-        "goalId": "21fa0c22-976e-59b3-a871-899f0c0177f3",
-        "title": "Zufallsexperimente und Ereignisse aus Termen formulieren",
-        "decision": "deferred_quality_review",
-        "notes": "BILD-HOLD: Der Wahrscheinlichkeitsterm (4/10)·(3/9)=2/15 ist korrekt, aber die in den Urnen sichtbar gezeichneten roten Kugeln und die bereits in den Haenden gehaltenen Kugeln bilden die behaupteten Bestandszahlen vor bzw. nach dem ersten Zug nicht eindeutig konsistent ab. Bei diesem Term-zu-Experiment-Ziel ist genau diese Mengenbindung entscheidend."
-      }
-    ],
+    "openProviderDeferred": [],
+    "openQualityDeferred": [],
     "openProviderQuota": [],
     "rejectedNotLinked": [
       {
@@ -737,335 +467,415 @@
     ]
   },
   "consistency": {
-    "linkedWithoutAcceptedReview": [
+    "linkedWithoutAcceptedReview": [],
+    "linkedWithCurrentAiQaWithoutAcceptedLedgerReview": [
       {
         "goalId": "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
         "title": "Achsenschnittpunkte und Vorzeichen quadratischer Funktionen aus Graphen deuten",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/6c26a00a-ad1e-59cc-93e2-a38e1683665c/6c26a00a-ad1e-59cc-93e2-a38e1683665c.jpg",
-        "latestDecision": null
+        "latestDecision": null,
+        "qaAssetSha256": "sha256:8697ead37c9f52e0dbf5474a6a2f964fb249118e0f52b3d29134dbf660d57a23"
       },
       {
         "goalId": "74dc4b0d-a167-564c-bdc1-5cf510aee280",
         "title": "Algebraische Terme ausmultiplizieren",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/74dc4b0d-a167-564c-bdc1-5cf510aee280/74dc4b0d-a167-564c-bdc1-5cf510aee280.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:a03a52c3259669e99836770640c2e19ad1e77a7b15a119f5a167ba10c5c539fd"
       },
       {
         "goalId": "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
         "title": "Algebraische Terme faktorisieren",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/96c55cb6-d2c7-5145-8567-b5f570f55a8a/96c55cb6-d2c7-5145-8567-b5f570f55a8a.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:ad705c2b94b1e59d06d82d6834e4fcef28fb58bcd0750afb75c4a1109e2f920b"
       },
       {
         "goalId": "e2bf726a-126c-5c66-9fbb-6e04c129bb0f",
         "title": "Äquivalenz durch Begründung oder Gegenbeispiel prüfen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/e2bf726a-126c-5c66-9fbb-6e04c129bb0f/e2bf726a-126c-5c66-9fbb-6e04c129bb0f.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:8a49fe5712e844c33ec5f3fdb15cf426c43be60d7008b725650f97d748dba8b5"
       },
       {
         "goalId": "630bb145-9a3f-5c88-ab5a-fb69a9bb76e4",
         "title": "Arithmetische Reihen untersuchen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/630bb145-9a3f-5c88-ab5a-fb69a9bb76e4/630bb145-9a3f-5c88-ab5a-fb69a9bb76e4.jpg",
-        "latestDecision": null
+        "latestDecision": null,
+        "qaAssetSha256": "sha256:ac96aff6ac27effb52d076b2dcf27897fff22f2390ea6e9bf569640f189c1223"
       },
       {
         "goalId": "308f19e2-e202-5300-a2fa-1eaa717f4e73",
         "title": "Asymptotisches Verhalten exponentieller Funktionen deuten",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/308f19e2-e202-5300-a2fa-1eaa717f4e73/308f19e2-e202-5300-a2fa-1eaa717f4e73.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:3f4b1c6120b0ab626c5b4f8e384fc8518cef7e29dd02a13c5560fcd141d4f9df"
+      },
+      {
+        "goalId": "21676dae-8619-59d1-89e3-a35bb2297e2c",
+        "title": "Aus dem Funktionsgraphen einen Stammfunktionsgraphen skizzieren",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/21676dae-8619-59d1-89e3-a35bb2297e2c/21676dae-8619-59d1-89e3-a35bb2297e2c.png",
+        "latestDecision": null,
+        "qaAssetSha256": "sha256:c0a71332b8ed8877f8e87ae7898007aeb29e4436680bf804b2e17692051d773a"
+      },
+      {
+        "goalId": "85eda551-cfc1-52c6-a252-4c7394c1f7e6",
+        "title": "Aus einem Stammfunktionsgraphen den Funktionsgraphen skizzieren",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/85eda551-cfc1-52c6-a252-4c7394c1f7e6/85eda551-cfc1-52c6-a252-4c7394c1f7e6.png",
+        "latestDecision": null,
+        "qaAssetSha256": "sha256:3e76f9f36d4f0b9e9187ee2f85e08c0e45b9300bd143ff2c29568d5c1dd1aedb"
       },
       {
         "goalId": "4ae9e316-509f-517d-bd94-a165817af24f",
         "title": "Begrenzte Wachstums- und Zerfallsprozesse aus Daten modellieren",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/4ae9e316-509f-517d-bd94-a165817af24f/4ae9e316-509f-517d-bd94-a165817af24f.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:21963bd9c0e8c10e257db5b84786a64cd97c5c781f81bf54beb63f0be0b57eff"
       },
       {
         "goalId": "e495fa38-b198-5280-a405-9e41cafd6d17",
         "title": "Bernoulli-Experimente und -Ketten identifizieren und parametrisieren",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/e495fa38-b198-5280-a405-9e41cafd6d17/e495fa38-b198-5280-a405-9e41cafd6d17.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:165fb00a213aa4f21401a2e4a121c1121cce7dc27ed28ab047c932520e01152b"
       },
       {
         "goalId": "aa00edfa-cf8d-500e-994f-7e33a5ebd045",
         "title": "Binomialwahrscheinlichkeiten bestimmen und deuten",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/aa00edfa-cf8d-500e-994f-7e33a5ebd045/aa00edfa-cf8d-500e-994f-7e33a5ebd045.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:58cd2f73b87e66856188dc09c03562dbd8cb6186174e3745014e6162f6dfb837"
       },
       {
         "goalId": "b7cc2fc4-c695-5a97-93b0-3a619c632ca8",
         "title": "Das empirische Gesetz der großen Zahlen erläutern",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/b7cc2fc4-c695-5a97-93b0-3a619c632ca8/b7cc2fc4-c695-5a97-93b0-3a619c632ca8.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:6ab1febb836104ecfeec6ffb0e3201705028b613687dec5d0f6a80758e230c41"
       },
       {
         "goalId": "9b6f4d7d-a804-5666-b7ea-85bb3c73da4a",
         "title": "Die Formel für Binomialwahrscheinlichkeiten an einem Beispiel begründen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/9b6f4d7d-a804-5666-b7ea-85bb3c73da4a/9b6f4d7d-a804-5666-b7ea-85bb3c73da4a.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:cfc3330cbdeee3ec592a19662174cb7f4f80af70cb3c857c185baf2a5015ada0"
       },
       {
         "goalId": "a7778885-17aa-5eeb-a6a7-fbf4c8d55a16",
         "title": "Die Verteilungsfunktion der Normalverteilung als Integralfunktion deuten (LK)",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/a7778885-17aa-5eeb-a6a7-fbf4c8d55a16/a7778885-17aa-5eeb-a6a7-fbf4c8d55a16.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:0aab1d68fb4f8e45fa13525b19a836fb00a2efa921822f397ac7f32c7144ef94"
       },
       {
         "goalId": "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
         "title": "Die Zahlbereichserweiterung zu komplexen Zahlen mathematisch begründen (LK)",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0/a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:ac42af07cb94d6131e20ee4d3de6a7011661b4a19f21c536615692372486f70b"
       },
       {
         "goalId": "55d0474b-b82c-59b6-a62a-b6a0a34d9c4b",
         "title": "Diskrete und stetige Zufallsgrößen unterscheiden (LK)",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/55d0474b-b82c-59b6-a62a-b6a0a34d9c4b/55d0474b-b82c-59b6-a62a-b6a0a34d9c4b.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:e4aa9210b0831521cbc1388ec9bf48e9fd4fee4658e3c6bde4e980e9e1491102"
       },
       {
         "goalId": "3017e774-8d9f-5129-828f-7684db5afc1e",
         "title": "Dreiecke aus Kongruenzangaben konstruieren",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/3017e774-8d9f-5129-828f-7684db5afc1e/3017e774-8d9f-5129-828f-7684db5afc1e.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:90cc10eb382f715b7cfc217685d2ee8c86eef357d7d651b7d71ef31877799a71"
       },
       {
         "goalId": "570d5931-f126-5bb4-8b7f-db236d6b727f",
         "title": "Eine Kreistangente im Berührpunkt konstruieren",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/570d5931-f126-5bb4-8b7f-db236d6b727f/570d5931-f126-5bb4-8b7f-db236d6b727f.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:48971c7fddbb8ab7fdf890a2a65f0063ad7ea617df5341823ae5c23f84031778"
       },
       {
         "goalId": "ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c",
         "title": "Empirische und theoretische Wahrscheinlichkeit unterscheiden",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c/ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:4fbd8328581da6ab5f79903b9d874bcf0c5d2f765c4582897e222c4b4240332e"
       },
       {
         "goalId": "a1c79897-6ded-57f8-bee1-2d365a5083c9",
         "title": "Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/a1c79897-6ded-57f8-bee1-2d365a5083c9/a1c79897-6ded-57f8-bee1-2d365a5083c9.jpg",
-        "latestDecision": null
+        "latestDecision": null,
+        "qaAssetSha256": "sha256:8697ead37c9f52e0dbf5474a6a2f964fb249118e0f52b3d29134dbf660d57a23"
       },
       {
         "goalId": "74b5a01b-c086-51d0-bc66-046029c92ef7",
         "title": "Geometrische Reihen untersuchen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/74b5a01b-c086-51d0-bc66-046029c92ef7/74b5a01b-c086-51d0-bc66-046029c92ef7.jpg",
-        "latestDecision": null
+        "latestDecision": null,
+        "qaAssetSha256": "sha256:e8f80fe97fd829028eab68f82452aaf0cf98497b9baf11af8acd9310a14c96b9"
       },
       {
         "goalId": "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
         "title": "Graphen einfacher Hyperbeln mit Asymptoten zeichnen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/bc6e4c14-d4f7-537e-8e83-9b5c0086e807/bc6e4c14-d4f7-537e-8e83-9b5c0086e807.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:0a92fbd2f1b3327e58d1e6dd05a6dbac7d426ba4e4cd4dc3e0a3d545ffe5d1d7"
       },
       {
         "goalId": "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
         "title": "Größen mit geeigneten Messmitteln erfassen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/ad26e4d9-b025-57ec-8f25-df4a2415cc62/ad26e4d9-b025-57ec-8f25-df4a2415cc62.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:110889b4aa70f56e8cc5803ca3cf482bb5400f2a48ea90d4abdf98dcc73f82c1"
       },
       {
         "goalId": "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
         "title": "Grundlegende Eigenschaften der natürlichen Logarithmusfunktion erläutern (LK)",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8/04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:afef00903c8d8c8d60da5d9e1191b428ff421499e59159cd7d85401626e08056"
       },
       {
         "goalId": "8823e26e-694c-581b-9adf-4db7db6f43c9",
         "title": "Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/8823e26e-694c-581b-9adf-4db7db6f43c9/8823e26e-694c-581b-9adf-4db7db6f43c9.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:1d1942cdde3d42dd8086ad98ded83431986b4f6e27487e9f88c450a3d0cfc8a7"
       },
       {
         "goalId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
         "title": "Kettenregel beim Ableiten anwenden (LK)",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75/ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:6c71876d3782952b2e7293092a44f10d536b341f14c46a1b9108079ea8526f8f"
       },
       {
         "goalId": "5c9ac68c-3928-518c-bbe0-e044667035a6",
         "title": "Konfidenzintervalle im Kontext interpretieren",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/5c9ac68c-3928-518c-bbe0-e044667035a6/5c9ac68c-3928-518c-bbe0-e044667035a6.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:08326e4e189cf65f7d7ec89bcfb8e7e6a5ea7802782de79fe3c507a7d687f3ea"
       },
       {
         "goalId": "5a2371fd-74ce-5013-932e-35d3713aeaf7",
         "title": "Laplace-Wahrscheinlichkeiten mit relativen Häufigkeiten vergleichen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/5a2371fd-74ce-5013-932e-35d3713aeaf7/5a2371fd-74ce-5013-932e-35d3713aeaf7.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:aa578a6d6fddbd68fdb3a91ba4e535a481880cbc69092bbab7e2c6dc8c894fec"
       },
       {
         "goalId": "f17935b0-189f-5e0c-988d-ce508b710097",
         "title": "Lineare Ungleichungen lösen und Lösungsmengen darstellen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/f17935b0-189f-5e0c-988d-ce508b710097/f17935b0-189f-5e0c-988d-ce508b710097.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:4d800383ced84863c26e5d832e95b0a451c98434d46c41c6c6e387ab97008ca2"
       },
       {
         "goalId": "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
         "title": "Lösbarkeit und Lösungsvielfalt linearer Gleichungen untersuchen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/cc60f759-1168-5fc0-8ff5-5f7a2533e61c/cc60f759-1168-5fc0-8ff5-5f7a2533e61c.jpg",
-        "latestDecision": null
+        "latestDecision": null,
+        "qaAssetSha256": "sha256:682e00a3f38e373b614aca1b16f3f861a7b94005da4d973ab805bcb9962f747f"
       },
       {
         "goalId": "0f6c1df6-0e30-54ae-8098-e9422833ba80",
         "title": "Lösbarkeit von Dreieckskonstruktionen begründen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/0f6c1df6-0e30-54ae-8098-e9422833ba80/0f6c1df6-0e30-54ae-8098-e9422833ba80.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:92ca07b34bb4d3110a8211465e59e49956a686088c1953ebbbc33707a3fe6462"
       },
       {
         "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c",
         "title": "Maßangaben aus Quellenmaterial entnehmen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/25a3cc39-976e-58a5-b882-73baee5c037c/25a3cc39-976e-58a5-b882-73baee5c037c.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:b6cd7e8dc5cf33e1956a53d4fa0f6d9a9cc9cd6b575426813d7a5d7a5ee88f0b"
       },
       {
         "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
         "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/0de1e45c-aea9-5e53-932a-027dcf509efa/0de1e45c-aea9-5e53-932a-027dcf509efa.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:bea47985c63aa48992058ab3d688b91e8d05fb5d2123f70ec255ce0093320fff"
       },
       {
         "goalId": "34200b88-c616-58f6-aa03-efb9fd766f88",
         "title": "Mittelsenkrechten konstruieren und begründen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/34200b88-c616-58f6-aa03-efb9fd766f88/34200b88-c616-58f6-aa03-efb9fd766f88.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:2575b6288f6931529bd63d167a9e7fe4af21bd2ace9052fb8d3261c4b4b07db6"
       },
       {
         "goalId": "03703b29-efd8-57e0-acf5-4381b1dc67ec",
         "title": "Modalwert bestimmen und im Kontext deuten",
         "reviewStatus": "approved",
         "url": "/assets/goal-visualizations/mathematik/03703b29-efd8-57e0-acf5-4381b1dc67ec/03703b29-efd8-57e0-acf5-4381b1dc67ec.png",
-        "latestDecision": null
+        "latestDecision": null,
+        "qaAssetSha256": "sha256:49437fe99aad7c56eade1955843c81d13e8a14d33246844cfc9101a8cf6b9d71"
+      },
+      {
+        "goalId": "f1348d40-3872-5e44-8892-3600c811796f",
+        "title": "Oberflächeninhalt gerader Prismen berechnen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/f1348d40-3872-5e44-8892-3600c811796f/f1348d40-3872-5e44-8892-3600c811796f.png",
+        "latestDecision": null,
+        "qaAssetSha256": "sha256:fea518add90ee3dcfe045fca140dee84c5ef8c8bae0726c9100a05cf0f192db4"
       },
       {
         "goalId": "3f1a97d2-7de6-5799-81f2-39782c3e54d7",
         "title": "Parameter einfacher Hyperbeln aus Graphen bestimmen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/3f1a97d2-7de6-5799-81f2-39782c3e54d7/3f1a97d2-7de6-5799-81f2-39782c3e54d7.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:97cf6db334cb1c14c818d0f18cd79bf28f1b412bb4eec9d958336053631fbb26"
       },
       {
         "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
         "title": "Plausibilität mit Beispielen testen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/1e164a09-0a2b-55ab-b927-08a4a278f72b/1e164a09-0a2b-55ab-b927-08a4a278f72b.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:2438afe2cc49365310dde78cd39a3a13bbe1360b4dc9a994ff00e88792b8bb2e"
       },
       {
         "goalId": "cf48c918-f6c1-5429-8da6-14df43f2f550",
         "title": "Produktregel beim Ableiten anwenden (LK)",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/cf48c918-f6c1-5429-8da6-14df43f2f550/cf48c918-f6c1-5429-8da6-14df43f2f550.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:e902392ddbcc558b904f9a54d9fb74feaec49d92cdf03989d72f8f8fb12efd12"
       },
       {
         "goalId": "4d906967-9f4b-5dc8-af7a-d403b95d61f5",
         "title": "Prognoseintervalle im Kontext interpretieren",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/4d906967-9f4b-5dc8-af7a-d403b95d61f5/4d906967-9f4b-5dc8-af7a-d403b95d61f5.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:03d3076175b836975fb9739553fd8628154895322fbfd521ec899c8533edd5df"
       },
       {
         "goalId": "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
         "title": "Seitenhalbierende in Dreiecken konstruieren",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/dcda6fdf-108f-5ea1-bce7-6f30d6443517/dcda6fdf-108f-5ea1-bce7-6f30d6443517.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:82f3900283ff6d5a4eedeb4082df0db5cc9f1d291f0894828d45c5a2f0fee41d"
       },
       {
         "goalId": "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
         "title": "Terme mit Variablen lesen und deuten",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/f08d06dc-139d-5fd2-892c-8cc919b1e4fc/f08d06dc-139d-5fd2-892c-8cc919b1e4fc.jpg",
-        "latestDecision": null
+        "latestDecision": null,
+        "qaAssetSha256": "sha256:07f83b2422d444470e329d8f4562d6bd2baef5c82c6d9452199bda5bc2ef2b75"
       },
       {
         "goalId": "740ab443-776a-5c7a-8f1d-2b0b59a5ed32",
         "title": "Umkehrung und Kontraposition bilden",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/740ab443-776a-5c7a-8f1d-2b0b59a5ed32/740ab443-776a-5c7a-8f1d-2b0b59a5ed32.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:75f3b4f6f85a9ab593641eebeca408c486ff16510c0ff18a62927a50856bf522"
       },
       {
         "goalId": "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
         "title": "Verdoppelungs- und Halbwertszeiten bestimmen und deuten",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/c19d1f8f-b297-5a58-b1d4-26d811e4aff4/c19d1f8f-b297-5a58-b1d4-26d811e4aff4.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:bab6f9c41706fc1cbe0fd5685cac492424bc86d59f30da246b13a69db91a663f"
+      },
+      {
+        "goalId": "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+        "title": "Volumen gerader Prismen berechnen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/68fb0e78-34f2-5572-8db6-e7f5ebcff70f/68fb0e78-34f2-5572-8db6-e7f5ebcff70f.png",
+        "latestDecision": null,
+        "qaAssetSha256": "sha256:db18b5bc84e6829f39112af8c685ca50d41fdc2fe499b958a3cc24da26430527"
       },
       {
         "goalId": "7c978529-ce62-5adc-897f-24ea80babbc8",
         "title": "Volumina von Quadern und Würfeln bestimmen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/7c978529-ce62-5adc-897f-24ea80babbc8/7c978529-ce62-5adc-897f-24ea80babbc8.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:7850e7a5fef300bb039f09b277321c3be1526e2d8163b67c597497a4ca82b17e"
       },
       {
         "goalId": "e01869db-891c-57a4-8660-789ec6875ec2",
         "title": "Volumina zusammengesetzter Quaderkörper additiv bestimmen",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/e01869db-891c-57a4-8660-789ec6875ec2/e01869db-891c-57a4-8660-789ec6875ec2.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:f454096e8fa85b82920b25362858887e6ef124f93df0ce8f0be5d20af217a463"
       },
       {
         "goalId": "28d098ab-f33f-5baf-8261-f1c0c0f711fa",
         "title": "Voraussetzung und Folgerung in Wenn-Dann-Aussagen unterscheiden",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/28d098ab-f33f-5baf-8261-f1c0c0f711fa/28d098ab-f33f-5baf-8261-f1c0c0f711fa.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:4bb539dc0663c2425d02bec3f0b78ee21a1a23fa249dea14fa15e191fbdbf5f7"
       },
       {
         "goalId": "8c32d941-b51c-5663-951c-a610f8900f76",
         "title": "Wahrscheinlichkeiten normalverteilter Zufallsgrößen bestimmen (LK)",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/8c32d941-b51c-5663-951c-a610f8900f76/8c32d941-b51c-5663-951c-a610f8900f76.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:09c914227f618c81397d1c6e65b2844ad90e75c9087b5828fbaadc36f7f2b91a"
       },
       {
         "goalId": "3019e775-1420-510f-850b-5a29acc47a64",
         "title": "Zufallsexperimente mit Ergebnissen und Ereignissen beschreiben",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/3019e775-1420-510f-850b-5a29acc47a64/3019e775-1420-510f-850b-5a29acc47a64.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:b59b2255b6ab063211d3081a160cdb7bea5a9fba33fa3fdadd4aa4c16ae871f5"
       },
       {
         "goalId": "d8f1fd06-785e-5d15-a8e5-7d8b36f91287",
         "title": "Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK)",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/d8f1fd06-785e-5d15-a8e5-7d8b36f91287/d8f1fd06-785e-5d15-a8e5-7d8b36f91287.png",
-        "latestDecision": "deferred_provider_limitation"
+        "latestDecision": "deferred_provider_limitation",
+        "qaAssetSha256": "sha256:3339a4d4e1f9240fcedeaac767a999ff444ff666baa09caa796b39e09a97d7b9"
       }
     ],
     "acceptedReviewWithoutLink": []
@@ -1140,7 +950,7 @@
       "title": "Ableitungsbegriff aus mittleren und momentanen Änderungsraten entwickeln",
       "phase": "J10",
       "area": "Analysis",
-      "reviewStatus": "approved",
+      "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/7156558c-57f1-4372-9ba7-0640c3f7cb3a/7156558c-57f1-4372-9ba7-0640c3f7cb3a.png"
     },
     {
@@ -1297,11 +1107,11 @@
     },
     {
       "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
-      "title": "Analysis-Modelle in Sachzusammenhängen validieren (LK)",
+      "title": "Analysis-Modelle in Sachzusammenhängen validieren",
       "phase": "Q4",
       "area": "Analysis",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2.jpg"
+      "url": "/assets/goal-visualizations/mathematik/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2.png"
     },
     {
       "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
@@ -1313,7 +1123,7 @@
     },
     {
       "goalId": "b431148b-526c-4bde-b04b-48d23101d0d3",
-      "title": "Annähernd normalverteilte Zufallsgrößen in Situationen erkennen (LK)",
+      "title": "Annähernd normalverteilte Zufallsgrößen in Situationen erkennen",
       "phase": "Q3",
       "area": "",
       "reviewStatus": "pilot",
@@ -1478,6 +1288,22 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/6fcd6a1a-88d3-59d2-9bf7-ee32babb773e/6fcd6a1a-88d3-59d2-9bf7-ee32babb773e.jpg"
+    },
+    {
+      "goalId": "21676dae-8619-59d1-89e3-a35bb2297e2c",
+      "title": "Aus dem Funktionsgraphen einen Stammfunktionsgraphen skizzieren",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/21676dae-8619-59d1-89e3-a35bb2297e2c/21676dae-8619-59d1-89e3-a35bb2297e2c.png"
+    },
+    {
+      "goalId": "85eda551-cfc1-52c6-a252-4c7394c1f7e6",
+      "title": "Aus einem Stammfunktionsgraphen den Funktionsgraphen skizzieren",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/85eda551-cfc1-52c6-a252-4c7394c1f7e6/85eda551-cfc1-52c6-a252-4c7394c1f7e6.png"
     },
     {
       "goalId": "6a4716bd-8038-46bb-b647-0db4a254fee7",
@@ -2040,6 +1866,14 @@
       "url": "/assets/goal-visualizations/mathematik/34ba4714-a0ff-4a48-857f-d2481cbe0441/34ba4714-a0ff-4a48-857f-d2481cbe0441.png"
     },
     {
+      "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+      "title": "Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK)",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/06ce2b1b-e888-5322-9ed9-dfc6d322956a/06ce2b1b-e888-5322-9ed9-dfc6d322956a.png"
+    },
+    {
       "goalId": "624764d6-becd-5f9b-ada3-0d4f9d143073",
       "title": "Dezimalsystem als Stellenwertsystem erklären und vergleichen",
       "phase": "J5",
@@ -2158,6 +1992,14 @@
       "area": "Algebra",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0/a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0.png"
+    },
+    {
+      "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
+      "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden",
+      "phase": "Q4",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/dc12f281-f161-572b-a973-8405ae9b2498/dc12f281-f161-572b-a973-8405ae9b2498.png"
     },
     {
       "goalId": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
@@ -2358,6 +2200,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/91311908-9209-58e4-8429-99dad9df546d/91311908-9209-58e4-8429-99dad9df546d.png"
+    },
+    {
+      "goalId": "87372f49-c832-50f6-921f-ec9a6804d58a",
+      "title": "Eine heuristische Strategie anwenden",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/87372f49-c832-50f6-921f-ec9a6804d58a/87372f49-c832-50f6-921f-ec9a6804d58a.png"
     },
     {
       "goalId": "570d5931-f126-5bb4-8b7f-db236d6b727f",
@@ -2573,7 +2423,7 @@
       "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/ae3483e3-4712-56a1-a881-2e1f8a1a8df9.jpg"
+      "url": "/assets/goal-visualizations/mathematik/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/ae3483e3-4712-56a1-a881-2e1f8a1a8df9.png"
     },
     {
       "goalId": "677be619-5f0a-59bf-9730-0071c7d3f150",
@@ -2713,11 +2563,11 @@
     },
     {
       "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
-      "title": "Exponential- und Potenzfunktionen asymptotisch vergleichen (LK)",
+      "title": "Exponential- und Potenzfunktionen asymptotisch vergleichen",
       "phase": "Q4",
       "area": "Analysis",
-      "reviewStatus": "accepted",
-      "url": "/assets/goal-visualizations/mathematik/49f9059a-876c-5051-8146-d008b5cc691c/49f9059a-876c-5051-8146-d008b5cc691c.jpg"
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/49f9059a-876c-5051-8146-d008b5cc691c/49f9059a-876c-5051-8146-d008b5cc691c.png"
     },
     {
       "goalId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
@@ -2816,6 +2666,14 @@
       "url": "/assets/goal-visualizations/mathematik/781f133a-08bb-54b9-8fda-efa2f8f9b12c/781f133a-08bb-54b9-8fda-efa2f8f9b12c.jpg"
     },
     {
+      "goalId": "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
+      "title": "Extremstellen parameterabhängig untersuchen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/7feaaebd-cc8d-522b-8b3a-ea22675c65dd/7feaaebd-cc8d-522b-8b3a-ea22675c65dd.png"
+    },
+    {
       "goalId": "a1c79897-6ded-57f8-bee1-2d365a5083c9",
       "title": "Extremwert, Wertemenge und Monotonie quadratischer Funktionen aus dem Graphen bestimmen",
       "phase": "J9",
@@ -2880,6 +2738,14 @@
       "url": "/assets/goal-visualizations/mathematik/2b497114-66ce-5f38-9b4d-dd17a2f4088f/2b497114-66ce-5f38-9b4d-dd17a2f4088f.jpg"
     },
     {
+      "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+      "title": "Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/121e3fdf-54d2-4d46-bc2d-f6e725f10f41/121e3fdf-54d2-4d46-bc2d-f6e725f10f41.png"
+    },
+    {
       "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
       "title": "Fixpunkte linearer Abbildungen bestimmen (LK)",
       "phase": "Q2",
@@ -2902,6 +2768,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6/94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6.jpg"
+    },
+    {
+      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+      "title": "Flächen- und Volumenskalierung bei zentrischer Streckung begründen (LK)",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/7d37513b-fa1a-54cc-9e2a-9279a381f0f0/7d37513b-fa1a-54cc-9e2a-9279a381f0f0.png"
     },
     {
       "goalId": "491e0858-e977-516e-a339-1cc2f9e9690f",
@@ -3376,6 +3250,14 @@
       "url": "/assets/goal-visualizations/mathematik/78238608-aaaa-4d12-a9de-54f325e9cf6f/78238608-aaaa-4d12-a9de-54f325e9cf6f.jpg"
     },
     {
+      "goalId": "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+      "title": "Grenzen der Werkzeugnutzung benennen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c97a33d9-d5e4-56c5-ae4c-822bc4f54898/c97a33d9-d5e4-56c5-ae4c-822bc4f54898.png"
+    },
+    {
       "goalId": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
       "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
       "phase": "Q2",
@@ -3480,12 +3362,28 @@
       "url": "/assets/goal-visualizations/mathematik/122ab909-04ed-572b-a499-754f3bcc8ef0/122ab909-04ed-572b-a499-754f3bcc8ef0.jpg"
     },
     {
+      "goalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+      "title": "Grundrechenarten in der Gaußschen Zahlenebene deuten",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/a7fb1a7a-8315-5bcb-842e-48293293dfcc/a7fb1a7a-8315-5bcb-842e-48293293dfcc.png"
+    },
+    {
       "goalId": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
       "title": "Gütefunktion und Teststärke untersuchen (LK)",
       "phase": "Q3",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png"
+    },
+    {
+      "goalId": "93fc4fbb-72f6-549b-b97a-a48aecb1534d",
+      "title": "Hand- und Tool-Verfahren kombinieren",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/93fc4fbb-72f6-549b-b97a-a48aecb1534d/93fc4fbb-72f6-549b-b97a-a48aecb1534d.png"
     },
     {
       "goalId": "7c4e8d59-4acb-5f62-a387-c804c6fa23e0",
@@ -3525,7 +3423,7 @@
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/b9bbd2a8-1379-5ffb-817f-41467d48abef/b9bbd2a8-1379-5ffb-817f-41467d48abef.jpg"
+      "url": "/assets/goal-visualizations/mathematik/b9bbd2a8-1379-5ffb-817f-41467d48abef/b9bbd2a8-1379-5ffb-817f-41467d48abef.png"
     },
     {
       "goalId": "90662398-a0fd-45bf-9ce9-2abbc20428ed",
@@ -3544,6 +3442,22 @@
       "url": "/assets/goal-visualizations/mathematik/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/1cefd1ad-a250-5a03-8de7-04bdaf465ad8.jpg"
     },
     {
+      "goalId": "bd637a72-6609-54f5-bb33-8a9e898bf7a0",
+      "title": "Heuristik auswählen und begründen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/bd637a72-6609-54f5-bb33-8a9e898bf7a0/bd637a72-6609-54f5-bb33-8a9e898bf7a0.png"
+    },
+    {
+      "goalId": "27bdc580-ba17-5399-bf02-48f354846d1d",
+      "title": "Heuristischen Stetigkeitsbegriff zum Argumentieren nutzen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/27bdc580-ba17-5399-bf02-48f354846d1d/27bdc580-ba17-5399-bf02-48f354846d1d.png"
+    },
+    {
       "goalId": "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
       "title": "Histogramme erstellen und lesen",
       "phase": "Q3",
@@ -3552,12 +3466,28 @@
       "url": "/assets/goal-visualizations/mathematik/9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0/9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0.jpg"
     },
     {
+      "goalId": "d051857c-0707-544f-ae7a-f20690d182b2",
+      "title": "Höhen in Dreiecken konstruieren",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/d051857c-0707-544f-ae7a-f20690d182b2/d051857c-0707-544f-ae7a-f20690d182b2.png"
+    },
+    {
       "goalId": "9189339d-1788-406c-a1a4-e0e6b851c4ea",
       "title": "Höhensatz im rechtwinkligen Dreieck formulieren, begründen und anwenden",
       "phase": "J9",
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/9189339d-1788-406c-a1a4-e0e6b851c4ea/9189339d-1788-406c-a1a4-e0e6b851c4ea.jpg"
+    },
+    {
+      "goalId": "ae483d98-54e0-5985-96d2-fc1351d22e4f",
+      "title": "Hypothesentests bei verändertem Stichprobenumfang variieren",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/ae483d98-54e0-5985-96d2-fc1351d22e4f/ae483d98-54e0-5985-96d2-fc1351d22e4f.png"
     },
     {
       "goalId": "c1a23239-08c5-5fe2-a68f-f2075fdeb454",
@@ -3625,7 +3555,7 @@
     },
     {
       "goalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
-      "title": "Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK)",
+      "title": "Integralrechnung in Sachzusammenhängen auswählen und anwenden",
       "phase": "Q4",
       "area": "Analysis",
       "reviewStatus": "pilot",
@@ -3664,6 +3594,22 @@
       "url": "/assets/goal-visualizations/mathematik/649b673c-1a74-5dc5-af01-b4c9e090b90d/649b673c-1a74-5dc5-af01-b4c9e090b90d.jpg"
     },
     {
+      "goalId": "9de07e13-6a5f-5b49-a6d4-0decefb95784",
+      "title": "Inverse Fragestellungen zu Binomialverteilungen lösen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/9de07e13-6a5f-5b49-a6d4-0decefb95784/9de07e13-6a5f-5b49-a6d4-0decefb95784.png"
+    },
+    {
+      "goalId": "c406d5a0-e81d-5ce9-b535-6512a38798de",
+      "title": "Inverse Fragestellungen zur Normalverteilung lösen (LK)",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c406d5a0-e81d-5ce9-b535-6512a38798de/c406d5a0-e81d-5ce9-b535-6512a38798de.png"
+    },
+    {
       "goalId": "7676b0f9-340d-4a91-ab1f-92745a8f88db",
       "title": "Irrationalität von √2 indirekt begründen",
       "phase": "J9",
@@ -3694,6 +3640,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/496f16a0-c031-5753-b988-d6cd3cab595e/496f16a0-c031-5753-b988-d6cd3cab595e.jpg"
+    },
+    {
+      "goalId": "164921f6-3bf7-5efc-a438-ea4759dca9ef",
+      "title": "Kettenlinien als Funktionsmodelle untersuchen (LK)",
+      "phase": "Q1",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/164921f6-3bf7-5efc-a438-ea4759dca9ef/164921f6-3bf7-5efc-a438-ea4759dca9ef.png"
     },
     {
       "goalId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
@@ -3744,6 +3698,22 @@
       "url": "/assets/goal-visualizations/mathematik/d1352ce0-9502-5039-9af6-318fe385b6fd/d1352ce0-9502-5039-9af6-318fe385b6fd.jpg"
     },
     {
+      "goalId": "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+      "title": "Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/1b67aeb4-2a55-531f-94da-283b4e3df5f1/1b67aeb4-2a55-531f-94da-283b4e3df5f1.png"
+    },
+    {
+      "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
+      "title": "Kombinationen ohne Zurücklegen mit Fakultäten berechnen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/70efdec0-110c-5564-849b-bc05cfff0f6a/70efdec0-110c-5564-849b-bc05cfff0f6a.png"
+    },
+    {
       "goalId": "8b635349-abc3-59e7-af93-ec28940bf690",
       "title": "Kommunikation reflektieren und verbessern",
       "phase": "Q4",
@@ -3792,6 +3762,14 @@
       "url": "/assets/goal-visualizations/mathematik/22b66c1e-50b1-505f-a388-c39131a4e1c3/22b66c1e-50b1-505f-a388-c39131a4e1c3.jpg"
     },
     {
+      "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "title": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/4f64f771-20ba-581a-86ba-bcdb1759e4d2/4f64f771-20ba-581a-86ba-bcdb1759e4d2.png"
+    },
+    {
       "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
       "title": "Konfidenzdiagramme deuten (LK)",
       "phase": "Q3",
@@ -3822,6 +3800,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.png"
+    },
+    {
+      "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+      "title": "Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen",
+      "phase": "J9",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2041f4ec-620d-4a20-9922-6ebf16f8f8fa/2041f4ec-620d-4a20-9922-6ebf16f8f8fa.png"
     },
     {
       "goalId": "6833664b-bd8b-44a2-95bc-c0b78ff89e31",
@@ -3984,6 +3970,14 @@
       "url": "/assets/goal-visualizations/mathematik/47d8d47c-7c59-5394-9098-11d9ad3723f1/47d8d47c-7c59-5394-9098-11d9ad3723f1.jpg"
     },
     {
+      "goalId": "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+      "title": "Lagebeziehung zweier Ebenen untersuchen (LK)",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd.png"
+    },
+    {
       "goalId": "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
       "title": "Lagebeziehung zwischen Gerade und Ebene untersuchen",
       "phase": "Q2",
@@ -4006,14 +4000,6 @@
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/b025df0c-994c-4807-9c5f-2d548905b73f/b025df0c-994c-4807-9c5f-2d548905b73f.jpg"
-    },
-    {
-      "goalId": "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
-      "title": "Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK)",
-      "phase": "Q2",
-      "area": "LinearAlgebra",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd.jpg"
     },
     {
       "goalId": "69beb31d-5d02-4505-9500-3ec81af86f1e",
@@ -4062,6 +4048,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/5a2371fd-74ce-5013-932e-35d3713aeaf7/5a2371fd-74ce-5013-932e-35d3713aeaf7.png"
+    },
+    {
+      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "title": "Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell)",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/0408ac7f-0530-5de5-b248-cf581c9b5a17/0408ac7f-0530-5de5-b248-cf581c9b5a17.png"
     },
     {
       "goalId": "1462c189-8679-5f32-bf58-6e81e99e4635",
@@ -4256,6 +4250,14 @@
       "url": "/assets/goal-visualizations/mathematik/79c4cd21-af64-5925-968e-9bc1f74cd0ad/79c4cd21-af64-5925-968e-9bc1f74cd0ad.jpg"
     },
     {
+      "goalId": "9b339361-7719-573d-a913-432246c502ee",
+      "title": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+      "phase": "Q4",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/9b339361-7719-573d-a913-432246c502ee/9b339361-7719-573d-a913-432246c502ee.png"
+    },
+    {
       "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c",
       "title": "Maßangaben aus Quellenmaterial entnehmen",
       "phase": "J7",
@@ -4406,6 +4408,14 @@
       "area": "Data",
       "reviewStatus": "approved",
       "url": "/assets/goal-visualizations/mathematik/03703b29-efd8-57e0-acf5-4381b1dc67ec/03703b29-efd8-57e0-acf5-4381b1dc67ec.png"
+    },
+    {
+      "goalId": "909d8b16-5156-528b-a300-d9aee5405ba0",
+      "title": "Modell gezielt anpassen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/909d8b16-5156-528b-a300-d9aee5405ba0/909d8b16-5156-528b-a300-d9aee5405ba0.png"
     },
     {
       "goalId": "8d2021d0-aa14-5023-998b-187356de7986",
@@ -4576,6 +4586,14 @@
       "url": "/assets/goal-visualizations/mathematik/fe07241a-b779-5f35-a82d-7aa51ae74f42/fe07241a-b779-5f35-a82d-7aa51ae74f42.jpg"
     },
     {
+      "goalId": "e02b994f-376d-5a8e-a14c-c4acacae57cf",
+      "title": "Nebenbedingungen berücksichtigen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/e02b994f-376d-5a8e-a14c-c4acacae57cf/e02b994f-376d-5a8e-a14c-c4acacae57cf.png"
+    },
+    {
       "goalId": "e131c594-c45e-5718-9f33-7ae39ddc82ad",
       "title": "Nenner mit Wurzeltermen rationalisieren",
       "phase": "J9",
@@ -4590,6 +4608,14 @@
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/f52e9d72-4995-5c80-91d2-7761ea0cbec0/f52e9d72-4995-5c80-91d2-7761ea0cbec0.jpg"
+    },
+    {
+      "goalId": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
+      "title": "Newton-Verfahren zur Nullstellennäherung anwenden",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/0c7bbd3f-0a04-4f0e-888b-40ab7841fb76/0c7bbd3f-0a04-4f0e-888b-40ab7841fb76.png"
     },
     {
       "goalId": "a4246bef-647c-582f-aaa5-8ccd3120e7ef",
@@ -4645,7 +4671,7 @@
       "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.jpg"
+      "url": "/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.png"
     },
     {
       "goalId": "9278bc5e-a77f-5f72-8636-0d0d3e3d32ae",
@@ -4686,6 +4712,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/f7dcf8c8-06c1-5972-b02a-9d35e5ab7600/f7dcf8c8-06c1-5972-b02a-9d35e5ab7600.jpg"
+    },
+    {
+      "goalId": "f1348d40-3872-5e44-8892-3600c811796f",
+      "title": "Oberflächeninhalt gerader Prismen berechnen",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f1348d40-3872-5e44-8892-3600c811796f/f1348d40-3872-5e44-8892-3600c811796f.png"
     },
     {
       "goalId": "1ea06c0c-5c60-45cd-8f31-638de98820b4",
@@ -4774,6 +4808,14 @@
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/c31d3a7a-778b-5ae3-9aa4-7b5674047f83/c31d3a7a-778b-5ae3-9aa4-7b5674047f83.jpg"
+    },
+    {
+      "goalId": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+      "title": "Parallele und senkrechte Lagebeziehungen erkennen und begründen",
+      "phase": "J5",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2231c29b-eb4e-51ae-9cb1-eb033bf16099/2231c29b-eb4e-51ae-9cb1-eb033bf16099.png"
     },
     {
       "goalId": "eb070ed2-7ef4-5afe-b203-190ebb0116af",
@@ -5328,6 +5370,14 @@
       "url": "/assets/goal-visualizations/mathematik/50e4ecab-d462-5496-b493-b30d699eb100/50e4ecab-d462-5496-b493-b30d699eb100.jpg"
     },
     {
+      "goalId": "74d29d0c-80b3-4d46-a5f5-3c2f609e8483",
+      "title": "Pyramiden und Kegel darstellen, Netze nutzen und Fachbegriffe verwenden",
+      "phase": "J10",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/74d29d0c-80b3-4d46-a5f5-3c2f609e8483/74d29d0c-80b3-4d46-a5f5-3c2f609e8483.png"
+    },
+    {
       "goalId": "d9725eb6-6b1f-5674-9f17-3de10f5b1ed8",
       "title": "Pythagoreische trigonometrische Beziehung herleiten",
       "phase": "J10",
@@ -5358,6 +5408,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/a7ccb7a9-6fb0-4e2d-b6e0-6420cc5ae0bf/a7ccb7a9-6fb0-4e2d-b6e0-6420cc5ae0bf.jpg"
+    },
+    {
+      "goalId": "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "title": "Quadratische Gleichungen lösen",
+      "phase": "J9",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/9023226b-fc17-412b-807c-2bb45cd551d5/9023226b-fc17-412b-807c-2bb45cd551d5.png"
     },
     {
       "goalId": "e322310f-f33a-485d-bc23-2412a6b8fa12",
@@ -5454,6 +5512,14 @@
       "area": "Analysis",
       "reviewStatus": "ai-reviewed",
       "url": "/assets/goal-visualizations/mathematik/281e0c6e-d06d-580f-8443-4369f0ea524b/281e0c6e-d06d-580f-8443-4369f0ea524b.jpg"
+    },
+    {
+      "goalId": "1b70498a-62a0-5a84-99dd-476b8af68da6",
+      "title": "Realsituationen mit linearen und quadratischen Funktionen modellieren",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/1b70498a-62a0-5a84-99dd-476b8af68da6/1b70498a-62a0-5a84-99dd-476b8af68da6.png"
     },
     {
       "goalId": "05012547-7263-5bfa-9e7c-df970745a011",
@@ -5712,6 +5778,14 @@
       "url": "/assets/goal-visualizations/mathematik/57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5/57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5.jpg"
     },
     {
+      "goalId": "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+      "title": "Schnittwinkel zweier Geraden berechnen",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/18be713b-7d90-4f01-b60a-5582ac4df0e8/18be713b-7d90-4f01-b60a-5582ac4df0e8.png"
+    },
+    {
       "goalId": "56b4acb5-6024-573f-9890-35fbd21ee343",
       "title": "Schnittwinkel zwischen Funktionsgraphen deuten",
       "phase": "E",
@@ -5872,20 +5946,20 @@
       "url": "/assets/goal-visualizations/mathematik/3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2/3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2.jpg"
     },
     {
+      "goalId": "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+      "title": "Spatprodukt korrekt definieren und deuten",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/944dd479-9f30-5acb-ab32-3ea0b6dc8e06/944dd479-9f30-5acb-ab32-3ea0b6dc8e06.png"
+    },
+    {
       "goalId": "86022c15-9847-5864-b84f-9ffe5d71556e",
       "title": "Spezial- und Extremfälle nutzen",
       "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/86022c15-9847-5864-b84f-9ffe5d71556e/86022c15-9847-5864-b84f-9ffe5d71556e.jpg"
-    },
-    {
-      "goalId": "6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
-      "title": "Spezielle Lagen von Geraden und Ebenen begründen (LK)",
-      "phase": "Q2",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/6b2a1c04-8c28-51ff-905b-9c9492a26cc3/6b2a1c04-8c28-51ff-905b-9c9492a26cc3.jpg"
     },
     {
       "goalId": "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
@@ -5921,11 +5995,11 @@
     },
     {
       "goalId": "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
-      "title": "Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen nutzen",
+      "title": "Stammfunktionen ganzrationaler Funktionen ohne Hilfsmittel bestimmen",
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/31be24f0-3ab1-54d2-856d-fa9b7f36552f/31be24f0-3ab1-54d2-856d-fa9b7f36552f.jpg"
+      "url": "/assets/goal-visualizations/mathematik/31be24f0-3ab1-54d2-856d-fa9b7f36552f/31be24f0-3ab1-54d2-856d-fa9b7f36552f.png"
     },
     {
       "goalId": "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
@@ -6064,6 +6138,14 @@
       "url": "/assets/goal-visualizations/mathematik/62a1c6f2-1775-5a19-98e0-ed3dd722039f/62a1c6f2-1775-5a19-98e0-ed3dd722039f.png"
     },
     {
+      "goalId": "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+      "title": "Symmetrien einfacher Körper untersuchen",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2.png"
+    },
+    {
       "goalId": "8da730f1-8947-498d-9e78-7fb20b00a994",
       "title": "Symmetrien in Figuren erkennen und beschreiben",
       "phase": "J7",
@@ -6150,6 +6232,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/5d9c156b-e5a4-5e91-9da3-22e858eb1f8e/5d9c156b-e5a4-5e91-9da3-22e858eb1f8e.png"
+    },
+    {
+      "goalId": "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
+      "title": "Teilungsverhältnisse bei Volumina untersuchen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f2a12269-6bcb-564a-9fdb-45cfdbd704fc/f2a12269-6bcb-564a-9fdb-45cfdbd704fc.png"
     },
     {
       "goalId": "2c4830e6-a8d5-48d0-9202-3b7d18a419c2",
@@ -6248,6 +6338,14 @@
       "url": "/assets/goal-visualizations/mathematik/b29a6ece-30f8-5ced-9782-4df1bcbad284/b29a6ece-30f8-5ced-9782-4df1bcbad284.jpg"
     },
     {
+      "goalId": "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c",
+      "title": "Transformationen von Logarithmusgraphen deuten (LK)",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/8b3ce429-e6bb-5d33-b6aa-6ded41afc74c/8b3ce429-e6bb-5d33-b6aa-6ded41afc74c.png"
+    },
+    {
       "goalId": "eb28b403-f9fc-57ea-a793-b4555596fdd7",
       "title": "Transformationen von Potenz- und Wurzelfunktionsgraphen beschreiben",
       "phase": "J9",
@@ -6256,12 +6354,12 @@
       "url": "/assets/goal-visualizations/mathematik/eb28b403-f9fc-57ea-a793-b4555596fdd7/eb28b403-f9fc-57ea-a793-b4555596fdd7.jpg"
     },
     {
-      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
-      "title": "Transformationsargumente für Flächen und Volumina nutzen (LK)",
-      "phase": "Q2",
+      "goalId": "e33e75e3-eae5-5a09-862f-d1a11176373f",
+      "title": "Transformationsscharen bekannter Funktionsklassen untersuchen",
+      "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/7d37513b-fa1a-54cc-9e2a-9279a381f0f0/7d37513b-fa1a-54cc-9e2a-9279a381f0f0.jpg"
+      "url": "/assets/goal-visualizations/mathematik/e33e75e3-eae5-5a09-862f-d1a11176373f/e33e75e3-eae5-5a09-862f-d1a11176373f.png"
     },
     {
       "goalId": "23589682-2028-54cb-9034-b468b42688f1",
@@ -6504,6 +6602,14 @@
       "url": "/assets/goal-visualizations/mathematik/54541d08-61cc-5a6d-b6d9-d0270a7d1949/54541d08-61cc-5a6d-b6d9-d0270a7d1949.jpg"
     },
     {
+      "goalId": "7bb3c312-f714-55e6-a31f-f31605a93760",
+      "title": "Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK)",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/7bb3c312-f714-55e6-a31f-f31605a93760/7bb3c312-f714-55e6-a31f-f31605a93760.png"
+    },
+    {
       "goalId": "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
       "title": "Verdoppelungs- und Halbwertszeiten bestimmen und deuten",
       "phase": "J10",
@@ -6648,12 +6754,12 @@
       "url": "/assets/goal-visualizations/mathematik/c23c4364-b5ea-513a-9d78-76bf7f113d1b/c23c4364-b5ea-513a-9d78-76bf7f113d1b.jpg"
     },
     {
-      "goalId": "59d5a330-61be-4590-ab46-cf7cefecd144",
-      "title": "Volumen und Oberflächen gerader Prismen berechnen",
+      "goalId": "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+      "title": "Volumen gerader Prismen berechnen",
       "phase": "J7",
       "area": "Geometry",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/59d5a330-61be-4590-ab46-cf7cefecd144/59d5a330-61be-4590-ab46-cf7cefecd144.jpg"
+      "url": "/assets/goal-visualizations/mathematik/68fb0e78-34f2-5572-8db6-e7f5ebcff70f/68fb0e78-34f2-5572-8db6-e7f5ebcff70f.png"
     },
     {
       "goalId": "e8237315-654e-5150-97de-49c4cb49b3d1",
@@ -6702,6 +6808,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/288633c1-f61c-5b48-af7e-a80357f96cad/288633c1-f61c-5b48-af7e-a80357f96cad.png"
+    },
+    {
+      "goalId": "a594dec0-3977-5c43-9432-d4254a7f6130",
+      "title": "Volumen von Spaten und Tetraedern mit Spatprodukt berechnen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/a594dec0-3977-5c43-9432-d4254a7f6130/a594dec0-3977-5c43-9432-d4254a7f6130.png"
     },
     {
       "goalId": "c71ae268-f28e-59f0-982d-91db8f963378",
@@ -6976,6 +7090,14 @@
       "url": "/assets/goal-visualizations/mathematik/8a691345-3216-522c-a898-d65e8e94db28/8a691345-3216-522c-a898-d65e8e94db28.jpg"
     },
     {
+      "goalId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "title": "Zählverfahren und kombinatorische Überlegungen für Wahrscheinlichkeiten nutzen",
+      "phase": "J10",
+      "area": "Probability",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6/3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6.png"
+    },
+    {
       "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56",
       "title": "Zentrische Streckungen am Koordinatenursprung mit Matrizen darstellen",
       "phase": "Q2",
@@ -7008,12 +7130,28 @@
       "url": "/assets/goal-visualizations/mathematik/3019e775-1420-510f-850b-5a29acc47a64/3019e775-1420-510f-850b-5a29acc47a64.png"
     },
     {
+      "goalId": "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+      "title": "Zufallsexperimente mit Software simulieren",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/4aa70ad4-171d-5671-a864-c0c7758fa0ed/4aa70ad4-171d-5671-a864-c0c7758fa0ed.png"
+    },
+    {
       "goalId": "e02976ad-71fc-5929-b764-df7630269c47",
       "title": "Zufallsexperimente planen und durchführen",
       "phase": "Q3",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/e02976ad-71fc-5929-b764-df7630269c47/e02976ad-71fc-5929-b764-df7630269c47.jpg"
+    },
+    {
+      "goalId": "21fa0c22-976e-59b3-a871-899f0c0177f3",
+      "title": "Zufallsexperimente und Ereignisse aus Termen formulieren",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/21fa0c22-976e-59b3-a871-899f0c0177f3/21fa0c22-976e-59b3-a871-899f0c0177f3.png"
     },
     {
       "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",

@@ -61,6 +61,9 @@ class LearnerPlanningScopeServiceTest {
     private LandscapeService landscapeService;
 
     @Autowired
+    private CompositionViewService compositionViewService;
+
+    @Autowired
     private ObjectMapper objectMapper;
 
     @BeforeEach
@@ -168,7 +171,8 @@ class LearnerPlanningScopeServiceTest {
                         "911f3200-1dbc-59a6-90df-c883c77de39c",
                         "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
                         "1b664036-3c29-5d94-9f42-97069aaa2c53",
-                        "315093d4-515a-542c-b776-d72a12763d1a",
+                        "315093d4-515a-542c-b776-d72a12763d1a")
+                .doesNotContain(
                         "dc12f281-f161-572b-a973-8405ae9b2498",
                         "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
                         "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2");
@@ -176,6 +180,51 @@ class LearnerPlanningScopeServiceTest {
                 .isEqualTo(snapshot.scopeAtomicGoalIds().size());
         assertThat(snapshot.openAtomicGoalIds())
                 .containsExactlyElementsOf(snapshot.scopeAtomicGoalIds());
+    }
+
+    @Test
+    void mathematicsPlanningScopeRespectsHessenAndBavariaAdvancedCourseGoals() {
+        String hessenFixedPoints = "d3c42193-f1b7-5c6d-a991-bf034d99359f";
+        String bavariaModelValidation = "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2";
+        String advancedParallelProjection = "803d910d-96d1-5118-b9ca-29e93d0da76d";
+        String advancedIntegralContext = "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35";
+        String bavariaNormalDistribution = "b431148b-526c-4bde-b04b-48d23101d0d3";
+        String bavariaExponentialGrowth = "49f9059a-876c-5051-8146-d008b5cc691c";
+        String bavariaVertiefungMandelbrot = "9b339361-7719-573d-a913-432246c502ee";
+
+        selectMathScope("DE-HE", "GK");
+        assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
+                .doesNotContain(hessenFixedPoints, advancedParallelProjection, advancedIntegralContext);
+        selectMathScope("DE-HE", "LK");
+        assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
+                .contains(hessenFixedPoints, advancedParallelProjection)
+                .doesNotContain(advancedIntegralContext);
+
+        selectMathScope("DE-BY", "GK");
+        assertThat(compositionViewService.findLearnerScopeView(MATH_LANDSCAPE_ID, Map.of(
+                "schoolForm", "Gymnasium", "jurisdiction", "DE-BY", "stage", "CrossStage",
+                "durationModel", "G9", "courseProfile", "GK")))
+                .containsEntry("viewId", "de-by-gym-math-gk");
+        var bavariaGk = learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds();
+        assertThat(landscapeService.getLandscapeIdForGoal(advancedIntegralContext))
+                .isEqualTo(MATH_LANDSCAPE_ID);
+        assertThat(landscapeService.getGoalDefinition(advancedIntegralContext)).isNotNull();
+        assertThat(bavariaGk)
+                .contains(bavariaModelValidation, advancedIntegralContext,
+                        bavariaNormalDistribution, bavariaExponentialGrowth)
+                .doesNotContain(bavariaVertiefungMandelbrot);
+        selectMathScope("DE-BY", "LK");
+        assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
+                .containsAll(bavariaGk)
+                .contains(bavariaModelValidation, bavariaVertiefungMandelbrot);
+
+        selectMathScope("DE-NI", "GK");
+        assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
+                .doesNotContain(advancedParallelProjection, advancedIntegralContext);
+        selectMathScope("DE-NI", "LK");
+        assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
+                .contains(advancedParallelProjection)
+                .doesNotContain(advancedIntegralContext);
     }
 
     @Test
@@ -277,17 +326,21 @@ class LearnerPlanningScopeServiceTest {
     }
 
     private void selectHessenG9Math() {
+        selectMathScope("DE-HE", "GK");
+    }
+
+    private void selectMathScope(String jurisdiction, String courseProfile) {
         Learner learner = learnerRepository.findById(LEARNER_ID).orElseThrow();
         learner.setSelectedCurriculum(CURRICULUM_ID);
         learner.setPersonalCurriculum(completedPersonalizationConfig(Map.of(
                 CURRICULUM_ID, Map.of(
                         "selected", true,
-                        "filterId", "DE-HE",
+                        "filterId", jurisdiction,
                         "stage", "CrossStage",
                         "durationModel", "G9"),
                 MATH_LANDSCAPE_ID, Map.of(
                         "selected", true,
-                        "filterId", "GK"))));
+                        "filterId", courseProfile))));
         learnerRepository.saveAndFlush(learner);
     }
 

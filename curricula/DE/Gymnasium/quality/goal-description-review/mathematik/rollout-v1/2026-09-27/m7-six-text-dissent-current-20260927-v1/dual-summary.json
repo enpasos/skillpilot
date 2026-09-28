@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:7460f686bd574bbcf931caff9d04f903c6a7317ceb1b4280bd842f41ba5f5fa0",
+  "reviewInputFingerprint": "sha256:fdd7994a5a196aecdce64acbe64536c5cbe1344316290483be5799771bd3bfa9",
+  "goalCount": 6,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-six-text-dissent-current-20260927-v1-a",
+      "roundId": "mathematik-m7-six-text-dissent-current-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-six-text-dissent-current-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-six-text-dissent-current-20260927-v1-first-pass-a-codex-unexposed"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex model not exposed to reviewer::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-six-text-dissent-current-20260927-v1-b",
+      "roundId": "mathematik-m7-six-text-dissent-current-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-six-text-dissent-current-20260927-v1-independent-b",
+      "runIds": [
+        "math-m7-six-text-20260927-independent-review-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex model not exposed to reviewer::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex model not exposed to reviewer::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 6,
+    "unavailable": 0,
+    "requiresSynthesis": 6
+  },
+  "goals": [
+    {
+      "goalId": "0b23413e-a334-5dd3-98e5-de067208819e",
+      "firstRecordId": "m7-six-text-dissent-20260927-a-01",
+      "secondRecordId": "math-m7-six-text-20260927-independent-review-b-0b23413e-a334-5dd3-98e5-de067208819e",
+      "firstRunId": "mathematik-m7-six-text-dissent-current-20260927-v1-first-pass-a-codex-unexposed",
+      "secondRunId": "math-m7-six-text-20260927-independent-review-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75",
+      "firstRecordId": "m7-six-text-dissent-20260927-a-02",
+      "secondRecordId": "math-m7-six-text-20260927-independent-review-b-1bc118c3-1f05-5f2a-b125-418017180d75",
+      "firstRunId": "mathematik-m7-six-text-dissent-current-20260927-v1-first-pass-a-codex-unexposed",
+      "secondRunId": "math-m7-six-text-20260927-independent-review-b",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "80956a2c-5811-4021-863e-95675bec31f5",
+      "firstRecordId": "m7-six-text-dissent-20260927-a-03",
+      "secondRecordId": "math-m7-six-text-20260927-independent-review-b-80956a2c-5811-4021-863e-95675bec31f5",
+      "firstRunId": "mathematik-m7-six-text-dissent-current-20260927-v1-first-pass-a-codex-unexposed",
+      "secondRunId": "math-m7-six-text-20260927-independent-review-b",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "972cc7e8-be9c-444c-ba45-98e817b3cf14",
+      "firstRecordId": "m7-six-text-dissent-20260927-a-04",
+      "secondRecordId": "math-m7-six-text-20260927-independent-review-b-972cc7e8-be9c-444c-ba45-98e817b3cf14",
+      "firstRunId": "mathematik-m7-six-text-dissent-current-20260927-v1-first-pass-a-codex-unexposed",
+      "secondRunId": "math-m7-six-text-20260927-independent-review-b",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "firstRecordId": "m7-six-text-dissent-20260927-a-05",
+      "secondRecordId": "math-m7-six-text-20260927-independent-review-b-f37b0a72-9e23-51c7-aad5-438c17a56899",
+      "firstRunId": "mathematik-m7-six-text-dissent-current-20260927-v1-first-pass-a-codex-unexposed",
+      "secondRunId": "math-m7-six-text-20260927-independent-review-b",
+      "firstDecision": "split_review",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fde351a8-98b1-5d75-b4df-813beb2bbe3c",
+      "firstRecordId": "m7-six-text-dissent-20260927-a-06",
+      "secondRecordId": "math-m7-six-text-20260927-independent-review-b-fde351a8-98b1-5d75-b4df-813beb2bbe3c",
+      "firstRunId": "mathematik-m7-six-text-dissent-current-20260927-v1-first-pass-a-codex-unexposed",
+      "secondRunId": "math-m7-six-text-20260927-independent-review-b",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

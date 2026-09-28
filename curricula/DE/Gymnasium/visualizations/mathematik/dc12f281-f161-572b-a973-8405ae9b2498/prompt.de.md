@@ -8,53 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / Codex image generation (edit of Gemini gemini-3-pro-image output)
 - Status: pilot
-- Quellbild: `dc12f281-f161-572b-a973-8405ae9b2498.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/dc12f281-f161-572b-a973-8405ae9b2498/dc12f281-f161-572b-a973-8405ae9b2498.jpg`
+- Quellbild: `dc12f281-f161-572b-a973-8405ae9b2498.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/dc12f281-f161-572b-a973-8405ae9b2498/dc12f281-f161-572b-a973-8405ae9b2498.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK)
-Beschreibung: Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Differentialrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Differentialrechnung in einem Sachzusammenhang auswaehlen, anwenden und deuten.
-- Verwende genau diesen Kontext:
-  Hoehe eines Balles nach t Sekunden:
-  h(t) = -5t^2 + 20t + 1.
-  Einheit: Meter, Zeit in Sekunden.
-- Zeige die passende Methode:
-  Maximum der Hoehe mit Ableitung bestimmen.
-  h'(t) = -10t + 20.
-  h'(t)=0 -> t=2.
-  h(2)=41.
-- Ergebnis im Kontext:
-  Der Ball erreicht nach 2 s seine maximale Hoehe von 41 m.
-- Zeige eine Parabel mit Scheitelpunkt S(2 | 41) und Tangente dort waagrecht.
-- Deute das Vorzeichen der Ableitung:
-  vor t=2: h'(t)>0, Hoehe steigt.
-  nach t=2: h'(t)<0, Hoehe faellt.
-
-Vermeiden:
-- Nicht die Nullstelle der Hoehe als maximale Hoehe verwenden.
-- Nicht h'(t) falsch als -5t+20 schreiben.
-- Nicht h(2)=21 oder h(2)=40 schreiben; korrekt ist 41.
-- Nicht Sekunden und Meter vertauschen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Edit the referenced landscape image conservatively, preserving its warm cream visual style, exact layout, water tank at 5 m, and mathematical curve. This is a mathematical learning-goal illustration, so correctness takes priority over decoration. The ONLY requested edit is to clean up the graph's bottom-right area for small-screen readability: completely remove the crowded line '0≤t≤4 (in h)' below the x-axis; keep all existing x-axis tick labels 0,1,2,3,4 distinct and exactly aligned to their ticks, and add a short unobtrusive 't (h)' at the far right of the horizontal axis outside the plot without overlapping any tick label or curve. Keep the plotted parabola precisely from (0,1) to vertex (2,5) to (4,1), no extension beyond endpoints; keep the horizontal tangent at y=5. Preserve formula h(t)=1+4t−t², derivative h′(t)=4−2t, h′(2)=0, and the German result 'Nach 2 h: größte Füllhöhe 5 m' exactly legible. Do not introduce any other text, numbers, curves, or distortions. Output the same wide 16:9 bitmap.
 ```
 
 ## Review-Notiz

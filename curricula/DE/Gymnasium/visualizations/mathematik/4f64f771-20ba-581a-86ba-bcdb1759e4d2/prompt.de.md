@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: OpenAI image generation
+- Provider: OpenAI imagegen, edited from prior SkillPilot mathematical raster
 - Status: pilot
 - Quellbild: `4f64f771-20ba-581a-86ba-bcdb1759e4d2.png`
 - Public Asset: `/assets/goal-visualizations/mathematik/4f64f771-20ba-581a-86ba-bcdb1759e4d2/4f64f771-20ba-581a-86ba-bcdb1759e4d2.png`
@@ -16,40 +16,9 @@
 ## Prompt
 
 ```text
-Erzeuge eine fachlich präzise, klar lesbare Mathematik-Infografik im Querformat (16:9) mit weißem bis sehr hellblauem Hintergrund und ruhigem, modernem Schulbuchstil. Verwende ausschließlich deutschen sichtbaren Text, echte Umlaute und gut lesbare mathematische Notation. Keine Logos, Wasserzeichen, technischen IDs, Produktnamen oder dekorativen Figuren. Wenig Text und keine zusätzlichen Themen.
+Rekonstruktionsspezifikation für das bereits erzeugte, aus einem früheren SkillPilot-Mathematikdiagramm mit OpenAI imagegen editierte Rasterbild; dies ist kein behaupteter Einzelschritt-Originalprompt und keine deterministische SVG-Quelle.
 
-Titel: Komplexe Zahlen in Polarform darstellen
-
-Hauptbereich links: Gaußsche Zahlenebene
-- Waagerechte Achse: Re(z), senkrechte Achse: Im(z).
-- Zeichne den Punkt z = 3 + 4i bei den Koordinaten (3,4).
-- Zeichne den Ortsvektor vom Ursprung zum Punkt.
-- Beschrifte seine Länge mit r = |z| = 5.
-- Markiere den gegen den Uhrzeigersinn von der positiven reellen Achse gemessenen Winkel φ.
-- Zeige als kurze Beziehung: φ = arctan(4/3) ≈ 53,1°.
-
-Formelfeld in der Mitte, groß und fehlerfrei:
-z = 3 + 4i = 5·(cos φ + i·sin φ) = 5·e^(iφ)
-
-Allgemeines Merksatzfeld:
-z = r·e^(iφ) = r·(cos φ + i·sin φ),  r ≥ 0
-Für z ≠ 0 ist φ ein Argument von z.
-
-Kleiner Bereich rechts „Drehung mit der Zeit“:
-- Zeichne einen Kreis mit festem Radius r und einen Zeiger bei Winkel φ=ωt.
-- Formel: z(t)=r·e^(iωt)
-- Kurze Beschriftung: „ω: Winkelgeschwindigkeit“.
-- Bei positivem ω zeigt ein kleiner Pfeil gegen den Uhrzeigersinn.
-
-Vermeiden:
-- Den Faktor r niemals weglassen; die allgemeine Polarform ist nicht auf den Einheitskreis beschränkt.
-- Nicht z=e^(iφ) als allgemeine Polarform darstellen.
-- Real- und Imaginärachse nicht vertauschen.
-- Den Punkt 3+4i nicht an einer anderen Koordinate platzieren.
-- Betrag und Argument nicht verwechseln.
-- Für z=0 kein Argument behaupten.
-- Keine falsche Gleichung wie r=φ oder |z|=3+4.
-- Keine Dezimalpunkte; sichtbare Dezimalzahl als 53,1° schreiben.
+Erstelle eine freundliche Lernkarte im warmen, handgezeichneten Klassenzimmerstil mit zwei klar getrennten Feldern. Links „Ein fester Punkt“: gleich skalierte Re- und Im-Achsen, z=1+i als Pfeil von (0,0) nach (1,1), Betrag r=√2, Winkel φ=45°=π/4. Rechts „Drehung mit der Zeit“: Kreis um den Ursprung mit z(t)=2e^(−iπt/2); markiere t=0 rechts, t=1 unten, t=2 links und t=3 oben, mit Drehrichtung im Uhrzeigersinn und ω=−π/2 rad/s. Keine irreführenden numerischen Achsenticks am rechten Kreis. Verwende überall das große Im als Achsenbezeichnung. Unten die allgemeine Form z=r(cos φ+i sin φ)=r e^(iφ) sowie r≥0 und ein Argument φ nur für z≠0. Trenne Formeldeklarationen gut lesbar mit Semikolons. Mathematische Punkte, Maßstäbe und Beschriftungen müssen auch bei 360 Pixel Bildbreite nachvollziehbar bleiben.
 ```
 
 ## Review-Notiz

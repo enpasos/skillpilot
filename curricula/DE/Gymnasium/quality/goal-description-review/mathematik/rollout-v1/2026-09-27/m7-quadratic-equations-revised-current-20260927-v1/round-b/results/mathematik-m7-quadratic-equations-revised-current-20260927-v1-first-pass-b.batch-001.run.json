@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-quadratic-equations-revised-current-20260927-v1-round-b-codex-20260927",
+  "campaignId": "mathematik-m7-quadratic-equations-revised-current-20260927-v1-b",
+  "roundId": "mathematik-m7-quadratic-equations-revised-current-20260927-v1-first-pass-b",
+  "batchId": "mathematik-m7-quadratic-equations-revised-current-20260927-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:b9d75596ccab315442239d03f39ce8e89ec7af48c552f3a0feda53ecd1587b06",
+  "bundleFingerprint": "sha256:f0dfef0a1d48dfaf5aa5655691ae557760ddeda17272158d7988a30819e3d53d",
+  "bookDigest": "sha256:133eada07eba7d7474f7b41d3d82c804ae607e9b41ac1593517757350354f876",
+  "provider": "OpenAI",
+  "model": "Codex GPT-5",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:d9be5634fb646076aa62e33f4cdc0daabdf7bd3b961076d030b0e732bc4b14cf",
+  "independenceGroupId": "mathematik-m7-quadratic-equations-revised-current-20260927-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "9023226b-fc17-412b-807c-2bb45cd551d5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:8204099c733f77fc1bb749692fabaa56309655f7cef5c0612924b2c621701123"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:25913f8a2411526ae7ee80024dcc98c7b417ab52525a8c357be905a39ef7e6b8"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:5d40f932672c04d13de4f9b1f38b2bf48f9174a42831623fc65834b809dbb388"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:698bd4407ef62be6a13d21a60d4519f825b86bce9e0ec3c3c6a593004a1955da"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:b9d75596ccab315442239d03f39ce8e89ec7af48c552f3a0feda53ecd1587b06"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-27T13:52:46.000Z",
+  "completedAt": "2026-09-27T13:53:40.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:3360ff160bce323bc123f0eb19b5ffe699424c4c768be445e7bf3ba80f08796d",
+  "toolchainVersion": "goal-description-review-v1"
+}

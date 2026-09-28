@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:46d1009883443d9dd920b4539ccb2ad5c721c4544d1cf5456c8e8a07a72e5fa9",
+  "reviewInputFingerprint": "sha256:45bc4e339ada0cb8ec988600b20a4491a46f4e37f0adfd91c04781cb2f723c39",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j9-mirror-alt-current-20260927-v1-a",
+      "roundId": "mathematik-m7-j9-mirror-alt-current-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j9-mirror-alt-current-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-j9-mirror-alt-current-20260927-v1-first-pass-a-batch-001-run-1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (model identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j9-mirror-alt-current-20260927-v1-b",
+      "roundId": "mathematik-m7-j9-mirror-alt-current-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j9-mirror-alt-current-20260927-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-j9-mirror-alt-current-20260927-v1-round-b-codex-20260927"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+      "firstRecordId": "mathematik-m7-j9-mirror-alt-current-20260927-v1-first-pass-a-2041f4ec",
+      "secondRecordId": "mathematik-m7-j9-mirror-alt-current-20260927-v1-b-2041f4ec",
+      "firstRunId": "mathematik-m7-j9-mirror-alt-current-20260927-v1-first-pass-a-batch-001-run-1",
+      "secondRunId": "mathematik-m7-j9-mirror-alt-current-20260927-v1-round-b-codex-20260927",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

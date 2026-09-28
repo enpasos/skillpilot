@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-quadratic-equations-revised-current-20260927-v1-a-codex-001",
+  "campaignId": "mathematik-m7-quadratic-equations-revised-current-20260927-v1-a",
+  "roundId": "mathematik-m7-quadratic-equations-revised-current-20260927-v1-first-pass-a",
+  "batchId": "mathematik-m7-quadratic-equations-revised-current-20260927-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:bfdd2df365d24e986b27959a0c3b3071855b9b6ee0731387c8e7054784f8ecd0",
+  "bundleFingerprint": "sha256:f0dfef0a1d48dfaf5aa5655691ae557760ddeda17272158d7988a30819e3d53d",
+  "bookDigest": "sha256:133eada07eba7d7474f7b41d3d82c804ae607e9b41ac1593517757350354f876",
+  "provider": "openai",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:e2f70ee53fb757ff3409550bccc855aea96026399947e8595474abbd411afda0",
+  "independenceGroupId": "mathematik-m7-quadratic-equations-revised-current-20260927-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "9023226b-fc17-412b-807c-2bb45cd551d5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_html",
+      "digest": "sha256:25913f8a2411526ae7ee80024dcc98c7b417ab52525a8c357be905a39ef7e6b8"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:bfdd2df365d24e986b27959a0c3b3071855b9b6ee0731387c8e7054784f8ecd0"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-09-27T13:57:36Z",
+  "completedAt": "2026-09-27T13:59:11Z",
+  "status": "completed",
+  "outputDigest": "sha256:881a16a6c3e6f1ce0800c10f9bcdf7a286bb11ee6dfdd0d429ab6b69776a34d9",
+  "toolchainVersion": "codex-gpt-6-20260927"
+}

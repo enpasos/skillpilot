@@ -535,6 +535,26 @@ def is_known_non_landscape_goal_collection(file_path, data):
         normalized_path == FORMULA_TEXT_NORMALIZATION_RECEIPT_PATH
         and data.get("receiptId")
         == "math-m7-five-volume-formula-text-normalization-20260924-v1"
+    ) or (
+        filename == "positive-binding-review.json"
+        and data.get("authority") == "ai_candidate"
+        and data.get("humanApproved") is False
+        and all(
+            isinstance(goal, dict)
+            and isinstance(goal.get("goalId"), str)
+            and goal["goalId"].strip()
+            for goal in data["goals"]
+        )
+    ) or (
+        filename == "d-hold-receipt.json"
+        and data.get("historicalResolutionsPreserved") is True
+        and data.get("humanApproved") is False
+        and all(
+            isinstance(goal, dict)
+            and isinstance(goal.get("goalId"), str)
+            and goal["goalId"].strip()
+            for goal in data["goals"]
+        )
     )
 
 
@@ -635,6 +655,18 @@ def validate_landscape_discovery_contract():
                 "receiptId": "math-m7-five-volume-formula-text-normalization-20260924-v1",
             },
         ),
+        (
+            "m7-ten-independent-png-20260927-v1/positive-binding-review.json",
+            {"authority": "ai_candidate", "humanApproved": False},
+        ),
+        (
+            "m7-newton-parallel-two-png-20260927-v1/positive-binding-review.json",
+            {"authority": "ai_candidate", "humanApproved": False},
+        ),
+        (
+            "m7-newton-parallel-two-png-20260927-v1/d-hold-receipt.json",
+            {"historicalResolutionsPreserved": True, "humanApproved": False},
+        ),
     ]
     for relative_path, markers in review_formats:
         review_path = os.path.join(GOAL_VISUALIZATION_REVIEW_ROOT, relative_path)
@@ -657,6 +689,12 @@ def validate_landscape_discovery_contract():
         ):
             for invalid_value in invalid_values:
                 cases.append((review_path, {**review, field: invalid_value}, True))
+        if os.path.basename(review_path) in (
+            "positive-binding-review.json",
+            "d-hold-receipt.json",
+        ):
+            for invalid_goals in ([{}], [{"goalId": " "}], [None]):
+                cases.append((review_path, {**review, "goals": invalid_goals}, True))
         missing_version = dict(review)
         del missing_version["schemaVersion"]
         cases.append((review_path, missing_version, True))

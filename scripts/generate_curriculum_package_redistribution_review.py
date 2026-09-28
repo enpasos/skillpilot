@@ -99,6 +99,16 @@ USER_PROVIDED_IMPORT = {
     "promptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/prompts.md",
     "promptSha256": "6d50e0c2736a2207948adcb5637ab37a15c29196748f4268b39eac8783a73767",
 }
+# The unchanged first user image was withdrawn in the immutable September 24
+# receipt and independently reactivated on September 27. Never reinterpret the
+# old receipt as active or transfer a human release approval from that event.
+USER_PROVIDED_REACTIVATION = {
+    "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+    "receiptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/m7-ln-existing-keep-20260927-v1/user-image-reactivation-receipt.json",
+    "reviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/m7-ln-existing-keep-20260927-v1/README.md",
+    "reviewSha256": "37f991ba7178fd1570007317768e855cf114353c30e642627995d064e3c1556d",
+    "qaPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+}
 # Exact current Codex image-generator labels.  A project license by itself is
 # never provenance; the prompt must independently repeat the provider verbatim.
 CODEX_IMAGE_PROVIDERS = frozenset({
@@ -106,6 +116,14 @@ CODEX_IMAGE_PROVIDERS = frozenset({
     "ChatGPT/Codex imagegen (model/version not exposed)",
     "OpenAI/ChatGPT-Codex image generation",
     "OpenAI/Codex image_gen.imagegen (model version not exposed)",
+})
+# Exact generator/edit labels used by newer image batches. The per-goal prompt
+# must still repeat the provider verbatim; a project license grants no provenance.
+ADDITIONAL_IMAGE_PROVIDERS = frozenset({
+    "Google Gemini / Nano Banana 2 (gemini-3.1-flash-image)",
+    "Google Gemini gemini-3.1-flash-image (thinking_level=high)",
+    "Google Gemini gemini-3-pro-image",
+    "Gemini Nano Banana Pro; ChatGPT/Codex imagegen edit",
 })
 # Existing reviewed prompts use several older provider headings, including two
 # verbatim image-generation prompts with the provider recorded in the linked
@@ -132,6 +150,14 @@ REVIEW_ONLY_PROVIDER_NOTE = (
     "math-m7-ln-hyperbola-mobile-png-20260923-v1.md"
 )
 REVIEW_ONLY_PROVIDER_NOTE_SHA256 = "de9a97fb8b76865cefe55a8a65e0d641fcb381c7ddc115bc616799fe4c9edd43"
+# These active PNGs replaced historical Gemini JPGs. Their original prompt.de.md
+# remains historical; bind redistribution evidence to the current edit/revision.
+ACTIVE_PROMPT_OVERRIDES = {
+    "goal-resource:7d37513b-fa1a-54cc-9e2a-9279a381f0f0:0": "curricula/DE/Gymnasium/visualizations/mathematik/7d37513b-fa1a-54cc-9e2a-9279a381f0f0/prompt.imagegen-central-dilation.de.md",
+    "goal-resource:0f4f9957-8afe-4aab-9dd8-c26c9aee2afd:0": "curricula/DE/Gymnasium/visualizations/mathematik/0f4f9957-8afe-4aab-9dd8-c26c9aee2afd/prompt.imagegen-edit.de.md",
+    "goal-resource:49f9059a-876c-5051-8146-d008b5cc691c:0": "curricula/DE/Gymnasium/visualizations/mathematik/49f9059a-876c-5051-8146-d008b5cc691c/prompt.imagegen-neutral-title.de.md",
+    "goal-resource:71fe4a39-38e8-5c6a-8eef-ff4783fe70c2:0": "curricula/DE/Gymnasium/visualizations/mathematik/71fe4a39-38e8-5c6a-8eef-ff4783fe70c2/prompt.imagegen-neutral-title.de.md",
+}
 PROMPT_PROVIDER_RE = re.compile(r"^- Provider: (.+)$", re.MULTILINE)
 PROMPT_SOURCE_SVG_RE = re.compile(r"^- Immutable SVG: `([^`]+)`$", re.MULTILINE)
 PROMPT_SOURCE_SVG_SHA_RE = re.compile(
@@ -237,6 +263,7 @@ def validate_image_license_input(provider: str, note: str, resource_id: str) -> 
         if (
             provider == "Google Gemini / Nano Banana Pro"
             or provider.startswith("Google Gemini / Nano Banana Pro (")
+            or provider in ADDITIONAL_IMAGE_PROVIDERS
             or provider.startswith("OpenAI ")
             or provider in CODEX_IMAGE_PROVIDERS
             or USER_PROVIDED_RE.search(provider) is not None
@@ -406,15 +433,55 @@ def user_import_prompt_evidence(
         raise ReviewError(f"User import has no unique goal binding for {owner_goal_id!r}")
     row = matches[0]
     number = row.get("promptNumber")
-    if (
+    original_path = row.get("sourcePath")
+    if type(number) is not int or number < 1 or row.get("sha256") != f"sha256:{asset_sha256}":
+        raise ReviewError(f"User import image binding differs for {owner_goal_id!r}")
+    evidence_receipt_path = USER_PROVIDED_IMPORT["receiptPath"]
+    evidence_receipt_sha256 = USER_PROVIDED_IMPORT["receiptSha256"]
+    if owner_goal_id == USER_PROVIDED_REACTIVATION["goalId"]:
+        reactivation = USER_PROVIDED_REACTIVATION
+        review_path = repo_file(reactivation["reviewPath"])
+        if sha256_file(review_path) != reactivation["reviewSha256"]:
+            raise ReviewError(f"User image reactivation review drift for {owner_goal_id!r}")
+        active_url = source_path.removeprefix("app/public")
+        expected_receipt = {
+            "schemaVersion": 1,
+            "event": "reactivated-pilot-machine-reviewed",
+            "goalId": owner_goal_id,
+            "promptNumber": number,
+            "assetSha256": f"sha256:{asset_sha256}",
+            "sourcePath": original_path,
+            "activeImageUrl": active_url,
+            "historicalReceiptPath": USER_PROVIDED_IMPORT["receiptPath"],
+            "reviewPath": reactivation["reviewPath"],
+            "reviewSha256": f"sha256:{reactivation['reviewSha256']}",
+            "humanReleaseApproved": False,
+        }
+        current_receipt_path = repo_file(reactivation["receiptPath"])
+        current_receipt = read_json(current_receipt_path)
+        qa = require_object(read_json(repo_file(reactivation["qaPath"])), "visualization QA")
+        qa_rows = require_list(qa.get("records"), "visualization QA records")
+        matching_qa = [item for item in qa_rows if isinstance(item, dict) and item.get("goalId") == owner_goal_id]
+        if (
+            row.get("status") != "withdrawn_quality_hold"
+            or row.get("currentImageUrl") != ""
+            or current_receipt != expected_receipt
+            or len(matching_qa) != 1
+            or matching_qa[0].get("visualizationState") != "available"
+            or matching_qa[0].get("imageUrl") != active_url
+            or matching_qa[0].get("assetSha256") != f"sha256:{asset_sha256}"
+            or matching_qa[0].get("aiApproved") != "yes"
+            or matching_qa[0].get("aiApprovedAssetSha256") != f"sha256:{asset_sha256}"
+        ):
+            raise ReviewError(f"User image reactivation binding differs for {owner_goal_id!r}")
+        evidence_receipt_path = reactivation["receiptPath"]
+        evidence_receipt_sha256 = sha256_file(current_receipt_path)
+    elif (
         row.get("status") != "active_machine_v_approved_current_p_reviewed"
-        or row.get("sha256") != f"sha256:{asset_sha256}"
         or not isinstance(row.get("currentImageUrl"), str)
         or source_path != "app/public" + row["currentImageUrl"]
-        or type(number) is not int or number < 1
     ):
         raise ReviewError(f"User import active image binding differs for {owner_goal_id!r}")
-    original_path = row.get("sourcePath")
     verify_asset_source(original_path, byte_count, asset_sha256)
     prompt_text = prompt_path.read_text(encoding="utf-8")
     heading = rf"^## {number}\. {re.escape(owner_goal_id)} — [^\n]+\n\n\S"
@@ -424,8 +491,8 @@ def user_import_prompt_evidence(
         "promptPath": USER_PROVIDED_IMPORT["promptPath"],
         "promptSha256": f"sha256:{USER_PROVIDED_IMPORT['promptSha256']}",
         "userProvidedImportEvidence": {
-            "receiptPath": USER_PROVIDED_IMPORT["receiptPath"],
-            "receiptSha256": f"sha256:{USER_PROVIDED_IMPORT['receiptSha256']}",
+            "receiptPath": evidence_receipt_path,
+            "receiptSha256": f"sha256:{evidence_receipt_sha256}",
             "promptNumber": number,
             "sourcePath": original_path,
             "sourceSha256": f"sha256:{asset_sha256}",
@@ -656,9 +723,13 @@ def load_source_model(release_root: Path) -> SourceModel:
         import_evidence = user_import_prompt_evidence(
             provider, owner_goal_id, source_path, byte_count, asset_sha256
         )
-        prompt_relative = import_evidence["promptPath"] if import_evidence else (
-            "curricula/DE/Gymnasium/visualizations/mathematik/"
-            f"{owner_goal_id}/prompt.de.md"
+        prompt_relative = (
+            import_evidence["promptPath"] if import_evidence
+            else ACTIVE_PROMPT_OVERRIDES.get(
+                resource_id,
+                "curricula/DE/Gymnasium/visualizations/mathematik/"
+                f"{owner_goal_id}/prompt.de.md",
+            )
         )
         prompt_path = repo_file(prompt_relative)
         prompt_text = prompt_path.read_text(encoding="utf-8")
@@ -1613,6 +1684,7 @@ def run_self_test(
     provider_cases = (
         ("Google Gemini / Nano Banana Pro", False),
         ("Google Gemini / Nano Banana Pro (gemini-3-pro-image)", False),
+        *((provider, False) for provider in sorted(ADDITIONAL_IMAGE_PROVIDERS)),
         ("OpenAI / ChatGPT-Codex image generation", False),
         *((provider, False) for provider in sorted(CODEX_IMAGE_PROVIDERS)),
         (AI_ASSISTED_NATIVE_PROVIDER, True),

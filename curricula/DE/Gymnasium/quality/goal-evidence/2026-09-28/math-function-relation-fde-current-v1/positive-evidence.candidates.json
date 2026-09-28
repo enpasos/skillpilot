@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-function-relation-fde-current-20260928-v1",
+  "reviewedAt": "2026-09-28T00:00:00Z",
+  "reviewer": "Codex targeted function-relation modeling review; AI candidate only",
+  "goals": [
+    {
+      "goalId": "fde351a8-98b1-5d75-b4df-813beb2bbe3c",
+      "reason": "DE: Der eingegrenzte Zieltext prüft das Aufstellen einer passenden Funktionsgleichung aus einem Sachkontext und die Bedeutung der verwendeten Größen. Das aktuelle PNG zeigt ein Kiosk-Kostenmodell, daher verwenden die beiden unabhängigen Fälle weder Kiosk noch Kosten: ein linear fallender Wasserbestand und eine quadratische Flächenfunktion. Eine Kapazitätsungleichung gehört nicht mehr zu diesem Ziel. HE E.1 und BW 2.3(5) stützen den eingegrenzten Schritt; die übrige Ländergeltung und D-Entscheidung sind gesondert zu prüfen. EN: The narrowed goal assesses formulating a suitable function rule from a context and naming the quantities. The current image shows a kiosk cost model, so two independent cases use a draining tank and a quadratic area relation. Inequality modeling is outside this goal. Other jurisdictions and the description review still require separate verification.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": ["Current applicability beyond the directly reviewed HE/BW sources has not been confirmed by this P profile; this AI candidate grants no D, source, or human approval."],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "functional-dependency",
+            "essentialUnderstandingDe": "Eine Funktionsgleichung beschreibt, wie eine abhängige Größe aus einer Eingabegröße berechnet wird. Ihre Rechenstruktur muss aus der Sachsituation entstehen und darf nicht aus einem Bild übernommen werden.",
+            "essentialUnderstandingEn": "A function equation describes how a dependent quantity is obtained from an input quantity. Its structure must come from the situation, not be copied from an image.",
+            "observablePerformanceDe": "Die lernende Person formuliert in einem neuen Sachkontext eine passende Funktionsgleichung und prüft an einem Beispielsatz, ob die Zuordnung zur beschriebenen Situation passt.",
+            "observablePerformanceEn": "In a new context the learner formulates a suitable function equation and checks with one input whether it fits the situation."
+          },
+          {
+            "id": "context-quantities",
+            "essentialUnderstandingDe": "Eingabe und Funktionswert sind Größen mit konkreter Bedeutung und passenden Einheiten; ein bloßer Term ohne Zuordnung der Größen ist kein vollständiges Modell.",
+            "essentialUnderstandingEn": "Input and function value are quantities with contextual meanings and suitable units; an expression without identifying them is not a complete model.",
+            "observablePerformanceDe": "Die lernende Person benennt unabhängige und abhängige Größe einschließlich Einheit und erklärt ihre Rolle in der Funktionsgleichung.",
+            "observablePerformanceEn": "The learner names the independent and dependent quantities with units and explains their roles in the function equation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["functional-dependency", "context-quantities"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "relation-shape",
+            "textDe": "Linear fallender Bestand gegenüber quadratisch wachsender Fläche; beide Situationen unterscheiden sich vom linearen Kostenmodell im Bild.",
+            "textEn": "Linearly decreasing stock versus quadratic area growth; both differ from the linear cost model in the image."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "draining-tank",
+            "taskDemandDe": "Ein Tank enthält zu Beginn 120 Liter Wasser und verliert gleichmäßig 8 Liter pro Minute. Formuliere für die Zeit bis zum Leerlaufen eine Funktionsgleichung V(t) für den Wasserbestand. Benenne t und V(t) mit Einheiten und prüfe dein Modell für t=7 Minuten.",
+            "taskDemandEn": "A tank initially contains 120 litres of water and loses 8 litres per minute at a constant rate. Formulate a function V(t) for the remaining water until the tank is empty. Identify t and V(t) with units and check your model at t=7 minutes.",
+            "expectedPerformanceDe": "V(t)=120−8t für 0≤t≤15. t ist die Zeit in Minuten seit Beginn, V(t) der Bestand in Litern. V(7)=64 Liter; das ist kleiner als der Anfangsbestand und passt zum Ablaufen.",
+            "expectedPerformanceEn": "V(t)=120−8t for 0≤t≤15. t is elapsed time in minutes and V(t) is water volume in litres. V(7)=64 litres, below the initial amount as expected while draining.",
+            "understandingFocusDe": "Aus Anfangsbestand und konstanter Abnahme eine fallende Funktionsbeziehung aufstellen, nicht die steigende Kostenfunktion des PNG kopieren.",
+            "understandingFocusEn": "Construct a decreasing function from an initial amount and constant loss rather than copying the increasing cost function in the PNG."
+          },
+          {
+            "id": "rectangular-area",
+            "taskDemandDe": "Ein rechteckiger Garten ist 5 Meter länger als breit. Die Breite beträgt x Meter. Formuliere eine Funktionsgleichung A(x) für die Fläche und benenne x und A(x) mit Einheiten. Prüfe die Beziehung für x=4 Meter.",
+            "taskDemandEn": "A rectangular garden is 5 metres longer than it is wide. Its width is x metres. Formulate a function A(x) for its area, identify x and A(x) with units, and check the relation when x=4 metres.",
+            "expectedPerformanceDe": "Die Länge beträgt x+5 Meter, also A(x)=x(x+5) Quadratmeter für x>0. x ist die Breite in Metern, A(x) die Fläche in Quadratmetern. Bei x=4 ist die Länge 9 Meter und die Fläche 36 Quadratmeter.",
+            "expectedPerformanceEn": "The length is x+5 metres, so A(x)=x(x+5) square metres for x>0. x is width in metres and A(x) area in square metres. At x=4 the length is 9 metres and the area 36 square metres.",
+            "understandingFocusDe": "Flächenstruktur aus einem geometrischen Sachkontext zu einer quadratischen Funktionsgleichung übertragen und Größen von Ergebnissen unterscheiden.",
+            "understandingFocusEn": "Turn the area structure of a geometric context into a quadratic function and distinguish input quantities from output quantities."
+          }
+        ]
+      }
+    }
+  ]
+}

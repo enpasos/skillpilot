@@ -37,6 +37,7 @@ type Claim = {
   evidenceRound: 'first' | 'second'
   rationaleDe: string
   rationaleEn: string
+  revisionDissent?: NonNullable<GoalDescriptionRolloutSynthesisDecisionManifest['decisions'][number]['revisionDissent']>
 }
 type Config = {
   schemaVersion: 1
@@ -143,10 +144,27 @@ const main = async () => {
     || materialization.open.some((entry) => !entry.note?.trim() || !['review_dissent', 'review_revision', 'review_block', 'current_image_hold', 'unresolved_prior_dissent'].includes(entry.reason))
   ) throw new Error('Source campaign, dual summary, or claimed/open partition changed')
   const openById = new Map(materialization.open.map((entry) => [entry.goalId, entry]))
+  const choiceByGoalId = new Map(materialization.claimed.map((choice) => [choice.goalId, choice]))
   for (const summary of dual.summary.goals) {
     if (claimedIds.includes(summary.goalId)) {
-      if (summary.firstDecision !== 'keep' || summary.secondDecision !== 'keep') {
-        throw new Error(`${summary.goalId}: both independent decisions must remain KEEP`)
+      const choice = choiceByGoalId.get(summary.goalId)!
+      const bothKeep = summary.firstDecision === 'keep' && summary.secondDecision === 'keep'
+      const mixedKeepRevise = (
+        (summary.firstDecision === 'keep' && summary.secondDecision === 'revise')
+        || (summary.firstDecision === 'revise' && summary.secondDecision === 'keep')
+      )
+      if (!bothKeep && !mixedKeepRevise) {
+        throw new Error(`${summary.goalId}: partial closure needs two KEEP records or one KEEP and one REVISE`)
+      }
+      if (bothKeep && choice.revisionDissent) {
+        throw new Error(`${summary.goalId}: two KEEP records must not carry rejected-revision dissent`)
+      }
+      if (mixedKeepRevise && (
+        !choice.revisionDissent
+        || choice.revisionDissent.sourceRound !== (summary.firstDecision === 'revise' ? 'first' : 'second')
+        || choice.evidenceRound !== (summary.firstDecision === 'keep' ? 'first' : 'second')
+      )) {
+        throw new Error(`${summary.goalId}: mixed partial closure needs exact dissent and KEEP evidence round`)
       }
       continue
     }
@@ -271,9 +289,7 @@ const main = async () => {
     }
     const contextFingerprint = fingerprintGoalDescriptionReviewContext(input)
     if (
-      first.source.decision !== 'keep'
-      || second.source.decision !== 'keep'
-      || !same(input, secondInput)
+      !same(input, secondInput)
       || !same(currentPage, preparedPage)
       || !same(currentPage, input.reviewContext.page)
       || !same(buildGoalDescriptionCanonicalContext(canonicalGoal), input.canonicalContext)
@@ -465,6 +481,7 @@ const main = async () => {
           first: { recordId: source.first.binding.recordId, recordDigest: source.first.binding.recordDigest },
           second: { recordId: source.second.binding.recordId, recordDigest: source.second.binding.recordDigest },
         },
+        ...(choice.revisionDissent ? { revisionDissent: choice.revisionDissent } : {}),
         rationaleDe: choice.rationaleDe,
         rationaleEn: choice.rationaleEn,
       }
@@ -581,7 +598,9 @@ const main = async () => {
     schemaVersion: 1,
     receiptId: materialization.manifestId,
     status: 'ai_synthesis_candidate_not_registered',
-    purpose: 'Partial strict-D closure for exactly the claimed live-page KEEP/KEEP Mathematics goals; excluded current or earlier dissent and image holds remain open.',
+    purpose: materialization.claimed.some((choice) => choice.revisionDissent)
+      ? 'Partial strict-D closure for claimed live-page KEEP/KEEP or KEEP/REVISE Mathematics goals with exact rejected-revision dissent; excluded unresolved reviews and image holds remain open.'
+      : 'Partial strict-D closure for exactly the claimed live-page KEEP/KEEP Mathematics goals; excluded current or earlier dissent and image holds remain open.',
     materializationConfigPath: relative(root, configPath),
     materializationConfigDigest: sha256(await readFile(configPath)),
     sourceBatchId: dual.prepared.manifest.batchId,

@@ -125,6 +125,7 @@ public class CompositionViewService {
             return Collections.emptyList();
         }
         return asNodeList(view.get("rootNodes")).stream()
+                .filter(node -> projectionRole(node, null, "root scope option") == ProjectionRole.TARGET)
                 .map(node -> resolveScopeSibling(node, resolvedViewId))
                 .filter(Objects::nonNull)
                 .toList();

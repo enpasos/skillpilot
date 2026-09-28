@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-vready-two-png-current-20260926-v2",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-26/m7-vready-two-png-current-20260926-v2.config.json",
+  "configDigest": "sha256:fa62e1b521ff5a5c3a09e5078d9acf1a673772af46b45c63f6eab9666aa78bf8",
+  "goalIds": [
+    "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
+    "e33e75e3-eae5-5a09-862f-d1a11176373f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:956dbd894939b7cbf6d60fd4587b72914f7f6065e62104ae887751eec87d6b0e"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:853c45a27bd418247bc6a8f79ae6e79ec45b10e14d9c2add810559c3007526bb",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:7dc19eda4f22b64f3312cfcbe5e89053b780771d2162be9f918944b646cd4833",
+    "reviewInputFingerprint": "sha256:74e3d04c3a0e0704443e736fc8861d367c984f76ee03b007ecc886cc835844ab",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-vready-two-png-current-20260926-v2-a",
+        "campaignDigest": "sha256:eee64f9589e2f5984f48672174116427a95122fa8f362ce9a7dfcf5a99c8893e",
+        "roundId": "mathematik-m7-vready-two-png-current-20260926-v2-first-pass-a",
+        "independenceGroupId": "mathematik-m7-vready-two-png-current-20260926-v2-independent-a",
+        "batchId": "mathematik-m7-vready-two-png-current-20260926-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:a685c93cead20be6eb8fd3a7324aaa4a19f7d2da3d0da1c82d56d70b0f95f546"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-vready-two-png-current-20260926-v2-b",
+        "campaignDigest": "sha256:01fe75d2a9f5b2d986ef5b85d7f4dee45a967a7eb1a40f81cbad57a63927daaa",
+        "roundId": "mathematik-m7-vready-two-png-current-20260926-v2-first-pass-b",
+        "independenceGroupId": "mathematik-m7-vready-two-png-current-20260926-v2-independent-b",
+        "batchId": "mathematik-m7-vready-two-png-current-20260926-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:059394da0c20e10782830b73201bbf2d93fd3d948da0e0a76564f388cccedb37"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

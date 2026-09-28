@@ -1,0 +1,7 @@
+# Komplexe Division: Definitionsmenge im Zieltext präzisiert
+
+Review date: 2026-09-27
+
+Ziel `a7fb1a7a-8315-5bcb-842e-48293293dfcc`: Der bisherige Text nannte die geometrische Deutung einer Division komplexer Zahlen, ohne den notwendigen Ausschluss des Nulldivisors auszusprechen. Die neue deutsche und englische Beschreibung nennt ausdrücklich die Division **durch eine von null verschiedene komplexe Zahl**. Das entspricht dem unveränderten fachlichen Gehalt; eine Division durch null war nie Teil einer gültigen Rechenart. Das aktuelle Bild zeigt `u≠0` ebenfalls sichtbar. Addition, Subtraktion, Multiplikation und geometrische Deutung bleiben erhalten.
+
+Gezielte aktuelle Nachprüfung der bestehenden Klassifikationen: `curricularAtomic` bleibt richtig, da nur die Definitionsmenge einer Operation präzisiert wurde; die vier Operationen sind im bisherigen Curriculumziel eine zusammenhängende Deutungskompetenz, keine neue Aufspaltung. Die Atomicity-Entscheidung bleibt `atomic`; die vorhandene eng begrenzte Memory-Eignung für kompakte Notation/Formel bleibt bestehen. Für genau diese DE/EN-Textfassung wurden die drei prüfbaren Source-Fingerprints erneuert: semantic-kind `sha256:921e9d5911268334127ab3906544a1d0c24dff539ef0e5646f829ab89919f805`, atomicity `sha256:b6c5d6955d93354ff132340f5be9a1e20cb5ddead53acefa7979faf85086cf77`, memory `sha256:44df8b1ae70c9d26e0e453096578141fc466231c2cae8ca6448e004bf62eb4c4`. Die alte jeweilige Entscheidung wird nicht als neue Humanfreigabe ausgegeben. Das aktuelle D-/P-Profil wird separat gegen Text und Bild neu geprüft.

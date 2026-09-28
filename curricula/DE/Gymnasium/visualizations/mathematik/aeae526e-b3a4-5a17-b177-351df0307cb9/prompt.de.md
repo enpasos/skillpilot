@@ -8,12 +8,16 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI imagegen edit of prior Google Gemini / Nano Banana Pro asset; exact model not exposed
 - Status: pilot
-- Quellbild: `aeae526e-b3a4-5a17-b177-351df0307cb9.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.jpg`
+- Aktives Quellbild: `aeae526e-b3a4-5a17-b177-351df0307cb9.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.png`
+- Endbild SHA-256: `a04ca7f4853c4fff837d381c7c7851376285dae9a1d4a2291fc2347c89887281`
+- Historisches JPEG, der unveränderte frühere Prompt, beide Edit-Anweisungen und die zweistufige Provenienz: `curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-aeae-notation-imagegen-clarity-20260927-v1/`.
 
-## Prompt
+## Historischer Ausgangsprompt des alten JPEGs
+
+Der folgende Prompt gehört zum weiterhin erhaltenen Google-Gemini-JPEG, nicht zum neuen PNG. Er liegt zusätzlich bytegetreu im genannten Qualitätsarchiv.
 
 ```text
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.

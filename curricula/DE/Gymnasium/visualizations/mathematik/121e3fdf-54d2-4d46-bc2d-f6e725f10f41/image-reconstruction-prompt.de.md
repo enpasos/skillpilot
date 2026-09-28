@@ -8,8 +8,8 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
-- Quellbild: `121e3fdf-54d2-4d46-bc2d-f6e725f10f41.jpg`
+- Provider: Google Gemini / Nano Banana 2 (gemini-3.1-flash-image)
+- Quellbild: `121e3fdf-54d2-4d46-bc2d-f6e725f10f41.png`
 
 ## Zweck
 
@@ -18,13 +18,9 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein hellcremefarbener Hintergrund. Oben befindet sich ein breites, hellgelb-cremefarbenes Banner. Darauf steht in zwei Zeilen zentriert, in schwarzem, fettem, serifenlosem Text: 'Figuren im Koordinatensystem darstellen und' und darunter 'Koordinatendarstellungen geometrischen Situationen zuordnen'.
+Ein klares, pädagogisches Diagramm im Stil einer handgezeichneten Skizze auf einem hellbeigen Hintergrund. Oben mittig steht in großer, schwarzer, abgerundeter Schrift der Titel "VIERECK IM KOORDINATENSYSTEM". Darunter sind zwei Diagramme nebeneinander angeordnet.
 
-Unterhalb des Banners, auf der linken Seite, steht in schwarzem, fettem, serifenlosem Text 'Koordinatendarstellung'. Darunter ist ein Koordinatensystem abgebildet. Es hat schwarze X- und Y-Achsen, die jeweils mit einem Pfeil in positiver Richtung enden. Die X-Achse ist rechts mit 'x' beschriftet und von 0 bis 6 nummeriert. Die Y-Achse ist oben mit 'y' beschriftet und von 0 bis 6 nummeriert. Ein hellgraues Gitter überzieht das System. Innerhalb des Koordinatensystems ist ein Rechteck gezeichnet. Die Umrisse des Rechtecks sind dicke blaue Linien, und die Innenfläche ist hellblau gefüllt. Die Eckpunkte des Rechtecks sind mit schwarzen Punkten markiert und beschriftet: A(1|1) bei den Koordinaten (1,1), B(5|1) bei (5,1), C(5|4) bei (5,4) und D(1|4) bei (1,4).
+Das linke Diagramm zeigt ein kartesisches Koordinatensystem mit einem feinen, dunkelgrauen Gitter. Die schwarzen Achsen sind dicker als das Gitter. Die horizontale x-Achse ist mit einem Pfeil nach rechts versehen und mit "x-Achse" beschriftet. Sie ist von -5 bis +5 in Einerschritten markiert. Die vertikale y-Achse ist mit einem Pfeil nach oben versehen und mit "y-Achse" beschriftet. Sie ist ebenfalls von -5 bis +5 in Einerschritten markiert. Innerhalb dieses Koordinatensystems ist ein Viereck gezeichnet. Seine vier Eckpunkte sind kleine, dunkelbraune Kreise. Die Eckpunkte sind durch schwarze Linien verbunden und die Fläche des Vierecks ist hellbraun/beige gefüllt. Die Eckpunkte sind beschriftet: Unten links ist A(-3,-2), unten rechts ist B(2,-1), oben rechts ist C(3,2) und oben links ist D(-1,3). Diese Beschriftungen sind in schwarzer, abgerundeter Schrift neben den jeweiligen Punkten platziert. Unter diesem Diagramm steht mittig in kleinerer, schwarzer, abgerundeter Schrift die Beschriftung "KOORDINATENGITTER (RASTER)".
 
-In der Mitte des Bildes, zwischen dem Koordinatensystem und dem rechten Bereich, befindet sich ein kleines Symbol. Es zeigt eine Hand, die ein graues Tablet mit einem hellblauen Bildschirm hält, wobei ein schwarzer Eingabestift den Bildschirm berührt. Daneben liegt eine graue Computermaus. Unter diesem Symbol steht in schwarzem Text 'Digitale Werkzeuge nutzen'.
-
-Rechts neben dem Koordinatensystem und dem Symbol, erstreckt sich ein dicker, hellgelb-cremefarbener Pfeil mit schwarzer Umrandung, der von links nach rechts zeigt. Über dem Pfeil steht in schwarzem, fettem, serifenlosem Text 'Zugeordnet'.
-
-Auf der rechten Seite des Bildes, unterhalb des Banners, steht in schwarzem, fettem, serifenlosem Text 'Geometrische Situation (Schulgarten)'. Darunter ist eine leicht schräge Draufsicht auf ein rechteckiges Hochbeet dargestellt. Das Hochbeet hat hölzerne Seiten in Hellbraun mit schwarzen Umrandungen. Die Innenfläche des Beetes ist hellgrün und enthält mehrere einfache, comicartige grüne Pflanzen unterschiedlicher Formen. In der Mitte des Beetes steht in schwarzem, serifenlosem Text das Wort 'Schulgarten'. Kleine schwarze Punkte und wellenförmige Linien sind ebenfalls im Beet verteilt, um Details des Bodens darzustellen.
+Das rechte Diagramm ist ein abstrahierter Grundriss desselben Vierecks, ohne Koordinatensystem oder Gitter. Es ist horizontal mit dem linken Diagramm ausgerichtet. Das Viereck hat ebenfalls vier kleine, dunkelbraune Kreise als Eckpunkte, die durch schwarze Linien verbunden sind. Die Fläche des Vierecks ist hellbraun/beige gefüllt. Die Eckpunkte sind mit einzelnen Buchstaben beschriftet: Unten links ist A, unten rechts ist B, oben rechts ist C und oben links ist D. Diese Beschriftungen sind in schwarzer, abgerundeter Schrift neben den jeweiligen Punkten platziert. Unter diesem Diagramm steht mittig in kleinerer, schwarzer, abgerundeter Schrift die Beschriftung "ABSTRAKTER GRUNDRISS".
 ```

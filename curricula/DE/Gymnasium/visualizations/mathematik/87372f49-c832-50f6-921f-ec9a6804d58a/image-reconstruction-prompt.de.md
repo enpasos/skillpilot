@@ -8,8 +8,8 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
-- Quellbild: `87372f49-c832-50f6-921f-ec9a6804d58a.jpg`
+- Provider: Google Gemini / Nano Banana 2 (gemini-3.1-flash-image)
+- Quellbild: `87372f49-c832-50f6-921f-ec9a6804d58a.png`
 
 ## Zweck
 
@@ -18,39 +18,20 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein klares, lehrreiches Cartoon-Diagramm im freundlichen Stil, das eine Problemlösungsstrategie darstellt. Der Hintergrund ist eine helle, cremefarbene Wand, hinter der oben mittig eine grüne Schultafel mit einem hellbraunen Holzrahmen und schematischen weißen Kreidezeichnungen (Plus-, Mal-, Geteiltzeichen) sichtbar ist.
+Eine mathematische Präsentationsfolie in einem klaren, didaktischen Stil auf einem hellbeigen Hintergrund. Oben mittig steht in großer, schwarzer Schrift der Titel: "Systematisch testen — noch kein Beweis".
 
-Oben mittig befindet sich ein großes, weißes, abgerundetes Rechteck mit einer dicken schwarzen Umrandung, das als Haupttitel dient. Darin steht in fetter, schwarzer Schrift: "Eine heuristische Strategie anwenden".
+Links unter dem Titel ist ein einfaches, schwarz umrandetes Rechteck dargestellt. Die linke vertikale Seite des Rechtecks ist mittig mit einem schwarzen "x" beschriftet. Die obere horizontale Seite ist mittig mit "20−x" in schwarzer Schrift beschriftet. Die untere horizontale Seite ist ebenfalls mittig mit "20−x" in schwarzer Schrift beschriftet.
 
-Darunter sind drei vertikale, weiße, abgerundete Rechteck-Panels mit dicker schwarzer Umrandung horizontal angeordnet, die einen Prozess von links nach rechts darstellen.
+Rechts neben dem Rechteck, leicht unterhalb des Titels, steht in großer, schwarzer Schrift der Text "Umfang 40 m". Direkt darunter, ebenfalls in großer, schwarzer Schrift, steht die Formel "A=x(20−x)".
 
-**Linkes Panel ("OFFENES PROBLEM"):**
-Oben ein hellblaues, abgerundetes Rechteck mit dicker schwarzer Umrandung als Überschrift, darin in fetter, weißer Schrift: "OFFENES PROBLEM".
-Darunter ein großes, hellblaues Sprechblasenfeld mit dicker schwarzer Umrandung, das den Problemtext enthält: "Problem: Zwei positive Zahlen haben die Summe 20. Für welche Wahl wird ihr Produkt möglichst groß?".
-Unterhalb der Sprechblase steht ein Cartoon-Junge mit hellbraunem Haar, einem hellblauen Langarmshirt und weißem Kragen. Er hält nachdenklich seine rechte Hand ans Kinn. Über seinem Kopf schweben ein blaues Fragezeichen mit drei kleinen schwarzen Kreisen und eine leuchtende gelbe Glühbirne mit Strahlen, die eine Idee symbolisiert.
-Ein hellblauer Pfeil mit dicker schwarzer Umrandung zeigt von der unteren Mitte dieses Panels nach rechts.
+Rechts auf der Folie, auf gleicher Höhe wie der Text "Umfang 40 m", befindet sich eine Tabelle mit zwei Spalten und sechs Zeilen, umrandet von schwarzen Linien. Die Kopfzeile enthält links "x (m)" und rechts "A (m²)", beides in schwarzer Schrift. Die Datenzeilen sind von oben nach unten:
+- Erste Datenzeile: "8" (schwarz) in der linken Spalte, "96" (schwarz) in der rechten Spalte.
+- Zweite Datenzeile: "9" (schwarz) in der linken Spalte, "99" (schwarz) in der rechten Spalte.
+- Dritte Datenzeile: Diese Zeile ist mit einem hellorangen Hintergrund hervorgehoben. In der linken Spalte steht "10" in dunkelroter Schrift, und in der rechten Spalte steht "100" in schwarzer Schrift.
+- Vierte Datenzeile: "11" (schwarz) in der linken Spalte, "99" (schwarz) in der rechten Spalte.
+- Fünfte Datenzeile: "12" (schwarz) in der linken Spalte, "96" (schwarz) in der rechten Spalte.
 
-**Mittleres Panel ("HEURISTISCHE STRATEGIE"):**
-Oben ein hellblaues, abgerundetes Rechteck mit dicker schwarzer Umrandung als Überschrift, darin in fetter, weißer Schrift: "HEURISTISCHE STRATEGIE".
-Darunter ein hellgrünes, abgerundetes Rechteck mit dicker schwarzer Umrandung, das die Strategie beschreibt: "Strategie: Systematisch probieren + Tabelle + Symmetrie erkennen".
-Darunter eine Tabelle mit dicker schwarzer Umrandung, bestehend aus drei Spalten und fünf Zeilen.
-Die Kopfzeile hat einen hellgrünen Hintergrund und enthält in fetter, schwarzer Schrift: "x", "20 - x", "Produkt".
-Die Datenzeilen sind:
-1.  "8", "12", "96"
-2.  "9", "11", "99"
-3.  Diese Zeile hat einen gelben Hintergrund. Links davon ist ein gelbes Sternsymbol mit schwarzer Umrandung platziert. Die Zellen enthalten in schwarzer Schrift: "10", "10", "100". Eine graue Lupe mit schwarzer Umrandung ist über der Zelle "100" positioniert und vergrößert diese leicht.
-4.  "11", "9", "99"
-5.  "12", "8", "96"
-Unter der Tabelle steht in fetter, schwarzer Schrift: "Symmetrie!". Zwei geschwungene, hellgrüne Pfeile mit schwarzer Umrandung zeigen von der obersten und untersten Zeile der Tabelle nach innen zur mittleren Zeile, um die Symmetrie zu betonen.
-Ein hellblauer Pfeil mit dicker schwarzer Umrandung zeigt von der unteren Mitte dieses Panels nach rechts.
+Zwei geschwungene, schwarze Pfeile verbinden Einträge in der linken Spalte der Tabelle. Der erste Pfeil beginnt bei der Zahl "8", verläuft nach unten und rechts, um dann nach links zu zeigen und bei der Zahl "12" zu enden, wodurch die Werte 8 und 12 visuell verbunden werden. Der zweite Pfeil beginnt bei der Zahl "9", verläuft ebenfalls nach unten und rechts, um dann nach links zu zeigen und bei der Zahl "11" zu enden, wodurch die Werte 9 und 11 visuell verbunden werden. Die Pfeile deuten eine Symmetrie um die Zeile mit dem Wert 10 an.
 
-**Rechtes Panel ("ERGEBNIS & BEGRÜNDUNG"):**
-Oben ein hellblaues, abgerundetes Rechteck mit dicker schwarzer Umrandung als Überschrift, darin in fetter, weißer Schrift: "ERGEBNIS & BEGRÜNDUNG".
-Darunter ein hellblaues Sprechblasenfeld mit dicker schwarzer Umrandung. Links davon befindet sich ein gelber Kreis mit dicker schwarzer Umrandung, der ein grünes Häkchen enthält. Die Sprechblase enthält den Ergebnisstext: "Vermutung / Ergebnis: Maximum bei x = 10 und 20 - x = 10, Produkt = 100.".
-Darunter ein hellgrünes Sprechblasenfeld mit dicker schwarzer Umrandung. Links davon befindet sich ein kleines hellgrünes Sprechblasensymbol mit drei schwarzen Punkten. Die Sprechblase enthält den Begründungstext: "Begründung: Die Tabelle ist symmetrisch um x = 10; dort liegt das größte getestete Produkt.".
-Unterhalb der Begründungs-Sprechblase steht ein Cartoon-Junge mit hellbraunem Haar und einem hellgrünen Shirt, der breit lächelt und glücklich aussieht.
-Unter dem Jungen befindet sich ein gelbes, abgerundetes Rechteck mit grünem Rand, das in fetter, schwarzer Schrift den Text "Ziel erreicht!" enthält.
-Ein hellblauer Pfeil mit dicker schwarzer Umrandung zeigt von der Begründungs-Sprechblase nach unten rechts zum lächelnden Jungen.
-
-Zwei horizontale hellblaue Pfeile mit dicker schwarzer Umrandung verbinden die Hauptpanels und zeigen den Fluss von links nach rechts an: einer zwischen Panel 1 und Panel 2, und ein weiterer zwischen Panel 2 und Panel 3.
+Unten links auf der Folie, über die gesamte Breite zentriert, steht in schwarzer Schrift der abschließende Satz: "Vermutung: x=10 ist besonders günstig. Allgemein noch prüfen!"
 ```

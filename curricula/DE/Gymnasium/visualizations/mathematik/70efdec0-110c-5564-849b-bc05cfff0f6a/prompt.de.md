@@ -8,42 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)
 - Status: pilot
-- Quellbild: `70efdec0-110c-5564-849b-bc05cfff0f6a.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/70efdec0-110c-5564-849b-bc05cfff0f6a/70efdec0-110c-5564-849b-bc05cfff0f6a.jpg`
+- Quellbild: `70efdec0-110c-5564-849b-bc05cfff0f6a.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/70efdec0-110c-5564-849b-bc05cfff0f6a/70efdec0-110c-5564-849b-bc05cfff0f6a.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Kombinationen ohne Zurücklegen mit Fakultäten berechnen
-Beschreibung: Die lernende Person kann ungeordnete Stichproben ohne Zurücklegen mithilfe von Fakultäten berechnen (ohne Binomialkoeffizientenbegriff) und Ergebnisse an Beispielen prüfen.
-
-Zusatzanweisung:
-Keep the combinatorics examples mathematically simple and correct.
-Do not confuse order-sensitive permutations with order-insensitive combinations.
-Use only small, checkable numbers.
-Allowed example facts:
-- Multiplication principle: 3 shirt choices and 4 trouser choices give 3 * 4 = 12 outfits.
-- Factorial: 4! = 4 * 3 * 2 * 1 = 24 arrangements when all 4 different objects are ordered.
-- Combination without order: choose 2 from 5 gives C(5,2) = 10.
-- Combination without order: choose 3 from 6 gives C(6,3) = 20.
-If a formula is shown, it must be one of:
-- n! = n * (n-1) * ... * 2 * 1.
-- C(n,k) = n! / (k! * (n-k)!).
-Make clear whether order matters ("Reihenfolge wichtig") or order does not matter ("Reihenfolge egal").
-Avoid any invented large values or unreadable tiny equations.
+Use case: scientific-educational. Asset type: a friendly 16:9 German mathematics learning image for a school cockpit. Input image role: exact counting/layout reference, not final art. Create a warm, clear, hand-drawn comic-style bitmap from it. Preserve EXACTLY one row of four tiles labelled A B C D and EXACTLY six unordered pair cards AB AC AD BC BD CD, each once. Do not show a hand or a tile in a second location at the same time; the inventory of four tiles is a separate starting-state illustration, not a depleted basket. Keep a clear arrow from inventory to pair outcomes. Use large, easy-to-read lettering, with text verbatim: 'Zwei aus vier – ohne Zurücklegen', 'Vier verschiedene Plättchen', 'Sechs ungeordnete Paare', 'AB und BA zählen als dasselbe Paar.', '4! / (2! · 2!) = 6'. No binomial-coefficient symbol, no fifth tile, no duplicate/missing pair, no copied worksheet or logo. The factorial formula and the six pairs must be legible at 360 px width.
 ```
 
 ## Review-Notiz

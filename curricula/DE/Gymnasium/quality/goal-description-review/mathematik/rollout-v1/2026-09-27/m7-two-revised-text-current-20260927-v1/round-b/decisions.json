@@ -1,0 +1,33 @@
+{
+  "reviewerNote": "Independent blind B first pass. Only the bound B input, criteria, two-page PDF and official source assessment were consulted; no A decision or prior review was read. AI candidate only.",
+  "goals": [
+    {
+      "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Eine reellwertige Funktion weist jedem zulässigen Eingabewert genau einen Funktionswert zu. Term, Stichproben in einer Wertetabelle und Graphpunkte müssen für dasselbe Argument übereinstimmen; verschiedene Argumente dürfen denselben Wert haben, und endlich viele Tabellenzeilen legen den Funktionsterm nicht eindeutig fest.",
+        "essentialUnderstandingEn": "A real-valued function assigns exactly one value to each permitted input. Its expression, sampled value-table rows and graph points must agree for the same input; different inputs may share an output, and finitely many table rows do not uniquely determine the rule.",
+        "observablePerformanceDe": "Die lernende Person erklärt an einer vorgegebenen Funktionsvorschrift den zulässigen Eingabebereich, erstellt dazu korrespondierende Tabellenwerte und Graphpunkte und begründet die eindeutige Zuordnung jedes Eingabewerts, ohne aus der endlichen Tabelle einen allein möglichen Term zu behaupten.",
+        "observablePerformanceEn": "From a given function rule, the learner explains the permitted input domain, constructs matching table values and graph points, and justifies the unique output for each input without claiming that the finite table fixes the only possible rule.",
+        "transferExpectationDe": "Bei einer neuen, nicht injektiven gegebenen Funktion wie g(x)=x² auf einem symmetrischen Intervall koordiniert die lernende Person Term, Tabelle und Graph und erklärt, weshalb gleiche Ausgabewerte bei x und −x die Funktionseigenschaft nicht verletzen.",
+        "transferExpectationEn": "For a fresh, non-injective given function such as g(x)=x² on a symmetric interval, the learner coordinates expression, table and graph and explains why equal outputs at x and −x do not violate the function property."
+      },
+      "rationale": "E.1, printed p. 31, includes function terminology together with value tables, graphs, equations and expressions. The present bilingual text correctly names the one-output-per-permitted-input condition and restricts coordination to representations of a given function. It does not demand unique formula reconstruction from finite samples, nor absorb the separate successor goals for detailed domain/range determination. Explaining the assignment and using its representations form one coherent AB1 concept rather than two independently mastered operations. No local text revision is justified.",
+      "evidenceProfileRecommendation": "create"
+    },
+    {
+      "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Bei einer geeigneten Verknüpfung von ganzrationalem und exponentiellem Anteil hängt die Wahl einer Stammfunktion von der tatsächlichen Summen-, Produkt- oder Verkettungsstruktur ab; insbesondere wird ein Produkt nicht faktorweise integriert. Vollständiges Ableiten des Kandidaten muss wieder den gesamten Integranden ergeben, bevor ein bestimmtes Integral mit den Grenzen ausgewertet wird.",
+        "essentialUnderstandingEn": "For a suitable polynomial–exponential combination, the antiderivative depends on whether the structure is a sum, product or composition; in particular, a product is not integrated factor by factor. Fully differentiating the candidate must recover the entire integrand before a definite integral is evaluated at its bounds.",
+        "observablePerformanceDe": "Die lernende Person findet zu einem unabhängig vorgelegten geeigneten Integranden wie (x+1)eˣ eine Stammfunktion x eˣ, weist mit der Produktregel F′=(x+1)eˣ nach und berechnet daraus beispielsweise ∫₀¹(x+1)eˣdx=e, statt nur eine Musterlösung zu kopieren.",
+        "observablePerformanceEn": "For an independently presented suitable integrand such as (x+1)e^x, the learner finds the antiderivative x e^x, verifies F′=(x+1)e^x by the product rule, and thus obtains, for example, ∫₀¹(x+1)e^x dx=e rather than copying a worked template.",
+        "transferExpectationDe": "Bei einer strukturell anderen geeigneten Verkettung wie (3x²+1)e^(x³+x) erkennt die lernende Person die innere Ableitung, bildet e^(x³+x)+C und prüft durch die Kettenregel; sie überträgt nicht schematisch die Produktstrategie auf alle Exponential-Polynom-Terme.",
+        "transferExpectationEn": "For a structurally different suitable composition such as (3x²+1)e^(x³+x), the learner recognizes the inner derivative, forms e^(x³+x)+C and checks it by the chain rule; the product strategy is not applied mechanically to every polynomial–exponential expression."
+      },
+      "rationale": "Q4.1, printed p. 51, explicitly joins polynomial–exponential families through addition, multiplication and composition with integral calculation and differentiation checks. This canonical atom isolates integration and verification after its direct prerequisites; it need not repeat the whole family-analysis goal. The new bilingual qualifier 'geeigneter/suitable' correctly excludes an unwarranted promise of elementary antiderivatives for arbitrary compositions, while retaining method neutrality. Computing and verifying are a coherent competence here, not a reason to split. The current DE and EN descriptions match, so keep is the conservative decision.",
+      "evidenceProfileRecommendation": "create"
+    }
+  ]
+}

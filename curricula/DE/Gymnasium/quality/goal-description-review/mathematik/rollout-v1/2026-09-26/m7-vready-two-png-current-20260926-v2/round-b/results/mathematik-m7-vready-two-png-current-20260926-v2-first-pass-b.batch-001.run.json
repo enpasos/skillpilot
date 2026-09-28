@@ -1,0 +1,51 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-vready-two-png-current-20260926-v2-round-b-codex-gpt6-20260926",
+  "campaignId": "mathematik-m7-vready-two-png-current-20260926-v2-b",
+  "roundId": "mathematik-m7-vready-two-png-current-20260926-v2-first-pass-b",
+  "batchId": "mathematik-m7-vready-two-png-current-20260926-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:059394da0c20e10782830b73201bbf2d93fd3d948da0e0a76564f388cccedb37",
+  "bundleFingerprint": "sha256:7dc19eda4f22b64f3312cfcbe5e89053b780771d2162be9f918944b646cd4833",
+  "bookDigest": "sha256:853c45a27bd418247bc6a8f79ae6e79ec45b10e14d9c2add810559c3007526bb",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:247401a371318c5f090d8aaeb296f1400490931f9cb85c849fa6c80ef519d919",
+  "independenceGroupId": "mathematik-m7-vready-two-png-current-20260926-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
+    "e33e75e3-eae5-5a09-862f-d1a11176373f"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:ca0d1295ae1a321dd5e6a0db35dd4c7166aba1bd288f83b2d2c70cb55c9bdaf1"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:059394da0c20e10782830b73201bbf2d93fd3d948da0e0a76564f388cccedb37"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-09-26T11:26:12.000Z",
+  "completedAt": "2026-09-26T11:27:48.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:902eab90b842244ccfc71dbbc341f4ba42cffa50f5cbf77a17e413ab4ea9d711",
+  "toolchainVersion": "codex-goal-description-review-v2"
+}

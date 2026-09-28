@@ -36,6 +36,21 @@ export const unapprovedActiveGoalVisualizations = (
   && !hasCurrentGoalVisualizationApproval(record)
 ))
 
+// Product-owner-directed display of one known-imperfect image is not a V approval.
+// Keep this exact-asset exception separate from the approval predicate above:
+// curricula/DE/Gymnasium/quality/goal-visualization-review/
+// mathematik-zzz-prompt5-user-pilot-2026-09-26.md
+export const isExplicitOwnerPilotDisplayException = (
+  subject: string,
+  record: QaApprovalRecord,
+): boolean => subject === 'mathematik'
+  && record.goalId === '121e3fdf-54d2-4d46-bc2d-f6e725f10f41'
+  && record.visualizationState === 'available'
+  && record.assetSha256 === 'sha256:9a388e26e0e16f2ade9a92f92545fe1e5457f90a35dd8e6eabecb37aa3b2a5c2'
+  && record.humanApproved !== 'yes'
+  && record.humanIssueIdentified !== 'yes'
+  && aiApprovalStatus(record) === 'rejected'
+
 const scriptDir = fileURLToPath(new URL('.', import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 
@@ -70,7 +85,9 @@ const main = (): void => {
         `${subject}:${record.goalId}: active record has no valid asset hash`,
       )
     })
+    const displayExceptions = active.filter((record) => isExplicitOwnerPilotDisplayException(subject, record))
     const unapproved = unapprovedActiveGoalVisualizations(ledger.records)
+      .filter((record) => !isExplicitOwnerPilotDisplayException(subject, record))
     if (unapproved.length > 0) {
       failures.push(
         `${subject}: ${unapproved.length} active goal visualization(s) have neither Human=OK nor a current Approved-AI decision:`,
@@ -81,7 +98,10 @@ const main = (): void => {
       return
     }
 
-    console.log(`${subject}: approval coverage passed (${active.length} active visualization(s)).`)
+    console.log(
+      `${subject}: approval coverage passed (${active.length - displayExceptions.length} approved active visualization(s), `
+      + `${displayExceptions.length} exact-hash owner-directed pilot display exception(s); exceptions do not satisfy M7 gate V).`,
+    )
   })
 
   if (failures.length > 0) {

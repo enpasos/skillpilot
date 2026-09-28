@@ -9,6 +9,7 @@ on:
       - '!AGENTS.md'
       - '!docs/**'
       - 'docs/qa-ci/status/**'
+      - 'docs/legal/ai-transparency-inventory.json'
       - '!sandbox/**'
       - '!tmp/**'
   pull_request:
@@ -19,6 +20,7 @@ on:
       - '!AGENTS.md'
       - '!docs/**'
       - 'docs/qa-ci/status/**'
+      - 'docs/legal/ai-transparency-inventory.json'
       - '!sandbox/**'
       - '!tmp/**'
      
@@ -419,6 +421,10 @@ jobs:
         run: npm run validate:graph
       - name: Test exam Markdown conventions
         run: npm run test:exam-markdown
+      - name: Test reviewed Mathematics checkpoint assessments
+        run: npm run test:math-checkpoint-exams
+      - name: Test HE Q2.5 central-dilation assessment scope
+        run: npm run test:math-q25-central-dilation-scope
       - name: Test hard Sek-I/Sek-II learning routes
         run: npm run test:hard-learning-routes
       - name: Test reviewed canonical Mathematics Sek-I exam routes

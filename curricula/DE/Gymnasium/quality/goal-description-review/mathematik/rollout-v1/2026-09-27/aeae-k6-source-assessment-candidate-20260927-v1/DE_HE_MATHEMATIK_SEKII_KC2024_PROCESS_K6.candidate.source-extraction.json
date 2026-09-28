@@ -1,0 +1,370 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-HE-MATHEMATIK-SEKII-KC2024-PROCESS-K6-CANDIDATE",
+  "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+  "jurisdiction": "DE-HE",
+  "subject": "Mathematik",
+  "stage": "SekII",
+  "sourceDocument": {
+    "key": "KC_GOS_2024",
+    "title": "Kerncurriculum gymnasiale Oberstufe - Mathematik",
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+    "role": "binding-upper-secondary-core-2024",
+    "official": true,
+    "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+  },
+  "sourceDocuments": [
+    {
+      "key": "KC_GOS_2024",
+      "title": "Kerncurriculum gymnasiale Oberstufe - Mathematik",
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "role": "binding-upper-secondary-core-2024",
+      "official": true,
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+    }
+  ],
+  "method": {
+    "passageExtraction": "pdftotext -f 14 -l 15 and -f 24 -l 24 -layout; exact K6 definition and K6.1–K6.8 wording and AB boundaries checked against pinned PDF",
+    "sourceGoalExtraction": "one source goal per official K6 standard; raw PDF text retained separately from normalized text",
+    "localPdfSha256": "d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953"
+  },
+  "expectedProcessStandardIds": [
+    "K6.1",
+    "K6.2",
+    "K6.3",
+    "K6.4",
+    "K6.5",
+    "K6.6",
+    "K6.7",
+    "K6.8"
+  ],
+  "pipelineStatus": {
+    "version": 1,
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Amtliche K6-Passagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "k6-context-pages",
+            "label": "K6-Definition vollständig auf S. 14–15",
+            "passed": true,
+            "details": "Wortlaut und Seitenmarker geprüft"
+          },
+          {
+            "id": "k6-standard-page",
+            "label": "K6-Standards auf S. 24",
+            "passed": true,
+            "details": "Acht Standards und AB-Grenzen geprüft"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "K6.1–K6.8 als Source-Ziele erzeugt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "k6-source-goals",
+            "label": "Acht eindeutige Source-Ziele mit Quellenspan",
+            "passed": true,
+            "details": "8/8; keine kanonischen Ziele erzeugt"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Fachliches Mapping auf kanonische Ziele",
+        "status": "incomplete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "k6-mapping-review",
+            "label": "Separate Mapping-Collection fachlich geprüft",
+            "passed": false,
+            "details": "Kandidat; noch keine Mapping-Collection oder Publikationsprofil-Bindung"
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "he-math-sekii-process:k6:definition",
+      "topicCode": "K6.definition",
+      "title": "Mathematisch kommunizieren (K6): Kompetenzbeschreibung",
+      "text": "Zu dieser Kompetenz gehören sowohl das Entnehmen von Informationen aus schriftlichen Texten, mündlichen Äußerungen oder sonstigen Quellen als auch das Darlegen von Überlegungen und Resultaten unter Verwendung einer angemessenen Fachsprache. Das Spektrum reicht von der direkten Informationsentnahme aus Texten des Alltagsgebrauchs beziehungsweise vom Aufschreiben einfacher Lösungswege bis hin zum sinnentnehmenden Erfassen fachsprachlicher Texte beziehungsweise zur strukturierten Darlegung oder Präsentation eigener Überlegungen. Das Erfüllen sprachlicher Anforderungen spielt bei dieser Kompetenz eine besondere Rolle.",
+      "rawText": "Zu dieser Kompetenz gehören sowohl das Entnehmen von Informationen aus schriftlichen\nTexten, mündlichen Äußerungen oder sonstigen Quellen als auch das Darlegen von Überle-\ngungen und Resultaten unter Verwendung einer angemessenen Fachsprache. Das Spektrum\nreicht von der direkten Informationsentnahme aus Texten des Alltagsgebrauchs beziehungs-\nweise vom Aufschreiben einfacher Lösungswege bis hin zum sinnentnehmenden Erfassen\nfachsprachlicher Texte beziehungsweise zur strukturierten Darlegung oder Präsentation eige-\nner Überlegungen. Das Erfüllen sprachlicher Anforderungen spielt bei dieser Kompetenz eine\nbesondere Rolle.",
+      "page": 14,
+      "pageEnd": 15,
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Mathematisch kommunizieren (K6), S. 14–15",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "sourceDocumentKey": "KC_GOS_2024",
+      "sourceGoalIds": []
+    },
+    {
+      "id": "he-math-sekii-process:k6:standards",
+      "topicCode": "K6",
+      "title": "Mathematisch kommunizieren (K6): K6.1–K6.8",
+      "text": "Kompetenzbereich: Mathematisch kommunizieren (K6)\nK6.1 [AB1] – einfache mathematische Sachverhalte darlegen,\nK6.2 [AB1] – Informationen aus kurzen Texten mit mathematischem Gehalt identifizieren und auswählen, wobei die Ordnung der Informationen im Text die Schritte der mathematischen Bearbeitung nahelegt.\nK6.3 [AB2] – mehrschrittige Lösungswege, Überlegungen und Ergebnisse verständlich darlegen,\nK6.4 [AB2] – Äußerungen (auch fehlerhafte) anderer Personen zu mathematischen Aussagen interpretieren,\nK6.5 [AB2] – mathematische Informationen aus Texten identifizieren und auswählen, wobei die Ordnung der Informationen nicht unmittelbar den Schritten der mathematischen Bearbeitung entsprechen muss.\nK6.6 [AB3] – eine komplexe mathematische Lösung oder Argumentation kohärent und vollständig darlegen oder präsentieren,\nK6.7 [AB3] – mathematische Fachtexte sinnentnehmend erfassen,\nK6.8 [AB3] – mündliche und schriftliche Äußerungen anderer Personen mit mathematischem Gehalt miteinander vergleichen, sie bewerten und ggf. korrigieren.",
+      "rawText": "Kompetenzbereich: Mathematisch kommunizieren (K6)\nAnforderungsbereich I\nDie Lernenden können\nK6.1  einfache mathematische Sachverhalte darlegen,\nK6.2  Informationen aus kurzen Texten mit mathematischem Gehalt identifizieren und\n       auswählen, wobei die Ordnung der Informationen im Text die Schritte der mathe-\n       matischen Bearbeitung nahelegt.\n\n\nAnforderungsbereich II\nDie Lernenden können\nK6.3  mehrschrittige Lösungswege, Überlegungen und Ergebnisse verständlich darle-\n       gen,\nK6.4  Äußerungen (auch fehlerhafte) anderer Personen zu mathematischen Aussagen\n       interpretieren,\nK6.5  mathematische Informationen aus Texten identifizieren und auswählen, wobei die\n       Ordnung der Informationen nicht unmittelbar den Schritten der mathematischen\n       Bearbeitung entsprechen muss.\n\n\nAnforderungsbereich III\nDie Lernenden können\nK6.6  eine komplexe mathematische Lösung oder Argumentation kohärent und vollstän-\n       dig darlegen oder präsentieren,\nK6.7  mathematische Fachtexte sinnentnehmend erfassen,\nK6.8  mündliche und schriftliche Äußerungen anderer Personen mit mathematischem\n       Gehalt miteinander vergleichen, sie bewerten und ggf. korrigieren.",
+      "page": 24,
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K6, S. 24",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "sourceDocumentKey": "KC_GOS_2024",
+      "sourceGoalIds": [
+        "he-math-sekii-process-k6-1",
+        "he-math-sekii-process-k6-2",
+        "he-math-sekii-process-k6-3",
+        "he-math-sekii-process-k6-4",
+        "he-math-sekii-process-k6-5",
+        "he-math-sekii-process-k6-6",
+        "he-math-sekii-process-k6-7",
+        "he-math-sekii-process-k6-8"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "he-math-sekii-process-k6-1",
+      "passageId": "he-math-sekii-process:k6:standards",
+      "topicCode": "K6",
+      "standardId": "K6.1",
+      "demandLevel": "AB1",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "K6.1 – einfache mathematische Sachverhalte darlegen",
+      "description": "Die Lernenden können einfache mathematische Sachverhalte darlegen.",
+      "sourceText": "einfache mathematische Sachverhalte darlegen,",
+      "rawSourceText": "K6.1  einfache mathematische Sachverhalte darlegen,",
+      "sourceSpan": "einfache mathematische Sachverhalte darlegen",
+      "rawSourceSpan": "einfache mathematische Sachverhalte darlegen,",
+      "parentBulletText": "einfache mathematische Sachverhalte darlegen,",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K6, S. 24, K6.1, Anforderungsbereich I",
+      "sourcePage": 24,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K6",
+        "standard:K6.1",
+        "AB1",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k6-2",
+      "passageId": "he-math-sekii-process:k6:standards",
+      "topicCode": "K6",
+      "standardId": "K6.2",
+      "demandLevel": "AB1",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "K6.2 – Informationen aus kurzen Texten mit mathematischem Gehalt identifizieren und auswählen, wobei die Ordnung der Informationen im Text die Schritte der mathematischen Bearbeitung nahelegt",
+      "description": "Die Lernenden können Informationen aus kurzen Texten mit mathematischem Gehalt identifizieren und auswählen, wobei die Ordnung der Informationen im Text die Schritte der mathematischen Bearbeitung nahelegt.",
+      "sourceText": "Informationen aus kurzen Texten mit mathematischem Gehalt identifizieren und auswählen, wobei die Ordnung der Informationen im Text die Schritte der mathematischen Bearbeitung nahelegt.",
+      "rawSourceText": "K6.2  Informationen aus kurzen Texten mit mathematischem Gehalt identifizieren und\nauswählen, wobei die Ordnung der Informationen im Text die Schritte der mathe-\nmatischen Bearbeitung nahelegt.",
+      "sourceSpan": "Informationen aus kurzen Texten mit mathematischem Gehalt identifizieren und auswählen, wobei die Ordnung der Informationen im Text die Schritte der mathematischen Bearbeitung nahelegt",
+      "rawSourceSpan": "Informationen aus kurzen Texten mit mathematischem Gehalt identifizieren und\nauswählen, wobei die Ordnung der Informationen im Text die Schritte der mathe-\nmatischen Bearbeitung nahelegt.",
+      "parentBulletText": "Informationen aus kurzen Texten mit mathematischem Gehalt identifizieren und auswählen, wobei die Ordnung der Informationen im Text die Schritte der mathematischen Bearbeitung nahelegt.",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K6, S. 24, K6.2, Anforderungsbereich I",
+      "sourcePage": 24,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K6",
+        "standard:K6.2",
+        "AB1",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k6-3",
+      "passageId": "he-math-sekii-process:k6:standards",
+      "topicCode": "K6",
+      "standardId": "K6.3",
+      "demandLevel": "AB2",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "K6.3 – mehrschrittige Lösungswege, Überlegungen und Ergebnisse verständlich darlegen",
+      "description": "Die Lernenden können mehrschrittige Lösungswege, Überlegungen und Ergebnisse verständlich darlegen.",
+      "sourceText": "mehrschrittige Lösungswege, Überlegungen und Ergebnisse verständlich darlegen,",
+      "rawSourceText": "K6.3  mehrschrittige Lösungswege, Überlegungen und Ergebnisse verständlich darle-\ngen,",
+      "sourceSpan": "mehrschrittige Lösungswege, Überlegungen und Ergebnisse verständlich darlegen",
+      "rawSourceSpan": "mehrschrittige Lösungswege, Überlegungen und Ergebnisse verständlich darle-\ngen,",
+      "parentBulletText": "mehrschrittige Lösungswege, Überlegungen und Ergebnisse verständlich darlegen,",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K6, S. 24, K6.3, Anforderungsbereich II",
+      "sourcePage": 24,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K6",
+        "standard:K6.3",
+        "AB2",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k6-4",
+      "passageId": "he-math-sekii-process:k6:standards",
+      "topicCode": "K6",
+      "standardId": "K6.4",
+      "demandLevel": "AB2",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "K6.4 – Äußerungen (auch fehlerhafte) anderer Personen zu mathematischen Aussagen interpretieren",
+      "description": "Die Lernenden können Äußerungen (auch fehlerhafte) anderer Personen zu mathematischen Aussagen interpretieren.",
+      "sourceText": "Äußerungen (auch fehlerhafte) anderer Personen zu mathematischen Aussagen interpretieren,",
+      "rawSourceText": "K6.4  Äußerungen (auch fehlerhafte) anderer Personen zu mathematischen Aussagen\ninterpretieren,",
+      "sourceSpan": "Äußerungen (auch fehlerhafte) anderer Personen zu mathematischen Aussagen interpretieren",
+      "rawSourceSpan": "Äußerungen (auch fehlerhafte) anderer Personen zu mathematischen Aussagen\ninterpretieren,",
+      "parentBulletText": "Äußerungen (auch fehlerhafte) anderer Personen zu mathematischen Aussagen interpretieren,",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K6, S. 24, K6.4, Anforderungsbereich II",
+      "sourcePage": 24,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K6",
+        "standard:K6.4",
+        "AB2",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k6-5",
+      "passageId": "he-math-sekii-process:k6:standards",
+      "topicCode": "K6",
+      "standardId": "K6.5",
+      "demandLevel": "AB2",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "K6.5 – mathematische Informationen aus Texten identifizieren und auswählen, wobei die Ordnung der Informationen nicht unmittelbar den Schritten der mathematischen Bearbeitung entsprechen muss",
+      "description": "Die Lernenden können mathematische Informationen aus Texten identifizieren und auswählen, wobei die Ordnung der Informationen nicht unmittelbar den Schritten der mathematischen Bearbeitung entsprechen muss.",
+      "sourceText": "mathematische Informationen aus Texten identifizieren und auswählen, wobei die Ordnung der Informationen nicht unmittelbar den Schritten der mathematischen Bearbeitung entsprechen muss.",
+      "rawSourceText": "K6.5  mathematische Informationen aus Texten identifizieren und auswählen, wobei die\nOrdnung der Informationen nicht unmittelbar den Schritten der mathematischen\nBearbeitung entsprechen muss.",
+      "sourceSpan": "mathematische Informationen aus Texten identifizieren und auswählen, wobei die Ordnung der Informationen nicht unmittelbar den Schritten der mathematischen Bearbeitung entsprechen muss",
+      "rawSourceSpan": "mathematische Informationen aus Texten identifizieren und auswählen, wobei die\nOrdnung der Informationen nicht unmittelbar den Schritten der mathematischen\nBearbeitung entsprechen muss.",
+      "parentBulletText": "mathematische Informationen aus Texten identifizieren und auswählen, wobei die Ordnung der Informationen nicht unmittelbar den Schritten der mathematischen Bearbeitung entsprechen muss.",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K6, S. 24, K6.5, Anforderungsbereich II",
+      "sourcePage": 24,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K6",
+        "standard:K6.5",
+        "AB2",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k6-6",
+      "passageId": "he-math-sekii-process:k6:standards",
+      "topicCode": "K6",
+      "standardId": "K6.6",
+      "demandLevel": "AB3",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "K6.6 – eine komplexe mathematische Lösung oder Argumentation kohärent und vollständig darlegen oder präsentieren",
+      "description": "Die Lernenden können eine komplexe mathematische Lösung oder Argumentation kohärent und vollständig darlegen oder präsentieren.",
+      "sourceText": "eine komplexe mathematische Lösung oder Argumentation kohärent und vollständig darlegen oder präsentieren,",
+      "rawSourceText": "K6.6  eine komplexe mathematische Lösung oder Argumentation kohärent und vollstän-\ndig darlegen oder präsentieren,",
+      "sourceSpan": "eine komplexe mathematische Lösung oder Argumentation kohärent und vollständig darlegen oder präsentieren",
+      "rawSourceSpan": "eine komplexe mathematische Lösung oder Argumentation kohärent und vollstän-\ndig darlegen oder präsentieren,",
+      "parentBulletText": "eine komplexe mathematische Lösung oder Argumentation kohärent und vollständig darlegen oder präsentieren,",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K6, S. 24, K6.6, Anforderungsbereich III",
+      "sourcePage": 24,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K6",
+        "standard:K6.6",
+        "AB3",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k6-7",
+      "passageId": "he-math-sekii-process:k6:standards",
+      "topicCode": "K6",
+      "standardId": "K6.7",
+      "demandLevel": "AB3",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "K6.7 – mathematische Fachtexte sinnentnehmend erfassen",
+      "description": "Die Lernenden können mathematische Fachtexte sinnentnehmend erfassen.",
+      "sourceText": "mathematische Fachtexte sinnentnehmend erfassen,",
+      "rawSourceText": "K6.7  mathematische Fachtexte sinnentnehmend erfassen,",
+      "sourceSpan": "mathematische Fachtexte sinnentnehmend erfassen",
+      "rawSourceSpan": "mathematische Fachtexte sinnentnehmend erfassen,",
+      "parentBulletText": "mathematische Fachtexte sinnentnehmend erfassen,",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K6, S. 24, K6.7, Anforderungsbereich III",
+      "sourcePage": 24,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K6",
+        "standard:K6.7",
+        "AB3",
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "id": "he-math-sekii-process-k6-8",
+      "passageId": "he-math-sekii-process:k6:standards",
+      "topicCode": "K6",
+      "standardId": "K6.8",
+      "demandLevel": "AB3",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "K6.8 – mündliche und schriftliche Äußerungen anderer Personen mit mathematischem Gehalt miteinander vergleichen, sie bewerten und ggf. korrigieren",
+      "description": "Die Lernenden können mündliche und schriftliche Äußerungen anderer Personen mit mathematischem Gehalt miteinander vergleichen, sie bewerten und ggf. korrigieren.",
+      "sourceText": "mündliche und schriftliche Äußerungen anderer Personen mit mathematischem Gehalt miteinander vergleichen, sie bewerten und ggf. korrigieren.",
+      "rawSourceText": "K6.8  mündliche und schriftliche Äußerungen anderer Personen mit mathematischem\nGehalt miteinander vergleichen, sie bewerten und ggf. korrigieren.",
+      "sourceSpan": "mündliche und schriftliche Äußerungen anderer Personen mit mathematischem Gehalt miteinander vergleichen, sie bewerten und ggf. korrigieren",
+      "rawSourceSpan": "mündliche und schriftliche Äußerungen anderer Personen mit mathematischem\nGehalt miteinander vergleichen, sie bewerten und ggf. korrigieren.",
+      "parentBulletText": "mündliche und schriftliche Äußerungen anderer Personen mit mathematischem Gehalt miteinander vergleichen, sie bewerten und ggf. korrigieren.",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Kompetenzbereich K6, S. 24, K6.8, Anforderungsbereich III",
+      "sourcePage": 24,
+      "sourceDocumentKey": "KC_GOS_2024",
+      "courseLevel": "GK_LK",
+      "granularity": "officialStandard",
+      "tags": [
+        "source-goal",
+        "process:K6",
+        "standard:K6.8",
+        "AB3",
+        "GK",
+        "LK"
+      ]
+    }
+  ]
+}

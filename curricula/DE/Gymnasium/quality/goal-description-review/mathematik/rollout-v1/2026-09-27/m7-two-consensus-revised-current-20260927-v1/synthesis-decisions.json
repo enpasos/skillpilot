@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-m7-two-consensus-revised-current-20260927-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex current-text dual-round synthesis; AI candidate only",
+  "synthesizedAt": "2026-09-27T16:10:11.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-two-consensus-revised-current-20260927-v1",
+    "batchManifestDigest": "sha256:e905e4d8b5c47858776012045714e6d9ac615ae2a03f19c1bb473b66b5aabbee",
+    "configDigest": "sha256:6848731d39064d3aaa28cdbd5a889bba6718943b490fe981bea015b0f0b59211",
+    "bundleFingerprint": "sha256:a2121ca9075353bf92560534a86db57d944398b1a77d5b02c72eb28d6d6f858a",
+    "bookDigest": "sha256:04ad323975c365bedc90bd58e57588bd1cea0adbb762bc6c72c9afa08ce0d220",
+    "reviewInputFingerprint": "sha256:6fdab40417ac8c8c7eb804000e080b385c6621de809e5feb36563f1503ca0926",
+    "dualSummaryDigest": "sha256:b7843d2c6b2ae8a7318f672f82220d78f18bffeb55d91022cd847d103fc9a5f3",
+    "canonicalLandscapeDigest": "sha256:1f488cca850aa1012366491a540adc7e4cd75f2d5f840ec6732ae344dfb8d7a2"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-two-consensus-revised-current-20260927-v1-a",
+      "campaignDigest": "sha256:11ba31a6b71efaafca9861fb41200c07126af117aac10fce19934620cbe66f55",
+      "roundId": "mathematik-m7-two-consensus-revised-current-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-two-consensus-revised-current-20260927-v1-independent-a",
+      "reviewInputFingerprint": "sha256:6fdab40417ac8c8c7eb804000e080b385c6621de809e5feb36563f1503ca0926",
+      "batchId": "mathematik-m7-two-consensus-revised-current-20260927-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:887943bf378f3baf8bc9b563a5248ba38fb866129fc44f4744e45ab476a1b2bb",
+      "runId": "mathematik-m7-two-consensus-revised-current-20260927-v1-first-pass-a.batch-001.codex-current-review",
+      "runManifestDigest": "sha256:46184cce2c91167e3a10c53ad29e1ea54ab99c8596a74a2adddc72fcf79c5566",
+      "resultsDigest": "sha256:05f9b9bfb40093a76354b32b4607b6609901b71d18e805be515b4e976e9329e4"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-two-consensus-revised-current-20260927-v1-b",
+      "campaignDigest": "sha256:4743d9c822ec1a18b7e39b3d868d6c6678ce217334af26127275943a78476c1b",
+      "roundId": "mathematik-m7-two-consensus-revised-current-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-two-consensus-revised-current-20260927-v1-independent-b",
+      "reviewInputFingerprint": "sha256:6fdab40417ac8c8c7eb804000e080b385c6621de809e5feb36563f1503ca0926",
+      "batchId": "mathematik-m7-two-consensus-revised-current-20260927-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:88821739d8ad955ecbb3a1408a1f2318d2a711e455d38784210617a1e6408e73",
+      "runId": "m7-two-consensus-revised-current-20260927-b-run-001",
+      "runManifestDigest": "sha256:c551df7945828fe46282f8c952a00665a927efe1e5f37dbf766cad3ffa64b65b",
+      "resultsDigest": "sha256:e785aed6fd25932980f10e38c34abbe60f53750803f2392af5c23f624495b411"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-m7-two-consensus-revised-current-20260927-v1-decision-001",
+      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7101fa2223d9d98ea0eef1f2a6cbf6a083e3b69281004e0160498dc494d12f0e",
+      "pageFingerprint": "sha256:5ac2c7f1d7a81db3307095d1a5c1e28de9dca1e8d597fb617368f7b17a5669d1",
+      "goalReviewContextFingerprint": "sha256:1ff8f455b647297319a130570d7bd43f85f306fd428d484e79422b81744b7d7a",
+      "finalText": {
+        "titleDe": "Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell)",
+        "titleEn": "Laplace probabilities with replacement (binomial model)",
+        "descriptionDe": "Die lernende Person kann bei Ziehungen mit Zurücklegen die Wahrscheinlichkeit für genau k Treffer mit dem Binomialkoeffizienten berechnen und erklären, wie konstante Trefferwahrscheinlichkeit und mögliche Reihenfolgen das Ergebnis bestimmen.",
+        "descriptionEn": "The learner can calculate the probability of exactly k successes in draws with replacement using the binomial coefficient and explain how a constant success probability and the possible orders determine the result."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-two-consensus-revised-current-20260927-v1-a.001",
+          "recordDigest": "sha256:df01812e5fc90114fd94a8f1d71bd68c2bab00ce9346e8f5eef6afdc64de80d3"
+        },
+        "second": {
+          "recordId": "m7-two-consensus-revised-current-20260927-b-run-001-0408ac7f-0530-5de5-b248-cf581c9b5a17",
+          "recordDigest": "sha256:39eecd20cee09c6249cc3f1c22a0863ee914f14550f416ddf4f888c7dce6e15e"
+        }
+      },
+      "rationaleDe": "Beide blinden aktuellen Runden bestätigen die revidierte DE/EN-Beschreibung. Genau k Treffer, konstantes p durch Zurücklegen und die Zählrolle des Binomialkoeffizienten bilden eine zusammenhängende Berechnungs- und Erklärungskompetenz. Die zuvor fehlende Ereignispräzisierung und die zu schwache Formulierung 'Ergebnisse nachvollziehen' sind behoben. Die Hessen-Quelle Q3.1, S. 46, Spiegelstrich 7, deckt einfache Binomialaufgaben bei Urnenziehungen mit Zurücklegen. Das unveränderte Bild zeigt nur den korrekten Spezialfall 2R+1B mit Wahrscheinlichkeit 4/9; ein neues P-v2-Profil prüft den Transfer mit einem zusammengesetzten Farbtreffer. Diese D-Synthese bestätigt weder sämtliche Länderzuordnungen noch eine menschliche Freigabe.",
+      "rationaleEn": "Both blind current rounds retain the revised bilingual description. Exactly k successes, constant p through replacement, and the binomial coefficient's counting role form one coherent calculation-and-explanation competence. The previous missing event specification and weak request to work through results are resolved. The Hessian Q3.1 source, printed page 46, bullet 7, covers simple binomial tasks for urn draws with replacement. The unchanged image shows only the correct 2R+1B case with probability 4/9; a new P-v2 profile tests transfer with a compound color success event. This D synthesis establishes neither every state mapping nor human approval."
+    },
+    {
+      "decisionId": "mathematik-m7-two-consensus-revised-current-20260927-v1-decision-002",
+      "goalId": "27bdc580-ba17-5399-bf02-48f354846d1d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0e53f2cebacb060c8f6de83bca3aa8faefb5bb57a998ca2ea427fbda0e444829",
+      "pageFingerprint": "sha256:ce259d788e434707aeab4777e279d7aed029fc09768c0605cd0c9d1d239e48a4",
+      "goalReviewContextFingerprint": "sha256:60b00631e5a3d496c24a367b940c47d59445838006c59d3f41065e11de56f42e",
+      "finalText": {
+        "titleDe": "Heuristischen Stetigkeitsbegriff zum Argumentieren nutzen",
+        "titleEn": "Use a heuristic continuity concept for argumentation",
+        "descriptionDe": "Wenn der Funktionsgraph im betrachteten Intervall durchgehend verläuft, kann die lernende Person mit der Zwischenwertidee begründen, warum jeder Wert zwischen zwei gegebenen Funktionswerten angenommen wird, ohne einen formalen Stetigkeitsbeweis zu führen.",
+        "descriptionEn": "When a function graph is continuous throughout the interval under consideration, the learner can use the intermediate value idea to explain why every value between two given function values is attained, without giving a formal proof of continuity."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-two-consensus-revised-current-20260927-v1-a.002",
+          "recordDigest": "sha256:18dcb7dff686ebc247d2aff56ae5e82554ee2692667ade6d2b5c161eb74059c2"
+        },
+        "second": {
+          "recordId": "m7-two-consensus-revised-current-20260927-b-run-001-27bdc580-ba17-5399-bf02-48f354846d1d",
+          "recordDigest": "sha256:346b2f9abb393ecb9da826abe4f084cafb955f7654ca0d87c272e00fbbb0d6fa"
+        }
+      },
+      "rationaleDe": "Beide blinden aktuellen Runden bestätigen die revidierte DE/EN-Beschreibung. Sie nennt den durchgehenden Funktionsgraphen im gesamten betrachteten Intervall als Bedingung und die Annahme jedes Zwischenwerts als heuristische Existenzfolge, ohne einen formalen Stetigkeitsbeweis zu verlangen. Damit wird die alte mathematische Lücke geschlossen: 'ohne Sprung' allein lässt eine hebbare Lücke zu. Die Hessen-Quelle Q4.2, S. 51, Spiegelstrich 7, umfasst den heuristischen Stetigkeitsbegriff und die Zwischenwertidee. Das unveränderte PNG veranschaulicht einen kontinuierlichen Nullstellenfall; das neue P-v2-Profil prüft zusätzlich eine hebbare Lücke. Diese D-Synthese bestätigt weder sämtliche Länderzuordnungen noch eine menschliche Freigabe.",
+      "rationaleEn": "Both blind current rounds retain the revised bilingual description. It states a graph continuous throughout the interval as the condition and attainment of each intermediate value as the heuristic existence conclusion, without requiring a formal continuity proof. This resolves the previous mathematical gap: absence of a jump alone still permits a removable hole. The Hessian Q4.2 source, printed page 51, bullet 7, covers the heuristic continuity concept and the intermediate value idea. The unchanged PNG illustrates one continuous zero-crossing case; the new P-v2 profile also tests a removable hole. This D synthesis establishes neither every state mapping nor human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:e600369f0d48293068c411ff6a72b7d940d21ee1ef25febdbd510e4afa49b5b5"
+}

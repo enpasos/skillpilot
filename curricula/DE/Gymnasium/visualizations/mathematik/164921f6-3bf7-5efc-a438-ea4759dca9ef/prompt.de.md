@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Kettenlinien als Funktionsmodelle untersuchen (LK)
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `164921f6-3bf7-5efc-a438-ea4759dca9ef`
+- Titel: Kettenlinien als Funktionsmodelle untersuchen (LK)
+- Beschreibung: Die lernende Person kann eine Kettenlinie als Funktionsmodell mit Exponentialbezug untersuchen, die Wirkung ihrer Parameter deuten und zentrale Eigenschaften in einem passenden Sachkontext beschreiben.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex image generation
+- Status: pilot
+- Quellbild: `164921f6-3bf7-5efc-a438-ea4759dca9ef.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/164921f6-3bf7-5efc-a438-ea4759dca9ef/164921f6-3bf7-5efc-a438-ea4759dca9ef.png`
+
+## Prompt
+
+```text
+Use case: precise-object-edit. Image 1 is the edit target: a German educational PNG viewed as a 360-pixel-wide phone card. Make the picture less text-heavy WITHOUT changing its math or graph. Replace the two-line caption below the chain with exactly ONE large word, „Kettenlinie“, in bold dark-blue type at least as large as the red 'a=1' label. Remove the small two-line text „Aufhängepunkte auf gleicher Höhe“ above the dashed line entirely; the equal-height suspension remains clearly visible through the two hooks and dashed horizontal line. Enlarge the cosh identity in its box enough to read when the entire image is only 360 pixels wide, while retaining exactly cosh(u)=(e^u+e^(−u))/2. Keep the headline exactly „Hängende Kette – Kettenlinie als Modell“. Preserve everything else: the upper formula y=a·cosh(x/a)+c, a>0, chain curve, equal-height supports, coordinate axes, two y-axis-symmetric curves, red a=1 lower minimum (0,1+c), blue a=2 higher/flatter minimum (0,2+c), colors and geometry. There must be no bottom explanatory paragraphs, no 'Katenoide', no new text or objects. The word Kettenlinie in headline and below chain must both be clearly readable at 360 pixels width. Do not introduce photorealism, watermarks, logos, or technical IDs. Output PNG.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

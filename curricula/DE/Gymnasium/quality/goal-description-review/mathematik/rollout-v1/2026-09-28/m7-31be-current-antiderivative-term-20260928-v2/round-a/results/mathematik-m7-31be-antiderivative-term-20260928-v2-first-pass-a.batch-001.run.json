@@ -1,0 +1,32 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-m7-31be-antiderivative-term-v2-a-run-001",
+  "campaignId": "mathematik-m7-31be-antiderivative-term-20260928-v2-a",
+  "roundId": "mathematik-m7-31be-antiderivative-term-20260928-v2-first-pass-a",
+  "batchId": "mathematik-m7-31be-antiderivative-term-20260928-v2-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:68ce111a852277df032437cef1bb5a089b070e1bb2907e5865c80da974a429e6",
+  "bundleFingerprint": "sha256:f635604e30fda39a52f652b7829c80992894ecc262e99029d6d5772f67e73a68",
+  "bookDigest": "sha256:9fcfd5539863075ee67665adb2c5344c1a9898a5461b9cb5ccf30de1567bbd69",
+  "provider": "OpenAI",
+  "model": "Codex agent (runtime model identifier not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:7c507b0f6c73dba3e5d91cd45e8927efdf0ee5696f10a2a518dc5ce6b9652469",
+  "independenceGroupId": "mathematik-m7-31be-antiderivative-term-20260928-v2-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": ["31be24f0-3ab1-54d2-856d-fa9b7f36552f"],
+  "inputArtifacts": [
+    {"role": "review_prompt", "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"},
+    {"role": "review_criteria", "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"},
+    {"role": "description_review_batch_input_jsonl", "digest": "sha256:68ce111a852277df032437cef1bb5a089b070e1bb2907e5865c80da974a429e6"},
+    {"role": "review_markdown", "digest": "sha256:cce413a02027c2332dc98323197e575168e98e30b589303adbeb22dba2e8d88a"}
+  ],
+  "startedAt": "2026-09-27T23:25:05Z",
+  "completedAt": "2026-09-27T23:25:39Z",
+  "status": "completed",
+  "outputDigest": "sha256:4ced47446cc88cfd3947c5078b13a9019deb9cfb819d61ad7212e984e8a95134",
+  "toolchainVersion": "codex-manual-v1"
+}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:668e849b4cbe070ac802604fbfa81e3f29198552b872e39d3be011b4c84323f5",
+  "reviewInputFingerprint": "sha256:a4a8bda49716cd0ec9c66f02f7da4bbd9cd84dfd24eaea4cbced1f20e0317e24",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-newton-parallel-two-png-20260927-v1-a",
+      "roundId": "mathematik-m7-newton-parallel-two-png-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-newton-parallel-two-png-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-newton-parallel-two-png-20260927-v1-first-pass-a.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-newton-parallel-two-png-20260927-v1-b",
+      "roundId": "mathematik-m7-newton-parallel-two-png-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-newton-parallel-two-png-20260927-v1-independent-b",
+      "runIds": [
+        "m7-newton-parallel-two-png-20260927-round-b-codex-gpt6-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+      "firstRecordId": "mathematik-m7-newton-parallel-two-png-20260927-v1-a-2231c29b",
+      "secondRecordId": "m7-newton-parallel-two-png-20260927-b-2231c29b",
+      "firstRunId": "mathematik-m7-newton-parallel-two-png-20260927-v1-first-pass-a.run-001",
+      "secondRunId": "m7-newton-parallel-two-png-20260927-round-b-codex-gpt6-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
+      "firstRecordId": "mathematik-m7-newton-parallel-two-png-20260927-v1-a-0c7bbd3f",
+      "secondRecordId": "m7-newton-parallel-two-png-20260927-b-0c7bbd3f",
+      "firstRunId": "mathematik-m7-newton-parallel-two-png-20260927-v1-first-pass-a.run-001",
+      "secondRunId": "m7-newton-parallel-two-png-20260927-round-b-codex-gpt6-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

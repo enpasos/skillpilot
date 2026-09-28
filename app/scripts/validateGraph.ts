@@ -191,6 +191,10 @@ function getAllJsonFiles(dir: string, fileList: string[] = []): string[] {
   const files = readdirSync(dir, { withFileTypes: true })
   files.forEach((file) => {
     if (file.isDirectory()) {
+      // QA packages contain immutable historical full-landscape snapshots.
+      // Validate live curriculum files here; review candidates have their own
+      // targeted checks and must not become a second copy of a live graph.
+      if (file.name === 'quality') return
       getAllJsonFiles(join(dir, file.name), fileList)
     } else {
       if (file.name.endsWith('.json')) {

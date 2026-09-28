@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-two-consensus-revised-current-20260927-v1-first-pass-a.batch-001.codex-current-review",
+  "campaignId": "mathematik-m7-two-consensus-revised-current-20260927-v1-a",
+  "roundId": "mathematik-m7-two-consensus-revised-current-20260927-v1-first-pass-a",
+  "batchId": "mathematik-m7-two-consensus-revised-current-20260927-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:887943bf378f3baf8bc9b563a5248ba38fb866129fc44f4744e45ab476a1b2bb",
+  "bundleFingerprint": "sha256:a2121ca9075353bf92560534a86db57d944398b1a77d5b02c72eb28d6d6f858a",
+  "bookDigest": "sha256:04ad323975c365bedc90bd58e57588bd1cea0adbb762bc6c72c9afa08ce0d220",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:18ed3d320721144ff60bbfeec58a25847a411d1f9def5a556a944cb106f2af66",
+  "independenceGroupId": "mathematik-m7-two-consensus-revised-current-20260927-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+    "27bdc580-ba17-5399-bf02-48f354846d1d"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:29525e3763d1a09b59fef31878e640dfa1d0eb3822be685ef818aa9daa24be46"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:887943bf378f3baf8bc9b563a5248ba38fb866129fc44f4744e45ab476a1b2bb"
+    }
+  ],
+  "startedAt": "2026-09-27T16:05:24.788Z",
+  "completedAt": "2026-09-27T16:05:24.788Z",
+  "status": "completed",
+  "outputDigest": "sha256:05f9b9bfb40093a76354b32b4607b6609901b71d18e805be515b4e976e9329e4",
+  "toolchainVersion": "codex-math-description-review-current-a-v1"
+}

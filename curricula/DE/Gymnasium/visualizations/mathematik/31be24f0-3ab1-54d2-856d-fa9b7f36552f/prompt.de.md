@@ -1,54 +1,22 @@
-# Lernzielvisualisierung: Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen nutzen
+# Lernzielvisualisierung: Stammfunktionen ganzrationaler Funktionen ohne Hilfsmittel bestimmen
 
 ## SkillPilot-Ziel
 
 - SkillPilot-ID: `31be24f0-3ab1-54d2-856d-fa9b7f36552f`
-- Titel: Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen nutzen
-- Beschreibung: Die lernende Person kann ohne Hilfsmittel Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen für Integral- und Rekonstruktionsaufgaben sicher nutzen.
+- Titel: Stammfunktionen ganzrationaler Funktionen ohne Hilfsmittel bestimmen
+- Beschreibung: Die lernende Person kann zu einer ganzrationalen Funktion ohne Hilfsmittel eine Stammfunktion bestimmen und das Ergebnis durch Ableiten prüfen.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)
 - Status: pilot
-- Quellbild: `31be24f0-3ab1-54d2-856d-fa9b7f36552f.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/31be24f0-3ab1-54d2-856d-fa9b7f36552f/31be24f0-3ab1-54d2-856d-fa9b7f36552f.jpg`
+- Quellbild: `31be24f0-3ab1-54d2-856d-fa9b7f36552f.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/31be24f0-3ab1-54d2-856d-fa9b7f36552f/31be24f0-3ab1-54d2-856d-fa9b7f36552f.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen nutzen
-Beschreibung: Die lernende Person kann ohne Hilfsmittel Stammfunktionen ganzrationaler Funktionen bestimmen und vorgegebene Stammfunktionen für Integral- und Rekonstruktionsaufgaben sicher nutzen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Stammfunktionen ganzrationaler Funktionen bestimmen und nutzen.
-- Zeige eine Tabelle mit drei sicheren Paaren:
-  f(x)=3x^2 -> F(x)=x^3.
-  f(x)=4x+1 -> F(x)=2x^2+x.
-  f(x)=3x^2+2x -> F(x)=x^3+x^2.
-- Zeige darunter eine Integralnutzung:
-  integral_0^2 (3x^2+2x) dx = F(2)-F(0).
-  F(2)=2^3+2^2=8+4=12.
-  F(0)=0.
-  Integralwert = 12.
-- Ergebnisbox: Potenzregel rueckwaerts anwenden und dann F(b)-F(a) rechnen.
-
-Vermeiden:
-- Nicht die Konstante +C als Einfluss auf F(b)-F(a) darstellen; sie kuerzt sich weg.
-- Keine falsche Stammfunktion fuer 3x^2+2x.
-- Kein falscher Wert bei F(2); richtig ist 12.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Use case: scientific-educational. Asset type: SkillPilot Oberstufen-Mathematik Lernzielbild, landscape 16:9 PNG candidate. Input image: the attached existing SkillPilot image is a style reference only, not an edit target; retain its friendly clean comic-infographic spirit, soft blue/yellow colors and strong legibility, but make a new focused illustration. Primary request: show exactly ONE competency: independently finding an antiderivative of a polynomial and checking it by differentiating. Two-step left-to-right visual flow. On the left a learner's notebook has the exact formula 'f(x) = 3x² + 2x'. In the center show the exact resulting formula 'F(x) = x³ + x²'. On the right show the exact check 'F′(x) = 3x² + 2x = f(x)' with a small green check mark. Include subtle pencil and graph-paper texture and warm friendly colors; clean large typography. Text: title exactly 'Stammfunktion bestimmen und prüfen'; no other prose. Mathematical constraints: all formulas must be exactly correct and typeset with true superscripts; do NOT show any definite integral, interval limits, F(b)−F(a), reconstruction, or calculator. No additional equations, watermarks or logos. The composition should be wide, not square; not photorealistic or sterile technical.
 ```
 
 ## Review-Notiz

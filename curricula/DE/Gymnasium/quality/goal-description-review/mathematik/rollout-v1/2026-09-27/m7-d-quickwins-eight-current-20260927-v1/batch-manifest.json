@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-d-quickwins-eight-current-20260927-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-d-quickwins-eight-current-20260927-v1.config.json",
+  "configDigest": "sha256:febb7dd312073ee2043012a52caf8dd64ff15c04e8a4971a8482cd1639163966",
+  "goalIds": [
+    "288633c1-f61c-5b48-af7e-a80357f96cad",
+    "e8237315-654e-5150-97de-49c4cb49b3d1",
+    "7bb3c312-f714-55e6-a31f-f31605a93760",
+    "baf7276f-60a0-4d96-b959-d63acfb929de",
+    "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+    "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+    "bd637a72-6609-54f5-bb33-8a9e898bf7a0",
+    "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:3e46a73050e7c2b3768881558f0f98949ce190e3aef5c92817838c0c5a2a8b8f"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:f730d75d2daf8261411920a061805ab9e2565742863bd9c904e8afb7e8df6cf7",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c9ecb31df22172b6034e08e037501b7a7ce49c62323f3b49f8fa7275b213d665",
+    "reviewInputFingerprint": "sha256:eb11f583919b167659ccc3ef636e8c16a08a12073e333717ea93d063168723d5",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a",
+        "campaignDigest": "sha256:dab9573628528fc37c3d285d1408d1ddaebb4c1a5f0e1c336bb9c710bc84710e",
+        "roundId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-independent-a",
+        "batchId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:4c5165bf43d56ac9da11d195969f15fa163f968c9959c8e228117fd7fad4e797"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-b",
+        "campaignDigest": "sha256:8facf65513d15592a26b1e4e112e5e96de427f84f4f6385ec12f9601a94d3044",
+        "roundId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-independent-b",
+        "batchId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:4aec0fe39a41db362303a899b12164d47a1de60c601aecb9d11731b911c551eb"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

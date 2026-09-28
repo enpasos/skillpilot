@@ -85,6 +85,13 @@ const pageWithPlaceholderFingerprint = {
   description: canonicalGoal.description,
   breadcrumbs: ['Fixture'],
   chapterIds: ['fixture'],
+  applicability: [{
+    jurisdiction: 'DE-HE',
+    scopes: [
+      { stage: 'SekII' as const, durationModel: 'G9' as const, courseProfile: 'GK' as const },
+      { stage: 'SekII' as const, durationModel: 'G9' as const, courseProfile: 'LK' as const },
+    ],
+  }],
   requires: [],
   reverseRequires: [],
   externalPrerequisites: [],
@@ -507,6 +514,46 @@ const staleContext = await validateGoalDescriptionDualRoundResolutionBindings({
   currentInput: changedInput,
 })
 assert.match(staleContext.errors.join('\n'), /stale per-goal V3 review context/u)
+
+// An applicability-only narrowing changes the page and review-context
+// fingerprints. Recomputing the new resolution cannot make the old blind
+// review rounds current; a metadata receipt is not an existing D approval.
+const narrowedPageWithoutFingerprint = {
+  ...page,
+  applicability: page.applicability.map((group) => ({
+    ...group,
+    scopes: group.scopes.filter((scope) => scope.courseProfile !== 'GK'),
+  })),
+  pageFingerprint: digest('0'),
+}
+const narrowedPage = {
+  ...narrowedPageWithoutFingerprint,
+  pageFingerprint: fingerprintGoalDescriptionReviewPage(narrowedPageWithoutFingerprint),
+}
+const narrowedGoal = {
+  ...inputGoal,
+  pageFingerprint: narrowedPage.pageFingerprint,
+  reviewContext: { ...inputGoal.reviewContext, page: narrowedPage },
+}
+const narrowedInputWithoutFingerprint = {
+  ...inputWithoutFingerprint,
+  goals: [narrowedGoal],
+}
+const narrowedInput: GoalDescriptionReviewInput = {
+  ...narrowedInputWithoutFingerprint,
+  reviewInputFingerprint: fingerprintGoalDescriptionReviewInput(narrowedInputWithoutFingerprint),
+}
+const narrowedResolution = mutateResolution((draft) => {
+  draft.goal.pageFingerprint = narrowedPage.pageFingerprint
+  draft.goal.goalReviewContextFingerprint = fingerprintGoalDescriptionReviewContext(narrowedGoal)
+})
+const narrowedValidation = await validateGoalDescriptionDualRoundResolutionBindings({
+  ...baseArtifacts,
+  resolution: narrowedResolution,
+  currentInput: narrowedInput,
+})
+assert.match(narrowedValidation.errors.join('\n'), /stale per-goal V3 review context/u)
+assert.equal(narrowedValidation.strictDescriptionComplete, false)
 
 for (const sourceDecision of ['revise', 'split_review', 'block'] as const) {
   const openSummary = structuredClone(dualSummary)

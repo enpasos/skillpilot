@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-newton-revised-current-20260927-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-newton-revised-current-20260927-v1.config.json",
+  "configDigest": "sha256:71c42d977f2d08419b240704c9e1e29aaea2245a370d26bbc9a8c097bdc7e2f6",
+  "goalIds": [
+    "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:d96d7f49430c80cb993397ad65c8b52426e65e731987bf61e71a33ab34c837c8"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a1c22e5d06fcaf27cdaf40feecd68740078bc0b074988cf9502b579e1fb207f5",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:eae337c512b077985321708013e78707d439a6898dbdb2122937f0a88bf849d1",
+    "reviewInputFingerprint": "sha256:2efc984bb81fd7643d86abadb45264fdc17dbb413ce694b64d09d22ecac7b6d3",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-newton-revised-current-20260927-v1-a",
+        "campaignDigest": "sha256:f60a5755b52f818644b4e969c45fee6cff32f993a167bc4f823dff271cb8928e",
+        "roundId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-newton-revised-current-20260927-v1-independent-a",
+        "batchId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:29539960e0f47795499e3b72085a6dec6a175b053c5bf25ac820207fb7139178"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-newton-revised-current-20260927-v1-b",
+        "campaignDigest": "sha256:3298a81972188a9b3e5732ff8ef12209a4c7cd903092bba722cf9bf2f62ba435",
+        "roundId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-newton-revised-current-20260927-v1-independent-b",
+        "batchId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:3fcc247dab62e01fdc42278514d7aa7c9455da0458607f25c3d28d479f6acee0"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

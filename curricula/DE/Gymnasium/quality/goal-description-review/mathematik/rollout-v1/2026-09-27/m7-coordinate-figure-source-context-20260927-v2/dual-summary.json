@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:117e14245560081a515c2a811c61f624c3538e8a07d15abab78f7e508e6d95bc",
+  "reviewInputFingerprint": "sha256:8604851d69e0ec7f41eeff3b812145a78ce17c828eb31fe9230ab967b3789982",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-a",
+      "roundId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-independent-a",
+      "runIds": [
+        "mathematik-m7-coordinate-figure-source-context-20260927-v2-first-pass-a-codex-unexposed"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex model not exposed to reviewer::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-b",
+      "roundId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-independent-b",
+      "runIds": [
+        "mathematik-m7-coordinate-figure-source-context-20260927-v2-first-pass-b.batch-001-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+      "firstRecordId": "m7-coordinate-figure-source-context-v2-a-121e3fdf",
+      "secondRecordId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-b-121e3fdf",
+      "firstRunId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-first-pass-a-codex-unexposed",
+      "secondRunId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-first-pass-b.batch-001-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

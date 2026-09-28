@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-two-revised-text-current-20260927-v1-first-pass-a.batch-001.codex-review",
+  "campaignId": "mathematik-m7-two-revised-text-current-20260927-v1-a",
+  "roundId": "mathematik-m7-two-revised-text-current-20260927-v1-first-pass-a",
+  "batchId": "mathematik-m7-two-revised-text-current-20260927-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:7f5399653e4e4beb9eb2bce648f67a6f4b13d8faf4a903ac15f72390ceb80402",
+  "bundleFingerprint": "sha256:9bdf52236146959f70c574c33df154a1362a563b6a66f955f2da9ae50e9718b9",
+  "bookDigest": "sha256:f24fcdbdd018a3ba1e1a7319935456eb8eb0fd47449009062004fe007637f851",
+  "provider": "OpenAI",
+  "model": "Codex (exact model not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:06d82650c7a24461ee5d004135406aa78b2fc7362a18b6ec286fc9542f89e16f",
+  "independenceGroupId": "mathematik-m7-two-revised-text-current-20260927-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "09f47964-2cd0-410e-93ee-9632b582fc91",
+    "0e8417d7-effb-5314-93ba-a571b01726ce"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:49bf804e6153b89ede539143087c6733f1519223d23e50008199f3797e9e4a2f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:7f5399653e4e4beb9eb2bce648f67a6f4b13d8faf4a903ac15f72390ceb80402"
+    }
+  ],
+  "startedAt": "2026-09-27T01:49:34.232Z",
+  "completedAt": "2026-09-27T01:49:34.232Z",
+  "status": "completed",
+  "outputDigest": "sha256:59706d2309efbb9a13bbe7d3b22e2e0488fe639f97604b9fa6f27ffd3c260c2d",
+  "toolchainVersion": "codex-math-description-review-a-v1"
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-m7-antiderivative-graph-current-p-20260928-v1",
+  "reviewedAt": "2026-09-27T22:06:00.000Z",
+  "reviewer": "OpenAI Codex targeted Mathematics subject review; AI candidate only",
+  "goals": [
+    {
+      "goalId": "21676dae-8619-59d1-89e3-a35bb2297e2c",
+      "reason": "Das neue BY-M12-/HE-E.2-Ziel verlangt eine eigenständige Skizze von F aus einem gegebenen f-Graphen und eine Begründung über F′=f samt vertikaler Verschiebungsfreiheit. Für beide Transferfälle liegen konkret gerenderte Eingabegraphen im assets-Verzeichnis vor; die Aufgaben verlangen tatsächlich eine Zeichnung von F und G ohne einen Funktionsterm zum symbolischen Aufleiten anzugeben. Fall eins hat zwei Vorzeichenwechsel, Fall zwei eine berührende Nullstelle ohne Vorzeichenwechsel. Die Unterrichtsillustration f(x)=x wird in keiner Aufgabe wiederholt. KI-Kandidat E1/G1; keine menschliche Freigabe und kein Ersatz für eine tatsächlich vorgelegte Lernendenzeichnung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "sketch-antiderivative-from-f-graph",
+            "essentialUnderstandingDe": "Die y-Werte des gegebenen f-Graphen sind die Steigungen von F: f>0 bedeutet Steigen, f<0 Fallen und f=0 eine waagerechte Tangente; ein Extremum von F setzt einen passenden Vorzeichenwechsel von f voraus.",
+            "essentialUnderstandingEn": "The y-values of the given graph of f are slopes of F: f>0 means F increases, f<0 means it decreases, and f=0 means a horizontal tangent; an extremum of F requires a suitable sign change of f.",
+            "observablePerformanceDe": "Die lernende Person skizziert zu einem neuen gezeichneten f-Graphen einen in Steigung und Verlauf passenden F-Graphen und markiert stationäre Stellen ohne jede Nullstelle von f blind als Extremum zu deuten.",
+            "observablePerformanceEn": "The learner sketches an F-graph with appropriate slope and course from a fresh drawn graph of f and marks stationary points without automatically treating every zero of f as an extremum."
+          },
+          {
+            "id": "justify-vertical-translation",
+            "essentialUnderstandingDe": "F′=f bestimmt nur die Steigungen, nicht die absolute Höhe des Stammfunktionsgraphen; unterschiedliche Anfangswerte verschieben denselben Verlauf vertikal um eine Konstante.",
+            "essentialUnderstandingEn": "F′=f fixes slopes but not the absolute height of an antiderivative graph; different initial values translate the same course vertically by a constant.",
+            "observablePerformanceDe": "Die lernende Person begründet an ihrer Skizze, warum ein zweiter vorgegebener oder selbst gewählter F-Anfangswert nur eine vertikale Verschiebung erzeugt, und zeichnet diese Verschiebung konsistent ein.",
+            "observablePerformanceEn": "The learner explains on their sketch why a second given or self-chosen initial value yields only a vertical translation and draws that translation consistently."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["sketch-antiderivative-from-f-graph", "justify-vertical-translation"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "two-crossings-versus-touching-zero",
+            "textDe": "Zuerst wechselt der gezeichnete f-Graph an zwei Nullstellen das Vorzeichen; danach berührt ein anderer f-Graph die x-Achse an einer Nullstelle ohne Vorzeichenwechsel. Die zweite Skizze darf dort kein F-Extremum erfinden.",
+            "textEn": "First the drawn graph of f changes sign at two zeros; then another graph of f touches the x-axis at a zero without changing sign. The second sketch must not invent an extremum of F there."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "arch-two-sign-changes",
+            "taskDemandDe": "Zeige den Eingabegraphen aus https://skillpilot.com/assets/goal-evidence/mathematik/21676dae-8619-59d1-89e3-a35bb2297e2c/arch-two-sign-changes.svg: eine glatte nach unten geöffnete Kurve durch (−1,0), (0,1), (1,0), unterhalb der x-Achse außerhalb von [−1,1] und oberhalb dazwischen; gib keinen Funktionsterm an. Die lernende Person zeichnet auf einem zweiten Achsensystem einen möglichen Stammfunktionsgraphen F mit F(0)=0, markiert seine stationären Stellen und begründet Steigen/Fallen und den Verlauf aus f. Danach zeichnet sie den Graphen einer zweiten Stammfunktion G mit G(0)=2 und erklärt den Zusammenhang. Die F-/G-Zeichnungen werden als Foto oder digitale Grafik vorgelegt; bloßer Text ist keine vollständige Leistung.",
+            "taskDemandEn": "Show the input graph in https://skillpilot.com/assets/goal-evidence/mathematik/21676dae-8619-59d1-89e3-a35bb2297e2c/arch-two-sign-changes.svg: a smooth downward-opening curve through (−1,0), (0,1), (1,0), below the x-axis outside [−1,1] and above it between; provide no function formula. The learner draws a possible antiderivative graph F with F(0)=0 on a second coordinate system, marks its stationary points, and justifies increase/decrease and course from f. They then draw a second antiderivative G with G(0)=2 and explain the relationship. Submit the F/G drawings as a photo or digital graphic; text alone is not a complete performance.",
+            "expectedPerformanceDe": "F fällt links von −1, hat bei −1 ein lokales Minimum, steigt von −1 bis 1, hat bei 1 ein lokales Maximum und fällt rechts von 1; bei F(0)=0 liegt die Skizze durch den Ursprung. Die Steigung von F ist je x gerade die gezeigte Höhe f(x), und G ist derselbe F-Verlauf um 2 Einheiten nach oben verschoben. Als Kontrollmodell, nicht als vorgegebene Lösung, passt f(x)=1−x² mit F(x)=x−x³/3.",
+            "expectedPerformanceEn": "F decreases left of −1, has a local minimum at −1, increases from −1 to 1, has a local maximum at 1, and decreases right of 1; F(0)=0 places the sketch through the origin. The slope of F at each x equals the shown height f(x), and G is the same F curve shifted up by 2. As a checking model, not a given solution, f(x)=1−x² and F(x)=x−x³/3 fit.",
+            "understandingFocusDe": "Die Skizze entsteht aus Vorzeichen und Größe der gezeichneten f-Werte statt aus Aufleiten eines Terms; beide Vorzeichenwechsel und die freie vertikale Lage werden sichtbar.",
+            "understandingFocusEn": "The sketch is derived from the sign and size of the drawn f-values rather than symbolic integration; both sign changes and the free vertical position are visible."
+          },
+          {
+            "id": "touching-zero-no-f-extremum",
+            "taskDemandDe": "Zeige den unabhängigen Eingabegraphen aus https://skillpilot.com/assets/goal-evidence/mathematik/21676dae-8619-59d1-89e3-a35bb2297e2c/touching-zero-no-extremum.svg: eine glatte nach oben geöffnete Kurve, die die x-Achse nur bei (1,0) berührt und durch (0,1) und (2,1) verläuft; gib keinen Funktionsterm an. Die lernende Person zeichnet einen möglichen F-Graphen mit F(0)=−1, erklärt die Tangente und prüft ausdrücklich, ob F bei x=1 ein Extremum hat. Sie wählt danach einen anderen Anfangswert und zeichnet die zugehörige zweite Stammfunktion. Eine wirkliche Zeichnung oder ein Foto ist erforderlich.",
+            "taskDemandEn": "Show the independent input graph in https://skillpilot.com/assets/goal-evidence/mathematik/21676dae-8619-59d1-89e3-a35bb2297e2c/touching-zero-no-extremum.svg: a smooth upward-opening curve touching the x-axis only at (1,0) and passing through (0,1) and (2,1); provide no formula. The learner draws one possible F with F(0)=−1, explains the tangent, and explicitly checks whether F has an extremum at x=1. They then choose another initial value and draw the corresponding second antiderivative. An actual drawing or photo is required.",
+            "expectedPerformanceDe": "F steigt links und rechts von 1, hat bei x=1 eine waagerechte Tangente, aber weder Maximum noch Minimum; F(0)=−1 fixiert nur die Höhe. Jede zweite Stammfunktion hat denselben Steigungsverlauf und ist um die Differenz der Anfangswerte vertikal verschoben. Als bloßes Kontrollmodell passen f(x)=(x−1)² und F(x)=(x−1)³/3−2/3, denn F(0)=−1.",
+            "expectedPerformanceEn": "F increases on both sides of 1 and has a horizontal tangent at x=1, but neither a maximum nor a minimum; F(0)=−1 fixes only its height. Every second antiderivative has the same slope pattern and is translated vertically by the difference in initial values. As a check only, f(x)=(x−1)² and F(x)=(x−1)³/3−2/3 fit, since F(0)=−1.",
+            "understandingFocusDe": "Eine Nullstelle von f ohne Vorzeichenwechsel erzeugt eine stationäre Stelle, aber kein F-Extremum; der Transfer trennt Tangente, Monotonie und Anfangswert sauber.",
+            "understandingFocusEn": "A zero of f without a sign change produces a stationary point but not an extremum of F; the transfer separates tangent, monotonicity, and initial value cleanly."
+          }
+        ]
+      }
+    }
+  ]
+}

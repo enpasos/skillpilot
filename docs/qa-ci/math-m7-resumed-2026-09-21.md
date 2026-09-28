@@ -1,5 +1,11 @@
 # Mathematik M7: Fortsetzung am 21. September 2026
 
+**Aktuelle Übergabe vom 28. September:** Die Goal-Verfolgung ist auf Wunsch
+des Product Owners pausiert. Das [fachliche Abschlusskonzept samt Checkpoint-Plan](math-m7-concept-and-handoff-2026-09-28.md)
+hält die nächsten Schritte fest: zunächst Konzept, nach dem Modellwechsel
+commitfähiger Zwischenstand, danach erst auf ausdrücklichen Neustart weitere
+M7-Arbeit. Die nachstehenden Einträge dokumentieren den bisherigen Verlauf.
+
 Der Auftrag „Schließe Mathematik ab“ hebt die zuletzt dokumentierte
 Zwischenstandspause auf. Maßgeblich bleiben die aktuelle zentrale Registry,
 das In-flight-Ledger und die strenge D/P/A/M/V-Schnittmenge. M7 ist rein
@@ -1360,3 +1366,892 @@ Die Nutzerpause gilt **nach** dem unten dokumentierten technischen
 Commitfähigkeitscheck. Keine Veröffentlichung, kein Deployment, keine
 Portalschreiboperation und keine M7- oder menschliche Freigabe folgt aus
 diesem Zwischenstand.
+
+## Fortsetzung am 26. September: nutzergewähltes Pilotbild und gezielte QS
+
+Der Nutzer hat den Mathematik-M7-Auftrag wieder aufgenommen und das konkrete
+Bild `tmp/prompt_5.png` für „Figuren im Koordinatensystem und Grundriss“
+ausdrücklich zur vorläufigen Anzeige gewählt. Die drei Bildkopien sind
+bytegleich (`sha256:9a388e26e0e16f2ade9a92f92545fe1e5457f90a35dd8e6eabecb37aa3b2a5c2`). Punkt A steht jedoch links der x=−3-Gitterlinie,
+obwohl das Label A(−3,−2) lautet. Deshalb bleibt die maschinelle
+V-Freigabe **offen**. Der P-Beleg wurde auf das aktive Bild gebunden und
+verwendet fachlich korrekte, unabhängige Koordinatenfälle; das fehlerhafte
+Bild ist keine Lösungsvorlage. Die nur für diese Ziel-ID und diesen exakten
+Hash geltende Anzeige-Ausnahme im CI-Approval-Coverage-Check ist keine
+fachliche Freigabe und zählt nicht für M7.
+
+Zwei weitere mathematisch geprüfte PNGs wurden als Pilotbilder für
+„Extremstellen parameterabhängig untersuchen“ (`7feaaebd…`) und
+„Transformationsscharen bekannter Funktionsklassen untersuchen“
+(`e33e75e3…`) eingebunden. Ihre aktuelle AI-Bildprüfung ist jeweils
+hashgebunden; menschliche Freigabe wird nicht behauptet. Das historische
+fehlerhafte Bild bleibt in beiden Fällen als Reviewbefund erhalten. Für
+beide Ziele fehlen noch eine aktuelle P-Bildprüfung und die abschließende
+D-Resolution; ein bloßer Fingerprint-Tausch genügt nicht.
+
+Für das Punkt–Ebene-Lotfußverfahren (`79c4cd21…`) wurde aus zwei gültigen
+unabhängigen Reviews eine begründete `keep_current`-Resolution isoliert
+registriert. Das exakt gebundene v1-Review-PDF ist mit seinem Manifesthash
+für den Commit vorgemerkt. `8eb14d81…` war aus derselben historischen Runde
+bereits separat abgeschlossen; neun weitere Ziele bleiben im Q2-Raumgeometrie-
+In-flight-Paket offen. Ein zusätzlicher P-v2-Entwurf zum Nachweis, warum das
+Lot die kürzeste Verbindung ist, liegt noch **nicht** im zentralen Register.
+Der benachbarte parameterabhängige Winkel-Fall (`5f90df42…`) wurde erneut
+unabhängig betrachtet: Eine Sicht hält den bestehenden DE/EN-Text für
+hinreichend und empfiehlt entartete Parameterfälle im P-Nachweis; die andere
+verlangt die explizite Zulässigkeit bereits im D-Text. Wegen dieses
+inhaltlichen Dissenses und zweier späterer REVISE-Hinweise bleibt D hier
+offen; ein alter KEEP-Beleg wurde nicht automatisch übernommen.
+
+Der neu berechnete zentrale Fünf-Gate-Bericht meldet Mathematik **724/797
+(90,8 %)** statt 723/797: **+1** strenger Abschluss durch die neue
+79c4-D-Resolution. Die zwei neuen V-Abschlüsse für 7fea und e33 schließen
+wegen fehlender aktueller D- und P-Nachweise noch kein weiteres Ziel streng
+ab; das nutzergewählte Grundstücksbild bleibt V-offen.
+Gates: **D734/P775/A797/M797/V759**, alle sechs Pflichtprüfungen bestanden,
+null Blocker. Physik bleibt **478/478**. Der generierte Curriculumstatus
+weist Mathematik weiter als **M6** und Physik als **M7** aus; alle neun
+geschützten Reifegrad-Untergrenzen bestehen. Bild-QA, Asset-Parität,
+Coverage und der enge CI-Approval-Check bestehen lokal. Ein vollständiger
+CI- oder Deployment-Lauf wird hier nicht behauptet.
+
+### Zwei aktuelle Q4-Funktionsziele abgeschlossen; Bild-HOLD bleibt getrennt
+
+Für `7feaaebd…` (parameterabhängige Extremstellen) und `e33e75e3…`
+(Transformationsscharen) wurde ein neues, exakt an die aktuellen PNG-Seiten
+gebundenes Zweierpaket vorbereitet. Zwei voneinander blinde D-Runden kamen
+jeweils unabhängig zum Urteil `keep`; die abweichenden Begründungen wurden
+mit einem manifestgebundenen KI-Syntheseentscheid ausdrücklich aufgelöst.
+Runde B hatte zuvor die separaten P-Kandidaten verfasst und dokumentiert
+diese Cross-Lane-Grenze; gegenüber Runde A blieb sie blind. Beide P-v2-Profile
+prüfen neue Fälle jenseits der gezeigten Bilder und sind wahrheitsgemäß
+`ai_candidate`/`needs_human_review`, keine menschliche Freigabe. Die
+historischen Text-only-Profile wurden nicht bloß auf neue Bildhashes
+umetikettiert. Das gebundene Review-PDF wurde für den Commit vorgemerkt.
+
+Der zentrale Fünf-Gate-Check bestätigt jetzt Mathematik **726/797 (91,1 %)**:
+netto **+2 neue fachlich und bildgebunden geprüfte Abschlüsse** gegenüber
+724/797, **+0 reine Bindungswiederherstellungen**. Gates:
+**D736/P777/A797/M797/V759**; sechs von sechs Pflichtprüfungen und null
+Blocker. Physik bleibt **478/478**. Der neu erzeugte Curriculumstatus weist
+Mathematik weiterhin als **M6** und Physik als **M7** aus; alle neun
+geschützten Reifegrad-Untergrenzen bestehen. Die zwei Ziele wurden aus dem
+alten neunzieligen In-flight-Restpaket entfernt und ein siebenzieliges
+Fortsetzungspaket aus den weiterhin offenen Zielen vorbereitet.
+
+Unabhängig davon wurden für drei reine V-HOLDs gezielte Korrekturprompts
+vorbereitet. Die ersten beiden Kettenlinien-Korrekturen beheben zwar den
+falschen Begriff „Katenoide“, blieben aber wegen kleiner Beschriftungen bei
+360-Pixel-Kartenbreite **HOLD**. Der dritte, weiter verdichtete Kandidat
+bestand eine separate Sichtprüfung bei Original- und Kartenbreite als
+`accepted_pilot`-**Kandidat**. Er ist noch nicht importiert; weder aktives
+Zielbild noch V-QA wurden daraus ungeprüft geändert. Kein vollständiger CI- oder
+Deployment-Lauf wird aus diesen lokalen Checks abgeleitet.
+
+### Kettenlinienbild fachlich korrigiert und aktuell gebunden
+
+Der dritte Kettenlinien-Kandidat (`164921f6…`) wurde nach separater
+Original- und 360-Pixel-Sichtprüfung als Pilotbild importiert. Der sichtbare
+Fehlbegriff „Katenoide“ ist beseitigt; Gleichung, Exponentialbezug,
+Parameterwirkung, Minima und Farbzuordnung sind im aktiven PNG konsistent.
+Kanonik, Web- und Backend-Asset sind byte-identisch mit SHA-256
+`7ce5bdfc29df7f57878c70eccf994320dcc65fb5699bb335db058115e41d3980`.
+Der neue V-Entscheid ist im eigenen Review-Ledger und im exakten QA-Hash
+festgehalten; `humanApproved` bleibt `no`. Die vorbereitende Metadatenhilfe
+wurde erst nach den Generierungsversuchen ausgeführt; der tatsächliche
+Provider-Prompt ist separat archiviert.
+
+Nach dem Import wurde das alte P-Profil zunächst korrekt als veraltet
+gemeldet: P776, fünf von sechs Pflichtprüfungen und ein Blocker. Ein neues
+P-v2-Profil prüft nun zwei Transferfälle jenseits der Abbildung: Parameter
+aus Tiefpunkt und zweiter Ableitung erschließen sowie den tiefsten Punkt
+eines Seilausschnitts bestimmen, dessen globaler Tiefpunkt außerhalb der
+Spannweite liegt. Der Kandidat ist an das aktuelle PNG gebunden und bleibt
+`ai_candidate`/`needs_human_review`. Der text- und quellengebundene
+D-Nachweis aus Batch 042 war bereits aktuell; dessen Review-Input enthielt
+kein Bild, daher war keine künstliche D-Neubewertung nötig.
+
+Der erneute zentrale Fünf-Gate-Check bestätigt Mathematik **727/797
+(91,2 %)**, also **+1** strengen Abschluss gegenüber 726/797. Gates:
+**D736/P777/A797/M797/V760**, sechs von sechs Pflichtprüfungen und null
+Blocker. Physik bleibt **478/478**. Mathematik ist damit weiterhin nicht M7;
+die noch offenen 70 Ziele sind nicht durch das Kettenlinienbild erledigt.
+Der neu erzeugte Curriculumstatus weist Mathematik weiter als **M6** und
+Physik als **M7** aus; alle neun geschützten Reifegrad-Untergrenzen bestehen.
+Bild-QA, Asset-Parität, Coverage und Approval-Abgleich bestehen lokal.
+Dieser Nachweis ist keine vollständige CI, kein Deployment und keine
+menschliche QS.
+
+### E1-Modellbild gebunden; problematisches Spatprodukt zurückgestellt
+
+Für `1b70498a…` wurden sechs tatsächliche Bildversuche samt Prompts und
+konkreten HOLD-Gründen protokolliert. Erst Versuch 6 verbindet den linearen
+Radfahrer-Weg und den quadratischen senkrechten Ballwurf ohne widersprüchliche
+Achsenwerte oder Bewegungsrichtung und blieb bei 360 Pixel Kartenbreite
+lesbar. Nach eigener und separater Bildsichtprüfung wurde exakt dieser PNG
+importiert (SHA-256
+`01ca4678309b54567dbc84a29a7fd33deacd424a0e275cfbf79ef69cf45662c8`).
+Kanonik, Web- und Backend-Asset stimmen bytegenau überein; der V-Eintrag
+bindet den Hash als maschinell geprüften Pilot, nicht als menschlich
+freigegebenes Bild.
+
+Der Bildwechsel machte das alte textgebundene P-Profil zunächst veraltet.
+Die drei historischen P-Records bleiben unangetastet. Deren beiden weiterhin
+text-only gültigen J5-/Q2-Records wurden mit gepinntem Quellhash unverändert
+in ein engeres Paket übernommen. Für `1b70498a…` entstand ein neues,
+bildgebundenes P-v2-`ai_candidate` mit zwei unabhängigen Transferfällen
+(Tankfüllung und Beetfläche), ohne menschliche Freigabe zu behaupten. Der
+zentrale Check bestätigt dadurch nun **728/797 (91,3 %)**, also netto **+1**
+gegenüber 727/797, Gates **D736/P777/A797/M797/V761**, sechs von sechs
+Pflichtprüfungen und null Blocker. Physik bleibt **478/478**. Mathematik
+bleibt bei M6; bis zum strengen M7-Schnitt fehlen **69 Ziele**.
+Der neu erzeugte Curriculumstatus weist Mathematik als **M6** und Physik
+als **M7** aus; alle neun geschützten Reifegrad-Untergrenzen bestehen.
+
+Ein anderer Bildversuch zum Spatprodukt (`944dd479…`) wurde trotz richtiger
+Formeln **nicht** importiert: Die unabhängige Prüfung fand einen Knick der
+x-Achse am Endpunkt des roten Vektors. Dessen V-HOLD und bisheriges
+textgebundenes P-Profil bleiben erhalten. Das ist ein gezielter Rücksteller
+statt einer falschen Freigabe. Zusätzlich wurden für sieben weitere und
+neun räumlich-geometrische offene Ziele zwei unabhängige D-Runden
+durchgeführt; die neun räumlichen B-Records enthalten eine offengelegte
+zielweise Reviewer-Neuzuweisung nach versehentlicher Einsicht in einen alten
+Record. Beide Neuner-Runden bestanden die gezielten Validatoren. Die
+fachlichen Einwände sind noch keine Adjudikation und verändern den strengen
+Abschlusszähler nicht. Bild-QA, Asset-Parität, Coverage und Approval-Abgleich
+bestanden lokal. Kein vollständiger CI-Lauf, Deployment oder menschliche QS
+wird damit behauptet.
+
+### Q2-Parameterziel abgeschlossen; Statistikbild ehrlich zurückgezogen
+
+Die neue unabhängige Neunerrunde zur Q2-Raumgeometrie ergab für
+`5f90df42…` A=`revise`, B=`keep`. Die gezielte KI-Synthese hält den
+aktuellen Text: Das zusätzliche Lernziel ist die parameterabhängige
+räumliche Bedingung, während die grundlegenden Winkel- und Lageverfahren
+eigene Voraussetzungen sind. A's zulässige Parameter und Gegenprüfungen
+stehen ausdrücklich im aktuellen P-v2-Nachweis; die zwei älteren
+`split_review`-Voten werden in der zweisprachigen Synthese fachlich
+beantwortet, nicht verschwiegen. Die anderen acht Ziele der Neunerrunde
+bleiben im engeren In-flight-Paket offen. Das ist **+1 neuer fachlicher
+D-Abschluss**, keine menschliche Freigabe.
+
+Eine separate Bildsichtprüfung fand bei `ae3483e3…` einen echten
+Ziel-Bild-Widerspruch: Das aktive JPG zeigte Güte gegen Stichprobenumfang
+`n` bei fester Alternative, während die geforderten OC-/Gütekurven über
+dem wahren Parameterwert `p` und mit Null-/Alternativbedingungen
+auszuwerten sind. Der kanonische Bildlink wurde deshalb zurückgezogen;
+die Datei und der begründete HOLD bleiben für die Korrektur erhalten.
+Die Bild-QA wurde neu erzeugt und der Approval-Coverage-Check besteht
+ohne Sonderausnahme für dieses Bild. Der alte zehnzielige bildgebundene
+P-Nachweis wurde **nicht** pauschal umgehängt: Neun unveränderte Fälle
+sind byte-identisch gesondert gebunden, für `ae3483e3…` besteht ein neuer
+textgebundener P-v2-Kandidat mit zwei rechnerisch geprüften OC-/Güte-Fällen.
+Der Bildwechsel bleibt V-offen. Auch das durch den globalen Landschafts-
+Digest veraltete `5f90df42…`-Syntheseartefakt wurde als inhaltlich
+unveränderte v2-Bindung neu materialisiert; v1 bleibt erhalten.
+
+Der zentrale Fünf-Gate-Check bestätigt nach diesen gezielten Reparaturen
+Mathematik **729/797 (91,5 %)**, Gates **D737/P777/A797/M797/V760**,
+sechs von sechs Pflichtprüfungen und **null Blocker**. Gegenüber dem
+zuletzt dokumentierten 728/797 ist der Nettozuwachs **+1 fachlicher
+Abschluss, +0 reine Bindungswiederherstellungen**; 68 Ziele sind streng
+offen. Physik bleibt **478/478**. Der regenerierte Curriculumstatus
+zeigt Mathematik weiter als **M6**, Physik als **M7**; alle neun
+geschützten Reifegrad-Untergrenzen bestehen. Für die 37 offenen
+Visualisierungen werden die Bildprompts separat zum nutzerseitigen
+Erzeugen bereitgestellt. Das ist lokale Maschinen-QS, kein vollständiger
+CI-/Deployment- oder menschlicher Freigabenachweis.
+
+### Textgebundene Verständnisnachweise für die letzten P-Lücken
+
+Die 20 bislang ungebundenen P-Ziele wurden in einem eigenen, aktuellen
+Kandidatenpaket fachlich nachgesehen und mit jeweils zwei positiven
+Transferfällen als **textgebundene** P-v2-Profile erfasst. Neun übernommene
+Quellfälle sind an ihren historischen Hash gebunden; drei sachliche Fehler
+in älteren Entwürfen wurden vor der neuen Bindung berichtigt. Das Paket
+`quality/goal-evidence/2026-09-27/math-p20-text-current-v1/` besteht den
+gezielten Kandidatencheck für 20/20 Ziele ohne Blocker. Sämtliche Records
+bleiben `ai_candidate` und `needs_human_review`; sie sind weder eine
+menschliche Freigabe noch eine Bildprüfung.
+
+Der zentrale Gate-Zähler für P steigt damit von **777 auf 797/797**.
+Der strenge M7-Zähler bleibt zunächst **729/797**, denn dieselben Ziele
+haben noch andere offene Gates. D737/A797/M797/V760 und die 37 offenen
+Visualisierungen bleiben unverändert. Die Bildübergabe unter
+`tmp/math-m7-image-prompts-2026-09-27/` enthält je V-offenem Ziel einen
+separaten Prompt und einen leeren Ausgabeordner; erzeugte Bilder sind
+zunächst nur Kandidaten und müssen später einzeln geprüft und gebunden
+werden.
+
+### Sechs aktuelle D-Fälle geprüft, ein enger Abschluss
+
+Zwei blind voneinander erstellte KI-Runden haben sechs vormals strittige
+Beschreibungen am aktuellen Buchkontext neu geprüft. Die fachliche
+[Synthese](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-six-text-dissent-current-20260927-v1/synthesis-assessment.md)
+schließt ausschließlich die E.1-Kompetenz zu Achsenschnittpunkten und
+Graphschnittpunkten (`0b23413e…`) als KEEP am aktuellen Text. Vier Fälle
+bleiben wegen möglicher Zielaufspaltungen offen; ein Modellierungsziel
+bleibt wegen widersprechender Textentscheidung und zu breiter
+HE-Quellen-Zuordnung offen. Ein eigener Teilindex bindet die einzige
+KEEP-Entscheidung an aktuelle Goal-/Page-Fingerprints und Bildbytes;
+die fünf Holds bleiben ausdrücklich im Materialisierungsbeleg.
+
+Der zentrale Check bestätigt nun **730/797 (91,6 %)**, Gates
+**D738/P797/A797/M797/V760**, sechs von sechs Pflichtprüfungen und null
+Blocker. Das ist **+1** fachlicher Fünf-Gate-Abschluss gegenüber 729/797,
+keine reine Bindungswiederherstellung und keine menschliche Freigabe.
+Physik bleibt 478/478. Für 19 weitere D-offene, bereits V-bereite Ziele
+liegt ein exakt aktuelles Review-Paket bereit; zwei unabhängige
+Textdurchgänge laufen. Die 37 V-offenen Ziele sind durch die separate
+Bildprompt-Übergabe abgedeckt. Mathematik bleibt bis zur vollständigen
+Schnittmenge bei M6.
+
+### 19 aktuelle Textfälle synthetisiert; Bildübergabe bleibt getrennt
+
+Die beiden unabhängigen KI-Runden für die 19 D-offenen, bereits
+visualisierten Ziele sind vollständig und nach ihrem gebundenen Buchkontext
+geprüft. Die [fachliche Synthese](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-vready-remainder19-recheck-20260927-v1/synthesis-assessment.md)
+begründet genau **einen** engen aktuellen D-KEEP für `ccfd4e60…`
+(Parameterwirkung bei verknüpften Exponential-Polynom-Scharen). Sie setzt
+sich dabei ausdrücklich mit den zwei früheren Split-Voten auseinander;
+die direkten Vorbedingungen, der nun gebundene HE-Q4.1-Ausschnitt und zwei
+verschiedene P-v2-Transferfälle stützen die integrierte Kompetenz. Das
+Einzelbild beweist nicht alle Verknüpfungsarten; Bild-QS und P bleiben
+separate Gates. Die übrigen **18** Fälle sind im aktuellen Teilindex mit
+konkreten Text-, Atomaritäts- oder Geltungsgründen offen. Gleicher Anbieter
+und unbekannte Modellidentität der zwei Runden sind dokumentiert; daraus
+wird keine Modelldiversität oder menschliche Freigabe abgeleitet.
+
+Der zentrale Fünf-Gate-Check steht damit bei **731/797 (91,7 %)**,
+Gates **D739/P797/A797/M797/V760**, sechs von sechs Pflichtprüfungen
+und null Blockern. Physik bleibt **478/478**. Mathematik ist weiterhin
+**M6**; 66 Ziele sind in der strengen Schnittmenge offen. Der regenerierte
+Curriculumstatus bindet diesen Stand. Die 37 V-offenen Bilder werden nicht
+stellvertretend erzeugt: Unter `tmp/math-m7-image-prompts-2026-09-27/`
+liegen ein Prompt je Ziel und der leere Ordner `images/` für die
+nutzerseitige Erzeugung. Erst Sichtprüfung, Import und aktualisierte
+Fingerprints können daraus V-Abschlüsse machen.
+
+Weitere Nicht-Bild-Befunde bleiben ausdrücklich offen. Der
+[HE-Q4.2-Quellenabgleich](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-six-text-dissent-current-20260927-v1/he-q4-2-source-mapping-audit-20260927.md)
+zeigt eine zu breite `exact`-Zuordnung bei `fde351a8…`; eine neue, enger
+belegte Mapping-Entscheidung ist nötig, nicht eine automatische D-Freigabe.
+Der [GK/LK-Projektionsabgleich](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-q4-lk-gk-projection-audit-20260927.md)
+quantifiziert 103 LK-markierte Atlasseiten mit 1.517 zusätzlichen
+GK-Geltungen gegenüber dem aktuellen Laufzeitfilter; 95 dieser Seiten
+sind bereits D-fingerprintgebunden. Eine systematische Korrektur erfordert
+deshalb zuerst Quellen-/Tag-Entscheid und kontrollierte Rebind-/Regression,
+damit geprüfte Nachweise nicht unbemerkt ungültig werden. Es wurde weder
+ein veröffentlichter Atlas noch ein kanonisches Lernziel allein aufgrund
+dieser Audits geändert.
+
+### Zwei kleine Textkorrekturen ohne neue Bilder
+
+Für `09f47964…` wurde die Funktion als eindeutige Zuordnung pro zulässigem
+Eingabewert und der Zusammenhang der **gegebenen** Darstellungen präzisiert;
+die frühere Formulierung konnte eine eindeutige Rekonstruktion aus endlichen
+Tabellen- oder Graphdaten nahelegen. `0e8417d7…` verlangt jetzt Integrale
+**geeigneter** Exponential-Polynom-Verknüpfungen und eine Probe durch Ableiten,
+statt pauschal elementare Integrierbarkeit zu suggerieren. DE/EN-Texte,
+semantische Fingerprints, Atomaritätsprüfung und die zu den unveränderten
+Bilddateien gehörenden Alternativtexte wurden zusammen nachgezogen.
+
+Das [aktuelle Zwei-Ziele-D-Paket](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-two-revised-text-current-20260927-v1/synthesis-assessment.md)
+enthält zwei unabhängig erstellte Blindrunden und die enge Synthese KEEP/KEEP.
+Beide Runden stammen vom selben Anbieter; die exakte Modellidentität ist
+nicht offengelegt. Es wird weder Anbieter-/Modellvielfalt noch menschliche
+Freigabe behauptet. Die früheren P-v2-Pakete bleiben historisch unverändert:
+11 beziehungsweise vier nicht betroffene Records sind byte-identisch
+weitergebunden, während für die zwei korrigierten Ziele neue, bildgebundene
+P-v2-Kandidaten mit den **bestehenden** JPG-Hashes gelten. Die
+[gezielte Bildnachprüfung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-two-reworded-image-qa-2026-09-27.md)
+fand keinen Ziel-Bild-Widerspruch; bei `0e8417d7…` ist die Formelschrift in
+kleiner Kartenansicht knapp und Zoomen sinnvoll. Es wurde kein Bild erzeugt.
+
+Nach zentraler Registrierung bestehen alle sechs Pflichtprüfungen ohne
+Blocker: Mathematik **733/797 (92,0 %)** mit **D741/P797/A797/M797/V760**;
+Physik bleibt **478/478**. Gegenüber 731/797 sind dies genau zwei neue
+strenge Abschlüsse durch überprüfte Textkorrekturen, nicht durch eine
+unbelegte Freigabe. Die Bildübergabe umfasst weiterhin 37 aktuelle
+V-Lücken. Vier zusätzlich vorbereitete Prompts für mögliche Aufteilungen
+von Prisma- und Kugelzielen sind ausdrücklich **nicht** in diesen 37 enthalten
+und noch keinem Child-Ziel zugewiesen. Die übrigen V-bereiten D-Lücken
+lassen sich nach der aktuellen Triage nicht als bloße Text-Quickwins
+schließen: Geltung, Quellenabdeckung, Prüfungsbezug und semantische
+Aufteilung müssen fachlich geklärt werden. Mathematik bleibt M6.
+
+Der Bild-Coverage-Bericht hatte außerdem genau eine **Dokumentationslücke**:
+Für `ae3483e3…` war der fachliche HOLD zwar beschrieben und der aktive
+Bildlink entfernt, doch die maschinenlesbare Deferred-Zeile mit archiviertem
+Original fehlte. Die unveränderte JPG-Datei wurde unter ihrem geprüften
+SHA-256 als Beleg archiviert und die Entscheidung als
+`deferred_quality_review` in das bestehende HOLD aufgenommen. Der
+Coverage-Check ist wieder grün; V bleibt für dieses Ziel ausdrücklich
+offen und der Bildprompt Nr. 36 bleibt nötig.
+
+### Quellenrouten enger korrigiert, ohne D-Freigaben vorzutäuschen
+
+Der [HE-Q4.2-Quellenabgleich](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-six-text-dissent-current-20260927-v1/he-q4-2-source-mapping-audit-20260927.md)
+hat nun eine konkrete Folge: Die nicht belegte `exact`-Kante vom Aspekt
+„gegebene Terme begründen und interpretieren“ zum deutlich breiteren
+Formulierungsziel `fde351a8…` wurde aus Mapping und Entscheidung
+entfernt. Die ältere HE-Provenienz hält das Ziel sichtbar; eine aktuelle
+HE-Oberstufen-Source-Extraction-Zuordnung für seinen vollen Anspruch ist
+weiter offen. Die zwei anderen Kanten derselben Entscheidung sind nicht
+automatisch freigegeben. Die ungenaue Q4.2-Druckseitenreferenz der
+Source-Extraction ist als getrennter Traceability-Folgepunkt erfasst.
+
+Im [Q2-Quellen-/Prüfungsaudit](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-24/m7-q2-volume-two-source-route-current-20260924-v2/audit-20260927.md)
+wurden drei fachfremde TH-/SL-Mappinggruppen gezielt zu den
+Pyramiden-/Kegelzielen korrigiert. Sie sind ausdrücklich nur `partial`:
+Die Thüringer Quelle verlangt unter anderem selbstständiges Angeben der
+Formeln, die saarländischen Belege zusätzliche Zerlegungs- beziehungsweise
+Halbkugelargumente. Die daraus folgenden D-Entscheidungen und die
+überbreite Q2-Prüfung mit 43 beanspruchten Zielen bleiben offen. Die
+Source- und Scope-Checks bestehen nach der Mappingkorrektur; der
+Fünf-Gate-Zähler wird dadurch nicht künstlich erhöht.
+
+Der allgemeine M3-Status zählt `partial`-Zuordnungen derzeit als
+„fachlich abgedeckt“. Bei den geprüften Mathematik-Quellen in HE, SL und
+TH sind **1.890 von 3.023** Quellenzielen ausschließlich partielle
+Zuordnungen zugewiesen. Das ist eine Audit-Warteschlange, nicht der
+Nachweis von 1.890 Fehlern; mehrere partielle Ziele können zusammen
+abdecken. Eine pauschale Änderung der Zählregel ohne die zugehörige
+fachliche Quellenprüfung würde geschützte Reifegrad-Untergrenzen
+unbegründet brechen und wurde daher nicht vorgenommen.
+
+### Weitere überprüfte Nicht-Bild-Arbeit und Bildübergabe
+
+Die [Q4.2-Quellenreferenzkorrektur](math-q42-source-reference-correction-2026-09-27.md)
+ordnet die ersten neun Aspekte der gedruckten Seite 51 und die übrigen
+18 der Seite 52 zu. Der Generator prüft diese Verteilung gezielt. Die
+beiden Mathematik-Quellenrationale-Berichte sind als gemeinsamer aktueller
+Snapshot neu erzeugt; ihre 39 geänderten Items pro Bericht sind durch
+Seitenkorrektur (30), HE/SL/TH-Mappingkorrekturen (7) und die zwei neuen
+Zieltexte erklärt. Die Quellen- und Rationale-Checks bestehen.
+
+Der [GK/LK-Projektionsbefund](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-gklk-projection-preparation-20260927-v1/README.md)
+hat nun einen **nicht aktivierten**, opt-in Buchfilter und ein Audit. Von
+95 bereits D-gebundenen betroffenen Review-Seiten wären nur 80 reine
+Scope-Verengungen; bei 15 unterscheiden sich darüber hinaus Bild oder
+Navigation oder das historische Review-Subset ist nicht mehr identisch
+rekonstruierbar. Auch die 80 passen ohne neue Review-Bindung nicht in den
+geschlossenen D-Vertrag. Ein Negativtest schützt vor scheinbar gültigem
+Carryover. Atlas-Konfiguration und öffentliches Buch bleiben daher
+unverändert; die 1.517 GK-Überprojektionen sind **noch nicht behoben**.
+
+Für die Q2-Prüfung gibt es ein [nichtkanonisches Reparaturpaket](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/assessment-review/mathematik/q2-geometry-terminal-repair-candidate-20260927-v1/README.md):
+Die vierte von 43 bisherigen Direktzuordnungen ist nur nach fachlicher
+Prüfung eines präzisierten Aufgabenteils zu halten; 39 unbelegte Zuordnungen
+sind zwölf thematischen Aufgabenentwürfen mit Lösungen und BE zugewiesen.
+Der lokale Strukturtest bestätigt die ID-Zuordnung, **nicht** deren
+didaktische oder mathematische Freigabe. Neun
+Abdeckungsbehauptungen sind als `coverageReviewHolds` ausdrücklich
+zurückgestellt; GK/LK- und Bundesland-Projektion sowie die Fairness der
+terminalen Voraussetzungen sind zusätzlich ungeklärt. Ohne Ersatz hätten 17 der 39
+Ziele keinen verbleibenden `requires`-Pfad zu einem vorhandenen
+Sek-II-Prüfungsende. Kanonik, Prüfungskatalog und Registry sind nicht
+automatisch aus Kandidatenmaterial geändert worden.
+
+Die [aktuelle D-Triage](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-current-d-open-triage-20260927.md)
+trennt alle 56 D-offenen Ziele: 29 sind zugleich V-offen; bei den 27
+anderen stehen 12 Struktur-/Atomaritätsentscheidungen, 14 Quellen-/Geltungs-
+oder Prüfungsfragen und ein scheinbar kleiner Textfall mit dahinterliegender
+GK/LK-Duplikat- und Prerequisite-Frage an. Für diese 27 ist kein
+unbelegter Ein-Zeilen-KEEP vorgenommen worden. Weitere zehn mögliche
+Splits könnten später neue Child-Bilder erfordern, sind aber noch keine
+festen Bildaufträge.
+
+Das lokale Bildübergabepaket unter
+`tmp/math-m7-image-prompts-2026-09-27/`
+enthält genau 37 individuelle Prompts mit festen PNG-Zielpfaden für die
+**aktuell** V-offenen IDs: 35 zurückgestellte und zwei vorhandene,
+nachzubessernde Anzeigen. Die vier vorläufigen Prisma-/Kugel-Split-Prompts
+stehen getrennt. Beide Ausgabeordner sind leer; ohne tatsächliche Bilder,
+Sichtprüfung, fachliche QA und gebundene Integration bleibt V offen.
+
+Nach Erneuerung des Bild-QA-Index bestehen der zentrale Fünf-Gate-Check
+erneut mit **733/797**, D741/P797/A797/M797/V760 und null Blockern,
+der Bild-Coverage-/Paritätscheck sowie der Statuscheck aller neun
+geschützten Reifegrad-Untergrenzen. Physik bleibt **478/478**. Die
+neuen Aufgabenentwürfe und der nur opt-in verfügbare Buchfilter erhöhen
+den strengen Zähler nicht. Mathematik bleibt M6.
+
+Am stabilen Integrationsstand wurden alle vier öffentlichen Lernzielbücher
+neu gebaut und einzeln gegen ihre aktuellen Eingaben verifiziert. Der
+Mathematik-Atlas enthält weiterhin 797 Seiten; Buchmodelltest,
+Publikationsprüfung und Originalquellen-Beilagencheck bestehen. Die
+Schema-Prüfung bestand für 20.103 Curriculum-Dateien, der Markdown-Linkcheck
+für 238 Dokumente. Dies belegt technische Konsistenz des Zwischenstands,
+**nicht** die ausstehenden fachlichen D-/V-Freigaben oder M7.
+
+## Fortsetzung am 27. September: Quellen, Scope und Bildübergabe
+
+Die Bildproduktion liegt nun ausdrücklich beim Product Owner. Unter
+`tmp/math-m7-image-prompts-2026-09-27/` stehen die **37 derzeit V-offenen**
+Ziele mit je einem vollständigen Prompt und leerem PNG-Zielordner. Jeder
+Prompt liegt zusätzlich einzeln als `.txt` für die spätere echte
+Bildprovenienz vor. Zehn vorläufige Motive für fünf mögliche
+Struktur-Splits, vier bedingte Motive für engere Reword-Kandidaten und
+ein vorläufiges Bild für eine mögliche Q2-Titelkorrektur stehen separat;
+sie sind weder kanonische neue Ziele noch Teil der 37 aktuellen Bildlücken.
+Zwei weitere bedingte Prompts betreffen räumliche Prüfungsstimuli eines
+nichtkanonischen Q2-Aufgabenentwurfs, nicht Gate-V-Lernzielbilder.
+Ein lokaler Eingangstest meldet nur Dateizahl, PNG-Signatur und Abmessung,
+**keine** mathematische oder urheberrechtliche Freigabe. Für andere
+strukturell offene Ziele sind neue Bildmotive erst nach der Zielentscheidung
+seriös festlegbar. Alle fünf Bild-Ausgabeordner sind noch leer. Eine
+unabhängige rechnerische Gegenprüfung der 52 Lernziel-Prompttexte fand keinen
+Formel- oder Geometriewiderspruch; Lesbarkeit und Bildtreue bleiben bis zur
+Prüfung der tatsächlichen PNGs offen.
+
+Die Quellenpräzision wurde ohne fingierte D-Abschlüsse verbessert. Bei HE
+Q2.3 stehen die zehn LK-Aspekte jetzt auf der tatsächlichen gedruckten
+Seite 43; die 24 GK-Aspekte verbleiben auf Seite 42. Fünf amtliche
+BW-LF3.4.3-Aspekte stehen nun auf Seite 42 statt 41. Eine BW-Kante zum
+breiten Ziel `fde351a8…` ist nur noch `partial`, da die Quelle dessen
+Ungleichungs- und Interpretationsanteil nicht voll trägt. Der
+[K3-Prozessquellen-Kandidat](math-he-k3-process-source-candidate-2026-09-27.md)
+verwechselt Modellieren nicht mit Problemlösen und registriert noch keine
+neue Quellendeckung. Weitere D-only-Quellen-/Niveauprüfungen haben keinen
+isolierten sicheren Metadaten-Quickwin ergeben.
+
+Für die fachlich nötige GK/LK-Atlasverengung besteht jetzt ein eigener,
+geschlossener **Kompatibilitätsvertrag**: Alle 80 wirklich ausschließlich
+GK-verengten früheren D-Seiten wurden mit Original-Resolution, beiden
+Originalreviews, altem und vorgeschlagenem Review-Kontext erneut validiert;
+15 anders veränderte Seiten wurden ausgeschlossen. Für diese 15 gibt es
+ein frisches, gebundenes Reviewpaket. Zwei voneinander blinde KI-Runden
+liegen inzwischen als [nichtkanonische 15-Seiten-Triage](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-gklk-15-current-review-20260927-v1/dual-review-triage.md)
+vor: sechs `keep/keep`, zwei `block/block`, sieben Dissense. Diese Voten
+sind keine menschliche Freigabe. `review_candidate` bezeichnet ein
+unveröffentlichtes Review-Buch, nicht fehlende Freigabe der sechs aktuell
+gebundenen PNGs.
+
+Der [Bayern-Scope-Audit](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-gklk-projection-preparation-20260927-v1/bavaria-vertiefungskurs-scope-audit.md)
+zeigt über die GK/LK-Verengung hinaus einen sachlichen Kursfehler: 41
+amtliche Source-Ziele des optionalen Vertiefungskurses verweisen auf 48
+kanonische IDs, davon 35 Atlas-Seiten. Die vorgeschlagene Projektion
+entfernt elf dieser Seiten aus BY-GK, belässt aber **alle 35 in BY-LK**,
+obwohl der Kurs weder das reguläre Pflichtfach noch ein bayerisches
+Leistungsfach ist. Die technische 80/80-Kompatibilität heilt diesen Fehler
+nicht. Ein [quellabgeleiteter, nicht aktiver Projektionskandidat](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-gklk-projection-preparation-20260927-v1/bavaria-optional-course-candidate.md)
+prüft alle 35 Seitenscopes einzeln; 32 berühren vorhandene D-Claims und
+fünf die aktuelle 15er-Doppelreview. Die spätere optionale Auswahl von drei
+aus fünf Modulen ist damit noch **nicht** modelliert. Weder die 80 Verträge
+noch das 15-Seiten-Paket sind deshalb im zentralen D-Index registriert;
+der produktive Atlas bleibt bis zu einer
+korrekten Kurs-/Modulprojektion und den danach erneuerten Review-Bindungen
+unverändert.
+
+Die zwölf nichtkanonischen Q2-Geometrie-Prüfungsentwürfe wurden rechnerisch
+und nach Aufgabenpunkten enger geprüft. Sieben der neun zuvor notierten
+konkreten Aufgabenlücken sind **auf Entwurfsebene** bearbeitet; zwei
+Abdeckungs-HOLDs zum Ablesen aus vorgegebener 3D-Zeichnung und zur
+Körperidentifikation aus vorgegebenen Ansichten bleiben. Der enge
+Integritätstest ist grün, aber weder 39
+`coveredGoalIds` noch eine GK/LK-/Länderprojektion sind damit fachlich
+freigegeben.
+
+Der aktuelle zentrale Zähler bleibt **Mathematik 733/797** mit
+**D741/P797/A797/M797/V760**, sechs bestandenen Pflichtprüfungen und null
+Blockern; **Physik 478/478** bleibt geschützt. Die beschriebenen
+Vorarbeiten sind Quellenkorrektur, Vorbereitung oder Kandidatenprüfung,
+**keine** zusätzlichen strengen Fünf-Gate-Abschlüsse. Mathematik bleibt
+M6, bis die noch offenen Entscheidungen und anschließend die tatsächlichen
+Bilddateien samt Sichtprüfung und aktuellen Bindungen integriert sind.
+
+### Weitere bildunabhängige Prüfung des Zwischenstands
+
+Ein [reproduzierbarer Scope-Audit der zwölf Q2-Prüfungsentwürfe](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/assessment-review/mathematik/q2-geometry-terminal-repair-candidate-20260927-v1/PROJECTION-AUDIT.md)
+zeigt nun gegen das aktuelle nationale Mathematik-Lernzielbuch: **Sechs**
+Entwürfe beanspruchen mit `GK_LK` oder `LK` mehr Kurs-/Ländersichten, als
+ihre gemeinsamen `requires` und `coveredGoalIds` überhaupt besitzen.
+Teilweise bleibt nur eine LK-Sicht übrig. Eine bloße Einschränkung auf
+diese Schnittmenge wäre ebenfalls keine Lösung, weil andere Lernwege dann
+ohne lokales Prüfungsende bleiben könnten. Der Audit ist diagnostisch;
+Graph, Exam-Registry und D-Gates wurden nicht geändert.
+
+Die [nicht aktive Bayern-Wahlkursdiagnose](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-gklk-projection-preparation-20260927-v1/bavaria-optional-course-candidate.md)
+prüft die 35 betroffenen Atomseiten jetzt zusätzlich pro Modul:
+`M12-V.1` bis `.5` enthalten **8 / 12 / 3 / 11 / 1** Seiten; weitere
+13 zugeordnete kanonische IDs sind Cluster. Ein breiter Cluster darf
+nicht ungeprüft als Modul-Subtree verwendet werden. Die fehlende
+separate Kursbelegung und Drei-aus-fünf-Modulwahl verhindert weiterhin
+eine korrekte produktive BY-Projektion; es gab **keine** automatische
+Übernahme alter D-Bindungen.
+
+Ein erneuter unabhängiger Abgleich der **27 D-offenen, bereits
+bildbereiten** Ziele fand keinen gegenwärtig entscheidungsreifen
+Ein-Zeilen-KEEP: zwölf brauchen Struktur-/Atomaritätsentscheide, 14
+Quellen-/Geltungs-/Niveau- oder Prüfungsentscheide und `baf7276f…`
+eine Duplikat-/Prerequisite-Klärung. Die engen Textfälle
+`09f47964…`/`0e8417d7…` sind bereits im D-Zähler enthalten. Der
+strenge Nettozuwachs dieses Diagnosepakets ist **0**; aktueller
+Zähler und geschützte Physik-M7-Untergrenze bleiben unverändert.
+
+Für das J9-Konstruktionsziel `80956a2c…` liegt ergänzend ein
+[separater vierpunktiger Prüfungsentwurf](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/assessment-review/mathematik/j9-pythagoras-construction-terminal-candidate-20260927-v1/README.md)
+mit tatsächlicher Zeichnungsabgabe, Lösung und Rubrik vor. Die
+freigegebene bisherige Aufgabe prüft nur Rechnung und begründet ihren
+`coveredGoalIds`-Anspruch auf Konstruktion nicht. Ein bloßer Austausch
+zur vorhandenen Rechenziel-ID würde die Konstruktionsroute kappen; daher
+blieben Kanonik und freigegebene Prüfung unverändert. Der neue Entwurf
+setzt weder die Zielidentitätsentscheidung noch die Zeichnungs-,
+Bewertungs- und Scope-Prüfung außer Kraft.
+
+### Bildübergabe nach J10-Gegenprüfung
+
+Die [ergänzende Prüfung des J10-Ziels](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/j10-derivative-split-candidate-20260927-v1/README.md)
+`1a18dbb3…` hat die zuvor erwogene
+enge KEEP-Variante verworfen: DE/EN-Zieltext und BW-Quelle verlangen
+ausdrücklich **lokale und globale** Extrema; eine Verengung auf bloße
+Graphbeziehung/Monotonie würde einen Kompetenzanteil verlieren. Im
+vorläufigen `tmp/math-m7-image-prompts-2026-09-27/`-Paket liegen daher
+zwei weitere, **bedingte** Kindbildprompts S11/S12 für Graphbeziehung und
+Ableitungsuntersuchung einschließlich Randwertvergleich. Dieser mögliche
+Split ist weder kanonisch angelegt noch freigegeben; Quellenteilung,
+Abhängigkeiten, Prüfungsroute und vorhandene Lernstände bleiben zu klären.
+Der alte Bildhash ist nicht auf neue Kinder übertragbar.
+
+Damit enthält die lokale Übergabe **37 aktuelle Bildaufträge** und **19
+bedingte** Aufträge (zwölf mögliche Split-Kinder, vier Reword-Fälle, eine
+Titelkorrektur, zwei Prüfungsstimuli): insgesamt 54 Lernzielbild-Prompts
+und zwei Prüfungsstimulus-Prompts. Die Einzeltexte und Ausgabeordner
+wurden mechanisch erzeugt; die Eingangskontrolle meldet 0/37 aktuelle und
+0/19 bedingte PNGs, ohne Datei- oder Abmessungswarnung. Die Zähler bleiben
+Mathematik **733/797**, D741/P797/A797/M797/V760, M6; Physik
+**478/478**, M7. Aus Prompts entsteht kein QA-Abschluss.
+
+### Bildunabhängige Kandidaten zur nächsten Integrationsrunde
+
+Der [K6.1-/Notation-Reparaturkandidat](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/aeae-k6-source-assessment-candidate-20260927-v1/README.md)
+für `aeae526e…` enthält einen engen AB1-Textvorschlag, eine tatsächlich
+bewertbare Q4-Symbolerklärung und die getrennte HE-Prozessquellenroute.
+Ein neuer, nicht registrierter K6-Extraktor verarbeitet das amtliche
+PDF mit festem Hash und liefert die vollständige K6-Definition auf
+Druckseiten 14–15 sowie K6.1–K6.8 auf Seite 24 mit den tatsächlichen
+AB-Grenzen. Vier gezielte Parser-Tests, der Quellenabgleich und die
+Schema-Gesamtprüfung bestanden. Die acht Source-Ziele sind **noch nicht
+gemappt**; bestehende E/Q-Extraktion und D-Status blieben unverändert.
+Der heutige Q4-Test hat daneben eine eigene Scope-/Voraussetzungslücke,
+die der neue Symbolteil allein nicht repariert.
+
+Für die zwei bedingten Q2-Prüfungsbilder A1/A2 liegt jetzt ein
+[Aufgaben-, Lösungs- und BE-Entwurf](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/assessment-review/mathematik/q2-geometry-terminal-repair-candidate-20260927-v1/IMAGE-STIMULI-TASK-PATCH.md)
+vor: Ablesen aus einer gegebenen Raumzeichnung und Identifizieren von
+sechs gegebenen Körperansichten werden als eigene Schülerleistungen
+formuliert. Koordinaten, Körperkonstruktionen und vorläufige Punktesummen
+sind geprüft. Die zwei Coverage-HOLDs, die GK/LK-/Länderscope-Probleme und
+die fehlenden tatsächlichen PNGs bleiben ausdrücklich bestehen; keine
+kanonische Prüfung wurde geändert.
+
+Die zentrale Fünf-Gate-Kontrolle nach dieser Vorbereitung bestätigte erneut
+**Mathematik 733/797 (M6)**, D741/P797/A797/M797/V760, sechs von sechs
+Pflichtprüfungen bestanden, null Blocker, sowie **Physik 478/478 (M7)**.
+Der strenge Nettozuwachs dieser Vorbereitungsrunde ist **0**.
+
+Die [K3-Prozessquelle](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/k3-process-source-candidate-20260927-v1/README.md)
+steht zusätzlich als **nicht registrierte** Extraktion der amtlichen
+Definition und acht Standards bereit. Vier Parser-Tests und der
+PDF-Hash-/Textabgleich sind grün. Die Quelle deckt `fde351a8…`
+wegen fehlender Ungleichungen und Termdeutung nur teilweise; ein
+`exact`-Mapping oder D-Abschluss folgt daraus nicht. Die bestehende
+E/Q-Extraktion bleibt unangetastet.
+
+Der [Identitätsaudit zu `baf7276f…`](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/baf-line-plane-identity-candidate-20260927-v1/README.md)
+empfiehlt nach fachlicher Quellen- und Mastery-Prüfung die Konvergenz
+auf das bereits bestehende GK/LK-Schnittpunktziel `3def350a…` statt
+einer zweiten nahezu identischen aktiven Mastery-ID. Die LK-only-
+Voraussetzung von `baf…` darf nicht übernommen werden; die bisherige
+Q2-Prüfung belegt ohnehin keine Gerade–Ebene-Rechnung. Für diesen
+bevorzugten Weg ist **kein neues Bild** nötig. Migration, Prüfung und
+Kanonik bleiben offen; der D-Zähler ändert sich dadurch nicht.
+
+Der [Raumabstands-Identitätsaudit](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/0a-space-distance-identity-candidate-20260927-v1/README.md)
+zu `0a846521…` zeigt eine weitere D-Lücke ohne unmittelbaren Bildbedarf:
+Punkt–Punkt, Punkt–Gerade und Gerade–Gerade sind schon als engere Ziele
+vorhanden, die geltenden GK/LK-Quellen trennen diese Fälle jedoch anders
+als das breite Sammelziel. Sechs Folgeziele verwenden `0a…` als
+Voraussetzung. Bevor es aus dem aktiven Nenner entfernt oder umgebunden
+werden kann, sind Quellrouten, Projektionen, Abhängigkeiten und gespeicherte
+Lernstände einzeln zu prüfen. Das vorhandene Bild zeigt korrekt nur
+Punkt–Punkt und ist kein Beleg für die übrigen Fälle.
+
+Der [LK-Spiegelungs-Audit](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/q2-lk-mirror-object-scope-candidate-20260927-v1/README.md)
+trennt Urbild und Spiegelträger: HE nennt in Q2.3 Punkt, Gerade und Ebene
+als Urbilder, aber keine vollständige Trägermenge. BW belegt gezielt den
+Fall „Gerade an Punkt“. Die derzeitige Q2-Prüfung enthält überhaupt keine
+Spiegelungsaufgabe, obwohl sie alle drei LK-Ziele als abgedeckt ausweist.
+Für die drei allgemeinen LK-IDs sind deshalb weder eine ehrliche
+D-Freigabe noch endgültige Bildprompts möglich. Der BW-Spezialfall ist
+als bedingte Koordinatenspezifikation dokumentiert, nicht als neue
+kanonische Ziel- oder Prüfungsbindung.
+
+Die Bildübergabe wurde nach Abgleich mit den bisherigen Mathe-Assets
+korrigiert: **breites Querformat etwa 16:9**, nicht quadratisch. Die
+vorhandenen Lernzielbilder sind überwiegend etwa 2752 × 1536 Pixel;
+das Cockpit zeigt sie ohne quadratischen Zuschnitt. Alle 56
+Einzelprompts und der lokale Abmessungscheck verwenden nun das
+Querformat. Dies ändert keine Ziel-, Bild- oder QA-Freigabe.
+
+### Weitere bildunabhängige D-Grenzfälle
+
+Der [Quellen-/Scope-Audit für `6b2a…` und `803d…`](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/d-scope-pair-candidate-20260927-v1/README.md)
+trennt zwei Ursachen: Für `6b2a…` ist die behauptete eigenständige
+LK-Leistung noch nicht quellenbelegt; `803d…` besitzt einen tragfähigen
+LK-Quellenausschnitt, steht im heutigen Atlas jedoch ebenfalls im GK
+und wird vom gemeinsamen Terminal nur mit einer 2D-Aufgabe angeblich
+3D-geprüft. Eine fachlich überprüfte 3D-Aufgabenalternative liegt als
+nichtkanonischer Kandidat vor; Quelle, Atlas-Geltung und Assessment
+bleiben offen. Strenger Nettozuwachs: **0**.
+
+Der [K6.1-/Q4-Prüfungskandidat](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/aeae-k6-source-assessment-candidate-20260927-v1/ASSESSMENT-REPAIR-SPEC.md)
+ist nach erneuter Quellenprüfung nicht durch eine bloße zusätzliche
+Teilfrage integrierbar. Das bisherige Konfidenzintervall ist für die
+beanspruchte HE-Q4-Route nicht allgemein verbindlich; weitere
+`coveredGoalIds` verlangen andere beobachtbare Leistungen. Fünf
+separate Aufgaben mit Lösungen und Punkterastern wurden als
+prüfbarer, aber **nicht freigegebener** Entwurf vorbereitet. Die
+Quellen-/Kursgrenzen und tatsächliche Gruppenevidenz sind noch zu
+entscheiden. Kanonik und D/P/A/M/V blieben unverändert; Nettozuwachs:
+**0**.
+
+Der vorhandene GK/LK-Atlas-Kandidatenchecker wurde erneut ausgeführt:
+103 Seiten verlieren genau 1.517 unpassende GK-Geltungen, 95 registrierte
+D-Claims wären betroffen. Die produktive Atlas-Konfiguration und
+Registry wurden nicht umgestellt; der separate 80er
+Metadaten-Kompatibilitätsvertrag und die 15 neu begutachteten Seiten
+bleiben bislang nicht als aktuelle D-Owner registriert.
+
+### Aktueller Integrationsstand vom 27.09.2026
+
+Zwei neue PNGs für Newton und parallele/senkrechte Lagebeziehungen sowie ein
+unabhängig vorgeprüftes Zehnerpaket sind mit identischen kanonischen,
+öffentlichen und Backend-Bildbytes importiert. Ihre exakten Hashes sind im
+[Zweierbeleg](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/m7-newton-parallel-two-png-20260927-v1/README.md)
+und im [Zehnerbeleg](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/m7-ten-independent-png-20260927-v1/README.md)
+dokumentiert. V wurde dadurch um zwölf aktuelle KI-geprüfte Bildbindungen
+erweitert, während P nach gezielter Neubewertung und Fingerprint-Bindung
+vollständig bleibt. Die Bildimporte allein erhöhen den strengen
+Fünf-Gate-Schnitt nicht: Für die neuen Seiten sind aktuelle unabhängige
+D-Runden und aufgelöste Synthesen erforderlich. Die Newton-Runden empfehlen
+eine präzisere Zielbeschreibung und einen Alttext-Fix; das Zehnerpaket ist
+noch in unabhängiger D-Prüfung. Keine KI-Entscheidung ist eine menschliche
+Freigabe.
+
+Für das Koordinatenziel `121e3fdf-54d2-4d46-bc2d-f6e725f10f41` wurde
+hingegen das [neue quellen- und bildgebundene D-Paket](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-coordinate-figure-source-context-20260927-v2/synthesis-assessment.md)
+nach zwei unabhängigen Runden validiert und sein Standalone-Index registriert.
+Der zentrale Check bestätigt damit **734/797** Mathematik-Ziele streng
+abgeschlossen (**+1** gegenüber 733/797), Gates
+**D739/P797/A797/M797/V773**, **6/6** Pflichtprüfungen und **0**
+formale Blocker. Physik bleibt **478/478**. Mathematik ist weiterhin **M6**;
+**63** aktuelle Ziele sind noch nicht im strengen Schnitt abgeschlossen.
+
+Die nationale Koordinaten-Buchseite unter Jahrgang 8 ist vom getrennten
+HE-G8/G9-Projektionsfehler nicht gleichzusetzen: Die generierten
+hessischen Ansichten platzieren dieselbe ID fälschlich unter Jahrgang 5.
+Der [Generator-Audit](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/m7-coordinate-figures-replacement-20260927-v1/source-and-placement-audit.md)
+bleibt ein eigener Reparaturpunkt. Direkte atomare Jahrgangsbelege vor
+geerbten Clusterbelegen zu priorisieren würde nach lesender Simulation
+42 Rohzuweisungen für 27 Ziele verschieben und berührt geprüfte
+Split-Bereiche; weder ein manuelles Edit der Ansichten noch ein bloßes
+Nachziehen des alten Policy-Hashes ist eine geprüfte Lösung.
+
+### Folgestand der gezielten Bild-/D-Integration vom 27.09.2026
+
+Die unabhängigen D-Runden des Zehner-Bildpakets wurden nur für fünf
+unveränderte Seiten mit begründeter Dissensauflösung als
+[Teilabschluss](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-ten-current-png-five-keep-partial-20260927-v2/resolution-index.json)
+registriert; vier Ziele brauchen eine Text-/Scope-Revision. Bei
+`2041f4ec…` zeigte das PNG eine Spiegelung statt der bisher im Alttext
+behaupteten Drehung. Nach Alttext- und P-Korrektur wurde eine neue
+Einzelseite zweimal unabhängig geprüft und
+[zielgenau abgeschlossen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-j9-mirror-alt-current-keep-20260927-v1/resolution-index.json).
+Die alte Zehnerseite und ihre Runden bleiben Historie.
+
+Für das unveränderte J5-Ziel zu parallelen/senkrechten Lagebeziehungen
+wurde aus den zwei aktuellen D-Runden ein
+[KEEP mit ausdrücklich verworfenem Revisionsdissens](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-newton-parallel-j5-keep-partial-20260927-v2/resolution-index.json)
+registriert. Newton wurde anhand beider Revisionsrunden im DE/EN-Zieltext
+konkretisiert; der Alttext nennt jetzt richtig die *positive* Nullstelle
+von `x²−2`. P, A, M und Semantic-Kind sind zielgenau neu gebunden; das
+PNG blieb bytegleich. Die aktuelle Newton-D-Seite wartet auf zwei neue
+unabhängige Reviews. Die reinen Provenienz-Receipts der J5- und
+Zehner-Teilabschlüsse wurden nach der Newton-Änderung neu materialisiert,
+ohne die alten Review-Runden umzuschreiben.
+
+Das vorhandene quadratische ln/e-Bild wurde unverzerrt und mit
+hashgebundener V-Prüfung eingebunden. Beide neuen D-Runden halten
+Fachtext und Bild; ein
+[getrennter Kursgeltungs-Audit](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-visualization-review/m7-ln-existing-keep-20260927-v1/course-scope-audit.md)
+belegt jedoch einen echten SH-GK-Quellweg bei pauschalem `(LK)`-Titel.
+Der aktuelle D-Review ist deshalb noch **nicht** als vollständiger
+Scope-Abschluss registriert. Ein globaler LK-Filter würde die berechtigte
+SH-GK-Platzierung falsch entfernen.
+
+Das zurückgestellte Gütefunktions-JPG `ae3483e3…` hatte nach dem
+Link-Rückzug noch drei verwaiste Live-Kopien. Sie wurden nach
+SHA-Vergleich entfernt; das bytegleiche Original bleibt im
+Review-Archiv. Der Asset-Check besteht wieder für 1.656 aktive Links
+in 21 Landschaften.
+
+Der neu erzeugte zentrale [CQR-303-Bericht](status/curriculum-quality-status.json)
+weist jetzt **741/797** aktuelle Mathematik-Ziele streng abgeschlossen
+aus (**+7** gegenüber 734/797: fünf Zehner-Keeps, J5 und die korrigierte
+J9-Seite). Gates: **D745/P797/A797/M797/V774**; **56** strenge Lücken,
+**23** V-Aufschübe, **6/6** Pflichtprüfungen, **0** formale Blocker.
+Mathematik bleibt **M6**; Physik bleibt **478/478 (M7)** und alle neun
+geschützten Reifegrad-Untergrenzen bestehen. Diese Zahlen sind
+maschinelle QS, keine menschliche Freigabe.
+
+### Newton-Neubewertung nach der fachlichen Korrektur
+
+Zwei neue unabhängige D-Runden hielten die korrigierte Newton-Seite
+einschließlich der präzisierten Aussage zur *positiven* Nullstelle. Ihre
+unterschiedlichen freien Begründungen wurden ohne automatische Annahme
+zusammengeführt und als
+[zielgenauer KEEP](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-newton-revised-current-keep-20260927-v1/resolution-index.json)
+registriert. Das separat aktuelle P-v2-Profil blieb eigenständig gebunden;
+die formale `create`-Empfehlung der D-Bundle-Oberfläche bezieht sich nur auf
+das dort nicht eingebettete Profil. Der zentrale D/P/A/M/V-Check besteht nun
+mit **742/797 (93,1 %)** für Mathematik, **D746/P797/A797/M797/V774**,
+**55** offenen strengen Zielen und **23** V-Aufschüben. Physik bleibt bei
+**478/478 (M7)**. Weitere Bildkandidaten werden einzeln gegen Zieltext,
+Prüfprofil und mobile Lesbarkeit geprüft; die drei aktuell beanstandeten
+Textziele und die offene ln/e-Kursgeltung erhalten keine voreilige Freigabe.
+
+### Vier weitere Bildseiten mit aktuellem D- und P-Nachweis
+
+Vier zuvor aufgeschobene Bilder sind nach Einzelprüfung eingebunden:
+Heuristik am Rechteck, Differentialrechnung im Kontext, inverse
+Binomialfrage und inverser Normalverteilungsfall. Der Asset-Check besteht
+für **1.660** aktive Links in 21 Landschaften; die Visualisierungs-QA und
+die Approval-Coverage-Prüfung sind grün. Bei der Binomialgrafik ist die
+Überschrift „Grenzwert“ terminologisch ungenau; die eigentliche Rechnung
+und der kanonische Zieltext verwenden die diskrete Ereignisgrenze korrekt.
+Dies bleibt als gezielter visueller Nachbesserungshinweis dokumentiert.
+
+Zwei unabhängige D-Runden hielten alle vier aktuellen zweisprachigen
+Beschreibungen. Die vier Entscheidungen sind [als KI-Synthese gebunden](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-four-v-resumed-png-four-keep-partial-20260927-v1/resolution-index.json).
+Die [P-v2-Neubindung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-four-v-resumed-png-image-bound-v1/positive-evidence.config.json)
+prüft Verständnis unabhängig von den Bildbeispielen; beim Normalfall wurde
+das bisherige Profil um strukturell andere inverse Fälle ergänzt. Die
+übrigen 21 Profile blieben als exakt geprüfte 13/1/7-Restmengen erhalten.
+Weder Bilder noch D-/P-Kandidaten bedeuten menschliche Freigabe.
+
+Der zentrale D/P/A/M/V-Check besteht nun mit **746/797 (93,6 %)** streng
+abgeschlossenen Mathematik-Zielen (**+4**), Gates
+**D750/P797/A797/M797/V778**, **51** offenen strengen Zielen und **19**
+Bildaufschüben (3 Provider, 16 Qualität). **6/6** Pflichtprüfungen und
+**0** formale Blocker; Mathematik bleibt **M6**. Physik bleibt
+**478/478 (M7)**.
+
+### Bayerische Kurszuordnung: verbindliche Zwischenregel, keine QS-Ausnahme
+
+Der Product Owner hat die technische BY-Zuordnung für die weitere
+Mathematik-M7-Arbeit festgelegt: `GK` umfasst die Lernziele des
+verpflichtenden vierstündigen Mathematikfachs auf erhöhtem Niveau; `LK`
+umfasst diese Ziele **und alle fünf Module** des gesonderten
+Vertiefungskurses. Diese Kürzel behaupten nicht, dass Bayern ein wählbares
+Mathematik-Leistungsfach anbietet. Ein Level-3-Fokus auf drei tatsächlich
+unterrichtete Module ist nur eine vorläufige Navigationshilfe: Die übrigen
+zwei bleiben im Level-2-Zielumfang, Gesamtfortschritt und Abschluss. Die
+echte Kurs- und Modulauswahl ist [Issue #59](https://github.com/enpasos/skillpilot/issues/59),
+**kein** Vorbehalt gegen vollständige fachliche Modellierung und alle
+strengen M7-Gates.
+
+Die Quellen-/Mapping-Triage zeigt, warum der frühere globale
+GK/LK-Schalter noch nicht aktiviert wird: Aus `JGST12_EA` und den beiden
+`JGST13_EA`-Dokumenten sind 44 `curricularAtomic`-Atlasseiten direkt
+gemappt. 14 haben mindestens eine `exact`-Zuordnung; nach den gezielten
+Placements fehlen davon zwei im vorbereiteten BY-GK-Atlas. Weitere 30 Seiten
+sind nur `partial` gemappt;
+daraus folgt nicht, dass jeweils das gesamte kanonische Ziel Pflichtstoff
+ist. Vier dieser Seiten fehlen sogar im BY-LK-Atlas. Die 35 atomaren Seiten
+aus den fünf Vertiefungsmodulen bleiben nach der Zwischenregel in BY-LK und
+müssen aus BY-GK ausgeschlossen werden. Der alte Vorschlag, diese 35 auch
+aus BY-LK zu entfernen, ist überholt.
+
+Der inzwischen neu gebundene **nicht aktive** globale
+Projektionskandidat verändert 99 Seiten und entfernt 1.447 GK-Scopes.
+98 registrierte D-Claims wären betroffen; der erneut vollständig validierte
+Diagnosevertrag akzeptiert davon 82 als reine Scope-Verengungen und
+schließt 16 aus. **Kein** Kompatibilitäts-Claim wurde als neuer D-Abschluss
+registriert. Erst die quellentreue BY-GK/LK-Projektion, gezielte D-Neubindung
+beziehungsweise neue unabhängige Reviews und ein frischer zentraler
+Fünf-Gate-Bericht können den M7-Fortschritt bestätigen.
+
+Der erste quellengebundene Placement-Schritt ergänzt zehn, ein Nachtrag
+ein elftes `exact`-belegtes Pflichtziel je einmal in beiden BY-GK-Views. Die
+Composition-View-Validierung umfasst weiterhin 297 gültige Views; ein
+gezielter Audit sieht diese elf Ziele jetzt in den BY-GK-Source-Views.
+Die Projektionsrollen-Regression besteht ebenfalls.
+Vier ausschließlich an `JGST12_VERTIEFUNG` gebundene View-Knoten mit
+insgesamt elf atomaren Zielen wurden zusätzlich aus beiden BY-GK-Views
+entfernt. Alle 35 reinen Vertiefungsziele stehen damit im aktuellen Atlas
+nur noch in BY-LK; die LK-Views und kanonischen Zieltexte blieben davon
+unberührt.
+Zwei exakt belegte Ziele mit globalem LK-Kursmarker und die nur partiell
+zugeordneten Fälle bleiben für die **aktive Kursprojektion** offen; eine
+direkte View-Platzierung überwindet den globalen Kursfilter nicht. Die [Vorher-/Nachher-Notiz](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-gklk-projection-preparation-20260927-v1/bavaria-interim-ten-exact-placement.md)
+trennt diese fachliche Platzierung von einer D-Freigabe; der strenge
+M7-Nettozuwachs dieses Schritts ist noch **0**.
+
+### Aktueller strenger D-Rest und bayerische Quellen-Triage
+
+Der lesende zentrale Fünf-Gate-Bericht meldet am 27. September
+**772/797** streng abgeschlossene Mathematik-Atome: D **772/797**,
+P/A/M/V je **797/797**, 6/6 Pflichtprüfungen bestanden; Physik bleibt
+**478/478**. Die 25 offenen Mathematikziele verteilen sich nach
+fachlichem Befund auf sechs Kurs-/Quellenfälle, fünf geometrische
+Zielidentitäten, dreizehn Atomaritäts-/Split-Fälle und einen
+Modellierungswortlaut-Fall. Das ist kein Anlass, vorhandene A/B-Stimmen
+zu überschreiben: neu gebaute gebundene Review-Bücher haben andere
+vollständige Digests; nur betroffene Zielseiten und Kontexte werden
+erneut unabhängig geprüft. Der aktuelle Zielbuch-Modelltest benötigt
+nach der laufenden Scope-Integration außerdem einen bewusst geprüften
+neuen erwarteten Digest. Der zentrale Registry-Stand ist **kein**
+End-to-End-Nachweis, dass alle jüngsten Composition-View-Änderungen
+bereits im veröffentlichten Lernzielbuch oder Cockpit wirksam sind.
+
+Die [quellenbezogene BY-Triage](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-gklk-projection-preparation-20260927-v1/bavaria-partial-mapping-triage.md)
+trennt bei 30 nur `partial` zugeordneten Pflichtquellen-Seiten
+plausible Pflicht-Teilkompetenzen von fünf möglichen Überforderungen
+und drei noch zu prüfenden Fällen. Ein zweiter unabhängiger
+Quellenabgleich stützt vier bislang in beiden BY-Profilen fehlende
+Raumgeometrieziele als Pflichtkompetenzen. Ihre direkten und
+transitiven Voraussetzungen sind im BY-GK-Target jedoch noch nicht
+durchgängig sichtbar. Deshalb wurden diese vier **noch nicht**
+blind in aktive BY-Views aufgenommen oder als M7 abgeschlossen.
+
+Ein enger [HE-Sek-I-Quellenfix](math-he-seki-model-relations-scope-correction-2026-09-27.md)
+entfernt fünf nicht voll belegte Mappingkanten für zwei Q4-Modellierungsziele.
+Die daraus regenerierten beiden HE-Jahrgangsviews verlieren nur diese
+unbelegten Placements; 297 Views sowie die gezielten Scope-/Quellenprüfungen
+bleiben grün. Das schließt die strittigen D-Fälle nicht. Für
+`31be24f0` wurde das bisherige JPG für die verengte
+Stammfunktions-Kompetenz durch ein
+[fachlich und unabhängig geprüftes PNG](math-m7-31be-image-candidate-2026-09-27.md)
+ersetzt; der alte Bitmap bleibt als Historie erhalten. Das exakte neue
+PNG ist nach 360-px-Sichtprüfung KI-V-freigegeben, **nicht menschlich**.
+Ein neues, bildgebundenes [P-Profil](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-antiderivative-31be-current-p-v1/README.md)
+prüft zwei andere Polynomfälle samt Ableitungsprobe; die zweite Aufgabe
+verlangt ausdrücklich eine weitere Stammfunktion und begründet die additive
+Konstante. Der zentrale P-Check besteht wieder mit 797/797. Die
+unabhängigen [D-Kandidatenaudits A](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-31be-review-a-20260927/independent-review.md)
+und [B](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-31be-review-b-20260927-v1/independent-b.md)
+haben die enge Zielidentität bestätigt, aber noch **keine** D-Freigabe
+registriert. Der dabei gefundene rückwärts gerichtete `requires`-Verweis
+auf das weiterführende Hauptsatz-Ziel wurde durch die Voraussetzungen
+`Begriff der Stammfunktion` und `Ganzrationale Funktionen ableiten`
+ersetzt. Das Ziel und der quellennahe Hauptsatzkandidat `b9bbd2a8`
+stehen zusätzlich in beiden BY-GK-Views; zwei andere geprüfte
+Teil-Mapping-Kandidaten bleiben wegen schwacher Voraussetzungsketten
+vorerst draußen. Die HE-Q1.1-Zuordnung zu `31be24f0` ist wegen der im
+Quellausschnitt nicht ausdrücklich genannten Zusatzbedingungen von
+`exact` auf `partial` berichtigt. Noch offen sind ein aktuelles formal
+gebundenes D-Doppelreview, die getrennte Modellierung der graphischen
+Kompetenz `Graph(f) → Graph(F)` aus BY/HE und die aktive Projektion von
+zwei global LK-markierten bayerischen Pflichtzielen. **M7 bleibt 772/797.**

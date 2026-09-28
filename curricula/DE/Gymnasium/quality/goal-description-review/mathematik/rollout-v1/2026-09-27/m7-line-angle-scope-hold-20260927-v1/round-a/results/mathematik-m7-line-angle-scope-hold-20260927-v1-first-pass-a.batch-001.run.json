@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-m7-line-angle-current-a-20260927-run-1",
+  "campaignId": "mathematik-m7-line-angle-scope-hold-20260927-v1-a",
+  "roundId": "mathematik-m7-line-angle-scope-hold-20260927-v1-first-pass-a",
+  "batchId": "mathematik-m7-line-angle-scope-hold-20260927-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:ab0c2c1bffad9fda5f83c7269ea5946f3c8514e10cf7ac103f8c3590d3a2f9b2",
+  "bundleFingerprint": "sha256:5c3d01795f80ee3ddb9ad00c47cf4be4c25613bd29dd076aa0985f53f81bc1a1",
+  "bookDigest": "sha256:73de299834dd88339c5298091b7252f699046b0fa460d0ad69e5bbf40fcc8570",
+  "provider": "OpenAI",
+  "model": "Codex active model",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:7e25f504448ac4c23489f21c59923a47ca85759407b36f1538ff96579a691955",
+  "independenceGroupId": "mathematik-m7-line-angle-scope-hold-20260927-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "18be713b-7d90-4f01-b60a-5582ac4df0e8"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ab0c2c1bffad9fda5f83c7269ea5946f3c8514e10cf7ac103f8c3590d3a2f9b2"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:3efaacb2aae949694e59c0ddcf37ac9e56d64217dad645bb03d74bc4dd57a1b1"
+    }
+  ],
+  "startedAt": "2026-09-27T16:37:33Z",
+  "completedAt": "2026-09-27T16:38:10Z",
+  "status": "completed",
+  "outputDigest": "sha256:03755153bf1f3791b68cb045f944316ec9334f686b2e8c0ee48b17ee9d763dd0",
+  "toolchainVersion": "codex-repository-review-v1"
+}

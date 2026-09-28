@@ -1711,6 +1711,12 @@
       "reviewDecisionId": "74fdeb6a-176b-539c-9455-b882e50c1c9f"
     },
     {
+      "legacyGoalId": "74fdeb6a-176b-539c-9455-b882e50c1c9f",
+      "canonicalGoalId": "21676dae-8619-59d1-89e3-a35bb2297e2c",
+      "matchType": "partial",
+      "reviewDecisionId": "74fdeb6a-176b-539c-9455-b882e50c1c9f"
+    },
+    {
       "legacyGoalId": "f4459784-ee4a-5262-bea9-9eabea21ef78",
       "canonicalGoalId": "1383d2c8-ad8f-42a0-9a50-6897185bafd1",
       "matchType": "partial",
@@ -2002,6 +2008,18 @@
       "legacyGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
       "canonicalGoalId": "ead1f5ce-fdf4-5591-8982-395001017848",
       "matchType": "exact",
+      "reviewDecisionId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3"
+    },
+    {
+      "legacyGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+      "canonicalGoalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+      "matchType": "partial",
+      "reviewDecisionId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3"
+    },
+    {
+      "legacyGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+      "canonicalGoalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "matchType": "partial",
       "reviewDecisionId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3"
     },
     {
@@ -7308,14 +7326,15 @@
       "sourceSpan": "schließen aus dem Graphen einer Funktion auf den Graphen einer zugehörigen Stammfunktion und begründen ihre Vorgehensweise. Bei ganzrationalen Funktionen ermitteln sie zusätzlich aus dem Funktionsterm die Terme zugehöriger Stammfunktionen.",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "31be24f0-3ab1-54d2-856d-fa9b7f36552f"
+        "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+        "21676dae-8619-59d1-89e3-a35bb2297e2c"
       ],
       "matchType": "partial",
-      "rationale": "Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLUS-Source-Extraction-ID geprueft; die Zuordnung ist damit Review-Entscheidung fuer MAPPING-3.",
-      "reviewedAt": "2026-05-07",
-      "reviewer": "codex",
+      "rationale": "Die M12-EA.1.1-Vorgabe enthält zwei separat prüfbare Leistungen. 31be24f0 deckt die Ermittlung eines Polynom-Stammfunktionsterms durch Aufleiten ab; 21676dae deckt das begründete Skizzieren des Graphen einer möglichen Stammfunktion aus einem gegebenen f-Graphen ab. Beide Kanten sind jeweils nur partial. Die Quelle gehört zum erhöhten Pflichtfachniveau und damit nach der SkillPilot-Zwischenregel in BY-GK und BY-LK.",
+      "reviewedAt": "2026-09-27",
+      "reviewer": "codex-source-graph-candidate",
       "evidence": {
-        "method": "legacy-by-mapping-projected-to-source-extraction",
+        "method": "official-source-span-and-atomic-goal-separation",
         "sourceTopicCode": "M12-EA.1.1",
         "sourceDocumentKey": "JGST12_EA"
       }
@@ -8835,14 +8854,16 @@
     {
       "sourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
       "topicCode": "M13.4",
-      "sourceSpan": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+      "sourceSpan": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an; sie interpretieren und validieren ihre Ergebnisse",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "ead1f5ce-fdf4-5591-8982-395001017848"
+        "ead1f5ce-fdf4-5591-8982-395001017848",
+        "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+        "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2"
       ],
       "matchType": "exact",
-      "rationale": "Das neue BY-belegte Ziel umfasst die flexible, reflektierte Anwendung von Differential- und Integralrechnung, Interpretation und Validierung in Sachzusammenhaengen.",
-      "reviewedAt": "2026-05-07",
+      "rationale": "Der Elterncluster umfasst die gesamte flexible, reflektierte Anwendung und bleibt als Gesamtzuordnung exact. Das Integralblatt 0b162cb0 deckt nur dessen Integralteil ab. Das Validierungsblatt 71fe4a39 deckt das Interpretieren und Validieren von Modellresultaten ab, verlangt darüber hinaus auch die Prüfung von Annahmen und Grenzen. Beide atomaren Direktkanten sind daher partial. M13.4 ist regulärer bayerischer Pflichtstoff des erhöhten Anforderungsniveaus; die technische GK/LK-Zuordnung wird separat im View umgesetzt.",
+      "reviewedAt": "2026-09-28",
       "reviewer": "codex",
       "evidence": {
         "method": "source-extraction-by-m3-gap-resolution",

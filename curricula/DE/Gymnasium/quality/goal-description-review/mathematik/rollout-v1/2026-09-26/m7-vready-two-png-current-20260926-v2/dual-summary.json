@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:7dc19eda4f22b64f3312cfcbe5e89053b780771d2162be9f918944b646cd4833",
+  "reviewInputFingerprint": "sha256:74e3d04c3a0e0704443e736fc8861d367c984f76ee03b007ecc886cc835844ab",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-vready-two-png-current-20260926-v2-a",
+      "roundId": "mathematik-m7-vready-two-png-current-20260926-v2-first-pass-a",
+      "independenceGroupId": "mathematik-m7-vready-two-png-current-20260926-v2-independent-a",
+      "runIds": [
+        "mathematik-m7-vready-two-png-current-20260926-v2-run-a-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (exact runtime variant not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-vready-two-png-current-20260926-v2-b",
+      "roundId": "mathematik-m7-vready-two-png-current-20260926-v2-first-pass-b",
+      "independenceGroupId": "mathematik-m7-vready-two-png-current-20260926-v2-independent-b",
+      "runIds": [
+        "mathematik-m7-vready-two-png-current-20260926-v2-round-b-codex-gpt6-20260926"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
+      "firstRecordId": "mathematik-m7-vready-two-png-current-20260926-v2-run-a-001.7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
+      "secondRecordId": "mathematik-m7-vready-two-png-current-20260926-v2-b-7fea",
+      "firstRunId": "mathematik-m7-vready-two-png-current-20260926-v2-run-a-001",
+      "secondRunId": "mathematik-m7-vready-two-png-current-20260926-v2-round-b-codex-gpt6-20260926",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e33e75e3-eae5-5a09-862f-d1a11176373f",
+      "firstRecordId": "mathematik-m7-vready-two-png-current-20260926-v2-run-a-001.e33e75e3-eae5-5a09-862f-d1a11176373f",
+      "secondRecordId": "mathematik-m7-vready-two-png-current-20260926-v2-b-e33e",
+      "firstRunId": "mathematik-m7-vready-two-png-current-20260926-v2-run-a-001",
+      "secondRunId": "mathematik-m7-vready-two-png-current-20260926-v2-round-b-codex-gpt6-20260926",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

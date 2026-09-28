@@ -178,6 +178,17 @@ Interpretation rules:
   explicit stage, selected subjects, and course profile per subject; an absent
   stage stays unresolved, and LK is a subject attribute that never implies
   Sekundarstufe II
+- For the current Bavarian Mathematics rollout, `GK` and `LK` are **technical
+  SkillPilot projection labels**, not the names of Bavarian courses. `GK`
+  targets the complete compulsory four-hour Mathematics curriculum at elevated
+  level; `LK` targets those goals **plus all five modules** of the separate
+  Mathematics Vertiefungskurs. A teacher may use Level 3 focus to work on the
+  three modules actually taught, but this does not remove the other two from
+  the Level 2 target, total progress, or completion. The later elective-course
+  and module-selection UX is tracked in GitHub issue #59. This interim mapping
+  never relaxes goal quality, source fidelity, independent reviews, or strict
+  Mathematics M7 gates; it does not assert that Bavaria offers Mathematics as
+  a selectable Leistungsfach.
 - current focus roots and the one active atomic goal are mutable Level 3 state;
   changing Level 2 revalidates them against the new learner-facing `target`
   projection without rewriting stable goal IDs or global Level 4 mastery

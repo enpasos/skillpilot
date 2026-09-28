@@ -1337,25 +1337,28 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
-        // Current Layer-A totals include the reviewed HE-G9 J10/exponential-route correction.
+        // The J9 quadratic assessment is now visible in every state (+1).
+        // HE/RP/SH duration views also gain one atom from the reviewed J7 prism
+        // split; HE excludes two no-longer-supported Sek-I targets (07196e72
+        // and fde351a8), leaving its previous total unchanged.
         // BW/RP Sek I no longer include the Q4 process assessment in their target views.
         String[][] scopes = {
-                { "DE-BB", "240", "240" },
-                { "DE-BE", "239", "239" },
-                { "DE-BW", "257", "257" },
-                { "DE-BY", "230", "230" },
-                { "DE-HB", "213", "213" },
+                { "DE-BB", "241", "241" },
+                { "DE-BE", "240", "240" },
+                { "DE-BW", "258", "258" },
+                { "DE-BY", "231", "231" },
+                { "DE-HB", "214", "214" },
                 { "DE-HE", "318", "356" },
-                { "DE-HH", "239", "239" },
-                { "DE-MV", "239", "239" },
-                { "DE-NI", "239", "239" },
-                { "DE-NW", "239", "239" },
-                { "DE-RP", "261", "287" },
-                { "DE-SH", "257", "263" },
-                { "DE-SL", "239", "239" },
-                { "DE-SN", "239", "239" },
-                { "DE-ST", "239", "239" },
-                { "DE-TH", "240", "240" }
+                { "DE-HH", "240", "240" },
+                { "DE-MV", "240", "240" },
+                { "DE-NI", "240", "240" },
+                { "DE-NW", "240", "240" },
+                { "DE-RP", "263", "289" },
+                { "DE-SH", "259", "265" },
+                { "DE-SL", "240", "240" },
+                { "DE-SN", "240", "240" },
+                { "DE-ST", "240", "240" },
+                { "DE-TH", "241", "241" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1390,16 +1393,19 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
-        // HE-GK Q2.1 removes four broad-route atoms and adds three scoped assessments
-        // (net -1); HE-G9 also includes the reviewed J10 route entries. Current
-        // Q4/process and LK assessments are counted in their reviewed target scopes.
-        // Keep exact totals alongside membership checks so compensating errors fail.
+        // The J7 prism split, J9 quadratic assessment, antiderivative
+        // atom/assessment and line-angle assessment add five HE-GK targets.
+        // LK also gains the local dilation and two-plane assessments but loses
+        // three BY-only analysis goals and the BY-only Mandelbrot goal. RP/SH
+        // gain the prism and quadratic endpoints; their LK scopes lose the
+        // same BY-only goals where previously inherited. Keep exact
+        // totals alongside membership checks so compensating errors fail.
         String[][] scopes = {
-                { "DE-HE", "GK", "733", "754" },
-                { "DE-HE", "LK", "863", "884" },
-                { "DE-RP", "GK", "677", "702" },
-                { "DE-RP", "LK", "789", "814" },
-                { "DE-SH", "GK", "652", "658" },
+                { "DE-HE", "GK", "738", "759" },
+                { "DE-HE", "LK", "866", "887" },
+                { "DE-RP", "GK", "679", "704" },
+                { "DE-RP", "LK", "788", "813" },
+                { "DE-SH", "GK", "654", "660" },
                 { "DE-SH", "LK", "749", "755" }
         };
         SoftAssertions softly = new SoftAssertions();

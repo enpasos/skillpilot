@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { basename, dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -76,6 +77,29 @@ interface LinkedReviewMismatchRow {
   latestDecision: string | null
 }
 
+interface CurrentAiQaWithoutAcceptedLedgerReviewRow extends LinkedReviewMismatchRow {
+  qaAssetSha256: string
+}
+
+interface GoalVisualizationQaRecord {
+  goalId: string
+  subject: string
+  visualizationState: string
+  imageUrl: string
+  publicAssetPath: string
+  canonicalAssetPath: string
+  assetSha256: string
+  aiApproved: unknown
+  aiApprovedAssetSha256: unknown
+  humanIssueIdentified: unknown
+}
+
+interface GoalVisualizationQaLedger {
+  schemaVersion: number
+  subject: string
+  records: GoalVisualizationQaRecord[]
+}
+
 interface GoalVisualizationRolloutReport {
   schemaVersion: 1
   generatedAt: string
@@ -86,6 +110,7 @@ interface GoalVisualizationRolloutReport {
     reviewDirPath: string
     currentResumeFilePath: string
     currentPromptAppendDirPath: string
+    qaLedgerPath?: string
   }
   summary: {
     totalGoals: number
@@ -106,6 +131,7 @@ interface GoalVisualizationRolloutReport {
     regularUnlinkedGoals: number
     coverageGatePassed: boolean
     linkedWithoutAcceptedReview: number
+    linkedWithCurrentAiQaWithoutAcceptedLedgerReview?: number
     acceptedReviewWithoutLink: number
   }
   currentBatch: {
@@ -123,6 +149,7 @@ interface GoalVisualizationRolloutReport {
   }
   consistency: {
     linkedWithoutAcceptedReview: LinkedReviewMismatchRow[]
+    linkedWithCurrentAiQaWithoutAcceptedLedgerReview?: CurrentAiQaWithoutAcceptedLedgerReviewRow[]
     acceptedReviewWithoutLink: ReviewDecisionRow[]
   }
   visualizedGoals: GoalVisualizationRow[]
@@ -132,6 +159,7 @@ const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 
 const defaultReviewDirPath = 'curricula/DE/Gymnasium/quality/goal-visualization-review'
+const mathQaLedgerPath = 'curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json'
 
 const subjectDefaults: Record<string, SubjectDefaults> = {
   mathematik: {
@@ -277,6 +305,37 @@ function primaryVisualizationLink(goal: SkillLandscape['goals'][number], subject
       && link.resourceType === 'image'
       && link.role === 'primary'
       && link.url.includes(`/assets/goal-visualizations/${subject}/`)
+  })
+}
+
+export function hasCurrentExactByteAiQaEvidence(
+  linked: Pick<GoalVisualizationRow, 'goalId' | 'url'>,
+  record: GoalVisualizationQaRecord | undefined,
+  subject: string,
+  rootPath = repoRoot,
+): boolean {
+  if (!record || record.goalId !== linked.goalId || record.subject !== subject) return false
+  if (record.visualizationState !== 'available' || record.imageUrl !== linked.url) return false
+  if (record.aiApproved !== 'yes' || record.humanIssueIdentified === 'yes') return false
+  if (!/^sha256:[0-9a-f]{64}$/u.test(record.assetSha256)
+    || record.aiApprovedAssetSha256 !== record.assetSha256) return false
+
+  const urlParts = linked.url.match(/^\/assets\/goal-visualizations\/([a-z0-9-]+)\/([0-9a-f-]+)\/([0-9a-f-]+\.(?:png|jpe?g|webp))$/iu)
+  if (!urlParts || urlParts[1] !== subject || urlParts[2] !== linked.goalId) return false
+  const [, , , fileName] = urlParts
+  if (!fileName.startsWith(`${linked.goalId}.`)) return false
+  const publicAssetPath = `app/public${linked.url}`
+  const canonicalAssetPath = `curricula/DE/Gymnasium/visualizations/${subject}/${linked.goalId}/${fileName}`
+  if (record.publicAssetPath !== publicAssetPath || record.canonicalAssetPath !== canonicalAssetPath) return false
+
+  return [publicAssetPath, canonicalAssetPath].every((path) => {
+    const absolutePath = resolve(rootPath, path)
+    if (!existsSync(absolutePath)) return false
+    try {
+      return `sha256:${createHash('sha256').update(readFileSync(absolutePath)).digest('hex')}` === record.assetSha256
+    } catch {
+      return false
+    }
   })
 }
 
@@ -502,8 +561,34 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
       && !openProviderDeferredGoalIds.has(goal.id)
       && !openQualityDeferredGoalIds.has(goal.id)
   })
-  const linkedWithoutAcceptedReview = visualizedGoals.filter((row) => {
+  const linkedWithoutAcceptedLedgerReview = visualizedGoals.filter((row) => {
     return !isAcceptedDecision(latestDecisionByGoalId.get(row.goalId)?.decision)
+  })
+  const mathQaRecordsByGoalAndUrl = new Map<string, GoalVisualizationQaRecord>()
+  if (args.subject === 'mathematik' && existsSync(resolveRepoPath(mathQaLedgerPath))) {
+    const qaLedger = readJson<GoalVisualizationQaLedger>(mathQaLedgerPath)
+    if (qaLedger.schemaVersion !== 1 || qaLedger.subject !== args.subject || !Array.isArray(qaLedger.records)) {
+      throw new Error(`${mathQaLedgerPath}: invalid Mathematics QA ledger`)
+    }
+    qaLedger.records.forEach((record) => {
+      mathQaRecordsByGoalAndUrl.set(`${record.goalId}\n${record.imageUrl}`, record)
+    })
+  }
+  const linkedWithCurrentAiQaWithoutAcceptedLedgerReview = linkedWithoutAcceptedLedgerReview.flatMap((row) => {
+    const qaRecord = mathQaRecordsByGoalAndUrl.get(`${row.goalId}\n${row.url}`)
+    if (!qaRecord || !hasCurrentExactByteAiQaEvidence(row, qaRecord, args.subject)) return []
+    return [{
+      goalId: row.goalId,
+      title: row.title,
+      reviewStatus: row.reviewStatus,
+      url: row.url,
+      latestDecision: latestDecisionByGoalId.get(row.goalId)?.decision ?? null,
+      qaAssetSha256: qaRecord.assetSha256,
+    }]
+  })
+  const currentAiQaGoalIds = new Set(linkedWithCurrentAiQaWithoutAcceptedLedgerReview.map((row) => row.goalId))
+  const linkedWithoutAcceptedReview = linkedWithoutAcceptedLedgerReview.filter((row) => {
+    return !currentAiQaGoalIds.has(row.goalId)
   }).map((row) => ({
     goalId: row.goalId,
     title: row.title,
@@ -530,6 +615,7 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
       reviewDirPath: args.reviewDirPath,
       currentResumeFilePath: args.currentResumeFilePath,
       currentPromptAppendDirPath: args.currentPromptAppendDirPath,
+      ...(args.subject === 'mathematik' ? { qaLedgerPath: mathQaLedgerPath } : {}),
     },
     summary: {
       totalGoals: landscape.goals.length,
@@ -550,6 +636,9 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
       regularUnlinkedGoals: regularUnlinkedGoals.length,
       coverageGatePassed: regularUnlinkedGoals.length === 0,
       linkedWithoutAcceptedReview: linkedWithoutAcceptedReview.length,
+      ...(args.subject === 'mathematik'
+        ? { linkedWithCurrentAiQaWithoutAcceptedLedgerReview: linkedWithCurrentAiQaWithoutAcceptedLedgerReview.length }
+        : {}),
       acceptedReviewWithoutLink: acceptedReviewWithoutLink.length,
     },
     currentBatch: {
@@ -567,6 +656,9 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
     },
     consistency: {
       linkedWithoutAcceptedReview,
+      ...(args.subject === 'mathematik'
+        ? { linkedWithCurrentAiQaWithoutAcceptedLedgerReview }
+        : {}),
       acceptedReviewWithoutLink,
     },
     visualizedGoals,
@@ -645,6 +737,25 @@ function renderLinkedReviewMismatchRows(rows: LinkedReviewMismatchRow[], maxRows
   return lines
 }
 
+function renderCurrentAiQaRows(rows: CurrentAiQaWithoutAcceptedLedgerReviewRow[], maxRows: number): string[] {
+  if (rows.length === 0) return ['Keine Eintraege.', '']
+  const lines = markdownTable(
+    ['Goal ID', 'Title', 'Latest ledger decision', 'Current QA asset SHA-256'],
+    rows.slice(0, maxRows).map((row) => [
+      `\`${row.goalId}\``,
+      row.title,
+      row.latestDecision ? `\`${row.latestDecision}\`` : '-',
+      `\`${row.qaAssetSha256}\``,
+    ]),
+  )
+  if (rows.length > maxRows) {
+    lines.push('')
+    lines.push(`Weitere ${rows.length - maxRows} Eintraege stehen in der JSON-Begleitdatei.`)
+  }
+  lines.push('')
+  return lines
+}
+
 function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   const { summary } = report
   const defaults = getSubjectDefaults(report.request.subject)
@@ -673,7 +784,13 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
       ['Offene Provider-Quota-Ziele', summary.openProviderQuotaGoals],
       ['Provider-Quota-blockierte Ledger', summary.blockedProviderQuotaLedgers],
       ['Regulaere unvisualisierte Ziele ohne Deferred-Status', summary.regularUnlinkedGoals],
-      ['Verlinkt ohne akzeptierende Review-Entscheidung', summary.linkedWithoutAcceptedReview],
+      [report.request.qaLedgerPath
+        ? 'Verlinkt ohne akzeptierende Ledger-Entscheidung oder aktuelle AI-QA'
+        : 'Verlinkt ohne akzeptierende Review-Entscheidung', summary.linkedWithoutAcceptedReview],
+      ...(summary.linkedWithCurrentAiQaWithoutAcceptedLedgerReview === undefined ? [] : [[
+        'Verlinkt mit aktueller hashgebundener AI-QA, ohne akzeptierende Ledger-Entscheidung',
+        summary.linkedWithCurrentAiQaWithoutAcceptedLedgerReview,
+      ]]),
       ['Akzeptierende Review-Entscheidung ohne Link', summary.acceptedReviewWithoutLink],
     ],
   ))
@@ -710,6 +827,9 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push('- Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.')
   lines.push('- Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.')
   lines.push('- Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.')
+  if (report.request.qaLedgerPath) {
+    lines.push('- Die separate AI-QA-Kategorie verlangt den aktuellen primaeren Link, `available`, `aiApproved: yes`, denselben genehmigten SHA-256 und passende Bytes sowohl im Public- als auch im Canonical-Asset. Historische Ledger-Entscheidungen bleiben sichtbar. Diese Kategorie ist weder Human- noch Release-Freigabe.')
+  }
   if (summary.regularUnlinkedGoals === 0 && (summary.openProviderDeferredGoals > 0 || summary.openQualityDeferredGoals > 0)) {
     lines.push(`- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind ${summary.openProviderDeferredGoals} Provider- und ${summary.openQualityDeferredGoals} Quality-Deferred-Ziel(e).`)
   } else {
@@ -735,7 +855,14 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push(...renderDecisionRows(report.qualityQueues.userReviewCorrections, 20))
   lines.push('## Review/Link Consistency')
   lines.push('')
-  lines.push('### Linked Without Accepted Review')
+  if (report.consistency.linkedWithCurrentAiQaWithoutAcceptedLedgerReview) {
+    lines.push('### Current Exact-Byte AI QA Without Accepted Ledger Review')
+    lines.push('')
+    lines.push(...renderCurrentAiQaRows(report.consistency.linkedWithCurrentAiQaWithoutAcceptedLedgerReview, 30))
+  }
+  lines.push(report.request.qaLedgerPath
+    ? '### Linked Without Accepted Ledger Review or Current AI QA'
+    : '### Linked Without Accepted Review')
   lines.push('')
   lines.push(...renderLinkedReviewMismatchRows(report.consistency.linkedWithoutAcceptedReview, 30))
   lines.push('### Accepted Review Without Link')
@@ -767,6 +894,9 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push('')
   lines.push(`- Landscape: \`${report.request.landscapePath}\``)
   lines.push(`- Review ledgers: \`${report.request.reviewDirPath}\``)
+  if (report.request.qaLedgerPath) {
+    lines.push(`- AI-QA ledger: \`${report.request.qaLedgerPath}\``)
+  }
   if (report.request.currentResumeFilePath) {
     lines.push(`- Resume file: \`${report.request.currentResumeFilePath}\``)
   }

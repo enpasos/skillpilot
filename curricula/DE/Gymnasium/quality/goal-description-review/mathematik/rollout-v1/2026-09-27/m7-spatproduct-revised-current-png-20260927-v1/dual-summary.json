@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:003d91619d16933e8a9f62e5f70bdfdbb7d57b1670fbacf6a0368f8426a45d73",
+  "reviewInputFingerprint": "sha256:7259ff7354761d3db0e2c1630023f7deadced32c69eb0172a3025e4d0d99ffed",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-spatproduct-revised-current-png-20260927-v1-a",
+      "roundId": "mathematik-m7-spatproduct-revised-current-png-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-spatproduct-revised-current-png-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-spatproduct-revised-current-png-20260927-v1-first-pass-a.batch-001-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-spatproduct-revised-current-png-20260927-v1-b",
+      "roundId": "mathematik-m7-spatproduct-revised-current-png-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-spatproduct-revised-current-png-20260927-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-spatproduct-revised-current-png-20260927-v1-first-pass-b.batch-001-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex session model identifier not exposed::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+      "firstRecordId": "mathematik-m7-spatproduct-revised-current-png-20260927-v1-first-pass-a.batch-001.944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+      "secondRecordId": "spatproduct-944dd479-round-b-20260927",
+      "firstRunId": "mathematik-m7-spatproduct-revised-current-png-20260927-v1-first-pass-a.batch-001-run",
+      "secondRunId": "mathematik-m7-spatproduct-revised-current-png-20260927-v1-first-pass-b.batch-001-run",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -8,42 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)
 - Status: pilot
-- Quellbild: `909d8b16-5156-528b-a300-d9aee5405ba0.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/909d8b16-5156-528b-a300-d9aee5405ba0/909d8b16-5156-528b-a300-d9aee5405ba0.jpg`
+- Quellbild: `909d8b16-5156-528b-a300-d9aee5405ba0.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/909d8b16-5156-528b-a300-d9aee5405ba0/909d8b16-5156-528b-a300-d9aee5405ba0.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Modell gezielt anpassen
-Beschreibung: Die lernende Person kann ein Modell gezielt anpassen (z. B. Parameter ändern, zusätzliche Bedingungen ergänzen) und die Änderung nachvollziehbar begründen.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Erzeuge eine neue Infografik zur gezielten Modellanpassung mit dem Kontext Getränkebestellung.
-- Ausgangsmodell: `K(x)=15+2x` für x Getränke.
-- Neue Bedingung: `Ab dem 20. Getränk kosten weitere Getränke 1,80 Euro.`
-- Angepasstes stetiges Modell: `K(x)=15+2x` für `0≤x≤20`; `K(x)=55+1,80·(x−20)` für `x>20`.
-- Zeige im Graphen einen Knick bei `(20|55)` und erkläre: Bis 20 bleibt der alte Preis, danach wächst der Gesamtpreis langsamer.
-
-Vermeiden:
-- Nicht den Preisparameter für alle x global von 2 auf 1,80 ändern.
-- Kein Sprung an x=20.
-- Keine Dezimalpunkte oder zusätzlichen Bedingungen.
-
-Korrekturhinweis: Der Knickpunkt liegt sichtbar bei `(20 | 55)`. Die waagerechte Hilfslinie durch den Knick ist an der y-Achse mit 55 beschriftet, niemals mit 45 oder 50. Beide Geraden treffen sich dort.
+Use case: precise-object-edit / scientific-educational. Input image: edit target, the attached three-card German drink-pricing comic. Change ONLY the bottom-right small red former-model tag. The old-model equation A(30)=60 € is mathematically correct for the original model and should remain visible without any slash, cross-out or cancellation mark. Erase the diagonal red strike-through line over that equation. Add the short red heading “Bisheriges Modell” immediately above A(30)=60 € inside the same little tag, if it fits clearly. Keep the three price cards, all other text, arithmetic, icons and layout pixel-for-pixel as close to the target as possible. This is a new bitmap image, not a vector stand-in.
 ```
 
 ## Review-Notiz

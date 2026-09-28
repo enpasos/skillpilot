@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-m7-inflight-five-a-20260927-run-1",
+  "campaignId": "mathematik-m7-open-inflight-five-current-png-20260927-v1-a",
+  "roundId": "mathematik-m7-open-inflight-five-current-png-20260927-v1-first-pass-a",
+  "batchId": "mathematik-m7-open-inflight-five-current-png-20260927-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:615df8d5adc4cab525c90e839579827c1a47d2c9aa7a067268dc377753fe1671",
+  "bundleFingerprint": "sha256:78afe3c756c48ff2957f3b8596e10eaa369839e9e1a73228e83797cc66f7dc82",
+  "bookDigest": "sha256:fc845047f91cbda6cd359b75f71c70625febd7b5b2401c7f16f4591a49ddecd3",
+  "provider": "OpenAI",
+  "model": "Codex active model",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:7e25f504448ac4c23489f21c59923a47ca85759407b36f1538ff96579a691955",
+  "independenceGroupId": "mathematik-m7-open-inflight-five-current-png-20260927-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+    "9b339361-7719-573d-a913-432246c502ee",
+    "aeae526e-b3a4-5a17-b177-351df0307cb9",
+    "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+    "f37b0a72-9e23-51c7-aad5-438c17a56899"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:615df8d5adc4cab525c90e839579827c1a47d2c9aa7a067268dc377753fe1671"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:be8fc93fe2839b2f90a80b903c96f1afe7c04fb77c6c0b117a9c41b003464ae7"
+    }
+  ],
+  "startedAt": "2026-09-27T16:45:40Z",
+  "completedAt": "2026-09-27T16:48:27Z",
+  "status": "completed",
+  "outputDigest": "sha256:436f8471554dc5f631c4e61fd72b2847d3677d69d40e47a4377c68db899747b0",
+  "toolchainVersion": "codex-repository-review-v1"
+}

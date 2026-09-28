@@ -27,6 +27,10 @@ Use this page by role: start with the overview documents, then jump to a review 
   Integrierte Teilpakete, offene Nachweise und lokale Übergabeprüfungen.
 - [Mathematik M7: Fortsetzung und Pausen-Checkpoint vom 23. September](math-m7-resumed-2026-09-21.md)
   Aktueller Fünf-Gate-Stand, fachliche Teilabschlüsse und dokumentierte offene Kandidaten.
+- [Mathematik M7: Abschlusskonzept und Übergabe vom 28. September](math-m7-concept-and-handoff-2026-09-28.md)
+  Fachliche Restentscheidungen, Prüfkriterien und Reihenfolge für den commitfähigen Zwischenstand.
+- [Mathematik M7: commitfähiger Pausen-Checkpoint vom 28. September](math-m7-commit-checkpoint-2026-09-28.md)
+  Gesicherter M6-Stand, gezielte Prüfungsfreigaben und klar abgegrenzte Restarbeit.
 - [Curriculum Mapping Workbench](curriculum-mapping-workbench.md)
   Two-pane audit surface from source snapshots to learner-facing SkillPilot trees.
 - [Documentation Guidelines](../dev/documentation-guidelines.md)
@@ -114,8 +118,23 @@ These are generated audit views for configured `CQR-302` reviews. The registry l
 
 These documents capture one-off investigations, remediation slices, or dated PoC evidence. They are useful context, not durable process contracts.
 
+- [Mathematik: HE-Sek-I-Modellbeziehungen und Scope](math-he-seki-model-relations-scope-correction-2026-09-27.md)
+  Gezielte Quellen- und Sichtkorrektur ohne pauschale Landesgeltung.
+- [Mathematik: Stammfunktionsbild 31be](math-m7-31be-image-candidate-2026-09-27.md)
+  Bildkandidat, fachliche Prüfung und offene Nachweise.
+- [Mathematik: 7d in der vorläufigen HE-LK-Sicht](math-m7-7d-he-lk-scope-2026-09-28.md)
+  Dokumentiert den Arbeitsstand; die Niveaufrage ist im Abschlusskonzept erneut geöffnet.
+
+- [Mathematik HE K3: getrennte Prozessquelle als Kandidat](math-he-k3-process-source-candidate-2026-09-27.md)
+  Prüffähiger, noch nicht freigegebener Weg für die Modellierungsstandards K3.1–K3.8.
+- [Mathematik Q2.3: Korrektur der hessischen LK-Druckseiten](math-q23-source-reference-correction-2026-09-27.md)
+  Zehn gezielt nachgewiesene Quellenreferenzen und abhängige Rationale-Nachweise.
+- [Mathematik Q4.2: Korrektur der hessischen Druckseiten](math-q42-source-reference-correction-2026-09-27.md)
+  Trennung der Bullet-Referenzen zwischen Druckseiten 51 und 52.
 - [Mathematik Q4: Caterer-Prüfungsaufgabe, fokussierte QS](math-q4-caterer-exam-current-review-2026-09-23.md)
   Geprüfte Aufgabenbindung, GK/LK-Projektion und Grenzen der maschinellen Freigabe.
+- [Mathematik E-Phase: Stammfunktionsgraphen, fokussierte Prüfungs-QS](math-antiderivative-exam-candidate-review-2026-09-28.md)
+  Zwei bildgestützte Aufgaben mit aktueller DE/EN-Quellenbindung und geprüfter Bewertung.
 - [Issue 48: Einheitlicher Lernplanstatus](issue-48-unified-learning-plan-status.md)
   Manuell gepflegte Abnahmematrix für Tages-/Wochenstatus, Lernfortsetzung und den abgestimmten Claude-Rollout.
 - [Physik: M7-Abschluss im Mehrpass-Durchgang, 2026-09-20](physics-m7-resumed-2026-09-20.md)

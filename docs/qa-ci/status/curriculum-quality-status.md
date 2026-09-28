@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-09-24T18:45:34.109Z
+Generated: 2026-09-28T03:13:47.479Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -40,7 +40,7 @@ Rules version: curriculum-quality-v5
 | Informatik (Gymnasium, DE) | M6 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 0 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M6 | 176 | 136 | 26/26 | 16/16 | 1 | 0 | 0 |
-| Mathematik (Gymnasium, DE) | M6 | 1192 | 932 | 31/31 | 16/16 | 2 | 1 | 0 |
+| Mathematik (Gymnasium, DE) | M6 | 1203 | 941 | 31/31 | 16/16 | 2 | 1 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Physik (Gymnasium, DE) | M7 | 764 | 639 | 25/25 | 16/16 | 2 | 0 | 0 |
 | Politik und Wirtschaft (Gymnasium, DE) | M6 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 0 |
@@ -234,13 +234,13 @@ Rules version: curriculum-quality-v5
 | Mathematik (Gymnasium, DE) | DE-BB - Mathematik Sekundarstufe I (Brandenburg, RLP 1-10 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 4/4 | - | 19 | 289 | 44 | 245 | 15% | - |  |
 | Mathematik (Gymnasium, DE) | DE-BE - Mathematik Oberstufe (Berlin, GO 2014 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 4/4 | - | 15 | 195 | 17 | 178 | 9% | - |  |
 | Mathematik (Gymnasium, DE) | DE-BE - Mathematik Sekundarstufe I (Berlin, RLP 1-10 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 4/4 | - | 19 | 289 | 44 | 245 | 15% | - |  |
-| Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 16 | 221 | 72 | 149 | 33% | - |  |
+| Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 16 | 221 | 69 | 152 | 31% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 20 | 278 | 90 | 188 | 32% | - |  |
 | Mathematik (Gymnasium, DE) | DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 12/12 URL; local cache 0/12 | 3/3 | - | 66 | 468 | 243 | 225 | 52% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 1/1 URL; local cache 0/1 | 3/3 | - | 122 | 275 | 0 | 275 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Bremen, Bildungsplan 2006 mit 2022-Einschraenkung Source-Extraction) | DE-HB | 2/2 URL; local cache 0/2 | 3/3 | - | 11 | 256 | 71 | 185 | 28% | - |  |
-| Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 316 | 292 | 24 | 92% | - |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G8/G9 Source-Extraction) | DE-HE | 4/4 URL; local cache 0/4 | 4/4 | - | 89 | 601 | 591 | 10 | 98% | 598/598; diff 118; open 0 |  |
+| Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 316 | 290 | 26 | 92% | - |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G8/G9 Source-Extraction) | DE-HE | 4/4 URL; local cache 0/4 | 4/4 | - | 89 | 601 | 587 | 14 | 98% | 598/598; diff 118; open 0 |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 43 | 438 | 131 | 307 | 30% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 15 | 189 | 0 | 189 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | DE-MV - Mathematik Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 1/1 URL; local cache 0/1 | 3/3 | - | 15 | 219 | 0 | 219 | 0% | - |  |
@@ -373,7 +373,7 @@ Rules version: curriculum-quality-v5
 | Informatik (Gymnasium, DE) | 16/16 | 209 | 237 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 0 | 0 | 0 | 0 | 207 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 16/16 | 115 | 136 | 16 | 8481 | 8481 | 8481 | 0 | 8481 | 0 | 0 | 0 | 0 | 0 | 115 (100%) |
-| Mathematik (Gymnasium, DE) | 16/16 | 715 | 932 | 16 | 9977 | 9977 | 9977 | 0 | 9977 | 0 | 0 | 0 | 0 | 0 | 715 (100%) |
+| Mathematik (Gymnasium, DE) | 16/16 | 716 | 941 | 16 | 9977 | 9977 | 9977 | 0 | 9977 | 0 | 0 | 0 | 0 | 0 | 713 (100%) |
 | Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
 | Physik (Gymnasium, DE) | 16/16 | 445 | 639 | 16 | 6289 | 6289 | 6289 | 0 | 6289 | 0 | 0 | 0 | 0 | 0 | 426 (100%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 16/16 | 413 | 439 | 16 | 4169 | 4169 | 4169 | 0 | 4169 | 0 | 0 | 0 | 0 | 0 | 308 (100%) |

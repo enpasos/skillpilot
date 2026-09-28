@@ -8,47 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana 2 (gemini-3.1-flash-image)
 - Status: pilot
-- Quellbild: `bd637a72-6609-54f5-bb33-8a9e898bf7a0.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/bd637a72-6609-54f5-bb33-8a9e898bf7a0/bd637a72-6609-54f5-bb33-8a9e898bf7a0.jpg`
+- Quellbild: `bd637a72-6609-54f5-bb33-8a9e898bf7a0.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/bd637a72-6609-54f5-bb33-8a9e898bf7a0/bd637a72-6609-54f5-bb33-8a9e898bf7a0.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Heuristik auswählen und begründen
-Beschreibung: Die lernende Person kann zu einer Aufgabe eine passende Heuristik wählen (z. B. Rückwärtsarbeiten, Symmetrie nutzen, Spezialfälle) und die Wahl begründen.
-
-Zusatzanweisung:
-Required mathematical layout:
-- Show a choice of heuristics for a problem.
-- Problem card: "Welche Zahl passt?"
-- Candidate heuristic cards:
-  - "Rückwärtsarbeiten"
-  - "Symmetrie nutzen"
-  - "Spezialfälle prüfen"
-- Mark "Rückwärtsarbeiten" with a green check.
-- Add reason: "Zielwert ist bekannt."
-
-Visual guidance:
-- Use a student choosing one tool from a toolbox of strategies.
-- Keep the scene simple and not tied to one long calculation.
-
-Avoid:
-- Do not mark multiple heuristics as the chosen answer.
-- Do not use probability or geometry.
-- Do not include English text.
+Erzeuge ein PNG im breiten Querformat (etwa 16:9) als freundliche, klare Mathematik-Comicgrafik auf warmem Cremegrund, mit kräftigen Linien und wenigen großen deutschen Labels; bei 360 Pixel Breite lesbar, ohne Logo oder Wasserzeichen. Eine konkrete Aufgabe lautet „Eine Zahl wird verdoppelt und danach um 3 erhöht. Das Ergebnis ist 11. Welche Zahl war es?“ Zeige Vorwärtsweg als leere Startbox → ×2 → +3 → 11. Darunter die passende Heuristik „Rückwärtsarbeiten“ mit 11 → −3 → 8 → ÷2 → 4. Prüfe vorwärts sichtbar: 2·4+3=11. Der Zielwert 11 und die Bedingungen müssen sichtbar sein; „Rückwärtsarbeiten“ ist nur deshalb passend, weil die Operationen umkehrbar sind.
 ```
 
 ## Review-Notiz

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:04ad323975c365bedc90bd58e57588bd1cea0adbb762bc6c72c9afa08ce0d220",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "de-gym-math-m7-two-consensus-revised-current-20260927-v1",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 2,
+  "goals": [
+    {
+      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:7101fa2223d9d98ea0eef1f2a6cbf6a083e3b69281004e0160498dc494d12f0e",
+      "pageFingerprint": "sha256:5ac2c7f1d7a81db3307095d1a5c1e28de9dca1e8d597fb617368f7b17a5669d1",
+      "evidenceReview": null
+    },
+    {
+      "goalId": "27bdc580-ba17-5399-bf02-48f354846d1d",
+      "pageNumber": 2,
+      "goalFingerprint": "sha256:0e53f2cebacb060c8f6de83bca3aa8faefb5bb57a998ca2ea427fbda0e444829",
+      "pageFingerprint": "sha256:ce259d788e434707aeab4777e279d7aed029fc09768c0605cd0c9d1d239e48a4",
+      "evidenceReview": null
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:82a722f991e8ab6832a91f987dd9feed54801804293bbbd618257061f74c5460",
+      "bytes": 535039
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:b476f9d55fe19c598ff7d4f9bac2508f9470de91808f4d9ee4a1e2fbfad9897b",
+      "bytes": 249015
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:071f37c04d5ef4ce3b9a2ff60e40707b545484a3da4cb6a42ae5a75c00b4d015",
+      "bytes": 6162
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:4e7b77256e71afa7f20de0c310d3182935eea9819bd41c07540f9ef70c738f17",
+      "bytes": 28410
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:9edef105d5c22621ab58470a9717a71afd649898ec19af40a9586da940ce7352",
+      "bytes": 6163
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:29525e3763d1a09b59fef31878e640dfa1d0eb3822be685ef818aa9daa24be46",
+      "bytes": 18988
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:ef24e2eb03803d5ea4fb37d4b27b516ab737879aa1b81d652a22f43e43da6add",
+      "bytes": 10282
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:48eb8f821afacda0ed380bde7375d867fbc1b05863a57d3986eb698169a5e479",
+      "bytes": 3805
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+      "bytes": 4496
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:a2121ca9075353bf92560534a86db57d944398b1a77d5b02c72eb28d6d6f858a"
+}

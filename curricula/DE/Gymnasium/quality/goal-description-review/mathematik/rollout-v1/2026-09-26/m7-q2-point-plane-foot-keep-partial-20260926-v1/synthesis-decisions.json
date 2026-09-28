@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-q2-point-plane-foot-keep-partial-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex (exact model identifier unavailable); independent dual-review synthesis candidate",
+  "synthesizedAt": "2026-09-23T23:53:12.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1",
+    "batchManifestDigest": "sha256:366600fbc5ea5cd1e4002c5e92bd0ea3956799ba015262e8717855be16974eb7",
+    "configDigest": "sha256:1edff6b9dfcc266df94cb433b7d497f336a49384c9144c0225fe75349d3ae48d",
+    "bundleFingerprint": "sha256:92f4923c57a7c35e49067b79dc8c08c4b77ab7c1335a43bfc3b7c44e6f317f90",
+    "bookDigest": "sha256:a26ee77ec1aea6bb314c4bba46e9fcb8133b9dcd23edfd6e7c7a9c876ef291fe",
+    "reviewInputFingerprint": "sha256:688379d11d8f96cef0feb5ed88032be8f142c5b47f7476f7f78ce8d2f08329b4",
+    "dualSummaryDigest": "sha256:626408ade6d055773ef362c4f97596d4af396275c6deb47b1bc2e284eac26a65",
+    "canonicalLandscapeDigest": "sha256:c978d93713836f96d2e0174e3d7b6693d4cae6d34e77be09fd43518dd3dc2a63"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-a",
+      "campaignDigest": "sha256:aa5ca1475c223878228f10728f0b6bb975a4bbad6690a43402780a02e1239a66",
+      "roundId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-independent-a",
+      "reviewInputFingerprint": "sha256:688379d11d8f96cef0feb5ed88032be8f142c5b47f7476f7f78ce8d2f08329b4",
+      "batchId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:3ee20e49cad94de19aca04c551c77096d57c278c99f556dc68e851ad4a03a233",
+      "runId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-run-a-1",
+      "runManifestDigest": "sha256:eae7b5e8f320682b4f09cac91cee0e2bd34dd5aef706c9fcc83f2debf127ede6",
+      "resultsDigest": "sha256:2336713de9ba18346924e208c28814a925217c7fbe24f58cca452424db6b15c6"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-b",
+      "campaignDigest": "sha256:1e69205de6aa91d3e83c080d928cfbdf3da25ecbcb8b5d9fd16c7b2f34fc4b7d",
+      "roundId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-independent-b",
+      "reviewInputFingerprint": "sha256:688379d11d8f96cef0feb5ed88032be8f142c5b47f7476f7f78ce8d2f08329b4",
+      "batchId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:ba3ca3eb94e1786561a303c6698a08ceea7b21e8509d45e0fc20f83c5bb52573",
+      "runId": "math-m7-q2-spatial-eleven-20260924-round-b-codex-run-001",
+      "runManifestDigest": "sha256:fe097c00544161f0b4c69b7a375253cb8dbe6a9a83b75477722238af2bf8a1e8",
+      "resultsDigest": "sha256:30ffd116c7546a318dd2d9f731bc1fab231165f6375344687e35484f8298e0ca"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-q2-point-plane-foot-keep-partial-v1-decision-001",
+      "goalId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f90c9f0f2464037c7c5dad29666c41a849156457fed237d0fbb4c19d26c1bb63",
+      "pageFingerprint": "sha256:5c9c36810390172a1830ce888275542518b41451cc1eb256aa3a71117c1aed80",
+      "goalReviewContextFingerprint": "sha256:bdea65b2f8600f23621fa9d6c0e5f1c5ea6e51829f3ead0fdfe6b09133fb38b6",
+      "finalText": {
+        "titleDe": "Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden",
+        "titleEn": "Apply the foot-of-perpendicular method for point-plane distance",
+        "descriptionDe": "Die lernende Person kann ein Lotfußpunktverfahren erarbeiten und anwenden, um den Abstand eines Punktes von einer Ebene zu bestimmen und geometrisch zu begründen.",
+        "descriptionEn": "The learner can develop and apply a foot-of-perpendicular method to determine the distance from a point to a plane and justify it geometrically."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-q2-spatial-eleven-current-20260924-v1-run-a-1-goal-7",
+          "recordDigest": "sha256:3e9cd74889041ff8ec4a145fed9c733facb1940650423b46e40af9846b8755c5"
+        },
+        "second": {
+          "recordId": "math-q2-spatial-b-07",
+          "recordDigest": "sha256:1e0b58aff1b5515a6bc0f87b40ab2f8994664a83b59da17a8799fa47f07c3482"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden der exakt gebundenen v1-Seite entscheiden KEEP. Der aktuelle DE/EN-Text fordert ausdrücklich, ein Lotfußpunktverfahren zu erarbeiten und anzuwenden, den Punkt-Ebene-Abstand zu bestimmen und diesen geometrisch zu begründen. Abstand meint hier die kürzeste euklidische Verbindung: Für den Lotfuß F und jeden anderen Ebenenpunkt Q gilt wegen PF senkrecht FQ nach Pythagoras |PQ|²=|PF|²+|FQ|² und damit |PQ|≥|PF|. Wer den Abstand mit dem Lotfuß geometrisch begründet, muss gerade diese Minimalität erklären; sie ist nicht eine neue, vom Zieltext ausgesparte Leistung. Der spätere v2-B-Vorschlag macht die kürzeste Lotlänge zwar explizit, ersetzt aber das im amtlichen Q2.3-Quellpunkt ausdrücklich geforderte Erarbeiten des Verfahrens durch bloßes Konstruieren und Bestimmen. Wir bewahren deshalb den vollständigen aktuellen Text; die Minimalitätsprüfung bleibt konkret im Verständnisevidenzprofil. Die spätere, wegen verlorener PDF-Bytebindung nicht für diese Resolution verwendbare v2-Runde wird als fachliche Kritik gewürdigt, nicht umetikettiert.",
+      "rationaleEn": "Both independent rounds bound to the exact v1 page decide KEEP. The current German and English descriptions expressly require the learner to develop and apply a foot-of-perpendicular method, determine the point-plane distance, and justify it geometrically. Distance here is the shortest Euclidean connection: for the foot F and any other point Q on the plane, PF is perpendicular to FQ, so Pythagoras gives |PQ|²=|PF|²+|FQ|² and therefore |PQ|≥|PF|. A geometric justification of the foot-point distance necessarily explains this minimality; it is not an additional omitted competence. The later v2 B proposal makes shortest perpendicular length explicit but replaces the official Q2.3 requirement to develop the method with merely constructing and determining it. We therefore preserve the complete current wording and make the minimality check concrete in the understanding-evidence profile. The later v2 round, whose exact PDF-byte binding was lost, informs this substantive assessment but is not relabeled as evidence for this resolution."
+    }
+  ],
+  "manifestFingerprint": "sha256:93c1408ac690db565a3b605727d6942c818941ca85863bc197992302fb415925"
+}

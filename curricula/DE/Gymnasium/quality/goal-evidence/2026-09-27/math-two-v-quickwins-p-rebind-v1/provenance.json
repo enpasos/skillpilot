@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Re-inspect only two P-v2 cases against newly imported exact PNGs; preserve other source records byte-for-byte",
+  "sourceFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/positive-retained-after-user-image-import/5eb2b3fea74a.config.json",
+      "sha256": "sha256:e460283251e8e693fcf63d09c8b042a16087ee2b88202d5904eff20a7b0a44b2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/positive-retained-after-user-image-import/5eb2b3fea74a.review.jsonl",
+      "sha256": "sha256:89008496c9da397fc78b567749a06f8accb463b5502df5772bbc0d85e9ec3f6b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-next-four-png-image-bound-v1/retained-p20-five.config.json",
+      "sha256": "sha256:98940b06468f944afba8f8fd51286a5a00e32c49ceb9257c93ee2cd54dff051a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-next-four-png-image-bound-v1/retained-p20-five.review.jsonl",
+      "sha256": "sha256:afd29aaa190be51e5737616065f79ae8f52f08e68bff9bc9c3c7366bc6502c75"
+    }
+  ],
+  "newBindings": {
+    "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c": {
+      "pngPaths": [
+        "curricula/DE/Gymnasium/visualizations/mathematik/8b3ce429-e6bb-5d33-b6aa-6ded41afc74c/8b3ce429-e6bb-5d33-b6aa-6ded41afc74c.png",
+        "app/public/assets/goal-visualizations/mathematik/8b3ce429-e6bb-5d33-b6aa-6ded41afc74c/8b3ce429-e6bb-5d33-b6aa-6ded41afc74c.png",
+        "backend/src/main/resources/static/assets/goal-visualizations/mathematik/8b3ce429-e6bb-5d33-b6aa-6ded41afc74c/8b3ce429-e6bb-5d33-b6aa-6ded41afc74c.png"
+      ],
+      "sha256": "sha256:3c7a63b04016e68503a5829be93b785ff5d68cb56e0e044ef89dfa5290da2106"
+    },
+    "bd637a72-6609-54f5-bb33-8a9e898bf7a0": {
+      "pngPaths": [
+        "curricula/DE/Gymnasium/visualizations/mathematik/bd637a72-6609-54f5-bb33-8a9e898bf7a0/bd637a72-6609-54f5-bb33-8a9e898bf7a0.png",
+        "app/public/assets/goal-visualizations/mathematik/bd637a72-6609-54f5-bb33-8a9e898bf7a0/bd637a72-6609-54f5-bb33-8a9e898bf7a0.png",
+        "backend/src/main/resources/static/assets/goal-visualizations/mathematik/bd637a72-6609-54f5-bb33-8a9e898bf7a0/bd637a72-6609-54f5-bb33-8a9e898bf7a0.png"
+      ],
+      "sha256": "sha256:dbafb59c8db08324fd077537888e4ada708aaeb3a576a516cf5a0101b03178e5"
+    }
+  },
+  "retainedGoalIds": {
+    "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c": [
+      "12f4b957-da3d-53d5-a924-45a634ab8d44",
+      "963907f9-8d4c-5e1c-945d-10b7be07e1b9",
+      "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+      "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+      "dd6c5e08-0cc6-53c0-b317-ebaba277c776"
+    ],
+    "bd637a72-6609-54f5-bb33-8a9e898bf7a0": [
+      "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "74d29d0c-80b3-4d46-a5f5-3c2f609e8483",
+      "93fc4fbb-72f6-549b-b97a-a48aecb1534d",
+      "a7fb1a7a-8315-5bcb-842e-48293293dfcc"
+    ]
+  },
+  "profileDisposition": "Existing independent cases retained after comparing each with its new image; no pictured solution transfers to the tasks",
+  "authority": "ai_candidate; needs_human_review; no human approval"
+}

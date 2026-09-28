@@ -177,6 +177,8 @@ public class LearnerService {
     private static final String APPLICABILITY_DIMENSION_JURISDICTION = "jurisdiction";
     private static final String APPLICABILITY_DIMENSION_DURATION_MODEL = "durationModel";
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
+    private static final String CANONICAL_GYMNASIUM_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+    private static final String LEGACY_HE_BROAD_TRANSFORMATION_GOAL_ID = "9f8fcb66-4cf0-4e65-a6cb-9d7f7cb0f2d6";
 
     @Value("${skillpilot.security.signing-secret}")
     private String signingSecret;
@@ -2175,6 +2177,15 @@ public class LearnerService {
                 if (visibleGoals.containsKey(mapping.canonicalGoalId())) {
                     return mapping.canonicalGoalId();
                 }
+            }
+            // The historical HE transformation goal is broader than the narrowed
+            // central-dilation target. Its partial edge must not become an alias
+            // for a mastery write through the provenance fallback below. Other
+            // legacy partial mappings retain their established continuity path.
+            if (!allowPartial
+                    && LEGACY_HE_BROAD_TRANSFORMATION_GOAL_ID.equals(goalId)
+                    && mappings.stream().noneMatch(mapping -> "exact".equals(mapping.matchType()))) {
+                return goalId;
             }
         }
         if (isKnownCanonicalGoalId(goalId)) {
@@ -9548,6 +9559,18 @@ public class LearnerService {
                     && !l.getLandscapeId().equals(curriculumId)
                     && !effectiveFilterIds.contains(rootDurationModel)) {
                 effectiveFilterIds.add(rootDurationModel);
+            }
+
+            // Bavaria uses GK for compulsory Mathematics and LK for those
+            // goals plus all Vertiefungskurs modules. Legacy GK/LK tags on
+            // shared canonical goals describe other states' courses. The
+            // authored Bavarian composition view owns this course selection.
+            if ("DE-BY".equals(normalizeFilterId(rootFilterId))
+                    && CANONICAL_GYMNASIUM_MATH_ID.equals(l.getLandscapeId())
+                    && compositionViewService != null
+                    && compositionViewService.findLearnerScopeView(
+                            l.getLandscapeId(), deriveCompositionScope(l.getLandscapeId(), config)) != null) {
+                effectiveFilterIds.removeIf(id -> COURSE_FILTER_IDS.contains(normalizeFilterId(id)));
             }
 
             if (l.getGoals() != null) {

@@ -8,46 +8,15 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini gemini-3-pro-image
 - Status: pilot
-- Quellbild: `0408ac7f-0530-5de5-b248-cf581c9b5a17.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/0408ac7f-0530-5de5-b248-cf581c9b5a17/0408ac7f-0530-5de5-b248-cf581c9b5a17.jpg`
+- Quellbild: `0408ac7f-0530-5de5-b248-cf581c9b5a17.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/0408ac7f-0530-5de5-b248-cf581c9b5a17/0408ac7f-0530-5de5-b248-cf581c9b5a17.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell)
-Beschreibung: Die lernende Person kann bei Ziehungen mit Zurücklegen Wahrscheinlichkeiten mit dem Binomialkoeffizienten berechnen (z. B. Urne mit Zurücklegen) und Ergebnisse an konkreten Beispielen nachvollziehen.
-
-Zusatzanweisung:
-Keep the probability examples mathematically simple and correct.
-Use only small, checkable numbers.
-Allowed example facts:
-- Laplace probability: P(E) = favorable outcomes / all equally likely outcomes.
-- Fair die: P(even number) = 3/6 = 1/2.
-- Urn without replacement: 5 red and 3 blue balls, draw 2 without replacement.
-  P(2 red) = C(5,2) / C(8,2) = 10/28 = 5/14.
-  In a tree, after drawing red first the second red probability is 4/7, not 5/8.
-- Urn with replacement / binomial model: 3 trials, success probability p = 0.4 each time.
-  P(exactly 2 successes) = C(3,2) * 0.4^2 * 0.6 = 0.288.
-  The branch probability p stays the same after each draw.
-- Compare models: without replacement means branch probabilities change; with replacement means branch probabilities stay the same.
-- Random variable table example: X = number of heads in two fair coin tosses.
-  P(X=0)=1/4, P(X=1)=1/2, P(X=2)=1/4; sum = 1.
-If a table or chart is shown, the probabilities must add to 1.
-Do not invent additional numbers or inconsistent sums.
-Avoid dense tiny equations; make labels readable.
+Use case: scientific-educational. Draw a clean warm cream wide 16:9 German learning-goal image with very large labels readable at 360 px card width. Visualise EXACTLY this binomial situation, without a branching probability tree. At the top left draw ONE urn containing precisely TWO RED balls marked R and ONE BLUE ball marked B. An arrow labelled "mit Zurücklegen" loops back to this same urn. Nearby show large "P(R)=2/3" and "P(B)=1/3". In the middle, show exactly three separate equally styled 3-ball rows: "R R B", "R B R", "B R R" with red/red/blue coloured circles according to each row. Under all three rows, exact single formula "P(genau 2×R) = 3 · (2/3)² · (1/3) = 4/9". No other sequences, no individual path probabilities, no decimal notation, no tree, no extra balls or branches. Make the key visual idea obvious: three orders, each draw from identical urn with replacement. Cartoon-friendly line art, spacious, no watermark or logo.
 ```
 
 ## Review-Notiz

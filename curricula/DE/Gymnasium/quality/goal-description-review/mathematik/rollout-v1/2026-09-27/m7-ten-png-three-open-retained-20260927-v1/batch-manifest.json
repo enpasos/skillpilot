@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-m7-ten-png-three-open-retained-20260927-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-27/m7-ten-png-three-open-retained-20260927-v1.config.json",
+  "configDigest": "sha256:40f64afd598e25a45e588eaf2d234ab734ad92159f94dc30626a165c5b7df048",
+  "goalIds": [
+    "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+    "27bdc580-ba17-5399-bf02-48f354846d1d",
+    "18be713b-7d90-4f01-b60a-5582ac4df0e8"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 797,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:d0b7ee635832b7218a6c6629918223c7174f231debe267579451544813d9a0f4"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:68ee96e62750a4e020d3f6930ef42a1ba97227bb1cbcbe97e83320e0ffcac327",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:1c175cc14dd02a2d1c796f15faaf284463e3805da43839fce724602a3a614e96",
+    "reviewInputFingerprint": "sha256:f6e649268cef7516a65cda248aa64216a59a565069015ba4a74006777034e3fc",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-a",
+        "campaignDigest": "sha256:d54bf4c00b4e8f198402a1e22f94fa61f9789fd9735152cecc9314e914c54daa",
+        "roundId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-first-pass-a",
+        "independenceGroupId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-independent-a",
+        "batchId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:66c249e37cf678a2490072c2da802c411cd8a3c6ab448e8eb375f4d8e39f0691"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-b",
+        "campaignDigest": "sha256:f1ad403107f5a1b683d637527b8d3c88c74914b97c357586a18190b92c4846a3",
+        "roundId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-first-pass-b",
+        "independenceGroupId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-independent-b",
+        "batchId": "mathematik-m7-ten-png-three-open-retained-20260927-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:eadb529ca051488b28972e3b3d2629685bb12e6a42b426f0026e007bbb78edc1"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

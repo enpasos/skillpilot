@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:c864c7e1981fae1a74eff678e59b18cde10cd562bfdbe1fb3361352561f6ae81",
+  "reviewInputFingerprint": "sha256:36aa9fe7a5b5fc24d6f7288e7fd191e1290253c57284be5ad35292385f903812",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-j7-altitude-current-png-20260927-v1-a",
+      "roundId": "mathematik-m7-j7-altitude-current-png-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-j7-altitude-current-png-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-j7-altitude-current-png-20260927-v1-run-a"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact runtime model identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-j7-altitude-current-png-20260927-v1-b",
+      "roundId": "mathematik-m7-j7-altitude-current-png-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-j7-altitude-current-png-20260927-v1-independent-b",
+      "runIds": [
+        "m7-j7-altitude-current-png-20260927-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex runtime model (version not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "d051857c-0707-544f-ae7a-f20690d182b2",
+      "firstRecordId": "mathematik-m7-j7-altitude-current-png-20260927-v1-a-d051857c",
+      "secondRecordId": "m7-j7-altitude-current-png-20260927-b-001",
+      "firstRunId": "mathematik-m7-j7-altitude-current-png-20260927-v1-run-a",
+      "secondRunId": "m7-j7-altitude-current-png-20260927-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

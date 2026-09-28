@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:c9ecb31df22172b6034e08e037501b7a7ce49c62323f3b49f8fa7275b213d665",
+  "reviewInputFingerprint": "sha256:eb11f583919b167659ccc3ef636e8c16a08a12073e333717ea93d063168723d5",
+  "goalCount": 8,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a",
+      "roundId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex active model::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-b",
+      "roundId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact runtime model not exposed to reviewer)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 8,
+    "unavailable": 0,
+    "requiresSynthesis": 8
+  },
+  "goals": [
+    {
+      "goalId": "288633c1-f61c-5b48-af7e-a80357f96cad",
+      "firstRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.batch-001.goal-1",
+      "secondRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927.288633c1-f61c-5b48-af7e-a80357f96cad",
+      "firstRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.run-001",
+      "secondRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e8237315-654e-5150-97de-49c4cb49b3d1",
+      "firstRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.batch-001.goal-2",
+      "secondRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927.e8237315-654e-5150-97de-49c4cb49b3d1",
+      "firstRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.run-001",
+      "secondRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7bb3c312-f714-55e6-a31f-f31605a93760",
+      "firstRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.batch-001.goal-3",
+      "secondRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927.7bb3c312-f714-55e6-a31f-f31605a93760",
+      "firstRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.run-001",
+      "secondRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "baf7276f-60a0-4d96-b959-d63acfb929de",
+      "firstRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.batch-001.goal-4",
+      "secondRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927.baf7276f-60a0-4d96-b959-d63acfb929de",
+      "firstRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.run-001",
+      "secondRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "firstRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.batch-001.goal-5",
+      "secondRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927.d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "firstRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.run-001",
+      "secondRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "firstRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.batch-001.goal-6",
+      "secondRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927.fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "firstRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.run-001",
+      "secondRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bd637a72-6609-54f5-bb33-8a9e898bf7a0",
+      "firstRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.batch-001.goal-7",
+      "secondRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927.bd637a72-6609-54f5-bb33-8a9e898bf7a0",
+      "firstRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.run-001",
+      "secondRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "firstRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.batch-001.goal-8",
+      "secondRecordId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927.71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "firstRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-a.run-001",
+      "secondRunId": "mathematik-m7-d-quickwins-eight-current-20260927-v1-first-pass-b.reviewer-b.manual-20260927",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

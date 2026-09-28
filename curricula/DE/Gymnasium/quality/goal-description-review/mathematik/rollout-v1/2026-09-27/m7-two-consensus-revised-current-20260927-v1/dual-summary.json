@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:a2121ca9075353bf92560534a86db57d944398b1a77d5b02c72eb28d6d6f858a",
+  "reviewInputFingerprint": "sha256:6fdab40417ac8c8c7eb804000e080b385c6621de809e5feb36563f1503ca0926",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-two-consensus-revised-current-20260927-v1-a",
+      "roundId": "mathematik-m7-two-consensus-revised-current-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-two-consensus-revised-current-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-two-consensus-revised-current-20260927-v1-first-pass-a.batch-001.codex-current-review"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-two-consensus-revised-current-20260927-v1-b",
+      "roundId": "mathematik-m7-two-consensus-revised-current-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-two-consensus-revised-current-20260927-v1-independent-b",
+      "runIds": [
+        "m7-two-consensus-revised-current-20260927-b-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex runtime model (version not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "firstRecordId": "mathematik-m7-two-consensus-revised-current-20260927-v1-a.001",
+      "secondRecordId": "m7-two-consensus-revised-current-20260927-b-run-001-0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "firstRunId": "mathematik-m7-two-consensus-revised-current-20260927-v1-first-pass-a.batch-001.codex-current-review",
+      "secondRunId": "m7-two-consensus-revised-current-20260927-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "27bdc580-ba17-5399-bf02-48f354846d1d",
+      "firstRecordId": "mathematik-m7-two-consensus-revised-current-20260927-v1-a.002",
+      "secondRecordId": "m7-two-consensus-revised-current-20260927-b-run-001-27bdc580-ba17-5399-bf02-48f354846d1d",
+      "firstRunId": "mathematik-m7-two-consensus-revised-current-20260927-v1-first-pass-a.batch-001.codex-current-review",
+      "secondRunId": "m7-two-consensus-revised-current-20260927-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:816ecf6dc2ca15008482e8696d10b92c1a11ef0429cbadf70ee9974d9c39915a",
+  "reviewInputFingerprint": "sha256:5d55e740af06c47eb5fbc073bbdb3a697526991568638fc38a8aa3ce2482c5bb",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-b9bb-ftc-current-20260927-v1-a",
+      "roundId": "mathematik-m7-b9bb-ftc-current-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-b9bb-ftc-current-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-b9bb-ftc-current-20260927-v1-first-pass-a.batch-001.codex-independent-review"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex interactive model; exact identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-b9bb-ftc-current-20260927-v1-b",
+      "roundId": "mathematik-m7-b9bb-ftc-current-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-b9bb-ftc-current-20260927-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-b9bb-ftc-current-20260927-v1-first-pass-b.batch-001.codex-independent-review"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex interactive model; exact identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex interactive model; exact identifier not exposed::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+      "firstRecordId": "mathematik-m7-b9bb-ftc-current-20260927-v1-a.001",
+      "secondRecordId": "mathematik-m7-b9bb-ftc-current-20260927-v1-b.001",
+      "firstRunId": "mathematik-m7-b9bb-ftc-current-20260927-v1-first-pass-a.batch-001.codex-independent-review",
+      "secondRunId": "mathematik-m7-b9bb-ftc-current-20260927-v1-first-pass-b.batch-001.codex-independent-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

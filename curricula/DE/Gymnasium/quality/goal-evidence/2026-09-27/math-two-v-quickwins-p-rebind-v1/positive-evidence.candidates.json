@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-p-v2-m7-two-current-png-quickwins-20260927-v1",
+  "reviewedAt": "2026-09-27T13:52:52.000Z",
+  "reviewer": "Codex targeted exact-PNG P-v2 comparison; AI candidate only",
+  "goals": [
+    {
+      "goalId": "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c",
+      "reason": "DE: Das neue Bild zeigt ausschließlich die Verschiebung von ln(x) zu ln(x−2) um 2 nach rechts und die entsprechenden Asymptoten. Das Profil fordert unabhängig g(x)=2ln(3(x−1))+4 mit innerer und äußerer Skalierung sowie einen neuen Kandidatenvergleich bei x=−2. Die sechs Bildpunkte liefern diese Antworten nicht. EN: The new image illustrates only a two-unit right shift of ln(x); the independent cases combine inside/outside scaling and a different candidate comparison. Exact current bitmap bound; AI candidate, no human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "core-understanding",
+            "essentialUnderstandingDe": "Äußere Faktoren und Summanden verändern die y-Werte eines Logarithmusgraphen, innere Faktoren und Verschiebungen seine x-Zuordnung. Der positive Logarithmusausdruck bestimmt dabei den zulässigen Bereich und den verschobenen Rand.",
+            "essentialUnderstandingEn": "Outside factors and summands change a logarithm graph's y-values, while inside factors and shifts change its x-coordinates. Positivity of the logarithm argument determines the admissible domain and shifted boundary.",
+            "observablePerformanceDe": "Für g(x)=2ln(3(x−1))+4 beschreibt die lernende Person ausgehend von ln(x) die Punktzuordnung (u,v)→(u/3+1,2v+4), die horizontale Stauchung und die Verschiebungen. Sie prüft eine fremde Skizze zum selben Term anhand des verschobenen Randes x=1 und des Bildpunkts von (1,0), statt die Transformationswörter nur auswendig aufzulisten.",
+            "observablePerformanceEn": "For g(x)=2ln(3(x−1))+4, the learner describes the mapping (u,v)→(u/3+1,2v+4) from ln(x), the horizontal compression, and the shifts. They check another sketch of the same expression using the shifted boundary x=1 and the image of (1,0), rather than merely listing transformation words from memory."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "core-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "inside-versus-outside-factor",
+            "textDe": "Ein Faktor im Logarithmusargument und ein äußerer Faktor verändern unterschiedliche Punktkoordinaten.",
+            "textEn": "A factor inside the logarithm argument and an outside factor alter different point coordinates."
+          },
+          {
+            "id": "term-versus-graph-claim",
+            "textDe": "Ein vorgegebener Term wird durch neue Punktlagen beschrieben oder gegen eine teilweise vorgegebene Graphenbehauptung geprüft.",
+            "textEn": "A given expression is described through new point positions or checked against a partially specified graph claim."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "combined-log-transform",
+            "taskDemandDe": "Deute g(x)=2ln(3(x−1))+4 als Transformation von ln(x). Gib Definitionsbereich, verschobenen Rand und die neuen Punkte zu (1,0) und (e,1) an.",
+            "taskDemandEn": "Interpret g(x)=2ln(3(x−1))+4 as a transformation of ln(x). Give the domain, shifted boundary and image points of (1,0) and (e,1).",
+            "expectedPerformanceDe": "Die Zuordnung lautet (u,v)→(u/3+1,2v+4): horizontale Stauchung um 1/3, Verschiebung um 1 nach rechts, vertikale Streckung um 2 und um 4 nach oben. D=(1,∞), senkrechte Asymptote x=1; die Punkte sind (4/3,4) und (1+e/3,6).",
+            "expectedPerformanceEn": "The mapping is (u,v)→(u/3+1,2v+4): horizontal compression by 1/3, shift 1 right, vertical stretch by 2 and shift 4 up. D=(1,∞), vertical asymptote x=1; the points are (4/3,4) and (1+e/3,6).",
+            "understandingFocusDe": "Argumentbedingung und Punktabbildung verbinden alle einfachen Parameterwirkungen konsistent.",
+            "understandingFocusEn": "The argument condition and point mapping connect all simple parameter effects consistently."
+          },
+          {
+            "id": "choose-log-transform",
+            "taskDemandDe": "Eine neue Zeichnung soll die senkrechte Asymptote x=−2 haben und durch (−1,3) gehen. Prüfe die gegebenen Kandidaten h(x)=ln(2(x+2))+3 und k(x)=2ln(x+2)+3. Beschreibe bei beiden die Transformation und entscheide begründet.",
+            "taskDemandEn": "A new drawing is to have vertical asymptote x=−2 and pass through (−1,3). Check the given candidates h(x)=ln(2(x+2))+3 and k(x)=2ln(x+2)+3. Describe both transformations and justify the choice.",
+            "expectedPerformanceDe": "Beide haben D=(−2,∞) und Asymptote x=−2. h hat horizontale Stauchung um 1/2 und erreicht y=3 bei x=−3/2; h(−1)=ln(2)+3. k ist vertikal um 2 gestreckt und liefert k(−1)=3. Daher passt k; beide sind um 2 nach links und 3 nach oben verschoben.",
+            "expectedPerformanceEn": "Both have D=(−2,∞) and asymptote x=−2. h is horizontally compressed by 1/2 and reaches y=3 at x=−3/2; h(−1)=ln(2)+3. k is vertically stretched by 2 and gives k(−1)=3. Thus k matches; both shift 2 left and 3 up.",
+            "understandingFocusDe": "Transfer durch Unterscheidung innerer und äußerer Faktoren an einer neuen graphischen Bedingung; die Asymptote allein entscheidet noch nicht.",
+            "understandingFocusEn": "Transfer by distinguishing inside and outside factors using a new graphical condition; the asymptote alone does not decide."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "bd637a72-6609-54f5-bb33-8a9e898bf7a0",
+      "reason": "DE: Das neue Bild führt an 11→8→4 ein einzelnes Rückwärtsarbeiten mit Vorwärtsprobe vor. Das Profil verlangt unabhängig eine begründete Symmetrie-/Quadratergänzungswahl für ein Rechteck und den Sonderansatz n=2k+1 für Teilbarkeit durch 8. Keine Bildzahl oder Rechnung löst diese Fälle. EN: The new image works a small backwards example; the independent profile assesses symmetry in an area maximum and odd-integer representation in a divisibility proof. Exact current bitmap bound; AI candidate, no human approval.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "heuristic-choice",
+            "essentialUnderstandingDe": "Eine Heuristik ist passend, wenn eine erkennbare Struktur wie Symmetrie oder eine Zielbedingung durch Umformen einen kürzeren, nachvollziehbaren Lösungsweg ermöglicht; die Wahl braucht eine inhaltliche Begründung.",
+            "essentialUnderstandingEn": "A heuristic fits when recognised structure, such as symmetry or a target condition, enables a shorter traceable solution; the choice needs a substantive reason.",
+            "observablePerformanceDe": "Die lernende Person benennt eine geeignete Heuristik, begründet deren Passung zur Aufgabenstruktur, führt die entscheidenden Lösungsschritte aus und prüft das Ergebnis.",
+            "observablePerformanceEn": "The learner names an appropriate heuristic, explains why it fits the task structure, carries out the decisive steps, and checks the result."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "heuristic-choice"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "heuristic-choice-variation",
+            "textDe": "Die Problemstruktur wechselt von einer symmetrischen Optimierung mit festem Umfang zu einer Teilbarkeitsaussage für alle ungeraden Zahlen mit geeignetem Spezialansatz.",
+            "textEn": "The problem changes from symmetric optimisation with fixed perimeter to a divisibility claim for every odd integer using a suitable representation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "symmetry-optimum",
+            "taskDemandDe": "Ein Rechteck hat Umfang 20 cm. Wähle eine Heuristik, um die größte Fläche zu finden, und begründe sie.",
+            "taskDemandEn": "A rectangle has perimeter 20 cm. Choose a heuristic to find the maximum area and justify it.",
+            "expectedPerformanceDe": "Mit Seiten x und 10−x ist A=x(10−x)=25−(x−5)². Die Symmetrie um x=5 und das nichtnegative Quadrat zeigen: beim Quadrat 5×5 cm ist A maximal 25 cm².",
+            "expectedPerformanceEn": "With sides x and 10−x, A=x(10−x)=25−(x−5)². Symmetry about x=5 and the nonnegative square show the 5×5 cm square maximises area at 25 cm².",
+            "understandingFocusDe": "Symmetrie bzw. Quadratergänzung macht das Maximum sichtbar, statt Werte blind zu testen.",
+            "understandingFocusEn": "Symmetry or completing the square exposes the maximum instead of blind trials."
+          },
+          {
+            "id": "odd-divisibility",
+            "taskDemandDe": "Zeige, dass für jede ungerade ganze Zahl n der Ausdruck n²−1 durch 8 teilbar ist. Welche Heuristik passt?",
+            "taskDemandEn": "Show that n²−1 is divisible by 8 for every odd integer n. Which heuristic fits?",
+            "expectedPerformanceDe": "Setze die besondere Form n=2k+1: n²−1=4k(k+1). Da eine von zwei aufeinanderfolgenden Zahlen gerade ist, teilt 8 den Ausdruck. Die Form des Sonderfalls „ungerade“ macht den entscheidenden Faktor sichtbar.",
+            "expectedPerformanceEn": "Use the special form n=2k+1: n²−1=4k(k+1). One of consecutive integers k,k+1 is even, so 8 divides the expression. The odd-number representation exposes the key factor.",
+            "understandingFocusDe": "Ein geeignetes Umkodieren der Bedingung ist ein begründeter heuristischer Schritt.",
+            "understandingFocusEn": "Recoding the given condition appropriately is a reasoned heuristic step."
+          }
+        ]
+      }
+    }
+  ]
+}

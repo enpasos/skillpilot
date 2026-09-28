@@ -179,6 +179,13 @@ const SEK1_MEMORY_GOAL_ID = '4eefbd04-9e49-41ea-a087-9ad6ac71ec5a'
 const J6_REFLECTIONS_CLUSTER_ID = '1335dff9-db1e-5dd6-aa55-3938b6d3b0ec'
 const J6_NETS_GOAL_ID = 'f52e9d72-4995-5c80-91d2-7761ea0cbec0'
 const J6_OBLIQUE_VIEW_GOAL_ID = '6bb52f96-6320-5a34-afb0-db9b471dd4ac'
+const RIGHT_PRISM_CLUSTER_GOAL_ID = '59d5a330-61be-4590-ab46-cf7cefecd144'
+const SEK1_EXTERNAL_PREREQUISITE_GOAL_IDS = [
+  '85eda551-cfc1-52c6-a252-4c7394c1f7e6',
+  '22842d80-de9d-5dad-9819-6ae6e9ca61be',
+  '9b339361-7719-573d-a913-432246c502ee',
+  '34dc8c9b-f61b-50ca-8daa-0d46277c7b32',
+]
 // The Q4 Caterer assessment was mapped to a lower-secondary process source, but
 // it is a phase-local upper-secondary exam, not a Sek-I learner target.
 const Q4_CATERER_ASSESSMENT_GOAL_ID = '3095e125-fbb7-51c6-bf12-ffbb1735b9b7'
@@ -1589,10 +1596,61 @@ const unfilteredGeneratedViews = new Map<string, CompositionView>([
   ['de-sh-lk-g8.view.json', createShCrossStageView(baseShLkView, 'LK', 'G8')],
   ['de-sh-lk-g9.view.json', createShCrossStageView(baseShLkView, 'LK', 'G9')],
 ])
+/** Keep the reviewed prism folder in the printed tree after its former single
+ * goal was split into separate volume and surface-area atoms. Both atoms must
+ * remain direct siblings at one placement, so this cannot silently alter the
+ * generated target set. */
+const restoreRightPrismFolder = (view: CompositionView): CompositionView => {
+  const childGoalIds = goalById.get(RIGHT_PRISM_CLUSTER_GOAL_ID)?.contains ?? []
+  if (childGoalIds.length !== 2) {
+    throw new Error('The reviewed right-prism folder must have exactly two canonical children')
+  }
+  let replacements = 0
+  const visit = (node: CompositionNode): CompositionNode => {
+    if (node.kind !== 'structure') return clone(node)
+    const children = node.children.map(visit)
+    const childIndices = childGoalIds.map((goalId) => children.findIndex((child) => (
+      child.kind === 'goalEntry' && child.goalId === goalId && child.projectionRole !== 'prerequisiteOnly'
+    )))
+    if (childIndices.some((index) => index < 0)) return { ...clone(node), children }
+    if (childIndices[0] === childIndices[1]) {
+      throw new Error(`${view.viewId}: right-prism child references are not distinct`)
+    }
+    replacements += 1
+    const insertionIndex = Math.max(...childIndices) - 1
+    const remaining = children.filter((_child, index) => !childIndices.includes(index))
+    remaining.splice(insertionIndex, 0, createCanonicalSubtree(RIGHT_PRISM_CLUSTER_GOAL_ID))
+    return { ...clone(node), children: remaining }
+  }
+  const rootNodes = view.rootNodes.map(visit)
+  if (replacements !== 1) {
+    throw new Error(`${view.viewId}: expected one reviewed right-prism placement, found ${replacements}`)
+  }
+  return { ...view, rootNodes }
+}
+
+/** Standalone Sek-I views retain these authored out-of-stage references solely
+ * for prerequisite checks. They do not enter the learner's target set. */
+const restoreSek1ExternalPrerequisites = (view: CompositionView): CompositionView => {
+  if (view.scope.stage !== 'SekI') return view
+  for (const goalId of SEK1_EXTERNAL_PREREQUISITE_GOAL_IDS) {
+    if (!goalById.has(goalId)) throw new Error(`Missing canonical Sek-I external prerequisite ${goalId}`)
+  }
+  return {
+    ...view,
+    rootNodes: [
+      ...SEK1_EXTERNAL_PREREQUISITE_GOAL_IDS.map((goalId): CompositionNode => ({
+        kind: 'goalEntry', goalId, projectionRole: 'prerequisiteOnly',
+      })),
+      ...view.rootNodes,
+    ],
+  }
+}
+
 const generatedViews = new Map(
   [...unfilteredGeneratedViews].map(([fileName, view]) => [
     fileName,
-    filterAssessmentsWithoutTargetPrerequisites(view),
+    restoreSek1ExternalPrerequisites(restoreRightPrismFolder(filterAssessmentsWithoutTargetPrerequisites(view))),
   ]),
 )
 

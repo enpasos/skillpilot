@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e32181970311f6ed2e74ffc3b0b3653dd843ea70ebccf657f2a0fef325f39b68",
+  "reviewInputFingerprint": "sha256:c925ab6302dfc08e0eb9e3810bd2890271482d6c58ab21b02727190d023e6115",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-a",
+      "roundId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-a.batch-001.codex-independent-a"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::Codex; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-b",
+      "roundId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b.reviewer-b.manual-20260927"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact runtime model not exposed to reviewer)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "aeae526e-b3a4-5a17-b177-351df0307cb9",
+      "firstRecordId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-a.batch-001.codex-independent-a.001",
+      "secondRecordId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b.reviewer-b.manual-20260927.aeae526e-b3a4-5a17-b177-351df0307cb9",
+      "firstRunId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-a.batch-001.codex-independent-a",
+      "secondRunId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b.reviewer-b.manual-20260927",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+      "firstRecordId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-a.batch-001.codex-independent-a.002",
+      "secondRecordId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b.reviewer-b.manual-20260927.c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+      "firstRunId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-a.batch-001.codex-independent-a",
+      "secondRunId": "mathematik-m7-notation-tool-limits-current-png-20260927-v1-first-pass-b.reviewer-b.manual-20260927",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

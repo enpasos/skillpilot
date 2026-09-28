@@ -1,0 +1,47 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-notation-derivative-two-current-20260927-v1-run-b-001",
+  "campaignId": "mathematik-m7-notation-derivative-two-current-20260927-v1-b",
+  "roundId": "mathematik-m7-notation-derivative-two-current-20260927-v1-first-pass-b",
+  "batchId": "mathematik-m7-notation-derivative-two-current-20260927-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:928289cf6e97a478777736c1b8f75b97e95ee6b677304ac3c26d9893ebfee7ed",
+  "bundleFingerprint": "sha256:a4c38e44c40c63b2e573a4feb9b5cbfee23cb1a753da5a5c97cd9aeea634c804",
+  "bookDigest": "sha256:e8da7edbed2260ab708c3259e5bc2469ace40d9735b14257b4144f0fa529763d",
+  "provider": "OpenAI",
+  "model": "GPT-6 (exact runtime variant not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:fd16355a751efe31573d3171aea004f245be8096a54260a0b51317b19dfe3afc",
+  "independenceGroupId": "mathematik-m7-notation-derivative-two-current-20260927-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "aeae526e-b3a4-5a17-b177-351df0307cb9",
+    "1a18dbb3-f350-4766-9c8b-20ca018ccef1"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:6115f73eb282de6bf6d79426e3f97012d676ae77cb4fb5ac2b8cf90c7ce40e26"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:928289cf6e97a478777736c1b8f75b97e95ee6b677304ac3c26d9893ebfee7ed"
+    }
+  ],
+  "startedAt": "2026-09-27T00:43:58.000Z",
+  "completedAt": "2026-09-27T00:45:02.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:ab44011995cc3cdb4752a7d1f086c44fde0fbc329c0b107736778ef0a05e47b0",
+  "toolchainVersion": "skillpilot-goal-description-review-v2"
+}

@@ -203,7 +203,7 @@ try {
     // The cockpit shows the backend text; it never fabricates completions of its own.
     for (const [key, subject] of [['mathematik', 'Mathematik'], ['physik', 'Physik']] as const) {
       const row = overview.getByTestId(`learner-plan-subject-${key}`)
-      await row.getByText('0 von 1 Ziel', { exact: true }).waitFor()
+      await row.getByTestId('learner-plan-period-gauge').getByText('0 von 1', { exact: true }).waitFor()
       await row.getByText('im Plan').first().waitFor()
       assert.ok(subject.length > 0)
     }

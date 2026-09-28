@@ -32,6 +32,7 @@ public class LandscapeService {
     private static final int SUPPORTED_SOURCE_REGISTRY_VERSION = 1;
     private static final Path SOURCE_LANDSCAPE_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "provenance", "source-landscape-registry.json");
+    private static final Path QUALITY_REVIEW_ARTIFACTS_PATH = Path.of("DE", "Gymnasium", "quality");
     private static final int SUPPORTED_SOURCE_GOAL_CLOSURE_REGISTRY_VERSION = 1;
     private static final Path SOURCE_GOAL_CLOSURE_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "provenance", "source-goal-closure-registry.json");
@@ -715,7 +716,7 @@ public class LandscapeService {
         }
 
         List<SkillLandscape> loaded = new ArrayList<>();
-        Map<String, SkillLandscape> byId = new HashMap<>();
+        Map<String, SkillLandscape> byId = new LinkedHashMap<>();
         Map<String, SkillLandscape> byLegacyId = new HashMap<>();
         Map<String, String> goalIndex = new HashMap<>();
         long maxLastModified = 0L;
@@ -723,9 +724,7 @@ public class LandscapeService {
 
         try {
             List<Path> files = Files.walk(dir)
-                    .filter(Files::isRegularFile)
-                    .filter(p -> StringUtils.hasText(p.getFileName().toString()))
-                    .filter(p -> p.getFileName().toString().endsWith(".json"))
+                    .filter(p -> isRuntimeLandscapeJson(dir, p))
                     .sorted()
                     .collect(Collectors.toList());
             for (Path file : files) {
@@ -820,8 +819,13 @@ public class LandscapeService {
             return;
         }
 
+        List<SkillLandscape> uniqueLoaded = new ArrayList<>();
         for (SkillLandscape l : loaded) {
-            byId.put(l.getLandscapeId(), l);
+            if (byId.putIfAbsent(l.getLandscapeId(), l) != null) {
+                log.warn("Skipping duplicate runtime landscape id {}", l.getLandscapeId());
+                continue;
+            }
+            uniqueLoaded.add(l);
             if (l.getGoals() != null) {
                 for (LearningGoal g : l.getGoals()) {
                     goalIndex.put(g.getId(), l.getLandscapeId());
@@ -829,7 +833,7 @@ public class LandscapeService {
             }
         }
 
-        cachedLandscapes = Collections.unmodifiableList(loaded);
+        cachedLandscapes = Collections.unmodifiableList(uniqueLoaded);
         cachedById = Collections.unmodifiableMap(byId);
         cachedByLegacyId = Collections.unmodifiableMap(byLegacyId);
         goalIdToLandscapeId = Collections.unmodifiableMap(goalIndex);
@@ -846,7 +850,15 @@ public class LandscapeService {
         knownRootIds.addAll(compatibilityArchiveSummariesById.keySet());
         curriculumManifest = loadCurriculumManifest(dir, knownRootIds);
         lastLoadedFingerprint = maxLastModified;
-        log.info("Loaded {} landscapes and {} goals from {}", loaded.size(), goalIndex.size(), dir);
+        log.info("Loaded {} landscapes and {} goals from {}", uniqueLoaded.size(), goalIndex.size(), dir);
+    }
+
+    private boolean isRuntimeLandscapeJson(Path dir, Path file) {
+        return Files.isRegularFile(file)
+                && StringUtils.hasText(file.getFileName().toString())
+                && file.getFileName().toString().endsWith(".json")
+                // Review candidates may contain real landscape IDs but are not runtime curricula.
+                && !file.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH));
     }
 
     private long loadArchivedSourceLandscapes(Path dir, List<SkillLandscape> loaded) {
@@ -1835,9 +1847,7 @@ public class LandscapeService {
         }
         try {
             return Files.walk(dir)
-                    .filter(Files::isRegularFile)
-                    .filter(p -> StringUtils.hasText(p.getFileName().toString()))
-                    .filter(p -> p.getFileName().toString().endsWith(".json"))
+                    .filter(p -> isRuntimeLandscapeJson(dir, p))
                     .mapToLong(p -> {
                         try {
                             return Files.getLastModifiedTime(p).toMillis();

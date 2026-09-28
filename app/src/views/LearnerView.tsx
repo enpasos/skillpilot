@@ -119,6 +119,7 @@ interface LearnerViewProps {
   routeGoalId?: string
   skillpilotId: string
   landscapeId: string
+  landscapeSubject?: string
   currentLandscapeHasMatchedCompositionView: boolean
   activeFilter?: string
   onLogout?: () => void
@@ -370,6 +371,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   routeGoalId,
   skillpilotId,
   landscapeId,
+  landscapeSubject,
   currentLandscapeHasMatchedCompositionView,
   activeFilter = 'all',
   onLogout,
@@ -791,6 +793,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     })
     return supportedActiveFilters.length > 0 ? supportedActiveFilters.join(',') : undefined
   }, [landscapeId, personalConfig, activeFilter, supportedFilterIds])
+  const bavarianMathCompositionView = currentLandscapeHasMatchedCompositionView
+    && landscapeSubject === 'Mathematik'
+    && normalizeJurisdictionCode(rootLandscapeId ? personalConfig[rootLandscapeId]?.filterId : undefined) === 'DE-BY'
   const learnerVisibleChildrenByParent = useMemo(
     () => {
       if (currentLandscapeHasMatchedCompositionView) {
@@ -1403,7 +1408,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
       // 1. If Atomic
       if (!g.contains || g.contains.length === 0) {
-        if (!goalMatchesFilter(g, effectiveActiveFilter)) {
+        if (!bavarianMathCompositionView && !goalMatchesFilter(g, effectiveActiveFilter)) {
           return false
         }
 
@@ -1435,7 +1440,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     visibleRootGoals.forEach(r => check(r.id))
 
     return ids
-  }, [visibleRootGoals, goalIndexAll, getEffectiveMastery, visibleGoals, effectiveActiveFilter])
+  }, [visibleRootGoals, goalIndexAll, getEffectiveMastery, visibleGoals, effectiveActiveFilter, bavarianMathCompositionView])
 
   const atomicFrontierOptions = useMemo(() => {
     const atomic = frontierOptions.filter((candidate) => candidate.type === 'atomic')

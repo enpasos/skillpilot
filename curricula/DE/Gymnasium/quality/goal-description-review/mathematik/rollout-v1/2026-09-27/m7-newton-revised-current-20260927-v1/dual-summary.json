@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:eae337c512b077985321708013e78707d439a6898dbdb2122937f0a88bf849d1",
+  "reviewInputFingerprint": "sha256:2efc984bb81fd7643d86abadb45264fdc17dbb413ce694b64d09d22ecac7b6d3",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-newton-revised-current-20260927-v1-a",
+      "roundId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-newton-revised-current-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-newton-revised-current-20260927-v1-first-pass-a-batch-001-run-1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (model identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-newton-revised-current-20260927-v1-b",
+      "roundId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-newton-revised-current-20260927-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-newton-revised-current-20260927-v1-round-b-codex-20260927"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
+      "firstRecordId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-a-0c7bbd3f",
+      "secondRecordId": "mathematik-m7-newton-revised-current-20260927-v1-b-0c7bbd3f",
+      "firstRunId": "mathematik-m7-newton-revised-current-20260927-v1-first-pass-a-batch-001-run-1",
+      "secondRunId": "mathematik-m7-newton-revised-current-20260927-v1-round-b-codex-20260927",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

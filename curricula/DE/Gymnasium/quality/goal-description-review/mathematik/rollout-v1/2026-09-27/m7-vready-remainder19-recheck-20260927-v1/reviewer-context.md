@@ -1,0 +1,18 @@
+# Kontext für die Synthese nach den Blindrunden
+
+Dieses Paket bereitet 19 aktuell `curricularAtomic`-klassifizierte Mathematikziele vor, denen noch ein zentral gültiger D-Abschluss fehlt, deren Bild-Gate V aber mit dem derzeit verlinkten Asset erfüllt ist. Die 19 IDs und ihre voraussetzungsgerechte Reihenfolge stehen in der benachbarten Batch-Konfiguration. Das erzeugte Buch bindet die aktuellen kanonischen Texte und Lernzielseiten; `quality:goal-description-rollout-batch -- check` war erfolgreich. Die Runden A und B sind vorbereitet, **nicht** inhaltlich entschieden. Dieser Kontext gehört erst in die spätere Synthese, nicht in die unabhängigen Blindreviews.
+
+Vier weitere D-offene, V-bereite Ziele wurden bewusst nicht in dieses Paket aufgenommen: `0b162cb0-8507-5ac2-b9d6-57f40f4d3f35` und `71fe4a39-38e8-5c6a-8eef-ff4783fe70c2` wegen der offenen GK/LK-Projektionsfrage sowie `288633c1-f61c-5b48-af7e-a80357f96cad` und `e8237315-654e-5150-97de-49c4cb49b3d1` wegen des gesonderten Quellen- und Assessment-Audits unter `2026-09-24/m7-q2-volume-two-source-route-current-20260924-v2/audit-20260927.md`. Die parallel vorbereiteten Sechser- und Zweierpakete vom 27.09. sind ebenfalls ausgenommen.
+
+Die meisten 19 IDs stehen noch in älteren Konfigurationen des In-flight-Ledgers. Diese Pakete und ihre Entscheidungen wurden weder überschrieben noch als aktuelle Freigabe ausgegeben. Das neue Paket ist eine eigene, aktuelle Re-Review-Bindung. Es wurde nicht zusätzlich in das Ledger eingetragen, weil das eine überlappende aktive Zuständigkeit erzeugen würde.
+
+Vor einer zentralen D-Integration sind insbesondere folgende bereits belegte Konflikte separat zu klären:
+
+- `803d910d-96d1-5118-b9ca-29e93d0da76d` und `d3c42193-f1b7-5c6d-a991-bf034d99359f`: LK-Titel/-Tag, aber die aktuellen Lernzielbuchseiten enthalten GK-Anwendbarkeit. Das ältere HE-GK-Audit unter `2026-09-24/m7-lk-applicability-hold-three-current-20260924-v2/candidate-assessment/he-gk-projection-and-assessment-audit-20260924.md` nennt außerdem unzutreffend breit gebundene Assessment-Abdeckung. Ein Text-KEEP allein repariert die Scope- und Prüfungsbezüge nicht.
+- `8064088b-dc0a-4a67-ad63-360fdcc9869d`: Der Titel umfasst Kreis- und Kreisteilflächen, die Beschreibung nur Kreisflächen; der frühere Review sah Quellenumfang und mögliche semantische Aufteilung offen.
+- `59d5a330-61be-4590-ab46-cf7cefecd144`: Volumen und Oberflächeninhalt des Prismas wurden in den früheren Runden jeweils als getrennt prüfbare Leistungen markiert.
+- `1ea06c0c-5c60-45cd-8f31-638de98820b4`: Die frühere Prüfung sah eine Abweichung zwischen deutschem „plausibilisieren“ und stärkerem englischem „justify“; ein Kandidat für bilingual präzisierte Beschreibung, keine aktuelle Freigabe.
+- `ccfd4e60-5728-568f-adb7-0b932d8e5aac`: Addition, Multiplikation und Verkettung bei Funktionenscharen sind fachlich verschieden; das vorhandene Bild belegt nur einen Teil. Früher zweimal `split_review`.
+- `0e8417d7-effb-5314-93ba-a571b01726ce`: Die uneingeschränkte Formulierung umfasst auch Verknüpfungen ohne elementare Stammfunktion; das alte Bild zeigt nur einen lösbaren Fall. Früher zweimal `block`.
+
+Diese sechs Befunde stammen aus `2026-09-26/m7-vready-geometry-functions-open-seven-after-two-png-20260926-v1/synthesis-assessment.md`; die aktuellen Blindrunden müssen trotzdem ohne diesen Synthesetext unabhängig urteilen. Weitere breite oder kursprofilsensitive Ziele im Paket, vor allem `31be24f0…`, `809ef78a…`, `c2c49659…` sowie Raumspiegelungen und Lagebeziehungen, verlangen eigene konkrete Aufgaben-, Quellen- und Scope-Prüfung. Keine der aufgeführten Risiken wird durch das bloße Erstellen des Pakets geschlossen.

@@ -24,6 +24,7 @@ import {
 } from './goal_visualization_common.mjs'
 
 const DEFAULT_MODEL = 'gemini-3-pro-image'
+const FLASH_IMAGE_MODEL = 'gemini-3.1-flash-image'
 const DEFAULT_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/interactions'
 const DEFAULT_ASPECT_RATIO = '16:9'
 const DEFAULT_IMAGE_SIZE = '2K'
@@ -47,11 +48,14 @@ function usage() {
     `  --subject <path>           Asset subject path. Default: ${DEFAULT_SUBJECT_PATH}`,
     `  --lang <code>              Language code. Default: ${DEFAULT_LANG}`,
     `  --model <id>               Gemini image model. Default: ${DEFAULT_MODEL}`,
+    `  --thinking-level <level>   ${FLASH_IMAGE_MODEL} only: minimal or high. Omitted by default.`,
     `  --aspect-ratio <ratio>     Response aspect ratio. Default: ${DEFAULT_ASPECT_RATIO}`,
     `  --image-size <size>        Response image size. Default: ${DEFAULT_IMAGE_SIZE}`,
     `  --mime-type <mime>         Image MIME type. Default: ${DEFAULT_MIME_TYPE}`,
     '  --prompt-append <text>     Extra provider instruction appended to the generated prompt.',
     '  --prompt-append-file <path> Extra provider instruction read from a UTF-8 text/Markdown file.',
+    '  --prompt-file <path>       Use this UTF-8 file as the exact prompt; cannot combine with prompt append options.',
+    '  --work-dir <path>          New or empty output directory for this attempt; avoids replacing earlier scratch.',
     '  --reference-image <path>    Optional image input sent to the provider together with the prompt.',
     '  --reference-image-mime-type <mime> MIME type for --reference-image. Inferred from file extension by default.',
     `  --reconstruction-prompt-model <id> Model used to describe the generated image. Default: ${DEFAULT_RECONSTRUCTION_PROMPT_MODEL}`,
@@ -85,6 +89,68 @@ function collectPromptAppend(args) {
   }
 
   return parts.filter(Boolean).join('\n\n')
+}
+
+function readExactPromptFile(filePath) {
+  const prompt = fs.readFileSync(resolveProjectPath(filePath), 'utf-8')
+  if (!prompt.trim()) {
+    throw new Error(`Prompt file is empty: ${filePath}`)
+  }
+  return prompt
+}
+
+function resolvePrompt(args, goal, subjectPath) {
+  if (args['prompt-file'] === true) {
+    throw new Error('--prompt-file requires a path.')
+  }
+  const promptFile = getStringArg(args, 'prompt-file')
+  if (promptFile) {
+    if (args['prompt-append'] !== undefined || args['prompt-append-file'] !== undefined
+      || getStringArg(args, 'prompt-append') || getStringArg(args, 'prompt-append-file')) {
+      throw new Error('--prompt-file cannot be combined with --prompt-append or --prompt-append-file.')
+    }
+    return readExactPromptFile(promptFile)
+  }
+
+  const promptAppend = collectPromptAppend(args)
+  const basePrompt = createVisualizationPrompt(goal, { subjectPath })
+  return promptAppend ? `${basePrompt}\n\nZusatzanweisung:\n${promptAppend}` : basePrompt
+}
+
+function resolveThinkingLevel(args, model) {
+  if (args['thinking-level'] === true) {
+    throw new Error('--thinking-level requires minimal or high.')
+  }
+  const thinkingLevel = getStringArg(args, 'thinking-level')
+  if (!thinkingLevel) return undefined
+  if (thinkingLevel !== 'minimal' && thinkingLevel !== 'high') {
+    throw new Error(`Unsupported thinking level: ${thinkingLevel}. Use minimal or high.`)
+  }
+  if (model !== FLASH_IMAGE_MODEL) {
+    throw new Error(`--thinking-level is supported here only with --model ${FLASH_IMAGE_MODEL}.`)
+  }
+  return thinkingLevel
+}
+
+function resolveWorkDir(args, goalId) {
+  if (args['work-dir'] === true) {
+    throw new Error('--work-dir requires a path.')
+  }
+  const explicitWorkDir = getStringArg(args, 'work-dir')
+  if (!explicitWorkDir) {
+    return path.join(ROOT_DIR, 'tmp/goal-visualizations', goalId)
+  }
+
+  const workDir = resolveProjectPath(explicitWorkDir)
+  if (fs.existsSync(workDir)) {
+    if (!fs.statSync(workDir).isDirectory()) {
+      throw new Error(`--work-dir is not a directory: ${explicitWorkDir}`)
+    }
+    if (fs.readdirSync(workDir).length > 0) {
+      throw new Error(`--work-dir must be new or empty to preserve previous attempts: ${explicitWorkDir}`)
+    }
+  }
+  return workDir
 }
 
 function extensionFromMimeType(mimeType) {
@@ -278,7 +344,7 @@ async function requestImageReconstructionPrompt({ endpoint, model, apiKey, reque
   return { payload, prompt }
 }
 
-function buildRequestBody({ model, prompt, mimeType, aspectRatio, imageSize, referenceImage }) {
+function buildRequestBody({ model, prompt, mimeType, aspectRatio, imageSize, referenceImage, thinkingLevel }) {
   const input = referenceImage
     ? [
         { type: 'text', text: prompt },
@@ -299,6 +365,7 @@ function buildRequestBody({ model, prompt, mimeType, aspectRatio, imageSize, ref
       aspect_ratio: aspectRatio,
       image_size: imageSize,
     },
+    ...(thinkingLevel ? { generation_config: { thinking_level: thinkingLevel } } : {}),
   }
 }
 
@@ -381,6 +448,7 @@ async function main() {
   const subjectPath = getStringArg(args, 'subject', DEFAULT_SUBJECT_PATH) ?? DEFAULT_SUBJECT_PATH
   const lang = getStringArg(args, 'lang', DEFAULT_LANG) ?? DEFAULT_LANG
   const model = getStringArg(args, 'model', DEFAULT_MODEL) ?? DEFAULT_MODEL
+  const thinkingLevel = resolveThinkingLevel(args, model)
   const endpoint = getStringArg(args, 'endpoint', DEFAULT_ENDPOINT) ?? DEFAULT_ENDPOINT
   const reconstructionPromptModel =
     getStringArg(args, 'reconstruction-prompt-model', DEFAULT_RECONSTRUCTION_PROMPT_MODEL)
@@ -393,7 +461,12 @@ async function main() {
   const mimeType = getStringArg(args, 'mime-type', DEFAULT_MIME_TYPE) ?? DEFAULT_MIME_TYPE
   const extension = extensionFromMimeType(mimeType)
   const reviewStatus = getStringArg(args, 'review-status', DEFAULT_REVIEW_STATUS) ?? DEFAULT_REVIEW_STATUS
-  const provider = getStringArg(args, 'provider', DEFAULT_PROVIDER) ?? DEFAULT_PROVIDER
+  const provider = getStringArg(args, 'provider')
+    ?? (model === DEFAULT_MODEL
+      ? DEFAULT_PROVIDER
+      : model === FLASH_IMAGE_MODEL
+        ? `Google Gemini / Nano Banana 2 (${model})`
+        : `Google Gemini (${model})`)
   const license = getStringArg(args, 'license', DEFAULT_LICENSE) ?? DEFAULT_LICENSE
   const dryRun = getBooleanArg(args, 'dry-run')
   const shouldImport = !getBooleanArg(args, 'no-import')
@@ -406,16 +479,14 @@ async function main() {
   const landscape = readLandscape(landscapePath)
   const goal = findGoalOrThrow(landscape, goalQuery)
   const paths = buildVisualizationPaths(goal, { subjectPath, lang, extension })
-  const promptAppend = collectPromptAppend(args)
-  const basePrompt = createVisualizationPrompt(goal, { subjectPath })
-  const prompt = promptAppend ? `${basePrompt}\n\nZusatzanweisung:\n${promptAppend}` : basePrompt
+  const prompt = resolvePrompt(args, goal, subjectPath)
   const description =
     getStringArg(args, 'description') ?? `Visualisierung zum Lernziel: ${goal.title}.`
   const altText =
     getStringArg(args, 'alt-text') ??
     `Didaktische Visualisierung zum Lernziel "${goal.title}". ${goal.description ?? ''}`.trim()
 
-  const workDir = path.join(ROOT_DIR, 'tmp/goal-visualizations', goal.id)
+  const workDir = resolveWorkDir(args, goal.id)
   const generatedDir = path.join(workDir, 'generated')
   fs.mkdirSync(generatedDir, { recursive: true })
 
@@ -439,6 +510,7 @@ async function main() {
     aspectRatio,
     imageSize,
     referenceImage,
+    thinkingLevel,
   })
   const requestPath = path.join(workDir, 'nano-banana-request.json')
   fs.writeFileSync(requestPath, `${JSON.stringify(requestBody, null, 2)}\n`, 'utf-8')

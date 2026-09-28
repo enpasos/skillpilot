@@ -810,11 +810,19 @@ export function useAppCore({
   }, [activeFilter, location.pathname, location.search, selectedLandscapeId])
 
   const { neighbors } = useCompetenceGraph(currentGoal, allGoalsGlobal)
+  const matchedMathView = effectiveMatchedCompositionViewsByLandscapeId[selectedLandscapeId]
+  const matchedMathScope = matchedMathView?.scope
+  const bavarianMathCompositionView = currentLandscapeHasMatchedCompositionView
+    && currentLandscapeEntry?.meta.subject === 'Mathematik'
+    && matchedMathScope !== null
+    && typeof matchedMathScope === 'object'
+    && !Array.isArray(matchedMathScope)
+    && (matchedMathScope as Record<string, unknown>).jurisdiction === 'DE-BY'
   const matchesActiveFilter = useCallback(
     (goal: Goal) => {
-      return goalMatchesFilter(goal, activeFilter)
+      return bavarianMathCompositionView || goalMatchesFilter(goal, activeFilter)
     },
-    [activeFilter],
+    [activeFilter, bavarianMathCompositionView],
   )
   const filteredNeighbors = useMemo(
     () => ({

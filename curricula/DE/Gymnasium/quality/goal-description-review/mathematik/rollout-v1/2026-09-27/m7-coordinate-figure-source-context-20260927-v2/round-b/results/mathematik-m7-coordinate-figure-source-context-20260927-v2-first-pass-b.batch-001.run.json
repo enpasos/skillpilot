@@ -1,0 +1,33 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-first-pass-b.batch-001-run",
+  "campaignId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-b",
+  "roundId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-first-pass-b",
+  "batchId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:d96e584bb9e73c05c65f388e0d6bd79d6adef49779aa441782e78acc772745ba",
+  "bundleFingerprint": "sha256:117e14245560081a515c2a811c61f624c3538e8a07d15abab78f7e508e6d95bc",
+  "bookDigest": "sha256:551a2fe8c32e048026a390a97672abdc8930cd026a116c65882f6520b9686ccf",
+  "provider": "OpenAI",
+  "model": "gpt-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:28e2eabe35dc75cfae6d2ba93f96af539b9e024085b3978fe08af63fe91c9e9f",
+  "generationParametersFingerprint": "sha256:7c8b1149a58443be48e2efa223d0629417112a57f5d95f3a126214fd9e725f0f",
+  "independenceGroupId": "mathematik-m7-coordinate-figure-source-context-20260927-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": ["121e3fdf-54d2-4d46-bc2d-f6e725f10f41"],
+  "inputArtifacts": [
+    {"role": "book_pdf", "digest": "sha256:8ee8cbd73439d9dd7f2bfecb686d82204118c184ee1c562dc4ae4e2c0546cc87"},
+    {"role": "review_markdown", "digest": "sha256:c36dfbb5e7da8a3acc6bdeacfa1ccf1d2edbb10d91dacd6a1540e404afae14cd"},
+    {"role": "review_prompt", "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"},
+    {"role": "review_criteria", "digest": "sha256:28e2eabe35dc75cfae6d2ba93f96af539b9e024085b3978fe08af63fe91c9e9f"},
+    {"role": "description_review_batch_input_jsonl", "digest": "sha256:d96e584bb9e73c05c65f388e0d6bd79d6adef49779aa441782e78acc772745ba"}
+  ],
+  "startedAt": "2026-09-27T09:14:22Z",
+  "completedAt": "2026-09-27T09:15:17Z",
+  "status": "completed",
+  "outputDigest": "sha256:9a8d9164ba669fcf47ea77e32787724a1a59fa445355230511905cd5d64b412d",
+  "toolchainVersion": "codex-interactive-20260927"
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-7d-central-dilation-p-20260928-v1",
+  "reviewedAt": "2026-09-28T01:07:31Z",
+  "reviewer": "Codex current-scope review; AI candidate only",
+  "goals": [
+    {
+      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+      "reason": "Das eingegrenzte HE-LK-Ziel verbindet die in Q2.5 genannte zentrische Streckung am Ursprung mit dem in Q2.2 genannten Begründen von Flächen- und Volumenberechnungen. Die Faktoren k² und k³ sind daraus mathematisch abgeleitet, kein wörtliches Curriculumzitat. Zwei vom aktuellen k=2-Quadrat/Würfel-Bild unabhängige Fälle wurden nachgerechnet: Ein Dreieck mit Seitenvektoren (2,0,0) und (0,3,0) hat Inhalt 3 und bei k=3 Inhalt 27; eine Pyramide mit rechteckiger Grundfläche 4 mal 2 und Höhe 6 hat Volumen 16 und bei k=1/2 Volumen 2. In beiden Fällen muss die lernende Person die Faktoren aus den skalierten Kanten beziehungsweise Grundfläche und Höhe selbst begründen. Dies ist nur ein aktueller KI-Kandidat für positive Evidenz, keine menschliche Freigabe und kein Nachweis einer konkreten Lernendenleistung.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Die amtlichen HE-Aspekte nennen die Faktoren k²/k³ nicht wörtlich. Die didaktische Verbindung und die LK-Zuordnung benötigen eigenständige fachliche Prüfung; daraus folgt keine Freigabe für andere Bundesländer oder beliebige lineare Transformationen."
+      ],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "kantenwirkung",
+            "essentialUnderstandingDe": "Bei einer zentrischen Streckung am Koordinatenursprung mit k>0 werden jeder Orts- und jeder Verbindungsvektor sowie jede Kantenlänge mit demselben Faktor k skaliert; Winkel und Form bleiben erhalten.",
+            "essentialUnderstandingEn": "Under a central dilation at the coordinate origin with k>0, every position and displacement vector and every edge length is scaled by the same factor k; angles and shape are preserved.",
+            "observablePerformanceDe": "Die lernende Person bestimmt an gegebenen Punkten oder Kantenvektoren selbstständig die Bildvektoren und begründet daraus die für die Figur benötigten skalierten Längen, statt nur einen Faktor aus einer Zeichnung abzulesen.",
+            "observablePerformanceEn": "The learner independently determines image vectors from given points or edge vectors and uses them to justify the scaled lengths needed for the figure rather than reading a factor from a drawing."
+          },
+          {
+            "id": "flaechenfaktor",
+            "essentialUnderstandingDe": "Ein Flächeninhalt hängt von zwei unabhängigen Längenrichtungen ab; werden beide mit k skaliert, entsteht der Faktor k², auch bei einer Dreiecksfläche mit dem zusätzlichen Faktor 1/2.",
+            "essentialUnderstandingEn": "An area depends on two independent length directions; scaling both by k gives a factor of k², including for a triangular face with its additional factor of 1/2.",
+            "observablePerformanceDe": "Die lernende Person leitet den Faktor k² an einer gegebenen Fläche aus zwei skalierten Spannrichtungen her und berechnet den Bildflächeninhalt mit passenden Flächeneinheiten.",
+            "observablePerformanceEn": "The learner derives the factor k² for a given face from two scaled spanning directions and calculates the image area with appropriate square units."
+          },
+          {
+            "id": "volumenfaktor",
+            "essentialUnderstandingDe": "Bei einem Körper werden Grundfläche und senkrechte Höhe mit k² beziehungsweise k skaliert; deshalb wird sein Volumen mit k³ skaliert, während ein konstanter Formelfaktor wie 1/3 erhalten bleibt.",
+            "essentialUnderstandingEn": "For a solid, base area and perpendicular height scale by k² and k respectively; therefore its volume scales by k³, while a constant formula factor such as 1/3 remains unchanged.",
+            "observablePerformanceDe": "Die lernende Person begründet an einem gegebenen Körper die skalierten Grundflächen- und Höhenmaße, leitet daraus k³ ab, berechnet das Bildvolumen und prüft, ob Wachstum oder Schrumpfung zum positiven k passt.",
+            "observablePerformanceEn": "For a given solid, the learner justifies the scaled base and height measures, derives k³, calculates the image volume, and checks that growth or shrinkage matches the positive value of k."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": ["kantenwirkung", "flaechenfaktor", "volumenfaktor"],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "dimension-und-koerperform",
+            "textDe": "Wechsel von der zweidimensionalen Dreiecksfläche zur dreidimensionalen Pyramide; der Faktor 1/3 bleibt trotz Skalierung bestehen.",
+            "textEn": "Move from a two-dimensional triangular face to a three-dimensional pyramid; the factor 1/3 remains unchanged under dilation."
+          },
+          {
+            "id": "wachstum-und-schrumpfung",
+            "textDe": "Ein Fall nutzt k>1 und begründet vergrößerte Fläche, der andere 0<k<1 und begründet verkleinerte Grundfläche, Höhe und Volumen.",
+            "textEn": "One case uses k>1 and justifies an enlarged area; the other uses 0<k<1 and justifies a reduced base area, height, and volume."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ursprungsdreieck-k3",
+            "taskDemandDe": "Das Dreieck hat die Eckpunkte O=(0,0,0), A=(2,0,0), B=(0,3,0). Unter T(x)=3x soll die lernende Person den Bildflächeninhalt bestimmen und den Flächenfaktor aus den Bildvektoren begründen.",
+            "taskDemandEn": "The triangle has vertices O=(0,0,0), A=(2,0,0), B=(0,3,0). Under T(x)=3x, the learner must determine the image area and justify the area factor from the image vectors.",
+            "expectedPerformanceDe": "Sie bestimmt OA'=(6,0,0) und OB'=(0,9,0), begründet die Verdreifachung beider senkrechter Spannrichtungen und damit den Faktor 3²=9. Aus dem Ausgangsinhalt 1/2 mal 2 mal 3=3 folgen 27 Flächeneinheiten; sie erklärt, warum nicht der Längenfaktor 3 für den Inhalt gilt.",
+            "expectedPerformanceEn": "They determine OA'=(6,0,0) and OB'=(0,9,0), justify the tripling of both perpendicular spanning directions and thus the factor 3²=9. The original area is 1/2 times 2 times 3=3, so the image area is 27 square units; they explain why the length factor 3 is not the area factor.",
+            "understandingFocusDe": "Eigene Ableitung des Flächenfaktors aus zwei veränderten Kantenvektoren, ohne die Quadratfigur oder k=2 aus dem Bild zu wiederholen.",
+            "understandingFocusEn": "Independent derivation of the area factor from two changed edge vectors, without repeating the square or k=2 shown in the image."
+          },
+          {
+            "id": "rechteckpyramide-khalb",
+            "taskDemandDe": "Eine Pyramide hat die rechteckige Grundfläche mit Ecken (0,0,0), (4,0,0), (4,2,0), (0,2,0) und die Spitze (0,0,6). Unter T(x)=x/2 soll die lernende Person Bildgrundfläche, Bildhöhe und Bildvolumen bestimmen und den Volumenfaktor begründen.",
+            "taskDemandEn": "A pyramid has a rectangular base with corners (0,0,0), (4,0,0), (4,2,0), (0,2,0) and apex (0,0,6). Under T(x)=x/2, the learner must determine the image base area, image height, and image volume and justify the volume factor.",
+            "expectedPerformanceDe": "Sie zeigt, dass die beiden Grundkanten zu 2 und 1 werden, somit die Grundfläche von 8 auf 2 sinkt, während die senkrechte Höhe von 6 auf 3 sinkt. Der Ausgangskörper hat Volumen 1/3 mal 8 mal 6=16, das Bild Volumen 1/3 mal 2 mal 3=2. Sie leitet den Faktor (1/2)³=1/8 aus k² für die Grundfläche und k für die Höhe ab; 1/3 bleibt unverändert.",
+            "expectedPerformanceEn": "They show that the two base edges become 2 and 1, so base area decreases from 8 to 2 while perpendicular height decreases from 6 to 3. The original volume is 1/3 times 8 times 6=16, and the image volume is 1/3 times 2 times 3=2. They derive the factor (1/2)³=1/8 from k² for the base and k for the height; 1/3 remains unchanged.",
+            "understandingFocusDe": "Unabhängiger Transfer vom Flächenargument zum Volumen einer nicht würfelförmigen Raumfigur mit 0<k<1 und begründeter Grundfläche-Höhe-Zerlegung.",
+            "understandingFocusEn": "Independent transfer from the area argument to the volume of a non-cubic solid with 0<k<1 and a justified base-area-times-height decomposition."
+          }
+        ]
+      }
+    }
+  ]
+}

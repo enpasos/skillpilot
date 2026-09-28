@@ -1,0 +1,49 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.reviewer-a",
+  "campaignId": "mathematik-m7-four-imported-png-current-20260927-v1-a",
+  "roundId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a",
+  "batchId": "mathematik-m7-four-imported-png-current-20260927-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:c140fd39e2e2d1570fb5838d549ecc55b68c94edb90ae7b43573fc1550919df1",
+  "bundleFingerprint": "sha256:00b54e35a816cb5510a5a0a869f81cfc3ed27a81c2ab2ab82d314a5f3af0e1c5",
+  "bookDigest": "sha256:38ab29b83a98b231688ed5c1c2ae5ff5a2c8ce79b8e9c1af355f1c50f2e3455a",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot.goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:0bb795265fa8bca980383fd2662f7bcdd513d289fa3b8d0330e269be5df276fc",
+  "independenceGroupId": "mathematik-m7-four-imported-png-current-20260927-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+    "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+    "9023226b-fc17-412b-807c-2bb45cd551d5",
+    "21fa0c22-976e-59b3-a871-899f0c0177f3"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:0d9b9c1c5cfe66553782138231fc7efc6f041829d6a638a4d54c7a1e29f274f6"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:c140fd39e2e2d1570fb5838d549ecc55b68c94edb90ae7b43573fc1550919df1"
+    }
+  ],
+  "startedAt": "2026-09-27T13:17:31Z",
+  "completedAt": "2026-09-27T13:19:54Z",
+  "status": "completed",
+  "outputDigest": "sha256:b07f50d3fd6140c7bb3811aae97f1b4c76124e9f3af216e4226038b53b6601a1",
+  "toolchainVersion": "codex-cli"
+}

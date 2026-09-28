@@ -867,6 +867,7 @@ const App: React.FC = () => {
               routeGoalId={core.currentRouteGoalId}
               skillpilotId={sanitizedSkillpilotId}
               landscapeId={core.selectedLandscapeId}
+              landscapeSubject={currentLandscapeEntry?.meta.subject}
               currentLandscapeHasMatchedCompositionView={core.currentLandscapeHasMatchedCompositionView}
               activeFilter={core.activeFilter}
               onNotify={handleNotify}

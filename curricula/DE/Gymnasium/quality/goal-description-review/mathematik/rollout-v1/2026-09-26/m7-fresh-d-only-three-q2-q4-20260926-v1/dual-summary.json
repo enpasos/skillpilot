@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:4de3b3b546f815e767917b749ab5f025dbc195d9d2cd7e233ecb7ee449514921",
+  "reviewInputFingerprint": "sha256:3318ea3d1b9bf6d4c82270070803a33943470ebc7b47d160a26d4596892137ba",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-a",
+      "roundId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-a-codex-20260926T1303Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (GPT-6 family; exact model identifier unavailable)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-b",
+      "roundId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-first-pass-b-codex-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+      "firstRecordId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-a-001",
+      "secondRecordId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-b-803d910d",
+      "firstRunId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-a-codex-20260926T1303Z",
+      "secondRunId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-first-pass-b-codex-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "firstRecordId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-a-002",
+      "secondRecordId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-b-d3c42193",
+      "firstRunId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-a-codex-20260926T1303Z",
+      "secondRunId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-first-pass-b-codex-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ae3483e3-4712-56a1-a881-2e1f8a1a8df9",
+      "firstRecordId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-a-003",
+      "secondRecordId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-b-ae3483e3",
+      "firstRunId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-a-codex-20260926T1303Z",
+      "secondRunId": "mathematik-m7-fresh-d-only-three-q2-q4-20260926-v1-first-pass-b-codex-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

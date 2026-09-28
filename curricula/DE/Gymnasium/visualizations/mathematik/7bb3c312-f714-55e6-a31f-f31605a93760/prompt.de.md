@@ -8,50 +8,17 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / Codex built-in image generation (reference-conditioned)
 - Status: pilot
-- Quellbild: `7bb3c312-f714-55e6-a31f-f31605a93760.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/7bb3c312-f714-55e6-a31f-f31605a93760/7bb3c312-f714-55e6-a31f-f31605a93760.jpg`
+- Quellbild: `7bb3c312-f714-55e6-a31f-f31605a93760.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/7bb3c312-f714-55e6-a31f-f31605a93760/7bb3c312-f714-55e6-a31f-f31605a93760.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Create a polished 16:9 German mathematics learning illustration from the attached EXACT mathematical layout. The attached image is an accurate geometry reference, not a final graphic. Preserve its topology, directions, coordinates, texts, and numerical values exactly. Style only: warm cream background, friendly hand-drawn educational comic, subtle watercolor fill, crisp thick contour and large readable dark lettering.
 
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK)
-Beschreibung: Die lernende Person kann das Vektorprodukt insbesondere zur Bestimmung von Normalenvektoren und zur Berechnung von Flächeninhalten in räumlichen Konfigurationen anwenden.
-
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Vektorprodukt fuer Normalenvektoren und Flaecheninhalte anwenden.
-- Verwende ein Dreieck im Raum:
-  A(1|0|0), B(3|0|0), C(1|2|2).
-- Spannvektoren:
-  u = B - A = (2,0,0).
-  v = C - A = (0,2,2).
-- Vektorprodukt:
-  u x v = (0,-4,4).
-- Deutung:
-  n = (0,-4,4) ist ein Normalenvektor der Dreiecksebene.
-  |u x v| = sqrt(0^2 + (-4)^2 + 4^2) = sqrt(32) = 4*sqrt(2).
-  Parallelogrammflaeche = 4*sqrt(2).
-  Dreiecksflaeche = 1/2 * 4*sqrt(2) = 2*sqrt(2).
-- Zeichne u und v als Kanten ab A und n sichtbar senkrecht zur aufgespannten Dreiecksebene.
-
-Vermeiden:
-- Das Dreieck nicht als ebenes xy-Dreieck mit z=0 fuer alle Punkte zeichnen; C hat z=2.
-- Das Vorzeichen des Normalenvektors darf hoechstens als Gegenrichtung erwaehnt werden, aber die Rechnung soll u x v = (0,-4,4) zeigen.
-- Nicht die Parallelogrammflaeche mit der Dreiecksflaeche verwechseln.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+The single origin O has +x diagonally down-right, +y diagonally down-left, and +z straight up. Red vector a=(2,0,0) from O is on +x. Green b=(0,3,0) from O is on +y. The filled base must be the parallelogram with vertices O, a, a+b, b; its lowest vertex is a+b. Blue n=a×b=(0,0,6) is vertical upwards on +z from O and normal to this base. Do not add a second green arrow, invert b, or place the filled quadrilateral on the wrong side of O. Text exactly: 'Vektorprodukt und Fläche', 'n = a × b = (0,0,6)', 'Parallelogramm: 6 FE', 'Dreieck: 3 FE'. Nothing else except the vector and axis labels shown in the reference. Everything readable at 360 px.
 ```
 
 ## Review-Notiz

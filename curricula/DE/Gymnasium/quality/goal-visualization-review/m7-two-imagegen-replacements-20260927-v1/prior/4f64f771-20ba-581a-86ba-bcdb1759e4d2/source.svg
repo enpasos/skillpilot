@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Komplexe Zahlen: Ort und Drehung</title>
+  <desc id="desc">Links steht z gleich eins plus i im gleichen Maßstab auf der reellen und imaginären Achse bei eins, eins. Der Pfeil hat den Betrag Wurzel zwei und den Winkel 45 Grad. Rechts durchläuft z von t gleich null bis drei Sekunden mit konstantem Betrag zwei im Uhrzeigersinn die Punkte zwei, minus zwei i, minus zwei und zwei i.</desc>
+  <defs>
+    <style>
+      text { font-family: "DejaVu Sans", sans-serif; fill: #142842; }
+      .title { font-size: 64px; font-weight: 700; }
+      .panel-title { font-size: 47px; font-weight: 700; }
+      .label { font-size: 41px; font-weight: 600; }
+      .small { font-size: 32px; font-weight: 600; }
+      .formula { font-size: 46px; font-weight: 600; }
+      .axis { stroke: #142842; stroke-width: 5; stroke-linecap: round; }
+      .guide { stroke: #8ca3b9; stroke-width: 4; stroke-dasharray: 12 9; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#fff9ec"/>
+  <rect x="28" y="26" width="1544" height="100" rx="30" fill="#e9f4ff"/>
+  <text x="68" y="96" class="title">Komplexe Zahlen: Ort und Drehung</text>
+
+  <rect x="35" y="145" width="750" height="610" rx="31" fill="#fffefd" stroke="#c9d9e7" stroke-width="4"/>
+  <rect x="815" y="145" width="750" height="610" rx="31" fill="#fffefd" stroke="#c9d9e7" stroke-width="4"/>
+
+  <!-- Fixed point: both coordinates have exactly the same 210 px unit length. -->
+  <text x="75" y="212" class="panel-title">Ein fester Punkt</text>
+  <line x1="135" y1="555" x2="665" y2="555" class="axis"/>
+  <path d="M 643 542 L 665 555 L 643 568" fill="none" stroke="#142842" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="210" y1="605" x2="210" y2="278" class="axis"/>
+  <path d="M 197 300 L 210 278 L 223 300" fill="none" stroke="#142842" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="665" y="544" class="small">Re</text>
+  <text x="228" y="291" class="small">Im</text>
+  <text x="155" y="605" class="small">0</text>
+  <line x1="420" y1="544" x2="420" y2="566" class="axis"/>
+  <line x1="199" y1="345" x2="221" y2="345" class="axis"/>
+  <text x="408" y="609" class="small">1</text>
+  <text x="162" y="359" class="small">1</text>
+  <line x1="210" y1="345" x2="420" y2="345" class="guide"/>
+  <line x1="420" y1="345" x2="420" y2="555" class="guide"/>
+  <line x1="210" y1="555" x2="408" y2="357" stroke="#087dcb" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 420 345 L 393 354 L 411 372 Z" fill="#087dcb"/>
+  <text x="450" y="350" class="label" fill="#087dcb">z = 1 + i</text>
+  <path d="M 300 555 A 90 90 0 0 0 273.64 491.36" fill="none" stroke="#e78b16" stroke-width="7" stroke-linecap="round"/>
+  <text x="321" y="511" class="small" fill="#a35d00">φ = 45°</text>
+  <rect x="76" y="646" width="670" height="82" rx="22" fill="#e9f4ff"/>
+  <text x="105" y="702" class="formula">r = √2   ·   φ = π/4</text>
+
+  <!-- Time rotation: the radius is always exactly 165 px. Clockwise steps are quarter turns. -->
+  <text x="854" y="212" class="panel-title">Drehung mit der Zeit</text>
+  <line x1="924" y1="471" x2="1489" y2="471" class="axis"/>
+  <path d="M 1467 458 L 1489 471 L 1467 484" fill="none" stroke="#142842" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="1195" y1="658" x2="1195" y2="271" class="axis"/>
+  <path d="M 1182 293 L 1195 271 L 1208 293" fill="none" stroke="#142842" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1494" y="464" class="small">Re</text>
+  <text x="1208" y="284" class="small">Im</text>
+  <circle cx="1195" cy="471" r="165" fill="none" stroke="#adbed0" stroke-width="5" stroke-dasharray="11 9"/>
+  <path d="M 1360 471 A 165 165 0 0 1 1195 636 A 165 165 0 0 1 1030 471 A 165 165 0 0 1 1195 306" fill="none" stroke="#087dcb" stroke-width="8"/>
+  <path d="M 1312 588 L 1319 567 L 1333 581 Z" fill="#087dcb"/>
+  <circle cx="1360" cy="471" r="12" fill="#087dcb"/>
+  <circle cx="1195" cy="636" r="12" fill="#087dcb"/>
+  <circle cx="1030" cy="471" r="12" fill="#087dcb"/>
+  <circle cx="1195" cy="306" r="12" fill="#087dcb"/>
+  <text x="1379" y="494" class="small">0 s</text>
+  <text x="1214" y="633" class="small">1 s</text>
+  <text x="952" y="461" class="small">2 s</text>
+  <text x="1214" y="322" class="small">3 s</text>
+  <rect x="854" y="650" width="665" height="90" rx="22" fill="#e9f4ff"/>
+  <text x="881" y="691" class="formula">z(t) = 2e<tspan font-size="31" baseline-shift="super">−iπt/2</tspan></text>
+  <text x="881" y="730" class="small" fill="#a35d00">ω = −π/2 rad/s · Uhrzeigersinn</text>
+
+  <rect x="35" y="775" width="1530" height="101" rx="25" fill="#fff2cc" stroke="#e5d49c" stroke-width="3"/>
+  <text x="68" y="840" class="formula">z = r(cos φ + i sin φ) = re<tspan font-size="31" baseline-shift="super">iφ</tspan></text>
+  <text x="1073" y="839" class="small">r ≥ 0;  φ nur für z ≠ 0</text>
+</svg>

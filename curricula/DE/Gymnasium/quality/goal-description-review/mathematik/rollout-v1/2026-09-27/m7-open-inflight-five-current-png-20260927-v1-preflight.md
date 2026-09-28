@@ -1,0 +1,23 @@
+# Five-goal D batch: coordinator preflight (not a blind review)
+
+Date: 2026-09-27. This note is a current-state source and atomicity triage for the batch coordinator. It is **not** a Round A/B record, D synthesis, source approval, or authority to change the canonical graph. Do not provide it to either blind reviewer. The two rounds must be completed independently from the prepared bundle.
+
+The active nine-goal in-flight config lists all five IDs. A dedicated five-goal config is `m7-open-inflight-five-current-png-20260927-v1.config.json`. Each canonical goal currently has a primary image resource. The canonical and public image bytes match for each of the five:
+
+| Goal prefix | Current image SHA-256 | Read-only image check |
+| --- | --- | --- |
+| `1a18` | `e86811073adffb07edf396609b50057f7ec5ab58df2edf5af051d84887c8290a` | The example parabola and derivative show the sign-to-monotonicity relation; the pictured maximum does not itself establish the full textual scope. |
+| `9b33` | `ade268c6b3cdf801f49fdc0587ec8792e73ecbbcbaf648e680e46ed710da46d2` | The schematic set and the `c=0`/`c=1` orbits are consistent with `z₀=0`, `zₙ₊₁=zₙ²+c`; a finite run alone is not proof of boundedness. |
+| `aeae` | `fd230b4a6ec4071bf78335622e3699a0c73502c8ed3635d84d349f015ca6f287` | The labels for `f(3)=7` distinguish the function, input, and value. |
+| `c97a` | `5757931b056b60db83cbb19b0229d4b33f944c7471c26ec108c5be7529ddfda1` | The principal arcsine value `π/6` and second solution `5π/6` on `[0,π]` are correct. |
+| `f37b` | `600adcbff2431384e36b34a72f5f756b00cba2ad856920d8d046a8f7304da304` | The component sums and scaling are correct. The 2D arrows are explicitly marked schematic rather than a scale drawing of space coordinates. |
+
+## Source and atomicity checkpoints
+
+- `1a18`: The current J10 text bundles qualitative function–derivative graph correspondence with an investigation of monotonicity and local/global extrema using the first derivative. These can be assessed separately; a wording-only repair would not resolve that atomicity question. The BW 2016 source extraction and mapping distinguish graph correspondence (competence 23) from derivative-based function investigation (competence 22), and the source-to-current mappings are `partial`. Treat the split question as HOLD until resolved. The May atomicity ledger currently calls it `atomic`, but that decision does not settle this substantive recheck.
+- `9b33`: The current title presents Mandelbrot work as `(LK)` across 16 listed jurisdictions. Its sole source route in the current public source-rationale data is Bayern `M12-V.1`, `Gymnasium: Mathematik 12 (Vertiefungskurs)`. The locally stored source PDF states that the teacher selects three of five modules. An optional Vertiefungskurs module does not by itself establish general LK or 16-jurisdiction applicability. Hold the source/scope decision; do not derive a broad claim from this one route.
+- `aeae`: The canonical metadata gives `K6.1` and `AB2`. The local official HE KC 2024 PDF, printed page 24, places `K6.1` (simple mathematical statements) under Anforderungsbereich I. The public source-rationale index offers only `partial` BB/BE routes for this goal and does not resolve the HE mismatch. Hold the claim pending a reviewed demand-level/source decision.
+- `c97a`: The canonical metadata gives `K5.2` and `AB3` for reflecting on limits of digital tools and choosing safeguards. The local official HE KC 2024 PDF, printed pages 23–24, places `K5.2` (direct application of formulas and symbols) under Anforderungsbereich I and `K5.9` (reflecting on possibilities and limits of methods/tools) under Anforderungsbereich III. The current public rationale's HH routes are `partial`; they do not cure the HE tag mismatch. Hold for source/process-tag correction before a D wording keep.
+- `f37b`: Its addition/scalar multiplication plus geometric displacement interpretation is one connected competence. Current reviewed source routes include HE Q2.2 and SH elementary vector operations, both marked `exact` in the public rationale. The image and DE/EN descriptions express the same operations. No source or atomicity blocker surfaced in this preflight.
+
+Source paths: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`; `app/public/data/goal-source-rationales-math-public.json`; `curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl`; `curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_12_Vertiefungskurs.pdf`; `curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf`.

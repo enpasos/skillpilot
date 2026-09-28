@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-m7-unordered-selections-revised-current-keep-20260927-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex target-only synthesis; model identifier not exposed",
+  "synthesizedAt": "2026-09-27T11:40:59.000Z",
+  "batch": {
+    "batchId": "mathematik-m7-unordered-selections-revised-current-20260927-v1",
+    "batchManifestDigest": "sha256:ed6acdae81e630618bc8eeb2b60b4da73529970ff5005933bb5b8040bbdeaad4",
+    "configDigest": "sha256:f82badd899794dcf6e0e3e4fae0e315de785ece25eb05f43ee37813f7e8285f0",
+    "bundleFingerprint": "sha256:0330d1c551d0599fce1b000b8389e95ac31cdceeb8c34fef7e1e744b43f0c10e",
+    "bookDigest": "sha256:058d912c267836b5b9701254d38b35977a1d37b9cb022aa9d216a46c419dd501",
+    "reviewInputFingerprint": "sha256:256defbdbe1a4469e86c3476a20943a02a3a24d765d9bf8bb6bef7d29473ef4b",
+    "dualSummaryDigest": "sha256:c244a0e00fc6dcaf0b322234cf56f806d5655d0ef14afdf1501b09dbf8d7cb4e",
+    "canonicalLandscapeDigest": "sha256:2c499963fd7ba2b59377b37a2929017c4f4dbe5672c330bc205d9317eedbee23"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-unordered-selections-revised-current-20260927-v1-a",
+      "campaignDigest": "sha256:cb99df844c2d7ef2dba64af1dce8c97df22a046eb28e25a363ac9649ee86af42",
+      "roundId": "mathematik-m7-unordered-selections-revised-current-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-unordered-selections-revised-current-20260927-v1-independent-a",
+      "reviewInputFingerprint": "sha256:256defbdbe1a4469e86c3476a20943a02a3a24d765d9bf8bb6bef7d29473ef4b",
+      "batchId": "mathematik-m7-unordered-selections-revised-current-20260927-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:72f48b4a3f24560b1fba78590ef0b85d9bd104674469e875fe04dd5afae4fde2",
+      "runId": "mathematik-m7-unordered-selections-revised-current-20260927-v1-first-pass-a-run-001",
+      "runManifestDigest": "sha256:fa3706de1822901e79e1b05732a49c3b1819d06fed0a661315616d40915086de",
+      "resultsDigest": "sha256:54e3a9bd162e7419daf6c76de12c9e5d4d8329eccea1915595c2eb0a4148e162"
+    },
+    "second": {
+      "campaignId": "mathematik-m7-unordered-selections-revised-current-20260927-v1-b",
+      "campaignDigest": "sha256:2de166e8e9022f9846ca2545a709bd8415d4a655a8a7bdcfb001cf7dc88caeec",
+      "roundId": "mathematik-m7-unordered-selections-revised-current-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-unordered-selections-revised-current-20260927-v1-independent-b",
+      "reviewInputFingerprint": "sha256:256defbdbe1a4469e86c3476a20943a02a3a24d765d9bf8bb6bef7d29473ef4b",
+      "batchId": "mathematik-m7-unordered-selections-revised-current-20260927-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:12f6f2040736521627435a8e162ec914db2182c30486ecbf2c2bc716b46947cc",
+      "runId": "mathematik-m7-unordered-selections-revised-current-20260927-v1-first-pass-b.batch-001-codex",
+      "runManifestDigest": "sha256:ef93ce212946de72e557added7f4d023c693e046966df47c02a1f251642cad61",
+      "resultsDigest": "sha256:7b2424e3b2bbebc220f9bb3fe8645bc27c3540834a4c9b9e75d2667d97037e83"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-m7-unordered-selections-revised-current-keep-20260927-v1-decision-001",
+      "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7a1af6fb84247141abd3c8e861d0cc8f870b67fa3ba66f6a66fb2cad6d8d82f7",
+      "pageFingerprint": "sha256:7107f0386134473865baa888605d414406dd08adf887703dae0a1e5361083c29",
+      "goalReviewContextFingerprint": "sha256:04451ebd3326e48c85505e0f2676e272d9327985e417e6ccbb4e5fa58f53c9aa",
+      "finalText": {
+        "titleDe": "Kombinationen ohne Zurücklegen mit Fakultäten berechnen",
+        "titleEn": "Compute combinations without replacement using factorials",
+        "descriptionDe": "Die lernende Person kann die Anzahl ungeordneter Auswahlen ohne Zurücklegen mit Fakultäten bestimmen, begründen, warum verschiedene Reihenfolgen nur einmal zählen, und das Ergebnis an kleinen Beispielen prüfen, ohne den Binomialkoeffizienten bereits zu benennen.",
+        "descriptionEn": "The learner can determine the number of unordered selections without replacement using factorials, explain why different orders count only once, and check the result in small examples without yet naming the binomial coefficient."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-m7-unordered-selections-revised-current-20260927-v1-a-70efdec0",
+          "recordDigest": "sha256:b989d1ff4f5a79775798da886675e740f16c2d8a20ab69857d984a39207b22ae"
+        },
+        "second": {
+          "recordId": "mathematik-m7-unordered-selections-revised-current-20260927-v1-first-pass-b-70efdec0",
+          "recordDigest": "sha256:3a97a4a8a60d0d389c88f915e2d31287ed4ec7c67541ae103ac6d7bd7ab56bec"
+        }
+      },
+      "rationaleDe": "Zwei unabhängig und auf die neue exakte Zielseite gebundene Runden behalten die korrigierte DE/EN-Beschreibung. Die unterschiedlichen Verständnisformulierungen sind kein fachlicher Widerspruch: Runde A zählt geordnete Auswahlen und teilt durch k!, Runde B zählt n! Gesamtanordnungen und teilt durch k! sowie (n-k)!; beide Wege ergeben n!/[k!(n-k)!]. Die zweite Runde macht den Transfer zwischen ungeordneten Teams und benannten Rollen deutlicher, daher wird ihr Evidenztext herangezogen. Das unveränderte PNG illustriert nur den Fall zwei aus vier, nicht den allgemeinen Beweis; das separate aktuelle E1/G1-P-v2-Profil fordert Begründung und unabhängige Transferprüfungen. Die formale create-Empfehlung des D-Bundles mit evidenceProfile:null hebt dieses separat registrierte Profil nicht auf. Quellen-Mapping und effektive Projektion sind mit diesem D-Bundle nicht vollständig nachgewiesen. Dies ist nur AI-Synthese, keine menschliche Freigabe oder Erprobung.",
+      "rationaleEn": "Two independent rounds bound to the exact newly revised page keep the current German and English descriptions. Their different explanations of understanding are not a mathematical contradiction: round A counts ordered selections and divides by k!, while round B starts from n! total permutations and divides by both k! and (n-k)!; both yield n!/[k!(n-k)!]. Round B makes transfer between unordered teams and named roles clearer, so its evidence text is selected. The unchanged PNG illustrates only choosing two of four, not the general proof; the separate current E1/G1 P-v2 profile requires reasoning and independent transfer checks. A formal create recommendation in a D bundle with evidenceProfile:null does not negate that separately registered profile. This D bundle does not fully verify source mapping or effective projection. This is AI synthesis only, not human approval or learner trial."
+    }
+  ],
+  "manifestFingerprint": "sha256:4f8c26d361a623011be792646318d02014f8c06281f5cdda2c53075c11fb6e7a"
+}

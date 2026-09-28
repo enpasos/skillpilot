@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:5f34f37629c0580baf7b6722996acceb6ea6bab99a901c38780a113bdfbe74f4",
+  "reviewInputFingerprint": "sha256:f3d8160ec89c25c6a7947eb86bf26ceccbd9f2dd9fa2a219dbaf4701e76af80b",
+  "goalCount": 10,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-ten-current-png-20260927-v1-a",
+      "roundId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-ten-current-png-20260927-v1-independent-a",
+      "runIds": [
+        "mathematik-m7-ten-current-png-20260927-v1-first-pass-a.batch-001.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-ten-current-png-20260927-v1-b",
+      "roundId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-ten-current-png-20260927-v1-independent-b",
+      "runIds": [
+        "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 10,
+    "unavailable": 0,
+    "requiresSynthesis": 10
+  },
+  "goals": [
+    {
+      "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
+      "firstRecordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-01",
+      "secondRecordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-001",
+      "firstRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a.batch-001.run-001",
+      "secondRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+      "firstRecordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-02",
+      "secondRecordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-002",
+      "firstRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a.batch-001.run-001",
+      "secondRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+      "firstRecordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-03",
+      "secondRecordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-003",
+      "firstRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a.batch-001.run-001",
+      "secondRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "27bdc580-ba17-5399-bf02-48f354846d1d",
+      "firstRecordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-04",
+      "secondRecordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-004",
+      "firstRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a.batch-001.run-001",
+      "secondRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e02b994f-376d-5a8e-a14c-c4acacae57cf",
+      "firstRecordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-05",
+      "secondRecordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-005",
+      "firstRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a.batch-001.run-001",
+      "secondRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "909d8b16-5156-528b-a300-d9aee5405ba0",
+      "firstRecordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-06",
+      "secondRecordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-006",
+      "firstRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a.batch-001.run-001",
+      "secondRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+      "firstRecordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-07",
+      "secondRecordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-007",
+      "firstRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a.batch-001.run-001",
+      "secondRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001",
+      "firstDecision": "split_review",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
+      "firstRecordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-08",
+      "secondRecordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-008",
+      "firstRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a.batch-001.run-001",
+      "secondRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "firstRecordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-09",
+      "secondRecordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-009",
+      "firstRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a.batch-001.run-001",
+      "secondRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+      "firstRecordId": "mathematik-m7-ten-current-png-20260927-v1-a-goal-10",
+      "secondRecordId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001.record-010",
+      "firstRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-a.batch-001.run-001",
+      "secondRunId": "mathematik-m7-ten-current-png-20260927-v1-first-pass-b.batch-001.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

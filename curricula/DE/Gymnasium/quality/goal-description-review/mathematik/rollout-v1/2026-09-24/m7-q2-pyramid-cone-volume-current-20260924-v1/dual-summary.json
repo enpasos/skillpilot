@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:4a6a9330c6886a51cd787ac9d356ab34bd15b07543129de7e9a561bec1fcbb08",
+  "reviewInputFingerprint": "sha256:cba12d035a4fb8e1a1592eab41ab60072e23f27bd994f623f8d3823f0535d044",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-a",
+      "roundId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-first-pass-a",
+      "independenceGroupId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-independent-a",
+      "runIds": [
+        "math-q2-volume-current-20260924-a-gpt6"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-b",
+      "roundId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-first-pass-b",
+      "independenceGroupId": "mathematik-m7-q2-pyramid-cone-volume-current-20260924-v1-independent-b",
+      "runIds": [
+        "math-m7-q2-volume-current-20260924-b-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "288633c1-f61c-5b48-af7e-a80357f96cad",
+      "firstRecordId": "math-q2-pyramid-volume-current-a-20260924",
+      "secondRecordId": "math-m7-q2-volume-current-20260924-b-pyramid",
+      "firstRunId": "math-q2-volume-current-20260924-a-gpt6",
+      "secondRunId": "math-m7-q2-volume-current-20260924-b-run",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e8237315-654e-5150-97de-49c4cb49b3d1",
+      "firstRecordId": "math-q2-cone-volume-current-a-20260924",
+      "secondRecordId": "math-m7-q2-volume-current-20260924-b-cone",
+      "firstRunId": "math-q2-volume-current-20260924-a-gpt6",
+      "secondRunId": "math-m7-q2-volume-current-20260924-b-run",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}
