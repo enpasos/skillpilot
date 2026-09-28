@@ -42,10 +42,42 @@ jobs:
         run: npm install --global @anthropic-ai/claude-code@2.1.241
       - name: Verify existing direct-install candidate
         run: node scripts/claude_direct_install_beta_release.mjs verify
-      - name: Test and reproduce marketplace export
+      - name: Test and verify marketplace state
+        id: marketplace_state
         run: |
           node --test scripts/claude_marketplace_release.test.mjs
           node scripts/claude_marketplace_release.mjs check
+          node --input-type=module <<'NODE'
+          import { appendFileSync } from "node:fs";
+          import {
+            checkClaudeMarketplace,
+            loadClaudeMarketplaceLane,
+          } from "./scripts/claude_marketplace_release.mjs";
+
+          const checked = checkClaudeMarketplace();
+          const candidateVersion = loadClaudeMarketplaceLane().plugin.version;
+          let exportReady;
+          if (
+            checked.pendingCandidateVersion === candidateVersion &&
+            checked.version !== candidateVersion &&
+            checked.outputRoot === null
+          ) {
+            exportReady = false;
+          } else if (
+            checked.pendingCandidateVersion === undefined &&
+            checked.version === candidateVersion &&
+            typeof checked.outputRoot === "string" &&
+            checked.outputRoot.length > 0
+          ) {
+            exportReady = true;
+          } else {
+            throw new Error("Marketplace check returned an inconsistent export state.");
+          }
+          appendFileSync(process.env.GITHUB_OUTPUT, `export_ready=${exportReady}\n`);
+          NODE
+      - name: Reproduce eligible marketplace export
+        if: steps.marketplace_state.outputs.export_ready == 'true'
+        run: |
           node scripts/claude_marketplace_release.mjs prepare
           node scripts/claude_marketplace_release.mjs validate-cli
           node scripts/claude_marketplace_release.mjs smoke-local

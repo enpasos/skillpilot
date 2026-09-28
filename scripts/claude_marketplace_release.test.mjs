@@ -922,6 +922,74 @@ test("uncommitted 1.1.11 source cannot overwrite the published 1.1.10 Marketplac
   });
 });
 
+test("source CI always checks the marketplace and exports only an eligible candidate", () => {
+  const workflow = readFileSync(resolve(repositoryRoot,
+    ".github/workflows/claude-marketplace.yml"), "utf8");
+  const checkStep = workflow.split("      - name: Test and verify marketplace state\n")[1]
+    ?.split("      - name: Reproduce eligible marketplace export\n")[0];
+  const exportStep = workflow.split("      - name: Reproduce eligible marketplace export\n")[1];
+  assert.ok(checkStep, "Marketplace check step is missing");
+  assert.ok(exportStep, "Conditional Marketplace export step is missing");
+  assert.match(checkStep, /        id: marketplace_state\n/u);
+  assert.match(checkStep, /node --test scripts\/claude_marketplace_release\.test\.mjs/u);
+  assert.match(checkStep, /node scripts\/claude_marketplace_release\.mjs check/u);
+  assert.doesNotMatch(checkStep, /claude_marketplace_release\.mjs (?:prepare|validate-cli|smoke-local)/u);
+  assert.match(exportStep, /        if: steps\.marketplace_state\.outputs\.export_ready == 'true'\n/u);
+  for (const action of ["prepare", "validate-cli", "smoke-local"]) {
+    assert.match(exportStep, new RegExp("node scripts/claude_marketplace_release\\.mjs " + action, "u"));
+  }
+
+  const pending = runSourceWorkflowGate(checkStep);
+  assert.equal(pending.status, 0, pending.stderr);
+  assert.equal(pending.output, "export_ready=false\n");
+
+  const eligible = runSourceWorkflowGate(checkStep,
+    "{ version: loadClaudeMarketplaceLane().plugin.version, pendingCandidateVersion: undefined, outputRoot: '/tmp/eligible' }");
+  assert.equal(eligible.status, 0, eligible.stderr);
+  assert.equal(eligible.output, "export_ready=true\n");
+
+  const malformed = runSourceWorkflowGate(checkStep,
+    "{ version: loadClaudeMarketplaceLane().plugin.version, pendingCandidateVersion: 'wrong', outputRoot: null }");
+  assert.notEqual(malformed.status, 0);
+  assert.match(malformed.stderr, /inconsistent export state/u);
+  assert.equal(malformed.output, "");
+
+  const missingOutput = runSourceWorkflowGate(checkStep,
+    "{ version: loadClaudeMarketplaceLane().plugin.version, pendingCandidateVersion: undefined, outputRoot: '' }");
+  assert.notEqual(missingOutput.status, 0);
+  assert.match(missingOutput.stderr, /inconsistent export state/u);
+  assert.equal(missingOutput.output, "");
+});
+
+function runSourceWorkflowGate(checkStep, checkedOverride = null) {
+  const match = checkStep.match(/node --input-type=module <<'NODE'\n([\s\S]+?)\n          NODE\n/u);
+  assert.ok(match, "Marketplace state step must run the typed check result gate");
+  let code = match[1].replace(/^          /gmu, "");
+  if (checkedOverride !== null) {
+    assert.ok(code.includes("const checked = checkClaudeMarketplace();"));
+    code = code.replace("const checked = checkClaudeMarketplace();",
+      "const checked = " + checkedOverride + ";");
+  }
+  const outputRoot = mkdtempSync(resolve(tmpdir(), "skillpilot-marketplace-ci-gate-"));
+  const outputPath = resolve(outputRoot, "github-output");
+  try {
+    writeFileSync(outputPath, "");
+    const result = spawnSync(process.execPath, ["--input-type=module"], {
+      cwd: repositoryRoot,
+      input: code,
+      encoding: "utf8",
+      env: { ...process.env, GITHUB_OUTPUT: outputPath },
+    });
+    return {
+      status: result.status,
+      stderr: result.stderr,
+      output: readFileSync(outputPath, "utf8"),
+    };
+  } finally {
+    rmSync(outputRoot, { recursive: true, force: true });
+  }
+}
+
 function withOutput(callback, { prepareDirectory = false } = {}) {
   const root = mkdtempSync(resolve(tmpdir(), "skillpilot-marketplace-test-"));
   const outputRoot = resolve(root, "skillpilot-claude-marketplace");
