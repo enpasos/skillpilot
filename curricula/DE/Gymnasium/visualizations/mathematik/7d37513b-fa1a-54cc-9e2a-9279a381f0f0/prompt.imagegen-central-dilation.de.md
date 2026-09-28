@@ -1,6 +1,7 @@
 # Bildrevision: zentrische Streckung und Maßfaktoren
 
 - Lernziel-ID: `7d37513b-fa1a-54cc-9e2a-9279a381f0f0`
+- Provider: OpenAI imagegen
 - Aktueller PNG-Kandidat: `7d37513b-fa1a-54cc-9e2a-9279a381f0f0.png`
 - SHA-256: `383937064add42e5ae9a264081897cc6a6d8bda53b258398fdef258d7f6c6d1f`
 - Werkzeug: OpenAI imagegen, Neuerzeugung und eine gezielte Textkorrektur am 2026-09-28.

@@ -1,5 +1,7 @@
 # Extremstellen parameterabhängig untersuchen
 
+- Provider: OpenAI / ChatGPT-Codex image_gen
+
 Das aktive PNG ist der korrigierte `candidate-v2.png` aus
 [`math-m7-7fea-extrema-candidate-20260926-v1`](../../../quality/goal-visualization-review/math-m7-7fea-extrema-candidate-20260926-v1/README.md),
 SHA-256 `b6febfc994fc347e2ed2c71543b5bca797a2059c7980f92d259eda367cd63920`.

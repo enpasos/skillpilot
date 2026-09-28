@@ -1,6 +1,7 @@
 # Bildbearbeitung: Lagebeziehung zweier Ebenen untersuchen (LK)
 
 - Ziel-ID: `0f4f9957-8afe-4aab-9dd8-c26c9aee2afd`
+- Provider: OpenAI imagegen edit; SkillPilot curated
 - Verfahren: OpenAI built-in imagegen, `text-localization`, Bearbeitung des bisherigen JPG
 - Unverändertes historisches JPG: `../../../quality/goal-visualization-review/math-0f-plane-plane-title-20260927-v1/original/canonical-original.jpg`; ursprünglicher Prompt: `prompt.de.md`
 - SHA-256 des historischen JPG: `3cbffc6b2ad80b1e5760065e7669fa45f05ba64f5b7b4c8d80de95f09ea4f230`

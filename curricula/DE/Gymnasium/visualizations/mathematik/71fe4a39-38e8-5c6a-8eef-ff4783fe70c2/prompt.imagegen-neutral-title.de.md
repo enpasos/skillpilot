@@ -1,6 +1,7 @@
 # Bildrevision: kursneutraler Titel
 
 - Lernziel: `71fe4a39-38e8-5c6a-8eef-ff4783fe70c2`
+- Provider: OpenAI imagegen
 - Neuer Kandidat: `71fe4a39-38e8-5c6a-8eef-ff4783fe70c2.png`
 - Aktueller SHA-256: `ccb83c8b71dd3f17115550542eef224ee5ee18f46bac65d70a0415239f561c9b`
 - Werkzeug: OpenAI imagegen, Neuerzeugung am 2026-09-28 nach verworfenem JPG-Bearbeitungsversuch.

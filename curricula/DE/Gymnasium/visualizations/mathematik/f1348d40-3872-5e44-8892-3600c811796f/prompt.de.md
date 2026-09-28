@@ -1,6 +1,7 @@
 # Bildkandidat: Oberflächeninhalt gerader Prismen
 
 - Lernziel: `f1348d40-3872-5e44-8892-3600c811796f`
+- Provider: OpenAI imagegen
 - Erzeugung: OpenAI imagegen, 2026-09-28; KI-generierter, von SkillPilot kuratierter Kandidat
 - Datei: `f1348d40-3872-5e44-8892-3600c811796f.png`
 - SHA-256: `fea518add90ee3dcfe045fca140dee84c5ef8c8bae0726c9100a05cf0f192db4`

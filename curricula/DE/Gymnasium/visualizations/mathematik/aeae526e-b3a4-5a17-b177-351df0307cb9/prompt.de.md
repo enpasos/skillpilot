@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: OpenAI imagegen edit eines früheren Google-Gemini-/Nano-Banana-Pro-JPEGs; genaue OpenAI-Modellkennung nicht offengelegt
+- Provider: OpenAI imagegen edit of prior Google Gemini / Nano Banana Pro asset; exact model not exposed
 - Status: pilot
 - Aktives Quellbild: `aeae526e-b3a4-5a17-b177-351df0307cb9.png`
 - Public Asset: `/assets/goal-visualizations/mathematik/aeae526e-b3a4-5a17-b177-351df0307cb9/aeae526e-b3a4-5a17-b177-351df0307cb9.png`

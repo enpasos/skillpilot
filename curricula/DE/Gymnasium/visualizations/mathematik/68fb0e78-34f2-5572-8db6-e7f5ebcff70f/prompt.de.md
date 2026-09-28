@@ -1,6 +1,7 @@
 # Bildkandidat: Volumen gerader Prismen
 
 - Lernziel: `68fb0e78-34f2-5572-8db6-e7f5ebcff70f`
+- Provider: OpenAI imagegen
 - Erzeugung: OpenAI imagegen, 2026-09-28; KI-generierter, von SkillPilot kuratierter Kandidat
 - Datei: `68fb0e78-34f2-5572-8db6-e7f5ebcff70f.png`
 - SHA-256: `db18b5bc84e6829f39112af8c685ca50d41fdc2fe499b958a3cc24da26430527`
