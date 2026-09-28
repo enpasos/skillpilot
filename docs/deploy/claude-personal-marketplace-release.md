@@ -3,19 +3,44 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.10 is published in
+Anthropic-curated or Anthropic-verified listing. Version 1.1.11 is published in
 the public personal Marketplace; its exact source, package and repository have
-been independently verified. The website download serves the same 1.1.10
-archive. Full real-client acceptance remains
-pending; repository publication does not establish installation or
-synchronization in every account.
+been independently verified. The website serves the matching 1.1.11 archive.
+Full real-client acceptance remains pending; repository publication does not
+establish installation or synchronization in every account.
 Earlier published packages and their evidence remain immutable history.
 
-The 1.1.11 offer-commitment correction is a local candidate. Its archive and
-release dossier are prepared for review, with host acceptance and Marketplace
-export pending. The public personal Marketplace and website continue serving
-the verified 1.1.10 bytes; the Marketplace workflow remains pinned to that
-published source until a later authorized 1.1.11 publication preparation.
+## 1.1.11 repository publication
+
+On 28 September 2026, the Product Owner reported green CI and deployment and
+requested publication of the 1.1.11 offer-commitment correction in the
+personal Git Marketplace. The exact 1.1.11 website index and downloaded
+archive were checked at 42,633 bytes and SHA-256
+`0648c174c52f057aca123cbcef8c1285c9d655bd81175382ce66155a9267f884`.
+The Marketplace export pins the green SkillPilot revision
+`70a2a25adb77ebfd8b1749fd50d93fc4aa35d301` and its Claude plugin
+source-tree SHA-256
+`237c3d0d7deae66b0b0b4757f3f69eac98c15430a4c0cff1f3d868644375a9af`.
+The exact twelve-file export has tree SHA-256
+`df38b47fc9b309adbbd910c04491ff4693e7cef3aa4f102977a14a2cd35f7dcf`.
+
+[Marketplace PR #14](https://github.com/enpasos/skillpilot-claude-marketplace/pull/14)
+passed its [final-head validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/36421718916)
+and was squash-merged independently of the SkillPilot source PR. The resulting
+public `main` revision is `1cb5b7904243b1b0ad6ee8fa576176bb09c2353e`.
+Its [main-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/36423148702)
+passed. `verifyPublishedClaudeMarketplace` checked the actual public default
+branch, closed file inventory, exact tree and rebuilt archive, both strict
+Claude validations, and installation from the HTTPS Marketplace in an isolated
+Claude profile. The remote head remained unchanged throughout verification.
+The repository evidence was recorded at `2026-09-28T12:40:27.000Z`.
+
+The packaged README and SETUP text are preparation-time snapshots, including
+their prepublication status wording; their bytes remain bound to the deployed
+archive. The Marketplace root README identifies that limitation. Only
+`public-repository-default-branch` is recorded as `pass`; clean-account
+installation, migration/refresh, and real-client learning-flow acceptance
+remain pending. No new first-party guide decision was made for 1.1.11.
 
 ## 1.1.10 repository publication
 
@@ -925,9 +950,10 @@ https://github.com/enpasos/skillpilot-claude-marketplace
 As long as
 `ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json`
 has `activation.state = prepared_not_published`, that repository is not a
-supported installation source. The first-party `/plugins` page must keep every
-Claude installation route unavailable for a new candidate until its exact direct-install or
-Marketplace route is deliberately opened for testing. It must not offer 1.0.4
+supported installation source for the new candidate. The first-party `/plugins`
+page must keep every Claude installation route unavailable for a new candidate
+until its exact direct-install or Marketplace route is deliberately opened for
+testing. It must not offer 1.0.4
 as a fallback. A Marketplace route additionally requires a verified repository
 and a candidate- and revision-bound Product Owner approval in
 `activation.firstPartyGuideDecision`. Local export success never changes either
@@ -964,7 +990,7 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current candidate version: `1.1.6` (Marketplace published; website promotion separately approved)
+- Current candidate version: `1.1.11` (website download deployed; Marketplace publication pending)
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only
