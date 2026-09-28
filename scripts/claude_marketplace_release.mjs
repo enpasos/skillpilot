@@ -547,7 +547,7 @@ export function prepareClaudeMarketplace({
   const lane = loadClaudeMarketplaceLane(repositoryRoot);
   if (lane.plugin.version !== pinnedTemplateVersion) {
     throw new Error(
-      `Marketplace export for ${lane.plugin.version} is pending a committed source pin; the pinned ${pinnedTemplateVersion} template must remain unchanged.`,
+      `Marketplace export version ${lane.plugin.version} does not match pinned template version ${pinnedTemplateVersion}.`,
     );
   }
   validateSource(paths, lane, buildPackage);
