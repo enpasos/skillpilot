@@ -7,7 +7,6 @@ import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
 import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview'
 import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
-import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
 import { LearnerDataManagementDialog } from '../components/LearnerDataManagementDialog'
@@ -3271,6 +3270,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           <div className="flex items-center gap-1 shrink-0">
 
             {/* SSE auto-refresh now active - manual refresh button removed */}
+            <button type="button" aria-label={localizedLanguage === 'de' ? 'Einstellungen öffnen' : 'Open settings'} onClick={() => setIsSetupOpen(true)} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-text-secondary hover:text-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><Settings size={18} aria-hidden="true" /></button>
             <button
               ref={desktopHideButtonRef}
               type="button"
@@ -3286,8 +3286,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             >
               <PanelLeftClose size={18} aria-hidden="true" />
             </button>
-            <button type="button" aria-label={localizedLanguage === 'de' ? 'Einstellungen öffnen' : 'Open settings'} onClick={() => setIsSetupOpen(true)} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-text-secondary hover:text-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><Settings size={18} aria-hidden="true" /></button>
-            <ThemeToggle />
             {isMobile && (
               <button
                 type="button"
